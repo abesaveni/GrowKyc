@@ -1,0 +1,63 @@
+# Chrome debug data
+.chrome-debug/
+
+# Dependencies
+node_modules/
+server/node_modules/
+.pnp
+.pnp.js
+
+# Build output
+dist/
+build/
+server/dist/
+
+# Environment variables — NEVER commit real secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+server/.env
+server/.env.local
+
+# Supabase local
+supabase/.branches/
+supabase/.temp/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# TypeScript
+*.tsbuildinfo
+
+# AWS CDK
+infrastructure/cdk/cdk.out/
+infrastructure/cdk/node_modules/
+
+# Temp files
+*.tmp
+*.temp
