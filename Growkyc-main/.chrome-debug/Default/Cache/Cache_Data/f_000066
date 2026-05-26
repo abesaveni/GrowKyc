@@ -1,0 +1,1283 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/@fs/C:\\Users\\Andrew Nagle\\Desktop\\Growkyc-main\\Growkyc-main\\src\\app\\components\\case\\ResponsibleLendingAssessment.tsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=15066356"; const Fragment = __vite__cjsImport0_react_jsxDevRuntime["Fragment"]; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+import { Card, CardContent, CardHeader, CardTitle } from "/src/app/components/ui/card.tsx";
+import {
+  AlertCircle,
+  CheckCircle,
+  XCircle,
+  DollarSign,
+  TrendingDown,
+  TrendingUp,
+  Shield,
+  FileText,
+  Calculator
+} from "/node_modules/.vite/deps/lucide-react.js?v=15066356";
+export function ResponsibleLendingAssessment({
+  formData,
+  onInputChange
+}) {
+  const monthlyIncome = parseFloat(formData.verifiedMonthlyIncome || "0");
+  const monthlyExpenses = parseFloat(formData.verifiedMonthlyExpenses || "0");
+  const existingDebts = parseFloat(formData.verifiedExistingDebts || "0");
+  const proposedLoanAmount = parseFloat(formData.originalLoanAmount || "0");
+  const interestRate = parseFloat(formData.interestRate || "6.5");
+  const loanTerm = parseFloat(formData.loanTermYears || "30");
+  const monthlyRate = interestRate / 100 / 12;
+  const numPayments = loanTerm * 12;
+  const monthlyRepayment = proposedLoanAmount > 0 ? proposedLoanAmount * monthlyRate * Math.pow(1 + monthlyRate, numPayments) / (Math.pow(1 + monthlyRate, numPayments) - 1) : 0;
+  const totalMonthlyObligations = monthlyExpenses + existingDebts + monthlyRepayment;
+  const monthlySurplus = monthlyIncome - totalMonthlyObligations;
+  const surplusPercentage = monthlyIncome > 0 ? monthlySurplus / monthlyIncome * 100 : 0;
+  const debtToIncome = monthlyIncome > 0 ? (existingDebts + monthlyRepayment) / monthlyIncome * 100 : 0;
+  const isUnsuitable = monthlySurplus < 0 || debtToIncome > 50 || surplusPercentage < 20;
+  const requiresEnhancedAssessment = debtToIncome > 40 || surplusPercentage < 30;
+  return /* @__PURE__ */ jsxDEV("div", { className: "space-y-6", children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "p-5 bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-400 rounded-lg", children: /* @__PURE__ */ jsxDEV("div", { className: "flex items-start gap-3", children: [
+      /* @__PURE__ */ jsxDEV(Shield, { className: "w-6 h-6 text-red-700 mt-0.5 flex-shrink-0" }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+        lineNumber: 79,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { children: [
+        /* @__PURE__ */ jsxDEV("h4", { className: "font-bold text-red-900 text-base mb-2", children: "⚖️ National Consumer Credit Protection Act 2009" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+          lineNumber: 81,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "text-sm text-red-800 mb-3", children: "This is regulated consumer credit. All NCCP responsible lending obligations apply." }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+          lineNumber: 82,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "grid md:grid-cols-2 gap-3 text-xs", children: [
+          /* @__PURE__ */ jsxDEV("div", { className: "bg-white/60 p-3 rounded border border-red-300", children: [
+            /* @__PURE__ */ jsxDEV("p", { className: "font-bold text-red-900 mb-1", children: "✓ Lender Must Hold:" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 87,
+              columnNumber: 17
+            }, this),
+            /* @__PURE__ */ jsxDEV("ul", { className: "space-y-1 text-red-800", children: [
+              /* @__PURE__ */ jsxDEV("li", { children: "• Australian Credit Licence (ACL), OR" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 89,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV("li", { children: "• Authorised Credit Representative status" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 90,
+                columnNumber: 19
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 88,
+              columnNumber: 17
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+            lineNumber: 86,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "bg-white/60 p-3 rounded border border-red-300", children: [
+            /* @__PURE__ */ jsxDEV("p", { className: "font-bold text-red-900 mb-1", children: "✓ ASIC Compliance:" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 94,
+              columnNumber: 17
+            }, this),
+            /* @__PURE__ */ jsxDEV("ul", { className: "space-y-1 text-red-800", children: [
+              /* @__PURE__ */ jsxDEV("li", { children: "• RG 209: Credit licensing guide" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 96,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV("li", { children: "• RG 209: Responsible lending conduct" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 97,
+                columnNumber: 19
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 95,
+              columnNumber: 17
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+            lineNumber: 93,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+          lineNumber: 85,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+        lineNumber: 80,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+      lineNumber: 78,
+      columnNumber: 9
+    }, this) }, void 0, false, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+      lineNumber: 77,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV(Card, { className: "border-2 border-blue-300", children: [
+      /* @__PURE__ */ jsxDEV(CardHeader, { className: "bg-gradient-to-r from-blue-50 to-indigo-50", children: [
+        /* @__PURE__ */ jsxDEV(CardTitle, { className: "text-lg flex items-center gap-2", children: [
+          /* @__PURE__ */ jsxDEV(FileText, { className: "w-5 h-5 text-blue-600" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+            lineNumber: 109,
+            columnNumber: 13
+          }, this),
+          "Step A: Make Reasonable Inquiries (NCCP s117)"
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+          lineNumber: 108,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "text-sm text-gray-600 mt-1", children: "Before approving the loan, inquire about the borrower's financial situation" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+          lineNumber: 112,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+        lineNumber: 107,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV(CardContent, { className: "p-6 space-y-6", children: [
+        /* @__PURE__ */ jsxDEV("div", { children: [
+          /* @__PURE__ */ jsxDEV("h4", { className: "font-bold text-gray-900 mb-3", children: "1. Income Verification" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+            lineNumber: 119,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "grid md:grid-cols-2 gap-4", children: [
+            /* @__PURE__ */ jsxDEV("div", { children: [
+              /* @__PURE__ */ jsxDEV("label", { className: "block text-sm font-medium text-gray-700 mb-2", children: "Employment Type *" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 122,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV(
+                "select",
+                {
+                  value: formData.employmentType || "",
+                  onChange: (e) => onInputChange("employmentType", e.target.value),
+                  className: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600",
+                  children: [
+                    /* @__PURE__ */ jsxDEV("option", { value: "", children: "Select..." }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                      lineNumber: 130,
+                      columnNumber: 19
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("option", { value: "payg", children: "PAYG Employee" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                      lineNumber: 131,
+                      columnNumber: 19
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("option", { value: "self_employed", children: "Self Employed" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                      lineNumber: 132,
+                      columnNumber: 19
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("option", { value: "business_owner", children: "Business Owner" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                      lineNumber: 133,
+                      columnNumber: 19
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("option", { value: "casual", children: "Casual" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                      lineNumber: 134,
+                      columnNumber: 19
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("option", { value: "contractor", children: "Contractor" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                      lineNumber: 135,
+                      columnNumber: 19
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("option", { value: "retired", children: "Retired" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                      lineNumber: 136,
+                      columnNumber: 19
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("option", { value: "other", children: "Other" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                      lineNumber: 137,
+                      columnNumber: 19
+                    }, this)
+                  ]
+                },
+                void 0,
+                true,
+                {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                  lineNumber: 125,
+                  columnNumber: 17
+                },
+                this
+              )
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 121,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { children: [
+              /* @__PURE__ */ jsxDEV("label", { className: "block text-sm font-medium text-gray-700 mb-2", children: "Verified Gross Monthly Income *" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 142,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "relative", children: [
+                /* @__PURE__ */ jsxDEV(DollarSign, { className: "absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                  lineNumber: 146,
+                  columnNumber: 19
+                }, this),
+                /* @__PURE__ */ jsxDEV(
+                  "input",
+                  {
+                    type: "number",
+                    value: formData.verifiedMonthlyIncome || "",
+                    onChange: (e) => onInputChange("verifiedMonthlyIncome", e.target.value),
+                    className: "w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600",
+                    placeholder: "8500"
+                  },
+                  void 0,
+                  false,
+                  {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                    lineNumber: 147,
+                    columnNumber: 19
+                  },
+                  this
+                )
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 145,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 141,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+            lineNumber: 120,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg", children: [
+            /* @__PURE__ */ jsxDEV("p", { className: "text-xs font-bold text-blue-900 mb-2", children: "Required Verification Documents:" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 160,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { className: "grid md:grid-cols-2 gap-2 text-xs", children: [
+              formData.employmentType === "payg" && /* @__PURE__ */ jsxDEV(Fragment, { children: [
+                /* @__PURE__ */ jsxDEV("label", { className: "flex items-center gap-2", children: [
+                  /* @__PURE__ */ jsxDEV(
+                    "input",
+                    {
+                      type: "checkbox",
+                      checked: formData.payslipsVerified || false,
+                      onChange: (e) => onInputChange("payslipsVerified", e.target.checked),
+                      className: "w-4 h-4"
+                    },
+                    void 0,
+                    false,
+                    {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                      lineNumber: 165,
+                      columnNumber: 23
+                    },
+                    this
+                  ),
+                  /* @__PURE__ */ jsxDEV("span", { className: "text-blue-900", children: "Recent payslips (3 months)" }, void 0, false, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                    lineNumber: 171,
+                    columnNumber: 23
+                  }, this)
+                ] }, void 0, true, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                  lineNumber: 164,
+                  columnNumber: 21
+                }, this),
+                /* @__PURE__ */ jsxDEV("label", { className: "flex items-center gap-2", children: [
+                  /* @__PURE__ */ jsxDEV(
+                    "input",
+                    {
+                      type: "checkbox",
+                      checked: formData.employmentLetterVerified || false,
+                      onChange: (e) => onInputChange("employmentLetterVerified", e.target.checked),
+                      className: "w-4 h-4"
+                    },
+                    void 0,
+                    false,
+                    {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                      lineNumber: 174,
+                      columnNumber: 23
+                    },
+                    this
+                  ),
+                  /* @__PURE__ */ jsxDEV("span", { className: "text-blue-900", children: "Employment letter" }, void 0, false, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                    lineNumber: 180,
+                    columnNumber: 23
+                  }, this)
+                ] }, void 0, true, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                  lineNumber: 173,
+                  columnNumber: 21
+                }, this),
+                /* @__PURE__ */ jsxDEV("label", { className: "flex items-center gap-2", children: [
+                  /* @__PURE__ */ jsxDEV(
+                    "input",
+                    {
+                      type: "checkbox",
+                      checked: formData.bankStatementsIncomeVerified || false,
+                      onChange: (e) => onInputChange("bankStatementsIncomeVerified", e.target.checked),
+                      className: "w-4 h-4"
+                    },
+                    void 0,
+                    false,
+                    {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                      lineNumber: 183,
+                      columnNumber: 23
+                    },
+                    this
+                  ),
+                  /* @__PURE__ */ jsxDEV("span", { className: "text-blue-900", children: "Bank statements (3 months)" }, void 0, false, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                    lineNumber: 189,
+                    columnNumber: 23
+                  }, this)
+                ] }, void 0, true, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                  lineNumber: 182,
+                  columnNumber: 21
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 163,
+                columnNumber: 17
+              }, this),
+              (formData.employmentType === "self_employed" || formData.employmentType === "business_owner") && /* @__PURE__ */ jsxDEV(Fragment, { children: [
+                /* @__PURE__ */ jsxDEV("label", { className: "flex items-center gap-2", children: [
+                  /* @__PURE__ */ jsxDEV(
+                    "input",
+                    {
+                      type: "checkbox",
+                      checked: formData.taxReturnsVerified || false,
+                      onChange: (e) => onInputChange("taxReturnsVerified", e.target.checked),
+                      className: "w-4 h-4"
+                    },
+                    void 0,
+                    false,
+                    {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                      lineNumber: 196,
+                      columnNumber: 23
+                    },
+                    this
+                  ),
+                  /* @__PURE__ */ jsxDEV("span", { className: "text-blue-900", children: "Tax returns (2 years)" }, void 0, false, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                    lineNumber: 202,
+                    columnNumber: 23
+                  }, this)
+                ] }, void 0, true, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                  lineNumber: 195,
+                  columnNumber: 21
+                }, this),
+                /* @__PURE__ */ jsxDEV("label", { className: "flex items-center gap-2", children: [
+                  /* @__PURE__ */ jsxDEV(
+                    "input",
+                    {
+                      type: "checkbox",
+                      checked: formData.noaVerified || false,
+                      onChange: (e) => onInputChange("noaVerified", e.target.checked),
+                      className: "w-4 h-4"
+                    },
+                    void 0,
+                    false,
+                    {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                      lineNumber: 205,
+                      columnNumber: 23
+                    },
+                    this
+                  ),
+                  /* @__PURE__ */ jsxDEV("span", { className: "text-blue-900", children: "Notices of Assessment (2 years)" }, void 0, false, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                    lineNumber: 211,
+                    columnNumber: 23
+                  }, this)
+                ] }, void 0, true, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                  lineNumber: 204,
+                  columnNumber: 21
+                }, this),
+                /* @__PURE__ */ jsxDEV("label", { className: "flex items-center gap-2", children: [
+                  /* @__PURE__ */ jsxDEV(
+                    "input",
+                    {
+                      type: "checkbox",
+                      checked: formData.financialStatementsVerified || false,
+                      onChange: (e) => onInputChange("financialStatementsVerified", e.target.checked),
+                      className: "w-4 h-4"
+                    },
+                    void 0,
+                    false,
+                    {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                      lineNumber: 214,
+                      columnNumber: 23
+                    },
+                    this
+                  ),
+                  /* @__PURE__ */ jsxDEV("span", { className: "text-blue-900", children: "Financial statements" }, void 0, false, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                    lineNumber: 220,
+                    columnNumber: 23
+                  }, this)
+                ] }, void 0, true, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                  lineNumber: 213,
+                  columnNumber: 21
+                }, this),
+                /* @__PURE__ */ jsxDEV("label", { className: "flex items-center gap-2", children: [
+                  /* @__PURE__ */ jsxDEV(
+                    "input",
+                    {
+                      type: "checkbox",
+                      checked: formData.basVerified || false,
+                      onChange: (e) => onInputChange("basVerified", e.target.checked),
+                      className: "w-4 h-4"
+                    },
+                    void 0,
+                    false,
+                    {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                      lineNumber: 223,
+                      columnNumber: 23
+                    },
+                    this
+                  ),
+                  /* @__PURE__ */ jsxDEV("span", { className: "text-blue-900", children: "BAS statements" }, void 0, false, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                    lineNumber: 229,
+                    columnNumber: 23
+                  }, this)
+                ] }, void 0, true, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                  lineNumber: 222,
+                  columnNumber: 21
+                }, this),
+                /* @__PURE__ */ jsxDEV("label", { className: "flex items-center gap-2", children: [
+                  /* @__PURE__ */ jsxDEV(
+                    "input",
+                    {
+                      type: "checkbox",
+                      checked: formData.accountantLetterVerified || false,
+                      onChange: (e) => onInputChange("accountantLetterVerified", e.target.checked),
+                      className: "w-4 h-4"
+                    },
+                    void 0,
+                    false,
+                    {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                      lineNumber: 232,
+                      columnNumber: 23
+                    },
+                    this
+                  ),
+                  /* @__PURE__ */ jsxDEV("span", { className: "text-blue-900", children: "Accountant letter" }, void 0, false, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                    lineNumber: 238,
+                    columnNumber: 23
+                  }, this)
+                ] }, void 0, true, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                  lineNumber: 231,
+                  columnNumber: 21
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 194,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 161,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+            lineNumber: 159,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+          lineNumber: 118,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { children: [
+          /* @__PURE__ */ jsxDEV("h4", { className: "font-bold text-gray-900 mb-3", children: "2. Living Expenses Verification" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+            lineNumber: 248,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "grid md:grid-cols-2 gap-4", children: [
+            /* @__PURE__ */ jsxDEV("div", { children: [
+              /* @__PURE__ */ jsxDEV("label", { className: "block text-sm font-medium text-gray-700 mb-2", children: "Verified Monthly Living Expenses *" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 251,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "relative", children: [
+                /* @__PURE__ */ jsxDEV(DollarSign, { className: "absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                  lineNumber: 255,
+                  columnNumber: 19
+                }, this),
+                /* @__PURE__ */ jsxDEV(
+                  "input",
+                  {
+                    type: "number",
+                    value: formData.verifiedMonthlyExpenses || "",
+                    onChange: (e) => onInputChange("verifiedMonthlyExpenses", e.target.value),
+                    className: "w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600",
+                    placeholder: "4200"
+                  },
+                  void 0,
+                  false,
+                  {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                    lineNumber: 256,
+                    columnNumber: 19
+                  },
+                  this
+                )
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 254,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 250,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { children: [
+              /* @__PURE__ */ jsxDEV("label", { className: "block text-sm font-medium text-gray-700 mb-2", children: "Dependents" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 266,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV(
+                "input",
+                {
+                  type: "number",
+                  value: formData.numberOfDependents || "0",
+                  onChange: (e) => onInputChange("numberOfDependents", e.target.value),
+                  className: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600",
+                  placeholder: "2"
+                },
+                void 0,
+                false,
+                {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                  lineNumber: 269,
+                  columnNumber: 17
+                },
+                this
+              )
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 265,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+            lineNumber: 249,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "mt-3", children: [
+            /* @__PURE__ */ jsxDEV("label", { className: "block text-sm font-medium text-gray-700 mb-2", children: "Expense Verification Method *" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 279,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV(
+              "select",
+              {
+                value: formData.expenseVerificationMethod || "",
+                onChange: (e) => onInputChange("expenseVerificationMethod", e.target.value),
+                className: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600",
+                children: [
+                  /* @__PURE__ */ jsxDEV("option", { value: "", children: "Select..." }, void 0, false, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                    lineNumber: 287,
+                    columnNumber: 17
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("option", { value: "bank_statements", children: "Bank statement analysis (90 days)" }, void 0, false, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                    lineNumber: 288,
+                    columnNumber: 17
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("option", { value: "hems", children: "HEM (Household Expenditure Measure)" }, void 0, false, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                    lineNumber: 289,
+                    columnNumber: 17
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("option", { value: "declared_verified", children: "Declared + verified sample" }, void 0, false, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                    lineNumber: 290,
+                    columnNumber: 17
+                  }, this)
+                ]
+              },
+              void 0,
+              true,
+              {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 282,
+                columnNumber: 15
+              },
+              this
+            )
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+            lineNumber: 278,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+          lineNumber: 247,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { children: [
+          /* @__PURE__ */ jsxDEV("h4", { className: "font-bold text-gray-900 mb-3", children: "3. Existing Liabilities" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+            lineNumber: 297,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "grid md:grid-cols-2 gap-4", children: [
+            /* @__PURE__ */ jsxDEV("div", { children: [
+              /* @__PURE__ */ jsxDEV("label", { className: "block text-sm font-medium text-gray-700 mb-2", children: "Total Monthly Debt Obligations *" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 300,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "relative", children: [
+                /* @__PURE__ */ jsxDEV(DollarSign, { className: "absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                  lineNumber: 304,
+                  columnNumber: 19
+                }, this),
+                /* @__PURE__ */ jsxDEV(
+                  "input",
+                  {
+                    type: "number",
+                    value: formData.verifiedExistingDebts || "",
+                    onChange: (e) => onInputChange("verifiedExistingDebts", e.target.value),
+                    className: "w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600",
+                    placeholder: "1500"
+                  },
+                  void 0,
+                  false,
+                  {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                    lineNumber: 305,
+                    columnNumber: 19
+                  },
+                  this
+                )
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 303,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV("p", { className: "text-xs text-gray-500 mt-1", children: "Include: mortgages, car loans, credit cards, personal loans" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 313,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 299,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { children: /* @__PURE__ */ jsxDEV("label", { className: "flex items-center gap-2 mt-8", children: [
+              /* @__PURE__ */ jsxDEV(
+                "input",
+                {
+                  type: "checkbox",
+                  checked: formData.creditReportObtained || false,
+                  onChange: (e) => onInputChange("creditReportObtained", e.target.checked),
+                  className: "w-4 h-4"
+                },
+                void 0,
+                false,
+                {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                  lineNumber: 317,
+                  columnNumber: 19
+                },
+                this
+              ),
+              /* @__PURE__ */ jsxDEV("span", { className: "text-sm font-medium text-gray-700", children: "Credit report obtained & reviewed" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 323,
+                columnNumber: 19
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 316,
+              columnNumber: 17
+            }, this) }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 315,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+            lineNumber: 298,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+          lineNumber: 296,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { children: [
+          /* @__PURE__ */ jsxDEV("h4", { className: "font-bold text-gray-900 mb-3", children: "4. Loan Purpose & Objectives" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+            lineNumber: 331,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "space-y-3", children: [
+            /* @__PURE__ */ jsxDEV("div", { children: [
+              /* @__PURE__ */ jsxDEV("label", { className: "block text-sm font-medium text-gray-700 mb-2", children: "Purpose of Loan *" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 334,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV(
+                "select",
+                {
+                  value: formData.loanPurpose || "",
+                  onChange: (e) => onInputChange("loanPurpose", e.target.value),
+                  className: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600",
+                  children: [
+                    /* @__PURE__ */ jsxDEV("option", { value: "", children: "Select..." }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                      lineNumber: 342,
+                      columnNumber: 19
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("option", { value: "purchase_ppor", children: "Purchase - Principal Place of Residence" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                      lineNumber: 343,
+                      columnNumber: 19
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("option", { value: "purchase_investment", children: "Purchase - Investment Property" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                      lineNumber: 344,
+                      columnNumber: 19
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("option", { value: "refinance", children: "Refinance Existing Loan" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                      lineNumber: 345,
+                      columnNumber: 19
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("option", { value: "debt_consolidation", children: "Debt Consolidation" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                      lineNumber: 346,
+                      columnNumber: 19
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("option", { value: "renovation", children: "Renovation/Construction" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                      lineNumber: 347,
+                      columnNumber: 19
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("option", { value: "business_purpose", children: "Business Purpose" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                      lineNumber: 348,
+                      columnNumber: 19
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("option", { value: "other", children: "Other" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                      lineNumber: 349,
+                      columnNumber: 19
+                    }, this)
+                  ]
+                },
+                void 0,
+                true,
+                {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                  lineNumber: 337,
+                  columnNumber: 17
+                },
+                this
+              )
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 333,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { children: [
+              /* @__PURE__ */ jsxDEV("label", { className: "block text-sm font-medium text-gray-700 mb-2", children: "Borrower's Requirements & Objectives *" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 353,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV(
+                "textarea",
+                {
+                  value: formData.borrowerObjectives || "",
+                  onChange: (e) => onInputChange("borrowerObjectives", e.target.value),
+                  className: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600",
+                  rows: 3,
+                  placeholder: "Describe what the borrower wants to achieve and why..."
+                },
+                void 0,
+                false,
+                {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                  lineNumber: 356,
+                  columnNumber: 17
+                },
+                this
+              )
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 352,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+            lineNumber: 332,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+          lineNumber: 330,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+        lineNumber: 116,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+      lineNumber: 106,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV(Card, { className: `border-2 ${isUnsuitable ? "border-red-400" : requiresEnhancedAssessment ? "border-orange-400" : "border-green-400"}`, children: [
+      /* @__PURE__ */ jsxDEV(CardHeader, { className: `bg-gradient-to-r ${isUnsuitable ? "from-red-50 to-rose-50" : requiresEnhancedAssessment ? "from-orange-50 to-yellow-50" : "from-green-50 to-emerald-50"}`, children: [
+        /* @__PURE__ */ jsxDEV(CardTitle, { className: "text-lg flex items-center gap-2", children: [
+          /* @__PURE__ */ jsxDEV(Calculator, { className: "w-5 h-5 text-gray-800" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+            lineNumber: 373,
+            columnNumber: 13
+          }, this),
+          "Step B: Unsuitability Assessment (NCCP s131)"
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+          lineNumber: 372,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "text-sm text-gray-600 mt-1", children: "A loan is unsuitable if the borrower cannot repay without substantial hardship, or it doesn't meet their objectives" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+          lineNumber: 376,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+        lineNumber: 371,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV(CardContent, { className: "p-6 space-y-6", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "grid md:grid-cols-3 gap-4", children: [
+          /* @__PURE__ */ jsxDEV("div", { className: `p-4 rounded-lg border-2 ${monthlySurplus >= 0 ? "bg-green-50 border-green-300" : "bg-red-50 border-red-300"}`, children: [
+            /* @__PURE__ */ jsxDEV("div", { className: "flex items-center gap-2 mb-2", children: [
+              monthlySurplus >= 0 ? /* @__PURE__ */ jsxDEV(TrendingUp, { className: "w-5 h-5 text-green-600" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 387,
+                columnNumber: 17
+              }, this) : /* @__PURE__ */ jsxDEV(TrendingDown, { className: "w-5 h-5 text-red-600" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 389,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV("span", { className: "font-bold text-sm text-gray-900", children: "Monthly Surplus/Deficit" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 391,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 385,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("p", { className: `text-2xl font-bold ${monthlySurplus >= 0 ? "text-green-700" : "text-red-700"}`, children: [
+              "$",
+              monthlySurplus.toFixed(2)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 393,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("p", { className: "text-xs text-gray-600 mt-1", children: [
+              "(",
+              surplusPercentage.toFixed(1),
+              "% of income)"
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 396,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+            lineNumber: 384,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: `p-4 rounded-lg border-2 ${debtToIncome <= 40 ? "bg-green-50 border-green-300" : debtToIncome <= 50 ? "bg-orange-50 border-orange-300" : "bg-red-50 border-red-300"}`, children: [
+            /* @__PURE__ */ jsxDEV("div", { className: "flex items-center gap-2 mb-2", children: [
+              /* @__PURE__ */ jsxDEV(DollarSign, { className: "w-5 h-5 text-gray-700" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 404,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV("span", { className: "font-bold text-sm text-gray-900", children: "Debt-to-Income Ratio" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 405,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 403,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("p", { className: `text-2xl font-bold ${debtToIncome <= 40 ? "text-green-700" : debtToIncome <= 50 ? "text-orange-700" : "text-red-700"}`, children: [
+              debtToIncome.toFixed(1),
+              "%"
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 407,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("p", { className: "text-xs text-gray-600 mt-1", children: debtToIncome <= 40 ? "Acceptable" : debtToIncome <= 50 ? "High risk" : "Excessive" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 410,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+            lineNumber: 402,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "p-4 bg-blue-50 rounded-lg border-2 border-blue-300", children: [
+            /* @__PURE__ */ jsxDEV("div", { className: "flex items-center gap-2 mb-2", children: [
+              /* @__PURE__ */ jsxDEV(DollarSign, { className: "w-5 h-5 text-blue-700" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 418,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV("span", { className: "font-bold text-sm text-gray-900", children: "Monthly Repayment" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 419,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 417,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("p", { className: "text-2xl font-bold text-blue-700", children: [
+              "$",
+              monthlyRepayment.toFixed(2)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 421,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("p", { className: "text-xs text-gray-600 mt-1", children: [
+              "@ ",
+              interestRate,
+              "% over ",
+              loanTerm,
+              " years"
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 424,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+            lineNumber: 416,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+          lineNumber: 382,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "p-4 bg-gray-50 rounded-lg border border-gray-300", children: [
+          /* @__PURE__ */ jsxDEV("p", { className: "font-bold text-sm text-gray-900 mb-3", children: "Serviceability Calculation:" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+            lineNumber: 432,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "space-y-2 text-sm", children: [
+            /* @__PURE__ */ jsxDEV("div", { className: "flex justify-between", children: [
+              /* @__PURE__ */ jsxDEV("span", { className: "text-gray-700", children: "Verified Monthly Income:" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 435,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV("span", { className: "font-semibold text-green-700", children: [
+                "+$",
+                monthlyIncome.toFixed(2)
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 436,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 434,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { className: "flex justify-between", children: [
+              /* @__PURE__ */ jsxDEV("span", { className: "text-gray-700", children: "Living Expenses:" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 439,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV("span", { className: "font-semibold text-red-700", children: [
+                "-$",
+                monthlyExpenses.toFixed(2)
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 440,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 438,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { className: "flex justify-between", children: [
+              /* @__PURE__ */ jsxDEV("span", { className: "text-gray-700", children: "Existing Debt Obligations:" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 443,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV("span", { className: "font-semibold text-red-700", children: [
+                "-$",
+                existingDebts.toFixed(2)
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 444,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 442,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { className: "flex justify-between", children: [
+              /* @__PURE__ */ jsxDEV("span", { className: "text-gray-700", children: "Proposed Loan Repayment:" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 447,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV("span", { className: "font-semibold text-red-700", children: [
+                "-$",
+                monthlyRepayment.toFixed(2)
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 448,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 446,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { className: "pt-2 border-t-2 border-gray-300 flex justify-between", children: [
+              /* @__PURE__ */ jsxDEV("span", { className: "font-bold text-gray-900", children: "Net Monthly Position:" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 451,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV("span", { className: `font-bold text-lg ${monthlySurplus >= 0 ? "text-green-700" : "text-red-700"}`, children: [
+                "$",
+                monthlySurplus.toFixed(2)
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 452,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 450,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+            lineNumber: 433,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+          lineNumber: 431,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: `p-5 rounded-lg border-2 ${isUnsuitable ? "bg-red-50 border-red-400" : requiresEnhancedAssessment ? "bg-orange-50 border-orange-400" : "bg-green-50 border-green-400"}`, children: /* @__PURE__ */ jsxDEV("div", { className: "flex items-start gap-3", children: [
+          isUnsuitable ? /* @__PURE__ */ jsxDEV(XCircle, { className: "w-6 h-6 text-red-600 mt-0.5 flex-shrink-0" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+            lineNumber: 463,
+            columnNumber: 15
+          }, this) : requiresEnhancedAssessment ? /* @__PURE__ */ jsxDEV(AlertCircle, { className: "w-6 h-6 text-orange-600 mt-0.5 flex-shrink-0" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+            lineNumber: 465,
+            columnNumber: 15
+          }, this) : /* @__PURE__ */ jsxDEV(CheckCircle, { className: "w-6 h-6 text-green-600 mt-0.5 flex-shrink-0" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+            lineNumber: 467,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { children: [
+            /* @__PURE__ */ jsxDEV("p", { className: `font-bold text-base mb-2 ${isUnsuitable ? "text-red-900" : requiresEnhancedAssessment ? "text-orange-900" : "text-green-900"}`, children: isUnsuitable ? "❌ LOAN APPEARS UNSUITABLE" : requiresEnhancedAssessment ? "⚠️ ENHANCED ASSESSMENT REQUIRED" : "✅ LOAN APPEARS SUITABLE" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 470,
+              columnNumber: 17
+            }, this),
+            /* @__PURE__ */ jsxDEV("p", { className: `text-sm mb-3 ${isUnsuitable ? "text-red-800" : requiresEnhancedAssessment ? "text-orange-800" : "text-green-800"}`, children: isUnsuitable ? "This loan would likely cause substantial hardship to the borrower. Lending is not recommended under NCCP s131." : requiresEnhancedAssessment ? "Debt-to-income ratio or surplus is borderline. Enhanced assessment and additional scrutiny required before approval." : "Borrower appears able to meet repayments without substantial hardship based on verified information." }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 473,
+              columnNumber: 17
+            }, this),
+            isUnsuitable && /* @__PURE__ */ jsxDEV("div", { className: "bg-white/60 p-3 rounded border border-red-300 text-xs text-red-900", children: [
+              /* @__PURE__ */ jsxDEV("p", { className: "font-bold mb-1", children: "⚖️ NCCP Breach Risk:" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 482,
+                columnNumber: 21
+              }, this),
+              /* @__PURE__ */ jsxDEV("p", { children: "Approving this loan may breach responsible lending obligations under s117-133 of the NCCP Act 2009. ASIC may take enforcement action. Borrower may have grounds for hardship variation or complaint to AFCA." }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+                lineNumber: 483,
+                columnNumber: 21
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 481,
+              columnNumber: 17
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+            lineNumber: 469,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+          lineNumber: 461,
+          columnNumber: 13
+        }, this) }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+          lineNumber: 460,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { children: [
+          /* @__PURE__ */ jsxDEV("label", { className: "block text-sm font-medium text-gray-700 mb-2", children: "Documented Suitability Assessment * (Required by NCCP s133)" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+            lineNumber: 493,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV(
+            "textarea",
+            {
+              value: formData.suitabilityAssessmentNotes || "",
+              onChange: (e) => onInputChange("suitabilityAssessmentNotes", e.target.value),
+              className: "w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600",
+              rows: 4,
+              placeholder: "Document your assessment of suitability, including consideration of hardship risk, debt servicing capacity, and whether the loan meets the borrower's objectives..."
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+              lineNumber: 496,
+              columnNumber: 13
+            },
+            this
+          ),
+          /* @__PURE__ */ jsxDEV("p", { className: "text-xs text-gray-500 mt-1", children: "This assessment must be retained for 7 years and may be requested by ASIC or in a dispute." }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+            lineNumber: 503,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+          lineNumber: 492,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+        lineNumber: 380,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+      lineNumber: 370,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx",
+    lineNumber: 75,
+    columnNumber: 5
+  }, this);
+}
+_c = ResponsibleLendingAssessment;
+var _c;
+$RefreshReg$(_c, "ResponsibleLendingAssessment");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/ResponsibleLendingAssessment.tsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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QUNpQixLQXhkZTlDO0FBQTRCLElBQUE4QztBQUFBLGFBQUFBLElBQUEiLCJuYW1lcyI6WyJDYXJkIiwiQ2FyZENvbnRlbnQiLCJDYXJkSGVhZGVyIiwiQ2FyZFRpdGxlIiwiQWxlcnRDaXJjbGUiLCJDaGVja0NpcmNsZSIsIlhDaXJjbGUiLCJEb2xsYXJTaWduIiwiVHJlbmRpbmdEb3duIiwiVHJlbmRpbmdVcCIsIlNoaWVsZCIsIkZpbGVUZXh0IiwiQ2FsY3VsYXRvciIsIlJlc3BvbnNpYmxlTGVuZGluZ0Fzc2Vzc21lbnQiLCJmb3JtRGF0YSIsIm9uSW5wdXRDaGFuZ2UiLCJtb250aGx5SW5jb21lIiwicGFyc2VGbG9hdCIsInZlcmlmaWVkTW9udGhseUluY29tZSIsIm1vbnRobHlFeHBlbnNlcyIsInZlcmlmaWVkTW9udGhseUV4cGVuc2VzIiwiZXhpc3RpbmdEZWJ0cyIsInZlcmlmaWVkRXhpc3RpbmdEZWJ0cyIsInByb3Bvc2VkTG9hbkFtb3VudCIsIm9yaWdpbmFsTG9hbkFtb3VudCIsImludGVyZXN0UmF0ZSIsImxvYW5UZXJtIiwibG9hblRlcm1ZZWFycyIsIm1vbnRobHlSYXRlIiwibnVtUGF5bWVudHMiLCJtb250aGx5UmVwYXltZW50IiwiTWF0aCIsInBvdyIsInRvdGFsTW9udGhseU9ibGlnYXRpb25zIiwibW9udGhseVN1cnBsdXMiLCJzdXJwbHVzUGVyY2VudGFnZSIsImRlYnRUb0luY29tZSIsImlzVW5zdWl0YWJsZSIsInJlcXVpcmVzRW5oYW5jZWRBc3Nlc3NtZW50IiwiZW1wbG95bWVudFR5cGUiLCJlIiwidGFyZ2V0IiwidmFsdWUiLCJwYXlzbGlwc1ZlcmlmaWVkIiwiY2hlY2tlZCIsImVtcGxveW1lbnRMZXR0ZXJWZXJpZmllZCIsImJhbmtTdGF0ZW1lbnRzSW5jb21lVmVyaWZpZWQiLCJ0YXhSZXR1cm5zVmVyaWZpZWQiLCJub2FWZXJpZmllZCIsImZpbmFuY2lhbFN0YXRlbWVudHNWZXJpZmllZCIsImJhc1ZlcmlmaWVkIiwiYWNjb3VudGFudExldHRlclZlcmlmaWVkIiwibnVtYmVyT2ZEZXBlbmRlbnRzIiwiZXhwZW5zZVZlcmlmaWNhdGlvbk1ldGhvZCIsImNyZWRpdFJlcG9ydE9idGFpbmVkIiwibG9hblB1cnBvc2UiLCJib3Jyb3dlck9iamVjdGl2ZXMiLCJ0b0ZpeGVkIiwic3VpdGFiaWxpdHlBc3Nlc3NtZW50Tm90ZXMiLCJfYyJdLCJpZ25vcmVMaXN0IjpbXSwic291cmNlcyI6WyJSZXNwb25zaWJsZUxlbmRpbmdBc3Nlc3NtZW50LnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnO1xuaW1wb3J0IHsgQ2FyZCwgQ2FyZENvbnRlbnQsIENhcmRIZWFkZXIsIENhcmRUaXRsZSB9IGZyb20gJy4uL3VpL2NhcmQnO1xuaW1wb3J0IHsgXG4gIEFsZXJ0Q2lyY2xlLCBcbiAgQ2hlY2tDaXJjbGUsIFxuICBYQ2lyY2xlLFxuICBEb2xsYXJTaWduLFxuICBUcmVuZGluZ0Rvd24sXG4gIFRyZW5kaW5nVXAsXG4gIFNoaWVsZCxcbiAgRmlsZVRleHQsXG4gIENhbGN1bGF0b3Jcbn0gZnJvbSAnbHVjaWRlLXJlYWN0JztcblxuaW50ZXJmYWNlIFJlc3BvbnNpYmxlTGVuZGluZ0Fzc2Vzc21lbnRQcm9wcyB7XG4gIGZvcm1EYXRhOiBhbnk7XG4gIG9uSW5wdXRDaGFuZ2U6IChmaWVsZDogc3RyaW5nLCB2YWx1ZTogYW55KSA9PiB2b2lkO1xufVxuXG5leHBvcnQgZnVuY3Rpb24gUmVzcG9uc2libGVMZW5kaW5nQXNzZXNzbWVudCh7IFxuICBmb3JtRGF0YSwgXG4gIG9uSW5wdXRDaGFuZ2UgXG59OiBSZXNwb25zaWJsZUxlbmRpbmdBc3Nlc3NtZW50UHJvcHMpIHtcbiAgXG4gIC8vIENhbGN1bGF0ZSBrZXkgbWV0cmljc1xuICBjb25zdCBtb250aGx5SW5jb21lID0gcGFyc2VGbG9hdChmb3JtRGF0YS52ZXJpZmllZE1vbnRobHlJbmNvbWUgfHwgJzAnKTtcbiAgY29uc3QgbW9udGhseUV4cGVuc2VzID0gcGFyc2VGbG9hdChmb3JtRGF0YS52ZXJpZmllZE1vbnRobHlFeHBlbnNlcyB8fCAnMCcpO1xuICBjb25zdCBleGlzdGluZ0RlYnRzID0gcGFyc2VGbG9hdChmb3JtRGF0YS52ZXJpZmllZEV4aXN0aW5nRGVidHMgfHwgJzAnKTtcbiAgY29uc3QgcHJvcG9zZWRMb2FuQW1vdW50ID0gcGFyc2VGbG9hdChmb3JtRGF0YS5vcmlnaW5hbExvYW5BbW91bnQgfHwgJzAnKTtcbiAgY29uc3QgaW50ZXJlc3RSYXRlID0gcGFyc2VGbG9hdChmb3JtRGF0YS5pbnRlcmVzdFJhdGUgfHwgJzYuNScpO1xuICBjb25zdCBsb2FuVGVybSA9IHBhcnNlRmxvYXQoZm9ybURhdGEubG9hblRlcm1ZZWFycyB8fCAnMzAnKTtcbiAgXG4gIC8vIENhbGN1bGF0ZSBtb250aGx5IHJlcGF5bWVudFxuICBjb25zdCBtb250aGx5UmF0ZSA9IGludGVyZXN0UmF0ZSAvIDEwMCAvIDEyO1xuICBjb25zdCBudW1QYXltZW50cyA9IGxvYW5UZXJtICogMTI7XG4gIGNvbnN0IG1vbnRobHlSZXBheW1lbnQgPSBwcm9wb3NlZExvYW5BbW91bnQgPiAwIFxuICAgID8gKHByb3Bvc2VkTG9hbkFtb3VudCAqIG1vbnRobHlSYXRlICogTWF0aC5wb3coMSArIG1vbnRobHlSYXRlLCBudW1QYXltZW50cykpIC8gXG4gICAgICAoTWF0aC5wb3coMSArIG1vbnRobHlSYXRlLCBudW1QYXltZW50cykgLSAxKVxuICAgIDogMDtcbiAgXG4gIC8vIENhbGN1bGF0ZSBzdXJwbHVzL2RlZmljaXRcbiAgY29uc3QgdG90YWxNb250aGx5T2JsaWdhdGlvbnMgPSBtb250aGx5RXhwZW5zZXMgKyBleGlzdGluZ0RlYnRzICsgbW9udGhseVJlcGF5bWVudDtcbiAgY29uc3QgbW9udGhseVN1cnBsdXMgPSBtb250aGx5SW5jb21lIC0gdG90YWxNb250aGx5T2JsaWdhdGlvbnM7XG4gIGNvbnN0IHN1cnBsdXNQZXJjZW50YWdlID0gbW9udGhseUluY29tZSA+IDAgPyAobW9udGhseVN1cnBsdXMgLyBtb250aGx5SW5jb21lKSAqIDEwMCA6IDA7XG4gIFxuICAvLyBEZWJ0LXRvLWluY29tZSByYXRpb1xuICBjb25zdCBkZWJ0VG9JbmNvbWUgPSBtb250aGx5SW5jb21lID4gMCBcbiAgICA/ICgoZXhpc3RpbmdEZWJ0cyArIG1vbnRobHlSZXBheW1lbnQpIC8gbW9udGhseUluY29tZSkgKiAxMDAgXG4gICAgOiAwO1xuICBcbiAgLy8gRGV0ZXJtaW5lIHN1aXRhYmlsaXR5XG4gIGNvbnN0IGlzVW5zdWl0YWJsZSA9IG1vbnRobHlTdXJwbHVzIDwgMCB8fCBkZWJ0VG9JbmNvbWUgPiA1MCB8fCBzdXJwbHVzUGVyY2VudGFnZSA8IDIwO1xuICBjb25zdCByZXF1aXJlc0VuaGFuY2VkQXNzZXNzbWVudCA9IGRlYnRUb0luY29tZSA+IDQwIHx8IHN1cnBsdXNQZXJjZW50YWdlIDwgMzA7XG4gIFxuICByZXR1cm4gKFxuICAgIDxkaXYgY2xhc3NOYW1lPVwic3BhY2UteS02XCI+XG4gICAgICB7LyogTkNDUCBXYXJuaW5nIEJhbm5lciAqL31cbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwicC01IGJnLWdyYWRpZW50LXRvLWJyIGZyb20tcmVkLTUwIHRvLW9yYW5nZS01MCBib3JkZXItMiBib3JkZXItcmVkLTQwMCByb3VuZGVkLWxnXCI+XG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1zdGFydCBnYXAtM1wiPlxuICAgICAgICAgIDxTaGllbGQgY2xhc3NOYW1lPVwidy02IGgtNiB0ZXh0LXJlZC03MDAgbXQtMC41IGZsZXgtc2hyaW5rLTBcIiAvPlxuICAgICAgICAgIDxkaXY+XG4gICAgICAgICAgICA8aDQgY2xhc3NOYW1lPVwiZm9udC1ib2xkIHRleHQtcmVkLTkwMCB0ZXh0LWJhc2UgbWItMlwiPuKalu+4jyBOYXRpb25hbCBDb25zdW1lciBDcmVkaXQgUHJvdGVjdGlvbiBBY3QgMjAwOTwvaDQ+XG4gICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJ0ZXh0LXNtIHRleHQtcmVkLTgwMCBtYi0zXCI+XG4gICAgICAgICAgICAgIFRoaXMgaXMgcmVndWxhdGVkIGNvbnN1bWVyIGNyZWRpdC4gQWxsIE5DQ1AgcmVzcG9uc2libGUgbGVuZGluZyBvYmxpZ2F0aW9ucyBhcHBseS5cbiAgICAgICAgICAgIDwvcD5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZ3JpZCBtZDpncmlkLWNvbHMtMiBnYXAtMyB0ZXh0LXhzXCI+XG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYmctd2hpdGUvNjAgcC0zIHJvdW5kZWQgYm9yZGVyIGJvcmRlci1yZWQtMzAwXCI+XG4gICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwiZm9udC1ib2xkIHRleHQtcmVkLTkwMCBtYi0xXCI+4pyTIExlbmRlciBNdXN0IEhvbGQ6PC9wPlxuICAgICAgICAgICAgICAgIDx1bCBjbGFzc05hbWU9XCJzcGFjZS15LTEgdGV4dC1yZWQtODAwXCI+XG4gICAgICAgICAgICAgICAgICA8bGk+4oCiIEF1c3RyYWxpYW4gQ3JlZGl0IExpY2VuY2UgKEFDTCksIE9SPC9saT5cbiAgICAgICAgICAgICAgICAgIDxsaT7igKIgQXV0aG9yaXNlZCBDcmVkaXQgUmVwcmVzZW50YXRpdmUgc3RhdHVzPC9saT5cbiAgICAgICAgICAgICAgICA8L3VsPlxuICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJiZy13aGl0ZS82MCBwLTMgcm91bmRlZCBib3JkZXIgYm9yZGVyLXJlZC0zMDBcIj5cbiAgICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJmb250LWJvbGQgdGV4dC1yZWQtOTAwIG1iLTFcIj7inJMgQVNJQyBDb21wbGlhbmNlOjwvcD5cbiAgICAgICAgICAgICAgICA8dWwgY2xhc3NOYW1lPVwic3BhY2UteS0xIHRleHQtcmVkLTgwMFwiPlxuICAgICAgICAgICAgICAgICAgPGxpPuKAoiBSRyAyMDk6IENyZWRpdCBsaWNlbnNpbmcgZ3VpZGU8L2xpPlxuICAgICAgICAgICAgICAgICAgPGxpPuKAoiBSRyAyMDk6IFJlc3BvbnNpYmxlIGxlbmRpbmcgY29uZHVjdDwvbGk+XG4gICAgICAgICAgICAgICAgPC91bD5cbiAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgPC9kaXY+XG4gICAgICA8L2Rpdj5cblxuICAgICAgey8qIFN0ZXAgQTogTWFrZSBSZWFzb25hYmxlIElucXVpcmllcyAqL31cbiAgICAgIDxDYXJkIGNsYXNzTmFtZT1cImJvcmRlci0yIGJvcmRlci1ibHVlLTMwMFwiPlxuICAgICAgICA8Q2FyZEhlYWRlciBjbGFzc05hbWU9XCJiZy1ncmFkaWVudC10by1yIGZyb20tYmx1ZS01MCB0by1pbmRpZ28tNTBcIj5cbiAgICAgICAgICA8Q2FyZFRpdGxlIGNsYXNzTmFtZT1cInRleHQtbGcgZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTJcIj5cbiAgICAgICAgICAgIDxGaWxlVGV4dCBjbGFzc05hbWU9XCJ3LTUgaC01IHRleHQtYmx1ZS02MDBcIiAvPlxuICAgICAgICAgICAgU3RlcCBBOiBNYWtlIFJlYXNvbmFibGUgSW5xdWlyaWVzIChOQ0NQIHMxMTcpXG4gICAgICAgICAgPC9DYXJkVGl0bGU+XG4gICAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC1zbSB0ZXh0LWdyYXktNjAwIG10LTFcIj5cbiAgICAgICAgICAgIEJlZm9yZSBhcHByb3ZpbmcgdGhlIGxvYW4sIGlucXVpcmUgYWJvdXQgdGhlIGJvcnJvd2VyJ3MgZmluYW5jaWFsIHNpdHVhdGlvblxuICAgICAgICAgIDwvcD5cbiAgICAgICAgPC9DYXJkSGVhZGVyPlxuICAgICAgICA8Q2FyZENvbnRlbnQgY2xhc3NOYW1lPVwicC02IHNwYWNlLXktNlwiPlxuICAgICAgICAgIHsvKiBJbmNvbWUgRGV0YWlscyAqL31cbiAgICAgICAgICA8ZGl2PlxuICAgICAgICAgICAgPGg0IGNsYXNzTmFtZT1cImZvbnQtYm9sZCB0ZXh0LWdyYXktOTAwIG1iLTNcIj4xLiBJbmNvbWUgVmVyaWZpY2F0aW9uPC9oND5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZ3JpZCBtZDpncmlkLWNvbHMtMiBnYXAtNFwiPlxuICAgICAgICAgICAgICA8ZGl2PlxuICAgICAgICAgICAgICAgIDxsYWJlbCBjbGFzc05hbWU9XCJibG9jayB0ZXh0LXNtIGZvbnQtbWVkaXVtIHRleHQtZ3JheS03MDAgbWItMlwiPlxuICAgICAgICAgICAgICAgICAgRW1wbG95bWVudCBUeXBlICpcbiAgICAgICAgICAgICAgICA8L2xhYmVsPlxuICAgICAgICAgICAgICAgIDxzZWxlY3RcbiAgICAgICAgICAgICAgICAgIHZhbHVlPXtmb3JtRGF0YS5lbXBsb3ltZW50VHlwZSB8fCAnJ31cbiAgICAgICAgICAgICAgICAgIG9uQ2hhbmdlPXsoZSkgPT4gb25JbnB1dENoYW5nZSgnZW1wbG95bWVudFR5cGUnLCBlLnRhcmdldC52YWx1ZSl9XG4gICAgICAgICAgICAgICAgICBjbGFzc05hbWU9XCJ3LWZ1bGwgcHgtMyBweS0yIGJvcmRlciBib3JkZXItZ3JheS0zMDAgcm91bmRlZC1sZyBmb2N1czpvdXRsaW5lLW5vbmUgZm9jdXM6cmluZy0yIGZvY3VzOnJpbmctYmx1ZS02MDBcIlxuICAgICAgICAgICAgICAgID5cbiAgICAgICAgICAgICAgICAgIDxvcHRpb24gdmFsdWU9XCJcIj5TZWxlY3QuLi48L29wdGlvbj5cbiAgICAgICAgICAgICAgICAgIDxvcHRpb24gdmFsdWU9XCJwYXlnXCI+UEFZRyBFbXBsb3llZTwvb3B0aW9uPlxuICAgICAgICAgICAgICAgICAgPG9wdGlvbiB2YWx1ZT1cInNlbGZfZW1wbG95ZWRcIj5TZWxmIEVtcGxveWVkPC9vcHRpb24+XG4gICAgICAgICAgICAgICAgICA8b3B0aW9uIHZhbHVlPVwiYnVzaW5lc3Nfb3duZXJcIj5CdXNpbmVzcyBPd25lcjwvb3B0aW9uPlxuICAgICAgICAgICAgICAgICAgPG9wdGlvbiB2YWx1ZT1cImNhc3VhbFwiPkNhc3VhbDwvb3B0aW9uPlxuICAgICAgICAgICAgICAgICAgPG9wdGlvbiB2YWx1ZT1cImNvbnRyYWN0b3JcIj5Db250cmFjdG9yPC9vcHRpb24+XG4gICAgICAgICAgICAgICAgICA8b3B0aW9uIHZhbHVlPVwicmV0aXJlZFwiPlJldGlyZWQ8L29wdGlvbj5cbiAgICAgICAgICAgICAgICAgIDxvcHRpb24gdmFsdWU9XCJvdGhlclwiPk90aGVyPC9vcHRpb24+XG4gICAgICAgICAgICAgICAgPC9zZWxlY3Q+XG4gICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICBcbiAgICAgICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgICAgICA8bGFiZWwgY2xhc3NOYW1lPVwiYmxvY2sgdGV4dC1zbSBmb250LW1lZGl1bSB0ZXh0LWdyYXktNzAwIG1iLTJcIj5cbiAgICAgICAgICAgICAgICAgIFZlcmlmaWVkIEdyb3NzIE1vbnRobHkgSW5jb21lICogXG4gICAgICAgICAgICAgICAgPC9sYWJlbD5cbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInJlbGF0aXZlXCI+XG4gICAgICAgICAgICAgICAgICA8RG9sbGFyU2lnbiBjbGFzc05hbWU9XCJhYnNvbHV0ZSBsZWZ0LTMgdG9wLTEvMiB0cmFuc2Zvcm0gLXRyYW5zbGF0ZS15LTEvMiB3LTQgaC00IHRleHQtZ3JheS00MDBcIiAvPlxuICAgICAgICAgICAgICAgICAgPGlucHV0XG4gICAgICAgICAgICAgICAgICAgIHR5cGU9XCJudW1iZXJcIlxuICAgICAgICAgICAgICAgICAgICB2YWx1ZT17Zm9ybURhdGEudmVyaWZpZWRNb250aGx5SW5jb21lIHx8ICcnfVxuICAgICAgICAgICAgICAgICAgICBvbkNoYW5nZT17KGUpID0+IG9uSW5wdXRDaGFuZ2UoJ3ZlcmlmaWVkTW9udGhseUluY29tZScsIGUudGFyZ2V0LnZhbHVlKX1cbiAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lPVwidy1mdWxsIHBsLTEwIHByLTMgcHktMiBib3JkZXIgYm9yZGVyLWdyYXktMzAwIHJvdW5kZWQtbGcgZm9jdXM6b3V0bGluZS1ub25lIGZvY3VzOnJpbmctMiBmb2N1czpyaW5nLWJsdWUtNjAwXCJcbiAgICAgICAgICAgICAgICAgICAgcGxhY2Vob2xkZXI9XCI4NTAwXCJcbiAgICAgICAgICAgICAgICAgIC8+XG4gICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICBcbiAgICAgICAgICAgIHsvKiBWZXJpZmljYXRpb24gRG9jdW1lbnRzIENoZWNrbGlzdCAqL31cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwibXQtNCBwLTQgYmctYmx1ZS01MCBib3JkZXIgYm9yZGVyLWJsdWUtMjAwIHJvdW5kZWQtbGdcIj5cbiAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC14cyBmb250LWJvbGQgdGV4dC1ibHVlLTkwMCBtYi0yXCI+UmVxdWlyZWQgVmVyaWZpY2F0aW9uIERvY3VtZW50czo8L3A+XG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZ3JpZCBtZDpncmlkLWNvbHMtMiBnYXAtMiB0ZXh0LXhzXCI+XG4gICAgICAgICAgICAgICAge2Zvcm1EYXRhLmVtcGxveW1lbnRUeXBlID09PSAncGF5ZycgJiYgKFxuICAgICAgICAgICAgICAgICAgPD5cbiAgICAgICAgICAgICAgICAgICAgPGxhYmVsIGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIGdhcC0yXCI+XG4gICAgICAgICAgICAgICAgICAgICAgPGlucHV0IFxuICAgICAgICAgICAgICAgICAgICAgICAgdHlwZT1cImNoZWNrYm94XCIgXG4gICAgICAgICAgICAgICAgICAgICAgICBjaGVja2VkPXtmb3JtRGF0YS5wYXlzbGlwc1ZlcmlmaWVkIHx8IGZhbHNlfVxuICAgICAgICAgICAgICAgICAgICAgICAgb25DaGFuZ2U9eyhlKSA9PiBvbklucHV0Q2hhbmdlKCdwYXlzbGlwc1ZlcmlmaWVkJywgZS50YXJnZXQuY2hlY2tlZCl9XG4gICAgICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU9XCJ3LTQgaC00XCJcbiAgICAgICAgICAgICAgICAgICAgICAvPlxuICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRleHQtYmx1ZS05MDBcIj5SZWNlbnQgcGF5c2xpcHMgKDMgbW9udGhzKTwvc3Bhbj5cbiAgICAgICAgICAgICAgICAgICAgPC9sYWJlbD5cbiAgICAgICAgICAgICAgICAgICAgPGxhYmVsIGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIGdhcC0yXCI+XG4gICAgICAgICAgICAgICAgICAgICAgPGlucHV0IFxuICAgICAgICAgICAgICAgICAgICAgICAgdHlwZT1cImNoZWNrYm94XCJcbiAgICAgICAgICAgICAgICAgICAgICAgIGNoZWNrZWQ9e2Zvcm1EYXRhLmVtcGxveW1lbnRMZXR0ZXJWZXJpZmllZCB8fCBmYWxzZX1cbiAgICAgICAgICAgICAgICAgICAgICAgIG9uQ2hhbmdlPXsoZSkgPT4gb25JbnB1dENoYW5nZSgnZW1wbG95bWVudExldHRlclZlcmlmaWVkJywgZS50YXJnZXQuY2hlY2tlZCl9XG4gICAgICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU9XCJ3LTQgaC00XCJcbiAgICAgICAgICAgICAgICAgICAgICAvPlxuICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRleHQtYmx1ZS05MDBcIj5FbXBsb3ltZW50IGxldHRlcjwvc3Bhbj5cbiAgICAgICAgICAgICAgICAgICAgPC9sYWJlbD5cbiAgICAgICAgICAgICAgICAgICAgPGxhYmVsIGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIGdhcC0yXCI+XG4gICAgICAgICAgICAgICAgICAgICAgPGlucHV0IFxuICAgICAgICAgICAgICAgICAgICAgICAgdHlwZT1cImNoZWNrYm94XCJcbiAgICAgICAgICAgICAgICAgICAgICAgIGNoZWNrZWQ9e2Zvcm1EYXRhLmJhbmtTdGF0ZW1lbnRzSW5jb21lVmVyaWZpZWQgfHwgZmFsc2V9XG4gICAgICAgICAgICAgICAgICAgICAgICBvbkNoYW5nZT17KGUpID0+IG9uSW5wdXRDaGFuZ2UoJ2JhbmtTdGF0ZW1lbnRzSW5jb21lVmVyaWZpZWQnLCBlLnRhcmdldC5jaGVja2VkKX1cbiAgICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT1cInctNCBoLTRcIlxuICAgICAgICAgICAgICAgICAgICAgIC8+XG4gICAgICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwidGV4dC1ibHVlLTkwMFwiPkJhbmsgc3RhdGVtZW50cyAoMyBtb250aHMpPC9zcGFuPlxuICAgICAgICAgICAgICAgICAgICA8L2xhYmVsPlxuICAgICAgICAgICAgICAgICAgPC8+XG4gICAgICAgICAgICAgICAgKX1cbiAgICAgICAgICAgICAgICB7KGZvcm1EYXRhLmVtcGxveW1lbnRUeXBlID09PSAnc2VsZl9lbXBsb3llZCcgfHwgZm9ybURhdGEuZW1wbG95bWVudFR5cGUgPT09ICdidXNpbmVzc19vd25lcicpICYmIChcbiAgICAgICAgICAgICAgICAgIDw+XG4gICAgICAgICAgICAgICAgICAgIDxsYWJlbCBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMlwiPlxuICAgICAgICAgICAgICAgICAgICAgIDxpbnB1dCBcbiAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU9XCJjaGVja2JveFwiXG4gICAgICAgICAgICAgICAgICAgICAgICBjaGVja2VkPXtmb3JtRGF0YS50YXhSZXR1cm5zVmVyaWZpZWQgfHwgZmFsc2V9XG4gICAgICAgICAgICAgICAgICAgICAgICBvbkNoYW5nZT17KGUpID0+IG9uSW5wdXRDaGFuZ2UoJ3RheFJldHVybnNWZXJpZmllZCcsIGUudGFyZ2V0LmNoZWNrZWQpfVxuICAgICAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lPVwidy00IGgtNFwiXG4gICAgICAgICAgICAgICAgICAgICAgLz5cbiAgICAgICAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJ0ZXh0LWJsdWUtOTAwXCI+VGF4IHJldHVybnMgKDIgeWVhcnMpPC9zcGFuPlxuICAgICAgICAgICAgICAgICAgICA8L2xhYmVsPlxuICAgICAgICAgICAgICAgICAgICA8bGFiZWwgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTJcIj5cbiAgICAgICAgICAgICAgICAgICAgICA8aW5wdXQgXG4gICAgICAgICAgICAgICAgICAgICAgICB0eXBlPVwiY2hlY2tib3hcIlxuICAgICAgICAgICAgICAgICAgICAgICAgY2hlY2tlZD17Zm9ybURhdGEubm9hVmVyaWZpZWQgfHwgZmFsc2V9XG4gICAgICAgICAgICAgICAgICAgICAgICBvbkNoYW5nZT17KGUpID0+IG9uSW5wdXRDaGFuZ2UoJ25vYVZlcmlmaWVkJywgZS50YXJnZXQuY2hlY2tlZCl9XG4gICAgICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU9XCJ3LTQgaC00XCJcbiAgICAgICAgICAgICAgICAgICAgICAvPlxuICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRleHQtYmx1ZS05MDBcIj5Ob3RpY2VzIG9mIEFzc2Vzc21lbnQgKDIgeWVhcnMpPC9zcGFuPlxuICAgICAgICAgICAgICAgICAgICA8L2xhYmVsPlxuICAgICAgICAgICAgICAgICAgICA8bGFiZWwgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTJcIj5cbiAgICAgICAgICAgICAgICAgICAgICA8aW5wdXQgXG4gICAgICAgICAgICAgICAgICAgICAgICB0eXBlPVwiY2hlY2tib3hcIlxuICAgICAgICAgICAgICAgICAgICAgICAgY2hlY2tlZD17Zm9ybURhdGEuZmluYW5jaWFsU3RhdGVtZW50c1ZlcmlmaWVkIHx8IGZhbHNlfVxuICAgICAgICAgICAgICAgICAgICAgICAgb25DaGFuZ2U9eyhlKSA9PiBvbklucHV0Q2hhbmdlKCdmaW5hbmNpYWxTdGF0ZW1lbnRzVmVyaWZpZWQnLCBlLnRhcmdldC5jaGVja2VkKX1cbiAgICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT1cInctNCBoLTRcIlxuICAgICAgICAgICAgICAgICAgICAgIC8+XG4gICAgICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwidGV4dC1ibHVlLTkwMFwiPkZpbmFuY2lhbCBzdGF0ZW1lbnRzPC9zcGFuPlxuICAgICAgICAgICAgICAgICAgICA8L2xhYmVsPlxuICAgICAgICAgICAgICAgICAgICA8bGFiZWwgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTJcIj5cbiAgICAgICAgICAgICAgICAgICAgICA8aW5wdXQgXG4gICAgICAgICAgICAgICAgICAgICAgICB0eXBlPVwiY2hlY2tib3hcIlxuICAgICAgICAgICAgICAgICAgICAgICAgY2hlY2tlZD17Zm9ybURhdGEuYmFzVmVyaWZpZWQgfHwgZmFsc2V9XG4gICAgICAgICAgICAgICAgICAgICAgICBvbkNoYW5nZT17KGUpID0+IG9uSW5wdXRDaGFuZ2UoJ2Jhc1ZlcmlmaWVkJywgZS50YXJnZXQuY2hlY2tlZCl9XG4gICAgICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU9XCJ3LTQgaC00XCJcbiAgICAgICAgICAgICAgICAgICAgICAvPlxuICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRleHQtYmx1ZS05MDBcIj5CQVMgc3RhdGVtZW50czwvc3Bhbj5cbiAgICAgICAgICAgICAgICAgICAgPC9sYWJlbD5cbiAgICAgICAgICAgICAgICAgICAgPGxhYmVsIGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIGdhcC0yXCI+XG4gICAgICAgICAgICAgICAgICAgICAgPGlucHV0IFxuICAgICAgICAgICAgICAgICAgICAgICAgdHlwZT1cImNoZWNrYm94XCJcbiAgICAgICAgICAgICAgICAgICAgICAgIGNoZWNrZWQ9e2Zvcm1EYXRhLmFjY291bnRhbnRMZXR0ZXJWZXJpZmllZCB8fCBmYWxzZX1cbiAgICAgICAgICAgICAgICAgICAgICAgIG9uQ2hhbmdlPXsoZSkgPT4gb25JbnB1dENoYW5nZSgnYWNjb3VudGFudExldHRlclZlcmlmaWVkJywgZS50YXJnZXQuY2hlY2tlZCl9XG4gICAgICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU9XCJ3LTQgaC00XCJcbiAgICAgICAgICAgICAgICAgICAgICAvPlxuICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRleHQtYmx1ZS05MDBcIj5BY2NvdW50YW50IGxldHRlcjwvc3Bhbj5cbiAgICAgICAgICAgICAgICAgICAgPC9sYWJlbD5cbiAgICAgICAgICAgICAgICAgIDwvPlxuICAgICAgICAgICAgICAgICl9XG4gICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICB7LyogRXhwZW5zZXMgKi99XG4gICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgIDxoNCBjbGFzc05hbWU9XCJmb250LWJvbGQgdGV4dC1ncmF5LTkwMCBtYi0zXCI+Mi4gTGl2aW5nIEV4cGVuc2VzIFZlcmlmaWNhdGlvbjwvaDQ+XG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImdyaWQgbWQ6Z3JpZC1jb2xzLTIgZ2FwLTRcIj5cbiAgICAgICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgICAgICA8bGFiZWwgY2xhc3NOYW1lPVwiYmxvY2sgdGV4dC1zbSBmb250LW1lZGl1bSB0ZXh0LWdyYXktNzAwIG1iLTJcIj5cbiAgICAgICAgICAgICAgICAgIFZlcmlmaWVkIE1vbnRobHkgTGl2aW5nIEV4cGVuc2VzICpcbiAgICAgICAgICAgICAgICA8L2xhYmVsPlxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwicmVsYXRpdmVcIj5cbiAgICAgICAgICAgICAgICAgIDxEb2xsYXJTaWduIGNsYXNzTmFtZT1cImFic29sdXRlIGxlZnQtMyB0b3AtMS8yIHRyYW5zZm9ybSAtdHJhbnNsYXRlLXktMS8yIHctNCBoLTQgdGV4dC1ncmF5LTQwMFwiIC8+XG4gICAgICAgICAgICAgICAgICA8aW5wdXRcbiAgICAgICAgICAgICAgICAgICAgdHlwZT1cIm51bWJlclwiXG4gICAgICAgICAgICAgICAgICAgIHZhbHVlPXtmb3JtRGF0YS52ZXJpZmllZE1vbnRobHlFeHBlbnNlcyB8fCAnJ31cbiAgICAgICAgICAgICAgICAgICAgb25DaGFuZ2U9eyhlKSA9PiBvbklucHV0Q2hhbmdlKCd2ZXJpZmllZE1vbnRobHlFeHBlbnNlcycsIGUudGFyZ2V0LnZhbHVlKX1cbiAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lPVwidy1mdWxsIHBsLTEwIHByLTMgcHktMiBib3JkZXIgYm9yZGVyLWdyYXktMzAwIHJvdW5kZWQtbGcgZm9jdXM6b3V0bGluZS1ub25lIGZvY3VzOnJpbmctMiBmb2N1czpyaW5nLWJsdWUtNjAwXCJcbiAgICAgICAgICAgICAgICAgICAgcGxhY2Vob2xkZXI9XCI0MjAwXCJcbiAgICAgICAgICAgICAgICAgIC8+XG4gICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICA8ZGl2PlxuICAgICAgICAgICAgICAgIDxsYWJlbCBjbGFzc05hbWU9XCJibG9jayB0ZXh0LXNtIGZvbnQtbWVkaXVtIHRleHQtZ3JheS03MDAgbWItMlwiPlxuICAgICAgICAgICAgICAgICAgRGVwZW5kZW50c1xuICAgICAgICAgICAgICAgIDwvbGFiZWw+XG4gICAgICAgICAgICAgICAgPGlucHV0XG4gICAgICAgICAgICAgICAgICB0eXBlPVwibnVtYmVyXCJcbiAgICAgICAgICAgICAgICAgIHZhbHVlPXtmb3JtRGF0YS5udW1iZXJPZkRlcGVuZGVudHMgfHwgJzAnfVxuICAgICAgICAgICAgICAgICAgb25DaGFuZ2U9eyhlKSA9PiBvbklucHV0Q2hhbmdlKCdudW1iZXJPZkRlcGVuZGVudHMnLCBlLnRhcmdldC52YWx1ZSl9XG4gICAgICAgICAgICAgICAgICBjbGFzc05hbWU9XCJ3LWZ1bGwgcHgtMyBweS0yIGJvcmRlciBib3JkZXItZ3JheS0zMDAgcm91bmRlZC1sZyBmb2N1czpvdXRsaW5lLW5vbmUgZm9jdXM6cmluZy0yIGZvY3VzOnJpbmctYmx1ZS02MDBcIlxuICAgICAgICAgICAgICAgICAgcGxhY2Vob2xkZXI9XCIyXCJcbiAgICAgICAgICAgICAgICAvPlxuICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJtdC0zXCI+XG4gICAgICAgICAgICAgIDxsYWJlbCBjbGFzc05hbWU9XCJibG9jayB0ZXh0LXNtIGZvbnQtbWVkaXVtIHRleHQtZ3JheS03MDAgbWItMlwiPlxuICAgICAgICAgICAgICAgIEV4cGVuc2UgVmVyaWZpY2F0aW9uIE1ldGhvZCAqXG4gICAgICAgICAgICAgIDwvbGFiZWw+XG4gICAgICAgICAgICAgIDxzZWxlY3RcbiAgICAgICAgICAgICAgICB2YWx1ZT17Zm9ybURhdGEuZXhwZW5zZVZlcmlmaWNhdGlvbk1ldGhvZCB8fCAnJ31cbiAgICAgICAgICAgICAgICBvbkNoYW5nZT17KGUpID0+IG9uSW5wdXRDaGFuZ2UoJ2V4cGVuc2VWZXJpZmljYXRpb25NZXRob2QnLCBlLnRhcmdldC52YWx1ZSl9XG4gICAgICAgICAgICAgICAgY2xhc3NOYW1lPVwidy1mdWxsIHB4LTMgcHktMiBib3JkZXIgYm9yZGVyLWdyYXktMzAwIHJvdW5kZWQtbGcgZm9jdXM6b3V0bGluZS1ub25lIGZvY3VzOnJpbmctMiBmb2N1czpyaW5nLWJsdWUtNjAwXCJcbiAgICAgICAgICAgICAgPlxuICAgICAgICAgICAgICAgIDxvcHRpb24gdmFsdWU9XCJcIj5TZWxlY3QuLi48L29wdGlvbj5cbiAgICAgICAgICAgICAgICA8b3B0aW9uIHZhbHVlPVwiYmFua19zdGF0ZW1lbnRzXCI+QmFuayBzdGF0ZW1lbnQgYW5hbHlzaXMgKDkwIGRheXMpPC9vcHRpb24+XG4gICAgICAgICAgICAgICAgPG9wdGlvbiB2YWx1ZT1cImhlbXNcIj5IRU0gKEhvdXNlaG9sZCBFeHBlbmRpdHVyZSBNZWFzdXJlKTwvb3B0aW9uPlxuICAgICAgICAgICAgICAgIDxvcHRpb24gdmFsdWU9XCJkZWNsYXJlZF92ZXJpZmllZFwiPkRlY2xhcmVkICsgdmVyaWZpZWQgc2FtcGxlPC9vcHRpb24+XG4gICAgICAgICAgICAgIDwvc2VsZWN0PlxuICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICB7LyogRXhpc3RpbmcgRGVidHMgKi99XG4gICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgIDxoNCBjbGFzc05hbWU9XCJmb250LWJvbGQgdGV4dC1ncmF5LTkwMCBtYi0zXCI+My4gRXhpc3RpbmcgTGlhYmlsaXRpZXM8L2g0PlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJncmlkIG1kOmdyaWQtY29scy0yIGdhcC00XCI+XG4gICAgICAgICAgICAgIDxkaXY+XG4gICAgICAgICAgICAgICAgPGxhYmVsIGNsYXNzTmFtZT1cImJsb2NrIHRleHQtc20gZm9udC1tZWRpdW0gdGV4dC1ncmF5LTcwMCBtYi0yXCI+XG4gICAgICAgICAgICAgICAgICBUb3RhbCBNb250aGx5IERlYnQgT2JsaWdhdGlvbnMgKlxuICAgICAgICAgICAgICAgIDwvbGFiZWw+XG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJyZWxhdGl2ZVwiPlxuICAgICAgICAgICAgICAgICAgPERvbGxhclNpZ24gY2xhc3NOYW1lPVwiYWJzb2x1dGUgbGVmdC0zIHRvcC0xLzIgdHJhbnNmb3JtIC10cmFuc2xhdGUteS0xLzIgdy00IGgtNCB0ZXh0LWdyYXktNDAwXCIgLz5cbiAgICAgICAgICAgICAgICAgIDxpbnB1dFxuICAgICAgICAgICAgICAgICAgICB0eXBlPVwibnVtYmVyXCJcbiAgICAgICAgICAgICAgICAgICAgdmFsdWU9e2Zvcm1EYXRhLnZlcmlmaWVkRXhpc3RpbmdEZWJ0cyB8fCAnJ31cbiAgICAgICAgICAgICAgICAgICAgb25DaGFuZ2U9eyhlKSA9PiBvbklucHV0Q2hhbmdlKCd2ZXJpZmllZEV4aXN0aW5nRGVidHMnLCBlLnRhcmdldC52YWx1ZSl9XG4gICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT1cInctZnVsbCBwbC0xMCBwci0zIHB5LTIgYm9yZGVyIGJvcmRlci1ncmF5LTMwMCByb3VuZGVkLWxnIGZvY3VzOm91dGxpbmUtbm9uZSBmb2N1czpyaW5nLTIgZm9jdXM6cmluZy1ibHVlLTYwMFwiXG4gICAgICAgICAgICAgICAgICAgIHBsYWNlaG9sZGVyPVwiMTUwMFwiXG4gICAgICAgICAgICAgICAgICAvPlxuICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQteHMgdGV4dC1ncmF5LTUwMCBtdC0xXCI+SW5jbHVkZTogbW9ydGdhZ2VzLCBjYXIgbG9hbnMsIGNyZWRpdCBjYXJkcywgcGVyc29uYWwgbG9hbnM8L3A+XG4gICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICA8ZGl2PlxuICAgICAgICAgICAgICAgIDxsYWJlbCBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMiBtdC04XCI+XG4gICAgICAgICAgICAgICAgICA8aW5wdXQgXG4gICAgICAgICAgICAgICAgICAgIHR5cGU9XCJjaGVja2JveFwiXG4gICAgICAgICAgICAgICAgICAgIGNoZWNrZWQ9e2Zvcm1EYXRhLmNyZWRpdFJlcG9ydE9idGFpbmVkIHx8IGZhbHNlfVxuICAgICAgICAgICAgICAgICAgICBvbkNoYW5nZT17KGUpID0+IG9uSW5wdXRDaGFuZ2UoJ2NyZWRpdFJlcG9ydE9idGFpbmVkJywgZS50YXJnZXQuY2hlY2tlZCl9XG4gICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT1cInctNCBoLTRcIlxuICAgICAgICAgICAgICAgICAgLz5cbiAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRleHQtc20gZm9udC1tZWRpdW0gdGV4dC1ncmF5LTcwMFwiPkNyZWRpdCByZXBvcnQgb2J0YWluZWQgJiByZXZpZXdlZDwvc3Bhbj5cbiAgICAgICAgICAgICAgICA8L2xhYmVsPlxuICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgICAgey8qIExvYW4gUHVycG9zZSAqL31cbiAgICAgICAgICA8ZGl2PlxuICAgICAgICAgICAgPGg0IGNsYXNzTmFtZT1cImZvbnQtYm9sZCB0ZXh0LWdyYXktOTAwIG1iLTNcIj40LiBMb2FuIFB1cnBvc2UgJiBPYmplY3RpdmVzPC9oND5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwic3BhY2UteS0zXCI+XG4gICAgICAgICAgICAgIDxkaXY+XG4gICAgICAgICAgICAgICAgPGxhYmVsIGNsYXNzTmFtZT1cImJsb2NrIHRleHQtc20gZm9udC1tZWRpdW0gdGV4dC1ncmF5LTcwMCBtYi0yXCI+XG4gICAgICAgICAgICAgICAgICBQdXJwb3NlIG9mIExvYW4gKlxuICAgICAgICAgICAgICAgIDwvbGFiZWw+XG4gICAgICAgICAgICAgICAgPHNlbGVjdFxuICAgICAgICAgICAgICAgICAgdmFsdWU9e2Zvcm1EYXRhLmxvYW5QdXJwb3NlIHx8ICcnfVxuICAgICAgICAgICAgICAgICAgb25DaGFuZ2U9eyhlKSA9PiBvbklucHV0Q2hhbmdlKCdsb2FuUHVycG9zZScsIGUudGFyZ2V0LnZhbHVlKX1cbiAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT1cInctZnVsbCBweC0zIHB5LTIgYm9yZGVyIGJvcmRlci1ncmF5LTMwMCByb3VuZGVkLWxnIGZvY3VzOm91dGxpbmUtbm9uZSBmb2N1czpyaW5nLTIgZm9jdXM6cmluZy1ibHVlLTYwMFwiXG4gICAgICAgICAgICAgICAgPlxuICAgICAgICAgICAgICAgICAgPG9wdGlvbiB2YWx1ZT1cIlwiPlNlbGVjdC4uLjwvb3B0aW9uPlxuICAgICAgICAgICAgICAgICAgPG9wdGlvbiB2YWx1ZT1cInB1cmNoYXNlX3Bwb3JcIj5QdXJjaGFzZSAtIFByaW5jaXBhbCBQbGFjZSBvZiBSZXNpZGVuY2U8L29wdGlvbj5cbiAgICAgICAgICAgICAgICAgIDxvcHRpb24gdmFsdWU9XCJwdXJjaGFzZV9pbnZlc3RtZW50XCI+UHVyY2hhc2UgLSBJbnZlc3RtZW50IFByb3BlcnR5PC9vcHRpb24+XG4gICAgICAgICAgICAgICAgICA8b3B0aW9uIHZhbHVlPVwicmVmaW5hbmNlXCI+UmVmaW5hbmNlIEV4aXN0aW5nIExvYW48L29wdGlvbj5cbiAgICAgICAgICAgICAgICAgIDxvcHRpb24gdmFsdWU9XCJkZWJ0X2NvbnNvbGlkYXRpb25cIj5EZWJ0IENvbnNvbGlkYXRpb248L29wdGlvbj5cbiAgICAgICAgICAgICAgICAgIDxvcHRpb24gdmFsdWU9XCJyZW5vdmF0aW9uXCI+UmVub3ZhdGlvbi9Db25zdHJ1Y3Rpb248L29wdGlvbj5cbiAgICAgICAgICAgICAgICAgIDxvcHRpb24gdmFsdWU9XCJidXNpbmVzc19wdXJwb3NlXCI+QnVzaW5lc3MgUHVycG9zZTwvb3B0aW9uPlxuICAgICAgICAgICAgICAgICAgPG9wdGlvbiB2YWx1ZT1cIm90aGVyXCI+T3RoZXI8L29wdGlvbj5cbiAgICAgICAgICAgICAgICA8L3NlbGVjdD5cbiAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgIDxkaXY+XG4gICAgICAgICAgICAgICAgPGxhYmVsIGNsYXNzTmFtZT1cImJsb2NrIHRleHQtc20gZm9udC1tZWRpdW0gdGV4dC1ncmF5LTcwMCBtYi0yXCI+XG4gICAgICAgICAgICAgICAgICBCb3Jyb3dlcidzIFJlcXVpcmVtZW50cyAmIE9iamVjdGl2ZXMgKlxuICAgICAgICAgICAgICAgIDwvbGFiZWw+XG4gICAgICAgICAgICAgICAgPHRleHRhcmVhXG4gICAgICAgICAgICAgICAgICB2YWx1ZT17Zm9ybURhdGEuYm9ycm93ZXJPYmplY3RpdmVzIHx8ICcnfVxuICAgICAgICAgICAgICAgICAgb25DaGFuZ2U9eyhlKSA9PiBvbklucHV0Q2hhbmdlKCdib3Jyb3dlck9iamVjdGl2ZXMnLCBlLnRhcmdldC52YWx1ZSl9XG4gICAgICAgICAgICAgICAgICBjbGFzc05hbWU9XCJ3LWZ1bGwgcHgtMyBweS0yIGJvcmRlciBib3JkZXItZ3JheS0zMDAgcm91bmRlZC1sZyBmb2N1czpvdXRsaW5lLW5vbmUgZm9jdXM6cmluZy0yIGZvY3VzOnJpbmctYmx1ZS02MDBcIlxuICAgICAgICAgICAgICAgICAgcm93cz17M31cbiAgICAgICAgICAgICAgICAgIHBsYWNlaG9sZGVyPVwiRGVzY3JpYmUgd2hhdCB0aGUgYm9ycm93ZXIgd2FudHMgdG8gYWNoaWV2ZSBhbmQgd2h5Li4uXCJcbiAgICAgICAgICAgICAgICAvPlxuICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L0NhcmRDb250ZW50PlxuICAgICAgPC9DYXJkPlxuXG4gICAgICB7LyogU3RlcCBCOiBVbnN1aXRhYmlsaXR5IEFzc2Vzc21lbnQgKi99XG4gICAgICA8Q2FyZCBjbGFzc05hbWU9e2Bib3JkZXItMiAke2lzVW5zdWl0YWJsZSA/ICdib3JkZXItcmVkLTQwMCcgOiByZXF1aXJlc0VuaGFuY2VkQXNzZXNzbWVudCA/ICdib3JkZXItb3JhbmdlLTQwMCcgOiAnYm9yZGVyLWdyZWVuLTQwMCd9YH0+XG4gICAgICAgIDxDYXJkSGVhZGVyIGNsYXNzTmFtZT17YGJnLWdyYWRpZW50LXRvLXIgJHtpc1Vuc3VpdGFibGUgPyAnZnJvbS1yZWQtNTAgdG8tcm9zZS01MCcgOiByZXF1aXJlc0VuaGFuY2VkQXNzZXNzbWVudCA/ICdmcm9tLW9yYW5nZS01MCB0by15ZWxsb3ctNTAnIDogJ2Zyb20tZ3JlZW4tNTAgdG8tZW1lcmFsZC01MCd9YH0+XG4gICAgICAgICAgPENhcmRUaXRsZSBjbGFzc05hbWU9XCJ0ZXh0LWxnIGZsZXggaXRlbXMtY2VudGVyIGdhcC0yXCI+XG4gICAgICAgICAgICA8Q2FsY3VsYXRvciBjbGFzc05hbWU9XCJ3LTUgaC01IHRleHQtZ3JheS04MDBcIiAvPlxuICAgICAgICAgICAgU3RlcCBCOiBVbnN1aXRhYmlsaXR5IEFzc2Vzc21lbnQgKE5DQ1AgczEzMSlcbiAgICAgICAgICA8L0NhcmRUaXRsZT5cbiAgICAgICAgICA8cCBjbGFzc05hbWU9XCJ0ZXh0LXNtIHRleHQtZ3JheS02MDAgbXQtMVwiPlxuICAgICAgICAgICAgQSBsb2FuIGlzIHVuc3VpdGFibGUgaWYgdGhlIGJvcnJvd2VyIGNhbm5vdCByZXBheSB3aXRob3V0IHN1YnN0YW50aWFsIGhhcmRzaGlwLCBvciBpdCBkb2Vzbid0IG1lZXQgdGhlaXIgb2JqZWN0aXZlc1xuICAgICAgICAgIDwvcD5cbiAgICAgICAgPC9DYXJkSGVhZGVyPlxuICAgICAgICA8Q2FyZENvbnRlbnQgY2xhc3NOYW1lPVwicC02IHNwYWNlLXktNlwiPlxuICAgICAgICAgIHsvKiBBc3Nlc3NtZW50IFJlc3VsdHMgKi99XG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJncmlkIG1kOmdyaWQtY29scy0zIGdhcC00XCI+XG4gICAgICAgICAgICB7LyogTW9udGhseSBTdXJwbHVzICovfVxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9e2BwLTQgcm91bmRlZC1sZyBib3JkZXItMiAke21vbnRobHlTdXJwbHVzID49IDAgPyAnYmctZ3JlZW4tNTAgYm9yZGVyLWdyZWVuLTMwMCcgOiAnYmctcmVkLTUwIGJvcmRlci1yZWQtMzAwJ31gfT5cbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMiBtYi0yXCI+XG4gICAgICAgICAgICAgICAge21vbnRobHlTdXJwbHVzID49IDAgPyAoXG4gICAgICAgICAgICAgICAgICA8VHJlbmRpbmdVcCBjbGFzc05hbWU9XCJ3LTUgaC01IHRleHQtZ3JlZW4tNjAwXCIgLz5cbiAgICAgICAgICAgICAgICApIDogKFxuICAgICAgICAgICAgICAgICAgPFRyZW5kaW5nRG93biBjbGFzc05hbWU9XCJ3LTUgaC01IHRleHQtcmVkLTYwMFwiIC8+XG4gICAgICAgICAgICAgICAgKX1cbiAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJmb250LWJvbGQgdGV4dC1zbSB0ZXh0LWdyYXktOTAwXCI+TW9udGhseSBTdXJwbHVzL0RlZmljaXQ8L3NwYW4+XG4gICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9e2B0ZXh0LTJ4bCBmb250LWJvbGQgJHttb250aGx5U3VycGx1cyA+PSAwID8gJ3RleHQtZ3JlZW4tNzAwJyA6ICd0ZXh0LXJlZC03MDAnfWB9PlxuICAgICAgICAgICAgICAgICR7bW9udGhseVN1cnBsdXMudG9GaXhlZCgyKX1cbiAgICAgICAgICAgICAgPC9wPlxuICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJ0ZXh0LXhzIHRleHQtZ3JheS02MDAgbXQtMVwiPlxuICAgICAgICAgICAgICAgICh7c3VycGx1c1BlcmNlbnRhZ2UudG9GaXhlZCgxKX0lIG9mIGluY29tZSlcbiAgICAgICAgICAgICAgPC9wPlxuICAgICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICAgIHsvKiBEZWJ0LXRvLUluY29tZSAqL31cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPXtgcC00IHJvdW5kZWQtbGcgYm9yZGVyLTIgJHtkZWJ0VG9JbmNvbWUgPD0gNDAgPyAnYmctZ3JlZW4tNTAgYm9yZGVyLWdyZWVuLTMwMCcgOiBkZWJ0VG9JbmNvbWUgPD0gNTAgPyAnYmctb3JhbmdlLTUwIGJvcmRlci1vcmFuZ2UtMzAwJyA6ICdiZy1yZWQtNTAgYm9yZGVyLXJlZC0zMDAnfWB9PlxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIGdhcC0yIG1iLTJcIj5cbiAgICAgICAgICAgICAgICA8RG9sbGFyU2lnbiBjbGFzc05hbWU9XCJ3LTUgaC01IHRleHQtZ3JheS03MDBcIiAvPlxuICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cImZvbnQtYm9sZCB0ZXh0LXNtIHRleHQtZ3JheS05MDBcIj5EZWJ0LXRvLUluY29tZSBSYXRpbzwvc3Bhbj5cbiAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT17YHRleHQtMnhsIGZvbnQtYm9sZCAke2RlYnRUb0luY29tZSA8PSA0MCA/ICd0ZXh0LWdyZWVuLTcwMCcgOiBkZWJ0VG9JbmNvbWUgPD0gNTAgPyAndGV4dC1vcmFuZ2UtNzAwJyA6ICd0ZXh0LXJlZC03MDAnfWB9PlxuICAgICAgICAgICAgICAgIHtkZWJ0VG9JbmNvbWUudG9GaXhlZCgxKX0lXG4gICAgICAgICAgICAgIDwvcD5cbiAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC14cyB0ZXh0LWdyYXktNjAwIG10LTFcIj5cbiAgICAgICAgICAgICAgICB7ZGVidFRvSW5jb21lIDw9IDQwID8gJ0FjY2VwdGFibGUnIDogZGVidFRvSW5jb21lIDw9IDUwID8gJ0hpZ2ggcmlzaycgOiAnRXhjZXNzaXZlJ31cbiAgICAgICAgICAgICAgPC9wPlxuICAgICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICAgIHsvKiBNb250aGx5IFJlcGF5bWVudCAqL31cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwicC00IGJnLWJsdWUtNTAgcm91bmRlZC1sZyBib3JkZXItMiBib3JkZXItYmx1ZS0zMDBcIj5cbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMiBtYi0yXCI+XG4gICAgICAgICAgICAgICAgPERvbGxhclNpZ24gY2xhc3NOYW1lPVwidy01IGgtNSB0ZXh0LWJsdWUtNzAwXCIgLz5cbiAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJmb250LWJvbGQgdGV4dC1zbSB0ZXh0LWdyYXktOTAwXCI+TW9udGhseSBSZXBheW1lbnQ8L3NwYW4+XG4gICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJ0ZXh0LTJ4bCBmb250LWJvbGQgdGV4dC1ibHVlLTcwMFwiPlxuICAgICAgICAgICAgICAgICR7bW9udGhseVJlcGF5bWVudC50b0ZpeGVkKDIpfVxuICAgICAgICAgICAgICA8L3A+XG4gICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQteHMgdGV4dC1ncmF5LTYwMCBtdC0xXCI+XG4gICAgICAgICAgICAgICAgQCB7aW50ZXJlc3RSYXRlfSUgb3ZlciB7bG9hblRlcm19IHllYXJzXG4gICAgICAgICAgICAgIDwvcD5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgICAgey8qIENhbGN1bGF0aW9uIEJyZWFrZG93biAqL31cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInAtNCBiZy1ncmF5LTUwIHJvdW5kZWQtbGcgYm9yZGVyIGJvcmRlci1ncmF5LTMwMFwiPlxuICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwiZm9udC1ib2xkIHRleHQtc20gdGV4dC1ncmF5LTkwMCBtYi0zXCI+U2VydmljZWFiaWxpdHkgQ2FsY3VsYXRpb246PC9wPlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJzcGFjZS15LTIgdGV4dC1zbVwiPlxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXgganVzdGlmeS1iZXR3ZWVuXCI+XG4gICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwidGV4dC1ncmF5LTcwMFwiPlZlcmlmaWVkIE1vbnRobHkgSW5jb21lOjwvc3Bhbj5cbiAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJmb250LXNlbWlib2xkIHRleHQtZ3JlZW4tNzAwXCI+KyR7bW9udGhseUluY29tZS50b0ZpeGVkKDIpfTwvc3Bhbj5cbiAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBqdXN0aWZ5LWJldHdlZW5cIj5cbiAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJ0ZXh0LWdyYXktNzAwXCI+TGl2aW5nIEV4cGVuc2VzOjwvc3Bhbj5cbiAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJmb250LXNlbWlib2xkIHRleHQtcmVkLTcwMFwiPi0ke21vbnRobHlFeHBlbnNlcy50b0ZpeGVkKDIpfTwvc3Bhbj5cbiAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBqdXN0aWZ5LWJldHdlZW5cIj5cbiAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJ0ZXh0LWdyYXktNzAwXCI+RXhpc3RpbmcgRGVidCBPYmxpZ2F0aW9uczo8L3NwYW4+XG4gICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwiZm9udC1zZW1pYm9sZCB0ZXh0LXJlZC03MDBcIj4tJHtleGlzdGluZ0RlYnRzLnRvRml4ZWQoMil9PC9zcGFuPlxuICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGp1c3RpZnktYmV0d2VlblwiPlxuICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRleHQtZ3JheS03MDBcIj5Qcm9wb3NlZCBMb2FuIFJlcGF5bWVudDo8L3NwYW4+XG4gICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwiZm9udC1zZW1pYm9sZCB0ZXh0LXJlZC03MDBcIj4tJHttb250aGx5UmVwYXltZW50LnRvRml4ZWQoMil9PC9zcGFuPlxuICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJwdC0yIGJvcmRlci10LTIgYm9yZGVyLWdyYXktMzAwIGZsZXgganVzdGlmeS1iZXR3ZWVuXCI+XG4gICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwiZm9udC1ib2xkIHRleHQtZ3JheS05MDBcIj5OZXQgTW9udGhseSBQb3NpdGlvbjo8L3NwYW4+XG4gICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPXtgZm9udC1ib2xkIHRleHQtbGcgJHttb250aGx5U3VycGx1cyA+PSAwID8gJ3RleHQtZ3JlZW4tNzAwJyA6ICd0ZXh0LXJlZC03MDAnfWB9PlxuICAgICAgICAgICAgICAgICAgJHttb250aGx5U3VycGx1cy50b0ZpeGVkKDIpfVxuICAgICAgICAgICAgICAgIDwvc3Bhbj5cbiAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICA8L2Rpdj5cblxuICAgICAgICAgIHsvKiBTdWl0YWJpbGl0eSBEZXRlcm1pbmF0aW9uICovfVxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPXtgcC01IHJvdW5kZWQtbGcgYm9yZGVyLTIgJHtpc1Vuc3VpdGFibGUgPyAnYmctcmVkLTUwIGJvcmRlci1yZWQtNDAwJyA6IHJlcXVpcmVzRW5oYW5jZWRBc3Nlc3NtZW50ID8gJ2JnLW9yYW5nZS01MCBib3JkZXItb3JhbmdlLTQwMCcgOiAnYmctZ3JlZW4tNTAgYm9yZGVyLWdyZWVuLTQwMCd9YH0+XG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXggaXRlbXMtc3RhcnQgZ2FwLTNcIj5cbiAgICAgICAgICAgICAge2lzVW5zdWl0YWJsZSA/IChcbiAgICAgICAgICAgICAgICA8WENpcmNsZSBjbGFzc05hbWU9XCJ3LTYgaC02IHRleHQtcmVkLTYwMCBtdC0wLjUgZmxleC1zaHJpbmstMFwiIC8+XG4gICAgICAgICAgICAgICkgOiByZXF1aXJlc0VuaGFuY2VkQXNzZXNzbWVudCA/IChcbiAgICAgICAgICAgICAgICA8QWxlcnRDaXJjbGUgY2xhc3NOYW1lPVwidy02IGgtNiB0ZXh0LW9yYW5nZS02MDAgbXQtMC41IGZsZXgtc2hyaW5rLTBcIiAvPlxuICAgICAgICAgICAgICApIDogKFxuICAgICAgICAgICAgICAgIDxDaGVja0NpcmNsZSBjbGFzc05hbWU9XCJ3LTYgaC02IHRleHQtZ3JlZW4tNjAwIG10LTAuNSBmbGV4LXNocmluay0wXCIgLz5cbiAgICAgICAgICAgICAgKX1cbiAgICAgICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9e2Bmb250LWJvbGQgdGV4dC1iYXNlIG1iLTIgJHtpc1Vuc3VpdGFibGUgPyAndGV4dC1yZWQtOTAwJyA6IHJlcXVpcmVzRW5oYW5jZWRBc3Nlc3NtZW50ID8gJ3RleHQtb3JhbmdlLTkwMCcgOiAndGV4dC1ncmVlbi05MDAnfWB9PlxuICAgICAgICAgICAgICAgICAge2lzVW5zdWl0YWJsZSA/ICfinYwgTE9BTiBBUFBFQVJTIFVOU1VJVEFCTEUnIDogcmVxdWlyZXNFbmhhbmNlZEFzc2Vzc21lbnQgPyAn4pqg77iPIEVOSEFOQ0VEIEFTU0VTU01FTlQgUkVRVUlSRUQnIDogJ+KchSBMT0FOIEFQUEVBUlMgU1VJVEFCTEUnfVxuICAgICAgICAgICAgICAgIDwvcD5cbiAgICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9e2B0ZXh0LXNtIG1iLTMgJHtpc1Vuc3VpdGFibGUgPyAndGV4dC1yZWQtODAwJyA6IHJlcXVpcmVzRW5oYW5jZWRBc3Nlc3NtZW50ID8gJ3RleHQtb3JhbmdlLTgwMCcgOiAndGV4dC1ncmVlbi04MDAnfWB9PlxuICAgICAgICAgICAgICAgICAge2lzVW5zdWl0YWJsZSBcbiAgICAgICAgICAgICAgICAgICAgPyAnVGhpcyBsb2FuIHdvdWxkIGxpa2VseSBjYXVzZSBzdWJzdGFudGlhbCBoYXJkc2hpcCB0byB0aGUgYm9ycm93ZXIuIExlbmRpbmcgaXMgbm90IHJlY29tbWVuZGVkIHVuZGVyIE5DQ1AgczEzMS4nXG4gICAgICAgICAgICAgICAgICAgIDogcmVxdWlyZXNFbmhhbmNlZEFzc2Vzc21lbnRcbiAgICAgICAgICAgICAgICAgICAgPyAnRGVidC10by1pbmNvbWUgcmF0aW8gb3Igc3VycGx1cyBpcyBib3JkZXJsaW5lLiBFbmhhbmNlZCBhc3Nlc3NtZW50IGFuZCBhZGRpdGlvbmFsIHNjcnV0aW55IHJlcXVpcmVkIGJlZm9yZSBhcHByb3ZhbC4nXG4gICAgICAgICAgICAgICAgICAgIDogJ0JvcnJvd2VyIGFwcGVhcnMgYWJsZSB0byBtZWV0IHJlcGF5bWVudHMgd2l0aG91dCBzdWJzdGFudGlhbCBoYXJkc2hpcCBiYXNlZCBvbiB2ZXJpZmllZCBpbmZvcm1hdGlvbi4nfVxuICAgICAgICAgICAgICAgIDwvcD5cbiAgICAgICAgICAgICAgICB7aXNVbnN1aXRhYmxlICYmIChcbiAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYmctd2hpdGUvNjAgcC0zIHJvdW5kZWQgYm9yZGVyIGJvcmRlci1yZWQtMzAwIHRleHQteHMgdGV4dC1yZWQtOTAwXCI+XG4gICAgICAgICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cImZvbnQtYm9sZCBtYi0xXCI+4pqW77iPIE5DQ1AgQnJlYWNoIFJpc2s6PC9wPlxuICAgICAgICAgICAgICAgICAgICA8cD5BcHByb3ZpbmcgdGhpcyBsb2FuIG1heSBicmVhY2ggcmVzcG9uc2libGUgbGVuZGluZyBvYmxpZ2F0aW9ucyB1bmRlciBzMTE3LTEzMyBvZiB0aGUgTkNDUCBBY3QgMjAwOS4gXG4gICAgICAgICAgICAgICAgICAgIEFTSUMgbWF5IHRha2UgZW5mb3JjZW1lbnQgYWN0aW9uLiBCb3Jyb3dlciBtYXkgaGF2ZSBncm91bmRzIGZvciBoYXJkc2hpcCB2YXJpYXRpb24gb3IgY29tcGxhaW50IHRvIEFGQ0EuPC9wPlxuICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgKX1cbiAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICA8L2Rpdj5cblxuICAgICAgICAgIHsvKiBEb2N1bWVudGVkIEFzc2Vzc21lbnQgKi99XG4gICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgIDxsYWJlbCBjbGFzc05hbWU9XCJibG9jayB0ZXh0LXNtIGZvbnQtbWVkaXVtIHRleHQtZ3JheS03MDAgbWItMlwiPlxuICAgICAgICAgICAgICBEb2N1bWVudGVkIFN1aXRhYmlsaXR5IEFzc2Vzc21lbnQgKiAoUmVxdWlyZWQgYnkgTkNDUCBzMTMzKVxuICAgICAgICAgICAgPC9sYWJlbD5cbiAgICAgICAgICAgIDx0ZXh0YXJlYVxuICAgICAgICAgICAgICB2YWx1ZT17Zm9ybURhdGEuc3VpdGFiaWxpdHlBc3Nlc3NtZW50Tm90ZXMgfHwgJyd9XG4gICAgICAgICAgICAgIG9uQ2hhbmdlPXsoZSkgPT4gb25JbnB1dENoYW5nZSgnc3VpdGFiaWxpdHlBc3Nlc3NtZW50Tm90ZXMnLCBlLnRhcmdldC52YWx1ZSl9XG4gICAgICAgICAgICAgIGNsYXNzTmFtZT1cInctZnVsbCBweC0zIHB5LTIgYm9yZGVyIGJvcmRlci1ncmF5LTMwMCByb3VuZGVkLWxnIGZvY3VzOm91dGxpbmUtbm9uZSBmb2N1czpyaW5nLTIgZm9jdXM6cmluZy1ibHVlLTYwMFwiXG4gICAgICAgICAgICAgIHJvd3M9ezR9XG4gICAgICAgICAgICAgIHBsYWNlaG9sZGVyPVwiRG9jdW1lbnQgeW91ciBhc3Nlc3NtZW50IG9mIHN1aXRhYmlsaXR5LCBpbmNsdWRpbmcgY29uc2lkZXJhdGlvbiBvZiBoYXJkc2hpcCByaXNrLCBkZWJ0IHNlcnZpY2luZyBjYXBhY2l0eSwgYW5kIHdoZXRoZXIgdGhlIGxvYW4gbWVldHMgdGhlIGJvcnJvd2VyJ3Mgb2JqZWN0aXZlcy4uLlwiXG4gICAgICAgICAgICAvPlxuICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC14cyB0ZXh0LWdyYXktNTAwIG10LTFcIj5cbiAgICAgICAgICAgICAgVGhpcyBhc3Nlc3NtZW50IG11c3QgYmUgcmV0YWluZWQgZm9yIDcgeWVhcnMgYW5kIG1heSBiZSByZXF1ZXN0ZWQgYnkgQVNJQyBvciBpbiBhIGRpc3B1dGUuXG4gICAgICAgICAgICA8L3A+XG4gICAgICAgICAgPC9kaXY+XG4gICAgICAgIDwvQ2FyZENvbnRlbnQ+XG4gICAgICA8L0NhcmQ+XG4gICAgPC9kaXY+XG4gICk7XG59XG4iXSwiZmlsZSI6IkM6L1VzZXJzL0FuZHJldyBOYWdsZS9EZXNrdG9wL0dyb3dreWMtbWFpbi9Hcm93a3ljLW1haW4vc3JjL2FwcC9jb21wb25lbnRzL2Nhc2UvUmVzcG9uc2libGVMZW5kaW5nQXNzZXNzbWVudC50c3gifQ==

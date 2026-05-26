@@ -4,10 +4,10 @@
  */
 
 import type { EvidenceRecord } from '../models/evidenceRecord';
-import type { StorageResult } from '../models/storageResult';
-import type { StorageError } from '../models/storageError';
-import type { StoredObjectMetadata } from '../models/storedObjectMetadata';
+import type { StorageError } from '../models/storageError.ts';
+import type { StoredObjectMetadata } from '../models/storedObjectMetadata.ts';
 import { S3EvidenceUploadService } from './s3EvidenceUploadService';
+import pLimit from 'p-limit';
 
 /**
  * Single evidence upload item with file buffer
@@ -71,7 +71,7 @@ export interface BatchUploadOptions {
  */
 export class S3BatchEvidenceUploadService {
   private uploadService: S3EvidenceUploadService;
-  private parallelism: number = 3;
+  private parallelism: number = 5;
 
   constructor(uploadService?: S3EvidenceUploadService) {
     this.uploadService = uploadService || new S3EvidenceUploadService();
@@ -90,42 +90,53 @@ export class S3BatchEvidenceUploadService {
     let completed = 0;
 
     try {
-      // Process items in parallel queues
-      for (let i = 0; i < items.length; i += parallelism) {
-        const batch = items.slice(i, i + parallelism);
+      const limit = pLimit(parallelism);
 
-        const batchPromises = batch.map((item) =>
-          this.uploadSingleItem(item, options.uploadedBy)
-        );
-
-        const batchResults = await Promise.allSettled(batchPromises);
-
-        for (const result of batchResults) {
-          if (result.status === 'fulfilled') {
-            results.push(result.value);
-          } else {
-            results.push({
-              evidenceId: 'unknown',
+      // Create limited promises for all items
+      const uploadPromises = items.map((item) => 
+        limit(async () => {
+          // Stop processing if stopOnFirstError is triggered by a previous failure
+          if (options.stopOnFirstError && results.some(r => !r.success)) {
+            return {
+              evidenceId: item.evidence.id,
               success: false,
               error: {
-                code: 'UPLOAD_FAILED',
-                message: `Promise rejection: ${result.reason}`,
-                retryable: true,
+                code: 'UPLOAD_CANCELLED',
+                message: 'Upload cancelled due to previous error',
+                retryable: false,
               },
               duration: 0,
-            });
+            } as BatchUploadItemResult;
           }
 
+          const result = await this.uploadSingleItem(item, options.uploadedBy);
+          
+          results.push(result);
           completed++;
           options.onProgress?.(completed, items.length);
+          
+          return result;
+        })
+      );
 
-          // Stop on first error if requested
-          if (options.stopOnFirstError && !results[results.length - 1].success) {
-            i = items.length; // Break outer loop
-            break;
-          }
+      // Await all items using Promise.allSettled to ensure failure isolation
+      const allResults = await Promise.allSettled(uploadPromises);
+
+      // Catch any unexpected promise rejections that bypassed our wrapper
+      allResults.forEach((result) => {
+        if (result.status === 'rejected') {
+          results.push({
+            evidenceId: 'unknown',
+            success: false,
+            error: {
+              code: 'UPLOAD_FAILED',
+              message: `Promise rejection: ${result.reason}`,
+              retryable: true,
+            },
+            duration: 0,
+          });
         }
-      }
+      });
     } catch (error) {
       // Unexpected error during batch processing
       const errorMessage = error instanceof Error ? error.message : 'Unknown error';

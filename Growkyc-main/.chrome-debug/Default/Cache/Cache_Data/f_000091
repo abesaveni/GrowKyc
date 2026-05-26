@@ -1,0 +1,266 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/@fs/C:\\Users\\Andrew Nagle\\Desktop\\Growkyc-main\\Growkyc-main\\src\\app\\components\\ui\\dialog.tsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=15066356"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/dialog.tsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+"use client";
+import __vite__cjsImport3_react from "/node_modules/.vite/deps/react.js?v=15066356"; const React = ((m) => m?.__esModule ? m : { ...typeof m === "object" && !Array.isArray(m) || typeof m === "function" ? m : {}, default: m })(__vite__cjsImport3_react);
+import * as DialogPrimitive from "/node_modules/.vite/deps/@radix-ui_react-dialog.js?v=15066356";
+import { XIcon } from "/node_modules/.vite/deps/lucide-react.js?v=15066356";
+import { cn } from "/src/app/components/ui/utils.ts";
+function Dialog({
+  ...props
+}) {
+  return /* @__PURE__ */ jsxDEV(DialogPrimitive.Root, { "data-slot": "dialog", ...props }, void 0, false, {
+    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/dialog.tsx",
+    lineNumber: 31,
+    columnNumber: 10
+  }, this);
+}
+_c = Dialog;
+function DialogTrigger({
+  ...props
+}) {
+  return /* @__PURE__ */ jsxDEV(DialogPrimitive.Trigger, { "data-slot": "dialog-trigger", ...props }, void 0, false, {
+    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/dialog.tsx",
+    lineNumber: 37,
+    columnNumber: 10
+  }, this);
+}
+_c2 = DialogTrigger;
+function DialogPortal({
+  ...props
+}) {
+  return /* @__PURE__ */ jsxDEV(DialogPrimitive.Portal, { "data-slot": "dialog-portal", ...props }, void 0, false, {
+    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/dialog.tsx",
+    lineNumber: 43,
+    columnNumber: 10
+  }, this);
+}
+_c3 = DialogPortal;
+function DialogClose({
+  ...props
+}) {
+  return /* @__PURE__ */ jsxDEV(DialogPrimitive.Close, { "data-slot": "dialog-close", ...props }, void 0, false, {
+    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/dialog.tsx",
+    lineNumber: 49,
+    columnNumber: 10
+  }, this);
+}
+_c4 = DialogClose;
+const DialogOverlay = React.forwardRef(_c5 = ({ className, ...props }, ref) => {
+  return /* @__PURE__ */ jsxDEV(
+    DialogPrimitive.Overlay,
+    {
+      ref,
+      "data-slot": "dialog-overlay",
+      className: cn(
+        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50",
+        className
+      ),
+      ...props
+    },
+    void 0,
+    false,
+    {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/dialog.tsx",
+      lineNumber: 57,
+      columnNumber: 5
+    },
+    this
+  );
+});
+_c6 = DialogOverlay;
+DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
+function DialogContent({
+  className,
+  children,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxDEV(DialogPortal, { "data-slot": "dialog-portal", children: [
+    /* @__PURE__ */ jsxDEV(DialogOverlay, {}, void 0, false, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/dialog.tsx",
+      lineNumber: 77,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV(
+      DialogPrimitive.Content,
+      {
+        "data-slot": "dialog-content",
+        className: cn(
+          "bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border p-6 shadow-lg duration-200 sm:max-w-lg",
+          className
+        ),
+        ...props,
+        children: [
+          children,
+          /* @__PURE__ */ jsxDEV(DialogPrimitive.Close, { className: "ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4", children: [
+            /* @__PURE__ */ jsxDEV(XIcon, {}, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/dialog.tsx",
+              lineNumber: 88,
+              columnNumber: 11
+            }, this),
+            /* @__PURE__ */ jsxDEV("span", { className: "sr-only", children: "Close" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/dialog.tsx",
+              lineNumber: 89,
+              columnNumber: 11
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/dialog.tsx",
+            lineNumber: 87,
+            columnNumber: 9
+          }, this)
+        ]
+      },
+      void 0,
+      true,
+      {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/dialog.tsx",
+        lineNumber: 78,
+        columnNumber: 7
+      },
+      this
+    )
+  ] }, void 0, true, {
+    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/dialog.tsx",
+    lineNumber: 76,
+    columnNumber: 5
+  }, this);
+}
+_c7 = DialogContent;
+function DialogHeader({ className, ...props }) {
+  return /* @__PURE__ */ jsxDEV(
+    "div",
+    {
+      "data-slot": "dialog-header",
+      className: cn("flex flex-col gap-2 text-center sm:text-left", className),
+      ...props
+    },
+    void 0,
+    false,
+    {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/dialog.tsx",
+      lineNumber: 98,
+      columnNumber: 5
+    },
+    this
+  );
+}
+_c8 = DialogHeader;
+function DialogFooter({ className, ...props }) {
+  return /* @__PURE__ */ jsxDEV(
+    "div",
+    {
+      "data-slot": "dialog-footer",
+      className: cn(
+        "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
+        className
+      ),
+      ...props
+    },
+    void 0,
+    false,
+    {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/dialog.tsx",
+      lineNumber: 108,
+      columnNumber: 5
+    },
+    this
+  );
+}
+_c9 = DialogFooter;
+function DialogTitle({
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxDEV(
+    DialogPrimitive.Title,
+    {
+      "data-slot": "dialog-title",
+      className: cn("text-lg leading-none font-semibold", className),
+      ...props
+    },
+    void 0,
+    false,
+    {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/dialog.tsx",
+      lineNumber: 124,
+      columnNumber: 5
+    },
+    this
+  );
+}
+_c0 = DialogTitle;
+function DialogDescription({
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxDEV(
+    DialogPrimitive.Description,
+    {
+      "data-slot": "dialog-description",
+      className: cn("text-muted-foreground text-sm", className),
+      ...props
+    },
+    void 0,
+    false,
+    {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/dialog.tsx",
+      lineNumber: 137,
+      columnNumber: 5
+    },
+    this
+  );
+}
+_c1 = DialogDescription;
+export {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  DialogPortal,
+  DialogTitle,
+  DialogTrigger
+};
+var _c, _c2, _c3, _c4, _c5, _c6, _c7, _c8, _c9, _c0, _c1;
+$RefreshReg$(_c, "Dialog");
+$RefreshReg$(_c2, "DialogTrigger");
+$RefreshReg$(_c3, "DialogPortal");
+$RefreshReg$(_c4, "DialogClose");
+$RefreshReg$(_c5, "DialogOverlay$React.forwardRef");
+$RefreshReg$(_c6, "DialogOverlay");
+$RefreshReg$(_c7, "DialogContent");
+$RefreshReg$(_c8, "DialogHeader");
+$RefreshReg$(_c9, "DialogFooter");
+$RefreshReg$(_c0, "DialogTitle");
+$RefreshReg$(_c1, "DialogDescription");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/dialog.tsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/dialog.tsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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LElBQUFELElBQUFFLEtBQUFFLEtBQUFFLEtBQUFHLEtBQUFHLEtBQUFLLEtBQUFFLEtBQUFFLEtBQUFFLEtBQUFFO0FBQUEsYUFBQXpCLElBQUE7QUFBQSxhQUFBRSxLQUFBO0FBQUEsYUFBQUUsS0FBQTtBQUFBLGFBQUFFLEtBQUE7QUFBQSxhQUFBRyxLQUFBO0FBQUEsYUFBQUcsS0FBQTtBQUFBLGFBQUFLLEtBQUE7QUFBQSxhQUFBRSxLQUFBO0FBQUEsYUFBQUUsS0FBQTtBQUFBLGFBQUFFLEtBQUE7QUFBQSxhQUFBRSxLQUFBIiwibmFtZXMiOlsiUmVhY3QiLCJEaWFsb2dQcmltaXRpdmUiLCJYSWNvbiIsImNuIiwiRGlhbG9nIiwicHJvcHMiLCJfYyIsIkRpYWxvZ1RyaWdnZXIiLCJfYzIiLCJEaWFsb2dQb3J0YWwiLCJfYzMiLCJEaWFsb2dDbG9zZSIsIl9jNCIsIkRpYWxvZ092ZXJsYXkiLCJmb3J3YXJkUmVmIiwiX2M1IiwiY2xhc3NOYW1lIiwicmVmIiwiX2M2IiwiZGlzcGxheU5hbWUiLCJPdmVybGF5IiwiRGlhbG9nQ29udGVudCIsImNoaWxkcmVuIiwiX2M3IiwiRGlhbG9nSGVhZGVyIiwiX2M4IiwiRGlhbG9nRm9vdGVyIiwiX2M5IiwiRGlhbG9nVGl0bGUiLCJfYzAiLCJEaWFsb2dEZXNjcmlwdGlvbiIsIl9jMSJdLCJpZ25vcmVMaXN0IjpbXSwic291cmNlcyI6WyJkaWFsb2cudHN4Il0sInNvdXJjZXNDb250ZW50IjpbIlwidXNlIGNsaWVudFwiO1xuXG5pbXBvcnQgKiBhcyBSZWFjdCBmcm9tIFwicmVhY3RcIjtcbmltcG9ydCAqIGFzIERpYWxvZ1ByaW1pdGl2ZSBmcm9tIFwiQHJhZGl4LXVpL3JlYWN0LWRpYWxvZ1wiO1xuaW1wb3J0IHsgWEljb24gfSBmcm9tIFwibHVjaWRlLXJlYWN0XCI7XG5cbmltcG9ydCB7IGNuIH0gZnJvbSBcIi4vdXRpbHNcIjtcblxuZnVuY3Rpb24gRGlhbG9nKHtcbiAgLi4ucHJvcHNcbn06IFJlYWN0LkNvbXBvbmVudFByb3BzPHR5cGVvZiBEaWFsb2dQcmltaXRpdmUuUm9vdD4pIHtcbiAgcmV0dXJuIDxEaWFsb2dQcmltaXRpdmUuUm9vdCBkYXRhLXNsb3Q9XCJkaWFsb2dcIiB7Li4ucHJvcHN9IC8+O1xufVxuXG5mdW5jdGlvbiBEaWFsb2dUcmlnZ2VyKHtcbiAgLi4ucHJvcHNcbn06IFJlYWN0LkNvbXBvbmVudFByb3BzPHR5cGVvZiBEaWFsb2dQcmltaXRpdmUuVHJpZ2dlcj4pIHtcbiAgcmV0dXJuIDxEaWFsb2dQcmltaXRpdmUuVHJpZ2dlciBkYXRhLXNsb3Q9XCJkaWFsb2ctdHJpZ2dlclwiIHsuLi5wcm9wc30gLz47XG59XG5cbmZ1bmN0aW9uIERpYWxvZ1BvcnRhbCh7XG4gIC4uLnByb3BzXG59OiBSZWFjdC5Db21wb25lbnRQcm9wczx0eXBlb2YgRGlhbG9nUHJpbWl0aXZlLlBvcnRhbD4pIHtcbiAgcmV0dXJuIDxEaWFsb2dQcmltaXRpdmUuUG9ydGFsIGRhdGEtc2xvdD1cImRpYWxvZy1wb3J0YWxcIiB7Li4ucHJvcHN9IC8+O1xufVxuXG5mdW5jdGlvbiBEaWFsb2dDbG9zZSh7XG4gIC4uLnByb3BzXG59OiBSZWFjdC5Db21wb25lbnRQcm9wczx0eXBlb2YgRGlhbG9nUHJpbWl0aXZlLkNsb3NlPikge1xuICByZXR1cm4gPERpYWxvZ1ByaW1pdGl2ZS5DbG9zZSBkYXRhLXNsb3Q9XCJkaWFsb2ctY2xvc2VcIiB7Li4ucHJvcHN9IC8+O1xufVxuXG5jb25zdCBEaWFsb2dPdmVybGF5ID0gUmVhY3QuZm9yd2FyZFJlZjxcbiAgUmVhY3QuRWxlbWVudFJlZjx0eXBlb2YgRGlhbG9nUHJpbWl0aXZlLk92ZXJsYXk+LFxuICBSZWFjdC5Db21wb25lbnRQcm9wc1dpdGhvdXRSZWY8dHlwZW9mIERpYWxvZ1ByaW1pdGl2ZS5PdmVybGF5PlxuPigoeyBjbGFzc05hbWUsIC4uLnByb3BzIH0sIHJlZikgPT4ge1xuICByZXR1cm4gKFxuICAgIDxEaWFsb2dQcmltaXRpdmUuT3ZlcmxheVxuICAgICAgcmVmPXtyZWZ9XG4gICAgICBkYXRhLXNsb3Q9XCJkaWFsb2ctb3ZlcmxheVwiXG4gICAgICBjbGFzc05hbWU9e2NuKFxuICAgICAgICBcImRhdGEtW3N0YXRlPW9wZW5dOmFuaW1hdGUtaW4gZGF0YS1bc3RhdGU9Y2xvc2VkXTphbmltYXRlLW91dCBkYXRhLVtzdGF0ZT1jbG9zZWRdOmZhZGUtb3V0LTAgZGF0YS1bc3RhdGU9b3Blbl06ZmFkZS1pbi0wIGZpeGVkIGluc2V0LTAgei01MCBiZy1ibGFjay81MFwiLFxuICAgICAgICBjbGFzc05hbWUsXG4gICAgICApfVxuICAgICAgey4uLnByb3BzfVxuICAgIC8+XG4gICk7XG59KTtcbkRpYWxvZ092ZXJsYXkuZGlzcGxheU5hbWUgPSBEaWFsb2dQcmltaXRpdmUuT3ZlcmxheS5kaXNwbGF5TmFtZTtcblxuZnVuY3Rpb24gRGlhbG9nQ29udGVudCh7XG4gIGNsYXNzTmFtZSxcbiAgY2hpbGRyZW4sXG4gIC4uLnByb3BzXG59OiBSZWFjdC5Db21wb25lbnRQcm9wczx0eXBlb2YgRGlhbG9nUHJpbWl0aXZlLkNvbnRlbnQ+KSB7XG4gIHJldHVybiAoXG4gICAgPERpYWxvZ1BvcnRhbCBkYXRhLXNsb3Q9XCJkaWFsb2ctcG9ydGFsXCI+XG4gICAgICA8RGlhbG9nT3ZlcmxheSAvPlxuICAgICAgPERpYWxvZ1ByaW1pdGl2ZS5Db250ZW50XG4gICAgICAgIGRhdGEtc2xvdD1cImRpYWxvZy1jb250ZW50XCJcbiAgICAgICAgY2xhc3NOYW1lPXtjbihcbiAgICAgICAgICBcImJnLWJhY2tncm91bmQgZGF0YS1bc3RhdGU9b3Blbl06YW5pbWF0ZS1pbiBkYXRhLVtzdGF0ZT1jbG9zZWRdOmFuaW1hdGUtb3V0IGRhdGEtW3N0YXRlPWNsb3NlZF06ZmFkZS1vdXQtMCBkYXRhLVtzdGF0ZT1vcGVuXTpmYWRlLWluLTAgZGF0YS1bc3RhdGU9Y2xvc2VkXTp6b29tLW91dC05NSBkYXRhLVtzdGF0ZT1vcGVuXTp6b29tLWluLTk1IGZpeGVkIHRvcC1bNTAlXSBsZWZ0LVs1MCVdIHotNTAgZ3JpZCB3LWZ1bGwgbWF4LXctW2NhbGMoMTAwJS0ycmVtKV0gdHJhbnNsYXRlLXgtWy01MCVdIHRyYW5zbGF0ZS15LVstNTAlXSBnYXAtNCByb3VuZGVkLWxnIGJvcmRlciBwLTYgc2hhZG93LWxnIGR1cmF0aW9uLTIwMCBzbTptYXgtdy1sZ1wiLFxuICAgICAgICAgIGNsYXNzTmFtZSxcbiAgICAgICAgKX1cbiAgICAgICAgey4uLnByb3BzfVxuICAgICAgPlxuICAgICAgICB7Y2hpbGRyZW59XG4gICAgICAgIDxEaWFsb2dQcmltaXRpdmUuQ2xvc2UgY2xhc3NOYW1lPVwicmluZy1vZmZzZXQtYmFja2dyb3VuZCBmb2N1czpyaW5nLXJpbmcgZGF0YS1bc3RhdGU9b3Blbl06YmctYWNjZW50IGRhdGEtW3N0YXRlPW9wZW5dOnRleHQtbXV0ZWQtZm9yZWdyb3VuZCBhYnNvbHV0ZSB0b3AtNCByaWdodC00IHJvdW5kZWQteHMgb3BhY2l0eS03MCB0cmFuc2l0aW9uLW9wYWNpdHkgaG92ZXI6b3BhY2l0eS0xMDAgZm9jdXM6cmluZy0yIGZvY3VzOnJpbmctb2Zmc2V0LTIgZm9jdXM6b3V0bGluZS1oaWRkZW4gZGlzYWJsZWQ6cG9pbnRlci1ldmVudHMtbm9uZSBbJl9zdmddOnBvaW50ZXItZXZlbnRzLW5vbmUgWyZfc3ZnXTpzaHJpbmstMCBbJl9zdmc6bm90KFtjbGFzcyo9J3NpemUtJ10pXTpzaXplLTRcIj5cbiAgICAgICAgICA8WEljb24gLz5cbiAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJzci1vbmx5XCI+Q2xvc2U8L3NwYW4+XG4gICAgICAgIDwvRGlhbG9nUHJpbWl0aXZlLkNsb3NlPlxuICAgICAgPC9EaWFsb2dQcmltaXRpdmUuQ29udGVudD5cbiAgICA8L0RpYWxvZ1BvcnRhbD5cbiAgKTtcbn1cblxuZnVuY3Rpb24gRGlhbG9nSGVhZGVyKHsgY2xhc3NOYW1lLCAuLi5wcm9wcyB9OiBSZWFjdC5Db21wb25lbnRQcm9wczxcImRpdlwiPikge1xuICByZXR1cm4gKFxuICAgIDxkaXZcbiAgICAgIGRhdGEtc2xvdD1cImRpYWxvZy1oZWFkZXJcIlxuICAgICAgY2xhc3NOYW1lPXtjbihcImZsZXggZmxleC1jb2wgZ2FwLTIgdGV4dC1jZW50ZXIgc206dGV4dC1sZWZ0XCIsIGNsYXNzTmFtZSl9XG4gICAgICB7Li4ucHJvcHN9XG4gICAgLz5cbiAgKTtcbn1cblxuZnVuY3Rpb24gRGlhbG9nRm9vdGVyKHsgY2xhc3NOYW1lLCAuLi5wcm9wcyB9OiBSZWFjdC5Db21wb25lbnRQcm9wczxcImRpdlwiPikge1xuICByZXR1cm4gKFxuICAgIDxkaXZcbiAgICAgIGRhdGEtc2xvdD1cImRpYWxvZy1mb290ZXJcIlxuICAgICAgY2xhc3NOYW1lPXtjbihcbiAgICAgICAgXCJmbGV4IGZsZXgtY29sLXJldmVyc2UgZ2FwLTIgc206ZmxleC1yb3cgc206anVzdGlmeS1lbmRcIixcbiAgICAgICAgY2xhc3NOYW1lLFxuICAgICAgKX1cbiAgICAgIHsuLi5wcm9wc31cbiAgICAvPlxuICApO1xufVxuXG5mdW5jdGlvbiBEaWFsb2dUaXRsZSh7XG4gIGNsYXNzTmFtZSxcbiAgLi4ucHJvcHNcbn06IFJlYWN0LkNvbXBvbmVudFByb3BzPHR5cGVvZiBEaWFsb2dQcmltaXRpdmUuVGl0bGU+KSB7XG4gIHJldHVybiAoXG4gICAgPERpYWxvZ1ByaW1pdGl2ZS5UaXRsZVxuICAgICAgZGF0YS1zbG90PVwiZGlhbG9nLXRpdGxlXCJcbiAgICAgIGNsYXNzTmFtZT17Y24oXCJ0ZXh0LWxnIGxlYWRpbmctbm9uZSBmb250LXNlbWlib2xkXCIsIGNsYXNzTmFtZSl9XG4gICAgICB7Li4ucHJvcHN9XG4gICAgLz5cbiAgKTtcbn1cblxuZnVuY3Rpb24gRGlhbG9nRGVzY3JpcHRpb24oe1xuICBjbGFzc05hbWUsXG4gIC4uLnByb3BzXG59OiBSZWFjdC5Db21wb25lbnRQcm9wczx0eXBlb2YgRGlhbG9nUHJpbWl0aXZlLkRlc2NyaXB0aW9uPikge1xuICByZXR1cm4gKFxuICAgIDxEaWFsb2dQcmltaXRpdmUuRGVzY3JpcHRpb25cbiAgICAgIGRhdGEtc2xvdD1cImRpYWxvZy1kZXNjcmlwdGlvblwiXG4gICAgICBjbGFzc05hbWU9e2NuKFwidGV4dC1tdXRlZC1mb3JlZ3JvdW5kIHRleHQtc21cIiwgY2xhc3NOYW1lKX1cbiAgICAgIHsuLi5wcm9wc31cbiAgICAvPlxuICApO1xufVxuXG5leHBvcnQge1xuICBEaWFsb2csXG4gIERpYWxvZ0Nsb3NlLFxuICBEaWFsb2dDb250ZW50LFxuICBEaWFsb2dEZXNjcmlwdGlvbixcbiAgRGlhbG9nRm9vdGVyLFxuICBEaWFsb2dIZWFkZXIsXG4gIERpYWxvZ092ZXJsYXksXG4gIERpYWxvZ1BvcnRhbCxcbiAgRGlhbG9nVGl0bGUsXG4gIERpYWxvZ1RyaWdnZXIsXG59OyJdLCJmaWxlIjoiQzovVXNlcnMvQW5kcmV3IE5hZ2xlL0Rlc2t0b3AvR3Jvd2t5Yy1tYWluL0dyb3dreWMtbWFpbi9zcmMvYXBwL2NvbXBvbmVudHMvdWkvZGlhbG9nLnRzeCJ9

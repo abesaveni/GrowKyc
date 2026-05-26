@@ -1,0 +1,1177 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/app/components/pfa/LoanLedger.tsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=15066356"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+var _s = $RefreshSig$();
+import __vite__cjsImport3_react from "/node_modules/.vite/deps/react.js?v=15066356"; const useState = __vite__cjsImport3_react["useState"];
+import { Button } from "/src/app/components/ui/button.tsx";
+import {
+  ArrowLeft,
+  DollarSign,
+  FileText,
+  Calculator,
+  Download,
+  Send,
+  Plus,
+  TrendingUp,
+  Calendar
+} from "/node_modules/.vite/deps/lucide-react.js?v=15066356";
+export function LoanLedger({ onNavigate, onBack }) {
+  _s();
+  const [selectedTab, setSelectedTab] = useState("overview");
+  const loanDetails = {
+    loanId: "LN-2024-089",
+    borrower: "Tech Solutions Pty Ltd",
+    product: "SME Term Loan",
+    originalAmount: 85e4,
+    currentBalance: 782450,
+    interestRate: 8.5,
+    term: 36,
+    remainingMonths: 28,
+    repaymentType: "Principal & Interest",
+    frequency: "Monthly",
+    nextPaymentDate: "2024-03-01",
+    nextPaymentAmount: 28450,
+    settlementDate: "2024-01-15",
+    maturityDate: "2027-01-15",
+    status: "current",
+    daysOverdue: 0
+  };
+  const transactions = [
+    { date: "2024-02-01", type: "Repayment", description: "Monthly repayment - Direct Debit", debit: 0, credit: 28450, balance: 782450, status: "cleared" },
+    { date: "2024-02-01", type: "Interest", description: "Interest accrued for February", debit: 5520, credit: 0, balance: 810900, status: "posted" },
+    { date: "2024-01-25", type: "Fee", description: "Valuation report fee", debit: 850, credit: 0, balance: 805380, status: "posted" },
+    { date: "2024-01-15", type: "Disbursement", description: "Loan settlement disbursement", debit: 85e4, credit: 0, balance: 85e4, status: "cleared" },
+    { date: "2024-01-15", type: "Fee", description: "Establishment fee", debit: 4250, credit: 0, balance: 0, status: "cleared" }
+  ];
+  const repaymentSchedule = [
+    { period: 1, date: "2024-02-01", principal: 22930, interest: 5520, total: 28450, balance: 827070, status: "paid" },
+    { period: 2, date: "2024-03-01", principal: 23092, interest: 5358, total: 28450, balance: 803978, status: "due" },
+    { period: 3, date: "2024-04-01", principal: 23255, interest: 5195, total: 28450, balance: 780723, status: "scheduled" },
+    { period: 4, date: "2024-05-01", principal: 23419, interest: 5031, total: 28450, balance: 757304, status: "scheduled" },
+    { period: 5, date: "2024-06-01", principal: 23585, interest: 4865, total: 28450, balance: 733719, status: "scheduled" }
+  ];
+  const feeSchedule = [
+    { name: "Establishment Fee", amount: 4250, type: "One-off", status: "Paid", date: "2024-01-15" },
+    { name: "Monthly Service Fee", amount: 95, type: "Recurring", status: "Active", date: "Monthly" },
+    { name: "Valuation Fee", amount: 850, type: "One-off", status: "Paid", date: "2024-01-25" },
+    { name: "Annual Review Fee", amount: 500, type: "Annual", status: "Scheduled", date: "2025-01-15" }
+  ];
+  const formatCurrency = (value) => {
+    return new Intl.NumberFormat("en-AU", {
+      style: "currency",
+      currency: "AUD",
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }).format(value);
+  };
+  const formatPercent = (value) => {
+    return `${value.toFixed(2)}%`;
+  };
+  const getStatusBadge = (status) => {
+    const badges = {
+      "current": /* @__PURE__ */ jsxDEV("span", { className: "px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded", children: "CURRENT" }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+        lineNumber: 113,
+        columnNumber: 18
+      }, this),
+      "paid": /* @__PURE__ */ jsxDEV("span", { className: "px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded", children: "PAID" }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+        lineNumber: 114,
+        columnNumber: 15
+      }, this),
+      "due": /* @__PURE__ */ jsxDEV("span", { className: "px-2 py-0.5 bg-amber-100 text-amber-700 text-xs font-semibold rounded", children: "DUE" }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+        lineNumber: 115,
+        columnNumber: 14
+      }, this),
+      "overdue": /* @__PURE__ */ jsxDEV("span", { className: "px-2 py-0.5 bg-red-100 text-red-700 text-xs font-semibold rounded", children: "OVERDUE" }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+        lineNumber: 116,
+        columnNumber: 18
+      }, this),
+      "scheduled": /* @__PURE__ */ jsxDEV("span", { className: "px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-semibold rounded", children: "SCHEDULED" }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+        lineNumber: 117,
+        columnNumber: 20
+      }, this),
+      "cleared": /* @__PURE__ */ jsxDEV("span", { className: "px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded", children: "CLEARED" }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+        lineNumber: 118,
+        columnNumber: 18
+      }, this),
+      "posted": /* @__PURE__ */ jsxDEV("span", { className: "px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-semibold rounded", children: "POSTED" }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+        lineNumber: 119,
+        columnNumber: 17
+      }, this)
+    };
+    return badges[status] || /* @__PURE__ */ jsxDEV("span", { className: "px-2 py-0.5 bg-gray-100 text-gray-700 text-xs font-semibold rounded", children: status.toUpperCase() }, void 0, false, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+      lineNumber: 121,
+      columnNumber: 30
+    }, this);
+  };
+  return /* @__PURE__ */ jsxDEV("div", { className: "min-h-screen bg-gray-50", children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "bg-white border-b border-gray-300 px-6 py-4", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between mb-3", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "flex items-center gap-3", children: [
+          onBack && /* @__PURE__ */ jsxDEV(Button, { variant: "outline", size: "sm", onClick: onBack, children: /* @__PURE__ */ jsxDEV(ArrowLeft, { className: "w-4 h-4" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 132,
+            columnNumber: 17
+          }, this) }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 131,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV(DollarSign, { className: "w-6 h-6 text-blue-600" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 135,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { children: [
+            /* @__PURE__ */ jsxDEV("h1", { className: "text-xl font-bold text-gray-900", children: [
+              "Loan Ledger - ",
+              loanDetails.loanId
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+              lineNumber: 137,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("p", { className: "text-xs text-gray-600", children: [
+              loanDetails.borrower,
+              " • ",
+              loanDetails.product
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+              lineNumber: 138,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 136,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+          lineNumber: 129,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "flex items-center gap-2", children: [
+          /* @__PURE__ */ jsxDEV(Button, { variant: "outline", size: "sm", children: [
+            /* @__PURE__ */ jsxDEV(Calculator, { className: "w-4 h-4 mr-2" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+              lineNumber: 143,
+              columnNumber: 15
+            }, this),
+            "Payout Quote"
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 142,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV(Button, { variant: "outline", size: "sm", children: [
+            /* @__PURE__ */ jsxDEV(FileText, { className: "w-4 h-4 mr-2" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+              lineNumber: 147,
+              columnNumber: 15
+            }, this),
+            "Statement"
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 146,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV(Button, { variant: "outline", size: "sm", children: [
+            /* @__PURE__ */ jsxDEV(Download, { className: "w-4 h-4 mr-2" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+              lineNumber: 151,
+              columnNumber: 15
+            }, this),
+            "Export"
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 150,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+          lineNumber: 141,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+        lineNumber: 128,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "grid grid-cols-2 md:grid-cols-6 gap-3", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "bg-gray-50 rounded p-3 border border-gray-200", children: [
+          /* @__PURE__ */ jsxDEV("div", { className: "text-xs text-gray-600", children: "Current Balance" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 160,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-lg font-bold text-gray-900", children: formatCurrency(loanDetails.currentBalance) }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 161,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+          lineNumber: 159,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "bg-blue-50 rounded p-3 border border-blue-200", children: [
+          /* @__PURE__ */ jsxDEV("div", { className: "text-xs text-blue-700", children: "Interest Rate" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 164,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-lg font-bold text-blue-700", children: formatPercent(loanDetails.interestRate) }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 165,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+          lineNumber: 163,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "bg-green-50 rounded p-3 border border-green-200", children: [
+          /* @__PURE__ */ jsxDEV("div", { className: "text-xs text-green-700", children: "Next Payment" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 168,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-lg font-bold text-green-700", children: formatCurrency(loanDetails.nextPaymentAmount) }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 169,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-xs text-green-600 mt-0.5", children: loanDetails.nextPaymentDate }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 170,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+          lineNumber: 167,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "bg-purple-50 rounded p-3 border border-purple-200", children: [
+          /* @__PURE__ */ jsxDEV("div", { className: "text-xs text-purple-700", children: "Remaining Term" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 173,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-lg font-bold text-purple-700", children: [
+            loanDetails.remainingMonths,
+            " months"
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 174,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+          lineNumber: 172,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "bg-amber-50 rounded p-3 border border-amber-200", children: [
+          /* @__PURE__ */ jsxDEV("div", { className: "text-xs text-amber-700", children: "Maturity Date" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 177,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-lg font-bold text-amber-700", children: loanDetails.maturityDate }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 178,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+          lineNumber: 176,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "bg-gradient-to-br from-green-600 to-green-700 text-white rounded p-3", children: [
+          /* @__PURE__ */ jsxDEV("div", { className: "text-xs opacity-90", children: "Status" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 181,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-lg font-bold", children: "CURRENT" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 182,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-xs opacity-90", children: [
+            loanDetails.daysOverdue,
+            " days overdue"
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 183,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+          lineNumber: 180,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+        lineNumber: 158,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+      lineNumber: 127,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "p-6 space-y-6", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "bg-white border border-gray-300 rounded", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "flex border-b border-gray-300", children: [
+          /* @__PURE__ */ jsxDEV(
+            "button",
+            {
+              onClick: () => setSelectedTab("overview"),
+              className: `px-6 py-3 text-sm font-semibold transition-colors ${selectedTab === "overview" ? "bg-blue-50 text-blue-700 border-b-2 border-blue-600" : "text-gray-600 hover:bg-gray-50"}`,
+              children: "Overview"
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+              lineNumber: 192,
+              columnNumber: 13
+            },
+            this
+          ),
+          /* @__PURE__ */ jsxDEV(
+            "button",
+            {
+              onClick: () => setSelectedTab("transactions"),
+              className: `px-6 py-3 text-sm font-semibold transition-colors ${selectedTab === "transactions" ? "bg-blue-50 text-blue-700 border-b-2 border-blue-600" : "text-gray-600 hover:bg-gray-50"}`,
+              children: "Transactions"
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+              lineNumber: 202,
+              columnNumber: 13
+            },
+            this
+          ),
+          /* @__PURE__ */ jsxDEV(
+            "button",
+            {
+              onClick: () => setSelectedTab("schedule"),
+              className: `px-6 py-3 text-sm font-semibold transition-colors ${selectedTab === "schedule" ? "bg-blue-50 text-blue-700 border-b-2 border-blue-600" : "text-gray-600 hover:bg-gray-50"}`,
+              children: "Repayment Schedule"
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+              lineNumber: 212,
+              columnNumber: 13
+            },
+            this
+          ),
+          /* @__PURE__ */ jsxDEV(
+            "button",
+            {
+              onClick: () => setSelectedTab("fees"),
+              className: `px-6 py-3 text-sm font-semibold transition-colors ${selectedTab === "fees" ? "bg-blue-50 text-blue-700 border-b-2 border-blue-600" : "text-gray-600 hover:bg-gray-50"}`,
+              children: "Fees"
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+              lineNumber: 222,
+              columnNumber: 13
+            },
+            this
+          )
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+          lineNumber: 191,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "p-6", children: [
+          selectedTab === "overview" && /* @__PURE__ */ jsxDEV("div", { className: "space-y-6", children: [
+            /* @__PURE__ */ jsxDEV("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-6", children: [
+              /* @__PURE__ */ jsxDEV("div", { className: "bg-gray-50 border border-gray-200 rounded p-4", children: [
+                /* @__PURE__ */ jsxDEV("h3", { className: "font-semibold text-gray-900 mb-3", children: "Loan Details" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                  lineNumber: 241,
+                  columnNumber: 21
+                }, this),
+                /* @__PURE__ */ jsxDEV("div", { className: "space-y-2 text-sm", children: [
+                  /* @__PURE__ */ jsxDEV("div", { className: "flex justify-between", children: [
+                    /* @__PURE__ */ jsxDEV("span", { className: "text-gray-600", children: "Original Amount:" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                      lineNumber: 244,
+                      columnNumber: 25
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("span", { className: "font-semibold text-gray-900", children: formatCurrency(loanDetails.originalAmount) }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                      lineNumber: 245,
+                      columnNumber: 25
+                    }, this)
+                  ] }, void 0, true, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                    lineNumber: 243,
+                    columnNumber: 23
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("div", { className: "flex justify-between", children: [
+                    /* @__PURE__ */ jsxDEV("span", { className: "text-gray-600", children: "Current Balance:" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                      lineNumber: 248,
+                      columnNumber: 25
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("span", { className: "font-semibold text-gray-900", children: formatCurrency(loanDetails.currentBalance) }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                      lineNumber: 249,
+                      columnNumber: 25
+                    }, this)
+                  ] }, void 0, true, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                    lineNumber: 247,
+                    columnNumber: 23
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("div", { className: "flex justify-between", children: [
+                    /* @__PURE__ */ jsxDEV("span", { className: "text-gray-600", children: "Interest Rate:" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                      lineNumber: 252,
+                      columnNumber: 25
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("span", { className: "font-semibold text-gray-900", children: [
+                      formatPercent(loanDetails.interestRate),
+                      " p.a."
+                    ] }, void 0, true, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                      lineNumber: 253,
+                      columnNumber: 25
+                    }, this)
+                  ] }, void 0, true, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                    lineNumber: 251,
+                    columnNumber: 23
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("div", { className: "flex justify-between", children: [
+                    /* @__PURE__ */ jsxDEV("span", { className: "text-gray-600", children: "Repayment Type:" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                      lineNumber: 256,
+                      columnNumber: 25
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("span", { className: "font-semibold text-gray-900", children: loanDetails.repaymentType }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                      lineNumber: 257,
+                      columnNumber: 25
+                    }, this)
+                  ] }, void 0, true, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                    lineNumber: 255,
+                    columnNumber: 23
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("div", { className: "flex justify-between", children: [
+                    /* @__PURE__ */ jsxDEV("span", { className: "text-gray-600", children: "Frequency:" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                      lineNumber: 260,
+                      columnNumber: 25
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("span", { className: "font-semibold text-gray-900", children: loanDetails.frequency }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                      lineNumber: 261,
+                      columnNumber: 25
+                    }, this)
+                  ] }, void 0, true, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                    lineNumber: 259,
+                    columnNumber: 23
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("div", { className: "flex justify-between", children: [
+                    /* @__PURE__ */ jsxDEV("span", { className: "text-gray-600", children: "Settlement Date:" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                      lineNumber: 264,
+                      columnNumber: 25
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("span", { className: "font-semibold text-gray-900", children: loanDetails.settlementDate }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                      lineNumber: 265,
+                      columnNumber: 25
+                    }, this)
+                  ] }, void 0, true, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                    lineNumber: 263,
+                    columnNumber: 23
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("div", { className: "flex justify-between", children: [
+                    /* @__PURE__ */ jsxDEV("span", { className: "text-gray-600", children: "Maturity Date:" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                      lineNumber: 268,
+                      columnNumber: 25
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("span", { className: "font-semibold text-gray-900", children: loanDetails.maturityDate }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                      lineNumber: 269,
+                      columnNumber: 25
+                    }, this)
+                  ] }, void 0, true, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                    lineNumber: 267,
+                    columnNumber: 23
+                  }, this)
+                ] }, void 0, true, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                  lineNumber: 242,
+                  columnNumber: 21
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                lineNumber: 240,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "bg-gray-50 border border-gray-200 rounded p-4", children: [
+                /* @__PURE__ */ jsxDEV("h3", { className: "font-semibold text-gray-900 mb-3", children: "Payment Summary" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                  lineNumber: 276,
+                  columnNumber: 21
+                }, this),
+                /* @__PURE__ */ jsxDEV("div", { className: "space-y-2 text-sm", children: [
+                  /* @__PURE__ */ jsxDEV("div", { className: "flex justify-between", children: [
+                    /* @__PURE__ */ jsxDEV("span", { className: "text-gray-600", children: "Next Payment Due:" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                      lineNumber: 279,
+                      columnNumber: 25
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("span", { className: "font-semibold text-gray-900", children: loanDetails.nextPaymentDate }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                      lineNumber: 280,
+                      columnNumber: 25
+                    }, this)
+                  ] }, void 0, true, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                    lineNumber: 278,
+                    columnNumber: 23
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("div", { className: "flex justify-between", children: [
+                    /* @__PURE__ */ jsxDEV("span", { className: "text-gray-600", children: "Next Payment Amount:" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                      lineNumber: 283,
+                      columnNumber: 25
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("span", { className: "font-semibold text-gray-900", children: formatCurrency(loanDetails.nextPaymentAmount) }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                      lineNumber: 284,
+                      columnNumber: 25
+                    }, this)
+                  ] }, void 0, true, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                    lineNumber: 282,
+                    columnNumber: 23
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("div", { className: "flex justify-between", children: [
+                    /* @__PURE__ */ jsxDEV("span", { className: "text-gray-600", children: "Remaining Payments:" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                      lineNumber: 287,
+                      columnNumber: 25
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("span", { className: "font-semibold text-gray-900", children: loanDetails.remainingMonths }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                      lineNumber: 288,
+                      columnNumber: 25
+                    }, this)
+                  ] }, void 0, true, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                    lineNumber: 286,
+                    columnNumber: 23
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("div", { className: "flex justify-between border-t border-gray-300 pt-2 mt-2", children: [
+                    /* @__PURE__ */ jsxDEV("span", { className: "text-gray-600", children: "Total Interest (Est):" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                      lineNumber: 291,
+                      columnNumber: 25
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("span", { className: "font-semibold text-gray-900", children: formatCurrency(175e3) }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                      lineNumber: 292,
+                      columnNumber: 25
+                    }, this)
+                  ] }, void 0, true, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                    lineNumber: 290,
+                    columnNumber: 23
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("div", { className: "flex justify-between", children: [
+                    /* @__PURE__ */ jsxDEV("span", { className: "text-gray-600", children: "Total Fees (Est):" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                      lineNumber: 295,
+                      columnNumber: 25
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("span", { className: "font-semibold text-gray-900", children: formatCurrency(8950) }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                      lineNumber: 296,
+                      columnNumber: 25
+                    }, this)
+                  ] }, void 0, true, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                    lineNumber: 294,
+                    columnNumber: 23
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("div", { className: "flex justify-between border-t border-gray-300 pt-2 mt-2", children: [
+                    /* @__PURE__ */ jsxDEV("span", { className: "text-gray-600", children: "Total Payable:" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                      lineNumber: 299,
+                      columnNumber: 25
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("span", { className: "font-semibold text-gray-900", children: formatCurrency(1033950) }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                      lineNumber: 300,
+                      columnNumber: 25
+                    }, this)
+                  ] }, void 0, true, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                    lineNumber: 298,
+                    columnNumber: 23
+                  }, this)
+                ] }, void 0, true, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                  lineNumber: 277,
+                  columnNumber: 21
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                lineNumber: 275,
+                columnNumber: 19
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+              lineNumber: 238,
+              columnNumber: 17
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { className: "bg-gray-50 border border-gray-200 rounded p-4", children: [
+              /* @__PURE__ */ jsxDEV("div", { className: "flex justify-between mb-2", children: [
+                /* @__PURE__ */ jsxDEV("span", { className: "text-sm font-semibold text-gray-900", children: "Loan Progress" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                  lineNumber: 309,
+                  columnNumber: 21
+                }, this),
+                /* @__PURE__ */ jsxDEV("span", { className: "text-sm text-gray-600", children: [
+                  ((loanDetails.originalAmount - loanDetails.currentBalance) / loanDetails.originalAmount * 100).toFixed(1),
+                  "% paid down"
+                ] }, void 0, true, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                  lineNumber: 310,
+                  columnNumber: 21
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                lineNumber: 308,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "w-full bg-gray-200 rounded-full h-4", children: /* @__PURE__ */ jsxDEV(
+                "div",
+                {
+                  className: "bg-blue-600 h-4 rounded-full transition-all",
+                  style: { width: `${(loanDetails.originalAmount - loanDetails.currentBalance) / loanDetails.originalAmount * 100}%` }
+                },
+                void 0,
+                false,
+                {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                  lineNumber: 313,
+                  columnNumber: 21
+                },
+                this
+              ) }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                lineNumber: 312,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "flex justify-between mt-2 text-xs text-gray-600", children: [
+                /* @__PURE__ */ jsxDEV("span", { children: [
+                  "Paid: ",
+                  formatCurrency(loanDetails.originalAmount - loanDetails.currentBalance)
+                ] }, void 0, true, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                  lineNumber: 319,
+                  columnNumber: 21
+                }, this),
+                /* @__PURE__ */ jsxDEV("span", { children: [
+                  "Remaining: ",
+                  formatCurrency(loanDetails.currentBalance)
+                ] }, void 0, true, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                  lineNumber: 320,
+                  columnNumber: 21
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                lineNumber: 318,
+                columnNumber: 19
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+              lineNumber: 307,
+              columnNumber: 17
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 237,
+            columnNumber: 13
+          }, this),
+          selectedTab === "transactions" && /* @__PURE__ */ jsxDEV("div", { className: "border border-gray-300 rounded overflow-hidden", children: /* @__PURE__ */ jsxDEV("table", { className: "w-full text-sm border-collapse", children: [
+            /* @__PURE__ */ jsxDEV("thead", { children: /* @__PURE__ */ jsxDEV("tr", { className: "bg-gray-50", children: [
+              /* @__PURE__ */ jsxDEV("th", { className: "border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700", children: "Date" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                lineNumber: 332,
+                columnNumber: 23
+              }, this),
+              /* @__PURE__ */ jsxDEV("th", { className: "border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700", children: "Type" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                lineNumber: 333,
+                columnNumber: 23
+              }, this),
+              /* @__PURE__ */ jsxDEV("th", { className: "border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700", children: "Description" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                lineNumber: 334,
+                columnNumber: 23
+              }, this),
+              /* @__PURE__ */ jsxDEV("th", { className: "border border-gray-300 px-3 py-2 text-right font-semibold text-gray-700", children: "Debit" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                lineNumber: 335,
+                columnNumber: 23
+              }, this),
+              /* @__PURE__ */ jsxDEV("th", { className: "border border-gray-300 px-3 py-2 text-right font-semibold text-gray-700", children: "Credit" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                lineNumber: 336,
+                columnNumber: 23
+              }, this),
+              /* @__PURE__ */ jsxDEV("th", { className: "border border-gray-300 px-3 py-2 text-right font-semibold text-gray-700", children: "Balance" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                lineNumber: 337,
+                columnNumber: 23
+              }, this),
+              /* @__PURE__ */ jsxDEV("th", { className: "border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700", children: "Status" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                lineNumber: 338,
+                columnNumber: 23
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+              lineNumber: 331,
+              columnNumber: 21
+            }, this) }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+              lineNumber: 330,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ jsxDEV("tbody", { children: transactions.map(
+              (txn, idx) => /* @__PURE__ */ jsxDEV("tr", { className: "hover:bg-blue-50", children: [
+                /* @__PURE__ */ jsxDEV("td", { className: "border border-gray-300 px-3 py-2 text-gray-900", children: txn.date }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                  lineNumber: 344,
+                  columnNumber: 25
+                }, this),
+                /* @__PURE__ */ jsxDEV("td", { className: "border border-gray-300 px-3 py-2 text-gray-900 font-medium", children: txn.type }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                  lineNumber: 345,
+                  columnNumber: 25
+                }, this),
+                /* @__PURE__ */ jsxDEV("td", { className: "border border-gray-300 px-3 py-2 text-gray-700", children: txn.description }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                  lineNumber: 346,
+                  columnNumber: 25
+                }, this),
+                /* @__PURE__ */ jsxDEV("td", { className: "border border-gray-300 px-3 py-2 text-right text-red-600 font-mono", children: txn.debit > 0 ? formatCurrency(txn.debit) : "—" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                  lineNumber: 347,
+                  columnNumber: 25
+                }, this),
+                /* @__PURE__ */ jsxDEV("td", { className: "border border-gray-300 px-3 py-2 text-right text-green-600 font-mono", children: txn.credit > 0 ? formatCurrency(txn.credit) : "—" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                  lineNumber: 350,
+                  columnNumber: 25
+                }, this),
+                /* @__PURE__ */ jsxDEV("td", { className: "border border-gray-300 px-3 py-2 text-right font-mono font-semibold text-gray-900", children: formatCurrency(txn.balance) }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                  lineNumber: 353,
+                  columnNumber: 25
+                }, this),
+                /* @__PURE__ */ jsxDEV("td", { className: "border border-gray-300 px-3 py-2 text-center", children: getStatusBadge(txn.status) }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                  lineNumber: 356,
+                  columnNumber: 25
+                }, this)
+              ] }, idx, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                lineNumber: 343,
+                columnNumber: 19
+              }, this)
+            ) }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+              lineNumber: 341,
+              columnNumber: 19
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 329,
+            columnNumber: 17
+          }, this) }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 328,
+            columnNumber: 13
+          }, this),
+          selectedTab === "schedule" && /* @__PURE__ */ jsxDEV("div", { className: "border border-gray-300 rounded overflow-hidden", children: /* @__PURE__ */ jsxDEV("table", { className: "w-full text-sm border-collapse", children: [
+            /* @__PURE__ */ jsxDEV("thead", { children: /* @__PURE__ */ jsxDEV("tr", { className: "bg-gray-50", children: [
+              /* @__PURE__ */ jsxDEV("th", { className: "border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700", children: "#" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                lineNumber: 372,
+                columnNumber: 23
+              }, this),
+              /* @__PURE__ */ jsxDEV("th", { className: "border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700", children: "Date" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                lineNumber: 373,
+                columnNumber: 23
+              }, this),
+              /* @__PURE__ */ jsxDEV("th", { className: "border border-gray-300 px-3 py-2 text-right font-semibold text-gray-700", children: "Principal" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                lineNumber: 374,
+                columnNumber: 23
+              }, this),
+              /* @__PURE__ */ jsxDEV("th", { className: "border border-gray-300 px-3 py-2 text-right font-semibold text-gray-700", children: "Interest" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                lineNumber: 375,
+                columnNumber: 23
+              }, this),
+              /* @__PURE__ */ jsxDEV("th", { className: "border border-gray-300 px-3 py-2 text-right font-semibold text-gray-700", children: "Total Payment" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                lineNumber: 376,
+                columnNumber: 23
+              }, this),
+              /* @__PURE__ */ jsxDEV("th", { className: "border border-gray-300 px-3 py-2 text-right font-semibold text-gray-700", children: "Balance" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                lineNumber: 377,
+                columnNumber: 23
+              }, this),
+              /* @__PURE__ */ jsxDEV("th", { className: "border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700", children: "Status" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                lineNumber: 378,
+                columnNumber: 23
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+              lineNumber: 371,
+              columnNumber: 21
+            }, this) }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+              lineNumber: 370,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ jsxDEV("tbody", { children: repaymentSchedule.map(
+              (payment) => /* @__PURE__ */ jsxDEV("tr", { className: "hover:bg-blue-50", children: [
+                /* @__PURE__ */ jsxDEV("td", { className: "border border-gray-300 px-3 py-2 text-center text-gray-900 font-medium", children: payment.period }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                  lineNumber: 384,
+                  columnNumber: 25
+                }, this),
+                /* @__PURE__ */ jsxDEV("td", { className: "border border-gray-300 px-3 py-2 text-gray-900", children: payment.date }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                  lineNumber: 385,
+                  columnNumber: 25
+                }, this),
+                /* @__PURE__ */ jsxDEV("td", { className: "border border-gray-300 px-3 py-2 text-right font-mono text-gray-900", children: formatCurrency(payment.principal) }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                  lineNumber: 386,
+                  columnNumber: 25
+                }, this),
+                /* @__PURE__ */ jsxDEV("td", { className: "border border-gray-300 px-3 py-2 text-right font-mono text-gray-900", children: formatCurrency(payment.interest) }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                  lineNumber: 389,
+                  columnNumber: 25
+                }, this),
+                /* @__PURE__ */ jsxDEV("td", { className: "border border-gray-300 px-3 py-2 text-right font-mono font-semibold text-gray-900", children: formatCurrency(payment.total) }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                  lineNumber: 392,
+                  columnNumber: 25
+                }, this),
+                /* @__PURE__ */ jsxDEV("td", { className: "border border-gray-300 px-3 py-2 text-right font-mono text-gray-900", children: formatCurrency(payment.balance) }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                  lineNumber: 395,
+                  columnNumber: 25
+                }, this),
+                /* @__PURE__ */ jsxDEV("td", { className: "border border-gray-300 px-3 py-2 text-center", children: getStatusBadge(payment.status) }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                  lineNumber: 398,
+                  columnNumber: 25
+                }, this)
+              ] }, payment.period, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                lineNumber: 383,
+                columnNumber: 19
+              }, this)
+            ) }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+              lineNumber: 381,
+              columnNumber: 19
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 369,
+            columnNumber: 17
+          }, this) }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 368,
+            columnNumber: 13
+          }, this),
+          selectedTab === "fees" && /* @__PURE__ */ jsxDEV("div", { className: "space-y-4", children: [
+            /* @__PURE__ */ jsxDEV("div", { className: "border border-gray-300 rounded overflow-hidden", children: /* @__PURE__ */ jsxDEV("table", { className: "w-full text-sm border-collapse", children: [
+              /* @__PURE__ */ jsxDEV("thead", { children: /* @__PURE__ */ jsxDEV("tr", { className: "bg-gray-50", children: [
+                /* @__PURE__ */ jsxDEV("th", { className: "border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700", children: "Fee Name" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                  lineNumber: 415,
+                  columnNumber: 25
+                }, this),
+                /* @__PURE__ */ jsxDEV("th", { className: "border border-gray-300 px-3 py-2 text-right font-semibold text-gray-700", children: "Amount" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                  lineNumber: 416,
+                  columnNumber: 25
+                }, this),
+                /* @__PURE__ */ jsxDEV("th", { className: "border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700", children: "Type" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                  lineNumber: 417,
+                  columnNumber: 25
+                }, this),
+                /* @__PURE__ */ jsxDEV("th", { className: "border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700", children: "Status" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                  lineNumber: 418,
+                  columnNumber: 25
+                }, this),
+                /* @__PURE__ */ jsxDEV("th", { className: "border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700", children: "Date" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                  lineNumber: 419,
+                  columnNumber: 25
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                lineNumber: 414,
+                columnNumber: 23
+              }, this) }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                lineNumber: 413,
+                columnNumber: 21
+              }, this),
+              /* @__PURE__ */ jsxDEV("tbody", { children: feeSchedule.map(
+                (fee, idx) => /* @__PURE__ */ jsxDEV("tr", { className: "hover:bg-blue-50", children: [
+                  /* @__PURE__ */ jsxDEV("td", { className: "border border-gray-300 px-3 py-2 text-gray-900 font-medium", children: fee.name }, void 0, false, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                    lineNumber: 425,
+                    columnNumber: 27
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("td", { className: "border border-gray-300 px-3 py-2 text-right font-mono text-gray-900", children: formatCurrency(fee.amount) }, void 0, false, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                    lineNumber: 426,
+                    columnNumber: 27
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("td", { className: "border border-gray-300 px-3 py-2 text-gray-700", children: fee.type }, void 0, false, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                    lineNumber: 429,
+                    columnNumber: 27
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("td", { className: "border border-gray-300 px-3 py-2 text-center", children: /* @__PURE__ */ jsxDEV("span", { className: `px-2 py-0.5 rounded text-xs font-semibold ${fee.status === "Paid" ? "bg-green-100 text-green-700" : fee.status === "Active" ? "bg-blue-100 text-blue-700" : "bg-gray-100 text-gray-700"}`, children: fee.status }, void 0, false, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                    lineNumber: 431,
+                    columnNumber: 29
+                  }, this) }, void 0, false, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                    lineNumber: 430,
+                    columnNumber: 27
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("td", { className: "border border-gray-300 px-3 py-2 text-gray-700", children: fee.date }, void 0, false, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                    lineNumber: 439,
+                    columnNumber: 27
+                  }, this)
+                ] }, idx, true, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                  lineNumber: 424,
+                  columnNumber: 21
+                }, this)
+              ) }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                lineNumber: 422,
+                columnNumber: 21
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+              lineNumber: 412,
+              columnNumber: 19
+            }, this) }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+              lineNumber: 411,
+              columnNumber: 17
+            }, this),
+            /* @__PURE__ */ jsxDEV(Button, { variant: "outline", children: [
+              /* @__PURE__ */ jsxDEV(Plus, { className: "w-4 h-4 mr-2" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+                lineNumber: 447,
+                columnNumber: 19
+              }, this),
+              "Add Manual Fee"
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+              lineNumber: 446,
+              columnNumber: 17
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 410,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+          lineNumber: 234,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+        lineNumber: 190,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-4", children: [
+        /* @__PURE__ */ jsxDEV("button", { className: "bg-white border border-gray-300 rounded p-4 hover:border-blue-400 hover:shadow-md transition-all text-left", children: [
+          /* @__PURE__ */ jsxDEV(Calculator, { className: "w-6 h-6 text-blue-600 mb-2" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 458,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "font-semibold text-gray-900 text-sm", children: "Payout Quote" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 459,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-xs text-gray-600 mt-1", children: "Calculate early payout" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 460,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+          lineNumber: 457,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("button", { className: "bg-white border border-gray-300 rounded p-4 hover:border-blue-400 hover:shadow-md transition-all text-left", children: [
+          /* @__PURE__ */ jsxDEV(TrendingUp, { className: "w-6 h-6 text-purple-600 mb-2" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 464,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "font-semibold text-gray-900 text-sm", children: "Rate Change" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 465,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-xs text-gray-600 mt-1", children: "Update interest rate" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 466,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+          lineNumber: 463,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("button", { className: "bg-white border border-gray-300 rounded p-4 hover:border-blue-400 hover:shadow-md transition-all text-left", children: [
+          /* @__PURE__ */ jsxDEV(Calendar, { className: "w-6 h-6 text-green-600 mb-2" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 470,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "font-semibold text-gray-900 text-sm", children: "Payment Hold" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 471,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-xs text-gray-600 mt-1", children: "Pause repayments" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 472,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+          lineNumber: 469,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("button", { className: "bg-white border border-gray-300 rounded p-4 hover:border-blue-400 hover:shadow-md transition-all text-left", children: [
+          /* @__PURE__ */ jsxDEV(Send, { className: "w-6 h-6 text-indigo-600 mb-2" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 476,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "font-semibold text-gray-900 text-sm", children: "Send Statement" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 477,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-xs text-gray-600 mt-1", children: "Email to borrower" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+            lineNumber: 478,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+          lineNumber: 475,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+        lineNumber: 456,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+      lineNumber: 188,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx",
+    lineNumber: 125,
+    columnNumber: 5
+  }, this);
+}
+_s(LoanLedger, "vOCEdrSz2eF/gUGSAasOGbWKEBc=");
+_c = LoanLedger;
+var _c;
+$RefreshReg$(_c, "LoanLedger");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/LoanLedger.tsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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QUE7QUFBQSxhQXdCQTtBQUFBLFNBcFNGO0FBQUE7QUFBQTtBQUFBO0FBQUEsV0FxU0E7QUFBQSxPQXBXRjtBQUFBO0FBQUE7QUFBQTtBQUFBLFNBcVdBO0FBRUo7QUFBQ3BELEdBL2FlSCxZQUFVO0FBQUEsS0FBVkE7QUFBVSxJQUFBMEQ7QUFBQSxhQUFBQSxJQUFBIiwibmFtZXMiOlsidXNlU3RhdGUiLCJCdXR0b24iLCJBcnJvd0xlZnQiLCJEb2xsYXJTaWduIiwiRmlsZVRleHQiLCJDYWxjdWxhdG9yIiwiRG93bmxvYWQiLCJTZW5kIiwiUGx1cyIsIlRyZW5kaW5nVXAiLCJDYWxlbmRhciIsIkxvYW5MZWRnZXIiLCJvbk5hdmlnYXRlIiwib25CYWNrIiwiX3MiLCJzZWxlY3RlZFRhYiIsInNldFNlbGVjdGVkVGFiIiwibG9hbkRldGFpbHMiLCJsb2FuSWQiLCJib3Jyb3dlciIsInByb2R1Y3QiLCJvcmlnaW5hbEFtb3VudCIsImN1cnJlbnRCYWxhbmNlIiwiaW50ZXJlc3RSYXRlIiwidGVybSIsInJlbWFpbmluZ01vbnRocyIsInJlcGF5bWVudFR5cGUiLCJmcmVxdWVuY3kiLCJuZXh0UGF5bWVudERhdGUiLCJuZXh0UGF5bWVudEFtb3VudCIsInNldHRsZW1lbnREYXRlIiwibWF0dXJpdHlEYXRlIiwic3RhdHVzIiwiZGF5c092ZXJkdWUiLCJ0cmFuc2FjdGlvbnMiLCJkYXRlIiwidHlwZSIsImRlc2NyaXB0aW9uIiwiZGViaXQiLCJjcmVkaXQiLCJiYWxhbmNlIiwicmVwYXltZW50U2NoZWR1bGUiLCJwZXJpb2QiLCJwcmluY2lwYWwiLCJpbnRlcmVzdCIsInRvdGFsIiwiZmVlU2NoZWR1bGUiLCJuYW1lIiwiYW1vdW50IiwiZm9ybWF0Q3VycmVuY3kiLCJ2YWx1ZSIsIkludGwiLCJOdW1iZXJGb3JtYXQiLCJzdHlsZSIsImN1cnJlbmN5IiwibWluaW11bUZyYWN0aW9uRGlnaXRzIiwibWF4aW11bUZyYWN0aW9uRGlnaXRzIiwiZm9ybWF0IiwiZm9ybWF0UGVyY2VudCIsInRvRml4ZWQiLCJnZXRTdGF0dXNCYWRnZSIsImJhZGdlcyIsInRvVXBwZXJDYXNlIiwid2lkdGgiLCJtYXAiLCJ0eG4iLCJpZHgiLCJwYXltZW50IiwiZmVlIiwiX2MiXSwiaWdub3JlTGlzdCI6W10sInNvdXJjZXMiOlsiTG9hbkxlZGdlci50c3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0LCB7IHVzZVN0YXRlIH0gZnJvbSAncmVhY3QnO1xuaW1wb3J0IHsgQnV0dG9uIH0gZnJvbSAnLi4vdWkvYnV0dG9uJztcbmltcG9ydCB7XG4gIEFycm93TGVmdCxcbiAgRG9sbGFyU2lnbixcbiAgRmlsZVRleHQsXG4gIENsb2NrLFxuICBDYWxjdWxhdG9yLFxuICBEb3dubG9hZCxcbiAgU2VuZCxcbiAgRXllLFxuICBQbHVzLFxuICBUcmVuZGluZ1VwLFxuICBBbGVydENpcmNsZSxcbiAgQ2hlY2tDaXJjbGUsXG4gIENhbGVuZGFyXG59IGZyb20gJ2x1Y2lkZS1yZWFjdCc7XG5cbmludGVyZmFjZSBMb2FuTGVkZ2VyUHJvcHMge1xuICBvbk5hdmlnYXRlPzogKHBhZ2U6IHN0cmluZykgPT4gdm9pZDtcbiAgb25CYWNrPzogKCkgPT4gdm9pZDtcbn1cblxuaW50ZXJmYWNlIFRyYW5zYWN0aW9uIHtcbiAgZGF0ZTogc3RyaW5nO1xuICB0eXBlOiBzdHJpbmc7XG4gIGRlc2NyaXB0aW9uOiBzdHJpbmc7XG4gIGRlYml0OiBudW1iZXI7XG4gIGNyZWRpdDogbnVtYmVyO1xuICBiYWxhbmNlOiBudW1iZXI7XG4gIHN0YXR1czogc3RyaW5nO1xufVxuXG5leHBvcnQgZnVuY3Rpb24gTG9hbkxlZGdlcih7IG9uTmF2aWdhdGUsIG9uQmFjayB9OiBMb2FuTGVkZ2VyUHJvcHMpIHtcbiAgY29uc3QgW3NlbGVjdGVkVGFiLCBzZXRTZWxlY3RlZFRhYl0gPSB1c2VTdGF0ZTwnb3ZlcnZpZXcnIHwgJ3RyYW5zYWN0aW9ucycgfCAnc2NoZWR1bGUnIHwgJ2ZlZXMnPignb3ZlcnZpZXcnKTtcblxuICBjb25zdCBsb2FuRGV0YWlscyA9IHtcbiAgICBsb2FuSWQ6ICdMTi0yMDI0LTA4OScsXG4gICAgYm9ycm93ZXI6ICdUZWNoIFNvbHV0aW9ucyBQdHkgTHRkJyxcbiAgICBwcm9kdWN0OiAnU01FIFRlcm0gTG9hbicsXG4gICAgb3JpZ2luYWxBbW91bnQ6IDg1MDAwMCxcbiAgICBjdXJyZW50QmFsYW5jZTogNzgyNDUwLFxuICAgIGludGVyZXN0UmF0ZTogOC41LFxuICAgIHRlcm06IDM2LFxuICAgIHJlbWFpbmluZ01vbnRoczogMjgsXG4gICAgcmVwYXltZW50VHlwZTogJ1ByaW5jaXBhbCAmIEludGVyZXN0JyxcbiAgICBmcmVxdWVuY3k6ICdNb250aGx5JyxcbiAgICBuZXh0UGF5bWVudERhdGU6ICcyMDI0LTAzLTAxJyxcbiAgICBuZXh0UGF5bWVudEFtb3VudDogMjg0NTAsXG4gICAgc2V0dGxlbWVudERhdGU6ICcyMDI0LTAxLTE1JyxcbiAgICBtYXR1cml0eURhdGU6ICcyMDI3LTAxLTE1JyxcbiAgICBzdGF0dXM6ICdjdXJyZW50JyxcbiAgICBkYXlzT3ZlcmR1ZTogMFxuICB9O1xuXG4gIGNvbnN0IHRyYW5zYWN0aW9uczogVHJhbnNhY3Rpb25bXSA9IFtcbiAgICB7IGRhdGU6ICcyMDI0LTAyLTAxJywgdHlwZTogJ1JlcGF5bWVudCcsIGRlc2NyaXB0aW9uOiAnTW9udGhseSByZXBheW1lbnQgLSBEaXJlY3QgRGViaXQnLCBkZWJpdDogMCwgY3JlZGl0OiAyODQ1MCwgYmFsYW5jZTogNzgyNDUwLCBzdGF0dXM6ICdjbGVhcmVkJyB9LFxuICAgIHsgZGF0ZTogJzIwMjQtMDItMDEnLCB0eXBlOiAnSW50ZXJlc3QnLCBkZXNjcmlwdGlvbjogJ0ludGVyZXN0IGFjY3J1ZWQgZm9yIEZlYnJ1YXJ5JywgZGViaXQ6IDU1MjAsIGNyZWRpdDogMCwgYmFsYW5jZTogODEwOTAwLCBzdGF0dXM6ICdwb3N0ZWQnIH0sXG4gICAgeyBkYXRlOiAnMjAyNC0wMS0yNScsIHR5cGU6ICdGZWUnLCBkZXNjcmlwdGlvbjogJ1ZhbHVhdGlvbiByZXBvcnQgZmVlJywgZGViaXQ6IDg1MCwgY3JlZGl0OiAwLCBiYWxhbmNlOiA4MDUzODAsIHN0YXR1czogJ3Bvc3RlZCcgfSxcbiAgICB7IGRhdGU6ICcyMDI0LTAxLTE1JywgdHlwZTogJ0Rpc2J1cnNlbWVudCcsIGRlc2NyaXB0aW9uOiAnTG9hbiBzZXR0bGVtZW50IGRpc2J1cnNlbWVudCcsIGRlYml0OiA4NTAwMDAsIGNyZWRpdDogMCwgYmFsYW5jZTogODUwMDAwLCBzdGF0dXM6ICdjbGVhcmVkJyB9LFxuICAgIHsgZGF0ZTogJzIwMjQtMDEtMTUnLCB0eXBlOiAnRmVlJywgZGVzY3JpcHRpb246ICdFc3RhYmxpc2htZW50IGZlZScsIGRlYml0OiA0MjUwLCBjcmVkaXQ6IDAsIGJhbGFuY2U6IDAsIHN0YXR1czogJ2NsZWFyZWQnIH1cbiAgXTtcblxuICBjb25zdCByZXBheW1lbnRTY2hlZHVsZSA9IFtcbiAgICB7IHBlcmlvZDogMSwgZGF0ZTogJzIwMjQtMDItMDEnLCBwcmluY2lwYWw6IDIyOTMwLCBpbnRlcmVzdDogNTUyMCwgdG90YWw6IDI4NDUwLCBiYWxhbmNlOiA4MjcwNzAsIHN0YXR1czogJ3BhaWQnIH0sXG4gICAgeyBwZXJpb2Q6IDIsIGRhdGU6ICcyMDI0LTAzLTAxJywgcHJpbmNpcGFsOiAyMzA5MiwgaW50ZXJlc3Q6IDUzNTgsIHRvdGFsOiAyODQ1MCwgYmFsYW5jZTogODAzOTc4LCBzdGF0dXM6ICdkdWUnIH0sXG4gICAgeyBwZXJpb2Q6IDMsIGRhdGU6ICcyMDI0LTA0LTAxJywgcHJpbmNpcGFsOiAyMzI1NSwgaW50ZXJlc3Q6IDUxOTUsIHRvdGFsOiAyODQ1MCwgYmFsYW5jZTogNzgwNzIzLCBzdGF0dXM6ICdzY2hlZHVsZWQnIH0sXG4gICAgeyBwZXJpb2Q6IDQsIGRhdGU6ICcyMDI0LTA1LTAxJywgcHJpbmNpcGFsOiAyMzQxOSwgaW50ZXJlc3Q6IDUwMzEsIHRvdGFsOiAyODQ1MCwgYmFsYW5jZTogNzU3MzA0LCBzdGF0dXM6ICdzY2hlZHVsZWQnIH0sXG4gICAgeyBwZXJpb2Q6IDUsIGRhdGU6ICcyMDI0LTA2LTAxJywgcHJpbmNpcGFsOiAyMzU4NSwgaW50ZXJlc3Q6IDQ4NjUsIHRvdGFsOiAyODQ1MCwgYmFsYW5jZTogNzMzNzE5LCBzdGF0dXM6ICdzY2hlZHVsZWQnIH1cbiAgXTtcblxuICBjb25zdCBmZWVTY2hlZHVsZSA9IFtcbiAgICB7IG5hbWU6ICdFc3RhYmxpc2htZW50IEZlZScsIGFtb3VudDogNDI1MCwgdHlwZTogJ09uZS1vZmYnLCBzdGF0dXM6ICdQYWlkJywgZGF0ZTogJzIwMjQtMDEtMTUnIH0sXG4gICAgeyBuYW1lOiAnTW9udGhseSBTZXJ2aWNlIEZlZScsIGFtb3VudDogOTUsIHR5cGU6ICdSZWN1cnJpbmcnLCBzdGF0dXM6ICdBY3RpdmUnLCBkYXRlOiAnTW9udGhseScgfSxcbiAgICB7IG5hbWU6ICdWYWx1YXRpb24gRmVlJywgYW1vdW50OiA4NTAsIHR5cGU6ICdPbmUtb2ZmJywgc3RhdHVzOiAnUGFpZCcsIGRhdGU6ICcyMDI0LTAxLTI1JyB9LFxuICAgIHsgbmFtZTogJ0FubnVhbCBSZXZpZXcgRmVlJywgYW1vdW50OiA1MDAsIHR5cGU6ICdBbm51YWwnLCBzdGF0dXM6ICdTY2hlZHVsZWQnLCBkYXRlOiAnMjAyNS0wMS0xNScgfVxuICBdO1xuXG4gIGNvbnN0IGZvcm1hdEN1cnJlbmN5ID0gKHZhbHVlOiBudW1iZXIpID0+IHtcbiAgICByZXR1cm4gbmV3IEludGwuTnVtYmVyRm9ybWF0KCdlbi1BVScsIHtcbiAgICAgIHN0eWxlOiAnY3VycmVuY3knLFxuICAgICAgY3VycmVuY3k6ICdBVUQnLFxuICAgICAgbWluaW11bUZyYWN0aW9uRGlnaXRzOiAyLFxuICAgICAgbWF4aW11bUZyYWN0aW9uRGlnaXRzOiAyXG4gICAgfSkuZm9ybWF0KHZhbHVlKTtcbiAgfTtcblxuICBjb25zdCBmb3JtYXRQZXJjZW50ID0gKHZhbHVlOiBudW1iZXIpID0+IHtcbiAgICByZXR1cm4gYCR7dmFsdWUudG9GaXhlZCgyKX0lYDtcbiAgfTtcblxuICBjb25zdCBnZXRTdGF0dXNCYWRnZSA9IChzdGF0dXM6IHN0cmluZykgPT4ge1xuICAgIGNvbnN0IGJhZGdlczogeyBba2V5OiBzdHJpbmddOiBKU1guRWxlbWVudCB9ID0ge1xuICAgICAgJ2N1cnJlbnQnOiA8c3BhbiBjbGFzc05hbWU9XCJweC0yIHB5LTAuNSBiZy1ncmVlbi0xMDAgdGV4dC1ncmVlbi03MDAgdGV4dC14cyBmb250LXNlbWlib2xkIHJvdW5kZWRcIj5DVVJSRU5UPC9zcGFuPixcbiAgICAgICdwYWlkJzogPHNwYW4gY2xhc3NOYW1lPVwicHgtMiBweS0wLjUgYmctZ3JlZW4tMTAwIHRleHQtZ3JlZW4tNzAwIHRleHQteHMgZm9udC1zZW1pYm9sZCByb3VuZGVkXCI+UEFJRDwvc3Bhbj4sXG4gICAgICAnZHVlJzogPHNwYW4gY2xhc3NOYW1lPVwicHgtMiBweS0wLjUgYmctYW1iZXItMTAwIHRleHQtYW1iZXItNzAwIHRleHQteHMgZm9udC1zZW1pYm9sZCByb3VuZGVkXCI+RFVFPC9zcGFuPixcbiAgICAgICdvdmVyZHVlJzogPHNwYW4gY2xhc3NOYW1lPVwicHgtMiBweS0wLjUgYmctcmVkLTEwMCB0ZXh0LXJlZC03MDAgdGV4dC14cyBmb250LXNlbWlib2xkIHJvdW5kZWRcIj5PVkVSRFVFPC9zcGFuPixcbiAgICAgICdzY2hlZHVsZWQnOiA8c3BhbiBjbGFzc05hbWU9XCJweC0yIHB5LTAuNSBiZy1ibHVlLTEwMCB0ZXh0LWJsdWUtNzAwIHRleHQteHMgZm9udC1zZW1pYm9sZCByb3VuZGVkXCI+U0NIRURVTEVEPC9zcGFuPixcbiAgICAgICdjbGVhcmVkJzogPHNwYW4gY2xhc3NOYW1lPVwicHgtMiBweS0wLjUgYmctZ3JlZW4tMTAwIHRleHQtZ3JlZW4tNzAwIHRleHQteHMgZm9udC1zZW1pYm9sZCByb3VuZGVkXCI+Q0xFQVJFRDwvc3Bhbj4sXG4gICAgICAncG9zdGVkJzogPHNwYW4gY2xhc3NOYW1lPVwicHgtMiBweS0wLjUgYmctYmx1ZS0xMDAgdGV4dC1ibHVlLTcwMCB0ZXh0LXhzIGZvbnQtc2VtaWJvbGQgcm91bmRlZFwiPlBPU1RFRDwvc3Bhbj5cbiAgICB9O1xuICAgIHJldHVybiBiYWRnZXNbc3RhdHVzXSB8fCA8c3BhbiBjbGFzc05hbWU9XCJweC0yIHB5LTAuNSBiZy1ncmF5LTEwMCB0ZXh0LWdyYXktNzAwIHRleHQteHMgZm9udC1zZW1pYm9sZCByb3VuZGVkXCI+e3N0YXR1cy50b1VwcGVyQ2FzZSgpfTwvc3Bhbj47XG4gIH07XG5cbiAgcmV0dXJuIChcbiAgICA8ZGl2IGNsYXNzTmFtZT1cIm1pbi1oLXNjcmVlbiBiZy1ncmF5LTUwXCI+XG4gICAgICB7LyogSGVhZGVyICovfVxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJiZy13aGl0ZSBib3JkZXItYiBib3JkZXItZ3JheS0zMDAgcHgtNiBweS00XCI+XG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1iZXR3ZWVuIG1iLTNcIj5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIGdhcC0zXCI+XG4gICAgICAgICAgICB7b25CYWNrICYmIChcbiAgICAgICAgICAgICAgPEJ1dHRvbiB2YXJpYW50PVwib3V0bGluZVwiIHNpemU9XCJzbVwiIG9uQ2xpY2s9e29uQmFja30+XG4gICAgICAgICAgICAgICAgPEFycm93TGVmdCBjbGFzc05hbWU9XCJ3LTQgaC00XCIgLz5cbiAgICAgICAgICAgICAgPC9CdXR0b24+XG4gICAgICAgICAgICApfVxuICAgICAgICAgICAgPERvbGxhclNpZ24gY2xhc3NOYW1lPVwidy02IGgtNiB0ZXh0LWJsdWUtNjAwXCIgLz5cbiAgICAgICAgICAgIDxkaXY+XG4gICAgICAgICAgICAgIDxoMSBjbGFzc05hbWU9XCJ0ZXh0LXhsIGZvbnQtYm9sZCB0ZXh0LWdyYXktOTAwXCI+TG9hbiBMZWRnZXIgLSB7bG9hbkRldGFpbHMubG9hbklkfTwvaDE+XG4gICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQteHMgdGV4dC1ncmF5LTYwMFwiPntsb2FuRGV0YWlscy5ib3Jyb3dlcn0g4oCiIHtsb2FuRGV0YWlscy5wcm9kdWN0fTwvcD5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTJcIj5cbiAgICAgICAgICAgIDxCdXR0b24gdmFyaWFudD1cIm91dGxpbmVcIiBzaXplPVwic21cIj5cbiAgICAgICAgICAgICAgPENhbGN1bGF0b3IgY2xhc3NOYW1lPVwidy00IGgtNCBtci0yXCIgLz5cbiAgICAgICAgICAgICAgUGF5b3V0IFF1b3RlXG4gICAgICAgICAgICA8L0J1dHRvbj5cbiAgICAgICAgICAgIDxCdXR0b24gdmFyaWFudD1cIm91dGxpbmVcIiBzaXplPVwic21cIj5cbiAgICAgICAgICAgICAgPEZpbGVUZXh0IGNsYXNzTmFtZT1cInctNCBoLTQgbXItMlwiIC8+XG4gICAgICAgICAgICAgIFN0YXRlbWVudFxuICAgICAgICAgICAgPC9CdXR0b24+XG4gICAgICAgICAgICA8QnV0dG9uIHZhcmlhbnQ9XCJvdXRsaW5lXCIgc2l6ZT1cInNtXCI+XG4gICAgICAgICAgICAgIDxEb3dubG9hZCBjbGFzc05hbWU9XCJ3LTQgaC00IG1yLTJcIiAvPlxuICAgICAgICAgICAgICBFeHBvcnRcbiAgICAgICAgICAgIDwvQnV0dG9uPlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L2Rpdj5cblxuICAgICAgICB7LyogTG9hbiBTdW1tYXJ5IENhcmRzICovfVxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImdyaWQgZ3JpZC1jb2xzLTIgbWQ6Z3JpZC1jb2xzLTYgZ2FwLTNcIj5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImJnLWdyYXktNTAgcm91bmRlZCBwLTMgYm9yZGVyIGJvcmRlci1ncmF5LTIwMFwiPlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LXhzIHRleHQtZ3JheS02MDBcIj5DdXJyZW50IEJhbGFuY2U8L2Rpdj5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC1sZyBmb250LWJvbGQgdGV4dC1ncmF5LTkwMFwiPntmb3JtYXRDdXJyZW5jeShsb2FuRGV0YWlscy5jdXJyZW50QmFsYW5jZSl9PC9kaXY+XG4gICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJiZy1ibHVlLTUwIHJvdW5kZWQgcC0zIGJvcmRlciBib3JkZXItYmx1ZS0yMDBcIj5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC14cyB0ZXh0LWJsdWUtNzAwXCI+SW50ZXJlc3QgUmF0ZTwvZGl2PlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LWxnIGZvbnQtYm9sZCB0ZXh0LWJsdWUtNzAwXCI+e2Zvcm1hdFBlcmNlbnQobG9hbkRldGFpbHMuaW50ZXJlc3RSYXRlKX08L2Rpdj5cbiAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImJnLWdyZWVuLTUwIHJvdW5kZWQgcC0zIGJvcmRlciBib3JkZXItZ3JlZW4tMjAwXCI+XG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQteHMgdGV4dC1ncmVlbi03MDBcIj5OZXh0IFBheW1lbnQ8L2Rpdj5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC1sZyBmb250LWJvbGQgdGV4dC1ncmVlbi03MDBcIj57Zm9ybWF0Q3VycmVuY3kobG9hbkRldGFpbHMubmV4dFBheW1lbnRBbW91bnQpfTwvZGl2PlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LXhzIHRleHQtZ3JlZW4tNjAwIG10LTAuNVwiPntsb2FuRGV0YWlscy5uZXh0UGF5bWVudERhdGV9PC9kaXY+XG4gICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJiZy1wdXJwbGUtNTAgcm91bmRlZCBwLTMgYm9yZGVyIGJvcmRlci1wdXJwbGUtMjAwXCI+XG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQteHMgdGV4dC1wdXJwbGUtNzAwXCI+UmVtYWluaW5nIFRlcm08L2Rpdj5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC1sZyBmb250LWJvbGQgdGV4dC1wdXJwbGUtNzAwXCI+e2xvYW5EZXRhaWxzLnJlbWFpbmluZ01vbnRoc30gbW9udGhzPC9kaXY+XG4gICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJiZy1hbWJlci01MCByb3VuZGVkIHAtMyBib3JkZXIgYm9yZGVyLWFtYmVyLTIwMFwiPlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LXhzIHRleHQtYW1iZXItNzAwXCI+TWF0dXJpdHkgRGF0ZTwvZGl2PlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LWxnIGZvbnQtYm9sZCB0ZXh0LWFtYmVyLTcwMFwiPntsb2FuRGV0YWlscy5tYXR1cml0eURhdGV9PC9kaXY+XG4gICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJiZy1ncmFkaWVudC10by1iciBmcm9tLWdyZWVuLTYwMCB0by1ncmVlbi03MDAgdGV4dC13aGl0ZSByb3VuZGVkIHAtM1wiPlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LXhzIG9wYWNpdHktOTBcIj5TdGF0dXM8L2Rpdj5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC1sZyBmb250LWJvbGRcIj5DVVJSRU5UPC9kaXY+XG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQteHMgb3BhY2l0eS05MFwiPntsb2FuRGV0YWlscy5kYXlzT3ZlcmR1ZX0gZGF5cyBvdmVyZHVlPC9kaXY+XG4gICAgICAgICAgPC9kaXY+XG4gICAgICAgIDwvZGl2PlxuICAgICAgPC9kaXY+XG5cbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwicC02IHNwYWNlLXktNlwiPlxuICAgICAgICB7LyogVGFiIE5hdmlnYXRpb24gKi99XG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYmctd2hpdGUgYm9yZGVyIGJvcmRlci1ncmF5LTMwMCByb3VuZGVkXCI+XG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGJvcmRlci1iIGJvcmRlci1ncmF5LTMwMFwiPlxuICAgICAgICAgICAgPGJ1dHRvblxuICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBzZXRTZWxlY3RlZFRhYignb3ZlcnZpZXcnKX1cbiAgICAgICAgICAgICAgY2xhc3NOYW1lPXtgcHgtNiBweS0zIHRleHQtc20gZm9udC1zZW1pYm9sZCB0cmFuc2l0aW9uLWNvbG9ycyAke1xuICAgICAgICAgICAgICAgIHNlbGVjdGVkVGFiID09PSAnb3ZlcnZpZXcnXG4gICAgICAgICAgICAgICAgICA/ICdiZy1ibHVlLTUwIHRleHQtYmx1ZS03MDAgYm9yZGVyLWItMiBib3JkZXItYmx1ZS02MDAnXG4gICAgICAgICAgICAgICAgICA6ICd0ZXh0LWdyYXktNjAwIGhvdmVyOmJnLWdyYXktNTAnXG4gICAgICAgICAgICAgIH1gfVxuICAgICAgICAgICAgPlxuICAgICAgICAgICAgICBPdmVydmlld1xuICAgICAgICAgICAgPC9idXR0b24+XG4gICAgICAgICAgICA8YnV0dG9uXG4gICAgICAgICAgICAgIG9uQ2xpY2s9eygpID0+IHNldFNlbGVjdGVkVGFiKCd0cmFuc2FjdGlvbnMnKX1cbiAgICAgICAgICAgICAgY2xhc3NOYW1lPXtgcHgtNiBweS0zIHRleHQtc20gZm9udC1zZW1pYm9sZCB0cmFuc2l0aW9uLWNvbG9ycyAke1xuICAgICAgICAgICAgICAgIHNlbGVjdGVkVGFiID09PSAndHJhbnNhY3Rpb25zJ1xuICAgICAgICAgICAgICAgICAgPyAnYmctYmx1ZS01MCB0ZXh0LWJsdWUtNzAwIGJvcmRlci1iLTIgYm9yZGVyLWJsdWUtNjAwJ1xuICAgICAgICAgICAgICAgICAgOiAndGV4dC1ncmF5LTYwMCBob3ZlcjpiZy1ncmF5LTUwJ1xuICAgICAgICAgICAgICB9YH1cbiAgICAgICAgICAgID5cbiAgICAgICAgICAgICAgVHJhbnNhY3Rpb25zXG4gICAgICAgICAgICA8L2J1dHRvbj5cbiAgICAgICAgICAgIDxidXR0b25cbiAgICAgICAgICAgICAgb25DbGljaz17KCkgPT4gc2V0U2VsZWN0ZWRUYWIoJ3NjaGVkdWxlJyl9XG4gICAgICAgICAgICAgIGNsYXNzTmFtZT17YHB4LTYgcHktMyB0ZXh0LXNtIGZvbnQtc2VtaWJvbGQgdHJhbnNpdGlvbi1jb2xvcnMgJHtcbiAgICAgICAgICAgICAgICBzZWxlY3RlZFRhYiA9PT0gJ3NjaGVkdWxlJ1xuICAgICAgICAgICAgICAgICAgPyAnYmctYmx1ZS01MCB0ZXh0LWJsdWUtNzAwIGJvcmRlci1iLTIgYm9yZGVyLWJsdWUtNjAwJ1xuICAgICAgICAgICAgICAgICAgOiAndGV4dC1ncmF5LTYwMCBob3ZlcjpiZy1ncmF5LTUwJ1xuICAgICAgICAgICAgICB9YH1cbiAgICAgICAgICAgID5cbiAgICAgICAgICAgICAgUmVwYXltZW50IFNjaGVkdWxlXG4gICAgICAgICAgICA8L2J1dHRvbj5cbiAgICAgICAgICAgIDxidXR0b25cbiAgICAgICAgICAgICAgb25DbGljaz17KCkgPT4gc2V0U2VsZWN0ZWRUYWIoJ2ZlZXMnKX1cbiAgICAgICAgICAgICAgY2xhc3NOYW1lPXtgcHgtNiBweS0zIHRleHQtc20gZm9udC1zZW1pYm9sZCB0cmFuc2l0aW9uLWNvbG9ycyAke1xuICAgICAgICAgICAgICAgIHNlbGVjdGVkVGFiID09PSAnZmVlcydcbiAgICAgICAgICAgICAgICAgID8gJ2JnLWJsdWUtNTAgdGV4dC1ibHVlLTcwMCBib3JkZXItYi0yIGJvcmRlci1ibHVlLTYwMCdcbiAgICAgICAgICAgICAgICAgIDogJ3RleHQtZ3JheS02MDAgaG92ZXI6YmctZ3JheS01MCdcbiAgICAgICAgICAgICAgfWB9XG4gICAgICAgICAgICA+XG4gICAgICAgICAgICAgIEZlZXNcbiAgICAgICAgICAgIDwvYnV0dG9uPlxuICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJwLTZcIj5cbiAgICAgICAgICAgIHsvKiBPdmVydmlldyBUYWIgKi99XG4gICAgICAgICAgICB7c2VsZWN0ZWRUYWIgPT09ICdvdmVydmlldycgJiYgKFxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInNwYWNlLXktNlwiPlxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZ3JpZCBncmlkLWNvbHMtMSBtZDpncmlkLWNvbHMtMiBnYXAtNlwiPlxuICAgICAgICAgICAgICAgICAgey8qIExvYW4gRGV0YWlscyAqL31cbiAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYmctZ3JheS01MCBib3JkZXIgYm9yZGVyLWdyYXktMjAwIHJvdW5kZWQgcC00XCI+XG4gICAgICAgICAgICAgICAgICAgIDxoMyBjbGFzc05hbWU9XCJmb250LXNlbWlib2xkIHRleHQtZ3JheS05MDAgbWItM1wiPkxvYW4gRGV0YWlsczwvaDM+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwic3BhY2UteS0yIHRleHQtc21cIj5cbiAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXgganVzdGlmeS1iZXR3ZWVuXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJ0ZXh0LWdyYXktNjAwXCI+T3JpZ2luYWwgQW1vdW50Ojwvc3Bhbj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cImZvbnQtc2VtaWJvbGQgdGV4dC1ncmF5LTkwMFwiPntmb3JtYXRDdXJyZW5jeShsb2FuRGV0YWlscy5vcmlnaW5hbEFtb3VudCl9PC9zcGFuPlxuICAgICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBqdXN0aWZ5LWJldHdlZW5cIj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRleHQtZ3JheS02MDBcIj5DdXJyZW50IEJhbGFuY2U6PC9zcGFuPlxuICAgICAgICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwiZm9udC1zZW1pYm9sZCB0ZXh0LWdyYXktOTAwXCI+e2Zvcm1hdEN1cnJlbmN5KGxvYW5EZXRhaWxzLmN1cnJlbnRCYWxhbmNlKX08L3NwYW4+XG4gICAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGp1c3RpZnktYmV0d2VlblwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwidGV4dC1ncmF5LTYwMFwiPkludGVyZXN0IFJhdGU6PC9zcGFuPlxuICAgICAgICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwiZm9udC1zZW1pYm9sZCB0ZXh0LWdyYXktOTAwXCI+e2Zvcm1hdFBlcmNlbnQobG9hbkRldGFpbHMuaW50ZXJlc3RSYXRlKX0gcC5hLjwvc3Bhbj5cbiAgICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXgganVzdGlmeS1iZXR3ZWVuXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJ0ZXh0LWdyYXktNjAwXCI+UmVwYXltZW50IFR5cGU6PC9zcGFuPlxuICAgICAgICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwiZm9udC1zZW1pYm9sZCB0ZXh0LWdyYXktOTAwXCI+e2xvYW5EZXRhaWxzLnJlcGF5bWVudFR5cGV9PC9zcGFuPlxuICAgICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBqdXN0aWZ5LWJldHdlZW5cIj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRleHQtZ3JheS02MDBcIj5GcmVxdWVuY3k6PC9zcGFuPlxuICAgICAgICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwiZm9udC1zZW1pYm9sZCB0ZXh0LWdyYXktOTAwXCI+e2xvYW5EZXRhaWxzLmZyZXF1ZW5jeX08L3NwYW4+XG4gICAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGp1c3RpZnktYmV0d2VlblwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwidGV4dC1ncmF5LTYwMFwiPlNldHRsZW1lbnQgRGF0ZTo8L3NwYW4+XG4gICAgICAgICAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJmb250LXNlbWlib2xkIHRleHQtZ3JheS05MDBcIj57bG9hbkRldGFpbHMuc2V0dGxlbWVudERhdGV9PC9zcGFuPlxuICAgICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBqdXN0aWZ5LWJldHdlZW5cIj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRleHQtZ3JheS02MDBcIj5NYXR1cml0eSBEYXRlOjwvc3Bhbj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cImZvbnQtc2VtaWJvbGQgdGV4dC1ncmF5LTkwMFwiPntsb2FuRGV0YWlscy5tYXR1cml0eURhdGV9PC9zcGFuPlxuICAgICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgICAgICAgICAgICB7LyogUGF5bWVudCBTdW1tYXJ5ICovfVxuICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJiZy1ncmF5LTUwIGJvcmRlciBib3JkZXItZ3JheS0yMDAgcm91bmRlZCBwLTRcIj5cbiAgICAgICAgICAgICAgICAgICAgPGgzIGNsYXNzTmFtZT1cImZvbnQtc2VtaWJvbGQgdGV4dC1ncmF5LTkwMCBtYi0zXCI+UGF5bWVudCBTdW1tYXJ5PC9oMz5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJzcGFjZS15LTIgdGV4dC1zbVwiPlxuICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBqdXN0aWZ5LWJldHdlZW5cIj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRleHQtZ3JheS02MDBcIj5OZXh0IFBheW1lbnQgRHVlOjwvc3Bhbj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cImZvbnQtc2VtaWJvbGQgdGV4dC1ncmF5LTkwMFwiPntsb2FuRGV0YWlscy5uZXh0UGF5bWVudERhdGV9PC9zcGFuPlxuICAgICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBqdXN0aWZ5LWJldHdlZW5cIj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRleHQtZ3JheS02MDBcIj5OZXh0IFBheW1lbnQgQW1vdW50Ojwvc3Bhbj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cImZvbnQtc2VtaWJvbGQgdGV4dC1ncmF5LTkwMFwiPntmb3JtYXRDdXJyZW5jeShsb2FuRGV0YWlscy5uZXh0UGF5bWVudEFtb3VudCl9PC9zcGFuPlxuICAgICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBqdXN0aWZ5LWJldHdlZW5cIj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRleHQtZ3JheS02MDBcIj5SZW1haW5pbmcgUGF5bWVudHM6PC9zcGFuPlxuICAgICAgICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwiZm9udC1zZW1pYm9sZCB0ZXh0LWdyYXktOTAwXCI+e2xvYW5EZXRhaWxzLnJlbWFpbmluZ01vbnRoc308L3NwYW4+XG4gICAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGp1c3RpZnktYmV0d2VlbiBib3JkZXItdCBib3JkZXItZ3JheS0zMDAgcHQtMiBtdC0yXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJ0ZXh0LWdyYXktNjAwXCI+VG90YWwgSW50ZXJlc3QgKEVzdCk6PC9zcGFuPlxuICAgICAgICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwiZm9udC1zZW1pYm9sZCB0ZXh0LWdyYXktOTAwXCI+e2Zvcm1hdEN1cnJlbmN5KDE3NTAwMCl9PC9zcGFuPlxuICAgICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBqdXN0aWZ5LWJldHdlZW5cIj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRleHQtZ3JheS02MDBcIj5Ub3RhbCBGZWVzIChFc3QpOjwvc3Bhbj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cImZvbnQtc2VtaWJvbGQgdGV4dC1ncmF5LTkwMFwiPntmb3JtYXRDdXJyZW5jeSg4OTUwKX08L3NwYW4+XG4gICAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGp1c3RpZnktYmV0d2VlbiBib3JkZXItdCBib3JkZXItZ3JheS0zMDAgcHQtMiBtdC0yXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJ0ZXh0LWdyYXktNjAwXCI+VG90YWwgUGF5YWJsZTo8L3NwYW4+XG4gICAgICAgICAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJmb250LXNlbWlib2xkIHRleHQtZ3JheS05MDBcIj57Zm9ybWF0Q3VycmVuY3koMTAzMzk1MCl9PC9zcGFuPlxuICAgICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgICAgICAgICAgey8qIFByb2dyZXNzIEJhciAqL31cbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImJnLWdyYXktNTAgYm9yZGVyIGJvcmRlci1ncmF5LTIwMCByb3VuZGVkIHAtNFwiPlxuICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGp1c3RpZnktYmV0d2VlbiBtYi0yXCI+XG4gICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRleHQtc20gZm9udC1zZW1pYm9sZCB0ZXh0LWdyYXktOTAwXCI+TG9hbiBQcm9ncmVzczwvc3Bhbj5cbiAgICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwidGV4dC1zbSB0ZXh0LWdyYXktNjAwXCI+eygobG9hbkRldGFpbHMub3JpZ2luYWxBbW91bnQgLSBsb2FuRGV0YWlscy5jdXJyZW50QmFsYW5jZSkgLyBsb2FuRGV0YWlscy5vcmlnaW5hbEFtb3VudCAqIDEwMCkudG9GaXhlZCgxKX0lIHBhaWQgZG93bjwvc3Bhbj5cbiAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ3LWZ1bGwgYmctZ3JheS0yMDAgcm91bmRlZC1mdWxsIGgtNFwiPlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IFxuICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT1cImJnLWJsdWUtNjAwIGgtNCByb3VuZGVkLWZ1bGwgdHJhbnNpdGlvbi1hbGxcIlxuICAgICAgICAgICAgICAgICAgICAgIHN0eWxlPXt7IHdpZHRoOiBgJHsoKGxvYW5EZXRhaWxzLm9yaWdpbmFsQW1vdW50IC0gbG9hbkRldGFpbHMuY3VycmVudEJhbGFuY2UpIC8gbG9hbkRldGFpbHMub3JpZ2luYWxBbW91bnQgKiAxMDApfSVgIH19XG4gICAgICAgICAgICAgICAgICAgID48L2Rpdj5cbiAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGp1c3RpZnktYmV0d2VlbiBtdC0yIHRleHQteHMgdGV4dC1ncmF5LTYwMFwiPlxuICAgICAgICAgICAgICAgICAgICA8c3Bhbj5QYWlkOiB7Zm9ybWF0Q3VycmVuY3kobG9hbkRldGFpbHMub3JpZ2luYWxBbW91bnQgLSBsb2FuRGV0YWlscy5jdXJyZW50QmFsYW5jZSl9PC9zcGFuPlxuICAgICAgICAgICAgICAgICAgICA8c3Bhbj5SZW1haW5pbmc6IHtmb3JtYXRDdXJyZW5jeShsb2FuRGV0YWlscy5jdXJyZW50QmFsYW5jZSl9PC9zcGFuPlxuICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgKX1cblxuICAgICAgICAgICAgey8qIFRyYW5zYWN0aW9ucyBUYWIgKi99XG4gICAgICAgICAgICB7c2VsZWN0ZWRUYWIgPT09ICd0cmFuc2FjdGlvbnMnICYmIChcbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJib3JkZXIgYm9yZGVyLWdyYXktMzAwIHJvdW5kZWQgb3ZlcmZsb3ctaGlkZGVuXCI+XG4gICAgICAgICAgICAgICAgPHRhYmxlIGNsYXNzTmFtZT1cInctZnVsbCB0ZXh0LXNtIGJvcmRlci1jb2xsYXBzZVwiPlxuICAgICAgICAgICAgICAgICAgPHRoZWFkPlxuICAgICAgICAgICAgICAgICAgICA8dHIgY2xhc3NOYW1lPVwiYmctZ3JheS01MFwiPlxuICAgICAgICAgICAgICAgICAgICAgIDx0aCBjbGFzc05hbWU9XCJib3JkZXIgYm9yZGVyLWdyYXktMzAwIHB4LTMgcHktMiB0ZXh0LWxlZnQgZm9udC1zZW1pYm9sZCB0ZXh0LWdyYXktNzAwXCI+RGF0ZTwvdGg+XG4gICAgICAgICAgICAgICAgICAgICAgPHRoIGNsYXNzTmFtZT1cImJvcmRlciBib3JkZXItZ3JheS0zMDAgcHgtMyBweS0yIHRleHQtbGVmdCBmb250LXNlbWlib2xkIHRleHQtZ3JheS03MDBcIj5UeXBlPC90aD5cbiAgICAgICAgICAgICAgICAgICAgICA8dGggY2xhc3NOYW1lPVwiYm9yZGVyIGJvcmRlci1ncmF5LTMwMCBweC0zIHB5LTIgdGV4dC1sZWZ0IGZvbnQtc2VtaWJvbGQgdGV4dC1ncmF5LTcwMFwiPkRlc2NyaXB0aW9uPC90aD5cbiAgICAgICAgICAgICAgICAgICAgICA8dGggY2xhc3NOYW1lPVwiYm9yZGVyIGJvcmRlci1ncmF5LTMwMCBweC0zIHB5LTIgdGV4dC1yaWdodCBmb250LXNlbWlib2xkIHRleHQtZ3JheS03MDBcIj5EZWJpdDwvdGg+XG4gICAgICAgICAgICAgICAgICAgICAgPHRoIGNsYXNzTmFtZT1cImJvcmRlciBib3JkZXItZ3JheS0zMDAgcHgtMyBweS0yIHRleHQtcmlnaHQgZm9udC1zZW1pYm9sZCB0ZXh0LWdyYXktNzAwXCI+Q3JlZGl0PC90aD5cbiAgICAgICAgICAgICAgICAgICAgICA8dGggY2xhc3NOYW1lPVwiYm9yZGVyIGJvcmRlci1ncmF5LTMwMCBweC0zIHB5LTIgdGV4dC1yaWdodCBmb250LXNlbWlib2xkIHRleHQtZ3JheS03MDBcIj5CYWxhbmNlPC90aD5cbiAgICAgICAgICAgICAgICAgICAgICA8dGggY2xhc3NOYW1lPVwiYm9yZGVyIGJvcmRlci1ncmF5LTMwMCBweC0zIHB5LTIgdGV4dC1jZW50ZXIgZm9udC1zZW1pYm9sZCB0ZXh0LWdyYXktNzAwXCI+U3RhdHVzPC90aD5cbiAgICAgICAgICAgICAgICAgICAgPC90cj5cbiAgICAgICAgICAgICAgICAgIDwvdGhlYWQ+XG4gICAgICAgICAgICAgICAgICA8dGJvZHk+XG4gICAgICAgICAgICAgICAgICAgIHt0cmFuc2FjdGlvbnMubWFwKCh0eG4sIGlkeCkgPT4gKFxuICAgICAgICAgICAgICAgICAgICAgIDx0ciBrZXk9e2lkeH0gY2xhc3NOYW1lPVwiaG92ZXI6YmctYmx1ZS01MFwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgPHRkIGNsYXNzTmFtZT1cImJvcmRlciBib3JkZXItZ3JheS0zMDAgcHgtMyBweS0yIHRleHQtZ3JheS05MDBcIj57dHhuLmRhdGV9PC90ZD5cbiAgICAgICAgICAgICAgICAgICAgICAgIDx0ZCBjbGFzc05hbWU9XCJib3JkZXIgYm9yZGVyLWdyYXktMzAwIHB4LTMgcHktMiB0ZXh0LWdyYXktOTAwIGZvbnQtbWVkaXVtXCI+e3R4bi50eXBlfTwvdGQ+XG4gICAgICAgICAgICAgICAgICAgICAgICA8dGQgY2xhc3NOYW1lPVwiYm9yZGVyIGJvcmRlci1ncmF5LTMwMCBweC0zIHB5LTIgdGV4dC1ncmF5LTcwMFwiPnt0eG4uZGVzY3JpcHRpb259PC90ZD5cbiAgICAgICAgICAgICAgICAgICAgICAgIDx0ZCBjbGFzc05hbWU9XCJib3JkZXIgYm9yZGVyLWdyYXktMzAwIHB4LTMgcHktMiB0ZXh0LXJpZ2h0IHRleHQtcmVkLTYwMCBmb250LW1vbm9cIj5cbiAgICAgICAgICAgICAgICAgICAgICAgICAge3R4bi5kZWJpdCA+IDAgPyBmb3JtYXRDdXJyZW5jeSh0eG4uZGViaXQpIDogJ+KAlCd9XG4gICAgICAgICAgICAgICAgICAgICAgICA8L3RkPlxuICAgICAgICAgICAgICAgICAgICAgICAgPHRkIGNsYXNzTmFtZT1cImJvcmRlciBib3JkZXItZ3JheS0zMDAgcHgtMyBweS0yIHRleHQtcmlnaHQgdGV4dC1ncmVlbi02MDAgZm9udC1tb25vXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICAgIHt0eG4uY3JlZGl0ID4gMCA/IGZvcm1hdEN1cnJlbmN5KHR4bi5jcmVkaXQpIDogJ+KAlCd9XG4gICAgICAgICAgICAgICAgICAgICAgICA8L3RkPlxuICAgICAgICAgICAgICAgICAgICAgICAgPHRkIGNsYXNzTmFtZT1cImJvcmRlciBib3JkZXItZ3JheS0zMDAgcHgtMyBweS0yIHRleHQtcmlnaHQgZm9udC1tb25vIGZvbnQtc2VtaWJvbGQgdGV4dC1ncmF5LTkwMFwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgICB7Zm9ybWF0Q3VycmVuY3kodHhuLmJhbGFuY2UpfVxuICAgICAgICAgICAgICAgICAgICAgICAgPC90ZD5cbiAgICAgICAgICAgICAgICAgICAgICAgIDx0ZCBjbGFzc05hbWU9XCJib3JkZXIgYm9yZGVyLWdyYXktMzAwIHB4LTMgcHktMiB0ZXh0LWNlbnRlclwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgICB7Z2V0U3RhdHVzQmFkZ2UodHhuLnN0YXR1cyl9XG4gICAgICAgICAgICAgICAgICAgICAgICA8L3RkPlxuICAgICAgICAgICAgICAgICAgICAgIDwvdHI+XG4gICAgICAgICAgICAgICAgICAgICkpfVxuICAgICAgICAgICAgICAgICAgPC90Ym9keT5cbiAgICAgICAgICAgICAgICA8L3RhYmxlPlxuICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICl9XG5cbiAgICAgICAgICAgIHsvKiBSZXBheW1lbnQgU2NoZWR1bGUgVGFiICovfVxuICAgICAgICAgICAge3NlbGVjdGVkVGFiID09PSAnc2NoZWR1bGUnICYmIChcbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJib3JkZXIgYm9yZGVyLWdyYXktMzAwIHJvdW5kZWQgb3ZlcmZsb3ctaGlkZGVuXCI+XG4gICAgICAgICAgICAgICAgPHRhYmxlIGNsYXNzTmFtZT1cInctZnVsbCB0ZXh0LXNtIGJvcmRlci1jb2xsYXBzZVwiPlxuICAgICAgICAgICAgICAgICAgPHRoZWFkPlxuICAgICAgICAgICAgICAgICAgICA8dHIgY2xhc3NOYW1lPVwiYmctZ3JheS01MFwiPlxuICAgICAgICAgICAgICAgICAgICAgIDx0aCBjbGFzc05hbWU9XCJib3JkZXIgYm9yZGVyLWdyYXktMzAwIHB4LTMgcHktMiB0ZXh0LWNlbnRlciBmb250LXNlbWlib2xkIHRleHQtZ3JheS03MDBcIj4jPC90aD5cbiAgICAgICAgICAgICAgICAgICAgICA8dGggY2xhc3NOYW1lPVwiYm9yZGVyIGJvcmRlci1ncmF5LTMwMCBweC0zIHB5LTIgdGV4dC1sZWZ0IGZvbnQtc2VtaWJvbGQgdGV4dC1ncmF5LTcwMFwiPkRhdGU8L3RoPlxuICAgICAgICAgICAgICAgICAgICAgIDx0aCBjbGFzc05hbWU9XCJib3JkZXIgYm9yZGVyLWdyYXktMzAwIHB4LTMgcHktMiB0ZXh0LXJpZ2h0IGZvbnQtc2VtaWJvbGQgdGV4dC1ncmF5LTcwMFwiPlByaW5jaXBhbDwvdGg+XG4gICAgICAgICAgICAgICAgICAgICAgPHRoIGNsYXNzTmFtZT1cImJvcmRlciBib3JkZXItZ3JheS0zMDAgcHgtMyBweS0yIHRleHQtcmlnaHQgZm9udC1zZW1pYm9sZCB0ZXh0LWdyYXktNzAwXCI+SW50ZXJlc3Q8L3RoPlxuICAgICAgICAgICAgICAgICAgICAgIDx0aCBjbGFzc05hbWU9XCJib3JkZXIgYm9yZGVyLWdyYXktMzAwIHB4LTMgcHktMiB0ZXh0LXJpZ2h0IGZvbnQtc2VtaWJvbGQgdGV4dC1ncmF5LTcwMFwiPlRvdGFsIFBheW1lbnQ8L3RoPlxuICAgICAgICAgICAgICAgICAgICAgIDx0aCBjbGFzc05hbWU9XCJib3JkZXIgYm9yZGVyLWdyYXktMzAwIHB4LTMgcHktMiB0ZXh0LXJpZ2h0IGZvbnQtc2VtaWJvbGQgdGV4dC1ncmF5LTcwMFwiPkJhbGFuY2U8L3RoPlxuICAgICAgICAgICAgICAgICAgICAgIDx0aCBjbGFzc05hbWU9XCJib3JkZXIgYm9yZGVyLWdyYXktMzAwIHB4LTMgcHktMiB0ZXh0LWNlbnRlciBmb250LXNlbWlib2xkIHRleHQtZ3JheS03MDBcIj5TdGF0dXM8L3RoPlxuICAgICAgICAgICAgICAgICAgICA8L3RyPlxuICAgICAgICAgICAgICAgICAgPC90aGVhZD5cbiAgICAgICAgICAgICAgICAgIDx0Ym9keT5cbiAgICAgICAgICAgICAgICAgICAge3JlcGF5bWVudFNjaGVkdWxlLm1hcCgocGF5bWVudCkgPT4gKFxuICAgICAgICAgICAgICAgICAgICAgIDx0ciBrZXk9e3BheW1lbnQucGVyaW9kfSBjbGFzc05hbWU9XCJob3ZlcjpiZy1ibHVlLTUwXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICA8dGQgY2xhc3NOYW1lPVwiYm9yZGVyIGJvcmRlci1ncmF5LTMwMCBweC0zIHB5LTIgdGV4dC1jZW50ZXIgdGV4dC1ncmF5LTkwMCBmb250LW1lZGl1bVwiPntwYXltZW50LnBlcmlvZH08L3RkPlxuICAgICAgICAgICAgICAgICAgICAgICAgPHRkIGNsYXNzTmFtZT1cImJvcmRlciBib3JkZXItZ3JheS0zMDAgcHgtMyBweS0yIHRleHQtZ3JheS05MDBcIj57cGF5bWVudC5kYXRlfTwvdGQ+XG4gICAgICAgICAgICAgICAgICAgICAgICA8dGQgY2xhc3NOYW1lPVwiYm9yZGVyIGJvcmRlci1ncmF5LTMwMCBweC0zIHB5LTIgdGV4dC1yaWdodCBmb250LW1vbm8gdGV4dC1ncmF5LTkwMFwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgICB7Zm9ybWF0Q3VycmVuY3kocGF5bWVudC5wcmluY2lwYWwpfVxuICAgICAgICAgICAgICAgICAgICAgICAgPC90ZD5cbiAgICAgICAgICAgICAgICAgICAgICAgIDx0ZCBjbGFzc05hbWU9XCJib3JkZXIgYm9yZGVyLWdyYXktMzAwIHB4LTMgcHktMiB0ZXh0LXJpZ2h0IGZvbnQtbW9ubyB0ZXh0LWdyYXktOTAwXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICAgIHtmb3JtYXRDdXJyZW5jeShwYXltZW50LmludGVyZXN0KX1cbiAgICAgICAgICAgICAgICAgICAgICAgIDwvdGQ+XG4gICAgICAgICAgICAgICAgICAgICAgICA8dGQgY2xhc3NOYW1lPVwiYm9yZGVyIGJvcmRlci1ncmF5LTMwMCBweC0zIHB5LTIgdGV4dC1yaWdodCBmb250LW1vbm8gZm9udC1zZW1pYm9sZCB0ZXh0LWdyYXktOTAwXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICAgIHtmb3JtYXRDdXJyZW5jeShwYXltZW50LnRvdGFsKX1cbiAgICAgICAgICAgICAgICAgICAgICAgIDwvdGQ+XG4gICAgICAgICAgICAgICAgICAgICAgICA8dGQgY2xhc3NOYW1lPVwiYm9yZGVyIGJvcmRlci1ncmF5LTMwMCBweC0zIHB5LTIgdGV4dC1yaWdodCBmb250LW1vbm8gdGV4dC1ncmF5LTkwMFwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgICB7Zm9ybWF0Q3VycmVuY3kocGF5bWVudC5iYWxhbmNlKX1cbiAgICAgICAgICAgICAgICAgICAgICAgIDwvdGQ+XG4gICAgICAgICAgICAgICAgICAgICAgICA8dGQgY2xhc3NOYW1lPVwiYm9yZGVyIGJvcmRlci1ncmF5LTMwMCBweC0zIHB5LTIgdGV4dC1jZW50ZXJcIj5cbiAgICAgICAgICAgICAgICAgICAgICAgICAge2dldFN0YXR1c0JhZGdlKHBheW1lbnQuc3RhdHVzKX1cbiAgICAgICAgICAgICAgICAgICAgICAgIDwvdGQ+XG4gICAgICAgICAgICAgICAgICAgICAgPC90cj5cbiAgICAgICAgICAgICAgICAgICAgKSl9XG4gICAgICAgICAgICAgICAgICA8L3Rib2R5PlxuICAgICAgICAgICAgICAgIDwvdGFibGU+XG4gICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgKX1cblxuICAgICAgICAgICAgey8qIEZlZXMgVGFiICovfVxuICAgICAgICAgICAge3NlbGVjdGVkVGFiID09PSAnZmVlcycgJiYgKFxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInNwYWNlLXktNFwiPlxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYm9yZGVyIGJvcmRlci1ncmF5LTMwMCByb3VuZGVkIG92ZXJmbG93LWhpZGRlblwiPlxuICAgICAgICAgICAgICAgICAgPHRhYmxlIGNsYXNzTmFtZT1cInctZnVsbCB0ZXh0LXNtIGJvcmRlci1jb2xsYXBzZVwiPlxuICAgICAgICAgICAgICAgICAgICA8dGhlYWQ+XG4gICAgICAgICAgICAgICAgICAgICAgPHRyIGNsYXNzTmFtZT1cImJnLWdyYXktNTBcIj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDx0aCBjbGFzc05hbWU9XCJib3JkZXIgYm9yZGVyLWdyYXktMzAwIHB4LTMgcHktMiB0ZXh0LWxlZnQgZm9udC1zZW1pYm9sZCB0ZXh0LWdyYXktNzAwXCI+RmVlIE5hbWU8L3RoPlxuICAgICAgICAgICAgICAgICAgICAgICAgPHRoIGNsYXNzTmFtZT1cImJvcmRlciBib3JkZXItZ3JheS0zMDAgcHgtMyBweS0yIHRleHQtcmlnaHQgZm9udC1zZW1pYm9sZCB0ZXh0LWdyYXktNzAwXCI+QW1vdW50PC90aD5cbiAgICAgICAgICAgICAgICAgICAgICAgIDx0aCBjbGFzc05hbWU9XCJib3JkZXIgYm9yZGVyLWdyYXktMzAwIHB4LTMgcHktMiB0ZXh0LWxlZnQgZm9udC1zZW1pYm9sZCB0ZXh0LWdyYXktNzAwXCI+VHlwZTwvdGg+XG4gICAgICAgICAgICAgICAgICAgICAgICA8dGggY2xhc3NOYW1lPVwiYm9yZGVyIGJvcmRlci1ncmF5LTMwMCBweC0zIHB5LTIgdGV4dC1jZW50ZXIgZm9udC1zZW1pYm9sZCB0ZXh0LWdyYXktNzAwXCI+U3RhdHVzPC90aD5cbiAgICAgICAgICAgICAgICAgICAgICAgIDx0aCBjbGFzc05hbWU9XCJib3JkZXIgYm9yZGVyLWdyYXktMzAwIHB4LTMgcHktMiB0ZXh0LWxlZnQgZm9udC1zZW1pYm9sZCB0ZXh0LWdyYXktNzAwXCI+RGF0ZTwvdGg+XG4gICAgICAgICAgICAgICAgICAgICAgPC90cj5cbiAgICAgICAgICAgICAgICAgICAgPC90aGVhZD5cbiAgICAgICAgICAgICAgICAgICAgPHRib2R5PlxuICAgICAgICAgICAgICAgICAgICAgIHtmZWVTY2hlZHVsZS5tYXAoKGZlZSwgaWR4KSA9PiAoXG4gICAgICAgICAgICAgICAgICAgICAgICA8dHIga2V5PXtpZHh9IGNsYXNzTmFtZT1cImhvdmVyOmJnLWJsdWUtNTBcIj5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgPHRkIGNsYXNzTmFtZT1cImJvcmRlciBib3JkZXItZ3JheS0zMDAgcHgtMyBweS0yIHRleHQtZ3JheS05MDAgZm9udC1tZWRpdW1cIj57ZmVlLm5hbWV9PC90ZD5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgPHRkIGNsYXNzTmFtZT1cImJvcmRlciBib3JkZXItZ3JheS0zMDAgcHgtMyBweS0yIHRleHQtcmlnaHQgZm9udC1tb25vIHRleHQtZ3JheS05MDBcIj5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICB7Zm9ybWF0Q3VycmVuY3koZmVlLmFtb3VudCl9XG4gICAgICAgICAgICAgICAgICAgICAgICAgIDwvdGQ+XG4gICAgICAgICAgICAgICAgICAgICAgICAgIDx0ZCBjbGFzc05hbWU9XCJib3JkZXIgYm9yZGVyLWdyYXktMzAwIHB4LTMgcHktMiB0ZXh0LWdyYXktNzAwXCI+e2ZlZS50eXBlfTwvdGQ+XG4gICAgICAgICAgICAgICAgICAgICAgICAgIDx0ZCBjbGFzc05hbWU9XCJib3JkZXIgYm9yZGVyLWdyYXktMzAwIHB4LTMgcHktMiB0ZXh0LWNlbnRlclwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT17YHB4LTIgcHktMC41IHJvdW5kZWQgdGV4dC14cyBmb250LXNlbWlib2xkICR7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICBmZWUuc3RhdHVzID09PSAnUGFpZCcgPyAnYmctZ3JlZW4tMTAwIHRleHQtZ3JlZW4tNzAwJyA6XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICBmZWUuc3RhdHVzID09PSAnQWN0aXZlJyA/ICdiZy1ibHVlLTEwMCB0ZXh0LWJsdWUtNzAwJyA6XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAnYmctZ3JheS0xMDAgdGV4dC1ncmF5LTcwMCdcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICB9YH0+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICB7ZmVlLnN0YXR1c31cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8L3NwYW4+XG4gICAgICAgICAgICAgICAgICAgICAgICAgIDwvdGQ+XG4gICAgICAgICAgICAgICAgICAgICAgICAgIDx0ZCBjbGFzc05hbWU9XCJib3JkZXIgYm9yZGVyLWdyYXktMzAwIHB4LTMgcHktMiB0ZXh0LWdyYXktNzAwXCI+e2ZlZS5kYXRlfTwvdGQ+XG4gICAgICAgICAgICAgICAgICAgICAgICA8L3RyPlxuICAgICAgICAgICAgICAgICAgICAgICkpfVxuICAgICAgICAgICAgICAgICAgICA8L3Rib2R5PlxuICAgICAgICAgICAgICAgICAgPC90YWJsZT5cbiAgICAgICAgICAgICAgICA8L2Rpdj5cblxuICAgICAgICAgICAgICAgIDxCdXR0b24gdmFyaWFudD1cIm91dGxpbmVcIj5cbiAgICAgICAgICAgICAgICAgIDxQbHVzIGNsYXNzTmFtZT1cInctNCBoLTQgbXItMlwiIC8+XG4gICAgICAgICAgICAgICAgICBBZGQgTWFudWFsIEZlZVxuICAgICAgICAgICAgICAgIDwvQnV0dG9uPlxuICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICl9XG4gICAgICAgICAgPC9kaXY+XG4gICAgICAgIDwvZGl2PlxuXG4gICAgICAgIHsvKiBRdWljayBBY3Rpb25zICovfVxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImdyaWQgZ3JpZC1jb2xzLTIgbWQ6Z3JpZC1jb2xzLTQgZ2FwLTRcIj5cbiAgICAgICAgICA8YnV0dG9uIGNsYXNzTmFtZT1cImJnLXdoaXRlIGJvcmRlciBib3JkZXItZ3JheS0zMDAgcm91bmRlZCBwLTQgaG92ZXI6Ym9yZGVyLWJsdWUtNDAwIGhvdmVyOnNoYWRvdy1tZCB0cmFuc2l0aW9uLWFsbCB0ZXh0LWxlZnRcIj5cbiAgICAgICAgICAgIDxDYWxjdWxhdG9yIGNsYXNzTmFtZT1cInctNiBoLTYgdGV4dC1ibHVlLTYwMCBtYi0yXCIgLz5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZm9udC1zZW1pYm9sZCB0ZXh0LWdyYXktOTAwIHRleHQtc21cIj5QYXlvdXQgUXVvdGU8L2Rpdj5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC14cyB0ZXh0LWdyYXktNjAwIG10LTFcIj5DYWxjdWxhdGUgZWFybHkgcGF5b3V0PC9kaXY+XG4gICAgICAgICAgPC9idXR0b24+XG5cbiAgICAgICAgICA8YnV0dG9uIGNsYXNzTmFtZT1cImJnLXdoaXRlIGJvcmRlciBib3JkZXItZ3JheS0zMDAgcm91bmRlZCBwLTQgaG92ZXI6Ym9yZGVyLWJsdWUtNDAwIGhvdmVyOnNoYWRvdy1tZCB0cmFuc2l0aW9uLWFsbCB0ZXh0LWxlZnRcIj5cbiAgICAgICAgICAgIDxUcmVuZGluZ1VwIGNsYXNzTmFtZT1cInctNiBoLTYgdGV4dC1wdXJwbGUtNjAwIG1iLTJcIiAvPlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmb250LXNlbWlib2xkIHRleHQtZ3JheS05MDAgdGV4dC1zbVwiPlJhdGUgQ2hhbmdlPC9kaXY+XG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQteHMgdGV4dC1ncmF5LTYwMCBtdC0xXCI+VXBkYXRlIGludGVyZXN0IHJhdGU8L2Rpdj5cbiAgICAgICAgICA8L2J1dHRvbj5cblxuICAgICAgICAgIDxidXR0b24gY2xhc3NOYW1lPVwiYmctd2hpdGUgYm9yZGVyIGJvcmRlci1ncmF5LTMwMCByb3VuZGVkIHAtNCBob3Zlcjpib3JkZXItYmx1ZS00MDAgaG92ZXI6c2hhZG93LW1kIHRyYW5zaXRpb24tYWxsIHRleHQtbGVmdFwiPlxuICAgICAgICAgICAgPENhbGVuZGFyIGNsYXNzTmFtZT1cInctNiBoLTYgdGV4dC1ncmVlbi02MDAgbWItMlwiIC8+XG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZvbnQtc2VtaWJvbGQgdGV4dC1ncmF5LTkwMCB0ZXh0LXNtXCI+UGF5bWVudCBIb2xkPC9kaXY+XG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQteHMgdGV4dC1ncmF5LTYwMCBtdC0xXCI+UGF1c2UgcmVwYXltZW50czwvZGl2PlxuICAgICAgICAgIDwvYnV0dG9uPlxuXG4gICAgICAgICAgPGJ1dHRvbiBjbGFzc05hbWU9XCJiZy13aGl0ZSBib3JkZXIgYm9yZGVyLWdyYXktMzAwIHJvdW5kZWQgcC00IGhvdmVyOmJvcmRlci1ibHVlLTQwMCBob3ZlcjpzaGFkb3ctbWQgdHJhbnNpdGlvbi1hbGwgdGV4dC1sZWZ0XCI+XG4gICAgICAgICAgICA8U2VuZCBjbGFzc05hbWU9XCJ3LTYgaC02IHRleHQtaW5kaWdvLTYwMCBtYi0yXCIgLz5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZm9udC1zZW1pYm9sZCB0ZXh0LWdyYXktOTAwIHRleHQtc21cIj5TZW5kIFN0YXRlbWVudDwvZGl2PlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LXhzIHRleHQtZ3JheS02MDAgbXQtMVwiPkVtYWlsIHRvIGJvcnJvd2VyPC9kaXY+XG4gICAgICAgICAgPC9idXR0b24+XG4gICAgICAgIDwvZGl2PlxuICAgICAgPC9kaXY+XG4gICAgPC9kaXY+XG4gICk7XG59XG4iXSwiZmlsZSI6IkM6L1VzZXJzL0FuZHJldyBOYWdsZS9EZXNrdG9wL0dyb3dreWMtbWFpbi9Hcm93a3ljLW1haW4vc3JjL2FwcC9jb21wb25lbnRzL3BmYS9Mb2FuTGVkZ2VyLnRzeCJ9

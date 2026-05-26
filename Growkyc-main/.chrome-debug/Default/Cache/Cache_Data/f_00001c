@@ -1,0 +1,753 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/app/components/admin/CaseManagement.tsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=15066356"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+var _s = $RefreshSig$();
+import __vite__cjsImport3_react from "/node_modules/.vite/deps/react.js?v=15066356"; const useState = __vite__cjsImport3_react["useState"];
+import { Card, CardContent, CardHeader, CardTitle } from "/src/app/components/ui/card.tsx";
+import { Button } from "/src/app/components/ui/button.tsx";
+import { Input } from "/src/app/components/ui/input.tsx";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "/src/app/components/ui/table.tsx";
+import { StatusBadge } from "/src/app/components/StatusBadge.tsx";
+import { toast } from "/src/app/lib/toast.ts";
+import { ConfirmDialog } from "/src/app/components/ui/confirm-dialog.tsx";
+import { EmptyState } from "/src/app/components/ui/empty-state.tsx";
+import {
+  Plus,
+  Search,
+  Eye,
+  Trash2,
+  FileText,
+  Download,
+  RefreshCw
+} from "/node_modules/.vite/deps/lucide-react.js?v=15066356";
+import { mockCases } from "/src/app/data/mockData.ts";
+import { format } from "/node_modules/.vite/deps/date-fns.js?v=15066356";
+export function CaseManagement({ onViewCase, userRole = "admin", onCreateCase }) {
+  _s();
+  const [cases, setCases] = useState(mockCases);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [statusFilter, setStatusFilter] = useState("all");
+  const [confirmDeleteOpen, setConfirmDeleteOpen] = useState(false);
+  const [caseToDelete, setCaseToDelete] = useState(null);
+  const getUserCases = () => {
+    switch (userRole) {
+      case "borrower":
+        return cases.filter((c) => c.borrowerName === "John Thompson" || c.borrowerName === "Sarah Mitchell");
+      case "lender":
+        return cases;
+      // In production, filter by lender ID
+      case "lawyer":
+        return cases.filter((c) => c.status !== "completed");
+      // Show active cases only
+      case "admin":
+      case "super_admin":
+        return cases;
+      default:
+        return cases;
+    }
+  };
+  const visibleCases = getUserCases();
+  const getPageTitle = () => {
+    switch (userRole) {
+      case "borrower":
+        return "My Case";
+      case "lender":
+        return "My MIP Cases";
+      case "lawyer":
+        return "Assigned Cases";
+      case "admin":
+      case "super_admin":
+        return "Case Management";
+      default:
+        return "Cases";
+    }
+  };
+  const statusOptions = [
+    { value: "active", label: "Active" },
+    { value: "in_auction", label: "In Auction" },
+    { value: "completed", label: "Completed" },
+    { value: "pending", label: "Pending" }
+  ];
+  const handleStatusChange = (caseId, newStatus) => {
+    const caseItem = cases.find((c) => c.id === caseId);
+    setCases(cases.map(
+      (c) => c.id === caseId ? { ...c, status: newStatus } : c
+    ));
+    toast.success(`Status updated - ${caseItem?.caseNumber} set to ${newStatus}`);
+  };
+  const handleDeleteClick = (caseItem, e) => {
+    e.stopPropagation();
+    setCaseToDelete(caseItem);
+    setConfirmDeleteOpen(true);
+  };
+  const handleDeleteCase = async () => {
+    if (!caseToDelete) return;
+    setConfirmDeleteOpen(false);
+    toast.loading("Deleting case...");
+    await new Promise((resolve) => setTimeout(resolve, 1e3));
+    setCases(cases.filter((c) => c.id !== caseToDelete.id));
+    toast.success(`Case deleted - ${caseToDelete.caseNumber}`);
+    setCaseToDelete(null);
+  };
+  const handleExportCases = () => {
+    toast.info("Preparing export...");
+    setTimeout(() => {
+      toast.success(`Cases exported - ${filteredCases.length} cases exported to CSV`);
+    }, 1e3);
+  };
+  const handleRefresh = () => {
+    toast.success("Cases refreshed");
+  };
+  const filteredCases = visibleCases.filter((caseItem) => {
+    const matchesSearch = caseItem.caseNumber.toLowerCase().includes(searchQuery.toLowerCase()) || caseItem.borrowerName.toLowerCase().includes(searchQuery.toLowerCase()) || caseItem.property.address.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesStatus = statusFilter === "all" || caseItem.status === statusFilter;
+    return matchesSearch && matchesStatus;
+  });
+  const breadcrumbItems = [
+    { label: "Dashboard", href: "#" },
+    { label: "Admin", href: "#" },
+    { label: "Case Management" }
+  ];
+  return /* @__PURE__ */ jsxDEV("div", { className: "space-y-6", children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between", children: [
+      /* @__PURE__ */ jsxDEV("div", { children: [
+        /* @__PURE__ */ jsxDEV("h1", { className: "text-3xl font-bold text-gray-900", children: getPageTitle() }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+          lineNumber: 164,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "text-gray-600 mt-1", children: [
+          userRole === "borrower" && "View and manage your mortgage insurance protection case",
+          userRole === "lender" && "Manage loans you've placed on the MIP platform",
+          userRole === "lawyer" && "Create and manage cases for your clients",
+          (userRole === "admin" || userRole === "super_admin") && "Oversee all cases and platform activity"
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+          lineNumber: 165,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+        lineNumber: 163,
+        columnNumber: 9
+      }, this),
+      (userRole === "lender" || userRole === "lawyer" || userRole === "admin" || userRole === "super_admin" || userRole === "investor") && /* @__PURE__ */ jsxDEV(Button, { onClick: onCreateCase, size: "lg", children: [
+        /* @__PURE__ */ jsxDEV(Plus, { className: "w-5 h-5 mr-2" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+          lineNumber: 174,
+          columnNumber: 13
+        }, this),
+        "Submit New Case"
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+        lineNumber: 173,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+      lineNumber: 162,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "grid grid-cols-1 md:grid-cols-4 gap-6", children: [
+      /* @__PURE__ */ jsxDEV(Card, { children: /* @__PURE__ */ jsxDEV(CardContent, { className: "p-6", children: /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between", children: [
+        /* @__PURE__ */ jsxDEV("div", { children: [
+          /* @__PURE__ */ jsxDEV("p", { className: "text-sm text-gray-600 mb-1", children: userRole === "borrower" ? "Your Cases" : "Total Cases" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+            lineNumber: 186,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ jsxDEV("p", { className: "text-3xl font-semibold text-gray-900", children: visibleCases.length }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+            lineNumber: 189,
+            columnNumber: 17
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+          lineNumber: 185,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "p-3 bg-blue-50 rounded-lg", children: /* @__PURE__ */ jsxDEV(FileText, { className: "w-6 h-6 text-blue-600" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+          lineNumber: 192,
+          columnNumber: 17
+        }, this) }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+          lineNumber: 191,
+          columnNumber: 15
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+        lineNumber: 184,
+        columnNumber: 13
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+        lineNumber: 183,
+        columnNumber: 11
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+        lineNumber: 182,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV(Card, { children: /* @__PURE__ */ jsxDEV(CardContent, { className: "p-6", children: /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between", children: [
+        /* @__PURE__ */ jsxDEV("div", { children: [
+          /* @__PURE__ */ jsxDEV("p", { className: "text-sm text-gray-600 mb-1", children: "Active Cases" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+            lineNumber: 202,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ jsxDEV("p", { className: "text-3xl font-semibold text-gray-900", children: visibleCases.filter((c) => c.status === "active" || c.status === "in_auction").length }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+            lineNumber: 203,
+            columnNumber: 17
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+          lineNumber: 201,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "p-3 bg-green-50 rounded-lg", children: /* @__PURE__ */ jsxDEV(Eye, { className: "w-6 h-6 text-green-600" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+          lineNumber: 208,
+          columnNumber: 17
+        }, this) }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+          lineNumber: 207,
+          columnNumber: 15
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+        lineNumber: 200,
+        columnNumber: 13
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+        lineNumber: 199,
+        columnNumber: 11
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+        lineNumber: 198,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV(Card, { children: /* @__PURE__ */ jsxDEV(CardContent, { className: "p-6", children: /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between", children: [
+        /* @__PURE__ */ jsxDEV("div", { children: [
+          /* @__PURE__ */ jsxDEV("p", { className: "text-sm text-gray-600 mb-1", children: "In Auction" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+            lineNumber: 218,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ jsxDEV("p", { className: "text-3xl font-semibold text-gray-900", children: visibleCases.filter((c) => c.status === "in_auction").length }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+            lineNumber: 219,
+            columnNumber: 17
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+          lineNumber: 217,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "p-3 bg-red-50 rounded-lg", children: /* @__PURE__ */ jsxDEV(RefreshCw, { className: "w-6 h-6 text-red-600" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+          lineNumber: 224,
+          columnNumber: 17
+        }, this) }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+          lineNumber: 223,
+          columnNumber: 15
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+        lineNumber: 216,
+        columnNumber: 13
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+        lineNumber: 215,
+        columnNumber: 11
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+        lineNumber: 214,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV(Card, { children: /* @__PURE__ */ jsxDEV(CardContent, { className: "p-6", children: /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between", children: [
+        /* @__PURE__ */ jsxDEV("div", { children: [
+          /* @__PURE__ */ jsxDEV("p", { className: "text-sm text-gray-600 mb-1", children: "Completed" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+            lineNumber: 234,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ jsxDEV("p", { className: "text-3xl font-semibold text-gray-900", children: visibleCases.filter((c) => c.status === "completed").length }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+            lineNumber: 235,
+            columnNumber: 17
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+          lineNumber: 233,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "p-3 bg-purple-50 rounded-lg", children: /* @__PURE__ */ jsxDEV(FileText, { className: "w-6 h-6 text-purple-600" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+          lineNumber: 240,
+          columnNumber: 17
+        }, this) }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+          lineNumber: 239,
+          columnNumber: 15
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+        lineNumber: 232,
+        columnNumber: 13
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+        lineNumber: 231,
+        columnNumber: 11
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+        lineNumber: 230,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+      lineNumber: 181,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV(Card, { children: [
+      /* @__PURE__ */ jsxDEV(CardHeader, { children: /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between", children: [
+        /* @__PURE__ */ jsxDEV(CardTitle, { children: [
+          "All Cases (",
+          filteredCases.length,
+          ")"
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+          lineNumber: 250,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "flex items-center gap-3", children: [
+          /* @__PURE__ */ jsxDEV("div", { className: "relative", children: [
+            /* @__PURE__ */ jsxDEV(Search, { className: "absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+              lineNumber: 254,
+              columnNumber: 17
+            }, this),
+            /* @__PURE__ */ jsxDEV(
+              Input,
+              {
+                type: "text",
+                value: searchQuery,
+                onChange: (e) => setSearchQuery(e.target.value),
+                placeholder: "Search cases...",
+                className: "pl-9 w-64"
+              },
+              void 0,
+              false,
+              {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+                lineNumber: 255,
+                columnNumber: 17
+              },
+              this
+            )
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+            lineNumber: 253,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV(
+            "select",
+            {
+              value: statusFilter,
+              onChange: (e) => setStatusFilter(e.target.value),
+              className: "px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary",
+              children: [
+                /* @__PURE__ */ jsxDEV("option", { value: "all", children: "All Status" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+                  lineNumber: 270,
+                  columnNumber: 17
+                }, this),
+                statusOptions.map(
+                  (opt) => /* @__PURE__ */ jsxDEV("option", { value: opt.value, children: opt.label }, opt.value, false, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+                    lineNumber: 272,
+                    columnNumber: 17
+                  }, this)
+                )
+              ]
+            },
+            void 0,
+            true,
+            {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+              lineNumber: 265,
+              columnNumber: 15
+            },
+            this
+          ),
+          /* @__PURE__ */ jsxDEV(Button, { variant: "outline", size: "sm", onClick: handleRefresh, children: [
+            /* @__PURE__ */ jsxDEV(RefreshCw, { className: "w-4 h-4 mr-1" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+              lineNumber: 278,
+              columnNumber: 17
+            }, this),
+            "Refresh"
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+            lineNumber: 277,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV(Button, { variant: "outline", size: "sm", onClick: handleExportCases, children: [
+            /* @__PURE__ */ jsxDEV(Download, { className: "w-4 h-4 mr-1" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+              lineNumber: 283,
+              columnNumber: 17
+            }, this),
+            "Export"
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+            lineNumber: 282,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+          lineNumber: 251,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+        lineNumber: 249,
+        columnNumber: 11
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+        lineNumber: 248,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV(CardContent, { children: filteredCases.length === 0 ? /* @__PURE__ */ jsxDEV(
+        EmptyState,
+        {
+          icon: FileText,
+          title: "No cases found",
+          description: searchQuery || statusFilter !== "all" ? "No cases match your filters" : "No cases have been created yet",
+          action: searchQuery || statusFilter !== "all" ? {
+            label: "Clear Filters",
+            onClick: () => {
+              setSearchQuery("");
+              setStatusFilter("all");
+              toast.info("Filters cleared");
+            }
+          } : void 0
+        },
+        void 0,
+        false,
+        {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+          lineNumber: 291,
+          columnNumber: 11
+        },
+        this
+      ) : /* @__PURE__ */ jsxDEV("div", { className: "overflow-x-auto", children: /* @__PURE__ */ jsxDEV(Table, { children: [
+        /* @__PURE__ */ jsxDEV(TableHeader, { children: /* @__PURE__ */ jsxDEV(TableRow, { children: [
+          /* @__PURE__ */ jsxDEV(TableHead, { children: "Case Number" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+            lineNumber: 317,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ jsxDEV(TableHead, { children: "Borrower" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+            lineNumber: 318,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ jsxDEV(TableHead, { children: "Property" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+            lineNumber: 319,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ jsxDEV(TableHead, { className: "text-right", children: "Debt" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+            lineNumber: 320,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ jsxDEV(TableHead, { className: "text-right", children: "Valuation" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+            lineNumber: 321,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ jsxDEV(TableHead, { children: "Status" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+            lineNumber: 322,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ jsxDEV(TableHead, { children: "Risk" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+            lineNumber: 323,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ jsxDEV(TableHead, { children: "Created" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+            lineNumber: 324,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ jsxDEV(TableHead, { className: "text-right", children: "Actions" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+            lineNumber: 325,
+            columnNumber: 21
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+          lineNumber: 316,
+          columnNumber: 19
+        }, this) }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+          lineNumber: 315,
+          columnNumber: 17
+        }, this),
+        /* @__PURE__ */ jsxDEV(TableBody, { children: filteredCases.map(
+          (caseItem) => /* @__PURE__ */ jsxDEV(
+            TableRow,
+            {
+              className: "hover:bg-gray-50 cursor-pointer",
+              onClick: () => {
+                onViewCase?.(caseItem.id);
+              },
+              children: [
+                /* @__PURE__ */ jsxDEV(TableCell, { className: "font-semibold", children: caseItem.caseNumber }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+                  lineNumber: 337,
+                  columnNumber: 23
+                }, this),
+                /* @__PURE__ */ jsxDEV(TableCell, { children: caseItem.borrowerName }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+                  lineNumber: 338,
+                  columnNumber: 23
+                }, this),
+                /* @__PURE__ */ jsxDEV(TableCell, { children: /* @__PURE__ */ jsxDEV("div", { children: [
+                  /* @__PURE__ */ jsxDEV("p", { className: "font-medium text-sm", children: caseItem.property.address }, void 0, false, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+                    lineNumber: 341,
+                    columnNumber: 27
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("p", { className: "text-xs text-gray-500", children: [
+                    caseItem.property.suburb,
+                    ", ",
+                    caseItem.property.state
+                  ] }, void 0, true, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+                    lineNumber: 342,
+                    columnNumber: 27
+                  }, this)
+                ] }, void 0, true, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+                  lineNumber: 340,
+                  columnNumber: 25
+                }, this) }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+                  lineNumber: 339,
+                  columnNumber: 23
+                }, this),
+                /* @__PURE__ */ jsxDEV(TableCell, { className: "font-semibold text-right", children: [
+                  "A$",
+                  (caseItem.outstandingDebt / 1e3).toFixed(0),
+                  "k"
+                ] }, void 0, true, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+                  lineNumber: 345,
+                  columnNumber: 23
+                }, this),
+                /* @__PURE__ */ jsxDEV(TableCell, { className: "font-semibold text-right", children: [
+                  "A$",
+                  (caseItem.valuation.amount / 1e3).toFixed(0),
+                  "k"
+                ] }, void 0, true, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+                  lineNumber: 346,
+                  columnNumber: 23
+                }, this),
+                /* @__PURE__ */ jsxDEV(TableCell, { onClick: (e) => e.stopPropagation(), children: /* @__PURE__ */ jsxDEV(
+                  "select",
+                  {
+                    value: caseItem.status,
+                    onChange: (e) => handleStatusChange(caseItem.id, e.target.value),
+                    className: "px-2 py-1 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary",
+                    children: statusOptions.map(
+                      (opt) => /* @__PURE__ */ jsxDEV("option", { value: opt.value, children: opt.label }, opt.value, false, {
+                        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+                        lineNumber: 354,
+                        columnNumber: 23
+                      }, this)
+                    )
+                  },
+                  void 0,
+                  false,
+                  {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+                    lineNumber: 348,
+                    columnNumber: 25
+                  },
+                  this
+                ) }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+                  lineNumber: 347,
+                  columnNumber: 23
+                }, this),
+                /* @__PURE__ */ jsxDEV(TableCell, { children: /* @__PURE__ */ jsxDEV(StatusBadge, { status: caseItem.riskLevel, type: "risk" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+                  lineNumber: 359,
+                  columnNumber: 25
+                }, this) }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+                  lineNumber: 358,
+                  columnNumber: 23
+                }, this),
+                /* @__PURE__ */ jsxDEV(TableCell, { className: "text-sm text-gray-600", children: format(caseItem.createdAt, "dd MMM yyyy") }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+                  lineNumber: 361,
+                  columnNumber: 23
+                }, this),
+                /* @__PURE__ */ jsxDEV(TableCell, { className: "text-right", onClick: (e) => e.stopPropagation(), children: /* @__PURE__ */ jsxDEV("div", { className: "flex gap-2 justify-end", children: [
+                  /* @__PURE__ */ jsxDEV(
+                    Button,
+                    {
+                      variant: "outline",
+                      size: "sm",
+                      onClick: (e) => {
+                        e.stopPropagation();
+                        onViewCase?.(caseItem.id);
+                      },
+                      title: "View Case Details",
+                      children: /* @__PURE__ */ jsxDEV(Eye, { className: "w-4 h-4" }, void 0, false, {
+                        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+                        lineNumber: 375,
+                        columnNumber: 29
+                      }, this)
+                    },
+                    void 0,
+                    false,
+                    {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+                      lineNumber: 366,
+                      columnNumber: 27
+                    },
+                    this
+                  ),
+                  /* @__PURE__ */ jsxDEV(
+                    Button,
+                    {
+                      variant: "outline",
+                      size: "sm",
+                      onClick: (e) => handleDeleteClick(caseItem, e),
+                      className: "text-red-600 hover:text-red-700 hover:bg-red-50",
+                      title: "Delete Case",
+                      children: /* @__PURE__ */ jsxDEV(Trash2, { className: "w-4 h-4" }, void 0, false, {
+                        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+                        lineNumber: 384,
+                        columnNumber: 29
+                      }, this)
+                    },
+                    void 0,
+                    false,
+                    {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+                      lineNumber: 377,
+                      columnNumber: 27
+                    },
+                    this
+                  )
+                ] }, void 0, true, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+                  lineNumber: 365,
+                  columnNumber: 25
+                }, this) }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+                  lineNumber: 364,
+                  columnNumber: 23
+                }, this)
+              ]
+            },
+            caseItem.id,
+            true,
+            {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+              lineNumber: 330,
+              columnNumber: 17
+            },
+            this
+          )
+        ) }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+          lineNumber: 328,
+          columnNumber: 17
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+        lineNumber: 314,
+        columnNumber: 15
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+        lineNumber: 313,
+        columnNumber: 11
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+        lineNumber: 289,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+      lineNumber: 247,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV(
+      ConfirmDialog,
+      {
+        open: confirmDeleteOpen,
+        onOpenChange: setConfirmDeleteOpen,
+        title: "Delete Case?",
+        description: `Are you sure you want to delete case ${caseToDelete?.caseNumber}? This action cannot be undone and will remove all associated data.`,
+        confirmLabel: "Delete Case",
+        onConfirm: handleDeleteCase,
+        variant: "destructive"
+      },
+      void 0,
+      false,
+      {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+        lineNumber: 398,
+        columnNumber: 7
+      },
+      this
+    )
+  ] }, void 0, true, {
+    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx",
+    lineNumber: 160,
+    columnNumber: 5
+  }, this);
+}
+_s(CaseManagement, "T+t/qRLGIF1pXTa/NoBUJ1cn0To=");
+_c = CaseManagement;
+var _c;
+$RefreshReg$(_c, "CaseManagement");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/admin/CaseManagement.tsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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O0FBQUE7QUFBQTtBQUFBLFlBeERLUCxTQUFTRTtBQUFBQSxZQURoQjtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLFVBMERBO0FBQUEsUUFDRCxLQTdESDtBQUFBO0FBQUE7QUFBQTtBQUFBLGVBOERBO0FBQUEsV0E1RUY7QUFBQTtBQUFBO0FBQUE7QUFBQSxhQTZFQSxLQTlFRjtBQUFBO0FBQUE7QUFBQTtBQUFBLGFBK0VBLEtBdkdKO0FBQUE7QUFBQTtBQUFBO0FBQUEsYUF5R0E7QUFBQSxTQW5KRjtBQUFBO0FBQUE7QUFBQTtBQUFBLFdBb0pBO0FBQUEsSUFHQTtBQUFBLE1BQUM7QUFBQTtBQUFBLFFBQ0MsTUFBTW5CO0FBQUFBLFFBQ04sY0FBY0M7QUFBQUEsUUFDZCxPQUFNO0FBQUEsUUFDTixhQUFhLHdDQUF3Q0MsY0FBY29CLFVBQVU7QUFBQSxRQUM3RSxjQUFhO0FBQUEsUUFDYixXQUFXSTtBQUFBQSxRQUNYLFNBQVE7QUFBQTtBQUFBLE1BUFY7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLElBT3VCO0FBQUEsT0FyUHpCO0FBQUE7QUFBQTtBQUFBO0FBQUEsU0F1UEE7QUFFSjtBQUFDakMsR0F0V2VKLGdCQUFjO0FBQUEsS0FBZEE7QUFBYyxJQUFBbUU7QUFBQSxhQUFBQSxJQUFBIiwibmFtZXMiOlsidXNlU3RhdGUiLCJDYXJkIiwiQ2FyZENvbnRlbnQiLCJDYXJkSGVhZGVyIiwiQ2FyZFRpdGxlIiwiQnV0dG9uIiwiSW5wdXQiLCJUYWJsZSIsIlRhYmxlQm9keSIsIlRhYmxlQ2VsbCIsIlRhYmxlSGVhZCIsIlRhYmxlSGVhZGVyIiwiVGFibGVSb3ciLCJTdGF0dXNCYWRnZSIsInRvYXN0IiwiQ29uZmlybURpYWxvZyIsIkVtcHR5U3RhdGUiLCJQbHVzIiwiU2VhcmNoIiwiRXllIiwiVHJhc2gyIiwiRmlsZVRleHQiLCJEb3dubG9hZCIsIlJlZnJlc2hDdyIsIm1vY2tDYXNlcyIsImZvcm1hdCIsIkNhc2VNYW5hZ2VtZW50Iiwib25WaWV3Q2FzZSIsInVzZXJSb2xlIiwib25DcmVhdGVDYXNlIiwiX3MiLCJjYXNlcyIsInNldENhc2VzIiwic2VhcmNoUXVlcnkiLCJzZXRTZWFyY2hRdWVyeSIsInN0YXR1c0ZpbHRlciIsInNldFN0YXR1c0ZpbHRlciIsImNvbmZpcm1EZWxldGVPcGVuIiwic2V0Q29uZmlybURlbGV0ZU9wZW4iLCJjYXNlVG9EZWxldGUiLCJzZXRDYXNlVG9EZWxldGUiLCJnZXRVc2VyQ2FzZXMiLCJmaWx0ZXIiLCJjIiwiYm9ycm93ZXJOYW1lIiwic3RhdHVzIiwidmlzaWJsZUNhc2VzIiwiZ2V0UGFnZVRpdGxlIiwic3RhdHVzT3B0aW9ucyIsInZhbHVlIiwibGFiZWwiLCJoYW5kbGVTdGF0dXNDaGFuZ2UiLCJjYXNlSWQiLCJuZXdTdGF0dXMiLCJjYXNlSXRlbSIsImZpbmQiLCJpZCIsIm1hcCIsInN1Y2Nlc3MiLCJjYXNlTnVtYmVyIiwiaGFuZGxlRGVsZXRlQ2xpY2siLCJlIiwic3RvcFByb3BhZ2F0aW9uIiwiaGFuZGxlRGVsZXRlQ2FzZSIsImxvYWRpbmciLCJQcm9taXNlIiwicmVzb2x2ZSIsInNldFRpbWVvdXQiLCJoYW5kbGVFeHBvcnRDYXNlcyIsImluZm8iLCJmaWx0ZXJlZENhc2VzIiwibGVuZ3RoIiwiaGFuZGxlUmVmcmVzaCIsIm1hdGNoZXNTZWFyY2giLCJ0b0xvd2VyQ2FzZSIsImluY2x1ZGVzIiwicHJvcGVydHkiLCJhZGRyZXNzIiwibWF0Y2hlc1N0YXR1cyIsImJyZWFkY3J1bWJJdGVtcyIsImhyZWYiLCJ0YXJnZXQiLCJvcHQiLCJvbkNsaWNrIiwidW5kZWZpbmVkIiwic3VidXJiIiwic3RhdGUiLCJvdXRzdGFuZGluZ0RlYnQiLCJ0b0ZpeGVkIiwidmFsdWF0aW9uIiwiYW1vdW50Iiwicmlza0xldmVsIiwiY3JlYXRlZEF0IiwiX2MiXSwiaWdub3JlTGlzdCI6W10sInNvdXJjZXMiOlsiQ2FzZU1hbmFnZW1lbnQudHN4Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCwgeyB1c2VTdGF0ZSB9IGZyb20gJ3JlYWN0JztcbmltcG9ydCB7IENhcmQsIENhcmRDb250ZW50LCBDYXJkSGVhZGVyLCBDYXJkVGl0bGUgfSBmcm9tICcuLi91aS9jYXJkJztcbmltcG9ydCB7IEJ1dHRvbiB9IGZyb20gJy4uL3VpL2J1dHRvbic7XG5pbXBvcnQgeyBJbnB1dCB9IGZyb20gJy4uL3VpL2lucHV0JztcbmltcG9ydCB7IFRhYmxlLCBUYWJsZUJvZHksIFRhYmxlQ2VsbCwgVGFibGVIZWFkLCBUYWJsZUhlYWRlciwgVGFibGVSb3cgfSBmcm9tICcuLi91aS90YWJsZSc7XG5pbXBvcnQgeyBTdGF0dXNCYWRnZSB9IGZyb20gJy4uL1N0YXR1c0JhZGdlJztcbmltcG9ydCB7IHRvYXN0IH0gZnJvbSAnLi4vLi4vbGliL3RvYXN0JztcbmltcG9ydCB7IENvbmZpcm1EaWFsb2cgfSBmcm9tICcuLi91aS9jb25maXJtLWRpYWxvZyc7XG5pbXBvcnQgeyBFbXB0eVN0YXRlIH0gZnJvbSAnLi4vdWkvZW1wdHktc3RhdGUnO1xuaW1wb3J0IHsgQnJlYWRjcnVtYnMgfSBmcm9tICcuLi91aS9icmVhZGNydW1icyc7XG5pbXBvcnQgeyBcbiAgUGx1cywgXG4gIFNlYXJjaCwgXG4gIEZpbHRlcixcbiAgRXllLFxuICBFZGl0LFxuICBUcmFzaDIsXG4gIEZpbGVUZXh0LFxuICBEb3dubG9hZCxcbiAgUmVmcmVzaEN3LFxuICBNb3JlVmVydGljYWxcbn0gZnJvbSAnbHVjaWRlLXJlYWN0JztcbmltcG9ydCB7IG1vY2tDYXNlcyB9IGZyb20gJy4uLy4uL2RhdGEvbW9ja0RhdGEnO1xuaW1wb3J0IHsgZm9ybWF0IH0gZnJvbSAnZGF0ZS1mbnMnO1xuXG5pbnRlcmZhY2UgQ2FzZU1hbmFnZW1lbnRQcm9wcyB7XG4gIG9uVmlld0Nhc2U/OiAoY2FzZUlkOiBzdHJpbmcpID0+IHZvaWQ7XG4gIHVzZXJSb2xlPzogJ2JvcnJvd2VyJyB8ICdsZW5kZXInIHwgJ2xhd3llcicgfCAnYWRtaW4nIHwgJ3N1cGVyX2FkbWluJyB8ICdpbnZlc3Rvcic7XG4gIG9uQ3JlYXRlQ2FzZT86ICgpID0+IHZvaWQ7XG59XG5cbmV4cG9ydCBmdW5jdGlvbiBDYXNlTWFuYWdlbWVudCh7IG9uVmlld0Nhc2UsIHVzZXJSb2xlID0gJ2FkbWluJywgb25DcmVhdGVDYXNlIH06IENhc2VNYW5hZ2VtZW50UHJvcHMpIHtcbiAgY29uc3QgW2Nhc2VzLCBzZXRDYXNlc10gPSB1c2VTdGF0ZShtb2NrQ2FzZXMpO1xuICBjb25zdCBbc2VhcmNoUXVlcnksIHNldFNlYXJjaFF1ZXJ5XSA9IHVzZVN0YXRlKCcnKTtcbiAgY29uc3QgW3N0YXR1c0ZpbHRlciwgc2V0U3RhdHVzRmlsdGVyXSA9IHVzZVN0YXRlKCdhbGwnKTtcbiAgY29uc3QgW2NvbmZpcm1EZWxldGVPcGVuLCBzZXRDb25maXJtRGVsZXRlT3Blbl0gPSB1c2VTdGF0ZShmYWxzZSk7XG4gIGNvbnN0IFtjYXNlVG9EZWxldGUsIHNldENhc2VUb0RlbGV0ZV0gPSB1c2VTdGF0ZTxhbnk+KG51bGwpO1xuXG4gIC8vIEZpbHRlciBjYXNlcyBiYXNlZCBvbiB1c2VyIHJvbGVcbiAgY29uc3QgZ2V0VXNlckNhc2VzID0gKCkgPT4ge1xuICAgIHN3aXRjaCAodXNlclJvbGUpIHtcbiAgICAgIGNhc2UgJ2JvcnJvd2VyJzpcbiAgICAgICAgLy8gQm9ycm93ZXJzIG9ubHkgc2VlIHRoZWlyIG93biBjYXNlKHMpXG4gICAgICAgIHJldHVybiBjYXNlcy5maWx0ZXIoYyA9PiBjLmJvcnJvd2VyTmFtZSA9PT0gJ0pvaG4gVGhvbXBzb24nIHx8IGMuYm9ycm93ZXJOYW1lID09PSAnU2FyYWggTWl0Y2hlbGwnKTtcbiAgICAgIGNhc2UgJ2xlbmRlcic6XG4gICAgICAgIC8vIExlbmRlcnMgc2VlIGNhc2VzIHRoZXkndmUgc3VibWl0dGVkIHRvIHRoZSBwbGF0Zm9ybVxuICAgICAgICByZXR1cm4gY2FzZXM7IC8vIEluIHByb2R1Y3Rpb24sIGZpbHRlciBieSBsZW5kZXIgSURcbiAgICAgIGNhc2UgJ2xhd3llcic6XG4gICAgICAgIC8vIExhd3llcnMgc2VlIGNhc2VzIGFzc2lnbmVkIHRvIHRoZW1cbiAgICAgICAgcmV0dXJuIGNhc2VzLmZpbHRlcihjID0+IGMuc3RhdHVzICE9PSAnY29tcGxldGVkJyk7IC8vIFNob3cgYWN0aXZlIGNhc2VzIG9ubHlcbiAgICAgIGNhc2UgJ2FkbWluJzpcbiAgICAgIGNhc2UgJ3N1cGVyX2FkbWluJzpcbiAgICAgICAgLy8gQWRtaW5zIHNlZSBhbGwgY2FzZXNcbiAgICAgICAgcmV0dXJuIGNhc2VzO1xuICAgICAgZGVmYXVsdDpcbiAgICAgICAgcmV0dXJuIGNhc2VzO1xuICAgIH1cbiAgfTtcblxuICBjb25zdCB2aXNpYmxlQ2FzZXMgPSBnZXRVc2VyQ2FzZXMoKTtcblxuICAvLyBHZXQgcGFnZSB0aXRsZSBiYXNlZCBvbiByb2xlXG4gIGNvbnN0IGdldFBhZ2VUaXRsZSA9ICgpID0+IHtcbiAgICBzd2l0Y2ggKHVzZXJSb2xlKSB7XG4gICAgICBjYXNlICdib3Jyb3dlcic6XG4gICAgICAgIHJldHVybiAnTXkgQ2FzZSc7XG4gICAgICBjYXNlICdsZW5kZXInOlxuICAgICAgICByZXR1cm4gJ015IE1JUCBDYXNlcyc7XG4gICAgICBjYXNlICdsYXd5ZXInOlxuICAgICAgICByZXR1cm4gJ0Fzc2lnbmVkIENhc2VzJztcbiAgICAgIGNhc2UgJ2FkbWluJzpcbiAgICAgIGNhc2UgJ3N1cGVyX2FkbWluJzpcbiAgICAgICAgcmV0dXJuICdDYXNlIE1hbmFnZW1lbnQnO1xuICAgICAgZGVmYXVsdDpcbiAgICAgICAgcmV0dXJuICdDYXNlcyc7XG4gICAgfVxuICB9O1xuXG4gIGNvbnN0IHN0YXR1c09wdGlvbnMgPSBbXG4gICAgeyB2YWx1ZTogJ2FjdGl2ZScsIGxhYmVsOiAnQWN0aXZlJyB9LFxuICAgIHsgdmFsdWU6ICdpbl9hdWN0aW9uJywgbGFiZWw6ICdJbiBBdWN0aW9uJyB9LFxuICAgIHsgdmFsdWU6ICdjb21wbGV0ZWQnLCBsYWJlbDogJ0NvbXBsZXRlZCcgfSxcbiAgICB7IHZhbHVlOiAncGVuZGluZycsIGxhYmVsOiAnUGVuZGluZycgfVxuICBdO1xuXG4gIGNvbnN0IGhhbmRsZVN0YXR1c0NoYW5nZSA9IChjYXNlSWQ6IHN0cmluZywgbmV3U3RhdHVzOiBzdHJpbmcpID0+IHtcbiAgICBjb25zdCBjYXNlSXRlbSA9IGNhc2VzLmZpbmQoYyA9PiBjLmlkID09PSBjYXNlSWQpO1xuICAgIHNldENhc2VzKGNhc2VzLm1hcChjID0+IFxuICAgICAgYy5pZCA9PT0gY2FzZUlkID8geyAuLi5jLCBzdGF0dXM6IG5ld1N0YXR1cyB9IDogY1xuICAgICkpO1xuICAgIHRvYXN0LnN1Y2Nlc3MoYFN0YXR1cyB1cGRhdGVkIC0gJHtjYXNlSXRlbT8uY2FzZU51bWJlcn0gc2V0IHRvICR7bmV3U3RhdHVzfWApO1xuICB9O1xuXG4gIGNvbnN0IGhhbmRsZURlbGV0ZUNsaWNrID0gKGNhc2VJdGVtOiBhbnksIGU6IFJlYWN0Lk1vdXNlRXZlbnQpID0+IHtcbiAgICBlLnN0b3BQcm9wYWdhdGlvbigpO1xuICAgIHNldENhc2VUb0RlbGV0ZShjYXNlSXRlbSk7XG4gICAgc2V0Q29uZmlybURlbGV0ZU9wZW4odHJ1ZSk7XG4gIH07XG5cbiAgY29uc3QgaGFuZGxlRGVsZXRlQ2FzZSA9IGFzeW5jICgpID0+IHtcbiAgICBpZiAoIWNhc2VUb0RlbGV0ZSkgcmV0dXJuO1xuXG4gICAgc2V0Q29uZmlybURlbGV0ZU9wZW4oZmFsc2UpO1xuICAgIHRvYXN0LmxvYWRpbmcoJ0RlbGV0aW5nIGNhc2UuLi4nKTtcbiAgICBcbiAgICBhd2FpdCBuZXcgUHJvbWlzZShyZXNvbHZlID0+IHNldFRpbWVvdXQocmVzb2x2ZSwgMTAwMCkpO1xuICAgIFxuICAgIHNldENhc2VzKGNhc2VzLmZpbHRlcihjID0+IGMuaWQgIT09IGNhc2VUb0RlbGV0ZS5pZCkpO1xuICAgIFxuICAgIHRvYXN0LnN1Y2Nlc3MoYENhc2UgZGVsZXRlZCAtICR7Y2FzZVRvRGVsZXRlLmNhc2VOdW1iZXJ9YCk7XG4gICAgXG4gICAgc2V0Q2FzZVRvRGVsZXRlKG51bGwpO1xuICB9O1xuXG4gIGNvbnN0IGhhbmRsZUV4cG9ydENhc2VzID0gKCkgPT4ge1xuICAgIHRvYXN0LmluZm8oJ1ByZXBhcmluZyBleHBvcnQuLi4nKTtcbiAgICBzZXRUaW1lb3V0KCgpID0+IHtcbiAgICAgIHRvYXN0LnN1Y2Nlc3MoYENhc2VzIGV4cG9ydGVkIC0gJHtmaWx0ZXJlZENhc2VzLmxlbmd0aH0gY2FzZXMgZXhwb3J0ZWQgdG8gQ1NWYCk7XG4gICAgfSwgMTAwMCk7XG4gIH07XG5cbiAgY29uc3QgaGFuZGxlUmVmcmVzaCA9ICgpID0+IHtcbiAgICB0b2FzdC5zdWNjZXNzKCdDYXNlcyByZWZyZXNoZWQnKTtcbiAgfTtcblxuICBjb25zdCBmaWx0ZXJlZENhc2VzID0gdmlzaWJsZUNhc2VzLmZpbHRlcihjYXNlSXRlbSA9PiB7XG4gICAgY29uc3QgbWF0Y2hlc1NlYXJjaCA9IGNhc2VJdGVtLmNhc2VOdW1iZXIudG9Mb3dlckNhc2UoKS5pbmNsdWRlcyhzZWFyY2hRdWVyeS50b0xvd2VyQ2FzZSgpKSB8fFxuICAgICAgICAgICAgICAgICAgICAgICAgICBjYXNlSXRlbS5ib3Jyb3dlck5hbWUudG9Mb3dlckNhc2UoKS5pbmNsdWRlcyhzZWFyY2hRdWVyeS50b0xvd2VyQ2FzZSgpKSB8fFxuICAgICAgICAgICAgICAgICAgICAgICAgICBjYXNlSXRlbS5wcm9wZXJ0eS5hZGRyZXNzLnRvTG93ZXJDYXNlKCkuaW5jbHVkZXMoc2VhcmNoUXVlcnkudG9Mb3dlckNhc2UoKSk7XG4gICAgY29uc3QgbWF0Y2hlc1N0YXR1cyA9IHN0YXR1c0ZpbHRlciA9PT0gJ2FsbCcgfHwgY2FzZUl0ZW0uc3RhdHVzID09PSBzdGF0dXNGaWx0ZXI7XG4gICAgcmV0dXJuIG1hdGNoZXNTZWFyY2ggJiYgbWF0Y2hlc1N0YXR1cztcbiAgfSk7XG5cbiAgY29uc3QgYnJlYWRjcnVtYkl0ZW1zID0gW1xuICAgIHsgbGFiZWw6ICdEYXNoYm9hcmQnLCBocmVmOiAnIycgfSxcbiAgICB7IGxhYmVsOiAnQWRtaW4nLCBocmVmOiAnIycgfSxcbiAgICB7IGxhYmVsOiAnQ2FzZSBNYW5hZ2VtZW50JyB9XG4gIF07XG5cbiAgcmV0dXJuIChcbiAgICA8ZGl2IGNsYXNzTmFtZT1cInNwYWNlLXktNlwiPlxuICAgICAgey8qIEhlYWRlciB3aXRoIFRpdGxlIGFuZCBDcmVhdGUgQnV0dG9uICovfVxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWJldHdlZW5cIj5cbiAgICAgICAgPGRpdj5cbiAgICAgICAgICA8aDEgY2xhc3NOYW1lPVwidGV4dC0zeGwgZm9udC1ib2xkIHRleHQtZ3JheS05MDBcIj57Z2V0UGFnZVRpdGxlKCl9PC9oMT5cbiAgICAgICAgICA8cCBjbGFzc05hbWU9XCJ0ZXh0LWdyYXktNjAwIG10LTFcIj5cbiAgICAgICAgICAgIHt1c2VyUm9sZSA9PT0gJ2JvcnJvd2VyJyAmJiAnVmlldyBhbmQgbWFuYWdlIHlvdXIgbW9ydGdhZ2UgaW5zdXJhbmNlIHByb3RlY3Rpb24gY2FzZSd9XG4gICAgICAgICAgICB7dXNlclJvbGUgPT09ICdsZW5kZXInICYmICdNYW5hZ2UgbG9hbnMgeW91XFwndmUgcGxhY2VkIG9uIHRoZSBNSVAgcGxhdGZvcm0nfVxuICAgICAgICAgICAge3VzZXJSb2xlID09PSAnbGF3eWVyJyAmJiAnQ3JlYXRlIGFuZCBtYW5hZ2UgY2FzZXMgZm9yIHlvdXIgY2xpZW50cyd9XG4gICAgICAgICAgICB7KHVzZXJSb2xlID09PSAnYWRtaW4nIHx8IHVzZXJSb2xlID09PSAnc3VwZXJfYWRtaW4nKSAmJiAnT3ZlcnNlZSBhbGwgY2FzZXMgYW5kIHBsYXRmb3JtIGFjdGl2aXR5J31cbiAgICAgICAgICA8L3A+XG4gICAgICAgIDwvZGl2PlxuICAgICAgICB7KHVzZXJSb2xlID09PSAnbGVuZGVyJyB8fCB1c2VyUm9sZSA9PT0gJ2xhd3llcicgfHwgdXNlclJvbGUgPT09ICdhZG1pbicgfHwgdXNlclJvbGUgPT09ICdzdXBlcl9hZG1pbicgfHwgdXNlclJvbGUgPT09ICdpbnZlc3RvcicpICYmIChcbiAgICAgICAgICA8QnV0dG9uIG9uQ2xpY2s9e29uQ3JlYXRlQ2FzZX0gc2l6ZT1cImxnXCI+XG4gICAgICAgICAgICA8UGx1cyBjbGFzc05hbWU9XCJ3LTUgaC01IG1yLTJcIiAvPlxuICAgICAgICAgICAgU3VibWl0IE5ldyBDYXNlXG4gICAgICAgICAgPC9CdXR0b24+XG4gICAgICAgICl9XG4gICAgICA8L2Rpdj5cblxuICAgICAgey8qIFN0YXRzIENhcmRzICovfVxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJncmlkIGdyaWQtY29scy0xIG1kOmdyaWQtY29scy00IGdhcC02XCI+XG4gICAgICAgIDxDYXJkPlxuICAgICAgICAgIDxDYXJkQ29udGVudCBjbGFzc05hbWU9XCJwLTZcIj5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1iZXR3ZWVuXCI+XG4gICAgICAgICAgICAgIDxkaXY+XG4gICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC1zbSB0ZXh0LWdyYXktNjAwIG1iLTFcIj5cbiAgICAgICAgICAgICAgICAgIHt1c2VyUm9sZSA9PT0gJ2JvcnJvd2VyJyA/ICdZb3VyIENhc2VzJyA6ICdUb3RhbCBDYXNlcyd9XG4gICAgICAgICAgICAgICAgPC9wPlxuICAgICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQtM3hsIGZvbnQtc2VtaWJvbGQgdGV4dC1ncmF5LTkwMFwiPnt2aXNpYmxlQ2FzZXMubGVuZ3RofTwvcD5cbiAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwicC0zIGJnLWJsdWUtNTAgcm91bmRlZC1sZ1wiPlxuICAgICAgICAgICAgICAgIDxGaWxlVGV4dCBjbGFzc05hbWU9XCJ3LTYgaC02IHRleHQtYmx1ZS02MDBcIiAvPlxuICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgIDwvQ2FyZENvbnRlbnQ+XG4gICAgICAgIDwvQ2FyZD5cblxuICAgICAgICA8Q2FyZD5cbiAgICAgICAgICA8Q2FyZENvbnRlbnQgY2xhc3NOYW1lPVwicC02XCI+XG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktYmV0d2VlblwiPlxuICAgICAgICAgICAgICA8ZGl2PlxuICAgICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQtc20gdGV4dC1ncmF5LTYwMCBtYi0xXCI+QWN0aXZlIENhc2VzPC9wPlxuICAgICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQtM3hsIGZvbnQtc2VtaWJvbGQgdGV4dC1ncmF5LTkwMFwiPlxuICAgICAgICAgICAgICAgICAge3Zpc2libGVDYXNlcy5maWx0ZXIoYyA9PiBjLnN0YXR1cyA9PT0gJ2FjdGl2ZScgfHwgYy5zdGF0dXMgPT09ICdpbl9hdWN0aW9uJykubGVuZ3RofVxuICAgICAgICAgICAgICAgIDwvcD5cbiAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwicC0zIGJnLWdyZWVuLTUwIHJvdW5kZWQtbGdcIj5cbiAgICAgICAgICAgICAgICA8RXllIGNsYXNzTmFtZT1cInctNiBoLTYgdGV4dC1ncmVlbi02MDBcIiAvPlxuICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgIDwvQ2FyZENvbnRlbnQ+XG4gICAgICAgIDwvQ2FyZD5cblxuICAgICAgICA8Q2FyZD5cbiAgICAgICAgICA8Q2FyZENvbnRlbnQgY2xhc3NOYW1lPVwicC02XCI+XG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktYmV0d2VlblwiPlxuICAgICAgICAgICAgICA8ZGl2PlxuICAgICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQtc20gdGV4dC1ncmF5LTYwMCBtYi0xXCI+SW4gQXVjdGlvbjwvcD5cbiAgICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJ0ZXh0LTN4bCBmb250LXNlbWlib2xkIHRleHQtZ3JheS05MDBcIj5cbiAgICAgICAgICAgICAgICAgIHt2aXNpYmxlQ2FzZXMuZmlsdGVyKGMgPT4gYy5zdGF0dXMgPT09ICdpbl9hdWN0aW9uJykubGVuZ3RofVxuICAgICAgICAgICAgICAgIDwvcD5cbiAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwicC0zIGJnLXJlZC01MCByb3VuZGVkLWxnXCI+XG4gICAgICAgICAgICAgICAgPFJlZnJlc2hDdyBjbGFzc05hbWU9XCJ3LTYgaC02IHRleHQtcmVkLTYwMFwiIC8+XG4gICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgPC9DYXJkQ29udGVudD5cbiAgICAgICAgPC9DYXJkPlxuXG4gICAgICAgIDxDYXJkPlxuICAgICAgICAgIDxDYXJkQ29udGVudCBjbGFzc05hbWU9XCJwLTZcIj5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1iZXR3ZWVuXCI+XG4gICAgICAgICAgICAgIDxkaXY+XG4gICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC1zbSB0ZXh0LWdyYXktNjAwIG1iLTFcIj5Db21wbGV0ZWQ8L3A+XG4gICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC0zeGwgZm9udC1zZW1pYm9sZCB0ZXh0LWdyYXktOTAwXCI+XG4gICAgICAgICAgICAgICAgICB7dmlzaWJsZUNhc2VzLmZpbHRlcihjID0+IGMuc3RhdHVzID09PSAnY29tcGxldGVkJykubGVuZ3RofVxuICAgICAgICAgICAgICAgIDwvcD5cbiAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwicC0zIGJnLXB1cnBsZS01MCByb3VuZGVkLWxnXCI+XG4gICAgICAgICAgICAgICAgPEZpbGVUZXh0IGNsYXNzTmFtZT1cInctNiBoLTYgdGV4dC1wdXJwbGUtNjAwXCIgLz5cbiAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICA8L0NhcmRDb250ZW50PlxuICAgICAgICA8L0NhcmQ+XG4gICAgICA8L2Rpdj5cblxuICAgICAgPENhcmQ+XG4gICAgICAgIDxDYXJkSGVhZGVyPlxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1iZXR3ZWVuXCI+XG4gICAgICAgICAgICA8Q2FyZFRpdGxlPkFsbCBDYXNlcyAoe2ZpbHRlcmVkQ2FzZXMubGVuZ3RofSk8L0NhcmRUaXRsZT5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTNcIj5cbiAgICAgICAgICAgICAgey8qIFNlYXJjaCAqL31cbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJyZWxhdGl2ZVwiPlxuICAgICAgICAgICAgICAgIDxTZWFyY2ggY2xhc3NOYW1lPVwiYWJzb2x1dGUgbGVmdC0zIHRvcC0xLzIgLXRyYW5zbGF0ZS15LTEvMiB3LTQgaC00IHRleHQtZ3JheS00MDBcIiAvPlxuICAgICAgICAgICAgICAgIDxJbnB1dFxuICAgICAgICAgICAgICAgICAgdHlwZT1cInRleHRcIlxuICAgICAgICAgICAgICAgICAgdmFsdWU9e3NlYXJjaFF1ZXJ5fVxuICAgICAgICAgICAgICAgICAgb25DaGFuZ2U9eyhlKSA9PiBzZXRTZWFyY2hRdWVyeShlLnRhcmdldC52YWx1ZSl9XG4gICAgICAgICAgICAgICAgICBwbGFjZWhvbGRlcj1cIlNlYXJjaCBjYXNlcy4uLlwiXG4gICAgICAgICAgICAgICAgICBjbGFzc05hbWU9XCJwbC05IHctNjRcIlxuICAgICAgICAgICAgICAgIC8+XG4gICAgICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgICAgICAgIHsvKiBTdGF0dXMgRmlsdGVyICovfVxuICAgICAgICAgICAgICA8c2VsZWN0XG4gICAgICAgICAgICAgICAgdmFsdWU9e3N0YXR1c0ZpbHRlcn1cbiAgICAgICAgICAgICAgICBvbkNoYW5nZT17KGUpID0+IHNldFN0YXR1c0ZpbHRlcihlLnRhcmdldC52YWx1ZSl9XG4gICAgICAgICAgICAgICAgY2xhc3NOYW1lPVwicHgtMyBweS0yIGJvcmRlciBib3JkZXItZ3JheS0zMDAgcm91bmRlZC1sZyB0ZXh0LXNtIGZvY3VzOm91dGxpbmUtbm9uZSBmb2N1czpyaW5nLTIgZm9jdXM6cmluZy1wcmltYXJ5XCJcbiAgICAgICAgICAgICAgPlxuICAgICAgICAgICAgICAgIDxvcHRpb24gdmFsdWU9XCJhbGxcIj5BbGwgU3RhdHVzPC9vcHRpb24+XG4gICAgICAgICAgICAgICAge3N0YXR1c09wdGlvbnMubWFwKG9wdCA9PiAoXG4gICAgICAgICAgICAgICAgICA8b3B0aW9uIGtleT17b3B0LnZhbHVlfSB2YWx1ZT17b3B0LnZhbHVlfT57b3B0LmxhYmVsfTwvb3B0aW9uPlxuICAgICAgICAgICAgICAgICkpfVxuICAgICAgICAgICAgICA8L3NlbGVjdD5cblxuICAgICAgICAgICAgICB7LyogQWN0aW9ucyAqL31cbiAgICAgICAgICAgICAgPEJ1dHRvbiB2YXJpYW50PVwib3V0bGluZVwiIHNpemU9XCJzbVwiIG9uQ2xpY2s9e2hhbmRsZVJlZnJlc2h9PlxuICAgICAgICAgICAgICAgIDxSZWZyZXNoQ3cgY2xhc3NOYW1lPVwidy00IGgtNCBtci0xXCIgLz5cbiAgICAgICAgICAgICAgICBSZWZyZXNoXG4gICAgICAgICAgICAgIDwvQnV0dG9uPlxuICAgICAgICAgICAgICBcbiAgICAgICAgICAgICAgPEJ1dHRvbiB2YXJpYW50PVwib3V0bGluZVwiIHNpemU9XCJzbVwiIG9uQ2xpY2s9e2hhbmRsZUV4cG9ydENhc2VzfT5cbiAgICAgICAgICAgICAgICA8RG93bmxvYWQgY2xhc3NOYW1lPVwidy00IGgtNCBtci0xXCIgLz5cbiAgICAgICAgICAgICAgICBFeHBvcnRcbiAgICAgICAgICAgICAgPC9CdXR0b24+XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgPC9DYXJkSGVhZGVyPlxuICAgICAgICA8Q2FyZENvbnRlbnQ+XG4gICAgICAgICAge2ZpbHRlcmVkQ2FzZXMubGVuZ3RoID09PSAwID8gKFxuICAgICAgICAgICAgPEVtcHR5U3RhdGVcbiAgICAgICAgICAgICAgaWNvbj17RmlsZVRleHR9XG4gICAgICAgICAgICAgIHRpdGxlPVwiTm8gY2FzZXMgZm91bmRcIlxuICAgICAgICAgICAgICBkZXNjcmlwdGlvbj17XG4gICAgICAgICAgICAgICAgc2VhcmNoUXVlcnkgfHwgc3RhdHVzRmlsdGVyICE9PSAnYWxsJ1xuICAgICAgICAgICAgICAgICAgPyBcIk5vIGNhc2VzIG1hdGNoIHlvdXIgZmlsdGVyc1wiXG4gICAgICAgICAgICAgICAgICA6IFwiTm8gY2FzZXMgaGF2ZSBiZWVuIGNyZWF0ZWQgeWV0XCJcbiAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICBhY3Rpb249e1xuICAgICAgICAgICAgICAgIHNlYXJjaFF1ZXJ5IHx8IHN0YXR1c0ZpbHRlciAhPT0gJ2FsbCdcbiAgICAgICAgICAgICAgICAgID8ge1xuICAgICAgICAgICAgICAgICAgICAgIGxhYmVsOiAnQ2xlYXIgRmlsdGVycycsXG4gICAgICAgICAgICAgICAgICAgICAgb25DbGljazogKCkgPT4ge1xuICAgICAgICAgICAgICAgICAgICAgICAgc2V0U2VhcmNoUXVlcnkoJycpO1xuICAgICAgICAgICAgICAgICAgICAgICAgc2V0U3RhdHVzRmlsdGVyKCdhbGwnKTtcbiAgICAgICAgICAgICAgICAgICAgICAgIHRvYXN0LmluZm8oJ0ZpbHRlcnMgY2xlYXJlZCcpO1xuICAgICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgICAgOiB1bmRlZmluZWRcbiAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgLz5cbiAgICAgICAgICApIDogKFxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJvdmVyZmxvdy14LWF1dG9cIj5cbiAgICAgICAgICAgICAgPFRhYmxlPlxuICAgICAgICAgICAgICAgIDxUYWJsZUhlYWRlcj5cbiAgICAgICAgICAgICAgICAgIDxUYWJsZVJvdz5cbiAgICAgICAgICAgICAgICAgICAgPFRhYmxlSGVhZD5DYXNlIE51bWJlcjwvVGFibGVIZWFkPlxuICAgICAgICAgICAgICAgICAgICA8VGFibGVIZWFkPkJvcnJvd2VyPC9UYWJsZUhlYWQ+XG4gICAgICAgICAgICAgICAgICAgIDxUYWJsZUhlYWQ+UHJvcGVydHk8L1RhYmxlSGVhZD5cbiAgICAgICAgICAgICAgICAgICAgPFRhYmxlSGVhZCBjbGFzc05hbWU9XCJ0ZXh0LXJpZ2h0XCI+RGVidDwvVGFibGVIZWFkPlxuICAgICAgICAgICAgICAgICAgICA8VGFibGVIZWFkIGNsYXNzTmFtZT1cInRleHQtcmlnaHRcIj5WYWx1YXRpb248L1RhYmxlSGVhZD5cbiAgICAgICAgICAgICAgICAgICAgPFRhYmxlSGVhZD5TdGF0dXM8L1RhYmxlSGVhZD5cbiAgICAgICAgICAgICAgICAgICAgPFRhYmxlSGVhZD5SaXNrPC9UYWJsZUhlYWQ+XG4gICAgICAgICAgICAgICAgICAgIDxUYWJsZUhlYWQ+Q3JlYXRlZDwvVGFibGVIZWFkPlxuICAgICAgICAgICAgICAgICAgICA8VGFibGVIZWFkIGNsYXNzTmFtZT1cInRleHQtcmlnaHRcIj5BY3Rpb25zPC9UYWJsZUhlYWQ+XG4gICAgICAgICAgICAgICAgICA8L1RhYmxlUm93PlxuICAgICAgICAgICAgICAgIDwvVGFibGVIZWFkZXI+XG4gICAgICAgICAgICAgICAgPFRhYmxlQm9keT5cbiAgICAgICAgICAgICAgICAgIHtmaWx0ZXJlZENhc2VzLm1hcCgoY2FzZUl0ZW0pID0+IChcbiAgICAgICAgICAgICAgICAgICAgPFRhYmxlUm93IFxuICAgICAgICAgICAgICAgICAgICAgIGtleT17Y2FzZUl0ZW0uaWR9IFxuICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT1cImhvdmVyOmJnLWdyYXktNTAgY3Vyc29yLXBvaW50ZXJcIlxuICAgICAgICAgICAgICAgICAgICAgIG9uQ2xpY2s9eygpID0+IHtcbiAgICAgICAgICAgICAgICAgICAgICAgIG9uVmlld0Nhc2U/LihjYXNlSXRlbS5pZCk7XG4gICAgICAgICAgICAgICAgICAgICAgfX1cbiAgICAgICAgICAgICAgICAgICAgPlxuICAgICAgICAgICAgICAgICAgICAgIDxUYWJsZUNlbGwgY2xhc3NOYW1lPVwiZm9udC1zZW1pYm9sZFwiPntjYXNlSXRlbS5jYXNlTnVtYmVyfTwvVGFibGVDZWxsPlxuICAgICAgICAgICAgICAgICAgICAgIDxUYWJsZUNlbGw+e2Nhc2VJdGVtLmJvcnJvd2VyTmFtZX08L1RhYmxlQ2VsbD5cbiAgICAgICAgICAgICAgICAgICAgICA8VGFibGVDZWxsPlxuICAgICAgICAgICAgICAgICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwiZm9udC1tZWRpdW0gdGV4dC1zbVwiPntjYXNlSXRlbS5wcm9wZXJ0eS5hZGRyZXNzfTwvcD5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC14cyB0ZXh0LWdyYXktNTAwXCI+e2Nhc2VJdGVtLnByb3BlcnR5LnN1YnVyYn0sIHtjYXNlSXRlbS5wcm9wZXJ0eS5zdGF0ZX08L3A+XG4gICAgICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgICA8L1RhYmxlQ2VsbD5cbiAgICAgICAgICAgICAgICAgICAgICA8VGFibGVDZWxsIGNsYXNzTmFtZT1cImZvbnQtc2VtaWJvbGQgdGV4dC1yaWdodFwiPkEkeyhjYXNlSXRlbS5vdXRzdGFuZGluZ0RlYnQgLyAxMDAwKS50b0ZpeGVkKDApfWs8L1RhYmxlQ2VsbD5cbiAgICAgICAgICAgICAgICAgICAgICA8VGFibGVDZWxsIGNsYXNzTmFtZT1cImZvbnQtc2VtaWJvbGQgdGV4dC1yaWdodFwiPkEkeyhjYXNlSXRlbS52YWx1YXRpb24uYW1vdW50IC8gMTAwMCkudG9GaXhlZCgwKX1rPC9UYWJsZUNlbGw+XG4gICAgICAgICAgICAgICAgICAgICAgPFRhYmxlQ2VsbCBvbkNsaWNrPXsoZSkgPT4gZS5zdG9wUHJvcGFnYXRpb24oKX0+XG4gICAgICAgICAgICAgICAgICAgICAgICA8c2VsZWN0XG4gICAgICAgICAgICAgICAgICAgICAgICAgIHZhbHVlPXtjYXNlSXRlbS5zdGF0dXN9XG4gICAgICAgICAgICAgICAgICAgICAgICAgIG9uQ2hhbmdlPXsoZSkgPT4gaGFuZGxlU3RhdHVzQ2hhbmdlKGNhc2VJdGVtLmlkLCBlLnRhcmdldC52YWx1ZSl9XG4gICAgICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT1cInB4LTIgcHktMSBib3JkZXIgYm9yZGVyLWdyYXktMzAwIHJvdW5kZWQgdGV4dC1zbSBmb2N1czpvdXRsaW5lLW5vbmUgZm9jdXM6cmluZy0yIGZvY3VzOnJpbmctcHJpbWFyeVwiXG4gICAgICAgICAgICAgICAgICAgICAgICA+XG4gICAgICAgICAgICAgICAgICAgICAgICAgIHtzdGF0dXNPcHRpb25zLm1hcChvcHQgPT4gKFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxvcHRpb24ga2V5PXtvcHQudmFsdWV9IHZhbHVlPXtvcHQudmFsdWV9PntvcHQubGFiZWx9PC9vcHRpb24+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICkpfVxuICAgICAgICAgICAgICAgICAgICAgICAgPC9zZWxlY3Q+XG4gICAgICAgICAgICAgICAgICAgICAgPC9UYWJsZUNlbGw+XG4gICAgICAgICAgICAgICAgICAgICAgPFRhYmxlQ2VsbD5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxTdGF0dXNCYWRnZSBzdGF0dXM9e2Nhc2VJdGVtLnJpc2tMZXZlbH0gdHlwZT1cInJpc2tcIiAvPlxuICAgICAgICAgICAgICAgICAgICAgIDwvVGFibGVDZWxsPlxuICAgICAgICAgICAgICAgICAgICAgIDxUYWJsZUNlbGwgY2xhc3NOYW1lPVwidGV4dC1zbSB0ZXh0LWdyYXktNjAwXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICB7Zm9ybWF0KGNhc2VJdGVtLmNyZWF0ZWRBdCwgJ2RkIE1NTSB5eXl5Jyl9XG4gICAgICAgICAgICAgICAgICAgICAgPC9UYWJsZUNlbGw+XG4gICAgICAgICAgICAgICAgICAgICAgPFRhYmxlQ2VsbCBjbGFzc05hbWU9XCJ0ZXh0LXJpZ2h0XCIgb25DbGljaz17KGUpID0+IGUuc3RvcFByb3BhZ2F0aW9uKCl9PlxuICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGdhcC0yIGp1c3RpZnktZW5kXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICAgIDxCdXR0b24gXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgdmFyaWFudD1cIm91dGxpbmVcIiBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBzaXplPVwic21cIlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIG9uQ2xpY2s9eyhlKSA9PiB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICBlLnN0b3BQcm9wYWdhdGlvbigpO1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgb25WaWV3Q2FzZT8uKGNhc2VJdGVtLmlkKTtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICB9fVxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIHRpdGxlPVwiVmlldyBDYXNlIERldGFpbHNcIlxuICAgICAgICAgICAgICAgICAgICAgICAgICA+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgPEV5ZSBjbGFzc05hbWU9XCJ3LTQgaC00XCIgLz5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgPC9CdXR0b24+XG4gICAgICAgICAgICAgICAgICAgICAgICAgIDxCdXR0b25cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICB2YXJpYW50PVwib3V0bGluZVwiXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgc2l6ZT1cInNtXCJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBvbkNsaWNrPXsoZSkgPT4gaGFuZGxlRGVsZXRlQ2xpY2soY2FzZUl0ZW0sIGUpfVxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT1cInRleHQtcmVkLTYwMCBob3Zlcjp0ZXh0LXJlZC03MDAgaG92ZXI6YmctcmVkLTUwXCJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICB0aXRsZT1cIkRlbGV0ZSBDYXNlXCJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxUcmFzaDIgY2xhc3NOYW1lPVwidy00IGgtNFwiIC8+XG4gICAgICAgICAgICAgICAgICAgICAgICAgIDwvQnV0dG9uPlxuICAgICAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgICAgPC9UYWJsZUNlbGw+XG4gICAgICAgICAgICAgICAgICAgIDwvVGFibGVSb3c+XG4gICAgICAgICAgICAgICAgICApKX1cbiAgICAgICAgICAgICAgICA8L1RhYmxlQm9keT5cbiAgICAgICAgICAgICAgPC9UYWJsZT5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICl9XG4gICAgICAgIDwvQ2FyZENvbnRlbnQ+XG4gICAgICA8L0NhcmQ+XG5cbiAgICAgIHsvKiBDb25maXJtIERlbGV0ZSBEaWFsb2cgKi99XG4gICAgICA8Q29uZmlybURpYWxvZ1xuICAgICAgICBvcGVuPXtjb25maXJtRGVsZXRlT3Blbn1cbiAgICAgICAgb25PcGVuQ2hhbmdlPXtzZXRDb25maXJtRGVsZXRlT3Blbn1cbiAgICAgICAgdGl0bGU9XCJEZWxldGUgQ2FzZT9cIlxuICAgICAgICBkZXNjcmlwdGlvbj17YEFyZSB5b3Ugc3VyZSB5b3Ugd2FudCB0byBkZWxldGUgY2FzZSAke2Nhc2VUb0RlbGV0ZT8uY2FzZU51bWJlcn0/IFRoaXMgYWN0aW9uIGNhbm5vdCBiZSB1bmRvbmUgYW5kIHdpbGwgcmVtb3ZlIGFsbCBhc3NvY2lhdGVkIGRhdGEuYH1cbiAgICAgICAgY29uZmlybUxhYmVsPVwiRGVsZXRlIENhc2VcIlxuICAgICAgICBvbkNvbmZpcm09e2hhbmRsZURlbGV0ZUNhc2V9XG4gICAgICAgIHZhcmlhbnQ9XCJkZXN0cnVjdGl2ZVwiXG4gICAgICAvPlxuICAgIDwvZGl2PlxuICApO1xufSJdLCJmaWxlIjoiQzovVXNlcnMvQW5kcmV3IE5hZ2xlL0Rlc2t0b3AvR3Jvd2t5Yy1tYWluL0dyb3dreWMtbWFpbi9zcmMvYXBwL2NvbXBvbmVudHMvYWRtaW4vQ2FzZU1hbmFnZW1lbnQudHN4In0=

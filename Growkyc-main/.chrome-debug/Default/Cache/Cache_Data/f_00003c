@@ -1,0 +1,855 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/app/components/pfa/BrokerDashboard.tsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=15066356"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+var _s = $RefreshSig$();
+import __vite__cjsImport3_react from "/node_modules/.vite/deps/react.js?v=15066356"; const useState = __vite__cjsImport3_react["useState"];
+import { Button } from "/src/app/components/ui/button.tsx";
+import {
+  TrendingUp,
+  Clock,
+  DollarSign,
+  FileText,
+  CheckCircle,
+  Plus,
+  ArrowRight,
+  Building2,
+  Briefcase,
+  Target
+} from "/node_modules/.vite/deps/lucide-react.js?v=15066356";
+export function BrokerDashboard({ onNavigate }) {
+  _s();
+  const [selectedPeriod, setSelectedPeriod] = useState("month");
+  const stats = {
+    activePipeline: 24,
+    submittedApplications: 18,
+    conditionalApprovals: 12,
+    settledThisMonth: 8,
+    pipelineValue: 124e5,
+    upfrontCommission: 84500,
+    trailCommission: 12800,
+    conversionRate: 67
+  };
+  const pipelineDeals = [
+    { id: "APP-2024-156", borrower: "Tech Solutions Pty Ltd", type: "SME Term Loan", amount: 85e4, status: "submitted", daysInStage: 3, lvr: 65, bdm: "John Smith" },
+    { id: "APP-2024-155", borrower: "Property Investors Group", type: "Commercial Mortgage", amount: 24e5, status: "conditional", daysInStage: 7, lvr: 70, bdm: "Sarah Johnson" },
+    { id: "APP-2024-154", borrower: "Manufacturing Co Ltd", type: "Asset Finance", amount: 45e4, status: "credit_review", daysInStage: 5, lvr: 75, bdm: "John Smith" },
+    { id: "APP-2024-153", borrower: "Retail Holdings Trust", type: "Private Lending", amount: 18e5, status: "documentation", daysInStage: 2, lvr: 68, bdm: "Sarah Johnson" }
+  ];
+  const commissionDue = [
+    { dealId: "APP-2024-089", borrower: "ABC Enterprises", upfront: 12500, trail: 450, status: "due", settleDate: "2024-02-16" },
+    { dealId: "APP-2024-087", borrower: "XYZ Properties", upfront: 18700, trail: 680, status: "due", settleDate: "2024-02-19" },
+    { dealId: "APP-2024-092", borrower: "Tech Ventures", upfront: 9800, trail: 320, status: "paid", settleDate: "2024-02-10" }
+  ];
+  const getStatusBadge = (status) => {
+    const badges = {
+      "submitted": /* @__PURE__ */ jsxDEV("span", { className: "px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-semibold rounded", children: "SUBMITTED" }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+        lineNumber: 70,
+        columnNumber: 20
+      }, this),
+      "credit_review": /* @__PURE__ */ jsxDEV("span", { className: "px-2 py-0.5 bg-purple-100 text-purple-700 text-xs font-semibold rounded", children: "CREDIT REVIEW" }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+        lineNumber: 71,
+        columnNumber: 24
+      }, this),
+      "conditional": /* @__PURE__ */ jsxDEV("span", { className: "px-2 py-0.5 bg-amber-100 text-amber-700 text-xs font-semibold rounded", children: "CONDITIONAL" }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+        lineNumber: 72,
+        columnNumber: 22
+      }, this),
+      "documentation": /* @__PURE__ */ jsxDEV("span", { className: "px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded", children: "DOCUMENTATION" }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+        lineNumber: 73,
+        columnNumber: 24
+      }, this),
+      "approved": /* @__PURE__ */ jsxDEV("span", { className: "px-2 py-0.5 bg-indigo-100 text-indigo-700 text-xs font-semibold rounded", children: "APPROVED" }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+        lineNumber: 74,
+        columnNumber: 19
+      }, this),
+      "due": /* @__PURE__ */ jsxDEV("span", { className: "px-2 py-0.5 bg-amber-100 text-amber-700 text-xs font-semibold rounded", children: "DUE" }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+        lineNumber: 75,
+        columnNumber: 14
+      }, this),
+      "paid": /* @__PURE__ */ jsxDEV("span", { className: "px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded", children: "PAID" }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+        lineNumber: 76,
+        columnNumber: 15
+      }, this)
+    };
+    return badges[status] || /* @__PURE__ */ jsxDEV("span", { className: "px-2 py-0.5 bg-gray-100 text-gray-700 text-xs font-semibold rounded", children: status }, void 0, false, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+      lineNumber: 78,
+      columnNumber: 30
+    }, this);
+  };
+  const formatCurrency = (value) => {
+    return new Intl.NumberFormat("en-AU", {
+      style: "currency",
+      currency: "AUD",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    }).format(value);
+  };
+  return /* @__PURE__ */ jsxDEV("div", { className: "min-h-screen bg-gray-50", children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "bg-white border-b border-gray-300 px-6 py-4", children: /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between", children: [
+      /* @__PURE__ */ jsxDEV("div", { children: [
+        /* @__PURE__ */ jsxDEV("h1", { className: "text-2xl font-bold text-gray-900", children: "Broker Portal" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+          lineNumber: 96,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "text-sm text-gray-600", children: "Business lending platform - Multi-tenant origination & servicing" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+          lineNumber: 97,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+        lineNumber: 95,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "flex items-center gap-3", children: [
+        /* @__PURE__ */ jsxDEV(
+          "select",
+          {
+            value: selectedPeriod,
+            onChange: (e) => setSelectedPeriod(e.target.value),
+            className: "px-3 py-2 border border-gray-300 rounded text-sm",
+            children: [
+              /* @__PURE__ */ jsxDEV("option", { value: "today", children: "Today" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                lineNumber: 105,
+                columnNumber: 15
+              }, this),
+              /* @__PURE__ */ jsxDEV("option", { value: "week", children: "This Week" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                lineNumber: 106,
+                columnNumber: 15
+              }, this),
+              /* @__PURE__ */ jsxDEV("option", { value: "month", children: "This Month" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                lineNumber: 107,
+                columnNumber: 15
+              }, this),
+              /* @__PURE__ */ jsxDEV("option", { value: "quarter", children: "This Quarter" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                lineNumber: 108,
+                columnNumber: 15
+              }, this)
+            ]
+          },
+          void 0,
+          true,
+          {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+            lineNumber: 100,
+            columnNumber: 13
+          },
+          this
+        ),
+        /* @__PURE__ */ jsxDEV(
+          Button,
+          {
+            className: "bg-blue-600 hover:bg-blue-700",
+            onClick: () => onNavigate?.("broker-new-application"),
+            children: [
+              /* @__PURE__ */ jsxDEV(Plus, { className: "w-4 h-4 mr-2" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                lineNumber: 114,
+                columnNumber: 15
+              }, this),
+              "New Application"
+            ]
+          },
+          void 0,
+          true,
+          {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+            lineNumber: 110,
+            columnNumber: 13
+          },
+          this
+        )
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+        lineNumber: 99,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+      lineNumber: 94,
+      columnNumber: 9
+    }, this) }, void 0, false, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+      lineNumber: 93,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "p-6 space-y-6", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4", children: [
+        /* @__PURE__ */ jsxDEV(
+          "button",
+          {
+            onClick: () => onNavigate?.("broker-pipeline"),
+            className: "bg-white border border-gray-300 rounded p-4 hover:border-blue-400 hover:shadow-md transition-all text-left",
+            children: [
+              /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between mb-2", children: [
+                /* @__PURE__ */ jsxDEV(Briefcase, { className: "w-5 h-5 text-blue-600" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                  lineNumber: 129,
+                  columnNumber: 15
+                }, this),
+                /* @__PURE__ */ jsxDEV(ArrowRight, { className: "w-4 h-4 text-gray-400" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                  lineNumber: 130,
+                  columnNumber: 15
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                lineNumber: 128,
+                columnNumber: 13
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "text-2xl font-bold text-gray-900", children: stats.activePipeline }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                lineNumber: 132,
+                columnNumber: 13
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "text-xs text-gray-600", children: "Active Pipeline" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                lineNumber: 133,
+                columnNumber: 13
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "text-xs text-blue-600 font-semibold mt-1", children: formatCurrency(stats.pipelineValue) }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                lineNumber: 134,
+                columnNumber: 13
+              }, this)
+            ]
+          },
+          void 0,
+          true,
+          {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+            lineNumber: 124,
+            columnNumber: 11
+          },
+          this
+        ),
+        /* @__PURE__ */ jsxDEV(
+          "button",
+          {
+            onClick: () => onNavigate?.("broker-pipeline"),
+            className: "bg-white border border-gray-300 rounded p-4 hover:border-blue-400 hover:shadow-md transition-all text-left",
+            children: [
+              /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between mb-2", children: [
+                /* @__PURE__ */ jsxDEV(FileText, { className: "w-5 h-5 text-purple-600" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                  lineNumber: 142,
+                  columnNumber: 15
+                }, this),
+                /* @__PURE__ */ jsxDEV(ArrowRight, { className: "w-4 h-4 text-gray-400" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                  lineNumber: 143,
+                  columnNumber: 15
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                lineNumber: 141,
+                columnNumber: 13
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "text-2xl font-bold text-gray-900", children: stats.submittedApplications }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                lineNumber: 145,
+                columnNumber: 13
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "text-xs text-gray-600", children: "Submitted" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                lineNumber: 146,
+                columnNumber: 13
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "text-xs text-purple-600 font-semibold mt-1", children: [
+                stats.conditionalApprovals,
+                " conditional"
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                lineNumber: 147,
+                columnNumber: 13
+              }, this)
+            ]
+          },
+          void 0,
+          true,
+          {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+            lineNumber: 137,
+            columnNumber: 11
+          },
+          this
+        ),
+        /* @__PURE__ */ jsxDEV(
+          "button",
+          {
+            onClick: () => onNavigate?.("broker-commission"),
+            className: "bg-white border border-gray-300 rounded p-4 hover:border-blue-400 hover:shadow-md transition-all text-left",
+            children: [
+              /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between mb-2", children: [
+                /* @__PURE__ */ jsxDEV(DollarSign, { className: "w-5 h-5 text-green-600" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                  lineNumber: 155,
+                  columnNumber: 15
+                }, this),
+                /* @__PURE__ */ jsxDEV(ArrowRight, { className: "w-4 h-4 text-gray-400" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                  lineNumber: 156,
+                  columnNumber: 15
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                lineNumber: 154,
+                columnNumber: 13
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "text-2xl font-bold text-gray-900", children: formatCurrency(stats.upfrontCommission) }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                lineNumber: 158,
+                columnNumber: 13
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "text-xs text-gray-600", children: "Upfront Commission" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                lineNumber: 159,
+                columnNumber: 13
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "text-xs text-green-600 font-semibold mt-1", children: [
+                "+",
+                formatCurrency(stats.trailCommission),
+                " trail"
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                lineNumber: 160,
+                columnNumber: 13
+              }, this)
+            ]
+          },
+          void 0,
+          true,
+          {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+            lineNumber: 150,
+            columnNumber: 11
+          },
+          this
+        ),
+        /* @__PURE__ */ jsxDEV("div", { className: "bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded p-4", children: [
+          /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between mb-2", children: [
+            /* @__PURE__ */ jsxDEV(Target, { className: "w-5 h-5" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+              lineNumber: 165,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV(TrendingUp, { className: "w-4 h-4" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+              lineNumber: 166,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+            lineNumber: 164,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-2xl font-bold", children: stats.settledThisMonth }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+            lineNumber: 168,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-xs opacity-90", children: "Settled This Month" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+            lineNumber: 169,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-xs font-semibold mt-1", children: [
+            stats.conversionRate,
+            "% conversion"
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+            lineNumber: 170,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+          lineNumber: 163,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+        lineNumber: 123,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-4", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "bg-white border border-gray-300 rounded p-4", children: [
+          /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between mb-3", children: [
+            /* @__PURE__ */ jsxDEV("h3", { className: "font-semibold text-gray-900", children: "Average Deal Size" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+              lineNumber: 178,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV(Building2, { className: "w-5 h-5 text-blue-600" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+              lineNumber: 179,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+            lineNumber: 177,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-3xl font-bold text-blue-600 mb-1", children: formatCurrency(stats.pipelineValue / stats.activePipeline) }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+            lineNumber: 181,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-xs text-gray-600", children: [
+            "Across ",
+            stats.activePipeline,
+            " active deals"
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+            lineNumber: 182,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+          lineNumber: 176,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "bg-white border border-gray-300 rounded p-4", children: [
+          /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between mb-3", children: [
+            /* @__PURE__ */ jsxDEV("h3", { className: "font-semibold text-gray-900", children: "Avg Processing Time" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+              lineNumber: 187,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV(Clock, { className: "w-5 h-5 text-purple-600" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+              lineNumber: 188,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+            lineNumber: 186,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-3xl font-bold text-purple-600 mb-1", children: "18 days" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+            lineNumber: 190,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-xs text-gray-600", children: "From submission to settlement" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+            lineNumber: 191,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+          lineNumber: 185,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "bg-white border border-gray-300 rounded p-4", children: [
+          /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between mb-3", children: [
+            /* @__PURE__ */ jsxDEV("h3", { className: "font-semibold text-gray-900", children: "Approval Rate" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+              lineNumber: 196,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV(CheckCircle, { className: "w-5 h-5 text-green-600" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+              lineNumber: 197,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+            lineNumber: 195,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-3xl font-bold text-green-600 mb-1", children: "87%" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+            lineNumber: 199,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-xs text-gray-600", children: "Last 90 days" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+            lineNumber: 200,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+          lineNumber: 194,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+        lineNumber: 175,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "grid grid-cols-1 lg:grid-cols-2 gap-6", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "border border-gray-300 rounded bg-white", children: [
+          /* @__PURE__ */ jsxDEV("div", { className: "bg-gray-50 border-b border-gray-300 px-4 py-3 flex items-center justify-between", children: [
+            /* @__PURE__ */ jsxDEV("h3", { className: "font-semibold text-gray-900", children: "Active Pipeline" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+              lineNumber: 208,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV(Button, { variant: "outline", size: "sm", onClick: () => onNavigate?.("broker-pipeline"), children: "View All" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+              lineNumber: 209,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+            lineNumber: 207,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "p-4 space-y-3", children: pipelineDeals.map(
+            (deal) => /* @__PURE__ */ jsxDEV(
+              "div",
+              {
+                onClick: () => onNavigate?.("broker-deal-view"),
+                className: "flex items-center justify-between p-3 bg-gray-50 rounded hover:bg-blue-50 cursor-pointer border border-gray-200",
+                children: [
+                  /* @__PURE__ */ jsxDEV("div", { className: "flex-1", children: [
+                    /* @__PURE__ */ jsxDEV("div", { className: "flex items-center gap-2 mb-1", children: [
+                      /* @__PURE__ */ jsxDEV("span", { className: "font-semibold text-gray-900", children: deal.borrower }, void 0, false, {
+                        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                        lineNumber: 222,
+                        columnNumber: 23
+                      }, this),
+                      getStatusBadge(deal.status)
+                    ] }, void 0, true, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                      lineNumber: 221,
+                      columnNumber: 21
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("div", { className: "text-xs text-gray-600", children: [
+                      deal.type,
+                      " • ",
+                      formatCurrency(deal.amount),
+                      " • LVR ",
+                      deal.lvr,
+                      "%"
+                    ] }, void 0, true, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                      lineNumber: 225,
+                      columnNumber: 21
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("div", { className: "text-xs text-gray-500 mt-1", children: [
+                      deal.id,
+                      " • ",
+                      deal.daysInStage,
+                      " days in stage • ",
+                      deal.bdm
+                    ] }, void 0, true, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                      lineNumber: 226,
+                      columnNumber: 21
+                    }, this)
+                  ] }, void 0, true, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                    lineNumber: 220,
+                    columnNumber: 19
+                  }, this),
+                  /* @__PURE__ */ jsxDEV(ArrowRight, { className: "w-4 h-4 text-gray-400" }, void 0, false, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                    lineNumber: 228,
+                    columnNumber: 19
+                  }, this)
+                ]
+              },
+              deal.id,
+              true,
+              {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                lineNumber: 215,
+                columnNumber: 15
+              },
+              this
+            )
+          ) }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+            lineNumber: 213,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+          lineNumber: 206,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "border border-gray-300 rounded bg-white", children: [
+          /* @__PURE__ */ jsxDEV("div", { className: "bg-gray-50 border-b border-gray-300 px-4 py-3 flex items-center justify-between", children: [
+            /* @__PURE__ */ jsxDEV("h3", { className: "font-semibold text-gray-900", children: "Commission Due" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+              lineNumber: 237,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV(Button, { variant: "outline", size: "sm", onClick: () => onNavigate?.("broker-commission"), children: "View Report" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+              lineNumber: 238,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+            lineNumber: 236,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "p-4 space-y-3", children: commissionDue.map(
+            (comm) => /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between p-3 bg-gray-50 rounded border border-gray-200", children: [
+              /* @__PURE__ */ jsxDEV("div", { className: "flex-1", children: [
+                /* @__PURE__ */ jsxDEV("div", { className: "flex items-center gap-2 mb-1", children: [
+                  /* @__PURE__ */ jsxDEV("span", { className: "font-semibold text-gray-900", children: comm.borrower }, void 0, false, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                    lineNumber: 247,
+                    columnNumber: 23
+                  }, this),
+                  getStatusBadge(comm.status)
+                ] }, void 0, true, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                  lineNumber: 246,
+                  columnNumber: 21
+                }, this),
+                /* @__PURE__ */ jsxDEV("div", { className: "text-xs text-gray-600", children: [
+                  "Upfront: ",
+                  formatCurrency(comm.upfront),
+                  " • Trail: ",
+                  formatCurrency(comm.trail),
+                  "/mo"
+                ] }, void 0, true, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                  lineNumber: 250,
+                  columnNumber: 21
+                }, this),
+                /* @__PURE__ */ jsxDEV("div", { className: "text-xs text-gray-500 mt-1", children: [
+                  comm.dealId,
+                  " • Settled: ",
+                  comm.settleDate
+                ] }, void 0, true, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                  lineNumber: 251,
+                  columnNumber: 21
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                lineNumber: 245,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "text-right", children: [
+                /* @__PURE__ */ jsxDEV("div", { className: "text-sm font-bold text-green-600", children: formatCurrency(comm.upfront + comm.trail) }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                  lineNumber: 254,
+                  columnNumber: 21
+                }, this),
+                /* @__PURE__ */ jsxDEV("div", { className: "text-xs text-gray-500", children: "total" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                  lineNumber: 255,
+                  columnNumber: 21
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                lineNumber: 253,
+                columnNumber: 19
+              }, this)
+            ] }, comm.dealId, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+              lineNumber: 244,
+              columnNumber: 15
+            }, this)
+          ) }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+            lineNumber: 242,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+          lineNumber: 235,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+        lineNumber: 204,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-4", children: [
+        /* @__PURE__ */ jsxDEV(
+          "button",
+          {
+            onClick: () => onNavigate?.("broker-new-application"),
+            className: "bg-white border border-gray-300 rounded p-4 hover:border-blue-400 hover:shadow-md transition-all",
+            children: [
+              /* @__PURE__ */ jsxDEV(Plus, { className: "w-8 h-8 text-blue-600 mb-2" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                lineNumber: 269,
+                columnNumber: 13
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "font-semibold text-gray-900 text-sm", children: "New Application" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                lineNumber: 270,
+                columnNumber: 13
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "text-xs text-gray-600 mt-1", children: "Start new deal" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                lineNumber: 271,
+                columnNumber: 13
+              }, this)
+            ]
+          },
+          void 0,
+          true,
+          {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+            lineNumber: 265,
+            columnNumber: 11
+          },
+          this
+        ),
+        /* @__PURE__ */ jsxDEV(
+          "button",
+          {
+            onClick: () => onNavigate?.("broker-calculator"),
+            className: "bg-white border border-gray-300 rounded p-4 hover:border-blue-400 hover:shadow-md transition-all",
+            children: [
+              /* @__PURE__ */ jsxDEV(DollarSign, { className: "w-8 h-8 text-purple-600 mb-2" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                lineNumber: 278,
+                columnNumber: 13
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "font-semibold text-gray-900 text-sm", children: "Serviceability" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                lineNumber: 279,
+                columnNumber: 13
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "text-xs text-gray-600 mt-1", children: "Calculate capacity" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                lineNumber: 280,
+                columnNumber: 13
+              }, this)
+            ]
+          },
+          void 0,
+          true,
+          {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+            lineNumber: 274,
+            columnNumber: 11
+          },
+          this
+        ),
+        /* @__PURE__ */ jsxDEV(
+          "button",
+          {
+            onClick: () => onNavigate?.("broker-documents"),
+            className: "bg-white border border-gray-300 rounded p-4 hover:border-blue-400 hover:shadow-md transition-all",
+            children: [
+              /* @__PURE__ */ jsxDEV(FileText, { className: "w-8 h-8 text-green-600 mb-2" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                lineNumber: 287,
+                columnNumber: 13
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "font-semibold text-gray-900 text-sm", children: "Documents" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                lineNumber: 288,
+                columnNumber: 13
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "text-xs text-gray-600 mt-1", children: "Upload & manage" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                lineNumber: 289,
+                columnNumber: 13
+              }, this)
+            ]
+          },
+          void 0,
+          true,
+          {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+            lineNumber: 283,
+            columnNumber: 11
+          },
+          this
+        ),
+        /* @__PURE__ */ jsxDEV(
+          "button",
+          {
+            onClick: () => onNavigate?.("broker-status-tracker"),
+            className: "bg-white border border-gray-300 rounded p-4 hover:border-blue-400 hover:shadow-md transition-all",
+            children: [
+              /* @__PURE__ */ jsxDEV(Clock, { className: "w-8 h-8 text-indigo-600 mb-2" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                lineNumber: 296,
+                columnNumber: 13
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "font-semibold text-gray-900 text-sm", children: "Status Tracker" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                lineNumber: 297,
+                columnNumber: 13
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "text-xs text-gray-600 mt-1", children: "Track applications" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+                lineNumber: 298,
+                columnNumber: 13
+              }, this)
+            ]
+          },
+          void 0,
+          true,
+          {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+            lineNumber: 292,
+            columnNumber: 11
+          },
+          this
+        )
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+        lineNumber: 264,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+      lineNumber: 121,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx",
+    lineNumber: 91,
+    columnNumber: 5
+  }, this);
+}
+_s(BrokerDashboard, "CHkFdDlaabooK5Fi0DOjNi4vy8M=");
+_c = BrokerDashboard;
+var _c;
+$RefreshReg$(_c, "BrokerDashboard");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/pfa/BrokerDashboard.tsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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QUE0QztBQUFBLGFBQUFBLElBQUEiLCJuYW1lcyI6WyJ1c2VTdGF0ZSIsIkJ1dHRvbiIsIlRyZW5kaW5nVXAiLCJDbG9jayIsIkRvbGxhclNpZ24iLCJGaWxlVGV4dCIsIkNoZWNrQ2lyY2xlIiwiUGx1cyIsIkFycm93UmlnaHQiLCJCdWlsZGluZzIiLCJCcmllZmNhc2UiLCJUYXJnZXQiLCJCcm9rZXJEYXNoYm9hcmQiLCJvbk5hdmlnYXRlIiwiX3MiLCJzZWxlY3RlZFBlcmlvZCIsInNldFNlbGVjdGVkUGVyaW9kIiwic3RhdHMiLCJhY3RpdmVQaXBlbGluZSIsInN1Ym1pdHRlZEFwcGxpY2F0aW9ucyIsImNvbmRpdGlvbmFsQXBwcm92YWxzIiwic2V0dGxlZFRoaXNNb250aCIsInBpcGVsaW5lVmFsdWUiLCJ1cGZyb250Q29tbWlzc2lvbiIsInRyYWlsQ29tbWlzc2lvbiIsImNvbnZlcnNpb25SYXRlIiwicGlwZWxpbmVEZWFscyIsImlkIiwiYm9ycm93ZXIiLCJ0eXBlIiwiYW1vdW50Iiwic3RhdHVzIiwiZGF5c0luU3RhZ2UiLCJsdnIiLCJiZG0iLCJjb21taXNzaW9uRHVlIiwiZGVhbElkIiwidXBmcm9udCIsInRyYWlsIiwic2V0dGxlRGF0ZSIsImdldFN0YXR1c0JhZGdlIiwiYmFkZ2VzIiwiZm9ybWF0Q3VycmVuY3kiLCJ2YWx1ZSIsIkludGwiLCJOdW1iZXJGb3JtYXQiLCJzdHlsZSIsImN1cnJlbmN5IiwibWluaW11bUZyYWN0aW9uRGlnaXRzIiwibWF4aW11bUZyYWN0aW9uRGlnaXRzIiwiZm9ybWF0IiwiZSIsInRhcmdldCIsIm1hcCIsImRlYWwiLCJjb21tIiwiX2MiXSwiaWdub3JlTGlzdCI6W10sInNvdXJjZXMiOlsiQnJva2VyRGFzaGJvYXJkLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QsIHsgdXNlU3RhdGUgfSBmcm9tICdyZWFjdCc7XG5pbXBvcnQgeyBCdXR0b24gfSBmcm9tICcuLi91aS9idXR0b24nO1xuaW1wb3J0IHtcbiAgVHJlbmRpbmdVcCxcbiAgQ2xvY2ssXG4gIERvbGxhclNpZ24sXG4gIEZpbGVUZXh0LFxuICBDaGVja0NpcmNsZSxcbiAgQWxlcnRDaXJjbGUsXG4gIFBsdXMsXG4gIEFycm93UmlnaHQsXG4gIFVzZXJzLFxuICBCdWlsZGluZzIsXG4gIEJyaWVmY2FzZSxcbiAgVGFyZ2V0XG59IGZyb20gJ2x1Y2lkZS1yZWFjdCc7XG5cbmludGVyZmFjZSBCcm9rZXJEYXNoYm9hcmRQcm9wcyB7XG4gIG9uTmF2aWdhdGU/OiAocGFnZTogc3RyaW5nKSA9PiB2b2lkO1xufVxuXG5leHBvcnQgZnVuY3Rpb24gQnJva2VyRGFzaGJvYXJkKHsgb25OYXZpZ2F0ZSB9OiBCcm9rZXJEYXNoYm9hcmRQcm9wcykge1xuICBjb25zdCBbc2VsZWN0ZWRQZXJpb2QsIHNldFNlbGVjdGVkUGVyaW9kXSA9IHVzZVN0YXRlKCdtb250aCcpO1xuXG4gIGNvbnN0IHN0YXRzID0ge1xuICAgIGFjdGl2ZVBpcGVsaW5lOiAyNCxcbiAgICBzdWJtaXR0ZWRBcHBsaWNhdGlvbnM6IDE4LFxuICAgIGNvbmRpdGlvbmFsQXBwcm92YWxzOiAxMixcbiAgICBzZXR0bGVkVGhpc01vbnRoOiA4LFxuICAgIHBpcGVsaW5lVmFsdWU6IDEyNDAwMDAwLFxuICAgIHVwZnJvbnRDb21taXNzaW9uOiA4NDUwMCxcbiAgICB0cmFpbENvbW1pc3Npb246IDEyODAwLFxuICAgIGNvbnZlcnNpb25SYXRlOiA2N1xuICB9O1xuXG4gIGNvbnN0IHBpcGVsaW5lRGVhbHMgPSBbXG4gICAgeyBpZDogJ0FQUC0yMDI0LTE1NicsIGJvcnJvd2VyOiAnVGVjaCBTb2x1dGlvbnMgUHR5IEx0ZCcsIHR5cGU6ICdTTUUgVGVybSBMb2FuJywgYW1vdW50OiA4NTAwMDAsIHN0YXR1czogJ3N1Ym1pdHRlZCcsIGRheXNJblN0YWdlOiAzLCBsdnI6IDY1LCBiZG06ICdKb2huIFNtaXRoJyB9LFxuICAgIHsgaWQ6ICdBUFAtMjAyNC0xNTUnLCBib3Jyb3dlcjogJ1Byb3BlcnR5IEludmVzdG9ycyBHcm91cCcsIHR5cGU6ICdDb21tZXJjaWFsIE1vcnRnYWdlJywgYW1vdW50OiAyNDAwMDAwLCBzdGF0dXM6ICdjb25kaXRpb25hbCcsIGRheXNJblN0YWdlOiA3LCBsdnI6IDcwLCBiZG06ICdTYXJhaCBKb2huc29uJyB9LFxuICAgIHsgaWQ6ICdBUFAtMjAyNC0xNTQnLCBib3Jyb3dlcjogJ01hbnVmYWN0dXJpbmcgQ28gTHRkJywgdHlwZTogJ0Fzc2V0IEZpbmFuY2UnLCBhbW91bnQ6IDQ1MDAwMCwgc3RhdHVzOiAnY3JlZGl0X3JldmlldycsIGRheXNJblN0YWdlOiA1LCBsdnI6IDc1LCBiZG06ICdKb2huIFNtaXRoJyB9LFxuICAgIHsgaWQ6ICdBUFAtMjAyNC0xNTMnLCBib3Jyb3dlcjogJ1JldGFpbCBIb2xkaW5ncyBUcnVzdCcsIHR5cGU6ICdQcml2YXRlIExlbmRpbmcnLCBhbW91bnQ6IDE4MDAwMDAsIHN0YXR1czogJ2RvY3VtZW50YXRpb24nLCBkYXlzSW5TdGFnZTogMiwgbHZyOiA2OCwgYmRtOiAnU2FyYWggSm9obnNvbicgfVxuICBdO1xuXG4gIGNvbnN0IGNvbW1pc3Npb25EdWUgPSBbXG4gICAgeyBkZWFsSWQ6ICdBUFAtMjAyNC0wODknLCBib3Jyb3dlcjogJ0FCQyBFbnRlcnByaXNlcycsIHVwZnJvbnQ6IDEyNTAwLCB0cmFpbDogNDUwLCBzdGF0dXM6ICdkdWUnLCBzZXR0bGVEYXRlOiAnMjAyNC0wMi0xNicgfSxcbiAgICB7IGRlYWxJZDogJ0FQUC0yMDI0LTA4NycsIGJvcnJvd2VyOiAnWFlaIFByb3BlcnRpZXMnLCB1cGZyb250OiAxODcwMCwgdHJhaWw6IDY4MCwgc3RhdHVzOiAnZHVlJywgc2V0dGxlRGF0ZTogJzIwMjQtMDItMTknIH0sXG4gICAgeyBkZWFsSWQ6ICdBUFAtMjAyNC0wOTInLCBib3Jyb3dlcjogJ1RlY2ggVmVudHVyZXMnLCB1cGZyb250OiA5ODAwLCB0cmFpbDogMzIwLCBzdGF0dXM6ICdwYWlkJywgc2V0dGxlRGF0ZTogJzIwMjQtMDItMTAnIH1cbiAgXTtcblxuICBjb25zdCBnZXRTdGF0dXNCYWRnZSA9IChzdGF0dXM6IHN0cmluZykgPT4ge1xuICAgIGNvbnN0IGJhZGdlczogeyBba2V5OiBzdHJpbmddOiBKU1guRWxlbWVudCB9ID0ge1xuICAgICAgJ3N1Ym1pdHRlZCc6IDxzcGFuIGNsYXNzTmFtZT1cInB4LTIgcHktMC41IGJnLWJsdWUtMTAwIHRleHQtYmx1ZS03MDAgdGV4dC14cyBmb250LXNlbWlib2xkIHJvdW5kZWRcIj5TVUJNSVRURUQ8L3NwYW4+LFxuICAgICAgJ2NyZWRpdF9yZXZpZXcnOiA8c3BhbiBjbGFzc05hbWU9XCJweC0yIHB5LTAuNSBiZy1wdXJwbGUtMTAwIHRleHQtcHVycGxlLTcwMCB0ZXh0LXhzIGZvbnQtc2VtaWJvbGQgcm91bmRlZFwiPkNSRURJVCBSRVZJRVc8L3NwYW4+LFxuICAgICAgJ2NvbmRpdGlvbmFsJzogPHNwYW4gY2xhc3NOYW1lPVwicHgtMiBweS0wLjUgYmctYW1iZXItMTAwIHRleHQtYW1iZXItNzAwIHRleHQteHMgZm9udC1zZW1pYm9sZCByb3VuZGVkXCI+Q09ORElUSU9OQUw8L3NwYW4+LFxuICAgICAgJ2RvY3VtZW50YXRpb24nOiA8c3BhbiBjbGFzc05hbWU9XCJweC0yIHB5LTAuNSBiZy1ncmVlbi0xMDAgdGV4dC1ncmVlbi03MDAgdGV4dC14cyBmb250LXNlbWlib2xkIHJvdW5kZWRcIj5ET0NVTUVOVEFUSU9OPC9zcGFuPixcbiAgICAgICdhcHByb3ZlZCc6IDxzcGFuIGNsYXNzTmFtZT1cInB4LTIgcHktMC41IGJnLWluZGlnby0xMDAgdGV4dC1pbmRpZ28tNzAwIHRleHQteHMgZm9udC1zZW1pYm9sZCByb3VuZGVkXCI+QVBQUk9WRUQ8L3NwYW4+LFxuICAgICAgJ2R1ZSc6IDxzcGFuIGNsYXNzTmFtZT1cInB4LTIgcHktMC41IGJnLWFtYmVyLTEwMCB0ZXh0LWFtYmVyLTcwMCB0ZXh0LXhzIGZvbnQtc2VtaWJvbGQgcm91bmRlZFwiPkRVRTwvc3Bhbj4sXG4gICAgICAncGFpZCc6IDxzcGFuIGNsYXNzTmFtZT1cInB4LTIgcHktMC41IGJnLWdyZWVuLTEwMCB0ZXh0LWdyZWVuLTcwMCB0ZXh0LXhzIGZvbnQtc2VtaWJvbGQgcm91bmRlZFwiPlBBSUQ8L3NwYW4+XG4gICAgfTtcbiAgICByZXR1cm4gYmFkZ2VzW3N0YXR1c10gfHwgPHNwYW4gY2xhc3NOYW1lPVwicHgtMiBweS0wLjUgYmctZ3JheS0xMDAgdGV4dC1ncmF5LTcwMCB0ZXh0LXhzIGZvbnQtc2VtaWJvbGQgcm91bmRlZFwiPntzdGF0dXN9PC9zcGFuPjtcbiAgfTtcblxuICBjb25zdCBmb3JtYXRDdXJyZW5jeSA9ICh2YWx1ZTogbnVtYmVyKSA9PiB7XG4gICAgcmV0dXJuIG5ldyBJbnRsLk51bWJlckZvcm1hdCgnZW4tQVUnLCB7XG4gICAgICBzdHlsZTogJ2N1cnJlbmN5JyxcbiAgICAgIGN1cnJlbmN5OiAnQVVEJyxcbiAgICAgIG1pbmltdW1GcmFjdGlvbkRpZ2l0czogMCxcbiAgICAgIG1heGltdW1GcmFjdGlvbkRpZ2l0czogMFxuICAgIH0pLmZvcm1hdCh2YWx1ZSk7XG4gIH07XG5cbiAgcmV0dXJuIChcbiAgICA8ZGl2IGNsYXNzTmFtZT1cIm1pbi1oLXNjcmVlbiBiZy1ncmF5LTUwXCI+XG4gICAgICB7LyogSGVhZGVyICovfVxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJiZy13aGl0ZSBib3JkZXItYiBib3JkZXItZ3JheS0zMDAgcHgtNiBweS00XCI+XG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1iZXR3ZWVuXCI+XG4gICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgIDxoMSBjbGFzc05hbWU9XCJ0ZXh0LTJ4bCBmb250LWJvbGQgdGV4dC1ncmF5LTkwMFwiPkJyb2tlciBQb3J0YWw8L2gxPlxuICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC1zbSB0ZXh0LWdyYXktNjAwXCI+QnVzaW5lc3MgbGVuZGluZyBwbGF0Zm9ybSAtIE11bHRpLXRlbmFudCBvcmlnaW5hdGlvbiAmIHNlcnZpY2luZzwvcD5cbiAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIGdhcC0zXCI+XG4gICAgICAgICAgICA8c2VsZWN0XG4gICAgICAgICAgICAgIHZhbHVlPXtzZWxlY3RlZFBlcmlvZH1cbiAgICAgICAgICAgICAgb25DaGFuZ2U9eyhlKSA9PiBzZXRTZWxlY3RlZFBlcmlvZChlLnRhcmdldC52YWx1ZSl9XG4gICAgICAgICAgICAgIGNsYXNzTmFtZT1cInB4LTMgcHktMiBib3JkZXIgYm9yZGVyLWdyYXktMzAwIHJvdW5kZWQgdGV4dC1zbVwiXG4gICAgICAgICAgICA+XG4gICAgICAgICAgICAgIDxvcHRpb24gdmFsdWU9XCJ0b2RheVwiPlRvZGF5PC9vcHRpb24+XG4gICAgICAgICAgICAgIDxvcHRpb24gdmFsdWU9XCJ3ZWVrXCI+VGhpcyBXZWVrPC9vcHRpb24+XG4gICAgICAgICAgICAgIDxvcHRpb24gdmFsdWU9XCJtb250aFwiPlRoaXMgTW9udGg8L29wdGlvbj5cbiAgICAgICAgICAgICAgPG9wdGlvbiB2YWx1ZT1cInF1YXJ0ZXJcIj5UaGlzIFF1YXJ0ZXI8L29wdGlvbj5cbiAgICAgICAgICAgIDwvc2VsZWN0PlxuICAgICAgICAgICAgPEJ1dHRvbiBcbiAgICAgICAgICAgICAgY2xhc3NOYW1lPVwiYmctYmx1ZS02MDAgaG92ZXI6YmctYmx1ZS03MDBcIlxuICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBvbk5hdmlnYXRlPy4oJ2Jyb2tlci1uZXctYXBwbGljYXRpb24nKX1cbiAgICAgICAgICAgID5cbiAgICAgICAgICAgICAgPFBsdXMgY2xhc3NOYW1lPVwidy00IGgtNCBtci0yXCIgLz5cbiAgICAgICAgICAgICAgTmV3IEFwcGxpY2F0aW9uXG4gICAgICAgICAgICA8L0J1dHRvbj5cbiAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgPC9kaXY+XG4gICAgICA8L2Rpdj5cblxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJwLTYgc3BhY2UteS02XCI+XG4gICAgICAgIHsvKiBRdWljayBTdGF0cyAqL31cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJncmlkIGdyaWQtY29scy0xIG1kOmdyaWQtY29scy0yIGxnOmdyaWQtY29scy00IGdhcC00XCI+XG4gICAgICAgICAgPGJ1dHRvblxuICAgICAgICAgICAgb25DbGljaz17KCkgPT4gb25OYXZpZ2F0ZT8uKCdicm9rZXItcGlwZWxpbmUnKX1cbiAgICAgICAgICAgIGNsYXNzTmFtZT1cImJnLXdoaXRlIGJvcmRlciBib3JkZXItZ3JheS0zMDAgcm91bmRlZCBwLTQgaG92ZXI6Ym9yZGVyLWJsdWUtNDAwIGhvdmVyOnNoYWRvdy1tZCB0cmFuc2l0aW9uLWFsbCB0ZXh0LWxlZnRcIlxuICAgICAgICAgID5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1iZXR3ZWVuIG1iLTJcIj5cbiAgICAgICAgICAgICAgPEJyaWVmY2FzZSBjbGFzc05hbWU9XCJ3LTUgaC01IHRleHQtYmx1ZS02MDBcIiAvPlxuICAgICAgICAgICAgICA8QXJyb3dSaWdodCBjbGFzc05hbWU9XCJ3LTQgaC00IHRleHQtZ3JheS00MDBcIiAvPlxuICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQtMnhsIGZvbnQtYm9sZCB0ZXh0LWdyYXktOTAwXCI+e3N0YXRzLmFjdGl2ZVBpcGVsaW5lfTwvZGl2PlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LXhzIHRleHQtZ3JheS02MDBcIj5BY3RpdmUgUGlwZWxpbmU8L2Rpdj5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC14cyB0ZXh0LWJsdWUtNjAwIGZvbnQtc2VtaWJvbGQgbXQtMVwiPntmb3JtYXRDdXJyZW5jeShzdGF0cy5waXBlbGluZVZhbHVlKX08L2Rpdj5cbiAgICAgICAgICA8L2J1dHRvbj5cblxuICAgICAgICAgIDxidXR0b25cbiAgICAgICAgICAgIG9uQ2xpY2s9eygpID0+IG9uTmF2aWdhdGU/LignYnJva2VyLXBpcGVsaW5lJyl9XG4gICAgICAgICAgICBjbGFzc05hbWU9XCJiZy13aGl0ZSBib3JkZXIgYm9yZGVyLWdyYXktMzAwIHJvdW5kZWQgcC00IGhvdmVyOmJvcmRlci1ibHVlLTQwMCBob3ZlcjpzaGFkb3ctbWQgdHJhbnNpdGlvbi1hbGwgdGV4dC1sZWZ0XCJcbiAgICAgICAgICA+XG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktYmV0d2VlbiBtYi0yXCI+XG4gICAgICAgICAgICAgIDxGaWxlVGV4dCBjbGFzc05hbWU9XCJ3LTUgaC01IHRleHQtcHVycGxlLTYwMFwiIC8+XG4gICAgICAgICAgICAgIDxBcnJvd1JpZ2h0IGNsYXNzTmFtZT1cInctNCBoLTQgdGV4dC1ncmF5LTQwMFwiIC8+XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC0yeGwgZm9udC1ib2xkIHRleHQtZ3JheS05MDBcIj57c3RhdHMuc3VibWl0dGVkQXBwbGljYXRpb25zfTwvZGl2PlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LXhzIHRleHQtZ3JheS02MDBcIj5TdWJtaXR0ZWQ8L2Rpdj5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC14cyB0ZXh0LXB1cnBsZS02MDAgZm9udC1zZW1pYm9sZCBtdC0xXCI+e3N0YXRzLmNvbmRpdGlvbmFsQXBwcm92YWxzfSBjb25kaXRpb25hbDwvZGl2PlxuICAgICAgICAgIDwvYnV0dG9uPlxuXG4gICAgICAgICAgPGJ1dHRvblxuICAgICAgICAgICAgb25DbGljaz17KCkgPT4gb25OYXZpZ2F0ZT8uKCdicm9rZXItY29tbWlzc2lvbicpfVxuICAgICAgICAgICAgY2xhc3NOYW1lPVwiYmctd2hpdGUgYm9yZGVyIGJvcmRlci1ncmF5LTMwMCByb3VuZGVkIHAtNCBob3Zlcjpib3JkZXItYmx1ZS00MDAgaG92ZXI6c2hhZG93LW1kIHRyYW5zaXRpb24tYWxsIHRleHQtbGVmdFwiXG4gICAgICAgICAgPlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWJldHdlZW4gbWItMlwiPlxuICAgICAgICAgICAgICA8RG9sbGFyU2lnbiBjbGFzc05hbWU9XCJ3LTUgaC01IHRleHQtZ3JlZW4tNjAwXCIgLz5cbiAgICAgICAgICAgICAgPEFycm93UmlnaHQgY2xhc3NOYW1lPVwidy00IGgtNCB0ZXh0LWdyYXktNDAwXCIgLz5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LTJ4bCBmb250LWJvbGQgdGV4dC1ncmF5LTkwMFwiPntmb3JtYXRDdXJyZW5jeShzdGF0cy51cGZyb250Q29tbWlzc2lvbil9PC9kaXY+XG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQteHMgdGV4dC1ncmF5LTYwMFwiPlVwZnJvbnQgQ29tbWlzc2lvbjwvZGl2PlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LXhzIHRleHQtZ3JlZW4tNjAwIGZvbnQtc2VtaWJvbGQgbXQtMVwiPit7Zm9ybWF0Q3VycmVuY3koc3RhdHMudHJhaWxDb21taXNzaW9uKX0gdHJhaWw8L2Rpdj5cbiAgICAgICAgICA8L2J1dHRvbj5cblxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYmctZ3JhZGllbnQtdG8tYnIgZnJvbS1ibHVlLTYwMCB0by1ibHVlLTcwMCB0ZXh0LXdoaXRlIHJvdW5kZWQgcC00XCI+XG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktYmV0d2VlbiBtYi0yXCI+XG4gICAgICAgICAgICAgIDxUYXJnZXQgY2xhc3NOYW1lPVwidy01IGgtNVwiIC8+XG4gICAgICAgICAgICAgIDxUcmVuZGluZ1VwIGNsYXNzTmFtZT1cInctNCBoLTRcIiAvPlxuICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQtMnhsIGZvbnQtYm9sZFwiPntzdGF0cy5zZXR0bGVkVGhpc01vbnRofTwvZGl2PlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LXhzIG9wYWNpdHktOTBcIj5TZXR0bGVkIFRoaXMgTW9udGg8L2Rpdj5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC14cyBmb250LXNlbWlib2xkIG10LTFcIj57c3RhdHMuY29udmVyc2lvblJhdGV9JSBjb252ZXJzaW9uPC9kaXY+XG4gICAgICAgICAgPC9kaXY+XG4gICAgICAgIDwvZGl2PlxuXG4gICAgICAgIHsvKiBQZXJmb3JtYW5jZSBNZXRyaWNzICovfVxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImdyaWQgZ3JpZC1jb2xzLTEgbWQ6Z3JpZC1jb2xzLTMgZ2FwLTRcIj5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImJnLXdoaXRlIGJvcmRlciBib3JkZXItZ3JheS0zMDAgcm91bmRlZCBwLTRcIj5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1iZXR3ZWVuIG1iLTNcIj5cbiAgICAgICAgICAgICAgPGgzIGNsYXNzTmFtZT1cImZvbnQtc2VtaWJvbGQgdGV4dC1ncmF5LTkwMFwiPkF2ZXJhZ2UgRGVhbCBTaXplPC9oMz5cbiAgICAgICAgICAgICAgPEJ1aWxkaW5nMiBjbGFzc05hbWU9XCJ3LTUgaC01IHRleHQtYmx1ZS02MDBcIiAvPlxuICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQtM3hsIGZvbnQtYm9sZCB0ZXh0LWJsdWUtNjAwIG1iLTFcIj57Zm9ybWF0Q3VycmVuY3koc3RhdHMucGlwZWxpbmVWYWx1ZSAvIHN0YXRzLmFjdGl2ZVBpcGVsaW5lKX08L2Rpdj5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC14cyB0ZXh0LWdyYXktNjAwXCI+QWNyb3NzIHtzdGF0cy5hY3RpdmVQaXBlbGluZX0gYWN0aXZlIGRlYWxzPC9kaXY+XG4gICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImJnLXdoaXRlIGJvcmRlciBib3JkZXItZ3JheS0zMDAgcm91bmRlZCBwLTRcIj5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1iZXR3ZWVuIG1iLTNcIj5cbiAgICAgICAgICAgICAgPGgzIGNsYXNzTmFtZT1cImZvbnQtc2VtaWJvbGQgdGV4dC1ncmF5LTkwMFwiPkF2ZyBQcm9jZXNzaW5nIFRpbWU8L2gzPlxuICAgICAgICAgICAgICA8Q2xvY2sgY2xhc3NOYW1lPVwidy01IGgtNSB0ZXh0LXB1cnBsZS02MDBcIiAvPlxuICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQtM3hsIGZvbnQtYm9sZCB0ZXh0LXB1cnBsZS02MDAgbWItMVwiPjE4IGRheXM8L2Rpdj5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC14cyB0ZXh0LWdyYXktNjAwXCI+RnJvbSBzdWJtaXNzaW9uIHRvIHNldHRsZW1lbnQ8L2Rpdj5cbiAgICAgICAgICA8L2Rpdj5cblxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYmctd2hpdGUgYm9yZGVyIGJvcmRlci1ncmF5LTMwMCByb3VuZGVkIHAtNFwiPlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWJldHdlZW4gbWItM1wiPlxuICAgICAgICAgICAgICA8aDMgY2xhc3NOYW1lPVwiZm9udC1zZW1pYm9sZCB0ZXh0LWdyYXktOTAwXCI+QXBwcm92YWwgUmF0ZTwvaDM+XG4gICAgICAgICAgICAgIDxDaGVja0NpcmNsZSBjbGFzc05hbWU9XCJ3LTUgaC01IHRleHQtZ3JlZW4tNjAwXCIgLz5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LTN4bCBmb250LWJvbGQgdGV4dC1ncmVlbi02MDAgbWItMVwiPjg3JTwvZGl2PlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LXhzIHRleHQtZ3JheS02MDBcIj5MYXN0IDkwIGRheXM8L2Rpdj5cbiAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJncmlkIGdyaWQtY29scy0xIGxnOmdyaWQtY29scy0yIGdhcC02XCI+XG4gICAgICAgICAgey8qIEFjdGl2ZSBQaXBlbGluZSAqL31cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImJvcmRlciBib3JkZXItZ3JheS0zMDAgcm91bmRlZCBiZy13aGl0ZVwiPlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJiZy1ncmF5LTUwIGJvcmRlci1iIGJvcmRlci1ncmF5LTMwMCBweC00IHB5LTMgZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1iZXR3ZWVuXCI+XG4gICAgICAgICAgICAgIDxoMyBjbGFzc05hbWU9XCJmb250LXNlbWlib2xkIHRleHQtZ3JheS05MDBcIj5BY3RpdmUgUGlwZWxpbmU8L2gzPlxuICAgICAgICAgICAgICA8QnV0dG9uIHZhcmlhbnQ9XCJvdXRsaW5lXCIgc2l6ZT1cInNtXCIgb25DbGljaz17KCkgPT4gb25OYXZpZ2F0ZT8uKCdicm9rZXItcGlwZWxpbmUnKX0+XG4gICAgICAgICAgICAgICAgVmlldyBBbGxcbiAgICAgICAgICAgICAgPC9CdXR0b24+XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwicC00IHNwYWNlLXktM1wiPlxuICAgICAgICAgICAgICB7cGlwZWxpbmVEZWFscy5tYXAoKGRlYWwpID0+IChcbiAgICAgICAgICAgICAgICA8ZGl2IFxuICAgICAgICAgICAgICAgICAga2V5PXtkZWFsLmlkfVxuICAgICAgICAgICAgICAgICAgb25DbGljaz17KCkgPT4gb25OYXZpZ2F0ZT8uKCdicm9rZXItZGVhbC12aWV3Jyl9XG4gICAgICAgICAgICAgICAgICBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWJldHdlZW4gcC0zIGJnLWdyYXktNTAgcm91bmRlZCBob3ZlcjpiZy1ibHVlLTUwIGN1cnNvci1wb2ludGVyIGJvcmRlciBib3JkZXItZ3JheS0yMDBcIlxuICAgICAgICAgICAgICAgID5cbiAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleC0xXCI+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTIgbWItMVwiPlxuICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cImZvbnQtc2VtaWJvbGQgdGV4dC1ncmF5LTkwMFwiPntkZWFsLmJvcnJvd2VyfTwvc3Bhbj5cbiAgICAgICAgICAgICAgICAgICAgICB7Z2V0U3RhdHVzQmFkZ2UoZGVhbC5zdGF0dXMpfVxuICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LXhzIHRleHQtZ3JheS02MDBcIj57ZGVhbC50eXBlfSDigKIge2Zvcm1hdEN1cnJlbmN5KGRlYWwuYW1vdW50KX0g4oCiIExWUiB7ZGVhbC5sdnJ9JTwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQteHMgdGV4dC1ncmF5LTUwMCBtdC0xXCI+e2RlYWwuaWR9IOKAoiB7ZGVhbC5kYXlzSW5TdGFnZX0gZGF5cyBpbiBzdGFnZSDigKIge2RlYWwuYmRtfTwvZGl2PlxuICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICA8QXJyb3dSaWdodCBjbGFzc05hbWU9XCJ3LTQgaC00IHRleHQtZ3JheS00MDBcIiAvPlxuICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICApKX1cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgICAgey8qIENvbW1pc3Npb24gU3VtbWFyeSAqL31cbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImJvcmRlciBib3JkZXItZ3JheS0zMDAgcm91bmRlZCBiZy13aGl0ZVwiPlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJiZy1ncmF5LTUwIGJvcmRlci1iIGJvcmRlci1ncmF5LTMwMCBweC00IHB5LTMgZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1iZXR3ZWVuXCI+XG4gICAgICAgICAgICAgIDxoMyBjbGFzc05hbWU9XCJmb250LXNlbWlib2xkIHRleHQtZ3JheS05MDBcIj5Db21taXNzaW9uIER1ZTwvaDM+XG4gICAgICAgICAgICAgIDxCdXR0b24gdmFyaWFudD1cIm91dGxpbmVcIiBzaXplPVwic21cIiBvbkNsaWNrPXsoKSA9PiBvbk5hdmlnYXRlPy4oJ2Jyb2tlci1jb21taXNzaW9uJyl9PlxuICAgICAgICAgICAgICAgIFZpZXcgUmVwb3J0XG4gICAgICAgICAgICAgIDwvQnV0dG9uPlxuICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInAtNCBzcGFjZS15LTNcIj5cbiAgICAgICAgICAgICAge2NvbW1pc3Npb25EdWUubWFwKChjb21tKSA9PiAoXG4gICAgICAgICAgICAgICAgPGRpdiBrZXk9e2NvbW0uZGVhbElkfSBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWJldHdlZW4gcC0zIGJnLWdyYXktNTAgcm91bmRlZCBib3JkZXIgYm9yZGVyLWdyYXktMjAwXCI+XG4gICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXgtMVwiPlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIGdhcC0yIG1iLTFcIj5cbiAgICAgICAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJmb250LXNlbWlib2xkIHRleHQtZ3JheS05MDBcIj57Y29tbS5ib3Jyb3dlcn08L3NwYW4+XG4gICAgICAgICAgICAgICAgICAgICAge2dldFN0YXR1c0JhZGdlKGNvbW0uc3RhdHVzKX1cbiAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC14cyB0ZXh0LWdyYXktNjAwXCI+VXBmcm9udDoge2Zvcm1hdEN1cnJlbmN5KGNvbW0udXBmcm9udCl9IOKAoiBUcmFpbDoge2Zvcm1hdEN1cnJlbmN5KGNvbW0udHJhaWwpfS9tbzwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQteHMgdGV4dC1ncmF5LTUwMCBtdC0xXCI+e2NvbW0uZGVhbElkfSDigKIgU2V0dGxlZDoge2NvbW0uc2V0dGxlRGF0ZX08L2Rpdj5cbiAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LXJpZ2h0XCI+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC1zbSBmb250LWJvbGQgdGV4dC1ncmVlbi02MDBcIj57Zm9ybWF0Q3VycmVuY3koY29tbS51cGZyb250ICsgY29tbS50cmFpbCl9PC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC14cyB0ZXh0LWdyYXktNTAwXCI+dG90YWw8L2Rpdj5cbiAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICApKX1cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L2Rpdj5cblxuICAgICAgICB7LyogUXVpY2sgQWN0aW9ucyAqL31cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJncmlkIGdyaWQtY29scy0yIG1kOmdyaWQtY29scy00IGdhcC00XCI+XG4gICAgICAgICAgPGJ1dHRvblxuICAgICAgICAgICAgb25DbGljaz17KCkgPT4gb25OYXZpZ2F0ZT8uKCdicm9rZXItbmV3LWFwcGxpY2F0aW9uJyl9XG4gICAgICAgICAgICBjbGFzc05hbWU9XCJiZy13aGl0ZSBib3JkZXIgYm9yZGVyLWdyYXktMzAwIHJvdW5kZWQgcC00IGhvdmVyOmJvcmRlci1ibHVlLTQwMCBob3ZlcjpzaGFkb3ctbWQgdHJhbnNpdGlvbi1hbGxcIlxuICAgICAgICAgID5cbiAgICAgICAgICAgIDxQbHVzIGNsYXNzTmFtZT1cInctOCBoLTggdGV4dC1ibHVlLTYwMCBtYi0yXCIgLz5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZm9udC1zZW1pYm9sZCB0ZXh0LWdyYXktOTAwIHRleHQtc21cIj5OZXcgQXBwbGljYXRpb248L2Rpdj5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC14cyB0ZXh0LWdyYXktNjAwIG10LTFcIj5TdGFydCBuZXcgZGVhbDwvZGl2PlxuICAgICAgICAgIDwvYnV0dG9uPlxuXG4gICAgICAgICAgPGJ1dHRvblxuICAgICAgICAgICAgb25DbGljaz17KCkgPT4gb25OYXZpZ2F0ZT8uKCdicm9rZXItY2FsY3VsYXRvcicpfVxuICAgICAgICAgICAgY2xhc3NOYW1lPVwiYmctd2hpdGUgYm9yZGVyIGJvcmRlci1ncmF5LTMwMCByb3VuZGVkIHAtNCBob3Zlcjpib3JkZXItYmx1ZS00MDAgaG92ZXI6c2hhZG93LW1kIHRyYW5zaXRpb24tYWxsXCJcbiAgICAgICAgICA+XG4gICAgICAgICAgICA8RG9sbGFyU2lnbiBjbGFzc05hbWU9XCJ3LTggaC04IHRleHQtcHVycGxlLTYwMCBtYi0yXCIgLz5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZm9udC1zZW1pYm9sZCB0ZXh0LWdyYXktOTAwIHRleHQtc21cIj5TZXJ2aWNlYWJpbGl0eTwvZGl2PlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LXhzIHRleHQtZ3JheS02MDAgbXQtMVwiPkNhbGN1bGF0ZSBjYXBhY2l0eTwvZGl2PlxuICAgICAgICAgIDwvYnV0dG9uPlxuXG4gICAgICAgICAgPGJ1dHRvblxuICAgICAgICAgICAgb25DbGljaz17KCkgPT4gb25OYXZpZ2F0ZT8uKCdicm9rZXItZG9jdW1lbnRzJyl9XG4gICAgICAgICAgICBjbGFzc05hbWU9XCJiZy13aGl0ZSBib3JkZXIgYm9yZGVyLWdyYXktMzAwIHJvdW5kZWQgcC00IGhvdmVyOmJvcmRlci1ibHVlLTQwMCBob3ZlcjpzaGFkb3ctbWQgdHJhbnNpdGlvbi1hbGxcIlxuICAgICAgICAgID5cbiAgICAgICAgICAgIDxGaWxlVGV4dCBjbGFzc05hbWU9XCJ3LTggaC04IHRleHQtZ3JlZW4tNjAwIG1iLTJcIiAvPlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmb250LXNlbWlib2xkIHRleHQtZ3JheS05MDAgdGV4dC1zbVwiPkRvY3VtZW50czwvZGl2PlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LXhzIHRleHQtZ3JheS02MDAgbXQtMVwiPlVwbG9hZCAmIG1hbmFnZTwvZGl2PlxuICAgICAgICAgIDwvYnV0dG9uPlxuXG4gICAgICAgICAgPGJ1dHRvblxuICAgICAgICAgICAgb25DbGljaz17KCkgPT4gb25OYXZpZ2F0ZT8uKCdicm9rZXItc3RhdHVzLXRyYWNrZXInKX1cbiAgICAgICAgICAgIGNsYXNzTmFtZT1cImJnLXdoaXRlIGJvcmRlciBib3JkZXItZ3JheS0zMDAgcm91bmRlZCBwLTQgaG92ZXI6Ym9yZGVyLWJsdWUtNDAwIGhvdmVyOnNoYWRvdy1tZCB0cmFuc2l0aW9uLWFsbFwiXG4gICAgICAgICAgPlxuICAgICAgICAgICAgPENsb2NrIGNsYXNzTmFtZT1cInctOCBoLTggdGV4dC1pbmRpZ28tNjAwIG1iLTJcIiAvPlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmb250LXNlbWlib2xkIHRleHQtZ3JheS05MDAgdGV4dC1zbVwiPlN0YXR1cyBUcmFja2VyPC9kaXY+XG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQteHMgdGV4dC1ncmF5LTYwMCBtdC0xXCI+VHJhY2sgYXBwbGljYXRpb25zPC9kaXY+XG4gICAgICAgICAgPC9idXR0b24+XG4gICAgICAgIDwvZGl2PlxuICAgICAgPC9kaXY+XG4gICAgPC9kaXY+XG4gICk7XG59XG4iXSwiZmlsZSI6IkM6L1VzZXJzL0FuZHJldyBOYWdsZS9EZXNrdG9wL0dyb3dreWMtbWFpbi9Hcm93a3ljLW1haW4vc3JjL2FwcC9jb21wb25lbnRzL3BmYS9Ccm9rZXJEYXNoYm9hcmQudHN4In0=

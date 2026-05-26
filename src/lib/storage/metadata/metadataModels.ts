@@ -37,12 +37,22 @@ export interface RetentionMetadata {
   /**
    * Number of days to retain
    */
-  retentionDays: number;
+  retentionDays?: number;
 
   /**
    * Date evidence should be deleted (ISO 8601)
    */
-  expiresAt: string;
+  expiresAt?: string;
+
+  /**
+   * AUSTRAC specific retention date (uploadDate + 7 years)
+   */
+  retentionUntil?: string;
+
+  /**
+   * Specific retention policy applied
+   */
+  retentionPolicy?: string;
 
   /**
    * Reason for retention period
@@ -52,17 +62,17 @@ export interface RetentionMetadata {
   /**
    * Whether automated deletion is blocked
    */
-  deleteBlocked: boolean;
+  deleteBlocked?: boolean;
 
   /**
    * Who set the retention policy
    */
-  setBy: string;
+  setBy?: string;
 
   /**
    * When retention was set (ISO 8601)
    */
-  setAt: string;
+  setAt?: string;
 }
 
 /**
@@ -74,6 +84,11 @@ export interface LegalHoldMetadata {
    * Current legal hold status
    */
   status: 'none' | 'active' | 'pending_release' | 'released';
+
+  /**
+   * Whether the legal hold is currently active (boolean flag for compatibility)
+   */
+  legal_hold?: boolean;
 
   /**
    * Case/matter reference for legal hold

@@ -3,24 +3,12 @@
  * Utilities for handling and classifying S3 upload errors
  */
 
-import type { StorageError } from '../models/storageError';
-
-type S3ErrorLike =
-  | {
-      Code?: string;
-      name?: string;
-      message?: string;
-    }
-  | string
-  | null
-  | undefined;
-
-type S3LoggingContext = Record<string, unknown>;
+import type { StorageError } from '../models/storageError.ts';
 
 /**
  * AWS error codes that should trigger retries
  */
-const RETRYABLE_S3_ERROR_CODES = new Set([
+const RETRYABLE_AWS_ERRORS = [
   'NetworkingError',
   'TimeoutError',
   'ThrottlingException',
@@ -29,43 +17,28 @@ const RETRYABLE_S3_ERROR_CODES = new Set([
   'ServiceUnavailable',
   'InternalError',
   'GatewayTimeout',
-]);
+];
 
 /**
  * AWS error codes that indicate access issues
  */
-const ACCESS_DENIED_S3_ERROR_CODES = new Set([
+const ACCESS_DENIED_ERRORS = [
   'AccessDenied',
   'Forbidden',
   'NotAuthorized',
   'InvalidAccessKeyId',
   'SignatureDoesNotMatch',
-]);
-
-function getS3ErrorCode(error: S3ErrorLike, fallback: string): string {
-  if (error && typeof error === 'object') {
-    return error.Code || error.name || fallback;
-  }
-
-  return fallback;
-}
-
-function getS3ErrorMessage(error: S3ErrorLike): string {
-  if (error && typeof error === 'object' && typeof error.message === 'string') {
-    return error.message;
-  }
-
-  return String(error);
-}
+];
 
 /**
  * Classify AWS S3 error and return appropriate StorageError
  */
-export function classifyS3Error(error: S3ErrorLike): StorageError {
-  const errorCode = getS3ErrorCode(error, 'UnknownError');
-  const errorMessage = getS3ErrorMessage(error);
+export function classifyS3Error(error: any): StorageError {
+  const errorCode = error?.Code || error?.name || 'UnknownError';
+  const errorMessage = error?.message || String(error);
 
-  if (ACCESS_DENIED_S3_ERROR_CODES.has(errorCode)) {
+  // Access denied errors
+  if (ACCESS_DENIED_ERRORS.includes(errorCode)) {
     return {
       code: 'ACCESS_DENIED',
       message: `S3 access denied: ${errorMessage}`,
@@ -73,6 +46,7 @@ export function classifyS3Error(error: S3ErrorLike): StorageError {
     };
   }
 
+  // Bucket not found
   if (errorCode === 'NoSuchBucket' || errorMessage.includes('not found')) {
     return {
       code: 'BUCKET_UNAVAILABLE',
@@ -81,6 +55,7 @@ export function classifyS3Error(error: S3ErrorLike): StorageError {
     };
   }
 
+  // Invalid key
   if (errorCode === 'InvalidKey' || errorMessage.includes('invalid key')) {
     return {
       code: 'KEY_INVALID',
@@ -89,6 +64,7 @@ export function classifyS3Error(error: S3ErrorLike): StorageError {
     };
   }
 
+  // Quota exceeded
   if (errorCode === 'QuotaExceeded' || errorMessage.includes('quota')) {
     return {
       code: 'QUOTA_EXCEEDED',
@@ -97,7 +73,8 @@ export function classifyS3Error(error: S3ErrorLike): StorageError {
     };
   }
 
-  if (RETRYABLE_S3_ERROR_CODES.has(errorCode)) {
+  // Retryable errors
+  if (RETRYABLE_AWS_ERRORS.includes(errorCode)) {
     return {
       code: 'UPLOAD_FAILED',
       message: `S3 upload failed (retryable): ${errorMessage}`,
@@ -105,6 +82,7 @@ export function classifyS3Error(error: S3ErrorLike): StorageError {
     };
   }
 
+  // Unknown errors are retryable by default (transient issues)
   return {
     code: 'UPLOAD_FAILED',
     message: `S3 upload error: ${errorMessage}`,
@@ -115,12 +93,12 @@ export function classifyS3Error(error: S3ErrorLike): StorageError {
 /**
  * Check if error is a network-related retryable error
  */
-export function isNetworkError(error: S3ErrorLike): boolean {
-  const errorCode = getS3ErrorCode(error, '');
-  const errorMessage = getS3ErrorMessage(error);
+export function isNetworkError(error: any): boolean {
+  const errorCode = error?.Code || error?.name || '';
+  const errorMessage = error?.message || '';
 
   return (
-    RETRYABLE_S3_ERROR_CODES.has(errorCode) ||
+    RETRYABLE_AWS_ERRORS.includes(errorCode) ||
     errorMessage.includes('ECONNREFUSED') ||
     errorMessage.includes('ECONNRESET') ||
     errorMessage.includes('ETIMEDOUT') ||
@@ -131,22 +109,24 @@ export function isNetworkError(error: S3ErrorLike): boolean {
 /**
  * Get retry delay in milliseconds based on error type
  */
-export function getRetryDelay(error: S3ErrorLike, attemptNumber: number = 1): number {
-  const errorCode = getS3ErrorCode(error, '');
+export function getRetryDelay(error: any, attemptNumber: number = 1): number {
+  const errorCode = error?.Code || error?.name || '';
 
+  // Throttling errors get longer backoff
   if (errorCode === 'ThrottlingException' || errorCode === 'SlowDownException') {
-    return Math.min(1000 * Math.pow(2, attemptNumber), 32000);
+    return Math.min(1000 * Math.pow(2, attemptNumber), 32000); // Exponential backoff, max 32s
   }
 
-  return Math.min(100 * Math.pow(2, attemptNumber), 10000);
+  // Standard backoff for other retryable errors
+  return Math.min(100 * Math.pow(2, attemptNumber), 10000); // Exponential backoff, max 10s
 }
 
 /**
  * Format S3 upload error for logging
  */
-export function formatS3ErrorForLogging(error: S3ErrorLike, context?: S3LoggingContext): string {
-  const errorCode = getS3ErrorCode(error, 'UnknownError');
-  const errorMessage = getS3ErrorMessage(error);
+export function formatS3ErrorForLogging(error: any, context?: Record<string, any>): string {
+  const errorCode = error?.Code || error?.name || 'UnknownError';
+  const errorMessage = error?.message || String(error);
 
   let formatted = `S3 Upload Error [${errorCode}]: ${errorMessage}`;
 
@@ -160,6 +140,6 @@ export function formatS3ErrorForLogging(error: S3ErrorLike, context?: S3LoggingC
 /**
  * Validate error object before classification
  */
-export function validateS3Error(error: S3ErrorLike): boolean {
-  return Boolean(error) && (typeof error === 'object' || typeof error === 'string');
+export function validateS3Error(error: any): boolean {
+  return error && (typeof error === 'object' || typeof error === 'string');
 }

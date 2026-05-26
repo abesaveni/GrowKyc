@@ -1,0 +1,41 @@
+# FastAPI and ASGI
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+
+# Database
+sqlalchemy==2.0.23
+psycopg2-binary==2.9.9
+
+# Authentication
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+bcrypt==4.1.1
+
+# Data Validation
+pydantic==2.5.0
+pydantic[email]==2.5.0
+email-validator==2.1.0
+
+# Environment variables
+python-dotenv==1.0.0
+
+# File storage (Local)
+# Using Python built-in: os, shutil, pathlib
+
+# Logging and monitoring
+python-json-logger==2.0.7
+
+# Background scheduling (US-026: Document Expiry Scheduler)
+APScheduler==3.10.4
+
+# Development and documentation
+python-multipart==0.0.6
+httpx==0.25.2  # For testing
+
+# Testing
+pytest==7.4.3
+pytest-cov==4.1.0
+pytest-asyncio==0.21.1
+
+# Optional: For production deployment
+gunicorn==21.2.0

@@ -1,0 +1,1263 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=15066356"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+var _s = $RefreshSig$();
+import __vite__cjsImport3_react from "/node_modules/.vite/deps/react.js?v=15066356"; const useState = __vite__cjsImport3_react["useState"];
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "/src/app/components/ui/card.tsx";
+import { Badge } from "/src/app/components/ui/badge.tsx";
+import {
+  Shield,
+  DollarSign,
+  CheckCircle,
+  AlertCircle,
+  Building,
+  User,
+  FileText,
+  Search,
+  MapPin,
+  Clock,
+  Info,
+  Lock,
+  Unlock
+} from "/node_modules/.vite/deps/lucide-react.js?v=15066356";
+export function AMLCTFEnhancedChecksPricing() {
+  _s();
+  const [selectedChecks, setSelectedChecks] = useState(
+    [
+      "individual_idv",
+      "director_officer_search"
+    ]
+  );
+  const checks = [
+    // MANDATORY CHECKS
+    {
+      id: "individual_idv",
+      name: "Individual Identity Verification",
+      description: "Enhanced AML/CTF individual verification via GreenID/InfoTrack - DVS certified",
+      mandatory: true,
+      pricingModel: "per-individual",
+      basePrice: 12.5,
+      icon: User,
+      category: "individual",
+      notes: "MANDATORY - Must be paid for every individual client, beneficial owner, director, and officer"
+    },
+    {
+      id: "director_officer_search",
+      name: "Director/Officer Search",
+      description: "ASIC director and officer history check including disqualifications",
+      mandatory: true,
+      pricingModel: "per-individual",
+      basePrice: 15,
+      icon: Shield,
+      category: "individual",
+      notes: "MANDATORY - Required for all directors and officers of companies and trusts"
+    },
+    // PER ENTITY CHECKS (Price finalized after client-entity association identified)
+    {
+      id: "asic_company_search",
+      name: "ASIC Company Search",
+      description: "Current company extract including directors, shareholders, and company status",
+      mandatory: false,
+      pricingModel: "finalized-later",
+      basePrice: 45,
+      icon: Building,
+      category: "entity",
+      notes: "Per company - Final price determined once client association with entity is confirmed"
+    },
+    {
+      id: "asic_historical_search",
+      name: "ASIC Historical Company Search",
+      description: "Historical company extract including former directors and previous addresses",
+      mandatory: false,
+      pricingModel: "finalized-later",
+      basePrice: 65,
+      icon: FileText,
+      category: "entity",
+      notes: "Per company - Enhanced check for high-risk entities or complex structures"
+    },
+    {
+      id: "trust_search",
+      name: "Trust Document Search",
+      description: "Trust deed verification and trustee identification",
+      mandatory: false,
+      pricingModel: "finalized-later",
+      basePrice: 75,
+      icon: Shield,
+      category: "entity",
+      notes: "Per trust - Price finalized once trust-client relationship is identified"
+    },
+    {
+      id: "abn_lookup",
+      name: "ABN/ACN Verification",
+      description: "Australian Business Number and Australian Company Number verification",
+      mandatory: false,
+      pricingModel: "finalized-later",
+      basePrice: 5,
+      icon: Search,
+      category: "entity",
+      notes: "Per entity - Included with ASIC searches, standalone if required"
+    },
+    {
+      id: "ppsr_search",
+      name: "PPSR Security Interest Search",
+      description: "Personal Property Securities Register search for security interests",
+      mandatory: false,
+      pricingModel: "finalized-later",
+      basePrice: 35,
+      icon: Lock,
+      category: "entity",
+      notes: "Per entity - Optional enhanced check for lending and secured transactions"
+    },
+    {
+      id: "litigation_search",
+      name: "Litigation History Search",
+      description: "Federal and State court records search",
+      mandatory: false,
+      pricingModel: "finalized-later",
+      basePrice: 65,
+      icon: FileText,
+      category: "entity",
+      notes: "Per entity - Enhanced due diligence for high-risk clients"
+    },
+    {
+      id: "bankruptcy_search",
+      name: "Bankruptcy & Insolvency Search",
+      description: "NPII bankruptcy and insolvency records check",
+      mandatory: false,
+      pricingModel: "finalized-later",
+      basePrice: 25,
+      icon: AlertCircle,
+      category: "entity",
+      notes: "Per individual or entity - Enhanced check for financial risk assessment"
+    },
+    // TITLE SEARCHES
+    {
+      id: "title_search_current",
+      name: "Current Title Search",
+      description: "Current registered proprietor and encumbrances search",
+      mandatory: false,
+      pricingModel: "per-property",
+      basePrice: 45,
+      icon: MapPin,
+      category: "property",
+      notes: "Per property title - Required when entity owns real property or client provides property as security"
+    },
+    {
+      id: "title_search_historical",
+      name: "Historical Title Search",
+      description: "20-year historical title search including previous owners",
+      mandatory: false,
+      pricingModel: "per-property",
+      basePrice: 75,
+      icon: Clock,
+      category: "property",
+      notes: "Per property title - Enhanced check for complex property ownership or source of wealth verification"
+    },
+    {
+      id: "title_search_dealing",
+      name: "Dealing Search",
+      description: "Search for recent or pending dealings on title",
+      mandatory: false,
+      pricingModel: "per-property",
+      basePrice: 35,
+      icon: FileText,
+      category: "property",
+      notes: "Per property title - Identifies pending mortgages, caveats, or transfers"
+    },
+    {
+      id: "property_valuation",
+      name: "Property Valuation Report",
+      description: "Professional property valuation for security or source of wealth",
+      mandatory: false,
+      pricingModel: "per-property",
+      basePrice: 250,
+      icon: DollarSign,
+      category: "property",
+      notes: "Per property - Required for secured lending or high-value property ownership verification"
+    }
+  ];
+  const toggleCheck = (checkId) => {
+    const check = checks.find((c) => c.id === checkId);
+    if (check?.mandatory) {
+      return;
+    }
+    if (selectedChecks.includes(checkId)) {
+      setSelectedChecks(selectedChecks.filter((id) => id !== checkId));
+    } else {
+      setSelectedChecks([...selectedChecks, checkId]);
+    }
+  };
+  const calculateEstimatedCost = () => {
+    let mandatoryCost = 0;
+    let optionalCost = 0;
+    let finalizedLaterCount = 0;
+    selectedChecks.forEach((checkId) => {
+      const check = checks.find((c) => c.id === checkId);
+      if (check?.basePrice) {
+        if (check.mandatory) {
+          mandatoryCost += check.basePrice;
+        } else if (check.pricingModel === "finalized-later") {
+          finalizedLaterCount++;
+        } else {
+          optionalCost += check.basePrice;
+        }
+      }
+    });
+    return { mandatoryCost, optionalCost, finalizedLaterCount };
+  };
+  const costs = calculateEstimatedCost();
+  const getCategoryIcon = (category) => {
+    switch (category) {
+      case "individual":
+        return User;
+      case "entity":
+        return Building;
+      case "property":
+        return MapPin;
+      default:
+        return FileText;
+    }
+  };
+  return /* @__PURE__ */ jsxDEV("div", { className: "space-y-6", children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg p-8 text-white", children: /* @__PURE__ */ jsxDEV("div", { className: "flex items-center gap-4", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "bg-white/20 p-4 rounded-full", children: /* @__PURE__ */ jsxDEV(Shield, { className: "w-12 h-12" }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+        lineNumber: 261,
+        columnNumber: 13
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+        lineNumber: 260,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { children: [
+        /* @__PURE__ */ jsxDEV("h1", { className: "text-4xl font-bold mb-2", children: "AML/CTF Enhanced Checks & Pricing" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+          lineNumber: 264,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "text-xl text-purple-100", children: "Identity Verification, Director Searches, Entity Checks & Title Searches" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+          lineNumber: 265,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+        lineNumber: 263,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+      lineNumber: 259,
+      columnNumber: 9
+    }, this) }, void 0, false, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+      lineNumber: 258,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "grid grid-cols-4 gap-4", children: [
+      /* @__PURE__ */ jsxDEV(Card, { className: "border-2 border-red-300 bg-red-50", children: /* @__PURE__ */ jsxDEV(CardContent, { className: "p-6", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "flex items-center gap-3 mb-2", children: [
+          /* @__PURE__ */ jsxDEV(Lock, { className: "w-6 h-6 text-red-600" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+            lineNumber: 277,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("h3", { className: "font-bold text-red-900", children: "Mandatory Checks" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+            lineNumber: 278,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+          lineNumber: 276,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "text-4xl font-bold text-red-600", children: [
+          "$",
+          costs.mandatoryCost.toFixed(2)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+          lineNumber: 280,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "text-sm text-red-700 mt-1", children: "Must be paid" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+          lineNumber: 281,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+        lineNumber: 275,
+        columnNumber: 11
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+        lineNumber: 274,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV(Card, { className: "border-2 border-blue-300 bg-blue-50", children: /* @__PURE__ */ jsxDEV(CardContent, { className: "p-6", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "flex items-center gap-3 mb-2", children: [
+          /* @__PURE__ */ jsxDEV(Unlock, { className: "w-6 h-6 text-blue-600" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+            lineNumber: 288,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("h3", { className: "font-bold text-blue-900", children: "Optional Checks" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+            lineNumber: 289,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+          lineNumber: 287,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "text-4xl font-bold text-blue-600", children: [
+          "$",
+          costs.optionalCost.toFixed(2)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+          lineNumber: 291,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "text-sm text-blue-700 mt-1", children: "Selected" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+          lineNumber: 292,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+        lineNumber: 286,
+        columnNumber: 11
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+        lineNumber: 285,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV(Card, { className: "border-2 border-amber-300 bg-amber-50", children: /* @__PURE__ */ jsxDEV(CardContent, { className: "p-6", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "flex items-center gap-3 mb-2", children: [
+          /* @__PURE__ */ jsxDEV(Clock, { className: "w-6 h-6 text-amber-600" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+            lineNumber: 299,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("h3", { className: "font-bold text-amber-900", children: "Finalized Later" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+            lineNumber: 300,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+          lineNumber: 298,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "text-4xl font-bold text-amber-600", children: costs.finalizedLaterCount }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+          lineNumber: 302,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "text-sm text-amber-700 mt-1", children: "Per entity/property" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+          lineNumber: 303,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+        lineNumber: 297,
+        columnNumber: 11
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+        lineNumber: 296,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV(Card, { className: "border-2 border-green-300 bg-green-50", children: /* @__PURE__ */ jsxDEV(CardContent, { className: "p-6", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "flex items-center gap-3 mb-2", children: [
+          /* @__PURE__ */ jsxDEV(DollarSign, { className: "w-6 h-6 text-green-600" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+            lineNumber: 310,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("h3", { className: "font-bold text-green-900", children: "Total Estimate" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+            lineNumber: 311,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+          lineNumber: 309,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "text-4xl font-bold text-green-600", children: [
+          "$",
+          (costs.mandatoryCost + costs.optionalCost).toFixed(2),
+          "+"
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+          lineNumber: 313,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "text-sm text-green-700 mt-1", children: "Confirmed now" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+          lineNumber: 316,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+        lineNumber: 308,
+        columnNumber: 11
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+        lineNumber: 307,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+      lineNumber: 273,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV(Card, { className: "border-2 border-red-300 bg-red-50", children: /* @__PURE__ */ jsxDEV(CardContent, { className: "p-6", children: /* @__PURE__ */ jsxDEV("div", { className: "flex gap-4", children: [
+      /* @__PURE__ */ jsxDEV(AlertCircle, { className: "w-8 h-8 text-red-600 flex-shrink-0" }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+        lineNumber: 325,
+        columnNumber: 13
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { children: [
+        /* @__PURE__ */ jsxDEV("h3", { className: "font-bold text-red-900 text-lg mb-2", children: "Payment Required for Mandatory Checks" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+          lineNumber: 327,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "space-y-2 text-red-800", children: [
+          /* @__PURE__ */ jsxDEV("p", { children: [
+            /* @__PURE__ */ jsxDEV("strong", { children: "• Individual Identity Verification ($12.50 per person)" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+              lineNumber: 330,
+              columnNumber: 19
+            }, this),
+            " - Required for EVERY individual including clients, beneficial owners, directors, officers, and authorized signatories"
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+            lineNumber: 329,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ jsxDEV("p", { children: [
+            /* @__PURE__ */ jsxDEV("strong", { children: "• Director/Officer Search ($15.00 per person)" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+              lineNumber: 334,
+              columnNumber: 19
+            }, this),
+            " - Required for ALL directors and officers of companies and trusts to verify ASIC history and check for disqualifications"
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+            lineNumber: 333,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ jsxDEV("p", { className: "mt-3 pt-3 border-t border-red-300", children: [
+            "Other checks are priced ",
+            /* @__PURE__ */ jsxDEV("strong", { children: "per company, per trust, or per property title" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+              lineNumber: 338,
+              columnNumber: 43
+            }, this),
+            ". Final amounts will be confirmed once we have identified the client's association with those entities."
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+            lineNumber: 337,
+            columnNumber: 17
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+          lineNumber: 328,
+          columnNumber: 15
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+        lineNumber: 326,
+        columnNumber: 13
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+      lineNumber: 324,
+      columnNumber: 11
+    }, this) }, void 0, false, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+      lineNumber: 323,
+      columnNumber: 9
+    }, this) }, void 0, false, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+      lineNumber: 322,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV(Card, { className: "border-2 border-red-300", children: [
+      /* @__PURE__ */ jsxDEV(CardHeader, { className: "bg-red-50", children: [
+        /* @__PURE__ */ jsxDEV(CardTitle, { className: "flex items-center gap-2 text-red-900", children: [
+          /* @__PURE__ */ jsxDEV(Lock, { className: "w-6 h-6" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+            lineNumber: 351,
+            columnNumber: 13
+          }, this),
+          "Mandatory Payment Checks"
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+          lineNumber: 350,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV(CardDescription, { className: "text-red-700", children: "These checks must be completed and paid for every relevant individual" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+          lineNumber: 354,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+        lineNumber: 349,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV(CardContent, { className: "p-6 space-y-4", children: checks.filter((c) => c.mandatory).map((check) => {
+        const Icon = check.icon;
+        const CategoryIcon = getCategoryIcon(check.category);
+        const isSelected = selectedChecks.includes(check.id);
+        return /* @__PURE__ */ jsxDEV(
+          "div",
+          {
+            className: "border-2 border-red-300 bg-red-50 rounded-lg p-6 cursor-not-allowed",
+            children: /* @__PURE__ */ jsxDEV("div", { className: "flex items-start justify-between mb-3", children: [
+              /* @__PURE__ */ jsxDEV("div", { className: "flex items-start gap-4 flex-1", children: [
+                /* @__PURE__ */ jsxDEV("div", { className: "bg-red-600 p-3 rounded-lg", children: /* @__PURE__ */ jsxDEV(Icon, { className: "w-6 h-6 text-white" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                  lineNumber: 372,
+                  columnNumber: 23
+                }, this) }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                  lineNumber: 371,
+                  columnNumber: 21
+                }, this),
+                /* @__PURE__ */ jsxDEV("div", { className: "flex-1", children: [
+                  /* @__PURE__ */ jsxDEV("div", { className: "flex items-center gap-3 mb-2", children: [
+                    /* @__PURE__ */ jsxDEV("h3", { className: "text-lg font-bold text-red-900", children: check.name }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                      lineNumber: 376,
+                      columnNumber: 25
+                    }, this),
+                    /* @__PURE__ */ jsxDEV(Badge, { className: "bg-red-600 text-white", children: "MANDATORY" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                      lineNumber: 377,
+                      columnNumber: 25
+                    }, this),
+                    /* @__PURE__ */ jsxDEV(Badge, { variant: "outline", className: "border-red-400 text-red-700", children: [
+                      /* @__PURE__ */ jsxDEV(CategoryIcon, { className: "w-3 h-3 mr-1" }, void 0, false, {
+                        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                        lineNumber: 379,
+                        columnNumber: 27
+                      }, this),
+                      check.category
+                    ] }, void 0, true, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                      lineNumber: 378,
+                      columnNumber: 25
+                    }, this)
+                  ] }, void 0, true, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                    lineNumber: 375,
+                    columnNumber: 23
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("p", { className: "text-gray-700 mb-3", children: check.description }, void 0, false, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                    lineNumber: 383,
+                    columnNumber: 23
+                  }, this),
+                  check.notes && /* @__PURE__ */ jsxDEV("div", { className: "bg-white border border-red-200 rounded p-3 mt-2", children: /* @__PURE__ */ jsxDEV("div", { className: "flex gap-2", children: [
+                    /* @__PURE__ */ jsxDEV(Info, { className: "w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                      lineNumber: 387,
+                      columnNumber: 29
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("p", { className: "text-sm text-red-800", children: check.notes }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                      lineNumber: 388,
+                      columnNumber: 29
+                    }, this)
+                  ] }, void 0, true, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                    lineNumber: 386,
+                    columnNumber: 27
+                  }, this) }, void 0, false, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                    lineNumber: 385,
+                    columnNumber: 23
+                  }, this)
+                ] }, void 0, true, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                  lineNumber: 374,
+                  columnNumber: 21
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                lineNumber: 370,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "text-right ml-4", children: [
+                /* @__PURE__ */ jsxDEV("div", { className: "text-2xl font-bold text-red-600 mb-1", children: [
+                  "$",
+                  check.basePrice?.toFixed(2)
+                ] }, void 0, true, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                  lineNumber: 395,
+                  columnNumber: 21
+                }, this),
+                /* @__PURE__ */ jsxDEV("div", { className: "text-sm text-red-700 font-semibold", children: [
+                  check.pricingModel === "per-individual" && "per person",
+                  check.pricingModel === "per-entity" && "per entity"
+                ] }, void 0, true, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                  lineNumber: 398,
+                  columnNumber: 21
+                }, this),
+                /* @__PURE__ */ jsxDEV("div", { className: "mt-3", children: /* @__PURE__ */ jsxDEV(Lock, { className: "w-6 h-6 text-red-600" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                  lineNumber: 403,
+                  columnNumber: 23
+                }, this) }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                  lineNumber: 402,
+                  columnNumber: 21
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                lineNumber: 394,
+                columnNumber: 19
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+              lineNumber: 369,
+              columnNumber: 17
+            }, this)
+          },
+          check.id,
+          false,
+          {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+            lineNumber: 365,
+            columnNumber: 15
+          },
+          this
+        );
+      }) }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+        lineNumber: 358,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+      lineNumber: 348,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV(Card, { className: "border-2 border-amber-300", children: [
+      /* @__PURE__ */ jsxDEV(CardHeader, { className: "bg-amber-50", children: [
+        /* @__PURE__ */ jsxDEV(CardTitle, { className: "flex items-center gap-2 text-amber-900", children: [
+          /* @__PURE__ */ jsxDEV(Building, { className: "w-6 h-6" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+            lineNumber: 417,
+            columnNumber: 13
+          }, this),
+          "Entity Checks - Per Company/Trust"
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+          lineNumber: 416,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV(CardDescription, { className: "text-amber-700", children: "Final pricing determined once client association with entity is identified" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+          lineNumber: 420,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+        lineNumber: 415,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV(CardContent, { className: "p-6 space-y-4", children: checks.filter((c) => !c.mandatory && c.category === "entity").map((check) => {
+        const Icon = check.icon;
+        const isSelected = selectedChecks.includes(check.id);
+        return /* @__PURE__ */ jsxDEV(
+          "div",
+          {
+            onClick: () => toggleCheck(check.id),
+            className: `border-2 rounded-lg p-6 cursor-pointer transition-all ${isSelected ? "border-amber-500 bg-amber-50" : "border-amber-200 bg-white hover:border-amber-400 hover:bg-amber-50"}`,
+            children: /* @__PURE__ */ jsxDEV("div", { className: "flex items-start justify-between mb-3", children: [
+              /* @__PURE__ */ jsxDEV("div", { className: "flex items-start gap-4 flex-1", children: [
+                /* @__PURE__ */ jsxDEV("div", { className: `p-3 rounded-lg ${isSelected ? "bg-amber-600" : "bg-amber-200"}`, children: /* @__PURE__ */ jsxDEV(Icon, { className: `w-6 h-6 ${isSelected ? "text-white" : "text-amber-700"}` }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                  lineNumber: 444,
+                  columnNumber: 23
+                }, this) }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                  lineNumber: 441,
+                  columnNumber: 21
+                }, this),
+                /* @__PURE__ */ jsxDEV("div", { className: "flex-1", children: [
+                  /* @__PURE__ */ jsxDEV("div", { className: "flex items-center gap-3 mb-2", children: [
+                    /* @__PURE__ */ jsxDEV("h3", { className: "text-lg font-bold text-gray-900", children: check.name }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                      lineNumber: 448,
+                      columnNumber: 25
+                    }, this),
+                    /* @__PURE__ */ jsxDEV(Badge, { variant: "outline", className: "border-amber-400 text-amber-700", children: "Optional" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                      lineNumber: 449,
+                      columnNumber: 25
+                    }, this)
+                  ] }, void 0, true, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                    lineNumber: 447,
+                    columnNumber: 23
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("p", { className: "text-gray-700 mb-3", children: check.description }, void 0, false, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                    lineNumber: 453,
+                    columnNumber: 23
+                  }, this),
+                  check.notes && /* @__PURE__ */ jsxDEV("div", { className: "bg-white border border-amber-200 rounded p-3 mt-2", children: /* @__PURE__ */ jsxDEV("div", { className: "flex gap-2", children: [
+                    /* @__PURE__ */ jsxDEV(Info, { className: "w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                      lineNumber: 457,
+                      columnNumber: 29
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("p", { className: "text-sm text-amber-800", children: check.notes }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                      lineNumber: 458,
+                      columnNumber: 29
+                    }, this)
+                  ] }, void 0, true, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                    lineNumber: 456,
+                    columnNumber: 27
+                  }, this) }, void 0, false, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                    lineNumber: 455,
+                    columnNumber: 23
+                  }, this)
+                ] }, void 0, true, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                  lineNumber: 446,
+                  columnNumber: 21
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                lineNumber: 440,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "text-right ml-4", children: [
+                /* @__PURE__ */ jsxDEV("div", { className: "text-2xl font-bold text-amber-600 mb-1", children: [
+                  "$",
+                  check.basePrice?.toFixed(2)
+                ] }, void 0, true, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                  lineNumber: 465,
+                  columnNumber: 21
+                }, this),
+                /* @__PURE__ */ jsxDEV("div", { className: "text-sm text-amber-700 font-semibold", children: "per entity" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                  lineNumber: 468,
+                  columnNumber: 21
+                }, this),
+                /* @__PURE__ */ jsxDEV("div", { className: "mt-3", children: /* @__PURE__ */ jsxDEV("div", { className: `w-6 h-6 rounded border-2 flex items-center justify-center ${isSelected ? "bg-amber-600 border-amber-600" : "border-amber-400"}`, children: isSelected && /* @__PURE__ */ jsxDEV(CheckCircle, { className: "w-5 h-5 text-white" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                  lineNumber: 475,
+                  columnNumber: 40
+                }, this) }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                  lineNumber: 470,
+                  columnNumber: 23
+                }, this) }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                  lineNumber: 469,
+                  columnNumber: 21
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                lineNumber: 464,
+                columnNumber: 19
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+              lineNumber: 439,
+              columnNumber: 17
+            }, this)
+          },
+          check.id,
+          false,
+          {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+            lineNumber: 430,
+            columnNumber: 15
+          },
+          this
+        );
+      }) }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+        lineNumber: 424,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+      lineNumber: 414,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV(Card, { className: "border-2 border-blue-300", children: [
+      /* @__PURE__ */ jsxDEV(CardHeader, { className: "bg-blue-50", children: [
+        /* @__PURE__ */ jsxDEV(CardTitle, { className: "flex items-center gap-2 text-blue-900", children: [
+          /* @__PURE__ */ jsxDEV(MapPin, { className: "w-6 h-6" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+            lineNumber: 490,
+            columnNumber: 13
+          }, this),
+          "Title Searches - Per Property"
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+          lineNumber: 489,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV(CardDescription, { className: "text-blue-700", children: "Property title searches when entities own real property or provide property as security" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+          lineNumber: 493,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+        lineNumber: 488,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV(CardContent, { className: "p-6 space-y-4", children: checks.filter((c) => c.category === "property").map((check) => {
+        const Icon = check.icon;
+        const isSelected = selectedChecks.includes(check.id);
+        return /* @__PURE__ */ jsxDEV(
+          "div",
+          {
+            onClick: () => toggleCheck(check.id),
+            className: `border-2 rounded-lg p-6 cursor-pointer transition-all ${isSelected ? "border-blue-500 bg-blue-50" : "border-blue-200 bg-white hover:border-blue-400 hover:bg-blue-50"}`,
+            children: /* @__PURE__ */ jsxDEV("div", { className: "flex items-start justify-between mb-3", children: [
+              /* @__PURE__ */ jsxDEV("div", { className: "flex items-start gap-4 flex-1", children: [
+                /* @__PURE__ */ jsxDEV("div", { className: `p-3 rounded-lg ${isSelected ? "bg-blue-600" : "bg-blue-200"}`, children: /* @__PURE__ */ jsxDEV(Icon, { className: `w-6 h-6 ${isSelected ? "text-white" : "text-blue-700"}` }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                  lineNumber: 517,
+                  columnNumber: 23
+                }, this) }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                  lineNumber: 514,
+                  columnNumber: 21
+                }, this),
+                /* @__PURE__ */ jsxDEV("div", { className: "flex-1", children: [
+                  /* @__PURE__ */ jsxDEV("div", { className: "flex items-center gap-3 mb-2", children: [
+                    /* @__PURE__ */ jsxDEV("h3", { className: "text-lg font-bold text-gray-900", children: check.name }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                      lineNumber: 521,
+                      columnNumber: 25
+                    }, this),
+                    /* @__PURE__ */ jsxDEV(Badge, { variant: "outline", className: "border-blue-400 text-blue-700", children: "Optional" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                      lineNumber: 522,
+                      columnNumber: 25
+                    }, this),
+                    /* @__PURE__ */ jsxDEV(Badge, { className: "bg-blue-600 text-white", children: [
+                      /* @__PURE__ */ jsxDEV(MapPin, { className: "w-3 h-3 mr-1" }, void 0, false, {
+                        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                        lineNumber: 526,
+                        columnNumber: 27
+                      }, this),
+                      "Property"
+                    ] }, void 0, true, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                      lineNumber: 525,
+                      columnNumber: 25
+                    }, this)
+                  ] }, void 0, true, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                    lineNumber: 520,
+                    columnNumber: 23
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("p", { className: "text-gray-700 mb-3", children: check.description }, void 0, false, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                    lineNumber: 530,
+                    columnNumber: 23
+                  }, this),
+                  check.notes && /* @__PURE__ */ jsxDEV("div", { className: "bg-white border border-blue-200 rounded p-3 mt-2", children: /* @__PURE__ */ jsxDEV("div", { className: "flex gap-2", children: [
+                    /* @__PURE__ */ jsxDEV(Info, { className: "w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                      lineNumber: 534,
+                      columnNumber: 29
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("p", { className: "text-sm text-blue-800", children: check.notes }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                      lineNumber: 535,
+                      columnNumber: 29
+                    }, this)
+                  ] }, void 0, true, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                    lineNumber: 533,
+                    columnNumber: 27
+                  }, this) }, void 0, false, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                    lineNumber: 532,
+                    columnNumber: 23
+                  }, this)
+                ] }, void 0, true, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                  lineNumber: 519,
+                  columnNumber: 21
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                lineNumber: 513,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "text-right ml-4", children: [
+                /* @__PURE__ */ jsxDEV("div", { className: "text-2xl font-bold text-blue-600 mb-1", children: [
+                  "$",
+                  check.basePrice?.toFixed(2)
+                ] }, void 0, true, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                  lineNumber: 542,
+                  columnNumber: 21
+                }, this),
+                /* @__PURE__ */ jsxDEV("div", { className: "text-sm text-blue-700 font-semibold", children: "per property" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                  lineNumber: 545,
+                  columnNumber: 21
+                }, this),
+                /* @__PURE__ */ jsxDEV("div", { className: "mt-3", children: /* @__PURE__ */ jsxDEV("div", { className: `w-6 h-6 rounded border-2 flex items-center justify-center ${isSelected ? "bg-blue-600 border-blue-600" : "border-blue-400"}`, children: isSelected && /* @__PURE__ */ jsxDEV(CheckCircle, { className: "w-5 h-5 text-white" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                  lineNumber: 552,
+                  columnNumber: 40
+                }, this) }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                  lineNumber: 547,
+                  columnNumber: 23
+                }, this) }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                  lineNumber: 546,
+                  columnNumber: 21
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                lineNumber: 541,
+                columnNumber: 19
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+              lineNumber: 512,
+              columnNumber: 17
+            }, this)
+          },
+          check.id,
+          false,
+          {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+            lineNumber: 503,
+            columnNumber: 15
+          },
+          this
+        );
+      }) }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+        lineNumber: 497,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+      lineNumber: 487,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV(Card, { className: "border-2 border-green-300 bg-green-50", children: [
+      /* @__PURE__ */ jsxDEV(CardHeader, { children: /* @__PURE__ */ jsxDEV(CardTitle, { className: "flex items-center gap-2 text-green-900", children: [
+        /* @__PURE__ */ jsxDEV(DollarSign, { className: "w-6 h-6" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+          lineNumber: 567,
+          columnNumber: 13
+        }, this),
+        "Pricing Summary"
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+        lineNumber: 566,
+        columnNumber: 11
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+        lineNumber: 565,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV(CardContent, { className: "p-6", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "space-y-4", children: [
+          /* @__PURE__ */ jsxDEV("div", { className: "flex justify-between items-center p-4 bg-red-100 rounded-lg border-2 border-red-300", children: [
+            /* @__PURE__ */ jsxDEV("div", { children: [
+              /* @__PURE__ */ jsxDEV("p", { className: "font-bold text-red-900", children: "Mandatory Checks (Must Pay)" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                lineNumber: 575,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV("p", { className: "text-sm text-red-700", children: "Individual IDV + Director/Officer Search" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                lineNumber: 576,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+              lineNumber: 574,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { className: "text-2xl font-bold text-red-600", children: [
+              "$",
+              costs.mandatoryCost.toFixed(2)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+              lineNumber: 578,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+            lineNumber: 573,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "flex justify-between items-center p-4 bg-blue-100 rounded-lg border-2 border-blue-300", children: [
+            /* @__PURE__ */ jsxDEV("div", { children: [
+              /* @__PURE__ */ jsxDEV("p", { className: "font-bold text-blue-900", children: "Optional Checks (Selected)" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                lineNumber: 583,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV("p", { className: "text-sm text-blue-700", children: "Pre-selected entity and property checks" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                lineNumber: 584,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+              lineNumber: 582,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { className: "text-2xl font-bold text-blue-600", children: [
+              "$",
+              costs.optionalCost.toFixed(2)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+              lineNumber: 586,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+            lineNumber: 581,
+            columnNumber: 13
+          }, this),
+          costs.finalizedLaterCount > 0 && /* @__PURE__ */ jsxDEV("div", { className: "flex justify-between items-center p-4 bg-amber-100 rounded-lg border-2 border-amber-300", children: [
+            /* @__PURE__ */ jsxDEV("div", { children: [
+              /* @__PURE__ */ jsxDEV("p", { className: "font-bold text-amber-900", children: "Entity/Property Checks (Finalized Later)" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                lineNumber: 592,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV("p", { className: "text-sm text-amber-700", children: [
+                costs.finalizedLaterCount,
+                " checks - Price confirmed after entity identification"
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                lineNumber: 593,
+                columnNumber: 19
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+              lineNumber: 591,
+              columnNumber: 17
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { className: "text-2xl font-bold text-amber-600", children: "TBD" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+              lineNumber: 597,
+              columnNumber: 17
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+            lineNumber: 590,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "flex justify-between items-center p-4 bg-green-100 rounded-lg border-2 border-green-400", children: [
+            /* @__PURE__ */ jsxDEV("div", { children: [
+              /* @__PURE__ */ jsxDEV("p", { className: "font-bold text-green-900 text-xl", children: "Total Confirmed Now" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                lineNumber: 603,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV("p", { className: "text-sm text-green-700", children: "Mandatory + Pre-selected optional checks" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                lineNumber: 604,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+              lineNumber: 602,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { className: "text-3xl font-bold text-green-600", children: [
+              "$",
+              (costs.mandatoryCost + costs.optionalCost).toFixed(2)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+              lineNumber: 606,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+            lineNumber: 601,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+          lineNumber: 572,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "mt-6 p-4 bg-white border-2 border-gray-300 rounded-lg", children: [
+          /* @__PURE__ */ jsxDEV("h4", { className: "font-bold text-gray-900 mb-3", children: "Pricing Notes:" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+            lineNumber: 613,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("ul", { className: "space-y-2 text-sm text-gray-700", children: [
+            /* @__PURE__ */ jsxDEV("li", { className: "flex gap-2", children: [
+              /* @__PURE__ */ jsxDEV("span", { className: "text-red-600", children: "•" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                lineNumber: 616,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV("span", { children: [
+                /* @__PURE__ */ jsxDEV("strong", { children: "Mandatory checks ($27.50/person)" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                  lineNumber: 617,
+                  columnNumber: 23
+                }, this),
+                " must be paid for each individual (client, beneficial owner, director, officer)"
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                lineNumber: 617,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+              lineNumber: 615,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("li", { className: "flex gap-2", children: [
+              /* @__PURE__ */ jsxDEV("span", { className: "text-amber-600", children: "•" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                lineNumber: 620,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV("span", { children: [
+                /* @__PURE__ */ jsxDEV("strong", { children: "Entity checks" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                  lineNumber: 621,
+                  columnNumber: 23
+                }, this),
+                " are priced per company or trust. Final amount determined once client's association with entity is confirmed"
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                lineNumber: 621,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+              lineNumber: 619,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("li", { className: "flex gap-2", children: [
+              /* @__PURE__ */ jsxDEV("span", { className: "text-blue-600", children: "•" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                lineNumber: 624,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV("span", { children: [
+                /* @__PURE__ */ jsxDEV("strong", { children: "Title searches" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                  lineNumber: 625,
+                  columnNumber: 23
+                }, this),
+                " are priced per property. Required when entity owns real property or provides it as security"
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                lineNumber: 625,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+              lineNumber: 623,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("li", { className: "flex gap-2", children: [
+              /* @__PURE__ */ jsxDEV("span", { className: "text-green-600", children: "•" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                lineNumber: 628,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV("span", { children: "All prices are in AUD and exclude GST" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+                lineNumber: 629,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+              lineNumber: 627,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+            lineNumber: 614,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+          lineNumber: 612,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+        lineNumber: 571,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+      lineNumber: 564,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx",
+    lineNumber: 256,
+    columnNumber: 5
+  }, this);
+}
+_s(AMLCTFEnhancedChecksPricing, "XBh0kXIPC/ZmIlWC8K26vogNmZE=");
+_c = AMLCTFEnhancedChecksPricing;
+var _c;
+$RefreshReg$(_c, "AMLCTFEnhancedChecksPricing");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/kyc/AMLCTFEnhancedChecksPricing.tsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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QUEsS0FBM0JBO0FBQTJCLElBQUFpQztBQUFBLGFBQUFBLElBQUEiLCJuYW1lcyI6WyJ1c2VTdGF0ZSIsIkNhcmQiLCJDYXJkQ29udGVudCIsIkNhcmRIZWFkZXIiLCJDYXJkVGl0bGUiLCJDYXJkRGVzY3JpcHRpb24iLCJCYWRnZSIsIlNoaWVsZCIsIkRvbGxhclNpZ24iLCJDaGVja0NpcmNsZSIsIkFsZXJ0Q2lyY2xlIiwiQnVpbGRpbmciLCJVc2VyIiwiRmlsZVRleHQiLCJTZWFyY2giLCJNYXBQaW4iLCJDbG9jayIsIkluZm8iLCJMb2NrIiwiVW5sb2NrIiwiQU1MQ1RGRW5oYW5jZWRDaGVja3NQcmljaW5nIiwiX3MiLCJzZWxlY3RlZENoZWNrcyIsInNldFNlbGVjdGVkQ2hlY2tzIiwiY2hlY2tzIiwiaWQiLCJuYW1lIiwiZGVzY3JpcHRpb24iLCJtYW5kYXRvcnkiLCJwcmljaW5nTW9kZWwiLCJiYXNlUHJpY2UiLCJpY29uIiwiY2F0ZWdvcnkiLCJub3RlcyIsInRvZ2dsZUNoZWNrIiwiY2hlY2tJZCIsImNoZWNrIiwiZmluZCIsImMiLCJpbmNsdWRlcyIsImZpbHRlciIsImNhbGN1bGF0ZUVzdGltYXRlZENvc3QiLCJtYW5kYXRvcnlDb3N0Iiwib3B0aW9uYWxDb3N0IiwiZmluYWxpemVkTGF0ZXJDb3VudCIsImZvckVhY2giLCJjb3N0cyIsImdldENhdGVnb3J5SWNvbiIsInRvRml4ZWQiLCJtYXAiLCJJY29uIiwiQ2F0ZWdvcnlJY29uIiwiaXNTZWxlY3RlZCIsIl9jIl0sImlnbm9yZUxpc3QiOltdLCJzb3VyY2VzIjpbIkFNTENURkVuaGFuY2VkQ2hlY2tzUHJpY2luZy50c3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0LCB7IHVzZVN0YXRlIH0gZnJvbSAncmVhY3QnO1xuaW1wb3J0IHsgQ2FyZCwgQ2FyZENvbnRlbnQsIENhcmRIZWFkZXIsIENhcmRUaXRsZSwgQ2FyZERlc2NyaXB0aW9uIH0gZnJvbSAnLi4vdWkvY2FyZCc7XG5pbXBvcnQgeyBCdXR0b24gfSBmcm9tICcuLi91aS9idXR0b24nO1xuaW1wb3J0IHsgQmFkZ2UgfSBmcm9tICcuLi91aS9iYWRnZSc7XG5pbXBvcnQge1xuICBTaGllbGQsXG4gIERvbGxhclNpZ24sXG4gIENoZWNrQ2lyY2xlLFxuICBBbGVydENpcmNsZSxcbiAgQnVpbGRpbmcsXG4gIFVzZXIsXG4gIEZpbGVUZXh0LFxuICBTZWFyY2gsXG4gIE1hcFBpbixcbiAgQ2xvY2ssXG4gIEluZm8sXG4gIExvY2ssXG4gIFVubG9ja1xufSBmcm9tICdsdWNpZGUtcmVhY3QnO1xuXG5pbnRlcmZhY2UgQ2hlY2tJdGVtIHtcbiAgaWQ6IHN0cmluZztcbiAgbmFtZTogc3RyaW5nO1xuICBkZXNjcmlwdGlvbjogc3RyaW5nO1xuICBtYW5kYXRvcnk6IGJvb2xlYW47XG4gIHByaWNpbmdNb2RlbDogJ3Blci1pbmRpdmlkdWFsJyB8ICdwZXItZW50aXR5JyB8ICdwZXItcHJvcGVydHknIHwgJ2ZpbmFsaXplZC1sYXRlcic7XG4gIGJhc2VQcmljZT86IG51bWJlcjtcbiAgaWNvbjogYW55O1xuICBjYXRlZ29yeTogJ2luZGl2aWR1YWwnIHwgJ2VudGl0eScgfCAncHJvcGVydHknO1xuICBub3Rlcz86IHN0cmluZztcbn1cblxuZXhwb3J0IGZ1bmN0aW9uIEFNTENURkVuaGFuY2VkQ2hlY2tzUHJpY2luZygpIHtcbiAgY29uc3QgW3NlbGVjdGVkQ2hlY2tzLCBzZXRTZWxlY3RlZENoZWNrc10gPSB1c2VTdGF0ZTxzdHJpbmdbXT4oW1xuICAgICdpbmRpdmlkdWFsX2lkdicsXG4gICAgJ2RpcmVjdG9yX29mZmljZXJfc2VhcmNoJ1xuICBdKTtcblxuICBjb25zdCBjaGVja3M6IENoZWNrSXRlbVtdID0gW1xuICAgIC8vIE1BTkRBVE9SWSBDSEVDS1NcbiAgICB7XG4gICAgICBpZDogJ2luZGl2aWR1YWxfaWR2JyxcbiAgICAgIG5hbWU6ICdJbmRpdmlkdWFsIElkZW50aXR5IFZlcmlmaWNhdGlvbicsXG4gICAgICBkZXNjcmlwdGlvbjogJ0VuaGFuY2VkIEFNTC9DVEYgaW5kaXZpZHVhbCB2ZXJpZmljYXRpb24gdmlhIEdyZWVuSUQvSW5mb1RyYWNrIC0gRFZTIGNlcnRpZmllZCcsXG4gICAgICBtYW5kYXRvcnk6IHRydWUsXG4gICAgICBwcmljaW5nTW9kZWw6ICdwZXItaW5kaXZpZHVhbCcsXG4gICAgICBiYXNlUHJpY2U6IDEyLjUwLFxuICAgICAgaWNvbjogVXNlcixcbiAgICAgIGNhdGVnb3J5OiAnaW5kaXZpZHVhbCcsXG4gICAgICBub3RlczogJ01BTkRBVE9SWSAtIE11c3QgYmUgcGFpZCBmb3IgZXZlcnkgaW5kaXZpZHVhbCBjbGllbnQsIGJlbmVmaWNpYWwgb3duZXIsIGRpcmVjdG9yLCBhbmQgb2ZmaWNlcidcbiAgICB9LFxuICAgIHtcbiAgICAgIGlkOiAnZGlyZWN0b3Jfb2ZmaWNlcl9zZWFyY2gnLFxuICAgICAgbmFtZTogJ0RpcmVjdG9yL09mZmljZXIgU2VhcmNoJyxcbiAgICAgIGRlc2NyaXB0aW9uOiAnQVNJQyBkaXJlY3RvciBhbmQgb2ZmaWNlciBoaXN0b3J5IGNoZWNrIGluY2x1ZGluZyBkaXNxdWFsaWZpY2F0aW9ucycsXG4gICAgICBtYW5kYXRvcnk6IHRydWUsXG4gICAgICBwcmljaW5nTW9kZWw6ICdwZXItaW5kaXZpZHVhbCcsXG4gICAgICBiYXNlUHJpY2U6IDE1LjAwLFxuICAgICAgaWNvbjogU2hpZWxkLFxuICAgICAgY2F0ZWdvcnk6ICdpbmRpdmlkdWFsJyxcbiAgICAgIG5vdGVzOiAnTUFOREFUT1JZIC0gUmVxdWlyZWQgZm9yIGFsbCBkaXJlY3RvcnMgYW5kIG9mZmljZXJzIG9mIGNvbXBhbmllcyBhbmQgdHJ1c3RzJ1xuICAgIH0sXG5cbiAgICAvLyBQRVIgRU5USVRZIENIRUNLUyAoUHJpY2UgZmluYWxpemVkIGFmdGVyIGNsaWVudC1lbnRpdHkgYXNzb2NpYXRpb24gaWRlbnRpZmllZClcbiAgICB7XG4gICAgICBpZDogJ2FzaWNfY29tcGFueV9zZWFyY2gnLFxuICAgICAgbmFtZTogJ0FTSUMgQ29tcGFueSBTZWFyY2gnLFxuICAgICAgZGVzY3JpcHRpb246ICdDdXJyZW50IGNvbXBhbnkgZXh0cmFjdCBpbmNsdWRpbmcgZGlyZWN0b3JzLCBzaGFyZWhvbGRlcnMsIGFuZCBjb21wYW55IHN0YXR1cycsXG4gICAgICBtYW5kYXRvcnk6IGZhbHNlLFxuICAgICAgcHJpY2luZ01vZGVsOiAnZmluYWxpemVkLWxhdGVyJyxcbiAgICAgIGJhc2VQcmljZTogNDUuMDAsXG4gICAgICBpY29uOiBCdWlsZGluZyxcbiAgICAgIGNhdGVnb3J5OiAnZW50aXR5JyxcbiAgICAgIG5vdGVzOiAnUGVyIGNvbXBhbnkgLSBGaW5hbCBwcmljZSBkZXRlcm1pbmVkIG9uY2UgY2xpZW50IGFzc29jaWF0aW9uIHdpdGggZW50aXR5IGlzIGNvbmZpcm1lZCdcbiAgICB9LFxuICAgIHtcbiAgICAgIGlkOiAnYXNpY19oaXN0b3JpY2FsX3NlYXJjaCcsXG4gICAgICBuYW1lOiAnQVNJQyBIaXN0b3JpY2FsIENvbXBhbnkgU2VhcmNoJyxcbiAgICAgIGRlc2NyaXB0aW9uOiAnSGlzdG9yaWNhbCBjb21wYW55IGV4dHJhY3QgaW5jbHVkaW5nIGZvcm1lciBkaXJlY3RvcnMgYW5kIHByZXZpb3VzIGFkZHJlc3NlcycsXG4gICAgICBtYW5kYXRvcnk6IGZhbHNlLFxuICAgICAgcHJpY2luZ01vZGVsOiAnZmluYWxpemVkLWxhdGVyJyxcbiAgICAgIGJhc2VQcmljZTogNjUuMDAsXG4gICAgICBpY29uOiBGaWxlVGV4dCxcbiAgICAgIGNhdGVnb3J5OiAnZW50aXR5JyxcbiAgICAgIG5vdGVzOiAnUGVyIGNvbXBhbnkgLSBFbmhhbmNlZCBjaGVjayBmb3IgaGlnaC1yaXNrIGVudGl0aWVzIG9yIGNvbXBsZXggc3RydWN0dXJlcydcbiAgICB9LFxuICAgIHtcbiAgICAgIGlkOiAndHJ1c3Rfc2VhcmNoJyxcbiAgICAgIG5hbWU6ICdUcnVzdCBEb2N1bWVudCBTZWFyY2gnLFxuICAgICAgZGVzY3JpcHRpb246ICdUcnVzdCBkZWVkIHZlcmlmaWNhdGlvbiBhbmQgdHJ1c3RlZSBpZGVudGlmaWNhdGlvbicsXG4gICAgICBtYW5kYXRvcnk6IGZhbHNlLFxuICAgICAgcHJpY2luZ01vZGVsOiAnZmluYWxpemVkLWxhdGVyJyxcbiAgICAgIGJhc2VQcmljZTogNzUuMDAsXG4gICAgICBpY29uOiBTaGllbGQsXG4gICAgICBjYXRlZ29yeTogJ2VudGl0eScsXG4gICAgICBub3RlczogJ1BlciB0cnVzdCAtIFByaWNlIGZpbmFsaXplZCBvbmNlIHRydXN0LWNsaWVudCByZWxhdGlvbnNoaXAgaXMgaWRlbnRpZmllZCdcbiAgICB9LFxuICAgIHtcbiAgICAgIGlkOiAnYWJuX2xvb2t1cCcsXG4gICAgICBuYW1lOiAnQUJOL0FDTiBWZXJpZmljYXRpb24nLFxuICAgICAgZGVzY3JpcHRpb246ICdBdXN0cmFsaWFuIEJ1c2luZXNzIE51bWJlciBhbmQgQXVzdHJhbGlhbiBDb21wYW55IE51bWJlciB2ZXJpZmljYXRpb24nLFxuICAgICAgbWFuZGF0b3J5OiBmYWxzZSxcbiAgICAgIHByaWNpbmdNb2RlbDogJ2ZpbmFsaXplZC1sYXRlcicsXG4gICAgICBiYXNlUHJpY2U6IDUuMDAsXG4gICAgICBpY29uOiBTZWFyY2gsXG4gICAgICBjYXRlZ29yeTogJ2VudGl0eScsXG4gICAgICBub3RlczogJ1BlciBlbnRpdHkgLSBJbmNsdWRlZCB3aXRoIEFTSUMgc2VhcmNoZXMsIHN0YW5kYWxvbmUgaWYgcmVxdWlyZWQnXG4gICAgfSxcbiAgICB7XG4gICAgICBpZDogJ3Bwc3Jfc2VhcmNoJyxcbiAgICAgIG5hbWU6ICdQUFNSIFNlY3VyaXR5IEludGVyZXN0IFNlYXJjaCcsXG4gICAgICBkZXNjcmlwdGlvbjogJ1BlcnNvbmFsIFByb3BlcnR5IFNlY3VyaXRpZXMgUmVnaXN0ZXIgc2VhcmNoIGZvciBzZWN1cml0eSBpbnRlcmVzdHMnLFxuICAgICAgbWFuZGF0b3J5OiBmYWxzZSxcbiAgICAgIHByaWNpbmdNb2RlbDogJ2ZpbmFsaXplZC1sYXRlcicsXG4gICAgICBiYXNlUHJpY2U6IDM1LjAwLFxuICAgICAgaWNvbjogTG9jayxcbiAgICAgIGNhdGVnb3J5OiAnZW50aXR5JyxcbiAgICAgIG5vdGVzOiAnUGVyIGVudGl0eSAtIE9wdGlvbmFsIGVuaGFuY2VkIGNoZWNrIGZvciBsZW5kaW5nIGFuZCBzZWN1cmVkIHRyYW5zYWN0aW9ucydcbiAgICB9LFxuICAgIHtcbiAgICAgIGlkOiAnbGl0aWdhdGlvbl9zZWFyY2gnLFxuICAgICAgbmFtZTogJ0xpdGlnYXRpb24gSGlzdG9yeSBTZWFyY2gnLFxuICAgICAgZGVzY3JpcHRpb246ICdGZWRlcmFsIGFuZCBTdGF0ZSBjb3VydCByZWNvcmRzIHNlYXJjaCcsXG4gICAgICBtYW5kYXRvcnk6IGZhbHNlLFxuICAgICAgcHJpY2luZ01vZGVsOiAnZmluYWxpemVkLWxhdGVyJyxcbiAgICAgIGJhc2VQcmljZTogNjUuMDAsXG4gICAgICBpY29uOiBGaWxlVGV4dCxcbiAgICAgIGNhdGVnb3J5OiAnZW50aXR5JyxcbiAgICAgIG5vdGVzOiAnUGVyIGVudGl0eSAtIEVuaGFuY2VkIGR1ZSBkaWxpZ2VuY2UgZm9yIGhpZ2gtcmlzayBjbGllbnRzJ1xuICAgIH0sXG4gICAge1xuICAgICAgaWQ6ICdiYW5rcnVwdGN5X3NlYXJjaCcsXG4gICAgICBuYW1lOiAnQmFua3J1cHRjeSAmIEluc29sdmVuY3kgU2VhcmNoJyxcbiAgICAgIGRlc2NyaXB0aW9uOiAnTlBJSSBiYW5rcnVwdGN5IGFuZCBpbnNvbHZlbmN5IHJlY29yZHMgY2hlY2snLFxuICAgICAgbWFuZGF0b3J5OiBmYWxzZSxcbiAgICAgIHByaWNpbmdNb2RlbDogJ2ZpbmFsaXplZC1sYXRlcicsXG4gICAgICBiYXNlUHJpY2U6IDI1LjAwLFxuICAgICAgaWNvbjogQWxlcnRDaXJjbGUsXG4gICAgICBjYXRlZ29yeTogJ2VudGl0eScsXG4gICAgICBub3RlczogJ1BlciBpbmRpdmlkdWFsIG9yIGVudGl0eSAtIEVuaGFuY2VkIGNoZWNrIGZvciBmaW5hbmNpYWwgcmlzayBhc3Nlc3NtZW50J1xuICAgIH0sXG5cbiAgICAvLyBUSVRMRSBTRUFSQ0hFU1xuICAgIHtcbiAgICAgIGlkOiAndGl0bGVfc2VhcmNoX2N1cnJlbnQnLFxuICAgICAgbmFtZTogJ0N1cnJlbnQgVGl0bGUgU2VhcmNoJyxcbiAgICAgIGRlc2NyaXB0aW9uOiAnQ3VycmVudCByZWdpc3RlcmVkIHByb3ByaWV0b3IgYW5kIGVuY3VtYnJhbmNlcyBzZWFyY2gnLFxuICAgICAgbWFuZGF0b3J5OiBmYWxzZSxcbiAgICAgIHByaWNpbmdNb2RlbDogJ3Blci1wcm9wZXJ0eScsXG4gICAgICBiYXNlUHJpY2U6IDQ1LjAwLFxuICAgICAgaWNvbjogTWFwUGluLFxuICAgICAgY2F0ZWdvcnk6ICdwcm9wZXJ0eScsXG4gICAgICBub3RlczogJ1BlciBwcm9wZXJ0eSB0aXRsZSAtIFJlcXVpcmVkIHdoZW4gZW50aXR5IG93bnMgcmVhbCBwcm9wZXJ0eSBvciBjbGllbnQgcHJvdmlkZXMgcHJvcGVydHkgYXMgc2VjdXJpdHknXG4gICAgfSxcbiAgICB7XG4gICAgICBpZDogJ3RpdGxlX3NlYXJjaF9oaXN0b3JpY2FsJyxcbiAgICAgIG5hbWU6ICdIaXN0b3JpY2FsIFRpdGxlIFNlYXJjaCcsXG4gICAgICBkZXNjcmlwdGlvbjogJzIwLXllYXIgaGlzdG9yaWNhbCB0aXRsZSBzZWFyY2ggaW5jbHVkaW5nIHByZXZpb3VzIG93bmVycycsXG4gICAgICBtYW5kYXRvcnk6IGZhbHNlLFxuICAgICAgcHJpY2luZ01vZGVsOiAncGVyLXByb3BlcnR5JyxcbiAgICAgIGJhc2VQcmljZTogNzUuMDAsXG4gICAgICBpY29uOiBDbG9jayxcbiAgICAgIGNhdGVnb3J5OiAncHJvcGVydHknLFxuICAgICAgbm90ZXM6ICdQZXIgcHJvcGVydHkgdGl0bGUgLSBFbmhhbmNlZCBjaGVjayBmb3IgY29tcGxleCBwcm9wZXJ0eSBvd25lcnNoaXAgb3Igc291cmNlIG9mIHdlYWx0aCB2ZXJpZmljYXRpb24nXG4gICAgfSxcbiAgICB7XG4gICAgICBpZDogJ3RpdGxlX3NlYXJjaF9kZWFsaW5nJyxcbiAgICAgIG5hbWU6ICdEZWFsaW5nIFNlYXJjaCcsXG4gICAgICBkZXNjcmlwdGlvbjogJ1NlYXJjaCBmb3IgcmVjZW50IG9yIHBlbmRpbmcgZGVhbGluZ3Mgb24gdGl0bGUnLFxuICAgICAgbWFuZGF0b3J5OiBmYWxzZSxcbiAgICAgIHByaWNpbmdNb2RlbDogJ3Blci1wcm9wZXJ0eScsXG4gICAgICBiYXNlUHJpY2U6IDM1LjAwLFxuICAgICAgaWNvbjogRmlsZVRleHQsXG4gICAgICBjYXRlZ29yeTogJ3Byb3BlcnR5JyxcbiAgICAgIG5vdGVzOiAnUGVyIHByb3BlcnR5IHRpdGxlIC0gSWRlbnRpZmllcyBwZW5kaW5nIG1vcnRnYWdlcywgY2F2ZWF0cywgb3IgdHJhbnNmZXJzJ1xuICAgIH0sXG4gICAge1xuICAgICAgaWQ6ICdwcm9wZXJ0eV92YWx1YXRpb24nLFxuICAgICAgbmFtZTogJ1Byb3BlcnR5IFZhbHVhdGlvbiBSZXBvcnQnLFxuICAgICAgZGVzY3JpcHRpb246ICdQcm9mZXNzaW9uYWwgcHJvcGVydHkgdmFsdWF0aW9uIGZvciBzZWN1cml0eSBvciBzb3VyY2Ugb2Ygd2VhbHRoJyxcbiAgICAgIG1hbmRhdG9yeTogZmFsc2UsXG4gICAgICBwcmljaW5nTW9kZWw6ICdwZXItcHJvcGVydHknLFxuICAgICAgYmFzZVByaWNlOiAyNTAuMDAsXG4gICAgICBpY29uOiBEb2xsYXJTaWduLFxuICAgICAgY2F0ZWdvcnk6ICdwcm9wZXJ0eScsXG4gICAgICBub3RlczogJ1BlciBwcm9wZXJ0eSAtIFJlcXVpcmVkIGZvciBzZWN1cmVkIGxlbmRpbmcgb3IgaGlnaC12YWx1ZSBwcm9wZXJ0eSBvd25lcnNoaXAgdmVyaWZpY2F0aW9uJ1xuICAgIH1cbiAgXTtcblxuICBjb25zdCB0b2dnbGVDaGVjayA9IChjaGVja0lkOiBzdHJpbmcpID0+IHtcbiAgICBjb25zdCBjaGVjayA9IGNoZWNrcy5maW5kKGMgPT4gYy5pZCA9PT0gY2hlY2tJZCk7XG4gICAgaWYgKGNoZWNrPy5tYW5kYXRvcnkpIHtcbiAgICAgIC8vIENhbm5vdCBkZXNlbGVjdCBtYW5kYXRvcnkgY2hlY2tzXG4gICAgICByZXR1cm47XG4gICAgfVxuXG4gICAgaWYgKHNlbGVjdGVkQ2hlY2tzLmluY2x1ZGVzKGNoZWNrSWQpKSB7XG4gICAgICBzZXRTZWxlY3RlZENoZWNrcyhzZWxlY3RlZENoZWNrcy5maWx0ZXIoaWQgPT4gaWQgIT09IGNoZWNrSWQpKTtcbiAgICB9IGVsc2Uge1xuICAgICAgc2V0U2VsZWN0ZWRDaGVja3MoWy4uLnNlbGVjdGVkQ2hlY2tzLCBjaGVja0lkXSk7XG4gICAgfVxuICB9O1xuXG4gIGNvbnN0IGNhbGN1bGF0ZUVzdGltYXRlZENvc3QgPSAoKSA9PiB7XG4gICAgbGV0IG1hbmRhdG9yeUNvc3QgPSAwO1xuICAgIGxldCBvcHRpb25hbENvc3QgPSAwO1xuICAgIGxldCBmaW5hbGl6ZWRMYXRlckNvdW50ID0gMDtcblxuICAgIHNlbGVjdGVkQ2hlY2tzLmZvckVhY2goY2hlY2tJZCA9PiB7XG4gICAgICBjb25zdCBjaGVjayA9IGNoZWNrcy5maW5kKGMgPT4gYy5pZCA9PT0gY2hlY2tJZCk7XG4gICAgICBpZiAoY2hlY2s/LmJhc2VQcmljZSkge1xuICAgICAgICBpZiAoY2hlY2subWFuZGF0b3J5KSB7XG4gICAgICAgICAgbWFuZGF0b3J5Q29zdCArPSBjaGVjay5iYXNlUHJpY2U7XG4gICAgICAgIH0gZWxzZSBpZiAoY2hlY2sucHJpY2luZ01vZGVsID09PSAnZmluYWxpemVkLWxhdGVyJykge1xuICAgICAgICAgIGZpbmFsaXplZExhdGVyQ291bnQrKztcbiAgICAgICAgfSBlbHNlIHtcbiAgICAgICAgICBvcHRpb25hbENvc3QgKz0gY2hlY2suYmFzZVByaWNlO1xuICAgICAgICB9XG4gICAgICB9XG4gICAgfSk7XG5cbiAgICByZXR1cm4geyBtYW5kYXRvcnlDb3N0LCBvcHRpb25hbENvc3QsIGZpbmFsaXplZExhdGVyQ291bnQgfTtcbiAgfTtcblxuICBjb25zdCBjb3N0cyA9IGNhbGN1bGF0ZUVzdGltYXRlZENvc3QoKTtcblxuICBjb25zdCBnZXRDYXRlZ29yeUljb24gPSAoY2F0ZWdvcnk6IHN0cmluZykgPT4ge1xuICAgIHN3aXRjaCAoY2F0ZWdvcnkpIHtcbiAgICAgIGNhc2UgJ2luZGl2aWR1YWwnOiByZXR1cm4gVXNlcjtcbiAgICAgIGNhc2UgJ2VudGl0eSc6IHJldHVybiBCdWlsZGluZztcbiAgICAgIGNhc2UgJ3Byb3BlcnR5JzogcmV0dXJuIE1hcFBpbjtcbiAgICAgIGRlZmF1bHQ6IHJldHVybiBGaWxlVGV4dDtcbiAgICB9XG4gIH07XG5cbiAgcmV0dXJuIChcbiAgICA8ZGl2IGNsYXNzTmFtZT1cInNwYWNlLXktNlwiPlxuICAgICAgey8qIEhlYWRlciAqL31cbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYmctZ3JhZGllbnQtdG8tciBmcm9tLXB1cnBsZS02MDAgdG8tcGluay02MDAgcm91bmRlZC1sZyBwLTggdGV4dC13aGl0ZVwiPlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIGdhcC00XCI+XG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJiZy13aGl0ZS8yMCBwLTQgcm91bmRlZC1mdWxsXCI+XG4gICAgICAgICAgICA8U2hpZWxkIGNsYXNzTmFtZT1cInctMTIgaC0xMlwiIC8+XG4gICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgIDxoMSBjbGFzc05hbWU9XCJ0ZXh0LTR4bCBmb250LWJvbGQgbWItMlwiPkFNTC9DVEYgRW5oYW5jZWQgQ2hlY2tzICYgUHJpY2luZzwvaDE+XG4gICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJ0ZXh0LXhsIHRleHQtcHVycGxlLTEwMFwiPlxuICAgICAgICAgICAgICBJZGVudGl0eSBWZXJpZmljYXRpb24sIERpcmVjdG9yIFNlYXJjaGVzLCBFbnRpdHkgQ2hlY2tzICYgVGl0bGUgU2VhcmNoZXNcbiAgICAgICAgICAgIDwvcD5cbiAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgPC9kaXY+XG4gICAgICA8L2Rpdj5cblxuICAgICAgey8qIFByaWNpbmcgT3ZlcnZpZXcgKi99XG4gICAgICA8ZGl2IGNsYXNzTmFtZT1cImdyaWQgZ3JpZC1jb2xzLTQgZ2FwLTRcIj5cbiAgICAgICAgPENhcmQgY2xhc3NOYW1lPVwiYm9yZGVyLTIgYm9yZGVyLXJlZC0zMDAgYmctcmVkLTUwXCI+XG4gICAgICAgICAgPENhcmRDb250ZW50IGNsYXNzTmFtZT1cInAtNlwiPlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMyBtYi0yXCI+XG4gICAgICAgICAgICAgIDxMb2NrIGNsYXNzTmFtZT1cInctNiBoLTYgdGV4dC1yZWQtNjAwXCIgLz5cbiAgICAgICAgICAgICAgPGgzIGNsYXNzTmFtZT1cImZvbnQtYm9sZCB0ZXh0LXJlZC05MDBcIj5NYW5kYXRvcnkgQ2hlY2tzPC9oMz5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC00eGwgZm9udC1ib2xkIHRleHQtcmVkLTYwMFwiPiR7Y29zdHMubWFuZGF0b3J5Q29zdC50b0ZpeGVkKDIpfTwvcD5cbiAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQtc20gdGV4dC1yZWQtNzAwIG10LTFcIj5NdXN0IGJlIHBhaWQ8L3A+XG4gICAgICAgICAgPC9DYXJkQ29udGVudD5cbiAgICAgICAgPC9DYXJkPlxuXG4gICAgICAgIDxDYXJkIGNsYXNzTmFtZT1cImJvcmRlci0yIGJvcmRlci1ibHVlLTMwMCBiZy1ibHVlLTUwXCI+XG4gICAgICAgICAgPENhcmRDb250ZW50IGNsYXNzTmFtZT1cInAtNlwiPlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMyBtYi0yXCI+XG4gICAgICAgICAgICAgIDxVbmxvY2sgY2xhc3NOYW1lPVwidy02IGgtNiB0ZXh0LWJsdWUtNjAwXCIgLz5cbiAgICAgICAgICAgICAgPGgzIGNsYXNzTmFtZT1cImZvbnQtYm9sZCB0ZXh0LWJsdWUtOTAwXCI+T3B0aW9uYWwgQ2hlY2tzPC9oMz5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC00eGwgZm9udC1ib2xkIHRleHQtYmx1ZS02MDBcIj4ke2Nvc3RzLm9wdGlvbmFsQ29zdC50b0ZpeGVkKDIpfTwvcD5cbiAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQtc20gdGV4dC1ibHVlLTcwMCBtdC0xXCI+U2VsZWN0ZWQ8L3A+XG4gICAgICAgICAgPC9DYXJkQ29udGVudD5cbiAgICAgICAgPC9DYXJkPlxuXG4gICAgICAgIDxDYXJkIGNsYXNzTmFtZT1cImJvcmRlci0yIGJvcmRlci1hbWJlci0zMDAgYmctYW1iZXItNTBcIj5cbiAgICAgICAgICA8Q2FyZENvbnRlbnQgY2xhc3NOYW1lPVwicC02XCI+XG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIGdhcC0zIG1iLTJcIj5cbiAgICAgICAgICAgICAgPENsb2NrIGNsYXNzTmFtZT1cInctNiBoLTYgdGV4dC1hbWJlci02MDBcIiAvPlxuICAgICAgICAgICAgICA8aDMgY2xhc3NOYW1lPVwiZm9udC1ib2xkIHRleHQtYW1iZXItOTAwXCI+RmluYWxpemVkIExhdGVyPC9oMz5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC00eGwgZm9udC1ib2xkIHRleHQtYW1iZXItNjAwXCI+e2Nvc3RzLmZpbmFsaXplZExhdGVyQ291bnR9PC9wPlxuICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC1zbSB0ZXh0LWFtYmVyLTcwMCBtdC0xXCI+UGVyIGVudGl0eS9wcm9wZXJ0eTwvcD5cbiAgICAgICAgICA8L0NhcmRDb250ZW50PlxuICAgICAgICA8L0NhcmQ+XG5cbiAgICAgICAgPENhcmQgY2xhc3NOYW1lPVwiYm9yZGVyLTIgYm9yZGVyLWdyZWVuLTMwMCBiZy1ncmVlbi01MFwiPlxuICAgICAgICAgIDxDYXJkQ29udGVudCBjbGFzc05hbWU9XCJwLTZcIj5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTMgbWItMlwiPlxuICAgICAgICAgICAgICA8RG9sbGFyU2lnbiBjbGFzc05hbWU9XCJ3LTYgaC02IHRleHQtZ3JlZW4tNjAwXCIgLz5cbiAgICAgICAgICAgICAgPGgzIGNsYXNzTmFtZT1cImZvbnQtYm9sZCB0ZXh0LWdyZWVuLTkwMFwiPlRvdGFsIEVzdGltYXRlPC9oMz5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC00eGwgZm9udC1ib2xkIHRleHQtZ3JlZW4tNjAwXCI+XG4gICAgICAgICAgICAgICR7KGNvc3RzLm1hbmRhdG9yeUNvc3QgKyBjb3N0cy5vcHRpb25hbENvc3QpLnRvRml4ZWQoMil9K1xuICAgICAgICAgICAgPC9wPlxuICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC1zbSB0ZXh0LWdyZWVuLTcwMCBtdC0xXCI+Q29uZmlybWVkIG5vdzwvcD5cbiAgICAgICAgICA8L0NhcmRDb250ZW50PlxuICAgICAgICA8L0NhcmQ+XG4gICAgICA8L2Rpdj5cblxuICAgICAgey8qIEltcG9ydGFudCBOb3RpY2UgKi99XG4gICAgICA8Q2FyZCBjbGFzc05hbWU9XCJib3JkZXItMiBib3JkZXItcmVkLTMwMCBiZy1yZWQtNTBcIj5cbiAgICAgICAgPENhcmRDb250ZW50IGNsYXNzTmFtZT1cInAtNlwiPlxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBnYXAtNFwiPlxuICAgICAgICAgICAgPEFsZXJ0Q2lyY2xlIGNsYXNzTmFtZT1cInctOCBoLTggdGV4dC1yZWQtNjAwIGZsZXgtc2hyaW5rLTBcIiAvPlxuICAgICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgICAgPGgzIGNsYXNzTmFtZT1cImZvbnQtYm9sZCB0ZXh0LXJlZC05MDAgdGV4dC1sZyBtYi0yXCI+UGF5bWVudCBSZXF1aXJlZCBmb3IgTWFuZGF0b3J5IENoZWNrczwvaDM+XG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwic3BhY2UteS0yIHRleHQtcmVkLTgwMFwiPlxuICAgICAgICAgICAgICAgIDxwPlxuICAgICAgICAgICAgICAgICAgPHN0cm9uZz7igKIgSW5kaXZpZHVhbCBJZGVudGl0eSBWZXJpZmljYXRpb24gKCQxMi41MCBwZXIgcGVyc29uKTwvc3Ryb25nPiAtIFJlcXVpcmVkIGZvciBFVkVSWSBpbmRpdmlkdWFsIFxuICAgICAgICAgICAgICAgICAgaW5jbHVkaW5nIGNsaWVudHMsIGJlbmVmaWNpYWwgb3duZXJzLCBkaXJlY3RvcnMsIG9mZmljZXJzLCBhbmQgYXV0aG9yaXplZCBzaWduYXRvcmllc1xuICAgICAgICAgICAgICAgIDwvcD5cbiAgICAgICAgICAgICAgICA8cD5cbiAgICAgICAgICAgICAgICAgIDxzdHJvbmc+4oCiIERpcmVjdG9yL09mZmljZXIgU2VhcmNoICgkMTUuMDAgcGVyIHBlcnNvbik8L3N0cm9uZz4gLSBSZXF1aXJlZCBmb3IgQUxMIGRpcmVjdG9ycyBhbmQgb2ZmaWNlcnMgXG4gICAgICAgICAgICAgICAgICBvZiBjb21wYW5pZXMgYW5kIHRydXN0cyB0byB2ZXJpZnkgQVNJQyBoaXN0b3J5IGFuZCBjaGVjayBmb3IgZGlzcXVhbGlmaWNhdGlvbnNcbiAgICAgICAgICAgICAgICA8L3A+XG4gICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwibXQtMyBwdC0zIGJvcmRlci10IGJvcmRlci1yZWQtMzAwXCI+XG4gICAgICAgICAgICAgICAgICBPdGhlciBjaGVja3MgYXJlIHByaWNlZCA8c3Ryb25nPnBlciBjb21wYW55LCBwZXIgdHJ1c3QsIG9yIHBlciBwcm9wZXJ0eSB0aXRsZTwvc3Ryb25nPi4gXG4gICAgICAgICAgICAgICAgICBGaW5hbCBhbW91bnRzIHdpbGwgYmUgY29uZmlybWVkIG9uY2Ugd2UgaGF2ZSBpZGVudGlmaWVkIHRoZSBjbGllbnQncyBhc3NvY2lhdGlvbiB3aXRoIHRob3NlIGVudGl0aWVzLlxuICAgICAgICAgICAgICAgIDwvcD5cbiAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgPC9DYXJkQ29udGVudD5cbiAgICAgIDwvQ2FyZD5cblxuICAgICAgey8qIE1hbmRhdG9yeSBDaGVja3MgKi99XG4gICAgICA8Q2FyZCBjbGFzc05hbWU9XCJib3JkZXItMiBib3JkZXItcmVkLTMwMFwiPlxuICAgICAgICA8Q2FyZEhlYWRlciBjbGFzc05hbWU9XCJiZy1yZWQtNTBcIj5cbiAgICAgICAgICA8Q2FyZFRpdGxlIGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIGdhcC0yIHRleHQtcmVkLTkwMFwiPlxuICAgICAgICAgICAgPExvY2sgY2xhc3NOYW1lPVwidy02IGgtNlwiIC8+XG4gICAgICAgICAgICBNYW5kYXRvcnkgUGF5bWVudCBDaGVja3NcbiAgICAgICAgICA8L0NhcmRUaXRsZT5cbiAgICAgICAgICA8Q2FyZERlc2NyaXB0aW9uIGNsYXNzTmFtZT1cInRleHQtcmVkLTcwMFwiPlxuICAgICAgICAgICAgVGhlc2UgY2hlY2tzIG11c3QgYmUgY29tcGxldGVkIGFuZCBwYWlkIGZvciBldmVyeSByZWxldmFudCBpbmRpdmlkdWFsXG4gICAgICAgICAgPC9DYXJkRGVzY3JpcHRpb24+XG4gICAgICAgIDwvQ2FyZEhlYWRlcj5cbiAgICAgICAgPENhcmRDb250ZW50IGNsYXNzTmFtZT1cInAtNiBzcGFjZS15LTRcIj5cbiAgICAgICAgICB7Y2hlY2tzLmZpbHRlcihjID0+IGMubWFuZGF0b3J5KS5tYXAoY2hlY2sgPT4ge1xuICAgICAgICAgICAgY29uc3QgSWNvbiA9IGNoZWNrLmljb247XG4gICAgICAgICAgICBjb25zdCBDYXRlZ29yeUljb24gPSBnZXRDYXRlZ29yeUljb24oY2hlY2suY2F0ZWdvcnkpO1xuICAgICAgICAgICAgY29uc3QgaXNTZWxlY3RlZCA9IHNlbGVjdGVkQ2hlY2tzLmluY2x1ZGVzKGNoZWNrLmlkKTtcblxuICAgICAgICAgICAgcmV0dXJuIChcbiAgICAgICAgICAgICAgPGRpdlxuICAgICAgICAgICAgICAgIGtleT17Y2hlY2suaWR9XG4gICAgICAgICAgICAgICAgY2xhc3NOYW1lPVwiYm9yZGVyLTIgYm9yZGVyLXJlZC0zMDAgYmctcmVkLTUwIHJvdW5kZWQtbGcgcC02IGN1cnNvci1ub3QtYWxsb3dlZFwiXG4gICAgICAgICAgICAgID5cbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXggaXRlbXMtc3RhcnQganVzdGlmeS1iZXR3ZWVuIG1iLTNcIj5cbiAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1zdGFydCBnYXAtNCBmbGV4LTFcIj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJiZy1yZWQtNjAwIHAtMyByb3VuZGVkLWxnXCI+XG4gICAgICAgICAgICAgICAgICAgICAgPEljb24gY2xhc3NOYW1lPVwidy02IGgtNiB0ZXh0LXdoaXRlXCIgLz5cbiAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleC0xXCI+XG4gICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMyBtYi0yXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICA8aDMgY2xhc3NOYW1lPVwidGV4dC1sZyBmb250LWJvbGQgdGV4dC1yZWQtOTAwXCI+e2NoZWNrLm5hbWV9PC9oMz5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxCYWRnZSBjbGFzc05hbWU9XCJiZy1yZWQtNjAwIHRleHQtd2hpdGVcIj5NQU5EQVRPUlk8L0JhZGdlPlxuICAgICAgICAgICAgICAgICAgICAgICAgPEJhZGdlIHZhcmlhbnQ9XCJvdXRsaW5lXCIgY2xhc3NOYW1lPVwiYm9yZGVyLXJlZC00MDAgdGV4dC1yZWQtNzAwXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICAgIDxDYXRlZ29yeUljb24gY2xhc3NOYW1lPVwidy0zIGgtMyBtci0xXCIgLz5cbiAgICAgICAgICAgICAgICAgICAgICAgICAge2NoZWNrLmNhdGVnb3J5fVxuICAgICAgICAgICAgICAgICAgICAgICAgPC9CYWRnZT5cbiAgICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJ0ZXh0LWdyYXktNzAwIG1iLTNcIj57Y2hlY2suZGVzY3JpcHRpb259PC9wPlxuICAgICAgICAgICAgICAgICAgICAgIHtjaGVjay5ub3RlcyAmJiAoXG4gICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImJnLXdoaXRlIGJvcmRlciBib3JkZXItcmVkLTIwMCByb3VuZGVkIHAtMyBtdC0yXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBnYXAtMlwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxJbmZvIGNsYXNzTmFtZT1cInctNCBoLTQgdGV4dC1yZWQtNjAwIGZsZXgtc2hyaW5rLTAgbXQtMC41XCIgLz5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJ0ZXh0LXNtIHRleHQtcmVkLTgwMFwiPntjaGVjay5ub3Rlc308L3A+XG4gICAgICAgICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgICAgKX1cbiAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC1yaWdodCBtbC00XCI+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC0yeGwgZm9udC1ib2xkIHRleHQtcmVkLTYwMCBtYi0xXCI+XG4gICAgICAgICAgICAgICAgICAgICAgJHtjaGVjay5iYXNlUHJpY2U/LnRvRml4ZWQoMil9XG4gICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQtc20gdGV4dC1yZWQtNzAwIGZvbnQtc2VtaWJvbGRcIj5cbiAgICAgICAgICAgICAgICAgICAgICB7Y2hlY2sucHJpY2luZ01vZGVsID09PSAncGVyLWluZGl2aWR1YWwnICYmICdwZXIgcGVyc29uJ31cbiAgICAgICAgICAgICAgICAgICAgICB7Y2hlY2sucHJpY2luZ01vZGVsID09PSAncGVyLWVudGl0eScgJiYgJ3BlciBlbnRpdHknfVxuICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJtdC0zXCI+XG4gICAgICAgICAgICAgICAgICAgICAgPExvY2sgY2xhc3NOYW1lPVwidy02IGgtNiB0ZXh0LXJlZC02MDBcIiAvPlxuICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICk7XG4gICAgICAgICAgfSl9XG4gICAgICAgIDwvQ2FyZENvbnRlbnQ+XG4gICAgICA8L0NhcmQ+XG5cbiAgICAgIHsvKiBFbnRpdHkgQ2hlY2tzIC0gRmluYWxpemVkIExhdGVyICovfVxuICAgICAgPENhcmQgY2xhc3NOYW1lPVwiYm9yZGVyLTIgYm9yZGVyLWFtYmVyLTMwMFwiPlxuICAgICAgICA8Q2FyZEhlYWRlciBjbGFzc05hbWU9XCJiZy1hbWJlci01MFwiPlxuICAgICAgICAgIDxDYXJkVGl0bGUgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTIgdGV4dC1hbWJlci05MDBcIj5cbiAgICAgICAgICAgIDxCdWlsZGluZyBjbGFzc05hbWU9XCJ3LTYgaC02XCIgLz5cbiAgICAgICAgICAgIEVudGl0eSBDaGVja3MgLSBQZXIgQ29tcGFueS9UcnVzdFxuICAgICAgICAgIDwvQ2FyZFRpdGxlPlxuICAgICAgICAgIDxDYXJkRGVzY3JpcHRpb24gY2xhc3NOYW1lPVwidGV4dC1hbWJlci03MDBcIj5cbiAgICAgICAgICAgIEZpbmFsIHByaWNpbmcgZGV0ZXJtaW5lZCBvbmNlIGNsaWVudCBhc3NvY2lhdGlvbiB3aXRoIGVudGl0eSBpcyBpZGVudGlmaWVkXG4gICAgICAgICAgPC9DYXJkRGVzY3JpcHRpb24+XG4gICAgICAgIDwvQ2FyZEhlYWRlcj5cbiAgICAgICAgPENhcmRDb250ZW50IGNsYXNzTmFtZT1cInAtNiBzcGFjZS15LTRcIj5cbiAgICAgICAgICB7Y2hlY2tzLmZpbHRlcihjID0+ICFjLm1hbmRhdG9yeSAmJiBjLmNhdGVnb3J5ID09PSAnZW50aXR5JykubWFwKGNoZWNrID0+IHtcbiAgICAgICAgICAgIGNvbnN0IEljb24gPSBjaGVjay5pY29uO1xuICAgICAgICAgICAgY29uc3QgaXNTZWxlY3RlZCA9IHNlbGVjdGVkQ2hlY2tzLmluY2x1ZGVzKGNoZWNrLmlkKTtcblxuICAgICAgICAgICAgcmV0dXJuIChcbiAgICAgICAgICAgICAgPGRpdlxuICAgICAgICAgICAgICAgIGtleT17Y2hlY2suaWR9XG4gICAgICAgICAgICAgICAgb25DbGljaz17KCkgPT4gdG9nZ2xlQ2hlY2soY2hlY2suaWQpfVxuICAgICAgICAgICAgICAgIGNsYXNzTmFtZT17YGJvcmRlci0yIHJvdW5kZWQtbGcgcC02IGN1cnNvci1wb2ludGVyIHRyYW5zaXRpb24tYWxsICR7XG4gICAgICAgICAgICAgICAgICBpc1NlbGVjdGVkXG4gICAgICAgICAgICAgICAgICAgID8gJ2JvcmRlci1hbWJlci01MDAgYmctYW1iZXItNTAnXG4gICAgICAgICAgICAgICAgICAgIDogJ2JvcmRlci1hbWJlci0yMDAgYmctd2hpdGUgaG92ZXI6Ym9yZGVyLWFtYmVyLTQwMCBob3ZlcjpiZy1hbWJlci01MCdcbiAgICAgICAgICAgICAgICB9YH1cbiAgICAgICAgICAgICAgPlxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1zdGFydCBqdXN0aWZ5LWJldHdlZW4gbWItM1wiPlxuICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLXN0YXJ0IGdhcC00IGZsZXgtMVwiPlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT17YHAtMyByb3VuZGVkLWxnICR7XG4gICAgICAgICAgICAgICAgICAgICAgaXNTZWxlY3RlZCA/ICdiZy1hbWJlci02MDAnIDogJ2JnLWFtYmVyLTIwMCdcbiAgICAgICAgICAgICAgICAgICAgfWB9PlxuICAgICAgICAgICAgICAgICAgICAgIDxJY29uIGNsYXNzTmFtZT17YHctNiBoLTYgJHtpc1NlbGVjdGVkID8gJ3RleHQtd2hpdGUnIDogJ3RleHQtYW1iZXItNzAwJ31gfSAvPlxuICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4LTFcIj5cbiAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIGdhcC0zIG1iLTJcIj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxoMyBjbGFzc05hbWU9XCJ0ZXh0LWxnIGZvbnQtYm9sZCB0ZXh0LWdyYXktOTAwXCI+e2NoZWNrLm5hbWV9PC9oMz5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxCYWRnZSB2YXJpYW50PVwib3V0bGluZVwiIGNsYXNzTmFtZT1cImJvcmRlci1hbWJlci00MDAgdGV4dC1hbWJlci03MDBcIj5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgT3B0aW9uYWxcbiAgICAgICAgICAgICAgICAgICAgICAgIDwvQmFkZ2U+XG4gICAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC1ncmF5LTcwMCBtYi0zXCI+e2NoZWNrLmRlc2NyaXB0aW9ufTwvcD5cbiAgICAgICAgICAgICAgICAgICAgICB7Y2hlY2subm90ZXMgJiYgKFxuICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJiZy13aGl0ZSBib3JkZXIgYm9yZGVyLWFtYmVyLTIwMCByb3VuZGVkIHAtMyBtdC0yXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBnYXAtMlwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxJbmZvIGNsYXNzTmFtZT1cInctNCBoLTQgdGV4dC1hbWJlci02MDAgZmxleC1zaHJpbmstMCBtdC0wLjVcIiAvPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQtc20gdGV4dC1hbWJlci04MDBcIj57Y2hlY2subm90ZXN9PC9wPlxuICAgICAgICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICAgICl9XG4gICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQtcmlnaHQgbWwtNFwiPlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQtMnhsIGZvbnQtYm9sZCB0ZXh0LWFtYmVyLTYwMCBtYi0xXCI+XG4gICAgICAgICAgICAgICAgICAgICAgJHtjaGVjay5iYXNlUHJpY2U/LnRvRml4ZWQoMil9XG4gICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQtc20gdGV4dC1hbWJlci03MDAgZm9udC1zZW1pYm9sZFwiPnBlciBlbnRpdHk8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJtdC0zXCI+XG4gICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9e2B3LTYgaC02IHJvdW5kZWQgYm9yZGVyLTIgZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1jZW50ZXIgJHtcbiAgICAgICAgICAgICAgICAgICAgICAgIGlzU2VsZWN0ZWRcbiAgICAgICAgICAgICAgICAgICAgICAgICAgPyAnYmctYW1iZXItNjAwIGJvcmRlci1hbWJlci02MDAnXG4gICAgICAgICAgICAgICAgICAgICAgICAgIDogJ2JvcmRlci1hbWJlci00MDAnXG4gICAgICAgICAgICAgICAgICAgICAgfWB9PlxuICAgICAgICAgICAgICAgICAgICAgICAge2lzU2VsZWN0ZWQgJiYgPENoZWNrQ2lyY2xlIGNsYXNzTmFtZT1cInctNSBoLTUgdGV4dC13aGl0ZVwiIC8+fVxuICAgICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICk7XG4gICAgICAgICAgfSl9XG4gICAgICAgIDwvQ2FyZENvbnRlbnQ+XG4gICAgICA8L0NhcmQ+XG5cbiAgICAgIHsvKiBUaXRsZSBTZWFyY2hlcyAqL31cbiAgICAgIDxDYXJkIGNsYXNzTmFtZT1cImJvcmRlci0yIGJvcmRlci1ibHVlLTMwMFwiPlxuICAgICAgICA8Q2FyZEhlYWRlciBjbGFzc05hbWU9XCJiZy1ibHVlLTUwXCI+XG4gICAgICAgICAgPENhcmRUaXRsZSBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMiB0ZXh0LWJsdWUtOTAwXCI+XG4gICAgICAgICAgICA8TWFwUGluIGNsYXNzTmFtZT1cInctNiBoLTZcIiAvPlxuICAgICAgICAgICAgVGl0bGUgU2VhcmNoZXMgLSBQZXIgUHJvcGVydHlcbiAgICAgICAgICA8L0NhcmRUaXRsZT5cbiAgICAgICAgICA8Q2FyZERlc2NyaXB0aW9uIGNsYXNzTmFtZT1cInRleHQtYmx1ZS03MDBcIj5cbiAgICAgICAgICAgIFByb3BlcnR5IHRpdGxlIHNlYXJjaGVzIHdoZW4gZW50aXRpZXMgb3duIHJlYWwgcHJvcGVydHkgb3IgcHJvdmlkZSBwcm9wZXJ0eSBhcyBzZWN1cml0eVxuICAgICAgICAgIDwvQ2FyZERlc2NyaXB0aW9uPlxuICAgICAgICA8L0NhcmRIZWFkZXI+XG4gICAgICAgIDxDYXJkQ29udGVudCBjbGFzc05hbWU9XCJwLTYgc3BhY2UteS00XCI+XG4gICAgICAgICAge2NoZWNrcy5maWx0ZXIoYyA9PiBjLmNhdGVnb3J5ID09PSAncHJvcGVydHknKS5tYXAoY2hlY2sgPT4ge1xuICAgICAgICAgICAgY29uc3QgSWNvbiA9IGNoZWNrLmljb247XG4gICAgICAgICAgICBjb25zdCBpc1NlbGVjdGVkID0gc2VsZWN0ZWRDaGVja3MuaW5jbHVkZXMoY2hlY2suaWQpO1xuXG4gICAgICAgICAgICByZXR1cm4gKFxuICAgICAgICAgICAgICA8ZGl2XG4gICAgICAgICAgICAgICAga2V5PXtjaGVjay5pZH1cbiAgICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiB0b2dnbGVDaGVjayhjaGVjay5pZCl9XG4gICAgICAgICAgICAgICAgY2xhc3NOYW1lPXtgYm9yZGVyLTIgcm91bmRlZC1sZyBwLTYgY3Vyc29yLXBvaW50ZXIgdHJhbnNpdGlvbi1hbGwgJHtcbiAgICAgICAgICAgICAgICAgIGlzU2VsZWN0ZWRcbiAgICAgICAgICAgICAgICAgICAgPyAnYm9yZGVyLWJsdWUtNTAwIGJnLWJsdWUtNTAnXG4gICAgICAgICAgICAgICAgICAgIDogJ2JvcmRlci1ibHVlLTIwMCBiZy13aGl0ZSBob3Zlcjpib3JkZXItYmx1ZS00MDAgaG92ZXI6YmctYmx1ZS01MCdcbiAgICAgICAgICAgICAgICB9YH1cbiAgICAgICAgICAgICAgPlxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1zdGFydCBqdXN0aWZ5LWJldHdlZW4gbWItM1wiPlxuICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLXN0YXJ0IGdhcC00IGZsZXgtMVwiPlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT17YHAtMyByb3VuZGVkLWxnICR7XG4gICAgICAgICAgICAgICAgICAgICAgaXNTZWxlY3RlZCA/ICdiZy1ibHVlLTYwMCcgOiAnYmctYmx1ZS0yMDAnXG4gICAgICAgICAgICAgICAgICAgIH1gfT5cbiAgICAgICAgICAgICAgICAgICAgICA8SWNvbiBjbGFzc05hbWU9e2B3LTYgaC02ICR7aXNTZWxlY3RlZCA/ICd0ZXh0LXdoaXRlJyA6ICd0ZXh0LWJsdWUtNzAwJ31gfSAvPlxuICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4LTFcIj5cbiAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIGdhcC0zIG1iLTJcIj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxoMyBjbGFzc05hbWU9XCJ0ZXh0LWxnIGZvbnQtYm9sZCB0ZXh0LWdyYXktOTAwXCI+e2NoZWNrLm5hbWV9PC9oMz5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxCYWRnZSB2YXJpYW50PVwib3V0bGluZVwiIGNsYXNzTmFtZT1cImJvcmRlci1ibHVlLTQwMCB0ZXh0LWJsdWUtNzAwXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICAgIE9wdGlvbmFsXG4gICAgICAgICAgICAgICAgICAgICAgICA8L0JhZGdlPlxuICAgICAgICAgICAgICAgICAgICAgICAgPEJhZGdlIGNsYXNzTmFtZT1cImJnLWJsdWUtNjAwIHRleHQtd2hpdGVcIj5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgPE1hcFBpbiBjbGFzc05hbWU9XCJ3LTMgaC0zIG1yLTFcIiAvPlxuICAgICAgICAgICAgICAgICAgICAgICAgICBQcm9wZXJ0eVxuICAgICAgICAgICAgICAgICAgICAgICAgPC9CYWRnZT5cbiAgICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJ0ZXh0LWdyYXktNzAwIG1iLTNcIj57Y2hlY2suZGVzY3JpcHRpb259PC9wPlxuICAgICAgICAgICAgICAgICAgICAgIHtjaGVjay5ub3RlcyAmJiAoXG4gICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImJnLXdoaXRlIGJvcmRlciBib3JkZXItYmx1ZS0yMDAgcm91bmRlZCBwLTMgbXQtMlwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXggZ2FwLTJcIj5cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8SW5mbyBjbGFzc05hbWU9XCJ3LTQgaC00IHRleHQtYmx1ZS02MDAgZmxleC1zaHJpbmstMCBtdC0wLjVcIiAvPlxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQtc20gdGV4dC1ibHVlLTgwMFwiPntjaGVjay5ub3Rlc308L3A+XG4gICAgICAgICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgICAgKX1cbiAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC1yaWdodCBtbC00XCI+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC0yeGwgZm9udC1ib2xkIHRleHQtYmx1ZS02MDAgbWItMVwiPlxuICAgICAgICAgICAgICAgICAgICAgICR7Y2hlY2suYmFzZVByaWNlPy50b0ZpeGVkKDIpfVxuICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LXNtIHRleHQtYmx1ZS03MDAgZm9udC1zZW1pYm9sZFwiPnBlciBwcm9wZXJ0eTwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cIm10LTNcIj5cbiAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT17YHctNiBoLTYgcm91bmRlZCBib3JkZXItMiBmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWNlbnRlciAke1xuICAgICAgICAgICAgICAgICAgICAgICAgaXNTZWxlY3RlZFxuICAgICAgICAgICAgICAgICAgICAgICAgICA/ICdiZy1ibHVlLTYwMCBib3JkZXItYmx1ZS02MDAnXG4gICAgICAgICAgICAgICAgICAgICAgICAgIDogJ2JvcmRlci1ibHVlLTQwMCdcbiAgICAgICAgICAgICAgICAgICAgICB9YH0+XG4gICAgICAgICAgICAgICAgICAgICAgICB7aXNTZWxlY3RlZCAmJiA8Q2hlY2tDaXJjbGUgY2xhc3NOYW1lPVwidy01IGgtNSB0ZXh0LXdoaXRlXCIgLz59XG4gICAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgKTtcbiAgICAgICAgICB9KX1cbiAgICAgICAgPC9DYXJkQ29udGVudD5cbiAgICAgIDwvQ2FyZD5cblxuICAgICAgey8qIFByaWNpbmcgU3VtbWFyeSAqL31cbiAgICAgIDxDYXJkIGNsYXNzTmFtZT1cImJvcmRlci0yIGJvcmRlci1ncmVlbi0zMDAgYmctZ3JlZW4tNTBcIj5cbiAgICAgICAgPENhcmRIZWFkZXI+XG4gICAgICAgICAgPENhcmRUaXRsZSBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMiB0ZXh0LWdyZWVuLTkwMFwiPlxuICAgICAgICAgICAgPERvbGxhclNpZ24gY2xhc3NOYW1lPVwidy02IGgtNlwiIC8+XG4gICAgICAgICAgICBQcmljaW5nIFN1bW1hcnlcbiAgICAgICAgICA8L0NhcmRUaXRsZT5cbiAgICAgICAgPC9DYXJkSGVhZGVyPlxuICAgICAgICA8Q2FyZENvbnRlbnQgY2xhc3NOYW1lPVwicC02XCI+XG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJzcGFjZS15LTRcIj5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBqdXN0aWZ5LWJldHdlZW4gaXRlbXMtY2VudGVyIHAtNCBiZy1yZWQtMTAwIHJvdW5kZWQtbGcgYm9yZGVyLTIgYm9yZGVyLXJlZC0zMDBcIj5cbiAgICAgICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJmb250LWJvbGQgdGV4dC1yZWQtOTAwXCI+TWFuZGF0b3J5IENoZWNrcyAoTXVzdCBQYXkpPC9wPlxuICAgICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQtc20gdGV4dC1yZWQtNzAwXCI+SW5kaXZpZHVhbCBJRFYgKyBEaXJlY3Rvci9PZmZpY2VyIFNlYXJjaDwvcD5cbiAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC0yeGwgZm9udC1ib2xkIHRleHQtcmVkLTYwMFwiPiR7Y29zdHMubWFuZGF0b3J5Q29zdC50b0ZpeGVkKDIpfTwvZGl2PlxuICAgICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBqdXN0aWZ5LWJldHdlZW4gaXRlbXMtY2VudGVyIHAtNCBiZy1ibHVlLTEwMCByb3VuZGVkLWxnIGJvcmRlci0yIGJvcmRlci1ibHVlLTMwMFwiPlxuICAgICAgICAgICAgICA8ZGl2PlxuICAgICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cImZvbnQtYm9sZCB0ZXh0LWJsdWUtOTAwXCI+T3B0aW9uYWwgQ2hlY2tzIChTZWxlY3RlZCk8L3A+XG4gICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC1zbSB0ZXh0LWJsdWUtNzAwXCI+UHJlLXNlbGVjdGVkIGVudGl0eSBhbmQgcHJvcGVydHkgY2hlY2tzPC9wPlxuICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LTJ4bCBmb250LWJvbGQgdGV4dC1ibHVlLTYwMFwiPiR7Y29zdHMub3B0aW9uYWxDb3N0LnRvRml4ZWQoMil9PC9kaXY+XG4gICAgICAgICAgICA8L2Rpdj5cblxuICAgICAgICAgICAge2Nvc3RzLmZpbmFsaXplZExhdGVyQ291bnQgPiAwICYmIChcbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGp1c3RpZnktYmV0d2VlbiBpdGVtcy1jZW50ZXIgcC00IGJnLWFtYmVyLTEwMCByb3VuZGVkLWxnIGJvcmRlci0yIGJvcmRlci1hbWJlci0zMDBcIj5cbiAgICAgICAgICAgICAgICA8ZGl2PlxuICAgICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwiZm9udC1ib2xkIHRleHQtYW1iZXItOTAwXCI+RW50aXR5L1Byb3BlcnR5IENoZWNrcyAoRmluYWxpemVkIExhdGVyKTwvcD5cbiAgICAgICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQtc20gdGV4dC1hbWJlci03MDBcIj5cbiAgICAgICAgICAgICAgICAgICAge2Nvc3RzLmZpbmFsaXplZExhdGVyQ291bnR9IGNoZWNrcyAtIFByaWNlIGNvbmZpcm1lZCBhZnRlciBlbnRpdHkgaWRlbnRpZmljYXRpb25cbiAgICAgICAgICAgICAgICAgIDwvcD5cbiAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQtMnhsIGZvbnQtYm9sZCB0ZXh0LWFtYmVyLTYwMFwiPlRCRDwvZGl2PlxuICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICl9XG5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBqdXN0aWZ5LWJldHdlZW4gaXRlbXMtY2VudGVyIHAtNCBiZy1ncmVlbi0xMDAgcm91bmRlZC1sZyBib3JkZXItMiBib3JkZXItZ3JlZW4tNDAwXCI+XG4gICAgICAgICAgICAgIDxkaXY+XG4gICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwiZm9udC1ib2xkIHRleHQtZ3JlZW4tOTAwIHRleHQteGxcIj5Ub3RhbCBDb25maXJtZWQgTm93PC9wPlxuICAgICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQtc20gdGV4dC1ncmVlbi03MDBcIj5NYW5kYXRvcnkgKyBQcmUtc2VsZWN0ZWQgb3B0aW9uYWwgY2hlY2tzPC9wPlxuICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LTN4bCBmb250LWJvbGQgdGV4dC1ncmVlbi02MDBcIj5cbiAgICAgICAgICAgICAgICAkeyhjb3N0cy5tYW5kYXRvcnlDb3N0ICsgY29zdHMub3B0aW9uYWxDb3N0KS50b0ZpeGVkKDIpfVxuICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJtdC02IHAtNCBiZy13aGl0ZSBib3JkZXItMiBib3JkZXItZ3JheS0zMDAgcm91bmRlZC1sZ1wiPlxuICAgICAgICAgICAgPGg0IGNsYXNzTmFtZT1cImZvbnQtYm9sZCB0ZXh0LWdyYXktOTAwIG1iLTNcIj5QcmljaW5nIE5vdGVzOjwvaDQ+XG4gICAgICAgICAgICA8dWwgY2xhc3NOYW1lPVwic3BhY2UteS0yIHRleHQtc20gdGV4dC1ncmF5LTcwMFwiPlxuICAgICAgICAgICAgICA8bGkgY2xhc3NOYW1lPVwiZmxleCBnYXAtMlwiPlxuICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRleHQtcmVkLTYwMFwiPuKAojwvc3Bhbj5cbiAgICAgICAgICAgICAgICA8c3Bhbj48c3Ryb25nPk1hbmRhdG9yeSBjaGVja3MgKCQyNy41MC9wZXJzb24pPC9zdHJvbmc+IG11c3QgYmUgcGFpZCBmb3IgZWFjaCBpbmRpdmlkdWFsIChjbGllbnQsIGJlbmVmaWNpYWwgb3duZXIsIGRpcmVjdG9yLCBvZmZpY2VyKTwvc3Bhbj5cbiAgICAgICAgICAgICAgPC9saT5cbiAgICAgICAgICAgICAgPGxpIGNsYXNzTmFtZT1cImZsZXggZ2FwLTJcIj5cbiAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJ0ZXh0LWFtYmVyLTYwMFwiPuKAojwvc3Bhbj5cbiAgICAgICAgICAgICAgICA8c3Bhbj48c3Ryb25nPkVudGl0eSBjaGVja3M8L3N0cm9uZz4gYXJlIHByaWNlZCBwZXIgY29tcGFueSBvciB0cnVzdC4gRmluYWwgYW1vdW50IGRldGVybWluZWQgb25jZSBjbGllbnQncyBhc3NvY2lhdGlvbiB3aXRoIGVudGl0eSBpcyBjb25maXJtZWQ8L3NwYW4+XG4gICAgICAgICAgICAgIDwvbGk+XG4gICAgICAgICAgICAgIDxsaSBjbGFzc05hbWU9XCJmbGV4IGdhcC0yXCI+XG4gICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwidGV4dC1ibHVlLTYwMFwiPuKAojwvc3Bhbj5cbiAgICAgICAgICAgICAgICA8c3Bhbj48c3Ryb25nPlRpdGxlIHNlYXJjaGVzPC9zdHJvbmc+IGFyZSBwcmljZWQgcGVyIHByb3BlcnR5LiBSZXF1aXJlZCB3aGVuIGVudGl0eSBvd25zIHJlYWwgcHJvcGVydHkgb3IgcHJvdmlkZXMgaXQgYXMgc2VjdXJpdHk8L3NwYW4+XG4gICAgICAgICAgICAgIDwvbGk+XG4gICAgICAgICAgICAgIDxsaSBjbGFzc05hbWU9XCJmbGV4IGdhcC0yXCI+XG4gICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwidGV4dC1ncmVlbi02MDBcIj7igKI8L3NwYW4+XG4gICAgICAgICAgICAgICAgPHNwYW4+QWxsIHByaWNlcyBhcmUgaW4gQVVEIGFuZCBleGNsdWRlIEdTVDwvc3Bhbj5cbiAgICAgICAgICAgICAgPC9saT5cbiAgICAgICAgICAgIDwvdWw+XG4gICAgICAgICAgPC9kaXY+XG4gICAgICAgIDwvQ2FyZENvbnRlbnQ+XG4gICAgICA8L0NhcmQ+XG4gICAgPC9kaXY+XG4gICk7XG59XG4iXSwiZmlsZSI6IkM6L1VzZXJzL0FuZHJldyBOYWdsZS9EZXNrdG9wL0dyb3dreWMtbWFpbi9Hcm93a3ljLW1haW4vc3JjL2FwcC9jb21wb25lbnRzL2t5Yy9BTUxDVEZFbmhhbmNlZENoZWNrc1ByaWNpbmcudHN4In0=

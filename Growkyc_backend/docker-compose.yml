@@ -1,0 +1,116 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: kyc_postgres
+    environment:
+      POSTGRES_USER: kyc_user
+      POSTGRES_PASSWORD: kyc_password_secure
+      POSTGRES_DB: kyc_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kyc_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - kyc_network
+
+  # KYC Backend API
+  kyc_api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kyc_api
+    environment:
+      DATABASE_URL: postgresql://kyc_user:kyc_password_secure@postgres:5432/kyc_db
+      SECRET_KEY: your-secret-key-change-in-production
+      JWT_ALGORITHM: HS256
+      ACCESS_TOKEN_EXPIRE_MINUTES: 30
+      ENV: production
+      LOG_LEVEL: info
+      HOST: 0.0.0.0
+      PORT: 8000
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/0
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - kyc_network
+    restart: unless-stopped
+    command: gunicorn -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000 main:app
+
+  # Redis Broker
+  redis:
+    image: redis:7-alpine
+    container_name: kyc_redis
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - kyc_network
+    restart: unless-stopped
+
+  # Celery Worker
+  celery_worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kyc_celery_worker
+    environment:
+      DATABASE_URL: postgresql://kyc_user:kyc_password_secure@postgres:5432/kyc_db
+      SECRET_KEY: your-secret-key-change-in-production
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/0
+      LOG_LEVEL: info
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - kyc_network
+    restart: unless-stopped
+    command: celery -A core.celery_app.celery_app worker --loglevel=info
+
+  # Celery Beat (Scheduler)
+  celery_beat:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kyc_celery_beat
+    environment:
+      DATABASE_URL: postgresql://kyc_user:kyc_password_secure@postgres:5432/kyc_db
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/0
+      LOG_LEVEL: info
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - kyc_network
+    restart: unless-stopped
+    command: celery -A core.celery_app.celery_app beat --loglevel=info
+
+volumes:
+  postgres_data:
+
+networks:
+  kyc_network:
+    driver: bridge

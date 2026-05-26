@@ -1,0 +1,1 @@
+export type ReportStatus = 'queued' | 'processing' | 'ready' | 'failed' | 'cancelled';

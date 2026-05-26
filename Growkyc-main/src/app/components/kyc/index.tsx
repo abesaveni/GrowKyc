@@ -1,0 +1,1 @@
+export { ClientKYCDashboard } from './ClientKYCDashboard';

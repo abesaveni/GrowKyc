@@ -1,0 +1,318 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/@fs/C:\\Users\\Andrew Nagle\\Desktop\\Growkyc-main\\Growkyc-main\\src\\app\\components\\case\\RPDataOverrideModal.tsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=15066356"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+import { Card, CardContent, CardHeader, CardTitle } from "/src/app/components/ui/card.tsx";
+import { Button } from "/src/app/components/ui/button.tsx";
+import { Input } from "/src/app/components/ui/input.tsx";
+import { Label } from "/src/app/components/ui/label.tsx";
+import { Textarea } from "/src/app/components/ui/textarea.tsx";
+import { X, Upload, AlertCircle, CheckCircle } from "/node_modules/.vite/deps/lucide-react.js?v=15066356";
+export function RPDataOverrideModal({
+  isOpen,
+  onClose,
+  onSave,
+  formData,
+  onInputChange
+}) {
+  if (!isOpen) return null;
+  return /* @__PURE__ */ jsxDEV("div", { className: "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4", children: /* @__PURE__ */ jsxDEV(Card, { className: "w-full max-w-2xl max-h-[90vh] overflow-y-auto", children: [
+    /* @__PURE__ */ jsxDEV(CardHeader, { className: "flex flex-row items-center justify-between border-b", children: [
+      /* @__PURE__ */ jsxDEV(CardTitle, { className: "text-xl font-bold", children: "Override RP Data Valuation" }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+        lineNumber: 49,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV(
+        "button",
+        {
+          onClick: onClose,
+          className: "p-2 hover:bg-gray-100 rounded-lg transition",
+          children: /* @__PURE__ */ jsxDEV(X, { className: "w-5 h-5" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+            lineNumber: 54,
+            columnNumber: 13
+          }, this)
+        },
+        void 0,
+        false,
+        {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+          lineNumber: 50,
+          columnNumber: 11
+        },
+        this
+      )
+    ] }, void 0, true, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+      lineNumber: 48,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ jsxDEV(CardContent, { className: "p-6 space-y-6", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "p-4 bg-amber-50 border border-amber-200 rounded-lg flex items-start gap-3", children: [
+        /* @__PURE__ */ jsxDEV(AlertCircle, { className: "w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+          lineNumber: 59,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { children: [
+          /* @__PURE__ */ jsxDEV("p", { className: "text-sm font-semibold text-amber-900", children: "Override Warning" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+            lineNumber: 61,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("p", { className: "text-xs text-amber-700 mt-1", children: "Overriding RP Data valuation requires justification and will be logged for audit purposes. This may trigger additional compliance requirements." }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+            lineNumber: 62,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+          lineNumber: 60,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+        lineNumber: 58,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { children: [
+        /* @__PURE__ */ jsxDEV(Label, { htmlFor: "rpDataAvmMid", children: "RP Data AVM Estimate (Mid)" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+          lineNumber: 70,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(
+          Input,
+          {
+            id: "rpDataAvmMid",
+            value: `A$${parseFloat(formData.rpDataAvmMid || "0").toLocaleString()}`,
+            disabled: true,
+            className: "bg-gray-100"
+          },
+          void 0,
+          false,
+          {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+            lineNumber: 71,
+            columnNumber: 13
+          },
+          this
+        )
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+        lineNumber: 69,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { children: [
+        /* @__PURE__ */ jsxDEV(Label, { htmlFor: "overrideValue", children: "Manual Estimated Value (A$) *" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+          lineNumber: 80,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(
+          Input,
+          {
+            id: "overrideValue",
+            type: "number",
+            value: formData.overrideValue,
+            onChange: (e) => onInputChange("overrideValue", e.target.value),
+            placeholder: "900000",
+            required: true
+          },
+          void 0,
+          false,
+          {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+            lineNumber: 81,
+            columnNumber: 13
+          },
+          this
+        )
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+        lineNumber: 79,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { children: [
+        /* @__PURE__ */ jsxDEV(Label, { htmlFor: "overrideReason", children: "Reason for Override *" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+          lineNumber: 92,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(
+          Textarea,
+          {
+            id: "overrideReason",
+            value: formData.overrideReason,
+            onChange: (e) => onInputChange("overrideReason", e.target.value),
+            placeholder: "Explain why you're overriding the RP Data valuation (e.g., recent renovations, superior finishes, unique features not captured in data)",
+            rows: 4,
+            required: true
+          },
+          void 0,
+          false,
+          {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+            lineNumber: 93,
+            columnNumber: 13
+          },
+          this
+        )
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+        lineNumber: 91,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { children: [
+        /* @__PURE__ */ jsxDEV(Label, { htmlFor: "overrideEvidence", children: "Supporting Evidence" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+          lineNumber: 104,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "mt-2 flex items-center gap-3", children: [
+          /* @__PURE__ */ jsxDEV(Button, { variant: "outline", className: "flex-1", children: [
+            /* @__PURE__ */ jsxDEV(Upload, { className: "w-4 h-4 mr-2" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+              lineNumber: 107,
+              columnNumber: 17
+            }, this),
+            formData.overrideEvidence ? "Evidence Uploaded" : "Upload Supporting Documents"
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+            lineNumber: 106,
+            columnNumber: 15
+          }, this),
+          formData.overrideEvidence && /* @__PURE__ */ jsxDEV(CheckCircle, { className: "w-5 h-5 text-green-600" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+            lineNumber: 111,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+          lineNumber: 105,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: "text-xs text-gray-600 mt-1", children: "Photos, recent valuations, comparable sales evidence, etc." }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+          lineNumber: 114,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+        lineNumber: 103,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("label", { className: "flex items-start gap-3 p-4 border-2 border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer", children: [
+        /* @__PURE__ */ jsxDEV(
+          "input",
+          {
+            type: "checkbox",
+            checked: formData.overrideFlag,
+            onChange: (e) => onInputChange("overrideFlag", e.target.checked),
+            className: "w-5 h-5 text-blue-600 rounded mt-0.5"
+          },
+          void 0,
+          false,
+          {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+            lineNumber: 120,
+            columnNumber: 13
+          },
+          this
+        ),
+        /* @__PURE__ */ jsxDEV("div", { className: "flex-1", children: [
+          /* @__PURE__ */ jsxDEV("p", { className: "font-medium text-gray-900", children: "I acknowledge this overrides RP Data *" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+            lineNumber: 127,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("p", { className: "text-sm text-gray-600 mt-1", children: "I understand this override will be logged and may require additional documentation or senior approval." }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+            lineNumber: 128,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+          lineNumber: 126,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+        lineNumber: 119,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "flex gap-3 pt-4 border-t", children: [
+        /* @__PURE__ */ jsxDEV(Button, { onClick: onClose, variant: "outline", className: "flex-1", children: "Cancel" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+          lineNumber: 135,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(
+          Button,
+          {
+            onClick: onSave,
+            className: "flex-1 bg-orange-600 hover:bg-orange-700",
+            disabled: !formData.overrideValue || !formData.overrideReason || !formData.overrideFlag,
+            children: "Save Override"
+          },
+          void 0,
+          false,
+          {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+            lineNumber: 138,
+            columnNumber: 13
+          },
+          this
+        )
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+        lineNumber: 134,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+      lineNumber: 57,
+      columnNumber: 9
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+    lineNumber: 47,
+    columnNumber: 7
+  }, this) }, void 0, false, {
+    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx",
+    lineNumber: 46,
+    columnNumber: 5
+  }, this);
+}
+_c = RPDataOverrideModal;
+var _c;
+$RefreshReg$(_c, "RPDataOverrideModal");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/case/RPDataOverrideModal.tsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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QUlrRDtBQUFBLFFBRWxELHVCQUFDLFNBQUksV0FBVSxVQUNiO0FBQUEsaUNBQUMsT0FBRSxXQUFVLDZCQUE0QixzREFBekM7QUFBQTtBQUFBO0FBQUE7QUFBQSxpQkFBK0U7QUFBQSxVQUMvRSx1QkFBQyxPQUFFLFdBQVUsOEJBQTRCLHNIQUF6QztBQUFBO0FBQUE7QUFBQTtBQUFBLGlCQUVBO0FBQUEsYUFKRjtBQUFBO0FBQUE7QUFBQTtBQUFBLGVBS0E7QUFBQSxXQVpGO0FBQUE7QUFBQTtBQUFBO0FBQUEsYUFhQTtBQUFBLE1BRUEsdUJBQUMsU0FBSSxXQUFVLDRCQUNiO0FBQUEsK0JBQUMsVUFBTyxTQUFTZCxTQUFTLFNBQVEsV0FBVSxXQUFVLFVBQVEsc0JBQTlEO0FBQUE7QUFBQTtBQUFBO0FBQUEsZUFFQTtBQUFBLFFBQ0E7QUFBQSxVQUFDO0FBQUE7QUFBQSxZQUNDLFNBQVNDO0FBQUFBLFlBQ1QsV0FBVTtBQUFBLFlBQ1YsVUFBVSxDQUFDQyxTQUFTSyxpQkFBaUIsQ0FBQ0wsU0FBU1Msa0JBQWtCLENBQUNULFNBQVNXO0FBQUFBLFlBQWE7QUFBQTtBQUFBLFVBSDFGO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxRQU1BO0FBQUEsV0FWRjtBQUFBO0FBQUE7QUFBQTtBQUFBLGFBV0E7QUFBQSxTQXhGRjtBQUFBO0FBQUE7QUFBQTtBQUFBLFdBeUZBO0FBQUEsT0FuR0Y7QUFBQTtBQUFBO0FBQUE7QUFBQSxTQW9HQSxLQXJHRjtBQUFBO0FBQUE7QUFBQTtBQUFBLFNBc0dBO0FBRUo7QUFBQ0UsS0FsSGVqQjtBQUFtQixJQUFBaUI7QUFBQSxhQUFBQSxJQUFBIiwibmFtZXMiOlsiQ2FyZCIsIkNhcmRDb250ZW50IiwiQ2FyZEhlYWRlciIsIkNhcmRUaXRsZSIsIkJ1dHRvbiIsIklucHV0IiwiTGFiZWwiLCJUZXh0YXJlYSIsIlgiLCJVcGxvYWQiLCJBbGVydENpcmNsZSIsIkNoZWNrQ2lyY2xlIiwiUlBEYXRhT3ZlcnJpZGVNb2RhbCIsImlzT3BlbiIsIm9uQ2xvc2UiLCJvblNhdmUiLCJmb3JtRGF0YSIsIm9uSW5wdXRDaGFuZ2UiLCJwYXJzZUZsb2F0IiwicnBEYXRhQXZtTWlkIiwidG9Mb2NhbGVTdHJpbmciLCJvdmVycmlkZVZhbHVlIiwiZSIsInRhcmdldCIsInZhbHVlIiwib3ZlcnJpZGVSZWFzb24iLCJvdmVycmlkZUV2aWRlbmNlIiwib3ZlcnJpZGVGbGFnIiwiY2hlY2tlZCIsIl9jIl0sImlnbm9yZUxpc3QiOltdLCJzb3VyY2VzIjpbIlJQRGF0YU92ZXJyaWRlTW9kYWwudHN4Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCwgeyB1c2VTdGF0ZSB9IGZyb20gJ3JlYWN0JztcbmltcG9ydCB7IENhcmQsIENhcmRDb250ZW50LCBDYXJkSGVhZGVyLCBDYXJkVGl0bGUgfSBmcm9tICcuLi91aS9jYXJkJztcbmltcG9ydCB7IEJ1dHRvbiB9IGZyb20gJy4uL3VpL2J1dHRvbic7XG5pbXBvcnQgeyBJbnB1dCB9IGZyb20gJy4uL3VpL2lucHV0JztcbmltcG9ydCB7IExhYmVsIH0gZnJvbSAnLi4vdWkvbGFiZWwnO1xuaW1wb3J0IHsgVGV4dGFyZWEgfSBmcm9tICcuLi91aS90ZXh0YXJlYSc7XG5pbXBvcnQgeyBYLCBVcGxvYWQsIEFsZXJ0Q2lyY2xlLCBDaGVja0NpcmNsZSB9IGZyb20gJ2x1Y2lkZS1yZWFjdCc7XG5cbmludGVyZmFjZSBSUERhdGFPdmVycmlkZU1vZGFsUHJvcHMge1xuICBpc09wZW46IGJvb2xlYW47XG4gIG9uQ2xvc2U6ICgpID0+IHZvaWQ7XG4gIG9uU2F2ZTogKCkgPT4gdm9pZDtcbiAgZm9ybURhdGE6IGFueTtcbiAgb25JbnB1dENoYW5nZTogKGZpZWxkOiBzdHJpbmcsIHZhbHVlOiBzdHJpbmcgfCBib29sZWFuKSA9PiB2b2lkO1xufVxuXG5leHBvcnQgZnVuY3Rpb24gUlBEYXRhT3ZlcnJpZGVNb2RhbCh7XG4gIGlzT3BlbixcbiAgb25DbG9zZSxcbiAgb25TYXZlLFxuICBmb3JtRGF0YSxcbiAgb25JbnB1dENoYW5nZVxufTogUlBEYXRhT3ZlcnJpZGVNb2RhbFByb3BzKSB7XG4gIGlmICghaXNPcGVuKSByZXR1cm4gbnVsbDtcblxuICByZXR1cm4gKFxuICAgIDxkaXYgY2xhc3NOYW1lPVwiZml4ZWQgaW5zZXQtMCBiZy1ibGFjayBiZy1vcGFjaXR5LTUwIGZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktY2VudGVyIHotNTAgcC00XCI+XG4gICAgICA8Q2FyZCBjbGFzc05hbWU9XCJ3LWZ1bGwgbWF4LXctMnhsIG1heC1oLVs5MHZoXSBvdmVyZmxvdy15LWF1dG9cIj5cbiAgICAgICAgPENhcmRIZWFkZXIgY2xhc3NOYW1lPVwiZmxleCBmbGV4LXJvdyBpdGVtcy1jZW50ZXIganVzdGlmeS1iZXR3ZWVuIGJvcmRlci1iXCI+XG4gICAgICAgICAgPENhcmRUaXRsZSBjbGFzc05hbWU9XCJ0ZXh0LXhsIGZvbnQtYm9sZFwiPk92ZXJyaWRlIFJQIERhdGEgVmFsdWF0aW9uPC9DYXJkVGl0bGU+XG4gICAgICAgICAgPGJ1dHRvblxuICAgICAgICAgICAgb25DbGljaz17b25DbG9zZX1cbiAgICAgICAgICAgIGNsYXNzTmFtZT1cInAtMiBob3ZlcjpiZy1ncmF5LTEwMCByb3VuZGVkLWxnIHRyYW5zaXRpb25cIlxuICAgICAgICAgID5cbiAgICAgICAgICAgIDxYIGNsYXNzTmFtZT1cInctNSBoLTVcIiAvPlxuICAgICAgICAgIDwvYnV0dG9uPlxuICAgICAgICA8L0NhcmRIZWFkZXI+XG4gICAgICAgIDxDYXJkQ29udGVudCBjbGFzc05hbWU9XCJwLTYgc3BhY2UteS02XCI+XG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJwLTQgYmctYW1iZXItNTAgYm9yZGVyIGJvcmRlci1hbWJlci0yMDAgcm91bmRlZC1sZyBmbGV4IGl0ZW1zLXN0YXJ0IGdhcC0zXCI+XG4gICAgICAgICAgICA8QWxlcnRDaXJjbGUgY2xhc3NOYW1lPVwidy01IGgtNSB0ZXh0LWFtYmVyLTYwMCBtdC0wLjUgZmxleC1zaHJpbmstMFwiIC8+XG4gICAgICAgICAgICA8ZGl2PlxuICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJ0ZXh0LXNtIGZvbnQtc2VtaWJvbGQgdGV4dC1hbWJlci05MDBcIj5PdmVycmlkZSBXYXJuaW5nPC9wPlxuICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJ0ZXh0LXhzIHRleHQtYW1iZXItNzAwIG10LTFcIj5cbiAgICAgICAgICAgICAgICBPdmVycmlkaW5nIFJQIERhdGEgdmFsdWF0aW9uIHJlcXVpcmVzIGp1c3RpZmljYXRpb24gYW5kIHdpbGwgYmUgbG9nZ2VkIGZvciBhdWRpdCBwdXJwb3Nlcy5cbiAgICAgICAgICAgICAgICBUaGlzIG1heSB0cmlnZ2VyIGFkZGl0aW9uYWwgY29tcGxpYW5jZSByZXF1aXJlbWVudHMuXG4gICAgICAgICAgICAgIDwvcD5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgIDxMYWJlbCBodG1sRm9yPVwicnBEYXRhQXZtTWlkXCI+UlAgRGF0YSBBVk0gRXN0aW1hdGUgKE1pZCk8L0xhYmVsPlxuICAgICAgICAgICAgPElucHV0XG4gICAgICAgICAgICAgIGlkPVwicnBEYXRhQXZtTWlkXCJcbiAgICAgICAgICAgICAgdmFsdWU9e2BBJCR7cGFyc2VGbG9hdChmb3JtRGF0YS5ycERhdGFBdm1NaWQgfHwgJzAnKS50b0xvY2FsZVN0cmluZygpfWB9XG4gICAgICAgICAgICAgIGRpc2FibGVkXG4gICAgICAgICAgICAgIGNsYXNzTmFtZT1cImJnLWdyYXktMTAwXCJcbiAgICAgICAgICAgIC8+XG4gICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICA8ZGl2PlxuICAgICAgICAgICAgPExhYmVsIGh0bWxGb3I9XCJvdmVycmlkZVZhbHVlXCI+TWFudWFsIEVzdGltYXRlZCBWYWx1ZSAoQSQpICo8L0xhYmVsPlxuICAgICAgICAgICAgPElucHV0XG4gICAgICAgICAgICAgIGlkPVwib3ZlcnJpZGVWYWx1ZVwiXG4gICAgICAgICAgICAgIHR5cGU9XCJudW1iZXJcIlxuICAgICAgICAgICAgICB2YWx1ZT17Zm9ybURhdGEub3ZlcnJpZGVWYWx1ZX1cbiAgICAgICAgICAgICAgb25DaGFuZ2U9eyhlKSA9PiBvbklucHV0Q2hhbmdlKCdvdmVycmlkZVZhbHVlJywgZS50YXJnZXQudmFsdWUpfVxuICAgICAgICAgICAgICBwbGFjZWhvbGRlcj1cIjkwMDAwMFwiXG4gICAgICAgICAgICAgIHJlcXVpcmVkXG4gICAgICAgICAgICAvPlxuICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgIDxMYWJlbCBodG1sRm9yPVwib3ZlcnJpZGVSZWFzb25cIj5SZWFzb24gZm9yIE92ZXJyaWRlICo8L0xhYmVsPlxuICAgICAgICAgICAgPFRleHRhcmVhXG4gICAgICAgICAgICAgIGlkPVwib3ZlcnJpZGVSZWFzb25cIlxuICAgICAgICAgICAgICB2YWx1ZT17Zm9ybURhdGEub3ZlcnJpZGVSZWFzb259XG4gICAgICAgICAgICAgIG9uQ2hhbmdlPXsoZSkgPT4gb25JbnB1dENoYW5nZSgnb3ZlcnJpZGVSZWFzb24nLCBlLnRhcmdldC52YWx1ZSl9XG4gICAgICAgICAgICAgIHBsYWNlaG9sZGVyPVwiRXhwbGFpbiB3aHkgeW91J3JlIG92ZXJyaWRpbmcgdGhlIFJQIERhdGEgdmFsdWF0aW9uIChlLmcuLCByZWNlbnQgcmVub3ZhdGlvbnMsIHN1cGVyaW9yIGZpbmlzaGVzLCB1bmlxdWUgZmVhdHVyZXMgbm90IGNhcHR1cmVkIGluIGRhdGEpXCJcbiAgICAgICAgICAgICAgcm93cz17NH1cbiAgICAgICAgICAgICAgcmVxdWlyZWRcbiAgICAgICAgICAgIC8+XG4gICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICA8ZGl2PlxuICAgICAgICAgICAgPExhYmVsIGh0bWxGb3I9XCJvdmVycmlkZUV2aWRlbmNlXCI+U3VwcG9ydGluZyBFdmlkZW5jZTwvTGFiZWw+XG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cIm10LTIgZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTNcIj5cbiAgICAgICAgICAgICAgPEJ1dHRvbiB2YXJpYW50PVwib3V0bGluZVwiIGNsYXNzTmFtZT1cImZsZXgtMVwiPlxuICAgICAgICAgICAgICAgIDxVcGxvYWQgY2xhc3NOYW1lPVwidy00IGgtNCBtci0yXCIgLz5cbiAgICAgICAgICAgICAgICB7Zm9ybURhdGEub3ZlcnJpZGVFdmlkZW5jZSA/ICdFdmlkZW5jZSBVcGxvYWRlZCcgOiAnVXBsb2FkIFN1cHBvcnRpbmcgRG9jdW1lbnRzJ31cbiAgICAgICAgICAgICAgPC9CdXR0b24+XG4gICAgICAgICAgICAgIHtmb3JtRGF0YS5vdmVycmlkZUV2aWRlbmNlICYmIChcbiAgICAgICAgICAgICAgICA8Q2hlY2tDaXJjbGUgY2xhc3NOYW1lPVwidy01IGgtNSB0ZXh0LWdyZWVuLTYwMFwiIC8+XG4gICAgICAgICAgICAgICl9XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQteHMgdGV4dC1ncmF5LTYwMCBtdC0xXCI+XG4gICAgICAgICAgICAgIFBob3RvcywgcmVjZW50IHZhbHVhdGlvbnMsIGNvbXBhcmFibGUgc2FsZXMgZXZpZGVuY2UsIGV0Yy5cbiAgICAgICAgICAgIDwvcD5cbiAgICAgICAgICA8L2Rpdj5cblxuICAgICAgICAgIDxsYWJlbCBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLXN0YXJ0IGdhcC0zIHAtNCBib3JkZXItMiBib3JkZXItZ3JheS0zMDAgcm91bmRlZC1sZyBob3ZlcjpiZy1ncmF5LTUwIGN1cnNvci1wb2ludGVyXCI+XG4gICAgICAgICAgICA8aW5wdXRcbiAgICAgICAgICAgICAgdHlwZT1cImNoZWNrYm94XCJcbiAgICAgICAgICAgICAgY2hlY2tlZD17Zm9ybURhdGEub3ZlcnJpZGVGbGFnfVxuICAgICAgICAgICAgICBvbkNoYW5nZT17KGUpID0+IG9uSW5wdXRDaGFuZ2UoJ292ZXJyaWRlRmxhZycsIGUudGFyZ2V0LmNoZWNrZWQpfVxuICAgICAgICAgICAgICBjbGFzc05hbWU9XCJ3LTUgaC01IHRleHQtYmx1ZS02MDAgcm91bmRlZCBtdC0wLjVcIlxuICAgICAgICAgICAgLz5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleC0xXCI+XG4gICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cImZvbnQtbWVkaXVtIHRleHQtZ3JheS05MDBcIj5JIGFja25vd2xlZGdlIHRoaXMgb3ZlcnJpZGVzIFJQIERhdGEgKjwvcD5cbiAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC1zbSB0ZXh0LWdyYXktNjAwIG10LTFcIj5cbiAgICAgICAgICAgICAgICBJIHVuZGVyc3RhbmQgdGhpcyBvdmVycmlkZSB3aWxsIGJlIGxvZ2dlZCBhbmQgbWF5IHJlcXVpcmUgYWRkaXRpb25hbCBkb2N1bWVudGF0aW9uIG9yIHNlbmlvciBhcHByb3ZhbC5cbiAgICAgICAgICAgICAgPC9wPlxuICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgPC9sYWJlbD5cblxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBnYXAtMyBwdC00IGJvcmRlci10XCI+XG4gICAgICAgICAgICA8QnV0dG9uIG9uQ2xpY2s9e29uQ2xvc2V9IHZhcmlhbnQ9XCJvdXRsaW5lXCIgY2xhc3NOYW1lPVwiZmxleC0xXCI+XG4gICAgICAgICAgICAgIENhbmNlbFxuICAgICAgICAgICAgPC9CdXR0b24+XG4gICAgICAgICAgICA8QnV0dG9uXG4gICAgICAgICAgICAgIG9uQ2xpY2s9e29uU2F2ZX1cbiAgICAgICAgICAgICAgY2xhc3NOYW1lPVwiZmxleC0xIGJnLW9yYW5nZS02MDAgaG92ZXI6Ymctb3JhbmdlLTcwMFwiXG4gICAgICAgICAgICAgIGRpc2FibGVkPXshZm9ybURhdGEub3ZlcnJpZGVWYWx1ZSB8fCAhZm9ybURhdGEub3ZlcnJpZGVSZWFzb24gfHwgIWZvcm1EYXRhLm92ZXJyaWRlRmxhZ31cbiAgICAgICAgICAgID5cbiAgICAgICAgICAgICAgU2F2ZSBPdmVycmlkZVxuICAgICAgICAgICAgPC9CdXR0b24+XG4gICAgICAgICAgPC9kaXY+XG4gICAgICAgIDwvQ2FyZENvbnRlbnQ+XG4gICAgICA8L0NhcmQ+XG4gICAgPC9kaXY+XG4gICk7XG59XG4iXSwiZmlsZSI6IkM6L1VzZXJzL0FuZHJldyBOYWdsZS9EZXNrdG9wL0dyb3dreWMtbWFpbi9Hcm93a3ljLW1haW4vc3JjL2FwcC9jb21wb25lbnRzL2Nhc2UvUlBEYXRhT3ZlcnJpZGVNb2RhbC50c3gifQ==

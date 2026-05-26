@@ -1,0 +1,9 @@
+export { FinanceDashboardRoutes } from './FinanceRoutes';
+export { PortfolioManagementPage } from './pages/PortfolioManagementPage';
+export { FundPerformancePage } from './pages/FundPerformancePage';
+export { InvestorRelationsPage } from './pages/InvestorRelationsPage';
+export { DealPipelinePage } from './pages/DealPipelinePage';
+export { ComplianceRiskPage } from './pages/ComplianceRiskPage';
+export { RegulatoryReportingPage } from './pages/RegulatoryReportingPage';
+export { AnalyticsPage } from './pages/AnalyticsPage';
+export { DocumentsPage } from './pages/DocumentsPage';

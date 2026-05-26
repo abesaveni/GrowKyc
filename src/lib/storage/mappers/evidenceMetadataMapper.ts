@@ -11,7 +11,7 @@ import {
   LegalHoldMetadata,
   VersionMetadata,
   buildS3MetadataTags,
-  type S3MetadataTags,
+  S3MetadataTags,
 } from '../metadata/metadataModels';
 
 /**

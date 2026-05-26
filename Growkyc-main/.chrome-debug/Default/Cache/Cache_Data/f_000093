@@ -1,0 +1,1263 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/@fs/C:\\Users\\Andrew Nagle\\Desktop\\Growkyc-main\\Growkyc-main\\src\\app\\components\\email-system\\EmailModals.tsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=15066356"; const Fragment = __vite__cjsImport0_react_jsxDevRuntime["Fragment"]; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+import { Button } from "/src/app/components/ui/button.tsx";
+import {
+  Send,
+  Settings,
+  Eye,
+  Edit,
+  Save,
+  Code,
+  Monitor,
+  Smartphone
+} from "/node_modules/.vite/deps/lucide-react.js?v=15066356";
+import { toast } from "/src/app/lib/toast.ts";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter
+} from "/src/app/components/ui/dialog.tsx";
+import { Input } from "/src/app/components/ui/input.tsx";
+import { Label } from "/src/app/components/ui/label.tsx";
+import { Textarea } from "/src/app/components/ui/textarea.tsx";
+import { Switch } from "/src/app/components/ui/switch.tsx";
+export function EmailModals({
+  showSettingsModal,
+  setShowSettingsModal,
+  showSendTestModal,
+  setShowSendTestModal,
+  showTemplatePreviewModal,
+  setShowTemplatePreviewModal,
+  showTemplateEditorModal,
+  setShowTemplateEditorModal,
+  selectedTemplate,
+  previewDevice,
+  setPreviewDevice
+}) {
+  return /* @__PURE__ */ jsxDEV(Fragment, { children: [
+    /* @__PURE__ */ jsxDEV(Dialog, { open: showSettingsModal, onOpenChange: setShowSettingsModal, children: /* @__PURE__ */ jsxDEV(DialogContent, { className: "max-w-2xl max-h-[80vh] overflow-y-auto", children: [
+      /* @__PURE__ */ jsxDEV(DialogHeader, { children: [
+        /* @__PURE__ */ jsxDEV(DialogTitle, { className: "flex items-center gap-2", children: [
+          /* @__PURE__ */ jsxDEV(Settings, { className: "w-5 h-5 text-blue-600" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+            lineNumber: 80,
+            columnNumber: 15
+          }, this),
+          "Email Settings"
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+          lineNumber: 79,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(DialogDescription, { children: "Configure global email settings and notification preferences" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+          lineNumber: 83,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+        lineNumber: 78,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "space-y-6 py-4", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "space-y-4", children: [
+          /* @__PURE__ */ jsxDEV("h4", { className: "font-semibold text-gray-900", children: "SMTP Configuration" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+            lineNumber: 91,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "grid grid-cols-2 gap-4", children: [
+            /* @__PURE__ */ jsxDEV("div", { children: [
+              /* @__PURE__ */ jsxDEV(Label, { htmlFor: "smtp-host", children: "SMTP Host" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 94,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV(Input, { id: "smtp-host", placeholder: "smtp.gmail.com", defaultValue: "mail.Grow MIP.com" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 95,
+                columnNumber: 19
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 93,
+              columnNumber: 17
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { children: [
+              /* @__PURE__ */ jsxDEV(Label, { htmlFor: "smtp-port", children: "SMTP Port" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 98,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV(Input, { id: "smtp-port", placeholder: "587", defaultValue: "587" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 99,
+                columnNumber: 19
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 97,
+              columnNumber: 17
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { children: [
+              /* @__PURE__ */ jsxDEV(Label, { htmlFor: "smtp-user", children: "Username" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 102,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV(Input, { id: "smtp-user", placeholder: "noreply@Grow MIP.com", defaultValue: "noreply@Grow MIP.com" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 103,
+                columnNumber: 19
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 101,
+              columnNumber: 17
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { children: [
+              /* @__PURE__ */ jsxDEV(Label, { htmlFor: "smtp-pass", children: "Password" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 106,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV(Input, { id: "smtp-pass", type: "password", placeholder: "â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 107,
+                columnNumber: 19
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 105,
+              columnNumber: 17
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+            lineNumber: 92,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+          lineNumber: 90,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "space-y-4", children: [
+          /* @__PURE__ */ jsxDEV("h4", { className: "font-semibold text-gray-900", children: "Sender Settings" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+            lineNumber: 114,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "grid grid-cols-2 gap-4", children: [
+            /* @__PURE__ */ jsxDEV("div", { children: [
+              /* @__PURE__ */ jsxDEV(Label, { htmlFor: "from-name", children: "From Name" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 117,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV(Input, { id: "from-name", defaultValue: "Grow MIP" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 118,
+                columnNumber: 19
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 116,
+              columnNumber: 17
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { children: [
+              /* @__PURE__ */ jsxDEV(Label, { htmlFor: "from-email", children: "From Email" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 121,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV(Input, { id: "from-email", defaultValue: "noreply@Grow MIP.com" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 122,
+                columnNumber: 19
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 120,
+              columnNumber: 17
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { children: [
+              /* @__PURE__ */ jsxDEV(Label, { htmlFor: "reply-to", children: "Reply-To Email" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 125,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV(Input, { id: "reply-to", defaultValue: "support@Grow MIP.com" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 126,
+                columnNumber: 19
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 124,
+              columnNumber: 17
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { children: [
+              /* @__PURE__ */ jsxDEV(Label, { htmlFor: "bcc-email", children: "BCC Email (Optional)" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 129,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV(Input, { id: "bcc-email", placeholder: "archive@Grow MIP.com" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 130,
+                columnNumber: 19
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 128,
+              columnNumber: 17
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+            lineNumber: 115,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+          lineNumber: 113,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "space-y-4", children: [
+          /* @__PURE__ */ jsxDEV("h4", { className: "font-semibold text-gray-900", children: "Notification Preferences" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+            lineNumber: 137,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "space-y-3", children: [
+            /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between", children: [
+              /* @__PURE__ */ jsxDEV("div", { children: [
+                /* @__PURE__ */ jsxDEV("div", { className: "font-medium text-sm", children: "Daily Digest Emails" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                  lineNumber: 141,
+                  columnNumber: 21
+                }, this),
+                /* @__PURE__ */ jsxDEV("div", { className: "text-xs text-gray-500", children: "Send daily summary emails to all users" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                  lineNumber: 142,
+                  columnNumber: 21
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 140,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV(Switch, { defaultChecked: true }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 144,
+                columnNumber: 19
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 139,
+              columnNumber: 17
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between", children: [
+              /* @__PURE__ */ jsxDEV("div", { children: [
+                /* @__PURE__ */ jsxDEV("div", { className: "font-medium text-sm", children: "Real-time Notifications" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                  lineNumber: 148,
+                  columnNumber: 21
+                }, this),
+                /* @__PURE__ */ jsxDEV("div", { className: "text-xs text-gray-500", children: "Send immediate email for urgent updates" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                  lineNumber: 149,
+                  columnNumber: 21
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 147,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV(Switch, { defaultChecked: true }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 151,
+                columnNumber: 19
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 146,
+              columnNumber: 17
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between", children: [
+              /* @__PURE__ */ jsxDEV("div", { children: [
+                /* @__PURE__ */ jsxDEV("div", { className: "font-medium text-sm", children: "Marketing Emails" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                  lineNumber: 155,
+                  columnNumber: 21
+                }, this),
+                /* @__PURE__ */ jsxDEV("div", { className: "text-xs text-gray-500", children: "Include marketing content in newsletters" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                  lineNumber: 156,
+                  columnNumber: 21
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 154,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV(Switch, {}, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 158,
+                columnNumber: 19
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 153,
+              columnNumber: 17
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between", children: [
+              /* @__PURE__ */ jsxDEV("div", { children: [
+                /* @__PURE__ */ jsxDEV("div", { className: "font-medium text-sm", children: "Email Analytics Tracking" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                  lineNumber: 162,
+                  columnNumber: 21
+                }, this),
+                /* @__PURE__ */ jsxDEV("div", { className: "text-xs text-gray-500", children: "Track opens, clicks, and engagement" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                  lineNumber: 163,
+                  columnNumber: 21
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 161,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV(Switch, { defaultChecked: true }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 165,
+                columnNumber: 19
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 160,
+              columnNumber: 17
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+            lineNumber: 138,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+          lineNumber: 136,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+        lineNumber: 88,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV(DialogFooter, { children: [
+        /* @__PURE__ */ jsxDEV(Button, { variant: "outline", onClick: () => setShowSettingsModal(false), children: "Cancel" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+          lineNumber: 172,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(
+          Button,
+          {
+            className: "bg-blue-600 hover:bg-blue-700",
+            onClick: () => {
+              setShowSettingsModal(false);
+              toast.success("Email settings saved successfully!");
+            },
+            children: [
+              /* @__PURE__ */ jsxDEV(Save, { className: "w-4 h-4 mr-2" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 182,
+                columnNumber: 15
+              }, this),
+              "Save Settings"
+            ]
+          },
+          void 0,
+          true,
+          {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+            lineNumber: 175,
+            columnNumber: 13
+          },
+          this
+        )
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+        lineNumber: 171,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+      lineNumber: 77,
+      columnNumber: 9
+    }, this) }, void 0, false, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+      lineNumber: 76,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV(Dialog, { open: showSendTestModal, onOpenChange: setShowSendTestModal, children: /* @__PURE__ */ jsxDEV(DialogContent, { children: [
+      /* @__PURE__ */ jsxDEV(DialogHeader, { children: [
+        /* @__PURE__ */ jsxDEV(DialogTitle, { className: "flex items-center gap-2", children: [
+          /* @__PURE__ */ jsxDEV(Send, { className: "w-5 h-5 text-blue-600" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+            lineNumber: 194,
+            columnNumber: 15
+          }, this),
+          "Send Test Email"
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+          lineNumber: 193,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(DialogDescription, { children: "Send a test email to verify your email configuration" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+          lineNumber: 197,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+        lineNumber: 192,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "space-y-4 py-4", children: [
+        /* @__PURE__ */ jsxDEV("div", { children: [
+          /* @__PURE__ */ jsxDEV(Label, { htmlFor: "test-template", children: "Select Template" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+            lineNumber: 204,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("select", { id: "test-template", className: "w-full px-3 py-2 border border-gray-300 rounded-lg mt-1", children: [
+            /* @__PURE__ */ jsxDEV("option", { children: "Investor Daily Digest" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 206,
+              columnNumber: 17
+            }, this),
+            /* @__PURE__ */ jsxDEV("option", { children: "Lender Daily Report" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 207,
+              columnNumber: 17
+            }, this),
+            /* @__PURE__ */ jsxDEV("option", { children: "Lawyer Daily Briefing" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 208,
+              columnNumber: 17
+            }, this),
+            /* @__PURE__ */ jsxDEV("option", { children: "Case Status Update" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 209,
+              columnNumber: 17
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+            lineNumber: 205,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+          lineNumber: 203,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { children: [
+          /* @__PURE__ */ jsxDEV(Label, { htmlFor: "test-email", children: "Recipient Email" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+            lineNumber: 213,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV(
+            Input,
+            {
+              id: "test-email",
+              type: "email",
+              placeholder: "your.email@example.com",
+              defaultValue: "admin@Grow MIP.com"
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 214,
+              columnNumber: 15
+            },
+            this
+          )
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+          lineNumber: 212,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { children: [
+          /* @__PURE__ */ jsxDEV(Label, { htmlFor: "test-subject", children: "Subject Line (Optional)" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+            lineNumber: 222,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV(Input, { id: "test-subject", placeholder: "Leave blank to use template default" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+            lineNumber: 223,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+          lineNumber: 221,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+        lineNumber: 202,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV(DialogFooter, { children: [
+        /* @__PURE__ */ jsxDEV(Button, { variant: "outline", onClick: () => setShowSendTestModal(false), children: "Cancel" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+          lineNumber: 228,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(
+          Button,
+          {
+            className: "bg-blue-600 hover:bg-blue-700",
+            onClick: () => {
+              setShowSendTestModal(false);
+              toast.success("Test email sent successfully! Check your inbox.");
+            },
+            children: [
+              /* @__PURE__ */ jsxDEV(Send, { className: "w-4 h-4 mr-2" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 238,
+                columnNumber: 15
+              }, this),
+              "Send Test Email"
+            ]
+          },
+          void 0,
+          true,
+          {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+            lineNumber: 231,
+            columnNumber: 13
+          },
+          this
+        )
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+        lineNumber: 227,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+      lineNumber: 191,
+      columnNumber: 9
+    }, this) }, void 0, false, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+      lineNumber: 190,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV(Dialog, { open: showTemplatePreviewModal, onOpenChange: setShowTemplatePreviewModal, children: /* @__PURE__ */ jsxDEV(DialogContent, { className: "max-w-5xl max-h-[90vh] overflow-hidden flex flex-col", children: [
+      /* @__PURE__ */ jsxDEV(DialogHeader, { children: /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between", children: [
+        /* @__PURE__ */ jsxDEV("div", { children: [
+          /* @__PURE__ */ jsxDEV(DialogTitle, { className: "flex items-center gap-2", children: [
+            /* @__PURE__ */ jsxDEV(Eye, { className: "w-5 h-5 text-blue-600" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 252,
+              columnNumber: 19
+            }, this),
+            selectedTemplate?.name || "Template Preview"
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+            lineNumber: 251,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ jsxDEV(DialogDescription, { children: "Preview how this template appears to recipients" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+            lineNumber: 255,
+            columnNumber: 17
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+          lineNumber: 250,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "flex gap-2", children: [
+          /* @__PURE__ */ jsxDEV(
+            Button,
+            {
+              variant: previewDevice === "desktop" ? "default" : "outline",
+              size: "sm",
+              onClick: () => setPreviewDevice("desktop"),
+              children: /* @__PURE__ */ jsxDEV(Monitor, { className: "w-4 h-4" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 263,
+                columnNumber: 19
+              }, this)
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 258,
+              columnNumber: 17
+            },
+            this
+          ),
+          /* @__PURE__ */ jsxDEV(
+            Button,
+            {
+              variant: previewDevice === "mobile" ? "default" : "outline",
+              size: "sm",
+              onClick: () => setPreviewDevice("mobile"),
+              children: /* @__PURE__ */ jsxDEV(Smartphone, { className: "w-4 h-4" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 270,
+                columnNumber: 19
+              }, this)
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 265,
+              columnNumber: 17
+            },
+            this
+          )
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+          lineNumber: 257,
+          columnNumber: 15
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+        lineNumber: 249,
+        columnNumber: 13
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+        lineNumber: 248,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "flex-1 overflow-y-auto border rounded-lg bg-gray-50 p-4", children: /* @__PURE__ */ jsxDEV(
+        "div",
+        {
+          className: `mx-auto bg-white shadow-lg ${previewDevice === "mobile" ? "max-w-sm" : "max-w-3xl"}`,
+          children: [
+            /* @__PURE__ */ jsxDEV("div", { className: "border-b border-gray-200 p-6", children: [
+              /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between mb-4", children: [
+                /* @__PURE__ */ jsxDEV("h3", { className: "text-2xl font-bold text-gray-900", children: selectedTemplate?.name }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                  lineNumber: 285,
+                  columnNumber: 19
+                }, this),
+                /* @__PURE__ */ jsxDEV("span", { className: "text-xs text-gray-500", children: "February 21, 2026" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                  lineNumber: 286,
+                  columnNumber: 19
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 284,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV("p", { className: "text-gray-600", children: selectedTemplate?.preview }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 288,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 283,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { className: "p-6 space-y-6", children: [
+              /* @__PURE__ */ jsxDEV("div", { children: [
+                /* @__PURE__ */ jsxDEV("h4", { className: "font-semibold text-lg text-gray-900 mb-3", children: "Market Updates" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                  lineNumber: 293,
+                  columnNumber: 19
+                }, this),
+                /* @__PURE__ */ jsxDEV("div", { className: "space-y-2", children: [
+                  /* @__PURE__ */ jsxDEV("div", { className: "p-4 bg-blue-50 rounded-lg border border-blue-200", children: [
+                    /* @__PURE__ */ jsxDEV("div", { className: "flex justify-between items-center", children: [
+                      /* @__PURE__ */ jsxDEV("span", { className: "font-medium", children: "New Property Listing" }, void 0, false, {
+                        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                        lineNumber: 297,
+                        columnNumber: 25
+                      }, this),
+                      /* @__PURE__ */ jsxDEV("span", { className: "text-blue-600 font-bold", children: "$2.4M" }, void 0, false, {
+                        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                        lineNumber: 298,
+                        columnNumber: 25
+                      }, this)
+                    ] }, void 0, true, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                      lineNumber: 296,
+                      columnNumber: 23
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("p", { className: "text-sm text-gray-600 mt-1", children: "123 Main Street, Sydney NSW 2000" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                      lineNumber: 300,
+                      columnNumber: 23
+                    }, this)
+                  ] }, void 0, true, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                    lineNumber: 295,
+                    columnNumber: 21
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("div", { className: "p-4 bg-green-50 rounded-lg border border-green-200", children: [
+                    /* @__PURE__ */ jsxDEV("div", { className: "flex justify-between items-center", children: [
+                      /* @__PURE__ */ jsxDEV("span", { className: "font-medium", children: "Deal Closed" }, void 0, false, {
+                        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                        lineNumber: 304,
+                        columnNumber: 25
+                      }, this),
+                      /* @__PURE__ */ jsxDEV("span", { className: "text-green-600 font-bold", children: "$1.8M" }, void 0, false, {
+                        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                        lineNumber: 305,
+                        columnNumber: 25
+                      }, this)
+                    ] }, void 0, true, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                      lineNumber: 303,
+                      columnNumber: 23
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("p", { className: "text-sm text-gray-600 mt-1", children: "456 Park Avenue, Melbourne VIC 3000" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                      lineNumber: 307,
+                      columnNumber: 23
+                    }, this)
+                  ] }, void 0, true, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                    lineNumber: 302,
+                    columnNumber: 21
+                  }, this)
+                ] }, void 0, true, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                  lineNumber: 294,
+                  columnNumber: 19
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 292,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { children: [
+                /* @__PURE__ */ jsxDEV("h4", { className: "font-semibold text-lg text-gray-900 mb-3", children: "Portfolio Performance" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                  lineNumber: 313,
+                  columnNumber: 19
+                }, this),
+                /* @__PURE__ */ jsxDEV("div", { className: "grid grid-cols-3 gap-4", children: [
+                  /* @__PURE__ */ jsxDEV("div", { className: "text-center p-4 bg-gray-50 rounded-lg", children: [
+                    /* @__PURE__ */ jsxDEV("div", { className: "text-2xl font-bold text-gray-900", children: "24" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                      lineNumber: 316,
+                      columnNumber: 23
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("div", { className: "text-sm text-gray-600", children: "Active Cases" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                      lineNumber: 317,
+                      columnNumber: 23
+                    }, this)
+                  ] }, void 0, true, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                    lineNumber: 315,
+                    columnNumber: 21
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("div", { className: "text-center p-4 bg-gray-50 rounded-lg", children: [
+                    /* @__PURE__ */ jsxDEV("div", { className: "text-2xl font-bold text-green-600", children: "+12%" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                      lineNumber: 320,
+                      columnNumber: 23
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("div", { className: "text-sm text-gray-600", children: "This Month" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                      lineNumber: 321,
+                      columnNumber: 23
+                    }, this)
+                  ] }, void 0, true, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                    lineNumber: 319,
+                    columnNumber: 21
+                  }, this),
+                  /* @__PURE__ */ jsxDEV("div", { className: "text-center p-4 bg-gray-50 rounded-lg", children: [
+                    /* @__PURE__ */ jsxDEV("div", { className: "text-2xl font-bold text-blue-600", children: "$12.4M" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                      lineNumber: 324,
+                      columnNumber: 23
+                    }, this),
+                    /* @__PURE__ */ jsxDEV("div", { className: "text-sm text-gray-600", children: "Total Value" }, void 0, false, {
+                      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                      lineNumber: 325,
+                      columnNumber: 23
+                    }, this)
+                  ] }, void 0, true, {
+                    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                    lineNumber: 323,
+                    columnNumber: 21
+                  }, this)
+                ] }, void 0, true, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                  lineNumber: 314,
+                  columnNumber: 19
+                }, this)
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 312,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ jsxDEV("div", { className: "text-center", children: /* @__PURE__ */ jsxDEV(Button, { className: "bg-blue-600 hover:bg-blue-700", children: "View Full Dashboard" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 331,
+                columnNumber: 19
+              }, this) }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 330,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 291,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { className: "border-t border-gray-200 p-6 bg-gray-50", children: /* @__PURE__ */ jsxDEV("p", { className: "text-xs text-gray-500 text-center", children: "Â© 2026 Grow MIP. All rights reserved. | Unsubscribe | Preferences" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 336,
+              columnNumber: 17
+            }, this) }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 335,
+              columnNumber: 15
+            }, this)
+          ]
+        },
+        void 0,
+        true,
+        {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+          lineNumber: 277,
+          columnNumber: 13
+        },
+        this
+      ) }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+        lineNumber: 276,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV(DialogFooter, { children: [
+        /* @__PURE__ */ jsxDEV(Button, { variant: "outline", onClick: () => setShowTemplatePreviewModal(false), children: "Close" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+          lineNumber: 344,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(
+          Button,
+          {
+            className: "bg-blue-600 hover:bg-blue-700",
+            onClick: () => {
+              setShowTemplatePreviewModal(false);
+              setShowTemplateEditorModal(true);
+            },
+            children: [
+              /* @__PURE__ */ jsxDEV(Edit, { className: "w-4 h-4 mr-2" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 354,
+                columnNumber: 15
+              }, this),
+              "Edit Template"
+            ]
+          },
+          void 0,
+          true,
+          {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+            lineNumber: 347,
+            columnNumber: 13
+          },
+          this
+        )
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+        lineNumber: 343,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+      lineNumber: 247,
+      columnNumber: 9
+    }, this) }, void 0, false, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+      lineNumber: 246,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV(Dialog, { open: showTemplateEditorModal, onOpenChange: setShowTemplateEditorModal, children: /* @__PURE__ */ jsxDEV(DialogContent, { className: "max-w-6xl max-h-[90vh] overflow-hidden flex flex-col", children: [
+      /* @__PURE__ */ jsxDEV(DialogHeader, { children: [
+        /* @__PURE__ */ jsxDEV(DialogTitle, { className: "flex items-center gap-2", children: [
+          /* @__PURE__ */ jsxDEV(Edit, { className: "w-5 h-5 text-blue-600" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+            lineNumber: 366,
+            columnNumber: 15
+          }, this),
+          "Edit Template: ",
+          selectedTemplate?.name
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+          lineNumber: 365,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(DialogDescription, { children: "Customize the email template content and design" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+          lineNumber: 369,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+        lineNumber: 364,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "flex-1 overflow-y-auto space-y-4 py-4", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "grid grid-cols-2 gap-4", children: [
+          /* @__PURE__ */ jsxDEV("div", { children: [
+            /* @__PURE__ */ jsxDEV(Label, { htmlFor: "template-name", children: "Template Name" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 376,
+              columnNumber: 17
+            }, this),
+            /* @__PURE__ */ jsxDEV(Input, { id: "template-name", defaultValue: selectedTemplate?.name }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 377,
+              columnNumber: 17
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+            lineNumber: 375,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { children: [
+            /* @__PURE__ */ jsxDEV(Label, { htmlFor: "template-category", children: "Category" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 380,
+              columnNumber: 17
+            }, this),
+            /* @__PURE__ */ jsxDEV("select", { id: "template-category", className: "w-full px-3 py-2 border border-gray-300 rounded-lg", children: [
+              /* @__PURE__ */ jsxDEV("option", { children: "Daily Reports" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 382,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV("option", { children: "Notifications" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 383,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV("option", { children: "Onboarding" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 384,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV("option", { children: "Security" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 385,
+                columnNumber: 19
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 381,
+              columnNumber: 17
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+            lineNumber: 379,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+          lineNumber: 374,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { children: [
+          /* @__PURE__ */ jsxDEV(Label, { htmlFor: "subject-line", children: "Subject Line" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+            lineNumber: 391,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV(
+            Input,
+            {
+              id: "subject-line",
+              placeholder: "Your Daily Digest - {{date.today}}",
+              defaultValue: "Your Daily Digest - {{date.today}}"
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 392,
+              columnNumber: 15
+            },
+            this
+          )
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+          lineNumber: 390,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { children: [
+          /* @__PURE__ */ jsxDEV(Label, { htmlFor: "preview-text", children: "Preview Text" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+            lineNumber: 400,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV(
+            Input,
+            {
+              id: "preview-text",
+              placeholder: "Summary of today's updates and notifications",
+              defaultValue: selectedTemplate?.preview
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 401,
+              columnNumber: 15
+            },
+            this
+          )
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+          lineNumber: 399,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "space-y-2", children: [
+          /* @__PURE__ */ jsxDEV("div", { className: "flex items-center justify-between", children: [
+            /* @__PURE__ */ jsxDEV(Label, { children: "Email Content" }, void 0, false, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 411,
+              columnNumber: 17
+            }, this),
+            /* @__PURE__ */ jsxDEV("div", { className: "flex gap-2", children: [
+              /* @__PURE__ */ jsxDEV(Button, { variant: "outline", size: "sm", children: [
+                /* @__PURE__ */ jsxDEV(Code, { className: "w-4 h-4 mr-1" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                  lineNumber: 414,
+                  columnNumber: 21
+                }, this),
+                "HTML"
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 413,
+                columnNumber: 19
+              }, this),
+              /* @__PURE__ */ jsxDEV(Button, { variant: "outline", size: "sm", children: [
+                /* @__PURE__ */ jsxDEV(Eye, { className: "w-4 h-4 mr-1" }, void 0, false, {
+                  fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                  lineNumber: 418,
+                  columnNumber: 21
+                }, this),
+                "Preview"
+              ] }, void 0, true, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 417,
+                columnNumber: 19
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 412,
+              columnNumber: 17
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+            lineNumber: 410,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV(
+            Textarea,
+            {
+              rows: 15,
+              className: "font-mono text-sm",
+              defaultValue: `<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+  <h1>Hello {{user.name}},</h1>
+  
+  <p>Here's your daily digest for ${(/* @__PURE__ */ new Date()).toLocaleDateString()}:</p>
+  
+  <div style="background: #f3f4f6; padding: 20px; border-radius: 8px; margin: 20px 0;">
+    <h2>Market Updates</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  </div>
+  
+  <a href="https://Grow MIP.com/dashboard" style="display: inline-block; background: #2563eb; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px;">
+    View Dashboard
+  </a>
+  
+  <p style="margin-top: 30px; color: #6b7280; font-size: 12px;">
+    Â© 2026 Grow MIP. All rights reserved.
+  </p>
+</div>`
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+              lineNumber: 423,
+              columnNumber: 15
+            },
+            this
+          )
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+          lineNumber: 409,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "bg-blue-50 rounded-lg border border-blue-200 p-4", children: [
+          /* @__PURE__ */ jsxDEV("h4", { className: "font-semibold text-sm text-gray-900 mb-2", children: "Available Variables" }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+            lineNumber: 449,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "flex flex-wrap gap-2", children: ["{{user.name}}", "{{user.email}}", "{{case.id}}", "{{date.today}}", "{{company.name}}"].map(
+            (variable) => /* @__PURE__ */ jsxDEV(
+              "code",
+              {
+                className: "px-2 py-1 bg-white rounded text-blue-600 font-mono text-xs cursor-pointer hover:bg-blue-100",
+                onClick: () => toast.info(`Copied ${variable} to clipboard`),
+                children: variable
+              },
+              variable,
+              false,
+              {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 453,
+                columnNumber: 19
+              },
+              this
+            )
+          ) }, void 0, false, {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+            lineNumber: 450,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+          lineNumber: 448,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+        lineNumber: 372,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV(DialogFooter, { children: [
+        /* @__PURE__ */ jsxDEV(Button, { variant: "outline", onClick: () => setShowTemplateEditorModal(false), children: "Cancel" }, void 0, false, {
+          fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+          lineNumber: 467,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(
+          Button,
+          {
+            variant: "outline",
+            onClick: () => {
+              setShowTemplateEditorModal(false);
+              setShowTemplatePreviewModal(true);
+            },
+            children: [
+              /* @__PURE__ */ jsxDEV(Eye, { className: "w-4 h-4 mr-2" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 477,
+                columnNumber: 15
+              }, this),
+              "Preview"
+            ]
+          },
+          void 0,
+          true,
+          {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+            lineNumber: 470,
+            columnNumber: 13
+          },
+          this
+        ),
+        /* @__PURE__ */ jsxDEV(
+          Button,
+          {
+            className: "bg-blue-600 hover:bg-blue-700",
+            onClick: () => {
+              setShowTemplateEditorModal(false);
+              toast.success("Template saved successfully!");
+            },
+            children: [
+              /* @__PURE__ */ jsxDEV(Save, { className: "w-4 h-4 mr-2" }, void 0, false, {
+                fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+                lineNumber: 487,
+                columnNumber: 15
+              }, this),
+              "Save Template"
+            ]
+          },
+          void 0,
+          true,
+          {
+            fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+            lineNumber: 480,
+            columnNumber: 13
+          },
+          this
+        )
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+        lineNumber: 466,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+      lineNumber: 363,
+      columnNumber: 9
+    }, this) }, void 0, false, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+      lineNumber: 362,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx",
+    lineNumber: 74,
+    columnNumber: 5
+  }, this);
+}
+_c = EmailModals;
+var _c;
+$RefreshReg$(_c, "EmailModals");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/email-system/EmailModals.tsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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LFVBQUM7QUFBQTtBQUFBLFlBQ0MsV0FBVTtBQUFBLFlBQ1YsU0FBUyxNQUFNO0FBQ2JFLHlDQUEyQixLQUFLO0FBQ2hDbkIsb0JBQU11QixRQUFRLDhCQUE4QjtBQUFBLFlBQzlDO0FBQUEsWUFFQTtBQUFBLHFDQUFDLFFBQUssV0FBVSxrQkFBaEI7QUFBQTtBQUFBO0FBQUE7QUFBQSxxQkFBOEI7QUFBQTtBQUFBO0FBQUE7QUFBQSxVQVBoQztBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsUUFTQTtBQUFBLFdBdkJGO0FBQUE7QUFBQTtBQUFBO0FBQUEsYUF3QkE7QUFBQSxTQS9IRjtBQUFBO0FBQUE7QUFBQTtBQUFBLFdBZ0lBLEtBaklGO0FBQUE7QUFBQTtBQUFBO0FBQUEsV0FrSUE7QUFBQSxPQWxhRjtBQUFBO0FBQUE7QUFBQTtBQUFBLFNBbWFBO0FBRUo7QUFBQ1EsS0FuYmVwQjtBQUFXLElBQUFvQjtBQUFBLGFBQUFBLElBQUEiLCJuYW1lcyI6WyJCdXR0b24iLCJTZW5kIiwiU2V0dGluZ3MiLCJFeWUiLCJFZGl0IiwiU2F2ZSIsIkNvZGUiLCJNb25pdG9yIiwiU21hcnRwaG9uZSIsInRvYXN0IiwiRGlhbG9nIiwiRGlhbG9nQ29udGVudCIsIkRpYWxvZ0Rlc2NyaXB0aW9uIiwiRGlhbG9nSGVhZGVyIiwiRGlhbG9nVGl0bGUiLCJEaWFsb2dGb290ZXIiLCJJbnB1dCIsIkxhYmVsIiwiVGV4dGFyZWEiLCJTd2l0Y2giLCJFbWFpbE1vZGFscyIsInNob3dTZXR0aW5nc01vZGFsIiwic2V0U2hvd1NldHRpbmdzTW9kYWwiLCJzaG93U2VuZFRlc3RNb2RhbCIsInNldFNob3dTZW5kVGVzdE1vZGFsIiwic2hvd1RlbXBsYXRlUHJldmlld01vZGFsIiwic2V0U2hvd1RlbXBsYXRlUHJldmlld01vZGFsIiwic2hvd1RlbXBsYXRlRWRpdG9yTW9kYWwiLCJzZXRTaG93VGVtcGxhdGVFZGl0b3JNb2RhbCIsInNlbGVjdGVkVGVtcGxhdGUiLCJwcmV2aWV3RGV2aWNlIiwic2V0UHJldmlld0RldmljZSIsInN1Y2Nlc3MiLCJuYW1lIiwicHJldmlldyIsIkRhdGUiLCJ0b0xvY2FsZURhdGVTdHJpbmciLCJtYXAiLCJ2YXJpYWJsZSIsImluZm8iLCJfYyJdLCJpZ25vcmVMaXN0IjpbXSwic291cmNlcyI6WyJFbWFpbE1vZGFscy50c3giXSwic291cmNlc0NvbnRlbnQiOlsi77u/aW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0JztcbmltcG9ydCB7IEJ1dHRvbiB9IGZyb20gJy4uL3VpL2J1dHRvbic7XG5pbXBvcnQge1xuICBTZW5kLFxuICBTZXR0aW5ncyxcbiAgRXllLFxuICBFZGl0LFxuICBTYXZlLFxuICBDb2RlLFxuICBNb25pdG9yLFxuICBTbWFydHBob25lLFxufSBmcm9tICdsdWNpZGUtcmVhY3QnO1xuaW1wb3J0IHsgdG9hc3QgfSBmcm9tICcuLi8uLi9saWIvdG9hc3QnO1xuaW1wb3J0IHtcbiAgRGlhbG9nLFxuICBEaWFsb2dDb250ZW50LFxuICBEaWFsb2dEZXNjcmlwdGlvbixcbiAgRGlhbG9nSGVhZGVyLFxuICBEaWFsb2dUaXRsZSxcbiAgRGlhbG9nRm9vdGVyLFxufSBmcm9tICcuLi91aS9kaWFsb2cnO1xuaW1wb3J0IHsgSW5wdXQgfSBmcm9tICcuLi91aS9pbnB1dCc7XG5pbXBvcnQgeyBMYWJlbCB9IGZyb20gJy4uL3VpL2xhYmVsJztcbmltcG9ydCB7IFRleHRhcmVhIH0gZnJvbSAnLi4vdWkvdGV4dGFyZWEnO1xuaW1wb3J0IHsgU3dpdGNoIH0gZnJvbSAnLi4vdWkvc3dpdGNoJztcblxuaW50ZXJmYWNlIEVtYWlsTW9kYWxzUHJvcHMge1xuICBzaG93U2V0dGluZ3NNb2RhbDogYm9vbGVhbjtcbiAgc2V0U2hvd1NldHRpbmdzTW9kYWw6IChzaG93OiBib29sZWFuKSA9PiB2b2lkO1xuICBzaG93U2VuZFRlc3RNb2RhbDogYm9vbGVhbjtcbiAgc2V0U2hvd1NlbmRUZXN0TW9kYWw6IChzaG93OiBib29sZWFuKSA9PiB2b2lkO1xuICBzaG93VGVtcGxhdGVQcmV2aWV3TW9kYWw6IGJvb2xlYW47XG4gIHNldFNob3dUZW1wbGF0ZVByZXZpZXdNb2RhbDogKHNob3c6IGJvb2xlYW4pID0+IHZvaWQ7XG4gIHNob3dUZW1wbGF0ZUVkaXRvck1vZGFsOiBib29sZWFuO1xuICBzZXRTaG93VGVtcGxhdGVFZGl0b3JNb2RhbDogKHNob3c6IGJvb2xlYW4pID0+IHZvaWQ7XG4gIHNlbGVjdGVkVGVtcGxhdGU6IGFueTtcbiAgcHJldmlld0RldmljZTogJ2Rlc2t0b3AnIHwgJ21vYmlsZSc7XG4gIHNldFByZXZpZXdEZXZpY2U6IChkZXZpY2U6ICdkZXNrdG9wJyB8ICdtb2JpbGUnKSA9PiB2b2lkO1xufVxuXG5leHBvcnQgZnVuY3Rpb24gRW1haWxNb2RhbHMoe1xuICBzaG93U2V0dGluZ3NNb2RhbCxcbiAgc2V0U2hvd1NldHRpbmdzTW9kYWwsXG4gIHNob3dTZW5kVGVzdE1vZGFsLFxuICBzZXRTaG93U2VuZFRlc3RNb2RhbCxcbiAgc2hvd1RlbXBsYXRlUHJldmlld01vZGFsLFxuICBzZXRTaG93VGVtcGxhdGVQcmV2aWV3TW9kYWwsXG4gIHNob3dUZW1wbGF0ZUVkaXRvck1vZGFsLFxuICBzZXRTaG93VGVtcGxhdGVFZGl0b3JNb2RhbCxcbiAgc2VsZWN0ZWRUZW1wbGF0ZSxcbiAgcHJldmlld0RldmljZSxcbiAgc2V0UHJldmlld0RldmljZSxcbn06IEVtYWlsTW9kYWxzUHJvcHMpIHtcbiAgcmV0dXJuIChcbiAgICA8PlxuICAgICAgey8qIEVtYWlsIFNldHRpbmdzIE1vZGFsICovfVxuICAgICAgPERpYWxvZyBvcGVuPXtzaG93U2V0dGluZ3NNb2RhbH0gb25PcGVuQ2hhbmdlPXtzZXRTaG93U2V0dGluZ3NNb2RhbH0+XG4gICAgICAgIDxEaWFsb2dDb250ZW50IGNsYXNzTmFtZT1cIm1heC13LTJ4bCBtYXgtaC1bODB2aF0gb3ZlcmZsb3cteS1hdXRvXCI+XG4gICAgICAgICAgPERpYWxvZ0hlYWRlcj5cbiAgICAgICAgICAgIDxEaWFsb2dUaXRsZSBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMlwiPlxuICAgICAgICAgICAgICA8U2V0dGluZ3MgY2xhc3NOYW1lPVwidy01IGgtNSB0ZXh0LWJsdWUtNjAwXCIgLz5cbiAgICAgICAgICAgICAgRW1haWwgU2V0dGluZ3NcbiAgICAgICAgICAgIDwvRGlhbG9nVGl0bGU+XG4gICAgICAgICAgICA8RGlhbG9nRGVzY3JpcHRpb24+XG4gICAgICAgICAgICAgIENvbmZpZ3VyZSBnbG9iYWwgZW1haWwgc2V0dGluZ3MgYW5kIG5vdGlmaWNhdGlvbiBwcmVmZXJlbmNlc1xuICAgICAgICAgICAgPC9EaWFsb2dEZXNjcmlwdGlvbj5cbiAgICAgICAgICA8L0RpYWxvZ0hlYWRlcj5cblxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwic3BhY2UteS02IHB5LTRcIj5cbiAgICAgICAgICAgIHsvKiBTTVRQIENvbmZpZ3VyYXRpb24gKi99XG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInNwYWNlLXktNFwiPlxuICAgICAgICAgICAgICA8aDQgY2xhc3NOYW1lPVwiZm9udC1zZW1pYm9sZCB0ZXh0LWdyYXktOTAwXCI+U01UUCBDb25maWd1cmF0aW9uPC9oND5cbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJncmlkIGdyaWQtY29scy0yIGdhcC00XCI+XG4gICAgICAgICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgICAgICAgIDxMYWJlbCBodG1sRm9yPVwic210cC1ob3N0XCI+U01UUCBIb3N0PC9MYWJlbD5cbiAgICAgICAgICAgICAgICAgIDxJbnB1dCBpZD1cInNtdHAtaG9zdFwiIHBsYWNlaG9sZGVyPVwic210cC5nbWFpbC5jb21cIiBkZWZhdWx0VmFsdWU9XCJtYWlsLkdyb3cgTUlQLmNvbVwiIC8+XG4gICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgICAgICAgIDxMYWJlbCBodG1sRm9yPVwic210cC1wb3J0XCI+U01UUCBQb3J0PC9MYWJlbD5cbiAgICAgICAgICAgICAgICAgIDxJbnB1dCBpZD1cInNtdHAtcG9ydFwiIHBsYWNlaG9sZGVyPVwiNTg3XCIgZGVmYXVsdFZhbHVlPVwiNTg3XCIgLz5cbiAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICA8ZGl2PlxuICAgICAgICAgICAgICAgICAgPExhYmVsIGh0bWxGb3I9XCJzbXRwLXVzZXJcIj5Vc2VybmFtZTwvTGFiZWw+XG4gICAgICAgICAgICAgICAgICA8SW5wdXQgaWQ9XCJzbXRwLXVzZXJcIiBwbGFjZWhvbGRlcj1cIm5vcmVwbHlAR3JvdyBNSVAuY29tXCIgZGVmYXVsdFZhbHVlPVwibm9yZXBseUBHcm93IE1JUC5jb21cIiAvPlxuICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgIDxkaXY+XG4gICAgICAgICAgICAgICAgICA8TGFiZWwgaHRtbEZvcj1cInNtdHAtcGFzc1wiPlBhc3N3b3JkPC9MYWJlbD5cbiAgICAgICAgICAgICAgICAgIDxJbnB1dCBpZD1cInNtdHAtcGFzc1wiIHR5cGU9XCJwYXNzd29yZFwiIHBsYWNlaG9sZGVyPVwiw6LigqzCosOi4oKswqLDouKCrMKiw6LigqzCosOi4oKswqLDouKCrMKiw6LigqzCosOi4oKswqJcIiAvPlxuICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgICAgICB7LyogU2VuZGVyIFNldHRpbmdzICovfVxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJzcGFjZS15LTRcIj5cbiAgICAgICAgICAgICAgPGg0IGNsYXNzTmFtZT1cImZvbnQtc2VtaWJvbGQgdGV4dC1ncmF5LTkwMFwiPlNlbmRlciBTZXR0aW5nczwvaDQ+XG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZ3JpZCBncmlkLWNvbHMtMiBnYXAtNFwiPlxuICAgICAgICAgICAgICAgIDxkaXY+XG4gICAgICAgICAgICAgICAgICA8TGFiZWwgaHRtbEZvcj1cImZyb20tbmFtZVwiPkZyb20gTmFtZTwvTGFiZWw+XG4gICAgICAgICAgICAgICAgICA8SW5wdXQgaWQ9XCJmcm9tLW5hbWVcIiBkZWZhdWx0VmFsdWU9XCJHcm93IE1JUFwiIC8+XG4gICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgICAgICAgIDxMYWJlbCBodG1sRm9yPVwiZnJvbS1lbWFpbFwiPkZyb20gRW1haWw8L0xhYmVsPlxuICAgICAgICAgICAgICAgICAgPElucHV0IGlkPVwiZnJvbS1lbWFpbFwiIGRlZmF1bHRWYWx1ZT1cIm5vcmVwbHlAR3JvdyBNSVAuY29tXCIgLz5cbiAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICA8ZGl2PlxuICAgICAgICAgICAgICAgICAgPExhYmVsIGh0bWxGb3I9XCJyZXBseS10b1wiPlJlcGx5LVRvIEVtYWlsPC9MYWJlbD5cbiAgICAgICAgICAgICAgICAgIDxJbnB1dCBpZD1cInJlcGx5LXRvXCIgZGVmYXVsdFZhbHVlPVwic3VwcG9ydEBHcm93IE1JUC5jb21cIiAvPlxuICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgIDxkaXY+XG4gICAgICAgICAgICAgICAgICA8TGFiZWwgaHRtbEZvcj1cImJjYy1lbWFpbFwiPkJDQyBFbWFpbCAoT3B0aW9uYWwpPC9MYWJlbD5cbiAgICAgICAgICAgICAgICAgIDxJbnB1dCBpZD1cImJjYy1lbWFpbFwiIHBsYWNlaG9sZGVyPVwiYXJjaGl2ZUBHcm93IE1JUC5jb21cIiAvPlxuICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgICAgICB7LyogTm90aWZpY2F0aW9uIFByZWZlcmVuY2VzICovfVxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJzcGFjZS15LTRcIj5cbiAgICAgICAgICAgICAgPGg0IGNsYXNzTmFtZT1cImZvbnQtc2VtaWJvbGQgdGV4dC1ncmF5LTkwMFwiPk5vdGlmaWNhdGlvbiBQcmVmZXJlbmNlczwvaDQ+XG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwic3BhY2UteS0zXCI+XG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWJldHdlZW5cIj5cbiAgICAgICAgICAgICAgICAgIDxkaXY+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZm9udC1tZWRpdW0gdGV4dC1zbVwiPkRhaWx5IERpZ2VzdCBFbWFpbHM8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LXhzIHRleHQtZ3JheS01MDBcIj5TZW5kIGRhaWx5IHN1bW1hcnkgZW1haWxzIHRvIGFsbCB1c2VyczwvZGl2PlxuICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICA8U3dpdGNoIGRlZmF1bHRDaGVja2VkIC8+XG4gICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWJldHdlZW5cIj5cbiAgICAgICAgICAgICAgICAgIDxkaXY+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZm9udC1tZWRpdW0gdGV4dC1zbVwiPlJlYWwtdGltZSBOb3RpZmljYXRpb25zPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC14cyB0ZXh0LWdyYXktNTAwXCI+U2VuZCBpbW1lZGlhdGUgZW1haWwgZm9yIHVyZ2VudCB1cGRhdGVzPC9kaXY+XG4gICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgIDxTd2l0Y2ggZGVmYXVsdENoZWNrZWQgLz5cbiAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktYmV0d2VlblwiPlxuICAgICAgICAgICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmb250LW1lZGl1bSB0ZXh0LXNtXCI+TWFya2V0aW5nIEVtYWlsczwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQteHMgdGV4dC1ncmF5LTUwMFwiPkluY2x1ZGUgbWFya2V0aW5nIGNvbnRlbnQgaW4gbmV3c2xldHRlcnM8L2Rpdj5cbiAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgPFN3aXRjaCAvPlxuICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1iZXR3ZWVuXCI+XG4gICAgICAgICAgICAgICAgICA8ZGl2PlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZvbnQtbWVkaXVtIHRleHQtc21cIj5FbWFpbCBBbmFseXRpY3MgVHJhY2tpbmc8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LXhzIHRleHQtZ3JheS01MDBcIj5UcmFjayBvcGVucywgY2xpY2tzLCBhbmQgZW5nYWdlbWVudDwvZGl2PlxuICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICA8U3dpdGNoIGRlZmF1bHRDaGVja2VkIC8+XG4gICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICA8RGlhbG9nRm9vdGVyPlxuICAgICAgICAgICAgPEJ1dHRvbiB2YXJpYW50PVwib3V0bGluZVwiIG9uQ2xpY2s9eygpID0+IHNldFNob3dTZXR0aW5nc01vZGFsKGZhbHNlKX0+XG4gICAgICAgICAgICAgIENhbmNlbFxuICAgICAgICAgICAgPC9CdXR0b24+XG4gICAgICAgICAgICA8QnV0dG9uXG4gICAgICAgICAgICAgIGNsYXNzTmFtZT1cImJnLWJsdWUtNjAwIGhvdmVyOmJnLWJsdWUtNzAwXCJcbiAgICAgICAgICAgICAgb25DbGljaz17KCkgPT4ge1xuICAgICAgICAgICAgICAgIHNldFNob3dTZXR0aW5nc01vZGFsKGZhbHNlKTtcbiAgICAgICAgICAgICAgICB0b2FzdC5zdWNjZXNzKCdFbWFpbCBzZXR0aW5ncyBzYXZlZCBzdWNjZXNzZnVsbHkhJyk7XG4gICAgICAgICAgICAgIH19XG4gICAgICAgICAgICA+XG4gICAgICAgICAgICAgIDxTYXZlIGNsYXNzTmFtZT1cInctNCBoLTQgbXItMlwiIC8+XG4gICAgICAgICAgICAgIFNhdmUgU2V0dGluZ3NcbiAgICAgICAgICAgIDwvQnV0dG9uPlxuICAgICAgICAgIDwvRGlhbG9nRm9vdGVyPlxuICAgICAgICA8L0RpYWxvZ0NvbnRlbnQ+XG4gICAgICA8L0RpYWxvZz5cblxuICAgICAgey8qIFNlbmQgVGVzdCBFbWFpbCBNb2RhbCAqL31cbiAgICAgIDxEaWFsb2cgb3Blbj17c2hvd1NlbmRUZXN0TW9kYWx9IG9uT3BlbkNoYW5nZT17c2V0U2hvd1NlbmRUZXN0TW9kYWx9PlxuICAgICAgICA8RGlhbG9nQ29udGVudD5cbiAgICAgICAgICA8RGlhbG9nSGVhZGVyPlxuICAgICAgICAgICAgPERpYWxvZ1RpdGxlIGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIGdhcC0yXCI+XG4gICAgICAgICAgICAgIDxTZW5kIGNsYXNzTmFtZT1cInctNSBoLTUgdGV4dC1ibHVlLTYwMFwiIC8+XG4gICAgICAgICAgICAgIFNlbmQgVGVzdCBFbWFpbFxuICAgICAgICAgICAgPC9EaWFsb2dUaXRsZT5cbiAgICAgICAgICAgIDxEaWFsb2dEZXNjcmlwdGlvbj5cbiAgICAgICAgICAgICAgU2VuZCBhIHRlc3QgZW1haWwgdG8gdmVyaWZ5IHlvdXIgZW1haWwgY29uZmlndXJhdGlvblxuICAgICAgICAgICAgPC9EaWFsb2dEZXNjcmlwdGlvbj5cbiAgICAgICAgICA8L0RpYWxvZ0hlYWRlcj5cblxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwic3BhY2UteS00IHB5LTRcIj5cbiAgICAgICAgICAgIDxkaXY+XG4gICAgICAgICAgICAgIDxMYWJlbCBodG1sRm9yPVwidGVzdC10ZW1wbGF0ZVwiPlNlbGVjdCBUZW1wbGF0ZTwvTGFiZWw+XG4gICAgICAgICAgICAgIDxzZWxlY3QgaWQ9XCJ0ZXN0LXRlbXBsYXRlXCIgY2xhc3NOYW1lPVwidy1mdWxsIHB4LTMgcHktMiBib3JkZXIgYm9yZGVyLWdyYXktMzAwIHJvdW5kZWQtbGcgbXQtMVwiPlxuICAgICAgICAgICAgICAgIDxvcHRpb24+SW52ZXN0b3IgRGFpbHkgRGlnZXN0PC9vcHRpb24+XG4gICAgICAgICAgICAgICAgPG9wdGlvbj5MZW5kZXIgRGFpbHkgUmVwb3J0PC9vcHRpb24+XG4gICAgICAgICAgICAgICAgPG9wdGlvbj5MYXd5ZXIgRGFpbHkgQnJpZWZpbmc8L29wdGlvbj5cbiAgICAgICAgICAgICAgICA8b3B0aW9uPkNhc2UgU3RhdHVzIFVwZGF0ZTwvb3B0aW9uPlxuICAgICAgICAgICAgICA8L3NlbGVjdD5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgICAgPExhYmVsIGh0bWxGb3I9XCJ0ZXN0LWVtYWlsXCI+UmVjaXBpZW50IEVtYWlsPC9MYWJlbD5cbiAgICAgICAgICAgICAgPElucHV0XG4gICAgICAgICAgICAgICAgaWQ9XCJ0ZXN0LWVtYWlsXCJcbiAgICAgICAgICAgICAgICB0eXBlPVwiZW1haWxcIlxuICAgICAgICAgICAgICAgIHBsYWNlaG9sZGVyPVwieW91ci5lbWFpbEBleGFtcGxlLmNvbVwiXG4gICAgICAgICAgICAgICAgZGVmYXVsdFZhbHVlPVwiYWRtaW5AR3JvdyBNSVAuY29tXCJcbiAgICAgICAgICAgICAgLz5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgICAgPExhYmVsIGh0bWxGb3I9XCJ0ZXN0LXN1YmplY3RcIj5TdWJqZWN0IExpbmUgKE9wdGlvbmFsKTwvTGFiZWw+XG4gICAgICAgICAgICAgIDxJbnB1dCBpZD1cInRlc3Qtc3ViamVjdFwiIHBsYWNlaG9sZGVyPVwiTGVhdmUgYmxhbmsgdG8gdXNlIHRlbXBsYXRlIGRlZmF1bHRcIiAvPlxuICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICA8RGlhbG9nRm9vdGVyPlxuICAgICAgICAgICAgPEJ1dHRvbiB2YXJpYW50PVwib3V0bGluZVwiIG9uQ2xpY2s9eygpID0+IHNldFNob3dTZW5kVGVzdE1vZGFsKGZhbHNlKX0+XG4gICAgICAgICAgICAgIENhbmNlbFxuICAgICAgICAgICAgPC9CdXR0b24+XG4gICAgICAgICAgICA8QnV0dG9uXG4gICAgICAgICAgICAgIGNsYXNzTmFtZT1cImJnLWJsdWUtNjAwIGhvdmVyOmJnLWJsdWUtNzAwXCJcbiAgICAgICAgICAgICAgb25DbGljaz17KCkgPT4ge1xuICAgICAgICAgICAgICAgIHNldFNob3dTZW5kVGVzdE1vZGFsKGZhbHNlKTtcbiAgICAgICAgICAgICAgICB0b2FzdC5zdWNjZXNzKCdUZXN0IGVtYWlsIHNlbnQgc3VjY2Vzc2Z1bGx5ISBDaGVjayB5b3VyIGluYm94LicpO1xuICAgICAgICAgICAgICB9fVxuICAgICAgICAgICAgPlxuICAgICAgICAgICAgICA8U2VuZCBjbGFzc05hbWU9XCJ3LTQgaC00IG1yLTJcIiAvPlxuICAgICAgICAgICAgICBTZW5kIFRlc3QgRW1haWxcbiAgICAgICAgICAgIDwvQnV0dG9uPlxuICAgICAgICAgIDwvRGlhbG9nRm9vdGVyPlxuICAgICAgICA8L0RpYWxvZ0NvbnRlbnQ+XG4gICAgICA8L0RpYWxvZz5cblxuICAgICAgey8qIFRlbXBsYXRlIFByZXZpZXcgTW9kYWwgKi99XG4gICAgICA8RGlhbG9nIG9wZW49e3Nob3dUZW1wbGF0ZVByZXZpZXdNb2RhbH0gb25PcGVuQ2hhbmdlPXtzZXRTaG93VGVtcGxhdGVQcmV2aWV3TW9kYWx9PlxuICAgICAgICA8RGlhbG9nQ29udGVudCBjbGFzc05hbWU9XCJtYXgtdy01eGwgbWF4LWgtWzkwdmhdIG92ZXJmbG93LWhpZGRlbiBmbGV4IGZsZXgtY29sXCI+XG4gICAgICAgICAgPERpYWxvZ0hlYWRlcj5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1iZXR3ZWVuXCI+XG4gICAgICAgICAgICAgIDxkaXY+XG4gICAgICAgICAgICAgICAgPERpYWxvZ1RpdGxlIGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIGdhcC0yXCI+XG4gICAgICAgICAgICAgICAgICA8RXllIGNsYXNzTmFtZT1cInctNSBoLTUgdGV4dC1ibHVlLTYwMFwiIC8+XG4gICAgICAgICAgICAgICAgICB7c2VsZWN0ZWRUZW1wbGF0ZT8ubmFtZSB8fCAnVGVtcGxhdGUgUHJldmlldyd9XG4gICAgICAgICAgICAgICAgPC9EaWFsb2dUaXRsZT5cbiAgICAgICAgICAgICAgICA8RGlhbG9nRGVzY3JpcHRpb24+UHJldmlldyBob3cgdGhpcyB0ZW1wbGF0ZSBhcHBlYXJzIHRvIHJlY2lwaWVudHM8L0RpYWxvZ0Rlc2NyaXB0aW9uPlxuICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGdhcC0yXCI+XG4gICAgICAgICAgICAgICAgPEJ1dHRvblxuICAgICAgICAgICAgICAgICAgdmFyaWFudD17cHJldmlld0RldmljZSA9PT0gJ2Rlc2t0b3AnID8gJ2RlZmF1bHQnIDogJ291dGxpbmUnfVxuICAgICAgICAgICAgICAgICAgc2l6ZT1cInNtXCJcbiAgICAgICAgICAgICAgICAgIG9uQ2xpY2s9eygpID0+IHNldFByZXZpZXdEZXZpY2UoJ2Rlc2t0b3AnKX1cbiAgICAgICAgICAgICAgICA+XG4gICAgICAgICAgICAgICAgICA8TW9uaXRvciBjbGFzc05hbWU9XCJ3LTQgaC00XCIgLz5cbiAgICAgICAgICAgICAgICA8L0J1dHRvbj5cbiAgICAgICAgICAgICAgICA8QnV0dG9uXG4gICAgICAgICAgICAgICAgICB2YXJpYW50PXtwcmV2aWV3RGV2aWNlID09PSAnbW9iaWxlJyA/ICdkZWZhdWx0JyA6ICdvdXRsaW5lJ31cbiAgICAgICAgICAgICAgICAgIHNpemU9XCJzbVwiXG4gICAgICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBzZXRQcmV2aWV3RGV2aWNlKCdtb2JpbGUnKX1cbiAgICAgICAgICAgICAgICA+XG4gICAgICAgICAgICAgICAgICA8U21hcnRwaG9uZSBjbGFzc05hbWU9XCJ3LTQgaC00XCIgLz5cbiAgICAgICAgICAgICAgICA8L0J1dHRvbj5cbiAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICA8L0RpYWxvZ0hlYWRlcj5cblxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleC0xIG92ZXJmbG93LXktYXV0byBib3JkZXIgcm91bmRlZC1sZyBiZy1ncmF5LTUwIHAtNFwiPlxuICAgICAgICAgICAgPGRpdlxuICAgICAgICAgICAgICBjbGFzc05hbWU9e2BteC1hdXRvIGJnLXdoaXRlIHNoYWRvdy1sZyAke1xuICAgICAgICAgICAgICAgIHByZXZpZXdEZXZpY2UgPT09ICdtb2JpbGUnID8gJ21heC13LXNtJyA6ICdtYXgtdy0zeGwnXG4gICAgICAgICAgICAgIH1gfVxuICAgICAgICAgICAgPlxuICAgICAgICAgICAgICB7LyogTW9jayBFbWFpbCBQcmV2aWV3ICovfVxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImJvcmRlci1iIGJvcmRlci1ncmF5LTIwMCBwLTZcIj5cbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktYmV0d2VlbiBtYi00XCI+XG4gICAgICAgICAgICAgICAgICA8aDMgY2xhc3NOYW1lPVwidGV4dC0yeGwgZm9udC1ib2xkIHRleHQtZ3JheS05MDBcIj57c2VsZWN0ZWRUZW1wbGF0ZT8ubmFtZX08L2gzPlxuICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwidGV4dC14cyB0ZXh0LWdyYXktNTAwXCI+RmVicnVhcnkgMjEsIDIwMjY8L3NwYW4+XG4gICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC1ncmF5LTYwMFwiPntzZWxlY3RlZFRlbXBsYXRlPy5wcmV2aWV3fTwvcD5cbiAgICAgICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJwLTYgc3BhY2UteS02XCI+XG4gICAgICAgICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgICAgICAgIDxoNCBjbGFzc05hbWU9XCJmb250LXNlbWlib2xkIHRleHQtbGcgdGV4dC1ncmF5LTkwMCBtYi0zXCI+TWFya2V0IFVwZGF0ZXM8L2g0PlxuICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJzcGFjZS15LTJcIj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJwLTQgYmctYmx1ZS01MCByb3VuZGVkLWxnIGJvcmRlciBib3JkZXItYmx1ZS0yMDBcIj5cbiAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXgganVzdGlmeS1iZXR3ZWVuIGl0ZW1zLWNlbnRlclwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwiZm9udC1tZWRpdW1cIj5OZXcgUHJvcGVydHkgTGlzdGluZzwvc3Bhbj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRleHQtYmx1ZS02MDAgZm9udC1ib2xkXCI+JDIuNE08L3NwYW4+XG4gICAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwidGV4dC1zbSB0ZXh0LWdyYXktNjAwIG10LTFcIj4xMjMgTWFpbiBTdHJlZXQsIFN5ZG5leSBOU1cgMjAwMDwvcD5cbiAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwicC00IGJnLWdyZWVuLTUwIHJvdW5kZWQtbGcgYm9yZGVyIGJvcmRlci1ncmVlbi0yMDBcIj5cbiAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXgganVzdGlmeS1iZXR3ZWVuIGl0ZW1zLWNlbnRlclwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwiZm9udC1tZWRpdW1cIj5EZWFsIENsb3NlZDwvc3Bhbj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRleHQtZ3JlZW4tNjAwIGZvbnQtYm9sZFwiPiQxLjhNPC9zcGFuPlxuICAgICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQtc20gdGV4dC1ncmF5LTYwMCBtdC0xXCI+NDU2IFBhcmsgQXZlbnVlLCBNZWxib3VybmUgVklDIDMwMDA8L3A+XG4gICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICAgICAgICA8ZGl2PlxuICAgICAgICAgICAgICAgICAgPGg0IGNsYXNzTmFtZT1cImZvbnQtc2VtaWJvbGQgdGV4dC1sZyB0ZXh0LWdyYXktOTAwIG1iLTNcIj5Qb3J0Zm9saW8gUGVyZm9ybWFuY2U8L2g0PlxuICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJncmlkIGdyaWQtY29scy0zIGdhcC00XCI+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC1jZW50ZXIgcC00IGJnLWdyYXktNTAgcm91bmRlZC1sZ1wiPlxuICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC0yeGwgZm9udC1ib2xkIHRleHQtZ3JheS05MDBcIj4yNDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC1zbSB0ZXh0LWdyYXktNjAwXCI+QWN0aXZlIENhc2VzPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQtY2VudGVyIHAtNCBiZy1ncmF5LTUwIHJvdW5kZWQtbGdcIj5cbiAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQtMnhsIGZvbnQtYm9sZCB0ZXh0LWdyZWVuLTYwMFwiPisxMiU8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQtc20gdGV4dC1ncmF5LTYwMFwiPlRoaXMgTW9udGg8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC1jZW50ZXIgcC00IGJnLWdyYXktNTAgcm91bmRlZC1sZ1wiPlxuICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC0yeGwgZm9udC1ib2xkIHRleHQtYmx1ZS02MDBcIj4kMTIuNE08L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQtc20gdGV4dC1ncmF5LTYwMFwiPlRvdGFsIFZhbHVlPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRleHQtY2VudGVyXCI+XG4gICAgICAgICAgICAgICAgICA8QnV0dG9uIGNsYXNzTmFtZT1cImJnLWJsdWUtNjAwIGhvdmVyOmJnLWJsdWUtNzAwXCI+VmlldyBGdWxsIERhc2hib2FyZDwvQnV0dG9uPlxuICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICA8L2Rpdj5cblxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImJvcmRlci10IGJvcmRlci1ncmF5LTIwMCBwLTYgYmctZ3JheS01MFwiPlxuICAgICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT1cInRleHQteHMgdGV4dC1ncmF5LTUwMCB0ZXh0LWNlbnRlclwiPlxuICAgICAgICAgICAgICAgICAgw4LCqSAyMDI2IEdyb3cgTUlQLiBBbGwgcmlnaHRzIHJlc2VydmVkLiB8IFVuc3Vic2NyaWJlIHwgUHJlZmVyZW5jZXNcbiAgICAgICAgICAgICAgICA8L3A+XG4gICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICA8RGlhbG9nRm9vdGVyPlxuICAgICAgICAgICAgPEJ1dHRvbiB2YXJpYW50PVwib3V0bGluZVwiIG9uQ2xpY2s9eygpID0+IHNldFNob3dUZW1wbGF0ZVByZXZpZXdNb2RhbChmYWxzZSl9PlxuICAgICAgICAgICAgICBDbG9zZVxuICAgICAgICAgICAgPC9CdXR0b24+XG4gICAgICAgICAgICA8QnV0dG9uXG4gICAgICAgICAgICAgIGNsYXNzTmFtZT1cImJnLWJsdWUtNjAwIGhvdmVyOmJnLWJsdWUtNzAwXCJcbiAgICAgICAgICAgICAgb25DbGljaz17KCkgPT4ge1xuICAgICAgICAgICAgICAgIHNldFNob3dUZW1wbGF0ZVByZXZpZXdNb2RhbChmYWxzZSk7XG4gICAgICAgICAgICAgICAgc2V0U2hvd1RlbXBsYXRlRWRpdG9yTW9kYWwodHJ1ZSk7XG4gICAgICAgICAgICAgIH19XG4gICAgICAgICAgICA+XG4gICAgICAgICAgICAgIDxFZGl0IGNsYXNzTmFtZT1cInctNCBoLTQgbXItMlwiIC8+XG4gICAgICAgICAgICAgIEVkaXQgVGVtcGxhdGVcbiAgICAgICAgICAgIDwvQnV0dG9uPlxuICAgICAgICAgIDwvRGlhbG9nRm9vdGVyPlxuICAgICAgICA8L0RpYWxvZ0NvbnRlbnQ+XG4gICAgICA8L0RpYWxvZz5cblxuICAgICAgey8qIFRlbXBsYXRlIEVkaXRvciBNb2RhbCAqL31cbiAgICAgIDxEaWFsb2cgb3Blbj17c2hvd1RlbXBsYXRlRWRpdG9yTW9kYWx9IG9uT3BlbkNoYW5nZT17c2V0U2hvd1RlbXBsYXRlRWRpdG9yTW9kYWx9PlxuICAgICAgICA8RGlhbG9nQ29udGVudCBjbGFzc05hbWU9XCJtYXgtdy02eGwgbWF4LWgtWzkwdmhdIG92ZXJmbG93LWhpZGRlbiBmbGV4IGZsZXgtY29sXCI+XG4gICAgICAgICAgPERpYWxvZ0hlYWRlcj5cbiAgICAgICAgICAgIDxEaWFsb2dUaXRsZSBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMlwiPlxuICAgICAgICAgICAgICA8RWRpdCBjbGFzc05hbWU9XCJ3LTUgaC01IHRleHQtYmx1ZS02MDBcIiAvPlxuICAgICAgICAgICAgICBFZGl0IFRlbXBsYXRlOiB7c2VsZWN0ZWRUZW1wbGF0ZT8ubmFtZX1cbiAgICAgICAgICAgIDwvRGlhbG9nVGl0bGU+XG4gICAgICAgICAgICA8RGlhbG9nRGVzY3JpcHRpb24+Q3VzdG9taXplIHRoZSBlbWFpbCB0ZW1wbGF0ZSBjb250ZW50IGFuZCBkZXNpZ248L0RpYWxvZ0Rlc2NyaXB0aW9uPlxuICAgICAgICAgIDwvRGlhbG9nSGVhZGVyPlxuXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4LTEgb3ZlcmZsb3cteS1hdXRvIHNwYWNlLXktNCBweS00XCI+XG4gICAgICAgICAgICB7LyogVGVtcGxhdGUgQmFzaWMgSW5mbyAqL31cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZ3JpZCBncmlkLWNvbHMtMiBnYXAtNFwiPlxuICAgICAgICAgICAgICA8ZGl2PlxuICAgICAgICAgICAgICAgIDxMYWJlbCBodG1sRm9yPVwidGVtcGxhdGUtbmFtZVwiPlRlbXBsYXRlIE5hbWU8L0xhYmVsPlxuICAgICAgICAgICAgICAgIDxJbnB1dCBpZD1cInRlbXBsYXRlLW5hbWVcIiBkZWZhdWx0VmFsdWU9e3NlbGVjdGVkVGVtcGxhdGU/Lm5hbWV9IC8+XG4gICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICA8ZGl2PlxuICAgICAgICAgICAgICAgIDxMYWJlbCBodG1sRm9yPVwidGVtcGxhdGUtY2F0ZWdvcnlcIj5DYXRlZ29yeTwvTGFiZWw+XG4gICAgICAgICAgICAgICAgPHNlbGVjdCBpZD1cInRlbXBsYXRlLWNhdGVnb3J5XCIgY2xhc3NOYW1lPVwidy1mdWxsIHB4LTMgcHktMiBib3JkZXIgYm9yZGVyLWdyYXktMzAwIHJvdW5kZWQtbGdcIj5cbiAgICAgICAgICAgICAgICAgIDxvcHRpb24+RGFpbHkgUmVwb3J0czwvb3B0aW9uPlxuICAgICAgICAgICAgICAgICAgPG9wdGlvbj5Ob3RpZmljYXRpb25zPC9vcHRpb24+XG4gICAgICAgICAgICAgICAgICA8b3B0aW9uPk9uYm9hcmRpbmc8L29wdGlvbj5cbiAgICAgICAgICAgICAgICAgIDxvcHRpb24+U2VjdXJpdHk8L29wdGlvbj5cbiAgICAgICAgICAgICAgICA8L3NlbGVjdD5cbiAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICA8L2Rpdj5cblxuICAgICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgICAgPExhYmVsIGh0bWxGb3I9XCJzdWJqZWN0LWxpbmVcIj5TdWJqZWN0IExpbmU8L0xhYmVsPlxuICAgICAgICAgICAgICA8SW5wdXRcbiAgICAgICAgICAgICAgICBpZD1cInN1YmplY3QtbGluZVwiXG4gICAgICAgICAgICAgICAgcGxhY2Vob2xkZXI9XCJZb3VyIERhaWx5IERpZ2VzdCAtIHt7ZGF0ZS50b2RheX19XCJcbiAgICAgICAgICAgICAgICBkZWZhdWx0VmFsdWU9XCJZb3VyIERhaWx5IERpZ2VzdCAtIHt7ZGF0ZS50b2RheX19XCJcbiAgICAgICAgICAgICAgLz5cbiAgICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgICAgICA8ZGl2PlxuICAgICAgICAgICAgICA8TGFiZWwgaHRtbEZvcj1cInByZXZpZXctdGV4dFwiPlByZXZpZXcgVGV4dDwvTGFiZWw+XG4gICAgICAgICAgICAgIDxJbnB1dFxuICAgICAgICAgICAgICAgIGlkPVwicHJldmlldy10ZXh0XCJcbiAgICAgICAgICAgICAgICBwbGFjZWhvbGRlcj1cIlN1bW1hcnkgb2YgdG9kYXkncyB1cGRhdGVzIGFuZCBub3RpZmljYXRpb25zXCJcbiAgICAgICAgICAgICAgICBkZWZhdWx0VmFsdWU9e3NlbGVjdGVkVGVtcGxhdGU/LnByZXZpZXd9XG4gICAgICAgICAgICAgIC8+XG4gICAgICAgICAgICA8L2Rpdj5cblxuICAgICAgICAgICAgey8qIEVtYWlsIENvbnRlbnQgRWRpdG9yICovfVxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJzcGFjZS15LTJcIj5cbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWJldHdlZW5cIj5cbiAgICAgICAgICAgICAgICA8TGFiZWw+RW1haWwgQ29udGVudDwvTGFiZWw+XG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGdhcC0yXCI+XG4gICAgICAgICAgICAgICAgICA8QnV0dG9uIHZhcmlhbnQ9XCJvdXRsaW5lXCIgc2l6ZT1cInNtXCI+XG4gICAgICAgICAgICAgICAgICAgIDxDb2RlIGNsYXNzTmFtZT1cInctNCBoLTQgbXItMVwiIC8+XG4gICAgICAgICAgICAgICAgICAgIEhUTUxcbiAgICAgICAgICAgICAgICAgIDwvQnV0dG9uPlxuICAgICAgICAgICAgICAgICAgPEJ1dHRvbiB2YXJpYW50PVwib3V0bGluZVwiIHNpemU9XCJzbVwiPlxuICAgICAgICAgICAgICAgICAgICA8RXllIGNsYXNzTmFtZT1cInctNCBoLTQgbXItMVwiIC8+XG4gICAgICAgICAgICAgICAgICAgIFByZXZpZXdcbiAgICAgICAgICAgICAgICAgIDwvQnV0dG9uPlxuICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgPFRleHRhcmVhXG4gICAgICAgICAgICAgICAgcm93cz17MTV9XG4gICAgICAgICAgICAgICAgY2xhc3NOYW1lPVwiZm9udC1tb25vIHRleHQtc21cIlxuICAgICAgICAgICAgICAgIGRlZmF1bHRWYWx1ZT17YDxkaXYgc3R5bGU9XCJmb250LWZhbWlseTogQXJpYWwsIHNhbnMtc2VyaWY7IG1heC13aWR0aDogNjAwcHg7IG1hcmdpbjogMCBhdXRvO1wiPlxuICA8aDE+SGVsbG8ge3t1c2VyLm5hbWV9fSw8L2gxPlxuICBcbiAgPHA+SGVyZSdzIHlvdXIgZGFpbHkgZGlnZXN0IGZvciAke25ldyBEYXRlKCkudG9Mb2NhbGVEYXRlU3RyaW5nKCl9OjwvcD5cbiAgXG4gIDxkaXYgc3R5bGU9XCJiYWNrZ3JvdW5kOiAjZjNmNGY2OyBwYWRkaW5nOiAyMHB4OyBib3JkZXItcmFkaXVzOiA4cHg7IG1hcmdpbjogMjBweCAwO1wiPlxuICAgIDxoMj5NYXJrZXQgVXBkYXRlczwvaDI+XG4gICAgPHA+TG9yZW0gaXBzdW0gZG9sb3Igc2l0IGFtZXQsIGNvbnNlY3RldHVyIGFkaXBpc2NpbmcgZWxpdC48L3A+XG4gIDwvZGl2PlxuICBcbiAgPGEgaHJlZj1cImh0dHBzOi8vR3JvdyBNSVAuY29tL2Rhc2hib2FyZFwiIHN0eWxlPVwiZGlzcGxheTogaW5saW5lLWJsb2NrOyBiYWNrZ3JvdW5kOiAjMjU2M2ViOyBjb2xvcjogd2hpdGU7IHBhZGRpbmc6IDEycHggMjRweDsgdGV4dC1kZWNvcmF0aW9uOiBub25lOyBib3JkZXItcmFkaXVzOiA2cHg7XCI+XG4gICAgVmlldyBEYXNoYm9hcmRcbiAgPC9hPlxuICBcbiAgPHAgc3R5bGU9XCJtYXJnaW4tdG9wOiAzMHB4OyBjb2xvcjogIzZiNzI4MDsgZm9udC1zaXplOiAxMnB4O1wiPlxuICAgIMOCwqkgMjAyNiBHcm93IE1JUC4gQWxsIHJpZ2h0cyByZXNlcnZlZC5cbiAgPC9wPlxuPC9kaXY+YH1cbiAgICAgICAgICAgICAgLz5cbiAgICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgICAgICB7LyogVmFyaWFibGVzIEhlbHBlciAqL31cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYmctYmx1ZS01MCByb3VuZGVkLWxnIGJvcmRlciBib3JkZXItYmx1ZS0yMDAgcC00XCI+XG4gICAgICAgICAgICAgIDxoNCBjbGFzc05hbWU9XCJmb250LXNlbWlib2xkIHRleHQtc20gdGV4dC1ncmF5LTkwMCBtYi0yXCI+QXZhaWxhYmxlIFZhcmlhYmxlczwvaDQ+XG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBmbGV4LXdyYXAgZ2FwLTJcIj5cbiAgICAgICAgICAgICAgICB7Wyd7e3VzZXIubmFtZX19JywgJ3t7dXNlci5lbWFpbH19JywgJ3t7Y2FzZS5pZH19JywgJ3t7ZGF0ZS50b2RheX19JywgJ3t7Y29tcGFueS5uYW1lfX0nXS5tYXAoXG4gICAgICAgICAgICAgICAgICAodmFyaWFibGUpID0+IChcbiAgICAgICAgICAgICAgICAgICAgPGNvZGVcbiAgICAgICAgICAgICAgICAgICAgICBrZXk9e3ZhcmlhYmxlfVxuICAgICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT1cInB4LTIgcHktMSBiZy13aGl0ZSByb3VuZGVkIHRleHQtYmx1ZS02MDAgZm9udC1tb25vIHRleHQteHMgY3Vyc29yLXBvaW50ZXIgaG92ZXI6YmctYmx1ZS0xMDBcIlxuICAgICAgICAgICAgICAgICAgICAgIG9uQ2xpY2s9eygpID0+IHRvYXN0LmluZm8oYENvcGllZCAke3ZhcmlhYmxlfSB0byBjbGlwYm9hcmRgKX1cbiAgICAgICAgICAgICAgICAgICAgPlxuICAgICAgICAgICAgICAgICAgICAgIHt2YXJpYWJsZX1cbiAgICAgICAgICAgICAgICAgICAgPC9jb2RlPlxuICAgICAgICAgICAgICAgICAgKVxuICAgICAgICAgICAgICAgICl9XG4gICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICA8RGlhbG9nRm9vdGVyPlxuICAgICAgICAgICAgPEJ1dHRvbiB2YXJpYW50PVwib3V0bGluZVwiIG9uQ2xpY2s9eygpID0+IHNldFNob3dUZW1wbGF0ZUVkaXRvck1vZGFsKGZhbHNlKX0+XG4gICAgICAgICAgICAgIENhbmNlbFxuICAgICAgICAgICAgPC9CdXR0b24+XG4gICAgICAgICAgICA8QnV0dG9uXG4gICAgICAgICAgICAgIHZhcmlhbnQ9XCJvdXRsaW5lXCJcbiAgICAgICAgICAgICAgb25DbGljaz17KCkgPT4ge1xuICAgICAgICAgICAgICAgIHNldFNob3dUZW1wbGF0ZUVkaXRvck1vZGFsKGZhbHNlKTtcbiAgICAgICAgICAgICAgICBzZXRTaG93VGVtcGxhdGVQcmV2aWV3TW9kYWwodHJ1ZSk7XG4gICAgICAgICAgICAgIH19XG4gICAgICAgICAgICA+XG4gICAgICAgICAgICAgIDxFeWUgY2xhc3NOYW1lPVwidy00IGgtNCBtci0yXCIgLz5cbiAgICAgICAgICAgICAgUHJldmlld1xuICAgICAgICAgICAgPC9CdXR0b24+XG4gICAgICAgICAgICA8QnV0dG9uXG4gICAgICAgICAgICAgIGNsYXNzTmFtZT1cImJnLWJsdWUtNjAwIGhvdmVyOmJnLWJsdWUtNzAwXCJcbiAgICAgICAgICAgICAgb25DbGljaz17KCkgPT4ge1xuICAgICAgICAgICAgICAgIHNldFNob3dUZW1wbGF0ZUVkaXRvck1vZGFsKGZhbHNlKTtcbiAgICAgICAgICAgICAgICB0b2FzdC5zdWNjZXNzKCdUZW1wbGF0ZSBzYXZlZCBzdWNjZXNzZnVsbHkhJyk7XG4gICAgICAgICAgICAgIH19XG4gICAgICAgICAgICA+XG4gICAgICAgICAgICAgIDxTYXZlIGNsYXNzTmFtZT1cInctNCBoLTQgbXItMlwiIC8+XG4gICAgICAgICAgICAgIFNhdmUgVGVtcGxhdGVcbiAgICAgICAgICAgIDwvQnV0dG9uPlxuICAgICAgICAgIDwvRGlhbG9nRm9vdGVyPlxuICAgICAgICA8L0RpYWxvZ0NvbnRlbnQ+XG4gICAgICA8L0RpYWxvZz5cbiAgICA8Lz5cbiAgKTtcbn1cblxyXG4iXSwiZmlsZSI6IkM6L1VzZXJzL0FuZHJldyBOYWdsZS9EZXNrdG9wL0dyb3dreWMtbWFpbi9Hcm93a3ljLW1haW4vc3JjL2FwcC9jb21wb25lbnRzL2VtYWlsLXN5c3RlbS9FbWFpbE1vZGFscy50c3gifQ==

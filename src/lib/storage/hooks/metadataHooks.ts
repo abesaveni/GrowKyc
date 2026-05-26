@@ -32,34 +32,50 @@ export interface MetadataHookContext {
 
 /**
  * Retention Metadata Hook
- * Enforces retention policies and prevents deletion of retained evidence
+ * Enforces AUSTRAC retention policies (uploadDate + 7 years) and prevents deletion
  */
 export function applyRetentionMetadataHook(
   metadata: S3EvidenceMetadata,
   context: MetadataHookContext
 ): RetentionMetadata | undefined {
-  // If no retention set, no hook action needed
-  if (!metadata.retention) {
-    return undefined;
-  }
-
-  const retention = metadata.retention;
-  const expiresAtDate = new Date(retention.expiresAt);
-  const isExpired = context.now >= expiresAtDate;
-
-  // Prevent deletion operations on non-expired evidence
-  if (context.operation === 'delete' && !isExpired) {
-    throw new RetentionPolicyError(
-      `Evidence cannot be deleted. Retention period active until ${retention.expiresAt}`
-    );
-  }
-
-  // Update expiration if reaching end of retention period
-  if (isExpired && context.operation === 'delete') {
-    return {
-      ...retention,
-      deleteBlocked: false, // Allow deletion after expiration
+  // If no retention is set, default to AUSTRAC 7 year policy based on requirement
+  let retention = metadata.retention;
+  
+  if (!retention) {
+    const uploadDate = metadata.uploadedAt ? new Date(metadata.uploadedAt) : context.now;
+    const retentionUntil = new Date(uploadDate);
+    retentionUntil.setUTCFullYear(retentionUntil.getUTCFullYear() + 7);
+    
+    retention = {
+      retentionPolicy: "austrac-7y",
+      retentionUntil: retentionUntil.toISOString(),
+      expiresAt: retentionUntil.toISOString(),
+      deleteBlocked: true,
+      setBy: "system",
+      setAt: context.now.toISOString(),
     };
+  }
+
+  // If there's an explicit expiresAt date or calculated retentionUntil
+  const expiryDate = retention.expiresAt || retention.retentionUntil;
+  if (expiryDate) {
+    const expiresAtDate = new Date(expiryDate);
+    const isExpired = context.now >= expiresAtDate;
+
+    // Prevent deletion operations on non-expired evidence
+    if (context.operation === 'delete' && !isExpired) {
+      throw new RetentionPolicyError(
+        `Evidence cannot be deleted. Retention period active until ${expiryDate}`
+      );
+    }
+
+    // Update expiration if reaching end of retention period
+    if (isExpired && context.operation === 'delete') {
+      return {
+        ...retention,
+        deleteBlocked: false, // Allow deletion after expiration
+      };
+    }
   }
 
   return retention;
@@ -68,17 +84,43 @@ export function applyRetentionMetadataHook(
 /**
  * Legal Hold Compatibility Hook
  * Prevents deletion of evidence under legal hold and ensures compliance
+ * Applies automatic legal hold for sanctions or PEP matches.
  */
 export function applyLegalHoldCompatibilityHook(
   metadata: S3EvidenceMetadata,
   context: MetadataHookContext
 ): LegalHoldMetadata | undefined {
-  // If no legal hold or not active, no hook action needed
-  if (!metadata.legalHold || metadata.legalHold.status === 'none') {
-    return undefined;
+  let legalHold = metadata.legalHold;
+
+  // Auto-apply legal hold if sanctions hit or PEP match
+  const hasSanctionsHit = metadata.custom?.sanctions_hit === true;
+  const hasPepMatch = metadata.custom?.pep_match === true;
+  
+  if (hasSanctionsHit || hasPepMatch) {
+    if (!legalHold) {
+      legalHold = {
+        status: 'active',
+        legal_hold: true,
+        reason: 'Automated compliance hold due to PEP/Sanctions match',
+        appliedAt: context.now.toISOString(),
+        appliedBy: 'system',
+      };
+    } else if (legalHold.status !== 'active') {
+      legalHold = {
+        ...legalHold,
+        status: 'active',
+        legal_hold: true,
+        reason: 'Automated compliance hold due to PEP/Sanctions match',
+        appliedAt: context.now.toISOString(),
+        appliedBy: 'system',
+      };
+    }
   }
 
-  const legalHold = metadata.legalHold;
+  // If no legal hold or not active, no hook action needed
+  if (!legalHold || legalHold.status === 'none') {
+    return undefined;
+  }
 
   // Block deletion if legal hold is active
   if (legalHold.status === 'active' && context.operation === 'delete') {
@@ -91,7 +133,6 @@ export function applyLegalHoldCompatibilityHook(
   // Block updates to legal hold status without proper authorization
   if (context.operation === 'update') {
     // In a real system, would check user permissions/roles
-    // This is a placeholder for the compliance check
     if (legalHold.status === 'released') {
       return {
         ...legalHold,

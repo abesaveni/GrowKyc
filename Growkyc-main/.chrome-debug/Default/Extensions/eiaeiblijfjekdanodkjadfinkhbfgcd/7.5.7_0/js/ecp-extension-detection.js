@@ -1,0 +1,1 @@
+(function(){"use strict";const i=s=>{s.source&&s.origin===globalThis.origin&&s.data?.type==="NORDPASS/IS_INSTALLED"&&s.data.source==="ECP"&&s.source.postMessage({type:"NORDPASS/IS_INSTALLED"},s.origin)};globalThis.isExtensionListenerAdded||(globalThis.addEventListener("message",i),globalThis.isExtensionListenerAdded=!0)})();

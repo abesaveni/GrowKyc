@@ -1,5 +1,4 @@
 import type { S3StorageConfig } from './s3Config';
-import type { S3ClientConfig } from '@aws-sdk/client-s3';
 
 function assertServerRuntime(): void {
   if (typeof window !== 'undefined') {
@@ -12,10 +11,10 @@ function assertServerRuntime(): void {
  * Caller is responsible for initializing the actual S3Client.
  * This factory provides consistent configuration across the application.
  */
-export function createS3ClientConfig(config: S3StorageConfig): S3ClientConfig {
+export function createS3ClientConfig(config: S3StorageConfig) {
   assertServerRuntime();
 
-  const s3Config: S3ClientConfig = {
+  const s3Config: Record<string, unknown> = {
     region: config.region,
     credentials: {
       accessKeyId: config.accessKeyId,
@@ -25,6 +24,11 @@ export function createS3ClientConfig(config: S3StorageConfig): S3ClientConfig {
 
   if (config.endpoint) {
     s3Config.endpoint = config.endpoint;
+  }
+
+  // KMS configuration for encryption at rest
+  if (config.kmsKeyId) {
+    s3Config.kmsKeyId = config.kmsKeyId;
   }
 
   return s3Config;

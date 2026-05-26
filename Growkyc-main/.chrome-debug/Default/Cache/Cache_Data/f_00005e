@@ -1,0 +1,182 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/@fs/C:\\Users\\Andrew Nagle\\Desktop\\Growkyc-main\\Growkyc-main\\src\\app\\components\\ui\\countdown-timer.tsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=15066356"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = RefreshRuntime.getRefreshReg("C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/countdown-timer.tsx");
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+var _s = $RefreshSig$();
+import __vite__cjsImport3_react from "/node_modules/.vite/deps/react.js?v=15066356"; const useState = __vite__cjsImport3_react["useState"]; const useEffect = __vite__cjsImport3_react["useEffect"];
+import { Clock } from "/node_modules/.vite/deps/lucide-react.js?v=15066356";
+import { cn } from "/src/app/components/ui/utils.ts";
+export function CountdownTimer({ endDate, end, onExpire, className, variant = "default" }) {
+  _s();
+  const targetDate = endDate || end;
+  if (!targetDate) {
+    return /* @__PURE__ */ jsxDEV("span", { className, children: "--:--:--" }, void 0, false, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/countdown-timer.tsx",
+      lineNumber: 37,
+      columnNumber: 12
+    }, this);
+  }
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(targetDate));
+  useEffect(() => {
+    if (!targetDate) return;
+    const timer = setInterval(() => {
+      const newTimeLeft = calculateTimeLeft(targetDate);
+      setTimeLeft(newTimeLeft);
+      if (newTimeLeft.total <= 0) {
+        clearInterval(timer);
+        onExpire?.();
+      }
+    }, 1e3);
+    return () => clearInterval(timer);
+  }, [targetDate, onExpire]);
+  if (timeLeft.total <= 0) {
+    return /* @__PURE__ */ jsxDEV("div", { className: cn("text-red-600 font-semibold", className), children: "Auction Ended" }, void 0, false, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/countdown-timer.tsx",
+      lineNumber: 60,
+      columnNumber: 7
+    }, this);
+  }
+  if (variant === "compact") {
+    return /* @__PURE__ */ jsxDEV("div", { className: cn("flex items-center gap-2 text-sm", className), children: [
+      /* @__PURE__ */ jsxDEV(Clock, { className: "w-4 h-4 text-gray-500" }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/countdown-timer.tsx",
+        lineNumber: 69,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("span", { children: [
+        timeLeft.days,
+        "d ",
+        timeLeft.hours,
+        "h ",
+        timeLeft.minutes,
+        "m"
+      ] }, void 0, true, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/countdown-timer.tsx",
+        lineNumber: 70,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/countdown-timer.tsx",
+      lineNumber: 68,
+      columnNumber: 7
+    }, this);
+  }
+  if (variant === "large") {
+    return /* @__PURE__ */ jsxDEV("div", { className: cn("flex gap-4", className), children: [
+      /* @__PURE__ */ jsxDEV(TimeUnit, { value: timeLeft.days, label: "Days" }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/countdown-timer.tsx",
+        lineNumber: 80,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV(TimeUnit, { value: timeLeft.hours, label: "Hours" }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/countdown-timer.tsx",
+        lineNumber: 81,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV(TimeUnit, { value: timeLeft.minutes, label: "Minutes" }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/countdown-timer.tsx",
+        lineNumber: 82,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV(TimeUnit, { value: timeLeft.seconds, label: "Seconds" }, void 0, false, {
+        fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/countdown-timer.tsx",
+        lineNumber: 83,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/countdown-timer.tsx",
+      lineNumber: 79,
+      columnNumber: 7
+    }, this);
+  }
+  return /* @__PURE__ */ jsxDEV("div", { className: cn("flex items-center gap-2", className), children: [
+    /* @__PURE__ */ jsxDEV(Clock, { className: "w-5 h-5 text-gray-500" }, void 0, false, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/countdown-timer.tsx",
+      lineNumber: 90,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("span", { className: "font-semibold", children: [
+      timeLeft.days > 0 && `${timeLeft.days}d `,
+      String(timeLeft.hours).padStart(2, "0"),
+      ":",
+      String(timeLeft.minutes).padStart(2, "0"),
+      ":",
+      String(timeLeft.seconds).padStart(2, "0")
+    ] }, void 0, true, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/countdown-timer.tsx",
+      lineNumber: 91,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/countdown-timer.tsx",
+    lineNumber: 89,
+    columnNumber: 5
+  }, this);
+}
+_s(CountdownTimer, "N/D2vKZjgjegHNcPc6l31bfnHi0=");
+_c = CountdownTimer;
+function TimeUnit({ value, label }) {
+  return /* @__PURE__ */ jsxDEV("div", { className: "flex flex-col items-center", children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "bg-gray-900 text-white rounded-lg px-4 py-2 min-w-[60px] text-center", children: /* @__PURE__ */ jsxDEV("span", { className: "text-2xl font-bold", children: String(value).padStart(2, "0") }, void 0, false, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/countdown-timer.tsx",
+      lineNumber: 105,
+      columnNumber: 9
+    }, this) }, void 0, false, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/countdown-timer.tsx",
+      lineNumber: 104,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("span", { className: "text-xs text-gray-600 mt-1", children: label }, void 0, false, {
+      fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/countdown-timer.tsx",
+      lineNumber: 107,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/countdown-timer.tsx",
+    lineNumber: 103,
+    columnNumber: 5
+  }, this);
+}
+_c2 = TimeUnit;
+function calculateTimeLeft(endDate) {
+  const total = endDate.getTime() - Date.now();
+  if (total <= 0) {
+    return { total: 0, days: 0, hours: 0, minutes: 0, seconds: 0 };
+  }
+  const seconds = Math.floor(total / 1e3 % 60);
+  const minutes = Math.floor(total / 1e3 / 60 % 60);
+  const hours = Math.floor(total / (1e3 * 60 * 60) % 24);
+  const days = Math.floor(total / (1e3 * 60 * 60 * 24));
+  return { total, days, hours, minutes, seconds };
+}
+var _c, _c2;
+$RefreshReg$(_c, "CountdownTimer");
+$RefreshReg$(_c2, "TimeUnit");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/countdown-timer.tsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/Andrew Nagle/Desktop/Growkyc-main/Growkyc-main/src/app/components/ui/countdown-timer.tsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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Q2hEO0FBQUMsSUFBQVksSUFBQU47QUFBQSxhQUFBTSxJQUFBO0FBQUEsYUFBQU4sS0FBQSIsIm5hbWVzIjpbInVzZVN0YXRlIiwidXNlRWZmZWN0IiwiQ2xvY2siLCJjbiIsIkNvdW50ZG93blRpbWVyIiwiZW5kRGF0ZSIsImVuZCIsIm9uRXhwaXJlIiwiY2xhc3NOYW1lIiwidmFyaWFudCIsIl9zIiwidGFyZ2V0RGF0ZSIsInRpbWVMZWZ0Iiwic2V0VGltZUxlZnQiLCJjYWxjdWxhdGVUaW1lTGVmdCIsInRpbWVyIiwic2V0SW50ZXJ2YWwiLCJuZXdUaW1lTGVmdCIsInRvdGFsIiwiY2xlYXJJbnRlcnZhbCIsImRheXMiLCJob3VycyIsIm1pbnV0ZXMiLCJzZWNvbmRzIiwiU3RyaW5nIiwicGFkU3RhcnQiLCJUaW1lVW5pdCIsInZhbHVlIiwibGFiZWwiLCJfYzIiLCJnZXRUaW1lIiwiRGF0ZSIsIm5vdyIsIk1hdGgiLCJmbG9vciIsIl9jIl0sImlnbm9yZUxpc3QiOltdLCJzb3VyY2VzIjpbImNvdW50ZG93bi10aW1lci50c3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0LCB7IHVzZVN0YXRlLCB1c2VFZmZlY3QgfSBmcm9tICdyZWFjdCc7XG5pbXBvcnQgeyBDbG9jayB9IGZyb20gJ2x1Y2lkZS1yZWFjdCc7XG5pbXBvcnQgeyBjbiB9IGZyb20gJy4vdXRpbHMnO1xuXG5pbnRlcmZhY2UgQ291bnRkb3duVGltZXJQcm9wcyB7XG4gIGVuZERhdGU/OiBEYXRlO1xuICBlbmQ/OiBEYXRlOyAvLyBTdXBwb3J0IGJvdGggcHJvcCBuYW1lc1xuICBvbkV4cGlyZT86ICgpID0+IHZvaWQ7XG4gIGNsYXNzTmFtZT86IHN0cmluZztcbiAgdmFyaWFudD86ICdkZWZhdWx0JyB8ICdjb21wYWN0JyB8ICdsYXJnZSc7XG59XG5cbmV4cG9ydCBmdW5jdGlvbiBDb3VudGRvd25UaW1lcih7IGVuZERhdGUsIGVuZCwgb25FeHBpcmUsIGNsYXNzTmFtZSwgdmFyaWFudCA9ICdkZWZhdWx0JyB9OiBDb3VudGRvd25UaW1lclByb3BzKSB7XG4gIGNvbnN0IHRhcmdldERhdGUgPSBlbmREYXRlIHx8IGVuZDtcbiAgXG4gIC8vIFJldHVybiBhIHBsYWNlaG9sZGVyIGlmIG5vIGRhdGUgaXMgcHJvdmlkZWRcbiAgaWYgKCF0YXJnZXREYXRlKSB7XG4gICAgcmV0dXJuIDxzcGFuIGNsYXNzTmFtZT17Y2xhc3NOYW1lfT4tLTotLTotLTwvc3Bhbj47XG4gIH1cbiAgXG4gIGNvbnN0IFt0aW1lTGVmdCwgc2V0VGltZUxlZnRdID0gdXNlU3RhdGUoY2FsY3VsYXRlVGltZUxlZnQodGFyZ2V0RGF0ZSkpO1xuXG4gIHVzZUVmZmVjdCgoKSA9PiB7XG4gICAgaWYgKCF0YXJnZXREYXRlKSByZXR1cm47XG4gICAgXG4gICAgY29uc3QgdGltZXIgPSBzZXRJbnRlcnZhbCgoKSA9PiB7XG4gICAgICBjb25zdCBuZXdUaW1lTGVmdCA9IGNhbGN1bGF0ZVRpbWVMZWZ0KHRhcmdldERhdGUpO1xuICAgICAgc2V0VGltZUxlZnQobmV3VGltZUxlZnQpO1xuXG4gICAgICBpZiAobmV3VGltZUxlZnQudG90YWwgPD0gMCkge1xuICAgICAgICBjbGVhckludGVydmFsKHRpbWVyKTtcbiAgICAgICAgb25FeHBpcmU/LigpO1xuICAgICAgfVxuICAgIH0sIDEwMDApO1xuXG4gICAgcmV0dXJuICgpID0+IGNsZWFySW50ZXJ2YWwodGltZXIpO1xuICB9LCBbdGFyZ2V0RGF0ZSwgb25FeHBpcmVdKTtcblxuICBpZiAodGltZUxlZnQudG90YWwgPD0gMCkge1xuICAgIHJldHVybiAoXG4gICAgICA8ZGl2IGNsYXNzTmFtZT17Y24oJ3RleHQtcmVkLTYwMCBmb250LXNlbWlib2xkJywgY2xhc3NOYW1lKX0+XG4gICAgICAgIEF1Y3Rpb24gRW5kZWRcbiAgICAgIDwvZGl2PlxuICAgICk7XG4gIH1cblxuICBpZiAodmFyaWFudCA9PT0gJ2NvbXBhY3QnKSB7XG4gICAgcmV0dXJuIChcbiAgICAgIDxkaXYgY2xhc3NOYW1lPXtjbignZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTIgdGV4dC1zbScsIGNsYXNzTmFtZSl9PlxuICAgICAgICA8Q2xvY2sgY2xhc3NOYW1lPVwidy00IGgtNCB0ZXh0LWdyYXktNTAwXCIgLz5cbiAgICAgICAgPHNwYW4+XG4gICAgICAgICAge3RpbWVMZWZ0LmRheXN9ZCB7dGltZUxlZnQuaG91cnN9aCB7dGltZUxlZnQubWludXRlc31tXG4gICAgICAgIDwvc3Bhbj5cbiAgICAgIDwvZGl2PlxuICAgICk7XG4gIH1cblxuICBpZiAodmFyaWFudCA9PT0gJ2xhcmdlJykge1xuICAgIHJldHVybiAoXG4gICAgICA8ZGl2IGNsYXNzTmFtZT17Y24oJ2ZsZXggZ2FwLTQnLCBjbGFzc05hbWUpfT5cbiAgICAgICAgPFRpbWVVbml0IHZhbHVlPXt0aW1lTGVmdC5kYXlzfSBsYWJlbD1cIkRheXNcIiAvPlxuICAgICAgICA8VGltZVVuaXQgdmFsdWU9e3RpbWVMZWZ0LmhvdXJzfSBsYWJlbD1cIkhvdXJzXCIgLz5cbiAgICAgICAgPFRpbWVVbml0IHZhbHVlPXt0aW1lTGVmdC5taW51dGVzfSBsYWJlbD1cIk1pbnV0ZXNcIiAvPlxuICAgICAgICA8VGltZVVuaXQgdmFsdWU9e3RpbWVMZWZ0LnNlY29uZHN9IGxhYmVsPVwiU2Vjb25kc1wiIC8+XG4gICAgICA8L2Rpdj5cbiAgICApO1xuICB9XG5cbiAgcmV0dXJuIChcbiAgICA8ZGl2IGNsYXNzTmFtZT17Y24oJ2ZsZXggaXRlbXMtY2VudGVyIGdhcC0yJywgY2xhc3NOYW1lKX0+XG4gICAgICA8Q2xvY2sgY2xhc3NOYW1lPVwidy01IGgtNSB0ZXh0LWdyYXktNTAwXCIgLz5cbiAgICAgIDxzcGFuIGNsYXNzTmFtZT1cImZvbnQtc2VtaWJvbGRcIj5cbiAgICAgICAge3RpbWVMZWZ0LmRheXMgPiAwICYmIGAke3RpbWVMZWZ0LmRheXN9ZCBgfVxuICAgICAgICB7U3RyaW5nKHRpbWVMZWZ0LmhvdXJzKS5wYWRTdGFydCgyLCAnMCcpfTpcbiAgICAgICAge1N0cmluZyh0aW1lTGVmdC5taW51dGVzKS5wYWRTdGFydCgyLCAnMCcpfTpcbiAgICAgICAge1N0cmluZyh0aW1lTGVmdC5zZWNvbmRzKS5wYWRTdGFydCgyLCAnMCcpfVxuICAgICAgPC9zcGFuPlxuICAgIDwvZGl2PlxuICApO1xufVxuXG5mdW5jdGlvbiBUaW1lVW5pdCh7IHZhbHVlLCBsYWJlbCB9OiB7IHZhbHVlOiBudW1iZXI7IGxhYmVsOiBzdHJpbmcgfSkge1xuICByZXR1cm4gKFxuICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBmbGV4LWNvbCBpdGVtcy1jZW50ZXJcIj5cbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYmctZ3JheS05MDAgdGV4dC13aGl0ZSByb3VuZGVkLWxnIHB4LTQgcHktMiBtaW4tdy1bNjBweF0gdGV4dC1jZW50ZXJcIj5cbiAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwidGV4dC0yeGwgZm9udC1ib2xkXCI+e1N0cmluZyh2YWx1ZSkucGFkU3RhcnQoMiwgJzAnKX08L3NwYW4+XG4gICAgICA8L2Rpdj5cbiAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRleHQteHMgdGV4dC1ncmF5LTYwMCBtdC0xXCI+e2xhYmVsfTwvc3Bhbj5cbiAgICA8L2Rpdj5cbiAgKTtcbn1cblxuZnVuY3Rpb24gY2FsY3VsYXRlVGltZUxlZnQoZW5kRGF0ZTogRGF0ZSkge1xuICBjb25zdCB0b3RhbCA9IGVuZERhdGUuZ2V0VGltZSgpIC0gRGF0ZS5ub3coKTtcbiAgXG4gIGlmICh0b3RhbCA8PSAwKSB7XG4gICAgcmV0dXJuIHsgdG90YWw6IDAsIGRheXM6IDAsIGhvdXJzOiAwLCBtaW51dGVzOiAwLCBzZWNvbmRzOiAwIH07XG4gIH1cblxuICBjb25zdCBzZWNvbmRzID0gTWF0aC5mbG9vcigodG90YWwgLyAxMDAwKSAlIDYwKTtcbiAgY29uc3QgbWludXRlcyA9IE1hdGguZmxvb3IoKHRvdGFsIC8gMTAwMCAvIDYwKSAlIDYwKTtcbiAgY29uc3QgaG91cnMgPSBNYXRoLmZsb29yKCh0b3RhbCAvICgxMDAwICogNjAgKiA2MCkpICUgMjQpO1xuICBjb25zdCBkYXlzID0gTWF0aC5mbG9vcih0b3RhbCAvICgxMDAwICogNjAgKiA2MCAqIDI0KSk7XG5cbiAgcmV0dXJuIHsgdG90YWwsIGRheXMsIGhvdXJzLCBtaW51dGVzLCBzZWNvbmRzIH07XG59Il0sImZpbGUiOiJDOi9Vc2Vycy9BbmRyZXcgTmFnbGUvRGVza3RvcC9Hcm93a3ljLW1haW4vR3Jvd2t5Yy1tYWluL3NyYy9hcHAvY29tcG9uZW50cy91aS9jb3VudGRvd24tdGltZXIudHN4In0=

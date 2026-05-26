@@ -4,13 +4,10 @@
  * Server-side only, no client-side upload flow
  */
 
-import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
-import type { PutObjectCommandInput, S3ClientConfig } from '@aws-sdk/client-s3';
-
 import type { EvidenceRecord } from '../models/evidenceRecord';
-import type { StorageResult } from '../models/storageResult';
-import type { StorageError } from '../models/storageError';
-import type { StoredObjectMetadata } from '../models/storedObjectMetadata';
+import type { StorageResult } from '../models/storageResult.ts';
+import type { StorageError } from '../models/storageError.ts';
+import type { StoredObjectMetadata } from '../models/storedObjectMetadata.ts';
 import { EvidenceObjectKeyBuilder } from '../builders/evidenceObjectKeyBuilder';
 import {
   mapEvidenceToS3Metadata,
@@ -28,6 +25,7 @@ import {
   createS3ClientConfig,
   getEvidenceBucketName,
 } from '../aws';
+import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 
 /**
  * S3 Evidence Upload Service
@@ -43,7 +41,7 @@ export class S3EvidenceUploadService {
   /**
    * Upload evidence file to S3 with full metadata support
    * @param evidence Evidence record with metadata
-   * @param fileBuffer File content as Uint8Array
+   * @param fileBuffer File content as Buffer
    * @param uploadedBy User ID performing upload
    * @returns StorageResult with upload metadata or StorageError
    */
@@ -148,26 +146,25 @@ export class S3EvidenceUploadService {
       // Build S3 metadata headers
       const userMetadata = mapToS3UserMetadata(processedMetadata);
       const objectTags = mapToS3MetadataTags(processedMetadata);
-      const tagging = new URLSearchParams(objectTags).toString();
 
       // Prepare S3 put object parameters
-      const uploadParams: PutObjectCommandInput = {
+      const uploadParams = {
         Bucket: bucketName,
         Key: objectKey,
         Body: fileBuffer,
         ContentType: evidence.mimeType,
         ContentLength: fileBuffer.length,
         Metadata: userMetadata,
-        Tagging: tagging,
+        Tags: objectTags,
         // Enable versioning if supported by bucket
         ServerSideEncryption: config.kmsKeyId ? 'aws:kms' : undefined,
         SSEKMSKeyId: config.kmsKeyId,
       };
 
       // Filter out undefined values
-      const cleanParams: PutObjectCommandInput = Object.fromEntries(
+      const cleanParams = Object.fromEntries(
         Object.entries(uploadParams).filter(([, v]) => v !== undefined)
-      ) as PutObjectCommandInput;
+      );
 
       // Perform S3 upload
       // Note: Actual S3 client instantiation deferred to runtime
@@ -217,13 +214,14 @@ export class S3EvidenceUploadService {
    * @private
    */
   private async performS3Upload(
-    params: PutObjectCommandInput,
-    clientConfig: S3ClientConfig
+    params: any,
+    config: any
   ): Promise<
     | { ok: true; etag?: string; versionId?: string }
     | { ok: false; error: StorageError }
   > {
     try {
+      const clientConfig = createS3ClientConfig(config);
       const client = new S3Client(clientConfig);
       const command = new PutObjectCommand(params);
       const response = await client.send(command);
