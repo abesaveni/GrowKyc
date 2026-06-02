@@ -128,8 +128,23 @@ export function ReportingRulesAndTriggers({ onBack }: { onBack?: () => void }) {
           throw new Error('Rules payload is not formatted as an array');
         }
 
+        interface RawRule {
+          id?: string;
+          name?: string;
+          group?: string;
+          triggerCondition?: string;
+          description?: string;
+          action?: string;
+          severity?: string;
+          autoCreate?: boolean | number;
+          managerReview?: boolean | number;
+          serviceHold?: boolean | number;
+          enabled?: boolean | number;
+          threshold?: string | number;
+        }
+
         // Safe runtime validation and transformation of raw values into RuleBase[] structure
-        const validatedData: RuleBase[] = raw.map((item: any): RuleBase => {
+        const validatedData: RuleBase[] = raw.map((item: RawRule): RuleBase => {
           const sev = String(item.severity || '').toLowerCase();
           const validSeverity: Rule['severity'] = 
             sev === 'low' || sev === 'medium' || sev === 'high' || sev === 'critical'

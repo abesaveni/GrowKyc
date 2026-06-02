@@ -163,7 +163,7 @@ class KYCSubmit(BaseModel):
     
     documents: Optional[List[IdentityDocumentCreate]] = Field(default_factory=list)
     
-    name: str = Field(..., min_length=2, max_length=255)
+    name: Optional[str] = Field(None, min_length=2, max_length=255)
     email: Optional[EmailStr] = None
     dob: Optional[date] = None
     gender: Optional[str] = None

@@ -6,6 +6,7 @@ import { Badge } from '../ui/badge';
 import SourceOfFundsVerification, { SOFData } from './SourceOfFundsVerification';
 import { getReviewWorkflowService } from '../../../lib/models/reviewWorkflowService';
 import { toast } from 'sonner';
+import { logComplianceActivity } from '../../../utils/activityLogger';
 import {
   Shield,
   AlertTriangle,
@@ -289,11 +290,23 @@ export function SimulatedAUSTRACAudit() {
     setTimeout(() => {
       setDeskReviewComplete(true);
       setCompletedStages(prev => [...prev, 'desk-review']);
+      logComplianceActivity({
+        type: 'document',
+        action: 'completed AUSTRAC Desk Review simulation',
+        iconName: 'FileText',
+        color: 'text-purple-600'
+      });
     }, deskReviewItems.length * 2000 + 1000);
   };
 
   const handleSOFComplete = async (data: SOFData) => {
     setSofData(data);
+    logComplianceActivity({
+      type: 'approval',
+      action: 'verified Source of Funds (SOF) declaration',
+      iconName: 'CheckCircle',
+      color: 'text-green-600'
+    });
     
     // Fire audit event via ReviewWorkflowService
     try {

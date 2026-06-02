@@ -265,6 +265,55 @@ export function KYCDashboardOverview({ onViewClient, onBack }: KYCDashboardOverv
     return `${days} days`;
   };
 
+  const handleExportDashboard = () => {
+    if (filteredClients.length === 0) {
+      toast.info('No KYC records to export for current filters.');
+      return;
+    }
+
+    const headers = [
+      'Client ID',
+      'Name',
+      'Type',
+      'Status',
+      'Risk Level',
+      'Completion %',
+      'Verification Score',
+      'Documents',
+      'Last Reviewed',
+      'Next Review',
+      'Assigned Officer'
+    ];
+
+    const rows = filteredClients.map((client) => [
+      client.id,
+      client.name,
+      client.type,
+      client.status,
+      client.riskLevel,
+      String(client.completionPercentage),
+      String(client.verificationScore),
+      `${client.documentsComplete}/${client.documentsTotal}`,
+      client.lastReviewed,
+      client.nextReview,
+      client.assignedOfficer
+    ]);
+
+    const csvContent = [headers, ...rows]
+      .map((row) => row.map((value) => `"${String(value).replace(/"/g, '""')}"`).join(','))
+      .join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `kyc-dashboard-${new Date().toISOString().slice(0, 10)}.csv`;
+    link.click();
+    URL.revokeObjectURL(url);
+
+    toast.success(`Exported ${filteredClients.length} KYC record(s).`);
+  };
+
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
       {/* Header */}
@@ -275,7 +324,7 @@ export function KYCDashboardOverview({ onViewClient, onBack }: KYCDashboardOverv
             <p className="text-gray-600 mt-1">Complete overview of all clients and entities</p>
           </div>
           <div className="flex items-center gap-3">
-            <Button variant="outline" size="sm" onClick={() => alert("KYC Dashboard data exported to CSV.")}>
+            <Button variant="outline" size="sm" onClick={handleExportDashboard}>
               <Download className="w-4 h-4 mr-2" />
               Export
             </Button>

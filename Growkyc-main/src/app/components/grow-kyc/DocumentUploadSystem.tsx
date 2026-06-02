@@ -261,13 +261,19 @@ const trustDocuments = {
   }
 };
 
+const allDocumentRequirements = {
+  ...documentRequirements,
+  ...companyDocuments,
+  ...trustDocuments
+};
+
 export function DocumentUploadSystem({ documentType, onComplete, onBack }: DocumentUploadSystemProps) {
   const [documentData, setDocumentData] = useState<any>({});
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [verificationResults, setVerificationResults] = useState<any>({});
   const [isProcessing, setIsProcessing] = useState(false);
 
-  const docConfig = documentRequirements[documentType as keyof typeof documentRequirements];
+  const docConfig = allDocumentRequirements[documentType as keyof typeof allDocumentRequirements] as any;
 
   if (!docConfig) {
     return (
@@ -335,7 +341,7 @@ export function DocumentUploadSystem({ documentType, onComplete, onBack }: Docum
       documentType: documentType,
       documentName: docConfig.name,
       category: docConfig.category,
-      points: docConfig.points,
+      points: docConfig.points || 0,
       uploadedFile: uploadedFile.name,
       fileSize: uploadedFile.size,
       fileType: uploadedFile.type,

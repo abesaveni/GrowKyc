@@ -39,7 +39,10 @@ async def documents_upload(
         try:
             doc_type = DocumentType[document_type]
         except KeyError:
-            raise ValidationError(f"Invalid document type: {document_type}")
+            try:
+                doc_type = DocumentType(document_type)
+            except ValueError:
+                raise ValidationError(f"Invalid document type: {document_type}")
 
         kyc = KYCService(db).get_kyc_by_id(kyc_id)
 

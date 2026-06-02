@@ -7,14 +7,12 @@ import { RemainingTabs } from './RemainingTabs';
 import { AMLHitsDetail } from './AMLHitsDetail';
 import { RelatedEntitiesTab } from './RelatedEntitiesTab';
 import { IdentityTab } from '../grow-kyc/IdentityTab';
-import { ClientsDB } from './ClientsDatabase';
 import {
   Shield,
   AlertTriangle,
   CheckCircle,
   XCircle,
   User,
-  Building,
   CreditCard,
   FileText,
   Eye,
@@ -41,10 +39,13 @@ import {
   Flag,
   CheckSquare,
   AlertCircle
+  ,
+  Building
 } from 'lucide-react';
 
 type TabType = 'overview' | 'actions' | 'identity' | 'aml' | 'entity' | 'ownership' | 'financial' | 'fraud' | 'legal' | 'run-checks' | 'compliance' | 'documents' | 'monitoring' | 'decisions' | 'austrac' | 'audit' | 'related-entities';
 
+// Test Client Data
 interface TestClient {
   id: string;
   name: string;
@@ -171,25 +172,37 @@ interface TestClient {
 
 const TEST_CLIENTS: TestClient[] = [
   {
-    id: '1',
-    name: 'Acme Property Holdings Pty Ltd',
+    id: 'client-001',
+    name: 'ABC Enterprises Pty Ltd',
     entityType: 'Company',
     status: 'Active',
     abn: '12 345 678 901',
     acn: '123 456 789',
     country: 'Australia',
-    industry: 'Real Estate & Investment',
+    industry: 'Technology Services',
     serviceType: 'Trust Administration',
-    clientGroup: 'Property Sector',
-    riskScores: { overall: 28, aml: 25, financial: 30, business: 35, ownership: 20 },
-    quickStatus: { identity: 'Verified', aml: 'Clear', entity: 'Active', monitoring: 'Active' },
-    lastReview: '2024-03-15',
-    nextReview: '2025-03-15',
+    clientGroup: 'Professional Services',
+    riskScores: {
+      overall: 42,
+      aml: 38,
+      financial: 55,
+      business: 48,
+      ownership: 35
+    },
+    quickStatus: {
+      identity: 'Verified',
+      aml: '2 Matches',
+      entity: 'Active',
+      monitoring: 'Active'
+    },
+    lastReview: '2026-03-15',
+    nextReview: '2026-06-15',
     identityData: {
       primaryID: { type: 'Passport', number: 'N1234567', expiry: '2028-06-15', verified: true },
       secondaryID: { type: 'Driver License', number: '12345678', expiry: '2027-03-20', verified: true },
       additionalDocuments: [
-        { type: 'Medicare Card', number: '1234 56789 0', expiry: '2026-12-31', verified: true }
+        { type: 'Medicare Card', number: '1234 56789 0', expiry: '2026-12-31', verified: true },
+        { type: 'Utility Bill', number: 'UB-998877', verified: true }
       ],
       biometricStatus: 'Passed',
       livenessCheck: true,
@@ -201,67 +214,109 @@ const TEST_CLIENTS: TestClient[] = [
     amlData: {
       sanctionsMatches: 0,
       pepStatus: 'Not PEP',
-      adverseMediaHits: 0,
+      adverseMediaHits: 2,
       worldCheckStatus: 'Clear',
       transactionMonitoring: 'Active',
       riskRating: 'Low',
-      lastScreeningDate: '2024-03-15'
+      lastScreeningDate: '2026-03-21'
     },
     entityData: {
       registrationDate: '2018-03-15',
       asicStatus: 'Registered',
       companyStatus: 'Active',
-      lastRegistrySync: '2024-03-15T09:15:00Z',
+      lastRegistrySync: '2026-03-20T09:15:00+11:00',
       registrationHistory: [
-        { date: '2018-03-15', event: 'Company registered — ACN issued', source: 'ASIC' }
+        { date: '2018-03-15', event: 'Company registered — ACN issued', source: 'ASIC' },
+        { date: '2020-06-01', event: 'Director appointed — Sarah Williams', source: 'ASIC' },
+        { date: '2025-06-30', event: 'Annual review lodged', source: 'ASIC' },
+        { date: '2026-03-18', event: 'Change to principal place of business notified', source: 'ASIC' }
       ],
       keyDates: [
-        { label: 'ACN issued', date: '2018-03-15', detail: '123 456 789' }
+        { label: 'ACN issued', date: '2018-03-15', detail: '123 456 789' },
+        { label: 'Last annual review lodged', date: '2025-06-30' },
+        { label: 'Next annual review due', date: '2026-06-30' }
       ],
       directors: [
-        { name: 'Michael Chen', appointed: '2018-03-15', dateOfBirth: '1978-04-22', role: 'Director', kycStatus: 'Verified' }
+        {
+          name: 'Michael Chen',
+          appointed: '2018-03-15',
+          dateOfBirth: '1978-04-22',
+          role: 'Director',
+          kycStatus: 'Verified',
+          screeningBatches: ['AML-2026-Q1-8841', 'PEP-2026-03-12', 'Media-2026-03-12']
+        },
+        {
+          name: 'Sarah Williams',
+          appointed: '2020-06-01',
+          dateOfBirth: '1982-11-03',
+          role: 'Director',
+          kycStatus: 'Verified',
+          screeningBatches: ['AML-2026-Q1-8842', 'PEP-2026-03-18']
+        }
       ],
       shareholders: [
-        { name: 'Michael Chen', shares: 100, percentage: 100 }
+        { name: 'Michael Chen', shares: 60, percentage: 60 },
+        { name: 'Sarah Williams', shares: 40, percentage: 40 }
       ]
     },
     ownershipData: {
       ubos: [
-        { name: 'Michael Chen', ownership: 100, verified: true, country: 'Australia' }
+        { name: 'Michael Chen', ownership: 60, verified: true, country: 'Australia' },
+        { name: 'Sarah Williams', ownership: 40, verified: true, country: 'Australia' }
       ],
       ownershipStructureComplete: true,
       complexStructure: false
     },
     financialData: {
       bankAccounts: 3,
-      sourceOfFunds: 'Business revenue and property rent',
-      sourceOfWealth: 'Real estate development',
+      sourceOfFunds: 'Business revenue and retained earnings',
+      sourceOfWealth: 'Technology consulting services',
       estimatedWealth: '$2.5M - $5M',
-      transactionVolume: '$100K - $250K monthly',
+      transactionVolume: '$500K - $1M monthly',
       highRiskTransactions: 0
     },
     legalData: {
       serviceAgreementSigned: true,
       termsAccepted: true,
       privacyConsentGiven: true,
-      engagementLetterDate: '2024-01-15',
-      kycConsentDate: '2024-01-15'
+      engagementLetterDate: '2026-01-15',
+      kycConsentDate: '2026-01-15'
     },
-    documentsData: { total: 12, verified: 12, pending: 0, rejected: 0 },
-    monitoringData: { alertsLast30Days: 0, activeAlerts: 0, nameChanges: 0, addressChanges: 0, ownershipChanges: 0 },
+    documentsData: {
+      total: 24,
+      verified: 22,
+      pending: 2,
+      rejected: 0
+    },
+    monitoringData: {
+      alertsLast30Days: 3,
+      activeAlerts: 0,
+      nameChanges: 0,
+      addressChanges: 1,
+      ownershipChanges: 0
+    },
     decisionsData: {
       onboardingDecision: 'Approved',
-      onboardingDate: '2024-01-20',
+      onboardingDate: '2026-01-20',
       approver: 'Jane Smith - Compliance Manager',
-      riskAssessments: 2,
+      riskAssessments: 4,
       escalations: 0
     },
-    austracData: { smrsFiled: 0, ttrsFiled: 12, lastReportDate: '2024-03-15', suspiciousActivity: false },
-    auditData: { totalEvents: 54, lastActivity: '2024-03-15 14:35:22', lastUser: 'compliance.officer@grow.com' }
+    austracData: {
+      smrsFiled: 0,
+      ttrsFiled: 12,
+      lastReportDate: '2026-03-15',
+      suspiciousActivity: false
+    },
+    auditData: {
+      totalEvents: 156,
+      lastActivity: '2026-03-21 14:35:22',
+      lastUser: 'compliance.officer@grow.com'
+    }
   },
   {
-    id: '2',
-    name: 'Chen Family Trust',
+    id: 'client-002',
+    name: 'The Smith Family Trust',
     entityType: 'Trust',
     status: 'Active',
     abn: '98 765 432 109',
@@ -269,13 +324,28 @@ const TEST_CLIENTS: TestClient[] = [
     industry: 'Investment & Wealth Management',
     serviceType: 'Trust Administration',
     clientGroup: 'High Net Worth',
-    riskScores: { overall: 45, aml: 35, financial: 50, business: 40, ownership: 60 },
-    quickStatus: { identity: 'Verified', aml: 'Clear', entity: 'Active', monitoring: 'Active' },
-    lastReview: '2024-01-10',
-    nextReview: '2024-03-25',
+    riskScores: {
+      overall: 58,
+      aml: 52,
+      financial: 65,
+      business: 48,
+      ownership: 72
+    },
+    quickStatus: {
+      identity: 'Verified',
+      aml: 'Clear',
+      entity: 'Active',
+      monitoring: 'Active'
+    },
+    lastReview: '2026-02-28',
+    nextReview: '2026-08-28',
     identityData: {
       primaryID: { type: 'Driver License', number: 'NSW98765432', expiry: '2029-12-31', verified: true },
       secondaryID: { type: 'Medicare Card', number: '2234 56789 0', expiry: '2027-01-01', verified: true },
+      additionalDocuments: [
+        { type: 'Bank Statement', number: 'ACC-123456', verified: true },
+        { type: 'Utility Bill', number: 'GAS-554433', verified: true }
+      ],
       biometricStatus: 'Passed',
       livenessCheck: true,
       addressVerified: true,
@@ -289,20 +359,31 @@ const TEST_CLIENTS: TestClient[] = [
       worldCheckStatus: 'Clear',
       transactionMonitoring: 'Active',
       riskRating: 'Medium',
-      lastScreeningDate: '2024-01-10'
+      lastScreeningDate: '2026-03-20'
     },
     entityData: {
       registrationDate: '2010-06-22',
-      asicStatus: 'Scheme — trust not ASIC-registered',
-      companyStatus: 'Active',
-      lastRegistrySync: '2024-01-10T14:02:00Z',
+      asicStatus: 'Scheme — trust not ASIC-registered as company',
+      companyStatus: 'Active (trust deed current)',
+      lastRegistrySync: '2026-03-19T14:02:00+11:00',
+      registrationHistory: [
+        { date: '2010-06-22', event: 'Trust established — deed executed', source: 'Trust deed / KYC' },
+        { date: '2018-09-01', event: 'Deed of variation — trustee powers updated', source: 'Trust deed' },
+        { date: '2025-11-10', event: 'Beneficiary class amended (education fund)', source: 'Trust deed' }
+      ],
+      keyDates: [
+        { label: 'Trust establishment', date: '2010-06-22' },
+        { label: 'Last deed variation', date: '2018-09-01' },
+        { label: 'Next KYC review due', date: '2026-08-28' }
+      ],
       trustType: 'Discretionary Family Trust',
       trustees: [
         { name: 'Robert Smith', type: 'Individual' },
         { name: 'Margaret Smith', type: 'Individual' }
       ],
       beneficiaries: [
-        { name: 'Chen Family Members', entitlement: 'Discretionary' }
+        { name: 'Smith Family Members', entitlement: 'Discretionary' },
+        { name: 'Smith Children Education Fund', entitlement: '25% Fixed' }
       ]
     },
     ownershipData: {
@@ -315,188 +396,76 @@ const TEST_CLIENTS: TestClient[] = [
     },
     financialData: {
       bankAccounts: 5,
-      sourceOfFunds: 'Investment returns, dividends',
-      sourceOfWealth: 'Accumulated wealth from property investments',
-      estimatedWealth: '$5M - $10M',
-      transactionVolume: '$250K - $500K monthly',
+      sourceOfFunds: 'Investment returns, rental income, dividends',
+      sourceOfWealth: 'Accumulated wealth from property and share investments',
+      estimatedWealth: '$10M - $25M',
+      transactionVolume: '$1M - $2M monthly',
       highRiskTransactions: 2
     },
     legalData: {
       serviceAgreementSigned: true,
       termsAccepted: true,
       privacyConsentGiven: true,
-      engagementLetterDate: '2023-11-10',
-      kycConsentDate: '2023-11-10'
+      engagementLetterDate: '2025-11-10',
+      kycConsentDate: '2025-11-10'
     },
-    documentsData: { total: 10, verified: 10, pending: 0, rejected: 0 },
-    monitoringData: { alertsLast30Days: 2, activeAlerts: 1, nameChanges: 0, addressChanges: 0, ownershipChanges: 0 },
+    documentsData: {
+      total: 42,
+      verified: 39,
+      pending: 3,
+      rejected: 0
+    },
+    monitoringData: {
+      alertsLast30Days: 5,
+      activeAlerts: 1,
+      nameChanges: 0,
+      addressChanges: 0,
+      ownershipChanges: 1
+    },
     decisionsData: {
       onboardingDecision: 'Approved',
-      onboardingDate: '2023-11-18',
+      onboardingDate: '2025-11-18',
       approver: 'David Lee - Senior Compliance Officer',
-      riskAssessments: 3,
+      riskAssessments: 6,
       escalations: 1
     },
-    austracData: { smrsFiled: 0, ttrsFiled: 15, lastReportDate: '2024-01-10', suspiciousActivity: false },
-    auditData: { totalEvents: 120, lastActivity: '2024-01-10 16:22:11', lastUser: 'trust.admin@grow.com' }
+    austracData: {
+      smrsFiled: 0,
+      ttrsFiled: 28,
+      lastReportDate: '2026-03-10',
+      suspiciousActivity: false
+    },
+    auditData: {
+      totalEvents: 289,
+      lastActivity: '2026-03-20 16:22:11',
+      lastUser: 'trust.admin@grow.com'
+    }
   },
   {
-    id: '3',
-    name: 'John Michael Smith',
+    id: 'client-003',
+    name: 'Dr. James Patterson',
     entityType: 'Individual',
     status: 'Active',
+    tfn: '123 456 789',
     country: 'Australia',
-    industry: 'Engineering & Construction',
+    industry: 'Healthcare - Medical Practitioner',
     serviceType: 'Wealth Management',
     clientGroup: 'Professional Individual',
-    riskScores: { overall: 22, aml: 15, financial: 25, business: 20, ownership: 0 },
-    quickStatus: { identity: 'Verified', aml: 'Clear', entity: 'N/A', monitoring: 'Active' },
-    lastReview: '2024-03-20',
-    nextReview: '2024-04-20',
-    identityData: {
-      primaryID: { type: 'Passport', number: 'PA9876543', expiry: '2030-09-15', verified: true },
-      secondaryID: { type: 'Driver License', number: 'VIC87654321', expiry: '2028-11-30', verified: true },
-      biometricStatus: 'Passed',
-      livenessCheck: true,
-      addressVerified: true,
-      greenIDScore: 945,
-      infoTrackStatus: 'Verified - High Confidence'
+    riskScores: {
+      overall: 72,
+      aml: 85,
+      financial: 45,
+      business: 55,
+      ownership: 0
     },
-    amlData: {
-      sanctionsMatches: 0,
-      pepStatus: 'Not PEP',
-      adverseMediaHits: 0,
-      worldCheckStatus: 'Clear',
-      transactionMonitoring: 'Active',
-      riskRating: 'Low',
-      lastScreeningDate: '2024-03-20'
+    quickStatus: {
+      identity: 'Verified',
+      aml: 'PEP Match',
+      entity: 'N/A',
+      monitoring: 'Enhanced'
     },
-    entityData: {},
-    ownershipData: {
-      ubos: [
-        { name: 'John Michael Smith', ownership: 100, verified: true, country: 'Australia' }
-      ],
-      ownershipStructureComplete: true,
-      complexStructure: false
-    },
-    financialData: {
-      bankAccounts: 2,
-      sourceOfFunds: 'Salary, consulting fees',
-      sourceOfWealth: 'Professional career over 15 years',
-      estimatedWealth: '$1M - $2M',
-      transactionVolume: '$20K - $50K monthly',
-      highRiskTransactions: 0
-    },
-    legalData: {
-      serviceAgreementSigned: true,
-      termsAccepted: true,
-      privacyConsentGiven: true,
-      engagementLetterDate: '2024-03-18',
-      kycConsentDate: '2024-03-18'
-    },
-    documentsData: { total: 7, verified: 7, pending: 0, rejected: 0 },
-    monitoringData: { alertsLast30Days: 0, activeAlerts: 0, nameChanges: 0, addressChanges: 0, ownershipChanges: 0 },
-    decisionsData: {
-      onboardingDecision: 'Approved',
-      onboardingDate: '2024-03-20',
-      approver: 'Sarah Chen',
-      riskAssessments: 1,
-      escalations: 0
-    },
-    austracData: { smrsFiled: 0, ttrsFiled: 4, lastReportDate: '2024-03-20', suspiciousActivity: false },
-    auditData: { totalEvents: 18, lastActivity: '2024-03-20 11:18:45', lastUser: 'compliance.officer@grow.com' }
-  },
-  {
-    id: '4',
-    name: 'Global Investments Pty Ltd',
-    entityType: 'Company',
-    status: 'Active',
-    abn: '44 654 321 098',
-    acn: '456 789 123',
-    country: 'Australia',
-    industry: 'Financial Investments',
-    serviceType: 'Corporate Portfolio',
-    clientGroup: 'Corporate Client',
-    riskScores: { overall: 42, aml: 38, financial: 55, business: 45, ownership: 35 },
-    quickStatus: { identity: 'Verified', aml: 'Clear', entity: 'Active', monitoring: 'Active' },
-    lastReview: '2024-02-28',
-    nextReview: '2025-02-28',
-    identityData: {
-      primaryID: { type: 'Company Extract', number: 'ASIC-456789123', expiry: 'N/A', verified: true },
-      biometricStatus: 'Not Required',
-      livenessCheck: false,
-      addressVerified: true,
-      infoTrackStatus: 'Verified - Company Confirmed',
-      fraudFlags: []
-    },
-    amlData: {
-      sanctionsMatches: 0,
-      pepStatus: 'Not PEP',
-      adverseMediaHits: 0,
-      worldCheckStatus: 'Clear',
-      transactionMonitoring: 'Active',
-      riskRating: 'Medium',
-      lastScreeningDate: '2024-02-28'
-    },
-    entityData: {
-      registrationDate: '2021-11-10',
-      asicStatus: 'Registered',
-      companyStatus: 'Active',
-      lastRegistrySync: '2024-02-28T08:40:00Z',
-      directors: [
-        { name: 'Chen Wei', appointed: '2021-11-10', dateOfBirth: '1990-01-08', role: 'Director', kycStatus: 'Verified' }
-      ],
-      shareholders: [
-        { name: 'Chen Wei', shares: 100, percentage: 100 }
-      ]
-    },
-    ownershipData: {
-      ubos: [
-        { name: 'Chen Wei', ownership: 100, verified: true, country: 'Australia' }
-      ],
-      ownershipStructureComplete: true,
-      complexStructure: false
-    },
-    financialData: {
-      bankAccounts: 4,
-      sourceOfFunds: 'Investment dividends and trading surplus',
-      sourceOfWealth: 'Financial consulting operations',
-      estimatedWealth: '$5M - $10M',
-      transactionVolume: '$500K - $1M monthly',
-      highRiskTransactions: 1
-    },
-    legalData: {
-      serviceAgreementSigned: true,
-      termsAccepted: true,
-      privacyConsentGiven: true,
-      engagementLetterDate: '2021-11-10',
-      kycConsentDate: '2021-11-10'
-    },
-    documentsData: { total: 15, verified: 15, pending: 0, rejected: 0 },
-    monitoringData: { alertsLast30Days: 1, activeAlerts: 0, nameChanges: 0, addressChanges: 0, ownershipChanges: 0 },
-    decisionsData: {
-      onboardingDecision: 'Approved',
-      onboardingDate: '2021-11-15',
-      approver: 'Jessica Lee',
-      riskAssessments: 4,
-      escalations: 0
-    },
-    austracData: { smrsFiled: 0, ttrsFiled: 24, lastReportDate: '2024-02-28', suspiciousActivity: false },
-    auditData: { totalEvents: 184, lastActivity: '2024-02-28 15:42:33', lastUser: 'compliance.officer@grow.com' }
-  },
-  {
-    id: '5',
-    name: 'Sarah Williams',
-    entityType: 'Individual',
-    status: 'Under Review',
-    country: 'Australia',
-    industry: 'Executive Management',
-    serviceType: 'Wealth Management',
-    clientGroup: 'High Net Worth',
-    riskScores: { overall: 72, aml: 85, financial: 45, business: 55, ownership: 0 },
-    quickStatus: { identity: 'Verified', aml: 'PEP Match', entity: 'N/A', monitoring: 'Enhanced' },
-    lastReview: '2023-03-10',
-    nextReview: '2024-03-10',
+    lastReview: '2026-03-10',
+    nextReview: '2026-04-10',
     identityData: {
       primaryID: { type: 'Passport', number: 'PA9876543', expiry: '2030-09-15', verified: true },
       secondaryID: { type: 'Driver License', number: 'VIC87654321', expiry: '2028-11-30', verified: true },
@@ -513,20 +482,20 @@ const TEST_CLIENTS: TestClient[] = [
       worldCheckStatus: 'PEP Confirmed - Enhanced Due Diligence Required',
       transactionMonitoring: 'Active',
       riskRating: 'High',
-      lastScreeningDate: '2023-03-10'
+      lastScreeningDate: '2026-03-21'
     },
     entityData: {},
     ownershipData: {
       ubos: [
-        { name: 'Sarah Williams', ownership: 100, verified: true, country: 'Australia' }
+        { name: 'Dr. James Patterson', ownership: 100, verified: true, country: 'Australia' }
       ],
       ownershipStructureComplete: true,
       complexStructure: false
     },
     financialData: {
       bankAccounts: 4,
-      sourceOfFunds: 'Corporate salary and stock options',
-      sourceOfWealth: 'Executive career in public companies',
+      sourceOfFunds: 'Medical practice income, consulting fees',
+      sourceOfWealth: 'Professional medical practice income over 25 years',
       estimatedWealth: '$5M - $10M',
       transactionVolume: '$200K - $500K monthly',
       highRiskTransactions: 1
@@ -535,195 +504,67 @@ const TEST_CLIENTS: TestClient[] = [
       serviceAgreementSigned: true,
       termsAccepted: true,
       privacyConsentGiven: true,
-      engagementLetterDate: '2020-03-10',
-      kycConsentDate: '2020-03-10'
+      engagementLetterDate: '2025-09-22',
+      kycConsentDate: '2025-09-22'
     },
-    documentsData: { total: 10, verified: 10, pending: 0, rejected: 0 },
-    monitoringData: { alertsLast30Days: 8, activeAlerts: 2, nameChanges: 0, addressChanges: 0, ownershipChanges: 0 },
+    documentsData: {
+      total: 31,
+      verified: 28,
+      pending: 2,
+      rejected: 1
+    },
+    monitoringData: {
+      alertsLast30Days: 8,
+      activeAlerts: 2,
+      nameChanges: 0,
+      addressChanges: 0,
+      ownershipChanges: 0
+    },
     decisionsData: {
-      onboardingDecision: 'Pending',
-      onboardingDate: '2020-03-12',
-      approver: 'Compliance',
+      onboardingDecision: 'Approved',
+      onboardingDate: '2025-10-05',
+      approver: 'Emma Thompson - Head of Compliance',
       riskAssessments: 8,
       escalations: 3
     },
-    austracData: { smrsFiled: 0, ttrsFiled: 15, lastReportDate: '2023-03-10', suspiciousActivity: true },
-    auditData: { totalEvents: 412, lastActivity: '2023-03-10 11:18:45', lastUser: 'edd.specialist@grow.com' }
+    austracData: {
+      smrsFiled: 0,
+      ttrsFiled: 15,
+      lastReportDate: '2026-03-05',
+      suspiciousActivity: false
+    },
+    auditData: {
+      totalEvents: 412,
+      lastActivity: '2026-03-21 11:18:45',
+      lastUser: 'edd.specialist@grow.com'
+    }
   },
   {
-    id: '6',
-    name: 'Thompson & Associates Partnership',
-    entityType: 'Partnership',
-    status: 'Active',
-    abn: '87 654 321 098',
-    country: 'Australia',
-    industry: 'Legal Services',
-    serviceType: 'Trust Account Management',
-    clientGroup: 'Professional Services',
-    riskScores: { overall: 35, aml: 28, financial: 42, business: 38, ownership: 30 },
-    quickStatus: { identity: 'Verified', aml: 'Clear', entity: 'Active', monitoring: 'Standard' },
-    lastReview: '2024-03-01',
-    nextReview: '2025-03-01',
-    identityData: {
-      primaryID: { type: 'Partnership Agreement', number: 'PA-2015-001', expiry: 'N/A', verified: true },
-      biometricStatus: 'Not Required',
-      livenessCheck: false,
-      addressVerified: true,
-      infoTrackStatus: 'Verified - Partnership Confirmed'
-    },
-    amlData: {
-      sanctionsMatches: 0,
-      pepStatus: 'Not PEP',
-      adverseMediaHits: 0,
-      worldCheckStatus: 'Clear',
-      transactionMonitoring: 'Active',
-      riskRating: 'Low',
-      lastScreeningDate: '2024-03-01'
-    },
-    entityData: {
-      registrationDate: '2015-04-12',
-      asicStatus: 'ABN active — partnership',
-      companyStatus: 'Active',
-      lastRegistrySync: '2024-03-01T11:00:00Z',
-      registrationHistory: [
-        { date: '2015-04-12', event: 'Partnership commenced', source: 'ABR' }
-      ],
-      keyDates: [
-        { label: 'ABN effective', date: '2015-04-12' }
-      ],
-      directors: [
-        { name: 'Jennifer Anderson', appointed: '2015-04-12', dateOfBirth: '1972-06-18', role: 'Partner', kycStatus: 'Verified' }
-      ]
-    },
-    ownershipData: {
-      ubos: [
-        { name: 'Jennifer Anderson', ownership: 50, verified: true, country: 'Australia' },
-        { name: 'Michael Thompson', ownership: 50, verified: true, country: 'Australia' }
-      ],
-      ownershipStructureComplete: true,
-      complexStructure: false
-    },
-    financialData: {
-      bankAccounts: 3,
-      sourceOfFunds: 'Professional services fees',
-      sourceOfWealth: 'Law firm partnership equity',
-      estimatedWealth: '$2.5M - $5M',
-      transactionVolume: '$100K - $250K monthly',
-      highRiskTransactions: 0
-    },
-    legalData: {
-      serviceAgreementSigned: true,
-      termsAccepted: true,
-      privacyConsentGiven: true,
-      engagementLetterDate: '2015-04-12',
-      kycConsentDate: '2015-04-12'
-    },
-    documentsData: { total: 14, verified: 14, pending: 0, rejected: 0 },
-    monitoringData: { alertsLast30Days: 0, activeAlerts: 0, nameChanges: 0, addressChanges: 0, ownershipChanges: 0 },
-    decisionsData: {
-      onboardingDecision: 'Approved',
-      onboardingDate: '2015-04-15',
-      approver: 'Compliance',
-      riskAssessments: 1,
-      escalations: 0
-    },
-    austracData: { smrsFiled: 0, ttrsFiled: 8, lastReportDate: '2024-03-01', suspiciousActivity: false },
-    auditData: { totalEvents: 84, lastActivity: '2024-03-01 10:00:00', lastUser: 'compliance.officer@grow.com' }
-  },
-  {
-    id: '7',
-    name: 'Sunrise Development Trust',
-    entityType: 'Trust',
-    status: 'Active',
-    abn: '77 654 321 999',
-    country: 'Australia',
-    industry: 'Real Estate & Investment',
-    serviceType: 'Trust Administration',
-    clientGroup: 'High Net Worth',
-    riskScores: { overall: 48, aml: 38, financial: 52, business: 42, ownership: 65 },
-    quickStatus: { identity: 'Verified', aml: 'Clear', entity: 'Active', monitoring: 'Active' },
-    lastReview: '2024-03-18',
-    nextReview: '2024-04-18',
-    identityData: {
-      primaryID: { type: 'Driver License', number: 'VIC77665544', expiry: '2028-10-31', verified: true },
-      secondaryID: { type: 'Medicare Card', number: '3234 56789 0', expiry: '2027-02-02', verified: true },
-      biometricStatus: 'Passed',
-      livenessCheck: true,
-      addressVerified: true,
-      greenIDScore: 890,
-      infoTrackStatus: 'Verified - Medium Confidence'
-    },
-    amlData: {
-      sanctionsMatches: 0,
-      pepStatus: 'Not PEP',
-      adverseMediaHits: 0,
-      worldCheckStatus: 'Clear',
-      transactionMonitoring: 'Active',
-      riskRating: 'Medium',
-      lastScreeningDate: '2024-03-18'
-    },
-    entityData: {
-      registrationDate: '2012-08-15',
-      asicStatus: 'Scheme — trust not ASIC-registered',
-      companyStatus: 'Active',
-      lastRegistrySync: '2024-03-18T14:02:00Z',
-      trustType: 'Discretionary Family Trust',
-      trustees: [
-        { name: 'Marcus Sunrise', type: 'Individual' }
-      ],
-      beneficiaries: [
-        { name: 'Sunrise Family Members', entitlement: 'Discretionary' }
-      ]
-    },
-    ownershipData: {
-      ubos: [
-        { name: 'Marcus Sunrise', ownership: 100, verified: true, country: 'Australia' }
-      ],
-      ownershipStructureComplete: true,
-      complexStructure: true
-    },
-    financialData: {
-      bankAccounts: 4,
-      sourceOfFunds: 'Property rentals, investment dividends',
-      sourceOfWealth: 'Real estate development surplus capital',
-      estimatedWealth: '$5M - $10M',
-      transactionVolume: '$250K - $500K monthly',
-      highRiskTransactions: 1
-    },
-    legalData: {
-      serviceAgreementSigned: true,
-      termsAccepted: true,
-      privacyConsentGiven: true,
-      engagementLetterDate: '2012-08-15',
-      kycConsentDate: '2012-08-15'
-    },
-    documentsData: { total: 12, verified: 9, pending: 3, rejected: 0 },
-    monitoringData: { alertsLast30Days: 1, activeAlerts: 0, nameChanges: 0, addressChanges: 0, ownershipChanges: 0 },
-    decisionsData: {
-      onboardingDecision: 'Approved',
-      onboardingDate: '2012-08-20',
-      approver: 'Sarah Chen',
-      riskAssessments: 3,
-      escalations: 0
-    },
-    austracData: { smrsFiled: 0, ttrsFiled: 10, lastReportDate: '2024-03-18', suspiciousActivity: false },
-    auditData: { totalEvents: 92, lastActivity: '2024-03-18 16:22:11', lastUser: 'compliance.officer@grow.com' }
-  },
-  {
-    id: '8',
-    name: 'Pacific Trading Co Pty Ltd',
+    id: 'client-004',
+    name: 'Global Trade Solutions Ltd',
     entityType: 'Company',
-    status: 'Suspended',
+    status: 'Under Review',
     abn: '45 678 912 345',
     acn: '456 789 123',
     country: 'Australia',
     industry: 'Import/Export',
     serviceType: 'Corporate Banking',
     clientGroup: 'International Trade',
-    riskScores: { overall: 88, aml: 92, financial: 78, business: 85, ownership: 95 },
-    quickStatus: { identity: 'Verified', aml: 'SANCTIONS', entity: 'Active', monitoring: 'Enhanced' },
-    lastReview: '2024-03-05',
-    nextReview: '2024-03-23',
+    riskScores: {
+      overall: 88,
+      aml: 92,
+      financial: 78,
+      business: 85,
+      ownership: 95
+    },
+    quickStatus: {
+      identity: 'Verified',
+      aml: 'SANCTIONS',
+      entity: 'Active',
+      monitoring: 'Enhanced'
+    },
+    lastReview: '2026-03-21',
+    nextReview: '2026-03-28',
     identityData: {
       primaryID: { type: 'Company Extract', number: 'ASIC-456789123', expiry: 'N/A', verified: true },
       biometricStatus: 'Not Required',
@@ -743,27 +584,61 @@ const TEST_CLIENTS: TestClient[] = [
       worldCheckStatus: 'CRITICAL - Sanctions Match on UBO',
       transactionMonitoring: 'Active',
       riskRating: 'Critical',
-      lastScreeningDate: '2024-03-05'
+      lastScreeningDate: '2026-03-21'
     },
     entityData: {
       registrationDate: '2022-11-08',
       asicStatus: 'Registered',
       companyStatus: 'Active',
-      lastRegistrySync: '2024-03-05T08:40:00Z',
+      lastRegistrySync: '2026-03-21T08:40:00+11:00',
+      registrationHistory: [
+        { date: '2022-11-08', event: 'Company registered', source: 'ASIC' },
+        { date: '2023-03-15', event: 'Director appointed — Anna Kowalski', source: 'ASIC' },
+        { date: '2024-01-10', event: 'Director appointed — Chen Wei', source: 'ASIC' },
+        { date: '2026-03-12', event: 'Change to share structure notified', source: 'ASIC' }
+      ],
+      keyDates: [
+        { label: 'ACN issued', date: '2022-11-08', detail: '456 789 123' },
+        { label: 'Last ASIC extract (KYC)', date: '2026-03-21' },
+        { label: 'Next KYC review due', date: '2026-03-28' }
+      ],
       directors: [
-        { name: 'Viktor Petrov', appointed: '2022-11-08', dateOfBirth: '1975-02-14', role: 'Director', kycStatus: 'Enhanced review', screeningBatches: ['AML-2026-CRIT-9910'] },
-        { name: 'Chen Wei', appointed: '2024-01-10', dateOfBirth: '1990-01-08', role: 'Director', kycStatus: 'Verified', screeningBatches: ['AML-2026-Q1-9013'] }
+        {
+          name: 'Viktor Petrov',
+          appointed: '2022-11-08',
+          dateOfBirth: '1975-02-14',
+          role: 'Director',
+          kycStatus: 'Enhanced review',
+          screeningBatches: ['AML-2026-CRIT-9910', 'Sanctions-daily-2026-03-21', 'PEP-2026-03-21', 'EDD-batch-442']
+        },
+        {
+          name: 'Anna Kowalski',
+          appointed: '2023-03-15',
+          dateOfBirth: '1988-09-30',
+          role: 'Director',
+          kycStatus: 'Pending',
+          screeningBatches: ['AML-2026-Q1-9012']
+        },
+        {
+          name: 'Chen Wei',
+          appointed: '2024-01-10',
+          dateOfBirth: '1990-01-08',
+          role: 'Director',
+          kycStatus: 'Verified',
+          screeningBatches: ['AML-2026-Q1-9013', 'PEP-2026-03-19']
+        }
       ],
       shareholders: [
-        { name: 'Offshore Holdings BVI', shares: 80, percentage: 80 },
-        { name: 'Chen Wei', shares: 20, percentage: 20 }
+        { name: 'Offshore Holdings BVI', shares: 65, percentage: 65 },
+        { name: 'Viktor Petrov', shares: 20, percentage: 20 },
+        { name: 'Chen Wei', shares: 15, percentage: 15 }
       ]
     },
     ownershipData: {
       ubos: [
         { name: 'Viktor Petrov', ownership: 45, verified: true, country: 'Russia' },
-        { name: 'Unknown Beneficial Owner(s)', ownership: 35, verified: false, country: 'British Virgin Islands' },
-        { name: 'Chen Wei', ownership: 20, verified: true, country: 'China' }
+        { name: 'Unknown Beneficial Owner(s)', ownership: 15, verified: false, country: 'British Virgin Islands' },
+        { name: 'Chen Wei', ownership: 15, verified: true, country: 'China' }
       ],
       ownershipStructureComplete: false,
       complexStructure: true
@@ -780,254 +655,72 @@ const TEST_CLIENTS: TestClient[] = [
       serviceAgreementSigned: true,
       termsAccepted: true,
       privacyConsentGiven: true,
-      engagementLetterDate: '2022-11-08',
-      kycConsentDate: '2022-11-08'
+      engagementLetterDate: '2024-08-15',
+      kycConsentDate: '2024-08-15'
     },
-    documentsData: { total: 15, verified: 13, pending: 2, rejected: 0 },
-    monitoringData: { alertsLast30Days: 24, activeAlerts: 12, nameChanges: 2, addressChanges: 3, ownershipChanges: 4 },
+    documentsData: {
+      total: 58,
+      verified: 35,
+      pending: 18,
+      rejected: 5
+    },
+    monitoringData: {
+      alertsLast30Days: 24,
+      activeAlerts: 12,
+      nameChanges: 2,
+      addressChanges: 3,
+      ownershipChanges: 4
+    },
     decisionsData: {
-      onboardingDecision: 'Rejected',
-      onboardingDate: '2024-03-05',
+      onboardingDecision: 'Pending',
+      onboardingDate: '',
       approver: 'Tom Anderson - Chief Compliance Officer',
       riskAssessments: 15,
       escalations: 8
     },
-    austracData: { smrsFiled: 4, ttrsFiled: 87, lastReportDate: '2024-03-05', suspiciousActivity: true },
-    auditData: { totalEvents: 1247, lastActivity: '2024-03-05 15:42:33', lastUser: 'sanctions.team@grow.com' }
+    austracData: {
+      smrsFiled: 4,
+      ttrsFiled: 87,
+      lastReportDate: '2026-03-18',
+      suspiciousActivity: true
+    },
+    auditData: {
+      totalEvents: 1247,
+      lastActivity: '2026-03-21 15:42:33',
+      lastUser: 'sanctions.team@grow.com'
+    }
   },
   {
-    id: '9',
-    name: 'Emily Zhang',
-    entityType: 'Individual',
+    id: 'client-005',
+    name: 'Anderson & Partners LLP',
+    entityType: 'Partnership',
     status: 'Active',
+    abn: '87 654 321 098',
     country: 'Australia',
-    industry: 'Information Technology',
-    serviceType: 'Wealth Management',
-    clientGroup: 'Professional Individual',
-    riskScores: { overall: 15, aml: 10, financial: 18, business: 12, ownership: 0 },
-    quickStatus: { identity: 'Verified', aml: 'Clear', entity: 'N/A', monitoring: 'Active' },
-    lastReview: '2024-03-12',
-    nextReview: '2025-03-12',
-    identityData: {
-      primaryID: { type: 'Passport', number: 'PA1122334', expiry: '2031-01-15', verified: true },
-      secondaryID: { type: 'Driver License', number: 'NSW9988776', expiry: '2029-05-20', verified: true },
-      biometricStatus: 'Passed',
-      livenessCheck: true,
-      addressVerified: true,
-      greenIDScore: 955,
-      infoTrackStatus: 'Verified - High Confidence'
-    },
-    amlData: {
-      sanctionsMatches: 0,
-      pepStatus: 'Not PEP',
-      adverseMediaHits: 0,
-      worldCheckStatus: 'Clear',
-      transactionMonitoring: 'Active',
-      riskRating: 'Low',
-      lastScreeningDate: '2024-03-12'
-    },
-    entityData: {},
-    ownershipData: {
-      ubos: [
-        { name: 'Emily Zhang', ownership: 100, verified: true, country: 'Australia' }
-      ],
-      ownershipStructureComplete: true,
-      complexStructure: false
-    },
-    financialData: {
-      bankAccounts: 2,
-      sourceOfFunds: 'Salary and equity vesting',
-      sourceOfWealth: 'Software engineering career at global tech company',
-      estimatedWealth: '$1.5M - $3M',
-      transactionVolume: '$30K - $80K monthly',
-      highRiskTransactions: 0
-    },
-    legalData: {
-      serviceAgreementSigned: true,
-      termsAccepted: true,
-      privacyConsentGiven: true,
-      engagementLetterDate: '2023-12-05',
-      kycConsentDate: '2023-12-05'
-    },
-    documentsData: { total: 10, verified: 10, pending: 0, rejected: 0 },
-    monitoringData: { alertsLast30Days: 0, activeAlerts: 0, nameChanges: 0, addressChanges: 0, ownershipChanges: 0 },
-    decisionsData: {
-      onboardingDecision: 'Approved',
-      onboardingDate: '2023-12-10',
-      approver: 'Sarah Chen',
-      riskAssessments: 1,
-      escalations: 0
-    },
-    austracData: { smrsFiled: 0, ttrsFiled: 2, lastReportDate: '2024-03-12', suspiciousActivity: false },
-    auditData: { totalEvents: 12, lastActivity: '2024-03-12 09:30:00', lastUser: 'compliance.officer@grow.com' }
-  },
-  {
-    id: '10',
-    name: 'Coastal Properties Trust',
-    entityType: 'Trust',
-    status: 'Active',
-    abn: '33 444 555 666',
-    country: 'Australia',
-    industry: 'Real Estate & Property',
-    serviceType: 'Trust Administration',
+    industry: 'Legal Services',
+    serviceType: 'Trust Account Management',
     clientGroup: 'Professional Services',
-    riskScores: { overall: 25, aml: 20, financial: 30, business: 25, ownership: 30 },
-    quickStatus: { identity: 'Verified', aml: 'Clear', entity: 'Active', monitoring: 'Active' },
-    lastReview: '2024-02-20',
-    nextReview: '2025-02-20',
+    riskScores: {
+      overall: 35,
+      aml: 28,
+      financial: 42,
+      business: 38,
+      ownership: 30
+    },
+    quickStatus: {
+      identity: 'Verified',
+      aml: 'Clear',
+      entity: 'Active',
+      monitoring: 'Standard'
+    },
+    lastReview: '2026-01-30',
+    nextReview: '2026-07-30',
     identityData: {
-      primaryID: { type: 'Driver License', number: 'QLD88776655', expiry: '2028-12-31', verified: true },
-      secondaryID: { type: 'Medicare Card', number: '4234 56789 0', expiry: '2026-11-11', verified: true },
-      biometricStatus: 'Passed',
-      livenessCheck: true,
-      addressVerified: true,
-      greenIDScore: 910,
-      infoTrackStatus: 'Verified - High Confidence'
-    },
-    amlData: {
-      sanctionsMatches: 0,
-      pepStatus: 'Not PEP',
-      adverseMediaHits: 0,
-      worldCheckStatus: 'Clear',
-      transactionMonitoring: 'Active',
-      riskRating: 'Low',
-      lastScreeningDate: '2024-02-20'
-    },
-    entityData: {
-      registrationDate: '2018-02-20',
-      asicStatus: 'Scheme — trust not ASIC-registered',
-      companyStatus: 'Active',
-      lastRegistrySync: '2024-02-20T10:15:00Z',
-      trustType: 'Discretionary Family Trust',
-      trustees: [
-        { name: 'Sarah Mitchell', type: 'Individual' }
-      ],
-      beneficiaries: [
-        { name: 'Coastal Family Members', entitlement: 'Discretionary' }
-      ]
-    },
-    ownershipData: {
-      ubos: [
-        { name: 'Sarah Mitchell', ownership: 100, verified: true, country: 'Australia' }
-      ],
-      ownershipStructureComplete: true,
-      complexStructure: false
-    },
-    financialData: {
-      bankAccounts: 3,
-      sourceOfFunds: 'Property rentals, dividends',
-      sourceOfWealth: 'Real estate investment',
-      estimatedWealth: '$2M - $5M',
-      transactionVolume: '$50K - $150K monthly',
-      highRiskTransactions: 0
-    },
-    legalData: {
-      serviceAgreementSigned: true,
-      termsAccepted: true,
-      privacyConsentGiven: true,
-      engagementLetterDate: '2018-02-20',
-      kycConsentDate: '2018-02-20'
-    },
-    documentsData: { total: 12, verified: 12, pending: 0, rejected: 0 },
-    monitoringData: { alertsLast30Days: 0, activeAlerts: 0, nameChanges: 0, addressChanges: 0, ownershipChanges: 0 },
-    decisionsData: {
-      onboardingDecision: 'Approved',
-      onboardingDate: '2018-02-22',
-      approver: 'Jessica Lee',
-      riskAssessments: 2,
-      escalations: 0
-    },
-    austracData: { smrsFiled: 0, ttrsFiled: 12, lastReportDate: '2024-02-20', suspiciousActivity: false },
-    auditData: { totalEvents: 48, lastActivity: '2024-02-20 14:00:00', lastUser: 'compliance.officer@grow.com' }
-  },
-  {
-    id: '11',
-    name: 'David Robertson',
-    entityType: 'Individual',
-    status: 'Active',
-    country: 'Australia',
-    industry: 'Healthcare - Surgeon',
-    serviceType: 'Wealth Management',
-    clientGroup: 'Professional Individual',
-    riskScores: { overall: 48, aml: 40, financial: 55, business: 45, ownership: 0 },
-    quickStatus: { identity: 'Verified', aml: 'Clear', entity: 'N/A', monitoring: 'Active' },
-    lastReview: '2024-03-21',
-    nextReview: '2024-04-21',
-    identityData: {
-      primaryID: { type: 'Passport', number: 'PA4455667', expiry: '2032-04-12', verified: true },
-      secondaryID: { type: 'Driver License', number: 'VIC1122334', expiry: '2029-08-18', verified: true },
-      biometricStatus: 'Passed',
-      livenessCheck: true,
-      addressVerified: true,
-      greenIDScore: 935,
-      infoTrackStatus: 'Verified - High Confidence'
-    },
-    amlData: {
-      sanctionsMatches: 0,
-      pepStatus: 'Not PEP',
-      adverseMediaHits: 0,
-      worldCheckStatus: 'Clear',
-      transactionMonitoring: 'Active',
-      riskRating: 'Medium',
-      lastScreeningDate: '2024-03-21'
-    },
-    entityData: {},
-    ownershipData: {
-      ubos: [
-        { name: 'David Robertson', ownership: 100, verified: true, country: 'Australia' }
-      ],
-      ownershipStructureComplete: true,
-      complexStructure: false
-    },
-    financialData: {
-      bankAccounts: 3,
-      sourceOfFunds: 'Surgical practice revenue',
-      sourceOfWealth: 'Surgical and consulting practice over 20 years',
-      estimatedWealth: '$4M - $8M',
-      transactionVolume: '$150K - $300K monthly',
-      highRiskTransactions: 1
-    },
-    legalData: {
-      serviceAgreementSigned: true,
-      termsAccepted: true,
-      privacyConsentGiven: true,
-      engagementLetterDate: '2024-03-19',
-      kycConsentDate: '2024-03-19'
-    },
-    documentsData: { total: 10, verified: 6, pending: 4, rejected: 0 },
-    monitoringData: { alertsLast30Days: 2, activeAlerts: 0, nameChanges: 0, addressChanges: 0, ownershipChanges: 0 },
-    decisionsData: {
-      onboardingDecision: 'Approved',
-      onboardingDate: '2024-03-21',
-      approver: 'Sarah Chen',
-      riskAssessments: 3,
-      escalations: 0
-    },
-    austracData: { smrsFiled: 0, ttrsFiled: 14, lastReportDate: '2024-03-21', suspiciousActivity: false },
-    auditData: { totalEvents: 34, lastActivity: '2024-03-21 11:00:00', lastUser: 'compliance.officer@grow.com' }
-  },
-  {
-    id: '12',
-    name: 'Metro Development Pty Ltd',
-    entityType: 'Company',
-    status: 'Active',
-    abn: '22 333 444 555',
-    acn: '223 333 444',
-    country: 'Australia',
-    industry: 'Commercial Construction',
-    serviceType: 'Corporate Portfolio',
-    clientGroup: 'Corporate Client',
-    riskScores: { overall: 26, aml: 22, financial: 30, business: 28, ownership: 25 },
-    quickStatus: { identity: 'Verified', aml: 'Clear', entity: 'Active', monitoring: 'Active' },
-    lastReview: '2024-03-10',
-    nextReview: '2025-03-10',
-    identityData: {
-      primaryID: { type: 'Company Extract', number: 'ASIC-223333444', expiry: 'N/A', verified: true },
+      primaryID: { type: 'Partnership Agreement', number: 'PA-2015-001', expiry: 'N/A', verified: true },
       biometricStatus: 'Not Required',
       livenessCheck: false,
       addressVerified: true,
-      infoTrackStatus: 'Verified - Company Confirmed',
-      fraudFlags: []
+      infoTrackStatus: 'Verified - Partnership Confirmed'
     },
     amlData: {
       sanctionsMatches: 0,
@@ -1036,53 +729,342 @@ const TEST_CLIENTS: TestClient[] = [
       worldCheckStatus: 'Clear',
       transactionMonitoring: 'Active',
       riskRating: 'Low',
-      lastScreeningDate: '2024-03-10'
+      lastScreeningDate: '2026-03-15'
     },
     entityData: {
-      registrationDate: '2023-05-22',
-      asicStatus: 'Registered',
+      registrationDate: '2015-04-12',
+      asicStatus: 'ABN active — partnership',
       companyStatus: 'Active',
-      lastRegistrySync: '2024-03-10T09:00:00Z',
-      directors: [
-        { name: 'Sarah Mitchell', appointed: '2023-05-22', dateOfBirth: '1990-11-08', role: 'Director', kycStatus: 'Verified' }
+      lastRegistrySync: '2026-03-15T11:00:00+11:00',
+      registrationHistory: [
+        { date: '2015-04-12', event: 'Partnership commenced / ABN application granted', source: 'ABR' },
+        { date: '2018-07-01', event: 'Partner admitted — Sarah Thompson', source: 'Partnership agreement' },
+        { date: '2021-01-15', event: 'Partner admitted — David Chang', source: 'Partnership agreement' }
       ],
-      shareholders: [
-        { name: 'Sarah Mitchell', shares: 100, percentage: 100 }
+      keyDates: [
+        { label: 'ABN effective', date: '2015-04-12' },
+        { label: 'Last partnership deed update', date: '2021-01-15' },
+        { label: 'Next KYC review due', date: '2026-07-30' }
+      ],
+      directors: [
+        {
+          name: 'Jennifer Anderson',
+          appointed: '2015-04-12',
+          dateOfBirth: '1972-06-18',
+          role: 'Partner',
+          kycStatus: 'Verified',
+          screeningBatches: ['AML-2025-Q4-7100', 'PEP-2026-01-08']
+        },
+        {
+          name: 'Michael O\'Brien',
+          appointed: '2015-04-12',
+          dateOfBirth: '1970-03-25',
+          role: 'Partner',
+          kycStatus: 'Verified',
+          screeningBatches: ['AML-2025-Q4-7101', 'PEP-2026-01-08']
+        },
+        {
+          name: 'Sarah Thompson',
+          appointed: '2018-07-01',
+          dateOfBirth: '1985-12-01',
+          role: 'Partner',
+          kycStatus: 'Verified',
+          screeningBatches: ['AML-2026-Q1-7202', 'Media-2026-02-01']
+        },
+        {
+          name: 'David Chang',
+          appointed: '2021-01-15',
+          dateOfBirth: '1991-07-09',
+          role: 'Partner',
+          kycStatus: 'Pending',
+          screeningBatches: ['AML-2026-Q1-7203']
+        }
       ]
     },
     ownershipData: {
       ubos: [
-        { name: 'Sarah Mitchell', ownership: 100, verified: true, country: 'Australia' }
+        { name: 'Jennifer Anderson', ownership: 35, verified: true, country: 'Australia' },
+        { name: 'Michael O\'Brien', ownership: 35, verified: true, country: 'Australia' },
+        { name: 'Sarah Thompson', ownership: 20, verified: true, country: 'Australia' },
+        { name: 'David Chang', ownership: 10, verified: true, country: 'Australia' }
       ],
       ownershipStructureComplete: true,
       complexStructure: false
     },
     financialData: {
-      bankAccounts: 3,
-      sourceOfFunds: 'Property sale revenue, capital investment',
-      sourceOfWealth: 'Commercial property development consulting',
-      estimatedWealth: '$3M - $6M',
-      transactionVolume: '$300K - $600K monthly',
+      bankAccounts: 6,
+      sourceOfFunds: 'Legal services fees, client trust accounts',
+      sourceOfWealth: 'Partnership income from legal practice',
+      estimatedWealth: '$5M - $10M',
+      transactionVolume: '$800K - $1.5M monthly',
       highRiskTransactions: 0
     },
     legalData: {
       serviceAgreementSigned: true,
       termsAccepted: true,
       privacyConsentGiven: true,
-      engagementLetterDate: '2023-05-22',
-      kycConsentDate: '2023-05-22'
+      engagementLetterDate: '2025-06-20',
+      kycConsentDate: '2025-06-20'
     },
-    documentsData: { total: 14, verified: 14, pending: 0, rejected: 0 },
+    documentsData: {
+      total: 35,
+      verified: 34,
+      pending: 1,
+      rejected: 0
+    },
+    monitoringData: {
+      alertsLast30Days: 2,
+      activeAlerts: 0,
+      nameChanges: 0,
+      addressChanges: 0,
+      ownershipChanges: 0
+    },
+    decisionsData: {
+      onboardingDecision: 'Approved',
+      onboardingDate: '2025-07-01',
+      approver: 'Lisa Chen - Compliance Officer',
+      riskAssessments: 3,
+      escalations: 0
+    },
+    austracData: {
+      smrsFiled: 0,
+      ttrsFiled: 45,
+      lastReportDate: '2026-02-28',
+      suspiciousActivity: false
+    },
+    auditData: {
+      totalEvents: 234,
+      lastActivity: '2026-03-19 09:15:28',
+      lastUser: 'relationship.manager@grow.com'
+    }
+  },
+  {
+    id: 'client-006',
+    name: 'Pacific Investment Holdings Pte Ltd',
+    entityType: 'Foreign Entity',
+    status: 'Active',
+    country: 'Singapore',
+    industry: 'Investment Management',
+    serviceType: 'Investment Advisory',
+    clientGroup: 'International Institutional',
+    riskScores: {
+      overall: 65,
+      aml: 68,
+      financial: 58,
+      business: 62,
+      ownership: 75
+    },
+    quickStatus: {
+      identity: 'Verified',
+      aml: '1 Match',
+      entity: 'Foreign',
+      monitoring: 'Enhanced'
+    },
+    lastReview: '2026-03-05',
+    nextReview: '2026-05-05',
+    identityData: {
+      primaryID: { type: 'Certificate of Incorporation', number: 'SG201912345A', expiry: 'N/A', verified: true },
+      biometricStatus: 'Not Required',
+      livenessCheck: false,
+      addressVerified: true,
+      infoTrackStatus: 'Foreign Entity - Apostille Verified'
+    },
+    amlData: {
+      sanctionsMatches: 0,
+      pepStatus: 'Foreign PEP',
+      adverseMediaHits: 3,
+      worldCheckStatus: 'Foreign PEP Association - Enhanced Monitoring',
+      transactionMonitoring: 'Active',
+      riskRating: 'Medium',
+      lastScreeningDate: '2026-03-21'
+    },
+    entityData: {
+      registrationDate: '2019-08-15',
+      asicStatus: 'Foreign company (ARBN) registered in Australia',
+      companyStatus: 'Active (foreign company)',
+      lastRegistrySync: '2026-03-17T16:30:00+11:00',
+      registrationHistory: [
+        { date: '2019-08-15', event: 'Singapore incorporation; Australian branch/ARBN registration', source: 'ASIC / ACRA' },
+        { date: '2020-02-10', event: 'Local director appointed — Priya Sharma', source: 'ASIC' },
+        { date: '2024-11-05', event: 'Annual financial report lodged (foreign)', source: 'ASIC' }
+      ],
+      keyDates: [
+        { label: 'Foreign registration (AU)', date: '2019-08-15' },
+        { label: 'Last financial report (AU)', date: '2024-11-05' },
+        { label: 'Next KYC review due', date: '2026-05-05' }
+      ],
+      directors: [
+        {
+          name: 'Lawrence Tan',
+          appointed: '2019-08-15',
+          dateOfBirth: '1968-05-20',
+          role: 'Director',
+          kycStatus: 'Verified',
+          screeningBatches: ['AML-2026-INTL-5501', 'PEP-2026-03-05', 'Sanctions-daily-2026-03-17']
+        },
+        {
+          name: 'Priya Sharma',
+          appointed: '2020-02-10',
+          dateOfBirth: '1984-10-16',
+          role: 'Director',
+          kycStatus: 'Verified',
+          screeningBatches: ['AML-2026-INTL-5502', 'PEP-2026-03-10']
+        }
+      ],
+      shareholders: [
+        { name: 'Pacific Holdings Group', shares: 80, percentage: 80 },
+        { name: 'Lawrence Tan', shares: 20, percentage: 20 }
+      ]
+    },
+    ownershipData: {
+      ubos: [
+        { name: 'Lawrence Tan', ownership: 35, verified: true, country: 'Singapore' },
+        { name: 'Tan Family Trust', ownership: 45, verified: true, country: 'Singapore' },
+        { name: 'Strategic Partners Group', ownership: 20, verified: true, country: 'Hong Kong' }
+      ],
+      ownershipStructureComplete: true,
+      complexStructure: true
+    },
+    financialData: {
+      bankAccounts: 4,
+      sourceOfFunds: 'Investment management fees, carried interest',
+      sourceOfWealth: 'Investment fund operations and management',
+      estimatedWealth: '$50M - $100M',
+      transactionVolume: '$3M - $5M monthly',
+      highRiskTransactions: 5
+    },
+    legalData: {
+      serviceAgreementSigned: true,
+      termsAccepted: true,
+      privacyConsentGiven: true,
+      engagementLetterDate: '2025-08-10',
+      kycConsentDate: '2025-08-10'
+    },
+    documentsData: {
+      total: 52,
+      verified: 45,
+      pending: 5,
+      rejected: 2
+    },
+    monitoringData: {
+      alertsLast30Days: 7,
+      activeAlerts: 2,
+      nameChanges: 0,
+      addressChanges: 1,
+      ownershipChanges: 2
+    },
+    decisionsData: {
+      onboardingDecision: 'Approved',
+      onboardingDate: '2025-09-15',
+      approver: 'Emma Thompson - Head of Compliance',
+      riskAssessments: 9,
+      escalations: 2
+    },
+    austracData: {
+      smrsFiled: 1,
+      ttrsFiled: 34,
+      lastReportDate: '2026-03-01',
+      suspiciousActivity: false
+    },
+    auditData: {
+      totalEvents: 567,
+      lastActivity: '2026-03-21 13:27:56',
+      lastUser: 'international.team@grow.com'
+    }
+  },
+  {
+    id: 'client-007',
+    name: 'Legacy Holdings Pty Ltd',
+    entityType: 'Company',
+    status: 'Inactive',
+    abn: '11 222 333 444',
+    acn: '112 233 445',
+    country: 'Australia',
+    industry: 'Property',
+    serviceType: 'Wealth Management',
+    clientGroup: 'Historical',
+    riskScores: { overall: 30, aml: 25, financial: 28, business: 32, ownership: 28 },
+    quickStatus: { identity: 'Verified', aml: 'Clear', entity: 'Closed', monitoring: 'Inactive' },
+    lastReview: '2024-11-01',
+    nextReview: 'N/A — file closed',
+    identityData: {
+      primaryID: { type: 'Company Extract (archived)', number: 'ASIC-112233445', expiry: 'N/A', verified: true },
+      biometricStatus: 'Not Required',
+      livenessCheck: false,
+      addressVerified: true
+    },
+    amlData: {
+      sanctionsMatches: 0,
+      pepStatus: 'Not PEP',
+      adverseMediaHits: 0,
+      worldCheckStatus: 'Clear',
+      transactionMonitoring: 'Inactive',
+      riskRating: 'Low',
+      lastScreeningDate: '2024-10-15'
+    },
+    entityData: {
+      registrationDate: '2005-02-10',
+      asicStatus: 'Deregistered',
+      companyStatus: 'Deregistered',
+      lastRegistrySync: '2024-12-02T10:00:00+11:00',
+      registrationHistory: [
+        { date: '2005-02-10', event: 'Company registered', source: 'ASIC' },
+        { date: '2019-08-20', event: 'Director change lodged', source: 'ASIC' },
+        { date: '2024-11-28', event: 'Voluntary deregistration application lodged', source: 'ASIC' },
+        { date: '2024-12-01', event: 'Company deregistered', source: 'ASIC' }
+      ],
+      keyDates: [
+        { label: 'ACN issued', date: '2005-02-10', detail: '112 233 445' },
+        { label: 'Deregistration effective', date: '2024-12-01' },
+        { label: 'Last registry sync (archive)', date: '2024-12-02' }
+      ],
+      directors: [
+        {
+          name: 'Former Director (archived)',
+          appointed: '2005-02-10',
+          resigned: '2024-11-01',
+          dateOfBirth: '1965-01-12',
+          role: 'Director',
+          kycStatus: 'Closed — entity deregistered',
+          screeningBatches: ['AML-archive-LEG-01']
+        }
+      ],
+      shareholders: [{ name: 'Former Shareholder (archived)', shares: 100, percentage: 100 }]
+    },
+    ownershipData: {
+      ubos: [{ name: 'Former UBO (archived)', ownership: 100, verified: true, country: 'Australia' }],
+      ownershipStructureComplete: true,
+      complexStructure: false
+    },
+    financialData: {
+      bankAccounts: 0,
+      sourceOfFunds: 'N/A — entity closed',
+      sourceOfWealth: 'Historical property development',
+      estimatedWealth: 'N/A',
+      transactionVolume: 'N/A',
+      highRiskTransactions: 0
+    },
+    legalData: {
+      serviceAgreementSigned: true,
+      termsAccepted: true,
+      privacyConsentGiven: true,
+      kycConsentDate: '2020-01-10'
+    },
+    documentsData: { total: 8, verified: 8, pending: 0, rejected: 0 },
     monitoringData: { alertsLast30Days: 0, activeAlerts: 0, nameChanges: 0, addressChanges: 0, ownershipChanges: 0 },
     decisionsData: {
       onboardingDecision: 'Approved',
-      onboardingDate: '2023-05-25',
-      approver: 'Jessica Lee',
-      riskAssessments: 2,
+      onboardingDate: '2020-01-12',
+      approver: 'Compliance',
+      riskAssessments: 1,
       escalations: 0
     },
-    austracData: { smrsFiled: 0, ttrsFiled: 18, lastReportDate: '2024-03-10', suspiciousActivity: false },
-    auditData: { totalEvents: 28, lastActivity: '2024-03-10 10:15:00', lastUser: 'compliance.officer@grow.com' }
+    austracData: { smrsFiled: 0, ttrsFiled: 0, suspiciousActivity: false },
+    auditData: {
+      totalEvents: 42,
+      lastActivity: '2024-12-02 10:05:00',
+      lastUser: 'system@grow.com'
+    }
   }
 ];
 
@@ -1092,43 +1074,22 @@ interface ClientKYCDashboardProps {
 }
 
 export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYCDashboardProps = {}) {
-  // Helper to map the 12 dynamic client IDs ('1'-'12') to the static mock IDs ('client-001'-'client-007') used by external mock databases
-  const getMockId = (id: string): string => {
-    const mapping: Record<string, string> = {
-      '1': 'client-001',
-      '2': 'client-002',
-      '3': 'client-003',
-      '4': 'client-001',
-      '5': 'client-003',
-      '6': 'client-005',
-      '7': 'client-002',
-      '8': 'client-004',
-      '9': 'client-003',
-      '10': 'client-002',
-      '11': 'client-003',
-      '12': 'client-001'
-    };
-    return mapping[id] || id;
-  };
-
   const [activeTab, setActiveTab] = useState<TabType>('overview');
-  const [selectedClientId, setSelectedClientId] = useState<string>(propClientId || '1');
-  const [clients, setClients] = useState<TestClient[]>(() => ClientsDB.getClients() as any);
+  const [selectedClientId, setSelectedClientId] = useState<string>(propClientId || 'client-001');
+  const [clients, setClients] = useState<TestClient[]>(TEST_CLIENTS);
   const [runningCheck, setRunningCheck] = useState<string | null>(null);
   const [isExporting, setIsExporting] = useState(false);
   const [isApproving, setIsApproving] = useState(false);
 
-  useEffect(() => {
-    const unsubscribe = ClientsDB.subscribe(setClients as any);
-    return unsubscribe;
-  }, []);
-
+  // Sync with prop if it changes
   useEffect(() => {
     if (propClientId && propClientId !== selectedClientId) {
       setSelectedClientId(propClientId);
     }
   }, [propClientId]);
 
+  // Get selected client
+  // Get selected client - attempt to find by ID, fallback to first client if not found
   const client = clients.find(c => c.id === selectedClientId) || clients[0];
 
   const handleExportReport = () => {
@@ -1232,12 +1193,11 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
               <div className="mb-3">
                 <label className="text-xs opacity-80 mb-1 block">Select Test Client</label>
                 <select
-                  disabled
                   value={selectedClientId}
                   onChange={(e) => setSelectedClientId(e.target.value)}
-                  className="w-full px-3 py-2 rounded-lg bg-white/10 border border-white/20 text-white font-semibold focus:outline-none cursor-not-allowed opacity-75"
+                  className="w-full px-3 py-2 rounded-lg bg-white/20 border border-white/30 text-white font-semibold focus:outline-none focus:ring-2 focus:ring-white/50"
                 >
-                  {clients.map(c => (
+                  {TEST_CLIENTS.map(c => (
                     <option key={c.id} value={c.id} className="text-gray-900">
                       {c.name} ({c.entityType})
                     </option>
@@ -1648,7 +1608,11 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
                                 </div>
                               </div>
                               <div className="flex gap-2">
-                                <Button size="sm" variant="outline">
+                                <Button
+                                  size="sm"
+                                  variant="outline"
+                                  onClick={() => setActiveTab('documents')}
+                                >
                                   View Documents
                                 </Button>
                                 <Button size="sm" className="bg-[#13B5EA] hover:bg-[#0E7C9E] text-white">
@@ -1687,7 +1651,11 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
                                 </div>
                               </div>
                               <div className="flex gap-2">
-                                <Button size="sm" variant="outline">
+                                <Button
+                                  size="sm"
+                                  variant="outline"
+                                  onClick={() => setActiveTab('monitoring')}
+                                >
                                   View Alerts
                                 </Button>
                                 <Button size="sm" className="bg-[#13B5EA] hover:bg-[#0E7C9E] text-white">
@@ -1959,17 +1927,17 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
             {/* AML Detailed Hits */}
             {activeTab === 'aml' && (
               <div className="mt-6">
-                <AMLHitsDetail clientId={getMockId(client.id)} />
+                <AMLHitsDetail clientId={client.id} />
               </div>
             )}
 
             {/* Related Entities Tab */}
             {activeTab === 'related-entities' && (
-              <RelatedEntitiesTab clientId={getMockId(client.id)} />
+              <RelatedEntitiesTab clientId={client.id} />
             )}
 
             {/* Remaining Tabs Component */}
-            <RemainingTabs activeTab={activeTab as any} client={{ ...client, id: getMockId(client.id) }} />
+            <RemainingTabs activeTab={activeTab as any} client={client} />
           </div>
         </div>
       </div>

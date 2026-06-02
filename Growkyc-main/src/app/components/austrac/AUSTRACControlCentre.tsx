@@ -71,7 +71,7 @@ interface RecentSubmission {
 }
 
 interface AUSTRACControlCentreProps {
-  navigateTo?: (page: any, caseId?: string, label?: string) => void;
+  navigateTo?: (page: string, caseId?: string, label?: string) => void;
   goBack?: () => void;
   defaultSelectedCaseId?: string | null;
 }

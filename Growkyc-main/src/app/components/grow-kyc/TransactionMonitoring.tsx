@@ -1,28 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../ui/card';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
 import { Input } from '../ui/input';
-import { Label } from '../ui/label';
-import { Switch } from '../ui/switch';
 import {
   ArrowLeft,
   Activity,
-  TrendingUp,
   AlertTriangle,
-  DollarSign,
   Zap,
-  Database,
   Eye,
-  Settings,
-  Play,
-  Pause,
   Download,
   RefreshCw,
-  GitBranch,
   Clock,
   Shield,
-  AlertCircle
+  AlertCircle,
+  Search,
+  FileText,
+  XCircle
 } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
@@ -32,143 +26,107 @@ import { Breadcrumbs } from './Breadcrumbs';
 
 interface TransactionMonitoringProps {
   onBack: () => void;
+  onOpenReferral?: (alertId: string) => void;
 }
 
-export function TransactionMonitoring({ onBack }: TransactionMonitoringProps) {
-  const [selectedFeed, setSelectedFeed] = useState<string | null>(null);
+type AlertStatus = 'new' | 'investigating' | 'escalated' | 'closed';
+type AlertSeverity = 'low' | 'medium' | 'high' | 'critical';
 
-  const bankFeeds = [
-    {
-      id: 'feed-001',
-      accountName: 'Commonwealth Bank - Business Account',
-      accountNumber: '***1234',
-      bank: 'CommBank',
-      status: 'connected',
-      lastSync: '2024-03-01 09:30',
-      transactionsToday: 47,
-      dataSource: 'Open Banking API (CDR)',
-      refreshFrequency: 'Real-time'
-    },
-    {
-      id: 'feed-002',
-      accountName: 'NAB - Investment Account',
-      accountNumber: '***5678',
-      bank: 'NAB',
-      status: 'connected',
-      lastSync: '2024-03-01 09:25',
-      transactionsToday: 23,
-      dataSource: 'Open Banking API (CDR)',
-      refreshFrequency: 'Real-time'
-    },
-    {
-      id: 'feed-003',
-      accountName: 'ANZ - Trust Account',
-      accountNumber: '***9012',
-      bank: 'ANZ',
-      status: 'error',
-      lastSync: '2024-02-28 14:20',
-      transactionsToday: 0,
-      dataSource: 'Open Banking API (CDR)',
-      refreshFrequency: 'Real-time'
-    }
-  ];
+interface TransactionAlert {
+  id: string;
+  client: string;
+  clientId: string;
+  transactionId: string;
+  riskScore: number;
+  pattern: string;
+  details: string;
+  transactions: number;
+  totalAmount: number;
+  timeframe: string;
+  status: AlertStatus;
+  severity: AlertSeverity;
+  flaggedAt: string;
+  autoAction: string;
+  pepStatus: 'clear' | 'review' | 'match';
+  sanctionsStatus: 'clear' | 'review' | 'match';
+  kycStatus: 'verified' | 'pending' | 'expired';
+}
 
-  const monitoringRules = [
-    {
-      id: 'rule-001',
-      name: 'Structuring Detection',
-      description: 'Multiple transactions just below $10,000 threshold',
-      status: 'active',
-      triggers: 8,
-      priority: 'high',
-      conditions: [
-        '3+ transactions within 24 hours',
-        'Each transaction $8,000 - $9,999',
-        'Same beneficiary or pattern'
-      ]
-    },
-    {
-      id: 'rule-002',
-      name: 'Rapid Cash Movement',
-      description: 'Funds in and out within short timeframe',
-      status: 'active',
-      triggers: 3,
-      priority: 'medium',
-      conditions: [
-        'Funds in > $50,000',
-        'Funds out within 48 hours',
-        'Minimal balance remaining'
-      ]
-    },
-    {
-      id: 'rule-003',
-      name: 'Cross-Border Spike',
-      description: 'Unusual international transaction volume',
-      status: 'active',
-      triggers: 12,
-      priority: 'high',
-      conditions: [
-        'International transactions > 3x baseline',
-        'High-risk jurisdiction',
-        'New beneficiary country'
-      ]
-    },
-    {
-      id: 'rule-004',
-      name: 'Unusual Transaction Size',
-      description: 'Transaction significantly larger than historical average',
-      status: 'active',
-      triggers: 5,
-      priority: 'medium',
-      conditions: [
-        'Transaction > 5x average',
-        'No business justification pattern',
-        'First occurrence of size'
-      ]
-    }
-  ];
+const INITIAL_ALERTS: TransactionAlert[] = [
+  {
+    id: 'alert-001',
+    client: 'Alpha Holdings Pty Ltd',
+    clientId: 'C001',
+    transactionId: 'TXN-89011',
+    riskScore: 92,
+    pattern: 'Structuring Alert',
+    details: '4 transactions totaling $38,500 within 6 hours, each $9,500-$9,800.',
+    transactions: 4,
+    totalAmount: 38500,
+    timeframe: '6 hours',
+    status: 'new',
+    severity: 'critical',
+    flaggedAt: '2026-05-28T09:15:00.000Z',
+    autoAction: 'Account under review hold',
+    pepStatus: 'review',
+    sanctionsStatus: 'clear',
+    kycStatus: 'pending'
+  },
+  {
+    id: 'alert-002',
+    client: 'John Smith',
+    clientId: 'C002',
+    transactionId: 'TXN-89012',
+    riskScore: 78,
+    pattern: 'Velocity Anomaly',
+    details: '$75,000 received and $72,000 sent within 24 hours across linked accounts.',
+    transactions: 2,
+    totalAmount: 75000,
+    timeframe: '24 hours',
+    status: 'investigating',
+    severity: 'high',
+    flaggedAt: '2026-05-28T08:30:00.000Z',
+    autoAction: 'None',
+    pepStatus: 'clear',
+    sanctionsStatus: 'review',
+    kycStatus: 'verified'
+  },
+  {
+    id: 'alert-003',
+    client: 'Beta Investment Corp',
+    clientId: 'C003',
+    transactionId: 'TXN-89013',
+    riskScore: 85,
+    pattern: 'High Geographical Risk',
+    details: '$120,000 transfer to a high-risk jurisdiction with no prior business relationship.',
+    transactions: 1,
+    totalAmount: 120000,
+    timeframe: 'Single',
+    status: 'escalated',
+    severity: 'high',
+    flaggedAt: '2026-05-27T16:20:00.000Z',
+    autoAction: 'Transaction held pending review',
+    pepStatus: 'clear',
+    sanctionsStatus: 'match',
+    kycStatus: 'verified'
+  }
+];
 
-  const transactionAlerts = [
-    {
-      id: 'alert-001',
-      client: 'Alpha Holdings Pty Ltd',
-      riskScore: 92,
-      pattern: 'Structuring Detected',
-      details: '4 transactions totaling $38,500 within 6 hours, each $9,500-$9,800',
-      transactions: 4,
-      totalAmount: 38500,
-      timeframe: '6 hours',
-      status: 'new',
-      flaggedAt: '2024-03-01 08:45',
-      autoAction: 'Account under review hold'
-    },
-    {
-      id: 'alert-002',
-      client: 'John Smith',
-      riskScore: 78,
-      pattern: 'Rapid Cash Movement',
-      details: '$75,000 received and $72,000 sent within 24 hours',
-      transactions: 2,
-      totalAmount: 75000,
-      timeframe: '24 hours',
-      status: 'investigating',
-      flaggedAt: '2024-03-01 07:30',
-      autoAction: 'None'
-    },
-    {
-      id: 'alert-003',
-      client: 'Beta Investment Corp',
-      riskScore: 85,
-      pattern: 'High-Risk Jurisdiction Transfer',
-      details: '$120,000 to UAE entity with no prior business relationship',
-      transactions: 1,
-      totalAmount: 120000,
-      timeframe: 'Single',
-      status: 'escalated',
-      flaggedAt: '2024-02-29 16:20',
-      autoAction: 'Transaction held pending review'
-    }
-  ];
+export function TransactionMonitoring({ onBack, onOpenReferral }: TransactionMonitoringProps) {
+  const [alerts, setAlerts] = useState<TransactionAlert[]>(INITIAL_ALERTS);
+  const [selectedAlert, setSelectedAlert] = useState<TransactionAlert | null>(null);
+  const [investigationTab, setInvestigationTab] = useState<'overview' | 'kyc' | 'screening' | 'timeline' | 'notes'>('overview');
+  const [notesByAlert, setNotesByAlert] = useState<Record<string, string>>({});
+  const [search, setSearch] = useState('');
+  const [statusFilter, setStatusFilter] = useState<'all' | AlertStatus>('all');
+  const [severityFilter, setSeverityFilter] = useState<'all' | AlertSeverity>('all');
+  const [sortBy, setSortBy] = useState<'flaggedAt' | 'riskScore'>('flaggedAt');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [liveRefresh, setLiveRefresh] = useState(true);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const pageSize = 5;
 
   const heatmapData = [
     { date: '2024-02-24', riskScore: 25, flagged: 2 },
@@ -179,6 +137,77 @@ export function TransactionMonitoring({ onBack }: TransactionMonitoringProps) {
     { date: '2024-02-29', riskScore: 92, flagged: 12 },
     { date: '2024-03-01', riskScore: 78, flagged: 9 },
   ];
+
+  const sortedFilteredAlerts = useMemo(() => {
+    const filtered = alerts.filter((alert) => {
+      if (statusFilter !== 'all' && alert.status !== statusFilter) return false;
+      if (severityFilter !== 'all' && alert.severity !== severityFilter) return false;
+      if (!search.trim()) return true;
+      const needle = search.toLowerCase();
+      return (
+        alert.client.toLowerCase().includes(needle) ||
+        alert.pattern.toLowerCase().includes(needle) ||
+        alert.id.toLowerCase().includes(needle) ||
+        alert.transactionId.toLowerCase().includes(needle)
+      );
+    });
+
+    return filtered.sort((a, b) => {
+      if (sortBy === 'riskScore') return b.riskScore - a.riskScore;
+      return new Date(b.flaggedAt).getTime() - new Date(a.flaggedAt).getTime();
+    });
+  }, [alerts, statusFilter, severityFilter, search, sortBy]);
+
+  const totalPages = Math.max(1, Math.ceil(sortedFilteredAlerts.length / pageSize));
+  const visibleAlerts = sortedFilteredAlerts.slice((currentPage - 1) * pageSize, currentPage * pageSize);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [statusFilter, severityFilter, search, sortBy]);
+
+  useEffect(() => {
+    if (!liveRefresh) return;
+    const timer = window.setInterval(() => {
+      setAlerts((prev) =>
+        prev.map((alert) =>
+          alert.status === 'new'
+            ? { ...alert, riskScore: Math.min(99, alert.riskScore + 1) }
+            : alert
+        )
+      );
+    }, 30000);
+    return () => window.clearInterval(timer);
+  }, [liveRefresh]);
+
+  const refreshAlerts = () => {
+    setIsRefreshing(true);
+    setError(null);
+    window.setTimeout(() => {
+      setAlerts((prev) =>
+        prev.map((alert, idx) =>
+          idx === 0 ? { ...alert, flaggedAt: new Date().toISOString() } : alert
+        )
+      );
+      setIsRefreshing(false);
+      toast.success('Alert queue refreshed');
+    }, 700);
+  };
+
+  const setAlertStatus = (alertId: string, status: AlertStatus) => {
+    setAlerts((prev) => prev.map((alert) => (alert.id === alertId ? { ...alert, status } : alert)));
+  };
+
+  const saveNote = () => {
+    if (!selectedAlert) return;
+    toast.success('Investigation note saved');
+  };
+
+  const severityBadgeClass = (severity: AlertSeverity) => {
+    if (severity === 'critical') return 'bg-red-600';
+    if (severity === 'high') return 'bg-amber-600';
+    if (severity === 'medium') return 'bg-blue-600';
+    return 'bg-slate-600';
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -200,23 +229,90 @@ export function TransactionMonitoring({ onBack }: TransactionMonitoringProps) {
             </div>
             <Badge className="bg-white text-green-600 text-sm px-3 py-1">
               <Zap className="w-4 h-4 mr-1" />
-              Live Monitoring Active
+              {liveRefresh ? 'Live Monitoring Active' : 'Live Monitoring Paused'}
             </Badge>
           </div>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 py-8">
+        <Breadcrumbs />
         <Tabs defaultValue="alerts" className="space-y-6">
           <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="alerts">Transaction Alerts</TabsTrigger>
+            <TabsTrigger value="alerts">Daily Alert Queue</TabsTrigger>
             <TabsTrigger value="heatmap">Risk Heatmap</TabsTrigger>
           </TabsList>
 
           {/* Transaction Alerts */}
           <TabsContent value="alerts" className="space-y-6">
+            <Card>
+              <CardContent className="p-4 grid grid-cols-1 lg:grid-cols-5 gap-3">
+                <div className="lg:col-span-2 relative">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                  <Input
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder="Search alert, client, or transaction..."
+                    className="pl-9"
+                  />
+                </div>
+                <Select value={statusFilter} onValueChange={(value) => setStatusFilter(value as 'all' | AlertStatus)}>
+                  <SelectTrigger><SelectValue placeholder="Status" /></SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All statuses</SelectItem>
+                    <SelectItem value="new">New</SelectItem>
+                    <SelectItem value="investigating">Investigating</SelectItem>
+                    <SelectItem value="escalated">Escalated</SelectItem>
+                    <SelectItem value="closed">Closed</SelectItem>
+                  </SelectContent>
+                </Select>
+                <Select value={severityFilter} onValueChange={(value) => setSeverityFilter(value as 'all' | AlertSeverity)}>
+                  <SelectTrigger><SelectValue placeholder="Severity" /></SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All severities</SelectItem>
+                    <SelectItem value="critical">Critical</SelectItem>
+                    <SelectItem value="high">High</SelectItem>
+                    <SelectItem value="medium">Medium</SelectItem>
+                    <SelectItem value="low">Low</SelectItem>
+                  </SelectContent>
+                </Select>
+                <div className="flex gap-2">
+                  <Select value={sortBy} onValueChange={(value) => setSortBy(value as 'flaggedAt' | 'riskScore')}>
+                    <SelectTrigger><SelectValue /></SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="flaggedAt">Sort: Newest</SelectItem>
+                      <SelectItem value="riskScore">Sort: Risk Score</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <Button variant="outline" size="icon" onClick={refreshAlerts} disabled={isRefreshing}>
+                    <RefreshCw className={`w-4 h-4 ${isRefreshing ? 'animate-spin' : ''}`} />
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            <div className="flex items-center justify-between text-sm text-gray-600">
+              <span>{sortedFilteredAlerts.length} alert(s)</span>
+              <Button variant="outline" size="sm" onClick={() => setLiveRefresh((v) => !v)}>
+                {liveRefresh ? 'Pause refresh' : 'Resume refresh'}
+              </Button>
+            </div>
+
+            {isLoading && <div className="p-6 bg-white rounded border">Loading alerts...</div>}
+            {error && (
+              <div className="p-4 bg-red-50 border border-red-200 rounded text-red-700 flex items-center gap-2">
+                <AlertCircle className="w-4 h-4" /> {error}
+              </div>
+            )}
+
+            {!isLoading && visibleAlerts.length === 0 && (
+              <div className="p-10 bg-white rounded border text-center text-gray-600">
+                No alerts match current filters.
+              </div>
+            )}
+
             <div className="space-y-4">
-              {transactionAlerts.map((alert) => (
+              {visibleAlerts.map((alert) => (
                 <Card 
                   key={alert.id}
                   className={`border-2 ${
@@ -237,13 +333,10 @@ export function TransactionMonitoring({ onBack }: TransactionMonitoringProps) {
                           <div>
                             <h3 className="text-lg font-semibold text-gray-900">{alert.client}</h3>
                             <div className="text-sm text-gray-600">{alert.pattern}</div>
+                            <div className="text-xs text-gray-500 mt-1">Customer {alert.clientId} · Txn {alert.transactionId}</div>
                           </div>
-                          <Badge className={
-                            alert.riskScore >= 90 ? 'bg-red-600' :
-                            alert.riskScore >= 70 ? 'bg-amber-600' :
-                            'bg-blue-600'
-                          }>
-                            Risk: {alert.riskScore}/100
+                          <Badge className={severityBadgeClass(alert.severity)}>
+                            {alert.severity.toUpperCase()} · {alert.riskScore}/100
                           </Badge>
                         </div>
 
@@ -282,20 +375,36 @@ export function TransactionMonitoring({ onBack }: TransactionMonitoringProps) {
                         )}
 
                         <div className="text-xs text-gray-500 mt-3">
-                          Flagged: {alert.flaggedAt}
+                          Flagged: {new Date(alert.flaggedAt).toLocaleString('en-AU')}
                         </div>
                       </div>
 
                       <div className="flex flex-col gap-2 ml-6">
-                        <Button size="sm" className="bg-red-600 hover:bg-red-700">
+                        <Button
+                          size="sm"
+                          className="bg-red-600 hover:bg-red-700"
+                          onClick={() => {
+                            setAlertStatus(alert.id, 'escalated');
+                            if (onOpenReferral) onOpenReferral(alert.id);
+                            toast.success('Alert escalated to internal referral');
+                          }}
+                        >
                           <Shield className="w-4 h-4 mr-2" />
                           Create SMR Case
                         </Button>
-                        <Button size="sm" variant="outline">
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          onClick={() => {
+                            setAlertStatus(alert.id, 'investigating');
+                            setSelectedAlert(alert);
+                            setInvestigationTab('overview');
+                          }}
+                        >
                           <Eye className="w-4 h-4 mr-2" />
                           Investigate
                         </Button>
-                        <Button size="sm" variant="outline">
+                        <Button size="sm" variant="outline" onClick={() => toast.info('Evidence export started')}>
                           <Download className="w-4 h-4 mr-2" />
                           Export Evidence
                         </Button>
@@ -304,6 +413,16 @@ export function TransactionMonitoring({ onBack }: TransactionMonitoringProps) {
                   </CardContent>
                 </Card>
               ))}
+            </div>
+
+            <div className="flex items-center justify-between pt-2">
+              <Button variant="outline" size="sm" disabled={currentPage <= 1} onClick={() => setCurrentPage((p) => p - 1)}>
+                Previous
+              </Button>
+              <span className="text-sm text-gray-600">Page {currentPage} of {totalPages}</span>
+              <Button variant="outline" size="sm" disabled={currentPage >= totalPages} onClick={() => setCurrentPage((p) => p + 1)}>
+                Next
+              </Button>
             </div>
           </TabsContent>
 
@@ -362,6 +481,77 @@ export function TransactionMonitoring({ onBack }: TransactionMonitoringProps) {
           </TabsContent>
         </Tabs>
       </div>
+
+      {selectedAlert && (
+        <div className="fixed inset-0 z-50 bg-black/50 p-4 overflow-y-auto" onClick={() => setSelectedAlert(null)}>
+          <Card className="max-w-4xl mx-auto mt-6" onClick={(e) => e.stopPropagation()}>
+            <CardHeader className="border-b">
+              <div className="flex items-center justify-between">
+                <CardTitle className="text-xl">Alert Investigation Workbench</CardTitle>
+                <Button variant="ghost" size="icon" onClick={() => setSelectedAlert(null)}>
+                  <XCircle className="w-5 h-5" />
+                </Button>
+              </div>
+              <CardDescription>{selectedAlert.client} · {selectedAlert.id}</CardDescription>
+            </CardHeader>
+            <CardContent className="p-5 space-y-4">
+              <Tabs value={investigationTab} onValueChange={(v) => setInvestigationTab(v as typeof investigationTab)}>
+                <TabsList className="grid grid-cols-5 w-full">
+                  <TabsTrigger value="overview">Overview</TabsTrigger>
+                  <TabsTrigger value="kyc">KYC</TabsTrigger>
+                  <TabsTrigger value="screening">PEP/Sanctions</TabsTrigger>
+                  <TabsTrigger value="timeline">Timeline</TabsTrigger>
+                  <TabsTrigger value="notes">Notes</TabsTrigger>
+                </TabsList>
+                <TabsContent value="overview" className="pt-4 text-sm space-y-2">
+                  <p><strong>Pattern:</strong> {selectedAlert.pattern}</p>
+                  <p><strong>Transaction:</strong> {selectedAlert.transactionId}</p>
+                  <p><strong>Amount:</strong> ${selectedAlert.totalAmount.toLocaleString()}</p>
+                  <p><strong>Details:</strong> {selectedAlert.details}</p>
+                </TabsContent>
+                <TabsContent value="kyc" className="pt-4 text-sm space-y-2">
+                  <p><strong>KYC status:</strong> {selectedAlert.kycStatus}</p>
+                  <p><strong>Customer:</strong> {selectedAlert.clientId}</p>
+                  <p>CDD checklist and profile data loaded for review.</p>
+                </TabsContent>
+                <TabsContent value="screening" className="pt-4 text-sm space-y-2">
+                  <p><strong>PEP screening:</strong> {selectedAlert.pepStatus}</p>
+                  <p><strong>Sanctions screening:</strong> {selectedAlert.sanctionsStatus}</p>
+                  <p>Risk scoring is synced with screening outcomes.</p>
+                </TabsContent>
+                <TabsContent value="timeline" className="pt-4 text-sm space-y-2">
+                  <p>{new Date(selectedAlert.flaggedAt).toLocaleString('en-AU')} - Alert triggered</p>
+                  <p>{new Date().toLocaleString('en-AU')} - Investigation opened</p>
+                </TabsContent>
+                <TabsContent value="notes" className="pt-4 space-y-3">
+                  <textarea
+                    rows={5}
+                    value={notesByAlert[selectedAlert.id] ?? ''}
+                    onChange={(e) =>
+                      setNotesByAlert((prev) => ({ ...prev, [selectedAlert.id]: e.target.value }))
+                    }
+                    className="w-full border rounded-md p-3 text-sm"
+                    placeholder="Add investigation notes, rationale, and findings..."
+                  />
+                  <Button onClick={saveNote}>
+                    <FileText className="w-4 h-4 mr-2" />
+                    Save Notes
+                  </Button>
+                </TabsContent>
+              </Tabs>
+
+              <div className="flex flex-wrap gap-2 pt-2 border-t">
+                <Button variant="outline" onClick={() => setAlertStatus(selectedAlert.id, 'closed')}>Close Alert</Button>
+                <Button variant="outline" onClick={() => setAlertStatus(selectedAlert.id, 'investigating')}>Mark Investigating</Button>
+                <Button className="bg-red-600 hover:bg-red-700" onClick={() => {
+                  setAlertStatus(selectedAlert.id, 'escalated');
+                  if (onOpenReferral) onOpenReferral(selectedAlert.id);
+                }}>Escalate Referral</Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
     </div>
   );
 }

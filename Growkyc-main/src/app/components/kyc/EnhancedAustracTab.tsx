@@ -5,6 +5,7 @@ import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 import { Progress } from '../ui/progress';
 import { toast } from 'sonner';
+import { logComplianceActivity } from '../../../utils/activityLogger';
 import {
   Shield,
   AlertTriangle,
@@ -123,6 +124,13 @@ export function EnhancedAustracTab({ clientName, smrs, summary }: EnhancedAustra
         } else {
           toast.success('AUSTRAC Evidence Pack Assembled Successfully');
         }
+
+        logComplianceActivity({
+          type: 'document',
+          action: `assembled AUSTRAC Evidence Pack for ${clientName}`,
+          iconName: 'FileText',
+          color: 'text-purple-600'
+        });
       }
     }, 600);
   };
@@ -171,6 +179,13 @@ export function EnhancedAustracTab({ clientName, smrs, summary }: EnhancedAustra
 
       doc.save(`AUSTRAC_EVIDENCE_${smrRef}.pdf`);
       toast.success('Evidence Pack PDF Downloaded Securely');
+
+      logComplianceActivity({
+        type: 'approval',
+        action: `downloaded AUSTRAC Evidence PDF report for ${clientName}`,
+        iconName: 'CheckCircle',
+        color: 'text-green-600'
+      });
     } catch (error) {
       console.error('PDF Generation Error:', error);
       toast.error('Failed to generate PDF');

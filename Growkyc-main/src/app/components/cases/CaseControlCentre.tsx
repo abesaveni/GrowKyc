@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
@@ -23,6 +23,7 @@ import {
 } from 'lucide-react';
 import { CaseCreationModal } from './CaseCreationModal';
 import { CaseWorkbench } from './CaseWorkbench';
+import { toast } from '../../lib/toast';
 
 type CaseStatus = 'new' | 'triage' | 'investigating' | 'escalated' | 'awaiting_decision' | 'monitoring' | 'closed';
 type CaseType = 'aml_alert' | 'pep' | 'adverse_media' | 'sanctions' | 'ownership' | 'sof' | 'fraud' | 'legal' | 'manual';
@@ -42,10 +43,17 @@ interface Case {
   slaRemaining: number;
 }
 
-export function CaseControlCentre() {
+interface CaseControlCentreProps {
+  onOpenCase?: (caseId: string) => void;
+}
+
+export function CaseControlCentre({ onOpenCase }: CaseControlCentreProps = {}) {
   const [selectedCase, setSelectedCase] = useState<Case | null>(null);
   const [filterKPI, setFilterKPI] = useState<string>('all');
   const [searchTerm, setSearchTerm] = useState('');
+  const [showFilters, setShowFilters] = useState(false);
+  const [caseTypeFilter, setCaseTypeFilter] = useState<'all' | CaseType>('all');
+  const [statusFilter, setStatusFilter] = useState<'all' | CaseStatus>('all');
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [cases, setCases] = useState<Case[]>([]);
 
@@ -250,6 +258,61 @@ export function CaseControlCentre() {
     return 'text-green-700';
   };
 
+  const filteredCases = useMemo(() => {
+    return cases.filter((c) => {
+      if (filterKPI === 'high_risk' && c.riskLevel !== 'high' && c.riskLevel !== 'critical') return false;
+      if (filterKPI === 'escalated' && c.status !== 'escalated') return false;
+      if (filterKPI === 'awaiting' && c.status !== 'awaiting_decision') return false;
+      if (filterKPI === 'overdue' && c.slaRemaining > 0) return false;
+      if (filterKPI === 'closed' && c.status !== 'closed') return false;
+      if (filterKPI === 'open' && c.status === 'closed') return false;
+      if (caseTypeFilter !== 'all' && c.caseType !== caseTypeFilter) return false;
+      if (statusFilter !== 'all' && c.status !== statusFilter) return false;
+
+      if (searchTerm) {
+        const lower = searchTerm.toLowerCase();
+        return c.id.toLowerCase().includes(lower) ||
+          c.clientName.toLowerCase().includes(lower) ||
+          c.caseType.toLowerCase().includes(lower) ||
+          c.status.toLowerCase().includes(lower);
+      }
+      return true;
+    });
+  }, [cases, filterKPI, caseTypeFilter, statusFilter, searchTerm]);
+
+  const handleExportCases = () => {
+    if (filteredCases.length === 0) {
+      toast.info('No cases available for export');
+      return;
+    }
+
+    const headers = ['Case ID', 'Client', 'Case Type', 'Status', 'Risk', 'Assigned To', 'Last Updated', 'SLA Remaining'];
+    const rows = filteredCases.map((item) => [
+      item.id,
+      item.clientName,
+      item.caseType,
+      item.status,
+      item.riskLevel,
+      item.assignedTo,
+      item.lastUpdated,
+      String(item.slaRemaining)
+    ]);
+    const csv = [headers, ...rows].map((row) => row.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(',')).join('\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `compliance-cases-${new Date().toISOString().slice(0, 10)}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+    toast.success(`Exported ${filteredCases.length} case(s)`);
+  };
+
+  const openCase = (caseItem: Case) => {
+    setSelectedCase(caseItem);
+    onOpenCase?.(caseItem.id);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-[2000px] mx-auto space-y-6">
@@ -272,7 +335,7 @@ export function CaseControlCentre() {
               </Button>
               <Button 
                 className="bg-white/20 border-2 border-white/30 text-white hover:bg-white/30"
-                onClick={() => alert("Cases exported to CSV format.")}
+                onClick={handleExportCases}
               >
                 <Download className="w-5 h-5 mr-2" />
                 Export Cases
@@ -393,14 +456,65 @@ export function CaseControlCentre() {
                     className="pl-10 pr-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-80"
                   />
                 </div>
-                <Button variant="outline" size="sm" className="border-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="border-2"
+                  onClick={() => setShowFilters((v) => !v)}
+                >
                   <Filter className="w-5 h-5 mr-2" />
-                  Filters
+                  {showFilters ? 'Hide Filters' : 'Filters'}
                 </Button>
               </div>
             </div>
           </CardHeader>
           <CardContent className="p-0">
+            {showFilters && (
+              <div className="px-4 py-3 border-b bg-white flex flex-col sm:flex-row gap-3">
+                <select
+                  value={caseTypeFilter}
+                  onChange={(e) => setCaseTypeFilter(e.target.value as 'all' | CaseType)}
+                  className="px-3 py-2 border-2 border-gray-300 rounded-lg text-sm"
+                >
+                  <option value="all">All case types</option>
+                  <option value="aml_alert">AML Alert</option>
+                  <option value="pep">PEP</option>
+                  <option value="adverse_media">Adverse Media</option>
+                  <option value="sanctions">Sanctions</option>
+                  <option value="ownership">Ownership</option>
+                  <option value="sof">Source of Funds</option>
+                  <option value="fraud">Fraud</option>
+                  <option value="legal">Legal</option>
+                  <option value="manual">Manual Referral</option>
+                </select>
+                <select
+                  value={statusFilter}
+                  onChange={(e) => setStatusFilter(e.target.value as 'all' | CaseStatus)}
+                  className="px-3 py-2 border-2 border-gray-300 rounded-lg text-sm"
+                >
+                  <option value="all">All statuses</option>
+                  <option value="new">New</option>
+                  <option value="triage">Triage</option>
+                  <option value="investigating">Investigating</option>
+                  <option value="escalated">Escalated</option>
+                  <option value="awaiting_decision">Awaiting Decision</option>
+                  <option value="monitoring">Monitoring</option>
+                  <option value="closed">Closed</option>
+                </select>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    setCaseTypeFilter('all');
+                    setStatusFilter('all');
+                    setSearchTerm('');
+                    setFilterKPI('all');
+                  }}
+                >
+                  Reset Filters
+                </Button>
+              </div>
+            )}
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead className="bg-gray-100 border-b-2 border-gray-300">
@@ -418,26 +532,10 @@ export function CaseControlCentre() {
                   </tr>
                 </thead>
                 <tbody>
-                  {cases.filter(c => {
-                    if (filterKPI === 'high_risk' && c.riskLevel !== 'high' && c.riskLevel !== 'critical') return false;
-                    if (filterKPI === 'escalated' && c.status !== 'escalated') return false;
-                    if (filterKPI === 'awaiting' && c.status !== 'awaiting_decision') return false;
-                    if (filterKPI === 'overdue' && c.slaRemaining > 0) return false;
-                    if (filterKPI === 'closed' && c.status !== 'closed') return false;
-                    if (filterKPI === 'open' && c.status === 'closed') return false;
-
-                    if (searchTerm) {
-                      const lower = searchTerm.toLowerCase();
-                      return c.id.toLowerCase().includes(lower) || 
-                             c.clientName.toLowerCase().includes(lower) || 
-                             c.caseType.toLowerCase().includes(lower) ||
-                             c.status.toLowerCase().includes(lower);
-                    }
-                    return true;
-                  }).map((caseItem) => (
+                  {filteredCases.map((caseItem) => (
                     <tr
                       key={caseItem.id}
-                      onClick={() => setSelectedCase(caseItem)}
+                      onClick={() => openCase(caseItem)}
                       className={`border-b border-gray-200 hover:bg-blue-50 cursor-pointer transition-colors ${
                         caseItem.riskLevel === 'critical' ? 'bg-red-50/30' :
                         caseItem.slaRemaining <= 0 ? 'bg-orange-50/30' :
@@ -498,6 +596,10 @@ export function CaseControlCentre() {
                           variant="outline"
                           size="sm"
                           className="border-2 border-blue-500 text-blue-700 hover:bg-blue-50"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            openCase(caseItem);
+                          }}
                         >
                           <Eye className="w-4 h-4 mr-1" />
                           Open
@@ -507,19 +609,7 @@ export function CaseControlCentre() {
                   ))}
                 </tbody>
               </table>
-              {cases.filter(c => {
-                    if (filterKPI === 'high_risk' && c.riskLevel !== 'high' && c.riskLevel !== 'critical') return false;
-                    if (filterKPI === 'escalated' && c.status !== 'escalated') return false;
-                    if (filterKPI === 'awaiting' && c.status !== 'awaiting_decision') return false;
-                    if (filterKPI === 'overdue' && c.slaRemaining > 0) return false;
-                    if (filterKPI === 'closed' && c.status !== 'closed') return false;
-                    if (filterKPI === 'open' && c.status === 'closed') return false;
-                    if (searchTerm) {
-                      const lower = searchTerm.toLowerCase();
-                      return c.id.toLowerCase().includes(lower) || c.clientName.toLowerCase().includes(lower) || c.caseType.toLowerCase().includes(lower) || c.status.toLowerCase().includes(lower);
-                    }
-                    return true;
-              }).length === 0 && (
+              {filteredCases.length === 0 && (
                 <div className="p-8 text-center text-gray-500 font-medium">
                   No cases found matching the current filters.
                 </div>

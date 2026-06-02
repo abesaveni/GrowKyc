@@ -23,6 +23,7 @@ from routers import (
     admin,
     auth,
     clients,
+    compatibility,
     communications,
     dashboard,
     documents,
@@ -30,6 +31,7 @@ from routers import (
     kyc,
     payments,
     pexa,
+    route_aliases,
 )
 from routers.edd import router as edd_router
 from routers.cases import router as cases_router
@@ -168,7 +170,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[origin.strip() for origin in allowed_origins],
     allow_credentials=True,
-    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allow_headers=["*"],
     expose_headers=["X-Total-Count", "X-Page-Count"],
     max_age=600,  # Cache preflight requests for 10 minutes
@@ -326,6 +328,36 @@ async def root() -> dict:
 # Include routers with API prefix
 api_prefix = os.getenv("API_PREFIX", "api/v1")
 
+common_error_responses = {
+    401: {"model": ErrorResponse},
+    403: {"model": ErrorResponse},
+    404: {"model": ErrorResponse},
+}
+
+# Compatibility routes are registered first so static aliases such as
+# /documents/expiring are not shadowed by dynamic paths like /documents/{id}.
+app.include_router(
+    compatibility.router,
+    prefix=f"/{api_prefix}",
+    responses=common_error_responses,
+)
+
+if api_prefix != "api":
+    app.include_router(
+        compatibility.router,
+        prefix="/api",
+        include_in_schema=False,
+        responses=common_error_responses,
+    )
+
+# Targeted root-level aliases for legacy frontend paths (minimal, additive)
+app.include_router(
+    route_aliases.router,
+    prefix="",
+    include_in_schema=False,
+    responses=common_error_responses,
+)
+
 app.include_router(
     auth.router,
     prefix=f"/{api_prefix}",
@@ -433,6 +465,39 @@ app.include_router(
     prefix=f"/{api_prefix}",
     responses={401: {"model": ErrorResponse}, 403: {"model": ErrorResponse}},
 )
+
+
+def include_versionless_api_aliases() -> None:
+    """Expose canonical routers under /api for older frontend callers."""
+    if api_prefix == "api":
+        return
+
+    alias_routers = [
+        auth.router,
+        kyc.router,
+        admin.router,
+        dashboard.router,
+        pexa.router,
+        integrations.router,
+        payments.router,
+        clients.router,
+        communications.router,
+        documents.router,
+        edd_router,
+        cases_router,
+        reports_router,
+    ]
+
+    for alias_router in alias_routers:
+        app.include_router(
+            alias_router,
+            prefix="/api",
+            include_in_schema=False,
+            responses=common_error_responses,
+        )
+
+
+include_versionless_api_aliases()
 
 
 # ==================== OPENAPI CUSTOMIZATION ====================

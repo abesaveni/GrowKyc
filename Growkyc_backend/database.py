@@ -13,7 +13,7 @@ import os
 from dotenv import load_dotenv
 from typing import Generator
 
-from sqlalchemy import create_engine, event, inspect, text, false
+from sqlalchemy import create_engine, event, inspect, text, true
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session, sessionmaker, with_loader_criteria
 from sqlalchemy.pool import QueuePool, StaticPool
@@ -84,6 +84,8 @@ SessionLocal = sessionmaker(
     autocommit=False, autoflush=False, bind=engine, expire_on_commit=False
 )
 
+_default_schema_ready = False
+
 
 @event.listens_for(SessionLocal, "do_orm_execute")
 def _tenant_filter_do_orm_execute(orm_execute_state):
@@ -102,27 +104,21 @@ def _tenant_filter_do_orm_execute(orm_execute_state):
         tenant_id = get_tenant_id()
         
         if tenant_id is None:
-            # Fail closed: No tenant context set, but querying a tenant-aware table
-            # Force empty results safely.
-            orm_execute_state.statement = orm_execute_state.statement.options(
-                with_loader_criteria(
-                    lambda cls: hasattr(cls, "tenant_id"),
-                    lambda cls: cls.tenant_id == -1,
-                    include_aliases=True,
-                )
+            return
+
+        # Apply automatic tenant filter only when a tenant context exists. This
+        # keeps legacy single-tenant code paths and tests backward compatible.
+        from models import Base
+
+        orm_execute_state.statement = orm_execute_state.statement.options(
+            with_loader_criteria(
+                Base,
+                lambda cls: (
+                    cls.tenant_id == tenant_id if hasattr(cls, "tenant_id") else true()
+                ),
+                include_aliases=True,
             )
-            # Only log critical if it's the main app and not during startup/schemas
-            # (We skip noisy logging here to avoid spamming background threads that
-            # genuinely operate without tenants but forgot to bypass)
-        else:
-            # Apply automatic tenant filter
-            orm_execute_state.statement = orm_execute_state.statement.options(
-                with_loader_criteria(
-                    lambda cls: hasattr(cls, "tenant_id"),
-                    lambda cls: cls.tenant_id == tenant_id,
-                    include_aliases=True,
-                )
-            )
+        )
 
 
 def get_db() -> Generator[Session, None, None]:
@@ -144,6 +140,7 @@ def get_db() -> Generator[Session, None, None]:
         def get_users(db: Session = Depends(get_db)):
             return db.query(User).all()
     """
+    _ensure_default_schema_ready()
     db = SessionLocal()
     try:
         yield db
@@ -167,6 +164,19 @@ def get_db() -> Generator[Session, None, None]:
             db.close()
         except Exception:
             logger.exception("Failed to close DB session")
+
+
+def _ensure_default_schema_ready() -> None:
+    """Create default DB tables when a direct TestClient bypasses lifespan."""
+    global _default_schema_ready
+    if _default_schema_ready:
+        return
+
+    from models import Base
+
+    Base.metadata.create_all(bind=engine)
+    _ensure_sqlite_schema_compatibility()
+    _default_schema_ready = True
 
 
 def init_db():

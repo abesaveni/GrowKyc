@@ -11,6 +11,7 @@ import {
   FileText,
   CheckCircle,
   AlertTriangle,
+  AlertCircle,
   Activity,
   TrendingUp,
   Target,

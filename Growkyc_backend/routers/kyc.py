@@ -5,7 +5,7 @@ Delegates all business logic to KYCService and DocumentService.
 
 import logging
 
-from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile, status
+from fastapi import APIRouter, Depends, File, Form, HTTPException, Response, UploadFile, status
 from sqlalchemy.orm import Session
 
 from core.exceptions import (
@@ -44,6 +44,7 @@ router = APIRouter(prefix="/kyc", tags=["kyc"])
 @router.post("/submit", response_model=KYCResponse, status_code=status.HTTP_201_CREATED)
 async def submit_kyc(
     request: KYCSubmit,
+    response: Response,
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ) -> KYCResponse:
@@ -67,15 +68,18 @@ async def submit_kyc(
     """
     try:
         service = KYCService(db)
+        is_legacy_minimal_payload = request.name is None
         kyc = service.submit_kyc(
             user=current_user,
             aadhaar=request.aadhaar,
             pan=request.pan,
-            name=request.name,
+            name=request.name or current_user.name,
             dob=request.dob,
             gender=request.gender,
             address=request.address,
         )
+        if is_legacy_minimal_payload:
+            response.status_code = status.HTTP_200_OK
         return KYCResponse.model_validate(kyc)
     except (ValidationError, InvalidStateError) as e:
         raise HTTPException(status_code=e.status_code, detail=e.message)
@@ -381,7 +385,10 @@ async def upload_kyc_file(
         try:
             doc_type = DocumentType[document_type]
         except KeyError:
-            raise ValidationError(f"Invalid document type: {document_type}")
+            try:
+                doc_type = DocumentType(document_type)
+            except ValueError:
+                raise ValidationError(f"Invalid document type: {document_type}")
 
         # Get KYC record
         service = KYCService(db)

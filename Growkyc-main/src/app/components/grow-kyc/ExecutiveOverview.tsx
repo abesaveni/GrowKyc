@@ -49,7 +49,7 @@ import { Tier4CommercialEngine } from './Tier4CommercialEngine';
 import { Tier5EnterpriseOS } from './Tier5EnterpriseOS';
 
 interface ExecutiveOverviewProps {
-  onSelectRole: (role: any) => void;
+  onSelectRole: (role: any, userId?: string) => void;
   onViewArchitecture: () => void;
 }
 
@@ -986,102 +986,191 @@ export function ExecutiveOverview({ onSelectRole, onViewArchitecture }: Executiv
           </Card>
 
           {/* Role Selection */}
-          <Card className="bg-white border-gray-200 shadow-lg">
-            <CardHeader>
-              <CardTitle className="text-gray-900 text-2xl text-center">Select Your Role</CardTitle>
-              <CardDescription className="text-gray-600 text-center">
-                Access role-specific dashboards and workflows
+          <Card className="bg-white border-gray-200 shadow-xl overflow-hidden rounded-2xl border-t-4 border-t-[#13B5EA]">
+            <CardHeader className="bg-gray-50/50 pb-6 border-b border-gray-100">
+              <CardTitle className="text-gray-900 text-3xl font-extrabold text-center tracking-tight">Select Your Workspace Persona</CardTitle>
+              <CardDescription className="text-gray-600 text-center text-base max-w-2xl mx-auto mt-2">
+                Gain instant, dynamic access to role-tailored workflows, dynamic risk policies, and custom compliance features.
               </CardDescription>
             </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <CardContent className="p-8 bg-white">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                
+                {/* 1. Head of Compliance */}
                 <Card 
-                  className="bg-gradient-to-br from-blue-50 to-blue-100 border-blue-300 hover:scale-105 transition-transform cursor-pointer shadow-md"
-                  onClick={() => onSelectRole('compliance_officer')}
+                  className="bg-gradient-to-br from-blue-50/70 to-indigo-50/40 border-blue-200/80 hover:border-blue-400 hover:shadow-2xl hover:scale-[1.03] transition-all duration-300 cursor-pointer flex flex-col justify-between"
+                  onClick={() => onSelectRole('compliance_officer', 'sarah_chen')}
                 >
-                  <CardContent className="p-6 text-center">
-                    <div className="w-16 h-16 bg-blue-200 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Shield className="w-8 h-8 text-blue-700" />
+                  <CardContent className="p-6 text-center flex-1 flex flex-col justify-between">
+                    <div>
+                      <div className="w-14 h-14 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 border border-blue-200 shadow-sm">
+                        <Shield className="w-7 h-7" />
+                      </div>
+                      <h3 className="text-lg font-bold text-gray-900 mb-2">Head of Compliance</h3>
+                      <p className="text-xs text-gray-600 mb-4 leading-relaxed">
+                        Full regulatory oversight, external audit trails, live policy management, and compliance program validation.
+                      </p>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Compliance Officer</h3>
-                    <p className="text-sm text-gray-600 mb-4">
-                      AML/CTF oversight & case management
-                    </p>
                     <Button 
                       variant="outline" 
-                      className="w-full border-blue-400 text-blue-700 hover:bg-blue-200"
+                      className="w-full border-blue-300 text-blue-700 hover:bg-blue-100 font-semibold text-xs"
                     >
-                      Enter Portal
-                      <ArrowRight className="w-4 h-4 ml-2" />
+                      Access Head Portal
+                      <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
                     </Button>
                   </CardContent>
                 </Card>
 
+                {/* 2. Compliance Officer */}
                 <Card 
-                  className="bg-gradient-to-br from-purple-50 to-purple-100 border-purple-300 hover:scale-105 transition-transform cursor-pointer shadow-md"
-                  onClick={() => onSelectRole('partner')}
+                  className="bg-gradient-to-br from-cyan-50/70 to-blue-50/40 border-cyan-200/80 hover:border-cyan-400 hover:shadow-2xl hover:scale-[1.03] transition-all duration-300 cursor-pointer flex flex-col justify-between"
+                  onClick={() => onSelectRole('compliance_officer', 'emma_williams')}
                 >
-                  <CardContent className="p-6 text-center">
-                    <div className="w-16 h-16 bg-purple-200 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Users className="w-8 h-8 text-purple-700" />
+                  <CardContent className="p-6 text-center flex-1 flex flex-col justify-between">
+                    <div>
+                      <div className="w-14 h-14 bg-cyan-100 text-cyan-600 rounded-full flex items-center justify-center mx-auto mb-4 border border-cyan-200 shadow-sm">
+                        <Users className="w-7 h-7" />
+                      </div>
+                      <h3 className="text-lg font-bold text-gray-900 mb-2">Compliance Officer</h3>
+                      <p className="text-xs text-gray-600 mb-4 leading-relaxed">
+                        KYC validation queues, customer risk profiling, case escalations, and day-to-day operations workbench.
+                      </p>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Partner / Executive</h3>
-                    <p className="text-sm text-gray-600 mb-4">
-                      Portfolio oversight & approvals
-                    </p>
                     <Button 
                       variant="outline" 
-                      className="w-full border-purple-400 text-purple-700 hover:bg-purple-200"
+                      className="w-full border-cyan-300 text-cyan-700 hover:bg-cyan-100 font-semibold text-xs"
                     >
-                      Enter Portal
-                      <ArrowRight className="w-4 h-4 ml-2" />
+                      Access Officer Portal
+                      <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
                     </Button>
                   </CardContent>
                 </Card>
 
+                {/* 3. Managing Partner */}
                 <Card 
-                  className="bg-gradient-to-br from-amber-50 to-amber-100 border-amber-300 hover:scale-105 transition-transform cursor-pointer shadow-md"
-                  onClick={() => onSelectRole('auditor')}
+                  className="bg-gradient-to-br from-purple-50/70 to-pink-50/40 border-purple-200/80 hover:border-purple-400 hover:shadow-2xl hover:scale-[1.03] transition-all duration-300 cursor-pointer flex flex-col justify-between"
+                  onClick={() => onSelectRole('partner', 'michael_roberts')}
                 >
-                  <CardContent className="p-6 text-center">
-                    <div className="w-16 h-16 bg-amber-200 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Eye className="w-8 h-8 text-amber-700" />
+                  <CardContent className="p-6 text-center flex-1 flex flex-col justify-between">
+                    <div>
+                      <div className="w-14 h-14 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 border border-purple-200 shadow-sm">
+                        <Users className="w-7 h-7" />
+                      </div>
+                      <h3 className="text-lg font-bold text-gray-900 mb-2">Managing Partner</h3>
+                      <p className="text-xs text-gray-600 mb-4 leading-relaxed">
+                        Executive-level risk reporting, dual-control sign-offs, and critical escalated approvals workspace.
+                      </p>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Auditor</h3>
-                    <p className="text-sm text-gray-600 mb-4">
-                      Audit trail & evidence inspection
-                    </p>
                     <Button 
                       variant="outline" 
-                      className="w-full border-amber-400 text-amber-700 hover:bg-amber-200"
+                      className="w-full border-purple-300 text-purple-700 hover:bg-purple-100 font-semibold text-xs"
                     >
-                      Enter Portal
-                      <ArrowRight className="w-4 h-4 ml-2" />
+                      Access Partner Portal
+                      <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
                     </Button>
                   </CardContent>
                 </Card>
 
+                {/* 4. AML Analyst */}
                 <Card 
-                  className="bg-gradient-to-br from-green-50 to-green-100 border-green-300 hover:scale-105 transition-transform cursor-pointer shadow-md"
-                  onClick={() => onSelectRole('analyst')}
+                  className="bg-gradient-to-br from-green-50/70 to-emerald-50/40 border-green-200/80 hover:border-green-400 hover:shadow-2xl hover:scale-[1.03] transition-all duration-300 cursor-pointer flex flex-col justify-between"
+                  onClick={() => onSelectRole('analyst', 'alex_rivera')}
                 >
-                  <CardContent className="p-6 text-center">
-                    <div className="w-16 h-16 bg-green-200 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <BarChart3 className="w-8 h-8 text-green-700" />
+                  <CardContent className="p-6 text-center flex-1 flex flex-col justify-between">
+                    <div>
+                      <div className="w-14 h-14 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 border border-green-200 shadow-sm">
+                        <BarChart3 className="w-7 h-7" />
+                      </div>
+                      <h3 className="text-lg font-bold text-gray-900 mb-2">AML Analyst</h3>
+                      <p className="text-xs text-gray-600 mb-4 leading-relaxed">
+                        Real-time transaction alert queues, screening matches (PEP/Sanctions), and AML pattern analysis.
+                      </p>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">AML Analyst</h3>
-                    <p className="text-sm text-gray-600 mb-4">
-                      Monitoring & investigation
-                    </p>
                     <Button 
                       variant="outline" 
-                      className="w-full border-green-400 text-green-700 hover:bg-green-200"
+                      className="w-full border-green-300 text-green-700 hover:bg-green-100 font-semibold text-xs"
                     >
-                      Enter Portal
-                      <ArrowRight className="w-4 h-4 ml-2" />
+                      Access Analyst Portal
+                      <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
                     </Button>
                   </CardContent>
                 </Card>
+
+                {/* 5. Internal Auditor */}
+                <Card 
+                  className="bg-gradient-to-br from-amber-50/70 to-yellow-50/40 border-amber-200/80 hover:border-amber-400 hover:shadow-2xl hover:scale-[1.03] transition-all duration-300 cursor-pointer flex flex-col justify-between"
+                  onClick={() => onSelectRole('auditor', 'david_thompson')}
+                >
+                  <CardContent className="p-6 text-center flex-1 flex flex-col justify-between">
+                    <div>
+                      <div className="w-14 h-14 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mx-auto mb-4 border border-amber-200 shadow-sm">
+                        <Eye className="w-7 h-7" />
+                      </div>
+                      <h3 className="text-lg font-bold text-gray-900 mb-2">Internal Auditor</h3>
+                      <p className="text-xs text-gray-600 mb-4 leading-relaxed">
+                        Independent audit trail validation, evidence vault verification, and multi-tenant process reviews.
+                      </p>
+                    </div>
+                    <Button 
+                      variant="outline" 
+                      className="w-full border-amber-300 text-amber-700 hover:bg-amber-100 font-semibold text-xs"
+                    >
+                      Access Auditor Portal
+                      <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
+                    </Button>
+                  </CardContent>
+                </Card>
+
+                {/* 6. Senior Compliance Officer */}
+                <Card 
+                  className="bg-gradient-to-br from-pink-50/70 to-rose-50/40 border-pink-200/80 hover:border-pink-400 hover:shadow-2xl hover:scale-[1.03] transition-all duration-300 cursor-pointer flex flex-col justify-between"
+                  onClick={() => onSelectRole('compliance_officer', 'jessica_lee')}
+                >
+                  <CardContent className="p-6 text-center flex-1 flex flex-col justify-between">
+                    <div>
+                      <div className="w-14 h-14 bg-pink-100 text-pink-600 rounded-full flex items-center justify-center mx-auto mb-4 border border-pink-200 shadow-sm">
+                        <Building2 className="w-7 h-7" />
+                      </div>
+                      <h3 className="text-lg font-bold text-gray-900 mb-2">Senior Compliance Officer</h3>
+                      <p className="text-xs text-gray-600 mb-4 leading-relaxed">
+                        Specialized KYB complex structures, high-value beneficial owners, and advanced EDD reporting.
+                      </p>
+                    </div>
+                    <Button 
+                      variant="outline" 
+                      className="w-full border-pink-300 text-pink-700 hover:bg-pink-100 font-semibold text-xs"
+                    >
+                      Access Senior Portal
+                      <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
+                    </Button>
+                  </CardContent>
+                </Card>
+
+                {/* 7. Risk Partner */}
+                <Card 
+                  className="bg-gradient-to-br from-indigo-50/70 to-violet-50/40 border-indigo-200/80 hover:border-indigo-400 hover:shadow-2xl hover:scale-[1.03] transition-all duration-300 cursor-pointer flex flex-col justify-between lg:col-span-3 xl:col-span-1"
+                  onClick={() => onSelectRole('partner', 'robert_kim')}
+                >
+                  <CardContent className="p-6 text-center flex-1 flex flex-col justify-between">
+                    <div>
+                      <div className="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4 border border-indigo-200 shadow-sm">
+                        <Scale className="w-7 h-7" />
+                      </div>
+                      <h3 className="text-lg font-bold text-gray-900 mb-2">Risk Partner</h3>
+                      <p className="text-xs text-gray-600 mb-4 leading-relaxed">
+                        Enterprise-wide risk frameworks, sovereign jurisdiction parameters, and compliance strategy.
+                      </p>
+                    </div>
+                    <Button 
+                      variant="outline" 
+                      className="w-full border-indigo-300 text-indigo-700 hover:bg-indigo-100 font-semibold text-xs"
+                    >
+                      Access Risk Portal
+                      <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
+                    </Button>
+                  </CardContent>
+                </Card>
+
               </div>
             </CardContent>
           </Card>

@@ -249,7 +249,7 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
       summary: activeUserId === 'kyc-002' 
         ? 'Sanctions list match identified for parent entity ABC Enterprises and Sir Alexander Downer. Escalate to Compliance Manager immediately.'
         : 'High-quality application with strong verification signals. Recent business registration requires quick oversight. Low fraud risk.',
-      flags: [],
+      flags: [] as string[],
       strengths: [
         'All identity documents verified successfully',
         'No adverse media findings',

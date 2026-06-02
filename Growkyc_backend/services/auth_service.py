@@ -41,7 +41,9 @@ class AuthService:
         self.db = db
         self.logger = logging.getLogger(__name__)
 
-    def register_user(self, name: str, email: str, password: str, tenant_id: int) -> User:
+    def register_user(
+        self, name: str, email: str, password: str, tenant_id: int = None
+    ) -> User:
         """
         Register a new user.
 
@@ -139,7 +141,12 @@ class AuthService:
             raise DatabaseError("Authentication failed")
 
     def create_access_token(
-        self, user_id: int, tenant_id: int, role: str = None, permissions: list = None, expires_delta: timedelta = None
+        self,
+        user_id: int,
+        tenant_id: int = None,
+        role: str = None,
+        permissions: list = None,
+        expires_delta: timedelta = None,
     ) -> str:
         """
         Create JWT access token for user.
@@ -156,7 +163,9 @@ class AuthService:
             expires_delta = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
 
         expire = datetime.utcnow() + expires_delta
-        to_encode = {"sub": str(user_id), "tenant_id": tenant_id, "exp": expire}
+        to_encode = {"sub": str(user_id), "exp": expire}
+        if tenant_id is not None:
+            to_encode["tenant_id"] = tenant_id
         if role is not None:
             to_encode["role"] = role
         if permissions is not None:
@@ -182,9 +191,12 @@ class AuthService:
             payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
             user_id = payload.get("sub")
             tenant_id = payload.get("tenant_id")
-            if user_id is None or tenant_id is None:
+            if user_id is None:
                 raise AuthenticationError("Invalid token: missing claims")
-            return {"user_id": int(user_id), "tenant_id": int(tenant_id), **payload}
+            decoded = {"user_id": int(user_id), **payload}
+            if tenant_id is not None:
+                decoded["tenant_id"] = int(tenant_id)
+            return decoded
         except Exception as e:
             self.logger.warning(f"Token verification failed: {str(e)}")
             raise AuthenticationError("Invalid or expired token")

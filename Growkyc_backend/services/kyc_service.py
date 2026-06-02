@@ -147,9 +147,16 @@ class KYCService:
             )
 
             # --- INTEGRATION: CREATE CLIENT VIA CLIENT_SERVICE ---
-            client_service = ClientService(self.db)
+            tenant_id = get_tenant_id() or kyc.tenant_id or user.tenant_id
             existing_client = self.db.query(Client).filter(Client.user_id == user.id).first()
-            if not existing_client:
+            if not existing_client and tenant_id is None:
+                self.logger.info(
+                    "[COMPAT] Skipping ClientService profile sync for KYC %s "
+                    "because no tenant context is available",
+                    kyc.id,
+                )
+            elif not existing_client:
+                client_service = ClientService(self.db)
                 # Map legacy fields to new Enterprise IndividualProfile
                 # Note: name split is handled inside ClientService if first_name/last_name are missing,
                 # but we will try to split it here.
@@ -515,6 +522,13 @@ class KYCService:
         """
         try:
             tenant_id = get_tenant_id() or kyc.tenant_id
+            if tenant_id is None:
+                self.logger.info(
+                    "[COMPAT] Skipping IdentityDocument normalization for KYC %s "
+                    "because no tenant context is available",
+                    kyc.id,
+                )
+                return
 
             # Resolve client_id from the KYC record's user
             client = self.db.query(Client).filter(Client.user_id == kyc.user_id).first()
@@ -565,4 +579,5 @@ class KYCService:
                 )
         except Exception as e:
             # Non-fatal — legacy fields still exist on KYC record for fallback.
+            self.db.rollback()
             self.logger.error(f"[COMPAT] Failed to normalize legacy documents for KYC {kyc.id}: {e}")

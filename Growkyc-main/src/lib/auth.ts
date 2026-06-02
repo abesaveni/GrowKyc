@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 
 function getRuntimeEnv(): Record<string, string | undefined> {
-  const viteEnv = (typeof import.meta !== 'undefined' ? import.meta.env : {}) as Record<string, string | undefined>;
+  const viteEnv = (typeof import.meta !== 'undefined' ? (import.meta as any).env : {}) as Record<string, string | undefined>;
   const processEnv = ((globalThis as { process?: { env?: Record<string, string | undefined> } }).process?.env || {});
   return { ...processEnv, ...viteEnv };
 }
@@ -108,7 +108,8 @@ export async function signUp(
       user: authData.user,
       message: 'Account created! Please check your email to verify your account.',
     };
-  } catch (error: any) {
+  } catch (err: unknown) {
+    const error = err as Error;
     return {
       success: false,
       error: error.message,
@@ -142,7 +143,8 @@ export async function signIn(email: string, password: string) {
       session: data.session,
       user: data.user,
     };
-  } catch (error: any) {
+  } catch (err: unknown) {
+    const error = err as Error;
     await writeAuthAuditEvent({
       eventType: 'login_failed',
       email,
@@ -163,7 +165,7 @@ export async function signIn(email: string, password: string) {
 export async function signInWithOAuth(provider: 'google' | 'microsoft') {
   try {
     const { data, error } = await supabase.auth.signInWithOAuth({
-      provider,
+      provider: provider as any,
       options: {
         redirectTo: `${window.location.origin}/auth/callback`,
       },
@@ -175,7 +177,8 @@ export async function signInWithOAuth(provider: 'google' | 'microsoft') {
       success: true,
       data,
     };
-  } catch (error: any) {
+  } catch (err: unknown) {
+    const error = err as Error;
     return {
       success: false,
       error: error.message,
@@ -190,7 +193,8 @@ export async function signOut() {
     if (error) throw error;
 
     return { success: true };
-  } catch (error: any) {
+  } catch (err: unknown) {
+    const error = err as Error;
     return {
       success: false,
       error: error.message,
@@ -248,7 +252,8 @@ export async function refreshSession() {
       success: true,
       session,
     };
-  } catch (error: any) {
+  } catch (err: unknown) {
+    const error = err as Error;
     return {
       success: false,
       error: error.message,
@@ -269,7 +274,8 @@ export async function resetPasswordRequest(email: string) {
       success: true,
       message: 'Password reset email sent. Please check your inbox.',
     };
-  } catch (error: any) {
+  } catch (err: unknown) {
+    const error = err as Error;
     return {
       success: false,
       error: error.message,
@@ -290,7 +296,8 @@ export async function updatePassword(newPassword: string) {
       success: true,
       message: 'Password updated successfully.',
     };
-  } catch (error: any) {
+  } catch (err: unknown) {
+    const error = err as Error;
     return {
       success: false,
       error: error.message,
@@ -312,7 +319,8 @@ export async function verifyEmail(token: string) {
       success: true,
       data,
     };
-  } catch (error: any) {
+  } catch (err: unknown) {
+    const error = err as Error;
     return {
       success: false,
       error: error.message,
@@ -335,7 +343,8 @@ export async function setupMFA() {
       secret: data.totp.secret,
       factorId: data.id,
     };
-  } catch (error: any) {
+  } catch (err: unknown) {
+    const error = err as Error;
     return {
       success: false,
       error: error.message,
@@ -346,8 +355,15 @@ export async function setupMFA() {
 // Verify MFA
 export async function verifyMFA(factorId: string, code: string) {
   try {
+    const { data: challengeData, error: challengeError } = await supabase.auth.mfa.challenge({
+      factorId,
+    });
+    if (challengeError) throw challengeError;
+    if (!challengeData) throw new Error('Failed to create MFA challenge');
+
     const { data, error } = await supabase.auth.mfa.verify({
       factorId,
+      challengeId: challengeData.id,
       code,
     });
 
@@ -357,7 +373,8 @@ export async function verifyMFA(factorId: string, code: string) {
       success: true,
       data,
     };
-  } catch (error: any) {
+  } catch (err: unknown) {
+    const error = err as Error;
     return {
       success: false,
       error: error.message,

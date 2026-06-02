@@ -99,7 +99,7 @@ export function ReportDraftBuilder({ caseId, onBack }: ReportDraftBuilderProps) 
       
       let yOffset = 115;
       if (Array.isArray(auditPack.relatedParties) && auditPack.relatedParties.length > 0) {
-        auditPack.relatedParties.forEach((party: any, index: number) => {
+        auditPack.relatedParties.forEach((party: { name: string; role?: string; ownership?: string; riskFlag?: string }, index: number) => {
           if (yOffset > 250) {
             doc.addPage();
             yOffset = 20;
@@ -130,7 +130,7 @@ export function ReportDraftBuilder({ caseId, onBack }: ReportDraftBuilderProps) 
       yOffset += 10;
 
       if (Array.isArray(auditPack.triggers) && auditPack.triggers.length > 0) {
-        auditPack.triggers.forEach((trigger: any, index: number) => {
+        auditPack.triggers.forEach((trigger: { source: string; confidence?: string | number; finding: string; date?: string }, index: number) => {
           if (yOffset > 250) {
             doc.addPage();
             yOffset = 20;

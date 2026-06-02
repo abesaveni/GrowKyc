@@ -100,13 +100,13 @@ export function ReportableMatterTriage({ caseId, onBack }: ReportableMatterTriag
 
       // Check if response contains json or text
       const contentType = response.headers.get("content-type");
-      let data: any = {};
+      let data: Record<string, unknown> = {};
       if (contentType && contentType.indexOf("application/json") !== -1) {
-        data = await response.json();
+        data = await response.json() as Record<string, unknown>;
       }
 
       // Set state using actual backend response if structured, otherwise update status directly
-      const newStatus = data?.status || 'REPORTABLE';
+      const newStatus = (data?.status as string) || 'REPORTABLE';
       setCaseInfo(prev => ({ 
         ...prev, 
         ...(data && typeof data === 'object' ? data : {}), 

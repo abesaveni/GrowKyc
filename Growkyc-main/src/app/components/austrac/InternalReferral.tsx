@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
@@ -15,20 +15,32 @@ import {
   Building
 } from 'lucide-react';
 
+interface SubjectInfo {
+  id: string;
+  name: string;
+  type: string;
+  status: string;
+}
+
 interface InternalReferralProps {
   caseId?: string;
-  onSuccess?: (newCase?: any) => void;
+  onSuccess?: (newCase?: Record<string, unknown>) => void;
   isEmbed?: boolean;
 }
 
 export function InternalReferral({ caseId, onSuccess, isEmbed = false }: InternalReferralProps = {}) {
+  const draftKey = `internal_referral_draft_${caseId || 'new'}`;
   const [concernCategory, setConcernCategory] = useState<string>('');
   const [concernSummary, setConcernSummary] = useState<string>('');
   const [urgency, setUrgency] = useState<string>('routine');
   const [relatedMatter, setRelatedMatter] = useState<string>('');
   const [immediateHold, setImmediateHold] = useState(false);
-  const [selectedSubject, setSelectedSubject] = useState<any>(null);
+  const [immediateHoldReason, setImmediateHoldReason] = useState('');
+  const [searchSubject, setSearchSubject] = useState('');
+  const [selectedSubject, setSelectedSubject] = useState<SubjectInfo | null>(null);
+  const [attachments, setAttachments] = useState<File[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isDraftSaved, setIsDraftSaved] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -36,8 +48,16 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
 
     const activeCaseId = caseId || selectedSubject?.id || 'AUS-2026-001';
 
-    if (!concernCategory || !concernSummary) {
+    if (!concernCategory || !concernSummary.trim()) {
       toast.error('Please select a concern category and provide a summary.');
+      return;
+    }
+    if (!caseId && !selectedSubject) {
+      toast.error('Please select a client or entity.');
+      return;
+    }
+    if (immediateHold && !immediateHoldReason.trim()) {
+      toast.error('Please provide a reason for immediate hold.');
       return;
     }
 
@@ -55,15 +75,17 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
             summary: concernSummary,
             urgency,
             immediateHold,
+            immediateHoldReason: immediateHold ? immediateHoldReason : undefined,
             relatedMatter,
+            attachmentNames: attachments.map((file) => file.name),
             date: new Date().toISOString().split('T')[0]
           }),
         });
 
         const contentType = response.headers.get("content-type");
-        let data: any = {};
+        let data: { success?: boolean; message?: string } = {};
         if (contentType && contentType.includes("application/json")) {
-          data = await response.json();
+          data = await response.json() as { success?: boolean; message?: string };
         } else {
           const text = await response.text();
           data = { success: response.ok, message: text || 'Submission failed' };
@@ -72,8 +94,7 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
         if (!response.ok || data.success === false) {
           throw new Error(data.message || 'Submission failed');
         }
-      } catch (err) {
-        console.warn('Backend API failed/not detected, falling back to simulated manual case creation.', err);
+      } catch {
         isMockSuccess = true;
       }
 
@@ -85,7 +106,12 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
       setUrgency('routine');
       setRelatedMatter('');
       setImmediateHold(false);
+      setImmediateHoldReason('');
+      setSearchSubject('');
       setSelectedSubject(null);
+      setAttachments([]);
+      setIsDraftSaved(false);
+      localStorage.removeItem(draftKey);
 
       if (onSuccess) {
         onSuccess({
@@ -102,7 +128,6 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
         });
       }
     } catch (err) {
-      console.error(err);
       toast.error(err instanceof Error ? err.message : 'An error occurred during submission.');
     } finally {
       setIsSubmitting(false);
@@ -126,6 +151,62 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
     { id: 'C-003', name: 'David Williams', type: 'individual', status: 'Active' },
     { id: 'C-004', name: 'Sydney Ventures Partnership', type: 'partnership', status: 'Active' }
   ];
+
+  const filteredSubjects = useMemo(() => {
+    const needle = searchSubject.trim().toLowerCase();
+    if (!needle) return recentSubjects;
+    return recentSubjects.filter((subject) =>
+      subject.name.toLowerCase().includes(needle) ||
+      subject.id.toLowerCase().includes(needle) ||
+      subject.type.toLowerCase().includes(needle)
+    );
+  }, [searchSubject]);
+
+  useEffect(() => {
+    try {
+      const draft = localStorage.getItem(draftKey);
+      if (!draft) return;
+      const parsed = JSON.parse(draft) as {
+        concernCategory?: string;
+        concernSummary?: string;
+        urgency?: string;
+        relatedMatter?: string;
+        immediateHold?: boolean;
+        immediateHoldReason?: string;
+        selectedSubject?: SubjectInfo | null;
+      };
+      setConcernCategory(parsed.concernCategory || '');
+      setConcernSummary(parsed.concernSummary || '');
+      setUrgency(parsed.urgency || 'routine');
+      setRelatedMatter(parsed.relatedMatter || '');
+      setImmediateHold(Boolean(parsed.immediateHold));
+      setImmediateHoldReason(parsed.immediateHoldReason || '');
+      setSelectedSubject(parsed.selectedSubject || null);
+      setIsDraftSaved(true);
+    } catch {
+      // Ignore invalid draft payload
+    }
+  }, [draftKey]);
+
+  useEffect(() => {
+    const draftPayload = {
+      concernCategory,
+      concernSummary,
+      urgency,
+      relatedMatter,
+      immediateHold,
+      immediateHoldReason,
+      selectedSubject
+    };
+    localStorage.setItem(draftKey, JSON.stringify(draftPayload));
+    setIsDraftSaved(true);
+  }, [draftKey, concernCategory, concernSummary, urgency, relatedMatter, immediateHold, immediateHoldReason, selectedSubject]);
+
+  const handleAttachmentUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files?.length) return;
+    setAttachments((prev) => [...prev, ...Array.from(e.target.files || [])]);
+    e.target.value = '';
+  };
 
   const getSeverityColor = (severity: string) => {
     switch (severity) {
@@ -205,6 +286,8 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
                   <input
                     type="text"
                     placeholder="Search by name, ABN, ACN..."
+                    value={searchSubject}
+                    onChange={(e) => setSearchSubject(e.target.value)}
                     className="w-full pl-10 pr-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
                   />
                 </div>
@@ -213,7 +296,7 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
               <div>
                 <p className="text-sm font-bold text-gray-900 mb-3">Recent Clients</p>
                 <div className="space-y-2">
-                  {recentSubjects.map((subject) => (
+                  {filteredSubjects.map((subject) => (
                     <div
                       key={subject.id}
                       onClick={() => setSelectedSubject(subject)}
@@ -326,7 +409,7 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
                 <label className="block text-sm font-bold text-gray-900 mb-2">
                   Related Documents (Optional)
                 </label>
-                <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-orange-400 transition-colors cursor-pointer">
+                <label className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-orange-400 transition-colors cursor-pointer block">
                   <Upload className="w-12 h-12 text-gray-400 mx-auto mb-3" />
                   <p className="text-sm text-gray-600 mb-1">
                     Click to upload or drag and drop
@@ -334,16 +417,29 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
                   <p className="text-xs text-gray-500">
                     PDF, DOC, XLSX, images (max 10MB each)
                   </p>
-                </div>
+                  <input type="file" multiple className="hidden" onChange={handleAttachmentUpload} />
+                </label>
                 <div className="mt-3 space-y-2">
-                  <div className="flex items-center justify-between p-3 bg-purple-50 rounded border border-purple-200">
-                    <div className="flex items-center gap-2">
-                      <FileText className="w-5 h-5 text-purple-600" />
-                      <span className="text-sm font-semibold text-gray-900">bank_statement_feb2026.pdf</span>
-                      <Badge className="bg-green-100 text-green-700 text-xs">Uploaded</Badge>
+                  {attachments.length === 0 && (
+                    <p className="text-xs text-gray-500">No files attached yet.</p>
+                  )}
+                  {attachments.map((file, idx) => (
+                    <div key={`${file.name}-${idx}`} className="flex items-center justify-between p-3 bg-purple-50 rounded border border-purple-200">
+                      <div className="flex items-center gap-2">
+                        <FileText className="w-5 h-5 text-purple-600" />
+                        <span className="text-sm font-semibold text-gray-900">{file.name}</span>
+                        <Badge className="bg-green-100 text-green-700 text-xs">Attached</Badge>
+                      </div>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        type="button"
+                        onClick={() => setAttachments((prev) => prev.filter((_, fileIdx) => fileIdx !== idx))}
+                      >
+                        Remove
+                      </Button>
                     </div>
-                    <Button variant="outline" size="sm">Remove</Button>
-                  </div>
+                  ))}
                 </div>
               </div>
 
@@ -397,6 +493,8 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
                   </label>
                   <textarea
                     rows={3}
+                    value={immediateHoldReason}
+                    onChange={(e) => setImmediateHoldReason(e.target.value)}
                     className="w-full px-4 py-3 border-2 border-amber-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
                     placeholder="Explain why immediate service suspension is required..."
                   />
@@ -428,9 +526,12 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
 
               {/* Actions */}
               <div className="pt-6 border-t space-y-3">
+                <div className="text-xs text-gray-600 text-right">
+                  Draft {isDraftSaved ? 'saved' : 'saving...'}
+                </div>
                 <Button
                   onClick={handleSubmit}
-                  disabled={isSubmitting || (!caseId && !selectedSubject) || !concernCategory || !concernSummary}
+                  disabled={isSubmitting || (!caseId && !selectedSubject) || !concernCategory || !concernSummary.trim() || (immediateHold && !immediateHoldReason.trim())}
                   className="w-full bg-red-600 hover:bg-red-700 text-white text-base sm:text-lg py-4 sm:py-5 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-md font-semibold h-auto min-h-[50px] flex items-center justify-center whitespace-normal break-words"
                 >
                   <Send className="w-5 h-5 mr-3 flex-shrink-0" />

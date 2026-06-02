@@ -68,6 +68,41 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
   const [selectedApproval, setSelectedApproval] = React.useState<any>(null);
   const [approvalComment, setApprovalComment] = React.useState('');
 
+  // Logged activities state
+  const [loggedActivities, setLoggedActivities] = React.useState<any[]>([]);
+
+  const fetchLoggedActivities = React.useCallback(() => {
+    const saved = localStorage.getItem('growkyc_logged_activities');
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) {
+          setLoggedActivities(parsed);
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+  }, []);
+
+  React.useEffect(() => {
+    fetchLoggedActivities();
+    
+    // Listen for custom logged activity events
+    window.addEventListener('growkyc:activity_logged', fetchLoggedActivities);
+    return () => {
+      window.removeEventListener('growkyc:activity_logged', fetchLoggedActivities);
+    };
+  }, [fetchLoggedActivities]);
+
+  const ICON_MAP: Record<string, React.ComponentType<any>> = {
+    CheckCircle: CheckCircle,
+    AlertTriangle: AlertTriangle,
+    UserCheck: UserCheck,
+    FileText: FileText,
+    Activity: Activity
+  };
+
   // Auditor dynamic stats state
   const [auditorStats, setAuditorStats] = React.useState({
     openFindings: 18,
@@ -599,7 +634,13 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              {recentActivityData.map((activity, index) => (
+              {[
+                ...loggedActivities.map(act => ({
+                  ...act,
+                  icon: ICON_MAP[act.iconName] || Activity
+                })),
+                ...recentActivityData
+              ].slice(0, 6).map((activity, index) => (
                 <div key={index} className="flex items-start gap-3">
                   <div className={`w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 ${activity.color}`}>
                     <activity.icon className="w-4 h-4" />

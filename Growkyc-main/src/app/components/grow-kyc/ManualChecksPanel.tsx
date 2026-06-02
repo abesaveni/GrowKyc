@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from '../ui/button';
+import { logComplianceActivity } from '../../../utils/activityLogger';
 import {
   Play,
   CheckCircle,
@@ -282,6 +283,12 @@ export function ManualChecksPanel({ clientId, clientName }: ManualChecksPanelPro
       };
 
       setCheckResults(prev => new Map(prev).set(checkId, updatedCheck));
+      logComplianceActivity({
+        type: 'review',
+        action: `executed manual check "${check.name}" for ${clientName}`,
+        iconName: 'UserCheck',
+        color: 'text-blue-600'
+      });
     }
 
     setRunningChecks(prev => {
@@ -319,6 +326,12 @@ export function ManualChecksPanel({ clientId, clientName }: ManualChecksPanelPro
     }
 
     setCheckResults(nextResults);
+    logComplianceActivity({
+      type: 'review',
+      action: `executed comprehensive manual audit on ${clientName}`,
+      iconName: 'UserCheck',
+      color: 'text-blue-600'
+    });
     setRunningChecks(new Set());
   };
 
@@ -355,6 +368,12 @@ export function ManualChecksPanel({ clientId, clientName }: ManualChecksPanelPro
     }
 
     setCheckResults(nextResults);
+    logComplianceActivity({
+      type: 'review',
+      action: `executed manual category checks for "${category}" on ${clientName}`,
+      iconName: 'UserCheck',
+      color: 'text-blue-600'
+    });
     setRunningChecks(prev => {
       const next = new Set(prev);
       checkIds.forEach(id => next.delete(id));

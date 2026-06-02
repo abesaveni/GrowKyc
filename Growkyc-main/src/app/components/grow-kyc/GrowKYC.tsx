@@ -279,7 +279,15 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
       role: 'compliance_officer', 
       title: 'Head of Compliance',
       avatar: '👩‍💼',
-      description: 'Full AML/CTF oversight and case management'
+      description: 'Regulatory audit oversight, policy triggers, and compliance sign-off'
+    },
+    { 
+      id: 'emma_williams', 
+      name: 'Emma Williams', 
+      role: 'compliance_officer', 
+      title: 'Compliance Officer',
+      avatar: '👩‍💻',
+      description: 'KYC verification, case handling, and risk screening'
     },
     { 
       id: 'michael_roberts', 
@@ -287,15 +295,15 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
       role: 'partner', 
       title: 'Managing Partner',
       avatar: '👨‍💼',
-      description: 'Executive oversight and approvals'
+      description: 'Executive risk oversight and final escalated case approvals'
     },
     { 
-      id: 'emma_williams', 
-      name: 'Emma Williams', 
+      id: 'alex_rivera', 
+      name: 'Alex Rivera', 
       role: 'analyst', 
       title: 'AML Analyst',
-      avatar: '👩‍💻',
-      description: 'Transaction monitoring and investigations'
+      avatar: '🕵️‍♂️',
+      description: 'Transaction monitoring, alert investigations, and individual KYC checks'
     },
     { 
       id: 'david_thompson', 
@@ -309,7 +317,7 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
       id: 'jessica_lee', 
       name: 'Jessica Lee', 
       role: 'compliance_officer', 
-      title: 'Compliance Officer',
+      title: 'Senior Compliance Officer',
       avatar: '👩‍⚖️',
       description: 'KYC verification and EDD management'
     },
@@ -432,10 +440,23 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  const handleRoleSelect = (role: ViewRole) => {
+  const handleRoleSelect = (role: ViewRole, userId?: string) => {
     setSelectedRole(role);
     // Auto-open Compliance Copilot on first login
     setIsCopilotOpen(true);
+    
+    // Pick the correct active user persona automatically based on selected role
+    let targetUserId = userId || 'sarah_chen'; // Default Compliance Officer
+    if (!userId) {
+      if (role === 'analyst') {
+        targetUserId = 'alex_rivera'; // AML Analyst
+      } else if (role === 'partner') {
+        targetUserId = 'michael_roberts'; // Managing Partner
+      } else if (role === 'auditor') {
+        targetUserId = 'david_thompson'; // Auditor
+      }
+    }
+    setSelectedUser(targetUserId);
     
     const rolePath = ROLE_TO_PATH[role];
     navigate(`/${rolePath}/dashboard`);
@@ -561,10 +582,10 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
             <div className="min-w-0">
               <h1 className="text-lg sm:text-2xl font-bold text-white truncate">Grow KYC</h1>
               <p className="text-[10px] sm:text-xs text-white/90 hidden sm:block truncate">
-                {selectedRole === 'compliance_officer' && 'Compliance Officer Portal'}
-                {selectedRole === 'partner' && 'Partner Portal'}
-                {selectedRole === 'auditor' && 'Audit Portal'}
+                {selectedRole === 'compliance_officer' && (selectedUser === 'emma_williams' ? 'Compliance Officer Portal' : 'Head of Compliance Portal')}
+                {selectedRole === 'partner' && 'Managing Partner Portal'}
                 {selectedRole === 'analyst' && 'AML Analyst Portal'}
+                {selectedRole === 'auditor' && 'Audit Portal'}
               </p>
             </div>
 
@@ -720,35 +741,40 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
                 <Shield className="w-4 h-4 mr-1.5 flex-shrink-0" />
                 <span>Case Control</span>
               </Button>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => {
-                  if (!selectedRole) return;
-                  const rolePath = ROLE_TO_PATH[selectedRole];
-                  navigate(`/${rolePath}/kyc`);
-                }}
-                className="text-white hover:bg-white/10 px-2 3xl:px-3 text-xs 3xl:text-sm h-9 flex items-center justify-center flex-shrink-0"
-              >
-                <Eye className="w-4 h-4 mr-1.5 flex-shrink-0" />
-                <span>KYC Dashboard</span>
-              </Button>
               
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => {
-                  if (selectedRole) {
+              {(selectedRole === 'compliance_officer' || selectedRole === 'analyst' || selectedRole === 'auditor') && (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => {
+                    if (!selectedRole) return;
                     const rolePath = ROLE_TO_PATH[selectedRole];
-                    localStorage.setItem('growkyc_last_role', rolePath);
-                  }
-                  navigate('/au');
-                }}
-                className="text-white hover:bg-white/10 px-2 3xl:px-3 text-xs 3xl:text-sm h-9 flex items-center justify-center flex-shrink-0"
-              >
-                <Shield className="w-4 h-4 mr-1.5 text-amber-300 animate-pulse flex-shrink-0" />
-                <span>AUSTRAC Compliance</span>
-              </Button>
+                    navigate(`/${rolePath}/kyc`);
+                  }}
+                  className="text-white hover:bg-white/10 px-2 3xl:px-3 text-xs 3xl:text-sm h-9 flex items-center justify-center flex-shrink-0"
+                >
+                  <Eye className="w-4 h-4 mr-1.5 flex-shrink-0" />
+                  <span>KYC Dashboard</span>
+                </Button>
+              )}
+              
+              {(selectedRole === 'compliance_officer' || selectedRole === 'auditor') && selectedUser !== 'emma_williams' && (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => {
+                    if (selectedRole) {
+                      const rolePath = ROLE_TO_PATH[selectedRole];
+                      localStorage.setItem('growkyc_last_role', rolePath);
+                    }
+                    navigate('/au');
+                  }}
+                  className="text-white hover:bg-white/10 px-2 3xl:px-3 text-xs 3xl:text-sm h-9 flex items-center justify-center flex-shrink-0"
+                >
+                  <Shield className="w-4 h-4 mr-1.5 text-amber-300 animate-pulse flex-shrink-0" />
+                  <span>AUSTRAC Compliance</span>
+                </Button>
+              )}
               
               {/* More Actions Dropdown */}
               <div className="relative flex-shrink-0">
@@ -808,7 +834,7 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
                       </button>
 
                       {/* 3. Audit Log (Auditor / Compliance Officer only) */}
-                      {(selectedRole === 'compliance_officer' || selectedRole === 'auditor') && (
+                      {(selectedRole === 'compliance_officer' || selectedRole === 'auditor') && selectedUser !== 'emma_williams' && (
                         <button
                           onClick={() => {
                             setIsMoreDropdownOpen(false);
@@ -935,37 +961,41 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
               Case Control
             </Button>
             
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => {
-                if (!selectedRole) return;
-                const rolePath = ROLE_TO_PATH[selectedRole];
-                navigate(`/${rolePath}/kyc`);
-                setIsMobileMenuOpen(false);
-              }}
-              className="w-full justify-start text-white hover:bg-white/10 py-3 text-base"
-            >
-              <Eye className="w-5 h-5 mr-3" />
-              KYC Dashboard
-            </Button>
-            
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => {
-                if (selectedRole) {
+            {(selectedRole === 'compliance_officer' || selectedRole === 'analyst' || selectedRole === 'auditor') && (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => {
+                  if (!selectedRole) return;
                   const rolePath = ROLE_TO_PATH[selectedRole];
-                  localStorage.setItem('growkyc_last_role', rolePath);
-                }
-                navigate('/au');
-                setIsMobileMenuOpen(false);
-              }}
-              className="w-full justify-start text-white hover:bg-white/10 py-3 text-base"
-            >
-              <Shield className="w-5 h-5 mr-3 text-amber-300 animate-pulse" />
-              AUSTRAC Compliance
-            </Button>
+                  navigate(`/${rolePath}/kyc`);
+                  setIsMobileMenuOpen(false);
+                }}
+                className="w-full justify-start text-white hover:bg-white/10 py-3 text-base"
+              >
+                <Eye className="w-5 h-5 mr-3" />
+                KYC Dashboard
+              </Button>
+            )}
+            
+            {(selectedRole === 'compliance_officer' || selectedRole === 'auditor') && (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => {
+                  if (selectedRole) {
+                    const rolePath = ROLE_TO_PATH[selectedRole];
+                    localStorage.setItem('growkyc_last_role', rolePath);
+                  }
+                  navigate('/au');
+                  setIsMobileMenuOpen(false);
+                }}
+                className="w-full justify-start text-white hover:bg-white/10 py-3 text-base"
+              >
+                <Shield className="w-5 h-5 mr-3 text-amber-300 animate-pulse" />
+                AUSTRAC Compliance
+              </Button>
+            )}
             
             {(selectedRole === 'compliance_officer' || selectedRole === 'auditor') && (
               <Button
@@ -1207,14 +1237,20 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
             onBack={() => setCurrentView('case_management')}
           />
         )}
-        {currentView === 'case_control_centre' && selectedCaseId && (
-          <CaseControlCentre />
+        {currentView === 'case_control_centre' && (
+          <CaseControlCentre
+            onOpenCase={(caseId) => {
+              setSelectedCaseId(caseId);
+              setCurrentView('case_workbench');
+            }}
+          />
         )}
-        {currentView === 'case_workbench' && selectedCaseId && (
+        {currentView === 'case_workbench' && (
           <CaseWorkbench />
         )}
         {currentView === 'transaction_monitoring' && (
           <TransactionMonitoring
+            onOpenReferral={() => setCurrentView('case_control_centre')}
             onBack={() => {
               if (selectedRole === 'compliance_officer') setCurrentView('compliance_dashboard');
               if (selectedRole === 'partner') setCurrentView('partner_dashboard');

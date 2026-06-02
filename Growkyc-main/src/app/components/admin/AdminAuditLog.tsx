@@ -19,6 +19,7 @@ export function AdminAuditLog() {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [loading, setLoading] = useState(true);
+  const [selectedEvent, setSelectedEvent] = useState<AuditEvent | null>(null);
 
   // 300ms Debounce search input
   useEffect(() => {
@@ -328,7 +329,7 @@ export function AdminAuditLog() {
                     <TableHead className="font-semibold text-xs text-gray-600 tracking-wider">Description</TableHead>
                     <TableHead className="font-semibold text-xs text-gray-600 tracking-wider">Case/Target Reference</TableHead>
                     <TableHead className="font-semibold text-xs text-gray-600 tracking-wider">Severity</TableHead>
-                    <TableHead className="font-semibold text-xs text-gray-600 tracking-wider text-right pr-6">Details</TableHead>
+                    <TableHead className="font-semibold text-xs text-gray-600 tracking-wider text-center w-24 pr-4">Details</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -347,12 +348,12 @@ export function AdminAuditLog() {
                       <TableCell className="text-xs text-gray-700 max-w-sm leading-relaxed">{event.description}</TableCell>
                       <TableCell className="text-xs text-gray-600 font-mono font-bold whitespace-nowrap">{event.targetId}</TableCell>
                       <TableCell>{getSeverityBadge(event.severity)}</TableCell>
-                      <TableCell className="text-right pr-6 whitespace-nowrap">
+                      <TableCell className="text-center w-24 pr-4 whitespace-nowrap">
                         <Button
                           variant="outline"
                           size="sm"
-                          onClick={() => toast.info(`${event.eventType}: ${event.description}`)}
-                          className="h-7 w-7 p-0 flex items-center justify-center rounded-lg border-gray-200 hover:border-indigo-400 hover:bg-indigo-50/40 text-gray-500 hover:text-indigo-600"
+                          onClick={() => setSelectedEvent(event)}
+                          className="h-7 w-7 p-0 inline-flex items-center justify-center rounded-lg border-gray-200 hover:border-indigo-400 hover:bg-indigo-50/40 text-gray-500 hover:text-indigo-600 mx-auto"
                         >
                           <Eye className="w-3.5 h-3.5" />
                         </Button>
@@ -365,7 +366,90 @@ export function AdminAuditLog() {
           )}
         </CardContent>
       </Card>
+
+      {/* Premium Dynamic Event Detail Dialog Modal */}
+      {selectedEvent !== null && (
+        <div className="fixed inset-0 bg-black/75 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-xl border border-gray-100 flex flex-col max-h-[90vh] overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+            {/* Modal Header */}
+            <div className="bg-indigo-600 p-6 text-white flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <Shield className="w-8 h-8 text-indigo-100" />
+                <div>
+                  <h3 className="text-xl font-bold tracking-tight">Audit Event Details</h3>
+                  <p className="text-xs text-indigo-100 font-medium">{selectedEvent.eventType}</p>
+                </div>
+              </div>
+              <button 
+                onClick={() => setSelectedEvent(null)}
+                className="text-white/80 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/10 text-xl font-bold leading-none"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Modal Body */}
+            <div className="p-6 space-y-6 overflow-y-auto">
+              
+              {/* Event Metadata Grid */}
+              <div className="grid grid-cols-2 gap-4 bg-gray-50 p-4 rounded-xl border border-gray-100">
+                <div>
+                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">Event ID</span>
+                  <div className="text-xs font-mono font-bold text-gray-800 mt-0.5 truncate">{selectedEvent.id}</div>
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">Timestamp</span>
+                  <div className="text-xs font-semibold text-gray-800 mt-0.5">
+                    {format(new Date(selectedEvent.occurredAt), 'dd MMM yyyy, HH:mm:ss')}
+                  </div>
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">Actor / Role</span>
+                  <div className="text-xs font-semibold text-gray-800 mt-0.5">{selectedEvent.actor}</div>
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">Severity Level</span>
+                  <div className="mt-1">{getSeverityBadge(selectedEvent.severity)}</div>
+                </div>
+              </div>
+
+              {/* Case / Target Reference */}
+              <div className="p-4 bg-indigo-50/40 rounded-xl border border-indigo-100/50">
+                <span className="text-[10px] font-bold text-indigo-600 uppercase tracking-wider block mb-1">Case / Target Reference</span>
+                <span className="text-sm font-mono font-bold text-indigo-900">{selectedEvent.targetId}</span>
+              </div>
+
+              {/* Event Description */}
+              <div className="space-y-1.5">
+                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">Description</span>
+                <div className="text-sm text-gray-700 leading-relaxed bg-white border p-4 rounded-xl font-medium shadow-sm">
+                  {selectedEvent.description}
+                </div>
+              </div>
+
+              {/* JSON Metadata Payload */}
+              {selectedEvent.metadata && Object.keys(selectedEvent.metadata).length > 0 && (
+                <div className="space-y-2">
+                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">Associated Payload Metadata</span>
+                  <pre className="bg-gray-900 text-green-400 p-4 rounded-xl text-xs font-mono overflow-x-auto max-h-48 leading-relaxed shadow-inner">
+                    {JSON.stringify(selectedEvent.metadata, null, 2)}
+                  </pre>
+                </div>
+              )}
+            </div>
+
+            {/* Modal Footer */}
+            <div className="p-4 bg-gray-50 border-t flex items-center justify-end">
+              <Button 
+                onClick={() => setSelectedEvent(null)}
+                className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6"
+              >
+                Close Details
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
-

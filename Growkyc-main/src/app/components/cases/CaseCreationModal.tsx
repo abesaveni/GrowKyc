@@ -59,6 +59,35 @@ export function CaseCreationModal({ isOpen, onClose, onSuccess }: CaseCreationMo
     { value: 'manual', label: 'Manual Referral', icon: Eye, color: 'blue' }
   ];
 
+  const selectedCaseTypeClasses: Record<string, string> = {
+    red: 'border-red-500 bg-red-50',
+    purple: 'border-purple-500 bg-purple-50',
+    orange: 'border-orange-500 bg-orange-50',
+    indigo: 'border-indigo-500 bg-indigo-50',
+    amber: 'border-amber-500 bg-amber-50',
+    pink: 'border-pink-500 bg-pink-50',
+    gray: 'border-gray-500 bg-gray-50',
+    blue: 'border-blue-500 bg-blue-50'
+  };
+
+  const iconColorClasses: Record<string, string> = {
+    red: 'text-red-600',
+    purple: 'text-purple-600',
+    orange: 'text-orange-600',
+    indigo: 'text-indigo-600',
+    amber: 'text-amber-600',
+    pink: 'text-pink-600',
+    gray: 'text-gray-600',
+    blue: 'text-blue-600'
+  };
+
+  const urgencyClasses: Record<string, string> = {
+    red: 'border-red-500 bg-red-50',
+    orange: 'border-orange-500 bg-orange-50',
+    amber: 'border-amber-500 bg-amber-50',
+    green: 'border-green-500 bg-green-50'
+  };
+
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       setAttachments([...attachments, ...Array.from(e.target.files)]);
@@ -161,12 +190,12 @@ export function CaseCreationModal({ isOpen, onClose, onSuccess }: CaseCreationMo
                     onClick={() => setCaseType(type.value)}
                     className={`p-4 rounded-lg border-2 text-left hover:shadow-md transition-all ${
                       caseType === type.value
-                        ? `border-${type.color}-500 bg-${type.color}-50`
+                        ? selectedCaseTypeClasses[type.color] || 'border-blue-500 bg-blue-50'
                         : 'border-gray-300 hover:border-gray-400'
                     }`}
                   >
                     <div className="flex items-center gap-2 mb-2">
-                      <Icon className={`w-5 h-5 text-${type.color}-600`} />
+                      <Icon className={`w-5 h-5 ${iconColorClasses[type.color] || 'text-blue-600'}`} />
                       <span className="font-semibold text-gray-900">{type.label}</span>
                     </div>
                   </button>
@@ -192,7 +221,7 @@ export function CaseCreationModal({ isOpen, onClose, onSuccess }: CaseCreationMo
                   onClick={() => setUrgency(level.value)}
                   className={`p-4 rounded-lg border-2 text-center hover:shadow-md transition-all ${
                     urgency === level.value
-                      ? `border-${level.color}-500 bg-${level.color}-50`
+                      ? urgencyClasses[level.color] || 'border-amber-500 bg-amber-50'
                       : 'border-gray-300 hover:border-gray-400'
                   }`}
                 >

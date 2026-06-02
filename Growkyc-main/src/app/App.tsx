@@ -172,6 +172,7 @@ import logo from '../assets/60b7d162929b5cb780f781445f70fa18c2c16326.png';
 import { SettingsPage } from './components/settings/SettingsPage';
 import { PEXADashboard } from './components/pexa/PEXADashboard';
 import { TestButton } from './components/TestButton';
+import { logger } from '../lib/logger';
 
 const AtlasPracticeOS = lazy(() => import('./components/grow-accounting/AtlasPracticeOS'));
 const PFAModule = lazy(() => import('./components/pfa/PFAModule').then((m) => ({ default: m.PFAModule })));
@@ -348,7 +349,6 @@ type UserRole = 'borrower' | 'lender' | 'investor' | 'admin' | 'lawyer' | 'recei
 type Module = 'Grow MIP' | 'grow_accounting' | 'grow_lending' | 'grow_investments' | 'grow_receivership' | 'grow_kyc' | 'grow_crm' | 'grow_time' | 'grow_hq' | 'grow_payments' | 'grow_settlement' | 'grow_trust' | 'grow_esign' | 'ultimate_os' | 'qld_association' | 'atlas_practice' | 'public_site' | 'pfa' | 'test_storage';
 
 export default function App() {
-  console.log("🔍 App component rendering...");
   const runtimeEnv = getRuntimeEnv();
   const isProductionRuntime =
     Boolean((import.meta as any)?.env?.PROD) ||
@@ -950,7 +950,7 @@ export default function App() {
 
     return [
       baseItems[0], // Dashboard first
-      ...(roleSpecificItems[userRole] || []),
+      ...(roleSpecificItems[userRole as keyof typeof roleSpecificItems] || []),
       ...baseItems.slice(1) // Notifications and Settings last
     ];
   };
