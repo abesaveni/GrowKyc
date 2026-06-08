@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
+import { projectId, publicAnonKey as hardcodedAnonKey } from '../../utils/supabase/info';
 
 function getRuntimeEnv(): Record<string, string | undefined> {
   const viteEnv = (typeof import.meta !== 'undefined' ? (import.meta as any).env : {}) as Record<string, string | undefined>;
@@ -7,14 +8,24 @@ function getRuntimeEnv(): Record<string, string | undefined> {
 }
 
 const runtimeEnv = getRuntimeEnv();
+
+// Derive URL: prefer env var, fall back to hardcoded project ID, then placeholder
+const hardcodedUrl = projectId ? `https://${projectId}.supabase.co` : undefined;
 const supabaseUrl =
   runtimeEnv.VITE_SUPABASE_URL ||
   runtimeEnv.NEXT_PUBLIC_SUPABASE_URL ||
+  hardcodedUrl ||
   'https://placeholder.supabase.co';
+
 const supabaseAnonKey =
   runtimeEnv.VITE_SUPABASE_ANON_KEY ||
   runtimeEnv.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+  hardcodedAnonKey ||
   'public-anon-key-placeholder';
+
+/** True when Supabase is configured with real credentials (not placeholder values). */
+export const isSupabaseConfigured =
+  !supabaseUrl.includes('placeholder') && !supabaseAnonKey.includes('placeholder');
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 

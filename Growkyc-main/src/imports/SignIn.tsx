@@ -1,5 +1,7 @@
+import React, { useState } from 'react';
 import svgPaths from "./svg-cgx17yfs5v";
 import imgPrimaryLogoGrow260X1043 from "../assets/a47dcf28a3997c763da9c73c54846d4fd7deaf00.png";
+import { signIn, signInWithOAuth } from '../lib/auth';
 
 function FormHeader() {
   return (
@@ -10,572 +12,330 @@ function FormHeader() {
   );
 }
 
-function PrimaryNumberInput() {
+function MajesticonsEyeOff({ onClick }: { onClick?: () => void }) {
   return (
-    <div className="h-[44px] relative rounded-[8px] shrink-0 w-full" data-name="Primary Number Input">
-      <div aria-hidden="true" className="absolute border border-[#bdc1c5] border-solid inset-0 pointer-events-none rounded-[8px]" />
-      <div className="flex flex-row items-center size-full">
-        <div className="content-stretch flex items-center px-[16px] relative size-full">
-          <p className="font-['Inter:Regular',sans-serif] font-normal leading-[20px] not-italic relative shrink-0 text-[#2e2e2e] text-[14px]">-</p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function PrimaryNumberContainer() {
-  return (
-    <div className="content-stretch flex flex-col gap-[8px] h-[69px] items-start relative shrink-0 w-full" data-name="Primary Number Container">
-      <p className="font-['Inter:Semi_Bold',sans-serif] font-semibold leading-[normal] not-italic relative shrink-0 text-[#5a6a76] text-[14px] w-full whitespace-pre-wrap">Email</p>
-      <PrimaryNumberInput />
-    </div>
-  );
-}
-
-function Group() {
-  return (
-    <div className="absolute inset-[12.5%_4.35%]" data-name="Group">
-      <div className="absolute inset-[-5.56%_0]">
-        <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 16.4324 15">
-          <g id="Group">
-            <path d="M1.46618 0.75L14.9662 14.25" id="Vector" stroke="var(--stroke-0, #5A6A76)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
-            <path clipRule="evenodd" d={svgPaths.p303ccb2} fill="var(--fill-0, #5A6A76)" fillRule="evenodd" id="Vector_2" />
-          </g>
-        </svg>
-      </div>
-    </div>
-  );
-}
-
-function MajesticonsEyeOff() {
-  return (
-    <div className="overflow-clip relative shrink-0 size-[18px]" data-name="majesticons:eye-off">
-      <Group />
-    </div>
-  );
-}
-
-function PasswordInput() {
-  return (
-    <div className="h-[44px] relative rounded-[8px] shrink-0 w-full" data-name="Password Input">
-      <div aria-hidden="true" className="absolute border border-[#bdc1c5] border-solid inset-0 pointer-events-none rounded-[8px]" />
-      <div className="flex flex-row items-center size-full">
-        <div className="content-stretch flex items-center justify-between px-[16px] relative size-full">
-          <p className="font-['Inter:Regular',sans-serif] font-normal leading-[20px] not-italic relative shrink-0 text-[#2e2e2e] text-[14px]">-</p>
-          <MajesticonsEyeOff />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function PasswordField() {
-  return (
-    <div className="content-stretch flex flex-col gap-[8px] h-[69px] items-start relative shrink-0 w-full" data-name="Password Field">
-      <p className="font-['Inter:Semi_Bold',sans-serif] font-semibold leading-[normal] not-italic relative shrink-0 text-[#5a6a76] text-[14px] w-full whitespace-pre-wrap">Password</p>
-      <PasswordInput />
-    </div>
-  );
-}
-
-function Check() {
-  return (
-    <div className="relative shrink-0 size-[16px]" data-name="check">
-      <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 16 16">
-        <g id="check">
-          <rect height="15" rx="3.5" stroke="var(--stroke-0, #BDC1C5)" width="15" x="0.5" y="0.5" />
-          <g id="Vector" />
-        </g>
-      </svg>
-    </div>
-  );
-}
-
-function Checkbox() {
-  return (
-    <div className="content-stretch flex gap-[8px] items-end relative shrink-0" data-name="Checkbox">
-      <Check />
-      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[20px] not-italic relative shrink-0 text-[#2e2e2e] text-[14px]">Remember me</p>
-    </div>
-  );
-}
-
-function CheckboxContainer() {
-  return (
-    <div className="content-stretch flex items-end justify-between pb-[12px] relative shrink-0 w-full" data-name="Checkbox Container">
-      <Checkbox />
-      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[20px] not-italic relative shrink-0 text-[#2855a6] text-[14px]">Forgot password?</p>
-    </div>
-  );
-}
-
-function SubmitButton() {
-  return (
-    <div className="bg-[#2855a6] h-[44px] relative rounded-[8px] shrink-0 w-full" data-name="Submit Button">
-      <div className="flex flex-row items-center justify-center size-full">
-        <div className="content-stretch flex items-center justify-center px-[16px] relative size-full">
-          <p className="font-['Inter:Regular',sans-serif] font-normal leading-[20px] not-italic relative shrink-0 text-[14px] text-white">Sing in</p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function Divider() {
-  return (
-    <div className="content-stretch flex gap-[17px] items-center justify-center relative shrink-0 w-full" data-name="Divider">
-      <div className="flex-[1_0_0] h-0 min-h-px min-w-px relative">
-        <div className="absolute inset-[-1px_0_0_0]">
-          <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 214 1">
-            <line id="Line 8" stroke="var(--stroke-0, #E9E9E9)" x2="214" y1="0.5" y2="0.5" />
+    <button type="button" onClick={onClick} className="overflow-clip relative shrink-0 size-[18px] cursor-pointer" data-name="majesticons:eye-off">
+      <div className="absolute inset-[12.5%_4.35%]">
+        <div className="absolute inset-[-5.56%_0]">
+          <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 16.4324 15">
+            <g id="Group">
+              <path d="M1.46618 0.75L14.9662 14.25" id="Vector" stroke="var(--stroke-0, #5A6A76)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+              <path clipRule="evenodd" d={svgPaths.p303ccb2} fill="var(--fill-0, #5A6A76)" fillRule="evenodd" id="Vector_2" />
+            </g>
           </svg>
         </div>
       </div>
-      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[20px] not-italic relative shrink-0 text-[#5a6a76] text-[14px]">Or</p>
-      <div className="flex-[1_0_0] h-0 min-h-px min-w-px relative">
-        <div className="absolute inset-[-1px_0_0_0]">
-          <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 214 1">
-            <line id="Line 8" stroke="var(--stroke-0, #E9E9E9)" x2="214" y1="0.5" y2="0.5" />
-          </svg>
-        </div>
-      </div>
-    </div>
+    </button>
   );
 }
 
-function Group1() {
+function MajesticonsEyeOn({ onClick }: { onClick?: () => void }) {
   return (
-    <div className="absolute inset-[6.25%_7.74%_6.29%_7.81%]" data-name="Group">
-      <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 20.2683 20.9912">
-        <g id="Group">
-          <path clipRule="evenodd" d={svgPaths.p35601f00} fill="var(--fill-0, #F44336)" fillRule="evenodd" id="Vector" opacity="0.987" />
-          <path clipRule="evenodd" d={svgPaths.p3f39300} fill="var(--fill-0, #FFC107)" fillRule="evenodd" id="Vector_2" opacity="0.997" />
-          <path clipRule="evenodd" d={svgPaths.pd1d4200} fill="var(--fill-0, #448AFF)" fillRule="evenodd" id="Vector_3" opacity="0.999" />
-          <path clipRule="evenodd" d={svgPaths.p3a074200} fill="var(--fill-0, #43A047)" fillRule="evenodd" id="Vector_4" opacity="0.993" />
-        </g>
+    <button type="button" onClick={onClick} className="overflow-clip relative shrink-0 size-[18px] cursor-pointer" data-name="majesticons:eye-on">
+      <svg className="block size-full" fill="none" viewBox="0 0 18 18">
+        <path d="M9 3.75C5.25 3.75 2.025 6.075 0.75 9C2.025 11.925 5.25 14.25 9 14.25C12.75 14.25 15.975 11.925 17.25 9C15.975 6.075 12.75 3.75 9 3.75ZM9 12.75C6.9225 12.75 5.25 11.0775 5.25 9C5.25 6.9225 6.9225 5.25 9 5.25C11.0775 5.25 12.75 6.9225 12.75 9C12.75 11.0775 11.0775 12.75 9 12.75ZM9 6.75C7.7475 6.75 6.75 7.7475 6.75 9C6.75 10.2525 7.7475 11.25 9 11.25C10.2525 11.25 11.25 10.2525 11.25 9C11.25 7.7475 10.2525 6.75 9 6.75Z" fill="#5A6A76" />
       </svg>
-    </div>
+    </button>
   );
 }
 
-function MaterialIconThemeGoogle() {
-  return (
-    <div className="overflow-clip relative shrink-0 size-[24px]" data-name="material-icon-theme:google">
-      <Group1 />
-    </div>
-  );
+interface FormProps {
+  onSuccess?: () => void;
 }
 
-function LegalEntityTypeInput() {
-  return (
-    <div className="flex-[1_0_0] h-[44px] min-h-px min-w-px relative rounded-[8px]" data-name="Legal entity type input">
-      <div aria-hidden="true" className="absolute border border-[#bdc1c5] border-solid inset-0 pointer-events-none rounded-[8px]" />
-      <div className="flex flex-row items-center justify-center size-full">
-        <div className="content-stretch flex gap-[8px] items-center justify-center px-[16px] relative size-full">
-          <MaterialIconThemeGoogle />
-          <p className="font-['Inter:Regular',sans-serif] font-normal leading-[20px] not-italic relative shrink-0 text-[#2e2e2e] text-[14px]">Sign in with Google</p>
-        </div>
-      </div>
-    </div>
-  );
-}
+function Form({ onSuccess }: FormProps) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [oauthLoading, setOauthLoading] = useState<'google' | 'microsoft' | null>(null);
 
-function LogosMicrosoftIcon() {
-  return (
-    <div className="relative shrink-0 size-[24px]" data-name="logos:microsoft-icon">
-      <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 24 24">
-        <g id="logos:microsoft-icon">
-          <path d="M12 11.5H3V3.5H12V11.5Z" fill="var(--fill-0, #F1511B)" id="Vector" />
-          <path d="M22 11.5H13V3.5H22V11.5Z" fill="var(--fill-0, #80CC28)" id="Vector_2" />
-          <path d="M12 21.5H3V12.5H12V21.5Z" fill="var(--fill-0, #00ADEF)" id="Vector_3" />
-          <path d="M22 21.5H13V12.5H22V21.5Z" fill="var(--fill-0, #FBBC09)" id="Vector_4" />
-        </g>
-      </svg>
-    </div>
-  );
-}
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email.trim() || !password.trim()) {
+      setError('Please enter your email and password.');
+      return;
+    }
+    setError(null);
+    setLoading(true);
+    try {
+      const result = await signIn(email.trim(), password);
+      if (result.success) {
+        onSuccess?.();
+      } else {
+        setError(result.error || 'Sign in failed. Please check your credentials.');
+      }
+    } catch {
+      setError('An unexpected error occurred. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
-function MicrosoftButtonContainer() {
-  return (
-    <div className="flex-[1_0_0] h-[44px] min-h-px min-w-px relative rounded-[8px]" data-name="Microsoft Button Container">
-      <div aria-hidden="true" className="absolute border border-[#bdc1c5] border-solid inset-0 pointer-events-none rounded-[8px]" />
-      <div className="flex flex-row items-center justify-center size-full">
-        <div className="content-stretch flex gap-[8px] items-center justify-center px-[16px] relative size-full">
-          <LogosMicrosoftIcon />
-          <p className="font-['Inter:Regular',sans-serif] font-normal leading-[20px] not-italic relative shrink-0 text-[#2e2e2e] text-[14px]">Sign in with Microsoft</p>
-        </div>
-      </div>
-    </div>
-  );
-}
+  const handleOAuth = async (provider: 'google' | 'microsoft') => {
+    setOauthLoading(provider);
+    try {
+      const result = await signInWithOAuth(provider);
+      if (!result.success) {
+        setError(result.error || `Failed to sign in with ${provider}.`);
+      }
+    } catch {
+      setError('An unexpected error occurred. Please try again.');
+    } finally {
+      setOauthLoading(null);
+    }
+  };
 
-function LegalEntityTypeField() {
   return (
-    <div className="content-stretch flex gap-[24px] items-center relative shrink-0 w-full" data-name="Legal entity type field">
-      <LegalEntityTypeInput />
-      <MicrosoftButtonContainer />
-    </div>
-  );
-}
-
-function PrivacyLinks() {
-  return (
-    <div className="content-stretch flex font-['Inter:Regular',sans-serif] font-normal gap-[8px] items-center justify-center leading-[20px] not-italic relative shrink-0 text-[14px] w-[478px]" data-name="Privacy Links">
-      <p className="relative shrink-0 text-[#5a6a76]">Read our</p>
-      <p className="relative shrink-0 text-[#2855a6]">Privacy Policy</p>
-      <p className="relative shrink-0 text-[#5a6a76]">|</p>
-      <p className="relative shrink-0 text-[#2855a6]">{`Trams & Condition`}</p>
-    </div>
-  );
-}
-
-function Form() {
-  return (
-    <div className="bg-white relative rounded-[8px] shrink-0 w-full" data-name="Form">
+    <form onSubmit={handleSubmit} className="bg-white relative rounded-[8px] shrink-0 w-full" data-name="Form">
       <div className="content-stretch flex flex-col gap-[24px] items-start p-[44px] relative w-full">
         <FormHeader />
-        <PrimaryNumberContainer />
-        <PasswordField />
-        <CheckboxContainer />
-        <SubmitButton />
-        <Divider />
-        <LegalEntityTypeField />
-        <PrivacyLinks />
+
+        {/* Email field */}
+        <div className="content-stretch flex flex-col gap-[8px] items-start relative shrink-0 w-full">
+          <label className="font-['Inter:Semi_Bold',sans-serif] font-semibold leading-[normal] not-italic relative shrink-0 text-[#5a6a76] text-[14px] w-full" htmlFor="email">
+            Email
+          </label>
+          <div className="h-[44px] relative rounded-[8px] shrink-0 w-full">
+            <div aria-hidden="true" className="absolute border border-[#bdc1c5] border-solid inset-0 pointer-events-none rounded-[8px]" />
+            <input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email"
+              autoComplete="email"
+              required
+              className="absolute inset-0 bg-transparent px-[16px] text-[14px] text-[#2e2e2e] rounded-[8px] outline-none w-full font-['Inter:Regular',sans-serif]"
+            />
+          </div>
+        </div>
+
+        {/* Password field */}
+        <div className="content-stretch flex flex-col gap-[8px] items-start relative shrink-0 w-full">
+          <label className="font-['Inter:Semi_Bold',sans-serif] font-semibold leading-[normal] not-italic relative shrink-0 text-[#5a6a76] text-[14px] w-full" htmlFor="password">
+            Password
+          </label>
+          <div className="h-[44px] relative rounded-[8px] shrink-0 w-full">
+            <div aria-hidden="true" className="absolute border border-[#bdc1c5] border-solid inset-0 pointer-events-none rounded-[8px]" />
+            <div className="flex flex-row items-center size-full">
+              <div className="content-stretch flex items-center justify-between px-[16px] relative size-full">
+                <input
+                  id="password"
+                  type={showPassword ? 'text' : 'password'}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Enter your password"
+                  autoComplete="current-password"
+                  required
+                  className="bg-transparent text-[14px] text-[#2e2e2e] outline-none flex-1 font-['Inter:Regular',sans-serif]"
+                />
+                {showPassword
+                  ? <MajesticonsEyeOn onClick={() => setShowPassword(false)} />
+                  : <MajesticonsEyeOff onClick={() => setShowPassword(true)} />
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Remember me + Forgot password */}
+        <div className="content-stretch flex items-end justify-between pb-[12px] relative shrink-0 w-full">
+          <label className="content-stretch flex gap-[8px] items-end relative shrink-0 cursor-pointer">
+            <input
+              type="checkbox"
+              checked={rememberMe}
+              onChange={(e) => setRememberMe(e.target.checked)}
+              className="relative shrink-0 size-[16px] rounded-[3.5px] border border-[#BDC1C5] cursor-pointer accent-[#2855a6]"
+            />
+            <span className="font-['Inter:Regular',sans-serif] font-normal leading-[20px] not-italic relative shrink-0 text-[#2e2e2e] text-[14px]">Remember me</span>
+          </label>
+          <button
+            type="button"
+            onClick={() => {/* forgot password flow */}}
+            className="font-['Inter:Regular',sans-serif] font-normal leading-[20px] not-italic relative shrink-0 text-[#2855a6] text-[14px] hover:underline"
+          >
+            Forgot password?
+          </button>
+        </div>
+
+        {/* Error message */}
+        {error && (
+          <div className="w-full bg-red-50 border border-red-200 text-red-700 text-[13px] rounded-[8px] px-[16px] py-[10px]">
+            {error}
+          </div>
+        )}
+
+        {/* Submit button */}
+        <button
+          type="submit"
+          disabled={loading}
+          className="bg-[#2855a6] h-[44px] relative rounded-[8px] shrink-0 w-full disabled:opacity-60 hover:bg-[#1e4491] transition-colors cursor-pointer"
+        >
+          <div className="flex flex-row items-center justify-center size-full">
+            <div className="content-stretch flex items-center justify-center px-[16px] relative size-full">
+              <p className="font-['Inter:Regular',sans-serif] font-normal leading-[20px] not-italic relative shrink-0 text-[14px] text-white">
+                {loading ? 'Signing in...' : 'Sign in'}
+              </p>
+            </div>
+          </div>
+        </button>
+
+        {/* Divider */}
+        <div className="content-stretch flex gap-[17px] items-center justify-center relative shrink-0 w-full">
+          <div className="flex-[1_0_0] h-0 min-h-px min-w-px relative">
+            <div className="absolute inset-[-1px_0_0_0]">
+              <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 214 1">
+                <line id="Line 8" stroke="#E9E9E9" x2="214" y1="0.5" y2="0.5" />
+              </svg>
+            </div>
+          </div>
+          <p className="font-['Inter:Regular',sans-serif] font-normal leading-[20px] not-italic relative shrink-0 text-[#5a6a76] text-[14px]">Or</p>
+          <div className="flex-[1_0_0] h-0 min-h-px min-w-px relative">
+            <div className="absolute inset-[-1px_0_0_0]">
+              <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 214 1">
+                <line id="Line 8" stroke="#E9E9E9" x2="214" y1="0.5" y2="0.5" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        {/* OAuth buttons */}
+        <div className="content-stretch flex gap-[24px] items-center relative shrink-0 w-full">
+          {/* Google */}
+          <button
+            type="button"
+            onClick={() => handleOAuth('google')}
+            disabled={!!oauthLoading}
+            className="flex-[1_0_0] h-[44px] min-h-px min-w-px relative rounded-[8px] hover:bg-gray-50 transition-colors cursor-pointer disabled:opacity-60"
+          >
+            <div aria-hidden="true" className="absolute border border-[#bdc1c5] border-solid inset-0 pointer-events-none rounded-[8px]" />
+            <div className="flex flex-row items-center justify-center size-full gap-[8px] px-[16px]">
+              {/* Google icon */}
+              <svg className="shrink-0 size-[24px]" viewBox="0 0 24 24" fill="none">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+              </svg>
+              <p className="font-['Inter:Regular',sans-serif] font-normal leading-[20px] not-italic relative shrink-0 text-[#2e2e2e] text-[14px]">
+                {oauthLoading === 'google' ? 'Redirecting...' : 'Sign in with Google'}
+              </p>
+            </div>
+          </button>
+
+          {/* Microsoft */}
+          <button
+            type="button"
+            onClick={() => handleOAuth('microsoft')}
+            disabled={!!oauthLoading}
+            className="flex-[1_0_0] h-[44px] min-h-px min-w-px relative rounded-[8px] hover:bg-gray-50 transition-colors cursor-pointer disabled:opacity-60"
+          >
+            <div aria-hidden="true" className="absolute border border-[#bdc1c5] border-solid inset-0 pointer-events-none rounded-[8px]" />
+            <div className="flex flex-row items-center justify-center size-full gap-[8px] px-[16px]">
+              <svg className="shrink-0 size-[24px]" viewBox="0 0 24 24" fill="none">
+                <path d="M12 11.5H3V3.5H12V11.5Z" fill="#F1511B"/>
+                <path d="M22 11.5H13V3.5H22V11.5Z" fill="#80CC28"/>
+                <path d="M12 21.5H3V12.5H12V21.5Z" fill="#00ADEF"/>
+                <path d="M22 21.5H13V12.5H22V21.5Z" fill="#FBBC09"/>
+              </svg>
+              <p className="font-['Inter:Regular',sans-serif] font-normal leading-[20px] not-italic relative shrink-0 text-[#2e2e2e] text-[14px]">
+                {oauthLoading === 'microsoft' ? 'Redirecting...' : 'Sign in with Microsoft'}
+              </p>
+            </div>
+          </button>
+        </div>
+
+        {/* Privacy links */}
+        <div className="content-stretch flex font-['Inter:Regular',sans-serif] font-normal gap-[8px] items-center justify-center leading-[20px] not-italic relative shrink-0 text-[14px] w-full">
+          <p className="relative shrink-0 text-[#5a6a76]">Read our</p>
+          <button type="button" className="relative shrink-0 text-[#2855a6] hover:underline">Privacy Policy</button>
+          <p className="relative shrink-0 text-[#5a6a76]">|</p>
+          <button type="button" className="relative shrink-0 text-[#2855a6] hover:underline">Terms &amp; Conditions</button>
+        </div>
       </div>
-    </div>
+    </form>
   );
 }
 
-function ProgressIndicator() {
+function ProgressIndicator({ onSuccess }: { onSuccess?: () => void }) {
   return (
     <div className="flex-[1_0_0] min-h-px min-w-px relative" data-name="Progress indicator">
       <div className="flex flex-col items-center size-full">
         <div className="content-stretch flex flex-col gap-[44px] items-center p-[44px] relative w-full">
           <div className="h-[64px] relative shrink-0 w-[212px]" data-name="Primary-Logo-grow-260x104 3">
-            <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgPrimaryLogoGrow260X1043} />
+            <img alt="Grow logo" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgPrimaryLogoGrow260X1043} />
           </div>
-          <Form />
+          <Form onSuccess={onSuccess} />
         </div>
       </div>
-    </div>
-  );
-}
-
-function WelcomeTextSection() {
-  return (
-    <div className="absolute content-stretch flex flex-col gap-[16px] items-center left-[44px] not-italic text-center text-white top-[54px] w-[566px]" data-name="Welcome Text Section">
-      <div className="font-['Inter:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[52px] whitespace-nowrap">
-        <p className="mb-0">Welcome back!</p>
-        <p className="mb-0">{`Please sign in to your `}</p>
-        <p>Grow account</p>
-      </div>
-      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[20px] min-w-full relative shrink-0 text-[14px] w-[min-content] whitespace-pre-wrap">Lorem ipsum dolor sit amet consectetur. Urna dui quis in ac dignissim habitasse nisl. Pretium risus ultricies mauris posuere penatibus eu semper in.</p>
-    </div>
-  );
-}
-
-function GraphIconGroup() {
-  return (
-    <div className="absolute bottom-[26.37%] left-[28.13%] right-[26.17%] top-1/4" data-name="Graph Icon Group">
-      <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 19.1953 20.4258">
-        <g id="Graph Icon Group">
-          <path d={svgPaths.p1a20bd00} fill="var(--fill-0, #2855A6)" id="Vector" />
-          <path d={svgPaths.p3a1ec600} fill="var(--fill-0, #2855A6)" id="Vector_2" opacity="0.4" />
-          <path d={svgPaths.p30215e80} fill="var(--fill-0, #2855A6)" id="Vector_3" opacity="0.7" />
-          <path d={svgPaths.p386d1f80} fill="var(--fill-0, #2855A6)" id="Vector_4" />
-        </g>
-      </svg>
-    </div>
-  );
-}
-
-function SolarUsersGroupTwoRoundedBoldDuotone() {
-  return (
-    <div className="bg-white overflow-clip relative rounded-[8px] shrink-0 size-[42px]" data-name="solar:users-group-two-rounded-bold-duotone">
-      <GraphIconGroup />
-    </div>
-  );
-}
-
-function GraphTitleContainer() {
-  return (
-    <div className="content-stretch flex flex-col gap-[4px] items-start not-italic relative shrink-0 whitespace-pre-wrap" data-name="Graph Title Container">
-      <p className="font-['Inter:Semi_Bold',sans-serif] font-semibold leading-[normal] relative shrink-0 text-[#2e2e2e] text-[18px] w-full">Graph and Analysis</p>
-      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[18px] relative shrink-0 text-[#5a6a76] text-[12px] w-full">{`Project complete per month `}</p>
-    </div>
-  );
-}
-
-function GraphIcon() {
-  return (
-    <div className="content-stretch flex gap-[16px] items-center relative shrink-0" data-name="Graph Icon">
-      <SolarUsersGroupTwoRoundedBoldDuotone />
-      <GraphTitleContainer />
-    </div>
-  );
-}
-
-function ChevronDown() {
-  return (
-    <div className="relative size-[18px]" data-name="chevron-down">
-      <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 18 18">
-        <g id="chevron-down">
-          <path d="M7.5 12L10.5 9L7.5 6" id="Vector" stroke="var(--stroke-0, #5A6A76)" strokeLinecap="round" strokeLinejoin="round" />
-        </g>
-      </svg>
-    </div>
-  );
-}
-
-function GraphFilter() {
-  return (
-    <div className="content-stretch flex gap-[13px] h-[44px] items-center px-[16px] relative rounded-[8px] shrink-0" data-name="Graph Filter">
-      <div aria-hidden="true" className="absolute border border-[#bdc1c5] border-solid inset-0 pointer-events-none rounded-[8px]" />
-      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[20px] not-italic relative shrink-0 text-[#5a6a76] text-[14px]">Month</p>
-      <div className="flex items-center justify-center relative shrink-0 size-[18px]" style={{ "--transform-inner-width": "1200", "--transform-inner-height": "21" } as React.CSSProperties}>
-        <div className="flex-none rotate-90">
-          <ChevronDown />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function GraphHeader() {
-  return (
-    <div className="content-stretch flex items-center justify-between relative shrink-0 w-full" data-name="Graph Header">
-      <GraphIcon />
-      <GraphFilter />
     </div>
   );
 }
 
 function GraphBarJan() {
   return (
-    <div className="content-stretch flex flex-[1_0_0] flex-col gap-[16px] items-start min-h-px min-w-px relative" data-name="Graph Bar Jan">
-      <div className="bg-[#e9e9e9] h-[132px] rounded-[8px] shrink-0 w-full" data-name="Graph Bar Jan Fill" />
-      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[18px] not-italic relative shrink-0 text-[#5a6a76] text-[12px] text-center w-full whitespace-pre-wrap">Jan</p>
+    <div className="content-stretch flex flex-[1_0_0] flex-col gap-[16px] items-start min-h-px min-w-px relative">
+      <div className="bg-[#e9e9e9] h-[132px] rounded-[8px] shrink-0 w-full" />
+      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[18px] not-italic relative shrink-0 text-[#5a6a76] text-[12px] text-center w-full">Jan</p>
     </div>
   );
 }
-
 function GraphBarFeb() {
   return (
-    <div className="content-stretch flex flex-[1_0_0] flex-col gap-[16px] items-start min-h-px min-w-px relative" data-name="Graph Bar Feb">
-      <div className="bg-[#e9e9e9] h-[115px] rounded-[8px] shrink-0 w-full" data-name="Graph Bar Feb Fill" />
-      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[18px] not-italic relative shrink-0 text-[#5a6a76] text-[12px] text-center w-full whitespace-pre-wrap">Feb</p>
+    <div className="content-stretch flex flex-[1_0_0] flex-col gap-[16px] items-start min-h-px min-w-px relative">
+      <div className="bg-[#e9e9e9] h-[115px] rounded-[8px] shrink-0 w-full" />
+      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[18px] not-italic relative shrink-0 text-[#5a6a76] text-[12px] text-center w-full">Feb</p>
     </div>
   );
 }
-
 function GraphBarMar() {
   return (
-    <div className="content-stretch flex flex-[1_0_0] flex-col gap-[16px] items-start min-h-px min-w-px relative" data-name="Graph Bar Mar">
-      <div className="bg-[#e9e9e9] h-[146px] rounded-[8px] shrink-0 w-full" data-name="Graph Bar Mar Fill" />
-      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[18px] not-italic relative shrink-0 text-[#5a6a76] text-[12px] text-center w-full whitespace-pre-wrap">Mar</p>
+    <div className="content-stretch flex flex-[1_0_0] flex-col gap-[16px] items-start min-h-px min-w-px relative">
+      <div className="bg-[#e9e9e9] h-[146px] rounded-[8px] shrink-0 w-full" />
+      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[18px] not-italic relative shrink-0 text-[#5a6a76] text-[12px] text-center w-full">Mar</p>
     </div>
   );
 }
-
 function GraphBarApr() {
   return (
-    <div className="content-stretch flex flex-[1_0_0] flex-col gap-[16px] items-start min-h-px min-w-px relative" data-name="Graph Bar Apr">
-      <div className="bg-[#2855a6] h-[163px] rounded-[8px] shrink-0 w-full" data-name="Graph Bar Apr Fill" />
-      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[18px] not-italic relative shrink-0 text-[#5a6a76] text-[12px] text-center w-full whitespace-pre-wrap">Apr</p>
+    <div className="content-stretch flex flex-[1_0_0] flex-col gap-[16px] items-start min-h-px min-w-px relative">
+      <div className="bg-[#2855a6] h-[163px] rounded-[8px] shrink-0 w-full" />
+      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[18px] not-italic relative shrink-0 text-[#5a6a76] text-[12px] text-center w-full">Apr</p>
     </div>
   );
 }
-
 function GraphBarMay() {
   return (
-    <div className="content-stretch flex flex-[1_0_0] flex-col gap-[16px] items-start min-h-px min-w-px relative" data-name="Graph Bar May">
-      <div className="bg-[#e9e9e9] h-[126px] rounded-[8px] shrink-0 w-full" data-name="Graph Bar May Fill" />
-      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[18px] not-italic relative shrink-0 text-[#5a6a76] text-[12px] text-center w-full whitespace-pre-wrap">May</p>
+    <div className="content-stretch flex flex-[1_0_0] flex-col gap-[16px] items-start min-h-px min-w-px relative">
+      <div className="bg-[#e9e9e9] h-[126px] rounded-[8px] shrink-0 w-full" />
+      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[18px] not-italic relative shrink-0 text-[#5a6a76] text-[12px] text-center w-full">May</p>
     </div>
   );
 }
-
 function GraphBarJun() {
   return (
-    <div className="content-stretch flex flex-[1_0_0] flex-col gap-[16px] items-start min-h-px min-w-px relative" data-name="Graph Bar Jun">
-      <div className="bg-[#e9e9e9] h-[158px] rounded-[8px] shrink-0 w-full" data-name="Graph Bar Jun Fill" />
-      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[18px] not-italic relative shrink-0 text-[#5a6a76] text-[12px] text-center w-full whitespace-pre-wrap">Jun</p>
+    <div className="content-stretch flex flex-[1_0_0] flex-col gap-[16px] items-start min-h-px min-w-px relative">
+      <div className="bg-[#e9e9e9] h-[158px] rounded-[8px] shrink-0 w-full" />
+      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[18px] not-italic relative shrink-0 text-[#5a6a76] text-[12px] text-center w-full">Jun</p>
     </div>
   );
 }
-
 function GraphBarJul() {
   return (
-    <div className="content-stretch flex flex-[1_0_0] flex-col gap-[16px] items-start min-h-px min-w-px relative" data-name="Graph Bar Jul">
-      <div className="bg-[#e9e9e9] h-[118px] rounded-[8px] shrink-0 w-full" data-name="Graph Bar Jul Fill" />
-      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[18px] not-italic relative shrink-0 text-[#5a6a76] text-[12px] text-center w-full whitespace-pre-wrap">Jul</p>
+    <div className="content-stretch flex flex-[1_0_0] flex-col gap-[16px] items-start min-h-px min-w-px relative">
+      <div className="bg-[#e9e9e9] h-[118px] rounded-[8px] shrink-0 w-full" />
+      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[18px] not-italic relative shrink-0 text-[#5a6a76] text-[12px] text-center w-full">Jul</p>
     </div>
   );
 }
-
 function GraphBarAug() {
   return (
-    <div className="content-stretch flex flex-[1_0_0] flex-col gap-[16px] items-start min-h-px min-w-px relative" data-name="Graph Bar Aug">
-      <div className="bg-[#e9e9e9] h-[139px] rounded-[8px] shrink-0 w-full" data-name="Graph Bar Aug Fill" />
-      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[18px] not-italic relative shrink-0 text-[#5a6a76] text-[12px] text-center w-full whitespace-pre-wrap">Aug</p>
-    </div>
-  );
-}
-
-function GraphContent() {
-  return (
-    <div className="content-stretch flex gap-[24px] h-[200px] items-end justify-center relative shrink-0 w-[484px]" data-name="Graph Content">
-      <GraphBarJan />
-      <GraphBarFeb />
-      <GraphBarMar />
-      <GraphBarApr />
-      <GraphBarMay />
-      <GraphBarJun />
-      <GraphBarJul />
-      <GraphBarAug />
-    </div>
-  );
-}
-
-function GraphContainer() {
-  return (
-    <div className="bg-white content-stretch flex flex-col gap-[24px] items-start p-[24px] relative rounded-[8px] shrink-0 w-[532px]" data-name="Graph Container">
-      <GraphHeader />
-      <GraphContent />
-    </div>
-  );
-}
-
-function Group2() {
-  return (
-    <div className="absolute inset-[33.28%_18.75%_31.33%_17.38%]" data-name="Group">
-      <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 20.4375 11.3268">
-        <g id="Group">
-          <path clipRule="evenodd" d={svgPaths.p1c79ea00} fill="var(--fill-0, #F5A623)" fillRule="evenodd" id="Vector" />
-          <path clipRule="evenodd" d={svgPaths.p39d4f040} fill="var(--fill-0, #F5A623)" fillRule="evenodd" id="Vector_2" opacity="0.5" />
-        </g>
-      </svg>
-    </div>
-  );
-}
-
-function SolarUsersGroupTwoRoundedBoldDuotone1() {
-  return (
-    <div className="bg-[#f5f5f5] overflow-clip relative rounded-[8px] shrink-0 size-[32px]" data-name="solar:users-group-two-rounded-bold-duotone">
-      <Group2 />
-    </div>
-  );
-}
-
-function TasksIconContainer() {
-  return (
-    <div className="content-stretch flex gap-[8px] items-center relative shrink-0" data-name="Tasks Icon Container">
-      <SolarUsersGroupTwoRoundedBoldDuotone1 />
-      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[20px] not-italic relative shrink-0 text-[#5a6a76] text-[14px]">Tasks Due</p>
-    </div>
-  );
-}
-
-function MoreVertical() {
-  return (
-    <div className="relative shrink-0 size-[18px]" data-name="more-vertical">
-      <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 18 18">
-        <g id="more-vertical">
-          <path d={svgPaths.p3f4e600} id="Vector" stroke="var(--stroke-0, #5A6A76)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" />
-          <path d={svgPaths.p2aca4e80} id="Vector_2" stroke="var(--stroke-0, #5A6A76)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" />
-          <path d={svgPaths.p10b1cef0} id="Vector_3" stroke="var(--stroke-0, #5A6A76)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" />
-        </g>
-      </svg>
-    </div>
-  );
-}
-
-function TasksHeader() {
-  return (
-    <div className="content-stretch flex items-center justify-between relative rounded-[8px] shrink-0 w-full" data-name="Tasks Header">
-      <TasksIconContainer />
-      <MoreVertical />
-    </div>
-  );
-}
-
-function TasksBar() {
-  return (
-    <div className="content-stretch flex gap-[3px] items-end relative shrink-0" data-name="Tasks Bar">
-      <div className="bg-[#f5a623] h-[6px] rounded-[7px] shrink-0 w-[4px]" data-name="Tasks Bar Fill" />
-      <div className="bg-[#f5a623] h-[22px] rounded-[7px] shrink-0 w-[4px]" data-name="Task Bar 2" />
-      <div className="bg-[#f5a623] h-[14px] rounded-[7px] shrink-0 w-[4px]" data-name="Task Bar 3" />
-      <div className="bg-[#f5a623] h-[18px] rounded-[7px] shrink-0 w-[4px]" data-name="Task Bar 4" />
-      <div className="bg-[#f5a623] h-[23px] rounded-[7px] shrink-0 w-[4px]" data-name="Task Bar 5" />
-      <div className="bg-[#f5a623] h-[26px] rounded-[7px] shrink-0 w-[4px]" data-name="Task Bar 6" />
-      <div className="bg-[#f5a623] h-[19px] rounded-[7px] shrink-0 w-[4px]" data-name="Task Bar 7" />
-      <div className="bg-[#f5a623] h-[22px] rounded-[7px] shrink-0 w-[4px]" data-name="Task Bar 8" />
-      <div className="bg-[#f5a623] h-[26px] rounded-[7px] shrink-0 w-[4px]" data-name="Task Bar 9" />
-      <div className="bg-[#f5a623] h-[18px] rounded-[7px] shrink-0 w-[4px]" data-name="Task Bar 10" />
-      <div className="bg-[#f5a623] h-[24px] rounded-[7px] shrink-0 w-[4px]" data-name="Task Bar 11" />
-      <div className="bg-[#f5a623] h-[12px] rounded-[7px] shrink-0 w-[4px]" data-name="Task Bar 12" />
-    </div>
-  );
-}
-
-function ArrowUpRight() {
-  return (
-    <div className="relative shrink-0 size-[14px]" data-name="arrow-up-right">
-      <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 14 14">
-        <g id="arrow-up-right">
-          <path d={svgPaths.p22ad4980} id="Vector" stroke="var(--stroke-0, #F5A623)" strokeLinecap="round" strokeLinejoin="round" />
-          <path d={svgPaths.p33b0c200} id="Vector_2" stroke="var(--stroke-0, #F5A623)" strokeLinecap="round" strokeLinejoin="round" />
-        </g>
-      </svg>
-    </div>
-  );
-}
-
-function TasksProgress() {
-  return (
-    <div className="content-stretch flex flex-col gap-[6px] items-start relative shrink-0" data-name="Tasks Progress">
-      <ArrowUpRight />
-      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[18px] not-italic relative shrink-0 text-[#f5a623] text-[12px]">20%</p>
-    </div>
-  );
-}
-
-function TasksDataContainer() {
-  return (
-    <div className="content-stretch flex flex-col gap-[6px] items-end justify-end relative shrink-0" data-name="Tasks Data Container">
-      <p className="font-['Inter:Semi_Bold',sans-serif] font-semibold leading-[normal] not-italic relative shrink-0 text-[#2e2e2e] text-[18px]">14</p>
-      <TasksProgress />
-    </div>
-  );
-}
-
-function TasksContent() {
-  return (
-    <div className="bg-[#f5f5f5] relative rounded-[8px] shrink-0 w-full" data-name="Tasks Content">
-      <div className="flex flex-row items-end size-full">
-        <div className="content-stretch flex items-end justify-between p-[24px] relative w-full">
-          <TasksBar />
-          <TasksDataContainer />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function TasksContainer() {
-  return (
-    <div className="absolute bg-white content-stretch flex flex-col gap-[24px] items-start left-[361px] p-[24px] rounded-[8px] shadow-[-24px_42px_64px_0px_rgba(0,0,0,0.25)] top-[-63.5px] w-[215px]" data-name="Tasks Container">
-      <TasksHeader />
-      <TasksContent />
-    </div>
-  );
-}
-
-function GraphSection() {
-  return (
-    <div className="absolute content-stretch flex items-center left-[41px] top-[406px]" data-name="Graph Section">
-      <GraphContainer />
-      <TasksContainer />
+    <div className="content-stretch flex flex-[1_0_0] flex-col gap-[16px] items-start min-h-px min-w-px relative">
+      <div className="bg-[#e9e9e9] h-[139px] rounded-[8px] shrink-0 w-full" />
+      <p className="font-['Inter:Regular',sans-serif] font-normal leading-[18px] not-italic relative shrink-0 text-[#5a6a76] text-[12px] text-center w-full">Aug</p>
     </div>
   );
 }
@@ -583,49 +343,37 @@ function GraphSection() {
 function WelcomeSection() {
   return (
     <div className="bg-[#2855a6] flex-[1_0_0] h-[803px] min-h-px min-w-px overflow-clip relative rounded-[16px]" data-name="Welcome Section">
-      <WelcomeTextSection />
-      <GraphSection />
-      <div className="absolute flex items-center justify-center left-[12px] size-[271px] top-[-1.5px]">
-        <div className="-scale-y-100 flex-none">
-          <div className="relative size-[271px]">
-            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 271 271">
-              <g id="Ellipse 3240" opacity="0.3">
-                <mask fill="white" id="path-1-inside-1_11_227">
-                  <path d={svgPaths.pad75500} />
-                </mask>
-                <g clipPath="url(#paint0_angular_11_227_clip_path)" data-figma-skip-parse="true" mask="url(#path-1-inside-1_11_227)">
-                  <g transform="matrix(0 0.1355 -0.1355 0 135.5 135.5)" />
-                </g>
-                <path d={svgPaths.p366a1300} data-figma-gradient-fill="{'type':'GRADIENT_ANGULAR','stops':[{'color':{'r':1.0,'g':1.0,'b':1.0,'a':1.0},'position':0.0},{'color':{'r':1.0,'g':1.0,'b':1.0,'a':0.0},'position':0.250},{'color':{'r':1.0,'g':1.0,'b':1.0,'a':0.0},'position':1.0}],'stopsVar':[{'color':{'r':1.0,'g':1.0,'b':1.0,'a':1.0},'position':0.0},{'color':{'r':1.0,'g':1.0,'b':1.0,'a':0.0},'position':0.250},{'color':{'r':1.0,'g':1.0,'b':1.0,'a':0.0},'position':1.0}],'transform':{'m00':1.6593966665708927e-14,'m01':-271.00003051757812,'m02':271.00003051757812,'m10':270.99996948242188,'m11':1.6593963277577138e-14,'m12':-1.6593963277577138e-14},'opacity':1.0,'blendMode':'NORMAL','visible':true}" mask="url(#path-1-inside-1_11_227)" />
-              </g>
-              <defs>
-                <clipPath id="paint0_angular_11_227_clip_path">
-                  <path d={svgPaths.p366a1300} mask="url(#path-1-inside-1_11_227)" />
-                </clipPath>
-              </defs>
-            </svg>
-          </div>
+      <div className="absolute content-stretch flex flex-col gap-[16px] items-center left-[44px] not-italic text-center text-white top-[54px] w-[566px]">
+        <div className="font-['Inter:Bold',sans-serif] font-bold leading-[normal] relative shrink-0 text-[52px] whitespace-nowrap">
+          <p className="mb-0">Welcome back!</p>
+          <p className="mb-0">Please sign in to your</p>
+          <p>Grow account</p>
         </div>
+        <p className="font-['Inter:Regular',sans-serif] font-normal leading-[20px] min-w-full relative shrink-0 text-[14px] w-[min-content] whitespace-pre-wrap">
+          Australia's leading compliance platform. Streamline KYC, AML/CTF, and regulatory reporting with AI-powered automation.
+        </p>
       </div>
-      <div className="absolute flex items-center justify-center left-[529px] size-[245px] top-[714.5px]" style={{ "--transform-inner-width": "1200", "--transform-inner-height": "21" } as React.CSSProperties}>
-        <div className="flex-none rotate-90">
-          <div className="relative size-[245px]">
-            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 245 245">
-              <g id="Ellipse 3241" opacity="0.3">
-                <mask fill="white" id="path-1-inside-1_11_212">
-                  <path d={svgPaths.p29f2e280} />
-                </mask>
-                <g clipPath="url(#paint0_angular_11_212_clip_path)" data-figma-skip-parse="true" mask="url(#path-1-inside-1_11_212)">
-                  <g transform="matrix(0 0.1225 -0.1225 0 122.5 122.5)" />
-                </g>
-                <path d={svgPaths.p1852b1c0} data-figma-gradient-fill="{'type':'GRADIENT_ANGULAR','stops':[{'color':{'r':1.0,'g':1.0,'b':1.0,'a':1.0},'position':0.0},{'color':{'r':1.0,'g':1.0,'b':1.0,'a':0.0},'position':0.250},{'color':{'r':1.0,'g':1.0,'b':1.0,'a':0.0},'position':1.0}],'stopsVar':[{'color':{'r':1.0,'g':1.0,'b':1.0,'a':1.0},'position':0.0},{'color':{'r':1.0,'g':1.0,'b':1.0,'a':0.0},'position':0.250},{'color':{'r':1.0,'g':1.0,'b':1.0,'a':0.0},'position':1.0}],'transform':{'m00':1.5001924195631212e-14,'m01':-245.00001525878906,'m02':245.00001525878906,'m10':244.99998474121094,'m11':1.5001922501565318e-14,'m12':-1.5001922501565318e-14},'opacity':1.0,'blendMode':'NORMAL','visible':true}" mask="url(#path-1-inside-1_11_212)" />
-              </g>
-              <defs>
-                <clipPath id="paint0_angular_11_212_clip_path">
-                  <path d={svgPaths.p1852b1c0} mask="url(#path-1-inside-1_11_212)" />
-                </clipPath>
-              </defs>
-            </svg>
+      <div className="absolute content-stretch flex items-center left-[41px] top-[406px]">
+        <div className="bg-white content-stretch flex flex-col gap-[24px] items-start p-[24px] relative rounded-[8px] shrink-0 w-[532px]">
+          <div className="content-stretch flex items-center justify-between relative shrink-0 w-full">
+            <div className="content-stretch flex gap-[16px] items-center relative shrink-0">
+              <div className="bg-white overflow-clip relative rounded-[8px] shrink-0 size-[42px] flex items-center justify-center">
+                <svg className="size-[24px]" viewBox="0 0 20 20" fill="none">
+                  <path d={svgPaths.p1a20bd00} fill="#2855A6" />
+                  <path d={svgPaths.p3a1ec600} fill="#2855A6" opacity="0.4" />
+                  <path d={svgPaths.p30215e80} fill="#2855A6" opacity="0.7" />
+                  <path d={svgPaths.p386d1f80} fill="#2855A6" />
+                </svg>
+              </div>
+              <div className="content-stretch flex flex-col gap-[4px] items-start not-italic relative shrink-0">
+                <p className="font-['Inter:Semi_Bold',sans-serif] font-semibold leading-[normal] relative shrink-0 text-[#2e2e2e] text-[18px]">Analytics Overview</p>
+                <p className="font-['Inter:Regular',sans-serif] font-normal leading-[18px] relative shrink-0 text-[#5a6a76] text-[12px]">Compliance performance per month</p>
+              </div>
+            </div>
+          </div>
+          <div className="content-stretch flex gap-[24px] h-[200px] items-end justify-center relative shrink-0 w-full">
+            <GraphBarJan /><GraphBarFeb /><GraphBarMar /><GraphBarApr />
+            <GraphBarMay /><GraphBarJun /><GraphBarJul /><GraphBarAug />
           </div>
         </div>
       </div>
@@ -633,23 +381,21 @@ function WelcomeSection() {
   );
 }
 
-function Container() {
-  return (
-    <div className="bg-[#f5f5f5] flex-[1_0_0] min-h-px min-w-px relative w-full" data-name="Container">
-      <div className="flex flex-row items-center size-full">
-        <div className="content-stretch flex gap-[44px] items-center p-[44px] relative size-full">
-          <ProgressIndicator />
-          <WelcomeSection />
-        </div>
-      </div>
-    </div>
-  );
+interface SignInProps {
+  onSuccess?: () => void;
 }
 
-export default function SignIn() {
+export default function SignIn({ onSuccess }: SignInProps) {
   return (
     <div className="content-stretch flex flex-col items-start relative size-full" data-name="Sign In">
-      <Container />
+      <div className="bg-[#f5f5f5] flex-[1_0_0] min-h-px min-w-px relative w-full">
+        <div className="flex flex-row items-center size-full">
+          <div className="content-stretch flex gap-[44px] items-center p-[44px] relative size-full">
+            <ProgressIndicator onSuccess={onSuccess} />
+            <WelcomeSection />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -169,6 +169,7 @@ import { GrowESign } from './components/grow-esign/GrowESign';
 import { GrowESignPlatform } from './components/govsign/GovSign';
 import { mockCurrentUser, mockCases } from './data/mockData';
 import logo from '../assets/60b7d162929b5cb780f781445f70fa18c2c16326.png';
+import { getSession, isSupabaseConfigured } from '../lib/auth';
 import { SettingsPage } from './components/settings/SettingsPage';
 import { PEXADashboard } from './components/pexa/PEXADashboard';
 import { TestButton } from './components/TestButton';
@@ -366,9 +367,12 @@ export default function App() {
   const requestedModule = getRequestedModule();
 
   const [currentPage, setCurrentPage] = useState<Page>('dashboard');
-  const [userRole, setUserRole] = useState<UserRole>('investor'); // Now switchable via dropdown
-  const [isAuthenticated, setIsAuthenticated] = useState(true); // Changed back to true - access via dropdown now
-  const [showPublicSite, setShowPublicSite] = useState(false); // No longer needed as primary flow
+  const [userRole, setUserRole] = useState<UserRole>('investor');
+  // Auth is checked against a real Supabase session on mount.
+  // If Supabase is not configured (placeholder creds) we fall back to dev-bypass mode (true).
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [authChecking, setAuthChecking] = useState(true);
+  const [showPublicSite, setShowPublicSite] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentModule, setCurrentModule] = useState<Module>(requestedModule ?? 'grow_kyc');
   const [selectedCaseId, setSelectedCaseId] = useState<string | null>(null);
@@ -382,6 +386,28 @@ export default function App() {
   const [isGlobalSearchOpen, setIsGlobalSearchOpen] = useState(false);
   const location = useLocation();
   const routerNavigate = useNavigate();
+
+  // Check for an existing Supabase session on mount.
+  // If Supabase is not configured with real credentials, bypass auth (dev mode).
+  useEffect(() => {
+    const checkSession = async () => {
+      try {
+        if (!isSupabaseConfigured) {
+          // Dev mode: Supabase not configured, skip auth gate
+          setIsAuthenticated(true);
+          setAuthChecking(false);
+          return;
+        }
+        const session = await getSession();
+        setIsAuthenticated(!!session);
+      } catch {
+        setIsAuthenticated(false);
+      } finally {
+        setAuthChecking(false);
+      }
+    };
+    checkSession();
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -509,6 +535,18 @@ export default function App() {
     );
   }
 
+  // Show loading spinner while checking session
+  if (authChecking) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-10 h-10 border-4 border-[#2855a6] border-t-transparent rounded-full animate-spin" />
+          <p className="text-sm text-gray-500">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
   // Show public marketing site
   if (showPublicSite && !isAuthenticated) {
     return (
@@ -525,14 +563,14 @@ export default function App() {
       return (
         <>
           <Toaster position="top-right" richColors />
-          <OnboardingWizard />
+          <OnboardingWizard onNavigateToSignIn={() => setCurrentPage('signin')} />
         </>
       );
     }
     return (
       <>
         <Toaster position="top-right" richColors />
-        <SignInPage />
+        <SignInPage onSuccess={() => setIsAuthenticated(true)} />
       </>
     );
   }

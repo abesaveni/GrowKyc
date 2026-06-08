@@ -26,7 +26,7 @@ function Stepper({ currentStep, steps }: StepperProps) {
                 ? 'bg-indigo-600 text-white'
                 : 'bg-gray-200 text-gray-500'
             }`}>
-              {index < currentStep ? 'âœ“' : index + 1}
+              {index < currentStep ? '✓' : index + 1}
             </div>
             <span className="text-xs mt-2 text-gray-600">{step}</span>
           </div>
@@ -41,7 +41,11 @@ function Stepper({ currentStep, steps }: StepperProps) {
   );
 }
 
-export function OnboardingWizard() {
+interface OnboardingWizardProps {
+  onNavigateToSignIn?: () => void;
+}
+
+export function OnboardingWizard({ onNavigateToSignIn }: OnboardingWizardProps = {}) {
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedRole, setSelectedRole] = useState<UserRole>(null);
   const [kycData, setKycData] = useState({
@@ -305,7 +309,7 @@ export function OnboardingWizard() {
                   </li>
                 </ul>
               </div>
-              <Button size="lg" className="mt-6">
+              <Button size="lg" className="mt-6" onClick={onNavigateToSignIn}>
                 Return to Sign In
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>

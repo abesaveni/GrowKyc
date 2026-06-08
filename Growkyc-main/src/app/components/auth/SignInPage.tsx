@@ -1,6 +1,10 @@
 import React from 'react';
 import SignIn from '../../../imports/SignIn';
 
-export function SignInPage() {
-  return <SignIn />;
+interface SignInPageProps {
+  onSuccess?: () => void;
+}
+
+export function SignInPage({ onSuccess }: SignInPageProps = {}) {
+  return <SignIn onSuccess={onSuccess} />;
 }
