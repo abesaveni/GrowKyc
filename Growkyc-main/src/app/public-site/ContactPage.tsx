@@ -29,7 +29,7 @@ export function ContactPage() {
   const update = (field: keyof ContactFormData, value: string) => {
     setForm((f) => ({ ...f, [field]: value }));
     if (errors[field]) {
-      const next = validateContactForm({ ...form, [field]: value });
+      const next = validateContactForm({ ...form, [field]: value }) as Record<string, string | undefined>;
       setErrors((e) => {
         const copy = { ...e };
         if (!next[field]) delete copy[field];

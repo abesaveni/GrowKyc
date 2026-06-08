@@ -1,13 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
-import { toast } from 'sonner';
+import { toast } from '../../lib/toast';
 import { InternalReferral } from './InternalReferral';
 import { ReportableMatterTriage } from './ReportableMatterTriage';
 import { SubmissionTracking } from './SubmissionTracking';
 import { ReportingRulesAndTriggers } from './ReportingRulesTriggers';
 import { ReportDraftBuilder } from './ReportDraftBuilder';
+import { CaseInvestigationWorkbench } from './CaseInvestigationWorkbench';
+import { ComplianceManagerDecision } from './ComplianceManagerDecision';
+import { AuditEvidencePack } from './AuditEvidencePack';
+import { ClientsDB } from '../kyc/ClientsDatabase';
 import {
   Dialog,
   DialogContent,
@@ -76,8 +81,121 @@ interface AUSTRACControlCentreProps {
   defaultSelectedCaseId?: string | null;
 }
 
+type AustracSubPanel =
+  | 'dashboard'
+  | 'triage'
+  | 'draft_builder'
+  | 'tracking'
+  | 'rules'
+  | 'investigation'
+  | 'manager_decision'
+  | 'evidence_pack';
+
+const STATIC_AUSTRAC_CASES: AUSTRACCase[] = [
+  {
+    caseId: 'AUS-2026-001',
+    subject: 'Innovation Partners Trust',
+    subjectType: 'trust',
+    triggerSource: 'adverse_media',
+    riskBand: 'high',
+    assignedReviewer: 'Sarah Johnson',
+    status: 'under_investigation',
+    createdDate: '2026-03-18',
+    slaHours: 72,
+    slaRemaining: 24,
+  },
+  {
+    caseId: 'AUS-2026-002',
+    subject: 'ABC Enterprises Pty Ltd',
+    subjectType: 'company',
+    triggerSource: 'sanctions',
+    riskBand: 'critical',
+    assignedReviewer: 'Michael Chen',
+    status: 'draft_in_progress',
+    createdDate: '2026-03-20',
+    slaHours: 24,
+    slaRemaining: 8,
+  },
+  {
+    caseId: 'AUS-2026-003',
+    subject: 'David Chen',
+    subjectType: 'individual',
+    triggerSource: 'pep',
+    riskBand: 'medium',
+    assignedReviewer: 'Lisa Martinez',
+    status: 'awaiting_manager',
+    createdDate: '2026-03-19',
+    slaHours: 72,
+    slaRemaining: 48,
+  },
+  {
+    caseId: 'AUS-2026-004',
+    subject: 'TechCorp Pty Ltd',
+    subjectType: 'company',
+    triggerSource: 'sof',
+    riskBand: 'high',
+    assignedReviewer: 'Sarah Johnson',
+    status: 'in_triage',
+    createdDate: '2026-03-21',
+    slaHours: 48,
+    slaRemaining: 46,
+  },
+  {
+    caseId: 'AUS-2026-005',
+    subject: 'Melbourne Family Trust',
+    subjectType: 'trust',
+    triggerSource: 'ownership',
+    riskBand: 'medium',
+    assignedReviewer: 'Michael Chen',
+    status: 'new',
+    createdDate: '2026-03-21',
+    slaHours: 48,
+    slaRemaining: 48,
+  },
+];
+
+function buildClientAustracCases(clients: any[]): AUSTRACCase[] {
+  return clients
+    .filter(
+      (c) =>
+        c.status === 'Under Review' ||
+        c.status === 'Suspended' ||
+        c.amlData?.riskRating === 'Critical' ||
+        c.amlData?.riskRating === 'High'
+    )
+    .map((c) => {
+      let triggerSource: TriggerSource = 'monitoring';
+      if (c.amlData?.sanctionsMatches > 0) triggerSource = 'sanctions';
+      else if (c.amlData?.pepStatus && c.amlData.pepStatus !== 'Not PEP') triggerSource = 'pep';
+      else if (c.amlData?.adverseMediaHits > 0) triggerSource = 'adverse_media';
+      else if (c.riskScores?.overall >= 75) triggerSource = 'sof';
+
+      const riskBand = (c.amlData?.riskRating || 'medium').toLowerCase() as RiskBand;
+      const subjectType =
+        c.entityType?.toLowerCase() === 'individual'
+          ? 'individual'
+          : c.entityType?.toLowerCase() === 'trust'
+            ? 'trust'
+            : 'company';
+
+      return {
+        caseId: `AUS-CL-${c.id}`,
+        subject: c.name,
+        subjectType,
+        triggerSource,
+        riskBand,
+        assignedReviewer: c.amlData?.riskRating === 'Critical' ? 'Sarah Chen' : 'Emma Williams',
+        status: c.status === 'Suspended' ? 'under_investigation' : 'in_triage',
+        createdDate: (c.lastReview || new Date().toISOString().split('T')[0]).slice(0, 10),
+        slaHours: 48,
+        slaRemaining: c.status === 'Suspended' ? 6 : 28,
+      };
+    });
+}
+
 export function AUSTRACControlCentre({ navigateTo, goBack, defaultSelectedCaseId }: AUSTRACControlCentreProps) {
-  const [activeSubPanel, setActiveSubPanel] = useState<'dashboard' | 'triage' | 'draft_builder' | 'tracking' | 'rules'>('dashboard');
+  const navigate = useNavigate();
+  const [activeSubPanel, setActiveSubPanel] = useState<AustracSubPanel>('dashboard');
   const [selectedCaseId, setSelectedCaseId] = useState<string | null>(defaultSelectedCaseId ?? null);
   const [filterStatus, setFilterStatus] = useState<string>('all');
   const [filterRisk, setFilterRisk] = useState<string>('all');
@@ -125,8 +243,72 @@ export function AUSTRACControlCentre({ navigateTo, goBack, defaultSelectedCaseId
     toast.success(`Filing compliance receipt for ${caseId} downloaded successfully!`);
   };
 
+
+  const [clients, setClients] = useState<any[]>([]);
+  const [manualCases, setManualCases] = useState<AUSTRACCase[]>([]);
+  const [caseRefreshKey, setCaseRefreshKey] = useState(0);
+
+  const loadManualCases = useCallback(() => {
+    try {
+      const stored = localStorage.getItem('austrac_custom_cases');
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed)) {
+          setManualCases(parsed);
+          return;
+        }
+      }
+    } catch (e) {
+      console.error('Error loading custom AUSTRAC cases', e);
+    }
+    setManualCases([]);
+  }, []);
+
+  useEffect(() => {
+    setClients(ClientsDB.getClients());
+    return ClientsDB.subscribe(setClients);
+  }, []);
+
+  useEffect(() => {
+    loadManualCases();
+    const onCasesUpdated = () => {
+      loadManualCases();
+      setCaseRefreshKey((k) => k + 1);
+    };
+    window.addEventListener('growkyc:cases_updated', onCasesUpdated);
+    window.addEventListener('growkyc:clients_updated', onCasesUpdated);
+    return () => {
+      window.removeEventListener('growkyc:cases_updated', onCasesUpdated);
+      window.removeEventListener('growkyc:clients_updated', onCasesUpdated);
+    };
+  }, [loadManualCases]);
+
+
+
+  const returnToDashboard = () => {
+    const lastRole = localStorage.getItem('growkyc_last_role') || 'compliance';
+    navigate(`/${lastRole}/dashboard`);
+  };
+
+  // Unified state handling for draft reports, submissions, and cases
+  interface Submission {
+    caseId: string;
+    reportType: 'smr' | 'ttr' | 'ifti';
+    subject: string;
+    decisionDate: string;
+    submissionMethod: 'online' | 'email' | 'manual';
+    status: string;
+    submittedBy: string;
+    acknowledgementStatus: string;
+    lastUpdated: string;
+    submissionRef?: string;
+    retryCount?: number;
+  }
+
   // Dynamic cases state loaded from localStorage & static mock data
   const [cases, setCases] = useState<AUSTRACCase[]>([]);
+  const [draftReports, setDraftReports] = useState<DraftReport[]>([]);
+  const [submissions, setSubmissions] = useState<Submission[]>([]);
 
   useEffect(() => {
     const staticCases: AUSTRACCase[] = [
@@ -192,77 +374,196 @@ export function AUSTRACControlCentre({ navigateTo, goBack, defaultSelectedCaseId
       }
     ];
 
+    const defaultDrafts: DraftReport[] = [
+      {
+        caseId: 'AUS-2026-002',
+        subject: 'ABC Enterprises Pty Ltd',
+        draftType: 'smr',
+        preparedBy: 'Michael Chen',
+        awaiting: 'MLRO Approval',
+        lastUpdated: '2026-03-21 10:30'
+      },
+      {
+        caseId: 'AUS-2026-003',
+        subject: 'David Chen',
+        draftType: 'escalation',
+        preparedBy: 'Lisa Martinez',
+        awaiting: 'Manager Review',
+        lastUpdated: '2026-03-21 09:15'
+      }
+    ];
+
+    const defaultSubmissions: Submission[] = [
+      {
+        caseId: 'AUS-2026-002',
+        reportType: 'smr',
+        subject: 'ABC Enterprises Pty Ltd',
+        decisionDate: '2026-03-21',
+        submissionMethod: 'online',
+        status: 'submitted',
+        submittedBy: 'Lisa Martinez (MLRO)',
+        acknowledgementStatus: 'Pending',
+        lastUpdated: '2026-03-21 15:30',
+        submissionRef: 'SMR-2026-AUS-00215',
+        retryCount: 0
+      },
+      {
+        caseId: 'AUS-2026-001',
+        reportType: 'smr',
+        subject: 'Innovation Partners Trust',
+        decisionDate: '2026-03-20',
+        submissionMethod: 'online',
+        status: 'acknowledged',
+        submittedBy: 'Lisa Martinez (MLRO)',
+        acknowledgementStatus: 'Received - AUSTRAC-ACK-789456',
+        lastUpdated: '2026-03-20 14:00',
+        submissionRef: 'SMR-2026-AUS-00214'
+      },
+      {
+        caseId: 'AUS-2026-000',
+        reportType: 'smr',
+        subject: 'Green Valley SMSF',
+        decisionDate: '2026-03-19',
+        submissionMethod: 'online',
+        status: 'not_submitted',
+        submittedBy: 'Sarah Johnson',
+        acknowledgementStatus: 'N/A - Not submitted',
+        lastUpdated: '2026-03-19 10:00'
+      },
+      {
+        caseId: 'AUS-2025-099',
+        reportType: 'smr',
+        subject: 'Jennifer Williams',
+        decisionDate: '2026-03-18',
+        submissionMethod: 'online',
+        status: 'closed',
+        submittedBy: 'MLRO',
+        acknowledgementStatus: 'Case closed - No submission',
+        lastUpdated: '2026-03-18 16:45'
+      },
+      {
+        caseId: 'AUS-2025-098',
+        reportType: 'smr',
+        subject: 'Coastal Ventures Partnership',
+        decisionDate: '2026-03-17',
+        submissionMethod: 'online',
+        status: 'acknowledged',
+        submittedBy: 'MLRO',
+        acknowledgementStatus: 'Received - AUSTRAC-ACK-789321',
+        lastUpdated: '2026-03-17 09:30',
+        submissionRef: 'SMR-2026-AUS-00213'
+      },
+      {
+        caseId: 'AUS-2025-097',
+        reportType: 'smr',
+        subject: 'Tech Solutions Pty Ltd',
+        decisionDate: '2026-03-15',
+        submissionMethod: 'online',
+        status: 'failed',
+        submittedBy: 'Michael Chen',
+        acknowledgementStatus: 'Submission failed - Retry required',
+        lastUpdated: '2026-03-15 11:20',
+        submissionRef: 'SMR-2026-AUS-00212',
+        retryCount: 2
+      },
+      {
+        caseId: 'AUS-2025-096',
+        reportType: 'smr',
+        subject: 'Property Holdings Trust',
+        decisionDate: '2026-03-14',
+        submissionMethod: 'email',
+        status: 'approved',
+        submittedBy: 'MLRO',
+        acknowledgementStatus: 'Awaiting submission',
+        lastUpdated: '2026-03-14 14:00'
+      }
+    ];
+
     try {
-      const stored = localStorage.getItem('austrac_custom_cases');
-      if (stored) {
-        const parsed = JSON.parse(stored);
-        if (Array.isArray(parsed)) {
-          setCases([...parsed, ...staticCases]);
-          return;
-        }
+      const storedAll = localStorage.getItem('austrac_cases');
+      if (storedAll) {
+        setCases(JSON.parse(storedAll));
+      } else {
+        const storedCustom = localStorage.getItem('austrac_custom_cases');
+        const customCases = storedCustom ? JSON.parse(storedCustom) : [];
+        const merged = [...customCases, ...staticCases];
+        localStorage.setItem('austrac_cases', JSON.stringify(merged));
+        setCases(merged);
       }
     } catch (e) {
-      console.error('Error loading custom cases', e);
+      setCases(staticCases);
     }
-    setCases(staticCases);
+
+    try {
+      const storedDrafts = localStorage.getItem('austrac_draft_reports');
+      if (storedDrafts) {
+        setDraftReports(JSON.parse(storedDrafts));
+      } else {
+        localStorage.setItem('austrac_draft_reports', JSON.stringify(defaultDrafts));
+        setDraftReports(defaultDrafts);
+      }
+    } catch (e) {
+      setDraftReports(defaultDrafts);
+    }
+
+    try {
+      const storedSubmissions = localStorage.getItem('austrac_submissions');
+      if (storedSubmissions) {
+        setSubmissions(JSON.parse(storedSubmissions));
+      } else {
+        localStorage.setItem('austrac_submissions', JSON.stringify(defaultSubmissions));
+        setSubmissions(defaultSubmissions);
+      }
+    } catch (e) {
+      setSubmissions(defaultSubmissions);
+    }
   }, []);
+
+  // Reload everything from localStorage when returning to dashboard to keep it in sync
+  useEffect(() => {
+    if (activeSubPanel === 'dashboard') {
+      try {
+        const storedCases = localStorage.getItem('austrac_cases');
+        if (storedCases) setCases(JSON.parse(storedCases));
+
+        const storedDrafts = localStorage.getItem('austrac_draft_reports');
+        if (storedDrafts) setDraftReports(JSON.parse(storedDrafts));
+
+        const storedSubmissions = localStorage.getItem('austrac_submissions');
+        if (storedSubmissions) setSubmissions(JSON.parse(storedSubmissions));
+      } catch (e) {
+        console.error('Failed to reload AUSTRAC data', e);
+      }
+    }
+  }, [activeSubPanel]);
+
 
   // Dynamic KPIs derived from active cases
   const kpis = {
     openMatters: cases.filter(c => c.status !== 'closed' && c.status !== 'not_reportable').length,
     draftsPending: cases.filter(c => c.status === 'draft_in_progress').length,
     escalatedCases: cases.filter(c => c.status === 'awaiting_manager').length,
-    submittedReports: 28 + cases.filter(c => c.status === 'submitted').length,
-    notReported: 15 + cases.filter(c => c.status === 'not_reportable').length,
+    submittedReports: 28 + submissions.filter(s => s.status === 'submitted' || s.status === 'acknowledged').length,
+    notReported: 15 + submissions.filter(s => s.status === 'not_submitted' || s.status === 'closed').length,
     overdueReviews: cases.filter(c => c.slaRemaining <= 0 && c.status !== 'closed' && c.status !== 'not_reportable').length,
     monitoringAlerts: 7,
     qaIssues: 1
   };
 
-  // Mock draft reports
-  const draftReports: DraftReport[] = [
-    {
-      caseId: 'AUS-2026-002',
-      subject: 'ABC Enterprises Pty Ltd',
-      draftType: 'smr',
-      preparedBy: 'Michael Chen',
-      awaiting: 'MLRO Approval',
-      lastUpdated: '2026-03-21 10:30'
-    },
-    {
-      caseId: 'AUS-2026-003',
-      subject: 'David Chen',
-      draftType: 'escalation',
-      preparedBy: 'Lisa Martinez',
-      awaiting: 'Manager Review',
-      lastUpdated: '2026-03-21 09:15'
-    }
-  ];
-
-  // Mock recent submissions
-  const recentSubmissions: RecentSubmission[] = [
-    {
-      caseId: 'AUS-2026-000',
-      subject: 'Green Valley SMSF',
-      outcome: 'monitoring_only',
-      decisionOwner: 'Sarah Johnson',
-      closedDate: '2026-03-20'
-    },
-    {
-      caseId: 'AUS-2025-099',
-      subject: 'Jennifer Williams',
-      outcome: 'not_submitted',
-      decisionOwner: 'MLRO',
-      closedDate: '2026-03-19'
-    },
-    {
-      caseId: 'AUS-2025-098',
-      subject: 'Coastal Ventures Partnership',
-      outcome: 'submitted',
-      decisionOwner: 'MLRO',
-      closedDate: '2026-03-18'
-    }
-  ];
+  // Derived recent submissions
+  const recentSubmissions: RecentSubmission[] = submissions.map(s => {
+    let outcome: 'submitted' | 'not_submitted' | 'monitoring_only' = 'submitted';
+    if (s.status === 'closed') outcome = 'not_submitted';
+    else if (s.status === 'not_submitted') outcome = 'monitoring_only';
+    
+    return {
+      caseId: s.caseId,
+      subject: s.subject,
+      outcome,
+      decisionOwner: s.submittedBy.split(' ')[0],
+      closedDate: s.decisionDate
+    };
+  });
 
   const getStatusBadge = (status: CaseStatus) => {
     const config = {
@@ -351,6 +652,25 @@ export function AUSTRACControlCentre({ navigateTo, goBack, defaultSelectedCaseId
   if (activeSubPanel === 'draft_builder') {
     return <ReportDraftBuilder caseId={selectedCaseId || undefined} onBack={() => setActiveSubPanel('dashboard')} />;
   }
+  if (activeSubPanel === 'investigation') {
+    return (
+      <CaseInvestigationWorkbench
+        caseId={selectedCaseId || undefined}
+        onBack={() => setActiveSubPanel('dashboard')}
+      />
+    );
+  }
+  if (activeSubPanel === 'manager_decision') {
+    return (
+      <ComplianceManagerDecision
+        caseId={selectedCaseId || undefined}
+        onBack={() => setActiveSubPanel('dashboard')}
+      />
+    );
+  }
+  if (activeSubPanel === 'evidence_pack') {
+    return <AuditEvidencePack onBack={() => setActiveSubPanel('dashboard')} />;
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 p-4 md:p-8">
@@ -361,14 +681,11 @@ export function AUSTRACControlCentre({ navigateTo, goBack, defaultSelectedCaseId
             <div className="flex flex-col sm:flex-row sm:items-center gap-4">
               <Button 
                 variant="ghost" 
-                onClick={() => {
-                  const lastRole = localStorage.getItem('growkyc_last_role') || 'aml-analyst';
-                  window.location.href = `/${lastRole}/dashboard`;
-                }}
-                className="bg-white/10 border-2 border-white/20 text-white hover:bg-white/20 w-full sm:w-auto justify-center"
+                onClick={returnToDashboard}
+                className="bg-white/10 border-2 border-white/20 text-white hover:bg-white/20 p-2 rounded-lg flex items-center justify-center flex-shrink-0"
+                title="Return to Dashboard"
               >
-                <ArrowLeft className="w-5 h-5 mr-2" />
-                Return to Dashboard
+                <ArrowLeft className="w-5 h-5" />
               </Button>
               <div className="flex items-center gap-4">
                 <div className="w-14 h-14 md:w-16 md:h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border-2 border-white/20 flex-shrink-0">
@@ -380,21 +697,36 @@ export function AUSTRACControlCentre({ navigateTo, goBack, defaultSelectedCaseId
                 </div>
               </div>
             </div>
-            <div className="flex flex-wrap gap-2 md:gap-3 w-full lg:w-auto">
-              <Button onClick={() => setActiveSubPanel('tracking')} className="bg-white/10 border-2 border-white/20 text-white hover:bg-white/20 flex-1 sm:flex-initial justify-center text-xs md:text-sm">
-                <Activity className="w-4 h-4 mr-2" />
+            <div className="flex flex-wrap lg:flex-nowrap items-center gap-1.5 md:gap-2 w-full lg:w-auto">
+              <Button onClick={() => setActiveSubPanel('tracking')} className="bg-white/10 border-2 border-white/20 text-white hover:bg-white/20 px-2.5 md:px-3 py-1.5 text-xs md:text-sm whitespace-nowrap flex-shrink-0 justify-center">
+                <Activity className="w-4 h-4 mr-1.5 md:mr-2" />
                 Submission Tracking
               </Button>
-              <Button onClick={() => setActiveSubPanel('rules')} className="bg-white/10 border-2 border-white/20 text-white hover:bg-white/20 flex-1 sm:flex-initial justify-center text-xs md:text-sm">
-                <Settings className="w-4 h-4 mr-2" />
+              <Button onClick={() => setActiveSubPanel('rules')} className="bg-white/10 border-2 border-white/20 text-white hover:bg-white/20 px-2.5 md:px-3 py-1.5 text-xs md:text-sm whitespace-nowrap flex-shrink-0 justify-center">
+                <Settings className="w-4 h-4 mr-1.5 md:mr-2" />
                 Rules & Triggers
               </Button>
-              <Button onClick={() => setShowReferralModal(true)} className="bg-white text-red-900 hover:bg-red-50 flex-1 sm:flex-initial justify-center text-xs md:text-sm">
-                <Plus className="w-4 h-4 mr-2" />
+              <Button onClick={() => setActiveSubPanel('evidence_pack')} className="bg-white/10 border-2 border-white/20 text-white hover:bg-white/20 px-2.5 md:px-3 py-1.5 text-xs md:text-sm whitespace-nowrap flex-shrink-0 justify-center">
+                <FileText className="w-4 h-4 mr-1.5 md:mr-2" />
+                Evidence Packs
+              </Button>
+              <Button
+                onClick={() => {
+                  const awaiting = cases.find((c) => c.status === 'awaiting_manager');
+                  if (awaiting) setSelectedCaseId(awaiting.caseId);
+                  setActiveSubPanel('manager_decision');
+                }}
+                className="bg-white/10 border-2 border-white/20 text-white hover:bg-white/20 px-2.5 md:px-3 py-1.5 text-xs md:text-sm whitespace-nowrap flex-shrink-0 justify-center"
+              >
+                <Users className="w-4 h-4 mr-1.5 md:mr-2" />
+                Manager Decisions
+              </Button>
+              <Button onClick={() => setShowReferralModal(true)} className="bg-white text-red-900 hover:bg-red-50 px-2.5 md:px-3 py-1.5 text-xs md:text-sm whitespace-nowrap flex-shrink-0 justify-center">
+                <Plus className="w-4 h-4 mr-1.5 md:mr-2" />
                 Create Manual Case
               </Button>
-              <Button onClick={handleExportRegister} className="bg-white/10 border-2 border-white/20 text-white hover:bg-white/20 flex-1 sm:flex-initial justify-center text-xs md:text-sm">
-                <Download className="w-4 h-4 mr-2" />
+              <Button onClick={handleExportRegister} className="bg-white/10 border-2 border-white/20 text-white hover:bg-white/20 px-2.5 md:px-3 py-1.5 text-xs md:text-sm whitespace-nowrap flex-shrink-0 justify-center">
+                <Download className="w-4 h-4 mr-1.5 md:mr-2" />
                 Export Register
               </Button>
             </div>
@@ -603,8 +935,33 @@ export function AUSTRACControlCentre({ navigateTo, goBack, defaultSelectedCaseId
                             }}
                           >
                             <Eye className="w-4 h-4 mr-1" />
-                            Open
+                            Triage
                           </Button>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => {
+                              setSelectedCaseId(matter.caseId);
+                              setActiveSubPanel('investigation');
+                            }}
+                          >
+                            <Activity className="w-4 h-4 mr-1" />
+                            Investigate
+                          </Button>
+                          {matter.status === 'awaiting_manager' && (
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="border-pink-300 text-pink-800"
+                              onClick={() => {
+                                setSelectedCaseId(matter.caseId);
+                                setActiveSubPanel('manager_decision');
+                              }}
+                            >
+                              <CheckCircle className="w-4 h-4 mr-1" />
+                              Decide
+                            </Button>
+                          )}
                         </div>
                       </td>
                     </tr>
@@ -799,17 +1156,30 @@ export function AUSTRACControlCentre({ navigateTo, goBack, defaultSelectedCaseId
                     slaHours: newCase.slaHours,
                     slaRemaining: newCase.slaRemaining,
                   } as any;
-                  // Add the new case to state and persist only manual cases
-                  setCases(prev => {
-                    const updated = [fullCase, ...prev];
-                    const manualOnly = updated.filter(c => c.caseId.startsWith('AUS-2026-') && c.triggerSource === 'manual');
+
+                  // Update manual cases state and persist
+                  setManualCases((prev) => {
+                    const updated = [fullCase, ...prev.filter((c) => c.caseId !== fullCase.caseId)];
                     try {
-                      localStorage.setItem('austrac_custom_cases', JSON.stringify(manualOnly));
+                      localStorage.setItem('austrac_custom_cases', JSON.stringify(updated));
                     } catch (e) {
-                      console.error('Failed to save manual case', e);
+                      console.error('Failed to save manual cases', e);
                     }
                     return updated;
                   });
+
+                  // Also update cases state and persist
+                  setCases((prev) => {
+                    const updated = [fullCase, ...prev];
+                    try {
+                      localStorage.setItem('austrac_cases', JSON.stringify(updated));
+                    } catch (e) {
+                      console.error('Failed to save cases', e);
+                    }
+                    return updated;
+                  });
+
+                  window.dispatchEvent(new CustomEvent('austrac_cases_updated'));
                   toast.success(`Manual Case ${fullCase.caseId} successfully added dynamically to the active matters register!`);
                 }
                 setShowReferralModal(false);

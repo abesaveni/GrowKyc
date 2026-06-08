@@ -10,9 +10,9 @@ models/__init__.py is imported.
 
 import logging
 import os
-from dotenv import load_dotenv
 from typing import Generator
 
+from dotenv import load_dotenv
 from sqlalchemy import create_engine, event, inspect, text, true
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session, sessionmaker, with_loader_criteria
@@ -93,16 +93,20 @@ def _tenant_filter_do_orm_execute(orm_execute_state):
     Global tenant filtering interceptor.
     Applies `with_loader_criteria` to automatically filter any model with a
     `tenant_id` column by the `current_tenant_id` contextvar.
-    
+
     If `current_tenant_id` is None, fails CLOSED by enforcing `tenant_id == -1`.
     Can be bypassed via `execution_options(include_all_tenants=True)`.
     """
-    if orm_execute_state.is_select or orm_execute_state.is_update or orm_execute_state.is_delete:
+    if (
+        orm_execute_state.is_select
+        or orm_execute_state.is_update
+        or orm_execute_state.is_delete
+    ):
         if orm_execute_state.execution_options.get("include_all_tenants", False):
             return
 
         tenant_id = get_tenant_id()
-        
+
         if tenant_id is None:
             return
 
@@ -117,6 +121,7 @@ def _tenant_filter_do_orm_execute(orm_execute_state):
                     cls.tenant_id == tenant_id if hasattr(cls, "tenant_id") else true()
                 ),
                 include_aliases=True,
+                track_closure_variables=False,
             )
         )
 
@@ -189,7 +194,8 @@ def init_db():
     """
     try:
         # Import Base from the models package — triggers all model registrations
-        from models import Base  # noqa: F401 (side-effect: registers all tables)
+        from models import \
+            Base  # noqa: F401 (side-effect: registers all tables)
 
         logger.info(f"Initializing database: {DATABASE_URL}")
 

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '../ui/button';
+import { toast } from '../../lib/toast';
 import {
   Shield,
   Users,
@@ -54,13 +55,94 @@ interface PolicyVersion {
   version: string;
   effectiveDate: Date;
   approvedBy: string;
-  status: 'draft' | 'active' | 'archived';
+  status: 'draft' | 'review' | 'active' | 'archived';
   changes: string[];
 }
+
+const getPersonaConfig = (userId: string) => {
+  const configs: Record<string, { name: string; title: string; role: string }> = {
+    sarah_chen: { name: 'Sarah Chen', title: 'Head of Compliance', role: 'compliance_officer' },
+    emma_williams: { name: 'Emma Williams', title: 'Compliance Officer', role: 'compliance_officer' },
+    jessica_lee: { name: 'Jessica Lee', title: 'Senior Compliance Officer', role: 'compliance_officer' },
+    alex_rivera: { name: 'Alex Rivera', title: 'AML Analyst', role: 'analyst' },
+    david_thompson: { name: 'David Thompson', title: 'Internal Auditor', role: 'auditor' },
+    michael_roberts: { name: 'Michael Roberts', title: 'Managing Partner', role: 'partner' },
+    robert_kim: { name: 'Robert Kim', title: 'Risk Partner', role: 'partner' }
+  };
+  return configs[userId] || configs.sarah_chen;
+};
 
 export function ClientPolicy() {
   const [activeTab, setActiveTab] = useState<'overview' | 'acceptance' | 'cdd-rules' | 'edd-triggers' | 'sdd-criteria' | 'approval-workflow' | 'restrictions' | 'documents' | 'versions'>('overview');
   const [selectedClientType, setSelectedClientType] = useState<ClientType | 'all'>('all');
+
+  const [activePersona, setActivePersona] = useState(() => localStorage.getItem('growkyc_selected_user') || 'sarah_chen');
+
+  useEffect(() => {
+    const handlePersonaChange = () => {
+      setActivePersona(localStorage.getItem('growkyc_selected_user') || 'sarah_chen');
+    };
+    window.addEventListener('growkyc:persona_changed', handlePersonaChange);
+    return () => window.removeEventListener('growkyc:persona_changed', handlePersonaChange);
+  }, []);
+
+  const [policyVersions, setPolicyVersions] = useState<PolicyVersion[]>(() => {
+    const saved = localStorage.getItem('growkyc_policy_versions');
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        return parsed.map((p: any) => ({ ...p, effectiveDate: new Date(p.effectiveDate) }));
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    return [
+      {
+        version: '3.2',
+        effectiveDate: new Date('2024-02-01'),
+        approvedBy: 'Michael Chen (Senior Manager)',
+        status: 'active',
+        changes: [
+          'Added Equifax risk scoring integration',
+          'Updated PEP screening requirements',
+          'Enhanced trust structure documentation',
+          'Added quarterly review for foreign entities'
+        ]
+      },
+      {
+        version: '3.1',
+        effectiveDate: new Date('2023-11-15'),
+        approvedBy: 'Sarah Johnson (Governing Body)',
+        status: 'archived',
+        changes: [
+          'Updated high-risk jurisdiction list',
+          'Added cryptocurrency source of funds guidance',
+          'Enhanced beneficial ownership thresholds'
+        ]
+      },
+      {
+        version: '3.0',
+        effectiveDate: new Date('2023-07-01'),
+        approvedBy: 'Sarah Johnson (Governing Body)',
+        status: 'archived',
+        changes: [
+          'Major overhaul for AUSTRAC Rule amendments',
+          'Introduced risk-based approach framework',
+          'Added simplified due diligence criteria',
+          'Enhanced customer due diligence procedures'
+        ]
+      }
+    ];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('growkyc_policy_versions', JSON.stringify(policyVersions));
+  }, [policyVersions]);
+
+  const [showDraftModal, setShowDraftModal] = useState(false);
+  const [newVersion, setNewVersion] = useState('');
+  const [newChangeText, setNewChangeText] = useState('');
+  const [newChanges, setNewChanges] = useState<string[]>([]);
 
   // Client Acceptance Rules
   const [clientRules] = useState<ClientAcceptanceRule[]>([
@@ -222,44 +304,56 @@ export function ClientPolicy() {
     }
   ];
 
-  // Policy Versions
-  const [policyVersions] = useState<PolicyVersion[]>([
-    {
-      version: '3.2',
-      effectiveDate: new Date('2024-02-01'),
-      approvedBy: 'Michael Chen (Senior Manager)',
-      status: 'active',
-      changes: [
-        'Added Equifax risk scoring integration',
-        'Updated PEP screening requirements',
-        'Enhanced trust structure documentation',
-        'Added quarterly review for foreign entities'
-      ]
-    },
-    {
-      version: '3.1',
-      effectiveDate: new Date('2023-11-15'),
-      approvedBy: 'Sarah Johnson (Governing Body)',
-      status: 'archived',
-      changes: [
-        'Updated high-risk jurisdiction list',
-        'Added cryptocurrency source of funds guidance',
-        'Enhanced beneficial ownership thresholds'
-      ]
-    },
-    {
-      version: '3.0',
-      effectiveDate: new Date('2023-07-01'),
-      approvedBy: 'Sarah Johnson (Governing Body)',
-      status: 'archived',
-      changes: [
-        'Major overhaul for AUSTRAC Rule amendments',
-        'Introduced risk-based approach framework',
-        'Added simplified due diligence criteria',
-        'Enhanced customer due diligence procedures'
-      ]
+  const handleSubmitForReview = (versionToSubmit: string) => {
+    setPolicyVersions(prev => prev.map(v => 
+      v.version === versionToSubmit ? { ...v, status: 'review' } : v
+    ));
+    toast.success('Policy Sent for Review', `Version ${versionToSubmit} has been submitted for approval.`);
+  };
+
+  const handleApproveAndPublish = (versionToApprove: string) => {
+    const persona = getPersonaConfig(activePersona);
+    if (persona.title !== 'Head of Compliance' && persona.role !== 'partner') {
+      toast.error('Permission Denied', 'Only the Head of Compliance or Managing Partner can approve and publish policy changes.');
+      return;
     }
-  ]);
+    setPolicyVersions(prev => {
+      return prev.map(v => {
+        if (v.version === versionToApprove) {
+          return { 
+            ...v, 
+            status: 'active', 
+            effectiveDate: new Date(), 
+            approvedBy: `${persona.name} (${persona.title})`
+          };
+        }
+        if (v.status === 'active') {
+          return { ...v, status: 'archived' };
+        }
+        return v;
+      });
+    });
+    toast.success('Policy Published', `Version ${versionToApprove} is now active.`);
+  };
+
+  const handleCreateDraft = () => {
+    if (!newVersion) {
+      toast.error('Error', 'Please specify a version number.');
+      return;
+    }
+    const draft: PolicyVersion = {
+      version: newVersion,
+      effectiveDate: new Date(),
+      approvedBy: 'Draft Status',
+      status: 'draft',
+      changes: newChanges.length > 0 ? newChanges : ['Policy updates and parameter tuning.']
+    };
+    setPolicyVersions(prev => [draft, ...prev]);
+    setShowDraftModal(false);
+    setNewVersion('');
+    setNewChanges([]);
+    toast.success('Draft Created', `Version ${newVersion} is now available in your version history.`);
+  };
 
   const getRiskColor = (tier: RiskTier) => {
     switch (tier) {
@@ -982,65 +1076,181 @@ export function ClientPolicy() {
       {activeTab === 'versions' && (
         <div className="space-y-6">
           <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Policy Version History</h3>
-            
-            <div className="space-y-4">
-              {policyVersions.map((version, index) => (
-                <div key={index} className={`p-6 rounded-lg border-2 ${
-                  version.status === 'active' ? 'border-green-500 bg-green-50' :
-                  version.status === 'draft' ? 'border-yellow-500 bg-yellow-50' :
-                  'border-gray-200 bg-gray-50'
-                }`}>
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <div className="flex items-center gap-3 mb-2">
-                        <h4 className="text-2xl font-bold text-gray-900">Version {version.version}</h4>
-                        <span className={`px-3 py-1 rounded-full text-sm font-bold ${
-                          version.status === 'active' ? 'bg-green-500 text-white' :
-                          version.status === 'draft' ? 'bg-yellow-500 text-white' :
-                          'bg-gray-400 text-white'
-                        }`}>
-                          {version.status.toUpperCase()}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-6 text-sm text-gray-600">
-                        <span>Effective: {version.effectiveDate.toLocaleDateString()}</span>
-                        <span>•</span>
-                        <span>Approved by: {version.approvedBy}</span>
-                      </div>
-                    </div>
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-xl font-bold text-gray-900">Policy Version History</h3>
+              {!policyVersions.some(v => v.status === 'draft' || v.status === 'review') && (
+                <Button 
+                  onClick={() => setShowDraftModal(true)}
+                  className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold"
+                >
+                  <Plus className="w-4 h-4 mr-1.5" />
+                  Create Policy Draft
+                </Button>
+              )}
+            </div>
 
+            {showDraftModal && (
+              <div className="mb-6 p-6 border-2 border-dashed border-indigo-200 bg-indigo-50/20 rounded-xl space-y-4">
+                <h4 className="text-lg font-bold text-indigo-900">New Policy Version Draft</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Version Number</label>
+                    <input 
+                      type="text" 
+                      placeholder="e.g. 3.3" 
+                      value={newVersion} 
+                      onChange={e => setNewVersion(e.target.value)}
+                      className="w-full px-3 py-2 border rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 font-medium"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Add Key Change</label>
                     <div className="flex gap-2">
-                      <Button size="sm" variant="outline">
-                        <Eye className="w-4 h-4 mr-2" />
-                        View Full
+                      <input 
+                        type="text" 
+                        placeholder="Describe a change..." 
+                        value={newChangeText} 
+                        onChange={e => setNewChangeText(e.target.value)}
+                        className="flex-1 px-3 py-2 border rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 font-medium"
+                      />
+                      <Button 
+                        onClick={() => {
+                          if (newChangeText.trim()) {
+                            setNewChanges(prev => [...prev, newChangeText.trim()]);
+                            setNewChangeText('');
+                          }
+                        }}
+                        className="bg-gray-800 hover:bg-gray-900 text-white font-semibold"
+                      >
+                        Add
                       </Button>
-                      <Button size="sm" variant="outline">
-                        <Download className="w-4 h-4 mr-2" />
-                        Download
-                      </Button>
-                      {version.status === 'archived' && (
-                        <Button size="sm" variant="outline">
-                          <RefreshCw className="w-4 h-4 mr-2" />
-                          Restore
-                        </Button>
-                      )}
                     </div>
                   </div>
+                </div>
 
-                  <div>
-                    <h5 className="font-semibold text-gray-900 mb-2">Key Changes:</h5>
-                    <ul className="space-y-1">
-                      {version.changes.map((change, changeIndex) => (
-                        <li key={changeIndex} className="text-sm text-gray-700 flex items-start">
-                          <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
-                          <span>{change}</span>
+                {newChanges.length > 0 && (
+                  <div className="space-y-1">
+                    <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Changes List</span>
+                    <ul className="space-y-1 bg-white p-3 border rounded-lg">
+                      {newChanges.map((ch, idx) => (
+                        <li key={idx} className="text-xs text-gray-700 font-medium flex items-center justify-between">
+                          <span>• {ch}</span>
+                          <button 
+                            onClick={() => setNewChanges(prev => prev.filter((_, i) => i !== idx))}
+                            className="text-red-500 hover:text-red-700 font-bold"
+                          >
+                            ✕
+                          </button>
                         </li>
                       ))}
                     </ul>
                   </div>
+                )}
+
+                <div className="flex justify-end gap-3 pt-2">
+                  <Button 
+                    onClick={() => setShowDraftModal(false)}
+                    variant="outline"
+                  >
+                    Cancel
+                  </Button>
+                  <Button 
+                    onClick={handleCreateDraft}
+                    className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold"
+                  >
+                    Save Draft
+                  </Button>
                 </div>
-              ))}
+              </div>
+            )}
+            
+            <div className="space-y-4">
+              {policyVersions.map((version, index) => {
+                const isDraft = version.status === 'draft';
+                const isReview = version.status === 'review';
+                const isActive = version.status === 'active';
+                const persona = getPersonaConfig(activePersona);
+                const canApprove = persona.title === 'Head of Compliance' || persona.role === 'partner';
+                
+                return (
+                  <div key={index} className={`p-6 rounded-lg border-2 ${
+                    isActive ? 'border-green-500 bg-green-50' :
+                    isReview ? 'border-indigo-400 bg-indigo-50/20' :
+                    isDraft ? 'border-yellow-500 bg-yellow-50/20' :
+                    'border-gray-200 bg-gray-50'
+                  }`}>
+                    <div className="flex items-start justify-between mb-4">
+                      <div>
+                        <div className="flex items-center gap-3 mb-2">
+                          <h4 className="text-2xl font-bold text-gray-900">Version {version.version}</h4>
+                          <span className={`px-3 py-1 rounded-full text-xs font-bold ${
+                            isActive ? 'bg-green-500 text-white' :
+                            isReview ? 'bg-indigo-600 text-white' :
+                            isDraft ? 'bg-yellow-500 text-yellow-800 border border-yellow-200' :
+                            'bg-gray-400 text-white'
+                          }`}>
+                            {version.status.toUpperCase() === 'REVIEW' ? 'PENDING APPROVAL' : version.status.toUpperCase()}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-6 text-sm text-gray-600">
+                          <span>{isActive ? 'Effective Date' : 'Created Date'}: {version.effectiveDate.toLocaleDateString()}</span>
+                          <span>•</span>
+                          <span>Approved by: {isActive ? version.approvedBy : 'Pending Sign-off'}</span>
+                        </div>
+                      </div>
+
+                      <div className="flex gap-2">
+                        {isDraft && (
+                          <Button 
+                            onClick={() => handleSubmitForReview(version.version)}
+                            className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs py-1 h-8"
+                          >
+                            Submit for Review
+                          </Button>
+                        )}
+                        {isReview && (
+                          <div className="flex flex-col items-end gap-1">
+                            <Button 
+                              onClick={() => handleApproveAndPublish(version.version)}
+                              disabled={!canApprove}
+                              className={`${
+                                canApprove ? 'bg-green-600 hover:bg-green-700' : 'bg-gray-300 cursor-not-allowed'
+                              } text-white font-semibold text-xs py-1 h-8`}
+                            >
+                              Approve & Publish
+                            </Button>
+                            {!canApprove && (
+                              <span className="text-[10px] text-red-500 font-semibold max-w-[200px] text-right">
+                                Requires Head of Compliance or Partner sign-off
+                              </span>
+                            )}
+                          </div>
+                        )}
+                        <Button size="sm" variant="outline" className="h-8">
+                          <Eye className="w-4 h-4 mr-2" />
+                          View Full
+                        </Button>
+                        <Button size="sm" variant="outline" className="h-8">
+                          <Download className="w-4 h-4 mr-2" />
+                          Download
+                        </Button>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h5 className="font-semibold text-gray-900 mb-2">Key Changes:</h5>
+                      <ul className="space-y-1">
+                        {version.changes.map((change, changeIndex) => (
+                          <li key={changeIndex} className="text-sm text-gray-700 flex items-start">
+                            <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                            <span>{change}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
 

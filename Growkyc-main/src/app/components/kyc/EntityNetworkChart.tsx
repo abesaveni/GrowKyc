@@ -159,7 +159,7 @@ export function EntityNetworkChart({ clientId, clientName }: EntityNetworkChartP
                 {people.map((personName, personIdx) => {
                   const personEntities = entitiesByPerson[personName];
                   const highestRisk = personEntities.reduce((max, e) => {
-                    const riskOrder = { 'Low': 1, 'Medium': 2, 'High': 3, 'Critical': 4 };
+                    const riskOrder: Record<string, number> = { 'Low': 1, 'Medium': 2, 'High': 3, 'Critical': 4 };
                     const currentRisk = riskOrder[e.entity.riskRating] || 0;
                     const maxRisk = riskOrder[max] || 0;
                     return currentRisk > maxRisk ? e.entity.riskRating : max;

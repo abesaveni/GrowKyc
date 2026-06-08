@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
@@ -124,9 +124,7 @@ export function HelpCenter() {
   };
 
   const handleContactSupport = () => {
-    toast.info('Opening support ticket...', {
-      description: 'Redirecting to support form'
-    });
+    toast.info('Opening support ticket...', 'Redirecting to support form');
   };
 
   const breadcrumbItems = [

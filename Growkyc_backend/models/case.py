@@ -14,8 +14,9 @@ OverrideReason` (unchanged in all consumers).
 
 from datetime import datetime, timezone
 
-from sqlalchemy import Column, DateTime, ForeignKey, Index, Integer, String, Text
+from sqlalchemy import Column, DateTime
 from sqlalchemy import Enum as SQLEnum
+from sqlalchemy import ForeignKey, Index, Integer, String, Text
 from sqlalchemy.orm import relationship
 
 from core.enums import CaseStatus
@@ -210,9 +211,7 @@ class ReviewIssue(Base):
     case = relationship("Case", back_populates="review_issues")
 
     # ---- Indexes ----
-    __table_args__ = (
-        Index("idx_review_issues_case_status", "case_id", "status"),
-    )
+    __table_args__ = (Index("idx_review_issues_case_status", "case_id", "status"),)
 
     def __repr__(self) -> str:
         return (

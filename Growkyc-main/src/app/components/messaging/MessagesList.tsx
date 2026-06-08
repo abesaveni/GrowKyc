@@ -112,15 +112,11 @@ export function MessagesList({ onSelectConversation }: MessagesListProps) {
 
   const handleDelete = (convId: string, participantName: string) => {
     setConversations(conversations.filter(c => c.id !== convId));
-    toast.success('Conversation deleted', {
-      description: `Chat with ${participantName}`
-    });
+    toast.success('Conversation deleted', `Chat with ${participantName}`);
   };
 
   const handleNewMessage = () => {
-    toast.info('New message', {
-      description: 'Select a user to start messaging'
-    });
+    toast.info('New message', 'Select a user to start messaging');
   };
 
   const handleClearFilters = () => {
@@ -253,10 +249,15 @@ export function MessagesList({ onSelectConversation }: MessagesListProps) {
                   ? "No messages match your filters"
                   : "Start a conversation to see it here"
               }
-              action={
+              actionLabel={
                 searchQuery || filterUnread
-                  ? { label: 'Clear Filters', onClick: handleClearFilters }
-                  : { label: 'New Message', onClick: handleNewMessage }
+                  ? 'Clear Filters'
+                  : 'New Message'
+              }
+              onAction={
+                searchQuery || filterUnread
+                  ? handleClearFilters
+                  : handleNewMessage
               }
             />
           ) : (

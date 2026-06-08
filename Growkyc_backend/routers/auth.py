@@ -8,22 +8,13 @@ import logging
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
-from core.exceptions import (
-    AuthenticationError,
-    DatabaseError,
-    DuplicateResourceError,
-    ValidationError,
-)
+from core.exceptions import (AuthenticationError, DatabaseError,
+                             DuplicateResourceError, ValidationError)
 from database import get_db
 from dependencies import get_current_user
 from models import User
-from schemas import (
-    PasswordChangeRequest,
-    TokenResponse,
-    UserLoginRequest,
-    UserRegisterRequest,
-    UserResponse,
-)
+from schemas import (PasswordChangeRequest, TokenResponse, UserLoginRequest,
+                     UserRegisterRequest, UserResponse)
 from services.auth_service import AuthService
 
 logger = logging.getLogger(__name__)
@@ -63,6 +54,7 @@ async def login(
         user = service.authenticate_user(request.email, request.password)
         access_token = service.create_access_token(
             user.id,
+            tenant_id=user.tenant_id,
             role=user.role.value if hasattr(user.role, "value") else user.role,
         )
 
@@ -124,6 +116,7 @@ async def refresh_token(
         user = service.get_current_user(
             service.create_access_token(
                 current_user.id,
+                tenant_id=current_user.tenant_id,
                 role=(
                     current_user.role.value
                     if hasattr(current_user.role, "value")
@@ -134,6 +127,7 @@ async def refresh_token(
 
         new_token = service.create_access_token(
             user.id,
+            tenant_id=user.tenant_id,
             role=user.role.value if hasattr(user.role, "value") else user.role,
         )
 

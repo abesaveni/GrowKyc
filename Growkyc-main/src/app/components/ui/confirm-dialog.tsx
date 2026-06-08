@@ -12,6 +12,7 @@ interface ConfirmDialogProps {
   cancelLabel?: string;
   variant?: 'danger' | 'warning' | 'info' | 'success';
   isLoading?: boolean;
+  children?: React.ReactNode;
 }
 
 export function ConfirmDialog({
@@ -23,7 +24,8 @@ export function ConfirmDialog({
   confirmLabel = 'Confirm',
   cancelLabel = 'Cancel',
   variant = 'warning',
-  isLoading = false
+  isLoading = false,
+  children
 }: ConfirmDialogProps) {
   if (!isOpen) return null;
 
@@ -67,7 +69,8 @@ export function ConfirmDialog({
           <div className="flex-1">
             <h3 className="text-lg font-semibold text-gray-900 mb-2">{title}</h3>
             <p className="text-sm text-gray-600 mb-6">{description}</p>
-            <div className="flex gap-3 justify-end">
+            {children}
+            <div className="flex gap-3 justify-end mt-6">
               <Button
                 variant="outline"
                 onClick={onClose}

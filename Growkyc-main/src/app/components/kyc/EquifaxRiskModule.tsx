@@ -30,7 +30,8 @@ import {
   Info,
   AlertCircle,
   TrendingDown,
-  Ban
+  Ban,
+  Edit
 } from 'lucide-react';
 
 type RiskTier = 'low' | 'medium' | 'high' | 'critical';

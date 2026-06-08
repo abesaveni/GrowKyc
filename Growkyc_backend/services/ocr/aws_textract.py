@@ -3,6 +3,7 @@ services/ocr/aws_textract.py
 ============================
 AWS Textract integration skeleton.
 """
+
 from services.ocr.base import BaseOCRProvider, OcrResult
 
 

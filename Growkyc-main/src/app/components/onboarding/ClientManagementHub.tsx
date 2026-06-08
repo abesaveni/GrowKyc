@@ -1049,7 +1049,7 @@ function AddClientModal({ onClose, onAdd }: { onClose: () => void; onAdd: (clien
                 </label>
                 <select
                   value={formData.status || ''}
-                  onChange={(e) => setFormData({ ...formData, status: e.target.value })}
+                  onChange={(e) => setFormData({ ...formData, status: e.target.value as 'active' | 'inactive' | 'prospect' })}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 >
                   <option value="">Select status</option>

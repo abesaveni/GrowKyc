@@ -36,6 +36,7 @@ import {
   PlayCircle
 } from 'lucide-react';
 import { toast } from '../../lib/toast';
+import { ClientsDB } from '../kyc/ClientsDatabase';
 
 interface SmartClientOnboardingProps {
   onBack: () => void;
@@ -194,6 +195,169 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
     toast.info('Finalizing onboarding...');
     
     setTimeout(() => {
+      // Determine client name
+      const name = clientType === 'individual' 
+        ? `${formData.firstName || 'John'} ${formData.lastName || 'Smith'}`.trim()
+        : (formData.companyName || 'Acme Pty Ltd');
+      
+      const nextId = (ClientsDB.getClients().length + 1).toString();
+      const currentDate = new Date().toISOString().split('T')[0];
+      const nextYearDate = new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0];
+
+      // Process uploaded files for identityData
+      const hasUploadedFiles = uploadedFiles.length > 0;
+      
+      const primaryDoc = uploadedFiles.find(file => 
+        file.name.toLowerCase().includes('passport') || 
+        file.name.toLowerCase().includes('birth') ||
+        file.name.toLowerCase().includes('citizenship')
+      ) || uploadedFiles[0];
+      
+      const secondaryDoc = uploadedFiles.find(file => 
+        file !== primaryDoc && (
+          file.name.toLowerCase().includes('license') || 
+          file.name.toLowerCase().includes('medicare')
+        )
+      ) || uploadedFiles.filter(file => file !== primaryDoc)[0];
+
+      const additionalDocs = uploadedFiles.filter(file => file !== primaryDoc && file !== secondaryDoc);
+
+      const newClient: any = {
+        id: nextId,
+        name: name,
+        entityType: clientType === 'individual' ? 'Individual' : clientType === 'company' ? 'Company' : clientType === 'trust' ? 'Trust' : clientType === 'partnership' ? 'Partnership' : 'Company',
+        status: 'Active',
+        country: formData.country || 'Australia',
+        industry: 'Wealth Management',
+        serviceType: 'Wealth Management',
+        clientGroup: 'New Onboard Group',
+        riskScores: {
+          overall: hasUploadedFiles ? 15 : 45,
+          aml: hasUploadedFiles ? 10 : 30,
+          financial: 18,
+          business: 12,
+          ownership: 0
+        },
+        quickStatus: {
+          identity: hasUploadedFiles ? 'Verified' : 'Pending',
+          aml: 'Clear',
+          entity: clientType === 'individual' ? 'N/A' : 'Active',
+          monitoring: 'Active'
+        },
+        lastReview: currentDate,
+        nextReview: nextYearDate,
+        identityData: {
+          primaryID: primaryDoc ? {
+            type: primaryDoc.name.toLowerCase().includes('license') 
+              ? 'Driver License' 
+              : primaryDoc.name.toLowerCase().includes('birth') 
+                ? 'Birth Certificate' 
+                : 'Passport',
+            number: 'PA' + Math.floor(1000000 + Math.random() * 9000000),
+            expiry: '2032-01-01',
+            verified: true
+          } : null,
+          secondaryID: secondaryDoc ? {
+            type: secondaryDoc.name.toLowerCase().includes('medicare') 
+              ? 'Medicare Card' 
+              : secondaryDoc.name.toLowerCase().includes('license')
+                ? 'Driver License'
+                : 'Birth Certificate',
+            number: 'MC' + Math.floor(1000000 + Math.random() * 9000000),
+            expiry: '2032-01-01',
+            verified: true
+          } : null,
+          additionalDocuments: additionalDocs.map((file, idx) => ({
+            type: file.name.toLowerCase().includes('statement') 
+              ? 'Bank Statement' 
+              : file.name.toLowerCase().includes('bill')
+                ? 'Utility Bill'
+                : 'Other Support Document',
+            number: 'AD' + Math.floor(1000000 + Math.random() * 9000000),
+            verified: true
+          })),
+          biometricStatus: hasUploadedFiles ? 'Passed' : 'Pending',
+          livenessCheck: hasUploadedFiles,
+          addressVerified: hasUploadedFiles,
+          greenIDScore: hasUploadedFiles ? 955 : 0,
+          infoTrackStatus: hasUploadedFiles ? 'Verified - High Confidence' : 'Not Started',
+          fraudFlags: []
+        },
+        amlData: {
+          sanctionsMatches: 0,
+          pepStatus: 'Not PEP',
+          adverseMediaHits: 0,
+          worldCheckStatus: 'Clear',
+          transactionMonitoring: 'Active',
+          riskRating: 'Low',
+          lastScreeningDate: currentDate
+        },
+        entityData: {
+          registrationDate: currentDate,
+          companyStatus: 'Active',
+          directors: [],
+          shareholders: []
+        },
+        ownershipData: {
+          ubos: [
+            { name: name, ownership: 100, verified: true, country: 'Australia' }
+          ],
+          ownershipStructureComplete: true,
+          complexStructure: false
+        },
+        financialData: {
+          bankAccounts: 1,
+          sourceOfFunds: 'Business operations',
+          sourceOfWealth: 'Investments',
+          estimatedWealth: '$1.5M',
+          transactionVolume: '$50K monthly',
+          highRiskTransactions: 0
+        },
+        legalData: {
+          serviceAgreementSigned: true,
+          termsAccepted: true,
+          privacyConsentGiven: true,
+          kycConsentDate: currentDate
+        },
+        documentsData: {
+          total: uploadedFiles.length,
+          verified: uploadedFiles.length,
+          pending: 0,
+          rejected: 0
+        },
+        monitoringData: { alertsLast30Days: 0, activeAlerts: 0, nameChanges: 0, addressChanges: 0, ownershipChanges: 0 },
+        austracData: {
+          smrsFiled: 0,
+          ttrsFiled: 0,
+          lastReportDate: '',
+          suspiciousActivity: false
+        },
+        decisionsData: {
+          onboardingDecision: 'Pending',
+          onboardingDate: currentDate,
+          approver: 'Awaiting Review',
+          riskAssessments: 0,
+          escalations: 0
+        }
+      };
+
+      ClientsDB.addClient(newClient);
+
+      // Save to logged activities
+      const activityLog = {
+        type: 'approval',
+        user: 'Head of Compliance',
+        action: `successfully onboarded client ${newClient.name}`,
+        time: 'Just now',
+        iconName: 'CheckCircle',
+        color: 'text-green-600'
+      };
+      const savedLogs = localStorage.getItem('growkyc_logged_activities');
+      const logs = savedLogs ? JSON.parse(savedLogs) : [];
+      logs.unshift(activityLog);
+      localStorage.setItem('growkyc_logged_activities', JSON.stringify(logs));
+      window.dispatchEvent(new CustomEvent('growkyc:activity_logged'));
+
       setProcessing(false);
       setCurrentStep('complete');
       toast.success('🎉 Client onboarded successfully!');
@@ -326,37 +490,68 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                         <label className="text-sm font-semibold text-gray-700 mb-2 block">
                           First Name *
                         </label>
-                        <Input placeholder="John" className="text-base" />
+                        <Input 
+                          placeholder="John" 
+                          className="text-base" 
+                          value={formData.firstName || ''} 
+                          onChange={e => setFormData({ ...formData, firstName: e.target.value })}
+                        />
                       </div>
                       <div>
                         <label className="text-sm font-semibold text-gray-700 mb-2 block">
                           Last Name *
                         </label>
-                        <Input placeholder="Smith" className="text-base" />
+                        <Input 
+                          placeholder="Smith" 
+                          className="text-base" 
+                          value={formData.lastName || ''} 
+                          onChange={e => setFormData({ ...formData, lastName: e.target.value })}
+                        />
                       </div>
                       <div>
                         <label className="text-sm font-semibold text-gray-700 mb-2 block">
                           Date of Birth *
                         </label>
-                        <Input type="date" className="text-base" />
+                        <Input 
+                          type="date" 
+                          className="text-base" 
+                          value={formData.dateOfBirth || ''} 
+                          onChange={e => setFormData({ ...formData, dateOfBirth: e.target.value })}
+                        />
                       </div>
                       <div>
                         <label className="text-sm font-semibold text-gray-700 mb-2 block">
                           Email *
                         </label>
-                        <Input type="email" placeholder="john.smith@email.com" className="text-base" />
+                        <Input 
+                          type="email" 
+                          placeholder="john.smith@email.com" 
+                          className="text-base" 
+                          value={formData.email || ''} 
+                          onChange={e => setFormData({ ...formData, email: e.target.value })}
+                        />
                       </div>
                       <div>
                         <label className="text-sm font-semibold text-gray-700 mb-2 block">
                           Mobile *
                         </label>
-                        <Input placeholder="0400 000 000" className="text-base" />
+                        <Input 
+                          placeholder="0400 000 000" 
+                          className="text-base" 
+                          value={formData.phone || ''} 
+                          onChange={e => setFormData({ ...formData, phone: e.target.value })}
+                        />
                       </div>
                       <div>
                         <label className="text-sm font-semibold text-gray-700 mb-2 block">
                           Residential Address *
                         </label>
-                        <Input placeholder="123 Main St, Sydney NSW 2000" className="text-base" />
+                        <Input 
+                          placeholder="123 Main St, Sydney NSW 2000" 
+                          className="text-base" 
+                          value={formData.address || ''} 
+                          onChange={e => setFormData({ ...formData, address: e.target.value })}
+                        />
                       </div>
                     </>
                   )}
@@ -367,14 +562,24 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                         <label className="text-sm font-semibold text-gray-700 mb-2 block">
                           Company Name *
                         </label>
-                        <Input placeholder="Acme Pty Ltd" className="text-base" />
+                        <Input 
+                          placeholder="Acme Pty Ltd" 
+                          className="text-base" 
+                          value={formData.companyName || ''} 
+                          onChange={e => setFormData({ ...formData, companyName: e.target.value })}
+                        />
                       </div>
                       <div>
                         <label className="text-sm font-semibold text-gray-700 mb-2 block">
                           ABN *
                         </label>
                         <div className="flex gap-2">
-                          <Input placeholder="51 123 456 789" className="text-base flex-1" />
+                          <Input 
+                            placeholder="51 123 456 789" 
+                            className="text-base flex-1" 
+                            value={formData.abn || ''} 
+                            onChange={e => setFormData({ ...formData, abn: e.target.value })}
+                          />
                           <Button variant="outline">
                             <Search className="w-4 h-4 mr-2" />
                             Lookup
@@ -386,13 +591,23 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                         <label className="text-sm font-semibold text-gray-700 mb-2 block">
                           ACN *
                         </label>
-                        <Input placeholder="123 456 789" className="text-base" />
+                        <Input 
+                          placeholder="123 456 789" 
+                          className="text-base" 
+                          value={formData.acn || ''} 
+                          onChange={e => setFormData({ ...formData, acn: e.target.value })}
+                        />
                       </div>
                       <div>
                         <label className="text-sm font-semibold text-gray-700 mb-2 block">
                           Registered Address *
                         </label>
-                        <Input placeholder="123 Business Ave, Sydney NSW 2000" className="text-base" />
+                        <Input 
+                          placeholder="123 Business Ave, Sydney NSW 2000" 
+                          className="text-base" 
+                          value={formData.address || ''} 
+                          onChange={e => setFormData({ ...formData, address: e.target.value })}
+                        />
                       </div>
                     </>
                   )}

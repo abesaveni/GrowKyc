@@ -29,61 +29,48 @@ DO NOT import model classes from individual sub-modules in application code.
 Always use: `from models import <ClassName>`
 """
 
+from models.alert import Alert  # noqa: F401
+from models.audit import AuditLog, KYCAuditLog  # noqa: F401
 # ---- Base (must be first) ----
 from models.base import Base  # noqa: F401
-
-# ---- Core infrastructure ----
-from models.tenant import Tenant  # noqa: F401
-
-# ---- Existing models (Phase 1 — migrated verbatim from monolith) ----
-from models.user import User  # noqa: F401
+from models.beneficial_owner import BeneficialOwner  # noqa: F401
+from models.case import (Approval, Case, OverrideReason,  # noqa: F401
+                         ReviewApproval, ReviewIssue)
+from models.case_assignments import CaseAssignment  # noqa: F401
+from models.case_comments import CaseComment  # noqa: F401
+from models.case_events import CaseEvent  # noqa: F401
+from models.case_evidence import CaseEvidence  # noqa: F401
+from models.case_sla import CaseSLA  # noqa: F401
+from models.case_snapshots import CaseSnapshot  # noqa: F401
 from models.client import Client  # noqa: F401
-from models.case import (  # noqa: F401
-    Approval,
-    Case,
-    OverrideReason,
-    ReviewApproval,
-    ReviewIssue,
-)
-from models.report import Report  # noqa: F401
-from models.kyc import KYC  # noqa: F401
 from models.document import Document  # noqa: F401
-from models.audit import AuditLog, KYCAuditLog  # noqa: F401
-from models.notification import Notification  # noqa: F401
+from models.document_intelligence import (DocumentExtraction,  # noqa: F401
+                                          DocumentFace, DocumentFraudCheck,
+                                          DocumentLiveness,
+                                          DocumentVerification)
+from models.edd_workflow import EDDWorkflow  # noqa: F401
+from models.entity_directors import EntityDirector  # noqa: F401
+from models.entity_profile import EntityProfile  # noqa: F401
 from models.evidence import Evidence  # noqa: F401
-
+from models.identity_document import IdentityDocument  # noqa: F401
 # ---- New enterprise models (Phase 1 additions) ----
 from models.individual_profile import IndividualProfile  # noqa: F401
-from models.entity_profile import EntityProfile  # noqa: F401
-from models.beneficial_owner import BeneficialOwner  # noqa: F401
-from models.entity_directors import EntityDirector  # noqa: F401
-from models.ownership_relationships import OwnershipRelationship  # noqa: F401
-from models.screening import ScreeningRecord  # noqa: F401
-from models.risk import RiskAssessment  # noqa: F401
-from models.alert import Alert  # noqa: F401
 from models.integration import Integration  # noqa: F401
-from models.edd_workflow import EDDWorkflow  # noqa: F401
-from models.case_events import CaseEvent  # noqa: F401
-from models.case_assignments import CaseAssignment  # noqa: F401
-from models.case_sla import CaseSLA  # noqa: F401
-from models.case_evidence import CaseEvidence  # noqa: F401
-from models.case_comments import CaseComment  # noqa: F401
-from models.case_snapshots import CaseSnapshot  # noqa: F401
-from models.regulatory import (  # noqa: F401
-    RegulatoryReport,
-    ReportSubmission,
-    ReportAcknowledgement,
-    EvidencePack,
-    EvidencePackItem,
-)
-from models.document_intelligence import (  # noqa: F401
-    DocumentExtraction,
-    DocumentVerification,
-    DocumentFraudCheck,
-    DocumentFace,
-    DocumentLiveness,
-)
-from models.identity_document import IdentityDocument  # noqa: F401
+from models.kyc import KYC  # noqa: F401
+from models.notification import Notification  # noqa: F401
+from models.ownership_relationships import OwnershipRelationship  # noqa: F401
+from models.regulatory import (EvidencePack, EvidencePackItem,  # noqa: F401
+                               RegulatoryReport, ReportAcknowledgement,
+                               ReportSubmission)
+from models.report import Report  # noqa: F401
+from models.risk import RiskAssessment  # noqa: F401
+from models.screening import ScreeningRecord  # noqa: F401
+# ---- Core infrastructure ----
+from models.tenant import Tenant  # noqa: F401
+# ---- Existing models (Phase 1 — migrated verbatim from monolith) ----
+from models.user import User  # noqa: F401
+from models.payment import Payment  # noqa: F401
+from core.enums import PaymentStatus  # noqa: F401
 
 __all__ = [
     # Base
@@ -133,4 +120,6 @@ __all__ = [
     "DocumentFace",
     "DocumentLiveness",
     "IdentityDocument",
+    "Payment",
+    "PaymentStatus",
 ]

@@ -115,9 +115,7 @@ export function MessageThread({ threadId = 'thread-001', recipientName = 'Sarah 
   };
 
   const handleAttachment = () => {
-    toast.info('Attachment feature', {
-      description: 'Select files to attach'
-    });
+    toast.info('Attachment feature', 'Select files to attach');
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {

@@ -15,6 +15,7 @@ import {
   Trash2
 } from 'lucide-react';
 import { toast } from 'sonner';
+import { jsPDF } from 'jspdf';
 
 interface InvoiceItem {
   description: string;
@@ -104,6 +105,140 @@ export function InvoicesPage({ onNavigate }: InvoicesPageProps) {
   const [invoices, setInvoices] = useState<Invoice[]>(mockInvoices);
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<string>('all');
+  const [selectedInvoiceForPreview, setSelectedInvoiceForPreview] = useState<Invoice | null>(null);
+
+  const handleDownloadPDF = (invoice: Invoice) => {
+    try {
+      const doc = new jsPDF();
+      
+      // Document Brand Styling
+      doc.setFillColor(19, 181, 234); // Brand primary color (#13B5EA)
+      doc.rect(0, 0, 210, 8, 'F');
+      
+      // Header Section
+      doc.setFont('Helvetica', 'bold');
+      doc.setFontSize(22);
+      doc.setTextColor(33, 37, 41);
+      doc.text('GrowKYC Compliance Invoice', 14, 25);
+      
+      doc.setFont('Helvetica', 'normal');
+      doc.setFontSize(10);
+      doc.setTextColor(108, 117, 125);
+      doc.text('Platform: growkyc.com | billing@growkyc.com', 14, 30);
+      
+      // Invoice Metadata Right Aligned
+      doc.setFont('Helvetica', 'bold');
+      doc.setFontSize(12);
+      doc.setTextColor(33, 37, 41);
+      doc.text(`INVOICE: ${invoice.invoiceNumber}`, 140, 25);
+      
+      doc.setFont('Helvetica', 'normal');
+      doc.setFontSize(10);
+      doc.setTextColor(73, 80, 87);
+      doc.text(`Date Created: ${invoice.date}`, 140, 31);
+      doc.text(`Due Date: ${invoice.dueDate}`, 140, 37);
+      
+      // Horizontal Line
+      doc.setDrawColor(222, 226, 230);
+      doc.line(14, 45, 196, 45);
+      
+      // Issuer and Billed-to details
+      doc.setFont('Helvetica', 'bold');
+      doc.setFontSize(10);
+      doc.setTextColor(33, 37, 41);
+      doc.text('ISSUER:', 14, 53);
+      doc.text('BILLED TO:', 105, 53);
+      
+      doc.setFont('Helvetica', 'normal');
+      doc.setTextColor(73, 80, 87);
+      doc.text('GrowKYC Pty Ltd\n120 Pitt Street, Sydney NSW 2000\nAustralia', 14, 59);
+      doc.text(`${invoice.client}\nCorporate KYC Target Client\nAustralia`, 105, 59);
+      
+      // Table Header Background
+      doc.setFillColor(248, 249, 250);
+      doc.rect(14, 80, 182, 8, 'F');
+      doc.setFont('Helvetica', 'bold');
+      doc.setTextColor(33, 37, 41);
+      doc.text('Description', 16, 85);
+      doc.text('Qty', 120, 85);
+      doc.text('Rate', 145, 85);
+      doc.text('Amount', 175, 85);
+      
+      doc.line(14, 88, 196, 88);
+      
+      // Table Content
+      let yOffset = 95;
+      invoice.items.forEach((item) => {
+        doc.setFont('Helvetica', 'normal');
+        doc.setTextColor(73, 80, 87);
+        doc.text(item.description, 16, yOffset);
+        doc.text(String(item.quantity), 120, yOffset);
+        doc.text(`$${item.rate.toLocaleString()}`, 145, yOffset);
+        doc.setFont('Helvetica', 'bold');
+        doc.setTextColor(33, 37, 41);
+        doc.text(`$${(item.quantity * item.rate).toLocaleString()}`, 175, yOffset);
+        yOffset += 8;
+      });
+      
+      doc.setDrawColor(222, 226, 230);
+      doc.line(14, yOffset, 196, yOffset);
+      yOffset += 8;
+      
+      // Totals Calculations
+      const subtotal = invoice.items.reduce((sum, item) => sum + (item.quantity * item.rate), 0);
+      const gst = subtotal * 0.1;
+      
+      doc.setFont('Helvetica', 'normal');
+      doc.setTextColor(108, 117, 125);
+      doc.text('Subtotal:', 140, yOffset);
+      doc.setFont('Helvetica', 'bold');
+      doc.setTextColor(73, 80, 87);
+      doc.text(`$${subtotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}`, 175, yOffset);
+      yOffset += 6;
+      
+      doc.setFont('Helvetica', 'normal');
+      doc.setTextColor(108, 117, 125);
+      doc.text('GST (10%):', 140, yOffset);
+      doc.setFont('Helvetica', 'bold');
+      doc.setTextColor(73, 80, 87);
+      doc.text(`$${gst.toLocaleString(undefined, { minimumFractionDigits: 2 })}`, 175, yOffset);
+      yOffset += 8;
+      
+      doc.setDrawColor(222, 226, 230);
+      doc.line(135, yOffset - 3, 196, yOffset - 3);
+      
+      doc.setFont('Helvetica', 'bold');
+      doc.setFontSize(11);
+      doc.setTextColor(19, 181, 234); // Brand primary color
+      doc.text('Total Amount:', 140, yOffset);
+      doc.text(`$${invoice.amount.toLocaleString(undefined, { minimumFractionDigits: 2 })}`, 175, yOffset);
+      
+      // Footer Term Note
+      yOffset += 20;
+      doc.setFont('Helvetica', 'italic');
+      doc.setFontSize(8);
+      doc.setTextColor(108, 117, 125);
+      doc.text('Please transfer funds to the designated corporate bank account within the due date period.', 14, yOffset);
+      doc.text('Thank you for choosing GrowKYC for your compliance operations.', 14, yOffset + 4);
+      
+      doc.save(`GrowKYC-${invoice.invoiceNumber}.pdf`);
+      toast.success(`PDF Statement for ${invoice.invoiceNumber} generated and downloaded.`);
+    } catch (error) {
+      console.error('PDF generation error:', error);
+      toast.error('Failed to generate PDF. Downloading text invoice fallback.');
+      
+      // Text fallback download
+      const content = `GrowKYC Compliance Invoice\n\nInvoice Number: ${invoice.invoiceNumber}\nClient: ${invoice.client}\nDate: ${invoice.date}\nDue Date: ${invoice.dueDate}\nTotal (inc GST): $${invoice.amount.toLocaleString()}\nStatus: ${invoice.status}`;
+      const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', `GrowKYC-${invoice.invoiceNumber}.txt`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
   
   // Modal State
   const [showCreateModal, setShowCreateModal] = useState(false);
@@ -264,7 +399,8 @@ export function InvoicesPage({ onNavigate }: InvoicesPageProps) {
     .reduce((sum, i) => sum + i.amount, 0);
 
   return (
-    <div className="space-y-6">
+    <div className="min-h-screen bg-gray-50 p-4 sm:p-8">
+      <div className="max-w-[2000px] mx-auto space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between pb-2 border-b border-gray-100">
         <div>
@@ -403,7 +539,7 @@ export function InvoicesPage({ onNavigate }: InvoicesPageProps) {
                           <Button
                             variant="ghost"
                             size="sm"
-                            onClick={() => toast.info(`Opening interactive preview for ${invoice.invoiceNumber}`)}
+                            onClick={() => setSelectedInvoiceForPreview(invoice)}
                             className="text-gray-500 hover:text-gray-700 hover:bg-gray-100"
                           >
                             <Eye className="w-4 h-4" />
@@ -411,7 +547,7 @@ export function InvoicesPage({ onNavigate }: InvoicesPageProps) {
                           <Button
                             variant="ghost"
                             size="sm"
-                            onClick={() => toast.success(`Downloading PDF statement for ${invoice.invoiceNumber}`)}
+                            onClick={() => handleDownloadPDF(invoice)}
                             className="text-gray-500 hover:text-gray-700 hover:bg-gray-100"
                           >
                             <Download className="w-4 h-4" />
@@ -633,6 +769,128 @@ export function InvoicesPage({ onNavigate }: InvoicesPageProps) {
           </Card>
         </div>
       )}
+
+      {/* Interactive Invoice Preview Modal */}
+      {selectedInvoiceForPreview && (
+        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4 overflow-y-auto animate-in fade-in duration-200">
+          <Card className="max-w-2xl w-full bg-white shadow-2xl border border-gray-150 rounded-2xl overflow-hidden animate-in slide-in-from-bottom-8 duration-300">
+            {/* Modal Header */}
+            <div className="bg-gradient-to-r from-gray-50 to-white border-b px-6 py-4 flex items-center justify-between">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-gray-400">Invoice Details</span>
+                <h3 className="text-xl font-bold text-gray-900 mt-0.5">{selectedInvoiceForPreview.invoiceNumber}</h3>
+              </div>
+              <div className="flex items-center gap-2">
+                {getStatusBadge(selectedInvoiceForPreview.status)}
+                <button 
+                  onClick={() => setSelectedInvoiceForPreview(null)}
+                  className="text-gray-400 hover:text-gray-600 hover:bg-gray-100 w-8 h-8 rounded-full flex items-center justify-center font-bold"
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+
+            {/* Modal Body */}
+            <div className="p-6 space-y-6">
+              {/* Addresses / Metadata */}
+              <div className="grid grid-cols-2 gap-6 pb-6 border-b border-gray-100">
+                <div>
+                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">Issued By</span>
+                  <div className="text-sm font-bold text-gray-800 mt-1">GrowKYC Pty Ltd</div>
+                  <div className="text-xs text-gray-500 mt-0.5">120 Pitt Street, Sydney NSW 2000</div>
+                  <div className="text-xs text-gray-500">billing@growkyc.com</div>
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">Billed To</span>
+                  <div className="text-sm font-bold text-gray-800 mt-1">{selectedInvoiceForPreview.client}</div>
+                  <div className="text-xs text-gray-500 mt-0.5">Corporate Client</div>
+                </div>
+              </div>
+
+              {/* Dates */}
+              <div className="grid grid-cols-2 gap-4 bg-gray-50 p-4 rounded-xl border border-gray-100 text-xs">
+                <div>
+                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">Date Issued</span>
+                  <div className="font-semibold text-gray-800 mt-0.5">{selectedInvoiceForPreview.date}</div>
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">Due Date</span>
+                  <div className="font-semibold text-gray-800 mt-0.5">{selectedInvoiceForPreview.dueDate}</div>
+                </div>
+              </div>
+
+              {/* Line Items */}
+              <div className="space-y-2">
+                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">Invoice Items</span>
+                <div className="border border-gray-200 rounded-xl overflow-hidden bg-white">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="bg-gray-50 border-b border-gray-200">
+                      <tr>
+                        <th className="px-4 py-2.5 text-xs font-bold text-gray-500">Description</th>
+                        <th className="px-4 py-2.5 text-xs font-bold text-gray-500 text-center w-16">Qty</th>
+                        <th className="px-4 py-2.5 text-xs font-bold text-gray-500 text-right w-24">Rate</th>
+                        <th className="px-4 py-2.5 text-xs font-bold text-gray-500 text-right w-28">Amount</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-100 text-xs">
+                      {selectedInvoiceForPreview.items.map((item, idx) => (
+                        <tr key={idx}>
+                          <td className="px-4 py-3 text-gray-700 font-medium">{item.description}</td>
+                          <td className="px-4 py-3 text-gray-600 text-center">{item.quantity}</td>
+                          <td className="px-4 py-3 text-gray-600 text-right">${item.rate.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
+                          <td className="px-4 py-3 text-gray-900 font-semibold text-right">${(item.quantity * item.rate).toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* Calculations Summary */}
+              <div className="flex justify-between items-start pt-4 border-t border-gray-100">
+                <div className="text-xs text-gray-500 max-w-[300px]">
+                  Thank you for your business. Please settle this invoice within the due date terms via bank transfer.
+                </div>
+                <div className="w-64 space-y-2 text-xs">
+                  <div className="flex justify-between text-gray-600">
+                    <span>Subtotal</span>
+                    <span className="font-semibold text-gray-800">${(selectedInvoiceForPreview.items.reduce((sum, item) => sum + (item.quantity * item.rate), 0)).toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+                  </div>
+                  <div className="flex justify-between text-gray-600">
+                    <span>GST (10%)</span>
+                    <span className="font-semibold text-gray-800">${(selectedInvoiceForPreview.items.reduce((sum, item) => sum + (item.quantity * item.rate), 0) * 0.1).toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+                  </div>
+                  <div className="border-t border-gray-200 my-1" />
+                  <div className="flex justify-between text-sm font-bold text-gray-900">
+                    <span>Total Amount</span>
+                    <span className="text-[#0E7C9E]">${selectedInvoiceForPreview.amount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Modal Footer */}
+            <div className="bg-gray-50 px-6 py-4 border-t flex items-center justify-end gap-2">
+              <Button 
+                variant="outline" 
+                onClick={() => setSelectedInvoiceForPreview(null)}
+                className="font-semibold"
+              >
+                Close
+              </Button>
+              <Button 
+                onClick={() => handleDownloadPDF(selectedInvoiceForPreview)}
+                className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] hover:from-[#13B5EA]/90 hover:to-[#0E7C9E]/90 text-white font-bold"
+              >
+                <Download className="w-4 h-4 mr-2" />
+                Download PDF
+              </Button>
+            </div>
+          </Card>
+        </div>
+      )}
+      </div>
     </div>
   );
 }

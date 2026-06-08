@@ -1,5 +1,5 @@
-import type { ProviderStatus } from '../../../models/providerStatus';
-import type { SanctionsProviderRawResponse, SanctionsProviderRequest } from '../../../adapters/sanctions/sanctionsTypes';
+import type { ProviderStatus } from '../../models/providerStatus';
+import type { SanctionsProviderRawResponse, SanctionsProviderRequest } from '../../adapters/sanctions/sanctionsTypes';
 
 export interface ISanctionsExecutionPort {
   getStatus(): Promise<ProviderStatus>;

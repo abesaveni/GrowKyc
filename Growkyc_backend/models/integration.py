@@ -13,8 +13,8 @@ Config stored as JSON — never store credentials here; use a secrets manager.
 
 from datetime import datetime, timezone
 
-from sqlalchemy import Column, DateTime, ForeignKey, Index, Integer, String, Text
-from sqlalchemy import JSON
+from sqlalchemy import (JSON, Column, DateTime, ForeignKey, Index, Integer,
+                        String, Text)
 from sqlalchemy.orm import relationship
 
 from models.base import Base
@@ -41,18 +41,24 @@ class Integration(Base):
 
     # ---- Provider identity ----
     provider_name = Column(
-        String(100), nullable=False, index=True,
+        String(100),
+        nullable=False,
+        index=True,
         comment="xero|austrac|asic|comply_advantage|refinitiv|stripe|pexa|custom",
     )
     provider_display_name = Column(String(255), nullable=True)
     integration_type = Column(
-        String(100), nullable=True,
+        String(100),
+        nullable=True,
         comment="accounting|regulatory|screening|payment|property|custom",
     )
 
     # ---- Status ----
     status = Column(
-        String(50), nullable=False, default="inactive", index=True,
+        String(50),
+        nullable=False,
+        default="inactive",
+        index=True,
         comment="active|inactive|error|pending_setup|suspended",
     )
     error_message = Column(Text, nullable=True)
@@ -61,7 +67,8 @@ class Integration(Base):
     # WARNING: Do NOT store API keys or secrets here.
     # Use AWS Secrets Manager / Azure Key Vault / HashiCorp Vault.
     config = Column(
-        JSON, nullable=True,
+        JSON,
+        nullable=True,
         comment=(
             "Non-sensitive config: base_url, org_id, webhook_url, "
             "api_version, feature_flags, etc."

@@ -10,19 +10,12 @@ from datetime import datetime, timedelta
 from jose import jwt
 from sqlalchemy.orm import Session
 
-from core.constants import (
-    ERROR_INVALID_EMAIL_PASSWORD,
-    ERROR_INVALID_PASSWORD,
-    ERROR_USER_INACTIVE,
-    MIN_PASSWORD_LENGTH,
-)
+from core.constants import (ERROR_INVALID_EMAIL_PASSWORD,
+                            ERROR_INVALID_PASSWORD, ERROR_USER_INACTIVE,
+                            MIN_PASSWORD_LENGTH)
 from core.enums import UserRole
-from core.exceptions import (
-    AuthenticationError,
-    DatabaseError,
-    DuplicateResourceError,
-    ValidationError,
-)
+from core.exceptions import (AuthenticationError, DatabaseError,
+                             DuplicateResourceError, ValidationError)
 from core.security import hash_password, verify_password
 from models import User
 

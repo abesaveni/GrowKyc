@@ -10,7 +10,8 @@ from typing import Any
 
 from celery import Celery, Task
 
-from core.tenant_context import set_correlation_id, set_tenant_id, clear_tenant_id
+from core.tenant_context import (clear_tenant_id, set_correlation_id,
+                                 set_tenant_id)
 
 logger = logging.getLogger(__name__)
 
@@ -19,7 +20,11 @@ celery_app = Celery(
     "kyc_worker",
     broker=os.getenv("CELERY_BROKER_URL", "redis://localhost:6379/0"),
     backend=os.getenv("CELERY_RESULT_BACKEND", "redis://localhost:6379/0"),
-    include=["tasks.screening_tasks", "tasks.notification_tasks", "tasks.document_tasks"],
+    include=[
+        "tasks.screening_tasks",
+        "tasks.notification_tasks",
+        "tasks.document_tasks",
+    ],
 )
 
 # Optional configuration
@@ -42,6 +47,7 @@ class TenantAwareTask(Task):
     Tasks inheriting from this MUST accept `tenant_id` and `correlation_id`
     in their kwargs if they need tenant context.
     """
+
     abstract = True
 
     def __call__(self, *args: Any, **kwargs: Any) -> Any:
@@ -62,5 +68,6 @@ class TenantAwareTask(Task):
         finally:
             # Always clear context after task completion
             clear_tenant_id()
+
 
 celery_app.Task = TenantAwareTask

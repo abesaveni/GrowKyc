@@ -12,7 +12,8 @@ subject to KYC/AML obligations under AustLII, FATF, and AUSTRAC guidelines.
 
 from datetime import datetime, timezone
 
-from sqlalchemy import Column, DateTime, ForeignKey, Index, Integer, String, Text
+from sqlalchemy import (Column, DateTime, ForeignKey, Index, Integer, String,
+                        Text)
 from sqlalchemy.orm import relationship
 
 from models.base import Base
@@ -49,7 +50,9 @@ class EntityProfile(Base):
     )
 
     # ---- Legal identity ----
-    legal_name = Column(String(500), nullable=False, comment="Full registered legal name")
+    legal_name = Column(
+        String(500), nullable=False, comment="Full registered legal name"
+    )
     trading_name = Column(String(500), nullable=True, comment="DBA / trading name")
     entity_type = Column(
         String(100),
@@ -70,8 +73,12 @@ class EntityProfile(Base):
     lei = Column(String(20), nullable=True, comment="Legal Entity Identifier")
 
     # ---- Business details ----
-    business_activity = Column(Text, nullable=True, comment="Primary business activity description")
-    industry_code = Column(String(20), nullable=True, comment="ANZSIC/NACE industry code")
+    business_activity = Column(
+        Text, nullable=True, comment="Primary business activity description"
+    )
+    industry_code = Column(
+        String(20), nullable=True, comment="ANZSIC/NACE industry code"
+    )
     annual_revenue_range = Column(String(100), nullable=True)
     number_of_employees = Column(Integer, nullable=True)
     website = Column(String(500), nullable=True)
@@ -88,7 +95,9 @@ class EntityProfile(Base):
 
     # ---- Regulatory flags ----
     is_regulated_entity = Column(
-        Integer, default=0, nullable=False,
+        Integer,
+        default=0,
+        nullable=False,
         comment="1 if subject to AUSTRAC, ASIC, or other regulatory oversight",
     )
     regulatory_body = Column(String(255), nullable=True)

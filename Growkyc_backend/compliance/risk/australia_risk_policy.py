@@ -3,6 +3,7 @@ compliance/risk/australia_risk_policy.py
 =========================================
 AUSTRAC-compliant risk policy for the Australian market.
 """
+
 from typing import Dict
 
 from compliance.risk.base_risk_policy import BaseRiskPolicy
@@ -51,12 +52,12 @@ class AustraliaRiskPolicy(BaseRiskPolicy):
     def factor_weights(self) -> Dict[str, float]:
         return {
             "pep": 40.0,
-            "sanctions": 100.0,         # Always maxes out to critical
+            "sanctions": 100.0,  # Always maxes out to critical
             "geography_high": 40.0,
             "geography_medium": 20.0,
-            "document_fraud": 45.0,     # High weight per AUSTRAC guidance
-            "ubo_complexity": 20.0,     # Complex trust structures penalized
-            "business_structure": 15.0, # Shell/non-operating companies flagged
+            "document_fraud": 45.0,  # High weight per AUSTRAC guidance
+            "ubo_complexity": 20.0,  # Complex trust structures penalized
+            "business_structure": 15.0,  # Shell/non-operating companies flagged
             "transaction_risk": 20.0,
             "income_high": 15.0,
         }

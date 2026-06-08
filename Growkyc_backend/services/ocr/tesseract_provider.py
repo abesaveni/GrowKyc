@@ -3,6 +3,7 @@ services/ocr/tesseract_provider.py
 ==================================
 PyTesseract fallback integration skeleton.
 """
+
 from services.ocr.base import BaseOCRProvider, OcrResult
 
 

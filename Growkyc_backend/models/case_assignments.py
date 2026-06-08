@@ -3,6 +3,7 @@ models/case_assignments.py
 ==========================
 Tracks queue ownership and assignments for enterprise Case orchestration.
 """
+
 from datetime import datetime, timezone
 
 from sqlalchemy import Column, DateTime, ForeignKey, Index, Integer, String
@@ -47,7 +48,10 @@ class CaseAssignment(Base):
         nullable=False,
         default="triage",
         index=True,
-        comment="triage|analyst_review|mlro_review|escalated|overdue|high_risk|pending_evidence",
+        comment=(
+            "triage|analyst_review|mlro_review|escalated|overdue|"
+            "high_risk|pending_evidence"
+        ),
     )
 
     # ---- Timestamps ----
@@ -67,9 +71,7 @@ class CaseAssignment(Base):
     case = relationship("Case", backref="assignment", uselist=False)
     assignee = relationship("User", foreign_keys=[assigned_to_id])
 
-    __table_args__ = (
-        Index("idx_case_assign_queue", "tenant_id", "queue_name"),
-    )
+    __table_args__ = (Index("idx_case_assign_queue", "tenant_id", "queue_name"),)
 
     def __repr__(self):
         return f"<CaseAssignment(case_id={self.case_id}, queue={self.queue_name})>"

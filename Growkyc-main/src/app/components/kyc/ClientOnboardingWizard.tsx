@@ -17,9 +17,11 @@ import {
   Unlock,
   Scale,
   FileText,
-  X
+  X,
+  Send
 } from 'lucide-react';
 import { InfoTrackIntegration } from '../integrations/InfoTrackIntegration';
+import { ClientsDB } from './ClientsDatabase';
 
 interface BeneficialOwner {
   id: string;
@@ -31,7 +33,7 @@ interface BeneficialOwner {
 
 export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
   const [currentStep, setCurrentStep] = useState(1);
-  const [clientType, setClientType] = useState<'individual' | 'company' | 'trust' | 'partnership' | 'government'>('individual');
+  const [clientType, setClientType] = useState<'individual' | 'company' | 'trust' | 'partnership' | 'government'>('company');
   
   const [basicDetails, setBasicDetails] = useState({
     name: '',
@@ -64,6 +66,212 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
   const [approvalRequired, setApprovalRequired] = useState(false);
   const [showInfoTrack, setShowInfoTrack] = useState(false);
 
+  const handleComplete = () => {
+    const nextId = (ClientsDB.getClients().length + 1).toString();
+    const currentDate = new Date().toISOString().split('T')[0];
+    const reviewDays = riskRating === 'high' ? 30 : riskRating === 'medium' ? 180 : 365;
+    const nextReviewDate = new Date(new Date().setDate(new Date().getDate() + reviewDays)).toISOString().split('T')[0];
+
+    const newClient: any = {
+      id: nextId,
+      name: basicDetails.name || 'Sarah Mitchell',
+      entityType: clientType.charAt(0).toUpperCase() + clientType.slice(1),
+      status: 'Active',
+      country: basicDetails.countryOfResidence || 'Australia',
+      industry: 'Wealth Management',
+      serviceType: 'Wealth Management',
+      clientGroup: 'New Onboard Group',
+      riskScores: {
+        overall: riskRating === 'high' ? 70 : riskRating === 'medium' ? 45 : 20,
+        aml: riskRating === 'high' ? 65 : riskRating === 'medium' ? 35 : 15,
+        financial: 30,
+        business: 25,
+        ownership: 20
+      },
+      quickStatus: {
+        identity: greenIDStatus === 'verified' ? 'Verified' : 'Pending',
+        aml: screeningResults.sanctions.matches > 0 ? 'SANCTIONS' : 'Clear',
+        entity: clientType === 'individual' ? 'N/A' : 'Active',
+        monitoring: 'Active'
+      },
+      lastReview: currentDate,
+      nextReview: nextReviewDate,
+      identityData: {
+        primaryID: { type: 'Passport', number: 'PA' + Math.floor(1000000 + Math.random() * 9000000), expiry: '2032-01-01', verified: true },
+        biometricStatus: greenIDStatus === 'verified' ? 'Passed' : 'Pending',
+        livenessCheck: true,
+        addressVerified: true,
+        greenIDScore: 925,
+        infoTrackStatus: 'Verified - High Confidence',
+        fraudFlags: []
+      },
+      amlData: {
+        sanctionsMatches: screeningResults.sanctions.matches,
+        pepStatus: screeningResults.pep.matches > 0 ? 'Domestic PEP' : 'Not PEP',
+        adverseMediaHits: screeningResults.adverseMedia.matches,
+        worldCheckStatus: screeningResults.sanctions.matches > 0 ? 'PEP Match' : 'Clear',
+        transactionMonitoring: 'Active',
+        riskRating: riskRating.charAt(0).toUpperCase() + riskRating.slice(1),
+        lastScreeningDate: currentDate
+      },
+      entityData: {
+        registrationDate: currentDate,
+        companyStatus: 'Active',
+        directors: [],
+        shareholders: []
+      },
+      ownershipData: {
+        ubos: beneficialOwners.map(bo => ({ name: bo.name, ownership: bo.ownership, verified: true, country: 'Australia' })),
+        ownershipStructureComplete: true,
+        complexStructure: false
+      },
+      financialData: {
+        bankAccounts: 1,
+        sourceOfFunds: 'Business operations',
+        sourceOfWealth: 'Investments',
+        estimatedWealth: '$1.5M',
+        transactionVolume: '$50K monthly',
+        highRiskTransactions: 0
+      },
+      legalData: {
+        serviceAgreementSigned: true,
+        termsAccepted: true,
+        privacyConsentGiven: true,
+        kycConsentDate: currentDate
+      },
+      documentsData: {
+        total: riskRating === 'high' ? 5 : riskRating === 'medium' ? 4 : 4,
+        verified: riskRating === 'high' ? 2 : riskRating === 'medium' ? 3 : 4,
+        pending: riskRating === 'high' ? 3 : riskRating === 'medium' ? 1 : 0,
+        rejected: 0
+      },
+      monitoringData: { alertsLast30Days: 0, activeAlerts: 0, nameChanges: 0, addressChanges: 0, ownershipChanges: 0 }
+    };
+
+    ClientsDB.addClient(newClient);
+
+    // Save to logged activities
+    const activityLog = {
+      type: 'approval',
+      user: 'Head of Compliance',
+      action: `successfully onboarded client ${newClient.name}`,
+      time: 'Just now',
+      iconName: 'CheckCircle',
+      color: 'text-green-600'
+    };
+    const savedLogs = localStorage.getItem('growkyc_logged_activities');
+    const logs = savedLogs ? JSON.parse(savedLogs) : [];
+    logs.unshift(activityLog);
+    localStorage.setItem('growkyc_logged_activities', JSON.stringify(logs));
+    window.dispatchEvent(new CustomEvent('growkyc:activity_logged'));
+
+    alert(`🎉 Successfully onboarded client: ${newClient.name}!`);
+    if (onClose) onClose();
+  };
+
+  const handleSendForApproval = () => {
+    const nextId = (ClientsDB.getClients().length + 1).toString();
+    const currentDate = new Date().toISOString().split('T')[0];
+    const reviewDays = 30; // High risk review cycle is 30 days
+    const nextReviewDate = new Date(new Date().setDate(new Date().getDate() + reviewDays)).toISOString().split('T')[0];
+
+    const newClient: any = {
+      id: nextId,
+      name: basicDetails.name || 'Sarah Mitchell',
+      entityType: clientType.charAt(0).toUpperCase() + clientType.slice(1),
+      status: 'Under Review',
+      country: basicDetails.countryOfResidence || 'Australia',
+      industry: 'Wealth Management',
+      serviceType: 'Wealth Management',
+      clientGroup: 'New Onboard Group',
+      riskScores: {
+        overall: 70,
+        aml: 65,
+        financial: 30,
+        business: 25,
+        ownership: 20
+      },
+      quickStatus: {
+        identity: greenIDStatus === 'verified' ? 'Verified' : 'Pending',
+        aml: screeningResults.sanctions.matches > 0 ? 'SANCTIONS' : 'Clear',
+        entity: clientType === 'individual' ? 'N/A' : 'Active',
+        monitoring: 'Active'
+      },
+      lastReview: currentDate,
+      nextReview: nextReviewDate,
+      identityData: {
+        primaryID: { type: 'Passport', number: 'PA' + Math.floor(1000000 + Math.random() * 9000000), expiry: '2032-01-01', verified: true },
+        biometricStatus: greenIDStatus === 'verified' ? 'Passed' : 'Pending',
+        livenessCheck: true,
+        addressVerified: true,
+        greenIDScore: 925,
+        infoTrackStatus: 'Verified - High Confidence',
+        fraudFlags: []
+      },
+      amlData: {
+        sanctionsMatches: screeningResults.sanctions.matches,
+        pepStatus: screeningResults.pep.matches > 0 ? 'Domestic PEP' : 'Not PEP',
+        adverseMediaHits: screeningResults.adverseMedia.matches,
+        worldCheckStatus: screeningResults.sanctions.matches > 0 ? 'PEP Match' : 'Clear',
+        transactionMonitoring: 'Active',
+        riskRating: 'High',
+        lastScreeningDate: currentDate
+      },
+      entityData: {
+        registrationDate: currentDate,
+        companyStatus: 'Active',
+        directors: [],
+        shareholders: []
+      },
+      ownershipData: {
+        ubos: beneficialOwners.map(bo => ({ name: bo.name, ownership: bo.ownership, verified: true, country: 'Australia' })),
+        ownershipStructureComplete: true,
+        complexStructure: false
+      },
+      financialData: {
+        bankAccounts: 1,
+        sourceOfFunds: 'Business operations',
+        sourceOfWealth: 'Investments',
+        estimatedWealth: '$1.5M',
+        transactionVolume: '$50K monthly',
+        highRiskTransactions: 0
+      },
+      legalData: {
+        serviceAgreementSigned: true,
+        termsAccepted: true,
+        privacyConsentGiven: true,
+        kycConsentDate: currentDate
+      },
+      documentsData: {
+        total: 5,
+        verified: 2,
+        pending: 3,
+        rejected: 0
+      },
+      monitoringData: { alertsLast30Days: 0, activeAlerts: 0, nameChanges: 0, addressChanges: 0, ownershipChanges: 0 }
+    };
+
+    ClientsDB.addClient(newClient);
+
+    // Save to logged activities
+    const activityLog = {
+      type: 'review',
+      user: 'Head of Compliance',
+      action: `sent high-risk client ${newClient.name} for senior approval`,
+      time: 'Just now',
+      iconName: 'AlertTriangle',
+      color: 'text-amber-600'
+    };
+    const savedLogs = localStorage.getItem('growkyc_logged_activities');
+    const logs = savedLogs ? JSON.parse(savedLogs) : [];
+    logs.unshift(activityLog);
+    localStorage.setItem('growkyc_logged_activities', JSON.stringify(logs));
+    window.dispatchEvent(new CustomEvent('growkyc:activity_logged'));
+
+    alert(`⚠️ High-risk client ${newClient.name} submitted for senior approval!`);
+    if (onClose) onClose();
+  };
+
   const steps = [
     { num: 1, title: 'Client Type', icon: User },
     { num: 2, title: 'Basic Details', icon: FileText },
@@ -79,11 +287,25 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
   };
 
   const simulateScreening = () => {
-    // Simulate screening checks
+    // Load settings from localStorage to check which bots are enabled
+    const getStored = (key: string, fallback: any) => {
+      try {
+        const val = localStorage.getItem(`grow_settings_${key}`);
+        return val ? JSON.parse(val) : fallback;
+      } catch {
+        return fallback;
+      }
+    };
+    const botSettings = getStored('bot_settings', {});
+    
+    const pepEnabled = botSettings['PEP Screening Bot'] !== false;
+    const sanctionsEnabled = botSettings['Sanctions Screening Bot'] !== false;
+    const adverseMediaEnabled = botSettings['Adverse Media Screening Bot'] !== false;
+
     setScreeningResults({
-      sanctions: { status: 'clear', matches: 0 },
-      pep: { status: 'clear', matches: 0 },
-      adverseMedia: { status: 'clear', matches: 0 }
+      sanctions: { status: sanctionsEnabled ? 'clear' : 'bypassed', matches: 0 },
+      pep: { status: pepEnabled ? 'clear' : 'bypassed', matches: 0 },
+      adverseMedia: { status: adverseMediaEnabled ? 'clear' : 'bypassed', matches: 0 }
     });
   };
 
@@ -91,19 +313,63 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
     const factors: string[] = [];
     let risk: 'low' | 'medium' | 'high' = 'low';
 
-    // Example risk logic
+    // Load settings from localStorage
+    const getStored = (key: string, fallback: any) => {
+      try {
+        const val = localStorage.getItem(`grow_settings_${key}`);
+        return val ? JSON.parse(val) : fallback;
+      } catch {
+        return fallback;
+      }
+    };
+
+    const ownershipThreshold = getStored('ownership_threshold', 24);
+    const controlThreshold = getStored('control_threshold', 50);
+    const highRiskThreshold = getStored('high_risk_threshold', 10);
+    const botSettings = getStored('bot_settings', {});
+
+    const pepEnabled = botSettings['PEP Screening Bot'] !== false;
+    const sanctionsEnabled = botSettings['Sanctions Screening Bot'] !== false;
+
     if (clientType === 'trust') {
-      factors.push('Complex structure');
+      factors.push('Complex structure (Trust entity)');
       risk = 'medium';
     }
 
-    if (basicDetails.countryOfResidence !== 'Australia') {
-      factors.push('Foreign resident');
-      risk = risk === 'low' ? 'medium' : 'high';
+    if (basicDetails.countryOfResidence && basicDetails.countryOfResidence !== 'Australia') {
+      factors.push(`Foreign resident jurisdiction: ${basicDetails.countryOfResidence}`);
+      risk = 'high';
     }
 
-    if (beneficialOwners.some(bo => bo.ownership >= 50)) {
-      factors.push('Concentrated ownership');
+    // Beneficial ownership screening based on settings threshold
+    const significantBOs = beneficialOwners.filter(bo => bo.ownership >= ownershipThreshold);
+    if (significantBOs.length > 0) {
+      factors.push(`Beneficial owner(s) exceed ownership threshold of ${ownershipThreshold}%`);
+      if (ownershipThreshold < 20) {
+        risk = 'high';
+      } else if (risk === 'low') {
+        risk = 'medium';
+      }
+    }
+
+    // Control threshold flag based on settings
+    const controllingBOs = beneficialOwners.filter(bo => bo.ownership >= controlThreshold || bo.controlFlag);
+    if (controllingBOs.length > 0) {
+      factors.push(`Ultimate controlling interest exceeds threshold of ${controlThreshold}%`);
+      if (controlThreshold < 40) {
+        risk = 'high';
+      } else if (risk === 'low') {
+        risk = 'medium';
+      }
+    }
+
+    if (!pepEnabled) {
+      factors.push('PEP Screening Bot is disabled in settings - Manual review required');
+      risk = 'high';
+    }
+    if (!sanctionsEnabled) {
+      factors.push('Sanctions Screening Bot is disabled in settings - Manual review required');
+      risk = 'high';
     }
 
     setRiskFactors(factors);
@@ -159,8 +425,8 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 overflow-y-auto p-4">
-      <div className="bg-white rounded-lg max-w-6xl w-full my-8">
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl transition-all">
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b">
           <div>
@@ -181,8 +447,8 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
         </div>
 
         {/* Progress Steps */}
-        <div className="p-6 border-b bg-gray-50">
-          <div className="flex items-center justify-between">
+        <div className="p-6 border-b bg-gray-50 overflow-x-auto">
+          <div className="flex items-center justify-between min-w-[600px]">
             {steps.map((step, index) => {
               const Icon = step.icon;
               const isActive = step.num === currentStep;
@@ -191,19 +457,19 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
               return (
                 <React.Fragment key={step.num}>
                   <div className="flex flex-col items-center">
-                    <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold transition-colors mb-2 ${
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold transition-colors mb-1 ${
                       isComplete ? 'bg-green-600 text-white' :
                       isActive ? 'bg-blue-600 text-white' :
                       'bg-gray-200 text-gray-600'
                     }`}>
-                      {isComplete ? <CheckCircle className="w-6 h-6" /> : <Icon className="w-6 h-6" />}
+                      {isComplete ? <CheckCircle className="w-5 h-5" /> : <Icon className="w-5 h-5" />}
                     </div>
-                    <span className={`text-xs font-semibold ${isActive ? 'text-blue-600' : 'text-gray-600'}`}>
+                    <span className={`text-[10px] font-semibold ${isActive ? 'text-blue-600' : 'text-gray-600'}`}>
                       {step.title}
                     </span>
                   </div>
                   {index < steps.length - 1 && (
-                    <div className={`flex-1 h-1 mx-2 rounded transition-colors ${
+                    <div className={`flex-1 h-1 mx-1 rounded transition-colors ${
                       isComplete ? 'bg-green-600' : 'bg-gray-200'
                     }`} />
                   )}
@@ -214,7 +480,7 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
         </div>
 
         {/* Content */}
-        <div className="p-6 min-h-[500px]">
+        <div className="p-6 overflow-y-auto flex-1 min-h-[300px]">
           {/* Step 1: Client Type */}
           {currentStep === 1 && (
             <div className="space-y-6">
@@ -222,9 +488,8 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Select Client Type</h3>
                 <p className="text-gray-600">Choose the type of entity you're onboarding</p>
               </div>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-2 gap-4">
                 {[
-                  { type: 'individual', label: 'Individual', icon: User, description: 'Natural person' },
                   { type: 'company', label: 'Company', icon: Building2, description: 'Pty Ltd, Public Co' },
                   { type: 'trust', label: 'Trust', icon: Shield, description: 'Family, Unit, Discretionary' },
                   { type: 'partnership', label: 'Partnership', icon: Users, description: 'General, Limited' },
@@ -235,7 +500,7 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
                     <button
                       key={option.type}
                       onClick={() => setClientType(option.type as any)}
-                      className={`p-6 rounded-lg border-2 text-left transition-all hover:shadow-md ${
+                      className={`p-6 rounded-lg border-2 text-left relative transition-all hover:shadow-md ${
                         clientType === option.type
                           ? 'border-blue-500 bg-blue-50'
                           : 'border-gray-200 hover:border-blue-300'
@@ -579,51 +844,113 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
               </div>
 
               <div className="grid grid-cols-3 gap-4">
-                <div className="bg-white border-2 border-green-200 rounded-lg p-6">
+                {/* Sanctions card */}
+                <div className={`border-2 rounded-lg p-6 bg-white ${
+                  screeningResults.sanctions.status === 'bypassed' 
+                    ? 'border-amber-200 bg-amber-50/20' 
+                    : 'border-green-200'
+                }`}>
                   <div className="flex items-center justify-between mb-4">
-                    <Lock className="w-8 h-8 text-green-600" />
-                    <CheckCircle className="w-6 h-6 text-green-600" />
+                    <Lock className={`w-8 h-8 ${screeningResults.sanctions.status === 'bypassed' ? 'text-amber-500' : 'text-green-600'}`} />
+                    {screeningResults.sanctions.status === 'bypassed' ? (
+                      <AlertTriangle className="w-6 h-6 text-amber-500" />
+                    ) : (
+                      <CheckCircle className="w-6 h-6 text-green-600" />
+                    )}
                   </div>
                   <h4 className="font-bold text-gray-900 mb-2">Sanctions</h4>
-                  <p className="text-3xl font-bold text-green-600 mb-1">{screeningResults.sanctions.matches}</p>
-                  <p className="text-sm text-gray-600">Matches found</p>
-                  <span className="inline-block px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold mt-3">
-                    CLEAR
+                  <p className={`text-3xl font-bold mb-1 ${screeningResults.sanctions.status === 'bypassed' ? 'text-amber-600' : 'text-green-600'}`}>
+                    {screeningResults.sanctions.status === 'bypassed' ? '—' : screeningResults.sanctions.matches}
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    {screeningResults.sanctions.status === 'bypassed' ? 'Screening disabled' : 'Matches found'}
+                  </p>
+                  <span className={`inline-block px-3 py-1 rounded-full text-sm font-semibold mt-3 ${
+                    screeningResults.sanctions.status === 'bypassed' 
+                      ? 'bg-amber-100 text-amber-700' 
+                      : 'bg-green-100 text-green-700'
+                  }`}>
+                    {screeningResults.sanctions.status === 'bypassed' ? 'BYPASSED' : 'CLEAR'}
                   </span>
                 </div>
 
-                <div className="bg-white border-2 border-green-200 rounded-lg p-6">
+                {/* PEP check card */}
+                <div className={`border-2 rounded-lg p-6 bg-white ${
+                  screeningResults.pep.status === 'bypassed' 
+                    ? 'border-amber-200 bg-amber-50/20' 
+                    : 'border-green-200'
+                }`}>
                   <div className="flex items-center justify-between mb-4">
-                    <Shield className="w-8 h-8 text-green-600" />
-                    <CheckCircle className="w-6 h-6 text-green-600" />
+                    <Shield className={`w-8 h-8 ${screeningResults.pep.status === 'bypassed' ? 'text-amber-500' : 'text-green-600'}`} />
+                    {screeningResults.pep.status === 'bypassed' ? (
+                      <AlertTriangle className="w-6 h-6 text-amber-500" />
+                    ) : (
+                      <CheckCircle className="w-6 h-6 text-green-600" />
+                    )}
                   </div>
                   <h4 className="font-bold text-gray-900 mb-2">PEP Check</h4>
-                  <p className="text-3xl font-bold text-green-600 mb-1">{screeningResults.pep.matches}</p>
-                  <p className="text-sm text-gray-600">Matches found</p>
-                  <span className="inline-block px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold mt-3">
-                    CLEAR
+                  <p className={`text-3xl font-bold mb-1 ${screeningResults.pep.status === 'bypassed' ? 'text-amber-600' : 'text-green-600'}`}>
+                    {screeningResults.pep.status === 'bypassed' ? '—' : screeningResults.pep.matches}
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    {screeningResults.pep.status === 'bypassed' ? 'Screening disabled' : 'Matches found'}
+                  </p>
+                  <span className={`inline-block px-3 py-1 rounded-full text-sm font-semibold mt-3 ${
+                    screeningResults.pep.status === 'bypassed' 
+                      ? 'bg-amber-100 text-amber-700' 
+                      : 'bg-green-100 text-green-700'
+                  }`}>
+                    {screeningResults.pep.status === 'bypassed' ? 'BYPASSED' : 'CLEAR'}
                   </span>
                 </div>
 
-                <div className="bg-white border-2 border-green-200 rounded-lg p-6">
+                {/* Adverse Media card */}
+                <div className={`border-2 rounded-lg p-6 bg-white ${
+                  screeningResults.adverseMedia.status === 'bypassed' 
+                    ? 'border-amber-200 bg-amber-50/20' 
+                    : 'border-green-200'
+                }`}>
                   <div className="flex items-center justify-between mb-4">
-                    <AlertTriangle className="w-8 h-8 text-green-600" />
-                    <CheckCircle className="w-6 h-6 text-green-600" />
+                    <AlertTriangle className={`w-8 h-8 ${screeningResults.adverseMedia.status === 'bypassed' ? 'text-amber-500' : 'text-green-600'}`} />
+                    {screeningResults.adverseMedia.status === 'bypassed' ? (
+                      <AlertTriangle className="w-6 h-6 text-amber-500" />
+                    ) : (
+                      <CheckCircle className="w-6 h-6 text-green-600" />
+                    )}
                   </div>
                   <h4 className="font-bold text-gray-900 mb-2">Adverse Media</h4>
-                  <p className="text-3xl font-bold text-green-600 mb-1">{screeningResults.adverseMedia.matches}</p>
-                  <p className="text-sm text-gray-600">Matches found</p>
-                  <span className="inline-block px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold mt-3">
-                    CLEAR
+                  <p className={`text-3xl font-bold mb-1 ${screeningResults.adverseMedia.status === 'bypassed' ? 'text-amber-600' : 'text-green-600'}`}>
+                    {screeningResults.adverseMedia.status === 'bypassed' ? '—' : screeningResults.adverseMedia.matches}
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    {screeningResults.adverseMedia.status === 'bypassed' ? 'Screening disabled' : 'Matches found'}
+                  </p>
+                  <span className={`inline-block px-3 py-1 rounded-full text-sm font-semibold mt-3 ${
+                    screeningResults.adverseMedia.status === 'bypassed' 
+                      ? 'bg-amber-100 text-amber-700' 
+                      : 'bg-green-100 text-green-700'
+                  }`}>
+                    {screeningResults.adverseMedia.status === 'bypassed' ? 'BYPASSED' : 'CLEAR'}
                   </span>
                 </div>
               </div>
 
-              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                <p className="text-green-900 font-semibold">
-                  ✓ All screening checks passed. No adverse findings detected.
-                </p>
-              </div>
+              {screeningResults.sanctions.status === 'bypassed' || 
+              screeningResults.pep.status === 'bypassed' || 
+              screeningResults.adverseMedia.status === 'bypassed' ? (
+                <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+                  <p className="text-amber-900 font-semibold flex items-center gap-2">
+                    <AlertTriangle className="w-5 h-5 text-amber-600" />
+                    Warning: Some automated screening bots are disabled in the KYC configuration settings. Bypassed screenings require manual investigation.
+                  </p>
+                </div>
+              ) : (
+                <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                  <p className="text-green-900 font-semibold">
+                    ✓ All screening checks completed successfully. No adverse findings detected.
+                  </p>
+                </div>
+              )}
             </div>
           )}
 
@@ -710,7 +1037,7 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
                   <p className="text-red-700 mb-6">
                     This high-risk client cannot be activated without senior manager approval.
                   </p>
-                  <Button className="bg-red-600 hover:bg-red-700">
+                  <Button className="bg-red-600 hover:bg-red-700" onClick={handleSendForApproval}>
                     <Send className="w-4 h-4 mr-2" />
                     Send for Approval
                   </Button>
@@ -742,7 +1069,7 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
                         <p className="font-bold text-green-700">Verified</p>
                       </div>
                     </div>
-                    <Button className="w-full bg-green-600 hover:bg-green-700 py-6 text-lg">
+                    <Button className="w-full bg-green-600 hover:bg-green-700 py-6 text-lg" onClick={handleComplete}>
                       <Unlock className="w-5 h-5 mr-2" />
                       Activate Client
                     </Button>
@@ -788,6 +1115,7 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
             <Button
               className="bg-green-600 hover:bg-green-700"
               disabled={approvalRequired}
+              onClick={handleComplete}
             >
               Complete Onboarding
               <CheckCircle className="w-4 h-4 ml-2" />

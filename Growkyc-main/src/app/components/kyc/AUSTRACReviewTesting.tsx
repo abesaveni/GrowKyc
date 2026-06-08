@@ -14,7 +14,8 @@ import {
   Search,
   Eye,
   Lock,
-  Activity
+  Activity,
+  Scale
 } from 'lucide-react';
 
 interface ChecklistItem {

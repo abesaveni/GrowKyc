@@ -155,15 +155,11 @@ export function SupportTickets() {
       description: ''
     });
 
-    toast.success('Support ticket created', {
-      description: `Ticket ${ticket.id} has been submitted`
-    });
+    toast.success('Support ticket created', `Ticket ${ticket.id} has been submitted`);
   };
 
   const handleViewTicket = (ticketId: string) => {
-    toast.info('Opening ticket details...', {
-      description: ticketId
-    });
+    toast.info('Opening ticket details...', ticketId);
   };
 
   const handleClearFilters = () => {
@@ -283,10 +279,15 @@ export function SupportTickets() {
                   ? "No tickets match your filters"
                   : "You haven't created any support tickets yet"
               }
-              action={
+              actionLabel={
                 searchQuery || statusFilter !== 'all'
-                  ? { label: 'Clear Filters', onClick: handleClearFilters }
-                  : { label: 'Create Ticket', onClick: () => setShowNewTicketModal(true) }
+                  ? 'Clear Filters'
+                  : 'Create Ticket'
+              }
+              onAction={
+                searchQuery || statusFilter !== 'all'
+                  ? handleClearFilters
+                  : () => setShowNewTicketModal(true)
               }
             />
           ) : (

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
+import { useAuth } from '../../../context/AuthContext';
 import {
   X,
   Upload,
@@ -12,10 +13,18 @@ import {
   AlertTriangle,
   FileText,
   Users,
-  TrendingUp,
   DollarSign,
-  Eye
+  Eye,
+  UserPlus,
 } from 'lucide-react';
+import { ClientsDB } from '../kyc/ClientsDatabase';
+import {
+  saveManualCase,
+  getActivePersonaName,
+  createClientFromManualCase,
+  logComplianceActivity,
+} from './complianceCaseUtils';
+import { toast } from '../../lib/toast';
 
 interface CaseCreationModalProps {
   isOpen: boolean;
@@ -26,25 +35,53 @@ interface CaseCreationModalProps {
 export function CaseCreationModal({ isOpen, onClose, onSuccess }: CaseCreationModalProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedClient, setSelectedClient] = useState<string | null>(null);
+  const [newClientName, setNewClientName] = useState('');
+  const [newClientType, setNewClientType] = useState<'individual' | 'company' | 'trust'>('company');
+  const [useNewClient, setUseNewClient] = useState(false);
   const [caseType, setCaseType] = useState<string>('');
   const [urgency, setUrgency] = useState<string>('medium');
   const [reason, setReason] = useState<string>('');
   const [attachments, setAttachments] = useState<File[]>([]);
+  const [clients, setClients] = useState(() => ClientsDB.getClients());
+
+  useEffect(() => {
+    if (!isOpen) return;
+    setClients(ClientsDB.getClients());
+    return ClientsDB.subscribe(setClients);
+  }, [isOpen]);
+
+  const resetForm = () => {
+    setSearchTerm('');
+    setSelectedClient(null);
+    setNewClientName('');
+    setNewClientType('company');
+    setUseNewClient(false);
+    setCaseType('');
+    setUrgency('medium');
+    setReason('');
+    setAttachments([]);
+  };
+
+  const handleClose = () => {
+    resetForm();
+    onClose();
+  };
 
   if (!isOpen) return null;
 
-  // Sample clients for search
-  const clients = [
-    { id: '1', name: 'ABC Enterprises Pty Ltd', type: 'company', abn: '12 345 678 901' },
-    { id: '2', name: 'Innovation Partners Trust', type: 'trust', abn: '98 765 432 100' },
-    { id: '3', name: 'David Williams', type: 'individual', dob: '1985-03-15' },
-    { id: '4', name: 'TechCorp Pty Ltd', type: 'company', abn: '11 222 333 444' },
-    { id: '5', name: 'Melbourne Family Trust', type: 'trust', abn: '55 666 777 888' }
-  ];
+  const allClients = clients.map((c) => ({
+    id: c.id,
+    name: c.name,
+    type: (c.entityType || 'Company').toLowerCase(),
+    abn: c.abn,
+    acn: c.acn,
+  }));
 
-  const filteredClients = clients.filter(client =>
-    client.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    ('abn' in client && client.abn.includes(searchTerm))
+  const filteredClients = allClients.filter(
+    (client) =>
+      client.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (client.abn && client.abn.includes(searchTerm)) ||
+      (client.acn && client.acn.includes(searchTerm))
   );
 
   const caseTypes = [
@@ -56,7 +93,7 @@ export function CaseCreationModal({ isOpen, onClose, onSuccess }: CaseCreationMo
     { value: 'sof', label: 'Source of Funds', icon: DollarSign, color: 'amber' },
     { value: 'fraud', label: 'Fraud / Identity', icon: AlertTriangle, color: 'pink' },
     { value: 'legal', label: 'Legal / Court', icon: FileText, color: 'gray' },
-    { value: 'manual', label: 'Manual Referral', icon: Eye, color: 'blue' }
+    { value: 'manual', label: 'Manual Referral', icon: Eye, color: 'blue' },
   ];
 
   const selectedCaseTypeClasses: Record<string, string> = {
@@ -67,7 +104,7 @@ export function CaseCreationModal({ isOpen, onClose, onSuccess }: CaseCreationMo
     amber: 'border-amber-500 bg-amber-50',
     pink: 'border-pink-500 bg-pink-50',
     gray: 'border-gray-500 bg-gray-50',
-    blue: 'border-blue-500 bg-blue-50'
+    blue: 'border-blue-500 bg-blue-50',
   };
 
   const iconColorClasses: Record<string, string> = {
@@ -78,14 +115,14 @@ export function CaseCreationModal({ isOpen, onClose, onSuccess }: CaseCreationMo
     amber: 'text-amber-600',
     pink: 'text-pink-600',
     gray: 'text-gray-600',
-    blue: 'text-blue-600'
+    blue: 'text-blue-600',
   };
 
   const urgencyClasses: Record<string, string> = {
     red: 'border-red-500 bg-red-50',
     orange: 'border-orange-500 bg-orange-50',
     amber: 'border-amber-500 bg-amber-50',
-    green: 'border-green-500 bg-green-50'
+    green: 'border-green-500 bg-green-50',
   };
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -94,26 +131,78 @@ export function CaseCreationModal({ isOpen, onClose, onSuccess }: CaseCreationMo
     }
   };
 
-  const handleSubmit = () => {
-    if (onSuccess) {
-      const client = clients.find(c => c.id === selectedClient);
-      const clientName = client ? client.name : 'Unknown';
-      const clientType = client ? (client.type as any) : 'company';
+  const canSubmit =
+    caseType &&
+    reason.trim() &&
+    (useNewClient ? newClientName.trim() : selectedClient);
 
-      onSuccess({
-        id: `CASE-2026-${Math.floor(100 + Math.random() * 900)}`,
-        clientName,
-        clientType,
-        caseType: caseType as any,
-        triggerSource: 'Manual Referral',
-        riskLevel: (urgency as any) || 'medium',
-        status: 'new',
-        assignedTo: 'Sarah Johnson',
-        lastUpdated: new Date().toISOString().replace('T', ' ').substring(0, 16),
-        slaHours: urgency === 'critical' ? 24 : urgency === 'high' ? 48 : urgency === 'medium' ? 72 : 120,
-        slaRemaining: urgency === 'critical' ? 24 : urgency === 'high' ? 48 : urgency === 'medium' ? 72 : 120,
-      });
+  const handleSubmit = () => {
+    if (!canSubmit) {
+      toast.error('Please complete all required fields');
+      return;
     }
+
+    const caseTypeLabels: Record<string, string> = {
+      aml_alert: 'AML Alert',
+      pep: 'PEP Match',
+      adverse_media: 'Adverse Media',
+      sanctions: 'Sanctions Match',
+      ownership: 'Ownership Issue',
+      sof: 'EDD / Source of Funds',
+      fraud: 'Fraud / Identity',
+      legal: 'Legal / Court',
+      manual: 'Manual Referral',
+    };
+
+    let clientId = selectedClient || '';
+    let clientName = 'Unknown';
+    let clientType: 'individual' | 'company' | 'trust' = 'company';
+
+    if (useNewClient) {
+      const created = createClientFromManualCase(newClientName.trim(), newClientType, urgency);
+      ClientsDB.addClient(created);
+      clientId = created.id;
+      clientName = created.name;
+      clientType = newClientType;
+      logComplianceActivity(`onboarded client ${created.name} via manual case referral`, 'UserPlus', 'text-blue-600');
+    } else {
+      const client = allClients.find((c) => c.id === selectedClient);
+      clientName = client?.name || 'Unknown';
+      clientType =
+        client?.type === 'individual' ? 'individual' : client?.type === 'trust' ? 'trust' : 'company';
+      ClientsDB.updateClient(clientId, { status: 'Under Review' });
+    }
+
+    const slaHours = urgency === 'critical' ? 24 : urgency === 'high' ? 48 : urgency === 'medium' ? 72 : 120;
+    const newCaseId = `CASE-2026-${Math.floor(100 + Math.random() * 900)}`;
+    const now = new Date().toISOString().replace('T', ' ').substring(0, 16);
+
+    const payload = {
+      id: newCaseId,
+      clientId,
+      clientName,
+      clientType,
+      caseType: caseTypeLabels[caseType] || caseType,
+      triggerSource: 'Manual Referral',
+      riskLevel: (urgency as 'low' | 'medium' | 'high' | 'critical') || 'medium',
+      status: 'new' as const,
+      assignedTo: getActivePersonaName(),
+      created: now,
+      lastUpdated: now,
+      slaHours,
+      slaRemaining: slaHours,
+      reason: reason.trim(),
+      attachmentNames: attachments.map((f) => f.name),
+    };
+
+    saveManualCase(payload);
+    logComplianceActivity(`created manual case ${newCaseId} for ${clientName}`, 'AlertTriangle', 'text-red-600');
+    toast.success('Manual case created', `${newCaseId} — ${clientName}`);
+
+    if (onSuccess) {
+      onSuccess(payload);
+    }
+    resetForm();
     onClose();
   };
 
@@ -127,7 +216,7 @@ export function CaseCreationModal({ isOpen, onClose, onSuccess }: CaseCreationMo
               Create Manual Case
             </CardTitle>
             <Button
-              onClick={onClose}
+              onClick={handleClose}
               className="bg-white/20 border-2 border-white/30 text-white hover:bg-white/30"
             >
               <X className="w-5 h-5" />
@@ -140,40 +229,117 @@ export function CaseCreationModal({ isOpen, onClose, onSuccess }: CaseCreationMo
             <label className="block text-sm font-bold text-gray-900 mb-3">
               1. Select Client / Entity <span className="text-red-600">*</span>
             </label>
-            <div className="relative mb-4">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Search by client name or ABN..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
-              />
+
+            <div className="flex gap-2 mb-4">
+              <Button
+                type="button"
+                size="sm"
+                variant={!useNewClient ? 'default' : 'outline'}
+                onClick={() => {
+                  setUseNewClient(false);
+                  setNewClientName('');
+                }}
+              >
+                Existing Client
+              </Button>
+              <Button
+                type="button"
+                size="sm"
+                variant={useNewClient ? 'default' : 'outline'}
+                onClick={() => {
+                  setUseNewClient(true);
+                  setSelectedClient(null);
+                  if (searchTerm.trim()) setNewClientName(searchTerm.trim());
+                }}
+              >
+                <UserPlus className="w-4 h-4 mr-1" />
+                New Client
+              </Button>
             </div>
-            <div className="max-h-60 overflow-y-auto border-2 border-gray-300 rounded-lg">
-              {filteredClients.map((client) => (
-                <button
-                  key={client.id}
-                  onClick={() => setSelectedClient(client.id)}
-                  className={`w-full p-4 flex items-center gap-3 hover:bg-blue-50 transition-colors border-b border-gray-200 ${
-                    selectedClient === client.id ? 'bg-blue-100 border-l-4 border-l-blue-600' : ''
-                  }`}
-                >
-                  {client.type === 'individual' ? (
-                    <User className="w-6 h-6 text-gray-600" />
+
+            {useNewClient ? (
+              <div className="space-y-3 p-4 border-2 border-blue-200 rounded-lg bg-blue-50">
+                <input
+                  type="text"
+                  placeholder="Enter new client / entity name..."
+                  value={newClientName}
+                  onChange={(e) => setNewClientName(e.target.value)}
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <div className="flex gap-2">
+                  {(['individual', 'company', 'trust'] as const).map((t) => (
+                    <button
+                      key={t}
+                      type="button"
+                      onClick={() => setNewClientType(t)}
+                      className={`px-4 py-2 rounded-lg border-2 capitalize text-sm font-semibold ${
+                        newClientType === t ? 'border-blue-600 bg-blue-100 text-blue-900' : 'border-gray-300 bg-white'
+                      }`}
+                    >
+                      {t}
+                    </button>
+                  ))}
+                </div>
+                <p className="text-xs text-blue-800">
+                  A new client record will be created and linked to this case. Total clients on the dashboard will update automatically.
+                </p>
+              </div>
+            ) : (
+              <>
+                <div className="relative mb-4">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <input
+                    type="text"
+                    placeholder="Search by client name or ABN..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="w-full pl-10 pr-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                  />
+                </div>
+                <div className="max-h-60 overflow-y-auto border-2 border-gray-300 rounded-lg">
+                  {filteredClients.length === 0 ? (
+                    <div className="p-6 text-center text-gray-500">
+                      <p className="mb-2">No clients found{searchTerm ? ` for "${searchTerm}"` : ''}.</p>
+                      <Button
+                        type="button"
+                        size="sm"
+                        onClick={() => {
+                          setUseNewClient(true);
+                          setNewClientName(searchTerm.trim());
+                        }}
+                      >
+                        <UserPlus className="w-4 h-4 mr-1" />
+                        Create new client{searchTerm.trim() ? `: ${searchTerm.trim()}` : ''}
+                      </Button>
+                    </div>
                   ) : (
-                    <Building className="w-6 h-6 text-gray-600" />
+                    filteredClients.map((client) => (
+                      <button
+                        key={client.id}
+                        type="button"
+                        onClick={() => setSelectedClient(client.id)}
+                        className={`w-full p-4 flex items-center gap-3 hover:bg-blue-50 transition-colors border-b border-gray-200 ${
+                          selectedClient === client.id ? 'bg-blue-100 border-l-4 border-l-blue-600' : ''
+                        }`}
+                      >
+                        {client.type === 'individual' ? (
+                          <User className="w-6 h-6 text-gray-600" />
+                        ) : (
+                          <Building className="w-6 h-6 text-gray-600" />
+                        )}
+                        <div className="flex-1 text-left">
+                          <p className="font-bold text-gray-900">{client.name}</p>
+                          <p className="text-sm text-gray-600">
+                            {client.abn ? `ABN: ${client.abn}` : client.acn ? `ACN: ${client.acn}` : client.type}
+                          </p>
+                        </div>
+                        <Badge className="bg-gray-100 text-gray-700 capitalize">{client.type}</Badge>
+                      </button>
+                    ))
                   )}
-                  <div className="flex-1 text-left">
-                    <p className="font-bold text-gray-900">{client.name}</p>
-                    <p className="text-sm text-gray-600">
-                      {'abn' in client ? `ABN: ${client.abn}` : `DOB: ${client.dob}`}
-                    </p>
-                  </div>
-                  <Badge className="bg-gray-100 text-gray-700 capitalize">{client.type}</Badge>
-                </button>
-              ))}
-            </div>
+                </div>
+              </>
+            )}
           </div>
 
           {/* Step 2: Case Type */}
@@ -187,6 +353,7 @@ export function CaseCreationModal({ isOpen, onClose, onSuccess }: CaseCreationMo
                 return (
                   <button
                     key={type.value}
+                    type="button"
                     onClick={() => setCaseType(type.value)}
                     className={`p-4 rounded-lg border-2 text-left hover:shadow-md transition-all ${
                       caseType === type.value
@@ -214,10 +381,11 @@ export function CaseCreationModal({ isOpen, onClose, onSuccess }: CaseCreationMo
                 { value: 'critical', label: 'Critical', color: 'red', sla: '24 hours' },
                 { value: 'high', label: 'High', color: 'orange', sla: '48 hours' },
                 { value: 'medium', label: 'Medium', color: 'amber', sla: '72 hours' },
-                { value: 'low', label: 'Low', color: 'green', sla: '5 days' }
+                { value: 'low', label: 'Low', color: 'green', sla: '5 days' },
               ].map((level) => (
                 <button
                   key={level.value}
+                  type="button"
                   onClick={() => setUrgency(level.value)}
                   className={`p-4 rounded-lg border-2 text-center hover:shadow-md transition-all ${
                     urgency === level.value
@@ -244,26 +412,15 @@ export function CaseCreationModal({ isOpen, onClose, onSuccess }: CaseCreationMo
               className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
               placeholder="Provide detailed reason for creating this case..."
             />
-            <p className="text-xs text-gray-600 mt-2">
-              Be specific. Include: What was observed? Why is it a concern? What action is needed?
-            </p>
           </div>
 
           {/* Step 5: Attachments */}
           <div>
-            <label className="block text-sm font-bold text-gray-900 mb-3">
-              5. Attachments (Optional)
-            </label>
+            <label className="block text-sm font-bold text-gray-900 mb-3">5. Attachments (Optional)</label>
             <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-gray-400 transition-colors">
               <Upload className="w-12 h-12 text-gray-400 mx-auto mb-3" />
               <p className="text-gray-700 mb-2">Drag and drop files here, or click to browse</p>
-              <input
-                type="file"
-                multiple
-                onChange={handleFileUpload}
-                className="hidden"
-                id="file-upload"
-              />
+              <input type="file" multiple onChange={handleFileUpload} className="hidden" id="file-upload" />
               <label
                 htmlFor="file-upload"
                 className="inline-block px-4 py-2 bg-blue-600 text-white rounded-lg cursor-pointer hover:bg-blue-700"
@@ -278,7 +435,6 @@ export function CaseCreationModal({ isOpen, onClose, onSuccess }: CaseCreationMo
                     <div className="flex items-center gap-2">
                       <FileText className="w-5 h-5 text-blue-600" />
                       <span className="text-sm text-gray-900">{file.name}</span>
-                      <span className="text-xs text-gray-600">({(file.size / 1024).toFixed(1)} KB)</span>
                     </div>
                     <Button
                       variant="outline"
@@ -293,14 +449,13 @@ export function CaseCreationModal({ isOpen, onClose, onSuccess }: CaseCreationMo
             )}
           </div>
 
-          {/* Action Buttons */}
           <div className="flex items-center justify-between pt-6 border-t-2 border-gray-200">
-            <Button variant="outline" onClick={onClose} className="border-2">
+            <Button variant="outline" onClick={handleClose} className="border-2">
               Cancel
             </Button>
             <Button
               onClick={handleSubmit}
-              disabled={!selectedClient || !caseType || !reason}
+              disabled={!canSubmit}
               className="bg-red-600 hover:bg-red-700 text-white text-lg px-8 py-6 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <AlertTriangle className="w-5 h-5 mr-2" />

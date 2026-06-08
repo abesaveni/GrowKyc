@@ -11,12 +11,17 @@ import {
   CheckCircle,
   AlertTriangle,
   Filter,
-  Printer
+  Printer,
+  ArrowLeft
 } from 'lucide-react';
 
 type ReportType = 'active_cases' | 'submitted' | 'not_submitted' | 'overdue' | 'qa_exceptions' | 'case_pack' | 'board_summary';
 
-export function AuditEvidencePack() {
+interface AuditEvidencePackProps {
+  onBack?: () => void;
+}
+
+export function AuditEvidencePack({ onBack }: AuditEvidencePackProps = {}) {
   const [selectedReport, setSelectedReport] = useState<ReportType>('active_cases');
   const [selectedCase, setSelectedCase] = useState<string | null>(null);
 
@@ -108,6 +113,12 @@ export function AuditEvidencePack() {
         <div className="bg-gradient-to-r from-red-900 via-red-800 to-orange-900 rounded-lg p-6 text-white shadow-xl">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
+              {onBack && (
+                <Button variant="ghost" onClick={onBack} className="bg-white/10 border-2 border-white/20 text-white hover:bg-white/20">
+                  <ArrowLeft className="w-5 h-5 mr-2" />
+                  Back
+                </Button>
+              )}
               <div className="w-14 h-14 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border-2 border-white/20">
                 <FileText className="w-8 h-8" />
               </div>

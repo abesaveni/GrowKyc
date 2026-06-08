@@ -34,7 +34,8 @@ import {
   Settings,
   ChevronRight,
   Zap,
-  Target
+  Target,
+  Database
 } from 'lucide-react';
 
 type ClientView = 'overview' | 'documents' | 'transactions' | 'compliance';

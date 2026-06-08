@@ -68,9 +68,7 @@ export function SecuritySettings({ onBack }: SecuritySettingsProps) {
     
     setIsSaving(false);
     
-    toast.success('Password changed successfully!', {
-      description: 'You can now sign in with your new password'
-    });
+    toast.success('Password changed successfully!', 'You can now sign in with your new password');
     
     // Clear form
     setCurrentPassword('');
@@ -92,14 +90,10 @@ export function SecuritySettings({ onBack }: SecuritySettingsProps) {
     
     if (pendingAction === 'enable') {
       setTwoFactorEnabled(true);
-      toast.success('Two-factor authentication enabled!', {
-        description: 'Scan the QR code with your authenticator app'
-      });
+      toast.success('Two-factor authentication enabled!', 'Scan the QR code with your authenticator app');
     } else {
       setTwoFactorEnabled(false);
-      toast.success('Two-factor authentication disabled', {
-        description: 'Your account security has been reduced'
-      });
+      toast.success('Two-factor authentication disabled', 'Your account security has been reduced');
     }
     
     setPendingAction(null);
@@ -116,9 +110,7 @@ export function SecuritySettings({ onBack }: SecuritySettingsProps) {
     
     await new Promise(resolve => setTimeout(resolve, 1000));
     
-    toast.success('All other sessions signed out', {
-      description: 'You remain signed in on this device'
-    });
+    toast.success('All other sessions signed out', 'You remain signed in on this device');
   };
 
   const breadcrumbItems = [
@@ -410,8 +402,8 @@ export function SecuritySettings({ onBack }: SecuritySettingsProps) {
 
       {/* Confirm 2FA Toggle Dialog */}
       <ConfirmDialog
-        open={confirm2FAOpen}
-        onOpenChange={setConfirm2FAOpen}
+        isOpen={confirm2FAOpen}
+        onClose={() => setConfirm2FAOpen(false)}
         title={pendingAction === 'enable' ? 'Enable Two-Factor Authentication?' : 'Disable Two-Factor Authentication?'}
         description={
           pendingAction === 'enable'
@@ -420,18 +412,18 @@ export function SecuritySettings({ onBack }: SecuritySettingsProps) {
         }
         confirmLabel={pendingAction === 'enable' ? 'Enable 2FA' : 'Disable 2FA'}
         onConfirm={handleConfirm2FA}
-        variant={pendingAction === 'disable' ? 'destructive' : 'default'}
+        variant={pendingAction === 'disable' ? 'danger' : 'info'}
       />
 
       {/* Confirm Sign Out All Dialog */}
       <ConfirmDialog
-        open={confirmSignOutAllOpen}
-        onOpenChange={setConfirmSignOutAllOpen}
+        isOpen={confirmSignOutAllOpen}
+        onClose={() => setConfirmSignOutAllOpen(false)}
         title="Sign Out All Other Sessions?"
         description="This will sign you out from all other devices. You will remain signed in on this device."
         confirmLabel="Sign Out All"
         onConfirm={handleSignOutAll}
-        variant="destructive"
+        variant="danger"
       />
     </div>
   );

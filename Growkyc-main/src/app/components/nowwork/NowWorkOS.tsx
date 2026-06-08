@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { 
   LayoutDashboard, 
   Clock, 
@@ -784,7 +784,7 @@ export function NowWorkOS({ onSwitchModule }: NowWorkOSProps) {
       case 'time-tracking':
         return renderTimeTracking();
       case 'jobs':
-        return renderJobs(activeJobs, setCurrentPage);
+        return renderJobs(activeJobs, (page: string) => setCurrentPage(page as Page));
       case 'contracts':
         return renderContracts(showCreateContractForm, setShowCreateContractForm);
       case 'billing':

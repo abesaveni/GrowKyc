@@ -42,9 +42,7 @@ export function EnhancedDecisionTab({ decision }: EnhancedDecisionTabProps) {
 
   const handleViewReport = () => {
     // kept for backward compatibility (shows quick toast)
-    toast.info('Full Report Viewer', {
-      description: 'Opening comprehensive KYC report...'
-    });
+    toast.info('Full Report Viewer', 'Opening comprehensive KYC report...');
   };
 
   const handleExportPDF = async () => {
@@ -56,9 +54,7 @@ export function EnhancedDecisionTab({ decision }: EnhancedDecisionTabProps) {
     
     toast.dismiss();
     setIsExporting(false);
-    toast.success('PDF Export Complete', {
-      description: 'The decision summary report has been downloaded.'
-    });
+    toast.success('PDF Export Complete', 'The decision summary report has been downloaded.');
   };
 
   const getDecisionColor = () => {
@@ -176,8 +172,23 @@ export function EnhancedDecisionTab({ decision }: EnhancedDecisionTabProps) {
 
                     <section>
                       <h4 className="font-semibold mt-3">Risk Assessment</h4>
-                      <div className="mt-2 text-sm text-gray-700">
-                        {decision.riskAssessment || 'No detailed risk assessment available.'}
+                      <div className="mt-2 text-sm text-gray-700 space-y-2">
+                        {decision.riskAssessments && decision.riskAssessments.length > 0 ? (
+                          decision.riskAssessments.map((ra) => (
+                            <div key={ra.id} className="p-3 border rounded bg-white">
+                              <p className="font-semibold text-gray-900 text-sm">Overall Risk: {ra.overallRisk} (Score: {ra.riskScore}/100)</p>
+                              <p className="text-xs text-gray-500">Date: {ra.assessmentDate} • Assessed By: {ra.assessedBy}</p>
+                              <div className="mt-1">
+                                <p className="font-medium text-xs text-gray-900">Mitigations:</p>
+                                <ul className="list-disc list-inside text-xs pl-2 text-gray-700">
+                                  {ra.mitigation.map((m, idx) => <li key={idx}>{m}</li>)}
+                                </ul>
+                              </div>
+                            </div>
+                          ))
+                        ) : (
+                          'No detailed risk assessment available.'
+                        )}
                       </div>
                     </section>
                   </div>

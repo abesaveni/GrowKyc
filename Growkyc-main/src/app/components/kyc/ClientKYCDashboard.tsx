@@ -7,6 +7,7 @@ import { RemainingTabs } from './RemainingTabs';
 import { AMLHitsDetail } from './AMLHitsDetail';
 import { RelatedEntitiesTab } from './RelatedEntitiesTab';
 import { IdentityTab } from '../grow-kyc/IdentityTab';
+import { ClientsDB, TestClient } from './ClientsDatabase';
 import {
   Shield,
   AlertTriangle,
@@ -44,131 +45,6 @@ import {
 } from 'lucide-react';
 
 type TabType = 'overview' | 'actions' | 'identity' | 'aml' | 'entity' | 'ownership' | 'financial' | 'fraud' | 'legal' | 'run-checks' | 'compliance' | 'documents' | 'monitoring' | 'decisions' | 'austrac' | 'audit' | 'related-entities';
-
-// Test Client Data
-interface TestClient {
-  id: string;
-  name: string;
-  entityType: 'Individual' | 'Company' | 'Trust' | 'Partnership' | 'Foreign Entity';
-  status: 'Active' | 'Inactive' | 'Suspended' | 'Under Review';
-  abn?: string;
-  acn?: string;
-  tfn?: string;
-  country: string;
-  industry: string;
-  serviceType: string;
-  clientGroup: string;
-  riskScores: {
-    overall: number;
-    aml: number;
-    financial: number;
-    business: number;
-    ownership: number;
-  };
-  quickStatus: {
-    identity: string;
-    aml: string;
-    entity: string;
-    monitoring: string;
-  };
-  lastReview: string;
-  nextReview: string;
-  identityData: {
-    primaryID: { type: string; number: string; expiry: string; verified: boolean };
-    secondaryID?: { type: string; number: string; expiry: string; verified: boolean };
-    additionalDocuments?: Array<{ type: string; number: string; expiry?: string; verified: boolean }>;
-    biometricStatus: 'Passed' | 'Failed' | 'Pending' | 'Not Required';
-    livenessCheck: boolean;
-    addressVerified: boolean;
-    greenIDScore?: number;
-    infoTrackStatus?: string;
-    fraudFlags?: Array<{ id: number; type: string; message: string }>;
-  };
-  amlData: {
-    sanctionsMatches: number;
-    pepStatus: 'Not PEP' | 'Domestic PEP' | 'Foreign PEP' | 'International Org PEP';
-    adverseMediaHits: number;
-    worldCheckStatus: string;
-    transactionMonitoring: 'Active' | 'Inactive';
-    riskRating: 'Low' | 'Medium' | 'High' | 'Critical';
-    lastScreeningDate: string;
-  };
-  entityData: {
-    registrationDate?: string;
-    asicStatus?: string;
-    /** ASIC-style company / scheme status (e.g. Active, Deregistered). Shown as primary status in Entity tab. */
-    companyStatus?: string;
-    /** ISO or display timestamp of last registry sync (shown when present). */
-    lastRegistrySync?: string;
-    registrationHistory?: Array<{ date: string; event: string; source?: string }>;
-    keyDates?: Array<{ label: string; date: string; detail?: string }>;
-    directors?: Array<{
-      name: string;
-      appointed: string;
-      resigned?: string;
-      dateOfBirth?: string;
-      role?: string;
-      kycStatus?: string;
-      /** Screening run identifiers (e.g. batch IDs) — rendered dynamically in Entity tab. */
-      screeningBatches?: string[];
-    }>;
-    shareholders?: Array<{ name: string; shares: number; percentage: number }>;
-    trustType?: string;
-    trustees?: Array<{ name: string; type: string }>;
-    beneficiaries?: Array<{ name: string; entitlement: string }>;
-  };
-  ownershipData: {
-    ubos: Array<{ name: string; ownership: number; verified: boolean; country: string }>;
-    ownershipStructureComplete: boolean;
-    complexStructure: boolean;
-  };
-  financialData: {
-    bankAccounts: number;
-    sourceOfFunds: string;
-    sourceOfWealth: string;
-    estimatedWealth: string;
-    transactionVolume: string;
-    highRiskTransactions: number;
-  };
-  legalData: {
-    serviceAgreementSigned: boolean;
-    termsAccepted: boolean;
-    privacyConsentGiven: boolean;
-    engagementLetterDate?: string;
-    kycConsentDate: string;
-  };
-  documentsData: {
-    total: number;
-    verified: number;
-    pending: number;
-    rejected: number;
-  };
-  monitoringData: {
-    alertsLast30Days: number;
-    activeAlerts: number;
-    nameChanges: number;
-    addressChanges: number;
-    ownershipChanges: number;
-  };
-  decisionsData: {
-    onboardingDecision: 'Approved' | 'Rejected' | 'Pending';
-    onboardingDate: string;
-    approver: string;
-    riskAssessments: number;
-    escalations: number;
-  };
-  austracData: {
-    smrsFiled: number;
-    ttrsFiled: number;
-    lastReportDate?: string;
-    suspiciousActivity: boolean;
-  };
-  auditData: {
-    totalEvents: number;
-    lastActivity: string;
-    lastUser: string;
-  };
-}
 
 const TEST_CLIENTS: TestClient[] = [
   {
@@ -1059,7 +935,7 @@ const TEST_CLIENTS: TestClient[] = [
       riskAssessments: 1,
       escalations: 0
     },
-    austracData: { smrsFiled: 0, ttrsFiled: 0, suspiciousActivity: false },
+    austracData: { smrsFiled: 0, ttrsFiled: 0, lastReportDate: undefined, suspiciousActivity: false },
     auditData: {
       totalEvents: 42,
       lastActivity: '2024-12-02 10:05:00',
@@ -1075,8 +951,8 @@ interface ClientKYCDashboardProps {
 
 export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYCDashboardProps = {}) {
   const [activeTab, setActiveTab] = useState<TabType>('overview');
-  const [selectedClientId, setSelectedClientId] = useState<string>(propClientId || 'client-001');
-  const [clients, setClients] = useState<TestClient[]>(TEST_CLIENTS);
+  const [clients, setClients] = useState<TestClient[]>(() => ClientsDB.getClients());
+  const [selectedClientId, setSelectedClientId] = useState<string>(() => propClientId || ClientsDB.getClients()[0]?.id || '');
   const [runningCheck, setRunningCheck] = useState<string | null>(null);
   const [isExporting, setIsExporting] = useState(false);
   const [isApproving, setIsApproving] = useState(false);
@@ -1088,9 +964,19 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
     }
   }, [propClientId]);
 
-  // Get selected client
-  // Get selected client - attempt to find by ID, fallback to first client if not found
-  const client = clients.find(c => c.id === selectedClientId) || clients[0];
+  // Keep client data updated dynamically from ClientsDB
+  useEffect(() => {
+    const unsubscribe = ClientsDB.subscribe((updatedClients) => {
+      setClients(updatedClients);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  // Get selected client - attempt to find by ID or name, fallback to first client if not found
+  const client = (clients.find(c =>
+    c.id === selectedClientId ||
+    c.name.toLowerCase() === decodeURIComponent(selectedClientId || '').toLowerCase()
+  ) || clients[0]) as TestClient;
 
   const handleExportReport = () => {
     setIsExporting(true);
@@ -1183,29 +1069,55 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
     }
   };
 
+  if (!client) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex flex-col justify-center items-center p-8">
+        <div className="max-w-md w-full text-center p-8 bg-white border border-slate-100 rounded-2xl shadow-xl">
+          <Users className="w-16 h-16 text-slate-300 mx-auto mb-4" />
+          <h2 className="text-xl font-bold text-slate-800 mb-2">No Clients Available</h2>
+          <p className="text-sm text-slate-500 mb-6">
+            There are currently no clients onboarded in the KYC Database. Go to Client Onboarding to add your first client.
+          </p>
+          {onBack && (
+            <button
+              onClick={onBack}
+              className="inline-flex items-center justify-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-xl transition-all cursor-pointer"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Back to Dashboard
+            </button>
+          )}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* TOP SUMMARY STRIP */}
       <div className="sticky top-0 z-50 bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-700 text-white shadow-xl">
-        <div className="max-w-[2000px] mx-auto px-8 py-6">
-          <div className="grid grid-cols-12 gap-6 items-center">
-            <div className="col-span-3">
-              <div className="mb-3">
-                <label className="text-xs opacity-80 mb-1 block">Select Test Client</label>
-                <select
-                  value={selectedClientId}
-                  onChange={(e) => setSelectedClientId(e.target.value)}
-                  className="w-full px-3 py-2 rounded-lg bg-white/20 border border-white/30 text-white font-semibold focus:outline-none focus:ring-2 focus:ring-white/50"
-                >
-                  {TEST_CLIENTS.map(c => (
-                    <option key={c.id} value={c.id} className="text-gray-900">
-                      {c.name} ({c.entityType})
-                    </option>
-                  ))}
-                </select>
+        <div className="max-w-[2000px] mx-auto px-4 sm:px-8 py-4 sm:py-6">
+          <div className="flex flex-col lg:grid lg:grid-cols-12 gap-4 lg:gap-6 items-center">
+            <div className="w-full lg:col-span-3">
+              <div className="flex items-center gap-3 mb-2 sm:mb-3">
+                {onBack && (
+                  <button
+                    onClick={onBack}
+                    className="p-2 rounded-lg bg-white/10 hover:bg-white/20 border border-white/25 transition-all text-white flex items-center justify-center cursor-pointer flex-shrink-0"
+                    title="Back to KYC Dashboard"
+                  >
+                    <ArrowLeft className="w-5 h-5" />
+                  </button>
+                )}
+                <div className="min-w-0">
+                  <span className="text-[10px] uppercase tracking-wider opacity-85 block">Active Client Profile</span>
+                  <div className="text-lg sm:text-xl font-bold tracking-tight text-white truncate">
+                    {client?.name}
+                  </div>
+                </div>
               </div>
               <div className="flex items-center gap-3">
-                <Building className="w-8 h-8" />
+                <Building className="w-6 h-6 sm:w-8 sm:h-8" />
                 <div>
                   <div className="flex items-center gap-2">
                     <Badge variant="outline" className="bg-white/20 text-white border-white/30">
@@ -1219,65 +1131,65 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
               </div>
             </div>
 
-            <div className="col-span-6 grid grid-cols-4 gap-4 text-center">
-              <div className="bg-white/10 rounded-lg p-3">
-                <p className="text-xs opacity-90">Overall Risk</p>
-                <p className={`text-3xl font-bold ${client.riskScores.overall >= 80 ? 'text-red-200' : client.riskScores.overall >= 60 ? 'text-yellow-200' : 'text-green-200'}`}>
+            <div className="w-full lg:col-span-6 grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 text-center">
+              <div className="bg-white/10 rounded-lg p-2 sm:p-3">
+                <p className="text-[10px] sm:text-xs opacity-90">Overall Risk</p>
+                <p className={`text-2xl sm:text-3xl font-bold ${client.riskScores.overall >= 80 ? 'text-red-200' : client.riskScores.overall >= 60 ? 'text-yellow-200' : 'text-green-200'}`}>
                   {client.riskScores.overall}
                 </p>
-                <p className="text-xs">
+                <p className="text-[10px] sm:text-xs">
                   {client.riskScores.overall < 40 ? 'Low' : client.riskScores.overall < 60 ? 'Medium' : client.riskScores.overall < 80 ? 'High' : 'Critical'}
                 </p>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
-                <p className="text-xs opacity-90">Identity</p>
-                <div className="flex items-center justify-center gap-1 mt-1">
+              <div className="bg-white/10 rounded-lg p-2 sm:p-3">
+                <p className="text-[10px] sm:text-xs opacity-90">Identity</p>
+                <div className="flex items-center justify-center gap-1 mt-0.5 sm:mt-1">
                   {client.quickStatus.identity === 'Verified' ? (
-                    <CheckCircle className="w-5 h-5 text-green-300" />
+                    <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-300" />
                   ) : (
-                    <AlertTriangle className="w-5 h-5 text-amber-300" />
+                    <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 text-amber-300" />
                   )}
-                  <p className="text-lg font-bold">{client.quickStatus.identity}</p>
+                  <p className="text-sm sm:text-lg font-bold">{client.quickStatus.identity}</p>
                 </div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
-                <p className="text-xs opacity-90">AML Status</p>
-                <div className="flex items-center justify-center gap-1 mt-1">
+              <div className="bg-white/10 rounded-lg p-2 sm:p-3">
+                <p className="text-[10px] sm:text-xs opacity-90">AML Status</p>
+                <div className="flex items-center justify-center gap-1 mt-0.5 sm:mt-1">
                   {client.quickStatus.aml.includes('SANCTIONS') ? (
-                    <XCircle className="w-5 h-5 text-red-300" />
+                    <XCircle className="w-4 h-4 sm:w-5 sm:h-5 text-red-300" />
                   ) : client.quickStatus.aml === 'Clear' ? (
-                    <CheckCircle className="w-5 h-5 text-green-300" />
+                    <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-300" />
                   ) : (
-                    <AlertTriangle className="w-5 h-5 text-amber-300" />
+                    <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 text-amber-300" />
                   )}
-                  <p className="text-lg font-bold">{client.quickStatus.aml}</p>
+                  <p className="text-sm sm:text-lg font-bold">{client.quickStatus.aml}</p>
                 </div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
-                <p className="text-xs opacity-90">Entity</p>
-                <div className="flex items-center justify-center gap-1 mt-1">
-                  <CheckCircle className="w-5 h-5 text-green-300" />
-                  <p className="text-lg font-bold">{client.quickStatus.entity}</p>
+              <div className="bg-white/10 rounded-lg p-2 sm:p-3">
+                <p className="text-[10px] sm:text-xs opacity-90">Entity</p>
+                <div className="flex items-center justify-center gap-1 mt-0.5 sm:mt-1">
+                  <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-300" />
+                  <p className="text-sm sm:text-lg font-bold">{client.quickStatus.entity}</p>
                 </div>
               </div>
             </div>
 
-            <div className="col-span-3 flex justify-end gap-2">
+            <div className="w-full lg:col-span-3 flex flex-wrap lg:justify-end gap-2">
               <Button
                 variant="outline"
-                className="bg-white/20 border-white/30 text-white hover:bg-white/30"
+                className="bg-white/20 border-white/30 text-white hover:bg-white/30 flex-1 lg:flex-initial justify-center text-xs whitespace-nowrap"
                 onClick={handleExportReport}
                 disabled={isExporting}
               >
-                {isExporting ? <RefreshCw className="w-4 h-4 mr-2 animate-spin" /> : <Download className="w-4 h-4 mr-2" />}
+                {isExporting ? <RefreshCw className="w-3.5 h-3.5 mr-1.5 animate-spin" /> : <Download className="w-3.5 h-3.5 mr-1.5" />}
                 {isExporting ? 'Exporting...' : 'Export Report'}
               </Button>
               <Button
-                className="bg-green-500 hover:bg-green-600 text-white"
+                className="bg-green-500 hover:bg-green-600 text-white flex-1 lg:flex-initial justify-center text-xs whitespace-nowrap"
                 onClick={handleApproveClient}
                 disabled={isApproving || client.decisionsData?.onboardingDecision === 'Approved'}
               >
-                {isApproving ? <RefreshCw className="w-4 h-4 mr-2 animate-spin" /> : <CheckCircle className="w-4 h-4 mr-2" />}
+                {isApproving ? <RefreshCw className="w-3.5 h-3.5 mr-1.5 animate-spin" /> : <CheckCircle className="w-3.5 h-3.5 mr-1.5" />}
                 {isApproving ? 'Approving...' : client.decisionsData?.onboardingDecision === 'Approved' ? 'Approved' : 'Approve Client'}
               </Button>
             </div>
@@ -1286,7 +1198,7 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
       </div>
 
       {/* MAIN CONTENT */}
-      <div className="max-w-[2000px] mx-auto p-8">
+      <div className="max-w-[2000px] mx-auto p-4 sm:p-8">
         {/* Breadcrumb Navigation */}
         {onBack && (
           <div className="mb-4 flex items-center gap-2 text-sm text-gray-600">
@@ -1304,26 +1216,26 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
 
         <div className="grid grid-cols-12 gap-6">
           {/* LEFT SIDEBAR - Navigation */}
-          <div className="col-span-2">
-            <Card className="sticky top-[200px] border-2 border-cyan-300 shadow-lg">
+          <div className="col-span-12 lg:col-span-2">
+            <Card className="lg:sticky lg:top-[200px] border-2 border-cyan-300 shadow-lg">
               <CardHeader className="bg-gradient-to-r from-cyan-50 to-blue-50 border-b p-4">
                 <CardTitle className="text-lg">Navigation</CardTitle>
               </CardHeader>
               <CardContent className="p-2">
-                <div className="space-y-1">
+                <div className="flex flex-wrap lg:flex-col gap-1">
                   {tabs.map((tab) => {
                     const Icon = tab.icon;
                     return (
                       <button
                         key={tab.id}
                         onClick={() => setActiveTab(tab.id as TabType)}
-                        className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-left transition-all ${activeTab === tab.id
+                        className={`w-auto lg:w-full flex items-center gap-2 lg:gap-3 px-2.5 lg:px-3 py-1.5 lg:py-2 rounded-lg text-left transition-all ${activeTab === tab.id
                           ? 'bg-cyan-600 text-white font-semibold'
                           : 'text-gray-700 hover:bg-gray-100'
                           }`}
                       >
-                        <Icon className="w-5 h-5" />
-                        <span className="text-sm">{tab.label}</span>
+                        <Icon className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+                        <span className="text-xs sm:text-sm">{tab.label}</span>
                       </button>
                     );
                   })}
@@ -1333,61 +1245,61 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
           </div>
 
           {/* MAIN CONTENT AREA */}
-          <div className="col-span-10">
+          <div className="col-span-12 lg:col-span-10">
             {/* OVERVIEW TAB */}
             {activeTab === 'overview' && (
               <div className="space-y-6">
                 <Card className="border-2 border-blue-300 shadow-lg">
                   <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
-                    <CardTitle className="flex items-center gap-2">
-                      <Eye className="w-6 h-6 text-blue-600" />
+                    <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
+                      <Eye className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
                       KYC Overview - {client.name}
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="p-6">
+                  <CardContent className="p-4 sm:p-6">
                     {/* Client Summary */}
-                    <div className="grid grid-cols-3 gap-4 mb-6">
-                      <div className="bg-cyan-50 rounded-lg p-4 border border-cyan-200">
-                        <p className="text-sm text-gray-600 mb-1">Entity Type</p>
-                        <p className="font-bold text-lg">{client.entityType}</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+                      <div className="bg-cyan-50 rounded-lg p-3 sm:p-4 border border-cyan-200">
+                        <p className="text-xs sm:text-sm text-gray-600 mb-1">Entity Type</p>
+                        <p className="font-bold text-base sm:text-lg">{client.entityType}</p>
                       </div>
-                      <div className="bg-cyan-50 rounded-lg p-4 border border-cyan-200">
-                        <p className="text-sm text-gray-600 mb-1">Country</p>
-                        <p className="font-bold text-lg">{client.country}</p>
+                      <div className="bg-cyan-50 rounded-lg p-3 sm:p-4 border border-cyan-200">
+                        <p className="text-xs sm:text-sm text-gray-600 mb-1">Country</p>
+                        <p className="font-bold text-base sm:text-lg">{client.country}</p>
                       </div>
-                      <div className="bg-cyan-50 rounded-lg p-4 border border-cyan-200">
-                        <p className="text-sm text-gray-600 mb-1">Industry</p>
-                        <p className="font-bold text-lg">{client.industry}</p>
+                      <div className="bg-cyan-50 rounded-lg p-3 sm:p-4 border border-cyan-200">
+                        <p className="text-xs sm:text-sm text-gray-600 mb-1">Industry</p>
+                        <p className="font-bold text-base sm:text-lg">{client.industry}</p>
                       </div>
                       {client.abn && (
-                        <div className="bg-cyan-50 rounded-lg p-4 border border-cyan-200">
-                          <p className="text-sm text-gray-600 mb-1">ABN</p>
-                          <p className="font-bold text-lg">{client.abn}</p>
+                        <div className="bg-cyan-50 rounded-lg p-3 sm:p-4 border border-cyan-200">
+                          <p className="text-xs sm:text-sm text-gray-600 mb-1">ABN</p>
+                          <p className="font-bold text-base sm:text-lg">{client.abn}</p>
                         </div>
                       )}
                       {client.acn && (
-                        <div className="bg-cyan-50 rounded-lg p-4 border border-cyan-200">
-                          <p className="text-sm text-gray-600 mb-1">ACN</p>
-                          <p className="font-bold text-lg">{client.acn}</p>
+                        <div className="bg-cyan-50 rounded-lg p-3 sm:p-4 border border-cyan-200">
+                          <p className="text-xs sm:text-sm text-gray-600 mb-1">ACN</p>
+                          <p className="font-bold text-base sm:text-lg">{client.acn}</p>
                         </div>
                       )}
-                      <div className="bg-cyan-50 rounded-lg p-4 border border-cyan-200">
-                        <p className="text-sm text-gray-600 mb-1">Service Type</p>
-                        <p className="font-bold text-lg">{client.serviceType}</p>
+                      <div className="bg-cyan-50 rounded-lg p-3 sm:p-4 border border-cyan-200">
+                        <p className="text-xs sm:text-sm text-gray-600 mb-1">Service Type</p>
+                        <p className="font-bold text-base sm:text-lg">{client.serviceType}</p>
                       </div>
                     </div>
 
-                    {/* Risk Scores Dashboard */}
+                    {/* Dynamic Risk Scores Dashboard */}
                     <div className="mb-6">
-                      <h3 className="font-bold text-lg mb-4">Risk Score Breakdown</h3>
-                      <div className="grid grid-cols-5 gap-4">
+                      <h3 className="font-bold text-base sm:text-lg mb-4">Risk Score Breakdown</h3>
+                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-4">
                         {Object.entries(client.riskScores).map(([key, value]) => (
-                          <div key={key} className={`rounded-lg p-4 border ${getRiskBg(value)}`}>
-                            <p className="text-xs uppercase text-gray-600 mb-1">{key}</p>
-                            <p className={`text-3xl font-bold ${getRiskColor(value)}`}>{value}</p>
-                            <div className="w-full bg-gray-200 rounded-full h-2 mt-2">
+                          <div key={key} className={`rounded-lg p-3 sm:p-4 border ${getRiskBg(value)}`}>
+                            <p className="text-[10px] sm:text-xs uppercase text-gray-600 mb-1">{key}</p>
+                            <p className={`text-2xl sm:text-3xl font-bold ${getRiskColor(value)}`}>{value}</p>
+                            <div className="w-full bg-gray-200 rounded-full h-1.5 sm:h-2 mt-2">
                               <div
-                                className={`h-2 rounded-full ${value < 40 ? 'bg-green-500' : value < 60 ? 'bg-yellow-500' : value < 80 ? 'bg-orange-500' : 'bg-red-500'}`}
+                                className={`h-1.5 sm:h-2 rounded-full ${value < 40 ? 'bg-green-500' : value < 60 ? 'bg-yellow-500' : value < 80 ? 'bg-orange-500' : 'bg-red-500'}`}
                                 style={{ width: `${value}%` }}
                               />
                             </div>
@@ -1397,10 +1309,10 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
                     </div>
 
                     {/* Review Dates */}
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="bg-blue-50 rounded-lg p-3 sm:p-4 border border-blue-200">
                         <div className="flex items-center gap-2 mb-2">
-                          <Clock className="w-5 h-5 text-blue-600" />
+                          <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
                           <p className="font-semibold">Last Review</p>
                         </div>
                         <p className="text-lg">{client.lastReview}</p>
@@ -1430,49 +1342,49 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
                   </CardHeader>
                   <CardContent className="p-6">
                     {/* Summary Stats */}
-                    <div className="grid grid-cols-4 gap-4 mb-6">
-                      <div className="bg-red-50 rounded-lg p-4 border-2 border-red-200">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                      <div className="bg-red-50 rounded-lg p-3 sm:p-4 border-2 border-red-200">
                         <div className="flex items-center justify-between">
                           <div>
-                            <p className="text-sm text-gray-600 mb-1">Overdue</p>
-                            <p className="text-3xl font-bold text-red-600">
+                            <p className="text-xs sm:text-sm text-gray-600 mb-1">Overdue</p>
+                            <p className="text-2xl sm:text-3xl font-bold text-red-600">
                               {client.riskScores.overall > 70 ? 2 : client.riskScores.overall > 50 ? 1 : 0}
                             </p>
                           </div>
-                          <AlertTriangle className="w-8 h-8 text-red-600" />
+                          <AlertTriangle className="w-6 h-6 sm:w-8 sm:h-8 text-red-600 flex-shrink-0" />
                         </div>
                       </div>
-                      <div className="bg-[#FFA300]/10 rounded-lg p-4 border-2 border-[#FFA300]">
+                      <div className="bg-[#FFA300]/10 rounded-lg p-3 sm:p-4 border-2 border-[#FFA300]">
                         <div className="flex items-center justify-between">
                           <div>
-                            <p className="text-sm text-gray-600 mb-1">Due Soon</p>
-                            <p className="text-3xl font-bold text-[#FFA300]">
+                            <p className="text-xs sm:text-sm text-gray-600 mb-1">Due Soon</p>
+                            <p className="text-2xl sm:text-3xl font-bold text-[#FFA300]">
                               {client.documentsData.pending + (client.monitoringData.activeAlerts > 0 ? 1 : 0)}
                             </p>
                           </div>
-                          <Clock className="w-8 h-8 text-[#FFA300]" />
+                          <Clock className="w-6 h-6 sm:w-8 sm:h-8 text-[#FFA300] flex-shrink-0" />
                         </div>
                       </div>
-                      <div className="bg-blue-50 rounded-lg p-4 border-2 border-blue-200">
+                      <div className="bg-blue-50 rounded-lg p-3 sm:p-4 border-2 border-blue-200">
                         <div className="flex items-center justify-between">
                           <div>
-                            <p className="text-sm text-gray-600 mb-1">In Progress</p>
-                            <p className="text-3xl font-bold text-blue-600">
+                            <p className="text-xs sm:text-sm text-gray-600 mb-1">In Progress</p>
+                            <p className="text-2xl sm:text-3xl font-bold text-blue-600">
                               {client.riskScores.overall > 40 ? 2 : 1}
                             </p>
                           </div>
-                          <Activity className="w-8 h-8 text-blue-600" />
+                          <Activity className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600 flex-shrink-0" />
                         </div>
                       </div>
-                      <div className="bg-green-50 rounded-lg p-4 border-2 border-green-200">
+                      <div className="bg-green-50 rounded-lg p-3 sm:p-4 border-2 border-green-200">
                         <div className="flex items-center justify-between">
                           <div>
-                            <p className="text-sm text-gray-600 mb-1">Completed</p>
-                            <p className="text-3xl font-bold text-green-600">
+                            <p className="text-xs sm:text-sm text-gray-600 mb-1">Completed</p>
+                            <p className="text-2xl sm:text-3xl font-bold text-green-600">
                               {client.documentsData.verified}
                             </p>
                           </div>
-                          <CheckCircle className="w-8 h-8 text-green-600" />
+                          <CheckCircle className="w-6 h-6 sm:w-8 sm:h-8 text-green-600 flex-shrink-0" />
                         </div>
                       </div>
                     </div>

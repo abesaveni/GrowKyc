@@ -91,3 +91,13 @@ class ReportType(str, Enum):
     SMR = "SMR"
     TTR = "TTR"
     IFTI = "IFTI"
+
+
+class PaymentStatus(str, Enum):
+    """Payment status enumeration."""
+
+    PENDING = "PENDING"
+    PAID = "PAID"
+    FAILED = "FAILED"
+    CANCELLED = "CANCELLED"
+

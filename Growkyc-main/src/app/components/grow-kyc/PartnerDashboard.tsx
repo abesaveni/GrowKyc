@@ -1,367 +1,466 @@
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
+import { useNavigate, useParams } from 'react-router-dom';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../ui/card';
+import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
+import { Progress } from '../ui/progress';
 import {
+  Shield,
   TrendingUp,
-  AlertTriangle,
-  CheckCircle,
-  FileText,
-  DollarSign,
+  Clock,
   Users,
   Activity,
-  ArrowRight,
-  PieChart
+  Target,
+  XCircle,
+  AlertCircle,
+  X,
+  Check,
+  Zap,
+  Flag,
+  AlertTriangle
 } from 'lucide-react';
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  Legend
+} from 'recharts';
 
-interface PartnerDashboardProps {
-  onViewClient: (clientId: string) => void;
-  onViewCase: (caseId: string) => void;
+import {
+  regulatoryComplianceStatusData,
+  strategicInsightsData
+} from './mockDashboardData';
+
+import { ClientsDB } from '../kyc/ClientsDatabase';
+import { toast } from '../../lib/toast';
+
+export interface PartnerDashboardProps {
+  userName: string;
+  userRole: string;
+  userTitle: string;
+  userAvatar: string;
+  onNavigateToClients?: () => void;
+  onNavigateToCases?: () => void;
+  onNavigateToCaseControl?: () => void;
+  onNavigateToMonitoring?: () => void;
+  onNavigateToAUSTRAC?: () => void;
+  onNavigateToActionItems?: () => void;
+  onNavigateToClient?: (clientId: string) => void;
+  onNavigateToRequirements?: () => void;
 }
 
-export function PartnerDashboard({ onViewClient, onViewCase }: PartnerDashboardProps) {
-  const riskHeatmap = [
-    { tier: 'Critical', count: 3, color: 'bg-red-600', textColor: 'text-red-600' },
-    { tier: 'High', count: 28, color: 'bg-orange-500', textColor: 'text-orange-600' },
-    { tier: 'Medium', count: 142, color: 'bg-yellow-500', textColor: 'text-yellow-600' },
-    { tier: 'Low', count: 1247, color: 'bg-green-500', textColor: 'text-green-600' }
-  ];
+export function PartnerDashboard({
+  userName,
+  userRole,
+  userTitle,
+  userAvatar,
+  onNavigateToClients,
+  onNavigateToCases,
+  onNavigateToCaseControl,
+  onNavigateToMonitoring,
+  onNavigateToAUSTRAC,
+  onNavigateToActionItems,
+  onNavigateToClient,
+  onNavigateToRequirements,
+}: PartnerDashboardProps) {
+  const navigate = useNavigate();
+  const { role } = useParams();
+  const [approvalModalOpen, setApprovalModalOpen] = React.useState(false);
+  const [selectedApproval, setSelectedApproval] = React.useState<any>(null);
+  const [approvalComment, setApprovalComment] = React.useState('');
 
-  const pendingApprovals = [
-    {
-      id: '1',
-      client: 'Sarah Mitchell',
-      type: 'Credit File Approval',
-      amount: '$450,000',
-      submittedBy: 'Jane Chen',
-      daysWaiting: 2,
-      caseId: 'case-credit-001'
-    },
-    {
-      id: '2',
-      client: 'Vertex Developments',
-      type: 'High Risk Override',
-      reason: 'Previous insolvency - now resolved',
-      submittedBy: 'Mark Thompson',
-      daysWaiting: 1,
-      caseId: 'case-override-002'
-    }
-  ];
+  // Partner dynamic stats state
+  const [partnerStats, setPartnerStats] = React.useState({
+    totalClients: 452,
+    activeClients: 326,
+    highRiskClients: 13,
+    criticalRiskClients: 3,
+    openInvestigations: 24,
+    openEddReviews: 8,
+    smrsSubmitted: 42,
+    overdueReviews: 12,
+    slaBreaches: 4,
+    complianceIncidents: 1,
+    targetAchievement: 98.2,
+    itemsNeedApproval: 12,
+    urgentItems: 3
+  });
 
-  const fundCompliance = [
-    {
-      name: 'Zenith Growth Fund',
-      aum: '$42.5M',
-      investors: 127,
-      kycCurrent: 98,
-      incidents: 1,
-      status: 'Good'
-    },
-    {
-      name: 'Phoenix Property Fund',
-      aum: '$87.2M',
-      investors: 203,
-      kycCurrent: 100,
-      incidents: 0,
-      status: 'Excellent'
-    },
-    {
-      name: 'Horizon Capital Fund',
-      aum: '$156.8M',
-      investors: 89,
-      kycCurrent: 94,
-      incidents: 0,
-      status: 'Good'
-    }
-  ];
+  const [clients, setClients] = React.useState<any[]>([]);
+  const [caseRefreshKey, setCaseRefreshKey] = React.useState(0);
 
-  const recentIncidents = [
-    {
-      id: '1',
-      type: 'Reportable Situation',
-      fund: 'Zenith Growth Fund',
-      description: 'Late distribution disclosure',
-      severity: 'Medium',
-      status: 'Under Investigation',
-      reported: '2026-02-10'
-    }
-  ];
+  React.useEffect(() => {
+    setClients(ClientsDB.getClients());
+    return ClientsDB.subscribe(setClients);
+  }, []);
+
+  React.useEffect(() => {
+    const onCasesUpdated = () => setCaseRefreshKey((k) => k + 1);
+    window.addEventListener('growkyc:cases_updated', onCasesUpdated);
+    return () => window.removeEventListener('growkyc:cases_updated', onCasesUpdated);
+  }, []);
+
+  // Derived compliance statistics
+  const complianceOfficerStats = React.useMemo(() => {
+    const total = clients.length;
+    const activeClients = clients.filter(c => c.status === 'Active' || c.status === 'verified').length;
+    
+    const verifiedClients = clients.filter(c => c.quickStatus?.identity === 'Verified' || c.status === 'Active').length;
+
+    return {
+      activeClients,
+      completedToday: clients.filter(c => c.lastReview === new Date().toISOString().split('T')[0]).length,
+    };
+  }, [clients]);
+
+  const partnerApprovalsData = React.useMemo(() => {
+    return clients
+      .filter(c => c.status === 'Under Review')
+      .map(c => ({
+        item: `High Risk Client Onboarding - ${c.name}`,
+        type: 'New Client',
+        priority: c.amlData?.riskRating === 'Critical' || c.amlData?.riskRating === 'High' ? 'High' : 'Medium'
+      }));
+  }, [clients]);
+
+  React.useEffect(() => {
+    if (clients.length === 0) return;
+    const interval = setInterval(() => {
+      // Dynamically update partner stats occasionally
+      setPartnerStats(prev => {
+        const clientChange = Math.random() > 0.7 ? Math.floor(Math.random() * 3) : 0;
+        const approvalChange = Math.random() > 0.8 ? (Math.random() > 0.5 ? 1 : -1) : 0;
+        
+        return {
+          ...prev,
+          activeClients: prev.activeClients + clientChange,
+          totalClients: prev.totalClients + clientChange,
+          itemsNeedApproval: Math.max(0, prev.itemsNeedApproval + approvalChange),
+          targetAchievement: Math.min(100, Math.max(90, parseFloat((prev.targetAchievement + (Math.random() > 0.5 ? 0.1 : -0.1)).toFixed(1))))
+        };
+      });
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [clients.length]);
 
   return (
-    <div className="p-8 space-y-6">
-      {/* Executive Summary */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card className="border-2 border-blue-300 bg-blue-50">
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between">
+    <div className="bg-white min-h-screen">
+      <div className="space-y-6 bg-white min-h-screen px-4 md:px-8 pb-8">
+        {/* Executive Welcome */}
+        <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl p-6 md:p-8 text-white mt-4 md:mt-6">
+          <div className="flex flex-col sm:flex-row gap-4 justify-between sm:items-center">
+            <div className="flex flex-col sm:flex-row items-center text-center sm:text-left gap-4">
+              <div className="text-5xl">{userAvatar}</div>
               <div>
-                <p className="text-sm text-blue-700 font-semibold">Total Clients</p>
-                <p className="text-4xl font-bold text-blue-700 mt-1">1,420</p>
+                <h1 className="text-2xl md:text-3xl font-bold">Executive Overview</h1>
+                <p className="text-purple-100 text-base">{userName} • {userTitle}</p>
               </div>
-              <Users className="w-10 h-10 text-blue-600" />
             </div>
-          </CardContent>
-        </Card>
-
-        <Card className="border-2 border-green-300 bg-green-50">
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-green-700 font-semibold">KYC Current</p>
-                <p className="text-4xl font-bold text-green-700 mt-1">96%</p>
-              </div>
-              <CheckCircle className="w-10 h-10 text-green-600" />
+            <div className="text-center sm:text-right">
+              <div className="text-xs md:text-sm text-purple-100">Overall Compliance Health</div>
+              <div className="text-3xl md:text-4xl font-bold">{partnerStats.targetAchievement}%</div>
             </div>
-          </CardContent>
-        </Card>
-
-        <Card className="border-2 border-orange-300 bg-orange-50">
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-orange-700 font-semibold">Pending Approvals</p>
-                <p className="text-4xl font-bold text-orange-700 mt-1">8</p>
-              </div>
-              <FileText className="w-10 h-10 text-orange-600" />
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card className="border-2 border-purple-300 bg-purple-50">
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-purple-700 font-semibold">Funds AUM</p>
-                <p className="text-3xl font-bold text-purple-700 mt-1">$286M</p>
-              </div>
-              <DollarSign className="w-10 h-10 text-purple-600" />
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Client Risk Heatmap */}
-      <Card>
-        <CardHeader className="border-b bg-gray-50">
-          <CardTitle className="flex items-center gap-2">
-            <PieChart className="w-5 h-5" />
-            Client Risk Distribution
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="p-6">
-          <div className="space-y-4">
-            {riskHeatmap.map((tier) => (
-              <div key={tier.tier} className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className={`w-4 h-4 rounded ${tier.color}`} />
-                    <span className="font-semibold text-gray-900">{tier.tier} Risk</span>
-                  </div>
-                  <span className={`font-bold ${tier.textColor}`}>{tier.count} clients</span>
-                </div>
-                <div className="w-full bg-gray-200 rounded-full h-3">
-                  <div
-                    className={`h-3 rounded-full ${tier.color}`}
-                    style={{
-                      width: `${(tier.count / 1420) * 100}%`
-                    }}
-                  />
-                </div>
-              </div>
-            ))}
           </div>
-        </CardContent>
-      </Card>
+        </div>
 
-      {/* Pending Approvals */}
-      <Card className="border-2 border-orange-300">
-        <CardHeader className="bg-orange-50 border-b border-orange-200">
-          <CardTitle className="flex items-center gap-2 text-orange-900">
-            <FileText className="w-5 h-5" />
-            Pending Partner Approvals ({pendingApprovals.length})
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="p-6">
-          <div className="space-y-4">
-            {pendingApprovals.map((approval) => (
-              <div key={approval.id} className="p-4 bg-orange-50 border-2 border-orange-300 rounded-lg">
-                <div className="flex items-start justify-between mb-3">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <span className="px-3 py-1 bg-orange-600 text-white text-xs font-bold rounded-full">
-                        {approval.type}
-                      </span>
-                      <span className="font-bold text-gray-900">{approval.client}</span>
-                    </div>
-                    {approval.amount && (
-                      <p className="text-sm text-gray-700 mb-1">
-                        <span className="font-semibold">Amount:</span> {approval.amount}
-                      </p>
-                    )}
-                    {approval.reason && (
-                      <p className="text-sm text-gray-700 mb-1">
-                        <span className="font-semibold">Reason:</span> {approval.reason}
-                      </p>
-                    )}
-                    <p className="text-xs text-gray-600">
-                      Submitted by {approval.submittedBy} • {approval.daysWaiting} days ago
-                    </p>
-                  </div>
-                </div>
-                <div className="flex gap-2">
-                  <Button
-                    size="sm"
-                    className="bg-green-600 hover:bg-green-700"
-                    onClick={() => onViewCase(approval.caseId)}
-                  >
-                    <CheckCircle className="w-4 h-4 mr-1" />
-                    Review & Approve
-                  </Button>
-                  <Button size="sm" variant="outline" className="text-red-600 border-red-300">
-                    Reject
-                  </Button>
+        {/* Executive Metrics */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          <Card
+            className="relative overflow-hidden bg-gradient-to-br from-emerald-600 to-teal-700 border-0 cursor-pointer hover:shadow-2xl hover:scale-105 transition-all duration-300 group"
+            onClick={onNavigateToClients}
+          >
+            <CardContent className="p-5 md:p-8 relative z-10">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500" />
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-black/5 rounded-full -ml-12 -mb-12 group-hover:scale-150 transition-transform duration-500" />
+              <Users className="w-10 h-10 md:w-12 md:h-12 text-white/90 mb-4 drop-shadow-lg group-hover:scale-110 transition-transform" />
+              <div className="text-4xl md:text-5xl font-black text-white mb-2 drop-shadow-md">{partnerStats.activeClients}</div>
+              <div className="text-xs md:text-sm font-semibold text-white/80 uppercase tracking-wide">Active Clients</div>
+              <div className="mt-3 flex items-center text-white/60 text-[10px] md:text-xs">
+                <TrendingUp className="w-3 h-3 mr-1" />
+                <span>{complianceOfficerStats.activeClients} active</span>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card
+            className="relative overflow-hidden bg-gradient-to-br from-amber-600 to-orange-700 border-0 cursor-pointer hover:shadow-2xl hover:scale-105 transition-all duration-300 group"
+            onClick={() => {
+              // Scroll to approvals section
+              setTimeout(() => {
+                const approvalsCard = document.querySelector('[data-approvals-section]');
+                if (approvalsCard) {
+                  approvalsCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                  // Flash the card to draw attention
+                  approvalsCard.classList.add('ring-4', 'ring-amber-400');
+                  setTimeout(() => {
+                    approvalsCard.classList.remove('ring-4', 'ring-amber-400');
+                  }, 2000);
+                }
+              }, 100);
+            }}
+          >
+            <CardContent className="p-5 md:p-8 relative z-10">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500" />
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-black/5 rounded-full -ml-12 -mb-12 group-hover:scale-150 transition-transform duration-500" />
+              <div className="relative">
+                <AlertCircle className="w-10 h-10 md:w-12 md:h-12 text-white/90 mb-4 drop-shadow-lg group-hover:scale-110 group-hover:rotate-12 transition-all" />
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-white/80 rounded-full animate-pulse" />
+              </div>
+              <div className="text-4xl md:text-5xl font-black text-white mb-2 drop-shadow-md">{partnerStats.itemsNeedApproval}</div>
+              <div className="text-xs md:text-sm font-semibold text-white/80 uppercase tracking-wide">Items Need Approval</div>
+              <div className="mt-3 flex items-center text-white/60 text-[10px] md:text-xs">
+                <Clock className="w-3 h-3 mr-1" />
+                <span>{partnerStats.urgentItems} urgent • {Math.max(0, partnerStats.itemsNeedApproval - partnerStats.urgentItems)} standard</span>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card
+            className="relative overflow-hidden bg-gradient-to-br from-rose-600 to-red-700 border-0 cursor-pointer hover:shadow-2xl hover:scale-105 transition-all duration-300 group"
+            onClick={onNavigateToCases}
+          >
+            <CardContent className="p-5 md:p-8 relative z-10">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500" />
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-black/5 rounded-full -ml-12 -mb-12 group-hover:scale-150 transition-transform duration-500" />
+              <div className="relative">
+                <Flag className="w-10 h-10 md:w-12 md:h-12 text-white/90 mb-4 drop-shadow-lg group-hover:scale-110 group-hover:-rotate-12 transition-all" />
+                <div className="absolute top-0 right-0 w-6 h-6 bg-white/20 rounded-full flex items-center justify-center text-xs font-bold text-white animate-pulse">
+                  !
                 </div>
               </div>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
+              <div className="text-4xl md:text-5xl font-black text-white mb-2 drop-shadow-md">{partnerStats.highRiskClients}</div>
+              <div className="text-xs md:text-sm font-semibold text-white/80 uppercase tracking-wide">High Risk Clients</div>
+              <div className="mt-3 flex items-center text-white/60 text-[10px] md:text-xs">
+                <Shield className="w-3 h-3 mr-1" />
+                <span>Immediate attention required</span>
+              </div>
+            </CardContent>
+          </Card>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Fund Compliance Status */}
-        <Card>
-          <CardHeader className="border-b bg-purple-50">
-            <CardTitle className="flex items-center gap-2 text-purple-900">
-              <Activity className="w-5 h-5" />
-              Fund Compliance Status
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="p-6">
-            <div className="space-y-4">
-              {fundCompliance.map((fund, idx) => (
-                <div key={idx} className="p-4 bg-gray-50 border border-gray-200 rounded-lg">
-                  <div className="flex items-start justify-between mb-3">
-                    <div>
-                      <p className="font-bold text-gray-900">{fund.name}</p>
-                      <p className="text-sm text-gray-600">
-                        AUM: {fund.aum} • {fund.investors} investors
-                      </p>
-                    </div>
-                    <span
-                      className={`px-3 py-1 rounded-full text-xs font-bold ${
-                        fund.status === 'Excellent'
-                          ? 'bg-green-100 text-green-700 border border-green-300'
-                          : 'bg-blue-100 text-blue-700 border border-blue-300'
-                      }`}
-                    >
-                      {fund.status}
-                    </span>
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <p className="text-xs text-gray-600">KYC Current</p>
-                      <p className="text-lg font-bold text-green-600">{fund.kycCurrent}%</p>
-                    </div>
-                    <div>
-                      <p className="text-xs text-gray-600">Open Incidents</p>
-                      <p
-                        className={`text-lg font-bold ${
-                          fund.incidents === 0 ? 'text-green-600' : 'text-orange-600'
-                        }`}
-                      >
-                        {fund.incidents}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
+          <Card className="relative overflow-hidden bg-gradient-to-br from-indigo-600 to-violet-700 border-0 hover:shadow-2xl hover:scale-105 transition-all duration-300 group">
+            <CardContent className="p-5 md:p-8 relative z-10">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500" />
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-black/5 rounded-full -ml-12 -mb-12 group-hover:scale-150 transition-transform duration-500" />
+              <Target className="w-10 h-10 md:w-12 md:h-12 text-white/90 mb-4 drop-shadow-lg group-hover:scale-110 group-hover:rotate-180 transition-all duration-500" />
+              <div className="text-4xl md:text-5xl font-black text-white mb-2 drop-shadow-md">{partnerStats.targetAchievement}%</div>
+              <div className="text-xs md:text-sm font-semibold text-white/80 uppercase tracking-wide">Target Achievement</div>
+              <div className="mt-3 flex items-center text-white/60 text-[10px] md:text-xs">
+                <Zap className="w-3 h-3 mr-1" />
+                <span>Exceeding goals by 8.2%</span>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
 
-        {/* Recent Incidents */}
-        <Card>
-          <CardHeader className="border-b bg-red-50">
-            <CardTitle className="flex items-center gap-2 text-red-900">
-              <AlertTriangle className="w-5 h-5" />
-              AFSL Incidents & Reportable Situations
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="p-6">
-            {recentIncidents.length > 0 ? (
-              <div className="space-y-4">
-                {recentIncidents.map((incident) => (
-                  <div key={incident.id} className="p-4 bg-yellow-50 border-2 border-yellow-300 rounded-lg">
-                    <div className="flex items-start justify-between mb-3">
-                      <div>
-                        <span className="px-3 py-1 bg-yellow-600 text-white text-xs font-bold rounded-full">
-                          {incident.type}
-                        </span>
-                        <p className="font-bold text-gray-900 mt-2">{incident.fund}</p>
-                        <p className="text-sm text-gray-700 mt-1">{incident.description}</p>
-                        <p className="text-xs text-gray-600 mt-2">
-                          Reported: {incident.reported} • Status: {incident.status}
-                        </p>
-                      </div>
-                      <span
-                        className={`px-2 py-1 rounded text-xs font-bold ${
-                          incident.severity === 'High'
-                            ? 'bg-red-600 text-white'
-                            : 'bg-orange-600 text-white'
-                        }`}
-                      >
-                        {incident.severity}
-                      </span>
+        {/* Portfolio Risk Distribution */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <Card className="lg:col-span-2">
+            <CardHeader>
+              <CardTitle>Portfolio Risk Overview</CardTitle>
+              <CardDescription>Client distribution by risk category and AUM</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ResponsiveContainer width="100%" height={300}>
+                <BarChart data={[
+                  { category: 'Low Risk', clients: 245, aum: 15.2 },
+                  { category: 'Medium Risk', clients: 68, aum: 6.8 },
+                  { category: 'High Risk', clients: 13, aum: 2.5 }
+                ]}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="category" />
+                  <YAxis yAxisId="left" orientation="left" stroke="#3b82f6" />
+                  <YAxis yAxisId="right" orientation="right" stroke="#10b981" />
+                  <Tooltip />
+                  <Legend />
+                  <Bar yAxisId="left" dataKey="clients" fill="#3b82f6" name="Clients" />
+                  <Bar yAxisId="right" dataKey="aum" fill="#10b981" name="AUM ($M)" />
+                </BarChart>
+              </ResponsiveContainer>
+            </CardContent>
+          </Card>
+
+          <Card data-approvals-section className="transition-all">
+            <CardHeader>
+              <CardTitle>Requires Your Approval</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3">
+                {partnerApprovalsData.map((approval, index) => (
+                  <div key={index} className="p-3 bg-gray-50 rounded-lg border">
+                    <div className="flex items-start justify-between mb-1">
+                      <div className="font-semibold text-sm">{approval.item}</div>
+                      <Badge variant={approval.priority === 'High' ? 'destructive' : 'default'} className="text-xs">
+                        {approval.priority}
+                      </Badge>
                     </div>
-                    <Button size="sm" variant="outline" onClick={() => onViewCase(incident.id)}>
-                      View Investigation
-                      <ArrowRight className="w-4 h-4 ml-1" />
-                    </Button>
+                    <div className="text-xs text-gray-600 mb-2">{approval.type}</div>
+                    <div className="flex gap-2">
+                      <Button size="sm" variant="default" className="flex-1 h-7" onClick={() => {
+                        setApprovalModalOpen(true);
+                        setSelectedApproval(approval);
+                      }}>Approve</Button>
+                      <Button size="sm" variant="outline" className="h-7" onClick={() => {
+                        setApprovalModalOpen(true);
+                        setSelectedApproval(approval);
+                      }}>Review</Button>
+                    </div>
                   </div>
                 ))}
               </div>
-            ) : (
-              <div className="text-center py-8">
-                <CheckCircle className="w-12 h-12 text-green-600 mx-auto mb-3" />
-                <p className="text-sm text-gray-600">No active incidents</p>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Key Insights */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <Card>
+            <CardHeader>
+              <CardTitle>Regulatory Compliance Status</CardTitle>
+              <CardDescription>Compliance across jurisdictions</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {regulatoryComplianceStatusData.map((item, index) => (
+                  <div key={index}>
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-sm font-medium">{item.jurisdiction}</span>
+                      <span className="text-sm font-semibold">{item.compliance}%</span>
+                    </div>
+                    <Progress value={item.compliance} className="h-2" />
+                  </div>
+                ))}
               </div>
-            )}
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Strategic Insights</CardTitle>
+              <CardDescription>AI-powered recommendations</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3">
+                {strategicInsightsData.map((item, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                    <item.icon className={`w-5 h-5 flex-shrink-0 ${item.color}`} />
+                    <p className="text-sm text-gray-900">{item.insight}</p>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
       </div>
 
-      {/* Quarterly Performance */}
-      <Card>
-        <CardHeader className="border-b">
-          <CardTitle className="flex items-center gap-2">
-            <TrendingUp className="w-5 h-5" />
-            Quarterly Compliance Performance
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="p-6">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div className="text-center">
-              <p className="text-sm text-gray-600 mb-2">CDD Completion Rate</p>
-              <p className="text-4xl font-bold text-green-600">96%</p>
-              <p className="text-xs text-gray-500 mt-1">Target: 95%</p>
+      {/* Approval Modal */}
+      {approvalModalOpen && selectedApproval && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-xl shadow-2xl max-w-2xl w-full">
+            <div className="p-6 border-b border-gray-200 flex items-center justify-between">
+              <div>
+                <h2 className="text-xl font-bold text-gray-900">Review & Approve</h2>
+                <p className="text-sm text-gray-600 mt-1">{selectedApproval.item}</p>
+              </div>
+              <Button size="sm" variant="ghost" onClick={() => {
+                setApprovalModalOpen(false);
+                setApprovalComment('');
+              }}>
+                <X className="w-5 h-5" />
+              </Button>
             </div>
-            <div className="text-center">
-              <p className="text-sm text-gray-600 mb-2">Average Response Time</p>
-              <p className="text-4xl font-bold text-blue-600">3.2</p>
-              <p className="text-xs text-gray-500 mt-1">days (Target: 5)</p>
+
+            <div className="p-6 space-y-4">
+              <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <p className="text-xs text-gray-600 mb-1">Type</p>
+                    <p className="font-semibold">{selectedApproval.type}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-600 mb-1">Priority</p>
+                    <Badge variant={selectedApproval.priority === 'High' ? 'destructive' : 'default'}>
+                      {selectedApproval.priority}
+                    </Badge>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  Approval Comments <span className="text-red-500">*</span>
+                </label>
+                <textarea
+                  rows={4}
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  value={approvalComment}
+                  onChange={(e) => setApprovalComment(e.target.value)}
+                  placeholder="Provide details of your approval decision..."
+                />
+                <p className="text-xs text-gray-500 mt-1">
+                  Comments will be recorded in the audit trail
+                </p>
+              </div>
+
+              <div className="bg-amber-50 border-2 border-amber-300 rounded-lg p-4">
+                <div className="flex items-start gap-3">
+                  <AlertTriangle className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
+                  <div className="flex-1">
+                    <p className="text-sm font-semibold text-amber-900 mb-1">
+                      Dual Control Required
+                    </p>
+                    <p className="text-sm text-amber-800">
+                      This action requires approval from 2 authorized users. Your approval will be the 1st of 2 required.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="text-center">
-              <p className="text-sm text-gray-600 mb-2">Overdue Cases</p>
-              <p className="text-4xl font-bold text-orange-600">12</p>
-              <p className="text-xs text-gray-500 mt-1">Down from 18</p>
-            </div>
-            <div className="text-center">
-              <p className="text-sm text-gray-600 mb-2">Risk Score Trend</p>
-              <p className="text-4xl font-bold text-green-600">↓ 8%</p>
-              <p className="text-xs text-gray-500 mt-1">Improving</p>
+
+            <div className="p-6 border-t border-gray-200 flex items-center justify-between">
+              <Button
+                variant="outline"
+                onClick={() => {
+                  setApprovalModalOpen(false);
+                  setApprovalComment('');
+                }}
+              >
+                Cancel
+              </Button>
+              <div className="flex gap-2">
+                <Button
+                  variant="destructive"
+                  onClick={() => {
+                    toast.warning('Declined', `${selectedApproval.item} — logged in audit trail.`);
+                    setApprovalModalOpen(false);
+                    setApprovalComment('');
+                  }}
+                  disabled={!approvalComment.trim()}
+                >
+                  <X className="w-4 h-4 mr-2" />
+                  Decline
+                </Button>
+                <Button
+                  variant="default"
+                  className="bg-green-600 hover:bg-green-700"
+                  onClick={() => {
+                    toast.success('Approved', `${selectedApproval.item} — recorded in compliance audit trail.`);
+                    setApprovalModalOpen(false);
+                    setApprovalComment('');
+                  }}
+                  disabled={!approvalComment.trim()}
+                >
+                  <Check className="w-4 h-4 mr-2" />
+                  Approve
+                </Button>
+              </div>
             </div>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      )}
     </div>
   );
 }

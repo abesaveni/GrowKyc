@@ -5,7 +5,6 @@ Exports all API routers for use in main application.
 
 from . import admin, auth, kyc
 from .admin import router as admin_router
-
 # For backward compatibility
 from .auth import router as auth_router
 from .kyc import router as kyc_router

@@ -9,13 +9,15 @@ import { HIGH_RISK_TRANSACTIONS_DATABASE } from './HighRiskTransactionsData';
 import { LegalMattersDisplay } from './LegalMattersDisplay';
 import { LEGAL_MATTERS_DATABASE } from './LegalMattersData';
 import { IntegrationDocumentsDisplay } from './IntegrationDocumentsDisplay';
-import { INTEGRATION_DOCUMENTS_DATABASE } from './IntegrationDocumentsData';
+import { INTEGRATION_DOCUMENTS_DATABASE, ClientDocumentRepository, IntegrationDocument } from './IntegrationDocumentsData';
 import { EnhancedMonitoringTab } from './EnhancedMonitoringTab';
 import { EnhancedDecisionTab } from './EnhancedDecisionTab';
 import { DecisionsTab } from './DecisionsTab';
 import { DECISION_DATABASE } from './DecisionData';
 import { EnhancedAustracTab } from './EnhancedAustracTab';
 import { AUSTRAC_REPORTS_DATABASE } from './AustracReportingData';
+import { AuditTab } from './AuditTab';
+import { TestClient } from './ClientsDatabase';
 import {
   Building,
   Users,
@@ -60,91 +62,7 @@ import {
 type RegistrationHistoryRow = { date: string; event: string; source?: string };
 type KeyDateRow = { label: string; date: string; detail?: string };
 
-interface TestClient {
-  id: string;
-  name: string;
-  entityType: 'Individual' | 'Company' | 'Trust' | 'Partnership' | 'Foreign Entity';
-  status: 'Active' | 'Inactive' | 'Suspended' | 'Under Review';
-  country: string;
-  quickStatus?: { identity: string; aml: string; entity: string; monitoring: string };
-  lastReview?: string;
-  nextReview?: string;
-  entityData: {
-    registrationDate?: string;
-    asicStatus?: string;
-    companyStatus?: string;
-    lastRegistrySync?: string;
-    registrationHistory?: RegistrationHistoryRow[];
-    keyDates?: KeyDateRow[];
-    directors?: Array<{
-      name: string;
-      appointed: string;
-      resigned?: string;
-      dateOfBirth?: string;
-      role?: string;
-      kycStatus?: string;
-      screeningBatches?: string[];
-    }>;
-    shareholders?: Array<{ name: string; shares: number; percentage: number }>;
-    trustType?: string;
-    trustees?: Array<{ name: string; type: string }>;
-    beneficiaries?: Array<{ name: string; entitlement: string }>;
-  };
-  ownershipData: {
-    ubos: Array<{ name: string; ownership: number; verified: boolean; country: string }>;
-    ownershipStructureComplete: boolean;
-    complexStructure: boolean;
-  };
-  financialData: {
-    bankAccounts: number;
-    sourceOfFunds: string;
-    sourceOfWealth: string;
-    estimatedWealth: string;
-    transactionVolume: string;
-    highRiskTransactions: number;
-  };
-  legalData: {
-    serviceAgreementSigned: boolean;
-    termsAccepted: boolean;
-    privacyConsentGiven: boolean;
-    engagementLetterDate?: string;
-    kycConsentDate: string;
-  };
-  documentsData: {
-    total: number;
-    verified: number;
-    pending: number;
-    rejected: number;
-  };
-  monitoringData: {
-    alertsLast30Days: number;
-    activeAlerts: number;
-    nameChanges: number;
-    addressChanges: number;
-    ownershipChanges: number;
-  };
-  decisionsData: {
-    onboardingDecision: 'Approved' | 'Rejected' | 'Pending';
-    onboardingDate: string;
-    approver: string;
-    riskAssessments: number;
-    escalations: number;
-  };
-  austracData: {
-    smrsFiled: number;
-    ttrsFiled: number;
-    lastReportDate?: string;
-    suspiciousActivity: boolean;
-  };
-  auditData: {
-    totalEvents: number;
-    lastActivity: string;
-    lastUser: string;
-  };
-  lastReview: string;
-  identityData?: any;
-  amlData?: any;
-}
+
 
 type TabType = 'entity' | 'ownership' | 'financial' | 'fraud' | 'legal' | 'run-checks' | 'compliance' | 'documents' | 'monitoring' | 'decisions' | 'austrac' | 'audit';
 
@@ -188,6 +106,219 @@ function kycStatusBadgeClass(status: string): string {
   }
   return 'bg-gray-100 text-gray-800 border-gray-300';
 }
+
+const getNormalizedId = (id: string) => {
+  if (id.startsWith('client-')) return id;
+  const num = parseInt(id, 10);
+  if (!isNaN(num)) {
+    return `client-${num.toString().padStart(3, '0')}`;
+  }
+  return id;
+};
+
+const getEquifaxData = (client: TestClient) => {
+  const normId = getNormalizedId(client.id);
+  if (EQUIFAX_MOCK_DATA[normId]) {
+    return EQUIFAX_MOCK_DATA[normId];
+  }
+  const score = client.riskScores?.overall ? Math.round(1200 - (client.riskScores.overall * 8.5)) : 820;
+  let riskBand: 'Poor' | 'Fair' | 'Good' | 'Very Good' | 'Excellent' = 'Good';
+  if (score > 900) riskBand = 'Excellent';
+  else if (score > 740) riskBand = 'Very Good';
+  else if (score > 620) riskBand = 'Good';
+  else if (score > 500) riskBand = 'Fair';
+  else riskBand = 'Poor';
+
+  return {
+    currentScore: score,
+    maxScore: 1200,
+    riskBand,
+    scoreHistory: [
+      { date: '2026-01', score: Math.round(score * 0.95) },
+      { date: '2026-02', score: Math.round(score * 0.98) },
+      { date: '2026-03', score }
+    ],
+    lastUpdated: client.lastReview || new Date().toISOString().split('T')[0],
+    provider: 'Equifax' as const
+  };
+};
+
+const getIllionData = (client: TestClient) => {
+  const normId = getNormalizedId(client.id);
+  if (ILLION_MOCK_DATA[normId]) {
+    return ILLION_MOCK_DATA[normId];
+  }
+  const score = client.riskScores?.overall ? Math.round(100 - client.riskScores.overall) : 80;
+  return {
+    businessFailureScore: score,
+    latePaymentScore: Math.round(score * 0.9),
+    tradeReferenceCount: 0,
+    totalTradeLimit: 0,
+    avgDaysBeyondTerms: score > 70 ? 2 : score > 40 ? 12 : 35,
+    paymentHistory: {
+      promptPercentage: score,
+      late30Percentage: Math.round((100 - score) * 0.7),
+      late60Percentage: Math.round((100 - score) * 0.2),
+      late90PlusPercentage: Math.round((100 - score) * 0.1),
+    },
+    tradeReferences: [],
+    lastUpdated: client.lastReview || new Date().toISOString().split('T')[0],
+    provider: 'Illion' as const
+  };
+};
+
+const getSOFData = (client: TestClient) => {
+  const normId = getNormalizedId(client.id);
+  if (SOF_MOCK_DATA[normId]) {
+    return SOF_MOCK_DATA[normId];
+  }
+  const rating = client.amlData?.riskRating || 'Low';
+  const riskVal: 'Low' | 'Medium' | 'High' | 'Critical' = rating === 'Critical' ? 'Critical' : rating === 'High' ? 'High' : rating === 'Medium' ? 'Medium' : 'Low';
+  const status: 'Verified' | 'In Progress' | 'Action Required' = client.status === 'Active' ? 'Verified' : 'In Progress';
+  
+  return {
+    sof: {
+      type: client.financialData?.sourceOfFunds || 'Personal Savings',
+      description: `Wealth accumulated from ${client.financialData?.sourceOfFunds || 'personal savings'} as declared during onboarding.`,
+      verificationMethod: 'Bank Statements & Transaction Audit Trail',
+      riskRating: riskVal,
+      status: status,
+      assessedBy: 'Sarah Chen',
+      assessmentDate: client.lastReview || new Date().toISOString().split('T')[0],
+      evidenceDocuments: []
+    },
+    sow: {
+      type: client.financialData?.sourceOfWealth || 'Salary / Professional Income',
+      description: `Primary wealth accumulation via ${client.financialData?.sourceOfWealth || 'professional income'}.`,
+      verificationMethod: 'Tax Assessment Notice & Payslips',
+      riskRating: riskVal,
+      status: status,
+      assessedBy: 'Sarah Chen',
+      assessmentDate: client.lastReview || new Date().toISOString().split('T')[0],
+      evidenceDocuments: []
+    }
+  };
+};
+
+const getIntegrationDocumentsData = (client: TestClient): ClientDocumentRepository => {
+  const normId = getNormalizedId(client.id);
+  if (INTEGRATION_DOCUMENTS_DATABASE[normId]) {
+    return INTEGRATION_DOCUMENTS_DATABASE[normId];
+  }
+  if (INTEGRATION_DOCUMENTS_DATABASE[client.id]) {
+    return INTEGRATION_DOCUMENTS_DATABASE[client.id];
+  }
+  
+  const idData = client.identityData;
+  if (!idData) {
+    return {
+      clientId: client.id,
+      totalDocuments: 0,
+      documentsAnalyzed: 0,
+      lastDocumentReceived: client.lastReview || new Date().toISOString().split('T')[0],
+      integrationSources: [],
+      aiAnalysisEnabled: true,
+      totalStorageUsed: '0.0 MB',
+      categories: []
+    };
+  }
+  
+  const documentsList: IntegrationDocument[] = [];
+  
+  if (idData.primaryID) {
+    documentsList.push({
+      id: `DOC-IV-${client.id}-1`,
+      documentName: `${idData.primaryID.type} - ${client.name}`,
+      documentType: idData.primaryID.type,
+      category: 'Identity Verification',
+      source: 'Onboarding Document Upload',
+      integrationProvider: 'InfoTrack',
+      receivedDate: client.lastReview || new Date().toISOString().split('T')[0],
+      documentDate: client.lastReview || new Date().toISOString().split('T')[0],
+      fileType: 'PDF',
+      fileSize: '1.5 MB',
+      downloadedBy: 'kyc.team@grow.com',
+      verificationStatus: idData.primaryID.verified ? 'Verified' : 'Pending Review',
+      verifiedBy: idData.primaryID.verified ? 'kyc.team@grow.com' : undefined,
+      verifiedDate: idData.primaryID.verified ? (client.lastReview || new Date().toISOString().split('T')[0]) : undefined,
+      aiAnalysisStatus: 'Analyzed',
+      aiSummary: `${idData.primaryID.type} uploaded and verified via database lookup.`,
+      keyFindings: [`Document Number: ${idData.primaryID.number}`, 'No signs of alteration', 'Expiry Date valid'],
+      searchable: true,
+      tags: ['identity', 'uploaded', idData.primaryID.type.toLowerCase().replace(' ', '-')]
+    });
+  }
+  
+  if (idData.secondaryID) {
+    documentsList.push({
+      id: `DOC-IV-${client.id}-2`,
+      documentName: `${idData.secondaryID.type} - ${client.name}`,
+      documentType: idData.secondaryID.type,
+      category: 'Identity Verification',
+      source: 'Onboarding Document Upload',
+      integrationProvider: 'InfoTrack',
+      receivedDate: client.lastReview || new Date().toISOString().split('T')[0],
+      documentDate: client.lastReview || new Date().toISOString().split('T')[0],
+      fileType: 'PDF',
+      fileSize: '1.2 MB',
+      downloadedBy: 'kyc.team@grow.com',
+      verificationStatus: idData.secondaryID.verified ? 'Verified' : 'Pending Review',
+      verifiedBy: idData.secondaryID.verified ? 'kyc.team@grow.com' : undefined,
+      verifiedDate: idData.secondaryID.verified ? (client.lastReview || new Date().toISOString().split('T')[0]) : undefined,
+      aiAnalysisStatus: 'Analyzed',
+      aiSummary: `${idData.secondaryID.type} uploaded and verified.`,
+      keyFindings: [`Document Number: ${idData.secondaryID.number}`, 'Validation complete'],
+      searchable: true,
+      tags: ['identity', 'uploaded', idData.secondaryID.type.toLowerCase().replace(' ', '-')]
+    });
+  }
+
+  if (idData.additionalDocuments) {
+    idData.additionalDocuments.forEach((doc, idx) => {
+      documentsList.push({
+        id: `DOC-AD-${client.id}-${idx}`,
+        documentName: `${doc.type} - ${client.name}`,
+        documentType: doc.type,
+        category: 'Identity Verification',
+        source: 'Onboarding Document Upload',
+        integrationProvider: 'InfoTrack',
+        receivedDate: client.lastReview || new Date().toISOString().split('T')[0],
+        documentDate: client.lastReview || new Date().toISOString().split('T')[0],
+        fileType: 'PDF',
+        fileSize: '0.8 MB',
+        downloadedBy: 'kyc.team@grow.com',
+        verificationStatus: doc.verified ? 'Verified' : 'Pending Review',
+        verifiedBy: doc.verified ? 'kyc.team@grow.com' : undefined,
+        verifiedDate: doc.verified ? (client.lastReview || new Date().toISOString().split('T')[0]) : undefined,
+        aiAnalysisStatus: 'Analyzed',
+        aiSummary: `${doc.type} uploaded.`,
+        keyFindings: [`Document Number: ${doc.number || 'N/A'}`],
+        searchable: true,
+        tags: ['additional', 'uploaded']
+      });
+    });
+  }
+
+  const categories = documentsList.length > 0 ? [
+    {
+      category: 'Identity Verification',
+      count: documentsList.length,
+      lastUpdated: client.lastReview || new Date().toISOString().split('T')[0],
+      documents: documentsList
+    }
+  ] : [];
+
+  return {
+    clientId: client.id,
+    totalDocuments: documentsList.length,
+    documentsAnalyzed: documentsList.length,
+    lastDocumentReceived: client.lastReview || new Date().toISOString().split('T')[0],
+    integrationSources: documentsList.length > 0 ? ['InfoTrack'] : [],
+    aiAnalysisEnabled: true,
+    totalStorageUsed: `${(documentsList.length * 1.2).toFixed(1)} MB`,
+    categories
+  };
+};
 
 type NormalizedDirectorRow = {
   name: string;
@@ -297,6 +428,7 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
   const [isRefreshing, setIsRefreshing] = React.useState(false);
   const [lastRefreshed, setLastRefreshed] = React.useState(new Date().toLocaleTimeString());
   const [registrationDetailsOpen, setRegistrationDetailsOpen] = React.useState(false);
+  const [showAgreementModal, setShowAgreementModal] = React.useState(false);
 
   const handleRefresh = () => {
     setIsRefreshing(true);
@@ -889,12 +1021,12 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
 
           {/* Equifax Credit Score Section */}
           <div className="mb-6">
-            <EquifaxCreditScoreCard data={EQUIFAX_MOCK_DATA[client.id] || EQUIFAX_MOCK_DATA['client-001']} />
+            <EquifaxCreditScoreCard data={getEquifaxData(client)} />
           </div>
 
           {/* Illion Business Credit Section */}
           <div className="mb-6">
-            <IllionBusinessCard data={ILLION_MOCK_DATA[client.id] || ILLION_MOCK_DATA['client-001']} />
+            <IllionBusinessCard data={getIllionData(client)} />
           </div>
 
           {/* SOF / SOW Assessment Panel */}
@@ -903,7 +1035,7 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
               <ShieldCheck className="w-8 h-8 text-indigo-600" />
               Financial Intelligence Assessment
             </h3>
-            <SOFAssessmentPanel data={SOF_MOCK_DATA[client.id] || SOF_MOCK_DATA['client-001']} />
+            <SOFAssessmentPanel data={getSOFData(client)} />
           </div>
 
           {/* High Risk Transactions and Source of Funds Proof */}
@@ -1254,11 +1386,15 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
             </div>
 
             <div className="flex gap-2">
-              <Button variant="outline">
+              <Button variant="outline" onClick={() => setShowAgreementModal(true)}>
                 <Eye className="w-4 h-4 mr-2" />
                 View Service Agreement
               </Button>
-              <Button variant="outline">
+              <Button variant="outline" onClick={() => {
+                toast.success('All compliance and legal documents downloaded successfully as a signed ZIP archive.', {
+                  description: `Archive contains: Service Agreement, Engagement Letter, and KYC Consent for ${client.name}.`
+                });
+              }}>
                 <Download className="w-4 h-4 mr-2" />
                 Download All Documents
               </Button>
@@ -1272,16 +1408,7 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
         <>
           {/* Integration Documents Display */}
           <IntegrationDocumentsDisplay
-            documentRepo={INTEGRATION_DOCUMENTS_DATABASE[client.id] || INTEGRATION_DOCUMENTS_DATABASE['client-001'] || {
-              clientId: client.id,
-              totalDocuments: 0,
-              documentsAnalyzed: 0,
-              lastDocumentReceived: '',
-              integrationSources: [],
-              aiAnalysisEnabled: true,
-              totalStorageUsed: '0 MB',
-              categories: []
-            }}
+            documentRepo={getIntegrationDocumentsData(client)}
           />
         </>
       )}
@@ -1325,87 +1452,80 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
           clientName={client.name}
           smrs={AUSTRAC_REPORTS_DATABASE[client.id]?.smrs || []}
           summary={AUSTRAC_REPORTS_DATABASE[client.id]?.summary || {
-            totalSMRs: client.austracData.smrsFiled,
-            totalTTRs: client.austracData.ttrsFiled,
-            lastReportDate: client.austracData.lastReportDate || '',
-            activeConcerns: client.austracData.suspiciousActivity
+            totalSMRs: client.austracData?.smrsFiled || 0,
+            totalTTRs: client.austracData?.ttrsFiled || 0,
+            lastReportDate: client.austracData?.lastReportDate || '',
+            activeConcerns: client.austracData?.suspiciousActivity || false
           }}
         />
       )}
 
       {/* AUDIT TAB */}
       {activeTab === 'audit' && (
-        <Card className="border-2 border-blue-300 shadow-lg">
-          <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
-            <CardTitle className="flex items-center gap-2">
-              <Clock className="w-6 h-6 text-blue-600" />
-              Audit Trail
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="p-6">
-            <div className="grid grid-cols-3 gap-4 mb-6">
-              <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
-                <p className="text-sm text-gray-600 mb-1">Total Events</p>
-                <p className="text-4xl font-bold text-blue-600">{client.auditData.totalEvents.toLocaleString()}</p>
-              </div>
-              <div className="bg-green-50 rounded-lg p-4 border border-green-200">
-                <p className="text-sm text-gray-600 mb-1">Last Activity</p>
-                <p className="text-lg font-bold text-green-600">{client.auditData.lastActivity}</p>
-              </div>
-              <div className="bg-cyan-50 rounded-lg p-4 border border-cyan-200">
-                <p className="text-sm text-gray-600 mb-1">Last User</p>
-                <p className="text-lg font-bold text-cyan-600 break-all">{client.auditData.lastUser}</p>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="font-bold text-lg mb-4">Recent Activity</h3>
-              <div className="space-y-2">
-                <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <p className="font-semibold">Document Verification Completed</p>
-                      <p className="text-sm text-gray-600">{client.auditData.lastUser}</p>
-                    </div>
-                    <Badge variant="outline" className="bg-green-50 text-green-600 border-green-200">
-                      {client.auditData.lastActivity}
-                    </Badge>
-                  </div>
-                </div>
-                <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <p className="font-semibold">AML Screening Performed</p>
-                      <p className="text-sm text-gray-600">system@grow.com</p>
-                    </div>
-                    <Badge variant="outline" className="bg-blue-50 text-blue-600 border-blue-200">
-                      {client.lastReview}
-                    </Badge>
-                  </div>
-                </div>
-                <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <p className="font-semibold">Risk Assessment Updated</p>
-                      <p className="text-sm text-gray-600">{client.decisionsData.approver}</p>
-                    </div>
-                    <Badge variant="outline" className="bg-purple-50 text-purple-600 border-purple-200">
-                      {client.decisionsData.onboardingDate}
-                    </Badge>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-6">
-              <Button className="bg-cyan-600 hover:bg-cyan-700">
-                <Download className="w-4 h-4 mr-2" />
-                Export Full Audit Log
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
+        <AuditTab clientId={client.id} />
       )}
+
+      {/* Service Agreement Modal */}
+      <Dialog open={showAgreementModal} onOpenChange={setShowAgreementModal}>
+        <DialogContent className="max-w-2xl max-h-[85vh] flex flex-col p-0 overflow-hidden bg-white border border-slate-100 rounded-2xl shadow-2xl">
+          <DialogHeader className="bg-slate-900 p-6 text-white border-b border-slate-800">
+            <DialogTitle className="flex items-center gap-3 text-lg font-bold text-white">
+              <Shield className="w-6 h-6 text-indigo-400" />
+              <div>
+                <span className="block text-xs text-slate-400 uppercase tracking-widest font-bold">Standard Client Document</span>
+                Master Service Agreement & Consent
+              </div>
+            </DialogTitle>
+            <DialogDescription className="text-slate-400 text-xs mt-1">
+              Document reference: MSA-2024-{client.id} | Generated: {client.legalData?.engagementLetterDate || '2024-01-15'}
+            </DialogDescription>
+          </DialogHeader>
+          
+          <div className="p-6 space-y-4 overflow-y-auto text-sm text-slate-600 leading-relaxed font-normal">
+            <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 flex items-center justify-between text-xs mb-2">
+              <div>
+                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Contracting Client</span>
+                <span className="font-bold text-slate-800">{client.name}</span>
+              </div>
+              <div className="text-right">
+                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Agreement Status</span>
+                <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full font-bold ${client.legalData.serviceAgreementSigned ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800'}`}>
+                  {client.legalData.serviceAgreementSigned ? 'Signed & Executed' : 'Pending Execution'}
+                </span>
+              </div>
+            </div>
+
+            <h4 className="font-bold text-slate-800 text-base border-b pb-1">1. Scope of Services & AML/CTF Compliance</h4>
+            <p>
+              Grow KYC Pty Ltd (referred to as the "Service Provider") will perform identity verification, owner screening, and comprehensive AML/CTF reporting services for <strong>{client.name}</strong> (referred to as the "Client") in strict compliance with the Anti-Money Laundering and Counter-Terrorism Financing Act 2006 (Cth) and associated AUSTRAC regulations.
+            </p>
+
+            <h4 className="font-bold text-slate-800 text-base border-b pb-1">2. Client Consent & Privacy Policy</h4>
+            <p>
+              By agreeing to this Service Agreement, the Client explicitly consents to the verification of their identity and corporate structure against independent sources, credit reporting bureaus, government registers (including ASIC and ABR), and sanctions databases. Personal data is managed in strict alignment with the Privacy Act 1988 (Cth).
+            </p>
+
+            <h4 className="font-bold text-slate-800 text-base border-b pb-1">3. Record Retention Obligations</h4>
+            <p>
+              The Service Provider is legally mandated to maintain all audit logs, risk assessment records, evidence packages, and onboarding data for a minimum period of <strong>seven (7) years</strong> following the termination of the business relationship, in accordance with AUSTRAC CDD guidelines.
+            </p>
+
+            <h4 className="font-bold text-slate-800 text-base border-b pb-1">4. Cryptographic Validation & Sign-off</h4>
+            <p>
+              This document is cryptographically signed and stored in our secure compliance ledger. Any modifications to this document post-execution will invalidate the verification hash.
+            </p>
+          </div>
+
+          <div className="p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+            <div className="text-xs text-slate-400 font-mono">
+              Hash: SHA256-42d8f99e...a28e
+            </div>
+            <Button className="bg-slate-900 hover:bg-slate-800 text-white font-semibold" onClick={() => setShowAgreementModal(false)}>
+              Close Document
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </>
   );
 }

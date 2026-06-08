@@ -13,8 +13,7 @@ Distinction from Notification:
 
 from datetime import datetime, timezone
 
-from sqlalchemy import Column, DateTime, ForeignKey, Index, Integer, String, Text
-from sqlalchemy import JSON
+from sqlalchemy import JSON, Column, DateTime, ForeignKey, Index, Integer, String, Text
 from sqlalchemy.orm import relationship
 
 from models.base import Base
@@ -53,11 +52,19 @@ class Alert(Base):
 
     # ---- Alert classification ----
     alert_type = Column(
-        String(100), nullable=False, index=True,
-        comment="document_expiry|high_risk|sanctions_hit|pep_match|adverse_media|transaction_threshold",
+        String(100),
+        nullable=False,
+        index=True,
+        comment=(
+            "document_expiry|high_risk|sanctions_hit|pep_match|"
+            "adverse_media|transaction_threshold"
+        ),
     )
     severity = Column(
-        String(20), nullable=False, default="medium", index=True,
+        String(20),
+        nullable=False,
+        default="medium",
+        index=True,
         comment="low|medium|high|critical",
     )
     title = Column(String(255), nullable=False)
@@ -65,15 +72,21 @@ class Alert(Base):
 
     # ---- Workflow state ----
     status = Column(
-        String(50), nullable=False, default="open", index=True,
+        String(50),
+        nullable=False,
+        default="open",
+        index=True,
         comment="open|in_review|escalated|resolved|dismissed|false_positive",
     )
     assigned_to_user_id = Column(
-        Integer, ForeignKey("users.id", ondelete="NO ACTION"),
-        nullable=True, index=True,
+        Integer,
+        ForeignKey("users.id", ondelete="NO ACTION"),
+        nullable=True,
+        index=True,
     )
     escalated_to_user_id = Column(
-        Integer, ForeignKey("users.id", ondelete="NO ACTION"),
+        Integer,
+        ForeignKey("users.id", ondelete="NO ACTION"),
         nullable=True,
     )
     escalation_reason = Column(Text, nullable=True)
@@ -90,13 +103,15 @@ class Alert(Base):
 
     # ---- Evidence references (JSON list of document/evidence IDs) ----
     evidence_refs = Column(
-        JSON, nullable=True,
+        JSON,
+        nullable=True,
         comment="[{type: 'document', id: 42}, {type: 'screening_record', id: 7}]",
     )
 
     # ---- Source ----
     triggered_by = Column(
-        String(100), nullable=True,
+        String(100),
+        nullable=True,
         comment="system_auto|manual|scheduler|screening|risk_engine",
     )
     triggered_by_user_id = Column(

@@ -12,16 +12,15 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
 
-from core.enums import DocumentType, KYCStatus, NotificationType, UserRole
+from core.enums import (CaseStatus, DocumentType, KYCStatus, NotificationType,
+                        RiskLevel, UserRole)
 from core.security import hash_password
-from models import KYC, Base, Document, User
-from services.expiry_scheduler import (
-    _alert_sent_today,
-    get_scheduler,
-    scan_expiring_documents,
-    start_expiry_scheduler,
-    stop_expiry_scheduler,
-)
+from models import KYC, Base, Case, Client, Document, User
+from services.expiry_scheduler import (_alert_sent_today,
+                                       create_periodic_review_cases,
+                                       get_scheduler, scan_expiring_documents,
+                                       start_expiry_scheduler,
+                                       stop_expiry_scheduler)
 
 # ---- In-memory DB fixture specific to this test module ----
 
@@ -82,6 +81,19 @@ def _make_document(db, kyc, expiry_offset_days, doc_type=DocumentType.PASSPORT):
     db.commit()
     db.refresh(doc)
     return doc
+
+
+def _make_client(db, user, review_offset_days=-1, risk_level=RiskLevel.LOW):
+    client = Client(
+        user_id=user.id,
+        name="Periodic Review Client",
+        risk_level=risk_level,
+        review_date=datetime.now(timezone.utc) + timedelta(days=review_offset_days),
+    )
+    db.add(client)
+    db.commit()
+    db.refresh(client)
+    return client
 
 
 # ---- Tests ----
@@ -246,6 +258,45 @@ class TestDuplicatePrevention:
         assert result is False
 
 
+class TestPeriodicReviewCases:
+    """Tests for automatic periodic review case creation."""
+
+    def test_periodic_review_case_created_for_due_client(self, mem_db):
+        user = _make_user(mem_db, email="review-due@test.com")
+        client = _make_client(mem_db, user, review_offset_days=-1)
+        client_id = client.id
+
+        with patch("services.expiry_scheduler.SessionLocal", return_value=mem_db):
+            result = create_periodic_review_cases()
+
+        cases = mem_db.query(Case).filter(Case.client_id == client_id).all()
+        assert result["created"] == 1
+        assert len(cases) == 1
+        assert cases[0].status == CaseStatus.OPEN
+        assert cases[0].title == f"Periodic Review - Client {client_id}"
+
+    def test_periodic_review_duplicate_case_is_prevented(self, mem_db):
+        user = _make_user(mem_db, email="review-dup@test.com")
+        client = _make_client(mem_db, user, review_offset_days=-1)
+        client_id = client.id
+        existing = Case(
+            client_id=client_id,
+            title=f"Periodic Review - Client {client_id}",
+            description="Existing periodic review",
+            status=CaseStatus.OPEN,
+        )
+        mem_db.add(existing)
+        mem_db.commit()
+
+        with patch("services.expiry_scheduler.SessionLocal", return_value=mem_db):
+            result = create_periodic_review_cases()
+
+        cases = mem_db.query(Case).filter(Case.client_id == client_id).all()
+        assert result["created"] == 0
+        assert result["duplicates_skipped"] == 1
+        assert len(cases) == 1
+
+
 class TestSchedulerLifecycle:
     """Tests for APScheduler startup and shutdown safety."""
 
@@ -255,6 +306,9 @@ class TestSchedulerLifecycle:
         sched = get_scheduler()
         assert sched is not None
         assert sched.running is True
+        assert sched.get_job("document_expiry_scan") is not None
+        assert sched.get_job("daily_monitoring_checks") is not None
+        assert sched.get_job("periodic_review_cases") is not None
         stop_expiry_scheduler()
 
     def test_scheduler_stops_gracefully(self):

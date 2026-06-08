@@ -1,5 +1,5 @@
-import type { ProviderStatus } from '../../../models/providerStatus';
-import type { AdverseMediaProviderRawResponse, AdverseMediaProviderRequest } from '../adapters/adverseMedia/adverseMediaTypes';
+import type { ProviderStatus } from '../../models/providerStatus';
+import type { AdverseMediaProviderRawResponse, AdverseMediaProviderRequest } from '../../adapters/adverseMedia/adverseMediaTypes';
 
 export interface IAdverseMediaExecutionPort {
   getStatus(): Promise<ProviderStatus>;

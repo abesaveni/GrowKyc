@@ -14,7 +14,7 @@ from core.enums import UserRole
 from core.exceptions import AuthenticationError
 from core.tenant_context import get_tenant_id
 from database import get_db
-from models import User, Tenant
+from models import Tenant, User
 from services.auth_service import AuthService
 from services.tenant_service import TenantService
 
@@ -69,13 +69,17 @@ async def get_current_user(
         service = AuthService(db)
         # AuthService.verify_token decodes JWT and returns payload dict
         payload = service.verify_token(token)
-        
+
         # Prevent cross-tenant token abuse
         token_tenant_id = payload.get("tenant_id")
         active_tenant_id = get_tenant_id()
-        
+
         if active_tenant_id is not None and token_tenant_id != active_tenant_id:
-            logger.critical(f"Cross-tenant token abuse attempt! Token tenant: {token_tenant_id}, Active tenant: {active_tenant_id}")
+            logger.critical(
+                "Cross-tenant token abuse attempt! "
+                f"Token tenant: {token_tenant_id}, "
+                f"Active tenant: {active_tenant_id}"
+            )
             raise AuthenticationError("Invalid token context")
 
         # AuthService.get_current_user retrieves User by ID from token
@@ -101,7 +105,7 @@ async def get_current_user(
 async def get_current_tenant(db: Session = Depends(get_db)) -> Tenant:
     """
     Dependency to resolve the current active Tenant from context.
-    
+
     Raises:
         HTTPException 401: If no tenant context is established.
         HTTPException 403: If tenant is suspended or not found.
@@ -112,22 +116,22 @@ async def get_current_tenant(db: Session = Depends(get_db)) -> Tenant:
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Tenant context missing or unauthorized",
         )
-        
+
     service = TenantService(db)
     tenant = service.get_tenant_by_id(tenant_id)
-    
+
     if not tenant:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Tenant not found",
         )
-        
+
     if not tenant.is_active:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Tenant account is suspended",
         )
-        
+
     return tenant
 
 

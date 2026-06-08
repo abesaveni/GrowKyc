@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Card, CardContent } from '../ui/card';
 import { Button } from '../ui/button';
@@ -15,12 +15,25 @@ import {
   Info
 } from 'lucide-react';
 import { toast } from '../../lib/toast';
-import { ClientsDB } from '../kyc/ClientsDatabase';
+import { ClientsDB, TestClient } from '../kyc/ClientsDatabase';
 
 interface ClientReviewProps {
   clientId?: string;
   role?: string;
 }
+
+const getPersonaConfig = (userId: string) => {
+  const configs: Record<string, { name: string; title: string; role: string }> = {
+    sarah_chen: { name: 'Sarah Chen', title: 'Head of Compliance', role: 'compliance_officer' },
+    emma_williams: { name: 'Emma Williams', title: 'Compliance Officer', role: 'compliance_officer' },
+    jessica_lee: { name: 'Jessica Lee', title: 'Senior Compliance Officer', role: 'compliance_officer' },
+    alex_rivera: { name: 'Alex Rivera', title: 'AML Analyst', role: 'analyst' },
+    david_thompson: { name: 'David Thompson', title: 'Internal Auditor', role: 'auditor' },
+    michael_roberts: { name: 'Michael Roberts', title: 'Managing Partner', role: 'partner' },
+    robert_kim: { name: 'Robert Kim', title: 'Risk Partner', role: 'partner' }
+  };
+  return configs[userId] || configs.sarah_chen;
+};
 
 export function ClientReview({ clientId: propClientId, role: propRole }: ClientReviewProps) {
   const params = useParams();
@@ -45,7 +58,7 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
   );
 
   // Fetch client details dynamically from ClientsDB
-  const [client, setClient] = useState(() => {
+  const [client, setClient] = useState<TestClient>(() => {
     const dbClient = ClientsDB.getClients().find(c => 
       c.id === clientId || 
       c.name.toLowerCase() === decodeURIComponent(clientId || '').toLowerCase()
@@ -60,11 +73,205 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
       status: 'Under Review',
       country: 'Australia',
       industry: 'Executive Management',
-      riskScores: { overall: 84 },
-      quickStatus: { identity: 'Verified', aml: 'PEP Match' },
-      amlData: { sanctionsMatches: 0, pepStatus: 'Domestic PEP', adverseMediaHits: 5 }
-    };
+      riskScores: { overall: 84, aml: 80, financial: 20, business: 40, ownership: 10 },
+      quickStatus: { identity: 'Verified', aml: 'PEP Match', entity: 'Active', monitoring: 'Active' },
+      lastReview: '2024-03-15',
+      nextReview: '2025-03-15',
+      identityData: {
+        primaryID: { type: 'Passport', number: 'N8839211', expiry: '2029-10-12', verified: true },
+        biometricStatus: 'Passed',
+        livenessCheck: true,
+        addressVerified: true
+      },
+      amlData: { 
+        sanctionsMatches: 0, 
+        pepStatus: 'Domestic PEP', 
+        adverseMediaHits: 5,
+        worldCheckStatus: 'Review Required',
+        transactionMonitoring: 'Active',
+        riskRating: 'High',
+        lastScreeningDate: '2024-03-15'
+      },
+      entityData: {},
+      ownershipData: {
+        ubos: [],
+        ownershipStructureComplete: true,
+        complexStructure: false
+      },
+      financialData: {
+        bankAccounts: 2,
+        sourceOfFunds: 'Salary',
+        sourceOfWealth: 'Employment',
+        estimatedWealth: '$1M - $2M',
+        transactionVolume: '$10K - $50K monthly',
+        highRiskTransactions: 0
+      },
+      legalData: {
+        serviceAgreementSigned: true,
+        termsAccepted: true,
+        privacyConsentGiven: true,
+        kycConsentDate: '2024-01-15'
+      },
+      documentsData: { total: 4, verified: 3, pending: 1, rejected: 0 },
+      monitoringData: {
+        alertsLast30Days: 1,
+        activeAlerts: 1,
+        nameChanges: 0,
+        addressChanges: 0,
+        ownershipChanges: 0
+      }
+    } as TestClient;
   });
+
+  // Keep client data updated dynamically
+  useEffect(() => {
+    const findClient = (allClients: TestClient[]) => {
+      const dbClient = allClients.find(c => 
+        c.id === clientId || 
+        c.name.toLowerCase() === decodeURIComponent(clientId || '').toLowerCase()
+      );
+      if (dbClient) {
+        setClient(dbClient);
+      } else {
+        // Fallback Mock Client if not in DB
+        setClient({
+          id: clientId || '5',
+          name: 'Sarah Williams',
+          entityType: 'Individual',
+          status: 'Under Review',
+          country: 'Australia',
+          industry: 'Executive Management',
+          riskScores: { overall: 84, aml: 80, financial: 20, business: 40, ownership: 10 },
+          quickStatus: { identity: 'Verified', aml: 'PEP Match', entity: 'Active', monitoring: 'Active' },
+          lastReview: '2024-03-15',
+          nextReview: '2025-03-15',
+          identityData: {
+            primaryID: { type: 'Passport', number: 'N8839211', expiry: '2029-10-12', verified: true },
+            biometricStatus: 'Passed',
+            livenessCheck: true,
+            addressVerified: true
+          },
+          amlData: { 
+            sanctionsMatches: 0, 
+            pepStatus: 'Domestic PEP', 
+            adverseMediaHits: 5,
+            worldCheckStatus: 'Review Required',
+            transactionMonitoring: 'Active',
+            riskRating: 'High',
+            lastScreeningDate: '2024-03-15'
+          },
+          entityData: {},
+          ownershipData: {
+            ubos: [],
+            ownershipStructureComplete: true,
+            complexStructure: false
+          },
+          financialData: {
+            bankAccounts: 2,
+            sourceOfFunds: 'Salary',
+            sourceOfWealth: 'Employment',
+            estimatedWealth: '$1M - $2M',
+            transactionVolume: '$10K - $50K monthly',
+            highRiskTransactions: 0
+          },
+          legalData: {
+            serviceAgreementSigned: true,
+            termsAccepted: true,
+            privacyConsentGiven: true,
+            kycConsentDate: '2024-01-15'
+          },
+          documentsData: { total: 4, verified: 3, pending: 1, rejected: 0 },
+          monitoringData: {
+            alertsLast30Days: 1,
+            activeAlerts: 1,
+            nameChanges: 0,
+            addressChanges: 0,
+            ownershipChanges: 0
+          }
+        } as TestClient);
+      }
+    };
+
+    findClient(ClientsDB.getClients());
+
+    const unsubscribe = ClientsDB.subscribe((allClients) => {
+      findClient(allClients);
+    });
+    return () => unsubscribe();
+  }, [clientId]);
+
+  // Read current active user persona
+  const [activePersona, setActivePersona] = useState(() => {
+    return localStorage.getItem('growkyc_selected_user') || 'sarah_chen';
+  });
+
+  useEffect(() => {
+    const handlePersonaChange = () => {
+      setActivePersona(localStorage.getItem('growkyc_selected_user') || 'sarah_chen');
+    };
+    window.addEventListener('growkyc:persona_changed', handlePersonaChange);
+    return () => window.removeEventListener('growkyc:persona_changed', handlePersonaChange);
+  }, []);
+
+  const getApprovalPermission = () => {
+    const persona = getPersonaConfig(activePersona);
+    
+    // AML Analyst cannot approve anything
+    if (persona.role === 'analyst') {
+      return { allowed: false, reason: 'AML Analysts do not have approval authority.' };
+    }
+    // Managing Partner cannot approve cases directly (normally only for business risk/governance escalation)
+    if (persona.role === 'partner') {
+      return { allowed: false, reason: 'Escalated cases must be signed off by the Head of Compliance.' };
+    }
+    // Internal Auditor cannot approve cases
+    if (persona.role === 'auditor') {
+      return { allowed: false, reason: 'Internal Auditors do not have approval rights.' };
+    }
+
+    const riskRating = client.amlData?.riskRating || 'Medium';
+    const isPep = client.amlData?.pepStatus && client.amlData.pepStatus !== 'Not PEP';
+    const isComplex = client.ownershipData?.complexStructure;
+
+    // Head of Compliance can approve everything
+    if (persona.title === 'Head of Compliance') {
+      return { allowed: true };
+    }
+
+    // Senior Compliance Officer can approve Low, Medium, High, EDD (but not Very High/Critical, PEP, Complex)
+    if (persona.title === 'Senior Compliance Officer') {
+      if (riskRating === 'Critical') {
+        return { allowed: false, reason: 'Very High Risk clients require Head of Compliance approval.' };
+      }
+      if (isPep) {
+        return { allowed: false, reason: 'Politically Exposed Persons (PEPs) require Head of Compliance approval.' };
+      }
+      if (isComplex) {
+        return { allowed: false, reason: 'Complex ownership structures require Head of Compliance approval.' };
+      }
+      return { allowed: true };
+    }
+
+    // Standard Compliance Officer can only approve Low and Medium Risk
+    if (persona.title === 'Compliance Officer') {
+      if (riskRating === 'High' || riskRating === 'Critical') {
+        return { allowed: false, reason: 'High/Very High Risk clients require Senior Compliance Officer or Head of Compliance approval.' };
+      }
+      if (isPep) {
+        return { allowed: false, reason: 'Politically Exposed Persons (PEPs) require Head of Compliance approval.' };
+      }
+      if (isComplex) {
+        return { allowed: false, reason: 'Complex ownership structures require Head of Compliance approval.' };
+      }
+      // If EDD is required (overall score >= 75 or has hits)
+      if (client.riskScores?.overall >= 75) {
+        return { allowed: false, reason: 'Clients undergoing Enhanced Due Diligence (EDD) require Senior Compliance Officer approval.' };
+      }
+      return { allowed: true };
+    }
+
+    return { allowed: false, reason: 'Access Restricted' };
+  };
 
   // Handle template updates when checkboxes are clicked
   const handleDocCheckboxChange = (key: string, checked: boolean) => {
@@ -105,8 +312,16 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
       }
     }
     
-    const activePersona = localStorage.getItem('growkyc_selected_user') || 'sarah_chen';
-    const userDisplay = activePersona === 'emma_williams' ? 'Emma Williams' : 'Sarah Chen';
+    const USER_DISPLAY_MAP: Record<string, string> = {
+      sarah_chen: 'Sarah Chen',
+      emma_williams: 'Emma Williams',
+      jessica_lee: 'Jessica Lee',
+      michael_roberts: 'Michael Roberts',
+      alex_rivera: 'Alex Rivera',
+      david_thompson: 'David Thompson',
+      robert_kim: 'Robert Kim'
+    };
+    const userDisplay = USER_DISPLAY_MAP[activePersona] || 'Sarah Chen';
 
     const newActivity = {
       type: 'review',
@@ -139,6 +354,12 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
   };
 
   const handleApprove = async () => {
+    const perm = getApprovalPermission();
+    if (!perm.allowed) {
+      toast.error('Approval Denied', perm.reason || 'Restricted action.');
+      return;
+    }
+
     setLoadingAction('approve');
     await new Promise(resolve => setTimeout(resolve, 800)); // Network simulation
     
@@ -249,7 +470,7 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
                 { 
                   label: 'Identity Verification (IDV)', 
                   status: client.quickStatus?.identity || 'Verified', 
-                  color: client.quickStatus?.identity === 'Info Requested' ? 'text-amber-600' : 'text-green-600' 
+                  color: client.quickStatus?.identity === 'Info Requested' || client.quickStatus?.identity === 'Pending Information' ? 'text-amber-600' : 'text-green-600' 
                 },
                 { 
                   label: 'Sanctions Screening', 
@@ -265,6 +486,34 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
                   label: 'Adverse Media', 
                   status: client.amlData?.adverseMediaHits > 0 ? 'Review Required' : 'Clear', 
                   color: client.amlData?.adverseMediaHits > 0 ? 'text-amber-600' : 'text-green-600' 
+                },
+                {
+                  label: 'Transaction Restriction Status',
+                  status: client.status === 'Suspended' 
+                    ? 'Account Blocked / Frozen'
+                    : client.riskScores?.overall >= 90 
+                    ? 'Freeze Onboarding & Funding'
+                    : client.riskScores?.overall >= 75 
+                    ? 'Temporary Review Hold'
+                    : client.riskScores?.overall >= 40 
+                    ? 'Enhanced Monitoring'
+                    : 'No Restrictions',
+                  color: client.status === 'Suspended' || client.riskScores?.overall >= 90 
+                    ? 'text-red-600 font-extrabold'
+                    : client.riskScores?.overall >= 75 
+                    ? 'text-amber-600 font-bold'
+                    : client.riskScores?.overall >= 40 
+                    ? 'text-blue-600 font-medium'
+                    : 'text-green-600'
+                },
+                {
+                  label: 'EDD Requirements Escalation',
+                  status: (client.riskScores?.overall >= 75 || client.amlData?.pepStatus !== 'Not PEP' || client.ownershipData?.complexStructure || client.amlData?.adverseMediaHits > 0)
+                    ? 'Escalated to EDD (Automatic)'
+                    : 'Standard CDD',
+                  color: (client.riskScores?.overall >= 75 || client.amlData?.pepStatus !== 'Not PEP' || client.ownershipData?.complexStructure || client.amlData?.adverseMediaHits > 0)
+                    ? 'text-red-600 font-bold'
+                    : 'text-gray-500'
                 }
               ].map((check, i) => (
                 <div key={i} className="flex items-center justify-between p-3 bg-white rounded border">
@@ -311,6 +560,13 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
               )}
             </Button>
           </div>
+
+          {!getApprovalPermission().allowed && (
+            <div className="p-3 bg-red-50 text-red-800 rounded-lg border border-red-200 text-xs font-semibold flex items-center gap-2">
+              <AlertTriangle className="w-4 h-4 text-red-600 flex-shrink-0 animate-pulse" />
+              <span>{getApprovalPermission().reason}</span>
+            </div>
+          )}
         </div>
       </div>
 

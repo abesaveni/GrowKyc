@@ -12,8 +12,8 @@ Distinct from Client.risk_score / Client.risk_level (live state):
 
 from datetime import datetime, timezone
 
-from sqlalchemy import Column, DateTime, Float, ForeignKey, Index, Integer, String, Text
-from sqlalchemy import JSON
+from sqlalchemy import (JSON, Column, DateTime, Float, ForeignKey, Index,
+                        Integer, String, Text)
 from sqlalchemy.orm import relationship
 
 from models.base import Base
@@ -40,15 +40,22 @@ class RiskAssessment(Base):
     )
 
     # ---- Risk scores ----
-    inherent_risk = Column(String(20), nullable=True, comment="LOW|MEDIUM|HIGH before controls")
-    residual_risk = Column(String(20), nullable=True, comment="LOW|MEDIUM|HIGH after controls")
+    inherent_risk = Column(
+        String(20), nullable=True, comment="LOW|MEDIUM|HIGH before controls"
+    )
+    residual_risk = Column(
+        String(20), nullable=True, comment="LOW|MEDIUM|HIGH after controls"
+    )
     calculated_score = Column(Float, nullable=True, comment="Composite score 0–100")
-    manual_override_score = Column(Float, nullable=True, comment="Compliance officer override")
+    manual_override_score = Column(
+        Float, nullable=True, comment="Compliance officer override"
+    )
     final_risk_level = Column(String(20), nullable=True, index=True)
 
     # ---- Factor breakdown ----
     risk_factors = Column(
-        JSON, nullable=True,
+        JSON,
+        nullable=True,
         comment="Dict of contributing factors and weights",
     )
     scoring_explanation = Column(Text, nullable=True)
@@ -62,11 +69,14 @@ class RiskAssessment(Base):
 
     # ---- Review scheduling ----
     review_due_date = Column(DateTime(timezone=True), nullable=True, index=True)
-    review_history = Column(JSON, nullable=True, comment="[{date, reviewer_id, outcome}]")
+    review_history = Column(
+        JSON, nullable=True, comment="[{date, reviewer_id, outcome}]"
+    )
 
     # ---- Trigger context ----
     assessment_trigger = Column(
-        String(100), nullable=True,
+        String(100),
+        nullable=True,
         comment="onboarding|periodic_review|manual|screening_hit|case_escalation",
     )
     assessed_by_user_id = Column(

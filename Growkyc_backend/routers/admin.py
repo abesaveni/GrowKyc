@@ -15,14 +15,9 @@ from core.exceptions import DatabaseError, ResourceNotFoundError
 from database import get_db
 from dependencies import get_admin_or_agent_user, get_admin_user
 from models import KYC, Document, User
-from schemas import (
-    BulkApproveRequest,
-    BulkApproveResponse,
-    KYCAuditLogResponse,
-    KYCResponse,
-    PaginatedResponse,
-    UserResponse,
-)
+from schemas import (BulkApproveRequest, BulkApproveResponse,
+                     KYCAuditLogResponse, KYCResponse, PaginatedResponse,
+                     UserResponse)
 from services.kyc_service import KYCService
 from services.user_service import UserService
 

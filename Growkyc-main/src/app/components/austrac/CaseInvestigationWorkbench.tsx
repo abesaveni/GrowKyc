@@ -19,17 +19,23 @@ import {
   Building,
   Globe,
   Scale,
-  Activity
+  Activity,
+  ArrowLeft
 } from 'lucide-react';
 
 type TabType = 'facts' | 'triggers' | 'evidence' | 'screening' | 'related' | 'financial' | 'service' | 'prior';
 
-export function CaseInvestigationWorkbench() {
+interface CaseInvestigationWorkbenchProps {
+  caseId?: string;
+  onBack?: () => void;
+}
+
+export function CaseInvestigationWorkbench({ caseId, onBack }: CaseInvestigationWorkbenchProps = {}) {
   const [activeTab, setActiveTab] = useState<TabType>('facts');
   const [recommendation, setRecommendation] = useState<string>('');
 
   const caseData = {
-    caseId: 'AUS-2026-002',
+    caseId: caseId || 'AUS-2026-002',
     subject: 'ABC Enterprises Pty Ltd',
     status: 'Under Investigation',
     assignedTo: 'Michael Chen',
@@ -124,6 +130,12 @@ export function CaseInvestigationWorkbench() {
         <div className="bg-gradient-to-r from-red-900 via-red-800 to-orange-900 rounded-lg p-6 text-white shadow-xl">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
+              {onBack && (
+                <Button variant="ghost" onClick={onBack} className="bg-white/10 border-2 border-white/20 text-white hover:bg-white/20">
+                  <ArrowLeft className="w-5 h-5 mr-2" />
+                  Back
+                </Button>
+              )}
               <div className="w-14 h-14 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border-2 border-white/20">
                 <Eye className="w-8 h-8" />
               </div>

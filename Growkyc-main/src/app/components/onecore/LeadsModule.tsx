@@ -676,7 +676,7 @@ function NewLeadModal({ onClose, onAddLead }: any) {
       estimatedValue,
       lastActivity: 'Just now',
       assignedTo,
-      tags: []
+      tags: [] as string[]
     };
     onAddLead(newLead);
   };

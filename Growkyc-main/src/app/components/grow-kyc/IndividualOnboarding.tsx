@@ -33,6 +33,7 @@ import {
 } from 'lucide-react';
 import { toast } from '../../lib/toast';
 import { IdVerification100Point } from '../kyc/IdVerification100Point';
+import { ClientsDB } from '../kyc/ClientsDatabase';
 
 interface IndividualOnboardingProps {
   onBack: () => void;
@@ -172,6 +173,9 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
   const [devMode, setDevMode] = useState(false); // Changed to false by default
   const [uploadedDocuments, setUploadedDocuments] = useState<any[]>([]);
   const [totalPoints, setTotalPoints] = useState(0);
+  const [cardNumber, setCardNumber] = useState('');
+  const [cardExpiry, setCardExpiry] = useState('');
+  const [cardCvv, setCardCvv] = useState('');
 
   const handleDocumentAdd = (document: any) => {
     const newDoc = { ...document, id: Date.now(), file: null };
@@ -244,26 +248,312 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
   };
 
   const handlePersonalDetailsSubmit = () => {
-    // No validation - allow progression
+    if (!devMode) {
+      if (!personalData.firstName.trim()) {
+        toast.error('First Name is required');
+        return;
+      }
+      if (!personalData.lastName.trim()) {
+        toast.error('Last Name is required');
+        return;
+      }
+      if (!personalData.dateOfBirth.trim()) {
+        toast.error('Date of Birth is required');
+        return;
+      }
+      if (!personalData.email.trim()) {
+        toast.error('Email is required');
+        return;
+      }
+      if (!personalData.phone.trim()) {
+        toast.error('Phone is required');
+        return;
+      }
+      if (!personalData.address.trim()) {
+        toast.error('Street Address is required');
+        return;
+      }
+      if (!personalData.city.trim()) {
+        toast.error('City is required');
+        return;
+      }
+      if (!personalData.state.trim()) {
+        toast.error('State is required');
+        return;
+      }
+      if (!personalData.postcode.trim()) {
+        toast.error('Postcode is required');
+        return;
+      }
+      if (!personalData.idNumber.trim()) {
+        toast.error('Document Number is required');
+        return;
+      }
+      if (personalData.idType === 'drivers_licence' && !personalData.idState.trim()) {
+        toast.error('Licence State is required');
+        return;
+      }
+    }
     toast.success('Personal details saved');
     setCurrentStep('id_upload');
   };
 
   const handleIdUploadSubmit = () => {
-    // No validation - allow progression
+    if (!devMode && totalPoints < 100) {
+      toast.error(`Please upload enough documents to reach 100 points. Current: ${totalPoints} points.`);
+      return;
+    }
     toast.success('ID document uploaded');
     setCurrentStep('consent');
   };
 
   const handleConsentSubmit = () => {
-    // No validation - allow progression
+    if (!devMode) {
+      if (!consentGiven || !termsAccepted) {
+        toast.error('Please accept the consent checkbox and terms & conditions.');
+        return;
+      }
+    }
     toast.success('Consent recorded');
     setCurrentStep('payment');
   };
 
   const handlePaymentSubmit = () => {
+    if (!devMode && paymentMethod === 'card') {
+      if (!cardNumber.trim()) {
+        toast.error('Card Number is required');
+        return;
+      }
+      if (!cardExpiry.trim()) {
+        toast.error('Expiry Date is required');
+        return;
+      }
+      if (!cardCvv.trim()) {
+        toast.error('CVV is required');
+        return;
+      }
+    }
+
     setCurrentStep('processing');
     setProcessing(true);
+
+    const registerOnboardedClients = (verifiedEntitiesList: any[]) => {
+      const currentDate = new Date().toISOString().split('T')[0];
+      const nextYearDate = new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0];
+      
+      const individualId = `client-${Date.now()}`;
+      const newIndividual: any = {
+        id: individualId,
+        name: `${personalData.firstName} ${personalData.lastName}`,
+        entityType: 'Individual',
+        status: 'Active',
+        country: 'Australia',
+        industry: 'Professional Services',
+        serviceType: 'Wealth Management',
+        clientGroup: 'New Onboard Group',
+        riskScores: {
+          overall: 15,
+          aml: 10,
+          financial: 20,
+          business: 15,
+          ownership: 0
+        },
+        quickStatus: {
+          identity: 'Verified',
+          aml: 'Clear',
+          entity: 'N/A',
+          monitoring: 'Active'
+        },
+        lastReview: currentDate,
+        nextReview: nextYearDate,
+        identityData: {
+          primaryID: {
+            type: personalData.idType === 'drivers_licence' ? 'Driver License' : 'Passport',
+            number: personalData.idNumber,
+            expiry: '2030-12-31',
+            verified: true
+          },
+          biometricStatus: 'Passed',
+          livenessCheck: true,
+          addressVerified: true,
+          greenIDScore: 940,
+          infoTrackStatus: 'Verified - High Confidence',
+          fraudFlags: []
+        },
+        amlData: {
+          sanctionsMatches: 0,
+          pepStatus: 'Not PEP',
+          adverseMediaHits: 0,
+          worldCheckStatus: 'Clear',
+          transactionMonitoring: 'Active',
+          riskRating: 'Low',
+          lastScreeningDate: currentDate
+        },
+        entityData: {},
+        ownershipData: {
+          ubos: [
+            {
+              name: `${personalData.firstName} ${personalData.lastName}`,
+              ownership: 100,
+              verified: true,
+              country: 'Australia'
+            }
+          ],
+          ownershipStructureComplete: true,
+          complexStructure: false
+        },
+        financialData: {
+          bankAccounts: 1,
+          sourceOfFunds: 'Salary',
+          sourceOfWealth: 'Employment',
+          estimatedWealth: '$1.5M',
+          transactionVolume: '$10K monthly',
+          highRiskTransactions: 0
+        },
+        legalData: {
+          serviceAgreementSigned: true,
+          termsAccepted: termsAccepted,
+          privacyConsentGiven: consentGiven,
+          kycConsentDate: currentDate
+        },
+        documentsData: {
+          total: 5,
+          verified: 5,
+          pending: 0,
+          rejected: 0
+        },
+        monitoringData: {
+          alertsLast30Days: 0,
+          activeAlerts: 0,
+          nameChanges: 0,
+          addressChanges: 0,
+          ownershipChanges: 0
+        }
+      };
+
+      ClientsDB.addClient(newIndividual);
+
+      // Add verified entities
+      verifiedEntitiesList.forEach((entity, index) => {
+        const entityId = `client-${Date.now()}-${index + 1}`;
+        const newEntity: any = {
+          id: entityId,
+          name: entity.name,
+          entityType: entity.type === 'company' ? 'Company' : 'Trust',
+          status: 'Active',
+          abn: entity.abn,
+          country: 'Australia',
+          industry: 'Investments',
+          serviceType: 'Wealth Management',
+          clientGroup: 'Associated Group',
+          riskScores: {
+            overall: 20,
+            aml: 15,
+            financial: 25,
+            business: 20,
+            ownership: 10
+          },
+          quickStatus: {
+            identity: 'Verified',
+            aml: 'Clear',
+            entity: 'Active',
+            monitoring: 'Active'
+          },
+          lastReview: currentDate,
+          nextReview: nextYearDate,
+          identityData: {
+            primaryID: {
+              type: 'ASIC Search',
+              number: entity.abn,
+              expiry: 'N/A',
+              verified: true
+            },
+            biometricStatus: 'Passed',
+            livenessCheck: true,
+            addressVerified: true,
+            greenIDScore: 900,
+            infoTrackStatus: 'Verified - High Confidence',
+            fraudFlags: []
+          },
+          amlData: {
+            sanctionsMatches: 0,
+            pepStatus: 'Not PEP',
+            adverseMediaHits: 0,
+            worldCheckStatus: 'Clear',
+            transactionMonitoring: 'Active',
+            riskRating: 'Low',
+            lastScreeningDate: currentDate
+          },
+          entityData: {
+            registrationDate: currentDate,
+            companyStatus: 'Active',
+            directors: [
+              {
+                name: `${personalData.firstName} ${personalData.lastName}`,
+                appointed: currentDate,
+                role: 'Director',
+                kycStatus: 'Verified'
+              }
+            ]
+          },
+          ownershipData: {
+            ubos: [
+              {
+                name: `${personalData.firstName} ${personalData.lastName}`,
+                ownership: 100,
+                verified: true,
+                country: 'Australia'
+              }
+            ],
+            ownershipStructureComplete: true,
+            complexStructure: false
+          },
+          financialData: {
+            bankAccounts: 1,
+            sourceOfFunds: 'Business operations',
+            sourceOfWealth: 'Investments',
+            estimatedWealth: '$2M',
+            transactionVolume: '$50K monthly',
+            highRiskTransactions: 0
+          },
+          legalData: {
+            serviceAgreementSigned: true,
+            termsAccepted: termsAccepted,
+            privacyConsentGiven: consentGiven,
+            kycConsentDate: currentDate
+          },
+          documentsData: {
+            total: 5,
+            verified: 5,
+            pending: 0,
+            rejected: 0
+          },
+          monitoringData: {
+            alertsLast30Days: 0,
+            activeAlerts: 0,
+            nameChanges: 0,
+            addressChanges: 0,
+            ownershipChanges: 0
+          }
+        };
+        ClientsDB.addClient(newEntity);
+      });
+
+      // Save to logged activities
+      const activityLog = {
+        type: 'approval',
+        user: 'System Onboarding',
+        action: `successfully onboarded individual ${newIndividual.name} and associated entities`,
+        time: 'Just now',
+        iconName: 'CheckCircle',
+        color: 'text-green-600'
+      };
+      const savedLogs = localStorage.getItem('growkyc_logged_activities');
+      const logs = savedLogs ? JSON.parse(savedLogs) : [];
+      logs.unshift(activityLog);
+      localStorage.setItem('growkyc_logged_activities', JSON.stringify(logs));
+      window.dispatchEvent(new CustomEvent('growkyc:activity_logged'));
+    };
 
     // Simulate processing and entity discovery
     setTimeout(() => {
@@ -319,11 +609,16 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
           // Charge card for additional entities
           toast.success(`✅ Card charged $${additionalCost.toFixed(2)} for ${mockEntities.length} additional entities`);
           
+          // Register both individual and verified entities
+          registerOnboardedClients(verifiedEntities);
+          
           setProcessing(false);
           setCurrentStep('results');
           toast.success('All verifications complete!');
         }, 2500);
       } else {
+        // Register only individual in the client database
+        registerOnboardedClients([]);
         setProcessing(false);
         setCurrentStep('results');
         toast.success('Verification complete!');
@@ -862,6 +1157,8 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
                 </label>
                 <input
                   type="text"
+                  value={cardNumber}
+                  onChange={(e) => setCardNumber(e.target.value)}
                   className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                   placeholder="4242 4242 4242 4242"
                 />
@@ -873,6 +1170,8 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
                   </label>
                   <input
                     type="text"
+                    value={cardExpiry}
+                    onChange={(e) => setCardExpiry(e.target.value)}
                     className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                     placeholder="MM/YY"
                   />
@@ -883,6 +1182,8 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
                   </label>
                   <input
                     type="text"
+                    value={cardCvv}
+                    onChange={(e) => setCardCvv(e.target.value)}
                     className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                     placeholder="123"
                   />

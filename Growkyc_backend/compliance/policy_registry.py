@@ -3,14 +3,15 @@ compliance/policy_registry.py
 =============================
 Central registry for resolving country codes to active Compliance Policies.
 """
-import logging
-from typing import Dict, Type
 
-from compliance.policies.base_policy import BaseCountryPolicy
+import logging
+from typing import Dict
+
 from compliance.policies.australia_policy import AustraliaPolicy
+from compliance.policies.base_policy import BaseCountryPolicy
 from compliance.policies.india_policy import IndiaPolicy
-from compliance.policies.us_policy import USPolicy
 from compliance.policies.uk_policy import UKPolicy
+from compliance.policies.us_policy import USPolicy
 
 logger = logging.getLogger(__name__)
 
@@ -33,11 +34,13 @@ def get_policy(country_code: str = None) -> BaseCountryPolicy:
     """
     code = (country_code or DEFAULT_COUNTRY).upper()
     policy = _POLICY_REGISTRY.get(code)
-    
+
     if not policy:
-        logger.warning(f"No compliance policy found for {code}, falling back to {DEFAULT_COUNTRY}")
+        logger.warning(
+            f"No compliance policy found for {code}, falling back to {DEFAULT_COUNTRY}"
+        )
         policy = _POLICY_REGISTRY[DEFAULT_COUNTRY]
-        
+
     return policy
 
 

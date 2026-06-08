@@ -4,18 +4,22 @@ Encapsulates KYC submission, approval, rejection, and document management.
 """
 
 import logging
-from datetime import datetime, date as _date, time as _time, timezone
+from datetime import date as _date
+from datetime import datetime
+from datetime import time as _time
+from datetime import timezone
 from typing import List, Optional, Tuple
 
 from sqlalchemy.orm import Session
 
+from compliance.document_registry import LEGACY_DOCUMENT_MAPPING
 from core.constants import (
     AUDIT_KYC_APPROVED,
     AUDIT_KYC_SUBMITTED,
     ERROR_INVALID_KYC_STATUS,
     ERROR_KYC_NO_IDENTIFIERS,
 )
-from core.enums import KYCStatus, NotificationType, RiskLevel
+from core.enums import KYCStatus
 from core.exceptions import (
     DatabaseError,
     DuplicateResourceError,
@@ -23,20 +27,11 @@ from core.exceptions import (
     ResourceNotFoundError,
     ValidationError,
 )
-from models import KYC, Client, KYCAuditLog, User, IdentityDocument
-from compliance.document_registry import (
-    DocumentCategory,
-    NormalizedDocumentType,
-    LEGACY_DOCUMENT_MAPPING,
-)
 from core.tenant_context import get_tenant_id
-from services.audit_service import AuditService
-from services.case_service import CaseService
-from services.monitoring_service import MonitoringService
-from services.notification_service import NotificationService
-from services.monitoring_service import MonitoringService
-from services.client_service import ClientService
+from models import KYC, Client, IdentityDocument, KYCAuditLog, User
 from schemas import IndividualProfileCreate
+from services.client_service import ClientService
+from services.monitoring_service import MonitoringService
 
 logger = logging.getLogger(__name__)
 
@@ -126,7 +121,7 @@ class KYCService:
             self.db.commit()
             self.db.refresh(kyc)
 
-            # ── COMPATIBILITY ADAPTER ──────────────────────────────────────────
+            # Compatibility adapter for deprecated aadhaar/pan fields.
             # Translate deprecated aadhaar/pan into IdentityDocument records.
             # This makes legacy submissions available in the new generic schema
             # without breaking existing APIs or data.
@@ -135,7 +130,7 @@ class KYCService:
                 aadhaar=aadhaar,
                 pan=pan,
             )
-            # ──────────────────────────────────────────────────────────────────
+            # End compatibility adapter.
 
             # Create audit log
             self._create_audit_log(
@@ -148,7 +143,9 @@ class KYCService:
 
             # --- INTEGRATION: CREATE CLIENT VIA CLIENT_SERVICE ---
             tenant_id = get_tenant_id() or kyc.tenant_id or user.tenant_id
-            existing_client = self.db.query(Client).filter(Client.user_id == user.id).first()
+            existing_client = (
+                self.db.query(Client).filter(Client.user_id == user.id).first()
+            )
             if not existing_client and tenant_id is None:
                 self.logger.info(
                     "[COMPAT] Skipping ClientService profile sync for KYC %s "
@@ -158,12 +155,12 @@ class KYCService:
             elif not existing_client:
                 client_service = ClientService(self.db)
                 # Map legacy fields to new Enterprise IndividualProfile
-                # Note: name split is handled inside ClientService if first_name/last_name are missing,
+                # ClientService handles name splitting if profile names are missing.
                 # but we will try to split it here.
                 name_parts = name.split(" ", 1)
                 first_name = name_parts[0]
                 last_name = name_parts[1] if len(name_parts) > 1 else ""
-                
+
                 profile_data = IndividualProfileCreate(
                     first_name=first_name,
                     last_name=last_name,
@@ -173,14 +170,12 @@ class KYCService:
                     tax_file_number=pan,
                     residential_address=address,
                 )
-                
+
                 # ClientService handles Screening, Risk Scoring, and Alerts
                 client_service.create_individual_client(
-                    user_id=user.id, 
-                    profile_data=profile_data,
-                    trigger_async=False
+                    user_id=user.id, profile_data=profile_data, trigger_async=False
                 )
-            
+
             # Integration STEP 6: Execute Monitoring Scrape on Client Action
             try:
                 MonitoringService(self.db).run_monitoring_checks()
@@ -548,7 +543,10 @@ class KYCService:
                         document_type=norm_type.value,
                         document_number=aadhaar,
                         issuing_authority="UIDAI",
-                        metadata_json={"source": "legacy_aadhaar_field", "schema_version": "1.0.0"},
+                        metadata_json={
+                            "source": "legacy_aadhaar_field",
+                            "schema_version": "1.0.0",
+                        },
                     )
                 )
 
@@ -564,7 +562,10 @@ class KYCService:
                         document_type=norm_type.value,
                         document_number=pan,
                         issuing_authority="Income Tax Department",
-                        metadata_json={"source": "legacy_pan_field", "schema_version": "1.0.0"},
+                        metadata_json={
+                            "source": "legacy_pan_field",
+                            "schema_version": "1.0.0",
+                        },
                     )
                 )
 
@@ -580,4 +581,6 @@ class KYCService:
         except Exception as e:
             # Non-fatal — legacy fields still exist on KYC record for fallback.
             self.db.rollback()
-            self.logger.error(f"[COMPAT] Failed to normalize legacy documents for KYC {kyc.id}: {e}")
+            self.logger.error(
+                f"[COMPAT] Failed to normalize legacy documents for KYC {kyc.id}: {e}"
+            )

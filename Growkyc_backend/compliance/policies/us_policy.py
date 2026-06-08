@@ -3,7 +3,8 @@ compliance/policies/us_policy.py
 ================================
 FinCEN-compliant US AML/KYC policy skeleton.
 """
-from typing import Dict, List, Any
+
+from typing import Any, Dict, List
 
 from compliance.document_registry import NormalizedDocumentType
 from compliance.policies.base_policy import BaseCountryPolicy
@@ -27,7 +28,10 @@ class USPolicy(BaseCountryPolicy):
     def get_required_document_types(self, client_type: str = "individual") -> List[str]:
         if client_type == "business":
             return [NormalizedDocumentType.EIN.value]
-        return [NormalizedDocumentType.SSN.value, NormalizedDocumentType.DRIVER_LICENSE.value]
+        return [
+            NormalizedDocumentType.SSN.value,
+            NormalizedDocumentType.DRIVER_LICENSE.value,
+        ]
 
     def calculate_base_risk(self, kyc_data: Dict[str, Any]) -> float:
         return 25.0

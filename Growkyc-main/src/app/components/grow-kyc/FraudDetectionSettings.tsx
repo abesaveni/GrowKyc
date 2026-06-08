@@ -38,7 +38,38 @@ interface FraudRule {
   actions: string[];
 }
 
-export function FraudDetectionSettings() {
+interface AIModel {
+  id: string;
+  name: string;
+  type: string;
+  status: string;
+  accuracy: number;
+  lastTrained: string;
+  description: string;
+}
+
+interface CaseTrigger {
+  id: string;
+  name: string;
+  enabled: boolean;
+  conditions: string;
+  priority: string;
+  assignTo: string;
+  sla: string;
+}
+
+interface NotificationSetting {
+  id: string;
+  label: string;
+  enabled: boolean;
+}
+
+interface FraudDetectionSettingsProps {
+  role?: string;
+}
+
+export function FraudDetectionSettings({ role }: FraudDetectionSettingsProps = {}) {
+  const isReadOnly = role === 'auditor' || role === 'analyst';
   const [activeTab, setActiveTab] = useState<'rules' | 'ai-models' | 'case-triggers' | 'notifications'>('rules');
   const [fraudRules, setFraudRules] = useState<FraudRule[]>(() => {
     const saved = localStorage.getItem('grow_fraud_rules');
@@ -273,7 +304,7 @@ export function FraudDetectionSettings() {
   ];
 });
 
-  const [aiModels, setAiModels] = useState(() => {
+  const [aiModels, setAiModels] = useState<AIModel[]>(() => {
     const saved = localStorage.getItem('grow_fraud_ai_models');
     if (saved) {
       try { return JSON.parse(saved); } catch (e) {}
@@ -318,7 +349,7 @@ export function FraudDetectionSettings() {
     ];
   });
 
-  const [caseTriggers, setCaseTriggers] = useState(() => {
+  const [caseTriggers, setCaseTriggers] = useState<CaseTrigger[]>(() => {
     const saved = localStorage.getItem('grow_fraud_case_triggers');
     if (saved) {
       try { return JSON.parse(saved); } catch (e) {}
@@ -385,6 +416,10 @@ export function FraudDetectionSettings() {
     currentTriggers = caseTriggers,
     currentNotifications = notificationSettings
   ) => {
+    if (isReadOnly) {
+      showToast('Access Denied: Cannot save fraud detection settings in read-only mode.', 'error');
+      return;
+    }
     localStorage.setItem('grow_fraud_rules', JSON.stringify(currentRules));
     localStorage.setItem('grow_fraud_ai_models', JSON.stringify(currentModels));
     localStorage.setItem('grow_fraud_case_triggers', JSON.stringify(currentTriggers));
@@ -393,6 +428,7 @@ export function FraudDetectionSettings() {
   };
 
   const toggleRule = (ruleId: string) => {
+    if (isReadOnly) return;
     const updated = fraudRules.map(rule => 
       rule.id === ruleId ? { ...rule, enabled: !rule.enabled } : rule
     );
@@ -401,6 +437,7 @@ export function FraudDetectionSettings() {
   };
 
   const toggleAutoCase = (ruleId: string) => {
+    if (isReadOnly) return;
     const updated = fraudRules.map(rule => 
       rule.id === ruleId ? { ...rule, autoCreateCase: !rule.autoCreateCase } : rule
     );
@@ -409,14 +446,15 @@ export function FraudDetectionSettings() {
   };
 
   const toggleCaseTrigger = (triggerId: string) => {
-    const updated = caseTriggers.map(trigger => 
+    if (isReadOnly) return;
+    const updated = caseTriggers.map((trigger: CaseTrigger) => 
       trigger.id === triggerId ? { ...trigger, enabled: !trigger.enabled } : trigger
     );
     setCaseTriggers(updated);
     saveAllSettings(fraudRules, aiModels, updated, notificationSettings);
   };
 
-  const [notificationSettings, setNotificationSettings] = useState(() => {
+  const [notificationSettings, setNotificationSettings] = useState<NotificationSetting[]>(() => {
     const saved = localStorage.getItem('grow_fraud_notification_settings');
     if (saved) {
       try { return JSON.parse(saved); } catch (e) {}
@@ -432,7 +470,8 @@ export function FraudDetectionSettings() {
   });
 
   const toggleNotification = (notificationId: string) => {
-    const updated = notificationSettings.map(notification => 
+    if (isReadOnly) return;
+    const updated = notificationSettings.map((notification: NotificationSetting) => 
       notification.id === notificationId ? { ...notification, enabled: !notification.enabled } : notification
     );
     setNotificationSettings(updated);
@@ -500,7 +539,7 @@ export function FraudDetectionSettings() {
             </div>
             <p className="text-red-100">Advanced fraud detection rules, AI models, and automated case creation</p>
           </div>
-          <Button onClick={() => saveAllSettings()} className="bg-white text-red-600 hover:bg-red-50 font-bold shadow-md">
+          <Button disabled={isReadOnly} onClick={() => saveAllSettings()} className="bg-white text-red-600 hover:bg-red-50 font-bold shadow-md">
             <Save className="w-5 h-5 mr-2" />
             Save All Settings
           </Button>
@@ -631,6 +670,7 @@ export function FraudDetectionSettings() {
                         <div className="flex flex-col gap-3 ml-4">
                           <label className="flex items-center gap-2 cursor-pointer">
                             <input
+                              disabled={isReadOnly}
                               type="checkbox"
                               checked={rule.enabled}
                               onChange={() => toggleRule(rule.id)}
@@ -643,16 +683,16 @@ export function FraudDetectionSettings() {
 
                           <label className="flex items-center gap-2 cursor-pointer">
                             <input
+                              disabled={isReadOnly || !rule.enabled}
                               type="checkbox"
                               checked={rule.autoCreateCase}
                               onChange={() => toggleAutoCase(rule.id)}
-                              disabled={!rule.enabled}
                               className="w-5 h-5 text-orange-600 rounded"
                             />
                             <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Auto Case</span>
                           </label>
 
-                          <Button size="sm" variant="outline">
+                          <Button disabled={isReadOnly} size="sm" variant="outline">
                             <Settings className="w-4 h-4 mr-2" />
                             Configure
                           </Button>
@@ -663,7 +703,7 @@ export function FraudDetectionSettings() {
                 })}
               </div>
 
-              <Button>
+              <Button disabled={isReadOnly}>
                 <Plus className="w-4 h-4 mr-2" />
                 Add Custom Rule
               </Button>
@@ -674,7 +714,7 @@ export function FraudDetectionSettings() {
           {activeTab === 'ai-models' && (
             <div className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {aiModels.map(model => (
+                {aiModels.map((model: AIModel) => (
                   <div key={model.id} className="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-800 dark:to-gray-700 rounded-lg shadow-lg p-6 border border-purple-200 dark:border-purple-700">
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex items-center gap-3">
@@ -716,7 +756,7 @@ export function FraudDetectionSettings() {
                     </div>
 
                     <div className="flex gap-2 mt-4">
-                      <Button size="sm" className="flex-1">
+                      <Button disabled={isReadOnly} size="sm" className="flex-1">
                         <RefreshCw className="w-4 h-4 mr-2" />
                         Retrain
                       </Button>
@@ -746,7 +786,7 @@ export function FraudDetectionSettings() {
                 </div>
               </div>
 
-              {caseTriggers.map(trigger => (
+              {caseTriggers.map((trigger: CaseTrigger) => (
                 <div
                   key={trigger.id}
                   className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-orange-500"
@@ -783,6 +823,7 @@ export function FraudDetectionSettings() {
                     <div className="flex items-center gap-3 ml-4">
                       <label className="flex items-center gap-2 cursor-pointer">
                         <input
+                          disabled={isReadOnly}
                           type="checkbox"
                           checked={trigger.enabled}
                           onChange={() => toggleCaseTrigger(trigger.id)}
@@ -790,7 +831,7 @@ export function FraudDetectionSettings() {
                         />
                         <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Enabled</span>
                       </label>
-                      <Button size="sm" variant="outline">
+                      <Button disabled={isReadOnly} size="sm" variant="outline">
                         <Settings className="w-4 h-4" />
                       </Button>
                     </div>
@@ -798,7 +839,7 @@ export function FraudDetectionSettings() {
                 </div>
               ))}
 
-              <Button>
+              <Button disabled={isReadOnly}>
                 <Plus className="w-4 h-4 mr-2" />
                 Add Case Trigger
               </Button>
@@ -811,9 +852,10 @@ export function FraudDetectionSettings() {
               <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
                 <h4 className="font-bold text-gray-900 dark:text-white mb-4">Notification Settings</h4>
                 <div className="space-y-4">
-                  {notificationSettings.map((notification, i) => (
+                  {notificationSettings.map((notification: NotificationSetting, i: number) => (
                     <label key={i} className="flex items-center gap-3 cursor-pointer p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg">
                       <input
+                        disabled={isReadOnly}
                         type="checkbox"
                         checked={notification.enabled}
                         onChange={() => toggleNotification(notification.id)}

@@ -6,7 +6,6 @@ Future-proof architecture for adding AU, US, SG without schema redesigns.
 """
 
 from enum import Enum
-from typing import Dict, Any
 
 
 class DocumentCategory(str, Enum):
@@ -24,18 +23,18 @@ class NormalizedDocumentType(str, Enum):
     NATIONAL_ID = "national_identifier"
     UTILITY_BILL = "utility_bill"
     BANK_STATEMENT = "bank_statement"
-    
+
     # Australia (AU)
     TFN = "tax_file_number"
     MEDICARE_CARD = "medicare_card"
     ABN = "australian_business_number"
     ACN = "australian_company_number"
-    
+
     # India (IN) (Legacy mappings)
     AADHAAR = "national_identifier"
     PAN = "tax_identifier"
     VOTER_ID = "voter_identifier"
-    
+
     # USA (US)
     SSN = "social_security_number"
     EIN = "employer_identification_number"
@@ -43,7 +42,11 @@ class NormalizedDocumentType(str, Enum):
 
 # Map legacy internal string representations to normalized Enums
 LEGACY_DOCUMENT_MAPPING = {
-    "aadhaar": (DocumentCategory.GOVERNMENT_ID, NormalizedDocumentType.NATIONAL_ID, "IN"),
+    "aadhaar": (
+        DocumentCategory.GOVERNMENT_ID,
+        NormalizedDocumentType.NATIONAL_ID,
+        "IN",
+    ),
     "pan": (DocumentCategory.TAX_ID, NormalizedDocumentType.PAN, "IN"),
     "voter_id": (DocumentCategory.GOVERNMENT_ID, NormalizedDocumentType.VOTER_ID, "IN"),
 }

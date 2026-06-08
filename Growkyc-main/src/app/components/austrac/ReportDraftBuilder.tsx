@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { jsPDF } from 'jspdf';
 import { toast } from 'sonner';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
@@ -36,15 +36,121 @@ export function ReportDraftBuilder({ caseId, onBack }: ReportDraftBuilderProps) 
     indicators: ''
   });
 
+  const [activeCase, setActiveCase] = useState<any>(null);
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem('austrac_cases');
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed)) {
+          const found = parsed.find(c => c.caseId === (caseId || 'AUS-2026-002'));
+          if (found) {
+            setActiveCase(found);
+          }
+        }
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }, [caseId]);
+
   const caseData = {
     caseId: caseId || 'AUS-2026-002',
-    subject: caseId === 'AUS-2026-001' ? 'Innovation Partners Trust' :
+    subject: activeCase?.subject || (caseId === 'AUS-2026-001' ? 'Innovation Partners Trust' :
              caseId === 'AUS-2026-003' ? 'David Chen' :
              caseId === 'AUS-2026-004' ? 'TechCorp Pty Ltd' :
              caseId === 'AUS-2026-005' ? 'Melbourne Family Trust' :
-             'ABC Enterprises Pty Ltd',
-    assignedTo: caseId === 'AUS-2026-003' ? 'Lisa Martinez' :
-                caseId === 'AUS-2026-002' ? 'Michael Chen' : 'Sarah Johnson'
+             'ABC Enterprises Pty Ltd'),
+    assignedTo: activeCase?.assignedReviewer || (caseId === 'AUS-2026-003' ? 'Lisa Martinez' :
+                caseId === 'AUS-2026-002' ? 'Michael Chen' : 'Sarah Johnson')
+  };
+
+  const handleDraftAction = (action: 'save' | 'submit') => {
+    const isSubmit = action === 'submit';
+    
+    // 1. Update case status in austrac_cases
+    try {
+      const storedCases = localStorage.getItem('austrac_cases');
+      if (storedCases) {
+        const parsed = JSON.parse(storedCases);
+        if (Array.isArray(parsed)) {
+          const updated = parsed.map(c => 
+            c.caseId === caseData.caseId ? { ...c, status: isSubmit ? 'awaiting_manager' : 'draft_in_progress' } : c
+          );
+          localStorage.setItem('austrac_cases', JSON.stringify(updated));
+        }
+      }
+    } catch (e) {
+      console.error('Failed to update case status', e);
+    }
+
+    // 2. Update draft report awaiting status in localStorage
+    try {
+      const storedDrafts = localStorage.getItem('austrac_draft_reports');
+      const draftsList = storedDrafts ? JSON.parse(storedDrafts) : [];
+      if (Array.isArray(draftsList)) {
+        const index = draftsList.findIndex(d => d.caseId === caseData.caseId);
+        const draftObj = {
+          caseId: caseData.caseId,
+          subject: caseData.subject,
+          draftType: draftType as any,
+          preparedBy: caseData.assignedTo,
+          awaiting: isSubmit ? 'MLRO Approval' : 'Draft Review',
+          lastUpdated: new Date().toISOString().replace('T', ' ').substring(0, 16)
+        };
+        
+        if (index > -1) {
+          draftsList[index] = draftObj;
+        } else {
+          draftsList.push(draftObj);
+        }
+        localStorage.setItem('austrac_draft_reports', JSON.stringify(draftsList));
+      }
+    } catch (e) {
+      console.error('Failed to update draft reports', e);
+    }
+
+    // 3. Add to submissions if submitted
+    if (isSubmit) {
+      try {
+        const storedSubmissions = localStorage.getItem('austrac_submissions');
+        const submissionsList = storedSubmissions ? JSON.parse(storedSubmissions) : [];
+        if (Array.isArray(submissionsList)) {
+          if (!submissionsList.some(s => s.caseId === caseData.caseId)) {
+            submissionsList.unshift({
+              caseId: caseData.caseId,
+              reportType: draftType === 'smr' ? 'smr' : 'smr',
+              subject: caseData.subject,
+              decisionDate: new Date().toISOString().split('T')[0],
+              submissionMethod: 'online',
+              status: 'submitted',
+              submittedBy: 'Lisa Martinez (MLRO)',
+              acknowledgementStatus: 'Pending',
+              lastUpdated: new Date().toISOString().replace('T', ' ').substring(0, 16),
+              submissionRef: `SMR-2026-AUS-${Math.floor(10000 + Math.random() * 90000)}`,
+              retryCount: 0
+            });
+            localStorage.setItem('austrac_submissions', JSON.stringify(submissionsList));
+          } else {
+            const updated = submissionsList.map(s => 
+              s.caseId === caseData.caseId ? { ...s, status: 'submitted', lastUpdated: new Date().toISOString().replace('T', ' ').substring(0, 16) } : s
+            );
+            localStorage.setItem('austrac_submissions', JSON.stringify(updated));
+          }
+        }
+      } catch (e) {
+        console.error('Failed to update submissions register', e);
+      }
+    }
+
+    if (isSubmit) {
+      toast.success('Draft SMR successfully submitted to MLRO & Compliance Manager!');
+    } else {
+      toast.success('Draft SMR progress successfully saved to compliance system.');
+    }
+
+    if (onBack) onBack();
   };
 
   const handleDownloadPDF = async () => {
@@ -270,56 +376,62 @@ export function ReportDraftBuilder({ caseId, onBack }: ReportDraftBuilderProps) 
   };
 
   // Structured source data sections
-  const sourceData = {
-    subjectDetails: {
-      legalName: 'ABC Enterprises Pty Ltd',
-      abn: '12 345 678 901',
-      acn: '123456789',
-      registeredAddress: '123 Collins St, Melbourne VIC 3000',
-      industryCode: 'Technology Services',
-      registrationDate: '2020-04-15'
-    },
-    relatedParties: [
-      { name: 'John Smith', role: 'Director', ownership: '100%', riskFlag: 'Sanctions Match' },
-      { name: 'Sarah Wong', role: 'Director', ownership: '0%', riskFlag: 'Foreign PEP' },
-      { name: 'Tech Holdings Ltd', role: 'Parent Company', jurisdiction: 'Singapore', riskFlag: 'Court Case' }
-    ],
-    triggers: [
-      {
-        source: 'Sanctions Bot',
-        finding: 'Director "John Smith" matches DFAT consolidated list',
-        confidence: '94%',
-        date: '2026-03-20'
+  const sourceData = React.useMemo(() => {
+    const isIndiv = activeCase?.subjectType === 'individual' || caseData.caseId === 'AUS-2026-003';
+    return {
+      subjectDetails: {
+        legalName: caseData.subject,
+        abn: isIndiv ? 'N/A' : '12 345 678 901',
+        acn: isIndiv ? 'N/A' : '123456789',
+        registeredAddress: isIndiv ? '456 George St, Sydney NSW 2000' : '123 Collins St, Melbourne VIC 3000',
+        industryCode: isIndiv ? 'Retiree / Investor' : 'Technology Services',
+        registrationDate: '2020-04-15'
       },
-      {
-        source: 'Adverse Media Bot',
-        finding: 'Severe financial crime theme - money laundering investigation',
-        confidence: '82%',
-        date: '2026-03-20'
+      relatedParties: isIndiv ? [
+        { name: caseData.subject, role: 'Primary Subject', ownership: '100%', riskFlag: 'PEP Match' },
+        { name: 'Spouse of ' + caseData.subject, role: 'Associate', ownership: '0%', riskFlag: 'No Flag' }
+      ] : [
+        { name: 'John Smith', role: 'Director', ownership: '100%', riskFlag: 'Sanctions Match' },
+        { name: 'Sarah Wong', role: 'Director', ownership: '0%', riskFlag: 'Foreign PEP' },
+        { name: 'Tech Holdings Ltd', role: 'Parent Company', jurisdiction: 'Singapore', riskFlag: 'Court Case' }
+      ],
+      triggers: [
+        {
+          source: 'Sanctions Bot',
+          finding: `${isIndiv ? 'Subject name' : 'Director John Smith'} matches DFAT consolidated list`,
+          confidence: '94%',
+          date: activeCase?.createdDate || '2026-03-20'
+        },
+        {
+          source: 'Adverse Media Bot',
+          finding: 'Severe financial crime theme - money laundering investigation',
+          confidence: '82%',
+          date: activeCase?.createdDate || '2026-03-20'
+        },
+        {
+          source: 'SOF Bot',
+          finding: 'Unexplained capital injection $2.5M',
+          confidence: '67%',
+          date: '2026-03-19'
+        }
+      ],
+      suspiciousFacts: [
+        `${isIndiv ? 'Subject name' : 'Director John Smith'} matched to DFAT sanctions list with 94% confidence`,
+        'Multiple adverse media articles linking entity to money laundering investigation in Singapore',
+        'Capital injection of $2.5M from undocumented source',
+        isIndiv ? 'Subject is PEP' : 'Second director is foreign PEP (government minister)',
+        'Court case pending in Singapore related to financial crime'
+      ],
+      serviceActivity: {
+        accountOpeningDate: '2024-06-15',
+        totalTransactions: 47,
+        totalValue: '$3.2M',
+        suspiciousTransactions: 3,
+        lastActivity: '2026-03-15'
       },
-      {
-        source: 'SOF Bot',
-        finding: 'Unexplained capital injection $2.5M',
-        confidence: '67%',
-        date: '2026-03-19'
-      }
-    ],
-    suspiciousFacts: [
-      'Director matched to DFAT sanctions list with 94% confidence',
-      'Multiple adverse media articles linking entity to money laundering investigation in Singapore',
-      'Capital injection of $2.5M from undocumented source',
-      'Second director is foreign PEP (government minister)',
-      'Court case pending in Singapore related to financial crime'
-    ],
-    serviceActivity: {
-      accountOpeningDate: '2024-06-15',
-      totalTransactions: 47,
-      totalValue: '$3.2M',
-      suspiciousTransactions: 3,
-      lastActivity: '2026-03-15'
-    },
-    geographicLinks: ['Australia (VIC)', 'Singapore', 'Hong Kong']
-  };
+      geographicLinks: ['Australia (VIC)', 'Singapore', 'Hong Kong']
+    };
+  }, [activeCase, caseData.subject, caseData.caseId]);
 
   const draftTypes = [
     { value: 'smr', label: 'Suspicious Matter Report (SMR)', color: 'red' },
@@ -329,14 +441,15 @@ export function ReportDraftBuilder({ caseId, onBack }: ReportDraftBuilderProps) 
   ];
 
   const generateAIDraft = () => {
+    const isIndiv = activeCase?.subjectType === 'individual' || caseData.caseId === 'AUS-2026-003';
     setReportContent({
-      summary: `This Suspicious Matter Report relates to ABC Enterprises Pty Ltd (ABN: 12 345 678 901), a technology services company registered in Victoria, Australia. Our ongoing monitoring systems detected multiple high-severity risk indicators that collectively suggest potential sanctions evasion and money laundering activity.\n\nThe primary concern is that the company's director, John Smith, has been matched with 94% confidence to an individual on the DFAT consolidated sanctions list. This match was confirmed through our AML screening provider ComplyAdvantage on 20 March 2026.\n\nConcurrently, our adverse media monitoring identified three separate articles published between 2025-2026 linking this entity to an ongoing money laundering investigation in Singapore. The articles indicate that regulatory authorities in Singapore are investigating the company's parent entity, Tech Holdings Ltd, for suspected financial crime.\n\nAdditionally, our Source of Funds analysis flagged an unexplained capital injection of AUD $2.5 million in March 2026, where the declared source ("business operations") could not be reconciled with the company's documented trading history, which shows consecutive annual losses.`,
+      summary: `This Suspicious Matter Report relates to ${caseData.subject} (${isIndiv ? 'Individual Account' : 'ABN: 12 345 678 901'}), a ${isIndiv ? 'financial investor client' : 'technology services company'} registered in Australia. Our ongoing monitoring systems detected multiple high-severity risk indicators that collectively suggest potential sanctions exposure and unusual capital injections.\n\nThe primary concern is that the ${isIndiv ? 'subject' : "company's director John Smith"} has been matched with 94% confidence to an individual on the DFAT consolidated sanctions list. This match was confirmed through our AML screening provider ComplyAdvantage on 20 March 2026.\n\nConcurrently, our adverse media monitoring identified three separate articles published between 2025-2026 linking this client network to an ongoing money laundering investigation in Singapore.\n\nAdditionally, our Source of Funds analysis flagged an unexplained capital injection of AUD $2.5 million in March 2026, where the declared source could not be reconciled with the documented profile, which shows consecutive operational losses or undocumented wealth origins.`,
       
-      chronology: `15 June 2024: Entity onboarded. All initial KYC and AML checks passed. Risk rating: Low.\n\n16 June 2024: Identity verification completed (Equifax). PEP, Sanctions, and Adverse Media screening clear (ComplyAdvantage).\n\n10 March 2025: Monitoring alert - Director Sarah Wong identified as foreign PEP (government minister). Risk rating upgraded to Medium. Enhanced due diligence commenced.\n\n20 January 2026: Adverse media alert - First article published linking entity to Singapore investigation.\n\n19 March 2026: Source of Funds concern raised - $2.5M capital injection, source unclear.\n\n20 March 2026: Critical escalation - Director John Smith matched to DFAT sanctions list. AUSTRAC case created. All services placed under review.`,
+      chronology: `15 June 2024: Entity onboarded. All initial KYC and AML checks passed. Risk rating: Low.\n\n16 June 2024: Identity verification completed (Equifax). PEP, Sanctions, and Adverse Media screening clear (ComplyAdvantage).\n\n10 March 2025: Monitoring alert - Associated director/party Sarah Wong identified as foreign PEP (government minister). Risk rating upgraded to Medium. Enhanced due diligence commenced.\n\n20 January 2026: Adverse media alert - First article published linking entity to Singapore investigation.\n\n19 March 2026: Source of Funds concern raised - $2.5M capital injection, source unclear.\n\n20 March 2026: Critical escalation - ${isIndiv ? 'Subject' : 'Director John Smith'} matched to DFAT sanctions list. AUSTRAC case created. All services placed under review.`,
       
-      explanation: `The conduct is considered suspicious for the following reasons:\n\n1. SANCTIONS EXPOSURE: The confirmed match of Director John Smith to the DFAT consolidated sanctions list creates immediate compliance concerns. Continuing to provide services to a sanctioned individual may constitute a breach of Australian sanctions obligations.\n\n2. ADVERSE MEDIA PATTERN: The adverse media is not isolated - three separate reputable sources have published articles over a 14-month period linking the entity to financial crime. The consistency and severity of the allegations (money laundering investigation by Singaporean authorities) elevates this beyond routine negative publicity.\n\n3. UNEXPLAINED WEALTH: The $2.5 million capital injection cannot be reconciled with legitimate business activity. The declared source ("business operations") contradicts the company's documented financial position (annual losses). No supporting documentation has been provided despite requests.\n\n4. CONNECTED PARTY RISK: The second director is a foreign PEP, and the parent company is subject to regulatory investigation in Singapore. This creates a network of elevated risk indicators.\n\n5. JURISDICTION CONCERN: The involvement of Singapore and Hong Kong, combined with the unexplained funds and sanctions exposure, suggests potential sanctions evasion or money laundering structures designed to obscure the ultimate source and control of funds.`,
+      explanation: `The conduct is considered suspicious for the following reasons:\n\n1. SANCTIONS EXPOSURE: The confirmed match of ${isIndiv ? 'the subject' : 'Director John Smith'} to the DFAT consolidated sanctions list creates immediate compliance concerns. Continuing to provide services to a sanctioned party may constitute a breach of Australian sanctions obligations.\n\n2. ADVERSE MEDIA PATTERN: The adverse media is not isolated - three separate reputable sources have published articles over a 14-month period linking the client network to financial crime. The consistency and severity of the allegations (money laundering investigation by Singaporean authorities) elevates this beyond routine negative publicity.\n\n3. UNEXPLAINED WEALTH: The $2.5 million capital injection cannot be reconciled with legitimate business or investment activity. The declared source contradicts the documented financial position. No supporting documentation has been provided despite requests.\n\n4. CONNECTED PARTY RISK: The associated party is a foreign PEP, and the network is subject to regulatory investigation in Singapore.\n\n5. JURISDICTION CONCERN: The involvement of Singapore and Hong Kong, combined with the unexplained funds and sanctions exposure, suggests potential sanctions evasion or money laundering structures designed to obscure the ultimate source and control of funds.`,
       
-      indicators: `• Director sanctioned (DFAT list, 94% match confidence)\n• Severe adverse media - financial crime theme (3 articles, 2025-2026)\n• Unexplained source of funds ($2.5M capital injection)\n• Foreign PEP among directors (government minister)\n• Parent company under investigation (Singapore)\n• Court case pending (money laundering related)\n• Geographic risk (Singapore, Hong Kong)\n• Business model inconsistency (losses vs large capital injection)`
+      indicators: `• ${isIndiv ? 'Subject' : 'Director'} sanctioned (DFAT list, 94% match confidence)\n• Severe adverse media - financial crime theme (3 articles, 2025-2026)\n• Unexplained source of funds ($2.5M capital injection)\n• Foreign PEP among connected parties\n• Network under investigation (Singapore)\n• Geographic risk (Singapore, Hong Kong)\n• Profile inconsistency`
     });
   };
 
@@ -362,19 +475,14 @@ export function ReportDraftBuilder({ caseId, onBack }: ReportDraftBuilderProps) 
                 </Button>
               )}
               <Button 
-                onClick={() => {
-                  toast.success('Draft SMR successfully submitted to MLRO & Compliance Manager!');
-                  if (onBack) onBack();
-                }}
+                onClick={() => handleDraftAction('submit')}
                 className="bg-green-600 hover:bg-green-700 text-white"
               >
                 <Send className="w-5 h-5 mr-2" />
                 Submit for Review
               </Button>
               <Button 
-                onClick={() => {
-                  toast.success('Draft SMR progress successfully saved to compliance system.');
-                }}
+                onClick={() => handleDraftAction('save')}
                 className="bg-white/10 border-2 border-white/20 text-white hover:bg-white/20"
               >
                 <Save className="w-5 h-5 mr-2" />
@@ -764,10 +872,7 @@ export function ReportDraftBuilder({ caseId, onBack }: ReportDraftBuilderProps) 
               {/* Actions */}
               <div className="pt-4 border-t space-y-3">
                 <Button 
-                  onClick={() => {
-                    toast.success('Draft SMR successfully submitted to MLRO & Compliance Manager!');
-                    if (onBack) onBack();
-                  }}
+                  onClick={() => handleDraftAction('submit')}
                   className="w-full bg-green-600 hover:bg-green-700 text-white text-lg py-6"
                 >
                   <Send className="w-5 h-5 mr-2" />
@@ -775,9 +880,7 @@ export function ReportDraftBuilder({ caseId, onBack }: ReportDraftBuilderProps) 
                 </Button>
                 <div className="grid grid-cols-2 gap-3">
                   <Button 
-                    onClick={() => {
-                      toast.success('Draft SMR progress successfully saved to compliance system.');
-                    }}
+                    onClick={() => handleDraftAction('save')}
                     variant="outline" 
                     className="border-2"
                   >

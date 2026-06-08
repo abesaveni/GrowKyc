@@ -1,22 +1,24 @@
-from typing import List, Optional
+import logging
+from typing import List
+
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 from database import get_db
 from dependencies import get_admin_or_agent_user, get_current_user
-from models import Client, User
-from schemas import (
-    ClientResponse, IndividualProfileCreate, EntityProfileCreate,
-    BeneficialOwnerCreate, BeneficialOwnerResponse,
-    EntityDirectorCreate, EntityDirectorResponse,
-    OwnershipRelationshipCreate, OwnershipRelationshipResponse,
-    UBOSummaryResponse,
-)
+from models import Client, User, Payment, PaymentStatus
+from schemas import (BeneficialOwnerCreate, BeneficialOwnerResponse,
+                     ClientResponse, EntityDirectorCreate,
+                     EntityDirectorResponse, EntityProfileCreate,
+                     IndividualProfileCreate, OwnershipRelationshipCreate,
+                     OwnershipRelationshipResponse, UBOSummaryResponse)
 from services.client_service import ClientService
 from services.ubo_service import UBOService
 
 router = APIRouter(prefix="/clients", tags=["clients"])
+
+logger = logging.getLogger(__name__)
 
 
 class StatusUpdate(BaseModel):
@@ -74,12 +76,24 @@ async def create_individual_client(
     """
     Onboard a retail client. Creates Client and IndividualProfile.
     """
+    has_paid = db.query(Payment.id).filter(
+        Payment.user_id == current_user.id,
+        Payment.status == PaymentStatus.PAID
+    ).first() is not None
+
+    if not has_paid:
+        logger.warning(f"ONBOARDING_BLOCKED: User {current_user.id} has not paid.")
+        raise HTTPException(
+            status_code=403,
+            detail="Payment required before verification"
+        )
+
     try:
         client_service = ClientService(db)
         client = client_service.create_individual_client(
-            user_id=current_user.id, 
+            user_id=current_user.id,
             profile_data=profile_data,
-            trigger_async=trigger_async
+            trigger_async=trigger_async,
         )
         return client
     except Exception as e:
@@ -96,12 +110,24 @@ async def create_entity_client(
     """
     Onboard a corporate client. Creates Client and EntityProfile.
     """
+    has_paid = db.query(Payment.id).filter(
+        Payment.user_id == current_user.id,
+        Payment.status == PaymentStatus.PAID
+    ).first() is not None
+
+    if not has_paid:
+        logger.warning(f"ONBOARDING_BLOCKED: User {current_user.id} has not paid.")
+        raise HTTPException(
+            status_code=403,
+            detail="Payment required before verification"
+        )
+
     try:
         client_service = ClientService(db)
         client = client_service.create_entity_client(
-            user_id=current_user.id, 
+            user_id=current_user.id,
             profile_data=profile_data,
-            trigger_async=trigger_async
+            trigger_async=trigger_async,
         )
         return client
     except Exception as e:
@@ -121,11 +147,13 @@ async def get_client(
     client = client_service.get_client_by_id(client_id)
     if not client:
         raise HTTPException(status_code=404, detail="Client not found")
-    
+
     # Enforce basic ownership or admin access
     if client.user_id != current_user.id and current_user.role == "USER":
-        raise HTTPException(status_code=403, detail="Not authorized to view this client")
-        
+        raise HTTPException(
+            status_code=403, detail="Not authorized to view this client"
+        )
+
     return client
 
 
@@ -142,7 +170,7 @@ async def list_clients(
     query = db.query(Client)
     if current_user.role == "USER":
         query = query.filter(Client.user_id == current_user.id)
-        
+
     clients = query.offset(skip).limit(limit).all()
     return clients
 
@@ -151,7 +179,10 @@ async def list_clients(
 # PHASE 4: UBO (Ultimate Beneficial Owner) Endpoints
 # ==============================================================
 
-@router.post("/entity/{client_id}/ubo", response_model=BeneficialOwnerResponse, status_code=201)
+
+@router.post(
+    "/entity/{client_id}/ubo", response_model=BeneficialOwnerResponse, status_code=201
+)
 async def add_beneficial_owner(
     client_id: int,
     ubo_data: BeneficialOwnerCreate,
@@ -166,7 +197,11 @@ async def add_beneficial_owner(
     return ubo
 
 
-@router.post("/entity/{client_id}/directors", response_model=EntityDirectorResponse, status_code=201)
+@router.post(
+    "/entity/{client_id}/directors",
+    response_model=EntityDirectorResponse,
+    status_code=201,
+)
 async def add_entity_director(
     client_id: int,
     director_data: EntityDirectorCreate,
@@ -177,11 +212,17 @@ async def add_entity_director(
     Add a Director or corporate officer to an entity client.
     """
     ubo_service = UBOService(db)
-    director = ubo_service.add_entity_director(client_id=client_id, director_data=director_data)
+    director = ubo_service.add_entity_director(
+        client_id=client_id, director_data=director_data
+    )
     return director
 
 
-@router.post("/entity/ownership-link", response_model=OwnershipRelationshipResponse, status_code=201)
+@router.post(
+    "/entity/ownership-link",
+    response_model=OwnershipRelationshipResponse,
+    status_code=201,
+)
 async def create_ownership_link(
     rel_data: OwnershipRelationshipCreate,
     db: Session = Depends(get_db),

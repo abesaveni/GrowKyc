@@ -1,5 +1,5 @@
-import type { ProviderStatus } from '../../../models/providerStatus';
-import type { PEPProviderRawResponse, PEPProviderRequest } from '../adapters/pep/pepTypes';
+import type { ProviderStatus } from '../../models/providerStatus';
+import type { PEPProviderRawResponse, PEPProviderRequest } from '../../adapters/pep/pepTypes';
 
 export interface IPEPExecutionPort {
   getStatus(): Promise<ProviderStatus>;

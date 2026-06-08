@@ -3,6 +3,7 @@ services/ocr/google_document_ai.py
 ==================================
 Google Document AI integration skeleton.
 """
+
 from services.ocr.base import BaseOCRProvider, OcrResult
 
 

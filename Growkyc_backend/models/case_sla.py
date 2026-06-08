@@ -3,7 +3,6 @@ models/case_sla.py
 ==================
 SLA engine for tracking escalation timers and priority queues.
 """
-from datetime import datetime, timezone
 
 from sqlalchemy import Column, DateTime, ForeignKey, Index, Integer, String
 from sqlalchemy.orm import relationship
@@ -42,7 +41,7 @@ class CaseSLA(Base):
         default="medium",
         comment="low|medium|high|critical",
     )
-    
+
     # ---- Timers ----
     due_date = Column(
         DateTime(timezone=True),
@@ -71,4 +70,7 @@ class CaseSLA(Base):
     )
 
     def __repr__(self):
-        return f"<CaseSLA(case_id={self.case_id}, priority={self.priority}, breached={self.breached})>"
+        return (
+            f"<CaseSLA(case_id={self.case_id}, "
+            f"priority={self.priority}, breached={self.breached})>"
+        )

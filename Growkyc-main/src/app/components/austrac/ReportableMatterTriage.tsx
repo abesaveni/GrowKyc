@@ -64,6 +64,37 @@ export function ReportableMatterTriage({ caseId, onBack }: ReportableMatterTriag
 
   // Sync if prop changes
   React.useEffect(() => {
+    try {
+      const stored = localStorage.getItem('austrac_cases');
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed)) {
+          const found = parsed.find(c => c.caseId === (caseId || 'AUS-2026-002'));
+          if (found) {
+            setCaseInfo({
+              caseId: found.caseId,
+              subjectName: found.subject,
+              subjectType: found.subjectType.charAt(0).toUpperCase() + found.subjectType.slice(1),
+              linkedClient: found.subjectType === 'individual' ? 'C-2026-889' : 'C-2024-004',
+              triggerSource: found.triggerSource === 'manual' ? 'Staff Referral' : 
+                             found.triggerSource === 'sanctions' ? 'Sanctions Screening Bot' :
+                             found.triggerSource === 'pep' ? 'PEP Screening Bot' :
+                             found.triggerSource === 'adverse_media' ? 'Adverse Media Bot' :
+                             found.triggerSource.toUpperCase() + ' Bot',
+              triggerDate: found.createdDate + ' 14:30',
+              currentRiskBand: found.riskBand.charAt(0).toUpperCase() + found.riskBand.slice(1),
+              serviceStatus: 'Active - Under Review',
+              monitoringStatus: 'Live Monitoring Active',
+              status: found.status.toUpperCase()
+            });
+            return;
+          }
+        }
+      }
+    } catch (e) {
+      console.error('Error loading case details from localStorage', e);
+    }
+
     if (caseId) {
       setCaseInfo(prev => ({
         ...prev,
@@ -85,38 +116,67 @@ export function ReportableMatterTriage({ caseId, onBack }: ReportableMatterTriag
   const handleFlagAsReportable = async () => {
     if (isSubmitting) return;
     setIsSubmitting(true);
+    let isMockSuccess = false;
     try {
-      const response = await fetch(`/api/v1/cases/${caseInfo.caseId}/status`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ status: 'REPORTABLE' }),
-      });
+      try {
+        const response = await fetch(`/api/v1/cases/${caseInfo.caseId}/status`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ status: 'REPORTABLE' }),
+        });
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+      } catch (e) {
+        isMockSuccess = true;
       }
 
-      // Check if response contains json or text
-      const contentType = response.headers.get("content-type");
-      let data: Record<string, unknown> = {};
-      if (contentType && contentType.indexOf("application/json") !== -1) {
-        data = await response.json() as Record<string, unknown>;
+      // Update unified localStorage case state
+      try {
+        const stored = localStorage.getItem('austrac_cases');
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          if (Array.isArray(parsed)) {
+            const updated = parsed.map(c => 
+              c.caseId === caseInfo.caseId ? { ...c, status: 'draft_in_progress' } : c
+            );
+            localStorage.setItem('austrac_cases', JSON.stringify(updated));
+          }
+        }
+
+        // Add to drafts list if it doesn't already exist
+        const storedDrafts = localStorage.getItem('austrac_draft_reports');
+        const draftsList = storedDrafts ? JSON.parse(storedDrafts) : [];
+        if (Array.isArray(draftsList) && !draftsList.some(d => d.caseId === caseInfo.caseId)) {
+          draftsList.push({
+            caseId: caseInfo.caseId,
+            subject: caseInfo.subjectName,
+            draftType: 'smr',
+            preparedBy: 'Michael Chen',
+            awaiting: 'MLRO Approval',
+            lastUpdated: new Date().toISOString().replace('T', ' ').substring(0, 16)
+          });
+          localStorage.setItem('austrac_draft_reports', JSON.stringify(draftsList));
+        }
+      } catch (e) {
+        console.error('Failed to update localStorage case state', e);
       }
 
-      // Set state using actual backend response if structured, otherwise update status directly
-      const newStatus = (data?.status as string) || 'REPORTABLE';
       setCaseInfo(prev => ({ 
         ...prev, 
-        ...(data && typeof data === 'object' ? data : {}), 
-        status: newStatus 
+        status: 'REPORTABLE' 
       }));
 
-      toast.success(`Case ${caseInfo.caseId} flagged as Reportable successfully!`);
+      toast.success(isMockSuccess 
+        ? `Case ${caseInfo.caseId} flagged as Reportable (Simulated) and draft SMR created.` 
+        : `Case ${caseInfo.caseId} flagged as Reportable and draft report created successfully!`
+      );
     } catch (error) {
       console.error('Error flagging case as reportable:', error);
-      toast.error(`Failed to flag case as reportable: ${error instanceof Error ? error.message : String(error)}`);
+      toast.error(`Failed to flag case as reportable`);
     } finally {
       setIsSubmitting(false);
     }
@@ -403,6 +463,29 @@ export function ReportableMatterTriage({ caseId, onBack }: ReportableMatterTriag
                 </Button>
                 <Button 
                   onClick={() => {
+                    // Update localStorage with the selected triage status
+                    try {
+                      const stored = localStorage.getItem('austrac_cases');
+                      if (stored) {
+                        const parsed = JSON.parse(stored);
+                        if (Array.isArray(parsed)) {
+                          let nextStatus = 'in_triage';
+                          if (triageDecision === 'escalate') nextStatus = 'awaiting_manager';
+                          else if (triageDecision === 'close') nextStatus = 'closed';
+                          else if (triageDecision === 'hold') nextStatus = 'under_investigation';
+                          else if (triageDecision === 'continue') nextStatus = 'under_investigation';
+                          else if (triageDecision === 'request_info') nextStatus = 'under_investigation';
+
+                          const updated = parsed.map(c => 
+                            c.caseId === caseInfo.caseId ? { ...c, status: nextStatus } : c
+                          );
+                          localStorage.setItem('austrac_cases', JSON.stringify(updated));
+                        }
+                      }
+                    } catch (e) {
+                      console.error('Failed to save triage status', e);
+                    }
+
                     toast.success(`Triage complete for case ${caseInfo.caseId}. Decision successfully submitted.`);
                     if (onBack) onBack();
                   }}

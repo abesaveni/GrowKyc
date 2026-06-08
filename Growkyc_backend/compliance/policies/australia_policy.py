@@ -3,7 +3,8 @@ compliance/policies/australia_policy.py
 =======================================
 AUSTRAC-compliant Australian AML/KYC policy.
 """
-from typing import Dict, List, Any
+
+from typing import Any, Dict, List
 
 from compliance.document_registry import NormalizedDocumentType
 from compliance.policies.base_policy import BaseCountryPolicy

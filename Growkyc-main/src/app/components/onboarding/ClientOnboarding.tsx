@@ -427,7 +427,7 @@ export function ClientOnboarding({ onComplete }: { onComplete?: () => void }) {
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-gray-600">Compliance</span>
                     <StatusBadge status={entity.complianceStatus === 'complete' ? 'approved' : 
-                                        entity.complianceStatus === 'blocked' ? 'blocked' : 'pending'} />
+                                        entity.complianceStatus === 'blocked' ? 'rejected' : 'pending'} />
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-gray-600">Risk Level</span>
@@ -564,7 +564,7 @@ export function ClientOnboarding({ onComplete }: { onComplete?: () => void }) {
   const renderPhase6Review = () => (
     <InternalReviewAndApproval
       entities={entities}
-      onApprove={(entityId, comments, role) => {
+       onApprove={(entityId: any, comments: any, role: any) => {
         const entity = entities.find(e => e.id === entityId);
         if (entity) {
           updateEntity(entityId, {
@@ -580,7 +580,7 @@ export function ClientOnboarding({ onComplete }: { onComplete?: () => void }) {
           toast.success('✓ Client approved successfully');
         }
       }}
-      onReject={(entityId, reason, role) => {
+      onReject={(entityId: any, reason: any, role: any) => {
         const entity = entities.find(e => e.id === entityId);
         if (entity) {
           updateEntity(entityId, {

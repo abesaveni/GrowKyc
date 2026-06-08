@@ -64,6 +64,7 @@ export function SimulatedAUSTRACAudit() {
   const [auditStartTime, setAuditStartTime] = useState<Date | null>(null);
   // Source of Funds state
   const [sofData, setSofData] = useState<SOFData | null>(null);
+  const [riskResult, setRiskResult] = useState<any>(null);
   const [deskReviewComplete, setDeskReviewComplete] = useState(false);
   const [completedStages, setCompletedStages] = useState<string[]>([]);
   const [auditLogs, setAuditLogs] = useState<any[]>([]);
@@ -383,6 +384,11 @@ export function SimulatedAUSTRACAudit() {
     setCurrentStage('high-risk-dive');
   };
 
+  const handleEDDComplete = () => {
+    setCompletedStages(prev => [...prev, 'high-risk-dive']);
+    setCurrentStage('overview');
+  };
+
   const getTotalGenerationTime = () => {
     return deskReviewItems.reduce((sum, item) => sum + item.timeSeconds, 0);
   };
@@ -528,12 +534,14 @@ export function SimulatedAUSTRACAudit() {
           ].map((stage) => {
             const Icon = stage.icon;
             const isCompleted = completedStages.includes(stage.stage);
+            const isDisabled = stage.stage === 'high-risk-dive' && !completedStages.includes('customer-risk-assessment');
             return (
               <button
                 key={stage.stage}
-                onClick={() => setCurrentStage(stage.stage as AuditStage)}
+                onClick={() => !isDisabled && setCurrentStage(stage.stage as AuditStage)}
+                disabled={isDisabled}
                 className={`bg-white rounded-lg border-2 p-6 text-left hover:shadow-lg hover:border-blue-400 transition-all ${
-                  isCompleted ? 'border-green-200 bg-green-50/10' : 'border-gray-200'
+                  isCompleted ? 'border-green-200 bg-green-50/10' : isDisabled ? 'opacity-50 cursor-not-allowed' : 'border-gray-200'
                 }`}
               >
                 <div className="flex items-center justify-between mb-4">
@@ -1001,7 +1009,7 @@ export function SimulatedAUSTRACAudit() {
             highRiskJurisdiction: true
           }}
           onComplete={(result) => {
-            console.log('Customer Risk Assessment complete:', result);
+            setRiskResult(result);
             setCompletedStages(prev => [...prev, 'customer-risk-assessment']);
             setCurrentStage('overview');
           }}
@@ -1410,10 +1418,7 @@ export function SimulatedAUSTRACAudit() {
                     Edit SOF Declaration
                   </Button>
                   <Button
-                    onClick={() => {
-                      setCompletedStages(prev => [...prev, 'high-risk-dive']);
-                      setCurrentStage('overview');
-                    }}
+                    onClick={handleEDDComplete}
                     className="bg-green-600 hover:bg-green-700 text-white font-bold"
                   >
                     Lock EDD Stage & Continue

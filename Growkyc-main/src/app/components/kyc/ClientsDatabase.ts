@@ -1040,16 +1040,37 @@ export const TEST_CLIENTS: TestClient[] = [
 ];
 
 let listeners: Array<(clients: TestClient[]) => void> = [];
-let currentClients: TestClient[] = [...TEST_CLIENTS];
+let currentClients: TestClient[] = (() => {
+  if (typeof window !== 'undefined') {
+    const saved = window.localStorage.getItem('growkyc_clients');
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed;
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+  }
+  return TEST_CLIENTS;
+})();
 
 export const ClientsDB = {
   getClients: (): TestClient[] => currentClients,
   addClient: (client: TestClient) => {
     currentClients = [...currentClients, client];
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem('growkyc_clients', JSON.stringify(currentClients));
+    }
     listeners.forEach(l => l(currentClients));
   },
   updateClient: (id: string, updated: Partial<TestClient>) => {
     currentClients = currentClients.map(c => c.id === id ? { ...c, ...updated } : c);
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem('growkyc_clients', JSON.stringify(currentClients));
+    }
     listeners.forEach(l => l(currentClients));
   },
   subscribe: (listener: (clients: TestClient[]) => void) => {

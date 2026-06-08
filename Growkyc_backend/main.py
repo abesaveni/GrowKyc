@@ -6,8 +6,6 @@ configuration.
 
 import logging
 import os
-import time
-import uuid
 from contextlib import asynccontextmanager
 from datetime import datetime
 
@@ -17,27 +15,18 @@ from fastapi.openapi.utils import get_openapi
 from fastapi.responses import JSONResponse
 
 from core.exceptions import KYCException
-from core.middleware import RequestIDMiddleware, TenantContextMiddleware, LoggingMiddleware
+from core.middleware import (LoggingMiddleware, RequestIDMiddleware,
+                             TenantContextMiddleware)
 from database import close_db, init_db
-from routers import (
-    admin,
-    auth,
-    clients,
-    compatibility,
-    communications,
-    dashboard,
-    documents,
-    integrations,
-    kyc,
-    payments,
-    pexa,
-    route_aliases,
-)
-from routers.edd import router as edd_router
+from routers import (admin, auth, clients, communications, compatibility,
+                     dashboard, documents, integrations, kyc, payments, pexa,
+                     route_aliases, square_payments)
 from routers.cases import router as cases_router
+from routers.edd import router as edd_router
 from routers.reports import router as reports_router
 from schemas import ErrorResponse
-from services.expiry_scheduler import start_expiry_scheduler, stop_expiry_scheduler
+from services.expiry_scheduler import (start_expiry_scheduler,
+                                       stop_expiry_scheduler)
 
 # Configure logging
 logging.basicConfig(
@@ -427,6 +416,12 @@ app.include_router(
 )
 
 app.include_router(
+    square_payments.router,
+    prefix=f"/{api_prefix}",
+    responses={401: {"model": ErrorResponse}, 403: {"model": ErrorResponse}},
+)
+
+app.include_router(
     clients.router,
     prefix=f"/{api_prefix}",
     responses={401: {"model": ErrorResponse}, 403: {"model": ErrorResponse}},
@@ -480,6 +475,7 @@ def include_versionless_api_aliases() -> None:
         pexa.router,
         integrations.router,
         payments.router,
+        square_payments.router,
         clients.router,
         communications.router,
         documents.router,

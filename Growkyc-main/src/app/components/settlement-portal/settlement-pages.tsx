@@ -38,6 +38,7 @@ import {
 } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
+import { Avatar, AvatarFallback } from '../ui/avatar';
 import { toast } from '../../lib/toast';
 
 // ===== DASHBOARD =====

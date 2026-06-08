@@ -6,6 +6,7 @@ Abstract base classes and schemas for AML screening providers.
 
 from abc import ABC, abstractmethod
 from typing import Any, Dict, List, Optional
+
 from pydantic import BaseModel
 
 
@@ -15,6 +16,7 @@ class NormalizedScreeningResult(BaseModel):
     Ensures the internal risk engine and audit logs receive consistent data
     regardless of the underlying vendor.
     """
+
     provider_name: str
     provider_reference: Optional[str] = None
     status: str  # clear | match_found | error
@@ -39,11 +41,18 @@ class BaseScreeningProvider(ABC):
         pass
 
     @abstractmethod
-    def screen_person(self, full_name: str, dob: Optional[str], nationality: Optional[str]) -> NormalizedScreeningResult:
+    def screen_person(
+        self, full_name: str, dob: Optional[str], nationality: Optional[str]
+    ) -> NormalizedScreeningResult:
         """Screen an individual."""
         pass
 
     @abstractmethod
-    def screen_entity(self, company_name: str, registration_number: Optional[str], country: Optional[str]) -> NormalizedScreeningResult:
+    def screen_entity(
+        self,
+        company_name: str,
+        registration_number: Optional[str],
+        country: Optional[str],
+    ) -> NormalizedScreeningResult:
         """Screen a corporate entity."""
         pass

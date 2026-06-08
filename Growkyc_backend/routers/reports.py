@@ -3,6 +3,7 @@ routers/reports.py
 ==================
 Enterprise Regulatory Reporting and Evidence Pack APIs.
 """
+
 import logging
 from typing import Optional
 
@@ -46,7 +47,11 @@ async def generate_regulatory_report(
             case_id=body.case_id,
             generator_id=current_user.id,
         )
-        return {"report_id": report.id, "status": report.submission_status, "hash": report.immutable_hash}
+        return {
+            "report_id": report.id,
+            "status": report.submission_status,
+            "hash": report.immutable_hash,
+        }
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
@@ -60,8 +65,14 @@ async def submit_regulatory_report(
     """Queue an approved report for async transmission to a regulator."""
     try:
         service = RegulatoryService(db)
-        submission = service.submit_report(report_id=report_id, submitter_id=current_user.id)
-        return {"submission_id": submission.id, "status": submission.status, "correlation_id": submission.correlation_id}
+        submission = service.submit_report(
+            report_id=report_id, submitter_id=current_user.id
+        )
+        return {
+            "submission_id": submission.id,
+            "status": submission.status,
+            "correlation_id": submission.correlation_id,
+        }
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
@@ -74,10 +85,11 @@ async def get_report_status(
 ):
     """Get the submission status and payload hash for a report."""
     from models import RegulatoryReport
+
     report = db.query(RegulatoryReport).filter(RegulatoryReport.id == report_id).first()
     if not report:
         raise HTTPException(status_code=404, detail="Report not found")
-    
+
     return {
         "report_id": report.id,
         "type": report.report_type,
@@ -101,7 +113,11 @@ async def generate_evidence_pack(
             report_id=body.report_id,
             generator_id=current_user.id,
         )
-        return {"pack_id": pack.id, "status": pack.status, "correlation_id": pack.correlation_id}
+        return {
+            "pack_id": pack.id,
+            "status": pack.status,
+            "correlation_id": pack.correlation_id,
+        }
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 

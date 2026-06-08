@@ -5,8 +5,9 @@ The central compliance orchestration contract.
 Every country-specific policy must inherit from this to ensure
 the core AML/KYC workflows (RiskEngine, EDD, Cases) remain generic.
 """
+
 from abc import ABC, abstractmethod
-from typing import Dict, List, Any
+from typing import Any, Dict, List
 
 
 class BaseCountryPolicy(ABC):

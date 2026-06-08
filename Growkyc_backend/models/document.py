@@ -11,9 +11,9 @@ Imports: use `from models import Document` (unchanged in all consumers).
 
 from datetime import datetime, timezone
 
-from sqlalchemy import Column, DateTime, ForeignKey, Index, Integer, String, Text
+from sqlalchemy import JSON, Column, DateTime
 from sqlalchemy import Enum as SQLEnum
-from sqlalchemy import JSON
+from sqlalchemy import ForeignKey, Index, Integer, String, Text
 from sqlalchemy.orm import relationship
 
 from core.enums import DocumentType
@@ -71,10 +71,12 @@ class Document(Base):
         index=True,
     )
 
-    # ---- Phase 5: Enterprise document metadata (all nullable=True for backward compat) ----
+    # ---- Phase 5: Enterprise document metadata ----
+    # All fields are nullable for backward compatibility.
     document_category = Column(
-        String(100), nullable=True,
-        comment="identity|address|financial|corporate|evidence"
+        String(100),
+        nullable=True,
+        comment="identity|address|financial|corporate|evidence",
     )
     document_subtype = Column(String(100), nullable=True)
     mime_type = Column(String(100), nullable=True)
@@ -87,34 +89,37 @@ class Document(Base):
 
     # ---- Storage abstraction ----
     storage_backend = Column(
-        String(50), nullable=True, default="local",
-        comment="local|s3|minio|azure"
+        String(50), nullable=True, default="local", comment="local|s3|minio|azure"
     )
     storage_key = Column(
-        String(1000), nullable=True,
-        comment="Object key / S3 key for the stored file"
+        String(1000), nullable=True, comment="Object key / S3 key for the stored file"
     )
 
     # ---- Integrity / tamper detection ----
-    checksum_hash = Column(String(128), nullable=True, comment="SHA-256 of file content")
+    checksum_hash = Column(
+        String(128), nullable=True, comment="SHA-256 of file content"
+    )
     tamper_detection_status = Column(
-        String(50), nullable=True, default="pending",
-        comment="pending|clean|tampered"
+        String(50), nullable=True, default="pending", comment="pending|clean|tampered"
     )
     encryption_reference = Column(String(255), nullable=True)
 
     # ---- OCR ----
     ocr_status = Column(
-        String(50), nullable=True, default="not_started",
-        comment="not_started|processing|completed|failed"
+        String(50),
+        nullable=True,
+        default="not_started",
+        comment="not_started|processing|completed|failed",
     )
     ocr_data = Column(JSON, nullable=True, comment="Extracted fields from OCR provider")
     liveness_reference = Column(String(255), nullable=True)
 
     # ---- Verification ----
     verification_status = Column(
-        String(50), nullable=True, default="pending",
-        comment="pending|verified|failed|requires_review"
+        String(50),
+        nullable=True,
+        default="pending",
+        comment="pending|verified|failed|requires_review",
     )
     verification_provider = Column(String(100), nullable=True)
     provider_reference = Column(String(255), nullable=True)
@@ -125,8 +130,7 @@ class Document(Base):
         Integer, ForeignKey("users.id", ondelete="SET NULL"), nullable=True
     )
     review_status = Column(
-        String(50), nullable=True,
-        comment="pending|approved|rejected"
+        String(50), nullable=True, comment="pending|approved|rejected"
     )
     review_notes = Column(Text, nullable=True)
     reviewed_at = Column(DateTime, nullable=True)
@@ -152,12 +156,9 @@ class Document(Base):
         Index("idx_documents_kyc_id", "kyc_id"),
         Index("idx_documents_type", "type"),
         Index("idx_documents_uploaded_at", "uploaded_at"),
-        Index("idx_documents_expiry_date", "expiry_date"),   # used by expiry scheduler
+        Index("idx_documents_expiry_date", "expiry_date"),  # used by expiry scheduler
         Index("idx_documents_tenant_id", "tenant_id"),
     )
 
     def __repr__(self) -> str:
-        return (
-            f"<Document(id={self.id}, kyc_id={self.kyc_id}, "
-            f"type={self.type})>"
-        )
+        return f"<Document(id={self.id}, kyc_id={self.kyc_id}, type={self.type})>"

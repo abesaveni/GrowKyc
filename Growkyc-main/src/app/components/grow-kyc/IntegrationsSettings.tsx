@@ -57,7 +57,12 @@ interface Integration {
   provider?: string;
 }
 
-export function IntegrationsSettings() {
+interface IntegrationsSettingsProps {
+  role?: string;
+}
+
+export function IntegrationsSettings({ role }: IntegrationsSettingsProps) {
+  const isReadOnly = role === 'auditor' || role === 'analyst';
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [showPasswords, setShowPasswords] = useState<{ [key: string]: boolean }>({});
   const [expandedIntegrations, setExpandedIntegrations] = useState<Set<string>>(new Set());
@@ -652,6 +657,7 @@ export function IntegrationsSettings() {
   };
 
   const handleCredentialsChange = (integrationId: string, credentialIndex: number, newValue: string) => {
+    if (isReadOnly) return;
     const updated = integrationsList.map(item => {
       if (item.id === integrationId) {
         const updatedCreds = [...item.credentials];
@@ -665,6 +671,10 @@ export function IntegrationsSettings() {
   };
 
   const handleConnectToggle = (id: string, currentStatus: string) => {
+    if (isReadOnly) {
+      showToast('Access Denied: Cannot connect or disconnect integrations in read-only mode.', 'error');
+      return;
+    }
     const newStatus = currentStatus === 'connected' ? 'disconnected' : 'connected';
     const updated = integrationsList.map(item => {
       if (item.id === id) {
@@ -683,6 +693,10 @@ export function IntegrationsSettings() {
   };
 
   const handleTestConnection = (id: string) => {
+    if (isReadOnly) {
+      showToast('Access Denied: Cannot test connections in read-only mode.', 'error');
+      return;
+    }
     const name = integrationsList.find(i => i.id === id)?.name || 'Integration';
     setTestingId(id);
     showToast(`Testing connection to ${name}...`, 'info');
@@ -703,6 +717,10 @@ export function IntegrationsSettings() {
   };
 
   const handleSaveAll = () => {
+    if (isReadOnly) {
+      showToast('Access Denied: Cannot save settings in read-only mode.', 'error');
+      return;
+    }
     saveAllIntegrations(integrationsList);
     showToast('All integration settings and API credentials saved successfully!', 'success');
   };
@@ -773,7 +791,7 @@ export function IntegrationsSettings() {
             </div>
             <p className="text-cyan-100">Connect external services and manage API credentials</p>
           </div>
-          <Button onClick={handleSaveAll} className="bg-white text-[#0E7C9E] hover:bg-cyan-50 font-bold shadow-md">
+          <Button disabled={isReadOnly} onClick={handleSaveAll} className="bg-white text-[#0E7C9E] hover:bg-cyan-50 font-bold shadow-md">
             <Save className="w-5 h-5 mr-2" />
             Save All Changes
           </Button>
@@ -922,11 +940,12 @@ export function IntegrationsSettings() {
                         <div className="flex items-center gap-2">
                           <div className="flex-1 relative">
                             <input
+                              disabled={isReadOnly}
                               type={cred.type === 'password' && !showPasswords[`${integration.id}-${i}`] ? 'password' : 'text'}
                               value={cred.value || ''}
                               onChange={e => handleCredentialsChange(integration.id, i, e.target.value)}
                               placeholder={`Enter ${cred.name}`}
-                              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white disabled:opacity-50"
                             />
                             {cred.type === 'password' && (
                               <button
@@ -950,6 +969,7 @@ export function IntegrationsSettings() {
                             <Button
                               size="sm"
                               variant="outline"
+                              disabled={isReadOnly}
                               onClick={() => {
                                 const randomKey = 'key_' + Math.random().toString(36).substring(2, 15);
                                 handleCredentialsChange(integration.id, i, randomKey);
@@ -981,7 +1001,7 @@ export function IntegrationsSettings() {
                       </Button>
                       <Button
                         size="sm"
-                        disabled={testingId === integration.id}
+                        disabled={isReadOnly || testingId === integration.id}
                         onClick={() => handleTestConnection(integration.id)}
                       >
                         <Check className="w-4 h-4 mr-2" />
@@ -991,6 +1011,7 @@ export function IntegrationsSettings() {
                         <Button
                           size="sm"
                           variant="outline"
+                          disabled={isReadOnly}
                           className="text-red-600 hover:text-red-700"
                           onClick={() => handleConnectToggle(integration.id, integration.status)}
                         >
@@ -1000,6 +1021,7 @@ export function IntegrationsSettings() {
                       ) : (
                         <Button
                           size="sm"
+                          disabled={isReadOnly}
                           className="bg-green-600 hover:bg-green-700 text-white"
                           onClick={() => handleConnectToggle(integration.id, integration.status)}
                         >

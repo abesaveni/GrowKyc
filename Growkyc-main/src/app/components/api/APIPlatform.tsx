@@ -300,7 +300,7 @@ export function APIPlatform({ onBack }: APIPlatformProps) {
                       <div>curl -X POST https://api.grow.io/v1/screening/sanctions \</div>
                       <div className="ml-4">-H "Authorization: Bearer YOUR_API_KEY" \</div>
                       <div className="ml-4">-H "Content-Type: application/json" \</div>
-                      <div className="ml-4">-d '{"{'}"name": "John Smith", "dob": "1980-01-01"{'}'}"'</div>
+                      <div className="ml-4">-d '{`{"name": "John Smith", "dob": "1980-01-01"}`}'</div>
                     </div>
                   </div>
 

@@ -12,8 +12,8 @@ Phase 4:  After backfill, tenant_id becomes nullable=False everywhere.
 
 from datetime import datetime, timezone
 
-from sqlalchemy import Column, DateTime, Index, Integer, String
-from sqlalchemy import Enum as SQLEnum
+from sqlalchemy import Column, DateTime
+from sqlalchemy import Index, Integer, String
 from sqlalchemy.orm import relationship
 
 from models.base import Base
@@ -131,7 +131,4 @@ class Tenant(Base):
     )
 
     def __repr__(self) -> str:
-        return (
-            f"<Tenant(id={self.id}, slug={self.slug!r}, "
-            f"status={self.status!r})>"
-        )
+        return f"<Tenant(id={self.id}, slug={self.slug!r}, " f"status={self.status!r})>"

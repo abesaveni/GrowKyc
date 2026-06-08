@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
@@ -58,207 +58,67 @@ export function ActionItemsCenter({ onViewClient, onBack }: ActionItemsCenterPro
   const [filterCategory, setFilterCategory] = useState<string>('all');
   const [showFilters, setShowFilters] = useState(false);
 
-  // Mock action items data
-  const allActionItems: ActionItem[] = [
-    {
-      id: 'act-001',
-      title: 'KYC Review Expired',
-      description: 'Annual KYC review is 12 days overdue',
-      clientId: '5',
-      clientName: 'Sarah Williams',
-      clientType: 'individual',
-      category: 'kyc_review',
-      priority: 'critical',
-      status: 'overdue',
-      dueDate: '2024-03-10',
-      daysUntilDue: -12,
-      assignedTo: 'Sarah Chen',
-      createdDate: '2023-03-10',
-      actionRequired: 'Complete annual KYC review and update client file'
-    },
-    {
-      id: 'act-002',
-      title: 'Enhanced Due Diligence Required',
-      description: 'Critical risk flags detected - immediate EDD needed',
-      clientId: '8',
-      clientName: 'Pacific Trading Co Pty Ltd',
-      clientType: 'company',
-      category: 'edd_required',
-      priority: 'critical',
-      status: 'due_today',
-      dueDate: '2024-03-22',
-      daysUntilDue: 0,
-      assignedTo: 'Jessica Lee',
-      createdDate: '2024-03-20',
-      relatedEntity: '5 flags detected',
-      actionRequired: 'Conduct enhanced due diligence and risk assessment'
-    },
-    {
-      id: 'act-003',
-      title: 'Trust Deed Verification',
-      description: 'Missing updated trust deed documentation',
-      clientId: '2',
-      clientName: 'Chen Family Trust',
-      clientType: 'trust',
-      category: 'document_upload',
-      priority: 'high',
-      status: 'due_soon',
-      dueDate: '2024-03-25',
-      daysUntilDue: 3,
-      assignedTo: 'Jessica Lee',
-      createdDate: '2024-03-15',
-      actionRequired: 'Request and verify updated trust deed'
-    },
-    {
-      id: 'act-004',
-      title: 'Identity Verification Pending',
-      description: 'Awaiting certified ID documents',
-      clientId: '3',
-      clientName: 'John Michael Smith',
-      clientType: 'individual',
-      category: 'verification',
-      priority: 'medium',
-      status: 'due_soon',
-      dueDate: '2024-03-29',
-      daysUntilDue: 7,
-      assignedTo: 'Sarah Chen',
-      createdDate: '2024-03-18',
-      actionRequired: 'Verify and approve submitted identity documents'
-    },
-    {
-      id: 'act-005',
-      title: 'Beneficial Ownership Update',
-      description: 'Ownership structure changes need verification',
-      clientId: '7',
-      clientName: 'Sunrise Development Trust',
-      clientType: 'trust',
-      category: 'verification',
-      priority: 'medium',
-      status: 'due_soon',
-      dueDate: '2024-03-27',
-      daysUntilDue: 5,
-      assignedTo: 'Sarah Chen',
-      createdDate: '2024-03-19',
-      actionRequired: 'Update and verify beneficial ownership structure'
-    },
-    {
-      id: 'act-006',
-      title: 'PEP Screening Required',
-      description: 'New director requires PEP/sanctions screening',
-      clientId: '11',
-      clientName: 'David Robertson',
-      clientType: 'individual',
-      category: 'pep_screening',
-      priority: 'high',
-      status: 'due_soon',
-      dueDate: '2024-03-30',
-      daysUntilDue: 8,
-      assignedTo: 'Sarah Chen',
-      createdDate: '2024-03-21',
-      relatedEntity: 'New high-risk jurisdiction',
-      actionRequired: 'Complete PEP and sanctions screening'
-    },
-    {
-      id: 'act-007',
-      title: 'Annual Compliance Review',
-      description: 'Scheduled annual compliance check',
-      clientId: '1',
-      clientName: 'Acme Property Holdings Pty Ltd',
-      clientType: 'company',
-      category: 'compliance_check',
-      priority: 'low',
-      status: 'scheduled',
-      dueDate: '2024-05-15',
-      daysUntilDue: 54,
-      assignedTo: 'Sarah Chen',
-      createdDate: '2024-03-01',
-      actionRequired: 'Conduct scheduled annual compliance review'
-    },
-    {
-      id: 'act-008',
-      title: 'Risk Assessment Update',
-      description: 'Quarterly risk assessment due',
-      clientId: '4',
-      clientName: 'Global Investments Pty Ltd',
-      clientType: 'company',
-      category: 'risk_assessment',
-      priority: 'medium',
-      status: 'scheduled',
-      dueDate: '2024-04-15',
-      daysUntilDue: 24,
-      assignedTo: 'Jessica Lee',
-      createdDate: '2024-03-01',
-      actionRequired: 'Update quarterly risk assessment'
-    },
-    {
-      id: 'act-009',
-      title: 'Source of Funds Verification',
-      description: 'Large transaction requires SOF documentation',
-      clientId: '12',
-      clientName: 'Metro Development Pty Ltd',
-      clientType: 'company',
-      category: 'verification',
-      priority: 'high',
-      status: 'due_soon',
-      dueDate: '2024-03-26',
-      daysUntilDue: 4,
-      assignedTo: 'Jessica Lee',
-      createdDate: '2024-03-20',
-      relatedEntity: 'Transaction: $2.5M',
-      actionRequired: 'Verify source of funds for recent transaction'
-    },
-    {
-      id: 'act-010',
-      title: 'Partnership Agreement Review',
-      description: 'Updated partnership agreement needs review',
-      clientId: '6',
-      clientName: 'Thompson & Associates Partnership',
-      clientType: 'partnership',
-      category: 'document_upload',
-      priority: 'medium',
-      status: 'scheduled',
-      dueDate: '2024-04-10',
-      daysUntilDue: 19,
-      assignedTo: 'Jessica Lee',
-      createdDate: '2024-03-12',
-      actionRequired: 'Review and approve updated partnership agreement'
-    },
-    {
-      id: 'act-011',
-      title: 'Sanctions Screening',
-      description: 'Monthly sanctions list update screening',
-      clientId: '9',
-      clientName: 'Emily Zhang',
-      clientType: 'individual',
-      category: 'sanctions_check',
-      priority: 'medium',
-      status: 'scheduled',
-      dueDate: '2024-04-01',
-      daysUntilDue: 10,
-      assignedTo: 'Sarah Chen',
-      createdDate: '2024-03-15',
-      actionRequired: 'Complete monthly sanctions screening'
-    },
-    {
-      id: 'act-012',
-      title: 'Financial Statements Required',
-      description: 'Updated financials needed for risk assessment',
-      clientId: '10',
-      clientName: 'Coastal Properties Trust',
-      clientType: 'trust',
-      category: 'document_upload',
-      priority: 'low',
-      status: 'scheduled',
-      dueDate: '2024-04-20',
-      daysUntilDue: 29,
-      assignedTo: 'Jessica Lee',
-      createdDate: '2024-03-10',
-      actionRequired: 'Request and review updated financial statements'
-    }
-  ];
+  // Dynamic action items state
+  const [actionItems, setActionItems] = useState<ActionItem[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
-  // Filter action items
-  const filteredItems = allActionItems.filter(item => {
+  // Load action items from localStorage (or future API) on mount
+  useEffect(() => {
+    const fetchItems = async () => {
+      try {
+        let stored = localStorage.getItem('growkyc_action_items');
+        if (!stored || JSON.parse(stored).length === 0) {
+          const defaultItems: ActionItem[] = [
+            {
+              id: 'act-001',
+              title: 'KYC Review Overdue',
+              description: 'Annual KYC review is 12 days overdue',
+              clientId: '5',
+              clientName: 'Sarah Williams',
+              clientType: 'individual',
+              category: 'kyc_review',
+              priority: 'critical',
+              status: 'overdue',
+              dueDate: new Date(Date.now() - 12 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+              daysUntilDue: -12,
+              assignedTo: 'Sarah Chen',
+              createdDate: '2025-06-01',
+              actionRequired: 'Complete annual KYC review and update client file'
+            },
+            {
+              id: 'act-002',
+              title: 'Enhanced Due Diligence Required',
+              description: 'Critical risk flags detected - immediate EDD needed',
+              clientId: '8',
+              clientName: 'Pacific Trading Co Pty Ltd',
+              clientType: 'company',
+              category: 'edd_required',
+              priority: 'critical',
+              status: 'due_today',
+              dueDate: new Date().toISOString().split('T')[0],
+              daysUntilDue: 0,
+              assignedTo: 'Jessica Lee',
+              createdDate: '2025-06-03',
+              relatedEntity: '5 flags detected',
+              actionRequired: 'Conduct enhanced due diligence and risk assessment'
+            }
+          ];
+          localStorage.setItem('growkyc_action_items', JSON.stringify(defaultItems));
+          stored = JSON.stringify(defaultItems);
+        }
+        setActionItems(JSON.parse(stored));
+      } catch (e) {
+        setError('Failed to load action items');
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchItems();
+  }, []);
+
+  // Filter action items based on search and filters
+  const filteredItems = actionItems.filter(item => {
     const matchesSearch = 
       item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       item.clientName.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -273,12 +133,12 @@ export function ActionItemsCenter({ onViewClient, onBack }: ActionItemsCenterPro
 
   // Calculate summary stats
   const stats = {
-    total: allActionItems.length,
-    overdue: allActionItems.filter(i => i.status === 'overdue').length,
-    dueToday: allActionItems.filter(i => i.status === 'due_today').length,
-    dueSoon: allActionItems.filter(i => i.status === 'due_soon').length,
-    critical: allActionItems.filter(i => i.priority === 'critical').length,
-    high: allActionItems.filter(i => i.priority === 'high').length,
+    total: actionItems.length,
+    overdue: actionItems.filter(i => i.status === 'overdue').length,
+    dueToday: actionItems.filter(i => i.status === 'due_today').length,
+    dueSoon: actionItems.filter(i => i.status === 'due_soon').length,
+    critical: actionItems.filter(i => i.priority === 'critical').length,
+    high: actionItems.filter(i => i.priority === 'high').length,
     completed: 0 // For future use
   };
 
@@ -544,105 +404,115 @@ export function ActionItemsCenter({ onViewClient, onBack }: ActionItemsCenterPro
 
       {/* Action Items List */}
       <div className="space-y-3">
-        {sortedItems.map((item) => (
-          <Card 
-            key={item.id} 
-            className={`hover:shadow-lg transition-all cursor-pointer border-l-4 ${
-              item.status === 'overdue' ? 'border-l-red-600' :
-              item.status === 'due_today' ? 'border-l-[#FFA300]' :
-              item.status === 'due_soon' ? 'border-l-yellow-500' :
-              'border-l-blue-500'
-            }`}
-            onClick={() => navigate(`/${role}/review/${item.clientId}`)}
-          >
-            <CardContent className="p-4">
-              <div className="flex items-start gap-4">
-                {/* Priority Badge */}
-                <div className="flex-shrink-0">
-                  <div className={`w-16 h-16 rounded-lg ${getPriorityColor(item.priority)} flex items-center justify-center`}>
-                    {getCategoryIcon(item.category)}
+        {loading ? (
+          <div className="text-center py-8">
+            <p className="text-gray-600">Loading action items...</p>
+          </div>
+        ) : error ? (
+          <div className="text-center py-8">
+            <p className="text-red-600">{error}</p>
+          </div>
+        ) : (
+          sortedItems.map((item) => (
+            <Card
+              key={item.id}
+              className={`hover:shadow-lg transition-all cursor-pointer border-l-4 ${
+                item.status === 'overdue' ? 'border-l-red-600' :
+                item.status === 'due_today' ? 'border-l-[#FFA300]' :
+                item.status === 'due_soon' ? 'border-l-yellow-500' :
+                'border-l-blue-500'
+              }`}
+              onClick={() => navigate(`/${role}/review/${item.clientId}`)}
+            >
+              <CardContent className="p-4">
+                <div className="flex items-start gap-4">
+                  {/* Priority Badge */}
+                  <div className="flex-shrink-0">
+                    <div className={`w-16 h-16 rounded-lg ${getPriorityColor(item.priority)} flex items-center justify-center`}>
+                      {getCategoryIcon(item.category)}
+                    </div>
                   </div>
-                </div>
 
-                {/* Main Content */}
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-start justify-between mb-2">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <h3 className="text-lg font-semibold text-gray-900">{item.title}</h3>
-                        <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${getPriorityColor(item.priority)}`}>
-                          {item.priority.toUpperCase()}
-                        </span>
-                      </div>
-                      <p className="text-sm text-gray-600 mb-2">{item.description}</p>
-                      
-                      {/* Client Info */}
-                      <div className="flex items-center gap-4 text-sm text-gray-500">
-                        <div className="flex items-center gap-1">
-                          {getTypeIcon(item.clientType)}
-                          <span className="font-medium text-gray-700">{item.clientName}</span>
+                  {/* Main Content */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start justify-between mb-2">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-1">
+                          <h3 className="text-lg font-semibold text-gray-900">{item.title}</h3>
+                          <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${getPriorityColor(item.priority)}`}>
+                            {item.priority.toUpperCase()}
+                          </span>
                         </div>
-                        <div className="flex items-center gap-1">
-                          {getCategoryIcon(item.category)}
-                          <span>{getCategoryLabel(item.category)}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <User className="w-4 h-4" />
-                          <span>{item.assignedTo}</span>
-                        </div>
-                        {item.relatedEntity && (
-                          <div className="flex items-center gap-1 text-[#FFA300]">
-                            <AlertTriangle className="w-4 h-4" />
-                            <span className="font-medium">{item.relatedEntity}</span>
+                        <p className="text-sm text-gray-600 mb-2">{item.description}</p>
+                        
+                        {/* Client Info */}
+                        <div className="flex items-center gap-4 text-sm text-gray-500">
+                          <div className="flex items-center gap-1">
+                            {getTypeIcon(item.clientType)}
+                            <span className="font-medium text-gray-700">{item.clientName}</span>
                           </div>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Status and Due Date */}
-                    <div className="flex-shrink-0 text-right ml-4">
-                      <div className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium border mb-2 ${getStatusColor(item.status)}`}>
-                        {getStatusIcon(item.status)}
-                        <span>{formatDueDate(item.daysUntilDue)}</span>
-                      </div>
-                      <div className="text-xs text-gray-500">
-                        Due: {new Date(item.dueDate).toLocaleDateString('en-AU', { 
-                          day: 'numeric', 
-                          month: 'short', 
-                          year: 'numeric' 
-                        })}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Action Required */}
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mt-3">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-start gap-2">
-                        <CheckSquare className="w-4 h-4 text-blue-600 mt-0.5" />
-                        <div>
-                          <p className="text-xs font-medium text-blue-900 mb-1">Action Required</p>
-                          <p className="text-sm text-blue-700">{item.actionRequired}</p>
+                          <div className="flex items-center gap-1">
+                            {getCategoryIcon(item.category)}
+                            <span>{getCategoryLabel(item.category)}</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <User className="w-4 h-4" />
+                            <span>{item.assignedTo}</span>
+                          </div>
+                          {item.relatedEntity && (
+                            <div className="flex items-center gap-1 text-[#FFA300]">
+                              <AlertTriangle className="w-4 h-4" />
+                              <span className="font-medium">{item.relatedEntity}</span>
+                            </div>
+                          )}
                         </div>
                       </div>
-                      <Button
-                        size="sm"
-                        className="bg-[#13B5EA] hover:bg-[#0E7C9E] text-white"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          navigate(`/${role}/review/${item.clientId}`);
-                        }}
-                      >
-                        View Client
-                        <ArrowRight className="w-4 h-4 ml-1" />
-                      </Button>
+
+                      {/* Status and Due Date */}
+                      <div className="flex-shrink-0 text-right ml-4">
+                        <div className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium border mb-2 ${getStatusColor(item.status)}`}>
+                          {getStatusIcon(item.status)}
+                          <span>{formatDueDate(item.daysUntilDue)}</span>
+                        </div>
+                        <div className="text-xs text-gray-500">
+                          Due: {new Date(item.dueDate).toLocaleDateString('en-AU', { 
+                            day: 'numeric', 
+                            month: 'short', 
+                            year: 'numeric' 
+                          })}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Action Required */}
+                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mt-3">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-start gap-2">
+                          <CheckSquare className="w-4 h-4 text-blue-600 mt-0.5" />
+                          <div>
+                            <p className="text-xs font-medium text-blue-900 mb-1">Action Required</p>
+                            <p className="text-sm text-blue-700">{item.actionRequired}</p>
+                          </div>
+                        </div>
+                        <Button
+                          size="sm"
+                          className="bg-[#13B5EA] hover:bg-[#0E7C9E] text-white"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            navigate(`/${role}/review/${item.clientId}`);
+                          }}
+                        >
+                          View Client
+                          <ArrowRight className="w-4 h-4 ml-1" />
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
+              </CardContent>
+            </Card>
+          ))
+        )}
       </div>
 
       {sortedItems.length === 0 && (

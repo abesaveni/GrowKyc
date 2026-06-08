@@ -24,6 +24,7 @@ import {
   ProgressIndicator
 } from './DesignSystem';
 import { toast } from 'sonner';
+import { useAuth } from '../../../context/AuthContext';
 
 type EntityType = 'individual' | 'sole-trader' | 'company' | 'trust' | 'partnership' | 'smsf';
 type OnboardingStep = 
@@ -45,6 +46,8 @@ interface BeneficialOwner {
 }
 
 export function EnhancedClientPortal() {
+  const { user } = useAuth();
+  const isPartner = user?.role === 'partner';
   const [currentStep, setCurrentStep] = useState<OnboardingStep>('welcome');
   const [entityType, setEntityType] = useState<EntityType | null>(null);
   const [riskScore, setRiskScore] = useState(15); // 0-100
@@ -192,7 +195,12 @@ export function EnhancedClientPortal() {
         })}
       </div>
 
-      <PrimaryButton onClick={handleNext} className="px-12">
+      <PrimaryButton 
+        onClick={() => !isPartner && handleNext()} 
+        className={`px-12 ${isPartner ? 'opacity-50 cursor-not-allowed' : ''}`}
+        disabled={isPartner}
+        title={isPartner ? "Managing Partners cannot start onboarding cases." : undefined}
+      >
         Start Onboarding
         <ChevronRight className="w-5 h-5 ml-2 inline" />
       </PrimaryButton>

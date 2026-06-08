@@ -11,7 +11,7 @@ export function initializeSentry() {
       dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
       integrations: [
         new BrowserTracing(),
-        new Sentry.Replay({
+        new (Sentry as any).Replay({
           maskAllText: true,
           blockAllMedia: true,
         }),
@@ -66,24 +66,28 @@ export function initializeSentry() {
         return event;
       },
     });
+  }
+}
 
-    // Set user context when available
-    export function setSentryUser(user: {
-      id: string;
-      email: string;
-      organizationId: string;
-    }) {
-      Sentry.setUser({
-        id: user.id,
-        email: user.email,
-        organizationId: user.organizationId,
-      });
-    }
+// Set user context when available
+export function setSentryUser(user: {
+  id: string;
+  email: string;
+  organizationId: string;
+}) {
+  if (process.env.NODE_ENV === 'production') {
+    Sentry.setUser({
+      id: user.id,
+      email: user.email,
+      organizationId: user.organizationId,
+    });
+  }
+}
 
-    // Clear user context on logout
-    export function clearSentryUser() {
-      Sentry.setUser(null);
-    }
+// Clear user context on logout
+export function clearSentryUser() {
+  if (process.env.NODE_ENV === 'production') {
+    Sentry.setUser(null);
   }
 }
 
@@ -93,7 +97,7 @@ export function initializeSentry() {
 
 export function trackPerformance(metricName: string, duration: number, metadata?: Record<string, any>) {
   if (process.env.NODE_ENV === 'production') {
-    Sentry.metrics.distribution(metricName, duration, {
+    (Sentry.metrics as any).distribution(metricName, duration, {
       tags: metadata,
       unit: 'millisecond',
     });
@@ -127,36 +131,27 @@ export function trackError(error: Error, context?: Record<string, any>) {
 
 export function trackWebVitals() {
   if (process.env.NODE_ENV === 'production' && typeof window !== 'undefined') {
-    import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
-      getCLS((metric) => {
-        Sentry.metrics.distribution('web_vitals.cls', metric.value, {
-          tags: { vitalscore: getVitalScore(metric.rating) },
+    import('web-vitals').then(({ onCLS, onINP, onFCP, onLCP, onTTFB }) => {
+      const handleMetric = (name: string, metric: any) => {
+        Sentry.addBreadcrumb({
+          category: 'web-vitals',
+          message: `${name}: ${metric.value}`,
+          level: 'info',
+          data: {
+            id: metric.id,
+            value: metric.value,
+            rating: metric.rating,
+          },
         });
-      });
+      };
 
-      getFID((metric) => {
-        Sentry.metrics.distribution('web_vitals.fid', metric.value, {
-          tags: { vitalscore: getVitalScore(metric.rating) },
-        });
-      });
-
-      getFCP((metric) => {
-        Sentry.metrics.distribution('web_vitals.fcp', metric.value, {
-          tags: { vitalscore: getVitalScore(metric.rating) },
-        });
-      });
-
-      getLCP((metric) => {
-        Sentry.metrics.distribution('web_vitals.lcp', metric.value, {
-          tags: { vitalscore: getVitalScore(metric.rating) },
-        });
-      });
-
-      getTTFB((metric) => {
-        Sentry.metrics.distribution('web_vitals.ttfb', metric.value, {
-          tags: { vitalscore: getVitalScore(metric.rating) },
-        });
-      });
+      onCLS((metric: any) => handleMetric('CLS', metric));
+      onINP((metric: any) => handleMetric('INP', metric));
+      onFCP((metric: any) => handleMetric('FCP', metric));
+      onLCP((metric: any) => handleMetric('LCP', metric));
+      onTTFB((metric: any) => handleMetric('TTFB', metric));
+    }).catch((err) => {
+      console.error('Failed to load web-vitals', err);
     });
   }
 }
@@ -192,17 +187,15 @@ export async function monitorTransaction<T>(
   name: string,
   operation: () => Promise<T>
 ): Promise<T> {
-  const transaction = Sentry.startTransaction({ name });
-  
   try {
-    const result = await operation();
-    transaction.setStatus('ok');
-    return result;
+    return await operation();
   } catch (error) {
-    transaction.setStatus('internal_error');
+    if (process.env.NODE_ENV === 'production') {
+      Sentry.captureException(error, {
+        tags: { transaction: name }
+      });
+    }
     throw error;
-  } finally {
-    transaction.finish();
   }
 }
 

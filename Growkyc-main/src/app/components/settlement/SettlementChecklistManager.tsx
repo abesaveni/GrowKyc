@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
@@ -126,9 +126,7 @@ export function SettlementChecklistManager({ caseData }: SettlementChecklistMana
         
         // AI notification
         if (newStatus === 'completed') {
-          toast.success('Task completed!', {
-            description: `AI will notify ${task.assignedTo} and update dependent tasks`
-          });
+          toast.success('Task completed!', `AI will notify ${task.assignedTo} and update dependent tasks`);
         }
         
         return { ...task, status: newStatus, completedDate };
@@ -144,22 +142,16 @@ export function SettlementChecklistManager({ caseData }: SettlementChecklistMana
     const newTasks = generateAITasks(caseData);
     setTasks([...tasks, ...newTasks]);
     
-    toast.success('AI Generated Additional Tasks', {
-      description: `Added ${newTasks.length} recommended tasks based on case analysis`
-    });
+    toast.success('AI Generated Additional Tasks', `Added ${newTasks.length} recommended tasks based on case analysis`);
     setIsGeneratingTasks(false);
   };
 
   const handleAIOptimizeTimeline = async () => {
-    toast.info('AI Optimizing Timeline...', {
-      description: 'Analyzing task dependencies and resource allocation'
-    });
+    toast.info('AI Optimizing Timeline...', 'Analyzing task dependencies and resource allocation');
     
     await new Promise(resolve => setTimeout(resolve, 2000));
     
-    toast.success('Timeline Optimized', {
-      description: 'Settlement timeline optimized to complete 3 days earlier'
-    });
+    toast.success('Timeline Optimized', 'Settlement timeline optimized to complete 3 days earlier');
   };
 
   const handleBulkCommunicate = () => {
@@ -179,9 +171,7 @@ export function SettlementChecklistManager({ caseData }: SettlementChecklistMana
     });
     
     setTasks(updatedTasks);
-    toast.success('AI Auto-Assigned Tasks', {
-      description: 'All unassigned tasks have been assigned to appropriate parties'
-    });
+    toast.success('AI Auto-Assigned Tasks', 'All unassigned tasks have been assigned to appropriate parties');
   };
 
   return (
@@ -482,9 +472,7 @@ function TaskItem({ task, onToggle, onUpdate }: { task: SettlementTask; onToggle
   };
 
   const handleSendReminder = () => {
-    toast.success('Reminder sent', {
-      description: `Email sent to ${task.assignedTo}`
-    });
+    toast.success('Reminder sent', `Email sent to ${task.assignedTo}`);
   };
 
   return (
@@ -661,9 +649,7 @@ function BulkCommunicationPanel({ tasks, caseData, onClose }: { tasks: Settlemen
   };
 
   const handleSendMessages = () => {
-    toast.success('Messages sent!', {
-      description: `Emails sent to ${selectedRecipients.length} recipient${selectedRecipients.length > 1 ? 's' : ''}`
-    });
+    toast.success('Messages sent!', `Emails sent to ${selectedRecipients.length} recipient${selectedRecipients.length > 1 ? 's' : ''}`);
     onClose();
   };
 
@@ -784,9 +770,7 @@ function AIAssistantPanel({ tasks, caseData, onClose, onTasksUpdate }: {
   };
 
   const handleApplySuggestion = (suggestion: string) => {
-    toast.success('AI Suggestion Applied', {
-      description: 'Tasks and timeline have been updated'
-    });
+    toast.success('AI Suggestion Applied', 'Tasks and timeline have been updated');
   };
 
   return (
@@ -860,9 +844,9 @@ function AddTaskModal({ caseData, onClose, onTaskAdd }: {
 }) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [category, setCategory] = useState('legal');
-  const [status, setStatus] = useState('not_started');
-  const [priority, setPriority] = useState('medium');
+  const [category, setCategory] = useState<'legal' | 'financial' | 'documents' | 'inspection' | 'compliance' | 'communication'>('legal');
+  const [status, setStatus] = useState<'not_started' | 'in_progress' | 'completed' | 'blocked' | 'overdue'>('not_started');
+  const [priority, setPriority] = useState<'low' | 'medium' | 'high' | 'critical'>('medium');
   const [assignedTo, setAssignedTo] = useState('');
   const [assignedToEmail, setAssignedToEmail] = useState('');
   const [dueDate, setDueDate] = useState(format(new Date(), 'yyyy-MM-dd'));
@@ -1031,7 +1015,7 @@ function AddTaskModal({ caseData, onClose, onTaskAdd }: {
             <Label>AI Generated</Label>
             <Checkbox
               checked={aiGenerated}
-              onCheckedChange={(checked) => setAiGenerated(checked)}
+              onCheckedChange={(checked) => setAiGenerated(checked === true)}
               className="mt-1"
             />
           </div>

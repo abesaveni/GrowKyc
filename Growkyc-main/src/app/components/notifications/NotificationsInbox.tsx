@@ -328,9 +328,14 @@ export function NotificationsInbox({ onNavigate }: NotificationsInboxProps) {
                   ? "No notifications match your filters"
                   : "You're all caught up! No notifications to show."
               }
-              action={
+              actionLabel={
                 searchQuery || typeFilter !== 'all' || statusFilter !== 'all'
-                  ? { label: 'Clear Filters', onClick: handleClearFilters }
+                  ? 'Clear Filters'
+                  : undefined
+              }
+              onAction={
+                searchQuery || typeFilter !== 'all' || statusFilter !== 'all'
+                  ? handleClearFilters
                   : undefined
               }
             />
@@ -418,15 +423,14 @@ export function NotificationsInbox({ onNavigate }: NotificationsInboxProps) {
         </CardContent>
       </Card>
 
-      {/* Confirm Delete All Dialog */}
       <ConfirmDialog
-        open={confirmDeleteAllOpen}
-        onOpenChange={setConfirmDeleteAllOpen}
+        isOpen={confirmDeleteAllOpen}
+        onClose={() => setConfirmDeleteAllOpen(false)}
         title="Delete All Notifications?"
         description={`Are you sure you want to delete ${filteredNotifications.length} notification${filteredNotifications.length > 1 ? 's' : ''}? This action cannot be undone.`}
         confirmLabel="Delete All"
         onConfirm={handleDeleteAll}
-        variant="destructive"
+        variant="danger"
       />
 
       {/* Notification Detail Modal */}

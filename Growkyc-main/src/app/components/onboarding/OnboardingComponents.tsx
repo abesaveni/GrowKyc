@@ -248,7 +248,7 @@ export function InternalReviewAndApproval({ entities, onApprove, onReject, onBac
                   <StatusBadge
                     status={
                       entity.data.approvalStatus === 'approved' ? 'approved' :
-                      entity.data.approvalStatus === 'rejected' ? 'blocked' :
+                      entity.data.approvalStatus === 'rejected' ? 'rejected' :
                       'pending'
                     }
                   />

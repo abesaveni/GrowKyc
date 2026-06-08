@@ -49,6 +49,17 @@ class MonitoringService:
                         notif_type=NotificationType.SYSTEM_ALERT,
                     )
 
+                    # Trigger risk recalculation on monitoring alert (Sprint C)
+                    try:
+                        from services.risk_service import recalculate_client_risk
+                        recalculate_client_risk(
+                            client.id, db=self.db, trigger="monitoring_document_alert"
+                        )
+                    except Exception as e:
+                        self.logger.error(
+                            f"Risk recalculation failed after document alert for Client {client.id}: {e}"
+                        )
+
         self.logger.info(
             f"Monitoring check: Processed {len(expired_docs)} expired documents."
         )
@@ -72,6 +83,18 @@ class MonitoringService:
                 message="Your profile is due for a periodic compliance review.",
                 notif_type=NotificationType.SYSTEM_ALERT,
             )
+
+            # Trigger risk recalculation on review status change (Sprint C)
+            try:
+                from services.risk_service import recalculate_client_risk
+                recalculate_client_risk(
+                    client.id, db=self.db, trigger="monitoring_periodic_review"
+                )
+            except Exception as e:
+                self.logger.error(
+                    f"Risk recalculation failed after periodic review for Client {client.id}: {e}"
+                )
+
         self.db.commit()
 
         self.logger.info(f"Monitoring check: Processed {len(due_clients)} due clients.")

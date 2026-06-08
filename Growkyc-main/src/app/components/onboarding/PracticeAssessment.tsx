@@ -819,7 +819,7 @@ export function PracticeAssessment({ entities, onBack, onContinue, canProgress }
               status={
                 assessmentData.decision === 'accept' ? 'approved' :
                 assessmentData.decision === 'conditional' ? 'pending' :
-                'blocked'
+                'rejected'
               }
             />
           </div>

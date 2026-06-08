@@ -3,10 +3,11 @@ models/case_snapshots.py
 ========================
 Immutable snapshot of case state on closure.
 """
+
 from datetime import datetime, timezone
 
-from sqlalchemy import Column, DateTime, ForeignKey, Index, Integer, String
-from sqlalchemy import JSON
+from sqlalchemy import (JSON, Column, DateTime, ForeignKey, Integer,
+                        String)
 from sqlalchemy.orm import relationship
 
 from models.base import Base

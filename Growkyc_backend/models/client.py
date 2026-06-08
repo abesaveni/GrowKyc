@@ -11,8 +11,9 @@ Imports: use `from models import Client` (unchanged in all consumers).
 
 from datetime import datetime, timezone
 
-from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, String
+from sqlalchemy import Boolean, Column, DateTime
 from sqlalchemy import Enum as SQLEnum
+from sqlalchemy import ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 
 from core.enums import RiskLevel
@@ -83,14 +84,14 @@ class Client(Base):
     individual_profile = relationship(
         "IndividualProfile",
         back_populates="client",
-        uselist=False,          # one-to-one
+        uselist=False,  # one-to-one
         cascade="all, delete-orphan",
         lazy="select",
     )
     entity_profile = relationship(
         "EntityProfile",
         back_populates="client",
-        uselist=False,          # one-to-one
+        uselist=False,  # one-to-one
         cascade="all, delete-orphan",
         lazy="select",
     )
@@ -120,7 +121,4 @@ class Client(Base):
     )
 
     def __repr__(self) -> str:
-        return (
-            f"<Client(id={self.id}, user_id={self.user_id}, "
-            f"name={self.name!r})>"
-        )
+        return f"<Client(id={self.id}, user_id={self.user_id}, " f"name={self.name!r})>"

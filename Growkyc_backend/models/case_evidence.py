@@ -3,6 +3,7 @@ models/case_evidence.py
 =======================
 M:N evidence linking for Cases.
 """
+
 from datetime import datetime, timezone
 
 from sqlalchemy import Column, DateTime, ForeignKey, Index, Integer, String
@@ -68,4 +69,7 @@ class CaseEvidence(Base):
     )
 
     def __repr__(self):
-        return f"<CaseEvidence(case_id={self.case_id}, type={self.evidence_type}, ref={self.evidence_ref_id})>"
+        return (
+            f"<CaseEvidence(case_id={self.case_id}, "
+            f"type={self.evidence_type}, ref={self.evidence_ref_id})>"
+        )

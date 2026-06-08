@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { toast } from 'sonner';
 import {
   Settings,
@@ -43,6 +43,7 @@ import {
   Code,
   Cloud
 } from 'lucide-react';
+import { useAuth } from '../../../context/AuthContext';
 
 // Simple UI Components
 const Button = ({ children, onClick, variant = 'default', size = 'default', className = '', disabled = false }: any) => {
@@ -120,6 +121,8 @@ export function GrowHQDashboard({ onNavigate }: GrowHQDashboardProps) {
   const [selectedModule, setSelectedModule] = useState<typeof enabledModules[0] | null>(null);
   const [showClientOnboarding, setShowClientOnboarding] = useState(false);
   const [selectedClientType, setSelectedClientType] = useState<string>('');
+  const { user } = useAuth();
+  const isPartner = user?.role === 'partner';
 
   const activeModules = enabledModules.filter(m => m.enabled);
   const totalUsers = activeModules.reduce((sum, m) => sum + m.users, 0);
@@ -486,8 +489,10 @@ export function GrowHQDashboard({ onNavigate }: GrowHQDashboardProps) {
                 {clientType.active ? (
                   <Button 
                     size="sm" 
-                    className="w-full bg-blue-600 hover:bg-blue-700"
-                    onClick={() => handleStartOnboarding(clientType.type)}
+                    className={`w-full bg-blue-600 hover:bg-blue-700 ${isPartner ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    onClick={() => !isPartner && handleStartOnboarding(clientType.type)}
+                    disabled={isPartner}
+                    title={isPartner ? "Managing Partners cannot onboard clients." : undefined}
                   >
                     <Plus className="w-4 h-4 mr-2" />
                     Onboard Client

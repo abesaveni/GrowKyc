@@ -42,6 +42,15 @@ interface OwnershipStructure {
 export function BeneficialOwnership() {
   const [activeTab, setActiveTab] = useState<'overview' | 'register' | 'verification' | 'analysis'>('overview');
   
+  const ownershipThreshold = (() => {
+    try {
+      const val = localStorage.getItem('grow_settings_ownership_threshold');
+      return val ? JSON.parse(val) : 25;
+    } catch {
+      return 25;
+    }
+  })();
+  
   const [sampleStructure] = useState<OwnershipStructure>({
     clientId: 'C-2024-001',
     clientName: 'TechCorp Pty Ltd',
@@ -212,19 +221,19 @@ export function BeneficialOwnership() {
         <div className="flex items-start gap-3">
           <Target className="w-6 h-6 text-blue-600 mt-0.5" />
           <div className="flex-1">
-            <h3 className="font-bold text-blue-900 mb-2">Ultimate Beneficial Owner (UBO) Threshold: 25%</h3>
+            <h3 className="font-bold text-blue-900 mb-2">Ultimate Beneficial Owner (UBO) Threshold: {ownershipThreshold}%</h3>
             <p className="text-sm text-blue-800 mb-3">
               Under Australian AML/CTF regulations, a beneficial owner is an individual who ultimately owns or controls 
-              (directly or indirectly) 25% or more of the customer, or exercises control over the customer's management.
+              (directly or indirectly) {ownershipThreshold}% or more of the customer, or exercises control over the customer's management.
             </p>
             <div className="grid grid-cols-3 gap-4">
               <div className="bg-white rounded-lg p-3 border border-blue-200">
                 <p className="text-xs text-blue-700 font-semibold mb-1">Direct Ownership</p>
-                <p className="text-sm text-gray-700">Individual owns ≥25% shares directly</p>
+                <p className="text-sm text-gray-700">Individual owns ≥{ownershipThreshold}% shares directly</p>
               </div>
               <div className="bg-white rounded-lg p-3 border border-blue-200">
                 <p className="text-xs text-blue-700 font-semibold mb-1">Indirect Ownership</p>
-                <p className="text-sm text-gray-700">Individual owns ≥25% through entities</p>
+                <p className="text-sm text-gray-700">Individual owns ≥{ownershipThreshold}% through entities</p>
               </div>
               <div className="bg-white rounded-lg p-3 border border-blue-200">
                 <p className="text-xs text-blue-700 font-semibold mb-1">Control Person</p>
@@ -306,7 +315,7 @@ export function BeneficialOwnership() {
                         <div className="bg-blue-100 border-2 border-blue-500 px-4 py-3 rounded-lg text-center mt-2">
                           <User className="w-6 h-6 mx-auto mb-1 text-blue-700" />
                           <p className="font-semibold text-gray-900 text-sm">Michael Smith</p>
-                          <p className="text-sm font-bold text-blue-600">UBO (25%)</p>
+                           <p className="text-sm font-bold text-blue-600">UBO ({ownershipThreshold}%)</p>
                           <p className="text-xs text-gray-600">via Trust</p>
                         </div>
                       </>
@@ -424,7 +433,7 @@ export function BeneficialOwnership() {
               Company (Pty Ltd)
             </h4>
             <ul className="text-sm text-gray-700 space-y-1">
-              <li>• Shareholders with ≥25% ownership</li>
+              <li>• Shareholders with ≥{ownershipThreshold}% ownership</li>
               <li>• Directors with ultimate control</li>
               <li>• Trace through corporate shareholders</li>
               <li>• Verify ASIC company extract</li>
@@ -439,7 +448,7 @@ export function BeneficialOwnership() {
             <ul className="text-sm text-gray-700 space-y-1">
               <li>• Trustee (individual or company)</li>
               <li>• Settlor (if still involved)</li>
-              <li>• Beneficiaries with ≥25% entitlement</li>
+              <li>• Beneficiaries with ≥{ownershipThreshold}% entitlement</li>
               <li>• Appointor (power to appoint/remove trustee)</li>
             </ul>
           </div>
@@ -451,7 +460,7 @@ export function BeneficialOwnership() {
             </h4>
             <ul className="text-sm text-gray-700 space-y-1">
               <li>• All partners</li>
-              <li>• Partners with ≥25% profit share</li>
+              <li>• Partners with ≥{ownershipThreshold}% profit share</li>
               <li>• Managing partners</li>
               <li>• Verify partnership agreement</li>
             </ul>

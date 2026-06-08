@@ -603,7 +603,7 @@ export function DealMarketplace({ onNavigate, role, investorProfile }: DealMarke
                     <span className="px-2 py-1 bg-gray-100 text-gray-800 rounded text-xs font-medium">
                       {deal.sector}
                     </span>
-                    {getStructureBadge(deal.structure)}
+                    {getStructureBadge(deal.structure as DealStructure)}
                   </div>
                 </div>
                 <div className="flex flex-col items-end gap-2">

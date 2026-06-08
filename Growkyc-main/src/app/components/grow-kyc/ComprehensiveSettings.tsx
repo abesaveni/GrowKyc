@@ -46,12 +46,37 @@ import {
 import { IntegrationsSettings } from './IntegrationsSettings';
 import { FraudDetectionSettings } from './FraudDetectionSettings';
 
+interface AutoCaseCreationRule {
+  trigger: string;
+  severity: string;
+  enabled: boolean;
+}
+
 interface ComprehensiveSettingsProps {
+  role?: string;
+  userId?: string;
   onBack: () => void;
 }
 
-export function ComprehensiveSettings({ onBack }: ComprehensiveSettingsProps) {
+export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSettingsProps) {
   const [activeTab, setActiveTab] = useState('kyc-config');
+
+  const getPersonaConfig = (uid: string) => {
+    const configs: Record<string, { name: string; title: string; role: string }> = {
+      sarah_chen: { name: 'Sarah Chen', title: 'Head of Compliance', role: 'compliance_officer' },
+      emma_williams: { name: 'Emma Williams', title: 'Compliance Officer', role: 'compliance_officer' },
+      jessica_lee: { name: 'Jessica Lee', title: 'Senior Compliance Officer', role: 'compliance_officer' },
+      alex_rivera: { name: 'Alex Rivera', title: 'AML Analyst', role: 'analyst' },
+      david_thompson: { name: 'David Thompson', title: 'Internal Auditor', role: 'auditor' },
+      michael_roberts: { name: 'Michael Roberts', title: 'Managing Partner', role: 'partner' },
+      robert_kim: { name: 'Robert Kim', title: 'Risk Partner', role: 'partner' }
+    };
+    return configs[uid] || configs.sarah_chen;
+  };
+
+  const persona = getPersonaConfig(userId || localStorage.getItem('growkyc_selected_user') || 'sarah_chen');
+  const userRole = role || persona.role;
+  const isReadOnly = userRole === 'auditor' || userRole === 'analyst';
 
   // Unified Toast State
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'info' | 'error' } | null>(null);
@@ -72,6 +97,10 @@ export function ComprehensiveSettings({ onBack }: ComprehensiveSettingsProps) {
 
   // Helper to save settings to localStorage and trigger a Toast
   const saveTabSettings = (tabName: string, keysAndValues: { [key: string]: any }) => {
+    if (isReadOnly) {
+      showToast(`Access Denied: Cannot save settings in read-only mode.`, 'error');
+      return;
+    }
     try {
       Object.entries(keysAndValues).forEach(([key, val]) => {
         localStorage.setItem(`grow_settings_${key}`, JSON.stringify(val));
@@ -93,7 +122,7 @@ export function ComprehensiveSettings({ onBack }: ComprehensiveSettingsProps) {
   const [autoScreenShareholders, setAutoScreenShareholders] = useState(() => getStored('auto_screen_shareholders', true));
   const [maxExpansionDepth, setMaxExpansionDepth] = useState(() => getStored('max_expansion_depth', 5));
 
-  const [botSettings, setBotSettings] = useState(() => getStored('bot_settings', {
+  const [botSettings, setBotSettings] = useState<Record<string, boolean>>(() => getStored('bot_settings', {
     'Identity Verification Bot': true,
     'Sanctions Screening Bot': true,
     'PEP Screening Bot': true,
@@ -114,7 +143,7 @@ export function ComprehensiveSettings({ onBack }: ComprehensiveSettingsProps) {
   const [retentionAudit, setRetentionAudit] = useState(() => getStored('retention_audit', 7));
 
   // Risk Scoring states
-  const [riskWeights, setRiskWeights] = useState(() => getStored('risk_weights', {
+  const [riskWeights, setRiskWeights] = useState<Record<string, number>>(() => getStored('risk_weights', {
     'Sanctions Match': 100,
     'PEP Status': 80,
     'Adverse Media (High)': 70,
@@ -132,7 +161,7 @@ export function ComprehensiveSettings({ onBack }: ComprehensiveSettingsProps) {
   const [riskHighMin, setRiskHighMin] = useState(() => getStored('risk_high_min', 71));
   const [riskHighMax, setRiskHighMax] = useState(() => getStored('risk_high_max', 100));
 
-  const [autoCaseCreationRules, setAutoCaseCreationRules] = useState(() => getStored('auto_case_creation_rules', [
+  const [autoCaseCreationRules, setAutoCaseCreationRules] = useState<AutoCaseCreationRule[]>(() => getStored('auto_case_creation_rules', [
     { trigger: 'Sanctions match detected', severity: 'Critical', enabled: true },
     { trigger: 'PEP identified', severity: 'High', enabled: true },
     { trigger: 'High-severity adverse media', severity: 'High', enabled: true },
@@ -147,7 +176,7 @@ export function ComprehensiveSettings({ onBack }: ComprehensiveSettingsProps) {
   const [mediumReviewMonths, setMediumReviewMonths] = useState(() => getStored('medium_review_months', 6));
   const [highReviewMonths, setHighReviewMonths] = useState(() => getStored('high_review_months', 3));
 
-  const [monitoringAlerts, setMonitoringAlerts] = useState(() => getStored('monitoring_alerts', {
+  const [monitoringAlerts, setMonitoringAlerts] = useState<Record<string, boolean>>(() => getStored('monitoring_alerts', {
     'Real-time sanctions monitoring': true,
     'PEP status monitoring': true,
     'Adverse media monitoring': true,
@@ -157,7 +186,7 @@ export function ComprehensiveSettings({ onBack }: ComprehensiveSettingsProps) {
   // Pricing states
   const [verificationFee, setVerificationFee] = useState(() => getStored('verification_fee', 49.00));
   const [monitoringFee, setMonitoringFee] = useState(() => getStored('monitoring_fee', 15.00));
-  const [individualSearchCosts, setIndividualSearchCosts] = useState(() => getStored('individual_search_costs', {
+  const [individualSearchCosts, setIndividualSearchCosts] = useState<Record<string, number>>(() => getStored('individual_search_costs', {
     'Equifax Identity Check': 8.50,
     'Illion Business Check': 12.00,
     'ComplyAdvantage AML': 6.50,
@@ -167,7 +196,7 @@ export function ComprehensiveSettings({ onBack }: ComprehensiveSettingsProps) {
   }));
 
   // Organization states
-  const [orgProfile, setOrgProfile] = useState(() => getStored('org_profile', {
+  const [orgProfile, setOrgProfile] = useState<Record<string, string>>(() => getStored('org_profile', {
     name: 'Grow Financial Services',
     tradingName: 'Grow',
     abn: '12 345 678 901',
@@ -180,7 +209,7 @@ export function ComprehensiveSettings({ onBack }: ComprehensiveSettingsProps) {
 
   // Advanced states
   const [primaryRegion, setPrimaryRegion] = useState(() => getStored('primary_region', 'Australia (Sydney)'));
-  const [jurisdictionSwitches, setJurisdictionSwitches] = useState(() => getStored('jurisdiction_switches', {
+  const [jurisdictionSwitches, setJurisdictionSwitches] = useState<Record<string, boolean>>(() => getStored('jurisdiction_switches', {
     Australia: true,
     EU: false,
     US: false,
@@ -230,12 +259,24 @@ export function ComprehensiveSettings({ onBack }: ComprehensiveSettingsProps) {
               <p className="text-xs md:text-sm text-gray-600 truncate">Complete control center for your KYC platform</p>
             </div>
           </div>
-          <Badge variant="default" className="bg-purple-600 self-start sm:self-auto flex-shrink-0">
-            <Crown className="w-3 h-3 mr-1" />
-            Partner Admin
+          <Badge variant="default" className={`${isReadOnly ? 'bg-amber-600' : 'bg-purple-600'} self-start sm:self-auto flex-shrink-0`}>
+            {isReadOnly ? <AlertCircle className="w-3 h-3 mr-1" /> : <Crown className="w-3 h-3 mr-1" />}
+            {persona.title}
           </Badge>
         </div>
       </div>
+
+      {isReadOnly && (
+        <div className="bg-amber-50 border-l-4 border-amber-500 p-4 mx-4 md:mx-6 mt-4 rounded-r-lg flex items-center gap-3 shadow-md">
+          <AlertCircle className="w-5 h-5 text-amber-500 flex-shrink-0" />
+          <div>
+            <p className="text-sm font-bold text-amber-900">Read-Only Mode</p>
+            <p className="text-xs text-amber-700">
+              As an {persona.title}, you have view-only access to system settings. Saving or changing configurations is disabled.
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* Main Content */}
       <div className="p-4 md:p-6 max-w-7xl mx-auto">
@@ -271,8 +312,9 @@ export function ComprehensiveSettings({ onBack }: ComprehensiveSettingsProps) {
             </TabsTrigger>
           </TabsList>
 
-          {/* KYC CONFIGURATION TAB */}
-          <TabsContent value="kyc-config" className="space-y-6">
+          <div className={isReadOnly ? 'pointer-events-none opacity-85' : ''}>
+            {/* KYC CONFIGURATION TAB */}
+            <TabsContent value="kyc-config" className="space-y-6">
             {/* Ownership Threshold */}
             <Card className="border-2 border-cyan-200">
               <CardHeader>
@@ -550,6 +592,7 @@ export function ComprehensiveSettings({ onBack }: ComprehensiveSettingsProps) {
 
             <div className="flex justify-end pt-4 border-t border-gray-200 mt-6">
               <Button
+                disabled={isReadOnly}
                 onClick={() => saveTabSettings('KYC Configuration', {
                   ownership_threshold: ownershipThreshold,
                   control_threshold: controlThreshold,
@@ -575,12 +618,12 @@ export function ComprehensiveSettings({ onBack }: ComprehensiveSettingsProps) {
 
           {/* INTEGRATIONS TAB */}
           <TabsContent value="integrations" className="space-y-6">
-            <IntegrationsSettings />
+            <IntegrationsSettings role={userRole} />
           </TabsContent>
 
           {/* FRAUD DETECTION TAB */}
           <TabsContent value="fraud-detection" className="space-y-6">
-            <FraudDetectionSettings />
+            <FraudDetectionSettings role={userRole} />
           </TabsContent>
 
           {/* OLD INTEGRATIONS CONTENT - KEEPING FOR REFERENCE BUT HIDDEN */}
@@ -1034,6 +1077,7 @@ export function ComprehensiveSettings({ onBack }: ComprehensiveSettingsProps) {
 
             <div className="flex justify-end pt-4 border-t border-gray-200 mt-6">
               <Button
+                disabled={isReadOnly}
                 onClick={() => saveTabSettings('Risk & Rules', {
                   risk_weights: riskWeights,
                   risk_low_min: riskLowMin,
@@ -1070,6 +1114,7 @@ export function ComprehensiveSettings({ onBack }: ComprehensiveSettingsProps) {
                     <CardDescription className="mt-1">Configure client-facing fees for verification services</CardDescription>
                   </div>
                   <Button
+                    disabled={isReadOnly}
                     onClick={() => saveTabSettings('Pricing', {
                       verification_fee: verificationFee,
                       monitoring_fee: monitoringFee,
@@ -1430,6 +1475,7 @@ export function ComprehensiveSettings({ onBack }: ComprehensiveSettingsProps) {
                     </CardDescription>
                   </div>
                   <Button
+                    disabled={isReadOnly}
                     onClick={() => saveTabSettings('Organization', {
                       org_profile: orgProfile,
                       brand_color: brandColor
@@ -1622,6 +1668,7 @@ export function ComprehensiveSettings({ onBack }: ComprehensiveSettingsProps) {
                     </CardDescription>
                   </div>
                   <Button
+                    disabled={isReadOnly}
                     onClick={() => saveTabSettings('Advanced Settings', {
                       primary_region: primaryRegion,
                       jurisdiction_switches: jurisdictionSwitches,
@@ -1932,6 +1979,7 @@ export function ComprehensiveSettings({ onBack }: ComprehensiveSettingsProps) {
               </CardContent>
             </Card>
           </TabsContent>
+          </div>
         </Tabs>
       </div>
     </div>

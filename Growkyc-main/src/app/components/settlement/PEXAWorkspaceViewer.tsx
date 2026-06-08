@@ -84,14 +84,10 @@ export function PEXAWorkspaceViewer({ caseData, workspaceId }: PEXAWorkspaceView
       if (response.ok) {
         const updated = await response.json();
         setWorkspace(updated);
-        toast.success('Synced with PEXA', {
-          description: 'All data is up to date'
-        });
+        toast.success('Synced with PEXA', 'All data is up to date');
       }
     } catch (error) {
-      toast.error('Sync failed', {
-        description: 'Could not connect to PEXA. Please try again.'
-      });
+      toast.error('Sync failed', 'Could not connect to PEXA. Please try again.');
     } finally {
       setSyncing(false);
     }
@@ -110,14 +106,10 @@ export function PEXAWorkspaceViewer({ caseData, workspaceId }: PEXAWorkspaceView
         const newWorkspace = await response.json();
         setWorkspace(newWorkspace);
         setIsConnected(true);
-        toast.success('PEXA Workspace Created', {
-          description: `Workspace ID: ${newWorkspace.workspaceId}`
-        });
+        toast.success('PEXA Workspace Created', `Workspace ID: ${newWorkspace.workspaceId}`);
       }
     } catch (error) {
-      toast.error('Failed to create workspace', {
-        description: 'Please check your PEXA credentials'
-      });
+      toast.error('Failed to create workspace', 'Please check your PEXA credentials');
     } finally {
       setLoading(false);
     }
@@ -132,15 +124,11 @@ export function PEXAWorkspaceViewer({ caseData, workspaceId }: PEXAWorkspaceView
       });
       
       if (response.ok) {
-        toast.success('Submitted for Settlement', {
-          description: 'PEXA workspace has been submitted'
-        });
+        toast.success('Submitted for Settlement', 'PEXA workspace has been submitted');
         await loadWorkspace();
       }
     } catch (error) {
-      toast.error('Submission failed', {
-        description: 'Please check outstanding tasks'
-      });
+      toast.error('Submission failed', 'Please check outstanding tasks');
     }
   };
 
@@ -870,8 +858,8 @@ function getMockWorkspaceData(caseData: any) {
           postcode: caseData.propertyData?.address?.postcode || '2000'
         },
         titleType: 'torrens',
-        dealingNumbers: [],
-        caveats: [],
+        dealingNumbers: [] as any[],
+        caveats: [] as any[],
         mortgages: caseData.financialData?.existingMortgages?.map((m: any, i: number) => ({
           mortgageNumber: `MTG-${i + 1}`,
           mortgagee: m.lender,
@@ -902,7 +890,7 @@ function getMockWorkspaceData(caseData: any) {
         category: 'other',
         party: m.lender
       })) || [],
-      adjustments: [],
+      adjustments: [] as any[],
       pexaFees: 325,
       lodgementFees: 185,
       stampDuty: caseData.financialData?.stampDuty || 34520,
@@ -950,7 +938,7 @@ function getMockWorkspaceData(caseData: any) {
         priority: 'high'
       }
     ],
-    lodgementInstructions: [],
+    lodgementInstructions: [] as any[],
     createdDate: new Date().toISOString(),
     lastModifiedDate: new Date().toISOString()
   };

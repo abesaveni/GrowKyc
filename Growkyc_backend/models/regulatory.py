@@ -5,10 +5,10 @@ Enterprise regulatory reporting models (Phase 8).
 Preserves legacy Report model while adding SMR/TTR, submission tracking,
 and immutable evidence pack architecture.
 """
+
 from datetime import datetime, timezone
 
-from sqlalchemy import Column, DateTime, ForeignKey, Index, Integer, String, Text
-from sqlalchemy import JSON
+from sqlalchemy import JSON, Column, DateTime, ForeignKey, Index, Integer, String, Text
 from sqlalchemy.orm import relationship
 
 from models.base import Base
@@ -93,12 +93,19 @@ class RegulatoryReport(Base):
     submitted_at = Column(DateTime(timezone=True), nullable=True)
 
     # ---- Relationships ----
-    submissions = relationship("ReportSubmission", backref="report", cascade="all, delete-orphan")
-    acknowledgements = relationship("ReportAcknowledgement", backref="report", cascade="all, delete-orphan")
+    submissions = relationship(
+        "ReportSubmission", backref="report", cascade="all, delete-orphan"
+    )
+    acknowledgements = relationship(
+        "ReportAcknowledgement", backref="report", cascade="all, delete-orphan"
+    )
     evidence_packs = relationship("EvidencePack", backref="report", lazy="select")
 
     def __repr__(self):
-        return f"<RegulatoryReport(id={self.id}, type={self.report_type}, status={self.submission_status})>"
+        return (
+            f"<RegulatoryReport(id={self.id}, "
+            f"type={self.report_type}, status={self.submission_status})>"
+        )
 
 
 class ReportSubmission(Base):
@@ -150,9 +157,11 @@ class ReportAcknowledgement(Base):
         index=True,
     )
     correlation_id = Column(String(128), nullable=False, index=True)
-    
+
     acknowledgement_reference = Column(String(255), nullable=False)
-    status_code = Column(String(50), nullable=False, comment="accepted|rejected|needs_info")
+    status_code = Column(
+        String(50), nullable=False, comment="accepted|rejected|needs_info"
+    )
     raw_response_data = Column(JSON, nullable=True)
 
     received_at = Column(
@@ -162,7 +171,10 @@ class ReportAcknowledgement(Base):
     )
 
     def __repr__(self):
-        return f"<ReportAcknowledgement(report_id={self.report_id}, status={self.status_code})>"
+        return (
+            f"<ReportAcknowledgement(report_id={self.report_id}, "
+            f"status={self.status_code})>"
+        )
 
 
 class EvidencePack(Base):
@@ -209,7 +221,9 @@ class EvidencePack(Base):
         index=True,
     )
     schema_version = Column(String(50), nullable=False, default="1.0.0")
-    immutable_hash = Column(String(128), nullable=True, comment="SHA256 of the generated zip")
+    immutable_hash = Column(
+        String(128), nullable=True, comment="SHA256 of the generated zip"
+    )
 
     # ---- Storage ----
     storage_key = Column(
@@ -230,10 +244,15 @@ class EvidencePack(Base):
     completed_at = Column(DateTime(timezone=True), nullable=True)
 
     # ---- Relationships ----
-    items = relationship("EvidencePackItem", backref="pack", cascade="all, delete-orphan")
+    items = relationship(
+        "EvidencePackItem", backref="pack", cascade="all, delete-orphan"
+    )
 
     def __repr__(self):
-        return f"<EvidencePack(id={self.id}, case_id={self.case_id}, status={self.status})>"
+        return (
+            f"<EvidencePack(id={self.id}, "
+            f"case_id={self.case_id}, status={self.status})>"
+        )
 
 
 class EvidencePackItem(Base):
@@ -256,13 +275,11 @@ class EvidencePackItem(Base):
         comment="document|screening|timeline_event|edd_workflow|audit_log",
     )
     item_ref_id = Column(Integer, nullable=False)
-    
+
     included_at = Column(
         DateTime(timezone=True),
         default=lambda: datetime.now(timezone.utc),
         nullable=False,
     )
 
-    __table_args__ = (
-        Index("idx_evidence_pack_item_ref", "item_type", "item_ref_id"),
-    )
+    __table_args__ = (Index("idx_evidence_pack_item_ref", "item_type", "item_ref_id"),)

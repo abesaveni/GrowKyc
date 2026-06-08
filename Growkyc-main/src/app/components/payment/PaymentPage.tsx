@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
@@ -113,10 +113,8 @@ export function PaymentPage({ onBack, propertyId }: PaymentPageProps) {
     setProcessingPayment(false);
     
     // Success
-    toast.success('Payment successful!', {
-      description: `A$${totalCost.toLocaleString()} processed successfully`
-    });
-    
+    toast.success('Payment successful!', `A$${totalCost.toLocaleString()} processed successfully`);
+
     setTimeout(() => {
       setStep(3);
     }, 500);
@@ -631,13 +629,13 @@ export function PaymentPage({ onBack, propertyId }: PaymentPageProps) {
 
       {/* Confirm Payment Dialog */}
       <ConfirmDialog
-        open={confirmPaymentOpen}
-        onOpenChange={setConfirmPaymentOpen}
+        isOpen={confirmPaymentOpen}
+        onClose={() => setConfirmPaymentOpen(false)}
         title="Confirm Payment"
         description={`Are you sure you want to process payment of A$${totalCost.toLocaleString()}? This action cannot be undone.`}
         confirmLabel="Confirm Payment"
         onConfirm={handlePayment}
-        variant="default"
+        variant="info"
       />
     </div>
   );

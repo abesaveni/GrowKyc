@@ -172,6 +172,10 @@ import logo from '../assets/60b7d162929b5cb780f781445f70fa18c2c16326.png';
 import { SettingsPage } from './components/settings/SettingsPage';
 import { PEXADashboard } from './components/pexa/PEXADashboard';
 import { TestButton } from './components/TestButton';
+import { NotificationSettings } from './components/settings/NotificationSettings';
+import { OrganizationSettings } from './components/settings/OrganizationSettings';
+import { ProfileSettings } from './components/settings/ProfileSettings';
+import { SecuritySettings } from './components/settings/SecuritySettings';
 import { logger } from '../lib/logger';
 
 const AtlasPracticeOS = lazy(() => import('./components/grow-accounting/AtlasPracticeOS'));
@@ -374,7 +378,10 @@ export default function App() {
     label: string;
     timestamp: Date;
   }[]>([]);
+
   const [isGlobalSearchOpen, setIsGlobalSearchOpen] = useState(false);
+  const location = useLocation();
+  const routerNavigate = useNavigate();
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -389,8 +396,6 @@ export default function App() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  const location = useLocation();
-  const routerNavigate = useNavigate();
 
   // Track recently viewed items
   const trackView = (page: Page, label: string) => {
@@ -776,6 +781,13 @@ export default function App() {
                 />
               }
             />
+            <Route path="/settings" element={<SettingsPage />}>
+              <Route index element={<Navigate to="profile" replace />} />
+              <Route path="profile" element={<ProfileSettings onBack={() => {}} />} />
+              <Route path="organisation" element={<OrganizationSettings onBack={() => {}} />} />
+              <Route path="security" element={<SecuritySettings onBack={() => {}} />} />
+              <Route path="notifications" element={<NotificationSettings onBack={() => {}} />} />
+            </Route>
 
             <Route path="/settings" element={<SettingsPage />} />
 
@@ -784,6 +796,7 @@ export default function App() {
               element={<Navigate to="/compliance/dashboard" replace />}
             />
 
+            {/* Catch-all to let GrowKYCApp handle routing at root level */}
             <Route
               path="/partner"
               element={<Navigate to="/partner/dashboard" replace />}
@@ -1521,19 +1534,31 @@ export default function App() {
                   <option value="grow_kyc">Grow KYC</option>
                   <option value="grow_esign">ðŸ”  Grow E-Sign</option>
                 </select>
-                <button
-                  onClick={() => {
-                    setIsGlobalSearchOpen(true);
-                    setMobileMenuOpen(false);
-                  }}
-                  className="w-full flex items-center justify-between px-3 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-500 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                >
-                  <div className="flex items-center gap-2">
-                    <Search className="w-4 h-4 text-gray-400" />
-                    <span>Search...</span>
-                  </div>
-                </button>
-              </div>
+                <div className="space-y-2">
+                  <select
+                    value={userRole}
+                    onChange={(e) => {
+                      setUserRole(e.target.value as UserRole);
+                      setCurrentPage('dashboard');
+                    }}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-500 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  >
+                    <option value="borrower">Borrower</option>
+                    <option value="lender">Lender</option>
+                    <option value="investor">Investor</option>
+                    <option value="admin">Admin</option>
+                  </select>
+
+                  <button
+                    onClick={() => {
+                      setIsGlobalSearchOpen(true);
+                      setMobileMenuOpen(false);
+                    }}
+                    className="w-full mt-2 px-3 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
+                  >
+                    Open Global Search
+                  </button>
+                </div>
 
               {/* Navigation Items */}
               {navigationItems.map((item) => {
@@ -1589,12 +1614,10 @@ export default function App() {
                   Sign Out
                 </Button>
               </div>
+                </div>
             </nav>
           </div>
         )}
-      </nav>
-
-      {/* Main Content */}
       <main className="mt-16 p-6">
         <div className="max-w-7xl mx-auto">
           {/* Page Header */}
@@ -1612,35 +1635,35 @@ export default function App() {
           {renderPageContent()}
         </div>
       </main>
+{/* Mobile Menu Overlay */}
+{mobileMenuOpen && (
+  <div
+    className="fixed inset-0 bg-black bg-opacity-50 z-30 xl:hidden"
+    onClick={() => setMobileMenuOpen(false)}
+  />
+)}
 
-      {/* Mobile Menu Overlay */}
-      {mobileMenuOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-30 xl:hidden"
-          onClick={() => setMobileMenuOpen(false)}
-        />
-      )}
+{/* Test Button for ID Verification System */}
+{currentPage !== 'test_id_verification' && (
+  <TestButton onClick={() => setCurrentPage('test_id_verification')} />
+)}
 
-      {/* Test Button for ID Verification System */}
-      {currentPage !== 'test_id_verification' && (
-        <TestButton onClick={() => setCurrentPage('test_id_verification')} />
-      )}
+<GlobalSearch
+  isOpen={isGlobalSearchOpen}
+  onClose={() => setIsGlobalSearchOpen(false)}
+  onNavigate={(view, id) => {
+    if (view === 'client_detail' && id) {
+      setCurrentPage('dashboard');
+    } else if (view === 'case_detail' && id) {
+      navigateToCaseDetail(id);
+    }
+  }}
+/>
 
-      <GlobalSearch 
-        isOpen={isGlobalSearchOpen} 
-        onClose={() => setIsGlobalSearchOpen(false)} 
-        onNavigate={(view, id) => {
-          if (view === 'client_detail' && id) {
-             setCurrentPage('dashboard');
-          } else if (view === 'case_detail' && id) {
-             navigateToCaseDetail(id);
-          }
-        }} 
-      />
-    </div>
-  );
+</nav>
+</div>
+);
 }
-
 
 
 // Placeholder page for future features

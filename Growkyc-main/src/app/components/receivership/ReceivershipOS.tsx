@@ -1,9 +1,10 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Button } from '../ui/button';
 import {
   Activity,
   AlertCircle,
   AlertTriangle,
+  Archive,
   BarChart3,
   Briefcase,
   Calendar,
@@ -527,8 +528,5 @@ function PlaceholderPage({ title, description }: any) {
 }
 
 // Additional component imports will go here
-import { RestructuringModule } from './RestructuringModule';
-import { AssetRegister } from './AssetRegister';
-import { TrustAccounting } from './TrustAccounting';
-import { StakeholdersClaims } from './StakeholdersClaims';
+import { RestructuringModule, AssetRegister, TrustAccounting, StakeholdersClaims } from './RestructuringModule';
 

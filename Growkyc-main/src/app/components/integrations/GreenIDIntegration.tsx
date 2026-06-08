@@ -76,7 +76,7 @@ export function GreenIDIntegration({ entityData, onComplete }: GreenIDIntegratio
         faceMatch: 98,
         livenessDetection: 'passed'
       },
-      riskIndicators: [],
+      riskIndicators: [] as string[],
       recommendation: 'approve'
     };
     

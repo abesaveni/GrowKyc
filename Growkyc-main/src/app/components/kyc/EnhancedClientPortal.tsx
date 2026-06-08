@@ -786,7 +786,7 @@ export function EnhancedClientPortal() {
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-4 h-4 text-green-600" />
-                <span>Cross-border payments (>$10K AUD)</span>
+                <span>Cross-border payments (&gt;$10K AUD)</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-4 h-4 text-green-600" />

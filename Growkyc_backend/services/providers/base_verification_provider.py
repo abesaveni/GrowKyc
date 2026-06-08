@@ -4,8 +4,9 @@ services/providers/base_verification_provider.py
 Provider-agnostic interface for identity verification.
 Normalizes payloads from vendors like FrankieOne/Trulioo into our schema.
 """
+
 from abc import ABC, abstractmethod
-from typing import Dict, Any
+from typing import Any, Dict
 
 
 class BaseVerificationProvider(ABC):
@@ -26,7 +27,9 @@ class BaseVerificationProvider(ABC):
         pass
 
     @abstractmethod
-    def verify_identity(self, identity_data: Dict[str, Any], country_code: str) -> Dict[str, Any]:
+    def verify_identity(
+        self, identity_data: Dict[str, Any], country_code: str
+    ) -> Dict[str, Any]:
         """
         Sends data to the vendor.
         Must return a standardized dictionary containing:

@@ -78,3 +78,24 @@ INSERT INTO users (name, email, password, role) VALUES
     ('John Doe', 'john@example.com', '$2b$12$tYzG7M1vY9K8Z5X2Q1W3u.8X5Q1W3u8X5Y2Z0A1B2C3D4E5F6G7H8I9', 'User'),
     ('Agent Smith', 'agent@kyc.com', '$2b$12$tYzG7M1vY9K8Z5X2Q1W3u.8X5Q1W3u8X5Y2Z0A1B2C3D4E5F6G7H8I9', 'Agent')
 ON CONFLICT DO NOTHING;
+
+-- Payments table
+CREATE TABLE IF NOT EXISTS payments (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    onboarding_type VARCHAR(50) NOT NULL,
+    amount DECIMAL(10, 2) NOT NULL,
+    currency VARCHAR(10) NOT NULL DEFAULT 'AUD',
+    square_payment_id VARCHAR(255) UNIQUE,
+    square_order_id VARCHAR(255),
+    status VARCHAR(50) NOT NULL DEFAULT 'PENDING',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+-- Payments indexes
+CREATE INDEX idx_payments_user_id ON payments(user_id);
+CREATE INDEX idx_payments_square_payment_id ON payments(square_payment_id);
+CREATE INDEX idx_payments_status ON payments(status);
+

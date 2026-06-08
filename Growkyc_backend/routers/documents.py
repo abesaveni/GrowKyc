@@ -1,14 +1,14 @@
+from dependencies import get_admin_or_agent_user
+from pydantic import BaseModel
+from typing import Optional
 import logging
 
-from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile, status
+from fastapi import (APIRouter, Depends, File, Form, HTTPException, UploadFile,
+                     status)
 from sqlalchemy.orm import Session
 
-from core.exceptions import (
-    DatabaseError,
-    InvalidStateError,
-    ResourceNotFoundError,
-    ValidationError,
-)
+from core.exceptions import (DatabaseError, InvalidStateError,
+                             ResourceNotFoundError, ValidationError)
 from database import get_db
 from dependencies import get_current_user
 from models import User
@@ -79,9 +79,8 @@ async def documents_upload(
 # Phase 5: Enterprise Document Management Endpoints
 # ============================================================
 
-from dependencies import get_admin_or_agent_user
-from pydantic import BaseModel
-from typing import Optional, List
+
+
 
 
 class DocumentVerifyRequest(BaseModel):
@@ -97,6 +96,7 @@ async def get_document(
 ):
     """Return full enterprise metadata for a document."""
     from models import Document
+
     doc = db.query(Document).filter(Document.id == document_id).first()
     if not doc:
         raise HTTPException(status_code=404, detail="Document not found")
@@ -130,7 +130,11 @@ async def get_download_url(
     try:
         service = DocumentService(db)
         url = service.generate_download_url(document_id, expiry_seconds)
-        return {"document_id": document_id, "download_url": url, "expires_in_seconds": expiry_seconds}
+        return {
+            "document_id": document_id,
+            "download_url": url,
+            "expires_in_seconds": expiry_seconds,
+        }
     except ResourceNotFoundError as e:
         raise HTTPException(status_code=404, detail=e.message)
     except Exception as e:
@@ -197,12 +201,19 @@ async def trigger_document_extraction(
 ):
     """Trigger manual synchronous extraction and parsing."""
     try:
-        from services.document_intelligence_service import DocumentIntelligenceService
+        from services.document_intelligence_service import \
+            DocumentIntelligenceService
+
         service = DocumentIntelligenceService(db)
         ext = service.extract_and_parse(document_id=document_id)
-        return {"document_id": document_id, "extraction_id": ext.id, "status": ext.status}
+        return {
+            "document_id": document_id,
+            "extraction_id": ext.id,
+            "status": ext.status,
+        }
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
+
 
 @router.get("/{document_id}/extraction")
 async def get_document_extraction(
@@ -212,10 +223,21 @@ async def get_document_extraction(
 ):
     """Get the latest intelligent extraction data."""
     from models.document_intelligence import DocumentExtraction
-    ext = db.query(DocumentExtraction).filter(DocumentExtraction.document_id == document_id).order_by(DocumentExtraction.id.desc()).first()
+
+    ext = (
+        db.query(DocumentExtraction)
+        .filter(DocumentExtraction.document_id == document_id)
+        .order_by(DocumentExtraction.id.desc())
+        .first()
+    )
     if not ext:
         raise HTTPException(status_code=404, detail="Extraction not found")
-    return {"status": ext.status, "confidence": ext.normalized_confidence, "data": ext.extracted_data}
+    return {
+        "status": ext.status,
+        "confidence": ext.normalized_confidence,
+        "data": ext.extracted_data,
+    }
+
 
 @router.get("/{document_id}/fraud-analysis")
 async def get_document_fraud_analysis(
@@ -225,7 +247,13 @@ async def get_document_fraud_analysis(
 ):
     """Get the latest intelligent fraud checks."""
     from models.document_intelligence import DocumentFraudCheck
-    fraud = db.query(DocumentFraudCheck).filter(DocumentFraudCheck.document_id == document_id).order_by(DocumentFraudCheck.id.desc()).first()
+
+    fraud = (
+        db.query(DocumentFraudCheck)
+        .filter(DocumentFraudCheck.document_id == document_id)
+        .order_by(DocumentFraudCheck.id.desc())
+        .first()
+    )
     if not fraud:
         raise HTTPException(status_code=404, detail="Fraud analysis not found")
     return {

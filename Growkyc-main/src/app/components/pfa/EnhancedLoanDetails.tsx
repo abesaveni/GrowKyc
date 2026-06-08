@@ -27,7 +27,7 @@ export function EnhancedLoanDetails({ deal }: EnhancedLoanDetailsProps) {
   const annualizedReturn = (returnOnFunds / term) * 12;
 
   // Generate monthly cash flow data for graph
-  const cashFlowData = [];
+  const cashFlowData: { month: number; cashFlow: number }[] = [];
   let cumulativeCashFlow = -(loanAmount); // Initial outflow
   
   for (let month = 0; month <= term; month++) {

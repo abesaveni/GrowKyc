@@ -25,7 +25,7 @@ export interface TenantPrincipal {
   role: string;
 }
 
-export interface TenantAwareQuery<TFilter extends Record<string, unknown>> {
+export interface TenantAwareQuery<TFilter> {
   tenantId: string;
   filter: TFilter;
 }

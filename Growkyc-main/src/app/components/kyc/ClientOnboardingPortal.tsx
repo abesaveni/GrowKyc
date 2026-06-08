@@ -23,8 +23,10 @@ import {
   EyeOff,
   Download,
   X,
-  Info
+  Info,
+  Clock
 } from 'lucide-react';
+import { useAuth } from '../../../context/AuthContext';
 
 type OnboardingStep = 
   | 'welcome'
@@ -44,6 +46,8 @@ interface Document {
 }
 
 export function ClientOnboardingPortal() {
+  const { user } = useAuth();
+  const isPartner = user?.role === 'partner';
   const [currentStep, setCurrentStep] = useState<OnboardingStep>('welcome');
   const [completedSteps, setCompletedSteps] = useState<OnboardingStep[]>([]);
 
@@ -167,7 +171,13 @@ export function ClientOnboardingPortal() {
         </div>
       </div>
 
-      <Button size="lg" className="px-8 py-6 text-lg" onClick={handleNext}>
+      <Button 
+        size="lg" 
+        className={`px-8 py-6 text-lg ${isPartner ? 'opacity-50 cursor-not-allowed' : ''}`} 
+        onClick={() => !isPartner && handleNext()}
+        disabled={isPartner}
+        title={isPartner ? "Managing Partners cannot start onboarding cases." : undefined}
+      >
         Start Onboarding
         <ChevronRight className="w-5 h-5 ml-2" />
       </Button>

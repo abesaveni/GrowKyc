@@ -20,9 +20,8 @@ import os
 import sys
 from logging.config import fileConfig
 
-from sqlalchemy import engine_from_config, pool
-
 from alembic import context
+from sqlalchemy import engine_from_config, pool
 
 # ---------------------------------------------------------------------------
 # Ensure the project root is on sys.path so `from models import Base` works
@@ -57,6 +56,7 @@ target_metadata = Base.metadata
 # Offline migration mode — generates SQL scripts without a live DB connection
 # ---------------------------------------------------------------------------
 
+
 def run_migrations_offline() -> None:
     """
     Run migrations in 'offline' mode.
@@ -71,8 +71,8 @@ def run_migrations_offline() -> None:
         literal_binds=True,
         dialect_opts={"paramstyle": "named"},
         # Render column-level server defaults in migration scripts
-        render_as_batch=True,   # Required for SQLite ALTER TABLE support
-        compare_type=True,      # Detect column type changes
+        render_as_batch=True,  # Required for SQLite ALTER TABLE support
+        compare_type=True,  # Detect column type changes
         compare_server_default=True,
     )
 
@@ -84,6 +84,7 @@ def run_migrations_offline() -> None:
 # Online migration mode — runs migrations against a live DB connection
 # ---------------------------------------------------------------------------
 
+
 def run_migrations_online() -> None:
     """
     Run migrations in 'online' mode.
@@ -94,15 +95,15 @@ def run_migrations_online() -> None:
     connectable = engine_from_config(
         config.get_section(config.config_ini_section, {}),
         prefix="sqlalchemy.",
-        poolclass=pool.NullPool,    # Use NullPool for migrations (no connection reuse)
+        poolclass=pool.NullPool,  # Use NullPool for migrations (no connection reuse)
     )
 
     with connectable.connect() as connection:
         context.configure(
             connection=connection,
             target_metadata=target_metadata,
-            render_as_batch=True,   # Required for SQLite ALTER TABLE support
-            compare_type=True,      # Detect column type changes
+            render_as_batch=True,  # Required for SQLite ALTER TABLE support
+            compare_type=True,  # Detect column type changes
             compare_server_default=True,
             # Include all schemas (important for multi-schema PostgreSQL setups)
             include_schemas=False,

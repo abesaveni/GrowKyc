@@ -127,8 +127,8 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
       propertyType: 'Office Building',
       landSize: 523,
       buildingSize: 385,
-      bedrooms: null,
-      bathrooms: null,
+      bedrooms: null as number | null,
+      bathrooms: null as number | null,
       parking: 4,
       yearBuilt: 2018,
       zoning: 'Commercial 1',
@@ -426,7 +426,7 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
         insuranceCertificates: {
           status: 'Pending',
           required: ['Property Insurance', 'Public Liability', 'Business Interruption'],
-          received: []
+          received: [] as string[]
         }
       }
     }
@@ -1274,15 +1274,11 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
             <div key={idx} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
               <div>
                 <p className="font-semibold text-gray-900">{director.name}</p>
-                <p className="text-sm text-gray-600">{director.role}</p>
+                <p className="text-sm text-gray-600">{director.provider} • Score: {director.score} ({director.rating})</p>
               </div>
-              <div className="flex items-center gap-3">
-                <a href={`mailto:${director.email}`} className="text-blue-600 hover:underline text-sm">
-                  {director.email}
-                </a>
-                <a href={`tel:${director.phone}`} className="text-blue-600 hover:underline text-sm">
-                  {director.phone}
-                </a>
+              <div className="flex items-center gap-4 text-sm text-gray-600">
+                <span>Defaults: <strong>{director.defaults}</strong></span>
+                <span>Judgements: <strong>{director.courtJudgements}</strong></span>
               </div>
             </div>
           ))}

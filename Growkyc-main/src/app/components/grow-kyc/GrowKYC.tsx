@@ -44,6 +44,8 @@ import { IntegrationHub } from './IntegrationHub';
 import { IndividualOnboarding } from './IndividualOnboarding';
 import { ArchitectureViewer } from './ArchitectureViewer';
 import { PersonalizedDashboard } from './PersonalizedDashboard';
+import { ComplianceOfficer } from './ComplianceOfficer';
+import { HeadOfComplianceDashboard } from './HeadOfComplianceDashboard';
 import { ExecutiveOverview } from './ExecutiveOverview';
 import { SystemSettings } from './SystemSettings';
 import { ComprehensiveSettings } from './ComprehensiveSettings';
@@ -55,6 +57,7 @@ import { KYCDashboardOverview } from './KYCDashboardOverview';
 import { ActionItemsCenter } from './ActionItemsCenter';
 import { ClientReview } from './ClientReview';
 import { ClientOnboarding } from '../kyc/ClientOnboarding';
+import { ClientOnboardingWizard } from '../kyc/ClientOnboardingWizard';
 import { HealthCheckDashboard } from './HealthCheckDashboard';
 import { EnterpriseUpgradeHub } from './EnterpriseUpgradeHub';
 import { KYCClientDetails } from './KYCClientDetails';
@@ -62,7 +65,7 @@ import { InvoicesPage } from '../grow/InvoicesPage';
 import { AdminAuditLog } from '../admin/AdminAuditLog';
 
 type ViewRole = 'compliance_officer' | 'partner' | 'auditor' | 'analyst';
-type View = 
+type View =
   | 'role_selection'
   | 'architecture_viewer'
   | 'compliance_dashboard'
@@ -87,6 +90,19 @@ type View =
   | 'client_review'
   | 'invoices'
   | 'admin_audit_log';
+
+const getPersonaConfig = (userId: string) => {
+  const configs: Record<string, { name: string; title: string; role: string }> = {
+    sarah_chen: { name: 'Sarah Chen', title: 'Head of Compliance', role: 'compliance_officer' },
+    emma_williams: { name: 'Emma Williams', title: 'Compliance Officer', role: 'compliance_officer' },
+    jessica_lee: { name: 'Jessica Lee', title: 'Senior Compliance Officer', role: 'compliance_officer' },
+    alex_rivera: { name: 'Alex Rivera', title: 'AML Analyst', role: 'analyst' },
+    david_thompson: { name: 'David Thompson', title: 'Internal Auditor', role: 'auditor' },
+    michael_roberts: { name: 'Michael Roberts', title: 'Managing Partner', role: 'partner' },
+    robert_kim: { name: 'Robert Kim', title: 'Risk Partner', role: 'partner' }
+  };
+  return configs[userId] || configs.sarah_chen;
+};
 
 interface SearchSuggestionItem {
   label: string;
@@ -161,17 +177,34 @@ const getRoleSearchItems = (role: ViewRole): SearchSuggestionItem[] => {
 // Map internal role keys to URL-friendly role names
 const ROLE_TO_PATH: Record<ViewRole, string> = {
   compliance_officer: 'compliance',
-  partner:            'partner',
-  auditor:            'auditor',
-  analyst:            'aml-analyst',
+  partner: 'partner',
+  auditor: 'auditor',
+  analyst: 'aml-analyst',
 };
 
 // Map URL role names back to internal role keys
 const PATH_TO_ROLE: Record<string, ViewRole> = {
-  'compliance':  'compliance_officer',
-  'partner':     'partner',
-  'auditor':     'auditor',
+  'compliance': 'compliance_officer',
+  'compliance-officer': 'compliance_officer',
+  'partner': 'partner',
+  'auditor': 'auditor',
   'aml-analyst': 'analyst',
+};
+
+const canAccessAUSTRAC = (role: ViewRole | null) =>
+  role === 'compliance_officer' || role === 'auditor' || role === 'analyst';
+
+const openAUSTRACCentre = (navigate: (path: string) => void, rolePath: string) => {
+  localStorage.setItem('growkyc_last_role', rolePath || 'compliance');
+  navigate('/au');
+};
+
+const getRolePath = (role: ViewRole | null, userId: string): string => {
+  if (!role) return '';
+  if (role === 'compliance_officer' && userId === 'emma_williams') {
+    return 'compliance-officer';
+  }
+  return ROLE_TO_PATH[role] || '';
 };
 
 /** Roles that can open the linked IMFO Platform from the Grow KYC header */
@@ -188,53 +221,53 @@ const GROW_KYC_TO_IMFO_ROLE: Record<ViewRole, string> = {
 
 // Map each internal view to its URL suffix (WITHOUT role)
 const VIEW_TO_PATH_SUFFIX: Partial<Record<View, string>> = {
-  role_selection:        '/',
-  architecture_viewer:   '/architecture',
-  compliance_dashboard:  '/dashboard',
-  partner_dashboard:     '/dashboard',
-  audit_dashboard:       '/dashboard',
-  kyc_dashboard_overview:'/kyc',
-  client_detail:         '/clients',
-  action_items:          '/actions',
-  case_management:       '/cases',
-  case_detail:           '/cases/detail',
-  case_control_centre:   '/casecontrol',
-  case_workbench:        '/case-workbench',
-  transaction_monitoring:'/transactions',
+  role_selection: '/',
+  architecture_viewer: '/architecture',
+  compliance_dashboard: '/dashboard',
+  partner_dashboard: '/dashboard',
+  audit_dashboard: '/dashboard',
+  kyc_dashboard_overview: '/kyc',
+  client_detail: '/clients',
+  action_items: '/actions',
+  case_management: '/cases',
+  case_detail: '/cases/detail',
+  case_control_centre: '/casecontrol',
+  case_workbench: '/case-workbench',
+  transaction_monitoring: '/transactions',
   individual_onboarding: '/onboarding',
-  client_onboarding:     '/client-onboarding',
-  system_settings:       '/settings',
-  integration_hub:       '/integrations',
-  health_check:          '/health',
-  profession_requirements:'/requirements',
-  enterprise_upgrade_hub:'/upgrades',
-  client_review:         '/review', // Note: dynamic clientId handled separately
-  client_kyc_dashboard:  '/kyc',    // Note: dynamic clientId handled separately
-  invoices:               '/invoices',
-  admin_audit_log:       '/audit-log',
+  client_onboarding: '/client-onboarding',
+  system_settings: '/settings',
+  integration_hub: '/integrations',
+  health_check: '/health',
+  profession_requirements: '/requirements',
+  enterprise_upgrade_hub: '/upgrades',
+  client_review: '/review', // Note: dynamic clientId handled separately
+  client_kyc_dashboard: '/kyc',    // Note: dynamic clientId handled separately
+  invoices: '/invoices',
+  admin_audit_log: '/audit-log',
 };
 
 // Reverse map: URL path suffix → default view
 const PATH_SUFFIX_TO_VIEW: Record<string, View> = {
-  '/dashboard':          'compliance_dashboard', 
-  '/kyc':                'kyc_dashboard_overview',
-  '/kyc/client':         'client_kyc_dashboard',
-  '/clients':            'client_detail',
-  '/actions':            'action_items',
-  '/cases':              'case_management',
-  '/cases/detail':       'case_detail',
-  '/casecontrol':        'case_control_centre',
-  '/case-workbench':     'case_workbench',
-  '/transactions':       'transaction_monitoring',
-  '/onboarding':         'individual_onboarding',
-  '/client-onboarding':  'client_onboarding',
-  '/settings':           'system_settings',
-  '/integrations':       'integration_hub',
-  '/health':             'health_check',
-  '/requirements':       'profession_requirements',
-  '/upgrades':           'enterprise_upgrade_hub',
-  '/invoices':           'invoices',
-  '/audit-log':          'admin_audit_log',
+  '/dashboard': 'compliance_dashboard',
+  '/kyc': 'kyc_dashboard_overview',
+  '/kyc/client': 'client_kyc_dashboard',
+  '/clients': 'client_detail',
+  '/actions': 'action_items',
+  '/cases': 'case_management',
+  '/cases/detail': 'case_detail',
+  '/casecontrol': 'case_control_centre',
+  '/case-workbench': 'case_workbench',
+  '/transactions': 'transaction_monitoring',
+  '/onboarding': 'individual_onboarding',
+  '/client-onboarding': 'client_onboarding',
+  '/settings': 'system_settings',
+  '/integrations': 'integration_hub',
+  '/health': 'health_check',
+  '/requirements': 'profession_requirements',
+  '/upgrades': 'enterprise_upgrade_hub',
+  '/invoices': 'invoices',
+  '/audit-log': 'admin_audit_log',
 };
 
 interface GrowKYCProps {
@@ -264,7 +297,14 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
   const [selectedCaseId, setSelectedCaseId] = useState<string | null>(null);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isCopilotOpen, setIsCopilotOpen] = useState(false);
-  const [selectedUser, setSelectedUser] = useState<string>('sarah_chen');
+  const [selectedUser, setSelectedUser] = useState<string>(() => {
+    return localStorage.getItem('growkyc_selected_user') || 'sarah_chen';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('growkyc_selected_user', selectedUser);
+    window.dispatchEvent(new CustomEvent('growkyc:persona_changed', { detail: selectedUser }));
+  }, [selectedUser]);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMoreDropdownOpen, setIsMoreDropdownOpen] = useState(false);
@@ -273,58 +313,58 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
 
   // User personas for switching
   const users = [
-    { 
-      id: 'sarah_chen', 
-      name: 'Sarah Chen', 
-      role: 'compliance_officer', 
+    {
+      id: 'sarah_chen',
+      name: 'Sarah Chen',
+      role: 'compliance_officer',
       title: 'Head of Compliance',
       avatar: '👩‍💼',
       description: 'Regulatory audit oversight, policy triggers, and compliance sign-off'
     },
-    { 
-      id: 'emma_williams', 
-      name: 'Emma Williams', 
-      role: 'compliance_officer', 
+    {
+      id: 'emma_williams',
+      name: 'Emma Williams',
+      role: 'compliance_officer',
       title: 'Compliance Officer',
       avatar: '👩‍💻',
       description: 'KYC verification, case handling, and risk screening'
     },
-    { 
-      id: 'michael_roberts', 
-      name: 'Michael Roberts', 
-      role: 'partner', 
+    {
+      id: 'michael_roberts',
+      name: 'Michael Roberts',
+      role: 'partner',
       title: 'Managing Partner',
       avatar: '👨‍💼',
       description: 'Executive risk oversight and final escalated case approvals'
     },
-    { 
-      id: 'alex_rivera', 
-      name: 'Alex Rivera', 
-      role: 'analyst', 
+    {
+      id: 'alex_rivera',
+      name: 'Alex Rivera',
+      role: 'analyst',
       title: 'AML Analyst',
       avatar: '🕵️‍♂️',
       description: 'Transaction monitoring, alert investigations, and individual KYC checks'
     },
-    { 
-      id: 'david_thompson', 
-      name: 'David Thompson', 
-      role: 'auditor', 
+    {
+      id: 'david_thompson',
+      name: 'David Thompson',
+      role: 'auditor',
       title: 'Internal Auditor',
       avatar: '🕵️',
       description: 'Audit trail review and compliance validation'
     },
-    { 
-      id: 'jessica_lee', 
-      name: 'Jessica Lee', 
-      role: 'compliance_officer', 
+    {
+      id: 'jessica_lee',
+      name: 'Jessica Lee',
+      role: 'compliance_officer',
       title: 'Senior Compliance Officer',
       avatar: '👩‍⚖️',
       description: 'KYC verification and EDD management'
     },
-    { 
-      id: 'robert_kim', 
-      name: 'Robert Kim', 
-      role: 'partner', 
+    {
+      id: 'robert_kim',
+      name: 'Robert Kim',
+      role: 'partner',
       title: 'Risk Partner',
       avatar: '👨‍⚖️',
       description: 'Risk framework oversight'
@@ -332,6 +372,130 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
   ];
 
   const currentUser = users.find(u => u.id === selectedUser) || users[0];
+
+  const [isNotificationPanelOpen, setIsNotificationPanelOpen] = useState(false);
+  const [notifications, setNotifications] = useState([
+    {
+      id: 'notif-1',
+      title: 'PEP Screening Match Detected',
+      desc: "Sanctions Bot flagged Client 'Alpha Holdings Pty Ltd' with high match confidence.",
+      type: 'critical',
+      time: '10m ago',
+      roleRestricted: 'Head of Compliance',
+      actionText: 'Review Match',
+      actionView: 'client_review',
+      actionId: 'Alpha Holdings Pty Ltd',
+      read: false
+    },
+    {
+      id: 'notif-2',
+      title: 'GreenID Integration Failure',
+      desc: 'GreenID API gateway disconnected due to credential expiration.',
+      type: 'error',
+      time: '32m ago',
+      roleRestricted: 'Head of Compliance',
+      actionText: 'Update API Keys',
+      actionView: 'system_settings',
+      read: false
+    },
+    {
+      id: 'notif-3',
+      title: 'Escalated Case Approval',
+      desc: 'Emma Williams escalated CASE-012 (John Smith) for dual sign-off.',
+      type: 'action',
+      time: '1h ago',
+      roleRestricted: 'Head of Compliance',
+      actionText: 'Review Approval',
+      actionView: 'case_control_centre',
+      read: false
+    },
+    {
+      id: 'notif-4',
+      title: 'AUSTRAC Submission Deadline',
+      desc: 'AUSTRAC AML/CTF Compliance Report due in 2 days.',
+      type: 'warning',
+      time: '3h ago',
+      roleRestricted: 'Head of Compliance',
+      actionText: 'Prepare Report',
+      actionView: 'au',
+      read: false
+    },
+    // Officer/Analyst Notifications
+    {
+      id: 'notif-5',
+      title: 'New Investigation Assigned',
+      desc: 'New KYC case CASE-109 assigned to you for verification.',
+      type: 'info',
+      time: '15m ago',
+      roleRestricted: 'Compliance Officer',
+      actionText: 'Open Case',
+      actionView: 'case_control_centre',
+      read: false
+    },
+    {
+      id: 'notif-6',
+      title: 'Document Uploaded',
+      desc: "Client 'John Smith' uploaded missing driver's license.",
+      type: 'success',
+      time: '45m ago',
+      roleRestricted: 'Compliance Officer',
+      actionText: 'View Files',
+      actionView: 'client_detail',
+      actionId: 'C002',
+      read: false
+    },
+    {
+      id: 'notif-7',
+      title: 'Verification Overdue',
+      desc: "Verification task for 'Apex Holdings' is overdue by 24 hours.",
+      type: 'warning',
+      time: '2h ago',
+      roleRestricted: 'Compliance Officer',
+      actionText: 'Investigate',
+      actionView: 'client_review',
+      actionId: 'Apex Holdings',
+      read: false
+    }
+  ]);
+
+  const filteredNotifications = notifications.filter(n => {
+    if (currentUser.title === 'Head of Compliance') {
+      return n.roleRestricted === 'Head of Compliance';
+    } else {
+      return n.roleRestricted === 'Compliance Officer';
+    }
+  });
+
+  const notificationsCount = filteredNotifications.filter(n => !n.read).length;
+
+  const handleNotificationAction = (notif: typeof notifications[0]) => {
+    setIsNotificationPanelOpen(false);
+    setNotifications(prev => prev.map(n => n.id === notif.id ? { ...n, read: true } : n));
+
+    if (notif.actionView === 'client_review' && notif.actionId) {
+      if (selectedRole) {
+        navigate(`/${rolePath}/review/${notif.actionId}`);
+      }
+    } else if (notif.actionView === 'system_settings') {
+      setCurrentView('system_settings');
+    } else if (notif.actionView === 'case_control_centre') {
+      setCurrentView('case_control_centre');
+    } else if (notif.actionView === 'au') {
+      navigate('/au');
+    } else if (notif.actionView === 'client_detail' && notif.actionId) {
+      setSelectedClientId(notif.actionId);
+      setCurrentView('client_detail');
+    }
+  };
+
+  const handleMarkAllNotificationsRead = () => {
+    setNotifications(prev => prev.map(n => {
+      const isCurrentRole = currentUser.title === 'Head of Compliance'
+        ? n.roleRestricted === 'Head of Compliance'
+        : n.roleRestricted === 'Compliance Officer';
+      return isCurrentRole ? { ...n, read: true } : n;
+    }));
+  };
 
   // ── URL ↔ View synchronisation ──────────────────────────────────────────
 
@@ -342,10 +506,21 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
       if (selectedRole !== internalRole) {
         setSelectedRole(internalRole);
       }
+
+      // Synchronize persona based on specific path
+      if (urlRole === 'compliance-officer') {
+        if (selectedUser !== 'emma_williams') {
+          setSelectedUser('emma_williams');
+        }
+      } else if (urlRole === 'compliance') {
+        if (selectedUser === 'emma_williams') {
+          setSelectedUser('sarah_chen');
+        }
+      }
     }
   }, [urlRole]);
 
-  // 2. Push URL whenever currentView or selectedRole changes
+  // 2. Push URL whenever currentView, selectedRole, or selectedUser changes
   useEffect(() => {
     if (currentView === 'role_selection') {
       if (location.pathname !== '/') navigate('/');
@@ -357,31 +532,32 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
     }
 
     if (selectedRole) {
-      const rolePrefix = '/' + ROLE_TO_PATH[selectedRole];
+      const rolePath = getRolePath(selectedRole, selectedUser);
+      const rolePrefix = '/' + rolePath;
       let suffix = VIEW_TO_PATH_SUFFIX[currentView] ?? '/dashboard';
-      
+
       // Special handling for dynamic client_review path
       if (currentView === 'client_review' && selectedClientId) {
         suffix = `/review/${selectedClientId}`;
       }
-      
+
       // Special handling for dynamic client_kyc_dashboard path
       if (currentView === 'client_kyc_dashboard' && selectedClientId) {
         suffix = `/kyc/${selectedClientId}`;
       }
-      
+
       const fullPath = rolePrefix + suffix;
-      
+
       if (location.pathname !== fullPath) {
         navigate(fullPath);
       }
     }
-  }, [currentView, selectedRole]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [currentView, selectedRole, selectedUser]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // 3. Update view when URL changes (browser back / forward)
   useEffect(() => {
     const pathname = location.pathname;
-    
+
     // Handle root and architecture
     if (pathname === '/') {
       if (currentView !== 'role_selection') setCurrentView('role_selection');
@@ -397,17 +573,17 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
     if (parts.length >= 2) {
       const roleName = parts[0];
       const suffix = '/' + parts.slice(1).join('/');
-      
+
       const internalRole = PATH_TO_ROLE[roleName];
       if (internalRole) {
         if (selectedRole !== internalRole) setSelectedRole(internalRole);
-        
+
         // Pick proper dashboard based on role
         if (suffix === '/dashboard') {
           const roleView: View =
-            internalRole === 'partner'  ? 'partner_dashboard'  :
-            internalRole === 'auditor'  ? 'audit_dashboard'    :
-            'compliance_dashboard';
+            internalRole === 'partner' ? 'partner_dashboard' :
+              internalRole === 'auditor' ? 'audit_dashboard' :
+                'compliance_dashboard';
           if (roleView !== currentView) setCurrentView(roleView);
           return;
         }
@@ -444,7 +620,7 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
     setSelectedRole(role);
     // Auto-open Compliance Copilot on first login
     setIsCopilotOpen(true);
-    
+
     // Pick the correct active user persona automatically based on selected role
     let targetUserId = userId || 'sarah_chen'; // Default Compliance Officer
     if (!userId) {
@@ -457,8 +633,8 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
       }
     }
     setSelectedUser(targetUserId);
-    
-    const rolePath = ROLE_TO_PATH[role];
+
+    const rolePath = getRolePath(role, targetUserId);
     navigate(`/${rolePath}/dashboard`);
 
     switch (role) {
@@ -484,7 +660,7 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
       return;
     }
     const items = getRoleSearchItems(selectedRole || 'compliance_officer');
-    const filtered = items.filter(item => 
+    const filtered = items.filter(item =>
       item.label.toLowerCase().includes(val.toLowerCase()) ||
       item.type.toLowerCase().includes(val.toLowerCase())
     );
@@ -494,9 +670,9 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
   const handleSuggestionClick = (item: SearchSuggestionItem) => {
     setSearchQuery('');
     setSearchSuggestions([]);
-    
+
     if (item.view === 'au') {
-      navigate('/au');
+      openAUSTRACCentre(navigate, rolePath);
     } else if (item.view === 'client_detail' && item.id) {
       handleClientSelect(item.id);
     } else if (item.view === 'case_detail' && item.id) {
@@ -533,7 +709,7 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
       setSelectedUser(userId);
       setSelectedRole(user.role as ViewRole);
       setIsUserMenuOpen(false);
-      
+
       // Navigate to appropriate dashboard
       switch (user.role) {
         case 'compliance_officer':
@@ -555,7 +731,7 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
   // Role Selection View
   if (currentView === 'role_selection') {
     return (
-      <ExecutiveOverview 
+      <ExecutiveOverview
         onSelectRole={handleRoleSelect}
         onViewArchitecture={() => setCurrentView('architecture_viewer')}
       />
@@ -565,369 +741,488 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
   // Architecture Viewer
   if (currentView === 'architecture_viewer') {
     return (
-      <ArchitectureViewer 
+      <ArchitectureViewer
         onBack={() => setCurrentView('role_selection')}
       />
     );
   }
 
   // Render appropriate dashboard based on current view
+  const rolePath = getRolePath(selectedRole, selectedUser);
+  const isComplianceOfficer = selectedRole === 'compliance_officer';
+
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
       {/* Navigation Bar */}
-      <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] border-b border-[#0E7C9E]/20 px-6 py-4 shadow-md">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2 sm:gap-4 max-w-[70%] sm:max-w-none">
-            <Shield className="w-6 h-6 sm:w-8 sm:h-8 text-white flex-shrink-0" />
-            <div className="min-w-0">
-              <h1 className="text-lg sm:text-2xl font-bold text-white truncate">Grow KYC</h1>
-              <p className="text-[10px] sm:text-xs text-white/90 hidden sm:block truncate">
-                {selectedRole === 'compliance_officer' && (selectedUser === 'emma_williams' ? 'Compliance Officer Portal' : 'Head of Compliance Portal')}
-                {selectedRole === 'partner' && 'Managing Partner Portal'}
-                {selectedRole === 'analyst' && 'AML Analyst Portal'}
-                {selectedRole === 'auditor' && 'Audit Portal'}
-              </p>
+      {currentView !== 'client_kyc_dashboard' && (
+        <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] border-b border-[#0E7C9E]/20 px-4 sm:px-6 py-3 sm:py-4 shadow-md">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2 sm:gap-4 max-w-[70%] sm:max-w-none">
+              <Shield className="w-6 h-6 sm:w-8 sm:h-8 text-white flex-shrink-0" />
+              <div className="min-w-0">
+                <h1 className="text-lg sm:text-2xl font-bold text-white truncate">Grow KYC</h1>
+                <p className="text-[10px] sm:text-xs text-white/90 hidden sm:block truncate">
+                  {selectedRole === 'compliance_officer' && `${currentUser.title} Portal`}
+                  {selectedRole === 'partner' && `${currentUser.title} Portal`}
+                  {selectedRole === 'analyst' && `${currentUser.title} Portal`}
+                  {selectedRole === 'auditor' && `${currentUser.title} Portal`}
+                </p>
+              </div>
+
+              {/* User Switcher - Left Side */}
+              <div className="relative ml-1 sm:ml-4 flex-shrink-0">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                  className="flex items-center gap-1 sm:gap-2 border border-white/30 sm:border-2 bg-white/10 text-white hover:bg-white/20 hover:border-white/50 px-2 py-1 h-8 sm:h-9"
+                >
+                  <User className="w-3.5 h-3.5 hidden sm:block" />
+                  <span className="text-base sm:text-lg">{currentUser.avatar}</span>
+                  <div className="text-left hidden md:block">
+                    <div className="text-xs font-semibold">{currentUser.name}</div>
+                  </div>
+                  <ChevronDown className={`w-3 h-3 transition-transform ${isUserMenuOpen ? 'rotate-180' : ''}`} />
+                </Button>
+
+                {isUserMenuOpen && (
+                  <>
+                    {/* Backdrop */}
+                    <div
+                      className="fixed inset-0 z-40"
+                      onClick={() => setIsUserMenuOpen(false)}
+                    />
+
+                    {/* Dropdown Menu */}
+                    <Card className="absolute left-0 mt-2 w-80 z-50 shadow-2xl border-2 animate-in fade-in slide-in-from-top-2">
+                      <CardHeader className="pb-3 bg-gradient-to-r from-[#13B5EA]/10 to-[#0E7C9E]/10">
+                        <CardTitle className="text-sm font-semibold text-gray-900">
+                          Switch User Persona
+                        </CardTitle>
+                        <p className="text-xs text-gray-600 mt-1">
+                          Demo different user roles and access levels
+                        </p>
+                      </CardHeader>
+                      <CardContent className="p-2">
+                        {users.map((user) => (
+                          <button
+                            key={user.id}
+                            onClick={() => handleUserSwitch(user.id)}
+                            className={`w-full text-left p-3 rounded-lg hover:bg-gray-100 transition-colors ${selectedUser === user.id ? 'bg-[#13B5EA]/10 border-2 border-[#13B5EA]' : ''
+                              }`}
+                          >
+                            <div className="flex items-center gap-3">
+                              <span className="text-2xl">{user.avatar}</span>
+                              <div className="flex-1">
+                                <div className="flex items-center gap-2">
+                                  <span className="font-semibold text-gray-900">{user.name}</span>
+                                  {selectedUser === user.id && (
+                                    <CheckCircle className="w-4 h-4 text-[#13B5EA]" />
+                                  )}
+                                </div>
+                                <div className="text-xs text-gray-600">{user.title}</div>
+                                <div className="text-xs text-gray-500 mt-1">{user.description}</div>
+                              </div>
+                            </div>
+                          </button>
+                        ))}
+
+                      </CardContent>
+                    </Card>
+                  </>
+                )}
+              </div>
             </div>
 
-            {/* User Switcher - Left Side */}
-            <div className="relative ml-1 sm:ml-4 flex-shrink-0">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                className="flex items-center gap-1 sm:gap-2 border border-white/30 sm:border-2 bg-white/10 text-white hover:bg-white/20 hover:border-white/50 px-2 py-1 h-8 sm:h-9"
-              >
-                <User className="w-3.5 h-3.5 hidden sm:block" />
-                <span className="text-base sm:text-lg">{currentUser.avatar}</span>
-                <div className="text-left hidden md:block">
-                  <div className="text-xs font-semibold">{currentUser.name}</div>
-                </div>
-                <ChevronDown className={`w-3 h-3 transition-transform ${isUserMenuOpen ? 'rotate-180' : ''}`} />
-              </Button>
-
-              {isUserMenuOpen && (
-                <>
-                  {/* Backdrop */}
-                  <div 
-                    className="fixed inset-0 z-40" 
-                    onClick={() => setIsUserMenuOpen(false)}
+            <div className="flex items-center gap-4">
+              {/* Inline Role-Specific Search Bar */}
+              <div className="relative flex-shrink-0 hidden sm:block">
+                <div className="flex items-center bg-white/10 hover:bg-white/15 focus-within:bg-white border border-white/20 rounded-full px-3 py-1.5 transition-all w-44 sm:w-56 md:w-64">
+                  <Search className="w-4 h-4 text-white/70 focus-within:text-gray-400 mr-2 flex-shrink-0" />
+                  <input
+                    type="text"
+                    placeholder="Search pages, tabs, cases..."
+                    value={searchQuery}
+                    onChange={(e) => handleSearchChange(e.target.value)}
+                    onKeyDown={handleSearchKeyDown}
+                    className="bg-transparent text-white focus:text-gray-900 placeholder-white/60 focus:placeholder-gray-400 text-xs font-semibold focus:outline-none w-full"
                   />
-                  
-                  {/* Dropdown Menu */}
-                  <Card className="absolute left-0 mt-2 w-80 z-50 shadow-2xl border-2 animate-in fade-in slide-in-from-top-2">
-                    <CardHeader className="pb-3 bg-gradient-to-r from-[#13B5EA]/10 to-[#0E7C9E]/10">
-                      <CardTitle className="text-sm font-semibold text-gray-900">
-                        Switch User Persona
-                      </CardTitle>
-                      <p className="text-xs text-gray-600 mt-1">
-                        Demo different user roles and access levels
-                      </p>
-                    </CardHeader>
-                    <CardContent className="p-2">
-                      {users.map((user) => (
+                </div>
+
+                {searchQuery.trim() && searchSuggestions.length > 0 && (
+                  <>
+                    <div className="fixed inset-0 z-40" onClick={() => setSearchQuery('')} />
+                    <div className="absolute right-0 sm:left-0 mt-2 bg-white rounded-xl shadow-2xl border border-gray-100 py-1.5 w-64 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                      <div className="px-3 py-1 bg-gray-50 text-[9px] font-bold text-gray-400 tracking-wider rounded-t-lg">
+                        SUGGESTIONS FOR {currentUser.title.toUpperCase()}
+                      </div>
+                      {searchSuggestions.map((item, index) => (
                         <button
-                          key={user.id}
-                          onClick={() => handleUserSwitch(user.id)}
-                          className={`w-full text-left p-3 rounded-lg hover:bg-gray-100 transition-colors ${
-                            selectedUser === user.id ? 'bg-[#13B5EA]/10 border-2 border-[#13B5EA]' : ''
-                          }`}
+                          key={index}
+                          onClick={() => handleSuggestionClick(item)}
+                          className="w-full text-left text-gray-700 hover:bg-gray-50 flex items-center justify-between px-3.5 py-2 text-xs font-semibold transition-colors"
                         >
-                          <div className="flex items-center gap-3">
-                            <span className="text-2xl">{user.avatar}</span>
-                            <div className="flex-1">
-                              <div className="flex items-center gap-2">
-                                <span className="font-semibold text-gray-900">{user.name}</span>
-                                {selectedUser === user.id && (
-                                  <CheckCircle className="w-4 h-4 text-[#13B5EA]" />
-                                )}
-                              </div>
-                              <div className="text-xs text-gray-600">{user.title}</div>
-                              <div className="text-xs text-gray-500 mt-1">{user.description}</div>
-                            </div>
-                          </div>
+                          <span className="flex items-center gap-2 truncate">
+                            <item.icon className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" />
+                            <span className="truncate">{item.label}</span>
+                          </span>
+                          <Badge variant="secondary" className="text-[9px] px-1 py-0 scale-90">
+                            {item.type}
+                          </Badge>
                         </button>
                       ))}
-                      
-                    </CardContent>
-                  </Card>
-                </>
-              )}
-            </div>
-          </div>
-
-          <div className="flex items-center gap-4">
-            {/* Inline Role-Specific Search Bar */}
-            <div className="relative flex-shrink-0">
-              <div className="flex items-center bg-white/10 hover:bg-white/15 focus-within:bg-white border border-white/20 rounded-full px-3 py-1.5 transition-all w-44 sm:w-56 md:w-64">
-                <Search className="w-4 h-4 text-white/70 focus-within:text-gray-400 mr-2 flex-shrink-0" />
-                <input
-                  type="text"
-                  placeholder="Search pages, tabs, cases..."
-                  value={searchQuery}
-                  onChange={(e) => handleSearchChange(e.target.value)}
-                  onKeyDown={handleSearchKeyDown}
-                  className="bg-transparent text-white focus:text-gray-900 placeholder-white/60 focus:placeholder-gray-400 text-xs font-semibold focus:outline-none w-full"
-                />
-              </div>
-              
-              {searchQuery.trim() && searchSuggestions.length > 0 && (
-                <>
-                  <div className="fixed inset-0 z-40" onClick={() => setSearchQuery('')} />
-                  <div className="absolute right-0 sm:left-0 mt-2 bg-white rounded-xl shadow-2xl border border-gray-100 py-1.5 w-64 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
-                    <div className="px-3 py-1 bg-gray-50 text-[9px] font-bold text-gray-400 tracking-wider rounded-t-lg">
-                      SUGGESTIONS FOR {currentUser.title.toUpperCase()}
-                    </div>
-                    {searchSuggestions.map((item, index) => (
-                      <button
-                        key={index}
-                        onClick={() => handleSuggestionClick(item)}
-                        className="w-full text-left text-gray-700 hover:bg-gray-50 flex items-center justify-between px-3.5 py-2 text-xs font-semibold transition-colors"
-                      >
-                        <span className="flex items-center gap-2 truncate">
-                          <item.icon className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" />
-                          <span className="truncate">{item.label}</span>
-                        </span>
-                        <Badge variant="secondary" className="text-[9px] px-1 py-0 scale-90">
-                          {item.type}
-                        </Badge>
-                      </button>
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
-            
-            {/* Hamburger Mobile Menu Toggle */}
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="2xl:hidden text-white hover:bg-white/10 p-2 rounded-full flex items-center justify-center ml-1"
-              title="Toggle Menu"
-            >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </Button>
-
-            {/* Desktop Only Navigation Menu */}
-            <div className="hidden 2xl:flex items-center gap-1.5 3xl:gap-3 flex-shrink-0">
-              <div className="h-6 w-px bg-white/30" />
-              
-              {/* Home/Dashboard Button */}
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => {
-                  if (!selectedRole) return;
-                  const rolePath = ROLE_TO_PATH[selectedRole];
-                  navigate(`/${rolePath}/dashboard`);
-                }}
-                className="font-semibold text-white hover:bg-white/10 px-2 3xl:px-3 text-xs 3xl:text-sm h-9 flex items-center justify-center flex-shrink-0"
-              >
-                <Home className="w-4 h-4 mr-1.5 flex-shrink-0" />
-                <span>Dashboard</span>
-              </Button>
-              
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => {
-                  if (!selectedRole) return;
-                  const rolePath = ROLE_TO_PATH[selectedRole];
-                  setSelectedCaseId('temp-case-id');
-                  navigate(`/${rolePath}/casecontrol`);
-                }}
-                className="text-white hover:bg-white/10 px-2 3xl:px-3 text-xs 3xl:text-sm h-9 flex items-center justify-center flex-shrink-0"
-              >
-                <Shield className="w-4 h-4 mr-1.5 flex-shrink-0" />
-                <span>Case Control</span>
-              </Button>
-              
-              {(selectedRole === 'compliance_officer' || selectedRole === 'analyst' || selectedRole === 'auditor') && (
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => {
-                    if (!selectedRole) return;
-                    const rolePath = ROLE_TO_PATH[selectedRole];
-                    navigate(`/${rolePath}/kyc`);
-                  }}
-                  className="text-white hover:bg-white/10 px-2 3xl:px-3 text-xs 3xl:text-sm h-9 flex items-center justify-center flex-shrink-0"
-                >
-                  <Eye className="w-4 h-4 mr-1.5 flex-shrink-0" />
-                  <span>KYC Dashboard</span>
-                </Button>
-              )}
-              
-              {(selectedRole === 'compliance_officer' || selectedRole === 'auditor') && selectedUser !== 'emma_williams' && (
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => {
-                    if (selectedRole) {
-                      const rolePath = ROLE_TO_PATH[selectedRole];
-                      localStorage.setItem('growkyc_last_role', rolePath);
-                    }
-                    navigate('/au');
-                  }}
-                  className="text-white hover:bg-white/10 px-2 3xl:px-3 text-xs 3xl:text-sm h-9 flex items-center justify-center flex-shrink-0"
-                >
-                  <Shield className="w-4 h-4 mr-1.5 text-amber-300 animate-pulse flex-shrink-0" />
-                  <span>AUSTRAC Compliance</span>
-                </Button>
-              )}
-              
-              {/* More Actions Dropdown */}
-              <div className="relative flex-shrink-0">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setIsMoreDropdownOpen(!isMoreDropdownOpen)}
-                  className="font-semibold text-white hover:bg-white/10 px-2.5 3xl:px-3.5 text-xs 3xl:text-sm h-9 flex items-center justify-center gap-1.5 flex-shrink-0"
-                >
-                  <Menu className="w-4 h-4 flex-shrink-0" />
-                  <span>More</span>
-                  <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isMoreDropdownOpen ? 'rotate-180' : ''}`} />
-                </Button>
-                
-                {isMoreDropdownOpen && (
-                  <>
-                    {/* Backdrop to close dropdown on click-outside */}
-                    <div 
-                      className="fixed inset-0 z-40 cursor-default" 
-                      onClick={() => setIsMoreDropdownOpen(false)} 
-                    />
-                    
-                    {/* Dropdown Menu */}
-                    <div className="absolute right-0 mt-2 bg-white rounded-xl shadow-2xl border border-gray-100 py-1.5 w-60 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
-                      
-                      {/* 1. Client Onboarding (Primary highlight) */}
-                      <button
-                        onClick={() => {
-                          setIsMoreDropdownOpen(false);
-                          if (!selectedRole) return;
-                          const rolePath = ROLE_TO_PATH[selectedRole];
-                          navigate(`/${rolePath}/onboarding`);
-                        }}
-                        className="w-full text-left text-gray-700 hover:bg-gray-50 flex items-center gap-3 px-4 py-2.5 text-sm font-semibold transition-colors"
-                      >
-                        <Users className="w-4 h-4 text-gray-500 flex-shrink-0" />
-                        <span className="flex-1">Client Onboarding</span>
-                      </button>
-
-                      {/* 2. Action Items */}
-                      <button
-                        onClick={() => {
-                          setIsMoreDropdownOpen(false);
-                          if (!selectedRole) return;
-                          const rolePath = ROLE_TO_PATH[selectedRole];
-                          navigate(`/${rolePath}/actions`);
-                        }}
-                        className="w-full text-left text-gray-700 hover:bg-gray-50 flex items-center justify-between px-4 py-2.5 text-sm font-semibold transition-colors"
-                      >
-                        <span className="flex items-center gap-3">
-                          <AlertCircle className="w-4 h-4 text-gray-500 flex-shrink-0" />
-                          <span>Action Items</span>
-                        </span>
-                        <span className="bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
-                          3
-                        </span>
-                      </button>
-
-                      {/* 3. Audit Log (Auditor / Compliance Officer only) */}
-                      {(selectedRole === 'compliance_officer' || selectedRole === 'auditor') && selectedUser !== 'emma_williams' && (
-                        <button
-                          onClick={() => {
-                            setIsMoreDropdownOpen(false);
-                            const rolePath = ROLE_TO_PATH[selectedRole!];
-                            navigate(`/${rolePath}/audit-log`);
-                          }}
-                          className="w-full text-left text-gray-700 hover:bg-gray-50 flex items-center gap-3 px-4 py-2.5 text-sm font-semibold transition-colors border-t border-gray-50"
-                        >
-                          <Activity className="w-4 h-4 text-gray-500 flex-shrink-0" />
-                          <span>Audit Log</span>
-                        </button>
-                      )}
-
-                      {/* 4. Upgrades (Partner only) */}
-                      {selectedRole === 'partner' && (
-                        <button
-                          onClick={() => {
-                            setIsMoreDropdownOpen(false);
-                            const rolePath = ROLE_TO_PATH[selectedRole!];
-                            navigate(`/${rolePath}/upgrades`);
-                          }}
-                          className="w-full text-left text-gray-700 hover:bg-gray-50 flex items-center gap-3 px-4 py-2.5 text-sm font-semibold transition-colors border-t border-gray-50"
-                        >
-                          <TrendingUp className="w-4 h-4 text-gray-500 flex-shrink-0" />
-                          <span>Upgrades</span>
-                        </button>
-                      )}
-
-                      {/* 5. Switch to Practice OS */}
-                      {selectedRole && IMFO_HEADER_ROLES.includes(selectedRole) && (
-                        <button
-                          onClick={() => {
-                            setIsMoreDropdownOpen(false);
-                            navigate(IMFO_PLATFORM_PATH, {
-                              state: { imfoRole: GROW_KYC_TO_IMFO_ROLE[selectedRole] }
-                            });
-                          }}
-                          className="w-full text-left text-[#13B5EA] hover:bg-cyan-50/50 flex items-center gap-3 px-4 py-2.5 text-sm font-bold transition-colors border-t border-gray-100 mt-1"
-                        >
-                          <Briefcase className="w-4 h-4 text-[#13B5EA] flex-shrink-0" />
-                          <span>IMFO Platform</span>
-                        </button>
-                      )}
                     </div>
                   </>
                 )}
               </div>
 
-              {/* Settings - Available for all roles */}
+              {/* Dynamic Role-Based Notification Panel & Header Button */}
               {selectedRole && (
-                <>
-                  <div className="h-6 w-px bg-white/30" />
+                <div className="relative flex-shrink-0">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setIsNotificationPanelOpen(!isNotificationPanelOpen)}
+                    className="relative text-white hover:bg-white/10 p-2 rounded-full flex items-center justify-center h-9 w-9"
+                    title="Notifications"
+                  >
+                    <Bell className="w-5 h-5 flex-shrink-0" />
+                    {notificationsCount > 0 && (
+                      <span className="absolute top-0 right-0 bg-red-500 text-white text-[10px] font-bold h-4 w-4 rounded-full flex items-center justify-center animate-pulse border-2 border-[#13B5EA]">
+                        {notificationsCount}
+                      </span>
+                    )}
+                  </Button>
+
+                  {isNotificationPanelOpen && (
+                    <>
+                      <div
+                        className="fixed inset-0 z-40 cursor-default"
+                        onClick={() => setIsNotificationPanelOpen(false)}
+                      />
+
+                      <Card className="absolute right-0 mt-2 w-80 sm:w-96 z-50 shadow-2xl border-2 animate-in fade-in slide-in-from-top-2">
+                        <CardHeader className="pb-3 bg-gradient-to-r from-blue-50/10 to-indigo-50/10 border-b border-gray-100 flex flex-row items-center justify-between py-3">
+                          <div>
+                            <CardTitle className="text-sm font-bold text-gray-900 flex items-center gap-1.5">
+                              <Bell className="w-4 h-4 text-blue-600" />
+                              Alerts & Notifications
+                            </CardTitle>
+                            <p className="text-[10px] text-gray-500 font-semibold mt-0.5">
+                              {currentUser.title === 'Head of Compliance' ? 'Head of Compliance Scope' : 'Standard Compliance Scope'}
+                            </p>
+                          </div>
+                          {notificationsCount > 0 && (
+                            <button
+                              onClick={handleMarkAllNotificationsRead}
+                              className="text-[10px] font-bold text-blue-600 hover:text-blue-700 transition-colors"
+                            >
+                              Mark all read
+                            </button>
+                          )}
+                        </CardHeader>
+                        <CardContent className="p-0 max-h-96 overflow-y-auto">
+                          {filteredNotifications.length === 0 ? (
+                            <div className="p-8 text-center text-gray-500">
+                              <CheckCircle className="w-8 h-8 text-green-500 mx-auto mb-2 opacity-80" />
+                              <p className="text-sm font-semibold">All caught up!</p>
+                              <p className="text-xs text-gray-400 mt-0.5">No notifications in your queue.</p>
+                            </div>
+                          ) : (
+                            <div className="divide-y divide-gray-100">
+                              {filteredNotifications.map((notif) => (
+                                <div
+                                  key={notif.id}
+                                  className={`p-4 transition-all hover:bg-gray-50 flex items-start gap-3 ${notif.read ? 'opacity-60' : 'bg-blue-50/20'
+                                    }`}
+                                >
+                                  <div className="mt-1 flex-shrink-0">
+                                    {notif.type === 'critical' && <XCircle className="w-4 h-4 text-red-600" />}
+                                    {notif.type === 'error' && <AlertCircle className="w-4 h-4 text-red-500" />}
+                                    {notif.type === 'warning' && <AlertTriangle className="w-4 h-4 text-amber-500" />}
+                                    {notif.type === 'success' && <CheckCircle className="w-4 h-4 text-green-500" />}
+                                    {notif.type === 'info' && <Bell className="w-4 h-4 text-blue-500" />}
+                                    {notif.type === 'action' && <Shield className="w-4 h-4 text-indigo-500" />}
+                                  </div>
+                                  <div className="flex-1 min-w-0">
+                                    <div className="flex items-center justify-between gap-2">
+                                      <p className="text-xs font-bold text-gray-900 truncate">{notif.title}</p>
+                                      <span className="text-[9px] text-gray-400 font-semibold flex-shrink-0">{notif.time}</span>
+                                    </div>
+                                    <p className="text-[11px] text-gray-500 mt-0.5 leading-relaxed">{notif.desc}</p>
+                                    <div className="mt-2.5 flex items-center justify-between">
+                                      <span className={`text-[9px] px-1.5 py-0.5 rounded-full font-bold uppercase tracking-wider ${notif.type === 'critical' ? 'bg-red-100 text-red-700' :
+                                          notif.type === 'error' ? 'bg-red-100 text-red-700' :
+                                            notif.type === 'warning' ? 'bg-amber-100 text-amber-700' :
+                                              notif.type === 'success' ? 'bg-green-100 text-green-700' :
+                                                notif.type === 'action' ? 'bg-indigo-100 text-indigo-700' :
+                                                  'bg-blue-100 text-blue-700'
+                                        }`}>
+                                        {notif.type}
+                                      </span>
+                                      <Button
+                                        size="sm"
+                                        variant={notif.read ? "ghost" : "default"}
+                                        onClick={() => handleNotificationAction(notif)}
+                                        className="h-6 text-[10px] font-semibold px-2.5 py-0.5"
+                                      >
+                                        {notif.actionText}
+                                      </Button>
+                                    </div>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </CardContent>
+                      </Card>
+                    </>
+                  )}
+                </div>
+              )}
+
+              {/* Hamburger Mobile Menu Toggle */}
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="2xl:hidden text-white hover:bg-white/10 p-2 rounded-full flex items-center justify-center ml-1"
+                title="Toggle Menu"
+              >
+                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </Button>
+
+              {/* Desktop Only Navigation Menu */}
+              <div className="hidden 2xl:flex items-center gap-1.5 3xl:gap-3 flex-shrink-0">
+                <div className="h-6 w-px bg-white/30" />
+
+                {/* Home/Dashboard Button */}
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => {
+                    if (!selectedRole) return;
+                    navigate(`/${rolePath}/dashboard`);
+                  }}
+                  className="font-semibold text-white hover:bg-white/10 px-2 3xl:px-3 text-xs 3xl:text-sm h-9 flex items-center justify-center flex-shrink-0"
+                >
+                  <Home className="w-4 h-4 mr-1.5 flex-shrink-0" />
+                  <span>Dashboard</span>
+                </Button>
+
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => {
+                    if (!selectedRole) return;
+                    setSelectedCaseId('temp-case-id');
+                    navigate(`/${rolePath}/casecontrol`);
+                  }}
+                  className="text-white hover:bg-white/10 px-2 3xl:px-3 text-xs 3xl:text-sm h-9 flex items-center justify-center flex-shrink-0"
+                >
+                  <Shield className="w-4 h-4 mr-1.5 flex-shrink-0" />
+                  <span>Case Control</span>
+                </Button>
+
+                {(selectedRole === 'compliance_officer' || selectedRole === 'analyst' || selectedRole === 'auditor') && (
                   <Button
                     variant="ghost"
                     size="sm"
                     onClick={() => {
-                      const rolePath = ROLE_TO_PATH[selectedRole!];
-                      navigate(`/${rolePath}/settings`);
+                      if (!selectedRole) return;
+                      navigate(`/${rolePath}/kyc`);
                     }}
-                    className="flex items-center gap-2 text-white hover:bg-white/10 px-2 3xl:px-3 text-xs 3xl:text-sm h-9 flex-shrink-0"
+                    className="text-white hover:bg-white/10 px-2 3xl:px-3 text-xs 3xl:text-sm h-9 flex items-center justify-center flex-shrink-0"
                   >
-                    <Settings className="w-4 h-4 mr-1.5 flex-shrink-0" />
-                    <span>Settings</span>
+                    <Eye className="w-4 h-4 mr-1.5 flex-shrink-0" />
+                    <span>KYC Dashboard</span>
                   </Button>
-                </>
-              )}
+                )}
+
+                {canAccessAUSTRAC(selectedRole) && (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => openAUSTRACCentre(navigate, rolePath)}
+                    className="text-white hover:bg-white/10 px-2 3xl:px-3 text-xs 3xl:text-sm h-9 flex items-center justify-center flex-shrink-0"
+                  >
+                    <Shield className="w-4 h-4 mr-1.5 text-amber-300 animate-pulse flex-shrink-0" />
+                    <span>AUSTRAC Compliance</span>
+                  </Button>
+                )}
+
+                {(selectedRole === 'compliance_officer' || selectedRole === 'partner') && (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => {
+                      if (!selectedRole) return;
+                      navigate(`/${rolePath}/invoices`);
+                    }}
+                    className="font-semibold text-white hover:bg-white/10 px-2 3xl:px-3 text-xs 3xl:text-sm h-9 flex items-center justify-center flex-shrink-0"
+                  >
+                    <FileText className="w-4 h-4 mr-1.5 flex-shrink-0" />
+                    <span>Invoices</span>
+                  </Button>
+                )}
+
+                {/* More Actions Dropdown */}
+                <div className="relative flex-shrink-0">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setIsMoreDropdownOpen(!isMoreDropdownOpen)}
+                    className="font-semibold text-white hover:bg-white/10 px-2.5 3xl:px-3.5 text-xs 3xl:text-sm h-9 flex items-center justify-center gap-1.5 flex-shrink-0"
+                  >
+                    <Menu className="w-4 h-4 flex-shrink-0" />
+                    <span>More</span>
+                    <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isMoreDropdownOpen ? 'rotate-180' : ''}`} />
+                  </Button>
+
+                  {isMoreDropdownOpen && (
+                    <>
+                      {/* Backdrop to close dropdown on click-outside */}
+                      <div
+                        className="fixed inset-0 z-40 cursor-default"
+                        onClick={() => setIsMoreDropdownOpen(false)}
+                      />
+
+                      {/* Dropdown Menu */}
+                      <div className="absolute right-0 mt-2 bg-white rounded-xl shadow-2xl border border-gray-100 py-1.5 w-60 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+
+                        {/* 1. Client Onboarding (Primary highlight) - Restricted from Auditors */}
+                        {selectedRole !== 'auditor' && (
+                          <button
+                            onClick={() => {
+                              setIsMoreDropdownOpen(false);
+                              if (!selectedRole) return;
+                              navigate(`/${rolePath}/onboarding`);
+                            }}
+                            className="w-full text-left text-gray-700 hover:bg-gray-50 flex items-center gap-3 px-4 py-2.5 text-sm font-semibold transition-colors"
+                          >
+                            <Users className="w-4 h-4 text-gray-500 flex-shrink-0" />
+                            <span className="flex-1">Client Onboarding</span>
+                          </button>
+                        )}
+
+                        {/* 2. Action Items */}
+                        <button
+                          onClick={() => {
+                            setIsMoreDropdownOpen(false);
+                            if (!selectedRole) return;
+                            navigate(`/${rolePath}/actions`);
+                          }}
+                          className="w-full text-left text-gray-700 hover:bg-gray-50 flex items-center justify-between px-4 py-2.5 text-sm font-semibold transition-colors"
+                        >
+                          <span className="flex items-center gap-3">
+                            <AlertCircle className="w-4 h-4 text-gray-500 flex-shrink-0" />
+                            <span>Action Items</span>
+                          </span>
+                          <span className="bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+                            3
+                          </span>
+                        </button>
+
+                        {/* 4. Audit Log (Auditor / Compliance Officer only) */}
+                        {(selectedRole === 'compliance_officer' || selectedRole === 'auditor') &&
+                          (currentUser.title === 'Head of Compliance' || currentUser.title === 'Senior Compliance Officer' || currentUser.role === 'auditor') && (
+                            <button
+                              onClick={() => {
+                                setIsMoreDropdownOpen(false);
+                                navigate(`/${rolePath}/audit-log`);
+                              }}
+                              className="w-full text-left text-gray-700 hover:bg-gray-50 flex items-center gap-3 px-4 py-2.5 text-sm font-semibold transition-colors border-t border-gray-50"
+                            >
+                              <Activity className="w-4 h-4 text-gray-500 flex-shrink-0" />
+                              <span>Audit Log</span>
+                            </button>
+                          )}
+
+                        {/* 4. Upgrades (Partner only) */}
+                        {selectedRole === 'partner' && (
+                          <button
+                            onClick={() => {
+                              setIsMoreDropdownOpen(false);
+                              navigate(`/${rolePath}/upgrades`);
+                            }}
+                            className="w-full text-left text-gray-700 hover:bg-gray-50 flex items-center gap-3 px-4 py-2.5 text-sm font-semibold transition-colors border-t border-gray-50"
+                          >
+                            <TrendingUp className="w-4 h-4 text-gray-500 flex-shrink-0" />
+                            <span>Upgrades</span>
+                          </button>
+                        )}
+
+                        {/* 5. Switch to Practice OS */}
+                        {selectedRole && IMFO_HEADER_ROLES.includes(selectedRole) && (() => {
+                          const persona = getPersonaConfig(selectedUser);
+                          return persona.title === 'Head of Compliance' || persona.role === 'partner';
+                        })() && (
+                            <button
+                              onClick={() => {
+                                setIsMoreDropdownOpen(false);
+                                navigate(IMFO_PLATFORM_PATH, {
+                                  state: { imfoRole: GROW_KYC_TO_IMFO_ROLE[selectedRole] }
+                                });
+                              }}
+                              className="w-full text-left text-[#13B5EA] hover:bg-cyan-50/50 flex items-center gap-3 px-4 py-2.5 text-sm font-bold transition-colors border-t border-gray-100 mt-1"
+                            >
+                              <Briefcase className="w-4 h-4 text-[#13B5EA] flex-shrink-0" />
+                              <span>IMFO Platform</span>
+                            </button>
+                          )}
+                      </div>
+                    </>
+                  )}
+                </div>
+
+                {/* Settings - Available for all roles */}
+                {selectedRole && (
+                  <>
+                    <div className="h-6 w-px bg-white/30" />
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => {
+                        navigate(`/${rolePath}/settings`);
+                      }}
+                      className="flex items-center gap-2 text-white hover:bg-white/10 px-2 3xl:px-3 text-xs 3xl:text-sm h-9 flex-shrink-0"
+                    >
+                      <Settings className="w-4 h-4 mr-1.5 flex-shrink-0" />
+                      <span>Settings</span>
+                    </Button>
+                  </>
+                )}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Mobile Navigation Dropdown */}
-      {isMobileMenuOpen && (
+      {currentView !== 'client_kyc_dashboard' && isMobileMenuOpen && (
         <div className="2xl:hidden bg-gradient-to-b from-[#13B5EA] to-[#0E7C9E] border-b border-[#0E7C9E]/30 px-6 py-4 space-y-3 shadow-inner animate-in slide-in-from-top duration-200">
           <div className="flex flex-col gap-2">
-            {selectedRole && IMFO_HEADER_ROLES.includes(selectedRole) && (
-              <Button
-                variant="ghost"
-                size="sm"
-                type="button"
-                onClick={() => {
-                  navigate(IMFO_PLATFORM_PATH, {
-                    state: { imfoRole: GROW_KYC_TO_IMFO_ROLE[selectedRole] }
-                  });
-                  setIsMobileMenuOpen(false);
-                }}
-                className="w-full justify-start font-semibold text-white border border-white/40 bg-white/15 hover:bg-white/25 py-3 text-base"
-                title="Open IMFO Platform — fund & investment operations"
-              >
-                <Briefcase className="w-5 h-5 mr-3 shrink-0" />
-                IMFO Platform
-              </Button>
-            )}
+            {selectedRole && IMFO_HEADER_ROLES.includes(selectedRole) && (() => {
+              const persona = getPersonaConfig(selectedUser);
+              return persona.title === 'Head of Compliance' || persona.role === 'partner';
+            })() && (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  type="button"
+                  onClick={() => {
+                    navigate(IMFO_PLATFORM_PATH, {
+                      state: { imfoRole: GROW_KYC_TO_IMFO_ROLE[selectedRole] }
+                    });
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="w-full justify-start font-semibold text-white border border-white/40 bg-white/15 hover:bg-white/25 py-3 text-base"
+                  title="Open IMFO Platform — fund & investment operations"
+                >
+                  <Briefcase className="w-5 h-5 mr-3 shrink-0" />
+                  IMFO Platform
+                </Button>
+              )}
 
             {/* Home/Dashboard Button */}
             <Button
@@ -935,7 +1230,6 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
               size="sm"
               onClick={() => {
                 if (!selectedRole) return;
-                const rolePath = ROLE_TO_PATH[selectedRole];
                 navigate(`/${rolePath}/dashboard`);
                 setIsMobileMenuOpen(false);
               }}
@@ -944,13 +1238,12 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
               <Home className="w-5 h-5 mr-3" />
               Dashboard
             </Button>
-            
+
             <Button
               variant="ghost"
               size="sm"
               onClick={() => {
                 if (!selectedRole) return;
-                const rolePath = ROLE_TO_PATH[selectedRole];
                 setSelectedCaseId('temp-case-id');
                 navigate(`/${rolePath}/casecontrol`);
                 setIsMobileMenuOpen(false);
@@ -960,14 +1253,13 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
               <Shield className="w-5 h-5 mr-3" />
               Case Control
             </Button>
-            
+
             {(selectedRole === 'compliance_officer' || selectedRole === 'analyst' || selectedRole === 'auditor') && (
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => {
                   if (!selectedRole) return;
-                  const rolePath = ROLE_TO_PATH[selectedRole];
                   navigate(`/${rolePath}/kyc`);
                   setIsMobileMenuOpen(false);
                 }}
@@ -977,17 +1269,13 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
                 KYC Dashboard
               </Button>
             )}
-            
-            {(selectedRole === 'compliance_officer' || selectedRole === 'auditor') && (
+
+            {canAccessAUSTRAC(selectedRole) && (
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => {
-                  if (selectedRole) {
-                    const rolePath = ROLE_TO_PATH[selectedRole];
-                    localStorage.setItem('growkyc_last_role', rolePath);
-                  }
-                  navigate('/au');
+                  openAUSTRACCentre(navigate, rolePath);
                   setIsMobileMenuOpen(false);
                 }}
                 className="w-full justify-start text-white hover:bg-white/10 py-3 text-base"
@@ -996,42 +1284,43 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
                 AUSTRAC Compliance
               </Button>
             )}
-            
-            {(selectedRole === 'compliance_officer' || selectedRole === 'auditor') && (
+
+            {(selectedRole === 'compliance_officer' || selectedRole === 'auditor') &&
+              (currentUser.title === 'Head of Compliance' || currentUser.title === 'Senior Compliance Officer' || currentUser.role === 'auditor') && (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => {
+                    navigate(`/${rolePath}/audit-log`);
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="w-full justify-start text-white hover:bg-white/10 py-3 text-base"
+                >
+                  <Activity className="w-5 h-5 mr-3" />
+                  Audit Log
+                </Button>
+              )}
+
+            {(selectedRole === 'compliance_officer' || selectedRole === 'partner') && (
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => {
-                  const rolePath = ROLE_TO_PATH[selectedRole!];
-                  navigate(`/${rolePath}/audit-log`);
+                  if (!selectedRole) return;
+                  navigate(`/${rolePath}/invoices`);
                   setIsMobileMenuOpen(false);
                 }}
                 className="w-full justify-start text-white hover:bg-white/10 py-3 text-base"
               >
-                <Activity className="w-5 h-5 mr-3" />
-                Audit Log
+                <FileText className="w-5 h-5 mr-3" />
+                Invoices
               </Button>
             )}
-
             <Button
               variant="ghost"
               size="sm"
               onClick={() => {
                 if (!selectedRole) return;
-                const rolePath = ROLE_TO_PATH[selectedRole];
-                navigate(`/${rolePath}/invoices`);
-              }}
-              className="text-white hover:bg-white/10"
-            >
-              <FileText className="w-4 h-4 mr-2" />
-              Invoices
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => {
-                if (!selectedRole) return;
-                const rolePath = ROLE_TO_PATH[selectedRole];
                 navigate(`/${rolePath}/actions`);
                 setIsMobileMenuOpen(false);
               }}
@@ -1043,29 +1332,29 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
                 3
               </span>
             </Button>
-            
-            <Button
-              variant="default"
-              size="sm"
-              onClick={() => {
-                if (!selectedRole) return;
-                const rolePath = ROLE_TO_PATH[selectedRole];
-                navigate(`/${rolePath}/onboarding`);
-                setIsMobileMenuOpen(false);
-              }}
-              className="w-full justify-center bg-white text-[#13B5EA] hover:bg-white/90 font-semibold shadow-lg py-3 text-base"
-            >
-              <Users className="w-5 h-5 mr-3" />
-              Client Onboarding
-            </Button>
-            
+
+            {selectedRole !== 'auditor' && (
+              <Button
+                variant="default"
+                size="sm"
+                onClick={() => {
+                  if (!selectedRole) return;
+                  navigate(`/${rolePath}/onboarding`);
+                  setIsMobileMenuOpen(false);
+                }}
+                className="w-full justify-center bg-white text-[#13B5EA] hover:bg-white/90 font-semibold shadow-lg py-3 text-base"
+              >
+                <Users className="w-5 h-5 mr-3" />
+                Client Onboarding
+              </Button>
+            )}
+
             {/* Upgrades - Partner Only */}
             {selectedRole === 'partner' && (
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => {
-                  const rolePath = ROLE_TO_PATH[selectedRole!];
                   navigate(`/${rolePath}/upgrades`);
                   setIsMobileMenuOpen(false);
                 }}
@@ -1082,7 +1371,6 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
                 variant="ghost"
                 size="sm"
                 onClick={() => {
-                  const rolePath = ROLE_TO_PATH[selectedRole!];
                   navigate(`/${rolePath}/settings`);
                   setIsMobileMenuOpen(false);
                 }}
@@ -1097,8 +1385,8 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
       )}
 
       {/* Global Search */}
-      <GlobalSearch 
-        isOpen={isSearchOpen} 
+      <GlobalSearch
+        isOpen={isSearchOpen}
         onClose={() => setIsSearchOpen(false)}
         onNavigate={(view, id) => {
           if (view === 'client_detail' && id) {
@@ -1113,8 +1401,8 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
       />
 
       {/* Compliance Copilot */}
-      <ComplianceCopilot 
-        isOpen={isCopilotOpen} 
+      <ComplianceCopilot
+        isOpen={isCopilotOpen}
         onClose={() => setIsCopilotOpen(false)}
         context={{
           page: currentView,
@@ -1136,23 +1424,64 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
 
       {/* Content Area */}
       <div className="bg-white min-h-screen">
-        {currentView === 'compliance_dashboard' && (
-          <PersonalizedDashboard 
+        {currentView === 'compliance_dashboard' && selectedRole === 'compliance_officer' && (
+          currentUser.title === 'Head of Compliance' ? (
+            <HeadOfComplianceDashboard
+              userName={currentUser.name}
+              userTitle={currentUser.title}
+              userAvatar={currentUser.avatar}
+              onNavigateToClients={() => setCurrentView('kyc_dashboard_overview')}
+              onNavigateToCases={() => setCurrentView('case_control_centre')}
+              onNavigateToCaseControl={() => setCurrentView('case_control_centre')}
+              onNavigateToMonitoring={() => setCurrentView('transaction_monitoring')}
+              onNavigateToAUSTRAC={() => openAUSTRACCentre(navigate, rolePath)}
+              onNavigateToActionItems={() => setCurrentView('action_items')}
+              onNavigateToClient={(clientId) => {
+                setSelectedClientId(clientId);
+                setCurrentView('client_kyc_dashboard');
+              }}
+              onNavigateToRequirements={() => setCurrentView('profession_requirements')}
+            />
+          ) : (
+            <ComplianceOfficer
+              userName={currentUser.name}
+              userTitle={currentUser.title}
+              userAvatar={currentUser.avatar}
+              onNavigateToClients={() => setCurrentView('kyc_dashboard_overview')}
+              onNavigateToCases={() => setCurrentView('case_control_centre')}
+              onNavigateToCaseControl={() => setCurrentView('case_control_centre')}
+              onNavigateToMonitoring={() => setCurrentView('transaction_monitoring')}
+              onNavigateToAUSTRAC={() => openAUSTRACCentre(navigate, rolePath)}
+              onNavigateToActionItems={() => setCurrentView('action_items')}
+              onNavigateToClient={(clientId) => {
+                setSelectedClientId(clientId);
+                setCurrentView('client_kyc_dashboard');
+              }}
+              onNavigateToRequirements={() => setCurrentView('profession_requirements')}
+            />
+          )
+        )}
+        {currentView === 'compliance_dashboard' && selectedRole === 'analyst' && (
+          <PersonalizedDashboard
             userName={currentUser.name}
             userRole={currentUser.role}
             userTitle={currentUser.title}
             userAvatar={currentUser.avatar}
             onNavigateToClients={() => setCurrentView('kyc_dashboard_overview')}
-            onNavigateToCases={() => setCurrentView('case_management')}
+            onNavigateToCases={() => setCurrentView('case_control_centre')}
+            onNavigateToCaseControl={() => setCurrentView('case_control_centre')}
+            onNavigateToMonitoring={() => setCurrentView('transaction_monitoring')}
+            onNavigateToAUSTRAC={() => openAUSTRACCentre(navigate, rolePath)}
+            onNavigateToActionItems={() => setCurrentView('action_items')}
             onNavigateToClient={(clientId) => {
               setSelectedClientId(clientId);
-              setCurrentView('client_detail');
+              setCurrentView('client_kyc_dashboard');
             }}
             onNavigateToRequirements={() => setCurrentView('profession_requirements')}
           />
         )}
         {currentView === 'partner_dashboard' && (
-          <PersonalizedDashboard 
+          <PartnerDashboard
             userName={currentUser.name}
             userRole={currentUser.role}
             userTitle={currentUser.title}
@@ -1167,13 +1496,13 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
           />
         )}
         {currentView === 'client_review' && (
-          <ClientReview 
+          <ClientReview
             clientId={selectedClientId || undefined}
-            role={selectedRole ? ROLE_TO_PATH[selectedRole] : undefined}
+            role={selectedRole ? rolePath : undefined}
           />
         )}
         {currentView === 'audit_dashboard' && (
-          <PersonalizedDashboard 
+          <PersonalizedDashboard
             userName={currentUser.name}
             userRole={currentUser.role}
             userTitle={currentUser.title}
@@ -1199,7 +1528,7 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
           />
         )}
         {currentView === 'kyc_dashboard_overview' && (
-          <KYCDashboardOverview 
+          <KYCDashboardOverview
             onViewClient={(clientId) => {
               setSelectedClientId(clientId);
               setCurrentView('client_kyc_dashboard');
@@ -1207,13 +1536,13 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
           />
         )}
         {currentView === 'client_kyc_dashboard' && (
-          <KYCClientDetails 
+          <KYCClientDetails
             clientId={selectedClientId || undefined}
             onBack={() => setCurrentView('kyc_dashboard_overview')}
           />
         )}
         {currentView === 'action_items' && (
-          <ActionItemsCenter 
+          <ActionItemsCenter
             onViewClient={(clientId) => {
               setSelectedClientId(clientId);
               setCurrentView('client_kyc_dashboard');
@@ -1239,6 +1568,7 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
         )}
         {currentView === 'case_control_centre' && (
           <CaseControlCentre
+            complianceOfficerMode={isComplianceOfficer}
             onOpenCase={(caseId) => {
               setSelectedCaseId(caseId);
               setCurrentView('case_workbench');
@@ -1246,10 +1576,15 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
           />
         )}
         {currentView === 'case_workbench' && (
-          <CaseWorkbench />
+          <CaseWorkbench
+            caseId={selectedCaseId || undefined}
+            complianceOfficerMode={isComplianceOfficer}
+            onBack={() => setCurrentView('case_control_centre')}
+          />
         )}
         {currentView === 'transaction_monitoring' && (
           <TransactionMonitoring
+            complianceOfficerMode={isComplianceOfficer}
             onOpenReferral={() => setCurrentView('case_control_centre')}
             onBack={() => {
               if (selectedRole === 'compliance_officer') setCurrentView('compliance_dashboard');
@@ -1281,6 +1616,8 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
         )}
         {currentView === 'system_settings' && (
           <ComprehensiveSettings
+            role={selectedRole}
+            userId={selectedUser}
             onBack={() => {
               if (selectedRole === 'compliance_officer') setCurrentView('compliance_dashboard');
               if (selectedRole === 'partner') setCurrentView('partner_dashboard');
@@ -1331,17 +1668,32 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
           />
         )}
         {currentView === 'invoices' && (
-          <InvoicesPage 
+          <InvoicesPage
             onNavigate={(page) => {
               if (!selectedRole) return;
-              const rolePath = ROLE_TO_PATH[selectedRole];
               navigate(`/${rolePath}/${page}`);
             }}
           />
         )}
         {currentView === 'admin_audit_log' && (
           <div className="p-6">
-            <AdminAuditLog />
+            <AdminAuditLog
+              onNavigateToDashboard={() => {
+                if (selectedRole === 'compliance_officer') setCurrentView('compliance_dashboard');
+                else if (selectedRole === 'partner') setCurrentView('partner_dashboard');
+                else if (selectedRole === 'auditor') setCurrentView('audit_dashboard');
+                else if (selectedRole === 'analyst') setCurrentView('compliance_dashboard');
+                else setCurrentView('compliance_dashboard');
+              }}
+              onNavigateToSettings={() => setCurrentView('system_settings')}
+              onHomeClick={() => {
+                if (selectedRole === 'compliance_officer') setCurrentView('compliance_dashboard');
+                else if (selectedRole === 'partner') setCurrentView('partner_dashboard');
+                else if (selectedRole === 'auditor') setCurrentView('audit_dashboard');
+                else if (selectedRole === 'analyst') setCurrentView('compliance_dashboard');
+                else setCurrentView('compliance_dashboard');
+              }}
+            />
           </div>
         )}
       </div>

@@ -10,18 +10,13 @@ import json
 import logging
 import uuid
 from datetime import datetime, timezone
-from typing import Dict, List, Optional
+from typing import Optional
 
 from sqlalchemy.orm import Session
 
 from core.exceptions import InvalidStateError, ResourceNotFoundError
 from core.tenant_context import get_tenant_id
-from models import (
-    Case,
-    Client,
-    RegulatoryReport,
-    ReportSubmission,
-)
+from models import Client, RegulatoryReport, ReportSubmission
 from services.audit_service import AuditService
 
 logger = logging.getLogger(__name__)
@@ -100,7 +95,11 @@ class RegulatoryService:
         """
         Locks the report and queues an async transmission.
         """
-        report = self.db.query(RegulatoryReport).filter(RegulatoryReport.id == report_id).first()
+        report = (
+            self.db.query(RegulatoryReport)
+            .filter(RegulatoryReport.id == report_id)
+            .first()
+        )
         if not report:
             raise ResourceNotFoundError("RegulatoryReport", report_id)
 
@@ -110,9 +109,9 @@ class RegulatoryService:
         # Lock report status
         report.submission_status = "pending_submission"
         report.reviewed_by_id = submitter_id
-        
+
         correlation_id = str(uuid.uuid4())
-        
+
         submission = ReportSubmission(
             report_id=report.id,
             correlation_id=correlation_id,
@@ -124,6 +123,7 @@ class RegulatoryService:
 
         # Trigger Celery Task
         from tasks.reporting_tasks import transmit_report_async
+
         transmit_report_async.delay(submission.id, correlation_id)
 
         return submission

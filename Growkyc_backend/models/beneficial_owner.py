@@ -67,19 +67,24 @@ class BeneficialOwner(Base):
 
     # ---- Ownership details ----
     ownership_percentage = Column(
-        Float, nullable=True,
+        Float,
+        nullable=True,
         comment="Direct ownership percentage (0.0 – 100.0)",
     )
     ownership_type = Column(
-        String(100), nullable=True,
+        String(100),
+        nullable=True,
         comment="direct | indirect | trust_beneficiary | trustee | settlor",
     )
     is_control_person = Column(
-        Integer, default=0, nullable=False,
+        Integer,
+        default=0,
+        nullable=False,
         comment="1 if the person exercises control regardless of ownership %",
     )
     control_mechanism = Column(
-        String(255), nullable=True,
+        String(255),
+        nullable=True,
         comment="e.g. director, trustee, power_of_attorney, signatory",
     )
 
@@ -98,7 +103,9 @@ class BeneficialOwner(Base):
 
     # ---- Verification status ----
     verification_status = Column(
-        String(50), default="pending", nullable=False,
+        String(50),
+        default="pending",
+        nullable=False,
         comment="pending | verified | failed | requires_review",
     )
     verification_date = Column(DateTime(timezone=True), nullable=True)
@@ -123,7 +130,7 @@ class BeneficialOwner(Base):
         back_populates="beneficial_owners",
         lazy="select",
     )
-    # The parent/child relationships are handled dynamically via OwnershipRelationship backrefs
+    # Parent/child relationships are handled via OwnershipRelationship backrefs.
 
     # ---- Indexes ----
     __table_args__ = (

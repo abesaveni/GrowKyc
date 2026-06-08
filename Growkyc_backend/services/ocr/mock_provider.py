@@ -4,6 +4,7 @@ services/ocr/mock_provider.py
 Deterministic mock OCR provider for development/testing.
 Returns realistic extracted fields for all supported document types.
 """
+
 from services.ocr.base import BaseOCRProvider, OcrResult
 
 
@@ -17,7 +18,8 @@ class MockOCRProvider(BaseOCRProvider):
     def extract(self, document_bytes: bytes, document_type: str = None) -> OcrResult:
         """
         Return mock extraction results based on document type.
-        In production, replace with AWS Textract, Azure Form Recognizer, or Google Document AI.
+        In production, replace with AWS Textract, Azure Form Recognizer,
+        or Google Document AI.
         """
         doc_type = (document_type or "").lower()
 
@@ -81,5 +83,9 @@ class MockOCRProvider(BaseOCRProvider):
                 provider=self.provider_name,
                 document_type=doc_type or "unknown",
                 confidence_score=0.75,
-                extracted_fields={"raw_text": "Document processed — no structured extraction available."},
+                        "Document processed -- no structured extraction available."
+                    "raw_text": (
+                        "Document processed -- no structured extraction available."
+                    )
+                },
             )

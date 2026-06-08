@@ -100,7 +100,7 @@ export const StatusBadge: React.FC<{
   status: BadgeStatus;
   className?: string;
 }> = ({ status, className = '' }) => {
-  const configs = {
+  const configs: Record<BadgeStatus, { bg: string; text: string; label: string; icon: React.ComponentType<any> | null }> = {
     'draft': { bg: 'bg-gray-100', text: 'text-gray-700', label: 'Draft', icon: null },
     'awaiting-client': { bg: 'bg-yellow-100', text: 'text-yellow-700', label: 'Awaiting Client', icon: Clock },
     'awaiting-id': { bg: 'bg-blue-100', text: 'text-blue-700', label: 'Awaiting ID', icon: Clock },

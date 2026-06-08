@@ -7,25 +7,12 @@ import logging
 from datetime import date, datetime
 from typing import Generic, List, Optional, TypeVar
 
-from pydantic import (
-    BaseModel,
-    ConfigDict,
-    EmailStr,
-    Field,
-    ValidationInfo,
-    field_validator,
-)
+from pydantic import (BaseModel, ConfigDict, EmailStr, Field, ValidationInfo,
+                      field_validator)
 
-from core.enums import (
-    CaseStatus,
-    DocumentType,
-    KYCStatus,
-    NotificationStatus,
-    NotificationType,
-    ReportType,
-    RiskLevel,
-    UserRole,
-)
+from core.enums import (CaseStatus, DocumentType, KYCStatus,
+                        NotificationStatus, NotificationType, ReportType,
+                        RiskLevel, UserRole)
 
 logger = logging.getLogger(__name__)
 
@@ -145,7 +132,10 @@ class PasswordChangeRequest(BaseModel):
 
 class IdentityDocumentCreate(BaseModel):
     """Generic schema for any country's Identity Document"""
-    country_code: str = Field(..., min_length=2, max_length=2, description="ISO 3166-1 alpha-2")
+
+    country_code: str = Field(
+        ..., min_length=2, max_length=2, description="ISO 3166-1 alpha-2"
+    )
     document_category: str
     document_type: str
     document_number: str
@@ -154,15 +144,26 @@ class IdentityDocumentCreate(BaseModel):
     expiry_date: Optional[datetime] = None
     metadata_json: Optional[dict] = None
 
+
 class KYCSubmit(BaseModel):
     """Schema for KYC submission"""
 
     # [DEPRECATED] Use `documents` instead. Kept for backward compatibility.
-    aadhaar: Optional[str] = Field(None, min_length=12, max_length=12, description="[DEPRECATED] Use IdentityDocument.")
-    pan: Optional[str] = Field(None, min_length=10, max_length=10, description="[DEPRECATED] Use IdentityDocument.")
-    
+    aadhaar: Optional[str] = Field(
+        None,
+        min_length=12,
+        max_length=12,
+        description="[DEPRECATED] Use IdentityDocument.",
+    )
+    pan: Optional[str] = Field(
+        None,
+        min_length=10,
+        max_length=10,
+        description="[DEPRECATED] Use IdentityDocument.",
+    )
+
     documents: Optional[List[IdentityDocumentCreate]] = Field(default_factory=list)
-    
+
     name: Optional[str] = Field(None, min_length=2, max_length=255)
     email: Optional[EmailStr] = None
     dob: Optional[date] = None

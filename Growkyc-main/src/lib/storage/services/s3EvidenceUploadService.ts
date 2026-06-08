@@ -249,7 +249,7 @@ export class S3EvidenceUploadService {
       return {
         ok: false,
         error: {
-          code: isRetryable ? 'TEMPORARY_UNAVAILABLE' : 'UPLOAD_FAILED',
+          code: isRetryable ? 'BUCKET_UNAVAILABLE' : 'UPLOAD_FAILED',
           message: `S3 upload error: ${errorMessage}`,
           retryable: isRetryable,
         },

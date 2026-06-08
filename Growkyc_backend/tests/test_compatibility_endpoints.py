@@ -1,6 +1,5 @@
 import pytest
 
-
 COMPATIBILITY_REQUESTS = [
     ("GET", "/documents/expiring?withinDays=30", None),
     ("POST", "/uploads", {"name": "source-of-funds.pdf"}),

@@ -4,15 +4,15 @@ routers/cases.py
 Enterprise AML Case Management API endpoints.
 Provides operational queues, assignment, and escalation workflows.
 """
+
 import logging
-from typing import Any, Dict, List, Optional
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 from database import get_db
-from dependencies import get_admin_or_agent_user, get_current_user
+from dependencies import get_admin_or_agent_user
 from models import User
 from services.case_workflow_service import CaseWorkflowService
 
@@ -82,7 +82,15 @@ async def get_cases_by_queue(
     """Retrieve all open cases currently in a specific operational queue."""
     service = CaseWorkflowService(db)
     cases = service.get_cases_by_queue(queue_name)
-    return [{"case_id": c.id, "client_id": c.client_id, "title": c.title, "status": c.status.value} for c in cases]
+    return [
+        {
+            "case_id": c.id,
+            "client_id": c.client_id,
+            "title": c.title,
+            "status": c.status.value,
+        }
+        for c in cases
+    ]
 
 
 @router.post("/{case_id}/assign")
@@ -100,7 +108,11 @@ async def assign_case(
             assignee_id=body.assignee_id,
             actor_id=current_user.id,
         )
-        return {"case_id": case_id, "assigned_to": assignment.assigned_to_id, "queue": assignment.queue_name}
+        return {
+            "case_id": case_id,
+            "assigned_to": assignment.assigned_to_id,
+            "queue": assignment.queue_name,
+        }
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
@@ -157,7 +169,9 @@ async def add_comment(
     """Add an analyst note to the case."""
     try:
         service = CaseWorkflowService(db)
-        comment = service.add_comment(case_id=case_id, content=body.content, actor_id=current_user.id)
+        comment = service.add_comment(
+            case_id=case_id, content=body.content, actor_id=current_user.id
+        )
         return {"case_id": case_id, "comment_id": comment.id}
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))

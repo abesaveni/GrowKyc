@@ -35,6 +35,7 @@ export interface CivilCase {
   status: 'Open' | 'Settled' | 'Judgement Entered' | 'Dismissed';
   date: string;
   outcome?: string;
+  details?: string;
 }
 
 export interface AssociateRegulatoryAction {

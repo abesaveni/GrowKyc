@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
@@ -17,10 +17,12 @@ import {
   Download,
   X,
   Lock,
-  FileText
+  FileText,
+  Eye
 } from 'lucide-react';
 import { format } from 'date-fns';
 import { toast } from '../../lib/toast';
+import { ClientsDB } from './ClientsDatabase';
 
 interface AuditEvent {
   id: string;
@@ -34,85 +36,121 @@ interface AuditEvent {
   details?: string;
 }
 
-const mockEvents: AuditEvent[] = [
-  {
-    id: 'evt-001',
-    actor: 'Michael Chen',
-    actorType: 'User',
-    action: 'Document Uploaded',
-    entity: 'Passport_Scan.pdf',
-    timestamp: new Date(Date.now() - 15 * 60 * 1000), // 15 mins ago
-    ip: '10.0.4.52',
-    outcome: 'Success',
-    details: 'File size: 2.4MB, Malware scan: Passed'
-  },
-  {
-    id: 'evt-002',
-    actor: 'Risk Engine v2.1',
-    actorType: 'System',
-    action: 'Automated Risk Assessment',
-    entity: 'Client Risk Profile',
-    timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000), // 2 hours ago
-    ip: 'internal',
-    outcome: 'Warning',
-    details: 'Elevated risk detected due to complex ownership structure'
-  },
-  {
-    id: 'evt-003',
-    actor: 'Sarah Jenkins',
-    actorType: 'User',
-    action: 'Approval Attempt',
-    entity: 'L2 KYC Checker',
-    timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000), // 5 hours ago
-    ip: '192.168.1.104',
-    outcome: 'Denied',
-    details: 'Blocked by SoD controls. Maker cannot be Checker.'
-  },
-  {
-    id: 'evt-004',
-    actor: 'Screening API',
-    actorType: 'API',
-    action: 'Sanctions Sync',
-    entity: 'WorldCheck DB',
-    timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000),
-    ip: 'api.screening.net',
-    outcome: 'Success',
-    details: '0 new matches found for active entities.'
-  },
-  {
-    id: 'evt-005',
-    actor: 'Unknown Origin',
-    actorType: 'API',
-    action: 'Unauthorized Access Attempt',
-    entity: 'Client Records',
-    timestamp: new Date(Date.now() - 48 * 60 * 60 * 1000),
-    ip: '45.22.11.9',
-    outcome: 'Failed',
-    details: 'Invalid token signature rejected at gateway.'
-  },
-  {
-    id: 'evt-006',
-    actor: 'Tom Anderson',
-    actorType: 'User',
-    action: 'Exported Data',
-    entity: 'Audit Trail PDF',
-    timestamp: new Date(Date.now() - 72 * 60 * 60 * 1000),
-    ip: '10.0.4.18',
-    outcome: 'Success',
-    details: 'Exported 500 rows. Request ID: REQ-8821'
-  }
-];
-
 export function AuditTab({ clientId }: { clientId: string }) {
-  const [events] = useState<AuditEvent[]>(mockEvents);
   const [searchQuery, setSearchQuery] = useState('');
   const [outcomeFilter, setOutcomeFilter] = useState('all');
   const [actorTypeFilter, setActorTypeFilter] = useState('all');
+  
+  // Selected event for Details Modal
+  const [selectedEvent, setSelectedEvent] = useState<AuditEvent | null>(null);
 
   // Export Modal State
   const [isExportModalOpen, setIsExportModalOpen] = useState(false);
   const [exportFormat, setExportFormat] = useState<'PDF' | 'CSV'>('PDF');
   const [isExporting, setIsExporting] = useState(false);
+
+  // Retrieve client information from ClientsDB dynamically
+  const client = useMemo(() => {
+    return ClientsDB.getClients().find(c => c.id === clientId);
+  }, [clientId]);
+
+  // Dynamically generate audit events based on client's actual data
+  const events = useMemo<AuditEvent[]>(() => {
+    if (!client) return [];
+
+    const clientName = client.name;
+    const primaryDirector = client.entityData?.directors?.[0]?.name || 'Authorized Signatory';
+    const approver = client.decisionsData?.approver || 'Sarah Chen';
+    const onboardingDate = client.decisionsData?.onboardingDate || '2024-03-20';
+    const lastReviewDate = client.lastReview || '2024-03-15';
+    const ipAddress = '203.45.67.89';
+
+    const list: AuditEvent[] = [
+      {
+        id: `evt-${client.id}-001`,
+        actor: client.entityType === 'Individual' ? clientName : primaryDirector,
+        actorType: 'User',
+        action: 'Service Agreement Signed',
+        entity: 'Service_Agreement.pdf',
+        timestamp: new Date(`${onboardingDate}T09:15:00`),
+        ip: ipAddress,
+        outcome: client.legalData.serviceAgreementSigned ? 'Success' : 'Warning',
+        details: client.legalData.serviceAgreementSigned 
+          ? 'Completed via GovSign. Cryptographic signature verified.' 
+          : 'Agreement signature bypassed or pending.'
+      },
+      {
+        id: `evt-${client.id}-002`,
+        actor: client.entityType === 'Individual' ? clientName : primaryDirector,
+        actorType: 'User',
+        action: 'Terms & Conditions Accepted',
+        entity: 'Client Portal Terms',
+        timestamp: new Date(`${onboardingDate}T09:16:12`),
+        ip: ipAddress,
+        outcome: client.legalData.termsAccepted ? 'Success' : 'Warning',
+        details: client.legalData.termsAccepted 
+          ? 'Accepted terms and privacy consent during onboarding.' 
+          : 'Pending terms acceptance.'
+      },
+      {
+        id: `evt-${client.id}-003`,
+        actor: 'AML Screening Engine',
+        actorType: 'System',
+        action: 'PEP & Sanctions Search',
+        entity: clientName,
+        timestamp: new Date(`${lastReviewDate}T10:05:00`),
+        ip: 'internal-api',
+        outcome: client.amlData.riskRating === 'High' || client.amlData.riskRating === 'Critical' ? 'Warning' : 'Success',
+        details: `Screened against WorldCheck DB. Sanctions matches: ${client.amlData.sanctionsMatches}, PEP Status: ${client.amlData.pepStatus}. Risk Rating: ${client.amlData.riskRating}.`
+      },
+      {
+        id: `evt-${client.id}-004`,
+        actor: 'Registry Monitor',
+        actorType: 'API',
+        action: 'Registry Profile Verification',
+        entity: client.entityType === 'Individual' ? 'Equifax Identity Search' : 'ASIC Corporate Registry',
+        timestamp: new Date(`${lastReviewDate}T10:06:30`),
+        ip: 'api.registry.gov.au',
+        outcome: client.quickStatus.identity === 'Verified' ? 'Success' : 'Warning',
+        details: client.entityType === 'Individual' 
+          ? `Liveness check: ${client.identityData.livenessCheck ? 'Passed' : 'Not Performed'}. Biometrics: ${client.identityData.biometricStatus}. GreenID Score: ${client.identityData.greenIDScore || 'N/A'}.`
+          : `ASIC Status: ${client.entityData.asicStatus || 'Active'}. Registry sync completed.`
+      }
+    ];
+
+    // Add decision event if decisionsData exists
+    if (client.decisionsData) {
+      list.unshift({
+        id: `evt-${client.id}-005`,
+        actor: approver,
+        actorType: 'User',
+        action: 'Onboarding Decision Recorded',
+        entity: 'Client Review Status',
+        timestamp: new Date(`${onboardingDate}T14:30:00`),
+        ip: '10.0.4.15',
+        outcome: client.decisionsData.onboardingDecision === 'Approved' ? 'Success' : 
+                 client.decisionsData.onboardingDecision === 'Rejected' ? 'Failed' : 'Warning',
+        details: `Client status changed to Approved. Signed off by ${approver}. Onboarding date: ${onboardingDate}.`
+      });
+    }
+
+    // Add high risk transaction log if highRiskTransactions > 0
+    if (client.financialData && client.financialData.highRiskTransactions > 0) {
+      list.push({
+        id: `evt-${client.id}-006`,
+        actor: 'Transaction Monitoring System',
+        actorType: 'System',
+        action: 'High-Risk Transaction Flagged',
+        entity: 'Bank Account Ledger',
+        timestamp: new Date(`${lastReviewDate}T11:45:10`),
+        ip: 'internal-monitoring',
+        outcome: 'Warning',
+        details: `Detected ${client.financialData.highRiskTransactions} high-risk transactions. Source of Funds: ${client.financialData.sourceOfFunds}. Estimated Wealth: ${client.financialData.estimatedWealth}.`
+      });
+    }
+
+    return list.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime());
+  }, [client]);
 
   const handleExport = async () => {
     setIsExporting(true);
@@ -120,9 +158,10 @@ export function AuditTab({ clientId }: { clientId: string }) {
     await new Promise(resolve => setTimeout(resolve, 2000));
     setIsExporting(false);
     setIsExportModalOpen(false);
-    toast.success(`Signed Audit Log exported as ${exportFormat}`, {
-      description: 'The cryptographic signature has been attached to the file metadata.'
-    });
+    toast.success(
+      `Signed Audit Log exported as ${exportFormat}`,
+      'The cryptographic signature has been attached to the file metadata.'
+    );
   };
 
   const filteredEvents = events.filter(evt => {
@@ -148,13 +187,13 @@ export function AuditTab({ clientId }: { clientId: string }) {
   const getOutcomeBadge = (outcome: AuditEvent['outcome']) => {
     switch (outcome) {
       case 'Success':
-        return <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-bold bg-green-100 text-green-800"><CheckCircle className="w-3 h-3"/> Success</span>;
+        return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-bold bg-green-100 text-green-800"><CheckCircle className="w-3 h-3"/> Success</span>;
       case 'Failed':
-        return <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-bold bg-red-100 text-red-800"><XCircle className="w-3 h-3"/> Failed</span>;
+        return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-bold bg-red-100 text-red-800"><XCircle className="w-3 h-3"/> Failed</span>;
       case 'Denied':
-        return <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-bold bg-red-100 text-red-900 border border-red-300"><Shield className="w-3 h-3"/> Denied</span>;
+        return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-bold bg-red-100 text-red-900 border border-red-300"><Shield className="w-3 h-3"/> Denied</span>;
       case 'Warning':
-        return <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-bold bg-amber-100 text-amber-800"><AlertCircle className="w-3 h-3"/> Warning</span>;
+        return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-bold bg-amber-100 text-amber-800"><AlertCircle className="w-3 h-3"/> Warning</span>;
     }
   };
 
@@ -222,13 +261,14 @@ export function AuditTab({ clientId }: { clientId: string }) {
                   <th className="px-6 py-4 font-semibold">Timestamp</th>
                   <th className="px-6 py-4 font-semibold">Actor & IP</th>
                   <th className="px-6 py-4 font-semibold">Action & Entity</th>
-                  <th className="px-6 py-4 font-semibold">Outcome & Details</th>
+                  <th className="px-6 py-4 font-semibold">Outcome</th>
+                  <th className="px-6 py-4 font-semibold text-center w-24">Details</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 bg-white">
                 {filteredEvents.length === 0 ? (
                   <tr>
-                    <td colSpan={4} className="px-6 py-12 text-center text-gray-500">
+                    <td colSpan={5} className="px-6 py-12 text-center text-gray-500">
                       No audit events match your current filters.
                     </td>
                   </tr>
@@ -261,15 +301,18 @@ export function AuditTab({ clientId }: { clientId: string }) {
                           </span>
                         </div>
                       </td>
-                      <td className="px-6 py-4">
-                        <div className="flex flex-col gap-2 items-start">
-                          {getOutcomeBadge(evt.outcome)}
-                          {evt.details && (
-                            <span className="text-xs text-slate-500 leading-tight">
-                              {evt.details}
-                            </span>
-                          )}
-                        </div>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {getOutcomeBadge(evt.outcome)}
+                      </td>
+                      <td className="px-6 py-4 text-center w-24 whitespace-nowrap">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => setSelectedEvent(evt)}
+                          className="h-8 w-8 p-0 inline-flex items-center justify-center rounded-lg border-slate-200 hover:border-blue-400 hover:bg-blue-50 text-slate-500 hover:text-blue-600 mx-auto"
+                        >
+                          <Eye className="w-4 h-4" />
+                        </Button>
                       </td>
                     </tr>
                   ))
@@ -279,6 +322,93 @@ export function AuditTab({ clientId }: { clientId: string }) {
           </div>
         </CardContent>
       </Card>
+
+      {/* Event Details Modal */}
+      {selectedEvent !== null && (
+        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg border border-slate-100 flex flex-col max-h-[85vh] overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+            {/* Modal Header */}
+            <div className="bg-slate-900 p-6 text-white flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <Shield className="w-6 h-6 text-indigo-400" />
+                <div>
+                  <h3 className="text-lg font-bold tracking-tight text-white">Audit Event Details</h3>
+                  <p className="text-xs text-slate-400">ID: {selectedEvent.id}</p>
+                </div>
+              </div>
+              <button 
+                onClick={() => setSelectedEvent(null)}
+                className="text-slate-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/10 text-xl font-bold leading-none"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Modal Body */}
+            <div className="p-6 space-y-6 overflow-y-auto">
+              
+              {/* Event Metadata Grid */}
+              <div className="grid grid-cols-2 gap-4 bg-slate-50 p-4 rounded-xl border border-slate-100">
+                <div>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Timestamp</span>
+                  <div className="text-xs font-semibold text-slate-800 mt-0.5">
+                    {format(selectedEvent.timestamp, 'dd MMM yyyy, HH:mm:ss')}
+                  </div>
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Outcome</span>
+                  <div className="mt-1">{getOutcomeBadge(selectedEvent.outcome)}</div>
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Actor</span>
+                  <div className="text-xs font-semibold text-slate-800 mt-0.5 flex items-center gap-1.5">
+                    {getActorIcon(selectedEvent.actorType)}
+                    {selectedEvent.actor}
+                  </div>
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">IP Address / Source</span>
+                  <div className="text-xs font-mono font-bold text-slate-800 mt-0.5">{selectedEvent.ip}</div>
+                </div>
+              </div>
+
+              {/* Action / Entity */}
+              <div className="p-4 bg-indigo-50/40 rounded-xl border border-indigo-100/50 space-y-2">
+                <div>
+                  <span className="text-[10px] font-bold text-indigo-600 uppercase tracking-wider block mb-1">Action Performed</span>
+                  <span className="text-sm font-bold text-indigo-900">{selectedEvent.action}</span>
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold text-indigo-600 uppercase tracking-wider block mb-1">Target Entity</span>
+                  <span className="text-xs font-mono bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded border border-indigo-200 inline-block font-bold">
+                    {selectedEvent.entity}
+                  </span>
+                </div>
+              </div>
+
+              {/* Details Description */}
+              {selectedEvent.details && (
+                <div className="space-y-1.5">
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Outcome Details & Logs</span>
+                  <div className="text-sm text-slate-700 leading-relaxed bg-white border border-slate-200 p-4 rounded-xl font-medium shadow-sm">
+                    {selectedEvent.details}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Modal Footer */}
+            <div className="p-4 bg-slate-50 border-t flex items-center justify-end">
+              <Button 
+                onClick={() => setSelectedEvent(null)}
+                className="bg-slate-900 hover:bg-slate-800 text-white font-semibold px-6"
+              >
+                Close Details
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Export Signed Log Modal */}
       {isExportModalOpen && (

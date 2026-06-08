@@ -5,17 +5,10 @@ from sqlalchemy.orm import Session
 
 from database import get_db
 from dependencies import get_current_user
-from schemas import (
-    UserLoginRequest,
-    UserRegisterRequest,
-    TokenResponse,
-    UserResponse,
-    PasswordChangeRequest,
-)
-from services.auth_service import AuthService, ACCESS_TOKEN_EXPIRE_MINUTES
-
 from routers import compatibility as compat
-
+from schemas import (PasswordChangeRequest, TokenResponse, UserLoginRequest,
+                     UserRegisterRequest, UserResponse)
+from services.auth_service import ACCESS_TOKEN_EXPIRE_MINUTES, AuthService
 
 router = APIRouter()
 
@@ -31,7 +24,7 @@ async def alias_auth_login(body: UserLoginRequest, db: Session = Depends(get_db)
     user = service.authenticate_user(body.email, body.password)
     role_val = getattr(user, "role", None)
     role_str = getattr(role_val, "value", role_val)
-    token = service.create_access_token(user_id=user.id, role=role_str)
+    token = service.create_access_token(user_id=user.id, tenant_id=user.tenant_id, role=role_str)
     return TokenResponse(
         access_token=token,
         token_type="bearer",
@@ -46,7 +39,7 @@ async def alias_auth_register(body: UserRegisterRequest, db: Session = Depends(g
     user = service.register_user(body.name, body.email, body.password)
     role_val = getattr(user, "role", None)
     role_str = getattr(role_val, "value", role_val)
-    token = service.create_access_token(user_id=user.id, role=role_str)
+    token = service.create_access_token(user_id=user.id, tenant_id=user.tenant_id, role=role_str)
     return TokenResponse(
         access_token=token,
         token_type="bearer",
@@ -74,7 +67,9 @@ async def alias_auth_session(current_user=Depends(get_current_user)):
 
 
 @router.post("/auth/refresh")
-async def alias_auth_refresh(current_user=Depends(get_current_user), db: Session = Depends(get_db)):
+async def alias_auth_refresh(
+    current_user=Depends(get_current_user), db: Session = Depends(get_db)
+):
     return await compat.compat_auth_refresh(current_user=current_user, db=db)
 
 
@@ -84,8 +79,14 @@ async def alias_auth_reset_password(payload: dict = Body(default_factory=dict)):
 
 
 @router.post("/auth/update-password")
-async def alias_auth_update_password(body: PasswordChangeRequest, current_user=Depends(get_current_user), db: Session = Depends(get_db)):
-    return await compat.compat_auth_update_password(body=body, current_user=current_user, db=db)
+async def alias_auth_update_password(
+    body: PasswordChangeRequest,
+    current_user=Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    return await compat.compat_auth_update_password(
+        body=body, current_user=current_user, db=db
+    )
 
 
 @router.post("/auth/verify-email")
@@ -114,12 +115,21 @@ async def alias_files_list(module: Optional[str] = None, folder: Optional[str] =
 
 
 @router.post("/files/upload")
-async def alias_files_upload(file: UploadFile = File(...), module: Optional[str] = Form(None), folder: Optional[str] = Form(None), metadata: Optional[str] = Form(None)):
-    return await compat.compat_files_upload(file=file, module=module, folder=folder, metadata=metadata)
+async def alias_files_upload(
+    file: UploadFile = File(...),
+    module: Optional[str] = Form(None),
+    folder: Optional[str] = Form(None),
+    metadata: Optional[str] = Form(None),
+):
+    return await compat.compat_files_upload(
+        file=file, module=module, folder=folder, metadata=metadata
+    )
 
 
 @router.get("/files/search")
-async def alias_files_search(q: Optional[str] = None, module: Optional[str] = None, folder: Optional[str] = None):
+async def alias_files_search(
+    q: Optional[str] = None, module: Optional[str] = None, folder: Optional[str] = None
+):
     return await compat.compat_files_search(q=q, module=module, folder=folder)
 
 
@@ -144,7 +154,9 @@ async def alias_get_deal_allocations(deal_id: str):
 
 
 @router.post("/deals/{deal_id}/allocations")
-async def alias_post_deal_allocation(deal_id: str, payload: dict = Body(default_factory=dict)):
+async def alias_post_deal_allocation(
+    deal_id: str, payload: dict = Body(default_factory=dict)
+):
     return await compat.compat_post_deal_allocation(deal_id=deal_id, payload=payload)
 
 

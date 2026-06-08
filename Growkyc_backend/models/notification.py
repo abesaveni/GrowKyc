@@ -12,8 +12,9 @@ Imports: use `from models import Notification` (unchanged in all consumers).
 
 from datetime import datetime, timezone
 
-from sqlalchemy import Column, DateTime, ForeignKey, Index, Integer, String, Text
+from sqlalchemy import Column, DateTime
 from sqlalchemy import Enum as SQLEnum
+from sqlalchemy import ForeignKey, Index, Integer, String, Text
 from sqlalchemy.orm import relationship
 
 from core.enums import NotificationStatus, NotificationType

@@ -3,8 +3,9 @@ tasks/document_tasks.py
 =======================
 Async Celery tasks for document OCR processing and expiry monitoring.
 """
+
 import logging
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timedelta, timezone
 
 from core.celery_app import celery_app
 from database import SessionLocal
@@ -13,7 +14,9 @@ logger = logging.getLogger(__name__)
 
 
 @celery_app.task(bind=True, name="tasks.documents.process_document_intelligence")
-def process_document_intelligence_async(self, document_id: int, correlation_id: str = None):
+def process_document_intelligence_async(
+    self, document_id: int, correlation_id: str = None
+):
     """
     Multi-stage async pipeline for Document Intelligence.
     1. Extracts OCR
@@ -24,7 +27,9 @@ def process_document_intelligence_async(self, document_id: int, correlation_id: 
     db = SessionLocal()
     try:
         import uuid
+
         from services.document_intelligence_service import DocumentIntelligenceService
+
         service = DocumentIntelligenceService(db)
         corr_id = correlation_id or str(uuid.uuid4())
 
@@ -47,7 +52,7 @@ def process_document_intelligence_async(self, document_id: int, correlation_id: 
 @celery_app.task(name="tasks.documents.check_expiry")
 def check_document_expiry():
     """
-    Beat task — scans for documents expiring in the next 30 days and 
+    Beat task — scans for documents expiring in the next 30 days and
     generates compliance notifications.
     """
     logger.info("Running document expiry check...")
@@ -59,11 +64,15 @@ def check_document_expiry():
         now = datetime.now(timezone.utc)
         threshold = now + timedelta(days=30)
 
-        expiring = db.query(Document).filter(
-            Document.expiry_date != None,
-            Document.expiry_date <= threshold,
-            Document.expiry_date >= now,
-        ).all()
+        expiring = (
+            db.query(Document)
+            .filter(
+                Document.expiry_date != None,
+                Document.expiry_date <= threshold,
+                Document.expiry_date >= now,
+            )
+            .all()
+        )
 
         notif_service = NotificationService(db)
         for doc in expiring:
@@ -72,7 +81,11 @@ def check_document_expiry():
                 notif_service.create_notification(
                     user_id=doc.uploaded_by,
                     title=f"Document Expiring in {days_left} days",
-                    message=f"Document '{doc.file_name}' (ID: {doc.id}) expires on {doc.expiry_date.date()}. Please upload a renewed document.",
+                    message=(
+                        f"Document '{doc.file_name}' (ID: {doc.id}) expires "
+                        f"on {doc.expiry_date.date()}. Please upload a "
+                        "renewed document."
+                    ),
                     notif_type="SYSTEM_ALERT",
                 )
 

@@ -3,11 +3,12 @@ compliance/risk/risk_registry.py
 =================================
 Dynamic registry mapping country codes to their risk policies.
 """
+
 import logging
 from typing import Dict
 
-from compliance.risk.base_risk_policy import BaseRiskPolicy
 from compliance.risk.australia_risk_policy import AustraliaRiskPolicy
+from compliance.risk.base_risk_policy import BaseRiskPolicy
 from compliance.risk.india_risk_policy import IndiaRiskPolicy
 
 logger = logging.getLogger(__name__)
@@ -28,6 +29,8 @@ def get_risk_policy(country_code: str = None) -> BaseRiskPolicy:
     code = (country_code or DEFAULT_RISK_COUNTRY).upper()
     policy = _RISK_REGISTRY.get(code)
     if not policy:
-        logger.warning(f"No risk policy for '{code}', falling back to {DEFAULT_RISK_COUNTRY}")
+        logger.warning(
+            f"No risk policy for '{code}', falling back to {DEFAULT_RISK_COUNTRY}"
+        )
         policy = _RISK_REGISTRY[DEFAULT_RISK_COUNTRY]
     return policy

@@ -15,7 +15,9 @@ from contextvars import ContextVar
 from typing import Optional
 
 # Global context variables (thread-safe and async-safe via contextvars)
-current_tenant_id: ContextVar[Optional[int]] = ContextVar("current_tenant_id", default=None)
+current_tenant_id: ContextVar[Optional[int]] = ContextVar(
+    "current_tenant_id", default=None
+)
 correlation_id: ContextVar[Optional[str]] = ContextVar("correlation_id", default=None)
 
 

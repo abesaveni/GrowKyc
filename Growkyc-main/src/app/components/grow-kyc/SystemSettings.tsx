@@ -65,11 +65,28 @@ interface SystemSettingsProps {
   onBack: () => void;
 }
 
+const getPersonaConfig = (userId: string) => {
+  const configs: Record<string, { name: string; title: string; role: string }> = {
+    sarah_chen: { name: 'Sarah Chen', title: 'Head of Compliance', role: 'compliance_officer' },
+    emma_williams: { name: 'Emma Williams', title: 'Compliance Officer', role: 'compliance_officer' },
+    jessica_lee: { name: 'Jessica Lee', title: 'Senior Compliance Officer', role: 'compliance_officer' },
+    alex_rivera: { name: 'Alex Rivera', title: 'AML Analyst', role: 'analyst' },
+    david_thompson: { name: 'David Thompson', title: 'Internal Auditor', role: 'auditor' },
+    michael_roberts: { name: 'Michael Roberts', title: 'Managing Partner', role: 'partner' },
+    robert_kim: { name: 'Robert Kim', title: 'Risk Partner', role: 'partner' }
+  };
+  return configs[userId] || configs.sarah_chen;
+};
+
 export function SystemSettings({ onBack }: SystemSettingsProps) {
   const [activeTab, setActiveTab] = useState('roles');
   const [showApiKey, setShowApiKey] = useState(false);
   const [showRoadmap, setShowRoadmap] = useState(false);
   const [showFeatureModules, setShowFeatureModules] = useState(false);
+
+  const activePersona = localStorage.getItem('growkyc_selected_user') || 'sarah_chen';
+  const persona = getPersonaConfig(activePersona);
+  const isAuthorized = persona.title === 'Head of Compliance' || persona.role === 'partner';
 
   if (showRoadmap) {
     return <StrategicRoadmap onBack={() => setShowRoadmap(false)} />;
@@ -77,6 +94,37 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
 
   if (showFeatureModules) {
     return <FeatureModules onBack={() => setShowFeatureModules(false)} />;
+  }
+
+  if (!isAuthorized) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-6">
+        <Card className="max-w-md w-full shadow-2xl border-2 border-amber-200">
+          <CardHeader className="bg-amber-50 text-amber-900 pb-4">
+            <div className="flex items-center gap-3">
+              <Lock className="w-8 h-8 text-amber-600" />
+              <div>
+                <CardTitle className="text-lg font-bold">Access Restricted</CardTitle>
+                <CardDescription className="text-amber-800 font-medium">Administrative Privileges Required</CardDescription>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent className="pt-6 space-y-4">
+            <p className="text-sm text-gray-600 leading-relaxed">
+              This settings panel contains critical system integrations, rule configurations, and role access controls that are restricted.
+            </p>
+            <div className="p-3 bg-gray-100 rounded-lg text-xs font-semibold text-gray-700">
+              Authorized roles: Head of Compliance, Managing Partner, Risk Partner.
+            </div>
+            <div className="flex justify-end gap-3">
+              <Button variant="outline" onClick={onBack} className="w-full">
+                Return to Dashboard
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
   }
 
   return (

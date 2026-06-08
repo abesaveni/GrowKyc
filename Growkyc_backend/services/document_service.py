@@ -114,7 +114,8 @@ class DocumentService:
         write file, create DB record.
         """
         from core.enums import KYCStatus
-        from core.exceptions import AuthorizationError, DatabaseError, ValidationError
+        from core.exceptions import (AuthorizationError, DatabaseError,
+                                     ValidationError)
         from models import Client
 
         # Config
@@ -245,9 +246,10 @@ class DocumentService:
         """
         import hashlib
         from uuid import uuid4
+
         from core.enums import DocumentType
-        from services.storage.factory import get_storage_backend
         from services.audit_service import AuditService
+        from services.storage.factory import get_storage_backend
 
         storage = get_storage_backend()
         checksum = hashlib.sha256(content).hexdigest()
@@ -294,6 +296,7 @@ class DocumentService:
         if trigger_ocr:
             try:
                 from tasks.document_tasks import process_ocr_async
+
                 process_ocr_async.delay(doc.id)
             except Exception as e:
                 self.logger.warning(f"OCR dispatch failed: {e}")
@@ -301,13 +304,16 @@ class DocumentService:
         self.logger.info(f"[Enterprise] Document {doc.id} uploaded via {backend_name}")
         return doc
 
-    def generate_download_url(self, document_id: int, expiry_seconds: int = 3600) -> str:
+    def generate_download_url(
+        self, document_id: int, expiry_seconds: int = 3600
+    ) -> str:
         """Return a temporary signed URL for a document."""
         from services.storage.factory import get_storage_backend
 
         doc = self.db.query(Document).filter(Document.id == document_id).first()
         if not doc:
             from core.exceptions import ResourceNotFoundError
+
             raise ResourceNotFoundError("Document", document_id)
 
         # Fall back to storage_key or file_path
@@ -315,14 +321,18 @@ class DocumentService:
         storage = get_storage_backend()
         return storage.generate_signed_url(key, expiry_seconds)
 
-    def verify_document(self, document_id: int, reviewer_id: int, approved: bool, notes: str = None) -> Document:
+    def verify_document(
+        self, document_id: int, reviewer_id: int, approved: bool, notes: str = None
+    ) -> Document:
         """Mark a document as verified or rejected by a compliance officer."""
         from datetime import datetime, timezone
+
         from services.audit_service import AuditService
 
         doc = self.db.query(Document).filter(Document.id == document_id).first()
         if not doc:
             from core.exceptions import ResourceNotFoundError
+
             raise ResourceNotFoundError("Document", document_id)
 
         doc.verification_status = "verified" if approved else "failed"
@@ -351,12 +361,16 @@ class DocumentService:
 
     def get_expiring_documents(self, days: int = 30):
         """Return all documents expiring within the next N days."""
-        from datetime import datetime, timezone, timedelta
+        from datetime import datetime, timedelta, timezone
 
         now = datetime.now(timezone.utc)
         threshold = now + timedelta(days=days)
-        return self.db.query(Document).filter(
-            Document.expiry_date != None,
-            Document.expiry_date <= threshold,
-            Document.expiry_date >= now,
-        ).all()
+        return (
+            self.db.query(Document)
+            .filter(
+                Document.expiry_date != None,
+                Document.expiry_date <= threshold,
+                Document.expiry_date >= now,
+            )
+            .all()
+        )

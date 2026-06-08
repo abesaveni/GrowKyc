@@ -139,8 +139,18 @@ export function SubmissionTracking({ onBack }: { onBack?: () => void }) {
       } catch (err) {
         console.error('Error fetching submissions:', err);
         setFetchError(err instanceof Error ? err.message : String(err));
-        // Fallback to mock data so the UI is always beautifully displayed
-        setSubmissionsList(mockSubmissions);
+        // Fallback to localStorage
+        try {
+          const stored = localStorage.getItem('austrac_submissions');
+          if (stored) {
+            setSubmissionsList(JSON.parse(stored));
+          } else {
+            setSubmissionsList(mockSubmissions);
+            localStorage.setItem('austrac_submissions', JSON.stringify(mockSubmissions));
+          }
+        } catch (e) {
+          setSubmissionsList(mockSubmissions);
+        }
       } finally {
         if (isFirstLoad) setIsLoading(false);
       }
@@ -151,6 +161,45 @@ export function SubmissionTracking({ onBack }: { onBack?: () => void }) {
 
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    if (submissionsList && submissionsList.length > 0) {
+      try {
+        localStorage.setItem('austrac_submissions', JSON.stringify(submissionsList));
+        
+        // Also sync cases status to matching submissions
+        const storedCases = localStorage.getItem('austrac_cases');
+        if (storedCases) {
+          const parsedCases = JSON.parse(storedCases);
+          if (Array.isArray(parsedCases)) {
+            let updatedAny = false;
+            const updatedCases = parsedCases.map(c => {
+              const matchedSub = submissionsList.find(s => s.caseId === c.caseId);
+              if (matchedSub) {
+                let caseStatus = c.status;
+                if (matchedSub.status === 'acknowledged') caseStatus = 'acknowledged';
+                else if (matchedSub.status === 'submitted') caseStatus = 'submitted';
+                else if (matchedSub.status === 'failed') caseStatus = 'draft_in_progress';
+                else if (matchedSub.status === 'closed') caseStatus = 'closed';
+                else if (matchedSub.status === 'not_submitted') caseStatus = 'not_reportable';
+
+                if (caseStatus !== c.status) {
+                  updatedAny = true;
+                  return { ...c, status: caseStatus };
+                }
+              }
+              return c;
+            });
+            if (updatedAny) {
+              localStorage.setItem('austrac_cases', JSON.stringify(updatedCases));
+            }
+          }
+        }
+      } catch (e) {
+        console.error('Failed to sync submissionsList to localStorage', e);
+      }
+    }
+  }, [submissionsList]);
 
   const getStatusBadge = (status: SubmissionStatus) => {
     const configs = {

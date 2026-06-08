@@ -1,4 +1,4 @@
-﻿import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
@@ -189,7 +189,7 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
   const [filterStatus, setFilterStatus] = useState<string>('all');
   const [filterPriority, setFilterPriority] = useState<string>('all');
   const [filterModule, setFilterModule] = useState<string>('all');
-  const [sortBy, setSortBy] = useState<'dueDate' | 'priority' | 'status' | 'created'>('dueDate');
+  const [sortBy, setSortBy] = useState<'dueDate' | 'priority' | 'status' | 'createdAt'>('dueDate');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
   const [selectedTask, setSelectedTask] = useState<Task | null>(null);
   const [showNewTaskModal, setShowNewTaskModal] = useState(false);
@@ -245,7 +245,7 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
       let compareA: any = a[sortBy];
       let compareB: any = b[sortBy];
 
-      if (sortBy === 'dueDate' || sortBy === 'created') {
+      if (sortBy === 'dueDate' || sortBy === 'createdAt') {
         compareA = new Date(compareA).getTime();
         compareB = new Date(compareB).getTime();
       }
@@ -283,7 +283,7 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
     if (task) {
       toast.success(
         task.status === 'completed' ? 'Task reopened' : 'Task completed!',
-        { description: task.title }
+        task.title
       );
     }
   };
@@ -531,9 +531,9 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
                 Status
               </Button>
               <Button
-                variant={sortBy === 'created' ? 'default' : 'outline'}
+                variant={sortBy === 'createdAt' ? 'default' : 'outline'}
                 size="sm"
-                onClick={() => setSortBy('created')}
+                onClick={() => setSortBy('createdAt')}
               >
                 <Clock className="w-4 h-4 mr-1" />
                 Created

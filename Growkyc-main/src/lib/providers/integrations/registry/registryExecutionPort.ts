@@ -1,5 +1,5 @@
-import type { ProviderStatus } from '../../../models/providerStatus';
-import type { RegistryProviderRawResponse, RegistryProviderRequest } from '../adapters/registry/registryTypes';
+import type { ProviderStatus } from '../../models/providerStatus';
+import type { RegistryProviderRawResponse, RegistryProviderRequest } from '../../adapters/registry/registryTypes';
 
 export interface IRegistryExecutionPort {
   getStatus(): Promise<ProviderStatus>;

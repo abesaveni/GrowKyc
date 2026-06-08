@@ -5,35 +5,23 @@ Delegates all business logic to KYCService and DocumentService.
 
 import logging
 
-from fastapi import APIRouter, Depends, File, Form, HTTPException, Response, UploadFile, status
+from fastapi import (APIRouter, Depends, File, Form, HTTPException, Response,
+                     UploadFile, status)
 from sqlalchemy.orm import Session
 
-from core.exceptions import (
-    DatabaseError,
-    DuplicateResourceError,
-    InvalidStateError,
-    ResourceNotFoundError,
-    ValidationError,
-)
+from core.exceptions import (DatabaseError, DuplicateResourceError,
+                             InvalidStateError, ResourceNotFoundError,
+                             ValidationError)
 from database import get_db
-from dependencies import get_admin_or_agent_user, get_current_user, require_role
+from dependencies import (get_admin_or_agent_user, get_current_user,
+                          require_role)
 from models import User
-from schemas import (
-    AFSAInsolvencyData,
-    AFSAInsolvencySearchRequest,
-    AFSAInsolvencySearchResponse,
-    DocumentResponse,
-    DocumentUpload,
-    EquifaxCreditScoreData,
-    EquifaxCreditScoreRequest,
-    EquifaxCreditScoreResponse,
-    KYCApprove,
-    KYCDetailResponse,
-    KYCReject,
-    KYCResponse,
-    KYCSubmit,
-    PaginatedResponse,
-)
+from schemas import (AFSAInsolvencyData, AFSAInsolvencySearchRequest,
+                     AFSAInsolvencySearchResponse, DocumentResponse,
+                     DocumentUpload, EquifaxCreditScoreData,
+                     EquifaxCreditScoreRequest, EquifaxCreditScoreResponse,
+                     KYCApprove, KYCDetailResponse, KYCReject, KYCResponse,
+                     KYCSubmit, PaginatedResponse)
 from services.document_service import DocumentService
 from services.kyc_service import KYCService
 

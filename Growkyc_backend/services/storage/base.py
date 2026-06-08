@@ -3,16 +3,18 @@ services/storage/base.py
 ========================
 Abstract base class for storage backends.
 """
+
 import hashlib
 from abc import ABC, abstractmethod
-from typing import Optional
 
 
 class BaseStorageBackend(ABC):
     """Abstract storage backend interface."""
 
     @abstractmethod
-    def upload(self, key: str, content: bytes, content_type: str = "application/octet-stream") -> str:
+    def upload(
+        self, key: str, content: bytes, content_type: str = "application/octet-stream"
+    ) -> str:
         """Upload file bytes. Returns the storage key."""
 
     @abstractmethod

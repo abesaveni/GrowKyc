@@ -11,13 +11,18 @@ Reuses:
 """
 
 import logging
-from datetime import datetime, timedelta, timezone, time as _time, date as _date
+import os
+from datetime import date as _date
+from datetime import datetime
+from datetime import time as _time
+from datetime import timedelta, timezone
 
 from apscheduler.schedulers.background import BackgroundScheduler
 
-from core.enums import NotificationType
+from core.enums import CaseStatus, NotificationType
 from database import SessionLocal
-from models import Client, Document, Notification
+from models import Case, Client, Document, Notification
+from services.monitoring_service import MonitoringService
 from services.notification_service import NotificationService
 
 logger = logging.getLogger(__name__)
@@ -185,6 +190,169 @@ def _alert_sent_today(db, user_id: int, doc_id: int, today_start: datetime) -> b
 # ---- Scheduler lifecycle ----
 
 
+def run_scheduled_monitoring_checks() -> dict:
+    """
+    Run daily monitoring checks from the background scheduler.
+    Keeps the existing MonitoringService logic unchanged.
+    """
+    logger.info("Monitoring scheduler: job started")
+
+    db = SessionLocal()
+    try:
+        result = MonitoringService(db).run_monitoring_checks()
+        logger.info(f"Monitoring scheduler: job completed: {result}")
+        return result
+    except Exception as e:
+        logger.error(f"Monitoring scheduler: job failed: {str(e)}")
+        return {"error": str(e)}
+    finally:
+        db.close()
+
+
+def _monitoring_enabled() -> bool:
+    return os.getenv("MONITORING_ENABLED", "true").lower() in {
+        "1",
+        "true",
+        "yes",
+        "on",
+    }
+
+
+def _monitoring_hour() -> int:
+    try:
+        hour = int(os.getenv("MONITORING_HOUR", "2"))
+    except ValueError:
+        logger.warning("Invalid MONITORING_HOUR; defaulting to 2")
+        return 2
+
+    if hour < 0 or hour > 23:
+        logger.warning("MONITORING_HOUR out of range; defaulting to 2")
+        return 2
+
+    return hour
+
+
+def _periodic_review_enabled() -> bool:
+    return os.getenv("PERIODIC_REVIEW_ENABLED", "true").lower() in {
+        "1",
+        "true",
+        "yes",
+        "on",
+    }
+
+
+def _periodic_review_hour() -> int:
+    try:
+        hour = int(os.getenv("PERIODIC_REVIEW_HOUR", "3"))
+    except ValueError:
+        logger.warning("Invalid PERIODIC_REVIEW_HOUR; defaulting to 3")
+        return 3
+
+    if hour < 0 or hour > 23:
+        logger.warning("PERIODIC_REVIEW_HOUR out of range; defaulting to 3")
+        return 3
+
+    return hour
+
+
+def _risk_review_interval_months(risk_level) -> int:
+    risk_value = getattr(risk_level, "value", risk_level)
+    risk_value = str(risk_value or "").upper()
+    return {
+        "LOW": 36,
+        "MEDIUM": 24,
+        "HIGH": 12,
+        "CRITICAL": 6,
+    }.get(risk_value, 24)
+
+
+def _periodic_review_title(client: Client) -> str:
+    return f"Periodic Review - Client {client.id}"
+
+
+def _add_months(source: datetime, months: int) -> datetime:
+    year = source.year + ((source.month - 1 + months) // 12)
+    month = ((source.month - 1 + months) % 12) + 1
+    day = min(source.day, 28)
+    return source.replace(year=year, month=month, day=day)
+
+
+def _has_open_periodic_review_case(db, client_id: int) -> bool:
+    return (
+        db.query(Case)
+        .filter(
+            Case.client_id == client_id,
+            Case.status != CaseStatus.CLOSED,
+            Case.title.like("Periodic Review - Client%"),
+        )
+        .first()
+        is not None
+    )
+
+
+def create_periodic_review_cases() -> dict:
+    """
+    Create review cases for clients whose periodic review date is due.
+    Preserves existing monitoring, risk, EDD, and investigation workflows.
+    """
+    logger.info("Periodic review scheduler: job started")
+
+    db = SessionLocal()
+    created = 0
+    skipped_duplicates = 0
+
+    try:
+        now = datetime.now(timezone.utc)
+        due_clients = (
+            db.query(Client)
+            .filter(Client.review_date.isnot(None), Client.review_date <= now)
+            .all()
+        )
+
+        for client in due_clients:
+            if _has_open_periodic_review_case(db, client.id):
+                skipped_duplicates += 1
+                continue
+
+            interval_months = _risk_review_interval_months(client.risk_level)
+            case = Case(
+                client_id=client.id,
+                tenant_id=client.tenant_id,
+                title=_periodic_review_title(client),
+                description=(
+                    "Periodic review due for "
+                    f"{getattr(client.risk_level, 'value', client.risk_level)} "
+                    f"risk client. Review interval: {interval_months} months."
+                ),
+                status=CaseStatus.OPEN,
+                created_at=now,
+            )
+            db.add(case)
+            client.review_date = _add_months(now, interval_months)
+            created += 1
+            logger.info(
+                "Periodic review case created for client_id=%s "
+                "next_review_date=%s",
+                client.id,
+                client.review_date,
+            )
+
+        db.commit()
+        result = {
+            "created": created,
+            "duplicates_skipped": skipped_duplicates,
+            "due_clients": len(due_clients),
+        }
+        logger.info(f"Periodic review scheduler: job completed: {result}")
+        return result
+    except Exception as e:
+        db.rollback()
+        logger.error(f"Periodic review scheduler: job failed: {str(e)}")
+        return {"created": 0, "duplicates_skipped": skipped_duplicates, "error": str(e)}
+    finally:
+        db.close()
+
+
 def start_expiry_scheduler():
     """
     Start the APScheduler BackgroundScheduler.
@@ -193,6 +361,10 @@ def start_expiry_scheduler():
     """
     global _scheduler
     try:
+        if _scheduler and _scheduler.running:
+            logger.info("Expiry scheduler already running")
+            return
+
         _scheduler = BackgroundScheduler(timezone="UTC")
         _scheduler.add_job(
             scan_expiring_documents,
@@ -203,6 +375,44 @@ def start_expiry_scheduler():
             replace_existing=True,
             misfire_grace_time=3600,  # tolerate up to 1h delay
         )
+        if _monitoring_enabled():
+            monitoring_hour = _monitoring_hour()
+            _scheduler.add_job(
+                run_scheduled_monitoring_checks,
+                trigger="cron",
+                hour=monitoring_hour,
+                minute=0,
+                id="daily_monitoring_checks",
+                replace_existing=True,
+                misfire_grace_time=3600,
+            )
+            logger.info(
+                "Monitoring scheduler registered - "
+                f"daily at {monitoring_hour:02d}:00 UTC"
+            )
+        else:
+            logger.info("Monitoring scheduler disabled by MONITORING_ENABLED")
+
+        if _periodic_review_enabled():
+            periodic_review_hour = _periodic_review_hour()
+            _scheduler.add_job(
+                create_periodic_review_cases,
+                trigger="cron",
+                hour=periodic_review_hour,
+                minute=0,
+                id="periodic_review_cases",
+                replace_existing=True,
+                misfire_grace_time=3600,
+            )
+            logger.info(
+                "Periodic review scheduler registered - "
+                f"daily at {periodic_review_hour:02d}:00 UTC"
+            )
+        else:
+            logger.info(
+                "Periodic review scheduler disabled by PERIODIC_REVIEW_ENABLED"
+            )
+
         _scheduler.start()
         logger.info("Expiry scheduler started — daily at 02:00 UTC")
     except Exception as e:

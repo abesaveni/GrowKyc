@@ -3,7 +3,8 @@ compliance/policies/uk_policy.py
 ================================
 FCA-compliant UK AML/KYC policy skeleton.
 """
-from typing import Dict, List, Any
+
+from typing import Any, Dict, List
 
 from compliance.document_registry import NormalizedDocumentType
 from compliance.policies.base_policy import BaseCountryPolicy
@@ -25,7 +26,10 @@ class UKPolicy(BaseCountryPolicy):
         return "FCA"
 
     def get_required_document_types(self, client_type: str = "individual") -> List[str]:
-        return [NormalizedDocumentType.PASSPORT.value, NormalizedDocumentType.NATIONAL_ID.value]
+        return [
+            NormalizedDocumentType.PASSPORT.value,
+            NormalizedDocumentType.NATIONAL_ID.value,
+        ]
 
     def calculate_base_risk(self, kyc_data: Dict[str, Any]) -> float:
         return 20.0

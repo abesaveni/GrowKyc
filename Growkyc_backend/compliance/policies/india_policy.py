@@ -4,7 +4,8 @@ compliance/policies/india_policy.py
 RBI-compliant Indian AML/KYC policy.
 Maintains backward compatibility for legacy workflows.
 """
-from typing import Dict, List, Any
+
+from typing import Any, Dict, List
 
 from compliance.document_registry import NormalizedDocumentType
 from compliance.policies.base_policy import BaseCountryPolicy

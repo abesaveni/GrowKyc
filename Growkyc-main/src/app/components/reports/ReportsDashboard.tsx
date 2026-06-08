@@ -30,9 +30,7 @@ export function ReportsDashboard() {
     await new Promise(resolve => setTimeout(resolve, 2000));
     
     setIsExporting(false);
-    toast.success(`${reportType} exported successfully`, {
-      description: 'Downloaded to your computer'
-    });
+    toast.success(`${reportType} exported successfully`, 'Downloaded to your computer');
   };
 
   const handleRefresh = () => {

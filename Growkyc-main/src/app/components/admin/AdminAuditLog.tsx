@@ -10,7 +10,13 @@ import { Shield, Search, Download, Eye, AlertCircle, CheckCircle, Clock, Calenda
 import { format } from 'date-fns';
 import { AuditEvent, ensureOperationalSeedData, listAuditEvents } from '../../lib/operationalBotEngine';
 
-export function AdminAuditLog() {
+export interface AdminAuditLogProps {
+  onNavigateToDashboard?: () => void;
+  onNavigateToSettings?: () => void;
+  onHomeClick?: () => void;
+}
+
+export function AdminAuditLog({ onNavigateToDashboard, onNavigateToSettings, onHomeClick }: AdminAuditLogProps) {
   const [events, setEvents] = useState<AuditEvent[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [debouncedSearchQuery, setDebouncedSearchQuery] = useState('');
@@ -165,14 +171,13 @@ export function AdminAuditLog() {
   };
 
   const breadcrumbItems = [
-    { label: 'Dashboard', href: '#' },
-    { label: 'Admin', href: '#' },
-    { label: 'Audit Log' },
+    { label: 'Dashboard', onClick: onNavigateToDashboard },
+    { label: 'Audit Log', active: true },
   ];
 
   return (
     <div className="space-y-6">
-      <Breadcrumbs items={breadcrumbItems} />
+      <Breadcrumbs items={breadcrumbItems} showHomeIcon={false} />
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <Card className="hover:shadow-md transition-shadow">

@@ -16,8 +16,8 @@ Providers: Refinitiv World-Check, ComplyAdvantage, ACRIS, local lists, etc.
 
 from datetime import datetime, timezone
 
-from sqlalchemy import Column, DateTime, Float, ForeignKey, Index, Integer, String, Text
-from sqlalchemy import JSON
+from sqlalchemy import (JSON, Column, DateTime, Float, ForeignKey, Index,
+                        Integer, String, Text)
 from sqlalchemy.orm import relationship
 
 from models.base import Base
@@ -61,43 +61,52 @@ class ScreeningRecord(Base):
 
     # ---- Provider metadata ----
     provider_name = Column(
-        String(255), nullable=False,
+        String(255),
+        nullable=False,
         comment="e.g. ComplyAdvantage, Refinitiv, AUSTRAC, local_mock",
     )
     provider_reference = Column(
-        String(255), nullable=True,
+        String(255),
+        nullable=True,
         comment="Provider's internal case/reference ID for this check",
     )
     provider_version = Column(String(50), nullable=True)
 
     # ---- Results ----
     screening_status = Column(
-        String(50), nullable=False, default="pending",
+        String(50),
+        nullable=False,
+        default="pending",
         index=True,
         comment="pending | clear | match_found | review_required | error",
     )
     confidence_score = Column(
-        Float, nullable=True,
+        Float,
+        nullable=True,
         comment="Provider-reported match confidence (0.0 – 1.0)",
     )
     match_summary = Column(
-        Text, nullable=True,
+        Text,
+        nullable=True,
         comment="Human-readable match summary from the provider",
     )
 
     # ---- Full provider payload (native JSON — cross-DB via SQLAlchemy JSON type) ----
     raw_response = Column(
-        JSON, nullable=True,
+        JSON,
+        nullable=True,
         comment="Complete raw JSON response from the screening provider",
     )
     matched_entities = Column(
-        JSON, nullable=True,
+        JSON,
+        nullable=True,
         comment="Structured list of matched entity objects",
     )
 
     # ---- Trigger context ----
     triggered_by = Column(
-        String(100), nullable=True,
+        String(100),
+        nullable=True,
         comment="onboarding | periodic_review | manual | event_trigger",
     )
     triggered_by_user_id = Column(
@@ -134,7 +143,9 @@ class ScreeningRecord(Base):
     __table_args__ = (
         Index("idx_screening_records_client_id", "client_id"),
         Index("idx_screening_records_tenant_id", "tenant_id"),
-        Index("idx_screening_records_type_status", "screening_type", "screening_status"),
+        Index(
+            "idx_screening_records_type_status", "screening_type", "screening_status"
+        ),
         Index("idx_screening_records_timestamp", "screening_timestamp"),
     )
 

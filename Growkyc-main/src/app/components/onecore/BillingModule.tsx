@@ -90,7 +90,17 @@ export function BillingModule({ role }: BillingModuleProps) {
     }
   ];
 
-  const mockSubscriptions = [
+  const mockSubscriptions: Array<{
+    id: string;
+    client: string;
+    plan: string;
+    amount: number;
+    frequency: string;
+    status: string;
+    nextBilling: string | null;
+    startDate: string;
+    endDate?: string;
+  }> = [
     {
       id: 'SUB-001',
       client: 'TechCorp Solutions',

@@ -11,8 +11,9 @@ import uuid
 from fastapi import Request
 from starlette.middleware.base import BaseHTTPMiddleware
 
-from core.tenant_context import set_correlation_id, set_tenant_id, clear_tenant_id
 from auth.jwt_handler import decode_token_unsafe
+from core.tenant_context import (clear_tenant_id, set_correlation_id,
+                                 set_tenant_id)
 
 logger = logging.getLogger(__name__)
 
@@ -26,7 +27,7 @@ class RequestIDMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next):
         req_id = request.headers.get("x-request-id") or uuid.uuid4().hex
         set_correlation_id(req_id)
-        
+
         response = await call_next(request)
         response.headers["X-Request-ID"] = req_id
         return response
@@ -42,7 +43,7 @@ class TenantContextMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next):
         # 1. Clear any leaked state from thread pool reuse
         clear_tenant_id()
-        
+
         # 2. Extract Authorization header
         auth_header = request.headers.get("authorization", "")
         if auth_header.startswith("Bearer "):
@@ -82,7 +83,7 @@ class LoggingMiddleware(BaseHTTPMiddleware):
 
         elapsed_time = time.time() - start_time
         status_code = response.status_code
-        
+
         log_message = (
             f"{request.method} {request.url.path} | "
             f"Status: {status_code} | "

@@ -11,8 +11,9 @@ Imports: use `from models import Report` (unchanged in all consumers).
 
 from datetime import datetime, timezone
 
-from sqlalchemy import Column, DateTime, ForeignKey, Index, Integer, Text
+from sqlalchemy import Column, DateTime
 from sqlalchemy import Enum as SQLEnum
+from sqlalchemy import ForeignKey, Index, Integer, Text
 from sqlalchemy.orm import relationship
 
 from core.enums import ReportType
@@ -62,6 +63,5 @@ class Report(Base):
 
     def __repr__(self) -> str:
         return (
-            f"<Report(id={self.id}, client_id={self.client_id}, "
-            f"type={self.type})>"
+            f"<Report(id={self.id}, client_id={self.client_id}, " f"type={self.type})>"
         )

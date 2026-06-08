@@ -16,7 +16,8 @@ import {
   Download,
   Eye,
   Trash2,
-  Check
+  Check,
+  XCircle
 } from 'lucide-react';
 
 type WizardStep = 'contact' | 'entity' | 'ownership' | 'verify' | 'uploads' | 'declarations';

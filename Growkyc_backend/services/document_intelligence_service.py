@@ -4,23 +4,15 @@ services/document_intelligence_service.py
 Orchestrates intelligent document processing, fraud checks, and liveness.
 Leaves the base Document intact, populating the new analytical tables.
 """
-import hashlib
+
 import logging
 import uuid
-from datetime import datetime, timezone
-from typing import Dict, Any, Optional
 
 from sqlalchemy.orm import Session
 
-from core.exceptions import ResourceNotFoundError, InvalidStateError
+from core.exceptions import ResourceNotFoundError
 from core.tenant_context import get_tenant_id
-from models import (
-    Document,
-    DocumentExtraction,
-    DocumentFraudCheck,
-    DocumentLiveness,
-    Client,
-)
+from models import Client, Document, DocumentExtraction, DocumentFraudCheck
 from services.audit_service import AuditService
 from services.ocr import get_ocr_provider
 from services.storage.factory import get_storage_backend
@@ -36,23 +28,27 @@ class DocumentIntelligenceService:
         self.logger = logger
         self.tenant_id = get_tenant_id()
 
-    def extract_and_parse(self, document_id: int, correlation_id: str = None) -> DocumentExtraction:
+    def extract_and_parse(
+        self, document_id: int, correlation_id: str = None
+    ) -> DocumentExtraction:
         """
         Runs OCR provider and appends a DocumentExtraction record.
         """
         doc = self._get_document(document_id)
-        
+
         provider = get_ocr_provider()
-        
+
         # Read the file from storage
         storage = get_storage_backend()
-        # Mock reading actual bytes for this example since BaseStorageBackend abstract doesn't define 'read'
-        # In a real app we'd add read() to storage backend or use presigned URLs for the provider.
+        # Mock reading bytes since BaseStorageBackend has no read method.
+        # Real providers should use a read method or presigned URL.
         content = b"mock file bytes"
-        
+
         # Perform extraction
-        result = provider.extract(content, document_type=str(doc.type.value) if doc.type else None)
-        
+        result = provider.extract(
+            content, document_type=str(doc.type.value) if doc.type else None
+        )
+
         extraction = DocumentExtraction(
             tenant_id=self.tenant_id,
             document_id=doc.id,
@@ -66,7 +62,7 @@ class DocumentIntelligenceService:
             mrz_data=result.mrz_data,
         )
         self.db.add(extraction)
-        
+
         # Update base document status for backward compatibility
         doc.ocr_status = result.status
         if result.status == "completed":
@@ -85,19 +81,25 @@ class DocumentIntelligenceService:
 
         return extraction
 
-    def analyze_fraud(self, document_id: int, correlation_id: str = None) -> DocumentFraudCheck:
+    def analyze_fraud(
+        self, document_id: int, correlation_id: str = None
+    ) -> DocumentFraudCheck:
         """
         Analyzes for duplicates, blurry images, and tampering.
         """
         doc = self._get_document(document_id)
-        
+
         # Simulated perceptual hashing and duplicate check
         mock_phash = "a1b2c3d4e5f67890"
-        
-        duplicate = self.db.query(DocumentFraudCheck).filter(
-            DocumentFraudCheck.perceptual_hash == mock_phash,
-            DocumentFraudCheck.document_id != doc.id
-        ).first()
+
+        duplicate = (
+            self.db.query(DocumentFraudCheck)
+            .filter(
+                DocumentFraudCheck.perceptual_hash == mock_phash,
+                DocumentFraudCheck.document_id != doc.id,
+            )
+            .first()
+        )
 
         fraud = DocumentFraudCheck(
             tenant_id=self.tenant_id,
@@ -108,7 +110,7 @@ class DocumentIntelligenceService:
             perceptual_hash=mock_phash,
             is_duplicate=1 if duplicate else 0,
             duplicate_of_document_id=duplicate.document_id if duplicate else None,
-            blurry_score=5.2, # 0-100 scale, low is better
+            blurry_score=5.2,  # 0-100 scale, low is better
             tamper_score=1.1,
             fraud_indicators=["duplicate_found"] if duplicate else [],
         )
@@ -125,7 +127,10 @@ class DocumentIntelligenceService:
             action="DOCUMENT_FRAUD_CHECK",
             entity_type="document",
             entity_id=doc.id,
-            after_data={"is_duplicate": fraud.is_duplicate, "tamper_score": fraud.tamper_score},
+            after_data={
+                "is_duplicate": fraud.is_duplicate,
+                "tamper_score": fraud.tamper_score,
+            },
         )
 
         # Trigger EDD Escaltion if fraud detected
@@ -138,24 +143,27 @@ class DocumentIntelligenceService:
         """Increase Risk Score and Initiate EDD Workflow if fraud is detected."""
         if not doc.client_id:
             return
-            
+
         client = self.db.query(Client).filter(Client.id == doc.client_id).first()
         if client:
             from core.enums import RiskLevel
+
             client.risk_score = min(client.risk_score + 40.0, 100.0)
             client.risk_level = RiskLevel.HIGH
-            
+
             # Start EDD
             try:
                 from services.edd_service import EDDService
+
                 EDDService(self.db).initiate_edd(
                     client_id=client.id,
-                    trigger_reason="manual", # Overloaded as system fraud trigger for now
+                    # Overloaded as system fraud trigger for now.
+                    trigger_reason="manual",
                     initial_risk_score=client.risk_score,
                 )
             except Exception as e:
                 self.logger.error(f"Failed to auto-trigger EDD on fraud: {e}")
-                
+
             self.db.commit()
 
     def _get_document(self, document_id: int) -> Document:

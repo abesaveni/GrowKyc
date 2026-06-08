@@ -92,9 +92,11 @@ def verify_token(token: str) -> Optional[Dict[str, Any]]:
         if user_id is None:
             logger.warning("Token missing 'sub' claim")
             return None
-            
+
         if tenant_id is None:
-            logger.warning("Token missing 'tenant_id' claim - rejecting cross-tenant token")
+            logger.warning(
+                "Token missing 'tenant_id' claim - rejecting cross-tenant token"
+            )
             return None
 
         logger.debug(f"Token verified for user: {user_id} in tenant: {tenant_id}")

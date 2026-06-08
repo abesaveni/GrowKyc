@@ -18,11 +18,41 @@ import {
 
 // Import all modules
 import { RiskAssessmentMaster } from './accounting-modules/RiskAssessmentMaster';
-import { PersonnelPolicyMaster } from './accounting-modules/PersonnelPolicyMaster';
-import { ClientPolicyMaster } from './accounting-modules/ClientPolicyMaster';
-import { MaintainProgramMaster } from './accounting-modules/MaintainProgramMaster';
-import { ProcessesAndForms } from './accounting-modules/ProcessesAndForms';
-import { DocumentApprovalLayer } from './accounting-modules/DocumentApprovalLayer';
+
+// Mock components for modules that do not exist
+const PersonnelPolicyMaster = ({ onComplete }: { onComplete: (data: any) => void }) => (
+  <div className="bg-white border border-gray-200 rounded-lg p-6">
+    <h3 className="text-xl font-bold mb-4">Personnel Policy Master</h3>
+    <Button onClick={() => onComplete(null)}>Complete Module</Button>
+  </div>
+);
+
+const ClientPolicyMaster = ({ onComplete }: { onComplete: (data: any) => void }) => (
+  <div className="bg-white border border-gray-200 rounded-lg p-6">
+    <h3 className="text-xl font-bold mb-4">Client Policy Master</h3>
+    <Button onClick={() => onComplete(null)}>Complete Module</Button>
+  </div>
+);
+
+const MaintainProgramMaster = ({ onComplete }: { onComplete: (data: any) => void }) => (
+  <div className="bg-white border border-gray-200 rounded-lg p-6">
+    <h3 className="text-xl font-bold mb-4">Maintain Program Master</h3>
+    <Button onClick={() => onComplete(null)}>Complete Module</Button>
+  </div>
+);
+
+const ProcessesAndForms = () => (
+  <div className="bg-white border border-gray-200 rounded-lg p-6">
+    <h3 className="text-xl font-bold mb-4">Processes & Forms</h3>
+  </div>
+);
+
+const DocumentApprovalLayer = ({ programStatus, onApprove }: { programStatus: any; onApprove: () => void }) => (
+  <div className="bg-white border border-gray-200 rounded-lg p-6">
+    <h3 className="text-xl font-bold mb-4">Document & Approve Layer</h3>
+    <Button onClick={onApprove}>Approve Program</Button>
+  </div>
+);
 
 type MasterView = 
   | 'navigation'
@@ -306,7 +336,7 @@ export function AccountingAMLMaster({ onBack }: AccountingAMLMasterProps) {
 
         {currentView === 'personnel_policy' && (
           <PersonnelPolicyMaster 
-            onComplete={(data) => {
+            onComplete={(data: any) => {
               setProgramStatus(prev => ({ ...prev, personnelPolicyComplete: true }));
               setCurrentView('navigation');
             }}
@@ -315,7 +345,7 @@ export function AccountingAMLMaster({ onBack }: AccountingAMLMasterProps) {
 
         {currentView === 'client_policy' && (
           <ClientPolicyMaster 
-            onComplete={(data) => {
+            onComplete={(data: any) => {
               setProgramStatus(prev => ({ ...prev, clientPolicyComplete: true }));
               setCurrentView('navigation');
             }}
@@ -324,7 +354,7 @@ export function AccountingAMLMaster({ onBack }: AccountingAMLMasterProps) {
 
         {currentView === 'maintain_program' && (
           <MaintainProgramMaster 
-            onComplete={(data) => {
+            onComplete={(data: any) => {
               setProgramStatus(prev => ({ ...prev, maintainProgramComplete: true }));
               setCurrentView('navigation');
             }}

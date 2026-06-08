@@ -20,7 +20,8 @@ import {
   Edit,
   GitBranch,
   Zap,
-  Map
+  Map,
+  Clock
 } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
 import { Progress } from '../ui/progress';
@@ -521,23 +522,23 @@ export function RegulatoryEngine({ onBack }: RegulatoryEngineProps) {
                               {rule.logic.actions.map((action, idx) => (
                                 <div key={idx} className="flex items-center gap-2 text-sm">
                                   <Badge className="bg-green-600">{action.type}</Badge>
-                                  {action.subtype && (
-                                    <span className="text-gray-700">→ {action.subtype}</span>
+                                  {(action as any).subtype && (
+                                    <span className="text-gray-700">→ {(action as any).subtype}</span>
                                   )}
-                                  {action.frequency && (
-                                    <span className="text-gray-700">→ {action.frequency}</span>
+                                  {(action as any).frequency && (
+                                    <span className="text-gray-700">→ {(action as any).frequency}</span>
                                   )}
-                                  {action.role && (
-                                    <span className="text-gray-700">→ {action.role}</span>
+                                  {(action as any).role && (
+                                    <span className="text-gray-700">→ {(action as any).role}</span>
                                   )}
-                                  {action.severity && (
-                                    <Badge className="bg-red-500">{action.severity}</Badge>
+                                  {(action as any).severity && (
+                                    <Badge className="bg-red-500">{(action as any).severity}</Badge>
                                   )}
-                                  {action.recipient && (
-                                    <span className="text-gray-700">→ {action.recipient}</span>
+                                  {(action as any).recipient && (
+                                    <span className="text-gray-700">→ {(action as any).recipient}</span>
                                   )}
-                                  {action.list && (
-                                    <span className="text-gray-700">→ {action.list}</span>
+                                  {(action as any).list && (
+                                    <span className="text-gray-700">→ {(action as any).list}</span>
                                   )}
                                 </div>
                               ))}

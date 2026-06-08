@@ -4,8 +4,9 @@ compliance/risk/base_risk_policy.py
 Abstract contract for country-specific AML risk policies.
 Keeps core RiskEngine country-agnostic.
 """
+
 from abc import ABC, abstractmethod
-from typing import Any, Dict
+from typing import Dict
 
 
 class BaseRiskPolicy(ABC):

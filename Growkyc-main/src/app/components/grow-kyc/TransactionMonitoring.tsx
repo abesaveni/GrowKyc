@@ -23,10 +23,13 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import { Progress } from '../ui/progress';
 import { toast } from '../../lib/toast';
 import { Breadcrumbs } from './Breadcrumbs';
+import { ClientsDB } from '../kyc/ClientsDatabase';
 
 interface TransactionMonitoringProps {
   onBack: () => void;
   onOpenReferral?: (alertId: string) => void;
+  /** Compliance Officer: alerts derived from live client monitoring data. */
+  complianceOfficerMode?: boolean;
 }
 
 type AlertStatus = 'new' | 'investigating' | 'escalated' | 'closed';
@@ -112,8 +115,54 @@ const INITIAL_ALERTS: TransactionAlert[] = [
   }
 ];
 
-export function TransactionMonitoring({ onBack, onOpenReferral }: TransactionMonitoringProps) {
-  const [alerts, setAlerts] = useState<TransactionAlert[]>(INITIAL_ALERTS);
+function buildAlertsFromClients(): TransactionAlert[] {
+  const clients = ClientsDB.getClients();
+  const rows: TransactionAlert[] = [];
+  clients.forEach((c, idx) => {
+    const active = c.monitoringData?.activeAlerts || 0;
+    if (active === 0 && c.amlData?.riskRating !== 'High' && c.amlData?.riskRating !== 'Critical') return;
+
+    const severity: AlertSeverity =
+      c.amlData?.riskRating === 'Critical'
+        ? 'critical'
+        : c.amlData?.riskRating === 'High'
+          ? 'high'
+          : 'medium';
+
+    let pattern = 'Monitoring Alert';
+    if (c.monitoringData?.ownershipChanges) pattern = 'Ownership Changes';
+    else if (c.amlData?.sanctionsMatches > 0) pattern = 'Sanctions Changes';
+    else if (c.amlData?.pepStatus && c.amlData.pepStatus !== 'Not PEP') pattern = 'PEP Changes';
+    else if (c.amlData?.adverseMediaHits > 0) pattern = 'Adverse Media';
+    else if (c.monitoringData?.nameChanges) pattern = 'Director Changes';
+
+    rows.push({
+      id: `alert-co-${c.id}-${idx}`,
+      client: c.name,
+      clientId: c.id,
+      transactionId: `TXN-${10000 + idx}`,
+      riskScore: Math.min(99, c.riskScores?.overall || 50),
+      pattern,
+      details: `${active || 1} active monitoring signal(s) for ${c.name}.`,
+      transactions: active || 1,
+      totalAmount: c.financialData?.highRiskTransactions ? c.financialData.highRiskTransactions * 10000 : 25000,
+      timeframe: '24 hours',
+      status: c.status === 'Suspended' ? 'escalated' : 'new',
+      severity,
+      flaggedAt: new Date().toISOString(),
+      autoAction: c.status === 'Suspended' ? 'Account under review hold' : 'None',
+      pepStatus: c.amlData?.pepStatus !== 'Not PEP' ? 'match' : 'clear',
+      sanctionsStatus: c.amlData?.sanctionsMatches > 0 ? 'match' : 'clear',
+      kycStatus: c.quickStatus?.identity === 'Verified' ? 'verified' : 'pending',
+    });
+  });
+  return rows;
+}
+
+export function TransactionMonitoring({ onBack, onOpenReferral, complianceOfficerMode = false }: TransactionMonitoringProps) {
+  const [alerts, setAlerts] = useState<TransactionAlert[]>(
+    () => (complianceOfficerMode ? buildAlertsFromClients() : [])
+  );
   const [selectedAlert, setSelectedAlert] = useState<TransactionAlert | null>(null);
   const [investigationTab, setInvestigationTab] = useState<'overview' | 'kyc' | 'screening' | 'timeline' | 'notes'>('overview');
   const [notesByAlert, setNotesByAlert] = useState<Record<string, string>>({});
@@ -128,15 +177,22 @@ export function TransactionMonitoring({ onBack, onOpenReferral }: TransactionMon
   const [error, setError] = useState<string | null>(null);
   const pageSize = 5;
 
-  const heatmapData = [
-    { date: '2024-02-24', riskScore: 25, flagged: 2 },
-    { date: '2024-02-25', riskScore: 18, flagged: 1 },
-    { date: '2024-02-26', riskScore: 42, flagged: 3 },
-    { date: '2024-02-27', riskScore: 68, flagged: 5 },
-    { date: '2024-02-28', riskScore: 85, flagged: 8 },
-    { date: '2024-02-29', riskScore: 92, flagged: 12 },
-    { date: '2024-03-01', riskScore: 78, flagged: 9 },
-  ];
+  const heatmapData = useMemo(() => {
+    if (!complianceOfficerMode) return [];
+    const last7 = Array.from({ length: 7 }, (_, i) => {
+      const d = new Date();
+      d.setDate(d.getDate() - (6 - i));
+      return d.toISOString().slice(0, 10);
+    });
+    const avgRisk = alerts.length > 0
+      ? Math.round(alerts.reduce((s, a) => s + a.riskScore, 0) / alerts.length)
+      : 0;
+    return last7.map((date) => ({
+      date,
+      riskScore: avgRisk,
+      flagged: alerts.filter((a) => a.flaggedAt.startsWith(date)).length,
+    }));
+  }, [complianceOfficerMode, alerts]);
 
   const sortedFilteredAlerts = useMemo(() => {
     const filtered = alerts.filter((alert) => {
@@ -168,26 +224,40 @@ export function TransactionMonitoring({ onBack, onOpenReferral }: TransactionMon
   useEffect(() => {
     if (!liveRefresh) return;
     const timer = window.setInterval(() => {
-      setAlerts((prev) =>
-        prev.map((alert) =>
-          alert.status === 'new'
-            ? { ...alert, riskScore: Math.min(99, alert.riskScore + 1) }
-            : alert
-        )
-      );
+      if (complianceOfficerMode) {
+        setAlerts(buildAlertsFromClients());
+      } else {
+        setAlerts((prev) =>
+          prev.map((alert) =>
+            alert.status === 'new'
+              ? { ...alert, riskScore: Math.min(99, alert.riskScore + 1) }
+              : alert
+          )
+        );
+      }
     }, 30000);
     return () => window.clearInterval(timer);
-  }, [liveRefresh]);
+  }, [liveRefresh, complianceOfficerMode]);
+
+  useEffect(() => {
+    if (!complianceOfficerMode) return;
+    setAlerts(buildAlertsFromClients());
+    return ClientsDB.subscribe(() => setAlerts(buildAlertsFromClients()));
+  }, [complianceOfficerMode]);
 
   const refreshAlerts = () => {
     setIsRefreshing(true);
     setError(null);
     window.setTimeout(() => {
-      setAlerts((prev) =>
-        prev.map((alert, idx) =>
-          idx === 0 ? { ...alert, flaggedAt: new Date().toISOString() } : alert
-        )
-      );
+      if (complianceOfficerMode) {
+        setAlerts(buildAlertsFromClients());
+      } else {
+        setAlerts((prev) =>
+          prev.map((alert, idx) =>
+            idx === 0 ? { ...alert, flaggedAt: new Date().toISOString() } : alert
+          )
+        );
+      }
       setIsRefreshing(false);
       toast.success('Alert queue refreshed');
     }, 700);
@@ -236,7 +306,10 @@ export function TransactionMonitoring({ onBack, onOpenReferral }: TransactionMon
       </div>
 
       <div className="max-w-7xl mx-auto px-6 py-8">
-        <Breadcrumbs />
+        <Breadcrumbs items={[
+          { label: 'Compliance Office', onClick: onBack },
+          { label: 'Transaction Monitoring', active: true }
+        ]} />
         <Tabs defaultValue="alerts" className="space-y-6">
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="alerts">Daily Alert Queue</TabsTrigger>

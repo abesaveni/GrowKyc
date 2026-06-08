@@ -993,8 +993,8 @@ export function ExecutiveOverview({ onSelectRole, onViewArchitecture }: Executiv
                 Gain instant, dynamic access to role-tailored workflows, dynamic risk policies, and custom compliance features.
               </CardDescription>
             </CardHeader>
-            <CardContent className="p-8 bg-white">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <CardContent className="p-8 bg-white space-y-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 
                 {/* 1. Head of Compliance */}
                 <Card 
@@ -1071,106 +1071,32 @@ export function ExecutiveOverview({ onSelectRole, onViewArchitecture }: Executiv
                   </CardContent>
                 </Card>
 
-                {/* 4. AML Analyst */}
-                <Card 
-                  className="bg-gradient-to-br from-green-50/70 to-emerald-50/40 border-green-200/80 hover:border-green-400 hover:shadow-2xl hover:scale-[1.03] transition-all duration-300 cursor-pointer flex flex-col justify-between"
-                  onClick={() => onSelectRole('analyst', 'alex_rivera')}
-                >
-                  <CardContent className="p-6 text-center flex-1 flex flex-col justify-between">
-                    <div>
-                      <div className="w-14 h-14 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 border border-green-200 shadow-sm">
-                        <BarChart3 className="w-7 h-7" />
-                      </div>
-                      <h3 className="text-lg font-bold text-gray-900 mb-2">AML Analyst</h3>
-                      <p className="text-xs text-gray-600 mb-4 leading-relaxed">
-                        Real-time transaction alert queues, screening matches (PEP/Sanctions), and AML pattern analysis.
-                      </p>
-                    </div>
-                    <Button 
-                      variant="outline" 
-                      className="w-full border-green-300 text-green-700 hover:bg-green-100 font-semibold text-xs"
-                    >
-                      Access Analyst Portal
-                      <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
-                    </Button>
-                  </CardContent>
-                </Card>
+              </div>
 
-                {/* 5. Internal Auditor */}
-                <Card 
-                  className="bg-gradient-to-br from-amber-50/70 to-yellow-50/40 border-amber-200/80 hover:border-amber-400 hover:shadow-2xl hover:scale-[1.03] transition-all duration-300 cursor-pointer flex flex-col justify-between"
-                  onClick={() => onSelectRole('auditor', 'david_thompson')}
-                >
-                  <CardContent className="p-6 text-center flex-1 flex flex-col justify-between">
-                    <div>
-                      <div className="w-14 h-14 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mx-auto mb-4 border border-amber-200 shadow-sm">
-                        <Eye className="w-7 h-7" />
-                      </div>
-                      <h3 className="text-lg font-bold text-gray-900 mb-2">Internal Auditor</h3>
-                      <p className="text-xs text-gray-600 mb-4 leading-relaxed">
-                        Independent audit trail validation, evidence vault verification, and multi-tenant process reviews.
-                      </p>
-                    </div>
-                    <Button 
-                      variant="outline" 
-                      className="w-full border-amber-300 text-amber-700 hover:bg-amber-100 font-semibold text-xs"
-                    >
-                      Access Auditor Portal
-                      <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                {/* 6. Senior Compliance Officer */}
-                <Card 
-                  className="bg-gradient-to-br from-pink-50/70 to-rose-50/40 border-pink-200/80 hover:border-pink-400 hover:shadow-2xl hover:scale-[1.03] transition-all duration-300 cursor-pointer flex flex-col justify-between"
-                  onClick={() => onSelectRole('compliance_officer', 'jessica_lee')}
-                >
-                  <CardContent className="p-6 text-center flex-1 flex flex-col justify-between">
-                    <div>
-                      <div className="w-14 h-14 bg-pink-100 text-pink-600 rounded-full flex items-center justify-center mx-auto mb-4 border border-pink-200 shadow-sm">
-                        <Building2 className="w-7 h-7" />
-                      </div>
-                      <h3 className="text-lg font-bold text-gray-900 mb-2">Senior Compliance Officer</h3>
-                      <p className="text-xs text-gray-600 mb-4 leading-relaxed">
-                        Specialized KYB complex structures, high-value beneficial owners, and advanced EDD reporting.
-                      </p>
-                    </div>
-                    <Button 
-                      variant="outline" 
-                      className="w-full border-pink-300 text-pink-700 hover:bg-pink-100 font-semibold text-xs"
-                    >
-                      Access Senior Portal
-                      <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                {/* 7. Risk Partner */}
-                <Card 
-                  className="bg-gradient-to-br from-indigo-50/70 to-violet-50/40 border-indigo-200/80 hover:border-indigo-400 hover:shadow-2xl hover:scale-[1.03] transition-all duration-300 cursor-pointer flex flex-col justify-between lg:col-span-3 xl:col-span-1"
-                  onClick={() => onSelectRole('partner', 'robert_kim')}
-                >
-                  <CardContent className="p-6 text-center flex-1 flex flex-col justify-between">
-                    <div>
-                      <div className="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4 border border-indigo-200 shadow-sm">
-                        <Scale className="w-7 h-7" />
-                      </div>
-                      <h3 className="text-lg font-bold text-gray-900 mb-2">Risk Partner</h3>
-                      <p className="text-xs text-gray-600 mb-4 leading-relaxed">
-                        Enterprise-wide risk frameworks, sovereign jurisdiction parameters, and compliance strategy.
-                      </p>
-                    </div>
-                    <Button 
-                      variant="outline" 
-                      className="w-full border-indigo-300 text-indigo-700 hover:bg-indigo-100 font-semibold text-xs"
-                    >
-                      Access Risk Portal
-                      <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
-                    </Button>
-                  </CardContent>
-                </Card>
-
+              {/* Dropdown Selector for Other Personas */}
+              <div className="mt-8 pt-6 border-t border-gray-100 flex flex-col md:flex-row items-center justify-between gap-4 bg-gray-50/60 p-5 rounded-2xl border border-gray-150">
+                <div className="text-left flex-1">
+                  <h4 className="font-bold text-gray-900 text-base">Looking for other personas?</h4>
+                  <p className="text-sm text-gray-600 mt-1">Select from the additional compliance workspaces we are building to explore their specific toolsets.</p>
+                </div>
+                <div className="w-full md:w-80">
+                  <select 
+                    className="block w-full px-4 py-2.5 text-sm text-gray-700 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#13B5EA] focus:border-[#13B5EA]"
+                    defaultValue=""
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      if (!val) return;
+                      const [role, userId] = val.split(':');
+                      onSelectRole(role, userId);
+                    }}
+                  >
+                    <option value="" disabled>Select other workspace persona...</option>
+                    <option value="analyst:alex_rivera">AML Analyst (Alert queues & screening)</option>
+                    <option value="auditor:david_thompson">Internal Auditor (Audit & evidence vault)</option>
+                    <option value="compliance_officer:jessica_lee">Senior Compliance Officer (KYB & EDD)</option>
+                    <option value="partner:robert_kim">Risk Partner (Risk frameworks & strategy)</option>
+                  </select>
+                </div>
               </div>
             </CardContent>
           </Card>

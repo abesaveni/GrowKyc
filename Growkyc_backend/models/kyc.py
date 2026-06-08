@@ -11,8 +11,9 @@ Imports: use `from models import KYC` (unchanged in all consumers).
 
 from datetime import datetime, timezone
 
-from sqlalchemy import Column, DateTime, ForeignKey, Index, Integer, String, Text
+from sqlalchemy import Column, DateTime
 from sqlalchemy import Enum as SQLEnum
+from sqlalchemy import ForeignKey, Index, Integer, String, Text
 from sqlalchemy.orm import relationship
 
 from core.enums import KYCOnboardingStatus, KYCStatus
@@ -38,7 +39,7 @@ class KYC(Base):
     # Scheduled for removal in API v2.
     aadhaar = Column(String(12), nullable=True)
     pan = Column(String(10), nullable=True)
-    
+
     name = Column(String(255), nullable=True)
     dob = Column(DateTime, nullable=True)
     gender = Column(String(20), nullable=True)
@@ -107,7 +108,4 @@ class KYC(Base):
     )
 
     def __repr__(self) -> str:
-        return (
-            f"<KYC(id={self.id}, user_id={self.user_id}, "
-            f"status={self.status})>"
-        )
+        return f"<KYC(id={self.id}, user_id={self.user_id}, " f"status={self.status})>"

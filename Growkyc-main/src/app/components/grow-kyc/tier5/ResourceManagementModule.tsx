@@ -9,9 +9,9 @@ import {
   assignCasesToMember,
   fetchTeamMembers,
   TeamMember,
-  AvailabilityStatus,
   AssignmentStatus
 } from '../../../services/tier5ResourceService';
+import { useAuth } from '../../../../context/AuthContext';
 
 interface ResourceManagementModuleProps {
   onBack: () => void;
@@ -39,6 +39,9 @@ export function ResourceManagementModule({ onBack }: ResourceManagementModulePro
   const [assignTarget, setAssignTarget] = useState<TeamMember | null>(null);
   const [caseCount, setCaseCount] = useState(1);
   const [assigning, setAssigning] = useState(false);
+  
+  const { user } = useAuth();
+  const isPartner = user?.role === 'partner';
 
   const load = () => {
     setLoading(true);
@@ -113,7 +116,15 @@ export function ResourceManagementModule({ onBack }: ResourceManagementModulePro
       key: 'actions',
       label: 'Actions',
       render: (row) => (
-        <Button type="button" variant="outline" size="sm" onClick={() => setAssignTarget(row)}>
+        <Button 
+          type="button" 
+          variant="outline" 
+          size="sm" 
+          onClick={() => setAssignTarget(row)}
+          disabled={isPartner}
+          className={isPartner ? 'opacity-50 cursor-not-allowed' : ''}
+          title={isPartner ? "Managing Partners cannot assign cases." : undefined}
+        >
           <UserPlus className="w-4 h-4 mr-1" />
           Assign
         </Button>
@@ -211,7 +222,14 @@ export function ResourceManagementModule({ onBack }: ResourceManagementModulePro
                 <p className="text-sm text-gray-700 mb-3">
                   {m.activeCases} / {m.capacity} cases
                 </p>
-                <Button size="sm" variant="outline" className="w-full" onClick={() => setAssignTarget(m)}>
+                <Button 
+                  size="sm" 
+                  variant="outline" 
+                  className={`w-full ${isPartner ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  onClick={() => setAssignTarget(m)}
+                  disabled={isPartner}
+                  title={isPartner ? "Managing Partners cannot assign cases." : undefined}
+                >
                   Assign cases
                 </Button>
               </div>

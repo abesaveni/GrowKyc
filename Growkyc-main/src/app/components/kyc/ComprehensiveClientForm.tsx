@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../ui
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
 import { Progress } from '../ui/progress';
+import { useAuth } from '../../../context/AuthContext';
 import {
   User,
   Building2,
@@ -35,6 +36,8 @@ type ClientType = 'individual' | 'company' | 'trust' | 'partnership' | 'soletrad
 type FormStep = 'type' | 'basic' | 'identification' | 'address' | 'beneficial_owners' | 'documents' | 'additional_searches' | 'risk_assessment' | 'review';
 
 export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClientFormProps) {
+  const { user } = useAuth();
+  const isPartner = user?.role === 'partner';
   const [currentStep, setCurrentStep] = useState<FormStep>('type');
   const [clientType, setClientType] = useState<ClientType>('individual');
   
@@ -286,7 +289,7 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
     const relatedEntities = additionalSearches.relatedEntitySearch ? (additionalSearches.estimatedRelatedEntities || 0) : 0;
 
     Object.keys(additionalSearches).forEach((key) => {
-      if (searchCosts[key] && additionalSearches[key]) {
+      if (searchCosts[key] && (additionalSearches as any)[key]) {
         let entityCount = baseEntity;
         
         if (key === 'directorSearch') entityCount = directors;
@@ -993,254 +996,6 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
     );
   };
 
-  // Render Address Step
-  const renderAddressStep = () => (
-    <div className="space-y-6">
-      <h3 className="text-xl font-bold text-gray-900 mb-4">Residential Address</h3>
-
-      <div className="grid grid-cols-2 gap-4">
-        <div className="col-span-2">
-          <label className="block text-sm font-semibold text-gray-700 mb-2">
-            <MapPin className="w-4 h-4 inline mr-1" />
-                Category A - Primary Photo ID
-              </CardTitle>
-              <CardDescription>At least ONE required (Photo ID with DOB)</CardDescription>
-            </CardHeader>
-            <CardContent className="p-4 space-y-2">
-              {idDocuments.categoryA.map((doc) => {
-                const alreadyAdded = individualData.selectedDocuments.some(d => d.id === doc.id);
-                
-                return (
-                  <button
-                    key={doc.id}
-                    disabled={alreadyAdded}
-                    onClick={() => {
-                      setSelectedDoc(doc);
-                      setSelectedCategory('A');
-                      setShowAddDocModal(true);
-                    }}
-                    className={`w-full text-left p-3 rounded-lg border-2 transition-all ${
-                      alreadyAdded
-                        ? 'bg-gray-100 border-gray-300 cursor-not-allowed'
-                        : 'bg-white border-blue-200 hover:border-blue-500 hover:bg-blue-50'
-                    }`}
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="flex-1">
-                        <p className="font-semibold text-gray-900 text-sm">{doc.name}</p>
-                        <div className="flex gap-1 mt-1">
-                          {doc.photo && <Badge variant="outline" className="text-xs bg-blue-100">Photo</Badge>}
-                          {doc.dob && <Badge variant="outline" className="text-xs bg-green-100">DOB</Badge>}
-                          {doc.address && <Badge variant="outline" className="text-xs bg-purple-100">Address</Badge>}
-                        </div>
-                      </div>
-                      <Badge className="bg-blue-600 text-lg px-3 py-1">{doc.points}</Badge>
-                    </div>
-                    {alreadyAdded && (
-                      <p className="text-xs text-gray-500 mt-2">✓ Already added</p>
-                    )}
-                  </button>
-                );
-              })}
-            </CardContent>
-          </Card>
-
-          {/* Category B */}
-          <Card className="border-2 border-purple-300">
-            <CardHeader className="bg-purple-50">
-              <CardTitle className="flex items-center gap-2">
-                <FileText className="w-5 h-5 text-purple-600" />
-                Category B - Secondary ID
-              </CardTitle>
-              <CardDescription>Additional points & address verification</CardDescription>
-            </CardHeader>
-            <CardContent className="p-4 space-y-2 max-h-[400px] overflow-y-auto">
-              {idDocuments.categoryB.map((doc) => {
-                const alreadyAdded = individualData.selectedDocuments.some(d => d.id === doc.id);
-                
-                return (
-                  <button
-                    key={doc.id}
-                    disabled={alreadyAdded}
-                    onClick={() => {
-                      setSelectedDoc(doc);
-                      setSelectedCategory('B');
-                      setShowAddDocModal(true);
-                    }}
-                    className={`w-full text-left p-3 rounded-lg border-2 transition-all ${
-                      alreadyAdded
-                        ? 'bg-gray-100 border-gray-300 cursor-not-allowed'
-                        : 'bg-white border-purple-200 hover:border-purple-500 hover:bg-purple-50'
-                    }`}
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="flex-1">
-                        <p className="font-semibold text-gray-900 text-sm">{doc.name}</p>
-                        <div className="flex gap-1 mt-1">
-                          {doc.dob && <Badge variant="outline" className="text-xs bg-green-100">DOB</Badge>}
-                          {doc.address && <Badge variant="outline" className="text-xs bg-purple-100">Address</Badge>}
-                        </div>
-                      </div>
-                      <Badge className="bg-purple-600 text-lg px-3 py-1">{doc.points}</Badge>
-                    </div>
-                    {alreadyAdded && (
-                      <p className="text-xs text-gray-500 mt-2">✓ Already added</p>
-                    )}
-                  </button>
-                );
-              })}
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Document Details Modal */}
-        {showAddDocModal && selectedDoc && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-lg w-full max-w-md">
-              <div className="p-6 border-b">
-                <h3 className="text-xl font-bold text-gray-900">Add {selectedDoc.name}</h3>
-                <Badge className={selectedCategory === 'A' ? 'bg-blue-600 mt-2' : 'bg-purple-600 mt-2'}>
-                  Category {selectedCategory} • {selectedDoc.points} Points
-                </Badge>
-              </div>
-              
-              <div className="p-6 space-y-4">
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Document Number <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    value={docDetails.number}
-                    onChange={(e) => setDocDetails({ ...docDetails, number: e.target.value })}
-                    className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
-                    placeholder="Enter document number"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Issuing Authority / State
-                  </label>
-                  <input
-                    type="text"
-                    value={docDetails.issuer}
-                    onChange={(e) => setDocDetails({ ...docDetails, issuer: e.target.value })}
-                    className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
-                    placeholder="e.g., NSW, Australia, etc."
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Expiry Date (if applicable)
-                  </label>
-                  <input
-                    type="date"
-                    value={docDetails.expiry}
-                    onChange={(e) => setDocDetails({ ...docDetails, expiry: e.target.value })}
-                    className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
-                  />
-                </div>
-
-                <Card className="bg-gray-50">
-                  <CardContent className="p-4">
-                    <p className="text-sm text-gray-700">
-                      <strong>Verification Details:</strong>
-                    </p>
-                    <ul className="text-sm text-gray-600 mt-2 space-y-1">
-                      {selectedDoc.photo && <li>✓ Photo verification required</li>}
-                      {selectedDoc.dob && <li>✓ Verifies date of birth</li>}
-                      {selectedDoc.address && <li>✓ Verifies residential address</li>}
-                    </ul>
-                  </CardContent>
-                </Card>
-              </div>
-
-              <div className="p-6 border-t flex gap-3">
-                <Button
-                  className="flex-1 bg-green-600 hover:bg-green-700"
-                  onClick={() => {
-                    if (docDetails.number) {
-                      addDocument(selectedDoc, selectedCategory, docDetails);
-                      setShowAddDocModal(false);
-                      setDocDetails({ number: '', expiry: '', issuer: '' });
-                      setSelectedDoc(null);
-                      toast.success(`${selectedDoc.name} added (+${selectedDoc.points} points)`);
-                    } else {
-                      toast.error('Please enter document number');
-                    }
-                  }}
-                >
-                  <Check className="w-4 h-4 mr-2" />
-                  Add Document
-                </Button>
-                <Button
-                  variant="outline"
-                  onClick={() => {
-                    setShowAddDocModal(false);
-                    setDocDetails({ number: '', expiry: '', issuer: '' });
-                    setSelectedDoc(null);
-                  }}
-                >
-                  Cancel
-                </Button>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Example Combinations */}
-        <Card className="bg-gray-50 border-gray-300">
-          <CardHeader>
-            <CardTitle className="text-sm">Common Acceptable Combinations</CardTitle>
-          </CardHeader>
-          <CardContent className="p-4">
-            <div className="grid grid-cols-3 gap-4 text-xs">
-              <div className="p-3 bg-white rounded border">
-                <p className="font-bold mb-2">Passport Path (120pts)</p>
-                <ul className="space-y-1 text-gray-600">
-                  <li>• Passport (70)</li>
-                  <li>• Medicare Card (25)</li>
-                  <li>• Utility Bill (25)</li>
-                </ul>
-              </div>
-              <div className="p-3 bg-white rounded border">
-                <p className="font-bold mb-2">Driver Licence Path (110pts)</p>
-                <ul className="space-y-1 text-gray-600">
-                  <li>• Driver Licence (40)</li>
-                  <li>• Birth Certificate (70)</li>
-                </ul>
-              </div>
-              <div className="p-3 bg-white rounded border">
-                <p className="font-bold mb-2">No Passport (135pts)</p>
-                <ul className="space-y-1 text-gray-600">
-                  <li>• Driver Licence (40)</li>
-                  <li>• Birth Certificate (70)</li>
-                  <li>• Medicare Card (25)</li>
-                </ul>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        <div className="flex justify-between mt-6">
-          <Button variant="outline" onClick={handleBack}>
-            <ChevronLeft className="w-4 h-4 mr-2" />
-            Back
-          </Button>
-          <Button 
-            onClick={handleNext}
-            disabled={!meetsRequirements}
-            className={!meetsRequirements ? 'opacity-50 cursor-not-allowed' : ''}
-          >
-            Continue
-            <ChevronRight className="w-4 h-4 ml-2" />
-          </Button>
-        </div>
-      </div>
-    );
-  };
 
   // Render Address Step
   const renderAddressStep = () => (
@@ -1459,7 +1214,7 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
               />
               <div className="flex-1">
                 <p className="font-semibold text-gray-900">Proof of Address</p>
-                <p className="text-sm text-gray-600">Utility bill, bank statement, rates notice (< 3 months)</p>
+                <p className="text-sm text-gray-600">Utility bill, bank statement, rates notice (&lt; 3 months)</p>
               </div>
               <Badge variant="outline">If required</Badge>
             </label>
@@ -1879,7 +1634,7 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
                     <label key={key} className="flex items-center gap-3 p-3 border-2 rounded-lg hover:bg-purple-50 cursor-pointer transition-all">
                       <input
                         type="checkbox"
-                        checked={additionalSearches[key]}
+                        checked={(additionalSearches as any)[key]}
                         onChange={(e) => setAdditionalSearches({ ...additionalSearches, [key]: e.target.checked })}
                         className="w-5 h-5"
                       />
@@ -2043,7 +1798,7 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
                   </div>
                 )}
               </div>
-            </Card>
+            </div>
           </CardContent>
         </Card>
 
@@ -2054,7 +1809,7 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
               <input
                 type="checkbox"
                 checked={individualData.isHighRisk}
-                onChange={(e) => setIndividualData({ ...individualData, isHighRisk: e.target.value })}
+                onChange={(e) => setIndividualData({ ...individualData, isHighRisk: e.target.checked })}
                 className="w-5 h-5 mt-1"
               />
               <div className="flex-1">
@@ -2256,7 +2011,12 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
           <ChevronLeft className="w-4 h-4 mr-2" />
           Back
         </Button>
-        <Button onClick={handleSubmit} className="bg-green-600 hover:bg-green-700">
+        <Button 
+          onClick={handleSubmit} 
+          className={`bg-green-600 hover:bg-green-700 ${isPartner ? 'opacity-50 cursor-not-allowed' : ''}`}
+          disabled={isPartner}
+          title={isPartner ? "Managing Partners cannot create cases." : undefined}
+        >
           <Check className="w-4 h-4 mr-2" />
           Create Client & Start Onboarding
         </Button>

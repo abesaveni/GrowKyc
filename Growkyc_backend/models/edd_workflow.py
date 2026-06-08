@@ -3,7 +3,7 @@ models/edd_workflow.py
 ======================
 Enhanced Due Diligence (EDD) Workflow model.
 
-Enterprise table tracking EDD triggers, questionnaires, 
+Enterprise table tracking EDD triggers, questionnaires,
 MLRO approval chains, and evidence collection for high-risk clients.
 
 Triggered when:
@@ -18,8 +18,17 @@ Immutable audit trail — no updates to completed workflows.
 
 from datetime import datetime, timezone
 
-from sqlalchemy import Column, DateTime, Float, ForeignKey, Index, Integer, String, Text
-from sqlalchemy import JSON
+from sqlalchemy import (
+    JSON,
+    Column,
+    DateTime,
+    Float,
+    ForeignKey,
+    Index,
+    Integer,
+    String,
+    Text,
+)
 from sqlalchemy.orm import relationship
 
 from models.base import Base
@@ -66,12 +75,16 @@ class EDDWorkflow(Base):
         nullable=False,
         default="initiated",
         index=True,
-        comment="initiated|questionnaire_sent|under_review|escalated|mlro_review|approved|rejected|closed",
+        comment=(
+            "initiated|questionnaire_sent|under_review|escalated|"
+            "mlro_review|approved|rejected|closed"
+        ),
     )
 
     # ---- Questionnaire ----
     questionnaire_data = Column(
-        JSON, nullable=True,
+        JSON,
+        nullable=True,
         comment="Questionnaire questions and submitted answers",
     )
     questionnaire_submitted_at = Column(DateTime(timezone=True), nullable=True)
@@ -89,14 +102,16 @@ class EDDWorkflow(Base):
         comment="Compliance officer or MLRO assigned for review",
     )
     mlro_decision = Column(
-        String(50), nullable=True,
+        String(50),
+        nullable=True,
         comment="approve|reject|escalate|pending",
     )
     mlro_notes = Column(Text, nullable=True)
     mlro_decided_at = Column(DateTime(timezone=True), nullable=True)
 
     partner_decision = Column(
-        String(50), nullable=True,
+        String(50),
+        nullable=True,
         comment="approve|reject|pending",
     )
     partner_notes = Column(Text, nullable=True)
@@ -104,11 +119,13 @@ class EDDWorkflow(Base):
 
     # ---- Evidence collection ----
     required_evidence = Column(
-        JSON, nullable=True,
+        JSON,
+        nullable=True,
         comment="[{type, description, mandatory}] checklist",
     )
     evidence_collected = Column(
-        JSON, nullable=True,
+        JSON,
+        nullable=True,
         comment="[{type, document_id, collected_at}] actuals",
     )
     evidence_complete = Column(Integer, nullable=True, default=0)
@@ -118,7 +135,8 @@ class EDDWorkflow(Base):
 
     # ---- Outcome ----
     outcome = Column(
-        String(50), nullable=True,
+        String(50),
+        nullable=True,
         comment="approved_with_monitoring|approved|rejected|suspended",
     )
     outcome_notes = Column(Text, nullable=True)

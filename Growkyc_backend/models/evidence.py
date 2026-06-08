@@ -13,7 +13,6 @@ Imports: use `from models import Evidence` (unchanged in all consumers).
 from datetime import datetime, timezone
 
 from sqlalchemy import Column, DateTime, ForeignKey, Index, Integer, Text
-from sqlalchemy.orm import relationship
 
 from models.base import Base
 

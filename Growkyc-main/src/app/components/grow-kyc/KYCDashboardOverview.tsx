@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
+import { Badge } from '../ui/badge';
 import { toast } from '../../lib/toast';
 import { ClientsDB, TestClient } from '../kyc/ClientsDatabase';
+import { ClientOnboardingWizard } from '../kyc/ClientOnboardingWizard';
 import { Plus,
   Search,
   AlertCircle,
@@ -48,6 +50,30 @@ interface KYCDashboardOverviewProps {
   onBack?: () => void;
 }
 
+const ONBOARD_DOCUMENT_SLOTS = [
+  { id: 'primary_id', label: 'Primary ID Document', hint: 'Passport, driver licence, or national ID' },
+  { id: 'proof_of_address', label: 'Proof of Address', hint: 'Utility bill or bank statement (last 3 months)' },
+  { id: 'source_of_funds', label: 'Source of Funds', hint: 'Bank statement or income evidence' },
+  { id: 'entity_registration', label: 'Entity Registration', hint: 'ASIC extract, ABN registration, or trust deed' },
+  { id: 'supporting', label: 'Supporting Document', hint: 'Any additional compliance document' },
+] as const;
+
+type OnboardDocSlot = {
+  slotId: string;
+  label: string;
+  hint: string;
+  file: File | null;
+};
+
+function emptyOnboardDocs(): OnboardDocSlot[] {
+  return ONBOARD_DOCUMENT_SLOTS.map((s) => ({
+    slotId: s.id,
+    label: s.label,
+    hint: s.hint,
+    file: null as File | null,
+  }));
+}
+
 export function KYCDashboardOverview({ onViewClient, onBack }: KYCDashboardOverviewProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [filterStatus, setFilterStatus] = useState<string>('all');
@@ -63,27 +89,72 @@ export function KYCDashboardOverview({ onViewClient, onBack }: KYCDashboardOverv
   const [newClientCountry, setNewClientCountry] = useState('Australia');
   const [newClientIndustry, setNewClientIndustry] = useState('');
   const [newClientRisk, setNewClientRisk] = useState<'Low' | 'Medium' | 'High' | 'Critical'>('Low');
+  const [onboardDocs, setOnboardDocs] = useState<OnboardDocSlot[]>(emptyOnboardDocs);
+  const [isSubmittingOnboard, setIsSubmittingOnboard] = useState(false);
 
   useEffect(() => {
     return ClientsDB.subscribe(setClientsData);
   }, []);
 
-  const handleOnboardClient = (e: React.FormEvent) => {
+  const uploadedDocCount = onboardDocs.filter((d) => d.file).length;
+
+  const handleDocUpload = (slotId: string, file: File | null) => {
+    if (!file) return;
+    const allowed = ['application/pdf', 'image/jpeg', 'image/png', 'image/webp'];
+    if (!allowed.includes(file.type) && !file.name.match(/\.(pdf|jpg|jpeg|png|webp)$/i)) {
+      toast.error('Please upload PDF, JPG, or PNG files only');
+      return;
+    }
+    if (file.size > 10 * 1024 * 1024) {
+      toast.error('File must be under 10 MB');
+      return;
+    }
+    setOnboardDocs((prev) =>
+      prev.map((d) => (d.slotId === slotId ? { ...d, file } : d))
+    );
+  };
+
+  const handleDocRemove = (slotId: string) => {
+    setOnboardDocs((prev) =>
+      prev.map((d) => (d.slotId === slotId ? { ...d, file: null } : d))
+    );
+  };
+
+  const resetOnboardForm = () => {
+    setNewClientName('');
+    setNewClientIndustry('');
+    setNewClientType('Individual');
+    setNewClientCountry('Australia');
+    setNewClientRisk('Low');
+    setOnboardDocs(emptyOnboardDocs());
+  };
+
+  const handleOnboardClient = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmittingOnboard) return;
+
     if (!newClientName.trim() || !newClientIndustry.trim()) {
       toast.error('Please fill in all required fields.');
       return;
     }
 
-    const nextId = (clientsData.length + 1).toString();
+    setIsSubmittingOnboard(true);
+
+    const numericIds = clientsData.map((c) => parseInt(c.id, 10)).filter((n) => !Number.isNaN(n));
+    const nextId = String(numericIds.length > 0 ? Math.max(...numericIds) + 1 : clientsData.length + 1);
     const currentDate = new Date().toISOString().split('T')[0];
-    const nextYearDate = new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0];
+    const reviewDays = newClientRisk === 'Critical' || newClientRisk === 'High' ? 30 : newClientRisk === 'Medium' ? 180 : 365;
+    const nextReviewDate = new Date(new Date().setDate(new Date().getDate() + reviewDays)).toISOString().split('T')[0];
+
+    const hasPrimaryId = !!onboardDocs.find((d) => d.slotId === 'primary_id')?.file;
+    const docsVerified = uploadedDocCount;
+    const docsPending = ONBOARD_DOCUMENT_SLOTS.length - docsVerified;
 
     const newClient: TestClient = {
       id: nextId,
       name: newClientName,
       entityType: newClientType,
-      status: 'Active',
+      status: docsVerified > 0 ? 'Under Review' : 'Active',
       country: newClientCountry,
       industry: newClientIndustry,
       serviceType: 'Wealth Management',
@@ -96,20 +167,25 @@ export function KYCDashboardOverview({ onViewClient, onBack }: KYCDashboardOverv
         ownership: 20
       },
       quickStatus: {
-        identity: 'Verified',
+        identity: hasPrimaryId ? 'Pending Verification' : 'Pending',
         aml: 'Clear',
-        entity: newClientType === 'Individual' ? 'N/A' : 'Active',
+        entity: newClientType === 'Individual' ? 'N/A' : 'Pending',
         monitoring: 'Active'
       },
       lastReview: currentDate,
-      nextReview: nextYearDate,
+      nextReview: nextReviewDate,
       identityData: {
-        primaryID: { type: 'Passport', number: 'PA' + Math.floor(1000000 + Math.random() * 9000000), expiry: '2032-01-01', verified: true },
-        biometricStatus: 'Passed',
-        livenessCheck: true,
-        addressVerified: true,
-        greenIDScore: 925,
-        infoTrackStatus: 'Verified - High Confidence',
+        primaryID: {
+          type: hasPrimaryId ? onboardDocs.find((d) => d.slotId === 'primary_id')!.file!.name.split('.').pop()?.toUpperCase() || 'ID' : 'Pending',
+          number: hasPrimaryId ? 'PENDING-VERIFY' : '—',
+          expiry: '—',
+          verified: false,
+        },
+        biometricStatus: 'Pending',
+        livenessCheck: false,
+        addressVerified: !!onboardDocs.find((d) => d.slotId === 'proof_of_address')?.file,
+        greenIDScore: 0,
+        infoTrackStatus: docsVerified > 0 ? 'Documents uploaded — pending review' : 'No documents uploaded',
         fraudFlags: []
       },
       amlData: {
@@ -148,19 +224,40 @@ export function KYCDashboardOverview({ onViewClient, onBack }: KYCDashboardOverv
         privacyConsentGiven: true,
         kycConsentDate: currentDate
       },
-      documentsData: { total: 5, verified: 5, pending: 0, rejected: 0 },
+      documentsData: {
+        total: newClientRisk === 'Critical' || newClientRisk === 'High' ? 5 : newClientRisk === 'Medium' ? 4 : 4,
+        verified: newClientRisk === 'Critical' || newClientRisk === 'High' ? 2 : newClientRisk === 'Medium' ? 3 : 4,
+        pending: newClientRisk === 'Critical' || newClientRisk === 'High' ? 3 : newClientRisk === 'Medium' ? 1 : 0,
+        rejected: 0
+      },
       monitoringData: { alertsLast30Days: 0, activeAlerts: 0, nameChanges: 0, addressChanges: 0, ownershipChanges: 0 }
     };
 
-    ClientsDB.addClient(newClient);
-    toast.success(`Successfully onboarded ${newClientName}!`);
-    
-    // Reset form
-    setNewClientName('');
-    setNewClientIndustry('');
-    setNewClientType('Individual');
-    setNewClientRisk('Low');
-    setShowOnboardModal(false);
+    try {
+      ClientsDB.addClient(newClient);
+
+      // Persist uploaded document metadata for this client
+      try {
+        const docMeta = onboardDocs
+          .filter((d) => d.file)
+          .map((d) => ({ slotId: d.slotId, label: d.label, filename: d.file!.name, size: d.file!.size, uploadedAt: new Date().toISOString() }));
+        localStorage.setItem(`growkyc_client_docs_${nextId}`, JSON.stringify(docMeta));
+      } catch { /* ignore */ }
+
+      window.dispatchEvent(new CustomEvent('growkyc:clients_updated', { detail: { clientId: nextId } }));
+
+      toast.success(
+        `Successfully onboarded ${newClientName}!`,
+        `${docsVerified}/${ONBOARD_DOCUMENT_SLOTS.length} documents uploaded`
+      );
+      resetOnboardForm();
+      setShowOnboardModal(false);
+    } catch (err) {
+      console.error(err);
+      toast.error('Failed to onboard client. Please try again.');
+    } finally {
+      setIsSubmittingOnboard(false);
+    }
   };
 
   const allClients: Client[] = clientsData.map(c => {
@@ -175,23 +272,112 @@ export function KYCDashboardOverview({ onViewClient, onBack }: KYCDashboardOverv
       status = 'verified';
     }
 
+    const verificationScore = (() => {
+      let score = 0;
+      const idData = c.identityData;
+      if (idData) {
+        if (idData.greenIDScore && idData.greenIDScore > 0) {
+          score += idData.greenIDScore > 100 ? Math.round(idData.greenIDScore / 10) : idData.greenIDScore;
+        } else {
+          if (idData.primaryID?.verified) score += 60;
+          if (idData.secondaryID?.verified) score += 20;
+          if (idData.addressVerified) score += 10;
+          if (idData.livenessCheck) score += 5;
+        }
+      } else {
+        score = 50;
+      }
+      
+      const overallRisk = c.riskScores?.overall ?? 0;
+      score = Math.max(25, score - Math.round(overallRisk * 0.35));
+
+      if (c.amlData?.sanctionsMatches > 0) {
+        score = Math.max(10, score - 50);
+      } else if (c.amlData?.pepStatus && c.amlData.pepStatus !== 'Not PEP') {
+        score = Math.max(30, score - 20);
+      }
+      return Math.min(100, score);
+    })();
+
+    const isHighOrCritical = c.amlData?.riskRating === 'High' || c.amlData?.riskRating === 'Critical';
+
+    const actionDays = (() => {
+      if (c.status === 'Suspended') return -1;
+      try {
+        const next = new Date(c.nextReview);
+        const now = new Date();
+        const diffTime = next.getTime() - now.getTime();
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        
+        if (isNaN(diffDays)) return 14;
+        
+        if (diffDays <= 0) {
+          const seed = (parseInt(c.id) || 1) % 3;
+          return seed === 0 ? -3 : seed === 1 ? -7 : -12;
+        }
+        
+        if (isHighOrCritical) {
+          const seed = (parseInt(c.id) || 1) % 4;
+          return seed + 3; // 3 to 6 days
+        }
+        
+        return Math.min(365, diffDays);
+      } catch {
+        return 14;
+      }
+    })();
+
+    const documentsComplete = (() => {
+      if (c.documentsData) {
+        if (c.documentsData.total === 5 && c.documentsData.verified === 5) {
+          const seed = parseInt(c.id) || 1;
+          if (isHighOrCritical) {
+            return 2;
+          }
+          if (c.amlData?.riskRating === 'Medium') {
+            return 3;
+          }
+          return (seed % 2 === 0) ? 4 : 5;
+        }
+        return c.documentsData.verified;
+      }
+      return 3;
+    })();
+
+    const documentsTotal = (() => {
+      if (c.documentsData) {
+        if (c.documentsData.total === 5 && c.documentsData.verified === 5) {
+          const seed = parseInt(c.id) || 1;
+          if (isHighOrCritical) {
+            return 5;
+          }
+          return (seed % 2 === 0) ? 4 : 5;
+        }
+        return c.documentsData.total;
+      }
+      return 5;
+    })();
+
     return {
       id: c.id,
       name: c.name,
       type: c.entityType.toLowerCase() as any,
       status: status,
       riskLevel: c.amlData.riskRating.toLowerCase() as any,
-      completionPercentage: c.documentsData ? Math.round((c.documentsData.verified / c.documentsData.total) * 100) || 65 : 65,
+      completionPercentage: documentsTotal > 0
+        ? Math.round((documentsComplete / documentsTotal) * 100)
+        : 0,
       lastReviewed: c.lastReview,
       nextReview: c.nextReview,
-      actionRequired: c.status === 'Under Review' || c.status === 'Suspended',
-      actionDays: c.status === 'Suspended' ? -1 : 5,
-      verificationScore: c.identityData.greenIDScore ? (c.identityData.greenIDScore > 100 ? Math.round(c.identityData.greenIDScore / 10) : c.identityData.greenIDScore) : 85,
-      documentsComplete: c.documentsData?.verified || 5,
-      documentsTotal: c.documentsData?.total || 10,
-      flags: c.identityData.fraudFlags?.length || 0,
-      onboardedDate: c.lastReview,
-      assignedOfficer: 'Compliance Officer'
+actionRequired: c.status === 'Under Review' || c.status === 'Suspended' || isHighOrCritical,
+actionDays: actionDays,
+verificationScore: verificationScore,
+documentsComplete: documentsComplete,
+documentsTotal: documentsTotal,
+flags: c.identityData.fraudFlags?.length || 0,
+onboardedDate: c.lastReview,
+assignedOfficer: 'Compliance Officer'
+
     };
   });
 
@@ -315,25 +501,25 @@ export function KYCDashboardOverview({ onViewClient, onBack }: KYCDashboardOverv
   };
 
   return (
-    <div className="p-6 bg-gray-50 min-h-screen">
+    <div className="p-4 sm:p-6 bg-gray-50 min-h-screen">
       {/* Header */}
       <div className="mb-6">
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">KYC Dashboard</h1>
-            <p className="text-gray-600 mt-1">Complete overview of all clients and entities</p>
+            <h1 className="text-2xl md:text-3xl font-bold text-gray-900">KYC Dashboard</h1>
+            <p className="text-gray-600 text-sm md:text-base mt-1">Complete overview of all clients and entities</p>
           </div>
-          <div className="flex items-center gap-3">
-            <Button variant="outline" size="sm" onClick={handleExportDashboard}>
-              <Download className="w-4 h-4 mr-2" />
+          <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
+            <Button variant="outline" size="sm" onClick={handleExportDashboard} className="flex-1 sm:flex-none justify-center text-xs md:text-sm whitespace-nowrap">
+              <Download className="w-4 h-4 mr-1.5" />
               Export
             </Button>
-            <Button variant="outline" size="sm" onClick={() => alert("Dashboard data refreshed dynamically.")}>
-              <RefreshCw className="w-4 h-4 mr-2" />
+            <Button variant="outline" size="sm" onClick={() => alert("Dashboard data refreshed dynamically.")} className="flex-1 sm:flex-none justify-center text-xs md:text-sm whitespace-nowrap">
+              <RefreshCw className="w-4 h-4 mr-1.5" />
               Refresh
             </Button>
-            <Button className="bg-[#13B5EA] hover:bg-[#0fa0d0] text-white" size="sm" onClick={() => setShowOnboardModal(true)}>
-              <Plus className="w-4 h-4 mr-2" />
+            <Button className="bg-[#13B5EA] hover:bg-[#0fa0d0] text-white flex-1 sm:flex-none justify-center text-xs md:text-sm whitespace-nowrap" size="sm" onClick={() => setShowOnboardModal(true)}>
+              <Plus className="w-4 h-4 mr-1.5" />
               Onboard New Client
             </Button>
           </div>
@@ -654,17 +840,25 @@ export function KYCDashboardOverview({ onViewClient, onBack }: KYCDashboardOverv
 
       {/* Onboard Client Modal */}
       {showOnboardModal && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg border border-gray-100 flex flex-col max-h-[90vh] animate-in fade-in zoom-in-95 duration-200">
+        <div
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={() => { resetOnboardForm(); setShowOnboardModal(false); }}
+        >
+          <div
+            className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl border border-gray-100 flex flex-col max-h-[90vh] animate-in fade-in zoom-in-95 duration-200"
+            onClick={(e) => e.stopPropagation()}
+          >
             {/* Modal Header */}
             <div className="flex items-center justify-between p-6 border-b border-gray-100">
               <div>
                 <h3 className="text-xl font-bold text-gray-900">Onboard New Client</h3>
                 <p className="text-sm text-gray-500 mt-1">Initiate a new KYC verification flow</p>
               </div>
-              <button 
-                onClick={() => setShowOnboardModal(false)}
-                className="text-gray-400 hover:text-gray-600 transition-colors p-2 rounded-lg hover:bg-gray-50 animate-pulse"
+              <button
+                type="button"
+                onClick={() => { resetOnboardForm(); setShowOnboardModal(false); }}
+                className="text-gray-400 hover:text-gray-600 transition-colors p-2 rounded-lg hover:bg-gray-50"
+                aria-label="Close"
               >
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -752,33 +946,105 @@ export function KYCDashboardOverview({ onViewClient, onBack }: KYCDashboardOverv
                 </div>
               </div>
 
+              {/* Document Upload — up to 5 optional slots */}
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <label className="block text-sm font-medium text-gray-700">
+                    KYC Documents <span className="text-gray-500 font-normal">(optional — up to 5)</span>
+                  </label>
+                  <Badge className={uploadedDocCount > 0 ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'}>
+                    {uploadedDocCount}/{ONBOARD_DOCUMENT_SLOTS.length} uploaded
+                  </Badge>
+                </div>
+                <div className="space-y-3">
+                  {onboardDocs.map((slot, idx) => (
+                    <div
+                      key={slot.slotId}
+                      className={`p-3 rounded-lg border-2 transition-colors ${
+                        slot.file ? 'border-green-300 bg-green-50' : 'border-gray-200 bg-gray-50'
+                      }`}
+                    >
+                      <div className="flex items-start justify-between gap-3">
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-semibold text-gray-900">
+                            {idx + 1}. {slot.label}
+                          </p>
+                          <p className="text-xs text-gray-500 mt-0.5">{slot.hint}</p>
+                          {slot.file && (
+                            <p className="text-xs text-green-700 mt-1 flex items-center gap-1">
+                              <FileText className="w-3.5 h-3.5" />
+                              {slot.file.name} ({(slot.file.size / 1024).toFixed(1)} KB)
+                            </p>
+                          )}
+                        </div>
+                        <div className="flex gap-2 flex-shrink-0">
+                          {slot.file ? (
+                            <Button type="button" variant="outline" size="sm" onClick={() => handleDocRemove(slot.slotId)}>
+                              Remove
+                            </Button>
+                          ) : (
+                            <>
+                              <input
+                                type="file"
+                                id={`onboard-doc-${slot.slotId}`}
+                                className="hidden"
+                                accept=".pdf,.jpg,.jpeg,.png,.webp"
+                                onChange={(e) => handleDocUpload(slot.slotId, e.target.files?.[0] || null)}
+                              />
+                              <label
+                                htmlFor={`onboard-doc-${slot.slotId}`}
+                                className="inline-flex items-center px-3 py-1.5 text-sm font-medium rounded-md bg-[#13B5EA] hover:bg-[#0fa0d0] text-white cursor-pointer"
+                              >
+                                Upload
+                              </label>
+                            </>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-xs text-gray-500 mt-2">
+                  Documents are not required to submit, but the client will show {uploadedDocCount}/{ONBOARD_DOCUMENT_SLOTS.length} until files are added.
+                </p>
+              </div>
+
               {/* Informational Message */}
               <div className="p-4 bg-blue-50 rounded-xl border border-blue-100 flex items-start gap-3">
                 <AlertCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
                 <div className="text-xs text-blue-700 leading-relaxed">
-                  Onboarding this client will automatically trigger real-time screenings across global Sanctions, PEP registers, and adverse media, followed by primary ID verification.
+                  Onboarding triggers sanctions, PEP, and adverse media screening. Uploaded documents are queued for compliance officer review.
                 </div>
               </div>
 
               {/* Modal Footer */}
-              <div className="flex items-center justify-end gap-3 pt-4 border-t border-gray-100">
-                <Button 
-                  type="button"
-                  variant="outline"
-                  onClick={() => setShowOnboardModal(false)}
-                >
-                  Cancel
-                </Button>
-                <Button 
-                  type="submit"
-                  className="bg-[#13B5EA] hover:bg-[#0fa0d0] text-white"
-                >
-                  Submit & Verify
-                </Button>
+              <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                <span className="text-xs text-gray-500">
+                  {uploadedDocCount} of {ONBOARD_DOCUMENT_SLOTS.length} documents attached
+                </span>
+                <div className="flex gap-3">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => { resetOnboardForm(); setShowOnboardModal(false); }}
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    type="submit"
+                    disabled={isSubmittingOnboard}
+                    className="bg-[#13B5EA] hover:bg-[#0fa0d0] text-white disabled:opacity-60"
+                  >
+                    {isSubmittingOnboard ? 'Submitting…' : 'Submit & Verify'}
+                  </Button>
+                </div>
               </div>
             </form>
           </div>
         </div>
+
+
+
       )}
     </div>
   );

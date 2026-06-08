@@ -10,7 +10,8 @@ from typing import Optional
 
 from sqlalchemy.orm import Session
 
-from core.exceptions import DatabaseError, ValidationError, DuplicateResourceError
+from core.exceptions import (DatabaseError, DuplicateResourceError,
+                             ValidationError)
 from models import Tenant
 
 logger = logging.getLogger(__name__)

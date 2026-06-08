@@ -25,7 +25,8 @@ import {
   ExternalLink,
   UserCheck,
   Ban,
-  Gavel
+  Gavel,
+  Info
 } from 'lucide-react';
 
 interface AMLScreeningResult {

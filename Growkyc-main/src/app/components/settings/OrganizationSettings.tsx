@@ -83,9 +83,7 @@ export function OrganizationSettings({ onBack }: OrganizationSettingsProps) {
     setIsSaving(false);
     setHasChanges(false);
     
-    toast.success('Organization settings saved!', {
-      description: 'Your changes have been updated'
-    });
+    toast.success('Organization settings saved!', 'Your changes have been updated');
   };
 
   const handleInviteMember = () => {
@@ -105,9 +103,7 @@ export function OrganizationSettings({ onBack }: OrganizationSettingsProps) {
     }
 
     setShowInviteDialog(false);
-    toast.success(`Invitation sent to ${inviteEmail}!`, {
-      description: 'They will receive an email with instructions'
-    });
+    toast.success(`Invitation sent to ${inviteEmail}!`, 'They will receive an email with instructions');
     setInviteEmail('');
   };
 
@@ -126,9 +122,7 @@ export function OrganizationSettings({ onBack }: OrganizationSettingsProps) {
     
     setTeamMembers(teamMembers.filter(m => m.id !== memberToRemove.id));
     
-    toast.success(`${memberToRemove.name} removed from organization`, {
-      description: 'They will lose access to all resources'
-    });
+    toast.success(`${memberToRemove.name} removed from organization`, 'They will lose access to all resources');
     
     setMemberToRemove(null);
   };
@@ -138,9 +132,7 @@ export function OrganizationSettings({ onBack }: OrganizationSettingsProps) {
     setTeamMembers(teamMembers.map(m =>
       m.id === memberId ? { ...m, role: newRole } : m
     ));
-    toast.success(`Role updated to ${newRole}`, {
-      description: member?.name
-    });
+    toast.success(`Role updated to ${newRole}`, member?.name);
   };
 
   const handleManageSubscription = () => {
@@ -450,13 +442,13 @@ export function OrganizationSettings({ onBack }: OrganizationSettingsProps) {
 
       {/* Invite Member Dialog */}
       <ConfirmDialog
-        open={showInviteDialog}
-        onOpenChange={setShowInviteDialog}
+        isOpen={showInviteDialog}
+        onClose={() => setShowInviteDialog(false)}
         title="Invite Team Member"
         description="Enter the email address of the person you'd like to invite to your organization."
         confirmLabel="Send Invite"
         onConfirm={sendInvite}
-        variant="default"
+        variant="info"
       >
         <div className="py-4">
           <Label>Email Address</Label>
@@ -472,29 +464,30 @@ export function OrganizationSettings({ onBack }: OrganizationSettingsProps) {
 
       {/* Confirm Remove Member Dialog */}
       <ConfirmDialog
-        open={confirmRemoveOpen}
-        onOpenChange={setConfirmRemoveOpen}
+        isOpen={confirmRemoveOpen}
+        onClose={() => setConfirmRemoveOpen(false)}
         title="Remove Team Member?"
         description={`Are you sure you want to remove ${memberToRemove?.name} from the organization? They will lose access to all resources.`}
         confirmLabel="Remove Member"
         onConfirm={handleRemoveMember}
-        variant="destructive"
+        variant="danger"
       />
 
       {/* Manage Plan Dialog */}
       <ConfirmDialog
-        open={showManagePlanDialog}
-        onOpenChange={setShowManagePlanDialog}
+        isOpen={showManagePlanDialog}
+        onClose={() => setShowManagePlanDialog(false)}
         title="Manage Subscription Plan"
         description="Choose the plan that best fits your organization's needs."
         confirmLabel="Update Plan"
         onConfirm={() => {
           setShowManagePlanDialog(false);
-          toast.success(`Subscription updated to ${selectedPlan === 'starter' ? 'Starter' : selectedPlan === 'professional' ? 'Professional' : 'Enterprise'} plan!`, {
-            description: 'Changes will take effect immediately'
-          });
+          toast.success(
+            `Subscription updated to ${selectedPlan === 'starter' ? 'Starter' : selectedPlan === 'professional' ? 'Professional' : 'Enterprise'} plan!`,
+            'Changes will take effect immediately'
+          );
         }}
-        variant="default"
+        variant="info"
       >
         <div className="py-4 space-y-4">
           <div 
@@ -582,8 +575,8 @@ export function OrganizationSettings({ onBack }: OrganizationSettingsProps) {
 
       {/* Update Payment Method Dialog */}
       <ConfirmDialog
-        open={showUpdatePaymentDialog}
-        onOpenChange={setShowUpdatePaymentDialog}
+        isOpen={showUpdatePaymentDialog}
+        onClose={() => setShowUpdatePaymentDialog(false)}
         title="Update Payment Method"
         description="Enter your new payment card details below."
         confirmLabel="Update Payment Method"
@@ -593,12 +586,10 @@ export function OrganizationSettings({ onBack }: OrganizationSettingsProps) {
             return;
           }
           setShowUpdatePaymentDialog(false);
-          toast.success('Payment method updated successfully!', {
-            description: 'Your new card has been saved securely'
-          });
+          toast.success('Payment method updated successfully!', 'Your new card has been saved securely');
           setPaymentMethod({ cardNumber: '', expiry: '', cvv: '', name: '' });
         }}
-        variant="default"
+        variant="info"
       >
         <div className="py-4 space-y-4">
           <div>

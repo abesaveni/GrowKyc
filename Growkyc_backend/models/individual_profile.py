@@ -13,7 +13,8 @@ GDPR-aligned data compartmentalization in future phases.
 
 from datetime import datetime, timezone
 
-from sqlalchemy import Column, DateTime, ForeignKey, Index, Integer, String, Text
+from sqlalchemy import (Column, DateTime, ForeignKey, Index, Integer, String,
+                        Text)
 from sqlalchemy.orm import relationship
 
 from models.base import Base
@@ -64,7 +65,7 @@ class IndividualProfile(Base):
     passport_country = Column(String(100), nullable=True)
     passport_expiry = Column(DateTime, nullable=True)
     national_id_number = Column(String(100), nullable=True)
-    tax_file_number = Column(String(50), nullable=True)    # TFN (AU)
+    tax_file_number = Column(String(50), nullable=True)  # TFN (AU)
 
     # ---- Employment / Financial ----
     occupation = Column(String(255), nullable=True)
@@ -81,8 +82,9 @@ class IndividualProfile(Base):
 
     # ---- PEP / Sanctions flags ----
     is_pep = Column(
-        Integer,   # Use Integer as Boolean for SQLite compat (0/1)
-        default=0, nullable=False,
+        Integer,  # Use Integer as Boolean for SQLite compat (0/1)
+        default=0,
+        nullable=False,
         comment="Politically Exposed Person flag",
     )
     pep_details = Column(Text, nullable=True)

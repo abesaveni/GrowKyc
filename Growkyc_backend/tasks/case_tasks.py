@@ -3,6 +3,7 @@ tasks/case_tasks.py
 ===================
 Async Celery tasks for case management SLAs and auto-escalation.
 """
+
 import logging
 from datetime import datetime, timezone
 
@@ -26,7 +27,7 @@ def check_case_slas():
 
         now = datetime.now(timezone.utc)
 
-        # Find OPEN cases with an SLA due_date in the past that are not yet marked breached
+        # Find open cases with overdue SLA dates not yet marked breached.
         breached_slas = (
             db.query(CaseSLA)
             .join(Case, Case.id == CaseSLA.case_id)
@@ -41,7 +42,7 @@ def check_case_slas():
 
         for sla in breached_slas:
             sla.breached = 1
-            
+
             # Append an immutable event
             event = CaseEvent(
                 tenant_id=sla.tenant_id,
@@ -54,10 +55,12 @@ def check_case_slas():
 
         if breached_slas:
             db.commit()
-            logger.info(f"SLA Breach check: Marked {len(breached_slas)} cases as breached.")
+            logger.info(
+                f"SLA Breach check: Marked {len(breached_slas)} cases as breached."
+            )
         else:
             logger.info("SLA Breach check: No new breaches detected.")
-            
+
     except Exception as e:
         logger.error(f"SLA Breach check failed: {e}")
         db.rollback()
@@ -96,19 +99,24 @@ def auto_escalate_cases():
             assignment.queue_name = "mlro_review"
             assignment.assigned_to_id = None  # Return to pool
             assignment.updated_at = datetime.now(timezone.utc)
-            
+
             event = CaseEvent(
                 tenant_id=assignment.tenant_id,
                 case_id=assignment.case_id,
                 actor_id=None,  # System
                 event_type="escalated",
-                event_details={"reason": "Auto-escalation due to SLA breach", "previous_queue": old_queue},
+                event_details={
+                    "reason": "Auto-escalation due to SLA breach",
+                    "previous_queue": old_queue,
+                },
             )
             db.add(event)
 
         if escalation_candidates:
             db.commit()
-            logger.info(f"Auto-escalated {len(escalation_candidates)} cases to MLRO queue.")
+            logger.info(
+                f"Auto-escalated {len(escalation_candidates)} cases to MLRO queue."
+            )
         else:
             logger.info("Auto-escalation check: No cases required escalation.")
 

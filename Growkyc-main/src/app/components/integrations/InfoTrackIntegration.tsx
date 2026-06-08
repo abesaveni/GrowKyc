@@ -91,10 +91,10 @@ export function InfoTrackIntegration({ entityType, entityData, onComplete }: Inf
           status: 'good',
           score: 742,
           rating: 'Very Good',
-          defaults: [],
-          judgements: [],
-          bankruptcies: [],
-          commercialDefaults: [],
+          defaults: [] as any[],
+          judgements: [] as any[],
+          bankruptcies: [] as any[],
+          commercialDefaults: [] as any[],
           creditEnquiries: 3,
           lastEnquiryDate: '2024-01-15',
           summary: {
@@ -121,8 +121,8 @@ export function InfoTrackIntegration({ entityType, entityData, onComplete }: Inf
                   registeredDate: '2018-03-15'
                 }
               ],
-              caveats: [],
-              encumbrances: []
+              caveats: [] as any[],
+              encumbrances: [] as any[]
             }
           ],
           titleSearch: {
@@ -134,15 +134,15 @@ export function InfoTrackIntegration({ entityType, entityData, onComplete }: Inf
         },
         bankruptcy: {
           status: 'clear',
-          bankruptcySearches: [],
+          bankruptcySearches: [] as any[],
           personalInsolvency: 'No records found',
-          debtAgreements: []
+          debtAgreements: [] as any[]
         },
         court: {
           status: 'clear',
-          judgements: [],
+          judgements: [] as any[],
           litigationSearch: 'No active litigation',
-          courtOrders: []
+          courtOrders: [] as any[]
         },
         asic: entityType === 'company' ? {
           status: 'active',
@@ -171,8 +171,8 @@ export function InfoTrackIntegration({ entityType, entityData, onComplete }: Inf
       overallRiskScore: 12,
       riskLevel: 'Low',
       recommendation: 'Approve',
-      warnings: [],
-      flags: []
+      warnings: [] as any[],
+      flags: [] as any[]
     };
     
     setResults(mockResults);

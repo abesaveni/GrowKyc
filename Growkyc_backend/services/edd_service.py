@@ -8,15 +8,14 @@ MLRO/partner approval chains, evidence tracking, and outcome recording.
 """
 
 import logging
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Any, Dict, List, Optional
 
 from sqlalchemy.orm import Session
 
-from core.enums import RiskLevel
 from core.exceptions import DatabaseError, InvalidStateError, ResourceNotFoundError
 from core.tenant_context import get_tenant_id
-from models import Client, EDDWorkflow
+from models import EDDWorkflow
 
 logger = logging.getLogger(__name__)
 
@@ -37,19 +36,28 @@ EDD_QUESTIONNAIRE_TEMPLATE = [
     },
     {
         "id": "q3",
-        "question": "Does the client have any known political affiliations or PEP connections?",
+        "question": (
+            "Does the client have any known political affiliations "
+            "or PEP connections?"
+        ),
         "type": "boolean",
         "mandatory": True,
     },
     {
         "id": "q4",
-        "question": "Are there any complex ownership structures or offshore entities involved?",
+        "question": (
+            "Are there any complex ownership structures or offshore "
+            "entities involved?"
+        ),
         "type": "boolean",
         "mandatory": True,
     },
     {
         "id": "q5",
-        "question": "Has the client operated in any high-risk jurisdictions in the last 5 years?",
+        "question": (
+            "Has the client operated in any high-risk jurisdictions "
+            "in the last 5 years?"
+        ),
         "type": "boolean",
         "mandatory": True,
     },
@@ -64,19 +72,47 @@ EDD_QUESTIONNAIRE_TEMPLATE = [
 # Evidence checklist by trigger
 EDD_EVIDENCE_REQUIREMENTS = {
     "pep": [
-        {"type": "source_of_wealth", "description": "Source of Wealth documentation", "mandatory": True},
-        {"type": "reference_letter", "description": "Professional reference letter", "mandatory": False},
+        {
+            "type": "source_of_wealth",
+            "description": "Source of Wealth documentation",
+            "mandatory": True,
+        },
+        {
+            "type": "reference_letter",
+            "description": "Professional reference letter",
+            "mandatory": False,
+        },
     ],
     "high_risk_country": [
-        {"type": "source_of_funds", "description": "Source of Funds evidence", "mandatory": True},
-        {"type": "business_purpose", "description": "Business purpose statement", "mandatory": True},
+        {
+            "type": "source_of_funds",
+            "description": "Source of Funds evidence",
+            "mandatory": True,
+        },
+        {
+            "type": "business_purpose",
+            "description": "Business purpose statement",
+            "mandatory": True,
+        },
     ],
     "complex_ownership": [
-        {"type": "shareholder_register", "description": "Shareholder register", "mandatory": True},
-        {"type": "trust_deed", "description": "Trust deed or constitutive documents", "mandatory": True},
+        {
+            "type": "shareholder_register",
+            "description": "Shareholder register",
+            "mandatory": True,
+        },
+        {
+            "type": "trust_deed",
+            "description": "Trust deed or constitutive documents",
+            "mandatory": True,
+        },
     ],
     "manual": [
-        {"type": "source_of_funds", "description": "Source of Funds documentation", "mandatory": True},
+        {
+            "type": "source_of_funds",
+            "description": "Source of Funds documentation",
+            "mandatory": True,
+        },
     ],
 }
 
@@ -111,7 +147,9 @@ class EDDService:
             .first()
         )
         if existing:
-            self.logger.info(f"EDD already active for client {client_id}: {existing.id}")
+            self.logger.info(
+                f"EDD already active for client {client_id}: {existing.id}"
+            )
             return existing
 
         # Build evidence requirements for this trigger
@@ -128,7 +166,8 @@ class EDDService:
             questionnaire_data={"questions": EDD_QUESTIONNAIRE_TEMPLATE, "answers": {}},
             required_evidence=evidence_reqs,
             initial_risk_score=initial_risk_score,
-            due_date=datetime.now(timezone.utc) + timedelta(days=14),  # 14-day SLA default
+            due_date=datetime.now(timezone.utc)
+            + timedelta(days=14),  # 14-day SLA default
         )
 
         try:
@@ -136,21 +175,22 @@ class EDDService:
             self.db.commit()
             self.db.refresh(edd)
             self.logger.info(
-                f"EDD workflow {edd.id} initiated for client {client_id}, trigger={trigger_reason}"
+                f"EDD workflow {edd.id} initiated for client {client_id}, "
+                f"trigger={trigger_reason}"
             )
             return edd
         except Exception as e:
             self.db.rollback()
             raise DatabaseError("Failed to initiate EDD workflow") from e
 
-    def submit_questionnaire(
-        self, edd_id: int, answers: Dict[str, Any]
-    ) -> EDDWorkflow:
+    def submit_questionnaire(self, edd_id: int, answers: Dict[str, Any]) -> EDDWorkflow:
         """Submit questionnaire answers and advance status."""
         edd = self._get_edd(edd_id)
 
         if edd.status not in ("initiated", "questionnaire_sent"):
-            raise InvalidStateError(f"Cannot submit questionnaire at status: {edd.status}")
+            raise InvalidStateError(
+                f"Cannot submit questionnaire at status: {edd.status}"
+            )
 
         data = edd.questionnaire_data or {}
         data["answers"] = answers
@@ -163,9 +203,7 @@ class EDDService:
         self.logger.info(f"Questionnaire submitted for EDD {edd_id}")
         return edd
 
-    def assign_for_mlro_review(
-        self, edd_id: int, assignee_user_id: int
-    ) -> EDDWorkflow:
+    def assign_for_mlro_review(self, edd_id: int, assignee_user_id: int) -> EDDWorkflow:
         """Assign an EDD workflow to an MLRO for review."""
         edd = self._get_edd(edd_id)
 

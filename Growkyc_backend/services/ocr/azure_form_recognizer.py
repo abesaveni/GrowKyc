@@ -3,6 +3,7 @@ services/ocr/azure_form_recognizer.py
 =====================================
 Azure Form Recognizer integration skeleton.
 """
+
 from services.ocr.base import BaseOCRProvider, OcrResult
 
 

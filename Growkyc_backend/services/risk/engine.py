@@ -9,10 +9,10 @@ The engine is intentionally country-agnostic:
   - factor_contributions in the return value provides full explainability.
 """
 
-from typing import Dict, Any, Tuple
+from typing import Any, Dict, Tuple
 
-from models import Client
 from compliance.risk.risk_registry import get_risk_policy
+from models import Client
 from services.risk.rules import determine_risk_level
 
 
@@ -34,7 +34,7 @@ class RiskEngine:
         Returns:
             Tuple of (final_score, inherent_risk, residual_risk, factor_breakdown)
         """
-        # Resolve country — prefer explicit override, then client geography, then default
+        # Resolve country: explicit override, then client geography, then default.
         code = country_code or (client.geography or "AU")
         policy = get_risk_policy(code)
         weights = policy.factor_weights
@@ -88,9 +88,17 @@ class RiskEngine:
         if client.income_level and client.income_level > income_threshold:
             val = weights.get("income_high", 15.0)
             score += val
-            factors["income"] = {"value": client.income_level, "score": val, "level": "MEDIUM"}
+            factors["income"] = {
+                "value": client.income_level,
+                "score": val,
+                "level": "MEDIUM",
+            }
         else:
-            factors["income"] = {"value": client.income_level, "score": 0, "level": "LOW"}
+            factors["income"] = {
+                "value": client.income_level,
+                "score": 0,
+                "level": "LOW",
+            }
 
         # Normalize to 0-100
         final_score = min(score, 100.0)
@@ -99,7 +107,8 @@ class RiskEngine:
         residual_risk = inherent_risk
 
         # Attach EDD flag for downstream consumers
-        factors["_meta"]["edd_required"] = final_score >= policy.edd_escalation_threshold
+        factors["_meta"]["edd_required"] = (
+            final_score >= policy.edd_escalation_threshold
+        )
 
         return final_score, inherent_risk, residual_risk, factors
-

@@ -134,15 +134,11 @@ export function BillsPage() {
   };
 
   const handlePayNow = (billId: string) => {
-    toast.success('Payment initiated', {
-      description: 'Payment is being processed'
-    });
+    toast.success('Payment initiated', 'Payment is being processed');
   };
 
   const handleSchedulePayment = (billId: string) => {
-    toast.success('Payment scheduled', {
-      description: 'Payment will be processed on the due date'
-    });
+    toast.success('Payment scheduled', 'Payment will be processed on the due date');
   };
 
   const stats = {

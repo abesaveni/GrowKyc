@@ -3,8 +3,9 @@ routers/edd.py
 ==============
 EDD Workflow API endpoints.
 """
+
 import logging
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, Optional
 
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
@@ -92,8 +93,14 @@ async def assign_for_review(
     """Assign an EDD workflow to an MLRO for review."""
     try:
         service = EDDService(db)
-        edd = service.assign_for_mlro_review(edd_id=edd_id, assignee_user_id=body.assignee_user_id)
-        return {"edd_id": edd.id, "status": edd.status, "assigned_to": edd.assigned_to_user_id}
+        edd = service.assign_for_mlro_review(
+            edd_id=edd_id, assignee_user_id=body.assignee_user_id
+        )
+        return {
+            "edd_id": edd.id,
+            "status": edd.status,
+            "assigned_to": edd.assigned_to_user_id,
+        }
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
@@ -135,7 +142,9 @@ async def get_active_edd(
     service = EDDService(db)
     edd = service.get_active_edd_for_client(client_id)
     if not edd:
-        raise HTTPException(status_code=404, detail="No active EDD workflow found for this client")
+        raise HTTPException(
+            status_code=404, detail="No active EDD workflow found for this client"
+        )
     return {
         "edd_id": edd.id,
         "status": edd.status,

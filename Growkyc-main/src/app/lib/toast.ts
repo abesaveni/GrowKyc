@@ -20,6 +20,9 @@ export const toast = {
   loading: (message: string) => {
     return sonnerToast.loading(message);
   },
+  dismiss: (id?: string | number) => {
+    sonnerToast.dismiss(id);
+  },
   promise: <T,>(
     promise: Promise<T>,
     messages: {

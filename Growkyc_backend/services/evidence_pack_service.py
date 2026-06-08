@@ -4,16 +4,16 @@ services/evidence_pack_service.py
 Enterprise Evidence Pack generation.
 Triggers async zipping of all case artifacts into a secure bundle.
 """
+
 import logging
 import uuid
-from datetime import datetime, timezone
 from typing import Optional
 
 from sqlalchemy.orm import Session
 
 from core.exceptions import InvalidStateError, ResourceNotFoundError
 from core.tenant_context import get_tenant_id
-from models import Case, EvidencePack, EvidencePackItem, RegulatoryReport
+from models import Case, EvidencePack
 from services.audit_service import AuditService
 
 logger = logging.getLogger(__name__)
@@ -28,7 +28,10 @@ class EvidencePackService:
         self.tenant_id = get_tenant_id()
 
     def trigger_pack_generation(
-        self, case_id: int, report_id: Optional[int] = None, generator_id: Optional[int] = None
+        self,
+        case_id: int,
+        report_id: Optional[int] = None,
+        generator_id: Optional[int] = None,
     ) -> EvidencePack:
         """
         Initializes an EvidencePack record and dispatches Celery to build the zip.
@@ -60,11 +63,14 @@ class EvidencePackService:
         )
 
         from tasks.reporting_tasks import generate_evidence_pack_async
+
         generate_evidence_pack_async.delay(pack.id, correlation_id)
 
         return pack
 
-    def get_download_url(self, pack_id: int, requester_id: int, expiry_seconds: int = 3600) -> str:
+    def get_download_url(
+        self, pack_id: int, requester_id: int, expiry_seconds: int = 3600
+    ) -> str:
         """
         Returns a signed URL for a completed pack, using Phase 5 BaseStorageBackend.
         """
@@ -76,6 +82,7 @@ class EvidencePackService:
             raise InvalidStateError("Evidence pack is not ready for download.")
 
         from services.storage.factory import get_storage_backend
+
         storage = get_storage_backend()
         url = storage.generate_signed_url(pack.storage_key, expiry_seconds)
 

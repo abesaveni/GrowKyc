@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Case } from '../../data/mockData';
 import { 
@@ -28,15 +28,55 @@ import {
   DollarSign,
   Calendar,
   Target,
-  Shield
+  Shield,
+  FileCheck
 } from 'lucide-react';
 import { Progress } from '../ui/progress';
+import { Button } from '../ui/button';
+import { useAuth } from '../../../context/AuthContext';
+import { toast } from '../../lib/toast';
+
+// Import newly refactored workflow modals
+import { ApproveClientModal } from './ApproveClientModal';
+import { RejectClientModal } from './RejectClientModal';
+import { RequestInfoModal } from './RequestInfoModal';
+import { FlagInvestigationModal } from './FlagInvestigationModal';
+import { EscalateModal } from './EscalateModal';
+import { OpenEddModal } from './OpenEddModal';
+import { generateEvidencePack } from '../../api/cases';
 
 interface CaseDashboardProps {
   caseData: Case;
 }
 
 export function CaseDashboard({ caseData }: CaseDashboardProps) {
+  // Modal visibility states
+  const [isApproveOpen, setIsApproveOpen] = useState(false);
+  const [isRejectOpen, setIsRejectOpen] = useState(false);
+  const [isRequestInfoOpen, setIsRequestInfoOpen] = useState(false);
+  const [isFlagOpen, setIsFlagOpen] = useState(false);
+  const [isEscalateOpen, setIsEscalateOpen] = useState(false);
+  const [isEddOpen, setIsEddOpen] = useState(false);
+  const [isGeneratingPack, setIsGeneratingPack] = useState(false);
+
+  // Auth context for role-based rendering / permission check
+  const { user } = useAuth();
+
+  const handleActionSuccess = () => {
+    toast.success('Action recorded successfully.');
+  };
+
+  const handleDownloadEvidence = async () => {
+    setIsGeneratingPack(true);
+    try {
+      await generateEvidencePack(caseData.id);
+      toast.success('Evidence Pack downloaded successfully.');
+    } catch (e) {
+      toast.error('Failed to generate or download Evidence Pack.');
+    } finally {
+      setIsGeneratingPack(false);
+    }
+  };
   // Calculate metrics
   const lvr = ((caseData.outstandingDebt / caseData.valuation.amount) * 100);
   const equity = caseData.valuation.amount - caseData.outstandingDebt;
@@ -104,6 +144,84 @@ export function CaseDashboard({ caseData }: CaseDashboardProps) {
 
   return (
     <div className="space-y-6">
+      {/* Compliance Workflow Actions Panel */}
+      {user?.role !== 'auditor' && (
+        <Card className="border-indigo-200 bg-indigo-50/30 backdrop-blur-sm shadow-md">
+          <CardHeader className="pb-3 flex flex-row items-center justify-between space-y-0">
+            <CardTitle className="text-lg font-semibold flex items-center gap-2 text-indigo-900">
+              <Shield className="w-5 h-5 text-indigo-600 animate-pulse" />
+              Compliance Workflow Decisions
+            </CardTitle>
+            <div className="text-xs text-indigo-700 bg-indigo-100/75 px-2.5 py-1 rounded-full font-medium">
+              Role: <span className="capitalize">{user?.role || 'AML Analyst'}</span>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <div className="flex flex-wrap gap-3">
+              {/* Critical Actions Gated by RBAC role check */}
+              {((user?.role as string === 'compliance' || user?.role as string === 'approver' || user?.role as string === 'admin' || user?.role as string === 'aml-analyst')) && (
+                <>
+                  <Button 
+                    className="bg-emerald-600 hover:bg-emerald-700 text-white font-medium shadow-sm transition-all duration-200 hover:scale-[1.02]"
+                    onClick={() => setIsApproveOpen(true)}
+                  >
+                    Approve Client
+                  </Button>
+                  <Button 
+                    variant="destructive"
+                    className="font-medium shadow-sm transition-all duration-200 hover:scale-[1.02]"
+                    onClick={() => setIsRejectOpen(true)}
+                  >
+                    Reject Client
+                  </Button>
+                </>
+              )}
+              
+              <Button 
+                variant="outline"
+                className="border-indigo-300 text-indigo-700 hover:bg-indigo-50 font-medium transition-all duration-200"
+                onClick={() => setIsRequestInfoOpen(true)}
+              >
+                Request Info
+              </Button>
+              
+              <Button 
+                variant="outline"
+                className="border-amber-300 text-amber-700 hover:bg-amber-50 font-medium transition-all duration-200"
+                onClick={() => setIsFlagOpen(true)}
+              >
+                Flag Investigation
+              </Button>
+              
+              <Button 
+                variant="outline"
+                className="border-rose-300 text-rose-700 hover:bg-rose-50 font-medium transition-all duration-200"
+                onClick={() => setIsEscalateOpen(true)}
+              >
+                Escalate Case
+              </Button>
+
+              <Button 
+                variant="outline"
+                className="border-purple-300 text-purple-700 hover:bg-purple-50 font-medium transition-all duration-200"
+                onClick={() => setIsEddOpen(true)}
+              >
+                Initiate EDD
+              </Button>
+
+              <Button 
+                variant="outline"
+                className="border-blue-300 text-blue-700 hover:bg-blue-50 font-medium transition-all duration-200 ml-auto"
+                onClick={handleDownloadEvidence}
+                disabled={isGeneratingPack}
+              >
+                {isGeneratingPack ? 'Generating Pack...' : 'Download Evidence Pack'}
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
       {/* Top KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <Card>
@@ -196,9 +314,7 @@ export function CaseDashboard({ caseData }: CaseDashboardProps) {
                   endAngle={0}
                 >
                   <RadialBar
-                    minAngle={15}
                     background
-                    clockWise
                     dataKey="value"
                   />
                   <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" className="text-3xl font-bold">
@@ -244,9 +360,7 @@ export function CaseDashboard({ caseData }: CaseDashboardProps) {
                   endAngle={0}
                 >
                   <RadialBar
-                    minAngle={15}
                     background
-                    clockWise
                     dataKey="value"
                   />
                   <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" className="text-3xl font-bold">
@@ -529,6 +643,43 @@ export function CaseDashboard({ caseData }: CaseDashboardProps) {
           </CardContent>
         </Card>
       )}
+      {/* Compliance Workflow Modals */}
+      <ApproveClientModal 
+        isOpen={isApproveOpen} 
+        onClose={() => setIsApproveOpen(false)} 
+        caseData={caseData}
+        onActionSuccess={handleActionSuccess}
+      />
+      <RejectClientModal 
+        isOpen={isRejectOpen} 
+        onClose={() => setIsRejectOpen(false)} 
+        caseData={caseData}
+        onActionSuccess={handleActionSuccess}
+      />
+      <RequestInfoModal 
+        isOpen={isRequestInfoOpen} 
+        onClose={() => setIsRequestInfoOpen(false)} 
+        caseData={caseData}
+        onActionSuccess={handleActionSuccess}
+      />
+      <FlagInvestigationModal 
+        isOpen={isFlagOpen} 
+        onClose={() => setIsFlagOpen(false)} 
+        caseData={caseData}
+        onActionSuccess={handleActionSuccess}
+      />
+      <EscalateModal 
+        isOpen={isEscalateOpen} 
+        onClose={() => setIsEscalateOpen(false)} 
+        caseData={caseData}
+        onActionSuccess={handleActionSuccess}
+      />
+      <OpenEddModal 
+        isOpen={isEddOpen} 
+        onClose={() => setIsEddOpen(false)} 
+        caseData={caseData}
+        onActionSuccess={handleActionSuccess}
+      />
     </div>
   );
 }

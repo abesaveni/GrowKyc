@@ -7,20 +7,18 @@ routers continue to own canonical business workflows.
 """
 
 from datetime import datetime
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, Optional
 from uuid import uuid4
 
-from fastapi import APIRouter, Body, Response, status, Depends, UploadFile, File, Form
+from fastapi import APIRouter, Body, Depends, File, Form, Response, UploadFile, status
 from pydantic import BaseModel
-
-from dependencies import get_current_user
-from database import get_db
 from sqlalchemy.orm import Session
 
-from services.auth_service import AuthService, ACCESS_TOKEN_EXPIRE_MINUTES
-from schemas import UserResponse, PasswordChangeRequest, TokenResponse
+from database import get_db
+from dependencies import get_current_user
 from models import User
-
+from schemas import PasswordChangeRequest, TokenResponse, UserResponse
+from services.auth_service import ACCESS_TOKEN_EXPIRE_MINUTES, AuthService
 
 router = APIRouter(tags=["compatibility"])
 
@@ -102,7 +100,9 @@ async def compat_audit_pack(case_id: str):
 
 
 @router.post("/ai/compliance-query")
-async def compat_ai_compliance_query(payload: Dict[str, Any] = Body(default_factory=dict)):
+async def compat_ai_compliance_query(
+    payload: Dict[str, Any] = Body(default_factory=dict),
+):
     return accepted(
         "/ai/compliance-query",
         answer="Compatibility response generated for compliance query.",
@@ -128,7 +128,9 @@ async def compat_get_case(case_id: str, organizationId: Optional[str] = None):
 
 
 @router.post("/cases/{case_id}")
-async def compat_update_case(case_id: str, payload: Dict[str, Any] = Body(default_factory=dict)):
+async def compat_update_case(
+    case_id: str, payload: Dict[str, Any] = Body(default_factory=dict)
+):
     return accepted(f"/cases/{case_id}", caseId=case_id, payload=payload)
 
 
@@ -148,7 +150,9 @@ async def compat_case_notes(case_id: str):
 
 
 @router.post("/cases/{case_id}/notes", status_code=status.HTTP_201_CREATED)
-async def compat_create_case_note(case_id: str, payload: Dict[str, Any] = Body(default_factory=dict)):
+async def compat_create_case_note(
+    case_id: str, payload: Dict[str, Any] = Body(default_factory=dict)
+):
     return accepted(
         f"/cases/{case_id}/notes",
         caseId=case_id,
@@ -169,7 +173,9 @@ async def compat_update_case_note(
     )
 
 
-@router.delete("/cases/{case_id}/notes/{note_id}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete(
+    "/cases/{case_id}/notes/{note_id}", status_code=status.HTTP_204_NO_CONTENT
+)
 async def compat_delete_case_note(case_id: str, note_id: str):
     return Response(status_code=status.HTTP_204_NO_CONTENT)
 
@@ -190,7 +196,9 @@ async def compat_case_documents(case_id: str):
 
 
 @router.post("/cases/{case_id}/referrals", status_code=status.HTTP_201_CREATED)
-async def compat_case_referral(case_id: str, payload: Dict[str, Any] = Body(default_factory=dict)):
+async def compat_case_referral(
+    case_id: str, payload: Dict[str, Any] = Body(default_factory=dict)
+):
     return accepted(
         f"/cases/{case_id}/referrals",
         caseId=case_id,
@@ -200,13 +208,19 @@ async def compat_case_referral(case_id: str, payload: Dict[str, Any] = Body(defa
 
 
 @router.post("/cases/{case_id}/legal-hold")
-async def compat_case_legal_hold(case_id: str, payload: Dict[str, Any] = Body(default_factory=dict)):
+async def compat_case_legal_hold(
+    case_id: str, payload: Dict[str, Any] = Body(default_factory=dict)
+):
     return accepted(f"/cases/{case_id}/legal-hold", caseId=case_id, payload=payload)
 
 
 @router.post("/cases/status-history", status_code=status.HTTP_201_CREATED)
-async def compat_case_status_history(payload: Dict[str, Any] = Body(default_factory=dict)):
-    return accepted("/cases/status-history", historyId=f"hist-{uuid4().hex[:8]}", payload=payload)
+async def compat_case_status_history(
+    payload: Dict[str, Any] = Body(default_factory=dict),
+):
+    return accepted(
+        "/cases/status-history", historyId=f"hist-{uuid4().hex[:8]}", payload=payload
+    )
 
 
 # Review workflow aliases.
@@ -217,21 +231,29 @@ async def compat_list_reviews(status: Optional[str] = None):
 
 @router.get("/reviews/{review_id}")
 async def compat_get_review(review_id: str):
-    return {"reviewId": review_id, "status": "submitted_for_review", "compatibility": True}
+    return {
+        "reviewId": review_id,
+        "status": "submitted_for_review",
+        "compatibility": True,
+    }
 
 
 @router.post("/reviews/{review_id}/transition")
 async def compat_transition_review(
     review_id: str, payload: Dict[str, Any] = Body(default_factory=dict)
 ):
-    return accepted(f"/reviews/{review_id}/transition", reviewId=review_id, payload=payload)
+    return accepted(
+        f"/reviews/{review_id}/transition", reviewId=review_id, payload=payload
+    )
 
 
 @router.post("/reviews/{review_id}/decision")
 async def compat_review_decision(
     review_id: str, payload: Dict[str, Any] = Body(default_factory=dict)
 ):
-    return accepted(f"/reviews/{review_id}/decision", reviewId=review_id, payload=payload)
+    return accepted(
+        f"/reviews/{review_id}/decision", reviewId=review_id, payload=payload
+    )
 
 
 # Decisions tab user-story routes.
@@ -251,13 +273,21 @@ async def compat_decision_sod_status(decision_id: str):
 
 
 @router.post("/decisions/{decision_id}/approve")
-async def compat_approve_decision(decision_id: str, payload: Dict[str, Any] = Body(default_factory=dict)):
-    return accepted(f"/decisions/{decision_id}/approve", decisionId=decision_id, payload=payload)
+async def compat_approve_decision(
+    decision_id: str, payload: Dict[str, Any] = Body(default_factory=dict)
+):
+    return accepted(
+        f"/decisions/{decision_id}/approve", decisionId=decision_id, payload=payload
+    )
 
 
 @router.post("/decisions/{decision_id}/reject")
-async def compat_reject_decision(decision_id: str, payload: Dict[str, Any] = Body(default_factory=dict)):
-    return accepted(f"/decisions/{decision_id}/reject", decisionId=decision_id, payload=payload)
+async def compat_reject_decision(
+    decision_id: str, payload: Dict[str, Any] = Body(default_factory=dict)
+):
+    return accepted(
+        f"/decisions/{decision_id}/reject", decisionId=decision_id, payload=payload
+    )
 
 
 @router.post("/decisions/{decision_id}/comments", status_code=status.HTTP_201_CREATED)
@@ -289,8 +319,12 @@ async def compat_audit_log_filters():
 
 
 @router.post("/audit-logs/filters", status_code=status.HTTP_201_CREATED)
-async def compat_save_audit_log_filter(payload: Dict[str, Any] = Body(default_factory=dict)):
-    return accepted("/audit-logs/filters", filterId=f"filter-{uuid4().hex[:8]}", payload=payload)
+async def compat_save_audit_log_filter(
+    payload: Dict[str, Any] = Body(default_factory=dict),
+):
+    return accepted(
+        "/audit-logs/filters", filterId=f"filter-{uuid4().hex[:8]}", payload=payload
+    )
 
 
 @router.get("/audit-logs/analytics")
@@ -300,12 +334,23 @@ async def compat_audit_log_analytics():
 
 @router.post("/audit-logs/export", status_code=status.HTTP_202_ACCEPTED)
 async def compat_audit_log_export(payload: Dict[str, Any] = Body(default_factory=dict)):
-    return accepted("/audit-logs/export", exportId=f"export-{uuid4().hex[:8]}", status="ready", payload=payload)
+    return accepted(
+        "/audit-logs/export",
+        exportId=f"export-{uuid4().hex[:8]}",
+        status="ready",
+        payload=payload,
+    )
 
 
 @router.post("/audit-logs/schedule-report", status_code=status.HTTP_202_ACCEPTED)
-async def compat_schedule_audit_report(payload: Dict[str, Any] = Body(default_factory=dict)):
-    return accepted("/audit-logs/schedule-report", scheduleId=f"sched-{uuid4().hex[:8]}", payload=payload)
+async def compat_schedule_audit_report(
+    payload: Dict[str, Any] = Body(default_factory=dict),
+):
+    return accepted(
+        "/audit-logs/schedule-report",
+        scheduleId=f"sched-{uuid4().hex[:8]}",
+        payload=payload,
+    )
 
 
 @router.get("/audit-logs/{log_id}")
@@ -319,28 +364,47 @@ async def compat_audit_events():
 
 
 @router.post("/audit-events")
-async def compat_create_audit_event(payload: Dict[str, Any] = Body(default_factory=dict)):
+async def compat_create_audit_event(
+    payload: Dict[str, Any] = Body(default_factory=dict),
+):
     return accepted("/audit-events", eventId=f"evt-{uuid4().hex[:8]}", payload=payload)
 
 
 @router.post("/audit-events/query")
-async def compat_query_audit_events(payload: Dict[str, Any] = Body(default_factory=dict)):
+async def compat_query_audit_events(
+    payload: Dict[str, Any] = Body(default_factory=dict),
+):
     return {"events": [], "total": 0, "filter": payload, "compatibility": True}
 
 
 @router.get("/audit-events/export")
 async def compat_export_audit_events():
-    return {"exportId": f"export-{uuid4().hex[:8]}", "status": "ready", "compatibility": True}
+    return {
+        "exportId": f"export-{uuid4().hex[:8]}",
+        "status": "ready",
+        "compatibility": True,
+    }
 
 
 @router.post("/audit-exports", status_code=status.HTTP_202_ACCEPTED)
-async def compat_create_audit_export(payload: Dict[str, Any] = Body(default_factory=dict)):
-    return accepted("/audit-exports", exportId=f"export-{uuid4().hex[:8]}", status="ready", payload=payload)
+async def compat_create_audit_export(
+    payload: Dict[str, Any] = Body(default_factory=dict),
+):
+    return accepted(
+        "/audit-exports",
+        exportId=f"export-{uuid4().hex[:8]}",
+        status="ready",
+        payload=payload,
+    )
 
 
 @router.get("/audit-exports/{export_id}")
 async def compat_get_audit_export(export_id: str):
-    return {"exportId": export_id, "status": "ready", "downloadUrl": f"/audit-exports/{export_id}/download"}
+    return {
+        "exportId": export_id,
+        "status": "ready",
+        "downloadUrl": f"/audit-exports/{export_id}/download",
+    }
 
 
 @router.get("/audit-exports/{export_id}/download")
@@ -358,13 +422,17 @@ async def compat_public_key(signing_key_id: str):
     return {
         "signingKeyId": signing_key_id,
         "alg": "RS256",
-        "publicKeyPem": "-----BEGIN PUBLIC KEY-----\ncompatibility\n-----END PUBLIC KEY-----",
+        "publicKeyPem": (
+            "-----BEGIN PUBLIC KEY-----\ncompatibility\n-----END PUBLIC KEY-----"
+        ),
     }
 
 
 # API platform, checks, and workflow demo endpoints.
 @router.post("/screening/sanctions")
-async def compat_screening_sanctions(payload: Dict[str, Any] = Body(default_factory=dict)):
+async def compat_screening_sanctions(
+    payload: Dict[str, Any] = Body(default_factory=dict),
+):
     return accepted("/screening/sanctions", matches=[], payload=payload)
 
 
@@ -390,12 +458,19 @@ async def compat_abn_lookup_post(payload: Dict[str, Any] = Body(default_factory=
 
 @router.post("/clients/create", status_code=status.HTTP_201_CREATED)
 async def compat_clients_create(payload: Dict[str, Any] = Body(default_factory=dict)):
-    return accepted("/clients/create", clientId=f"client-{uuid4().hex[:8]}", payload=payload)
+    return accepted(
+        "/clients/create", clientId=f"client-{uuid4().hex[:8]}", payload=payload
+    )
 
 
 @router.get("/clients/{client_id}/risk-score")
 async def compat_client_risk_score(client_id: str):
-    return {"clientId": client_id, "riskScore": 0, "riskLevel": "low", "compatibility": True}
+    return {
+        "clientId": client_id,
+        "riskScore": 0,
+        "riskLevel": "low",
+        "compatibility": True,
+    }
 
 
 @router.get("/compliance/reports")
@@ -420,7 +495,10 @@ async def compat_files_list(module: Optional[str] = None, folder: Optional[str] 
 
 @router.post("/files/upload")
 async def compat_files_upload(
-    file: UploadFile = File(...), module: Optional[str] = Form(None), folder: Optional[str] = Form(None), metadata: Optional[str] = Form(None)
+    file: UploadFile = File(...),
+    module: Optional[str] = Form(None),
+    folder: Optional[str] = Form(None),
+    metadata: Optional[str] = Form(None),
 ):
     return {
         "success": True,
@@ -432,9 +510,17 @@ async def compat_files_upload(
 
 
 @router.get("/files/search")
-async def compat_files_search(q: Optional[str] = None, module: Optional[str] = None, folder: Optional[str] = None):
-    """Compatibility search endpoint used by the frontend. Returns minimal, safe shape."""
-    return {"success": True, "query": q, "files": [], "module": module, "folder": folder}
+async def compat_files_search(
+    q: Optional[str] = None, module: Optional[str] = None, folder: Optional[str] = None
+):
+    """Compatibility search endpoint used by the frontend."""
+    return {
+        "success": True,
+        "query": q,
+        "files": [],
+        "module": module,
+        "folder": folder,
+    }
 
 
 @router.get("/files/download/{path}")
@@ -450,14 +536,27 @@ async def compat_files_delete(path: str):
 @router.get("/deals/{deal_id}/allocations")
 async def compat_get_deal_allocations(deal_id: str):
     """Return a compatibility-friendly allocation summary for a deal."""
-    return {"dealId": deal_id, "allocations": [], "totalAllocated": 0, "remaining": 0, "compatibility": True}
+    return {
+        "dealId": deal_id,
+        "allocations": [],
+        "totalAllocated": 0,
+        "remaining": 0,
+        "compatibility": True,
+    }
 
 
 @router.post("/deals/{deal_id}/allocations", status_code=status.HTTP_201_CREATED)
-async def compat_post_deal_allocation(deal_id: str, payload: Dict[str, Any] = Body(default_factory=dict)):
-    """Accept allocation requests and echo a created allocation id for frontend compatibility."""
+async def compat_post_deal_allocation(
+    deal_id: str, payload: Dict[str, Any] = Body(default_factory=dict)
+):
+    """Accept allocation requests and echo a created allocation id."""
     allocation_id = f"alloc-{uuid4().hex[:8]}"
-    return accepted(f"/deals/{deal_id}/allocations", dealId=deal_id, allocationId=allocation_id, payload=payload)
+    return accepted(
+        f"/deals/{deal_id}/allocations",
+        dealId=deal_id,
+        allocationId=allocation_id,
+        payload=payload,
+    )
 
 
 # Audit log shim used by frontend
@@ -467,8 +566,15 @@ async def compat_audit_log(payload: Dict[str, Any] = Body(default_factory=dict))
 
 
 @router.post("/checks/{check_type}")
-async def compat_run_check(check_type: str, payload: Dict[str, Any] = Body(default_factory=dict)):
-    return accepted(f"/checks/{check_type}", checkType=check_type, result={"status": "clear"}, payload=payload)
+async def compat_run_check(
+    check_type: str, payload: Dict[str, Any] = Body(default_factory=dict)
+):
+    return accepted(
+        f"/checks/{check_type}",
+        checkType=check_type,
+        result={"status": "clear"},
+        payload=payload,
+    )
 
 
 @router.post("/workflows/{workflow_area}/{workflow_action}")
@@ -491,7 +597,9 @@ async def compat_monitoring_alerts():
 
 
 @router.post("/monitoring/{action}")
-async def compat_monitoring_action(action: str, payload: Dict[str, Any] = Body(default_factory=dict)):
+async def compat_monitoring_action(
+    action: str, payload: Dict[str, Any] = Body(default_factory=dict)
+):
     return accepted(f"/monitoring/{action}", action=action, payload=payload)
 
 
@@ -546,13 +654,19 @@ async def compat_auth_oauth(payload: Dict[str, Any] = Body(default_factory=dict)
 
 
 @router.post("/auth/verify-email")
-async def compat_auth_verify_email(payload: Dict[str, Any] = Body(default_factory=dict)):
+async def compat_auth_verify_email(
+    payload: Dict[str, Any] = Body(default_factory=dict),
+):
     return accepted("/auth/verify-email", verified=True, payload=payload)
 
 
 @router.post("/auth/mfa/setup")
 async def compat_auth_mfa_setup():
-    return accepted("/auth/mfa/setup", factorId=f"mfa-{uuid4().hex[:8]}", qrCode="data:image/png;base64,compat")
+    return accepted(
+        "/auth/mfa/setup",
+        factorId=f"mfa-{uuid4().hex[:8]}",
+        qrCode="data:image/png;base64,compat",
+    )
 
 
 @router.post("/auth/mfa/verify")
@@ -561,30 +675,43 @@ async def compat_auth_mfa_verify(payload: Dict[str, Any] = Body(default_factory=
 
 
 @router.post("/auth/reset-password")
-async def compat_auth_reset_password(payload: Dict[str, Any] = Body(default_factory=dict)):
-    """Compatibility endpoint for initiating password reset flows used by legacy frontends."""
+async def compat_auth_reset_password(
+    payload: Dict[str, Any] = Body(default_factory=dict),
+):
+    """Compatibility endpoint for initiating legacy password resets."""
     # Accepts either { email } or { token, newPassword } depending on frontend usage.
     return accepted("/auth/reset-password", sent=True, payload=payload)
 
 
 @router.post("/auth/refresh")
-async def compat_auth_refresh(current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+async def compat_auth_refresh(
+    current_user: User = Depends(get_current_user), db: Session = Depends(get_db)
+):
     """Issue a refreshed access token for an authenticated user."""
     try:
         service = AuthService(db)
         role_val = getattr(current_user, "role", None)
         role_str = getattr(role_val, "value", role_val)
-        token = service.create_access_token(user_id=current_user.id, role=role_str)
-        return TokenResponse(access_token=token, token_type="bearer", expires_in=ACCESS_TOKEN_EXPIRE_MINUTES * 60, user=UserResponse.model_validate(current_user))
+        token = service.create_access_token(user_id=current_user.id, tenant_id=current_user.tenant_id, role=role_str)
+        return TokenResponse(
+            access_token=token,
+            token_type="bearer",
+            expires_in=ACCESS_TOKEN_EXPIRE_MINUTES * 60,
+            user=UserResponse.model_validate(current_user),
+        )
     except Exception:
         from fastapi.responses import JSONResponse
 
-        return JSONResponse(status_code=401, content={"detail": "Could not refresh token"})
+        return JSONResponse(
+            status_code=401, content={"detail": "Could not refresh token"}
+        )
 
 
 @router.post("/auth/update-password")
 async def compat_auth_update_password(
-    body: PasswordChangeRequest, current_user: User = Depends(get_current_user), db: Session = Depends(get_db)
+    body: PasswordChangeRequest,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
 ):
     """Deprecated alias for `/auth/change-password` used by legacy frontends."""
     try:
@@ -623,7 +750,9 @@ async def compat_xero_contact(contact_id: str):
 
 
 @router.post("/integrations/asic/lookup")
-async def compat_integration_asic_lookup(payload: Dict[str, Any] = Body(default_factory=dict)):
+async def compat_integration_asic_lookup(
+    payload: Dict[str, Any] = Body(default_factory=dict),
+):
     return accepted(
         "/integrations/asic/lookup",
         acn=payload.get("acn") or payload.get("abn"),
@@ -634,7 +763,9 @@ async def compat_integration_asic_lookup(payload: Dict[str, Any] = Body(default_
 
 
 @router.post("/integrations/asic/directors")
-async def compat_integration_asic_directors(payload: Dict[str, Any] = Body(default_factory=dict)):
+async def compat_integration_asic_directors(
+    payload: Dict[str, Any] = Body(default_factory=dict),
+):
     return accepted(
         "/integrations/asic/directors",
         directors=[{"name": "John Doe", "appointmentDate": "2020-01-01"}],
@@ -644,7 +775,9 @@ async def compat_integration_asic_directors(payload: Dict[str, Any] = Body(defau
 
 @router.post("/integrations/bgl/connect")
 async def compat_bgl_connect(payload: Dict[str, Any] = Body(default_factory=dict)):
-    return accepted("/integrations/bgl/connect", message="BGL Connected", payload=payload)
+    return accepted(
+        "/integrations/bgl/connect", message="BGL Connected", payload=payload
+    )
 
 
 @router.post("/integrations/bgl/funds")
@@ -675,21 +808,42 @@ async def compat_verify_tfn(payload: Dict[str, Any] = Body(default_factory=dict)
 
 @router.post("/payments/stripe/charge")
 async def compat_stripe_charge(payload: Dict[str, Any] = Body(default_factory=dict)):
-    return accepted("/payments/stripe/charge", chargeId=f"ch_{uuid4().hex[:8]}", status="succeeded", payload=payload)
+    return accepted(
+        "/payments/stripe/charge",
+        chargeId=f"ch_{uuid4().hex[:8]}",
+        status="succeeded",
+        payload=payload,
+    )
 
 
 @router.post("/payments/stripe/direct-debit")
-async def compat_stripe_direct_debit(payload: Dict[str, Any] = Body(default_factory=dict)):
-    return accepted("/payments/stripe/direct-debit", mandateId=f"mandate_{uuid4().hex[:8]}", status="active", payload=payload)
+async def compat_stripe_direct_debit(
+    payload: Dict[str, Any] = Body(default_factory=dict),
+):
+    return accepted(
+        "/payments/stripe/direct-debit",
+        mandateId=f"mandate_{uuid4().hex[:8]}",
+        status="active",
+        payload=payload,
+    )
 
 
 @router.post("/payments/paypal/subscription")
-async def compat_paypal_subscription(payload: Dict[str, Any] = Body(default_factory=dict)):
-    return accepted("/payments/paypal/subscription", subscriptionId=f"sub_{uuid4().hex[:8]}", status="active", payload=payload)
+async def compat_paypal_subscription(
+    payload: Dict[str, Any] = Body(default_factory=dict),
+):
+    return accepted(
+        "/payments/paypal/subscription",
+        subscriptionId=f"sub_{uuid4().hex[:8]}",
+        status="active",
+        payload=payload,
+    )
 
 
 @router.post("/evidence/upload-target")
-async def compat_evidence_upload_target(payload: Dict[str, Any] = Body(default_factory=dict)):
+async def compat_evidence_upload_target(
+    payload: Dict[str, Any] = Body(default_factory=dict),
+):
     return accepted(
         "/evidence/upload-target",
         uploadUrl=f"https://storage.local/{uuid4().hex}",
@@ -699,8 +853,14 @@ async def compat_evidence_upload_target(payload: Dict[str, Any] = Body(default_f
 
 
 @router.post("/evidence/download-url")
-async def compat_evidence_download_url(payload: Dict[str, Any] = Body(default_factory=dict)):
-    return accepted("/evidence/download-url", downloadUrl=f"https://storage.local/{uuid4().hex}", payload=payload)
+async def compat_evidence_download_url(
+    payload: Dict[str, Any] = Body(default_factory=dict),
+):
+    return accepted(
+        "/evidence/download-url",
+        downloadUrl=f"https://storage.local/{uuid4().hex}",
+        payload=payload,
+    )
 
 
 @router.post("/bot-runs", status_code=status.HTTP_201_CREATED)
@@ -709,32 +869,52 @@ async def compat_create_bot_run(payload: Dict[str, Any] = Body(default_factory=d
 
 
 @router.post("/bot-runs/{run_id}")
-async def compat_update_bot_run(run_id: str, payload: Dict[str, Any] = Body(default_factory=dict)):
+async def compat_update_bot_run(
+    run_id: str, payload: Dict[str, Any] = Body(default_factory=dict)
+):
     return accepted(f"/bot-runs/{run_id}", runId=run_id, payload=payload)
 
 
 @router.post("/bot-results", status_code=status.HTTP_201_CREATED)
-async def compat_create_bot_result(payload: Dict[str, Any] = Body(default_factory=dict)):
-    return accepted("/bot-results", resultId=f"result-{uuid4().hex[:8]}", payload=payload)
+async def compat_create_bot_result(
+    payload: Dict[str, Any] = Body(default_factory=dict),
+):
+    return accepted(
+        "/bot-results", resultId=f"result-{uuid4().hex[:8]}", payload=payload
+    )
 
 
 @router.post("/bot-results/evidence")
-async def compat_bot_result_evidence(payload: Dict[str, Any] = Body(default_factory=dict)):
-    return accepted("/bot-results/evidence", evidenceId=f"evidence-{uuid4().hex[:8]}", payload=payload)
+async def compat_bot_result_evidence(
+    payload: Dict[str, Any] = Body(default_factory=dict),
+):
+    return accepted(
+        "/bot-results/evidence",
+        evidenceId=f"evidence-{uuid4().hex[:8]}",
+        payload=payload,
+    )
 
 
 @router.post("/evidence-packs", status_code=status.HTTP_201_CREATED)
-async def compat_create_evidence_pack(payload: Dict[str, Any] = Body(default_factory=dict)):
-    return accepted("/evidence-packs", packId=f"pack-{uuid4().hex[:8]}", payload=payload)
+async def compat_create_evidence_pack(
+    payload: Dict[str, Any] = Body(default_factory=dict),
+):
+    return accepted(
+        "/evidence-packs", packId=f"pack-{uuid4().hex[:8]}", payload=payload
+    )
 
 
 @router.post("/findings", status_code=status.HTTP_201_CREATED)
 async def compat_create_finding(payload: Dict[str, Any] = Body(default_factory=dict)):
-    return accepted("/findings", findingId=f"finding-{uuid4().hex[:8]}", payload=payload)
+    return accepted(
+        "/findings", findingId=f"finding-{uuid4().hex[:8]}", payload=payload
+    )
 
 
 @router.get("/findings")
-async def compat_list_findings(caseId: Optional[str] = None, organizationId: Optional[str] = None):
+async def compat_list_findings(
+    caseId: Optional[str] = None, organizationId: Optional[str] = None
+):
     return {
         "caseId": caseId,
         "organizationId": organizationId,
@@ -749,23 +929,35 @@ async def compat_create_alert(payload: Dict[str, Any] = Body(default_factory=dic
 
 
 @router.post("/alerts/{alert_id}/resolve")
-async def compat_resolve_alert(alert_id: str, payload: Dict[str, Any] = Body(default_factory=dict)):
+async def compat_resolve_alert(
+    alert_id: str, payload: Dict[str, Any] = Body(default_factory=dict)
+):
     return accepted(f"/alerts/{alert_id}/resolve", alertId=alert_id, payload=payload)
 
 
 @router.post("/periodic-reviews", status_code=status.HTTP_201_CREATED)
-async def compat_create_periodic_review(payload: Dict[str, Any] = Body(default_factory=dict)):
-    return accepted("/periodic-reviews", reviewId=f"periodic-{uuid4().hex[:8]}", payload=payload)
+async def compat_create_periodic_review(
+    payload: Dict[str, Any] = Body(default_factory=dict),
+):
+    return accepted(
+        "/periodic-reviews", reviewId=f"periodic-{uuid4().hex[:8]}", payload=payload
+    )
 
 
 @router.post("/periodic-reviews/{review_id}")
-async def compat_update_periodic_review(review_id: str, payload: Dict[str, Any] = Body(default_factory=dict)):
-    return accepted(f"/periodic-reviews/{review_id}", reviewId=review_id, payload=payload)
+async def compat_update_periodic_review(
+    review_id: str, payload: Dict[str, Any] = Body(default_factory=dict)
+):
+    return accepted(
+        f"/periodic-reviews/{review_id}", reviewId=review_id, payload=payload
+    )
 
 
 @router.post("/provider-logs", status_code=status.HTTP_201_CREATED)
 async def compat_provider_logs(payload: Dict[str, Any] = Body(default_factory=dict)):
-    return accepted("/provider-logs", logId=f"provider-log-{uuid4().hex[:8]}", payload=payload)
+    return accepted(
+        "/provider-logs", logId=f"provider-log-{uuid4().hex[:8]}", payload=payload
+    )
 
 
 # Admin integration aliases from the imported API specification.
@@ -775,15 +967,21 @@ async def compat_admin_integrations():
 
 
 @router.post("/admin/integrations/{provider}/test")
-async def compat_admin_integration_test(provider: str, payload: Dict[str, Any] = Body(default_factory=dict)):
-    return accepted(f"/admin/integrations/{provider}/test", provider=provider, payload=payload)
+async def compat_admin_integration_test(
+    provider: str, payload: Dict[str, Any] = Body(default_factory=dict)
+):
+    return accepted(
+        f"/admin/integrations/{provider}/test", provider=provider, payload=payload
+    )
 
 
 @router.post("/admin/integrations/{provider}/configure")
 async def compat_admin_integration_configure(
     provider: str, payload: Dict[str, Any] = Body(default_factory=dict)
 ):
-    return accepted(f"/admin/integrations/{provider}/configure", provider=provider, payload=payload)
+    return accepted(
+        f"/admin/integrations/{provider}/configure", provider=provider, payload=payload
+    )
 
 
 @router.get("/admin/integrations/{provider}/logs")
@@ -792,5 +990,12 @@ async def compat_admin_integration_logs(provider: str):
 
 
 @router.post("/subjects/{subject_type}", status_code=status.HTTP_201_CREATED)
-async def compat_create_subject(subject_type: str, payload: Dict[str, Any] = Body(default_factory=dict)):
-    return accepted(f"/subjects/{subject_type}", subjectId=f"subject-{uuid4().hex[:8]}", subjectType=subject_type, payload=payload)
+async def compat_create_subject(
+    subject_type: str, payload: Dict[str, Any] = Body(default_factory=dict)
+):
+    return accepted(
+        f"/subjects/{subject_type}",
+        subjectId=f"subject-{uuid4().hex[:8]}",
+        subjectType=subject_type,
+        payload=payload,
+    )

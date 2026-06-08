@@ -7,24 +7,17 @@ without breaking the legacy Case status lifecycle.
 """
 
 import logging
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Any, Dict, List, Optional
 
 from sqlalchemy.orm import Session
 
 from core.enums import CaseStatus
-from core.exceptions import DatabaseError, InvalidStateError, ResourceNotFoundError
+from core.exceptions import (DatabaseError, InvalidStateError,
+                             ResourceNotFoundError)
 from core.tenant_context import get_tenant_id
-from models import (
-    Case,
-    CaseAssignment,
-    CaseComment,
-    CaseEvent,
-    CaseEvidence,
-    CaseSLA,
-    CaseSnapshot,
-    Client,
-)
+from models import (Case, CaseAssignment, CaseComment, CaseEvent, CaseEvidence,
+                    CaseSLA, CaseSnapshot, Client)
 
 logger = logging.getLogger(__name__)
 
@@ -72,7 +65,9 @@ class CaseWorkflowService:
             self.db.add(assignment)
 
             # 3. SLA
-            due_date = datetime.now(timezone.utc) + timedelta(hours=48 if priority != "critical" else 12)
+            due_date = datetime.now(timezone.utc) + timedelta(
+                hours=48 if priority != "critical" else 12
+            )
             sla = CaseSLA(
                 case_id=case.id,
                 tenant_id=self.tenant_id,
@@ -98,13 +93,19 @@ class CaseWorkflowService:
             self.logger.error(f"Failed to create enterprise case: {e}")
             raise DatabaseError("Could not create Case.")
 
-    def assign_case(self, case_id: int, assignee_id: int, actor_id: int) -> CaseAssignment:
+    def assign_case(
+        self, case_id: int, assignee_id: int, actor_id: int
+    ) -> CaseAssignment:
         """Assign a case to a specific analyst/MLRO."""
         case = self._get_case(case_id)
         if case.status != CaseStatus.OPEN:
             raise InvalidStateError("Cannot assign a closed case.")
 
-        assignment = self.db.query(CaseAssignment).filter(CaseAssignment.case_id == case.id).first()
+        assignment = (
+            self.db.query(CaseAssignment)
+            .filter(CaseAssignment.case_id == case.id)
+            .first()
+        )
         if not assignment:
             assignment = CaseAssignment(case_id=case.id, tenant_id=self.tenant_id)
             self.db.add(assignment)
@@ -121,7 +122,11 @@ class CaseWorkflowService:
             case_id=case.id,
             event_type="assigned",
             actor_id=actor_id,
-            details={"previous_assignee": old_assignee, "new_assignee": assignee_id, "queue": assignment.queue_name},
+            details={
+                "previous_assignee": old_assignee,
+                "new_assignee": assignee_id,
+                "queue": assignment.queue_name,
+            },
         )
 
         self.db.commit()
@@ -134,7 +139,11 @@ class CaseWorkflowService:
         if case.status != CaseStatus.OPEN:
             raise InvalidStateError("Cannot escalate a closed case.")
 
-        assignment = self.db.query(CaseAssignment).filter(CaseAssignment.case_id == case.id).first()
+        assignment = (
+            self.db.query(CaseAssignment)
+            .filter(CaseAssignment.case_id == case.id)
+            .first()
+        )
         old_queue = assignment.queue_name if assignment else "None"
 
         if assignment:
@@ -163,10 +172,12 @@ class CaseWorkflowService:
         self.db.refresh(assignment)
         return assignment
 
-    def link_evidence(self, case_id: int, evidence_type: str, ref_id: int, desc: str, actor_id: int) -> CaseEvidence:
+    def link_evidence(
+        self, case_id: int, evidence_type: str, ref_id: int, desc: str, actor_id: int
+    ) -> CaseEvidence:
         """Link external documents/reports to a case."""
         case = self._get_case(case_id)
-        
+
         evidence = CaseEvidence(
             tenant_id=self.tenant_id,
             case_id=case.id,
@@ -217,7 +228,9 @@ class CaseWorkflowService:
             "resolution": resolution,
             "final_risk_score": 85.5,
             "screening_hits_count": 2,
-            "evidence_count": self.db.query(CaseEvidence).filter(CaseEvidence.case_id == case.id).count(),
+            "evidence_count": self.db.query(CaseEvidence)
+            .filter(CaseEvidence.case_id == case.id)
+            .count(),
             "closed_by_user_id": actor_id,
         }
 
@@ -259,7 +272,9 @@ class CaseWorkflowService:
             raise ResourceNotFoundError("Case", case_id)
         return case
 
-    def _append_event(self, case_id: int, event_type: str, actor_id: int, details: dict):
+    def _append_event(
+        self, case_id: int, event_type: str, actor_id: int, details: dict
+    ):
         """Internal helper to ensure CaseEvents are strictly appended."""
         event = CaseEvent(
             tenant_id=self.tenant_id,

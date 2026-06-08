@@ -15,7 +15,8 @@ import {
   Eye,
   RefreshCw,
   Play,
-  CheckSquare
+  CheckSquare,
+  Plus
 } from 'lucide-react';
 
 interface QuarterlyAuditPacksProps {

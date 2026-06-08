@@ -36,21 +36,15 @@ export function GrowSignIn({ onSignIn }: GrowSignInProps) {
   };
 
   const handleGoogleSignIn = () => {
-    toast.info('Google Sign In', {
-      description: 'Redirecting to Google...'
-    });
+    toast.info('Google Sign In', 'Redirecting to Google...');
   };
 
   const handleMicrosoftSignIn = () => {
-    toast.info('Microsoft Sign In', {
-      description: 'Redirecting to Microsoft...'
-    });
+    toast.info('Microsoft Sign In', 'Redirecting to Microsoft...');
   };
 
   const handleForgotPassword = () => {
-    toast.info('Password Reset', {
-      description: 'Check your email for reset instructions'
-    });
+    toast.info('Password Reset', 'Check your email for reset instructions');
   };
 
   return (

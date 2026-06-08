@@ -21,7 +21,6 @@ from datetime import datetime, timezone
 from sqlalchemy import Column, DateTime, ForeignKey, Integer
 from sqlalchemy.orm import declared_attr
 
-
 # ---------------------------------------------------------------------------
 # Timestamp helpers
 # ---------------------------------------------------------------------------
@@ -121,7 +120,7 @@ class TenantMixin:
         return Column(
             Integer,
             ForeignKey("tenants.id", ondelete="SET NULL"),
-            nullable=True,   # Phase 1: safe for legacy data
+            nullable=True,  # Phase 1: safe for legacy data
             index=True,
         )
 

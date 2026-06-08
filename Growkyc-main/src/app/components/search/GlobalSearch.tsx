@@ -259,10 +259,8 @@ export function GlobalSearch() {
                 icon={Search}
                 title="No results found"
                 description="Try adjusting your search query or filters"
-                action={{
-                  label: 'Clear Search',
-                  onClick: handleClearSearch
-                }}
+                actionLabel="Clear Search"
+                onAction={handleClearSearch}
               />
             ) : (
               <div className="space-y-3">

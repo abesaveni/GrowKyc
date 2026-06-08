@@ -36,7 +36,7 @@ const mockUserProfile = {
   organization: 'Platinum Capital Partners',
   joinDate: new Date('2023-06-15'),
   verified: true,
-  avatar: null,
+  avatar: null as string | null,
   bio: 'Experienced property investor with a focus on mortgage investment opportunities in premium Australian markets. Over 15 years of experience in commercial and residential property investment.',
   stats: {
     totalBids: 28,
@@ -76,15 +76,11 @@ export function UserProfile({ userId = 'user-001', onBack }: UserProfileProps) {
   const [profile] = useState(mockUserProfile);
 
   const handleSendMessage = () => {
-    toast.success('Message window opened', {
-      description: `Starting conversation with ${profile.name}`
-    });
+    toast.success('Message window opened', `Starting conversation with ${profile.name}`);
   };
 
   const handleViewDeals = () => {
-    toast.info('Viewing deals', {
-      description: `All deals from ${profile.name}`
-    });
+    toast.info('Viewing deals', `All deals from ${profile.name}`);
   };
 
   const breadcrumbItems = [

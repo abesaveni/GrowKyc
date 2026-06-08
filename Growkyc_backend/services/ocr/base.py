@@ -3,6 +3,7 @@ services/ocr/base.py
 ====================
 Abstract base for OCR provider integration.
 """
+
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from typing import Any, Dict, Optional
@@ -11,6 +12,7 @@ from typing import Any, Dict, Optional
 @dataclass
 class OcrResult:
     """Normalized OCR extraction output."""
+
     status: str  # completed | failed
     provider: str
     document_type: Optional[str] = None

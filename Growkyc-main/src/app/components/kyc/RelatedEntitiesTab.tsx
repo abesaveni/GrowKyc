@@ -81,6 +81,15 @@ export function RelatedEntitiesTab({ clientId }: RelatedEntitiesTabProps) {
   const mediumRiskEntities = entities.filter(e => e.riskRating === 'Medium');
   const lowRiskEntities = entities.filter(e => e.riskRating === 'Low');
 
+  const ownershipThreshold = (() => {
+    try {
+      const val = localStorage.getItem('grow_settings_ownership_threshold');
+      return val ? JSON.parse(val) : 25;
+    } catch {
+      return 25;
+    }
+  })();
+
   return (
     <div className="space-y-6">
       {/* SUMMARY STATISTICS */}
@@ -161,7 +170,7 @@ export function RelatedEntitiesTab({ clientId }: RelatedEntitiesTabProps) {
               <Building className="w-16 h-16 text-gray-400 mx-auto mb-4" />
               <h3 className="text-xl font-bold text-gray-700 mb-2">No Related Entities Found</h3>
               <p className="text-gray-600">
-                No entities found where directors or shareholders hold more than 25% ownership
+                No entities found where directors or shareholders hold more than {ownershipThreshold}% ownership
               </p>
             </CardContent>
           </Card>

@@ -119,7 +119,7 @@ export function CreditorManagementView() {
         </select>
       </div>
 
-      <DataTable columns={columns} data={filtered} loading={loading} getRowId={(r) => r.id} onRowClick={setSelected} />
+      <DataTable columns={columns} data={filtered} loading={loading} getRowId={(r) => r.id} onRowClick={(row) => setSelected(row)} />
 
       {selected && (
         <>

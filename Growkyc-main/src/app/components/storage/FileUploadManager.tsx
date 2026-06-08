@@ -16,7 +16,7 @@ import {
   Loader2,
   X
 } from 'lucide-react';
-import { projectId, publicAnonKey } from '/utils/supabase/info';
+import { projectId, publicAnonKey } from '../../../../utils/supabase/info';
 
 function getRuntimeEnv(): Record<string, string | boolean | undefined> {
   const viteEnv = (typeof import.meta !== 'undefined' ? (import.meta as any).env : {}) || {};

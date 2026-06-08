@@ -14,8 +14,9 @@ Imports:
 
 from datetime import datetime, timezone
 
-from sqlalchemy import Column, DateTime, ForeignKey, Index, Integer, String, Text
+from sqlalchemy import Column, DateTime
 from sqlalchemy import Enum as SQLEnum
+from sqlalchemy import ForeignKey, Index, Integer, String, Text
 from sqlalchemy.orm import relationship
 
 from core.enums import KYCStatus
@@ -114,7 +115,7 @@ class AuditLog(Base):
     after_data = Column(Text, nullable=True, comment="JSON payload after change")
 
     # ---- Context ----
-    ip_address = Column(String(45), nullable=True)   # supports IPv6
+    ip_address = Column(String(45), nullable=True)  # supports IPv6
     user_agent = Column(String(512), nullable=True)
 
     # ---- Timestamp ----

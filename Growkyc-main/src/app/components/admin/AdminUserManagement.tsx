@@ -415,7 +415,8 @@ export function AdminUserManagement() {
                             onClick={() => {
                               // In production, navigate to user detail page
                               // For now, show basic info
-                              alert(`User: ${user.name}\nEmail: ${user.email}\nRole: ${user.role}\nStatus: ${user.status}`);\n                            }}
+                              alert(`User: ${user.name}\nEmail: ${user.email}\nRole: ${user.role}\nStatus: ${user.status}`);
+                            }}
                             title="View User"
                           >
                             <Eye className="w-4 h-4" />

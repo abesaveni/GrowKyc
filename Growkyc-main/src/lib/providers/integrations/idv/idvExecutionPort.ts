@@ -1,5 +1,5 @@
-import type { ProviderStatus } from '../../../models/providerStatus';
-import type { IDVProviderRawResponse, IDVProviderRequest } from '../adapters/idv/idvTypes';
+import type { ProviderStatus } from '../../models/providerStatus';
+import type { IDVProviderRawResponse, IDVProviderRequest } from '../../adapters/idv/idvTypes';
 
 export interface IIDVExecutionPort {
   getStatus(): Promise<ProviderStatus>;
