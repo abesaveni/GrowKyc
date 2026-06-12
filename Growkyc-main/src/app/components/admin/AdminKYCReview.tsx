@@ -80,8 +80,7 @@ export function AdminKYCReview({ onNavigate }: AdminKYCReviewProps) {
   const confirmAction = async () => {
     const { userId, userName, type } = confirmDialog;
     if (!type) return;
-    const optimisticStatus = type === 'approve' ? 'approved' : 'rejected';
-    updateSubmissionStatus(userId, optimisticStatus);
+    setConfirmDialog({ open: false, type: null, userName: '', userId: '' });
     try {
       const endpoint = type === 'approve'
         ? `/api/v1/kyc/approve/${userId}`
@@ -94,21 +93,21 @@ export function AdminKYCReview({ onNavigate }: AdminKYCReviewProps) {
         headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
         body: JSON.stringify(body),
       });
-      if (!response.ok) throw new Error('Server error');
+      if (!response.ok) {
+        const errData = await response.json().catch(() => ({}));
+        const detail = typeof errData?.detail === 'string'
+          ? errData.detail
+          : `Request failed (${response.status})`;
+        throw new Error(detail);
+      }
+      updateSubmissionStatus(userId, type === 'approve' ? 'approved' : 'rejected');
       toast.success(
         type === 'approve'
           ? `KYC Approved for ${userName}`
           : `KYC Rejected for ${userName}`
       );
-    } catch {
-      updateSubmissionStatus(userId, 'pending');
-      toast.error(
-        type === 'approve'
-          ? `Failed to approve ${userName}`
-          : `Failed to reject ${userName}`
-      );
-    } finally {
-      setConfirmDialog({ open: false, type: null, userName: '', userId: '' });
+    } catch (err: any) {
+      toast.error(err?.message || `Failed to ${type} KYC for ${userName}`);
     }
   };
 

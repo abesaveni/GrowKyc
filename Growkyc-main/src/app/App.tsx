@@ -370,6 +370,10 @@ export default function App() {
 
   const [currentPage, setCurrentPage] = useState<Page>('dashboard');
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [currentPage]);
+
   const resolveUserRole = (): UserRole => {
     try {
       const raw = sessionStorage.getItem('growkyc_user');
