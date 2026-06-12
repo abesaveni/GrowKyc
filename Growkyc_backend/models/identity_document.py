@@ -24,10 +24,11 @@ class IdentityDocument(Base):
     id = Column(Integer, primary_key=True, index=True)
 
     # ---- Links ----
+    # nullable=True: legacy KYC submissions created before multi-tenancy had no tenant context.
     tenant_id = Column(
         Integer,
-        ForeignKey("tenants.id", ondelete="NO ACTION"),
-        nullable=False,
+        ForeignKey("tenants.id", ondelete="SET NULL"),
+        nullable=True,
         index=True,
     )
     client_id = Column(

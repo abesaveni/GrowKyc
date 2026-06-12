@@ -24,6 +24,7 @@ WORKDIR /app
 # Install runtime dependencies only
 RUN apt-get update && apt-get install -y --no-install-recommends \
     postgresql-client \
+    wget \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy Python packages from builder
@@ -46,9 +47,9 @@ USER kyc_user
 # Expose port
 EXPOSE 8000
 
-# Health check
+# Health check — wget is always available; avoids needing 'requests' in the runtime image
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
-    CMD python -c "import requests; requests.get('http://localhost:8000/health')"
+    CMD wget -q -O /dev/null http://localhost:8000/health || exit 1
 
 # Run application
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

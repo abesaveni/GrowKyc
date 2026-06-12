@@ -16,7 +16,7 @@ from sqlalchemy import Enum as SQLEnum
 from sqlalchemy import ForeignKey, Index, Integer, String, Text
 from sqlalchemy.orm import relationship
 
-from core.enums import DocumentType
+from core.enums import DocumentOCRStatus, DocumentType, DocumentVerificationStatus
 from models.base import Base
 
 
@@ -106,20 +106,18 @@ class Document(Base):
 
     # ---- OCR ----
     ocr_status = Column(
-        String(50),
+        SQLEnum(DocumentOCRStatus),
         nullable=True,
-        default="not_started",
-        comment="not_started|processing|completed|failed",
+        default=DocumentOCRStatus.NOT_STARTED,
     )
     ocr_data = Column(JSON, nullable=True, comment="Extracted fields from OCR provider")
     liveness_reference = Column(String(255), nullable=True)
 
     # ---- Verification ----
     verification_status = Column(
-        String(50),
+        SQLEnum(DocumentVerificationStatus),
         nullable=True,
-        default="pending",
-        comment="pending|verified|failed|requires_review",
+        default=DocumentVerificationStatus.PENDING,
     )
     verification_provider = Column(String(100), nullable=True)
     provider_reference = Column(String(255), nullable=True)
@@ -141,6 +139,12 @@ class Document(Base):
     superseded_by_id = Column(
         Integer, ForeignKey("documents.id", ondelete="SET NULL"), nullable=True
     )
+
+    # ---- Soft delete ----
+    deleted_at = Column(DateTime, nullable=True)
+
+    # ---- Optimistic locking ----
+    version = Column(Integer, nullable=False, default=1, server_default="1")
 
     # ---- Relationships ----
     kyc = relationship("KYC", back_populates="documents")

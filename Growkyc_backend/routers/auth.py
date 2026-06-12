@@ -23,17 +23,27 @@ router = APIRouter(prefix="/auth", tags=["authentication"])
 
 @router.post(
     "/register",
-    response_model=UserResponse,
+    response_model=TokenResponse,
     status_code=status.HTTP_201_CREATED,
 )
 async def register(
-    request: UserRegisterRequest, db: Session = Depends(get_db)
-) -> UserResponse:
-    """Register a new user account."""
+    body: UserRegisterRequest, db: Session = Depends(get_db)
+) -> TokenResponse:
+    """Register a new user account and return JWT token."""
     try:
         service = AuthService(db)
-        user = service.register_user(request.name, request.email, request.password)
-        return UserResponse.model_validate(user)
+        user = service.register_user(body.name, body.email, body.password, role=body.role)
+        access_token = service.create_access_token(
+            user.id,
+            tenant_id=user.tenant_id,
+            role=user.role.value if hasattr(user.role, "value") else user.role,
+        )
+        return TokenResponse(
+            access_token=access_token,
+            token_type="bearer",
+            expires_in=30 * 60,
+            user=UserResponse.model_validate(user),
+        )
     except (ValidationError, DuplicateResourceError) as e:
         raise HTTPException(status_code=e.status_code, detail=e.message)
     except DatabaseError as e:
@@ -46,12 +56,12 @@ async def register(
 
 @router.post("/login", response_model=TokenResponse)
 async def login(
-    request: UserLoginRequest, db: Session = Depends(get_db)
+    body: UserLoginRequest, db: Session = Depends(get_db)
 ) -> TokenResponse:
     """Authenticate user and return JWT access token."""
     try:
         service = AuthService(db)
-        user = service.authenticate_user(request.email, request.password)
+        user = service.authenticate_user(body.email, body.password)
         access_token = service.create_access_token(
             user.id,
             tenant_id=user.tenant_id,
@@ -111,20 +121,15 @@ async def refresh_token(
 ) -> TokenResponse:
     """Refresh JWT access token using current authentication."""
     try:
-        service = AuthService(db)
-        # Verify user still exists and is active
-        user = service.get_current_user(
-            service.create_access_token(
-                current_user.id,
-                tenant_id=current_user.tenant_id,
-                role=(
-                    current_user.role.value
-                    if hasattr(current_user.role, "value")
-                    else current_user.role
-                ),
+        # Re-fetch user from DB to ensure account is still active and not locked
+        user = db.query(User).filter(User.id == current_user.id).first()
+        if not user or not user.is_active:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="User account is inactive or not found",
             )
-        )
 
+        service = AuthService(db)
         new_token = service.create_access_token(
             user.id,
             tenant_id=user.tenant_id,
@@ -137,6 +142,8 @@ async def refresh_token(
             expires_in=30 * 60,
             user=UserResponse.model_validate(user),
         )
+    except HTTPException:
+        raise
     except AuthenticationError as e:
         raise HTTPException(status_code=e.status_code, detail=e.message)
     except DatabaseError:

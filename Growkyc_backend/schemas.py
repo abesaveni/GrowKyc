@@ -28,14 +28,16 @@ class UserRegisterRequest(BaseModel):
 
     name: str = Field(..., min_length=2, max_length=255)
     email: EmailStr
-    password: str = Field(..., min_length=8, max_length=255)
+    password: str = Field(..., min_length=12, max_length=255)
+    role: Optional[str] = Field(default="User")
 
     class Config:
         json_schema_extra = {
             "example": {
                 "name": "John Doe",
                 "email": "john@example.com",
-                "password": "SecurePass123",
+                "password": "SecurePass@123",
+                "role": "User",
             }
         }
 
@@ -295,7 +297,7 @@ class IndividualProfileCreate(BaseModel):
 class IndividualProfileResponse(IndividualProfileCreate):
     id: int
     client_id: int
-    tenant_id: int
+    tenant_id: Optional[int] = None
     is_pep: bool
     pep_details: Optional[str] = None
     created_at: datetime
@@ -337,7 +339,7 @@ class EntityProfileCreate(BaseModel):
 class EntityProfileResponse(EntityProfileCreate):
     id: int
     client_id: int
-    tenant_id: int
+    tenant_id: Optional[int] = None
     created_at: datetime
     updated_at: datetime
 
@@ -734,7 +736,7 @@ class EntityDirectorCreate(BaseModel):
 class EntityDirectorResponse(EntityDirectorCreate):
     id: int
     client_id: int
-    tenant_id: int
+    tenant_id: Optional[int] = None
     created_at: datetime
 
     model_config = ConfigDict(from_attributes=True)
@@ -762,7 +764,7 @@ class BeneficialOwnerCreate(BaseModel):
 class BeneficialOwnerResponse(BeneficialOwnerCreate):
     id: int
     client_id: int
-    tenant_id: int
+    tenant_id: Optional[int] = None
     is_pep: bool
     is_sanctioned: bool
     is_adverse_media: bool
@@ -781,7 +783,7 @@ class OwnershipRelationshipCreate(BaseModel):
 
 class OwnershipRelationshipResponse(OwnershipRelationshipCreate):
     id: int
-    tenant_id: int
+    tenant_id: Optional[int] = None
     created_at: datetime
 
     model_config = ConfigDict(from_attributes=True)

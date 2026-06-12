@@ -10,6 +10,7 @@ import { ConfirmDialog } from '../ui/confirm-dialog';
 
 interface KYCSubmission {
   id: string;
+  userId: string;
   userName: string;
   userRole: string;
   email: string;
@@ -22,6 +23,10 @@ interface AdminKYCReviewProps {
   onNavigate?: (page: string, id?: string) => void;
 }
 
+function getAuthHeader(): Record<string, string> {
+  const token = sessionStorage.getItem('growkyc_token');
+  return token ? { Authorization: `Bearer ${token}` } : {};
+}
 
 export function AdminKYCReview({ onNavigate }: AdminKYCReviewProps) {
   const [submissions, setSubmissions] = React.useState<KYCSubmission[]>([]);
@@ -34,15 +39,24 @@ export function AdminKYCReview({ onNavigate }: AdminKYCReviewProps) {
   const approvedCount = submissions.filter(s => s.status === 'approved').length;
   const rejectedCount = submissions.filter(s => s.status === 'rejected').length;
 
-  // Fetch submissions on mount
   React.useEffect(() => {
-    fetch('/api/v1/reviews?status=submitted_for_review')
+    fetch('/api/v1/admin/kyc/pending', { headers: getAuthHeader() })
       .then((res) => {
         if (!res.ok) throw new Error('Failed to fetch');
         return res.json();
       })
-      .then((data: KYCSubmission[]) => {
-        setSubmissions(data);
+      .then((data: { total: number; items: any[] }) => {
+        const mapped: KYCSubmission[] = (data.items || []).map((item: any) => ({
+          id: String(item.id),
+          userId: String(item.user_id),
+          userName: item.name || 'Unknown',
+          userRole: item.user?.role || 'User',
+          email: item.user?.email || '',
+          submittedDate: new Date(item.submitted_at || item.created_at),
+          status: (item.status || 'pending').toLowerCase() as KYCSubmission['status'],
+          documentsCount: item.documents?.length ?? 0,
+        }));
+        setSubmissions(mapped);
       })
       .catch(() => {
         toast.error('Unable to load KYC submissions');
@@ -50,7 +64,6 @@ export function AdminKYCReview({ onNavigate }: AdminKYCReviewProps) {
       .finally(() => setLoading(false));
   }, []);
 
-  // Optimistic UI helper
   const updateSubmissionStatus = (id: string, newStatus: KYCSubmission['status']) => {
     setSubmissions((prev) =>
       prev.map((s) => (s.id === id ? { ...s, status: newStatus } : s))
@@ -67,29 +80,27 @@ export function AdminKYCReview({ onNavigate }: AdminKYCReviewProps) {
   const confirmAction = async () => {
     const { userId, userName, type } = confirmDialog;
     if (!type) return;
-    // Optimistically update UI
     const optimisticStatus = type === 'approve' ? 'approved' : 'rejected';
     updateSubmissionStatus(userId, optimisticStatus);
-    // Send request to backend
     try {
-      const response = await fetch(`/api/v1/reviews/${userId}/decision`, {
+      const endpoint = type === 'approve'
+        ? `/api/v1/kyc/approve/${userId}`
+        : `/api/v1/kyc/reject/${userId}`;
+      const body = type === 'approve'
+        ? { approval_reason: 'Approved via admin review' }
+        : { rejection_reason: 'Rejected via admin review' };
+      const response = await fetch(endpoint, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ decision: type })
+        headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
+        body: JSON.stringify(body),
       });
       if (!response.ok) throw new Error('Server error');
-      const updated: KYCSubmission = await response.json();
-      // Replace with server payload (in case of extra fields)
-      setSubmissions((prev) =>
-        prev.map((s) => (s.id === updated.id ? updated : s))
-      );
       toast.success(
         type === 'approve'
           ? `KYC Approved for ${userName}`
           : `KYC Rejected for ${userName}`
       );
-    } catch (err) {
-      // Rollback on error
+    } catch {
       updateSubmissionStatus(userId, 'pending');
       toast.error(
         type === 'approve'
@@ -109,9 +120,7 @@ export function AdminKYCReview({ onNavigate }: AdminKYCReviewProps) {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600 mb-1">Pending Reviews</p>
-                <p className="text-3xl font-semibold text-gray-900">
-                  <p className="text-3xl font-semibold text-gray-900">{pendingCount}</p>
-                </p>
+                <p className="text-3xl font-semibold text-gray-900">{loading ? '—' : pendingCount}</p>
               </div>
               <div className="p-3 bg-amber-50 rounded-lg">
                 <Eye className="w-6 h-6 text-amber-600" />
@@ -125,7 +134,7 @@ export function AdminKYCReview({ onNavigate }: AdminKYCReviewProps) {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600 mb-1">Approved Today</p>
-                  <p className="text-3xl font-semibold text-gray-900">{approvedCount}</p>
+                <p className="text-3xl font-semibold text-gray-900">{loading ? '—' : approvedCount}</p>
               </div>
               <div className="p-3 bg-green-50 rounded-lg">
                 <CheckCircle2 className="w-6 h-6 text-green-600" />
@@ -139,7 +148,7 @@ export function AdminKYCReview({ onNavigate }: AdminKYCReviewProps) {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600 mb-1">Rejected Today</p>
-                  <p className="text-3xl font-semibold text-gray-900">{rejectedCount}</p>
+                <p className="text-3xl font-semibold text-gray-900">{loading ? '—' : rejectedCount}</p>
               </div>
               <div className="p-3 bg-red-50 rounded-lg">
                 <XCircle className="w-6 h-6 text-red-600" />
@@ -154,19 +163,24 @@ export function AdminKYCReview({ onNavigate }: AdminKYCReviewProps) {
           <CardTitle>KYC Submissions</CardTitle>
         </CardHeader>
         <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>User</TableHead>
-                <TableHead>Role</TableHead>
-                <TableHead>Email</TableHead>
-                <TableHead>Submitted</TableHead>
-                <TableHead>Documents</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead></TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
+          {loading ? (
+            <div className="flex justify-center py-10 text-gray-400">Loading submissions…</div>
+          ) : submissions.length === 0 ? (
+            <div className="flex justify-center py-10 text-gray-400">No pending KYC submissions.</div>
+          ) : (
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>User</TableHead>
+                  <TableHead>Role</TableHead>
+                  <TableHead>Email</TableHead>
+                  <TableHead>Submitted</TableHead>
+                  <TableHead>Documents</TableHead>
+                  <TableHead>Status</TableHead>
+                  <TableHead></TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
                 {submissions.map((submission) => (
                   <TableRow key={submission.id}>
                     <TableCell className="font-medium">{submission.userName}</TableCell>
@@ -183,7 +197,7 @@ export function AdminKYCReview({ onNavigate }: AdminKYCReviewProps) {
                           <Button
                             size="sm"
                             variant="outline"
-                            onClick={() => onNavigate?.('admin_kyc_detail', submission.id)}
+                            onClick={() => onNavigate?.('admin_kyc_detail', submission.userId)}
                           >
                             <Eye className="w-4 h-4 mr-1" />
                             Review
@@ -211,7 +225,7 @@ export function AdminKYCReview({ onNavigate }: AdminKYCReviewProps) {
                         <Button
                           variant="outline"
                           size="sm"
-                          onClick={() => onNavigate?.('admin_kyc_detail', submission.id)}
+                          onClick={() => onNavigate?.('admin_kyc_detail', submission.userId)}
                         >
                           <Eye className="w-4 h-4 mr-1" />
                           View
@@ -220,8 +234,9 @@ export function AdminKYCReview({ onNavigate }: AdminKYCReviewProps) {
                     </TableCell>
                   </TableRow>
                 ))}
-            </TableBody>
-          </Table>
+              </TableBody>
+            </Table>
+          )}
         </CardContent>
       </Card>
 

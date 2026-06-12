@@ -22,21 +22,15 @@ interface AdminDashboardProps {
   onNavigate?: (page: string) => void;
 }
 
-// Mock data for visual dashboard
-const stats = {
-  totalCases: 247,
-  casesTrend: { value: 12, isPositive: true },
-  activeCases: 89,
-  activeListings: 34,
-  totalSales: 15800000,
-  salesTrend: { value: 23, isPositive: true },
-  avgSaleValue: 1053333,
-  pendingKYC: 8,
-  totalUsers: 1284,
-  usersTrend: { value: 18, isPositive: true },
-  activeAuctions: 12,
-  successRate: 94.2
-};
+interface DashboardStats {
+  totalKYC: number;
+  pendingKYC: number;
+  approvedKYC: number;
+  rejectedKYC: number;
+  totalUsers: number;
+  activeUsers: number;
+  totalDocuments: number;
+}
 
 const recentCases = [
   { id: 'MIP-2024-047', property: 'Bondi Beach Apartment', value: 1250000, status: 'live_auction', bids: 8, timeLeft: '2h 34m' },
@@ -65,7 +59,28 @@ const monthlyData = [
 ];
 
 export function AdminDashboard({ onNavigate }: AdminDashboardProps) {
-  
+  const [liveStats, setLiveStats] = React.useState<DashboardStats | null>(null);
+
+  React.useEffect(() => {
+    const token = sessionStorage.getItem('growkyc_token');
+    if (!token) return;
+    fetch('/api/v1/admin/dashboard/stats', { headers: { Authorization: `Bearer ${token}` } })
+      .then(r => r.ok ? r.json() : null)
+      .then(data => {
+        if (!data) return;
+        setLiveStats({
+          totalKYC: data.kyc?.total ?? 0,
+          pendingKYC: data.kyc?.pending ?? 0,
+          approvedKYC: data.kyc?.approved ?? 0,
+          rejectedKYC: data.kyc?.rejected ?? 0,
+          totalUsers: data.users?.total ?? 0,
+          activeUsers: data.users?.active ?? 0,
+          totalDocuments: data.documents?.total ?? 0,
+        });
+      })
+      .catch(() => null);
+  }, []);
+
   const maxCases = Math.max(...monthlyData.map(d => d.cases));
   const maxSales = Math.max(...monthlyData.map(d => d.sales));
 
@@ -81,14 +96,14 @@ export function AdminDashboard({ onNavigate }: AdminDashboardProps) {
               <div className="p-3 bg-blue-100 rounded-lg">
                 <Briefcase className="w-6 h-6 text-blue-600" />
               </div>
-              <div className={`flex items-center gap-1 text-sm font-semibold ${stats.casesTrend.isPositive ? 'text-green-600' : 'text-red-600'}`}>
-                {stats.casesTrend.isPositive ? <TrendingUp className="w-4 h-4" /> : <TrendingDown className="w-4 h-4" />}
-                {stats.casesTrend.value}%
+              <div className="flex items-center gap-1 text-sm font-semibold text-green-600">
+                <TrendingUp className="w-4 h-4" />
+                12%
               </div>
             </div>
-            <p className="text-sm text-gray-600 mb-1">Total Cases</p>
-            <p className="text-3xl font-bold text-gray-900">{stats.totalCases}</p>
-            <p className="text-xs text-gray-500 mt-2">{stats.activeCases} active • {stats.activeListings} listed</p>
+            <p className="text-sm text-gray-600 mb-1">Total KYC Records</p>
+            <p className="text-3xl font-bold text-gray-900">{liveStats ? liveStats.totalKYC : '—'}</p>
+            <p className="text-xs text-gray-500 mt-2">{liveStats ? `${liveStats.approvedKYC} approved • ${liveStats.rejectedKYC} rejected` : 'Loading…'}</p>
           </CardContent>
         </Card>
 
@@ -100,14 +115,14 @@ export function AdminDashboard({ onNavigate }: AdminDashboardProps) {
               <div className="p-3 bg-green-100 rounded-lg">
                 <DollarSign className="w-6 h-6 text-green-600" />
               </div>
-              <div className={`flex items-center gap-1 text-sm font-semibold ${stats.salesTrend.isPositive ? 'text-green-600' : 'text-red-600'}`}>
-                {stats.salesTrend.isPositive ? <TrendingUp className="w-4 h-4" /> : <TrendingDown className="w-4 h-4" />}
-                {stats.salesTrend.value}%
+              <div className="flex items-center gap-1 text-sm font-semibold text-green-600">
+                <TrendingUp className="w-4 h-4" />
+                23%
               </div>
             </div>
             <p className="text-sm text-gray-600 mb-1">Total Sales</p>
-            <p className="text-3xl font-bold text-gray-900">A${(stats.totalSales / 1000000).toFixed(1)}M</p>
-            <p className="text-xs text-gray-500 mt-2">Avg: A${(stats.avgSaleValue / 1000).toFixed(0)}K per deal</p>
+            <p className="text-3xl font-bold text-gray-900">A$15.8M</p>
+            <p className="text-xs text-gray-500 mt-2">Avg: A$1,053K per deal</p>
           </CardContent>
         </Card>
 
@@ -119,14 +134,14 @@ export function AdminDashboard({ onNavigate }: AdminDashboardProps) {
               <div className="p-3 bg-purple-100 rounded-lg">
                 <Users className="w-6 h-6 text-purple-600" />
               </div>
-              <div className={`flex items-center gap-1 text-sm font-semibold ${stats.usersTrend.isPositive ? 'text-green-600' : 'text-red-600'}`}>
-                {stats.usersTrend.isPositive ? <TrendingUp className="w-4 h-4" /> : <TrendingDown className="w-4 h-4" />}
-                {stats.usersTrend.value}%
+              <div className="flex items-center gap-1 text-sm font-semibold text-green-600">
+                <TrendingUp className="w-4 h-4" />
+                18%
               </div>
             </div>
             <p className="text-sm text-gray-600 mb-1">Platform Users</p>
-            <p className="text-3xl font-bold text-gray-900">{stats.totalUsers.toLocaleString()}</p>
-            <p className="text-xs text-gray-500 mt-2">{stats.pendingKYC} pending KYC</p>
+            <p className="text-3xl font-bold text-gray-900">{liveStats ? liveStats.totalUsers.toLocaleString() : '—'}</p>
+            <p className="text-xs text-gray-500 mt-2">{liveStats ? `${liveStats.pendingKYC} pending KYC` : 'Loading…'}</p>
           </CardContent>
         </Card>
 
@@ -139,12 +154,12 @@ export function AdminDashboard({ onNavigate }: AdminDashboardProps) {
                 <Gavel className="w-6 h-6 text-amber-600" />
               </div>
               <div className="text-sm font-semibold text-green-600">
-                {stats.successRate}%
+                94.2%
               </div>
             </div>
             <p className="text-sm text-gray-600 mb-1">Active Auctions</p>
-            <p className="text-3xl font-bold text-gray-900">{stats.activeAuctions}</p>
-            <p className="text-xs text-gray-500 mt-2">Success rate: {stats.successRate}%</p>
+            <p className="text-3xl font-bold text-gray-900">12</p>
+            <p className="text-xs text-gray-500 mt-2">Success rate: 94.2%</p>
           </CardContent>
         </Card>
       </div>
@@ -246,10 +261,10 @@ export function AdminDashboard({ onNavigate }: AdminDashboardProps) {
                     <Clock className="w-5 h-5 text-amber-600" />
                     <span className="font-semibold text-gray-900">Pending Approvals</span>
                   </div>
-                  <span className="text-2xl font-bold text-amber-600">8</span>
+                  <span className="text-2xl font-bold text-amber-600">{liveStats ? liveStats.pendingKYC : '—'}</span>
                 </div>
                 <div className="flex items-center gap-4 text-sm text-gray-600">
-                  <span>KYC: 8</span>
+                  <span>KYC: {liveStats ? liveStats.pendingKYC : '—'}</span>
                   <span>•</span>
                   <span>Cases: 3</span>
                   <span>•</span>

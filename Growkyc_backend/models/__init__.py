@@ -70,6 +70,7 @@ from models.tenant import Tenant  # noqa: F401
 # ---- Existing models (Phase 1 — migrated verbatim from monolith) ----
 from models.user import User  # noqa: F401
 from models.payment import Payment  # noqa: F401
+from models.sar import SAR  # noqa: F401
 from core.enums import PaymentStatus  # noqa: F401
 
 __all__ = [
@@ -122,4 +123,5 @@ __all__ = [
     "IdentityDocument",
     "Payment",
     "PaymentStatus",
+    "SAR",
 ]

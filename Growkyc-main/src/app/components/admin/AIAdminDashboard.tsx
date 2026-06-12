@@ -18,6 +18,28 @@ import {
 } from '../../lib/operationalBotEngine';
 import { toast } from '../../lib/toast';
 
+interface AIEngineStatus {
+  ai_powered: boolean;
+  model: string | null;
+  bot_count: number;
+  mode: string;
+  message: string;
+}
+
+async function fetchAIStatus(): Promise<AIEngineStatus | null> {
+  try {
+    const token = sessionStorage.getItem('growkyc_token');
+    const base = (import.meta as any).env?.VITE_API_BASE_URL || '/api/v1';
+    const res = await fetch(`${base}/ai/status`, {
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+    });
+    if (!res.ok) return null;
+    return res.json();
+  } catch {
+    return null;
+  }
+}
+
 interface AIAdminDashboardProps {
   onNavigate: (page: string) => void;
 }
@@ -33,10 +55,12 @@ function badgeClass(decision: Decision): string {
 export function AIAdminDashboard({ onNavigate }: AIAdminDashboardProps) {
   const [activeTab, setActiveTab] = useState<DashboardTab>('pending');
   const [runs, setRuns] = useState<BotRunRecord[]>([]);
+  const [aiStatus, setAiStatus] = useState<AIEngineStatus | null>(null);
 
   useEffect(() => {
     ensureOperationalSeedData();
     setRuns(listBotRuns());
+    fetchAIStatus().then((status) => setAiStatus(status));
   }, []);
 
   const grouped = useMemo(() => {
@@ -89,10 +113,21 @@ export function AIAdminDashboard({ onNavigate }: AIAdminDashboardProps) {
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="bg-green-50 border border-green-200 rounded-lg px-4 py-2 text-green-700 text-sm font-medium flex items-center gap-2">
-              <Sparkles className="w-4 h-4" />
-              Engine Active
-            </div>
+            {aiStatus ? (
+              <div className={`border rounded-lg px-4 py-2 text-sm font-medium flex items-center gap-2 ${
+                aiStatus.ai_powered
+                  ? 'bg-green-50 border-green-200 text-green-700'
+                  : 'bg-amber-50 border-amber-200 text-amber-700'
+              }`}>
+                <Sparkles className="w-4 h-4" />
+                {aiStatus.ai_powered ? `AI Active — ${aiStatus.model}` : 'Simulated Mode'}
+              </div>
+            ) : (
+              <div className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-2 text-gray-500 text-sm font-medium flex items-center gap-2">
+                <Sparkles className="w-4 h-4" />
+                Checking AI status…
+              </div>
+            )}
             <Button onClick={() => onNavigate('admin')} variant="outline">Back to Admin</Button>
           </div>
         </div>

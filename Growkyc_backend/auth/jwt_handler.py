@@ -4,27 +4,16 @@ Provides token creation and verification functionality.
 """
 
 import logging
-import os
 from datetime import datetime, timedelta, timezone
 from typing import Any, Dict, Optional
 
 from jose import JWTError, jwt
 
+from config import ACCESS_TOKEN_EXPIRE_MINUTES, JWT_ALGORITHM, SECRET_KEY
+
 logger = logging.getLogger(__name__)
 
-# Get JWT configuration from environment variables
-SECRET_KEY = os.getenv("SECRET_KEY", "your-secret-key-change-in-production")
-ALGORITHM = os.getenv("JWT_ALGORITHM", "HS256")
-ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "30"))
-
-# Validate secret key in production
-if SECRET_KEY == "your-secret-key-change-in-production":
-    logger.warning("WARNING: Using default SECRET_KEY. Change this in production!")
-elif len(SECRET_KEY) < 32:
-    logger.warning(
-        "WARNING: SECRET_KEY appears weak (less than 32 characters). "
-        "Use a stronger secret in production!"
-    )
+ALGORITHM = JWT_ALGORITHM
 
 
 def create_access_token(

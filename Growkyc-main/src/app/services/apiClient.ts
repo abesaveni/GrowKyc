@@ -1,12 +1,21 @@
 export type ApiError = { message: string; status?: number };
 
+function getAuthHeader(): Record<string, string> {
+  const token = sessionStorage.getItem('growkyc_token');
+  return token ? { Authorization: `Bearer ${token}` } : {};
+}
+
 export async function apiRequest<T>(
   path: string,
   options: RequestInit = {}
 ): Promise<T> {
   const base = import.meta.env.VITE_API_BASE_URL || '/api/v1';
   const res = await fetch(`${base}${path}`, {
-    headers: { 'Content-Type': 'application/json', ...(options.headers || {}) },
+    headers: {
+      'Content-Type': 'application/json',
+      ...getAuthHeader(),
+      ...(options.headers || {}),
+    },
     ...options
   });
   if (!res.ok) {

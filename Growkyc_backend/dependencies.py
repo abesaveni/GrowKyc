@@ -49,7 +49,7 @@ async def get_current_user(
     """
     if not authorization:
         raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
+            status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Missing authorization header",
             headers={"WWW-Authenticate": "Bearer"},
         )
@@ -58,7 +58,7 @@ async def get_current_user(
     parts = authorization.split()
     if len(parts) != 2 or parts[0].lower() != "bearer":
         raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
+            status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid authorization header format",
             headers={"WWW-Authenticate": "Bearer"},
         )
@@ -67,7 +67,6 @@ async def get_current_user(
 
     try:
         service = AuthService(db)
-        # AuthService.verify_token decodes JWT and returns payload dict
         payload = service.verify_token(token)
 
         # Prevent cross-tenant token abuse
@@ -82,9 +81,7 @@ async def get_current_user(
             )
             raise AuthenticationError("Invalid token context")
 
-        # AuthService.get_current_user retrieves User by ID from token
         user = service.get_current_user(token)
-
         return user
     except AuthenticationError as e:
         logger.warning(f"Authentication failed: {e.message}")
@@ -93,6 +90,8 @@ async def get_current_user(
             detail=e.message,
             headers={"WWW-Authenticate": "Bearer"},
         )
+    except HTTPException:
+        raise
     except Exception as e:
         logger.error(f"Error validating user: {str(e)}")
         raise HTTPException(
@@ -100,6 +99,10 @@ async def get_current_user(
             detail="Authentication failed",
             headers={"WWW-Authenticate": "Bearer"},
         )
+    finally:
+        # Ensure tenant context is never leaked to the next request in thread-pool reuse
+        from core.tenant_context import clear_tenant_id as _clear
+        _clear()
 
 
 async def get_current_tenant(db: Session = Depends(get_db)) -> Tenant:

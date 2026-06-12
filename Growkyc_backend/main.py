@@ -13,17 +13,25 @@ from fastapi import FastAPI, HTTPException, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.utils import get_openapi
 from fastapi.responses import JSONResponse
+from starlette.middleware.base import BaseHTTPMiddleware
 
+from slowapi import _rate_limit_exceeded_handler
+from slowapi.errors import RateLimitExceeded
+
+from config import ALLOWED_ORIGINS, IS_PRODUCTION
 from core.exceptions import KYCException
+from core.limiter import limiter
 from core.middleware import (LoggingMiddleware, RequestIDMiddleware,
                              TenantContextMiddleware)
 from database import close_db, init_db
 from routers import (admin, auth, clients, communications, compatibility,
-                     dashboard, documents, integrations, kyc, payments, pexa,
+                     dashboard, documents, integrations, kyc, notifications, payments, pexa,
                      route_aliases, square_payments)
+from routers.ai import router as ai_router
 from routers.cases import router as cases_router
 from routers.edd import router as edd_router
 from routers.reports import router as reports_router
+from routers.sar import router as sar_router
 from schemas import ErrorResponse
 from services.expiry_scheduler import (start_expiry_scheduler,
                                        stop_expiry_scheduler)
@@ -62,22 +70,6 @@ async def lifespan(app: FastAPI):
             logger.warning("⚠ Database initialization encountered issues")
     except Exception as e:
         logger.error(f"✗ Failed to initialize database: {str(e)}")
-    # Startup environment sanity checks
-    secret = os.getenv("SECRET_KEY", "")
-    if not secret:
-        logger.warning("WARNING: SECRET_KEY is not set. Tokens will be insecure.")
-    elif len(secret) < 32:
-        logger.warning(
-            "WARNING: SECRET_KEY appears weak (less than 32 chars). "
-            "Rotate in production."
-        )
-
-    db_url = os.getenv("DATABASE_URL", "")
-    if not db_url:
-        logger.warning(
-            "WARNING: DATABASE_URL is not set. Using default SQLite for development."
-        )
-
     # Ensure upload directory exists
     upload_dir = os.getenv("UPLOAD_DIR", "./uploads")
     try:
@@ -88,17 +80,6 @@ async def lifespan(app: FastAPI):
     except Exception as e:
         logger.warning(f"Could not create upload directory '{upload_dir}': {str(e)}")
 
-    # CORS safety warning for production
-    allowed = os.getenv(
-        "ALLOWED_ORIGINS",
-        "http://localhost:3000,http://localhost:8000,"
-        "http://127.0.0.1:3000,http://127.0.0.1:8000",
-    )
-    if "*" in allowed and os.getenv("ENV", "development").lower() == "production":
-        logger.warning(
-            "WARNING: ALLOWED_ORIGINS contains wildcard '*' in production. "
-            "Restrict CORS in production."
-        )
     logger.info(f"✓ FastAPI application ready at /{os.getenv('API_PREFIX', 'api/v1')}")
 
     # US-026: Start document expiry background scheduler
@@ -144,29 +125,49 @@ app = FastAPI(
 )
 
 
-# Configure CORS middleware
-allowed_origins = os.getenv(
-    "ALLOWED_ORIGINS",
-    "http://localhost:3000,"
-    "http://localhost:8000,"
-    "http://127.0.0.1:3000,"
-    "http://127.0.0.1:8000,"
-    "http://localhost:5173,"
-    "http://127.0.0.1:5173",
-).split(",")
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
+
+class SecurityHeadersMiddleware(BaseHTTPMiddleware):
+    """Adds HTTP security headers to every response."""
+
+    async def dispatch(self, request: Request, call_next):
+        response = await call_next(request)
+        response.headers["X-Content-Type-Options"] = "nosniff"
+        response.headers["X-Frame-Options"] = "DENY"
+        response.headers["X-XSS-Protection"] = "1; mode=block"
+        response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+        response.headers["Permissions-Policy"] = "geolocation=(), microphone=(), camera=()"
+        if IS_PRODUCTION:
+            response.headers["Strict-Transport-Security"] = (
+                "max-age=63072000; includeSubDomains; preload"
+            )
+        response.headers["Content-Security-Policy"] = (
+            "default-src 'self'; "
+            "script-src 'self'; "
+            "style-src 'self' 'unsafe-inline'; "
+            "img-src 'self' data: https:; "
+            "connect-src 'self'; "
+            "frame-ancestors 'none';"
+        )
+        return response
+
+
+# Configure CORS — ALLOWED_ORIGINS is validated in config.py (wildcards blocked in production)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[origin.strip() for origin in allowed_origins],
+    allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allow_headers=["*"],
-    expose_headers=["X-Total-Count", "X-Page-Count"],
-    max_age=600,  # Cache preflight requests for 10 minutes
+    allow_headers=["Authorization", "Content-Type", "X-Request-ID"],
+    expose_headers=["X-Total-Count", "X-Page-Count", "X-Request-ID"],
+    max_age=600,
 )
 
 
-# Add application middlewares (order matters)
+# Add application middlewares (order matters — outermost first)
+app.add_middleware(SecurityHeadersMiddleware)
 app.add_middleware(RequestIDMiddleware)
 app.add_middleware(TenantContextMiddleware)
 app.add_middleware(LoggingMiddleware)
@@ -237,23 +238,48 @@ async def general_exception_handler(request: Request, exc: Exception):
 # ==================== HEALTH & INFO ENDPOINTS ====================
 
 
-@app.get(
-    "/health",
-    tags=["system"],
-    summary="Health Check",
-    description="Verify API is running and healthy",
-)
+@app.get("/health", tags=["system"], summary="Shallow Health Check")
 async def health_check() -> dict:
-    """
-    Health check endpoint for monitoring and load balancers.
-
-    Returns:
-        JSON with status, service name, and version
-    """
     return {
         "status": "healthy",
         "service": "KYC Backend API",
         "version": "2.0.0",
+        "timestamp": datetime.utcnow().isoformat(),
+    }
+
+
+@app.get("/health/deep", tags=["system"], summary="Deep Health Check")
+async def deep_health_check() -> dict:
+    """Checks liveness of database and Redis dependencies."""
+    from database import get_engine
+
+    checks: dict = {}
+
+    # Database check
+    try:
+        from sqlalchemy import text as sa_text
+
+        with get_engine().connect() as conn:
+            conn.execute(sa_text("SELECT 1"))
+        checks["database"] = "ok"
+    except Exception as exc:
+        checks["database"] = f"error: {exc}"
+
+    # Redis / Celery broker check
+    try:
+        import redis as _redis
+
+        broker_url = os.getenv("CELERY_BROKER_URL", "redis://localhost:6379/0")
+        r = _redis.from_url(broker_url, socket_connect_timeout=2)
+        r.ping()
+        checks["redis"] = "ok"
+    except Exception as exc:
+        checks["redis"] = f"error: {exc}"
+
+    overall = "healthy" if all(v == "ok" for v in checks.values()) else "degraded"
+    return {
+        "status": overall,
+        "checks": checks,
         "timestamp": datetime.utcnow().isoformat(),
     }
 
@@ -398,6 +424,12 @@ app.include_router(
 )
 
 app.include_router(
+    notifications.router,
+    prefix=f"/{api_prefix}",
+    responses={401: {"model": ErrorResponse}, 403: {"model": ErrorResponse}},
+)
+
+app.include_router(
     pexa.router,
     prefix=f"/{api_prefix}",
     responses={401: {"model": ErrorResponse}, 403: {"model": ErrorResponse}},
@@ -457,6 +489,20 @@ app.include_router(
 # Phase 8: Regulatory Reporting router
 app.include_router(
     reports_router,
+    prefix=f"/{api_prefix}",
+    responses={401: {"model": ErrorResponse}, 403: {"model": ErrorResponse}},
+)
+
+# Phase 9: SAR (Suspicious Activity Report) router
+app.include_router(
+    sar_router,
+    prefix=f"/{api_prefix}",
+    responses={401: {"model": ErrorResponse}, 403: {"model": ErrorResponse}},
+)
+
+# AI: OpenAI-powered compliance bot analysis
+app.include_router(
+    ai_router,
     prefix=f"/{api_prefix}",
     responses={401: {"model": ErrorResponse}, 403: {"model": ErrorResponse}},
 )
@@ -595,7 +641,7 @@ logger.info(f"JWT Algorithm: {os.getenv('JWT_ALGORITHM', 'HS256')}")
 logger.info(
     f"Access Token Expiry: {os.getenv('ACCESS_TOKEN_EXPIRE_MINUTES', '30')} minutes"
 )
-logger.info(f"CORS Origins: {', '.join([o.strip() for o in allowed_origins])}")
+logger.info(f"CORS Origins: {', '.join(ALLOWED_ORIGINS)}")
 logger.info("=" * 50)
 
 

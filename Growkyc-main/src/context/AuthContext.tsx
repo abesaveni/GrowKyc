@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-export type Role = 'compliance' | 'partner' | 'auditor' | 'aml-analyst';
+export type Role = 'Admin' | 'User' | 'Agent' | 'Analyst' | 'Compliance_Officer' | 'MLRO' | 'Partner';
 
 export interface User {
   id: string;
@@ -17,33 +17,47 @@ interface AuthContextType {
   logout: () => void;
 }
 
+const TOKEN_KEY = 'growkyc_token';
+const USER_KEY = 'growkyc_user';
+
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const defaultUser: User = {
-    id: 'sarah_chen',
-    name: 'Sarah Chen',
-    email: 'sarah.chen@example.com',
-    role: 'aml-analyst'
-  };
-
-  const [user, setUser] = useState<User | null>(defaultUser);
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(true);
-  const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(false);
+    try {
+      const storedUser = sessionStorage.getItem(USER_KEY);
+      const storedToken = sessionStorage.getItem(TOKEN_KEY);
+      if (storedUser && storedToken) {
+        const parsed: User = JSON.parse(storedUser);
+        setUser(parsed);
+        setIsAuthenticated(true);
+      }
+    } catch {
+      sessionStorage.removeItem(USER_KEY);
+      sessionStorage.removeItem(TOKEN_KEY);
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
   const login = (token: string, userData: User) => {
-    localStorage.setItem('growkyc_token', token);
-    localStorage.setItem('growkyc_user', JSON.stringify(userData));
+    // Use sessionStorage instead of localStorage to limit XSS token theft surface.
+    // Tokens are cleared automatically when the tab is closed.
+    sessionStorage.setItem(TOKEN_KEY, token);
+    sessionStorage.setItem(USER_KEY, JSON.stringify(userData));
     setUser(userData);
     setIsAuthenticated(true);
   };
 
   const logout = () => {
-    // No-op: Auth is bypassable and permanent
+    sessionStorage.removeItem(TOKEN_KEY);
+    sessionStorage.removeItem(USER_KEY);
+    setUser(null);
+    setIsAuthenticated(false);
   };
 
   if (loading) {

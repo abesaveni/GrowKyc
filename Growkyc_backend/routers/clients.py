@@ -1,10 +1,14 @@
 import logging
 from typing import List
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Request, status
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
+import os
+
+from core.enums import UserRole
+from core.limiter import limiter
 from database import get_db
 from dependencies import get_admin_or_agent_user, get_current_user
 from models import Client, User, Payment, PaymentStatus
@@ -34,40 +38,32 @@ async def update_client_status(
 ):
     try:
         client_db_id = int(client_id)
-        client = db.query(Client).filter(Client.id == client_db_id).first()
+    except ValueError:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid client ID")
 
-        if not client:
-            return {
-                "success": True,
-                "clientId": client_id,
-                "newStatus": data.status,
-                "message": f"Client {client_id} status updated to {data.status} (Mock)",
-            }
+    client = db.query(Client).filter(Client.id == client_db_id).first()
+    if not client:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Client not found")
 
-        if data.status == "approved":
-            client.is_locked = False
-        elif data.status in ["investigation", "more-info"]:
-            client.is_locked = True
+    if data.status == "approved":
+        client.is_locked = False
+    elif data.status in ["investigation", "more-info"]:
+        client.is_locked = True
 
-        db.commit()
+    db.commit()
 
-        return {
-            "success": True,
-            "clientId": client_id,
-            "newStatus": data.status,
-            "message": f"Client {client_id} status updated in database",
-        }
-    except Exception:
-        return {
-            "success": True,
-            "clientId": client_id,
-            "newStatus": data.status,
-            "message": f"Client {client_id} status updated to {data.status} (Fallback)",
-        }
+    return {
+        "success": True,
+        "clientId": client_id,
+        "newStatus": data.status,
+        "message": f"Client {client_id} status updated in database",
+    }
 
 
 @router.post("/individual", response_model=ClientResponse, status_code=201)
+@limiter.limit("10/minute")
 async def create_individual_client(
+    request: Request,
     profile_data: IndividualProfileCreate,
     trigger_async: bool = False,
     db: Session = Depends(get_db),
@@ -76,17 +72,15 @@ async def create_individual_client(
     """
     Onboard a retail client. Creates Client and IndividualProfile.
     """
-    has_paid = db.query(Payment.id).filter(
-        Payment.user_id == current_user.id,
-        Payment.status == PaymentStatus.PAID
-    ).first() is not None
-
-    if not has_paid:
-        logger.warning(f"ONBOARDING_BLOCKED: User {current_user.id} has not paid.")
-        raise HTTPException(
-            status_code=403,
-            detail="Payment required before verification"
-        )
+    payment_required = os.getenv("PAYMENT_REQUIRED", "false").lower() == "true"
+    if payment_required:
+        has_paid = db.query(Payment.id).filter(
+            Payment.user_id == current_user.id,
+            Payment.status == PaymentStatus.PAID
+        ).first() is not None
+        if not has_paid:
+            logger.warning(f"ONBOARDING_BLOCKED: User {current_user.id} has not paid.")
+            raise HTTPException(status_code=403, detail="Payment required before verification")
 
     try:
         client_service = ClientService(db)
@@ -101,7 +95,9 @@ async def create_individual_client(
 
 
 @router.post("/entity", response_model=ClientResponse, status_code=201)
+@limiter.limit("10/minute")
 async def create_entity_client(
+    request: Request,
     profile_data: EntityProfileCreate,
     trigger_async: bool = False,
     db: Session = Depends(get_db),
@@ -110,17 +106,15 @@ async def create_entity_client(
     """
     Onboard a corporate client. Creates Client and EntityProfile.
     """
-    has_paid = db.query(Payment.id).filter(
-        Payment.user_id == current_user.id,
-        Payment.status == PaymentStatus.PAID
-    ).first() is not None
-
-    if not has_paid:
-        logger.warning(f"ONBOARDING_BLOCKED: User {current_user.id} has not paid.")
-        raise HTTPException(
-            status_code=403,
-            detail="Payment required before verification"
-        )
+    payment_required = os.getenv("PAYMENT_REQUIRED", "false").lower() == "true"
+    if payment_required:
+        has_paid = db.query(Payment.id).filter(
+            Payment.user_id == current_user.id,
+            Payment.status == PaymentStatus.PAID
+        ).first() is not None
+        if not has_paid:
+            logger.warning(f"ONBOARDING_BLOCKED: User {current_user.id} has not paid.")
+            raise HTTPException(status_code=403, detail="Payment required before verification")
 
     try:
         client_service = ClientService(db)
@@ -157,7 +151,7 @@ async def get_client(
     return client
 
 
-@router.get("", response_model=List[ClientResponse])
+@router.get("", response_model=dict)
 async def list_clients(
     skip: int = 0,
     limit: int = 100,
@@ -165,14 +159,21 @@ async def list_clients(
     current_user: User = Depends(get_current_user),
 ):
     """
-    List all clients. Regular users only see their own.
+    List clients with pagination. Regular users only see their own.
+    Returns {total, skip, limit, items}.
     """
     query = db.query(Client)
-    if current_user.role == "USER":
+    if current_user.role == UserRole.USER:
         query = query.filter(Client.user_id == current_user.id)
 
+    total = query.count()
     clients = query.offset(skip).limit(limit).all()
-    return clients
+    return {
+        "total": total,
+        "skip": skip,
+        "limit": limit,
+        "items": [ClientResponse.model_validate(c) for c in clients],
+    }
 
 
 # ==============================================================

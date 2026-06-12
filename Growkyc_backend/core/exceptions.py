@@ -32,9 +32,9 @@ class AuthorizationError(KYCException):
 class ResourceNotFoundError(KYCException):
     """Raised when a resource is not found"""
 
-    def __init__(self, resource: str, resource_id: int):
-        message = f"{resource} with ID {resource_id} not found"
-        super().__init__(message, status.HTTP_404_NOT_FOUND)
+    def __init__(self, resource: str, resource_id: int, message: str | None = None):
+        msg = message or f"{resource} with ID {resource_id} not found"
+        super().__init__(msg, status.HTTP_404_NOT_FOUND)
 
 
 class DuplicateResourceError(KYCException):

@@ -24,6 +24,7 @@ celery_app = Celery(
         "tasks.screening_tasks",
         "tasks.notification_tasks",
         "tasks.document_tasks",
+        "tasks.monitoring_tasks",
     ],
 )
 
@@ -35,7 +36,14 @@ celery_app.conf.update(
     timezone="UTC",
     enable_utc=True,
     task_track_started=True,
-    worker_prefetch_multiplier=1,  # Fair distribution
+    worker_prefetch_multiplier=1,
+    # Expire task results after 1 hour to prevent Redis memory exhaustion
+    result_expires=3600,
+    # Default retry policy: 3 retries with exponential back-off
+    task_acks_late=True,
+    task_reject_on_worker_lost=True,
+    task_default_retry_delay=30,
+    task_max_retries=3,
 )
 
 

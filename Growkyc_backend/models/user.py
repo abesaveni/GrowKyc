@@ -60,12 +60,14 @@ class User(Base):
     )
     kyc_records = relationship(
         "KYC",
+        foreign_keys="[KYC.user_id]",
         back_populates="user",
         cascade="all, delete-orphan",
         lazy="selectin",
     )
     clients = relationship(
         "Client",
+        foreign_keys="[Client.user_id]",
         back_populates="user",
         cascade="all, delete-orphan",
     )
@@ -96,6 +98,11 @@ class User(Base):
         Index("idx_users_role", "role"),
         Index("idx_users_tenant_id", "tenant_id"),
     )
+
+    @property
+    def verified(self) -> bool:
+        from core.enums import KYCStatus
+        return any(r.status == KYCStatus.APPROVED for r in (self.kyc_records or []))
 
     def __repr__(self) -> str:
         return f"<User(id={self.id}, email={self.email!r}, role={self.role})>"

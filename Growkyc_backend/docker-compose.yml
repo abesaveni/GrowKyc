@@ -1,3 +1,5 @@
+# Secrets are loaded from a .env file (git-ignored) — NEVER hardcode credentials here.
+# Copy .env.example to .env and fill in real values before running.
 version: '3.8'
 
 services:
@@ -6,20 +8,21 @@ services:
     image: postgres:15-alpine
     container_name: kyc_postgres
     environment:
-      POSTGRES_USER: kyc_user
-      POSTGRES_PASSWORD: kyc_password_secure
-      POSTGRES_DB: kyc_db
+      POSTGRES_USER: ${POSTGRES_USER:-kyc_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD must be set in .env}
+      POSTGRES_DB: ${POSTGRES_DB:-kyc_db}
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U kyc_user"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-kyc_user}"]
       interval: 10s
       timeout: 5s
       retries: 5
     networks:
       - kyc_network
+    restart: unless-stopped
 
   # KYC Backend API
   kyc_api:
@@ -27,13 +30,11 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: kyc_api
+    env_file:
+      - .env
     environment:
-      DATABASE_URL: postgresql://kyc_user:kyc_password_secure@postgres:5432/kyc_db
-      SECRET_KEY: your-secret-key-change-in-production
-      JWT_ALGORITHM: HS256
-      ACCESS_TOKEN_EXPIRE_MINUTES: 30
+      DATABASE_URL: postgresql://${POSTGRES_USER:-kyc_user}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-kyc_db}
       ENV: production
-      LOG_LEVEL: info
       HOST: 0.0.0.0
       PORT: 8000
       CELERY_BROKER_URL: redis://redis:6379/0
@@ -71,12 +72,12 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: kyc_celery_worker
+    env_file:
+      - .env
     environment:
-      DATABASE_URL: postgresql://kyc_user:kyc_password_secure@postgres:5432/kyc_db
-      SECRET_KEY: your-secret-key-change-in-production
+      DATABASE_URL: postgresql://${POSTGRES_USER:-kyc_user}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-kyc_db}
       CELERY_BROKER_URL: redis://redis:6379/0
       CELERY_RESULT_BACKEND: redis://redis:6379/0
-      LOG_LEVEL: info
     depends_on:
       postgres:
         condition: service_healthy
@@ -93,11 +94,12 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: kyc_celery_beat
+    env_file:
+      - .env
     environment:
-      DATABASE_URL: postgresql://kyc_user:kyc_password_secure@postgres:5432/kyc_db
+      DATABASE_URL: postgresql://${POSTGRES_USER:-kyc_user}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-kyc_db}
       CELERY_BROKER_URL: redis://redis:6379/0
       CELERY_RESULT_BACKEND: redis://redis:6379/0
-      LOG_LEVEL: info
     depends_on:
       postgres:
         condition: service_healthy

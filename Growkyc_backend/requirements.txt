@@ -39,3 +39,9 @@ pytest-asyncio==0.21.1
 
 # Optional: For production deployment
 gunicorn==21.2.0
+
+# Rate limiting
+slowapi==0.1.9
+
+# OpenAI — AI-powered compliance bot analysis
+openai==1.54.4

@@ -225,18 +225,22 @@ def _ensure_sqlite_schema_compatibility():
     if "kyc" not in inspector.get_table_names():
         return
 
+    # Column names and types are defined here as literals — never from user input.
+    # Using a whitelist prevents any possibility of SQL injection via ALTER TABLE.
+    _ALLOWED_COLUMNS: dict[str, str] = {
+        "name": "VARCHAR(255)",
+        "dob": "DATETIME",
+        "gender": "VARCHAR(20)",
+        "address": "TEXT",
+        "onboarding_status": "VARCHAR(9) NOT NULL DEFAULT 'DRAFT'",
+    }
+
     existing_columns = {column["name"] for column in inspector.get_columns("kyc")}
-    missing_columns = [
-        ("name", "VARCHAR(255)"),
-        ("dob", "DATETIME"),
-        ("gender", "VARCHAR(20)"),
-        ("address", "TEXT"),
-        ("onboarding_status", "VARCHAR(9) NOT NULL DEFAULT 'DRAFT'"),
-    ]
 
     with engine.begin() as connection:
-        for column_name, column_type in missing_columns:
+        for column_name, column_type in _ALLOWED_COLUMNS.items():
             if column_name not in existing_columns:
+                # Both column_name and column_type are internal literals, not user input.
                 connection.execute(
                     text(f"ALTER TABLE kyc ADD COLUMN {column_name} {column_type}")
                 )

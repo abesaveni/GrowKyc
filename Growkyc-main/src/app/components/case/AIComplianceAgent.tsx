@@ -102,9 +102,13 @@ export function AIComplianceAgent({
         infoTrackData,
         rpData
       };
+      const token = sessionStorage.getItem('growkyc_token');
       const response = await fetch('/api/v1/ai/compliance-query', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          ...(token ? { 'Authorization': `Bearer ${token}` } : {}),
+        },
         body: JSON.stringify(payload)
       });
       if (!response.ok) {

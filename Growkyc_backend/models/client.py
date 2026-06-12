@@ -48,6 +48,16 @@ class Client(Base):
     review_date = Column(DateTime, nullable=True)
     last_reviewed_at = Column(DateTime, nullable=True)
 
+    # ---- Approval audit fields ----
+    approved_at = Column(DateTime, nullable=True)
+    approved_by = Column(Integer, ForeignKey("users.id", ondelete="SET NULL"), nullable=True)
+    rejected_at = Column(DateTime, nullable=True)
+    rejected_by = Column(Integer, ForeignKey("users.id", ondelete="SET NULL"), nullable=True)
+    rejection_reason = Column(String(500), nullable=True)
+
+    # ---- Soft delete ----
+    deleted_at = Column(DateTime, nullable=True)
+
     # ---- Phase 1: Multi-tenancy preparation (nullable=True) ----
     tenant_id = Column(
         Integer,
@@ -63,7 +73,7 @@ class Client(Base):
         foreign_keys=[tenant_id],
         lazy="select",
     )
-    user = relationship("User", back_populates="clients")
+    user = relationship("User", foreign_keys=[user_id], back_populates="clients")
     cases = relationship(
         "Case",
         back_populates="client",

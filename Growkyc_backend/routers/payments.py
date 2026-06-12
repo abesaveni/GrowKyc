@@ -1,10 +1,22 @@
-from fastapi import APIRouter, Depends
+import os
+
+from fastapi import APIRouter, Depends, HTTPException, status
 from pydantic import BaseModel
 
 from dependencies import get_current_user
 from models import User
 
 router = APIRouter(prefix="/payments", tags=["payments"])
+
+_IS_DEV = os.getenv("ENV", "development") == "development"
+
+
+def _assert_payment_provider_configured() -> None:
+    if not _IS_DEV:
+        raise HTTPException(
+            status_code=status.HTTP_501_NOT_IMPLEMENTED,
+            detail="Payment provider not configured. Set ENV=development or integrate a real payment provider.",
+        )
 
 
 class StripeCharge(BaseModel):
@@ -18,6 +30,7 @@ class StripeCharge(BaseModel):
 async def stripe_charge(
     data: StripeCharge, current_user: User = Depends(get_current_user)
 ):
+    _assert_payment_provider_configured()
     return {"success": True, "transactionId": "ch_mock_123"}
 
 
@@ -32,6 +45,7 @@ class StripeDirectDebit(BaseModel):
 async def stripe_direct_debit(
     data: StripeDirectDebit, current_user: User = Depends(get_current_user)
 ):
+    _assert_payment_provider_configured()
     return {"success": True, "customerId": "cus_mock_123"}
 
 
@@ -46,6 +60,7 @@ class PayPalSubscription(BaseModel):
 async def paypal_subscription(
     data: PayPalSubscription, current_user: User = Depends(get_current_user)
 ):
+    _assert_payment_provider_configured()
     return {
         "success": True,
         "approvalUrl": "https://www.paypal.com/mock/approve",

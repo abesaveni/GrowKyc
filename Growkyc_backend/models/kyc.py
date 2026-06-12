@@ -65,7 +65,9 @@ class KYC(Base):
         DateTime, default=lambda: datetime.now(timezone.utc), nullable=False
     )
     approved_at = Column(DateTime, nullable=True)
+    approved_by = Column(Integer, ForeignKey("users.id", ondelete="SET NULL"), nullable=True)
     rejected_at = Column(DateTime, nullable=True)
+    rejected_by = Column(Integer, ForeignKey("users.id", ondelete="SET NULL"), nullable=True)
     created_at = Column(
         DateTime, default=lambda: datetime.now(timezone.utc), nullable=False
     )
@@ -75,6 +77,11 @@ class KYC(Base):
         onupdate=lambda: datetime.now(timezone.utc),
         nullable=False,
     )
+    # Soft delete: set deleted_at instead of actually deleting rows
+    deleted_at = Column(DateTime, nullable=True)
+
+    # Optimistic locking: increment on every status-changing update to detect concurrent edits
+    version = Column(Integer, nullable=False, default=1, server_default="1")
 
     # ---- Phase 1: Multi-tenancy preparation (nullable=True) ----
     tenant_id = Column(
@@ -85,7 +92,7 @@ class KYC(Base):
     )
 
     # ---- Relationships ----
-    user = relationship("User", back_populates="kyc_records")
+    user = relationship("User", foreign_keys=[user_id], back_populates="kyc_records")
     documents = relationship(
         "Document",
         back_populates="kyc",

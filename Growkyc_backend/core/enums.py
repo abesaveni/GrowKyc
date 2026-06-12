@@ -36,14 +36,13 @@ class KYCStatus(str, Enum):
 
 
 class DocumentType(str, Enum):
-    """Document type enumeration for KYC verification."""
+    """Australian document type enumeration for KYC verification."""
 
-    AADHAAR = "Aadhaar"
-    PAN = "PAN"
     PASSPORT = "Passport"
-    DRIVING_LICENSE = "DrivingLicense"
-    UTILITY = "Utility"
-    AADHAAR_CARD = "AadhaarCard"
+    DRIVERS_LICENCE = "DriversLicence"
+    MEDICARE_CARD = "MedicareCard"
+    PROOF_OF_AGE_CARD = "ProofOfAgeCard"
+    UTILITY_BILL = "UtilityBill"
     OTHER = "Other"
 
 
@@ -100,4 +99,22 @@ class PaymentStatus(str, Enum):
     PAID = "PAID"
     FAILED = "FAILED"
     CANCELLED = "CANCELLED"
+
+
+class DocumentOCRStatus(str, Enum):
+    """OCR processing status for documents."""
+
+    NOT_STARTED = "not_started"
+    PROCESSING = "processing"
+    COMPLETED = "completed"
+    FAILED = "failed"
+
+
+class DocumentVerificationStatus(str, Enum):
+    """Document verification status."""
+
+    PENDING = "pending"
+    VERIFIED = "verified"
+    FAILED = "failed"
+    REQUIRES_REVIEW = "requires_review"
 

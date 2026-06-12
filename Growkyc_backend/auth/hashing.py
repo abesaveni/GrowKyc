@@ -5,32 +5,17 @@ Provides secure password hashing and verification functions.
 
 import logging
 
-from passlib.context import CryptContext
+import bcrypt
 
 logger = logging.getLogger(__name__)
 
-# Configure bcrypt hashing context
-# rounds=12 is the default recommended value for production use
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto", bcrypt__rounds=12)
+_ROUNDS = 12
 
 
 def hash_password(password: str) -> str:
-    """
-    Hash a plaintext password using bcrypt.
-
-    Args:
-        password (str): The plaintext password to hash
-
-    Returns:
-        str: The hashed password
-
-    Example:
-        >>> hashed = hash_password("MySecurePassword123")
-        >>> verify_password("MySecurePassword123", hashed)
-        True
-    """
+    """Hash a plaintext password using bcrypt."""
     try:
-        hashed = pwd_context.hash(password)
+        hashed = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt(rounds=_ROUNDS)).decode("utf-8")
         logger.debug("Password hashed successfully")
         return hashed
     except Exception as e:
@@ -39,26 +24,9 @@ def hash_password(password: str) -> str:
 
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
-    """
-    Verify a plaintext password against its hash.
-
-    Args:
-        plain_password (str): The plaintext password to verify
-        hashed_password (str): The hash to verify against
-
-    Returns:
-        bool: True if password matches, False otherwise
-
-    Example:
-        >>> hashed = hash_password("MyPassword123")
-        >>> verify_password("MyPassword123", hashed)
-        True
-        >>> verify_password("WrongPassword", hashed)
-        False
-    """
+    """Verify a plaintext password against its bcrypt hash."""
     try:
-        is_valid = pwd_context.verify(plain_password, hashed_password)
-        return is_valid
+        return bcrypt.checkpw(plain_password.encode("utf-8"), hashed_password.encode("utf-8"))
     except Exception as e:
         logger.error(f"Error verifying password: {str(e)}")
         return False

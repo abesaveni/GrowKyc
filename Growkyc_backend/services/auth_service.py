@@ -4,15 +4,18 @@ Encapsulates all authentication business logic.
 """
 
 import logging
-import os
+import re
 from datetime import datetime, timedelta
 
 from jose import jwt
 from sqlalchemy.orm import Session
 
+from config import (ACCESS_TOKEN_EXPIRE_MINUTES, JWT_ALGORITHM, SECRET_KEY,
+                    MIN_PASSWORD_LENGTH, PASSWORD_REQUIRE_DIGIT,
+                    PASSWORD_REQUIRE_LOWERCASE, PASSWORD_REQUIRE_SPECIAL,
+                    PASSWORD_REQUIRE_UPPERCASE)
 from core.constants import (ERROR_INVALID_EMAIL_PASSWORD,
-                            ERROR_INVALID_PASSWORD, ERROR_USER_INACTIVE,
-                            MIN_PASSWORD_LENGTH)
+                            ERROR_INVALID_PASSWORD, ERROR_USER_INACTIVE)
 from core.enums import UserRole
 from core.exceptions import (AuthenticationError, DatabaseError,
                              DuplicateResourceError, ValidationError)
@@ -21,9 +24,23 @@ from models import User
 
 logger = logging.getLogger(__name__)
 
-SECRET_KEY = os.getenv("SECRET_KEY", "your-secret-key-change-in-production")
-ALGORITHM = os.getenv("JWT_ALGORITHM", "HS256")
-ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "30"))
+ALGORITHM = JWT_ALGORITHM
+
+
+def _validate_password_complexity(password: str) -> None:
+    errors = []
+    if len(password) < MIN_PASSWORD_LENGTH:
+        errors.append(f"at least {MIN_PASSWORD_LENGTH} characters")
+    if PASSWORD_REQUIRE_UPPERCASE and not re.search(r"[A-Z]", password):
+        errors.append("one uppercase letter")
+    if PASSWORD_REQUIRE_LOWERCASE and not re.search(r"[a-z]", password):
+        errors.append("one lowercase letter")
+    if PASSWORD_REQUIRE_DIGIT and not re.search(r"\d", password):
+        errors.append("one digit")
+    if PASSWORD_REQUIRE_SPECIAL and not re.search(r"[!@#$%^&*(),.?\":{}|<>]", password):
+        errors.append("one special character")
+    if errors:
+        raise ValidationError(f"Password must contain: {', '.join(errors)}")
 
 
 class AuthService:
@@ -35,7 +52,7 @@ class AuthService:
         self.logger = logging.getLogger(__name__)
 
     def register_user(
-        self, name: str, email: str, password: str, tenant_id: int = None
+        self, name: str, email: str, password: str, tenant_id: int = None, role: str = None
     ) -> User:
         """
         Register a new user.
@@ -54,11 +71,8 @@ class AuthService:
             DatabaseError: If database operation fails
         """
         try:
-            # Validate password strength
-            if len(password) < MIN_PASSWORD_LENGTH:
-                raise ValidationError(
-                    f"Password must be at least {MIN_PASSWORD_LENGTH} characters"
-                )
+            # Validate password complexity
+            _validate_password_complexity(password)
 
             # Check if user already exists
             existing_user = self.db.query(User).filter(User.email == email).first()
@@ -70,11 +84,17 @@ class AuthService:
 
             # Create new user
             hashed_password = hash_password(password)
+            resolved_role = UserRole.USER
+            if role:
+                try:
+                    resolved_role = UserRole(role)
+                except ValueError:
+                    pass
             user = User(
                 name=name,
                 email=email,
                 password=hashed_password,
-                role=UserRole.USER,
+                role=resolved_role,
                 tenant_id=tenant_id,
                 is_active=True,
                 created_at=datetime.utcnow(),
@@ -214,11 +234,8 @@ class AuthService:
             DatabaseError: If database operation fails
         """
         try:
-            # Validate new password
-            if len(new_password) < MIN_PASSWORD_LENGTH:
-                raise ValidationError(
-                    f"New password must be at least {MIN_PASSWORD_LENGTH} characters"
-                )
+            # Validate new password complexity
+            _validate_password_complexity(new_password)
 
             # Verify current password
             if not verify_password(current_password, user.password):

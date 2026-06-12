@@ -6,12 +6,14 @@ Restricted to Admin and Agent roles only.
 
 import logging
 
-from fastapi import APIRouter, Depends, HTTPException, Query, status
-from sqlalchemy import func
+from fastapi import APIRouter, Depends, HTTPException, Query, Request, status
+from sqlalchemy import case, func
 from sqlalchemy.orm import Session
 
+from core.constants import MAX_BULK_APPROVE_SIZE
 from core.enums import KYCStatus
 from core.exceptions import DatabaseError, ResourceNotFoundError
+from core.limiter import limiter
 from database import get_db
 from dependencies import get_admin_or_agent_user, get_admin_user
 from models import KYC, Document, User
@@ -41,29 +43,29 @@ async def get_dashboard_stats(
         Dict with KYC and user statistics
     """
     try:
-        total_kyc = db.query(func.count(KYC.id)).scalar()
-        pending_kyc = (
-            db.query(func.count(KYC.id))
-            .filter(KYC.status == KYCStatus.PENDING)
-            .scalar()
-        )
-        approved_kyc = (
-            db.query(func.count(KYC.id))
-            .filter(KYC.status == KYCStatus.APPROVED)
-            .scalar()
-        )
-        rejected_kyc = (
-            db.query(func.count(KYC.id))
-            .filter(KYC.status == KYCStatus.REJECTED)
-            .scalar()
-        )
+        # Single aggregated query replaces 4 separate COUNT queries (N+1 fix)
+        kyc_stats = db.query(
+            func.count(KYC.id).label("total"),
+            func.sum(case((KYC.status == KYCStatus.PENDING, 1), else_=0)).label("pending"),
+            func.sum(case((KYC.status == KYCStatus.APPROVED, 1), else_=0)).label("approved"),
+            func.sum(case((KYC.status == KYCStatus.REJECTED, 1), else_=0)).label("rejected"),
+        ).one()
 
-        total_users = db.query(func.count(User.id)).scalar()
-        active_users = (
-            db.query(func.count(User.id)).filter(User.is_active.is_(True)).scalar()
-        )
+        total_kyc = kyc_stats.total or 0
+        pending_kyc = kyc_stats.pending or 0
+        approved_kyc = kyc_stats.approved or 0
+        rejected_kyc = kyc_stats.rejected or 0
 
-        total_documents = db.query(func.count(Document.id)).scalar()
+        # Single aggregated query for user stats
+        user_stats = db.query(
+            func.count(User.id).label("total"),
+            func.sum(case((User.is_active.is_(True), 1), else_=0)).label("active"),
+        ).one()
+
+        total_users = user_stats.total or 0
+        active_users = user_stats.active or 0
+
+        total_documents = db.query(func.count(Document.id)).scalar() or 0
 
         logger.info(f"Dashboard stats retrieved by admin {admin.id}")
 
@@ -133,8 +135,10 @@ async def get_pending_kyc(
 
 
 @router.post("/kyc/bulk-approve", response_model=BulkApproveResponse)
+@limiter.limit("20/minute")
 async def bulk_approve_kyc(
-    request: BulkApproveRequest,
+    request: Request,
+    body: BulkApproveRequest,
     db: Session = Depends(get_db),
     admin: User = Depends(get_admin_or_agent_user),
 ) -> BulkApproveResponse:
@@ -142,24 +146,30 @@ async def bulk_approve_kyc(
     Approve multiple KYC records in bulk.
 
     Args:
-        request: Bulk approve request with KYC IDs
+        body: Bulk approve request with KYC IDs
         db: Database session
         admin: Authenticated admin/agent user
 
     Returns:
         BulkApproveResponse with success/failure counts
     """
+    if len(body.kyc_ids) > MAX_BULK_APPROVE_SIZE:
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail=f"Bulk approve limit is {MAX_BULK_APPROVE_SIZE} records per request",
+        )
+
     try:
         service = KYCService(db)
         result = service.bulk_approve_kyc(
-            kyc_ids=request.kyc_ids,
+            kyc_ids=body.kyc_ids,
             admin_user=admin,
-            reason=request.approval_reason,
+            reason=body.approval_reason,
         )
 
         message = (
             f"Successfully approved {result['success_count']} of "
-            f"{len(request.kyc_ids)} KYCs"
+            f"{len(body.kyc_ids)} KYCs"
         )
         if result["failed_count"] > 0:
             message += f"; {result['failed_count']} failed"
@@ -341,19 +351,16 @@ async def get_kyc_stats_by_status(
         Dict with KYC counts by status and other metrics
     """
     try:
+        row = db.query(
+            func.sum(case((KYC.status == KYCStatus.PENDING, 1), else_=0)).label("pending"),
+            func.sum(case((KYC.status == KYCStatus.APPROVED, 1), else_=0)).label("approved"),
+            func.sum(case((KYC.status == KYCStatus.REJECTED, 1), else_=0)).label("rejected"),
+        ).one()
+
         stats = {
-            "Pending": db.query(func.count(KYC.id))
-            .filter(KYC.status == KYCStatus.PENDING)
-            .scalar()
-            or 0,
-            "Approved": db.query(func.count(KYC.id))
-            .filter(KYC.status == KYCStatus.APPROVED)
-            .scalar()
-            or 0,
-            "Rejected": db.query(func.count(KYC.id))
-            .filter(KYC.status == KYCStatus.REJECTED)
-            .scalar()
-            or 0,
+            "Pending": row.pending or 0,
+            "Approved": row.approved or 0,
+            "Rejected": row.rejected or 0,
         }
 
         total = sum(stats.values())

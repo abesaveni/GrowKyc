@@ -1,6 +1,6 @@
 import logging
 import os
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from uuid import uuid4
 
@@ -42,11 +42,16 @@ class DocumentService:
         ]:
             raise AuthorizationError("Access denied.")
 
+        # Sanitize filename: strip path separators, use UUID prefix to prevent collisions
+        from pathlib import Path as _Path
+        safe_name = _Path(file_name).name  # strip any directory component
+        safe_name = f"{uuid4().hex}_{safe_name}"
+
         doc = Document(
             kyc_id=kyc.id,
             type=DocumentType(document_type),
             file_name=file_name,
-            file_path=f"storage/uploads/{file_name}",
+            file_path=f"storage/uploads/{safe_name}",
             uploaded_at=datetime.now(timezone.utc),
             created_at=datetime.now(timezone.utc),
         )
@@ -152,6 +157,17 @@ class DocumentService:
         if size_mb > max_mb:
             raise ValidationError(f"File exceeds maximum allowed size of {max_mb} MB")
 
+        # Validate magic bytes to prevent content-type spoofing
+        _MAGIC_BYTES: dict[str, list[bytes]] = {
+            ".pdf":  [b"%PDF"],
+            ".jpg":  [b"\xff\xd8\xff"],
+            ".jpeg": [b"\xff\xd8\xff"],
+            ".png":  [b"\x89PNG"],
+        }
+        expected_signatures = _MAGIC_BYTES.get(ext, [])
+        if expected_signatures and not any(content.startswith(sig) for sig in expected_signatures):
+            raise ValidationError(f"File content does not match declared type '{ext}'")
+
         # Prepare destination
         file_stem = uuid4().hex
         safe_name = f"{file_stem}_{original_name}"
@@ -186,7 +202,7 @@ class DocumentService:
                 doc.client_id = client.id
                 doc.uploaded_by = user.id
                 # set a default expiry
-                doc.expiry_date = datetime.now(timezone.utc)
+                doc.expiry_date = datetime.now(timezone.utc) + timedelta(days=365)
                 self.db.commit()
 
             # Best-effort monitoring/audit (non-blocking if fails)

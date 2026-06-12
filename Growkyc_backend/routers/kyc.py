@@ -5,13 +5,14 @@ Delegates all business logic to KYCService and DocumentService.
 
 import logging
 
-from fastapi import (APIRouter, Depends, File, Form, HTTPException, Response,
-                     UploadFile, status)
+from fastapi import (APIRouter, Depends, File, Form, HTTPException, Request,
+                     Response, UploadFile, status)
 from sqlalchemy.orm import Session
 
 from core.exceptions import (DatabaseError, DuplicateResourceError,
                              InvalidStateError, ResourceNotFoundError,
                              ValidationError)
+from core.limiter import limiter
 from database import get_db
 from dependencies import (get_admin_or_agent_user, get_current_user,
                           require_role)
@@ -30,9 +31,10 @@ router = APIRouter(prefix="/kyc", tags=["kyc"])
 
 
 @router.post("/submit", response_model=KYCResponse, status_code=status.HTTP_201_CREATED)
+@limiter.limit("5/minute")
 async def submit_kyc(
-    request: KYCSubmit,
-    response: Response,
+    request: Request,
+    body: KYCSubmit,
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ) -> KYCResponse:
@@ -42,7 +44,7 @@ async def submit_kyc(
     Users can submit their Aadhaar and/or PAN information along with personal details.
 
     Args:
-        request: KYC submission data (Aadhaar, PAN, name, DOB, etc.)
+        body: KYC submission data (Aadhaar, PAN, name, DOB, etc.)
         db: Database session
         current_user: Authenticated user
 
@@ -54,20 +56,22 @@ async def submit_kyc(
         HTTPException 422: If no identifiers provided
         HTTPException 500: If creation fails
     """
+    if not body.aadhaar and not body.pan and not body.name:
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail="At least one of: name, aadhaar, or pan must be provided",
+        )
     try:
         service = KYCService(db)
-        is_legacy_minimal_payload = request.name is None
         kyc = service.submit_kyc(
             user=current_user,
-            aadhaar=request.aadhaar,
-            pan=request.pan,
-            name=request.name or current_user.name,
-            dob=request.dob,
-            gender=request.gender,
-            address=request.address,
+            aadhaar=body.aadhaar,
+            pan=body.pan,
+            name=body.name or current_user.name,
+            dob=body.dob,
+            gender=body.gender,
+            address=body.address,
         )
-        if is_legacy_minimal_payload:
-            response.status_code = status.HTTP_200_OK
         return KYCResponse.model_validate(kyc)
     except (ValidationError, InvalidStateError) as e:
         raise HTTPException(status_code=e.status_code, detail=e.message)

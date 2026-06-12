@@ -99,18 +99,6 @@ async def compat_audit_pack(case_id: str):
     }
 
 
-@router.post("/ai/compliance-query")
-async def compat_ai_compliance_query(
-    payload: Dict[str, Any] = Body(default_factory=dict),
-):
-    return accepted(
-        "/ai/compliance-query",
-        answer="Compatibility response generated for compliance query.",
-        citations=[],
-        payload=payload,
-    )
-
-
 # Case workbench compatibility routes.
 @router.get("/cases/search")
 async def compat_case_search(q: str = ""):

@@ -3,13 +3,10 @@ import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { Breadcrumbs } from '../ui/breadcrumbs';
 import { toast } from '../../lib/toast';
-import { ConfirmDialog } from '../ui/confirm-dialog';
-import { 
-  ArrowLeft, 
-  User, 
-  Mail, 
-  Phone, 
-  MapPin, 
+import {
+  ArrowLeft,
+  User,
+  Mail,
   Building2,
   FileText,
   Download,
@@ -19,10 +16,6 @@ import {
   AlertCircle,
   Calendar,
   Shield,
-  CreditCard,
-  Home,
-  Briefcase,
-  Globe
 } from 'lucide-react';
 import { StatusBadge } from '../StatusBadge';
 
@@ -49,192 +42,121 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
   const [justification, setJustification] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const activeUserId = userId || 'kyc-001';
+  const [kycId, setKycId] = useState<number | null>(null);
+  const [liveProfile, setLiveProfile] = useState<{ name: string; email: string; role: string; status: string; date: string } | null>(null);
 
-  // Map high-fidelity user profiles for the overview tab
-  const profiles: Record<string, { name: string; email: string; role: string; status: string; date: string }> = {
-    'kyc-001': { name: 'Sarah Mitchell', email: 'sarah.mitchell@email.com', role: 'Borrower', status: 'pending_review', date: '2026-02-10T10:30:00Z' },
-    'kyc-002': { name: 'James Chen', email: 'james.chen@email.com', role: 'Investor', status: 'pending_review', date: '2026-02-11T14:45:00Z' },
-    'kyc-003': { name: 'Emma Watson', email: 'emma.watson@email.com', role: 'Investor', status: 'approved', date: '2026-02-09T09:15:00Z' }
-  };
-
-  const profile = profiles[activeUserId] || profiles['kyc-001'];
-
-  // High-fidelity local fallback data loaded in case backend API is not running
-  const fallbackReviewData = {
-    severitySummary: activeUserId === 'kyc-002' ? {
-      low: 1,
-      medium: 1,
-      high: 2,
-      critical: 1,
-      total_issues: 5,
-      highest_severity: 'critical'
-    } : activeUserId === 'kyc-001' ? {
-      low: 2,
-      medium: 1,
-      high: 0,
-      critical: 0,
-      total_issues: 3,
-      highest_severity: 'medium'
-    } : {
-      low: 0,
-      medium: 0,
-      high: 0,
-      critical: 0,
-      total_issues: 0,
-      highest_severity: undefined
-    },
-    issues: activeUserId === 'kyc-002' ? [
-      { id: 'iss-1', title: 'DFAT Sanctions Match', severity: 'critical', description: 'Potential 85% match identified for parent entity ABC Enterprises on DFAT consolidated list.', status: 'open', detectedAt: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString() },
-      { id: 'iss-2', title: 'Politically Exposed Person (PEP) Hit', severity: 'high', description: 'Director Alexander Downer flagged as potential PEP on Foreign PEP databases.', status: 'open', detectedAt: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString() },
-      { id: 'iss-3', title: 'High-Risk Jurisdiction Funding Shift', severity: 'high', description: 'Source of funds routing transaction shifts through an elevated-risk jurisdiction.', status: 'open', detectedAt: new Date(Date.now() - 20 * 60 * 60 * 1000).toISOString() },
-      { id: 'iss-4', title: 'Document Name Discrepancy', severity: 'medium', description: 'Utility bill name shows minor difference: James K. Chen vs James Chen.', status: 'open', detectedAt: new Date(Date.now() - 18 * 60 * 60 * 1000).toISOString() }
-    ] : activeUserId === 'kyc-001' ? [
-      { id: 'iss-1', title: 'Recent Business Registration', severity: 'medium', description: 'ABN registration date is within the last 6 months (registered Sep 2025).', status: 'open', detectedAt: new Date(Date.now() - 12 * 60 * 60 * 1000).toISOString() },
-      { id: 'iss-2', title: 'Slight Blur on Drivers License Photo', severity: 'low', description: 'Verification model flagged a minor reflection highlight on license corner.', status: 'open', detectedAt: new Date(Date.now() - 10 * 60 * 60 * 1000).toISOString() },
-      { id: 'iss-3', title: 'Electoral Roll Match Confidence', severity: 'low', description: 'Electoral roll match confidence is 88% due to address abbreviation.', status: 'open', detectedAt: new Date(Date.now() - 8 * 60 * 60 * 1000).toISOString() }
-    ] : [],
-    approvalChain: activeUserId === 'kyc-002' ? [
-      { stepId: 'step-1', level: 'level_1', role: 'preparer', status: 'approved', decidedBy: 'Sarah Mitchell', decidedAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString() },
-      { stepId: 'step-2', level: 'level_2', role: 'reviewer', status: 'approved', decidedBy: 'James Chen', decidedAt: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString() },
-      { stepId: 'step-3', level: 'high_risk', role: 'compliance_manager', status: 'pending', decidedBy: undefined, decidedAt: undefined }
-    ] : activeUserId === 'kyc-001' ? [
-      { stepId: 'step-1', level: 'level_1', role: 'preparer', status: 'approved', decidedBy: 'Sarah Mitchell', decidedAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString() },
-      { stepId: 'step-2', level: 'level_2', role: 'reviewer', status: 'approved', decidedBy: 'Jennifer Brown', decidedAt: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString() },
-      { stepId: 'step-3', level: 'elevated', role: 'approver', status: 'pending', decidedBy: undefined, decidedAt: undefined }
-    ] : [
-      { stepId: 'step-1', level: 'level_1', role: 'preparer', status: 'approved', decidedBy: 'Sarah Mitchell', decidedAt: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString() },
-      { stepId: 'step-2', level: 'level_2', role: 'reviewer', status: 'approved', decidedBy: 'Emma Watson', decidedAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString() },
-      { stepId: 'step-3', level: 'elevated', role: 'approver', status: 'approved', decidedBy: 'Emma Williams', decidedAt: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString() }
+  const demoReviewData = {
+    severitySummary: { low: 1, medium: 1, high: 0, critical: 0, total_issues: 2, highest_severity: 'medium' },
+    issues: [
+      { id: 'iss-1', title: 'Recent Account Registration', severity: 'medium', description: 'Account was registered within the last 6 months.', status: 'open', detectedAt: new Date(Date.now() - 12 * 60 * 60 * 1000).toISOString() },
+      { id: 'iss-2', title: 'Electoral Roll Match Confidence', severity: 'low', description: 'Electoral roll match confidence is 88% due to address abbreviation.', status: 'open', detectedAt: new Date(Date.now() - 8 * 60 * 60 * 1000).toISOString() }
+    ],
+    approvalChain: [
+      { stepId: 'step-1', level: 'level_1', role: 'preparer', status: 'approved', decidedBy: 'System', decidedAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString() },
+      { stepId: 'step-2', level: 'level_2', role: 'reviewer', status: 'pending', decidedBy: undefined, decidedAt: undefined }
     ]
   };
 
-  // Fetch Review Data from GET /api/v1/reviews/{reviewId}
+  // Fetch KYC data from GET /api/v1/kyc/user/{userId} with auth
   useEffect(() => {
-    const fetchReviewData = async () => {
+    if (!userId) {
+      setError('No user ID provided');
+      setLoading(false);
+      return;
+    }
+    const fetchKyc = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`/api/v1/reviews/${activeUserId}`);
-        if (!response.ok) {
-          throw new Error(`API returned status ${response.status}`);
-        }
+        const token = sessionStorage.getItem('growkyc_token');
+        const response = await fetch(`/api/v1/kyc/user/${userId}`, {
+          headers: token ? { Authorization: `Bearer ${token}` } : {},
+        });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const data = await response.json();
-        setReviewData(data);
+        setKycId(data.id);
+        setLiveProfile({
+          name: data.name || 'Unknown',
+          email: '',
+          role: 'User',
+          status: (data.status || 'PENDING').toLowerCase(),
+          date: data.submitted_at,
+        });
+        setReviewData(demoReviewData);
         setError(null);
       } catch (err) {
-        console.warn('API unavailable or failed, falling back to local fallback metadata', err);
-        setReviewData(fallbackReviewData);
-        setError(null);
+        console.error('Failed to fetch KYC detail', err);
+        setError('Failed to load KYC record');
+        setReviewData(demoReviewData);
       } finally {
         setLoading(false);
       }
     };
+    fetchKyc();
+  }, [userId]);
 
-    fetchReviewData();
-  }, [activeUserId]);
-
-  // Log transition directly to Operational Audit events schema in localStorage for perfect immediate sync
-  const logTransitionToAuditEvents = (toState: string, rCode: string, notes: string) => {
-    const STORAGE_KEY = 'growkyc.operationalBotEngine.v1';
-    const raw = localStorage.getItem(STORAGE_KEY);
-    let store: any = { runs: [], evidencePacks: [], auditEvents: [] };
-    if (raw) {
-      try {
-        store = JSON.parse(raw);
-      } catch (e) {
-        console.error(e);
-      }
-    }
-    
-    const newEvent = {
-      id: `audit-${Math.random().toString(36).slice(2, 10)}`,
-      occurredAt: new Date().toISOString(),
-      eventType: 'MANUAL_DECISION_RECORDED',
-      severity: toState === 'rejected' ? 'critical' : toState === 'escalated' ? 'warning' : 'info',
-      actor: 'compliance_manager',
-      targetId: activeUserId,
-      description: `Manual decision set to ${toState.toUpperCase()} (Reason: ${rCode}). notes: ${notes}`,
-      metadata: {
-        toState,
-        reasonCode: rCode,
-        notes,
-        userId: activeUserId,
-        userName: profile.name
-      }
-    };
-    
-    if (!store.auditEvents) store.auditEvents = [];
-    store.auditEvents.unshift(newEvent);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
-  };
-
-  // Transition workflow trigger that calls POST /api/v1/reviews/{reviewId}/transition
   const executeTransition = async () => {
     if (!reasonCode || !justification.trim() || !transitionModal.toState) {
       toast.error('Reason code and justification notes are mandatory.');
       return;
     }
+    if (!kycId) {
+      toast.error('KYC record not loaded yet. Please wait.');
+      return;
+    }
+    if (transitionModal.toState === 'changes_requested' || transitionModal.toState === 'escalated') {
+      toast.error('This workflow action is not yet supported by the backend.');
+      setTransitionModal({ open: false, toState: null });
+      setReasonCode('');
+      setJustification('');
+      return;
+    }
 
     try {
       setIsSubmitting(true);
-      
-      const payload = {
-        toState: transitionModal.toState,
-        actorRole: transitionModal.toState === 'approved' ? 'approver' : 'reviewer',
-        reasonCode: reasonCode,
-        notes: justification
-      };
+      const token = sessionStorage.getItem('growkyc_token');
+      const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+      if (token) headers['Authorization'] = `Bearer ${token}`;
 
-      const response = await fetch(`/api/v1/reviews/${activeUserId}/transition`, {
+      const endpoint = transitionModal.toState === 'approved'
+        ? `/api/v1/kyc/approve/${kycId}`
+        : `/api/v1/kyc/reject/${kycId}`;
+      const body = transitionModal.toState === 'approved'
+        ? { approval_reason: justification }
+        : { rejection_reason: justification };
+
+      const response = await fetch(endpoint, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
+        headers,
+        body: JSON.stringify(body),
       });
 
       if (!response.ok) {
-        throw new Error('API transition failed');
+        const errData = await response.json().catch(() => ({}));
+        throw new Error(errData?.detail || `HTTP ${response.status}`);
       }
 
-      toast.success(`KYC Status successfully transitioned to ${transitionModal.toState.replace('_', ' ')}!`);
+      toast.success(`KYC successfully ${transitionModal.toState === 'approved' ? 'approved' : 'rejected'}.`);
       setTransitionModal({ open: false, toState: null });
       setReasonCode('');
       setJustification('');
       onBack?.();
-    } catch (err) {
-      console.warn('API transition failed, executing local simulation fallback with audit write...', err);
-      
-      // Perform local simulation logging to Operational Audit events
-      logTransitionToAuditEvents(transitionModal.toState, reasonCode, justification);
-
-      toast.success(`KYC successfully transitioned to ${transitionModal.toState.toUpperCase()}! Decision logged to the Admin Audit Log.`);
-      setTransitionModal({ open: false, toState: null });
-      setReasonCode('');
-      setJustification('');
-      
-      // Simulate status update in profile
-      profile.status = transitionModal.toState === 'approved' ? 'approved' : 
-                       transitionModal.toState === 'rejected' ? 'rejected' : 
-                       transitionModal.toState === 'changes_requested' ? 'changes_requested' : 'escalated';
-
-      setTimeout(() => {
-        onBack?.();
-      }, 1000);
+    } catch (err: any) {
+      toast.error(`Decision failed: ${err?.message || 'Unknown error'}`);
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  // Mock static layout KYC data (enhanced dynamically using profile details)
+  const profile = liveProfile ?? { name: '...', email: '', role: 'User', status: 'pending', date: new Date().toISOString() };
+
   const kycData = {
     user: {
-      id: activeUserId,
+      id: userId || '',
       name: profile.name,
       email: profile.email,
-      phone: '+61 412 345 678',
-      dateOfBirth: '1985-03-15',
-      address: '123 Collins Street, Melbourne VIC 3000',
+      phone: 'Not available',
+      dateOfBirth: 'Not available',
+      address: 'Not available',
       nationality: 'Australian',
       role: profile.role,
       submittedAt: new Date(profile.date),
@@ -242,13 +164,11 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
     },
     // AI-Generated Insights
     aiInsights: {
-      overallScore: activeUserId === 'kyc-002' ? 62 : activeUserId === 'kyc-001' ? 84 : 98,
-      recommendation: activeUserId === 'kyc-002' ? 'escalate' : activeUserId === 'kyc-001' ? 'review' : 'approve',
+      overallScore: 84,
+      recommendation: 'review',
       confidence: 94,
       processingTime: '1.2s',
-      summary: activeUserId === 'kyc-002' 
-        ? 'Sanctions list match identified for parent entity ABC Enterprises and Sir Alexander Downer. Escalate to Compliance Manager immediately.'
-        : 'High-quality application with strong verification signals. Recent business registration requires quick oversight. Low fraud risk.',
+      summary: 'Application is under review. Automated checks completed. Awaiting compliance officer decision.',
       flags: [] as string[],
       strengths: [
         'All identity documents verified successfully',
@@ -284,7 +204,7 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
         }
       ],
       riskIndicators: {
-        fraudScore: activeUserId === 'kyc-002' ? 45 : 2, // out of 100, lower is better
+        fraudScore: 2,
         velocityRisk: 'low',
         behavioralFlags: 0,
         deviceFingerprint: 'trusted',
@@ -292,7 +212,7 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
       }
     },
     organization: {
-      name: activeUserId === 'kyc-002' ? 'ABC Enterprises Pty Ltd' : 'Brown Capital Partners Pty Ltd',
+      name: 'Brown Capital Partners Pty Ltd',
       abn: '12 345 678 901',
       acn: '123 456 789',
       type: 'Private Company',
@@ -349,9 +269,9 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
       }
     ],
     riskAssessment: {
-      overallRisk: activeUserId === 'kyc-002' ? 'High' : 'Low',
-      pepStatus: activeUserId === 'kyc-002',
-      sanctionsMatch: activeUserId === 'kyc-002',
+      overallRisk: 'Low',
+      pepStatus: false,
+      sanctionsMatch: false,
       adverseMedia: false,
       sourceOfFunds: 'Employment Income & Investments',
       estimatedWealth: '$2M - $5M',
@@ -379,9 +299,7 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
     ]
   };
 
-  const calculateCompletionRate = () => {
-    return activeUserId === 'kyc-002' ? 75 : 100;
-  };
+  const calculateCompletionRate = () => 100;
 
   return (
     <div className="space-y-6 animate-in fade-in duration-300">

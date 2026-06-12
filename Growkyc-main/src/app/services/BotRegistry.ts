@@ -5,6 +5,7 @@ import {
   BotRunContext,
   BotOutcomeStatus,
 } from './BotTypes';
+import { AIComplianceBot } from './AIComplianceBot';
 
 function createId(prefix: string): string {
   return `${prefix}-${Math.random().toString(36).slice(2, 10)}`;
@@ -274,7 +275,8 @@ export class BotRegistry {
   }
 
   registerDescriptor(descriptor: BotDescriptor): void {
-    this.register(new DefaultComplianceBot(descriptor));
+    // Use AI-powered bot — falls back to simulation if backend is unreachable
+    this.register(new AIComplianceBot(descriptor));
   }
 
   get(botId: string): ComplianceBot | undefined {

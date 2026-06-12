@@ -1,4 +1,5 @@
 import React, { Suspense, lazy, useState, useEffect } from 'react';
+import { useAuth } from '../context/AuthContext';
 import { Routes, Route, Navigate, useParams, useLocation, useNavigate } from 'react-router-dom';
 import {
   Home,
@@ -354,6 +355,7 @@ type UserRole = 'borrower' | 'lender' | 'investor' | 'admin' | 'lawyer' | 'recei
 type Module = 'Grow MIP' | 'grow_accounting' | 'grow_lending' | 'grow_investments' | 'grow_receivership' | 'grow_kyc' | 'grow_crm' | 'grow_time' | 'grow_hq' | 'grow_payments' | 'grow_settlement' | 'grow_trust' | 'grow_esign' | 'ultimate_os' | 'qld_association' | 'atlas_practice' | 'public_site' | 'pfa' | 'test_storage';
 
 export default function App() {
+  const { user: authUser, logout: authLogout } = useAuth();
   const runtimeEnv = getRuntimeEnv();
   const isProductionRuntime =
     Boolean((import.meta as any)?.env?.PROD) ||
@@ -367,7 +369,35 @@ export default function App() {
   const requestedModule = getRequestedModule();
 
   const [currentPage, setCurrentPage] = useState<Page>('dashboard');
-  const [userRole, setUserRole] = useState<UserRole>('investor');
+
+  const resolveUserRole = (): UserRole => {
+    try {
+      const raw = sessionStorage.getItem('growkyc_user');
+      if (!raw) return 'investor';
+      const u = JSON.parse(raw);
+      const backendRole: string = u?.role || '';
+      const map: Record<string, UserRole> = {
+        Admin: 'admin',
+        ADMIN: 'admin',
+        User: 'borrower',
+        USER: 'borrower',
+        Agent: 'lender',
+        AGENT: 'lender',
+        Partner: 'lender',
+        PARTNER: 'lender',
+        Analyst: 'admin',
+        ANALYST: 'admin',
+        Compliance_Officer: 'admin',
+        COMPLIANCE_OFFICER: 'admin',
+        MLRO: 'admin',
+      };
+      return map[backendRole] ?? 'investor';
+    } catch {
+      return 'investor';
+    }
+  };
+
+  const [userRole, setUserRole] = useState<UserRole>(resolveUserRole);
   // Auth is checked against a real Supabase session on mount.
   // If Supabase is not configured (placeholder creds) we fall back to dev-bypass mode (true).
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -393,8 +423,10 @@ export default function App() {
     const checkSession = async () => {
       try {
         if (!isSupabaseConfigured) {
-          // Dev mode: Supabase not configured, skip auth gate
-          setIsAuthenticated(true);
+          // Supabase not configured — validate against FastAPI JWT in sessionStorage
+          const token = sessionStorage.getItem('growkyc_token');
+          setIsAuthenticated(!!token);
+          if (token) setUserRole(resolveUserRole());
           setAuthChecking(false);
           return;
         }
@@ -1539,8 +1571,8 @@ export default function App() {
               {/* User Profile */}
               <div className="flex items-center gap-3 pl-3 border-l border-gray-200">
                 <div className="text-right hidden lg:block">
-                  <p className="text-sm font-semibold text-gray-900">{mockCurrentUser.name}</p>
-                  <p className="text-xs text-gray-500 capitalize">{mockCurrentUser.role}</p>
+                  <p className="text-sm font-semibold text-gray-900">{authUser?.name ?? 'User'}</p>
+                  <p className="text-xs text-gray-500 capitalize">{authUser?.role ?? userRole}</p>
                 </div>
                 <button
                   onClick={() => setCurrentPage('settings')}
@@ -1548,7 +1580,7 @@ export default function App() {
                 >
                   <Avatar className="cursor-pointer ring-2 ring-gray-200 hover:ring-indigo-400 transition-all">
                     <AvatarFallback className="bg-gradient-to-br from-indigo-600 to-indigo-700 text-white font-semibold">
-                      {mockCurrentUser.name.split(' ').map(n => n[0]).join('')}
+                      {(authUser?.name ?? 'U').split(' ').map((n: string) => n[0]).join('')}
                     </AvatarFallback>
                   </Avatar>
                 </button>
@@ -1647,6 +1679,7 @@ export default function App() {
                 <Button
                   variant="ghost"
                   className="w-full justify-start text-red-600 hover:text-red-700 hover:bg-red-50"
+                  onClick={() => { authLogout(); setMobileMenuOpen(false); }}
                 >
                   <LogOut className="w-5 h-5 mr-3" />
                   Sign Out

@@ -4,18 +4,37 @@ import { Shield, Mail, Lock, User, Eye, EyeOff, ArrowRight, Building } from 'luc
 import { useAuth } from '../context/AuthContext';
 import type { Role } from '../context/AuthContext';
 
+type StrengthLevel = 'empty' | 'weak' | 'fair' | 'strong' | 'very-strong';
+
+function getPasswordStrength(pwd: string): { level: StrengthLevel; label: string; color: string; width: string } {
+  if (!pwd) return { level: 'empty', label: '', color: 'bg-gray-200', width: '0%' };
+  let score = 0;
+  if (pwd.length >= 12) score++;
+  if (pwd.length >= 16) score++;
+  if (/[A-Z]/.test(pwd)) score++;
+  if (/[a-z]/.test(pwd)) score++;
+  if (/[0-9]/.test(pwd)) score++;
+  if (/[^A-Za-z0-9]/.test(pwd)) score++;
+  if (score <= 2) return { level: 'weak', label: 'Weak', color: 'bg-red-500', width: '25%' };
+  if (score === 3) return { level: 'fair', label: 'Fair', color: 'bg-amber-400', width: '50%' };
+  if (score === 4) return { level: 'strong', label: 'Strong', color: 'bg-blue-500', width: '75%' };
+  return { level: 'very-strong', label: 'Very Strong', color: 'bg-green-500', width: '100%' };
+}
+
 export const Signup: React.FC = () => {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [role, setRole] = useState<Role>('compliance');
+  const [role, setRole] = useState<Role>('User');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { login } = useAuth();
+
+  const strength = getPasswordStrength(password);
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,27 +44,29 @@ export const Signup: React.FC = () => {
       setError('Please fill in all fields.');
       return;
     }
-
+    if (password.length < 12) {
+      setError('Password must be at least 12 characters.');
+      return;
+    }
     if (password !== confirmPassword) {
       setError('Passwords do not match.');
       return;
     }
 
     setIsLoading(true);
-
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 800));
-
-      const mockUser = {
-        id: Math.random().toString(36).substr(2, 9),
-        name: fullName,
-        email,
-        role,
-      };
-
-      login('mock-jwt-token-123', mockUser);
-      navigate(`/${role}/dashboard`);
+      const res = await fetch('/api/v1/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: fullName, email, password, role }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data?.detail || 'Registration failed.');
+        return;
+      }
+      login(data.access_token, data.user);
+      navigate('/');
     } catch (err) {
       setError('An error occurred during account creation.');
     } finally {
@@ -119,10 +140,12 @@ export const Signup: React.FC = () => {
                 onChange={(e) => setRole(e.target.value as Role)}
                 className="block w-full pl-11 pr-4 py-3.5 border-2 border-slate-200 rounded-xl focus:ring-0 focus:border-[#13B5EA] transition-all sm:text-sm bg-white/50 text-slate-900 font-medium appearance-none cursor-pointer"
               >
-                <option value="compliance">Compliance Officer</option>
-                <option value="partner">Partner / Executive</option>
-                <option value="auditor">Auditor</option>
-                <option value="aml-analyst">AML Analyst</option>
+                <option value="User">Regular User</option>
+                <option value="Agent">Agent</option>
+                <option value="Analyst">AML Analyst</option>
+                <option value="Compliance_Officer">Compliance Officer</option>
+                <option value="MLRO">MLRO</option>
+                <option value="Partner">Partner</option>
               </select>
             </div>
           </div>
@@ -153,6 +176,20 @@ export const Signup: React.FC = () => {
                   )}
                 </button>
               </div>
+              {password.length > 0 && (
+                <div className="mt-2 space-y-1">
+                  <div className="h-1.5 w-full bg-gray-200 rounded-full overflow-hidden">
+                    <div className={`h-full rounded-full transition-all duration-300 ${strength.color}`} style={{ width: strength.width }} />
+                  </div>
+                  <p className="text-xs text-slate-500">
+                    Strength: <span className={`font-semibold ${strength.level === 'weak' ? 'text-red-500' : strength.level === 'fair' ? 'text-amber-500' : strength.level === 'strong' ? 'text-blue-600' : 'text-green-600'}`}>{strength.label}</span>
+                    {' '}&bull; Min 12 characters
+                  </p>
+                </div>
+              )}
+              {password.length === 0 && (
+                <p className="mt-1 text-xs text-slate-400">Min 12 characters required</p>
+              )}
             </div>
 
             <div>

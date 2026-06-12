@@ -19,7 +19,7 @@ from core.constants import (
     ERROR_INVALID_KYC_STATUS,
     ERROR_KYC_NO_IDENTIFIERS,
 )
-from core.enums import KYCStatus
+from core.enums import KYCStatus, RiskLevel
 from core.exceptions import (
     DatabaseError,
     DuplicateResourceError,
@@ -28,10 +28,9 @@ from core.exceptions import (
     ValidationError,
 )
 from core.tenant_context import get_tenant_id
-from models import KYC, Client, IdentityDocument, KYCAuditLog, User
+from models import KYC, Client, Document, EDDWorkflow, IdentityDocument, KYCAuditLog, User
 from schemas import IndividualProfileCreate
 from services.client_service import ClientService
-from services.monitoring_service import MonitoringService
 
 logger = logging.getLogger(__name__)
 
@@ -88,10 +87,9 @@ class KYCService:
                 )
                 raise DuplicateResourceError("KYC", "user_id")
 
-            # Validate at least one identifier is provided
-            # NOTE: documents list also satisfies this requirement in future API v2
-            if not aadhaar and not pan:
-                raise ValidationError(ERROR_KYC_NO_IDENTIFIERS)
+            # Identifier validation: aadhaar/pan are legacy fields (mapped to IdentityDocument).
+            # Australian clients submit documents via /kyc/upload-file instead,
+            # so the identifier requirement is relaxed — name + address is sufficient.
 
             # Normalize DOB: allow `date` inputs from schemas and convert
             # to timezone-aware datetime for storage (minimal change).
@@ -176,12 +174,17 @@ class KYCService:
                     user_id=user.id, profile_data=profile_data, trigger_async=False
                 )
 
-            # Integration STEP 6: Execute Monitoring Scrape on Client Action
+            # Integration STEP 6: Dispatch monitoring check as background task
+            # (non-blocking — runs in Celery worker after this request completes)
             try:
-                MonitoringService(self.db).run_monitoring_checks()
+                from tasks.monitoring_tasks import run_monitoring_checks_task
+                run_monitoring_checks_task.apply_async(
+                    kwargs={"tenant_id": get_tenant_id()},
+                    countdown=5,
+                )
             except Exception as e:
                 self.logger.warning(
-                    "Monitoring scrape failed after client creation, "
+                    "Failed to dispatch background monitoring task, "
                     f"non-critical: {str(e)}"
                 )
 
@@ -209,7 +212,7 @@ class KYCService:
         """
         kyc = self.db.query(KYC).filter(KYC.user_id == user.id).first()
         if not kyc:
-            raise ResourceNotFoundError("KYC", user.id)
+            raise ResourceNotFoundError("KYC", user.id, message="No KYC record found for your account")
         return kyc
 
     def get_user_kyc_by_user_id(self, user_id: int) -> KYC:
@@ -323,6 +326,30 @@ class KYCService:
                     f"{ERROR_INVALID_KYC_STATUS}: {kyc.status.value}"
                 )
 
+            # Require at least one uploaded document before approval
+            doc_count = self.db.query(Document).filter(Document.kyc_id == kyc.id).count()
+            if doc_count == 0:
+                raise InvalidStateError(
+                    "Cannot approve KYC: no supporting documents have been uploaded"
+                )
+
+            # For HIGH-risk clients, require a completed EDD workflow before approval
+            client = self.db.query(Client).filter(Client.user_id == kyc.user_id).first()
+            if client and client.risk_level == RiskLevel.HIGH:
+                completed_edd = (
+                    self.db.query(EDDWorkflow)
+                    .filter(
+                        EDDWorkflow.client_id == client.id,
+                        EDDWorkflow.status == "completed",
+                    )
+                    .first()
+                )
+                if not completed_edd:
+                    raise InvalidStateError(
+                        "Cannot approve HIGH-risk KYC: Enhanced Due Diligence (EDD) "
+                        "must be completed first"
+                    )
+
             # Update KYC
             old_status = kyc.status
             kyc.status = KYCStatus.APPROVED
@@ -331,13 +358,17 @@ class KYCService:
             self.db.commit()
             self.db.refresh(kyc)
 
-            # Create audit log
+            # Create audit log with approver context
             self._create_audit_log(
                 kyc_id=kyc.id,
                 changed_by=admin_user.id,
                 old_status=old_status,
                 new_status=KYCStatus.APPROVED,
-                change_reason=reason or AUDIT_KYC_APPROVED,
+                change_reason=(
+                    f"{reason or AUDIT_KYC_APPROVED} | "
+                    f"approved_by={admin_user.id} | "
+                    f"approved_at={kyc.approved_at.isoformat()}"
+                ),
             )
 
             self.logger.info(f"KYC {kyc.id} approved by admin {admin_user.id}")

@@ -61,7 +61,7 @@ class ScreeningService:
                 )
 
                 # Check entity vs person
-                if client.client_type == "INDIVIDUAL":
+                if getattr(client, "client_type", "INDIVIDUAL") == "INDIVIDUAL":
                     result = provider.screen_person(
                         full_name=client.name, dob=None, nationality=client.geography
                     )
