@@ -1,4 +1,5 @@
 import logging
+from datetime import datetime, timezone
 from typing import List
 
 from fastapi import APIRouter, Depends, HTTPException, Request, status
@@ -29,6 +30,25 @@ class StatusUpdate(BaseModel):
     status: str
 
 
+@router.get("/search")
+async def search_clients(
+    q: str = "",
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """Find clients by name (case-insensitive substring match)."""
+    query = db.query(Client)
+    if current_user.role == UserRole.USER:
+        query = query.filter(Client.user_id == current_user.id)
+    if q:
+        query = query.filter(Client.name.ilike(f"%{q}%"))
+    clients = query.limit(20).all()
+    return {
+        "total": len(clients),
+        "items": [ClientResponse.model_validate(c) for c in clients],
+    }
+
+
 @router.put("/{client_id}/status")
 async def update_client_status(
     client_id: str,
@@ -45,19 +65,30 @@ async def update_client_status(
     if not client:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Client not found")
 
+    now = datetime.now(timezone.utc)
     if data.status == "approved":
         client.is_locked = False
-    elif data.status in ["investigation", "more-info"]:
+        client.approved_at = now
+        client.approved_by = admin.id
+        client.rejected_at = None
+        client.rejected_by = None
+    elif data.status in ["flagged", "investigation", "more-info"]:
         client.is_locked = True
+        client.rejected_at = now
+        client.rejected_by = admin.id
+        client.approved_at = None
+        client.approved_by = None
+    elif data.status == "pending":
+        client.is_locked = False
+        client.approved_at = None
+        client.approved_by = None
+        client.rejected_at = None
+        client.rejected_by = None
 
     db.commit()
+    db.refresh(client)
 
-    return {
-        "success": True,
-        "clientId": client_id,
-        "newStatus": data.status,
-        "message": f"Client {client_id} status updated in database",
-    }
+    return ClientResponse.model_validate(client)
 
 
 @router.post("/individual", response_model=ClientResponse, status_code=201)

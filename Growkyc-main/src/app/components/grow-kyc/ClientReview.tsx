@@ -35,12 +35,23 @@ const getPersonaConfig = (userId: string) => {
   return configs[userId] || configs.sarah_chen;
 };
 
+function getAuthToken(): string | null {
+  return sessionStorage.getItem('growkyc_token');
+}
+
+function backendStatusToLocal(s: string): 'Active' | 'Suspended' | 'Under Review' {
+  if (s === 'approved') return 'Active';
+  if (s === 'flagged') return 'Suspended';
+  return 'Under Review';
+}
+
 export function ClientReview({ clientId: propClientId, role: propRole }: ClientReviewProps) {
   const params = useParams();
   const clientId = propClientId || params.clientId;
   const role = propRole || params.role;
   const navigate = useNavigate();
   const [loadingAction, setLoadingAction] = useState<string | null>(null);
+  const [backendClientId, setBackendClientId] = useState<number | null>(null);
   
   // Request More Info Modal States
   const [showInfoModal, setShowInfoModal] = useState(false);
@@ -200,6 +211,36 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
     return () => unsubscribe();
   }, [clientId]);
 
+  // Fetch real backend client by name to get persisted compliance status
+  useEffect(() => {
+    const token = getAuthToken();
+    if (!token || !clientId) return;
+    const name = decodeURIComponent(clientId);
+    fetch(`/api/v1/clients/search?q=${encodeURIComponent(name)}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (!data) return;
+        const match = (data.items || []).find(
+          (c: any) => c.name.toLowerCase() === name.toLowerCase()
+        );
+        if (!match) return;
+        setBackendClientId(match.id);
+        const localStatus = backendStatusToLocal(match.compliance_status);
+        // Upsert into ClientsDB so status is reflected in the local store
+        const existing = ClientsDB.getClients().find((c) => c.id === clientId);
+        if (existing) {
+          ClientsDB.updateClient(clientId, { status: localStatus });
+        } else {
+          ClientsDB.addClient({ ...client, id: clientId, status: localStatus } as any);
+          setClient((prev) => ({ ...prev, status: localStatus }));
+        }
+      })
+      .catch(() => {/* backend unreachable — keep local state */});
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [clientId]);
+
   // Read current active user persona
   const [activePersona, setActivePersona] = useState(() => {
     return localStorage.getItem('growkyc_selected_user') || 'sarah_chen';
@@ -340,16 +381,34 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
   };
 
   const updateClientStatusInDB = (newStatus: 'Active' | 'Inactive' | 'Suspended' | 'Under Review') => {
-    ClientsDB.updateClient(client.id, {
-      status: newStatus
-    });
-    
-    // Refresh local component state
-    const dbClient = ClientsDB.getClients().find(c => c.id === clientId);
-    if (dbClient) {
-      setClient(dbClient);
+    const existing = ClientsDB.getClients().find((c) => c.id === client.id);
+    if (existing) {
+      ClientsDB.updateClient(client.id, { status: newStatus });
     } else {
-      setClient(prev => ({ ...prev, status: newStatus }));
+      // Client came from fallback mock — add it to DB so future navigations see persisted status
+      ClientsDB.addClient({ ...client, status: newStatus } as any);
+    }
+    setClient((prev) => ({ ...prev, status: newStatus }));
+  };
+
+  const callBackendStatus = async (apiStatus: string): Promise<boolean> => {
+    const token = getAuthToken();
+    if (!token || !backendClientId) return true; // no backend match — skip silently
+    try {
+      const res = await fetch(`/api/v1/clients/${backendClientId}/status`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ status: apiStatus }),
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        toast.error(typeof err?.detail === 'string' ? err.detail : 'Failed to save status');
+        return false;
+      }
+      return true;
+    } catch {
+      toast.error('Network error — status not saved to server');
+      return false;
     }
   };
 
@@ -361,24 +420,26 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
     }
 
     setLoadingAction('approve');
-    await new Promise(resolve => setTimeout(resolve, 800)); // Network simulation
-    
+    const saved = await callBackendStatus('approved');
+    if (!saved) { setLoadingAction(null); return; }
+
     updateClientStatusInDB('Active');
     logActivity(`approved client ${client.name} following KYC review`, 'CheckCircle', 'text-green-600');
-    toast.success('Client Approved', `Client ID: ${client.id} has been successfully verified.`);
-    
+    toast.success('Client Approved', `${client.name} has been successfully verified.`);
+
     setLoadingAction(null);
     navigate(`/${role}/dashboard`);
   };
 
   const handleFlag = async () => {
     setLoadingAction('flag');
-    await new Promise(resolve => setTimeout(resolve, 800)); // Network simulation
-    
+    const saved = await callBackendStatus('flagged');
+    if (!saved) { setLoadingAction(null); return; }
+
     updateClientStatusInDB('Suspended');
     logActivity(`flagged client ${client.name} for suspicious AML activity`, 'AlertOctagon', 'text-red-600');
-    toast.warning('Client Flagged', `Client ${client.id} is now under investigation.`);
-    
+    toast.warning('Client Flagged', `${client.name} is now under investigation.`);
+
     setLoadingAction(null);
     navigate(`/${role}/dashboard`);
   };
@@ -387,10 +448,8 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
     e.preventDefault();
     setLoadingAction('info');
     setShowInfoModal(false);
-    
-    await new Promise(resolve => setTimeout(resolve, 1000)); // Simulated processing delay
 
-    // Update status in the database to trigger reactivity
+    await callBackendStatus('more-info');
     updateClientStatusInDB('Under Review');
     
     // Log the event with the requested items list

@@ -8,7 +8,7 @@ from datetime import date, datetime
 from typing import Generic, List, Optional, TypeVar
 
 from pydantic import (BaseModel, ConfigDict, EmailStr, Field, ValidationInfo,
-                      field_validator)
+                      computed_field, field_validator)
 
 from core.enums import (CaseStatus, DocumentType, KYCStatus,
                         NotificationStatus, NotificationType, ReportType,
@@ -358,10 +358,20 @@ class ClientResponse(BaseModel):
     income_level: int
     is_locked: bool
     created_at: datetime
+    approved_at: Optional[datetime] = None
     individual_profile: Optional[IndividualProfileResponse] = None
     entity_profile: Optional[EntityProfileResponse] = None
 
     model_config = ConfigDict(from_attributes=True)
+
+    @computed_field  # type: ignore[prop-decorator]
+    @property
+    def compliance_status(self) -> str:
+        if self.approved_at is not None:
+            return "approved"
+        if self.is_locked:
+            return "flagged"
+        return "pending"
 
 
 class CaseCreate(BaseModel):
