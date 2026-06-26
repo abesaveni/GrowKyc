@@ -4,13 +4,16 @@ Delegates all business logic to AuthService.
 """
 
 import logging
+from typing import Optional
 
-from fastapi import APIRouter, Depends, HTTPException, Request, status
+from fastapi import APIRouter, Depends, Header, HTTPException, Request, status
 from sqlalchemy.orm import Session
 
+from auth.jwt_handler import decode_token_unsafe
 from core.exceptions import (AuthenticationError, DatabaseError,
                              DuplicateResourceError, ValidationError)
 from core.limiter import limiter
+from core.token_blacklist import revoke
 from database import get_db
 from dependencies import get_current_user
 from models import User
@@ -84,6 +87,35 @@ async def login(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Login failed",
         )
+
+
+@router.post("/logout")
+@limiter.limit("10/minute")
+async def logout(
+    request: Request,
+    authorization: Optional[str] = Header(None),
+    current_user: User = Depends(get_current_user),
+) -> dict:
+    """Revoke the caller's current access token (server-side logout).
+
+    The token's jti is added to the Redis blacklist until its natural expiry, so
+    it can no longer be used even though it has not yet expired.
+    """
+    # current_user dependency has already validated the token; extract its claims.
+    token = authorization.split()[1] if authorization and " " in authorization else None
+    claims = decode_token_unsafe(token) if token else None
+    if not claims or not claims.get("jti"):
+        # Legacy token without a jti cannot be individually revoked.
+        return {"message": "Logged out (token not revocable; will expire naturally)"}
+    try:
+        revoke(claims.get("jti"), claims.get("exp"))
+    except Exception as e:  # Redis write failed — tell the truth.
+        logger.error("Logout failed to revoke token: %s", e)
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="Logout could not be completed, please retry",
+        )
+    return {"message": "Logged out successfully"}
 
 
 @router.post("/change-password")

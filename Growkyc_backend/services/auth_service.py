@@ -5,10 +5,13 @@ Encapsulates all authentication business logic.
 
 import logging
 import re
+import uuid
 from datetime import datetime, timedelta
 
 from jose import jwt
 from sqlalchemy.orm import Session
+
+from core.token_blacklist import is_revoked
 
 from config import (ACCESS_TOKEN_EXPIRE_MINUTES, JWT_ALGORITHM, SECRET_KEY,
                     MIN_PASSWORD_LENGTH, PASSWORD_REQUIRE_DIGIT,
@@ -176,7 +179,8 @@ class AuthService:
             expires_delta = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
 
         expire = datetime.utcnow() + expires_delta
-        to_encode = {"sub": str(user_id), "exp": expire}
+        # jti: unique token id so individual tokens can be revoked (logout).
+        to_encode = {"sub": str(user_id), "exp": expire, "jti": uuid.uuid4().hex}
         if tenant_id is not None:
             to_encode["tenant_id"] = tenant_id
         if role is not None:
@@ -209,10 +213,18 @@ class AuthService:
             decoded = {"user_id": int(user_id), **payload}
             if tenant_id is not None:
                 decoded["tenant_id"] = int(tenant_id)
-            return decoded
+        except AuthenticationError:
+            raise
         except Exception as e:
             self.logger.warning(f"Token verification failed: {str(e)}")
             raise AuthenticationError("Invalid or expired token")
+
+        # Reject tokens that have been explicitly revoked via /auth/logout.
+        if is_revoked(payload.get("jti")):
+            self.logger.info("Rejected revoked token (jti=%s)", payload.get("jti"))
+            raise AuthenticationError("Token has been revoked")
+
+        return decoded
 
     def change_password(
         self, user: User, current_password: str, new_password: str

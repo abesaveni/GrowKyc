@@ -626,9 +626,9 @@ async def compat_auth_session(current_user: User = Depends(get_current_user)):
         return {"user": None}
 
 
-@router.post("/auth/logout")
-async def compat_auth_logout():
-    return accepted("/auth/logout")
+# NOTE: /auth/logout is now handled for real by routers/auth.py (token revocation).
+# The previous no-op compatibility stub here shadowed it because compatibility
+# routes are registered first, so it has been removed.
 
 
 @router.post("/auth/oauth")

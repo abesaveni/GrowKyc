@@ -53,9 +53,9 @@ async def alias_auth_oauth(payload: dict = Body(default_factory=dict)):
     return await compat.compat_auth_oauth(payload=payload)
 
 
-@router.post("/auth/logout")
-async def alias_auth_logout():
-    return await compat.compat_auth_logout()
+# /auth/logout removed here — it delegated to a no-op stub and shadowed the real
+# token-revoking logout in routers/auth.py (served at /api/v1/auth/logout and
+# /api/auth/logout).
 
 
 @router.get("/auth/session")
