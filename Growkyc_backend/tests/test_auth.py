@@ -16,15 +16,18 @@ class TestAuthRegistration:
             json={
                 "name": "John Doe",
                 "email": "john@example.com",
-                "password": "SecurePass123",
+                "password": "SecurePass@123",
             },
         )
         assert response.status_code == status.HTTP_201_CREATED
         data = response.json()
-        assert data["email"] == "john@example.com"
-        assert data["name"] == "John Doe"
-        assert "id" in data
-        assert data["is_active"] is True
+        # Register returns a TokenResponse (auto-login): token + nested user.
+        assert "access_token" in data
+        user = data["user"]
+        assert user["email"] == "john@example.com"
+        assert user["name"] == "John Doe"
+        assert "id" in user
+        assert user["is_active"] is True
 
     def test_register_duplicate_email(self, client, regular_user):
         """Test registration with duplicate email."""
@@ -33,7 +36,7 @@ class TestAuthRegistration:
             json={
                 "name": "Another User",
                 "email": "user@test.com",  # Already exists
-                "password": "SecurePass123",
+                "password": "SecurePass@123",
             },
         )
         assert response.status_code == status.HTTP_409_CONFLICT
@@ -58,7 +61,7 @@ class TestAuthRegistration:
             json={
                 "name": "John Doe",
                 "email": "invalid-email",
-                "password": "SecurePass123",
+                "password": "SecurePass@123",
             },
         )
         assert response.status_code == status.HTTP_422_UNPROCESSABLE_ENTITY
@@ -147,7 +150,7 @@ class TestAuthJWT:
     def test_jwt_missing_token(self, client):
         """Test endpoint without token."""
         response = client.get("/api/v1/auth/profile")
-        assert response.status_code == status.HTTP_403_FORBIDDEN
+        assert response.status_code == status.HTTP_401_UNAUTHORIZED
 
     def test_jwt_expired_token_format(self, client, regular_user):
         """Test with malformed token."""
@@ -171,7 +174,7 @@ class TestAuthProfile:
     def test_get_profile_without_auth(self, client):
         """Test getting profile without authentication."""
         response = client.get("/api/v1/auth/profile")
-        assert response.status_code == status.HTTP_403_FORBIDDEN
+        assert response.status_code == status.HTTP_401_UNAUTHORIZED
 
 
 class TestAuthPasswordChange:
@@ -216,7 +219,7 @@ class TestAuthPasswordChange:
                 "confirm_password": "NewPassword123!",
             },
         )
-        assert response.status_code == status.HTTP_403_FORBIDDEN
+        assert response.status_code == status.HTTP_401_UNAUTHORIZED
 
 
 class TestAuthRefreshToken:
@@ -234,4 +237,4 @@ class TestAuthRefreshToken:
     def test_refresh_token_without_auth(self, client):
         """Test refresh without authentication."""
         response = client.post("/api/v1/auth/refresh-token")
-        assert response.status_code == status.HTTP_403_FORBIDDEN
+        assert response.status_code == status.HTTP_401_UNAUTHORIZED
