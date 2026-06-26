@@ -5,11 +5,12 @@ Delegates all business logic to AuthService.
 
 import logging
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, Request, status
 from sqlalchemy.orm import Session
 
 from core.exceptions import (AuthenticationError, DatabaseError,
                              DuplicateResourceError, ValidationError)
+from core.limiter import limiter
 from database import get_db
 from dependencies import get_current_user
 from models import User
@@ -26,8 +27,9 @@ router = APIRouter(prefix="/auth", tags=["authentication"])
     response_model=TokenResponse,
     status_code=status.HTTP_201_CREATED,
 )
+@limiter.limit("5/minute")
 async def register(
-    body: UserRegisterRequest, db: Session = Depends(get_db)
+    request: Request, body: UserRegisterRequest, db: Session = Depends(get_db)
 ) -> TokenResponse:
     """Register a new user account and return JWT token."""
     try:
@@ -55,8 +57,9 @@ async def register(
 
 
 @router.post("/login", response_model=TokenResponse)
+@limiter.limit("10/minute")
 async def login(
-    body: UserLoginRequest, db: Session = Depends(get_db)
+    request: Request, body: UserLoginRequest, db: Session = Depends(get_db)
 ) -> TokenResponse:
     """Authenticate user and return JWT access token."""
     try:
@@ -84,8 +87,10 @@ async def login(
 
 
 @router.post("/change-password")
+@limiter.limit("5/minute")
 async def change_password(
-    request: PasswordChangeRequest,
+    request: Request,
+    body: PasswordChangeRequest,
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ) -> dict:
@@ -93,7 +98,7 @@ async def change_password(
     try:
         service = AuthService(db)
         service.change_password(
-            current_user, request.current_password, request.new_password
+            current_user, body.current_password, body.new_password
         )
 
         return {"message": "Password changed successfully"}
@@ -115,7 +120,9 @@ async def get_profile(
 
 
 @router.post("/refresh-token", response_model=TokenResponse)
+@limiter.limit("20/minute")
 async def refresh_token(
+    request: Request,
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ) -> TokenResponse:
