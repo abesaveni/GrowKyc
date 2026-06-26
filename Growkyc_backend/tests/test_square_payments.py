@@ -44,7 +44,11 @@ class TestSquarePayments:
     @pytest.fixture
     def mock_square_client(self):
         """Mock the Square SDK v44 client (Square class) API responses."""
-        with patch("services.square_service.Square") as mock_class:
+        # Square is an OPTIONAL integration: the `squareup` SDK conflicts with the
+        # pinned pydantic and is not installed by default. Tests that mock the real
+        # SDK skip when it's absent; the SDK-independent tests still run.
+        pytest.importorskip("square.client")
+        with patch("square.client.Square") as mock_class:
             mock_instance = MagicMock()
             mock_class.return_value = mock_instance
 
