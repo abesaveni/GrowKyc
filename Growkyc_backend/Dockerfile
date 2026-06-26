@@ -1,19 +1,27 @@
 # Multi-stage build for KYC Backend
 
 # Stage 1: Builder
-FROM python:3.11-slim as builder
+FROM python:3.11-slim AS builder
 
 WORKDIR /app
 
-# Install system dependencies
+# Install system build dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
     postgresql-client \
     && rm -rf /var/lib/apt/lists/*
 
+# Build into an isolated virtualenv (world-readable at /opt/venv).
+# NOTE: the previous `pip install --user` placed packages under /root/.local,
+# which the non-root runtime user (kyc_user) could not traverse (/root is 0700),
+# causing "permission denied" on gunicorn/celery. A venv under /opt fixes that.
+RUN python -m venv /opt/venv
+ENV PATH=/opt/venv/bin:$PATH
+
 # Copy requirements and install Python dependencies
 COPY requirements.txt .
-RUN pip install --user --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
 
 # Stage 2: Runtime
@@ -27,11 +35,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     wget \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy Python packages from builder
-COPY --from=builder /root/.local /root/.local
+# Copy the virtualenv from the builder (owned by root, but readable+executable
+# by all users because /opt is traversable, unlike /root).
+COPY --from=builder /opt/venv /opt/venv
 
 # Set environment variables
-ENV PATH=/root/.local/bin:$PATH \
+ENV PATH=/opt/venv/bin:$PATH \
     PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1
 
@@ -51,5 +60,5 @@ EXPOSE 8000
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
     CMD wget -q -O /dev/null http://localhost:8000/health || exit 1
 
-# Run application
+# Run application (compose overrides this with gunicorn for the API service)
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

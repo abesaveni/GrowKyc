@@ -14,9 +14,16 @@ import logging
 from decimal import Decimal
 from typing import Dict, Any, Optional
 
-from square.client import Square, SquareEnvironment
-
+# NOTE: The `squareup` SDK (v44+) requires pydantic-core>=2.18.2, which conflicts
+# with this project's pinned pydantic==2.5.0. To avoid forcing a risky global
+# pydantic upgrade, Square is an OPTIONAL integration: the SDK is imported lazily
+# at instantiation time. Endpoints degrade gracefully (HTTP 503) when the SDK is
+# not installed, instead of crashing the whole API at import time.
 logger = logging.getLogger(__name__)
+
+
+class SquareNotAvailableError(RuntimeError):
+    """Raised when the Square SDK is not installed in the runtime image."""
 
 
 class SquareService:
@@ -41,6 +48,17 @@ class SquareService:
         if not self.access_token or not self.application_id:
             logger.error("Square API credentials are not fully configured in environment.")
             raise ValueError("Square API credentials are missing.")
+
+        # Lazy import: keeps the module importable when `squareup` is not installed.
+        try:
+            from square.client import Square, SquareEnvironment
+        except ImportError as exc:  # pragma: no cover - depends on optional dep
+            logger.error("Square SDK ('squareup') is not installed in this image.")
+            raise SquareNotAvailableError(
+                "Square payments are not enabled in this deployment. "
+                "Install the 'squareup' SDK (note: requires pydantic-core>=2.18.2) "
+                "to enable Square."
+            ) from exc
 
         # Map env string to the SDK enum
         if env_str == "production":

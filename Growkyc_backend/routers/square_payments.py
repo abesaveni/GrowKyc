@@ -18,7 +18,7 @@ from database import get_db
 from dependencies import get_current_user
 from models import Payment, User
 from services.audit_service import AuditService
-from services.square_service import SquareService
+from services.square_service import SquareService, SquareNotAvailableError
 
 logger = logging.getLogger(__name__)
 
@@ -104,6 +104,12 @@ async def create_checkout(
 ) -> CreateCheckoutResponse:
     try:
         square_service = SquareService()
+    except SquareNotAvailableError as e:
+        logger.warning(f"Square integration not available: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="Square payments are not enabled in this deployment.",
+        )
     except ValueError as e:
         logger.error(f"Square client initialization failed: {e}")
         raise HTTPException(
@@ -229,6 +235,12 @@ async def verify_payment(
 ) -> PaymentVerifyResponse:
     try:
         square_service = SquareService()
+    except SquareNotAvailableError as e:
+        logger.warning(f"Square integration not available: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="Square payments are not enabled in this deployment.",
+        )
     except ValueError as e:
         logger.error(f"Square client initialization failed: {e}")
         raise HTTPException(

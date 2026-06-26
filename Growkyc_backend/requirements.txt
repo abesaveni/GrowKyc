@@ -43,5 +43,27 @@ gunicorn==21.2.0
 # Rate limiting
 slowapi==0.1.9
 
+# Background task queue (used by docker-compose celery_worker/celery_beat and
+# the /health/deep redis check). These were missing from requirements, which
+# crash-looped the worker/beat containers — see core/celery_app.py and tasks/.
+celery==5.3.6
+redis==5.0.1
+
 # OpenAI — AI-powered compliance bot analysis
 openai==1.54.4
+
+# Square Payments SDK (OPTIONAL) — package `squareup`, imported as `square`.
+# Disabled by default: squareup v44+ requires pydantic-core>=2.18.2, which
+# conflicts with the pinned pydantic==2.5.0. services/square_service.py imports
+# it lazily and the API degrades to HTTP 503 when absent. To enable Square,
+# uncomment below AND bump pydantic (see requirements-square.txt notes).
+# squareup>=44.0.0,<45.0.0
+
+# AWS SDK — used by services/storage/s3_backend.py (S3 evidence storage).
+boto3>=1.34.0,<2.0.0
+
+# Database migrations (alembic CLI / migrations/env.py).
+alembic>=1.13.0,<2.0.0
+
+# HTTP client used by test_api.py and provider smoke scripts.
+requests>=2.31.0,<3.0.0
