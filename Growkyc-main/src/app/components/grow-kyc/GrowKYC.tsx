@@ -374,7 +374,21 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
   const currentUser = users.find(u => u.id === selectedUser) || users[0];
 
   const [isNotificationPanelOpen, setIsNotificationPanelOpen] = useState(false);
-  const [notifications, setNotifications] = useState([
+
+  const NOTIF_READ_KEY = 'growkyc_read_notif_ids';
+  const getReadIds = (): string[] => {
+    try { return JSON.parse(localStorage.getItem(NOTIF_READ_KEY) || '[]'); } catch { return []; }
+  };
+  const persistReadId = (id: string) => {
+    try {
+      const ids = getReadIds();
+      if (!ids.includes(id)) localStorage.setItem(NOTIF_READ_KEY, JSON.stringify([...ids, id]));
+    } catch {}
+  };
+
+  const [notifications, setNotifications] = useState(() => {
+    const readIds = getReadIds();
+    return [
     {
       id: 'notif-1',
       title: 'PEP Screening Match Detected',
@@ -456,7 +470,8 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
       actionId: 'Apex Holdings',
       read: false
     }
-  ]);
+  ].map(n => ({ ...n, read: readIds.includes(n.id) ? true : n.read }));
+  });
 
   const filteredNotifications = notifications.filter(n => {
     if (currentUser.title === 'Head of Compliance') {
@@ -470,6 +485,7 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
 
   const handleNotificationAction = (notif: typeof notifications[0]) => {
     setIsNotificationPanelOpen(false);
+    persistReadId(notif.id);
     setNotifications(prev => prev.map(n => n.id === notif.id ? { ...n, read: true } : n));
 
     if (notif.actionView === 'client_review' && notif.actionId) {
@@ -493,6 +509,7 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
       const isCurrentRole = currentUser.title === 'Head of Compliance'
         ? n.roleRestricted === 'Head of Compliance'
         : n.roleRestricted === 'Compliance Officer';
+      if (isCurrentRole) persistReadId(n.id);
       return isCurrentRole ? { ...n, read: true } : n;
     }));
   };

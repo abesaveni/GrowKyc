@@ -118,88 +118,73 @@ const mockSubmissions: Submission[] = [
   }
 ];
 
+function getAuthHeader(): Record<string, string> {
+  const token = sessionStorage.getItem('growkyc_token');
+  return token ? { Authorization: `Bearer ${token}` } : {};
+}
+
+const SAR_STATUS_MAP: Record<string, SubmissionStatus> = {
+  draft: 'draft',
+  under_review: 'approved',
+  filed: 'acknowledged',
+  declined: 'closed',
+};
+
+function mapSarToSubmission(s: any): Submission {
+  return {
+    caseId: `SAR-${s.id}`,
+    reportType: 'smr',
+    subject: `Client #${s.client_id}`,
+    decisionDate: s.raised_at ? s.raised_at.split('T')[0] : '',
+    submissionMethod: 'online',
+    status: SAR_STATUS_MAP[s.status] || 'draft',
+    submittedBy: `User #${s.raised_by || '—'}`,
+    acknowledgementStatus: s.regulator_reference || (s.filed_at ? 'Filed' : 'Pending'),
+    lastUpdated: s.filed_at || s.raised_at || '',
+    submissionRef: s.regulator_reference || undefined,
+  };
+}
+
+const STORAGE_KEY = 'austrac_submissions';
+
+function loadStoredSubmissions(): Submission[] {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) return JSON.parse(stored);
+  } catch {}
+  return mockSubmissions;
+}
+
 export function SubmissionTracking({ onBack }: { onBack?: () => void }) {
   const [selectedSubmission, setSelectedSubmission] = useState<Submission | null>(null);
   const [filterStatus, setFilterStatus] = useState<string>('all');
-  const [submissionsList, setSubmissionsList] = useState<Submission[]>([]);
+  const [submissionsList, setSubmissionsList] = useState<Submission[]>(() => loadStoredSubmissions());
   const [isLoading, setIsLoading] = useState(true);
-  const [fetchError, setFetchError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchSubmissions = async (isFirstLoad = false) => {
+    const fetchSubmissions = async () => {
+      setIsLoading(true);
       try {
-        if (isFirstLoad) setIsLoading(true);
-        const response = await fetch('/api/v1/submissions');
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
+        const response = await fetch('/api/v1/sars?limit=50', {
+          headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
+        });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const data = await response.json();
-        setSubmissionsList(data);
-        setFetchError(null);
-      } catch (err) {
-        console.error('Error fetching submissions:', err);
-        setFetchError(err instanceof Error ? err.message : String(err));
-        // Fallback to localStorage
-        try {
-          const stored = localStorage.getItem('austrac_submissions');
-          if (stored) {
-            setSubmissionsList(JSON.parse(stored));
-          } else {
-            setSubmissionsList(mockSubmissions);
-            localStorage.setItem('austrac_submissions', JSON.stringify(mockSubmissions));
-          }
-        } catch (e) {
-          setSubmissionsList(mockSubmissions);
+        const items: Submission[] = (data.items || []).map(mapSarToSubmission);
+        if (items.length > 0) {
+          setSubmissionsList(items);
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
         }
+      } catch {
+        // keep stored/mock data on failure
       } finally {
-        if (isFirstLoad) setIsLoading(false);
+        setIsLoading(false);
       }
     };
 
-    fetchSubmissions(true);
-    const interval = setInterval(() => fetchSubmissions(false), 5000);
-
-    return () => clearInterval(interval);
+    fetchSubmissions();
   }, []);
 
-  useEffect(() => {
-    if (submissionsList && submissionsList.length > 0) {
-      try {
-        localStorage.setItem('austrac_submissions', JSON.stringify(submissionsList));
-        
-        // Also sync cases status to matching submissions
-        const storedCases = localStorage.getItem('austrac_cases');
-        if (storedCases) {
-          const parsedCases = JSON.parse(storedCases);
-          if (Array.isArray(parsedCases)) {
-            let updatedAny = false;
-            const updatedCases = parsedCases.map(c => {
-              const matchedSub = submissionsList.find(s => s.caseId === c.caseId);
-              if (matchedSub) {
-                let caseStatus = c.status;
-                if (matchedSub.status === 'acknowledged') caseStatus = 'acknowledged';
-                else if (matchedSub.status === 'submitted') caseStatus = 'submitted';
-                else if (matchedSub.status === 'failed') caseStatus = 'draft_in_progress';
-                else if (matchedSub.status === 'closed') caseStatus = 'closed';
-                else if (matchedSub.status === 'not_submitted') caseStatus = 'not_reportable';
-
-                if (caseStatus !== c.status) {
-                  updatedAny = true;
-                  return { ...c, status: caseStatus };
-                }
-              }
-              return c;
-            });
-            if (updatedAny) {
-              localStorage.setItem('austrac_cases', JSON.stringify(updatedCases));
-            }
-          }
-        }
-      } catch (e) {
-        console.error('Failed to sync submissionsList to localStorage', e);
-      }
-    }
-  }, [submissionsList]);
 
   const getStatusBadge = (status: SubmissionStatus) => {
     const configs = {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Button } from '../ui/button';
 import {
   Users,
@@ -77,7 +77,9 @@ export function ClientList() {
   const [filterType, setFilterType] = useState<ClientType | 'all'>('all');
   const [selectedClient, setSelectedClient] = useState<Client | null>(null);
 
-  const [clients] = useState<Client[]>([
+  const [loading, setLoading] = useState(false);
+
+  const [clients, setClients] = useState<Client[]>([
     {
       id: 'C-2024-001',
       name: 'TechCorp Pty Ltd',
@@ -373,6 +375,56 @@ export function ClientList() {
     }
   ]);
 
+  const fetchClients = useCallback(async () => {
+    const token = sessionStorage.getItem('growkyc_token');
+    if (!token) return;
+    setLoading(true);
+    try {
+      const res = await fetch('/api/v1/clients?limit=100', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (!res.ok) return;
+      const data = await res.json();
+      const mapped: Client[] = (data.items || []).map((c: any) => ({
+        id: String(c.id),
+        name: c.name,
+        clientType: c.entity_profile ? 'company' : 'individual' as ClientType,
+        status: c.compliance_status === 'approved' ? 'active' : c.compliance_status === 'flagged' ? 'restricted' : 'active' as ClientStatus,
+        riskTier: (c.risk_level || 'LOW').toLowerCase() as RiskTier,
+        onboardedDate: new Date(c.created_at),
+        lastReviewDate: c.approved_at ? new Date(c.approved_at) : new Date(c.created_at),
+        nextReviewDue: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000),
+        email: c.individual_profile?.email || c.entity_profile?.contact_email || '',
+        phone: c.individual_profile?.phone || c.entity_profile?.phone,
+        address: c.individual_profile?.address || c.entity_profile?.registered_address || '',
+        assignedManager: '—',
+        abn: c.entity_profile?.abn,
+        acn: c.entity_profile?.acn,
+        kycComplete: c.compliance_status === 'approved',
+        documentsUpToDate: !c.is_locked,
+        screeningStatus: c.is_sanctioned ? 'failed' : c.is_pep ? 'match-review' : 'clear',
+        engagementValue: c.income_level * 1000 || 0,
+        complianceScore: Math.max(0, 100 - (c.risk_score || 0)),
+        tier1Status: c.compliance_status === 'approved' ? 'passed' : 'pending' as ComplianceStatus,
+        tier2Status: 'pending' as ComplianceStatus,
+        tier3Status: 'pending' as ComplianceStatus,
+        tier4Status: 'pending' as ComplianceStatus,
+        tier5Status: 'pending' as ComplianceStatus,
+        lastSanctionsCheck: new Date(c.created_at),
+        transactionMonitoring: 'inactive' as const,
+        identityWallet: false,
+        botsActive: 0,
+      }));
+      if (mapped.length > 0) setClients(mapped);
+    } catch {
+      // keep mock data on failure
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => { fetchClients(); }, [fetchClients]);
+
   const getStatusColor = (status: ClientStatus) => {
     switch (status) {
       case 'active': return 'green';
@@ -445,8 +497,8 @@ export function ClientList() {
               <Download className="w-5 h-5 mr-2" />
               Export List
             </Button>
-            <Button className="bg-white text-indigo-600 hover:bg-indigo-50">
-              <RefreshCw className="w-5 h-5 mr-2" />
+            <Button className="bg-white text-indigo-600 hover:bg-indigo-50" onClick={fetchClients} disabled={loading}>
+              <RefreshCw className={`w-5 h-5 mr-2 ${loading ? 'animate-spin' : ''}`} />
               Sync Updates
             </Button>
           </div>

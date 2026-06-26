@@ -10,8 +10,10 @@ from fastapi import APIRouter, Depends, HTTPException, Query, Request, status
 from sqlalchemy import case, func
 from sqlalchemy.orm import Session
 
+from pydantic import BaseModel
+
 from core.constants import MAX_BULK_APPROVE_SIZE
-from core.enums import KYCStatus
+from core.enums import KYCStatus, UserRole
 from core.exceptions import DatabaseError, ResourceNotFoundError
 from core.limiter import limiter
 from database import get_db
@@ -22,6 +24,10 @@ from schemas import (BulkApproveRequest, BulkApproveResponse,
                      UserResponse)
 from services.kyc_service import KYCService
 from services.user_service import UserService
+
+
+class RoleUpdate(BaseModel):
+    role: str
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/admin", tags=["admin"])
@@ -418,3 +424,43 @@ async def run_manual_monitoring(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Failed to run monitoring checks",
         )
+
+
+@router.patch("/users/{user_id}/role")
+async def update_user_role(
+    user_id: int,
+    body: RoleUpdate,
+    db: Session = Depends(get_db),
+    admin: User = Depends(get_admin_user),
+) -> dict:
+    """Update a user's role (Admin only)."""
+    if user_id == admin.id:
+        raise HTTPException(status_code=400, detail="Cannot change your own role")
+    user = db.query(User).filter(User.id == user_id).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    try:
+        user.role = UserRole(body.role)
+    except ValueError:
+        raise HTTPException(status_code=400, detail=f"Invalid role: {body.role}")
+    db.commit()
+    logger.info(f"User {user_id} role changed to {user.role} by admin {admin.id}")
+    return {"user_id": user.id, "email": user.email, "role": user.role.value}
+
+
+@router.delete("/users/{user_id}")
+async def delete_user(
+    user_id: int,
+    db: Session = Depends(get_db),
+    admin: User = Depends(get_admin_user),
+) -> dict:
+    """Permanently delete a user account (Admin only)."""
+    if user_id == admin.id:
+        raise HTTPException(status_code=400, detail="Cannot delete your own account")
+    user = db.query(User).filter(User.id == user_id).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    db.delete(user)
+    db.commit()
+    logger.info(f"User {user_id} deleted by admin {admin.id}")
+    return {"message": f"User {user_id} permanently deleted"}

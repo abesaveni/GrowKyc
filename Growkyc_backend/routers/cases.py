@@ -6,13 +6,14 @@ Provides operational queues, assignment, and escalation workflows.
 """
 
 import logging
+from typing import Optional
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, Query, status
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 from database import get_db
-from dependencies import get_admin_or_agent_user
+from dependencies import get_admin_or_agent_user, get_admin_user
 from models import User
 from services.case_workflow_service import CaseWorkflowService
 
@@ -48,6 +49,77 @@ class CaseEvidenceRequest(BaseModel):
 
 class CaseCloseRequest(BaseModel):
     resolution: str
+
+
+class CaseStatusUpdate(BaseModel):
+    status: str
+
+
+@router.get("")
+async def list_cases(
+    skip: int = 0,
+    limit: int = 50,
+    case_status: Optional[str] = Query(None, alias="status"),
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_admin_or_agent_user),
+):
+    """List all enterprise cases with optional status filter."""
+    from models import Case
+    query = db.query(Case)
+    if case_status:
+        query = query.filter(Case.status == case_status)
+    total = query.count()
+    cases = query.order_by(Case.created_at.desc()).offset(skip).limit(limit).all()
+    return {
+        "total": total,
+        "items": [
+            {
+                "case_id": c.id,
+                "client_id": c.client_id,
+                "title": c.title,
+                "status": c.status.value,
+                "created_at": c.created_at.isoformat() if c.created_at else None,
+            }
+            for c in cases
+        ],
+    }
+
+
+@router.patch("/{case_id}/status")
+async def update_case_status(
+    case_id: int,
+    body: CaseStatusUpdate,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_admin_or_agent_user),
+):
+    """Update the status of an enterprise case."""
+    from models import Case
+    from core.enums import CaseStatus
+    case = db.query(Case).filter(Case.id == case_id).first()
+    if not case:
+        raise HTTPException(status_code=404, detail="Case not found")
+    try:
+        case.status = CaseStatus(body.status)
+    except ValueError:
+        raise HTTPException(status_code=400, detail=f"Invalid status: {body.status}")
+    db.commit()
+    return {"case_id": case_id, "status": case.status.value}
+
+
+@router.delete("/{case_id}")
+async def delete_case(
+    case_id: int,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_admin_user),
+):
+    """Permanently delete an enterprise case (Admin only)."""
+    from models import Case
+    case = db.query(Case).filter(Case.id == case_id).first()
+    if not case:
+        raise HTTPException(status_code=404, detail="Case not found")
+    db.delete(case)
+    db.commit()
+    return {"message": f"Case {case_id} deleted"}
 
 
 @router.post("", status_code=status.HTTP_201_CREATED)
