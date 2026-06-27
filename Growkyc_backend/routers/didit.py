@@ -123,13 +123,35 @@ async def start_verification(
 @router.get("/verifications/{session_id}")
 async def get_verification(
     session_id: str,
+    refresh: bool = False,
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ) -> dict:
-    """Return the stored status + decision for a verification session."""
+    """Return the stored status + decision for a verification session.
+
+    With ?refresh=true we pull the latest decision from Didit (a poll-based
+    fallback to the webhook) and persist it, including the KYC status mapping.
+    """
     record = db.query(DiditSession).filter(DiditSession.session_id == session_id).first()
     if not record:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Session not found")
+
+    if refresh:
+        try:
+            data = DiditService().get_decision(session_id)
+            new_status = data.get("status")
+            if new_status:
+                record.status = new_status
+            record.decision = data
+            mapped = _DIDIT_TO_KYC.get(new_status)
+            if record.kyc_id and mapped is not None:
+                kyc = db.query(KYC).filter(KYC.id == record.kyc_id).first()
+                if kyc:
+                    kyc.status = mapped
+            db.commit()
+        except (DiditNotConfiguredError, DiditError) as e:
+            logger.warning("Didit refresh failed for %s: %s", session_id, e)
+
     return {
         "session_id": record.session_id,
         "kind": record.kind,
