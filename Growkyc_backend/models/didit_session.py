@@ -7,7 +7,9 @@ One row per verification attempt. Created when we open a Didit session for a
 user/entity; updated by the signed Didit webhook as the status progresses
 (Not Started -> In Progress -> Approved/Declined/In Review/...).
 
-New enterprise table: tenant-scoped from inception (nullable=False).
+Tenant-scoped, but tenant_id is nullable to match this codebase's Phase-1
+multi-tenancy (users may not yet have a tenant). The unauthenticated webhook
+looks the row up with include_all_tenants and then pins the tenant context.
 """
 
 from sqlalchemy import (JSON, Column, ForeignKey, Index, Integer, String,
@@ -15,10 +17,10 @@ from sqlalchemy import (JSON, Column, ForeignKey, Index, Integer, String,
 from sqlalchemy.orm import relationship
 
 from models.base import Base
-from models.mixins import TenantRequiredMixin, TimestampMixin
+from models.mixins import TenantMixin, TimestampMixin
 
 
-class DiditSession(TenantRequiredMixin, TimestampMixin, Base):
+class DiditSession(TenantMixin, TimestampMixin, Base):
     __tablename__ = "didit_sessions"
 
     id = Column(Integer, primary_key=True, index=True)
