@@ -17,6 +17,7 @@ import {
   ChevronRight
 } from 'lucide-react';
 import { IdVerification100Point } from './IdVerification100Point';
+import { DiditVerification } from './DiditVerification';
 import { toast } from '../../lib/toast';
 
 interface ProgressStepperProps {
@@ -154,6 +155,9 @@ Your verification is now pending review.
           )}
         </div>
       </div>
+
+      {/* Automated KYC + AML via Didit (recommended) */}
+      <DiditVerification kind="individual" />
 
       {/* Progress Stepper */}
       <ProgressStepper currentStep={currentStep} steps={steps} />
