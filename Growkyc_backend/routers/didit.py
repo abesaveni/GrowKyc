@@ -101,18 +101,32 @@ async def start_verification(
             detail="Didit did not return a session id / url.",
         )
 
-    record = DiditSession(
-        tenant_id=current_user.tenant_id,
-        session_id=result["session_id"],
-        workflow_id=workflow_id,
-        kind=body.kind,
-        vendor_data=vendor_data,
-        kyc_id=body.kyc_id,
-        status=result.get("status", "Not Started"),
-        verification_url=result["url"],
-        created_by=current_user.id,
+    # Didit reuses a session for the same vendor_data, so it may return an id we
+    # already have. Upsert rather than blindly insert (which hit a unique violation).
+    record = (
+        db.query(DiditSession)
+        .filter(DiditSession.session_id == result["session_id"])
+        .first()
     )
-    db.add(record)
+    if record:
+        record.status = result.get("status", record.status)
+        record.verification_url = result["url"]
+        record.workflow_id = workflow_id
+        if body.kyc_id:
+            record.kyc_id = body.kyc_id
+    else:
+        record = DiditSession(
+            tenant_id=current_user.tenant_id,
+            session_id=result["session_id"],
+            workflow_id=workflow_id,
+            kind=body.kind,
+            vendor_data=vendor_data,
+            kyc_id=body.kyc_id,
+            status=result.get("status", "Not Started"),
+            verification_url=result["url"],
+            created_by=current_user.id,
+        )
+        db.add(record)
     db.commit()
 
     return StartVerificationResponse(
