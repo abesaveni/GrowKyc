@@ -157,14 +157,14 @@ export function EscrowRelease() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 mb-1">Total Held</p>
-                <p className="text-3xl font-semibold text-gray-900">
+                <p className="text-sm text-slate-300 mb-1">Total Held</p>
+                <p className="text-3xl font-semibold text-slate-100">
                   A${totalHeld.toLocaleString()}
                 </p>
-                <p className="text-xs text-gray-500 mt-1">In escrow account</p>
+                <p className="text-xs text-slate-400 mt-1">In escrow account</p>
               </div>
-              <div className="p-3 bg-blue-50 rounded-lg">
-                <Wallet className="w-6 h-6 text-blue-600" />
+              <div className="p-3 bg-blue-500/10 rounded-lg">
+                <Wallet className="w-6 h-6 text-blue-400" />
               </div>
             </div>
           </CardContent>
@@ -174,14 +174,14 @@ export function EscrowRelease() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 mb-1">Total Released</p>
-                <p className="text-3xl font-semibold text-gray-900">
+                <p className="text-sm text-slate-300 mb-1">Total Released</p>
+                <p className="text-3xl font-semibold text-slate-100">
                   A${totalReleased.toLocaleString()}
                 </p>
-                <p className="text-xs text-gray-500 mt-1">{transactions.filter(t => t.status === 'completed').length} transactions</p>
+                <p className="text-xs text-slate-400 mt-1">{transactions.filter(t => t.status === 'completed').length} transactions</p>
               </div>
-              <div className="p-3 bg-green-50 rounded-lg">
-                <TrendingUp className="w-6 h-6 text-green-600" />
+              <div className="p-3 bg-green-500/10 rounded-lg">
+                <TrendingUp className="w-6 h-6 text-green-400" />
               </div>
             </div>
           </CardContent>
@@ -191,14 +191,14 @@ export function EscrowRelease() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 mb-1">Remaining Balance</p>
-                <p className="text-3xl font-semibold text-gray-900">
+                <p className="text-sm text-slate-300 mb-1">Remaining Balance</p>
+                <p className="text-3xl font-semibold text-slate-100">
                   A${remainingBalance.toLocaleString()}
                 </p>
-                <p className="text-xs text-gray-500 mt-1">{pendingTransactions.length} pending</p>
+                <p className="text-xs text-slate-400 mt-1">{pendingTransactions.length} pending</p>
               </div>
-              <div className="p-3 bg-indigo-50 rounded-lg">
-                <DollarSign className="w-6 h-6 text-indigo-600" />
+              <div className="p-3 bg-indigo-500/10 rounded-lg">
+                <DollarSign className="w-6 h-6 text-indigo-400" />
               </div>
             </div>
           </CardContent>
@@ -207,14 +207,14 @@ export function EscrowRelease() {
 
       {/* Alert for pending transactions */}
       {pendingTransactions.length > 0 && (
-        <Card className="border-amber-200 bg-amber-50">
+        <Card className="border-amber-500/30 bg-amber-500/10">
           <CardContent className="p-4">
             <div className="flex items-start justify-between gap-4">
               <div className="flex gap-3">
-                <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                <AlertTriangle className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-sm font-semibold text-amber-900">Pending Releases</p>
-                  <p className="text-xs text-amber-800 mt-1">
+                  <p className="text-sm font-semibold text-amber-300">Pending Releases</p>
+                  <p className="text-xs text-amber-300 mt-1">
                     {pendingTransactions.length} transaction{pendingTransactions.length > 1 ? 's' : ''} awaiting release 
                     (A${pendingTransactions.reduce((sum, t) => sum + t.amount, 0).toLocaleString()})
                   </p>
@@ -239,7 +239,7 @@ export function EscrowRelease() {
           <div className="flex items-center justify-between">
             <CardTitle>Transaction History</CardTitle>
             <div className="flex gap-2">
-              <span className="text-sm text-gray-600">
+              <span className="text-sm text-slate-300">
                 {transactions.length} total transactions
               </span>
             </div>
@@ -271,7 +271,7 @@ export function EscrowRelease() {
                       {format(transaction.date, 'dd MMM yyyy')}
                     </TableCell>
                     <TableCell>{transaction.type}</TableCell>
-                    <TableCell className="text-gray-600">{transaction.recipient}</TableCell>
+                    <TableCell className="text-slate-300">{transaction.recipient}</TableCell>
                     <TableCell className="text-right font-semibold">
                       A${transaction.amount.toLocaleString()}
                     </TableCell>
@@ -290,7 +290,7 @@ export function EscrowRelease() {
                         </Button>
                       )}
                       {transaction.status === 'completed' && (
-                        <div className="flex items-center gap-1 text-green-600 text-sm">
+                        <div className="flex items-center gap-1 text-green-400 text-sm">
                           <CheckCircle className="w-4 h-4" />
                           <span>Released</span>
                         </div>
@@ -306,7 +306,7 @@ export function EscrowRelease() {
 
       {/* Summary Card */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Card className="border-gray-200">
+        <Card className="border-white/10">
           <CardHeader>
             <CardTitle className="text-base flex items-center gap-2">
               <Shield className="w-5 h-5 text-primary" />
@@ -315,53 +315,53 @@ export function EscrowRelease() {
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <p className="text-sm text-gray-600 mb-1">Escrow Agent</p>
-              <p className="font-medium text-gray-900">Australian Settlement Services</p>
-              <p className="text-sm text-gray-500 mt-1">License: ESA-2024-5678</p>
+              <p className="text-sm text-slate-300 mb-1">Escrow Agent</p>
+              <p className="font-medium text-slate-100">Australian Settlement Services</p>
+              <p className="text-sm text-slate-400 mt-1">License: ESA-2024-5678</p>
             </div>
             <div>
-              <p className="text-sm text-gray-600 mb-1">Settlement Date</p>
-              <p className="font-medium text-gray-900">28 February 2026</p>
-              <p className="text-sm text-gray-500 mt-1">15 days remaining</p>
+              <p className="text-sm text-slate-300 mb-1">Settlement Date</p>
+              <p className="font-medium text-slate-100">28 February 2026</p>
+              <p className="text-sm text-slate-400 mt-1">15 days remaining</p>
             </div>
             <div>
-              <p className="text-sm text-gray-600 mb-1">Account Number</p>
-              <p className="font-mono text-sm text-gray-900">ESC-2024-1234</p>
+              <p className="text-sm text-slate-300 mb-1">Account Number</p>
+              <p className="font-mono text-sm text-slate-100">ESC-2024-1234</p>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="border-blue-200 bg-blue-50">
+        <Card className="border-blue-500/30 bg-blue-500/10">
           <CardHeader>
             <CardTitle className="text-base">Security & Compliance</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 text-sm">
             <div className="flex items-start gap-2">
-              <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
+              <CheckCircle className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
               <div>
-                <p className="font-medium text-blue-900">Secure Escrow</p>
-                <p className="text-xs text-blue-800">Funds held in trust account</p>
+                <p className="font-medium text-blue-300">Secure Escrow</p>
+                <p className="text-xs text-blue-300">Funds held in trust account</p>
               </div>
             </div>
             <div className="flex items-start gap-2">
-              <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
+              <CheckCircle className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
               <div>
-                <p className="font-medium text-blue-900">Two-Factor Authorization</p>
-                <p className="text-xs text-blue-800">All releases require 2FA</p>
+                <p className="font-medium text-blue-300">Two-Factor Authorization</p>
+                <p className="text-xs text-blue-300">All releases require 2FA</p>
               </div>
             </div>
             <div className="flex items-start gap-2">
-              <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
+              <CheckCircle className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
               <div>
-                <p className="font-medium text-blue-900">Audit Trail</p>
-                <p className="text-xs text-blue-800">All transactions logged</p>
+                <p className="font-medium text-blue-300">Audit Trail</p>
+                <p className="text-xs text-blue-300">All transactions logged</p>
               </div>
             </div>
             <div className="flex items-start gap-2">
-              <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
+              <CheckCircle className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
               <div>
-                <p className="font-medium text-blue-900">Insured</p>
-                <p className="text-xs text-blue-800">Professional indemnity insurance</p>
+                <p className="font-medium text-blue-300">Insured</p>
+                <p className="text-xs text-blue-300">Professional indemnity insurance</p>
               </div>
             </div>
           </CardContent>

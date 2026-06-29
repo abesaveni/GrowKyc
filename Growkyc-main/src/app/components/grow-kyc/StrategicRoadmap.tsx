@@ -368,29 +368,29 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
 
   const categories = [
     { id: 'all', name: 'All Initiatives', icon: Target, color: 'text-slate-300' },
-    { id: 'AI/ML', name: 'AI & Machine Learning', icon: Brain, color: 'text-purple-600' },
-    { id: 'Security', name: 'Security & Compliance', icon: Shield, color: 'text-red-600' },
-    { id: 'Infrastructure', name: 'Infrastructure', icon: Cloud, color: 'text-blue-600' },
-    { id: 'Mobile', name: 'Mobile Experience', icon: Smartphone, color: 'text-green-600' },
-    { id: 'Automation', name: 'Automation', icon: Zap, color: 'text-yellow-600' },
-    { id: 'Enterprise', name: 'Enterprise Features', icon: Users, color: 'text-indigo-600' },
-    { id: 'Analytics', name: 'Analytics & BI', icon: BarChart3, color: 'text-cyan-600' }
+    { id: 'AI/ML', name: 'AI & Machine Learning', icon: Brain, color: 'text-purple-400' },
+    { id: 'Security', name: 'Security & Compliance', icon: Shield, color: 'text-red-400' },
+    { id: 'Infrastructure', name: 'Infrastructure', icon: Cloud, color: 'text-blue-400' },
+    { id: 'Mobile', name: 'Mobile Experience', icon: Smartphone, color: 'text-green-400' },
+    { id: 'Automation', name: 'Automation', icon: Zap, color: 'text-yellow-400' },
+    { id: 'Enterprise', name: 'Enterprise Features', icon: Users, color: 'text-indigo-400' },
+    { id: 'Analytics', name: 'Analytics & BI', icon: BarChart3, color: 'text-cyan-400' }
   ];
 
   const metrics = [
-    { label: 'Total Investment', value: '$4.5M', change: 'over 18 months', icon: DollarSign, color: 'text-green-600' },
-    { label: 'Expected ROI', value: '300%+', change: 'by 2028', icon: TrendingUp, color: 'text-emerald-600' },
-    { label: 'Target ARR', value: '$15M', change: 'by EOY 2027', icon: Target, color: 'text-blue-600' },
-    { label: 'Market Position', value: 'Top 3', change: 'APAC by 2027', icon: Award, color: 'text-amber-600' }
+    { label: 'Total Investment', value: '$4.5M', change: 'over 18 months', icon: DollarSign, color: 'text-green-400' },
+    { label: 'Expected ROI', value: '300%+', change: 'by 2028', icon: TrendingUp, color: 'text-emerald-400' },
+    { label: 'Target ARR', value: '$15M', change: 'by EOY 2027', icon: Target, color: 'text-blue-400' },
+    { label: 'Market Position', value: 'Top 3', change: 'APAC by 2027', icon: Award, color: 'text-amber-400' }
   ];
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'completed': return 'bg-green-100 text-green-800 border-green-300';
-      case 'in-progress': return 'bg-blue-100 text-blue-800 border-blue-300';
-      case 'planned': return 'bg-purple-100 text-purple-800 border-purple-300';
-      case 'future': return 'bg-[#0f172a] text-white border-gray-300';
-      default: return 'bg-[#0f172a] text-slate-300 border-gray-300';
+      case 'completed': return 'bg-green-500/15 text-green-300 border-green-300';
+      case 'in-progress': return 'bg-blue-500/15 text-blue-300 border-blue-300';
+      case 'planned': return 'bg-purple-500/15 text-purple-300 border-purple-300';
+      case 'future': return 'bg-[#0f172a] text-white border-white/10';
+      default: return 'bg-[#0f172a] text-slate-300 border-white/10';
     }
   };
 
@@ -522,7 +522,7 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
                   </div>
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-slate-300">Investment</span>
-                    <span className="font-bold text-indigo-600">{phase.investment}</span>
+                    <span className="font-bold text-indigo-400">{phase.investment}</span>
                   </div>
                 </CardContent>
               </Card>
@@ -595,7 +595,7 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
                             {/* KPIs */}
                             <div className="flex items-center gap-4 mb-4">
                               <div className="flex items-center gap-2">
-                                <Target className="w-4 h-4 text-indigo-600" />
+                                <Target className="w-4 h-4 text-indigo-400" />
                                 <span className="text-sm font-medium text-slate-300">KPIs:</span>
                               </div>
                               <div className="flex flex-wrap gap-2">
@@ -610,12 +610,12 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
                             {/* Effort & Impact */}
                             <div className="flex items-center gap-6 text-sm">
                               <div className="flex items-center gap-2">
-                                <Zap className="w-4 h-4 text-amber-600" />
+                                <Zap className="w-4 h-4 text-amber-400" />
                                 <span className="text-slate-300">Impact:</span>
                                 <span className="font-semibold text-white">{initiative.impact}</span>
                               </div>
                               <div className="flex items-center gap-2">
-                                <Clock className="w-4 h-4 text-blue-600" />
+                                <Clock className="w-4 h-4 text-blue-400" />
                                 <span className="text-slate-300">Effort:</span>
                                 <span className="font-semibold text-white">{initiative.effort}</span>
                               </div>
@@ -645,9 +645,9 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
                                   strokeDasharray={`${2 * Math.PI * 40}`}
                                   strokeDashoffset={`${2 * Math.PI * 40 * (1 - initiative.progress / 100)}`}
                                   className={
-                                    initiative.progress === 100 ? 'text-green-600' :
-                                    initiative.progress > 50 ? 'text-blue-600' :
-                                    initiative.progress > 0 ? 'text-purple-600' :
+                                    initiative.progress === 100 ? 'text-green-400' :
+                                    initiative.progress > 50 ? 'text-blue-400' :
+                                    initiative.progress > 0 ? 'text-purple-400' :
                                     'text-slate-400'
                                   }
                                   strokeLinecap="round"
@@ -683,7 +683,7 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
         <Card className="mt-12 border-2 border-green-300 bg-gradient-to-br from-green-50 to-emerald-50">
           <CardHeader>
             <CardTitle className="flex items-center gap-3 text-2xl">
-              <Sparkles className="w-6 h-6 text-green-600" />
+              <Sparkles className="w-6 h-6 text-green-400" />
               Quick Wins (Next 30 Days)
             </CardTitle>
             <CardDescription className="text-base">
@@ -702,9 +702,9 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
               ].map((win, idx) => {
                 const WinIcon = win.icon;
                 return (
-                  <div key={idx} className="flex items-start gap-3 p-4 bg-[#1e293b] rounded-lg border-2 border-green-200 hover:shadow-md transition-shadow">
-                    <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <WinIcon className="w-5 h-5 text-green-600" />
+                  <div key={idx} className="flex items-start gap-3 p-4 bg-[#1e293b] rounded-lg border-2 border-green-500/30 hover:shadow-md transition-shadow">
+                    <div className="w-10 h-10 bg-green-500/15 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <WinIcon className="w-5 h-5 text-green-400" />
                     </div>
                     <div>
                       <h4 className="font-bold text-white mb-1">{win.title}</h4>
@@ -718,24 +718,24 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
         </Card>
 
         {/* Success Metrics */}
-        <Card className="mt-12 bg-gradient-to-br from-indigo-50 to-purple-50 border-2 border-indigo-200">
+        <Card className="mt-12 bg-gradient-to-br from-indigo-50 to-purple-50 border-2 border-indigo-500/30">
           <CardHeader>
             <CardTitle className="flex items-center gap-3 text-2xl">
-              <Award className="w-6 h-6 text-indigo-600" />
+              <Award className="w-6 h-6 text-indigo-400" />
               Success Metrics & Milestones
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-3 gap-8">
               <div>
-                <div className="text-indigo-600 font-semibold mb-4 text-lg">6 Months (Sep 2026)</div>
+                <div className="text-indigo-400 font-semibold mb-4 text-lg">6 Months (Sep 2026)</div>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-400" />
                     100 paying enterprise customers
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-400" />
                     $1.5M ARR achieved
                   </li>
                   <li className="flex items-center gap-2">
@@ -753,7 +753,7 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
                 </ul>
               </div>
               <div>
-                <div className="text-purple-600 font-semibold mb-4 text-lg">12 Months (Mar 2027)</div>
+                <div className="text-purple-400 font-semibold mb-4 text-lg">12 Months (Mar 2027)</div>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-center gap-2">
                     <Circle className="w-4 h-4 text-slate-400" />
@@ -778,7 +778,7 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
                 </ul>
               </div>
               <div>
-                <div className="text-pink-600 font-semibold mb-4 text-lg">18 Months (Sep 2027)</div>
+                <div className="text-pink-400 font-semibold mb-4 text-lg">18 Months (Sep 2027)</div>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-center gap-2">
                     <Circle className="w-4 h-4 text-slate-400" />
@@ -807,10 +807,10 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
         </Card>
 
         {/* Competitive Advantage */}
-        <Card className="mt-12 bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-200">
+        <Card className="mt-12 bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-500/30">
           <CardHeader>
             <CardTitle className="flex items-center gap-3 text-2xl">
-              <Lightbulb className="w-6 h-6 text-amber-600" />
+              <Lightbulb className="w-6 h-6 text-amber-400" />
               Competitive Differentiation
             </CardTitle>
             <CardDescription className="text-base">
@@ -824,42 +824,42 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
                   title: 'Hyper-Local APAC Expertise',
                   description: 'Deep AUSTRAC/ASIC knowledge vs generic global tools',
                   icon: Globe,
-                  color: 'text-blue-600 bg-blue-100'
+                  color: 'text-blue-400 bg-blue-500/15'
                 },
                 {
                   title: 'Professional Services Focus',
                   description: 'Built FOR accountants, lawyers, wealth managers',
                   icon: Briefcase,
-                  color: 'text-purple-600 bg-purple-100'
+                  color: 'text-purple-400 bg-purple-500/15'
                 },
                 {
                   title: 'End-to-End Platform',
                   description: 'KYC + AML + Transaction Monitoring + Trust Accounting',
                   icon: CheckCircle,
-                  color: 'text-green-600 bg-green-100'
+                  color: 'text-green-400 bg-green-500/15'
                 },
                 {
                   title: 'AI-First, Human-Centered',
                   description: 'AI handles 80% routine tasks, humans do complex judgment',
                   icon: Brain,
-                  color: 'text-pink-600 bg-pink-100'
+                  color: 'text-pink-400 bg-pink-500/15'
                 },
                 {
                   title: 'Open Ecosystem',
                   description: 'Integrates with tools professionals already use',
                   icon: Code,
-                  color: 'text-indigo-600 bg-indigo-100'
+                  color: 'text-indigo-400 bg-indigo-500/15'
                 },
                 {
                   title: 'Bank-Grade Security',
                   description: 'ISO 27001, SOC 2, blockchain audit trails',
                   icon: Shield,
-                  color: 'text-red-600 bg-red-100'
+                  color: 'text-red-400 bg-red-500/15'
                 }
               ].map((advantage, idx) => {
                 const AdvantageIcon = advantage.icon;
                 return (
-                  <div key={idx} className="flex items-start gap-4 p-5 bg-[#1e293b] rounded-xl border-2 border-amber-200 hover:shadow-lg transition-shadow">
+                  <div key={idx} className="flex items-start gap-4 p-5 bg-[#1e293b] rounded-xl border-2 border-amber-500/30 hover:shadow-lg transition-shadow">
                     <div className={`w-12 h-12 ${advantage.color} rounded-xl flex items-center justify-center flex-shrink-0`}>
                       <AdvantageIcon className="w-6 h-6" />
                     </div>

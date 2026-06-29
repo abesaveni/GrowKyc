@@ -169,8 +169,8 @@ export function BillingModule({ role }: BillingModuleProps) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Billing & Invoicing</h1>
-          <p className="text-gray-600 mt-1">Manage invoices, subscriptions, and payment processing</p>
+          <h1 className="text-2xl font-bold text-slate-100">Billing & Invoicing</h1>
+          <p className="text-slate-300 mt-1">Manage invoices, subscriptions, and payment processing</p>
         </div>
         <div className="flex items-center gap-3">
           <Button variant="outline">
@@ -186,54 +186,54 @@ export function BillingModule({ role }: BillingModuleProps) {
 
       {/* Revenue Stats */}
       <div className="grid grid-cols-4 gap-4">
-        <div className="bg-white border border-gray-300 rounded-lg p-4">
+        <div className="bg-white border border-white/10 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-sm font-medium text-gray-600">Total Revenue</p>
-            <DollarSign className="w-4 h-4 text-green-600" />
+            <p className="text-sm font-medium text-slate-300">Total Revenue</p>
+            <DollarSign className="w-4 h-4 text-green-400" />
           </div>
-          <p className="text-2xl font-bold text-gray-900">
+          <p className="text-2xl font-bold text-slate-100">
             ${mockInvoices.filter(i => i.status === 'paid').reduce((sum, i) => sum + i.amount, 0).toLocaleString()}
           </p>
-          <p className="text-xs text-green-600 mt-1">+15.2% from last month</p>
+          <p className="text-xs text-green-400 mt-1">+15.2% from last month</p>
         </div>
 
-        <div className="bg-white border border-gray-300 rounded-lg p-4">
+        <div className="bg-white border border-white/10 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-sm font-medium text-gray-600">Outstanding</p>
-            <Clock className="w-4 h-4 text-orange-600" />
+            <p className="text-sm font-medium text-slate-300">Outstanding</p>
+            <Clock className="w-4 h-4 text-orange-400" />
           </div>
-          <p className="text-2xl font-bold text-gray-900">
+          <p className="text-2xl font-bold text-slate-100">
             ${mockInvoices.filter(i => i.status === 'pending' || i.status === 'overdue').reduce((sum, i) => sum + i.amount, 0).toLocaleString()}
           </p>
-          <p className="text-xs text-gray-500 mt-1">{mockInvoices.filter(i => i.status === 'pending' || i.status === 'overdue').length} invoices</p>
+          <p className="text-xs text-slate-400 mt-1">{mockInvoices.filter(i => i.status === 'pending' || i.status === 'overdue').length} invoices</p>
         </div>
 
-        <div className="bg-white border border-gray-300 rounded-lg p-4">
+        <div className="bg-white border border-white/10 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-sm font-medium text-gray-600">MRR</p>
-            <RefreshCw className="w-4 h-4 text-blue-600" />
+            <p className="text-sm font-medium text-slate-300">MRR</p>
+            <RefreshCw className="w-4 h-4 text-blue-400" />
           </div>
-          <p className="text-2xl font-bold text-gray-900">
+          <p className="text-2xl font-bold text-slate-100">
             ${mockSubscriptions.filter(s => s.status === 'active').reduce((sum, s) => sum + s.amount, 0).toLocaleString()}
           </p>
-          <p className="text-xs text-blue-600 mt-1">Monthly recurring</p>
+          <p className="text-xs text-blue-400 mt-1">Monthly recurring</p>
         </div>
 
-        <div className="bg-white border border-gray-300 rounded-lg p-4">
+        <div className="bg-white border border-white/10 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-sm font-medium text-gray-600">Active Subscriptions</p>
-            <Repeat className="w-4 h-4 text-purple-600" />
+            <p className="text-sm font-medium text-slate-300">Active Subscriptions</p>
+            <Repeat className="w-4 h-4 text-purple-400" />
           </div>
-          <p className="text-2xl font-bold text-gray-900">
+          <p className="text-2xl font-bold text-slate-100">
             {mockSubscriptions.filter(s => s.status === 'active').length}
           </p>
-          <p className="text-xs text-gray-500 mt-1">Recurring revenue</p>
+          <p className="text-xs text-slate-400 mt-1">Recurring revenue</p>
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="bg-white border border-gray-300 rounded-lg overflow-hidden">
-        <div className="border-b border-gray-300 flex">
+      <div className="bg-white border border-white/10 rounded-lg overflow-hidden">
+        <div className="border-b border-white/10 flex">
           {[
             { id: 'invoices', label: 'Invoices', icon: FileText },
             { id: 'subscriptions', label: 'Subscriptions', icon: Repeat },
@@ -246,8 +246,8 @@ export function BillingModule({ role }: BillingModuleProps) {
                 onClick={() => setActiveTab(tab.id as any)}
                 className={`flex items-center gap-2 px-6 py-4 border-b-2 transition-colors ${
                   activeTab === tab.id
-                    ? 'border-indigo-600 text-indigo-600 font-medium bg-indigo-50'
-                    : 'border-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                    ? 'border-indigo-600 text-indigo-400 font-medium bg-indigo-500/10'
+                    : 'border-transparent text-slate-300 hover:text-slate-100 hover:bg-white/5'
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -267,7 +267,7 @@ export function BillingModule({ role }: BillingModuleProps) {
                   <input
                     type="search"
                     placeholder="Search invoices..."
-                    className="pl-10 pr-4 py-2 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="pl-10 pr-4 py-2 w-full border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   />
                 </div>
                 <Button variant="outline">
@@ -277,45 +277,45 @@ export function BillingModule({ role }: BillingModuleProps) {
               </div>
 
               {/* Invoices Table */}
-              <div className="border border-gray-300 rounded-lg overflow-hidden">
+              <div className="border border-white/10 rounded-lg overflow-hidden">
                 <table className="w-full">
-                  <thead className="bg-gray-50 border-b border-gray-300">
+                  <thead className="bg-white/5 border-b border-white/10">
                     <tr>
-                      <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Invoice</th>
-                      <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Client</th>
-                      <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Amount</th>
-                      <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Status</th>
-                      <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Due Date</th>
-                      <th className="px-4 py-3 text-right text-xs font-semibold text-gray-600 uppercase">Actions</th>
+                      <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Invoice</th>
+                      <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Client</th>
+                      <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Amount</th>
+                      <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Status</th>
+                      <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Due Date</th>
+                      <th className="px-4 py-3 text-right text-xs font-semibold text-slate-300 uppercase">Actions</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-200">
+                  <tbody className="divide-y divide-white/10">
                     {mockInvoices.map((invoice) => (
-                      <tr key={invoice.id} className="hover:bg-gray-50">
+                      <tr key={invoice.id} className="hover:bg-white/5">
                         <td className="px-4 py-4">
                           <div className="flex items-center gap-2">
                             <Receipt className="w-4 h-4 text-gray-400" />
-                            <span className="font-medium text-gray-900">{invoice.id}</span>
+                            <span className="font-medium text-slate-100">{invoice.id}</span>
                           </div>
                         </td>
                         <td className="px-4 py-4">
-                          <p className="text-sm text-gray-900">{invoice.client}</p>
+                          <p className="text-sm text-slate-100">{invoice.client}</p>
                         </td>
                         <td className="px-4 py-4">
-                          <p className="text-sm font-semibold text-gray-900">${invoice.amount.toLocaleString()}</p>
+                          <p className="text-sm font-semibold text-slate-100">${invoice.amount.toLocaleString()}</p>
                         </td>
                         <td className="px-4 py-4">
                           <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                            invoice.status === 'paid' ? 'bg-green-100 text-green-800' :
-                            invoice.status === 'pending' ? 'bg-blue-100 text-blue-800' :
-                            invoice.status === 'overdue' ? 'bg-red-100 text-red-800' :
-                            'bg-gray-100 text-gray-800'
+                            invoice.status === 'paid' ? 'bg-green-500/15 text-green-300' :
+                            invoice.status === 'pending' ? 'bg-blue-500/15 text-blue-300' :
+                            invoice.status === 'overdue' ? 'bg-red-500/15 text-red-300' :
+                            'bg-white/5 text-slate-100'
                           }`}>
                             {invoice.status}
                           </span>
                         </td>
                         <td className="px-4 py-4">
-                          <p className="text-sm text-gray-900">{invoice.dueDate}</p>
+                          <p className="text-sm text-slate-100">{invoice.dueDate}</p>
                         </td>
                         <td className="px-4 py-4 text-right">
                           <div className="flex items-center justify-end gap-2">
@@ -347,44 +347,44 @@ export function BillingModule({ role }: BillingModuleProps) {
               {/* Subscriptions List */}
               <div className="space-y-3">
                 {mockSubscriptions.map((sub) => (
-                  <div key={sub.id} className="border border-gray-300 rounded-lg p-5">
+                  <div key={sub.id} className="border border-white/10 rounded-lg p-5">
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-lg bg-indigo-100 flex items-center justify-center">
-                          <Repeat className="w-6 h-6 text-indigo-600" />
+                        <div className="w-12 h-12 rounded-lg bg-indigo-500/15 flex items-center justify-center">
+                          <Repeat className="w-6 h-6 text-indigo-400" />
                         </div>
                         <div>
-                          <p className="font-semibold text-gray-900">{sub.plan}</p>
-                          <p className="text-sm text-gray-600">{sub.client}</p>
+                          <p className="font-semibold text-slate-100">{sub.plan}</p>
+                          <p className="text-sm text-slate-300">{sub.client}</p>
                         </div>
                       </div>
                       <div className="text-right">
-                        <p className="text-2xl font-bold text-gray-900">${sub.amount}</p>
-                        <p className="text-xs text-gray-500">per {sub.frequency}</p>
+                        <p className="text-2xl font-bold text-slate-100">${sub.amount}</p>
+                        <p className="text-xs text-slate-400">per {sub.frequency}</p>
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-3 gap-4 py-4 border-t border-gray-200">
+                    <div className="grid grid-cols-3 gap-4 py-4 border-t border-white/10">
                       <div>
-                        <p className="text-xs text-gray-500 mb-1">Status</p>
+                        <p className="text-xs text-slate-400 mb-1">Status</p>
                         <span className={`px-2 py-1 rounded text-xs font-medium ${
-                          sub.status === 'active' ? 'bg-green-100 text-green-800' :
-                          'bg-gray-100 text-gray-800'
+                          sub.status === 'active' ? 'bg-green-500/15 text-green-300' :
+                          'bg-white/5 text-slate-100'
                         }`}>
                           {sub.status}
                         </span>
                       </div>
                       <div>
-                        <p className="text-xs text-gray-500 mb-1">Start Date</p>
-                        <p className="text-sm font-medium text-gray-900">{sub.startDate}</p>
+                        <p className="text-xs text-slate-400 mb-1">Start Date</p>
+                        <p className="text-sm font-medium text-slate-100">{sub.startDate}</p>
                       </div>
                       <div>
-                        <p className="text-xs text-gray-500 mb-1">Next Billing</p>
-                        <p className="text-sm font-medium text-gray-900">{sub.nextBilling || 'N/A'}</p>
+                        <p className="text-xs text-slate-400 mb-1">Next Billing</p>
+                        <p className="text-sm font-medium text-slate-100">{sub.nextBilling || 'N/A'}</p>
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-end gap-2 pt-4 border-t border-gray-200">
+                    <div className="flex items-center justify-end gap-2 pt-4 border-t border-white/10">
                       <Button variant="outline" size="sm">
                         <Edit className="w-4 h-4 mr-2" />
                         Edit
@@ -405,45 +405,45 @@ export function BillingModule({ role }: BillingModuleProps) {
           {activeTab === 'payments' && (
             <div className="space-y-4">
               {/* Payments Table */}
-              <div className="border border-gray-300 rounded-lg overflow-hidden">
+              <div className="border border-white/10 rounded-lg overflow-hidden">
                 <table className="w-full">
-                  <thead className="bg-gray-50 border-b border-gray-300">
+                  <thead className="bg-white/5 border-b border-white/10">
                     <tr>
-                      <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Payment ID</th>
-                      <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Invoice</th>
-                      <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Client</th>
-                      <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Amount</th>
-                      <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Method</th>
-                      <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Date</th>
-                      <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Status</th>
+                      <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Payment ID</th>
+                      <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Invoice</th>
+                      <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Client</th>
+                      <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Amount</th>
+                      <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Method</th>
+                      <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Date</th>
+                      <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Status</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-200">
+                  <tbody className="divide-y divide-white/10">
                     {mockPayments.map((payment) => (
-                      <tr key={payment.id} className="hover:bg-gray-50">
+                      <tr key={payment.id} className="hover:bg-white/5">
                         <td className="px-4 py-4">
-                          <span className="font-medium text-gray-900">{payment.id}</span>
+                          <span className="font-medium text-slate-100">{payment.id}</span>
                         </td>
                         <td className="px-4 py-4">
-                          <span className="text-sm text-gray-900">{payment.invoice}</span>
+                          <span className="text-sm text-slate-100">{payment.invoice}</span>
                         </td>
                         <td className="px-4 py-4">
-                          <p className="text-sm text-gray-900">{payment.client}</p>
+                          <p className="text-sm text-slate-100">{payment.client}</p>
                         </td>
                         <td className="px-4 py-4">
-                          <p className="text-sm font-semibold text-gray-900">${payment.amount.toLocaleString()}</p>
+                          <p className="text-sm font-semibold text-slate-100">${payment.amount.toLocaleString()}</p>
                         </td>
                         <td className="px-4 py-4">
                           <div className="flex items-center gap-2">
                             <CreditCard className="w-4 h-4 text-gray-400" />
-                            <span className="text-sm text-gray-900">{payment.method}</span>
+                            <span className="text-sm text-slate-100">{payment.method}</span>
                           </div>
                         </td>
                         <td className="px-4 py-4">
-                          <p className="text-sm text-gray-900">{payment.date}</p>
+                          <p className="text-sm text-slate-100">{payment.date}</p>
                         </td>
                         <td className="px-4 py-4">
-                          <span className="px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                          <span className="px-3 py-1 rounded-full text-xs font-medium bg-green-500/15 text-green-300">
                             {payment.status}
                           </span>
                         </td>
@@ -474,9 +474,9 @@ function InvoiceDetailModal({ invoice, onClose }: any) {
     <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
       <div className="bg-white rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="sticky top-0 bg-white border-b border-gray-300 p-6 flex items-center justify-between">
-          <h2 className="text-xl font-bold text-gray-900">Invoice Details</h2>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+        <div className="sticky top-0 bg-white border-b border-white/10 p-6 flex items-center justify-between">
+          <h2 className="text-xl font-bold text-slate-100">Invoice Details</h2>
+          <button onClick={onClose} className="text-gray-400 hover:text-slate-300">
             <X className="w-6 h-6" />
           </button>
         </div>
@@ -486,14 +486,14 @@ function InvoiceDetailModal({ invoice, onClose }: any) {
           {/* Invoice Header */}
           <div className="flex items-start justify-between">
             <div>
-              <h3 className="text-3xl font-bold text-gray-900 mb-2">{invoice.id}</h3>
-              <p className="text-sm text-gray-600">Issue Date: {invoice.issueDate}</p>
+              <h3 className="text-3xl font-bold text-slate-100 mb-2">{invoice.id}</h3>
+              <p className="text-sm text-slate-300">Issue Date: {invoice.issueDate}</p>
             </div>
             <span className={`px-4 py-2 rounded-lg text-sm font-semibold ${
-              invoice.status === 'paid' ? 'bg-green-100 text-green-800' :
-              invoice.status === 'pending' ? 'bg-blue-100 text-blue-800' :
-              invoice.status === 'overdue' ? 'bg-red-100 text-red-800' :
-              'bg-gray-100 text-gray-800'
+              invoice.status === 'paid' ? 'bg-green-500/15 text-green-300' :
+              invoice.status === 'pending' ? 'bg-blue-500/15 text-blue-300' :
+              invoice.status === 'overdue' ? 'bg-red-500/15 text-red-300' :
+              'bg-white/5 text-slate-100'
             }`}>
               {invoice.status.toUpperCase()}
             </span>
@@ -502,33 +502,33 @@ function InvoiceDetailModal({ invoice, onClose }: any) {
           {/* Bill To */}
           <div className="grid grid-cols-2 gap-8">
             <div>
-              <p className="text-sm font-semibold text-gray-600 mb-2">BILL TO</p>
-              <p className="font-semibold text-gray-900">{invoice.client}</p>
+              <p className="text-sm font-semibold text-slate-300 mb-2">BILL TO</p>
+              <p className="font-semibold text-slate-100">{invoice.client}</p>
             </div>
             <div>
-              <p className="text-sm font-semibold text-gray-600 mb-2">DUE DATE</p>
-              <p className="font-semibold text-gray-900">{invoice.dueDate}</p>
+              <p className="text-sm font-semibold text-slate-300 mb-2">DUE DATE</p>
+              <p className="font-semibold text-slate-100">{invoice.dueDate}</p>
             </div>
           </div>
 
           {/* Line Items */}
           <div>
             <table className="w-full">
-              <thead className="border-b-2 border-gray-300">
+              <thead className="border-b-2 border-white/10">
                 <tr>
-                  <th className="py-3 text-left text-sm font-semibold text-gray-600">DESCRIPTION</th>
-                  <th className="py-3 text-right text-sm font-semibold text-gray-600">QTY</th>
-                  <th className="py-3 text-right text-sm font-semibold text-gray-600">RATE</th>
-                  <th className="py-3 text-right text-sm font-semibold text-gray-600">AMOUNT</th>
+                  <th className="py-3 text-left text-sm font-semibold text-slate-300">DESCRIPTION</th>
+                  <th className="py-3 text-right text-sm font-semibold text-slate-300">QTY</th>
+                  <th className="py-3 text-right text-sm font-semibold text-slate-300">RATE</th>
+                  <th className="py-3 text-right text-sm font-semibold text-slate-300">AMOUNT</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200">
+              <tbody className="divide-y divide-white/10">
                 {invoice.items.map((item: any, idx: number) => (
                   <tr key={idx}>
-                    <td className="py-4 text-sm text-gray-900">{item.description}</td>
-                    <td className="py-4 text-right text-sm text-gray-900">{item.quantity}</td>
-                    <td className="py-4 text-right text-sm text-gray-900">${item.rate}</td>
-                    <td className="py-4 text-right text-sm font-semibold text-gray-900">${item.amount.toLocaleString()}</td>
+                    <td className="py-4 text-sm text-slate-100">{item.description}</td>
+                    <td className="py-4 text-right text-sm text-slate-100">{item.quantity}</td>
+                    <td className="py-4 text-right text-sm text-slate-100">${item.rate}</td>
+                    <td className="py-4 text-right text-sm font-semibold text-slate-100">${item.amount.toLocaleString()}</td>
                   </tr>
                 ))}
               </tbody>
@@ -538,20 +538,20 @@ function InvoiceDetailModal({ invoice, onClose }: any) {
           {/* Totals */}
           <div className="flex justify-end">
             <div className="w-64 space-y-2">
-              <div className="flex justify-between py-2 border-t border-gray-200">
-                <span className="text-sm text-gray-600">Subtotal</span>
-                <span className="text-sm font-medium text-gray-900">${invoice.amount.toLocaleString()}</span>
+              <div className="flex justify-between py-2 border-t border-white/10">
+                <span className="text-sm text-slate-300">Subtotal</span>
+                <span className="text-sm font-medium text-slate-100">${invoice.amount.toLocaleString()}</span>
               </div>
-              <div className="flex justify-between py-2 border-t-2 border-gray-300">
-                <span className="font-semibold text-gray-900">Total</span>
-                <span className="text-xl font-bold text-gray-900">${invoice.amount.toLocaleString()}</span>
+              <div className="flex justify-between py-2 border-t-2 border-white/10">
+                <span className="font-semibold text-slate-100">Total</span>
+                <span className="text-xl font-bold text-slate-100">${invoice.amount.toLocaleString()}</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Footer Actions */}
-        <div className="sticky bottom-0 bg-gray-50 border-t border-gray-300 p-6 flex items-center justify-between">
+        <div className="sticky bottom-0 bg-white/5 border-t border-white/10 p-6 flex items-center justify-between">
           <Button variant="outline" onClick={onClose}>
             Close
           </Button>

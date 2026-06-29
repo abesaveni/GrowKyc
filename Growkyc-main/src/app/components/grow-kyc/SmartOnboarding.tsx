@@ -235,7 +235,7 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
           </Card>
           <Card>
             <CardContent className="p-4">
-              <div className="text-2xl font-bold text-green-600">
+              <div className="text-2xl font-bold text-green-400">
                 {entities.filter(e => e.status === 'approved').length}
               </div>
               <div className="text-sm text-slate-300">Approved</div>
@@ -243,7 +243,7 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
           </Card>
           <Card>
             <CardContent className="p-4">
-              <div className="text-2xl font-bold text-amber-600">
+              <div className="text-2xl font-bold text-amber-400">
                 {entities.filter(e => e.status === 'in_progress' || e.status === 'draft').length}
               </div>
               <div className="text-sm text-slate-300">In Progress</div>
@@ -251,7 +251,7 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
           </Card>
           <Card>
             <CardContent className="p-4">
-              <div className="text-2xl font-bold text-blue-600">
+              <div className="text-2xl font-bold text-blue-400">
                 {entities.filter(e => e.status === 'pending_review').length}
               </div>
               <div className="text-sm text-slate-300">Pending Review</div>
@@ -286,14 +286,14 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-3">
                       <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${
-                        entity.riskLevel === 'high' ? 'bg-red-100' :
-                        entity.riskLevel === 'medium' ? 'bg-amber-100' :
-                        'bg-green-100'
+                        entity.riskLevel === 'high' ? 'bg-red-500/15' :
+                        entity.riskLevel === 'medium' ? 'bg-amber-500/15' :
+                        'bg-green-500/15'
                       }`}>
                         <EntityIcon className={`w-6 h-6 ${
-                          entity.riskLevel === 'high' ? 'text-red-600' :
-                          entity.riskLevel === 'medium' ? 'text-amber-600' :
-                          'text-green-600'
+                          entity.riskLevel === 'high' ? 'text-red-400' :
+                          entity.riskLevel === 'medium' ? 'text-amber-400' :
+                          'text-green-400'
                         }`} />
                       </div>
                       <div>
@@ -335,9 +335,9 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-slate-300">Risk Level</span>
                     <Badge variant="outline" className={
-                      entity.riskLevel === 'high' ? 'border-red-500 text-red-700' :
-                      entity.riskLevel === 'medium' ? 'border-amber-500 text-amber-700' :
-                      'border-green-500 text-green-700'
+                      entity.riskLevel === 'high' ? 'border-red-500 text-red-300' :
+                      entity.riskLevel === 'medium' ? 'border-amber-500 text-amber-300' :
+                      'border-green-500 text-green-300'
                     }>
                       {entity.riskLevel.toUpperCase()}
                     </Badge>
@@ -354,10 +354,10 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
           })}
 
           {/* Add New Entity Card - Always shown */}
-          <Card className="border-2 border-dashed border-blue-400 hover:border-blue-600 hover:bg-blue-50 transition-all cursor-pointer group">
+          <Card className="border-2 border-dashed border-blue-400 hover:border-blue-600 hover:bg-blue-500/10 transition-all cursor-pointer group">
             <CardContent className="p-8 flex flex-col items-center justify-center min-h-64">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-200 transition-colors">
-                <Plus className="w-8 h-8 text-blue-600" />
+              <div className="w-16 h-16 bg-blue-500/15 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-500/20 transition-colors">
+                <Plus className="w-8 h-8 text-blue-400" />
               </div>
               <h3 className="font-bold text-white mb-2">
                 {entities.length === 0 ? 'Add First Entity' : 'Add Another Entity'}
@@ -373,7 +373,7 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
                   size="sm"
                   variant="outline"
                   onClick={() => handleAddEntity('company')}
-                  className="flex-col h-auto py-3 hover:bg-blue-100 hover:border-blue-500"
+                  className="flex-col h-auto py-3 hover:bg-blue-500/15 hover:border-blue-500"
                 >
                   <Building2 className="w-5 h-5 mb-1" />
                   <span className="text-xs font-semibold">Company</span>
@@ -382,7 +382,7 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
                   size="sm"
                   variant="outline"
                   onClick={() => handleAddEntity('trust')}
-                  className="flex-col h-auto py-3 hover:bg-blue-100 hover:border-blue-500"
+                  className="flex-col h-auto py-3 hover:bg-blue-500/15 hover:border-blue-500"
                 >
                   <Shield className="w-5 h-5 mb-1" />
                   <span className="text-xs font-semibold">Trust</span>
@@ -391,7 +391,7 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
                   size="sm"
                   variant="outline"
                   onClick={() => handleAddEntity('individual')}
-                  className="flex-col h-auto py-3 hover:bg-blue-100 hover:border-blue-500"
+                  className="flex-col h-auto py-3 hover:bg-blue-500/15 hover:border-blue-500"
                 >
                   <UserCircle className="w-5 h-5 mb-1" />
                   <span className="text-xs font-semibold">Individual</span>
@@ -400,7 +400,7 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
                   size="sm"
                   variant="outline"
                   onClick={() => handleAddEntity('sole_trader')}
-                  className="flex-col h-auto py-3 hover:bg-blue-100 hover:border-blue-500"
+                  className="flex-col h-auto py-3 hover:bg-blue-500/15 hover:border-blue-500"
                 >
                   <Briefcase className="w-5 h-5 mb-1" />
                   <span className="text-xs font-semibold">Sole Trader</span>
@@ -412,11 +412,11 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
       </div>
 
       {/* Help Section */}
-      <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
+      <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-500/30">
         <CardContent className="p-6">
           <div className="flex items-start gap-4">
             <div className="w-12 h-12 bg-[#1e293b] rounded-full flex items-center justify-center">
-              <Sparkles className="w-6 h-6 text-blue-600" />
+              <Sparkles className="w-6 h-6 text-blue-400" />
             </div>
             <div className="flex-1">
               <h3 className="font-bold text-white mb-2">Need help getting started?</h3>
@@ -482,9 +482,9 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
             </Button>
             <div className="flex items-center gap-4">
               {/* Developer Mode Toggle */}
-              <div className="flex items-center gap-2 px-3 py-1 bg-amber-100 border-2 border-amber-300 rounded-lg">
-                <Code className="w-4 h-4 text-amber-600" />
-                <span className="text-xs font-semibold text-amber-900">DEV MODE</span>
+              <div className="flex items-center gap-2 px-3 py-1 bg-amber-500/15 border-2 border-amber-300 rounded-lg">
+                <Code className="w-4 h-4 text-amber-400" />
+                <span className="text-xs font-semibold text-amber-300">DEV MODE</span>
                 <label className="relative inline-flex items-center cursor-pointer">
                   <input
                     type="checkbox"
@@ -492,7 +492,7 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
                     onChange={(e) => setDevMode(e.target.checked)}
                     className="sr-only peer"
                   />
-                  <div className="w-9 h-5 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-[#1e293b] after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-green-600"></div>
+                  <div className="w-9 h-5 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-[#1e293b] after:border-white/10 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-green-600"></div>
                 </label>
               </div>
               <div className="text-sm text-slate-300">
@@ -527,7 +527,7 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
                         <Icon className="w-5 h-5 text-white" />
                       )}
                     </div>
-                    <span className={`text-xs mt-2 ${isActive ? 'font-bold text-blue-600' : 'text-slate-300'}`}>
+                    <span className={`text-xs mt-2 ${isActive ? 'font-bold text-blue-400' : 'text-slate-300'}`}>
                       {stage.label}
                     </span>
                   </div>
@@ -563,7 +563,7 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
         
         {/* Developer Mode Navigation */}
         {devMode && (
-          <Card className="mt-6 border-2 border-amber-300 bg-amber-50">
+          <Card className="mt-6 border-2 border-amber-300 bg-amber-500/10">
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <Button
@@ -582,8 +582,8 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
                 </Button>
                 
                 <div className="flex items-center gap-2">
-                  <Code className="w-4 h-4 text-amber-600" />
-                  <span className="text-sm font-semibold text-amber-900">
+                  <Code className="w-4 h-4 text-amber-400" />
+                  <span className="text-sm font-semibold text-amber-300">
                     Developer Mode: Skip validation enabled
                   </span>
                 </div>

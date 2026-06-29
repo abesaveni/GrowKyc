@@ -98,7 +98,7 @@ export function TrashDocumentsView() {
             <RotateCcw className="w-3.5 h-3.5 mr-1" />
             Restore
           </Button>
-          <Button type="button" variant="outline" size="sm" className="text-red-600" onClick={() => setConfirmDelete({ ids: [r.id] })}>
+          <Button type="button" variant="outline" size="sm" className="text-red-400" onClick={() => setConfirmDelete({ ids: [r.id] })}>
             <Trash2 className="w-3.5 h-3.5" />
           </Button>
         </div>
@@ -121,7 +121,7 @@ export function TrashDocumentsView() {
               <Button
                 type="button"
                 variant="outline"
-                className="text-red-600 border-red-200"
+                className="text-red-400 border-red-500/30"
                 disabled={busy}
                 onClick={() => setConfirmDelete({ ids: [...selected] })}
               >
@@ -133,7 +133,7 @@ export function TrashDocumentsView() {
         }
       />
 
-      <div className="flex items-center gap-2 text-sm text-gray-600">
+      <div className="flex items-center gap-2 text-sm text-slate-300">
         <input
           type="checkbox"
           checked={docs.length > 0 && selected.size === docs.length}

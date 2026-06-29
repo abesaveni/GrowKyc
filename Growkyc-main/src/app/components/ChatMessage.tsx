@@ -27,26 +27,26 @@ export function ChatMessage({ message }: ChatMessageProps) {
   return (
     <div className={`flex gap-3 ${message.isCurrentUser ? 'flex-row-reverse' : ''}`}>
       <Avatar className="w-8 h-8">
-        <AvatarFallback className={message.isCurrentUser ? 'bg-indigo-600 text-white' : 'bg-gray-200 text-gray-700'}>
+        <AvatarFallback className={message.isCurrentUser ? 'bg-indigo-600 text-white' : 'bg-white/10 text-slate-300'}>
           {initials}
         </AvatarFallback>
       </Avatar>
       
       <div className={`flex-1 max-w-md ${message.isCurrentUser ? 'items-end' : 'items-start'} flex flex-col`}>
         <div className="flex items-baseline gap-2 mb-1">
-          <span className="text-sm font-medium text-gray-900">{message.sender.name}</span>
-          <span className="text-xs text-gray-500">{message.sender.role}</span>
+          <span className="text-sm font-medium text-slate-100">{message.sender.name}</span>
+          <span className="text-xs text-slate-400">{message.sender.role}</span>
         </div>
         
         <div className={`rounded-lg px-4 py-2 ${
           message.isCurrentUser
             ? 'bg-indigo-600 text-white'
-            : 'bg-gray-100 text-gray-900'
+            : 'bg-white/5 text-slate-100'
         }`}>
           <p className="text-sm">{message.content}</p>
         </div>
         
-        <span className="text-xs text-gray-500 mt-1">
+        <span className="text-xs text-slate-400 mt-1">
           {formatDistanceToNow(message.timestamp, { addSuffix: true })}
         </span>
       </div>

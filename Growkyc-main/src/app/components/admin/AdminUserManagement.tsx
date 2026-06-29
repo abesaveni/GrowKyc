@@ -243,12 +243,12 @@ export function AdminUserManagement() {
 
   const getStatusBadge = (status: string) => {
     const colors: Record<string, string> = {
-      active: 'bg-green-100 text-green-800',
-      suspended: 'bg-red-100 text-red-800',
-      pending: 'bg-amber-100 text-amber-800',
+      active: 'bg-green-500/15 text-green-300',
+      suspended: 'bg-red-500/15 text-red-300',
+      pending: 'bg-amber-500/15 text-amber-300',
     };
     return (
-      <span className={`px-2 py-1 rounded text-xs font-semibold ${colors[status] || 'bg-gray-100 text-gray-800'}`}>
+      <span className={`px-2 py-1 rounded text-xs font-semibold ${colors[status] || 'bg-white/5 text-slate-100'}`}>
         {status.charAt(0).toUpperCase() + status.slice(1)}
       </span>
     );
@@ -256,12 +256,12 @@ export function AdminUserManagement() {
 
   const getKYCBadge = (kycStatus: string) => {
     const colors: Record<string, string> = {
-      approved: 'bg-green-100 text-green-800',
-      pending: 'bg-amber-100 text-amber-800',
-      rejected: 'bg-red-100 text-red-800',
+      approved: 'bg-green-500/15 text-green-300',
+      pending: 'bg-amber-500/15 text-amber-300',
+      rejected: 'bg-red-500/15 text-red-300',
     };
     return (
-      <span className={`px-2 py-1 rounded text-xs font-semibold ${colors[kycStatus] || 'bg-gray-100 text-gray-800'}`}>
+      <span className={`px-2 py-1 rounded text-xs font-semibold ${colors[kycStatus] || 'bg-white/5 text-slate-100'}`}>
         {kycStatus.charAt(0).toUpperCase() + kycStatus.slice(1)}
       </span>
     );
@@ -332,10 +332,10 @@ export function AdminUserManagement() {
               <div>
                 <p className="text-sm text-slate-400 mb-1">Total Users</p>
                 <p className="text-3xl font-semibold text-white">{users.length}</p>
-                <p className="text-xs text-slate-500 mt-1">All platform users</p>
+                <p className="text-xs text-slate-400 mt-1">All platform users</p>
               </div>
-              <div className="p-3 bg-blue-50 rounded-lg">
-                <Users className="w-6 h-6 text-blue-600" />
+              <div className="p-3 bg-blue-500/10 rounded-lg">
+                <Users className="w-6 h-6 text-blue-400" />
               </div>
             </div>
           </CardContent>
@@ -347,10 +347,10 @@ export function AdminUserManagement() {
               <div>
                 <p className="text-sm text-slate-400 mb-1">Active Users</p>
                 <p className="text-3xl font-semibold text-white">{activeUsers}</p>
-                <p className="text-xs text-slate-500 mt-1">Currently active</p>
+                <p className="text-xs text-slate-400 mt-1">Currently active</p>
               </div>
-              <div className="p-3 bg-green-50 rounded-lg">
-                <UserCheck className="w-6 h-6 text-green-600" />
+              <div className="p-3 bg-green-500/10 rounded-lg">
+                <UserCheck className="w-6 h-6 text-green-400" />
               </div>
             </div>
           </CardContent>
@@ -362,10 +362,10 @@ export function AdminUserManagement() {
               <div>
                 <p className="text-sm text-slate-400 mb-1">Pending KYC</p>
                 <p className="text-3xl font-semibold text-white">{pendingKYC}</p>
-                <p className="text-xs text-slate-500 mt-1">Awaiting review</p>
+                <p className="text-xs text-slate-400 mt-1">Awaiting review</p>
               </div>
-              <div className="p-3 bg-amber-50 rounded-lg">
-                <Shield className="w-6 h-6 text-amber-600" />
+              <div className="p-3 bg-amber-500/10 rounded-lg">
+                <Shield className="w-6 h-6 text-amber-400" />
               </div>
             </div>
           </CardContent>
@@ -377,10 +377,10 @@ export function AdminUserManagement() {
               <div>
                 <p className="text-sm text-slate-400 mb-1">Suspended</p>
                 <p className="text-3xl font-semibold text-white">{suspendedUsers}</p>
-                <p className="text-xs text-slate-500 mt-1">Access restricted</p>
+                <p className="text-xs text-slate-400 mt-1">Access restricted</p>
               </div>
-              <div className="p-3 bg-red-50 rounded-lg">
-                <UserX className="w-6 h-6 text-red-600" />
+              <div className="p-3 bg-red-500/10 rounded-lg">
+                <UserX className="w-6 h-6 text-red-400" />
               </div>
             </div>
           </CardContent>
@@ -443,7 +443,7 @@ export function AdminUserManagement() {
           {loading ? (
             <div className="flex items-center justify-center py-16">
               <Loader2 className="w-8 h-8 animate-spin text-gray-400" />
-              <span className="ml-3 text-slate-500">Loading users...</span>
+              <span className="ml-3 text-slate-400">Loading users...</span>
             </div>
           ) : filteredUsers.length === 0 ? (
             <EmptyState
@@ -480,7 +480,7 @@ export function AdminUserManagement() {
                           </div>
                           <div>
                             <p className="font-medium text-white">{user.name}</p>
-                            <p className="text-xs text-slate-500">ID: {user.id}</p>
+                            <p className="text-xs text-slate-400">ID: {user.id}</p>
                           </div>
                         </div>
                       </TableCell>
@@ -526,7 +526,7 @@ export function AdminUserManagement() {
                               variant="outline"
                               size="sm"
                               onClick={() => handleSuspendUser(user)}
-                              className="text-amber-600 hover:text-amber-700 hover:bg-amber-50"
+                              className="text-amber-400 hover:text-amber-300 hover:bg-amber-500/10"
                               title="Suspend User"
                             >
                               <UserX className="w-4 h-4" />
@@ -536,7 +536,7 @@ export function AdminUserManagement() {
                               variant="outline"
                               size="sm"
                               onClick={() => handleActivateUser(user)}
-                              className="text-green-600 hover:text-green-700 hover:bg-green-50"
+                              className="text-green-400 hover:text-green-300 hover:bg-green-500/10"
                               title="Activate User"
                             >
                               <UserCheck className="w-4 h-4" />
@@ -547,7 +547,7 @@ export function AdminUserManagement() {
                             variant="outline"
                             size="sm"
                             onClick={() => handleDeleteUser(user)}
-                            className="text-red-600 hover:text-red-700 hover:bg-red-50"
+                            className="text-red-400 hover:text-red-300 hover:bg-red-500/10"
                             title="Delete User"
                           >
                             <Trash2 className="w-4 h-4" />

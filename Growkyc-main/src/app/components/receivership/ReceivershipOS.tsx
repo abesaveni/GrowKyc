@@ -195,11 +195,11 @@ export function ReceivershipOS({ onSwitchModule, initialRole = 'case-manager' }:
 
   const getMatterStatusBadge = (status: MatterStatus) => {
     const config = {
-      active: { label: 'Active', className: 'bg-blue-100 text-blue-800', icon: Activity },
-      trading: { label: 'Trading', className: 'bg-green-100 text-green-800', icon: TrendingUp },
-      restructuring: { label: 'Restructuring', className: 'bg-purple-100 text-purple-800', icon: Target },
-      closed: { label: 'Closed', className: 'bg-gray-100 text-gray-800', icon: Archive },
-      'awaiting-exit': { label: 'Awaiting Exit', className: 'bg-orange-100 text-orange-800', icon: AlertCircle }
+      active: { label: 'Active', className: 'bg-blue-500/15 text-blue-300', icon: Activity },
+      trading: { label: 'Trading', className: 'bg-green-500/15 text-green-300', icon: TrendingUp },
+      restructuring: { label: 'Restructuring', className: 'bg-purple-500/15 text-purple-300', icon: Target },
+      closed: { label: 'Closed', className: 'bg-white/5 text-slate-100', icon: Archive },
+      'awaiting-exit': { label: 'Awaiting Exit', className: 'bg-orange-500/15 text-orange-300', icon: AlertCircle }
     };
 
     const statusConfig = config[status];
@@ -214,9 +214,9 @@ export function ReceivershipOS({ onSwitchModule, initialRole = 'case-manager' }:
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white/5">
       {/* Top Navigation Bar */}
-      <nav className="bg-white border-b border-gray-200 fixed w-full top-0 z-50">
+      <nav className="bg-white border-b border-white/10 fixed w-full top-0 z-50">
         <div className="px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo and Brand */}
@@ -225,26 +225,26 @@ export function ReceivershipOS({ onSwitchModule, initialRole = 'case-manager' }:
                 className="lg:hidden"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
-                {mobileMenuOpen ? <X className="w-6 h-6 text-gray-600" /> : <Menu className="w-6 h-6 text-gray-600" />}
+                {mobileMenuOpen ? <X className="w-6 h-6 text-slate-300" /> : <Menu className="w-6 h-6 text-slate-300" />}
               </button>
               
               <div className="flex items-center gap-3">
                 <img src={logo} alt="Receivership OS" className="h-8" />
                 <div>
-                  <h1 className="text-lg font-semibold text-gray-900">Receivership OS</h1>
-                  <p className="text-xs text-gray-500">MIP & Restructuring Platform</p>
+                  <h1 className="text-lg font-semibold text-slate-100">Receivership OS</h1>
+                  <p className="text-xs text-slate-400">MIP & Restructuring Platform</p>
                 </div>
               </div>
             </div>
 
             {/* Center - Matter Selector */}
             <div className="hidden md:flex items-center gap-3">
-              <div className="flex items-center gap-2 px-3 py-2 bg-red-50 border border-red-200 rounded-lg">
-                <Briefcase className="w-4 h-4 text-red-600" />
+              <div className="flex items-center gap-2 px-3 py-2 bg-red-500/10 border border-red-500/30 rounded-lg">
+                <Briefcase className="w-4 h-4 text-red-400" />
                 <select 
                   value={selectedMatter}
                   onChange={(e) => setSelectedMatter(e.target.value)}
-                  className="bg-transparent text-sm font-medium text-red-900 border-none focus:outline-none"
+                  className="bg-transparent text-sm font-medium text-red-300 border-none focus:outline-none"
                 >
                   {mockMatters.map(m => (
                     <option key={m.id} value={m.id}>{m.id} - {m.entityName}</option>
@@ -268,7 +268,7 @@ export function ReceivershipOS({ onSwitchModule, initialRole = 'case-manager' }:
                   setUserRole(e.target.value as ReceivershipRole);
                   setCurrentPage('dashboard');
                 }}
-                className="px-3 py-2 border border-red-300 rounded-lg text-xs font-medium text-red-700 bg-red-50 hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="px-3 py-2 border border-red-300 rounded-lg text-xs font-medium text-red-300 bg-red-500/10 hover:bg-red-500/15 focus:outline-none focus:ring-2 focus:ring-red-500"
               >
                 <option value="system-owner">System Owner</option>
                 <option value="appointed-receiver">Appointed Receiver</option>
@@ -284,7 +284,7 @@ export function ReceivershipOS({ onSwitchModule, initialRole = 'case-manager' }:
               {onSwitchModule && (
                 <select
                   onChange={(e) => onSwitchModule(e.target.value)}
-                  className="px-3 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-500"
+                  className="px-3 py-2 border border-white/10 rounded-lg text-sm font-medium text-slate-300 bg-white hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-red-500"
                   defaultValue="receivership"
                 >
                   <option value="Grow MIP">Switch to Grow MIP</option>
@@ -303,8 +303,8 @@ export function ReceivershipOS({ onSwitchModule, initialRole = 'case-manager' }:
 
               <div className="flex items-center gap-3 pl-3 border-l">
                 <div className="text-right hidden sm:block">
-                  <p className="text-sm font-medium text-gray-900">{mockUser.name}</p>
-                  <p className="text-xs text-gray-500">{mockUser.email}</p>
+                  <p className="text-sm font-medium text-slate-100">{mockUser.name}</p>
+                  <p className="text-xs text-slate-400">{mockUser.email}</p>
                 </div>
                 <Avatar>
                   <AvatarFallback className="bg-red-600 text-white">
@@ -380,67 +380,67 @@ function ReceivershipDashboard({ matter, role, onNavigate }: any) {
     <div className="p-6 space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">{matter.entityName}</h1>
-        <p className="text-gray-600 mt-1">
+        <h1 className="text-2xl font-bold text-slate-100">{matter.entityName}</h1>
+        <p className="text-slate-300 mt-1">
           {matter.id} â€¢ {matter.appointmentType} â€¢ Day {matter.daysActive} of appointment
         </p>
       </div>
 
       {/* Key Metrics */}
       <div className="grid grid-cols-4 gap-4">
-        <div className="bg-white border border-gray-300 rounded-lg p-4">
+        <div className="bg-white border border-white/10 rounded-lg p-4">
           <div className="flex items-center gap-2 mb-2">
-            <DollarSign className="w-5 h-5 text-green-600" />
-            <p className="text-sm text-gray-600">Cash at Bank</p>
+            <DollarSign className="w-5 h-5 text-green-400" />
+            <p className="text-sm text-slate-300">Cash at Bank</p>
           </div>
-          <p className="text-2xl font-bold text-gray-900">${(matter.cashAtBank / 1000).toFixed(0)}K</p>
+          <p className="text-2xl font-bold text-slate-100">${(matter.cashAtBank / 1000).toFixed(0)}K</p>
         </div>
 
-        <div className="bg-white border border-gray-300 rounded-lg p-4">
+        <div className="bg-white border border-white/10 rounded-lg p-4">
           <div className="flex items-center gap-2 mb-2">
-            <Package className="w-5 h-5 text-blue-600" />
-            <p className="text-sm text-gray-600">Assets Under Control</p>
+            <Package className="w-5 h-5 text-blue-400" />
+            <p className="text-sm text-slate-300">Assets Under Control</p>
           </div>
-          <p className="text-2xl font-bold text-gray-900">${(matter.assetsUnderControl / 1000).toFixed(0)}K</p>
+          <p className="text-2xl font-bold text-slate-100">${(matter.assetsUnderControl / 1000).toFixed(0)}K</p>
         </div>
 
-        <div className="bg-white border border-gray-300 rounded-lg p-4">
+        <div className="bg-white border border-white/10 rounded-lg p-4">
           <div className="flex items-center gap-2 mb-2">
-            <Shield className="w-5 h-5 text-orange-600" />
-            <p className="text-sm text-gray-600">Secured Debt</p>
+            <Shield className="w-5 h-5 text-orange-400" />
+            <p className="text-sm text-slate-300">Secured Debt</p>
           </div>
-          <p className="text-2xl font-bold text-gray-900">${(matter.securedDebt / 1000).toFixed(0)}K</p>
+          <p className="text-2xl font-bold text-slate-100">${(matter.securedDebt / 1000).toFixed(0)}K</p>
         </div>
 
-        <div className="bg-white border border-gray-300 rounded-lg p-4">
+        <div className="bg-white border border-white/10 rounded-lg p-4">
           <div className="flex items-center gap-2 mb-2">
-            <Scale className="w-5 h-5 text-red-600" />
-            <p className="text-sm text-gray-600">Risk Score</p>
+            <Scale className="w-5 h-5 text-red-400" />
+            <p className="text-sm text-slate-300">Risk Score</p>
           </div>
           <p className={`text-2xl font-bold ${
-            riskColor === 'green' ? 'text-green-600' :
-            riskColor === 'orange' ? 'text-orange-600' :
-            'text-red-600'
+            riskColor === 'green' ? 'text-green-400' :
+            riskColor === 'orange' ? 'text-orange-400' :
+            'text-red-400'
           }`}>{matter.riskScore}/100</p>
         </div>
       </div>
 
       {/* Risk Alerts */}
-      <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4">
+      <div className="bg-red-500/10 border-2 border-red-500/30 rounded-lg p-4">
         <div className="flex items-start gap-3">
-          <AlertTriangle className="w-6 h-6 text-red-600 mt-0.5" />
+          <AlertTriangle className="w-6 h-6 text-red-400 mt-0.5" />
           <div className="flex-1">
-            <h3 className="font-semibold text-red-900 mb-2">Active Risk Alerts (3)</h3>
+            <h3 className="font-semibold text-red-300 mb-2">Active Risk Alerts (3)</h3>
             <div className="space-y-2">
-              <div className="flex items-center gap-2 text-sm text-red-800">
+              <div className="flex items-center gap-2 text-sm text-red-300">
                 <AlertCircle className="w-4 h-4" />
                 <span>Statutory deadline in 5 days - Section 439A report due</span>
               </div>
-              <div className="flex items-center gap-2 text-sm text-red-800">
+              <div className="flex items-center gap-2 text-sm text-red-300">
                 <AlertCircle className="w-4 h-4" />
                 <span>Asset A-002 uninsured - $2.5M property at risk</span>
               </div>
-              <div className="flex items-center gap-2 text-sm text-red-800">
+              <div className="flex items-center gap-2 text-sm text-red-300">
                 <AlertCircle className="w-4 h-4" />
                 <span>Negative cashflow forecast in Week 9</span>
               </div>
@@ -477,8 +477,8 @@ function ReceivershipDashboard({ matter, role, onNavigate }: any) {
       </div>
 
       {/* Statutory Deadlines */}
-      <div className="bg-white border border-gray-300 rounded-lg p-6">
-        <h3 className="font-semibold text-gray-900 mb-4">Upcoming Statutory Deadlines</h3>
+      <div className="bg-white border border-white/10 rounded-lg p-6">
+        <h3 className="font-semibold text-slate-100 mb-4">Upcoming Statutory Deadlines</h3>
         <div className="space-y-3">
           {[
             { task: 'Section 439A Report', due: '2024-03-01', status: 'urgent', days: 5 },
@@ -486,20 +486,20 @@ function ReceivershipDashboard({ matter, role, onNavigate }: any) {
             { task: 'Asset Realisation Report', due: '2024-03-15', status: 'upcoming', days: 19 }
           ].map((deadline, idx) => (
             <div key={idx} className={`flex items-center justify-between p-3 rounded-lg ${
-              deadline.status === 'urgent' ? 'bg-red-50 border border-red-200' : 'bg-gray-50'
+              deadline.status === 'urgent' ? 'bg-red-500/10 border border-red-500/30' : 'bg-white/5'
             }`}>
               <div className="flex items-center gap-3">
                 <Calendar className={`w-5 h-5 ${
-                  deadline.status === 'urgent' ? 'text-red-600' : 'text-gray-600'
+                  deadline.status === 'urgent' ? 'text-red-400' : 'text-slate-300'
                 }`} />
                 <div>
-                  <p className="font-medium text-gray-900">{deadline.task}</p>
-                  <p className="text-sm text-gray-600">Due {deadline.due}</p>
+                  <p className="font-medium text-slate-100">{deadline.task}</p>
+                  <p className="text-sm text-slate-300">Due {deadline.due}</p>
                 </div>
               </div>
               <div className="text-right">
                 <p className={`text-sm font-semibold ${
-                  deadline.status === 'urgent' ? 'text-red-600' : 'text-gray-900'
+                  deadline.status === 'urgent' ? 'text-red-400' : 'text-slate-100'
                 }`}>{deadline.days} days</p>
               </div>
             </div>
@@ -514,11 +514,11 @@ function ReceivershipDashboard({ matter, role, onNavigate }: any) {
 function PlaceholderPage({ title, description }: any) {
   return (
     <div className="p-6">
-      <div className="bg-white rounded-lg border border-gray-300 p-8 text-center">
-        <Gavel className="w-12 h-12 text-red-600 mx-auto mb-4" />
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">{title}</h2>
-        <p className="text-gray-600 mb-6">{description}</p>
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-100 text-red-700 rounded-lg text-sm font-medium">
+      <div className="bg-white rounded-lg border border-white/10 p-8 text-center">
+        <Gavel className="w-12 h-12 text-red-400 mx-auto mb-4" />
+        <h2 className="text-2xl font-bold text-slate-100 mb-2">{title}</h2>
+        <p className="text-slate-300 mb-6">{description}</p>
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-500/15 text-red-300 rounded-lg text-sm font-medium">
           <Activity className="w-4 h-4" />
           Module under construction
         </div>

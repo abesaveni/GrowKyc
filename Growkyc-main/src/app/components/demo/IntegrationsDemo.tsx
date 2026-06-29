@@ -42,10 +42,10 @@ export function IntegrationsDemo() {
 
   if (blockDemo) {
     return (
-      <div className="min-h-screen bg-gray-50 p-8">
+      <div className="min-h-screen bg-white/5 p-8">
         <Card className="max-w-3xl mx-auto border-2 border-red-300">
           <CardHeader>
-            <CardTitle className="text-red-700">Integrations Demo Blocked in Production</CardTitle>
+            <CardTitle className="text-red-300">Integrations Demo Blocked in Production</CardTitle>
             <CardDescription>
               This demo view is disabled for production runtime unless explicitly enabled.
             </CardDescription>
@@ -80,7 +80,7 @@ export function IntegrationsDemo() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white/5">
       {/* API Architecture Banner */}
       <div className="bg-gradient-to-r from-purple-900 via-indigo-900 to-blue-900 text-white p-8 border-b">
         <div className="max-w-7xl mx-auto">
@@ -178,7 +178,7 @@ export function IntegrationsDemo() {
                 className={
                   activeTab === 'results'
                     ? 'bg-purple-600 text-white'
-                    : 'bg-white text-gray-700 hover:bg-gray-100'
+                    : 'bg-white text-slate-300 hover:bg-white/5'
                 }
               >
                 <CheckCircle className="w-4 h-4 mr-2" />
@@ -189,7 +189,7 @@ export function IntegrationsDemo() {
                 className={
                   activeTab === 'risk'
                     ? 'bg-purple-600 text-white'
-                    : 'bg-white text-gray-700 hover:bg-gray-100'
+                    : 'bg-white text-slate-300 hover:bg-white/5'
                 }
               >
                 <Shield className="w-4 h-4 mr-2" />
@@ -200,7 +200,7 @@ export function IntegrationsDemo() {
                 className={
                   activeTab === 'evidence'
                     ? 'bg-purple-600 text-white'
-                    : 'bg-white text-gray-700 hover:bg-gray-100'
+                    : 'bg-white text-slate-300 hover:bg-white/5'
                 }
               >
                 <Database className="w-4 h-4 mr-2" />
@@ -211,15 +211,15 @@ export function IntegrationsDemo() {
             {/* Check Results Tab */}
             {activeTab === 'results' && (
               <div className="space-y-6">
-                <Card className="border-2 border-purple-300 bg-purple-50">
+                <Card className="border-2 border-purple-300 bg-purple-500/10">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-3">
-                      <Zap className="w-6 h-6 text-purple-600 flex-shrink-0" />
+                      <Zap className="w-6 h-6 text-purple-400 flex-shrink-0" />
                       <div>
-                        <h3 className="font-bold text-purple-900 mb-2">
+                        <h3 className="font-bold text-purple-300 mb-2">
                           Composite Orchestration: POST /api/workflows/onboarding/run-core-checks
                         </h3>
-                        <p className="text-sm text-purple-800 mb-3">
+                        <p className="text-sm text-purple-300 mb-3">
                           This endpoint orchestrates Identity + Entity + AML + Business Risk checks from multiple
                           providers and returns one consolidated object with normalised results.
                         </p>
@@ -234,7 +234,7 @@ export function IntegrationsDemo() {
                   </CardContent>
                 </Card>
 
-                <h2 className="text-2xl font-bold text-gray-900">Provider-Backed Results (Normalised Schema)</h2>
+                <h2 className="text-2xl font-bold text-slate-100">Provider-Backed Results (Normalised Schema)</h2>
 
                 {/* Identity Check Result */}
                 <CheckResultCard
@@ -347,20 +347,20 @@ export function IntegrationsDemo() {
             {/* Risk Intelligence Tab */}
             {activeTab === 'risk' && (
               <div className="space-y-6">
-                <Card className="border-2 border-purple-300 bg-purple-50">
+                <Card className="border-2 border-purple-300 bg-purple-500/10">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-3">
-                      <Shield className="w-6 h-6 text-purple-600 flex-shrink-0" />
+                      <Shield className="w-6 h-6 text-purple-400 flex-shrink-0" />
                       <div>
-                        <h3 className="font-bold text-purple-900 mb-2">
+                        <h3 className="font-bold text-purple-300 mb-2">
                           Unified Risk Profile: POST /api/workflows/decision/generate
                         </h3>
-                        <p className="text-sm text-purple-800 mb-3">
+                        <p className="text-sm text-purple-300 mb-3">
                           All normalised results feed into one central UnifiedRiskProfile object. Risk aggregation
                           combines Identity + AML + Business + Financial + Legal + Ownership scores with hard-stop and
                           escalation rules.
                         </p>
-                        <div className="text-xs font-mono text-purple-700 bg-purple-100 p-3 rounded border border-purple-200">
+                        <div className="text-xs font-mono text-purple-300 bg-purple-500/15 p-3 rounded border border-purple-500/30">
                           {JSON.stringify(mockRiskProfile, null, 2)}
                         </div>
                       </div>
@@ -377,8 +377,8 @@ export function IntegrationsDemo() {
                   </CardHeader>
                   <CardContent className="p-0">
                     <div className="flex">
-                      <div className="flex-1 p-6 bg-gray-50">
-                        <p className="text-gray-600 text-center py-12">
+                      <div className="flex-1 p-6 bg-white/5">
+                        <p className="text-slate-300 text-center py-12">
                           ← Risk Intelligence Panel displays here on the right side
                         </p>
                       </div>
@@ -395,21 +395,21 @@ export function IntegrationsDemo() {
             {/* Evidence Tab */}
             {activeTab === 'evidence' && (
               <div className="space-y-6">
-                <Card className="border-2 border-purple-300 bg-purple-50">
+                <Card className="border-2 border-purple-300 bg-purple-500/10">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-3">
-                      <Database className="w-6 h-6 text-purple-600 flex-shrink-0" />
+                      <Database className="w-6 h-6 text-purple-400 flex-shrink-0" />
                       <div>
-                        <h3 className="font-bold text-purple-900 mb-2">Audit Model: Every Check Writes Evidence</h3>
-                        <p className="text-sm text-purple-800 mb-3">
+                        <h3 className="font-bold text-purple-300 mb-2">Audit Model: Every Check Writes Evidence</h3>
+                        <p className="text-sm text-purple-300 mb-3">
                           Every provider interaction writes ProviderResponseEnvelope + AuditEvent. The UI shows provider
                           used, time checked, result status, analyst decision, and override reason for full compliance
                           traceability.
                         </p>
                         <div className="grid md:grid-cols-2 gap-3 mt-3">
-                          <div className="bg-purple-100 p-3 rounded border border-purple-200">
-                            <p className="font-semibold text-purple-900 text-xs mb-1">ProviderResponseEnvelope</p>
-                            <pre className="text-xs text-purple-700 font-mono">
+                          <div className="bg-purple-500/15 p-3 rounded border border-purple-500/30">
+                            <p className="font-semibold text-purple-300 text-xs mb-1">ProviderResponseEnvelope</p>
+                            <pre className="text-xs text-purple-300 font-mono">
 {`{
   "response_id": "resp_001",
   "provider": "equifax",
@@ -418,9 +418,9 @@ export function IntegrationsDemo() {
 }`}
                             </pre>
                           </div>
-                          <div className="bg-purple-100 p-3 rounded border border-purple-200">
-                            <p className="font-semibold text-purple-900 text-xs mb-1">AuditEvent</p>
-                            <pre className="text-xs text-purple-700 font-mono">
+                          <div className="bg-purple-500/15 p-3 rounded border border-purple-500/30">
+                            <p className="font-semibold text-purple-300 text-xs mb-1">AuditEvent</p>
+                            <pre className="text-xs text-purple-300 font-mono">
 {`{
   "audit_id": "aud_001",
   "action": "provider_response",

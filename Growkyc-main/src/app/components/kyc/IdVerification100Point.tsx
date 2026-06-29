@@ -111,16 +111,16 @@ export function IdVerification100Point({ onComplete, onBack }: IdVerification100
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-gray-900">100-Point ID Verification</h2>
+      <h2 className="text-2xl font-bold text-slate-100">100-Point ID Verification</h2>
 
       {/* Official ID Matrix Reference */}
-      <Card className="border-2 border-blue-500 bg-blue-50">
+      <Card className="border-2 border-blue-500 bg-blue-500/10">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-blue-900">
+          <CardTitle className="flex items-center gap-2 text-blue-300">
             <Info className="w-6 h-6" />
             Australian AML/CTF 100-Point ID Matrix
           </CardTitle>
-          <CardDescription className="text-blue-800 font-semibold">
+          <CardDescription className="text-blue-300 font-semibold">
             Standard requirements: 100 points total • At least one Category A • Name and DOB verified • Address verified
           </CardDescription>
         </CardHeader>
@@ -137,15 +137,15 @@ export function IdVerification100Point({ onComplete, onBack }: IdVerification100
                   <th className="text-center p-3 font-bold">Verifies Address</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200">
+              <tbody className="divide-y divide-white/10">
                 {/* Category A Documents */}
                 {idDocuments.categoryA.map((doc, idx) => (
-                  <tr key={doc.id} className={idx % 2 === 0 ? 'bg-blue-50' : 'bg-white'}>
-                    <td className="p-3 font-semibold text-gray-900">{doc.name}</td>
+                  <tr key={doc.id} className={idx % 2 === 0 ? 'bg-blue-500/10' : 'bg-white'}>
+                    <td className="p-3 font-semibold text-slate-100">{doc.name}</td>
                     <td className="p-3 text-center">
                       <Badge className="bg-blue-600">A</Badge>
                     </td>
-                    <td className="p-3 text-center font-bold text-blue-600">{doc.points}</td>
+                    <td className="p-3 text-center font-bold text-blue-400">{doc.points}</td>
                     <td className="p-3 text-center">{doc.photo ? '✓ Yes' : '—'}</td>
                     <td className="p-3 text-center">{doc.dob ? '✓ Yes' : '—'}</td>
                     <td className="p-3 text-center">{doc.address ? '✓ Yes' : '✗ No'}</td>
@@ -153,12 +153,12 @@ export function IdVerification100Point({ onComplete, onBack }: IdVerification100
                 ))}
                 {/* Category B Documents */}
                 {idDocuments.categoryB.map((doc, idx) => (
-                  <tr key={doc.id} className={idx % 2 === 0 ? 'bg-purple-50' : 'bg-white'}>
-                    <td className="p-3 font-semibold text-gray-900">{doc.name}</td>
+                  <tr key={doc.id} className={idx % 2 === 0 ? 'bg-purple-500/10' : 'bg-white'}>
+                    <td className="p-3 font-semibold text-slate-100">{doc.name}</td>
                     <td className="p-3 text-center">
                       <Badge className="bg-purple-600">B</Badge>
                     </td>
-                    <td className="p-3 text-center font-bold text-purple-600">{doc.points}</td>
+                    <td className="p-3 text-center font-bold text-purple-400">{doc.points}</td>
                     <td className="p-3 text-center">{doc.photo ? '✓ Yes' : '✗ No'}</td>
                     <td className="p-3 text-center">{doc.dob ? '✓ Yes' : '✗ No'}</td>
                     <td className="p-3 text-center">{doc.address ? '✓ Yes' : '✗ No'}</td>
@@ -171,45 +171,45 @@ export function IdVerification100Point({ onComplete, onBack }: IdVerification100
           {/* Standard Combinations */}
           <div className="mt-4 grid grid-cols-3 gap-4">
             <div className="bg-white p-4 rounded-lg border-2 border-green-300">
-              <p className="font-bold text-green-900 mb-2">✓ Example 1 – Passport Path</p>
-              <ul className="text-sm space-y-1 text-gray-700">
+              <p className="font-bold text-green-300 mb-2">✓ Example 1 – Passport Path</p>
+              <ul className="text-sm space-y-1 text-slate-300">
                 <li>• Passport (70)</li>
                 <li>• Medicare Card (25)</li>
                 <li>• Utility Bill (25)</li>
               </ul>
-              <p className="font-bold text-green-600 mt-2 text-lg">= 120 points</p>
+              <p className="font-bold text-green-400 mt-2 text-lg">= 120 points</p>
             </div>
             <div className="bg-white p-4 rounded-lg border-2 border-green-300">
-              <p className="font-bold text-green-900 mb-2">✓ Example 2 – Driver Licence Path</p>
-              <ul className="text-sm space-y-1 text-gray-700">
+              <p className="font-bold text-green-300 mb-2">✓ Example 2 – Driver Licence Path</p>
+              <ul className="text-sm space-y-1 text-slate-300">
                 <li>• Driver Licence (40)</li>
                 <li>• Birth Certificate (70)</li>
               </ul>
-              <p className="font-bold text-green-600 mt-2 text-lg">= 110 points</p>
+              <p className="font-bold text-green-400 mt-2 text-lg">= 110 points</p>
             </div>
             <div className="bg-white p-4 rounded-lg border-2 border-green-300">
-              <p className="font-bold text-green-900 mb-2">✓ Example 3 – No Passport</p>
-              <ul className="text-sm space-y-1 text-gray-700">
+              <p className="font-bold text-green-300 mb-2">✓ Example 3 – No Passport</p>
+              <ul className="text-sm space-y-1 text-slate-300">
                 <li>• Driver Licence (40)</li>
                 <li>• Birth Certificate (70)</li>
                 <li>• Medicare Card (25)</li>
               </ul>
-              <p className="font-bold text-green-600 mt-2 text-lg">= 135 points</p>
+              <p className="font-bold text-green-400 mt-2 text-lg">= 135 points</p>
             </div>
           </div>
         </CardContent>
       </Card>
 
       {/* Points Dashboard */}
-      <Card className={`border-4 ${meetsRequirements ? 'border-green-500 bg-green-50' : 'border-amber-400 bg-amber-50'}`}>
+      <Card className={`border-4 ${meetsRequirements ? 'border-green-500 bg-green-500/10' : 'border-amber-400 bg-amber-500/10'}`}>
         <CardContent className="p-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-6">
               <div className="text-center">
-                <div className={`text-6xl font-bold ${meetsRequirements ? 'text-green-600' : 'text-amber-600'}`}>
+                <div className={`text-6xl font-bold ${meetsRequirements ? 'text-green-400' : 'text-amber-400'}`}>
                   {points.total}
                 </div>
-                <p className="text-sm font-semibold text-gray-700 mt-1">/ 100 POINTS</p>
+                <p className="text-sm font-semibold text-slate-300 mt-1">/ 100 POINTS</p>
               </div>
               
               <div className="h-16 w-px bg-gray-300"></div>
@@ -217,27 +217,27 @@ export function IdVerification100Point({ onComplete, onBack }: IdVerification100
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   {points.hasCategoryA ? (
-                    <CheckCircle className="w-5 h-5 text-green-600" />
+                    <CheckCircle className="w-5 h-5 text-green-400" />
                   ) : (
-                    <XCircle className="w-5 h-5 text-red-600" />
+                    <XCircle className="w-5 h-5 text-red-400" />
                   )}
                   <span className="text-sm font-semibold">Category A (Photo ID) Required</span>
                 </div>
                 
                 <div className="flex items-center gap-2">
                   {points.dobVerified ? (
-                    <CheckCircle className="w-5 h-5 text-green-600" />
+                    <CheckCircle className="w-5 h-5 text-green-400" />
                   ) : (
-                    <XCircle className="w-5 h-5 text-red-600" />
+                    <XCircle className="w-5 h-5 text-red-400" />
                   )}
                   <span className="text-sm font-semibold">Date of Birth Verified</span>
                 </div>
                 
                 <div className="flex items-center gap-2">
                   {points.addressVerified ? (
-                    <CheckCircle className="w-5 h-5 text-green-600" />
+                    <CheckCircle className="w-5 h-5 text-green-400" />
                   ) : (
-                    <AlertCircle className="w-5 h-5 text-amber-600" />
+                    <AlertCircle className="w-5 h-5 text-amber-400" />
                   )}
                   <span className="text-sm font-semibold">Address Verified {!points.addressVerified && '(If Required)'}</span>
                 </div>
@@ -246,12 +246,12 @@ export function IdVerification100Point({ onComplete, onBack }: IdVerification100
 
             {meetsRequirements ? (
               <div className="text-center">
-                <CheckCircle className="w-16 h-16 text-green-600 mb-2" />
+                <CheckCircle className="w-16 h-16 text-green-400 mb-2" />
                 <Badge className="bg-green-600 text-lg px-4 py-2">✓ COMPLIANT</Badge>
               </div>
             ) : (
               <div className="text-center">
-                <AlertCircle className="w-16 h-16 text-amber-600 mb-2" />
+                <AlertCircle className="w-16 h-16 text-amber-400 mb-2" />
                 <Badge className="bg-amber-600 text-lg px-4 py-2">
                   {100 - points.total} MORE NEEDED
                 </Badge>
@@ -262,11 +262,11 @@ export function IdVerification100Point({ onComplete, onBack }: IdVerification100
       </Card>
 
       {requiresAddress && points.hasCategoryA && (
-        <Card className="bg-amber-50 border-amber-300 border-2">
+        <Card className="bg-amber-500/10 border-amber-300 border-2">
           <CardContent className="p-4">
             <div className="flex items-start gap-3">
-              <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
-              <div className="text-sm text-amber-800">
+              <AlertCircle className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+              <div className="text-sm text-amber-300">
                 <p className="font-semibold mb-1">Address Verification Required</p>
                 <p>Primary ID does not verify address. Please add a Category B document (Utility Bill, Bank Statement, or Rates Notice).</p>
               </div>
@@ -278,14 +278,14 @@ export function IdVerification100Point({ onComplete, onBack }: IdVerification100
       {/* Selected Documents with Upload */}
       {selectedDocuments.length > 0 && (
         <div>
-          <h3 className="font-bold text-gray-900 mb-3">Selected Documents ({selectedDocuments.length})</h3>
+          <h3 className="font-bold text-slate-100 mb-3">Selected Documents ({selectedDocuments.length})</h3>
           <div className="space-y-3">
             {selectedDocuments.map((doc, idx) => {
               const hasFile = uploadedFiles[doc.id];
               const isDraggingThis = isDragging === doc.id;
               
               return (
-                <Card key={idx} className="border-2 border-gray-300">
+                <Card key={idx} className="border-2 border-white/10">
                   <CardContent className="p-4">
                     <div className="flex items-start gap-4">
                       {/* Document Info */}
@@ -296,8 +296,8 @@ export function IdVerification100Point({ onComplete, onBack }: IdVerification100
                           </Badge>
                           <Badge className="bg-green-600 text-lg px-3 py-1">+{doc.points}</Badge>
                         </div>
-                        <p className="font-bold text-gray-900">{doc.name}</p>
-                        <p className="text-sm text-gray-600 mt-1">
+                        <p className="font-bold text-slate-100">{doc.name}</p>
+                        <p className="text-sm text-slate-300 mt-1">
                           {doc.number && `#${doc.number}`} {doc.issuer && `• ${doc.issuer}`} {doc.expiry && `• Expires: ${doc.expiry}`}
                         </p>
                         <div className="flex gap-1 mt-2">
@@ -312,7 +312,7 @@ export function IdVerification100Point({ onComplete, onBack }: IdVerification100
                         {!hasFile ? (
                           <div
                             className={`border-2 border-dashed rounded-lg p-4 text-center transition-colors cursor-pointer ${
-                              isDraggingThis ? 'border-blue-500 bg-blue-50' : 'border-gray-300 hover:border-gray-400'
+                              isDraggingThis ? 'border-blue-500 bg-blue-500/10' : 'border-white/10 hover:border-gray-400'
                             }`}
                             onDragOver={(e) => handleDragOver(e, doc.id)}
                             onDragLeave={handleDragLeave}
@@ -320,7 +320,7 @@ export function IdVerification100Point({ onComplete, onBack }: IdVerification100
                             onClick={() => document.getElementById(`file-${doc.id}`)?.click()}
                           >
                             <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
-                            <p className="text-xs text-gray-600 mb-2">Drop file or click</p>
+                            <p className="text-xs text-slate-300 mb-2">Drop file or click</p>
                             <input
                               type="file"
                               id={`file-${doc.id}`}
@@ -334,10 +334,10 @@ export function IdVerification100Point({ onComplete, onBack }: IdVerification100
                             <Badge variant="outline" className="text-xs">Required</Badge>
                           </div>
                         ) : (
-                          <div className="border-2 border-green-500 bg-green-50 rounded-lg p-4 text-center">
-                            <FileCheck className="w-8 h-8 text-green-600 mx-auto mb-2" />
-                            <p className="text-xs font-semibold text-gray-900 truncate">{hasFile.name}</p>
-                            <p className="text-xs text-gray-600">{(hasFile.size / 1024 / 1024).toFixed(2)} MB</p>
+                          <div className="border-2 border-green-500 bg-green-500/10 rounded-lg p-4 text-center">
+                            <FileCheck className="w-8 h-8 text-green-400 mx-auto mb-2" />
+                            <p className="text-xs font-semibold text-slate-100 truncate">{hasFile.name}</p>
+                            <p className="text-xs text-slate-300">{(hasFile.size / 1024 / 1024).toFixed(2)} MB</p>
                             <Badge className="bg-green-600 text-xs mt-2">✓ Uploaded</Badge>
                           </div>
                         )}
@@ -347,7 +347,7 @@ export function IdVerification100Point({ onComplete, onBack }: IdVerification100
                       <Button
                         size="sm"
                         variant="outline"
-                        className="text-red-600 hover:bg-red-50"
+                        className="text-red-400 hover:bg-red-500/10"
                         onClick={() => removeDocument(doc.id)}
                       >
                         <X className="w-4 h-4" />
@@ -365,9 +365,9 @@ export function IdVerification100Point({ onComplete, onBack }: IdVerification100
       <div className="grid grid-cols-2 gap-6">
         {/* Category A */}
         <Card className="border-2 border-blue-300">
-          <CardHeader className="bg-blue-50">
+          <CardHeader className="bg-blue-500/10">
             <CardTitle className="flex items-center gap-2">
-              <Shield className="w-5 h-5 text-blue-600" />
+              <Shield className="w-5 h-5 text-blue-400" />
               Category A - Primary Photo ID
             </CardTitle>
             <CardDescription>At least ONE required (Photo ID with DOB)</CardDescription>
@@ -387,23 +387,23 @@ export function IdVerification100Point({ onComplete, onBack }: IdVerification100
                   }}
                   className={`w-full text-left p-3 rounded-lg border-2 transition-all ${
                     alreadyAdded
-                      ? 'bg-gray-100 border-gray-300 cursor-not-allowed'
-                      : 'bg-white border-blue-200 hover:border-blue-500 hover:bg-blue-50'
+                      ? 'bg-white/5 border-white/10 cursor-not-allowed'
+                      : 'bg-white border-blue-500/30 hover:border-blue-500 hover:bg-blue-500/10'
                   }`}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex-1">
-                      <p className="font-semibold text-gray-900 text-sm">{doc.name}</p>
+                      <p className="font-semibold text-slate-100 text-sm">{doc.name}</p>
                       <div className="flex gap-1 mt-1">
-                        {doc.photo && <Badge variant="outline" className="text-xs bg-blue-100">Photo</Badge>}
-                        {doc.dob && <Badge variant="outline" className="text-xs bg-green-100">DOB</Badge>}
-                        {doc.address && <Badge variant="outline" className="text-xs bg-purple-100">Address</Badge>}
+                        {doc.photo && <Badge variant="outline" className="text-xs bg-blue-500/15">Photo</Badge>}
+                        {doc.dob && <Badge variant="outline" className="text-xs bg-green-500/15">DOB</Badge>}
+                        {doc.address && <Badge variant="outline" className="text-xs bg-purple-500/15">Address</Badge>}
                       </div>
                     </div>
                     <Badge className="bg-blue-600 text-lg px-3 py-1">{doc.points}</Badge>
                   </div>
                   {alreadyAdded && (
-                    <p className="text-xs text-gray-500 mt-2">✓ Already added</p>
+                    <p className="text-xs text-slate-400 mt-2">✓ Already added</p>
                   )}
                 </button>
               );
@@ -413,9 +413,9 @@ export function IdVerification100Point({ onComplete, onBack }: IdVerification100
 
         {/* Category B */}
         <Card className="border-2 border-purple-300">
-          <CardHeader className="bg-purple-50">
+          <CardHeader className="bg-purple-500/10">
             <CardTitle className="flex items-center gap-2">
-              <FileText className="w-5 h-5 text-purple-600" />
+              <FileText className="w-5 h-5 text-purple-400" />
               Category B - Secondary ID
             </CardTitle>
             <CardDescription>Additional points & address verification</CardDescription>
@@ -435,22 +435,22 @@ export function IdVerification100Point({ onComplete, onBack }: IdVerification100
                   }}
                   className={`w-full text-left p-3 rounded-lg border-2 transition-all ${
                     alreadyAdded
-                      ? 'bg-gray-100 border-gray-300 cursor-not-allowed'
-                      : 'bg-white border-purple-200 hover:border-purple-500 hover:bg-purple-50'
+                      ? 'bg-white/5 border-white/10 cursor-not-allowed'
+                      : 'bg-white border-purple-500/30 hover:border-purple-500 hover:bg-purple-500/10'
                   }`}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex-1">
-                      <p className="font-semibold text-gray-900 text-sm">{doc.name}</p>
+                      <p className="font-semibold text-slate-100 text-sm">{doc.name}</p>
                       <div className="flex gap-1 mt-1">
-                        {doc.dob && <Badge variant="outline" className="text-xs bg-green-100">DOB</Badge>}
-                        {doc.address && <Badge variant="outline" className="text-xs bg-purple-100">Address</Badge>}
+                        {doc.dob && <Badge variant="outline" className="text-xs bg-green-500/15">DOB</Badge>}
+                        {doc.address && <Badge variant="outline" className="text-xs bg-purple-500/15">Address</Badge>}
                       </div>
                     </div>
                     <Badge className="bg-purple-600 text-lg px-3 py-1">{doc.points}</Badge>
                   </div>
                   {alreadyAdded && (
-                    <p className="text-xs text-gray-500 mt-2">✓ Already added</p>
+                    <p className="text-xs text-slate-400 mt-2">✓ Already added</p>
                   )}
                 </button>
               );
@@ -464,7 +464,7 @@ export function IdVerification100Point({ onComplete, onBack }: IdVerification100
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-lg w-full max-w-md">
             <div className="p-6 border-b">
-              <h3 className="text-xl font-bold text-gray-900">Add {selectedDoc.name}</h3>
+              <h3 className="text-xl font-bold text-slate-100">Add {selectedDoc.name}</h3>
               <Badge className={selectedCategory === 'A' ? 'bg-blue-600 mt-2' : 'bg-purple-600 mt-2'}>
                 Category {selectedCategory} • {selectedDoc.points} Points
               </Badge>
@@ -472,49 +472,49 @@ export function IdVerification100Point({ onComplete, onBack }: IdVerification100
             
             <div className="p-6 space-y-4">
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-slate-300 mb-2">
                   Document Number <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
                   value={docDetails.number}
                   onChange={(e) => setDocDetails({ ...docDetails, number: e.target.value })}
-                  className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
+                  className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
                   placeholder="Enter document number"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-slate-300 mb-2">
                   Issuing Authority / State
                 </label>
                 <input
                   type="text"
                   value={docDetails.issuer}
                   onChange={(e) => setDocDetails({ ...docDetails, issuer: e.target.value })}
-                  className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
+                  className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
                   placeholder="e.g., NSW, Australia, etc."
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-slate-300 mb-2">
                   Expiry Date (if applicable)
                 </label>
                 <input
                   type="date"
                   value={docDetails.expiry}
                   onChange={(e) => setDocDetails({ ...docDetails, expiry: e.target.value })}
-                  className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
+                  className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
                 />
               </div>
 
-              <Card className="bg-gray-50">
+              <Card className="bg-white/5">
                 <CardContent className="p-4">
-                  <p className="text-sm text-gray-700">
+                  <p className="text-sm text-slate-300">
                     <strong>Verification Details:</strong>
                   </p>
-                  <ul className="text-sm text-gray-600 mt-2 space-y-1">
+                  <ul className="text-sm text-slate-300 mt-2 space-y-1">
                     {selectedDoc.photo && <li>✓ Photo verification required</li>}
                     {selectedDoc.dob && <li>✓ Verifies date of birth</li>}
                     {selectedDoc.address && <li>✓ Verifies residential address</li>}

@@ -39,34 +39,34 @@ export const AddConditionModal = ({ isOpen, onClose }: AddConditionModalProps) =
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-        <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-          <h2 className="text-xl font-bold text-gray-900">Add Condition</h2>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+        <div className="sticky top-0 bg-white border-b border-white/10 px-6 py-4 flex items-center justify-between">
+          <h2 className="text-xl font-bold text-slate-100">Add Condition</h2>
+          <button onClick={onClose} className="text-gray-400 hover:text-slate-300">
             <X className="w-6 h-6" />
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">Description *</label>
+            <label className="block text-sm font-semibold text-slate-300 mb-2">Description *</label>
             <input
               type="text"
               required
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="e.g., Finance approval required"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Matter ID *</label>
+              <label className="block text-sm font-semibold text-slate-300 mb-2">Matter ID *</label>
               <select
                 required
                 value={formData.matter}
                 onChange={(e) => setFormData({ ...formData, matter: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">Select matter...</option>
                 <option value="MAT-2024-1247">MAT-2024-1247 - 123 Collins St</option>
@@ -78,12 +78,12 @@ export const AddConditionModal = ({ isOpen, onClose }: AddConditionModalProps) =
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Category *</label>
+              <label className="block text-sm font-semibold text-slate-300 mb-2">Category *</label>
               <select
                 required
                 value={formData.category}
                 onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="finance">Finance</option>
                 <option value="inspection">Inspection</option>
@@ -97,22 +97,22 @@ export const AddConditionModal = ({ isOpen, onClose }: AddConditionModalProps) =
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Due Date *</label>
+              <label className="block text-sm font-semibold text-slate-300 mb-2">Due Date *</label>
               <input
                 type="date"
                 required
                 value={formData.dueDate}
                 onChange={(e) => setFormData({ ...formData, dueDate: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Priority</label>
+              <label className="block text-sm font-semibold text-slate-300 mb-2">Priority</label>
               <select
                 value={formData.priority}
                 onChange={(e) => setFormData({ ...formData, priority: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
@@ -123,12 +123,12 @@ export const AddConditionModal = ({ isOpen, onClose }: AddConditionModalProps) =
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">Assigned To *</label>
+            <label className="block text-sm font-semibold text-slate-300 mb-2">Assigned To *</label>
             <select
               required
               value={formData.owner}
               onChange={(e) => setFormData({ ...formData, owner: e.target.value })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="">Select owner...</option>
               <option value="Sarah Chen">Sarah Chen</option>
@@ -173,12 +173,12 @@ export const ViewConditionModal = ({ isOpen, onClose, condition }: ViewCondition
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white rounded-lg shadow-xl w-full max-w-3xl max-h-[90vh] overflow-y-auto">
-        <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
+        <div className="sticky top-0 bg-white border-b border-white/10 px-6 py-4 flex items-center justify-between">
           <div>
-            <h2 className="text-xl font-bold text-gray-900">{condition.id}</h2>
-            <p className="text-sm text-gray-600 mt-1">{condition.desc}</p>
+            <h2 className="text-xl font-bold text-slate-100">{condition.id}</h2>
+            <p className="text-sm text-slate-300 mt-1">{condition.desc}</p>
           </div>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+          <button onClick={onClose} className="text-gray-400 hover:text-slate-300">
             <X className="w-6 h-6" />
           </button>
         </div>
@@ -187,79 +187,79 @@ export const ViewConditionModal = ({ isOpen, onClose, condition }: ViewCondition
           {/* Status */}
           <div className="grid grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Status</label>
+              <label className="block text-sm font-semibold text-slate-300 mb-2">Status</label>
               <span className={`inline-block px-3 py-1 text-sm font-semibold rounded ${
-                condition.status === 'cleared' ? 'bg-green-100 text-green-700' :
-                condition.status === 'evidence_uploaded' ? 'bg-blue-100 text-blue-700' :
-                condition.status === 'rejected' ? 'bg-red-100 text-red-700' :
-                'bg-amber-100 text-amber-700'
+                condition.status === 'cleared' ? 'bg-green-500/15 text-green-300' :
+                condition.status === 'evidence_uploaded' ? 'bg-blue-500/15 text-blue-300' :
+                condition.status === 'rejected' ? 'bg-red-500/15 text-red-300' :
+                'bg-amber-500/15 text-amber-300'
               }`}>
                 {condition.status.replace('_', ' ').toUpperCase()}
               </span>
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Matter</label>
-              <p className="text-gray-900 font-mono">{condition.matter}</p>
+              <label className="block text-sm font-semibold text-slate-300 mb-2">Matter</label>
+              <p className="text-slate-100 font-mono">{condition.matter}</p>
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Assigned To</label>
-              <p className="text-gray-900">{condition.owner}</p>
+              <label className="block text-sm font-semibold text-slate-300 mb-2">Assigned To</label>
+              <p className="text-slate-100">{condition.owner}</p>
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Due Date</label>
-              <p className="text-gray-900">{condition.due}</p>
+              <label className="block text-sm font-semibold text-slate-300 mb-2">Due Date</label>
+              <p className="text-slate-100">{condition.due}</p>
             </div>
           </div>
 
           {/* Evidence Section */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">Evidence Documents</label>
-            <div className="border border-gray-200 rounded-lg p-4">
+            <label className="block text-sm font-semibold text-slate-300 mb-2">Evidence Documents</label>
+            <div className="border border-white/10 rounded-lg p-4">
               {condition.status === 'evidence_uploaded' || condition.status === 'cleared' ? (
                 <div className="space-y-2">
-                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded">
-                    <span className="text-sm text-gray-900">Finance_Approval_Letter.pdf</span>
+                  <div className="flex items-center justify-between p-3 bg-white/5 rounded">
+                    <span className="text-sm text-slate-100">Finance_Approval_Letter.pdf</span>
                     <Button size="sm" variant="ghost">View</Button>
                   </div>
-                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded">
-                    <span className="text-sm text-gray-900">Loan_Contract_Signed.pdf</span>
+                  <div className="flex items-center justify-between p-3 bg-white/5 rounded">
+                    <span className="text-sm text-slate-100">Loan_Contract_Signed.pdf</span>
                     <Button size="sm" variant="ghost">View</Button>
                   </div>
                 </div>
               ) : (
-                <p className="text-sm text-gray-500 text-center py-4">No evidence uploaded yet</p>
+                <p className="text-sm text-slate-400 text-center py-4">No evidence uploaded yet</p>
               )}
             </div>
           </div>
 
           {/* Activity Timeline */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">Activity</label>
-            <div className="border border-gray-200 rounded-lg p-4 space-y-3">
+            <label className="block text-sm font-semibold text-slate-300 mb-2">Activity</label>
+            <div className="border border-white/10 rounded-lg p-4 space-y-3">
               <div className="flex gap-3">
                 <div className="w-2 h-2 mt-2 rounded-full bg-green-500"></div>
                 <div className="flex-1">
-                  <p className="text-sm font-medium text-gray-900">Condition cleared</p>
-                  <p className="text-xs text-gray-600">Sarah Chen • 2 hours ago</p>
+                  <p className="text-sm font-medium text-slate-100">Condition cleared</p>
+                  <p className="text-xs text-slate-300">Sarah Chen • 2 hours ago</p>
                 </div>
               </div>
               <div className="flex gap-3">
                 <div className="w-2 h-2 mt-2 rounded-full bg-blue-500"></div>
                 <div className="flex-1">
-                  <p className="text-sm font-medium text-gray-900">Evidence uploaded</p>
-                  <p className="text-xs text-gray-600">John Smith • 1 day ago</p>
+                  <p className="text-sm font-medium text-slate-100">Evidence uploaded</p>
+                  <p className="text-xs text-slate-300">John Smith • 1 day ago</p>
                 </div>
               </div>
               <div className="flex gap-3">
                 <div className="w-2 h-2 mt-2 rounded-full bg-gray-400"></div>
                 <div className="flex-1">
-                  <p className="text-sm font-medium text-gray-900">Condition created</p>
-                  <p className="text-xs text-gray-600">System • 3 days ago</p>
+                  <p className="text-sm font-medium text-slate-100">Condition created</p>
+                  <p className="text-xs text-slate-300">System • 3 days ago</p>
                 </div>
               </div>
             </div>
@@ -316,21 +316,21 @@ export const CreatePEXAWorkspaceModal = ({ isOpen, onClose }: CreatePEXAWorkspac
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-        <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-          <h2 className="text-xl font-bold text-gray-900">Create PEXA Workspace</h2>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+        <div className="sticky top-0 bg-white border-b border-white/10 px-6 py-4 flex items-center justify-between">
+          <h2 className="text-xl font-bold text-slate-100">Create PEXA Workspace</h2>
+          <button onClick={onClose} className="text-gray-400 hover:text-slate-300">
             <X className="w-6 h-6" />
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">Matter *</label>
+            <label className="block text-sm font-semibold text-slate-300 mb-2">Matter *</label>
             <select
               required
               value={formData.matter}
               onChange={(e) => setFormData({ ...formData, matter: e.target.value })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="">Select matter...</option>
               <option value="MAT-2024-1247">MAT-2024-1247 - 123 Collins St, Melbourne VIC</option>
@@ -343,12 +343,12 @@ export const CreatePEXAWorkspaceModal = ({ isOpen, onClose }: CreatePEXAWorkspac
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Jurisdiction *</label>
+              <label className="block text-sm font-semibold text-slate-300 mb-2">Jurisdiction *</label>
               <select
                 required
                 value={formData.jurisdiction}
                 onChange={(e) => setFormData({ ...formData, jurisdiction: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="NSW">New South Wales</option>
                 <option value="VIC">Victoria</option>
@@ -362,12 +362,12 @@ export const CreatePEXAWorkspaceModal = ({ isOpen, onClose }: CreatePEXAWorkspac
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Workspace Type *</label>
+              <label className="block text-sm font-semibold text-slate-300 mb-2">Workspace Type *</label>
               <select
                 required
                 value={formData.workspaceType}
                 onChange={(e) => setFormData({ ...formData, workspaceType: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="financial">Financial Settlement</option>
                 <option value="paper">Paper Settlement</option>
@@ -378,31 +378,31 @@ export const CreatePEXAWorkspaceModal = ({ isOpen, onClose }: CreatePEXAWorkspac
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Settlement Date *</label>
+              <label className="block text-sm font-semibold text-slate-300 mb-2">Settlement Date *</label>
               <input
                 type="date"
                 required
                 value={formData.settlementDate}
                 onChange={(e) => setFormData({ ...formData, settlementDate: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Settlement Time *</label>
+              <label className="block text-sm font-semibold text-slate-300 mb-2">Settlement Time *</label>
               <input
                 type="time"
                 required
                 value={formData.settlementTime}
                 onChange={(e) => setFormData({ ...formData, settlementTime: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
           </div>
 
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-            <p className="text-sm text-blue-900 font-medium mb-1">PEXA Integration</p>
-            <p className="text-xs text-blue-700">
+          <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
+            <p className="text-sm text-blue-300 font-medium mb-1">PEXA Integration</p>
+            <p className="text-xs text-blue-300">
               This will create a new workspace in PEXA via API integration. All parties will be automatically invited based on matter participants.
             </p>
           </div>
@@ -458,45 +458,45 @@ export const AddTaskModal = ({ isOpen, onClose }: AddTaskModalProps) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-        <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-          <h2 className="text-xl font-bold text-gray-900">Add Task</h2>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+        <div className="sticky top-0 bg-white border-b border-white/10 px-6 py-4 flex items-center justify-between">
+          <h2 className="text-xl font-bold text-slate-100">Add Task</h2>
+          <button onClick={onClose} className="text-gray-400 hover:text-slate-300">
             <X className="w-6 h-6" />
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">Task Title *</label>
+            <label className="block text-sm font-semibold text-slate-300 mb-2">Task Title *</label>
             <input
               type="text"
               required
               value={formData.title}
               onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="e.g., Review and sign contract documents"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">Description</label>
+            <label className="block text-sm font-semibold text-slate-300 mb-2">Description</label>
             <textarea
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
               rows={3}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Add task details..."
             />
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Matter *</label>
+              <label className="block text-sm font-semibold text-slate-300 mb-2">Matter *</label>
               <select
                 required
                 value={formData.matter}
                 onChange={(e) => setFormData({ ...formData, matter: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">Select matter...</option>
                 <option value="MAT-2024-1247">MAT-2024-1247 - 123 Collins St</option>
@@ -508,11 +508,11 @@ export const AddTaskModal = ({ isOpen, onClose }: AddTaskModalProps) => {
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Category</label>
+              <label className="block text-sm font-semibold text-slate-300 mb-2">Category</label>
               <select
                 value={formData.category}
                 onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="general">General</option>
                 <option value="document_review">Document Review</option>
@@ -526,12 +526,12 @@ export const AddTaskModal = ({ isOpen, onClose }: AddTaskModalProps) => {
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Assigned To *</label>
+              <label className="block text-sm font-semibold text-slate-300 mb-2">Assigned To *</label>
               <select
                 required
                 value={formData.assignee}
                 onChange={(e) => setFormData({ ...formData, assignee: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">Select assignee...</option>
                 <option value="Sarah Chen">Sarah Chen</option>
@@ -543,19 +543,19 @@ export const AddTaskModal = ({ isOpen, onClose }: AddTaskModalProps) => {
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Due Date *</label>
+              <label className="block text-sm font-semibold text-slate-300 mb-2">Due Date *</label>
               <input
                 type="date"
                 required
                 value={formData.dueDate}
                 onChange={(e) => setFormData({ ...formData, dueDate: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">Priority</label>
+            <label className="block text-sm font-semibold text-slate-300 mb-2">Priority</label>
             <div className="flex gap-2">
               {['low', 'medium', 'high', 'critical'].map((priority) => (
                 <button
@@ -565,13 +565,13 @@ export const AddTaskModal = ({ isOpen, onClose }: AddTaskModalProps) => {
                   className={`flex-1 px-4 py-2 rounded-lg border-2 font-medium transition-colors ${
                     formData.priority === priority
                       ? priority === 'critical'
-                        ? 'border-red-500 bg-red-50 text-red-700'
+                        ? 'border-red-500 bg-red-500/10 text-red-300'
                         : priority === 'high'
-                        ? 'border-amber-500 bg-amber-50 text-amber-700'
+                        ? 'border-amber-500 bg-amber-500/10 text-amber-300'
                         : priority === 'medium'
-                        ? 'border-blue-500 bg-blue-50 text-blue-700'
-                        : 'border-gray-500 bg-gray-50 text-gray-700'
-                      : 'border-gray-300 text-gray-600 hover:border-gray-400'
+                        ? 'border-blue-500 bg-blue-500/10 text-blue-300'
+                        : 'border-gray-500 bg-white/5 text-slate-300'
+                      : 'border-white/10 text-slate-300 hover:border-gray-400'
                   }`}
                 >
                   {priority.charAt(0).toUpperCase() + priority.slice(1)}
@@ -613,12 +613,12 @@ export const ViewTaskModal = ({ isOpen, onClose, task }: ViewTaskModalProps) => 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white rounded-lg shadow-xl w-full max-w-3xl max-h-[90vh] overflow-y-auto">
-        <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
+        <div className="sticky top-0 bg-white border-b border-white/10 px-6 py-4 flex items-center justify-between">
           <div>
-            <h2 className="text-xl font-bold text-gray-900">{task.title}</h2>
-            <p className="text-sm text-gray-600 mt-1">Matter: {task.matter}</p>
+            <h2 className="text-xl font-bold text-slate-100">{task.title}</h2>
+            <p className="text-sm text-slate-300 mt-1">Matter: {task.matter}</p>
           </div>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+          <button onClick={onClose} className="text-gray-400 hover:text-slate-300">
             <X className="w-6 h-6" />
           </button>
         </div>
@@ -627,37 +627,37 @@ export const ViewTaskModal = ({ isOpen, onClose, task }: ViewTaskModalProps) => 
           {/* Task Details */}
           <div className="grid grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Status</label>
+              <label className="block text-sm font-semibold text-slate-300 mb-2">Status</label>
               <span className={`inline-block px-3 py-1 text-sm font-semibold rounded ${
-                task.status === 'Complete' ? 'bg-green-100 text-green-700' :
-                task.status === 'In Progress' ? 'bg-blue-100 text-blue-700' :
-                task.status === 'Blocked' ? 'bg-red-100 text-red-700' :
-                'bg-gray-100 text-gray-700'
+                task.status === 'Complete' ? 'bg-green-500/15 text-green-300' :
+                task.status === 'In Progress' ? 'bg-blue-500/15 text-blue-300' :
+                task.status === 'Blocked' ? 'bg-red-500/15 text-red-300' :
+                'bg-white/5 text-slate-300'
               }`}>
                 {task.status}
               </span>
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Assigned To</label>
+              <label className="block text-sm font-semibold text-slate-300 mb-2">Assigned To</label>
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-sm font-semibold text-blue-700">
+                <div className="w-8 h-8 bg-blue-500/15 rounded-full flex items-center justify-center text-sm font-semibold text-blue-300">
                   {task.assignee}
                 </div>
-                <span className="text-gray-900">{task.assignee === 'SC' ? 'Sarah Chen' : 'John Smith'}</span>
+                <span className="text-slate-100">{task.assignee === 'SC' ? 'Sarah Chen' : 'John Smith'}</span>
               </div>
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Due Date</label>
-              <p className="text-gray-900">{task.due}</p>
+              <label className="block text-sm font-semibold text-slate-300 mb-2">Due Date</label>
+              <p className="text-slate-100">{task.due}</p>
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Priority</label>
-              <span className="inline-block px-3 py-1 text-sm font-semibold rounded bg-amber-100 text-amber-700">
+              <label className="block text-sm font-semibold text-slate-300 mb-2">Priority</label>
+              <span className="inline-block px-3 py-1 text-sm font-semibold rounded bg-amber-500/15 text-amber-300">
                 Medium
               </span>
             </div>
@@ -665,45 +665,45 @@ export const ViewTaskModal = ({ isOpen, onClose, task }: ViewTaskModalProps) => 
 
           {/* Description */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">Description</label>
-            <p className="text-gray-900">Complete verification of identity documents for all borrowers and ensure compliance with AML/CTF requirements.</p>
+            <label className="block text-sm font-semibold text-slate-300 mb-2">Description</label>
+            <p className="text-slate-100">Complete verification of identity documents for all borrowers and ensure compliance with AML/CTF requirements.</p>
           </div>
 
           {/* Checklist */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">Checklist</label>
-            <div className="border border-gray-200 rounded-lg p-4 space-y-2">
+            <label className="block text-sm font-semibold text-slate-300 mb-2">Checklist</label>
+            <div className="border border-white/10 rounded-lg p-4 space-y-2">
               <div className="flex items-center gap-2">
                 <input type="checkbox" defaultChecked className="w-4 h-4" />
-                <span className="text-sm text-gray-900 line-through">Collect driver's license</span>
+                <span className="text-sm text-slate-100 line-through">Collect driver's license</span>
               </div>
               <div className="flex items-center gap-2">
                 <input type="checkbox" defaultChecked className="w-4 h-4" />
-                <span className="text-sm text-gray-900 line-through">Verify address proof</span>
+                <span className="text-sm text-slate-100 line-through">Verify address proof</span>
               </div>
               <div className="flex items-center gap-2">
                 <input type="checkbox" className="w-4 h-4" />
-                <span className="text-sm text-gray-900">Complete AML check</span>
+                <span className="text-sm text-slate-100">Complete AML check</span>
               </div>
             </div>
           </div>
 
           {/* Activity Timeline */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">Activity</label>
-            <div className="border border-gray-200 rounded-lg p-4 space-y-3">
+            <label className="block text-sm font-semibold text-slate-300 mb-2">Activity</label>
+            <div className="border border-white/10 rounded-lg p-4 space-y-3">
               <div className="flex gap-3">
                 <div className="w-2 h-2 mt-2 rounded-full bg-blue-500"></div>
                 <div className="flex-1">
-                  <p className="text-sm font-medium text-gray-900">Task updated to In Progress</p>
-                  <p className="text-xs text-gray-600">Sarah Chen • 2 hours ago</p>
+                  <p className="text-sm font-medium text-slate-100">Task updated to In Progress</p>
+                  <p className="text-xs text-slate-300">Sarah Chen • 2 hours ago</p>
                 </div>
               </div>
               <div className="flex gap-3">
                 <div className="w-2 h-2 mt-2 rounded-full bg-gray-400"></div>
                 <div className="flex-1">
-                  <p className="text-sm font-medium text-gray-900">Task created</p>
-                  <p className="text-xs text-gray-600">System • 1 day ago</p>
+                  <p className="text-sm font-medium text-slate-100">Task created</p>
+                  <p className="text-xs text-slate-300">System • 1 day ago</p>
                 </div>
               </div>
             </div>
@@ -744,12 +744,12 @@ export const ViewPEXAWorkspaceModal = ({ isOpen, onClose, workspace }: ViewPEXAW
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto">
-        <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
+        <div className="sticky top-0 bg-white border-b border-white/10 px-6 py-4 flex items-center justify-between">
           <div>
-            <h2 className="text-xl font-bold text-blue-700">{workspace.id}</h2>
-            <p className="text-sm text-gray-600 mt-1">{workspace.property}</p>
+            <h2 className="text-xl font-bold text-blue-300">{workspace.id}</h2>
+            <p className="text-sm text-slate-300 mt-1">{workspace.property}</p>
           </div>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+          <button onClick={onClose} className="text-gray-400 hover:text-slate-300">
             <X className="w-6 h-6" />
           </button>
         </div>
@@ -758,43 +758,43 @@ export const ViewPEXAWorkspaceModal = ({ isOpen, onClose, workspace }: ViewPEXAW
           {/* Workspace Details */}
           <div className="grid grid-cols-3 gap-6">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Matter</label>
-              <p className="text-gray-900 font-mono">{workspace.matter}</p>
+              <label className="block text-sm font-semibold text-slate-300 mb-2">Matter</label>
+              <p className="text-slate-100 font-mono">{workspace.matter}</p>
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Status</label>
+              <label className="block text-sm font-semibold text-slate-300 mb-2">Status</label>
               <span className={`inline-block px-3 py-1 text-sm font-semibold rounded ${
-                workspace.status === 'READY TO SETTLE' ? 'bg-green-100 text-green-700' :
-                workspace.status === 'ACTIVE' ? 'bg-blue-100 text-blue-700' :
-                'bg-amber-100 text-amber-700'
+                workspace.status === 'READY TO SETTLE' ? 'bg-green-500/15 text-green-300' :
+                workspace.status === 'ACTIVE' ? 'bg-blue-500/15 text-blue-300' :
+                'bg-amber-500/15 text-amber-300'
               }`}>
                 {workspace.status}
               </span>
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Last Sync</label>
-              <p className="text-gray-900">15 min ago</p>
+              <label className="block text-sm font-semibold text-slate-300 mb-2">Last Sync</label>
+              <p className="text-slate-100">15 min ago</p>
             </div>
           </div>
 
           {/* Participants */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">PEXA Participants</label>
-            <div className="border border-gray-200 rounded-lg p-4 space-y-2">
+            <label className="block text-sm font-semibold text-slate-300 mb-2">PEXA Participants</label>
+            <div className="border border-white/10 rounded-lg p-4 space-y-2">
               {[
                 { name: 'Sarah Chen', role: 'Subscriber - Purchaser', status: 'Accepted' },
                 { name: 'Michael Johnson', role: 'Subscriber - Vendor', status: 'Accepted' },
                 { name: 'Commonwealth Bank', role: 'Financial Institution', status: 'Pending' }
               ].map((participant, idx) => (
-                <div key={idx} className="flex items-center justify-between p-3 bg-gray-50 rounded">
+                <div key={idx} className="flex items-center justify-between p-3 bg-white/5 rounded">
                   <div>
-                    <p className="font-medium text-gray-900">{participant.name}</p>
-                    <p className="text-xs text-gray-600">{participant.role}</p>
+                    <p className="font-medium text-slate-100">{participant.name}</p>
+                    <p className="text-xs text-slate-300">{participant.role}</p>
                   </div>
                   <span className={`px-2 py-1 text-xs font-semibold rounded ${
-                    participant.status === 'Accepted' ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-700'
+                    participant.status === 'Accepted' ? 'bg-green-500/15 text-green-300' : 'bg-amber-500/15 text-amber-300'
                   }`}>
                     {participant.status}
                   </span>
@@ -805,24 +805,24 @@ export const ViewPEXAWorkspaceModal = ({ isOpen, onClose, workspace }: ViewPEXAW
 
           {/* Financial Data */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">Financial Settlement Data</label>
-            <div className="border border-gray-200 rounded-lg p-4">
+            <label className="block text-sm font-semibold text-slate-300 mb-2">Financial Settlement Data</label>
+            <div className="border border-white/10 rounded-lg p-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <p className="text-sm text-gray-600">Purchase Price</p>
-                  <p className="text-lg font-bold text-gray-900">$1,250,000.00</p>
+                  <p className="text-sm text-slate-300">Purchase Price</p>
+                  <p className="text-lg font-bold text-slate-100">$1,250,000.00</p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Deposit Paid</p>
-                  <p className="text-lg font-bold text-green-700">$125,000.00</p>
+                  <p className="text-sm text-slate-300">Deposit Paid</p>
+                  <p className="text-lg font-bold text-green-300">$125,000.00</p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Balance Due</p>
-                  <p className="text-lg font-bold text-blue-700">$1,125,000.00</p>
+                  <p className="text-sm text-slate-300">Balance Due</p>
+                  <p className="text-lg font-bold text-blue-300">$1,125,000.00</p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Settlement Date</p>
-                  <p className="text-lg font-bold text-gray-900">15 Mar 2024</p>
+                  <p className="text-sm text-slate-300">Settlement Date</p>
+                  <p className="text-lg font-bold text-slate-100">15 Mar 2024</p>
                 </div>
               </div>
             </div>

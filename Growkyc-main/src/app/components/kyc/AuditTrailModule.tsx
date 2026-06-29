@@ -151,14 +151,14 @@ export function AuditTrailModule() {
 
   const getActionIcon = (action: ActionType) => {
     switch (action) {
-      case 'create': return <FileText className="w-5 h-5 text-green-600" />;
-      case 'update': return <Edit className="w-5 h-5 text-blue-600" />;
-      case 'delete': return <Trash2 className="w-5 h-5 text-red-600" />;
-      case 'view': return <Eye className="w-5 h-5 text-gray-600" />;
-      case 'approve': return <CheckCircle className="w-5 h-5 text-green-600" />;
-      case 'reject': return <AlertTriangle className="w-5 h-5 text-red-600" />;
-      case 'submit': return <Shield className="w-5 h-5 text-purple-600" />;
-      case 'export': return <Download className="w-5 h-5 text-blue-600" />;
+      case 'create': return <FileText className="w-5 h-5 text-green-400" />;
+      case 'update': return <Edit className="w-5 h-5 text-blue-400" />;
+      case 'delete': return <Trash2 className="w-5 h-5 text-red-400" />;
+      case 'view': return <Eye className="w-5 h-5 text-slate-300" />;
+      case 'approve': return <CheckCircle className="w-5 h-5 text-green-400" />;
+      case 'reject': return <AlertTriangle className="w-5 h-5 text-red-400" />;
+      case 'submit': return <Shield className="w-5 h-5 text-purple-400" />;
+      case 'export': return <Download className="w-5 h-5 text-blue-400" />;
     }
   };
 
@@ -197,11 +197,11 @@ export function AuditTrailModule() {
             </div>
           </div>
           <div className="flex gap-3">
-            <Button className="bg-white text-gray-800 hover:bg-gray-100">
+            <Button className="bg-white text-slate-100 hover:bg-white/5">
               <Download className="w-5 h-5 mr-2" />
               Export Logs
             </Button>
-            <Button className="bg-white text-gray-800 hover:bg-gray-100">
+            <Button className="bg-white text-slate-100 hover:bg-white/5">
               <Filter className="w-5 h-5 mr-2" />
               Advanced Filter
             </Button>
@@ -261,7 +261,7 @@ export function AuditTrailModule() {
       </div>
 
       {/* Navigation Tabs */}
-      <div className="border-b border-gray-200">
+      <div className="border-b border-white/10">
         <div className="flex gap-2">
           {[
             { id: 'recent', label: 'Recent Activity', icon: Clock },
@@ -277,8 +277,8 @@ export function AuditTrailModule() {
                 onClick={() => setActiveTab(tab.id as any)}
                 className={`px-6 py-3 font-semibold flex items-center gap-2 transition-colors ${
                   activeTab === tab.id
-                    ? 'border-b-2 border-gray-800 text-gray-800'
-                    : 'text-gray-600 hover:text-gray-900'
+                    ? 'border-b-2 border-gray-800 text-slate-100'
+                    : 'text-slate-300 hover:text-slate-100'
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -290,18 +290,18 @@ export function AuditTrailModule() {
       </div>
 
       {/* Search & Filters */}
-      <div className="bg-white rounded-lg border border-gray-200 p-4">
+      <div className="bg-white rounded-lg border border-white/10 p-4">
         <div className="flex items-center gap-4">
           <div className="flex-1 relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
             <input
               type="text"
               placeholder="Search audit logs by user, action, entity..."
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500"
+              className="w-full pl-10 pr-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500"
             />
           </div>
           <div className="flex gap-2">
-            <select className="px-3 py-2 border border-gray-300 rounded-lg text-sm">
+            <select className="px-3 py-2 border border-white/10 rounded-lg text-sm">
               <option>All Actions</option>
               <option>Create</option>
               <option>Update</option>
@@ -309,7 +309,7 @@ export function AuditTrailModule() {
               <option>Approve</option>
               <option>Submit</option>
             </select>
-            <select className="px-3 py-2 border border-gray-300 rounded-lg text-sm">
+            <select className="px-3 py-2 border border-white/10 rounded-lg text-sm">
               <option>All Users</option>
               <option>Emma Wilson</option>
               <option>Michael Chen</option>
@@ -327,7 +327,7 @@ export function AuditTrailModule() {
       {/* Audit Log Entries */}
       <div className="space-y-3">
         {auditLogs.map((log) => (
-          <div key={log.id} className="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-md transition-shadow">
+          <div key={log.id} className="bg-white rounded-lg border border-white/10 p-6 hover:shadow-md transition-shadow">
             <div className="flex items-start justify-between">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
@@ -335,42 +335,42 @@ export function AuditTrailModule() {
                   <span className={`px-3 py-1 bg-${getActionColor(log.action)}-100 text-${getActionColor(log.action)}-700 text-sm font-bold rounded-full`}>
                     {log.action.toUpperCase()}
                   </span>
-                  <span className="px-3 py-1 bg-gray-100 text-gray-700 text-sm font-semibold rounded-full">
+                  <span className="px-3 py-1 bg-white/5 text-slate-300 text-sm font-semibold rounded-full">
                     {log.entityType.toUpperCase().replace('-', ' ')}
                   </span>
-                  <span className="text-sm text-gray-600">{log.timestamp.toLocaleString()}</span>
+                  <span className="text-sm text-slate-300">{log.timestamp.toLocaleString()}</span>
                 </div>
 
                 <div className="flex items-center gap-4 mb-3">
                   <div className="flex items-center gap-2">
-                    <User className="w-4 h-4 text-gray-600" />
-                    <span className="font-semibold text-gray-900">{log.user}</span>
-                    <span className="text-sm text-gray-600">({log.userRole})</span>
+                    <User className="w-4 h-4 text-slate-300" />
+                    <span className="font-semibold text-slate-100">{log.user}</span>
+                    <span className="text-sm text-slate-300">({log.userRole})</span>
                   </div>
                   <span className="text-gray-400">•</span>
-                  <span className="text-sm text-gray-600">ID: {log.id}</span>
+                  <span className="text-sm text-slate-300">ID: {log.id}</span>
                   <span className="text-gray-400">•</span>
-                  <span className="text-sm text-gray-600">IP: {log.ipAddress}</span>
+                  <span className="text-sm text-slate-300">IP: {log.ipAddress}</span>
                 </div>
 
-                <div className="p-4 bg-gray-50 rounded-lg mb-3">
-                  <p className="font-semibold text-gray-900 mb-1">{log.entityName}</p>
-                  <p className="text-sm text-gray-700">{log.details}</p>
-                  <p className="text-xs text-gray-600 mt-1">Entity ID: {log.entityId}</p>
+                <div className="p-4 bg-white/5 rounded-lg mb-3">
+                  <p className="font-semibold text-slate-100 mb-1">{log.entityName}</p>
+                  <p className="text-sm text-slate-300">{log.details}</p>
+                  <p className="text-xs text-slate-300 mt-1">Entity ID: {log.entityId}</p>
                 </div>
 
                 {log.changes && log.changes.length > 0 && (
-                  <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                    <p className="font-semibold text-blue-900 mb-2">Changes Made:</p>
+                  <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+                    <p className="font-semibold text-blue-300 mb-2">Changes Made:</p>
                     <div className="space-y-2">
                       {log.changes.map((change, index) => (
                         <div key={index} className="flex items-center gap-4 text-sm">
-                          <span className="font-semibold text-gray-900 min-w-[120px]">{change.field}:</span>
-                          <span className="text-red-600">
-                            {change.oldValue || <em className="text-gray-500">(empty)</em>}
+                          <span className="font-semibold text-slate-100 min-w-[120px]">{change.field}:</span>
+                          <span className="text-red-400">
+                            {change.oldValue || <em className="text-slate-400">(empty)</em>}
                           </span>
-                          <span className="text-gray-600">→</span>
-                          <span className="text-green-600 font-semibold">{change.newValue}</span>
+                          <span className="text-slate-300">→</span>
+                          <span className="text-green-400 font-semibold">{change.newValue}</span>
                         </div>
                       ))}
                     </div>
@@ -390,15 +390,15 @@ export function AuditTrailModule() {
       </div>
 
       {/* Retention Notice */}
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+      <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-6">
         <div className="flex items-start gap-3">
-          <Shield className="w-6 h-6 text-blue-600 mt-0.5" />
+          <Shield className="w-6 h-6 text-blue-400 mt-0.5" />
           <div>
-            <h3 className="font-bold text-blue-900 mb-2">Audit Trail Retention Policy</h3>
-            <p className="text-sm text-blue-800 mb-2">
+            <h3 className="font-bold text-blue-300 mb-2">Audit Trail Retention Policy</h3>
+            <p className="text-sm text-blue-300 mb-2">
               In compliance with AUSTRAC requirements, all audit logs are retained for:
             </p>
-            <ul className="text-sm text-blue-800 space-y-1">
+            <ul className="text-sm text-blue-300 space-y-1">
               <li>• <strong>7 years</strong> for compliance-related events (client onboarding, reviews, reports)</li>
               <li>• <strong>3 years</strong> for operational activities (document uploads, profile views)</li>
               <li>• <strong>Immutable storage</strong> - logs cannot be modified or deleted</li>

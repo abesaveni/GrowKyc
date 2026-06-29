@@ -454,7 +454,7 @@ export function ReportDraftBuilder({ caseId, onBack }: ReportDraftBuilderProps) 
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
+    <div className="min-h-screen bg-white/5 p-8">
       <div className="max-w-[1900px] mx-auto space-y-6">
         {/* Header */}
         <div className="bg-gradient-to-r from-red-900 via-red-800 to-orange-900 rounded-lg p-6 text-white shadow-xl">
@@ -470,7 +470,7 @@ export function ReportDraftBuilder({ caseId, onBack }: ReportDraftBuilderProps) 
             </div>
             <div className="flex gap-3">
               {onBack && (
-                <Button onClick={onBack} className="bg-white text-red-900 hover:bg-red-50">
+                <Button onClick={onBack} className="bg-white text-red-300 hover:bg-red-500/10">
                   Return to Control Centre
                 </Button>
               )}
@@ -496,7 +496,7 @@ export function ReportDraftBuilder({ caseId, onBack }: ReportDraftBuilderProps) 
         <Card className="border-2 border-purple-300 shadow-lg">
           <CardContent className="p-6">
             <div className="flex items-center gap-4">
-              <label className="font-bold text-gray-900">Draft Type:</label>
+              <label className="font-bold text-slate-100">Draft Type:</label>
               <div className="flex gap-3">
                 {draftTypes.map((type) => (
                   <Button
@@ -505,7 +505,7 @@ export function ReportDraftBuilder({ caseId, onBack }: ReportDraftBuilderProps) 
                     className={
                       draftType === type.value
                         ? `bg-${type.color}-600 text-white hover:bg-${type.color}-700`
-                        : 'bg-white text-gray-700 hover:bg-gray-100 border-2'
+                        : 'bg-white text-slate-300 hover:bg-white/5 border-2'
                     }
                   >
                     {type.label}
@@ -521,36 +521,36 @@ export function ReportDraftBuilder({ caseId, onBack }: ReportDraftBuilderProps) 
           <Card className="border-2 border-blue-300 shadow-lg">
             <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
               <CardTitle className="flex items-center gap-2">
-                <Shield className="w-6 h-6 text-blue-600" />
+                <Shield className="w-6 h-6 text-blue-400" />
                 Structured Source Data
               </CardTitle>
-              <p className="text-sm text-gray-600 mt-1">Click any section to insert into draft</p>
+              <p className="text-sm text-slate-300 mt-1">Click any section to insert into draft</p>
             </CardHeader>
             <CardContent className="p-6 space-y-4 max-h-[900px] overflow-y-auto">
               {/* Subject Details */}
-              <Card className="border border-gray-300 hover:border-blue-500 transition-colors cursor-pointer">
-                <CardHeader className="bg-gray-50 border-b p-3">
+              <Card className="border border-white/10 hover:border-blue-500 transition-colors cursor-pointer">
+                <CardHeader className="bg-white/5 border-b p-3">
                   <CardTitle className="text-sm flex items-center gap-2">
-                    <Building className="w-4 h-4 text-blue-600" />
+                    <Building className="w-4 h-4 text-blue-400" />
                     Subject Details
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-3">
                   <div className="grid grid-cols-2 gap-2 text-xs">
                     <div>
-                      <p className="text-gray-600">Legal Name</p>
+                      <p className="text-slate-300">Legal Name</p>
                       <p className="font-semibold">{sourceData.subjectDetails.legalName}</p>
                     </div>
                     <div>
-                      <p className="text-gray-600">ABN</p>
+                      <p className="text-slate-300">ABN</p>
                       <p className="font-semibold">{sourceData.subjectDetails.abn}</p>
                     </div>
                     <div>
-                      <p className="text-gray-600">ACN</p>
+                      <p className="text-slate-300">ACN</p>
                       <p className="font-semibold">{sourceData.subjectDetails.acn}</p>
                     </div>
                     <div>
-                      <p className="text-gray-600">Registration Date</p>
+                      <p className="text-slate-300">Registration Date</p>
                       <p className="font-semibold">{sourceData.subjectDetails.registrationDate}</p>
                     </div>
                   </div>
@@ -573,22 +573,22 @@ export function ReportDraftBuilder({ caseId, onBack }: ReportDraftBuilderProps) 
               </Card>
 
               {/* Related Parties */}
-              <Card className="border border-gray-300 hover:border-blue-500 transition-colors cursor-pointer">
-                <CardHeader className="bg-gray-50 border-b p-3">
+              <Card className="border border-white/10 hover:border-blue-500 transition-colors cursor-pointer">
+                <CardHeader className="bg-white/5 border-b p-3">
                   <CardTitle className="text-sm flex items-center gap-2">
-                    <Users className="w-4 h-4 text-blue-600" />
+                    <Users className="w-4 h-4 text-blue-400" />
                     Related Parties
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-3 space-y-2">
                   {sourceData.relatedParties.map((party, idx) => (
-                    <div key={idx} className="p-2 bg-gray-50 rounded border border-gray-200">
+                    <div key={idx} className="p-2 bg-white/5 rounded border border-white/10">
                       <div className="flex items-start justify-between">
                         <div>
                           <p className="font-semibold text-xs">{party.name}</p>
-                          <p className="text-xs text-gray-600">{party.role}</p>
+                          <p className="text-xs text-slate-300">{party.role}</p>
                         </div>
-                        <Badge className="bg-red-100 text-red-700 text-xs">{party.riskFlag}</Badge>
+                        <Badge className="bg-red-500/15 text-red-300 text-xs">{party.riskFlag}</Badge>
                       </div>
                     </div>
                   ))}
@@ -612,22 +612,22 @@ export function ReportDraftBuilder({ caseId, onBack }: ReportDraftBuilderProps) 
               </Card>
 
               {/* Trigger Summary */}
-              <Card className="border border-gray-300 hover:border-blue-500 transition-colors cursor-pointer">
-                <CardHeader className="bg-gray-50 border-b p-3">
+              <Card className="border border-white/10 hover:border-blue-500 transition-colors cursor-pointer">
+                <CardHeader className="bg-white/5 border-b p-3">
                   <CardTitle className="text-sm flex items-center gap-2">
-                    <Shield className="w-4 h-4 text-blue-600" />
+                    <Shield className="w-4 h-4 text-blue-400" />
                     Trigger Summary
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-3 space-y-2">
                   {sourceData.triggers.map((trigger, idx) => (
-                    <div key={idx} className="p-2 bg-red-50 rounded border border-red-200">
+                    <div key={idx} className="p-2 bg-red-500/10 rounded border border-red-500/30">
                       <div className="flex items-start justify-between mb-1">
                         <Badge variant="outline" className="text-xs">{trigger.source}</Badge>
                         <span className="text-xs font-bold">{trigger.confidence}</span>
                       </div>
-                      <p className="text-xs text-gray-900">{trigger.finding}</p>
-                      <p className="text-xs text-gray-600 mt-1">{trigger.date}</p>
+                      <p className="text-xs text-slate-100">{trigger.finding}</p>
+                      <p className="text-xs text-slate-300 mt-1">{trigger.date}</p>
                     </div>
                   ))}
                   <Button 
@@ -650,15 +650,15 @@ export function ReportDraftBuilder({ caseId, onBack }: ReportDraftBuilderProps) 
               </Card>
 
               {/* Suspicious Facts */}
-              <Card className="border border-gray-300 hover:border-blue-500 transition-colors cursor-pointer">
-                <CardHeader className="bg-gray-50 border-b p-3">
+              <Card className="border border-white/10 hover:border-blue-500 transition-colors cursor-pointer">
+                <CardHeader className="bg-white/5 border-b p-3">
                   <CardTitle className="text-sm flex items-center gap-2">
-                    <FileText className="w-4 h-4 text-blue-600" />
+                    <FileText className="w-4 h-4 text-blue-400" />
                     Suspicious Facts Summary
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-3">
-                  <ul className="space-y-1 text-xs text-gray-800">
+                  <ul className="space-y-1 text-xs text-slate-100">
                     {sourceData.suspiciousFacts.map((fact, idx) => (
                       <li key={idx}>• {fact}</li>
                     ))}
@@ -683,10 +683,10 @@ export function ReportDraftBuilder({ caseId, onBack }: ReportDraftBuilderProps) 
               </Card>
 
               {/* Geographic Links */}
-              <Card className="border border-gray-300 hover:border-blue-500 transition-colors cursor-pointer">
-                <CardHeader className="bg-gray-50 border-b p-3">
+              <Card className="border border-white/10 hover:border-blue-500 transition-colors cursor-pointer">
+                <CardHeader className="bg-white/5 border-b p-3">
                   <CardTitle className="text-sm flex items-center gap-2">
-                    <Globe className="w-4 h-4 text-blue-600" />
+                    <Globe className="w-4 h-4 text-blue-400" />
                     Geographic Links
                   </CardTitle>
                 </CardHeader>
@@ -723,7 +723,7 @@ export function ReportDraftBuilder({ caseId, onBack }: ReportDraftBuilderProps) 
             <CardHeader className="bg-gradient-to-r from-green-50 to-emerald-50 border-b">
               <div className="flex items-center justify-between">
                 <CardTitle className="flex items-center gap-2">
-                  <FileText className="w-6 h-6 text-green-600" />
+                  <FileText className="w-6 h-6 text-green-400" />
                   {draftType === 'smr' ? 'Suspicious Matter Report Draft' :
                    draftType === 'escalation' ? 'Internal Escalation Memo' :
                    draftType === 'partner' ? 'Partner Summary' :
@@ -755,31 +755,31 @@ export function ReportDraftBuilder({ caseId, onBack }: ReportDraftBuilderProps) 
             </CardHeader>
             <CardContent className="p-6 space-y-6 max-h-[900px] overflow-y-auto">
               {/* Report Type */}
-              <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-                <label className="block text-sm font-bold text-blue-900 mb-2">Report Type</label>
+              <div className="p-4 bg-blue-500/10 rounded-lg border border-blue-500/30">
+                <label className="block text-sm font-bold text-blue-300 mb-2">Report Type</label>
                 <Badge className="bg-blue-600 text-white">
                   Suspicious Matter Report (SMR)
                 </Badge>
               </div>
 
               {/* Reporting Entity */}
-              <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                <label className="block text-sm font-bold text-gray-900 mb-2">Reporting Entity Details</label>
+              <div className="p-4 bg-white/5 rounded-lg border border-white/10">
+                <label className="block text-sm font-bold text-slate-100 mb-2">Reporting Entity Details</label>
                 <div className="grid grid-cols-2 gap-3 text-sm">
                   <div>
-                    <p className="text-gray-600">Entity Name</p>
+                    <p className="text-slate-300">Entity Name</p>
                     <p className="font-semibold">Grow Compliance Pty Ltd</p>
                   </div>
                   <div>
-                    <p className="text-gray-600">ABN</p>
+                    <p className="text-slate-300">ABN</p>
                     <p className="font-semibold">99 888 777 666</p>
                   </div>
                   <div>
-                    <p className="text-gray-600">Reporting Officer</p>
+                    <p className="text-slate-300">Reporting Officer</p>
                     <p className="font-semibold">Michael Chen</p>
                   </div>
                   <div>
-                    <p className="text-gray-600">Date</p>
+                    <p className="text-slate-300">Date</p>
                     <p className="font-semibold">{new Date().toISOString().split('T')[0]}</p>
                   </div>
                 </div>
@@ -787,12 +787,12 @@ export function ReportDraftBuilder({ caseId, onBack }: ReportDraftBuilderProps) 
 
               {/* Summary of Suspicion */}
               <div>
-                <label className="block text-sm font-bold text-gray-900 mb-2">Summary of Suspicion</label>
+                <label className="block text-sm font-bold text-slate-100 mb-2">Summary of Suspicion</label>
                 <textarea
                   value={reportContent.summary}
                   onChange={(e) => setReportContent({ ...reportContent, summary: e.target.value })}
                   rows={8}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="w-full px-4 py-3 border-2 border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
                   placeholder="Provide a clear summary of why this matter is suspicious..."
                 />
               </div>
@@ -800,7 +800,7 @@ export function ReportDraftBuilder({ caseId, onBack }: ReportDraftBuilderProps) 
               {/* Chronology */}
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <label className="block text-sm font-bold text-gray-900">Chronology of Relevant Events</label>
+                  <label className="block text-sm font-bold text-slate-100">Chronology of Relevant Events</label>
                    <Button 
                     variant="outline" 
                     size="sm"
@@ -821,50 +821,50 @@ export function ReportDraftBuilder({ caseId, onBack }: ReportDraftBuilderProps) 
                   value={reportContent.chronology}
                   onChange={(e) => setReportContent({ ...reportContent, chronology: e.target.value })}
                   rows={8}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="w-full px-4 py-3 border-2 border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
                   placeholder="List events in chronological order..."
                 />
               </div>
 
               {/* Explanation */}
               <div>
-                <label className="block text-sm font-bold text-gray-900 mb-2">Explanation of Why Conduct is Suspicious</label>
+                <label className="block text-sm font-bold text-slate-100 mb-2">Explanation of Why Conduct is Suspicious</label>
                 <textarea
                   value={reportContent.explanation}
                   onChange={(e) => setReportContent({ ...reportContent, explanation: e.target.value })}
                   rows={10}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="w-full px-4 py-3 border-2 border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
                   placeholder="Explain in detail why this conduct raises suspicion..."
                 />
               </div>
 
               {/* Supporting Indicators */}
               <div>
-                <label className="block text-sm font-bold text-gray-900 mb-2">Supporting Risk Indicators</label>
+                <label className="block text-sm font-bold text-slate-100 mb-2">Supporting Risk Indicators</label>
                 <textarea
                   value={reportContent.indicators}
                   onChange={(e) => setReportContent({ ...reportContent, indicators: e.target.value })}
                   rows={6}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="w-full px-4 py-3 border-2 border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
                   placeholder="List key risk indicators..."
                 />
               </div>
 
               {/* Attachments */}
-              <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
-                <label className="block text-sm font-bold text-purple-900 mb-2">Evidence Attachments</label>
+              <div className="p-4 bg-purple-500/10 rounded-lg border border-purple-500/30">
+                <label className="block text-sm font-bold text-purple-300 mb-2">Evidence Attachments</label>
                 <div className="space-y-2 text-sm">
                   <div className="flex items-center justify-between p-2 bg-white rounded">
                     <span>Sanctions match report (ComplyAdvantage)</span>
-                    <Badge className="bg-green-100 text-green-700 text-xs">Attached</Badge>
+                    <Badge className="bg-green-500/15 text-green-300 text-xs">Attached</Badge>
                   </div>
                   <div className="flex items-center justify-between p-2 bg-white rounded">
                     <span>Adverse media articles (3 files)</span>
-                    <Badge className="bg-green-100 text-green-700 text-xs">Attached</Badge>
+                    <Badge className="bg-green-500/15 text-green-300 text-xs">Attached</Badge>
                   </div>
                   <div className="flex items-center justify-between p-2 bg-white rounded">
                     <span>SOF analysis report</span>
-                    <Badge className="bg-green-100 text-green-700 text-xs">Attached</Badge>
+                    <Badge className="bg-green-500/15 text-green-300 text-xs">Attached</Badge>
                   </div>
                 </div>
               </div>

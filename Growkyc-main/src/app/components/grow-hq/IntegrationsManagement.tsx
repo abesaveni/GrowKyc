@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import {
@@ -548,20 +548,20 @@ const integrations: Integration[] = [
 ];
 
 const typeColors = {
-  payment: 'bg-green-100 text-green-700 border-green-300',
-  accounting: 'bg-blue-100 text-blue-700 border-blue-300',
-  banking: 'bg-purple-100 text-purple-700 border-purple-300',
-  communication: 'bg-orange-100 text-orange-700 border-orange-300',
-  document: 'bg-pink-100 text-pink-700 border-pink-300',
-  storage: 'bg-indigo-100 text-indigo-700 border-indigo-300',
-  identity: 'bg-red-100 text-red-700 border-red-300',
-  credit: 'bg-yellow-100 text-yellow-700 border-yellow-300',
-  property: 'bg-teal-100 text-teal-700 border-teal-300',
-  registry: 'bg-cyan-100 text-cyan-700 border-cyan-300',
-  auth: 'bg-gray-100 text-gray-700 border-gray-300',
-  notification: 'bg-amber-100 text-amber-700 border-amber-300',
-  analytics: 'bg-violet-100 text-violet-700 border-violet-300',
-  support: 'bg-rose-100 text-rose-700 border-rose-300'
+  payment: 'bg-green-500/15 text-green-300 border-green-300',
+  accounting: 'bg-blue-500/15 text-blue-300 border-blue-300',
+  banking: 'bg-purple-500/15 text-purple-300 border-purple-300',
+  communication: 'bg-orange-500/15 text-orange-300 border-orange-300',
+  document: 'bg-pink-500/15 text-pink-300 border-pink-300',
+  storage: 'bg-indigo-500/15 text-indigo-300 border-indigo-300',
+  identity: 'bg-red-500/15 text-red-300 border-red-300',
+  credit: 'bg-yellow-500/15 text-yellow-300 border-yellow-300',
+  property: 'bg-teal-500/15 text-teal-300 border-teal-300',
+  registry: 'bg-cyan-500/15 text-cyan-300 border-cyan-300',
+  auth: 'bg-white/5 text-slate-300 border-white/10',
+  notification: 'bg-amber-500/15 text-amber-300 border-amber-300',
+  analytics: 'bg-violet-500/15 text-violet-300 border-violet-300',
+  support: 'bg-rose-500/15 text-rose-300 border-rose-300'
 };
 
 export function IntegrationsManagement({ onBack }: IntegrationsManagementProps) {
@@ -596,7 +596,7 @@ export function IntegrationsManagement({ onBack }: IntegrationsManagementProps) 
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
+    <div className="min-h-screen bg-white/5 p-8">
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Header */}
         <div>
@@ -606,8 +606,8 @@ export function IntegrationsManagement({ onBack }: IntegrationsManagementProps) 
           </Button>
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Platform Integrations</h1>
-              <p className="text-gray-600 mt-2">
+              <h1 className="text-3xl font-bold text-slate-100">Platform Integrations</h1>
+              <p className="text-slate-300 mt-2">
                 Manage all third-party integrations and API connections
               </p>
             </div>
@@ -624,10 +624,10 @@ export function IntegrationsManagement({ onBack }: IntegrationsManagementProps) 
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-600">Total Integrations</p>
-                  <p className="text-3xl font-bold text-gray-900 mt-1">{integrations.length}</p>
+                  <p className="text-sm text-slate-300">Total Integrations</p>
+                  <p className="text-3xl font-bold text-slate-100 mt-1">{integrations.length}</p>
                 </div>
-                <LinkIcon className="w-8 h-8 text-blue-600" />
+                <LinkIcon className="w-8 h-8 text-blue-400" />
               </div>
             </CardContent>
           </Card>
@@ -636,10 +636,10 @@ export function IntegrationsManagement({ onBack }: IntegrationsManagementProps) 
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-600">Connected</p>
-                  <p className="text-3xl font-bold text-green-600 mt-1">{connectedCount}</p>
+                  <p className="text-sm text-slate-300">Connected</p>
+                  <p className="text-3xl font-bold text-green-400 mt-1">{connectedCount}</p>
                 </div>
-                <CheckCircle className="w-8 h-8 text-green-600" />
+                <CheckCircle className="w-8 h-8 text-green-400" />
               </div>
             </CardContent>
           </Card>
@@ -648,10 +648,10 @@ export function IntegrationsManagement({ onBack }: IntegrationsManagementProps) 
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-600">Required</p>
-                  <p className="text-3xl font-bold text-orange-600 mt-1">{requiredConnected}/{requiredCount}</p>
+                  <p className="text-sm text-slate-300">Required</p>
+                  <p className="text-3xl font-bold text-orange-400 mt-1">{requiredConnected}/{requiredCount}</p>
                 </div>
-                <AlertCircle className="w-8 h-8 text-orange-600" />
+                <AlertCircle className="w-8 h-8 text-orange-400" />
               </div>
             </CardContent>
           </Card>
@@ -660,12 +660,12 @@ export function IntegrationsManagement({ onBack }: IntegrationsManagementProps) 
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-600">Platform Health</p>
-                  <p className="text-3xl font-bold text-green-600 mt-1">
+                  <p className="text-sm text-slate-300">Platform Health</p>
+                  <p className="text-3xl font-bold text-green-400 mt-1">
                     {Math.round((connectedCount / integrations.length) * 100)}%
                   </p>
                 </div>
-                <Zap className="w-8 h-8 text-green-600" />
+                <Zap className="w-8 h-8 text-green-400" />
               </div>
             </CardContent>
           </Card>
@@ -673,13 +673,13 @@ export function IntegrationsManagement({ onBack }: IntegrationsManagementProps) 
 
         {/* Required Setup Alert */}
         {requiredConnected < requiredCount && (
-          <Card className="border-2 border-orange-300 bg-orange-50">
+          <Card className="border-2 border-orange-300 bg-orange-500/10">
             <CardContent className="p-6">
               <div className="flex items-start gap-4">
-                <AlertCircle className="w-6 h-6 text-orange-600 flex-shrink-0 mt-1" />
+                <AlertCircle className="w-6 h-6 text-orange-400 flex-shrink-0 mt-1" />
                 <div>
-                  <h3 className="font-bold text-orange-900 mb-2">Action Required: Critical Integrations Missing</h3>
-                  <p className="text-sm text-orange-800 mb-3">
+                  <h3 className="font-bold text-orange-300 mb-2">Action Required: Critical Integrations Missing</h3>
+                  <p className="text-sm text-orange-300 mb-3">
                     {requiredCount - requiredConnected} required integration{requiredCount - requiredConnected !== 1 ? 's' : ''} must be configured before the platform can operate properly.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -690,7 +690,7 @@ export function IntegrationsManagement({ onBack }: IntegrationsManagementProps) 
                           key={integration.id}
                           size="sm"
                           variant="outline"
-                          className="border-orange-600 text-orange-900 hover:bg-orange-100"
+                          className="border-orange-600 text-orange-300 hover:bg-orange-500/15"
                           onClick={() => setSelectedIntegration(integration)}
                         >
                           Configure {integration.name}
@@ -715,7 +715,7 @@ export function IntegrationsManagement({ onBack }: IntegrationsManagementProps) 
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                     selectedType === type.id
                       ? 'bg-blue-600 text-white shadow-md'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      : 'bg-white/5 text-slate-300 hover:bg-white/10'
                   }`}
                 >
                   {type.label}
@@ -733,10 +733,10 @@ export function IntegrationsManagement({ onBack }: IntegrationsManagementProps) 
           {filteredIntegrations.map((integration) => {
             const Icon = integration.icon;
             const statusConfig = {
-              connected: { icon: CheckCircle, color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-300', label: 'Connected' },
-              disconnected: { icon: XCircle, color: 'text-gray-600', bg: 'bg-gray-50', border: 'border-gray-300', label: 'Not Connected' },
-              error: { icon: AlertCircle, color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-300', label: 'Error' },
-              pending: { icon: RefreshCw, color: 'text-yellow-600', bg: 'bg-yellow-50', border: 'border-yellow-300', label: 'Pending' }
+              connected: { icon: CheckCircle, color: 'text-green-400', bg: 'bg-green-500/10', border: 'border-green-300', label: 'Connected' },
+              disconnected: { icon: XCircle, color: 'text-slate-300', bg: 'bg-white/5', border: 'border-white/10', label: 'Not Connected' },
+              error: { icon: AlertCircle, color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-300', label: 'Error' },
+              pending: { icon: RefreshCw, color: 'text-yellow-400', bg: 'bg-yellow-500/10', border: 'border-yellow-300', label: 'Pending' }
             };
             const status = statusConfig[integration.status];
             const StatusIcon = status.icon;
@@ -749,7 +749,7 @@ export function IntegrationsManagement({ onBack }: IntegrationsManagementProps) 
                     ? 'border-orange-300'
                     : integration.status === 'connected'
                     ? 'border-green-300'
-                    : 'border-gray-200'
+                    : 'border-white/10'
                 }`}
                 onClick={() => setSelectedIntegration(integration)}
               >
@@ -764,34 +764,34 @@ export function IntegrationsManagement({ onBack }: IntegrationsManagementProps) 
                         <span className={`text-xs font-semibold ${status.color}`}>{status.label}</span>
                       </div>
                       {integration.required && (
-                        <span className="px-2 py-1 bg-orange-100 text-orange-700 text-xs font-semibold rounded border border-orange-300">
+                        <span className="px-2 py-1 bg-orange-500/15 text-orange-300 text-xs font-semibold rounded border border-orange-300">
                           Required
                         </span>
                       )}
                     </div>
                   </div>
 
-                  <h3 className="font-bold text-gray-900 mb-2">{integration.name}</h3>
-                  <p className="text-sm text-gray-600 mb-4 line-clamp-2">{integration.description}</p>
+                  <h3 className="font-bold text-slate-100 mb-2">{integration.name}</h3>
+                  <p className="text-sm text-slate-300 mb-4 line-clamp-2">{integration.description}</p>
 
                   <div className="space-y-3">
                     <div>
-                      <p className="text-xs font-semibold text-gray-700 mb-1">Type</p>
+                      <p className="text-xs font-semibold text-slate-300 mb-1">Type</p>
                       <span className={`inline-block px-2 py-1 rounded text-xs font-medium border ${typeColors[integration.type]}`}>
                         {integration.type.charAt(0).toUpperCase() + integration.type.slice(1)}
                       </span>
                     </div>
 
                     <div>
-                      <p className="text-xs font-semibold text-gray-700 mb-1">Used By</p>
+                      <p className="text-xs font-semibold text-slate-300 mb-1">Used By</p>
                       <div className="flex flex-wrap gap-1">
                         {integration.modules.slice(0, 3).map((module, idx) => (
-                          <span key={idx} className="px-2 py-0.5 bg-blue-50 text-blue-700 text-xs rounded border border-blue-200">
+                          <span key={idx} className="px-2 py-0.5 bg-blue-500/10 text-blue-300 text-xs rounded border border-blue-500/30">
                             {module === 'All modules' ? 'All' : module.replace('grow_', '').replace('_', ' ')}
                           </span>
                         ))}
                         {integration.modules.length > 3 && (
-                          <span className="px-2 py-0.5 bg-gray-100 text-gray-600 text-xs rounded">
+                          <span className="px-2 py-0.5 bg-white/5 text-slate-300 text-xs rounded">
                             +{integration.modules.length - 3}
                           </span>
                         )}
@@ -800,8 +800,8 @@ export function IntegrationsManagement({ onBack }: IntegrationsManagementProps) 
 
                     {integration.cost && (
                       <div>
-                        <p className="text-xs font-semibold text-gray-700 mb-1">Cost</p>
-                        <p className="text-xs text-gray-600">{integration.cost}</p>
+                        <p className="text-xs font-semibold text-slate-300 mb-1">Cost</p>
+                        <p className="text-xs text-slate-300">{integration.cost}</p>
                       </div>
                     )}
                   </div>
@@ -835,29 +835,29 @@ export function IntegrationsManagement({ onBack }: IntegrationsManagementProps) 
         {selectedIntegration && (
           <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
             <Card className="max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-              <CardHeader className="border-b bg-gray-50">
+              <CardHeader className="border-b bg-white/5">
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-4">
                     <div className={`p-3 rounded-lg ${
-                      selectedIntegration.status === 'connected' ? 'bg-green-100' : 'bg-gray-100'
+                      selectedIntegration.status === 'connected' ? 'bg-green-500/15' : 'bg-white/5'
                     }`}>
                       <selectedIntegration.icon className={`w-8 h-8 ${
-                        selectedIntegration.status === 'connected' ? 'text-green-600' : 'text-gray-600'
+                        selectedIntegration.status === 'connected' ? 'text-green-400' : 'text-slate-300'
                       }`} />
                     </div>
                     <div>
                       <CardTitle className="text-2xl">{selectedIntegration.name}</CardTitle>
-                      <p className="text-sm text-gray-600 mt-1">{selectedIntegration.description}</p>
+                      <p className="text-sm text-slate-300 mt-1">{selectedIntegration.description}</p>
                       <div className="flex items-center gap-2 mt-2">
                         <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
                           selectedIntegration.status === 'connected'
-                            ? 'bg-green-100 text-green-700 border border-green-300'
-                            : 'bg-gray-100 text-gray-700 border border-gray-300'
+                            ? 'bg-green-500/15 text-green-300 border border-green-300'
+                            : 'bg-white/5 text-slate-300 border border-white/10'
                         }`}>
                           {selectedIntegration.status === 'connected' ? 'Connected' : 'Not Connected'}
                         </span>
                         {selectedIntegration.required && (
-                          <span className="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-semibold rounded border border-orange-300">
+                          <span className="px-3 py-1 bg-orange-500/15 text-orange-300 text-xs font-semibold rounded border border-orange-300">
                             Required
                           </span>
                         )}
@@ -877,15 +877,15 @@ export function IntegrationsManagement({ onBack }: IntegrationsManagementProps) 
               <CardContent className="p-6 space-y-6">
                 {/* Features */}
                 <div>
-                  <h3 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
-                    <Zap className="w-5 h-5 text-blue-600" />
+                  <h3 className="font-bold text-slate-100 mb-3 flex items-center gap-2">
+                    <Zap className="w-5 h-5 text-blue-400" />
                     Features
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                     {selectedIntegration.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-start gap-2 p-3 bg-gray-50 rounded">
-                        <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
-                        <span className="text-sm text-gray-700">{feature}</span>
+                      <div key={idx} className="flex items-start gap-2 p-3 bg-white/5 rounded">
+                        <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
+                        <span className="text-sm text-slate-300">{feature}</span>
                       </div>
                     ))}
                   </div>
@@ -893,15 +893,15 @@ export function IntegrationsManagement({ onBack }: IntegrationsManagementProps) 
 
                 {/* Setup Requirements */}
                 <div>
-                  <h3 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
-                    <Settings className="w-5 h-5 text-orange-600" />
+                  <h3 className="font-bold text-slate-100 mb-3 flex items-center gap-2">
+                    <Settings className="w-5 h-5 text-orange-400" />
                     Setup Requirements
                   </h3>
                   <div className="space-y-2">
                     {selectedIntegration.setupRequired.map((req, idx) => (
-                      <div key={idx} className="flex items-start gap-2 p-3 bg-orange-50 rounded border border-orange-200">
-                        <AlertCircle className="w-4 h-4 text-orange-600 mt-0.5 flex-shrink-0" />
-                        <span className="text-sm text-orange-900 font-medium">{req}</span>
+                      <div key={idx} className="flex items-start gap-2 p-3 bg-orange-500/10 rounded border border-orange-500/30">
+                        <AlertCircle className="w-4 h-4 text-orange-400 mt-0.5 flex-shrink-0" />
+                        <span className="text-sm text-orange-300 font-medium">{req}</span>
                       </div>
                     ))}
                   </div>
@@ -909,13 +909,13 @@ export function IntegrationsManagement({ onBack }: IntegrationsManagementProps) 
 
                 {/* Modules */}
                 <div>
-                  <h3 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
-                    <Package className="w-5 h-5 text-purple-600" />
+                  <h3 className="font-bold text-slate-100 mb-3 flex items-center gap-2">
+                    <Package className="w-5 h-5 text-purple-400" />
                     Used By Modules
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {selectedIntegration.modules.map((module, idx) => (
-                      <span key={idx} className="px-3 py-2 bg-blue-50 text-blue-700 text-sm font-medium rounded border border-blue-200">
+                      <span key={idx} className="px-3 py-2 bg-blue-500/10 text-blue-300 text-sm font-medium rounded border border-blue-500/30">
                         {module === 'All modules' ? 'All Modules' : module.replace('grow_', 'Grow ').replace('_', ' ')}
                       </span>
                     ))}
@@ -925,17 +925,17 @@ export function IntegrationsManagement({ onBack }: IntegrationsManagementProps) 
                 {/* Configuration Form */}
                 {selectedIntegration.status === 'connected' ? (
                   <div className="space-y-4">
-                    <h3 className="font-bold text-gray-900 flex items-center gap-2">
-                      <Key className="w-5 h-5 text-gray-600" />
+                    <h3 className="font-bold text-slate-100 flex items-center gap-2">
+                      <Key className="w-5 h-5 text-slate-300" />
                       Configuration
                     </h3>
                     
-                    <div className="p-4 bg-green-50 border border-green-300 rounded-lg">
+                    <div className="p-4 bg-green-500/10 border border-green-300 rounded-lg">
                       <div className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 text-green-600 mt-0.5" />
+                        <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
                         <div>
-                          <p className="font-semibold text-green-900">Integration Active</p>
-                          <p className="text-sm text-green-800 mt-1">
+                          <p className="font-semibold text-green-300">Integration Active</p>
+                          <p className="text-sm text-green-300 mt-1">
                             Last verified: 2 hours ago
                           </p>
                         </div>
@@ -944,7 +944,7 @@ export function IntegrationsManagement({ onBack }: IntegrationsManagementProps) 
 
                     <div className="space-y-3">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm font-medium text-slate-300 mb-2">
                           API Key
                         </label>
                         <div className="flex gap-2">
@@ -953,7 +953,7 @@ export function IntegrationsManagement({ onBack }: IntegrationsManagementProps) 
                               type={showApiKeys[selectedIntegration.id] ? 'text' : 'password'}
                               value="sk_live_â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
                               readOnly
-                              className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 font-mono text-sm"
+                              className="w-full px-3 py-2 border border-white/10 rounded-lg bg-white/5 font-mono text-sm"
                             />
                           </div>
                           <Button
@@ -977,7 +977,7 @@ export function IntegrationsManagement({ onBack }: IntegrationsManagementProps) 
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm font-medium text-slate-300 mb-2">
                           Webhook URL
                         </label>
                         <div className="flex gap-2">
@@ -985,7 +985,7 @@ export function IntegrationsManagement({ onBack }: IntegrationsManagementProps) 
                             type="text"
                             value={`https://api.growplatform.com/webhooks/${selectedIntegration.id}`}
                             readOnly
-                            className="flex-1 px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 font-mono text-sm"
+                            className="flex-1 px-3 py-2 border border-white/10 rounded-lg bg-white/5 font-mono text-sm"
                           />
                           <Button variant="outline" size="sm">
                             <Copy className="w-4 h-4" />
@@ -994,10 +994,10 @@ export function IntegrationsManagement({ onBack }: IntegrationsManagementProps) 
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm font-medium text-slate-300 mb-2">
                           Environment
                         </label>
-                        <select className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white">
+                        <select className="w-full px-3 py-2 border border-white/10 rounded-lg bg-white">
                           <option>Production</option>
                           <option>Sandbox/Test</option>
                         </select>
@@ -1013,7 +1013,7 @@ export function IntegrationsManagement({ onBack }: IntegrationsManagementProps) 
                         <CheckCheck className="w-4 h-4 mr-2" />
                         Save Changes
                       </Button>
-                      <Button variant="outline" className="text-red-600 border-red-300 hover:bg-red-50">
+                      <Button variant="outline" className="text-red-400 border-red-300 hover:bg-red-500/10">
                         <Trash2 className="w-4 h-4 mr-2" />
                         Disconnect
                       </Button>
@@ -1021,17 +1021,17 @@ export function IntegrationsManagement({ onBack }: IntegrationsManagementProps) 
                   </div>
                 ) : (
                   <div className="space-y-4">
-                    <h3 className="font-bold text-gray-900 flex items-center gap-2">
-                      <Plus className="w-5 h-5 text-blue-600" />
+                    <h3 className="font-bold text-slate-100 flex items-center gap-2">
+                      <Plus className="w-5 h-5 text-blue-400" />
                       Connect Integration
                     </h3>
 
-                    <div className="p-4 bg-blue-50 border border-blue-300 rounded-lg">
+                    <div className="p-4 bg-blue-500/10 border border-blue-300 rounded-lg">
                       <div className="flex items-start gap-3">
-                        <AlertCircle className="w-5 h-5 text-blue-600 mt-0.5" />
+                        <AlertCircle className="w-5 h-5 text-blue-400 mt-0.5" />
                         <div>
-                          <p className="font-semibold text-blue-900">Setup Instructions</p>
-                          <ol className="text-sm text-blue-800 mt-2 space-y-1 list-decimal list-inside">
+                          <p className="font-semibold text-blue-300">Setup Instructions</p>
+                          <ol className="text-sm text-blue-300 mt-2 space-y-1 list-decimal list-inside">
                             <li>Create an account with {selectedIntegration.name}</li>
                             <li>Obtain your API credentials from their dashboard</li>
                             <li>Enter the credentials below</li>
@@ -1044,13 +1044,13 @@ export function IntegrationsManagement({ onBack }: IntegrationsManagementProps) 
                     <div className="space-y-3">
                       {selectedIntegration.setupRequired.map((field, idx) => (
                         <div key={idx}>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                          <label className="block text-sm font-medium text-slate-300 mb-2">
                             {field}
                           </label>
                           <input
                             type="text"
                             placeholder={`Enter ${field.toLowerCase()}`}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                           />
                         </div>
                       ))}
@@ -1061,7 +1061,7 @@ export function IntegrationsManagement({ onBack }: IntegrationsManagementProps) 
                         href={selectedIntegration.documentation}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700"
+                        className="inline-flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300"
                       >
                         <ExternalLink className="w-4 h-4" />
                         View {selectedIntegration.name} Documentation
@@ -1086,12 +1086,12 @@ export function IntegrationsManagement({ onBack }: IntegrationsManagementProps) 
 
                 {/* Cost Information */}
                 {selectedIntegration.cost && (
-                  <div className="p-4 bg-yellow-50 border border-yellow-300 rounded-lg">
+                  <div className="p-4 bg-yellow-500/10 border border-yellow-300 rounded-lg">
                     <div className="flex items-start gap-3">
-                      <DollarSign className="w-5 h-5 text-yellow-700 mt-0.5" />
+                      <DollarSign className="w-5 h-5 text-yellow-300 mt-0.5" />
                       <div>
-                        <p className="font-semibold text-yellow-900">Pricing</p>
-                        <p className="text-sm text-yellow-800 mt-1">{selectedIntegration.cost}</p>
+                        <p className="font-semibold text-yellow-300">Pricing</p>
+                        <p className="text-sm text-yellow-300 mt-1">{selectedIntegration.cost}</p>
                       </div>
                     </div>
                   </div>

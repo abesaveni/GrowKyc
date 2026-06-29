@@ -306,7 +306,7 @@ export function RegulatoryEngine({ onBack }: RegulatoryEngineProps) {
                 <p className="text-sm text-white/90">Multi-Jurisdiction Rule Orchestration</p>
               </div>
             </div>
-            <Badge className="bg-[#1e293b] text-purple-600 text-sm px-3 py-1">
+            <Badge className="bg-[#1e293b] text-purple-400 text-sm px-3 py-1">
               <Zap className="w-4 h-4 mr-1" />
               Global Intelligence Active
             </Badge>
@@ -327,32 +327,32 @@ export function RegulatoryEngine({ onBack }: RegulatoryEngineProps) {
           <TabsContent value="jurisdictions" className="space-y-6">
             {/* Summary Cards */}
             <div className="grid grid-cols-4 gap-4">
-              <Card className="border-2 border-green-300 bg-green-50">
+              <Card className="border-2 border-green-300 bg-green-500/10">
                 <CardContent className="p-6">
-                  <div className="text-sm text-green-700">Active Jurisdictions</div>
-                  <div className="text-3xl font-bold text-green-900">3</div>
-                  <div className="text-xs text-green-600 mt-1">AU, SG, NZ</div>
+                  <div className="text-sm text-green-300">Active Jurisdictions</div>
+                  <div className="text-3xl font-bold text-green-300">3</div>
+                  <div className="text-xs text-green-400 mt-1">AU, SG, NZ</div>
                 </CardContent>
               </Card>
-              <Card className="border-2 border-blue-300 bg-blue-50">
+              <Card className="border-2 border-blue-300 bg-blue-500/10">
                 <CardContent className="p-6">
-                  <div className="text-sm text-blue-700">Active Rules</div>
-                  <div className="text-3xl font-bold text-blue-900">107</div>
-                  <div className="text-xs text-blue-600 mt-1">Across all jurisdictions</div>
+                  <div className="text-sm text-blue-300">Active Rules</div>
+                  <div className="text-3xl font-bold text-blue-300">107</div>
+                  <div className="text-xs text-blue-400 mt-1">Across all jurisdictions</div>
                 </CardContent>
               </Card>
-              <Card className="border-2 border-purple-300 bg-purple-50">
+              <Card className="border-2 border-purple-300 bg-purple-500/10">
                 <CardContent className="p-6">
-                  <div className="text-sm text-purple-700">Clients Managed</div>
-                  <div className="text-3xl font-bold text-purple-900">1,488</div>
-                  <div className="text-xs text-purple-600 mt-1">Multi-jurisdiction</div>
+                  <div className="text-sm text-purple-300">Clients Managed</div>
+                  <div className="text-3xl font-bold text-purple-300">1,488</div>
+                  <div className="text-xs text-purple-400 mt-1">Multi-jurisdiction</div>
                 </CardContent>
               </Card>
-              <Card className="border-2 border-amber-300 bg-amber-50">
+              <Card className="border-2 border-amber-300 bg-amber-500/10">
                 <CardContent className="p-6">
-                  <div className="text-sm text-amber-700">Rule Triggers (7d)</div>
-                  <div className="text-3xl font-bold text-amber-900">43</div>
-                  <div className="text-xs text-amber-600 mt-1">High confidence</div>
+                  <div className="text-sm text-amber-300">Rule Triggers (7d)</div>
+                  <div className="text-3xl font-bold text-amber-300">43</div>
+                  <div className="text-xs text-amber-400 mt-1">High confidence</div>
                 </CardContent>
               </Card>
             </div>
@@ -365,7 +365,7 @@ export function RegulatoryEngine({ onBack }: RegulatoryEngineProps) {
                   className={`border-2 ${
                     jur.status === 'active' 
                       ? 'border-green-300 bg-gradient-to-r from-green-50 to-blue-50' 
-                      : 'border-gray-300 bg-[#0f172a]'
+                      : 'border-white/10 bg-[#0f172a]'
                   }`}
                 >
                   <CardContent className="p-6">
@@ -470,7 +470,7 @@ export function RegulatoryEngine({ onBack }: RegulatoryEngineProps) {
 
             <div className="space-y-4">
               {rules.map((rule) => (
-                <Card key={rule.id} className="border-2 border-purple-200 hover:border-purple-400 transition-all">
+                <Card key={rule.id} className="border-2 border-purple-500/30 hover:border-purple-400 transition-all">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
@@ -491,8 +491,8 @@ export function RegulatoryEngine({ onBack }: RegulatoryEngineProps) {
                         {/* Visual Rule Logic */}
                         <div className="space-y-4">
                           {/* Conditions */}
-                          <div className="p-4 bg-blue-50 rounded-lg border-2 border-blue-200">
-                            <div className="text-sm font-semibold text-blue-900 mb-3 flex items-center gap-2">
+                          <div className="p-4 bg-blue-500/10 rounded-lg border-2 border-blue-500/30">
+                            <div className="text-sm font-semibold text-blue-300 mb-3 flex items-center gap-2">
                               <GitBranch className="w-4 h-4" />
                               IF (Conditions)
                             </div>
@@ -505,7 +505,7 @@ export function RegulatoryEngine({ onBack }: RegulatoryEngineProps) {
                                   <span className="text-slate-300 font-mono">{condition.operator}</span>
                                   <Badge className="bg-blue-600">{condition.value}</Badge>
                                   {idx < rule.logic.conditions.length - 1 && (
-                                    <span className="text-blue-900 font-semibold">AND</span>
+                                    <span className="text-blue-300 font-semibold">AND</span>
                                   )}
                                 </div>
                               ))}
@@ -513,8 +513,8 @@ export function RegulatoryEngine({ onBack }: RegulatoryEngineProps) {
                           </div>
 
                           {/* Actions */}
-                          <div className="p-4 bg-green-50 rounded-lg border-2 border-green-200">
-                            <div className="text-sm font-semibold text-green-900 mb-3 flex items-center gap-2">
+                          <div className="p-4 bg-green-500/10 rounded-lg border-2 border-green-500/30">
+                            <div className="text-sm font-semibold text-green-300 mb-3 flex items-center gap-2">
                               <Zap className="w-4 h-4" />
                               THEN (Actions)
                             </div>
@@ -551,7 +551,7 @@ export function RegulatoryEngine({ onBack }: RegulatoryEngineProps) {
                             <Clock className="w-4 h-4" />
                             Last modified: {new Date(rule.lastModified).toLocaleDateString('en-AU')}
                           </div>
-                          <div className="flex items-center gap-2 text-green-600">
+                          <div className="flex items-center gap-2 text-green-400">
                             <CheckCircle className="w-4 h-4" />
                             Triggered {rule.triggeredCount} times (30d)
                           </div>
@@ -578,15 +578,15 @@ export function RegulatoryEngine({ onBack }: RegulatoryEngineProps) {
               ))}
             </div>
 
-            <Card className="border-2 border-amber-300 bg-amber-50">
+            <Card className="border-2 border-amber-300 bg-amber-500/10">
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
-                  <AlertTriangle className="w-6 h-6 text-amber-600 flex-shrink-0" />
+                  <AlertTriangle className="w-6 h-6 text-amber-400 flex-shrink-0" />
                   <div>
-                    <div className="font-semibold text-amber-900 mb-1">
+                    <div className="font-semibold text-amber-300 mb-1">
                       Rule Conflict Detection Active
                     </div>
-                    <p className="text-sm text-amber-800">
+                    <p className="text-sm text-amber-300">
                       The system automatically detects conflicting rules across jurisdictions and 
                       prevents publishing. Review version history before deployment.
                     </p>
@@ -666,25 +666,25 @@ export function RegulatoryEngine({ onBack }: RegulatoryEngineProps) {
             </Card>
 
             <div className="grid grid-cols-3 gap-4">
-              <Card className="border-2 border-green-300 bg-green-50">
+              <Card className="border-2 border-green-300 bg-green-500/10">
                 <CardContent className="p-6">
-                  <div className="text-sm text-green-700">Compliant</div>
-                  <div className="text-3xl font-bold text-green-900">5</div>
+                  <div className="text-sm text-green-300">Compliant</div>
+                  <div className="text-3xl font-bold text-green-300">5</div>
                   <Progress value={83} className="h-2 mt-2" />
                 </CardContent>
               </Card>
-              <Card className="border-2 border-amber-300 bg-amber-50">
+              <Card className="border-2 border-amber-300 bg-amber-500/10">
                 <CardContent className="p-6">
-                  <div className="text-sm text-amber-700">Partial Compliance</div>
-                  <div className="text-3xl font-bold text-amber-900">1</div>
+                  <div className="text-sm text-amber-300">Partial Compliance</div>
+                  <div className="text-3xl font-bold text-amber-300">1</div>
                   <Progress value={17} className="h-2 mt-2" />
                 </CardContent>
               </Card>
-              <Card className="border-2 border-blue-300 bg-blue-50">
+              <Card className="border-2 border-blue-300 bg-blue-500/10">
                 <CardContent className="p-6">
-                  <div className="text-sm text-blue-700">Total Recommendations</div>
-                  <div className="text-3xl font-bold text-blue-900">40</div>
-                  <div className="text-xs text-blue-600 mt-1">6 shown (core requirements)</div>
+                  <div className="text-sm text-blue-300">Total Recommendations</div>
+                  <div className="text-3xl font-bold text-blue-300">40</div>
+                  <div className="text-xs text-blue-400 mt-1">6 shown (core requirements)</div>
                 </CardContent>
               </Card>
             </div>
@@ -732,7 +732,7 @@ export function RegulatoryEngine({ onBack }: RegulatoryEngineProps) {
                                   </div>
                                   <div className="flex items-center gap-2">
                                     <span className="text-sm text-slate-300">→</span>
-                                    <span className="text-sm text-blue-600 font-medium">
+                                    <span className="text-sm text-blue-400 font-medium">
                                       {obligation.control}
                                     </span>
                                   </div>
@@ -763,31 +763,31 @@ export function RegulatoryEngine({ onBack }: RegulatoryEngineProps) {
 
             {/* Summary */}
             <div className="grid grid-cols-4 gap-4">
-              <Card className="border-2 border-blue-300 bg-blue-50">
+              <Card className="border-2 border-blue-300 bg-blue-500/10">
                 <CardContent className="p-6">
-                  <div className="text-sm text-blue-700">Total Obligations</div>
-                  <div className="text-3xl font-bold text-blue-900">18</div>
+                  <div className="text-sm text-blue-300">Total Obligations</div>
+                  <div className="text-3xl font-bold text-blue-300">18</div>
                 </CardContent>
               </Card>
-              <Card className="border-2 border-green-300 bg-green-50">
+              <Card className="border-2 border-green-300 bg-green-500/10">
                 <CardContent className="p-6">
-                  <div className="text-sm text-green-700">Automated</div>
-                  <div className="text-3xl font-bold text-green-900">14</div>
-                  <div className="text-xs text-green-600 mt-1">78% automation rate</div>
+                  <div className="text-sm text-green-300">Automated</div>
+                  <div className="text-3xl font-bold text-green-300">14</div>
+                  <div className="text-xs text-green-400 mt-1">78% automation rate</div>
                 </CardContent>
               </Card>
-              <Card className="border-2 border-amber-300 bg-amber-50">
+              <Card className="border-2 border-amber-300 bg-amber-500/10">
                 <CardContent className="p-6">
-                  <div className="text-sm text-amber-700">Manual</div>
-                  <div className="text-3xl font-bold text-amber-900">4</div>
-                  <div className="text-xs text-amber-600 mt-1">Requires human review</div>
+                  <div className="text-sm text-amber-300">Manual</div>
+                  <div className="text-3xl font-bold text-amber-300">4</div>
+                  <div className="text-xs text-amber-400 mt-1">Requires human review</div>
                 </CardContent>
               </Card>
-              <Card className="border-2 border-purple-300 bg-purple-50">
+              <Card className="border-2 border-purple-300 bg-purple-500/10">
                 <CardContent className="p-6">
-                  <div className="text-sm text-purple-700">System Controls</div>
-                  <div className="text-3xl font-bold text-purple-900">12</div>
-                  <div className="text-xs text-purple-600 mt-1">Modules integrated</div>
+                  <div className="text-sm text-purple-300">System Controls</div>
+                  <div className="text-3xl font-bold text-purple-300">12</div>
+                  <div className="text-xs text-purple-400 mt-1">Modules integrated</div>
                 </CardContent>
               </Card>
             </div>

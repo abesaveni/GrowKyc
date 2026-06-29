@@ -289,11 +289,11 @@ export function PendingReviews() {
             </div>
           </div>
           <div className="flex gap-3">
-            <Button className="bg-white text-purple-600 hover:bg-purple-50">
+            <Button className="bg-white text-purple-400 hover:bg-purple-500/10">
               <RefreshCw className="w-5 h-5 mr-2" />
               Refresh Queue
             </Button>
-            <Button className="bg-white text-purple-600 hover:bg-purple-50">
+            <Button className="bg-white text-purple-400 hover:bg-purple-500/10">
               <Download className="w-5 h-5 mr-2" />
               Export Report
             </Button>
@@ -361,7 +361,7 @@ export function PendingReviews() {
       </div>
 
       {/* Navigation Tabs */}
-      <div className="border-b border-gray-200">
+      <div className="border-b border-white/10">
         <div className="flex gap-2">
           {[
             { id: 'overview', label: 'Overview', icon: Target },
@@ -377,8 +377,8 @@ export function PendingReviews() {
                 onClick={() => setActiveTab(tab.id as any)}
                 className={`px-6 py-3 font-semibold flex items-center gap-2 transition-colors ${
                   activeTab === tab.id
-                    ? 'border-b-2 border-purple-600 text-purple-600'
-                    : 'text-gray-600 hover:text-gray-900'
+                    ? 'border-b-2 border-purple-600 text-purple-400'
+                    : 'text-slate-300 hover:text-slate-100'
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -390,19 +390,19 @@ export function PendingReviews() {
       </div>
 
       {/* Filters */}
-      <div className="bg-white rounded-lg border border-gray-200 p-4">
+      <div className="bg-white rounded-lg border border-white/10 p-4">
         <div className="flex items-center gap-4">
           <div className="flex-1 relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
             <input
               type="text"
               placeholder="Search by client name, review ID, or assigned reviewer..."
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full pl-10 pr-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
             />
           </div>
 
           <div className="flex gap-2">
-            <span className="text-sm font-semibold text-gray-700 self-center">Status:</span>
+            <span className="text-sm font-semibold text-slate-300 self-center">Status:</span>
             {['all', 'pending', 'in-review', 'more-info-required'].map((status) => (
               <button
                 key={status}
@@ -410,7 +410,7 @@ export function PendingReviews() {
                 className={`px-3 py-1 rounded-lg text-sm font-semibold transition-colors ${
                   filterStatus === status
                     ? 'bg-purple-600 text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    : 'bg-white/5 text-slate-300 hover:bg-white/10'
                 }`}
               >
                 {status === 'all' ? 'All' : status.replace('-', ' ').charAt(0).toUpperCase() + status.slice(1).replace('-', ' ')}
@@ -419,7 +419,7 @@ export function PendingReviews() {
           </div>
 
           <div className="flex gap-2">
-            <span className="text-sm font-semibold text-gray-700 self-center">Priority:</span>
+            <span className="text-sm font-semibold text-slate-300 self-center">Priority:</span>
             {['all', 'urgent', 'high', 'normal'].map((priority) => (
               <button
                 key={priority}
@@ -427,7 +427,7 @@ export function PendingReviews() {
                 className={`px-3 py-1 rounded-lg text-sm font-semibold transition-colors ${
                   filterPriority === priority
                     ? 'bg-purple-600 text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    : 'bg-white/5 text-slate-300 hover:bg-white/10'
                 }`}
               >
                 {priority.charAt(0).toUpperCase() + priority.slice(1)}
@@ -441,14 +441,14 @@ export function PendingReviews() {
       <div className="space-y-4">
         {filteredReviews.map((review) => (
           <div key={review.id} className={`bg-white rounded-lg border-2 p-6 ${
-            review.priority === 'urgent' ? 'border-red-300 bg-red-50' :
+            review.priority === 'urgent' ? 'border-red-300 bg-red-500/10' :
             review.hasRedFlags ? 'border-orange-300' :
-            'border-gray-200'
+            'border-white/10'
           }`}>
             <div className="flex items-start justify-between mb-4">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
-                  <h3 className="text-xl font-bold text-gray-900">{review.clientName}</h3>
+                  <h3 className="text-xl font-bold text-slate-100">{review.clientName}</h3>
                   <span className={`px-3 py-1 bg-${getStatusColor(review.status)}-100 text-${getStatusColor(review.status)}-700 text-sm font-bold rounded-full`}>
                     {review.status.replace('-', ' ').toUpperCase()}
                   </span>
@@ -477,7 +477,7 @@ export function PendingReviews() {
                   )}
                 </div>
 
-                <div className="flex items-center gap-6 text-sm text-gray-600 mb-4">
+                <div className="flex items-center gap-6 text-sm text-slate-300 mb-4">
                   <span className="flex items-center gap-1">
                     <Hash className="w-4 h-4" />
                     {review.id}
@@ -499,7 +499,7 @@ export function PendingReviews() {
                   </span>
                   <span>•</span>
                   <span className={`flex items-center gap-1 font-semibold ${
-                    review.dueDate < new Date() ? 'text-red-600' : 'text-gray-600'
+                    review.dueDate < new Date() ? 'text-red-400' : 'text-slate-300'
                   }`}>
                     <Clock className="w-4 h-4" />
                     Due: {review.dueDate.toLocaleDateString()}
@@ -509,10 +509,10 @@ export function PendingReviews() {
                 {/* Progress Bar */}
                 <div className="mb-4">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-semibold text-gray-700">Review Progress</span>
-                    <span className="text-sm font-bold text-gray-900">{review.completionProgress}%</span>
+                    <span className="text-sm font-semibold text-slate-300">Review Progress</span>
+                    <span className="text-sm font-bold text-slate-100">{review.completionProgress}%</span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-3">
+                  <div className="w-full bg-white/10 rounded-full h-3">
                     <div
                       className={`bg-${getStatusColor(review.status)}-600 h-3 rounded-full transition-all`}
                       style={{ width: `${review.completionProgress}%` }}
@@ -523,72 +523,72 @@ export function PendingReviews() {
                 {/* Review Items */}
                 <div className="grid grid-cols-3 gap-4 mb-4">
                   {/* Documents */}
-                  <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
-                    <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
+                  <div className="p-3 bg-white/5 rounded-lg border border-white/10">
+                    <h4 className="font-semibold text-slate-100 mb-2 flex items-center gap-2">
                       <FileText className="w-4 h-4" />
                       Documents ({review.kycDocuments.filter(d => d.status === 'verified').length}/{review.kycDocuments.length})
                     </h4>
                     <div className="space-y-1">
                       {review.kycDocuments.slice(0, 3).map((doc, index) => (
                         <div key={index} className="flex items-center justify-between text-xs">
-                          <span className="text-gray-700 truncate">{doc.name}</span>
+                          <span className="text-slate-300 truncate">{doc.name}</span>
                           {doc.status === 'verified' ? (
-                            <CheckCircle className="w-3 h-3 text-green-600 flex-shrink-0 ml-2" />
+                            <CheckCircle className="w-3 h-3 text-green-400 flex-shrink-0 ml-2" />
                           ) : doc.status === 'rejected' ? (
-                            <XCircle className="w-3 h-3 text-red-600 flex-shrink-0 ml-2" />
+                            <XCircle className="w-3 h-3 text-red-400 flex-shrink-0 ml-2" />
                           ) : (
-                            <Clock className="w-3 h-3 text-yellow-600 flex-shrink-0 ml-2" />
+                            <Clock className="w-3 h-3 text-yellow-400 flex-shrink-0 ml-2" />
                           )}
                         </div>
                       ))}
                       {review.kycDocuments.length > 3 && (
-                        <p className="text-xs text-gray-500 mt-1">+{review.kycDocuments.length - 3} more</p>
+                        <p className="text-xs text-slate-400 mt-1">+{review.kycDocuments.length - 3} more</p>
                       )}
                     </div>
                   </div>
 
                   {/* Screening */}
                   <div className={`p-3 rounded-lg border ${
-                    review.screeningResults.result === 'clear' ? 'bg-green-50 border-green-200' :
-                    review.screeningResults.result === 'match' ? 'bg-yellow-50 border-yellow-200' :
-                    'bg-red-50 border-red-200'
+                    review.screeningResults.result === 'clear' ? 'bg-green-500/10 border-green-500/30' :
+                    review.screeningResults.result === 'match' ? 'bg-yellow-500/10 border-yellow-500/30' :
+                    'bg-red-500/10 border-red-500/30'
                   }`}>
-                    <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
+                    <h4 className="font-semibold text-slate-100 mb-2 flex items-center gap-2">
                       <Shield className="w-4 h-4" />
                       Screening
                     </h4>
-                    <p className="text-xs text-gray-700 mb-2">{review.screeningResults.check}</p>
+                    <p className="text-xs text-slate-300 mb-2">{review.screeningResults.check}</p>
                     <div className="flex items-center gap-2">
                       {review.screeningResults.result === 'clear' ? (
                         <>
-                          <CheckCircle className="w-4 h-4 text-green-600" />
-                          <span className="text-sm font-bold text-green-700">CLEAR</span>
+                          <CheckCircle className="w-4 h-4 text-green-400" />
+                          <span className="text-sm font-bold text-green-300">CLEAR</span>
                         </>
                       ) : review.screeningResults.result === 'match' ? (
                         <>
-                          <AlertTriangle className="w-4 h-4 text-yellow-600" />
-                          <span className="text-sm font-bold text-yellow-700">MATCH - REVIEW</span>
+                          <AlertTriangle className="w-4 h-4 text-yellow-400" />
+                          <span className="text-sm font-bold text-yellow-300">MATCH - REVIEW</span>
                         </>
                       ) : (
                         <>
-                          <XCircle className="w-4 h-4 text-red-600" />
-                          <span className="text-sm font-bold text-red-700">FAILED</span>
+                          <XCircle className="w-4 h-4 text-red-400" />
+                          <span className="text-sm font-bold text-red-300">FAILED</span>
                         </>
                       )}
                     </div>
                   </div>
 
                   {/* Risk Score */}
-                  <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
-                    <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
+                  <div className="p-3 bg-white/5 rounded-lg border border-white/10">
+                    <h4 className="font-semibold text-slate-100 mb-2 flex items-center gap-2">
                       <Target className="w-4 h-4" />
                       Risk Score: {review.riskAssessment.reduce((sum, r) => sum + r.score, 0)}
                     </h4>
                     <div className="space-y-1">
                       {review.riskAssessment.map((factor, index) => (
                         <div key={index} className="flex items-center justify-between text-xs">
-                          <span className="text-gray-700">{factor.factor}</span>
-                          <span className="font-bold text-gray-900">{factor.score}</span>
+                          <span className="text-slate-300">{factor.factor}</span>
+                          <span className="font-bold text-slate-100">{factor.score}</span>
                         </div>
                       ))}
                     </div>
@@ -597,16 +597,16 @@ export function PendingReviews() {
 
                 {/* Notes */}
                 {review.reviewerNotes && (
-                  <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg mb-4">
-                    <p className="text-sm font-semibold text-blue-900 mb-1">Reviewer Notes:</p>
-                    <p className="text-sm text-blue-800">{review.reviewerNotes}</p>
+                  <div className="p-3 bg-blue-500/10 border border-blue-500/30 rounded-lg mb-4">
+                    <p className="text-sm font-semibold text-blue-300 mb-1">Reviewer Notes:</p>
+                    <p className="text-sm text-blue-300">{review.reviewerNotes}</p>
                   </div>
                 )}
 
                 {review.clientComments && (
-                  <div className="p-3 bg-purple-50 border border-purple-200 rounded-lg">
-                    <p className="text-sm font-semibold text-purple-900 mb-1">Client Comments:</p>
-                    <p className="text-sm text-purple-800">{review.clientComments}</p>
+                  <div className="p-3 bg-purple-500/10 border border-purple-500/30 rounded-lg">
+                    <p className="text-sm font-semibold text-purple-300 mb-1">Client Comments:</p>
+                    <p className="text-sm text-purple-300">{review.clientComments}</p>
                   </div>
                 )}
               </div>

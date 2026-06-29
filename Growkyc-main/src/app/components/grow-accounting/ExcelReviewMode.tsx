@@ -140,21 +140,21 @@ export function ExcelReviewMode({ onNavigate, jobId = 'JOB-2024-045' }: ExcelRev
   };
 
   const getVarianceIcon = (variance: number) => {
-    if (variance > 0) return <TrendingUp className="w-4 h-4 text-green-600" />;
-    if (variance < 0) return <TrendingDown className="w-4 h-4 text-red-600" />;
+    if (variance > 0) return <TrendingUp className="w-4 h-4 text-green-400" />;
+    if (variance < 0) return <TrendingDown className="w-4 h-4 text-red-400" />;
     return <Minus className="w-4 h-4 text-gray-400" />;
   };
 
   const getVarianceColor = (variance: number) => {
-    if (Math.abs(variance) > 20) return 'bg-red-50';
-    if (Math.abs(variance) > 10) return 'bg-orange-50';
+    if (Math.abs(variance) > 20) return 'bg-red-500/10';
+    if (Math.abs(variance) > 10) return 'bg-orange-500/10';
     return '';
   };
 
   const getDecisionColor = (decision: string) => {
     switch (decision) {
-      case 'approved': return 'bg-green-100';
-      case 'rejected': return 'bg-red-100';
+      case 'approved': return 'bg-green-500/15';
+      case 'rejected': return 'bg-red-500/15';
       default: return '';
     }
   };
@@ -174,8 +174,8 @@ export function ExcelReviewMode({ onNavigate, jobId = 'JOB-2024-045' }: ExcelRev
               Back to Queue
             </Button>
             <div>
-              <h1 className="text-2xl font-semibold text-gray-900">Review Mode</h1>
-              <p className="text-sm text-gray-600 mt-1">Smith, John & Mary • Individual Tax Return • FY2024 • {jobId}</p>
+              <h1 className="text-2xl font-semibold text-slate-100">Review Mode</h1>
+              <p className="text-sm text-slate-300 mt-1">Smith, John & Mary • Individual Tax Return • FY2024 • {jobId}</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -183,30 +183,30 @@ export function ExcelReviewMode({ onNavigate, jobId = 'JOB-2024-045' }: ExcelRev
               <CheckCircle className="w-4 h-4 mr-2" />
               Approve & Continue
             </Button>
-            <Button variant="outline" className="text-orange-600 border-orange-300">
+            <Button variant="outline" className="text-orange-400 border-orange-300">
               Request Changes
             </Button>
           </div>
         </div>
 
         {/* Stats Bar */}
-        <div className="bg-gray-50 border border-gray-300 rounded px-6 py-3">
+        <div className="bg-white/5 border border-white/10 rounded px-6 py-3">
           <div className="flex items-center gap-8 text-sm">
             <div className="flex items-center gap-2">
-              <span className="text-gray-600">Approved:</span>
-              <span className="font-semibold text-green-600">{approvedCount}</span>
+              <span className="text-slate-300">Approved:</span>
+              <span className="font-semibold text-green-400">{approvedCount}</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-gray-600">Rejected:</span>
-              <span className="font-semibold text-red-600">{rejectedCount}</span>
+              <span className="text-slate-300">Rejected:</span>
+              <span className="font-semibold text-red-400">{rejectedCount}</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-gray-600">Pending:</span>
-              <span className="font-semibold text-orange-600">{pendingCount}</span>
+              <span className="text-slate-300">Pending:</span>
+              <span className="font-semibold text-orange-400">{pendingCount}</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-gray-600">Progress:</span>
-              <span className="font-semibold text-blue-600">
+              <span className="text-slate-300">Progress:</span>
+              <span className="font-semibold text-blue-400">
                 {Math.round(((approvedCount + rejectedCount) / lines.length) * 100)}%
               </span>
             </div>
@@ -214,21 +214,21 @@ export function ExcelReviewMode({ onNavigate, jobId = 'JOB-2024-045' }: ExcelRev
         </div>
 
         {/* Variance Table */}
-        <div className="border border-gray-300 rounded bg-white overflow-hidden">
+        <div className="border border-white/10 rounded bg-white overflow-hidden">
           <table className="w-full text-sm border-collapse">
             {/* Header Row */}
             <thead>
-              <tr className="bg-gray-50">
-                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700 w-8">Ref</th>
-                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700 w-40">Section</th>
-                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Line Item</th>
-                <th className="border border-gray-300 px-3 py-2 text-right font-semibold text-gray-700 w-28">Prior Year</th>
-                <th className="border border-gray-300 px-3 py-2 text-right font-semibold text-gray-700 w-28">Current Year</th>
-                <th className="border border-gray-300 px-3 py-2 text-right font-semibold text-gray-700 w-28">Variance</th>
-                <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-20">%</th>
-                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700 w-64">AI Comment</th>
-                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700 w-48">Reviewer Comment</th>
-                <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-32">Decision</th>
+              <tr className="bg-white/5">
+                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300 w-8">Ref</th>
+                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300 w-40">Section</th>
+                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Line Item</th>
+                <th className="border border-white/10 px-3 py-2 text-right font-semibold text-slate-300 w-28">Prior Year</th>
+                <th className="border border-white/10 px-3 py-2 text-right font-semibold text-slate-300 w-28">Current Year</th>
+                <th className="border border-white/10 px-3 py-2 text-right font-semibold text-slate-300 w-28">Variance</th>
+                <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-20">%</th>
+                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300 w-64">AI Comment</th>
+                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300 w-48">Reviewer Comment</th>
+                <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-32">Decision</th>
               </tr>
             </thead>
 
@@ -238,61 +238,61 @@ export function ExcelReviewMode({ onNavigate, jobId = 'JOB-2024-045' }: ExcelRev
                 const varianceColor = getVarianceColor(line.variancePercent);
                 const decisionColor = getDecisionColor(line.reviewerDecision);
                 return (
-                  <tr key={line.id} className={`hover:bg-gray-50 ${varianceColor} ${decisionColor}`}>
-                    <td className="border border-gray-300 px-3 py-2 text-center text-gray-600 font-mono text-xs">
+                  <tr key={line.id} className={`hover:bg-white/5 ${varianceColor} ${decisionColor}`}>
+                    <td className="border border-white/10 px-3 py-2 text-center text-slate-300 font-mono text-xs">
                       {line.id}
                     </td>
-                    <td className="border border-gray-300 px-3 py-2 text-gray-700 text-xs">
+                    <td className="border border-white/10 px-3 py-2 text-slate-300 text-xs">
                       {line.section}
                     </td>
-                    <td className="border border-gray-300 px-3 py-2 text-gray-900">
+                    <td className="border border-white/10 px-3 py-2 text-slate-100">
                       <div className="flex items-center gap-2">
                         <span>{line.lineItem}</span>
                         {!line.hasEvidence && (
-                          <AlertCircle className="w-3 h-3 text-orange-600" title="No evidence" />
+                          <AlertCircle className="w-3 h-3 text-orange-400" title="No evidence" />
                         )}
                       </div>
                     </td>
-                    <td className="border border-gray-300 px-3 py-2 text-right font-mono text-gray-600">
+                    <td className="border border-white/10 px-3 py-2 text-right font-mono text-slate-300">
                       {line.priorYear.toLocaleString()}
                     </td>
-                    <td className="border border-gray-300 px-3 py-2 text-right font-mono text-gray-900">
+                    <td className="border border-white/10 px-3 py-2 text-right font-mono text-slate-100">
                       {line.currentYear.toLocaleString()}
                     </td>
-                    <td className="border border-gray-300 px-3 py-2 text-right font-mono text-gray-900">
+                    <td className="border border-white/10 px-3 py-2 text-right font-mono text-slate-100">
                       <div className="flex items-center justify-end gap-1">
                         {getVarianceIcon(line.variance)}
                         <span>{line.variance > 0 ? '+' : ''}{line.variance.toLocaleString()}</span>
                       </div>
                     </td>
-                    <td className="border border-gray-300 px-3 py-2 text-center font-mono text-gray-900">
+                    <td className="border border-white/10 px-3 py-2 text-center font-mono text-slate-100">
                       {line.variance > 0 ? '+' : ''}{line.variancePercent.toFixed(1)}%
                     </td>
-                    <td className="border border-gray-300 px-3 py-2 text-gray-700 text-xs">
+                    <td className="border border-white/10 px-3 py-2 text-slate-300 text-xs">
                       {line.aiComment}
                     </td>
-                    <td className="border border-gray-300 px-2 py-2">
+                    <td className="border border-white/10 px-2 py-2">
                       <input
                         type="text"
                         value={line.reviewerComment}
                         onChange={(e) => handleCommentChange(line.id, e.target.value)}
                         placeholder="Add comment..."
-                        className="w-full px-2 py-1 text-xs border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
+                        className="w-full px-2 py-1 text-xs border border-white/10 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
                       />
                     </td>
-                    <td className="border border-gray-300 px-2 py-2">
+                    <td className="border border-white/10 px-2 py-2">
                       {line.reviewerDecision === 'pending' ? (
                         <div className="flex items-center gap-1">
                           <button
                             onClick={() => handleDecision(line.id, 'approved')}
-                            className="flex-1 px-2 py-1 text-xs bg-green-100 text-green-700 hover:bg-green-200 rounded flex items-center justify-center gap-1"
+                            className="flex-1 px-2 py-1 text-xs bg-green-500/15 text-green-300 hover:bg-green-500/20 rounded flex items-center justify-center gap-1"
                           >
                             <ThumbsUp className="w-3 h-3" />
                             Approve
                           </button>
                           <button
                             onClick={() => handleDecision(line.id, 'rejected')}
-                            className="flex-1 px-2 py-1 text-xs bg-red-100 text-red-700 hover:bg-red-200 rounded flex items-center justify-center gap-1"
+                            className="flex-1 px-2 py-1 text-xs bg-red-500/15 text-red-300 hover:bg-red-500/20 rounded flex items-center justify-center gap-1"
                           >
                             <ThumbsDown className="w-3 h-3" />
                             Reject
@@ -301,12 +301,12 @@ export function ExcelReviewMode({ onNavigate, jobId = 'JOB-2024-045' }: ExcelRev
                       ) : (
                         <div className="text-center text-xs font-semibold">
                           {line.reviewerDecision === 'approved' ? (
-                            <span className="text-green-700 flex items-center justify-center gap-1">
+                            <span className="text-green-300 flex items-center justify-center gap-1">
                               <CheckCircle className="w-3 h-3" />
                               Approved
                             </span>
                           ) : (
-                            <span className="text-red-700 flex items-center justify-center gap-1">
+                            <span className="text-red-300 flex items-center justify-center gap-1">
                               <XCircle className="w-3 h-3" />
                               Rejected
                             </span>
@@ -322,12 +322,12 @@ export function ExcelReviewMode({ onNavigate, jobId = 'JOB-2024-045' }: ExcelRev
         </div>
 
         {/* Overall Comments */}
-        <div className="border border-gray-300 rounded bg-white p-4">
-          <label className="block text-sm font-semibold text-gray-900 mb-2">Overall Review Comments</label>
+        <div className="border border-white/10 rounded bg-white p-4">
+          <label className="block text-sm font-semibold text-slate-100 mb-2">Overall Review Comments</label>
           <textarea
             rows={4}
             placeholder="Add overall comments for the preparer..."
-            className="w-full px-3 py-2 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="w-full px-3 py-2 text-sm border border-white/10 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
           />
         </div>
       </div>

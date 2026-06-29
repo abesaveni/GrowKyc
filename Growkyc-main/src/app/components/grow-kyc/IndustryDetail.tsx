@@ -724,8 +724,8 @@ export function IndustryDetail({ industryId, onBack }: IndustryDetailProps) {
               <Card key={idx} className="border-2 hover:border-[#13B5EA] transition-colors">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <AlertCircle className="w-6 h-6 text-red-600" />
+                    <div className="w-10 h-10 bg-red-500/15 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <AlertCircle className="w-6 h-6 text-red-400" />
                     </div>
                     <div className="flex-1">
                       <h3 className="text-xl font-bold text-white mb-2">{pain.title}</h3>
@@ -734,10 +734,10 @@ export function IndustryDetail({ industryId, onBack }: IndustryDetailProps) {
                   </div>
                   
                   <div className="flex items-start gap-4 pl-14">
-                    <div className="flex-1 bg-green-50 p-4 rounded-lg border-2 border-green-200">
+                    <div className="flex-1 bg-green-500/10 p-4 rounded-lg border-2 border-green-500/30">
                       <div className="flex items-center gap-2 mb-2">
-                        <CheckCircle className="w-5 h-5 text-green-600" />
-                        <span className="font-semibold text-green-900">Our Solution</span>
+                        <CheckCircle className="w-5 h-5 text-green-400" />
+                        <span className="font-semibold text-green-300">Our Solution</span>
                       </div>
                       <p className="text-slate-300 mb-3">{pain.solution}</p>
                       <Badge className="bg-green-600 text-white">
@@ -768,7 +768,7 @@ export function IndustryDetail({ industryId, onBack }: IndustryDetailProps) {
                       <div className="flex-1">
                         <h3 className="text-lg font-bold text-white mb-2">{feature.title}</h3>
                         <p className="text-slate-300 mb-3">{feature.description}</p>
-                        <Badge className="bg-blue-100 text-blue-700 border-blue-300">
+                        <Badge className="bg-blue-500/15 text-blue-300 border-blue-300">
                           {feature.benefit}
                         </Badge>
                       </div>
@@ -787,7 +787,7 @@ export function IndustryDetail({ industryId, onBack }: IndustryDetailProps) {
             {industry.specificModules.map((module, idx) => (
               <Card key={idx} className="bg-[#0f172a] hover:bg-white/5 transition-colors">
                 <CardContent className="p-4 text-center">
-                  <CheckCircle className="w-6 h-6 text-green-600 mx-auto mb-2" />
+                  <CheckCircle className="w-6 h-6 text-green-400 mx-auto mb-2" />
                   <p className="text-xs font-medium text-white">{module}</p>
                 </CardContent>
               </Card>
@@ -799,7 +799,7 @@ export function IndustryDetail({ industryId, onBack }: IndustryDetailProps) {
         <Card className="mb-16 border-2 border-[#13B5EA]">
           <CardHeader className="bg-gradient-to-r from-blue-50 to-purple-50">
             <CardTitle className="flex items-center gap-2 text-2xl">
-              <DollarSign className="w-8 h-8 text-green-600" />
+              <DollarSign className="w-8 h-8 text-green-400" />
               Return on Investment
             </CardTitle>
             <CardDescription>Real numbers from {industryId} using Grow Compliance OS</CardDescription>
@@ -807,22 +807,22 @@ export function IndustryDetail({ industryId, onBack }: IndustryDetailProps) {
           <CardContent className="p-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               <div className="text-center">
-                <Clock className="w-8 h-8 text-blue-600 mx-auto mb-3" />
+                <Clock className="w-8 h-8 text-blue-400 mx-auto mb-3" />
                 <div className="text-3xl font-bold text-white mb-1">{industry.roi.timesSaved}</div>
                 <div className="text-sm text-slate-300">Time Saved</div>
               </div>
               <div className="text-center">
-                <DollarSign className="w-8 h-8 text-green-600 mx-auto mb-3" />
+                <DollarSign className="w-8 h-8 text-green-400 mx-auto mb-3" />
                 <div className="text-3xl font-bold text-white mb-1">{industry.roi.costSavings}</div>
                 <div className="text-sm text-slate-300">Cost Savings</div>
               </div>
               <div className="text-center">
-                <TrendingUp className="w-8 h-8 text-purple-600 mx-auto mb-3" />
+                <TrendingUp className="w-8 h-8 text-purple-400 mx-auto mb-3" />
                 <div className="text-3xl font-bold text-white mb-1">{industry.roi.clientCapacity}</div>
                 <div className="text-sm text-slate-300">Capacity Increase</div>
               </div>
               <div className="text-center">
-                <Shield className="w-8 h-8 text-amber-600 mx-auto mb-3" />
+                <Shield className="w-8 h-8 text-amber-400 mx-auto mb-3" />
                 <div className="text-3xl font-bold text-white mb-1">{industry.roi.riskReduction}</div>
                 <div className="text-sm text-slate-300">Risk Reduction</div>
               </div>
@@ -851,7 +851,7 @@ export function IndustryDetail({ industryId, onBack }: IndustryDetailProps) {
         <Card className="mb-16">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Shield className="w-6 h-6 text-green-600" />
+              <Shield className="w-6 h-6 text-green-400" />
               Compliance Coverage for {industryId}
             </CardTitle>
             <CardDescription>All regulatory requirements specific to your industry</CardDescription>
@@ -859,8 +859,8 @@ export function IndustryDetail({ industryId, onBack }: IndustryDetailProps) {
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
               {industry.compliance.map((comp, idx) => (
-                <div key={idx} className="flex items-center gap-2 p-3 bg-green-50 rounded border border-green-200">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
+                <div key={idx} className="flex items-center gap-2 p-3 bg-green-500/10 rounded border border-green-500/30">
+                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
                   <span className="text-sm font-medium text-white">{comp}</span>
                 </div>
               ))}

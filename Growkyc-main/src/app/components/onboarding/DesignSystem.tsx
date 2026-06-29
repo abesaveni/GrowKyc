@@ -29,7 +29,7 @@ export const SecondaryButton: React.FC<{
   <button
     onClick={onClick}
     disabled={disabled}
-    className={`px-6 py-3 bg-white text-gray-700 font-semibold rounded-lg border-2 border-gray-300 hover:bg-gray-50 disabled:bg-gray-100 disabled:cursor-not-allowed transition-colors ${className}`}
+    className={`px-6 py-3 bg-white text-slate-300 font-semibold rounded-lg border-2 border-white/10 hover:bg-white/5 disabled:bg-white/5 disabled:cursor-not-allowed transition-colors ${className}`}
   >
     {children}
   </button>
@@ -101,19 +101,19 @@ export const StatusBadge: React.FC<{
   className?: string;
 }> = ({ status, className = '' }) => {
   const configs: Record<BadgeStatus, { bg: string; text: string; label: string; icon: React.ComponentType<any> | null }> = {
-    'draft': { bg: 'bg-gray-100', text: 'text-gray-700', label: 'Draft', icon: null },
-    'awaiting-client': { bg: 'bg-yellow-100', text: 'text-yellow-700', label: 'Awaiting Client', icon: Clock },
-    'awaiting-id': { bg: 'bg-blue-100', text: 'text-blue-700', label: 'Awaiting ID', icon: Clock },
-    'sanctions-pending': { bg: 'bg-purple-100', text: 'text-purple-700', label: 'Sanctions Pending', icon: Shield },
-    'low-risk': { bg: 'bg-green-100', text: 'text-green-700', label: 'Low Risk', icon: Check },
-    'medium-risk': { bg: 'bg-amber-100', text: 'text-amber-700', label: 'Medium Risk', icon: AlertTriangle },
-    'high-risk': { bg: 'bg-red-100', text: 'text-red-700', label: 'High Risk', icon: AlertTriangle },
-    'escalated': { bg: 'bg-orange-100', text: 'text-orange-700', label: 'Escalated', icon: AlertTriangle },
-    'approved': { bg: 'bg-green-100', text: 'text-green-700', label: 'Approved', icon: Check },
-    'activated': { bg: 'bg-blue-100', text: 'text-blue-700', label: 'Activated', icon: Check },
-    'pending': { bg: 'bg-gray-100', text: 'text-gray-700', label: 'Pending', icon: Clock },
-    'verified': { bg: 'bg-green-100', text: 'text-green-700', label: 'Verified', icon: Check },
-    'rejected': { bg: 'bg-red-100', text: 'text-red-700', label: 'Rejected', icon: X },
+    'draft': { bg: 'bg-white/5', text: 'text-slate-300', label: 'Draft', icon: null },
+    'awaiting-client': { bg: 'bg-yellow-500/15', text: 'text-yellow-300', label: 'Awaiting Client', icon: Clock },
+    'awaiting-id': { bg: 'bg-blue-500/15', text: 'text-blue-300', label: 'Awaiting ID', icon: Clock },
+    'sanctions-pending': { bg: 'bg-purple-500/15', text: 'text-purple-300', label: 'Sanctions Pending', icon: Shield },
+    'low-risk': { bg: 'bg-green-500/15', text: 'text-green-300', label: 'Low Risk', icon: Check },
+    'medium-risk': { bg: 'bg-amber-500/15', text: 'text-amber-300', label: 'Medium Risk', icon: AlertTriangle },
+    'high-risk': { bg: 'bg-red-500/15', text: 'text-red-300', label: 'High Risk', icon: AlertTriangle },
+    'escalated': { bg: 'bg-orange-500/15', text: 'text-orange-300', label: 'Escalated', icon: AlertTriangle },
+    'approved': { bg: 'bg-green-500/15', text: 'text-green-300', label: 'Approved', icon: Check },
+    'activated': { bg: 'bg-blue-500/15', text: 'text-blue-300', label: 'Activated', icon: Check },
+    'pending': { bg: 'bg-white/5', text: 'text-slate-300', label: 'Pending', icon: Clock },
+    'verified': { bg: 'bg-green-500/15', text: 'text-green-300', label: 'Verified', icon: Check },
+    'rejected': { bg: 'bg-red-500/15', text: 'text-red-300', label: 'Rejected', icon: X },
   };
 
   const config = configs[status];
@@ -148,9 +148,9 @@ export const RiskMeter: React.FC<{
 
   return (
     <div className="flex flex-col gap-2">
-      {label && <span className={`font-semibold text-gray-700 ${sizes[size].text}`}>{label}</span>}
+      {label && <span className={`font-semibold text-slate-300 ${sizes[size].text}`}>{label}</span>}
       <div className="flex items-center gap-3">
-        <div className={`${sizes[size].width} ${sizes[size].height} bg-gray-200 rounded-full overflow-hidden`}>
+        <div className={`${sizes[size].width} ${sizes[size].height} bg-white/10 rounded-full overflow-hidden`}>
           <div 
             className={`${sizes[size].height} bg-${risk.color}-600 transition-all duration-300`}
             style={{ width: `${score}%` }}
@@ -176,8 +176,8 @@ export const TextInput: React.FC<{
   disabled?: boolean;
 }> = ({ label, value, onChange, placeholder, required, error, disabled }) => (
   <div className="flex flex-col gap-2">
-    <label className="text-sm font-semibold text-gray-700">
-      {label} {required && <span className="text-red-600">*</span>}
+    <label className="text-sm font-semibold text-slate-300">
+      {label} {required && <span className="text-red-400">*</span>}
     </label>
     <input
       type="text"
@@ -185,11 +185,11 @@ export const TextInput: React.FC<{
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
       disabled={disabled}
-      className={`px-4 py-3 border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed ${
-        error ? 'border-red-300 focus:ring-red-500' : 'border-gray-300'
+      className={`px-4 py-3 border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-white/5 disabled:cursor-not-allowed ${
+        error ? 'border-red-300 focus:ring-red-500' : 'border-white/10'
       }`}
     />
-    {error && <span className="text-xs text-red-600">{error}</span>}
+    {error && <span className="text-xs text-red-400">{error}</span>}
   </div>
 );
 
@@ -201,18 +201,18 @@ export const DateInput: React.FC<{
   error?: string;
 }> = ({ label, value, onChange, required, error }) => (
   <div className="flex flex-col gap-2">
-    <label className="text-sm font-semibold text-gray-700">
-      {label} {required && <span className="text-red-600">*</span>}
+    <label className="text-sm font-semibold text-slate-300">
+      {label} {required && <span className="text-red-400">*</span>}
     </label>
     <input
       type="date"
       value={value}
       onChange={(e) => onChange(e.target.value)}
       className={`px-4 py-3 border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-        error ? 'border-red-300 focus:ring-red-500' : 'border-gray-300'
+        error ? 'border-red-300 focus:ring-red-500' : 'border-white/10'
       }`}
     />
-    {error && <span className="text-xs text-red-600">{error}</span>}
+    {error && <span className="text-xs text-red-400">{error}</span>}
   </div>
 );
 
@@ -226,14 +226,14 @@ export const DropdownInput: React.FC<{
   placeholder?: string;
 }> = ({ label, value, onChange, options, required, error, placeholder }) => (
   <div className="flex flex-col gap-2">
-    <label className="text-sm font-semibold text-gray-700">
-      {label} {required && <span className="text-red-600">*</span>}
+    <label className="text-sm font-semibold text-slate-300">
+      {label} {required && <span className="text-red-400">*</span>}
     </label>
     <select
       value={value}
       onChange={(e) => onChange(e.target.value)}
       className={`px-4 py-3 border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-        error ? 'border-red-300 focus:ring-red-500' : 'border-gray-300'
+        error ? 'border-red-300 focus:ring-red-500' : 'border-white/10'
       }`}
     >
       {placeholder && <option value="">{placeholder}</option>}
@@ -243,7 +243,7 @@ export const DropdownInput: React.FC<{
         </option>
       ))}
     </select>
-    {error && <span className="text-xs text-red-600">{error}</span>}
+    {error && <span className="text-xs text-red-400">{error}</span>}
   </div>
 );
 
@@ -261,12 +261,12 @@ export const RiskFlagToggle: React.FC<{
   };
 
   return (
-    <div className="flex items-start gap-3 p-4 border-2 border-gray-200 rounded-lg hover:border-gray-300 transition-colors">
+    <div className="flex items-start gap-3 p-4 border-2 border-white/10 rounded-lg hover:border-white/10 transition-colors">
       <button
         type="button"
         onClick={() => onChange(!checked)}
         className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-          checked ? colors[riskLevel] : 'bg-gray-200'
+          checked ? colors[riskLevel] : 'bg-white/10'
         }`}
       >
         <span
@@ -276,8 +276,8 @@ export const RiskFlagToggle: React.FC<{
         />
       </button>
       <div className="flex-1">
-        <p className="font-semibold text-gray-900">{label}</p>
-        {description && <p className="text-sm text-gray-600 mt-1">{description}</p>}
+        <p className="font-semibold text-slate-100">{label}</p>
+        {description && <p className="text-sm text-slate-300 mt-1">{description}</p>}
       </div>
     </div>
   );
@@ -293,14 +293,14 @@ export const FileUploadArea: React.FC<{
   fileName?: string;
 }> = ({ label, onUpload, accept, required, uploaded, fileName }) => (
   <div className="flex flex-col gap-2">
-    <label className="text-sm font-semibold text-gray-700">
-      {label} {required && <span className="text-red-600">*</span>}
+    <label className="text-sm font-semibold text-slate-300">
+      {label} {required && <span className="text-red-400">*</span>}
     </label>
     <div
       className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${
         uploaded
-          ? 'border-green-300 bg-green-50'
-          : 'border-gray-300 bg-gray-50 hover:border-blue-400 hover:bg-blue-50'
+          ? 'border-green-300 bg-green-500/10'
+          : 'border-white/10 bg-white/5 hover:border-blue-400 hover:bg-blue-500/10'
       }`}
       onClick={() => {
         const input = document.createElement('input');
@@ -315,15 +315,15 @@ export const FileUploadArea: React.FC<{
     >
       {uploaded ? (
         <div className="flex flex-col items-center gap-2">
-          <Check className="w-8 h-8 text-green-600" />
-          <p className="font-semibold text-green-700">{fileName || 'File Uploaded'}</p>
-          <p className="text-xs text-green-600">Click to replace</p>
+          <Check className="w-8 h-8 text-green-400" />
+          <p className="font-semibold text-green-300">{fileName || 'File Uploaded'}</p>
+          <p className="text-xs text-green-400">Click to replace</p>
         </div>
       ) : (
         <div className="flex flex-col items-center gap-2">
           <ChevronRight className="w-8 h-8 text-gray-400 rotate-90" />
-          <p className="font-semibold text-gray-700">Drag and drop or click to upload</p>
-          <p className="text-xs text-gray-500">{accept || 'All file types accepted'}</p>
+          <p className="font-semibold text-slate-300">Drag and drop or click to upload</p>
+          <p className="text-xs text-slate-400">{accept || 'All file types accepted'}</p>
         </div>
       )}
     </div>
@@ -338,23 +338,23 @@ export const ProgressIndicator: React.FC<{
 }> = ({ currentStep, totalSteps, stepLabels }) => (
   <div className="w-full">
     <div className="flex items-center justify-between mb-2">
-      <span className="text-sm font-semibold text-gray-700">
+      <span className="text-sm font-semibold text-slate-300">
         Step {currentStep} of {totalSteps}
       </span>
-      <span className="text-sm text-gray-600">{Math.round((currentStep / totalSteps) * 100)}% Complete</span>
+      <span className="text-sm text-slate-300">{Math.round((currentStep / totalSteps) * 100)}% Complete</span>
     </div>
-    <div className="h-2 bg-gray-200 rounded-full overflow-hidden mb-4">
+    <div className="h-2 bg-white/10 rounded-full overflow-hidden mb-4">
       <div
         className="h-full bg-blue-600 transition-all duration-300"
         style={{ width: `${(currentStep / totalSteps) * 100}%` }}
       />
     </div>
-    <div className="grid grid-cols-3 gap-2 text-xs text-gray-600">
+    <div className="grid grid-cols-3 gap-2 text-xs text-slate-300">
       {stepLabels.map((label, idx) => (
         <div
           key={idx}
           className={`text-center ${
-            idx < currentStep ? 'text-blue-600 font-semibold' : idx === currentStep - 1 ? 'text-gray-900 font-semibold' : ''
+            idx < currentStep ? 'text-blue-400 font-semibold' : idx === currentStep - 1 ? 'text-slate-100 font-semibold' : ''
           }`}
         >
           {label}
@@ -373,15 +373,15 @@ export const CompletionChecklist: React.FC<{
       <div
         key={idx}
         className={`flex items-center gap-3 p-3 rounded-lg ${
-          item.complete ? 'bg-green-50' : 'bg-gray-50'
+          item.complete ? 'bg-green-500/10' : 'bg-white/5'
         }`}
       >
         {item.complete ? (
-          <Check className="w-5 h-5 text-green-600" />
+          <Check className="w-5 h-5 text-green-400" />
         ) : (
-          <div className="w-5 h-5 border-2 border-gray-300 rounded" />
+          <div className="w-5 h-5 border-2 border-white/10 rounded" />
         )}
-        <span className={`font-medium ${item.complete ? 'text-green-900' : 'text-gray-700'}`}>
+        <span className={`font-medium ${item.complete ? 'text-green-300' : 'text-slate-300'}`}>
           {item.label}
         </span>
       </div>

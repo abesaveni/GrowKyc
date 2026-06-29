@@ -195,9 +195,9 @@ export function PracticeIntegrations({ onBack }: PracticeIntegrationsProps) {
 
   const getSyncStatusColor = (status: string | undefined) => {
     switch (status) {
-      case 'syncing': return 'text-blue-600';
-      case 'idle': return 'text-green-600';
-      case 'error': return 'text-red-600';
+      case 'syncing': return 'text-blue-400';
+      case 'idle': return 'text-green-400';
+      case 'error': return 'text-red-400';
       default: return 'text-slate-300';
     }
   };
@@ -304,9 +304,9 @@ export function PracticeIntegrations({ onBack }: PracticeIntegrationsProps) {
               key={integration.id}
               className={`border-2 ${
                 integration.status === 'connected'
-                  ? 'border-green-200 bg-green-50'
+                  ? 'border-green-500/30 bg-green-500/10'
                   : integration.status === 'error'
-                  ? 'border-red-200 bg-red-50'
+                  ? 'border-red-500/30 bg-red-500/10'
                   : 'border-white/10'
               }`}
             >
@@ -361,21 +361,21 @@ export function PracticeIntegrations({ onBack }: PracticeIntegrationsProps) {
                         <div className="flex items-center gap-6 mb-4">
                           {integration.clientsSynced !== undefined && (
                             <div className="flex items-center gap-2 text-sm">
-                              <Users className="w-4 h-4 text-blue-600" />
+                              <Users className="w-4 h-4 text-blue-400" />
                               <span className="font-semibold text-white">{integration.clientsSynced}</span>
                               <span className="text-slate-300">clients</span>
                             </div>
                           )}
                           {integration.jobsCreated !== undefined && (
                             <div className="flex items-center gap-2 text-sm">
-                              <Briefcase className="w-4 h-4 text-purple-600" />
+                              <Briefcase className="w-4 h-4 text-purple-400" />
                               <span className="font-semibold text-white">{integration.jobsCreated}</span>
                               <span className="text-slate-300">jobs</span>
                             </div>
                           )}
                           {integration.documentsSynced !== undefined && (
                             <div className="flex items-center gap-2 text-sm">
-                              <FileText className="w-4 h-4 text-green-600" />
+                              <FileText className="w-4 h-4 text-green-400" />
                               <span className="font-semibold text-white">{integration.documentsSynced}</span>
                               <span className="text-slate-300">documents</span>
                             </div>
@@ -389,7 +389,7 @@ export function PracticeIntegrations({ onBack }: PracticeIntegrationsProps) {
                         <div className="grid grid-cols-2 gap-2">
                           {integration.features.map((feature, idx) => (
                             <div key={idx} className="flex items-center gap-2 text-sm text-slate-300">
-                              <CheckCircle className="w-3 h-3 text-green-600 flex-shrink-0" />
+                              <CheckCircle className="w-3 h-3 text-green-400 flex-shrink-0" />
                               <span>{feature}</span>
                             </div>
                           ))}
@@ -414,7 +414,7 @@ export function PracticeIntegrations({ onBack }: PracticeIntegrationsProps) {
                           <Eye className="w-4 h-4 mr-2" />
                           View Logs
                         </Button>
-                        <Button variant="outline" size="sm" className="text-red-600 hover:text-red-700">
+                        <Button variant="outline" size="sm" className="text-red-400 hover:text-red-300">
                           Disconnect
                         </Button>
                       </>
@@ -432,10 +432,10 @@ export function PracticeIntegrations({ onBack }: PracticeIntegrationsProps) {
         </div>
 
         {/* Workflow Automation */}
-        <Card className="mb-12 bg-gradient-to-br from-indigo-50 to-purple-50 border-2 border-indigo-200">
+        <Card className="mb-12 bg-gradient-to-br from-indigo-50 to-purple-50 border-2 border-indigo-500/30">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Zap className="w-5 h-5 text-indigo-600" />
+              <Zap className="w-5 h-5 text-indigo-400" />
               Automated Workflows
             </CardTitle>
             <CardDescription>Pre-configured automation rules using integrations</CardDescription>
@@ -472,7 +472,7 @@ export function PracticeIntegrations({ onBack }: PracticeIntegrationsProps) {
                   runs: 32
                 }
               ].map((workflow, idx) => (
-                <div key={idx} className="p-5 bg-[#1e293b] rounded-xl border-2 border-indigo-200">
+                <div key={idx} className="p-5 bg-[#1e293b] rounded-xl border-2 border-indigo-500/30">
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
@@ -484,13 +484,13 @@ export function PracticeIntegrations({ onBack }: PracticeIntegrationsProps) {
                       <p className="text-sm text-slate-300 mb-3">{workflow.description}</p>
                       <div className="flex items-center gap-3">
                         <div className="flex items-center gap-2">
-                          <Link2 className="w-4 h-4 text-indigo-600" />
+                          <Link2 className="w-4 h-4 text-indigo-400" />
                           <span className="text-sm text-slate-300">
                             {workflow.integrations.join(' → ')}
                           </span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <PlayCircle className="w-4 h-4 text-green-600" />
+                          <PlayCircle className="w-4 h-4 text-green-400" />
                           <span className="text-sm text-slate-300">
                             {workflow.runs} successful runs
                           </span>
@@ -515,19 +515,19 @@ export function PracticeIntegrations({ onBack }: PracticeIntegrationsProps) {
         </Card>
 
         {/* API Access */}
-        <Card className="bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200">
+        <Card className="bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-500/30">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Code className="w-5 h-5 text-blue-600" />
+              <Code className="w-5 h-5 text-blue-400" />
               API Platform
             </CardTitle>
             <CardDescription>RESTful API for custom integrations</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-3 gap-4">
-              <div className="p-4 bg-[#1e293b] rounded-lg border border-blue-200">
+              <div className="p-4 bg-[#1e293b] rounded-lg border border-blue-500/30">
                 <div className="flex items-center gap-2 mb-2">
-                  <Lock className="w-4 h-4 text-blue-600" />
+                  <Lock className="w-4 h-4 text-blue-400" />
                   <h4 className="font-bold text-white">API Keys</h4>
                 </div>
                 <p className="text-sm text-slate-300 mb-3">Manage your API access</p>
@@ -536,9 +536,9 @@ export function PracticeIntegrations({ onBack }: PracticeIntegrationsProps) {
                 </Button>
               </div>
 
-              <div className="p-4 bg-[#1e293b] rounded-lg border border-blue-200">
+              <div className="p-4 bg-[#1e293b] rounded-lg border border-blue-500/30">
                 <div className="flex items-center gap-2 mb-2">
-                  <FileText className="w-4 h-4 text-blue-600" />
+                  <FileText className="w-4 h-4 text-blue-400" />
                   <h4 className="font-bold text-white">Documentation</h4>
                 </div>
                 <p className="text-sm text-slate-300 mb-3">Complete API reference</p>
@@ -547,9 +547,9 @@ export function PracticeIntegrations({ onBack }: PracticeIntegrationsProps) {
                 </Button>
               </div>
 
-              <div className="p-4 bg-[#1e293b] rounded-lg border border-blue-200">
+              <div className="p-4 bg-[#1e293b] rounded-lg border border-blue-500/30">
                 <div className="flex items-center gap-2 mb-2">
-                  <TrendingUp className="w-4 h-4 text-blue-600" />
+                  <TrendingUp className="w-4 h-4 text-blue-400" />
                   <h4 className="font-bold text-white">Webhooks</h4>
                 </div>
                 <p className="text-sm text-slate-300 mb-3">Real-time event notifications</p>

@@ -173,36 +173,36 @@ export function ActivityFeed() {
     const iconClass = "w-5 h-5";
     switch (type) {
       case 'user':
-        return <User className={`${iconClass} text-blue-600`} />;
+        return <User className={`${iconClass} text-blue-400`} />;
       case 'case':
-        return <FileText className={`${iconClass} text-green-600`} />;
+        return <FileText className={`${iconClass} text-green-400`} />;
       case 'bid':
-        return <Gavel className={`${iconClass} text-purple-600`} />;
+        return <Gavel className={`${iconClass} text-purple-400`} />;
       case 'payment':
-        return <DollarSign className={`${iconClass} text-emerald-600`} />;
+        return <DollarSign className={`${iconClass} text-emerald-400`} />;
       case 'contract':
-        return <FileText className={`${iconClass} text-indigo-600`} />;
+        return <FileText className={`${iconClass} text-indigo-400`} />;
       case 'message':
-        return <MessageSquare className={`${iconClass} text-amber-600`} />;
+        return <MessageSquare className={`${iconClass} text-amber-400`} />;
       case 'kyc':
-        return <Shield className={`${iconClass} text-red-600`} />;
+        return <Shield className={`${iconClass} text-red-400`} />;
       case 'system':
-        return <Activity className={`${iconClass} text-gray-600`} />;
+        return <Activity className={`${iconClass} text-slate-300`} />;
       default:
-        return <Activity className={`${iconClass} text-gray-600`} />;
+        return <Activity className={`${iconClass} text-slate-300`} />;
     }
   };
 
   const getTypeBadge = (type: string) => {
     const colors = {
-      user: 'bg-blue-100 text-blue-800',
-      case: 'bg-green-100 text-green-800',
-      bid: 'bg-purple-100 text-purple-800',
-      payment: 'bg-emerald-100 text-emerald-800',
-      contract: 'bg-indigo-100 text-indigo-800',
-      message: 'bg-amber-100 text-amber-800',
-      kyc: 'bg-red-100 text-red-800',
-      system: 'bg-gray-100 text-gray-800'
+      user: 'bg-blue-500/15 text-blue-300',
+      case: 'bg-green-500/15 text-green-300',
+      bid: 'bg-purple-500/15 text-purple-300',
+      payment: 'bg-emerald-500/15 text-emerald-300',
+      contract: 'bg-indigo-500/15 text-indigo-300',
+      message: 'bg-amber-500/15 text-amber-300',
+      kyc: 'bg-red-500/15 text-red-300',
+      system: 'bg-white/5 text-slate-100'
     };
     return (
       <span className={`px-2 py-0.5 rounded text-xs font-semibold ${colors[type as keyof typeof colors]}`}>
@@ -247,12 +247,12 @@ export function ActivityFeed() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 mb-1">Total Activities</p>
-                <p className="text-3xl font-semibold text-gray-900">{activities.length}</p>
-                <p className="text-xs text-gray-500 mt-1">All time</p>
+                <p className="text-sm text-slate-300 mb-1">Total Activities</p>
+                <p className="text-3xl font-semibold text-slate-100">{activities.length}</p>
+                <p className="text-xs text-slate-400 mt-1">All time</p>
               </div>
-              <div className="p-3 bg-blue-50 rounded-lg">
-                <Activity className="w-6 h-6 text-blue-600" />
+              <div className="p-3 bg-blue-500/10 rounded-lg">
+                <Activity className="w-6 h-6 text-blue-400" />
               </div>
             </div>
           </CardContent>
@@ -262,14 +262,14 @@ export function ActivityFeed() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 mb-1">Last Hour</p>
-                <p className="text-3xl font-semibold text-gray-900">
+                <p className="text-sm text-slate-300 mb-1">Last Hour</p>
+                <p className="text-3xl font-semibold text-slate-100">
                   {activities.filter(a => Date.now() - a.timestamp.getTime() < 60 * 60 * 1000).length}
                 </p>
-                <p className="text-xs text-gray-500 mt-1">Recent activity</p>
+                <p className="text-xs text-slate-400 mt-1">Recent activity</p>
               </div>
-              <div className="p-3 bg-green-50 rounded-lg">
-                <Clock className="w-6 h-6 text-green-600" />
+              <div className="p-3 bg-green-500/10 rounded-lg">
+                <Clock className="w-6 h-6 text-green-400" />
               </div>
             </div>
           </CardContent>
@@ -279,14 +279,14 @@ export function ActivityFeed() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 mb-1">Today</p>
-                <p className="text-3xl font-semibold text-gray-900">
+                <p className="text-sm text-slate-300 mb-1">Today</p>
+                <p className="text-3xl font-semibold text-slate-100">
                   {activities.filter(a => Date.now() - a.timestamp.getTime() < 24 * 60 * 60 * 1000).length}
                 </p>
-                <p className="text-xs text-gray-500 mt-1">Last 24 hours</p>
+                <p className="text-xs text-slate-400 mt-1">Last 24 hours</p>
               </div>
-              <div className="p-3 bg-purple-50 rounded-lg">
-                <CheckCircle className="w-6 h-6 text-purple-600" />
+              <div className="p-3 bg-purple-500/10 rounded-lg">
+                <CheckCircle className="w-6 h-6 text-purple-400" />
               </div>
             </div>
           </CardContent>
@@ -296,14 +296,14 @@ export function ActivityFeed() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 mb-1">This Week</p>
-                <p className="text-3xl font-semibold text-gray-900">
+                <p className="text-sm text-slate-300 mb-1">This Week</p>
+                <p className="text-3xl font-semibold text-slate-100">
                   {activities.filter(a => Date.now() - a.timestamp.getTime() < 7 * 24 * 60 * 60 * 1000).length}
                 </p>
-                <p className="text-xs text-gray-500 mt-1">Last 7 days</p>
+                <p className="text-xs text-slate-400 mt-1">Last 7 days</p>
               </div>
-              <div className="p-3 bg-amber-50 rounded-lg">
-                <Activity className="w-6 h-6 text-amber-600" />
+              <div className="p-3 bg-amber-500/10 rounded-lg">
+                <Activity className="w-6 h-6 text-amber-400" />
               </div>
             </div>
           </CardContent>
@@ -332,7 +332,7 @@ export function ActivityFeed() {
               <select
                 value={typeFilter}
                 onChange={(e) => setTypeFilter(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                className="px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="all">All Types</option>
                 <option value="user">User</option>
@@ -349,7 +349,7 @@ export function ActivityFeed() {
               <select
                 value={timeFilter}
                 onChange={(e) => setTimeFilter(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                className="px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="all">All Time</option>
                 <option value="1h">Last Hour</option>
@@ -395,11 +395,11 @@ export function ActivityFeed() {
               {filteredActivities.map((activity, index) => (
                 <div
                   key={activity.id}
-                  className="flex gap-4 p-4 border rounded-lg hover:bg-gray-50 transition-colors"
+                  className="flex gap-4 p-4 border rounded-lg hover:bg-white/5 transition-colors"
                 >
                   {/* Icon */}
                   <div className="flex-shrink-0">
-                    <div className="p-2 bg-gray-100 rounded-lg">
+                    <div className="p-2 bg-white/5 rounded-lg">
                       {getActivityIcon(activity.type)}
                     </div>
                   </div>
@@ -408,22 +408,22 @@ export function ActivityFeed() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between gap-2 mb-1">
                       <div className="flex items-center gap-2">
-                        <h4 className="font-semibold text-gray-900">{activity.action}</h4>
+                        <h4 className="font-semibold text-slate-100">{activity.action}</h4>
                         {getTypeBadge(activity.type)}
                         {activity.metadata?.caseNumber && (
-                          <span className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded">
+                          <span className="text-xs text-slate-400 bg-white/5 px-2 py-0.5 rounded">
                             {activity.metadata.caseNumber}
                           </span>
                         )}
                       </div>
-                      <span className="text-xs text-gray-500 whitespace-nowrap">
+                      <span className="text-xs text-slate-400 whitespace-nowrap">
                         {formatDistanceToNow(activity.timestamp, { addSuffix: true })}
                       </span>
                     </div>
                     
-                    <p className="text-sm text-gray-600 mb-2">{activity.description}</p>
+                    <p className="text-sm text-slate-300 mb-2">{activity.description}</p>
                     
-                    <div className="flex items-center gap-4 text-xs text-gray-500">
+                    <div className="flex items-center gap-4 text-xs text-slate-400">
                       <span className="flex items-center gap-1">
                         <User className="w-3 h-3" />
                         {activity.user}
@@ -433,7 +433,7 @@ export function ActivityFeed() {
                       {activity.metadata?.amount && (
                         <>
                           <span>•</span>
-                          <span className="font-semibold text-green-600">
+                          <span className="font-semibold text-green-400">
                             A${activity.metadata.amount.toLocaleString()}
                           </span>
                         </>

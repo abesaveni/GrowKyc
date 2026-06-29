@@ -250,11 +250,11 @@ export function SystemHealthDashboard({ onBack }: SystemHealthDashboardProps) {
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-4">
                   <p className="text-sm text-slate-300">{metric.label}</p>
-                  <Icon className={`w-5 h-5 ${isPositive ? 'text-[#3DD598]' : 'text-red-600'}`} />
+                  <Icon className={`w-5 h-5 ${isPositive ? 'text-[#3DD598]' : 'text-red-400'}`} />
                 </div>
                 <div className="flex items-baseline gap-2">
                   <p className="text-2xl font-bold text-white">{metric.value}</p>
-                  <span className={`text-sm font-semibold ${isPositive ? 'text-[#3DD598]' : 'text-red-600'}`}>
+                  <span className={`text-sm font-semibold ${isPositive ? 'text-[#3DD598]' : 'text-red-400'}`}>
                     {metric.change}
                   </span>
                 </div>
@@ -357,7 +357,7 @@ export function SystemHealthDashboard({ onBack }: SystemHealthDashboardProps) {
                       {resource.value}{resource.unit}
                     </span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-3">
+                  <div className="w-full bg-white/10 rounded-full h-3">
                     <div
                       className={`${getProgressBarColor(resource.value)} h-3 rounded-full transition-all`}
                       style={{ width: `${resource.value}%` }}

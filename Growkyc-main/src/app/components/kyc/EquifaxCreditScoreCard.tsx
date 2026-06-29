@@ -48,42 +48,42 @@ export function EquifaxCreditScoreCard({ data }: EquifaxCreditScoreCardProps) {
       case 'Excellent':
         return { 
           primary: '#10b981', // green-500
-          bg: 'bg-green-50', 
-          border: 'border-green-200',
-          text: 'text-green-700',
+          bg: 'bg-green-500/10', 
+          border: 'border-green-500/30',
+          text: 'text-green-300',
           gradient: 'from-green-500 to-emerald-600'
         };
       case 'Very Good':
         return { 
           primary: '#3b82f6', // blue-500
-          bg: 'bg-blue-50', 
-          border: 'border-blue-200',
-          text: 'text-blue-700',
+          bg: 'bg-blue-500/10', 
+          border: 'border-blue-500/30',
+          text: 'text-blue-300',
           gradient: 'from-blue-500 to-indigo-600'
         };
       case 'Good':
         return { 
           primary: '#8b5cf6', // purple-500
-          bg: 'bg-purple-50', 
-          border: 'border-purple-200',
-          text: 'text-purple-700',
+          bg: 'bg-purple-500/10', 
+          border: 'border-purple-500/30',
+          text: 'text-purple-300',
           gradient: 'from-purple-500 to-violet-600'
         };
       case 'Fair':
         return { 
           primary: '#f59e0b', // amber-500
-          bg: 'bg-amber-50', 
-          border: 'border-amber-200',
-          text: 'text-amber-700',
+          bg: 'bg-amber-500/10', 
+          border: 'border-amber-500/30',
+          text: 'text-amber-300',
           gradient: 'from-amber-500 to-orange-600'
         };
       case 'Poor':
       default:
         return { 
           primary: '#ef4444', // red-500
-          bg: 'bg-red-50', 
-          border: 'border-red-200',
-          text: 'text-red-700',
+          bg: 'bg-red-500/10', 
+          border: 'border-red-500/30',
+          text: 'text-red-300',
           gradient: 'from-red-500 to-rose-600'
         };
     }
@@ -97,15 +97,15 @@ export function EquifaxCreditScoreCard({ data }: EquifaxCreditScoreCardProps) {
   const trend = scoreDiff > 0 ? 'up' : scoreDiff < 0 ? 'down' : 'stable';
 
   return (
-    <Card className="border-2 border-slate-200 shadow-xl overflow-hidden bg-white dark:bg-slate-900">
-      <CardHeader className="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700 py-4 px-6 flex flex-row items-center justify-between">
+    <Card className="border-2 border-white/10 shadow-xl overflow-hidden bg-white dark:bg-slate-900">
+      <CardHeader className="bg-white/5 dark:bg-slate-800/50 border-b border-white/10 dark:border-slate-700 py-4 px-6 flex flex-row items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className={`p-2 rounded-lg bg-white dark:bg-slate-800 shadow-sm border border-slate-200 dark:border-slate-700`}>
-            <Shield className="w-5 h-5 text-indigo-600" />
+          <div className={`p-2 rounded-lg bg-white dark:bg-slate-800 shadow-sm border border-white/10 dark:border-slate-700`}>
+            <Shield className="w-5 h-5 text-indigo-400" />
           </div>
           <div>
-            <CardTitle className="text-lg font-bold text-slate-800 dark:text-slate-100">Equifax Credit Intelligence</CardTitle>
-            <p className="text-xs text-slate-500 font-medium flex items-center gap-1">
+            <CardTitle className="text-lg font-bold text-slate-100 dark:text-slate-100">Equifax Credit Intelligence</CardTitle>
+            <p className="text-xs text-slate-400 font-medium flex items-center gap-1">
               <Clock className="w-3 h-3" />
               Verified as of {lastUpdated}
             </p>
@@ -122,7 +122,7 @@ export function EquifaxCreditScoreCard({ data }: EquifaxCreditScoreCardProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           
           {/* Left Column: Gauge & Primary Stats */}
-          <div className="lg:col-span-4 flex flex-col items-center justify-center border-r border-slate-100 dark:border-slate-800 pr-8">
+          <div className="lg:col-span-4 flex flex-col items-center justify-center border-r border-white/10 dark:border-slate-800 pr-8">
             <div className="relative w-64 h-32 mb-4">
               <svg className="w-full h-full" viewBox="0 0 200 100">
                 <defs>
@@ -176,7 +176,7 @@ export function EquifaxCreditScoreCard({ data }: EquifaxCreditScoreCardProps) {
               </svg>
               
               <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 text-center">
-                <span className="text-4xl font-black text-slate-800 dark:text-white tracking-tighter">
+                <span className="text-4xl font-black text-slate-100 dark:text-white tracking-tighter">
                   {currentScore}
                 </span>
                 <div className="flex items-center justify-center gap-1 mt-1">
@@ -189,13 +189,13 @@ export function EquifaxCreditScoreCard({ data }: EquifaxCreditScoreCardProps) {
             </div>
 
             <div className="mt-8 w-full space-y-3">
-              <div className="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
-                <span className="text-xs font-bold text-slate-500 uppercase">Risk Tier</span>
+              <div className="flex items-center justify-between p-3 rounded-xl bg-white/5 dark:bg-slate-800 border border-white/10 dark:border-slate-700">
+                <span className="text-xs font-bold text-slate-400 uppercase">Risk Tier</span>
                 <span className={`font-black ${colors.text}`}>{riskBand}</span>
               </div>
-              <div className="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
-                <span className="text-xs font-bold text-slate-500 uppercase">Trend (30d)</span>
-                <span className={`font-black flex items-center gap-1 ${trend === 'up' ? 'text-green-600' : trend === 'down' ? 'text-red-600' : 'text-slate-600'}`}>
+              <div className="flex items-center justify-between p-3 rounded-xl bg-white/5 dark:bg-slate-800 border border-white/10 dark:border-slate-700">
+                <span className="text-xs font-bold text-slate-400 uppercase">Trend (30d)</span>
+                <span className={`font-black flex items-center gap-1 ${trend === 'up' ? 'text-green-400' : trend === 'down' ? 'text-red-400' : 'text-slate-300'}`}>
                   {trend === 'up' ? '+' : trend === 'down' ? '' : ''}{scoreDiff} pts
                   {trend === 'up' && <TrendingUp className="w-4 h-4" />}
                   {trend === 'down' && <TrendingDown className="w-4 h-4" />}
@@ -207,7 +207,7 @@ export function EquifaxCreditScoreCard({ data }: EquifaxCreditScoreCardProps) {
           {/* Right Column: Trend Chart */}
           <div className="lg:col-span-8 flex flex-col">
             <div className="flex items-center justify-between mb-6">
-              <h4 className="font-bold text-slate-700 dark:text-slate-200 flex items-center gap-2">
+              <h4 className="font-bold text-slate-300 dark:text-slate-200 flex items-center gap-2">
                 <TrendingUp className="w-4 h-4 text-indigo-500" />
                 Score History & Trend Analysis
               </h4>
@@ -219,7 +219,7 @@ export function EquifaxCreditScoreCard({ data }: EquifaxCreditScoreCardProps) {
                     className={`px-3 py-1 rounded-md text-[10px] font-bold transition-all ${
                       period === selectedPeriod 
                         ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-200' 
-                        : 'bg-slate-100 text-slate-500 hover:bg-slate-200'
+                        : 'bg-white/5 text-slate-400 hover:bg-white/10'
                     }`}
                   >
                     {period}
@@ -273,19 +273,19 @@ export function EquifaxCreditScoreCard({ data }: EquifaxCreditScoreCardProps) {
               </ResponsiveContainer>
             </div>
 
-            <div className="mt-auto pt-6 flex items-center justify-between border-t border-slate-100 dark:border-slate-800">
+            <div className="mt-auto pt-6 flex items-center justify-between border-t border-white/10 dark:border-slate-800">
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-1.5">
                   <div className="w-2 h-2 rounded-full bg-indigo-500" />
-                  <span className="text-[10px] font-bold text-slate-500 uppercase">Equifax V9.2</span>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase">Equifax V9.2</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <div className="w-2 h-2 rounded-full bg-green-500" />
-                  <span className="text-[10px] font-bold text-slate-500 uppercase">Identity Match: 100%</span>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase">Identity Match: 100%</span>
                 </div>
               </div>
               <button 
-                className="flex items-center gap-1 text-xs font-bold text-indigo-600 hover:text-indigo-700 transition-colors"
+                className="flex items-center gap-1 text-xs font-bold text-indigo-400 hover:text-indigo-300 transition-colors"
                 onClick={() => {
                   const reportId = `EQX-${Math.floor(Math.random() * 1000000)}`;
                   toast.promise(
@@ -338,12 +338,12 @@ Confidentiality: Highly Restricted.
       </CardContent>
       
       {/* Footer Insight */}
-      <div className="bg-slate-50 dark:bg-slate-800/80 px-6 py-3 border-t border-slate-200 dark:border-slate-700 flex items-center gap-3">
-        <div className="w-8 h-8 rounded-full bg-white dark:bg-slate-700 flex items-center justify-center shadow-sm border border-slate-200 dark:border-slate-600">
+      <div className="bg-white/5 dark:bg-slate-800/80 px-6 py-3 border-t border-white/10 dark:border-slate-700 flex items-center gap-3">
+        <div className="w-8 h-8 rounded-full bg-white dark:bg-slate-700 flex items-center justify-center shadow-sm border border-white/10 dark:border-slate-600">
           <Info className="w-4 h-4 text-indigo-500" />
         </div>
-        <p className="text-xs text-slate-600 dark:text-slate-400 font-medium">
-          <span className="font-bold text-slate-800 dark:text-slate-200">AI Insight:</span> This client's credit profile is {trend === 'up' ? 'improving' : 'deteriorating'} based on recent enquiry patterns and repayment behaviors.
+        <p className="text-xs text-slate-300 dark:text-slate-400 font-medium">
+          <span className="font-bold text-slate-100 dark:text-slate-200">AI Insight:</span> This client's credit profile is {trend === 'up' ? 'improving' : 'deteriorating'} based on recent enquiry patterns and repayment behaviors.
         </p>
       </div>
     </Card>

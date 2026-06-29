@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Button } from '../ui/button';
 import {
   Send,
@@ -58,7 +58,7 @@ export function EmailModals({
         <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
-              <Settings className="w-5 h-5 text-blue-600" />
+              <Settings className="w-5 h-5 text-blue-400" />
               Email Settings
             </DialogTitle>
             <DialogDescription>
@@ -69,7 +69,7 @@ export function EmailModals({
           <div className="space-y-6 py-4">
             {/* SMTP Configuration */}
             <div className="space-y-4">
-              <h4 className="font-semibold text-gray-900">SMTP Configuration</h4>
+              <h4 className="font-semibold text-slate-100">SMTP Configuration</h4>
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <Label htmlFor="smtp-host">SMTP Host</Label>
@@ -92,7 +92,7 @@ export function EmailModals({
 
             {/* Sender Settings */}
             <div className="space-y-4">
-              <h4 className="font-semibold text-gray-900">Sender Settings</h4>
+              <h4 className="font-semibold text-slate-100">Sender Settings</h4>
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <Label htmlFor="from-name">From Name</Label>
@@ -115,33 +115,33 @@ export function EmailModals({
 
             {/* Notification Preferences */}
             <div className="space-y-4">
-              <h4 className="font-semibold text-gray-900">Notification Preferences</h4>
+              <h4 className="font-semibold text-slate-100">Notification Preferences</h4>
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <div>
                     <div className="font-medium text-sm">Daily Digest Emails</div>
-                    <div className="text-xs text-gray-500">Send daily summary emails to all users</div>
+                    <div className="text-xs text-slate-400">Send daily summary emails to all users</div>
                   </div>
                   <Switch defaultChecked />
                 </div>
                 <div className="flex items-center justify-between">
                   <div>
                     <div className="font-medium text-sm">Real-time Notifications</div>
-                    <div className="text-xs text-gray-500">Send immediate email for urgent updates</div>
+                    <div className="text-xs text-slate-400">Send immediate email for urgent updates</div>
                   </div>
                   <Switch defaultChecked />
                 </div>
                 <div className="flex items-center justify-between">
                   <div>
                     <div className="font-medium text-sm">Marketing Emails</div>
-                    <div className="text-xs text-gray-500">Include marketing content in newsletters</div>
+                    <div className="text-xs text-slate-400">Include marketing content in newsletters</div>
                   </div>
                   <Switch />
                 </div>
                 <div className="flex items-center justify-between">
                   <div>
                     <div className="font-medium text-sm">Email Analytics Tracking</div>
-                    <div className="text-xs text-gray-500">Track opens, clicks, and engagement</div>
+                    <div className="text-xs text-slate-400">Track opens, clicks, and engagement</div>
                   </div>
                   <Switch defaultChecked />
                 </div>
@@ -172,7 +172,7 @@ export function EmailModals({
         <DialogContent>
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
-              <Send className="w-5 h-5 text-blue-600" />
+              <Send className="w-5 h-5 text-blue-400" />
               Send Test Email
             </DialogTitle>
             <DialogDescription>
@@ -183,7 +183,7 @@ export function EmailModals({
           <div className="space-y-4 py-4">
             <div>
               <Label htmlFor="test-template">Select Template</Label>
-              <select id="test-template" className="w-full px-3 py-2 border border-gray-300 rounded-lg mt-1">
+              <select id="test-template" className="w-full px-3 py-2 border border-white/10 rounded-lg mt-1">
                 <option>Investor Daily Digest</option>
                 <option>Lender Daily Report</option>
                 <option>Lawyer Daily Briefing</option>
@@ -230,7 +230,7 @@ export function EmailModals({
             <div className="flex items-center justify-between">
               <div>
                 <DialogTitle className="flex items-center gap-2">
-                  <Eye className="w-5 h-5 text-blue-600" />
+                  <Eye className="w-5 h-5 text-blue-400" />
                   {selectedTemplate?.name || 'Template Preview'}
                 </DialogTitle>
                 <DialogDescription>Preview how this template appears to recipients</DialogDescription>
@@ -254,56 +254,56 @@ export function EmailModals({
             </div>
           </DialogHeader>
 
-          <div className="flex-1 overflow-y-auto border rounded-lg bg-gray-50 p-4">
+          <div className="flex-1 overflow-y-auto border rounded-lg bg-white/5 p-4">
             <div
               className={`mx-auto bg-white shadow-lg ${
                 previewDevice === 'mobile' ? 'max-w-sm' : 'max-w-3xl'
               }`}
             >
               {/* Mock Email Preview */}
-              <div className="border-b border-gray-200 p-6">
+              <div className="border-b border-white/10 p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-2xl font-bold text-gray-900">{selectedTemplate?.name}</h3>
-                  <span className="text-xs text-gray-500">February 21, 2026</span>
+                  <h3 className="text-2xl font-bold text-slate-100">{selectedTemplate?.name}</h3>
+                  <span className="text-xs text-slate-400">February 21, 2026</span>
                 </div>
-                <p className="text-gray-600">{selectedTemplate?.preview}</p>
+                <p className="text-slate-300">{selectedTemplate?.preview}</p>
               </div>
 
               <div className="p-6 space-y-6">
                 <div>
-                  <h4 className="font-semibold text-lg text-gray-900 mb-3">Market Updates</h4>
+                  <h4 className="font-semibold text-lg text-slate-100 mb-3">Market Updates</h4>
                   <div className="space-y-2">
-                    <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                    <div className="p-4 bg-blue-500/10 rounded-lg border border-blue-500/30">
                       <div className="flex justify-between items-center">
                         <span className="font-medium">New Property Listing</span>
-                        <span className="text-blue-600 font-bold">$2.4M</span>
+                        <span className="text-blue-400 font-bold">$2.4M</span>
                       </div>
-                      <p className="text-sm text-gray-600 mt-1">123 Main Street, Sydney NSW 2000</p>
+                      <p className="text-sm text-slate-300 mt-1">123 Main Street, Sydney NSW 2000</p>
                     </div>
-                    <div className="p-4 bg-green-50 rounded-lg border border-green-200">
+                    <div className="p-4 bg-green-500/10 rounded-lg border border-green-500/30">
                       <div className="flex justify-between items-center">
                         <span className="font-medium">Deal Closed</span>
-                        <span className="text-green-600 font-bold">$1.8M</span>
+                        <span className="text-green-400 font-bold">$1.8M</span>
                       </div>
-                      <p className="text-sm text-gray-600 mt-1">456 Park Avenue, Melbourne VIC 3000</p>
+                      <p className="text-sm text-slate-300 mt-1">456 Park Avenue, Melbourne VIC 3000</p>
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <h4 className="font-semibold text-lg text-gray-900 mb-3">Portfolio Performance</h4>
+                  <h4 className="font-semibold text-lg text-slate-100 mb-3">Portfolio Performance</h4>
                   <div className="grid grid-cols-3 gap-4">
-                    <div className="text-center p-4 bg-gray-50 rounded-lg">
-                      <div className="text-2xl font-bold text-gray-900">24</div>
-                      <div className="text-sm text-gray-600">Active Cases</div>
+                    <div className="text-center p-4 bg-white/5 rounded-lg">
+                      <div className="text-2xl font-bold text-slate-100">24</div>
+                      <div className="text-sm text-slate-300">Active Cases</div>
                     </div>
-                    <div className="text-center p-4 bg-gray-50 rounded-lg">
-                      <div className="text-2xl font-bold text-green-600">+12%</div>
-                      <div className="text-sm text-gray-600">This Month</div>
+                    <div className="text-center p-4 bg-white/5 rounded-lg">
+                      <div className="text-2xl font-bold text-green-400">+12%</div>
+                      <div className="text-sm text-slate-300">This Month</div>
                     </div>
-                    <div className="text-center p-4 bg-gray-50 rounded-lg">
-                      <div className="text-2xl font-bold text-blue-600">$12.4M</div>
-                      <div className="text-sm text-gray-600">Total Value</div>
+                    <div className="text-center p-4 bg-white/5 rounded-lg">
+                      <div className="text-2xl font-bold text-blue-400">$12.4M</div>
+                      <div className="text-sm text-slate-300">Total Value</div>
                     </div>
                   </div>
                 </div>
@@ -313,8 +313,8 @@ export function EmailModals({
                 </div>
               </div>
 
-              <div className="border-t border-gray-200 p-6 bg-gray-50">
-                <p className="text-xs text-gray-500 text-center">
+              <div className="border-t border-white/10 p-6 bg-white/5">
+                <p className="text-xs text-slate-400 text-center">
                   Â© 2026 Grow MIP. All rights reserved. | Unsubscribe | Preferences
                 </p>
               </div>
@@ -344,7 +344,7 @@ export function EmailModals({
         <DialogContent className="max-w-6xl max-h-[90vh] overflow-hidden flex flex-col">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
-              <Edit className="w-5 h-5 text-blue-600" />
+              <Edit className="w-5 h-5 text-blue-400" />
               Edit Template: {selectedTemplate?.name}
             </DialogTitle>
             <DialogDescription>Customize the email template content and design</DialogDescription>
@@ -359,7 +359,7 @@ export function EmailModals({
               </div>
               <div>
                 <Label htmlFor="template-category">Category</Label>
-                <select id="template-category" className="w-full px-3 py-2 border border-gray-300 rounded-lg">
+                <select id="template-category" className="w-full px-3 py-2 border border-white/10 rounded-lg">
                   <option>Daily Reports</option>
                   <option>Notifications</option>
                   <option>Onboarding</option>
@@ -426,14 +426,14 @@ export function EmailModals({
             </div>
 
             {/* Variables Helper */}
-            <div className="bg-blue-50 rounded-lg border border-blue-200 p-4">
-              <h4 className="font-semibold text-sm text-gray-900 mb-2">Available Variables</h4>
+            <div className="bg-blue-500/10 rounded-lg border border-blue-500/30 p-4">
+              <h4 className="font-semibold text-sm text-slate-100 mb-2">Available Variables</h4>
               <div className="flex flex-wrap gap-2">
                 {['{{user.name}}', '{{user.email}}', '{{case.id}}', '{{date.today}}', '{{company.name}}'].map(
                   (variable) => (
                     <code
                       key={variable}
-                      className="px-2 py-1 bg-white rounded text-blue-600 font-mono text-xs cursor-pointer hover:bg-blue-100"
+                      className="px-2 py-1 bg-white rounded text-blue-400 font-mono text-xs cursor-pointer hover:bg-blue-500/15"
                       onClick={() => toast.info(`Copied ${variable} to clipboard`)}
                     >
                       {variable}

@@ -381,8 +381,8 @@ export function VerticalOnboarding({ onComplete }: { onComplete?: () => void }) 
   const renderVerticalSelection = () => (
     <div className="space-y-8">
       <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-3">Choose Your Industry</h1>
-        <p className="text-lg text-gray-600">
+        <h1 className="text-3xl font-bold text-slate-100 mb-3">Choose Your Industry</h1>
+        <p className="text-lg text-slate-300">
           Select your vertical to customize the platform for your practice
         </p>
       </div>
@@ -398,40 +398,40 @@ export function VerticalOnboarding({ onComplete }: { onComplete?: () => void }) 
               onClick={() => setSelectedVertical(vertical.id)}
               className={`p-8 rounded-lg border-2 text-left transition-all hover:shadow-lg ${
                 isSelected
-                  ? 'border-blue-500 bg-blue-50 shadow-lg'
-                  : 'border-gray-200 bg-white hover:border-gray-300'
+                  ? 'border-blue-500 bg-blue-500/10 shadow-lg'
+                  : 'border-white/10 bg-white hover:border-white/10'
               }`}
             >
               <div className={`w-16 h-16 rounded-lg ${
-                vertical.id === 'accounting' ? 'bg-blue-100' :
-                vertical.id === 'legal' ? 'bg-purple-100' :
-                'bg-green-100'
+                vertical.id === 'accounting' ? 'bg-blue-500/15' :
+                vertical.id === 'legal' ? 'bg-purple-500/15' :
+                'bg-green-500/15'
               } flex items-center justify-center mb-4`}>
                 <Icon className={`w-8 h-8 ${
-                  vertical.id === 'accounting' ? 'text-blue-600' :
-                  vertical.id === 'legal' ? 'text-purple-600' :
-                  'text-green-600'
+                  vertical.id === 'accounting' ? 'text-blue-400' :
+                  vertical.id === 'legal' ? 'text-purple-400' :
+                  'text-green-400'
                 }`} />
               </div>
               
-              <h3 className="text-xl font-bold text-gray-900 mb-2">{vertical.name}</h3>
-              <p className="text-sm text-gray-600 mb-4">{vertical.tagline}</p>
+              <h3 className="text-xl font-bold text-slate-100 mb-2">{vertical.name}</h3>
+              <p className="text-sm text-slate-300 mb-4">{vertical.tagline}</p>
               
               <div className="space-y-2">
                 {vertical.features.map((feature, idx) => (
                   <div key={idx} className="flex items-start gap-2">
                     <CheckCircle className={`w-4 h-4 mt-0.5 flex-shrink-0 ${
-                      vertical.id === 'accounting' ? 'text-blue-600' :
-                      vertical.id === 'legal' ? 'text-purple-600' :
-                      'text-green-600'
+                      vertical.id === 'accounting' ? 'text-blue-400' :
+                      vertical.id === 'legal' ? 'text-purple-400' :
+                      'text-green-400'
                     }`} />
-                    <span className="text-xs text-gray-700">{feature}</span>
+                    <span className="text-xs text-slate-300">{feature}</span>
                   </div>
                 ))}
               </div>
 
               {isSelected && (
-                <div className="mt-6 flex items-center justify-center gap-2 text-sm font-bold text-green-600">
+                <div className="mt-6 flex items-center justify-center gap-2 text-sm font-bold text-green-400">
                   <CheckCircle className="w-5 h-5" />
                   Selected
                 </div>
@@ -491,7 +491,7 @@ export function VerticalOnboarding({ onComplete }: { onComplete?: () => void }) 
         {/* Onboarding Checklist */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-4">
-            <h2 className="text-2xl font-bold text-gray-900">Setup Checklist</h2>
+            <h2 className="text-2xl font-bold text-slate-100">Setup Checklist</h2>
             
             {steps.map((step, idx) => {
               const isCompleted = completedSteps.has(step.id);
@@ -501,15 +501,15 @@ export function VerticalOnboarding({ onComplete }: { onComplete?: () => void }) 
                   key={step.id}
                   className={`border-2 rounded-lg p-6 transition-all ${
                     isCompleted
-                      ? 'border-green-500 bg-green-50'
-                      : 'border-gray-200 bg-white hover:border-gray-300'
+                      ? 'border-green-500 bg-green-500/10'
+                      : 'border-white/10 bg-white hover:border-white/10'
                   }`}
                 >
                   <div className="flex items-start gap-4">
                     <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${
                       isCompleted
                         ? 'bg-green-500 text-white'
-                        : 'bg-gray-200 text-gray-600'
+                        : 'bg-white/10 text-slate-300'
                     }`}>
                       {isCompleted ? (
                         <CheckCircle className="w-6 h-6" />
@@ -519,8 +519,8 @@ export function VerticalOnboarding({ onComplete }: { onComplete?: () => void }) 
                     </div>
                     
                     <div className="flex-1">
-                      <h3 className="font-bold text-gray-900 mb-1">{step.title}</h3>
-                      <p className="text-sm text-gray-600 mb-3">{step.description}</p>
+                      <h3 className="font-bold text-slate-100 mb-1">{step.title}</h3>
+                      <p className="text-sm text-slate-300 mb-3">{step.description}</p>
                       
                       {!isCompleted && (
                         <button
@@ -535,7 +535,7 @@ export function VerticalOnboarding({ onComplete }: { onComplete?: () => void }) 
                       )}
                       
                       {isCompleted && (
-                        <div className="flex items-center gap-2 text-sm text-green-600 font-semibold">
+                        <div className="flex items-center gap-2 text-sm text-green-400 font-semibold">
                           <CheckCircle className="w-4 h-4" />
                           Completed
                         </div>
@@ -549,8 +549,8 @@ export function VerticalOnboarding({ onComplete }: { onComplete?: () => void }) 
 
           {/* Feature Overview */}
           <div className="space-y-6">
-            <div className="bg-white border-2 border-gray-200 rounded-lg p-6">
-              <h3 className="font-bold text-gray-900 mb-4">Core Modules</h3>
+            <div className="bg-white border-2 border-white/10 rounded-lg p-6">
+              <h3 className="font-bold text-slate-100 mb-4">Core Modules</h3>
               <div className="space-y-3">
                 {coreModules.map((module, idx) => {
                   const ModuleIcon = module.icon;
@@ -558,8 +558,8 @@ export function VerticalOnboarding({ onComplete }: { onComplete?: () => void }) 
                     <div key={idx} className="flex gap-3">
                       <ModuleIcon className={`w-5 h-5 text-${vertical.color}-600 mt-0.5 flex-shrink-0`} />
                       <div>
-                        <p className="text-sm font-semibold text-gray-900">{module.title}</p>
-                        <p className="text-xs text-gray-600">{module.description}</p>
+                        <p className="text-sm font-semibold text-slate-100">{module.title}</p>
+                        <p className="text-xs text-slate-300">{module.description}</p>
                       </div>
                     </div>
                   );
@@ -567,37 +567,37 @@ export function VerticalOnboarding({ onComplete }: { onComplete?: () => void }) 
               </div>
             </div>
 
-            <div className="bg-white border-2 border-gray-200 rounded-lg p-6">
+            <div className="bg-white border-2 border-white/10 rounded-lg p-6">
               <div className="flex items-center gap-2 mb-4">
-                <Zap className="w-5 h-5 text-orange-600" />
-                <h3 className="font-bold text-gray-900">Automation</h3>
+                <Zap className="w-5 h-5 text-orange-400" />
+                <h3 className="font-bold text-slate-100">Automation</h3>
               </div>
               <div className="space-y-2">
                 {automationFeatures.slice(0, 3).map((feature, idx) => (
                   <div key={idx} className="flex items-start gap-2">
                     <div className="w-1 h-1 rounded-full bg-orange-600 mt-2 flex-shrink-0" />
-                    <p className="text-xs text-gray-700">{feature}</p>
+                    <p className="text-xs text-slate-300">{feature}</p>
                   </div>
                 ))}
-                <button className="text-xs text-orange-600 font-semibold hover:underline">
+                <button className="text-xs text-orange-400 font-semibold hover:underline">
                   + {automationFeatures.length - 3} more
                 </button>
               </div>
             </div>
 
-            <div className="bg-white border-2 border-gray-200 rounded-lg p-6">
+            <div className="bg-white border-2 border-white/10 rounded-lg p-6">
               <div className="flex items-center gap-2 mb-4">
-                <Sparkles className="w-5 h-5 text-purple-600" />
-                <h3 className="font-bold text-gray-900">AI Features</h3>
+                <Sparkles className="w-5 h-5 text-purple-400" />
+                <h3 className="font-bold text-slate-100">AI Features</h3>
               </div>
               <div className="space-y-2">
                 {aiFeatures.slice(0, 3).map((feature, idx) => (
                   <div key={idx} className="flex items-start gap-2">
                     <div className="w-1 h-1 rounded-full bg-purple-600 mt-2 flex-shrink-0" />
-                    <p className="text-xs text-gray-700">{feature}</p>
+                    <p className="text-xs text-slate-300">{feature}</p>
                   </div>
                 ))}
-                <button className="text-xs text-purple-600 font-semibold hover:underline">
+                <button className="text-xs text-purple-400 font-semibold hover:underline">
                   + {aiFeatures.length - 3} more
                 </button>
               </div>
@@ -607,12 +607,12 @@ export function VerticalOnboarding({ onComplete }: { onComplete?: () => void }) 
 
         {/* Complete Setup */}
         {completedSteps.size === steps.length && (
-          <div className="bg-green-50 border-2 border-green-200 rounded-lg p-8 text-center">
+          <div className="bg-green-500/10 border-2 border-green-500/30 rounded-lg p-8 text-center">
             <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
               <CheckCircle className="w-12 h-12 text-white" />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">Setup Complete!</h2>
-            <p className="text-gray-600 mb-6">
+            <h2 className="text-2xl font-bold text-slate-100 mb-2">Setup Complete!</h2>
+            <p className="text-slate-300 mb-6">
               Your {vertical.name} platform is ready. You can customize further in Settings.
             </p>
             <PrimaryButton onClick={() => onComplete?.()}>
@@ -625,7 +625,7 @@ export function VerticalOnboarding({ onComplete }: { onComplete?: () => void }) 
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen bg-white/5 p-6">
       <div className="max-w-7xl mx-auto">
         {currentStep === 1 && renderVerticalSelection()}
         {currentStep === 2 && renderOnboardingFlow()}

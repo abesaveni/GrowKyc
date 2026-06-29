@@ -141,10 +141,10 @@ export function ResourceManagement({ onNavigate }: ResourceManagementProps) {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'optimal': return 'bg-green-50 text-green-700 border-green-300';
-      case 'overallocated': return 'bg-red-50 text-red-700 border-red-300';
-      case 'underutilized': return 'bg-yellow-50 text-yellow-700 border-yellow-300';
-      default: return 'bg-gray-50 text-gray-700 border-gray-300';
+      case 'optimal': return 'bg-green-500/10 text-green-300 border-green-300';
+      case 'overallocated': return 'bg-red-500/10 text-red-300 border-red-300';
+      case 'underutilized': return 'bg-yellow-500/10 text-yellow-300 border-yellow-300';
+      default: return 'bg-white/5 text-slate-300 border-white/10';
     }
   };
 
@@ -163,8 +163,8 @@ export function ResourceManagement({ onNavigate }: ResourceManagementProps) {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-[32px] font-bold text-gray-900">Resource Management</h1>
-            <p className="text-sm text-gray-600 mt-1">Team capacity planning and workload balancing</p>
+            <h1 className="text-[32px] font-bold text-slate-100">Resource Management</h1>
+            <p className="text-sm text-slate-300 mt-1">Team capacity planning and workload balancing</p>
           </div>
           <div className="flex items-center gap-2">
             <Button variant="outline" size="sm">
@@ -189,7 +189,7 @@ export function ResourceManagement({ onNavigate }: ResourceManagementProps) {
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
               selectedPeriod === 'week'
                 ? 'bg-[#2855a6] text-white'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                : 'bg-white/5 text-slate-300 hover:bg-white/10'
             }`}
           >
             This Week
@@ -199,7 +199,7 @@ export function ResourceManagement({ onNavigate }: ResourceManagementProps) {
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
               selectedPeriod === 'month'
                 ? 'bg-[#2855a6] text-white'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                : 'bg-white/5 text-slate-300 hover:bg-white/10'
             }`}
           >
             This Month
@@ -209,7 +209,7 @@ export function ResourceManagement({ onNavigate }: ResourceManagementProps) {
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
               selectedPeriod === 'quarter'
                 ? 'bg-[#2855a6] text-white'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                : 'bg-white/5 text-slate-300 hover:bg-white/10'
             }`}
           >
             This Quarter
@@ -221,12 +221,12 @@ export function ResourceManagement({ onNavigate }: ResourceManagementProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-blue-50 rounded-lg">
-                  <Users className="w-5 h-5 text-blue-600" />
+                <div className="p-3 bg-blue-500/10 rounded-lg">
+                  <Users className="w-5 h-5 text-blue-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-600">Team Capacity</p>
-                  <p className="text-2xl font-bold text-gray-900">{teamStats.totalCapacity}h</p>
+                  <p className="text-xs text-slate-300">Team Capacity</p>
+                  <p className="text-2xl font-bold text-slate-100">{teamStats.totalCapacity}h</p>
                 </div>
               </div>
             </CardContent>
@@ -235,12 +235,12 @@ export function ResourceManagement({ onNavigate }: ResourceManagementProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-purple-50 rounded-lg">
-                  <Clock className="w-5 h-5 text-purple-600" />
+                <div className="p-3 bg-purple-500/10 rounded-lg">
+                  <Clock className="w-5 h-5 text-purple-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-600">Allocated</p>
-                  <p className="text-2xl font-bold text-gray-900">{teamStats.totalAllocated}h</p>
+                  <p className="text-xs text-slate-300">Allocated</p>
+                  <p className="text-2xl font-bold text-slate-100">{teamStats.totalAllocated}h</p>
                 </div>
               </div>
             </CardContent>
@@ -249,12 +249,12 @@ export function ResourceManagement({ onNavigate }: ResourceManagementProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-green-50 rounded-lg">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
+                <div className="p-3 bg-green-500/10 rounded-lg">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-600">Available</p>
-                  <p className="text-2xl font-bold text-gray-900">{teamStats.totalAvailable}h</p>
+                  <p className="text-xs text-slate-300">Available</p>
+                  <p className="text-2xl font-bold text-slate-100">{teamStats.totalAvailable}h</p>
                 </div>
               </div>
             </CardContent>
@@ -263,12 +263,12 @@ export function ResourceManagement({ onNavigate }: ResourceManagementProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-orange-50 rounded-lg">
-                  <TrendingUp className="w-5 h-5 text-orange-600" />
+                <div className="p-3 bg-orange-500/10 rounded-lg">
+                  <TrendingUp className="w-5 h-5 text-orange-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-600">Avg Utilization</p>
-                  <p className="text-2xl font-bold text-gray-900">{teamStats.avgUtilization}%</p>
+                  <p className="text-xs text-slate-300">Avg Utilization</p>
+                  <p className="text-2xl font-bold text-slate-100">{teamStats.avgUtilization}%</p>
                 </div>
               </div>
             </CardContent>
@@ -277,12 +277,12 @@ export function ResourceManagement({ onNavigate }: ResourceManagementProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-red-50 rounded-lg">
-                  <AlertTriangle className="w-5 h-5 text-red-600" />
+                <div className="p-3 bg-red-500/10 rounded-lg">
+                  <AlertTriangle className="w-5 h-5 text-red-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-600">Over Capacity</p>
-                  <p className="text-2xl font-bold text-gray-900">{teamStats.overallocated}</p>
+                  <p className="text-xs text-slate-300">Over Capacity</p>
+                  <p className="text-2xl font-bold text-slate-100">{teamStats.overallocated}</p>
                 </div>
               </div>
             </CardContent>
@@ -295,7 +295,7 @@ export function ResourceManagement({ onNavigate }: ResourceManagementProps) {
           <div className="col-span-8">
             <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
               <CardContent className="p-6">
-                <h3 className="font-semibold text-gray-900 mb-4">Weekly Capacity Overview</h3>
+                <h3 className="font-semibold text-slate-100 mb-4">Weekly Capacity Overview</h3>
                 <ResponsiveContainer width="100%" height={300}>
                   <BarChart data={weeklyCapacityData}>
                     <CartesianGrid strokeDasharray="3 3" />
@@ -316,7 +316,7 @@ export function ResourceManagement({ onNavigate }: ResourceManagementProps) {
           <div className="col-span-4">
             <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
               <CardContent className="p-6">
-                <h3 className="font-semibold text-gray-900 mb-4">Job Type Distribution</h3>
+                <h3 className="font-semibold text-slate-100 mb-4">Job Type Distribution</h3>
                 <ResponsiveContainer width="100%" height={300}>
                   <RePieChart>
                     <Pie
@@ -345,14 +345,14 @@ export function ResourceManagement({ onNavigate }: ResourceManagementProps) {
         <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-semibold text-gray-900">Team Members</h3>
+              <h3 className="font-semibold text-slate-100">Team Members</h3>
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setSelectedView('team')}
                   className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
                     selectedView === 'team'
                       ? 'bg-[#2855a6] text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      : 'bg-white/5 text-slate-300 hover:bg-white/10'
                   }`}
                 >
                   Team View
@@ -362,7 +362,7 @@ export function ResourceManagement({ onNavigate }: ResourceManagementProps) {
                   className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
                     selectedView === 'individual'
                       ? 'bg-[#2855a6] text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      : 'bg-white/5 text-slate-300 hover:bg-white/10'
                   }`}
                 >
                   Individual View
@@ -372,15 +372,15 @@ export function ResourceManagement({ onNavigate }: ResourceManagementProps) {
 
             <div className="space-y-3">
               {teamMembers.map((member) => (
-                <div key={member.id} className="p-4 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                <div key={member.id} className="p-4 border border-white/10 rounded-lg hover:bg-white/5 cursor-pointer">
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-semibold">
                         {member.avatar}
                       </div>
                       <div>
-                        <h4 className="font-semibold text-gray-900">{member.name}</h4>
-                        <p className="text-sm text-gray-600">{member.role}</p>
+                        <h4 className="font-semibold text-slate-100">{member.name}</h4>
+                        <p className="text-sm text-slate-300">{member.role}</p>
                       </div>
                     </div>
                     <span className={`px-3 py-1 text-xs font-semibold rounded border ${getStatusColor(member.status)}`}>
@@ -390,34 +390,34 @@ export function ResourceManagement({ onNavigate }: ResourceManagementProps) {
 
                   <div className="grid grid-cols-5 gap-4 mb-3">
                     <div className="text-center">
-                      <p className="text-xs text-gray-600 mb-1">Capacity</p>
-                      <p className="text-lg font-bold text-gray-900">{member.capacity}h</p>
+                      <p className="text-xs text-slate-300 mb-1">Capacity</p>
+                      <p className="text-lg font-bold text-slate-100">{member.capacity}h</p>
                     </div>
                     <div className="text-center">
-                      <p className="text-xs text-gray-600 mb-1">Allocated</p>
-                      <p className="text-lg font-bold text-blue-600">{member.allocated}h</p>
+                      <p className="text-xs text-slate-300 mb-1">Allocated</p>
+                      <p className="text-lg font-bold text-blue-400">{member.allocated}h</p>
                     </div>
                     <div className="text-center">
-                      <p className="text-xs text-gray-600 mb-1">Available</p>
-                      <p className={`text-lg font-bold ${member.available < 0 ? 'text-red-600' : 'text-green-600'}`}>
+                      <p className="text-xs text-slate-300 mb-1">Available</p>
+                      <p className={`text-lg font-bold ${member.available < 0 ? 'text-red-400' : 'text-green-400'}`}>
                         {member.available}h
                       </p>
                     </div>
                     <div className="text-center">
-                      <p className="text-xs text-gray-600 mb-1">Utilization</p>
-                      <p className="text-lg font-bold text-gray-900">{member.utilization}%</p>
+                      <p className="text-xs text-slate-300 mb-1">Utilization</p>
+                      <p className="text-lg font-bold text-slate-100">{member.utilization}%</p>
                     </div>
                     <div className="text-center">
-                      <p className="text-xs text-gray-600 mb-1">Active Jobs</p>
-                      <p className="text-lg font-bold text-gray-900">{member.activeJobs}</p>
+                      <p className="text-xs text-slate-300 mb-1">Active Jobs</p>
+                      <p className="text-lg font-bold text-slate-100">{member.activeJobs}</p>
                     </div>
                   </div>
 
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs text-gray-600">Capacity Utilization</span>
-                    <span className="text-xs font-semibold text-gray-900">{member.utilization}%</span>
+                    <span className="text-xs text-slate-300">Capacity Utilization</span>
+                    <span className="text-xs font-semibold text-slate-100">{member.utilization}%</span>
                   </div>
-                  <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                  <div className="h-2 bg-white/5 rounded-full overflow-hidden">
                     <div 
                       className={`h-full transition-all ${
                         member.utilization > 100 ? 'bg-red-600' :
@@ -430,9 +430,9 @@ export function ResourceManagement({ onNavigate }: ResourceManagementProps) {
                   </div>
 
                   <div className="flex items-center gap-2 mt-3">
-                    <span className="text-xs text-gray-600">Skills:</span>
+                    <span className="text-xs text-slate-300">Skills:</span>
                     {member.skills.map((skill, idx) => (
-                      <span key={idx} className="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs rounded">
+                      <span key={idx} className="px-2 py-0.5 bg-blue-500/15 text-blue-300 text-xs rounded">
                         {skill}
                       </span>
                     ))}
@@ -446,7 +446,7 @@ export function ResourceManagement({ onNavigate }: ResourceManagementProps) {
         {/* Utilization by Role */}
         <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
           <CardContent className="p-6">
-            <h3 className="font-semibold text-gray-900 mb-4">Utilization by Role</h3>
+            <h3 className="font-semibold text-slate-100 mb-4">Utilization by Role</h3>
             <ResponsiveContainer width="100%" height={200}>
               <BarChart data={utilizationByRoleData} layout="vertical">
                 <CartesianGrid strokeDasharray="3 3" />

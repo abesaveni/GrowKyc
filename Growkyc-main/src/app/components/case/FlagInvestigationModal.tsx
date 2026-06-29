@@ -51,10 +51,10 @@ export const FlagInvestigationModal: React.FC<FlagInvestigationModalProps> = ({ 
         {...register('reason')}
         className="mb-4"
       />
-      {errors.reason && <p className="text-sm text-red-600">{errors.reason.message}</p>}
+      {errors.reason && <p className="text-sm text-red-400">{errors.reason.message}</p>}
       <div className="flex items-center space-x-2">
         <Switch id="notify" {...register('notify')} />
-        <label htmlFor="notify" className="text-sm text-gray-700">Notify compliance team</label>
+        <label htmlFor="notify" className="text-sm text-slate-300">Notify compliance team</label>
       </div>
     </ActionModal>
   );

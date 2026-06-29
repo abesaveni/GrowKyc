@@ -107,7 +107,7 @@ export function AuditEvidencePack({ onBack }: AuditEvidencePackProps = {}) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
+    <div className="min-h-screen bg-white/5 p-8">
       <div className="max-w-[1600px] mx-auto space-y-6">
         {/* Header */}
         <div className="bg-gradient-to-r from-red-900 via-red-800 to-orange-900 rounded-lg p-6 text-white shadow-xl">
@@ -128,11 +128,11 @@ export function AuditEvidencePack({ onBack }: AuditEvidencePackProps = {}) {
               </div>
             </div>
             <div className="flex gap-3">
-              <Button className="bg-white text-red-900 hover:bg-red-50">
+              <Button className="bg-white text-red-300 hover:bg-red-500/10">
                 <Printer className="w-5 h-5 mr-2" />
                 Print
               </Button>
-              <Button className="bg-white text-red-900 hover:bg-red-50">
+              <Button className="bg-white text-red-300 hover:bg-red-500/10">
                 <Download className="w-5 h-5 mr-2" />
                 Download All
               </Button>
@@ -151,13 +151,13 @@ export function AuditEvidencePack({ onBack }: AuditEvidencePackProps = {}) {
                 className={`cursor-pointer transition-all ${
                   selectedReport === report.value
                     ? `border-4 border-${report.color}-500 bg-${report.color}-50`
-                    : 'border-2 border-gray-300 hover:border-blue-300'
+                    : 'border-2 border-white/10 hover:border-blue-300'
                 }`}
               >
                 <CardContent className="p-4">
                   <Icon className={`w-8 h-8 text-${report.color}-600 mb-3`} />
-                  <p className="font-bold text-sm text-gray-900 mb-1">{report.label}</p>
-                  <p className="text-xs text-gray-600 mb-2">{report.description}</p>
+                  <p className="font-bold text-sm text-slate-100 mb-1">{report.label}</p>
+                  <p className="text-xs text-slate-300 mb-2">{report.description}</p>
                   {report.count !== null && (
                     <Badge className={getColorClass(report.color)}>
                       {report.count} records
@@ -190,7 +190,7 @@ export function AuditEvidencePack({ onBack }: AuditEvidencePackProps = {}) {
             <CardContent className="p-6">
               <div className="overflow-x-auto">
                 <table className="w-full">
-                  <thead className="bg-gray-100 border-b-2">
+                  <thead className="bg-white/5 border-b-2">
                     <tr>
                       <th className="text-left py-3 px-4 text-sm font-bold">Case ID</th>
                       <th className="text-left py-3 px-4 text-sm font-bold">Subject</th>
@@ -203,16 +203,16 @@ export function AuditEvidencePack({ onBack }: AuditEvidencePackProps = {}) {
                   </thead>
                   <tbody>
                     {sampleCases.map((c) => (
-                      <tr key={c.id} className="border-b hover:bg-blue-50">
+                      <tr key={c.id} className="border-b hover:bg-blue-500/10">
                         <td className="py-3 px-4 font-mono font-semibold">{c.id}</td>
                         <td className="py-3 px-4 font-semibold">{c.subject}</td>
                         <td className="py-3 px-4">
-                          <Badge className="bg-blue-100 text-blue-700">{c.status}</Badge>
+                          <Badge className="bg-blue-500/15 text-blue-300">{c.status}</Badge>
                         </td>
                         <td className="py-3 px-4">{c.date}</td>
                         <td className="py-3 px-4">Michael Chen</td>
                         <td className="py-3 px-4">
-                          <span className="text-green-600">24h left</span>
+                          <span className="text-green-400">24h left</span>
                         </td>
                         <td className="py-3 px-4">
                           <Button variant="outline" size="sm">
@@ -226,8 +226,8 @@ export function AuditEvidencePack({ onBack }: AuditEvidencePackProps = {}) {
                 </table>
               </div>
 
-              <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
-                <p className="text-sm text-blue-900">
+              <div className="mt-6 p-4 bg-blue-500/10 rounded-lg border border-blue-500/30">
+                <p className="text-sm text-blue-300">
                   <strong>Audit Note:</strong> This register shows all cases currently in progress. Each entry
                   includes full audit trail with timestamps, reviewers, and decision points. Export includes all
                   metadata required for regulator inspection.
@@ -246,7 +246,7 @@ export function AuditEvidencePack({ onBack }: AuditEvidencePackProps = {}) {
               </CardHeader>
               <CardContent className="p-6">
                 <div className="mb-6">
-                  <label className="block text-sm font-bold text-gray-900 mb-3">Select Case</label>
+                  <label className="block text-sm font-bold text-slate-100 mb-3">Select Case</label>
                   <div className="grid md:grid-cols-3 gap-4">
                     {sampleCases.map((c) => (
                       <div
@@ -254,13 +254,13 @@ export function AuditEvidencePack({ onBack }: AuditEvidencePackProps = {}) {
                         onClick={() => setSelectedCase(c.id)}
                         className={`p-4 rounded-lg border-2 cursor-pointer transition-all ${
                           selectedCase === c.id
-                            ? 'border-purple-500 bg-purple-50 ring-2 ring-purple-200'
-                            : 'border-gray-300 hover:border-purple-300 bg-white'
+                            ? 'border-purple-500 bg-purple-500/10 ring-2 ring-purple-200'
+                            : 'border-white/10 hover:border-purple-300 bg-white'
                         }`}
                       >
-                        <p className="font-mono font-bold text-purple-900 mb-1">{c.id}</p>
-                        <p className="font-semibold text-gray-900 mb-2">{c.subject}</p>
-                        <Badge className="bg-purple-100 text-purple-700 text-xs">{c.status}</Badge>
+                        <p className="font-mono font-bold text-purple-300 mb-1">{c.id}</p>
+                        <p className="font-semibold text-slate-100 mb-2">{c.subject}</p>
+                        <Badge className="bg-purple-500/15 text-purple-300 text-xs">{c.status}</Badge>
                       </div>
                     ))}
                   </div>
@@ -268,32 +268,32 @@ export function AuditEvidencePack({ onBack }: AuditEvidencePackProps = {}) {
 
                 {selectedCase && (
                   <div className="space-y-4">
-                    <div className="p-6 bg-green-50 rounded-lg border-2 border-green-300">
+                    <div className="p-6 bg-green-500/10 rounded-lg border-2 border-green-300">
                       <div className="flex items-center gap-3 mb-4">
-                        <CheckCircle className="w-8 h-8 text-green-600" />
+                        <CheckCircle className="w-8 h-8 text-green-400" />
                         <div>
-                          <h3 className="font-bold text-green-900 text-lg">Case Selected: {selectedCase}</h3>
-                          <p className="text-sm text-green-800">Complete evidence pack will be generated</p>
+                          <h3 className="font-bold text-green-300 text-lg">Case Selected: {selectedCase}</h3>
+                          <p className="text-sm text-green-300">Complete evidence pack will be generated</p>
                         </div>
                       </div>
                     </div>
 
-                    <Card className="border-2 border-gray-300">
-                      <CardHeader className="bg-gray-50 border-b">
+                    <Card className="border-2 border-white/10">
+                      <CardHeader className="bg-white/5 border-b">
                         <CardTitle>Evidence Pack Contents</CardTitle>
                       </CardHeader>
                       <CardContent className="p-6">
                         <div className="space-y-4">
                           {caseLevelPackContents.map((section, idx) => (
-                            <div key={idx} className="p-4 bg-purple-50 rounded-lg border border-purple-200">
-                              <h4 className="font-bold text-purple-900 mb-3 flex items-center gap-2">
+                            <div key={idx} className="p-4 bg-purple-500/10 rounded-lg border border-purple-500/30">
+                              <h4 className="font-bold text-purple-300 mb-3 flex items-center gap-2">
                                 <Shield className="w-5 h-5" />
                                 {section.category}
                               </h4>
                               <ul className="space-y-1">
                                 {section.items.map((item, i) => (
-                                  <li key={i} className="text-sm text-purple-800 flex items-start gap-2">
-                                    <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 text-purple-600" />
+                                  <li key={i} className="text-sm text-purple-300 flex items-start gap-2">
+                                    <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 text-purple-400" />
                                     <span>{item}</span>
                                   </li>
                                 ))}
@@ -322,16 +322,16 @@ export function AuditEvidencePack({ onBack }: AuditEvidencePackProps = {}) {
             </Card>
 
             {/* Compliance Note */}
-            <Card className="border-2 border-blue-300 bg-blue-50">
+            <Card className="border-2 border-blue-300 bg-blue-500/10">
               <CardContent className="p-6">
                 <div className="flex items-start gap-3">
-                  <Shield className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
+                  <Shield className="w-6 h-6 text-blue-400 flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="font-bold text-blue-900 mb-2">Regulator-Ready Evidence Pack</h3>
-                    <p className="text-sm text-blue-800 mb-3">
+                    <h3 className="font-bold text-blue-300 mb-2">Regulator-Ready Evidence Pack</h3>
+                    <p className="text-sm text-blue-300 mb-3">
                       This comprehensive pack includes everything required for AUSTRAC compliance inspection:
                     </p>
-                    <ul className="text-sm text-blue-800 space-y-1">
+                    <ul className="text-sm text-blue-300 space-y-1">
                       <li>✓ All screening results with provider attribution (ASIC, Equifax, Illion, ComplyAdvantage)</li>
                       <li>✓ Complete audit trail with timestamps and actor attribution</li>
                       <li>✓ Decision rationale from analyst and MLRO</li>
@@ -354,42 +354,42 @@ export function AuditEvidencePack({ onBack }: AuditEvidencePackProps = {}) {
             </CardHeader>
             <CardContent className="p-8">
               <div className="grid md:grid-cols-4 gap-6 mb-8">
-                <div className="p-6 bg-blue-50 rounded-lg border-2 border-blue-300 text-center">
-                  <p className="text-sm text-blue-700 mb-2">Active Cases</p>
-                  <p className="text-5xl font-bold text-blue-900">12</p>
+                <div className="p-6 bg-blue-500/10 rounded-lg border-2 border-blue-300 text-center">
+                  <p className="text-sm text-blue-300 mb-2">Active Cases</p>
+                  <p className="text-5xl font-bold text-blue-300">12</p>
                 </div>
-                <div className="p-6 bg-green-50 rounded-lg border-2 border-green-300 text-center">
-                  <p className="text-sm text-green-700 mb-2">Submitted YTD</p>
-                  <p className="text-5xl font-bold text-green-900">28</p>
+                <div className="p-6 bg-green-500/10 rounded-lg border-2 border-green-300 text-center">
+                  <p className="text-sm text-green-300 mb-2">Submitted YTD</p>
+                  <p className="text-5xl font-bold text-green-300">28</p>
                 </div>
-                <div className="p-6 bg-gray-50 rounded-lg border-2 border-gray-300 text-center">
-                  <p className="text-sm text-gray-700 mb-2">Not Submitted</p>
-                  <p className="text-5xl font-bold text-gray-900">15</p>
+                <div className="p-6 bg-white/5 rounded-lg border-2 border-white/10 text-center">
+                  <p className="text-sm text-slate-300 mb-2">Not Submitted</p>
+                  <p className="text-5xl font-bold text-slate-100">15</p>
                 </div>
-                <div className="p-6 bg-red-50 rounded-lg border-2 border-red-300 text-center">
-                  <p className="text-sm text-red-700 mb-2">Overdue</p>
-                  <p className="text-5xl font-bold text-red-900">2</p>
+                <div className="p-6 bg-red-500/10 rounded-lg border-2 border-red-300 text-center">
+                  <p className="text-sm text-red-300 mb-2">Overdue</p>
+                  <p className="text-5xl font-bold text-red-300">2</p>
                 </div>
               </div>
 
               <div className="space-y-6">
-                <div className="p-6 bg-purple-50 rounded-lg border-2 border-purple-300">
-                  <h3 className="font-bold text-purple-900 text-lg mb-4">Executive Summary - Q1 2026</h3>
-                  <p className="text-sm text-purple-800 mb-4">
+                <div className="p-6 bg-purple-500/10 rounded-lg border-2 border-purple-300">
+                  <h3 className="font-bold text-purple-300 text-lg mb-4">Executive Summary - Q1 2026</h3>
+                  <p className="text-sm text-purple-300 mb-4">
                     During Q1 2026, the compliance team reviewed 45 potential suspicious matters. Of these, 28 were
                     submitted to AUSTRAC as SMRs, 15 were closed as not reportable following investigation, and 2 cases
                     remain under review.
                   </p>
-                  <p className="text-sm text-purple-800">
+                  <p className="text-sm text-purple-300">
                     <strong>Key trends:</strong> Increased sanctions-related alerts (up 40% vs Q4 2025) due to expanded
                     list coverage. All cases processed within SLA timelines except 2 complex ownership investigations
                     requiring extended due diligence.
                   </p>
                 </div>
 
-                <div className="p-6 bg-amber-50 rounded-lg border-2 border-amber-300">
-                  <h3 className="font-bold text-amber-900 text-lg mb-4">Service Impact</h3>
-                  <ul className="text-sm text-amber-800 space-y-2">
+                <div className="p-6 bg-amber-500/10 rounded-lg border-2 border-amber-300">
+                  <h3 className="font-bold text-amber-300 text-lg mb-4">Service Impact</h3>
+                  <ul className="text-sm text-amber-300 space-y-2">
                     <li>• 3 clients placed under service hold during investigation (all resolved)</li>
                     <li>• 1 client relationship disengaged following AUSTRAC submission</li>
                     <li>• Average case resolution time: 4.2 days (target: 5 days)</li>

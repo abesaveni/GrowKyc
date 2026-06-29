@@ -702,7 +702,7 @@ export function ChecklistDetailModal({ itemName, clientName, clientType, onClose
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[60] p-4">
       <div className="bg-white rounded-lg max-w-5xl w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className={`p-6 border-b border-gray-200 bg-gradient-to-r from-${data.color}-600 to-${data.color}-500 text-white`}>
+        <div className={`p-6 border-b border-white/10 bg-gradient-to-r from-${data.color}-600 to-${data.color}-500 text-white`}>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <div className={`w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center`}>
@@ -734,20 +734,20 @@ export function ChecklistDetailModal({ itemName, clientName, clientType, onClose
         <div className="p-6 space-y-6">
           {/* Data Sections */}
           {data.sections.map((section, idx) => (
-            <div key={idx} className="bg-white border border-gray-200 rounded-lg p-5">
-              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <div key={idx} className="bg-white border border-white/10 rounded-lg p-5">
+              <h3 className="text-lg font-bold text-slate-100 mb-4 flex items-center gap-2">
                 <div className={`w-2 h-2 rounded-full bg-${data.color}-600`} />
                 {section.heading}
               </h3>
               <div className="grid grid-cols-2 gap-4">
                 {section.items.map((item, itemIdx) => (
-                  <div key={itemIdx} className="flex items-start justify-between p-3 bg-gray-50 rounded-lg">
+                  <div key={itemIdx} className="flex items-start justify-between p-3 bg-white/5 rounded-lg">
                     <div className="flex-1">
-                      <p className="text-xs text-gray-600 mb-1">{item.label}</p>
-                      <p className="font-semibold text-gray-900">{item.value}</p>
+                      <p className="text-xs text-slate-300 mb-1">{item.label}</p>
+                      <p className="font-semibold text-slate-100">{item.value}</p>
                     </div>
                     {item.verified && (
-                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 ml-2" />
+                      <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 ml-2" />
                     )}
                   </div>
                 ))}
@@ -757,23 +757,23 @@ export function ChecklistDetailModal({ itemName, clientName, clientType, onClose
 
           {/* Documents */}
           {data.documents.length > 0 && (
-            <div className="bg-white border border-gray-200 rounded-lg p-5">
-              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <FileText className="w-5 h-5 text-blue-600" />
+            <div className="bg-white border border-white/10 rounded-lg p-5">
+              <h3 className="text-lg font-bold text-slate-100 mb-4 flex items-center gap-2">
+                <FileText className="w-5 h-5 text-blue-400" />
                 Attached Documents
               </h3>
               <div className="space-y-3">
                 {data.documents.map((doc, idx) => (
-                  <div key={idx} className="flex items-center justify-between p-4 bg-blue-50 border border-blue-200 rounded-lg hover:shadow-md transition-shadow">
+                  <div key={idx} className="flex items-center justify-between p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg hover:shadow-md transition-shadow">
                     <div className="flex items-center gap-3">
-                      <FileText className="w-8 h-8 text-blue-600" />
+                      <FileText className="w-8 h-8 text-blue-400" />
                       <div>
-                        <p className="font-bold text-gray-900">{doc.name}</p>
-                        <p className="text-sm text-gray-600">{doc.size} • Uploaded {doc.uploadDate}</p>
+                        <p className="font-bold text-slate-100">{doc.name}</p>
+                        <p className="text-sm text-slate-300">{doc.size} • Uploaded {doc.uploadDate}</p>
                         <span className={`text-xs px-2 py-1 rounded-full ${
-                          doc.status === 'Verified' ? 'bg-green-100 text-green-700' :
-                          doc.status === 'Signed' || doc.status === 'Signed & Certified' ? 'bg-purple-100 text-purple-700' :
-                          'bg-gray-200 text-gray-700'
+                          doc.status === 'Verified' ? 'bg-green-500/15 text-green-300' :
+                          doc.status === 'Signed' || doc.status === 'Signed & Certified' ? 'bg-purple-500/15 text-purple-300' :
+                          'bg-white/10 text-slate-300'
                         } font-semibold mt-1 inline-block`}>
                           {doc.status}
                         </span>
@@ -799,7 +799,7 @@ export function ChecklistDetailModal({ itemName, clientName, clientType, onClose
           <div className={`border-2 border-${data.riskAssessment.level === 'Low' ? 'green' : data.riskAssessment.level === 'Medium' ? 'yellow' : 'gray'}-200 rounded-lg p-5 bg-${data.riskAssessment.level === 'Low' ? 'green' : data.riskAssessment.level === 'Medium' ? 'yellow' : 'gray'}-50`}>
             <div className="flex items-center gap-3 mb-4">
               <Shield className={`w-6 h-6 text-${data.riskAssessment.level === 'Low' ? 'green' : data.riskAssessment.level === 'Medium' ? 'yellow' : 'gray'}-600`} />
-              <h3 className="text-lg font-bold text-gray-900">Risk Assessment</h3>
+              <h3 className="text-lg font-bold text-slate-100">Risk Assessment</h3>
               <span className={`px-3 py-1 bg-${data.riskAssessment.level === 'Low' ? 'green' : data.riskAssessment.level === 'Medium' ? 'yellow' : 'gray'}-600 text-white text-sm font-bold rounded-full uppercase ml-auto`}>
                 {data.riskAssessment.level} Risk
               </span>
@@ -807,8 +807,8 @@ export function ChecklistDetailModal({ itemName, clientName, clientType, onClose
             <ul className="space-y-2">
               {data.riskAssessment.factors.map((factor, idx) => (
                 <li key={idx} className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-800">{factor}</span>
+                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                  <span className="text-slate-100">{factor}</span>
                 </li>
               ))}
             </ul>
@@ -816,18 +816,18 @@ export function ChecklistDetailModal({ itemName, clientName, clientType, onClose
 
           {/* Audit Trail */}
           {data.auditTrail.length > 0 && (
-            <div className="bg-white border border-gray-200 rounded-lg p-5">
-              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <Calendar className="w-5 h-5 text-purple-600" />
+            <div className="bg-white border border-white/10 rounded-lg p-5">
+              <h3 className="text-lg font-bold text-slate-100 mb-4 flex items-center gap-2">
+                <Calendar className="w-5 h-5 text-purple-400" />
                 Audit Trail
               </h3>
               <div className="space-y-3">
                 {data.auditTrail.map((event, idx) => (
-                  <div key={idx} className="flex items-start gap-3 p-3 bg-purple-50 rounded-lg">
+                  <div key={idx} className="flex items-start gap-3 p-3 bg-purple-500/10 rounded-lg">
                     <div className="w-2 h-2 rounded-full bg-purple-600 mt-2 flex-shrink-0" />
                     <div className="flex-1">
-                      <p className="font-semibold text-gray-900">{event.action}</p>
-                      <p className="text-sm text-gray-600">{event.user} • {event.timestamp}</p>
+                      <p className="font-semibold text-slate-100">{event.action}</p>
+                      <p className="text-sm text-slate-300">{event.user} • {event.timestamp}</p>
                     </div>
                   </div>
                 ))}
@@ -837,7 +837,7 @@ export function ChecklistDetailModal({ itemName, clientName, clientType, onClose
         </div>
 
         {/* Footer */}
-        <div className="p-6 border-t border-gray-200 bg-gray-50 flex gap-3">
+        <div className="p-6 border-t border-white/10 bg-white/5 flex gap-3">
           <Button className="flex-1 bg-blue-600 hover:bg-blue-700">
             <Download className="w-5 h-5 mr-2" />
             Export Full Report

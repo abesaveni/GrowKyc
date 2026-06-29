@@ -345,8 +345,8 @@ export function BankFeedIntegrations({ onBack }: BankFeedIntegrationsProps) {
         <Card>
           <CardContent className="pt-6">
             <div className="flex items-center justify-between mb-2">
-              <LinkIcon className="w-8 h-8 text-blue-600" />
-              <Badge variant="outline" className="bg-blue-50 text-blue-700">
+              <LinkIcon className="w-8 h-8 text-blue-400" />
+              <Badge variant="outline" className="bg-blue-500/10 text-blue-300">
                 {connectedIntegrations.length}/3
               </Badge>
             </div>
@@ -358,7 +358,7 @@ export function BankFeedIntegrations({ onBack }: BankFeedIntegrationsProps) {
         <Card>
           <CardContent className="pt-6">
             <div className="flex items-center justify-between mb-2">
-              <Database className="w-8 h-8 text-green-600" />
+              <Database className="w-8 h-8 text-green-400" />
             </div>
             <div className="text-3xl font-bold">{totalAccounts}</div>
             <div className="text-sm text-slate-300">Bank Accounts</div>
@@ -368,7 +368,7 @@ export function BankFeedIntegrations({ onBack }: BankFeedIntegrationsProps) {
         <Card>
           <CardContent className="pt-6">
             <div className="flex items-center justify-between mb-2">
-              <Activity className="w-8 h-8 text-purple-600" />
+              <Activity className="w-8 h-8 text-purple-400" />
             </div>
             <div className="text-3xl font-bold">{totalTransactions}</div>
             <div className="text-sm text-slate-300">Transactions Available</div>
@@ -378,7 +378,7 @@ export function BankFeedIntegrations({ onBack }: BankFeedIntegrationsProps) {
         <Card>
           <CardContent className="pt-6">
             <div className="flex items-center justify-between mb-2">
-              <Shield className="w-8 h-8 text-orange-600" />
+              <Shield className="w-8 h-8 text-orange-400" />
             </div>
             <div className="text-3xl font-bold">{activeMonitoring}</div>
             <div className="text-sm text-slate-300">Active Monitoring</div>
@@ -443,7 +443,7 @@ export function BankFeedIntegrations({ onBack }: BankFeedIntegrationsProps) {
                         </Button>
                         <Button
                           variant="outline"
-                          className="text-red-600 hover:text-red-700"
+                          className="text-red-400 hover:text-red-300"
                           onClick={() => handleDisconnect(integration.type)}
                         >
                           <Unlink className="w-4 h-4 mr-2" />
@@ -492,8 +492,8 @@ export function BankFeedIntegrations({ onBack }: BankFeedIntegrationsProps) {
                 <CardContent className="p-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4 flex-1">
-                      <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                        <Database className="w-6 h-6 text-blue-600" />
+                      <div className="w-12 h-12 bg-blue-500/15 rounded-lg flex items-center justify-center">
+                        <Database className="w-6 h-6 text-blue-400" />
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
@@ -566,20 +566,20 @@ export function BankFeedIntegrations({ onBack }: BankFeedIntegrationsProps) {
           {selectedIntegration && (
             <div className="space-y-6">
               {/* Instructions */}
-              <Card className="bg-blue-50 border-blue-200">
+              <Card className="bg-blue-500/10 border-blue-500/30">
                 <CardContent className="p-4">
-                  <h4 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
+                  <h4 className="font-semibold text-blue-300 mb-2 flex items-center gap-2">
                     <Shield className="w-4 h-4" />
                     Setup Instructions
                   </h4>
-                  <ol className="space-y-1 text-sm text-blue-800">
+                  <ol className="space-y-1 text-sm text-blue-300">
                     {getIntegrationInstructions(selectedIntegration).steps.map((step, idx) => (
                       <li key={idx}>{step}</li>
                     ))}
                   </ol>
                   <Button
                     variant="link"
-                    className="text-blue-600 p-0 h-auto mt-2"
+                    className="text-blue-400 p-0 h-auto mt-2"
                     onClick={() => window.open(getIntegrationInstructions(selectedIntegration).docsUrl, '_blank')}
                   >
                     <ExternalLink className="w-3 h-3 mr-1" />
@@ -593,7 +593,7 @@ export function BankFeedIntegrations({ onBack }: BankFeedIntegrationsProps) {
                 <div>
                   <Label>Environment</Label>
                   <select
-                    className="w-full mt-2 px-3 py-2 border border-gray-300 rounded-lg"
+                    className="w-full mt-2 px-3 py-2 border border-white/10 rounded-lg"
                     value={formData.environment}
                     onChange={(e) => setFormData({ ...formData, environment: e.target.value as 'production' | 'sandbox' })}
                   >
@@ -669,11 +669,11 @@ export function BankFeedIntegrations({ onBack }: BankFeedIntegrationsProps) {
                 )}
               </div>
 
-              <Card className="bg-amber-50 border-amber-200">
+              <Card className="bg-amber-500/10 border-amber-500/30">
                 <CardContent className="p-4">
                   <div className="flex gap-2">
-                    <Shield className="w-5 h-5 text-amber-600 flex-shrink-0" />
-                    <div className="text-sm text-amber-800">
+                    <Shield className="w-5 h-5 text-amber-400 flex-shrink-0" />
+                    <div className="text-sm text-amber-300">
                       <p className="font-semibold mb-1">Security Notice</p>
                       <p>Your credentials are encrypted and stored securely. We only access transaction data for AML/CTF compliance monitoring.</p>
                     </div>

@@ -93,15 +93,15 @@ export function Reports({ onNavigate, onBack }: ReportsProps) {
             </Button>
           )}
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">Reports & Analytics</h1>
-            <p className="text-gray-600 mt-1">Track your performance and business insights</p>
+            <h1 className="text-3xl font-bold text-slate-100">Reports & Analytics</h1>
+            <p className="text-slate-300 mt-1">Track your performance and business insights</p>
           </div>
         </div>
         <div className="flex gap-3">
           <select
             value={selectedPeriod}
             onChange={(e) => setSelectedPeriod(e.target.value)}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
           >
             <option value="this-month">This Month</option>
             <option value="last-month">Last Month</option>
@@ -121,71 +121,71 @@ export function Reports({ onNavigate, onBack }: ReportsProps) {
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                <FileText className="w-6 h-6 text-blue-600" />
+              <div className="w-12 h-12 bg-blue-500/15 rounded-lg flex items-center justify-center">
+                <FileText className="w-6 h-6 text-blue-400" />
               </div>
-              <div className="flex items-center gap-1 text-green-600 text-sm">
+              <div className="flex items-center gap-1 text-green-400 text-sm">
                 <TrendingUp className="w-4 h-4" />
                 +{calculateChange(performanceMetrics.thisMonth.applications, performanceMetrics.lastMonth.applications)}%
               </div>
             </div>
-            <p className="text-sm text-gray-600 mb-1">Applications</p>
-            <p className="text-2xl font-bold text-gray-900">{performanceMetrics.thisMonth.applications}</p>
-            <p className="text-xs text-gray-500 mt-2">vs. {performanceMetrics.lastMonth.applications} last month</p>
+            <p className="text-sm text-slate-300 mb-1">Applications</p>
+            <p className="text-2xl font-bold text-slate-100">{performanceMetrics.thisMonth.applications}</p>
+            <p className="text-xs text-slate-400 mt-2">vs. {performanceMetrics.lastMonth.applications} last month</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                <CheckCircle className="w-6 h-6 text-green-600" />
+              <div className="w-12 h-12 bg-green-500/15 rounded-lg flex items-center justify-center">
+                <CheckCircle className="w-6 h-6 text-green-400" />
               </div>
-              <div className="flex items-center gap-1 text-green-600 text-sm">
+              <div className="flex items-center gap-1 text-green-400 text-sm">
                 <TrendingUp className="w-4 h-4" />
                 +{calculateChange(performanceMetrics.thisMonth.settlements, performanceMetrics.lastMonth.settlements)}%
               </div>
             </div>
-            <p className="text-sm text-gray-600 mb-1">Settlements</p>
-            <p className="text-2xl font-bold text-gray-900">{performanceMetrics.thisMonth.settlements}</p>
-            <p className="text-xs text-gray-500 mt-2">vs. {performanceMetrics.lastMonth.settlements} last month</p>
+            <p className="text-sm text-slate-300 mb-1">Settlements</p>
+            <p className="text-2xl font-bold text-slate-100">{performanceMetrics.thisMonth.settlements}</p>
+            <p className="text-xs text-slate-400 mt-2">vs. {performanceMetrics.lastMonth.settlements} last month</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                <DollarSign className="w-6 h-6 text-purple-600" />
+              <div className="w-12 h-12 bg-purple-500/15 rounded-lg flex items-center justify-center">
+                <DollarSign className="w-6 h-6 text-purple-400" />
               </div>
-              <div className="flex items-center gap-1 text-green-600 text-sm">
+              <div className="flex items-center gap-1 text-green-400 text-sm">
                 <TrendingUp className="w-4 h-4" />
                 +{calculateChange(performanceMetrics.thisMonth.totalValue, performanceMetrics.lastMonth.totalValue)}%
               </div>
             </div>
-            <p className="text-sm text-gray-600 mb-1">Total Loan Value</p>
-            <p className="text-2xl font-bold text-gray-900">
+            <p className="text-sm text-slate-300 mb-1">Total Loan Value</p>
+            <p className="text-2xl font-bold text-slate-100">
               ${(performanceMetrics.thisMonth.totalValue / 1000000).toFixed(1)}M
             </p>
-            <p className="text-xs text-gray-500 mt-2">vs. ${(performanceMetrics.lastMonth.totalValue / 1000000).toFixed(1)}M last month</p>
+            <p className="text-xs text-slate-400 mt-2">vs. ${(performanceMetrics.lastMonth.totalValue / 1000000).toFixed(1)}M last month</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                <Activity className="w-6 h-6 text-orange-600" />
+              <div className="w-12 h-12 bg-orange-500/15 rounded-lg flex items-center justify-center">
+                <Activity className="w-6 h-6 text-orange-400" />
               </div>
-              <span className="text-sm font-medium text-gray-600">
+              <span className="text-sm font-medium text-slate-300">
                 {performanceMetrics.thisMonth.conversionRate}%
               </span>
             </div>
-            <p className="text-sm text-gray-600 mb-1">Conversion Rate</p>
-            <p className="text-2xl font-bold text-gray-900">
+            <p className="text-sm text-slate-300 mb-1">Conversion Rate</p>
+            <p className="text-2xl font-bold text-slate-100">
               ${(performanceMetrics.thisMonth.commissions / 1000).toFixed(0)}K
             </p>
-            <p className="text-xs text-gray-500 mt-2">Commission earned</p>
+            <p className="text-xs text-slate-400 mt-2">Commission earned</p>
           </CardContent>
         </Card>
       </div>
@@ -205,18 +205,18 @@ export function Reports({ onNavigate, onBack }: ReportsProps) {
               {monthlyData.map((month) => (
                 <div key={month.month}>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-medium text-gray-700">{month.month}</span>
-                    <span className="text-sm text-gray-600">
+                    <span className="text-sm font-medium text-slate-300">{month.month}</span>
+                    <span className="text-sm text-slate-300">
                       {month.applications} apps • {month.settlements} settled
                     </span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-3">
+                  <div className="w-full bg-white/10 rounded-full h-3">
                     <div
                       className="bg-indigo-600 h-3 rounded-full"
                       style={{ width: `${month.settlements > 0 ? (month.settlements / month.applications) * 100 : 0}%` }}
                     />
                   </div>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-slate-400 mt-1">
                     Value: ${(month.value / 1000000).toFixed(2)}M
                   </p>
                 </div>
@@ -238,10 +238,10 @@ export function Reports({ onNavigate, onBack }: ReportsProps) {
               {loanTypeBreakdown.map((type, index) => (
                 <div key={type.type}>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-medium text-gray-700">{type.type}</span>
-                    <span className="text-sm text-gray-600">{type.percentage}%</span>
+                    <span className="text-sm font-medium text-slate-300">{type.type}</span>
+                    <span className="text-sm text-slate-300">{type.percentage}%</span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-3">
+                  <div className="w-full bg-white/10 rounded-full h-3">
                     <div
                       className={`h-3 rounded-full ${
                         index === 0 ? 'bg-indigo-600' :
@@ -252,8 +252,8 @@ export function Reports({ onNavigate, onBack }: ReportsProps) {
                     />
                   </div>
                   <div className="flex items-center justify-between mt-1">
-                    <p className="text-xs text-gray-500">{type.count} deals</p>
-                    <p className="text-xs text-gray-500">${(type.value / 1000000).toFixed(2)}M</p>
+                    <p className="text-xs text-slate-400">{type.count} deals</p>
+                    <p className="text-xs text-slate-400">${(type.value / 1000000).toFixed(2)}M</p>
                   </div>
                 </div>
               ))}
@@ -274,10 +274,10 @@ export function Reports({ onNavigate, onBack }: ReportsProps) {
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
             {pipelineMetrics.map((stage, index) => (
               <div key={stage.stage} className="relative">
-                <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center">
-                  <p className="text-sm font-medium text-gray-700 mb-2">{stage.stage}</p>
-                  <p className="text-2xl font-bold text-indigo-600">{stage.count}</p>
-                  <p className="text-xs text-gray-500 mt-2">
+                <div className="bg-white/5 border border-white/10 rounded-lg p-4 text-center">
+                  <p className="text-sm font-medium text-slate-300 mb-2">{stage.stage}</p>
+                  <p className="text-2xl font-bold text-indigo-400">{stage.count}</p>
+                  <p className="text-xs text-slate-400 mt-2">
                     ${(stage.value / 1000000).toFixed(1)}M
                   </p>
                 </div>
@@ -303,19 +303,19 @@ export function Reports({ onNavigate, onBack }: ReportsProps) {
         <CardContent>
           <div className="space-y-4">
             {topClients.map((client, index) => (
-              <div key={client.name} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+              <div key={client.name} className="flex items-center justify-between p-4 bg-white/5 rounded-lg">
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center font-bold text-indigo-600">
+                  <div className="w-10 h-10 bg-indigo-500/15 rounded-full flex items-center justify-center font-bold text-indigo-400">
                     #{index + 1}
                   </div>
                   <div>
-                    <p className="font-medium text-gray-900">{client.name}</p>
-                    <p className="text-sm text-gray-500">{client.deals} deals</p>
+                    <p className="font-medium text-slate-100">{client.name}</p>
+                    <p className="text-sm text-slate-400">{client.deals} deals</p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="font-bold text-gray-900">${(client.value / 1000000).toFixed(2)}M</p>
-                  <p className="text-sm text-green-600">${client.commission.toLocaleString()} commission</p>
+                  <p className="font-bold text-slate-100">${(client.value / 1000000).toFixed(2)}M</p>
+                  <p className="text-sm text-green-400">${client.commission.toLocaleString()} commission</p>
                 </div>
               </div>
             ))}

@@ -333,7 +333,7 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
             <p className="text-blue-100 text-lg">Enterprise e-signature platform with bank-level compliance</p>
             <div className="flex gap-4 mt-4">
               <Button 
-                className="bg-white text-blue-600 hover:bg-blue-50"
+                className="bg-white text-blue-400 hover:bg-blue-500/10"
                 onClick={() => setShowNewDocumentModal(true)}
               >
                 <Plus className="w-4 h-4 mr-2" />
@@ -358,52 +358,52 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
         <Card>
           <CardContent className="pt-6">
             <div className="flex items-center justify-between mb-2">
-              <FileText className="w-8 h-8 text-blue-600" />
-              <Badge variant="outline" className="bg-green-50 text-green-700">
+              <FileText className="w-8 h-8 text-blue-400" />
+              <Badge variant="outline" className="bg-green-500/10 text-green-300">
                 +{dashboardStats.documentsChange}%
               </Badge>
             </div>
-            <p className="text-2xl font-bold text-gray-900">{dashboardStats.documentsThisMonth}</p>
-            <p className="text-sm text-gray-600">Documents This Month</p>
+            <p className="text-2xl font-bold text-slate-100">{dashboardStats.documentsThisMonth}</p>
+            <p className="text-sm text-slate-300">Documents This Month</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="pt-6">
             <div className="flex items-center justify-between mb-2">
-              <CheckCircle className="w-8 h-8 text-green-600" />
-              <Badge variant="outline" className="bg-green-50 text-green-700">
+              <CheckCircle className="w-8 h-8 text-green-400" />
+              <Badge variant="outline" className="bg-green-500/10 text-green-300">
                 +{dashboardStats.completionChange}%
               </Badge>
             </div>
-            <p className="text-2xl font-bold text-gray-900">{dashboardStats.completionRate}%</p>
-            <p className="text-sm text-gray-600">Completion Rate</p>
+            <p className="text-2xl font-bold text-slate-100">{dashboardStats.completionRate}%</p>
+            <p className="text-sm text-slate-300">Completion Rate</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="pt-6">
             <div className="flex items-center justify-between mb-2">
-              <Clock className="w-8 h-8 text-orange-600" />
-              <Badge variant="outline" className="bg-green-50 text-green-700">
+              <Clock className="w-8 h-8 text-orange-400" />
+              <Badge variant="outline" className="bg-green-500/10 text-green-300">
                 {dashboardStats.timeChange}%
               </Badge>
             </div>
-            <p className="text-2xl font-bold text-gray-900">{dashboardStats.avgCompletionTime}</p>
-            <p className="text-sm text-gray-600">Avg Completion Time</p>
+            <p className="text-2xl font-bold text-slate-100">{dashboardStats.avgCompletionTime}</p>
+            <p className="text-sm text-slate-300">Avg Completion Time</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="pt-6">
             <div className="flex items-center justify-between mb-2">
-              <Users className="w-8 h-8 text-purple-600" />
-              <Badge variant="outline" className="bg-green-50 text-green-700">
+              <Users className="w-8 h-8 text-purple-400" />
+              <Badge variant="outline" className="bg-green-500/10 text-green-300">
                 +{dashboardStats.signersChange}%
               </Badge>
             </div>
-            <p className="text-2xl font-bold text-gray-900">{dashboardStats.activeSigners}</p>
-            <p className="text-sm text-gray-600">Active Signers</p>
+            <p className="text-2xl font-bold text-slate-100">{dashboardStats.activeSigners}</p>
+            <p className="text-sm text-slate-300">Active Signers</p>
           </CardContent>
         </Card>
       </div>
@@ -424,24 +424,24 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
         <CardContent>
           <div className="space-y-3">
             {recentDocuments.map((doc) => (
-              <div key={doc.id} className="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
+              <div key={doc.id} className="flex items-center justify-between p-4 border border-white/10 rounded-lg hover:bg-white/5">
                 <div className="flex items-center gap-4 flex-1">
                   <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${
-                    doc.status === 'completed' ? 'bg-green-100' :
-                    doc.status === 'in_progress' ? 'bg-blue-100' :
-                    doc.status === 'pending' ? 'bg-yellow-100' :
-                    'bg-red-100'
+                    doc.status === 'completed' ? 'bg-green-500/15' :
+                    doc.status === 'in_progress' ? 'bg-blue-500/15' :
+                    doc.status === 'pending' ? 'bg-yellow-500/15' :
+                    'bg-red-500/15'
                   }`}>
                     <FileCheck className={`w-6 h-6 ${
-                      doc.status === 'completed' ? 'text-green-600' :
-                      doc.status === 'in_progress' ? 'text-blue-600' :
-                      doc.status === 'pending' ? 'text-yellow-600' :
-                      'text-red-600'
+                      doc.status === 'completed' ? 'text-green-400' :
+                      doc.status === 'in_progress' ? 'text-blue-400' :
+                      doc.status === 'pending' ? 'text-yellow-400' :
+                      'text-red-400'
                     }`} />
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-semibold text-gray-900">{doc.name}</h3>
-                    <div className="flex gap-3 text-sm text-gray-600 mt-1">
+                    <h3 className="font-semibold text-slate-100">{doc.name}</h3>
+                    <div className="flex gap-3 text-sm text-slate-300 mt-1">
                       <span>{doc.id}</span>
                       <span>•</span>
                       <span>{doc.template}</span>
@@ -452,10 +452,10 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
                     </div>
                   </div>
                   <Badge className={
-                    doc.status === 'completed' ? 'bg-green-100 text-green-800' :
-                    doc.status === 'in_progress' ? 'bg-blue-100 text-blue-800' :
-                    doc.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
-                    'bg-red-100 text-red-800'
+                    doc.status === 'completed' ? 'bg-green-500/15 text-green-300' :
+                    doc.status === 'in_progress' ? 'bg-blue-500/15 text-blue-300' :
+                    doc.status === 'pending' ? 'bg-yellow-500/15 text-yellow-300' :
+                    'bg-red-500/15 text-red-300'
                   }>
                     {doc.status.replace('_', ' ')}
                   </Badge>
@@ -486,8 +486,8 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
               {workflows.slice(0, 3).map((wf) => (
                 <div key={wf.id} className="flex items-center justify-between">
                   <div>
-                    <p className="font-medium text-gray-900 text-sm">{wf.name}</p>
-                    <p className="text-xs text-gray-600">{wf.activeDocuments} active</p>
+                    <p className="font-medium text-slate-100 text-sm">{wf.name}</p>
+                    <p className="text-xs text-slate-300">{wf.activeDocuments} active</p>
                   </div>
                   <Badge variant="outline">{wf.avgTime}</Badge>
                 </div>
@@ -506,8 +506,8 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
               {templates.slice(0, 3).map((tpl) => (
                 <div key={tpl.id} className="flex items-center justify-between">
                   <div>
-                    <p className="font-medium text-gray-900 text-sm">{tpl.name}</p>
-                    <p className="text-xs text-gray-600">{tpl.usage} uses</p>
+                    <p className="font-medium text-slate-100 text-sm">{tpl.name}</p>
+                    <p className="text-xs text-slate-300">{tpl.usage} uses</p>
                   </div>
                   <Button variant="ghost" size="sm">
                     <PlayCircle className="w-4 h-4" />
@@ -528,10 +528,10 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
               {integrations.filter(i => i.status === 'connected').slice(0, 3).map((int) => (
                 <div key={int.id} className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <int.icon className="w-4 h-4 text-gray-600" />
-                    <p className="font-medium text-gray-900 text-sm">{int.name}</p>
+                    <int.icon className="w-4 h-4 text-slate-300" />
+                    <p className="font-medium text-slate-100 text-sm">{int.name}</p>
                   </div>
-                  <Badge variant="outline" className="bg-green-50 text-green-700">
+                  <Badge variant="outline" className="bg-green-500/10 text-green-300">
                     Active
                   </Badge>
                 </div>
@@ -547,8 +547,8 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">Template Library</h2>
-          <p className="text-gray-600 mt-1">Pre-configured document templates for common use cases</p>
+          <h2 className="text-2xl font-bold text-slate-100">Template Library</h2>
+          <p className="text-slate-300 mt-1">Pre-configured document templates for common use cases</p>
         </div>
         <Button onClick={() => setShowNewTemplateModal(true)}>
           <Plus className="w-4 h-4 mr-2" />
@@ -580,34 +580,34 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
             <CardContent className="pt-6">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center">
-                    <FileText className="w-6 h-6 text-blue-600" />
+                  <div className="w-12 h-12 rounded-lg bg-blue-500/15 flex items-center justify-center">
+                    <FileText className="w-6 h-6 text-blue-400" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900">{template.name}</h3>
+                    <h3 className="font-semibold text-slate-100">{template.name}</h3>
                     <Badge variant="outline" className="mt-1">{template.category}</Badge>
                   </div>
                 </div>
               </div>
 
-              <p className="text-sm text-gray-600 mb-4">{template.description}</p>
+              <p className="text-sm text-slate-300 mb-4">{template.description}</p>
 
               <div className="space-y-2 mb-4">
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-600">Parties:</span>
-                  <span className="font-medium text-gray-900">{template.parties}</span>
+                  <span className="text-slate-300">Parties:</span>
+                  <span className="font-medium text-slate-100">{template.parties}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-600">Fields:</span>
-                  <span className="font-medium text-gray-900">{template.fields}</span>
+                  <span className="text-slate-300">Fields:</span>
+                  <span className="font-medium text-slate-100">{template.fields}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-600">Pages:</span>
-                  <span className="font-medium text-gray-900">{template.pages}</span>
+                  <span className="text-slate-300">Pages:</span>
+                  <span className="font-medium text-slate-100">{template.pages}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-600">Usage:</span>
-                  <span className="font-medium text-gray-900">{template.usage}</span>
+                  <span className="text-slate-300">Usage:</span>
+                  <span className="font-medium text-slate-100">{template.usage}</span>
                 </div>
               </div>
 
@@ -619,7 +619,7 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
                 ))}
               </div>
 
-              <div className="flex gap-2 pt-4 border-t border-gray-200">
+              <div className="flex gap-2 pt-4 border-t border-white/10">
                 <Button 
                   variant="outline" 
                   size="sm" 
@@ -653,8 +653,8 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">Automated Workflows</h2>
-          <p className="text-gray-600 mt-1">Create multi-step signing sequences with automation</p>
+          <h2 className="text-2xl font-bold text-slate-100">Automated Workflows</h2>
+          <p className="text-slate-300 mt-1">Create multi-step signing sequences with automation</p>
         </div>
         <Button onClick={() => setShowNewWorkflowModal(true)}>
           <Plus className="w-4 h-4 mr-2" />
@@ -668,12 +668,12 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
             <CardContent className="pt-6">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center">
-                    <Zap className="w-6 h-6 text-purple-600" />
+                  <div className="w-12 h-12 rounded-lg bg-purple-500/15 flex items-center justify-center">
+                    <Zap className="w-6 h-6 text-purple-400" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900">{workflow.name}</h3>
-                    <Badge variant="outline" className="mt-1 bg-green-50 text-green-700">
+                    <h3 className="font-semibold text-slate-100">{workflow.name}</h3>
+                    <Badge variant="outline" className="mt-1 bg-green-500/10 text-green-300">
                       {workflow.status}
                     </Badge>
                   </div>
@@ -683,20 +683,20 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
                 </Button>
               </div>
 
-              <p className="text-sm text-gray-600 mb-4">{workflow.description}</p>
+              <p className="text-sm text-slate-300 mb-4">{workflow.description}</p>
 
               <div className="grid grid-cols-3 gap-4 mb-4">
                 <div className="text-center">
-                  <p className="text-2xl font-bold text-gray-900">{workflow.steps}</p>
-                  <p className="text-xs text-gray-600">Steps</p>
+                  <p className="text-2xl font-bold text-slate-100">{workflow.steps}</p>
+                  <p className="text-xs text-slate-300">Steps</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-2xl font-bold text-gray-900">{workflow.avgTime}</p>
-                  <p className="text-xs text-gray-600">Avg Time</p>
+                  <p className="text-2xl font-bold text-slate-100">{workflow.avgTime}</p>
+                  <p className="text-xs text-slate-300">Avg Time</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-2xl font-bold text-gray-900">{workflow.activeDocuments}</p>
-                  <p className="text-xs text-gray-600">Active</p>
+                  <p className="text-2xl font-bold text-slate-100">{workflow.activeDocuments}</p>
+                  <p className="text-xs text-slate-300">Active</p>
                 </div>
               </div>
 
@@ -722,10 +722,10 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
           <CardDescription>Visual workflow designer (coming soon)</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="bg-gray-50 rounded-lg p-12 text-center">
+          <div className="bg-white/5 rounded-lg p-12 text-center">
             <Zap className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-            <p className="text-gray-600 mb-2">Drag & drop workflow builder</p>
-            <p className="text-sm text-gray-500">Create complex multi-step signing workflows with conditional logic</p>
+            <p className="text-slate-300 mb-2">Drag & drop workflow builder</p>
+            <p className="text-sm text-slate-400">Create complex multi-step signing workflows with conditional logic</p>
           </div>
         </CardContent>
       </Card>
@@ -736,8 +736,8 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">Integrations</h2>
-          <p className="text-gray-600 mt-1">Connect Grow E-Sign with your favorite tools</p>
+          <h2 className="text-2xl font-bold text-slate-100">Integrations</h2>
+          <p className="text-slate-300 mt-1">Connect Grow E-Sign with your favorite tools</p>
         </div>
         <Button variant="outline">
           <Code className="w-4 h-4 mr-2" />
@@ -751,12 +751,12 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Connected Apps</p>
-                <p className="text-2xl font-bold text-gray-900 mt-1">
+                <p className="text-sm font-medium text-slate-300">Connected Apps</p>
+                <p className="text-2xl font-bold text-slate-100 mt-1">
                   {integrations.filter(i => i.status === 'connected').length}
                 </p>
               </div>
-              <Link className="w-12 h-12 text-blue-600 opacity-20" />
+              <Link className="w-12 h-12 text-blue-400 opacity-20" />
             </div>
           </CardContent>
         </Card>
@@ -765,10 +765,10 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">API Calls This Month</p>
-                <p className="text-2xl font-bold text-gray-900 mt-1">24,567</p>
+                <p className="text-sm font-medium text-slate-300">API Calls This Month</p>
+                <p className="text-2xl font-bold text-slate-100 mt-1">24,567</p>
               </div>
-              <Database className="w-12 h-12 text-green-600 opacity-20" />
+              <Database className="w-12 h-12 text-green-400 opacity-20" />
             </div>
           </CardContent>
         </Card>
@@ -777,10 +777,10 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Webhooks Active</p>
-                <p className="text-2xl font-bold text-gray-900 mt-1">8</p>
+                <p className="text-sm font-medium text-slate-300">Webhooks Active</p>
+                <p className="text-2xl font-bold text-slate-100 mt-1">8</p>
               </div>
-              <Webhook className="w-12 h-12 text-purple-600 opacity-20" />
+              <Webhook className="w-12 h-12 text-purple-400 opacity-20" />
             </div>
           </CardContent>
         </Card>
@@ -793,14 +793,14 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
             <CardContent className="pt-6">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center">
-                    <integration.icon className="w-6 h-6 text-blue-600" />
+                  <div className="w-12 h-12 rounded-lg bg-blue-500/15 flex items-center justify-center">
+                    <integration.icon className="w-6 h-6 text-blue-400" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900">{integration.name}</h3>
+                    <h3 className="font-semibold text-slate-100">{integration.name}</h3>
                     <Badge 
                       variant="outline" 
-                      className={integration.status === 'connected' ? 'bg-green-50 text-green-700 border-green-300' : ''}
+                      className={integration.status === 'connected' ? 'bg-green-500/10 text-green-300 border-green-300' : ''}
                     >
                       {integration.status}
                     </Badge>
@@ -808,12 +808,12 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
                 </div>
               </div>
 
-              <p className="text-sm text-gray-600 mb-4">{integration.description}</p>
+              <p className="text-sm text-slate-300 mb-4">{integration.description}</p>
 
               {integration.status === 'connected' && (
-                <div className="bg-gray-50 rounded-lg p-3 mb-4">
-                  <p className="text-xs text-gray-600">Documents this month</p>
-                  <p className="text-lg font-bold text-gray-900">{integration.documentsThisMonth}</p>
+                <div className="bg-white/5 rounded-lg p-3 mb-4">
+                  <p className="text-xs text-slate-300">Documents this month</p>
+                  <p className="text-lg font-bold text-slate-100">{integration.documentsThisMonth}</p>
                 </div>
               )}
 
@@ -860,8 +860,8 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
   const renderAnalytics = () => (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900">Analytics & Reporting</h2>
-        <p className="text-gray-600 mt-1">Track performance and compliance metrics</p>
+        <h2 className="text-2xl font-bold text-slate-100">Analytics & Reporting</h2>
+        <p className="text-slate-300 mt-1">Track performance and compliance metrics</p>
       </div>
 
       {/* Key Metrics */}
@@ -869,48 +869,48 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
         <Card>
           <CardContent className="pt-6">
             <div className="flex items-center justify-between mb-2">
-              <FileText className="w-8 h-8 text-blue-600" />
-              <TrendingUp className="w-5 h-5 text-green-600" />
+              <FileText className="w-8 h-8 text-blue-400" />
+              <TrendingUp className="w-5 h-5 text-green-400" />
             </div>
-            <p className="text-3xl font-bold text-gray-900">1,247</p>
-            <p className="text-sm text-gray-600">Total Documents</p>
-            <p className="text-xs text-green-600 mt-1">+18% vs last month</p>
+            <p className="text-3xl font-bold text-slate-100">1,247</p>
+            <p className="text-sm text-slate-300">Total Documents</p>
+            <p className="text-xs text-green-400 mt-1">+18% vs last month</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="pt-6">
             <div className="flex items-center justify-between mb-2">
-              <CheckCircle className="w-8 h-8 text-green-600" />
-              <TrendingUp className="w-5 h-5 text-green-600" />
+              <CheckCircle className="w-8 h-8 text-green-400" />
+              <TrendingUp className="w-5 h-5 text-green-400" />
             </div>
-            <p className="text-3xl font-bold text-gray-900">94%</p>
-            <p className="text-sm text-gray-600">Completion Rate</p>
-            <p className="text-xs text-green-600 mt-1">+5% vs last month</p>
+            <p className="text-3xl font-bold text-slate-100">94%</p>
+            <p className="text-sm text-slate-300">Completion Rate</p>
+            <p className="text-xs text-green-400 mt-1">+5% vs last month</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="pt-6">
             <div className="flex items-center justify-between mb-2">
-              <Clock className="w-8 h-8 text-orange-600" />
-              <TrendingUp className="w-5 h-5 text-green-600" />
+              <Clock className="w-8 h-8 text-orange-400" />
+              <TrendingUp className="w-5 h-5 text-green-400" />
             </div>
-            <p className="text-3xl font-bold text-gray-900">1.2d</p>
-            <p className="text-sm text-gray-600">Avg Completion</p>
-            <p className="text-xs text-green-600 mt-1">15% faster</p>
+            <p className="text-3xl font-bold text-slate-100">1.2d</p>
+            <p className="text-sm text-slate-300">Avg Completion</p>
+            <p className="text-xs text-green-400 mt-1">15% faster</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="pt-6">
             <div className="flex items-center justify-between mb-2">
-              <Shield className="w-8 h-8 text-purple-600" />
-              <CheckCircle className="w-5 h-5 text-green-600" />
+              <Shield className="w-8 h-8 text-purple-400" />
+              <CheckCircle className="w-5 h-5 text-green-400" />
             </div>
-            <p className="text-3xl font-bold text-gray-900">100%</p>
-            <p className="text-sm text-gray-600">Compliance</p>
-            <p className="text-xs text-green-600 mt-1">Bank Level</p>
+            <p className="text-3xl font-bold text-slate-100">100%</p>
+            <p className="text-sm text-slate-300">Compliance</p>
+            <p className="text-xs text-green-400 mt-1">Bank Level</p>
           </CardContent>
         </Card>
       </div>
@@ -922,9 +922,9 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
             <CardTitle>Documents Over Time</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="bg-gray-50 rounded-lg p-12 text-center">
+            <div className="bg-white/5 rounded-lg p-12 text-center">
               <BarChart3 className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-              <p className="text-gray-600">Line chart showing document trends</p>
+              <p className="text-slate-300">Line chart showing document trends</p>
             </div>
           </CardContent>
         </Card>
@@ -934,9 +934,9 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
             <CardTitle>Completion by Template</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="bg-gray-50 rounded-lg p-12 text-center">
+            <div className="bg-white/5 rounded-lg p-12 text-center">
               <Target className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-              <p className="text-gray-600">Bar chart showing template performance</p>
+              <p className="text-slate-300">Bar chart showing template performance</p>
             </div>
           </CardContent>
         </Card>
@@ -951,19 +951,19 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
         <CardContent>
           <div className="space-y-3">
             {templates.slice(0, 5).map((template) => (
-              <div key={template.id} className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+              <div key={template.id} className="flex items-center justify-between p-4 border border-white/10 rounded-lg">
                 <div className="flex-1">
-                  <h4 className="font-semibold text-gray-900">{template.name}</h4>
-                  <p className="text-sm text-gray-600">{template.usage} uses this month</p>
+                  <h4 className="font-semibold text-slate-100">{template.name}</h4>
+                  <p className="text-sm text-slate-300">{template.usage} uses this month</p>
                 </div>
                 <div className="flex gap-6">
                   <div className="text-right">
-                    <p className="text-sm font-medium text-gray-900">96%</p>
-                    <p className="text-xs text-gray-600">Completion</p>
+                    <p className="text-sm font-medium text-slate-100">96%</p>
+                    <p className="text-xs text-slate-300">Completion</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-sm font-medium text-gray-900">1.4d</p>
-                    <p className="text-xs text-gray-600">Avg Time</p>
+                    <p className="text-sm font-medium text-slate-100">1.4d</p>
+                    <p className="text-xs text-slate-300">Avg Time</p>
                   </div>
                 </div>
               </div>
@@ -977,8 +977,8 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
   const renderSettings = () => (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900">Settings</h2>
-        <p className="text-gray-600 mt-1">Configure Grow E-Sign preferences</p>
+        <h2 className="text-2xl font-bold text-slate-100">Settings</h2>
+        <p className="text-slate-300 mt-1">Configure Grow E-Sign preferences</p>
       </div>
 
       {/* Organization Settings */}
@@ -1008,24 +1008,24 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
           <CardTitle>Security & Compliance</CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
-          <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+          <div className="flex items-center justify-between p-4 border border-white/10 rounded-lg">
             <div>
-              <h4 className="font-medium text-gray-900">Require 2FA for Signers</h4>
-              <p className="text-sm text-gray-600">SMS or email verification required</p>
+              <h4 className="font-medium text-slate-100">Require 2FA for Signers</h4>
+              <p className="text-sm text-slate-300">SMS or email verification required</p>
             </div>
             <Switch defaultChecked />
           </div>
-          <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+          <div className="flex items-center justify-between p-4 border border-white/10 rounded-lg">
             <div>
-              <h4 className="font-medium text-gray-900">IP Address Logging</h4>
-              <p className="text-sm text-gray-600">Record IP for all signatures</p>
+              <h4 className="font-medium text-slate-100">IP Address Logging</h4>
+              <p className="text-sm text-slate-300">Record IP for all signatures</p>
             </div>
             <Switch defaultChecked />
           </div>
-          <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+          <div className="flex items-center justify-between p-4 border border-white/10 rounded-lg">
             <div>
-              <h4 className="font-medium text-gray-900">Audit Trail Export</h4>
-              <p className="text-sm text-gray-600">Allow PDF audit trail downloads</p>
+              <h4 className="font-medium text-slate-100">Audit Trail Export</h4>
+              <p className="text-sm text-slate-300">Allow PDF audit trail downloads</p>
             </div>
             <Switch defaultChecked />
           </div>
@@ -1040,9 +1040,9 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
         <CardContent className="space-y-4">
           <div>
             <Label>Logo</Label>
-            <div className="mt-2 border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
+            <div className="mt-2 border-2 border-dashed border-white/10 rounded-lg p-8 text-center">
               <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
-              <p className="text-sm text-gray-600">Upload your logo</p>
+              <p className="text-sm text-slate-300">Upload your logo</p>
             </div>
           </div>
           <div>
@@ -1070,8 +1070,8 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
             Back to Dashboard
           </Button>
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">{currentDocument.name}</h2>
-            <p className="text-sm text-gray-600">{currentDocument.id} • Created {currentDocument.created}</p>
+            <h2 className="text-2xl font-bold text-slate-100">{currentDocument.name}</h2>
+            <p className="text-sm text-slate-300">{currentDocument.id} • Created {currentDocument.created}</p>
           </div>
         </div>
         <div className="flex gap-3">
@@ -1102,42 +1102,42 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
         <CardContent className="pt-6">
           <div className="flex items-center justify-between">
             <button onClick={() => setDocumentStep(2)} className="flex items-center gap-3 cursor-pointer hover:opacity-80">
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center ${documentStep >= 1 ? 'bg-green-100' : 'bg-gray-100'}`}>
-                <CheckCircle className={`w-5 h-5 ${documentStep >= 1 ? 'text-green-600' : 'text-gray-400'}`} />
+              <div className={`w-8 h-8 rounded-full flex items-center justify-center ${documentStep >= 1 ? 'bg-green-500/15' : 'bg-white/5'}`}>
+                <CheckCircle className={`w-5 h-5 ${documentStep >= 1 ? 'text-green-400' : 'text-gray-400'}`} />
               </div>
               <div>
-                <p className={`font-medium ${documentStep >= 1 ? 'text-gray-900' : 'text-gray-600'}`}>1. Upload Document</p>
-                <p className="text-xs text-gray-600">Complete</p>
+                <p className={`font-medium ${documentStep >= 1 ? 'text-slate-100' : 'text-slate-300'}`}>1. Upload Document</p>
+                <p className="text-xs text-slate-300">Complete</p>
               </div>
             </button>
             <div className="h-px flex-1 bg-gray-300 mx-4" />
             <button onClick={() => setDocumentStep(2)} className="flex items-center gap-3 cursor-pointer hover:opacity-80">
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center ${documentStep >= 2 ? 'bg-blue-100' : 'bg-gray-100'}`}>
-                <Users className={`w-5 h-5 ${documentStep >= 2 ? 'text-blue-600' : 'text-gray-400'}`} />
+              <div className={`w-8 h-8 rounded-full flex items-center justify-center ${documentStep >= 2 ? 'bg-blue-500/15' : 'bg-white/5'}`}>
+                <Users className={`w-5 h-5 ${documentStep >= 2 ? 'text-blue-400' : 'text-gray-400'}`} />
               </div>
               <div>
-                <p className={`font-medium ${documentStep >= 2 ? 'text-gray-900' : 'text-gray-600'}`}>2. Add Signers</p>
-                <p className="text-xs text-gray-600">{signers.length} added</p>
+                <p className={`font-medium ${documentStep >= 2 ? 'text-slate-100' : 'text-slate-300'}`}>2. Add Signers</p>
+                <p className="text-xs text-slate-300">{signers.length} added</p>
               </div>
             </button>
             <div className="h-px flex-1 bg-gray-300 mx-4" />
             <button onClick={() => { if (signers.length > 0) { setDocumentStep(3); } else { toast.error('Add signers first'); } }} className="flex items-center gap-3 cursor-pointer hover:opacity-80">
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center ${documentStep >= 3 ? 'bg-purple-100' : 'bg-gray-100'}`}>
-                <FileSignature className={`w-5 h-5 ${documentStep >= 3 ? 'text-purple-600' : 'text-gray-400'}`} />
+              <div className={`w-8 h-8 rounded-full flex items-center justify-center ${documentStep >= 3 ? 'bg-purple-500/15' : 'bg-white/5'}`}>
+                <FileSignature className={`w-5 h-5 ${documentStep >= 3 ? 'text-purple-400' : 'text-gray-400'}`} />
               </div>
               <div>
-                <p className={`font-medium ${documentStep >= 3 ? 'text-gray-900' : 'text-gray-600'}`}>3. Place Fields</p>
-                <p className="text-xs text-gray-600">{signatureFields.length} fields</p>
+                <p className={`font-medium ${documentStep >= 3 ? 'text-slate-100' : 'text-slate-300'}`}>3. Place Fields</p>
+                <p className="text-xs text-slate-300">{signatureFields.length} fields</p>
               </div>
             </button>
             <div className="h-px flex-1 bg-gray-300 mx-4" />
             <button onClick={() => { if (signers.length > 0) { setDocumentStep(4); } else { toast.error('Add signers first'); } }} className="flex items-center gap-3 cursor-pointer hover:opacity-80">
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center ${documentStep >= 4 ? 'bg-green-100' : 'bg-gray-100'}`}>
-                <Send className={`w-5 h-5 ${documentStep >= 4 ? 'text-green-600' : 'text-gray-400'}`} />
+              <div className={`w-8 h-8 rounded-full flex items-center justify-center ${documentStep >= 4 ? 'bg-green-500/15' : 'bg-white/5'}`}>
+                <Send className={`w-5 h-5 ${documentStep >= 4 ? 'text-green-400' : 'text-gray-400'}`} />
               </div>
               <div>
-                <p className={`font-medium ${documentStep >= 4 ? 'text-gray-900' : 'text-gray-600'}`}>4. Review & Send</p>
-                <p className="text-xs text-gray-600">Ready</p>
+                <p className={`font-medium ${documentStep >= 4 ? 'text-slate-100' : 'text-slate-300'}`}>4. Review & Send</p>
+                <p className="text-xs text-slate-300">Ready</p>
               </div>
             </button>
           </div>
@@ -1155,10 +1155,10 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
               <CardDescription>Your document is ready for signature fields</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="border-2 border-dashed border-gray-300 rounded-lg p-12 text-center bg-gray-50 min-h-[600px] flex flex-col items-center justify-center">
+              <div className="border-2 border-dashed border-white/10 rounded-lg p-12 text-center bg-white/5 min-h-[600px] flex flex-col items-center justify-center">
                 <FileText className="w-24 h-24 text-gray-400 mb-4" />
-                <p className="text-lg font-medium text-gray-900 mb-2">{currentDocument.name}</p>
-                <p className="text-sm text-gray-600 mb-4">
+                <p className="text-lg font-medium text-slate-100 mb-2">{currentDocument.name}</p>
+                <p className="text-sm text-slate-300 mb-4">
                   PDF document ready for signatures
                 </p>
                 <div className="flex gap-3">
@@ -1195,7 +1195,7 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
               {signers.length === 0 ? (
                 <div className="text-center py-8">
                   <Users className="w-12 h-12 text-gray-400 mx-auto mb-3" />
-                  <p className="text-sm text-gray-600 mb-4">
+                  <p className="text-sm text-slate-300 mb-4">
                     No signers added yet
                   </p>
                   <Button size="sm" onClick={() => setShowAddSignerModal(true)}>
@@ -1206,15 +1206,15 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
               ) : (
                 <div className="space-y-3">
                   {signers.map((signer, index) => (
-                    <div key={index} className="p-3 border border-gray-200 rounded-lg">
+                    <div key={index} className="p-3 border border-white/10 rounded-lg">
                       <div className="flex items-start justify-between">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
-                            <UserCheck className="w-5 h-5 text-blue-600" />
+                          <div className="w-10 h-10 rounded-full bg-blue-500/15 flex items-center justify-center">
+                            <UserCheck className="w-5 h-5 text-blue-400" />
                           </div>
                           <div>
-                            <p className="font-medium text-gray-900">{signer.name}</p>
-                            <p className="text-sm text-gray-600">{signer.email}</p>
+                            <p className="font-medium text-slate-100">{signer.name}</p>
+                            <p className="text-sm text-slate-300">{signer.email}</p>
                             <Badge variant="outline" className="mt-1 text-xs">
                               {signer.role}
                             </Badge>
@@ -1246,22 +1246,22 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
             <CardContent className="space-y-3">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-900">Require 2FA</p>
-                  <p className="text-xs text-gray-600">SMS verification</p>
+                  <p className="text-sm font-medium text-slate-100">Require 2FA</p>
+                  <p className="text-xs text-slate-300">SMS verification</p>
                 </div>
                 <Switch />
               </div>
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-900">Signing Order</p>
-                  <p className="text-xs text-gray-600">Sequential signing</p>
+                  <p className="text-sm font-medium text-slate-100">Signing Order</p>
+                  <p className="text-xs text-slate-300">Sequential signing</p>
                 </div>
                 <Switch />
               </div>
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-900">Expiry Date</p>
-                  <p className="text-xs text-gray-600">30 days</p>
+                  <p className="text-sm font-medium text-slate-100">Expiry Date</p>
+                  <p className="text-xs text-slate-300">30 days</p>
                 </div>
                 <Switch defaultChecked />
               </div>
@@ -1297,33 +1297,33 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
               <CardDescription>Add fields for each signer</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="bg-white border-2 border-gray-300 rounded-lg p-8 min-h-[500px]">
+              <div className="bg-white border-2 border-white/10 rounded-lg p-8 min-h-[500px]">
                 <div className="text-center mb-6">
                   <FileText className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                  <p className="font-semibold text-gray-900">{currentDocument.name}</p>
-                  <p className="text-sm text-gray-600">Use tools on the right to add fields</p>
+                  <p className="font-semibold text-slate-100">{currentDocument.name}</p>
+                  <p className="text-sm text-slate-300">Use tools on the right to add fields</p>
                 </div>
                 <div className="space-y-3">
                   {signatureFields.length === 0 ? (
-                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
+                    <div className="border-2 border-dashed border-white/10 rounded-lg p-8 text-center">
                       <FileSignature className="w-12 h-12 text-gray-400 mx-auto mb-3" />
-                      <p className="text-sm text-gray-600">No fields added yet</p>
+                      <p className="text-sm text-slate-300">No fields added yet</p>
                     </div>
                   ) : (
                     signatureFields.map((field, index) => (
-                      <div key={index} className="border-2 border-blue-500 bg-blue-50 rounded-lg p-4 flex items-center justify-between">
+                      <div key={index} className="border-2 border-blue-500 bg-blue-500/10 rounded-lg p-4 flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                          <FileSignature className="w-5 h-5 text-blue-600" />
+                          <FileSignature className="w-5 h-5 text-blue-400" />
                           <div>
                             <p className="text-sm font-semibold">{field.type} Field</p>
-                            <p className="text-xs text-gray-600">For: {field.signerName}</p>
+                            <p className="text-xs text-slate-300">For: {field.signerName}</p>
                           </div>
                         </div>
                         <Button variant="ghost" size="sm" onClick={() => {
                           setSignatureFields(signatureFields.filter((_, i) => i !== index));
                           toast.success('Field removed');
                         }}>
-                          <Trash2 className="w-4 h-4 text-red-600" />
+                          <Trash2 className="w-4 h-4 text-red-400" />
                         </Button>
                       </div>
                     ))
@@ -1351,9 +1351,9 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
             </CardHeader>
             <CardContent className="space-y-4">
               {signers.map((signer, index) => (
-                <div key={index} className="border-2 border-gray-200 rounded-lg p-3 bg-gray-50">
+                <div key={index} className="border-2 border-white/10 rounded-lg p-3 bg-white/5">
                   <div className="flex items-center gap-2 mb-3">
-                    <UserCheck className="w-4 h-4 text-blue-600" />
+                    <UserCheck className="w-4 h-4 text-blue-400" />
                     <p className="text-sm font-semibold">{signer.name}</p>
                   </div>
                   <div className="space-y-2">
@@ -1398,7 +1398,7 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
           <CardContent className="space-y-6">
             <div>
               <h3 className="font-semibold mb-3">Document</h3>
-              <div className="bg-gray-50 rounded p-3 space-y-1">
+              <div className="bg-white/5 rounded p-3 space-y-1">
                 <p className="text-sm"><strong>Name:</strong> {currentDocument.name}</p>
                 <p className="text-sm"><strong>ID:</strong> {currentDocument.id}</p>
               </div>
@@ -1407,11 +1407,11 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
               <h3 className="font-semibold mb-3">Signers ({signers.length})</h3>
               <div className="space-y-2">
                 {signers.map((signer, i) => (
-                  <div key={i} className="bg-gray-50 rounded p-3 flex items-center gap-3">
-                    <UserCheck className="w-4 h-4 text-blue-600" />
+                  <div key={i} className="bg-white/5 rounded p-3 flex items-center gap-3">
+                    <UserCheck className="w-4 h-4 text-blue-400" />
                     <div>
                       <p className="text-sm font-medium">{signer.name}</p>
-                      <p className="text-xs text-gray-600">{signer.email}</p>
+                      <p className="text-xs text-slate-300">{signer.email}</p>
                     </div>
                   </div>
                 ))}
@@ -1420,24 +1420,24 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
             <div>
               <h3 className="font-semibold mb-3">Fields ({signatureFields.length})</h3>
               {signatureFields.length > 0 ? (
-                <div className="bg-gray-50 rounded p-4 grid grid-cols-3 gap-4 text-center">
+                <div className="bg-white/5 rounded p-4 grid grid-cols-3 gap-4 text-center">
                   <div>
                     <p className="text-2xl font-bold">{signatureFields.filter(f => f.type === 'Signature').length}</p>
-                    <p className="text-xs text-gray-600">Signatures</p>
+                    <p className="text-xs text-slate-300">Signatures</p>
                   </div>
                   <div>
                     <p className="text-2xl font-bold">{signatureFields.filter(f => f.type === 'Initial').length}</p>
-                    <p className="text-xs text-gray-600">Initials</p>
+                    <p className="text-xs text-slate-300">Initials</p>
                   </div>
                   <div>
                     <p className="text-2xl font-bold">{signatureFields.filter(f => f.type === 'Date').length}</p>
-                    <p className="text-xs text-gray-600">Dates</p>
+                    <p className="text-xs text-slate-300">Dates</p>
                   </div>
                 </div>
               ) : (
-                <div className="bg-yellow-50 border border-yellow-200 rounded p-4 text-center">
-                  <AlertTriangle className="w-8 h-8 text-yellow-600 mx-auto mb-2" />
-                  <p className="text-sm text-yellow-800">No fields placed</p>
+                <div className="bg-yellow-500/10 border border-yellow-500/30 rounded p-4 text-center">
+                  <AlertTriangle className="w-8 h-8 text-yellow-400 mx-auto mb-2" />
+                  <p className="text-sm text-yellow-300">No fields placed</p>
                 </div>
               )}
             </div>
@@ -1490,9 +1490,9 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white/5">
       {/* Header */}
-      <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
+      <div className="bg-white border-b border-white/10 sticky top-0 z-10">
         <div className="px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -1501,8 +1501,8 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
                   <FileSignature className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h1 className="text-xl font-bold text-gray-900">Grow E-Sign</h1>
-                  <p className="text-xs text-gray-600">Enterprise E-Signature Platform</p>
+                  <h1 className="text-xl font-bold text-slate-100">Grow E-Sign</h1>
+                  <p className="text-xs text-slate-300">Enterprise E-Signature Platform</p>
                 </div>
               </div>
             </div>
@@ -1519,7 +1519,7 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
           </div>
 
           {/* Navigation */}
-          <div className="flex gap-1 mt-4 border-b border-gray-200">
+          <div className="flex gap-1 mt-4 border-b border-white/10">
             {[
               { id: 'dashboard', label: 'Dashboard', icon: Home },
               { id: 'documents', label: 'Documents', icon: FileText },
@@ -1540,8 +1540,8 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
                   onClick={() => setCurrentView(item.id as View)}
                   className={`flex items-center gap-2 px-4 py-3 text-sm font-medium border-b-2 transition-colors ${
                     currentView === item.id
-                      ? 'border-blue-600 text-blue-600'
-                      : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
+                      ? 'border-blue-600 text-blue-400'
+                      : 'border-transparent text-slate-300 hover:text-slate-100 hover:border-white/10'
                   }`}
                 >
                   <Icon className="w-4 h-4" />
@@ -1571,7 +1571,7 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
             {/* Template Selection */}
             <div>
               <Label>Start from Template</Label>
-              <select className="w-full mt-2 px-3 py-2 border border-gray-300 rounded-lg">
+              <select className="w-full mt-2 px-3 py-2 border border-white/10 rounded-lg">
                 <option>Select a template...</option>
                 {templates.map(t => (
                   <option key={t.id} value={t.id}>{t.name}</option>
@@ -1579,17 +1579,17 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
               </select>
             </div>
 
-            <div className="text-center text-gray-500 py-2">
+            <div className="text-center text-slate-400 py-2">
               — OR —
             </div>
 
             {/* Upload */}
             <div>
               <Label>Upload Document</Label>
-              <div className="mt-2 border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-blue-500 transition-colors cursor-pointer">
+              <div className="mt-2 border-2 border-dashed border-white/10 rounded-lg p-8 text-center hover:border-blue-500 transition-colors cursor-pointer">
                 <Upload className="w-12 h-12 text-gray-400 mx-auto mb-3" />
-                <p className="text-sm font-medium text-gray-900 mb-1">Click to upload or drag and drop</p>
-                <p className="text-xs text-gray-500">PDF, DOC, DOCX up to 10MB</p>
+                <p className="text-sm font-medium text-slate-100 mb-1">Click to upload or drag and drop</p>
+                <p className="text-xs text-slate-400">PDF, DOC, DOCX up to 10MB</p>
               </div>
             </div>
 
@@ -1650,7 +1650,7 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
             <div>
               <Label>Category</Label>
               <select 
-                className="w-full mt-2 px-3 py-2 border border-gray-300 rounded-lg"
+                className="w-full mt-2 px-3 py-2 border border-white/10 rounded-lg"
                 value={templateCategory}
                 onChange={(e) => setTemplateCategory(e.target.value)}
               >
@@ -1727,8 +1727,8 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
               <Label>Description</Label>
               <Textarea rows={3} placeholder="Describe the workflow purpose..." className="mt-2" value={workflowDescription} onChange={(e) => setWorkflowDescription(e.target.value)} />
             </div>
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <p className="text-sm text-blue-800">
+            <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
+              <p className="text-sm text-blue-300">
                 Configure workflow steps in the visual builder after creation
               </p>
             </div>
@@ -1779,7 +1779,7 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
             <div>
               <Label>Role</Label>
               <select 
-                className="w-full mt-2 px-3 py-2 border border-gray-300 rounded-lg"
+                className="w-full mt-2 px-3 py-2 border border-white/10 rounded-lg"
                 value={signerRole}
                 onChange={(e) => setSignerRole(e.target.value)}
               >
@@ -1789,8 +1789,8 @@ export function GrowESign({ onSwitchModule }: GrowESignProps) {
                 <option>Witness</option>
               </select>
             </div>
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <p className="text-sm text-blue-800">
+            <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
+              <p className="text-sm text-blue-300">
                 The signer will receive an email with a secure link to sign the document
               </p>
             </div>

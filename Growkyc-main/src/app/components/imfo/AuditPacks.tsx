@@ -150,10 +150,10 @@ export function AuditPacks({ onNavigate, role, onBack }: AuditPacksProps) {
   ];
 
   const statusConfig = {
-    ready: { label: 'Ready', color: 'bg-green-100 text-green-700 border-green-300', icon: CheckCircle },
-    generating: { label: 'Generating', color: 'bg-blue-100 text-blue-700 border-blue-300', icon: Clock },
-    review: { label: 'In Review', color: 'bg-yellow-100 text-yellow-700 border-yellow-300', icon: AlertCircle },
-    archived: { label: 'Archived', color: 'bg-gray-100 text-gray-600 border-gray-300', icon: Archive }
+    ready: { label: 'Ready', color: 'bg-green-500/15 text-green-300 border-green-300', icon: CheckCircle },
+    generating: { label: 'Generating', color: 'bg-blue-500/15 text-blue-300 border-blue-300', icon: Clock },
+    review: { label: 'In Review', color: 'bg-yellow-500/15 text-yellow-300 border-yellow-300', icon: AlertCircle },
+    archived: { label: 'Archived', color: 'bg-white/5 text-slate-300 border-white/10', icon: Archive }
   };
 
   if (selectedPack) {
@@ -172,10 +172,10 @@ export function AuditPacks({ onNavigate, role, onBack }: AuditPacksProps) {
 
         <div className="flex items-start justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">
+            <h1 className="text-3xl font-bold text-slate-100">
               {pack.quarter} {pack.year} Audit Pack
             </h1>
-            <p className="text-gray-600 mt-1">{pack.fund}</p>
+            <p className="text-slate-300 mt-1">{pack.fund}</p>
           </div>
           <div className="flex gap-2">
             <Button variant="outline">
@@ -202,29 +202,29 @@ export function AuditPacks({ onNavigate, role, onBack }: AuditPacksProps) {
 
           <Card>
             <CardContent className="p-6">
-              <p className="text-sm text-gray-600">Documents</p>
-              <p className="text-2xl font-bold text-gray-900 mt-1">{pack.documents}</p>
+              <p className="text-sm text-slate-300">Documents</p>
+              <p className="text-2xl font-bold text-slate-100 mt-1">{pack.documents}</p>
             </CardContent>
           </Card>
 
           <Card>
             <CardContent className="p-6">
-              <p className="text-sm text-gray-600">Total Size</p>
-              <p className="text-2xl font-bold text-gray-900 mt-1">{pack.size}</p>
+              <p className="text-sm text-slate-300">Total Size</p>
+              <p className="text-2xl font-bold text-slate-100 mt-1">{pack.size}</p>
             </CardContent>
           </Card>
 
           <Card>
             <CardContent className="p-6">
-              <p className="text-sm text-gray-600">Generated</p>
-              <p className="text-sm font-medium text-gray-900 mt-1">{pack.generatedDate}</p>
+              <p className="text-sm text-slate-300">Generated</p>
+              <p className="text-sm font-medium text-slate-100 mt-1">{pack.generatedDate}</p>
             </CardContent>
           </Card>
 
           <Card>
             <CardContent className="p-6">
-              <p className="text-sm text-gray-600">Auditor</p>
-              <p className="text-sm font-medium text-gray-900 mt-1">{pack.auditor}</p>
+              <p className="text-sm text-slate-300">Auditor</p>
+              <p className="text-sm font-medium text-slate-100 mt-1">{pack.auditor}</p>
             </CardContent>
           </Card>
         </div>
@@ -239,14 +239,14 @@ export function AuditPacks({ onNavigate, role, onBack }: AuditPacksProps) {
               {packContents.map((category, idx) => (
                 <div key={idx} className="space-y-3">
                   <div className="flex items-center gap-2 mb-3">
-                    <Folder className="w-5 h-5 text-indigo-600" />
-                    <h3 className="font-bold text-gray-900">{category.category}</h3>
+                    <Folder className="w-5 h-5 text-indigo-400" />
+                    <h3 className="font-bold text-slate-100">{category.category}</h3>
                   </div>
                   <div className="space-y-2 ml-7">
                     {category.items.map((item, itemIdx) => (
                       <div key={itemIdx} className="flex items-center gap-2 text-sm">
-                        <CheckCircle className="w-4 h-4 text-green-600" />
-                        <span className="text-gray-700">{item}</span>
+                        <CheckCircle className="w-4 h-4 text-green-400" />
+                        <span className="text-slate-300">{item}</span>
                       </div>
                     ))}
                   </div>
@@ -293,8 +293,8 @@ export function AuditPacks({ onNavigate, role, onBack }: AuditPacksProps) {
 
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Quarterly Audit Packs</h1>
-          <p className="text-gray-600 mt-1">One-click generation of comprehensive audit documentation packages</p>
+          <h1 className="text-3xl font-bold text-slate-100">Quarterly Audit Packs</h1>
+          <p className="text-slate-300 mt-1">One-click generation of comprehensive audit documentation packages</p>
         </div>
         <Button className="bg-indigo-600 hover:bg-indigo-700">
           <Play className="w-4 h-4 mr-2" />
@@ -308,10 +308,10 @@ export function AuditPacks({ onNavigate, role, onBack }: AuditPacksProps) {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Total Packs</p>
-                <p className="text-3xl font-bold text-gray-900 mt-1">{auditPacks.length}</p>
+                <p className="text-sm text-slate-300">Total Packs</p>
+                <p className="text-3xl font-bold text-slate-100 mt-1">{auditPacks.length}</p>
               </div>
-              <Package className="w-8 h-8 text-indigo-600" />
+              <Package className="w-8 h-8 text-indigo-400" />
             </div>
           </CardContent>
         </Card>
@@ -320,12 +320,12 @@ export function AuditPacks({ onNavigate, role, onBack }: AuditPacksProps) {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Ready</p>
-                <p className="text-3xl font-bold text-green-600 mt-1">
+                <p className="text-sm text-slate-300">Ready</p>
+                <p className="text-3xl font-bold text-green-400 mt-1">
                   {auditPacks.filter(p => p.status === 'ready').length}
                 </p>
               </div>
-              <CheckCircle className="w-8 h-8 text-green-600" />
+              <CheckCircle className="w-8 h-8 text-green-400" />
             </div>
           </CardContent>
         </Card>
@@ -334,12 +334,12 @@ export function AuditPacks({ onNavigate, role, onBack }: AuditPacksProps) {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">In Review</p>
-                <p className="text-3xl font-bold text-yellow-600 mt-1">
+                <p className="text-sm text-slate-300">In Review</p>
+                <p className="text-3xl font-bold text-yellow-400 mt-1">
                   {auditPacks.filter(p => p.status === 'review').length}
                 </p>
               </div>
-              <AlertCircle className="w-8 h-8 text-yellow-600" />
+              <AlertCircle className="w-8 h-8 text-yellow-400" />
             </div>
           </CardContent>
         </Card>
@@ -348,71 +348,71 @@ export function AuditPacks({ onNavigate, role, onBack }: AuditPacksProps) {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Archived</p>
-                <p className="text-3xl font-bold text-gray-600 mt-1">
+                <p className="text-sm text-slate-300">Archived</p>
+                <p className="text-3xl font-bold text-slate-300 mt-1">
                   {auditPacks.filter(p => p.status === 'archived').length}
                 </p>
               </div>
-              <Archive className="w-8 h-8 text-gray-600" />
+              <Archive className="w-8 h-8 text-slate-300" />
             </div>
           </CardContent>
         </Card>
       </div>
 
       {/* What's Included */}
-      <Card className="border-2 border-indigo-300 bg-indigo-50">
-        <CardHeader className="border-b border-indigo-200">
-          <CardTitle className="text-indigo-900">What's Included in an Audit Pack</CardTitle>
+      <Card className="border-2 border-indigo-300 bg-indigo-500/10">
+        <CardHeader className="border-b border-indigo-500/30">
+          <CardTitle className="text-indigo-300">What's Included in an Audit Pack</CardTitle>
         </CardHeader>
         <CardContent className="p-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
-              <h4 className="font-semibold text-indigo-900 mb-3">Financial Documentation</h4>
-              <ul className="space-y-2 text-sm text-indigo-800">
+              <h4 className="font-semibold text-indigo-300 mb-3">Financial Documentation</h4>
+              <ul className="space-y-2 text-sm text-indigo-300">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-indigo-600 mt-0.5" />
+                  <CheckCircle className="w-4 h-4 text-indigo-400 mt-0.5" />
                   <span>Complete financial statements</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-indigo-600 mt-0.5" />
+                  <CheckCircle className="w-4 h-4 text-indigo-400 mt-0.5" />
                   <span>Trial balances with adjustments</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-indigo-600 mt-0.5" />
+                  <CheckCircle className="w-4 h-4 text-indigo-400 mt-0.5" />
                   <span>Bank reconciliations</span>
                 </li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-indigo-900 mb-3">Transaction Records</h4>
-              <ul className="space-y-2 text-sm text-indigo-800">
+              <h4 className="font-semibold text-indigo-300 mb-3">Transaction Records</h4>
+              <ul className="space-y-2 text-sm text-indigo-300">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-indigo-600 mt-0.5" />
+                  <CheckCircle className="w-4 h-4 text-indigo-400 mt-0.5" />
                   <span>Investment transaction log</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-indigo-600 mt-0.5" />
+                  <CheckCircle className="w-4 h-4 text-indigo-400 mt-0.5" />
                   <span>Capital calls and distributions</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-indigo-600 mt-0.5" />
+                  <CheckCircle className="w-4 h-4 text-indigo-400 mt-0.5" />
                   <span>Fee calculations</span>
                 </li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-indigo-900 mb-3">Compliance & Governance</h4>
-              <ul className="space-y-2 text-sm text-indigo-800">
+              <h4 className="font-semibold text-indigo-300 mb-3">Compliance & Governance</h4>
+              <ul className="space-y-2 text-sm text-indigo-300">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-indigo-600 mt-0.5" />
+                  <CheckCircle className="w-4 h-4 text-indigo-400 mt-0.5" />
                   <span>Board and IC minutes</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-indigo-600 mt-0.5" />
+                  <CheckCircle className="w-4 h-4 text-indigo-400 mt-0.5" />
                   <span>Compliance certificates</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-indigo-600 mt-0.5" />
+                  <CheckCircle className="w-4 h-4 text-indigo-400 mt-0.5" />
                   <span>Investor KYC/AML records</span>
                 </li>
               </ul>
@@ -437,8 +437,8 @@ export function AuditPacks({ onNavigate, role, onBack }: AuditPacksProps) {
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-3">
-                      <Package className="w-6 h-6 text-indigo-600" />
-                      <h3 className="text-xl font-bold text-gray-900">
+                      <Package className="w-6 h-6 text-indigo-400" />
+                      <h3 className="text-xl font-bold text-slate-100">
                         {pack.quarter} {pack.year} - {pack.fund}
                       </h3>
                       <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${statusConf.color}`}>
@@ -449,23 +449,23 @@ export function AuditPacks({ onNavigate, role, onBack }: AuditPacksProps) {
 
                     <div className="grid grid-cols-4 gap-6">
                       <div>
-                        <p className="text-xs text-gray-500">Documents</p>
-                        <p className="text-lg font-semibold text-gray-900 mt-1">
+                        <p className="text-xs text-slate-400">Documents</p>
+                        <p className="text-lg font-semibold text-slate-100 mt-1">
                           <FileText className="w-4 h-4 inline mr-1" />
                           {pack.documents}
                         </p>
                       </div>
                       <div>
-                        <p className="text-xs text-gray-500">Size</p>
-                        <p className="text-lg font-semibold text-gray-900 mt-1">{pack.size}</p>
+                        <p className="text-xs text-slate-400">Size</p>
+                        <p className="text-lg font-semibold text-slate-100 mt-1">{pack.size}</p>
                       </div>
                       <div>
-                        <p className="text-xs text-gray-500">Generated</p>
-                        <p className="text-sm font-medium text-gray-900 mt-1">{pack.generatedDate}</p>
+                        <p className="text-xs text-slate-400">Generated</p>
+                        <p className="text-sm font-medium text-slate-100 mt-1">{pack.generatedDate}</p>
                       </div>
                       <div>
-                        <p className="text-xs text-gray-500">Auditor</p>
-                        <p className="text-sm font-medium text-gray-900 mt-1">{pack.auditor}</p>
+                        <p className="text-xs text-slate-400">Auditor</p>
+                        <p className="text-sm font-medium text-slate-100 mt-1">{pack.auditor}</p>
                       </div>
                     </div>
                   </div>

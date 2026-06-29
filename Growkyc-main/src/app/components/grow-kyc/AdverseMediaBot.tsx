@@ -124,8 +124,8 @@ function AdverseMediaControlCentre({ onNavigate, onBack }: { onNavigate: (view: 
           <Card className="border-2 hover:border-blue-400 transition-colors cursor-pointer" onClick={() => onNavigate('new-check')}>
             <CardContent className="p-3">
               <div className="flex items-center justify-between mb-2">
-                <Clock className="w-4 h-4 text-blue-600" />
-                <Badge className="bg-blue-100 text-blue-700 text-xs">31</Badge>
+                <Clock className="w-4 h-4 text-blue-400" />
+                <Badge className="bg-blue-500/15 text-blue-300 text-xs">31</Badge>
               </div>
               <p className="text-xs font-medium text-white">Awaiting Screening</p>
             </CardContent>
@@ -134,8 +134,8 @@ function AdverseMediaControlCentre({ onNavigate, onBack }: { onNavigate: (view: 
           <Card className="border-2 hover:border-purple-400 transition-colors cursor-pointer" onClick={() => onNavigate('monthly-queue')}>
             <CardContent className="p-3">
               <div className="flex items-center justify-between mb-2">
-                <RefreshCw className="w-4 h-4 text-purple-600" />
-                <Badge className="bg-purple-100 text-purple-700 text-xs">284</Badge>
+                <RefreshCw className="w-4 h-4 text-purple-400" />
+                <Badge className="bg-purple-500/15 text-purple-300 text-xs">284</Badge>
               </div>
               <p className="text-xs font-medium text-white">Monthly Reviews Due</p>
             </CardContent>
@@ -144,8 +144,8 @@ function AdverseMediaControlCentre({ onNavigate, onBack }: { onNavigate: (view: 
           <Card className="border-2 hover:border-amber-400 transition-colors cursor-pointer">
             <CardContent className="p-3">
               <div className="flex items-center justify-between mb-2">
-                <Eye className="w-4 h-4 text-amber-600" />
-                <Badge className="bg-amber-100 text-amber-700 text-xs">17</Badge>
+                <Eye className="w-4 h-4 text-amber-400" />
+                <Badge className="bg-amber-500/15 text-amber-300 text-xs">17</Badge>
               </div>
               <p className="text-xs font-medium text-white">Possible Matches</p>
             </CardContent>
@@ -154,8 +154,8 @@ function AdverseMediaControlCentre({ onNavigate, onBack }: { onNavigate: (view: 
           <Card className="border-2 hover:border-red-400 transition-colors cursor-pointer">
             <CardContent className="p-3">
               <div className="flex items-center justify-between mb-2">
-                <AlertOctagon className="w-4 h-4 text-red-600" />
-                <Badge className="bg-red-100 text-red-700 text-xs">6</Badge>
+                <AlertOctagon className="w-4 h-4 text-red-400" />
+                <Badge className="bg-red-500/15 text-red-300 text-xs">6</Badge>
               </div>
               <p className="text-xs font-medium text-white">Severe Alerts</p>
             </CardContent>
@@ -164,8 +164,8 @@ function AdverseMediaControlCentre({ onNavigate, onBack }: { onNavigate: (view: 
           <Card className="border-2 hover:border-orange-400 transition-colors cursor-pointer">
             <CardContent className="p-3">
               <div className="flex items-center justify-between mb-2">
-                <Shield className="w-4 h-4 text-orange-600" />
-                <Badge className="bg-orange-100 text-orange-700 text-xs">9</Badge>
+                <Shield className="w-4 h-4 text-orange-400" />
+                <Badge className="bg-orange-500/15 text-orange-300 text-xs">9</Badge>
               </div>
               <p className="text-xs font-medium text-white">Escalated Cases</p>
             </CardContent>
@@ -174,8 +174,8 @@ function AdverseMediaControlCentre({ onNavigate, onBack }: { onNavigate: (view: 
           <Card className="border-2 hover:border-red-400 transition-colors cursor-pointer">
             <CardContent className="p-3">
               <div className="flex items-center justify-between mb-2">
-                <XCircle className="w-4 h-4 text-red-600" />
-                <Badge className="bg-red-100 text-red-700 text-xs">18</Badge>
+                <XCircle className="w-4 h-4 text-red-400" />
+                <Badge className="bg-red-500/15 text-red-300 text-xs">18</Badge>
               </div>
               <p className="text-xs font-medium text-white">Overdue Reviews</p>
             </CardContent>
@@ -194,8 +194,8 @@ function AdverseMediaControlCentre({ onNavigate, onBack }: { onNavigate: (view: 
           <Card className="border-2 hover:border-red-400 transition-colors cursor-pointer">
             <CardContent className="p-3">
               <div className="flex items-center justify-between mb-2">
-                <Gavel className="w-4 h-4 text-red-600" />
-                <Badge className="bg-red-100 text-red-700 text-xs">4</Badge>
+                <Gavel className="w-4 h-4 text-red-400" />
+                <Badge className="bg-red-500/15 text-red-300 text-xs">4</Badge>
               </div>
               <p className="text-xs font-medium text-white">New Court Alerts</p>
             </CardContent>
@@ -208,7 +208,7 @@ function AdverseMediaControlCentre({ onNavigate, onBack }: { onNavigate: (view: 
           <Card className="border-2">
             <CardHeader className="bg-gradient-to-r from-blue-50 to-blue-100 border-b">
               <CardTitle className="flex items-center gap-2">
-                <Search className="w-5 h-5 text-blue-600" />
+                <Search className="w-5 h-5 text-blue-400" />
                 New Screening Queue
               </CardTitle>
               <CardDescription>Subjects awaiting initial adverse media screening</CardDescription>
@@ -243,8 +243,8 @@ function AdverseMediaControlCentre({ onNavigate, onBack }: { onNavigate: (view: 
                         <td className="px-4 py-3">
                           <Badge className={
                             item.status === 'Queued' ? 'bg-[#0f172a] text-slate-300' :
-                            item.status === 'Searching' ? 'bg-blue-100 text-blue-700' :
-                            'bg-amber-100 text-amber-700'
+                            item.status === 'Searching' ? 'bg-blue-500/15 text-blue-300' :
+                            'bg-amber-500/15 text-amber-300'
                           }>
                             {item.status}
                           </Badge>
@@ -255,7 +255,7 @@ function AdverseMediaControlCentre({ onNavigate, onBack }: { onNavigate: (view: 
                 </table>
               </div>
               <div className="p-4 border-t bg-[#0f172a]">
-                <Button variant="ghost" className="w-full text-blue-700 hover:bg-blue-50" onClick={() => onNavigate('new-check')}>
+                <Button variant="ghost" className="w-full text-blue-300 hover:bg-blue-500/10" onClick={() => onNavigate('new-check')}>
                   View All New Screens <ChevronRight className="w-4 h-4 ml-1" />
                 </Button>
               </div>
@@ -266,7 +266,7 @@ function AdverseMediaControlCentre({ onNavigate, onBack }: { onNavigate: (view: 
           <Card className="border-2">
             <CardHeader className="bg-gradient-to-r from-purple-50 to-purple-100 border-b">
               <CardTitle className="flex items-center gap-2">
-                <RefreshCw className="w-5 h-5 text-purple-600" />
+                <RefreshCw className="w-5 h-5 text-purple-400" />
                 Monthly Rescreening Queue
               </CardTitle>
               <CardDescription>Active subjects requiring periodic review</CardDescription>
@@ -294,9 +294,9 @@ function AdverseMediaControlCentre({ onNavigate, onBack }: { onNavigate: (view: 
                         <td className="px-4 py-3 text-xs text-slate-300">{item.lastReview}</td>
                         <td className="px-4 py-3">
                           <Badge className={
-                            item.currentStatus === 'Clear' ? 'bg-green-100 text-green-700' :
-                            item.currentStatus === 'Low Relevance' ? 'bg-blue-100 text-blue-700' :
-                            'bg-amber-100 text-amber-700'
+                            item.currentStatus === 'Clear' ? 'bg-green-500/15 text-green-300' :
+                            item.currentStatus === 'Low Relevance' ? 'bg-blue-500/15 text-blue-300' :
+                            'bg-amber-500/15 text-amber-300'
                           }>
                             {item.currentStatus}
                           </Badge>
@@ -305,7 +305,7 @@ function AdverseMediaControlCentre({ onNavigate, onBack }: { onNavigate: (view: 
                           {item.delta === 'No change' ? (
                             <span className="text-xs text-slate-400">{item.delta}</span>
                           ) : (
-                            <Badge className="bg-red-100 text-red-700">{item.delta}</Badge>
+                            <Badge className="bg-red-500/15 text-red-300">{item.delta}</Badge>
                           )}
                         </td>
                       </tr>
@@ -314,7 +314,7 @@ function AdverseMediaControlCentre({ onNavigate, onBack }: { onNavigate: (view: 
                 </table>
               </div>
               <div className="p-4 border-t bg-[#0f172a]">
-                <Button variant="ghost" className="w-full text-purple-700 hover:bg-purple-50" onClick={() => onNavigate('monthly-queue')}>
+                <Button variant="ghost" className="w-full text-purple-300 hover:bg-purple-500/10" onClick={() => onNavigate('monthly-queue')}>
                   View All Monthly Reviews <ChevronRight className="w-4 h-4 ml-1" />
                 </Button>
               </div>
@@ -326,64 +326,64 @@ function AdverseMediaControlCentre({ onNavigate, onBack }: { onNavigate: (view: 
         <Card className="border-2 mb-8">
           <CardHeader className="bg-gradient-to-r from-red-50 to-orange-50 border-b">
             <CardTitle className="flex items-center gap-2">
-              <Bell className="w-5 h-5 text-red-600" />
+              <Bell className="w-5 h-5 text-red-400" />
               Recent Alerts & Critical Events
             </CardTitle>
           </CardHeader>
           <CardContent className="p-6">
             <div className="space-y-4">
-              <div className="flex items-start gap-3 p-4 bg-red-50 border-2 border-red-300 rounded-lg">
-                <AlertOctagon className="w-5 h-5 text-red-600 mt-0.5" />
+              <div className="flex items-start gap-3 p-4 bg-red-500/10 border-2 border-red-300 rounded-lg">
+                <AlertOctagon className="w-5 h-5 text-red-400 mt-0.5" />
                 <div className="flex-1">
-                  <p className="font-semibold text-red-900 text-sm">SEVERE: Court Judgment - Fraud Conviction</p>
-                  <p className="text-xs text-red-700 mt-1">
+                  <p className="font-semibold text-red-300 text-sm">SEVERE: Court Judgment - Fraud Conviction</p>
+                  <p className="text-xs text-red-300 mt-1">
                     <strong>David Kim</strong> - Supreme Court NSW judgment for conspiracy to defraud investors. $2.4M damages awarded. Director disqualification pending.
                   </p>
                   <div className="flex items-center gap-3 mt-2">
                     <Badge className="bg-red-600 text-white text-xs">Level 4 Severity</Badge>
                     <Badge className="bg-[#0f172a] text-slate-300 text-xs">Official Court Source</Badge>
-                    <span className="text-xs text-red-600">Action Required: Escalate & Block Relationship</span>
+                    <span className="text-xs text-red-400">Action Required: Escalate & Block Relationship</span>
                   </div>
                 </div>
                 <Badge className="bg-red-600 text-white">NEW</Badge>
               </div>
 
-              <div className="flex items-start gap-3 p-4 bg-orange-50 border border-orange-200 rounded-lg">
-                <TrendingDown className="w-5 h-5 text-orange-600 mt-0.5" />
+              <div className="flex items-start gap-3 p-4 bg-orange-500/10 border border-orange-500/30 rounded-lg">
+                <TrendingDown className="w-5 h-5 text-orange-400 mt-0.5" />
                 <div className="flex-1">
-                  <p className="font-semibold text-orange-900 text-sm">NEW: Insolvency Notice</p>
-                  <p className="text-xs text-orange-700 mt-1">
+                  <p className="font-semibold text-orange-300 text-sm">NEW: Insolvency Notice</p>
+                  <p className="text-xs text-orange-300 mt-1">
                     <strong>Jennifer Brown</strong> - ASIC Gazette: Personal insolvency notice filed. Previously clear on last monthly review.
                   </p>
                   <div className="flex items-center gap-3 mt-2">
                     <Badge className="bg-orange-600 text-white text-xs">Level 3 Severity</Badge>
-                    <Badge className="bg-blue-100 text-blue-700 text-xs">ASIC Official</Badge>
-                    <span className="text-xs text-orange-600">Monthly review detected status change</span>
+                    <Badge className="bg-blue-500/15 text-blue-300 text-xs">ASIC Official</Badge>
+                    <span className="text-xs text-orange-400">Monthly review detected status change</span>
                   </div>
                 </div>
                 <Badge className="bg-orange-600 text-white">2h ago</Badge>
               </div>
 
-              <div className="flex items-start gap-3 p-4 bg-amber-50 border border-amber-200 rounded-lg">
-                <Scale className="w-5 h-5 text-amber-600 mt-0.5" />
+              <div className="flex items-start gap-3 p-4 bg-amber-500/10 border border-amber-500/30 rounded-lg">
+                <Scale className="w-5 h-5 text-amber-400 mt-0.5" />
                 <div className="flex-1">
-                  <p className="font-semibold text-amber-900 text-sm">Regulatory Action Notice</p>
-                  <p className="text-xs text-amber-700 mt-1">
+                  <p className="font-semibold text-amber-300 text-sm">Regulatory Action Notice</p>
+                  <p className="text-xs text-amber-300 mt-1">
                     <strong>Global Trading Corp</strong> - ASIC enforcement notice: civil penalty proceedings commenced. Breach of continuous disclosure obligations.
                   </p>
                   <div className="flex items-center gap-3 mt-2">
                     <Badge className="bg-amber-600 text-white text-xs">Level 3 Severity</Badge>
-                    <Badge className="bg-blue-100 text-blue-700 text-xs">ASIC Media Release</Badge>
+                    <Badge className="bg-blue-500/15 text-blue-300 text-xs">ASIC Media Release</Badge>
                   </div>
                 </div>
                 <Badge className="bg-amber-600 text-white">5h ago</Badge>
               </div>
 
-              <div className="flex items-start gap-3 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5" />
+              <div className="flex items-start gap-3 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+                <CheckCircle className="w-5 h-5 text-blue-400 mt-0.5" />
                 <div className="flex-1">
-                  <p className="font-semibold text-blue-900 text-sm">Monthly Screening Complete</p>
-                  <p className="text-xs text-blue-700 mt-1">267 of 284 monthly reviews completed - 17 flagged for analyst review</p>
+                  <p className="font-semibold text-blue-300 text-sm">Monthly Screening Complete</p>
+                  <p className="text-xs text-blue-300 mt-1">267 of 284 monthly reviews completed - 17 flagged for analyst review</p>
                 </div>
                 <Badge className="bg-blue-600 text-white">1d ago</Badge>
               </div>
@@ -394,28 +394,28 @@ function AdverseMediaControlCentre({ onNavigate, onBack }: { onNavigate: (view: 
                     <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                     <p className="text-xs font-medium text-slate-300">Sources Online</p>
                   </div>
-                  <p className="text-2xl font-bold text-green-600">24/24</p>
+                  <p className="text-2xl font-bold text-green-400">24/24</p>
                 </div>
                 <div className="text-center">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
                     <p className="text-xs font-medium text-slate-300">Search Queue</p>
                   </div>
-                  <p className="text-2xl font-bold text-blue-600">31</p>
+                  <p className="text-2xl font-bold text-blue-400">31</p>
                 </div>
                 <div className="text-center">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <div className="w-2 h-2 bg-red-500 rounded-full"></div>
                     <p className="text-xs font-medium text-slate-300">Severe Alerts</p>
                   </div>
-                  <p className="text-2xl font-bold text-red-600">6</p>
+                  <p className="text-2xl font-bold text-red-400">6</p>
                 </div>
                 <div className="text-center">
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
                     <p className="text-xs font-medium text-slate-300">High-Risk Jurisdictions</p>
                   </div>
-                  <p className="text-2xl font-bold text-amber-600">12</p>
+                  <p className="text-2xl font-bold text-amber-400">12</p>
                 </div>
               </div>
             </div>
@@ -426,7 +426,7 @@ function AdverseMediaControlCentre({ onNavigate, onBack }: { onNavigate: (view: 
         <div className="grid md:grid-cols-3 gap-6">
           <Card className="border-2 hover:shadow-lg transition-shadow cursor-pointer" onClick={() => onNavigate('bulk-monitor')}>
             <CardContent className="p-6">
-              <Upload className="w-8 h-8 text-purple-600 mb-3" />
+              <Upload className="w-8 h-8 text-purple-400 mb-3" />
               <h3 className="font-bold text-white mb-2">Bulk Portfolio Monitor</h3>
               <p className="text-sm text-slate-300 mb-4">Screen entire client base or upload subject list</p>
               <Button variant="outline" className="w-full">
@@ -437,7 +437,7 @@ function AdverseMediaControlCentre({ onNavigate, onBack }: { onNavigate: (view: 
 
           <Card className="border-2 hover:shadow-lg transition-shadow cursor-pointer" onClick={() => onNavigate('sources')}>
             <CardContent className="p-6">
-              <Database className="w-8 h-8 text-blue-600 mb-3" />
+              <Database className="w-8 h-8 text-blue-400 mb-3" />
               <h3 className="font-bold text-white mb-2">Source Management</h3>
               <p className="text-sm text-slate-300 mb-4">Configure global sources and reliability scoring</p>
               <Button variant="outline" className="w-full">
@@ -448,7 +448,7 @@ function AdverseMediaControlCentre({ onNavigate, onBack }: { onNavigate: (view: 
 
           <Card className="border-2 hover:shadow-lg transition-shadow cursor-pointer" onClick={() => onNavigate('rules')}>
             <CardContent className="p-6">
-              <Target className="w-8 h-8 text-green-600 mb-3" />
+              <Target className="w-8 h-8 text-green-400 mb-3" />
               <h3 className="font-bold text-white mb-2">Rules Engine</h3>
               <p className="text-sm text-slate-300 mb-4">Configure severity thresholds and escalation logic</p>
               <Button variant="outline" className="w-full">
@@ -547,12 +547,12 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
             ].map((s) => (
               <div key={s.num} className="flex items-center">
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
-                  step >= s.num ? 'bg-red-600 text-white' : 'bg-gray-200 text-slate-300'
+                  step >= s.num ? 'bg-red-600 text-white' : 'bg-white/10 text-slate-300'
                 }`}>
                   {s.num}
                 </div>
                 <div className="ml-2">
-                  <p className={`text-xs font-medium ${step >= s.num ? 'text-red-600' : 'text-slate-400'}`}>
+                  <p className={`text-xs font-medium ${step >= s.num ? 'text-red-400' : 'text-slate-400'}`}>
                     {s.label}
                   </p>
                 </div>
@@ -582,7 +582,7 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
                       value="person"
                       checked={formData.subjectType === 'person'}
                       onChange={(e) => setFormData({ ...formData, subjectType: e.target.value })}
-                      className="w-4 h-4 text-red-600"
+                      className="w-4 h-4 text-red-400"
                     />
                     <span className="text-sm text-slate-300">Person</span>
                   </label>
@@ -593,7 +593,7 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
                       value="entity"
                       checked={formData.subjectType === 'entity'}
                       onChange={(e) => setFormData({ ...formData, subjectType: e.target.value })}
-                      className="w-4 h-4 text-red-600"
+                      className="w-4 h-4 text-red-400"
                     />
                     <span className="text-sm text-slate-300">Entity</span>
                   </label>
@@ -671,7 +671,7 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
                   <select
                     value={formData.roleInMatter}
                     onChange={(e) => setFormData({ ...formData, roleInMatter: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                    className="w-full px-3 py-2 border border-white/10 rounded-md"
                   >
                     <option value="client">Client</option>
                     <option value="director">Director</option>
@@ -700,7 +700,7 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
                       type="checkbox"
                       checked={formData.knownLitigation}
                       onChange={(e) => setFormData({ ...formData, knownLitigation: e.target.checked })}
-                      className="w-4 h-4 text-red-600 rounded"
+                      className="w-4 h-4 text-red-400 rounded"
                     />
                     <span className="text-sm text-slate-300">Known litigation disclosure</span>
                   </label>
@@ -711,7 +711,7 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
                       type="checkbox"
                       checked={formData.knownInsolvency}
                       onChange={(e) => setFormData({ ...formData, knownInsolvency: e.target.checked })}
-                      className="w-4 h-4 text-red-600 rounded"
+                      className="w-4 h-4 text-red-400 rounded"
                     />
                     <span className="text-sm text-slate-300">Known insolvency disclosure</span>
                   </label>
@@ -745,13 +745,13 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-3">
-                <label className="flex items-start gap-3 p-4 border-2 border-red-400 bg-red-50 rounded-lg">
+                <label className="flex items-start gap-3 p-4 border-2 border-red-400 bg-red-500/10 rounded-lg">
                   <input
                     type="radio"
                     name="searchType"
                     checked={searchScope.standard}
                     onChange={() => setSearchScope({ ...searchScope, standard: true, expandedGlobal: false, highRiskEnhanced: false })}
-                    className="w-5 h-5 text-red-600 mt-0.5"
+                    className="w-5 h-5 text-red-400 mt-0.5"
                   />
                   <div className="flex-1">
                     <p className="font-semibold text-white">Standard Search (Recommended)</p>
@@ -759,13 +759,13 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
                   </div>
                 </label>
 
-                <label className="flex items-start gap-3 p-4 border-2 border-gray-300 rounded-lg hover:border-gray-400 cursor-pointer">
+                <label className="flex items-start gap-3 p-4 border-2 border-white/10 rounded-lg hover:border-gray-400 cursor-pointer">
                   <input
                     type="radio"
                     name="searchType"
                     checked={searchScope.expandedGlobal}
                     onChange={() => setSearchScope({ ...searchScope, standard: false, expandedGlobal: true, highRiskEnhanced: false })}
-                    className="w-5 h-5 text-red-600 mt-0.5"
+                    className="w-5 h-5 text-red-400 mt-0.5"
                   />
                   <div className="flex-1">
                     <p className="font-semibold text-white">Expanded Global Search</p>
@@ -773,13 +773,13 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
                   </div>
                 </label>
 
-                <label className="flex items-start gap-3 p-4 border-2 border-gray-300 rounded-lg hover:border-gray-400 cursor-pointer">
+                <label className="flex items-start gap-3 p-4 border-2 border-white/10 rounded-lg hover:border-gray-400 cursor-pointer">
                   <input
                     type="radio"
                     name="searchType"
                     checked={searchScope.highRiskEnhanced}
                     onChange={() => setSearchScope({ ...searchScope, standard: false, expandedGlobal: false, highRiskEnhanced: true })}
-                    className="w-5 h-5 text-red-600 mt-0.5"
+                    className="w-5 h-5 text-red-400 mt-0.5"
                   />
                   <div className="flex-1">
                     <p className="font-semibold text-white">High-Risk Enhanced Search</p>
@@ -796,7 +796,7 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
                     type="checkbox"
                     checked={searchScope.includeLegalDatabases}
                     onChange={(e) => setSearchScope({ ...searchScope, includeLegalDatabases: e.target.checked })}
-                    className="w-4 h-4 text-red-600 rounded"
+                    className="w-4 h-4 text-red-400 rounded"
                   />
                   <span className="text-sm text-slate-300">Include legal databases and court references</span>
                 </label>
@@ -806,7 +806,7 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
                     type="checkbox"
                     checked={searchScope.includeRegulatoryNotices}
                     onChange={(e) => setSearchScope({ ...searchScope, includeRegulatoryNotices: e.target.checked })}
-                    className="w-4 h-4 text-red-600 rounded"
+                    className="w-4 h-4 text-red-400 rounded"
                   />
                   <span className="text-sm text-slate-300">Include regulatory notices and enforcement actions</span>
                 </label>
@@ -816,7 +816,7 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
                     type="checkbox"
                     checked={searchScope.includeInsolvency}
                     onChange={(e) => setSearchScope({ ...searchScope, includeInsolvency: e.target.checked })}
-                    className="w-4 h-4 text-red-600 rounded"
+                    className="w-4 h-4 text-red-400 rounded"
                   />
                   <span className="text-sm text-slate-300">Include insolvency and bankruptcy searches</span>
                 </label>
@@ -826,7 +826,7 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
                     type="checkbox"
                     checked={searchScope.includeRelatedParties}
                     onChange={(e) => setSearchScope({ ...searchScope, includeRelatedParties: e.target.checked })}
-                    className="w-4 h-4 text-red-600 rounded"
+                    className="w-4 h-4 text-red-400 rounded"
                   />
                   <span className="text-sm text-slate-300">Include related parties and associated entities</span>
                 </label>
@@ -836,7 +836,7 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
                     type="checkbox"
                     checked={searchScope.includeHistoric}
                     onChange={(e) => setSearchScope({ ...searchScope, includeHistoric: e.target.checked })}
-                    className="w-4 h-4 text-red-600 rounded"
+                    className="w-4 h-4 text-red-400 rounded"
                   />
                   <span className="text-sm text-slate-300">Include historic records (10+ years)</span>
                 </label>
@@ -846,7 +846,7 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
                     type="checkbox"
                     checked={searchScope.includeTranslated}
                     onChange={(e) => setSearchScope({ ...searchScope, includeTranslated: e.target.checked })}
-                    className="w-4 h-4 text-red-600 rounded"
+                    className="w-4 h-4 text-red-400 rounded"
                   />
                   <span className="text-sm text-slate-300">Include translated and transliterated terms</span>
                 </label>
@@ -869,15 +869,15 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
           <Card className="border-2">
             <CardHeader className="bg-gradient-to-r from-purple-50 to-purple-100">
               <CardTitle className="flex items-center gap-2">
-                <Sparkles className="w-5 h-5 text-purple-600" />
+                <Sparkles className="w-5 h-5 text-purple-400" />
                 Step 3: AI Search Plan
               </CardTitle>
               <CardDescription>Review the automated adverse media search strategy</CardDescription>
             </CardHeader>
             <CardContent className="p-6 space-y-6">
-              <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                <p className="font-semibold text-red-900 mb-2">Search Target</p>
-                <p className="text-sm text-red-800">
+              <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-4">
+                <p className="font-semibold text-red-300 mb-2">Search Target</p>
+                <p className="text-sm text-red-300">
                   <strong>{formData.fullName || formData.entityName}</strong> • {formData.subjectType === 'person' ? formData.nationality : 'Entity'} • {formData.roleInMatter}
                 </p>
               </div>
@@ -912,7 +912,7 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
                     'Web Archive (Wayback Machine)'
                   ].map((source, idx) => (
                     <div key={idx} className="flex items-center gap-2 p-2 bg-[#0f172a] rounded text-xs">
-                      <CheckCircle className="w-3 h-3 text-green-600" />
+                      <CheckCircle className="w-3 h-3 text-green-400" />
                       <span className="text-slate-300">{source}</span>
                     </div>
                   ))}
@@ -922,47 +922,47 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
               <div>
                 <p className="font-semibold text-white mb-3">Keyword Families by Risk Category</p>
                 <div className="space-y-2">
-                  <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
-                    <p className="text-xs font-semibold text-red-900 mb-2">Financial Crime</p>
+                  <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
+                    <p className="text-xs font-semibold text-red-300 mb-2">Financial Crime</p>
                     <div className="flex flex-wrap gap-1">
                       {['fraud', 'money laundering', 'bribery', 'corruption', 'tax evasion', 'sanctions evasion'].map((term, idx) => (
-                        <Badge key={idx} className="bg-red-100 text-red-700 text-xs">{term}</Badge>
+                        <Badge key={idx} className="bg-red-500/15 text-red-300 text-xs">{term}</Badge>
                       ))}
                     </div>
                   </div>
-                  <div className="p-3 bg-orange-50 border border-orange-200 rounded-lg">
-                    <p className="text-xs font-semibold text-orange-900 mb-2">Legal & Court</p>
+                  <div className="p-3 bg-orange-500/10 border border-orange-500/30 rounded-lg">
+                    <p className="text-xs font-semibold text-orange-300 mb-2">Legal & Court</p>
                     <div className="flex flex-wrap gap-1">
                       {['judgment', 'litigation', 'court action', 'criminal charges', 'civil penalty'].map((term, idx) => (
-                        <Badge key={idx} className="bg-orange-100 text-orange-700 text-xs">{term}</Badge>
+                        <Badge key={idx} className="bg-orange-500/15 text-orange-300 text-xs">{term}</Badge>
                       ))}
                     </div>
                   </div>
-                  <div className="p-3 bg-amber-50 border border-amber-200 rounded-lg">
-                    <p className="text-xs font-semibold text-amber-900 mb-2">Insolvency</p>
+                  <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-lg">
+                    <p className="text-xs font-semibold text-amber-300 mb-2">Insolvency</p>
                     <div className="flex flex-wrap gap-1">
                       {['bankruptcy', 'insolvency', 'liquidation', 'administration', 'phoenix activity'].map((term, idx) => (
-                        <Badge key={idx} className="bg-amber-100 text-amber-700 text-xs">{term}</Badge>
+                        <Badge key={idx} className="bg-amber-500/15 text-amber-300 text-xs">{term}</Badge>
                       ))}
                     </div>
                   </div>
-                  <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg">
-                    <p className="text-xs font-semibold text-blue-900 mb-2">Regulatory</p>
+                  <div className="p-3 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+                    <p className="text-xs font-semibold text-blue-300 mb-2">Regulatory</p>
                     <div className="flex flex-wrap gap-1">
                       {['ASIC action', 'enforcement', 'licence cancellation', 'director ban', 'disqualification'].map((term, idx) => (
-                        <Badge key={idx} className="bg-blue-100 text-blue-700 text-xs">{term}</Badge>
+                        <Badge key={idx} className="bg-blue-500/15 text-blue-300 text-xs">{term}</Badge>
                       ))}
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+              <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-4">
                 <div className="flex items-start gap-2">
-                  <Info className="w-5 h-5 text-amber-600 mt-0.5" />
+                  <Info className="w-5 h-5 text-amber-400 mt-0.5" />
                   <div>
-                    <p className="font-semibold text-amber-900 mb-1">Entity Resolution & Severity Rules</p>
-                    <ul className="text-sm text-amber-800 space-y-1">
+                    <p className="font-semibold text-amber-300 mb-1">Entity Resolution & Severity Rules</p>
+                    <ul className="text-sm text-amber-300 space-y-1">
                       <li>• Official court/regulator source = High confidence + Minimum Level 3 severity</li>
                       <li>• Name + DOB + official source = Very high identity confidence</li>
                       <li>• Single weak news article = Low confidence, requires review</li>
@@ -978,7 +978,7 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
                   <p className="text-sm font-medium text-slate-300">Expected Runtime</p>
                   <p className="text-xs text-slate-300">Based on search scope and source coverage</p>
                 </div>
-                <p className="text-2xl font-bold text-red-600">~90 seconds</p>
+                <p className="text-2xl font-bold text-red-400">~90 seconds</p>
               </div>
 
               <div className="flex justify-between gap-3 pt-6 border-t">
@@ -999,26 +999,26 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
           <Card className="border-2">
             <CardHeader className="bg-gradient-to-r from-green-50 to-green-100">
               <CardTitle className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600" />
+                <CheckCircle className="w-5 h-5 text-green-400" />
                 Step 4: Search Results Summary
               </CardTitle>
               <CardDescription>AI-powered adverse media classification results</CardDescription>
             </CardHeader>
             <CardContent className="p-6 space-y-4">
-              <div className="p-6 bg-green-50 border-2 border-green-400 rounded-lg">
+              <div className="p-6 bg-green-500/10 border-2 border-green-400 rounded-lg">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
                       <CheckCircle className="w-7 h-7 text-white" />
                     </div>
                     <div>
-                      <p className="text-2xl font-bold text-green-900">No Relevant Adverse Media Found</p>
-                      <p className="text-sm text-green-700">Medium-high confidence - 78% match certainty</p>
+                      <p className="text-2xl font-bold text-green-300">No Relevant Adverse Media Found</p>
+                      <p className="text-sm text-green-300">Medium-high confidence - 78% match certainty</p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-4xl font-bold text-green-600">0</p>
-                    <p className="text-xs text-green-700">Matches</p>
+                    <p className="text-4xl font-bold text-green-400">0</p>
+                    <p className="text-xs text-green-300">Matches</p>
                   </div>
                 </div>
 
@@ -1033,11 +1033,11 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
                   </div>
                   <div className="bg-[#1e293b] p-3 rounded">
                     <p className="text-xs text-slate-300">Identity Confidence</p>
-                    <p className="text-xl font-bold text-green-600">High</p>
+                    <p className="text-xl font-bold text-green-400">High</p>
                   </div>
                   <div className="bg-[#1e293b] p-3 rounded">
                     <p className="text-xs text-slate-300">Severity Level</p>
-                    <p className="text-xl font-bold text-green-600">0</p>
+                    <p className="text-xl font-bold text-green-400">0</p>
                   </div>
                 </div>
               </div>
@@ -1098,9 +1098,9 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
               <CardDescription>Review and confirm the adverse media classification</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                <p className="font-semibold text-blue-900 mb-2">AI Recommendation</p>
-                <p className="text-sm text-blue-800">
+              <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+                <p className="font-semibold text-blue-300 mb-2">AI Recommendation</p>
+                <p className="text-sm text-blue-300">
                   Based on the search results, the AI bot recommends classifying <strong>{formData.fullName || formData.entityName}</strong> as <strong>NO ADVERSE MEDIA</strong> with medium-high confidence.
                 </p>
               </div>
@@ -1118,14 +1118,14 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
                     { value: 'false-positive', label: 'Mark as false positive', color: 'gray' },
                   ].map((option) => (
                     <label key={option.value} className={`flex items-start gap-3 p-3 border-2 rounded-lg cursor-pointer hover:bg-white/5 ${
-                      option.recommended ? 'border-green-400 bg-green-50' : 'border-gray-300'
+                      option.recommended ? 'border-green-400 bg-green-500/10' : 'border-white/10'
                     }`}>
                       <input
                         type="radio"
                         name="classification"
                         value={option.value}
                         defaultChecked={option.recommended}
-                        className="w-4 h-4 text-red-600 mt-0.5"
+                        className="w-4 h-4 text-red-400 mt-0.5"
                       />
                       <div className="flex-1">
                         <p className="font-medium text-white">{option.label}</p>
@@ -1141,7 +1141,7 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
               <div>
                 <Label>Analyst Notes</Label>
                 <textarea
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                  className="w-full px-3 py-2 border border-white/10 rounded-md"
                   rows={3}
                   placeholder="Optional notes about this decision..."
                 ></textarea>
@@ -1178,7 +1178,7 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
                   </div>
                   <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">Severity Level</p>
-                    <p className="font-semibold text-green-600">Level 0 (Clear)</p>
+                    <p className="font-semibold text-green-400">Level 0 (Clear)</p>
                   </div>
                   <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">Search Date</p>
@@ -1194,7 +1194,7 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
                   </div>
                   <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">Risk Impact</p>
-                    <p className="font-semibold text-green-600">Low Risk - Proceed</p>
+                    <p className="font-semibold text-green-400">Low Risk - Proceed</p>
                   </div>
                   <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">Next Review Date</p>
@@ -1206,12 +1206,12 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
                   </div>
                 </div>
 
-                <div className="p-4 bg-purple-50 border border-purple-200 rounded-lg text-left">
+                <div className="p-4 bg-purple-500/10 border border-purple-500/30 rounded-lg text-left">
                   <div className="flex items-start gap-2">
-                    <Calendar className="w-5 h-5 text-purple-600 mt-0.5" />
+                    <Calendar className="w-5 h-5 text-purple-400 mt-0.5" />
                     <div>
-                      <p className="font-semibold text-purple-900">Automated Monthly Monitoring Enabled</p>
-                      <p className="text-sm text-purple-700 mt-1">
+                      <p className="font-semibold text-purple-300">Automated Monthly Monitoring Enabled</p>
+                      <p className="text-sm text-purple-300 mt-1">
                         This subject will be automatically rescreened monthly to detect any new adverse media that emerges during the relationship.
                       </p>
                     </div>
@@ -1285,7 +1285,7 @@ function MonthlyMediaQueue({ onBack }: { onBack: () => void }) {
             <div className="grid md:grid-cols-3 gap-4">
               <div>
                 <Label>Default Frequency</Label>
-                <select className="w-full px-3 py-2 border border-gray-300 rounded-md">
+                <select className="w-full px-3 py-2 border border-white/10 rounded-md">
                   <option>Monthly (30 days)</option>
                   <option>Quarterly (90 days)</option>
                   <option>Annually (365 days)</option>
@@ -1293,7 +1293,7 @@ function MonthlyMediaQueue({ onBack }: { onBack: () => void }) {
               </div>
               <div>
                 <Label>High-Risk Subjects</Label>
-                <select className="w-full px-3 py-2 border border-gray-300 rounded-md">
+                <select className="w-full px-3 py-2 border border-white/10 rounded-md">
                   <option>Weekly (7 days)</option>
                   <option>Daily</option>
                   <option>Real-time alerts</option>
@@ -1301,7 +1301,7 @@ function MonthlyMediaQueue({ onBack }: { onBack: () => void }) {
               </div>
               <div>
                 <Label>Escalated Severe Cases</Label>
-                <select className="w-full px-3 py-2 border border-gray-300 rounded-md">
+                <select className="w-full px-3 py-2 border border-white/10 rounded-md">
                   <option>Daily monitoring</option>
                   <option>Real-time alerts</option>
                   <option>Weekly</option>
@@ -1322,7 +1322,7 @@ function MonthlyMediaQueue({ onBack }: { onBack: () => void }) {
                 'Keep archived articles visible'
               ].map((trigger, idx) => (
                 <label key={idx} className="flex items-center gap-2">
-                  <input type="checkbox" defaultChecked className="w-4 h-4 text-red-600 rounded" />
+                  <input type="checkbox" defaultChecked className="w-4 h-4 text-red-400 rounded" />
                   <span className="text-sm text-slate-300">{trigger}</span>
                 </label>
               ))}
@@ -1407,21 +1407,21 @@ function BulkPortfolioMonitor({ onBack }: { onBack: () => void }) {
                 <p className="text-xs text-slate-300 mb-1">Total Subjects</p>
                 <p className="text-3xl font-bold text-white">1,847</p>
               </div>
-              <div className="p-4 bg-green-50 rounded-lg text-center">
+              <div className="p-4 bg-green-500/10 rounded-lg text-center">
                 <p className="text-xs text-slate-300 mb-1">Clear</p>
-                <p className="text-3xl font-bold text-green-600">1,623</p>
+                <p className="text-3xl font-bold text-green-400">1,623</p>
               </div>
-              <div className="p-4 bg-blue-50 rounded-lg text-center">
+              <div className="p-4 bg-blue-500/10 rounded-lg text-center">
                 <p className="text-xs text-slate-300 mb-1">Low Relevance</p>
-                <p className="text-3xl font-bold text-blue-600">187</p>
+                <p className="text-3xl font-bold text-blue-400">187</p>
               </div>
-              <div className="p-4 bg-amber-50 rounded-lg text-center">
+              <div className="p-4 bg-amber-500/10 rounded-lg text-center">
                 <p className="text-xs text-slate-300 mb-1">Under Review</p>
-                <p className="text-3xl font-bold text-amber-600">31</p>
+                <p className="text-3xl font-bold text-amber-400">31</p>
               </div>
-              <div className="p-4 bg-red-50 rounded-lg text-center">
+              <div className="p-4 bg-red-500/10 rounded-lg text-center">
                 <p className="text-xs text-slate-300 mb-1">Severe/Escalated</p>
-                <p className="text-3xl font-bold text-red-600">6</p>
+                <p className="text-3xl font-bold text-red-400">6</p>
               </div>
             </div>
             

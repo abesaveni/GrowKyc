@@ -76,8 +76,8 @@ export function ContractsList({ onNavigate }: ContractsListProps) {
                         className="w-16 h-16 object-cover rounded-lg"
                       />
                       <div>
-                        <p className="font-medium text-gray-900">{contract.property.address}</p>
-                        <p className="text-sm text-gray-500">
+                        <p className="font-medium text-slate-100">{contract.property.address}</p>
+                        <p className="text-sm text-slate-400">
                           {contract.property.suburb}, {contract.property.state}
                         </p>
                       </div>
@@ -87,7 +87,7 @@ export function ContractsList({ onNavigate }: ContractsListProps) {
                   <TableCell>
                     <div className="text-sm">
                       <p>{contract.borrowerName}</p>
-                      <p className="text-gray-500">{contract.lenderName}</p>
+                      <p className="text-slate-400">{contract.lenderName}</p>
                     </div>
                   </TableCell>
                   <TableCell className="text-right font-semibold">

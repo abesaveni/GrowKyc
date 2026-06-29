@@ -107,7 +107,7 @@ export function APIPlatform({ onBack }: APIPlatformProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white/5">
       {/* Header */}
       <div className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white px-8 py-12">
         <Button
@@ -209,11 +209,11 @@ export function APIPlatform({ onBack }: APIPlatformProps) {
               <CardContent>
                 <div className="space-y-4">
                   {apiKeys.map((key, idx) => (
-                    <div key={key.id} className="p-6 bg-gray-50 rounded-lg border-2 border-gray-200">
+                    <div key={key.id} className="p-6 bg-white/5 rounded-lg border-2 border-white/10">
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex-1">
                           <div className="flex items-center gap-3 mb-2">
-                            <h3 className="font-bold text-gray-900">{key.name}</h3>
+                            <h3 className="font-bold text-slate-100">{key.name}</h3>
                             <Badge className={key.environment === 'production' ? 'bg-green-600 text-white' : 'bg-blue-600 text-white'}>
                               {key.environment}
                             </Badge>
@@ -223,7 +223,7 @@ export function APIPlatform({ onBack }: APIPlatformProps) {
                             </Badge>
                           </div>
                           
-                          <div className="font-mono text-sm bg-white px-4 py-3 rounded border border-gray-300 flex items-center gap-3 mb-3">
+                          <div className="font-mono text-sm bg-white px-4 py-3 rounded border border-white/10 flex items-center gap-3 mb-3">
                             <span className="flex-1">
                               {idx === 0 ? (showKey1 ? key.id : '••••••••••••••••••••') : (showKey2 ? key.id : '••••••••••••••••••••')}
                             </span>
@@ -241,16 +241,16 @@ export function APIPlatform({ onBack }: APIPlatformProps) {
 
                           <div className="grid grid-cols-3 gap-4 text-sm">
                             <div>
-                              <div className="text-gray-600 mb-1">Created</div>
-                              <div className="font-semibold text-gray-900">{key.created}</div>
+                              <div className="text-slate-300 mb-1">Created</div>
+                              <div className="font-semibold text-slate-100">{key.created}</div>
                             </div>
                             <div>
-                              <div className="text-gray-600 mb-1">Last Used</div>
-                              <div className="font-semibold text-gray-900">{key.lastUsed}</div>
+                              <div className="text-slate-300 mb-1">Last Used</div>
+                              <div className="font-semibold text-slate-100">{key.lastUsed}</div>
                             </div>
                             <div>
-                              <div className="text-gray-600 mb-1">Calls (30 days)</div>
-                              <div className="font-semibold text-gray-900">{key.calls30d.toLocaleString()}</div>
+                              <div className="text-slate-300 mb-1">Calls (30 days)</div>
+                              <div className="font-semibold text-slate-100">{key.calls30d.toLocaleString()}</div>
                             </div>
                           </div>
                         </div>
@@ -260,7 +260,7 @@ export function APIPlatform({ onBack }: APIPlatformProps) {
                             <RefreshCw className="w-4 h-4 mr-2" />
                             Rotate
                           </Button>
-                          <Button variant="outline" size="sm" className="text-red-600">
+                          <Button variant="outline" size="sm" className="text-red-400">
                             Delete
                           </Button>
                         </div>
@@ -282,20 +282,20 @@ export function APIPlatform({ onBack }: APIPlatformProps) {
         {selectedTab === 'overview' && (
           <div className="space-y-6">
             {/* Quick Start */}
-            <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200">
+            <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-500/30">
               <CardHeader>
                 <CardTitle>Quick Start</CardTitle>
                 <CardDescription>Get started with the Grow API in minutes</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  <div className="p-4 bg-white rounded-lg border border-blue-200">
-                    <div className="font-bold text-gray-900 mb-2">1. Get your API key</div>
-                    <p className="text-sm text-gray-600 mb-3">Navigate to the API Keys tab and copy your production or test key</p>
+                  <div className="p-4 bg-white rounded-lg border border-blue-500/30">
+                    <div className="font-bold text-slate-100 mb-2">1. Get your API key</div>
+                    <p className="text-sm text-slate-300 mb-3">Navigate to the API Keys tab and copy your production or test key</p>
                   </div>
 
-                  <div className="p-4 bg-white rounded-lg border border-blue-200">
-                    <div className="font-bold text-gray-900 mb-2">2. Make your first request</div>
+                  <div className="p-4 bg-white rounded-lg border border-blue-500/30">
+                    <div className="font-bold text-slate-100 mb-2">2. Make your first request</div>
                     <div className="p-3 bg-gray-900 rounded font-mono text-sm text-green-400 overflow-x-auto">
                       <div>curl -X POST https://api.grow.io/v1/screening/sanctions \</div>
                       <div className="ml-4">-H "Authorization: Bearer YOUR_API_KEY" \</div>
@@ -304,8 +304,8 @@ export function APIPlatform({ onBack }: APIPlatformProps) {
                     </div>
                   </div>
 
-                  <div className="p-4 bg-white rounded-lg border border-blue-200">
-                    <div className="font-bold text-gray-900 mb-2">3. Handle the response</div>
+                  <div className="p-4 bg-white rounded-lg border border-blue-500/30">
+                    <div className="font-bold text-slate-100 mb-2">3. Handle the response</div>
                     <div className="p-3 bg-gray-900 rounded font-mono text-sm text-blue-400 overflow-x-auto">
                       <div>{'{'}</div>
                       <div className="ml-4">"status": "success",</div>
@@ -328,7 +328,7 @@ export function APIPlatform({ onBack }: APIPlatformProps) {
               <CardContent>
                 <div className="space-y-3">
                   {endpoints.map((endpoint, idx) => (
-                    <div key={idx} className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                    <div key={idx} className="p-4 bg-white/5 rounded-lg border border-white/10">
                       <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center gap-3">
                           <Badge className={
@@ -338,12 +338,12 @@ export function APIPlatform({ onBack }: APIPlatformProps) {
                           }>
                             {endpoint.method}
                           </Badge>
-                          <span className="font-mono font-semibold text-gray-900">{endpoint.path}</span>
+                          <span className="font-mono font-semibold text-slate-100">{endpoint.path}</span>
                         </div>
-                        <div className="text-sm text-gray-600">{endpoint.calls24h.toLocaleString()} calls (24h)</div>
+                        <div className="text-sm text-slate-300">{endpoint.calls24h.toLocaleString()} calls (24h)</div>
                       </div>
-                      <p className="text-sm text-gray-600 mb-2">{endpoint.description}</p>
-                      <div className="flex items-center gap-4 text-xs text-gray-500">
+                      <p className="text-sm text-slate-300 mb-2">{endpoint.description}</p>
+                      <div className="flex items-center gap-4 text-xs text-slate-400">
                         <span>Rate limit: {endpoint.rateLimit}</span>
                       </div>
                     </div>
@@ -356,31 +356,31 @@ export function APIPlatform({ onBack }: APIPlatformProps) {
             <div className="grid grid-cols-3 gap-6">
               <Card>
                 <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                    <Shield className="w-6 h-6 text-blue-600" />
+                  <div className="w-12 h-12 bg-blue-500/15 rounded-lg flex items-center justify-center mb-4">
+                    <Shield className="w-6 h-6 text-blue-400" />
                   </div>
-                  <h3 className="font-bold text-gray-900 mb-2">Secure Authentication</h3>
-                  <p className="text-sm text-gray-600">API keys with role-based permissions and IP whitelisting</p>
+                  <h3 className="font-bold text-slate-100 mb-2">Secure Authentication</h3>
+                  <p className="text-sm text-slate-300">API keys with role-based permissions and IP whitelisting</p>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                    <Zap className="w-6 h-6 text-green-600" />
+                  <div className="w-12 h-12 bg-green-500/15 rounded-lg flex items-center justify-center mb-4">
+                    <Zap className="w-6 h-6 text-green-400" />
                   </div>
-                  <h3 className="font-bold text-gray-900 mb-2">Webhooks</h3>
-                  <p className="text-sm text-gray-600">Real-time notifications for screening results and status changes</p>
+                  <h3 className="font-bold text-slate-100 mb-2">Webhooks</h3>
+                  <p className="text-sm text-slate-300">Real-time notifications for screening results and status changes</p>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                    <Database className="w-6 h-6 text-purple-600" />
+                  <div className="w-12 h-12 bg-purple-500/15 rounded-lg flex items-center justify-center mb-4">
+                    <Database className="w-6 h-6 text-purple-400" />
                   </div>
-                  <h3 className="font-bold text-gray-900 mb-2">Rate Limiting</h3>
-                  <p className="text-sm text-gray-600">Fair usage policies with automatic throttling and retry logic</p>
+                  <h3 className="font-bold text-slate-100 mb-2">Rate Limiting</h3>
+                  <p className="text-sm text-slate-300">Fair usage policies with automatic throttling and retry logic</p>
                 </CardContent>
               </Card>
             </div>
@@ -409,14 +409,14 @@ export function APIPlatform({ onBack }: APIPlatformProps) {
                   ].map((doc, idx) => {
                     const DocIcon = doc.icon;
                     return (
-                      <div key={idx} className="p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-blue-300 cursor-pointer transition-all">
+                      <div key={idx} className="p-4 bg-white/5 rounded-lg border border-white/10 hover:border-blue-300 cursor-pointer transition-all">
                         <div className="flex items-start gap-3">
                           <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center flex-shrink-0">
-                            <DocIcon className="w-5 h-5 text-blue-600" />
+                            <DocIcon className="w-5 h-5 text-blue-400" />
                           </div>
                           <div>
-                            <h4 className="font-bold text-gray-900 mb-1">{doc.title}</h4>
-                            <p className="text-sm text-gray-600">{doc.desc}</p>
+                            <h4 className="font-bold text-slate-100 mb-1">{doc.title}</h4>
+                            <p className="text-sm text-slate-300">{doc.desc}</p>
                           </div>
                         </div>
                       </div>

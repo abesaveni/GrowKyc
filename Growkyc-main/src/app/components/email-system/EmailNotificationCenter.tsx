@@ -194,8 +194,8 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">Email Notification Center</h2>
-          <p className="text-gray-600">Manage daily emails and case update notifications</p>
+          <h2 className="text-2xl font-bold text-slate-100">Email Notification Center</h2>
+          <p className="text-slate-300">Manage daily emails and case update notifications</p>
         </div>
         <div className="flex gap-3">
           <Button variant="outline" onClick={() => setShowSettingsModal(true)}>
@@ -211,51 +211,51 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
 
       {/* Stats Overview */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-white rounded-lg border border-gray-200 p-4">
+        <div className="bg-white rounded-lg border border-white/10 p-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-600">Total Recipients</span>
-            <Users className="w-4 h-4 text-blue-600" />
+            <span className="text-sm text-slate-300">Total Recipients</span>
+            <Users className="w-4 h-4 text-blue-400" />
           </div>
-          <div className="text-2xl font-bold text-gray-900">{stats.totalRecipients}</div>
-          <div className="text-xs text-green-600 mt-1">↑ 12% from last week</div>
+          <div className="text-2xl font-bold text-slate-100">{stats.totalRecipients}</div>
+          <div className="text-xs text-green-400 mt-1">↑ 12% from last week</div>
         </div>
 
-        <div className="bg-white rounded-lg border border-gray-200 p-4">
+        <div className="bg-white rounded-lg border border-white/10 p-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-600">Sent Today</span>
-            <Send className="w-4 h-4 text-green-600" />
+            <span className="text-sm text-slate-300">Sent Today</span>
+            <Send className="w-4 h-4 text-green-400" />
           </div>
-          <div className="text-2xl font-bold text-gray-900">{stats.emailsSentToday}</div>
-          <div className="text-xs text-gray-500 mt-1">4 types</div>
+          <div className="text-2xl font-bold text-slate-100">{stats.emailsSentToday}</div>
+          <div className="text-xs text-slate-400 mt-1">4 types</div>
         </div>
 
-        <div className="bg-white rounded-lg border border-gray-200 p-4">
+        <div className="bg-white rounded-lg border border-white/10 p-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-600">Avg Open Rate</span>
-            <Eye className="w-4 h-4 text-purple-600" />
+            <span className="text-sm text-slate-300">Avg Open Rate</span>
+            <Eye className="w-4 h-4 text-purple-400" />
           </div>
-          <div className="text-2xl font-bold text-gray-900">{stats.averageOpenRate}%</div>
-          <div className="text-xs text-green-600 mt-1">↑ 5% from yesterday</div>
+          <div className="text-2xl font-bold text-slate-100">{stats.averageOpenRate}%</div>
+          <div className="text-xs text-green-400 mt-1">↑ 5% from yesterday</div>
         </div>
 
-        <div className="bg-white rounded-lg border border-gray-200 p-4">
+        <div className="bg-white rounded-lg border border-white/10 p-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-600">Avg Click Rate</span>
-            <TrendingUp className="w-4 h-4 text-orange-600" />
+            <span className="text-sm text-slate-300">Avg Click Rate</span>
+            <TrendingUp className="w-4 h-4 text-orange-400" />
           </div>
-          <div className="text-2xl font-bold text-gray-900">{stats.averageClickRate}%</div>
-          <div className="text-xs text-green-600 mt-1">↑ 3% from yesterday</div>
+          <div className="text-2xl font-bold text-slate-100">{stats.averageClickRate}%</div>
+          <div className="text-xs text-green-400 mt-1">↑ 3% from yesterday</div>
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-2 border-b border-gray-200">
+      <div className="flex gap-2 border-b border-white/10">
         <button
           onClick={() => setActiveTab('overview')}
           className={`px-4 py-2 font-medium transition-colors ${
             activeTab === 'overview'
-              ? 'text-blue-600 border-b-2 border-blue-600'
-              : 'text-gray-600 hover:text-gray-900'
+              ? 'text-blue-400 border-b-2 border-blue-600'
+              : 'text-slate-300 hover:text-slate-100'
           }`}
         >
           Overview
@@ -264,8 +264,8 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
           onClick={() => setActiveTab('templates')}
           className={`px-4 py-2 font-medium transition-colors ${
             activeTab === 'templates'
-              ? 'text-blue-600 border-b-2 border-blue-600'
-              : 'text-gray-600 hover:text-gray-900'
+              ? 'text-blue-400 border-b-2 border-blue-600'
+              : 'text-slate-300 hover:text-slate-100'
           }`}
         >
           Email Templates
@@ -274,8 +274,8 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
           onClick={() => setActiveTab('schedule')}
           className={`px-4 py-2 font-medium transition-colors ${
             activeTab === 'schedule'
-              ? 'text-blue-600 border-b-2 border-blue-600'
-              : 'text-gray-600 hover:text-gray-900'
+              ? 'text-blue-400 border-b-2 border-blue-600'
+              : 'text-slate-300 hover:text-slate-100'
           }`}
         >
           Schedule
@@ -284,8 +284,8 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
           onClick={() => setActiveTab('analytics')}
           className={`px-4 py-2 font-medium transition-colors ${
             activeTab === 'analytics'
-              ? 'text-blue-600 border-b-2 border-blue-600'
-              : 'text-gray-600 hover:text-gray-900'
+              ? 'text-blue-400 border-b-2 border-blue-600'
+              : 'text-slate-300 hover:text-slate-100'
           }`}
         >
           Analytics
@@ -297,24 +297,24 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
         <div className="space-y-6">
           {/* Email Types */}
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Email Types</h3>
+            <h3 className="text-lg font-semibold text-slate-100 mb-4">Email Types</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {emailTypes.map((email) => {
                 const Icon = email.icon;
                 return (
-                  <div key={email.id} className="bg-white rounded-lg border-2 border-gray-200 p-6">
+                  <div key={email.id} className="bg-white rounded-lg border-2 border-white/10 p-6">
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex items-center gap-3">
                         <div className={`w-12 h-12 bg-${email.color}-100 rounded-lg flex items-center justify-center`}>
                           <Icon className={`w-6 h-6 text-${email.color}-600`} />
                         </div>
                         <div>
-                          <h4 className="font-semibold text-gray-900">{email.name}</h4>
-                          <p className="text-sm text-gray-600">{email.description}</p>
+                          <h4 className="font-semibold text-slate-100">{email.name}</h4>
+                          <p className="text-sm text-slate-300">{email.description}</p>
                         </div>
                       </div>
                       <span className={`px-2 py-1 rounded text-xs font-semibold ${
-                        email.status === 'active' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-700'
+                        email.status === 'active' ? 'bg-green-500/15 text-green-300' : 'bg-white/5 text-slate-300'
                       }`}>
                         {email.status}
                       </span>
@@ -322,16 +322,16 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
 
                     <div className="grid grid-cols-2 gap-4 mb-4">
                       <div>
-                        <p className="text-xs text-gray-500">Recipients</p>
-                        <p className="text-lg font-semibold text-gray-900">{email.recipients}</p>
+                        <p className="text-xs text-slate-400">Recipients</p>
+                        <p className="text-lg font-semibold text-slate-100">{email.recipients}</p>
                       </div>
                       <div>
-                        <p className="text-xs text-gray-500">Open Rate</p>
-                        <p className="text-lg font-semibold text-gray-900">{email.openRate}</p>
+                        <p className="text-xs text-slate-400">Open Rate</p>
+                        <p className="text-lg font-semibold text-slate-100">{email.openRate}</p>
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-between text-sm text-gray-600 mb-4">
+                    <div className="flex items-center justify-between text-sm text-slate-300 mb-4">
                       <div className="flex items-center">
                         <Clock className="w-4 h-4 mr-1" />
                         {email.frequency}
@@ -385,31 +385,31 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
 
           {/* Upcoming Emails */}
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Upcoming Scheduled Emails</h3>
-            <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+            <h3 className="text-lg font-semibold text-slate-100 mb-4">Upcoming Scheduled Emails</h3>
+            <div className="bg-white rounded-lg border border-white/10 overflow-hidden">
               <table className="w-full">
-                <thead className="bg-gray-50 border-b border-gray-200">
+                <thead className="bg-white/5 border-b border-white/10">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Email Type</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Scheduled For</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Recipients</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Actions</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase">Email Type</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase">Scheduled For</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase">Recipients</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase">Status</th>
+                    <th className="px-6 py-3 text-right text-xs font-medium text-slate-400 uppercase">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-200">
+                <tbody className="divide-y divide-white/10">
                   {upcomingEmails.map((email) => (
-                    <tr key={email.id} className="hover:bg-gray-50">
-                      <td className="px-6 py-4 text-sm font-medium text-gray-900">{email.type}</td>
-                      <td className="px-6 py-4 text-sm text-gray-600">
+                    <tr key={email.id} className="hover:bg-white/5">
+                      <td className="px-6 py-4 text-sm font-medium text-slate-100">{email.type}</td>
+                      <td className="px-6 py-4 text-sm text-slate-300">
                         <div className="flex items-center">
                           <Calendar className="w-4 h-4 mr-2 text-gray-400" />
                           {email.scheduledFor}
                         </div>
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-600">{email.recipients} users</td>
+                      <td className="px-6 py-4 text-sm text-slate-300">{email.recipients} users</td>
                       <td className="px-6 py-4">
-                        <span className="px-2 py-1 rounded text-xs font-semibold bg-blue-100 text-blue-700">
+                        <span className="px-2 py-1 rounded text-xs font-semibold bg-blue-500/15 text-blue-300">
                           Scheduled
                         </span>
                       </td>
@@ -427,49 +427,49 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
 
           {/* Recently Sent */}
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Recently Sent</h3>
-            <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+            <h3 className="text-lg font-semibold text-slate-100 mb-4">Recently Sent</h3>
+            <div className="bg-white rounded-lg border border-white/10 overflow-hidden">
               <table className="w-full">
-                <thead className="bg-gray-50 border-b border-gray-200">
+                <thead className="bg-white/5 border-b border-white/10">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Email Type</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Sent At</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Recipients</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Delivered</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Opened</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Clicked</th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Actions</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase">Email Type</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase">Sent At</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase">Recipients</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase">Delivered</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase">Opened</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase">Clicked</th>
+                    <th className="px-6 py-3 text-right text-xs font-medium text-slate-400 uppercase">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-200">
+                <tbody className="divide-y divide-white/10">
                   {recentlySent.map((email) => (
-                    <tr key={email.id} className="hover:bg-gray-50">
-                      <td className="px-6 py-4 text-sm font-medium text-gray-900">{email.type}</td>
-                      <td className="px-6 py-4 text-sm text-gray-600">{email.sentAt}</td>
-                      <td className="px-6 py-4 text-sm text-gray-600">{email.recipients}</td>
+                    <tr key={email.id} className="hover:bg-white/5">
+                      <td className="px-6 py-4 text-sm font-medium text-slate-100">{email.type}</td>
+                      <td className="px-6 py-4 text-sm text-slate-300">{email.sentAt}</td>
+                      <td className="px-6 py-4 text-sm text-slate-300">{email.recipients}</td>
                       <td className="px-6 py-4">
                         <div className="flex items-center text-sm">
-                          <CheckCircle className="w-4 h-4 text-green-600 mr-1" />
-                          <span className="text-gray-900">{email.delivered}</span>
-                          <span className="text-gray-500 ml-1">
+                          <CheckCircle className="w-4 h-4 text-green-400 mr-1" />
+                          <span className="text-slate-100">{email.delivered}</span>
+                          <span className="text-slate-400 ml-1">
                             ({((email.delivered / email.recipients) * 100).toFixed(1)}%)
                           </span>
                         </div>
                       </td>
                       <td className="px-6 py-4">
                         <div className="flex items-center text-sm">
-                          <Eye className="w-4 h-4 text-blue-600 mr-1" />
-                          <span className="text-gray-900">{email.opened}</span>
-                          <span className="text-gray-500 ml-1">
+                          <Eye className="w-4 h-4 text-blue-400 mr-1" />
+                          <span className="text-slate-100">{email.opened}</span>
+                          <span className="text-slate-400 ml-1">
                             ({((email.opened / email.delivered) * 100).toFixed(1)}%)
                           </span>
                         </div>
                       </td>
                       <td className="px-6 py-4">
                         <div className="flex items-center text-sm">
-                          <TrendingUp className="w-4 h-4 text-purple-600 mr-1" />
-                          <span className="text-gray-900">{email.clicked}</span>
-                          <span className="text-gray-500 ml-1">
+                          <TrendingUp className="w-4 h-4 text-purple-400 mr-1" />
+                          <span className="text-slate-100">{email.clicked}</span>
+                          <span className="text-slate-400 ml-1">
                             ({((email.clicked / email.opened) * 100).toFixed(1)}%)
                           </span>
                         </div>
@@ -494,8 +494,8 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
           {/* Template Header */}
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900">Email Templates</h3>
-              <p className="text-sm text-gray-600">Manage and customize email templates for all notification types</p>
+              <h3 className="text-lg font-semibold text-slate-100">Email Templates</h3>
+              <p className="text-sm text-slate-300">Manage and customize email templates for all notification types</p>
             </div>
             <div className="flex gap-2">
               <Button variant="outline" onClick={() => toast.info('Importing template...')}>
@@ -567,24 +567,24 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
                 preview: 'Secure password reset instructions'
               }
             ].map((template) => (
-              <div key={template.id} className="bg-white rounded-lg border-2 border-gray-200 p-5 hover:border-blue-300 transition-colors">
+              <div key={template.id} className="bg-white rounded-lg border-2 border-white/10 p-5 hover:border-blue-300 transition-colors">
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex-1">
-                    <h4 className="font-semibold text-gray-900 mb-1">{template.name}</h4>
-                    <span className="inline-block px-2 py-1 text-xs font-medium bg-blue-100 text-blue-700 rounded">
+                    <h4 className="font-semibold text-slate-100 mb-1">{template.name}</h4>
+                    <span className="inline-block px-2 py-1 text-xs font-medium bg-blue-500/15 text-blue-300 rounded">
                       {template.category}
                     </span>
                   </div>
                   <span className={`px-2 py-1 rounded text-xs font-semibold ${
-                    template.status === 'active' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'
+                    template.status === 'active' ? 'bg-green-500/15 text-green-300' : 'bg-white/5 text-slate-300'
                   }`}>
                     {template.status}
                   </span>
                 </div>
 
-                <p className="text-sm text-gray-600 mb-4 line-clamp-2">{template.preview}</p>
+                <p className="text-sm text-slate-300 mb-4 line-clamp-2">{template.preview}</p>
 
-                <div className="flex items-center justify-between text-xs text-gray-500 mb-4">
+                <div className="flex items-center justify-between text-xs text-slate-400 mb-4">
                   <span>Used by {template.usage} users</span>
                   <span>Modified {template.lastModified}</span>
                 </div>
@@ -627,27 +627,27 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
           </div>
 
           {/* Template Variables Reference */}
-          <div className="bg-blue-50 rounded-lg border border-blue-200 p-5">
-            <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
-              <FileText className="w-5 h-5 text-blue-600 mr-2" />
+          <div className="bg-blue-500/10 rounded-lg border border-blue-500/30 p-5">
+            <h4 className="font-semibold text-slate-100 mb-3 flex items-center">
+              <FileText className="w-5 h-5 text-blue-400 mr-2" />
               Available Template Variables
             </h4>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
               <div>
-                <code className="bg-white px-2 py-1 rounded text-blue-600 font-mono text-xs">{'{{user.name}}'}</code>
-                <p className="text-gray-600 mt-1">User's full name</p>
+                <code className="bg-white px-2 py-1 rounded text-blue-400 font-mono text-xs">{'{{user.name}}'}</code>
+                <p className="text-slate-300 mt-1">User's full name</p>
               </div>
               <div>
-                <code className="bg-white px-2 py-1 rounded text-blue-600 font-mono text-xs">{'{{user.email}}'}</code>
-                <p className="text-gray-600 mt-1">User's email</p>
+                <code className="bg-white px-2 py-1 rounded text-blue-400 font-mono text-xs">{'{{user.email}}'}</code>
+                <p className="text-slate-300 mt-1">User's email</p>
               </div>
               <div>
-                <code className="bg-white px-2 py-1 rounded text-blue-600 font-mono text-xs">{'{{case.id}}'}</code>
-                <p className="text-gray-600 mt-1">Case number</p>
+                <code className="bg-white px-2 py-1 rounded text-blue-400 font-mono text-xs">{'{{case.id}}'}</code>
+                <p className="text-slate-300 mt-1">Case number</p>
               </div>
               <div>
-                <code className="bg-white px-2 py-1 rounded text-blue-600 font-mono text-xs">{'{{date.today}}'}</code>
-                <p className="text-gray-600 mt-1">Current date</p>
+                <code className="bg-white px-2 py-1 rounded text-blue-400 font-mono text-xs">{'{{date.today}}'}</code>
+                <p className="text-slate-300 mt-1">Current date</p>
               </div>
             </div>
           </div>
@@ -660,8 +660,8 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
           {/* Schedule Header */}
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900">Email Schedule Manager</h3>
-              <p className="text-sm text-gray-600">Configure delivery schedules and recurring email automation</p>
+              <h3 className="text-lg font-semibold text-slate-100">Email Schedule Manager</h3>
+              <p className="text-sm text-slate-300">Configure delivery schedules and recurring email automation</p>
             </div>
             <Button className="bg-blue-600 hover:bg-blue-700" onClick={() => toast.success('Creating new schedule...')}>
               <Plus className="w-4 h-4 mr-2" />
@@ -671,53 +671,53 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
 
           {/* Quick Stats */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="bg-white rounded-lg border border-gray-200 p-4">
+            <div className="bg-white rounded-lg border border-white/10 p-4">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm text-gray-600">Active Schedules</span>
-                <Clock className="w-4 h-4 text-blue-600" />
+                <span className="text-sm text-slate-300">Active Schedules</span>
+                <Clock className="w-4 h-4 text-blue-400" />
               </div>
-              <div className="text-2xl font-bold text-gray-900">12</div>
-              <div className="text-xs text-gray-500 mt-1">Running daily</div>
+              <div className="text-2xl font-bold text-slate-100">12</div>
+              <div className="text-xs text-slate-400 mt-1">Running daily</div>
             </div>
-            <div className="bg-white rounded-lg border border-gray-200 p-4">
+            <div className="bg-white rounded-lg border border-white/10 p-4">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm text-gray-600">Upcoming Today</span>
-                <Calendar className="w-4 h-4 text-green-600" />
+                <span className="text-sm text-slate-300">Upcoming Today</span>
+                <Calendar className="w-4 h-4 text-green-400" />
               </div>
-              <div className="text-2xl font-bold text-gray-900">8</div>
-              <div className="text-xs text-gray-500 mt-1">Next in 35 mins</div>
+              <div className="text-2xl font-bold text-slate-100">8</div>
+              <div className="text-xs text-slate-400 mt-1">Next in 35 mins</div>
             </div>
-            <div className="bg-white rounded-lg border border-gray-200 p-4">
+            <div className="bg-white rounded-lg border border-white/10 p-4">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm text-gray-600">Paused</span>
-                <AlertCircle className="w-4 h-4 text-amber-600" />
+                <span className="text-sm text-slate-300">Paused</span>
+                <AlertCircle className="w-4 h-4 text-amber-400" />
               </div>
-              <div className="text-2xl font-bold text-gray-900">3</div>
-              <div className="text-xs text-gray-500 mt-1">Review required</div>
+              <div className="text-2xl font-bold text-slate-100">3</div>
+              <div className="text-xs text-slate-400 mt-1">Review required</div>
             </div>
-            <div className="bg-white rounded-lg border border-gray-200 p-4">
+            <div className="bg-white rounded-lg border border-white/10 p-4">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm text-gray-600">Failed Today</span>
-                <X className="w-4 h-4 text-red-600" />
+                <span className="text-sm text-slate-300">Failed Today</span>
+                <X className="w-4 h-4 text-red-400" />
               </div>
-              <div className="text-2xl font-bold text-gray-900">0</div>
-              <div className="text-xs text-green-600 mt-1">All successful</div>
+              <div className="text-2xl font-bold text-slate-100">0</div>
+              <div className="text-xs text-green-400 mt-1">All successful</div>
             </div>
           </div>
 
           {/* Schedule List */}
-          <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
-            <div className="px-6 py-4 bg-gray-50 border-b border-gray-200">
+          <div className="bg-white rounded-lg border border-white/10 overflow-hidden">
+            <div className="px-6 py-4 bg-white/5 border-b border-white/10">
               <div className="flex items-center justify-between">
-                <h4 className="font-semibold text-gray-900">Scheduled Emails</h4>
+                <h4 className="font-semibold text-slate-100">Scheduled Emails</h4>
                 <div className="flex gap-2">
-                  <select className="px-3 py-1.5 border border-gray-300 rounded-lg text-sm">
+                  <select className="px-3 py-1.5 border border-white/10 rounded-lg text-sm">
                     <option>All Schedules</option>
                     <option>Daily</option>
                     <option>Weekly</option>
                     <option>Monthly</option>
                   </select>
-                  <select className="px-3 py-1.5 border border-gray-300 rounded-lg text-sm">
+                  <select className="px-3 py-1.5 border border-white/10 rounded-lg text-sm">
                     <option>All Statuses</option>
                     <option>Active</option>
                     <option>Paused</option>
@@ -728,17 +728,17 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
             </div>
 
             <table className="w-full">
-              <thead className="bg-gray-50 border-b border-gray-200">
+              <thead className="bg-white/5 border-b border-white/10">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Email Template</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Frequency</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Next Send</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Recipients</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
-                  <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Actions</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase">Email Template</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase">Frequency</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase">Next Send</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase">Recipients</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase">Status</th>
+                  <th className="px-6 py-3 text-right text-xs font-medium text-slate-400 uppercase">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200">
+              <tbody className="divide-y divide-white/10">
                 {[
                   {
                     id: 1,
@@ -795,30 +795,30 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
                     lastRun: '2 weeks ago'
                   }
                 ].map((schedule) => (
-                  <tr key={schedule.id} className="hover:bg-gray-50">
+                  <tr key={schedule.id} className="hover:bg-white/5">
                     <td className="px-6 py-4">
-                      <div className="font-medium text-gray-900">{schedule.template}</div>
-                      <div className="text-xs text-gray-500">Last run: {schedule.lastRun}</div>
+                      <div className="font-medium text-slate-100">{schedule.template}</div>
+                      <div className="text-xs text-slate-400">Last run: {schedule.lastRun}</div>
                     </td>
-                    <td className="px-6 py-4 text-sm text-gray-600">
+                    <td className="px-6 py-4 text-sm text-slate-300">
                       <div className="flex items-center">
                         <Clock className="w-4 h-4 mr-2 text-gray-400" />
                         {schedule.frequency}
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-sm text-gray-600">
+                    <td className="px-6 py-4 text-sm text-slate-300">
                       <div className="flex items-center">
                         <Calendar className="w-4 h-4 mr-2 text-gray-400" />
                         {schedule.nextSend}
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-sm text-gray-600">{schedule.recipients} users</td>
+                    <td className="px-6 py-4 text-sm text-slate-300">{schedule.recipients} users</td>
                     <td className="px-6 py-4">
                       <span
                         className={`px-2 py-1 rounded text-xs font-semibold ${
                           schedule.status === 'active'
-                            ? 'bg-green-100 text-green-700'
-                            : 'bg-amber-100 text-amber-700'
+                            ? 'bg-green-500/15 text-green-300'
+                            : 'bg-amber-500/15 text-amber-300'
                         }`}
                       >
                         {schedule.status}
@@ -845,9 +845,9 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
                           }
                         >
                           {schedule.status === 'active' ? (
-                            <AlertCircle className="w-4 h-4 text-amber-600" />
+                            <AlertCircle className="w-4 h-4 text-amber-400" />
                           ) : (
-                            <CheckCircle className="w-4 h-4 text-green-600" />
+                            <CheckCircle className="w-4 h-4 text-green-400" />
                           )}
                         </Button>
                       </div>
@@ -859,26 +859,26 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
           </div>
 
           {/* Schedule Configuration Info */}
-          <div className="bg-blue-50 rounded-lg border border-blue-200 p-5">
-            <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
-              <Clock className="w-5 h-5 text-blue-600 mr-2" />
+          <div className="bg-blue-500/10 rounded-lg border border-blue-500/30 p-5">
+            <h4 className="font-semibold text-slate-100 mb-3 flex items-center">
+              <Clock className="w-5 h-5 text-blue-400 mr-2" />
               Schedule Configuration Tips
             </h4>
-            <ul className="space-y-2 text-sm text-gray-700">
+            <ul className="space-y-2 text-sm text-slate-300">
               <li className="flex items-start">
-                <CheckCircle className="w-4 h-4 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="w-4 h-4 text-blue-400 mr-2 mt-0.5 flex-shrink-0" />
                 <span>All times are in AEST (Australian Eastern Standard Time)</span>
               </li>
               <li className="flex items-start">
-                <CheckCircle className="w-4 h-4 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="w-4 h-4 text-blue-400 mr-2 mt-0.5 flex-shrink-0" />
                 <span>Schedules can be paused without losing configuration</span>
               </li>
               <li className="flex items-start">
-                <CheckCircle className="w-4 h-4 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="w-4 h-4 text-blue-400 mr-2 mt-0.5 flex-shrink-0" />
                 <span>Recipients are calculated dynamically based on role filters at send time</span>
               </li>
               <li className="flex items-start">
-                <CheckCircle className="w-4 h-4 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="w-4 h-4 text-blue-400 mr-2 mt-0.5 flex-shrink-0" />
                 <span>Failed sends are automatically retried up to 3 times with exponential backoff</span>
               </li>
             </ul>
@@ -892,11 +892,11 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
           {/* Analytics Header */}
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900">Email Analytics Dashboard</h3>
-              <p className="text-sm text-gray-600">Comprehensive performance metrics and insights</p>
+              <h3 className="text-lg font-semibold text-slate-100">Email Analytics Dashboard</h3>
+              <p className="text-sm text-slate-300">Comprehensive performance metrics and insights</p>
             </div>
             <div className="flex gap-2">
-              <select className="px-3 py-1.5 border border-gray-300 rounded-lg text-sm">
+              <select className="px-3 py-1.5 border border-white/10 rounded-lg text-sm">
                 <option>Last 7 Days</option>
                 <option>Last 30 Days</option>
                 <option>Last 90 Days</option>
@@ -919,25 +919,25 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
             ].map((metric, idx) => {
               const Icon = metric.icon;
               return (
-                <div key={idx} className="bg-white rounded-lg border border-gray-200 p-5">
+                <div key={idx} className="bg-white rounded-lg border border-white/10 p-5">
                   <div className="flex items-center justify-between mb-3">
                     <div className={`p-2 bg-${metric.color}-100 rounded-lg`}>
                       <Icon className={`w-5 h-5 text-${metric.color}-600`} />
                     </div>
-                    <span className={`text-xs font-semibold ${metric.trend === 'up' ? 'text-green-600' : 'text-red-600'}`}>
+                    <span className={`text-xs font-semibold ${metric.trend === 'up' ? 'text-green-400' : 'text-red-400'}`}>
                       {metric.change}
                     </span>
                   </div>
-                  <div className="text-sm text-gray-600 mb-1">{metric.label}</div>
-                  <div className="text-2xl font-bold text-gray-900">{metric.value}</div>
+                  <div className="text-sm text-slate-300 mb-1">{metric.label}</div>
+                  <div className="text-2xl font-bold text-slate-100">{metric.value}</div>
                 </div>
               );
             })}
           </div>
 
           {/* Performance by Email Type */}
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <h4 className="font-semibold text-gray-900 mb-4">Performance by Email Type</h4>
+          <div className="bg-white rounded-lg border border-white/10 p-6">
+            <h4 className="font-semibold text-slate-100 mb-4">Performance by Email Type</h4>
             <div className="space-y-4">
               {[
                 {
@@ -969,46 +969,46 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
                   bounceRate: 1.3
                 }
               ].map((email, idx) => (
-                <div key={idx} className="border-b border-gray-100 pb-4 last:border-0 last:pb-0">
+                <div key={idx} className="border-b border-white/10 pb-4 last:border-0 last:pb-0">
                   <div className="flex items-center justify-between mb-3">
-                    <div className="font-medium text-gray-900">{email.name}</div>
-                    <div className="text-sm text-gray-500">{email.sent} sent</div>
+                    <div className="font-medium text-slate-100">{email.name}</div>
+                    <div className="text-sm text-slate-400">{email.sent} sent</div>
                   </div>
                   <div className="grid grid-cols-3 gap-4 text-sm">
                     <div>
-                      <div className="text-gray-600 mb-1">Open Rate</div>
+                      <div className="text-slate-300 mb-1">Open Rate</div>
                       <div className="flex items-center gap-2">
-                        <div className="flex-1 bg-gray-200 rounded-full h-2">
+                        <div className="flex-1 bg-white/10 rounded-full h-2">
                           <div
                             className="bg-blue-600 h-2 rounded-full"
                             style={{ width: `${email.openRate}%` }}
                           />
                         </div>
-                        <span className="font-semibold text-gray-900 w-12 text-right">{email.openRate}%</span>
+                        <span className="font-semibold text-slate-100 w-12 text-right">{email.openRate}%</span>
                       </div>
                     </div>
                     <div>
-                      <div className="text-gray-600 mb-1">Click Rate</div>
+                      <div className="text-slate-300 mb-1">Click Rate</div>
                       <div className="flex items-center gap-2">
-                        <div className="flex-1 bg-gray-200 rounded-full h-2">
+                        <div className="flex-1 bg-white/10 rounded-full h-2">
                           <div
                             className="bg-purple-600 h-2 rounded-full"
                             style={{ width: `${email.clickRate}%` }}
                           />
                         </div>
-                        <span className="font-semibold text-gray-900 w-12 text-right">{email.clickRate}%</span>
+                        <span className="font-semibold text-slate-100 w-12 text-right">{email.clickRate}%</span>
                       </div>
                     </div>
                     <div>
-                      <div className="text-gray-600 mb-1">Bounce Rate</div>
+                      <div className="text-slate-300 mb-1">Bounce Rate</div>
                       <div className="flex items-center gap-2">
-                        <div className="flex-1 bg-gray-200 rounded-full h-2">
+                        <div className="flex-1 bg-white/10 rounded-full h-2">
                           <div
                             className="bg-red-600 h-2 rounded-full"
                             style={{ width: `${email.bounceRate * 10}%` }}
                           />
                         </div>
-                        <span className="font-semibold text-gray-900 w-12 text-right">{email.bounceRate}%</span>
+                        <span className="font-semibold text-slate-100 w-12 text-right">{email.bounceRate}%</span>
                       </div>
                     </div>
                   </div>
@@ -1020,8 +1020,8 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
           {/* Engagement Trends */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* 7-Day Trend */}
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
-              <h4 className="font-semibold text-gray-900 mb-4">7-Day Engagement Trend</h4>
+            <div className="bg-white rounded-lg border border-white/10 p-6">
+              <h4 className="font-semibold text-slate-100 mb-4">7-Day Engagement Trend</h4>
               <div className="space-y-3">
                 {[
                   { day: 'Monday', sent: 428, opened: 362, clicked: 178 },
@@ -1035,10 +1035,10 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
                   const maxSent = 438;
                   return (
                     <div key={idx} className="flex items-center gap-3">
-                      <div className="w-24 text-sm text-gray-600">{day.day}</div>
+                      <div className="w-24 text-sm text-slate-300">{day.day}</div>
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
-                          <div className="flex-1 bg-gray-100 rounded-full h-6 relative overflow-hidden">
+                          <div className="flex-1 bg-white/5 rounded-full h-6 relative overflow-hidden">
                             <div
                               className="bg-blue-500 h-full"
                               style={{ width: `${(day.sent / maxSent) * 100}%` }}
@@ -1052,7 +1052,7 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
                               style={{ width: `${(day.clicked / maxSent) * 100}%` }}
                             />
                           </div>
-                          <span className="text-sm font-medium text-gray-900 w-12 text-right">
+                          <span className="text-sm font-medium text-slate-100 w-12 text-right">
                             {day.sent}
                           </span>
                         </div>
@@ -1063,23 +1063,23 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
                 <div className="flex items-center gap-4 pt-3 border-t">
                   <div className="flex items-center gap-2 text-sm">
                     <div className="w-3 h-3 bg-blue-500 rounded" />
-                    <span className="text-gray-600">Sent</span>
+                    <span className="text-slate-300">Sent</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <div className="w-3 h-3 bg-purple-500 rounded" />
-                    <span className="text-gray-600">Opened</span>
+                    <span className="text-slate-300">Opened</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <div className="w-3 h-3 bg-green-500 rounded" />
-                    <span className="text-gray-600">Clicked</span>
+                    <span className="text-slate-300">Clicked</span>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Top Performing Content */}
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
-              <h4 className="font-semibold text-gray-900 mb-4">Top Performing Content</h4>
+            <div className="bg-white rounded-lg border border-white/10 p-6">
+              <h4 className="font-semibold text-slate-100 mb-4">Top Performing Content</h4>
               <div className="space-y-4">
                 {[
                   {
@@ -1115,12 +1115,12 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
                 ].map((content, idx) => (
                   <div key={idx} className="flex items-center justify-between">
                     <div className="flex-1">
-                      <div className="font-medium text-gray-900 text-sm">{content.title}</div>
-                      <div className="text-xs text-gray-500">{content.category}</div>
+                      <div className="font-medium text-slate-100 text-sm">{content.title}</div>
+                      <div className="text-xs text-slate-400">{content.category}</div>
                     </div>
                     <div className="text-right">
-                      <div className="text-sm font-semibold text-gray-900">{content.clicks} clicks</div>
-                      <div className="text-xs text-green-600">{content.ctr} CTR</div>
+                      <div className="text-sm font-semibold text-slate-100">{content.clicks} clicks</div>
+                      <div className="text-xs text-green-400">{content.ctr} CTR</div>
                     </div>
                   </div>
                 ))}
@@ -1129,11 +1129,11 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
           </div>
 
           {/* Recipient Insights */}
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <h4 className="font-semibold text-gray-900 mb-4">Recipient Insights</h4>
+          <div className="bg-white rounded-lg border border-white/10 p-6">
+            <h4 className="font-semibold text-slate-100 mb-4">Recipient Insights</h4>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div>
-                <div className="text-sm text-gray-600 mb-3">By User Role</div>
+                <div className="text-sm text-slate-300 mb-3">By User Role</div>
                 <div className="space-y-2">
                   {[
                     { role: 'Investors', count: 247, percentage: 47 },
@@ -1142,15 +1142,15 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
                     { role: 'Admin', count: 156, percentage: 30 }
                   ].map((item, idx) => (
                     <div key={idx} className="flex items-center justify-between text-sm">
-                      <span className="text-gray-700">{item.role}</span>
+                      <span className="text-slate-300">{item.role}</span>
                       <div className="flex items-center gap-2">
-                        <div className="w-24 bg-gray-200 rounded-full h-2">
+                        <div className="w-24 bg-white/10 rounded-full h-2">
                           <div
                             className="bg-blue-600 h-2 rounded-full"
                             style={{ width: `${item.percentage}%` }}
                           />
                         </div>
-                        <span className="font-medium text-gray-900 w-10 text-right">{item.count}</span>
+                        <span className="font-medium text-slate-100 w-10 text-right">{item.count}</span>
                       </div>
                     </div>
                   ))}
@@ -1158,7 +1158,7 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
               </div>
 
               <div>
-                <div className="text-sm text-gray-600 mb-3">Peak Engagement Times</div>
+                <div className="text-sm text-slate-300 mb-3">Peak Engagement Times</div>
                 <div className="space-y-2">
                   {[
                     { time: '8:00 AM - 10:00 AM', rate: 89 },
@@ -1167,15 +1167,15 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
                     { time: 'Other times', rate: 45 }
                   ].map((item, idx) => (
                     <div key={idx} className="flex items-center justify-between text-sm">
-                      <span className="text-gray-700">{item.time}</span>
+                      <span className="text-slate-300">{item.time}</span>
                       <div className="flex items-center gap-2">
-                        <div className="w-24 bg-gray-200 rounded-full h-2">
+                        <div className="w-24 bg-white/10 rounded-full h-2">
                           <div
                             className="bg-purple-600 h-2 rounded-full"
                             style={{ width: `${item.rate}%` }}
                           />
                         </div>
-                        <span className="font-medium text-gray-900 w-10 text-right">{item.rate}%</span>
+                        <span className="font-medium text-slate-100 w-10 text-right">{item.rate}%</span>
                       </div>
                     </div>
                   ))}
@@ -1183,7 +1183,7 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
               </div>
 
               <div>
-                <div className="text-sm text-gray-600 mb-3">Device Type</div>
+                <div className="text-sm text-slate-300 mb-3">Device Type</div>
                 <div className="space-y-2">
                   {[
                     { device: 'Desktop', percentage: 58 },
@@ -1191,15 +1191,15 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
                     { device: 'Tablet', percentage: 7 }
                   ].map((item, idx) => (
                     <div key={idx} className="flex items-center justify-between text-sm">
-                      <span className="text-gray-700">{item.device}</span>
+                      <span className="text-slate-300">{item.device}</span>
                       <div className="flex items-center gap-2">
-                        <div className="w-24 bg-gray-200 rounded-full h-2">
+                        <div className="w-24 bg-white/10 rounded-full h-2">
                           <div
                             className="bg-green-600 h-2 rounded-full"
                             style={{ width: `${item.percentage}%` }}
                           />
                         </div>
-                        <span className="font-medium text-gray-900 w-10 text-right">{item.percentage}%</span>
+                        <span className="font-medium text-slate-100 w-10 text-right">{item.percentage}%</span>
                       </div>
                     </div>
                   ))}
@@ -1209,26 +1209,26 @@ export function EmailNotificationCenter({ onNavigate }: EmailNotificationCenterP
           </div>
 
           {/* Action Items */}
-          <div className="bg-amber-50 rounded-lg border border-amber-200 p-5">
-            <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
-              <AlertCircle className="w-5 h-5 text-amber-600 mr-2" />
+          <div className="bg-amber-500/10 rounded-lg border border-amber-500/30 p-5">
+            <h4 className="font-semibold text-slate-100 mb-3 flex items-center">
+              <AlertCircle className="w-5 h-5 text-amber-400 mr-2" />
               Recommendations
             </h4>
-            <ul className="space-y-2 text-sm text-gray-700">
+            <ul className="space-y-2 text-sm text-slate-300">
               <li className="flex items-start">
-                <TrendingUp className="w-4 h-4 text-amber-600 mr-2 mt-0.5 flex-shrink-0" />
+                <TrendingUp className="w-4 h-4 text-amber-400 mr-2 mt-0.5 flex-shrink-0" />
                 <span>
                   <strong>Open rates peaked 8-10 AM:</strong> Consider scheduling more emails during this time window
                 </span>
               </li>
               <li className="flex items-start">
-                <TrendingUp className="w-4 h-4 text-amber-600 mr-2 mt-0.5 flex-shrink-0" />
+                <TrendingUp className="w-4 h-4 text-amber-400 mr-2 mt-0.5 flex-shrink-0" />
                 <span>
                   <strong>Mobile opens at 35%:</strong> Ensure templates are fully mobile-responsive
                 </span>
               </li>
               <li className="flex items-start">
-                <TrendingUp className="w-4 h-4 text-amber-600 mr-2 mt-0.5 flex-shrink-0" />
+                <TrendingUp className="w-4 h-4 text-amber-400 mr-2 mt-0.5 flex-shrink-0" />
                 <span>
                   <strong>Lawyer emails have 92% open rate:</strong> Use similar subject line patterns for other segments
                 </span>

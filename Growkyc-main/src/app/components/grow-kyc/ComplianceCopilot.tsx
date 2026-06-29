@@ -286,7 +286,7 @@ export function ComplianceCopilot({ isOpen, onClose, context }: ComplianceCopilo
                   )}
 
                   {message.sources && message.sources.length > 0 && (
-                    <div className="mt-3 pt-3 border-t border-gray-300">
+                    <div className="mt-3 pt-3 border-t border-white/10">
                       <div className="text-xs text-slate-300 mb-2">Sources:</div>
                       {message.sources.map((source, idx) => (
                         <div key={idx} className="flex items-center gap-2 text-xs text-slate-300">

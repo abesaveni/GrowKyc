@@ -155,11 +155,11 @@ export function IntegrationsLanding({ onNavigate }: IntegrationsLandingProps) {
       <div className="max-w-7xl mx-auto px-8 py-16">
         {/* Providers Grid */}
         <div className="mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-3 flex items-center gap-3">
-            <Globe className="w-10 h-10 text-purple-600" />
+          <h2 className="text-4xl font-bold text-slate-100 mb-3 flex items-center gap-3">
+            <Globe className="w-10 h-10 text-purple-400" />
             All Providers Connected
           </h2>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl text-slate-300 mb-8">
             4 core providers always active + 2 optional trigger-based providers
           </p>
           
@@ -175,17 +175,17 @@ export function IntegrationsLanding({ onNavigate }: IntegrationsLandingProps) {
                       {provider.icon}
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900">{provider.name}</h3>
-                      <p className="text-sm text-gray-600">{provider.purpose}</p>
+                      <h3 className="text-xl font-bold text-slate-100">{provider.name}</h3>
+                      <p className="text-sm text-slate-300">{provider.purpose}</p>
                     </div>
                   </div>
                   {idx < 4 ? (
-                    <Badge className="bg-green-100 text-green-700 border-green-300">
+                    <Badge className="bg-green-500/15 text-green-300 border-green-300">
                       <CheckCircle className="w-3 h-3 mr-1" />
                       Core Provider
                     </Badge>
                   ) : (
-                    <Badge className="bg-purple-100 text-purple-700 border-purple-300">
+                    <Badge className="bg-purple-500/15 text-purple-300 border-purple-300">
                       <Zap className="w-3 h-3 mr-1" />
                       Trigger-Based
                     </Badge>
@@ -198,11 +198,11 @@ export function IntegrationsLanding({ onNavigate }: IntegrationsLandingProps) {
 
         {/* Architecture Flow */}
         <div className="mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-3 flex items-center gap-3">
-            <Server className="w-10 h-10 text-blue-600" />
+          <h2 className="text-4xl font-bold text-slate-100 mb-3 flex items-center gap-3">
+            <Server className="w-10 h-10 text-blue-400" />
             API Architecture
           </h2>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl text-slate-300 mb-8">
             Clean separation of concerns with orchestration layer
           </p>
 
@@ -211,40 +211,40 @@ export function IntegrationsLanding({ onNavigate }: IntegrationsLandingProps) {
               <div className="flex items-center justify-between">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <Eye className="w-8 h-8 text-blue-600" />
+                    <Eye className="w-8 h-8 text-blue-400" />
                     <div>
-                      <h3 className="text-lg font-bold text-gray-900">Front End</h3>
-                      <p className="text-sm text-gray-600">Calls internal APIs only</p>
+                      <h3 className="text-lg font-bold text-slate-100">Front End</h3>
+                      <p className="text-sm text-slate-300">Calls internal APIs only</p>
                     </div>
                   </div>
                 </div>
                 <ArrowRight className="w-8 h-8 text-gray-400 mx-4" />
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <Server className="w-8 h-8 text-indigo-600" />
+                    <Server className="w-8 h-8 text-indigo-400" />
                     <div>
-                      <h3 className="text-lg font-bold text-gray-900">API Gateway</h3>
-                      <p className="text-sm text-gray-600">Centralised auth & routing</p>
+                      <h3 className="text-lg font-bold text-slate-100">API Gateway</h3>
+                      <p className="text-sm text-slate-300">Centralised auth & routing</p>
                     </div>
                   </div>
                 </div>
                 <ArrowRight className="w-8 h-8 text-gray-400 mx-4" />
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <Workflow className="w-8 h-8 text-purple-600" />
+                    <Workflow className="w-8 h-8 text-purple-400" />
                     <div>
-                      <h3 className="text-lg font-bold text-gray-900">Orchestration</h3>
-                      <p className="text-sm text-gray-600">Workflow decision engine</p>
+                      <h3 className="text-lg font-bold text-slate-100">Orchestration</h3>
+                      <p className="text-sm text-slate-300">Workflow decision engine</p>
                     </div>
                   </div>
                 </div>
                 <ArrowRight className="w-8 h-8 text-gray-400 mx-4" />
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <Database className="w-8 h-8 text-green-600" />
+                    <Database className="w-8 h-8 text-green-400" />
                     <div>
-                      <h3 className="text-lg font-bold text-gray-900">Adapters</h3>
-                      <p className="text-sm text-gray-600">6 provider connectors</p>
+                      <h3 className="text-lg font-bold text-slate-100">Adapters</h3>
+                      <p className="text-sm text-slate-300">6 provider connectors</p>
                     </div>
                   </div>
                 </div>
@@ -255,11 +255,11 @@ export function IntegrationsLanding({ onNavigate }: IntegrationsLandingProps) {
 
         {/* Key Features */}
         <div className="mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-3 flex items-center gap-3">
-            <Zap className="w-10 h-10 text-purple-600" />
+          <h2 className="text-4xl font-bold text-slate-100 mb-3 flex items-center gap-3">
+            <Zap className="w-10 h-10 text-purple-400" />
             Key Features
           </h2>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl text-slate-300 mb-8">
             Everything needed for production-ready compliance
           </p>
 
@@ -267,15 +267,15 @@ export function IntegrationsLanding({ onNavigate }: IntegrationsLandingProps) {
             {features.map((feature, idx) => {
               const Icon = feature.icon;
               return (
-                <Card key={idx} className="border-2 border-gray-200 hover:border-purple-300 transition-all">
+                <Card key={idx} className="border-2 border-white/10 hover:border-purple-300 transition-all">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
                       <div className={`w-12 h-12 bg-${feature.color}-100 rounded-xl flex items-center justify-center flex-shrink-0`}>
                         <Icon className={`w-7 h-7 text-${feature.color}-600`} />
                       </div>
                       <div>
-                        <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
-                        <p className="text-gray-600">{feature.description}</p>
+                        <h3 className="text-xl font-bold text-slate-100 mb-2">{feature.title}</h3>
+                        <p className="text-slate-300">{feature.description}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -287,8 +287,8 @@ export function IntegrationsLanding({ onNavigate }: IntegrationsLandingProps) {
 
         {/* Quick Links */}
         <div className="mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-8 flex items-center gap-3">
-            <ArrowRight className="w-10 h-10 text-green-600" />
+          <h2 className="text-4xl font-bold text-slate-100 mb-8 flex items-center gap-3">
+            <ArrowRight className="w-10 h-10 text-green-400" />
             Explore the System
           </h2>
 
@@ -296,13 +296,13 @@ export function IntegrationsLanding({ onNavigate }: IntegrationsLandingProps) {
             <Card className="border-2 border-blue-300 hover:border-blue-500 transition-all cursor-pointer" onClick={() => onNavigate('integrations_hub_new')}>
               <CardHeader className="bg-gradient-to-r from-blue-50 to-cyan-50 border-b">
                 <CardTitle className="flex items-center gap-2">
-                  <Database className="w-6 h-6 text-blue-600" />
+                  <Database className="w-6 h-6 text-blue-400" />
                   Integrations Hub
                 </CardTitle>
                 <CardDescription>Configure all 6 providers</CardDescription>
               </CardHeader>
               <CardContent className="p-6">
-                <ul className="space-y-2 text-sm text-gray-700 mb-4">
+                <ul className="space-y-2 text-sm text-slate-300 mb-4">
                   <li>• Connection status & health</li>
                   <li>• API credentials & config</li>
                   <li>• Usage tracking & costs</li>
@@ -316,7 +316,7 @@ export function IntegrationsLanding({ onNavigate }: IntegrationsLandingProps) {
             </Card>
 
             <Card
-              className={`border-2 transition-all ${blockDemoNavigation ? 'border-gray-300 opacity-70 cursor-not-allowed' : 'border-purple-300 hover:border-purple-500 cursor-pointer'}`}
+              className={`border-2 transition-all ${blockDemoNavigation ? 'border-white/10 opacity-70 cursor-not-allowed' : 'border-purple-300 hover:border-purple-500 cursor-pointer'}`}
               onClick={() => {
                 if (blockDemoNavigation) return;
                 onNavigate('integrations_demo');
@@ -324,7 +324,7 @@ export function IntegrationsLanding({ onNavigate }: IntegrationsLandingProps) {
             >
               <CardHeader className="bg-gradient-to-r from-purple-50 to-pink-50 border-b">
                 <CardTitle className="flex items-center gap-2">
-                  <Workflow className="w-6 h-6 text-purple-600" />
+                  <Workflow className="w-6 h-6 text-purple-400" />
                   API Demo
                 </CardTitle>
                 <CardDescription>
@@ -334,7 +334,7 @@ export function IntegrationsLanding({ onNavigate }: IntegrationsLandingProps) {
                 </CardDescription>
               </CardHeader>
               <CardContent className="p-6">
-                <ul className="space-y-2 text-sm text-gray-700 mb-4">
+                <ul className="space-y-2 text-sm text-slate-300 mb-4">
                   <li>• Live check results</li>
                   <li>• Risk intelligence panel</li>
                   <li>• Audit trail & evidence</li>
@@ -350,13 +350,13 @@ export function IntegrationsLanding({ onNavigate }: IntegrationsLandingProps) {
             <Card className="border-2 border-green-300 hover:border-green-500 transition-all cursor-pointer" onClick={() => onNavigate('client_list')}>
               <CardHeader className="bg-gradient-to-r from-green-50 to-emerald-50 border-b">
                 <CardTitle className="flex items-center gap-2">
-                  <Shield className="w-6 h-6 text-green-600" />
+                  <Shield className="w-6 h-6 text-green-400" />
                   Client List
                 </CardTitle>
                 <CardDescription>View compliance in action</CardDescription>
               </CardHeader>
               <CardContent className="p-6">
-                <ul className="space-y-2 text-sm text-gray-700 mb-4">
+                <ul className="space-y-2 text-sm text-slate-300 mb-4">
                   <li>• 10 clients with Tier 1-5 data</li>
                   <li>• Full compliance scores</li>
                   <li>• AI bot status</li>

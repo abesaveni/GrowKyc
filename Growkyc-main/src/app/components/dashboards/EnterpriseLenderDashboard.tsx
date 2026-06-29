@@ -58,11 +58,11 @@ export function EnterpriseLenderDashboard({ onNavigate }: EnterpriseLenderDashbo
 
   // Recent activities
   const recentActivities = [
-    { id: 1, type: 'bid', message: 'New bid placed on MIP-2024-003', time: '2 hours ago', icon: Gavel, color: 'text-blue-600' },
-    { id: 2, type: 'case', message: 'Case MIP-2024-001 moved to auction', time: '5 hours ago', icon: Home, color: 'text-green-600' },
-    { id: 3, type: 'settlement', message: 'Settlement completed: $2.4M recovered', time: '1 day ago', icon: CheckCircle, color: 'text-green-600' },
-    { id: 4, type: 'alert', message: 'Compliance review required for 2 cases', time: '1 day ago', icon: AlertCircle, color: 'text-amber-600' },
-    { id: 5, type: 'document', message: 'New valuation report available', time: '2 days ago', icon: FileText, color: 'text-gray-600' }
+    { id: 1, type: 'bid', message: 'New bid placed on MIP-2024-003', time: '2 hours ago', icon: Gavel, color: 'text-blue-400' },
+    { id: 2, type: 'case', message: 'Case MIP-2024-001 moved to auction', time: '5 hours ago', icon: Home, color: 'text-green-400' },
+    { id: 3, type: 'settlement', message: 'Settlement completed: $2.4M recovered', time: '1 day ago', icon: CheckCircle, color: 'text-green-400' },
+    { id: 4, type: 'alert', message: 'Compliance review required for 2 cases', time: '1 day ago', icon: AlertCircle, color: 'text-amber-400' },
+    { id: 5, type: 'document', message: 'New valuation report available', time: '2 days ago', icon: FileText, color: 'text-slate-300' }
   ];
 
   const tableColumns = [
@@ -78,8 +78,8 @@ export function EnterpriseLenderDashboard({ onNavigate }: EnterpriseLenderDashbo
       sortable: true,
       render: (_: any, row: any) => (
         <div>
-          <p className="font-semibold text-gray-900">{row.property?.address}</p>
-          <p className="text-xs text-gray-600">{row.property?.suburb}, {row.property?.state}</p>
+          <p className="font-semibold text-slate-100">{row.property?.address}</p>
+          <p className="text-xs text-slate-300">{row.property?.suburb}, {row.property?.state}</p>
         </div>
       )
     },
@@ -88,7 +88,7 @@ export function EnterpriseLenderDashboard({ onNavigate }: EnterpriseLenderDashbo
       label: 'Loan Amount', 
       sortable: true,
       render: (val: number) => (
-        <span className="font-semibold text-gray-900">
+        <span className="font-semibold text-slate-100">
           A${val?.toLocaleString() || '0'}
         </span>
       )
@@ -98,7 +98,7 @@ export function EnterpriseLenderDashboard({ onNavigate }: EnterpriseLenderDashbo
       label: 'LVR', 
       sortable: true,
       render: (val: number) => (
-        <span className={`font-semibold ${val > 70 ? 'text-amber-600' : 'text-green-600'}`}>
+        <span className={`font-semibold ${val > 70 ? 'text-amber-400' : 'text-green-400'}`}>
           {val}%
         </span>
       )
@@ -200,7 +200,7 @@ export function EnterpriseLenderDashboard({ onNavigate }: EnterpriseLenderDashbo
             <div className="flex flex-col gap-3">
               <Button 
                 size="lg"
-                className="bg-white text-blue-900 hover:bg-gray-100 gap-2"
+                className="bg-white text-blue-300 hover:bg-white/5 gap-2"
                 onClick={() => onNavigate?.('case')}
               >
                 <Plus className="w-5 h-5" />
@@ -246,65 +246,65 @@ export function EnterpriseLenderDashboard({ onNavigate }: EnterpriseLenderDashbo
 
       {/* Performance Metrics Grid */}
       <div className="grid grid-cols-4 gap-6">
-        <Card className="border-2 border-green-200 bg-gradient-to-br from-green-50 to-white">
+        <Card className="border-2 border-green-500/30 bg-gradient-to-br from-green-50 to-white">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-3">
-              <div className="p-2 bg-green-100 rounded-lg">
-                <DollarSign className="w-6 h-6 text-green-600" />
+              <div className="p-2 bg-green-500/15 rounded-lg">
+                <DollarSign className="w-6 h-6 text-green-400" />
               </div>
-              <div className="flex items-center gap-1 text-green-600">
+              <div className="flex items-center gap-1 text-green-400">
                 <ArrowUpRight className="w-4 h-4" />
                 <span className="text-sm font-semibold">12.4%</span>
               </div>
             </div>
-            <p className="text-sm text-gray-600 mb-1">Interest Earned</p>
-            <p className="text-2xl font-bold text-gray-900">A${(metrics.totalInterestEarned / 1000000).toFixed(2)}M</p>
-            <p className="text-xs text-gray-600 mt-2">This quarter</p>
+            <p className="text-sm text-slate-300 mb-1">Interest Earned</p>
+            <p className="text-2xl font-bold text-slate-100">A${(metrics.totalInterestEarned / 1000000).toFixed(2)}M</p>
+            <p className="text-xs text-slate-300 mt-2">This quarter</p>
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-white">
+        <Card className="border-2 border-blue-500/30 bg-gradient-to-br from-blue-50 to-white">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-3">
-              <div className="p-2 bg-blue-100 rounded-lg">
-                <BarChart3 className="w-6 h-6 text-blue-600" />
+              <div className="p-2 bg-blue-500/15 rounded-lg">
+                <BarChart3 className="w-6 h-6 text-blue-400" />
               </div>
-              <div className="flex items-center gap-1 text-green-600">
+              <div className="flex items-center gap-1 text-green-400">
                 <ArrowDownRight className="w-4 h-4" />
                 <span className="text-sm font-semibold">0.5%</span>
               </div>
             </div>
-            <p className="text-sm text-gray-600 mb-1">Default Rate</p>
-            <p className="text-2xl font-bold text-gray-900">{metrics.defaultRate}%</p>
-            <p className="text-xs text-gray-600 mt-2">Below industry avg</p>
+            <p className="text-sm text-slate-300 mb-1">Default Rate</p>
+            <p className="text-2xl font-bold text-slate-100">{metrics.defaultRate}%</p>
+            <p className="text-xs text-slate-300 mt-2">Below industry avg</p>
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-white">
+        <Card className="border-2 border-purple-500/30 bg-gradient-to-br from-purple-50 to-white">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-3">
-              <div className="p-2 bg-purple-100 rounded-lg">
-                <Gavel className="w-6 h-6 text-purple-600" />
+              <div className="p-2 bg-purple-500/15 rounded-lg">
+                <Gavel className="w-6 h-6 text-purple-400" />
               </div>
-              <span className="text-xs text-purple-600 font-semibold">ACTIVE</span>
+              <span className="text-xs text-purple-400 font-semibold">ACTIVE</span>
             </div>
-            <p className="text-sm text-gray-600 mb-1">Active Bids</p>
-            <p className="text-2xl font-bold text-gray-900">{myBids.length}</p>
-            <p className="text-xs text-gray-600 mt-2">{availableDeals.length} available deals</p>
+            <p className="text-sm text-slate-300 mb-1">Active Bids</p>
+            <p className="text-2xl font-bold text-slate-100">{myBids.length}</p>
+            <p className="text-xs text-slate-300 mt-2">{availableDeals.length} available deals</p>
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-amber-200 bg-gradient-to-br from-amber-50 to-white">
+        <Card className="border-2 border-amber-500/30 bg-gradient-to-br from-amber-50 to-white">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-3">
-              <div className="p-2 bg-amber-100 rounded-lg">
-                <Activity className="w-6 h-6 text-amber-600" />
+              <div className="p-2 bg-amber-500/15 rounded-lg">
+                <Activity className="w-6 h-6 text-amber-400" />
               </div>
-              <span className="text-xs text-amber-600 font-semibold">AVG</span>
+              <span className="text-xs text-amber-400 font-semibold">AVG</span>
             </div>
-            <p className="text-sm text-gray-600 mb-1">Portfolio LVR</p>
-            <p className="text-2xl font-bold text-gray-900">{metrics.avgLVR}%</p>
-            <p className="text-xs text-gray-600 mt-2">Conservative risk profile</p>
+            <p className="text-sm text-slate-300 mb-1">Portfolio LVR</p>
+            <p className="text-2xl font-bold text-slate-100">{metrics.avgLVR}%</p>
+            <p className="text-xs text-slate-300 mt-2">Conservative risk profile</p>
           </CardContent>
         </Card>
       </div>
@@ -314,7 +314,7 @@ export function EnterpriseLenderDashboard({ onNavigate }: EnterpriseLenderDashbo
         {/* My MIP Cases - Full Width Enterprise Table */}
         <div className="col-span-2 space-y-4">
           <Card>
-            <CardHeader className="border-b bg-gray-50">
+            <CardHeader className="border-b bg-white/5">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-primary/10 rounded-lg">
@@ -322,7 +322,7 @@ export function EnterpriseLenderDashboard({ onNavigate }: EnterpriseLenderDashbo
                   </div>
                   <div>
                     <CardTitle className="text-xl">My MIP Portfolio</CardTitle>
-                    <p className="text-sm text-gray-600 mt-1">Manage your mortgage in possession cases</p>
+                    <p className="text-sm text-slate-300 mt-1">Manage your mortgage in possession cases</p>
                   </div>
                 </div>
                 <div className="flex gap-2">
@@ -381,14 +381,14 @@ export function EnterpriseLenderDashboard({ onNavigate }: EnterpriseLenderDashbo
                 {recentActivities.map((activity) => {
                   const Icon = activity.icon;
                   return (
-                    <div key={activity.id} className="p-4 hover:bg-gray-50 transition-colors">
+                    <div key={activity.id} className="p-4 hover:bg-white/5 transition-colors">
                       <div className="flex gap-3">
-                        <div className={`p-2 rounded-full bg-gray-100 h-fit`}>
+                        <div className={`p-2 rounded-full bg-white/5 h-fit`}>
                           <Icon className={`w-4 h-4 ${activity.color}`} />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm text-gray-900 font-medium">{activity.message}</p>
-                          <p className="text-xs text-gray-600 mt-1">{activity.time}</p>
+                          <p className="text-sm text-slate-100 font-medium">{activity.message}</p>
+                          <p className="text-xs text-slate-300 mt-1">{activity.time}</p>
                         </div>
                       </div>
                     </div>

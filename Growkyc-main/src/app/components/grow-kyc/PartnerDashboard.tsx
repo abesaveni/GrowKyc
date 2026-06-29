@@ -395,7 +395,7 @@ export function PartnerDashboard({
                 </label>
                 <textarea
                   rows={4}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   value={approvalComment}
                   onChange={(e) => setApprovalComment(e.target.value)}
                   placeholder="Provide details of your approval decision..."
@@ -405,14 +405,14 @@ export function PartnerDashboard({
                 </p>
               </div>
 
-              <div className="bg-amber-50 border-2 border-amber-300 rounded-lg p-4">
+              <div className="bg-amber-500/10 border-2 border-amber-300 rounded-lg p-4">
                 <div className="flex items-start gap-3">
-                  <AlertTriangle className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
+                  <AlertTriangle className="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0" />
                   <div className="flex-1">
-                    <p className="text-sm font-semibold text-amber-900 mb-1">
+                    <p className="text-sm font-semibold text-amber-300 mb-1">
                       Dual Control Required
                     </p>
-                    <p className="text-sm text-amber-800">
+                    <p className="text-sm text-amber-300">
                       This action requires approval from 2 authorized users. Your approval will be the 1st of 2 required.
                     </p>
                   </div>

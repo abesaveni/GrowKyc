@@ -181,8 +181,8 @@ export function SettlementChecklistManager({ caseData }: SettlementChecklistMana
         <Card>
           <CardContent className="pt-6">
             <div className="text-center">
-              <div className="text-3xl font-bold text-gray-900">{completedTasks}/{totalTasks}</div>
-              <div className="text-sm text-gray-600 mt-1">Tasks Completed</div>
+              <div className="text-3xl font-bold text-slate-100">{completedTasks}/{totalTasks}</div>
+              <div className="text-sm text-slate-300 mt-1">Tasks Completed</div>
               <Progress value={progressPercentage} className="h-2 mt-3" />
             </div>
           </CardContent>
@@ -191,9 +191,9 @@ export function SettlementChecklistManager({ caseData }: SettlementChecklistMana
         <Card>
           <CardContent className="pt-6">
             <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600">{inProgressTasks}</div>
-              <div className="text-sm text-gray-600 mt-1">In Progress</div>
-              <Clock className="w-5 h-5 text-blue-600 mx-auto mt-2" />
+              <div className="text-3xl font-bold text-blue-400">{inProgressTasks}</div>
+              <div className="text-sm text-slate-300 mt-1">In Progress</div>
+              <Clock className="w-5 h-5 text-blue-400 mx-auto mt-2" />
             </div>
           </CardContent>
         </Card>
@@ -201,9 +201,9 @@ export function SettlementChecklistManager({ caseData }: SettlementChecklistMana
         <Card>
           <CardContent className="pt-6">
             <div className="text-center">
-              <div className="text-3xl font-bold text-red-600">{overdueTasks}</div>
-              <div className="text-sm text-gray-600 mt-1">Overdue</div>
-              <AlertTriangle className="w-5 h-5 text-red-600 mx-auto mt-2" />
+              <div className="text-3xl font-bold text-red-400">{overdueTasks}</div>
+              <div className="text-sm text-slate-300 mt-1">Overdue</div>
+              <AlertTriangle className="w-5 h-5 text-red-400 mx-auto mt-2" />
             </div>
           </CardContent>
         </Card>
@@ -211,9 +211,9 @@ export function SettlementChecklistManager({ caseData }: SettlementChecklistMana
         <Card>
           <CardContent className="pt-6">
             <div className="text-center">
-              <div className="text-3xl font-bold text-orange-600">{blockedTasks}</div>
-              <div className="text-sm text-gray-600 mt-1">Blocked</div>
-              <Pause className="w-5 h-5 text-orange-600 mx-auto mt-2" />
+              <div className="text-3xl font-bold text-orange-400">{blockedTasks}</div>
+              <div className="text-sm text-slate-300 mt-1">Blocked</div>
+              <Pause className="w-5 h-5 text-orange-400 mx-auto mt-2" />
             </div>
           </CardContent>
         </Card>
@@ -221,11 +221,11 @@ export function SettlementChecklistManager({ caseData }: SettlementChecklistMana
         <Card>
           <CardContent className="pt-6">
             <div className="text-center">
-              <div className="text-sm text-gray-600">Est. Completion</div>
-              <div className="text-lg font-bold text-gray-900 mt-1">
+              <div className="text-sm text-slate-300">Est. Completion</div>
+              <div className="text-lg font-bold text-slate-100 mt-1">
                 {format(estimatedCompletionDate, 'dd MMM yyyy')}
               </div>
-              <div className="text-xs text-gray-500 mt-1">
+              <div className="text-xs text-slate-400 mt-1">
                 {differenceInDays(estimatedCompletionDate, new Date())} days
               </div>
             </div>
@@ -234,16 +234,16 @@ export function SettlementChecklistManager({ caseData }: SettlementChecklistMana
       </div>
 
       {/* AI Action Bar */}
-      <Card className="bg-gradient-to-r from-purple-50 to-blue-50 border-purple-200">
+      <Card className="bg-gradient-to-r from-purple-50 to-blue-50 border-purple-500/30">
         <CardContent className="pt-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="p-3 bg-purple-100 rounded-full">
-                <Sparkles className="w-6 h-6 text-purple-600" />
+              <div className="p-3 bg-purple-500/15 rounded-full">
+                <Sparkles className="w-6 h-6 text-purple-400" />
               </div>
               <div>
-                <h3 className="font-bold text-gray-900">AI Settlement Assistant</h3>
-                <p className="text-sm text-gray-700">Automate task creation, assignments, and communications</p>
+                <h3 className="font-bold text-slate-100">AI Settlement Assistant</h3>
+                <p className="text-sm text-slate-300">Automate task creation, assignments, and communications</p>
               </div>
             </div>
             <div className="flex gap-2">
@@ -287,13 +287,13 @@ export function SettlementChecklistManager({ caseData }: SettlementChecklistMana
       {(criticalTasks.length > 0 || upcomingTasks.length > 0 || overdueTasks > 0) && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {overdueTasks > 0 && (
-            <Card className="border-red-200 bg-red-50">
+            <Card className="border-red-500/30 bg-red-500/10">
               <CardContent className="pt-6">
                 <div className="flex items-start gap-3">
-                  <AlertTriangle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+                  <AlertTriangle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-semibold text-red-900">Overdue Tasks</h4>
-                    <p className="text-sm text-red-700 mt-1">
+                    <h4 className="font-semibold text-red-300">Overdue Tasks</h4>
+                    <p className="text-sm text-red-300 mt-1">
                       {overdueTasks} task{overdueTasks > 1 ? 's' : ''} require immediate attention
                     </p>
                     <Button size="sm" variant="outline" className="mt-2" onClick={handleBulkCommunicate}>
@@ -306,13 +306,13 @@ export function SettlementChecklistManager({ caseData }: SettlementChecklistMana
           )}
 
           {criticalTasks.length > 0 && (
-            <Card className="border-orange-200 bg-orange-50">
+            <Card className="border-orange-500/30 bg-orange-500/10">
               <CardContent className="pt-6">
                 <div className="flex items-start gap-3">
-                  <AlertCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
+                  <AlertCircle className="w-5 h-5 text-orange-400 flex-shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-semibold text-orange-900">Critical Tasks</h4>
-                    <p className="text-sm text-orange-700 mt-1">
+                    <h4 className="font-semibold text-orange-300">Critical Tasks</h4>
+                    <p className="text-sm text-orange-300 mt-1">
                       {criticalTasks.length} critical task{criticalTasks.length > 1 ? 's' : ''} pending
                     </p>
                   </div>
@@ -322,13 +322,13 @@ export function SettlementChecklistManager({ caseData }: SettlementChecklistMana
           )}
 
           {upcomingTasks.length > 0 && (
-            <Card className="border-yellow-200 bg-yellow-50">
+            <Card className="border-yellow-500/30 bg-yellow-500/10">
               <CardContent className="pt-6">
                 <div className="flex items-start gap-3">
-                  <Clock className="w-5 h-5 text-yellow-600 flex-shrink-0 mt-0.5" />
+                  <Clock className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-semibold text-yellow-900">Due Soon</h4>
-                    <p className="text-sm text-yellow-700 mt-1">
+                    <h4 className="font-semibold text-yellow-300">Due Soon</h4>
+                    <p className="text-sm text-yellow-300 mt-1">
                       {upcomingTasks.length} task{upcomingTasks.length > 1 ? 's' : ''} due in 3 days
                     </p>
                   </div>
@@ -351,22 +351,22 @@ export function SettlementChecklistManager({ caseData }: SettlementChecklistMana
           return (
             <Card key={category.id}>
               <CardHeader 
-                className="cursor-pointer hover:bg-gray-50 transition-colors"
+                className="cursor-pointer hover:bg-white/5 transition-colors"
                 onClick={() => toggleCategory(category.id)}
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     {isExpanded ? (
-                      <ChevronDown className="w-5 h-5 text-gray-500" />
+                      <ChevronDown className="w-5 h-5 text-slate-400" />
                     ) : (
-                      <ChevronRight className="w-5 h-5 text-gray-500" />
+                      <ChevronRight className="w-5 h-5 text-slate-400" />
                     )}
                     <div className={`p-2 bg-${category.color}-100 rounded-lg`}>
                       <Icon className={`w-5 h-5 text-${category.color}-600`} />
                     </div>
                     <div>
                       <CardTitle className="text-lg">{category.name}</CardTitle>
-                      <p className="text-sm text-gray-600 mt-1">
+                      <p className="text-sm text-slate-300 mt-1">
                         {completedCount}/{categoryTasks.length} completed
                       </p>
                     </div>
@@ -441,18 +441,18 @@ function TaskItem({ task, onToggle, onUpdate }: { task: SettlementTask; onToggle
   const [newNote, setNewNote] = useState('');
 
   const statusColors = {
-    not_started: 'bg-gray-100 text-gray-700',
-    in_progress: 'bg-blue-100 text-blue-700',
-    completed: 'bg-green-100 text-green-700',
-    blocked: 'bg-orange-100 text-orange-700',
-    overdue: 'bg-red-100 text-red-700'
+    not_started: 'bg-white/5 text-slate-300',
+    in_progress: 'bg-blue-500/15 text-blue-300',
+    completed: 'bg-green-500/15 text-green-300',
+    blocked: 'bg-orange-500/15 text-orange-300',
+    overdue: 'bg-red-500/15 text-red-300'
   };
 
   const priorityColors = {
-    low: 'bg-gray-100 text-gray-700',
-    medium: 'bg-yellow-100 text-yellow-700',
-    high: 'bg-orange-100 text-orange-700',
-    critical: 'bg-red-100 text-red-700'
+    low: 'bg-white/5 text-slate-300',
+    medium: 'bg-yellow-500/15 text-yellow-300',
+    high: 'bg-orange-500/15 text-orange-300',
+    critical: 'bg-red-500/15 text-red-300'
   };
 
   const daysUntilDue = differenceInDays(new Date(task.dueDate), new Date());
@@ -476,7 +476,7 @@ function TaskItem({ task, onToggle, onUpdate }: { task: SettlementTask; onToggle
   };
 
   return (
-    <div className={`border rounded-lg p-4 ${isOverdue ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-white'}`}>
+    <div className={`border rounded-lg p-4 ${isOverdue ? 'border-red-300 bg-red-500/10' : 'border-white/10 bg-white'}`}>
       <div className="flex items-start gap-3">
         <Checkbox
           checked={task.status === 'completed'}
@@ -488,17 +488,17 @@ function TaskItem({ task, onToggle, onUpdate }: { task: SettlementTask; onToggle
           <div className="flex items-start justify-between">
             <div className="flex-1">
               <div className="flex items-center gap-2">
-                <h4 className={`font-semibold ${task.status === 'completed' ? 'line-through text-gray-500' : 'text-gray-900'}`}>
+                <h4 className={`font-semibold ${task.status === 'completed' ? 'line-through text-slate-400' : 'text-slate-100'}`}>
                   {task.title}
                 </h4>
                 {task.aiGenerated && (
-                  <Badge variant="outline" className="text-purple-600 border-purple-300">
+                  <Badge variant="outline" className="text-purple-400 border-purple-300">
                     <Sparkles className="w-3 h-3 mr-1" />
                     AI
                   </Badge>
                 )}
               </div>
-              <p className="text-sm text-gray-600 mt-1">{task.description}</p>
+              <p className="text-sm text-slate-300 mt-1">{task.description}</p>
               
               <div className="flex items-center gap-3 mt-3">
                 <Badge className={statusColors[task.status]}>
@@ -507,11 +507,11 @@ function TaskItem({ task, onToggle, onUpdate }: { task: SettlementTask; onToggle
                 <Badge className={priorityColors[task.priority]}>
                   {task.priority.toUpperCase()}
                 </Badge>
-                <div className="flex items-center gap-1 text-sm text-gray-600">
+                <div className="flex items-center gap-1 text-sm text-slate-300">
                   <Users className="w-4 h-4" />
                   {task.assignedTo}
                 </div>
-                <div className={`flex items-center gap-1 text-sm ${isOverdue ? 'text-red-600 font-semibold' : 'text-gray-600'}`}>
+                <div className={`flex items-center gap-1 text-sm ${isOverdue ? 'text-red-400 font-semibold' : 'text-slate-300'}`}>
                   <Calendar className="w-4 h-4" />
                   {isOverdue ? 'OVERDUE: ' : ''}{format(task.dueDate, 'dd MMM yyyy')}
                   {!isOverdue && daysUntilDue <= 3 && ` (${daysUntilDue} days)`}
@@ -540,17 +540,17 @@ function TaskItem({ task, onToggle, onUpdate }: { task: SettlementTask; onToggle
           {showDetails && (
             <div className="mt-4 space-y-4 border-t pt-4">
               <div>
-                <p className="text-sm font-semibold text-gray-700 mb-1">Assigned To:</p>
+                <p className="text-sm font-semibold text-slate-300 mb-1">Assigned To:</p>
                 <div className="flex items-center gap-2 text-sm">
-                  <Mail className="w-4 h-4 text-gray-500" />
+                  <Mail className="w-4 h-4 text-slate-400" />
                   <span>{task.assignedToEmail}</span>
                 </div>
               </div>
 
               {task.dependencies.length > 0 && (
                 <div>
-                  <p className="text-sm font-semibold text-gray-700 mb-1">Dependencies:</p>
-                  <ul className="text-sm text-gray-600 list-disc list-inside">
+                  <p className="text-sm font-semibold text-slate-300 mb-1">Dependencies:</p>
+                  <ul className="text-sm text-slate-300 list-disc list-inside">
                     {task.dependencies.map((dep, idx) => (
                       <li key={idx}>{dep}</li>
                     ))}
@@ -560,10 +560,10 @@ function TaskItem({ task, onToggle, onUpdate }: { task: SettlementTask; onToggle
 
               {task.notes.length > 0 && (
                 <div>
-                  <p className="text-sm font-semibold text-gray-700 mb-1">Notes:</p>
+                  <p className="text-sm font-semibold text-slate-300 mb-1">Notes:</p>
                   <div className="space-y-2">
                     {task.notes.map((note, idx) => (
-                      <p key={idx} className="text-sm text-gray-600 bg-gray-50 p-2 rounded">
+                      <p key={idx} className="text-sm text-slate-300 bg-white/5 p-2 rounded">
                         {note}
                       </p>
                     ))}
@@ -664,9 +664,9 @@ function BulkCommunicationPanel({ tasks, caseData, onClose }: { tasks: Settlemen
         </CardHeader>
         <CardContent className="space-y-6">
           {/* AI Quick Actions */}
-          <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
+          <div className="bg-purple-500/10 border border-purple-500/30 rounded-lg p-4">
             <h4 className="font-semibold mb-3 flex items-center gap-2">
-              <Sparkles className="w-5 h-5 text-purple-600" />
+              <Sparkles className="w-5 h-5 text-purple-400" />
               AI Message Templates
             </h4>
             <div className="flex gap-2">
@@ -687,7 +687,7 @@ function BulkCommunicationPanel({ tasks, caseData, onClose }: { tasks: Settlemen
             <Label className="mb-3 block">Select Recipients</Label>
             <div className="grid grid-cols-2 gap-3">
               {recipients.map(recipient => (
-                <label key={recipient.email} className="flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                <label key={recipient.email} className="flex items-center gap-2 p-3 border rounded-lg cursor-pointer hover:bg-white/5">
                   <Checkbox
                     checked={selectedRecipients.includes(recipient.name)}
                     onCheckedChange={(checked) => {
@@ -700,7 +700,7 @@ function BulkCommunicationPanel({ tasks, caseData, onClose }: { tasks: Settlemen
                   />
                   <div className="flex-1">
                     <div className="font-medium text-sm">{recipient.name}</div>
-                    <div className="text-xs text-gray-600">{recipient.email}</div>
+                    <div className="text-xs text-slate-300">{recipient.email}</div>
                   </div>
                 </label>
               ))}
@@ -779,8 +779,8 @@ function AIAssistantPanel({ tasks, caseData, onClose, onTasksUpdate }: {
         <CardHeader>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-purple-100 rounded-lg">
-                <Bot className="w-6 h-6 text-purple-600" />
+              <div className="p-2 bg-purple-500/15 rounded-lg">
+                <Bot className="w-6 h-6 text-purple-400" />
               </div>
               <CardTitle>AI Settlement Assistant</CardTitle>
             </div>
@@ -788,8 +788,8 @@ function AIAssistantPanel({ tasks, caseData, onClose, onTasksUpdate }: {
           </div>
         </CardHeader>
         <CardContent className="space-y-6">
-          <div className="bg-gradient-to-r from-purple-50 to-blue-50 border border-purple-200 rounded-lg p-4">
-            <p className="text-sm text-gray-700">
+          <div className="bg-gradient-to-r from-purple-50 to-blue-50 border border-purple-500/30 rounded-lg p-4">
+            <p className="text-sm text-slate-300">
               AI-powered analysis of your settlement progress, identifying bottlenecks, suggesting optimizations, and automating communications.
             </p>
           </div>
@@ -817,7 +817,7 @@ function AIAssistantPanel({ tasks, caseData, onClose, onTasksUpdate }: {
               <h4 className="font-semibold">AI Recommendations</h4>
               {aiSuggestions.map((suggestion, idx) => (
                 <div key={idx} className="border rounded-lg p-4 bg-white">
-                  <p className="text-sm text-gray-900 mb-3">{suggestion}</p>
+                  <p className="text-sm text-slate-100 mb-3">{suggestion}</p>
                   <div className="flex gap-2">
                     <Button size="sm" onClick={() => handleApplySuggestion(suggestion)}>
                       Apply
@@ -1036,14 +1036,14 @@ function AddTaskModal({ caseData, onClose, onTaskAdd }: {
             <Label>Documents</Label>
             <div className="space-y-2">
               {documents.map(doc => (
-                <div key={doc.id} className="border rounded-lg p-3 bg-gray-50">
+                <div key={doc.id} className="border rounded-lg p-3 bg-white/5">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <FileText className="w-4 h-4 text-gray-600" />
-                      <span className="text-sm text-gray-700">{doc.name}</span>
+                      <FileText className="w-4 h-4 text-slate-300" />
+                      <span className="text-sm text-slate-300">{doc.name}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Badge variant="outline" className="text-gray-600 border-gray-300">
+                      <Badge variant="outline" className="text-slate-300 border-white/10">
                         {doc.status.toUpperCase()}
                       </Badge>
                       <Button size="sm" variant="outline" onClick={() => setDocuments(documents.filter(d => d.id !== doc.id))}>

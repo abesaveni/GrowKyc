@@ -216,7 +216,7 @@ export function GovernanceModule({ onBack }: GovernanceModuleProps) {
                 Back
               </Button>
               <div className="h-6 w-px bg-gray-300" />
-              <Shield className="w-6 h-6 text-blue-600" />
+              <Shield className="w-6 h-6 text-blue-400" />
               <div>
                 <h1 className="text-2xl font-bold text-white">Governance</h1>
                 <p className="text-sm text-slate-300">AML Program Control & Board Oversight</p>
@@ -237,10 +237,10 @@ export function GovernanceModule({ onBack }: GovernanceModuleProps) {
 
           {/* AML Program Control Panel */}
           <TabsContent value="program" className="space-y-6">
-            <Card className="border-2 border-blue-300 bg-blue-50">
+            <Card className="border-2 border-blue-300 bg-blue-500/10">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Shield className="w-5 h-5 text-blue-600" />
+                  <Shield className="w-5 h-5 text-blue-400" />
                   AML/CTF Program Control Panel
                 </CardTitle>
                 <CardDescription>
@@ -285,7 +285,7 @@ export function GovernanceModule({ onBack }: GovernanceModuleProps) {
                           year: 'numeric'
                         })}
                       </div>
-                      <div className="text-xs text-green-600 flex items-center gap-1">
+                      <div className="text-xs text-green-400 flex items-center gap-1">
                         <CheckCircle className="w-3 h-3" />
                         {amlProgram.daysUntilReview} days remaining
                       </div>
@@ -361,14 +361,14 @@ export function GovernanceModule({ onBack }: GovernanceModuleProps) {
                 <Card 
                   key={policy.id}
                   className={`cursor-pointer hover:shadow-lg transition-shadow ${
-                    policy.status === 'review_due' ? 'border-amber-300 bg-amber-50' : ''
+                    policy.status === 'review_due' ? 'border-amber-300 bg-amber-500/10' : ''
                   }`}
                   onClick={() => setSelectedPolicy(policy.id)}
                 >
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between">
                       <div className="flex items-start gap-4 flex-1">
-                        <FileText className="w-8 h-8 text-blue-600 flex-shrink-0" />
+                        <FileText className="w-8 h-8 text-blue-400 flex-shrink-0" />
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-2">
                             <h3 className="font-semibold text-lg text-white">
@@ -400,7 +400,7 @@ export function GovernanceModule({ onBack }: GovernanceModuleProps) {
                             </div>
                             <div>
                               <div className="text-slate-300">Linked Training</div>
-                              <div className="font-medium text-blue-600">{policy.linkedTraining}</div>
+                              <div className="font-medium text-blue-400">{policy.linkedTraining}</div>
                             </div>
                           </div>
                           <div className="mt-3 flex items-center gap-2 text-xs text-slate-300">
@@ -528,9 +528,9 @@ export function GovernanceModule({ onBack }: GovernanceModuleProps) {
                     <Card 
                       key={item.id}
                       className={`${
-                        item.daysRemaining < 90 ? 'border-amber-300 bg-amber-50' :
-                        item.daysRemaining < 180 ? 'border-blue-300 bg-blue-50' :
-                        'border-green-300 bg-green-50'
+                        item.daysRemaining < 90 ? 'border-amber-300 bg-amber-500/10' :
+                        item.daysRemaining < 180 ? 'border-blue-300 bg-blue-500/10' :
+                        'border-green-300 bg-green-500/10'
                       }`}
                     >
                       <CardContent className="p-6">
@@ -564,9 +564,9 @@ export function GovernanceModule({ onBack }: GovernanceModuleProps) {
                               <div>
                                 <div className="text-slate-300">Days Remaining</div>
                                 <div className={`font-bold text-lg ${
-                                  item.daysRemaining < 90 ? 'text-amber-600' :
-                                  item.daysRemaining < 180 ? 'text-blue-600' :
-                                  'text-green-600'
+                                  item.daysRemaining < 90 ? 'text-amber-400' :
+                                  item.daysRemaining < 180 ? 'text-blue-400' :
+                                  'text-green-400'
                                 }`}>
                                   {item.daysRemaining}
                                 </div>

@@ -217,9 +217,9 @@ export function BinderGenerator({ onNavigate }: BinderGeneratorProps) {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'complete':
-        return <CheckCircle className="w-4 h-4 text-green-600" />;
+        return <CheckCircle className="w-4 h-4 text-green-400" />;
       case 'in-progress':
-        return <Clock className="w-4 h-4 text-amber-600" />;
+        return <Clock className="w-4 h-4 text-amber-400" />;
       case 'not-started':
         return <Circle className="w-4 h-4 text-gray-400" />;
       default:
@@ -230,11 +230,11 @@ export function BinderGenerator({ onNavigate }: BinderGeneratorProps) {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'complete':
-        return <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded">COMPLETE</span>;
+        return <span className="px-2 py-0.5 bg-green-500/15 text-green-300 text-xs font-semibold rounded">COMPLETE</span>;
       case 'in-progress':
-        return <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-xs font-semibold rounded">IN PROGRESS</span>;
+        return <span className="px-2 py-0.5 bg-amber-500/15 text-amber-300 text-xs font-semibold rounded">IN PROGRESS</span>;
       case 'not-started':
-        return <span className="px-2 py-0.5 bg-gray-100 text-gray-700 text-xs font-semibold rounded">NOT STARTED</span>;
+        return <span className="px-2 py-0.5 bg-white/5 text-slate-300 text-xs font-semibold rounded">NOT STARTED</span>;
       default:
         return null;
     }
@@ -243,11 +243,11 @@ export function BinderGenerator({ onNavigate }: BinderGeneratorProps) {
   const getRiskBadge = (risk: string) => {
     switch (risk) {
       case 'high':
-        return <span className="px-2 py-0.5 bg-red-100 text-red-700 text-xs font-semibold rounded">HIGH RISK</span>;
+        return <span className="px-2 py-0.5 bg-red-500/15 text-red-300 text-xs font-semibold rounded">HIGH RISK</span>;
       case 'medium':
-        return <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-xs font-semibold rounded">MEDIUM RISK</span>;
+        return <span className="px-2 py-0.5 bg-amber-500/15 text-amber-300 text-xs font-semibold rounded">MEDIUM RISK</span>;
       case 'low':
-        return <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded">LOW RISK</span>;
+        return <span className="px-2 py-0.5 bg-green-500/15 text-green-300 text-xs font-semibold rounded">LOW RISK</span>;
       default:
         return null;
     }
@@ -267,11 +267,11 @@ export function BinderGenerator({ onNavigate }: BinderGeneratorProps) {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
-              <FolderOpen className="w-8 h-8 text-green-600" />
+            <h1 className="text-3xl font-bold text-slate-100 flex items-center gap-3">
+              <FolderOpen className="w-8 h-8 text-green-400" />
               Smart Workpaper Binder
             </h1>
-            <p className="text-sm text-gray-600 mt-1">Dynamic generation • Entity-driven • Risk-based content • Auto-populated</p>
+            <p className="text-sm text-slate-300 mt-1">Dynamic generation • Entity-driven • Risk-based content • Auto-populated</p>
           </div>
           <div className="flex items-center gap-2">
             <Button variant="outline" size="sm">
@@ -290,9 +290,9 @@ export function BinderGenerator({ onNavigate }: BinderGeneratorProps) {
         </div>
 
         {/* Job Selector */}
-        <div className="border border-gray-300 rounded bg-white">
-          <div className="bg-gray-50 border-b border-gray-300 px-4 py-2">
-            <h3 className="font-semibold text-gray-900">Active Jobs</h3>
+        <div className="border border-white/10 rounded bg-white">
+          <div className="bg-white/5 border-b border-white/10 px-4 py-2">
+            <h3 className="font-semibold text-slate-100">Active Jobs</h3>
           </div>
           <div className="p-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -302,31 +302,31 @@ export function BinderGenerator({ onNavigate }: BinderGeneratorProps) {
                   onClick={() => setSelectedJob(job.id)}
                   className={`text-left p-3 rounded border-2 transition-all ${
                     selectedJob === job.id
-                      ? 'border-green-600 bg-green-50'
-                      : 'border-gray-300 bg-white hover:border-green-400'
+                      ? 'border-green-600 bg-green-500/10'
+                      : 'border-white/10 bg-white hover:border-green-400'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-semibold text-gray-900">{job.clientName}</span>
-                    {selectedJob === job.id && <CheckCircle className="w-4 h-4 text-green-600" />}
+                    <span className="text-sm font-semibold text-slate-100">{job.clientName}</span>
+                    {selectedJob === job.id && <CheckCircle className="w-4 h-4 text-green-400" />}
                   </div>
                   <div className="space-y-1 text-xs">
                     <div className="flex items-center gap-2">
-                      <Building className="w-3 h-3 text-gray-500" />
-                      <span className="text-gray-700">{job.entityType} • {job.year}</span>
+                      <Building className="w-3 h-3 text-slate-400" />
+                      <span className="text-slate-300">{job.entityType} • {job.year}</span>
                     </div>
                     <div className="flex items-center justify-between">
                       {getRiskBadge(job.risk)}
                       {getStatusBadge(job.binderStatus)}
                     </div>
                     <div className="mt-2">
-                      <div className="w-full bg-gray-200 rounded-full h-1.5">
+                      <div className="w-full bg-white/10 rounded-full h-1.5">
                         <div
                           className="bg-green-600 h-1.5 rounded-full"
                           style={{ width: `${job.completionPercent}%` }}
                         ></div>
                       </div>
-                      <div className="text-xs text-gray-600 mt-1">{job.completionPercent}% complete</div>
+                      <div className="text-xs text-slate-300 mt-1">{job.completionPercent}% complete</div>
                     </div>
                   </div>
                 </button>
@@ -337,38 +337,38 @@ export function BinderGenerator({ onNavigate }: BinderGeneratorProps) {
 
         {/* Stats Grid */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-          <div className="bg-white border border-gray-300 rounded p-3">
-            <div className="text-xs text-gray-600 mb-1">Total Sections</div>
-            <div className="text-2xl font-bold text-gray-900 font-mono">{stats.totalSections}</div>
+          <div className="bg-white border border-white/10 rounded p-3">
+            <div className="text-xs text-slate-300 mb-1">Total Sections</div>
+            <div className="text-2xl font-bold text-slate-100 font-mono">{stats.totalSections}</div>
           </div>
-          <div className="bg-white border border-gray-300 rounded p-3">
-            <div className="text-xs text-gray-600 mb-1">Complete</div>
-            <div className="text-2xl font-bold text-green-600 font-mono">{stats.completeSections}</div>
+          <div className="bg-white border border-white/10 rounded p-3">
+            <div className="text-xs text-slate-300 mb-1">Complete</div>
+            <div className="text-2xl font-bold text-green-400 font-mono">{stats.completeSections}</div>
           </div>
-          <div className="bg-white border border-gray-300 rounded p-3">
-            <div className="text-xs text-gray-600 mb-1">Workpapers</div>
-            <div className="text-2xl font-bold text-gray-900 font-mono">{stats.totalWorkpapers}</div>
+          <div className="bg-white border border-white/10 rounded p-3">
+            <div className="text-xs text-slate-300 mb-1">Workpapers</div>
+            <div className="text-2xl font-bold text-slate-100 font-mono">{stats.totalWorkpapers}</div>
           </div>
-          <div className="bg-white border border-gray-300 rounded p-3">
-            <div className="text-xs text-gray-600 mb-1">Auto-Generated</div>
-            <div className="text-2xl font-bold text-blue-600 font-mono">{stats.autoGenerated}</div>
-            <div className="text-xs text-green-600 font-semibold">89%</div>
+          <div className="bg-white border border-white/10 rounded p-3">
+            <div className="text-xs text-slate-300 mb-1">Auto-Generated</div>
+            <div className="text-2xl font-bold text-blue-400 font-mono">{stats.autoGenerated}</div>
+            <div className="text-xs text-green-400 font-semibold">89%</div>
           </div>
-          <div className="bg-white border border-gray-300 rounded p-3">
-            <div className="text-xs text-gray-600 mb-1">Overall Progress</div>
-            <div className="text-2xl font-bold text-green-600 font-mono">{stats.overallCompletion}%</div>
+          <div className="bg-white border border-white/10 rounded p-3">
+            <div className="text-xs text-slate-300 mb-1">Overall Progress</div>
+            <div className="text-2xl font-bold text-green-400 font-mono">{stats.overallCompletion}%</div>
           </div>
         </div>
 
         {/* Current Job Info */}
         {currentJob && (
-          <div className="bg-blue-50 border border-blue-300 rounded px-4 py-3">
+          <div className="bg-blue-500/10 border border-blue-300 rounded px-4 py-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <Building className="w-5 h-5 text-blue-600" />
+                <Building className="w-5 h-5 text-blue-400" />
                 <div>
-                  <h3 className="font-semibold text-blue-900">{currentJob.clientName}</h3>
-                  <p className="text-sm text-blue-800">
+                  <h3 className="font-semibold text-blue-300">{currentJob.clientName}</h3>
+                  <p className="text-sm text-blue-300">
                     {currentJob.entityType} • {currentJob.year} • {stats.totalWorkpapers} workpapers • {stats.completeSections}/{stats.totalSections} sections complete
                   </p>
                 </div>
@@ -382,46 +382,46 @@ export function BinderGenerator({ onNavigate }: BinderGeneratorProps) {
         )}
 
         {/* Binder Structure Table */}
-        <div className="border border-gray-300 rounded bg-white overflow-hidden">
-          <div className="bg-gray-50 border-b border-gray-300 px-4 py-2">
-            <h3 className="font-semibold text-gray-900">Dynamic Binder Structure</h3>
+        <div className="border border-white/10 rounded bg-white overflow-hidden">
+          <div className="bg-white/5 border-b border-white/10 px-4 py-2">
+            <h3 className="font-semibold text-slate-100">Dynamic Binder Structure</h3>
           </div>
           <table className="w-full text-sm border-collapse">
             <thead>
-              <tr className="bg-gray-100">
-                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700 w-12"></th>
-                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Section Name</th>
-                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700 w-32">Type</th>
-                <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-32">Status</th>
-                <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-32">Progress</th>
-                <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-24">Workpapers</th>
-                <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-32">Generation</th>
-                <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-32">Actions</th>
+              <tr className="bg-white/5">
+                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300 w-12"></th>
+                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Section Name</th>
+                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300 w-32">Type</th>
+                <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-32">Status</th>
+                <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-32">Progress</th>
+                <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-24">Workpapers</th>
+                <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-32">Generation</th>
+                <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-32">Actions</th>
               </tr>
             </thead>
             <tbody>
               {binderSections.map((section) => (
-                <tr key={section.id} className="hover:bg-blue-50">
-                  <td className="border border-gray-300 px-2 py-2 text-center">
+                <tr key={section.id} className="hover:bg-blue-500/10">
+                  <td className="border border-white/10 px-2 py-2 text-center">
                     {getStatusIcon(section.status)}
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-gray-900 font-medium">
+                  <td className="border border-white/10 px-3 py-2 text-slate-100 font-medium">
                     <div className="flex items-center gap-2">
-                      <Folder className="w-4 h-4 text-blue-600" />
+                      <Folder className="w-4 h-4 text-blue-400" />
                       {section.name}
                     </div>
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-gray-700">
-                    <span className="px-2 py-0.5 bg-gray-100 text-gray-700 text-xs font-semibold rounded">
+                  <td className="border border-white/10 px-3 py-2 text-slate-300">
+                    <span className="px-2 py-0.5 bg-white/5 text-slate-300 text-xs font-semibold rounded">
                       {section.type}
                     </span>
                   </td>
-                  <td className="border border-gray-300 px-2 py-2 text-center">
+                  <td className="border border-white/10 px-2 py-2 text-center">
                     {getStatusBadge(section.status)}
                   </td>
-                  <td className="border border-gray-300 px-3 py-2">
+                  <td className="border border-white/10 px-3 py-2">
                     <div className="flex items-center gap-2">
-                      <div className="flex-1 bg-gray-200 rounded-full h-2">
+                      <div className="flex-1 bg-white/10 rounded-full h-2">
                         <div
                           className={`h-2 rounded-full ${
                             section.status === 'complete'
@@ -433,27 +433,27 @@ export function BinderGenerator({ onNavigate }: BinderGeneratorProps) {
                           style={{ width: `${section.completionPercent}%` }}
                         ></div>
                       </div>
-                      <span className="text-xs font-mono font-semibold text-gray-700 w-10">
+                      <span className="text-xs font-mono font-semibold text-slate-300 w-10">
                         {section.completionPercent}%
                       </span>
                     </div>
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-center font-mono font-semibold text-gray-900">
+                  <td className="border border-white/10 px-3 py-2 text-center font-mono font-semibold text-slate-100">
                     {section.workpapers}
                   </td>
-                  <td className="border border-gray-300 px-2 py-2 text-center">
+                  <td className="border border-white/10 px-2 py-2 text-center">
                     {section.autoGenerated ? (
-                      <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded flex items-center gap-1 justify-center">
+                      <span className="px-2 py-0.5 bg-green-500/15 text-green-300 text-xs font-semibold rounded flex items-center gap-1 justify-center">
                         <Zap className="w-3 h-3" />
                         AUTO
                       </span>
                     ) : (
-                      <span className="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-semibold rounded">
+                      <span className="px-2 py-0.5 bg-blue-500/15 text-blue-300 text-xs font-semibold rounded">
                         MANUAL
                       </span>
                     )}
                   </td>
-                  <td className="border border-gray-300 px-2 py-2 text-center">
+                  <td className="border border-white/10 px-2 py-2 text-center">
                     <div className="flex items-center gap-1 justify-center">
                       <button 
                         onClick={() => {
@@ -472,7 +472,7 @@ export function BinderGenerator({ onNavigate }: BinderGeneratorProps) {
                             onNavigate?.('workpaper-detail');
                           }
                         }}
-                        className="px-2 py-1 text-xs bg-blue-100 text-blue-700 hover:bg-blue-200 rounded font-semibold"
+                        className="px-2 py-1 text-xs bg-blue-500/15 text-blue-300 hover:bg-blue-500/20 rounded font-semibold"
                       >
                         Open
                       </button>
@@ -483,7 +483,7 @@ export function BinderGenerator({ onNavigate }: BinderGeneratorProps) {
                               description: 'Auto-generating workpaper from trial balance data'
                             });
                           }}
-                          className="px-2 py-1 text-xs bg-green-100 text-green-700 hover:bg-green-200 rounded font-semibold"
+                          className="px-2 py-1 text-xs bg-green-500/15 text-green-300 hover:bg-green-500/20 rounded font-semibold"
                         >
                           Generate
                         </button>
@@ -497,26 +497,26 @@ export function BinderGenerator({ onNavigate }: BinderGeneratorProps) {
         </div>
 
         {/* Auto-Generation Info */}
-        <div className="bg-green-50 border border-green-300 rounded px-4 py-3">
+        <div className="bg-green-500/10 border border-green-300 rounded px-4 py-3">
           <div className="flex items-start gap-3">
-            <Zap className="w-5 h-5 text-green-600 mt-0.5" />
+            <Zap className="w-5 h-5 text-green-400 mt-0.5" />
             <div className="flex-1">
-              <h3 className="font-semibold text-green-900 mb-2">Dynamic Binder Generation</h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm text-green-800">
+              <h3 className="font-semibold text-green-300 mb-2">Dynamic Binder Generation</h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm text-green-300">
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <CheckCircle className="w-4 h-4 text-green-400" />
                   <span>Entity type driven</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <CheckCircle className="w-4 h-4 text-green-400" />
                   <span>Ledger activity based</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <CheckCircle className="w-4 h-4 text-green-400" />
                   <span>Risk profile adapted</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <CheckCircle className="w-4 h-4 text-green-400" />
                   <span>Prior year rollforward</span>
                 </div>
               </div>

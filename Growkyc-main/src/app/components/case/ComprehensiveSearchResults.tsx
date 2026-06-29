@@ -164,34 +164,34 @@ export function ComprehensiveSearchResults({
       {/* Header */}
       <div className="flex items-center gap-3 mb-6">
         <div className="p-3 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg border-2 border-blue-300">
-          <Shield className="w-6 h-6 text-blue-600" />
+          <Shield className="w-6 h-6 text-blue-400" />
         </div>
         <div className="flex-1">
           <h2 className="text-xl font-semibold">Comprehensive Verification Results Dashboard</h2>
-          <p className="text-gray-600 text-sm">All automated checks complete - Review results for all parties</p>
+          <p className="text-slate-300 text-sm">All automated checks complete - Review results for all parties</p>
         </div>
         {automatedChecksComplete && (
-          <div className="flex items-center gap-2 px-4 py-2 bg-green-50 border-2 border-green-300 rounded-lg">
-            <CheckCircle className="w-5 h-5 text-green-600" />
-            <span className="text-sm font-bold text-green-800">All Checks Complete</span>
+          <div className="flex items-center gap-2 px-4 py-2 bg-green-500/10 border-2 border-green-300 rounded-lg">
+            <CheckCircle className="w-5 h-5 text-green-400" />
+            <span className="text-sm font-bold text-green-300">All Checks Complete</span>
           </div>
         )}
       </div>
 
       {searchLoading && (
-        <div className="p-3 bg-blue-50 border border-blue-200 rounded text-sm text-blue-800">
+        <div className="p-3 bg-blue-500/10 border border-blue-500/30 rounded text-sm text-blue-300">
           Loading latest case search results...
         </div>
       )}
 
       {!searchLoading && caseSearchQuery && !searchError && caseSearchResults.length === 0 && (
-        <div className="p-3 bg-gray-50 border border-gray-200 rounded text-sm text-gray-700">
+        <div className="p-3 bg-white/5 border border-white/10 rounded text-sm text-slate-300">
           No existing case records matched this search. Showing current verification data.
         </div>
       )}
 
       {searchError && (
-        <div className="p-3 bg-amber-50 border border-amber-200 rounded text-sm text-amber-800">
+        <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded text-sm text-amber-300">
           {searchError}
         </div>
       )}
@@ -212,29 +212,29 @@ export function ComprehensiveSearchResults({
       <Card className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-300">
         <CardContent className="p-6">
           <div className="flex items-start gap-4">
-            <CheckCircle className="w-8 h-8 text-green-600 flex-shrink-0" />
+            <CheckCircle className="w-8 h-8 text-green-400 flex-shrink-0" />
             <div className="flex-1">
-              <h3 className="text-lg font-bold text-green-900 mb-2">✅ All Verifications Passed</h3>
-              <p className="text-sm text-green-800 mb-3">
+              <h3 className="text-lg font-bold text-green-300 mb-2">✅ All Verifications Passed</h3>
+              <p className="text-sm text-green-300 mb-3">
                 All third-party verification checks have been completed successfully for all parties. 
                 No adverse findings or red flags identified.
               </p>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
-                <div className="flex items-center gap-2 bg-white p-2 rounded border border-green-200">
-                  <Home className="w-4 h-4 text-green-600" />
-                  <span className="text-green-900 font-semibold">Property ✓</span>
+                <div className="flex items-center gap-2 bg-white p-2 rounded border border-green-500/30">
+                  <Home className="w-4 h-4 text-green-400" />
+                  <span className="text-green-300 font-semibold">Property ✓</span>
                 </div>
-                <div className="flex items-center gap-2 bg-white p-2 rounded border border-green-200">
-                  <FileText className="w-4 h-4 text-green-600" />
-                  <span className="text-green-900 font-semibold">Title ✓</span>
+                <div className="flex items-center gap-2 bg-white p-2 rounded border border-green-500/30">
+                  <FileText className="w-4 h-4 text-green-400" />
+                  <span className="text-green-300 font-semibold">Title ✓</span>
                 </div>
-                <div className="flex items-center gap-2 bg-white p-2 rounded border border-green-200">
-                  <User className="w-4 h-4 text-green-600" />
-                  <span className="text-green-900 font-semibold">Identity ✓</span>
+                <div className="flex items-center gap-2 bg-white p-2 rounded border border-green-500/30">
+                  <User className="w-4 h-4 text-green-400" />
+                  <span className="text-green-300 font-semibold">Identity ✓</span>
                 </div>
-                <div className="flex items-center gap-2 bg-white p-2 rounded border border-green-200">
-                  <Shield className="w-4 h-4 text-green-600" />
-                  <span className="text-green-900 font-semibold">AML/CTF ✓</span>
+                <div className="flex items-center gap-2 bg-white p-2 rounded border border-green-500/30">
+                  <Shield className="w-4 h-4 text-green-400" />
+                  <span className="text-green-300 font-semibold">AML/CTF ✓</span>
                 </div>
               </div>
             </div>
@@ -245,19 +245,19 @@ export function ComprehensiveSearchResults({
       {/* 1. PROPERTY VALUATION - RP DATA AVM */}
       <Card className="border-2 border-blue-300">
         <CardHeader 
-          className="cursor-pointer bg-blue-50 hover:bg-blue-100 transition-colors"
+          className="cursor-pointer bg-blue-500/10 hover:bg-blue-500/15 transition-colors"
           onClick={() => toggleSection('propertyValuation')}
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Home className="w-5 h-5 text-blue-600" />
+              <Home className="w-5 h-5 text-blue-400" />
               <div>
                 <CardTitle className="text-lg">1. Property Valuation (RP Data AVM)</CardTitle>
-                <p className="text-xs text-gray-600 mt-1">CoreLogic RP Data Automated Valuation Model</p>
+                <p className="text-xs text-slate-300 mt-1">CoreLogic RP Data Automated Valuation Model</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <span className="px-3 py-1 bg-green-100 text-green-800 text-xs font-bold rounded-full">
+              <span className="px-3 py-1 bg-green-500/15 text-green-300 text-xs font-bold rounded-full">
                 HIGH CONFIDENCE
               </span>
               {expandedSections.propertyValuation ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
@@ -268,37 +268,37 @@ export function ComprehensiveSearchResults({
           <CardContent className="p-6 space-y-4">
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <p className="text-xs text-gray-600 mb-1">Property Address</p>
-                <p className="font-semibold text-gray-900">{formData.propertyAddress || '123 Main Street'}</p>
-                <p className="text-sm text-gray-600">{formData.propertySuburb || 'Bondi'}, {formData.propertyState || 'NSW'} {formData.propertyPostcode || '2026'}</p>
+                <p className="text-xs text-slate-300 mb-1">Property Address</p>
+                <p className="font-semibold text-slate-100">{formData.propertyAddress || '123 Main Street'}</p>
+                <p className="text-sm text-slate-300">{formData.propertySuburb || 'Bondi'}, {formData.propertyState || 'NSW'} {formData.propertyPostcode || '2026'}</p>
               </div>
-              <div className="text-center p-4 bg-blue-50 rounded-lg border-2 border-blue-300">
-                <p className="text-xs text-gray-600 mb-1">AVM Estimated Value</p>
-                <p className="text-3xl font-bold text-blue-700">
+              <div className="text-center p-4 bg-blue-500/10 rounded-lg border-2 border-blue-300">
+                <p className="text-xs text-slate-300 mb-1">AVM Estimated Value</p>
+                <p className="text-3xl font-bold text-blue-300">
                   ${avmValuationResults?.avmMid?.toLocaleString() || '850,000'}
                 </p>
-                <p className="text-xs text-gray-600 mt-1">
+                <p className="text-xs text-slate-300 mt-1">
                   Range: ${avmValuationResults?.avmLow?.toLocaleString() || '765,000'} - ${avmValuationResults?.avmHigh?.toLocaleString() || '935,000'}
                 </p>
               </div>
             </div>
 
             <div className="grid md:grid-cols-4 gap-4 mt-4">
-              <div className="p-3 bg-gray-50 rounded border border-gray-200">
-                <p className="text-xs text-gray-600 mb-1">Confidence Level</p>
-                <p className="text-sm font-bold text-green-600">HIGH</p>
+              <div className="p-3 bg-white/5 rounded border border-white/10">
+                <p className="text-xs text-slate-300 mb-1">Confidence Level</p>
+                <p className="text-sm font-bold text-green-400">HIGH</p>
               </div>
-              <div className="p-3 bg-gray-50 rounded border border-gray-200">
-                <p className="text-xs text-gray-600 mb-1">Comparable Sales</p>
-                <p className="text-sm font-bold text-gray-900">15 properties</p>
+              <div className="p-3 bg-white/5 rounded border border-white/10">
+                <p className="text-xs text-slate-300 mb-1">Comparable Sales</p>
+                <p className="text-sm font-bold text-slate-100">15 properties</p>
               </div>
-              <div className="p-3 bg-gray-50 rounded border border-gray-200">
-                <p className="text-xs text-gray-600 mb-1">Market Trend</p>
-                <p className="text-sm font-bold text-gray-900">Stable</p>
+              <div className="p-3 bg-white/5 rounded border border-white/10">
+                <p className="text-xs text-slate-300 mb-1">Market Trend</p>
+                <p className="text-sm font-bold text-slate-100">Stable</p>
               </div>
-              <div className="p-3 bg-gray-50 rounded border border-gray-200">
-                <p className="text-xs text-gray-600 mb-1">Valuation Date</p>
-                <p className="text-sm font-bold text-gray-900">{new Date().toLocaleDateString('en-AU')}</p>
+              <div className="p-3 bg-white/5 rounded border border-white/10">
+                <p className="text-xs text-slate-300 mb-1">Valuation Date</p>
+                <p className="text-sm font-bold text-slate-100">{new Date().toLocaleDateString('en-AU')}</p>
               </div>
             </div>
 
@@ -319,19 +319,19 @@ export function ComprehensiveSearchResults({
       {/* 2. TITLE SEARCH - INFOTRACK */}
       <Card className="border-2 border-purple-300">
         <CardHeader 
-          className="cursor-pointer bg-purple-50 hover:bg-purple-100 transition-colors"
+          className="cursor-pointer bg-purple-500/10 hover:bg-purple-500/15 transition-colors"
           onClick={() => toggleSection('titleSearch')}
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <FileText className="w-5 h-5 text-purple-600" />
+              <FileText className="w-5 h-5 text-purple-400" />
               <div>
                 <CardTitle className="text-lg">2. Title Search (InfoTrack)</CardTitle>
-                <p className="text-xs text-gray-600 mt-1">NSW Land Registry Services - Full Title Search</p>
+                <p className="text-xs text-slate-300 mt-1">NSW Land Registry Services - Full Title Search</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <span className="px-3 py-1 bg-green-100 text-green-800 text-xs font-bold rounded-full">
+              <span className="px-3 py-1 bg-green-500/15 text-green-300 text-xs font-bold rounded-full">
                 CLEAR
               </span>
               {expandedSections.titleSearch ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
@@ -341,24 +341,24 @@ export function ComprehensiveSearchResults({
         {expandedSections.titleSearch && (
           <CardContent className="p-6 space-y-4">
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="p-4 bg-gray-50 rounded border border-gray-200">
-                <p className="text-xs text-gray-600 mb-2 font-semibold">Title Reference</p>
-                <p className="text-sm font-mono text-gray-900">{caseSearchResult.titleReference || formData.titleReference || 'LOT 123 DP 456789'}</p>
-                <p className="text-xs text-gray-600 mt-1">Vol/Folio: {caseSearchResult.volumeFolio || formData.volumeFolio || '12345/678'}</p>
+              <div className="p-4 bg-white/5 rounded border border-white/10">
+                <p className="text-xs text-slate-300 mb-2 font-semibold">Title Reference</p>
+                <p className="text-sm font-mono text-slate-100">{caseSearchResult.titleReference || formData.titleReference || 'LOT 123 DP 456789'}</p>
+                <p className="text-xs text-slate-300 mt-1">Vol/Folio: {caseSearchResult.volumeFolio || formData.volumeFolio || '12345/678'}</p>
               </div>
-              <div className="p-4 bg-gray-50 rounded border border-gray-200">
-                <p className="text-xs text-gray-600 mb-2 font-semibold">Registered Owner</p>
-                <p className="text-sm font-bold text-gray-900">{caseSearchResult.registeredOwner || formData.registeredOwner || borrowerData.name}</p>
-                <p className="text-xs text-gray-600 mt-1">Ownership: {caseSearchResult.ownershipType || formData.ownershipType || 'Sole Owner (Torrens Title)'}</p>
+              <div className="p-4 bg-white/5 rounded border border-white/10">
+                <p className="text-xs text-slate-300 mb-2 font-semibold">Registered Owner</p>
+                <p className="text-sm font-bold text-slate-100">{caseSearchResult.registeredOwner || formData.registeredOwner || borrowerData.name}</p>
+                <p className="text-xs text-slate-300 mt-1">Ownership: {caseSearchResult.ownershipType || formData.ownershipType || 'Sole Owner (Torrens Title)'}</p>
               </div>
             </div>
 
-            <div className="p-4 bg-green-50 border-2 border-green-300 rounded-lg">
+            <div className="p-4 bg-green-500/10 border-2 border-green-300 rounded-lg">
               <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="font-bold text-sm text-green-900 mb-2">✅ Clear Title</p>
-                  <ul className="space-y-1 text-xs text-green-800">
+                  <p className="font-bold text-sm text-green-300 mb-2">✅ Clear Title</p>
+                  <ul className="space-y-1 text-xs text-green-300">
                     <li>✓ No adverse encumbrances detected</li>
                     <li>✓ No caveats registered</li>
                     <li>✓ 1 existing mortgage registered (to be discharged)</li>
@@ -370,13 +370,13 @@ export function ComprehensiveSearchResults({
             </div>
 
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="p-3 bg-gray-50 rounded border border-gray-200">
-                <p className="text-xs text-gray-600 mb-1">Zoning</p>
-                <p className="text-sm font-bold text-gray-900">R2 Low Density Residential</p>
+              <div className="p-3 bg-white/5 rounded border border-white/10">
+                <p className="text-xs text-slate-300 mb-1">Zoning</p>
+                <p className="text-sm font-bold text-slate-100">R2 Low Density Residential</p>
               </div>
-              <div className="p-3 bg-gray-50 rounded border border-gray-200">
-                <p className="text-xs text-gray-600 mb-1">Local Government Area</p>
-                <p className="text-sm font-bold text-gray-900">Waverley Council</p>
+              <div className="p-3 bg-white/5 rounded border border-white/10">
+                <p className="text-xs text-slate-300 mb-1">Local Government Area</p>
+                <p className="text-sm font-bold text-slate-100">Waverley Council</p>
               </div>
             </div>
 
@@ -391,21 +391,21 @@ export function ComprehensiveSearchResults({
       {/* 3. BORROWER - IDENTITY VERIFICATION */}
       <Card className="border-2 border-indigo-300">
         <CardHeader 
-          className="cursor-pointer bg-indigo-50 hover:bg-indigo-100 transition-colors"
+          className="cursor-pointer bg-indigo-500/10 hover:bg-indigo-500/15 transition-colors"
           onClick={() => toggleSection('borrowerIdentity')}
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <User className="w-5 h-5 text-indigo-600" />
+              <User className="w-5 h-5 text-indigo-400" />
               <div>
                 <CardTitle className="text-lg">3. Borrower - Identity Verification (InfoTrack GreenID)</CardTitle>
-                <p className="text-xs text-gray-600 mt-1">
+                <p className="text-xs text-slate-300 mt-1">
                   {borrowerData.name} • {borrowerData.dob}
                 </p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <span className="px-3 py-1 bg-green-100 text-green-800 text-xs font-bold rounded-full">
+              <span className="px-3 py-1 bg-green-500/15 text-green-300 text-xs font-bold rounded-full">
                 VERIFIED
               </span>
               {expandedSections.borrowerIdentity ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
@@ -415,38 +415,38 @@ export function ComprehensiveSearchResults({
         {expandedSections.borrowerIdentity && (
           <CardContent className="p-6 space-y-4">
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="p-4 bg-gray-50 rounded border border-gray-200">
-                <p className="text-xs text-gray-600 mb-2 font-semibold">Personal Details</p>
-                <p className="text-sm font-bold text-gray-900">{borrowerData.name}</p>
-                <p className="text-xs text-gray-600 mt-1">DOB: {new Date(borrowerData.dob).toLocaleDateString('en-AU')}</p>
-                <p className="text-xs text-gray-600">Email: {borrowerData.email}</p>
-                <p className="text-xs text-gray-600">Phone: {borrowerData.phone}</p>
+              <div className="p-4 bg-white/5 rounded border border-white/10">
+                <p className="text-xs text-slate-300 mb-2 font-semibold">Personal Details</p>
+                <p className="text-sm font-bold text-slate-100">{borrowerData.name}</p>
+                <p className="text-xs text-slate-300 mt-1">DOB: {new Date(borrowerData.dob).toLocaleDateString('en-AU')}</p>
+                <p className="text-xs text-slate-300">Email: {borrowerData.email}</p>
+                <p className="text-xs text-slate-300">Phone: {borrowerData.phone}</p>
               </div>
-              <div className="p-4 bg-gray-50 rounded border border-gray-200">
-                <p className="text-xs text-gray-600 mb-2 font-semibold">Verified Documents</p>
+              <div className="p-4 bg-white/5 rounded border border-white/10">
+                <p className="text-xs text-slate-300 mb-2 font-semibold">Verified Documents</p>
                 <div className="space-y-1 text-xs">
                   <div className="flex items-center gap-2">
-                    <CheckCircle className="w-3 h-3 text-green-600" />
+                    <CheckCircle className="w-3 h-3 text-green-400" />
                     <span>Driver's License NSW - Verified</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle className="w-3 h-3 text-green-600" />
+                    <CheckCircle className="w-3 h-3 text-green-400" />
                     <span>Medicare Card - Verified</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle className="w-3 h-3 text-green-600" />
+                    <CheckCircle className="w-3 h-3 text-green-400" />
                     <span>Bank Account (100 point check) - Verified</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="p-4 bg-green-50 border-2 border-green-300 rounded-lg">
+            <div className="p-4 bg-green-500/10 border-2 border-green-300 rounded-lg">
               <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="font-bold text-sm text-green-900 mb-2">✅ Identity Verified - 100 Points Passed</p>
-                  <ul className="space-y-1 text-xs text-green-800">
+                  <p className="font-bold text-sm text-green-300 mb-2">✅ Identity Verified - 100 Points Passed</p>
+                  <ul className="space-y-1 text-xs text-green-300">
                     <li>✓ GreenID score: 100/100 (Strong Match)</li>
                     <li>✓ Government database cross-verification complete</li>
                     <li>✓ Address verification: CONFIRMED</li>
@@ -457,9 +457,9 @@ export function ComprehensiveSearchResults({
               </div>
             </div>
 
-            <div className="p-3 bg-gray-50 rounded border border-gray-200">
-              <p className="text-xs text-gray-600 mb-1">Residential Address (Verified)</p>
-              <p className="text-sm font-semibold text-gray-900">{borrowerData.address}</p>
+            <div className="p-3 bg-white/5 rounded border border-white/10">
+              <p className="text-xs text-slate-300 mb-1">Residential Address (Verified)</p>
+              <p className="text-sm font-semibold text-slate-100">{borrowerData.address}</p>
             </div>
 
             <Button variant="outline" size="sm" className="w-full">
@@ -473,21 +473,21 @@ export function ComprehensiveSearchResults({
       {/* 4. BORROWER - AML/CTF SCREENING */}
       <Card className="border-2 border-red-300">
         <CardHeader 
-          className="cursor-pointer bg-red-50 hover:bg-red-100 transition-colors"
+          className="cursor-pointer bg-red-500/10 hover:bg-red-500/15 transition-colors"
           onClick={() => toggleSection('borrowerAML')}
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Shield className="w-5 h-5 text-red-600" />
+              <Shield className="w-5 h-5 text-red-400" />
               <div>
                 <CardTitle className="text-lg">4. Borrower - AML/CTF Screening (AUSTRAC Compliance)</CardTitle>
-                <p className="text-xs text-gray-600 mt-1">
+                <p className="text-xs text-slate-300 mt-1">
                   Sanctions, PEP, Adverse Media & Watchlist Screening
                 </p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <span className="px-3 py-1 bg-green-100 text-green-800 text-xs font-bold rounded-full">
+              <span className="px-3 py-1 bg-green-500/15 text-green-300 text-xs font-bold rounded-full">
                 CLEAR
               </span>
               {expandedSections.borrowerAML ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
@@ -497,24 +497,24 @@ export function ComprehensiveSearchResults({
         {expandedSections.borrowerAML && (
           <CardContent className="p-6 space-y-4">
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="p-4 bg-green-50 rounded border-2 border-green-300">
+              <div className="p-4 bg-green-500/10 rounded border-2 border-green-300">
                 <div className="flex items-center gap-2 mb-2">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
-                  <p className="text-xs font-bold text-green-900">SANCTIONS SCREENING</p>
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <p className="text-xs font-bold text-green-300">SANCTIONS SCREENING</p>
                 </div>
-                <p className="text-xs text-green-800">
+                <p className="text-xs text-green-300">
                   ✓ No matches on DFAT Sanctions List<br/>
                   ✓ No matches on UN Consolidated List<br/>
                   ✓ No matches on OFAC SDN List<br/>
                   ✓ No EU Sanctions matches
                 </p>
               </div>
-              <div className="p-4 bg-green-50 rounded border-2 border-green-300">
+              <div className="p-4 bg-green-500/10 rounded border-2 border-green-300">
                 <div className="flex items-center gap-2 mb-2">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
-                  <p className="text-xs font-bold text-green-900">PEP SCREENING</p>
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <p className="text-xs font-bold text-green-300">PEP SCREENING</p>
                 </div>
-                <p className="text-xs text-green-800">
+                <p className="text-xs text-green-300">
                   ✓ Not identified as PEP<br/>
                   ✓ No close associates flagged<br/>
                   ✓ No family members flagged<br/>
@@ -523,12 +523,12 @@ export function ComprehensiveSearchResults({
               </div>
             </div>
 
-            <div className="p-4 bg-green-50 border-2 border-green-300 rounded-lg">
+            <div className="p-4 bg-green-500/10 border-2 border-green-300 rounded-lg">
               <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="font-bold text-sm text-green-900 mb-2">✅ AML/CTF Screening Complete - NO ADVERSE FINDINGS</p>
-                  <ul className="space-y-1 text-xs text-green-800">
+                  <p className="font-bold text-sm text-green-300 mb-2">✅ AML/CTF Screening Complete - NO ADVERSE FINDINGS</p>
+                  <ul className="space-y-1 text-xs text-green-300">
                     <li>✓ Sanctions: CLEAR (0 matches)</li>
                     <li>✓ PEP (Politically Exposed Person): CLEAR</li>
                     <li>✓ Adverse Media: CLEAR (0 articles)</li>
@@ -541,20 +541,20 @@ export function ComprehensiveSearchResults({
             </div>
 
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="p-3 bg-gray-50 rounded border border-gray-200">
-                <p className="text-xs text-gray-600 mb-1">Source of Funds</p>
-                <p className="text-sm text-gray-900">Employment Income - Verified</p>
+              <div className="p-3 bg-white/5 rounded border border-white/10">
+                <p className="text-xs text-slate-300 mb-1">Source of Funds</p>
+                <p className="text-sm text-slate-100">Employment Income - Verified</p>
               </div>
-              <div className="p-3 bg-gray-50 rounded border border-gray-200">
-                <p className="text-xs text-gray-600 mb-1">Source of Wealth</p>
-                <p className="text-sm text-gray-900">Career Earnings - Documented</p>
+              <div className="p-3 bg-white/5 rounded border border-white/10">
+                <p className="text-xs text-slate-300 mb-1">Source of Wealth</p>
+                <p className="text-sm text-slate-100">Career Earnings - Documented</p>
               </div>
             </div>
 
-            <div className="p-3 bg-gray-50 rounded border border-gray-200">
-              <p className="text-xs text-gray-600 mb-2 font-semibold">Risk Assessment</p>
-              <p className="text-sm font-bold text-green-600">LOW RISK</p>
-              <p className="text-xs text-gray-600 mt-1">No enhanced due diligence required</p>
+            <div className="p-3 bg-white/5 rounded border border-white/10">
+              <p className="text-xs text-slate-300 mb-2 font-semibold">Risk Assessment</p>
+              <p className="text-sm font-bold text-green-400">LOW RISK</p>
+              <p className="text-xs text-slate-300 mt-1">No enhanced due diligence required</p>
             </div>
 
             <Button variant="outline" size="sm" className="w-full">
@@ -568,21 +568,21 @@ export function ComprehensiveSearchResults({
       {/* 5. BORROWER - CREDIT ASSESSMENT */}
       <Card className="border-2 border-orange-300">
         <CardHeader 
-          className="cursor-pointer bg-orange-50 hover:bg-orange-100 transition-colors"
+          className="cursor-pointer bg-orange-500/10 hover:bg-orange-500/15 transition-colors"
           onClick={() => toggleSection('borrowerCredit')}
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <CreditCard className="w-5 h-5 text-orange-600" />
+              <CreditCard className="w-5 h-5 text-orange-400" />
               <div>
                 <CardTitle className="text-lg">5. Borrower - Credit Assessment (Equifax)</CardTitle>
-                <p className="text-xs text-gray-600 mt-1">
+                <p className="text-xs text-slate-300 mt-1">
                   Credit Bureau Report & Comprehensive Credit Reporting (CCR)
                 </p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <span className="px-3 py-1 bg-green-100 text-green-800 text-xs font-bold rounded-full">
+              <span className="px-3 py-1 bg-green-500/15 text-green-300 text-xs font-bold rounded-full">
                 GOOD
               </span>
               {expandedSections.borrowerCredit ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
@@ -592,29 +592,29 @@ export function ComprehensiveSearchResults({
         {expandedSections.borrowerCredit && (
           <CardContent className="p-6 space-y-4">
             <div className="grid md:grid-cols-3 gap-4">
-              <div className="p-4 bg-blue-50 rounded border-2 border-blue-300 text-center">
-                <p className="text-xs text-gray-600 mb-1">Credit Score</p>
-                <p className="text-3xl font-bold text-blue-700">{caseSearchResult.creditScore || formData.creditScore || 742}</p>
-                <p className="text-xs text-blue-600 mt-1">Very Good (661-734)</p>
+              <div className="p-4 bg-blue-500/10 rounded border-2 border-blue-300 text-center">
+                <p className="text-xs text-slate-300 mb-1">Credit Score</p>
+                <p className="text-3xl font-bold text-blue-300">{caseSearchResult.creditScore || formData.creditScore || 742}</p>
+                <p className="text-xs text-blue-400 mt-1">Very Good (661-734)</p>
               </div>
-              <div className="p-4 bg-gray-50 rounded border border-gray-200">
-                <p className="text-xs text-gray-600 mb-1">Payment History</p>
-                <p className="text-sm font-bold text-green-600">100% On-Time</p>
-                <p className="text-xs text-gray-600 mt-1">No late payments</p>
+              <div className="p-4 bg-white/5 rounded border border-white/10">
+                <p className="text-xs text-slate-300 mb-1">Payment History</p>
+                <p className="text-sm font-bold text-green-400">100% On-Time</p>
+                <p className="text-xs text-slate-300 mt-1">No late payments</p>
               </div>
-              <div className="p-4 bg-gray-50 rounded border border-gray-200">
-                <p className="text-xs text-gray-600 mb-1">Credit Utilization</p>
-                <p className="text-sm font-bold text-green-600">28%</p>
-                <p className="text-xs text-gray-600 mt-1">Well below threshold</p>
+              <div className="p-4 bg-white/5 rounded border border-white/10">
+                <p className="text-xs text-slate-300 mb-1">Credit Utilization</p>
+                <p className="text-sm font-bold text-green-400">28%</p>
+                <p className="text-xs text-slate-300 mt-1">Well below threshold</p>
               </div>
             </div>
 
-            <div className="p-4 bg-green-50 border-2 border-green-300 rounded-lg">
+            <div className="p-4 bg-green-500/10 border-2 border-green-300 rounded-lg">
               <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="font-bold text-sm text-green-900 mb-2">✅ Strong Credit Profile</p>
-                  <ul className="space-y-1 text-xs text-green-800">
+                  <p className="font-bold text-sm text-green-300 mb-2">✅ Strong Credit Profile</p>
+                  <ul className="space-y-1 text-xs text-green-300">
                     <li>✓ No defaults or judgements recorded</li>
                     <li>✓ No bankruptcy or Part IX/X agreements</li>
                     <li>✓ No adverse credit events in past 7 years</li>
@@ -626,15 +626,15 @@ export function ComprehensiveSearchResults({
             </div>
 
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="p-3 bg-gray-50 rounded border border-gray-200">
-                <p className="text-xs text-gray-600 mb-1">Total Credit Accounts</p>
-                <p className="text-sm font-bold text-gray-900">5 accounts</p>
-                <p className="text-xs text-gray-600">3 active, 2 closed</p>
+              <div className="p-3 bg-white/5 rounded border border-white/10">
+                <p className="text-xs text-slate-300 mb-1">Total Credit Accounts</p>
+                <p className="text-sm font-bold text-slate-100">5 accounts</p>
+                <p className="text-xs text-slate-300">3 active, 2 closed</p>
               </div>
-              <div className="p-3 bg-gray-50 rounded border border-gray-200">
-                <p className="text-xs text-gray-600 mb-1">Total Credit Limit</p>
-                <p className="text-sm font-bold text-gray-900">$85,000</p>
-                <p className="text-xs text-gray-600">Across all facilities</p>
+              <div className="p-3 bg-white/5 rounded border border-white/10">
+                <p className="text-xs text-slate-300 mb-1">Total Credit Limit</p>
+                <p className="text-sm font-bold text-slate-100">$85,000</p>
+                <p className="text-xs text-slate-300">Across all facilities</p>
               </div>
             </div>
 
@@ -649,21 +649,21 @@ export function ComprehensiveSearchResults({
       {/* 6. GUARANTOR - IDENTITY VERIFICATION */}
       <Card className="border-2 border-teal-300">
         <CardHeader 
-          className="cursor-pointer bg-teal-50 hover:bg-teal-100 transition-colors"
+          className="cursor-pointer bg-teal-500/10 hover:bg-teal-500/15 transition-colors"
           onClick={() => toggleSection('guarantorIdentity')}
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Users className="w-5 h-5 text-teal-600" />
+              <Users className="w-5 h-5 text-teal-400" />
               <div>
                 <CardTitle className="text-lg">6. Guarantor - Identity Verification (InfoTrack GreenID)</CardTitle>
-                <p className="text-xs text-gray-600 mt-1">
+                <p className="text-xs text-slate-300 mt-1">
                   {guarantorData.name} • {guarantorData.dob}
                 </p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <span className="px-3 py-1 bg-green-100 text-green-800 text-xs font-bold rounded-full">
+              <span className="px-3 py-1 bg-green-500/15 text-green-300 text-xs font-bold rounded-full">
                 VERIFIED
               </span>
               {expandedSections.guarantorIdentity ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
@@ -673,38 +673,38 @@ export function ComprehensiveSearchResults({
         {expandedSections.guarantorIdentity && (
           <CardContent className="p-6 space-y-4">
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="p-4 bg-gray-50 rounded border border-gray-200">
-                <p className="text-xs text-gray-600 mb-2 font-semibold">Personal Details</p>
-                <p className="text-sm font-bold text-gray-900">{guarantorData.name}</p>
-                <p className="text-xs text-gray-600 mt-1">DOB: {new Date(guarantorData.dob).toLocaleDateString('en-AU')}</p>
-                <p className="text-xs text-gray-600">Email: {guarantorData.email}</p>
-                <p className="text-xs text-gray-600">Phone: {guarantorData.phone}</p>
+              <div className="p-4 bg-white/5 rounded border border-white/10">
+                <p className="text-xs text-slate-300 mb-2 font-semibold">Personal Details</p>
+                <p className="text-sm font-bold text-slate-100">{guarantorData.name}</p>
+                <p className="text-xs text-slate-300 mt-1">DOB: {new Date(guarantorData.dob).toLocaleDateString('en-AU')}</p>
+                <p className="text-xs text-slate-300">Email: {guarantorData.email}</p>
+                <p className="text-xs text-slate-300">Phone: {guarantorData.phone}</p>
               </div>
-              <div className="p-4 bg-gray-50 rounded border border-gray-200">
-                <p className="text-xs text-gray-600 mb-2 font-semibold">Verified Documents</p>
+              <div className="p-4 bg-white/5 rounded border border-white/10">
+                <p className="text-xs text-slate-300 mb-2 font-semibold">Verified Documents</p>
                 <div className="space-y-1 text-xs">
                   <div className="flex items-center gap-2">
-                    <CheckCircle className="w-3 h-3 text-green-600" />
+                    <CheckCircle className="w-3 h-3 text-green-400" />
                     <span>Passport - Verified</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle className="w-3 h-3 text-green-600" />
+                    <CheckCircle className="w-3 h-3 text-green-400" />
                     <span>Driver's License VIC - Verified</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle className="w-3 h-3 text-green-600" />
+                    <CheckCircle className="w-3 h-3 text-green-400" />
                     <span>Utility Bill (Address proof) - Verified</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="p-4 bg-green-50 border-2 border-green-300 rounded-lg">
+            <div className="p-4 bg-green-500/10 border-2 border-green-300 rounded-lg">
               <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="font-bold text-sm text-green-900 mb-2">✅ Identity Verified - 100 Points Passed</p>
-                  <ul className="space-y-1 text-xs text-green-800">
+                  <p className="font-bold text-sm text-green-300 mb-2">✅ Identity Verified - 100 Points Passed</p>
+                  <ul className="space-y-1 text-xs text-green-300">
                     <li>✓ GreenID score: 100/100 (Strong Match)</li>
                     <li>✓ Government database cross-verification complete</li>
                     <li>✓ Address verification: CONFIRMED</li>
@@ -714,9 +714,9 @@ export function ComprehensiveSearchResults({
               </div>
             </div>
 
-            <div className="p-3 bg-gray-50 rounded border border-gray-200">
-              <p className="text-xs text-gray-600 mb-1">Residential Address (Verified)</p>
-              <p className="text-sm font-semibold text-gray-900">{guarantorData.address}</p>
+            <div className="p-3 bg-white/5 rounded border border-white/10">
+              <p className="text-xs text-slate-300 mb-1">Residential Address (Verified)</p>
+              <p className="text-sm font-semibold text-slate-100">{guarantorData.address}</p>
             </div>
 
             <Button variant="outline" size="sm" className="w-full">
@@ -730,21 +730,21 @@ export function ComprehensiveSearchResults({
       {/* 7. GUARANTOR - AML/CTF SCREENING */}
       <Card className="border-2 border-rose-300">
         <CardHeader 
-          className="cursor-pointer bg-rose-50 hover:bg-rose-100 transition-colors"
+          className="cursor-pointer bg-rose-500/10 hover:bg-rose-500/15 transition-colors"
           onClick={() => toggleSection('guarantorAML')}
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Shield className="w-5 h-5 text-rose-600" />
+              <Shield className="w-5 h-5 text-rose-400" />
               <div>
                 <CardTitle className="text-lg">7. Guarantor - AML/CTF Screening</CardTitle>
-                <p className="text-xs text-gray-600 mt-1">
+                <p className="text-xs text-slate-300 mt-1">
                   Sanctions, PEP, Adverse Media & Watchlist Screening
                 </p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <span className="px-3 py-1 bg-green-100 text-green-800 text-xs font-bold rounded-full">
+              <span className="px-3 py-1 bg-green-500/15 text-green-300 text-xs font-bold rounded-full">
                 CLEAR
               </span>
               {expandedSections.guarantorAML ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
@@ -753,12 +753,12 @@ export function ComprehensiveSearchResults({
         </CardHeader>
         {expandedSections.guarantorAML && (
           <CardContent className="p-6 space-y-4">
-            <div className="p-4 bg-green-50 border-2 border-green-300 rounded-lg">
+            <div className="p-4 bg-green-500/10 border-2 border-green-300 rounded-lg">
               <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="font-bold text-sm text-green-900 mb-2">✅ AML/CTF Screening Complete - NO ADVERSE FINDINGS</p>
-                  <ul className="space-y-1 text-xs text-green-800">
+                  <p className="font-bold text-sm text-green-300 mb-2">✅ AML/CTF Screening Complete - NO ADVERSE FINDINGS</p>
+                  <ul className="space-y-1 text-xs text-green-300">
                     <li>✓ Sanctions: CLEAR (0 matches)</li>
                     <li>✓ PEP (Politically Exposed Person): CLEAR</li>
                     <li>✓ Adverse Media: CLEAR (0 articles)</li>
@@ -769,10 +769,10 @@ export function ComprehensiveSearchResults({
               </div>
             </div>
 
-            <div className="p-3 bg-gray-50 rounded border border-gray-200">
-              <p className="text-xs text-gray-600 mb-2 font-semibold">Risk Assessment</p>
-              <p className="text-sm font-bold text-green-600">LOW RISK</p>
-              <p className="text-xs text-gray-600 mt-1">No enhanced due diligence required</p>
+            <div className="p-3 bg-white/5 rounded border border-white/10">
+              <p className="text-xs text-slate-300 mb-2 font-semibold">Risk Assessment</p>
+              <p className="text-sm font-bold text-green-400">LOW RISK</p>
+              <p className="text-xs text-slate-300 mt-1">No enhanced due diligence required</p>
             </div>
 
             <Button variant="outline" size="sm" className="w-full">
@@ -786,21 +786,21 @@ export function ComprehensiveSearchResults({
       {/* 8. GUARANTOR - CREDIT ASSESSMENT */}
       <Card className="border-2 border-amber-300">
         <CardHeader 
-          className="cursor-pointer bg-amber-50 hover:bg-amber-100 transition-colors"
+          className="cursor-pointer bg-amber-500/10 hover:bg-amber-500/15 transition-colors"
           onClick={() => toggleSection('guarantorCredit')}
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <CreditCard className="w-5 h-5 text-amber-600" />
+              <CreditCard className="w-5 h-5 text-amber-400" />
               <div>
                 <CardTitle className="text-lg">8. Guarantor - Credit Assessment (Equifax)</CardTitle>
-                <p className="text-xs text-gray-600 mt-1">
+                <p className="text-xs text-slate-300 mt-1">
                   Credit Bureau Report & Serviceability Assessment
                 </p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <span className="px-3 py-1 bg-green-100 text-green-800 text-xs font-bold rounded-full">
+              <span className="px-3 py-1 bg-green-500/15 text-green-300 text-xs font-bold rounded-full">
                 EXCELLENT
               </span>
               {expandedSections.guarantorCredit ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
@@ -810,29 +810,29 @@ export function ComprehensiveSearchResults({
         {expandedSections.guarantorCredit && (
           <CardContent className="p-6 space-y-4">
             <div className="grid md:grid-cols-3 gap-4">
-              <div className="p-4 bg-blue-50 rounded border-2 border-blue-300 text-center">
-                <p className="text-xs text-gray-600 mb-1">Credit Score</p>
-                <p className="text-3xl font-bold text-blue-700">{caseSearchResult.guarantorCreditScore || formData.guarantorCreditScore || 823}</p>
-                <p className="text-xs text-blue-600 mt-1">Excellent (833-1200)</p>
+              <div className="p-4 bg-blue-500/10 rounded border-2 border-blue-300 text-center">
+                <p className="text-xs text-slate-300 mb-1">Credit Score</p>
+                <p className="text-3xl font-bold text-blue-300">{caseSearchResult.guarantorCreditScore || formData.guarantorCreditScore || 823}</p>
+                <p className="text-xs text-blue-400 mt-1">Excellent (833-1200)</p>
               </div>
-              <div className="p-4 bg-gray-50 rounded border border-gray-200">
-                <p className="text-xs text-gray-600 mb-1">Payment History</p>
-                <p className="text-sm font-bold text-green-600">100% On-Time</p>
-                <p className="text-xs text-gray-600 mt-1">Never missed payment</p>
+              <div className="p-4 bg-white/5 rounded border border-white/10">
+                <p className="text-xs text-slate-300 mb-1">Payment History</p>
+                <p className="text-sm font-bold text-green-400">100% On-Time</p>
+                <p className="text-xs text-slate-300 mt-1">Never missed payment</p>
               </div>
-              <div className="p-4 bg-gray-50 rounded border border-gray-200">
-                <p className="text-xs text-gray-600 mb-1">Credit Utilization</p>
-                <p className="text-sm font-bold text-green-600">15%</p>
-                <p className="text-xs text-gray-600 mt-1">Excellent management</p>
+              <div className="p-4 bg-white/5 rounded border border-white/10">
+                <p className="text-xs text-slate-300 mb-1">Credit Utilization</p>
+                <p className="text-sm font-bold text-green-400">15%</p>
+                <p className="text-xs text-slate-300 mt-1">Excellent management</p>
               </div>
             </div>
 
-            <div className="p-4 bg-green-50 border-2 border-green-300 rounded-lg">
+            <div className="p-4 bg-green-500/10 border-2 border-green-300 rounded-lg">
               <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="font-bold text-sm text-green-900 mb-2">✅ Excellent Credit Profile</p>
-                  <ul className="space-y-1 text-xs text-green-800">
+                  <p className="font-bold text-sm text-green-300 mb-2">✅ Excellent Credit Profile</p>
+                  <ul className="space-y-1 text-xs text-green-300">
                     <li>✓ No adverse credit events</li>
                     <li>✓ Strong credit history: 18+ years</li>
                     <li>✓ Excellent payment track record</li>
@@ -853,21 +853,21 @@ export function ComprehensiveSearchResults({
       {/* 9. COMPLIANCE SUMMARY */}
       <Card className="border-2 border-green-400 bg-gradient-to-r from-green-50 to-emerald-50">
         <CardHeader 
-          className="cursor-pointer hover:bg-green-100 transition-colors"
+          className="cursor-pointer hover:bg-green-500/15 transition-colors"
           onClick={() => toggleSection('compliance')}
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Flag className="w-5 h-5 text-green-600" />
+              <Flag className="w-5 h-5 text-green-400" />
               <div>
                 <CardTitle className="text-lg">9. Compliance Summary & Regulatory Sign-Off</CardTitle>
-                <p className="text-xs text-gray-600 mt-1">
+                <p className="text-xs text-slate-300 mt-1">
                   AUSTRAC AML/CTF, NCCP, Privacy Act, ASIC Compliance
                 </p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <span className="px-3 py-1 bg-green-100 text-green-800 text-xs font-bold rounded-full">
+              <span className="px-3 py-1 bg-green-500/15 text-green-300 text-xs font-bold rounded-full">
                 COMPLIANT
               </span>
               {expandedSections.compliance ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
@@ -879,10 +879,10 @@ export function ComprehensiveSearchResults({
             <div className="grid md:grid-cols-2 gap-4">
               <div className="p-4 bg-white rounded border-2 border-green-300">
                 <div className="flex items-center gap-2 mb-3">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
-                  <p className="text-sm font-bold text-green-900">AML/CTF Act 2006</p>
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <p className="text-sm font-bold text-green-300">AML/CTF Act 2006</p>
                 </div>
-                <ul className="space-y-1 text-xs text-gray-700">
+                <ul className="space-y-1 text-xs text-slate-300">
                   <li>✓ Customer Due Diligence (CDD) complete</li>
                   <li>✓ Enhanced Due Diligence (EDD) not required</li>
                   <li>✓ Ongoing Customer Due Diligence (OCDD) scheduled</li>
@@ -893,10 +893,10 @@ export function ComprehensiveSearchResults({
 
               <div className="p-4 bg-white rounded border-2 border-green-300">
                 <div className="flex items-center gap-2 mb-3">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
-                  <p className="text-sm font-bold text-green-900">NCCP Act 2009</p>
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <p className="text-sm font-bold text-green-300">NCCP Act 2009</p>
                 </div>
-                <ul className="space-y-1 text-xs text-gray-700">
+                <ul className="space-y-1 text-xs text-slate-300">
                   <li>✓ Consumer credit verification: Complete</li>
                   <li>✓ Responsible lending obligations: Met</li>
                   <li>✓ Assessment of unsuitability: Pending Step 9</li>
@@ -907,10 +907,10 @@ export function ComprehensiveSearchResults({
 
               <div className="p-4 bg-white rounded border-2 border-green-300">
                 <div className="flex items-center gap-2 mb-3">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
-                  <p className="text-sm font-bold text-green-900">Privacy Act 1988</p>
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <p className="text-sm font-bold text-green-300">Privacy Act 1988</p>
                 </div>
-                <ul className="space-y-1 text-xs text-gray-700">
+                <ul className="space-y-1 text-xs text-slate-300">
                   <li>✓ Consent obtained for all checks</li>
                   <li>✓ Credit reporting privacy compliant</li>
                   <li>✓ Data handling: Encrypted & secure</li>
@@ -920,10 +920,10 @@ export function ComprehensiveSearchResults({
 
               <div className="p-4 bg-white rounded border-2 border-green-300">
                 <div className="flex items-center gap-2 mb-3">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
-                  <p className="text-sm font-bold text-green-900">ASIC Guidelines</p>
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <p className="text-sm font-bold text-green-300">ASIC Guidelines</p>
                 </div>
-                <ul className="space-y-1 text-xs text-gray-700">
+                <ul className="space-y-1 text-xs text-slate-300">
                   <li>✓ RG 209: Credit licensing obligations met</li>
                   <li>✓ Consumer protection standards: Applied</li>
                   <li>✓ Best interests duty: Framework in place</li>
@@ -934,14 +934,14 @@ export function ComprehensiveSearchResults({
 
             <div className="p-5 bg-gradient-to-r from-green-100 to-emerald-100 border-2 border-green-400 rounded-lg">
               <div className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-green-700 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="w-6 h-6 text-green-300 mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="font-bold text-base text-green-900 mb-2">✅ ALL VERIFICATION CHECKS COMPLETE & COMPLIANT</p>
-                  <p className="text-sm text-green-800 mb-3">
+                  <p className="font-bold text-base text-green-300 mb-2">✅ ALL VERIFICATION CHECKS COMPLETE & COMPLIANT</p>
+                  <p className="text-sm text-green-300 mb-3">
                     All third-party verifications have been completed successfully for borrower, guarantor, and property. 
                     No red flags or compliance concerns identified. Case ready to proceed to responsible lending assessment (Step 9).
                   </p>
-                  <div className="grid grid-cols-2 gap-2 text-xs text-green-900">
+                  <div className="grid grid-cols-2 gap-2 text-xs text-green-300">
                     <div>✓ Total Parties Verified: 2 (Borrower + Guarantor)</div>
                     <div>✓ Total Checks Completed: 8</div>
                     <div>✓ Risk Rating: LOW</div>

@@ -424,7 +424,7 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
     if (!saved) { setLoadingAction(null); return; }
 
     updateClientStatusInDB('Active');
-    logActivity(`approved client ${client.name} following KYC review`, 'CheckCircle', 'text-green-600');
+    logActivity(`approved client ${client.name} following KYC review`, 'CheckCircle', 'text-green-400');
     toast.success('Client Approved', `${client.name} has been successfully verified.`);
 
     setLoadingAction(null);
@@ -437,7 +437,7 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
     if (!saved) { setLoadingAction(null); return; }
 
     updateClientStatusInDB('Suspended');
-    logActivity(`flagged client ${client.name} for suspicious AML activity`, 'AlertOctagon', 'text-red-600');
+    logActivity(`flagged client ${client.name} for suspicious AML activity`, 'AlertOctagon', 'text-red-400');
     toast.warning('Client Flagged', `${client.name} is now under investigation.`);
 
     setLoadingAction(null);
@@ -484,10 +484,10 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
         ← Back to Dashboard
       </Button>
       
-      <div className="bg-[#1e293b] rounded-xl shadow-lg border-2 border-blue-100 p-8">
+      <div className="bg-[#1e293b] rounded-xl shadow-lg border-2 border-blue-500/20 p-8">
         <div className="flex items-center gap-4 mb-8">
-          <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
-            <User className="w-8 h-8 text-blue-600" />
+          <div className="w-16 h-16 bg-blue-500/15 rounded-full flex items-center justify-center">
+            <User className="w-8 h-8 text-blue-400" />
           </div>
           <div>
             <h1 className="text-3xl font-bold text-white">Review: {client.name}</h1>
@@ -496,24 +496,24 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
         </div>
         
         <div className="grid grid-cols-3 gap-6 mb-8">
-          <Card className="bg-red-50 border-red-200">
+          <Card className="bg-red-500/10 border-red-500/30">
             <CardContent className="p-4">
-              <p className="text-sm text-red-700 font-semibold mb-1">Risk Score</p>
-              <p className="text-3xl font-bold text-red-700">
+              <p className="text-sm text-red-300 font-semibold mb-1">Risk Score</p>
+              <p className="text-3xl font-bold text-red-300">
                 {client.riskScores?.overall ? (client.riskScores.overall / 10).toFixed(1) : '8.4'} / 10
               </p>
             </CardContent>
           </Card>
-          <Card className={client.status === 'Active' ? 'bg-green-50 border-green-200' : client.status === 'Suspended' ? 'bg-red-50 border-red-200' : 'bg-amber-50 border-amber-200'}>
+          <Card className={client.status === 'Active' ? 'bg-green-500/10 border-green-500/30' : client.status === 'Suspended' ? 'bg-red-500/10 border-red-500/30' : 'bg-amber-500/10 border-amber-500/30'}>
             <CardContent className="p-4">
-              <p className={`text-sm font-semibold mb-1 ${client.status === 'Active' ? 'text-green-700' : client.status === 'Suspended' ? 'text-red-700' : 'text-amber-700'}`}>Status</p>
-              <p className={`text-3xl font-bold ${client.status === 'Active' ? 'text-green-700' : client.status === 'Suspended' ? 'text-red-700' : 'text-amber-700'}`}>{getStatusText()}</p>
+              <p className={`text-sm font-semibold mb-1 ${client.status === 'Active' ? 'text-green-300' : client.status === 'Suspended' ? 'text-red-300' : 'text-amber-300'}`}>Status</p>
+              <p className={`text-3xl font-bold ${client.status === 'Active' ? 'text-green-300' : client.status === 'Suspended' ? 'text-red-300' : 'text-amber-300'}`}>{getStatusText()}</p>
             </CardContent>
           </Card>
-          <Card className="bg-blue-50 border-blue-200">
+          <Card className="bg-blue-500/10 border-blue-500/30">
             <CardContent className="p-4">
-              <p className="text-sm text-blue-700 font-semibold mb-1">Last Activity</p>
-              <p className="text-3xl font-bold text-blue-700">2h ago</p>
+              <p className="text-sm text-blue-300 font-semibold mb-1">Last Activity</p>
+              <p className="text-3xl font-bold text-blue-300">2h ago</p>
             </CardContent>
           </Card>
         </div>
@@ -521,7 +521,7 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
         <div className="space-y-6">
           <div className="p-6 bg-[#0f172a] rounded-lg border border-white/10">
             <h3 className="font-bold text-white mb-4 flex items-center gap-2">
-              <Shield className="w-5 h-5 text-blue-600" />
+              <Shield className="w-5 h-5 text-blue-400" />
               Verification Checkpoints
             </h3>
             <div className="space-y-3">
@@ -529,22 +529,22 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
                 { 
                   label: 'Identity Verification (IDV)', 
                   status: client.quickStatus?.identity || 'Verified', 
-                  color: client.quickStatus?.identity === 'Info Requested' || client.quickStatus?.identity === 'Pending Information' ? 'text-amber-600' : 'text-green-600' 
+                  color: client.quickStatus?.identity === 'Info Requested' || client.quickStatus?.identity === 'Pending Information' ? 'text-amber-400' : 'text-green-400' 
                 },
                 { 
                   label: 'Sanctions Screening', 
                   status: client.amlData?.sanctionsMatches > 0 ? 'Potential Match' : 'Clear', 
-                  color: client.amlData?.sanctionsMatches > 0 ? 'text-red-600' : 'text-green-600' 
+                  color: client.amlData?.sanctionsMatches > 0 ? 'text-red-400' : 'text-green-400' 
                 },
                 { 
                   label: 'PEP Check', 
                   status: client.amlData?.pepStatus || 'Clear', 
-                  color: client.amlData?.pepStatus && client.amlData.pepStatus !== 'Not PEP' ? 'text-red-600' : 'text-green-600' 
+                  color: client.amlData?.pepStatus && client.amlData.pepStatus !== 'Not PEP' ? 'text-red-400' : 'text-green-400' 
                 },
                 { 
                   label: 'Adverse Media', 
                   status: client.amlData?.adverseMediaHits > 0 ? 'Review Required' : 'Clear', 
-                  color: client.amlData?.adverseMediaHits > 0 ? 'text-amber-600' : 'text-green-600' 
+                  color: client.amlData?.adverseMediaHits > 0 ? 'text-amber-400' : 'text-green-400' 
                 },
                 {
                   label: 'Transaction Restriction Status',
@@ -558,12 +558,12 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
                     ? 'Enhanced Monitoring'
                     : 'No Restrictions',
                   color: client.status === 'Suspended' || client.riskScores?.overall >= 90 
-                    ? 'text-red-600 font-extrabold'
+                    ? 'text-red-400 font-extrabold'
                     : client.riskScores?.overall >= 75 
-                    ? 'text-amber-600 font-bold'
+                    ? 'text-amber-400 font-bold'
                     : client.riskScores?.overall >= 40 
-                    ? 'text-blue-600 font-medium'
-                    : 'text-green-600'
+                    ? 'text-blue-400 font-medium'
+                    : 'text-green-400'
                 },
                 {
                   label: 'EDD Requirements Escalation',
@@ -571,7 +571,7 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
                     ? 'Escalated to EDD (Automatic)'
                     : 'Standard CDD',
                   color: (client.riskScores?.overall >= 75 || client.amlData?.pepStatus !== 'Not PEP' || client.ownershipData?.complexStructure || client.amlData?.adverseMediaHits > 0)
-                    ? 'text-red-600 font-bold'
+                    ? 'text-red-400 font-bold'
                     : 'text-slate-400'
                 }
               ].map((check, i) => (
@@ -585,11 +585,11 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
 
           {client.status === 'Active' ? (
             <div className="flex flex-col gap-3">
-              <div className="flex items-center gap-3 p-4 bg-green-50 border-2 border-green-300 rounded-lg">
-                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
+              <div className="flex items-center gap-3 p-4 bg-green-500/10 border-2 border-green-300 rounded-lg">
+                <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0" />
                 <div>
-                  <p className="font-bold text-green-800">Client Approved</p>
-                  <p className="text-sm text-green-700">This client has been approved. No further action required.</p>
+                  <p className="font-bold text-green-300">Client Approved</p>
+                  <p className="text-sm text-green-300">This client has been approved. No further action required.</p>
                 </div>
               </div>
               <div className="flex gap-4">
@@ -654,8 +654,8 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
           )}
 
           {!getApprovalPermission().allowed && (
-            <div className="p-3 bg-red-50 text-red-800 rounded-lg border border-red-200 text-xs font-semibold flex items-center gap-2">
-              <AlertTriangle className="w-4 h-4 text-red-600 flex-shrink-0 animate-pulse" />
+            <div className="p-3 bg-red-500/10 text-red-300 rounded-lg border border-red-500/30 text-xs font-semibold flex items-center gap-2">
+              <AlertTriangle className="w-4 h-4 text-red-400 flex-shrink-0 animate-pulse" />
               <span>{getApprovalPermission().reason}</span>
             </div>
           )}
@@ -704,7 +704,7 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
                       key={doc.id}
                       className={`flex items-start gap-3 p-3 rounded-xl border-2 cursor-pointer transition-all ${
                         selectedDocs[doc.id] 
-                          ? 'bg-amber-50/70 border-amber-400 shadow-sm' 
+                          ? 'bg-amber-500/10/70 border-amber-400 shadow-sm' 
                           : 'bg-[#1e293b] border-white/10 hover:bg-white/5'
                       }`}
                     >
@@ -712,7 +712,7 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
                         type="checkbox"
                         checked={selectedDocs[doc.id]}
                         onChange={(e) => handleDocCheckboxChange(doc.id, e.target.checked)}
-                        className="mt-1 h-4 w-4 rounded border-gray-300 text-amber-600 focus:ring-amber-500"
+                        className="mt-1 h-4 w-4 rounded border-white/10 text-amber-400 focus:ring-amber-500"
                       />
                       <div>
                         <div className="text-xs font-bold text-white">{doc.label}</div>
@@ -747,9 +747,9 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
                 </label>
                 <div className="flex gap-4">
                   {[
-                    { level: 'Low' as const, label: 'Standard (5 business days)', color: 'border-green-300 text-green-700 bg-green-50/30' },
-                    { level: 'Medium' as const, label: 'High Priority (3 business days)', color: 'border-amber-300 text-amber-700 bg-amber-50/30' },
-                    { level: 'High' as const, label: 'Escalated Urgency (24 Hours)', color: 'border-red-300 text-red-700 bg-red-50/30' }
+                    { level: 'Low' as const, label: 'Standard (5 business days)', color: 'border-green-300 text-green-300 bg-green-500/10/30' },
+                    { level: 'Medium' as const, label: 'High Priority (3 business days)', color: 'border-amber-300 text-amber-300 bg-amber-500/10/30' },
+                    { level: 'High' as const, label: 'Escalated Urgency (24 Hours)', color: 'border-red-300 text-red-300 bg-red-500/10/30' }
                   ].map((opt) => (
                     <label
                       key={opt.level}
@@ -773,9 +773,9 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
               </div>
 
               {/* Informative advice */}
-              <div className="p-4 bg-amber-50/70 rounded-xl border border-amber-100 flex items-start gap-3">
-                <Info className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
-                <div className="text-[11px] text-amber-800 leading-relaxed">
+              <div className="p-4 bg-amber-500/10/70 rounded-xl border border-amber-500/20 flex items-start gap-3">
+                <Info className="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0" />
+                <div className="text-[11px] text-amber-300 leading-relaxed">
                   <strong>Notification Dispatching:</strong> Upon confirmation, the compliance client portal will transition to <span className="font-semibold">"Pending Info"</span> status, and an automated verification request containing your specific custom instructions will be emailed directly to the client's registered representative.
                 </div>
               </div>
@@ -786,7 +786,7 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
                   type="button"
                   variant="outline"
                   onClick={() => setShowInfoModal(false)}
-                  className="px-5 py-2 border-gray-300"
+                  className="px-5 py-2 border-white/10"
                 >
                   Cancel Request
                 </Button>

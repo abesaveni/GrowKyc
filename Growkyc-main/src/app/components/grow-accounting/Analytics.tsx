@@ -132,14 +132,14 @@ export function Analytics({ onNavigate }: AnalyticsProps) {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-[32px] font-bold text-gray-900">Analytics</h1>
-            <p className="text-sm text-gray-600 mt-1">Track performance and insights across your firm</p>
+            <h1 className="text-[32px] font-bold text-slate-100">Analytics</h1>
+            <p className="text-sm text-slate-300 mt-1">Track performance and insights across your firm</p>
           </div>
           <div className="flex items-center gap-3">
             <select
               value={dateRange}
               onChange={(e) => setDateRange(e.target.value as any)}
-              className="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+              className="px-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
             >
               <option value="7d">Last 7 days</option>
               <option value="30d">Last 30 days</option>
@@ -163,23 +163,23 @@ export function Analytics({ onNavigate }: AnalyticsProps) {
             <CardContent className="p-4">
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-2">
-                  <div className="p-2 bg-green-50 rounded-lg">
-                    <DollarSign className="w-4 h-4 text-green-600" />
+                  <div className="p-2 bg-green-500/10 rounded-lg">
+                    <DollarSign className="w-4 h-4 text-green-400" />
                   </div>
-                  <span className="text-xs text-gray-600">Revenue</span>
+                  <span className="text-xs text-slate-300">Revenue</span>
                 </div>
-                <div className="flex items-center gap-1 text-xs text-green-600">
+                <div className="flex items-center gap-1 text-xs text-green-400">
                   <ArrowUp className="w-3 h-3" />
                   <span>{kpiData.revenue.change}%</span>
                 </div>
               </div>
-              <p className="text-2xl font-bold text-gray-900">${(kpiData.revenue.current / 1000).toFixed(0)}K</p>
+              <p className="text-2xl font-bold text-slate-100">${(kpiData.revenue.current / 1000).toFixed(0)}K</p>
               <div className="mt-2">
-                <div className="flex items-center justify-between text-xs text-gray-600 mb-1">
+                <div className="flex items-center justify-between text-xs text-slate-300 mb-1">
                   <span>Target: ${(kpiData.revenue.target / 1000).toFixed(0)}K</span>
                   <span>{kpiData.revenue.progress.toFixed(1)}%</span>
                 </div>
-                <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
                   <div 
                     className="h-full bg-green-500"
                     style={{ width: `${kpiData.revenue.progress}%` }}
@@ -193,23 +193,23 @@ export function Analytics({ onNavigate }: AnalyticsProps) {
             <CardContent className="p-4">
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-2">
-                  <div className="p-2 bg-blue-50 rounded-lg">
-                    <Briefcase className="w-4 h-4 text-blue-600" />
+                  <div className="p-2 bg-blue-500/10 rounded-lg">
+                    <Briefcase className="w-4 h-4 text-blue-400" />
                   </div>
-                  <span className="text-xs text-gray-600">Jobs</span>
+                  <span className="text-xs text-slate-300">Jobs</span>
                 </div>
-                <div className="flex items-center gap-1 text-xs text-green-600">
+                <div className="flex items-center gap-1 text-xs text-green-400">
                   <ArrowUp className="w-3 h-3" />
                   <span>{kpiData.jobs.change}%</span>
                 </div>
               </div>
-              <p className="text-2xl font-bold text-gray-900">{kpiData.jobs.current}</p>
+              <p className="text-2xl font-bold text-slate-100">{kpiData.jobs.current}</p>
               <div className="mt-2">
-                <div className="flex items-center justify-between text-xs text-gray-600 mb-1">
+                <div className="flex items-center justify-between text-xs text-slate-300 mb-1">
                   <span>Target: {kpiData.jobs.target}</span>
                   <span>{kpiData.jobs.progress.toFixed(1)}%</span>
                 </div>
-                <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
                   <div 
                     className="h-full bg-blue-500"
                     style={{ width: `${kpiData.jobs.progress}%` }}
@@ -223,23 +223,23 @@ export function Analytics({ onNavigate }: AnalyticsProps) {
             <CardContent className="p-4">
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-2">
-                  <div className="p-2 bg-purple-50 rounded-lg">
-                    <Users className="w-4 h-4 text-purple-600" />
+                  <div className="p-2 bg-purple-500/10 rounded-lg">
+                    <Users className="w-4 h-4 text-purple-400" />
                   </div>
-                  <span className="text-xs text-gray-600">Clients</span>
+                  <span className="text-xs text-slate-300">Clients</span>
                 </div>
-                <div className="flex items-center gap-1 text-xs text-green-600">
+                <div className="flex items-center gap-1 text-xs text-green-400">
                   <ArrowUp className="w-3 h-3" />
                   <span>{kpiData.clients.change}%</span>
                 </div>
               </div>
-              <p className="text-2xl font-bold text-gray-900">{kpiData.clients.current}</p>
+              <p className="text-2xl font-bold text-slate-100">{kpiData.clients.current}</p>
               <div className="mt-2">
-                <div className="flex items-center justify-between text-xs text-gray-600 mb-1">
+                <div className="flex items-center justify-between text-xs text-slate-300 mb-1">
                   <span>Target: {kpiData.clients.target}</span>
                   <span>{kpiData.clients.progress.toFixed(1)}%</span>
                 </div>
-                <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
                   <div 
                     className="h-full bg-purple-500"
                     style={{ width: `${kpiData.clients.progress}%` }}
@@ -253,23 +253,23 @@ export function Analytics({ onNavigate }: AnalyticsProps) {
             <CardContent className="p-4">
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-2">
-                  <div className="p-2 bg-orange-50 rounded-lg">
-                    <Target className="w-4 h-4 text-orange-600" />
+                  <div className="p-2 bg-orange-500/10 rounded-lg">
+                    <Target className="w-4 h-4 text-orange-400" />
                   </div>
-                  <span className="text-xs text-gray-600">Efficiency</span>
+                  <span className="text-xs text-slate-300">Efficiency</span>
                 </div>
-                <div className="flex items-center gap-1 text-xs text-green-600">
+                <div className="flex items-center gap-1 text-xs text-green-400">
                   <ArrowUp className="w-3 h-3" />
                   <span>{kpiData.efficiency.change}%</span>
                 </div>
               </div>
-              <p className="text-2xl font-bold text-gray-900">{kpiData.efficiency.current}%</p>
+              <p className="text-2xl font-bold text-slate-100">{kpiData.efficiency.current}%</p>
               <div className="mt-2">
-                <div className="flex items-center justify-between text-xs text-gray-600 mb-1">
+                <div className="flex items-center justify-between text-xs text-slate-300 mb-1">
                   <span>Target: {kpiData.efficiency.target}%</span>
                   <span>{kpiData.efficiency.progress.toFixed(1)}%</span>
                 </div>
-                <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
                   <div 
                     className="h-full bg-orange-500"
                     style={{ width: `${kpiData.efficiency.progress}%` }}
@@ -287,17 +287,17 @@ export function Analytics({ onNavigate }: AnalyticsProps) {
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-6">
                 <div>
-                  <h3 className="font-semibold text-gray-900">Revenue Trend</h3>
-                  <p className="text-sm text-gray-600 mt-1">Monthly revenue vs target</p>
+                  <h3 className="font-semibold text-slate-100">Revenue Trend</h3>
+                  <p className="text-sm text-slate-300 mt-1">Monthly revenue vs target</p>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="flex items-center gap-2 text-sm">
                     <div className="w-3 h-3 bg-[#2855a6] rounded-full" />
-                    <span className="text-gray-600">Actual</span>
+                    <span className="text-slate-300">Actual</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <div className="w-3 h-3 bg-gray-300 rounded-full" />
-                    <span className="text-gray-600">Target</span>
+                    <span className="text-slate-300">Target</span>
                   </div>
                 </div>
               </div>
@@ -344,8 +344,8 @@ export function Analytics({ onNavigate }: AnalyticsProps) {
           <Card className="col-span-4 shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-6">
               <div className="mb-6">
-                <h3 className="font-semibold text-gray-900">Client Distribution</h3>
-                <p className="text-sm text-gray-600 mt-1">By entity type</p>
+                <h3 className="font-semibold text-slate-100">Client Distribution</h3>
+                <p className="text-sm text-slate-300 mt-1">By entity type</p>
               </div>
               <ResponsiveContainer width="100%" height={240}>
                 <RePieChart>
@@ -370,9 +370,9 @@ export function Analytics({ onNavigate }: AnalyticsProps) {
                   <div key={idx} className="flex items-center justify-between text-sm">
                     <div className="flex items-center gap-2">
                       <div className="w-3 h-3 rounded-full" style={{ backgroundColor: type.color }} />
-                      <span className="text-gray-700">{type.name}</span>
+                      <span className="text-slate-300">{type.name}</span>
                     </div>
-                    <span className="font-semibold text-gray-900">{type.value}</span>
+                    <span className="font-semibold text-slate-100">{type.value}</span>
                   </div>
                 ))}
               </div>
@@ -387,8 +387,8 @@ export function Analytics({ onNavigate }: AnalyticsProps) {
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-6">
                 <div>
-                  <h3 className="font-semibold text-gray-900">Jobs Overview</h3>
-                  <p className="text-sm text-gray-600 mt-1">Completed vs pending jobs</p>
+                  <h3 className="font-semibold text-slate-100">Jobs Overview</h3>
+                  <p className="text-sm text-slate-300 mt-1">Completed vs pending jobs</p>
                 </div>
               </div>
               <ResponsiveContainer width="100%" height={250}>
@@ -416,8 +416,8 @@ export function Analytics({ onNavigate }: AnalyticsProps) {
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-6">
                 <div>
-                  <h3 className="font-semibold text-gray-900">Revenue by Service</h3>
-                  <p className="text-sm text-gray-600 mt-1">Top performing services</p>
+                  <h3 className="font-semibold text-slate-100">Revenue by Service</h3>
+                  <p className="text-sm text-slate-300 mt-1">Top performing services</p>
                 </div>
               </div>
               <ResponsiveContainer width="100%" height={250}>
@@ -445,46 +445,46 @@ export function Analytics({ onNavigate }: AnalyticsProps) {
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-6">
               <div>
-                <h3 className="font-semibold text-gray-900">Staff Productivity</h3>
-                <p className="text-sm text-gray-600 mt-1">Performance metrics by team member</p>
+                <h3 className="font-semibold text-slate-100">Staff Productivity</h3>
+                <p className="text-sm text-slate-300 mt-1">Performance metrics by team member</p>
               </div>
             </div>
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-gray-200">
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Staff Member</th>
-                    <th className="text-right py-3 px-4 text-sm font-semibold text-gray-700">Jobs Completed</th>
-                    <th className="text-right py-3 px-4 text-sm font-semibold text-gray-700">Hours Logged</th>
-                    <th className="text-right py-3 px-4 text-sm font-semibold text-gray-700">Efficiency</th>
-                    <th className="text-right py-3 px-4 text-sm font-semibold text-gray-700">Performance</th>
+                  <tr className="border-b border-white/10">
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-300">Staff Member</th>
+                    <th className="text-right py-3 px-4 text-sm font-semibold text-slate-300">Jobs Completed</th>
+                    <th className="text-right py-3 px-4 text-sm font-semibold text-slate-300">Hours Logged</th>
+                    <th className="text-right py-3 px-4 text-sm font-semibold text-slate-300">Efficiency</th>
+                    <th className="text-right py-3 px-4 text-sm font-semibold text-slate-300">Performance</th>
                   </tr>
                 </thead>
                 <tbody>
                   {staffProductivity.map((staff, idx) => (
-                    <tr key={idx} className="border-b border-gray-100 hover:bg-gray-50">
+                    <tr key={idx} className="border-b border-white/10 hover:bg-white/5">
                       <td className="py-4 px-4">
                         <div className="flex items-center gap-3">
                           <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-xs font-semibold text-white">
                             {staff.name.split(' ').map(n => n[0]).join('')}
                           </div>
-                          <span className="font-medium text-gray-900">{staff.name}</span>
+                          <span className="font-medium text-slate-100">{staff.name}</span>
                         </div>
                       </td>
-                      <td className="py-4 px-4 text-right font-semibold text-gray-900">{staff.jobs}</td>
-                      <td className="py-4 px-4 text-right text-gray-700">{staff.hours}h</td>
+                      <td className="py-4 px-4 text-right font-semibold text-slate-100">{staff.jobs}</td>
+                      <td className="py-4 px-4 text-right text-slate-300">{staff.hours}h</td>
                       <td className="py-4 px-4 text-right">
                         <span className={`px-2 py-1 rounded text-xs font-semibold ${
-                          staff.efficiency >= 95 ? 'bg-green-50 text-green-700' :
-                          staff.efficiency >= 90 ? 'bg-blue-50 text-blue-700' :
-                          'bg-orange-50 text-orange-700'
+                          staff.efficiency >= 95 ? 'bg-green-500/10 text-green-300' :
+                          staff.efficiency >= 90 ? 'bg-blue-500/10 text-blue-300' :
+                          'bg-orange-500/10 text-orange-300'
                         }`}>
                           {staff.efficiency}%
                         </span>
                       </td>
                       <td className="py-4 px-4">
                         <div className="flex items-center justify-end gap-2">
-                          <div className="w-24 h-2 bg-gray-100 rounded-full overflow-hidden">
+                          <div className="w-24 h-2 bg-white/5 rounded-full overflow-hidden">
                             <div 
                               className="h-full bg-[#2855a6]"
                               style={{ width: `${staff.efficiency}%` }}

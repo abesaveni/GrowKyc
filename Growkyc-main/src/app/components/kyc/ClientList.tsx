@@ -493,11 +493,11 @@ export function ClientList() {
             </div>
           </div>
           <div className="flex gap-3">
-            <Button className="bg-white text-indigo-600 hover:bg-indigo-50">
+            <Button className="bg-white text-indigo-400 hover:bg-indigo-500/10">
               <Download className="w-5 h-5 mr-2" />
               Export List
             </Button>
-            <Button className="bg-white text-indigo-600 hover:bg-indigo-50" onClick={fetchClients} disabled={loading}>
+            <Button className="bg-white text-indigo-400 hover:bg-indigo-500/10" onClick={fetchClients} disabled={loading}>
               <RefreshCw className={`w-5 h-5 mr-2 ${loading ? 'animate-spin' : ''}`} />
               Sync Updates
             </Button>
@@ -565,7 +565,7 @@ export function ClientList() {
       </div>
 
       {/* Search and Filters */}
-      <div className="bg-white rounded-lg border border-gray-200 p-6">
+      <div className="bg-white rounded-lg border border-white/10 p-6">
         <div className="flex items-center gap-4 mb-4">
           <div className="flex-1 relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -574,7 +574,7 @@ export function ClientList() {
               placeholder="Search by name, email, ABN, or client ID..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full pl-10 pr-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
           </div>
           <Button variant="outline">
@@ -585,14 +585,14 @@ export function ClientList() {
 
         <div className="flex gap-4">
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">Status</label>
+            <label className="block text-sm font-semibold text-slate-300 mb-2">Status</label>
             <div className="flex gap-2">
               <button
                 onClick={() => setFilterStatus('all')}
                 className={`px-3 py-1 rounded-lg text-sm font-semibold transition-colors ${
                   filterStatus === 'all'
                     ? 'bg-indigo-600 text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    : 'bg-white/5 text-slate-300 hover:bg-white/10'
                 }`}
               >
                 All
@@ -604,7 +604,7 @@ export function ClientList() {
                   className={`px-3 py-1 rounded-lg text-sm font-semibold transition-colors ${
                     filterStatus === status
                       ? 'bg-indigo-600 text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      : 'bg-white/5 text-slate-300 hover:bg-white/10'
                   }`}
                 >
                   {status.charAt(0).toUpperCase() + status.slice(1)}
@@ -614,14 +614,14 @@ export function ClientList() {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">Risk</label>
+            <label className="block text-sm font-semibold text-slate-300 mb-2">Risk</label>
             <div className="flex gap-2">
               <button
                 onClick={() => setFilterRisk('all')}
                 className={`px-3 py-1 rounded-lg text-sm font-semibold transition-colors ${
                   filterRisk === 'all'
                     ? 'bg-indigo-600 text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    : 'bg-white/5 text-slate-300 hover:bg-white/10'
                 }`}
               >
                 All
@@ -633,7 +633,7 @@ export function ClientList() {
                   className={`px-3 py-1 rounded-lg text-sm font-semibold transition-colors ${
                     filterRisk === risk
                       ? 'bg-indigo-600 text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      : 'bg-white/5 text-slate-300 hover:bg-white/10'
                   }`}
                 >
                   {risk.charAt(0).toUpperCase() + risk.slice(1)}
@@ -643,14 +643,14 @@ export function ClientList() {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">Type</label>
+            <label className="block text-sm font-semibold text-slate-300 mb-2">Type</label>
             <div className="flex gap-2">
               <button
                 onClick={() => setFilterType('all')}
                 className={`px-3 py-1 rounded-lg text-sm font-semibold transition-colors ${
                   filterType === 'all'
                     ? 'bg-indigo-600 text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    : 'bg-white/5 text-slate-300 hover:bg-white/10'
                 }`}
               >
                 All
@@ -662,7 +662,7 @@ export function ClientList() {
                   className={`px-3 py-1 rounded-lg text-sm font-semibold transition-colors ${
                     filterType === type
                       ? 'bg-indigo-600 text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      : 'bg-white/5 text-slate-300 hover:bg-white/10'
                   }`}
                 >
                   {label}
@@ -672,7 +672,7 @@ export function ClientList() {
           </div>
         </div>
 
-        <div className="mt-4 text-sm text-gray-600">
+        <div className="mt-4 text-sm text-slate-300">
           Showing <strong>{filteredClients.length}</strong> of <strong>{clients.length}</strong> clients
         </div>
       </div>
@@ -681,15 +681,15 @@ export function ClientList() {
       <div className="space-y-3">
         {filteredClients.map((client) => (
           <div key={client.id} className={`bg-white rounded-lg border-2 p-6 ${
-            client.status === 'restricted' ? 'border-red-300 bg-red-50' :
+            client.status === 'restricted' ? 'border-red-300 bg-red-500/10' :
             client.riskTier === 'critical' ? 'border-orange-300' :
-            client.riskTier === 'high' ? 'border-orange-200' :
-            'border-gray-200'
+            client.riskTier === 'high' ? 'border-orange-500/30' :
+            'border-white/10'
           }`}>
             <div className="flex items-start justify-between">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
-                  <h3 className="text-xl font-bold text-gray-900">{client.name}</h3>
+                  <h3 className="text-xl font-bold text-slate-100">{client.name}</h3>
                   <span className={`px-3 py-1 bg-${getStatusColor(client.status)}-100 text-${getStatusColor(client.status)}-700 text-sm font-bold rounded-full`}>
                     {client.status.toUpperCase()}
                   </span>
@@ -704,7 +704,7 @@ export function ClientList() {
                   )}
                 </div>
 
-                <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm text-gray-600 mb-4">
+                <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm text-slate-300 mb-4">
                   <div className="flex items-center gap-2">
                     <Hash className="w-4 h-4" />
                     <span>{client.id}</span>
@@ -748,59 +748,59 @@ export function ClientList() {
                 {/* Status Indicators */}
                 <div className="grid grid-cols-5 gap-3">
                   <div className={`p-2 rounded-lg border ${
-                    client.kycComplete ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50'
+                    client.kycComplete ? 'border-green-500/30 bg-green-500/10' : 'border-red-500/30 bg-red-500/10'
                   }`}>
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-semibold text-gray-700">KYC Complete</span>
+                      <span className="text-xs font-semibold text-slate-300">KYC Complete</span>
                       {client.kycComplete ? (
-                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <CheckCircle className="w-4 h-4 text-green-400" />
                       ) : (
-                        <XCircle className="w-4 h-4 text-red-600" />
+                        <XCircle className="w-4 h-4 text-red-400" />
                       )}
                     </div>
                   </div>
 
                   <div className={`p-2 rounded-lg border ${
-                    client.documentsUpToDate ? 'border-green-200 bg-green-50' : 'border-orange-200 bg-orange-50'
+                    client.documentsUpToDate ? 'border-green-500/30 bg-green-500/10' : 'border-orange-500/30 bg-orange-500/10'
                   }`}>
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-semibold text-gray-700">Documents</span>
+                      <span className="text-xs font-semibold text-slate-300">Documents</span>
                       {client.documentsUpToDate ? (
-                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <CheckCircle className="w-4 h-4 text-green-400" />
                       ) : (
-                        <AlertTriangle className="w-4 h-4 text-orange-600" />
+                        <AlertTriangle className="w-4 h-4 text-orange-400" />
                       )}
                     </div>
                   </div>
 
                   <div className={`p-2 rounded-lg border ${
-                    client.screeningStatus === 'clear' ? 'border-green-200 bg-green-50' :
-                    client.screeningStatus === 'match-review' ? 'border-yellow-200 bg-yellow-50' :
-                    'border-red-200 bg-red-50'
+                    client.screeningStatus === 'clear' ? 'border-green-500/30 bg-green-500/10' :
+                    client.screeningStatus === 'match-review' ? 'border-yellow-500/30 bg-yellow-500/10' :
+                    'border-red-500/30 bg-red-500/10'
                   }`}>
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-semibold text-gray-700">Screening</span>
+                      <span className="text-xs font-semibold text-slate-300">Screening</span>
                       {client.screeningStatus === 'clear' ? (
-                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <CheckCircle className="w-4 h-4 text-green-400" />
                       ) : client.screeningStatus === 'match-review' ? (
-                        <AlertTriangle className="w-4 h-4 text-yellow-600" />
+                        <AlertTriangle className="w-4 h-4 text-yellow-400" />
                       ) : (
-                        <XCircle className="w-4 h-4 text-red-600" />
+                        <XCircle className="w-4 h-4 text-red-400" />
                       )}
                     </div>
                   </div>
 
-                  <div className="p-2 rounded-lg border border-blue-200 bg-blue-50">
-                    <p className="text-xs font-semibold text-gray-700 mb-1">Last Review</p>
-                    <p className="text-xs text-blue-700">{client.lastReviewDate.toLocaleDateString()}</p>
+                  <div className="p-2 rounded-lg border border-blue-500/30 bg-blue-500/10">
+                    <p className="text-xs font-semibold text-slate-300 mb-1">Last Review</p>
+                    <p className="text-xs text-blue-300">{client.lastReviewDate.toLocaleDateString()}</p>
                   </div>
 
                   <div className={`p-2 rounded-lg border ${
-                    client.nextReviewDue < new Date() ? 'border-red-200 bg-red-50' : 'border-gray-200 bg-gray-50'
+                    client.nextReviewDue < new Date() ? 'border-red-500/30 bg-red-500/10' : 'border-white/10 bg-white/5'
                   }`}>
-                    <p className="text-xs font-semibold text-gray-700 mb-1">Next Review</p>
+                    <p className="text-xs font-semibold text-slate-300 mb-1">Next Review</p>
                     <p className={`text-xs font-semibold ${
-                      client.nextReviewDue < new Date() ? 'text-red-700' : 'text-gray-700'
+                      client.nextReviewDue < new Date() ? 'text-red-300' : 'text-slate-300'
                     }`}>
                       {client.nextReviewDue.toLocaleDateString()}
                     </p>
@@ -810,15 +810,15 @@ export function ClientList() {
                 {/* Engagement Value */}
                 <div className="mt-4 flex items-center gap-6">
                   <div className="flex items-center gap-2">
-                    <TrendingUp className="w-4 h-4 text-green-600" />
-                    <span className="text-sm text-gray-600">Engagement Value:</span>
-                    <span className="text-lg font-bold text-green-600">
+                    <TrendingUp className="w-4 h-4 text-green-400" />
+                    <span className="text-sm text-slate-300">Engagement Value:</span>
+                    <span className="text-lg font-bold text-green-400">
                       ${client.engagementValue.toLocaleString()}
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4 text-gray-600" />
-                    <span className="text-sm text-gray-600">
+                    <Calendar className="w-4 h-4 text-slate-300" />
+                    <span className="text-sm text-slate-300">
                       Onboarded: {client.onboardedDate.toLocaleDateString()}
                     </span>
                   </div>
@@ -843,10 +843,10 @@ export function ClientList() {
       </div>
 
       {filteredClients.length === 0 && (
-        <div className="bg-white rounded-lg border border-gray-200 p-12 text-center">
+        <div className="bg-white rounded-lg border border-white/10 p-12 text-center">
           <Users className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-          <h3 className="text-xl font-bold text-gray-900 mb-2">No Clients Found</h3>
-          <p className="text-gray-600">Try adjusting your search or filter criteria</p>
+          <h3 className="text-xl font-bold text-slate-100 mb-2">No Clients Found</h3>
+          <p className="text-slate-300">Try adjusting your search or filter criteria</p>
         </div>
       )}
     </div>

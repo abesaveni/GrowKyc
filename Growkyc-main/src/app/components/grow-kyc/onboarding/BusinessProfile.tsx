@@ -54,15 +54,15 @@ export function BusinessProfile({ entity, onComplete }: BusinessProfileProps) {
           <Card className="border-2">
             <CardContent className="p-3 text-center">
               <TrendingUp className={`w-6 h-6 mx-auto mb-1 ${
-                riskScore < 30 ? 'text-green-600' :
-                riskScore < 60 ? 'text-amber-600' :
-                'text-red-600'
+                riskScore < 30 ? 'text-green-400' :
+                riskScore < 60 ? 'text-amber-400' :
+                'text-red-400'
               }`} />
               <div className="text-xs text-slate-300">Risk Score</div>
               <div className={`text-lg font-bold ${
-                riskScore < 30 ? 'text-green-600' :
-                riskScore < 60 ? 'text-amber-600' :
-                'text-red-600'
+                riskScore < 30 ? 'text-green-400' :
+                riskScore < 60 ? 'text-amber-400' :
+                'text-red-400'
               }`}>{riskScore}</div>
             </CardContent>
           </Card>
@@ -117,8 +117,8 @@ export function BusinessProfile({ entity, onComplete }: BusinessProfileProps) {
               />
             </div>
             {formData.cashHandling && (
-              <Card className="bg-amber-50 border-amber-200">
-                <CardContent className="p-3 text-sm text-amber-900">
+              <Card className="bg-amber-500/10 border-amber-500/30">
+                <CardContent className="p-3 text-sm text-amber-300">
                   Additional verification may be required due to higher risk profile.
                 </CardContent>
               </Card>
@@ -135,8 +135,8 @@ export function BusinessProfile({ entity, onComplete }: BusinessProfileProps) {
               />
             </div>
             {formData.cryptoExposure && (
-              <Card className="bg-amber-50 border-amber-200">
-                <CardContent className="p-3 text-sm text-amber-900">
+              <Card className="bg-amber-500/10 border-amber-500/30">
+                <CardContent className="p-3 text-sm text-amber-300">
                   Enhanced due diligence applies to cryptocurrency activities.
                 </CardContent>
               </Card>

@@ -34,12 +34,12 @@ export function CDDDataCapture({ entities, onUpdate, onBack, onContinue, canProg
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900">Phase 4: Full AML/CDD Compliance</h2>
-        <p className="text-gray-600">Complete all mandatory fields for AUSTRAC compliance</p>
+        <h2 className="text-2xl font-bold text-slate-100">Phase 4: Full AML/CDD Compliance</h2>
+        <p className="text-slate-300">Complete all mandatory fields for AUSTRAC compliance</p>
       </div>
 
       {/* Entity Selection Tabs */}
-      <div className="flex gap-2 overflow-x-auto pb-2 border-b-2 border-gray-200">
+      <div className="flex gap-2 overflow-x-auto pb-2 border-b-2 border-white/10">
         {entities.map((entity) => (
           <button
             key={entity.id}
@@ -47,7 +47,7 @@ export function CDDDataCapture({ entities, onUpdate, onBack, onContinue, canProg
             className={`px-4 py-2 rounded-t-lg whitespace-nowrap flex items-center gap-2 ${
               selectedEntityId === entity.id
                 ? 'bg-blue-600 text-white'
-                : 'bg-white border-2 border-gray-200 text-gray-700 hover:border-blue-300'
+                : 'bg-white border-2 border-white/10 text-slate-300 hover:border-blue-300'
             }`}
           >
             {entity.name}
@@ -63,7 +63,7 @@ export function CDDDataCapture({ entities, onUpdate, onBack, onContinue, canProg
 
       {/* Entity Form */}
       {selectedEntity && (
-        <div className="bg-white border-2 border-gray-200 rounded-lg p-6">
+        <div className="bg-white border-2 border-white/10 rounded-lg p-6">
           {selectedEntity.type === 'individual' || selectedEntity.type === 'sole-trader' ? (
             <IndividualCDDForm
               entity={selectedEntity}
@@ -95,7 +95,7 @@ export function CDDDataCapture({ entities, onUpdate, onBack, onContinue, canProg
               isScreening={isScreening}
             />
           ) : (
-            <div className="text-center py-12 text-gray-600">
+            <div className="text-center py-12 text-slate-300">
               CDD form for {selectedEntity.type} coming soon
             </div>
           )}
@@ -109,7 +109,7 @@ export function CDDDataCapture({ entities, onUpdate, onBack, onContinue, canProg
         </SecondaryButton>
         <div className="flex items-center gap-4">
           {!canProgress && (
-            <div className="flex items-center gap-2 text-amber-600">
+            <div className="flex items-center gap-2 text-amber-400">
               <AlertCircle className="w-5 h-5" />
               <span className="text-sm font-semibold">Complete all mandatory fields and clear screenings</span>
             </div>
@@ -151,118 +151,118 @@ function IndividualCDDForm({ entity, onComplete, isScreening }: any) {
 
   return (
     <div className="space-y-6">
-      <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-        <Shield className="w-6 h-6 text-blue-600" />
+      <h3 className="text-xl font-bold text-slate-100 flex items-center gap-2">
+        <Shield className="w-6 h-6 text-blue-400" />
         Individual CDD Form - {entity.name}
       </h3>
 
       {/* Personal Details */}
       <div className="border-l-4 border-blue-600 pl-4">
-        <h4 className="font-bold text-gray-900 mb-4">Personal Details</h4>
+        <h4 className="font-bold text-slate-100 mb-4">Personal Details</h4>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
-              Full Legal Name <span className="text-red-600">*</span>
+            <label className="block text-sm font-semibold text-slate-300 mb-2">
+              Full Legal Name <span className="text-red-400">*</span>
             </label>
             <input
               type="text"
               value={formData.fullLegalName || ''}
               onChange={(e) => updateField('fullLegalName', e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg"
               required
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-slate-300 mb-2">
               Any Former Names
             </label>
             <input
               type="text"
               value={formData.formerNames || ''}
               onChange={(e) => updateField('formerNames', e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg"
               placeholder="Previous names if any"
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
-              Date of Birth <span className="text-red-600">*</span>
+            <label className="block text-sm font-semibold text-slate-300 mb-2">
+              Date of Birth <span className="text-red-400">*</span>
             </label>
             <input
               type="date"
               value={formData.dateOfBirth || ''}
               onChange={(e) => updateField('dateOfBirth', e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg"
               required
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
-              Occupation <span className="text-red-600">*</span>
+            <label className="block text-sm font-semibold text-slate-300 mb-2">
+              Occupation <span className="text-red-400">*</span>
             </label>
             <input
               type="text"
               value={formData.occupation || ''}
               onChange={(e) => updateField('occupation', e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg"
               required
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-slate-300 mb-2">
               Employer
             </label>
             <input
               type="text"
               value={formData.employer || ''}
               onChange={(e) => updateField('employer', e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg"
             />
           </div>
           <div className="md:col-span-2">
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
-              Residential Address <span className="text-red-600">*</span>
+            <label className="block text-sm font-semibold text-slate-300 mb-2">
+              Residential Address <span className="text-red-400">*</span>
             </label>
             <input
               type="text"
               value={formData.residentialAddress || ''}
               onChange={(e) => updateField('residentialAddress', e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg"
               required
             />
           </div>
           <div className="md:col-span-2">
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-slate-300 mb-2">
               Postal Address (if different)
             </label>
             <input
               type="text"
               value={formData.postalAddress || ''}
               onChange={(e) => updateField('postalAddress', e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg"
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
-              Email <span className="text-red-600">*</span>
+            <label className="block text-sm font-semibold text-slate-300 mb-2">
+              Email <span className="text-red-400">*</span>
             </label>
             <input
               type="email"
               value={formData.email || ''}
               onChange={(e) => updateField('email', e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg"
               required
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
-              Phone <span className="text-red-600">*</span>
+            <label className="block text-sm font-semibold text-slate-300 mb-2">
+              Phone <span className="text-red-400">*</span>
             </label>
             <input
               type="tel"
               value={formData.phone || ''}
               onChange={(e) => updateField('phone', e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg"
               required
             />
           </div>
@@ -271,28 +271,28 @@ function IndividualCDDForm({ entity, onComplete, isScreening }: any) {
 
       {/* Tax Information */}
       <div className="border-l-4 border-green-600 pl-4">
-        <h4 className="font-bold text-gray-900 mb-4">Tax Information</h4>
+        <h4 className="font-bold text-slate-100 mb-4">Tax Information</h4>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-slate-300 mb-2">
               Tax File Number (TFN)
             </label>
             <input
               type="text"
               value={formData.tfn || ''}
               onChange={(e) => updateField('tfn', e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg"
               maxLength={9}
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-slate-300 mb-2">
               Country of Tax Residence
             </label>
             <select
               value={formData.taxResidenceCountry || 'Australia'}
               onChange={(e) => updateField('taxResidenceCountry', e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg"
             >
               <option value="Australia">Australia</option>
               <option value="United States">United States</option>
@@ -302,14 +302,14 @@ function IndividualCDDForm({ entity, onComplete, isScreening }: any) {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-slate-300 mb-2">
               Foreign Tax ID (if applicable)
             </label>
             <input
               type="text"
               value={formData.foreignTaxId || ''}
               onChange={(e) => updateField('foreignTaxId', e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg"
             />
           </div>
         </div>
@@ -318,50 +318,50 @@ function IndividualCDDForm({ entity, onComplete, isScreening }: any) {
       {/* Sole Trader Additional Fields */}
       {entity.type === 'sole-trader' && (
         <div className="border-l-4 border-purple-600 pl-4">
-          <h4 className="font-bold text-gray-900 mb-4">Business Details</h4>
+          <h4 className="font-bold text-slate-100 mb-4">Business Details</h4>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
-                ABN <span className="text-red-600">*</span>
+              <label className="block text-sm font-semibold text-slate-300 mb-2">
+                ABN <span className="text-red-400">*</span>
               </label>
               <input
                 type="text"
                 value={formData.abn || ''}
                 onChange={(e) => updateField('abn', e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                className="w-full px-4 py-2 border border-white/10 rounded-lg"
                 maxLength={11}
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-slate-300 mb-2">
                 Business Name
               </label>
               <input
                 type="text"
                 value={formData.businessName || ''}
                 onChange={(e) => updateField('businessName', e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                className="w-full px-4 py-2 border border-white/10 rounded-lg"
               />
             </div>
             <div className="md:col-span-2">
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-slate-300 mb-2">
                 Principal Place of Business
               </label>
               <input
                 type="text"
                 value={formData.principalPlace || ''}
                 onChange={(e) => updateField('principalPlace', e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                className="w-full px-4 py-2 border border-white/10 rounded-lg"
               />
             </div>
             <div className="md:col-span-2">
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-slate-300 mb-2">
                 Nature of Business
               </label>
               <textarea
                 value={formData.natureOfBusiness || ''}
                 onChange={(e) => updateField('natureOfBusiness', e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                className="w-full px-4 py-2 border border-white/10 rounded-lg"
                 rows={2}
               />
             </div>
@@ -371,9 +371,9 @@ function IndividualCDDForm({ entity, onComplete, isScreening }: any) {
 
       {/* Risk Assessment */}
       <div className="border-l-4 border-red-600 pl-4">
-        <h4 className="font-bold text-gray-900 mb-4">Risk Assessment</h4>
+        <h4 className="font-bold text-slate-100 mb-4">Risk Assessment</h4>
         <div className="space-y-3">
-          <label className="flex items-start gap-3 p-3 border border-gray-200 rounded hover:bg-gray-50">
+          <label className="flex items-start gap-3 p-3 border border-white/10 rounded hover:bg-white/5">
             <input
               type="checkbox"
               checked={formData.cashInvolvement || false}
@@ -381,11 +381,11 @@ function IndividualCDDForm({ entity, onComplete, isScreening }: any) {
               className="mt-1 w-4 h-4"
             />
             <div>
-              <span className="text-sm font-semibold text-gray-900">Cash Involvement</span>
-              <p className="text-xs text-gray-600">Significant cash transactions in business activities</p>
+              <span className="text-sm font-semibold text-slate-100">Cash Involvement</span>
+              <p className="text-xs text-slate-300">Significant cash transactions in business activities</p>
             </div>
           </label>
-          <label className="flex items-start gap-3 p-3 border border-gray-200 rounded hover:bg-gray-50">
+          <label className="flex items-start gap-3 p-3 border border-white/10 rounded hover:bg-white/5">
             <input
               type="checkbox"
               checked={formData.cryptoInvolvement || false}
@@ -393,11 +393,11 @@ function IndividualCDDForm({ entity, onComplete, isScreening }: any) {
               className="mt-1 w-4 h-4"
             />
             <div>
-              <span className="text-sm font-semibold text-gray-900">Cryptocurrency Involvement</span>
-              <p className="text-xs text-gray-600">Dealing in digital currencies or crypto assets</p>
+              <span className="text-sm font-semibold text-slate-100">Cryptocurrency Involvement</span>
+              <p className="text-xs text-slate-300">Dealing in digital currencies or crypto assets</p>
             </div>
           </label>
-          <label className="flex items-start gap-3 p-3 border border-gray-200 rounded hover:bg-gray-50">
+          <label className="flex items-start gap-3 p-3 border border-white/10 rounded hover:bg-white/5">
             <input
               type="checkbox"
               checked={formData.pepStatus || false}
@@ -405,11 +405,11 @@ function IndividualCDDForm({ entity, onComplete, isScreening }: any) {
               className="mt-1 w-4 h-4"
             />
             <div>
-              <span className="text-sm font-semibold text-gray-900">Politically Exposed Person (PEP)</span>
-              <p className="text-xs text-gray-600">Hold or have held prominent public function</p>
+              <span className="text-sm font-semibold text-slate-100">Politically Exposed Person (PEP)</span>
+              <p className="text-xs text-slate-300">Hold or have held prominent public function</p>
             </div>
           </label>
-          <label className="flex items-start gap-3 p-3 border border-gray-200 rounded hover:bg-gray-50">
+          <label className="flex items-start gap-3 p-3 border border-white/10 rounded hover:bg-white/5">
             <input
               type="checkbox"
               checked={formData.relatedPartyPep || false}
@@ -417,11 +417,11 @@ function IndividualCDDForm({ entity, onComplete, isScreening }: any) {
               className="mt-1 w-4 h-4"
             />
             <div>
-              <span className="text-sm font-semibold text-gray-900">Related Party PEP</span>
-              <p className="text-xs text-gray-600">Family member or close associate of PEP</p>
+              <span className="text-sm font-semibold text-slate-100">Related Party PEP</span>
+              <p className="text-xs text-slate-300">Family member or close associate of PEP</p>
             </div>
           </label>
-          <label className="flex items-start gap-3 p-3 border border-gray-200 rounded hover:bg-gray-50">
+          <label className="flex items-start gap-3 p-3 border border-white/10 rounded hover:bg-white/5">
             <input
               type="checkbox"
               checked={formData.unexplainedWealth || false}
@@ -429,11 +429,11 @@ function IndividualCDDForm({ entity, onComplete, isScreening }: any) {
               className="mt-1 w-4 h-4"
             />
             <div>
-              <span className="text-sm font-semibold text-gray-900">Unexplained Wealth Declaration</span>
-              <p className="text-xs text-gray-600">Unable to adequately explain source of wealth</p>
+              <span className="text-sm font-semibold text-slate-100">Unexplained Wealth Declaration</span>
+              <p className="text-xs text-slate-300">Unable to adequately explain source of wealth</p>
             </div>
           </label>
-          <label className="flex items-start gap-3 p-3 border border-gray-200 rounded hover:bg-gray-50">
+          <label className="flex items-start gap-3 p-3 border border-white/10 rounded hover:bg-white/5">
             <input
               type="checkbox"
               checked={formData.charityNpo || false}
@@ -441,8 +441,8 @@ function IndividualCDDForm({ entity, onComplete, isScreening }: any) {
               className="mt-1 w-4 h-4"
             />
             <div>
-              <span className="text-sm font-semibold text-gray-900">Charity or NPO Involvement</span>
-              <p className="text-xs text-gray-600">Involved with charities or not-for-profit organizations</p>
+              <span className="text-sm font-semibold text-slate-100">Charity or NPO Involvement</span>
+              <p className="text-xs text-slate-300">Involved with charities or not-for-profit organizations</p>
             </div>
           </label>
         </div>
@@ -450,29 +450,29 @@ function IndividualCDDForm({ entity, onComplete, isScreening }: any) {
 
       {/* Source of Funds */}
       <div className="border-l-4 border-amber-600 pl-4">
-        <h4 className="font-bold text-gray-900 mb-4">Source Information</h4>
+        <h4 className="font-bold text-slate-100 mb-4">Source Information</h4>
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
-              Source of Funds <span className="text-red-600">*</span>
+            <label className="block text-sm font-semibold text-slate-300 mb-2">
+              Source of Funds <span className="text-red-400">*</span>
             </label>
             <textarea
               value={formData.sourceOfFunds || ''}
               onChange={(e) => updateField('sourceOfFunds', e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg"
               rows={3}
               placeholder="Describe where your money comes from (e.g., employment income, business profits, investments)"
               required
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-slate-300 mb-2">
               Source of Wealth
             </label>
             <textarea
               value={formData.sourceOfWealth || ''}
               onChange={(e) => updateField('sourceOfWealth', e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg"
               rows={3}
               placeholder="Describe how you accumulated your wealth (e.g., inheritance, business sale, career earnings)"
             />
@@ -482,15 +482,15 @@ function IndividualCDDForm({ entity, onComplete, isScreening }: any) {
 
       {/* ID Documents */}
       <div className="border-l-4 border-indigo-600 pl-4">
-        <h4 className="font-bold text-gray-900 mb-4">
-          ID Documents <span className="text-red-600">*</span>
+        <h4 className="font-bold text-slate-100 mb-4">
+          ID Documents <span className="text-red-400">*</span>
         </h4>
-        <p className="text-sm text-gray-600 mb-4">
+        <p className="text-sm text-slate-300 mb-4">
           Upload certified copy of Driver License OR Passport (as per Appendix A)
         </p>
-        <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+        <div className="border-2 border-dashed border-white/10 rounded-lg p-6 text-center">
           <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
-          <p className="text-sm text-gray-600 mb-2">Drag and drop or click to upload</p>
+          <p className="text-sm text-slate-300 mb-2">Drag and drop or click to upload</p>
           <input
             type="file"
             multiple
@@ -509,7 +509,7 @@ function IndividualCDDForm({ entity, onComplete, isScreening }: any) {
             </span>
           </label>
           {formData.idDocuments && formData.idDocuments.length > 0 && (
-            <p className="text-sm text-green-600 mt-2">
+            <p className="text-sm text-green-400 mt-2">
               ✓ {formData.idDocuments.length} document(s) uploaded
             </p>
           )}

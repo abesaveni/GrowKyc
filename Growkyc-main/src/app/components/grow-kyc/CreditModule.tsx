@@ -127,7 +127,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                 Back
               </Button>
               <div className="h-6 w-px bg-gray-300" />
-              <DollarSign className="w-6 h-6 text-green-600" />
+              <DollarSign className="w-6 h-6 text-green-400" />
               <div>
                 <h1 className="text-2xl font-bold text-white">Credit & Responsible Lending</h1>
                 <p className="text-sm text-slate-300">NCCP Compliance & Serviceability Assessment</p>
@@ -162,7 +162,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                 {/* Income */}
                 <div>
                   <h3 className="font-semibold text-lg text-white mb-4 flex items-center gap-2">
-                    <TrendingUp className="w-5 h-5 text-green-600" />
+                    <TrendingUp className="w-5 h-5 text-green-400" />
                     Income
                   </h3>
                   <div className="grid grid-cols-2 gap-4">
@@ -196,7 +196,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                 {/* Expenses */}
                 <div>
                   <h3 className="font-semibold text-lg text-white mb-4 flex items-center gap-2">
-                    <TrendingDown className="w-5 h-5 text-red-600" />
+                    <TrendingDown className="w-5 h-5 text-red-400" />
                     Monthly Expenses
                   </h3>
                   <div className="grid grid-cols-3 gap-4">
@@ -278,7 +278,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                 {/* Assets & Liabilities */}
                 <div>
                   <h3 className="font-semibold text-lg text-white mb-4 flex items-center gap-2">
-                    <Shield className="w-5 h-5 text-blue-600" />
+                    <Shield className="w-5 h-5 text-blue-400" />
                     Assets & Liabilities
                   </h3>
                   <div className="grid grid-cols-2 gap-6">
@@ -422,14 +422,14 @@ export function CreditModule({ onBack }: CreditModuleProps) {
 
               {/* Results Panel */}
               <Card className={`col-span-2 ${
-                serviceabilityResult.result === 'pass' ? 'border-green-300 bg-green-50' : 'border-red-300 bg-red-50'
+                serviceabilityResult.result === 'pass' ? 'border-green-300 bg-green-500/10' : 'border-red-300 bg-red-500/10'
               }`}>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     {serviceabilityResult.result === 'pass' ? (
-                      <CheckCircle className="w-6 h-6 text-green-600" />
+                      <CheckCircle className="w-6 h-6 text-green-400" />
                     ) : (
-                      <XCircle className="w-6 h-6 text-red-600" />
+                      <XCircle className="w-6 h-6 text-red-400" />
                     )}
                     Serviceability Assessment Result
                   </CardTitle>
@@ -458,7 +458,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                       <CardContent className="p-4">
                         <div className="text-sm text-slate-300">Monthly Surplus</div>
                         <div className={`text-2xl font-bold ${
-                          serviceabilityResult.surplus > 0 ? 'text-green-600' : 'text-red-600'
+                          serviceabilityResult.surplus > 0 ? 'text-green-400' : 'text-red-400'
                         }`}>
                           ${serviceabilityResult.surplus.toLocaleString()}
                         </div>
@@ -472,7 +472,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                       <CardContent className="p-4">
                         <div className="text-sm text-slate-300">Debt Service Ratio</div>
                         <div className={`text-2xl font-bold ${
-                          serviceabilityResult.ratio < 40 ? 'text-green-600' : 'text-red-600'
+                          serviceabilityResult.ratio < 40 ? 'text-green-400' : 'text-red-400'
                         }`}>
                           {serviceabilityResult.ratio}%
                         </div>
@@ -491,26 +491,26 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                     <CardContent className="space-y-3">
                       <div className="flex items-center justify-between pb-2 border-b">
                         <span className="text-sm text-slate-300">Net Monthly Income</span>
-                        <span className="font-semibold text-green-600">
+                        <span className="font-semibold text-green-400">
                           ${serviceabilityResult.monthlyIncome.toLocaleString()}
                         </span>
                       </div>
                       <div className="flex items-center justify-between pb-2 border-b">
                         <span className="text-sm text-slate-300">Monthly Expenses</span>
-                        <span className="font-semibold text-red-600">
+                        <span className="font-semibold text-red-400">
                           -${serviceabilityResult.monthlyExpenses.toLocaleString()}
                         </span>
                       </div>
                       <div className="flex items-center justify-between pb-2 border-b">
                         <span className="text-sm text-slate-300">Proposed Loan Payment</span>
-                        <span className="font-semibold text-red-600">
+                        <span className="font-semibold text-red-400">
                           -${serviceabilityResult.monthlyPayment.toLocaleString()}
                         </span>
                       </div>
                       <div className="flex items-center justify-between pt-2">
                         <span className="font-semibold text-white">Surplus / (Deficit)</span>
                         <span className={`text-xl font-bold ${
-                          serviceabilityResult.surplus > 0 ? 'text-green-600' : 'text-red-600'
+                          serviceabilityResult.surplus > 0 ? 'text-green-400' : 'text-red-400'
                         }`}>
                           ${serviceabilityResult.surplus.toLocaleString()}
                         </span>
@@ -520,32 +520,32 @@ export function CreditModule({ onBack }: CreditModuleProps) {
 
                   {/* Decision Guidance */}
                   <Card className={`${
-                    serviceabilityResult.result === 'pass' ? 'bg-green-100 border-green-300' : 'bg-red-100 border-red-300'
+                    serviceabilityResult.result === 'pass' ? 'bg-green-500/15 border-green-300' : 'bg-red-500/15 border-red-300'
                   }`}>
                     <CardContent className="p-4">
                       <div className="flex items-start gap-3">
                         {serviceabilityResult.result === 'pass' ? (
-                          <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                          <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
                         ) : (
-                          <XCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+                          <XCircle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
                         )}
                         <div className="text-sm">
                           {serviceabilityResult.result === 'pass' ? (
                             <>
-                              <div className="font-semibold text-green-900 mb-1">
+                              <div className="font-semibold text-green-300 mb-1">
                                 Serviceability: PASS
                               </div>
-                              <div className="text-green-800">
+                              <div className="text-green-300">
                                 The borrower has demonstrated sufficient capacity to service the proposed loan. 
                                 Positive monthly surplus and debt service ratio within acceptable limits.
                               </div>
                             </>
                           ) : (
                             <>
-                              <div className="font-semibold text-red-900 mb-1">
+                              <div className="font-semibold text-red-300 mb-1">
                                 Serviceability: FAIL
                               </div>
-                              <div className="text-red-800">
+                              <div className="text-red-300">
                                 The borrower does not have sufficient capacity to service the proposed loan. 
                                 {serviceabilityResult.surplus < 0 && ' Negative monthly surplus indicates insufficient income.'}
                                 {serviceabilityResult.ratio >= 40 && ' Debt service ratio exceeds 40% threshold.'}
@@ -578,7 +578,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                   <Card className="border-2">
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
-                        <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
+                        <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0" />
                         <div className="flex-1">
                           <div className="font-semibold text-white mb-2">
                             1. Objectives & Requirements Met?
@@ -587,7 +587,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                             Does the proposed credit contract meet the consumer's objectives and requirements?
                           </p>
                           <div className="flex gap-2">
-                            <Button size="sm" variant="outline" className="border-green-500 text-green-700">
+                            <Button size="sm" variant="outline" className="border-green-500 text-green-300">
                               <CheckCircle className="w-4 h-4 mr-2" />
                               Yes
                             </Button>
@@ -604,7 +604,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                   <Card className="border-2">
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
-                        <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
+                        <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0" />
                         <div className="flex-1">
                           <div className="font-semibold text-white mb-2">
                             2. Risk Tolerance Aligned?
@@ -613,7 +613,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                             Is the consumer comfortable with the risk profile of this credit product?
                           </p>
                           <div className="flex gap-2">
-                            <Button size="sm" variant="outline" className="border-green-500 text-green-700">
+                            <Button size="sm" variant="outline" className="border-green-500 text-green-300">
                               <CheckCircle className="w-4 h-4 mr-2" />
                               Yes
                             </Button>
@@ -630,7 +630,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                   <Card className="border-2">
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
-                        <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
+                        <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0" />
                         <div className="flex-1">
                           <div className="font-semibold text-white mb-2">
                             3. Capacity Sufficient?
@@ -639,7 +639,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                             Can the consumer meet repayment obligations without substantial hardship?
                           </p>
                           <div className="flex gap-2">
-                            <Button size="sm" variant="outline" className="border-green-500 text-green-700">
+                            <Button size="sm" variant="outline" className="border-green-500 text-green-300">
                               <CheckCircle className="w-4 h-4 mr-2" />
                               Yes
                             </Button>
@@ -663,11 +663,11 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                   />
                 </div>
 
-                <Card className="bg-blue-50 border-blue-300">
+                <Card className="bg-blue-500/10 border-blue-300">
                   <CardContent className="p-4">
                     <div className="flex items-start gap-3">
-                      <FileText className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                      <div className="text-sm text-blue-900">
+                      <FileText className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                      <div className="text-sm text-blue-300">
                         <strong>NCCP Requirement:</strong> You must document your assessment that the credit 
                         contract is "not unsuitable" for the consumer. This assessment and supporting evidence 
                         must be retained for 7 years and made available upon ASIC request.
@@ -698,9 +698,9 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                     <Card 
                       key={decision.id}
                       className={`border-2 ${
-                        decision.decision === 'Approved' ? 'border-green-300 bg-green-50' :
-                        decision.decision === 'Conditional' ? 'border-amber-300 bg-amber-50' :
-                        'border-red-300 bg-red-50'
+                        decision.decision === 'Approved' ? 'border-green-300 bg-green-500/10' :
+                        decision.decision === 'Conditional' ? 'border-amber-300 bg-amber-500/10' :
+                        'border-red-300 bg-red-500/10'
                       }`}
                     >
                       <CardContent className="p-6">
@@ -738,7 +738,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                               <div>
                                 <div className="text-slate-300">Approved Amount</div>
                                 <div className={`font-bold ${
-                                  decision.approvedAmount > 0 ? 'text-green-600' : 'text-red-600'
+                                  decision.approvedAmount > 0 ? 'text-green-400' : 'text-red-400'
                                 }`}>
                                   ${decision.approvedAmount.toLocaleString()}
                                 </div>
@@ -756,7 +756,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                                 <ul className="text-sm text-slate-300 space-y-1">
                                   {decision.conditions.map((condition, idx) => (
                                     <li key={idx} className="flex items-start gap-2">
-                                      <AlertTriangle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
+                                      <AlertTriangle className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
                                       {condition}
                                     </li>
                                   ))}

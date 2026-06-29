@@ -47,10 +47,10 @@ export function IndustryDashboard({ industry }: IndustryDashboardProps) {
         ].map((metric, index) => {
           const Icon = metric.icon;
           return (
-            <div key={index} className="bg-white rounded-lg border border-gray-200 p-4">
+            <div key={index} className="bg-white rounded-lg border border-white/10 p-4">
               <Icon className={`w-8 h-8 text-${metric.color}-600 mb-2`} />
-              <div className="text-2xl font-bold text-gray-900">{metric.value}</div>
-              <div className="text-sm text-gray-600">{metric.label}</div>
+              <div className="text-2xl font-bold text-slate-100">{metric.value}</div>
+              <div className="text-sm text-slate-300">{metric.label}</div>
             </div>
           );
         })}
@@ -58,9 +58,9 @@ export function IndustryDashboard({ industry }: IndustryDashboardProps) {
 
       {/* Compliance Areas */}
       <div className="grid grid-cols-2 gap-6">
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
-          <h3 className="font-bold text-gray-900 mb-4 flex items-center">
-            <Shield className="w-5 h-5 text-blue-600 mr-2" />
+        <div className="bg-white rounded-lg border border-white/10 p-6">
+          <h3 className="font-bold text-slate-100 mb-4 flex items-center">
+            <Shield className="w-5 h-5 text-blue-400 mr-2" />
             AUSTRAC Compliance
           </h3>
           <div className="space-y-3">
@@ -71,15 +71,15 @@ export function IndustryDashboard({ industry }: IndustryDashboardProps) {
               { task: 'Threshold Transactions', status: 'Up to date', complete: true }
             ].map((item, index) => (
               <div key={index} className="flex items-center justify-between">
-                <span className="text-gray-700">{item.task}</span>
+                <span className="text-slate-300">{item.task}</span>
                 <div className="flex items-center gap-2">
-                  <span className={`text-sm font-semibold ${item.complete ? 'text-green-600' : 'text-orange-600'}`}>
+                  <span className={`text-sm font-semibold ${item.complete ? 'text-green-400' : 'text-orange-400'}`}>
                     {item.status}
                   </span>
                   {item.complete ? (
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-400" />
                   ) : (
-                    <Clock className="w-4 h-4 text-orange-600" />
+                    <Clock className="w-4 h-4 text-orange-400" />
                   )}
                 </div>
               </div>
@@ -87,9 +87,9 @@ export function IndustryDashboard({ industry }: IndustryDashboardProps) {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
-          <h3 className="font-bold text-gray-900 mb-4 flex items-center">
-            <CreditCard className="w-5 h-5 text-purple-600 mr-2" />
+        <div className="bg-white rounded-lg border border-white/10 p-6">
+          <h3 className="font-bold text-slate-100 mb-4 flex items-center">
+            <CreditCard className="w-5 h-5 text-purple-400 mr-2" />
             Responsible Lending
           </h3>
           <div className="space-y-3">
@@ -100,15 +100,15 @@ export function IndustryDashboard({ industry }: IndustryDashboardProps) {
               { task: 'Debt Collection Compliance', status: 'Compliant', complete: true }
             ].map((item, index) => (
               <div key={index} className="flex items-center justify-between">
-                <span className="text-gray-700">{item.task}</span>
+                <span className="text-slate-300">{item.task}</span>
                 <div className="flex items-center gap-2">
-                  <span className={`text-sm font-semibold ${item.complete ? 'text-green-600' : 'text-orange-600'}`}>
+                  <span className={`text-sm font-semibold ${item.complete ? 'text-green-400' : 'text-orange-400'}`}>
                     {item.status}
                   </span>
                   {item.complete ? (
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-400" />
                   ) : (
-                    <Clock className="w-4 h-4 text-orange-600" />
+                    <Clock className="w-4 h-4 text-orange-400" />
                   )}
                 </div>
               </div>
@@ -118,8 +118,8 @@ export function IndustryDashboard({ industry }: IndustryDashboardProps) {
       </div>
 
       {/* Recent Alerts */}
-      <div className="bg-white rounded-lg border border-gray-200 p-6">
-        <h3 className="font-bold text-gray-900 mb-4">Recent AML/CTF Alerts</h3>
+      <div className="bg-white rounded-lg border border-white/10 p-6">
+        <h3 className="font-bold text-slate-100 mb-4">Recent AML/CTF Alerts</h3>
         <div className="space-y-2">
           {[
             { client: 'Melbourne Property Trust', alert: 'High value transaction', severity: 'medium', time: '2 hours ago' },
@@ -127,16 +127,16 @@ export function IndustryDashboard({ industry }: IndustryDashboardProps) {
             { client: 'Sarah Mitchell', alert: 'Address change', severity: 'low', time: '1 day ago' }
           ].map((alert, index) => (
             <div key={index} className={`p-3 rounded-lg border ${
-              alert.severity === 'high' ? 'bg-red-50 border-red-200' :
-              alert.severity === 'medium' ? 'bg-yellow-50 border-yellow-200' :
-              'bg-blue-50 border-blue-200'
+              alert.severity === 'high' ? 'bg-red-500/10 border-red-500/30' :
+              alert.severity === 'medium' ? 'bg-yellow-500/10 border-yellow-500/30' :
+              'bg-blue-500/10 border-blue-500/30'
             }`}>
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="font-semibold text-gray-900">{alert.client}</p>
-                  <p className="text-sm text-gray-600">{alert.alert}</p>
+                  <p className="font-semibold text-slate-100">{alert.client}</p>
+                  <p className="text-sm text-slate-300">{alert.alert}</p>
                 </div>
-                <span className="text-xs text-gray-500">{alert.time}</span>
+                <span className="text-xs text-slate-400">{alert.time}</span>
               </div>
             </div>
           ))}
@@ -170,10 +170,10 @@ export function IndustryDashboard({ industry }: IndustryDashboardProps) {
         ].map((metric, index) => {
           const Icon = metric.icon;
           return (
-            <div key={index} className="bg-white rounded-lg border border-gray-200 p-4">
+            <div key={index} className="bg-white rounded-lg border border-white/10 p-4">
               <Icon className={`w-8 h-8 text-${metric.color}-600 mb-2`} />
-              <div className="text-2xl font-bold text-gray-900">{metric.value}</div>
-              <div className="text-sm text-gray-600">{metric.label}</div>
+              <div className="text-2xl font-bold text-slate-100">{metric.value}</div>
+              <div className="text-sm text-slate-300">{metric.label}</div>
             </div>
           );
         })}
@@ -181,9 +181,9 @@ export function IndustryDashboard({ industry }: IndustryDashboardProps) {
 
       {/* Compliance Areas */}
       <div className="grid grid-cols-2 gap-6">
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
-          <h3 className="font-bold text-gray-900 mb-4 flex items-center">
-            <Scale className="w-5 h-5 text-purple-600 mr-2" />
+        <div className="bg-white rounded-lg border border-white/10 p-6">
+          <h3 className="font-bold text-slate-100 mb-4 flex items-center">
+            <Scale className="w-5 h-5 text-purple-400 mr-2" />
             Matter Management
           </h3>
           <div className="space-y-3">
@@ -194,15 +194,15 @@ export function IndustryDashboard({ industry }: IndustryDashboardProps) {
               { task: 'Risk Assessments', status: '8 overdue', complete: false }
             ].map((item, index) => (
               <div key={index} className="flex items-center justify-between">
-                <span className="text-gray-700">{item.task}</span>
+                <span className="text-slate-300">{item.task}</span>
                 <div className="flex items-center gap-2">
-                  <span className={`text-sm font-semibold ${item.complete ? 'text-green-600' : 'text-orange-600'}`}>
+                  <span className={`text-sm font-semibold ${item.complete ? 'text-green-400' : 'text-orange-400'}`}>
                     {item.status}
                   </span>
                   {item.complete ? (
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-400" />
                   ) : (
-                    <Clock className="w-4 h-4 text-orange-600" />
+                    <Clock className="w-4 h-4 text-orange-400" />
                   )}
                 </div>
               </div>
@@ -210,9 +210,9 @@ export function IndustryDashboard({ industry }: IndustryDashboardProps) {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
-          <h3 className="font-bold text-gray-900 mb-4 flex items-center">
-            <DollarSign className="w-5 h-5 text-green-600 mr-2" />
+        <div className="bg-white rounded-lg border border-white/10 p-6">
+          <h3 className="font-bold text-slate-100 mb-4 flex items-center">
+            <DollarSign className="w-5 h-5 text-green-400 mr-2" />
             Trust Account Compliance
           </h3>
           <div className="space-y-3">
@@ -223,15 +223,15 @@ export function IndustryDashboard({ industry }: IndustryDashboardProps) {
               { task: 'Annual Audit', status: '45 days', complete: true }
             ].map((item, index) => (
               <div key={index} className="flex items-center justify-between">
-                <span className="text-gray-700">{item.task}</span>
+                <span className="text-slate-300">{item.task}</span>
                 <div className="flex items-center gap-2">
-                  <span className={`text-sm font-semibold ${item.complete ? 'text-green-600' : 'text-orange-600'}`}>
+                  <span className={`text-sm font-semibold ${item.complete ? 'text-green-400' : 'text-orange-400'}`}>
                     {item.status}
                   </span>
                   {item.complete ? (
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-400" />
                   ) : (
-                    <Clock className="w-4 h-4 text-orange-600" />
+                    <Clock className="w-4 h-4 text-orange-400" />
                   )}
                 </div>
               </div>
@@ -241,8 +241,8 @@ export function IndustryDashboard({ industry }: IndustryDashboardProps) {
       </div>
 
       {/* Recent Activity */}
-      <div className="bg-white rounded-lg border border-gray-200 p-6">
-        <h3 className="font-bold text-gray-900 mb-4">Recent Client Verifications</h3>
+      <div className="bg-white rounded-lg border border-white/10 p-6">
+        <h3 className="font-bold text-slate-100 mb-4">Recent Client Verifications</h3>
         <div className="space-y-2">
           {[
             { client: 'Apex Property Development', matter: 'Conveyancing', status: 'Verified', time: '1 hour ago' },
@@ -250,16 +250,16 @@ export function IndustryDashboard({ industry }: IndustryDashboardProps) {
             { client: 'Global Trade Corporation', matter: 'Commercial', status: 'Conflict Check', time: '5 hours ago' }
           ].map((item, index) => (
             <div key={index} className={`p-3 rounded-lg border ${
-              item.status === 'Verified' ? 'bg-green-50 border-green-200' :
-              item.status === 'ID Required' ? 'bg-yellow-50 border-yellow-200' :
-              'bg-blue-50 border-blue-200'
+              item.status === 'Verified' ? 'bg-green-500/10 border-green-500/30' :
+              item.status === 'ID Required' ? 'bg-yellow-500/10 border-yellow-500/30' :
+              'bg-blue-500/10 border-blue-500/30'
             }`}>
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="font-semibold text-gray-900">{item.client}</p>
-                  <p className="text-sm text-gray-600">{item.matter} • {item.status}</p>
+                  <p className="font-semibold text-slate-100">{item.client}</p>
+                  <p className="text-sm text-slate-300">{item.matter} • {item.status}</p>
                 </div>
-                <span className="text-xs text-gray-500">{item.time}</span>
+                <span className="text-xs text-slate-400">{item.time}</span>
               </div>
             </div>
           ))}
@@ -293,10 +293,10 @@ export function IndustryDashboard({ industry }: IndustryDashboardProps) {
         ].map((metric, index) => {
           const Icon = metric.icon;
           return (
-            <div key={index} className="bg-white rounded-lg border border-gray-200 p-4">
+            <div key={index} className="bg-white rounded-lg border border-white/10 p-4">
               <Icon className={`w-8 h-8 text-${metric.color}-600 mb-2`} />
-              <div className="text-2xl font-bold text-gray-900">{metric.value}</div>
-              <div className="text-sm text-gray-600">{metric.label}</div>
+              <div className="text-2xl font-bold text-slate-100">{metric.value}</div>
+              <div className="text-sm text-slate-300">{metric.label}</div>
             </div>
           );
         })}
@@ -304,9 +304,9 @@ export function IndustryDashboard({ industry }: IndustryDashboardProps) {
 
       {/* Compliance Areas */}
       <div className="grid grid-cols-2 gap-6">
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
-          <h3 className="font-bold text-gray-900 mb-4 flex items-center">
-            <Shield className="w-5 h-5 text-green-600 mr-2" />
+        <div className="bg-white rounded-lg border border-white/10 p-6">
+          <h3 className="font-bold text-slate-100 mb-4 flex items-center">
+            <Shield className="w-5 h-5 text-green-400 mr-2" />
             Tax Agent AML/CTF
           </h3>
           <div className="space-y-3">
@@ -317,15 +317,15 @@ export function IndustryDashboard({ industry }: IndustryDashboardProps) {
               { task: 'AML Program Review', status: 'Due in 45 days', complete: true }
             ].map((item, index) => (
               <div key={index} className="flex items-center justify-between">
-                <span className="text-gray-700">{item.task}</span>
+                <span className="text-slate-300">{item.task}</span>
                 <div className="flex items-center gap-2">
-                  <span className={`text-sm font-semibold ${item.complete ? 'text-green-600' : 'text-orange-600'}`}>
+                  <span className={`text-sm font-semibold ${item.complete ? 'text-green-400' : 'text-orange-400'}`}>
                     {item.status}
                   </span>
                   {item.complete ? (
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-400" />
                   ) : (
-                    <Clock className="w-4 h-4 text-orange-600" />
+                    <Clock className="w-4 h-4 text-orange-400" />
                   )}
                 </div>
               </div>
@@ -333,9 +333,9 @@ export function IndustryDashboard({ industry }: IndustryDashboardProps) {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
-          <h3 className="font-bold text-gray-900 mb-4 flex items-center">
-            <TrendingUp className="w-5 h-5 text-blue-600 mr-2" />
+        <div className="bg-white rounded-lg border border-white/10 p-6">
+          <h3 className="font-bold text-slate-100 mb-4 flex items-center">
+            <TrendingUp className="w-5 h-5 text-blue-400 mr-2" />
             Professional Standards
           </h3>
           <div className="space-y-3">
@@ -346,15 +346,15 @@ export function IndustryDashboard({ industry }: IndustryDashboardProps) {
               { task: 'CPD Compliance', status: 'Up to date', complete: true }
             ].map((item, index) => (
               <div key={index} className="flex items-center justify-between">
-                <span className="text-gray-700">{item.task}</span>
+                <span className="text-slate-300">{item.task}</span>
                 <div className="flex items-center gap-2">
-                  <span className={`text-sm font-semibold ${item.complete ? 'text-green-600' : 'text-orange-600'}`}>
+                  <span className={`text-sm font-semibold ${item.complete ? 'text-green-400' : 'text-orange-400'}`}>
                     {item.status}
                   </span>
                   {item.complete ? (
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-400" />
                   ) : (
-                    <Clock className="w-4 h-4 text-orange-600" />
+                    <Clock className="w-4 h-4 text-orange-400" />
                   )}
                 </div>
               </div>
@@ -364,8 +364,8 @@ export function IndustryDashboard({ industry }: IndustryDashboardProps) {
       </div>
 
       {/* Client Updates */}
-      <div className="bg-white rounded-lg border border-gray-200 p-6">
-        <h3 className="font-bold text-gray-900 mb-4">Recent Client Activity</h3>
+      <div className="bg-white rounded-lg border border-white/10 p-6">
+        <h3 className="font-bold text-slate-100 mb-4">Recent Client Activity</h3>
         <div className="space-y-2">
           {[
             { client: 'Melbourne Construction Pty Ltd', action: 'New client onboarding', priority: 'high', time: '30 mins ago' },
@@ -373,16 +373,16 @@ export function IndustryDashboard({ industry }: IndustryDashboardProps) {
             { client: 'Smith Family Trust', action: 'Tax return lodged', priority: 'low', time: '4 hours ago' }
           ].map((item, index) => (
             <div key={index} className={`p-3 rounded-lg border ${
-              item.priority === 'high' ? 'bg-orange-50 border-orange-200' :
-              item.priority === 'medium' ? 'bg-yellow-50 border-yellow-200' :
-              'bg-blue-50 border-blue-200'
+              item.priority === 'high' ? 'bg-orange-500/10 border-orange-500/30' :
+              item.priority === 'medium' ? 'bg-yellow-500/10 border-yellow-500/30' :
+              'bg-blue-500/10 border-blue-500/30'
             }`}>
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="font-semibold text-gray-900">{item.client}</p>
-                  <p className="text-sm text-gray-600">{item.action}</p>
+                  <p className="font-semibold text-slate-100">{item.client}</p>
+                  <p className="text-sm text-slate-300">{item.action}</p>
                 </div>
-                <span className="text-xs text-gray-500">{item.time}</span>
+                <span className="text-xs text-slate-400">{item.time}</span>
               </div>
             </div>
           ))}
@@ -416,10 +416,10 @@ export function IndustryDashboard({ industry }: IndustryDashboardProps) {
         ].map((metric, index) => {
           const Icon = metric.icon;
           return (
-            <div key={index} className="bg-white rounded-lg border border-gray-200 p-4">
+            <div key={index} className="bg-white rounded-lg border border-white/10 p-4">
               <Icon className={`w-8 h-8 text-${metric.color}-600 mb-2`} />
-              <div className="text-2xl font-bold text-gray-900">{metric.value}</div>
-              <div className="text-sm text-gray-600">{metric.label}</div>
+              <div className="text-2xl font-bold text-slate-100">{metric.value}</div>
+              <div className="text-sm text-slate-300">{metric.label}</div>
             </div>
           );
         })}
@@ -427,9 +427,9 @@ export function IndustryDashboard({ industry }: IndustryDashboardProps) {
 
       {/* Compliance Areas */}
       <div className="grid grid-cols-2 gap-6">
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
-          <h3 className="font-bold text-gray-900 mb-4 flex items-center">
-            <Home className="w-5 h-5 text-orange-600 mr-2" />
+        <div className="bg-white rounded-lg border border-white/10 p-6">
+          <h3 className="font-bold text-slate-100 mb-4 flex items-center">
+            <Home className="w-5 h-5 text-orange-400 mr-2" />
             Property Transactions
           </h3>
           <div className="space-y-3">
@@ -440,15 +440,15 @@ export function IndustryDashboard({ industry }: IndustryDashboardProps) {
               { task: 'Settlement Ready', status: '23 properties', complete: true }
             ].map((item, index) => (
               <div key={index} className="flex items-center justify-between">
-                <span className="text-gray-700">{item.task}</span>
+                <span className="text-slate-300">{item.task}</span>
                 <div className="flex items-center gap-2">
-                  <span className={`text-sm font-semibold ${item.complete ? 'text-green-600' : 'text-orange-600'}`}>
+                  <span className={`text-sm font-semibold ${item.complete ? 'text-green-400' : 'text-orange-400'}`}>
                     {item.status}
                   </span>
                   {item.complete ? (
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-400" />
                   ) : (
-                    <Clock className="w-4 h-4 text-orange-600" />
+                    <Clock className="w-4 h-4 text-orange-400" />
                   )}
                 </div>
               </div>
@@ -456,9 +456,9 @@ export function IndustryDashboard({ industry }: IndustryDashboardProps) {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
-          <h3 className="font-bold text-gray-900 mb-4 flex items-center">
-            <DollarSign className="w-5 h-5 text-green-600 mr-2" />
+        <div className="bg-white rounded-lg border border-white/10 p-6">
+          <h3 className="font-bold text-slate-100 mb-4 flex items-center">
+            <DollarSign className="w-5 h-5 text-green-400 mr-2" />
             Trust Account
           </h3>
           <div className="space-y-3">
@@ -469,15 +469,15 @@ export function IndustryDashboard({ industry }: IndustryDashboardProps) {
               { task: 'Audit Compliance', status: '100%', complete: true }
             ].map((item, index) => (
               <div key={index} className="flex items-center justify-between">
-                <span className="text-gray-700">{item.task}</span>
+                <span className="text-slate-300">{item.task}</span>
                 <div className="flex items-center gap-2">
-                  <span className={`text-sm font-semibold ${item.complete ? 'text-green-600' : 'text-orange-600'}`}>
+                  <span className={`text-sm font-semibold ${item.complete ? 'text-green-400' : 'text-orange-400'}`}>
                     {item.status}
                   </span>
                   {item.complete ? (
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-400" />
                   ) : (
-                    <Clock className="w-4 h-4 text-orange-600" />
+                    <Clock className="w-4 h-4 text-orange-400" />
                   )}
                 </div>
               </div>
@@ -487,8 +487,8 @@ export function IndustryDashboard({ industry }: IndustryDashboardProps) {
       </div>
 
       {/* Upcoming Settlements */}
-      <div className="bg-white rounded-lg border border-gray-200 p-6">
-        <h3 className="font-bold text-gray-900 mb-4">Upcoming Settlements</h3>
+      <div className="bg-white rounded-lg border border-white/10 p-6">
+        <h3 className="font-bold text-slate-100 mb-4">Upcoming Settlements</h3>
         <div className="space-y-2">
           {[
             { property: '45 Collins Street, Melbourne', date: 'Today', amount: '$1,250,000', status: 'Ready' },
@@ -496,15 +496,15 @@ export function IndustryDashboard({ industry }: IndustryDashboardProps) {
             { property: '78 George Street, Brisbane', date: 'In 3 days', amount: '$650,000', status: 'Ready' }
           ].map((settlement, index) => (
             <div key={index} className={`p-3 rounded-lg border ${
-              settlement.status === 'Ready' ? 'bg-green-50 border-green-200' :
-              'bg-yellow-50 border-yellow-200'
+              settlement.status === 'Ready' ? 'bg-green-500/10 border-green-500/30' :
+              'bg-yellow-500/10 border-yellow-500/30'
             }`}>
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="font-semibold text-gray-900">{settlement.property}</p>
-                  <p className="text-sm text-gray-600">{settlement.amount} • {settlement.status}</p>
+                  <p className="font-semibold text-slate-100">{settlement.property}</p>
+                  <p className="text-sm text-slate-300">{settlement.amount} • {settlement.status}</p>
                 </div>
-                <span className="text-xs text-gray-500">{settlement.date}</span>
+                <span className="text-xs text-slate-400">{settlement.date}</span>
               </div>
             </div>
           ))}

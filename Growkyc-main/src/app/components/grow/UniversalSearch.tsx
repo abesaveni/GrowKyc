@@ -253,7 +253,7 @@ export function UniversalSearch() {
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
               placeholder="Search people, organisations, projects, documents, invoices, meetings..."
-              className="w-full pl-12 pr-4 py-4 text-gray-900 rounded-lg text-lg focus:outline-none focus:ring-2 focus:ring-white"
+              className="w-full pl-12 pr-4 py-4 text-slate-100 rounded-lg text-lg focus:outline-none focus:ring-2 focus:ring-white"
             />
             {isSearching && (
               <div className="absolute right-4 top-4">
@@ -263,7 +263,7 @@ export function UniversalSearch() {
           </div>
           <button
             onClick={handleSearch}
-            className="px-8 py-4 bg-white text-purple-600 font-bold rounded-lg hover:bg-gray-100 flex items-center gap-2"
+            className="px-8 py-4 bg-white text-purple-400 font-bold rounded-lg hover:bg-white/5 flex items-center gap-2"
           >
             <Sparkles className="w-5 h-5" />
             AI Search
@@ -287,7 +287,7 @@ export function UniversalSearch() {
                 }}
                 className={`px-3 py-1.5 rounded-full text-sm flex items-center gap-2 ${
                   isSelected
-                    ? 'bg-white text-purple-600'
+                    ? 'bg-white text-purple-400'
                     : 'bg-purple-700 text-white hover:bg-purple-800'
                 }`}
               >
@@ -306,7 +306,7 @@ export function UniversalSearch() {
           {/* Results List */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center justify-between">
-              <h2 className="text-xl font-bold text-gray-900">
+              <h2 className="text-xl font-bold text-slate-100">
                 Found {searchResults.length} results for "{searchQuery}"
               </h2>
               <div className="flex gap-2">
@@ -327,24 +327,24 @@ export function UniversalSearch() {
                 <div
                   key={result.id}
                   className={`bg-white border-2 rounded-lg p-6 hover:border-blue-300 cursor-pointer transition-all ${
-                    selectedResult?.id === result.id ? 'border-blue-500 shadow-lg' : 'border-gray-200'
+                    selectedResult?.id === result.id ? 'border-blue-500 shadow-lg' : 'border-white/10'
                   }`}
                   onClick={() => handleExplain(result)}
                 >
                   <div className="flex items-start gap-4">
-                    <div className="p-3 bg-gray-100 rounded-lg">
-                      <Icon className="w-6 h-6 text-gray-700" />
+                    <div className="p-3 bg-white/5 rounded-lg">
+                      <Icon className="w-6 h-6 text-slate-300" />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-start justify-between mb-2">
                         <div>
-                          <h3 className="font-bold text-gray-900 text-lg mb-1">{result.title}</h3>
+                          <h3 className="font-bold text-slate-100 text-lg mb-1">{result.title}</h3>
                           {result.subtitle && (
-                            <p className="text-sm text-gray-600">{result.subtitle}</p>
+                            <p className="text-sm text-slate-300">{result.subtitle}</p>
                           )}
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="px-2 py-1 bg-purple-100 text-purple-700 text-xs font-bold rounded">
+                          <span className="px-2 py-1 bg-purple-500/15 text-purple-300 text-xs font-bold rounded">
                             {Math.round(result.relevanceScore * 100)}% match
                           </span>
                           <button
@@ -360,15 +360,15 @@ export function UniversalSearch() {
                         </div>
                       </div>
                       {result.description && (
-                        <p className="text-sm text-gray-700 mb-3">{result.description}</p>
+                        <p className="text-sm text-slate-300 mb-3">{result.description}</p>
                       )}
                       {result.matchedText && (
-                        <div className="p-2 bg-yellow-50 border border-yellow-200 rounded text-sm mb-3">
-                          <span className="font-semibold text-gray-700">Matched in {result.matchedField}:</span>
-                          <span className="text-gray-600 ml-2">...{result.matchedText}...</span>
+                        <div className="p-2 bg-yellow-500/10 border border-yellow-500/30 rounded text-sm mb-3">
+                          <span className="font-semibold text-slate-300">Matched in {result.matchedField}:</span>
+                          <span className="text-slate-300 ml-2">...{result.matchedText}...</span>
                         </div>
                       )}
-                      <div className="flex items-center gap-4 text-xs text-gray-500">
+                      <div className="flex items-center gap-4 text-xs text-slate-400">
                         <span className="flex items-center gap-1">
                           <Clock className="w-3 h-3" />
                           {result.lastModified.toLocaleDateString()}
@@ -388,47 +388,47 @@ export function UniversalSearch() {
 
           {/* AI Explanation Panel */}
           <div className="lg:col-span-1">
-            <div className="bg-white border-2 border-gray-200 rounded-lg p-6 sticky top-6">
+            <div className="bg-white border-2 border-white/10 rounded-lg p-6 sticky top-6">
               {!selectedResult && !isExplaining && (
                 <div className="text-center py-12">
                   <Brain className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                  <p className="text-gray-600">Click on any result to get AI-powered insights</p>
+                  <p className="text-slate-300">Click on any result to get AI-powered insights</p>
                 </div>
               )}
 
               {isExplaining && (
                 <div className="text-center py-12">
-                  <Sparkles className="w-12 h-12 text-purple-600 mx-auto mb-4 animate-pulse" />
-                  <p className="text-gray-700 font-semibold">AI is analyzing...</p>
-                  <p className="text-sm text-gray-600 mt-2">Gathering context from related records</p>
+                  <Sparkles className="w-12 h-12 text-purple-400 mx-auto mb-4 animate-pulse" />
+                  <p className="text-slate-300 font-semibold">AI is analyzing...</p>
+                  <p className="text-sm text-slate-300 mt-2">Gathering context from related records</p>
                 </div>
               )}
 
               {explanation && selectedResult && !isExplaining && (
                 <div className="space-y-6">
                   <div className="flex items-center justify-between">
-                    <h3 className="font-bold text-gray-900 flex items-center gap-2">
-                      <Sparkles className="w-5 h-5 text-purple-600" />
+                    <h3 className="font-bold text-slate-100 flex items-center gap-2">
+                      <Sparkles className="w-5 h-5 text-purple-400" />
                       AI Explanation
                     </h3>
-                    <button className="text-blue-600 hover:text-blue-700 text-sm">
+                    <button className="text-blue-400 hover:text-blue-300 text-sm">
                       <ExternalLink className="w-4 h-4" />
                     </button>
                   </div>
 
                   {/* Summary */}
                   <div>
-                    <h4 className="text-sm font-bold text-gray-700 uppercase mb-2">Summary</h4>
-                    <p className="text-sm text-gray-700 leading-relaxed">{explanation.summary}</p>
+                    <h4 className="text-sm font-bold text-slate-300 uppercase mb-2">Summary</h4>
+                    <p className="text-sm text-slate-300 leading-relaxed">{explanation.summary}</p>
                   </div>
 
                   {/* Key Points */}
                   <div>
-                    <h4 className="text-sm font-bold text-gray-700 uppercase mb-2">Key Points</h4>
+                    <h4 className="text-sm font-bold text-slate-300 uppercase mb-2">Key Points</h4>
                     <ul className="space-y-2">
                       {explanation.keyPoints.map((point, idx) => (
-                        <li key={idx} className="text-sm text-gray-700 flex gap-2">
-                          <span className="text-blue-600">•</span>
+                        <li key={idx} className="text-sm text-slate-300 flex gap-2">
+                          <span className="text-blue-400">•</span>
                           <span>{point}</span>
                         </li>
                       ))}
@@ -437,14 +437,14 @@ export function UniversalSearch() {
 
                   {/* Next Actions */}
                   <div>
-                    <h4 className="text-sm font-bold text-gray-700 uppercase mb-2 flex items-center gap-2">
-                      <Lightbulb className="w-4 h-4 text-orange-600" />
+                    <h4 className="text-sm font-bold text-slate-300 uppercase mb-2 flex items-center gap-2">
+                      <Lightbulb className="w-4 h-4 text-orange-400" />
                       Next Best Actions
                     </h4>
                     <ul className="space-y-2">
                       {explanation.nextActions.map((action, idx) => (
-                        <li key={idx} className="text-sm text-gray-700 flex gap-2">
-                          <span className="text-green-600">→</span>
+                        <li key={idx} className="text-sm text-slate-300 flex gap-2">
+                          <span className="text-green-400">→</span>
                           <span>{action}</span>
                         </li>
                       ))}
@@ -453,13 +453,13 @@ export function UniversalSearch() {
 
                   {/* Risks */}
                   <div>
-                    <h4 className="text-sm font-bold text-gray-700 uppercase mb-2 flex items-center gap-2">
-                      <AlertTriangle className="w-4 h-4 text-red-600" />
+                    <h4 className="text-sm font-bold text-slate-300 uppercase mb-2 flex items-center gap-2">
+                      <AlertTriangle className="w-4 h-4 text-red-400" />
                       Risks & Alerts
                     </h4>
                     <ul className="space-y-2">
                       {explanation.risks.map((risk, idx) => (
-                        <li key={idx} className="text-sm text-gray-700">
+                        <li key={idx} className="text-sm text-slate-300">
                           {risk}
                         </li>
                       ))}
@@ -468,31 +468,31 @@ export function UniversalSearch() {
 
                   {/* Sources */}
                   <div>
-                    <h4 className="text-sm font-bold text-gray-700 uppercase mb-2">Sources</h4>
+                    <h4 className="text-sm font-bold text-slate-300 uppercase mb-2">Sources</h4>
                     <div className="space-y-2">
                       {explanation.sources.map((source, idx) => (
-                        <div key={idx} className="p-2 bg-gray-50 border border-gray-200 rounded text-xs">
-                          <p className="font-semibold text-gray-900">{source.title}</p>
-                          <p className="text-gray-600 mt-1">{source.excerpt}</p>
+                        <div key={idx} className="p-2 bg-white/5 border border-white/10 rounded text-xs">
+                          <p className="font-semibold text-slate-100">{source.title}</p>
+                          <p className="text-slate-300 mt-1">{source.excerpt}</p>
                         </div>
                       ))}
                     </div>
                   </div>
 
                   {/* Feedback */}
-                  <div className="pt-4 border-t border-gray-200">
-                    <p className="text-xs text-gray-600 mb-2">Was this explanation helpful?</p>
+                  <div className="pt-4 border-t border-white/10">
+                    <p className="text-xs text-slate-300 mb-2">Was this explanation helpful?</p>
                     <div className="flex gap-2">
                       <button
                         onClick={() => toast.success('Thank you for your feedback!')}
-                        className="flex-1 px-3 py-2 bg-green-50 text-green-700 rounded hover:bg-green-100 flex items-center justify-center gap-2"
+                        className="flex-1 px-3 py-2 bg-green-500/10 text-green-300 rounded hover:bg-green-500/15 flex items-center justify-center gap-2"
                       >
                         <ThumbsUp className="w-4 h-4" />
                         <span className="text-sm">Yes</span>
                       </button>
                       <button
                         onClick={() => toast.info('We\'ll improve our explanations')}
-                        className="flex-1 px-3 py-2 bg-red-50 text-red-700 rounded hover:bg-red-100 flex items-center justify-center gap-2"
+                        className="flex-1 px-3 py-2 bg-red-500/10 text-red-300 rounded hover:bg-red-500/15 flex items-center justify-center gap-2"
                       >
                         <ThumbsDown className="w-4 h-4" />
                         <span className="text-sm">No</span>
@@ -508,10 +508,10 @@ export function UniversalSearch() {
 
       {/* Empty State */}
       {searchResults.length === 0 && searchQuery && !isSearching && (
-        <div className="bg-white border-2 border-gray-200 rounded-lg p-12 text-center">
+        <div className="bg-white border-2 border-white/10 rounded-lg p-12 text-center">
           <Search className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-          <h3 className="text-xl font-bold text-gray-900 mb-2">No results found</h3>
-          <p className="text-gray-600 mb-6">Try different keywords or remove some filters</p>
+          <h3 className="text-xl font-bold text-slate-100 mb-2">No results found</h3>
+          <p className="text-slate-300 mb-6">Try different keywords or remove some filters</p>
           <SecondaryButton onClick={() => setSearchQuery('')}>
             Clear Search
           </SecondaryButton>
@@ -552,11 +552,11 @@ export function UniversalSearch() {
               <button
                 key={idx}
                 onClick={() => toast.info(`${action.title} coming soon`)}
-                className="bg-white border-2 border-gray-200 rounded-lg p-6 hover:border-gray-300 text-left transition-all"
+                className="bg-white border-2 border-white/10 rounded-lg p-6 hover:border-white/10 text-left transition-all"
               >
                 <Icon className={`w-8 h-8 text-${action.color}-600 mb-3`} />
-                <h3 className="font-bold text-gray-900 mb-1">{action.title}</h3>
-                <p className="text-sm text-gray-600">{action.description}</p>
+                <h3 className="font-bold text-slate-100 mb-1">{action.title}</h3>
+                <p className="text-sm text-slate-300">{action.description}</p>
               </button>
             );
           })}

@@ -43,11 +43,11 @@ export function ConsentDeclarations({ entity, onComplete }: ConsentDeclarationsP
         </div>
       </CardHeader>
       <CardContent className="space-y-6">
-        <Card className="bg-blue-50 border-blue-200">
+        <Card className="bg-blue-500/10 border-blue-500/30">
           <CardContent className="p-4">
             <div className="flex items-start gap-3">
-              <AlertCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-              <div className="text-sm text-blue-900">
+              <AlertCircle className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+              <div className="text-sm text-blue-300">
                 <p className="font-semibold mb-1">Legal Requirements</p>
                 <p>These declarations are required under the AML/CTF Act 2006 and other applicable legislation.</p>
               </div>
@@ -139,13 +139,13 @@ export function ConsentDeclarations({ entity, onComplete }: ConsentDeclarationsP
                 value={signature}
                 onChange={(e) => setSignature(e.target.value)}
                 placeholder="Type your full legal name"
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none font-serif text-lg"
+                className="w-full px-4 py-3 border-2 border-white/10 rounded-lg focus:border-blue-500 focus:outline-none font-serif text-lg"
               />
               {signature && (
-                <Card className="bg-green-50 border-green-200 mt-3">
+                <Card className="bg-green-500/10 border-green-500/30 mt-3">
                   <CardContent className="p-3 flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
-                    <span className="text-sm text-green-900">
+                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <span className="text-sm text-green-300">
                       Signed on {new Date().toLocaleDateString('en-AU')}
                     </span>
                   </CardContent>

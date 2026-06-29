@@ -211,7 +211,7 @@ export function GraphIntelligence({ onBack }: GraphIntelligenceProps) {
                 <p className="text-sm text-white/90">Ownership Network & Risk Cluster Analytics</p>
               </div>
             </div>
-            <Badge className="bg-[#1e293b] text-indigo-600 text-sm px-3 py-1">
+            <Badge className="bg-[#1e293b] text-indigo-400 text-sm px-3 py-1">
               <Zap className="w-4 h-4 mr-1" />
               AI Network Scanning Active
             </Badge>
@@ -232,32 +232,32 @@ export function GraphIntelligence({ onBack }: GraphIntelligenceProps) {
           <TabsContent value="graph" className="space-y-6">
             {/* Summary Cards */}
             <div className="grid grid-cols-4 gap-4">
-              <Card className="border-2 border-purple-300 bg-purple-50">
+              <Card className="border-2 border-purple-300 bg-purple-500/10">
                 <CardContent className="p-6">
-                  <div className="text-sm text-purple-700">Total Entities</div>
-                  <div className="text-3xl font-bold text-purple-900">148</div>
-                  <div className="text-xs text-purple-600 mt-1">In network graph</div>
+                  <div className="text-sm text-purple-300">Total Entities</div>
+                  <div className="text-3xl font-bold text-purple-300">148</div>
+                  <div className="text-xs text-purple-400 mt-1">In network graph</div>
                 </CardContent>
               </Card>
-              <Card className="border-2 border-red-300 bg-red-50">
+              <Card className="border-2 border-red-300 bg-red-500/10">
                 <CardContent className="p-6">
-                  <div className="text-sm text-red-700">High Risk Nodes</div>
-                  <div className="text-3xl font-bold text-red-900">12</div>
-                  <div className="text-xs text-red-600 mt-1">Require review</div>
+                  <div className="text-sm text-red-300">High Risk Nodes</div>
+                  <div className="text-3xl font-bold text-red-300">12</div>
+                  <div className="text-xs text-red-400 mt-1">Require review</div>
                 </CardContent>
               </Card>
-              <Card className="border-2 border-amber-300 bg-amber-50">
+              <Card className="border-2 border-amber-300 bg-amber-500/10">
                 <CardContent className="p-6">
-                  <div className="text-sm text-amber-700">Circular Ownership</div>
-                  <div className="text-3xl font-bold text-amber-900">3</div>
-                  <div className="text-xs text-amber-600 mt-1">Detected patterns</div>
+                  <div className="text-sm text-amber-300">Circular Ownership</div>
+                  <div className="text-3xl font-bold text-amber-300">3</div>
+                  <div className="text-xs text-amber-400 mt-1">Detected patterns</div>
                 </CardContent>
               </Card>
-              <Card className="border-2 border-blue-300 bg-blue-50">
+              <Card className="border-2 border-blue-300 bg-blue-500/10">
                 <CardContent className="p-6">
-                  <div className="text-sm text-blue-700">Shared Directors</div>
-                  <div className="text-3xl font-bold text-blue-900">24</div>
-                  <div className="text-xs text-blue-600 mt-1">Cross-entity links</div>
+                  <div className="text-sm text-blue-300">Shared Directors</div>
+                  <div className="text-3xl font-bold text-blue-300">24</div>
+                  <div className="text-xs text-blue-400 mt-1">Cross-entity links</div>
                 </CardContent>
               </Card>
             </div>
@@ -275,7 +275,7 @@ export function GraphIntelligence({ onBack }: GraphIntelligenceProps) {
               </CardHeader>
               <CardContent>
                 {/* Graph Visualization Area */}
-                <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-lg border-2 border-indigo-200 p-8 min-h-[600px] relative">
+                <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-lg border-2 border-indigo-500/30 p-8 min-h-[600px] relative">
                   {/* Central Entity */}
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                     <div className="w-32 h-32 bg-gradient-to-br from-red-500 to-red-600 rounded-full shadow-2xl flex flex-col items-center justify-center border-4 border-red-700">
@@ -343,7 +343,7 @@ export function GraphIntelligence({ onBack }: GraphIntelligenceProps) {
                   </div>
 
                   {/* Legend */}
-                  <div className="absolute bottom-4 right-4 bg-[#1e293b] rounded-lg shadow-lg p-4 border-2 border-indigo-200">
+                  <div className="absolute bottom-4 right-4 bg-[#1e293b] rounded-lg shadow-lg p-4 border-2 border-indigo-500/30">
                     <div className="text-xs font-semibold text-white mb-2">Legend</div>
                     <div className="space-y-2 text-xs">
                       <div className="flex items-center gap-2">
@@ -370,14 +370,14 @@ export function GraphIntelligence({ onBack }: GraphIntelligenceProps) {
                   </div>
 
                   {/* Circular Ownership Alert */}
-                  <div className="absolute top-4 left-4 bg-amber-100 rounded-lg shadow-lg p-3 border-2 border-amber-500 max-w-xs">
+                  <div className="absolute top-4 left-4 bg-amber-500/15 rounded-lg shadow-lg p-3 border-2 border-amber-500 max-w-xs">
                     <div className="flex items-start gap-2">
-                      <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                      <AlertTriangle className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
                       <div>
-                        <div className="text-xs font-semibold text-amber-900 mb-1">
+                        <div className="text-xs font-semibold text-amber-300 mb-1">
                           Circular Ownership Detected
                         </div>
-                        <p className="text-xs text-amber-800">
+                        <p className="text-xs text-amber-300">
                           Alpha → Gamma → Beta → Alpha (indirect loop)
                         </p>
                       </div>
@@ -410,7 +410,7 @@ export function GraphIntelligence({ onBack }: GraphIntelligenceProps) {
                 <Card 
                   key={cluster.id}
                   className={`border-2 ${
-                    cluster.totalRisk === 'high' ? 'border-red-300 bg-red-50' : 'border-amber-300 bg-amber-50'
+                    cluster.totalRisk === 'high' ? 'border-red-300 bg-red-500/10' : 'border-amber-300 bg-amber-500/10'
                   }`}
                 >
                   <CardContent className="p-6">
@@ -438,7 +438,7 @@ export function GraphIntelligence({ onBack }: GraphIntelligenceProps) {
                           <div className="space-y-2">
                             {cluster.reasons.map((reason, idx) => (
                               <div key={idx} className="flex items-start gap-2">
-                                <AlertTriangle className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" />
+                                <AlertTriangle className="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" />
                                 <span className="text-sm text-white">{reason}</span>
                               </div>
                             ))}
@@ -475,15 +475,15 @@ export function GraphIntelligence({ onBack }: GraphIntelligenceProps) {
               ))}
             </div>
 
-            <Card className="border-2 border-blue-300 bg-blue-50">
+            <Card className="border-2 border-blue-300 bg-blue-500/10">
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
-                  <Network className="w-6 h-6 text-blue-600 flex-shrink-0" />
+                  <Network className="w-6 h-6 text-blue-400 flex-shrink-0" />
                   <div>
-                    <div className="font-semibold text-blue-900 mb-1">
+                    <div className="font-semibold text-blue-300 mb-1">
                       AI-Powered Cluster Detection
                     </div>
-                    <p className="text-sm text-blue-800">
+                    <p className="text-sm text-blue-300">
                       Graph intelligence automatically identifies risk clusters based on shared directors, 
                       ownership patterns, address overlap, and transaction behavior. Clusters are scored 
                       and prioritized for compliance review.
@@ -506,7 +506,7 @@ export function GraphIntelligence({ onBack }: GraphIntelligenceProps) {
               <CardContent>
                 <div className="space-y-4">
                   {controlWithoutEquity.map((signal, idx) => (
-                    <Card key={idx} className="border-2 border-amber-200">
+                    <Card key={idx} className="border-2 border-amber-500/30">
                       <CardContent className="p-4">
                         <div className="flex items-start justify-between">
                           <div className="flex-1">
@@ -519,9 +519,9 @@ export function GraphIntelligence({ onBack }: GraphIntelligenceProps) {
                                 {signal.type}
                               </Badge>
                               <Badge variant="outline" className={`${
-                                signal.risk === 'high' ? 'border-red-600 text-red-700' :
-                                signal.risk === 'medium' ? 'border-amber-600 text-amber-700' :
-                                'border-blue-600 text-blue-700'
+                                signal.risk === 'high' ? 'border-red-600 text-red-300' :
+                                signal.risk === 'medium' ? 'border-amber-600 text-amber-300' :
+                                'border-blue-600 text-blue-300'
                               }`}>
                                 {signal.risk.toUpperCase()} RISK
                               </Badge>
@@ -566,9 +566,9 @@ export function GraphIntelligence({ onBack }: GraphIntelligenceProps) {
                               )}
 
                               {signal.note && (
-                                <div className="flex items-start gap-2 text-sm mt-2 p-2 bg-red-100 rounded border border-red-300">
-                                  <AlertTriangle className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" />
-                                  <span className="text-red-800">{signal.note}</span>
+                                <div className="flex items-start gap-2 text-sm mt-2 p-2 bg-red-500/15 rounded border border-red-300">
+                                  <AlertTriangle className="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" />
+                                  <span className="text-red-300">{signal.note}</span>
                                 </div>
                               )}
                             </div>
@@ -591,29 +591,29 @@ export function GraphIntelligence({ onBack }: GraphIntelligenceProps) {
             </Card>
 
             <div className="grid grid-cols-4 gap-4">
-              <Card className="border-2 border-amber-300 bg-amber-50">
+              <Card className="border-2 border-amber-300 bg-amber-500/10">
                 <CardContent className="p-6">
-                  <div className="text-sm text-amber-700">Control Signals</div>
-                  <div className="text-3xl font-bold text-amber-900">4</div>
-                  <div className="text-xs text-amber-600 mt-1">Detected patterns</div>
+                  <div className="text-sm text-amber-300">Control Signals</div>
+                  <div className="text-3xl font-bold text-amber-300">4</div>
+                  <div className="text-xs text-amber-400 mt-1">Detected patterns</div>
                 </CardContent>
               </Card>
-              <Card className="border-2 border-red-300 bg-red-50">
+              <Card className="border-2 border-red-300 bg-red-500/10">
                 <CardContent className="p-6">
-                  <div className="text-sm text-red-700">High Risk</div>
-                  <div className="text-3xl font-bold text-red-900">1</div>
+                  <div className="text-sm text-red-300">High Risk</div>
+                  <div className="text-3xl font-bold text-red-300">1</div>
                 </CardContent>
               </Card>
-              <Card className="border-2 border-amber-300 bg-amber-50">
+              <Card className="border-2 border-amber-300 bg-amber-500/10">
                 <CardContent className="p-6">
-                  <div className="text-sm text-amber-700">Medium Risk</div>
-                  <div className="text-3xl font-bold text-amber-900">2</div>
+                  <div className="text-sm text-amber-300">Medium Risk</div>
+                  <div className="text-3xl font-bold text-amber-300">2</div>
                 </CardContent>
               </Card>
-              <Card className="border-2 border-blue-300 bg-blue-50">
+              <Card className="border-2 border-blue-300 bg-blue-500/10">
                 <CardContent className="p-6">
-                  <div className="text-sm text-blue-700">Low Risk</div>
-                  <div className="text-3xl font-bold text-blue-900">1</div>
+                  <div className="text-sm text-blue-300">Low Risk</div>
+                  <div className="text-3xl font-bold text-blue-300">1</div>
                 </CardContent>
               </Card>
             </div>

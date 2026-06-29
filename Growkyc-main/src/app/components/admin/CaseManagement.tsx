@@ -167,8 +167,8 @@ export function CaseManagement({ onViewCase, userRole = 'admin', onCreateCase }:
       {/* Header with Title and Create Button */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">{getPageTitle()}</h1>
-          <p className="text-gray-600 mt-1">
+          <h1 className="text-3xl font-bold text-slate-100">{getPageTitle()}</h1>
+          <p className="text-slate-300 mt-1">
             {userRole === 'borrower' && 'View and manage your mortgage insurance protection case'}
             {userRole === 'lender' && 'Manage loans you\'ve placed on the MIP platform'}
             {userRole === 'lawyer' && 'Create and manage cases for your clients'}
@@ -189,13 +189,13 @@ export function CaseManagement({ onViewCase, userRole = 'admin', onCreateCase }:
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 mb-1">
+                <p className="text-sm text-slate-300 mb-1">
                   {userRole === 'borrower' ? 'Your Cases' : 'Total Cases'}
                 </p>
-                <p className="text-3xl font-semibold text-gray-900">{visibleCases.length}</p>
+                <p className="text-3xl font-semibold text-slate-100">{visibleCases.length}</p>
               </div>
-              <div className="p-3 bg-blue-50 rounded-lg">
-                <FileText className="w-6 h-6 text-blue-600" />
+              <div className="p-3 bg-blue-500/10 rounded-lg">
+                <FileText className="w-6 h-6 text-blue-400" />
               </div>
             </div>
           </CardContent>
@@ -205,13 +205,13 @@ export function CaseManagement({ onViewCase, userRole = 'admin', onCreateCase }:
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 mb-1">Active Cases</p>
-                <p className="text-3xl font-semibold text-gray-900">
+                <p className="text-sm text-slate-300 mb-1">Active Cases</p>
+                <p className="text-3xl font-semibold text-slate-100">
                   {visibleCases.filter(c => c.status === 'active' || c.status === 'in_auction').length}
                 </p>
               </div>
-              <div className="p-3 bg-green-50 rounded-lg">
-                <Eye className="w-6 h-6 text-green-600" />
+              <div className="p-3 bg-green-500/10 rounded-lg">
+                <Eye className="w-6 h-6 text-green-400" />
               </div>
             </div>
           </CardContent>
@@ -221,13 +221,13 @@ export function CaseManagement({ onViewCase, userRole = 'admin', onCreateCase }:
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 mb-1">In Auction</p>
-                <p className="text-3xl font-semibold text-gray-900">
+                <p className="text-sm text-slate-300 mb-1">In Auction</p>
+                <p className="text-3xl font-semibold text-slate-100">
                   {visibleCases.filter(c => c.status === 'in_auction').length}
                 </p>
               </div>
-              <div className="p-3 bg-red-50 rounded-lg">
-                <RefreshCw className="w-6 h-6 text-red-600" />
+              <div className="p-3 bg-red-500/10 rounded-lg">
+                <RefreshCw className="w-6 h-6 text-red-400" />
               </div>
             </div>
           </CardContent>
@@ -237,13 +237,13 @@ export function CaseManagement({ onViewCase, userRole = 'admin', onCreateCase }:
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 mb-1">Completed</p>
-                <p className="text-3xl font-semibold text-gray-900">
+                <p className="text-sm text-slate-300 mb-1">Completed</p>
+                <p className="text-3xl font-semibold text-slate-100">
                   {visibleCases.filter(c => c.status === 'completed').length}
                 </p>
               </div>
-              <div className="p-3 bg-purple-50 rounded-lg">
-                <FileText className="w-6 h-6 text-purple-600" />
+              <div className="p-3 bg-purple-500/10 rounded-lg">
+                <FileText className="w-6 h-6 text-purple-400" />
               </div>
             </div>
           </CardContent>
@@ -271,7 +271,7 @@ export function CaseManagement({ onViewCase, userRole = 'admin', onCreateCase }:
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                className="px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="all">All Status</option>
                 {statusOptions.map(opt => (
@@ -335,7 +335,7 @@ export function CaseManagement({ onViewCase, userRole = 'admin', onCreateCase }:
                   {filteredCases.map((caseItem) => (
                     <TableRow 
                       key={caseItem.id} 
-                      className="hover:bg-gray-50 cursor-pointer"
+                      className="hover:bg-white/5 cursor-pointer"
                       onClick={() => {
                         onViewCase?.(caseItem.id);
                       }}
@@ -345,7 +345,7 @@ export function CaseManagement({ onViewCase, userRole = 'admin', onCreateCase }:
                       <TableCell>
                         <div>
                           <p className="font-medium text-sm">{caseItem.property.address}</p>
-                          <p className="text-xs text-gray-500">{caseItem.property.suburb}, {caseItem.property.state}</p>
+                          <p className="text-xs text-slate-400">{caseItem.property.suburb}, {caseItem.property.state}</p>
                         </div>
                       </TableCell>
                       <TableCell className="font-semibold text-right">A${(caseItem.outstandingDebt / 1000).toFixed(0)}k</TableCell>
@@ -354,7 +354,7 @@ export function CaseManagement({ onViewCase, userRole = 'admin', onCreateCase }:
                         <select
                           value={caseItem.status}
                           onChange={(e) => handleStatusChange(caseItem.id, e.target.value)}
-                          className="px-2 py-1 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                          className="px-2 py-1 border border-white/10 rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                         >
                           {statusOptions.map(opt => (
                             <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -364,7 +364,7 @@ export function CaseManagement({ onViewCase, userRole = 'admin', onCreateCase }:
                       <TableCell>
                         <StatusBadge status={caseItem.riskLevel} type="risk" />
                       </TableCell>
-                      <TableCell className="text-sm text-gray-600">
+                      <TableCell className="text-sm text-slate-300">
                         {format(caseItem.createdAt, 'dd MMM yyyy')}
                       </TableCell>
                       <TableCell className="text-right" onClick={(e) => e.stopPropagation()}>
@@ -384,7 +384,7 @@ export function CaseManagement({ onViewCase, userRole = 'admin', onCreateCase }:
                             variant="outline"
                             size="sm"
                             onClick={(e) => handleDeleteClick(caseItem, e)}
-                            className="text-red-600 hover:text-red-700 hover:bg-red-50"
+                            className="text-red-400 hover:text-red-300 hover:bg-red-500/10"
                             title="Delete Case"
                           >
                             <Trash2 className="w-4 h-4" />

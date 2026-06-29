@@ -223,8 +223,8 @@ export function JobsKanban({ onNavigate }: JobsKanbanProps) {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-[32px] font-bold text-gray-900">Jobs</h1>
-            <p className="text-sm text-gray-600 mt-1">Manage workpapers across all stages</p>
+            <h1 className="text-[32px] font-bold text-slate-100">Jobs</h1>
+            <p className="text-sm text-slate-300 mt-1">Manage workpapers across all stages</p>
           </div>
           <Button className="bg-[#2855a6] hover:bg-[#1e4089]">
             <Plus className="w-4 h-4 mr-2" />
@@ -245,7 +245,7 @@ export function JobsKanban({ onNavigate }: JobsKanbanProps) {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search jobs, clients, entities..."
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+                    className="w-full pl-10 pr-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
                   />
                 </div>
               </div>
@@ -254,7 +254,7 @@ export function JobsKanban({ onNavigate }: JobsKanbanProps) {
               <select
                 value={filterEntity}
                 onChange={(e) => setFilterEntity(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+                className="px-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
               >
                 <option value="all">All Entities</option>
                 <option value="Company">Company</option>
@@ -268,7 +268,7 @@ export function JobsKanban({ onNavigate }: JobsKanbanProps) {
               <select
                 value={filterPriority}
                 onChange={(e) => setFilterPriority(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+                className="px-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
               >
                 <option value="all">All Priorities</option>
                 <option value="high">High Priority</option>
@@ -295,13 +295,13 @@ export function JobsKanban({ onNavigate }: JobsKanbanProps) {
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2">
                       <div className={`w-3 h-3 rounded-full ${column.color}`} />
-                      <h3 className="font-semibold text-gray-900">{column.label}</h3>
+                      <h3 className="font-semibold text-slate-100">{column.label}</h3>
                     </div>
-                    <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-semibold rounded">
+                    <span className="px-2 py-1 bg-white/5 text-slate-300 text-xs font-semibold rounded">
                       {columnJobs.length}
                     </span>
                   </div>
-                  <div className="h-1 bg-gray-100 rounded-full overflow-hidden">
+                  <div className="h-1 bg-white/5 rounded-full overflow-hidden">
                     <div className={`h-full ${column.color}`} style={{ width: '100%' }} />
                   </div>
                 </div>
@@ -320,11 +320,11 @@ export function JobsKanban({ onNavigate }: JobsKanbanProps) {
                           <div className="flex items-center gap-2">
                             <span className="text-2xl">{getEntityIcon(job.entityType)}</span>
                             <div>
-                              <p className="font-semibold text-sm text-gray-900">{job.clientName}</p>
-                              <p className="text-xs text-gray-500">{job.entity}</p>
+                              <p className="font-semibold text-sm text-slate-100">{job.clientName}</p>
+                              <p className="text-xs text-slate-400">{job.entity}</p>
                             </div>
                           </div>
-                          <button className="p-1 hover:bg-gray-100 rounded">
+                          <button className="p-1 hover:bg-white/5 rounded">
                             <MoreVertical className="w-4 h-4 text-gray-400" />
                           </button>
                         </div>
@@ -332,22 +332,22 @@ export function JobsKanban({ onNavigate }: JobsKanbanProps) {
                         {/* Job Details */}
                         <div className="space-y-2 mb-3">
                           <div className="flex items-center justify-between text-xs">
-                            <span className="text-gray-600">Job ID</span>
-                            <span className="font-mono font-medium text-gray-900">{job.id}</span>
+                            <span className="text-slate-300">Job ID</span>
+                            <span className="font-mono font-medium text-slate-100">{job.id}</span>
                           </div>
                           <div className="flex items-center justify-between text-xs">
-                            <span className="text-gray-600">Year</span>
-                            <span className="font-medium text-gray-900">{job.year}</span>
+                            <span className="text-slate-300">Year</span>
+                            <span className="font-medium text-slate-100">{job.year}</span>
                           </div>
                         </div>
 
                         {/* Progress Bar */}
                         <div className="mb-3">
                           <div className="flex items-center justify-between text-xs mb-1">
-                            <span className="text-gray-600">Progress</span>
-                            <span className="font-semibold text-gray-900">{job.progress}%</span>
+                            <span className="text-slate-300">Progress</span>
+                            <span className="font-semibold text-slate-100">{job.progress}%</span>
                           </div>
-                          <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                          <div className="h-2 bg-white/5 rounded-full overflow-hidden">
                             <div
                               className="h-full bg-[#2855a6] transition-all"
                               style={{ width: `${job.progress}%` }}
@@ -356,7 +356,7 @@ export function JobsKanban({ onNavigate }: JobsKanbanProps) {
                         </div>
 
                         {/* Checklist */}
-                        <div className="flex items-center gap-2 text-xs text-gray-600 mb-3">
+                        <div className="flex items-center gap-2 text-xs text-slate-300 mb-3">
                           <CheckCircle className="w-4 h-4" />
                           <span>
                             {job.checklistComplete}/{job.checklistTotal} checklist items
@@ -366,20 +366,20 @@ export function JobsKanban({ onNavigate }: JobsKanbanProps) {
                         {/* AI Accuracy (if available) */}
                         {job.aiAccuracy && (
                           <div className="flex items-center gap-2 text-xs mb-3">
-                            <div className="flex items-center gap-1 px-2 py-1 bg-green-50 rounded">
-                              <Target className="w-3 h-3 text-green-600" />
-                              <span className="text-green-700 font-semibold">{job.aiAccuracy}% AI</span>
+                            <div className="flex items-center gap-1 px-2 py-1 bg-green-500/10 rounded">
+                              <Target className="w-3 h-3 text-green-400" />
+                              <span className="text-green-300 font-semibold">{job.aiAccuracy}% AI</span>
                             </div>
                           </div>
                         )}
 
                         {/* Footer */}
-                        <div className="flex items-center justify-between pt-3 border-t border-gray-100">
+                        <div className="flex items-center justify-between pt-3 border-t border-white/10">
                           <div className="flex items-center gap-2">
                             {job.assignedStaff.map((staff, idx) => (
                               <div
                                 key={idx}
-                                className="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center text-xs font-semibold text-gray-700"
+                                className="w-6 h-6 bg-white/10 rounded-full flex items-center justify-center text-xs font-semibold text-slate-300"
                                 title={staff}
                               >
                                 {staff.split(' ').map(n => n[0]).join('')}
@@ -387,7 +387,7 @@ export function JobsKanban({ onNavigate }: JobsKanbanProps) {
                             ))}
                           </div>
                           <div className={`flex items-center gap-1 text-xs ${
-                            job.daysUntilDue <= 7 ? 'text-red-600' : 'text-gray-600'
+                            job.daysUntilDue <= 7 ? 'text-red-400' : 'text-slate-300'
                           }`}>
                             <Calendar className="w-3 h-3" />
                             <span>{job.daysUntilDue}d</span>
@@ -398,7 +398,7 @@ export function JobsKanban({ onNavigate }: JobsKanbanProps) {
                   ))}
 
                   {columnJobs.length === 0 && (
-                    <div className="p-8 text-center text-gray-400 text-sm border-2 border-dashed border-gray-200 rounded-lg">
+                    <div className="p-8 text-center text-gray-400 text-sm border-2 border-dashed border-white/10 rounded-lg">
                       No jobs in this stage
                     </div>
                   )}
@@ -413,24 +413,24 @@ export function JobsKanban({ onNavigate }: JobsKanbanProps) {
           <CardContent className="p-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               <div>
-                <p className="text-sm text-gray-600 mb-1">Total Jobs</p>
-                <p className="text-2xl font-bold text-gray-900">{filteredJobs.length}</p>
+                <p className="text-sm text-slate-300 mb-1">Total Jobs</p>
+                <p className="text-2xl font-bold text-slate-100">{filteredJobs.length}</p>
               </div>
               <div>
-                <p className="text-sm text-gray-600 mb-1">Overdue</p>
-                <p className="text-2xl font-bold text-red-600">
+                <p className="text-sm text-slate-300 mb-1">Overdue</p>
+                <p className="text-2xl font-bold text-red-400">
                   {filteredJobs.filter(j => j.daysUntilDue < 0).length}
                 </p>
               </div>
               <div>
-                <p className="text-sm text-gray-600 mb-1">In Progress</p>
-                <p className="text-2xl font-bold text-blue-600">
+                <p className="text-sm text-slate-300 mb-1">In Progress</p>
+                <p className="text-2xl font-bold text-blue-400">
                   {filteredJobs.filter(j => j.status === 'in_progress').length}
                 </p>
               </div>
               <div>
-                <p className="text-sm text-gray-600 mb-1">Ready to Lodge</p>
-                <p className="text-2xl font-bold text-green-600">
+                <p className="text-sm text-slate-300 mb-1">Ready to Lodge</p>
+                <p className="text-2xl font-bold text-green-400">
                   {filteredJobs.filter(j => j.status === 'ready_to_lodge').length}
                 </p>
               </div>

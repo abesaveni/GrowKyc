@@ -182,11 +182,11 @@ export function ProgramManagement() {
             </div>
           </div>
           <div className="flex gap-3">
-            <Button className="bg-white text-indigo-600 hover:bg-indigo-50">
+            <Button className="bg-white text-indigo-400 hover:bg-indigo-500/10">
               <Download className="w-5 h-5 mr-2" />
               Export Program
             </Button>
-            <Button className="bg-white text-indigo-600 hover:bg-indigo-50">
+            <Button className="bg-white text-indigo-400 hover:bg-indigo-500/10">
               <Upload className="w-5 h-5 mr-2" />
               Update Program
             </Button>
@@ -246,8 +246,8 @@ export function ProgramManagement() {
       <div className="grid grid-cols-3 gap-6">
         {/* Program Areas */}
         <div className="col-span-2 space-y-4">
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Program Components</h2>
+          <div className="bg-white rounded-lg border border-white/10 p-6">
+            <h2 className="text-2xl font-bold text-slate-100 mb-4">Program Components</h2>
             <div className="space-y-3">
               {programAreas.map((area) => {
                 const Icon = area.icon;
@@ -263,8 +263,8 @@ export function ProgramManagement() {
                           <Icon className="w-6 h-6 text-white" />
                         </div>
                         <div>
-                          <h3 className="text-lg font-bold text-gray-900">{area.name}</h3>
-                          <p className="text-sm text-gray-600">
+                          <h3 className="text-lg font-bold text-slate-100">{area.name}</h3>
+                          <p className="text-sm text-slate-300">
                             {area.lastReview && `Last review: ${area.lastReview}`}
                             {area.lastTraining && `Last training: ${area.lastTraining}`}
                             {area.lastTest && `Last test: ${area.lastTest}`}
@@ -284,8 +284,8 @@ export function ProgramManagement() {
                     <div className="grid grid-cols-2 gap-2 mt-3">
                       {area.items.slice(0, 4).map((item, idx) => (
                         <div key={idx} className="flex items-center gap-2 text-sm">
-                          <CheckCircle className="w-4 h-4 text-green-600" />
-                          <span className="text-gray-700">{item.name}</span>
+                          <CheckCircle className="w-4 h-4 text-green-400" />
+                          <span className="text-slate-300">{item.name}</span>
                         </div>
                       ))}
                     </div>
@@ -299,44 +299,44 @@ export function ProgramManagement() {
         {/* Sidebar */}
         <div className="space-y-4">
           {/* Upcoming Tasks */}
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
+          <div className="bg-white rounded-lg border border-white/10 p-6">
             <div className="flex items-center gap-2 mb-4">
-              <Bell className="w-5 h-5 text-orange-600" />
-              <h3 className="text-lg font-bold text-gray-900">Upcoming Tasks</h3>
+              <Bell className="w-5 h-5 text-orange-400" />
+              <h3 className="text-lg font-bold text-slate-100">Upcoming Tasks</h3>
             </div>
             <div className="space-y-3">
               {upcomingTasks.slice(0, 5).map((task, idx) => (
                 <div key={idx} className={`p-3 rounded-lg border-l-4 ${
-                  task.priority === 'high' ? 'border-red-500 bg-red-50' : 'border-yellow-500 bg-yellow-50'
+                  task.priority === 'high' ? 'border-red-500 bg-red-500/10' : 'border-yellow-500 bg-yellow-500/10'
                 }`}>
                   <div className="flex items-start justify-between mb-1">
-                    <p className="text-sm font-bold text-gray-900">{task.task}</p>
+                    <p className="text-sm font-bold text-slate-100">{task.task}</p>
                     <span className={`text-xs px-2 py-1 rounded-full font-bold ${
                       task.priority === 'high' ? 'bg-red-600 text-white' : 'bg-yellow-600 text-white'
                     }`}>
                       {task.priority.toUpperCase()}
                     </span>
                   </div>
-                  <p className="text-xs text-gray-600">Due: {task.dueDate}</p>
-                  <p className="text-xs text-gray-600">Assigned: {task.assignee}</p>
+                  <p className="text-xs text-slate-300">Due: {task.dueDate}</p>
+                  <p className="text-xs text-slate-300">Assigned: {task.assignee}</p>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Recent Activity */}
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
+          <div className="bg-white rounded-lg border border-white/10 p-6">
             <div className="flex items-center gap-2 mb-4">
-              <Activity className="w-5 h-5 text-blue-600" />
-              <h3 className="text-lg font-bold text-gray-900">Recent Activity</h3>
+              <Activity className="w-5 h-5 text-blue-400" />
+              <h3 className="text-lg font-bold text-slate-100">Recent Activity</h3>
             </div>
             <div className="space-y-3">
               {recentActivity.map((activity, idx) => (
-                <div key={idx} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-0.5" />
+                <div key={idx} className="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
+                  <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
                   <div className="flex-1">
-                    <p className="text-sm font-semibold text-gray-900">{activity.action}</p>
-                    <p className="text-xs text-gray-600">{activity.user} • {activity.date}</p>
+                    <p className="text-sm font-semibold text-slate-100">{activity.action}</p>
+                    <p className="text-xs text-slate-300">{activity.user} • {activity.date}</p>
                   </div>
                 </div>
               ))}
@@ -344,8 +344,8 @@ export function ProgramManagement() {
           </div>
 
           {/* Quick Actions */}
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <h3 className="text-lg font-bold text-gray-900 mb-4">Quick Actions</h3>
+          <div className="bg-white rounded-lg border border-white/10 p-6">
+            <h3 className="text-lg font-bold text-slate-100 mb-4">Quick Actions</h3>
             <div className="space-y-2">
               <Button className="w-full bg-blue-600 hover:bg-blue-700" size="sm">
                 <FileText className="w-4 h-4 mr-2" />
@@ -369,8 +369,8 @@ export function ProgramManagement() {
       </div>
 
       {/* Compliance Checklist */}
-      <div className="bg-white rounded-lg border border-gray-200 p-6">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">AUSTRAC Compliance Checklist</h2>
+      <div className="bg-white rounded-lg border border-white/10 p-6">
+        <h2 className="text-2xl font-bold text-slate-100 mb-4">AUSTRAC Compliance Checklist</h2>
         <div className="grid grid-cols-3 gap-4">
           {[
             { area: 'Program Documentation', status: 'complete', items: '5/5' },
@@ -392,21 +392,21 @@ export function ProgramManagement() {
             { area: 'Tipping-off Controls', status: 'active', items: 'Restricted' },
             { area: 'Technology Controls', status: 'compliant', items: 'Audited' }
           ].map((item, idx) => (
-            <div key={idx} className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <div key={idx} className="p-4 bg-white/5 rounded-lg border border-white/10">
               <div className="flex items-center justify-between mb-2">
-                <h4 className="font-bold text-gray-900 text-sm">{item.area}</h4>
-                <CheckCircle className="w-5 h-5 text-green-600" />
+                <h4 className="font-bold text-slate-100 text-sm">{item.area}</h4>
+                <CheckCircle className="w-5 h-5 text-green-400" />
               </div>
               <span className={`px-2 py-1 text-xs font-bold rounded-full ${
                 item.status === 'complete' || item.status === 'compliant' || item.status === 'submitted' || item.status === 'current'
-                  ? 'bg-green-100 text-green-700'
+                  ? 'bg-green-500/15 text-green-300'
                   : item.status === 'active'
-                  ? 'bg-blue-100 text-blue-700'
-                  : 'bg-yellow-100 text-yellow-700'
+                  ? 'bg-blue-500/15 text-blue-300'
+                  : 'bg-yellow-500/15 text-yellow-300'
               }`}>
                 {item.status.toUpperCase()}
               </span>
-              <p className="text-xs text-gray-600 mt-2">{item.items}</p>
+              <p className="text-xs text-slate-300 mt-2">{item.items}</p>
             </div>
           ))}
         </div>

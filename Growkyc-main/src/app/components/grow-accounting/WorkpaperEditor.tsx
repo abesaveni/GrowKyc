@@ -131,27 +131,27 @@ export function WorkpaperEditor({ onNavigate, jobId = 'JOB-2024-003' }: Workpape
   };
 
   const getVarianceColor = (variance?: number) => {
-    if (!variance) return 'text-gray-600';
-    if (Math.abs(variance) > 10) return 'text-red-600';
-    if (Math.abs(variance) > 5) return 'text-orange-600';
-    return 'text-green-600';
+    if (!variance) return 'text-slate-300';
+    if (Math.abs(variance) > 10) return 'text-red-400';
+    if (Math.abs(variance) > 5) return 'text-orange-400';
+    return 'text-green-400';
   };
 
   const getInsightIcon = (type: string) => {
     switch (type) {
-      case 'warning': return <AlertCircle className="w-4 h-4 text-orange-600" />;
-      case 'suggestion': return <Zap className="w-4 h-4 text-blue-600" />;
-      case 'success': return <CheckCircle className="w-4 h-4 text-green-600" />;
-      default: return <AlertCircle className="w-4 h-4 text-gray-600" />;
+      case 'warning': return <AlertCircle className="w-4 h-4 text-orange-400" />;
+      case 'suggestion': return <Zap className="w-4 h-4 text-blue-400" />;
+      case 'success': return <CheckCircle className="w-4 h-4 text-green-400" />;
+      default: return <AlertCircle className="w-4 h-4 text-slate-300" />;
     }
   };
 
   const getInsightBgColor = (type: string) => {
     switch (type) {
-      case 'warning': return 'bg-orange-50 border-orange-200';
-      case 'suggestion': return 'bg-blue-50 border-blue-200';
-      case 'success': return 'bg-green-50 border-green-200';
-      default: return 'bg-gray-50 border-gray-200';
+      case 'warning': return 'bg-orange-500/10 border-orange-500/30';
+      case 'suggestion': return 'bg-blue-500/10 border-blue-500/30';
+      case 'success': return 'bg-green-500/10 border-green-500/30';
+      default: return 'bg-white/5 border-white/10';
     }
   };
 
@@ -170,13 +170,13 @@ export function WorkpaperEditor({ onNavigate, jobId = 'JOB-2024-003' }: Workpape
               Back to Jobs
             </Button>
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">{workpaperData.name}</h1>
+              <h1 className="text-2xl font-bold text-slate-100">{workpaperData.name}</h1>
               <div className="flex items-center gap-4 mt-1">
-                <span className="text-sm text-gray-600">{workpaperData.client}</span>
+                <span className="text-sm text-slate-300">{workpaperData.client}</span>
                 <span className="text-sm text-gray-400">•</span>
-                <span className="text-sm text-gray-600">{workpaperData.period}</span>
+                <span className="text-sm text-slate-300">{workpaperData.period}</span>
                 <span className="text-sm text-gray-400">•</span>
-                <span className="text-sm text-gray-500">Saved {workpaperData.lastSaved}</span>
+                <span className="text-sm text-slate-400">Saved {workpaperData.lastSaved}</span>
               </div>
             </div>
           </div>
@@ -214,16 +214,16 @@ export function WorkpaperEditor({ onNavigate, jobId = 'JOB-2024-003' }: Workpape
         <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
           <CardContent className="p-4">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium text-gray-700">Workpaper Progress</span>
+              <span className="text-sm font-medium text-slate-300">Workpaper Progress</span>
               <span className="text-sm font-bold text-[#2855a6]">{workpaperData.progress}%</span>
             </div>
-            <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+            <div className="h-2 bg-white/5 rounded-full overflow-hidden">
               <div 
                 className="h-full bg-[#2855a6] transition-all"
                 style={{ width: `${workpaperData.progress}%` }}
               />
             </div>
-            <div className="flex items-center justify-between mt-2 text-xs text-gray-600">
+            <div className="flex items-center justify-between mt-2 text-xs text-slate-300">
               <div className="flex items-center gap-1">
                 <User className="w-3 h-3" />
                 <span>Assigned: {workpaperData.assignedTo}</span>
@@ -243,7 +243,7 @@ export function WorkpaperEditor({ onNavigate, jobId = 'JOB-2024-003' }: Workpape
             <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between mb-3">
-                  <h3 className="font-semibold text-gray-900">Source Documents</h3>
+                  <h3 className="font-semibold text-slate-100">Source Documents</h3>
                   <Button size="sm" variant="outline">
                     <Upload className="w-3 h-3 mr-1" />
                     Upload
@@ -254,13 +254,13 @@ export function WorkpaperEditor({ onNavigate, jobId = 'JOB-2024-003' }: Workpape
                   {documents.map((doc) => (
                     <div 
                       key={doc.id}
-                      className="p-3 border border-gray-200 rounded-lg hover:border-[#2855a6] hover:bg-blue-50 cursor-pointer transition-all"
+                      className="p-3 border border-white/10 rounded-lg hover:border-[#2855a6] hover:bg-blue-500/10 cursor-pointer transition-all"
                     >
                       <div className="flex items-start gap-2">
-                        <FileText className="w-4 h-4 text-gray-600 mt-0.5" />
+                        <FileText className="w-4 h-4 text-slate-300 mt-0.5" />
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm font-medium text-gray-900 truncate">{doc.name}</p>
-                          <p className="text-xs text-gray-500">{doc.size}</p>
+                          <p className="text-sm font-medium text-slate-100 truncate">{doc.name}</p>
+                          <p className="text-xs text-slate-400">{doc.size}</p>
                         </div>
                       </div>
                       <div className="flex items-center gap-2 mt-2">
@@ -287,7 +287,7 @@ export function WorkpaperEditor({ onNavigate, jobId = 'JOB-2024-003' }: Workpape
             {/* Quick Actions */}
             <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
               <CardContent className="p-4">
-                <h3 className="font-semibold text-gray-900 mb-3">Quick Actions</h3>
+                <h3 className="font-semibold text-slate-100 mb-3">Quick Actions</h3>
                 <div className="space-y-2">
                   <Button variant="outline" size="sm" className="w-full justify-start">
                     <Download className="w-3 h-3 mr-2" />
@@ -311,13 +311,13 @@ export function WorkpaperEditor({ onNavigate, jobId = 'JOB-2024-003' }: Workpape
             <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
               <CardContent className="p-4">
                 {/* Tabs */}
-                <div className="flex items-center gap-2 mb-4 border-b border-gray-200">
+                <div className="flex items-center gap-2 mb-4 border-b border-white/10">
                   <button
                     onClick={() => setActiveTab('form')}
                     className={`px-4 py-2 text-sm font-medium transition-colors ${
                       activeTab === 'form' 
                         ? 'text-[#2855a6] border-b-2 border-[#2855a6]' 
-                        : 'text-gray-600 hover:text-gray-900'
+                        : 'text-slate-300 hover:text-slate-100'
                     }`}
                   >
                     Workpaper Form
@@ -327,7 +327,7 @@ export function WorkpaperEditor({ onNavigate, jobId = 'JOB-2024-003' }: Workpape
                     className={`px-4 py-2 text-sm font-medium transition-colors ${
                       activeTab === 'journal' 
                         ? 'text-[#2855a6] border-b-2 border-[#2855a6]' 
-                        : 'text-gray-600 hover:text-gray-900'
+                        : 'text-slate-300 hover:text-slate-100'
                     }`}
                   >
                     Journal Entries
@@ -337,7 +337,7 @@ export function WorkpaperEditor({ onNavigate, jobId = 'JOB-2024-003' }: Workpape
                     className={`px-4 py-2 text-sm font-medium transition-colors ${
                       activeTab === 'notes' 
                         ? 'text-[#2855a6] border-b-2 border-[#2855a6]' 
-                        : 'text-gray-600 hover:text-gray-900'
+                        : 'text-slate-300 hover:text-slate-100'
                     }`}
                   >
                     Notes
@@ -361,11 +361,11 @@ export function WorkpaperEditor({ onNavigate, jobId = 'JOB-2024-003' }: Workpape
                     {formFields.map((field) => (
                       <div key={field.id} className="space-y-2">
                         <div className="flex items-center justify-between">
-                          <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                          <label className="text-sm font-medium text-slate-300 flex items-center gap-2">
                             {field.label}
                             {field.required && <span className="text-red-500">*</span>}
                             {field.hasAIFlag && (
-                              <Zap className="w-3 h-3 text-purple-600" title="AI Suggestion Available" />
+                              <Zap className="w-3 h-3 text-purple-400" title="AI Suggestion Available" />
                             )}
                           </label>
                           {field.variance && (
@@ -382,20 +382,20 @@ export function WorkpaperEditor({ onNavigate, jobId = 'JOB-2024-003' }: Workpape
                             onChange={() => {}} // Read-only for now
                             disabled={isLocked}
                             className={`w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6] ${
-                              isLocked ? 'bg-gray-50 cursor-not-allowed' : 'bg-white'
-                            } ${field.hasAIFlag ? 'border-purple-300' : 'border-gray-300'}`}
+                              isLocked ? 'bg-white/5 cursor-not-allowed' : 'bg-white'
+                            } ${field.hasAIFlag ? 'border-purple-300' : 'border-white/10'}`}
                           />
                         </div>
 
                         {showPriorYear && field.priorYearValue && (
-                          <div className="flex items-center gap-2 text-xs text-gray-600 bg-gray-50 px-3 py-2 rounded">
+                          <div className="flex items-center gap-2 text-xs text-slate-300 bg-white/5 px-3 py-2 rounded">
                             <Clock className="w-3 h-3" />
                             <span>Prior Year: <strong>${field.priorYearValue}</strong></span>
                           </div>
                         )}
 
                         {field.aiSuggestion && (
-                          <div className="flex items-center gap-2 text-xs text-purple-700 bg-purple-50 px-3 py-2 rounded">
+                          <div className="flex items-center gap-2 text-xs text-purple-300 bg-purple-500/10 px-3 py-2 rounded">
                             <Zap className="w-3 h-3" />
                             <span>{field.aiSuggestion}</span>
                           </div>
@@ -403,7 +403,7 @@ export function WorkpaperEditor({ onNavigate, jobId = 'JOB-2024-003' }: Workpape
                       </div>
                     ))}
 
-                    <div className="pt-4 border-t border-gray-200">
+                    <div className="pt-4 border-t border-white/10">
                       <Button className="w-full bg-[#2855a6] hover:bg-[#1e4089]">
                         Calculate & Validate
                       </Button>
@@ -413,7 +413,7 @@ export function WorkpaperEditor({ onNavigate, jobId = 'JOB-2024-003' }: Workpape
 
                 {activeTab === 'journal' && (
                   <div className="space-y-4">
-                    <div className="text-center py-8 text-gray-500">
+                    <div className="text-center py-8 text-slate-400">
                       <FileText className="w-12 h-12 mx-auto mb-3 text-gray-400" />
                       <p className="text-sm">No journal entries yet</p>
                       <Button size="sm" className="mt-3">Create Journal Entry</Button>
@@ -427,7 +427,7 @@ export function WorkpaperEditor({ onNavigate, jobId = 'JOB-2024-003' }: Workpape
                       placeholder="Add notes for this workpaper..."
                       rows={10}
                       disabled={isLocked}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+                      className="w-full px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
                     />
                     <Button size="sm" disabled={isLocked}>
                       <Save className="w-3 h-3 mr-2" />
@@ -444,8 +444,8 @@ export function WorkpaperEditor({ onNavigate, jobId = 'JOB-2024-003' }: Workpape
             <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
               <CardContent className="p-4">
                 <div className="flex items-center gap-2 mb-3">
-                  <Zap className="w-4 h-4 text-purple-600" />
-                  <h3 className="font-semibold text-gray-900">AI Assistant</h3>
+                  <Zap className="w-4 h-4 text-purple-400" />
+                  <h3 className="font-semibold text-slate-100">AI Assistant</h3>
                 </div>
 
                 <div className="space-y-3">
@@ -457,16 +457,16 @@ export function WorkpaperEditor({ onNavigate, jobId = 'JOB-2024-003' }: Workpape
                       <div className="flex items-start gap-2">
                         {getInsightIcon(insight.type)}
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm font-semibold text-gray-900">{insight.title}</p>
-                          <p className="text-xs text-gray-700 mt-1">{insight.message}</p>
+                          <p className="text-sm font-semibold text-slate-100">{insight.title}</p>
+                          <p className="text-xs text-slate-300 mt-1">{insight.message}</p>
                           <div className="flex items-center gap-2 mt-2">
-                            <div className="flex-1 bg-gray-200 h-1 rounded-full overflow-hidden">
+                            <div className="flex-1 bg-white/10 h-1 rounded-full overflow-hidden">
                               <div 
                                 className="h-full bg-purple-600"
                                 style={{ width: `${insight.confidence}%` }}
                               />
                             </div>
-                            <span className="text-xs text-gray-600">{insight.confidence}%</span>
+                            <span className="text-xs text-slate-300">{insight.confidence}%</span>
                           </div>
                         </div>
                       </div>
@@ -482,13 +482,13 @@ export function WorkpaperEditor({ onNavigate, jobId = 'JOB-2024-003' }: Workpape
                   ))}
                 </div>
 
-                <div className="mt-4 pt-4 border-t border-gray-200">
-                  <h4 className="text-sm font-semibold text-gray-900 mb-2">Ask AI</h4>
+                <div className="mt-4 pt-4 border-t border-white/10">
+                  <h4 className="text-sm font-semibold text-slate-100 mb-2">Ask AI</h4>
                   <div className="flex gap-2">
                     <input
                       type="text"
                       placeholder="Ask about this workpaper..."
-                      className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+                      className="flex-1 px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
                     />
                     <Button size="sm">
                       <Send className="w-3 h-3" />
@@ -501,18 +501,18 @@ export function WorkpaperEditor({ onNavigate, jobId = 'JOB-2024-003' }: Workpape
             {/* Review Status */}
             <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
               <CardContent className="p-4">
-                <h3 className="font-semibold text-gray-900 mb-3">Review Status</h3>
+                <h3 className="font-semibold text-slate-100 mb-3">Review Status</h3>
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-600">Preparer Sign-off</span>
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <span className="text-sm text-slate-300">Preparer Sign-off</span>
+                    <CheckCircle className="w-4 h-4 text-green-400" />
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-600">Reviewer Sign-off</span>
+                    <span className="text-sm text-slate-300">Reviewer Sign-off</span>
                     <Clock className="w-4 h-4 text-gray-400" />
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-600">Manager Approval</span>
+                    <span className="text-sm text-slate-300">Manager Approval</span>
                     <Clock className="w-4 h-4 text-gray-400" />
                   </div>
                 </div>

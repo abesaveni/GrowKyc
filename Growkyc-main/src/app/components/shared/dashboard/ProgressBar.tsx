@@ -24,12 +24,12 @@ export function ProgressBar({
   return (
     <div className={`w-full ${className}`.trim()}>
       {(label || showPercent) && (
-        <div className="flex justify-between text-xs text-gray-600 mb-1">
+        <div className="flex justify-between text-xs text-slate-300 mb-1">
           {label && <span>{label}</span>}
-          {showPercent && <span className="font-medium text-gray-900">{pct.toFixed(0)}%</span>}
+          {showPercent && <span className="font-medium text-slate-100">{pct.toFixed(0)}%</span>}
         </div>
       )}
-      <div className={`w-full ${h} bg-gray-200 rounded-full overflow-hidden`}>
+      <div className={`w-full ${h} bg-white/10 rounded-full overflow-hidden`}>
         <div className={`${h} ${colorClass} rounded-full transition-all duration-300`} style={{ width: `${pct}%` }} />
       </div>
     </div>

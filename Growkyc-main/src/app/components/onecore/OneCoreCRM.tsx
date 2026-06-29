@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Button } from '../ui/button';
 import {
   Home,
@@ -182,9 +182,9 @@ export function OneCoreCRM({ onSwitchModule, initialRole = 'sales-manager' }: On
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white/5">
       {/* Top Navigation Bar */}
-      <nav className="bg-white border-b border-gray-200 fixed w-full top-0 z-50">
+      <nav className="bg-white border-b border-white/10 fixed w-full top-0 z-50">
         <div className="px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo and Brand */}
@@ -194,9 +194,9 @@ export function OneCoreCRM({ onSwitchModule, initialRole = 'sales-manager' }: On
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
                 {mobileMenuOpen ? (
-                  <X className="w-6 h-6 text-gray-600" />
+                  <X className="w-6 h-6 text-slate-300" />
                 ) : (
-                  <Menu className="w-6 h-6 text-gray-600" />
+                  <Menu className="w-6 h-6 text-slate-300" />
                 )}
               </button>
               
@@ -205,17 +205,17 @@ export function OneCoreCRM({ onSwitchModule, initialRole = 'sales-manager' }: On
                   <Sparkles className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h1 className="text-lg font-bold text-gray-900">OneCore CRM</h1>
-                  <p className="text-xs text-gray-500">All-in-One Business Platform</p>
+                  <h1 className="text-lg font-bold text-slate-100">OneCore CRM</h1>
+                  <p className="text-xs text-slate-400">All-in-One Business Platform</p>
                 </div>
               </div>
             </div>
 
             {/* Center - Workspace Selector */}
             <div className="hidden md:flex items-center gap-3">
-              <div className="flex items-center gap-2 px-3 py-2 bg-indigo-50 border border-indigo-200 rounded-lg">
-                <Building2 className="w-4 h-4 text-indigo-600" />
-                <select className="bg-transparent text-sm font-medium text-indigo-900 border-none focus:outline-none">
+              <div className="flex items-center gap-2 px-3 py-2 bg-indigo-500/10 border border-indigo-500/30 rounded-lg">
+                <Building2 className="w-4 h-4 text-indigo-400" />
+                <select className="bg-transparent text-sm font-medium text-indigo-300 border-none focus:outline-none">
                   <option>{selectedWorkspace}</option>
                   <option>Beta Innovations Ltd</option>
                   <option>Gamma Enterprises</option>
@@ -231,7 +231,7 @@ export function OneCoreCRM({ onSwitchModule, initialRole = 'sales-manager' }: On
                 <input
                   type="search"
                   placeholder="Search everything..."
-                  className="pl-10 pr-4 py-2 w-64 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="pl-10 pr-4 py-2 w-64 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
 
@@ -248,7 +248,7 @@ export function OneCoreCRM({ onSwitchModule, initialRole = 'sales-manager' }: On
                   setUserRole(e.target.value as UserRole);
                   setCurrentModule('dashboard');
                 }}
-                className="px-3 py-2 border border-indigo-300 rounded-lg text-xs font-medium text-indigo-700 bg-indigo-50 hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="px-3 py-2 border border-indigo-300 rounded-lg text-xs font-medium text-indigo-300 bg-indigo-500/10 hover:bg-indigo-500/15 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               >
                 <option value="super-admin">Super Admin</option>
                 <option value="workspace-owner">Workspace Owner</option>
@@ -268,7 +268,7 @@ export function OneCoreCRM({ onSwitchModule, initialRole = 'sales-manager' }: On
               {onSwitchModule && (
                 <select
                   onChange={(e) => onSwitchModule(e.target.value)}
-                  className="px-3 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="px-3 py-2 border border-white/10 rounded-lg text-sm font-medium text-slate-300 bg-white hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   defaultValue="onecore"
                 >
                   <option value="Grow MIP">Switch to Grow MIP</option>
@@ -288,8 +288,8 @@ export function OneCoreCRM({ onSwitchModule, initialRole = 'sales-manager' }: On
               
               <div className="flex items-center gap-3 pl-3 border-l">
                 <div className="text-right hidden sm:block">
-                  <p className="text-sm font-medium text-gray-900">{mockUser.name}</p>
-                  <p className="text-xs text-gray-500">{mockUser.email}</p>
+                  <p className="text-sm font-medium text-slate-100">{mockUser.name}</p>
+                  <p className="text-xs text-slate-400">{mockUser.email}</p>
                 </div>
                 <Avatar>
                   <AvatarFallback className="bg-indigo-600 text-white">
@@ -593,8 +593,8 @@ function DashboardModule({ role, onNavigate }: any) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Welcome back, Jessica!</h1>
-          <p className="text-gray-600 mt-1">Here's what's happening with your business today.</p>
+          <h1 className="text-2xl font-bold text-slate-100">Welcome back, Jessica!</h1>
+          <p className="text-slate-300 mt-1">Here's what's happening with your business today.</p>
         </div>
         <div className="flex items-center gap-3">
           <Button variant="outline">
@@ -610,60 +610,60 @@ function DashboardModule({ role, onNavigate }: any) {
 
       {/* Key Metrics */}
       <div className="grid grid-cols-4 gap-4">
-        <div className="bg-white border border-gray-300 rounded-lg p-6">
+        <div className="bg-white border border-white/10 rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-sm font-medium text-gray-600">Revenue (MTD)</p>
-            <TrendingUp className="w-4 h-4 text-green-600" />
+            <p className="text-sm font-medium text-slate-300">Revenue (MTD)</p>
+            <TrendingUp className="w-4 h-4 text-green-400" />
           </div>
-          <p className="text-3xl font-bold text-gray-900">$145.2K</p>
+          <p className="text-3xl font-bold text-slate-100">$145.2K</p>
           <div className="flex items-center gap-1 mt-2 text-xs">
-            <span className="text-green-600 font-medium">+12.5%</span>
-            <span className="text-gray-500">vs last month</span>
+            <span className="text-green-400 font-medium">+12.5%</span>
+            <span className="text-slate-400">vs last month</span>
           </div>
         </div>
 
-        <div className="bg-white border border-gray-300 rounded-lg p-6">
+        <div className="bg-white border border-white/10 rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-sm font-medium text-gray-600">Active Deals</p>
-            <Briefcase className="w-4 h-4 text-blue-600" />
+            <p className="text-sm font-medium text-slate-300">Active Deals</p>
+            <Briefcase className="w-4 h-4 text-blue-400" />
           </div>
-          <p className="text-3xl font-bold text-gray-900">47</p>
+          <p className="text-3xl font-bold text-slate-100">47</p>
           <div className="flex items-center gap-1 mt-2 text-xs">
-            <span className="text-blue-600 font-medium">$892K</span>
-            <span className="text-gray-500">pipeline value</span>
+            <span className="text-blue-400 font-medium">$892K</span>
+            <span className="text-slate-400">pipeline value</span>
           </div>
         </div>
 
-        <div className="bg-white border border-gray-300 rounded-lg p-6">
+        <div className="bg-white border border-white/10 rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-sm font-medium text-gray-600">New Leads</p>
-            <Target className="w-4 h-4 text-purple-600" />
+            <p className="text-sm font-medium text-slate-300">New Leads</p>
+            <Target className="w-4 h-4 text-purple-400" />
           </div>
-          <p className="text-3xl font-bold text-gray-900">128</p>
+          <p className="text-3xl font-bold text-slate-100">128</p>
           <div className="flex items-center gap-1 mt-2 text-xs">
-            <span className="text-purple-600 font-medium">+8.2%</span>
-            <span className="text-gray-500">this week</span>
+            <span className="text-purple-400 font-medium">+8.2%</span>
+            <span className="text-slate-400">this week</span>
           </div>
         </div>
 
-        <div className="bg-white border border-gray-300 rounded-lg p-6">
+        <div className="bg-white border border-white/10 rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-sm font-medium text-gray-600">Open Tickets</p>
-            <Ticket className="w-4 h-4 text-orange-600" />
+            <p className="text-sm font-medium text-slate-300">Open Tickets</p>
+            <Ticket className="w-4 h-4 text-orange-400" />
           </div>
-          <p className="text-3xl font-bold text-gray-900">23</p>
+          <p className="text-3xl font-bold text-slate-100">23</p>
           <div className="flex items-center gap-1 mt-2 text-xs">
-            <span className="text-orange-600 font-medium">5 urgent</span>
-            <span className="text-gray-500">needs attention</span>
+            <span className="text-orange-400 font-medium">5 urgent</span>
+            <span className="text-slate-400">needs attention</span>
           </div>
         </div>
       </div>
 
       {/* Sales Pipeline */}
       <div className="grid grid-cols-3 gap-6">
-        <div className="col-span-2 bg-white border border-gray-300 rounded-lg p-6">
+        <div className="col-span-2 bg-white border border-white/10 rounded-lg p-6">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="font-semibold text-gray-900">Sales Pipeline</h3>
+            <h3 className="font-semibold text-slate-100">Sales Pipeline</h3>
             <Button variant="outline" size="sm" onClick={() => onNavigate('deals')}>
               View All
             </Button>
@@ -681,15 +681,15 @@ function DashboardModule({ role, onNavigate }: any) {
               <div key={idx} className="flex items-center gap-4">
                 <div className="flex-1">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-medium text-gray-900">{stage.stage}</span>
+                    <span className="text-sm font-medium text-slate-100">{stage.stage}</span>
                     <div className="text-right">
-                      <p className="text-sm font-semibold text-gray-900">
+                      <p className="text-sm font-semibold text-slate-100">
                         ${(stage.value / 1000).toFixed(0)}K
                       </p>
-                      <p className="text-xs text-gray-500">{stage.deals} deals</p>
+                      <p className="text-xs text-slate-400">{stage.deals} deals</p>
                     </div>
                   </div>
-                  <div className="h-2 bg-gray-200 rounded-full">
+                  <div className="h-2 bg-white/10 rounded-full">
                     <div
                       className={`h-2 rounded-full bg-${stage.color}-600`}
                       style={{ width: `${(stage.value / 285000) * 100}%` }}
@@ -702,8 +702,8 @@ function DashboardModule({ role, onNavigate }: any) {
         </div>
 
         {/* Recent Activity */}
-        <div className="bg-white border border-gray-300 rounded-lg p-6">
-          <h3 className="font-semibold text-gray-900 mb-4">Recent Activity</h3>
+        <div className="bg-white border border-white/10 rounded-lg p-6">
+          <h3 className="font-semibold text-slate-100 mb-4">Recent Activity</h3>
           <div className="space-y-4">
             {[
               {
@@ -749,15 +749,15 @@ function DashboardModule({ role, onNavigate }: any) {
             ].map((activity, idx) => {
               const Icon = activity.icon;
               return (
-                <div key={idx} className="flex items-start gap-3 pb-4 border-b border-gray-200 last:border-0 last:pb-0">
+                <div key={idx} className="flex items-start gap-3 pb-4 border-b border-white/10 last:border-0 last:pb-0">
                   <div className={`w-8 h-8 rounded-full bg-${activity.color}-100 flex items-center justify-center flex-shrink-0`}>
                     <Icon className={`w-4 h-4 text-${activity.color}-600`} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-gray-900">{activity.action}</p>
-                    <p className="text-sm text-gray-600 truncate">{activity.subject}</p>
+                    <p className="text-sm font-medium text-slate-100">{activity.action}</p>
+                    <p className="text-sm text-slate-300 truncate">{activity.subject}</p>
                     <div className="flex items-center gap-2 mt-1">
-                      <span className="text-xs text-gray-500">{activity.time}</span>
+                      <span className="text-xs text-slate-400">{activity.time}</span>
                       <span className={`text-xs font-medium text-${activity.color}-600`}>{activity.value}</span>
                     </div>
                   </div>
@@ -781,12 +781,12 @@ function DashboardModule({ role, onNavigate }: any) {
             <button
               key={idx}
               onClick={() => onNavigate(action.action)}
-              className={`p-6 bg-white border border-gray-300 rounded-lg hover:shadow-lg transition-shadow group`}
+              className={`p-6 bg-white border border-white/10 rounded-lg hover:shadow-lg transition-shadow group`}
             >
               <div className={`w-12 h-12 rounded-lg bg-${action.color}-100 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform`}>
                 <Icon className={`w-6 h-6 text-${action.color}-600`} />
               </div>
-              <p className="text-sm font-semibold text-gray-900">{action.label}</p>
+              <p className="text-sm font-semibold text-slate-100">{action.label}</p>
             </button>
           );
         })}

@@ -180,15 +180,15 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
             <div className="text-xs text-slate-300 mt-1">Total Incidents</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-red-600">{stats.open}</div>
+            <div className="text-3xl font-bold text-red-400">{stats.open}</div>
             <div className="text-xs text-slate-300 mt-1">Open</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-amber-600">{stats.investigating}</div>
+            <div className="text-3xl font-bold text-amber-400">{stats.investigating}</div>
             <div className="text-xs text-slate-300 mt-1">Investigating</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600">{stats.contained}</div>
+            <div className="text-3xl font-bold text-blue-400">{stats.contained}</div>
             <div className="text-xs text-slate-300 mt-1">Contained</div>
           </div>
           <div className="text-center">
@@ -196,11 +196,11 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
             <div className="text-xs text-slate-300 mt-1">Closed</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-red-600">{stats.critical}</div>
+            <div className="text-3xl font-bold text-red-400">{stats.critical}</div>
             <div className="text-xs text-slate-300 mt-1">Critical</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-purple-600">{stats.regulatorNotifications}</div>
+            <div className="text-3xl font-bold text-purple-400">{stats.regulatorNotifications}</div>
             <div className="text-xs text-slate-300 mt-1">Regulator Notifications</div>
           </div>
         </div>
@@ -239,8 +239,8 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
                 <Card 
                   key={incident.incidentId}
                   className={`border-2 ${
-                    incident.severity === 'Critical' ? 'border-red-300 bg-red-50' :
-                    incident.severity === 'High' ? 'border-orange-300 bg-orange-50' :
+                    incident.severity === 'Critical' ? 'border-red-300 bg-red-500/10' :
+                    incident.severity === 'High' ? 'border-orange-300 bg-orange-500/10' :
                     'border-white/10'
                   } hover:border-cyan-300 transition-colors`}
                 >
@@ -249,7 +249,7 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
                       {/* Incident ID & Type */}
                       <div className="md:col-span-3">
                         <div className="flex items-center gap-2 mb-2">
-                          <AlertTriangle className="w-5 h-5 text-red-600" />
+                          <AlertTriangle className="w-5 h-5 text-red-400" />
                           <div>
                             <div className="font-bold text-white">{incident.incidentId}</div>
                             <div className="text-sm text-slate-300">{incident.type}</div>
@@ -349,7 +349,7 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
 
           {/* INVESTIGATION TAB */}
           <TabsContent value="investigation">
-            <Card className="border-2 border-red-200">
+            <Card className="border-2 border-red-500/30">
               <CardHeader className="bg-gradient-to-r from-red-50 to-orange-50">
                 <CardTitle>Incident Investigation: SEC-2024-002</CardTitle>
                 <CardDescription>
@@ -358,9 +358,9 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
               </CardHeader>
               <CardContent className="p-6 space-y-6">
                 {/* Incident Summary */}
-                <div className="bg-red-50 rounded-lg p-4 border-2 border-red-300">
-                  <h3 className="font-bold text-red-900 mb-3 flex items-center gap-2">
-                    <AlertCircle className="w-5 h-5 text-red-600" />
+                <div className="bg-red-500/10 rounded-lg p-4 border-2 border-red-300">
+                  <h3 className="font-bold text-red-300 mb-3 flex items-center gap-2">
+                    <AlertCircle className="w-5 h-5 text-red-400" />
                     Incident Summary
                   </h3>
                   <div className="grid md:grid-cols-3 gap-4 text-sm">
@@ -392,9 +392,9 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
                 </div>
 
                 {/* Affected System */}
-                <div className="bg-blue-50 rounded-lg p-4 border-2 border-blue-200">
-                  <h3 className="font-bold text-blue-900 mb-3 flex items-center gap-2">
-                    <Server className="w-5 h-5 text-blue-600" />
+                <div className="bg-blue-500/10 rounded-lg p-4 border-2 border-blue-500/30">
+                  <h3 className="font-bold text-blue-300 mb-3 flex items-center gap-2">
+                    <Server className="w-5 h-5 text-blue-400" />
                     Affected System & Data
                   </h3>
                   <div className="grid md:grid-cols-2 gap-4 text-sm">
@@ -464,10 +464,10 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
           <TabsContent value="notification">
             <div className="grid gap-6">
               {/* Regulator Notification */}
-              <Card className="border-2 border-purple-200">
+              <Card className="border-2 border-purple-500/30">
                 <CardHeader className="bg-gradient-to-r from-purple-50 to-pink-50">
                   <CardTitle className="flex items-center gap-2">
-                    <Bell className="w-5 h-5 text-purple-600" />
+                    <Bell className="w-5 h-5 text-purple-400" />
                     Regulator Notification Requirements
                   </CardTitle>
                   <CardDescription>
@@ -476,27 +476,27 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
                 </CardHeader>
                 <CardContent className="p-6">
                   <div className="space-y-4">
-                    <div className="bg-purple-50 rounded-lg p-4 border-2 border-purple-300">
-                      <h3 className="font-bold text-purple-900 mb-2">NDB Scheme Threshold Assessment</h3>
-                      <p className="text-sm text-purple-800 mb-3">
+                    <div className="bg-purple-500/10 rounded-lg p-4 border-2 border-purple-300">
+                      <h3 className="font-bold text-purple-300 mb-2">NDB Scheme Threshold Assessment</h3>
+                      <p className="text-sm text-purple-300 mb-3">
                         A data breach is notifiable when it is likely to result in serious harm to affected individuals
                       </p>
                       <div className="space-y-2 text-sm">
                         <div className="flex items-start gap-2">
-                          <CheckCircle className="w-4 h-4 text-purple-600 flex-shrink-0 mt-0.5" />
+                          <CheckCircle className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" />
                           <span>Breach involves highly sensitive personal information ✓</span>
                         </div>
                         <div className="flex items-start gap-2">
-                          <CheckCircle className="w-4 h-4 text-purple-600 flex-shrink-0 mt-0.5" />
+                          <CheckCircle className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" />
                           <span>47 individuals affected ✓</span>
                         </div>
                         <div className="flex items-start gap-2">
-                          <CheckCircle className="w-4 h-4 text-purple-600 flex-shrink-0 mt-0.5" />
+                          <CheckCircle className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" />
                           <span>Potential for identity theft or financial harm ✓</span>
                         </div>
                       </div>
-                      <div className="mt-3 p-3 bg-red-50 rounded border-2 border-red-300">
-                        <p className="text-sm font-bold text-red-900">
+                      <div className="mt-3 p-3 bg-red-500/10 rounded border-2 border-red-300">
+                        <p className="text-sm font-bold text-red-300">
                           ⚠️ OAIC Notification REQUIRED within 30 days
                         </p>
                       </div>
@@ -526,10 +526,10 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
               </Card>
 
               {/* Customer Notification */}
-              <Card className="border-2 border-orange-200">
+              <Card className="border-2 border-orange-500/30">
                 <CardHeader className="bg-gradient-to-r from-orange-50 to-amber-50">
                   <CardTitle className="flex items-center gap-2">
-                    <Bell className="w-5 h-5 text-orange-600" />
+                    <Bell className="w-5 h-5 text-orange-400" />
                     Customer Notification
                   </CardTitle>
                   <CardDescription>
@@ -538,9 +538,9 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
                 </CardHeader>
                 <CardContent className="p-6">
                   <div className="space-y-4">
-                    <div className="bg-orange-50 rounded-lg p-4 border-2 border-orange-300">
-                      <h3 className="font-bold text-orange-900 mb-2">Notification Requirements</h3>
-                      <ul className="text-sm text-orange-800 space-y-1">
+                    <div className="bg-orange-500/10 rounded-lg p-4 border-2 border-orange-300">
+                      <h3 className="font-bold text-orange-300 mb-2">Notification Requirements</h3>
+                      <ul className="text-sm text-orange-300 space-y-1">
                         <li>✓ Identity of the organization</li>
                         <li>✓ Description of the data breach</li>
                         <li>✓ The kind of information concerned</li>
@@ -611,7 +611,7 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
                           </div>
                         </div>
 
-                        <div className="p-3 bg-green-50 rounded border border-green-200">
+                        <div className="p-3 bg-green-500/10 rounded border border-green-500/30">
                           <div className="text-xs text-slate-300 mb-1">Preventative Measures Implemented:</div>
                           <ul className="text-white space-y-1">
                             {incident.type === 'Phishing Attack' && (
@@ -640,7 +640,7 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
 
           {/* METRICS TAB */}
           <TabsContent value="metrics">
-            <Card className="border-2 border-indigo-200">
+            <Card className="border-2 border-indigo-500/30">
               <CardHeader className="bg-gradient-to-r from-indigo-50 to-purple-50">
                 <CardTitle>Security Metrics & Trends</CardTitle>
                 <CardDescription>
@@ -650,7 +650,7 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
               <CardContent className="p-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   {/* By Type */}
-                  <div className="p-4 bg-[#1e293b] rounded-lg border-2 border-indigo-200">
+                  <div className="p-4 bg-[#1e293b] rounded-lg border-2 border-indigo-500/30">
                     <h3 className="font-bold text-white mb-4">Incidents by Type</h3>
                     <div className="space-y-2">
                       {[
@@ -663,7 +663,7 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
                         <div key={idx} className="flex items-center justify-between p-2 bg-[#0f172a] rounded">
                           <span className="text-sm text-slate-300">{item.type}</span>
                           <div className="flex items-center gap-2">
-                            <div className="w-20 bg-gray-200 rounded-full h-2">
+                            <div className="w-20 bg-white/10 rounded-full h-2">
                               <div className={`${item.color} h-2 rounded-full`} style={{ width: `${(item.count / stats.total) * 100}%` }} />
                             </div>
                             <span className="text-sm font-bold text-white w-4">{item.count}</span>
@@ -674,7 +674,7 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
                   </div>
 
                   {/* By Severity */}
-                  <div className="p-4 bg-[#1e293b] rounded-lg border-2 border-indigo-200">
+                  <div className="p-4 bg-[#1e293b] rounded-lg border-2 border-indigo-500/30">
                     <h3 className="font-bold text-white mb-4">Incidents by Severity</h3>
                     <div className="space-y-3">
                       {[
@@ -692,16 +692,16 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
                   </div>
 
                   {/* Mean Time to Contain */}
-                  <div className="p-4 bg-[#1e293b] rounded-lg border-2 border-green-200">
+                  <div className="p-4 bg-[#1e293b] rounded-lg border-2 border-green-500/30">
                     <h3 className="font-bold text-white mb-2">Mean Time to Contain</h3>
-                    <div className="text-4xl font-bold text-green-600">4.2 hrs</div>
+                    <div className="text-4xl font-bold text-green-400">4.2 hrs</div>
                     <p className="text-sm text-slate-300 mt-1">Average containment time</p>
                   </div>
 
                   {/* Mean Time to Resolve */}
-                  <div className="p-4 bg-[#1e293b] rounded-lg border-2 border-blue-200">
+                  <div className="p-4 bg-[#1e293b] rounded-lg border-2 border-blue-500/30">
                     <h3 className="font-bold text-white mb-2">Mean Time to Resolve</h3>
-                    <div className="text-4xl font-bold text-blue-600">2.3 days</div>
+                    <div className="text-4xl font-bold text-blue-400">2.3 days</div>
                     <p className="text-sm text-slate-300 mt-1">Average resolution time</p>
                   </div>
                 </div>

@@ -46,7 +46,7 @@ export const ApproveClientModal: React.FC<ApproveClientModalProps> = ({ isOpen, 
       onConfirm={handleSubmit(onSubmit)}
       confirmLabel="Approve"
     >
-      <div className="text-sm text-gray-600 mb-2">Client: {caseData?.clientName || caseData?.borrowerName}</div>
+      <div className="text-sm text-slate-300 mb-2">Client: {caseData?.clientName || caseData?.borrowerName}</div>
       <Textarea
         placeholder="Approval notes (optional)"
         {...register('notes')}
@@ -54,7 +54,7 @@ export const ApproveClientModal: React.FC<ApproveClientModalProps> = ({ isOpen, 
       />
       <div className="flex items-center space-x-2">
         <Switch id="notify" {...register('notify')} />
-        <label htmlFor="notify" className="text-sm text-gray-700">Notify client</label>
+        <label htmlFor="notify" className="text-sm text-slate-300">Notify client</label>
       </div>
     </ActionModal>
   );

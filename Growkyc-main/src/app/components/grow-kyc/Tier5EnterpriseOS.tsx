@@ -84,23 +84,23 @@ export function Tier5EnterpriseOS({ onBack }: Tier5EnterpriseOSProps) {
           </div>
 
           <div className="bg-gradient-to-r from-purple-50 via-indigo-50 to-blue-50 border-4 border-purple-400 rounded-xl p-8 shadow-2xl">
-            <h3 className="font-bold text-purple-900 text-2xl mb-4 flex items-center gap-2">
-              <Sparkles className="w-8 h-8 text-purple-600" />
+            <h3 className="font-bold text-purple-300 text-2xl mb-4 flex items-center gap-2">
+              <Sparkles className="w-8 h-8 text-purple-400" />
               The Biggest Moat: Multi-Firm Autonomous Operations
             </h3>
             <div className="grid md:grid-cols-3 gap-6 mb-6">
               <div className="bg-[#1e293b] p-6 rounded-xl border-2 border-purple-300 shadow-lg">
-                <Bot className="w-12 h-12 text-purple-600 mb-3" />
+                <Bot className="w-12 h-12 text-purple-400 mb-3" />
                 <p className="font-bold text-white text-lg mb-2">AI-Driven Orchestration</p>
                 <p className="text-sm text-slate-300">Autonomous workflow execution, predictive routing, AI copilot support—work happens automatically</p>
               </div>
               <div className="bg-[#1e293b] p-6 rounded-xl border-2 border-blue-300 shadow-lg">
-                <Wallet className="w-12 h-12 text-blue-600 mb-3" />
+                <Wallet className="w-12 h-12 text-blue-400 mb-3" />
                 <p className="font-bold text-white text-lg mb-2">Reusable Intelligence</p>
                 <p className="text-sm text-slate-300">One-time verification, perpetual wallet—identity & entity data reused across all services forever</p>
               </div>
               <div className="bg-[#1e293b] p-6 rounded-xl border-2 border-green-300 shadow-lg">
-                <Building className="w-12 h-12 text-green-600 mb-3" />
+                <Building className="w-12 h-12 text-green-400 mb-3" />
                 <p className="font-bold text-white text-lg mb-2">Multi-Firm Enterprise</p>
                 <p className="text-sm text-slate-300">Accounting firms, lenders, brokers, investor groups—one platform, isolated data, central oversight</p>
               </div>
@@ -108,17 +108,17 @@ export function Tier5EnterpriseOS({ onBack }: Tier5EnterpriseOSProps) {
             
             <div className="grid md:grid-cols-3 gap-6">
               <div className="bg-[#1e293b] p-6 rounded-xl border-2 border-amber-300 shadow-lg">
-                <TrendingUp className="w-12 h-12 text-amber-600 mb-3" />
+                <TrendingUp className="w-12 h-12 text-amber-400 mb-3" />
                 <p className="font-bold text-white text-lg mb-2">Predictive Capacity</p>
                 <p className="text-sm text-slate-300">Forecast staffing needs, bottlenecks, overload risk—practice management intelligence</p>
               </div>
               <div className="bg-[#1e293b] p-6 rounded-xl border-2 border-indigo-300 shadow-lg">
-                <Target className="w-12 h-12 text-indigo-600 mb-3" />
+                <Target className="w-12 h-12 text-indigo-400 mb-3" />
                 <p className="font-bold text-white text-lg mb-2">Investor & Lender Views</p>
                 <p className="text-sm text-slate-300">Deal intelligence, borrower profiling, security tracking—extends beyond accounting to private capital</p>
               </div>
               <div className="bg-[#1e293b] p-6 rounded-xl border-2 border-pink-300 shadow-lg">
-                <Brain className="w-12 h-12 text-pink-600 mb-3" />
+                <Brain className="w-12 h-12 text-pink-400 mb-3" />
                 <p className="font-bold text-white text-lg mb-2">Explainable AI Copilot</p>
                 <p className="text-sm text-slate-300">Draft memos, summarize findings, explain decisions—AI beside every reviewer</p>
               </div>
@@ -126,12 +126,12 @@ export function Tier5EnterpriseOS({ onBack }: Tier5EnterpriseOSProps) {
 
             <div className="mt-6 p-6 bg-gradient-to-r from-purple-100 to-blue-100 rounded-xl border-2 border-purple-400">
               <p className="text-center text-lg text-white">
-                <strong className="text-purple-900">Platform Evolution:</strong>{' '}
+                <strong className="text-purple-300">Platform Evolution:</strong>{' '}
                 <span className="text-slate-300">Tier 1 = Compliance</span> •{' '}
                 <span className="text-slate-300">Tier 2 = Understanding</span> •{' '}
                 <span className="text-slate-300">Tier 3 = Decisions</span> •{' '}
                 <span className="text-slate-300">Tier 4 = Profit</span> •{' '}
-                <span className="text-purple-900 font-bold">Tier 5 = Autonomous Enterprise OS</span>
+                <span className="text-purple-300 font-bold">Tier 5 = Autonomous Enterprise OS</span>
               </p>
             </div>
           </div>
@@ -161,31 +161,31 @@ export function Tier5EnterpriseOS({ onBack }: Tier5EnterpriseOSProps) {
 
               <div className="space-y-2 mb-4">
                 <div className="flex items-center gap-2 text-xs text-slate-300">
-                  <CheckCircle className="w-3 h-3 text-green-600" />
+                  <CheckCircle className="w-3 h-3 text-green-400" />
                   <span>Draft ECDD memos</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-slate-300">
-                  <CheckCircle className="w-3 h-3 text-green-600" />
+                  <CheckCircle className="w-3 h-3 text-green-400" />
                   <span>Summarize findings</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-slate-300">
-                  <CheckCircle className="w-3 h-3 text-green-600" />
+                  <CheckCircle className="w-3 h-3 text-green-400" />
                   <span>Identify missing evidence</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-slate-300">
-                  <CheckCircle className="w-3 h-3 text-green-600" />
+                  <CheckCircle className="w-3 h-3 text-green-400" />
                   <span>Q&A on any file</span>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-2 mb-3">
                 <div className="bg-[#1e293b] p-2 rounded border-2 border-purple-300 text-center">
-                  <p className="text-xs text-purple-700">Cases Today</p>
-                  <p className="text-xl font-bold text-purple-600">247</p>
+                  <p className="text-xs text-purple-300">Cases Today</p>
+                  <p className="text-xl font-bold text-purple-400">247</p>
                 </div>
                 <div className="bg-[#1e293b] p-2 rounded border-2 border-purple-300 text-center">
-                  <p className="text-xs text-purple-700">Memos Drafted</p>
-                  <p className="text-xl font-bold text-purple-600">89</p>
+                  <p className="text-xs text-purple-300">Memos Drafted</p>
+                  <p className="text-xl font-bold text-purple-400">89</p>
                 </div>
               </div>
 
@@ -216,31 +216,31 @@ export function Tier5EnterpriseOS({ onBack }: Tier5EnterpriseOSProps) {
 
               <div className="space-y-2 mb-4">
                 <div className="flex items-center gap-2 text-xs text-slate-300">
-                  <CheckCircle className="w-3 h-3 text-green-600" />
+                  <CheckCircle className="w-3 h-3 text-green-400" />
                   <span>Auto-route jobs</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-slate-300">
-                  <CheckCircle className="w-3 h-3 text-green-600" />
+                  <CheckCircle className="w-3 h-3 text-green-400" />
                   <span>Create tasks</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-slate-300">
-                  <CheckCircle className="w-3 h-3 text-green-600" />
+                  <CheckCircle className="w-3 h-3 text-green-400" />
                   <span>Assign owners</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-slate-300">
-                  <CheckCircle className="w-3 h-3 text-green-600" />
+                  <CheckCircle className="w-3 h-3 text-green-400" />
                   <span>Pause on blockers</span>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-2 mb-3">
                 <div className="bg-[#1e293b] p-2 rounded border-2 border-blue-300 text-center">
-                  <p className="text-xs text-blue-700">Active Workflows</p>
-                  <p className="text-xl font-bold text-blue-600">1,234</p>
+                  <p className="text-xs text-blue-300">Active Workflows</p>
+                  <p className="text-xl font-bold text-blue-400">1,234</p>
                 </div>
                 <div className="bg-[#1e293b] p-2 rounded border-2 border-blue-300 text-center">
-                  <p className="text-xs text-blue-700">Auto-Advanced</p>
-                  <p className="text-xl font-bold text-blue-600">892</p>
+                  <p className="text-xs text-blue-300">Auto-Advanced</p>
+                  <p className="text-xl font-bold text-blue-400">892</p>
                 </div>
               </div>
 
@@ -271,31 +271,31 @@ export function Tier5EnterpriseOS({ onBack }: Tier5EnterpriseOSProps) {
 
               <div className="space-y-2 mb-4">
                 <div className="flex items-center gap-2 text-xs text-slate-300">
-                  <CheckCircle className="w-3 h-3 text-green-600" />
+                  <CheckCircle className="w-3 h-3 text-green-400" />
                   <span>Predict workload</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-slate-300">
-                  <CheckCircle className="w-3 h-3 text-green-600" />
+                  <CheckCircle className="w-3 h-3 text-green-400" />
                   <span>Spot overload risk</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-slate-300">
-                  <CheckCircle className="w-3 h-3 text-green-600" />
+                  <CheckCircle className="w-3 h-3 text-green-400" />
                   <span>Recommend hiring</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-slate-300">
-                  <CheckCircle className="w-3 h-3 text-green-600" />
+                  <CheckCircle className="w-3 h-3 text-green-400" />
                   <span>Scenario planning</span>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-2 mb-3">
                 <div className="bg-[#1e293b] p-2 rounded border-2 border-green-300 text-center">
-                  <p className="text-xs text-green-700">Utilization</p>
-                  <p className="text-xl font-bold text-green-600">87%</p>
+                  <p className="text-xs text-green-300">Utilization</p>
+                  <p className="text-xl font-bold text-green-400">87%</p>
                 </div>
                 <div className="bg-[#1e293b] p-2 rounded border-2 border-red-300 text-center">
-                  <p className="text-xs text-red-700">Overloaded</p>
-                  <p className="text-xl font-bold text-red-600">3</p>
+                  <p className="text-xs text-red-300">Overloaded</p>
+                  <p className="text-xl font-bold text-red-400">3</p>
                 </div>
               </div>
 
@@ -326,31 +326,31 @@ export function Tier5EnterpriseOS({ onBack }: Tier5EnterpriseOSProps) {
 
               <div className="space-y-2 mb-4">
                 <div className="flex items-center gap-2 text-xs text-slate-300">
-                  <CheckCircle className="w-3 h-3 text-green-600" />
+                  <CheckCircle className="w-3 h-3 text-green-400" />
                   <span>Borrower profiling</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-slate-300">
-                  <CheckCircle className="w-3 h-3 text-green-600" />
+                  <CheckCircle className="w-3 h-3 text-green-400" />
                   <span>Deal readiness</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-slate-300">
-                  <CheckCircle className="w-3 h-3 text-green-600" />
+                  <CheckCircle className="w-3 h-3 text-green-400" />
                   <span>Security tracking</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-slate-300">
-                  <CheckCircle className="w-3 h-3 text-green-600" />
+                  <CheckCircle className="w-3 h-3 text-green-400" />
                   <span>Portfolio exposure</span>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-2 mb-3">
                 <div className="bg-[#1e293b] p-2 rounded border-2 border-amber-300 text-center">
-                  <p className="text-xs text-amber-700">Active Deals</p>
-                  <p className="text-xl font-bold text-amber-600">47</p>
+                  <p className="text-xs text-amber-300">Active Deals</p>
+                  <p className="text-xl font-bold text-amber-400">47</p>
                 </div>
                 <div className="bg-[#1e293b] p-2 rounded border-2 border-amber-300 text-center">
-                  <p className="text-xs text-amber-700">Deal Ready</p>
-                  <p className="text-xl font-bold text-green-600">34</p>
+                  <p className="text-xs text-amber-300">Deal Ready</p>
+                  <p className="text-xl font-bold text-green-400">34</p>
                 </div>
               </div>
 
@@ -381,31 +381,31 @@ export function Tier5EnterpriseOS({ onBack }: Tier5EnterpriseOSProps) {
 
               <div className="space-y-2 mb-4">
                 <div className="flex items-center gap-2 text-xs text-slate-300">
-                  <CheckCircle className="w-3 h-3 text-green-600" />
+                  <CheckCircle className="w-3 h-3 text-green-400" />
                   <span>Store verified facts</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-slate-300">
-                  <CheckCircle className="w-3 h-3 text-green-600" />
+                  <CheckCircle className="w-3 h-3 text-green-400" />
                   <span>Reuse prior checks</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-slate-300">
-                  <CheckCircle className="w-3 h-3 text-green-600" />
+                  <CheckCircle className="w-3 h-3 text-green-400" />
                   <span>Delta-only refresh</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-slate-300">
-                  <CheckCircle className="w-3 h-3 text-green-600" />
+                  <CheckCircle className="w-3 h-3 text-green-400" />
                   <span>Historic evidence</span>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-2 mb-3">
                 <div className="bg-[#1e293b] p-2 rounded border-2 border-indigo-300 text-center">
-                  <p className="text-xs text-indigo-700">Active Wallets</p>
-                  <p className="text-xl font-bold text-indigo-600">12,847</p>
+                  <p className="text-xs text-indigo-300">Active Wallets</p>
+                  <p className="text-xl font-bold text-indigo-400">12,847</p>
                 </div>
                 <div className="bg-[#1e293b] p-2 rounded border-2 border-indigo-300 text-center">
-                  <p className="text-xs text-indigo-700">Reused/Month</p>
-                  <p className="text-xl font-bold text-green-600">2,341</p>
+                  <p className="text-xs text-indigo-300">Reused/Month</p>
+                  <p className="text-xl font-bold text-green-400">2,341</p>
                 </div>
               </div>
 
@@ -436,31 +436,31 @@ export function Tier5EnterpriseOS({ onBack }: Tier5EnterpriseOSProps) {
 
               <div className="space-y-2 mb-4">
                 <div className="flex items-center gap-2 text-xs text-slate-300">
-                  <CheckCircle className="w-3 h-3 text-green-600" />
+                  <CheckCircle className="w-3 h-3 text-green-400" />
                   <span>Multiple firms</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-slate-300">
-                  <CheckCircle className="w-3 h-3 text-green-600" />
+                  <CheckCircle className="w-3 h-3 text-green-400" />
                   <span>Isolated data</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-slate-300">
-                  <CheckCircle className="w-3 h-3 text-green-600" />
+                  <CheckCircle className="w-3 h-3 text-green-400" />
                   <span>Central oversight</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-slate-300">
-                  <CheckCircle className="w-3 h-3 text-green-600" />
+                  <CheckCircle className="w-3 h-3 text-green-400" />
                   <span>Policy deployment</span>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-2 mb-3">
                 <div className="bg-[#1e293b] p-2 rounded border-2 border-pink-300 text-center">
-                  <p className="text-xs text-pink-700">Active Firms</p>
-                  <p className="text-xl font-bold text-pink-600">23</p>
+                  <p className="text-xs text-pink-300">Active Firms</p>
+                  <p className="text-xl font-bold text-pink-400">23</p>
                 </div>
                 <div className="bg-[#1e293b] p-2 rounded border-2 border-pink-300 text-center">
-                  <p className="text-xs text-pink-700">Total Users</p>
-                  <p className="text-xl font-bold text-pink-600">847</p>
+                  <p className="text-xs text-pink-300">Total Users</p>
+                  <p className="text-xl font-bold text-pink-400">847</p>
                 </div>
               </div>
 
@@ -476,7 +476,7 @@ export function Tier5EnterpriseOS({ onBack }: Tier5EnterpriseOSProps) {
         <Card className="border-4 border-purple-500 bg-gradient-to-r from-purple-50 via-indigo-50 to-blue-50 shadow-2xl">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-3xl">
-              <Zap className="w-8 h-8 text-purple-600" />
+              <Zap className="w-8 h-8 text-purple-400" />
               Complete Tier 5 Autonomous Flow
             </CardTitle>
             <CardDescription className="text-lg">From wallet reuse to enterprise oversight</CardDescription>
@@ -497,7 +497,7 @@ export function Tier5EnterpriseOS({ onBack }: Tier5EnterpriseOSProps) {
               ].map((step, idx) => {
                 const Icon = step.icon;
                 return (
-                  <div key={idx} className="flex items-center gap-4 p-4 bg-[#1e293b] rounded-lg border-2 border-purple-200 shadow-sm">
+                  <div key={idx} className="flex items-center gap-4 p-4 bg-[#1e293b] rounded-lg border-2 border-purple-500/30 shadow-sm">
                     <div className={`w-12 h-12 bg-${step.color}-100 rounded-full flex items-center justify-center border-2 border-${step.color}-400`}>
                       <Icon className={`w-6 h-6 text-${step.color}-700`} />
                     </div>
@@ -514,7 +514,7 @@ export function Tier5EnterpriseOS({ onBack }: Tier5EnterpriseOSProps) {
               <h4 className="font-bold text-white text-xl mb-4">What Tier 5 Achieves:</h4>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h5 className="font-bold text-purple-900 mb-2 flex items-center gap-2">
+                  <h5 className="font-bold text-purple-300 mb-2 flex items-center gap-2">
                     <Bot className="w-5 h-5" />
                     Autonomous Execution
                   </h5>
@@ -526,7 +526,7 @@ export function Tier5EnterpriseOS({ onBack }: Tier5EnterpriseOSProps) {
                   </ul>
                 </div>
                 <div>
-                  <h5 className="font-bold text-indigo-900 mb-2 flex items-center gap-2">
+                  <h5 className="font-bold text-indigo-300 mb-2 flex items-center gap-2">
                     <Wallet className="w-5 h-5" />
                     Reusable Intelligence
                   </h5>
@@ -538,7 +538,7 @@ export function Tier5EnterpriseOS({ onBack }: Tier5EnterpriseOSProps) {
                   </ul>
                 </div>
                 <div>
-                  <h5 className="font-bold text-green-900 mb-2 flex items-center gap-2">
+                  <h5 className="font-bold text-green-300 mb-2 flex items-center gap-2">
                     <Users className="w-5 h-5" />
                     Predictive Operations
                   </h5>
@@ -550,7 +550,7 @@ export function Tier5EnterpriseOS({ onBack }: Tier5EnterpriseOSProps) {
                   </ul>
                 </div>
                 <div>
-                  <h5 className="font-bold text-pink-900 mb-2 flex items-center gap-2">
+                  <h5 className="font-bold text-pink-300 mb-2 flex items-center gap-2">
                     <Building className="w-5 h-5" />
                     Enterprise Scale
                   </h5>
@@ -575,8 +575,8 @@ export function Tier5EnterpriseOS({ onBack }: Tier5EnterpriseOSProps) {
             </p>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="text-center">
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Workflow className="w-8 h-8 text-purple-600" />
+                <div className="w-16 h-16 bg-purple-500/15 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Workflow className="w-8 h-8 text-purple-400" />
                 </div>
                 <h4 className="font-bold text-white mb-2">Autonomous Workflows</h4>
                 <p className="text-sm text-slate-300">
@@ -584,8 +584,8 @@ export function Tier5EnterpriseOS({ onBack }: Tier5EnterpriseOSProps) {
                 </p>
               </div>
               <div className="text-center">
-                <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Wallet className="w-8 h-8 text-indigo-600" />
+                <div className="w-16 h-16 bg-indigo-500/15 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Wallet className="w-8 h-8 text-indigo-400" />
                 </div>
                 <h4 className="font-bold text-white mb-2">Perpetual Wallets</h4>
                 <p className="text-sm text-slate-300">
@@ -593,8 +593,8 @@ export function Tier5EnterpriseOS({ onBack }: Tier5EnterpriseOSProps) {
                 </p>
               </div>
               <div className="text-center">
-                <div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Building className="w-8 h-8 text-pink-600" />
+                <div className="w-16 h-16 bg-pink-500/15 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Building className="w-8 h-8 text-pink-400" />
                 </div>
                 <h4 className="font-bold text-white mb-2">Multi-Firm Enterprise</h4>
                 <p className="text-sm text-slate-300">

@@ -94,7 +94,7 @@ export function EntityBuilder({ entity, onComplete }: EntityBuilderProps) {
           <Label htmlFor="acn">Australian Company Number (ACN) *</Label>
           <button
             type="button"
-            className="text-blue-600 hover:text-blue-700 text-sm flex items-center gap-1"
+            className="text-blue-400 hover:text-blue-300 text-sm flex items-center gap-1"
             onClick={() => setShowTooltip(showTooltip === 'acn' ? null : 'acn')}
           >
             <HelpCircle className="w-4 h-4" />
@@ -102,8 +102,8 @@ export function EntityBuilder({ entity, onComplete }: EntityBuilderProps) {
           </button>
         </div>
         {showTooltip === 'acn' && (
-          <Card className="bg-blue-50 border-blue-200 animate-in fade-in slide-in-from-top-2">
-            <CardContent className="p-3 text-sm text-blue-900">
+          <Card className="bg-blue-500/10 border-blue-500/30 animate-in fade-in slide-in-from-top-2">
+            <CardContent className="p-3 text-sm text-blue-300">
               We use your ACN to verify your company details with ASIC and ensure accurate record-keeping.
             </CardContent>
           </Card>
@@ -137,11 +137,11 @@ export function EntityBuilder({ entity, onComplete }: EntityBuilderProps) {
       </div>
 
       {asicData && (
-        <Card className="bg-green-50 border-green-200 animate-in fade-in slide-in-from-top-4">
+        <Card className="bg-green-500/10 border-green-500/30 animate-in fade-in slide-in-from-top-4">
           <CardHeader className="pb-3">
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-5 h-5 text-green-600" />
-              <CardTitle className="text-green-900">ASIC Data Retrieved</CardTitle>
+              <CheckCircle className="w-5 h-5 text-green-400" />
+              <CardTitle className="text-green-300">ASIC Data Retrieved</CardTitle>
             </div>
           </CardHeader>
           <CardContent className="space-y-2 text-sm">
@@ -202,7 +202,7 @@ export function EntityBuilder({ entity, onComplete }: EntityBuilderProps) {
           <Label htmlFor="trustType">Trust Type *</Label>
           <button
             type="button"
-            className="text-blue-600 hover:text-blue-700 text-sm flex items-center gap-1"
+            className="text-blue-400 hover:text-blue-300 text-sm flex items-center gap-1"
             onClick={() => setShowTooltip(showTooltip === 'trustType' ? null : 'trustType')}
           >
             <HelpCircle className="w-4 h-4" />
@@ -210,8 +210,8 @@ export function EntityBuilder({ entity, onComplete }: EntityBuilderProps) {
           </button>
         </div>
         {showTooltip === 'trustType' && (
-          <Card className="bg-blue-50 border-blue-200 animate-in fade-in slide-in-from-top-2">
-            <CardContent className="p-3 text-sm text-blue-900">
+          <Card className="bg-blue-500/10 border-blue-500/30 animate-in fade-in slide-in-from-top-2">
+            <CardContent className="p-3 text-sm text-blue-300">
               Different trust types have different compliance requirements. This helps us apply the correct rules.
             </CardContent>
           </Card>
@@ -250,10 +250,10 @@ export function EntityBuilder({ entity, onComplete }: EntityBuilderProps) {
       </div>
 
       {formData.trusteeType === 'corporate' && (
-        <Card className="bg-amber-50 border-amber-200">
+        <Card className="bg-amber-500/10 border-amber-500/30">
           <CardContent className="p-3 flex items-start gap-2">
-            <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
-            <div className="text-sm text-amber-900">
+            <AlertCircle className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+            <div className="text-sm text-amber-300">
               <p className="font-semibold mb-1">Additional verification required</p>
               <p>You'll need to provide the corporate trustee's details in the next stage.</p>
             </div>
@@ -378,9 +378,9 @@ export function EntityBuilder({ entity, onComplete }: EntityBuilderProps) {
         {entity.type === 'sole_trader' && renderSoleTraderFields()}
 
         {/* Progress Indicator */}
-        <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
+        <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-500/30">
           <CardContent className="p-4 flex items-center gap-3">
-            <Sparkles className="w-8 h-8 text-blue-600 flex-shrink-0" />
+            <Sparkles className="w-8 h-8 text-blue-400 flex-shrink-0" />
             <div className="flex-1">
               <p className="font-semibold text-white">You're doing great!</p>
               <p className="text-sm text-slate-300">This is just the first step. We'll guide you through everything.</p>

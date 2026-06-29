@@ -260,9 +260,9 @@ export function SecureKYCVault() {
 
   const getRiskBadge = (risk: string) => {
     const config = {
-      low: { bg: 'bg-green-100', text: 'text-green-700', label: 'Low Risk' },
-      medium: { bg: 'bg-amber-100', text: 'text-amber-700', label: 'Medium Risk' },
-      high: { bg: 'bg-red-100', text: 'text-red-700', label: 'High Risk' }
+      low: { bg: 'bg-green-500/15', text: 'text-green-300', label: 'Low Risk' },
+      medium: { bg: 'bg-amber-500/15', text: 'text-amber-300', label: 'Medium Risk' },
+      high: { bg: 'bg-red-500/15', text: 'text-red-300', label: 'High Risk' }
     };
     const { bg, text, label } = config[risk as keyof typeof config];
     return <span className={`px-3 py-1 rounded-full text-xs font-bold ${bg} ${text}`}>{label}</span>;
@@ -270,9 +270,9 @@ export function SecureKYCVault() {
 
   const getStatusBadge = (status: string) => {
     const config = {
-      complete: { bg: 'bg-green-100', text: 'text-green-700', icon: CheckCircle, label: 'Complete' },
-      pending: { bg: 'bg-amber-100', text: 'text-amber-700', icon: Clock, label: 'Pending' },
-      expired: { bg: 'bg-red-100', text: 'text-red-700', icon: AlertTriangle, label: 'Expired' }
+      complete: { bg: 'bg-green-500/15', text: 'text-green-300', icon: CheckCircle, label: 'Complete' },
+      pending: { bg: 'bg-amber-500/15', text: 'text-amber-300', icon: Clock, label: 'Pending' },
+      expired: { bg: 'bg-red-500/15', text: 'text-red-300', icon: AlertTriangle, label: 'Expired' }
     };
     const { bg, text, icon: Icon, label } = config[status as keyof typeof config];
     return (
@@ -329,45 +329,45 @@ export function SecureKYCVault() {
 
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-white border-2 border-gray-200 rounded-lg p-4">
+        <div className="bg-white border-2 border-white/10 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-600">Total Records</span>
-            <Shield className="w-5 h-5 text-blue-600" />
+            <span className="text-sm text-slate-300">Total Records</span>
+            <Shield className="w-5 h-5 text-blue-400" />
           </div>
-          <p className="text-2xl font-bold text-gray-900">{kycRecords.length}</p>
+          <p className="text-2xl font-bold text-slate-100">{kycRecords.length}</p>
         </div>
 
-        <div className="bg-white border-2 border-gray-200 rounded-lg p-4">
+        <div className="bg-white border-2 border-white/10 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-600">Complete</span>
-            <CheckCircle className="w-5 h-5 text-green-600" />
+            <span className="text-sm text-slate-300">Complete</span>
+            <CheckCircle className="w-5 h-5 text-green-400" />
           </div>
-          <p className="text-2xl font-bold text-gray-900">
+          <p className="text-2xl font-bold text-slate-100">
             {kycRecords.filter(r => r.kycStatus === 'complete').length}
           </p>
         </div>
 
-        <div className="bg-white border-2 border-gray-200 rounded-lg p-4">
+        <div className="bg-white border-2 border-white/10 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-600">High Risk</span>
-            <AlertTriangle className="w-5 h-5 text-red-600" />
+            <span className="text-sm text-slate-300">High Risk</span>
+            <AlertTriangle className="w-5 h-5 text-red-400" />
           </div>
-          <p className="text-2xl font-bold text-gray-900">
+          <p className="text-2xl font-bold text-slate-100">
             {kycRecords.filter(r => r.riskRating === 'high').length}
           </p>
         </div>
 
-        <div className="bg-white border-2 border-gray-200 rounded-lg p-4">
+        <div className="bg-white border-2 border-white/10 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-600">Due Review</span>
-            <Clock className="w-5 h-5 text-amber-600" />
+            <span className="text-sm text-slate-300">Due Review</span>
+            <Clock className="w-5 h-5 text-amber-400" />
           </div>
-          <p className="text-2xl font-bold text-gray-900">0</p>
+          <p className="text-2xl font-bold text-slate-100">0</p>
         </div>
       </div>
 
       {/* Search and Filter */}
-      <div className="bg-white border-2 border-gray-200 rounded-lg p-4">
+      <div className="bg-white border-2 border-white/10 rounded-lg p-4">
         <div className="flex gap-4">
           <div className="flex-1 relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -376,13 +376,13 @@ export function SecureKYCVault() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search by client name or ID..."
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg"
+              className="w-full pl-10 pr-4 py-2 border border-white/10 rounded-lg"
             />
           </div>
           <select
             value={filterRisk}
             onChange={(e) => setFilterRisk(e.target.value as any)}
-            className="px-4 py-2 border border-gray-300 rounded-lg"
+            className="px-4 py-2 border border-white/10 rounded-lg"
           >
             <option value="all">All Risk Levels</option>
             <option value="low">Low Risk</option>
@@ -394,7 +394,7 @@ export function SecureKYCVault() {
             className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold transition-colors ${
               showSensitiveData
                 ? 'bg-red-600 text-white hover:bg-red-700'
-                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                : 'bg-white/10 text-slate-300 hover:bg-gray-300'
             }`}
           >
             {showSensitiveData ? (
@@ -417,20 +417,20 @@ export function SecureKYCVault() {
         {filteredRecords.map((record) => (
           <div
             key={record.id}
-            className="bg-white border-2 border-gray-200 rounded-lg p-6 hover:border-blue-300 transition-colors"
+            className="bg-white border-2 border-white/10 rounded-lg p-6 hover:border-blue-300 transition-colors"
           >
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-start gap-4 flex-1">
-                <div className="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
-                  <Building2 className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 rounded-lg bg-blue-500/15 flex items-center justify-center flex-shrink-0">
+                  <Building2 className="w-6 h-6 text-blue-400" />
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <h3 className="text-xl font-bold text-gray-900">{record.clientName}</h3>
+                    <h3 className="text-xl font-bold text-slate-100">{record.clientName}</h3>
                     {getRiskBadge(record.riskRating)}
                     {getStatusBadge(record.kycStatus)}
                   </div>
-                  <div className="flex items-center gap-4 text-sm text-gray-600 mb-3">
+                  <div className="flex items-center gap-4 text-sm text-slate-300 mb-3">
                     <span className="flex items-center gap-1">
                       <FileText className="w-4 h-4" />
                       ID: {record.id}
@@ -462,8 +462,8 @@ export function SecureKYCVault() {
                         key={idx}
                         className={`text-center py-1 px-2 rounded text-xs font-semibold ${
                           item.verified
-                            ? 'bg-green-100 text-green-700'
-                            : 'bg-gray-100 text-gray-600'
+                            ? 'bg-green-500/15 text-green-300'
+                            : 'bg-white/5 text-slate-300'
                         }`}
                       >
                         {item.verified ? '✓' : '○'} {item.label}
@@ -475,7 +475,7 @@ export function SecureKYCVault() {
             </div>
 
             {/* Action Button */}
-            <div className="pt-4 border-t border-gray-200">
+            <div className="pt-4 border-t border-white/10">
               <button
                 onClick={() => setSelectedRecord(selectedRecord?.id === record.id ? null : record)}
                 className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold"
@@ -496,21 +496,21 @@ export function SecureKYCVault() {
 
             {/* Expanded Secure Data View */}
             {selectedRecord?.id === record.id && (
-              <div className="mt-4 pt-4 border-t border-gray-200 space-y-4">
+              <div className="mt-4 pt-4 border-t border-white/10 space-y-4">
                 {/* Personal Details */}
-                <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4">
+                <div className="bg-red-500/10 border-2 border-red-500/30 rounded-lg p-4">
                   <button
                     onClick={() => toggleSection('personal')}
                     className="flex items-center justify-between w-full"
                   >
-                    <h4 className="font-bold text-red-900 flex items-center gap-2">
+                    <h4 className="font-bold text-red-300 flex items-center gap-2">
                       <Lock className="w-5 h-5" />
                       Personal Details (Sensitive)
                     </h4>
                     {expandedSections.has('personal') ? (
-                      <ChevronUp className="w-5 h-5 text-red-900" />
+                      <ChevronUp className="w-5 h-5 text-red-300" />
                     ) : (
-                      <ChevronDown className="w-5 h-5 text-red-900" />
+                      <ChevronDown className="w-5 h-5 text-red-300" />
                     )}
                   </button>
                   
@@ -519,10 +519,10 @@ export function SecureKYCVault() {
                       {Object.entries(record.personalDetails).map(([key, value]) => (
                         value && (
                           <div key={key} className="text-sm">
-                            <p className="text-red-700 font-semibold mb-1">
+                            <p className="text-red-300 font-semibold mb-1">
                               {key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}:
                             </p>
-                            <p className="text-red-900">
+                            <p className="text-red-300">
                               {key.includes('tfn') || key.includes('tax') 
                                 ? maskSensitiveData(value) 
                                 : value}
@@ -535,19 +535,19 @@ export function SecureKYCVault() {
                 </div>
 
                 {/* Entity Details */}
-                <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-4">
+                <div className="bg-blue-500/10 border-2 border-blue-500/30 rounded-lg p-4">
                   <button
                     onClick={() => toggleSection('entity')}
                     className="flex items-center justify-between w-full"
                   >
-                    <h4 className="font-bold text-blue-900 flex items-center gap-2">
+                    <h4 className="font-bold text-blue-300 flex items-center gap-2">
                       <Building2 className="w-5 h-5" />
                       Entity Details
                     </h4>
                     {expandedSections.has('entity') ? (
-                      <ChevronUp className="w-5 h-5 text-blue-900" />
+                      <ChevronUp className="w-5 h-5 text-blue-300" />
                     ) : (
-                      <ChevronDown className="w-5 h-5 text-blue-900" />
+                      <ChevronDown className="w-5 h-5 text-blue-300" />
                     )}
                   </button>
                   
@@ -556,10 +556,10 @@ export function SecureKYCVault() {
                       {Object.entries(record.entityDetails).map(([key, value]) => (
                         value && (
                           <div key={key} className="text-sm">
-                            <p className="text-blue-700 font-semibold mb-1">
+                            <p className="text-blue-300 font-semibold mb-1">
                               {key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}:
                             </p>
-                            <p className="text-blue-900">{value}</p>
+                            <p className="text-blue-300">{value}</p>
                           </div>
                         )
                       ))}
@@ -568,19 +568,19 @@ export function SecureKYCVault() {
                 </div>
 
                 {/* Risk Indicators & Screening */}
-                <div className="bg-amber-50 border-2 border-amber-200 rounded-lg p-4">
+                <div className="bg-amber-500/10 border-2 border-amber-500/30 rounded-lg p-4">
                   <button
                     onClick={() => toggleSection('risk')}
                     className="flex items-center justify-between w-full"
                   >
-                    <h4 className="font-bold text-amber-900 flex items-center gap-2">
+                    <h4 className="font-bold text-amber-300 flex items-center gap-2">
                       <AlertTriangle className="w-5 h-5" />
                       Risk Indicators & Screening Results (Sensitive)
                     </h4>
                     {expandedSections.has('risk') ? (
-                      <ChevronUp className="w-5 h-5 text-amber-900" />
+                      <ChevronUp className="w-5 h-5 text-amber-300" />
                     ) : (
-                      <ChevronDown className="w-5 h-5 text-amber-900" />
+                      <ChevronDown className="w-5 h-5 text-amber-300" />
                     )}
                   </button>
                   
@@ -591,10 +591,10 @@ export function SecureKYCVault() {
                           if (typeof value === 'boolean') {
                             return (
                               <div key={key} className="text-sm">
-                                <p className="text-amber-700 font-semibold">
+                                <p className="text-amber-300 font-semibold">
                                   {key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
                                 </p>
-                                <p className={`font-bold ${value ? 'text-red-600' : 'text-green-600'}`}>
+                                <p className={`font-bold ${value ? 'text-red-400' : 'text-green-400'}`}>
                                   {value ? '✓ YES' : '○ NO'}
                                 </p>
                               </div>
@@ -604,20 +604,20 @@ export function SecureKYCVault() {
                         })}
                       </div>
                       <div className="pt-3 border-t border-amber-300">
-                        <p className="text-sm font-semibold text-amber-900 mb-2">Screening Results:</p>
+                        <p className="text-sm font-semibold text-amber-300 mb-2">Screening Results:</p>
                         <div className="grid grid-cols-2 gap-3">
                           <div className="bg-white rounded p-3">
-                            <p className="text-xs text-amber-700 mb-1">Sanctions Screening:</p>
+                            <p className="text-xs text-amber-300 mb-1">Sanctions Screening:</p>
                             <p className={`font-bold ${
-                              record.riskIndicators.sanctionsResult === 'clear' ? 'text-green-600' : 'text-red-600'
+                              record.riskIndicators.sanctionsResult === 'clear' ? 'text-green-400' : 'text-red-400'
                             }`}>
                               {record.riskIndicators.sanctionsResult?.toUpperCase()}
                             </p>
                           </div>
                           <div className="bg-white rounded p-3">
-                            <p className="text-xs text-amber-700 mb-1">PEP Screening:</p>
+                            <p className="text-xs text-amber-300 mb-1">PEP Screening:</p>
                             <p className={`font-bold ${
-                              record.riskIndicators.pepResult === 'clear' ? 'text-green-600' : 'text-red-600'
+                              record.riskIndicators.pepResult === 'clear' ? 'text-green-400' : 'text-red-400'
                             }`}>
                               {record.riskIndicators.pepResult?.toUpperCase()}
                             </p>
@@ -629,19 +629,19 @@ export function SecureKYCVault() {
                 </div>
 
                 {/* Source of Wealth */}
-                <div className="bg-green-50 border-2 border-green-200 rounded-lg p-4">
+                <div className="bg-green-500/10 border-2 border-green-500/30 rounded-lg p-4">
                   <button
                     onClick={() => toggleSection('wealth')}
                     className="flex items-center justify-between w-full"
                   >
-                    <h4 className="font-bold text-green-900 flex items-center gap-2">
+                    <h4 className="font-bold text-green-300 flex items-center gap-2">
                       <DollarSign className="w-5 h-5" />
                       Source of Wealth/Funds (Sensitive)
                     </h4>
                     {expandedSections.has('wealth') ? (
-                      <ChevronUp className="w-5 h-5 text-green-900" />
+                      <ChevronUp className="w-5 h-5 text-green-300" />
                     ) : (
-                      <ChevronDown className="w-5 h-5 text-green-900" />
+                      <ChevronDown className="w-5 h-5 text-green-300" />
                     )}
                   </button>
                   
@@ -650,10 +650,10 @@ export function SecureKYCVault() {
                       {Object.entries(record.sourceOfWealth).map(([key, value]) => (
                         value && (
                           <div key={key} className="text-sm">
-                            <p className="text-green-700 font-semibold mb-1">
+                            <p className="text-green-300 font-semibold mb-1">
                               {key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}:
                             </p>
-                            <p className="text-green-900">{value}</p>
+                            <p className="text-green-300">{value}</p>
                           </div>
                         )
                       ))}
@@ -662,19 +662,19 @@ export function SecureKYCVault() {
                 </div>
 
                 {/* Beneficial Ownership */}
-                <div className="bg-purple-50 border-2 border-purple-200 rounded-lg p-4">
+                <div className="bg-purple-500/10 border-2 border-purple-500/30 rounded-lg p-4">
                   <button
                     onClick={() => toggleSection('ownership')}
                     className="flex items-center justify-between w-full"
                   >
-                    <h4 className="font-bold text-purple-900 flex items-center gap-2">
+                    <h4 className="font-bold text-purple-300 flex items-center gap-2">
                       <Users className="w-5 h-5" />
                       Beneficial Ownership Structure (Sensitive)
                     </h4>
                     {expandedSections.has('ownership') ? (
-                      <ChevronUp className="w-5 h-5 text-purple-900" />
+                      <ChevronUp className="w-5 h-5 text-purple-300" />
                     ) : (
-                      <ChevronDown className="w-5 h-5 text-purple-900" />
+                      <ChevronDown className="w-5 h-5 text-purple-300" />
                     )}
                   </button>
                   
@@ -683,21 +683,21 @@ export function SecureKYCVault() {
                       {Object.entries(record.beneficialOwnership).map(([key, value]) => (
                         value && Array.isArray(value) && value.length > 0 && (
                           <div key={key}>
-                            <p className="text-purple-700 font-semibold mb-2">
+                            <p className="text-purple-300 font-semibold mb-2">
                               {key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}:
                             </p>
                             <div className="space-y-2">
                               {value.map((item: any, idx: number) => (
                                 <div key={idx} className="bg-white rounded p-3 text-sm">
-                                  <p className="font-semibold text-purple-900">{item.name}</p>
+                                  <p className="font-semibold text-purple-300">{item.name}</p>
                                   {item.percentage && (
-                                    <p className="text-purple-700">Ownership: {item.percentage}%</p>
+                                    <p className="text-purple-300">Ownership: {item.percentage}%</p>
                                   )}
                                   {item.position && (
-                                    <p className="text-purple-700">Position: {item.position}</p>
+                                    <p className="text-purple-300">Position: {item.position}</p>
                                   )}
                                   {item.verified !== undefined && (
-                                    <p className={`font-semibold ${item.verified ? 'text-green-600' : 'text-amber-600'}`}>
+                                    <p className={`font-semibold ${item.verified ? 'text-green-400' : 'text-amber-400'}`}>
                                       {item.verified ? '✓ Verified' : '○ Pending'}
                                     </p>
                                   )}
@@ -712,19 +712,19 @@ export function SecureKYCVault() {
                 </div>
 
                 {/* Audit Log */}
-                <div className="bg-gray-50 border-2 border-gray-200 rounded-lg p-4">
+                <div className="bg-white/5 border-2 border-white/10 rounded-lg p-4">
                   <button
                     onClick={() => toggleSection('audit')}
                     className="flex items-center justify-between w-full"
                   >
-                    <h4 className="font-bold text-gray-900 flex items-center gap-2">
+                    <h4 className="font-bold text-slate-100 flex items-center gap-2">
                       <History className="w-5 h-5" />
                       Audit Trail
                     </h4>
                     {expandedSections.has('audit') ? (
-                      <ChevronUp className="w-5 h-5 text-gray-900" />
+                      <ChevronUp className="w-5 h-5 text-slate-100" />
                     ) : (
-                      <ChevronDown className="w-5 h-5 text-gray-900" />
+                      <ChevronDown className="w-5 h-5 text-slate-100" />
                     )}
                   </button>
                   
@@ -733,13 +733,13 @@ export function SecureKYCVault() {
                       {record.auditLog.map((log, idx) => (
                         <div key={idx} className="bg-white rounded p-3 text-sm">
                           <div className="flex items-center justify-between mb-1">
-                            <p className="font-semibold text-gray-900">{log.action}</p>
-                            <p className="text-xs text-gray-600">
+                            <p className="font-semibold text-slate-100">{log.action}</p>
+                            <p className="text-xs text-slate-300">
                               {new Date(log.timestamp).toLocaleString('en-AU')}
                             </p>
                           </div>
-                          <p className="text-gray-700 text-xs">{log.details}</p>
-                          <p className="text-gray-600 text-xs mt-1">By: {log.user}</p>
+                          <p className="text-slate-300 text-xs">{log.details}</p>
+                          <p className="text-slate-300 text-xs mt-1">By: {log.user}</p>
                         </div>
                       ))}
                     </div>
@@ -752,10 +752,10 @@ export function SecureKYCVault() {
       </div>
 
       {filteredRecords.length === 0 && (
-        <div className="bg-white border-2 border-dashed border-gray-300 rounded-lg p-12 text-center">
+        <div className="bg-white border-2 border-dashed border-white/10 rounded-lg p-12 text-center">
           <Shield className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-          <h3 className="text-xl font-bold text-gray-900 mb-2">No KYC Records Found</h3>
-          <p className="text-gray-600">No records match your search criteria.</p>
+          <h3 className="text-xl font-bold text-slate-100 mb-2">No KYC Records Found</h3>
+          <p className="text-slate-300">No records match your search criteria.</p>
         </div>
       )}
     </div>

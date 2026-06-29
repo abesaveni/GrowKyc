@@ -287,7 +287,7 @@ export function ManualChecksPanel({ clientId, clientName }: ManualChecksPanelPro
         type: 'review',
         action: `executed manual check "${check.name}" for ${clientName}`,
         iconName: 'UserCheck',
-        color: 'text-blue-600'
+        color: 'text-blue-400'
       });
     }
 
@@ -330,7 +330,7 @@ export function ManualChecksPanel({ clientId, clientName }: ManualChecksPanelPro
       type: 'review',
       action: `executed comprehensive manual audit on ${clientName}`,
       iconName: 'UserCheck',
-      color: 'text-blue-600'
+      color: 'text-blue-400'
     });
     setRunningChecks(new Set());
   };
@@ -372,7 +372,7 @@ export function ManualChecksPanel({ clientId, clientName }: ManualChecksPanelPro
       type: 'review',
       action: `executed manual category checks for "${category}" on ${clientName}`,
       iconName: 'UserCheck',
-      color: 'text-blue-600'
+      color: 'text-blue-400'
     });
     setRunningChecks(prev => {
       const next = new Set(prev);
@@ -387,22 +387,22 @@ export function ManualChecksPanel({ clientId, clientName }: ManualChecksPanelPro
 
   const getCategoryColor = (category: string) => {
     switch (category) {
-      case 'identity': return 'border-blue-500 bg-blue-50 dark:bg-blue-900/20';
-      case 'aml': return 'border-red-500 bg-red-50 dark:bg-red-900/20';
-      case 'credit': return 'border-purple-500 bg-purple-50 dark:bg-purple-900/20';
-      case 'entity': return 'border-green-500 bg-green-50 dark:bg-green-900/20';
-      case 'property': return 'border-orange-500 bg-orange-50 dark:bg-orange-900/20';
-      case 'affordability': return 'border-cyan-500 bg-cyan-50 dark:bg-cyan-900/20';
+      case 'identity': return 'border-blue-500 bg-blue-500/10 dark:bg-blue-900/20';
+      case 'aml': return 'border-red-500 bg-red-500/10 dark:bg-red-900/20';
+      case 'credit': return 'border-purple-500 bg-purple-500/10 dark:bg-purple-900/20';
+      case 'entity': return 'border-green-500 bg-green-500/10 dark:bg-green-900/20';
+      case 'property': return 'border-orange-500 bg-orange-500/10 dark:bg-orange-900/20';
+      case 'affordability': return 'border-cyan-500 bg-cyan-500/10 dark:bg-cyan-900/20';
       default: return 'border-gray-500 bg-[#0f172a] dark:bg-gray-900/20';
     }
   };
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'passed': return <CheckCircle className="w-5 h-5 text-green-600" />;
-      case 'failed': return <XCircle className="w-5 h-5 text-red-600" />;
-      case 'alert': return <AlertTriangle className="w-5 h-5 text-yellow-600" />;
-      case 'running': return <Loader2 className="w-5 h-5 text-blue-600 animate-spin" />;
+      case 'passed': return <CheckCircle className="w-5 h-5 text-green-400" />;
+      case 'failed': return <XCircle className="w-5 h-5 text-red-400" />;
+      case 'alert': return <AlertTriangle className="w-5 h-5 text-yellow-400" />;
+      case 'running': return <Loader2 className="w-5 h-5 text-blue-400 animate-spin" />;
       default: return <Clock className="w-5 h-5 text-slate-400" />;
     }
   };
@@ -435,7 +435,7 @@ export function ManualChecksPanel({ clientId, clientName }: ManualChecksPanelPro
             <Button
               onClick={() => runAllChecks()}
               disabled={runningChecks.size > 0}
-              className="bg-[#1e293b] text-[#0E7C9E] hover:bg-cyan-50"
+              className="bg-[#1e293b] text-[#0E7C9E] hover:bg-cyan-500/10"
             >
               <Zap className="w-5 h-5 mr-2" />
               Run All Checks ({checks.length})
@@ -521,7 +521,7 @@ export function ManualChecksPanel({ clientId, clientName }: ManualChecksPanelPro
                           <div className="flex items-center gap-2">
                             <h5 className="font-semibold text-white dark:text-white">{check.name}</h5>
                             {check.automated && (
-                              <span className="px-2 py-0.5 bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 text-xs rounded-full">
+                              <span className="px-2 py-0.5 bg-blue-500/15 text-blue-300 dark:bg-blue-900 dark:text-blue-300 text-xs rounded-full">
                                 Automated
                               </span>
                             )}
@@ -545,9 +545,9 @@ export function ManualChecksPanel({ clientId, clientName }: ManualChecksPanelPro
                         {getStatusIcon(currentStatus)}
                         {currentStatus !== 'not-run' && currentStatus !== 'running' && (
                           <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                            currentStatus === 'passed' ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300' :
-                            currentStatus === 'failed' ? 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300' :
-                            'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300'
+                            currentStatus === 'passed' ? 'bg-green-500/15 text-green-300 dark:bg-green-900 dark:text-green-300' :
+                            currentStatus === 'failed' ? 'bg-red-500/15 text-red-300 dark:bg-red-900 dark:text-red-300' :
+                            'bg-yellow-500/15 text-yellow-300 dark:bg-yellow-900 dark:text-yellow-300'
                           }`}>
                             {currentStatus.toUpperCase()}
                           </span>

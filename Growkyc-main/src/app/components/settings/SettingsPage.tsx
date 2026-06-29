@@ -14,7 +14,7 @@ export function SettingsPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white/5">
       <div className="max-w-7xl mx-auto p-6 space-y-6">
         {/* Header */}
         <div className="flex items-center gap-3">
@@ -22,8 +22,8 @@ export function SettingsPage() {
             <SettingsIcon className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">Settings</h1>
-            <p className="text-gray-600 mt-1">
+            <h1 className="text-3xl font-bold text-slate-100">Settings</h1>
+            <p className="text-slate-300 mt-1">
               Manage your account, integrations, and platform configuration
             </p>
           </div>
@@ -43,7 +43,7 @@ export function SettingsPage() {
                       `flex items-center gap-2 px-6 py-4 font-semibold whitespace-nowrap transition-colors border-b-2 ${
                         isActive
                           ? 'border-primary text-primary bg-primary/5'
-                          : 'border-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                          : 'border-transparent text-slate-300 hover:text-slate-100 hover:bg-white/5'
                       }`
                     }
                   >

@@ -282,7 +282,7 @@ export function ProposalEngagementModule({ onBack }: ProposalEngagementModulePro
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex items-start gap-4 flex-1">
                         <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-xl flex items-center justify-center">
-                          <ClientIcon className="w-8 h-8 text-blue-600" />
+                          <ClientIcon className="w-8 h-8 text-blue-400" />
                         </div>
                         <div className="flex-1">
                           <div className="flex items-center gap-3 mb-2">
@@ -330,9 +330,9 @@ export function ProposalEngagementModule({ onBack }: ProposalEngagementModulePro
                           </div>
 
                           {/* Total */}
-                          <div className="flex items-center justify-between p-4 bg-gradient-to-r from-blue-50 to-cyan-50 border-2 border-blue-200 rounded-xl">
+                          <div className="flex items-center justify-between p-4 bg-gradient-to-r from-blue-50 to-cyan-50 border-2 border-blue-500/30 rounded-xl">
                             <span className="font-bold text-white text-lg">Total Fee</span>
-                            <span className="text-3xl font-bold text-blue-600">${proposal.totalFee.toLocaleString()}</span>
+                            <span className="text-3xl font-bold text-blue-400">${proposal.totalFee.toLocaleString()}</span>
                           </div>
                         </div>
                       </div>
@@ -380,10 +380,10 @@ export function ProposalEngagementModule({ onBack }: ProposalEngagementModulePro
 
         {selectedTab === 'engagements' && (
           <div className="space-y-6">
-            <Card className="border-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50">
+            <Card className="border-2 border-green-500/30 bg-gradient-to-br from-green-50 to-emerald-50">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <FileCheck className="w-5 h-5 text-green-600" />
+                  <FileCheck className="w-5 h-5 text-green-400" />
                   Engagement Letters
                 </CardTitle>
                 <CardDescription>Digital engagement letters with e-signature integration</CardDescription>
@@ -391,13 +391,13 @@ export function ProposalEngagementModule({ onBack }: ProposalEngagementModulePro
               <CardContent>
                 <div className="grid grid-cols-3 gap-4">
                   {proposals.filter(p => p.status === 'accepted').map((proposal) => (
-                    <div key={proposal.id} className="p-4 bg-[#1e293b] rounded-lg border-2 border-green-200">
+                    <div key={proposal.id} className="p-4 bg-[#1e293b] rounded-lg border-2 border-green-500/30">
                       <div className="flex items-center justify-between mb-3">
                         <h4 className="font-bold text-white">{proposal.clientName}</h4>
                         {proposal.engagementSigned ? (
-                          <CheckCircle className="w-5 h-5 text-green-600" />
+                          <CheckCircle className="w-5 h-5 text-green-400" />
                         ) : (
-                          <AlertCircle className="w-5 h-5 text-amber-600" />
+                          <AlertCircle className="w-5 h-5 text-amber-400" />
                         )}
                       </div>
                       <div className="text-sm text-slate-300 mb-3">
@@ -453,31 +453,31 @@ export function ProposalEngagementModule({ onBack }: ProposalEngagementModulePro
 
         {selectedTab === 'payments' && (
           <div className="space-y-6">
-            <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50">
+            <Card className="border-2 border-blue-500/30 bg-gradient-to-br from-blue-50 to-indigo-50">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <CreditCard className="w-5 h-5 text-blue-600" />
+                  <CreditCard className="w-5 h-5 text-blue-400" />
                   Payment Collection
                 </CardTitle>
                 <CardDescription>Stripe integration for upfront, deposit, and recurring payments</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-4 gap-4 mb-6">
-                  <div className="p-4 bg-[#1e293b] rounded-lg border border-blue-200">
+                  <div className="p-4 bg-[#1e293b] rounded-lg border border-blue-500/30">
                     <div className="text-sm text-slate-300 mb-1">Total Outstanding</div>
                     <div className="text-2xl font-bold text-white">${proposals.filter(p => p.paymentStatus === 'pending').reduce((sum, p) => sum + p.totalFee, 0).toLocaleString()}</div>
                   </div>
-                  <div className="p-4 bg-[#1e293b] rounded-lg border border-green-200">
+                  <div className="p-4 bg-[#1e293b] rounded-lg border border-green-500/30">
                     <div className="text-sm text-slate-300 mb-1">Collected</div>
-                    <div className="text-2xl font-bold text-green-600">${stats.paidValue.toLocaleString()}</div>
+                    <div className="text-2xl font-bold text-green-400">${stats.paidValue.toLocaleString()}</div>
                   </div>
-                  <div className="p-4 bg-[#1e293b] rounded-lg border border-amber-200">
+                  <div className="p-4 bg-[#1e293b] rounded-lg border border-amber-500/30">
                     <div className="text-sm text-slate-300 mb-1">Deposits Paid</div>
-                    <div className="text-2xl font-bold text-amber-600">${proposals.filter(p => p.paymentStatus === 'deposit-paid').reduce((sum, p) => sum + p.totalFee * 0.3, 0).toLocaleString()}</div>
+                    <div className="text-2xl font-bold text-amber-400">${proposals.filter(p => p.paymentStatus === 'deposit-paid').reduce((sum, p) => sum + p.totalFee * 0.3, 0).toLocaleString()}</div>
                   </div>
-                  <div className="p-4 bg-[#1e293b] rounded-lg border border-red-200">
+                  <div className="p-4 bg-[#1e293b] rounded-lg border border-red-500/30">
                     <div className="text-sm text-slate-300 mb-1">Overdue</div>
-                    <div className="text-2xl font-bold text-red-600">$0</div>
+                    <div className="text-2xl font-bold text-red-400">$0</div>
                   </div>
                 </div>
 
@@ -486,8 +486,8 @@ export function ProposalEngagementModule({ onBack }: ProposalEngagementModulePro
                   {proposals.filter(p => p.status === 'accepted').map((proposal) => (
                     <div key={proposal.id} className="flex items-center justify-between p-4 bg-[#1e293b] rounded-lg border-2 border-white/10">
                       <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                          <Banknote className="w-6 h-6 text-blue-600" />
+                        <div className="w-12 h-12 bg-blue-500/15 rounded-lg flex items-center justify-center">
+                          <Banknote className="w-6 h-6 text-blue-400" />
                         </div>
                         <div>
                           <div className="font-bold text-white">{proposal.clientName}</div>
@@ -532,9 +532,9 @@ export function ProposalEngagementModule({ onBack }: ProposalEngagementModulePro
               <CardContent>
                 <div className="grid grid-cols-3 gap-4">
                   {[
-                    { name: 'Credit Card (Stripe)', status: 'Active', icon: CreditCard, color: 'bg-blue-100 text-blue-600' },
-                    { name: 'Direct Debit', status: 'Active', icon: Banknote, color: 'bg-green-100 text-green-600' },
-                    { name: 'Bank Transfer', status: 'Active', icon: Building2, color: 'bg-purple-100 text-purple-600' }
+                    { name: 'Credit Card (Stripe)', status: 'Active', icon: CreditCard, color: 'bg-blue-500/15 text-blue-400' },
+                    { name: 'Direct Debit', status: 'Active', icon: Banknote, color: 'bg-green-500/15 text-green-400' },
+                    { name: 'Bank Transfer', status: 'Active', icon: Building2, color: 'bg-purple-500/15 text-purple-400' }
                   ].map((method, idx) => {
                     const MethodIcon = method.icon;
                     return (
@@ -545,7 +545,7 @@ export function ProposalEngagementModule({ onBack }: ProposalEngagementModulePro
                           </div>
                           <div className="flex-1">
                             <div className="font-bold text-white">{method.name}</div>
-                            <div className="text-xs text-green-600">{method.status}</div>
+                            <div className="text-xs text-green-400">{method.status}</div>
                           </div>
                         </div>
                         <Button size="sm" variant="outline" className="w-full">
@@ -561,10 +561,10 @@ export function ProposalEngagementModule({ onBack }: ProposalEngagementModulePro
         )}
 
         {/* Service Templates Library */}
-        <Card className="mt-12 bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200">
+        <Card className="mt-12 bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-500/30">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Zap className="w-5 h-5 text-purple-600" />
+              <Zap className="w-5 h-5 text-purple-400" />
               Service Templates Library
             </CardTitle>
             <CardDescription>Quick-add common services to proposals</CardDescription>
@@ -572,11 +572,11 @@ export function ProposalEngagementModule({ onBack }: ProposalEngagementModulePro
           <CardContent>
             <div className="grid grid-cols-3 gap-4">
               {serviceTemplates.map((template) => (
-                <div key={template.id} className="p-4 bg-[#1e293b] rounded-lg border border-purple-200 hover:border-purple-400 cursor-pointer">
+                <div key={template.id} className="p-4 bg-[#1e293b] rounded-lg border border-purple-500/30 hover:border-purple-400 cursor-pointer">
                   <div className="font-bold text-white mb-1">{template.name}</div>
                   <div className="text-sm text-slate-300 mb-2">{template.description}</div>
                   <div className="flex items-center justify-between">
-                    <span className="font-bold text-purple-600">${template.fee}</span>
+                    <span className="font-bold text-purple-400">${template.fee}</span>
                     <Badge variant="outline" className="text-xs capitalize">{template.frequency}</Badge>
                   </div>
                 </div>

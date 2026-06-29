@@ -315,8 +315,8 @@ export function DataIntegrations({ onBack }: DataIntegrationsProps) {
         <div className="mb-8 p-6 bg-gradient-to-r from-purple-50 to-indigo-50 border-2 border-purple-300 rounded-xl">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">SaaS Admin Controls</h3>
-              <p className="text-gray-700">Upload and manage sanctions lists for all organizations</p>
+              <h3 className="text-xl font-bold text-slate-100 mb-2">SaaS Admin Controls</h3>
+              <p className="text-slate-300">Upload and manage sanctions lists for all organizations</p>
             </div>
             <Button
               onClick={() => setShowSanctionsUpload(true)}
@@ -331,17 +331,17 @@ export function DataIntegrations({ onBack }: DataIntegrationsProps) {
         {/* Data Sources */}
         <div className="space-y-6">
           {filteredSources.map((source) => (
-            <Card key={source.id} className="border-2 border-gray-200 hover:border-blue-300 transition-all">
+            <Card key={source.id} className="border-2 border-white/10 hover:border-blue-300 transition-all">
               <CardContent className="p-6">
                 <div className="flex items-start justify-between">
                   <div className="flex items-start gap-4 flex-1">
                     <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <Database className="w-8 h-8 text-blue-600" />
+                      <Database className="w-8 h-8 text-blue-400" />
                     </div>
 
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-2xl font-bold text-gray-900">{source.name}</h3>
+                        <h3 className="text-2xl font-bold text-slate-100">{source.name}</h3>
                         <Badge className={getStatusColor(source.status)}>
                           {source.status}
                         </Badge>
@@ -350,37 +350,37 @@ export function DataIntegrations({ onBack }: DataIntegrationsProps) {
                         </Badge>
                       </div>
 
-                      <div className="text-sm text-gray-600 mb-4">{source.provider}</div>
+                      <div className="text-sm text-slate-300 mb-4">{source.provider}</div>
 
-                      <p className="text-gray-700 mb-4">{source.description}</p>
+                      <p className="text-slate-300 mb-4">{source.description}</p>
 
                       <div className="grid grid-cols-4 gap-6 mb-4">
                         <div>
-                          <div className="text-xs text-gray-600 mb-1">Records</div>
-                          <div className="font-bold text-gray-900">
+                          <div className="text-xs text-slate-300 mb-1">Records</div>
+                          <div className="font-bold text-slate-100">
                             {source.recordCount === 0 ? 'Realtime API' : source.recordCount.toLocaleString()}
                           </div>
                         </div>
 
                         <div>
-                          <div className="text-xs text-gray-600 mb-1">Update Frequency</div>
-                          <div className="font-bold text-gray-900 capitalize">{source.updateFrequency}</div>
+                          <div className="text-xs text-slate-300 mb-1">Update Frequency</div>
+                          <div className="font-bold text-slate-100 capitalize">{source.updateFrequency}</div>
                         </div>
 
                         <div>
-                          <div className="text-xs text-gray-600 mb-1">Last Sync</div>
-                          <div className="font-bold text-gray-900">{source.lastSync}</div>
+                          <div className="text-xs text-slate-300 mb-1">Last Sync</div>
+                          <div className="font-bold text-slate-100">{source.lastSync}</div>
                         </div>
 
                         <div>
-                          <div className="text-xs text-gray-600 mb-1">Next Sync</div>
-                          <div className="font-bold text-gray-900">{source.nextSync}</div>
+                          <div className="text-xs text-slate-300 mb-1">Next Sync</div>
+                          <div className="font-bold text-slate-100">{source.nextSync}</div>
                         </div>
                       </div>
 
-                      <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
-                        <div className="text-xs text-gray-600 mb-1">API Endpoint</div>
-                        <div className="font-mono text-sm text-gray-900">{source.apiEndpoint}</div>
+                      <div className="p-3 bg-white/5 rounded-lg border border-white/10">
+                        <div className="text-xs text-slate-300 mb-1">API Endpoint</div>
+                        <div className="font-mono text-sm text-slate-100">{source.apiEndpoint}</div>
                       </div>
                     </div>
                   </div>
@@ -410,90 +410,90 @@ export function DataIntegrations({ onBack }: DataIntegrationsProps) {
         </div>
 
         {/* Integration Benefits */}
-        <Card className="mt-12 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200">
+        <Card className="mt-12 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-500/30">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <CheckCircle className="w-5 h-5 text-green-600" />
+              <CheckCircle className="w-5 h-5 text-green-400" />
               What These Integrations Give You
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 gap-6">
               <div>
-                <h4 className="font-bold text-gray-900 mb-3">Sanctions Screening:</h4>
-                <ul className="space-y-2 text-sm text-gray-700">
+                <h4 className="font-bold text-slate-100 mb-3">Sanctions Screening:</h4>
+                <ul className="space-y-2 text-sm text-slate-300">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-400" />
                     UN, autonomous & thematic sanctions (DFAT)
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-400" />
                     Auto-screen all clients against 2,847+ sanctioned entities
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-400" />
                     Daily updates ensure fresh data
                   </li>
                 </ul>
               </div>
 
               <div>
-                <h4 className="font-bold text-gray-900 mb-3">Entity Validation:</h4>
-                <ul className="space-y-2 text-sm text-gray-700">
+                <h4 className="font-bold text-slate-100 mb-3">Entity Validation:</h4>
+                <ul className="space-y-2 text-sm text-slate-300">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-400" />
                     Realtime ABN validation (ABN Lookup API)
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-400" />
                     9.8M+ ABN records for bulk verification
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-400" />
                     3.4M+ company records with ACN, directors, status
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-400" />
                     2.1M+ business name registrations
                   </li>
                 </ul>
               </div>
 
               <div>
-                <h4 className="font-bold text-gray-900 mb-3">Licensing Checks:</h4>
-                <ul className="space-y-2 text-sm text-gray-700">
+                <h4 className="font-bold text-slate-100 mb-3">Licensing Checks:</h4>
+                <ul className="space-y-2 text-sm text-slate-300">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-400" />
                     4,523 AFS license holders (AFSL)
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-400" />
                     12,847 credit license holders (ACL)
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-400" />
                     19,234 registered financial advisers
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-400" />
                     Auto-validate adviser credentials
                   </li>
                 </ul>
               </div>
 
               <div>
-                <h4 className="font-bold text-gray-900 mb-3">Banned/Disqualified:</h4>
-                <ul className="space-y-2 text-sm text-gray-700">
+                <h4 className="font-bold text-slate-100 mb-3">Banned/Disqualified:</h4>
+                <ul className="space-y-2 text-sm text-slate-300">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-400" />
                     1,847 banned & disqualified persons/orgs
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-400" />
                     Prevent engagement with disqualified directors
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-400" />
                     Weekly updates from ASIC
                   </li>
                 </ul>
@@ -503,54 +503,54 @@ export function DataIntegrations({ onBack }: DataIntegrationsProps) {
         </Card>
 
         {/* Sync Schedule */}
-        <Card className="mt-8 bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200">
+        <Card className="mt-8 bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-500/30">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Calendar className="w-5 h-5 text-blue-600" />
+              <Calendar className="w-5 h-5 text-blue-400" />
               Automated Sync Schedule
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              <div className="flex items-center justify-between p-4 bg-white rounded-lg border border-blue-200">
+              <div className="flex items-center justify-between p-4 bg-white rounded-lg border border-blue-500/30">
                 <div className="flex items-center gap-4">
-                  <Clock className="w-5 h-5 text-blue-600" />
+                  <Clock className="w-5 h-5 text-blue-400" />
                   <div>
-                    <div className="font-bold text-gray-900">Realtime</div>
-                    <div className="text-sm text-gray-600">ABN Lookup API (on-demand validation)</div>
+                    <div className="font-bold text-slate-100">Realtime</div>
+                    <div className="text-sm text-slate-300">ABN Lookup API (on-demand validation)</div>
                   </div>
                 </div>
                 <Badge className="bg-blue-600 text-white">Active</Badge>
               </div>
 
-              <div className="flex items-center justify-between p-4 bg-white rounded-lg border border-blue-200">
+              <div className="flex items-center justify-between p-4 bg-white rounded-lg border border-blue-500/30">
                 <div className="flex items-center gap-4">
-                  <Clock className="w-5 h-5 text-blue-600" />
+                  <Clock className="w-5 h-5 text-blue-400" />
                   <div>
-                    <div className="font-bold text-gray-900">Daily at 8:30 AM</div>
-                    <div className="text-sm text-gray-600">DFAT Sanctions List</div>
+                    <div className="font-bold text-slate-100">Daily at 8:30 AM</div>
+                    <div className="text-sm text-slate-300">DFAT Sanctions List</div>
                   </div>
                 </div>
                 <Badge className="bg-green-600 text-white">Complete</Badge>
               </div>
 
-              <div className="flex items-center justify-between p-4 bg-white rounded-lg border border-blue-200">
+              <div className="flex items-center justify-between p-4 bg-white rounded-lg border border-blue-500/30">
                 <div className="flex items-center gap-4">
-                  <Clock className="w-5 h-5 text-blue-600" />
+                  <Clock className="w-5 h-5 text-blue-400" />
                   <div>
-                    <div className="font-bold text-gray-900">Weekly (Sundays at 2:00 AM)</div>
-                    <div className="text-sm text-gray-600">ABN Bulk Extract, ASIC AFS/ACL/Advisers/Banned datasets</div>
+                    <div className="font-bold text-slate-100">Weekly (Sundays at 2:00 AM)</div>
+                    <div className="text-sm text-slate-300">ABN Bulk Extract, ASIC AFS/ACL/Advisers/Banned datasets</div>
                   </div>
                 </div>
                 <Badge className="bg-green-600 text-white">Scheduled</Badge>
               </div>
 
-              <div className="flex items-center justify-between p-4 bg-white rounded-lg border border-blue-200">
+              <div className="flex items-center justify-between p-4 bg-white rounded-lg border border-blue-500/30">
                 <div className="flex items-center gap-4">
-                  <Clock className="w-5 h-5 text-blue-600" />
+                  <Clock className="w-5 h-5 text-blue-400" />
                   <div>
-                    <div className="font-bold text-gray-900">Monthly (1st of month at 3:00 AM)</div>
-                    <div className="text-sm text-gray-600">ASIC Companies & Business Names datasets</div>
+                    <div className="font-bold text-slate-100">Monthly (1st of month at 3:00 AM)</div>
+                    <div className="text-sm text-slate-300">ASIC Companies & Business Names datasets</div>
                   </div>
                 </div>
                 <Badge className="bg-green-600 text-white">Scheduled</Badge>

@@ -32,15 +32,15 @@ interface DiditVerificationProps {
 function statusVariant(status: string): { label: string; className: string; icon: React.ReactNode } {
   switch (status) {
     case 'Approved':
-      return { label: 'Approved', className: 'bg-green-100 text-green-800 border-green-200', icon: <CheckCircle className="w-4 h-4" /> };
+      return { label: 'Approved', className: 'bg-green-500/15 text-green-300 border-green-500/30', icon: <CheckCircle className="w-4 h-4" /> };
     case 'Declined':
-      return { label: 'Declined', className: 'bg-red-100 text-red-800 border-red-200', icon: <XCircle className="w-4 h-4" /> };
+      return { label: 'Declined', className: 'bg-red-500/15 text-red-300 border-red-500/30', icon: <XCircle className="w-4 h-4" /> };
     case 'In Review':
-      return { label: 'In Review', className: 'bg-amber-100 text-amber-800 border-amber-200', icon: <Clock className="w-4 h-4" /> };
+      return { label: 'In Review', className: 'bg-amber-500/15 text-amber-300 border-amber-500/30', icon: <Clock className="w-4 h-4" /> };
     case 'In Progress':
-      return { label: 'In Progress', className: 'bg-blue-100 text-blue-800 border-blue-200', icon: <Loader2 className="w-4 h-4 animate-spin" /> };
+      return { label: 'In Progress', className: 'bg-blue-500/15 text-blue-300 border-blue-500/30', icon: <Loader2 className="w-4 h-4 animate-spin" /> };
     default:
-      return { label: status || 'Not Started', className: 'bg-gray-100 text-gray-700 border-gray-200', icon: <Clock className="w-4 h-4" /> };
+      return { label: status || 'Not Started', className: 'bg-white/5 text-slate-300 border-white/10', icon: <Clock className="w-4 h-4" /> };
   }
 }
 
@@ -129,11 +129,11 @@ export function DiditVerification({ kind = 'individual', kycId, onResult }: Didi
   const sv = statusVariant(status);
 
   return (
-    <Card className="border-blue-100">
+    <Card className="border-blue-500/20">
       <CardHeader>
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-2">
-            <ShieldCheck className="w-5 h-5 text-blue-600" />
+            <ShieldCheck className="w-5 h-5 text-blue-400" />
             <CardTitle>Identity & AML Verification</CardTitle>
           </div>
           <Badge variant="outline" className={`flex items-center gap-1 ${sv.className}`}>
@@ -169,7 +169,7 @@ export function DiditVerification({ kind = 'individual', kycId, onResult }: Didi
                 Check status
               </Button>
               {!isTerminal && (
-                <span className="text-xs text-gray-500 flex items-center gap-1">
+                <span className="text-xs text-slate-400 flex items-center gap-1">
                   <Loader2 className="w-3 h-3 animate-spin" /> auto-updating…
                 </span>
               )}
@@ -184,11 +184,11 @@ export function DiditVerification({ kind = 'individual', kycId, onResult }: Didi
                   const ok = String(checkStatus).toLowerCase().includes('approv') || String(checkStatus).toLowerCase() === 'clear';
                   return (
                     <div key={key} className="flex items-center justify-between rounded-md border px-3 py-2 text-sm">
-                      <span className="flex items-center gap-2 text-gray-700">
+                      <span className="flex items-center gap-2 text-slate-300">
                         {icon}
                         {label}
                       </span>
-                      <span className={ok ? 'text-green-700' : 'text-gray-500'}>{checkStatus}</span>
+                      <span className={ok ? 'text-green-300' : 'text-slate-400'}>{checkStatus}</span>
                     </div>
                   );
                 })}
@@ -196,17 +196,17 @@ export function DiditVerification({ kind = 'individual', kycId, onResult }: Didi
             )}
 
             {status === 'Approved' && (
-              <div className="flex items-center gap-2 text-green-700 text-sm">
+              <div className="flex items-center gap-2 text-green-300 text-sm">
                 <CheckCircle className="w-4 h-4" /> Verification approved.
               </div>
             )}
             {status === 'Declined' && (
-              <div className="flex items-center gap-2 text-red-700 text-sm">
+              <div className="flex items-center gap-2 text-red-300 text-sm">
                 <XCircle className="w-4 h-4" /> Verification declined.
               </div>
             )}
             {status === 'In Review' && (
-              <div className="flex items-center gap-2 text-amber-700 text-sm">
+              <div className="flex items-center gap-2 text-amber-300 text-sm">
                 <Clock className="w-4 h-4" /> Sent to a compliance officer for manual review.
               </div>
             )}

@@ -85,10 +85,10 @@ export function ReportsDashboard() {
 
   const getColorClasses = (color: string) => {
     const colors = {
-      green: 'bg-green-50 text-green-600',
-      blue: 'bg-blue-50 text-blue-600',
-      purple: 'bg-purple-50 text-purple-600',
-      red: 'bg-red-50 text-red-600'
+      green: 'bg-green-500/10 text-green-400',
+      blue: 'bg-blue-500/10 text-blue-400',
+      purple: 'bg-purple-500/10 text-purple-400',
+      red: 'bg-red-500/10 text-red-400'
     };
     return colors[color as keyof typeof colors];
   };
@@ -101,8 +101,8 @@ export function ReportsDashboard() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">Reports & Analytics</h1>
-          <p className="text-gray-600 mt-1">Comprehensive platform insights and performance metrics</p>
+          <h1 className="text-2xl font-semibold text-slate-100">Reports & Analytics</h1>
+          <p className="text-slate-300 mt-1">Comprehensive platform insights and performance metrics</p>
         </div>
         <div className="flex gap-3">
           <select
@@ -111,7 +111,7 @@ export function ReportsDashboard() {
               setDateRange(e.target.value);
               toast.info('Date range updated');
             }}
-            className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+            className="px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
           >
             <option value="7days">Last 7 Days</option>
             <option value="30days">Last 30 Days</option>
@@ -132,9 +132,9 @@ export function ReportsDashboard() {
         <Card>
           <CardContent className="p-6">
             <div>
-              <p className="text-sm text-gray-600 mb-1">Total Cases</p>
-              <p className="text-3xl font-semibold text-gray-900">{keyMetrics.totalCases}</p>
-              <p className="text-xs text-green-600 mt-1 flex items-center gap-1">
+              <p className="text-sm text-slate-300 mb-1">Total Cases</p>
+              <p className="text-3xl font-semibold text-slate-100">{keyMetrics.totalCases}</p>
+              <p className="text-xs text-green-400 mt-1 flex items-center gap-1">
                 <TrendingUp className="w-3 h-3" />
                 +12% vs last period
               </p>
@@ -145,9 +145,9 @@ export function ReportsDashboard() {
         <Card>
           <CardContent className="p-6">
             <div>
-              <p className="text-sm text-gray-600 mb-1">Active Cases</p>
-              <p className="text-3xl font-semibold text-gray-900">{keyMetrics.activeCases}</p>
-              <p className="text-xs text-blue-600 mt-1">{keyMetrics.activeCases} in progress</p>
+              <p className="text-sm text-slate-300 mb-1">Active Cases</p>
+              <p className="text-3xl font-semibold text-slate-100">{keyMetrics.activeCases}</p>
+              <p className="text-xs text-blue-400 mt-1">{keyMetrics.activeCases} in progress</p>
             </div>
           </CardContent>
         </Card>
@@ -155,9 +155,9 @@ export function ReportsDashboard() {
         <Card>
           <CardContent className="p-6">
             <div>
-              <p className="text-sm text-gray-600 mb-1">Total Revenue</p>
-              <p className="text-3xl font-semibold text-gray-900">A${(keyMetrics.totalRevenue / 1000000).toFixed(1)}M</p>
-              <p className="text-xs text-green-600 mt-1 flex items-center gap-1">
+              <p className="text-sm text-slate-300 mb-1">Total Revenue</p>
+              <p className="text-3xl font-semibold text-slate-100">A${(keyMetrics.totalRevenue / 1000000).toFixed(1)}M</p>
+              <p className="text-xs text-green-400 mt-1 flex items-center gap-1">
                 <TrendingUp className="w-3 h-3" />
                 +18% vs last period
               </p>
@@ -168,9 +168,9 @@ export function ReportsDashboard() {
         <Card>
           <CardContent className="p-6">
             <div>
-              <p className="text-sm text-gray-600 mb-1">Avg Case Value</p>
-              <p className="text-3xl font-semibold text-gray-900">A${(keyMetrics.avgCaseValue / 1000).toFixed(0)}K</p>
-              <p className="text-xs text-gray-600 mt-1">Per case</p>
+              <p className="text-sm text-slate-300 mb-1">Avg Case Value</p>
+              <p className="text-3xl font-semibold text-slate-100">A${(keyMetrics.avgCaseValue / 1000).toFixed(0)}K</p>
+              <p className="text-xs text-slate-300 mt-1">Per case</p>
             </div>
           </CardContent>
         </Card>
@@ -178,9 +178,9 @@ export function ReportsDashboard() {
         <Card>
           <CardContent className="p-6">
             <div>
-              <p className="text-sm text-gray-600 mb-1">Total Bids</p>
-              <p className="text-3xl font-semibold text-gray-900">{keyMetrics.totalBids}</p>
-              <p className="text-xs text-purple-600 mt-1">{(keyMetrics.totalBids / keyMetrics.totalCases).toFixed(1)} per case</p>
+              <p className="text-sm text-slate-300 mb-1">Total Bids</p>
+              <p className="text-3xl font-semibold text-slate-100">{keyMetrics.totalBids}</p>
+              <p className="text-xs text-purple-400 mt-1">{(keyMetrics.totalBids / keyMetrics.totalCases).toFixed(1)} per case</p>
             </div>
           </CardContent>
         </Card>
@@ -188,9 +188,9 @@ export function ReportsDashboard() {
         <Card>
           <CardContent className="p-6">
             <div>
-              <p className="text-sm text-gray-600 mb-1">Success Rate</p>
-              <p className="text-3xl font-semibold text-gray-900">{keyMetrics.successRate}%</p>
-              <p className="text-xs text-green-600 mt-1 flex items-center gap-1">
+              <p className="text-sm text-slate-300 mb-1">Success Rate</p>
+              <p className="text-3xl font-semibold text-slate-100">{keyMetrics.successRate}%</p>
+              <p className="text-xs text-green-400 mt-1 flex items-center gap-1">
                 <TrendingUp className="w-3 h-3" />
                 +5% vs last period
               </p>
@@ -212,7 +212,7 @@ export function ReportsDashboard() {
                   </div>
                   <div>
                     <CardTitle className="text-lg">{report.title}</CardTitle>
-                    <p className="text-sm text-gray-600 mt-1">{report.description}</p>
+                    <p className="text-sm text-slate-300 mt-1">{report.description}</p>
                   </div>
                 </div>
               </CardHeader>
@@ -255,11 +255,11 @@ export function ReportsDashboard() {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="h-64 flex items-center justify-center border-2 border-dashed border-gray-300 rounded-lg">
+            <div className="h-64 flex items-center justify-center border-2 border-dashed border-white/10 rounded-lg">
               <div className="text-center">
                 <BarChart3 className="w-12 h-12 text-gray-400 mx-auto mb-2" />
-                <p className="text-gray-600">Interactive chart would display here</p>
-                <p className="text-sm text-gray-500 mt-1">Showing case volume over time</p>
+                <p className="text-slate-300">Interactive chart would display here</p>
+                <p className="text-sm text-slate-400 mt-1">Showing case volume over time</p>
               </div>
             </div>
           </CardContent>
@@ -276,11 +276,11 @@ export function ReportsDashboard() {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="h-64 flex items-center justify-center border-2 border-dashed border-gray-300 rounded-lg">
+            <div className="h-64 flex items-center justify-center border-2 border-dashed border-white/10 rounded-lg">
               <div className="text-center">
                 <PieChart className="w-12 h-12 text-gray-400 mx-auto mb-2" />
-                <p className="text-gray-600">Interactive chart would display here</p>
-                <p className="text-sm text-gray-500 mt-1">Showing revenue by category</p>
+                <p className="text-slate-300">Interactive chart would display here</p>
+                <p className="text-sm text-slate-400 mt-1">Showing revenue by category</p>
               </div>
             </div>
           </CardContent>
@@ -307,12 +307,12 @@ export function ReportsDashboard() {
               { event: 'KYC approved', details: 'David Wilson verified', time: '2 hours ago' },
               { event: 'Payment received', details: 'A$850K payment processed', time: '3 hours ago' }
             ].map((activity, idx) => (
-              <div key={idx} className="flex items-center justify-between p-3 border rounded-lg hover:bg-gray-50 transition-colors">
+              <div key={idx} className="flex items-center justify-between p-3 border rounded-lg hover:bg-white/5 transition-colors">
                 <div>
-                  <p className="font-medium text-gray-900">{activity.event}</p>
-                  <p className="text-sm text-gray-600">{activity.details}</p>
+                  <p className="font-medium text-slate-100">{activity.event}</p>
+                  <p className="text-sm text-slate-300">{activity.details}</p>
                 </div>
-                <span className="text-xs text-gray-500 whitespace-nowrap">{activity.time}</span>
+                <span className="text-xs text-slate-400 whitespace-nowrap">{activity.time}</span>
               </div>
             ))}
           </div>

@@ -93,8 +93,8 @@ function SanctionsControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
           <Card className="border-2 hover:border-blue-400 transition-colors cursor-pointer">
             <CardContent className="p-4">
               <div className="flex items-center justify-between mb-2">
-                <Clock className="w-5 h-5 text-blue-600" />
-                <Badge className="bg-blue-100 text-blue-700">47</Badge>
+                <Clock className="w-5 h-5 text-blue-400" />
+                <Badge className="bg-blue-500/15 text-blue-300">47</Badge>
               </div>
               <p className="text-sm font-medium text-white">Pending Screenings</p>
             </CardContent>
@@ -103,28 +103,28 @@ function SanctionsControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
           <Card className="border-2 hover:border-amber-400 transition-colors cursor-pointer">
             <CardContent className="p-4">
               <div className="flex items-center justify-between mb-2">
-                <Eye className="w-5 h-5 text-amber-600" />
-                <Badge className="bg-amber-100 text-amber-700">12</Badge>
+                <Eye className="w-5 h-5 text-amber-400" />
+                <Badge className="bg-amber-500/15 text-amber-300">12</Badge>
               </div>
               <p className="text-sm font-medium text-white">Possible Matches</p>
             </CardContent>
           </Card>
 
-          <Card className="border-2 border-red-400 bg-red-50">
+          <Card className="border-2 border-red-400 bg-red-500/10">
             <CardContent className="p-4">
               <div className="flex items-center justify-between mb-2">
-                <Ban className="w-5 h-5 text-red-600" />
+                <Ban className="w-5 h-5 text-red-400" />
                 <Badge className="bg-red-600 text-white">2</Badge>
               </div>
-              <p className="text-sm font-medium text-red-900">CONFIRMED HITS</p>
+              <p className="text-sm font-medium text-red-300">CONFIRMED HITS</p>
             </CardContent>
           </Card>
 
           <Card className="border-2 hover:border-orange-400 transition-colors cursor-pointer">
             <CardContent className="p-4">
               <div className="flex items-center justify-between mb-2">
-                <AlertOctagon className="w-5 h-5 text-orange-600" />
-                <Badge className="bg-orange-100 text-orange-700">5</Badge>
+                <AlertOctagon className="w-5 h-5 text-orange-400" />
+                <Badge className="bg-orange-500/15 text-orange-300">5</Badge>
               </div>
               <p className="text-sm font-medium text-white">Escalations</p>
             </CardContent>
@@ -133,8 +133,8 @@ function SanctionsControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
           <Card className="border-2 hover:border-purple-400 transition-colors cursor-pointer">
             <CardContent className="p-4">
               <div className="flex items-center justify-between mb-2">
-                <Bell className="w-5 h-5 text-purple-600" />
-                <Badge className="bg-purple-100 text-purple-700">8</Badge>
+                <Bell className="w-5 h-5 text-purple-400" />
+                <Badge className="bg-purple-500/15 text-purple-300">8</Badge>
               </div>
               <p className="text-sm font-medium text-white">Monitoring Alerts</p>
             </CardContent>
@@ -152,7 +152,7 @@ function SanctionsControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
         </div>
 
         {/* Critical Alert */}
-        <Card className="border-2 border-red-500 bg-red-50 mb-8">
+        <Card className="border-2 border-red-500 bg-red-500/10 mb-8">
           <CardContent className="p-6">
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0">
@@ -160,28 +160,28 @@ function SanctionsControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
-                  <h3 className="text-xl font-bold text-red-900">SANCTIONS MATCH CONFIRMED</h3>
+                  <h3 className="text-xl font-bold text-red-300">SANCTIONS MATCH CONFIRMED</h3>
                   <Badge className="bg-red-600 text-white">CRITICAL</Badge>
                 </div>
-                <p className="text-red-800 mb-3">
+                <p className="text-red-300 mb-3">
                   <strong>Vladimir Petrov</strong> - CONFIRMED MATCH on OFAC SDN List. Automatic relationship block enforced.
                 </p>
                 <div className="grid md:grid-cols-4 gap-3">
                   <div className="bg-[#1e293b] p-3 rounded border border-red-300">
-                    <p className="text-xs text-red-700">Matched List</p>
-                    <p className="font-bold text-red-900">OFAC SDN</p>
+                    <p className="text-xs text-red-300">Matched List</p>
+                    <p className="font-bold text-red-300">OFAC SDN</p>
                   </div>
                   <div className="bg-[#1e293b] p-3 rounded border border-red-300">
-                    <p className="text-xs text-red-700">Match Type</p>
-                    <p className="font-bold text-red-900">Exact Name + DOB</p>
+                    <p className="text-xs text-red-300">Match Type</p>
+                    <p className="font-bold text-red-300">Exact Name + DOB</p>
                   </div>
                   <div className="bg-[#1e293b] p-3 rounded border border-red-300">
-                    <p className="text-xs text-red-700">Confidence</p>
-                    <p className="font-bold text-red-900">98% - Very High</p>
+                    <p className="text-xs text-red-300">Confidence</p>
+                    <p className="font-bold text-red-300">98% - Very High</p>
                   </div>
                   <div className="bg-[#1e293b] p-3 rounded border border-red-300">
-                    <p className="text-xs text-red-700">Status</p>
-                    <p className="font-bold text-red-900">AUTO BLOCKED</p>
+                    <p className="text-xs text-red-300">Status</p>
+                    <p className="font-bold text-red-300">AUTO BLOCKED</p>
                   </div>
                 </div>
               </div>
@@ -195,7 +195,7 @@ function SanctionsControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
           <Card className="border-2">
             <CardHeader className="bg-gradient-to-r from-blue-50 to-blue-100 border-b">
               <CardTitle className="flex items-center gap-2">
-                <Search className="w-5 h-5 text-blue-600" />
+                <Search className="w-5 h-5 text-blue-400" />
                 New Screenings Queue
               </CardTitle>
             </CardHeader>
@@ -223,9 +223,9 @@ function SanctionsControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
                         <td className="px-4 py-3 text-xs text-slate-300">{item.country}</td>
                         <td className="px-4 py-3">
                           <Badge className={
-                            item.status === 'Cleared' ? 'bg-green-100 text-green-700' :
-                            item.status === 'Screening' ? 'bg-blue-100 text-blue-700' :
-                            item.status === 'Review Required' ? 'bg-amber-100 text-amber-700' :
+                            item.status === 'Cleared' ? 'bg-green-500/15 text-green-300' :
+                            item.status === 'Screening' ? 'bg-blue-500/15 text-blue-300' :
+                            item.status === 'Review Required' ? 'bg-amber-500/15 text-amber-300' :
                             'bg-[#0f172a] text-slate-300'
                           }>
                             {item.status}
@@ -237,7 +237,7 @@ function SanctionsControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
                 </table>
               </div>
               <div className="p-4 border-t bg-[#0f172a]">
-                <Button variant="ghost" className="w-full text-blue-700 hover:bg-blue-50" onClick={() => onNavigate('new-screening')}>
+                <Button variant="ghost" className="w-full text-blue-300 hover:bg-blue-500/10" onClick={() => onNavigate('new-screening')}>
                   View All Screenings <ChevronRight className="w-4 h-4 ml-1" />
                 </Button>
               </div>
@@ -248,7 +248,7 @@ function SanctionsControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
           <Card className="border-2">
             <CardHeader className="bg-gradient-to-r from-purple-50 to-purple-100 border-b">
               <CardTitle className="flex items-center gap-2">
-                <Bell className="w-5 h-5 text-purple-600" />
+                <Bell className="w-5 h-5 text-purple-400" />
                 Monitoring Alerts
               </CardTitle>
             </CardHeader>
@@ -277,8 +277,8 @@ function SanctionsControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
                         <td className="px-4 py-3">
                           <Badge className={
                             item.severity === 'Critical' ? 'bg-red-600 text-white' :
-                            item.severity === 'High' ? 'bg-orange-100 text-orange-700' :
-                            item.severity === 'Medium' ? 'bg-amber-100 text-amber-700' :
+                            item.severity === 'High' ? 'bg-orange-500/15 text-orange-300' :
+                            item.severity === 'Medium' ? 'bg-amber-500/15 text-amber-300' :
                             'bg-[#0f172a] text-slate-300'
                           }>
                             {item.severity}
@@ -290,7 +290,7 @@ function SanctionsControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
                 </table>
               </div>
               <div className="p-4 border-t bg-[#0f172a]">
-                <Button variant="ghost" className="w-full text-purple-700 hover:bg-purple-50">
+                <Button variant="ghost" className="w-full text-purple-300 hover:bg-purple-500/10">
                   View All Alerts <ChevronRight className="w-4 h-4 ml-1" />
                 </Button>
               </div>
@@ -302,7 +302,7 @@ function SanctionsControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
         <Card className="border-2">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Globe className="w-5 h-5 text-blue-600" />
+              <Globe className="w-5 h-5 text-blue-400" />
               Sanctions List Coverage
             </CardTitle>
           </CardHeader>
@@ -315,10 +315,10 @@ function SanctionsControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
                 { name: 'UK HMT List', status: 'Active', lastUpdate: '1 hour ago', records: '3,214' },
                 { name: 'EU Consolidated', status: 'Active', lastUpdate: '45 mins ago', records: '4,687' },
               ].map((source, idx) => (
-                <div key={idx} className="p-4 bg-green-50 border border-green-200 rounded-lg">
+                <div key={idx} className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
                   <div className="flex items-center justify-between mb-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
-                    <Badge className="bg-green-100 text-green-700 text-xs">{source.status}</Badge>
+                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <Badge className="bg-green-500/15 text-green-300 text-xs">{source.status}</Badge>
                   </div>
                   <p className="font-semibold text-white text-sm mb-1">{source.name}</p>
                   <p className="text-xs text-slate-300">Updated: {source.lastUpdate}</p>
@@ -399,12 +399,12 @@ function SanctionsScreeningWizard({ onBack }: { onBack: () => void }) {
             ].map((s) => (
               <div key={s.num} className="flex items-center">
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
-                  step >= s.num ? 'bg-red-600 text-white' : 'bg-gray-200 text-slate-300'
+                  step >= s.num ? 'bg-red-600 text-white' : 'bg-white/10 text-slate-300'
                 }`}>
                   {s.num}
                 </div>
                 <div className="ml-2">
-                  <p className={`text-xs font-medium ${step >= s.num ? 'text-red-600' : 'text-slate-400'}`}>
+                  <p className={`text-xs font-medium ${step >= s.num ? 'text-red-400' : 'text-slate-400'}`}>
                     {s.label}
                   </p>
                 </div>
@@ -432,7 +432,7 @@ function SanctionsScreeningWizard({ onBack }: { onBack: () => void }) {
                       type="radio"
                       checked={subjectType === 'person'}
                       onChange={() => setSubjectType('person')}
-                      className="w-4 h-4 text-red-600"
+                      className="w-4 h-4 text-red-400"
                     />
                     <span className="text-sm">Person</span>
                   </label>
@@ -441,7 +441,7 @@ function SanctionsScreeningWizard({ onBack }: { onBack: () => void }) {
                       type="radio"
                       checked={subjectType === 'entity'}
                       onChange={() => setSubjectType('entity')}
-                      className="w-4 h-4 text-red-600"
+                      className="w-4 h-4 text-red-400"
                     />
                     <span className="text-sm">Entity</span>
                   </label>
@@ -535,12 +535,12 @@ function SanctionsScreeningWizard({ onBack }: { onBack: () => void }) {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-3">
-                <label className="flex items-start gap-3 p-4 border-2 border-red-400 bg-red-50 rounded-lg">
+                <label className="flex items-start gap-3 p-4 border-2 border-red-400 bg-red-500/10 rounded-lg">
                   <input
                     type="radio"
                     checked={searchConfig.standard}
                     onChange={() => setSearchConfig({ ...searchConfig, standard: true, expandedGlobal: false })}
-                    className="w-5 h-5 text-red-600 mt-0.5"
+                    className="w-5 h-5 text-red-400 mt-0.5"
                   />
                   <div className="flex-1">
                     <p className="font-semibold text-white">Standard Screening (Recommended)</p>
@@ -548,12 +548,12 @@ function SanctionsScreeningWizard({ onBack }: { onBack: () => void }) {
                   </div>
                 </label>
 
-                <label className="flex items-start gap-3 p-4 border-2 border-gray-300 rounded-lg hover:border-gray-400 cursor-pointer">
+                <label className="flex items-start gap-3 p-4 border-2 border-white/10 rounded-lg hover:border-gray-400 cursor-pointer">
                   <input
                     type="radio"
                     checked={searchConfig.expandedGlobal}
                     onChange={() => setSearchConfig({ ...searchConfig, standard: false, expandedGlobal: true })}
-                    className="w-5 h-5 text-red-600 mt-0.5"
+                    className="w-5 h-5 text-red-400 mt-0.5"
                   />
                   <div className="flex-1">
                     <p className="font-semibold text-white">Expanded Global Screening</p>
@@ -570,7 +570,7 @@ function SanctionsScreeningWizard({ onBack }: { onBack: () => void }) {
                     type="checkbox"
                     checked={searchConfig.fuzzyMatching}
                     onChange={(e) => setSearchConfig({ ...searchConfig, fuzzyMatching: e.target.checked })}
-                    className="w-4 h-4 text-red-600 rounded"
+                    className="w-4 h-4 text-red-400 rounded"
                   />
                   <span className="text-sm text-slate-300">Include fuzzy matching (name variations)</span>
                 </label>
@@ -580,7 +580,7 @@ function SanctionsScreeningWizard({ onBack }: { onBack: () => void }) {
                     type="checkbox"
                     checked={searchConfig.transliteration}
                     onChange={(e) => setSearchConfig({ ...searchConfig, transliteration: e.target.checked })}
-                    className="w-4 h-4 text-red-600 rounded"
+                    className="w-4 h-4 text-red-400 rounded"
                   />
                   <span className="text-sm text-slate-300">Include transliteration (non-Latin scripts)</span>
                 </label>
@@ -591,7 +591,7 @@ function SanctionsScreeningWizard({ onBack }: { onBack: () => void }) {
                       type="checkbox"
                       checked={searchConfig.vesselSearch}
                       onChange={(e) => setSearchConfig({ ...searchConfig, vesselSearch: e.target.checked })}
-                      className="w-4 h-4 text-red-600 rounded"
+                      className="w-4 h-4 text-red-400 rounded"
                     />
                     <span className="text-sm text-slate-300">Include vessel search (if applicable)</span>
                   </label>
@@ -615,15 +615,15 @@ function SanctionsScreeningWizard({ onBack }: { onBack: () => void }) {
           <Card className="border-2">
             <CardHeader className="bg-gradient-to-r from-purple-50 to-purple-100">
               <CardTitle className="flex items-center gap-2">
-                <Sparkles className="w-5 h-5 text-purple-600" />
+                <Sparkles className="w-5 h-5 text-purple-400" />
                 Step 3: AI Search Plan
               </CardTitle>
               <CardDescription>Review the sanctions screening strategy</CardDescription>
             </CardHeader>
             <CardContent className="p-6 space-y-6">
-              <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                <p className="font-semibold text-red-900 mb-2">Search Target</p>
-                <p className="text-sm text-red-800">
+              <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-4">
+                <p className="font-semibold text-red-300 mb-2">Search Target</p>
+                <p className="text-sm text-red-300">
                   <strong>{subjectType === 'person' ? formData.fullName : formData.entityName}</strong> • {subjectType === 'person' ? formData.nationality : 'Entity'}
                 </p>
               </div>
@@ -639,7 +639,7 @@ function SanctionsScreeningWizard({ onBack }: { onBack: () => void }) {
                     'EU Consolidated Sanctions List'
                   ].map((list, idx) => (
                     <div key={idx} className="flex items-center gap-2 p-2 bg-[#0f172a] rounded text-xs">
-                      <CheckCircle className="w-3 h-3 text-green-600" />
+                      <CheckCircle className="w-3 h-3 text-green-400" />
                       <span className="text-slate-300">{list}</span>
                     </div>
                   ))}
@@ -650,17 +650,17 @@ function SanctionsScreeningWizard({ onBack }: { onBack: () => void }) {
                 <p className="font-semibold text-white mb-3">Name Variants & Aliases</p>
                 <div className="flex flex-wrap gap-2">
                   {['Sarah Johnson', 'Sarah M. Johnson', 'S. Johnson', 'S.M. Johnson', 'Johnson, Sarah'].map((variant, idx) => (
-                    <Badge key={idx} className="bg-purple-100 text-purple-700">{variant}</Badge>
+                    <Badge key={idx} className="bg-purple-500/15 text-purple-300">{variant}</Badge>
                   ))}
                 </div>
               </div>
 
-              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+              <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-4">
                 <div className="flex items-start gap-2">
-                  <AlertTriangle className="w-5 h-5 text-amber-600 mt-0.5" />
+                  <AlertTriangle className="w-5 h-5 text-amber-400 mt-0.5" />
                   <div>
-                    <p className="font-semibold text-amber-900 mb-1">Critical Matching Rules</p>
-                    <ul className="text-sm text-amber-800 space-y-1">
+                    <p className="font-semibold text-amber-300 mb-1">Critical Matching Rules</p>
+                    <ul className="text-sm text-amber-300 space-y-1">
                       <li>• Exact name + DOB match = High confidence</li>
                       <li>• <strong>CONFIRMED SANCTIONS MATCH = AUTOMATIC BLOCK</strong></li>
                       <li>• All matches require manual review before clearing</li>
@@ -675,7 +675,7 @@ function SanctionsScreeningWizard({ onBack }: { onBack: () => void }) {
                   <p className="text-sm font-medium text-slate-300">Expected Runtime</p>
                   <p className="text-xs text-slate-300">Real-time screening across 5 major lists</p>
                 </div>
-                <p className="text-2xl font-bold text-red-600">~3 seconds</p>
+                <p className="text-2xl font-bold text-red-400">~3 seconds</p>
               </div>
 
               <div className="flex justify-between gap-3 pt-6 border-t">
@@ -696,25 +696,25 @@ function SanctionsScreeningWizard({ onBack }: { onBack: () => void }) {
           <Card className="border-2">
             <CardHeader className="bg-gradient-to-r from-green-50 to-green-100">
               <CardTitle className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600" />
+                <CheckCircle className="w-5 h-5 text-green-400" />
                 Step 4: Screening Results
               </CardTitle>
             </CardHeader>
             <CardContent className="p-6 space-y-4">
-              <div className="p-6 bg-green-50 border-2 border-green-400 rounded-lg">
+              <div className="p-6 bg-green-500/10 border-2 border-green-400 rounded-lg">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
                       <CheckCircle className="w-7 h-7 text-white" />
                     </div>
                     <div>
-                      <p className="text-2xl font-bold text-green-900">NO SANCTIONS MATCHES FOUND</p>
-                      <p className="text-sm text-green-700">Subject cleared across all global sanctions lists</p>
+                      <p className="text-2xl font-bold text-green-300">NO SANCTIONS MATCHES FOUND</p>
+                      <p className="text-sm text-green-300">Subject cleared across all global sanctions lists</p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-4xl font-bold text-green-600">0</p>
-                    <p className="text-xs text-green-700">Matches</p>
+                    <p className="text-4xl font-bold text-green-400">0</p>
+                    <p className="text-xs text-green-300">Matches</p>
                   </div>
                 </div>
 
@@ -726,10 +726,10 @@ function SanctionsScreeningWizard({ onBack }: { onBack: () => void }) {
                     { list: 'UK HMT', matches: 0 },
                     { list: 'EU', matches: 0 }
                   ].map((result, idx) => (
-                    <div key={idx} className="bg-[#1e293b] p-3 rounded border border-green-200">
+                    <div key={idx} className="bg-[#1e293b] p-3 rounded border border-green-500/30">
                       <p className="text-xs text-slate-300">{result.list}</p>
-                      <p className="text-2xl font-bold text-green-600">{result.matches}</p>
-                      <Badge className="bg-green-100 text-green-700 text-xs mt-1">Clear</Badge>
+                      <p className="text-2xl font-bold text-green-400">{result.matches}</p>
+                      <Badge className="bg-green-500/15 text-green-300 text-xs mt-1">Clear</Badge>
                     </div>
                   ))}
                 </div>
@@ -754,9 +754,9 @@ function SanctionsScreeningWizard({ onBack }: { onBack: () => void }) {
               <CardTitle>Step 5: Analyst Decision</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                <p className="font-semibold text-blue-900 mb-2">AI Recommendation</p>
-                <p className="text-sm text-blue-800">
+              <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+                <p className="font-semibold text-blue-300 mb-2">AI Recommendation</p>
+                <p className="text-sm text-blue-300">
                   No sanctions matches detected. Recommend <strong>CLEAR TO PROCEED</strong>.
                 </p>
               </div>
@@ -764,19 +764,19 @@ function SanctionsScreeningWizard({ onBack }: { onBack: () => void }) {
               <div>
                 <Label>Final Decision *</Label>
                 <div className="space-y-2 mt-2">
-                  <label className="flex items-start gap-3 p-3 border-2 border-green-400 bg-green-50 rounded-lg">
-                    <input type="radio" name="decision" defaultChecked className="w-4 h-4 text-green-600 mt-0.5" />
+                  <label className="flex items-start gap-3 p-3 border-2 border-green-400 bg-green-500/10 rounded-lg">
+                    <input type="radio" name="decision" defaultChecked className="w-4 h-4 text-green-400 mt-0.5" />
                     <div>
                       <p className="font-medium text-white">Confirm - No Match (Clear)</p>
                       <Badge className="mt-1 bg-green-600 text-white text-xs">Recommended</Badge>
                     </div>
                   </label>
-                  <label className="flex items-start gap-3 p-3 border-2 border-gray-300 rounded-lg">
-                    <input type="radio" name="decision" className="w-4 h-4 text-red-600 mt-0.5" />
+                  <label className="flex items-start gap-3 p-3 border-2 border-white/10 rounded-lg">
+                    <input type="radio" name="decision" className="w-4 h-4 text-red-400 mt-0.5" />
                     <p className="font-medium text-white">Mark as False Positive</p>
                   </label>
-                  <label className="flex items-start gap-3 p-3 border-2 border-gray-300 rounded-lg">
-                    <input type="radio" name="decision" className="w-4 h-4 text-red-600 mt-0.5" />
+                  <label className="flex items-start gap-3 p-3 border-2 border-white/10 rounded-lg">
+                    <input type="radio" name="decision" className="w-4 h-4 text-red-400 mt-0.5" />
                     <p className="font-medium text-white">Escalate for Review</p>
                   </label>
                 </div>
@@ -809,7 +809,7 @@ function SanctionsScreeningWizard({ onBack }: { onBack: () => void }) {
                 <div className="grid md:grid-cols-2 gap-4 text-left">
                   <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">Final Result</p>
-                    <p className="font-semibold text-green-600">NO SANCTIONS MATCH</p>
+                    <p className="font-semibold text-green-400">NO SANCTIONS MATCH</p>
                   </div>
                   <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">Lists Checked</p>
@@ -825,12 +825,12 @@ function SanctionsScreeningWizard({ onBack }: { onBack: () => void }) {
                   </div>
                 </div>
 
-                <div className="p-4 bg-purple-50 border border-purple-200 rounded-lg text-left">
+                <div className="p-4 bg-purple-500/10 border border-purple-500/30 rounded-lg text-left">
                   <div className="flex items-start gap-2">
-                    <RefreshCw className="w-5 h-5 text-purple-600 mt-0.5" />
+                    <RefreshCw className="w-5 h-5 text-purple-400 mt-0.5" />
                     <div>
-                      <p className="font-semibold text-purple-900">Continuous Monitoring Active</p>
-                      <p className="text-sm text-purple-700 mt-1">
+                      <p className="font-semibold text-purple-300">Continuous Monitoring Active</p>
+                      <p className="text-sm text-purple-300 mt-1">
                         Subject will be automatically rescreened daily to detect any new sanctions list additions.
                       </p>
                     </div>

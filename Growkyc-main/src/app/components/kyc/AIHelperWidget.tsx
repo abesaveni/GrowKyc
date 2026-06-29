@@ -188,7 +188,7 @@ export function AIHelperWidget() {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 w-96 h-[600px] bg-white rounded-lg shadow-2xl border border-gray-200 flex flex-col z-50">
+    <div className="fixed bottom-6 right-6 w-96 h-[600px] bg-white rounded-lg shadow-2xl border border-white/10 flex flex-col z-50">
       {/* Header */}
       <div className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-4 rounded-t-lg">
         <div className="flex items-center justify-between mb-2">
@@ -223,7 +223,7 @@ export function AIHelperWidget() {
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-gray-200">
+      <div className="flex border-b border-white/10">
         {[
           { id: 'help', label: 'Help', icon: HelpCircle },
           { id: 'actions', label: 'Actions', icon: Zap },
@@ -236,8 +236,8 @@ export function AIHelperWidget() {
               onClick={() => setActiveTab(tab.id as any)}
               className={`flex-1 px-4 py-3 font-semibold text-sm flex items-center justify-center gap-2 transition-colors ${
                 activeTab === tab.id
-                  ? 'border-b-2 border-purple-600 text-purple-600'
-                  : 'text-gray-600 hover:text-gray-900'
+                  ? 'border-b-2 border-purple-600 text-purple-400'
+                  : 'text-slate-300 hover:text-slate-100'
               }`}
             >
               <Icon className="w-4 h-4" />
@@ -252,12 +252,12 @@ export function AIHelperWidget() {
         {/* Help Tab */}
         {activeTab === 'help' && (
           <div className="space-y-4">
-            <div className="bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-200 rounded-lg p-4">
+            <div className="bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-500/30 rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
-                <Lightbulb className="w-5 h-5 text-purple-600" />
-                <h4 className="font-bold text-purple-900">What I Can Help With</h4>
+                <Lightbulb className="w-5 h-5 text-purple-400" />
+                <h4 className="font-bold text-purple-300">What I Can Help With</h4>
               </div>
-              <ul className="text-sm text-purple-800 space-y-1">
+              <ul className="text-sm text-purple-300 space-y-1">
                 <li>• Show you what to do next</li>
                 <li>• Explain compliance requirements</li>
                 <li>• Identify missing information</li>
@@ -268,22 +268,22 @@ export function AIHelperWidget() {
             </div>
 
             <div>
-              <h4 className="font-bold text-gray-900 mb-3">AI Suggestions</h4>
+              <h4 className="font-bold text-slate-100 mb-3">AI Suggestions</h4>
               <div className="space-y-2">
                 {suggestions.map((suggestion) => (
                   <div key={suggestion.id} className={`p-3 rounded-lg border-2 ${
-                    suggestion.type === 'next-step' ? 'border-blue-200 bg-blue-50' :
-                    suggestion.type === 'fix' ? 'border-red-200 bg-red-50' :
-                    suggestion.type === 'explanation' ? 'border-yellow-200 bg-yellow-50' :
-                    'border-purple-200 bg-purple-50'
+                    suggestion.type === 'next-step' ? 'border-blue-500/30 bg-blue-500/10' :
+                    suggestion.type === 'fix' ? 'border-red-500/30 bg-red-500/10' :
+                    suggestion.type === 'explanation' ? 'border-yellow-500/30 bg-yellow-500/10' :
+                    'border-purple-500/30 bg-purple-500/10'
                   }`}>
                     <div className="flex items-start justify-between mb-1">
-                      <h5 className="font-semibold text-gray-900 text-sm">{suggestion.title}</h5>
-                      <span className="text-xs text-gray-500">
+                      <h5 className="font-semibold text-slate-100 text-sm">{suggestion.title}</h5>
+                      <span className="text-xs text-slate-400">
                         {Math.round(suggestion.confidence * 100)}%
                       </span>
                     </div>
-                    <p className="text-xs text-gray-700 mb-2">{suggestion.description}</p>
+                    <p className="text-xs text-slate-300 mb-2">{suggestion.description}</p>
                     {suggestion.actionable && (
                       <Button size="sm" className="w-full bg-purple-600 hover:bg-purple-700 text-xs py-1">
                         Take Action
@@ -295,12 +295,12 @@ export function AIHelperWidget() {
             </div>
 
             <div>
-              <h4 className="font-bold text-gray-900 mb-3">Common Questions</h4>
+              <h4 className="font-bold text-slate-100 mb-3">Common Questions</h4>
               <div className="space-y-2">
                 {explanations.slice(0, 3).map((item, index) => (
                   <button
                     key={index}
-                    className="w-full p-3 bg-gray-50 hover:bg-gray-100 rounded-lg border border-gray-200 text-left transition-colors"
+                    className="w-full p-3 bg-white/5 hover:bg-white/5 rounded-lg border border-white/10 text-left transition-colors"
                     onClick={() => {
                       setActiveTab('chat');
                       setChatHistory([
@@ -309,7 +309,7 @@ export function AIHelperWidget() {
                       ]);
                     }}
                   >
-                    <p className="text-sm font-semibold text-gray-900">{item.question}</p>
+                    <p className="text-sm font-semibold text-slate-100">{item.question}</p>
                   </button>
                 ))}
               </div>
@@ -320,8 +320,8 @@ export function AIHelperWidget() {
         {/* Actions Tab */}
         {activeTab === 'actions' && (
           <div className="space-y-3">
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-              <p className="text-sm text-blue-900">
+            <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-3">
+              <p className="text-sm text-blue-300">
                 <strong>Quick Actions:</strong> One-click AI-powered workflows to speed up your compliance work.
               </p>
             </div>
@@ -338,16 +338,16 @@ export function AIHelperWidget() {
                       <Icon className={`w-5 h-5 text-${action.color}-600`} />
                     </div>
                     <div className="flex-1">
-                      <h5 className="font-bold text-gray-900 mb-1">{action.label}</h5>
-                      <p className="text-xs text-gray-600">{action.description}</p>
+                      <h5 className="font-bold text-slate-100 mb-1">{action.label}</h5>
+                      <p className="text-xs text-slate-300">{action.description}</p>
                     </div>
                   </div>
                 </button>
               );
             })}
 
-            <div className="p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
-              <p className="text-xs text-yellow-900">
+            <div className="p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
+              <p className="text-xs text-yellow-300">
                 <strong>Note:</strong> All AI actions generate drafts for your review. You maintain final approval.
               </p>
             </div>
@@ -359,9 +359,9 @@ export function AIHelperWidget() {
           <div className="flex flex-col h-full">
             {chatHistory.length === 0 ? (
               <div className="flex-1 flex flex-col items-center justify-center text-center p-6">
-                <Sparkles className="w-12 h-12 text-purple-600 mb-4" />
-                <h4 className="font-bold text-gray-900 mb-2">Ask Me Anything</h4>
-                <p className="text-sm text-gray-600 mb-4">
+                <Sparkles className="w-12 h-12 text-purple-400 mb-4" />
+                <h4 className="font-bold text-slate-100 mb-2">Ask Me Anything</h4>
+                <p className="text-sm text-slate-300 mb-4">
                   I can answer questions about compliance, explain requirements, or cite relevant policy sections.
                 </p>
                 <div className="space-y-2 w-full">
@@ -376,7 +376,7 @@ export function AIHelperWidget() {
                         setChatInput(q);
                         handleSendChat();
                       }}
-                      className="w-full p-2 bg-purple-50 hover:bg-purple-100 rounded-lg text-sm text-purple-900 font-semibold transition-colors"
+                      className="w-full p-2 bg-purple-500/10 hover:bg-purple-500/15 rounded-lg text-sm text-purple-300 font-semibold transition-colors"
                     >
                       {q}
                     </button>
@@ -390,7 +390,7 @@ export function AIHelperWidget() {
                     <div className={`max-w-[85%] p-3 rounded-lg ${
                       chat.role === 'user' 
                         ? 'bg-purple-600 text-white' 
-                        : 'bg-gray-100 text-gray-900'
+                        : 'bg-white/5 text-slate-100'
                     }`}>
                       <p className="text-sm whitespace-pre-wrap">{chat.message}</p>
                     </div>
@@ -404,7 +404,7 @@ export function AIHelperWidget() {
 
       {/* Chat Input (only show on chat tab) */}
       {activeTab === 'chat' && (
-        <div className="p-4 border-t border-gray-200">
+        <div className="p-4 border-t border-white/10">
           <div className="flex gap-2">
             <input
               type="text"
@@ -412,7 +412,7 @@ export function AIHelperWidget() {
               onChange={(e) => setChatInput(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && handleSendChat()}
               placeholder="Ask about compliance..."
-              className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm"
+              className="flex-1 px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm"
             />
             <Button 
               onClick={handleSendChat}
@@ -421,7 +421,7 @@ export function AIHelperWidget() {
               <Send className="w-4 h-4" />
             </Button>
           </div>
-          <p className="text-xs text-gray-500 mt-2">
+          <p className="text-xs text-slate-400 mt-2">
             AI cites policy sections. If policy doesn't cover it, I'll tell you and suggest escalation.
           </p>
         </div>
@@ -429,8 +429,8 @@ export function AIHelperWidget() {
 
       {/* Footer Info */}
       {activeTab !== 'chat' && (
-        <div className="p-3 border-t border-gray-200 bg-gray-50">
-          <p className="text-xs text-gray-600 text-center">
+        <div className="p-3 border-t border-white/10 bg-white/5">
+          <p className="text-xs text-slate-300 text-center">
             <strong>Safe AI:</strong> I suggest, you decide. All critical actions require your approval.
           </p>
         </div>

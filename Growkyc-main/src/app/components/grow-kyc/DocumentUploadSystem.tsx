@@ -279,7 +279,7 @@ export function DocumentUploadSystem({ documentType, onComplete, onBack }: Docum
     return (
       <Card>
         <CardContent className="p-6">
-          <p className="text-red-600">Invalid document type: {documentType}</p>
+          <p className="text-red-400">Invalid document type: {documentType}</p>
           <Button onClick={onBack} className="mt-4">Back</Button>
         </CardContent>
       </Card>
@@ -370,7 +370,7 @@ export function DocumentUploadSystem({ documentType, onComplete, onBack }: Docum
           <select
             value={value}
             onChange={(e) => handleFieldChange(field.name, e.target.value)}
-            className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="">Select...</option>
             {field.options?.map((opt: string) => (
@@ -391,7 +391,7 @@ export function DocumentUploadSystem({ documentType, onComplete, onBack }: Docum
           <textarea
             value={value}
             onChange={(e) => handleFieldChange(field.name, e.target.value)}
-            className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             rows={3}
           />
         </div>
@@ -409,7 +409,7 @@ export function DocumentUploadSystem({ documentType, onComplete, onBack }: Docum
           value={value}
           onChange={(e) => handleFieldChange(field.name, e.target.value)}
           maxLength={field.maxLength}
-          className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-4 py-2 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder={field.placeholder}
         />
         {field.maxLength && (
@@ -423,7 +423,7 @@ export function DocumentUploadSystem({ documentType, onComplete, onBack }: Docum
     <div className="space-y-6">
       {/* Document Header */}
       <Card className="border-2 border-blue-500">
-        <CardHeader className="bg-blue-50">
+        <CardHeader className="bg-blue-500/10">
           <div className="flex items-center justify-between">
             <div>
               <CardTitle>{docConfig.name}</CardTitle>
@@ -444,13 +444,13 @@ export function DocumentUploadSystem({ documentType, onComplete, onBack }: Docum
 
       {/* Privacy Notice */}
       {(docConfig as any).privacyNote && (
-        <Card className="bg-amber-50 border-amber-300">
+        <Card className="bg-amber-500/10 border-amber-300">
           <CardContent className="p-4">
             <div className="flex items-start gap-3">
-              <Info className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+              <Info className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
               <div>
-                <h4 className="font-semibold text-amber-900 mb-1">Privacy Notice</h4>
-                <p className="text-sm text-amber-800">{(docConfig as any).privacyNote}</p>
+                <h4 className="font-semibold text-amber-300 mb-1">Privacy Notice</h4>
+                <p className="text-sm text-amber-300">{(docConfig as any).privacyNote}</p>
               </div>
             </div>
           </CardContent>
@@ -464,7 +464,7 @@ export function DocumentUploadSystem({ documentType, onComplete, onBack }: Docum
           <CardDescription>Upload a clear, complete copy of the document</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-blue-500 transition-colors">
+          <div className="border-2 border-dashed border-white/10 rounded-lg p-8 text-center hover:border-blue-500 transition-colors">
             <Upload className="w-12 h-12 text-slate-400 mx-auto mb-4" />
             <input
               type="file"
@@ -480,7 +480,7 @@ export function DocumentUploadSystem({ documentType, onComplete, onBack }: Docum
               </Button>
             </label>
             {uploadedFile && (
-              <div className="mt-4 flex items-center justify-center gap-2 text-green-600">
+              <div className="mt-4 flex items-center justify-center gap-2 text-green-400">
                 <CheckCircle className="w-5 h-5" />
                 <span className="font-semibold">{uploadedFile.name}</span>
                 <span className="text-sm text-slate-300">({(uploadedFile.size / 1024).toFixed(1)} KB)</span>
@@ -541,16 +541,16 @@ export function DocumentUploadSystem({ documentType, onComplete, onBack }: Docum
           )}
 
           {verificationResults.documentIntegrity && (
-            <Card className="mt-4 bg-green-50 border-green-300">
+            <Card className="mt-4 bg-green-500/10 border-green-300">
               <CardContent className="p-4">
                 <div className="flex items-center gap-3 mb-3">
-                  <CheckCircle className="w-6 h-6 text-green-600" />
-                  <h4 className="font-bold text-green-900">Verification Complete</h4>
+                  <CheckCircle className="w-6 h-6 text-green-400" />
+                  <h4 className="font-bold text-green-300">Verification Complete</h4>
                 </div>
                 <div className="grid grid-cols-2 gap-3 text-sm">
                   <div>
                     <span className="text-slate-300">Confidence Score:</span>
-                    <span className="font-bold text-green-900 ml-2">{verificationResults.confidenceScore}%</span>
+                    <span className="font-bold text-green-300 ml-2">{verificationResults.confidenceScore}%</span>
                   </div>
                   <div>
                     <span className="text-slate-300">Document Hash:</span>

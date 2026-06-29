@@ -84,10 +84,10 @@ export function CaseDashboard({ caseData }: CaseDashboardProps) {
 
   // Risk level color mapping
   const riskColors: Record<string, { bg: string; text: string; gauge: string }> = {
-    low: { bg: 'bg-green-50', text: 'text-green-700', gauge: '#22c55e' },
-    medium: { bg: 'bg-yellow-50', text: 'text-yellow-700', gauge: '#eab308' },
-    high: { bg: 'bg-orange-50', text: 'text-orange-700', gauge: '#f97316' },
-    critical: { bg: 'bg-red-50', text: 'text-red-700', gauge: '#ef4444' }
+    low: { bg: 'bg-green-500/10', text: 'text-green-300', gauge: '#22c55e' },
+    medium: { bg: 'bg-yellow-500/10', text: 'text-yellow-300', gauge: '#eab308' },
+    high: { bg: 'bg-orange-500/10', text: 'text-orange-300', gauge: '#f97316' },
+    critical: { bg: 'bg-red-500/10', text: 'text-red-300', gauge: '#ef4444' }
   };
 
   const currentRiskColor = riskColors[caseData.riskLevel] || riskColors.medium;
@@ -146,13 +146,13 @@ export function CaseDashboard({ caseData }: CaseDashboardProps) {
     <div className="space-y-6">
       {/* Compliance Workflow Actions Panel */}
       {user?.role !== 'auditor' && (
-        <Card className="border-indigo-200 bg-indigo-50/30 backdrop-blur-sm shadow-md">
+        <Card className="border-indigo-500/30 bg-indigo-500/10/30 backdrop-blur-sm shadow-md">
           <CardHeader className="pb-3 flex flex-row items-center justify-between space-y-0">
-            <CardTitle className="text-lg font-semibold flex items-center gap-2 text-indigo-900">
-              <Shield className="w-5 h-5 text-indigo-600 animate-pulse" />
+            <CardTitle className="text-lg font-semibold flex items-center gap-2 text-indigo-300">
+              <Shield className="w-5 h-5 text-indigo-400 animate-pulse" />
               Compliance Workflow Decisions
             </CardTitle>
-            <div className="text-xs text-indigo-700 bg-indigo-100/75 px-2.5 py-1 rounded-full font-medium">
+            <div className="text-xs text-indigo-300 bg-indigo-500/15/75 px-2.5 py-1 rounded-full font-medium">
               Role: <span className="capitalize">{user?.role || 'AML Analyst'}</span>
             </div>
           </CardHeader>
@@ -179,7 +179,7 @@ export function CaseDashboard({ caseData }: CaseDashboardProps) {
               
               <Button 
                 variant="outline"
-                className="border-indigo-300 text-indigo-700 hover:bg-indigo-50 font-medium transition-all duration-200"
+                className="border-indigo-300 text-indigo-300 hover:bg-indigo-500/10 font-medium transition-all duration-200"
                 onClick={() => setIsRequestInfoOpen(true)}
               >
                 Request Info
@@ -187,7 +187,7 @@ export function CaseDashboard({ caseData }: CaseDashboardProps) {
               
               <Button 
                 variant="outline"
-                className="border-amber-300 text-amber-700 hover:bg-amber-50 font-medium transition-all duration-200"
+                className="border-amber-300 text-amber-300 hover:bg-amber-500/10 font-medium transition-all duration-200"
                 onClick={() => setIsFlagOpen(true)}
               >
                 Flag Investigation
@@ -195,7 +195,7 @@ export function CaseDashboard({ caseData }: CaseDashboardProps) {
               
               <Button 
                 variant="outline"
-                className="border-rose-300 text-rose-700 hover:bg-rose-50 font-medium transition-all duration-200"
+                className="border-rose-300 text-rose-300 hover:bg-rose-500/10 font-medium transition-all duration-200"
                 onClick={() => setIsEscalateOpen(true)}
               >
                 Escalate Case
@@ -203,7 +203,7 @@ export function CaseDashboard({ caseData }: CaseDashboardProps) {
 
               <Button 
                 variant="outline"
-                className="border-purple-300 text-purple-700 hover:bg-purple-50 font-medium transition-all duration-200"
+                className="border-purple-300 text-purple-300 hover:bg-purple-500/10 font-medium transition-all duration-200"
                 onClick={() => setIsEddOpen(true)}
               >
                 Initiate EDD
@@ -211,7 +211,7 @@ export function CaseDashboard({ caseData }: CaseDashboardProps) {
 
               <Button 
                 variant="outline"
-                className="border-blue-300 text-blue-700 hover:bg-blue-50 font-medium transition-all duration-200 ml-auto"
+                className="border-blue-300 text-blue-300 hover:bg-blue-500/10 font-medium transition-all duration-200 ml-auto"
                 onClick={handleDownloadEvidence}
                 disabled={isGeneratingPack}
               >
@@ -228,9 +228,9 @@ export function CaseDashboard({ caseData }: CaseDashboardProps) {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-500 mb-1">Case Status</p>
+                <p className="text-sm text-slate-400 mb-1">Case Status</p>
                 <p className="text-2xl font-bold capitalize">{caseData.status.replace('_', ' ')}</p>
-                <p className="text-xs text-gray-500 mt-1">Updated {daysSinceUpdated}d ago</p>
+                <p className="text-xs text-slate-400 mt-1">Updated {daysSinceUpdated}d ago</p>
               </div>
               <div className={`p-3 rounded-full ${currentRiskColor.bg}`}>
                 <Target className={`w-6 h-6 ${currentRiskColor.text}`} />
@@ -243,15 +243,15 @@ export function CaseDashboard({ caseData }: CaseDashboardProps) {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-500 mb-1">Property Value</p>
+                <p className="text-sm text-slate-400 mb-1">Property Value</p>
                 <p className="text-2xl font-bold">${(caseData.valuation.amount / 1000000).toFixed(2)}M</p>
-                <p className="text-xs text-green-600 mt-1 flex items-center">
+                <p className="text-xs text-green-400 mt-1 flex items-center">
                   <TrendingUp className="w-3 h-3 mr-1" />
                   High confidence
                 </p>
               </div>
-              <div className="p-3 rounded-full bg-blue-50">
-                <Home className="w-6 h-6 text-blue-600" />
+              <div className="p-3 rounded-full bg-blue-500/10">
+                <Home className="w-6 h-6 text-blue-400" />
               </div>
             </div>
           </CardContent>
@@ -261,14 +261,14 @@ export function CaseDashboard({ caseData }: CaseDashboardProps) {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-500 mb-1">Total Bids</p>
+                <p className="text-sm text-slate-400 mb-1">Total Bids</p>
                 <p className="text-2xl font-bold">{caseData.bidCount || 0}</p>
                 {caseData.currentBid && (
-                  <p className="text-xs text-gray-500 mt-1">High: ${(caseData.currentBid / 1000).toFixed(0)}k</p>
+                  <p className="text-xs text-slate-400 mt-1">High: ${(caseData.currentBid / 1000).toFixed(0)}k</p>
                 )}
               </div>
-              <div className="p-3 rounded-full bg-purple-50">
-                <DollarSign className="w-6 h-6 text-purple-600" />
+              <div className="p-3 rounded-full bg-purple-500/10">
+                <DollarSign className="w-6 h-6 text-purple-400" />
               </div>
             </div>
           </CardContent>
@@ -278,12 +278,12 @@ export function CaseDashboard({ caseData }: CaseDashboardProps) {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-500 mb-1">Days Active</p>
+                <p className="text-sm text-slate-400 mb-1">Days Active</p>
                 <p className="text-2xl font-bold">{daysSinceCreated}</p>
-                <p className="text-xs text-gray-500 mt-1">Since {new Date(caseData.createdAt).toLocaleDateString()}</p>
+                <p className="text-xs text-slate-400 mt-1">Since {new Date(caseData.createdAt).toLocaleDateString()}</p>
               </div>
-              <div className="p-3 rounded-full bg-indigo-50">
-                <Calendar className="w-6 h-6 text-indigo-600" />
+              <div className="p-3 rounded-full bg-indigo-500/10">
+                <Calendar className="w-6 h-6 text-indigo-400" />
               </div>
             </div>
           </CardContent>
@@ -325,13 +325,13 @@ export function CaseDashboard({ caseData }: CaseDashboardProps) {
             </div>
             <div className="mt-4 space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-gray-600">Risk Score</span>
+                <span className="text-slate-300">Risk Score</span>
                 <span className="font-semibold">{riskScore}/100</span>
               </div>
               {caseData.loanDetails?.missedPayments && (
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-600">Missed Payments</span>
-                  <span className="font-semibold text-red-600">{caseData.loanDetails.missedPayments}</span>
+                  <span className="text-slate-300">Missed Payments</span>
+                  <span className="font-semibold text-red-400">{caseData.loanDetails.missedPayments}</span>
                 </div>
               )}
             </div>
@@ -371,12 +371,12 @@ export function CaseDashboard({ caseData }: CaseDashboardProps) {
             </div>
             <div className="mt-4 space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-gray-600">Debt</span>
+                <span className="text-slate-300">Debt</span>
                 <span className="font-semibold">${(caseData.outstandingDebt / 1000).toFixed(0)}k</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-600">Equity</span>
-                <span className="font-semibold text-green-600">${(equity / 1000).toFixed(0)}k</span>
+                <span className="text-slate-300">Equity</span>
+                <span className="font-semibold text-green-400">${(equity / 1000).toFixed(0)}k</span>
               </div>
             </div>
           </CardContent>
@@ -417,14 +417,14 @@ export function CaseDashboard({ caseData }: CaseDashboardProps) {
               <div className="flex items-center justify-between text-sm">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                  <span className="text-gray-600">Debt</span>
+                  <span className="text-slate-300">Debt</span>
                 </div>
                 <span className="font-semibold">{((caseData.outstandingDebt / caseData.valuation.amount) * 100).toFixed(1)}%</span>
               </div>
               <div className="flex items-center justify-between text-sm">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                  <span className="text-gray-600">Equity</span>
+                  <span className="text-slate-300">Equity</span>
                 </div>
                 <span className="font-semibold">{equityPercentage.toFixed(1)}%</span>
               </div>
@@ -446,7 +446,7 @@ export function CaseDashboard({ caseData }: CaseDashboardProps) {
           <CardContent className="space-y-4">
             <div>
               <div className="flex justify-between mb-2">
-                <span className="text-sm text-gray-600">Completion</span>
+                <span className="text-sm text-slate-300">Completion</span>
                 <span className="text-sm font-semibold">{documentsCompleted}/{totalDocuments}</span>
               </div>
               <Progress value={documentProgress} className="h-3" />
@@ -454,19 +454,19 @@ export function CaseDashboard({ caseData }: CaseDashboardProps) {
             <div className="space-y-2">
               {caseData.documentsTracking?.titleSearchCompleted && (
                 <div className="flex items-center gap-2 text-sm">
-                  <CheckCircle2 className="w-4 h-4 text-green-600" />
+                  <CheckCircle2 className="w-4 h-4 text-green-400" />
                   <span>Title Search</span>
                 </div>
               )}
               {caseData.documentsTracking?.identityVerificationCompleted && (
                 <div className="flex items-center gap-2 text-sm">
-                  <CheckCircle2 className="w-4 h-4 text-green-600" />
+                  <CheckCircle2 className="w-4 h-4 text-green-400" />
                   <span>Identity Verified</span>
                 </div>
               )}
               {caseData.documentsTracking?.originalLoanAgreementUploaded && (
                 <div className="flex items-center gap-2 text-sm">
-                  <CheckCircle2 className="w-4 h-4 text-green-600" />
+                  <CheckCircle2 className="w-4 h-4 text-green-400" />
                   <span>Loan Agreement</span>
                 </div>
               )}
@@ -485,7 +485,7 @@ export function CaseDashboard({ caseData }: CaseDashboardProps) {
           <CardContent className="space-y-4">
             <div>
               <div className="flex justify-between mb-2">
-                <span className="text-sm text-gray-600">Completion</span>
+                <span className="text-sm text-slate-300">Completion</span>
                 <span className="text-sm font-semibold">{verificationsCompleted}/5</span>
               </div>
               <Progress value={verificationProgress} className="h-3" />
@@ -493,19 +493,19 @@ export function CaseDashboard({ caseData }: CaseDashboardProps) {
             <div className="space-y-2">
               {caseData.infoTrackChecksCompleted && (
                 <div className="flex items-center gap-2 text-sm">
-                  <CheckCircle2 className="w-4 h-4 text-green-600" />
+                  <CheckCircle2 className="w-4 h-4 text-green-400" />
                   <span>InfoTrack Checks</span>
                 </div>
               )}
               {caseData.borrowerDetails?.kycStatus === 'verified' && (
                 <div className="flex items-center gap-2 text-sm">
-                  <CheckCircle2 className="w-4 h-4 text-green-600" />
+                  <CheckCircle2 className="w-4 h-4 text-green-400" />
                   <span>KYC Verified</span>
                 </div>
               )}
               {caseData.paymentVerified && (
                 <div className="flex items-center gap-2 text-sm">
-                  <CheckCircle2 className="w-4 h-4 text-green-600" />
+                  <CheckCircle2 className="w-4 h-4 text-green-400" />
                   <span>Payment Verified</span>
                 </div>
               )}
@@ -524,32 +524,32 @@ export function CaseDashboard({ caseData }: CaseDashboardProps) {
           <CardContent className="space-y-4">
             <div>
               <div className="flex justify-between mb-2">
-                <span className="text-sm text-gray-600">Total Parties</span>
+                <span className="text-sm text-slate-300">Total Parties</span>
                 <span className="text-sm font-semibold">{partiesCount}</span>
               </div>
             </div>
             <div className="space-y-2">
               {caseData.allParties?.borrowerLawyer && (
                 <div className="flex items-center gap-2 text-sm">
-                  <CheckCircle2 className="w-4 h-4 text-green-600" />
+                  <CheckCircle2 className="w-4 h-4 text-green-400" />
                   <span>Borrower's Lawyer</span>
                 </div>
               )}
               {caseData.allParties?.lenderLawyer && (
                 <div className="flex items-center gap-2 text-sm">
-                  <CheckCircle2 className="w-4 h-4 text-green-600" />
+                  <CheckCircle2 className="w-4 h-4 text-green-400" />
                   <span>Lender's Lawyer</span>
                 </div>
               )}
               {caseData.allParties?.realEstateAgent && (
                 <div className="flex items-center gap-2 text-sm">
-                  <CheckCircle2 className="w-4 h-4 text-green-600" />
+                  <CheckCircle2 className="w-4 h-4 text-green-400" />
                   <span>Real Estate Agent</span>
                 </div>
               )}
               {caseData.allParties?.valuer && (
                 <div className="flex items-center gap-2 text-sm">
-                  <CheckCircle2 className="w-4 h-4 text-green-600" />
+                  <CheckCircle2 className="w-4 h-4 text-green-400" />
                   <span>Valuer</span>
                 </div>
               )}
@@ -563,7 +563,7 @@ export function CaseDashboard({ caseData }: CaseDashboardProps) {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <AlertTriangle className="w-5 h-5 text-orange-600" />
+              <AlertTriangle className="w-5 h-5 text-orange-400" />
               Arrears Analysis
             </CardTitle>
           </CardHeader>
@@ -587,15 +587,15 @@ export function CaseDashboard({ caseData }: CaseDashboardProps) {
                 </div>
               </div>
               <div className="space-y-4">
-                <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
+                <div className="p-4 bg-orange-500/10 rounded-lg border border-orange-500/30">
                   <div className="flex items-start gap-3">
-                    <AlertTriangle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
+                    <AlertTriangle className="w-5 h-5 text-orange-400 flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-semibold text-orange-900">Active Arrears</p>
-                      <p className="text-2xl font-bold text-orange-600 mt-1">
+                      <p className="font-semibold text-orange-300">Active Arrears</p>
+                      <p className="text-2xl font-bold text-orange-400 mt-1">
                         ${caseData.loanDetails.arrears.toLocaleString()}
                       </p>
-                      <p className="text-sm text-orange-700 mt-2">
+                      <p className="text-sm text-orange-300 mt-2">
                         {caseData.loanDetails.missedPayments} missed payments
                       </p>
                     </div>
@@ -604,12 +604,12 @@ export function CaseDashboard({ caseData }: CaseDashboardProps) {
                 {caseData.loanDetails.defaultDate && (
                   <div className="space-y-2">
                     <div className="flex justify-between text-sm">
-                      <span className="text-gray-600">Default Date</span>
+                      <span className="text-slate-300">Default Date</span>
                       <span className="font-semibold">{caseData.loanDetails.defaultDate}</span>
                     </div>
                     {caseData.loanDetails.defaultReason && (
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Reason</p>
+                        <p className="text-sm text-slate-300 mb-1">Reason</p>
                         <p className="text-sm font-medium">{caseData.loanDetails.defaultReason}</p>
                       </div>
                     )}
@@ -623,18 +623,18 @@ export function CaseDashboard({ caseData }: CaseDashboardProps) {
 
       {/* NCCP Compliance Alert */}
       {caseData.nccpCompliance?.subjectToNCCP && (
-        <Card className="border-orange-200 bg-orange-50">
+        <Card className="border-orange-500/30 bg-orange-500/10">
           <CardContent className="pt-6">
             <div className="flex items-start gap-3">
-              <AlertTriangle className="w-6 h-6 text-orange-600 flex-shrink-0" />
+              <AlertTriangle className="w-6 h-6 text-orange-400 flex-shrink-0" />
               <div>
-                <h3 className="font-semibold text-orange-900 mb-1">NCCP Regulated Credit</h3>
-                <p className="text-sm text-orange-800">
+                <h3 className="font-semibold text-orange-300 mb-1">NCCP Regulated Credit</h3>
+                <p className="text-sm text-orange-300">
                   This case is subject to the National Consumer Credit Protection Act 2009. 
                   All responsible lending obligations and hardship provisions apply.
                 </p>
                 {caseData.nccpCompliance.borrowerCooperation && (
-                  <p className="text-sm text-orange-700 mt-2">
+                  <p className="text-sm text-orange-300 mt-2">
                     Borrower Status: <span className="font-semibold capitalize">{caseData.nccpCompliance.borrowerCooperation}</span>
                   </p>
                 )}

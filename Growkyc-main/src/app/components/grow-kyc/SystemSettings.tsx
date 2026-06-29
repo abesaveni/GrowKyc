@@ -99,13 +99,13 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
   if (!isAuthorized) {
     return (
       <div className="min-h-screen bg-[#0f172a] flex items-center justify-center p-6">
-        <Card className="max-w-md w-full shadow-2xl border-2 border-amber-200">
-          <CardHeader className="bg-amber-50 text-amber-900 pb-4">
+        <Card className="max-w-md w-full shadow-2xl border-2 border-amber-500/30">
+          <CardHeader className="bg-amber-500/10 text-amber-300 pb-4">
             <div className="flex items-center gap-3">
-              <Lock className="w-8 h-8 text-amber-600" />
+              <Lock className="w-8 h-8 text-amber-400" />
               <div>
                 <CardTitle className="text-lg font-bold">Access Restricted</CardTitle>
-                <CardDescription className="text-amber-800 font-medium">Administrative Privileges Required</CardDescription>
+                <CardDescription className="text-amber-300 font-medium">Administrative Privileges Required</CardDescription>
               </div>
             </div>
           </CardHeader>
@@ -138,7 +138,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
               Back
             </Button>
             <div className="h-6 w-px bg-gray-300" />
-            <Settings className="w-8 h-8 text-purple-600" />
+            <Settings className="w-8 h-8 text-purple-400" />
             <div>
               <h1 className="text-2xl font-bold text-white">System Settings</h1>
               <p className="text-sm text-slate-300">Partner-level administration and configuration</p>
@@ -227,7 +227,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
               <Card>
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-2">
-                    <Activity className="w-8 h-8 text-green-600" />
+                    <Activity className="w-8 h-8 text-green-400" />
                     <Badge variant="default" className="bg-green-600">Active</Badge>
                   </div>
                   <div className="text-3xl font-bold">4</div>
@@ -237,7 +237,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
               <Card>
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-2">
-                    <AlertTriangle className="w-8 h-8 text-red-600" />
+                    <AlertTriangle className="w-8 h-8 text-red-400" />
                     <Badge variant="default" className="bg-red-600">High</Badge>
                   </div>
                   <div className="text-3xl font-bold">2</div>
@@ -247,7 +247,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
               <Card>
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-2">
-                    <BarChart3 className="w-8 h-8 text-amber-600" />
+                    <BarChart3 className="w-8 h-8 text-amber-400" />
                   </div>
                   <div className="text-3xl font-bold">28</div>
                   <div className="text-sm text-slate-300">Triggers (30d)</div>
@@ -256,7 +256,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
               <Card>
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-2">
-                    <CheckCircle className="w-8 h-8 text-blue-600" />
+                    <CheckCircle className="w-8 h-8 text-blue-400" />
                   </div>
                   <div className="text-3xl font-bold">100%</div>
                   <div className="text-sm text-slate-300">Rules Active</div>
@@ -280,7 +280,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
               </CardHeader>
               <CardContent className="space-y-4">
                 {/* Rule 1: Structuring Detection */}
-                <Card className="border-2 border-purple-200">
+                <Card className="border-2 border-purple-500/30">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
@@ -295,20 +295,20 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
 
                         <p className="text-sm text-slate-300 mb-4">Multiple transactions just below $10,000 threshold</p>
 
-                        <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 mb-4">
-                          <div className="text-sm font-semibold text-blue-900 mb-2">
+                        <div className="p-4 bg-blue-500/10 rounded-lg border border-blue-500/30 mb-4">
+                          <div className="text-sm font-semibold text-blue-300 mb-2">
                             Detection Conditions:
                           </div>
                           <div className="space-y-1">
-                            <div className="flex items-center gap-2 text-sm text-blue-800">
+                            <div className="flex items-center gap-2 text-sm text-blue-300">
                               <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
                               3+ transactions within 24 hours
                             </div>
-                            <div className="flex items-center gap-2 text-sm text-blue-800">
+                            <div className="flex items-center gap-2 text-sm text-blue-300">
                               <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
                               Each transaction $8,000 - $9,999
                             </div>
-                            <div className="flex items-center gap-2 text-sm text-blue-800">
+                            <div className="flex items-center gap-2 text-sm text-blue-300">
                               <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
                               Same beneficiary or pattern
                             </div>
@@ -317,7 +317,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
 
                         <div className="flex items-center gap-4 text-sm">
                           <div className="flex items-center gap-2">
-                            <AlertTriangle className="w-4 h-4 text-amber-600" />
+                            <AlertTriangle className="w-4 h-4 text-amber-400" />
                             <span className="text-slate-300">Triggered:</span>
                             <span className="font-semibold">8 times (30d)</span>
                           </div>
@@ -343,7 +343,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                 </Card>
 
                 {/* Rule 2: Rapid Cash Movement */}
-                <Card className="border-2 border-purple-200">
+                <Card className="border-2 border-purple-500/30">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
@@ -358,20 +358,20 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
 
                         <p className="text-sm text-slate-300 mb-4">Funds in and out within short timeframe</p>
 
-                        <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 mb-4">
-                          <div className="text-sm font-semibold text-blue-900 mb-2">
+                        <div className="p-4 bg-blue-500/10 rounded-lg border border-blue-500/30 mb-4">
+                          <div className="text-sm font-semibold text-blue-300 mb-2">
                             Detection Conditions:
                           </div>
                           <div className="space-y-1">
-                            <div className="flex items-center gap-2 text-sm text-blue-800">
+                            <div className="flex items-center gap-2 text-sm text-blue-300">
                               <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
                               Funds in &gt; $50,000
                             </div>
-                            <div className="flex items-center gap-2 text-sm text-blue-800">
+                            <div className="flex items-center gap-2 text-sm text-blue-300">
                               <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
                               Funds out within 48 hours
                             </div>
-                            <div className="flex items-center gap-2 text-sm text-blue-800">
+                            <div className="flex items-center gap-2 text-sm text-blue-300">
                               <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
                               Minimal balance remaining
                             </div>
@@ -380,7 +380,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
 
                         <div className="flex items-center gap-4 text-sm">
                           <div className="flex items-center gap-2">
-                            <AlertTriangle className="w-4 h-4 text-amber-600" />
+                            <AlertTriangle className="w-4 h-4 text-amber-400" />
                             <span className="text-slate-300">Triggered:</span>
                             <span className="font-semibold">3 times (30d)</span>
                           </div>
@@ -406,7 +406,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                 </Card>
 
                 {/* Rule 3: Cross-Border Spike */}
-                <Card className="border-2 border-purple-200">
+                <Card className="border-2 border-purple-500/30">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
@@ -421,20 +421,20 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
 
                         <p className="text-sm text-slate-300 mb-4">Unusual international transaction volume</p>
 
-                        <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 mb-4">
-                          <div className="text-sm font-semibold text-blue-900 mb-2">
+                        <div className="p-4 bg-blue-500/10 rounded-lg border border-blue-500/30 mb-4">
+                          <div className="text-sm font-semibold text-blue-300 mb-2">
                             Detection Conditions:
                           </div>
                           <div className="space-y-1">
-                            <div className="flex items-center gap-2 text-sm text-blue-800">
+                            <div className="flex items-center gap-2 text-sm text-blue-300">
                               <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
                               International transactions &gt; 3x baseline
                             </div>
-                            <div className="flex items-center gap-2 text-sm text-blue-800">
+                            <div className="flex items-center gap-2 text-sm text-blue-300">
                               <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
                               High-risk jurisdiction
                             </div>
-                            <div className="flex items-center gap-2 text-sm text-blue-800">
+                            <div className="flex items-center gap-2 text-sm text-blue-300">
                               <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
                               New beneficiary country
                             </div>
@@ -443,7 +443,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
 
                         <div className="flex items-center gap-4 text-sm">
                           <div className="flex items-center gap-2">
-                            <AlertTriangle className="w-4 h-4 text-amber-600" />
+                            <AlertTriangle className="w-4 h-4 text-amber-400" />
                             <span className="text-slate-300">Triggered:</span>
                             <span className="font-semibold">12 times (30d)</span>
                           </div>
@@ -469,7 +469,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                 </Card>
 
                 {/* Rule 4: Unusual Transaction Size */}
-                <Card className="border-2 border-purple-200">
+                <Card className="border-2 border-purple-500/30">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
@@ -484,20 +484,20 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
 
                         <p className="text-sm text-slate-300 mb-4">Transaction significantly larger than historical average</p>
 
-                        <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 mb-4">
-                          <div className="text-sm font-semibold text-blue-900 mb-2">
+                        <div className="p-4 bg-blue-500/10 rounded-lg border border-blue-500/30 mb-4">
+                          <div className="text-sm font-semibold text-blue-300 mb-2">
                             Detection Conditions:
                           </div>
                           <div className="space-y-1">
-                            <div className="flex items-center gap-2 text-sm text-blue-800">
+                            <div className="flex items-center gap-2 text-sm text-blue-300">
                               <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
                               Transaction &gt; 5x average
                             </div>
-                            <div className="flex items-center gap-2 text-sm text-blue-800">
+                            <div className="flex items-center gap-2 text-sm text-blue-300">
                               <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
                               No business justification pattern
                             </div>
-                            <div className="flex items-center gap-2 text-sm text-blue-800">
+                            <div className="flex items-center gap-2 text-sm text-blue-300">
                               <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
                               First occurrence of size
                             </div>
@@ -506,7 +506,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
 
                         <div className="flex items-center gap-4 text-sm">
                           <div className="flex items-center gap-2">
-                            <AlertTriangle className="w-4 h-4 text-amber-600" />
+                            <AlertTriangle className="w-4 h-4 text-amber-400" />
                             <span className="text-slate-300">Triggered:</span>
                             <span className="font-semibold">5 times (30d)</span>
                           </div>
@@ -534,17 +534,17 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
             </Card>
 
             {/* Rules Configuration Guide */}
-            <Card className="border-2 border-blue-200 bg-blue-50">
+            <Card className="border-2 border-blue-500/30 bg-blue-500/10">
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
-                  <Info className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
+                  <Info className="w-6 h-6 text-blue-400 flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="font-semibold text-blue-900 mb-2">About Transaction Monitoring Rules</h3>
-                    <p className="text-sm text-blue-800 mb-3">
+                    <h3 className="font-semibold text-blue-300 mb-2">About Transaction Monitoring Rules</h3>
+                    <p className="text-sm text-blue-300 mb-3">
                       These rules automatically analyze all transactions in real-time across connected bank accounts. 
                       When a rule is triggered, an alert is created in the Transaction Monitoring module for compliance review.
                     </p>
-                    <ul className="text-sm text-blue-800 space-y-1">
+                    <ul className="text-sm text-blue-300 space-y-1">
                       <li className="flex items-start gap-2">
                         <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-1.5"></div>
                         <span><strong>High Priority Rules:</strong> Generate immediate alerts requiring same-day review</span>
@@ -570,28 +570,28 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
             <div className="grid grid-cols-4 gap-4">
               <Card>
                 <CardContent className="p-6">
-                  <Users className="w-8 h-8 text-blue-600 mb-2" />
+                  <Users className="w-8 h-8 text-blue-400 mb-2" />
                   <div className="text-3xl font-bold">24</div>
                   <div className="text-sm text-slate-300">Total Users</div>
                 </CardContent>
               </Card>
               <Card>
                 <CardContent className="p-6">
-                  <CheckCircle className="w-8 h-8 text-green-600 mb-2" />
+                  <CheckCircle className="w-8 h-8 text-green-400 mb-2" />
                   <div className="text-3xl font-bold">22</div>
                   <div className="text-sm text-slate-300">Active Users</div>
                 </CardContent>
               </Card>
               <Card>
                 <CardContent className="p-6">
-                  <Crown className="w-8 h-8 text-purple-600 mb-2" />
+                  <Crown className="w-8 h-8 text-purple-400 mb-2" />
                   <div className="text-3xl font-bold">3</div>
                   <div className="text-sm text-slate-300">Partners</div>
                 </CardContent>
               </Card>
               <Card>
                 <CardContent className="p-6">
-                  <Clock className="w-8 h-8 text-amber-600 mb-2" />
+                  <Clock className="w-8 h-8 text-amber-400 mb-2" />
                   <div className="text-3xl font-bold">2</div>
                   <div className="text-sm text-slate-300">Pending Invites</div>
                 </CardContent>
@@ -726,16 +726,16 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                         <tr key={index} className="border-b hover:bg-white/5">
                           <td className="py-3 px-4">{row.permission}</td>
                           <td className="py-3 px-4 text-center">
-                            {row.partner ? <CheckCircle className="w-5 h-5 text-green-600 mx-auto" /> : <X className="w-5 h-5 text-gray-300 mx-auto" />}
+                            {row.partner ? <CheckCircle className="w-5 h-5 text-green-400 mx-auto" /> : <X className="w-5 h-5 text-gray-300 mx-auto" />}
                           </td>
                           <td className="py-3 px-4 text-center">
-                            {row.officer ? <CheckCircle className="w-5 h-5 text-green-600 mx-auto" /> : <X className="w-5 h-5 text-gray-300 mx-auto" />}
+                            {row.officer ? <CheckCircle className="w-5 h-5 text-green-400 mx-auto" /> : <X className="w-5 h-5 text-gray-300 mx-auto" />}
                           </td>
                           <td className="py-3 px-4 text-center">
-                            {row.analyst ? <CheckCircle className="w-5 h-5 text-green-600 mx-auto" /> : <X className="w-5 h-5 text-gray-300 mx-auto" />}
+                            {row.analyst ? <CheckCircle className="w-5 h-5 text-green-400 mx-auto" /> : <X className="w-5 h-5 text-gray-300 mx-auto" />}
                           </td>
                           <td className="py-3 px-4 text-center">
-                            {row.auditor ? <CheckCircle className="w-5 h-5 text-green-600 mx-auto" /> : <X className="w-5 h-5 text-gray-300 mx-auto" />}
+                            {row.auditor ? <CheckCircle className="w-5 h-5 text-green-400 mx-auto" /> : <X className="w-5 h-5 text-gray-300 mx-auto" />}
                           </td>
                         </tr>
                       ))}
@@ -752,28 +752,28 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
             <div className="grid grid-cols-4 gap-4">
               <Card className="border-l-4 border-l-green-500">
                 <CardContent className="p-6">
-                  <Shield className="w-8 h-8 text-green-600 mb-2" />
+                  <Shield className="w-8 h-8 text-green-400 mb-2" />
                   <div className="text-3xl font-bold">Secure</div>
                   <div className="text-sm text-slate-300">Security Status</div>
                 </CardContent>
               </Card>
               <Card>
                 <CardContent className="p-6">
-                  <Lock className="w-8 h-8 text-blue-600 mb-2" />
+                  <Lock className="w-8 h-8 text-blue-400 mb-2" />
                   <div className="text-3xl font-bold">24</div>
                   <div className="text-sm text-slate-300">Active Sessions</div>
                 </CardContent>
               </Card>
               <Card>
                 <CardContent className="p-6">
-                  <Key className="w-8 h-8 text-purple-600 mb-2" />
+                  <Key className="w-8 h-8 text-purple-400 mb-2" />
                   <div className="text-3xl font-bold">12</div>
                   <div className="text-sm text-slate-300">API Keys</div>
                 </CardContent>
               </Card>
               <Card>
                 <CardContent className="p-6">
-                  <Eye className="w-8 h-8 text-amber-600 mb-2" />
+                  <Eye className="w-8 h-8 text-amber-400 mb-2" />
                   <div className="text-3xl font-bold">1.2K</div>
                   <div className="text-sm text-slate-300">Audit Events Today</div>
                 </CardContent>
@@ -973,7 +973,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                 <div className="p-4 bg-[#0f172a] rounded-lg">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-3">
-                      <Mail className="w-5 h-5 text-blue-600" />
+                      <Mail className="w-5 h-5 text-blue-400" />
                       <div>
                         <div className="font-semibold">Email</div>
                         <div className="text-sm text-slate-300">compliance@growfinancial.com</div>
@@ -985,7 +985,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                 <div className="p-4 bg-[#0f172a] rounded-lg">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-3">
-                      <Bell className="w-5 h-5 text-purple-600" />
+                      <Bell className="w-5 h-5 text-purple-400" />
                       <div>
                         <div className="font-semibold">Slack</div>
                         <div className="text-sm text-slate-300">#compliance-alerts</div>
@@ -997,7 +997,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                 <div className="p-4 bg-[#0f172a] rounded-lg">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-3">
-                      <Phone className="w-5 h-5 text-green-600" />
+                      <Phone className="w-5 h-5 text-green-400" />
                       <div>
                         <div className="font-semibold">SMS</div>
                         <div className="text-sm text-slate-300">+61 4XX XXX XXX</div>
@@ -1227,7 +1227,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                           <Button size="sm" variant="outline">
                             <RefreshCw className="w-4 h-4" />
                           </Button>
-                          <Button size="sm" variant="ghost" className="text-red-600">
+                          <Button size="sm" variant="ghost" className="text-red-400">
                             <Trash2 className="w-4 h-4" />
                           </Button>
                         </div>
@@ -1284,7 +1284,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                           <Button size="sm" variant="outline">
                             Test
                           </Button>
-                          <Button size="sm" variant="ghost" className="text-red-600">
+                          <Button size="sm" variant="ghost" className="text-red-400">
                             <Trash2 className="w-4 h-4" />
                           </Button>
                         </div>
@@ -1339,12 +1339,12 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
           {/* BILLING TAB */}
           <TabsContent value="billing" className="space-y-6">
             {/* Pricing Configuration */}
-            <Card className="border-2 border-cyan-200">
+            <Card className="border-2 border-cyan-500/30">
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div>
                     <CardTitle className="text-xl flex items-center gap-2">
-                      <DollarSign className="w-6 h-6 text-cyan-600" />
+                      <DollarSign className="w-6 h-6 text-cyan-400" />
                       KYC Verification Pricing
                     </CardTitle>
                     <CardDescription className="mt-1">Configure client-facing fees for verification services</CardDescription>
@@ -1357,9 +1357,9 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
               </CardHeader>
               <CardContent className="space-y-6">
                 {/* One-Time Verification Fee */}
-                <div className="bg-gradient-to-r from-cyan-50 to-blue-50 rounded-lg p-6 border-2 border-cyan-200">
+                <div className="bg-gradient-to-r from-cyan-50 to-blue-50 rounded-lg p-6 border-2 border-cyan-500/30">
                   <h3 className="font-bold text-lg text-white mb-4 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-cyan-600" />
+                    <CheckCircle className="w-5 h-5 text-cyan-400" />
                     One-Time Verification Fee
                   </h3>
                   <p className="text-sm text-slate-300 mb-4">
@@ -1380,23 +1380,23 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                         />
                       </div>
                     </div>
-                    <div className="bg-[#1e293b] rounded-lg p-4 border border-cyan-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-cyan-500/30">
                       <p className="text-xs text-slate-300 mb-2">This fee includes:</p>
                       <ul className="text-xs text-slate-300 space-y-1">
                         <li className="flex items-center gap-1">
-                          <Check className="w-3 h-3 text-green-600" />
+                          <Check className="w-3 h-3 text-green-400" />
                           Identity verification (Equifax)
                         </li>
                         <li className="flex items-center gap-1">
-                          <Check className="w-3 h-3 text-green-600" />
+                          <Check className="w-3 h-3 text-green-400" />
                           AML screening (ComplyAdvantage)
                         </li>
                         <li className="flex items-center gap-1">
-                          <Check className="w-3 h-3 text-green-600" />
+                          <Check className="w-3 h-3 text-green-400" />
                           Business risk assessment (Illion)
                         </li>
                         <li className="flex items-center gap-1">
-                          <Check className="w-3 h-3 text-green-600" />
+                          <Check className="w-3 h-3 text-green-400" />
                           Entity and ownership analysis
                         </li>
                       </ul>
@@ -1405,9 +1405,9 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                 </div>
 
                 {/* Individual Search Costs */}
-                <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-6 border-2 border-purple-200">
+                <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-6 border-2 border-purple-500/30">
                   <h3 className="font-bold text-lg text-white mb-4 flex items-center gap-2">
-                    <Search className="w-5 h-5 text-purple-600" />
+                    <Search className="w-5 h-5 text-purple-400" />
                     Individual Search Costs
                   </h3>
                   <p className="text-sm text-slate-300 mb-4">
@@ -1415,115 +1415,115 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                   </p>
                   <div className="grid md:grid-cols-2 gap-4">
                     {/* Equifax */}
-                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-500/30">
                       <div className="flex items-center justify-between mb-3">
                         <div>
                           <p className="font-semibold text-white">Equifax Identity Check</p>
                           <p className="text-xs text-slate-300">Identity, fraud, credit signals</p>
                         </div>
-                        <Shield className="w-6 h-6 text-purple-600" />
+                        <Shield className="w-6 h-6 text-purple-400" />
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="text-lg font-semibold text-slate-300">$</span>
                         <Input
                           type="number"
                           defaultValue="8.50"
-                          className="border-2 border-purple-200 focus:border-purple-400"
+                          className="border-2 border-purple-500/30 focus:border-purple-400"
                         />
                       </div>
                     </div>
 
                     {/* Illion */}
-                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-500/30">
                       <div className="flex items-center justify-between mb-3">
                         <div>
                           <p className="font-semibold text-white">Illion Business Check</p>
                           <p className="text-xs text-slate-300">Credit, insolvency, court data</p>
                         </div>
-                        <Building2 className="w-6 h-6 text-purple-600" />
+                        <Building2 className="w-6 h-6 text-purple-400" />
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="text-lg font-semibold text-slate-300">$</span>
                         <Input
                           type="number"
                           defaultValue="12.00"
-                          className="border-2 border-purple-200 focus:border-purple-400"
+                          className="border-2 border-purple-500/30 focus:border-purple-400"
                         />
                       </div>
                     </div>
 
                     {/* ComplyAdvantage */}
-                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-500/30">
                       <div className="flex items-center justify-between mb-3">
                         <div>
                           <p className="font-semibold text-white">ComplyAdvantage AML</p>
                           <p className="text-xs text-slate-300">Sanctions, PEP, adverse media</p>
                         </div>
-                        <AlertTriangle className="w-6 h-6 text-purple-600" />
+                        <AlertTriangle className="w-6 h-6 text-purple-400" />
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="text-lg font-semibold text-slate-300">$</span>
                         <Input
                           type="number"
                           defaultValue="6.50"
-                          className="border-2 border-purple-200 focus:border-purple-400"
+                          className="border-2 border-purple-500/30 focus:border-purple-400"
                         />
                       </div>
                     </div>
 
                     {/* ASIC */}
-                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-500/30">
                       <div className="flex items-center justify-between mb-3">
                         <div>
                           <p className="font-semibold text-white">ASIC Company Extract</p>
                           <p className="text-xs text-slate-300">Entity records, directors, shares</p>
                         </div>
-                        <FileText className="w-6 h-6 text-purple-600" />
+                        <FileText className="w-6 h-6 text-purple-400" />
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="text-lg font-semibold text-slate-300">$</span>
                         <Input
                           type="number"
                           defaultValue="15.00"
-                          className="border-2 border-purple-200 focus:border-purple-400"
+                          className="border-2 border-purple-500/30 focus:border-purple-400"
                         />
                       </div>
                     </div>
 
                     {/* InfoTrack KYC */}
-                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-500/30">
                       <div className="flex items-center justify-between mb-3">
                         <div>
                           <p className="font-semibold text-white">InfoTrack ID Verification</p>
                           <p className="text-xs text-slate-300">Document verification</p>
                         </div>
-                        <Eye className="w-6 h-6 text-purple-600" />
+                        <Eye className="w-6 h-6 text-purple-400" />
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="text-lg font-semibold text-slate-300">$</span>
                         <Input
                           type="number"
                           defaultValue="4.50"
-                          className="border-2 border-purple-200 focus:border-purple-400"
+                          className="border-2 border-purple-500/30 focus:border-purple-400"
                         />
                       </div>
                     </div>
 
                     {/* LexisNexis (Optional) */}
-                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-500/30">
                       <div className="flex items-center justify-between mb-3">
                         <div>
                           <p className="font-semibold text-white">LexisNexis Legal Check</p>
                           <p className="text-xs text-slate-300">Court records, litigation</p>
                         </div>
-                        <Database className="w-6 h-6 text-purple-600" />
+                        <Database className="w-6 h-6 text-purple-400" />
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="text-lg font-semibold text-slate-300">$</span>
                         <Input
                           type="number"
                           defaultValue="18.00"
-                          className="border-2 border-purple-200 focus:border-purple-400"
+                          className="border-2 border-purple-500/30 focus:border-purple-400"
                         />
                       </div>
                     </div>
@@ -1531,10 +1531,10 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
 
                   <div className="mt-4 bg-[#1e293b] rounded-lg p-4 border border-purple-300">
                     <div className="flex items-start gap-2">
-                      <Info className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                      <Info className="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" />
                       <div>
-                        <p className="text-sm font-semibold text-purple-900">Cost Tracking</p>
-                        <p className="text-xs text-purple-700 mt-1">
+                        <p className="text-sm font-semibold text-purple-300">Cost Tracking</p>
+                        <p className="text-xs text-purple-300 mt-1">
                           These costs are for internal tracking and margin analysis. The client is charged the one-time verification fee regardless of how many individual checks are performed.
                         </p>
                       </div>
@@ -1543,9 +1543,9 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                 </div>
 
                 {/* Ongoing Monitoring Fee */}
-                <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-6 border-2 border-green-200">
+                <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-6 border-2 border-green-500/30">
                   <h3 className="font-bold text-lg text-white mb-4 flex items-center gap-2">
-                    <Activity className="w-5 h-5 text-green-600" />
+                    <Activity className="w-5 h-5 text-green-400" />
                     Ongoing Monitoring Subscription
                   </h3>
                   <p className="text-sm text-slate-300 mb-4">
@@ -1570,31 +1570,31 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                         Billed monthly per client entity
                       </p>
                     </div>
-                    <div className="bg-[#1e293b] rounded-lg p-4 border border-green-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-green-500/30">
                       <p className="text-xs text-slate-300 mb-2">Monthly monitoring includes:</p>
                       <ul className="text-xs text-slate-300 space-y-1">
                         <li className="flex items-center gap-1">
-                          <Check className="w-3 h-3 text-green-600" />
+                          <Check className="w-3 h-3 text-green-400" />
                           Real-time sanctions screening
                         </li>
                         <li className="flex items-center gap-1">
-                          <Check className="w-3 h-3 text-green-600" />
+                          <Check className="w-3 h-3 text-green-400" />
                           PEP status monitoring
                         </li>
                         <li className="flex items-center gap-1">
-                          <Check className="w-3 h-3 text-green-600" />
+                          <Check className="w-3 h-3 text-green-400" />
                           Adverse media alerts
                         </li>
                         <li className="flex items-center gap-1">
-                          <Check className="w-3 h-3 text-green-600" />
+                          <Check className="w-3 h-3 text-green-400" />
                           Credit and business risk updates
                         </li>
                         <li className="flex items-center gap-1">
-                          <Check className="w-3 h-3 text-green-600" />
+                          <Check className="w-3 h-3 text-green-400" />
                           Associated party monitoring
                         </li>
                         <li className="flex items-center gap-1">
-                          <Check className="w-3 h-3 text-green-600" />
+                          <Check className="w-3 h-3 text-green-400" />
                           Automated case creation on alerts
                         </li>
                       </ul>
@@ -1634,43 +1634,43 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                 </div>
 
                 {/* Pricing Summary */}
-                <div className="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-lg p-6 border-2 border-indigo-200">
+                <div className="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-lg p-6 border-2 border-indigo-500/30">
                   <h3 className="font-bold text-lg text-white mb-4 flex items-center gap-2">
-                    <BarChart3 className="w-5 h-5 text-indigo-600" />
+                    <BarChart3 className="w-5 h-5 text-indigo-400" />
                     Pricing Summary
                   </h3>
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <p className="text-sm font-semibold text-slate-300 mb-3">Revenue Model</p>
                       <div className="space-y-2">
-                        <div className="flex items-center justify-between p-3 bg-[#1e293b] rounded-lg border border-indigo-200">
+                        <div className="flex items-center justify-between p-3 bg-[#1e293b] rounded-lg border border-indigo-500/30">
                           <span className="text-sm text-slate-300">Initial Verification</span>
-                          <span className="font-bold text-indigo-600">$49.00</span>
+                          <span className="font-bold text-indigo-400">$49.00</span>
                         </div>
-                        <div className="flex items-center justify-between p-3 bg-[#1e293b] rounded-lg border border-indigo-200">
+                        <div className="flex items-center justify-between p-3 bg-[#1e293b] rounded-lg border border-indigo-500/30">
                           <span className="text-sm text-slate-300">Monthly Monitoring (Standard)</span>
-                          <span className="font-bold text-indigo-600">$15.00</span>
+                          <span className="font-bold text-indigo-400">$15.00</span>
                         </div>
-                        <div className="flex items-center justify-between p-3 bg-indigo-100 rounded-lg border-2 border-indigo-300">
-                          <span className="text-sm font-semibold text-indigo-900">12-Month Client Value</span>
-                          <span className="font-bold text-xl text-indigo-600">$229</span>
+                        <div className="flex items-center justify-between p-3 bg-indigo-500/15 rounded-lg border-2 border-indigo-300">
+                          <span className="text-sm font-semibold text-indigo-300">12-Month Client Value</span>
+                          <span className="font-bold text-xl text-indigo-400">$229</span>
                         </div>
                       </div>
                     </div>
                     <div>
                       <p className="text-sm font-semibold text-slate-300 mb-3">Cost Structure</p>
                       <div className="space-y-2">
-                        <div className="flex items-center justify-between p-3 bg-[#1e293b] rounded-lg border border-indigo-200">
+                        <div className="flex items-center justify-between p-3 bg-[#1e293b] rounded-lg border border-indigo-500/30">
                           <span className="text-sm text-slate-300">Total External Checks</span>
                           <span className="font-bold text-white">~$46.50</span>
                         </div>
-                        <div className="flex items-center justify-between p-3 bg-[#1e293b] rounded-lg border border-indigo-200">
+                        <div className="flex items-center justify-between p-3 bg-[#1e293b] rounded-lg border border-indigo-500/30">
                           <span className="text-sm text-slate-300">Monitoring Cost (est.)</span>
                           <span className="font-bold text-white">~$5.00/mo</span>
                         </div>
-                        <div className="flex items-center justify-between p-3 bg-green-100 rounded-lg border-2 border-green-300">
-                          <span className="text-sm font-semibold text-green-900">12-Month Margin</span>
-                          <span className="font-bold text-xl text-green-600">$122.50</span>
+                        <div className="flex items-center justify-between p-3 bg-green-500/15 rounded-lg border-2 border-green-300">
+                          <span className="text-sm font-semibold text-green-300">12-Month Margin</span>
+                          <span className="font-bold text-xl text-green-400">$122.50</span>
                         </div>
                       </div>
                     </div>
@@ -1680,18 +1680,18 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
             </Card>
 
             {/* Current Plan */}
-            <Card className="border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-pink-50">
+            <Card className="border-2 border-purple-500/30 bg-gradient-to-br from-purple-50 to-pink-50">
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div>
                     <CardTitle className="text-2xl flex items-center gap-2">
-                      <Crown className="w-6 h-6 text-purple-600" />
+                      <Crown className="w-6 h-6 text-purple-400" />
                       Enterprise Plan
                     </CardTitle>
                     <CardDescription className="text-base mt-1">Unlimited users, all features included</CardDescription>
                   </div>
                   <div className="text-right">
-                    <div className="text-3xl font-bold text-purple-600">$2,499</div>
+                    <div className="text-3xl font-bold text-purple-400">$2,499</div>
                     <div className="text-sm text-slate-300">per month</div>
                   </div>
                 </div>

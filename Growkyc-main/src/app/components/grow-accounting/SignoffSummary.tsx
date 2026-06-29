@@ -186,10 +186,10 @@ export function SignoffSummary({ onNavigate, jobId = 'JOB-2024-045' }: SignoffSu
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'signed-off': return 'text-green-600 bg-green-100';
-      case 'pending-review': return 'text-orange-600 bg-orange-100';
-      case 'incomplete': return 'text-gray-600 bg-gray-100';
-      default: return 'text-gray-600 bg-gray-100';
+      case 'signed-off': return 'text-green-400 bg-green-500/15';
+      case 'pending-review': return 'text-orange-400 bg-orange-500/15';
+      case 'incomplete': return 'text-slate-300 bg-white/5';
+      default: return 'text-slate-300 bg-white/5';
     }
   };
 
@@ -235,8 +235,8 @@ export function SignoffSummary({ onNavigate, jobId = 'JOB-2024-045' }: SignoffSu
               Back to Jobs
             </Button>
             <div>
-              <h1 className="text-[28px] font-semibold text-gray-900">Signoff Summary</h1>
-              <p className="text-sm text-gray-600 mt-1">Smith, John & Mary • Individual Tax Return • FY2024 • {jobId}</p>
+              <h1 className="text-[28px] font-semibold text-slate-100">Signoff Summary</h1>
+              <p className="text-sm text-slate-300 mt-1">Smith, John & Mary • Individual Tax Return • FY2024 • {jobId}</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -277,13 +277,13 @@ export function SignoffSummary({ onNavigate, jobId = 'JOB-2024-045' }: SignoffSu
 
         {/* Lock State Banner */}
         {isLocked && (
-          <Card className="bg-green-50 border-green-300">
+          <Card className="bg-green-500/10 border-green-300">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <Shield className="w-6 h-6 text-green-600" />
+                <Shield className="w-6 h-6 text-green-400" />
                 <div className="flex-1">
-                  <h3 className="font-semibold text-green-900">Workpapers Locked</h3>
-                  <p className="text-sm text-green-800">
+                  <h3 className="font-semibold text-green-300">Workpapers Locked</h3>
+                  <p className="text-sm text-green-300">
                     This job has been finalized and is now in read-only mode. All changes are locked until unlocked by a manager.
                   </p>
                 </div>
@@ -301,25 +301,11 @@ export function SignoffSummary({ onNavigate, jobId = 'JOB-2024-045' }: SignoffSu
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-gray-600 uppercase tracking-wider">Signed Off</p>
-                  <p className="text-2xl font-bold text-green-600 mt-1">{signedOffCount}/{sections.length}</p>
+                  <p className="text-xs text-slate-300 uppercase tracking-wider">Signed Off</p>
+                  <p className="text-2xl font-bold text-green-400 mt-1">{signedOffCount}/{sections.length}</p>
                 </div>
-                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                  <CheckCircle className="w-6 h-6 text-green-600" />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardContent className="p-4">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-xs text-gray-600 uppercase tracking-wider">Pending Review</p>
-                  <p className="text-2xl font-bold text-orange-600 mt-1">{pendingCount}</p>
-                </div>
-                <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                  <Clock className="w-6 h-6 text-orange-600" />
+                <div className="w-12 h-12 bg-green-500/15 rounded-lg flex items-center justify-center">
+                  <CheckCircle className="w-6 h-6 text-green-400" />
                 </div>
               </div>
             </CardContent>
@@ -329,11 +315,11 @@ export function SignoffSummary({ onNavigate, jobId = 'JOB-2024-045' }: SignoffSu
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-gray-600 uppercase tracking-wider">Incomplete</p>
-                  <p className="text-2xl font-bold text-gray-600 mt-1">{incompleteCount}</p>
+                  <p className="text-xs text-slate-300 uppercase tracking-wider">Pending Review</p>
+                  <p className="text-2xl font-bold text-orange-400 mt-1">{pendingCount}</p>
                 </div>
-                <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
-                  <XCircle className="w-6 h-6 text-gray-600" />
+                <div className="w-12 h-12 bg-orange-500/15 rounded-lg flex items-center justify-center">
+                  <Clock className="w-6 h-6 text-orange-400" />
                 </div>
               </div>
             </CardContent>
@@ -343,11 +329,25 @@ export function SignoffSummary({ onNavigate, jobId = 'JOB-2024-045' }: SignoffSu
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-gray-600 uppercase tracking-wider">Outstanding Flags</p>
-                  <p className="text-2xl font-bold text-red-600 mt-1">{totalFlagsCount}</p>
+                  <p className="text-xs text-slate-300 uppercase tracking-wider">Incomplete</p>
+                  <p className="text-2xl font-bold text-slate-300 mt-1">{incompleteCount}</p>
                 </div>
-                <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-                  <AlertCircle className="w-6 h-6 text-red-600" />
+                <div className="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center">
+                  <XCircle className="w-6 h-6 text-slate-300" />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent className="p-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-xs text-slate-300 uppercase tracking-wider">Outstanding Flags</p>
+                  <p className="text-2xl font-bold text-red-400 mt-1">{totalFlagsCount}</p>
+                </div>
+                <div className="w-12 h-12 bg-red-500/15 rounded-lg flex items-center justify-center">
+                  <AlertCircle className="w-6 h-6 text-red-400" />
                 </div>
               </div>
             </CardContent>
@@ -357,28 +357,28 @@ export function SignoffSummary({ onNavigate, jobId = 'JOB-2024-045' }: SignoffSu
         {/* Section Status Table */}
         <Card>
           <CardContent className="p-6">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Section Signoff Status</h2>
+            <h2 className="text-lg font-semibold text-slate-100 mb-4">Section Signoff Status</h2>
             
             <div className="space-y-4">
               {Object.entries(groupedSections).map(([group, groupSections]) => (
                 <div key={group}>
-                  <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2 px-2">
+                  <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 px-2">
                     {group}
                   </h3>
                   <div className="space-y-1">
                     {groupSections.map((section) => (
                       <div 
                         key={section.id}
-                        className="flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors"
+                        className="flex items-center justify-between p-3 bg-white/5 hover:bg-white/5 rounded-lg transition-colors"
                       >
                         <div className="flex items-center gap-4 flex-1">
                           <span className={`px-2 py-1 text-xs font-semibold rounded flex items-center gap-1 ${getStatusColor(section.status)}`}>
                             {getStatusIcon(section.status)}
                             {getStatusLabel(section.status)}
                           </span>
-                          <span className="font-medium text-gray-900">{section.name}</span>
+                          <span className="font-medium text-slate-100">{section.name}</span>
                           {section.flagsCount > 0 && (
-                            <span className="px-2 py-0.5 bg-red-100 text-red-700 text-xs font-semibold rounded">
+                            <span className="px-2 py-0.5 bg-red-500/15 text-red-300 text-xs font-semibold rounded">
                               {section.flagsCount} flags
                             </span>
                           )}
@@ -387,16 +387,16 @@ export function SignoffSummary({ onNavigate, jobId = 'JOB-2024-045' }: SignoffSu
                         <div className="flex items-center gap-6 text-sm">
                           {section.preparedBy && (
                             <div className="text-right">
-                              <p className="text-xs text-gray-500">Prepared by</p>
-                              <p className="font-medium text-gray-900">{section.preparedBy}</p>
-                              <p className="text-xs text-gray-500">{new Date(section.preparedDate).toLocaleDateString()}</p>
+                              <p className="text-xs text-slate-400">Prepared by</p>
+                              <p className="font-medium text-slate-100">{section.preparedBy}</p>
+                              <p className="text-xs text-slate-400">{new Date(section.preparedDate).toLocaleDateString()}</p>
                             </div>
                           )}
                           {section.reviewedBy && (
                             <div className="text-right">
-                              <p className="text-xs text-gray-500">Reviewed by</p>
-                              <p className="font-medium text-gray-900">{section.reviewedBy}</p>
-                              <p className="text-xs text-gray-500">{new Date(section.reviewedDate).toLocaleDateString()}</p>
+                              <p className="text-xs text-slate-400">Reviewed by</p>
+                              <p className="font-medium text-slate-100">{section.reviewedBy}</p>
+                              <p className="text-xs text-slate-400">{new Date(section.reviewedDate).toLocaleDateString()}</p>
                             </div>
                           )}
                           {!isLocked && (
@@ -418,12 +418,12 @@ export function SignoffSummary({ onNavigate, jobId = 'JOB-2024-045' }: SignoffSu
         {!isLocked && (
           <Card>
             <CardContent className="p-6">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">Declaration</h2>
+              <h2 className="text-lg font-semibold text-slate-100 mb-4">Declaration</h2>
               
               <div className="space-y-4">
-                <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
-                  <h3 className="font-semibold text-gray-900 mb-3">Professional Declaration</h3>
-                  <div className="text-sm text-gray-700 space-y-2">
+                <div className="bg-white/5 border border-white/10 rounded-lg p-4">
+                  <h3 className="font-semibold text-slate-100 mb-3">Professional Declaration</h3>
+                  <div className="text-sm text-slate-300 space-y-2">
                     <p>I declare that:</p>
                     <ul className="list-disc pl-5 space-y-1">
                       <li>All information provided in this tax return is true and correct to the best of my knowledge</li>
@@ -440,9 +440,9 @@ export function SignoffSummary({ onNavigate, jobId = 'JOB-2024-045' }: SignoffSu
                     type="checkbox"
                     checked={declarationAccepted}
                     onChange={(e) => setDeclarationAccepted(e.target.checked)}
-                    className="mt-1 w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                    className="mt-1 w-4 h-4 rounded border-white/10 text-blue-400 focus:ring-blue-500"
                   />
-                  <span className="text-sm text-gray-700">
+                  <span className="text-sm text-slate-300">
                     I accept the above declaration and confirm that all information is accurate and complete
                   </span>
                 </label>
@@ -456,10 +456,10 @@ export function SignoffSummary({ onNavigate, jobId = 'JOB-2024-045' }: SignoffSu
           <div className="grid grid-cols-2 gap-6">
             <Card>
               <CardContent className="p-6">
-                <h3 className="font-semibold text-gray-900 mb-4">Preparer Signature</h3>
+                <h3 className="font-semibold text-slate-100 mb-4">Preparer Signature</h3>
                 <div className="space-y-3">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-slate-300 mb-2">
                       Full Name
                     </label>
                     <input
@@ -467,10 +467,10 @@ export function SignoffSummary({ onNavigate, jobId = 'JOB-2024-045' }: SignoffSu
                       value={preparerSignature}
                       onChange={(e) => setPreparerSignature(e.target.value)}
                       placeholder="Mike Brown"
-                      className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 py-2 text-sm border border-white/10 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
-                  <div className="flex items-center gap-4 text-xs text-gray-600">
+                  <div className="flex items-center gap-4 text-xs text-slate-300">
                     <span className="flex items-center gap-1">
                       <User className="w-3 h-3" />
                       Mike Brown
@@ -486,10 +486,10 @@ export function SignoffSummary({ onNavigate, jobId = 'JOB-2024-045' }: SignoffSu
 
             <Card>
               <CardContent className="p-6">
-                <h3 className="font-semibold text-gray-900 mb-4">Reviewer Signature</h3>
+                <h3 className="font-semibold text-slate-100 mb-4">Reviewer Signature</h3>
                 <div className="space-y-3">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-slate-300 mb-2">
                       Full Name
                     </label>
                     <input
@@ -497,10 +497,10 @@ export function SignoffSummary({ onNavigate, jobId = 'JOB-2024-045' }: SignoffSu
                       value={reviewerSignature}
                       onChange={(e) => setReviewerSignature(e.target.value)}
                       placeholder="Sarah Johnson"
-                      className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 py-2 text-sm border border-white/10 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
-                  <div className="flex items-center gap-4 text-xs text-gray-600">
+                  <div className="flex items-center gap-4 text-xs text-slate-300">
                     <span className="flex items-center gap-1">
                       <User className="w-3 h-3" />
                       Sarah Johnson
@@ -520,17 +520,17 @@ export function SignoffSummary({ onNavigate, jobId = 'JOB-2024-045' }: SignoffSu
         {isLocked && (
           <Card className="border-green-300">
             <CardContent className="p-6">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">Final Signatures</h2>
+              <h2 className="text-lg font-semibold text-slate-100 mb-4">Final Signatures</h2>
               <div className="grid grid-cols-2 gap-6">
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <p className="text-xs text-gray-600 uppercase tracking-wider mb-2">Prepared By</p>
-                  <p className="text-lg font-semibold text-gray-900 mb-1">{preparerSignature}</p>
-                  <p className="text-sm text-gray-600">{new Date().toLocaleDateString()}</p>
+                <div className="bg-white/5 p-4 rounded-lg">
+                  <p className="text-xs text-slate-300 uppercase tracking-wider mb-2">Prepared By</p>
+                  <p className="text-lg font-semibold text-slate-100 mb-1">{preparerSignature}</p>
+                  <p className="text-sm text-slate-300">{new Date().toLocaleDateString()}</p>
                 </div>
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <p className="text-xs text-gray-600 uppercase tracking-wider mb-2">Reviewed By</p>
-                  <p className="text-lg font-semibold text-gray-900 mb-1">{reviewerSignature}</p>
-                  <p className="text-sm text-gray-600">{new Date().toLocaleDateString()}</p>
+                <div className="bg-white/5 p-4 rounded-lg">
+                  <p className="text-xs text-slate-300 uppercase tracking-wider mb-2">Reviewed By</p>
+                  <p className="text-lg font-semibold text-slate-100 mb-1">{reviewerSignature}</p>
+                  <p className="text-sm text-slate-300">{new Date().toLocaleDateString()}</p>
                 </div>
               </div>
             </CardContent>
@@ -539,13 +539,13 @@ export function SignoffSummary({ onNavigate, jobId = 'JOB-2024-045' }: SignoffSu
 
         {/* Warning if not ready */}
         {!isLocked && !canLock && (
-          <Card className="bg-orange-50 border-orange-300">
+          <Card className="bg-orange-500/10 border-orange-300">
             <CardContent className="p-4">
               <div className="flex items-start gap-3">
-                <AlertCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
+                <AlertCircle className="w-5 h-5 text-orange-400 flex-shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold text-orange-900 mb-1">Not Ready to Lock</h4>
-                  <p className="text-sm text-orange-800">
+                  <h4 className="font-semibold text-orange-300 mb-1">Not Ready to Lock</h4>
+                  <p className="text-sm text-orange-300">
                     Before locking, ensure all sections are signed off, the declaration is accepted, and both preparer and reviewer signatures are provided.
                   </p>
                 </div>

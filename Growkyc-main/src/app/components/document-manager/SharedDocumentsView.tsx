@@ -41,7 +41,7 @@ export function SharedDocumentsView() {
       render: (row) => (
         <div className="flex items-center gap-2 min-w-[180px]">
           <FileTypeIcon type={row.fileType} />
-          <span className="font-medium text-gray-900 truncate max-w-[220px]" title={row.name}>
+          <span className="font-medium text-slate-100 truncate max-w-[220px]" title={row.name}>
             {row.name}
           </span>
         </div>
@@ -58,7 +58,7 @@ export function SharedDocumentsView() {
     {
       key: 'fileType',
       label: 'File Type',
-      render: (row) => <span className="uppercase text-xs text-gray-600">{row.fileType}</span>
+      render: (row) => <span className="uppercase text-xs text-slate-300">{row.fileType}</span>
     },
     {
       key: 'actions',
@@ -95,14 +95,14 @@ export function SharedDocumentsView() {
             placeholder="Search name, sharer, or type..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full pl-10 pr-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             aria-label="Search shared documents"
           />
         </div>
         <select
           value={permission}
           onChange={(e) => setPermission(e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-lg text-sm"
+          className="px-3 py-2 border border-white/10 rounded-lg text-sm"
           aria-label="Filter by permission"
         >
           <option value="all">All permissions</option>
@@ -113,7 +113,7 @@ export function SharedDocumentsView() {
         <select
           value={docType}
           onChange={(e) => setDocType(e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-lg text-sm"
+          className="px-3 py-2 border border-white/10 rounded-lg text-sm"
           aria-label="Filter by document type"
         >
           {docTypes.map((t) => (
@@ -125,7 +125,7 @@ export function SharedDocumentsView() {
         <select
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value as SharedDocumentsQuery['sortBy'])}
-          className="px-3 py-2 border border-gray-300 rounded-lg text-sm"
+          className="px-3 py-2 border border-white/10 rounded-lg text-sm"
           aria-label="Sort shared documents"
         >
           <option value="sharedDate">Sort: Shared date</option>
@@ -157,28 +157,28 @@ export function SharedDocumentsView() {
             <div className="flex items-start gap-3">
               <FileTypeIcon type={preview.fileType} className="w-8 h-8" />
               <div className="flex-1 min-w-0">
-                <h3 id="shared-preview-title" className="text-lg font-semibold text-gray-900 truncate">
+                <h3 id="shared-preview-title" className="text-lg font-semibold text-slate-100 truncate">
                   {preview.name}
                 </h3>
-                <p className="text-sm text-gray-600 mt-1">Shared by {preview.sharedBy}</p>
+                <p className="text-sm text-slate-300 mt-1">Shared by {preview.sharedBy}</p>
               </div>
               <PermissionBadge permission={preview.permission} />
             </div>
             <dl className="mt-4 grid grid-cols-2 gap-3 text-sm">
               <div>
-                <dt className="text-gray-500">Shared date</dt>
+                <dt className="text-slate-400">Shared date</dt>
                 <dd className="font-medium">{preview.sharedDate}</dd>
               </div>
               <div>
-                <dt className="text-gray-500">Last opened</dt>
+                <dt className="text-slate-400">Last opened</dt>
                 <dd className="font-medium">{preview.lastOpened}</dd>
               </div>
               <div>
-                <dt className="text-gray-500">Category</dt>
+                <dt className="text-slate-400">Category</dt>
                 <dd className="font-medium">{preview.docType}</dd>
               </div>
               <div>
-                <dt className="text-gray-500">File type</dt>
+                <dt className="text-slate-400">File type</dt>
                 <dd className="font-medium uppercase">{preview.fileType}</dd>
               </div>
             </dl>

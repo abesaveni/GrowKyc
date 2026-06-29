@@ -143,10 +143,10 @@ export function RiskAssessmentMaster({ onComplete }: RiskAssessmentMasterProps) 
 
   const getRiskColor = (risk: string) => {
     switch (risk) {
-      case 'low': return 'bg-green-100 text-green-700 border-green-200';
-      case 'medium': return 'bg-yellow-100 text-yellow-700 border-yellow-200';
-      case 'high': return 'bg-red-100 text-red-700 border-red-200';
-      default: return 'bg-gray-100 text-gray-700 border-gray-200';
+      case 'low': return 'bg-green-500/15 text-green-300 border-green-500/30';
+      case 'medium': return 'bg-yellow-500/15 text-yellow-300 border-yellow-500/30';
+      case 'high': return 'bg-red-500/15 text-red-300 border-red-500/30';
+      default: return 'bg-white/5 text-slate-300 border-white/10';
     }
   };
 
@@ -174,12 +174,12 @@ export function RiskAssessmentMaster({ onComplete }: RiskAssessmentMasterProps) 
       </div>
 
       {/* Critical Rule */}
-      <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4">
+      <div className="bg-red-500/10 border-2 border-red-500/30 rounded-lg p-4">
         <div className="flex items-start">
-          <AlertTriangle className="w-5 h-5 text-red-600 mr-3 mt-0.5" />
+          <AlertTriangle className="w-5 h-5 text-red-400 mr-3 mt-0.5" />
           <div>
-            <p className="font-bold text-red-900">SYSTEM RULE: Cannot activate program without completing all rows</p>
-            <p className="text-sm text-red-700 mt-1">
+            <p className="font-bold text-red-300">SYSTEM RULE: Cannot activate program without completing all rows</p>
+            <p className="text-sm text-red-300 mt-1">
               Every designated service, client type, delivery channel, risk factor, and country must have:
               inherent risk rating, risk appetite (YES/NO), and mandatory control statement if NO
             </p>
@@ -188,7 +188,7 @@ export function RiskAssessmentMaster({ onComplete }: RiskAssessmentMasterProps) 
       </div>
 
       {/* Section Tabs */}
-      <div className="border-b border-gray-200">
+      <div className="border-b border-white/10">
         <div className="flex gap-2">
           {[
             { id: 'services', label: '2.1 Designated Services', icon: Shield },
@@ -204,8 +204,8 @@ export function RiskAssessmentMaster({ onComplete }: RiskAssessmentMasterProps) 
                 onClick={() => setActiveSection(section.id as any)}
                 className={`px-6 py-3 font-semibold flex items-center gap-2 transition-colors ${
                   activeSection === section.id
-                    ? 'border-b-2 border-purple-600 text-purple-600'
-                    : 'text-gray-600 hover:text-gray-900'
+                    ? 'border-b-2 border-purple-600 text-purple-400'
+                    : 'text-slate-300 hover:text-slate-100'
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -218,23 +218,23 @@ export function RiskAssessmentMaster({ onComplete }: RiskAssessmentMasterProps) 
 
       {/* 2.1 Designated Services */}
       {activeSection === 'services' && (
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-4">2.1 Designated Services</h3>
-          <p className="text-gray-600 mb-6">
+        <div className="bg-white rounded-lg border border-white/10 p-6">
+          <h3 className="text-xl font-bold text-slate-100 mb-4">2.1 Designated Services</h3>
+          <p className="text-slate-300 mb-6">
             Complete each row with inherent risk rating and risk appetite. If NO - mandatory control statement required.
           </p>
 
           <div className="space-y-4">
             {designatedServices.map((service, index) => (
-              <div key={service.id} className="border-2 border-gray-200 rounded-lg p-4">
+              <div key={service.id} className="border-2 border-white/10 rounded-lg p-4">
                 <div className="grid grid-cols-12 gap-4">
                   <div className="col-span-3">
-                    <label className="text-sm font-semibold text-gray-900 mb-2 block">Service</label>
-                    <p className="font-semibold text-gray-900">{service.name}</p>
+                    <label className="text-sm font-semibold text-slate-100 mb-2 block">Service</label>
+                    <p className="font-semibold text-slate-100">{service.name}</p>
                   </div>
 
                   <div className="col-span-2">
-                    <label className="text-sm font-semibold text-gray-900 mb-2 block">Inherent Risk *</label>
+                    <label className="text-sm font-semibold text-slate-100 mb-2 block">Inherent Risk *</label>
                     <select
                       value={service.inherentRisk}
                       onChange={(e) => {
@@ -243,7 +243,7 @@ export function RiskAssessmentMaster({ onComplete }: RiskAssessmentMasterProps) 
                         setDesignatedServices(updated);
                       }}
                       className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 ${
-                        service.inherentRisk ? getRiskColor(service.inherentRisk) : 'border-red-300 bg-red-50'
+                        service.inherentRisk ? getRiskColor(service.inherentRisk) : 'border-red-300 bg-red-500/10'
                       }`}
                       required
                     >
@@ -255,7 +255,7 @@ export function RiskAssessmentMaster({ onComplete }: RiskAssessmentMasterProps) 
                   </div>
 
                   <div className="col-span-2">
-                    <label className="text-sm font-semibold text-gray-900 mb-2 block">Risk Appetite *</label>
+                    <label className="text-sm font-semibold text-slate-100 mb-2 block">Risk Appetite *</label>
                     <select
                       value={service.riskAppetite}
                       onChange={(e) => {
@@ -264,9 +264,9 @@ export function RiskAssessmentMaster({ onComplete }: RiskAssessmentMasterProps) 
                         setDesignatedServices(updated);
                       }}
                       className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 ${
-                        !service.riskAppetite ? 'border-red-300 bg-red-50' :
-                        service.riskAppetite === 'yes' ? 'border-green-300 bg-green-50' :
-                        'border-red-300 bg-red-50'
+                        !service.riskAppetite ? 'border-red-300 bg-red-500/10' :
+                        service.riskAppetite === 'yes' ? 'border-green-300 bg-green-500/10' :
+                        'border-red-300 bg-red-500/10'
                       }`}
                       required
                     >
@@ -277,8 +277,8 @@ export function RiskAssessmentMaster({ onComplete }: RiskAssessmentMasterProps) 
                   </div>
 
                   <div className="col-span-5">
-                    <label className="text-sm font-semibold text-gray-900 mb-2 block">
-                      Control Statement {service.riskAppetite === 'no' && <span className="text-red-600">*</span>}
+                    <label className="text-sm font-semibold text-slate-100 mb-2 block">
+                      Control Statement {service.riskAppetite === 'no' && <span className="text-red-400">*</span>}
                     </label>
                     <input
                       type="text"
@@ -290,7 +290,7 @@ export function RiskAssessmentMaster({ onComplete }: RiskAssessmentMasterProps) 
                       }}
                       placeholder={service.riskAppetite === 'no' ? 'REQUIRED if NO' : 'Optional'}
                       className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 ${
-                        service.riskAppetite === 'no' && !service.controlStatement ? 'border-red-300 bg-red-50' : 'border-gray-300'
+                        service.riskAppetite === 'no' && !service.controlStatement ? 'border-red-300 bg-red-500/10' : 'border-white/10'
                       }`}
                       required={service.riskAppetite === 'no'}
                     />
@@ -304,21 +304,21 @@ export function RiskAssessmentMaster({ onComplete }: RiskAssessmentMasterProps) 
 
       {/* 2.2 Client Types - Similar structure */}
       {activeSection === 'clients' && (
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-4">2.2 Clients – Inherent Risk</h3>
-          <p className="text-gray-600 mb-6">Risk appetite per client type</p>
+        <div className="bg-white rounded-lg border border-white/10 p-6">
+          <h3 className="text-xl font-bold text-slate-100 mb-4">2.2 Clients – Inherent Risk</h3>
+          <p className="text-slate-300 mb-6">Risk appetite per client type</p>
 
           <div className="space-y-4">
             {clientTypes.map((client, index) => (
-              <div key={index} className="border-2 border-gray-200 rounded-lg p-4">
+              <div key={index} className="border-2 border-white/10 rounded-lg p-4">
                 <div className="grid grid-cols-3 gap-4">
                   <div>
-                    <label className="text-sm font-semibold text-gray-900 mb-2 block">Client Type</label>
-                    <p className="font-semibold text-gray-900">{client.name}</p>
+                    <label className="text-sm font-semibold text-slate-100 mb-2 block">Client Type</label>
+                    <p className="font-semibold text-slate-100">{client.name}</p>
                   </div>
 
                   <div>
-                    <label className="text-sm font-semibold text-gray-900 mb-2 block">Inherent Risk *</label>
+                    <label className="text-sm font-semibold text-slate-100 mb-2 block">Inherent Risk *</label>
                     <select
                       value={client.inherentRisk}
                       onChange={(e) => {
@@ -327,7 +327,7 @@ export function RiskAssessmentMaster({ onComplete }: RiskAssessmentMasterProps) 
                         setClientTypes(updated);
                       }}
                       className={`w-full px-3 py-2 border rounded-lg ${
-                        client.inherentRisk ? getRiskColor(client.inherentRisk) : 'border-red-300 bg-red-50'
+                        client.inherentRisk ? getRiskColor(client.inherentRisk) : 'border-red-300 bg-red-500/10'
                       }`}
                       required
                     >
@@ -339,7 +339,7 @@ export function RiskAssessmentMaster({ onComplete }: RiskAssessmentMasterProps) 
                   </div>
 
                   <div>
-                    <label className="text-sm font-semibold text-gray-900 mb-2 block">Risk Appetite *</label>
+                    <label className="text-sm font-semibold text-slate-100 mb-2 block">Risk Appetite *</label>
                     <select
                       value={client.riskAppetite}
                       onChange={(e) => {
@@ -348,9 +348,9 @@ export function RiskAssessmentMaster({ onComplete }: RiskAssessmentMasterProps) 
                         setClientTypes(updated);
                       }}
                       className={`w-full px-3 py-2 border rounded-lg ${
-                        !client.riskAppetite ? 'border-red-300 bg-red-50' :
-                        client.riskAppetite === 'yes' ? 'border-green-300 bg-green-50' :
-                        'border-red-300 bg-red-50'
+                        !client.riskAppetite ? 'border-red-300 bg-red-500/10' :
+                        client.riskAppetite === 'yes' ? 'border-green-300 bg-green-500/10' :
+                        'border-red-300 bg-red-500/10'
                       }`}
                       required
                     >

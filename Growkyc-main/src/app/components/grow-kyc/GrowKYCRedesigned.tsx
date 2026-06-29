@@ -299,9 +299,9 @@ export function GrowKYCRedesigned({ onBack }: GrowKYCRedesignedProps) {
                   placeholder="Search anything..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10 pr-16 py-2 w-64 border border-gray-300 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-[#13B5EA] focus:border-transparent"
+                  className="pl-10 pr-16 py-2 w-64 border border-white/10 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-[#13B5EA] focus:border-transparent"
                 />
-                <kbd className="absolute right-3 top-1/2 transform -translate-y-1/2 px-2 py-1 text-xs bg-[#0f172a] text-slate-300 rounded border border-gray-300">
+                <kbd className="absolute right-3 top-1/2 transform -translate-y-1/2 px-2 py-1 text-xs bg-[#0f172a] text-slate-300 rounded border border-white/10">
                   ⌘K
                 </kbd>
               </div>
@@ -420,84 +420,84 @@ export function GrowKYCRedesigned({ onBack }: GrowKYCRedesignedProps) {
               <Card className="hover:shadow-lg transition-shadow cursor-pointer border-2 hover:border-[#13B5EA]">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-3">
-                    <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
-                      <Users className="w-6 h-6 text-blue-600" />
+                    <div className="w-12 h-12 bg-blue-500/15 rounded-xl flex items-center justify-center">
+                      <Users className="w-6 h-6 text-blue-400" />
                     </div>
                     <TrendingUp className="w-5 h-5 text-green-500" />
                   </div>
                   <div className="text-3xl font-bold text-white mb-1">{stats.totalClients.toLocaleString()}</div>
                   <div className="text-sm text-slate-300">Total Clients</div>
-                  <div className="text-xs text-green-600 mt-2">↑ 12% this month</div>
+                  <div className="text-xs text-green-400 mt-2">↑ 12% this month</div>
                 </CardContent>
               </Card>
 
               <Card className="hover:shadow-lg transition-shadow cursor-pointer border-2 hover:border-amber-500">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-3">
-                    <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center">
-                      <Clock className="w-6 h-6 text-amber-600" />
+                    <div className="w-12 h-12 bg-amber-500/15 rounded-xl flex items-center justify-center">
+                      <Clock className="w-6 h-6 text-amber-400" />
                     </div>
                     <AlertTriangle className="w-5 h-5 text-amber-500" />
                   </div>
                   <div className="text-3xl font-bold text-white mb-1">{stats.pendingVerification}</div>
                   <div className="text-sm text-slate-300">Pending</div>
-                  <div className="text-xs text-amber-600 mt-2">Needs review</div>
+                  <div className="text-xs text-amber-400 mt-2">Needs review</div>
                 </CardContent>
               </Card>
 
               <Card className="hover:shadow-lg transition-shadow cursor-pointer border-2 hover:border-green-500">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-3">
-                    <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
-                      <Activity className="w-6 h-6 text-green-600" />
+                    <div className="w-12 h-12 bg-green-500/15 rounded-xl flex items-center justify-center">
+                      <Activity className="w-6 h-6 text-green-400" />
                     </div>
                     <CheckCircle className="w-5 h-5 text-green-500" />
                   </div>
                   <div className="text-3xl font-bold text-white mb-1">{stats.activeMonitoring.toLocaleString()}</div>
                   <div className="text-sm text-slate-300">Active Monitoring</div>
-                  <div className="text-xs text-green-600 mt-2">All clear</div>
+                  <div className="text-xs text-green-400 mt-2">All clear</div>
                 </CardContent>
               </Card>
 
               <Card className="hover:shadow-lg transition-shadow cursor-pointer border-2 hover:border-red-500">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-3">
-                    <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center">
-                      <Shield className="w-6 h-6 text-red-600" />
+                    <div className="w-12 h-12 bg-red-500/15 rounded-xl flex items-center justify-center">
+                      <Shield className="w-6 h-6 text-red-400" />
                     </div>
                     <XCircle className="w-5 h-5 text-red-500" />
                   </div>
                   <div className="text-3xl font-bold text-white mb-1">{stats.flaggedCases}</div>
                   <div className="text-sm text-slate-300">Flagged Cases</div>
-                  <div className="text-xs text-red-600 mt-2">Requires action</div>
+                  <div className="text-xs text-red-400 mt-2">Requires action</div>
                 </CardContent>
               </Card>
 
               <Card className="hover:shadow-lg transition-shadow cursor-pointer border-2 hover:border-purple-500">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-3">
-                    <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
-                      <CheckSquare className="w-6 h-6 text-purple-600" />
+                    <div className="w-12 h-12 bg-purple-500/15 rounded-xl flex items-center justify-center">
+                      <CheckSquare className="w-6 h-6 text-purple-400" />
                     </div>
                     <Sparkles className="w-5 h-5 text-purple-500" />
                   </div>
                   <div className="text-3xl font-bold text-white mb-1">{stats.completedToday}</div>
                   <div className="text-sm text-slate-300">Completed Today</div>
-                  <div className="text-xs text-purple-600 mt-2">Great progress!</div>
+                  <div className="text-xs text-purple-400 mt-2">Great progress!</div>
                 </CardContent>
               </Card>
 
               <Card className="hover:shadow-lg transition-shadow cursor-pointer border-2 hover:border-indigo-500">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-3">
-                    <div className="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center">
-                      <Zap className="w-6 h-6 text-indigo-600" />
+                    <div className="w-12 h-12 bg-indigo-500/15 rounded-xl flex items-center justify-center">
+                      <Zap className="w-6 h-6 text-indigo-400" />
                     </div>
                     <TrendingUp className="w-5 h-5 text-green-500" />
                   </div>
                   <div className="text-3xl font-bold text-white mb-1">{stats.avgProcessingTime}</div>
                   <div className="text-sm text-slate-300">Avg Processing</div>
-                  <div className="text-xs text-green-600 mt-2">↓ 15% faster</div>
+                  <div className="text-xs text-green-400 mt-2">↓ 15% faster</div>
                 </CardContent>
               </Card>
             </div>
@@ -577,13 +577,13 @@ export function GrowKYCRedesigned({ onBack }: GrowKYCRedesignedProps) {
                     {recentActivity.map((activity) => (
                       <div key={activity.id} className="flex items-start gap-3">
                         <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
-                          activity.status === 'success' ? 'bg-green-100' :
-                          activity.status === 'warning' ? 'bg-amber-100' :
-                          'bg-red-100'
+                          activity.status === 'success' ? 'bg-green-500/15' :
+                          activity.status === 'warning' ? 'bg-amber-500/15' :
+                          'bg-red-500/15'
                         }`}>
-                          {activity.status === 'success' && <CheckCircle className="w-4 h-4 text-green-600" />}
-                          {activity.status === 'warning' && <AlertTriangle className="w-4 h-4 text-amber-600" />}
-                          {activity.status === 'alert' && <Shield className="w-4 h-4 text-red-600" />}
+                          {activity.status === 'success' && <CheckCircle className="w-4 h-4 text-green-400" />}
+                          {activity.status === 'warning' && <AlertTriangle className="w-4 h-4 text-amber-400" />}
+                          {activity.status === 'alert' && <Shield className="w-4 h-4 text-red-400" />}
                         </div>
                         <div className="flex-1 min-w-0">
                           <p className="text-sm font-medium text-white">{activity.client}</p>
@@ -641,7 +641,7 @@ export function GrowKYCRedesigned({ onBack }: GrowKYCRedesignedProps) {
                   <div
                     key={idx}
                     className={`h-2 flex-1 rounded-full ${
-                      idx === tourStep ? 'bg-[#13B5EA]' : 'bg-gray-200'
+                      idx === tourStep ? 'bg-[#13B5EA]' : 'bg-white/10'
                     }`}
                   />
                 ))}
@@ -722,7 +722,7 @@ export function GrowKYCRedesigned({ onBack }: GrowKYCRedesignedProps) {
                       {shortcut.keys.map((key, keyIdx) => (
                         <kbd
                           key={keyIdx}
-                          className="px-3 py-1 text-sm bg-[#1e293b] text-slate-300 rounded border-2 border-gray-300 font-mono"
+                          className="px-3 py-1 text-sm bg-[#1e293b] text-slate-300 rounded border-2 border-white/10 font-mono"
                         >
                           {key}
                         </kbd>

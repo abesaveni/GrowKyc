@@ -149,20 +149,20 @@ export function EnquiriesManagement({ onNavigate, onBack }: EnquiriesManagementP
 
   const getStatusBadge = (status: string) => {
     const badges: { [key: string]: JSX.Element } = {
-      'new': <span className="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-semibold rounded">NEW</span>,
-      'contacted': <span className="px-2 py-0.5 bg-purple-100 text-purple-700 text-xs font-semibold rounded">CONTACTED</span>,
-      'qualified': <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded">QUALIFIED</span>,
-      'converted': <span className="px-2 py-0.5 bg-indigo-100 text-indigo-700 text-xs font-semibold rounded">CONVERTED</span>,
-      'lost': <span className="px-2 py-0.5 bg-red-100 text-red-700 text-xs font-semibold rounded">LOST</span>
+      'new': <span className="px-2 py-0.5 bg-blue-500/15 text-blue-300 text-xs font-semibold rounded">NEW</span>,
+      'contacted': <span className="px-2 py-0.5 bg-purple-500/15 text-purple-300 text-xs font-semibold rounded">CONTACTED</span>,
+      'qualified': <span className="px-2 py-0.5 bg-green-500/15 text-green-300 text-xs font-semibold rounded">QUALIFIED</span>,
+      'converted': <span className="px-2 py-0.5 bg-indigo-500/15 text-indigo-300 text-xs font-semibold rounded">CONVERTED</span>,
+      'lost': <span className="px-2 py-0.5 bg-red-500/15 text-red-300 text-xs font-semibold rounded">LOST</span>
     };
     return badges[status];
   };
 
   const getPriorityBadge = (priority: string) => {
     const badges: { [key: string]: JSX.Element } = {
-      'high': <span className="px-2 py-0.5 bg-red-100 text-red-700 text-xs font-semibold rounded">HIGH</span>,
-      'medium': <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-xs font-semibold rounded">MEDIUM</span>,
-      'low': <span className="px-2 py-0.5 bg-gray-100 text-gray-700 text-xs font-semibold rounded">LOW</span>
+      'high': <span className="px-2 py-0.5 bg-red-500/15 text-red-300 text-xs font-semibold rounded">HIGH</span>,
+      'medium': <span className="px-2 py-0.5 bg-amber-500/15 text-amber-300 text-xs font-semibold rounded">MEDIUM</span>,
+      'low': <span className="px-2 py-0.5 bg-white/5 text-slate-300 text-xs font-semibold rounded">LOW</span>
     };
     return badges[priority];
   };
@@ -201,9 +201,9 @@ export function EnquiriesManagement({ onNavigate, onBack }: EnquiriesManagementP
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white/5">
       {/* Header */}
-      <div className="bg-white border-b border-gray-300 px-6 py-4">
+      <div className="bg-white border-b border-white/10 px-6 py-4">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-3">
             {onBack && (
@@ -211,10 +211,10 @@ export function EnquiriesManagement({ onNavigate, onBack }: EnquiriesManagementP
                 <ArrowLeft className="w-4 h-4" />
               </Button>
             )}
-            <Phone className="w-6 h-6 text-blue-600" />
+            <Phone className="w-6 h-6 text-blue-400" />
             <div>
-              <h1 className="text-xl font-bold text-gray-900">Enquiries & Leads</h1>
-              <p className="text-xs text-gray-600">Manage incoming enquiries and convert to applications</p>
+              <h1 className="text-xl font-bold text-slate-100">Enquiries & Leads</h1>
+              <p className="text-xs text-slate-300">Manage incoming enquiries and convert to applications</p>
             </div>
           </div>
           <Button className="bg-blue-600 hover:bg-blue-700" onClick={() => setShowNewEnquiryModal(true)}>
@@ -225,25 +225,25 @@ export function EnquiriesManagement({ onNavigate, onBack }: EnquiriesManagementP
 
         {/* Quick Stats */}
         <div className="grid grid-cols-2 md:grid-cols-6 gap-3">
-          <div className="bg-gray-50 rounded p-3 border border-gray-200">
-            <div className="text-xs text-gray-600">Total Enquiries</div>
-            <div className="text-2xl font-bold text-gray-900">{stats.total}</div>
+          <div className="bg-white/5 rounded p-3 border border-white/10">
+            <div className="text-xs text-slate-300">Total Enquiries</div>
+            <div className="text-2xl font-bold text-slate-100">{stats.total}</div>
           </div>
-          <div className="bg-blue-50 rounded p-3 border border-blue-200">
-            <div className="text-xs text-blue-700">New</div>
-            <div className="text-2xl font-bold text-blue-700">{stats.new}</div>
+          <div className="bg-blue-500/10 rounded p-3 border border-blue-500/30">
+            <div className="text-xs text-blue-300">New</div>
+            <div className="text-2xl font-bold text-blue-300">{stats.new}</div>
           </div>
-          <div className="bg-purple-50 rounded p-3 border border-purple-200">
-            <div className="text-xs text-purple-700">Contacted</div>
-            <div className="text-2xl font-bold text-purple-700">{stats.contacted}</div>
+          <div className="bg-purple-500/10 rounded p-3 border border-purple-500/30">
+            <div className="text-xs text-purple-300">Contacted</div>
+            <div className="text-2xl font-bold text-purple-300">{stats.contacted}</div>
           </div>
-          <div className="bg-green-50 rounded p-3 border border-green-200">
-            <div className="text-xs text-green-700">Qualified</div>
-            <div className="text-2xl font-bold text-green-700">{stats.qualified}</div>
+          <div className="bg-green-500/10 rounded p-3 border border-green-500/30">
+            <div className="text-xs text-green-300">Qualified</div>
+            <div className="text-2xl font-bold text-green-300">{stats.qualified}</div>
           </div>
-          <div className="bg-indigo-50 rounded p-3 border border-indigo-200">
-            <div className="text-xs text-indigo-700">Converted</div>
-            <div className="text-2xl font-bold text-indigo-700">{stats.converted}</div>
+          <div className="bg-indigo-500/10 rounded p-3 border border-indigo-500/30">
+            <div className="text-xs text-indigo-300">Converted</div>
+            <div className="text-2xl font-bold text-indigo-300">{stats.converted}</div>
           </div>
           <div className="bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded p-3">
             <div className="text-xs opacity-90">Conversion Rate</div>
@@ -262,13 +262,13 @@ export function EnquiriesManagement({ onNavigate, onBack }: EnquiriesManagementP
               placeholder="Search enquiries by name, email, phone..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded text-sm"
+              className="w-full pl-10 pr-4 py-2 border border-white/10 rounded text-sm"
             />
           </div>
           <select
             value={filterStatus}
             onChange={(e) => setFilterStatus(e.target.value)}
-            className="px-3 py-2 border border-gray-300 rounded text-sm"
+            className="px-3 py-2 border border-white/10 rounded text-sm"
           >
             <option value="all">All Status</option>
             <option value="new">New</option>
@@ -284,78 +284,78 @@ export function EnquiriesManagement({ onNavigate, onBack }: EnquiriesManagementP
         </div>
 
         {/* Enquiries Table */}
-        <div className="border border-gray-300 rounded bg-white overflow-hidden">
+        <div className="border border-white/10 rounded bg-white overflow-hidden">
           <table className="w-full text-sm border-collapse">
             <thead>
-              <tr className="bg-gray-50">
-                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Enquiry ID</th>
-                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Client</th>
-                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Loan Type</th>
-                <th className="border border-gray-300 px-3 py-2 text-right font-semibold text-gray-700">Loan Amount</th>
-                <th className="border border-gray-300 px-3 py-2 text-right font-semibold text-gray-700">LVR</th>
-                <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700">Status</th>
-                <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700">Priority</th>
-                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Source</th>
-                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Assigned To</th>
-                <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700">Actions</th>
+              <tr className="bg-white/5">
+                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Enquiry ID</th>
+                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Client</th>
+                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Loan Type</th>
+                <th className="border border-white/10 px-3 py-2 text-right font-semibold text-slate-300">Loan Amount</th>
+                <th className="border border-white/10 px-3 py-2 text-right font-semibold text-slate-300">LVR</th>
+                <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300">Status</th>
+                <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300">Priority</th>
+                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Source</th>
+                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Assigned To</th>
+                <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300">Actions</th>
               </tr>
             </thead>
             <tbody>
               {enquiries.map((enquiry) => (
                 <tr
                   key={enquiry.id}
-                  className="hover:bg-blue-50 cursor-pointer"
+                  className="hover:bg-blue-500/10 cursor-pointer"
                   onClick={() => handleViewEnquiry(enquiry)}
                 >
-                  <td className="border border-gray-300 px-3 py-2 text-gray-900 font-mono font-semibold">
+                  <td className="border border-white/10 px-3 py-2 text-slate-100 font-mono font-semibold">
                     {enquiry.id}
                   </td>
-                  <td className="border border-gray-300 px-3 py-2">
-                    <div className="font-semibold text-gray-900">{enquiry.clientName}</div>
-                    <div className="text-xs text-gray-600 flex items-center gap-2 mt-1">
+                  <td className="border border-white/10 px-3 py-2">
+                    <div className="font-semibold text-slate-100">{enquiry.clientName}</div>
+                    <div className="text-xs text-slate-300 flex items-center gap-2 mt-1">
                       <Phone className="w-3 h-3" />
                       {enquiry.phone}
                     </div>
-                    <div className="text-xs text-gray-600 flex items-center gap-2 mt-0.5">
+                    <div className="text-xs text-slate-300 flex items-center gap-2 mt-0.5">
                       <Mail className="w-3 h-3" />
                       {enquiry.email}
                     </div>
                   </td>
-                  <td className="border border-gray-300 px-3 py-2">
-                    <div className="text-gray-900">{enquiry.loanType}</div>
-                    <div className="text-xs text-gray-600">{enquiry.propertyType}</div>
+                  <td className="border border-white/10 px-3 py-2">
+                    <div className="text-slate-100">{enquiry.loanType}</div>
+                    <div className="text-xs text-slate-300">{enquiry.propertyType}</div>
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-right font-mono text-gray-900">
+                  <td className="border border-white/10 px-3 py-2 text-right font-mono text-slate-100">
                     {formatCurrency(enquiry.loanAmount)}
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-right">
-                    <span className={`font-semibold ${getLVR(enquiry.loanAmount, enquiry.propertyValue) > 80 ? 'text-red-600' : 'text-green-600'}`}>
+                  <td className="border border-white/10 px-3 py-2 text-right">
+                    <span className={`font-semibold ${getLVR(enquiry.loanAmount, enquiry.propertyValue) > 80 ? 'text-red-400' : 'text-green-400'}`}>
                       {getLVR(enquiry.loanAmount, enquiry.propertyValue)}%
                     </span>
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-center">
+                  <td className="border border-white/10 px-3 py-2 text-center">
                     {getStatusBadge(enquiry.status)}
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-center">
+                  <td className="border border-white/10 px-3 py-2 text-center">
                     {getPriorityBadge(enquiry.priority)}
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-gray-700">
+                  <td className="border border-white/10 px-3 py-2 text-slate-300">
                     {enquiry.source}
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-gray-700">
+                  <td className="border border-white/10 px-3 py-2 text-slate-300">
                     <div className="flex items-center gap-2">
                       <User className="w-3 h-3" />
                       {enquiry.assignedTo}
                     </div>
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-center">
+                  <td className="border border-white/10 px-3 py-2 text-center">
                     <div className="flex items-center gap-1 justify-center">
                       <button 
                         onClick={(e) => {
                           e.stopPropagation();
                           handleViewEnquiry(enquiry);
                         }}
-                        className="px-2 py-1 text-xs bg-blue-100 text-blue-700 hover:bg-blue-200 rounded font-semibold"
+                        className="px-2 py-1 text-xs bg-blue-500/15 text-blue-300 hover:bg-blue-500/20 rounded font-semibold"
                       >
                         View
                       </button>
@@ -364,7 +364,7 @@ export function EnquiriesManagement({ onNavigate, onBack }: EnquiriesManagementP
                           e.stopPropagation();
                           handleConvertToApplication(enquiry);
                         }}
-                        className="px-2 py-1 text-xs bg-green-100 text-green-700 hover:bg-green-200 rounded font-semibold"
+                        className="px-2 py-1 text-xs bg-green-500/15 text-green-300 hover:bg-green-500/20 rounded font-semibold"
                       >
                         Convert
                       </button>

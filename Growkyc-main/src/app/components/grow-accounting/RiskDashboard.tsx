@@ -259,11 +259,11 @@ export function RiskDashboard({ onNavigate }: RiskDashboardProps) {
   const getRiskBadge = (level: string) => {
     switch (level) {
       case 'high':
-        return <span className="px-2 py-0.5 bg-red-100 text-red-700 text-xs font-semibold rounded">HIGH</span>;
+        return <span className="px-2 py-0.5 bg-red-500/15 text-red-300 text-xs font-semibold rounded">HIGH</span>;
       case 'medium':
-        return <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-xs font-semibold rounded">MEDIUM</span>;
+        return <span className="px-2 py-0.5 bg-amber-500/15 text-amber-300 text-xs font-semibold rounded">MEDIUM</span>;
       case 'low':
-        return <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded">LOW</span>;
+        return <span className="px-2 py-0.5 bg-green-500/15 text-green-300 text-xs font-semibold rounded">LOW</span>;
       default:
         return null;
     }
@@ -272,22 +272,22 @@ export function RiskDashboard({ onNavigate }: RiskDashboardProps) {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'overdue':
-        return <span className="px-2 py-0.5 bg-red-100 text-red-700 text-xs font-semibold rounded flex items-center gap-1">
+        return <span className="px-2 py-0.5 bg-red-500/15 text-red-300 text-xs font-semibold rounded flex items-center gap-1">
           <XCircle className="w-3 h-3" />
           OVERDUE
         </span>;
       case 'at-risk':
-        return <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-xs font-semibold rounded flex items-center gap-1">
+        return <span className="px-2 py-0.5 bg-amber-500/15 text-amber-300 text-xs font-semibold rounded flex items-center gap-1">
           <AlertTriangle className="w-3 h-3" />
           AT RISK
         </span>;
       case 'on-track':
-        return <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded flex items-center gap-1">
+        return <span className="px-2 py-0.5 bg-green-500/15 text-green-300 text-xs font-semibold rounded flex items-center gap-1">
           <CheckCircle className="w-3 h-3" />
           ON TRACK
         </span>;
       case 'complete':
-        return <span className="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-semibold rounded flex items-center gap-1">
+        return <span className="px-2 py-0.5 bg-blue-500/15 text-blue-300 text-xs font-semibold rounded flex items-center gap-1">
           <CheckCircle className="w-3 h-3" />
           COMPLETE
         </span>;
@@ -301,11 +301,11 @@ export function RiskDashboard({ onNavigate }: RiskDashboardProps) {
       case 'critical':
         return <span className="px-2 py-0.5 bg-red-600 text-white text-xs font-semibold rounded">CRITICAL</span>;
       case 'high':
-        return <span className="px-2 py-0.5 bg-red-100 text-red-700 text-xs font-semibold rounded">HIGH</span>;
+        return <span className="px-2 py-0.5 bg-red-500/15 text-red-300 text-xs font-semibold rounded">HIGH</span>;
       case 'medium':
-        return <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-xs font-semibold rounded">MEDIUM</span>;
+        return <span className="px-2 py-0.5 bg-amber-500/15 text-amber-300 text-xs font-semibold rounded">MEDIUM</span>;
       case 'low':
-        return <span className="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-semibold rounded">LOW</span>;
+        return <span className="px-2 py-0.5 bg-blue-500/15 text-blue-300 text-xs font-semibold rounded">LOW</span>;
       default:
         return null;
     }
@@ -314,9 +314,9 @@ export function RiskDashboard({ onNavigate }: RiskDashboardProps) {
   const getTrendIcon = (trend: string) => {
     switch (trend) {
       case 'up':
-        return <TrendingUp className="w-4 h-4 text-green-600" />;
+        return <TrendingUp className="w-4 h-4 text-green-400" />;
       case 'down':
-        return <TrendingDown className="w-4 h-4 text-red-600" />;
+        return <TrendingDown className="w-4 h-4 text-red-400" />;
       default:
         return <Activity className="w-4 h-4 text-gray-400" />;
     }
@@ -328,11 +328,11 @@ export function RiskDashboard({ onNavigate }: RiskDashboardProps) {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
-              <Shield className="w-8 h-8 text-red-600" />
+            <h1 className="text-3xl font-bold text-slate-100 flex items-center gap-3">
+              <Shield className="w-8 h-8 text-red-400" />
               Risk & Quality Control Dashboard
             </h1>
-            <p className="text-sm text-gray-600 mt-1">Real-time monitoring • Staff analytics • Compliance tracking • Practice intelligence</p>
+            <p className="text-sm text-slate-300 mt-1">Real-time monitoring • Staff analytics • Compliance tracking • Practice intelligence</p>
           </div>
           <div className="flex items-center gap-2">
             <Button variant="outline" size="sm">
@@ -348,48 +348,48 @@ export function RiskDashboard({ onNavigate }: RiskDashboardProps) {
 
         {/* Practice Stats Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
-          <div className="bg-white border border-gray-300 rounded p-3">
-            <div className="text-xs text-gray-600 mb-1">Total Jobs</div>
-            <div className="text-2xl font-bold text-gray-900 font-mono">{practiceStats.totalJobs}</div>
+          <div className="bg-white border border-white/10 rounded p-3">
+            <div className="text-xs text-slate-300 mb-1">Total Jobs</div>
+            <div className="text-2xl font-bold text-slate-100 font-mono">{practiceStats.totalJobs}</div>
           </div>
-          <div className="bg-white border border-red-200 rounded p-3">
-            <div className="text-xs text-gray-600 mb-1">High Risk</div>
-            <div className="text-2xl font-bold text-red-600 font-mono">{practiceStats.highRisk}</div>
+          <div className="bg-white border border-red-500/30 rounded p-3">
+            <div className="text-xs text-slate-300 mb-1">High Risk</div>
+            <div className="text-2xl font-bold text-red-400 font-mono">{practiceStats.highRisk}</div>
           </div>
-          <div className="bg-white border border-amber-200 rounded p-3">
-            <div className="text-xs text-gray-600 mb-1">Medium Risk</div>
-            <div className="text-2xl font-bold text-amber-600 font-mono">{practiceStats.mediumRisk}</div>
+          <div className="bg-white border border-amber-500/30 rounded p-3">
+            <div className="text-xs text-slate-300 mb-1">Medium Risk</div>
+            <div className="text-2xl font-bold text-amber-400 font-mono">{practiceStats.mediumRisk}</div>
           </div>
-          <div className="bg-white border border-green-200 rounded p-3">
-            <div className="text-xs text-gray-600 mb-1">Low Risk</div>
-            <div className="text-2xl font-bold text-green-600 font-mono">{practiceStats.lowRisk}</div>
+          <div className="bg-white border border-green-500/30 rounded p-3">
+            <div className="text-xs text-slate-300 mb-1">Low Risk</div>
+            <div className="text-2xl font-bold text-green-400 font-mono">{practiceStats.lowRisk}</div>
           </div>
-          <div className="bg-white border border-red-200 rounded p-3">
-            <div className="text-xs text-gray-600 mb-1">Overdue</div>
-            <div className="text-2xl font-bold text-red-600 font-mono">{practiceStats.overdue}</div>
+          <div className="bg-white border border-red-500/30 rounded p-3">
+            <div className="text-xs text-slate-300 mb-1">Overdue</div>
+            <div className="text-2xl font-bold text-red-400 font-mono">{practiceStats.overdue}</div>
           </div>
-          <div className="bg-white border border-amber-200 rounded p-3">
-            <div className="text-xs text-gray-600 mb-1">At Risk</div>
-            <div className="text-2xl font-bold text-amber-600 font-mono">{practiceStats.atRisk}</div>
+          <div className="bg-white border border-amber-500/30 rounded p-3">
+            <div className="text-xs text-slate-300 mb-1">At Risk</div>
+            <div className="text-2xl font-bold text-amber-400 font-mono">{practiceStats.atRisk}</div>
           </div>
-          <div className="bg-white border border-gray-300 rounded p-3">
-            <div className="text-xs text-gray-600 mb-1">Avg Quality</div>
-            <div className="text-2xl font-bold text-blue-600 font-mono">{practiceStats.avgQuality}%</div>
+          <div className="bg-white border border-white/10 rounded p-3">
+            <div className="text-xs text-slate-300 mb-1">Avg Quality</div>
+            <div className="text-2xl font-bold text-blue-400 font-mono">{practiceStats.avgQuality}%</div>
           </div>
-          <div className="bg-white border border-red-200 rounded p-3">
-            <div className="text-xs text-gray-600 mb-1">Critical Issues</div>
-            <div className="text-2xl font-bold text-red-600 font-mono">{practiceStats.criticalIssues}</div>
+          <div className="bg-white border border-red-500/30 rounded p-3">
+            <div className="text-xs text-slate-300 mb-1">Critical Issues</div>
+            <div className="text-2xl font-bold text-red-400 font-mono">{practiceStats.criticalIssues}</div>
           </div>
         </div>
 
         {/* Critical Alerts */}
         {practiceStats.criticalIssues > 0 && (
-          <div className="bg-red-50 border border-red-300 rounded px-4 py-3">
+          <div className="bg-red-500/10 border border-red-300 rounded px-4 py-3">
             <div className="flex items-center gap-3">
-              <AlertTriangle className="w-5 h-5 text-red-600" />
+              <AlertTriangle className="w-5 h-5 text-red-400" />
               <div className="flex-1">
-                <h3 className="font-semibold text-red-900">Critical Issues Detected</h3>
-                <p className="text-sm text-red-800">
+                <h3 className="font-semibold text-red-300">Critical Issues Detected</h3>
+                <p className="text-sm text-red-300">
                   {practiceStats.criticalIssues} critical compliance issues requiring immediate attention • {practiceStats.overdue} overdue jobs • {practiceStats.atRisk} jobs at risk
                 </p>
               </div>
@@ -402,13 +402,13 @@ export function RiskDashboard({ onNavigate }: RiskDashboardProps) {
 
         {/* Risk Filter */}
         <div className="flex items-center gap-2">
-          <span className="text-sm font-semibold text-gray-700">Risk Level:</span>
+          <span className="text-sm font-semibold text-slate-300">Risk Level:</span>
           <button
             onClick={() => setSelectedFilter('all')}
             className={`px-3 py-1.5 rounded text-sm font-semibold ${
               selectedFilter === 'all'
                 ? 'bg-gray-900 text-white'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                : 'bg-white/5 text-slate-300 hover:bg-white/10'
             }`}
           >
             All Jobs ({jobs.length})
@@ -418,7 +418,7 @@ export function RiskDashboard({ onNavigate }: RiskDashboardProps) {
             className={`px-3 py-1.5 rounded text-sm font-semibold ${
               selectedFilter === 'high'
                 ? 'bg-red-600 text-white'
-                : 'bg-red-100 text-red-700 hover:bg-red-200'
+                : 'bg-red-500/15 text-red-300 hover:bg-red-500/20'
             }`}
           >
             High Risk ({practiceStats.highRisk})
@@ -428,7 +428,7 @@ export function RiskDashboard({ onNavigate }: RiskDashboardProps) {
             className={`px-3 py-1.5 rounded text-sm font-semibold ${
               selectedFilter === 'medium'
                 ? 'bg-amber-600 text-white'
-                : 'bg-amber-100 text-amber-700 hover:bg-amber-200'
+                : 'bg-amber-500/15 text-amber-300 hover:bg-amber-500/20'
             }`}
           >
             Medium Risk ({practiceStats.mediumRisk})
@@ -438,7 +438,7 @@ export function RiskDashboard({ onNavigate }: RiskDashboardProps) {
             className={`px-3 py-1.5 rounded text-sm font-semibold ${
               selectedFilter === 'low'
                 ? 'bg-green-600 text-white'
-                : 'bg-green-100 text-green-700 hover:bg-green-200'
+                : 'bg-green-500/15 text-green-300 hover:bg-green-500/20'
             }`}
           >
             Low Risk ({practiceStats.lowRisk})
@@ -446,53 +446,53 @@ export function RiskDashboard({ onNavigate }: RiskDashboardProps) {
         </div>
 
         {/* Jobs Risk Table */}
-        <div className="border border-gray-300 rounded bg-white overflow-hidden">
-          <div className="bg-gray-50 border-b border-gray-300 px-4 py-2">
-            <h3 className="font-semibold text-gray-900">Job Risk Analysis</h3>
+        <div className="border border-white/10 rounded bg-white overflow-hidden">
+          <div className="bg-white/5 border-b border-white/10 px-4 py-2">
+            <h3 className="font-semibold text-slate-100">Job Risk Analysis</h3>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>
-                <tr className="bg-gray-100">
-                  <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Client Name</th>
-                  <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700 w-24">Type</th>
-                  <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Preparer</th>
-                  <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Reviewer</th>
-                  <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-24">Due Date</th>
-                  <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-28">Risk Score</th>
-                  <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-28">Quality</th>
-                  <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-28">Complete</th>
-                  <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-32">Status</th>
-                  <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-20">Issues</th>
-                  <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-24">Actions</th>
+                <tr className="bg-white/5">
+                  <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Client Name</th>
+                  <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300 w-24">Type</th>
+                  <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Preparer</th>
+                  <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Reviewer</th>
+                  <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-24">Due Date</th>
+                  <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-28">Risk Score</th>
+                  <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-28">Quality</th>
+                  <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-28">Complete</th>
+                  <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-32">Status</th>
+                  <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-20">Issues</th>
+                  <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-24">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {filteredJobs.map((job) => (
-                  <tr key={job.id} className="hover:bg-blue-50">
-                    <td className="border border-gray-300 px-3 py-2 text-gray-900 font-medium">
+                  <tr key={job.id} className="hover:bg-blue-500/10">
+                    <td className="border border-white/10 px-3 py-2 text-slate-100 font-medium">
                       {job.clientName}
                       {job.daysOverdue && (
-                        <div className="text-xs text-red-600 font-semibold mt-0.5">
+                        <div className="text-xs text-red-400 font-semibold mt-0.5">
                           {job.daysOverdue} days overdue
                         </div>
                       )}
                     </td>
-                    <td className="border border-gray-300 px-3 py-2 text-gray-700 text-xs">
+                    <td className="border border-white/10 px-3 py-2 text-slate-300 text-xs">
                       {job.entityType}
                     </td>
-                    <td className="border border-gray-300 px-3 py-2 text-gray-700">
+                    <td className="border border-white/10 px-3 py-2 text-slate-300">
                       {job.preparer}
                     </td>
-                    <td className="border border-gray-300 px-3 py-2 text-gray-700">
+                    <td className="border border-white/10 px-3 py-2 text-slate-300">
                       {job.reviewer}
                     </td>
-                    <td className="border border-gray-300 px-3 py-2 text-center text-gray-700 text-xs font-mono">
+                    <td className="border border-white/10 px-3 py-2 text-center text-slate-300 text-xs font-mono">
                       {job.dueDate}
                     </td>
-                    <td className="border border-gray-300 px-3 py-2">
+                    <td className="border border-white/10 px-3 py-2">
                       <div className="flex items-center gap-2">
-                        <div className="flex-1 bg-gray-200 rounded-full h-2">
+                        <div className="flex-1 bg-white/10 rounded-full h-2">
                           <div
                             className={`h-2 rounded-full ${
                               job.riskScore >= 70
@@ -504,14 +504,14 @@ export function RiskDashboard({ onNavigate }: RiskDashboardProps) {
                             style={{ width: `${job.riskScore}%` }}
                           ></div>
                         </div>
-                        <span className="text-xs font-mono font-semibold text-gray-700 w-8">
+                        <span className="text-xs font-mono font-semibold text-slate-300 w-8">
                           {job.riskScore}
                         </span>
                       </div>
                     </td>
-                    <td className="border border-gray-300 px-3 py-2 text-center">
-                      <div className="font-mono font-semibold text-gray-900">{job.qualityScore}%</div>
-                      <div className="w-full bg-gray-200 rounded-full h-1.5 mt-1">
+                    <td className="border border-white/10 px-3 py-2 text-center">
+                      <div className="font-mono font-semibold text-slate-100">{job.qualityScore}%</div>
+                      <div className="w-full bg-white/10 rounded-full h-1.5 mt-1">
                         <div
                           className={`h-1.5 rounded-full ${
                             job.qualityScore >= 80
@@ -524,25 +524,25 @@ export function RiskDashboard({ onNavigate }: RiskDashboardProps) {
                         ></div>
                       </div>
                     </td>
-                    <td className="border border-gray-300 px-3 py-2 text-center">
-                      <div className="font-mono font-semibold text-gray-900">{job.completeness}%</div>
-                      <div className="w-full bg-gray-200 rounded-full h-1.5 mt-1">
+                    <td className="border border-white/10 px-3 py-2 text-center">
+                      <div className="font-mono font-semibold text-slate-100">{job.completeness}%</div>
+                      <div className="w-full bg-white/10 rounded-full h-1.5 mt-1">
                         <div
                           className="bg-blue-600 h-1.5 rounded-full"
                           style={{ width: `${job.completeness}%` }}
                         ></div>
                       </div>
                     </td>
-                    <td className="border border-gray-300 px-2 py-2 text-center">
+                    <td className="border border-white/10 px-2 py-2 text-center">
                       {getStatusBadge(job.status)}
                     </td>
-                    <td className="border border-gray-300 px-3 py-2 text-center">
-                      <span className={`font-mono font-semibold ${job.issues > 3 ? 'text-red-600' : 'text-gray-900'}`}>
+                    <td className="border border-white/10 px-3 py-2 text-center">
+                      <span className={`font-mono font-semibold ${job.issues > 3 ? 'text-red-400' : 'text-slate-100'}`}>
                         {job.issues}
                       </span>
                     </td>
-                    <td className="border border-gray-300 px-2 py-2 text-center">
-                      <button className="px-2 py-1 text-xs bg-blue-100 text-blue-700 hover:bg-blue-200 rounded font-semibold">
+                    <td className="border border-white/10 px-2 py-2 text-center">
+                      <button className="px-2 py-1 text-xs bg-blue-500/15 text-blue-300 hover:bg-blue-500/20 rounded font-semibold">
                         View
                       </button>
                     </td>
@@ -556,46 +556,46 @@ export function RiskDashboard({ onNavigate }: RiskDashboardProps) {
         {/* Two Column Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Staff Performance */}
-          <div className="border border-gray-300 rounded bg-white overflow-hidden">
-            <div className="bg-gray-50 border-b border-gray-300 px-4 py-2">
-              <h3 className="font-semibold text-gray-900">Staff Performance Analysis</h3>
+          <div className="border border-white/10 rounded bg-white overflow-hidden">
+            <div className="bg-white/5 border-b border-white/10 px-4 py-2">
+              <h3 className="font-semibold text-slate-100">Staff Performance Analysis</h3>
             </div>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead>
-                  <tr className="bg-gray-100">
-                    <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Name</th>
-                    <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-16">Jobs</th>
-                    <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-20">Quality</th>
-                    <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-20">Errors</th>
-                    <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-20">Avg Time</th>
-                    <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-16">Trend</th>
+                  <tr className="bg-white/5">
+                    <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Name</th>
+                    <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-16">Jobs</th>
+                    <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-20">Quality</th>
+                    <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-20">Errors</th>
+                    <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-20">Avg Time</th>
+                    <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-16">Trend</th>
                   </tr>
                 </thead>
                 <tbody>
                   {staffPerformance.map((staff, idx) => (
-                    <tr key={idx} className="hover:bg-blue-50">
-                      <td className="border border-gray-300 px-3 py-2">
-                        <div className="font-medium text-gray-900">{staff.name}</div>
-                        <div className="text-xs text-gray-600">{staff.role}</div>
+                    <tr key={idx} className="hover:bg-blue-500/10">
+                      <td className="border border-white/10 px-3 py-2">
+                        <div className="font-medium text-slate-100">{staff.name}</div>
+                        <div className="text-xs text-slate-300">{staff.role}</div>
                       </td>
-                      <td className="border border-gray-300 px-3 py-2 text-center font-mono font-semibold text-gray-900">
+                      <td className="border border-white/10 px-3 py-2 text-center font-mono font-semibold text-slate-100">
                         {staff.activeJobs}
                       </td>
-                      <td className="border border-gray-300 px-3 py-2 text-center">
-                        <div className={`font-mono font-semibold ${staff.avgQuality >= 85 ? 'text-green-600' : staff.avgQuality >= 70 ? 'text-amber-600' : 'text-red-600'}`}>
+                      <td className="border border-white/10 px-3 py-2 text-center">
+                        <div className={`font-mono font-semibold ${staff.avgQuality >= 85 ? 'text-green-400' : staff.avgQuality >= 70 ? 'text-amber-400' : 'text-red-400'}`}>
                           {staff.avgQuality}%
                         </div>
                       </td>
-                      <td className="border border-gray-300 px-3 py-2 text-center">
-                        <div className={`font-mono font-semibold ${staff.errorRate <= 2 ? 'text-green-600' : staff.errorRate <= 3 ? 'text-amber-600' : 'text-red-600'}`}>
+                      <td className="border border-white/10 px-3 py-2 text-center">
+                        <div className={`font-mono font-semibold ${staff.errorRate <= 2 ? 'text-green-400' : staff.errorRate <= 3 ? 'text-amber-400' : 'text-red-400'}`}>
                           {staff.errorRate}%
                         </div>
                       </td>
-                      <td className="border border-gray-300 px-3 py-2 text-center font-mono text-gray-900">
+                      <td className="border border-white/10 px-3 py-2 text-center font-mono text-slate-100">
                         {staff.avgTime}
                       </td>
-                      <td className="border border-gray-300 px-3 py-2 text-center">
+                      <td className="border border-white/10 px-3 py-2 text-center">
                         {getTrendIcon(staff.trend)}
                       </td>
                     </tr>
@@ -606,37 +606,37 @@ export function RiskDashboard({ onNavigate }: RiskDashboardProps) {
           </div>
 
           {/* Compliance Issues */}
-          <div className="border border-gray-300 rounded bg-white overflow-hidden">
-            <div className="bg-gray-50 border-b border-gray-300 px-4 py-2">
-              <h3 className="font-semibold text-gray-900">Outstanding Compliance Issues</h3>
+          <div className="border border-white/10 rounded bg-white overflow-hidden">
+            <div className="bg-white/5 border-b border-white/10 px-4 py-2">
+              <h3 className="font-semibold text-slate-100">Outstanding Compliance Issues</h3>
             </div>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead>
-                  <tr className="bg-gray-100">
-                    <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-24">Severity</th>
-                    <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Description</th>
-                    <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700 w-32">Assignee</th>
-                    <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-20">Days</th>
+                  <tr className="bg-white/5">
+                    <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-24">Severity</th>
+                    <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Description</th>
+                    <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300 w-32">Assignee</th>
+                    <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-20">Days</th>
                   </tr>
                 </thead>
                 <tbody>
                   {complianceIssues.map((issue) => (
-                    <tr key={issue.id} className="hover:bg-blue-50">
-                      <td className="border border-gray-300 px-2 py-2 text-center">
+                    <tr key={issue.id} className="hover:bg-blue-500/10">
+                      <td className="border border-white/10 px-2 py-2 text-center">
                         {getSeverityBadge(issue.severity)}
                       </td>
-                      <td className="border border-gray-300 px-3 py-2">
-                        <div className="text-gray-900 font-medium">{issue.description}</div>
-                        <div className="text-xs text-gray-600 mt-0.5">
+                      <td className="border border-white/10 px-3 py-2">
+                        <div className="text-slate-100 font-medium">{issue.description}</div>
+                        <div className="text-xs text-slate-300 mt-0.5">
                           {issue.category} • {issue.job}
                         </div>
                       </td>
-                      <td className="border border-gray-300 px-3 py-2 text-gray-700">
+                      <td className="border border-white/10 px-3 py-2 text-slate-300">
                         {issue.assignee}
                       </td>
-                      <td className="border border-gray-300 px-3 py-2 text-center">
-                        <span className={`font-mono font-semibold ${issue.daysOpen > 5 ? 'text-red-600' : issue.daysOpen > 2 ? 'text-amber-600' : 'text-gray-900'}`}>
+                      <td className="border border-white/10 px-3 py-2 text-center">
+                        <span className={`font-mono font-semibold ${issue.daysOpen > 5 ? 'text-red-400' : issue.daysOpen > 2 ? 'text-amber-400' : 'text-slate-100'}`}>
                           {issue.daysOpen}
                         </span>
                       </td>

@@ -284,24 +284,24 @@ export function SidebarNavigation({ currentPath, onNavigate, user }: SidebarNavi
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-screen bg-white border-r border-gray-200 z-40 flex flex-col transition-all duration-300 ${
+        className={`fixed top-0 left-0 h-screen bg-white border-r border-white/10 z-40 flex flex-col transition-all duration-300 ${
           isSidebarOpen ? 'w-80' : 'w-0 lg:w-20'
         } overflow-hidden`}
       >
         {/* Logo / Header */}
-        <div className="h-16 flex items-center justify-between px-6 border-b border-gray-200 flex-shrink-0">
+        <div className="h-16 flex items-center justify-between px-6 border-b border-white/10 flex-shrink-0">
           {isSidebarOpen && (
             <>
               <div className="flex items-center gap-3">
-                <Shield className="w-8 h-8 text-blue-600" />
+                <Shield className="w-8 h-8 text-blue-400" />
                 <div>
-                  <h1 className="text-xl font-bold text-gray-900">Grow KYC</h1>
-                  <p className="text-xs text-gray-600">Sentinel AML</p>
+                  <h1 className="text-xl font-bold text-slate-100">Grow KYC</h1>
+                  <p className="text-xs text-slate-300">Sentinel AML</p>
                 </div>
               </div>
               <button
                 onClick={() => setIsSidebarOpen(false)}
-                className="lg:hidden w-8 h-8 hover:bg-gray-100 rounded-lg flex items-center justify-center"
+                className="lg:hidden w-8 h-8 hover:bg-white/5 rounded-lg flex items-center justify-center"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -310,28 +310,28 @@ export function SidebarNavigation({ currentPath, onNavigate, user }: SidebarNavi
         </div>
 
         {/* User Profile Section */}
-        <div className="p-4 border-b border-gray-200 flex-shrink-0">
+        <div className="p-4 border-b border-white/10 flex-shrink-0">
           {isSidebarOpen ? (
             <div className="relative">
               <button
                 onClick={() => setShowUserMenu(!showUserMenu)}
-                className="w-full flex items-center gap-3 p-3 hover:bg-gray-50 rounded-lg transition-colors"
+                className="w-full flex items-center gap-3 p-3 hover:bg-white/5 rounded-lg transition-colors"
               >
-                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <User className="w-5 h-5 text-blue-600" />
+                <div className="w-10 h-10 bg-blue-500/15 rounded-full flex items-center justify-center flex-shrink-0">
+                  <User className="w-5 h-5 text-blue-400" />
                 </div>
                 <div className="flex-1 text-left">
-                  <p className="font-semibold text-gray-900 text-sm">{user.name}</p>
-                  <p className="text-xs text-gray-600">{user.organization}</p>
+                  <p className="font-semibold text-slate-100 text-sm">{user.name}</p>
+                  <p className="text-xs text-slate-300">{user.organization}</p>
                 </div>
                 <ChevronDown className="w-4 h-4 text-gray-400" />
               </button>
 
               {/* User Menu Dropdown */}
               {showUserMenu && (
-                <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
-                  <div className="p-3 border-b border-gray-200">
-                    <p className="text-xs text-gray-600 mb-1">Role</p>
+                <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-white/10 rounded-lg shadow-lg z-50">
+                  <div className="p-3 border-b border-white/10">
+                    <p className="text-xs text-slate-300 mb-1">Role</p>
                     <span className={`inline-block px-2 py-1 ${roleBadge.color} text-white text-xs font-bold rounded`}>
                       {roleBadge.label}
                     </span>
@@ -339,19 +339,19 @@ export function SidebarNavigation({ currentPath, onNavigate, user }: SidebarNavi
                   <div className="p-2">
                     <button
                       onClick={() => onNavigate('/profile')}
-                      className="w-full flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg"
+                      className="w-full flex items-center gap-2 px-3 py-2 text-sm text-slate-300 hover:bg-white/5 rounded-lg"
                     >
                       <User className="w-4 h-4" />
                       My Profile
                     </button>
                     <button
                       onClick={() => onNavigate('/settings')}
-                      className="w-full flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg"
+                      className="w-full flex items-center gap-2 px-3 py-2 text-sm text-slate-300 hover:bg-white/5 rounded-lg"
                     >
                       <Settings className="w-4 h-4" />
                       Settings
                     </button>
-                    <button className="w-full flex items-center gap-2 px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg">
+                    <button className="w-full flex items-center gap-2 px-3 py-2 text-sm text-red-400 hover:bg-red-500/10 rounded-lg">
                       <LogOut className="w-4 h-4" />
                       Logout
                     </button>
@@ -360,8 +360,8 @@ export function SidebarNavigation({ currentPath, onNavigate, user }: SidebarNavi
               )}
             </div>
           ) : (
-            <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mx-auto">
-              <User className="w-5 h-5 text-blue-600" />
+            <div className="w-10 h-10 bg-blue-500/15 rounded-full flex items-center justify-center mx-auto">
+              <User className="w-5 h-5 text-blue-400" />
             </div>
           )}
         </div>
@@ -387,8 +387,8 @@ export function SidebarNavigation({ currentPath, onNavigate, user }: SidebarNavi
                     }}
                     className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors relative ${
                       isActive && !hasChildren
-                        ? 'bg-blue-50 text-blue-700 font-semibold'
-                        : 'text-gray-700 hover:bg-gray-50'
+                        ? 'bg-blue-500/10 text-blue-300 font-semibold'
+                        : 'text-slate-300 hover:bg-white/5'
                     }`}
                   >
                     <Icon className="w-5 h-5 flex-shrink-0" />
@@ -413,7 +413,7 @@ export function SidebarNavigation({ currentPath, onNavigate, user }: SidebarNavi
 
                   {/* Children */}
                   {hasChildren && isExpanded && isSidebarOpen && (
-                    <div className="ml-4 mt-1 space-y-1 border-l-2 border-gray-200 pl-4">
+                    <div className="ml-4 mt-1 space-y-1 border-l-2 border-white/10 pl-4">
                       {item.children!.map((child) => {
                         const ChildIcon = child.icon;
                         const isChildActive = currentPath === child.path;
@@ -424,8 +424,8 @@ export function SidebarNavigation({ currentPath, onNavigate, user }: SidebarNavi
                             onClick={() => onNavigate(child.path)}
                             className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-colors text-sm relative ${
                               isChildActive
-                                ? 'bg-blue-50 text-blue-700 font-semibold'
-                                : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                                ? 'bg-blue-500/10 text-blue-300 font-semibold'
+                                : 'text-slate-300 hover:bg-white/5 hover:text-slate-100'
                             }`}
                           >
                             <ChildIcon className="w-4 h-4 flex-shrink-0" />
@@ -448,7 +448,7 @@ export function SidebarNavigation({ currentPath, onNavigate, user }: SidebarNavi
 
         {/* Bottom Section - Quick Actions */}
         {isSidebarOpen && (
-          <div className="p-4 border-t border-gray-200 flex-shrink-0">
+          <div className="p-4 border-t border-white/10 flex-shrink-0">
             <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg p-4 text-white">
               <div className="flex items-center gap-2 mb-2">
                 <Brain className="w-5 h-5" />
@@ -459,7 +459,7 @@ export function SidebarNavigation({ currentPath, onNavigate, user }: SidebarNavi
               </p>
               <Button 
                 size="sm" 
-                className="w-full bg-white text-blue-600 hover:bg-blue-50"
+                className="w-full bg-white text-blue-400 hover:bg-blue-500/10"
                 onClick={() => onNavigate('/ai/copilot')}
               >
                 Open AI Copilot

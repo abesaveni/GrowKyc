@@ -151,10 +151,10 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
 
   const getRiskColor = (level: string) => {
     switch (level) {
-      case 'high': return 'text-red-600 bg-red-100 border-red-300';
-      case 'medium': return 'text-amber-600 bg-amber-100 border-amber-300';
-      case 'low': return 'text-green-600 bg-green-100 border-green-300';
-      default: return 'text-slate-300 bg-[#0f172a] border-gray-300';
+      case 'high': return 'text-red-400 bg-red-500/15 border-red-300';
+      case 'medium': return 'text-amber-400 bg-amber-500/15 border-amber-300';
+      case 'low': return 'text-green-400 bg-green-500/15 border-green-300';
+      default: return 'text-slate-300 bg-[#0f172a] border-white/10';
     }
   };
 
@@ -278,10 +278,10 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
                   key={txn.id}
                   className={`border-2 ${
                     txn.offshoreFlag
-                      ? 'border-red-200 bg-red-50'
+                      ? 'border-red-500/30 bg-red-500/10'
                       : !txn.settlementReady
-                      ? 'border-amber-200 bg-amber-50'
-                      : 'border-green-200 bg-green-50'
+                      ? 'border-amber-500/30 bg-amber-500/10'
+                      : 'border-green-500/30 bg-green-500/10'
                   }`}
                 >
                   <CardContent className="p-6">
@@ -289,17 +289,17 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
                       <div className="flex items-start gap-4 flex-1">
                         <div className={`w-16 h-16 rounded-xl flex items-center justify-center ${
                           txn.offshoreFlag
-                            ? 'bg-red-100'
+                            ? 'bg-red-500/15'
                             : !txn.settlementReady
-                            ? 'bg-amber-100'
-                            : 'bg-green-100'
+                            ? 'bg-amber-500/15'
+                            : 'bg-green-500/15'
                         }`}>
                           <Home className={`w-8 h-8 ${
                             txn.offshoreFlag
-                              ? 'text-red-600'
+                              ? 'text-red-400'
                               : !txn.settlementReady
-                              ? 'text-amber-600'
-                              : 'text-green-600'
+                              ? 'text-amber-400'
+                              : 'text-green-400'
                           }`} />
                         </div>
 
@@ -349,9 +349,9 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
                               <div className="font-semibold text-white">
                                 ${txn.depositAmount.toLocaleString()}
                                 {txn.depositVerified ? (
-                                  <CheckCircle className="w-4 h-4 text-green-600 inline ml-2" />
+                                  <CheckCircle className="w-4 h-4 text-green-400 inline ml-2" />
                                 ) : (
-                                  <AlertCircle className="w-4 h-4 text-amber-600 inline ml-2" />
+                                  <AlertCircle className="w-4 h-4 text-amber-400 inline ml-2" />
                                 )}
                               </div>
                             </div>
@@ -381,8 +381,8 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
                           <div className="grid grid-cols-2 gap-4">
                             <div className={`p-3 rounded-lg border-2 ${
                               txn.kycStatus === 'complete'
-                                ? 'border-green-300 bg-green-100'
-                                : 'border-amber-300 bg-amber-100'
+                                ? 'border-green-300 bg-green-500/15'
+                                : 'border-amber-300 bg-amber-500/15'
                             }`}>
                               <div className="flex items-center justify-between">
                                 <span className="text-sm font-semibold text-slate-300">KYC Status</span>
@@ -394,15 +394,15 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
 
                             <div className={`p-3 rounded-lg border-2 ${
                               txn.settlementReady
-                                ? 'border-green-300 bg-green-100'
-                                : 'border-red-300 bg-red-100'
+                                ? 'border-green-300 bg-green-500/15'
+                                : 'border-red-300 bg-red-500/15'
                             }`}>
                               <div className="flex items-center justify-between">
                                 <span className="text-sm font-semibold text-slate-300">Settlement Ready</span>
                                 {txn.settlementReady ? (
-                                  <CheckCircle className="w-5 h-5 text-green-600" />
+                                  <CheckCircle className="w-5 h-5 text-green-400" />
                                 ) : (
-                                  <AlertCircle className="w-5 h-5 text-red-600" />
+                                  <AlertCircle className="w-5 h-5 text-red-400" />
                                 )}
                               </div>
                             </div>
@@ -445,10 +445,10 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
         {selectedTab === 'offshore' && (
           <div className="space-y-6">
             {/* Offshore Buyer Workflow */}
-            <Card className="border-2 border-red-200 bg-gradient-to-br from-red-50 to-orange-50">
+            <Card className="border-2 border-red-500/30 bg-gradient-to-br from-red-50 to-orange-50">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Globe className="w-5 h-5 text-red-600" />
+                  <Globe className="w-5 h-5 text-red-400" />
                   Offshore and High-Risk Buyer Workflow
                 </CardTitle>
                 <CardDescription>Enhanced due diligence for foreign purchasers</CardDescription>
@@ -456,10 +456,10 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
               <CardContent>
                 <div className="space-y-3">
                   {transactions.filter(t => t.offshoreFlag).map((txn) => (
-                    <div key={txn.id} className="flex items-center justify-between p-4 bg-[#1e293b] rounded-lg border-2 border-red-200">
+                    <div key={txn.id} className="flex items-center justify-between p-4 bg-[#1e293b] rounded-lg border-2 border-red-500/30">
                       <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-                          <Globe className="w-6 h-6 text-red-600" />
+                        <div className="w-12 h-12 bg-red-500/15 rounded-lg flex items-center justify-center">
+                          <Globe className="w-6 h-6 text-red-400" />
                         </div>
                         <div>
                           <div className="font-bold text-white">{txn.propertyAddress}</div>
@@ -495,19 +495,19 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
                     <h4 className="font-bold text-white mb-3">FIRB Required When:</h4>
                     <ul className="space-y-2 text-sm text-slate-300">
                       <li className="flex items-center gap-2">
-                        <AlertCircle className="w-4 h-4 text-red-600" />
+                        <AlertCircle className="w-4 h-4 text-red-400" />
                         Foreign person or entity purchaser
                       </li>
                       <li className="flex items-center gap-2">
-                        <AlertCircle className="w-4 h-4 text-red-600" />
+                        <AlertCircle className="w-4 h-4 text-red-400" />
                         Residential property (any value)
                       </li>
                       <li className="flex items-center gap-2">
-                        <AlertCircle className="w-4 h-4 text-red-600" />
+                        <AlertCircle className="w-4 h-4 text-red-400" />
                         Commercial property {'>'} threshold
                       </li>
                       <li className="flex items-center gap-2">
-                        <AlertCircle className="w-4 h-4 text-red-600" />
+                        <AlertCircle className="w-4 h-4 text-red-400" />
                         Agricultural land {'>'} $15M
                       </li>
                     </ul>
@@ -517,19 +517,19 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
                     <h4 className="font-bold text-white mb-3">Required Documentation:</h4>
                     <ul className="space-y-2 text-sm text-slate-300">
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <CheckCircle className="w-4 h-4 text-green-400" />
                         FIRB application reference number
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <CheckCircle className="w-4 h-4 text-green-400" />
                         Approval certificate (no objection)
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <CheckCircle className="w-4 h-4 text-green-400" />
                         Proof of foreign status
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <CheckCircle className="w-4 h-4 text-green-400" />
                         Source of funds verification
                       </li>
                     </ul>
@@ -539,14 +539,14 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
             </Card>
 
             {/* Offshore Buyer Risk Rules */}
-            <Card className="bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-200">
+            <Card className="bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-500/30">
               <CardHeader>
                 <CardTitle>Offshore Buyer Risk Rules</CardTitle>
                 <CardDescription>Auto-escalation for high-risk countries</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
-                  <div className="p-4 bg-[#1e293b] rounded-lg border border-amber-200">
+                  <div className="p-4 bg-[#1e293b] rounded-lg border border-amber-500/30">
                     <h4 className="font-bold text-white mb-2">High-Risk Jurisdictions:</h4>
                     <div className="flex flex-wrap gap-2">
                       {['Russia', 'North Korea', 'Iran', 'Myanmar', 'Syria', 'Venezuela'].map((country, idx) => (
@@ -557,23 +557,23 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
                     </div>
                   </div>
 
-                  <div className="p-4 bg-[#1e293b] rounded-lg border border-amber-200">
+                  <div className="p-4 bg-[#1e293b] rounded-lg border border-amber-500/30">
                     <h4 className="font-bold text-white mb-2">Enhanced Screening Required:</h4>
                     <ul className="space-y-2 text-sm text-slate-300">
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <CheckCircle className="w-4 h-4 text-green-400" />
                         Sanctions list screening (OFAC, EU, UN, AU)
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <CheckCircle className="w-4 h-4 text-green-400" />
                         PEP screening (politically exposed persons)
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <CheckCircle className="w-4 h-4 text-green-400" />
                         Adverse media check
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <CheckCircle className="w-4 h-4 text-green-400" />
                         Enhanced source of wealth verification
                       </li>
                     </ul>
@@ -587,10 +587,10 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
         {selectedTab === 'settlement' && (
           <div className="space-y-6">
             {/* Settlement Readiness */}
-            <Card className="border-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50">
+            <Card className="border-2 border-green-500/30 bg-gradient-to-br from-green-50 to-emerald-50">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  <CheckCircle className="w-5 h-5 text-green-400" />
                   Settlement Readiness Status
                 </CardTitle>
                 <CardDescription>All KYC must be complete before settlement</CardDescription>
@@ -602,18 +602,18 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
                       key={txn.id}
                       className={`flex items-center justify-between p-4 rounded-lg border-2 ${
                         txn.settlementReady
-                          ? 'bg-[#1e293b] border-green-200'
-                          : 'bg-red-50 border-red-200'
+                          ? 'bg-[#1e293b] border-green-500/30'
+                          : 'bg-red-500/10 border-red-500/30'
                       }`}
                     >
                       <div className="flex items-center gap-4">
                         <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${
-                          txn.settlementReady ? 'bg-green-100' : 'bg-red-100'
+                          txn.settlementReady ? 'bg-green-500/15' : 'bg-red-500/15'
                         }`}>
                           {txn.settlementReady ? (
-                            <CheckCircle className="w-6 h-6 text-green-600" />
+                            <CheckCircle className="w-6 h-6 text-green-400" />
                           ) : (
-                            <AlertCircle className="w-6 h-6 text-red-600" />
+                            <AlertCircle className="w-6 h-6 text-red-400" />
                           )}
                         </div>
                         <div>
@@ -660,27 +660,27 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
                     <h4 className="font-bold text-white mb-3">Pre-Settlement Checklist:</h4>
                     <ul className="space-y-2 text-sm text-slate-300">
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <CheckCircle className="w-4 h-4 text-green-400" />
                         Vendor KYC complete
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <CheckCircle className="w-4 h-4 text-green-400" />
                         Purchaser KYC complete
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <CheckCircle className="w-4 h-4 text-green-400" />
                         Deposit verified (origin + amount)
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <CheckCircle className="w-4 h-4 text-green-400" />
                         Agent authority verified (if applicable)
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <CheckCircle className="w-4 h-4 text-green-400" />
                         FIRB approval (if offshore buyer)
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <CheckCircle className="w-4 h-4 text-green-400" />
                         Entity beneficial ownership verified
                       </li>
                     </ul>
@@ -690,23 +690,23 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
                     <h4 className="font-bold text-white mb-3">Agent Authority Documents:</h4>
                     <ul className="space-y-2 text-sm text-slate-300">
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <CheckCircle className="w-4 h-4 text-green-400" />
                         Power of Attorney (if acting on behalf)
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <CheckCircle className="w-4 h-4 text-green-400" />
                         Agency agreement
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <CheckCircle className="w-4 h-4 text-green-400" />
                         Board resolution (corporate entities)
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <CheckCircle className="w-4 h-4 text-green-400" />
                         Trust deed (trust purchasers)
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <CheckCircle className="w-4 h-4 text-green-400" />
                         Identity verification of signatories
                       </li>
                     </ul>
@@ -716,7 +716,7 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
             </Card>
 
             {/* Settlement Platform Integration */}
-            <Card className="bg-gradient-to-br from-indigo-50 to-blue-50 border-2 border-indigo-200">
+            <Card className="bg-gradient-to-br from-indigo-50 to-blue-50 border-2 border-indigo-500/30">
               <CardHeader>
                 <CardTitle>Settlement Workflow Integration</CardTitle>
                 <CardDescription>Connect with PEXA, InfoTrack, Sympli</CardDescription>
@@ -728,7 +728,7 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
                     { name: 'InfoTrack', status: 'Disconnected', transactions: 0 },
                     { name: 'Sympli', status: 'Disconnected', transactions: 0 }
                   ].map((platform, idx) => (
-                    <div key={idx} className="p-4 bg-[#1e293b] rounded-lg border border-indigo-200">
+                    <div key={idx} className="p-4 bg-[#1e293b] rounded-lg border border-indigo-500/30">
                       <div className="font-bold text-white mb-2">{platform.name}</div>
                       <div className="text-sm text-slate-300 mb-3">
                         {platform.status === 'Connected' ? `${platform.transactions} transactions synced` : 'Not connected'}

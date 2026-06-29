@@ -118,25 +118,11 @@ export function AdminKYCReview({ onNavigate }: AdminKYCReviewProps) {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 mb-1">Pending Reviews</p>
-                <p className="text-3xl font-semibold text-gray-900">{loading ? '—' : pendingCount}</p>
+                <p className="text-sm text-slate-300 mb-1">Pending Reviews</p>
+                <p className="text-3xl font-semibold text-slate-100">{loading ? '—' : pendingCount}</p>
               </div>
-              <div className="p-3 bg-amber-50 rounded-lg">
-                <Eye className="w-6 h-6 text-amber-600" />
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-600 mb-1">Approved Today</p>
-                <p className="text-3xl font-semibold text-gray-900">{loading ? '—' : approvedCount}</p>
-              </div>
-              <div className="p-3 bg-green-50 rounded-lg">
-                <CheckCircle2 className="w-6 h-6 text-green-600" />
+              <div className="p-3 bg-amber-500/10 rounded-lg">
+                <Eye className="w-6 h-6 text-amber-400" />
               </div>
             </div>
           </CardContent>
@@ -146,11 +132,25 @@ export function AdminKYCReview({ onNavigate }: AdminKYCReviewProps) {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 mb-1">Rejected Today</p>
-                <p className="text-3xl font-semibold text-gray-900">{loading ? '—' : rejectedCount}</p>
+                <p className="text-sm text-slate-300 mb-1">Approved Today</p>
+                <p className="text-3xl font-semibold text-slate-100">{loading ? '—' : approvedCount}</p>
               </div>
-              <div className="p-3 bg-red-50 rounded-lg">
-                <XCircle className="w-6 h-6 text-red-600" />
+              <div className="p-3 bg-green-500/10 rounded-lg">
+                <CheckCircle2 className="w-6 h-6 text-green-400" />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-slate-300 mb-1">Rejected Today</p>
+                <p className="text-3xl font-semibold text-slate-100">{loading ? '—' : rejectedCount}</p>
+              </div>
+              <div className="p-3 bg-red-500/10 rounded-lg">
+                <XCircle className="w-6 h-6 text-red-400" />
               </div>
             </div>
           </CardContent>
@@ -184,7 +184,7 @@ export function AdminKYCReview({ onNavigate }: AdminKYCReviewProps) {
                   <TableRow key={submission.id}>
                     <TableCell className="font-medium">{submission.userName}</TableCell>
                     <TableCell>{submission.userRole}</TableCell>
-                    <TableCell className="text-gray-600">{submission.email}</TableCell>
+                    <TableCell className="text-slate-300">{submission.email}</TableCell>
                     <TableCell>{format(submission.submittedDate, 'dd MMM yyyy')}</TableCell>
                     <TableCell>{submission.documentsCount} files</TableCell>
                     <TableCell>
@@ -204,7 +204,7 @@ export function AdminKYCReview({ onNavigate }: AdminKYCReviewProps) {
                           <Button
                             size="sm"
                             variant="outline"
-                            className="text-green-600 hover:text-green-700"
+                            className="text-green-400 hover:text-green-300"
                             onClick={() => handleApprove(submission.id, submission.userName)}
                           >
                             <CheckCircle2 className="w-4 h-4 mr-1" />
@@ -213,7 +213,7 @@ export function AdminKYCReview({ onNavigate }: AdminKYCReviewProps) {
                           <Button
                             size="sm"
                             variant="outline"
-                            className="text-red-600 hover:text-red-700"
+                            className="text-red-400 hover:text-red-300"
                             onClick={() => handleReject(submission.id, submission.userName)}
                           >
                             <XCircle className="w-4 h-4 mr-1" />

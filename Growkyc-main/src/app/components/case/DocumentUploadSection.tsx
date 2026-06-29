@@ -25,14 +25,14 @@ export function DocumentUploadSection({
   onRemove
 }: DocumentUploadSectionProps) {
   return (
-    <Card className="border-2 border-purple-200">
+    <Card className="border-2 border-purple-500/30">
       <CardContent className="p-6">
         <div className="mb-6">
-          <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
-            <File className="w-5 h-5 text-purple-600" />
+          <h3 className="text-lg font-semibold text-slate-100 flex items-center gap-2">
+            <File className="w-5 h-5 text-purple-400" />
             {title}
           </h3>
-          <p className="text-sm text-gray-600 mt-1">{description}</p>
+          <p className="text-sm text-slate-300 mt-1">{description}</p>
         </div>
 
         <div className="space-y-4">
@@ -41,26 +41,26 @@ export function DocumentUploadSection({
               key={idx}
               className={`p-4 border-2 rounded-lg ${
                 category.uploaded
-                  ? 'border-green-200 bg-green-50'
+                  ? 'border-green-500/30 bg-green-500/10'
                   : category.required
-                  ? 'border-orange-200 bg-orange-50'
-                  : 'border-gray-200 bg-white'
+                  ? 'border-orange-500/30 bg-orange-500/10'
+                  : 'border-white/10 bg-white'
               }`}
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
-                    <p className="font-semibold text-gray-900">
+                    <p className="font-semibold text-slate-100">
                       {category.name}
                       {category.required && (
-                        <span className="text-red-600 ml-1">*</span>
+                        <span className="text-red-400 ml-1">*</span>
                       )}
                     </p>
                     {category.uploaded && (
-                      <CheckCircle className="w-4 h-4 text-green-600" />
+                      <CheckCircle className="w-4 h-4 text-green-400" />
                     )}
                   </div>
-                  <p className="text-xs text-gray-600">{category.description}</p>
+                  <p className="text-xs text-slate-300">{category.description}</p>
 
                   {/* Show uploaded files */}
                   {category.uploaded && category.files && category.files.length > 0 && (
@@ -68,14 +68,14 @@ export function DocumentUploadSection({
                       {category.files.map((file, fileIdx) => (
                         <div
                           key={fileIdx}
-                          className="flex items-center gap-2 text-xs bg-white p-2 rounded border border-gray-200"
+                          className="flex items-center gap-2 text-xs bg-white p-2 rounded border border-white/10"
                         >
-                          <File className="w-3 h-3 text-gray-500" />
-                          <span className="flex-1 text-gray-700">{file}</span>
+                          <File className="w-3 h-3 text-slate-400" />
+                          <span className="flex-1 text-slate-300">{file}</span>
                           {onRemove && (
                             <button
                               onClick={() => onRemove(category.name, file)}
-                              className="text-red-500 hover:text-red-700"
+                              className="text-red-500 hover:text-red-300"
                             >
                               <X className="w-3 h-3" />
                             </button>
@@ -92,7 +92,7 @@ export function DocumentUploadSection({
                   size="sm"
                   className={
                     category.uploaded
-                      ? 'border-green-300 text-green-700 hover:bg-green-50'
+                      ? 'border-green-300 text-green-300 hover:bg-green-500/10'
                       : ''
                   }
                 >
@@ -107,20 +107,20 @@ export function DocumentUploadSection({
         {/* Summary */}
         <div className="mt-6 pt-4 border-t flex items-center justify-between">
           <div className="text-sm">
-            <span className="font-semibold text-gray-900">
+            <span className="font-semibold text-slate-100">
               {categories.filter((c) => c.uploaded).length} of {categories.length}
             </span>
-            <span className="text-gray-600"> categories completed</span>
+            <span className="text-slate-300"> categories completed</span>
           </div>
-          <div className="text-xs text-gray-600">
+          <div className="text-xs text-slate-300">
             {categories.filter((c) => c.required && !c.uploaded).length > 0 && (
-              <span className="text-orange-600 font-medium">
+              <span className="text-orange-400 font-medium">
                 {categories.filter((c) => c.required && !c.uploaded).length} required
                 documents missing
               </span>
             )}
             {categories.filter((c) => c.required && !c.uploaded).length === 0 && (
-              <span className="text-green-600 font-medium">
+              <span className="text-green-400 font-medium">
                 ✓ All required documents uploaded
               </span>
             )}

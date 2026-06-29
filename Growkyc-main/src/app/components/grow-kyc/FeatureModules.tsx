@@ -324,7 +324,7 @@ export function FeatureModules({ onBack }: FeatureModulesProps) {
               return (
                 <Card
                   key={module.id}
-                  className="border-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 hover:shadow-xl transition-all cursor-pointer"
+                  className="border-2 border-green-500/30 bg-gradient-to-br from-green-50 to-emerald-50 hover:shadow-xl transition-all cursor-pointer"
                   onClick={() => setSelectedModule(module.id)}
                 >
                   <CardContent className="p-6">
@@ -349,7 +349,7 @@ export function FeatureModules({ onBack }: FeatureModulesProps) {
                           <div className="grid grid-cols-3 gap-3 mb-4">
                             {module.features.map((feature, idx) => (
                               <div key={idx} className="flex items-center gap-2 text-sm text-slate-300">
-                                <CheckCircle className="w-3 h-3 text-green-600 flex-shrink-0" />
+                                <CheckCircle className="w-3 h-3 text-green-400 flex-shrink-0" />
                                 <span>{feature}</span>
                               </div>
                             ))}
@@ -357,7 +357,7 @@ export function FeatureModules({ onBack }: FeatureModulesProps) {
 
                           <div className="flex items-center gap-4">
                             <div className="flex items-center gap-2">
-                              <TrendingUp className="w-4 h-4 text-green-600" />
+                              <TrendingUp className="w-4 h-4 text-green-400" />
                               <span className="text-sm text-slate-300">{module.stats.label}:</span>
                               <span className="font-bold text-white">{module.stats.value}</span>
                             </div>
@@ -414,7 +414,7 @@ export function FeatureModules({ onBack }: FeatureModulesProps) {
                         <div className="space-y-1 mb-3">
                           {module.features.slice(0, 3).map((feature, idx) => (
                             <div key={idx} className="flex items-center gap-2 text-xs text-slate-300">
-                              <AlertCircle className="w-3 h-3 text-amber-600 flex-shrink-0" />
+                              <AlertCircle className="w-3 h-3 text-amber-400 flex-shrink-0" />
                               <span>{feature}</span>
                             </div>
                           ))}
@@ -433,32 +433,32 @@ export function FeatureModules({ onBack }: FeatureModulesProps) {
         </div>
 
         {/* Implementation Timeline */}
-        <Card className="mt-12 bg-gradient-to-br from-indigo-50 to-purple-50 border-2 border-indigo-200">
+        <Card className="mt-12 bg-gradient-to-br from-indigo-50 to-purple-50 border-2 border-indigo-500/30">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Rocket className="w-5 h-5 text-indigo-600" />
+              <Rocket className="w-5 h-5 text-indigo-400" />
               Implementation Timeline
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               <div className="flex items-center gap-4">
-                <div className="w-32 font-bold text-indigo-600">Phase 1</div>
+                <div className="w-32 font-bold text-indigo-400">Phase 1</div>
                 <div className="flex-1 h-3 bg-green-600 rounded-full"></div>
                 <div className="w-40 text-sm text-slate-300">Complete (Accountants)</div>
               </div>
               <div className="flex items-center gap-4">
-                <div className="w-32 font-bold text-purple-600">Phase 2</div>
+                <div className="w-32 font-bold text-purple-400">Phase 2</div>
                 <div className="flex-1 h-3 bg-green-600 rounded-full"></div>
                 <div className="w-40 text-sm text-slate-300">Complete (Credit)</div>
               </div>
               <div className="flex items-center gap-4">
-                <div className="w-32 font-bold text-pink-600">Phase 3</div>
+                <div className="w-32 font-bold text-pink-400">Phase 3</div>
                 <div className="flex-1 h-3 bg-green-600 rounded-full"></div>
                 <div className="w-40 text-sm text-slate-300">Complete (AFSL + Funds)</div>
               </div>
               <div className="flex items-center gap-4">
-                <div className="w-32 font-bold text-red-600">Phase 4</div>
+                <div className="w-32 font-bold text-red-400">Phase 4</div>
                 <div className="flex-1 h-3 bg-green-600 rounded-full"></div>
                 <div className="w-40 text-sm text-slate-300">Complete (Legal + RE + Trustees)</div>
               </div>

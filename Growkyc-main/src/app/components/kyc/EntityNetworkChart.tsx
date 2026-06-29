@@ -31,10 +31,10 @@ export function EntityNetworkChart({ clientId, clientName }: EntityNetworkChartP
 
   const getRiskColor = (risk: string) => {
     switch (risk) {
-      case 'Critical': return 'border-red-500 bg-red-50';
-      case 'High': return 'border-orange-500 bg-orange-50';
-      case 'Medium': return 'border-yellow-500 bg-yellow-50';
-      default: return 'border-green-500 bg-green-50';
+      case 'Critical': return 'border-red-500 bg-red-500/10';
+      case 'High': return 'border-orange-500 bg-orange-500/10';
+      case 'Medium': return 'border-yellow-500 bg-yellow-500/10';
+      default: return 'border-green-500 bg-green-500/10';
     }
   };
 
@@ -73,39 +73,39 @@ export function EntityNetworkChart({ clientId, clientName }: EntityNetworkChartP
       <Card className="border-2 border-blue-300 shadow-lg">
         <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
           <CardTitle className="flex items-center gap-2">
-            <Network className="w-6 h-6 text-blue-600" />
+            <Network className="w-6 h-6 text-blue-400" />
             Entity Network Overview
           </CardTitle>
         </CardHeader>
         <CardContent className="p-6">
           <div className="grid grid-cols-4 gap-4">
-            <div className="bg-blue-50 rounded-lg p-4 border-2 border-blue-200">
+            <div className="bg-blue-500/10 rounded-lg p-4 border-2 border-blue-500/30">
               <div className="flex items-center gap-2 mb-2">
-                <Building className="w-5 h-5 text-blue-600" />
-                <p className="text-sm text-gray-600">Total Entities</p>
+                <Building className="w-5 h-5 text-blue-400" />
+                <p className="text-sm text-slate-300">Total Entities</p>
               </div>
-              <p className="text-4xl font-bold text-blue-600">{entities.length}</p>
+              <p className="text-4xl font-bold text-blue-400">{entities.length}</p>
             </div>
-            <div className="bg-purple-50 rounded-lg p-4 border-2 border-purple-200">
+            <div className="bg-purple-500/10 rounded-lg p-4 border-2 border-purple-500/30">
               <div className="flex items-center gap-2 mb-2">
-                <Users className="w-5 h-5 text-purple-600" />
-                <p className="text-sm text-gray-600">Connected People</p>
+                <Users className="w-5 h-5 text-purple-400" />
+                <p className="text-sm text-slate-300">Connected People</p>
               </div>
-              <p className="text-4xl font-bold text-purple-600">{people.length}</p>
+              <p className="text-4xl font-bold text-purple-400">{people.length}</p>
             </div>
-            <div className="bg-cyan-50 rounded-lg p-4 border-2 border-cyan-200">
+            <div className="bg-cyan-500/10 rounded-lg p-4 border-2 border-cyan-500/30">
               <div className="flex items-center gap-2 mb-2">
-                <User className="w-5 h-5 text-cyan-600" />
-                <p className="text-sm text-gray-600">Directorships</p>
+                <User className="w-5 h-5 text-cyan-400" />
+                <p className="text-sm text-slate-300">Directorships</p>
               </div>
-              <p className="text-4xl font-bold text-cyan-600">{totalDirectorships}</p>
+              <p className="text-4xl font-bold text-cyan-400">{totalDirectorships}</p>
             </div>
-            <div className="bg-orange-50 rounded-lg p-4 border-2 border-orange-200">
+            <div className="bg-orange-500/10 rounded-lg p-4 border-2 border-orange-500/30">
               <div className="flex items-center gap-2 mb-2">
-                <AlertTriangle className="w-5 h-5 text-orange-600" />
-                <p className="text-sm text-gray-600">High Risk</p>
+                <AlertTriangle className="w-5 h-5 text-orange-400" />
+                <p className="text-sm text-slate-300">High Risk</p>
               </div>
-              <p className="text-4xl font-bold text-orange-600">{highRiskCount}</p>
+              <p className="text-4xl font-bold text-orange-400">{highRiskCount}</p>
             </div>
           </div>
         </CardContent>
@@ -115,7 +115,7 @@ export function EntityNetworkChart({ clientId, clientName }: EntityNetworkChartP
       <Card className="border-2 border-blue-300 shadow-lg">
         <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
           <CardTitle className="flex items-center gap-2">
-            <TrendingUp className="w-6 h-6 text-blue-600" />
+            <TrendingUp className="w-6 h-6 text-blue-400" />
             Entity Relationship Map
           </CardTitle>
         </CardHeader>
@@ -177,12 +177,12 @@ export function EntityNetworkChart({ clientId, clientName }: EntityNetworkChartP
                         <div className={`relative border-4 rounded-xl shadow-xl p-5 min-w-[280px] ${getRiskColor(highestRisk)}`}>
                           <div className="flex items-center gap-3 mb-3">
                             <div className="relative">
-                              <User className="w-10 h-10 text-gray-700" />
+                              <User className="w-10 h-10 text-slate-300" />
                               <div className={`absolute -top-1 -right-1 w-4 h-4 rounded-full ${getRiskDotColor(highestRisk)} border-2 border-white`}></div>
                             </div>
                             <div className="flex-1">
-                              <p className="text-xs uppercase tracking-wide text-gray-600">Connected Person</p>
-                              <h4 className="text-lg font-bold text-gray-900">{personName}</h4>
+                              <p className="text-xs uppercase tracking-wide text-slate-300">Connected Person</p>
+                              <h4 className="text-lg font-bold text-slate-100">{personName}</h4>
                             </div>
                             <Badge className={`${getRiskDotColor(highestRisk)} text-white`}>
                               {highestRisk}
@@ -191,18 +191,18 @@ export function EntityNetworkChart({ clientId, clientName }: EntityNetworkChartP
                           
                           <div className="grid grid-cols-3 gap-2 text-xs">
                             <div className="bg-white bg-opacity-60 rounded p-2 text-center">
-                              <p className="text-gray-600">Entities</p>
-                              <p className="font-bold text-gray-900">{personEntities.length}</p>
+                              <p className="text-slate-300">Entities</p>
+                              <p className="font-bold text-slate-100">{personEntities.length}</p>
                             </div>
                             <div className="bg-white bg-opacity-60 rounded p-2 text-center">
-                              <p className="text-gray-600">Director</p>
-                              <p className="font-bold text-gray-900">
+                              <p className="text-slate-300">Director</p>
+                              <p className="font-bold text-slate-100">
                                 {personEntities.filter(e => e.relationship === 'Director' || e.relationship === 'Both').length}
                               </p>
                             </div>
                             <div className="bg-white bg-opacity-60 rounded p-2 text-center">
-                              <p className="text-gray-600">Shareholder</p>
-                              <p className="font-bold text-gray-900">
+                              <p className="text-slate-300">Shareholder</p>
+                              <p className="font-bold text-slate-100">
                                 {personEntities.filter(e => e.relationship === 'Shareholder' || e.relationship === 'Both').length}
                               </p>
                             </div>
@@ -247,30 +247,30 @@ export function EntityNetworkChart({ clientId, clientName }: EntityNetworkChartP
                                 >
                                   <div className="flex items-start gap-2 mb-3">
                                     <Building className={`w-6 h-6 flex-shrink-0 ${
-                                      entity.riskRating === 'Critical' ? 'text-red-600' :
-                                      entity.riskRating === 'High' ? 'text-orange-600' :
-                                      entity.riskRating === 'Medium' ? 'text-yellow-600' :
-                                      'text-green-600'
+                                      entity.riskRating === 'Critical' ? 'text-red-400' :
+                                      entity.riskRating === 'High' ? 'text-orange-400' :
+                                      entity.riskRating === 'Medium' ? 'text-yellow-400' :
+                                      'text-green-400'
                                     }`} />
                                     <div className="flex-1 min-w-0">
-                                      <h5 className="font-bold text-sm text-gray-900 leading-tight mb-1 line-clamp-2">
+                                      <h5 className="font-bold text-sm text-slate-100 leading-tight mb-1 line-clamp-2">
                                         {entity.entityName}
                                       </h5>
-                                      <p className="text-xs text-gray-600 truncate">{entity.jurisdiction}</p>
+                                      <p className="text-xs text-slate-300 truncate">{entity.jurisdiction}</p>
                                     </div>
                                   </div>
 
                                   <div className="space-y-2 mb-3">
                                     <div className="flex items-center justify-between text-xs">
-                                      <span className="text-gray-600">Relationship:</span>
+                                      <span className="text-slate-300">Relationship:</span>
                                       <Badge variant="outline" className="text-xs">
                                         {entity.relationship}
                                       </Badge>
                                     </div>
                                     {entity.ownershipPercentage > 0 && (
                                       <div className="flex items-center justify-between text-xs">
-                                        <span className="text-gray-600">Ownership:</span>
-                                        <span className="font-bold text-blue-600">{entity.ownershipPercentage}%</span>
+                                        <span className="text-slate-300">Ownership:</span>
+                                        <span className="font-bold text-blue-400">{entity.ownershipPercentage}%</span>
                                       </div>
                                     )}
                                   </div>
@@ -280,7 +280,7 @@ export function EntityNetworkChart({ clientId, clientName }: EntityNetworkChartP
                                       {entity.riskRating} Risk
                                     </Badge>
                                     {entity.adverseFindings.length > 0 && (
-                                      <div className="bg-red-100 text-red-700 rounded px-2 py-1 text-xs font-bold flex items-center gap-1">
+                                      <div className="bg-red-500/15 text-red-300 rounded px-2 py-1 text-xs font-bold flex items-center gap-1">
                                         <AlertTriangle className="w-3 h-3" />
                                         {entity.adverseFindings.length}
                                       </div>
@@ -289,44 +289,44 @@ export function EntityNetworkChart({ clientId, clientName }: EntityNetworkChartP
 
                                   {/* Expanded Details */}
                                   {isSelected && (
-                                    <div className="mt-3 pt-3 border-t border-gray-300 space-y-2 text-xs">
+                                    <div className="mt-3 pt-3 border-t border-white/10 space-y-2 text-xs">
                                       <div className="bg-white bg-opacity-80 rounded p-2">
-                                        <p className="text-gray-600">Industry</p>
-                                        <p className="font-semibold text-gray-900">{entity.industry}</p>
+                                        <p className="text-slate-300">Industry</p>
+                                        <p className="font-semibold text-slate-100">{entity.industry}</p>
                                       </div>
                                       <div className="bg-white bg-opacity-80 rounded p-2">
-                                        <p className="text-gray-600">Type</p>
-                                        <p className="font-semibold text-gray-900">{entity.entityType}</p>
+                                        <p className="text-slate-300">Type</p>
+                                        <p className="font-semibold text-slate-100">{entity.entityType}</p>
                                       </div>
                                       <div className="bg-white bg-opacity-80 rounded p-2">
-                                        <p className="text-gray-600">Status</p>
-                                        <p className="font-semibold text-gray-900">{entity.status}</p>
+                                        <p className="text-slate-300">Status</p>
+                                        <p className="font-semibold text-slate-100">{entity.status}</p>
                                       </div>
                                       {entity.directors && entity.directors.length > 0 && (
                                         <div className="bg-white bg-opacity-80 rounded p-2">
-                                          <p className="text-gray-600 mb-1">Directors</p>
+                                          <p className="text-slate-300 mb-1">Directors</p>
                                           <div className="space-y-1">
                                             {entity.directors.map((director, idx) => (
                                               <div key={idx} className="flex items-center gap-1">
                                                 <div className={`w-2 h-2 rounded-full ${getRiskDotColor(director.amlScreening.riskRating)}`}></div>
-                                                <span className="font-semibold text-gray-900 text-xs">{director.name}</span>
+                                                <span className="font-semibold text-slate-100 text-xs">{director.name}</span>
                                               </div>
                                             ))}
                                           </div>
                                         </div>
                                       )}
                                       {entity.adverseFindings.length > 0 && (
-                                        <div className="bg-red-50 border border-red-300 rounded p-2">
+                                        <div className="bg-red-500/10 border border-red-300 rounded p-2">
                                           <div className="flex items-center gap-1 mb-1">
-                                            <AlertTriangle className="w-3 h-3 text-red-600" />
-                                            <p className="text-red-900 font-bold">Adverse Findings</p>
+                                            <AlertTriangle className="w-3 h-3 text-red-400" />
+                                            <p className="text-red-300 font-bold">Adverse Findings</p>
                                           </div>
                                           <ul className="space-y-1">
                                             {entity.adverseFindings.slice(0, 2).map((finding, idx) => (
-                                              <li key={idx} className="text-red-800 text-xs">• {finding}</li>
+                                              <li key={idx} className="text-red-300 text-xs">• {finding}</li>
                                             ))}
                                             {entity.adverseFindings.length > 2 && (
-                                              <li className="text-red-800 text-xs italic">+ {entity.adverseFindings.length - 2} more</li>
+                                              <li className="text-red-300 text-xs italic">+ {entity.adverseFindings.length - 2} more</li>
                                             )}
                                           </ul>
                                         </div>
@@ -354,26 +354,26 @@ export function EntityNetworkChart({ clientId, clientName }: EntityNetworkChartP
 
             {/* Legend */}
             <div className="border-t pt-6 mt-8">
-              <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                <Shield className="w-5 h-5 text-gray-600" />
+              <h4 className="font-semibold text-slate-100 mb-3 flex items-center gap-2">
+                <Shield className="w-5 h-5 text-slate-300" />
                 Risk Level Legend
               </h4>
               <div className="grid grid-cols-4 gap-4">
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 rounded-full bg-green-500"></div>
-                  <span className="text-sm text-gray-700">Low Risk</span>
+                  <span className="text-sm text-slate-300">Low Risk</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 rounded-full bg-yellow-500"></div>
-                  <span className="text-sm text-gray-700">Medium Risk</span>
+                  <span className="text-sm text-slate-300">Medium Risk</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 rounded-full bg-orange-500"></div>
-                  <span className="text-sm text-gray-700">High Risk</span>
+                  <span className="text-sm text-slate-300">High Risk</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 rounded-full bg-red-500"></div>
-                  <span className="text-sm text-gray-700">Critical Risk</span>
+                  <span className="text-sm text-slate-300">Critical Risk</span>
                 </div>
               </div>
             </div>
@@ -382,13 +382,13 @@ export function EntityNetworkChart({ clientId, clientName }: EntityNetworkChartP
       </Card>
 
       {/* INSTRUCTIONS */}
-      <Card className="border-2 border-blue-200 bg-blue-50">
+      <Card className="border-2 border-blue-500/30 bg-blue-500/10">
         <CardContent className="p-4">
           <div className="flex items-start gap-3">
-            <Network className="w-5 h-5 text-blue-600 mt-0.5" />
-            <div className="text-sm text-blue-900">
+            <Network className="w-5 h-5 text-blue-400 mt-0.5" />
+            <div className="text-sm text-blue-300">
               <p className="font-semibold mb-1">How to Read This Chart:</p>
-              <ul className="list-disc list-inside space-y-1 text-blue-800">
+              <ul className="list-disc list-inside space-y-1 text-blue-300">
                 <li>The primary entity appears at the top in blue</li>
                 <li>Each connected person (director/shareholder) is shown with their entity network</li>
                 <li>Lines show ownership and directorship relationships</li>

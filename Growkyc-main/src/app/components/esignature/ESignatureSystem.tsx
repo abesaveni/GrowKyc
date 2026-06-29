@@ -203,12 +203,12 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'completed': return 'bg-green-100 text-green-800 border-green-200';
-      case 'in_progress': return 'bg-blue-100 text-blue-800 border-blue-200';
-      case 'pending': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
-      case 'declined': return 'bg-red-100 text-red-800 border-red-200';
-      case 'expired': return 'bg-gray-100 text-gray-800 border-gray-200';
-      default: return 'bg-gray-100 text-gray-800 border-gray-200';
+      case 'completed': return 'bg-green-500/15 text-green-300 border-green-500/30';
+      case 'in_progress': return 'bg-blue-500/15 text-blue-300 border-blue-500/30';
+      case 'pending': return 'bg-yellow-500/15 text-yellow-300 border-yellow-500/30';
+      case 'declined': return 'bg-red-500/15 text-red-300 border-red-500/30';
+      case 'expired': return 'bg-white/5 text-slate-100 border-white/10';
+      default: return 'bg-white/5 text-slate-100 border-white/10';
     }
   };
 
@@ -230,11 +230,11 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Active Requests</p>
-                <p className="text-2xl font-bold text-gray-900 mt-1">12</p>
-                <p className="text-xs text-orange-600 mt-1">2 expiring soon</p>
+                <p className="text-sm font-medium text-slate-300">Active Requests</p>
+                <p className="text-2xl font-bold text-slate-100 mt-1">12</p>
+                <p className="text-xs text-orange-400 mt-1">2 expiring soon</p>
               </div>
-              <Clock className="w-12 h-12 text-orange-600 opacity-20" />
+              <Clock className="w-12 h-12 text-orange-400 opacity-20" />
             </div>
           </CardContent>
         </Card>
@@ -243,11 +243,11 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Completed</p>
-                <p className="text-2xl font-bold text-gray-900 mt-1">247</p>
-                <p className="text-xs text-green-600 mt-1">↑ 18% this month</p>
+                <p className="text-sm font-medium text-slate-300">Completed</p>
+                <p className="text-2xl font-bold text-slate-100 mt-1">247</p>
+                <p className="text-xs text-green-400 mt-1">↑ 18% this month</p>
               </div>
-              <CheckCircle className="w-12 h-12 text-green-600 opacity-20" />
+              <CheckCircle className="w-12 h-12 text-green-400 opacity-20" />
             </div>
           </CardContent>
         </Card>
@@ -256,11 +256,11 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Avg. Completion</p>
-                <p className="text-2xl font-bold text-gray-900 mt-1">1.5d</p>
-                <p className="text-xs text-green-600 mt-1">↓ 20% faster</p>
+                <p className="text-sm font-medium text-slate-300">Avg. Completion</p>
+                <p className="text-2xl font-bold text-slate-100 mt-1">1.5d</p>
+                <p className="text-xs text-green-400 mt-1">↓ 20% faster</p>
               </div>
-              <BarChart3 className="w-12 h-12 text-blue-600 opacity-20" />
+              <BarChart3 className="w-12 h-12 text-blue-400 opacity-20" />
             </div>
           </CardContent>
         </Card>
@@ -269,11 +269,11 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Compliance</p>
-                <p className="text-2xl font-bold text-gray-900 mt-1">100%</p>
-                <p className="text-xs text-green-600 mt-1">Bank Level</p>
+                <p className="text-sm font-medium text-slate-300">Compliance</p>
+                <p className="text-2xl font-bold text-slate-100 mt-1">100%</p>
+                <p className="text-xs text-green-400 mt-1">Bank Level</p>
               </div>
-              <Shield className="w-12 h-12 text-purple-600 opacity-20" />
+              <Shield className="w-12 h-12 text-purple-400 opacity-20" />
             </div>
           </CardContent>
         </Card>
@@ -296,34 +296,34 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
         <CardContent>
           <div className="space-y-4">
             {signatureRequests.map((request) => (
-              <div key={request.id} className="border border-gray-200 rounded-lg p-5 hover:shadow-md transition-shadow">
+              <div key={request.id} className="border border-white/10 rounded-lg p-5 hover:shadow-md transition-shadow">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
-                      <FileSignature className="w-5 h-5 text-blue-600" />
-                      <h3 className="font-semibold text-gray-900">{request.documentName}</h3>
+                      <FileSignature className="w-5 h-5 text-blue-400" />
+                      <h3 className="font-semibold text-slate-100">{request.documentName}</h3>
                       <Badge className={`${getStatusColor(request.status)} flex items-center gap-1`}>
                         {getStatusIcon(request.status)}
                         {request.status.replace('_', ' ')}
                       </Badge>
                     </div>
-                    <div className="flex gap-6 text-sm text-gray-600 mb-3">
+                    <div className="flex gap-6 text-sm text-slate-300 mb-3">
                       <span className="flex items-center gap-1">
                         <Calendar className="w-4 h-4" />
                         Created {request.createdAt}
                       </span>
                       {request.expiresAt && (
-                        <span className="flex items-center gap-1 text-orange-600">
+                        <span className="flex items-center gap-1 text-orange-400">
                           <Clock className="w-4 h-4" />
                           Expires {request.expiresAt}
                         </span>
                       )}
                       <span className="flex items-center gap-1">
-                        <Shield className="w-4 h-4 text-purple-600" />
+                        <Shield className="w-4 h-4 text-purple-400" />
                         {request.complianceLevel}
                       </span>
                       <span className="flex items-center gap-1">
-                        <Key className="w-4 h-4 text-green-600" />
+                        <Key className="w-4 h-4 text-green-400" />
                         {request.identityVerification}
                       </span>
                     </div>
@@ -348,28 +348,28 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
 
                 {/* Parties */}
                 <div className="space-y-2">
-                  <p className="text-sm font-medium text-gray-700">Signing Parties:</p>
+                  <p className="text-sm font-medium text-slate-300">Signing Parties:</p>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                     {request.parties.map((party, idx) => (
                       <div key={idx} className={`p-3 rounded-lg border ${
-                        party.status === 'signed' ? 'bg-green-50 border-green-200' :
-                        party.status === 'pending' ? 'bg-yellow-50 border-yellow-200' :
-                        party.status === 'declined' ? 'bg-red-50 border-red-200' :
-                        'bg-gray-50 border-gray-200'
+                        party.status === 'signed' ? 'bg-green-500/10 border-green-500/30' :
+                        party.status === 'pending' ? 'bg-yellow-500/10 border-yellow-500/30' :
+                        party.status === 'declined' ? 'bg-red-500/10 border-red-500/30' :
+                        'bg-white/5 border-white/10'
                       }`}>
                         <div className="flex items-start justify-between">
                           <div className="flex-1">
-                            <p className="font-medium text-gray-900 text-sm">{party.name}</p>
-                            <p className="text-xs text-gray-600">{party.role}</p>
+                            <p className="font-medium text-slate-100 text-sm">{party.name}</p>
+                            <p className="text-xs text-slate-300">{party.role}</p>
                             {party.email && (
-                              <p className="text-xs text-gray-500 mt-1">{party.email}</p>
+                              <p className="text-xs text-slate-400 mt-1">{party.email}</p>
                             )}
                             {party.signedAt && (
                               <div className="mt-2 space-y-1">
-                                <p className="text-xs text-gray-600">Signed: {party.signedAt}</p>
-                                <p className="text-xs text-gray-500">IP: {party.ip}</p>
+                                <p className="text-xs text-slate-300">Signed: {party.signedAt}</p>
+                                <p className="text-xs text-slate-400">IP: {party.ip}</p>
                                 {party.verified && (
-                                  <Badge variant="outline" className="text-xs bg-green-50 text-green-700 border-green-300">
+                                  <Badge variant="outline" className="text-xs bg-green-500/10 text-green-300 border-green-300">
                                     <UserCheck className="w-3 h-3 mr-1" />
                                     Verified
                                   </Badge>
@@ -377,12 +377,12 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
                               </div>
                             )}
                             {party.status === 'declined' && party.reason && (
-                              <p className="text-xs text-red-600 mt-2">Reason: {party.reason}</p>
+                              <p className="text-xs text-red-400 mt-2">Reason: {party.reason}</p>
                             )}
                           </div>
-                          {party.status === 'signed' && <CheckCircle className="w-5 h-5 text-green-600" />}
-                          {party.status === 'pending' && <Clock className="w-5 h-5 text-yellow-600" />}
-                          {party.status === 'declined' && <X className="w-5 h-5 text-red-600" />}
+                          {party.status === 'signed' && <CheckCircle className="w-5 h-5 text-green-400" />}
+                          {party.status === 'pending' && <Clock className="w-5 h-5 text-yellow-400" />}
+                          {party.status === 'declined' && <X className="w-5 h-5 text-red-400" />}
                           {party.status === 'awaiting' && <AlertCircle className="w-5 h-5 text-gray-400" />}
                         </div>
                       </div>
@@ -391,8 +391,8 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
                 </div>
 
                 {/* Document Hash */}
-                <div className="mt-3 p-3 bg-gray-50 rounded-lg">
-                  <div className="flex items-center gap-2 text-xs text-gray-600">
+                <div className="mt-3 p-3 bg-white/5 rounded-lg">
+                  <div className="flex items-center gap-2 text-xs text-slate-300">
                     <Lock className="w-3 h-3" />
                     <span className="font-medium">Document Hash:</span>
                     <code className="font-mono">{request.documentHash}</code>
@@ -440,11 +440,11 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
           </div>
 
           {/* Status Tabs */}
-          <div className="flex gap-2 mb-6 border-b border-gray-200">
+          <div className="flex gap-2 mb-6 border-b border-white/10">
             {['all', 'pending', 'in_progress', 'completed', 'declined'].map((status) => (
               <button
                 key={status}
-                className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-300"
+                className="px-4 py-2 text-sm font-medium text-slate-300 hover:text-slate-100 border-b-2 border-transparent hover:border-white/10"
               >
                 {status.replace('_', ' ').charAt(0).toUpperCase() + status.slice(1).replace('_', ' ')}
                 <span className="ml-2 text-xs text-gray-400">
@@ -457,17 +457,17 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
           {/* Documents List */}
           <div className="space-y-3">
             {signatureRequests.map((request) => (
-              <div key={request.id} className="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
+              <div key={request.id} className="flex items-center justify-between p-4 border border-white/10 rounded-lg hover:bg-white/5">
                 <div className="flex items-center gap-4 flex-1">
-                  <FileCheck className="w-10 h-10 text-blue-600" />
+                  <FileCheck className="w-10 h-10 text-blue-400" />
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
-                      <h3 className="font-semibold text-gray-900">{request.documentName}</h3>
+                      <h3 className="font-semibold text-slate-100">{request.documentName}</h3>
                       <Badge className={getStatusColor(request.status)}>
                         {request.status.replace('_', ' ')}
                       </Badge>
                     </div>
-                    <div className="flex gap-4 text-sm text-gray-600">
+                    <div className="flex gap-4 text-sm text-slate-300">
                       <span>{request.id}</span>
                       <span>•</span>
                       <span>{request.parties.length} parties</span>
@@ -517,11 +517,11 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
                 <CardContent className="pt-6">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center">
-                        <FileText className="w-6 h-6 text-blue-600" />
+                      <div className="w-12 h-12 rounded-lg bg-blue-500/15 flex items-center justify-center">
+                        <FileText className="w-6 h-6 text-blue-400" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-gray-900">{template.name}</h3>
+                        <h3 className="font-semibold text-slate-100">{template.name}</h3>
                         <Badge variant="outline" className="mt-1">{template.category}</Badge>
                       </div>
                     </div>
@@ -532,8 +532,8 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
 
                   <div className="space-y-3">
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-600">Parties:</span>
-                      <span className="font-medium text-gray-900">{template.parties.length}</span>
+                      <span className="text-slate-300">Parties:</span>
+                      <span className="font-medium text-slate-100">{template.parties.length}</span>
                     </div>
                     <div className="flex flex-wrap gap-1">
                       {template.parties.map((party, idx) => (
@@ -543,23 +543,23 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
                       ))}
                     </div>
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-600">Form Fields:</span>
-                      <span className="font-medium text-gray-900">{template.fields}</span>
+                      <span className="text-slate-300">Form Fields:</span>
+                      <span className="font-medium text-slate-100">{template.fields}</span>
                     </div>
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-600">Usage Count:</span>
-                      <span className="font-medium text-gray-900">{template.usageCount}</span>
+                      <span className="text-slate-300">Usage Count:</span>
+                      <span className="font-medium text-slate-100">{template.usageCount}</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm">
-                      <Shield className="w-4 h-4 text-purple-600" />
-                      <span className="text-purple-600 font-medium">{template.complianceLevel}</span>
+                      <Shield className="w-4 h-4 text-purple-400" />
+                      <span className="text-purple-400 font-medium">{template.complianceLevel}</span>
                     </div>
-                    <div className="text-xs text-gray-500">
+                    <div className="text-xs text-slate-400">
                       Modified {template.lastModified}
                     </div>
                   </div>
 
-                  <div className="flex gap-2 mt-4 pt-4 border-t border-gray-200">
+                  <div className="flex gap-2 mt-4 pt-4 border-t border-white/10">
                     <Button variant="outline" size="sm" className="flex-1">
                       <Eye className="w-4 h-4 mr-2" />
                       Preview
@@ -590,12 +590,12 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
               <div className="flex items-start gap-3">
-                <Shield className="w-5 h-5 text-blue-600 mt-0.5" />
+                <Shield className="w-5 h-5 text-blue-400 mt-0.5" />
                 <div>
-                  <h3 className="font-semibold text-blue-900 mb-1">Bank-Level Audit Compliance</h3>
-                  <p className="text-sm text-blue-800">
+                  <h3 className="font-semibold text-blue-300 mb-1">Bank-Level Audit Compliance</h3>
+                  <p className="text-sm text-blue-300">
                     All signature activities are logged with tamper-proof timestamps, IP addresses, and identity verification records. 
                     Audit trails are immutable and meet APRA, ASIC, and banking regulatory requirements.
                   </p>
@@ -614,17 +614,17 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
                 { time: '2024-02-20 14:23:51', action: 'Document Signed', user: 'John Smith', ip: '203.45.67.89', detail: 'Loan Agreement - Signature applied with SMS verification' },
                 { time: '2024-02-19 11:05:33', action: 'Document Completed', user: 'System', ip: '203.123.45.67', detail: 'Security Agreement - All parties signed, document sealed' },
               ].map((entry, idx) => (
-                <div key={idx} className="flex items-start gap-4 p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
+                <div key={idx} className="flex items-start gap-4 p-4 border border-white/10 rounded-lg hover:bg-white/5">
                   <div className="w-32 flex-shrink-0">
-                    <p className="text-xs font-medium text-gray-900">{entry.time}</p>
+                    <p className="text-xs font-medium text-slate-100">{entry.time}</p>
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
                       <Badge variant="outline">{entry.action}</Badge>
-                      <span className="text-sm font-medium text-gray-900">{entry.user}</span>
+                      <span className="text-sm font-medium text-slate-100">{entry.user}</span>
                     </div>
-                    <p className="text-sm text-gray-600">{entry.detail}</p>
-                    <p className="text-xs text-gray-500 mt-1">IP: {entry.ip}</p>
+                    <p className="text-sm text-slate-300">{entry.detail}</p>
+                    <p className="text-xs text-slate-400 mt-1">IP: {entry.ip}</p>
                   </div>
                   <Button variant="ghost" size="sm">
                     <Eye className="w-4 h-4" />
@@ -652,27 +652,27 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
               <Card>
                 <CardContent className="pt-6">
                   <div className="text-center">
-                    <Shield className="w-12 h-12 text-green-600 mx-auto mb-3" />
-                    <h3 className="font-semibold text-gray-900 mb-1">Bank Level</h3>
-                    <p className="text-sm text-gray-600">Compliance Status</p>
+                    <Shield className="w-12 h-12 text-green-400 mx-auto mb-3" />
+                    <h3 className="font-semibold text-slate-100 mb-1">Bank Level</h3>
+                    <p className="text-sm text-slate-300">Compliance Status</p>
                   </div>
                 </CardContent>
               </Card>
               <Card>
                 <CardContent className="pt-6">
                   <div className="text-center">
-                    <Lock className="w-12 h-12 text-blue-600 mx-auto mb-3" />
-                    <h3 className="font-semibold text-gray-900 mb-1">AES-256</h3>
-                    <p className="text-sm text-gray-600">Encryption Standard</p>
+                    <Lock className="w-12 h-12 text-blue-400 mx-auto mb-3" />
+                    <h3 className="font-semibold text-slate-100 mb-1">AES-256</h3>
+                    <p className="text-sm text-slate-300">Encryption Standard</p>
                   </div>
                 </CardContent>
               </Card>
               <Card>
                 <CardContent className="pt-6">
                   <div className="text-center">
-                    <CheckSquare className="w-12 h-12 text-purple-600 mx-auto mb-3" />
-                    <h3 className="font-semibold text-gray-900 mb-1">100%</h3>
-                    <p className="text-sm text-gray-600">Audit Coverage</p>
+                    <CheckSquare className="w-12 h-12 text-purple-400 mx-auto mb-3" />
+                    <h3 className="font-semibold text-slate-100 mb-1">100%</h3>
+                    <p className="text-sm text-slate-300">Audit Coverage</p>
                   </div>
                 </CardContent>
               </Card>
@@ -680,18 +680,18 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
 
             {/* Compliance Checks */}
             <div>
-              <h3 className="font-semibold text-gray-900 mb-4">Compliance Features</h3>
+              <h3 className="font-semibold text-slate-100 mb-4">Compliance Features</h3>
               <div className="space-y-3">
                 {complianceChecks.map((check) => (
-                  <div key={check.id} className="flex items-start justify-between p-4 border border-gray-200 rounded-lg">
+                  <div key={check.id} className="flex items-start justify-between p-4 border border-white/10 rounded-lg">
                     <div className="flex items-start gap-3 flex-1">
-                      <CheckCircle className="w-5 h-5 text-green-600 mt-0.5" />
+                      <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
                       <div>
-                        <h4 className="font-medium text-gray-900">{check.name}</h4>
-                        <p className="text-sm text-gray-600 mt-1">{check.description}</p>
+                        <h4 className="font-medium text-slate-100">{check.name}</h4>
+                        <p className="text-sm text-slate-300 mt-1">{check.description}</p>
                       </div>
                     </div>
-                    <Badge variant="outline" className="bg-green-50 text-green-700 border-green-300">
+                    <Badge variant="outline" className="bg-green-500/10 text-green-300 border-green-300">
                       {check.status}
                     </Badge>
                   </div>
@@ -701,7 +701,7 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
 
             {/* Regulatory Standards */}
             <div>
-              <h3 className="font-semibold text-gray-900 mb-4">Regulatory Standards</h3>
+              <h3 className="font-semibold text-slate-100 mb-4">Regulatory Standards</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {[
                   { name: 'APRA Standards', description: 'Australian Prudential Regulation Authority', logo: '🇦🇺' },
@@ -711,13 +711,13 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
                   { name: 'UETA (US)', description: 'Uniform Electronic Transactions Act', logo: '📜' },
                   { name: 'ISO 27001', description: 'Information Security Management', logo: '🔒' }
                 ].map((standard, idx) => (
-                  <div key={idx} className="flex items-center gap-3 p-4 border border-gray-200 rounded-lg">
-                    <div className="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center text-2xl">
+                  <div key={idx} className="flex items-center gap-3 p-4 border border-white/10 rounded-lg">
+                    <div className="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center text-2xl">
                       {standard.logo}
                     </div>
                     <div>
-                      <h4 className="font-medium text-gray-900">{standard.name}</h4>
-                      <p className="text-sm text-gray-600">{standard.description}</p>
+                      <h4 className="font-medium text-slate-100">{standard.name}</h4>
+                      <p className="text-sm text-slate-300">{standard.description}</p>
                     </div>
                   </div>
                 ))}
@@ -740,40 +740,40 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
           <div className="space-y-6">
             {/* Identity Verification */}
             <div>
-              <h3 className="font-semibold text-gray-900 mb-4">Identity Verification</h3>
+              <h3 className="font-semibold text-slate-100 mb-4">Identity Verification</h3>
               <div className="space-y-3">
-                <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                <div className="flex items-center justify-between p-4 border border-white/10 rounded-lg">
                   <div>
-                    <h4 className="font-medium text-gray-900">SMS Verification</h4>
-                    <p className="text-sm text-gray-600">Send verification code via SMS</p>
+                    <h4 className="font-medium text-slate-100">SMS Verification</h4>
+                    <p className="text-sm text-slate-300">Send verification code via SMS</p>
                   </div>
                   <Switch defaultChecked />
                 </div>
-                <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                <div className="flex items-center justify-between p-4 border border-white/10 rounded-lg">
                   <div>
-                    <h4 className="font-medium text-gray-900">Email Verification</h4>
-                    <p className="text-sm text-gray-600">Send verification code via email</p>
+                    <h4 className="font-medium text-slate-100">Email Verification</h4>
+                    <p className="text-sm text-slate-300">Send verification code via email</p>
                   </div>
                   <Switch defaultChecked />
                 </div>
-                <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                <div className="flex items-center justify-between p-4 border border-white/10 rounded-lg">
                   <div>
-                    <h4 className="font-medium text-gray-900">ID Document Verification</h4>
-                    <p className="text-sm text-gray-600">Verify government-issued ID</p>
+                    <h4 className="font-medium text-slate-100">ID Document Verification</h4>
+                    <p className="text-sm text-slate-300">Verify government-issued ID</p>
                   </div>
                   <Switch defaultChecked />
                 </div>
-                <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                <div className="flex items-center justify-between p-4 border border-white/10 rounded-lg">
                   <div>
-                    <h4 className="font-medium text-gray-900">Biometric Verification</h4>
-                    <p className="text-sm text-gray-600">Fingerprint or facial recognition</p>
+                    <h4 className="font-medium text-slate-100">Biometric Verification</h4>
+                    <p className="text-sm text-slate-300">Fingerprint or facial recognition</p>
                   </div>
                   <Switch />
                 </div>
-                <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                <div className="flex items-center justify-between p-4 border border-white/10 rounded-lg">
                   <div>
-                    <h4 className="font-medium text-gray-900">Video Call Verification</h4>
-                    <p className="text-sm text-gray-600">Live video verification session</p>
+                    <h4 className="font-medium text-slate-100">Video Call Verification</h4>
+                    <p className="text-sm text-slate-300">Live video verification session</p>
                   </div>
                   <Switch />
                 </div>
@@ -782,33 +782,33 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
 
             {/* Security Settings */}
             <div>
-              <h3 className="font-semibold text-gray-900 mb-4">Security Settings</h3>
+              <h3 className="font-semibold text-slate-100 mb-4">Security Settings</h3>
               <div className="space-y-3">
-                <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                <div className="flex items-center justify-between p-4 border border-white/10 rounded-lg">
                   <div>
-                    <h4 className="font-medium text-gray-900">Require Password</h4>
-                    <p className="text-sm text-gray-600">Signers must enter password</p>
+                    <h4 className="font-medium text-slate-100">Require Password</h4>
+                    <p className="text-sm text-slate-300">Signers must enter password</p>
                   </div>
                   <Switch />
                 </div>
-                <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                <div className="flex items-center justify-between p-4 border border-white/10 rounded-lg">
                   <div>
-                    <h4 className="font-medium text-gray-900">IP Address Logging</h4>
-                    <p className="text-sm text-gray-600">Record IP address for each signature</p>
+                    <h4 className="font-medium text-slate-100">IP Address Logging</h4>
+                    <p className="text-sm text-slate-300">Record IP address for each signature</p>
                   </div>
                   <Switch defaultChecked />
                 </div>
-                <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                <div className="flex items-center justify-between p-4 border border-white/10 rounded-lg">
                   <div>
-                    <h4 className="font-medium text-gray-900">Geolocation Tracking</h4>
-                    <p className="text-sm text-gray-600">Record location when signing</p>
+                    <h4 className="font-medium text-slate-100">Geolocation Tracking</h4>
+                    <p className="text-sm text-slate-300">Record location when signing</p>
                   </div>
                   <Switch />
                 </div>
-                <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                <div className="flex items-center justify-between p-4 border border-white/10 rounded-lg">
                   <div>
-                    <h4 className="font-medium text-gray-900">Tamper Detection</h4>
-                    <p className="text-sm text-gray-600">Detect document modifications</p>
+                    <h4 className="font-medium text-slate-100">Tamper Detection</h4>
+                    <p className="text-sm text-slate-300">Detect document modifications</p>
                   </div>
                   <Switch defaultChecked />
                 </div>
@@ -817,11 +817,11 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
 
             {/* Workflow Settings */}
             <div>
-              <h3 className="font-semibold text-gray-900 mb-4">Workflow Settings</h3>
+              <h3 className="font-semibold text-slate-100 mb-4">Workflow Settings</h3>
               <div className="space-y-4">
                 <div>
                   <Label>Default Expiration Period</Label>
-                  <select className="w-full mt-2 px-3 py-2 border border-gray-300 rounded-lg">
+                  <select className="w-full mt-2 px-3 py-2 border border-white/10 rounded-lg">
                     <option>7 days</option>
                     <option>14 days</option>
                     <option>30 days</option>
@@ -831,24 +831,24 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
                 </div>
                 <div>
                   <Label>Reminder Frequency</Label>
-                  <select className="w-full mt-2 px-3 py-2 border border-gray-300 rounded-lg">
+                  <select className="w-full mt-2 px-3 py-2 border border-white/10 rounded-lg">
                     <option>Daily</option>
                     <option>Every 2 days</option>
                     <option>Every 3 days</option>
                     <option>Weekly</option>
                   </select>
                 </div>
-                <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                <div className="flex items-center justify-between p-4 border border-white/10 rounded-lg">
                   <div>
-                    <h4 className="font-medium text-gray-900">Sequential Signing</h4>
-                    <p className="text-sm text-gray-600">Enforce signing order</p>
+                    <h4 className="font-medium text-slate-100">Sequential Signing</h4>
+                    <p className="text-sm text-slate-300">Enforce signing order</p>
                   </div>
                   <Switch />
                 </div>
-                <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                <div className="flex items-center justify-between p-4 border border-white/10 rounded-lg">
                   <div>
-                    <h4 className="font-medium text-gray-900">Auto-Reminders</h4>
-                    <p className="text-sm text-gray-600">Send automatic reminder emails</p>
+                    <h4 className="font-medium text-slate-100">Auto-Reminders</h4>
+                    <p className="text-sm text-slate-300">Send automatic reminder emails</p>
                   </div>
                   <Switch defaultChecked />
                 </div>
@@ -861,9 +861,9 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white/5">
       {/* Header */}
-      <div className="bg-white border-b border-gray-200">
+      <div className="bg-white border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -874,13 +874,13 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
               )}
               <div>
                 <div className="flex items-center gap-3">
-                  <h1 className="text-2xl font-bold text-gray-900">E-Signature System</h1>
-                  <Badge className="bg-purple-100 text-purple-800 border-purple-200">
+                  <h1 className="text-2xl font-bold text-slate-100">E-Signature System</h1>
+                  <Badge className="bg-purple-500/15 text-purple-300 border-purple-500/30">
                     <Shield className="w-3 h-3 mr-1" />
                     Bank Level Compliance
                   </Badge>
                 </div>
-                <p className="text-sm text-gray-600 mt-1">Bank-level compliant digital signatures with full audit trails</p>
+                <p className="text-sm text-slate-300 mt-1">Bank-level compliant digital signatures with full audit trails</p>
               </div>
             </div>
             <div className="flex gap-2">
@@ -896,7 +896,7 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
           </div>
 
           {/* Tabs */}
-          <div className="flex gap-1 mt-6 border-b border-gray-200">
+          <div className="flex gap-1 mt-6 border-b border-white/10">
             {[
               { id: 'overview', label: 'Overview', icon: BarChart3 },
               { id: 'documents', label: 'Documents', icon: FileText },
@@ -912,8 +912,8 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
                   onClick={() => setActiveTab(tab.id as any)}
                   className={`flex items-center gap-2 px-4 py-3 text-sm font-medium border-b-2 transition-colors ${
                     activeTab === tab.id
-                      ? 'border-blue-600 text-blue-600'
-                      : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
+                      ? 'border-blue-600 text-blue-400'
+                      : 'border-transparent text-slate-300 hover:text-slate-100 hover:border-white/10'
                   }`}
                 >
                   <Icon className="w-4 h-4" />
@@ -947,22 +947,22 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
           <div className="space-y-6">
             {/* Step 1: Upload Document */}
             <div>
-              <h3 className="font-semibold text-gray-900 mb-3">Step 1: Upload Document</h3>
-              <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-blue-500 transition-colors cursor-pointer">
+              <h3 className="font-semibold text-slate-100 mb-3">Step 1: Upload Document</h3>
+              <div className="border-2 border-dashed border-white/10 rounded-lg p-8 text-center hover:border-blue-500 transition-colors cursor-pointer">
                 <Upload className="w-12 h-12 text-gray-400 mx-auto mb-3" />
-                <p className="text-sm font-medium text-gray-900 mb-1">Click to upload or drag and drop</p>
-                <p className="text-xs text-gray-500">PDF, DOC, DOCX up to 10MB</p>
+                <p className="text-sm font-medium text-slate-100 mb-1">Click to upload or drag and drop</p>
+                <p className="text-xs text-slate-400">PDF, DOC, DOCX up to 10MB</p>
               </div>
             </div>
 
             {/* Step 2: Add Signers */}
             <div>
-              <h3 className="font-semibold text-gray-900 mb-3">Step 2: Add Signers</h3>
+              <h3 className="font-semibold text-slate-100 mb-3">Step 2: Add Signers</h3>
               <div className="space-y-3">
                 <div className="grid grid-cols-3 gap-3">
                   <Input placeholder="Full Name" />
                   <Input placeholder="Email Address" />
-                  <select className="px-3 py-2 border border-gray-300 rounded-lg">
+                  <select className="px-3 py-2 border border-white/10 rounded-lg">
                     <option>Borrower</option>
                     <option>Lender</option>
                     <option>Guarantor</option>
@@ -979,7 +979,7 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
 
             {/* Step 3: Identity Verification */}
             <div>
-              <h3 className="font-semibold text-gray-900 mb-3">Step 3: Identity Verification</h3>
+              <h3 className="font-semibold text-slate-100 mb-3">Step 3: Identity Verification</h3>
               <div className="space-y-2">
                 <label className="flex items-center gap-2">
                   <input type="checkbox" defaultChecked className="rounded" />
@@ -1002,7 +1002,7 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
 
             {/* Step 4: Signing Options */}
             <div>
-              <h3 className="font-semibold text-gray-900 mb-3">Step 4: Signing Options</h3>
+              <h3 className="font-semibold text-slate-100 mb-3">Step 4: Signing Options</h3>
               <div className="space-y-3">
                 <div>
                   <Label>Expiration Date</Label>
@@ -1024,12 +1024,12 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
             </div>
 
             {/* Compliance Notice */}
-            <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
+            <div className="bg-purple-500/10 border border-purple-500/30 rounded-lg p-4">
               <div className="flex items-start gap-3">
-                <Shield className="w-5 h-5 text-purple-600 mt-0.5" />
+                <Shield className="w-5 h-5 text-purple-400 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold text-purple-900 mb-1">Bank-Level Compliance</h4>
-                  <p className="text-sm text-purple-800">
+                  <h4 className="font-semibold text-purple-300 mb-1">Bank-Level Compliance</h4>
+                  <p className="text-sm text-purple-300">
                     This signature request will include full audit trails, tamper detection, and meets all banking regulatory requirements.
                   </p>
                 </div>
@@ -1062,22 +1062,22 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
           </DialogHeader>
           <div className="space-y-6">
             {/* Identity Verification Required */}
-            <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
+            <div className="bg-orange-500/10 border border-orange-500/30 rounded-lg p-4">
               <div className="flex items-start gap-3">
-                <AlertTriangle className="w-5 h-5 text-orange-600 mt-0.5" />
+                <AlertTriangle className="w-5 h-5 text-orange-400 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold text-orange-900 mb-1">Identity Verification Required</h4>
-                  <p className="text-sm text-orange-800 mb-3">
+                  <h4 className="font-semibold text-orange-300 mb-1">Identity Verification Required</h4>
+                  <p className="text-sm text-orange-300 mb-3">
                     Before signing, you must verify your identity:
                   </p>
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-600" />
-                      <span className="text-sm text-gray-900">Email verification complete</span>
+                      <CheckCircle className="w-4 h-4 text-green-400" />
+                      <span className="text-sm text-slate-100">Email verification complete</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <AlertCircle className="w-4 h-4 text-orange-600" />
-                      <span className="text-sm text-gray-900">SMS verification pending</span>
+                      <AlertCircle className="w-4 h-4 text-orange-400" />
+                      <span className="text-sm text-slate-100">SMS verification pending</span>
                       <Button size="sm" variant="outline">
                         <Smartphone className="w-4 h-4 mr-2" />
                         Send Code
@@ -1089,8 +1089,8 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
             </div>
 
             {/* Document Preview */}
-            <div className="border-2 border-gray-300 rounded-lg p-8 bg-white">
-              <div className="text-center text-gray-500">
+            <div className="border-2 border-white/10 rounded-lg p-8 bg-white">
+              <div className="text-center text-slate-400">
                 <FileText className="w-16 h-16 mx-auto mb-4 text-gray-400" />
                 <p className="text-sm">Document preview would appear here</p>
                 <p className="text-xs mt-2">Loan Agreement - Case #MIP-2024-001</p>
@@ -1099,11 +1099,11 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
 
             {/* Signature Box */}
             <div>
-              <h3 className="font-semibold text-gray-900 mb-3">Apply Your Signature</h3>
-              <div className="border-2 border-blue-300 rounded-lg p-6 bg-blue-50">
+              <h3 className="font-semibold text-slate-100 mb-3">Apply Your Signature</h3>
+              <div className="border-2 border-blue-300 rounded-lg p-6 bg-blue-500/10">
                 <div className="text-center">
-                  <FileSignature className="w-12 h-12 text-blue-600 mx-auto mb-3" />
-                  <p className="text-sm text-gray-700 mb-4">Click to draw or type your signature</p>
+                  <FileSignature className="w-12 h-12 text-blue-400 mx-auto mb-3" />
+                  <p className="text-sm text-slate-300 mb-4">Click to draw or type your signature</p>
                   <div className="flex gap-3 justify-center">
                     <Button variant="outline">
                       <Edit className="w-4 h-4 mr-2" />
@@ -1125,37 +1125,37 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
             <div className="space-y-3">
               <label className="flex items-start gap-2">
                 <input type="checkbox" className="rounded mt-1" />
-                <span className="text-sm text-gray-700">
+                <span className="text-sm text-slate-300">
                   I have read and agree to the terms of this document
                 </span>
               </label>
               <label className="flex items-start gap-2">
                 <input type="checkbox" className="rounded mt-1" />
-                <span className="text-sm text-gray-700">
+                <span className="text-sm text-slate-300">
                   I consent to using electronic signatures and understand they have the same legal effect as handwritten signatures
                 </span>
               </label>
             </div>
 
             {/* Audit Information */}
-            <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
-              <h4 className="font-semibold text-gray-900 mb-2">Audit Information</h4>
+            <div className="bg-white/5 border border-white/10 rounded-lg p-4">
+              <h4 className="font-semibold text-slate-100 mb-2">Audit Information</h4>
               <div className="grid grid-cols-2 gap-3 text-sm">
                 <div>
-                  <span className="text-gray-600">Timestamp:</span>
-                  <span className="ml-2 text-gray-900">2024-02-21 16:35:42 AEDT</span>
+                  <span className="text-slate-300">Timestamp:</span>
+                  <span className="ml-2 text-slate-100">2024-02-21 16:35:42 AEDT</span>
                 </div>
                 <div>
-                  <span className="text-gray-600">IP Address:</span>
-                  <span className="ml-2 text-gray-900">203.56.78.90</span>
+                  <span className="text-slate-300">IP Address:</span>
+                  <span className="ml-2 text-slate-100">203.56.78.90</span>
                 </div>
                 <div>
-                  <span className="text-gray-600">Location:</span>
-                  <span className="ml-2 text-gray-900">Sydney, Australia</span>
+                  <span className="text-slate-300">Location:</span>
+                  <span className="ml-2 text-slate-100">Sydney, Australia</span>
                 </div>
                 <div>
-                  <span className="text-gray-600">Device:</span>
-                  <span className="ml-2 text-gray-900">Chrome on Windows</span>
+                  <span className="text-slate-300">Device:</span>
+                  <span className="ml-2 text-slate-100">Chrome on Windows</span>
                 </div>
               </div>
             </div>
@@ -1186,23 +1186,23 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
           </DialogHeader>
           <div className="space-y-4">
             {/* Document Info */}
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div>
-                  <span className="text-gray-600">Document ID:</span>
-                  <span className="ml-2 font-mono text-gray-900">{selectedDocument?.id}</span>
+                  <span className="text-slate-300">Document ID:</span>
+                  <span className="ml-2 font-mono text-slate-100">{selectedDocument?.id}</span>
                 </div>
                 <div>
-                  <span className="text-gray-600">Document Hash:</span>
-                  <span className="ml-2 font-mono text-gray-900">{selectedDocument?.documentHash}</span>
+                  <span className="text-slate-300">Document Hash:</span>
+                  <span className="ml-2 font-mono text-slate-100">{selectedDocument?.documentHash}</span>
                 </div>
                 <div>
-                  <span className="text-gray-600">Created:</span>
-                  <span className="ml-2 text-gray-900">{selectedDocument?.createdAt}</span>
+                  <span className="text-slate-300">Created:</span>
+                  <span className="ml-2 text-slate-100">{selectedDocument?.createdAt}</span>
                 </div>
                 <div>
-                  <span className="text-gray-600">Compliance:</span>
-                  <span className="ml-2 text-purple-600 font-medium">{selectedDocument?.complianceLevel}</span>
+                  <span className="text-slate-300">Compliance:</span>
+                  <span className="ml-2 text-purple-400 font-medium">{selectedDocument?.complianceLevel}</span>
                 </div>
               </div>
             </div>
@@ -1226,24 +1226,24 @@ export function ESignatureSystem({ onBack }: ESignatureSystemProps) {
                   <div className="flex-1 pb-8">
                     <div className="flex items-start justify-between mb-1">
                       <div>
-                        <h4 className="font-semibold text-gray-900">{entry.event}</h4>
-                        <p className="text-sm text-gray-600">{entry.user}</p>
+                        <h4 className="font-semibold text-slate-100">{entry.event}</h4>
+                        <p className="text-sm text-slate-300">{entry.user}</p>
                       </div>
-                      <span className="text-xs text-gray-500">{entry.time}</span>
+                      <span className="text-xs text-slate-400">{entry.time}</span>
                     </div>
-                    <p className="text-sm text-gray-600">{entry.details}</p>
+                    <p className="text-sm text-slate-300">{entry.details}</p>
                   </div>
                 </div>
               ))}
             </div>
 
             {/* Certificate */}
-            <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
+            <div className="bg-purple-500/10 border border-purple-500/30 rounded-lg p-4">
               <div className="flex items-start gap-3">
-                <Shield className="w-5 h-5 text-purple-600 mt-0.5" />
+                <Shield className="w-5 h-5 text-purple-400 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold text-purple-900 mb-1">Bank-Level Compliance Certificate</h4>
-                  <p className="text-sm text-purple-800 mb-3">
+                  <h4 className="font-semibold text-purple-300 mb-1">Bank-Level Compliance Certificate</h4>
+                  <p className="text-sm text-purple-300 mb-3">
                     This audit trail is tamper-proof and meets all banking regulatory requirements including APRA, ASIC, eIDAS, and ESIGN Act standards.
                   </p>
                   <Button size="sm" variant="outline">

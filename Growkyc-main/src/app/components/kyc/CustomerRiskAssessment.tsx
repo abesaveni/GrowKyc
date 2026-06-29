@@ -163,10 +163,10 @@ export function CustomerRiskAssessment({ caseData, onComplete }: CustomerRiskAss
 
   const getSeverityColor = (sev: string) => {
     switch (sev) {
-      case 'critical': return 'bg-red-100 text-red-800 border-red-200';
-      case 'high': return 'bg-orange-100 text-orange-800 border-orange-200';
-      case 'medium': return 'bg-amber-100 text-amber-800 border-amber-200';
-      default: return 'bg-blue-100 text-blue-800 border-blue-200';
+      case 'critical': return 'bg-red-500/15 text-red-300 border-red-500/30';
+      case 'high': return 'bg-orange-500/15 text-orange-300 border-orange-500/30';
+      case 'medium': return 'bg-amber-500/15 text-amber-300 border-amber-500/30';
+      default: return 'bg-blue-500/15 text-blue-300 border-blue-500/30';
     }
   };
 
@@ -175,21 +175,21 @@ export function CustomerRiskAssessment({ caseData, onComplete }: CustomerRiskAss
       case 'HIGH':
         return {
           bg: 'bg-gradient-to-r from-red-600 to-orange-600',
-          text: 'text-red-600',
+          text: 'text-red-400',
           badge: 'bg-red-500 text-white',
           desc: 'Immediate enhanced due diligence and senior management approval required.'
         };
       case 'MEDIUM':
         return {
           bg: 'bg-gradient-to-r from-amber-500 to-orange-500',
-          text: 'text-amber-600',
+          text: 'text-amber-400',
           badge: 'bg-amber-500 text-white',
           desc: 'Ongoing transaction monitoring and periodic verification required.'
         };
       default:
         return {
           bg: 'bg-gradient-to-r from-green-500 to-emerald-500',
-          text: 'text-green-600',
+          text: 'text-green-400',
           badge: 'bg-green-500 text-white',
           desc: 'Standard due diligence controls apply.'
         };
@@ -224,7 +224,7 @@ export function CustomerRiskAssessment({ caseData, onComplete }: CustomerRiskAss
             <div className="h-10 w-[1px] bg-white/20 mx-2" />
             <div className="text-center">
               <p className="text-xs text-white/80 uppercase font-black tracking-widest">Active Tier</p>
-              <Badge className="bg-white text-gray-900 font-bold px-3 py-1 mt-1">{activeLevel}</Badge>
+              <Badge className="bg-white text-slate-100 font-bold px-3 py-1 mt-1">{activeLevel}</Badge>
             </div>
           </div>
         </div>
@@ -235,8 +235,8 @@ export function CustomerRiskAssessment({ caseData, onComplete }: CustomerRiskAss
         <div className="lg:col-span-2 space-y-6">
           {/* Risk Factors Checklist */}
           <Card className="border shadow-lg">
-            <CardHeader className="bg-slate-50/50 border-b">
-              <CardTitle className="flex items-center gap-2 text-lg text-slate-800">
+            <CardHeader className="bg-white/5/50 border-b">
+              <CardTitle className="flex items-center gap-2 text-lg text-slate-100">
                 <AlertTriangle className="w-5 h-5 text-amber-500" />
                 Security Risk Factors Breakdown
               </CardTitle>
@@ -244,27 +244,27 @@ export function CustomerRiskAssessment({ caseData, onComplete }: CustomerRiskAss
             <CardContent className="p-6 space-y-4">
               {riskCalculation.factors.length > 0 ? (
                 riskCalculation.factors.map((factor, idx) => (
-                  <div key={idx} className="flex gap-4 p-4 rounded-xl border border-slate-100 hover:border-slate-300 bg-white transition-all shadow-sm">
+                  <div key={idx} className="flex gap-4 p-4 rounded-xl border border-white/10 hover:border-white/10 bg-white transition-all shadow-sm">
                     <div className="flex-shrink-0 mt-1">
-                      <div className="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center text-red-600">
+                      <div className="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400">
                         <AlertTriangle className="w-5 h-5" />
                       </div>
                     </div>
                     <div className="flex-1 space-y-1">
                       <div className="flex items-center justify-between">
-                        <h4 className="font-bold text-slate-900 text-sm">{factor.label}</h4>
+                        <h4 className="font-bold text-slate-100 text-sm">{factor.label}</h4>
                         <Badge className={`${getSeverityColor(factor.severity)} text-xs font-semibold px-2 py-0.5 border`}>
                           +{factor.impact} Impact
                         </Badge>
                       </div>
-                      <p className="text-xs text-slate-600 leading-relaxed">{factor.desc}</p>
+                      <p className="text-xs text-slate-300 leading-relaxed">{factor.desc}</p>
                     </div>
                   </div>
                 ))
               ) : (
                 <div className="text-center py-8 space-y-3">
                   <CheckCircle className="w-12 h-12 text-green-500 mx-auto" />
-                  <p className="text-slate-600 font-medium">No elevated risk factors detected. Standard KYC clean profile.</p>
+                  <p className="text-slate-300 font-medium">No elevated risk factors detected. Standard KYC clean profile.</p>
                 </div>
               )}
             </CardContent>
@@ -275,35 +275,35 @@ export function CustomerRiskAssessment({ caseData, onComplete }: CustomerRiskAss
         <div className="space-y-6">
           {/* Risk Governance & Override Card */}
           <Card className="border shadow-lg">
-            <CardHeader className="bg-slate-50/50 border-b">
-              <CardTitle className="flex items-center gap-2 text-lg text-slate-800">
-                <Settings className="w-5 h-5 text-blue-600" />
+            <CardHeader className="bg-white/5/50 border-b">
+              <CardTitle className="flex items-center gap-2 text-lg text-slate-100">
+                <Settings className="w-5 h-5 text-blue-400" />
                 Compliance Override Panel
               </CardTitle>
             </CardHeader>
             <CardContent className="p-6 space-y-6">
               <div className="space-y-2">
-                <label className="text-xs font-bold text-slate-700 block">System Computed Tier</label>
-                <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between">
-                  <span className="text-xs font-semibold text-slate-700">Algorithm Scoring</span>
-                  <Badge variant="outline" className="font-black text-slate-800">{riskCalculation.level}</Badge>
+                <label className="text-xs font-bold text-slate-300 block">System Computed Tier</label>
+                <div className="p-3 bg-white/5 border border-white/10 rounded-xl flex items-center justify-between">
+                  <span className="text-xs font-semibold text-slate-300">Algorithm Scoring</span>
+                  <Badge variant="outline" className="font-black text-slate-100">{riskCalculation.level}</Badge>
                 </div>
               </div>
 
               {isOverridden && (
-                <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-800">
+                <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl text-xs text-amber-300">
                   <p className="font-bold">⚠️ Compliance Override Active</p>
                   <p className="mt-1">Standard scoring overridden by officer. Justification attached to permanent audit logs.</p>
                 </div>
               )}
 
-              <div className="space-y-4 pt-2 border-t border-slate-100">
+              <div className="space-y-4 pt-2 border-t border-white/10">
                 <div className="space-y-1">
-                  <label className="text-xs font-bold text-slate-700 block">Override Target Tier</label>
+                  <label className="text-xs font-bold text-slate-300 block">Override Target Tier</label>
                   <select
                     value={overrideLevel}
                     onChange={(e) => setOverrideLevel(e.target.value as any)}
-                    className="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full bg-white border border-white/10 rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500"
                   >
                     <option value="">Select Level...</option>
                     <option value="LOW">LOW</option>
@@ -313,12 +313,12 @@ export function CustomerRiskAssessment({ caseData, onComplete }: CustomerRiskAss
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-xs font-bold text-slate-700 block">Compliance Justification</label>
+                  <label className="text-xs font-bold text-slate-300 block">Compliance Justification</label>
                   <textarea
                     value={overrideReason}
                     onChange={(e) => setOverrideReason(e.target.value)}
                     rows={3}
-                    className="w-full border border-slate-300 rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full border border-white/10 rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="Enter explicit operational rationale for overriding Computed Risk Score..."
                   />
                 </div>
@@ -334,7 +334,7 @@ export function CustomerRiskAssessment({ caseData, onComplete }: CustomerRiskAss
                     <Button 
                       variant="outline"
                       onClick={handleResetOverride}
-                      className="border border-red-200 hover:bg-red-50 text-red-600 text-xs font-bold py-2.5 rounded-xl"
+                      className="border border-red-500/30 hover:bg-red-500/10 text-red-400 text-xs font-bold py-2.5 rounded-xl"
                     >
                       Reset
                     </Button>
@@ -345,13 +345,13 @@ export function CustomerRiskAssessment({ caseData, onComplete }: CustomerRiskAss
           </Card>
 
           {/* Confirm Risk Assessment Stage */}
-          <Card className="border-2 border-green-200 shadow-lg bg-green-50/20">
+          <Card className="border-2 border-green-500/30 shadow-lg bg-green-500/10/20">
             <CardContent className="p-6 space-y-4">
               <div className="flex gap-3">
-                <ShieldCheck className="w-8 h-8 text-green-600 flex-shrink-0" />
+                <ShieldCheck className="w-8 h-8 text-green-400 flex-shrink-0" />
                 <div>
-                  <h4 className="font-bold text-slate-900 text-sm">Lock Assessment</h4>
-                  <p className="text-xs text-slate-600 leading-relaxed">
+                  <h4 className="font-bold text-slate-100 text-sm">Lock Assessment</h4>
+                  <p className="text-xs text-slate-300 leading-relaxed">
                     Once locked, this score will be written to the active audit report.
                   </p>
                 </div>

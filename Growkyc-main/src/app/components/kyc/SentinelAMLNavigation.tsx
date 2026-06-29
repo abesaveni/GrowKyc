@@ -229,10 +229,10 @@ export function SentinelAMLNavigation({ onBack }: SentinelAMLNavigationProps) {
                 <div className="w-16 h-16 bg-gray-500/20 rounded-lg flex items-center justify-center">
                   <Eye className="w-8 h-8 text-gray-400" />
                 </div>
-                <Lock className="w-8 h-8 text-gray-500" />
+                <Lock className="w-8 h-8 text-slate-400" />
               </div>
               <h3 className="text-2xl font-bold text-gray-400 mb-2">Evidence Vault</h3>
-              <p className="text-gray-500 mb-4">
+              <p className="text-slate-400 mb-4">
                 Secure document storage with 7-year retention and audit trails
               </p>
               <div className="flex items-center gap-4 text-sm">
@@ -268,7 +268,7 @@ export function SentinelAMLNavigation({ onBack }: SentinelAMLNavigationProps) {
 
   // Module Views
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
+    <div className="min-h-screen bg-white/5 p-8">
       <div className="max-w-7xl mx-auto">
         <Button
           variant="ghost"

@@ -91,11 +91,11 @@ export function AUSTRACProgramModule() {
             </div>
           </div>
           <div className="flex gap-3">
-            <Button className="bg-white text-blue-700 hover:bg-blue-50">
+            <Button className="bg-white text-blue-300 hover:bg-blue-500/10">
               <Download className="w-5 h-5 mr-2" />
               Download Program
             </Button>
-            <Button className="bg-white text-blue-700 hover:bg-blue-50">
+            <Button className="bg-white text-blue-300 hover:bg-blue-500/10">
               <Edit className="w-5 h-5 mr-2" />
               Edit Program
             </Button>
@@ -147,7 +147,7 @@ export function AUSTRACProgramModule() {
       </div>
 
       {/* Navigation Tabs */}
-      <div className="border-b border-gray-200">
+      <div className="border-b border-white/10">
         <div className="flex gap-2">
           {[
             { id: 'overview', label: 'Overview', icon: Book },
@@ -162,8 +162,8 @@ export function AUSTRACProgramModule() {
                 onClick={() => setActiveSection(tab.id as any)}
                 className={`px-6 py-3 font-semibold flex items-center gap-2 transition-colors ${
                   activeSection === tab.id
-                    ? 'border-b-2 border-blue-700 text-blue-700'
-                    : 'text-gray-600 hover:text-gray-900'
+                    ? 'border-b-2 border-blue-700 text-blue-300'
+                    : 'text-slate-300 hover:text-slate-100'
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -177,21 +177,21 @@ export function AUSTRACProgramModule() {
       {/* Overview Tab */}
       {activeSection === 'overview' && (
         <div className="space-y-6">
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">AML/CTF Program Overview</h3>
-            <p className="text-gray-700 mb-4">
+          <div className="bg-white rounded-lg border border-white/10 p-6">
+            <h3 className="text-xl font-bold text-slate-100 mb-4">AML/CTF Program Overview</h3>
+            <p className="text-slate-300 mb-4">
               This AML/CTF Program has been developed in accordance with the Anti-Money Laundering and Counter-Terrorism 
               Financing Act 2006 (AML/CTF Act) and the AML/CTF Rules. The program is designed to identify, mitigate and 
               manage the money laundering and terrorism financing risks faced by Melbourne Accounting Partners.
             </p>
 
             <div className="grid grid-cols-2 gap-4 mt-6">
-              <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                <h4 className="font-bold text-blue-900 mb-2">Part A - Program Overview</h4>
-                <p className="text-sm text-blue-800 mb-3">
+              <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+                <h4 className="font-bold text-blue-300 mb-2">Part A - Program Overview</h4>
+                <p className="text-sm text-blue-300 mb-3">
                   Sets out the ML/TF risks faced by the business and the controls implemented to mitigate these risks.
                 </p>
-                <ul className="text-sm text-blue-800 space-y-1">
+                <ul className="text-sm text-blue-300 space-y-1">
                   <li>• Business overview & services</li>
                   <li>• ML/TF risk assessment</li>
                   <li>• Risk mitigation strategies</li>
@@ -199,12 +199,12 @@ export function AUSTRACProgramModule() {
                 </ul>
               </div>
 
-              <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
-                <h4 className="font-bold text-green-900 mb-2">Part B - Compliance Procedures</h4>
-                <p className="text-sm text-green-800 mb-3">
+              <div className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
+                <h4 className="font-bold text-green-300 mb-2">Part B - Compliance Procedures</h4>
+                <p className="text-sm text-green-300 mb-3">
                   Details the specific procedures to comply with AML/CTF obligations.
                 </p>
-                <ul className="text-sm text-green-800 space-y-1">
+                <ul className="text-sm text-green-300 space-y-1">
                   <li>• Customer identification (KYC/CDD)</li>
                   <li>• Beneficial ownership verification</li>
                   <li>• Ongoing monitoring & screening</li>
@@ -214,8 +214,8 @@ export function AUSTRACProgramModule() {
             </div>
           </div>
 
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Key Program Elements</h3>
+          <div className="bg-white rounded-lg border border-white/10 p-6">
+            <h3 className="text-xl font-bold text-slate-100 mb-4">Key Program Elements</h3>
             <div className="grid grid-cols-3 gap-4">
               {[
                 { title: 'Risk-Based Approach', icon: Target, desc: 'Risk assessment drives controls' },
@@ -227,25 +227,25 @@ export function AUSTRACProgramModule() {
               ].map((element, index) => {
                 const Icon = element.icon;
                 return (
-                  <div key={index} className="p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
-                    <Icon className="w-8 h-8 text-blue-600 mb-3" />
-                    <h4 className="font-bold text-gray-900 mb-1">{element.title}</h4>
-                    <p className="text-sm text-gray-600">{element.desc}</p>
+                  <div key={index} className="p-4 border border-white/10 rounded-lg hover:shadow-md transition-shadow">
+                    <Icon className="w-8 h-8 text-blue-400 mb-3" />
+                    <h4 className="font-bold text-slate-100 mb-1">{element.title}</h4>
+                    <p className="text-sm text-slate-300">{element.desc}</p>
                   </div>
                 );
               })}
             </div>
           </div>
 
-          <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+          <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-6">
             <div className="flex items-start gap-3">
-              <CheckCircle className="w-6 h-6 text-green-600 mt-0.5" />
+              <CheckCircle className="w-6 h-6 text-green-400 mt-0.5" />
               <div>
-                <h3 className="font-bold text-green-900 mb-2">Program Approval & Review</h3>
-                <p className="text-sm text-green-800 mb-2">
+                <h3 className="font-bold text-green-300 mb-2">Program Approval & Review</h3>
+                <p className="text-sm text-green-300 mb-2">
                   This AML/CTF Program has been approved by the Board of Directors and is reviewed annually.
                 </p>
-                <ul className="text-sm text-green-800 space-y-1">
+                <ul className="text-sm text-green-300 space-y-1">
                   <li>• <strong>Approved by:</strong> {programStatus.approvedBy}</li>
                   <li>• <strong>Last Review:</strong> {new Date(programStatus.lastReview).toLocaleDateString()}</li>
                   <li>• <strong>Next Review:</strong> {new Date(programStatus.nextReview).toLocaleDateString()}</li>
@@ -260,23 +260,23 @@ export function AUSTRACProgramModule() {
       {/* Part A Tab */}
       {activeSection === 'part-a' && (
         <div className="space-y-6">
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Part A - AML/CTF Program</h3>
-            <p className="text-gray-700 mb-6">
+          <div className="bg-white rounded-lg border border-white/10 p-6">
+            <h3 className="text-xl font-bold text-slate-100 mb-4">Part A - AML/CTF Program</h3>
+            <p className="text-slate-300 mb-6">
               Part A establishes the framework for the AML/CTF Program, including the ML/TF risk assessment 
               and the controls implemented to address identified risks.
             </p>
 
             <div className="space-y-3">
               {partASections[0].sections.map((section, index) => (
-                <div key={index} className="p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
+                <div key={index} className="p-4 border border-white/10 rounded-lg hover:bg-white/5">
                   <div className="flex items-center justify-between">
                     <div className="flex-1">
-                      <h4 className="font-bold text-gray-900 mb-1">{section.name}</h4>
-                      <p className="text-sm text-gray-600">Last updated: {section.lastUpdated}</p>
+                      <h4 className="font-bold text-slate-100 mb-1">{section.name}</h4>
+                      <p className="text-sm text-slate-300">Last updated: {section.lastUpdated}</p>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full flex items-center gap-1">
+                      <span className="px-3 py-1 bg-green-500/15 text-green-300 text-xs font-bold rounded-full flex items-center gap-1">
                         <CheckCircle className="w-4 h-4" />
                         COMPLETE
                       </span>
@@ -300,23 +300,23 @@ export function AUSTRACProgramModule() {
       {/* Part B Tab */}
       {activeSection === 'part-b' && (
         <div className="space-y-6">
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Part B - Compliance Procedures</h3>
-            <p className="text-gray-700 mb-6">
+          <div className="bg-white rounded-lg border border-white/10 p-6">
+            <h3 className="text-xl font-bold text-slate-100 mb-4">Part B - Compliance Procedures</h3>
+            <p className="text-slate-300 mb-6">
               Part B contains the detailed procedures for complying with AML/CTF obligations, including 
               customer identification, ongoing due diligence, and reporting requirements.
             </p>
 
             <div className="space-y-3">
               {partBSections[0].sections.map((section, index) => (
-                <div key={index} className="p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
+                <div key={index} className="p-4 border border-white/10 rounded-lg hover:bg-white/5">
                   <div className="flex items-center justify-between">
                     <div className="flex-1">
-                      <h4 className="font-bold text-gray-900 mb-1">{section.name}</h4>
-                      <p className="text-sm text-gray-600">Last updated: {section.lastUpdated}</p>
+                      <h4 className="font-bold text-slate-100 mb-1">{section.name}</h4>
+                      <p className="text-sm text-slate-300">Last updated: {section.lastUpdated}</p>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full flex items-center gap-1">
+                      <span className="px-3 py-1 bg-green-500/15 text-green-300 text-xs font-bold rounded-full flex items-center gap-1">
                         <CheckCircle className="w-4 h-4" />
                         COMPLETE
                       </span>
@@ -340,9 +340,9 @@ export function AUSTRACProgramModule() {
       {/* Documents Tab */}
       {activeSection === 'documents' && (
         <div className="space-y-6">
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
+          <div className="bg-white rounded-lg border border-white/10 p-6">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-xl font-bold text-gray-900">Program Documents</h3>
+              <h3 className="text-xl font-bold text-slate-100">Program Documents</h3>
               <Button className="bg-blue-600 hover:bg-blue-700">
                 <Upload className="w-4 h-4 mr-2" />
                 Upload Document
@@ -351,14 +351,14 @@ export function AUSTRACProgramModule() {
 
             <div className="space-y-3">
               {documents.map((doc, index) => (
-                <div key={index} className="p-4 border border-gray-200 rounded-lg hover:bg-gray-50 flex items-center justify-between">
+                <div key={index} className="p-4 border border-white/10 rounded-lg hover:bg-white/5 flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-                      <FileText className="w-6 h-6 text-red-600" />
+                    <div className="w-12 h-12 bg-red-500/15 rounded-lg flex items-center justify-center">
+                      <FileText className="w-6 h-6 text-red-400" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-900">{doc.name}</h4>
-                      <p className="text-sm text-gray-600">{doc.size} • {doc.type} • Updated {doc.date}</p>
+                      <h4 className="font-bold text-slate-100">{doc.name}</h4>
+                      <p className="text-sm text-slate-300">{doc.size} • {doc.type} • Updated {doc.date}</p>
                     </div>
                   </div>
                   <div className="flex gap-2">

@@ -178,32 +178,32 @@ export function CaseManagement({ onViewCase }: CaseManagementProps = {}) {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'open': return 'bg-blue-100 text-blue-700';
-      case 'in_progress': return 'bg-yellow-100 text-yellow-700';
-      case 'pending_approval': return 'bg-orange-100 text-orange-700';
-      case 'approved': return 'bg-green-100 text-green-700';
-      case 'rejected': return 'bg-red-100 text-red-700';
-      case 'closed': return 'bg-gray-100 text-gray-700';
-      default: return 'bg-gray-100 text-gray-700';
+      case 'open': return 'bg-blue-500/15 text-blue-300';
+      case 'in_progress': return 'bg-yellow-500/15 text-yellow-300';
+      case 'pending_approval': return 'bg-orange-500/15 text-orange-300';
+      case 'approved': return 'bg-green-500/15 text-green-300';
+      case 'rejected': return 'bg-red-500/15 text-red-300';
+      case 'closed': return 'bg-white/5 text-slate-300';
+      default: return 'bg-white/5 text-slate-300';
     }
   };
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
-      case 'critical': return 'text-red-600';
-      case 'high': return 'text-orange-600';
-      case 'medium': return 'text-yellow-600';
-      case 'low': return 'text-blue-600';
-      default: return 'text-gray-600';
+      case 'critical': return 'text-red-400';
+      case 'high': return 'text-orange-400';
+      case 'medium': return 'text-yellow-400';
+      case 'low': return 'text-blue-400';
+      default: return 'text-slate-300';
     }
   };
 
   const getRiskColor = (risk: string) => {
     switch (risk) {
-      case 'high': return 'bg-red-100 text-red-700 border-red-200';
-      case 'medium': return 'bg-yellow-100 text-yellow-700 border-yellow-200';
-      case 'low': return 'bg-green-100 text-green-700 border-green-200';
-      default: return 'bg-gray-100 text-gray-700 border-gray-200';
+      case 'high': return 'bg-red-500/15 text-red-300 border-red-500/30';
+      case 'medium': return 'bg-yellow-500/15 text-yellow-300 border-yellow-500/30';
+      case 'low': return 'bg-green-500/15 text-green-300 border-green-500/30';
+      default: return 'bg-white/5 text-slate-300 border-white/10';
     }
   };
 
@@ -236,8 +236,8 @@ export function CaseManagement({ onViewCase }: CaseManagementProps = {}) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Case Management</h1>
-          <p className="text-gray-600 mt-1">Manage AML/CTF compliance cases and investigations</p>
+          <h1 className="text-3xl font-bold text-slate-100">Case Management</h1>
+          <p className="text-slate-300 mt-1">Manage AML/CTF compliance cases and investigations</p>
         </div>
         <Button className="bg-blue-600 hover:bg-blue-700" onClick={() => setView('create')}>
           <Plus className="w-4 h-4 mr-2" />
@@ -247,38 +247,38 @@ export function CaseManagement({ onViewCase }: CaseManagementProps = {}) {
 
       {/* Stats */}
       <div className="grid grid-cols-4 gap-4">
-        <div className="bg-white rounded-lg border border-gray-200 p-4">
+        <div className="bg-white rounded-lg border border-white/10 p-4">
           <div className="flex items-center justify-between mb-2">
-            <FileText className="w-8 h-8 text-blue-600" />
-            <span className="text-3xl font-bold text-gray-900">{stats.open}</span>
+            <FileText className="w-8 h-8 text-blue-400" />
+            <span className="text-3xl font-bold text-slate-100">{stats.open}</span>
           </div>
-          <p className="text-sm text-gray-600">Active Cases</p>
+          <p className="text-sm text-slate-300">Active Cases</p>
         </div>
-        <div className="bg-white rounded-lg border border-red-200 p-4">
+        <div className="bg-white rounded-lg border border-red-500/30 p-4">
           <div className="flex items-center justify-between mb-2">
-            <AlertTriangle className="w-8 h-8 text-red-600" />
-            <span className="text-3xl font-bold text-red-600">{stats.critical}</span>
+            <AlertTriangle className="w-8 h-8 text-red-400" />
+            <span className="text-3xl font-bold text-red-400">{stats.critical}</span>
           </div>
-          <p className="text-sm text-gray-600">Critical Priority</p>
+          <p className="text-sm text-slate-300">Critical Priority</p>
         </div>
-        <div className="bg-white rounded-lg border border-orange-200 p-4">
+        <div className="bg-white rounded-lg border border-orange-500/30 p-4">
           <div className="flex items-center justify-between mb-2">
-            <Clock className="w-8 h-8 text-orange-600" />
-            <span className="text-3xl font-bold text-orange-600">{stats.pending}</span>
+            <Clock className="w-8 h-8 text-orange-400" />
+            <span className="text-3xl font-bold text-orange-400">{stats.pending}</span>
           </div>
-          <p className="text-sm text-gray-600">Pending Approval</p>
+          <p className="text-sm text-slate-300">Pending Approval</p>
         </div>
-        <div className="bg-white rounded-lg border border-red-200 p-4">
+        <div className="bg-white rounded-lg border border-red-500/30 p-4">
           <div className="flex items-center justify-between mb-2">
-            <Calendar className="w-8 h-8 text-red-600" />
-            <span className="text-3xl font-bold text-red-600">{stats.overdue}</span>
+            <Calendar className="w-8 h-8 text-red-400" />
+            <span className="text-3xl font-bold text-red-400">{stats.overdue}</span>
           </div>
-          <p className="text-sm text-gray-600">Overdue</p>
+          <p className="text-sm text-slate-300">Overdue</p>
         </div>
       </div>
 
       {/* Filters & Search */}
-      <div className="bg-white rounded-lg border border-gray-200 p-4">
+      <div className="bg-white rounded-lg border border-white/10 p-4">
         <div className="flex items-center gap-4">
           <div className="flex-1">
             <div className="relative">
@@ -288,16 +288,16 @@ export function CaseManagement({ onViewCase }: CaseManagementProps = {}) {
                 placeholder="Search cases by title, client, or case number..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full pl-10 pr-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <Filter className="w-5 h-5 text-gray-600" />
+            <Filter className="w-5 h-5 text-slate-300" />
             <select
               value={filterType}
               onChange={(e) => setFilterType(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="all">All Types</option>
               <option value="initial_cdd">Initial CDD</option>
@@ -310,7 +310,7 @@ export function CaseManagement({ onViewCase }: CaseManagementProps = {}) {
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="all">All Status</option>
               <option value="open">Open</option>
@@ -324,19 +324,19 @@ export function CaseManagement({ onViewCase }: CaseManagementProps = {}) {
       </div>
 
       {/* Cases Table */}
-      <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+      <div className="bg-white rounded-lg border border-white/10 overflow-hidden">
         <table className="w-full">
-          <thead className="bg-gray-50 border-b border-gray-200">
+          <thead className="bg-white/5 border-b border-white/10">
             <tr>
-              <th className="text-left py-4 px-4 font-semibold text-gray-900">Case</th>
-              <th className="text-left py-4 px-4 font-semibold text-gray-900">Type</th>
-              <th className="text-left py-4 px-4 font-semibold text-gray-900">Client</th>
-              <th className="text-center py-4 px-4 font-semibold text-gray-900">Priority</th>
-              <th className="text-center py-4 px-4 font-semibold text-gray-900">Risk</th>
-              <th className="text-center py-4 px-4 font-semibold text-gray-900">Status</th>
-              <th className="text-left py-4 px-4 font-semibold text-gray-900">Assigned To</th>
-              <th className="text-center py-4 px-4 font-semibold text-gray-900">Due Date</th>
-              <th className="text-center py-4 px-4 font-semibold text-gray-900">Actions</th>
+              <th className="text-left py-4 px-4 font-semibold text-slate-100">Case</th>
+              <th className="text-left py-4 px-4 font-semibold text-slate-100">Type</th>
+              <th className="text-left py-4 px-4 font-semibold text-slate-100">Client</th>
+              <th className="text-center py-4 px-4 font-semibold text-slate-100">Priority</th>
+              <th className="text-center py-4 px-4 font-semibold text-slate-100">Risk</th>
+              <th className="text-center py-4 px-4 font-semibold text-slate-100">Status</th>
+              <th className="text-left py-4 px-4 font-semibold text-slate-100">Assigned To</th>
+              <th className="text-center py-4 px-4 font-semibold text-slate-100">Due Date</th>
+              <th className="text-center py-4 px-4 font-semibold text-slate-100">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -346,17 +346,17 @@ export function CaseManagement({ onViewCase }: CaseManagementProps = {}) {
                               caseItem.status !== 'approved';
               
               return (
-                <tr key={caseItem.id} className="border-b border-gray-100 hover:bg-gray-50">
+                <tr key={caseItem.id} className="border-b border-white/10 hover:bg-white/5">
                   <td className="py-4 px-4">
                     <div>
-                      <p className="font-semibold text-gray-900">{caseItem.caseNumber}</p>
-                      <p className="text-sm text-gray-600">{caseItem.title}</p>
+                      <p className="font-semibold text-slate-100">{caseItem.caseNumber}</p>
+                      <p className="text-sm text-slate-300">{caseItem.title}</p>
                       <div className="flex items-center gap-3 mt-1">
-                        <span className="text-xs text-gray-500 flex items-center">
+                        <span className="text-xs text-slate-400 flex items-center">
                           <Paperclip className="w-3 h-3 mr-1" />
                           {caseItem.evidenceCount}
                         </span>
-                        <span className="text-xs text-gray-500 flex items-center">
+                        <span className="text-xs text-slate-400 flex items-center">
                           <MessageSquare className="w-3 h-3 mr-1" />
                           {caseItem.notesCount}
                         </span>
@@ -364,14 +364,14 @@ export function CaseManagement({ onViewCase }: CaseManagementProps = {}) {
                     </div>
                   </td>
                   <td className="py-4 px-4">
-                    <span className="inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-semibold">
+                    <span className="inline-block px-3 py-1 bg-white/5 text-slate-300 rounded-full text-sm font-semibold">
                       {caseTypeLabels[caseItem.type]}
                     </span>
                   </td>
                   <td className="py-4 px-4">
-                    <p className="font-semibold text-gray-900">{caseItem.client}</p>
+                    <p className="font-semibold text-slate-100">{caseItem.client}</p>
                     {caseItem.clientId && (
-                      <p className="text-xs text-gray-600">{caseItem.clientId}</p>
+                      <p className="text-xs text-slate-300">{caseItem.clientId}</p>
                     )}
                   </td>
                   <td className="text-center py-4 px-4">
@@ -390,14 +390,14 @@ export function CaseManagement({ onViewCase }: CaseManagementProps = {}) {
                     </span>
                   </td>
                   <td className="py-4 px-4">
-                    <span className="text-sm text-gray-900">{caseItem.assignedTo}</span>
+                    <span className="text-sm text-slate-100">{caseItem.assignedTo}</span>
                   </td>
                   <td className="text-center py-4 px-4">
-                    <p className={`text-sm font-semibold ${isOverdue ? 'text-red-600' : 'text-gray-900'}`}>
+                    <p className={`text-sm font-semibold ${isOverdue ? 'text-red-400' : 'text-slate-100'}`}>
                       {new Date(caseItem.dueDate).toLocaleDateString()}
                     </p>
                     {isOverdue && (
-                      <p className="text-xs text-red-600">OVERDUE</p>
+                      <p className="text-xs text-red-400">OVERDUE</p>
                     )}
                   </td>
                   <td className="text-center py-4 px-4">
@@ -427,10 +427,10 @@ export function CaseManagement({ onViewCase }: CaseManagementProps = {}) {
       </div>
 
       {filteredCases.length === 0 && (
-        <div className="bg-white rounded-lg border border-gray-200 p-12 text-center">
+        <div className="bg-white rounded-lg border border-white/10 p-12 text-center">
           <FileText className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-          <h3 className="text-xl font-bold text-gray-900 mb-2">No Cases Found</h3>
-          <p className="text-gray-600 mb-6">No cases match your current filters.</p>
+          <h3 className="text-xl font-bold text-slate-100 mb-2">No Cases Found</h3>
+          <p className="text-slate-300 mb-6">No cases match your current filters.</p>
           <Button onClick={() => { setFilterType('all'); setFilterStatus('all'); setSearchQuery(''); }}>
             Clear Filters
           </Button>
@@ -461,8 +461,8 @@ function CreateCaseWizard({ onClose }: { onClose: () => void }) {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Create New Case</h1>
-          <p className="text-gray-600 mt-1">Start a new compliance case</p>
+          <h1 className="text-3xl font-bold text-slate-100">Create New Case</h1>
+          <p className="text-slate-300 mt-1">Start a new compliance case</p>
         </div>
         <Button variant="outline" onClick={onClose}>
           <X className="w-4 h-4 mr-2" />
@@ -471,8 +471,8 @@ function CreateCaseWizard({ onClose }: { onClose: () => void }) {
       </div>
 
       {/* Case Type Selection */}
-      <div className="bg-white rounded-lg border border-gray-200 p-6">
-        <h3 className="font-bold text-gray-900 mb-4">Select Case Type</h3>
+      <div className="bg-white rounded-lg border border-white/10 p-6">
+        <h3 className="font-bold text-slate-100 mb-4">Select Case Type</h3>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {caseTypes.map((type) => {
             const Icon = type.icon;
@@ -482,15 +482,15 @@ function CreateCaseWizard({ onClose }: { onClose: () => void }) {
                 onClick={() => setCaseType(type.id)}
                 className={`p-4 rounded-lg border-2 text-left transition-all hover:shadow-md ${
                   caseType === type.id
-                    ? 'border-blue-500 bg-blue-50'
-                    : 'border-gray-200 hover:border-blue-300'
+                    ? 'border-blue-500 bg-blue-500/10'
+                    : 'border-white/10 hover:border-blue-300'
                 }`}
               >
-                <Icon className={`w-6 h-6 mb-2 ${caseType === type.id ? 'text-blue-600' : 'text-gray-600'}`} />
-                <h4 className="font-bold text-gray-900 text-sm mb-1">{type.label}</h4>
-                <p className="text-xs text-gray-600">{type.description}</p>
+                <Icon className={`w-6 h-6 mb-2 ${caseType === type.id ? 'text-blue-400' : 'text-slate-300'}`} />
+                <h4 className="font-bold text-slate-100 text-sm mb-1">{type.label}</h4>
+                <p className="text-xs text-slate-300">{type.description}</p>
                 {caseType === type.id && (
-                  <CheckCircle className="w-5 h-5 text-blue-600 absolute top-3 right-3" />
+                  <CheckCircle className="w-5 h-5 text-blue-400 absolute top-3 right-3" />
                 )}
               </button>
             );
@@ -500,37 +500,37 @@ function CreateCaseWizard({ onClose }: { onClose: () => void }) {
 
       {/* Case Details */}
       {caseType && (
-        <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-4">
-          <h3 className="font-bold text-gray-900 mb-4">Case Details</h3>
+        <div className="bg-white rounded-lg border border-white/10 p-6 space-y-4">
+          <h3 className="font-bold text-slate-100 mb-4">Case Details</h3>
           
           <div>
-            <label className="block text-sm font-semibold text-gray-900 mb-2">Case Title *</label>
+            <label className="block text-sm font-semibold text-slate-100 mb-2">Case Title *</label>
             <input
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Brief description of the case"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-900 mb-2">Client/Entity *</label>
+            <label className="block text-sm font-semibold text-slate-100 mb-2">Client/Entity *</label>
             <input
               type="text"
               value={client}
               onChange={(e) => setClient(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Search for client..."
             />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-900 mb-2">Priority Level *</label>
+            <label className="block text-sm font-semibold text-slate-100 mb-2">Priority Level *</label>
             <select
               value={priority}
               onChange={(e) => setPriority(e.target.value as any)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="critical">Critical</option>
               <option value="high">High</option>
@@ -540,11 +540,11 @@ function CreateCaseWizard({ onClose }: { onClose: () => void }) {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-900 mb-2">Assign To *</label>
+            <label className="block text-sm font-semibold text-slate-100 mb-2">Assign To *</label>
             <select
               value={assignTo}
               onChange={(e) => setAssignTo(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="">Select staff member...</option>
               <option value="john">John Smith - AML Officer</option>
@@ -554,12 +554,12 @@ function CreateCaseWizard({ onClose }: { onClose: () => void }) {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-900 mb-2">Description *</label>
+            <label className="block text-sm font-semibold text-slate-100 mb-2">Description *</label>
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               rows={4}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Detailed description of the case, trigger source, and initial findings..."
             />
           </div>
@@ -588,18 +588,18 @@ function CaseDetailView({ case: caseData, onClose }: { case: Case; onClose: () =
       <div className="flex items-center justify-between">
         <div>
           <div className="flex items-center gap-3 mb-2">
-            <h1 className="text-3xl font-bold text-gray-900">{caseData.caseNumber}</h1>
+            <h1 className="text-3xl font-bold text-slate-100">{caseData.caseNumber}</h1>
             <span className={`px-3 py-1 rounded-full text-sm font-semibold ${
-              caseData.status === 'open' ? 'bg-blue-100 text-blue-700' :
-              caseData.status === 'in_progress' ? 'bg-yellow-100 text-yellow-700' :
-              caseData.status === 'pending_approval' ? 'bg-orange-100 text-orange-700' :
-              caseData.status === 'approved' ? 'bg-green-100 text-green-700' :
-              'bg-gray-100 text-gray-700'
+              caseData.status === 'open' ? 'bg-blue-500/15 text-blue-300' :
+              caseData.status === 'in_progress' ? 'bg-yellow-500/15 text-yellow-300' :
+              caseData.status === 'pending_approval' ? 'bg-orange-500/15 text-orange-300' :
+              caseData.status === 'approved' ? 'bg-green-500/15 text-green-300' :
+              'bg-white/5 text-slate-300'
             }`}>
               {caseData.status.replace('_', ' ').toUpperCase()}
             </span>
           </div>
-          <p className="text-gray-600">{caseData.title}</p>
+          <p className="text-slate-300">{caseData.title}</p>
         </div>
         <div className="flex items-center gap-3">
           <Button variant="outline">
@@ -615,33 +615,33 @@ function CaseDetailView({ case: caseData, onClose }: { case: Case; onClose: () =
 
       {/* Case Summary */}
       <div className="grid grid-cols-4 gap-4">
-        <div className="bg-white rounded-lg border border-gray-200 p-4">
-          <p className="text-sm text-gray-600 mb-1">Client</p>
-          <p className="font-bold text-gray-900">{caseData.client}</p>
+        <div className="bg-white rounded-lg border border-white/10 p-4">
+          <p className="text-sm text-slate-300 mb-1">Client</p>
+          <p className="font-bold text-slate-100">{caseData.client}</p>
         </div>
-        <div className="bg-white rounded-lg border border-gray-200 p-4">
-          <p className="text-sm text-gray-600 mb-1">Priority</p>
+        <div className="bg-white rounded-lg border border-white/10 p-4">
+          <p className="text-sm text-slate-300 mb-1">Priority</p>
           <div className="flex items-center gap-2">
             <AlertTriangle className={`w-5 h-5 ${
-              caseData.priority === 'critical' ? 'text-red-600' :
-              caseData.priority === 'high' ? 'text-orange-600' :
-              caseData.priority === 'medium' ? 'text-yellow-600' : 'text-blue-600'
+              caseData.priority === 'critical' ? 'text-red-400' :
+              caseData.priority === 'high' ? 'text-orange-400' :
+              caseData.priority === 'medium' ? 'text-yellow-400' : 'text-blue-400'
             }`} />
-            <span className="font-bold text-gray-900 capitalize">{caseData.priority}</span>
+            <span className="font-bold text-slate-100 capitalize">{caseData.priority}</span>
           </div>
         </div>
-        <div className="bg-white rounded-lg border border-gray-200 p-4">
-          <p className="text-sm text-gray-600 mb-1">Due Date</p>
-          <p className="font-bold text-gray-900">{new Date(caseData.dueDate).toLocaleDateString()}</p>
+        <div className="bg-white rounded-lg border border-white/10 p-4">
+          <p className="text-sm text-slate-300 mb-1">Due Date</p>
+          <p className="font-bold text-slate-100">{new Date(caseData.dueDate).toLocaleDateString()}</p>
         </div>
-        <div className="bg-white rounded-lg border border-gray-200 p-4">
-          <p className="text-sm text-gray-600 mb-1">Assigned To</p>
-          <p className="font-bold text-gray-900">{caseData.assignedTo}</p>
+        <div className="bg-white rounded-lg border border-white/10 p-4">
+          <p className="text-sm text-slate-300 mb-1">Assigned To</p>
+          <p className="font-bold text-slate-100">{caseData.assignedTo}</p>
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="border-b border-gray-200">
+      <div className="border-b border-white/10">
         <div className="flex gap-1">
           {[
             { id: 'overview', label: 'Overview', icon: FileText },
@@ -657,8 +657,8 @@ function CaseDetailView({ case: caseData, onClose }: { case: Case; onClose: () =
                 onClick={() => setActiveTab(tab.id as any)}
                 className={`px-6 py-3 font-semibold flex items-center gap-2 transition-colors ${
                   activeTab === tab.id
-                    ? 'border-b-2 border-blue-600 text-blue-600'
-                    : 'text-gray-600 hover:text-gray-900'
+                    ? 'border-b-2 border-blue-600 text-blue-400'
+                    : 'text-slate-300 hover:text-slate-100'
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -670,30 +670,30 @@ function CaseDetailView({ case: caseData, onClose }: { case: Case; onClose: () =
       </div>
 
       {/* Tab Content */}
-      <div className="bg-white rounded-lg border border-gray-200 p-6">
+      <div className="bg-white rounded-lg border border-white/10 p-6">
         {activeTab === 'overview' && (
           <div className="space-y-6">
             <div>
-              <h3 className="font-bold text-gray-900 mb-3">Case Information</h3>
+              <h3 className="font-bold text-slate-100 mb-3">Case Information</h3>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <p className="text-sm text-gray-600">Case Type</p>
-                  <p className="font-semibold text-gray-900">Enhanced CDD</p>
+                  <p className="text-sm text-slate-300">Case Type</p>
+                  <p className="font-semibold text-slate-100">Enhanced CDD</p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Trigger Source</p>
-                  <p className="font-semibold text-gray-900">{caseData.triggerSource}</p>
+                  <p className="text-sm text-slate-300">Trigger Source</p>
+                  <p className="font-semibold text-slate-100">{caseData.triggerSource}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Created Date</p>
-                  <p className="font-semibold text-gray-900">{new Date(caseData.createdDate).toLocaleDateString()}</p>
+                  <p className="text-sm text-slate-300">Created Date</p>
+                  <p className="font-semibold text-slate-100">{new Date(caseData.createdDate).toLocaleDateString()}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Risk Level</p>
+                  <p className="text-sm text-slate-300">Risk Level</p>
                   <span className={`inline-block px-3 py-1 rounded-full text-sm font-bold ${
-                    caseData.riskLevel === 'high' ? 'bg-red-100 text-red-700' :
-                    caseData.riskLevel === 'medium' ? 'bg-yellow-100 text-yellow-700' :
-                    'bg-green-100 text-green-700'
+                    caseData.riskLevel === 'high' ? 'bg-red-500/15 text-red-300' :
+                    caseData.riskLevel === 'medium' ? 'bg-yellow-500/15 text-yellow-300' :
+                    'bg-green-500/15 text-green-300'
                   }`}>
                     {caseData.riskLevel.toUpperCase()}
                   </span>
@@ -702,8 +702,8 @@ function CaseDetailView({ case: caseData, onClose }: { case: Case; onClose: () =
             </div>
 
             <div className="pt-6 border-t">
-              <h3 className="font-bold text-gray-900 mb-3">Description</h3>
-              <p className="text-gray-700">
+              <h3 className="font-bold text-slate-100 mb-3">Description</h3>
+              <p className="text-slate-300">
                 Enhanced customer due diligence required following sanctions alert on beneficial owner. 
                 Potential match detected through GreenID monitoring service. Requires investigation of 
                 beneficial ownership structure, source of funds verification, and senior manager approval 
@@ -712,7 +712,7 @@ function CaseDetailView({ case: caseData, onClose }: { case: Case; onClose: () =
             </div>
 
             <div className="pt-6 border-t">
-              <h3 className="font-bold text-gray-900 mb-3">Required Actions</h3>
+              <h3 className="font-bold text-slate-100 mb-3">Required Actions</h3>
               <div className="space-y-2">
                 {[
                   { task: 'Verify beneficial ownership structure', status: 'complete' },
@@ -721,12 +721,12 @@ function CaseDetailView({ case: caseData, onClose }: { case: Case; onClose: () =
                   { task: 'Prepare enhanced CDD report', status: 'pending' },
                   { task: 'Obtain senior manager approval', status: 'pending' }
                 ].map((action, index) => (
-                  <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <span className="text-gray-900">{action.task}</span>
+                  <div key={index} className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
+                    <span className="text-slate-100">{action.task}</span>
                     <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                      action.status === 'complete' ? 'bg-green-100 text-green-700' :
-                      action.status === 'in_progress' ? 'bg-yellow-100 text-yellow-700' :
-                      'bg-gray-100 text-gray-700'
+                      action.status === 'complete' ? 'bg-green-500/15 text-green-300' :
+                      action.status === 'in_progress' ? 'bg-yellow-500/15 text-yellow-300' :
+                      'bg-white/5 text-slate-300'
                     }`}>
                       {action.status.replace('_', ' ').toUpperCase()}
                     </span>
@@ -751,7 +751,7 @@ function CaseDetailView({ case: caseData, onClose }: { case: Case; onClose: () =
         {activeTab === 'evidence' && (
           <div className="space-y-4">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-bold text-gray-900">Evidence Documents</h3>
+              <h3 className="font-bold text-slate-100">Evidence Documents</h3>
               <Button>
                 <Upload className="w-4 h-4 mr-2" />
                 Upload Evidence
@@ -764,12 +764,12 @@ function CaseDetailView({ case: caseData, onClose }: { case: Case; onClose: () =
               { name: 'Enhanced_Screening_Results.pdf', type: 'Screening Report', date: '2024-02-17', size: '1.5 MB' },
               { name: 'Client_Interview_Notes.docx', type: 'Interview Notes', date: '2024-02-16', size: '245 KB' }
             ].map((doc, index) => (
-              <div key={index} className="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
+              <div key={index} className="flex items-center justify-between p-4 border border-white/10 rounded-lg hover:bg-white/5">
                 <div className="flex items-center gap-3">
-                  <FileText className="w-8 h-8 text-blue-600" />
+                  <FileText className="w-8 h-8 text-blue-400" />
                   <div>
-                    <p className="font-semibold text-gray-900">{doc.name}</p>
-                    <p className="text-sm text-gray-600">{doc.type} • {doc.size} • {doc.date}</p>
+                    <p className="font-semibold text-slate-100">{doc.name}</p>
+                    <p className="text-sm text-slate-300">{doc.type} • {doc.size} • {doc.date}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
@@ -788,7 +788,7 @@ function CaseDetailView({ case: caseData, onClose }: { case: Case; onClose: () =
         {activeTab === 'notes' && (
           <div className="space-y-4">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-bold text-gray-900">Case Notes</h3>
+              <h3 className="font-bold text-slate-100">Case Notes</h3>
               <Button>
                 <Plus className="w-4 h-4 mr-2" />
                 Add Note
@@ -799,15 +799,15 @@ function CaseDetailView({ case: caseData, onClose }: { case: Case; onClose: () =
               { author: 'John Smith', date: '2024-02-17 16:45', note: 'Completed enhanced screening through InfoTrack. No additional adverse findings.' },
               { author: 'Jane Williams', date: '2024-02-17 10:20', note: 'Senior Manager approval will be required before case closure.' }
             ].map((note, index) => (
-              <div key={index} className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <div key={index} className="p-4 bg-white/5 rounded-lg border border-white/10">
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
-                    <User className="w-4 h-4 text-gray-600" />
-                    <span className="font-semibold text-gray-900">{note.author}</span>
+                    <User className="w-4 h-4 text-slate-300" />
+                    <span className="font-semibold text-slate-100">{note.author}</span>
                   </div>
-                  <span className="text-sm text-gray-600">{note.date}</span>
+                  <span className="text-sm text-slate-300">{note.date}</span>
                 </div>
-                <p className="text-gray-700">{note.note}</p>
+                <p className="text-slate-300">{note.note}</p>
               </div>
             ))}
           </div>
@@ -815,7 +815,7 @@ function CaseDetailView({ case: caseData, onClose }: { case: Case; onClose: () =
 
         {activeTab === 'timeline' && (
           <div className="space-y-4">
-            <h3 className="font-bold text-gray-900 mb-4">Case Timeline</h3>
+            <h3 className="font-bold text-slate-100 mb-4">Case Timeline</h3>
             {[
               { date: '2024-02-18 14:30', event: 'Case updated', user: 'John Smith', description: 'Status changed to In Progress' },
               { date: '2024-02-18 09:15', event: 'Evidence uploaded', user: 'John Smith', description: 'GreenID Verification Report added' },
@@ -830,11 +830,11 @@ function CaseDetailView({ case: caseData, onClose }: { case: Case; onClose: () =
                 </div>
                 <div className="flex-1 pb-8">
                   <div className="flex items-center justify-between mb-1">
-                    <p className="font-semibold text-gray-900">{event.event}</p>
-                    <p className="text-sm text-gray-600">{event.date}</p>
+                    <p className="font-semibold text-slate-100">{event.event}</p>
+                    <p className="text-sm text-slate-300">{event.date}</p>
                   </div>
-                  <p className="text-sm text-gray-600">{event.description}</p>
-                  <p className="text-xs text-gray-500 mt-1">by {event.user}</p>
+                  <p className="text-sm text-slate-300">{event.description}</p>
+                  <p className="text-xs text-slate-400 mt-1">by {event.user}</p>
                 </div>
               </div>
             ))}
@@ -843,14 +843,14 @@ function CaseDetailView({ case: caseData, onClose }: { case: Case; onClose: () =
 
         {activeTab === 'risk' && (
           <div className="space-y-6">
-            <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6 text-center">
-              <Scale className="w-16 h-16 text-red-600 mx-auto mb-3" />
-              <h3 className="text-2xl font-bold text-red-900 mb-2">HIGH RISK</h3>
-              <p className="text-red-700">Enhanced due diligence required</p>
+            <div className="bg-red-500/10 border-2 border-red-500/30 rounded-lg p-6 text-center">
+              <Scale className="w-16 h-16 text-red-400 mx-auto mb-3" />
+              <h3 className="text-2xl font-bold text-red-300 mb-2">HIGH RISK</h3>
+              <p className="text-red-300">Enhanced due diligence required</p>
             </div>
 
             <div>
-              <h4 className="font-bold text-gray-900 mb-3">Risk Factors</h4>
+              <h4 className="font-bold text-slate-100 mb-3">Risk Factors</h4>
               <div className="space-y-2">
                 {[
                   'Potential sanctions match on beneficial owner',
@@ -858,16 +858,16 @@ function CaseDetailView({ case: caseData, onClose }: { case: Case; onClose: () =
                   'Cash-intensive business operations',
                   'Recent changes in beneficial ownership'
                 ].map((factor, index) => (
-                  <div key={index} className="flex items-start p-3 bg-yellow-50 rounded-lg border border-yellow-200">
-                    <AlertTriangle className="w-5 h-5 text-yellow-600 mr-3 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-900">{factor}</span>
+                  <div key={index} className="flex items-start p-3 bg-yellow-500/10 rounded-lg border border-yellow-500/30">
+                    <AlertTriangle className="w-5 h-5 text-yellow-400 mr-3 flex-shrink-0 mt-0.5" />
+                    <span className="text-slate-100">{factor}</span>
                   </div>
                 ))}
               </div>
             </div>
 
             <div>
-              <h4 className="font-bold text-gray-900 mb-3">Mitigation Measures</h4>
+              <h4 className="font-bold text-slate-100 mb-3">Mitigation Measures</h4>
               <div className="space-y-2">
                 {[
                   'Enhanced CDD procedures implemented',
@@ -875,9 +875,9 @@ function CaseDetailView({ case: caseData, onClose }: { case: Case; onClose: () =
                   'Senior manager approval obtained',
                   'Increased monitoring frequency (quarterly reviews)'
                 ].map((measure, index) => (
-                  <div key={index} className="flex items-start p-3 bg-green-50 rounded-lg border border-green-200">
-                    <CheckCircle className="w-5 h-5 text-green-600 mr-3 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-900">{measure}</span>
+                  <div key={index} className="flex items-start p-3 bg-green-500/10 rounded-lg border border-green-500/30">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 flex-shrink-0 mt-0.5" />
+                    <span className="text-slate-100">{measure}</span>
                   </div>
                 ))}
               </div>

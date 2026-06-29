@@ -146,7 +146,7 @@ export function MessageThread({ threadId = 'thread-001', recipientName = 'Sarah 
               </div>
               <div>
                 <CardTitle className="text-lg">{recipientName}</CardTitle>
-                <p className="text-xs text-gray-500">Active now</p>
+                <p className="text-xs text-slate-400">Active now</p>
               </div>
             </div>
             <div className="flex gap-2">
@@ -177,24 +177,24 @@ export function MessageThread({ threadId = 'thread-001', recipientName = 'Sarah 
               >
                 <div className={`max-w-[70%] ${message.isCurrentUser ? 'items-end' : 'items-start'} flex flex-col gap-1`}>
                   {!message.isCurrentUser && (
-                    <span className="text-xs text-gray-500 ml-1">{message.senderName}</span>
+                    <span className="text-xs text-slate-400 ml-1">{message.senderName}</span>
                   )}
                   <div
                     className={`px-4 py-3 rounded-2xl ${
                       message.isCurrentUser
                         ? 'bg-primary text-white'
-                        : 'bg-gray-100 text-gray-900'
+                        : 'bg-white/5 text-slate-100'
                     }`}
                   >
                     <p className="text-sm whitespace-pre-wrap">{message.content}</p>
                   </div>
                   <div className="flex items-center gap-1 px-1">
-                    <span className="text-xs text-gray-500">
+                    <span className="text-xs text-slate-400">
                       {format(message.timestamp, 'HH:mm')}
                     </span>
                     {message.isCurrentUser && (
                       message.read ? (
-                        <CheckCheck className="w-3 h-3 text-blue-600" />
+                        <CheckCheck className="w-3 h-3 text-blue-400" />
                       ) : (
                         <Check className="w-3 h-3 text-gray-400" />
                       )
@@ -242,7 +242,7 @@ export function MessageThread({ threadId = 'thread-001', recipientName = 'Sarah 
               )}
             </Button>
           </div>
-          <p className="text-xs text-gray-500 mt-2">
+          <p className="text-xs text-slate-400 mt-2">
             Press Enter to send, Shift+Enter for new line
           </p>
         </div>

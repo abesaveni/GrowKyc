@@ -189,14 +189,14 @@ export function InfoTrackIntegration({ entityType, entityData, onComplete }: Inf
       case 'clear':
       case 'good':
       case 'active':
-        return <CheckCircle className="w-5 h-5 text-green-600" />;
+        return <CheckCircle className="w-5 h-5 text-green-400" />;
       case 'warning':
-        return <AlertCircle className="w-5 h-5 text-yellow-600" />;
+        return <AlertCircle className="w-5 h-5 text-yellow-400" />;
       case 'failed':
       case 'adverse':
-        return <XCircle className="w-5 h-5 text-red-600" />;
+        return <XCircle className="w-5 h-5 text-red-400" />;
       default:
-        return <Info className="w-5 h-5 text-gray-600" />;
+        return <Info className="w-5 h-5 text-slate-300" />;
     }
   };
 
@@ -206,14 +206,14 @@ export function InfoTrackIntegration({ entityType, entityData, onComplete }: Inf
       case 'clear':
       case 'good':
       case 'active':
-        return 'bg-green-50 text-green-700 border-green-200';
+        return 'bg-green-500/10 text-green-300 border-green-500/30';
       case 'warning':
-        return 'bg-yellow-50 text-yellow-700 border-yellow-200';
+        return 'bg-yellow-500/10 text-yellow-300 border-yellow-500/30';
       case 'failed':
       case 'adverse':
-        return 'bg-red-50 text-red-700 border-red-200';
+        return 'bg-red-500/10 text-red-300 border-red-500/30';
       default:
-        return 'bg-gray-50 text-gray-700 border-gray-200';
+        return 'bg-white/5 text-slate-300 border-white/10';
     }
   };
 
@@ -242,8 +242,8 @@ export function InfoTrackIntegration({ entityType, entityData, onComplete }: Inf
       {!results ? (
         <>
           {/* Select Checks */}
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <h3 className="font-bold text-gray-900 mb-4">Select Verification Checks</h3>
+          <div className="bg-white rounded-lg border border-white/10 p-6">
+            <h3 className="font-bold text-slate-100 mb-4">Select Verification Checks</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {[
                 { id: 'identity', label: 'Identity Verification (DVS)', icon: User, description: 'Document verification via government databases' },
@@ -268,18 +268,18 @@ export function InfoTrackIntegration({ entityType, entityData, onComplete }: Inf
                       }
                     }}
                     className={`p-4 rounded-lg border-2 text-left transition-all ${
-                      check.disabled ? 'opacity-50 cursor-not-allowed bg-gray-50' :
+                      check.disabled ? 'opacity-50 cursor-not-allowed bg-white/5' :
                       isSelected 
-                        ? 'border-blue-500 bg-blue-50' 
-                        : 'border-gray-200 hover:border-blue-300'
+                        ? 'border-blue-500 bg-blue-500/10' 
+                        : 'border-white/10 hover:border-blue-300'
                     }`}
                   >
                     <div className="flex items-start justify-between mb-2">
-                      <Icon className={`w-5 h-5 ${isSelected ? 'text-blue-600' : 'text-gray-600'}`} />
-                      {isSelected && <CheckCircle className="w-5 h-5 text-blue-600" />}
+                      <Icon className={`w-5 h-5 ${isSelected ? 'text-blue-400' : 'text-slate-300'}`} />
+                      {isSelected && <CheckCircle className="w-5 h-5 text-blue-400" />}
                     </div>
-                    <h4 className="font-semibold text-gray-900 mb-1">{check.label}</h4>
-                    <p className="text-sm text-gray-600">{check.description}</p>
+                    <h4 className="font-semibold text-slate-100 mb-1">{check.label}</h4>
+                    <p className="text-sm text-slate-300">{check.description}</p>
                   </button>
                 );
               })}
@@ -287,21 +287,21 @@ export function InfoTrackIntegration({ entityType, entityData, onComplete }: Inf
           </div>
 
           {/* Entity Details */}
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <h3 className="font-bold text-gray-900 mb-4">Entity Details</h3>
+          <div className="bg-white rounded-lg border border-white/10 p-6">
+            <h3 className="font-bold text-slate-100 mb-4">Entity Details</h3>
             <div className="space-y-3">
               {entityType === 'individual' && (
                 <>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Full Name:</span>
+                    <span className="text-slate-300">Full Name:</span>
                     <span className="font-semibold">{entityData.name || 'Sarah Mitchell'}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Date of Birth:</span>
+                    <span className="text-slate-300">Date of Birth:</span>
                     <span className="font-semibold">{entityData.dob || '15/06/1985'}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">License Number:</span>
+                    <span className="text-slate-300">License Number:</span>
                     <span className="font-semibold">{entityData.license || 'DL12345789'}</span>
                   </div>
                 </>
@@ -309,17 +309,17 @@ export function InfoTrackIntegration({ entityType, entityData, onComplete }: Inf
               {entityType === 'company' && (
                 <>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Company Name:</span>
+                    <span className="text-slate-300">Company Name:</span>
                     <span className="font-semibold">{entityData.name || 'Mitchell Property Group'}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">ACN:</span>
+                    <span className="text-slate-300">ACN:</span>
                     <span className="font-semibold">{entityData.acn || '123 456 789'}</span>
                   </div>
                 </>
               )}
               <div className="flex justify-between">
-                <span className="text-gray-600">Address:</span>
+                <span className="text-slate-300">Address:</span>
                 <span className="font-semibold text-right">{entityData.address || '45 Collins St, Melbourne VIC 3000'}</span>
               </div>
             </div>
@@ -347,34 +347,34 @@ export function InfoTrackIntegration({ entityType, entityData, onComplete }: Inf
       ) : (
         <>
           {/* Results Header */}
-          <div className="bg-white rounded-lg border-2 border-green-200 p-6">
+          <div className="bg-white rounded-lg border-2 border-green-500/30 p-6">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center">
                 <div className={`w-16 h-16 rounded-full flex items-center justify-center mr-4 ${
-                  results.riskLevel === 'Low' ? 'bg-green-100' :
-                  results.riskLevel === 'Medium' ? 'bg-yellow-100' : 'bg-red-100'
+                  results.riskLevel === 'Low' ? 'bg-green-500/15' :
+                  results.riskLevel === 'Medium' ? 'bg-yellow-500/15' : 'bg-red-500/15'
                 }`}>
                   <Shield className={`w-8 h-8 ${
-                    results.riskLevel === 'Low' ? 'text-green-600' :
-                    results.riskLevel === 'Medium' ? 'text-yellow-600' : 'text-red-600'
+                    results.riskLevel === 'Low' ? 'text-green-400' :
+                    results.riskLevel === 'Medium' ? 'text-yellow-400' : 'text-red-400'
                   }`} />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900">Verification Complete</h3>
-                  <p className="text-gray-600">Request ID: {results.requestId}</p>
+                  <h3 className="text-2xl font-bold text-slate-100">Verification Complete</h3>
+                  <p className="text-slate-300">Request ID: {results.requestId}</p>
                 </div>
               </div>
               <div className="text-right">
                 <div className={`text-4xl font-bold mb-1 ${
-                  results.riskLevel === 'Low' ? 'text-green-600' :
-                  results.riskLevel === 'Medium' ? 'text-yellow-600' : 'text-red-600'
+                  results.riskLevel === 'Low' ? 'text-green-400' :
+                  results.riskLevel === 'Medium' ? 'text-yellow-400' : 'text-red-400'
                 }`}>
                   {results.overallRiskScore}
                 </div>
-                <div className="text-sm text-gray-600">Risk Score</div>
+                <div className="text-sm text-slate-300">Risk Score</div>
                 <div className={`inline-block px-3 py-1 rounded-full text-sm font-semibold mt-2 ${
-                  results.riskLevel === 'Low' ? 'bg-green-100 text-green-700' :
-                  results.riskLevel === 'Medium' ? 'bg-yellow-100 text-yellow-700' : 'bg-red-100 text-red-700'
+                  results.riskLevel === 'Low' ? 'bg-green-500/15 text-green-300' :
+                  results.riskLevel === 'Medium' ? 'bg-yellow-500/15 text-yellow-300' : 'bg-red-500/15 text-red-300'
                 }`}>
                   {results.riskLevel} Risk
                 </div>
@@ -399,10 +399,10 @@ export function InfoTrackIntegration({ entityType, entityData, onComplete }: Inf
 
           {/* Identity Verification Results */}
           {results.checks.identity && (
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <div className="bg-white rounded-lg border border-white/10 p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-bold text-gray-900 flex items-center">
-                  <User className="w-5 h-5 mr-2 text-blue-600" />
+                <h3 className="text-lg font-bold text-slate-100 flex items-center">
+                  <User className="w-5 h-5 mr-2 text-blue-400" />
                   Identity Verification
                 </h3>
                 {getStatusIcon(results.checks.identity.status)}
@@ -418,37 +418,37 @@ export function InfoTrackIntegration({ entityType, entityData, onComplete }: Inf
                 </div>
 
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">Verified Documents</h4>
+                  <h4 className="font-semibold text-slate-100 mb-2">Verified Documents</h4>
                   <div className="space-y-2">
                     {results.checks.identity.documents.map((doc: any, index: number) => (
-                      <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                      <div key={index} className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
                         <div className="flex items-center">
-                          <FileText className="w-4 h-4 text-gray-600 mr-3" />
+                          <FileText className="w-4 h-4 text-slate-300 mr-3" />
                           <div>
-                            <p className="font-medium text-gray-900">{doc.type}</p>
-                            <p className="text-sm text-gray-600">{doc.number} • Exp: {doc.expiryDate}</p>
+                            <p className="font-medium text-slate-100">{doc.type}</p>
+                            <p className="text-sm text-slate-300">{doc.number} • Exp: {doc.expiryDate}</p>
                           </div>
                         </div>
-                        <CheckCircle className="w-5 h-5 text-green-600" />
+                        <CheckCircle className="w-5 h-5 text-green-400" />
                       </div>
                     ))}
                   </div>
                 </div>
 
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">AML/CTF Checks</h4>
+                  <h4 className="font-semibold text-slate-100 mb-2">AML/CTF Checks</h4>
                   <div className="grid grid-cols-3 gap-3">
-                    <div className="p-3 bg-green-50 rounded-lg border border-green-200">
-                      <p className="text-sm text-gray-600 mb-1">PEP Check</p>
-                      <p className="font-semibold text-green-700">{results.checks.identity.aml.pepCheck}</p>
+                    <div className="p-3 bg-green-500/10 rounded-lg border border-green-500/30">
+                      <p className="text-sm text-slate-300 mb-1">PEP Check</p>
+                      <p className="font-semibold text-green-300">{results.checks.identity.aml.pepCheck}</p>
                     </div>
-                    <div className="p-3 bg-green-50 rounded-lg border border-green-200">
-                      <p className="text-sm text-gray-600 mb-1">Sanctions List</p>
-                      <p className="font-semibold text-green-700">{results.checks.identity.aml.sanctionsList}</p>
+                    <div className="p-3 bg-green-500/10 rounded-lg border border-green-500/30">
+                      <p className="text-sm text-slate-300 mb-1">Sanctions List</p>
+                      <p className="font-semibold text-green-300">{results.checks.identity.aml.sanctionsList}</p>
                     </div>
-                    <div className="p-3 bg-green-50 rounded-lg border border-green-200">
-                      <p className="text-sm text-gray-600 mb-1">Adverse Media</p>
-                      <p className="font-semibold text-green-700">{results.checks.identity.aml.adverseMedia}</p>
+                    <div className="p-3 bg-green-500/10 rounded-lg border border-green-500/30">
+                      <p className="text-sm text-slate-300 mb-1">Adverse Media</p>
+                      <p className="font-semibold text-green-300">{results.checks.identity.aml.adverseMedia}</p>
                     </div>
                   </div>
                 </div>
@@ -458,42 +458,42 @@ export function InfoTrackIntegration({ entityType, entityData, onComplete }: Inf
 
           {/* Credit Check Results */}
           {results.checks.credit && (
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <div className="bg-white rounded-lg border border-white/10 p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-bold text-gray-900 flex items-center">
-                  <CreditCard className="w-5 h-5 mr-2 text-purple-600" />
+                <h3 className="text-lg font-bold text-slate-100 flex items-center">
+                  <CreditCard className="w-5 h-5 mr-2 text-purple-400" />
                   Credit Check
                 </h3>
                 <div className="flex items-center gap-3">
                   <div className="text-right">
-                    <div className="text-3xl font-bold text-purple-600">{results.checks.credit.score}</div>
-                    <div className="text-sm text-gray-600">{results.checks.credit.rating}</div>
+                    <div className="text-3xl font-bold text-purple-400">{results.checks.credit.score}</div>
+                    <div className="text-sm text-slate-300">{results.checks.credit.rating}</div>
                   </div>
                   {getStatusIcon(results.checks.credit.status)}
                 </div>
               </div>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
-                <div className="p-4 bg-green-50 rounded-lg border border-green-200 text-center">
-                  <div className="text-2xl font-bold text-green-700">{results.checks.credit.summary.totalDefaults}</div>
-                  <div className="text-sm text-gray-600">Defaults</div>
+                <div className="p-4 bg-green-500/10 rounded-lg border border-green-500/30 text-center">
+                  <div className="text-2xl font-bold text-green-300">{results.checks.credit.summary.totalDefaults}</div>
+                  <div className="text-sm text-slate-300">Defaults</div>
                 </div>
-                <div className="p-4 bg-green-50 rounded-lg border border-green-200 text-center">
-                  <div className="text-2xl font-bold text-green-700">{results.checks.credit.summary.totalJudgements}</div>
-                  <div className="text-sm text-gray-600">Judgements</div>
+                <div className="p-4 bg-green-500/10 rounded-lg border border-green-500/30 text-center">
+                  <div className="text-2xl font-bold text-green-300">{results.checks.credit.summary.totalJudgements}</div>
+                  <div className="text-sm text-slate-300">Judgements</div>
                 </div>
-                <div className="p-4 bg-green-50 rounded-lg border border-green-200 text-center">
-                  <div className="text-2xl font-bold text-green-700">{results.checks.credit.summary.totalBankruptcies}</div>
-                  <div className="text-sm text-gray-600">Bankruptcies</div>
+                <div className="p-4 bg-green-500/10 rounded-lg border border-green-500/30 text-center">
+                  <div className="text-2xl font-bold text-green-300">{results.checks.credit.summary.totalBankruptcies}</div>
+                  <div className="text-sm text-slate-300">Bankruptcies</div>
                 </div>
-                <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 text-center">
-                  <div className="text-2xl font-bold text-blue-700">{results.checks.credit.creditEnquiries}</div>
-                  <div className="text-sm text-gray-600">Enquiries (12mo)</div>
+                <div className="p-4 bg-blue-500/10 rounded-lg border border-blue-500/30 text-center">
+                  <div className="text-2xl font-bold text-blue-300">{results.checks.credit.creditEnquiries}</div>
+                  <div className="text-sm text-slate-300">Enquiries (12mo)</div>
                 </div>
               </div>
 
-              <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-                <p className="text-sm font-semibold text-green-700">
+              <div className="p-4 bg-green-500/10 rounded-lg border border-green-500/30">
+                <p className="text-sm font-semibold text-green-300">
                   ✓ Clean credit history with no adverse events
                 </p>
               </div>
@@ -502,10 +502,10 @@ export function InfoTrackIntegration({ entityType, entityData, onComplete }: Inf
 
           {/* Property Results */}
           {results.checks.property && (
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <div className="bg-white rounded-lg border border-white/10 p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-bold text-gray-900 flex items-center">
-                  <Home className="w-5 h-5 mr-2 text-orange-600" />
+                <h3 className="text-lg font-bold text-slate-100 flex items-center">
+                  <Home className="w-5 h-5 mr-2 text-orange-400" />
                   Property Ownership
                 </h3>
                 {getStatusIcon(results.checks.property.status)}
@@ -513,46 +513,46 @@ export function InfoTrackIntegration({ entityType, entityData, onComplete }: Inf
 
               {results.checks.property.ownership.map((property: any, index: number) => (
                 <div key={index} className="space-y-4">
-                  <div className="p-4 bg-gray-50 rounded-lg">
+                  <div className="p-4 bg-white/5 rounded-lg">
                     <div className="flex items-start justify-between mb-3">
                       <div>
-                        <p className="font-semibold text-gray-900 mb-1">{property.address}</p>
-                        <p className="text-sm text-gray-600">Title: {property.titleReference}</p>
+                        <p className="font-semibold text-slate-100 mb-1">{property.address}</p>
+                        <p className="text-sm text-slate-300">Title: {property.titleReference}</p>
                       </div>
                       <div className="text-right">
-                        <p className="font-bold text-green-600 text-lg">
+                        <p className="font-bold text-green-400 text-lg">
                           ${(property.currentValuation).toLocaleString()}
                         </p>
-                        <p className="text-sm text-gray-600">Current Value</p>
+                        <p className="text-sm text-slate-300">Current Value</p>
                       </div>
                     </div>
 
                     <div className="grid grid-cols-2 gap-3 mb-3">
                       <div>
-                        <p className="text-sm text-gray-600">Purchase Date</p>
+                        <p className="text-sm text-slate-300">Purchase Date</p>
                         <p className="font-semibold">{property.purchaseDate}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600">Purchase Price</p>
+                        <p className="text-sm text-slate-300">Purchase Price</p>
                         <p className="font-semibold">${property.purchasePrice.toLocaleString()}</p>
                       </div>
                     </div>
 
                     <div className="mb-3">
-                      <p className="text-sm text-gray-600 mb-1">Proprietors</p>
+                      <p className="text-sm text-slate-300 mb-1">Proprietors</p>
                       <p className="font-semibold">{property.proprietors.join(', ')}</p>
                     </div>
 
                     {property.mortgages.length > 0 && (
                       <div>
-                        <p className="text-sm text-gray-600 mb-2">Mortgages</p>
+                        <p className="text-sm text-slate-300 mb-2">Mortgages</p>
                         {property.mortgages.map((mortgage: any, idx: number) => (
                           <div key={idx} className="flex items-center justify-between p-3 bg-white rounded border">
                             <div>
                               <p className="font-semibold">{mortgage.mortgagee}</p>
-                              <p className="text-sm text-gray-600">Registered: {mortgage.registeredDate}</p>
+                              <p className="text-sm text-slate-300">Registered: {mortgage.registeredDate}</p>
                             </div>
-                            <p className="font-bold text-gray-900">${mortgage.amount.toLocaleString()}</p>
+                            <p className="font-bold text-slate-100">${mortgage.amount.toLocaleString()}</p>
                           </div>
                         ))}
                       </div>
@@ -560,17 +560,17 @@ export function InfoTrackIntegration({ entityType, entityData, onComplete }: Inf
                   </div>
 
                   <div className="grid grid-cols-3 gap-3">
-                    <div className="p-3 bg-green-50 rounded-lg border border-green-200">
-                      <p className="text-sm text-gray-600 mb-1">Caveats</p>
-                      <p className="font-semibold text-green-700">None</p>
+                    <div className="p-3 bg-green-500/10 rounded-lg border border-green-500/30">
+                      <p className="text-sm text-slate-300 mb-1">Caveats</p>
+                      <p className="font-semibold text-green-300">None</p>
                     </div>
-                    <div className="p-3 bg-green-50 rounded-lg border border-green-200">
-                      <p className="text-sm text-gray-600 mb-1">Encumbrances</p>
-                      <p className="font-semibold text-green-700">None</p>
+                    <div className="p-3 bg-green-500/10 rounded-lg border border-green-500/30">
+                      <p className="text-sm text-slate-300 mb-1">Encumbrances</p>
+                      <p className="font-semibold text-green-300">None</p>
                     </div>
-                    <div className="p-3 bg-blue-50 rounded-lg border border-blue-200">
-                      <p className="text-sm text-gray-600 mb-1">Title Status</p>
-                      <p className="font-semibold text-blue-700">Clear</p>
+                    <div className="p-3 bg-blue-500/10 rounded-lg border border-blue-500/30">
+                      <p className="text-sm text-slate-300 mb-1">Title Status</p>
+                      <p className="font-semibold text-blue-300">Clear</p>
                     </div>
                   </div>
                 </div>
@@ -581,44 +581,44 @@ export function InfoTrackIntegration({ entityType, entityData, onComplete }: Inf
           {/* Bankruptcy & Court Results */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {results.checks.bankruptcy && (
-              <div className="bg-white rounded-lg border border-gray-200 p-6">
+              <div className="bg-white rounded-lg border border-white/10 p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-bold text-gray-900 flex items-center">
-                    <AlertCircle className="w-5 h-5 mr-2 text-yellow-600" />
+                  <h3 className="text-lg font-bold text-slate-100 flex items-center">
+                    <AlertCircle className="w-5 h-5 mr-2 text-yellow-400" />
                     Bankruptcy Search
                   </h3>
                   {getStatusIcon(results.checks.bankruptcy.status)}
                 </div>
                 <div className="space-y-3">
-                  <div className="p-3 bg-green-50 rounded-lg border border-green-200">
-                    <p className="text-sm text-gray-600 mb-1">NPII Search</p>
-                    <p className="font-semibold text-green-700">{results.checks.bankruptcy.personalInsolvency}</p>
+                  <div className="p-3 bg-green-500/10 rounded-lg border border-green-500/30">
+                    <p className="text-sm text-slate-300 mb-1">NPII Search</p>
+                    <p className="font-semibold text-green-300">{results.checks.bankruptcy.personalInsolvency}</p>
                   </div>
-                  <div className="p-3 bg-green-50 rounded-lg border border-green-200">
-                    <p className="text-sm text-gray-600 mb-1">Bankruptcy Records</p>
-                    <p className="font-semibold text-green-700">No records found</p>
+                  <div className="p-3 bg-green-500/10 rounded-lg border border-green-500/30">
+                    <p className="text-sm text-slate-300 mb-1">Bankruptcy Records</p>
+                    <p className="font-semibold text-green-300">No records found</p>
                   </div>
                 </div>
               </div>
             )}
 
             {results.checks.court && (
-              <div className="bg-white rounded-lg border border-gray-200 p-6">
+              <div className="bg-white rounded-lg border border-white/10 p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-bold text-gray-900 flex items-center">
-                    <Scale className="w-5 h-5 mr-2 text-indigo-600" />
+                  <h3 className="text-lg font-bold text-slate-100 flex items-center">
+                    <Scale className="w-5 h-5 mr-2 text-indigo-400" />
                     Court Records
                   </h3>
                   {getStatusIcon(results.checks.court.status)}
                 </div>
                 <div className="space-y-3">
-                  <div className="p-3 bg-green-50 rounded-lg border border-green-200">
-                    <p className="text-sm text-gray-600 mb-1">Judgements</p>
-                    <p className="font-semibold text-green-700">No records found</p>
+                  <div className="p-3 bg-green-500/10 rounded-lg border border-green-500/30">
+                    <p className="text-sm text-slate-300 mb-1">Judgements</p>
+                    <p className="font-semibold text-green-300">No records found</p>
                   </div>
-                  <div className="p-3 bg-green-50 rounded-lg border border-green-200">
-                    <p className="text-sm text-gray-600 mb-1">Active Litigation</p>
-                    <p className="font-semibold text-green-700">{results.checks.court.litigationSearch}</p>
+                  <div className="p-3 bg-green-500/10 rounded-lg border border-green-500/30">
+                    <p className="text-sm text-slate-300 mb-1">Active Litigation</p>
+                    <p className="font-semibold text-green-300">{results.checks.court.litigationSearch}</p>
                   </div>
                 </div>
               </div>
@@ -627,10 +627,10 @@ export function InfoTrackIntegration({ entityType, entityData, onComplete }: Inf
 
           {/* ASIC Results (for companies) */}
           {results.checks.asic && (
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <div className="bg-white rounded-lg border border-white/10 p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-bold text-gray-900 flex items-center">
-                  <Building2 className="w-5 h-5 mr-2 text-teal-600" />
+                <h3 className="text-lg font-bold text-slate-100 flex items-center">
+                  <Building2 className="w-5 h-5 mr-2 text-teal-400" />
                   ASIC Company Search
                 </h3>
                 {getStatusIcon(results.checks.asic.status)}
@@ -638,35 +638,35 @@ export function InfoTrackIntegration({ entityType, entityData, onComplete }: Inf
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
                 <div>
-                  <p className="text-sm text-gray-600">ABN</p>
+                  <p className="text-sm text-slate-300">ABN</p>
                   <p className="font-semibold">{results.checks.asic.abn}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">ACN</p>
+                  <p className="text-sm text-slate-300">ACN</p>
                   <p className="font-semibold">{results.checks.asic.acn}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Status</p>
-                  <span className="inline-block px-2 py-1 bg-green-100 text-green-700 text-sm font-semibold rounded">
+                  <p className="text-sm text-slate-300">Status</p>
+                  <span className="inline-block px-2 py-1 bg-green-500/15 text-green-300 text-sm font-semibold rounded">
                     {results.checks.asic.status_}
                   </span>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Type</p>
+                  <p className="text-sm text-slate-300">Type</p>
                   <p className="font-semibold text-sm">{results.checks.asic.type}</p>
                 </div>
               </div>
 
               <div>
-                <h4 className="font-semibold text-gray-900 mb-2">Directors & Officers</h4>
+                <h4 className="font-semibold text-slate-100 mb-2">Directors & Officers</h4>
                 <div className="space-y-2">
                   {results.checks.asic.officeholders.map((officer: any, index: number) => (
-                    <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <div key={index} className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
                       <div>
-                        <p className="font-medium text-gray-900">{officer.name}</p>
-                        <p className="text-sm text-gray-600">{officer.role}</p>
+                        <p className="font-medium text-slate-100">{officer.name}</p>
+                        <p className="text-sm text-slate-300">{officer.role}</p>
                       </div>
-                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      <CheckCircle className="w-5 h-5 text-green-400" />
                     </div>
                   ))}
                 </div>
@@ -676,22 +676,22 @@ export function InfoTrackIntegration({ entityType, entityData, onComplete }: Inf
 
           {/* Recommendation */}
           <div className={`rounded-lg border-2 p-6 ${
-            results.recommendation === 'Approve' ? 'bg-green-50 border-green-200' :
-            results.recommendation === 'Review' ? 'bg-yellow-50 border-yellow-200' : 'bg-red-50 border-red-200'
+            results.recommendation === 'Approve' ? 'bg-green-500/10 border-green-500/30' :
+            results.recommendation === 'Review' ? 'bg-yellow-500/10 border-yellow-500/30' : 'bg-red-500/10 border-red-500/30'
           }`}>
             <h3 className="text-lg font-bold mb-2 flex items-center">
               {results.recommendation === 'Approve' ? (
-                <CheckCircle className="w-6 h-6 text-green-600 mr-2" />
+                <CheckCircle className="w-6 h-6 text-green-400 mr-2" />
               ) : results.recommendation === 'Review' ? (
-                <AlertCircle className="w-6 h-6 text-yellow-600 mr-2" />
+                <AlertCircle className="w-6 h-6 text-yellow-400 mr-2" />
               ) : (
-                <XCircle className="w-6 h-6 text-red-600 mr-2" />
+                <XCircle className="w-6 h-6 text-red-400 mr-2" />
               )}
               Recommendation: {results.recommendation}
             </h3>
             <p className={`${
-              results.recommendation === 'Approve' ? 'text-green-700' :
-              results.recommendation === 'Review' ? 'text-yellow-700' : 'text-red-700'
+              results.recommendation === 'Approve' ? 'text-green-300' :
+              results.recommendation === 'Review' ? 'text-yellow-300' : 'text-red-300'
             }`}>
               {results.recommendation === 'Approve' && 
                 'All verification checks passed. This entity has been verified and shows low risk indicators. Safe to proceed with approval.'}

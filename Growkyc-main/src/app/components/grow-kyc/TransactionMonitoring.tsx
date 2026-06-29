@@ -297,7 +297,7 @@ export function TransactionMonitoring({ onBack, onOpenReferral, complianceOffice
                 <p className="text-sm text-white/90">Real-Time AML Surveillance & Pattern Detection</p>
               </div>
             </div>
-            <Badge className="bg-[#1e293b] text-green-600 text-sm px-3 py-1">
+            <Badge className="bg-[#1e293b] text-green-400 text-sm px-3 py-1">
               <Zap className="w-4 h-4 mr-1" />
               {liveRefresh ? 'Live Monitoring Active' : 'Live Monitoring Paused'}
             </Badge>
@@ -373,7 +373,7 @@ export function TransactionMonitoring({ onBack, onOpenReferral, complianceOffice
 
             {isLoading && <div className="p-6 bg-[#1e293b] rounded border">Loading alerts...</div>}
             {error && (
-              <div className="p-4 bg-red-50 border border-red-200 rounded text-red-700 flex items-center gap-2">
+              <div className="p-4 bg-red-500/10 border border-red-500/30 rounded text-red-300 flex items-center gap-2">
                 <AlertCircle className="w-4 h-4" /> {error}
               </div>
             )}
@@ -389,9 +389,9 @@ export function TransactionMonitoring({ onBack, onOpenReferral, complianceOffice
                 <Card 
                   key={alert.id}
                   className={`border-2 ${
-                    alert.riskScore >= 90 ? 'border-red-300 bg-red-50' :
-                    alert.riskScore >= 70 ? 'border-amber-300 bg-amber-50' :
-                    'border-blue-300 bg-blue-50'
+                    alert.riskScore >= 90 ? 'border-red-300 bg-red-500/10' :
+                    alert.riskScore >= 70 ? 'border-amber-300 bg-amber-500/10' :
+                    'border-blue-300 bg-blue-500/10'
                   }`}
                 >
                   <CardContent className="p-6">
@@ -399,9 +399,9 @@ export function TransactionMonitoring({ onBack, onOpenReferral, complianceOffice
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-3">
                           <AlertTriangle className={`w-6 h-6 ${
-                            alert.riskScore >= 90 ? 'text-red-600' :
-                            alert.riskScore >= 70 ? 'text-amber-600' :
-                            'text-blue-600'
+                            alert.riskScore >= 90 ? 'text-red-400' :
+                            alert.riskScore >= 70 ? 'text-amber-400' :
+                            'text-blue-400'
                           }`} />
                           <div>
                             <h3 className="text-lg font-semibold text-white">{alert.client}</h3>
@@ -424,7 +424,7 @@ export function TransactionMonitoring({ onBack, onOpenReferral, complianceOffice
                           </div>
                           <div>
                             <div className="text-sm text-slate-300">Total Amount</div>
-                            <div className="font-semibold text-green-600">
+                            <div className="font-semibold text-green-400">
                               ${alert.totalAmount.toLocaleString()}
                             </div>
                           </div>
@@ -439,9 +439,9 @@ export function TransactionMonitoring({ onBack, onOpenReferral, complianceOffice
                         </div>
 
                         {alert.autoAction !== 'None' && (
-                          <div className="p-3 bg-amber-100 rounded border border-amber-300 flex items-center gap-2">
-                            <Shield className="w-4 h-4 text-amber-600" />
-                            <span className="text-sm font-semibold text-amber-900">
+                          <div className="p-3 bg-amber-500/15 rounded border border-amber-300 flex items-center gap-2">
+                            <Shield className="w-4 h-4 text-amber-400" />
+                            <span className="text-sm font-semibold text-amber-300">
                               Auto Action: {alert.autoAction}
                             </span>
                           </div>
@@ -523,15 +523,15 @@ export function TransactionMonitoring({ onBack, onOpenReferral, complianceOffice
                           <Progress 
                             value={day.riskScore} 
                             className={`h-8 ${
-                              day.riskScore >= 80 ? 'bg-red-100' :
-                              day.riskScore >= 50 ? 'bg-amber-100' :
-                              'bg-green-100'
+                              day.riskScore >= 80 ? 'bg-red-500/15' :
+                              day.riskScore >= 50 ? 'bg-amber-500/15' :
+                              'bg-green-500/15'
                             }`}
                           />
                           <span className={`font-bold text-lg ${
-                            day.riskScore >= 80 ? 'text-red-600' :
-                            day.riskScore >= 50 ? 'text-amber-600' :
-                            'text-green-600'
+                            day.riskScore >= 80 ? 'text-red-400' :
+                            day.riskScore >= 50 ? 'text-amber-400' :
+                            'text-green-400'
                           }`}>
                             {day.riskScore}
                           </span>

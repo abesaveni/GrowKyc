@@ -48,7 +48,7 @@ export function EnterpriseFeaturesSummary() {
       title: 'Client Onboarding',
       icon: Users,
       color: 'text-[#13B5EA]',
-      bgColor: 'bg-blue-50',
+      bgColor: 'bg-blue-500/10',
       features: [
         { name: '100-Point ID Verification', icon: CheckCircle },
         { name: 'Biometric Verification', icon: Eye },
@@ -62,7 +62,7 @@ export function EnterpriseFeaturesSummary() {
       title: 'AML/CTF Compliance',
       icon: Shield,
       color: 'text-[#0E7C9E]',
-      bgColor: 'bg-cyan-50',
+      bgColor: 'bg-cyan-500/10',
       features: [
         { name: 'Real-time Sanctions Screening', icon: AlertTriangle },
         { name: 'PEP Database Check', icon: Users },
@@ -75,8 +75,8 @@ export function EnterpriseFeaturesSummary() {
     {
       title: 'Risk Management',
       icon: Target,
-      color: 'text-red-600',
-      bgColor: 'bg-red-50',
+      color: 'text-red-400',
+      bgColor: 'bg-red-500/10',
       features: [
         { name: 'Automated Risk Scoring', icon: BarChart3 },
         { name: 'Risk Profile Analysis', icon: TrendingUp },
@@ -90,7 +90,7 @@ export function EnterpriseFeaturesSummary() {
       title: 'Fraud Detection',
       icon: AlertCircle,
       color: 'text-[#FFA300]',
-      bgColor: 'bg-orange-50',
+      bgColor: 'bg-orange-500/10',
       features: [
         { name: 'Identity Theft Detection', icon: AlertTriangle },
         { name: 'Document Forgery Analysis', icon: FileText },
@@ -104,7 +104,7 @@ export function EnterpriseFeaturesSummary() {
       title: 'Integrations Ecosystem',
       icon: Zap,
       color: 'text-[#3DD598]',
-      bgColor: 'bg-green-50',
+      bgColor: 'bg-green-500/10',
       features: [
         { name: '50+ Integration Partners', icon: Network },
         { name: 'Accounting Software (14)', icon: DollarSign },
@@ -117,8 +117,8 @@ export function EnterpriseFeaturesSummary() {
     {
       title: 'Ongoing Monitoring',
       icon: Activity,
-      color: 'text-purple-600',
-      bgColor: 'bg-purple-50',
+      color: 'text-purple-400',
+      bgColor: 'bg-purple-500/10',
       features: [
         { name: 'Continuous Surveillance', icon: Eye },
         { name: 'Transaction Monitoring', icon: Activity },
@@ -131,8 +131,8 @@ export function EnterpriseFeaturesSummary() {
     {
       title: 'Reporting & Analytics',
       icon: BarChart3,
-      color: 'text-indigo-600',
-      bgColor: 'bg-indigo-50',
+      color: 'text-indigo-400',
+      bgColor: 'bg-indigo-500/10',
       features: [
         { name: 'Executive Dashboards', icon: BarChart3 },
         { name: 'Compliance Reports', icon: FileText },
@@ -145,8 +145,8 @@ export function EnterpriseFeaturesSummary() {
     {
       title: 'AI & Automation',
       icon: Sparkles,
-      color: 'text-pink-600',
-      bgColor: 'bg-pink-50',
+      color: 'text-pink-400',
+      bgColor: 'bg-pink-500/10',
       features: [
         { name: 'Compliance Copilot AI', icon: Sparkles },
         { name: 'Natural Language Queries', icon: MessageSquare },
@@ -159,8 +159,8 @@ export function EnterpriseFeaturesSummary() {
     {
       title: 'Global Compliance',
       icon: Globe,
-      color: 'text-teal-600',
-      bgColor: 'bg-teal-50',
+      color: 'text-teal-400',
+      bgColor: 'bg-teal-500/10',
       features: [
         { name: '7 Countries Supported', icon: Globe },
         { name: 'Multi-jurisdictional Rules', icon: Shield },
@@ -173,8 +173,8 @@ export function EnterpriseFeaturesSummary() {
     {
       title: 'Case Management',
       icon: Briefcase,
-      color: 'text-amber-600',
-      bgColor: 'bg-amber-50',
+      color: 'text-amber-400',
+      bgColor: 'bg-amber-500/10',
       features: [
         { name: 'Comprehensive Workspace', icon: Briefcase },
         { name: 'Task Management', icon: CheckCircle },
@@ -201,8 +201,8 @@ export function EnterpriseFeaturesSummary() {
     {
       title: 'Client Portal',
       icon: Users,
-      color: 'text-blue-600',
-      bgColor: 'bg-blue-50',
+      color: 'text-blue-400',
+      bgColor: 'bg-blue-500/10',
       features: [
         { name: 'Self-Service Onboarding', icon: Users },
         { name: 'Document Upload', icon: Upload },
@@ -219,10 +219,10 @@ export function EnterpriseFeaturesSummary() {
     { label: 'Supported Countries', value: '7', icon: Globe, color: 'text-[#0E7C9E]' },
     { label: 'AI Bots', value: '22', icon: Sparkles, color: 'text-[#3DD598]' },
     { label: 'Client Profile Tabs', value: '17', icon: FileText, color: 'text-[#FFA300]' },
-    { label: 'Compliance Frameworks', value: '7', icon: Shield, color: 'text-purple-600' },
-    { label: 'Verification Methods', value: '15+', icon: CheckCircle, color: 'text-green-600' },
-    { label: 'Entity Types', value: '6', icon: Building2, color: 'text-indigo-600' },
-    { label: 'Regulatory Reports', value: '25+', icon: BarChart3, color: 'text-pink-600' }
+    { label: 'Compliance Frameworks', value: '7', icon: Shield, color: 'text-purple-400' },
+    { label: 'Verification Methods', value: '15+', icon: CheckCircle, color: 'text-green-400' },
+    { label: 'Entity Types', value: '6', icon: Building2, color: 'text-indigo-400' },
+    { label: 'Regulatory Reports', value: '25+', icon: BarChart3, color: 'text-pink-400' }
   ];
 
   return (

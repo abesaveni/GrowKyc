@@ -139,8 +139,8 @@ export function HelpCenter() {
 
       {/* Header */}
       <div className="text-center mb-8">
-        <h1 className="text-3xl font-semibold text-gray-900 mb-2">How can we help you?</h1>
-        <p className="text-gray-600">Search our knowledge base or browse categories below</p>
+        <h1 className="text-3xl font-semibold text-slate-100 mb-2">How can we help you?</h1>
+        <p className="text-slate-300">Search our knowledge base or browse categories below</p>
       </div>
 
       {/* Search */}
@@ -164,12 +164,12 @@ export function HelpCenter() {
         <Card className="hover:shadow-lg transition-shadow cursor-pointer">
           <CardContent className="p-6">
             <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 bg-blue-50 rounded-lg">
-                <BookOpen className="w-6 h-6 text-blue-600" />
+              <div className="p-3 bg-blue-500/10 rounded-lg">
+                <BookOpen className="w-6 h-6 text-blue-400" />
               </div>
               <h3 className="font-semibold text-lg">Documentation</h3>
             </div>
-            <p className="text-sm text-gray-600 mb-4">
+            <p className="text-sm text-slate-300 mb-4">
               Comprehensive guides and tutorials to help you get started
             </p>
             <Button variant="outline" size="sm" className="w-full">
@@ -181,12 +181,12 @@ export function HelpCenter() {
         <Card className="hover:shadow-lg transition-shadow cursor-pointer">
           <CardContent className="p-6">
             <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 bg-purple-50 rounded-lg">
-                <Video className="w-6 h-6 text-purple-600" />
+              <div className="p-3 bg-purple-500/10 rounded-lg">
+                <Video className="w-6 h-6 text-purple-400" />
               </div>
               <h3 className="font-semibold text-lg">Video Tutorials</h3>
             </div>
-            <p className="text-sm text-gray-600 mb-4">
+            <p className="text-sm text-slate-300 mb-4">
               Watch step-by-step video guides on platform features
             </p>
             <Button variant="outline" size="sm" className="w-full">
@@ -198,12 +198,12 @@ export function HelpCenter() {
         <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={handleContactSupport}>
           <CardContent className="p-6">
             <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 bg-green-50 rounded-lg">
-                <MessageCircle className="w-6 h-6 text-green-600" />
+              <div className="p-3 bg-green-500/10 rounded-lg">
+                <MessageCircle className="w-6 h-6 text-green-400" />
               </div>
               <h3 className="font-semibold text-lg">Contact Support</h3>
             </div>
-            <p className="text-sm text-gray-600 mb-4">
+            <p className="text-sm text-slate-300 mb-4">
               Get help from our support team via ticket or live chat
             </p>
             <Button variant="outline" size="sm" className="w-full">
@@ -241,8 +241,8 @@ export function HelpCenter() {
           {filteredFAQs.length === 0 ? (
             <div className="text-center py-12">
               <HelpCircle className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-              <p className="text-gray-600 mb-2">No results found</p>
-              <p className="text-sm text-gray-500">Try adjusting your search or browse by category</p>
+              <p className="text-slate-300 mb-2">No results found</p>
+              <p className="text-sm text-slate-400">Try adjusting your search or browse by category</p>
             </div>
           ) : (
             <div className="space-y-2">
@@ -250,11 +250,11 @@ export function HelpCenter() {
                 <div key={faq.id} className="border rounded-lg">
                   <button
                     onClick={() => toggleFAQ(faq.id)}
-                    className="w-full flex items-start justify-between p-4 text-left hover:bg-gray-50 transition-colors"
+                    className="w-full flex items-start justify-between p-4 text-left hover:bg-white/5 transition-colors"
                   >
                     <div className="flex-1">
-                      <span className="text-xs text-gray-500 font-semibold">{faq.category}</span>
-                      <h4 className="font-semibold text-gray-900 mt-1">{faq.question}</h4>
+                      <span className="text-xs text-slate-400 font-semibold">{faq.category}</span>
+                      <h4 className="font-semibold text-slate-100 mt-1">{faq.question}</h4>
                     </div>
                     {expandedFAQs.has(faq.id) ? (
                       <ChevronDown className="w-5 h-5 text-gray-400 flex-shrink-0 ml-2" />
@@ -263,7 +263,7 @@ export function HelpCenter() {
                     )}
                   </button>
                   {expandedFAQs.has(faq.id) && (
-                    <div className="p-4 pt-0 text-gray-600 text-sm border-t">
+                    <div className="p-4 pt-0 text-slate-300 text-sm border-t">
                       {faq.answer}
                     </div>
                   )}
@@ -275,16 +275,16 @@ export function HelpCenter() {
       </Card>
 
       {/* Contact Information */}
-      <Card className="border-blue-200 bg-blue-50">
+      <Card className="border-blue-500/30 bg-blue-500/10">
         <CardContent className="p-6">
           <div className="flex items-start gap-3">
-            <MessageCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+            <MessageCircle className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
             <div>
-              <p className="text-sm font-semibold text-blue-900 mb-1">Still need help?</p>
-              <p className="text-sm text-blue-800 mb-3">
+              <p className="text-sm font-semibold text-blue-300 mb-1">Still need help?</p>
+              <p className="text-sm text-blue-300 mb-3">
                 Our support team is available Monday-Friday, 9am-5pm AEST
               </p>
-              <div className="flex gap-4 text-sm text-blue-800">
+              <div className="flex gap-4 text-sm text-blue-300">
                 <div className="flex items-center gap-2">
                   <Mail className="w-4 h-4" />
                   <span>support@Grow MIP.com.au</span>

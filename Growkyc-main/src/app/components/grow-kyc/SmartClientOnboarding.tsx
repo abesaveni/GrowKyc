@@ -350,7 +350,7 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
         action: `successfully onboarded client ${newClient.name}`,
         time: 'Just now',
         iconName: 'CheckCircle',
-        color: 'text-green-600'
+        color: 'text-green-400'
       };
       const savedLogs = localStorage.getItem('growkyc_logged_activities');
       const logs = savedLogs ? JSON.parse(savedLogs) : [];
@@ -647,7 +647,7 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                   className={`border-4 border-dashed rounded-2xl p-12 text-center transition-all ${
                     dragActive
                       ? 'border-[#13B5EA] bg-[#13B5EA]/5 scale-105'
-                      : 'border-gray-300 hover:border-[#13B5EA] hover:bg-white/5'
+                      : 'border-white/10 hover:border-[#13B5EA] hover:bg-white/5'
                   }`}
                   onDragEnter={handleDrag}
                   onDragLeave={handleDrag}
@@ -706,8 +706,8 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                         className="flex items-center justify-between p-4 bg-[#0f172a] rounded-xl border-2 border-white/10 hover:border-[#13B5EA] transition-colors"
                       >
                         <div className="flex items-center gap-4 flex-1">
-                          <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                            <FileText className="w-6 h-6 text-blue-600" />
+                          <div className="w-12 h-12 bg-blue-500/15 rounded-lg flex items-center justify-center">
+                            <FileText className="w-6 h-6 text-blue-400" />
                           </div>
                           <div className="flex-1 min-w-0">
                             <p className="font-semibold text-white truncate">{file.name}</p>
@@ -733,7 +733,7 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                             variant="ghost"
                             size="sm"
                             onClick={() => removeFile(index)}
-                            className="text-red-600 hover:text-red-700"
+                            className="text-red-400 hover:text-red-300"
                           >
                             <Trash2 className="w-4 h-4" />
                           </Button>
@@ -849,10 +849,10 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                       { label: 'AML Screening', status: 'pass', score: 100 },
                       { label: 'Risk Score', status: 'pass', score: 15 }
                     ].map((result, idx) => (
-                      <div key={idx} className="p-4 bg-green-50 rounded-xl border-2 border-green-200">
-                        <CheckCircle className="w-6 h-6 text-green-600 mb-2" />
+                      <div key={idx} className="p-4 bg-green-500/10 rounded-xl border-2 border-green-500/30">
+                        <CheckCircle className="w-6 h-6 text-green-400 mb-2" />
                         <p className="font-semibold text-white">{result.label}</p>
-                        <p className="text-2xl font-bold text-green-600 mt-1">{result.score}</p>
+                        <p className="text-2xl font-bold text-green-400 mt-1">{result.score}</p>
                       </div>
                     ))}
                   </div>

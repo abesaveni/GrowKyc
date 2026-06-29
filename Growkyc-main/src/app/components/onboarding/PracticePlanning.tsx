@@ -174,8 +174,8 @@ export function PracticePlanning() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h3 className="text-xl font-bold text-gray-900">Service Plans</h3>
-          <p className="text-gray-600">Pre-configured service packages for different client types</p>
+          <h3 className="text-xl font-bold text-slate-100">Service Plans</h3>
+          <p className="text-slate-300">Pre-configured service packages for different client types</p>
         </div>
         <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold">
           <Plus className="w-5 h-5" />
@@ -188,20 +188,20 @@ export function PracticePlanning() {
         {servicePlans.map((plan) => {
           const getPlanColor = (type: string) => {
             switch (type) {
-              case 'starter': return 'border-green-300 bg-green-50';
-              case 'professional': return 'border-blue-300 bg-blue-50';
-              case 'premium': return 'border-purple-300 bg-purple-50';
-              case 'custom': return 'border-gray-300 bg-gray-50';
-              default: return 'border-gray-300 bg-gray-50';
+              case 'starter': return 'border-green-300 bg-green-500/10';
+              case 'professional': return 'border-blue-300 bg-blue-500/10';
+              case 'premium': return 'border-purple-300 bg-purple-500/10';
+              case 'custom': return 'border-white/10 bg-white/5';
+              default: return 'border-white/10 bg-white/5';
             }
           };
 
           const getPlanBadge = (type: string) => {
             switch (type) {
-              case 'starter': return <span className="px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full">STARTER</span>;
-              case 'professional': return <span className="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full">PROFESSIONAL</span>;
-              case 'premium': return <span className="px-3 py-1 bg-purple-100 text-purple-700 text-xs font-bold rounded-full flex items-center gap-1"><Star className="w-3 h-3" />PREMIUM</span>;
-              case 'custom': return <span className="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-bold rounded-full">CUSTOM</span>;
+              case 'starter': return <span className="px-3 py-1 bg-green-500/15 text-green-300 text-xs font-bold rounded-full">STARTER</span>;
+              case 'professional': return <span className="px-3 py-1 bg-blue-500/15 text-blue-300 text-xs font-bold rounded-full">PROFESSIONAL</span>;
+              case 'premium': return <span className="px-3 py-1 bg-purple-500/15 text-purple-300 text-xs font-bold rounded-full flex items-center gap-1"><Star className="w-3 h-3" />PREMIUM</span>;
+              case 'custom': return <span className="px-3 py-1 bg-white/5 text-slate-300 text-xs font-bold rounded-full">CUSTOM</span>;
               default: return null;
             }
           };
@@ -210,40 +210,40 @@ export function PracticePlanning() {
             <div key={plan.id} className={`border-2 rounded-lg p-6 ${getPlanColor(plan.type)}`}>
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <h4 className="text-xl font-bold text-gray-900 mb-1">{plan.name}</h4>
+                  <h4 className="text-xl font-bold text-slate-100 mb-1">{plan.name}</h4>
                   {getPlanBadge(plan.type)}
                 </div>
                 <div className="flex items-center gap-2">
                   <button className="p-2 hover:bg-white rounded transition-colors">
-                    <Edit className="w-4 h-4 text-gray-600" />
+                    <Edit className="w-4 h-4 text-slate-300" />
                   </button>
                   <button className="p-2 hover:bg-white rounded transition-colors">
-                    <Copy className="w-4 h-4 text-gray-600" />
+                    <Copy className="w-4 h-4 text-slate-300" />
                   </button>
                 </div>
               </div>
 
               <div className="mb-4">
                 <div className="flex items-baseline gap-2 mb-1">
-                  <span className="text-4xl font-bold text-gray-900">${plan.monthlyPrice}</span>
-                  <span className="text-gray-600">/month</span>
+                  <span className="text-4xl font-bold text-slate-100">${plan.monthlyPrice}</span>
+                  <span className="text-slate-300">/month</span>
                 </div>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-slate-300">
                   ${plan.annualPrice}/year (save ${(plan.monthlyPrice * 12 - plan.annualPrice).toFixed(0)})
                 </p>
               </div>
 
-              <div className="mb-4 pb-4 border-b border-gray-300">
-                <p className="text-xs text-gray-600 mb-2 font-semibold">CLIENT TYPE</p>
-                <span className="px-2 py-1 bg-white rounded text-xs font-semibold text-gray-700">{plan.clientType}</span>
+              <div className="mb-4 pb-4 border-b border-white/10">
+                <p className="text-xs text-slate-300 mb-2 font-semibold">CLIENT TYPE</p>
+                <span className="px-2 py-1 bg-white rounded text-xs font-semibold text-slate-300">{plan.clientType}</span>
               </div>
 
               <div className="mb-4">
-                <p className="text-xs text-gray-600 mb-2 font-semibold">INCLUDED SERVICES</p>
+                <p className="text-xs text-slate-300 mb-2 font-semibold">INCLUDED SERVICES</p>
                 <div className="space-y-1">
                   {plan.services.map((service, idx) => (
-                    <div key={idx} className="flex items-center gap-2 text-sm text-gray-700">
-                      <CheckCircle className="w-4 h-4 text-green-600" />
+                    <div key={idx} className="flex items-center gap-2 text-sm text-slate-300">
+                      <CheckCircle className="w-4 h-4 text-green-400" />
                       {service}
                     </div>
                   ))}
@@ -251,10 +251,10 @@ export function PracticePlanning() {
               </div>
 
               <div className="mb-4">
-                <p className="text-xs text-gray-600 mb-2 font-semibold">KEY FEATURES</p>
+                <p className="text-xs text-slate-300 mb-2 font-semibold">KEY FEATURES</p>
                 <div className="space-y-1">
                   {plan.features.slice(0, 3).map((feature, idx) => (
-                    <div key={idx} className="flex items-center gap-2 text-sm text-gray-700">
+                    <div key={idx} className="flex items-center gap-2 text-sm text-slate-300">
                       <Star className="w-3 h-3 text-amber-500" />
                       {feature}
                     </div>
@@ -262,13 +262,13 @@ export function PracticePlanning() {
                 </div>
               </div>
 
-              <div className="flex items-center justify-between pt-4 border-t border-gray-300">
+              <div className="flex items-center justify-between pt-4 border-t border-white/10">
                 <div className="flex items-center gap-2">
-                  <Users className="w-4 h-4 text-gray-600" />
-                  <span className="text-sm text-gray-700 font-semibold">{plan.clientsCount} clients</span>
+                  <Users className="w-4 h-4 text-slate-300" />
+                  <span className="text-sm text-slate-300 font-semibold">{plan.clientsCount} clients</span>
                 </div>
                 <div className={`flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold ${
-                  plan.active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-700'
+                  plan.active ? 'bg-green-500/15 text-green-300' : 'bg-white/5 text-slate-300'
                 }`}>
                   {plan.active ? 'Active' : 'Inactive'}
                 </div>
@@ -280,35 +280,35 @@ export function PracticePlanning() {
 
       {/* Summary Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6">
-        <div className="bg-white border-2 border-gray-200 rounded-lg p-4">
+        <div className="bg-white border-2 border-white/10 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-600">Total Plans</span>
-            <Package className="w-5 h-5 text-blue-600" />
+            <span className="text-sm text-slate-300">Total Plans</span>
+            <Package className="w-5 h-5 text-blue-400" />
           </div>
-          <p className="text-2xl font-bold text-gray-900">{servicePlans.length}</p>
+          <p className="text-2xl font-bold text-slate-100">{servicePlans.length}</p>
         </div>
-        <div className="bg-white border-2 border-gray-200 rounded-lg p-4">
+        <div className="bg-white border-2 border-white/10 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-600">Active Clients</span>
-            <Users className="w-5 h-5 text-green-600" />
+            <span className="text-sm text-slate-300">Active Clients</span>
+            <Users className="w-5 h-5 text-green-400" />
           </div>
-          <p className="text-2xl font-bold text-gray-900">{servicePlans.reduce((sum, p) => sum + p.clientsCount, 0)}</p>
+          <p className="text-2xl font-bold text-slate-100">{servicePlans.reduce((sum, p) => sum + p.clientsCount, 0)}</p>
         </div>
-        <div className="bg-white border-2 border-gray-200 rounded-lg p-4">
+        <div className="bg-white border-2 border-white/10 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-600">MRR</span>
-            <TrendingUp className="w-5 h-5 text-purple-600" />
+            <span className="text-sm text-slate-300">MRR</span>
+            <TrendingUp className="w-5 h-5 text-purple-400" />
           </div>
-          <p className="text-2xl font-bold text-gray-900">
+          <p className="text-2xl font-bold text-slate-100">
             ${servicePlans.reduce((sum, p) => sum + (p.monthlyPrice * p.clientsCount), 0).toLocaleString()}
           </p>
         </div>
-        <div className="bg-white border-2 border-gray-200 rounded-lg p-4">
+        <div className="bg-white border-2 border-white/10 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-600">ARR</span>
-            <BarChart3 className="w-5 h-5 text-amber-600" />
+            <span className="text-sm text-slate-300">ARR</span>
+            <BarChart3 className="w-5 h-5 text-amber-400" />
           </div>
-          <p className="text-2xl font-bold text-gray-900">
+          <p className="text-2xl font-bold text-slate-100">
             ${servicePlans.reduce((sum, p) => sum + (p.annualPrice * p.clientsCount), 0).toLocaleString()}
           </p>
         </div>
@@ -319,14 +319,14 @@ export function PracticePlanning() {
   const renderPricingTools = () => (
     <div className="space-y-6">
       <div>
-        <h3 className="text-xl font-bold text-gray-900">Pricing Tools</h3>
-        <p className="text-gray-600">Services library and pricing rules</p>
+        <h3 className="text-xl font-bold text-slate-100">Pricing Tools</h3>
+        <p className="text-slate-300">Services library and pricing rules</p>
       </div>
 
       {/* Services Library */}
-      <div className="bg-white border-2 border-gray-200 rounded-lg p-6">
+      <div className="bg-white border-2 border-white/10 rounded-lg p-6">
         <div className="flex items-center justify-between mb-4">
-          <h4 className="font-bold text-gray-900">Services Library</h4>
+          <h4 className="font-bold text-slate-100">Services Library</h4>
           <button className="flex items-center gap-2 px-3 py-1.5 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold">
             <Plus className="w-4 h-4" />
             Add Service
@@ -336,39 +336,39 @@ export function PracticePlanning() {
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-gray-200">
-                <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Service Name</th>
-                <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Category</th>
-                <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Base Price</th>
-                <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Billing</th>
-                <th className="text-right py-3 px-4 text-sm font-semibold text-gray-700">Actions</th>
+              <tr className="border-b border-white/10">
+                <th className="text-left py-3 px-4 text-sm font-semibold text-slate-300">Service Name</th>
+                <th className="text-left py-3 px-4 text-sm font-semibold text-slate-300">Category</th>
+                <th className="text-left py-3 px-4 text-sm font-semibold text-slate-300">Base Price</th>
+                <th className="text-left py-3 px-4 text-sm font-semibold text-slate-300">Billing</th>
+                <th className="text-right py-3 px-4 text-sm font-semibold text-slate-300">Actions</th>
               </tr>
             </thead>
             <tbody>
               {services.map((service) => (
-                <tr key={service.id} className="border-b border-gray-100 hover:bg-gray-50">
+                <tr key={service.id} className="border-b border-white/10 hover:bg-white/5">
                   <td className="py-3 px-4">
-                    <p className="font-semibold text-gray-900">{service.name}</p>
-                    <p className="text-xs text-gray-600">{service.description}</p>
+                    <p className="font-semibold text-slate-100">{service.name}</p>
+                    <p className="text-xs text-slate-300">{service.description}</p>
                   </td>
                   <td className="py-3 px-4">
-                    <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded">
+                    <span className="px-2 py-1 bg-blue-500/15 text-blue-300 text-xs font-semibold rounded">
                       {service.category}
                     </span>
                   </td>
                   <td className="py-3 px-4">
-                    <span className="font-bold text-gray-900">${service.basePrice}</span>
+                    <span className="font-bold text-slate-100">${service.basePrice}</span>
                   </td>
                   <td className="py-3 px-4">
-                    <span className="text-sm text-gray-600 capitalize">{service.unit}</span>
+                    <span className="text-sm text-slate-300 capitalize">{service.unit}</span>
                   </td>
                   <td className="py-3 px-4 text-right">
                     <div className="flex items-center justify-end gap-2">
-                      <button className="p-1 hover:bg-gray-100 rounded">
-                        <Edit className="w-4 h-4 text-gray-600" />
+                      <button className="p-1 hover:bg-white/5 rounded">
+                        <Edit className="w-4 h-4 text-slate-300" />
                       </button>
-                      <button className="p-1 hover:bg-gray-100 rounded">
-                        <Trash2 className="w-4 h-4 text-red-600" />
+                      <button className="p-1 hover:bg-white/5 rounded">
+                        <Trash2 className="w-4 h-4 text-red-400" />
                       </button>
                     </div>
                   </td>
@@ -380,9 +380,9 @@ export function PracticePlanning() {
       </div>
 
       {/* Pricing Rules */}
-      <div className="bg-white border-2 border-gray-200 rounded-lg p-6">
+      <div className="bg-white border-2 border-white/10 rounded-lg p-6">
         <div className="flex items-center justify-between mb-4">
-          <h4 className="font-bold text-gray-900">Pricing Rules & Discounts</h4>
+          <h4 className="font-bold text-slate-100">Pricing Rules & Discounts</h4>
           <button className="flex items-center gap-2 px-3 py-1.5 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold">
             <Plus className="w-4 h-4" />
             Add Rule
@@ -393,38 +393,38 @@ export function PracticePlanning() {
           {pricingRules.map((rule) => {
             const getRuleIcon = (type: string) => {
               switch (type) {
-                case 'volume-discount': return <Layers className="w-5 h-5 text-blue-600" />;
-                case 'bundle-discount': return <Package className="w-5 h-5 text-purple-600" />;
-                case 'loyalty-discount': return <Star className="w-5 h-5 text-amber-600" />;
-                case 'early-payment': return <Clock className="w-5 h-5 text-green-600" />;
-                default: return <DollarSign className="w-5 h-5 text-gray-600" />;
+                case 'volume-discount': return <Layers className="w-5 h-5 text-blue-400" />;
+                case 'bundle-discount': return <Package className="w-5 h-5 text-purple-400" />;
+                case 'loyalty-discount': return <Star className="w-5 h-5 text-amber-400" />;
+                case 'early-payment': return <Clock className="w-5 h-5 text-green-400" />;
+                default: return <DollarSign className="w-5 h-5 text-slate-300" />;
               }
             };
 
             return (
-              <div key={rule.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+              <div key={rule.id} className="flex items-center justify-between p-4 bg-white/5 rounded-lg">
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center">
                     {getRuleIcon(rule.type)}
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900">{rule.name}</p>
-                    <p className="text-sm text-gray-600">{rule.conditions}</p>
+                    <p className="font-semibold text-slate-100">{rule.name}</p>
+                    <p className="text-sm text-slate-300">{rule.conditions}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="text-right">
-                    <p className="text-2xl font-bold text-gray-900">
+                    <p className="text-2xl font-bold text-slate-100">
                       {rule.valueType === 'percentage' ? `${rule.value}%` : `$${rule.value}`}
                     </p>
-                    <p className="text-xs text-gray-600">Discount</p>
+                    <p className="text-xs text-slate-300">Discount</p>
                   </div>
                   <div className="flex items-center gap-2">
                     <button className="p-2 hover:bg-white rounded transition-colors">
-                      <Edit className="w-4 h-4 text-gray-600" />
+                      <Edit className="w-4 h-4 text-slate-300" />
                     </button>
                     <button className="p-2 hover:bg-white rounded transition-colors">
-                      <Trash2 className="w-4 h-4 text-red-600" />
+                      <Trash2 className="w-4 h-4 text-red-400" />
                     </button>
                   </div>
                 </div>
@@ -435,13 +435,13 @@ export function PracticePlanning() {
       </div>
 
       {/* AUSTRAC Checks & Compliance Costs */}
-      <div className="bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-200 rounded-lg p-6">
+      <div className="bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-500/30 rounded-lg p-6">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
-            <Shield className="w-6 h-6 text-red-600" />
+            <Shield className="w-6 h-6 text-red-400" />
             <div>
-              <h4 className="font-bold text-red-900">AUSTRAC Checks & Compliance Costs</h4>
-              <p className="text-sm text-red-700">InfoTrack verification and AML/CTF compliance costs</p>
+              <h4 className="font-bold text-red-300">AUSTRAC Checks & Compliance Costs</h4>
+              <p className="text-sm text-red-300">InfoTrack verification and AML/CTF compliance costs</p>
             </div>
           </div>
           <button 
@@ -455,21 +455,21 @@ export function PracticePlanning() {
 
         {/* Cost Summary */}
         <div className="grid grid-cols-3 gap-4 mb-4">
-          <div className="bg-white rounded-lg p-4 border border-red-200">
-            <p className="text-xs text-red-700 font-semibold mb-1">Per Client Onboarding</p>
-            <p className="text-2xl font-bold text-red-900">
+          <div className="bg-white rounded-lg p-4 border border-red-500/30">
+            <p className="text-xs text-red-300 font-semibold mb-1">Per Client Onboarding</p>
+            <p className="text-2xl font-bold text-red-300">
               ${austracChecks.filter(c => c.unit === 'per check').reduce((sum, c) => sum + c.cost, 0).toFixed(2)}
             </p>
           </div>
-          <div className="bg-white rounded-lg p-4 border border-red-200">
-            <p className="text-xs text-red-700 font-semibold mb-1">Monthly Costs</p>
-            <p className="text-2xl font-bold text-red-900">
+          <div className="bg-white rounded-lg p-4 border border-red-500/30">
+            <p className="text-xs text-red-300 font-semibold mb-1">Monthly Costs</p>
+            <p className="text-2xl font-bold text-red-300">
               ${austracChecks.filter(c => c.unit === 'monthly').reduce((sum, c) => sum + c.cost, 0).toFixed(2)}
             </p>
           </div>
-          <div className="bg-white rounded-lg p-4 border border-red-200">
-            <p className="text-xs text-red-700 font-semibold mb-1">Annual Costs</p>
-            <p className="text-2xl font-bold text-red-900">
+          <div className="bg-white rounded-lg p-4 border border-red-500/30">
+            <p className="text-xs text-red-300 font-semibold mb-1">Annual Costs</p>
+            <p className="text-2xl font-bold text-red-300">
               ${austracChecks.filter(c => c.unit === 'annual').reduce((sum, c) => sum + c.cost, 0).toFixed(2)}
             </p>
           </div>
@@ -479,7 +479,7 @@ export function PracticePlanning() {
         {showAddCheck && (
           <div className="bg-white rounded-lg p-4 mb-4 border-2 border-red-300">
             <div className="flex items-center justify-between mb-3">
-              <h5 className="font-bold text-gray-900">Add New Check</h5>
+              <h5 className="font-bold text-slate-100">Add New Check</h5>
               <button
                 onClick={() => {
                   setShowAddCheck(false);
@@ -493,38 +493,38 @@ export function PracticePlanning() {
                     active: true
                   });
                 }}
-                className="p-1 hover:bg-gray-100 rounded"
+                className="p-1 hover:bg-white/5 rounded"
               >
-                <X className="w-5 h-5 text-gray-600" />
+                <X className="w-5 h-5 text-slate-300" />
               </button>
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1">Check Name</label>
+                <label className="block text-xs font-semibold text-slate-300 mb-1">Check Name</label>
                 <input
                   type="text"
                   value={newCheck.name}
                   onChange={(e) => setNewCheck({ ...newCheck, name: e.target.value })}
-                  className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg"
+                  className="w-full px-3 py-2 text-sm border border-white/10 rounded-lg"
                   placeholder="e.g., Company Extract"
                 />
               </div>
               <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1">Provider</label>
+                <label className="block text-xs font-semibold text-slate-300 mb-1">Provider</label>
                 <input
                   type="text"
                   value={newCheck.provider}
                   onChange={(e) => setNewCheck({ ...newCheck, provider: e.target.value })}
-                  className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg"
+                  className="w-full px-3 py-2 text-sm border border-white/10 rounded-lg"
                   placeholder="e.g., InfoTrack"
                 />
               </div>
               <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1">Category</label>
+                <label className="block text-xs font-semibold text-slate-300 mb-1">Category</label>
                 <select
                   value={newCheck.category}
                   onChange={(e) => setNewCheck({ ...newCheck, category: e.target.value as any })}
-                  className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg"
+                  className="w-full px-3 py-2 text-sm border border-white/10 rounded-lg"
                 >
                   <option value="ID Verification">ID Verification</option>
                   <option value="Screening">Screening</option>
@@ -534,11 +534,11 @@ export function PracticePlanning() {
                 </select>
               </div>
               <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1">Unit</label>
+                <label className="block text-xs font-semibold text-slate-300 mb-1">Unit</label>
                 <select
                   value={newCheck.unit}
                   onChange={(e) => setNewCheck({ ...newCheck, unit: e.target.value as any })}
-                  className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg"
+                  className="w-full px-3 py-2 text-sm border border-white/10 rounded-lg"
                 >
                   <option value="per check">Per Check</option>
                   <option value="monthly">Monthly</option>
@@ -546,13 +546,13 @@ export function PracticePlanning() {
                 </select>
               </div>
               <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1">Cost ($)</label>
+                <label className="block text-xs font-semibold text-slate-300 mb-1">Cost ($)</label>
                 <input
                   type="number"
                   step="0.01"
                   value={newCheck.cost}
                   onChange={(e) => setNewCheck({ ...newCheck, cost: parseFloat(e.target.value) || 0 })}
-                  className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg"
+                  className="w-full px-3 py-2 text-sm border border-white/10 rounded-lg"
                   placeholder="0.00"
                 />
               </div>
@@ -584,12 +584,12 @@ export function PracticePlanning() {
                 </button>
               </div>
               <div className="col-span-2">
-                <label className="block text-xs font-semibold text-gray-700 mb-1">Description</label>
+                <label className="block text-xs font-semibold text-slate-300 mb-1">Description</label>
                 <input
                   type="text"
                   value={newCheck.description}
                   onChange={(e) => setNewCheck({ ...newCheck, description: e.target.value })}
-                  className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg"
+                  className="w-full px-3 py-2 text-sm border border-white/10 rounded-lg"
                   placeholder="Brief description of the check"
                 />
               </div>
@@ -598,23 +598,23 @@ export function PracticePlanning() {
         )}
 
         {/* Checks Table */}
-        <div className="bg-white rounded-lg overflow-hidden border border-red-200">
+        <div className="bg-white rounded-lg overflow-hidden border border-red-500/30">
           <table className="w-full">
-            <thead className="bg-red-100">
+            <thead className="bg-red-500/15">
               <tr>
-                <th className="text-left py-3 px-4 text-xs font-bold text-red-900">Check Name</th>
-                <th className="text-left py-3 px-4 text-xs font-bold text-red-900">Category</th>
-                <th className="text-left py-3 px-4 text-xs font-bold text-red-900">Provider</th>
-                <th className="text-right py-3 px-4 text-xs font-bold text-red-900">Cost</th>
-                <th className="text-left py-3 px-4 text-xs font-bold text-red-900">Unit</th>
-                <th className="text-center py-3 px-4 text-xs font-bold text-red-900">Actions</th>
+                <th className="text-left py-3 px-4 text-xs font-bold text-red-300">Check Name</th>
+                <th className="text-left py-3 px-4 text-xs font-bold text-red-300">Category</th>
+                <th className="text-left py-3 px-4 text-xs font-bold text-red-300">Provider</th>
+                <th className="text-right py-3 px-4 text-xs font-bold text-red-300">Cost</th>
+                <th className="text-left py-3 px-4 text-xs font-bold text-red-300">Unit</th>
+                <th className="text-center py-3 px-4 text-xs font-bold text-red-300">Actions</th>
               </tr>
             </thead>
             <tbody>
               {austracChecks.map((check) => {
                 const isEditing = editingCheck === check.id;
                 return (
-                  <tr key={check.id} className="border-b border-red-100 hover:bg-red-50">
+                  <tr key={check.id} className="border-b border-red-500/20 hover:bg-red-500/10">
                     <td className="py-3 px-4">
                       {isEditing ? (
                         <input
@@ -625,12 +625,12 @@ export function PracticePlanning() {
                               c.id === check.id ? { ...c, name: e.target.value } : c
                             ));
                           }}
-                          className="w-full px-2 py-1 text-sm border border-gray-300 rounded"
+                          className="w-full px-2 py-1 text-sm border border-white/10 rounded"
                         />
                       ) : (
                         <div>
-                          <p className="font-semibold text-gray-900 text-sm">{check.name}</p>
-                          <p className="text-xs text-gray-600">{check.description}</p>
+                          <p className="font-semibold text-slate-100 text-sm">{check.name}</p>
+                          <p className="text-xs text-slate-300">{check.description}</p>
                         </div>
                       )}
                     </td>
@@ -643,7 +643,7 @@ export function PracticePlanning() {
                               c.id === check.id ? { ...c, category: e.target.value as any } : c
                             ));
                           }}
-                          className="w-full px-2 py-1 text-sm border border-gray-300 rounded"
+                          className="w-full px-2 py-1 text-sm border border-white/10 rounded"
                         >
                           <option value="ID Verification">ID Verification</option>
                           <option value="Screening">Screening</option>
@@ -652,7 +652,7 @@ export function PracticePlanning() {
                           <option value="Other">Other</option>
                         </select>
                       ) : (
-                        <span className="px-2 py-1 bg-red-100 text-red-700 text-xs font-semibold rounded">
+                        <span className="px-2 py-1 bg-red-500/15 text-red-300 text-xs font-semibold rounded">
                           {check.category}
                         </span>
                       )}
@@ -667,10 +667,10 @@ export function PracticePlanning() {
                               c.id === check.id ? { ...c, provider: e.target.value } : c
                             ));
                           }}
-                          className="w-full px-2 py-1 text-sm border border-gray-300 rounded"
+                          className="w-full px-2 py-1 text-sm border border-white/10 rounded"
                         />
                       ) : (
-                        <span className="text-sm text-gray-700">{check.provider}</span>
+                        <span className="text-sm text-slate-300">{check.provider}</span>
                       )}
                     </td>
                     <td className="py-3 px-4 text-right">
@@ -684,10 +684,10 @@ export function PracticePlanning() {
                               c.id === check.id ? { ...c, cost: parseFloat(e.target.value) || 0 } : c
                             ));
                           }}
-                          className="w-24 px-2 py-1 text-sm border border-gray-300 rounded text-right"
+                          className="w-24 px-2 py-1 text-sm border border-white/10 rounded text-right"
                         />
                       ) : (
-                        <span className="font-bold text-gray-900">${check.cost.toFixed(2)}</span>
+                        <span className="font-bold text-slate-100">${check.cost.toFixed(2)}</span>
                       )}
                     </td>
                     <td className="py-3 px-4">
@@ -699,14 +699,14 @@ export function PracticePlanning() {
                               c.id === check.id ? { ...c, unit: e.target.value as any } : c
                             ));
                           }}
-                          className="w-full px-2 py-1 text-sm border border-gray-300 rounded"
+                          className="w-full px-2 py-1 text-sm border border-white/10 rounded"
                         >
                           <option value="per check">Per Check</option>
                           <option value="monthly">Monthly</option>
                           <option value="annual">Annual</option>
                         </select>
                       ) : (
-                        <span className="text-xs text-gray-600">{check.unit}</span>
+                        <span className="text-xs text-slate-300">{check.unit}</span>
                       )}
                     </td>
                     <td className="py-3 px-4">
@@ -718,13 +718,13 @@ export function PracticePlanning() {
                                 setEditingCheck(null);
                                 toast.success('✓ Changes saved!');
                               }}
-                              className="p-1 hover:bg-green-100 rounded text-green-600"
+                              className="p-1 hover:bg-green-500/15 rounded text-green-400"
                             >
                               <Save className="w-4 h-4" />
                             </button>
                             <button
                               onClick={() => setEditingCheck(null)}
-                              className="p-1 hover:bg-gray-100 rounded text-gray-600"
+                              className="p-1 hover:bg-white/5 rounded text-slate-300"
                             >
                               <X className="w-4 h-4" />
                             </button>
@@ -733,18 +733,18 @@ export function PracticePlanning() {
                           <>
                             <button
                               onClick={() => setEditingCheck(check.id)}
-                              className="p-1 hover:bg-gray-100 rounded"
+                              className="p-1 hover:bg-white/5 rounded"
                             >
-                              <Edit className="w-4 h-4 text-gray-600" />
+                              <Edit className="w-4 h-4 text-slate-300" />
                             </button>
                             <button
                               onClick={() => {
                                 setAustracChecks(austracChecks.filter(c => c.id !== check.id));
                                 toast.success('✓ Check deleted!');
                               }}
-                              className="p-1 hover:bg-red-100 rounded"
+                              className="p-1 hover:bg-red-500/15 rounded"
                             >
-                              <Trash2 className="w-4 h-4 text-red-600" />
+                              <Trash2 className="w-4 h-4 text-red-400" />
                             </button>
                           </>
                         )}
@@ -763,24 +763,24 @@ export function PracticePlanning() {
   const renderCalculator = () => (
     <div className="space-y-6">
       <div>
-        <h3 className="text-xl font-bold text-gray-900">Pricing Calculator</h3>
-        <p className="text-gray-600">Build custom quotes for prospective clients</p>
+        <h3 className="text-xl font-bold text-slate-100">Pricing Calculator</h3>
+        <p className="text-slate-300">Build custom quotes for prospective clients</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Calculator Form */}
-        <div className="bg-white border-2 border-gray-200 rounded-lg p-6">
-          <h4 className="font-bold text-gray-900 mb-4">Build Quote</h4>
+        <div className="bg-white border-2 border-white/10 rounded-lg p-6">
+          <h4 className="font-bold text-slate-100 mb-4">Build Quote</h4>
 
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Client Name</label>
-              <input type="text" className="w-full px-4 py-2 border border-gray-300 rounded-lg" placeholder="Enter client name" />
+              <label className="block text-sm font-semibold text-slate-300 mb-2">Client Name</label>
+              <input type="text" className="w-full px-4 py-2 border border-white/10 rounded-lg" placeholder="Enter client name" />
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Client Type</label>
-              <select className="w-full px-4 py-2 border border-gray-300 rounded-lg">
+              <label className="block text-sm font-semibold text-slate-300 mb-2">Client Type</label>
+              <select className="w-full px-4 py-2 border border-white/10 rounded-lg">
                 <option>Individual</option>
                 <option>Company</option>
                 <option>Trust</option>
@@ -790,14 +790,14 @@ export function PracticePlanning() {
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Select Services</label>
-              <div className="space-y-2 max-h-64 overflow-y-auto border border-gray-200 rounded-lg p-3">
+              <label className="block text-sm font-semibold text-slate-300 mb-2">Select Services</label>
+              <div className="space-y-2 max-h-64 overflow-y-auto border border-white/10 rounded-lg p-3">
                 {services.slice(0, 6).map((service) => (
-                  <label key={service.id} className="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                  <label key={service.id} className="flex items-center gap-3 p-2 hover:bg-white/5 rounded cursor-pointer">
                     <input type="checkbox" className="w-4 h-4" />
                     <div className="flex-1">
-                      <p className="text-sm font-semibold text-gray-900">{service.name}</p>
-                      <p className="text-xs text-gray-600">${service.basePrice}/{service.unit}</p>
+                      <p className="text-sm font-semibold text-slate-100">{service.name}</p>
+                      <p className="text-xs text-slate-300">${service.basePrice}/{service.unit}</p>
                     </div>
                   </label>
                 ))}
@@ -805,8 +805,8 @@ export function PracticePlanning() {
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Billing Frequency</label>
-              <select className="w-full px-4 py-2 border border-gray-300 rounded-lg">
+              <label className="block text-sm font-semibold text-slate-300 mb-2">Billing Frequency</label>
+              <select className="w-full px-4 py-2 border border-white/10 rounded-lg">
                 <option>Monthly</option>
                 <option>Quarterly</option>
                 <option>Annual (10% discount)</option>
@@ -814,8 +814,8 @@ export function PracticePlanning() {
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Apply Discount</label>
-              <select className="w-full px-4 py-2 border border-gray-300 rounded-lg">
+              <label className="block text-sm font-semibold text-slate-300 mb-2">Apply Discount</label>
+              <select className="w-full px-4 py-2 border border-white/10 rounded-lg">
                 <option value="">No discount</option>
                 {pricingRules.map((rule) => (
                   <option key={rule.id} value={rule.id}>
@@ -833,28 +833,28 @@ export function PracticePlanning() {
         </div>
 
         {/* Quote Preview */}
-        <div className="bg-gradient-to-br from-blue-50 to-purple-50 border-2 border-blue-200 rounded-lg p-6">
-          <h4 className="font-bold text-gray-900 mb-4">Quote Summary</h4>
+        <div className="bg-gradient-to-br from-blue-50 to-purple-50 border-2 border-blue-500/30 rounded-lg p-6">
+          <h4 className="font-bold text-slate-100 mb-4">Quote Summary</h4>
 
           <div className="bg-white rounded-lg p-6 mb-4">
             <div className="space-y-3">
               <div className="flex justify-between">
-                <span className="text-gray-700">Services Subtotal</span>
-                <span className="font-semibold text-gray-900">$0.00</span>
+                <span className="text-slate-300">Services Subtotal</span>
+                <span className="font-semibold text-slate-100">$0.00</span>
               </div>
-              <div className="flex justify-between text-green-600">
+              <div className="flex justify-between text-green-400">
                 <span>Discount Applied</span>
                 <span className="font-semibold">-$0.00</span>
               </div>
-              <div className="flex justify-between text-sm text-gray-600">
+              <div className="flex justify-between text-sm text-slate-300">
                 <span>GST (10%)</span>
                 <span className="font-semibold">$0.00</span>
               </div>
-              <div className="pt-3 border-t border-gray-200 flex justify-between">
-                <span className="text-lg font-bold text-gray-900">Total</span>
-                <span className="text-2xl font-bold text-blue-600">$0.00</span>
+              <div className="pt-3 border-t border-white/10 flex justify-between">
+                <span className="text-lg font-bold text-slate-100">Total</span>
+                <span className="text-2xl font-bold text-blue-400">$0.00</span>
               </div>
-              <p className="text-xs text-gray-600 text-center">per month</p>
+              <p className="text-xs text-slate-300 text-center">per month</p>
             </div>
           </div>
 
@@ -863,7 +863,7 @@ export function PracticePlanning() {
               <FileText className="w-5 h-5" />
               Generate Proposal
             </button>
-            <button className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-white border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-semibold">
+            <button className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-white border-2 border-white/10 text-slate-300 rounded-lg hover:bg-white/5 transition-colors font-semibold">
               <Copy className="w-5 h-5" />
               Copy Quote Link
             </button>
@@ -876,8 +876,8 @@ export function PracticePlanning() {
   const renderOnboardingFlows = () => (
     <div className="space-y-6">
       <div>
-        <h3 className="text-xl font-bold text-gray-900">Client Onboarding Flows</h3>
-        <p className="text-gray-600">Automated onboarding workflows by client type</p>
+        <h3 className="text-xl font-bold text-slate-100">Client Onboarding Flows</h3>
+        <p className="text-slate-300">Automated onboarding workflows by client type</p>
       </div>
 
       <div className="grid grid-cols-1 gap-4">
@@ -902,16 +902,16 @@ export function PracticePlanning() {
             active: true
           }
         ].map((flow, idx) => (
-          <div key={idx} className="bg-white border-2 border-gray-200 rounded-lg p-6">
+          <div key={idx} className="bg-white border-2 border-white/10 rounded-lg p-6">
             <div className="flex items-start justify-between mb-4">
               <div>
-                <h4 className="text-lg font-bold text-gray-900 mb-1">{flow.type} Onboarding</h4>
+                <h4 className="text-lg font-bold text-slate-100 mb-1">{flow.type} Onboarding</h4>
                 <div className="flex items-center gap-3">
-                  <span className="flex items-center gap-1 text-sm text-gray-600">
+                  <span className="flex items-center gap-1 text-sm text-slate-300">
                     <Clock className="w-4 h-4" />
                     {flow.duration}
                   </span>
-                  <span className="flex items-center gap-1 text-sm text-gray-600">
+                  <span className="flex items-center gap-1 text-sm text-slate-300">
                     <Target className="w-4 h-4" />
                     {flow.steps.length} steps
                   </span>
@@ -919,12 +919,12 @@ export function PracticePlanning() {
               </div>
               <div className="flex items-center gap-2">
                 <span className={`px-3 py-1 rounded-full text-xs font-bold ${
-                  flow.active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-700'
+                  flow.active ? 'bg-green-500/15 text-green-300' : 'bg-white/5 text-slate-300'
                 }`}>
                   {flow.active ? 'Active' : 'Inactive'}
                 </span>
-                <button className="p-2 hover:bg-gray-100 rounded transition-colors">
-                  <Settings className="w-5 h-5 text-gray-600" />
+                <button className="p-2 hover:bg-white/5 rounded transition-colors">
+                  <Settings className="w-5 h-5 text-slate-300" />
                 </button>
               </div>
             </div>
@@ -932,11 +932,11 @@ export function PracticePlanning() {
             <div className="flex items-center gap-2 flex-wrap">
               {flow.steps.map((step, stepIdx) => (
                 <div key={stepIdx} className="flex items-center gap-2">
-                  <div className="flex items-center gap-2 px-3 py-2 bg-blue-50 border border-blue-200 rounded-lg">
+                  <div className="flex items-center gap-2 px-3 py-2 bg-blue-500/10 border border-blue-500/30 rounded-lg">
                     <span className="w-6 h-6 rounded-full bg-blue-600 text-white text-xs font-bold flex items-center justify-center">
                       {stepIdx + 1}
                     </span>
-                    <span className="text-sm font-semibold text-gray-900">{step}</span>
+                    <span className="text-sm font-semibold text-slate-100">{step}</span>
                   </div>
                   {stepIdx < flow.steps.length - 1 && (
                     <ArrowRight className="w-4 h-4 text-gray-400" />
@@ -994,7 +994,7 @@ export function PracticePlanning() {
                         setPlansActivated(true);
                         toast.success('✓ Service Plans activated! You can now create and manage service packages.');
                       }}
-                      className="w-full px-4 py-2 bg-white text-blue-600 rounded-lg hover:bg-blue-50 transition-colors font-semibold text-sm"
+                      className="w-full px-4 py-2 bg-white text-blue-400 rounded-lg hover:bg-blue-500/10 transition-colors font-semibold text-sm"
                     >
                       Activate Service Plans
                     </button>
@@ -1024,7 +1024,7 @@ export function PracticePlanning() {
                         setPricingActivated(true);
                         toast.success('✓ Pricing Tools activated! Build custom quotes and manage pricing rules.');
                       }}
-                      className="w-full px-4 py-2 bg-white text-blue-600 rounded-lg hover:bg-blue-50 transition-colors font-semibold text-sm"
+                      className="w-full px-4 py-2 bg-white text-blue-400 rounded-lg hover:bg-blue-500/10 transition-colors font-semibold text-sm"
                     >
                       Activate Pricing Tools
                     </button>
@@ -1047,12 +1047,12 @@ export function PracticePlanning() {
 
       {/* Success Banner (when both activated) */}
       {plansActivated && pricingActivated && (
-        <div className="bg-green-50 border-2 border-green-200 rounded-lg p-4">
+        <div className="bg-green-500/10 border-2 border-green-500/30 rounded-lg p-4">
           <div className="flex items-center gap-3">
-            <CheckCircle className="w-6 h-6 text-green-600" />
+            <CheckCircle className="w-6 h-6 text-green-400" />
             <div>
-              <h3 className="font-bold text-green-900">Service Plans & Pricing Tools Active</h3>
-              <p className="text-sm text-green-800">
+              <h3 className="font-bold text-green-300">Service Plans & Pricing Tools Active</h3>
+              <p className="text-sm text-green-300">
                 You can now create service packages, set pricing rules, and generate client quotes.
               </p>
             </div>
@@ -1062,18 +1062,18 @@ export function PracticePlanning() {
 
       {/* Header */}
       <div>
-        <h2 className="text-2xl font-bold text-gray-900">Practice Planning</h2>
-        <p className="text-gray-600">Manage service plans, pricing, and onboarding workflows</p>
+        <h2 className="text-2xl font-bold text-slate-100">Practice Planning</h2>
+        <p className="text-slate-300">Manage service plans, pricing, and onboarding workflows</p>
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-2 border-b border-gray-200">
+      <div className="flex gap-2 border-b border-white/10">
         <button
           onClick={() => setActiveTab('plans')}
           className={`px-4 py-2 font-semibold transition-colors border-b-2 ${
             activeTab === 'plans'
-              ? 'border-blue-600 text-blue-600'
-              : 'border-transparent text-gray-600 hover:text-gray-900'
+              ? 'border-blue-600 text-blue-400'
+              : 'border-transparent text-slate-300 hover:text-slate-100'
           }`}
         >
           Service Plans
@@ -1082,8 +1082,8 @@ export function PracticePlanning() {
           onClick={() => setActiveTab('pricing')}
           className={`px-4 py-2 font-semibold transition-colors border-b-2 ${
             activeTab === 'pricing'
-              ? 'border-blue-600 text-blue-600'
-              : 'border-transparent text-gray-600 hover:text-gray-900'
+              ? 'border-blue-600 text-blue-400'
+              : 'border-transparent text-slate-300 hover:text-slate-100'
           }`}
         >
           Pricing Tools
@@ -1092,8 +1092,8 @@ export function PracticePlanning() {
           onClick={() => setActiveTab('calculator')}
           className={`px-4 py-2 font-semibold transition-colors border-b-2 ${
             activeTab === 'calculator'
-              ? 'border-blue-600 text-blue-600'
-              : 'border-transparent text-gray-600 hover:text-gray-900'
+              ? 'border-blue-600 text-blue-400'
+              : 'border-transparent text-slate-300 hover:text-slate-100'
           }`}
         >
           Calculator
@@ -1102,8 +1102,8 @@ export function PracticePlanning() {
           onClick={() => setActiveTab('onboarding')}
           className={`px-4 py-2 font-semibold transition-colors border-b-2 ${
             activeTab === 'onboarding'
-              ? 'border-blue-600 text-blue-600'
-              : 'border-transparent text-gray-600 hover:text-gray-900'
+              ? 'border-blue-600 text-blue-400'
+              : 'border-transparent text-slate-300 hover:text-slate-100'
           }`}
         >
           Onboarding Flows

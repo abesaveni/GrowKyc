@@ -49,57 +49,57 @@ export const renderJobs = (activeJobs: Job[], setCurrentPage: (page: string) => 
             <div className="flex items-start justify-between mb-4">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="font-mono text-lg font-bold text-gray-900">{job.id}</span>
+                  <span className="font-mono text-lg font-bold text-slate-100">{job.id}</span>
                   <span className={`px-3 py-1 text-xs font-semibold rounded ${
-                    job.status === 'in-progress' ? 'bg-blue-100 text-blue-700' :
-                    job.status === 'review' ? 'bg-purple-100 text-purple-700' :
-                    'bg-gray-100 text-gray-700'
+                    job.status === 'in-progress' ? 'bg-blue-500/15 text-blue-300' :
+                    job.status === 'review' ? 'bg-purple-500/15 text-purple-300' :
+                    'bg-white/5 text-slate-300'
                   }`}>
                     {job.status.toUpperCase()}
                   </span>
                   {job.risk === 'high' && (
-                    <span className="px-3 py-1 bg-red-100 text-red-700 text-xs font-semibold rounded flex items-center gap-1">
+                    <span className="px-3 py-1 bg-red-500/15 text-red-300 text-xs font-semibold rounded flex items-center gap-1">
                       <AlertCircle className="w-3 h-3" />
                       HIGH RISK
                     </span>
                   )}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-1">{job.client}</h3>
-                <p className="text-gray-600">{job.service}</p>
+                <h3 className="text-xl font-bold text-slate-100 mb-1">{job.client}</h3>
+                <p className="text-slate-300">{job.service}</p>
               </div>
               <div className="text-right">
-                <p className="text-sm text-gray-500 mb-1">Due Date</p>
-                <p className="text-lg font-semibold text-gray-900">{job.due}</p>
+                <p className="text-sm text-slate-400 mb-1">Due Date</p>
+                <p className="text-lg font-semibold text-slate-100">{job.due}</p>
               </div>
             </div>
 
             <div className="grid grid-cols-4 gap-4 mb-4">
-              <div className="text-center p-3 bg-blue-50 rounded-lg">
-                <p className="text-xs text-gray-600 mb-1">Budget</p>
-                <p className="text-lg font-bold text-gray-900">${(job.budget / 1000).toFixed(0)}K</p>
+              <div className="text-center p-3 bg-blue-500/10 rounded-lg">
+                <p className="text-xs text-slate-300 mb-1">Budget</p>
+                <p className="text-lg font-bold text-slate-100">${(job.budget / 1000).toFixed(0)}K</p>
               </div>
-              <div className="text-center p-3 bg-green-50 rounded-lg">
-                <p className="text-xs text-gray-600 mb-1">Actual</p>
-                <p className="text-lg font-bold text-gray-900">${(job.actual / 1000).toFixed(0)}K</p>
+              <div className="text-center p-3 bg-green-500/10 rounded-lg">
+                <p className="text-xs text-slate-300 mb-1">Actual</p>
+                <p className="text-lg font-bold text-slate-100">${(job.actual / 1000).toFixed(0)}K</p>
               </div>
-              <div className="text-center p-3 bg-purple-50 rounded-lg">
-                <p className="text-xs text-gray-600 mb-1">Hours</p>
-                <p className="text-lg font-bold text-gray-900">{job.hours}h</p>
+              <div className="text-center p-3 bg-purple-500/10 rounded-lg">
+                <p className="text-xs text-slate-300 mb-1">Hours</p>
+                <p className="text-lg font-bold text-slate-100">{job.hours}h</p>
               </div>
-              <div className="text-center p-3 bg-amber-50 rounded-lg">
-                <p className="text-xs text-gray-600 mb-1">Margin</p>
-                <p className="text-lg font-bold text-gray-900">{job.margin}%</p>
+              <div className="text-center p-3 bg-amber-500/10 rounded-lg">
+                <p className="text-xs text-slate-300 mb-1">Margin</p>
+                <p className="text-lg font-bold text-slate-100">{job.margin}%</p>
               </div>
             </div>
 
             <div className="mb-3">
-              <div className="flex items-center justify-between text-sm text-gray-600 mb-2">
+              <div className="flex items-center justify-between text-sm text-slate-300 mb-2">
                 <span>Budget Progress</span>
-                <span className={job.actual > job.budget ? 'text-red-600 font-semibold' : 'text-gray-900'}>
+                <span className={job.actual > job.budget ? 'text-red-400 font-semibold' : 'text-slate-100'}>
                   {Math.round((job.actual / job.budget) * 100)}%
                 </span>
               </div>
-              <div className="w-full bg-gray-200 rounded-full h-3">
+              <div className="w-full bg-white/10 rounded-full h-3">
                 <div 
                   className={`h-3 rounded-full ${job.actual > job.budget ? 'bg-red-500' : 'bg-green-500'}`}
                   style={{ width: `${Math.min((job.actual / job.budget) * 100, 100)}%` }}
@@ -162,49 +162,49 @@ export const renderClients = (
         <Card>
           <CardHeader>
             <div className="flex items-center gap-4">
-              <div className="p-4 bg-blue-100 rounded-lg">
-                <Building2 className="w-8 h-8 text-blue-600" />
+              <div className="p-4 bg-blue-500/15 rounded-lg">
+                <Building2 className="w-8 h-8 text-blue-400" />
               </div>
               <div>
                 <CardTitle className="text-2xl">{currentClient.name}</CardTitle>
-                <p className="text-gray-500">Active Client</p>
+                <p className="text-slate-400">Active Client</p>
               </div>
             </div>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <h3 className="font-semibold text-gray-900 mb-4">Contact Information</h3>
+                <h3 className="font-semibold text-slate-100 mb-4">Contact Information</h3>
                 <div className="space-y-3">
                   <div>
-                    <p className="text-sm text-gray-500">Email</p>
-                    <p className="text-gray-900">{currentClient.email}</p>
+                    <p className="text-sm text-slate-400">Email</p>
+                    <p className="text-slate-100">{currentClient.email}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500">Phone</p>
-                    <p className="text-gray-900">{currentClient.phone}</p>
+                    <p className="text-sm text-slate-400">Phone</p>
+                    <p className="text-slate-100">{currentClient.phone}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500">Address</p>
-                    <p className="text-gray-900">{currentClient.address}</p>
+                    <p className="text-sm text-slate-400">Address</p>
+                    <p className="text-slate-100">{currentClient.address}</p>
                   </div>
                 </div>
               </div>
 
               <div>
-                <h3 className="font-semibold text-gray-900 mb-4">Performance Metrics</h3>
+                <h3 className="font-semibold text-slate-100 mb-4">Performance Metrics</h3>
                 <div className="space-y-3">
-                  <div className="p-4 bg-blue-50 rounded-lg">
-                    <p className="text-sm text-gray-600 mb-1">Active Jobs</p>
-                    <p className="text-2xl font-bold text-gray-900">{currentClient.activeJobs}</p>
+                  <div className="p-4 bg-blue-500/10 rounded-lg">
+                    <p className="text-sm text-slate-300 mb-1">Active Jobs</p>
+                    <p className="text-2xl font-bold text-slate-100">{currentClient.activeJobs}</p>
                   </div>
-                  <div className="p-4 bg-green-50 rounded-lg">
-                    <p className="text-sm text-gray-600 mb-1">YTD Revenue</p>
-                    <p className="text-2xl font-bold text-gray-900">${currentClient.ytdRevenue}K</p>
+                  <div className="p-4 bg-green-500/10 rounded-lg">
+                    <p className="text-sm text-slate-300 mb-1">YTD Revenue</p>
+                    <p className="text-2xl font-bold text-slate-100">${currentClient.ytdRevenue}K</p>
                   </div>
-                  <div className="p-4 bg-purple-50 rounded-lg">
-                    <p className="text-sm text-gray-600 mb-1">Average Margin</p>
-                    <p className="text-2xl font-bold text-gray-900">{currentClient.avgMargin}%</p>
+                  <div className="p-4 bg-purple-500/10 rounded-lg">
+                    <p className="text-sm text-slate-300 mb-1">Average Margin</p>
+                    <p className="text-2xl font-bold text-slate-100">{currentClient.avgMargin}%</p>
                   </div>
                 </div>
               </div>
@@ -217,7 +217,7 @@ export const renderClients = (
             <CardTitle>Recent Jobs</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-gray-600">Job history for {currentClient.name} will appear here...</p>
+            <p className="text-slate-300">Job history for {currentClient.name} will appear here...</p>
           </CardContent>
         </Card>
       </div>
@@ -229,7 +229,7 @@ export const renderClients = (
     return (
       <div className="space-y-6">
         <div className="flex items-center justify-between">
-          <h2 className="text-xl font-bold text-gray-900">Edit Client</h2>
+          <h2 className="text-xl font-bold text-slate-100">Edit Client</h2>
           <Button variant="outline" onClick={() => setViewMode('view')}>
             Cancel
           </Button>
@@ -242,39 +242,39 @@ export const renderClients = (
           <CardContent>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Company Name</label>
+                <label className="block text-sm font-medium text-slate-300 mb-2">Company Name</label>
                 <input
                   type="text"
                   defaultValue={currentClient.name}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Email</label>
                   <input
                     type="email"
                     defaultValue={currentClient.email}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Phone</label>
                   <input
                     type="tel"
                     defaultValue={currentClient.phone}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Address</label>
+                <label className="block text-sm font-medium text-slate-300 mb-2">Address</label>
                 <textarea
                   rows={3}
                   defaultValue={currentClient.address}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
 
@@ -311,7 +311,7 @@ export const renderClients = (
             <input
               type="text"
               placeholder="Search clients..."
-              className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="pl-10 pr-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
           <Button size="sm" variant="outline">
@@ -335,28 +335,28 @@ export const renderClients = (
             <CardContent className="p-6">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div className="p-3 bg-blue-100 rounded-lg">
-                    <Building2 className="w-6 h-6 text-blue-600" />
+                  <div className="p-3 bg-blue-500/15 rounded-lg">
+                    <Building2 className="w-6 h-6 text-blue-400" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900">{client.name}</h3>
-                    <p className="text-sm text-gray-500">Active Client</p>
+                    <h3 className="font-bold text-slate-100">{client.name}</h3>
+                    <p className="text-sm text-slate-400">Active Client</p>
                   </div>
                 </div>
               </div>
 
               <div className="space-y-3 mb-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-600">Active Jobs</span>
-                  <span className="text-sm font-semibold text-gray-900">{client.activeJobs}</span>
+                  <span className="text-sm text-slate-300">Active Jobs</span>
+                  <span className="text-sm font-semibold text-slate-100">{client.activeJobs}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-600">YTD Revenue</span>
-                  <span className="text-sm font-semibold text-gray-900">${client.ytdRevenue}K</span>
+                  <span className="text-sm text-slate-300">YTD Revenue</span>
+                  <span className="text-sm font-semibold text-slate-100">${client.ytdRevenue}K</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-600">Avg Margin</span>
-                  <span className="text-sm font-semibold text-green-600">{client.avgMargin}%</span>
+                  <span className="text-sm text-slate-300">Avg Margin</span>
+                  <span className="text-sm font-semibold text-green-400">{client.avgMargin}%</span>
                 </div>
               </div>
 
@@ -393,44 +393,44 @@ export const renderBilling = (activeJobs: Job[]) => (
       <Card>
         <CardContent className="p-6">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-600">WIP Balance</span>
-            <Clock className="w-5 h-5 text-blue-600" />
+            <span className="text-sm text-slate-300">WIP Balance</span>
+            <Clock className="w-5 h-5 text-blue-400" />
           </div>
-          <p className="text-3xl font-bold text-gray-900">$324K</p>
-          <p className="text-xs text-green-600 mt-1">↓ 8.2% from last month</p>
+          <p className="text-3xl font-bold text-slate-100">$324K</p>
+          <p className="text-xs text-green-400 mt-1">↓ 8.2% from last month</p>
         </CardContent>
       </Card>
 
       <Card>
         <CardContent className="p-6">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-600">Outstanding</span>
-            <DollarSign className="w-5 h-5 text-amber-600" />
+            <span className="text-sm text-slate-300">Outstanding</span>
+            <DollarSign className="w-5 h-5 text-amber-400" />
           </div>
-          <p className="text-3xl font-bold text-gray-900">$156K</p>
-          <p className="text-xs text-gray-500 mt-1">Average 28 days</p>
+          <p className="text-3xl font-bold text-slate-100">$156K</p>
+          <p className="text-xs text-slate-400 mt-1">Average 28 days</p>
         </CardContent>
       </Card>
 
       <Card>
         <CardContent className="p-6">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-600">This Month</span>
-            <CheckCircle className="w-5 h-5 text-green-600" />
+            <span className="text-sm text-slate-300">This Month</span>
+            <CheckCircle className="w-5 h-5 text-green-400" />
           </div>
-          <p className="text-3xl font-bold text-gray-900">$847K</p>
-          <p className="text-xs text-green-600 mt-1">↑ 12.4% vs last month</p>
+          <p className="text-3xl font-bold text-slate-100">$847K</p>
+          <p className="text-xs text-green-400 mt-1">↑ 12.4% vs last month</p>
         </CardContent>
       </Card>
 
       <Card>
         <CardContent className="p-6">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-600">Draft Invoices</span>
-            <FileText className="w-5 h-5 text-purple-600" />
+            <span className="text-sm text-slate-300">Draft Invoices</span>
+            <FileText className="w-5 h-5 text-purple-400" />
           </div>
-          <p className="text-3xl font-bold text-gray-900">12</p>
-          <p className="text-xs text-gray-500 mt-1">Ready to send</p>
+          <p className="text-3xl font-bold text-slate-100">12</p>
+          <p className="text-xs text-slate-400 mt-1">Ready to send</p>
         </CardContent>
       </Card>
     </div>
@@ -449,28 +449,28 @@ export const renderBilling = (activeJobs: Job[]) => (
       <CardContent>
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-gray-50">
+            <thead className="bg-white/5">
               <tr>
-                <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Job</th>
-                <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Client</th>
-                <th className="px-4 py-3 text-center text-xs font-semibold text-gray-600 uppercase">Hours</th>
-                <th className="px-4 py-3 text-right text-xs font-semibold text-gray-600 uppercase">Amount</th>
-                <th className="px-4 py-3 text-right text-xs font-semibold text-gray-600 uppercase">Margin</th>
-                <th className="px-4 py-3 text-center text-xs font-semibold text-gray-600 uppercase">Actions</th>
+                <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Job</th>
+                <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Client</th>
+                <th className="px-4 py-3 text-center text-xs font-semibold text-slate-300 uppercase">Hours</th>
+                <th className="px-4 py-3 text-right text-xs font-semibold text-slate-300 uppercase">Amount</th>
+                <th className="px-4 py-3 text-right text-xs font-semibold text-slate-300 uppercase">Margin</th>
+                <th className="px-4 py-3 text-center text-xs font-semibold text-slate-300 uppercase">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-200">
+            <tbody className="divide-y divide-white/10">
               {activeJobs.map((job) => (
-                <tr key={job.id} className="hover:bg-gray-50">
-                  <td className="px-4 py-3 text-sm font-mono font-semibold text-gray-900">{job.id}</td>
-                  <td className="px-4 py-3 text-sm text-gray-900">{job.client}</td>
-                  <td className="px-4 py-3 text-sm text-center text-gray-900">{job.hours}h</td>
-                  <td className="px-4 py-3 text-sm text-right font-semibold text-gray-900">${job.actual.toLocaleString()}</td>
+                <tr key={job.id} className="hover:bg-white/5">
+                  <td className="px-4 py-3 text-sm font-mono font-semibold text-slate-100">{job.id}</td>
+                  <td className="px-4 py-3 text-sm text-slate-100">{job.client}</td>
+                  <td className="px-4 py-3 text-sm text-center text-slate-100">{job.hours}h</td>
+                  <td className="px-4 py-3 text-sm text-right font-semibold text-slate-100">${job.actual.toLocaleString()}</td>
                   <td className="px-4 py-3 text-sm text-right">
                     <span className={`px-2 py-1 rounded text-xs font-semibold ${
-                      job.margin >= 40 ? 'bg-green-100 text-green-700' : 
-                      job.margin >= 30 ? 'bg-amber-100 text-amber-700' : 
-                      'bg-red-100 text-red-700'
+                      job.margin >= 40 ? 'bg-green-500/15 text-green-300' : 
+                      job.margin >= 30 ? 'bg-amber-500/15 text-amber-300' : 
+                      'bg-red-500/15 text-red-300'
                     }`}>
                       {job.margin}%
                     </span>
@@ -497,45 +497,45 @@ export const renderReports = () => (
       <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => toast.info('Opening Profitability Report')}>
         <CardContent className="p-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="p-3 bg-green-100 rounded-lg">
-              <DollarSign className="w-6 h-6 text-green-600" />
+            <div className="p-3 bg-green-500/15 rounded-lg">
+              <DollarSign className="w-6 h-6 text-green-400" />
             </div>
             <div>
-              <h3 className="font-bold text-gray-900">Profitability</h3>
-              <p className="text-sm text-gray-500">Revenue & Margin Analysis</p>
+              <h3 className="font-bold text-slate-100">Profitability</h3>
+              <p className="text-sm text-slate-400">Revenue & Margin Analysis</p>
             </div>
           </div>
-          <p className="text-sm text-gray-600">Job profitability, client margins, service line performance</p>
+          <p className="text-sm text-slate-300">Job profitability, client margins, service line performance</p>
         </CardContent>
       </Card>
 
       <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => toast.info('Opening Productivity Report')}>
         <CardContent className="p-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="p-3 bg-blue-100 rounded-lg">
-              <Activity className="w-6 h-6 text-blue-600" />
+            <div className="p-3 bg-blue-500/15 rounded-lg">
+              <Activity className="w-6 h-6 text-blue-400" />
             </div>
             <div>
-              <h3 className="font-bold text-gray-900">Productivity</h3>
-              <p className="text-sm text-gray-500">Time & Utilisation</p>
+              <h3 className="font-bold text-slate-100">Productivity</h3>
+              <p className="text-sm text-slate-400">Time & Utilisation</p>
             </div>
           </div>
-          <p className="text-sm text-gray-600">Staff utilisation, recovery rates, capacity planning</p>
+          <p className="text-sm text-slate-300">Staff utilisation, recovery rates, capacity planning</p>
         </CardContent>
       </Card>
 
       <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => toast.info('Opening Financial Report')}>
         <CardContent className="p-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="p-3 bg-purple-100 rounded-lg">
-              <BarChart3 className="w-6 h-6 text-purple-600" />
+            <div className="p-3 bg-purple-500/15 rounded-lg">
+              <BarChart3 className="w-6 h-6 text-purple-400" />
             </div>
             <div>
-              <h3 className="font-bold text-gray-900">Financial</h3>
-              <p className="text-sm text-gray-500">WIP & Debtors</p>
+              <h3 className="font-bold text-slate-100">Financial</h3>
+              <p className="text-sm text-slate-400">WIP & Debtors</p>
             </div>
           </div>
-          <p className="text-sm text-gray-600">Work in progress, outstanding invoices, cash flow</p>
+          <p className="text-sm text-slate-300">Work in progress, outstanding invoices, cash flow</p>
         </CardContent>
       </Card>
     </div>
@@ -551,7 +551,7 @@ export const renderReports = () => (
             <FileText className="w-5 h-5 mr-3" />
             <div className="text-left">
               <p className="font-semibold">Revenue by Service</p>
-              <p className="text-xs text-gray-500">YTD breakdown by service line</p>
+              <p className="text-xs text-slate-400">YTD breakdown by service line</p>
             </div>
           </Button>
 
@@ -559,7 +559,7 @@ export const renderReports = () => (
             <FileText className="w-5 h-5 mr-3" />
             <div className="text-left">
               <p className="font-semibold">Client Profitability</p>
-              <p className="text-xs text-gray-500">Ranked by gross margin</p>
+              <p className="text-xs text-slate-400">Ranked by gross margin</p>
             </div>
           </Button>
 
@@ -567,7 +567,7 @@ export const renderReports = () => (
             <FileText className="w-5 h-5 mr-3" />
             <div className="text-left">
               <p className="font-semibold">Staff Performance</p>
-              <p className="text-xs text-gray-500">Utilisation and recovery rates</p>
+              <p className="text-xs text-slate-400">Utilisation and recovery rates</p>
             </div>
           </Button>
 
@@ -575,7 +575,7 @@ export const renderReports = () => (
             <FileText className="w-5 h-5 mr-3" />
             <div className="text-left">
               <p className="font-semibold">WIP Aging</p>
-              <p className="text-xs text-gray-500">Unbilled time by age</p>
+              <p className="text-xs text-slate-400">Unbilled time by age</p>
             </div>
           </Button>
         </div>
@@ -591,8 +591,8 @@ export const renderReports = () => (
         <div className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Report Type</label>
-              <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <label className="block text-sm font-medium text-slate-300 mb-2">Report Type</label>
+              <select className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <option>Revenue Analysis</option>
                 <option>Time Analysis</option>
                 <option>Client Analysis</option>
@@ -600,8 +600,8 @@ export const renderReports = () => (
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Date Range</label>
-              <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <label className="block text-sm font-medium text-slate-300 mb-2">Date Range</label>
+              <select className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <option>This Month</option>
                 <option>Last Month</option>
                 <option>This Quarter</option>
@@ -610,8 +610,8 @@ export const renderReports = () => (
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Format</label>
-              <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <label className="block text-sm font-medium text-slate-300 mb-2">Format</label>
+              <select className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <option>PDF</option>
                 <option>Excel</option>
                 <option>CSV</option>
@@ -641,7 +641,7 @@ export const renderContracts = (showCreateForm: boolean, setShowCreateForm: (sho
     return (
       <div className="space-y-6">
         <div className="flex items-center justify-between">
-          <h2 className="text-xl font-bold text-gray-900">Create New Contract</h2>
+          <h2 className="text-xl font-bold text-slate-100">Create New Contract</h2>
           <Button variant="outline" onClick={() => setShowCreateForm(false)}>
             Cancel
           </Button>
@@ -655,8 +655,8 @@ export const renderContracts = (showCreateForm: boolean, setShowCreateForm: (sho
             <div className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Client</label>
-                  <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Client</label>
+                  <select className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option>Select client...</option>
                     <option>Acme Corp</option>
                     <option>TechStart Pty</option>
@@ -665,19 +665,19 @@ export const renderContracts = (showCreateForm: boolean, setShowCreateForm: (sho
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Service</label>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Service</label>
                   <input
                     type="text"
                     placeholder="e.g. Annual Audit"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Contract Type</label>
-                  <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Contract Type</label>
+                  <select className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option>Fixed Fee</option>
                     <option>Hourly</option>
                     <option>Retainer</option>
@@ -686,16 +686,16 @@ export const renderContracts = (showCreateForm: boolean, setShowCreateForm: (sho
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Contract Value</label>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Contract Value</label>
                   <input
                     type="number"
                     placeholder="0.00"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Currency</label>
-                  <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Currency</label>
+                  <select className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option>USD</option>
                     <option>AUD</option>
                     <option>GBP</option>
@@ -706,36 +706,36 @@ export const renderContracts = (showCreateForm: boolean, setShowCreateForm: (sho
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Start Date</label>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Start Date</label>
                   <input
                     type="date"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">End Date</label>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">End Date</label>
                   <input
                     type="date"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Scope of Work</label>
+                <label className="block text-sm font-medium text-slate-300 mb-2">Scope of Work</label>
                 <textarea
                   rows={4}
                   placeholder="Describe the scope of work..."
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Terms & Conditions</label>
+                <label className="block text-sm font-medium text-slate-300 mb-2">Terms & Conditions</label>
                 <textarea
                   rows={4}
                   placeholder="Enter contract terms and conditions..."
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
 
@@ -771,44 +771,44 @@ export const renderContracts = (showCreateForm: boolean, setShowCreateForm: (sho
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-gray-600">Active Contracts</span>
-              <CheckCircle className="w-5 h-5 text-green-600" />
+              <span className="text-sm text-slate-300">Active Contracts</span>
+              <CheckCircle className="w-5 h-5 text-green-400" />
             </div>
-            <p className="text-3xl font-bold text-gray-900">{contracts.filter(c => c.status === 'active').length}</p>
-            <p className="text-xs text-gray-500 mt-1">{contracts.filter(c => c.signed).length} signed</p>
+            <p className="text-3xl font-bold text-slate-100">{contracts.filter(c => c.status === 'active').length}</p>
+            <p className="text-xs text-slate-400 mt-1">{contracts.filter(c => c.signed).length} signed</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-gray-600">Total Value</span>
-              <DollarSign className="w-5 h-5 text-blue-600" />
+              <span className="text-sm text-slate-300">Total Value</span>
+              <DollarSign className="w-5 h-5 text-blue-400" />
             </div>
-            <p className="text-3xl font-bold text-gray-900">${(contracts.reduce((sum, c) => sum + c.value, 0) / 1000).toFixed(0)}K</p>
-            <p className="text-xs text-gray-500 mt-1">Active contracts</p>
+            <p className="text-3xl font-bold text-slate-100">${(contracts.reduce((sum, c) => sum + c.value, 0) / 1000).toFixed(0)}K</p>
+            <p className="text-xs text-slate-400 mt-1">Active contracts</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-gray-600">Pending</span>
-              <AlertCircle className="w-5 h-5 text-amber-600" />
+              <span className="text-sm text-slate-300">Pending</span>
+              <AlertCircle className="w-5 h-5 text-amber-400" />
             </div>
-            <p className="text-3xl font-bold text-gray-900">{contracts.filter(c => c.status === 'pending').length}</p>
-            <p className="text-xs text-gray-500 mt-1">Awaiting signature</p>
+            <p className="text-3xl font-bold text-slate-100">{contracts.filter(c => c.status === 'pending').length}</p>
+            <p className="text-xs text-slate-400 mt-1">Awaiting signature</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-gray-600">Drafts</span>
-              <FileText className="w-5 h-5 text-gray-600" />
+              <span className="text-sm text-slate-300">Drafts</span>
+              <FileText className="w-5 h-5 text-slate-300" />
             </div>
-            <p className="text-3xl font-bold text-gray-900">{contracts.filter(c => c.status === 'draft').length}</p>
-            <p className="text-xs text-gray-500 mt-1">In progress</p>
+            <p className="text-3xl font-bold text-slate-100">{contracts.filter(c => c.status === 'draft').length}</p>
+            <p className="text-xs text-slate-400 mt-1">In progress</p>
           </CardContent>
         </Card>
       </div>
@@ -833,36 +833,36 @@ export const renderContracts = (showCreateForm: boolean, setShowCreateForm: (sho
         <CardContent>
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-gray-50">
+              <thead className="bg-white/5">
                 <tr>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Contract ID</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Client</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Service</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Type</th>
-                  <th className="px-4 py-3 text-right text-xs font-semibold text-gray-600 uppercase">Value</th>
-                  <th className="px-4 py-3 text-center text-xs font-semibold text-gray-600 uppercase">Status</th>
-                  <th className="px-4 py-3 text-center text-xs font-semibold text-gray-600 uppercase">Period</th>
-                  <th className="px-4 py-3 text-right text-xs font-semibold text-gray-600 uppercase">Actions</th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Contract ID</th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Client</th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Service</th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Type</th>
+                  <th className="px-4 py-3 text-right text-xs font-semibold text-slate-300 uppercase">Value</th>
+                  <th className="px-4 py-3 text-center text-xs font-semibold text-slate-300 uppercase">Status</th>
+                  <th className="px-4 py-3 text-center text-xs font-semibold text-slate-300 uppercase">Period</th>
+                  <th className="px-4 py-3 text-right text-xs font-semibold text-slate-300 uppercase">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200">
+              <tbody className="divide-y divide-white/10">
                 {contracts.map((contract) => (
-                  <tr key={contract.id} className="hover:bg-gray-50">
-                    <td className="px-4 py-3 text-sm font-mono font-semibold text-gray-900">{contract.id}</td>
-                    <td className="px-4 py-3 text-sm font-medium text-gray-900">{contract.client}</td>
-                    <td className="px-4 py-3 text-sm text-gray-600">{contract.service}</td>
-                    <td className="px-4 py-3 text-sm text-gray-600">{contract.type}</td>
-                    <td className="px-4 py-3 text-sm text-right font-semibold text-gray-900">${contract.value.toLocaleString()}</td>
+                  <tr key={contract.id} className="hover:bg-white/5">
+                    <td className="px-4 py-3 text-sm font-mono font-semibold text-slate-100">{contract.id}</td>
+                    <td className="px-4 py-3 text-sm font-medium text-slate-100">{contract.client}</td>
+                    <td className="px-4 py-3 text-sm text-slate-300">{contract.service}</td>
+                    <td className="px-4 py-3 text-sm text-slate-300">{contract.type}</td>
+                    <td className="px-4 py-3 text-sm text-right font-semibold text-slate-100">${contract.value.toLocaleString()}</td>
                     <td className="px-4 py-3 text-center">
                       <span className={`px-2 py-1 text-xs font-semibold rounded ${
-                        contract.status === 'active' ? 'bg-green-100 text-green-700' :
-                        contract.status === 'pending' ? 'bg-amber-100 text-amber-700' :
-                        'bg-gray-100 text-gray-700'
+                        contract.status === 'active' ? 'bg-green-500/15 text-green-300' :
+                        contract.status === 'pending' ? 'bg-amber-500/15 text-amber-300' :
+                        'bg-white/5 text-slate-300'
                       }`}>
                         {contract.status.toUpperCase()}
                       </span>
                     </td>
-                    <td className="px-4 py-3 text-center text-sm text-gray-600">
+                    <td className="px-4 py-3 text-center text-sm text-slate-300">
                       {contract.startDate} to {contract.endDate}
                     </td>
                     <td className="px-4 py-3 text-right">
@@ -907,15 +907,15 @@ export const renderDocuments = () => {
   const getFileIcon = (type: string) => {
     switch(type) {
       case 'pdf':
-        return <FileText className="w-8 h-8 text-red-600" />;
+        return <FileText className="w-8 h-8 text-red-400" />;
       case 'xlsx':
       case 'xls':
-        return <FileText className="w-8 h-8 text-green-600" />;
+        return <FileText className="w-8 h-8 text-green-400" />;
       case 'docx':
       case 'doc':
-        return <FileText className="w-8 h-8 text-blue-600" />;
+        return <FileText className="w-8 h-8 text-blue-400" />;
       default:
-        return <FileText className="w-8 h-8 text-gray-600" />;
+        return <FileText className="w-8 h-8 text-slate-300" />;
     }
   };
 
@@ -948,7 +948,7 @@ export const renderDocuments = () => {
     return (
       <div className="space-y-6">
         <div className="flex items-center justify-between">
-          <h2 className="text-xl font-bold text-gray-900">Upload Document</h2>
+          <h2 className="text-xl font-bold text-slate-100">Upload Document</h2>
           <Button variant="outline" onClick={() => setShowUploadModal(false)}>
             Cancel
           </Button>
@@ -962,9 +962,9 @@ export const renderDocuments = () => {
             <div className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Client</label>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Client</label>
                   <select 
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     value={selectedClient}
                     onChange={(e) => setSelectedClient(e.target.value)}
                   >
@@ -976,9 +976,9 @@ export const renderDocuments = () => {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Job (Optional)</label>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Job (Optional)</label>
                   <select 
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     value={selectedJob}
                     onChange={(e) => setSelectedJob(e.target.value)}
                   >
@@ -991,10 +991,10 @@ export const renderDocuments = () => {
                 </div>
               </div>
 
-              <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-blue-500 transition-colors">
+              <div className="border-2 border-dashed border-white/10 rounded-lg p-8 text-center hover:border-blue-500 transition-colors">
                 <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                <p className="text-gray-600 mb-2">Drop files here or click to browse</p>
-                <p className="text-sm text-gray-500 mb-4">Support for PDF, Word, Excel, and image files</p>
+                <p className="text-slate-300 mb-2">Drop files here or click to browse</p>
+                <p className="text-sm text-slate-400 mb-4">Support for PDF, Word, Excel, and image files</p>
                 <input
                   type="file"
                   onChange={handleFileUpload}
@@ -1025,44 +1025,44 @@ export const renderDocuments = () => {
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-gray-600">Total Documents</span>
-              <FileText className="w-5 h-5 text-blue-600" />
+              <span className="text-sm text-slate-300">Total Documents</span>
+              <FileText className="w-5 h-5 text-blue-400" />
             </div>
-            <p className="text-3xl font-bold text-gray-900">{uploadedFiles.length}</p>
-            <p className="text-xs text-gray-500 mt-1">Across all jobs</p>
+            <p className="text-3xl font-bold text-slate-100">{uploadedFiles.length}</p>
+            <p className="text-xs text-slate-400 mt-1">Across all jobs</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-gray-600">Storage Used</span>
-              <Activity className="w-5 h-5 text-green-600" />
+              <span className="text-sm text-slate-300">Storage Used</span>
+              <Activity className="w-5 h-5 text-green-400" />
             </div>
-            <p className="text-3xl font-bold text-gray-900">8.1 MB</p>
-            <p className="text-xs text-gray-500 mt-1">of 100 GB</p>
+            <p className="text-3xl font-bold text-slate-100">8.1 MB</p>
+            <p className="text-xs text-slate-400 mt-1">of 100 GB</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-gray-600">This Month</span>
-              <Plus className="w-5 h-5 text-purple-600" />
+              <span className="text-sm text-slate-300">This Month</span>
+              <Plus className="w-5 h-5 text-purple-400" />
             </div>
-            <p className="text-3xl font-bold text-gray-900">12</p>
-            <p className="text-xs text-gray-500 mt-1">New uploads</p>
+            <p className="text-3xl font-bold text-slate-100">12</p>
+            <p className="text-xs text-slate-400 mt-1">New uploads</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-gray-600">Clients</span>
-              <Building2 className="w-5 h-5 text-amber-600" />
+              <span className="text-sm text-slate-300">Clients</span>
+              <Building2 className="w-5 h-5 text-amber-400" />
             </div>
-            <p className="text-3xl font-bold text-gray-900">4</p>
-            <p className="text-xs text-gray-500 mt-1">With documents</p>
+            <p className="text-3xl font-bold text-slate-100">4</p>
+            <p className="text-xs text-slate-400 mt-1">With documents</p>
           </CardContent>
         </Card>
       </div>
@@ -1075,7 +1075,7 @@ export const renderDocuments = () => {
             <input
               type="text"
               placeholder="Search documents..."
-              className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="pl-10 pr-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
           <Button size="sm" variant="outline">
@@ -1097,14 +1097,14 @@ export const renderDocuments = () => {
         <CardContent>
           <div className="space-y-3">
             {uploadedFiles.map((file) => (
-              <div key={file.id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+              <div key={file.id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-white/5 transition-colors">
                 <div className="flex items-center gap-4 flex-1">
-                  <div className="p-3 bg-gray-50 rounded-lg">
+                  <div className="p-3 bg-white/5 rounded-lg">
                     {getFileIcon(file.type)}
                   </div>
                   <div className="flex-1">
-                    <h4 className="font-semibold text-gray-900 mb-1">{file.name}</h4>
-                    <div className="flex items-center gap-4 text-sm text-gray-600">
+                    <h4 className="font-semibold text-slate-100 mb-1">{file.name}</h4>
+                    <div className="flex items-center gap-4 text-sm text-slate-300">
                       <span className="flex items-center gap-1">
                         <Building2 className="w-4 h-4" />
                         {file.client}
@@ -1126,7 +1126,7 @@ export const renderDocuments = () => {
                   <Button size="sm" variant="ghost" onClick={() => toast.success('Downloading document...')}>
                     <Download className="w-4 h-4" />
                   </Button>
-                  <Button size="sm" variant="ghost" className="text-red-600" onClick={() => handleDelete(file.id)}>
+                  <Button size="sm" variant="ghost" className="text-red-400" onClick={() => handleDelete(file.id)}>
                     <Trash2 className="w-4 h-4" />
                   </Button>
                 </div>
@@ -1143,25 +1143,25 @@ export const renderDocuments = () => {
         </CardHeader>
         <CardContent>
           <div className="space-y-3">
-            <div className="flex items-center gap-3 p-3 border-l-4 border-blue-500 bg-blue-50 rounded">
-              <Upload className="w-5 h-5 text-blue-600" />
+            <div className="flex items-center gap-3 p-3 border-l-4 border-blue-500 bg-blue-500/10 rounded">
+              <Upload className="w-5 h-5 text-blue-400" />
               <div className="flex-1">
-                <p className="text-sm font-medium text-gray-900">Sarah Chen uploaded Annual_Audit_Report_2024.pdf</p>
-                <p className="text-xs text-gray-500">2 hours ago • Acme Corp</p>
+                <p className="text-sm font-medium text-slate-100">Sarah Chen uploaded Annual_Audit_Report_2024.pdf</p>
+                <p className="text-xs text-slate-400">2 hours ago • Acme Corp</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 p-3 border-l-4 border-green-500 bg-green-50 rounded">
-              <Download className="w-5 h-5 text-green-600" />
+            <div className="flex items-center gap-3 p-3 border-l-4 border-green-500 bg-green-500/10 rounded">
+              <Download className="w-5 h-5 text-green-400" />
               <div className="flex-1">
-                <p className="text-sm font-medium text-gray-900">James Wilson downloaded Tax_Return_Documents.xlsx</p>
-                <p className="text-xs text-gray-500">5 hours ago • TechStart Pty</p>
+                <p className="text-sm font-medium text-slate-100">James Wilson downloaded Tax_Return_Documents.xlsx</p>
+                <p className="text-xs text-slate-400">5 hours ago • TechStart Pty</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 p-3 border-l-4 border-purple-500 bg-purple-50 rounded">
-              <Upload className="w-5 h-5 text-purple-600" />
+            <div className="flex items-center gap-3 p-3 border-l-4 border-purple-500 bg-purple-500/10 rounded">
+              <Upload className="w-5 h-5 text-purple-400" />
               <div className="flex-1">
-                <p className="text-sm font-medium text-gray-900">Emma Thompson uploaded Financial_Statements_Q1.pdf</p>
-                <p className="text-xs text-gray-500">1 day ago • Property Group</p>
+                <p className="text-sm font-medium text-slate-100">Emma Thompson uploaded Financial_Statements_Q1.pdf</p>
+                <p className="text-xs text-slate-400">1 day ago • Property Group</p>
               </div>
             </div>
           </div>
@@ -1175,9 +1175,9 @@ export const renderSettings = () => (
   <div className="space-y-6">
     <Card>
       <CardContent className="p-12 text-center">
-        <Activity className="w-16 h-16 text-blue-600 mx-auto mb-4" />
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">System Settings</h2>
-        <p className="text-gray-600">Configure rates, workflows, permissions and integrations</p>
+        <Activity className="w-16 h-16 text-blue-400 mx-auto mb-4" />
+        <h2 className="text-2xl font-bold text-slate-100 mb-2">System Settings</h2>
+        <p className="text-slate-300">Configure rates, workflows, permissions and integrations</p>
       </CardContent>
     </Card>
   </div>

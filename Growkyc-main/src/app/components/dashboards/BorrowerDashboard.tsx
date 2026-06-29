@@ -40,13 +40,13 @@ export function BorrowerDashboard({ onNavigate }: BorrowerDashboardProps) {
   return (
     <div className="space-y-6">
       {/* Welcome Banner */}
-      <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200">
+      <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-500/30">
         <CardContent className="p-6">
           <div className="flex items-start justify-between">
             <div>
-              <h1 className="text-2xl font-bold text-gray-900 mb-2">Welcome back!</h1>
-              <p className="text-gray-700 mb-4">
-                Your case is currently <span className="font-semibold text-blue-600">under review</span>. 
+              <h1 className="text-2xl font-bold text-slate-100 mb-2">Welcome back!</h1>
+              <p className="text-slate-300 mb-4">
+                Your case is currently <span className="font-semibold text-blue-400">under review</span>. 
                 Here's what you need to do next.
               </p>
               <Button onClick={() => onNavigate?.('cases')}>
@@ -56,7 +56,7 @@ export function BorrowerDashboard({ onNavigate }: BorrowerDashboardProps) {
             </div>
             <div className="text-right">
               <StatusBadge status={myCase.status} type="case" />
-              <p className="text-sm text-gray-600 mt-2">
+              <p className="text-sm text-slate-300 mt-2">
                 Case #{myCase.caseNumber}
               </p>
             </div>
@@ -66,47 +66,47 @@ export function BorrowerDashboard({ onNavigate }: BorrowerDashboardProps) {
 
       {/* Quick Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <Card className="bg-gradient-to-br from-green-50 to-white border-2 border-green-200">
+        <Card className="bg-gradient-to-br from-green-50 to-white border-2 border-green-500/30">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <Home className="w-8 h-8 text-green-600" />
+              <Home className="w-8 h-8 text-green-400" />
             </div>
-            <p className="text-sm text-gray-600 mb-1">Property Value</p>
-            <p className="text-3xl font-bold text-gray-900">${(myCase.valuation.amount / 1000).toFixed(0)}k</p>
-            <p className="text-xs text-gray-500 mt-1">Valuation date: {format(myCase.valuation.date, 'MMM yyyy')}</p>
+            <p className="text-sm text-slate-300 mb-1">Property Value</p>
+            <p className="text-3xl font-bold text-slate-100">${(myCase.valuation.amount / 1000).toFixed(0)}k</p>
+            <p className="text-xs text-slate-400 mt-1">Valuation date: {format(myCase.valuation.date, 'MMM yyyy')}</p>
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-blue-50 to-white border-2 border-blue-200">
+        <Card className="bg-gradient-to-br from-blue-50 to-white border-2 border-blue-500/30">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <TrendingUp className="w-8 h-8 text-blue-600" />
+              <TrendingUp className="w-8 h-8 text-blue-400" />
             </div>
-            <p className="text-sm text-gray-600 mb-1">Outstanding Debt</p>
-            <p className="text-3xl font-bold text-gray-900">${(myCase.outstandingDebt / 1000).toFixed(0)}k</p>
-            <p className="text-xs text-gray-500 mt-1">Current balance</p>
+            <p className="text-sm text-slate-300 mb-1">Outstanding Debt</p>
+            <p className="text-3xl font-bold text-slate-100">${(myCase.outstandingDebt / 1000).toFixed(0)}k</p>
+            <p className="text-xs text-slate-400 mt-1">Current balance</p>
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-amber-50 to-white border-2 border-amber-200">
+        <Card className="bg-gradient-to-br from-amber-50 to-white border-2 border-amber-500/30">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <FileText className="w-8 h-8 text-amber-600" />
+              <FileText className="w-8 h-8 text-amber-400" />
             </div>
-            <p className="text-sm text-gray-600 mb-1">Documents</p>
-            <p className="text-3xl font-bold text-gray-900">8/12</p>
-            <p className="text-xs text-gray-500 mt-1">4 documents required</p>
+            <p className="text-sm text-slate-300 mb-1">Documents</p>
+            <p className="text-3xl font-bold text-slate-100">8/12</p>
+            <p className="text-xs text-slate-400 mt-1">4 documents required</p>
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-purple-50 to-white border-2 border-purple-200">
+        <Card className="bg-gradient-to-br from-purple-50 to-white border-2 border-purple-500/30">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <MessageSquare className="w-8 h-8 text-purple-600" />
+              <MessageSquare className="w-8 h-8 text-purple-400" />
             </div>
-            <p className="text-sm text-gray-600 mb-1">Messages</p>
-            <p className="text-3xl font-bold text-gray-900">3</p>
-            <p className="text-xs text-gray-500 mt-1">2 unread messages</p>
+            <p className="text-sm text-slate-300 mb-1">Messages</p>
+            <p className="text-3xl font-bold text-slate-100">3</p>
+            <p className="text-xs text-slate-400 mt-1">2 unread messages</p>
           </CardContent>
         </Card>
       </div>
@@ -116,24 +116,24 @@ export function BorrowerDashboard({ onNavigate }: BorrowerDashboardProps) {
         <Card>
           <CardHeader className="border-b">
             <CardTitle className="flex items-center gap-2">
-              <AlertCircle className="w-5 h-5 text-amber-600" />
+              <AlertCircle className="w-5 h-5 text-amber-400" />
               Next Actions Required
             </CardTitle>
           </CardHeader>
           <CardContent className="p-6">
             <div className="space-y-4">
               {nextActions.map((item, index) => (
-                <div key={index} className="flex items-start gap-3 p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+                <div key={index} className="flex items-start gap-3 p-4 border rounded-lg hover:bg-white/5 transition-colors">
                   {item.status === 'completed' ? (
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
                   ) : (
-                    <Clock className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <Clock className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
                   )}
                   <div className="flex-1">
-                    <p className={`font-semibold ${item.status === 'completed' ? 'text-gray-500 line-through' : 'text-gray-900'}`}>
+                    <p className={`font-semibold ${item.status === 'completed' ? 'text-slate-400 line-through' : 'text-slate-100'}`}>
                       {item.action}
                     </p>
-                    <p className="text-sm text-gray-600 mt-1">
+                    <p className="text-sm text-slate-300 mt-1">
                       Due: {format(item.due, 'dd MMM yyyy')}
                     </p>
                   </div>
@@ -167,12 +167,12 @@ export function BorrowerDashboard({ onNavigate }: BorrowerDashboardProps) {
                       'bg-purple-600'
                     }`}></div>
                     {index < recentActivity.length - 1 && (
-                      <div className="w-0.5 h-full bg-gray-200 my-1"></div>
+                      <div className="w-0.5 h-full bg-white/10 my-1"></div>
                     )}
                   </div>
                   <div className="flex-1 pb-4">
-                    <p className="font-semibold text-gray-900">{item.event}</p>
-                    <p className="text-sm text-gray-600">{format(item.date, 'dd MMM yyyy, HH:mm')}</p>
+                    <p className="font-semibold text-slate-100">{item.event}</p>
+                    <p className="text-sm text-slate-300">{format(item.date, 'dd MMM yyyy, HH:mm')}</p>
                   </div>
                 </div>
               ))}
@@ -192,34 +192,34 @@ export function BorrowerDashboard({ onNavigate }: BorrowerDashboardProps) {
         <CardContent className="p-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div>
-              <p className="text-sm text-gray-600 mb-1">Address</p>
-              <p className="font-semibold text-gray-900">{myCase.property.address}</p>
-              <p className="text-sm text-gray-600">{myCase.property.suburb}, {myCase.property.state}</p>
+              <p className="text-sm text-slate-300 mb-1">Address</p>
+              <p className="font-semibold text-slate-100">{myCase.property.address}</p>
+              <p className="text-sm text-slate-300">{myCase.property.suburb}, {myCase.property.state}</p>
             </div>
             <div>
-              <p className="text-sm text-gray-600 mb-1">Property Type</p>
-              <p className="font-semibold text-gray-900">{myCase.property.propertyType}</p>
+              <p className="text-sm text-slate-300 mb-1">Property Type</p>
+              <p className="font-semibold text-slate-100">{myCase.property.propertyType}</p>
             </div>
             <div>
-              <p className="text-sm text-gray-600 mb-1">Bedrooms / Bathrooms</p>
-              <p className="font-semibold text-gray-900">{myCase.property.bedrooms} bed / {myCase.property.bathrooms} bath</p>
+              <p className="text-sm text-slate-300 mb-1">Bedrooms / Bathrooms</p>
+              <p className="font-semibold text-slate-100">{myCase.property.bedrooms} bed / {myCase.property.bathrooms} bath</p>
             </div>
             <div>
-              <p className="text-sm text-gray-600 mb-1">Land Size</p>
-              <p className="font-semibold text-gray-900">{myCase.property.landSize} m²</p>
+              <p className="text-sm text-slate-300 mb-1">Land Size</p>
+              <p className="font-semibold text-slate-100">{myCase.property.landSize} m²</p>
             </div>
           </div>
         </CardContent>
       </Card>
 
       {/* Important Information */}
-      <Card className="bg-blue-50 border-2 border-blue-200">
+      <Card className="bg-blue-500/10 border-2 border-blue-500/30">
         <CardContent className="p-6">
           <div className="flex gap-4">
-            <Info className="w-6 h-6 text-blue-600 flex-shrink-0" />
+            <Info className="w-6 h-6 text-blue-400 flex-shrink-0" />
             <div>
-              <h3 className="font-semibold text-gray-900 mb-2">What happens next?</h3>
-              <ul className="space-y-2 text-sm text-gray-700">
+              <h3 className="font-semibold text-slate-100 mb-2">What happens next?</h3>
+              <ul className="space-y-2 text-sm text-slate-300">
                 <li>• Complete all required document uploads</li>
                 <li>• Our team will review your case and property valuation</li>
                 <li>• Once approved, your case will be listed for auction</li>

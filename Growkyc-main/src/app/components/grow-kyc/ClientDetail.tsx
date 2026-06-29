@@ -156,10 +156,10 @@ export function ClientDetail({ clientId, onBack }: ClientDetailProps) {
                   <Badge className="bg-red-600 text-white text-sm font-bold">
                     Critical Risk • Score {client.riskScore}
                   </Badge>
-                  <Badge variant="outline" className="border-red-400 text-red-900 bg-red-100">
+                  <Badge variant="outline" className="border-red-400 text-red-300 bg-red-500/15">
                     {client.engagementStatus}
                   </Badge>
-                  <Badge variant="outline" className="border-orange-400 text-orange-900 bg-orange-100">
+                  <Badge variant="outline" className="border-orange-400 text-orange-300 bg-orange-500/15">
                     🚨 AML Alert Active
                   </Badge>
                 </div>
@@ -202,17 +202,17 @@ export function ClientDetail({ clientId, onBack }: ClientDetailProps) {
         <Card className="border-l-4 border-l-red-500">
           <CardContent className="p-4">
             <div className="flex items-center justify-between mb-2">
-              <Shield className="w-8 h-8 text-red-600" />
-              <TrendingUp className="w-5 h-5 text-red-600" />
+              <Shield className="w-8 h-8 text-red-400" />
+              <TrendingUp className="w-5 h-5 text-red-400" />
             </div>
-            <p className="text-3xl font-bold text-red-600">{client.riskScore}</p>
+            <p className="text-3xl font-bold text-red-400">{client.riskScore}</p>
             <p className="text-xs text-slate-300 font-medium">Risk Score</p>
           </CardContent>
         </Card>
 
         <Card className="border-l-4 border-l-orange-500">
           <CardContent className="p-4">
-            <Clock className="w-8 h-8 text-orange-600 mb-2" />
+            <Clock className="w-8 h-8 text-orange-400 mb-2" />
             <p className="text-lg font-bold text-white">{client.nextReviewDue}</p>
             <p className="text-xs text-slate-300 font-medium">Review Due</p>
           </CardContent>
@@ -220,7 +220,7 @@ export function ClientDetail({ clientId, onBack }: ClientDetailProps) {
 
         <Card className="border-l-4 border-l-blue-500">
           <CardContent className="p-4">
-            <DollarSign className="w-8 h-8 text-blue-600 mb-2" />
+            <DollarSign className="w-8 h-8 text-blue-400 mb-2" />
             <p className="text-lg font-bold text-white">{client.aum}</p>
             <p className="text-xs text-slate-300 font-medium">AUM</p>
           </CardContent>
@@ -228,7 +228,7 @@ export function ClientDetail({ clientId, onBack }: ClientDetailProps) {
 
         <Card className="border-l-4 border-l-purple-500">
           <CardContent className="p-4">
-            <Activity className="w-8 h-8 text-purple-600 mb-2" />
+            <Activity className="w-8 h-8 text-purple-400 mb-2" />
             <p className="text-lg font-bold text-white">{client.monthlyTransactionVolume}</p>
             <p className="text-xs text-slate-300 font-medium">Monthly Volume</p>
           </CardContent>
@@ -236,7 +236,7 @@ export function ClientDetail({ clientId, onBack }: ClientDetailProps) {
 
         <Card className="border-l-4 border-l-green-500">
           <CardContent className="p-4">
-            <CheckCircle className="w-8 h-8 text-green-600 mb-2" />
+            <CheckCircle className="w-8 h-8 text-green-400 mb-2" />
             <p className="text-lg font-bold text-white">3/5</p>
             <p className="text-xs text-slate-300 font-medium">Checks Passed</p>
           </CardContent>
@@ -244,7 +244,7 @@ export function ClientDetail({ clientId, onBack }: ClientDetailProps) {
 
         <Card className="border-l-4 border-l-amber-500">
           <CardContent className="p-4">
-            <AlertTriangle className="w-8 h-8 text-amber-600 mb-2" />
+            <AlertTriangle className="w-8 h-8 text-amber-400 mb-2" />
             <p className="text-lg font-bold text-white">2</p>
             <p className="text-xs text-slate-300 font-medium">Active Alerts</p>
           </CardContent>
@@ -266,8 +266,8 @@ export function ClientDetail({ clientId, onBack }: ClientDetailProps) {
                 onClick={() => setSelectedTab(tab.id as any)}
                 className={`flex items-center gap-2 px-4 py-3 border-b-2 font-medium transition-colors ${
                   selectedTab === tab.id
-                    ? 'border-blue-600 text-blue-600'
-                    : 'border-transparent text-slate-300 hover:text-white hover:border-gray-300'
+                    ? 'border-blue-600 text-blue-400'
+                    : 'border-transparent text-slate-300 hover:text-white hover:border-white/10'
                 }`}
               >
                 <tab.icon className="w-4 h-4" />
@@ -334,14 +334,14 @@ export function ClientDetail({ clientId, onBack }: ClientDetailProps) {
                 <div key={check.id} className="flex items-center justify-between p-3 bg-[#0f172a] rounded-lg">
                   <div className="flex items-center gap-3">
                     <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                      check.status === 'passed' ? 'bg-green-100' :
-                      check.status === 'alert' ? 'bg-red-100' :
-                      'bg-yellow-100'
+                      check.status === 'passed' ? 'bg-green-500/15' :
+                      check.status === 'alert' ? 'bg-red-500/15' :
+                      'bg-yellow-500/15'
                     }`}>
                       <check.icon className={`w-5 h-5 ${
-                        check.status === 'passed' ? 'text-green-600' :
-                        check.status === 'alert' ? 'text-red-600' :
-                        'text-yellow-600'
+                        check.status === 'passed' ? 'text-green-400' :
+                        check.status === 'alert' ? 'text-red-400' :
+                        'text-yellow-400'
                       }`} />
                     </div>
                     <div>
@@ -374,10 +374,10 @@ export function ClientDetail({ clientId, onBack }: ClientDetailProps) {
             <CardContent>
               <div className="space-y-4">
                 {[
-                  { action: 'AML Alert triggered', time: '2 hours ago', type: 'alert', icon: AlertTriangle, color: 'text-red-600' },
-                  { action: 'Document verification completed', time: '1 day ago', type: 'success', icon: CheckCircle, color: 'text-green-600' },
-                  { action: 'Risk assessment updated', time: '3 days ago', type: 'info', icon: Shield, color: 'text-blue-600' },
-                  { action: 'Compliance review scheduled', time: '5 days ago', type: 'info', icon: Calendar, color: 'text-purple-600' }
+                  { action: 'AML Alert triggered', time: '2 hours ago', type: 'alert', icon: AlertTriangle, color: 'text-red-400' },
+                  { action: 'Document verification completed', time: '1 day ago', type: 'success', icon: CheckCircle, color: 'text-green-400' },
+                  { action: 'Risk assessment updated', time: '3 days ago', type: 'info', icon: Shield, color: 'text-blue-400' },
+                  { action: 'Compliance review scheduled', time: '5 days ago', type: 'info', icon: Calendar, color: 'text-purple-400' }
                 ].map((activity, index) => (
                   <div key={index} className="flex items-center gap-3 pb-3 border-b last:border-b-0">
                     <div className={`w-8 h-8 rounded-full bg-[#0f172a] flex items-center justify-center ${activity.color}`}>

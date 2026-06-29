@@ -144,19 +144,19 @@ export function InfoTrackIntegrationModule() {
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'completed': return <CheckCircle className="w-5 h-5 text-green-600" />;
-      case 'pending': return <Clock className="w-5 h-5 text-blue-600" />;
-      case 'failed': return <XCircle className="w-5 h-5 text-red-600" />;
+      case 'completed': return <CheckCircle className="w-5 h-5 text-green-400" />;
+      case 'pending': return <Clock className="w-5 h-5 text-blue-400" />;
+      case 'failed': return <XCircle className="w-5 h-5 text-red-400" />;
     }
   };
 
   const getSearchTypeIcon = (type: string) => {
     switch (type) {
-      case 'asic': return <Building className="w-6 h-6 text-blue-600" />;
-      case 'ppsr': return <Shield className="w-6 h-6 text-purple-600" />;
-      case 'litigation': return <Scale className="w-6 h-6 text-orange-600" />;
-      case 'bankruptcy': return <AlertTriangle className="w-6 h-6 text-red-600" />;
-      case 'credit': return <DollarSign className="w-6 h-6 text-green-600" />;
+      case 'asic': return <Building className="w-6 h-6 text-blue-400" />;
+      case 'ppsr': return <Shield className="w-6 h-6 text-purple-400" />;
+      case 'litigation': return <Scale className="w-6 h-6 text-orange-400" />;
+      case 'bankruptcy': return <AlertTriangle className="w-6 h-6 text-red-400" />;
+      case 'credit': return <DollarSign className="w-6 h-6 text-green-400" />;
     }
   };
 
@@ -177,11 +177,11 @@ export function InfoTrackIntegrationModule() {
             </div>
           </div>
           <div className="flex gap-3">
-            <Button className="bg-white text-blue-600 hover:bg-blue-50">
+            <Button className="bg-white text-blue-400 hover:bg-blue-500/10">
               <Search className="w-5 h-5 mr-2" />
               New Search
             </Button>
-            <Button className="bg-white text-blue-600 hover:bg-blue-50">
+            <Button className="bg-white text-blue-400 hover:bg-blue-500/10">
               <Download className="w-5 h-5 mr-2" />
               Export Report
             </Button>
@@ -241,30 +241,30 @@ export function InfoTrackIntegrationModule() {
       </div>
 
       {/* Integration Status */}
-      <div className="bg-blue-50 border-2 border-blue-500 rounded-lg p-6">
+      <div className="bg-blue-500/10 border-2 border-blue-500 rounded-lg p-6">
         <div className="flex items-start gap-3">
-          <CheckCircle className="w-6 h-6 text-blue-600 mt-0.5" />
+          <CheckCircle className="w-6 h-6 text-blue-400 mt-0.5" />
           <div>
-            <h3 className="font-bold text-blue-900 mb-2">InfoTrack Integration Active</h3>
-            <p className="text-sm text-blue-800 mb-3">
+            <h3 className="font-bold text-blue-300 mb-2">InfoTrack Integration Active</h3>
+            <p className="text-sm text-blue-300 mb-3">
               Connected to InfoTrack API for instant company, security interest, and litigation searches.
             </p>
             <div className="grid grid-cols-4 gap-4">
-              <div className="p-3 bg-white border border-blue-200 rounded-lg">
-                <p className="text-xs text-blue-700 font-semibold mb-1">API Status</p>
-                <p className="font-bold text-blue-900">✓ Connected</p>
+              <div className="p-3 bg-white border border-blue-500/30 rounded-lg">
+                <p className="text-xs text-blue-300 font-semibold mb-1">API Status</p>
+                <p className="font-bold text-blue-300">✓ Connected</p>
               </div>
-              <div className="p-3 bg-white border border-blue-200 rounded-lg">
-                <p className="text-xs text-blue-700 font-semibold mb-1">Avg Response</p>
-                <p className="font-bold text-blue-900">2.3 seconds</p>
+              <div className="p-3 bg-white border border-blue-500/30 rounded-lg">
+                <p className="text-xs text-blue-300 font-semibold mb-1">Avg Response</p>
+                <p className="font-bold text-blue-300">2.3 seconds</p>
               </div>
-              <div className="p-3 bg-white border border-blue-200 rounded-lg">
-                <p className="text-xs text-blue-700 font-semibold mb-1">Success Rate</p>
-                <p className="font-bold text-blue-900">99.2%</p>
+              <div className="p-3 bg-white border border-blue-500/30 rounded-lg">
+                <p className="text-xs text-blue-300 font-semibold mb-1">Success Rate</p>
+                <p className="font-bold text-blue-300">99.2%</p>
               </div>
-              <div className="p-3 bg-white border border-blue-200 rounded-lg">
-                <p className="text-xs text-blue-700 font-semibold mb-1">Last Sync</p>
-                <p className="font-bold text-blue-900">Just now</p>
+              <div className="p-3 bg-white border border-blue-500/30 rounded-lg">
+                <p className="text-xs text-blue-300 font-semibold mb-1">Last Sync</p>
+                <p className="font-bold text-blue-300">Just now</p>
               </div>
             </div>
           </div>
@@ -272,8 +272,8 @@ export function InfoTrackIntegrationModule() {
       </div>
 
       {/* Search Types */}
-      <div className="bg-white rounded-lg border border-gray-200 p-6">
-        <h3 className="text-xl font-bold text-gray-900 mb-4">Available Search Types</h3>
+      <div className="bg-white rounded-lg border border-white/10 p-6">
+        <h3 className="text-xl font-bold text-slate-100 mb-4">Available Search Types</h3>
         <div className="grid grid-cols-3 gap-4">
           {[
             { 
@@ -323,9 +323,9 @@ export function InfoTrackIntegrationModule() {
             return (
               <div key={index} className={`p-4 border-2 border-${searchType.color}-200 bg-${searchType.color}-50 rounded-lg hover:shadow-lg transition-all`}>
                 <Icon className={`w-8 h-8 text-${searchType.color}-600 mb-3`} />
-                <h4 className="font-bold text-gray-900 mb-2">{searchType.type}</h4>
-                <p className="text-sm text-gray-700 mb-2">{searchType.desc}</p>
-                <p className="text-xs text-gray-600 font-semibold">{searchType.cost}</p>
+                <h4 className="font-bold text-slate-100 mb-2">{searchType.type}</h4>
+                <p className="text-sm text-slate-300 mb-2">{searchType.desc}</p>
+                <p className="text-xs text-slate-300 font-semibold">{searchType.cost}</p>
                 <Button size="sm" className={`w-full mt-3 bg-${searchType.color}-600 hover:bg-${searchType.color}-700`}>
                   <Search className="w-4 h-4 mr-2" />
                   Search Now
@@ -337,7 +337,7 @@ export function InfoTrackIntegrationModule() {
       </div>
 
       {/* Navigation Tabs */}
-      <div className="border-b border-gray-200">
+      <div className="border-b border-white/10">
         <div className="flex gap-2">
           {[
             { id: 'recent', label: 'Recent Searches', icon: Clock },
@@ -352,8 +352,8 @@ export function InfoTrackIntegrationModule() {
                 onClick={() => setActiveTab(tab.id as any)}
                 className={`px-6 py-3 font-semibold flex items-center gap-2 transition-colors ${
                   activeTab === tab.id
-                    ? 'border-b-2 border-blue-600 text-blue-600'
-                    : 'text-gray-600 hover:text-gray-900'
+                    ? 'border-b-2 border-blue-600 text-blue-400'
+                    : 'text-slate-300 hover:text-slate-100'
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -365,7 +365,7 @@ export function InfoTrackIntegrationModule() {
       </div>
 
       {/* Search Bar */}
-      <div className="bg-white rounded-lg border border-gray-200 p-4">
+      <div className="bg-white rounded-lg border border-white/10 p-4">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
           <input
@@ -373,7 +373,7 @@ export function InfoTrackIntegrationModule() {
             placeholder="Search by entity name or search ID..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full pl-10 pr-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
       </div>
@@ -383,10 +383,10 @@ export function InfoTrackIntegrationModule() {
         {filteredSearches.map((search) => {
           const statusColor = getStatusColor(search.status);
           return (
-            <div key={search.id} className="bg-white rounded-lg border-2 border-gray-200 p-6 hover:shadow-lg transition-shadow">
+            <div key={search.id} className="bg-white rounded-lg border-2 border-white/10 p-6 hover:shadow-lg transition-shadow">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-start gap-4 flex-1">
-                  <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center flex-shrink-0">
                     {getSearchTypeIcon(search.searchType)}
                   </div>
                   <div className="flex-1">
@@ -394,13 +394,13 @@ export function InfoTrackIntegrationModule() {
                       <span className="px-3 py-1 bg-gray-800 text-white text-xs font-mono font-bold rounded">
                         {search.id}
                       </span>
-                      <span className="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full uppercase">
+                      <span className="px-3 py-1 bg-blue-500/15 text-blue-300 text-xs font-bold rounded-full uppercase">
                         {search.searchType}
                       </span>
-                      <span className="text-sm text-gray-600">{search.timestamp}</span>
+                      <span className="text-sm text-slate-300">{search.timestamp}</span>
                     </div>
-                    <h4 className="text-xl font-bold text-gray-900 mb-1">{search.entityName}</h4>
-                    <p className="text-gray-700">{search.results}</p>
+                    <h4 className="text-xl font-bold text-slate-100 mb-1">{search.entityName}</h4>
+                    <p className="text-slate-300">{search.results}</p>
                   </div>
                 </div>
 
@@ -412,19 +412,19 @@ export function InfoTrackIntegrationModule() {
                     </span>
                   </div>
                   <div className="text-right">
-                    <p className="text-xs text-gray-600">Cost</p>
-                    <p className="text-xl font-bold text-gray-900">${search.cost.toFixed(2)}</p>
+                    <p className="text-xs text-slate-300">Cost</p>
+                    <p className="text-xl font-bold text-slate-100">${search.cost.toFixed(2)}</p>
                   </div>
                 </div>
               </div>
 
               {search.findings && search.findings.length > 0 && (
-                <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg mt-4">
-                  <p className="font-bold text-blue-900 mb-2">Key Findings:</p>
+                <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg mt-4">
+                  <p className="font-bold text-blue-300 mb-2">Key Findings:</p>
                   <ul className="space-y-1">
                     {search.findings.map((finding, index) => (
-                      <li key={index} className="text-sm text-blue-800 flex items-start gap-2">
-                        <span className="text-blue-600">•</span>
+                      <li key={index} className="text-sm text-blue-300 flex items-start gap-2">
+                        <span className="text-blue-400">•</span>
                         <span>{finding}</span>
                       </li>
                     ))}
@@ -452,8 +452,8 @@ export function InfoTrackIntegrationModule() {
       </div>
 
       {/* Benefits */}
-      <div className="bg-white rounded-lg border border-gray-200 p-6">
-        <h3 className="text-xl font-bold text-gray-900 mb-4">InfoTrack Benefits</h3>
+      <div className="bg-white rounded-lg border border-white/10 p-6">
+        <h3 className="text-xl font-bold text-slate-100 mb-4">InfoTrack Benefits</h3>
         <div className="grid grid-cols-3 gap-4">
           {[
             { title: 'Instant Results', desc: 'Receive searches in seconds, not days' },
@@ -463,9 +463,9 @@ export function InfoTrackIntegrationModule() {
             { title: 'Audit Trail', desc: 'Complete documentation for compliance' },
             { title: 'API Integration', desc: 'Seamless integration with workflow' }
           ].map((benefit, index) => (
-            <div key={index} className="p-4 border border-gray-200 rounded-lg">
-              <h4 className="font-bold text-gray-900 mb-1">{benefit.title}</h4>
-              <p className="text-sm text-gray-600">{benefit.desc}</p>
+            <div key={index} className="p-4 border border-white/10 rounded-lg">
+              <h4 className="font-bold text-slate-100 mb-1">{benefit.title}</h4>
+              <p className="text-sm text-slate-300">{benefit.desc}</p>
             </div>
           ))}
         </div>

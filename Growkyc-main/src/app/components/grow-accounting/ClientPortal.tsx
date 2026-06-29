@@ -165,18 +165,18 @@ export function ClientPortal({ onNavigate }: ClientPortalProps) {
   const getStepStatusBadgeClasses = (status: PortalStatus) => {
     switch (status) {
       case 'completed':
-        return 'bg-green-100 text-green-700 border border-green-200';
+        return 'bg-green-500/15 text-green-300 border border-green-500/30';
       case 'under_review':
-        return 'bg-blue-100 text-blue-700 border border-blue-200';
+        return 'bg-blue-500/15 text-blue-300 border border-blue-500/30';
       case 'changes_requested':
-        return 'bg-amber-100 text-amber-800 border border-amber-200';
+        return 'bg-amber-500/15 text-amber-300 border border-amber-500/30';
       case 'awaiting_documents':
-        return 'bg-orange-100 text-orange-700 border border-orange-200';
+        return 'bg-orange-500/15 text-orange-300 border border-orange-500/30';
       case 'in_progress':
-        return 'bg-indigo-100 text-indigo-700 border border-indigo-200';
+        return 'bg-indigo-500/15 text-indigo-300 border border-indigo-500/30';
       case 'not_started':
       default:
-        return 'bg-gray-100 text-gray-700 border border-gray-200';
+        return 'bg-white/5 text-slate-300 border border-white/10';
     }
   };
 
@@ -186,12 +186,12 @@ export function ClientPortal({ onNavigate }: ClientPortalProps) {
 
   const getActivityIcon = (type: string) => {
     switch (type) {
-      case 'upload': return <Upload className="w-4 h-4 text-blue-600" />;
-      case 'download': return <Download className="w-4 h-4 text-green-600" />;
-      case 'sign': return <CheckCircle className="w-4 h-4 text-purple-600" />;
-      case 'message': return <MessageSquare className="w-4 h-4 text-orange-600" />;
-      case 'view': return <Eye className="w-4 h-4 text-gray-600" />;
-      default: return <FileText className="w-4 h-4 text-gray-600" />;
+      case 'upload': return <Upload className="w-4 h-4 text-blue-400" />;
+      case 'download': return <Download className="w-4 h-4 text-green-400" />;
+      case 'sign': return <CheckCircle className="w-4 h-4 text-purple-400" />;
+      case 'message': return <MessageSquare className="w-4 h-4 text-orange-400" />;
+      case 'view': return <Eye className="w-4 h-4 text-slate-300" />;
+      default: return <FileText className="w-4 h-4 text-slate-300" />;
     }
   };
 
@@ -201,8 +201,8 @@ export function ClientPortal({ onNavigate }: ClientPortalProps) {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-[32px] font-bold text-gray-900">Client Portal</h1>
-            <p className="text-sm text-gray-600 mt-1">Secure white-labeled portal for client collaboration</p>
+            <h1 className="text-[32px] font-bold text-slate-100">Client Portal</h1>
+            <p className="text-sm text-slate-300 mt-1">Secure white-labeled portal for client collaboration</p>
           </div>
           <div className="flex items-center gap-2">
             <Button variant="outline" size="sm">
@@ -221,12 +221,12 @@ export function ClientPortal({ onNavigate }: ClientPortalProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-blue-50 rounded-lg">
-                  <User className="w-5 h-5 text-blue-600" />
+                <div className="p-3 bg-blue-500/10 rounded-lg">
+                  <User className="w-5 h-5 text-blue-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-600">Total Clients</p>
-                  <p className="text-2xl font-bold text-gray-900">{clientStats.totalClients}</p>
+                  <p className="text-xs text-slate-300">Total Clients</p>
+                  <p className="text-2xl font-bold text-slate-100">{clientStats.totalClients}</p>
                 </div>
               </div>
             </CardContent>
@@ -235,12 +235,12 @@ export function ClientPortal({ onNavigate }: ClientPortalProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-green-50 rounded-lg">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
+                <div className="p-3 bg-green-500/10 rounded-lg">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-600">Active Users</p>
-                  <p className="text-2xl font-bold text-gray-900">{clientStats.activePortalUsers}</p>
+                  <p className="text-xs text-slate-300">Active Users</p>
+                  <p className="text-2xl font-bold text-slate-100">{clientStats.activePortalUsers}</p>
                 </div>
               </div>
             </CardContent>
@@ -249,12 +249,12 @@ export function ClientPortal({ onNavigate }: ClientPortalProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-orange-50 rounded-lg">
-                  <Clock className="w-5 h-5 text-orange-600" />
+                <div className="p-3 bg-orange-500/10 rounded-lg">
+                  <Clock className="w-5 h-5 text-orange-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-600">Pending</p>
-                  <p className="text-2xl font-bold text-gray-900">{clientStats.pendingInvites}</p>
+                  <p className="text-xs text-slate-300">Pending</p>
+                  <p className="text-2xl font-bold text-slate-100">{clientStats.pendingInvites}</p>
                 </div>
               </div>
             </CardContent>
@@ -263,12 +263,12 @@ export function ClientPortal({ onNavigate }: ClientPortalProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-purple-50 rounded-lg">
-                  <FileText className="w-5 h-5 text-purple-600" />
+                <div className="p-3 bg-purple-500/10 rounded-lg">
+                  <FileText className="w-5 h-5 text-purple-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-600">Documents</p>
-                  <p className="text-2xl font-bold text-gray-900">{clientStats.documentsShared}</p>
+                  <p className="text-xs text-slate-300">Documents</p>
+                  <p className="text-2xl font-bold text-slate-100">{clientStats.documentsShared}</p>
                 </div>
               </div>
             </CardContent>
@@ -277,12 +277,12 @@ export function ClientPortal({ onNavigate }: ClientPortalProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-pink-50 rounded-lg">
-                  <MessageSquare className="w-5 h-5 text-pink-600" />
+                <div className="p-3 bg-pink-500/10 rounded-lg">
+                  <MessageSquare className="w-5 h-5 text-pink-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-600">Messages</p>
-                  <p className="text-2xl font-bold text-gray-900">{clientStats.messagesExchanged}</p>
+                  <p className="text-xs text-slate-300">Messages</p>
+                  <p className="text-2xl font-bold text-slate-100">{clientStats.messagesExchanged}</p>
                 </div>
               </div>
             </CardContent>
@@ -296,18 +296,18 @@ export function ClientPortal({ onNavigate }: ClientPortalProps) {
             {/* Portal Status */}
             <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
               <CardContent className="p-6">
-                <h3 className="font-semibold text-gray-900 mb-4">Portal Status</h3>
-                <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg mb-4">
+                <h3 className="font-semibold text-slate-100 mb-4">Portal Status</h3>
+                <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg mb-4">
                   <div className="flex items-center gap-3">
                     {portalEnabled ? (
                       <>
                         <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                        <span className="font-medium text-gray-900">Portal is Live</span>
+                        <span className="font-medium text-slate-100">Portal is Live</span>
                       </>
                     ) : (
                       <>
                         <div className="w-3 h-3 bg-gray-400 rounded-full" />
-                        <span className="font-medium text-gray-900">Portal is Disabled</span>
+                        <span className="font-medium text-slate-100">Portal is Disabled</span>
                       </>
                     )}
                   </div>
@@ -332,31 +332,31 @@ export function ClientPortal({ onNavigate }: ClientPortalProps) {
                   ))}
                 </div>
 
-                <div className="mb-4 rounded-lg border border-gray-200 p-4">
+                <div className="mb-4 rounded-lg border border-white/10 p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <p className="text-sm font-semibold text-gray-900">Onboarding Progress</p>
-                    <p className="text-sm font-semibold text-gray-700">{completionProgress}%</p>
+                    <p className="text-sm font-semibold text-slate-100">Onboarding Progress</p>
+                    <p className="text-sm font-semibold text-slate-300">{completionProgress}%</p>
                   </div>
-                  <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden mb-2">
+                  <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden mb-2">
                     <div
                       className="h-full bg-[#2855a6] rounded-full transition-all"
                       style={{ width: `${completionProgress}%` }}
                     />
                   </div>
-                  <p className="text-xs text-gray-600">
+                  <p className="text-xs text-slate-300">
                     {completedRequiredSteps} of {requiredSteps.length} required steps completed
                   </p>
                 </div>
 
-                <div className="mb-4 rounded-lg border border-gray-200 p-4">
-                  <p className="text-sm font-semibold text-gray-900 mb-2">Missing Required Items</p>
+                <div className="mb-4 rounded-lg border border-white/10 p-4">
+                  <p className="text-sm font-semibold text-slate-100 mb-2">Missing Required Items</p>
                   {uploadPrompts.length === 0 ? (
-                    <p className="text-xs text-green-700">No missing required items.</p>
+                    <p className="text-xs text-green-300">No missing required items.</p>
                   ) : (
                     <ul className="space-y-1">
                       {uploadPrompts.slice(0, 3).map((prompt) => (
                         <li key={prompt.item_id} className="flex items-center justify-between text-xs">
-                          <span className="text-gray-700">{prompt.title}</span>
+                          <span className="text-slate-300">{prompt.title}</span>
                           <span className={`px-2 py-0.5 rounded-full font-medium ${getStepStatusBadgeClasses(prompt.urgency === 'critical' ? 'changes_requested' : prompt.urgency === 'high' ? 'awaiting_documents' : 'in_progress')}`}>
                             {prompt.urgency === 'critical' ? 'Urgent' : prompt.urgency === 'high' ? 'High' : 'Normal'}
                           </span>
@@ -366,34 +366,34 @@ export function ClientPortal({ onNavigate }: ClientPortalProps) {
                   )}
                 </div>
 
-                <div className="mb-4 rounded-lg border border-gray-200 p-4">
-                  <p className="text-sm font-semibold text-gray-900 mb-2">Review Status</p>
+                <div className="mb-4 rounded-lg border border-white/10 p-4">
+                  <p className="text-sm font-semibold text-slate-100 mb-2">Review Status</p>
                   <div className="grid grid-cols-3 gap-2 text-center">
-                    <div className="bg-blue-50 rounded-lg p-2">
-                      <p className="text-lg font-bold text-blue-700">{reviewSummary.underReview}</p>
-                      <p className="text-[11px] text-blue-700">Under Review</p>
+                    <div className="bg-blue-500/10 rounded-lg p-2">
+                      <p className="text-lg font-bold text-blue-300">{reviewSummary.underReview}</p>
+                      <p className="text-[11px] text-blue-300">Under Review</p>
                     </div>
-                    <div className="bg-amber-50 rounded-lg p-2">
-                      <p className="text-lg font-bold text-amber-700">{reviewSummary.changesRequested}</p>
-                      <p className="text-[11px] text-amber-700">Changes Requested</p>
+                    <div className="bg-amber-500/10 rounded-lg p-2">
+                      <p className="text-lg font-bold text-amber-300">{reviewSummary.changesRequested}</p>
+                      <p className="text-[11px] text-amber-300">Changes Requested</p>
                     </div>
-                    <div className="bg-green-50 rounded-lg p-2">
-                      <p className="text-lg font-bold text-green-700">{reviewSummary.completed}</p>
-                      <p className="text-[11px] text-green-700">Completed</p>
+                    <div className="bg-green-500/10 rounded-lg p-2">
+                      <p className="text-lg font-bold text-green-300">{reviewSummary.completed}</p>
+                      <p className="text-[11px] text-green-300">Completed</p>
                     </div>
                   </div>
-                  <p className="text-xs text-gray-600 mt-2">Blocked steps: {portalProgress.blocked_steps_count}</p>
+                  <p className="text-xs text-slate-300 mt-2">Blocked steps: {portalProgress.blocked_steps_count}</p>
                 </div>
 
                 <div className="space-y-3">
                   <div>
-                    <label className="text-xs text-gray-600 mb-1 block">Portal URL</label>
+                    <label className="text-xs text-slate-300 mb-1 block">Portal URL</label>
                     <div className="flex items-center gap-2">
                       <input
                         type="text"
                         value={portalSettings.url}
                         readOnly
-                        className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm bg-gray-50"
+                        className="flex-1 px-3 py-2 border border-white/10 rounded-lg text-sm bg-white/5"
                       />
                       <Button size="sm" variant="outline">
                         <Copy className="w-4 h-4" />
@@ -405,13 +405,13 @@ export function ClientPortal({ onNavigate }: ClientPortalProps) {
                   </div>
 
                   <div>
-                    <label className="text-xs text-gray-600 mb-1 block">Custom Domain</label>
+                    <label className="text-xs text-slate-300 mb-1 block">Custom Domain</label>
                     <div className="flex items-center gap-2">
                       <input
                         type="text"
                         value={portalSettings.customDomain}
                         onChange={() => {}}
-                        className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+                        className="flex-1 px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
                       />
                       <Button size="sm">Save</Button>
                     </div>
@@ -424,7 +424,7 @@ export function ClientPortal({ onNavigate }: ClientPortalProps) {
             <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-semibold text-gray-900">Branding</h3>
+                  <h3 className="font-semibold text-slate-100">Branding</h3>
                   <Button size="sm" variant="outline">
                     <Palette className="w-4 h-4 mr-2" />
                     Customize
@@ -433,38 +433,38 @@ export function ClientPortal({ onNavigate }: ClientPortalProps) {
 
                 <div className="space-y-4">
                   <div>
-                    <label className="text-xs text-gray-600 mb-2 block">Company Name</label>
+                    <label className="text-xs text-slate-300 mb-2 block">Company Name</label>
                     <input
                       type="text"
                       value={portalSettings.branding.companyName}
                       onChange={() => {}}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+                      className="w-full px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
                     />
                   </div>
 
                   <div>
-                    <label className="text-xs text-gray-600 mb-2 block">Logo</label>
-                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+                    <label className="text-xs text-slate-300 mb-2 block">Logo</label>
+                    <div className="border-2 border-dashed border-white/10 rounded-lg p-6 text-center">
                       <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
-                      <p className="text-sm text-gray-600 mb-2">Upload your logo</p>
+                      <p className="text-sm text-slate-300 mb-2">Upload your logo</p>
                       <Button size="sm" variant="outline">Choose File</Button>
                     </div>
                   </div>
 
                   <div>
-                    <label className="text-xs text-gray-600 mb-2 block">Primary Color</label>
+                    <label className="text-xs text-slate-300 mb-2 block">Primary Color</label>
                     <div className="flex items-center gap-2">
                       <input
                         type="color"
                         value={portalSettings.branding.primaryColor}
                         onChange={() => {}}
-                        className="w-12 h-10 border border-gray-300 rounded cursor-pointer"
+                        className="w-12 h-10 border border-white/10 rounded cursor-pointer"
                       />
                       <input
                         type="text"
                         value={portalSettings.branding.primaryColor}
                         onChange={() => {}}
-                        className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+                        className="flex-1 px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
                       />
                     </div>
                   </div>
@@ -475,17 +475,17 @@ export function ClientPortal({ onNavigate }: ClientPortalProps) {
             {/* Enabled Features */}
             <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
               <CardContent className="p-6">
-                <h3 className="font-semibold text-gray-900 mb-4">Enabled Features</h3>
+                <h3 className="font-semibold text-slate-100 mb-4">Enabled Features</h3>
                 <div className="space-y-2">
                   {portalSettings.enabledFeatures.map((feature, idx) => (
-                    <div key={idx} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <div key={idx} className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
                       <div className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-600" />
-                        <span className="text-sm text-gray-900">{feature}</span>
+                        <CheckCircle className="w-4 h-4 text-green-400" />
+                        <span className="text-sm text-slate-100">{feature}</span>
                       </div>
                       <label className="relative inline-flex items-center cursor-pointer">
                         <input type="checkbox" className="sr-only peer" defaultChecked />
-                        <div className="w-9 h-5 bg-gray-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-[#2855a6] rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#2855a6]"></div>
+                        <div className="w-9 h-5 bg-gray-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-[#2855a6] rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-white/10 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#2855a6]"></div>
                       </label>
                     </div>
                   ))}
@@ -500,17 +500,17 @@ export function ClientPortal({ onNavigate }: ClientPortalProps) {
             <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-semibold text-gray-900">Portal Preview</h3>
+                  <h3 className="font-semibold text-slate-100">Portal Preview</h3>
                   <div className="flex items-center gap-2">
                     <button
                       onClick={() => setPreviewDevice('desktop')}
-                      className={`p-2 rounded ${previewDevice === 'desktop' ? 'bg-[#2855a6] text-white' : 'bg-gray-100 text-gray-600'}`}
+                      className={`p-2 rounded ${previewDevice === 'desktop' ? 'bg-[#2855a6] text-white' : 'bg-white/5 text-slate-300'}`}
                     >
                       <Monitor className="w-4 h-4" />
                     </button>
                     <button
                       onClick={() => setPreviewDevice('mobile')}
-                      className={`p-2 rounded ${previewDevice === 'mobile' ? 'bg-[#2855a6] text-white' : 'bg-gray-100 text-gray-600'}`}
+                      className={`p-2 rounded ${previewDevice === 'mobile' ? 'bg-[#2855a6] text-white' : 'bg-white/5 text-slate-300'}`}
                     >
                       <Smartphone className="w-4 h-4" />
                     </button>
@@ -518,7 +518,7 @@ export function ClientPortal({ onNavigate }: ClientPortalProps) {
                 </div>
 
                 {/* Preview Frame */}
-                <div className={`border-2 border-gray-300 rounded-lg overflow-hidden ${
+                <div className={`border-2 border-white/10 rounded-lg overflow-hidden ${
                   previewDevice === 'mobile' ? 'max-w-sm mx-auto' : ''
                 }`}>
                   <div className="bg-[#2855a6] p-4 text-white">
@@ -527,33 +527,33 @@ export function ClientPortal({ onNavigate }: ClientPortalProps) {
                   </div>
 
                   <div className="bg-white p-6 space-y-4">
-                    <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                      <span className="text-sm text-gray-700">Welcome, John Smith</span>
-                      <User className="w-4 h-4 text-gray-600" />
+                    <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
+                      <span className="text-sm text-slate-300">Welcome, John Smith</span>
+                      <User className="w-4 h-4 text-slate-300" />
                     </div>
 
                     <div className="grid grid-cols-2 gap-3">
-                      <div className="p-4 border border-gray-200 rounded-lg text-center hover:border-[#2855a6] cursor-pointer">
+                      <div className="p-4 border border-white/10 rounded-lg text-center hover:border-[#2855a6] cursor-pointer">
                         <Upload className="w-6 h-6 text-[#2855a6] mx-auto mb-2" />
-                        <p className="text-sm font-medium text-gray-900">Upload</p>
+                        <p className="text-sm font-medium text-slate-100">Upload</p>
                       </div>
-                      <div className="p-4 border border-gray-200 rounded-lg text-center hover:border-[#2855a6] cursor-pointer">
+                      <div className="p-4 border border-white/10 rounded-lg text-center hover:border-[#2855a6] cursor-pointer">
                         <FileText className="w-6 h-6 text-[#2855a6] mx-auto mb-2" />
-                        <p className="text-sm font-medium text-gray-900">Documents</p>
+                        <p className="text-sm font-medium text-slate-100">Documents</p>
                       </div>
-                      <div className="p-4 border border-gray-200 rounded-lg text-center hover:border-[#2855a6] cursor-pointer">
+                      <div className="p-4 border border-white/10 rounded-lg text-center hover:border-[#2855a6] cursor-pointer">
                         <MessageSquare className="w-6 h-6 text-[#2855a6] mx-auto mb-2" />
-                        <p className="text-sm font-medium text-gray-900">Messages</p>
+                        <p className="text-sm font-medium text-slate-100">Messages</p>
                       </div>
-                      <div className="p-4 border border-gray-200 rounded-lg text-center hover:border-[#2855a6] cursor-pointer">
+                      <div className="p-4 border border-white/10 rounded-lg text-center hover:border-[#2855a6] cursor-pointer">
                         <Clock className="w-6 h-6 text-[#2855a6] mx-auto mb-2" />
-                        <p className="text-sm font-medium text-gray-900">Jobs</p>
+                        <p className="text-sm font-medium text-slate-100">Jobs</p>
                       </div>
                     </div>
 
-                    <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-                      <p className="text-sm font-medium text-blue-900 mb-1">BAS Due Soon</p>
-                      <p className="text-xs text-blue-700">Q4 2024 BAS due on March 18, 2024</p>
+                    <div className="p-4 bg-blue-500/10 rounded-lg border border-blue-500/30">
+                      <p className="text-sm font-medium text-blue-300 mb-1">BAS Due Soon</p>
+                      <p className="text-xs text-blue-300">Q4 2024 BAS due on March 18, 2024</p>
                     </div>
                   </div>
                 </div>
@@ -563,19 +563,19 @@ export function ClientPortal({ onNavigate }: ClientPortalProps) {
             {/* Recent Activity */}
             <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
               <CardContent className="p-6">
-                <h3 className="font-semibold text-gray-900 mb-4">Recent Activity</h3>
+                <h3 className="font-semibold text-slate-100 mb-4">Recent Activity</h3>
                 <div className="space-y-3">
                   {recentActivity.map((activity) => (
-                    <div key={activity.id} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
-                      <div className="p-2 bg-white rounded-lg border border-gray-200">
+                    <div key={activity.id} className="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
+                      <div className="p-2 bg-white rounded-lg border border-white/10">
                         {getActivityIcon(activity.type)}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm text-gray-900">
+                        <p className="text-sm text-slate-100">
                           <strong>{activity.client}</strong>
                         </p>
-                        <p className="text-sm text-gray-600">{activity.action}</p>
-                        <p className="text-xs text-gray-500 mt-1">{activity.time}</p>
+                        <p className="text-sm text-slate-300">{activity.action}</p>
+                        <p className="text-xs text-slate-400 mt-1">{activity.time}</p>
                       </div>
                     </div>
                   ))}
@@ -590,12 +590,12 @@ export function ClientPortal({ onNavigate }: ClientPortalProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-6">
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-3 bg-blue-50 rounded-lg">
-                  <Share2 className="w-5 h-5 text-blue-600" />
+                <div className="p-3 bg-blue-500/10 rounded-lg">
+                  <Share2 className="w-5 h-5 text-blue-400" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900">Invite Clients</h3>
-                  <p className="text-xs text-gray-600">Send portal access invites</p>
+                  <h3 className="font-semibold text-slate-100">Invite Clients</h3>
+                  <p className="text-xs text-slate-300">Send portal access invites</p>
                 </div>
               </div>
               <Button className="w-full bg-[#2855a6] hover:bg-[#1e4089]">
@@ -608,12 +608,12 @@ export function ClientPortal({ onNavigate }: ClientPortalProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-6">
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-3 bg-purple-50 rounded-lg">
-                  <Lock className="w-5 h-5 text-purple-600" />
+                <div className="p-3 bg-purple-500/10 rounded-lg">
+                  <Lock className="w-5 h-5 text-purple-400" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900">Security Settings</h3>
-                  <p className="text-xs text-gray-600">2FA, password policies</p>
+                  <h3 className="font-semibold text-slate-100">Security Settings</h3>
+                  <p className="text-xs text-slate-300">2FA, password policies</p>
                 </div>
               </div>
               <Button variant="outline" className="w-full">
@@ -626,12 +626,12 @@ export function ClientPortal({ onNavigate }: ClientPortalProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-6">
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-3 bg-green-50 rounded-lg">
-                  <Code className="w-5 h-5 text-green-600" />
+                <div className="p-3 bg-green-500/10 rounded-lg">
+                  <Code className="w-5 h-5 text-green-400" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900">Embed Code</h3>
-                  <p className="text-xs text-gray-600">Add to your website</p>
+                  <h3 className="font-semibold text-slate-100">Embed Code</h3>
+                  <p className="text-xs text-slate-300">Add to your website</p>
                 </div>
               </div>
               <Button variant="outline" className="w-full">

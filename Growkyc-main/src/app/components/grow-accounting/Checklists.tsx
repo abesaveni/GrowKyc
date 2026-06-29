@@ -199,8 +199,8 @@ export function Checklists({ onNavigate }: ChecklistsProps) {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-[32px] font-bold text-gray-900">Checklists</h1>
-            <p className="text-sm text-gray-600 mt-1">Create and manage standardized workflow checklists</p>
+            <h1 className="text-[32px] font-bold text-slate-100">Checklists</h1>
+            <p className="text-sm text-slate-300 mt-1">Create and manage standardized workflow checklists</p>
           </div>
           <div className="flex items-center gap-2">
             <Button variant="outline" size="sm">
@@ -226,14 +226,14 @@ export function Checklists({ onNavigate }: ChecklistsProps) {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search checklists..."
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+                    className="w-full pl-10 pr-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
                   />
                 </div>
               </div>
               <select
                 value={filterCategory}
                 onChange={(e) => setFilterCategory(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+                className="px-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
               >
                 {categories.map(cat => (
                   <option key={cat} value={cat}>
@@ -258,7 +258,7 @@ export function Checklists({ onNavigate }: ChecklistsProps) {
                 key={template.id}
                 className={`cursor-pointer transition-all shadow-[0_4px_12px_rgba(0,0,0,0.06)] ${
                   selectedTemplate?.id === template.id
-                    ? 'border-2 border-[#2855a6] bg-blue-50'
+                    ? 'border-2 border-[#2855a6] bg-blue-500/10'
                     : 'hover:border-[#2855a6] hover:shadow-lg'
                 }`}
                 onClick={() => {
@@ -270,22 +270,22 @@ export function Checklists({ onNavigate }: ChecklistsProps) {
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
-                        <h3 className="font-semibold text-gray-900">{template.name}</h3>
+                        <h3 className="font-semibold text-slate-100">{template.name}</h3>
                         {template.isDefault && (
-                          <span className="px-2 py-0.5 bg-blue-50 text-blue-700 text-xs font-semibold rounded border border-blue-200">
+                          <span className="px-2 py-0.5 bg-blue-500/10 text-blue-300 text-xs font-semibold rounded border border-blue-500/30">
                             Default
                           </span>
                         )}
                       </div>
-                      <p className="text-xs text-gray-600">{template.description}</p>
+                      <p className="text-xs text-slate-300">{template.description}</p>
                     </div>
-                    <button className="p-1 hover:bg-gray-100 rounded">
+                    <button className="p-1 hover:bg-white/5 rounded">
                       <MoreVertical className="w-4 h-4 text-gray-400" />
                     </button>
                   </div>
 
-                  <div className="flex items-center gap-4 text-xs text-gray-600 mb-3">
-                    <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded">
+                  <div className="flex items-center gap-4 text-xs text-slate-300 mb-3">
+                    <span className="px-2 py-1 bg-white/5 text-slate-300 rounded">
                       {template.category}
                     </span>
                     <div className="flex items-center gap-1">
@@ -298,11 +298,11 @@ export function Checklists({ onNavigate }: ChecklistsProps) {
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between pt-3 border-t border-gray-200">
-                    <div className="text-xs text-gray-600">
+                  <div className="flex items-center justify-between pt-3 border-t border-white/10">
+                    <div className="text-xs text-slate-300">
                       <span>Used {template.usageCount} times</span>
                     </div>
-                    <div className="text-xs text-gray-500">
+                    <div className="text-xs text-slate-400">
                       Modified {template.lastModified}
                     </div>
                   </div>
@@ -314,7 +314,7 @@ export function Checklists({ onNavigate }: ChecklistsProps) {
               <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
                 <CardContent className="p-12 text-center">
                   <FileText className="w-12 h-12 text-gray-400 mx-auto mb-3" />
-                  <p className="text-gray-600 mb-4">No checklists found</p>
+                  <p className="text-slate-300 mb-4">No checklists found</p>
                   <Button size="sm">
                     <Plus className="w-4 h-4 mr-2" />
                     Create First Checklist
@@ -332,8 +332,8 @@ export function Checklists({ onNavigate }: ChecklistsProps) {
                   {/* Header */}
                   <div className="flex items-center justify-between mb-6">
                     <div>
-                      <h2 className="text-xl font-bold text-gray-900">{selectedTemplate.name}</h2>
-                      <p className="text-sm text-gray-600 mt-1">{selectedTemplate.description}</p>
+                      <h2 className="text-xl font-bold text-slate-100">{selectedTemplate.name}</h2>
+                      <p className="text-sm text-slate-300 mt-1">{selectedTemplate.description}</p>
                     </div>
                     <div className="flex items-center gap-2">
                       <Button variant="outline" size="sm">
@@ -357,24 +357,24 @@ export function Checklists({ onNavigate }: ChecklistsProps) {
 
                   {/* Stats */}
                   <div className="grid grid-cols-3 gap-4 mb-6">
-                    <div className="p-3 bg-gray-50 rounded-lg">
-                      <p className="text-xs text-gray-600 mb-1">Total Items</p>
-                      <p className="text-xl font-bold text-gray-900">{selectedTemplate.items.length}</p>
+                    <div className="p-3 bg-white/5 rounded-lg">
+                      <p className="text-xs text-slate-300 mb-1">Total Items</p>
+                      <p className="text-xl font-bold text-slate-100">{selectedTemplate.items.length}</p>
                     </div>
-                    <div className="p-3 bg-gray-50 rounded-lg">
-                      <p className="text-xs text-gray-600 mb-1">Required</p>
-                      <p className="text-xl font-bold text-gray-900">{getRequiredCount(selectedTemplate.items)}</p>
+                    <div className="p-3 bg-white/5 rounded-lg">
+                      <p className="text-xs text-slate-300 mb-1">Required</p>
+                      <p className="text-xl font-bold text-slate-100">{getRequiredCount(selectedTemplate.items)}</p>
                     </div>
-                    <div className="p-3 bg-gray-50 rounded-lg">
-                      <p className="text-xs text-gray-600 mb-1">Est. Time</p>
-                      <p className="text-xl font-bold text-gray-900">{getTotalTime(selectedTemplate.items)} min</p>
+                    <div className="p-3 bg-white/5 rounded-lg">
+                      <p className="text-xs text-slate-300 mb-1">Est. Time</p>
+                      <p className="text-xl font-bold text-slate-100">{getTotalTime(selectedTemplate.items)} min</p>
                     </div>
                   </div>
 
                   {/* Checklist Items */}
                   <div className="space-y-2">
                     <div className="flex items-center justify-between mb-3">
-                      <h3 className="font-semibold text-gray-900">Checklist Items</h3>
+                      <h3 className="font-semibold text-slate-100">Checklist Items</h3>
                       {isEditing && (
                         <Button size="sm" variant="outline">
                           <Plus className="w-4 h-4 mr-2" />
@@ -387,7 +387,7 @@ export function Checklists({ onNavigate }: ChecklistsProps) {
                       <div
                         key={item.id}
                         className={`p-3 border rounded-lg ${
-                          isEditing ? 'border-gray-300 hover:border-[#2855a6] cursor-move' : 'border-gray-200'
+                          isEditing ? 'border-white/10 hover:border-[#2855a6] cursor-move' : 'border-white/10'
                         }`}
                       >
                         <div className="flex items-start gap-3">
@@ -401,10 +401,10 @@ export function Checklists({ onNavigate }: ChecklistsProps) {
                               <Circle className="w-5 h-5 text-gray-300 mt-0.5" />
                             )}
                             <div className="flex-1">
-                              <p className="text-sm text-gray-900 mb-2">{item.text}</p>
-                              <div className="flex items-center gap-3 text-xs text-gray-600">
+                              <p className="text-sm text-slate-100 mb-2">{item.text}</p>
+                              <div className="flex items-center gap-3 text-xs text-slate-300">
                                 {item.required && (
-                                  <span className="px-2 py-0.5 bg-red-50 text-red-700 rounded">
+                                  <span className="px-2 py-0.5 bg-red-500/10 text-red-300 rounded">
                                     Required
                                   </span>
                                 )}
@@ -426,10 +426,10 @@ export function Checklists({ onNavigate }: ChecklistsProps) {
                           {isEditing && (
                             <div className="flex items-center gap-1">
                               <Button size="sm" variant="ghost">
-                                <Edit className="w-4 h-4 text-gray-600" />
+                                <Edit className="w-4 h-4 text-slate-300" />
                               </Button>
                               <Button size="sm" variant="ghost">
-                                <Trash2 className="w-4 h-4 text-red-600" />
+                                <Trash2 className="w-4 h-4 text-red-400" />
                               </Button>
                             </div>
                           )}
@@ -439,23 +439,23 @@ export function Checklists({ onNavigate }: ChecklistsProps) {
                   </div>
 
                   {/* Metadata */}
-                  <div className="mt-6 pt-6 border-t border-gray-200">
+                  <div className="mt-6 pt-6 border-t border-white/10">
                     <div className="grid grid-cols-2 gap-4 text-sm">
                       <div>
-                        <p className="text-gray-600 mb-1">Created By</p>
-                        <p className="font-medium text-gray-900">{selectedTemplate.createdBy}</p>
+                        <p className="text-slate-300 mb-1">Created By</p>
+                        <p className="font-medium text-slate-100">{selectedTemplate.createdBy}</p>
                       </div>
                       <div>
-                        <p className="text-gray-600 mb-1">Last Modified</p>
-                        <p className="font-medium text-gray-900">{selectedTemplate.lastModified}</p>
+                        <p className="text-slate-300 mb-1">Last Modified</p>
+                        <p className="font-medium text-slate-100">{selectedTemplate.lastModified}</p>
                       </div>
                       <div>
-                        <p className="text-gray-600 mb-1">Category</p>
-                        <p className="font-medium text-gray-900">{selectedTemplate.category}</p>
+                        <p className="text-slate-300 mb-1">Category</p>
+                        <p className="font-medium text-slate-100">{selectedTemplate.category}</p>
                       </div>
                       <div>
-                        <p className="text-gray-600 mb-1">Usage Count</p>
-                        <p className="font-medium text-gray-900">{selectedTemplate.usageCount} times</p>
+                        <p className="text-slate-300 mb-1">Usage Count</p>
+                        <p className="font-medium text-slate-100">{selectedTemplate.usageCount} times</p>
                       </div>
                     </div>
                   </div>
@@ -465,8 +465,8 @@ export function Checklists({ onNavigate }: ChecklistsProps) {
               <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
                 <CardContent className="p-12 text-center">
                   <Target className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Select a Checklist</h3>
-                  <p className="text-gray-600 mb-6">Choose a checklist from the left to view and edit details</p>
+                  <h3 className="text-lg font-semibold text-slate-100 mb-2">Select a Checklist</h3>
+                  <p className="text-slate-300 mb-6">Choose a checklist from the left to view and edit details</p>
                   <Button>
                     <Plus className="w-4 h-4 mr-2" />
                     Create New Checklist

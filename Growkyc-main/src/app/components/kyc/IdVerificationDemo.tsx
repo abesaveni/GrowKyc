@@ -7,13 +7,13 @@ export function IdVerificationDemo() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
+    <div className="min-h-screen bg-white/5 p-8">
       <div className="max-w-7xl mx-auto">
         <div className="mb-6">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          <h1 className="text-3xl font-bold text-slate-100 mb-2">
             Australian 100-Point ID Verification System
           </h1>
-          <p className="text-gray-600">
+          <p className="text-slate-300">
             Bank-grade KYC/AML compliant identity verification with document upload
           </p>
         </div>

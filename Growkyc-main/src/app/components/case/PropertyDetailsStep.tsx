@@ -58,9 +58,9 @@ export function PropertyDetailsStep({
   
   // Determine confidence badge color
   const getConfidenceBadge = () => {
-    if (confidenceScore >= 75) return { color: 'green', label: 'High Confidence', bg: 'bg-green-50', border: 'border-green-200', text: 'text-green-800' };
-    if (confidenceScore >= 60) return { color: 'amber', label: 'Medium Confidence', bg: 'bg-amber-50', border: 'border-amber-200', text: 'text-amber-800' };
-    return { color: 'red', label: 'Low Confidence', bg: 'bg-red-50', border: 'border-red-200', text: 'text-red-800' };
+    if (confidenceScore >= 75) return { color: 'green', label: 'High Confidence', bg: 'bg-green-500/10', border: 'border-green-500/30', text: 'text-green-300' };
+    if (confidenceScore >= 60) return { color: 'amber', label: 'Medium Confidence', bg: 'bg-amber-500/10', border: 'border-amber-500/30', text: 'text-amber-300' };
+    return { color: 'red', label: 'Low Confidence', bg: 'bg-red-500/10', border: 'border-red-500/30', text: 'text-red-300' };
   };
 
   const badge = rpDataStatus === 'found' ? getConfidenceBadge() : null;
@@ -76,23 +76,23 @@ export function PropertyDetailsStep({
       />
 
       <div className="flex items-center gap-3 mb-6">
-        <div className="p-3 bg-blue-50 rounded-lg">
-          <Home className="w-6 h-6 text-blue-600" />
+        <div className="p-3 bg-blue-500/10 rounded-lg">
+          <Home className="w-6 h-6 text-blue-400" />
         </div>
         <div className="flex-1">
           <h2 className="text-xl font-semibold">Property Details</h2>
-          <p className="text-gray-600 text-sm">Enter property address for RP Data validation</p>
+          <p className="text-slate-300 text-sm">Enter property address for RP Data validation</p>
         </div>
         {rpDataStatus === 'found' && badge && (
           <div className={`flex items-center gap-2 px-4 py-2 ${badge.bg} border ${badge.border} rounded-lg`}>
-            <CheckCircle className="w-5 h-5 text-green-600" />
+            <CheckCircle className="w-5 h-5 text-green-400" />
             <span className={`text-sm font-semibold ${badge.text}`}>{badge.label}</span>
           </div>
         )}
       </div>
 
       {/* Section A: Address Entry Card */}
-      <Card className="border-2 border-blue-200">
+      <Card className="border-2 border-blue-500/30">
         <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50">
           <CardTitle className="text-lg">Property Details</CardTitle>
         </CardHeader>
@@ -125,7 +125,7 @@ export function PropertyDetailsStep({
                 id="propertyState"
                 value={formData.propertyState}
                 onChange={(e) => handleInputChange('propertyState', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
               >
                 <option value="NSW">NSW</option>
                 <option value="VIC">VIC</option>
@@ -155,7 +155,7 @@ export function PropertyDetailsStep({
                 id="propertyType"
                 value={formData.propertyType}
                 onChange={(e) => handleInputChange('propertyType', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
               >
                 <option value="house">House</option>
                 <option value="apartment">Apartment</option>
@@ -194,9 +194,9 @@ export function PropertyDetailsStep({
 
               {rpDataStatus === 'validating' && (
                 <div className="flex flex-col items-center justify-center py-8">
-                  <RefreshCw className="w-12 h-12 text-blue-600 animate-spin mb-3" />
-                  <p className="text-lg font-semibold text-gray-900">Verifying property data...</p>
-                  <p className="text-sm text-gray-600">Connecting to RP Data API</p>
+                  <RefreshCw className="w-12 h-12 text-blue-400 animate-spin mb-3" />
+                  <p className="text-lg font-semibold text-slate-100">Verifying property data...</p>
+                  <p className="text-sm text-slate-300">Connecting to RP Data API</p>
                 </div>
               )}
             </div>
@@ -206,15 +206,15 @@ export function PropertyDetailsStep({
 
       {/* Section B: RP Data Results Panel */}
       {rpDataStatus === 'found' && rpDataResults && (
-        <Card className="border-2 border-green-200">
+        <Card className="border-2 border-green-500/30">
           <CardHeader className="bg-gradient-to-r from-green-50 to-emerald-50 border-b">
             <div className="flex items-center justify-between">
               <div>
                 <CardTitle className="text-lg flex items-center gap-2">
-                  <Database className="w-5 h-5 text-green-600" />
+                  <Database className="w-5 h-5 text-green-400" />
                   RP Data Snapshot
                 </CardTitle>
-                <p className="text-xs text-gray-600 mt-1">
+                <p className="text-xs text-slate-300 mt-1">
                   Data Source: RP Data  •  {new Date(formData.rpDataTimestamp).toLocaleString()}
                 </p>
               </div>
@@ -232,24 +232,24 @@ export function PropertyDetailsStep({
               {/* Left Column */}
               <div className="space-y-4">
                 <div>
-                  <p className="text-sm text-gray-600 mb-1">Estimated Value (Midpoint)</p>
-                  <p className="text-3xl font-bold text-gray-900">
+                  <p className="text-sm text-slate-300 mb-1">Estimated Value (Midpoint)</p>
+                  <p className="text-3xl font-bold text-slate-100">
                     A${parseFloat(formData.rpDataAvmMid).toLocaleString()}
                   </p>
                 </div>
 
                 <div>
-                  <p className="text-sm text-gray-600 mb-1">Value Range</p>
-                  <p className="text-lg font-semibold text-gray-700">
+                  <p className="text-sm text-slate-300 mb-1">Value Range</p>
+                  <p className="text-lg font-semibold text-slate-300">
                     A${parseFloat(formData.rpDataAvmLow).toLocaleString()} – 
                     A${parseFloat(formData.rpDataAvmHigh).toLocaleString()}
                   </p>
                 </div>
 
                 <div>
-                  <p className="text-sm text-gray-600 mb-1">Confidence Score</p>
+                  <p className="text-sm text-slate-300 mb-1">Confidence Score</p>
                   <div className="flex items-center gap-3">
-                    <div className="flex-1 bg-gray-200 rounded-full h-3">
+                    <div className="flex-1 bg-white/10 rounded-full h-3">
                       <div
                         className={`h-3 rounded-full ${
                           confidenceScore >= 75 ? 'bg-green-600' :
@@ -264,11 +264,11 @@ export function PropertyDetailsStep({
 
                 <div className="grid grid-cols-2 gap-4 pt-4 border-t">
                   <div>
-                    <p className="text-xs text-gray-600 mb-1">Last Sale Date</p>
+                    <p className="text-xs text-slate-300 mb-1">Last Sale Date</p>
                     <p className="font-semibold">{new Date(formData.rpDataLastSaleDate).toLocaleDateString()}</p>
                   </div>
                   <div>
-                    <p className="text-xs text-gray-600 mb-1">Last Sale Price</p>
+                    <p className="text-xs text-slate-300 mb-1">Last Sale Price</p>
                     <p className="font-semibold">A${parseFloat(formData.rpDataLastSalePrice).toLocaleString()}</p>
                   </div>
                 </div>
@@ -278,32 +278,32 @@ export function PropertyDetailsStep({
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <p className="text-xs text-gray-600 mb-1">Land Size</p>
+                    <p className="text-xs text-slate-300 mb-1">Land Size</p>
                     <p className="text-lg font-semibold">{formData.landSize} sqm</p>
                   </div>
                   <div>
-                    <p className="text-xs text-gray-600 mb-1">Dwelling Type</p>
+                    <p className="text-xs text-slate-300 mb-1">Dwelling Type</p>
                     <p className="text-lg font-semibold capitalize">{rpDataResults.dwellingType}</p>
                   </div>
                   <div>
-                    <p className="text-xs text-gray-600 mb-1">Bedrooms</p>
+                    <p className="text-xs text-slate-300 mb-1">Bedrooms</p>
                     <p className="text-lg font-semibold">{formData.bedrooms}</p>
                   </div>
                   <div>
-                    <p className="text-xs text-gray-600 mb-1">Bathrooms</p>
+                    <p className="text-xs text-slate-300 mb-1">Bathrooms</p>
                     <p className="text-lg font-semibold">{formData.bathrooms}</p>
                   </div>
                 </div>
 
                 <div className="pt-4 border-t">
-                  <p className="text-sm font-semibold text-gray-900 mb-3">Comparable Sales</p>
+                  <p className="text-sm font-semibold text-slate-100 mb-3">Comparable Sales</p>
                   <div className="space-y-2">
                     {rpDataResults.comparableSales.map((sale: any, idx: number) => (
-                      <div key={idx} className="flex justify-between items-center text-sm p-2 bg-gray-50 rounded">
-                        <span className="text-gray-700">{sale.address}</span>
+                      <div key={idx} className="flex justify-between items-center text-sm p-2 bg-white/5 rounded">
+                        <span className="text-slate-300">{sale.address}</span>
                         <div className="text-right">
                           <p className="font-semibold">A${sale.price.toLocaleString()}</p>
-                          <p className="text-xs text-gray-500">{new Date(sale.saleDate).toLocaleDateString()}</p>
+                          <p className="text-xs text-slate-400">{new Date(sale.saleDate).toLocaleDateString()}</p>
                         </div>
                       </div>
                     ))}
@@ -316,15 +316,15 @@ export function PropertyDetailsStep({
             {lvr && (
               <div className="mt-6 pt-6 border-t">
                 <div className="flex items-center justify-between mb-2">
-                  <p className="text-sm font-semibold text-gray-900">Loan-to-Value Ratio (LVR)</p>
+                  <p className="text-sm font-semibold text-slate-100">Loan-to-Value Ratio (LVR)</p>
                   <span className={`text-2xl font-bold ${
-                    parseFloat(lvr) > 80 ? 'text-red-600' :
-                    parseFloat(lvr) > 70 ? 'text-amber-600' : 'text-green-600'
+                    parseFloat(lvr) > 80 ? 'text-red-400' :
+                    parseFloat(lvr) > 70 ? 'text-amber-400' : 'text-green-400'
                   }`}>
                     {lvr}%
                   </span>
                 </div>
-                <div className="relative w-full bg-gray-200 rounded-full h-4">
+                <div className="relative w-full bg-white/10 rounded-full h-4">
                   <div
                     className={`absolute h-4 rounded-full ${
                       parseFloat(lvr) > 80 ? 'bg-red-500' :
@@ -335,14 +335,14 @@ export function PropertyDetailsStep({
                   <div className="absolute left-[70%] top-0 bottom-0 w-0.5 bg-gray-400" />
                   <div className="absolute left-[80%] top-0 bottom-0 w-0.5 bg-red-400" />
                 </div>
-                <div className="flex justify-between text-xs text-gray-600 mt-1">
+                <div className="flex justify-between text-xs text-slate-300 mt-1">
                   <span>0%</span>
                   <span className="absolute left-[70%] -translate-x-1/2">70%</span>
                   <span className="absolute left-[80%] -translate-x-1/2">80%</span>
                   <span>100%</span>
                 </div>
                 {parseFloat(lvr) > 70 && (
-                  <p className="text-xs text-amber-700 mt-2 bg-amber-50 p-2 rounded">
+                  <p className="text-xs text-amber-300 mt-2 bg-amber-500/10 p-2 rounded">
                     ⚠️ LVR exceeds 70% - Additional valuation may be required
                   </p>
                 )}
@@ -364,7 +364,7 @@ export function PropertyDetailsStep({
                   <Button
                     onClick={() => setShowOverrideModal(true)}
                     variant="outline"
-                    className="flex-1 border-orange-300 text-orange-700 hover:bg-orange-50"
+                    className="flex-1 border-orange-300 text-orange-300 hover:bg-orange-500/10"
                     size="lg"
                   >
                     <AlertCircle className="w-5 h-5 mr-2" />
@@ -372,13 +372,13 @@ export function PropertyDetailsStep({
                   </Button>
                 </>
               ) : (
-                <div className="flex-1 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center gap-3">
-                  <CheckCircle className="w-6 h-6 text-green-600" />
+                <div className="flex-1 p-4 bg-green-500/10 border border-green-500/30 rounded-lg flex items-center gap-3">
+                  <CheckCircle className="w-6 h-6 text-green-400" />
                   <div>
-                    <p className="font-semibold text-green-900">
+                    <p className="font-semibold text-green-300">
                       {formData.overrideFlag ? 'Override Applied' : 'RP Data Accepted'}
                     </p>
-                    <p className="text-sm text-green-700">
+                    <p className="text-sm text-green-300">
                       {formData.overrideFlag 
                         ? `Manual value: A$${parseFloat(formData.overrideValue).toLocaleString()}`
                         : `Valuation: A$${parseFloat(formData.rpDataAvmMid).toLocaleString()}`
@@ -390,11 +390,11 @@ export function PropertyDetailsStep({
             </div>
 
             {confidenceScore < 60 && (
-              <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
-                <AlertCircle className="w-5 h-5 text-red-600 mt-0.5" />
+              <div className="mt-4 p-4 bg-red-500/10 border border-red-500/30 rounded-lg flex items-start gap-3">
+                <AlertCircle className="w-5 h-5 text-red-400 mt-0.5" />
                 <div>
-                  <p className="text-sm font-semibold text-red-900">Low Confidence - Valuation Required</p>
-                  <p className="text-xs text-red-700 mt-1">
+                  <p className="text-sm font-semibold text-red-300">Low Confidence - Valuation Required</p>
+                  <p className="text-xs text-red-300 mt-1">
                     This property has been flagged for a full valuation order in the next step due to low confidence score.
                   </p>
                 </div>
@@ -405,17 +405,17 @@ export function PropertyDetailsStep({
       )}
 
       {rpDataStatus === 'error' && (
-        <div className="p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
-          <AlertCircle className="w-5 h-5 text-red-600 mt-0.5" />
+        <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-lg flex items-start gap-3">
+          <AlertCircle className="w-5 h-5 text-red-400 mt-0.5" />
           <div className="flex-1">
-            <p className="text-sm font-semibold text-red-900">Property data unavailable</p>
-            <p className="text-xs text-red-700 mt-1">
+            <p className="text-sm font-semibold text-red-300">Property data unavailable</p>
+            <p className="text-xs text-red-300 mt-1">
               Please retry or proceed with manual entry. You'll be required to provide an override reason.
             </p>
             <Button
               onClick={validateWithRPData}
               variant="outline"
-              className="mt-3 border-red-300 text-red-700 hover:bg-red-50"
+              className="mt-3 border-red-300 text-red-300 hover:bg-red-500/10"
               size="sm"
             >
               Retry RP Data Lookup
@@ -425,21 +425,21 @@ export function PropertyDetailsStep({
       )}
       
       {/* PPSA Security Requirements Section */}
-      <Card className="border-2 border-purple-200">
+      <Card className="border-2 border-purple-500/30">
         <CardHeader className="bg-gradient-to-r from-purple-50 to-pink-50">
           <CardTitle className="text-lg flex items-center gap-2">
-            <Shield className="w-5 h-5 text-purple-600" />
+            <Shield className="w-5 h-5 text-purple-400" />
             Security Requirements (PPSA Compliance)
           </CardTitle>
-          <p className="text-sm text-gray-600 mt-2">
+          <p className="text-sm text-slate-300 mt-2">
             Personal Property Securities Act 2009 - Ensure security interests are properly registered
           </p>
         </CardHeader>
         <CardContent className="p-6">
-          <div className="bg-amber-50 border-l-4 border-amber-400 p-4 mb-6">
+          <div className="bg-amber-500/10 border-l-4 border-amber-400 p-4 mb-6">
             <div className="flex items-start gap-3">
-              <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
-              <div className="text-sm text-amber-800">
+              <AlertCircle className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+              <div className="text-sm text-amber-300">
                 <p className="font-semibold mb-1">PPSA Compliance Required</p>
                 <p>
                   Under the Personal Property Securities Act 2009, all security interests in personal property must be registered on the PPSR to be enforceable against third parties. For real property mortgages, registration on title is required.
@@ -455,7 +455,7 @@ export function PropertyDetailsStep({
                 id="securityType"
                 value={formData.securityType}
                 onChange={(e) => handleInputChange('securityType', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+                className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
               >
                 <option value="registered_mortgage">Registered Mortgage (Real Property)</option>
                 <option value="general_security_agreement">General Security Agreement (GSA)</option>
@@ -463,14 +463,14 @@ export function PropertyDetailsStep({
                 <option value="pmsi">Purchase Money Security Interest (PMSI)</option>
                 <option value="unsecured">Unsecured</option>
               </select>
-              <p className="text-xs text-gray-500 mt-1">
+              <p className="text-xs text-slate-400 mt-1">
                 PPSA s12 - Classification of security interest type
               </p>
             </div>
 
             {formData.securityType === 'registered_mortgage' && (
-              <div className="space-y-4 bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <h4 className="font-semibold text-blue-900 flex items-center gap-2">
+              <div className="space-y-4 bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
+                <h4 className="font-semibold text-blue-300 flex items-center gap-2">
                   <FileText className="w-4 h-4" />
                   Registered Mortgage Requirements
                 </h4>
@@ -486,7 +486,7 @@ export function PropertyDetailsStep({
                     <Label htmlFor="mortgageRegisteredOnTitle" className="cursor-pointer font-medium">
                       Mortgage Registered on Title *
                     </Label>
-                    <p className="text-xs text-gray-600 mt-1">
+                    <p className="text-xs text-slate-300 mt-1">
                       Confirm that the mortgage is registered on the Certificate of Title at the relevant Land Titles Office (Real Property Act)
                     </p>
                   </div>
@@ -498,7 +498,7 @@ export function PropertyDetailsStep({
                     id="mortgagePriority"
                     value={formData.mortgagePriority}
                     onChange={(e) => handleInputChange('mortgagePriority', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
                   >
                     <option value="first">First Mortgage (Priority)</option>
                     <option value="second">Second Mortgage</option>
@@ -512,8 +512,8 @@ export function PropertyDetailsStep({
             {(formData.securityType === 'general_security_agreement' || 
               formData.securityType === 'specific_goods' || 
               formData.securityType === 'pmsi') && (
-              <div className="space-y-4 bg-green-50 border border-green-200 rounded-lg p-4">
-                <h4 className="font-semibold text-green-900 flex items-center gap-2">
+              <div className="space-y-4 bg-green-500/10 border border-green-500/30 rounded-lg p-4">
+                <h4 className="font-semibold text-green-300 flex items-center gap-2">
                   <Database className="w-4 h-4" />
                   PPSR Registration Requirements
                 </h4>
@@ -529,7 +529,7 @@ export function PropertyDetailsStep({
                     <Label htmlFor="ppsrRegistered" className="cursor-pointer font-medium">
                       Registered on Personal Property Securities Register (PPSR) *
                     </Label>
-                    <p className="text-xs text-gray-600 mt-1">
+                    <p className="text-xs text-slate-300 mt-1">
                       PPSA s21 - Security interests must be registered on PPSR to be perfected and enforceable against third parties
                     </p>
                   </div>
@@ -546,7 +546,7 @@ export function PropertyDetailsStep({
                         placeholder="e.g., 201234567890123456"
                         maxLength={18}
                       />
-                      <p className="text-xs text-gray-500 mt-1">
+                      <p className="text-xs text-slate-400 mt-1">
                         18-digit PPSR registration number
                       </p>
                     </div>
@@ -559,7 +559,7 @@ export function PropertyDetailsStep({
                         value={formData.ppsrExpiryDate}
                         onChange={(e) => handleInputChange('ppsrExpiryDate', e.target.value)}
                       />
-                      <p className="text-xs text-gray-500 mt-1">
+                      <p className="text-xs text-slate-400 mt-1">
                         PPSR registrations can be for a fixed term or indefinite (perpetual)
                       </p>
                     </div>
@@ -576,7 +576,7 @@ export function PropertyDetailsStep({
                 value={formData.securityAgreementDate}
                 onChange={(e) => handleInputChange('securityAgreementDate', e.target.value)}
               />
-              <p className="text-xs text-gray-500 mt-1">
+              <p className="text-xs text-slate-400 mt-1">
                 Date when security agreement was executed
               </p>
             </div>
@@ -590,13 +590,13 @@ export function PropertyDetailsStep({
                 placeholder="Describe the property or assets that are subject to the security interest..."
                 rows={3}
               />
-              <p className="text-xs text-gray-500 mt-1">
+              <p className="text-xs text-slate-400 mt-1">
                 PPSA s153 - Clear description of collateral required
               </p>
             </div>
 
             {/* PPSA Compliance Confirmation */}
-            <div className="bg-purple-50 border-2 border-purple-300 rounded-lg p-4">
+            <div className="bg-purple-500/10 border-2 border-purple-300 rounded-lg p-4">
               <div className="flex items-start gap-3">
                 <Checkbox
                   id="ppsaComplianceConfirmed"
@@ -605,10 +605,10 @@ export function PropertyDetailsStep({
                   className="mt-1"
                 />
                 <div className="flex-1">
-                  <Label htmlFor="ppsaComplianceConfirmed" className="cursor-pointer font-semibold text-purple-900">
+                  <Label htmlFor="ppsaComplianceConfirmed" className="cursor-pointer font-semibold text-purple-300">
                     I confirm PPSA compliance for this security interest *
                   </Label>
-                  <p className="text-xs text-purple-700 mt-1">
+                  <p className="text-xs text-purple-300 mt-1">
                     I confirm that all security interests have been properly perfected according to PPSA requirements, including registration where required, and all necessary searches have been conducted.
                   </p>
                 </div>

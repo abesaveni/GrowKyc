@@ -181,13 +181,13 @@ export function BuyNowRoom({ onNavigate, onBack }: BuyNowRoomProps) {
           onClick={prevImage}
           className="absolute left-6 top-1/2 -translate-y-1/2 p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-xl hover:bg-white transition-colors"
         >
-          <ChevronLeft className="w-6 h-6 text-gray-900" />
+          <ChevronLeft className="w-6 h-6 text-slate-100" />
         </button>
         <button
           onClick={nextImage}
           className="absolute right-6 top-1/2 -translate-y-1/2 p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-xl hover:bg-white transition-colors"
         >
-          <ChevronRight className="w-6 h-6 text-gray-900" />
+          <ChevronRight className="w-6 h-6 text-slate-100" />
         </button>
 
         {/* Property Info Overlay */}
@@ -265,69 +265,69 @@ export function BuyNowRoom({ onNavigate, onBack }: BuyNowRoomProps) {
           <TabsContent value="details" className="space-y-6">
             {/* Critical Loan Metrics - Top Dashboard */}
             <div className="grid grid-cols-1 md:grid-cols-6 gap-4">
-              <Card className="bg-gradient-to-br from-red-50 to-white border-2 border-red-200">
+              <Card className="bg-gradient-to-br from-red-50 to-white border-2 border-red-500/30">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <AlertTriangle className="w-5 h-5 text-red-600" />
-                    <p className="text-xs font-medium text-gray-600">Days in Default</p>
+                    <AlertTriangle className="w-5 h-5 text-red-400" />
+                    <p className="text-xs font-medium text-slate-300">Days in Default</p>
                   </div>
-                  <p className="text-3xl font-bold text-red-600">{loanMetrics.daysInDefault}</p>
-                  <p className="text-xs text-gray-500 mt-1">Moderate status</p>
+                  <p className="text-3xl font-bold text-red-400">{loanMetrics.daysInDefault}</p>
+                  <p className="text-xs text-slate-400 mt-1">Moderate status</p>
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-br from-amber-50 to-white border-2 border-amber-200">
+              <Card className="bg-gradient-to-br from-amber-50 to-white border-2 border-amber-500/30">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <Calendar className="w-5 h-5 text-amber-600" />
-                    <p className="text-xs font-medium text-gray-600">Days in Arrears</p>
+                    <Calendar className="w-5 h-5 text-amber-400" />
+                    <p className="text-xs font-medium text-slate-300">Days in Arrears</p>
                   </div>
-                  <p className="text-3xl font-bold text-amber-600">{loanMetrics.daysInArrears}</p>
-                  <p className="text-xs text-gray-500 mt-1">{loanMetrics.missedPayments} missed payments</p>
+                  <p className="text-3xl font-bold text-amber-400">{loanMetrics.daysInArrears}</p>
+                  <p className="text-xs text-slate-400 mt-1">{loanMetrics.missedPayments} missed payments</p>
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-br from-blue-50 to-white border-2 border-blue-200">
+              <Card className="bg-gradient-to-br from-blue-50 to-white border-2 border-blue-500/30">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <TrendingUp className="w-5 h-5 text-blue-600" />
-                    <p className="text-xs font-medium text-gray-600">Interest Rate</p>
+                    <TrendingUp className="w-5 h-5 text-blue-400" />
+                    <p className="text-xs font-medium text-slate-300">Interest Rate</p>
                   </div>
-                  <p className="text-3xl font-bold text-blue-600">{loanMetrics.interestRate}%</p>
-                  <p className="text-xs text-gray-500 mt-1">Original rate</p>
+                  <p className="text-3xl font-bold text-blue-400">{loanMetrics.interestRate}%</p>
+                  <p className="text-xs text-slate-400 mt-1">Original rate</p>
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-br from-purple-50 to-white border-2 border-purple-200">
+              <Card className="bg-gradient-to-br from-purple-50 to-white border-2 border-purple-500/30">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <TrendingDown className="w-5 h-5 text-purple-600" />
-                    <p className="text-xs font-medium text-gray-600">Default Rate</p>
+                    <TrendingDown className="w-5 h-5 text-purple-400" />
+                    <p className="text-xs font-medium text-slate-300">Default Rate</p>
                   </div>
-                  <p className="text-3xl font-bold text-purple-600">{loanMetrics.defaultRate}%</p>
-                  <p className="text-xs text-gray-500 mt-1">Current penalty rate</p>
+                  <p className="text-3xl font-bold text-purple-400">{loanMetrics.defaultRate}%</p>
+                  <p className="text-xs text-slate-400 mt-1">Current penalty rate</p>
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-br from-green-50 to-white border-2 border-green-200">
+              <Card className="bg-gradient-to-br from-green-50 to-white border-2 border-green-500/30">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <Target className="w-5 h-5 text-green-600" />
-                    <p className="text-xs font-medium text-gray-600">LVR</p>
+                    <Target className="w-5 h-5 text-green-400" />
+                    <p className="text-xs font-medium text-slate-300">LVR</p>
                   </div>
-                  <p className="text-3xl font-bold text-green-600">{loanMetrics.loanToValue}%</p>
-                  <p className="text-xs text-gray-500 mt-1">Loan to value</p>
+                  <p className="text-3xl font-bold text-green-400">{loanMetrics.loanToValue}%</p>
+                  <p className="text-xs text-slate-400 mt-1">Loan to value</p>
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-br from-indigo-50 to-white border-2 border-indigo-200">
+              <Card className="bg-gradient-to-br from-indigo-50 to-white border-2 border-indigo-500/30">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <DollarSign className="w-5 h-5 text-indigo-600" />
-                    <p className="text-xs font-medium text-gray-600">Total Arrears</p>
+                    <DollarSign className="w-5 h-5 text-indigo-400" />
+                    <p className="text-xs font-medium text-slate-300">Total Arrears</p>
                   </div>
-                  <p className="text-3xl font-bold text-indigo-600">${(loanMetrics.totalArrears / 1000).toFixed(0)}k</p>
-                  <p className="text-xs text-gray-500 mt-1">Outstanding</p>
+                  <p className="text-3xl font-bold text-indigo-400">${(loanMetrics.totalArrears / 1000).toFixed(0)}k</p>
+                  <p className="text-xs text-slate-400 mt-1">Outstanding</p>
                 </CardContent>
               </Card>
             </div>
@@ -347,41 +347,41 @@ export function BuyNowRoom({ onNavigate, onBack }: BuyNowRoomProps) {
                   <CardContent className="p-6">
                     <div className="grid grid-cols-2 gap-6">
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Original Loan Amount</p>
-                        <p className="text-2xl font-bold text-gray-900">${loanMetrics.originalLoanAmount.toLocaleString()}</p>
+                        <p className="text-sm text-slate-300 mb-1">Original Loan Amount</p>
+                        <p className="text-2xl font-bold text-slate-100">${loanMetrics.originalLoanAmount.toLocaleString()}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Outstanding Debt</p>
-                        <p className="text-2xl font-bold text-gray-900">${loanMetrics.outstandingDebt.toLocaleString()}</p>
+                        <p className="text-sm text-slate-300 mb-1">Outstanding Debt</p>
+                        <p className="text-2xl font-bold text-slate-100">${loanMetrics.outstandingDebt.toLocaleString()}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Last Payment Date</p>
-                        <p className="text-lg font-semibold text-gray-900">
+                        <p className="text-sm text-slate-300 mb-1">Last Payment Date</p>
+                        <p className="text-lg font-semibold text-slate-100">
                           {format(loanMetrics.lastPaymentDate, 'dd MMM yyyy')}
                         </p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Last Payment Amount</p>
-                        <p className="text-lg font-semibold text-gray-900">${loanMetrics.lastPaymentAmount.toLocaleString()}</p>
+                        <p className="text-sm text-slate-300 mb-1">Last Payment Amount</p>
+                        <p className="text-lg font-semibold text-slate-100">${loanMetrics.lastPaymentAmount.toLocaleString()}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Property Valuation</p>
-                        <p className="text-2xl font-bold text-green-600">${property.valuation.amount.toLocaleString()}</p>
+                        <p className="text-sm text-slate-300 mb-1">Property Valuation</p>
+                        <p className="text-2xl font-bold text-green-400">${property.valuation.amount.toLocaleString()}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Equity Available</p>
-                        <p className="text-2xl font-bold text-green-600">
+                        <p className="text-sm text-slate-300 mb-1">Equity Available</p>
+                        <p className="text-2xl font-bold text-green-400">
                           ${(property.valuation.amount - loanMetrics.outstandingDebt).toLocaleString()}
                         </p>
                       </div>
                     </div>
 
-                    <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+                    <div className="mt-6 p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
                       <div className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                        <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
                         <div>
-                          <p className="text-sm font-semibold text-gray-900 mb-1">Fixed Price Opportunity</p>
-                          <p className="text-sm text-gray-700">
+                          <p className="text-sm font-semibold text-slate-100 mb-1">Fixed Price Opportunity</p>
+                          <p className="text-sm text-slate-300">
                             This property is available at a fixed price of ${loanMetrics.fixedPrice.toLocaleString()}. 
                             Lower risk profile with {loanMetrics.daysInDefault} days in default and strong equity position. 
                             Property valuation is current as of {format(property.valuation.date, 'MMM yyyy')}.
@@ -403,28 +403,28 @@ export function BuyNowRoom({ onNavigate, onBack }: BuyNowRoomProps) {
                   <CardContent className="p-6">
                     <div className="grid grid-cols-2 gap-6">
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Property Type</p>
-                        <p className="text-lg font-semibold text-gray-900">{property.property.propertyType}</p>
+                        <p className="text-sm text-slate-300 mb-1">Property Type</p>
+                        <p className="text-lg font-semibold text-slate-100">{property.property.propertyType}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Land Size</p>
-                        <p className="text-lg font-semibold text-gray-900">{property.property.landSize} m²</p>
+                        <p className="text-sm text-slate-300 mb-1">Land Size</p>
+                        <p className="text-lg font-semibold text-slate-100">{property.property.landSize} m²</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Bedrooms</p>
-                        <p className="text-lg font-semibold text-gray-900">{property.property.bedrooms}</p>
+                        <p className="text-sm text-slate-300 mb-1">Bedrooms</p>
+                        <p className="text-lg font-semibold text-slate-100">{property.property.bedrooms}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Bathrooms</p>
-                        <p className="text-lg font-semibold text-gray-900">{property.property.bathrooms}</p>
+                        <p className="text-sm text-slate-300 mb-1">Bathrooms</p>
+                        <p className="text-lg font-semibold text-slate-100">{property.property.bathrooms}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Parking</p>
-                        <p className="text-lg font-semibold text-gray-900">{property.property.parking}</p>
+                        <p className="text-sm text-slate-300 mb-1">Parking</p>
+                        <p className="text-lg font-semibold text-slate-100">{property.property.parking}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Valuer</p>
-                        <p className="text-lg font-semibold text-gray-900">{property.valuation.valuerName}</p>
+                        <p className="text-sm text-slate-300 mb-1">Valuer</p>
+                        <p className="text-lg font-semibold text-slate-100">{property.valuation.valuerName}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -441,12 +441,12 @@ export function BuyNowRoom({ onNavigate, onBack }: BuyNowRoomProps) {
                   <CardContent className="p-6">
                     <div className="space-y-3">
                       {documents.map((doc, index) => (
-                        <div key={index} className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+                        <div key={index} className="flex items-center justify-between p-4 border rounded-lg hover:bg-white/5 transition-colors">
                           <div className="flex items-center gap-3">
                             <FileText className="w-5 h-5 text-gray-400" />
                             <div>
-                              <p className="font-semibold text-gray-900">{doc.name}</p>
-                              <p className="text-sm text-gray-500">{doc.type} • {doc.size}</p>
+                              <p className="font-semibold text-slate-100">{doc.name}</p>
+                              <p className="text-sm text-slate-400">{doc.type} • {doc.size}</p>
                             </div>
                           </div>
                           <div className="flex gap-2">
@@ -468,26 +468,26 @@ export function BuyNowRoom({ onNavigate, onBack }: BuyNowRoomProps) {
               {/* Right Column - 1/3 width */}
               <div className="space-y-6">
                 {/* Purchase Price */}
-                <Card className="bg-gradient-to-br from-green-50 to-white border-2 border-green-200">
+                <Card className="bg-gradient-to-br from-green-50 to-white border-2 border-green-500/30">
                   <CardContent className="p-6">
                     <div className="text-center">
-                      <p className="text-sm text-gray-600 mb-2">Fixed Purchase Price</p>
-                      <p className="text-5xl font-bold text-green-600 mb-4">
+                      <p className="text-sm text-slate-300 mb-2">Fixed Purchase Price</p>
+                      <p className="text-5xl font-bold text-green-400 mb-4">
                         ${(loanMetrics.fixedPrice / 1000).toFixed(0)}k
                       </p>
                       <div className="pt-4 border-t space-y-3">
                         <div className="flex justify-between text-sm">
-                          <span className="text-gray-600">Outstanding Debt:</span>
+                          <span className="text-slate-300">Outstanding Debt:</span>
                           <span className="font-semibold">${(loanMetrics.outstandingDebt / 1000).toFixed(0)}k</span>
                         </div>
                         <div className="flex justify-between text-sm">
-                          <span className="text-gray-600">Equity Gain:</span>
-                          <span className="font-bold text-green-600">
+                          <span className="text-slate-300">Equity Gain:</span>
+                          <span className="font-bold text-green-400">
                             ${((property.valuation.amount - loanMetrics.fixedPrice) / 1000).toFixed(0)}k
                           </span>
                         </div>
                         <div className="flex justify-between text-sm">
-                          <span className="text-gray-600">Settlement Period:</span>
+                          <span className="text-slate-300">Settlement Period:</span>
                           <span className="font-semibold">{loanMetrics.settlementPeriod} days</span>
                         </div>
                       </div>
@@ -505,9 +505,9 @@ export function BuyNowRoom({ onNavigate, onBack }: BuyNowRoomProps) {
                   </CardHeader>
                   <CardContent className="p-6">
                     <div className="space-y-4">
-                      <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                        <p className="text-sm font-semibold text-blue-900 mb-2">What's Included:</p>
-                        <ul className="text-sm text-blue-800 space-y-1">
+                      <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+                        <p className="text-sm font-semibold text-blue-300 mb-2">What's Included:</p>
+                        <ul className="text-sm text-blue-300 space-y-1">
                           <li className="flex items-center gap-2">
                             <CheckCircle className="w-4 h-4" />
                             Full property ownership transfer
@@ -536,7 +536,7 @@ export function BuyNowRoom({ onNavigate, onBack }: BuyNowRoomProps) {
                             onChange={(e) => setAgreedToTerms(e.target.checked)}
                             className="mt-1"
                           />
-                          <label htmlFor="terms" className="text-sm text-gray-700 cursor-pointer">
+                          <label htmlFor="terms" className="text-sm text-slate-300 cursor-pointer">
                             I agree to the terms and conditions, and I understand this is a binding purchase agreement
                           </label>
                         </div>
@@ -554,15 +554,15 @@ export function BuyNowRoom({ onNavigate, onBack }: BuyNowRoomProps) {
 
                       <div className="pt-4 border-t space-y-2 text-sm">
                         <div className="flex justify-between">
-                          <span className="text-gray-600">Purchase Price:</span>
+                          <span className="text-slate-300">Purchase Price:</span>
                           <span className="font-semibold">${loanMetrics.fixedPrice.toLocaleString()}</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-gray-600">Legal Fees (est.):</span>
+                          <span className="text-slate-300">Legal Fees (est.):</span>
                           <span className="font-semibold">$2,500</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-gray-600">Stamp Duty (est.):</span>
+                          <span className="text-slate-300">Stamp Duty (est.):</span>
                           <span className="font-semibold">${(loanMetrics.fixedPrice * 0.04).toLocaleString()}</span>
                         </div>
                         <div className="flex justify-between pt-2 border-t">
@@ -577,27 +577,27 @@ export function BuyNowRoom({ onNavigate, onBack }: BuyNowRoomProps) {
                 </Card>
 
                 {/* Investment Summary */}
-                <Card className="bg-gradient-to-br from-indigo-50 to-white border-2 border-indigo-200">
+                <Card className="bg-gradient-to-br from-indigo-50 to-white border-2 border-indigo-500/30">
                   <CardHeader className="border-b">
                     <CardTitle className="text-lg">Investment Summary</CardTitle>
                   </CardHeader>
                   <CardContent className="p-6">
                     <div className="space-y-3 text-sm">
                       <div className="flex justify-between">
-                        <span className="text-gray-600">Expected ROI:</span>
-                        <span className="font-bold text-green-600">14.8%</span>
+                        <span className="text-slate-300">Expected ROI:</span>
+                        <span className="font-bold text-green-400">14.8%</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-600">Equity Position:</span>
+                        <span className="text-slate-300">Equity Position:</span>
                         <span className="font-bold">${((property.valuation.amount - loanMetrics.fixedPrice) / 1000).toFixed(0)}k</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-600">Time to Settlement:</span>
+                        <span className="text-slate-300">Time to Settlement:</span>
                         <span className="font-bold">{loanMetrics.settlementPeriod} days</span>
                       </div>
                       <div className="flex justify-between pt-3 border-t">
-                        <span className="text-gray-600">Risk Level:</span>
-                        <span className="px-2 py-1 bg-green-100 text-green-800 rounded text-xs font-semibold">Low-Medium</span>
+                        <span className="text-slate-300">Risk Level:</span>
+                        <span className="px-2 py-1 bg-green-500/15 text-green-300 rounded text-xs font-semibold">Low-Medium</span>
                       </div>
                     </div>
                   </CardContent>

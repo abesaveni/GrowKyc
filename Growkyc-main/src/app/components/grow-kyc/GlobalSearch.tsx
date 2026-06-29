@@ -291,19 +291,19 @@ export function GlobalSearch({ isOpen, onClose, onNavigate }: GlobalSearchProps)
                   <div
                     key={result.id}
                     className={`flex items-center gap-4 px-4 py-3 cursor-pointer ${
-                      index === selectedIndex ? 'bg-blue-50' : 'hover:bg-white/5'
+                      index === selectedIndex ? 'bg-blue-500/10' : 'hover:bg-white/5'
                     }`}
                     onClick={() => handleResultClick(result)}
                   >
                     <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                      result.risk === 'high' ? 'bg-red-100' :
-                      result.risk === 'medium' ? 'bg-amber-100' :
-                      'bg-blue-100'
+                      result.risk === 'high' ? 'bg-red-500/15' :
+                      result.risk === 'medium' ? 'bg-amber-500/15' :
+                      'bg-blue-500/15'
                     }`}>
                       <Icon className={`w-5 h-5 ${
-                        result.risk === 'high' ? 'text-red-600' :
-                        result.risk === 'medium' ? 'text-amber-600' :
-                        'text-blue-600'
+                        result.risk === 'high' ? 'text-red-400' :
+                        result.risk === 'medium' ? 'text-amber-400' :
+                        'text-blue-400'
                       }`} />
                     </div>
                     <div className="flex-1">
@@ -340,12 +340,12 @@ export function GlobalSearch({ isOpen, onClose, onNavigate }: GlobalSearchProps)
                   <div
                     key={command.id}
                     className={`flex items-center gap-4 px-4 py-3 cursor-pointer ${
-                      index === selectedIndex ? 'bg-blue-50' : 'hover:bg-white/5'
+                      index === selectedIndex ? 'bg-blue-500/10' : 'hover:bg-white/5'
                     }`}
                     onClick={() => handleCommandClick(command.action)}
                   >
-                    <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                      <Icon className="w-5 h-5 text-blue-600" />
+                    <div className="w-10 h-10 bg-blue-500/15 rounded-lg flex items-center justify-center">
+                      <Icon className="w-5 h-5 text-blue-400" />
                     </div>
                     <div className="flex-1">
                       <span className="font-medium text-white">{command.title}</span>

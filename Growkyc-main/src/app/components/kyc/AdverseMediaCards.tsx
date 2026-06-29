@@ -17,10 +17,10 @@ type SeverityFilter = 'All' | 'Critical' | 'High' | 'Medium' | 'Low';
 type CategoryFilter = 'All' | AdverseMediaHit['category'];
 
 const SEVERITY_CONFIG = {
-  Critical: { border: 'border-red-300', bg: 'bg-red-50', badgeBg: 'bg-red-600', text: 'text-red-700', lightBg: 'bg-red-50', icon: XCircle, scoreColor: 'text-red-600', scoreBg: 'bg-red-100', scoreRing: 'ring-red-200' },
-  High:     { border: 'border-orange-300', bg: 'bg-orange-50', badgeBg: 'bg-orange-500', text: 'text-orange-700', lightBg: 'bg-orange-50', icon: AlertTriangle, scoreColor: 'text-orange-600', scoreBg: 'bg-orange-100', scoreRing: 'ring-orange-200' },
-  Medium:   { border: 'border-yellow-300', bg: 'bg-yellow-50', badgeBg: 'bg-yellow-500', text: 'text-yellow-700', lightBg: 'bg-yellow-50', icon: AlertTriangle, scoreColor: 'text-yellow-600', scoreBg: 'bg-yellow-100', scoreRing: 'ring-yellow-200' },
-  Low:      { border: 'border-blue-200', bg: 'bg-blue-50', badgeBg: 'bg-blue-500', text: 'text-blue-700', lightBg: 'bg-blue-50', icon: Shield, scoreColor: 'text-blue-600', scoreBg: 'bg-blue-100', scoreRing: 'ring-blue-200' },
+  Critical: { border: 'border-red-300', bg: 'bg-red-500/10', badgeBg: 'bg-red-600', text: 'text-red-300', lightBg: 'bg-red-500/10', icon: XCircle, scoreColor: 'text-red-400', scoreBg: 'bg-red-500/15', scoreRing: 'ring-red-200' },
+  High:     { border: 'border-orange-300', bg: 'bg-orange-500/10', badgeBg: 'bg-orange-500', text: 'text-orange-300', lightBg: 'bg-orange-500/10', icon: AlertTriangle, scoreColor: 'text-orange-400', scoreBg: 'bg-orange-500/15', scoreRing: 'ring-orange-200' },
+  Medium:   { border: 'border-yellow-300', bg: 'bg-yellow-500/10', badgeBg: 'bg-yellow-500', text: 'text-yellow-300', lightBg: 'bg-yellow-500/10', icon: AlertTriangle, scoreColor: 'text-yellow-400', scoreBg: 'bg-yellow-500/15', scoreRing: 'ring-yellow-200' },
+  Low:      { border: 'border-blue-500/30', bg: 'bg-blue-500/10', badgeBg: 'bg-blue-500', text: 'text-blue-300', lightBg: 'bg-blue-500/10', icon: Shield, scoreColor: 'text-blue-400', scoreBg: 'bg-blue-500/15', scoreRing: 'ring-blue-200' },
 };
 
 const CATEGORY_ICONS: Record<string, string> = {
@@ -219,7 +219,7 @@ export function AdverseMediaCards({ articles, clientName }: AdverseMediaCardsPro
                       <div style={{ flex: 1, minWidth: 0 }}>
                         <div style={{ display: 'flex', gap: '8px', marginBottom: '8px', flexWrap: 'wrap' }}>
                           <Badge className={`${cfg.badgeBg} text-white font-bold text-xs uppercase`}>{article.severity}</Badge>
-                          <Badge variant="outline" className="bg-white text-gray-700 text-xs">{CATEGORY_ICONS[article.category] || '📄'} {article.category}</Badge>
+                          <Badge variant="outline" className="bg-white text-slate-300 text-xs">{CATEGORY_ICONS[article.category] || '📄'} {article.category}</Badge>
                           <Badge variant="outline" className={`${cfg.lightBg} ${cfg.text} text-xs`}>
                             <TrendingUp className="w-3 h-3 mr-1" />{article.relevanceScore}% Relevance
                           </Badge>
@@ -260,7 +260,7 @@ export function AdverseMediaCards({ articles, clientName }: AdverseMediaCardsPro
                             <Sparkles style={{ width: 14, height: 14, color: '#fff' }} />
                           </div>
                           <span style={{ fontWeight: 700, color: '#111827' }}>AI-Generated Analysis</span>
-                          <Badge variant="outline" className="bg-violet-50 text-violet-700 border-violet-200 text-xs">Auto-generated</Badge>
+                          <Badge variant="outline" className="bg-violet-500/10 text-violet-300 border-violet-500/30 text-xs">Auto-generated</Badge>
                         </div>
                         <div style={{ background: 'linear-gradient(to right,#f5f3ff,#faf5ff)', borderRadius: '10px', padding: '16px', border: '1px solid #ede9fe' }}>
                           <p style={{ fontSize: '13px', color: '#374151', lineHeight: 1.6 }}>{aiSummary}</p>

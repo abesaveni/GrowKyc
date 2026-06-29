@@ -180,19 +180,19 @@ export function ReviewQueue({ onNavigate }: ReviewQueueProps) {
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
-      case 'high': return 'bg-red-100 text-red-700 border-red-300';
-      case 'medium': return 'bg-orange-100 text-orange-700 border-orange-300';
-      case 'low': return 'bg-gray-100 text-gray-700 border-gray-300';
-      default: return 'bg-gray-100 text-gray-700 border-gray-300';
+      case 'high': return 'bg-red-500/15 text-red-300 border-red-300';
+      case 'medium': return 'bg-orange-500/15 text-orange-300 border-orange-300';
+      case 'low': return 'bg-white/5 text-slate-300 border-white/10';
+      default: return 'bg-white/5 text-slate-300 border-white/10';
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'pending': return 'bg-blue-100 text-blue-700';
-      case 'in-review': return 'bg-purple-100 text-purple-700';
-      case 'changes-requested': return 'bg-orange-100 text-orange-700';
-      default: return 'bg-gray-100 text-gray-700';
+      case 'pending': return 'bg-blue-500/15 text-blue-300';
+      case 'in-review': return 'bg-purple-500/15 text-purple-300';
+      case 'changes-requested': return 'bg-orange-500/15 text-orange-300';
+      default: return 'bg-white/5 text-slate-300';
     }
   };
 
@@ -210,8 +210,8 @@ export function ReviewQueue({ onNavigate }: ReviewQueueProps) {
       <div className="space-y-6">
         {/* Header */}
         <div>
-          <h1 className="text-[28px] font-semibold text-gray-900">Review Queue</h1>
-          <p className="text-sm text-gray-600 mt-1">Jobs ready for review with AI flags and prior year variances</p>
+          <h1 className="text-[28px] font-semibold text-slate-100">Review Queue</h1>
+          <p className="text-sm text-slate-300 mt-1">Jobs ready for review with AI flags and prior year variances</p>
         </div>
 
         {/* Stats Cards */}
@@ -220,13 +220,13 @@ export function ReviewQueue({ onNavigate }: ReviewQueueProps) {
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-gray-600 uppercase tracking-wider">Pending</p>
-                  <p className="text-2xl font-bold text-gray-900 mt-1">
+                  <p className="text-xs text-slate-300 uppercase tracking-wider">Pending</p>
+                  <p className="text-2xl font-bold text-slate-100 mt-1">
                     {reviewItems.filter(i => i.status === 'pending').length}
                   </p>
                 </div>
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                  <Clock className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 bg-blue-500/15 rounded-lg flex items-center justify-center">
+                  <Clock className="w-6 h-6 text-blue-400" />
                 </div>
               </div>
             </CardContent>
@@ -236,13 +236,13 @@ export function ReviewQueue({ onNavigate }: ReviewQueueProps) {
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-gray-600 uppercase tracking-wider">In Review</p>
-                  <p className="text-2xl font-bold text-gray-900 mt-1">
+                  <p className="text-xs text-slate-300 uppercase tracking-wider">In Review</p>
+                  <p className="text-2xl font-bold text-slate-100 mt-1">
                     {reviewItems.filter(i => i.status === 'in-review').length}
                   </p>
                 </div>
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                  <FileText className="w-6 h-6 text-purple-600" />
+                <div className="w-12 h-12 bg-purple-500/15 rounded-lg flex items-center justify-center">
+                  <FileText className="w-6 h-6 text-purple-400" />
                 </div>
               </div>
             </CardContent>
@@ -252,13 +252,13 @@ export function ReviewQueue({ onNavigate }: ReviewQueueProps) {
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-gray-600 uppercase tracking-wider">High Priority</p>
-                  <p className="text-2xl font-bold text-gray-900 mt-1">
+                  <p className="text-xs text-slate-300 uppercase tracking-wider">High Priority</p>
+                  <p className="text-2xl font-bold text-slate-100 mt-1">
                     {reviewItems.filter(i => i.priority === 'high').length}
                   </p>
                 </div>
-                <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-                  <AlertCircle className="w-6 h-6 text-red-600" />
+                <div className="w-12 h-12 bg-red-500/15 rounded-lg flex items-center justify-center">
+                  <AlertCircle className="w-6 h-6 text-red-400" />
                 </div>
               </div>
             </CardContent>
@@ -268,13 +268,13 @@ export function ReviewQueue({ onNavigate }: ReviewQueueProps) {
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-gray-600 uppercase tracking-wider">Total Flags</p>
-                  <p className="text-2xl font-bold text-gray-900 mt-1">
+                  <p className="text-xs text-slate-300 uppercase tracking-wider">Total Flags</p>
+                  <p className="text-2xl font-bold text-slate-100 mt-1">
                     {reviewItems.reduce((sum, item) => sum + item.flagsCount, 0)}
                   </p>
                 </div>
-                <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                  <Flag className="w-6 h-6 text-orange-600" />
+                <div className="w-12 h-12 bg-orange-500/15 rounded-lg flex items-center justify-center">
+                  <Flag className="w-6 h-6 text-orange-400" />
                 </div>
               </div>
             </CardContent>
@@ -294,18 +294,18 @@ export function ReviewQueue({ onNavigate }: ReviewQueueProps) {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search by client name or job ID..."
-                    className="w-full pl-10 pr-4 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full pl-10 pr-4 py-2 text-sm border border-white/10 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
               </div>
 
               {/* Status Filter */}
               <div className="flex items-center gap-2">
-                <span className="text-sm font-medium text-gray-700">Status:</span>
+                <span className="text-sm font-medium text-slate-300">Status:</span>
                 <select
                   value={filterStatus}
                   onChange={(e) => setFilterStatus(e.target.value as any)}
-                  className="px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="px-3 py-2 text-sm border border-white/10 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                   <option value="all">All</option>
                   <option value="pending">Pending</option>
@@ -316,11 +316,11 @@ export function ReviewQueue({ onNavigate }: ReviewQueueProps) {
 
               {/* Priority Filter */}
               <div className="flex items-center gap-2">
-                <span className="text-sm font-medium text-gray-700">Priority:</span>
+                <span className="text-sm font-medium text-slate-300">Priority:</span>
                 <select
                   value={filterPriority}
                   onChange={(e) => setFilterPriority(e.target.value as any)}
-                  className="px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="px-3 py-2 text-sm border border-white/10 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                   <option value="all">All</option>
                   <option value="high">High</option>
@@ -331,11 +331,11 @@ export function ReviewQueue({ onNavigate }: ReviewQueueProps) {
 
               {/* Sort By */}
               <div className="flex items-center gap-2">
-                <span className="text-sm font-medium text-gray-700">Sort:</span>
+                <span className="text-sm font-medium text-slate-300">Sort:</span>
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as any)}
-                  className="px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="px-3 py-2 text-sm border border-white/10 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                   <option value="date">Submission Date</option>
                   <option value="priority">Priority</option>
@@ -363,12 +363,12 @@ export function ReviewQueue({ onNavigate }: ReviewQueueProps) {
                     <div className="flex items-start justify-between mb-3">
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-1">
-                          <h3 className="text-lg font-semibold text-gray-900">{item.clientName}</h3>
+                          <h3 className="text-lg font-semibold text-slate-100">{item.clientName}</h3>
                           <span className={`px-2 py-1 text-xs font-semibold rounded ${getStatusColor(item.status)}`}>
                             {getStatusLabel(item.status)}
                           </span>
                         </div>
-                        <div className="flex items-center gap-4 text-sm text-gray-600">
+                        <div className="flex items-center gap-4 text-sm text-slate-300">
                           <span className="flex items-center gap-1">
                             <FileText className="w-4 h-4" />
                             {item.id}
@@ -396,28 +396,28 @@ export function ReviewQueue({ onNavigate }: ReviewQueueProps) {
                     {/* Metrics Row */}
                     <div className="grid grid-cols-5 gap-4 mb-3">
                       <div>
-                        <p className="text-xs text-gray-600 mb-1">Submitted By</p>
-                        <p className="text-sm font-semibold text-gray-900">{item.submittedBy}</p>
+                        <p className="text-xs text-slate-300 mb-1">Submitted By</p>
+                        <p className="text-sm font-semibold text-slate-100">{item.submittedBy}</p>
                       </div>
                       <div>
-                        <p className="text-xs text-gray-600 mb-1">Submitted</p>
-                        <p className="text-sm font-semibold text-gray-900">
+                        <p className="text-xs text-slate-300 mb-1">Submitted</p>
+                        <p className="text-sm font-semibold text-slate-100">
                           {new Date(item.submittedDate).toLocaleDateString()}
                         </p>
                       </div>
                       <div>
-                        <p className="text-xs text-gray-600 mb-1">Due Date</p>
-                        <p className="text-sm font-semibold text-gray-900">
+                        <p className="text-xs text-slate-300 mb-1">Due Date</p>
+                        <p className="text-sm font-semibold text-slate-100">
                           {new Date(item.dueDate).toLocaleDateString()}
                         </p>
                       </div>
                       <div>
-                        <p className="text-xs text-gray-600 mb-1">Days in Queue</p>
-                        <p className="text-sm font-semibold text-orange-600">{item.daysInQueue} days</p>
+                        <p className="text-xs text-slate-300 mb-1">Days in Queue</p>
+                        <p className="text-sm font-semibold text-orange-400">{item.daysInQueue} days</p>
                       </div>
                       <div>
-                        <p className="text-xs text-gray-600 mb-1">AI Flags</p>
-                        <p className="text-sm font-semibold text-red-600 flex items-center gap-1">
+                        <p className="text-xs text-slate-300 mb-1">AI Flags</p>
+                        <p className="text-sm font-semibold text-red-400 flex items-center gap-1">
                           <AlertCircle className="w-4 h-4" />
                           {item.flagsCount} flags
                         </p>
@@ -427,12 +427,12 @@ export function ReviewQueue({ onNavigate }: ReviewQueueProps) {
                     {/* Progress Bar */}
                     <div className="space-y-2">
                       <div className="flex items-center justify-between text-xs">
-                        <span className="text-gray-600">
+                        <span className="text-slate-300">
                           Sections Ready: {item.sectionsReady}/{item.sectionsTotal}
                         </span>
-                        <span className="font-semibold text-gray-900">{item.completeness}% Complete</span>
+                        <span className="font-semibold text-slate-100">{item.completeness}% Complete</span>
                       </div>
-                      <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                      <div className="h-2 bg-white/5 rounded-full overflow-hidden">
                         <div 
                           className="h-full bg-blue-600 transition-all"
                           style={{ width: `${item.completeness}%` }}
@@ -451,8 +451,8 @@ export function ReviewQueue({ onNavigate }: ReviewQueueProps) {
           <Card>
             <CardContent className="p-12 text-center">
               <CheckCircle className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">No jobs in review queue</h3>
-              <p className="text-sm text-gray-600">
+              <h3 className="text-lg font-semibold text-slate-100 mb-2">No jobs in review queue</h3>
+              <p className="text-sm text-slate-300">
                 All jobs have been reviewed or don't match your filters
               </p>
             </CardContent>

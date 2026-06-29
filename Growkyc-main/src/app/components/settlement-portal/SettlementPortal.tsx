@@ -137,7 +137,7 @@ export default function SettlementPortal({ onSwitchModule }: SettlementPortalPro
   };
 
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex h-screen bg-white/5">
       {/* Left Sidebar */}
       <div
         className={`${
@@ -192,7 +192,7 @@ export default function SettlementPortal({ onSwitchModule }: SettlementPortalPro
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Top Navigation Bar */}
-        <header className="bg-white border-b border-gray-200 px-6 py-4">
+        <header className="bg-white border-b border-white/10 px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Left Section */}
             <div className="flex items-center gap-4">
@@ -206,9 +206,9 @@ export default function SettlementPortal({ onSwitchModule }: SettlementPortalPro
 
               {/* Firm Selector */}
               <div className="relative">
-                <button className="flex items-center gap-2 px-3 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">
-                  <Building2 className="w-4 h-4 text-gray-600" />
-                  <span className="font-medium text-gray-900">{selectedFirm.name}</span>
+                <button className="flex items-center gap-2 px-3 py-2 border border-white/10 rounded-lg hover:bg-white/5">
+                  <Building2 className="w-4 h-4 text-slate-300" />
+                  <span className="font-medium text-slate-100">{selectedFirm.name}</span>
                   <ChevronDown className="w-4 h-4 text-gray-400" />
                 </button>
               </div>
@@ -219,7 +219,7 @@ export default function SettlementPortal({ onSwitchModule }: SettlementPortalPro
                 <input
                   type="text"
                   placeholder="Search matters, properties, parties..."
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full pl-10 pr-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
             </div>
@@ -230,7 +230,7 @@ export default function SettlementPortal({ onSwitchModule }: SettlementPortalPro
               <select
                 value={currentRole}
                 onChange={(e) => setCurrentRole(e.target.value as UserRole)}
-                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="internal_staff">Internal Staff</option>
                 <option value="borrower">Borrower</option>
@@ -243,13 +243,13 @@ export default function SettlementPortal({ onSwitchModule }: SettlementPortalPro
               </select>
 
               {/* Notifications */}
-              <button className="relative p-2 hover:bg-gray-100 rounded-lg">
-                <Bell className="w-5 h-5 text-gray-600" />
+              <button className="relative p-2 hover:bg-white/5 rounded-lg">
+                <Bell className="w-5 h-5 text-slate-300" />
                 <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
               </button>
 
               {/* User Profile */}
-              <button className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 rounded-lg">
+              <button className="flex items-center gap-2 px-3 py-2 hover:bg-white/5 rounded-lg">
                 <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
                   <span className="text-white text-sm font-semibold">JD</span>
                 </div>
@@ -277,9 +277,9 @@ export default function SettlementPortal({ onSwitchModule }: SettlementPortalPro
 
           {/* Right Activity Panel */}
           {showActivityPanel && (
-            <aside className="w-80 bg-white border-l border-gray-200 overflow-y-auto">
-              <div className="p-4 border-b border-gray-200">
-                <h3 className="font-semibold text-gray-900">Activity Timeline</h3>
+            <aside className="w-80 bg-white border-l border-white/10 overflow-y-auto">
+              <div className="p-4 border-b border-white/10">
+                <h3 className="font-semibold text-slate-100">Activity Timeline</h3>
               </div>
               <div className="p-4 space-y-4">
                 {[
@@ -300,12 +300,12 @@ export default function SettlementPortal({ onSwitchModule }: SettlementPortalPro
                       }`}
                     />
                     <div className="flex-1">
-                      <p className="text-sm font-medium text-gray-900">{activity.action}</p>
-                      <p className="text-xs text-gray-600">{activity.detail}</p>
+                      <p className="text-sm font-medium text-slate-100">{activity.action}</p>
+                      <p className="text-xs text-slate-300">{activity.detail}</p>
                       <div className="flex items-center gap-2 mt-1">
-                        <span className="text-xs text-gray-500">{activity.user}</span>
+                        <span className="text-xs text-slate-400">{activity.user}</span>
                         <span className="text-xs text-gray-400">•</span>
-                        <span className="text-xs text-gray-500">{activity.time}</span>
+                        <span className="text-xs text-slate-400">{activity.time}</span>
                       </div>
                     </div>
                   </div>

@@ -33,7 +33,7 @@ export function IntegrationsModule({ role }: IntegrationsModuleProps) {
       category: 'Email',
       icon: Mail,
       status: 'active',
-      color: 'bg-red-100 text-red-600',
+      color: 'bg-red-500/15 text-red-400',
       lastSync: '2 minutes ago',
       synced: 1247,
       description: 'Email sync and tracking'
@@ -43,7 +43,7 @@ export function IntegrationsModule({ role }: IntegrationsModuleProps) {
       category: 'Calendar',
       icon: Calendar,
       status: 'active',
-      color: 'bg-blue-100 text-blue-600',
+      color: 'bg-blue-500/15 text-blue-400',
       lastSync: '5 minutes ago',
       synced: 342,
       description: 'Meeting scheduling and sync'
@@ -53,7 +53,7 @@ export function IntegrationsModule({ role }: IntegrationsModuleProps) {
       category: 'Payments',
       icon: CreditCard,
       status: 'active',
-      color: 'bg-purple-100 text-purple-600',
+      color: 'bg-purple-500/15 text-purple-400',
       lastSync: '1 hour ago',
       synced: 89,
       description: 'Payment processing'
@@ -63,7 +63,7 @@ export function IntegrationsModule({ role }: IntegrationsModuleProps) {
       category: 'Accounting',
       icon: DollarSign,
       status: 'active',
-      color: 'bg-green-100 text-green-600',
+      color: 'bg-green-500/15 text-green-400',
       lastSync: '3 hours ago',
       synced: 234,
       description: 'Accounting and invoicing'
@@ -73,7 +73,7 @@ export function IntegrationsModule({ role }: IntegrationsModuleProps) {
       category: 'Communication',
       icon: MessageSquare,
       status: 'active',
-      color: 'bg-pink-100 text-pink-600',
+      color: 'bg-pink-500/15 text-pink-400',
       lastSync: 'Just now',
       synced: 456,
       description: 'Team notifications'
@@ -83,7 +83,7 @@ export function IntegrationsModule({ role }: IntegrationsModuleProps) {
       category: 'Automation',
       icon: Zap,
       status: 'active',
-      color: 'bg-orange-100 text-orange-600',
+      color: 'bg-orange-500/15 text-orange-400',
       lastSync: '10 minutes ago',
       synced: 78,
       description: 'Workflow automation'
@@ -95,7 +95,7 @@ export function IntegrationsModule({ role }: IntegrationsModuleProps) {
       name: 'Microsoft Outlook',
       category: 'Email',
       icon: Mail,
-      color: 'bg-blue-100 text-blue-600',
+      color: 'bg-blue-500/15 text-blue-400',
       description: 'Email sync and calendar integration',
       popular: true
     },
@@ -103,7 +103,7 @@ export function IntegrationsModule({ role }: IntegrationsModuleProps) {
       name: 'QuickBooks',
       category: 'Accounting',
       icon: DollarSign,
-      color: 'bg-green-100 text-green-600',
+      color: 'bg-green-500/15 text-green-400',
       description: 'Accounting and financial management',
       popular: true
     },
@@ -111,7 +111,7 @@ export function IntegrationsModule({ role }: IntegrationsModuleProps) {
       name: 'LinkedIn',
       category: 'Social',
       icon: Users,
-      color: 'bg-blue-100 text-blue-600',
+      color: 'bg-blue-500/15 text-blue-400',
       description: 'Lead generation and enrichment',
       popular: true
     },
@@ -119,7 +119,7 @@ export function IntegrationsModule({ role }: IntegrationsModuleProps) {
       name: 'Mailchimp',
       category: 'Marketing',
       icon: Mail,
-      color: 'bg-yellow-100 text-yellow-600',
+      color: 'bg-yellow-500/15 text-yellow-400',
       description: 'Email marketing campaigns',
       popular: false
     },
@@ -127,7 +127,7 @@ export function IntegrationsModule({ role }: IntegrationsModuleProps) {
       name: 'Zoom',
       category: 'Video',
       icon: Globe,
-      color: 'bg-blue-100 text-blue-600',
+      color: 'bg-blue-500/15 text-blue-400',
       description: 'Video conferencing',
       popular: false
     },
@@ -135,7 +135,7 @@ export function IntegrationsModule({ role }: IntegrationsModuleProps) {
       name: 'HubSpot',
       category: 'CRM',
       icon: BarChart3,
-      color: 'bg-orange-100 text-orange-600',
+      color: 'bg-orange-500/15 text-orange-400',
       description: 'Marketing and sales platform',
       popular: false
     },
@@ -143,7 +143,7 @@ export function IntegrationsModule({ role }: IntegrationsModuleProps) {
       name: 'DocuSign',
       category: 'Documents',
       icon: FileText,
-      color: 'bg-indigo-100 text-indigo-600',
+      color: 'bg-indigo-500/15 text-indigo-400',
       description: 'Electronic signature',
       popular: false
     },
@@ -151,7 +151,7 @@ export function IntegrationsModule({ role }: IntegrationsModuleProps) {
       name: 'Intercom',
       category: 'Support',
       icon: MessageSquare,
-      color: 'bg-blue-100 text-blue-600',
+      color: 'bg-blue-500/15 text-blue-400',
       description: 'Customer messaging',
       popular: false
     }
@@ -162,8 +162,8 @@ export function IntegrationsModule({ role }: IntegrationsModuleProps) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Integrations</h1>
-          <p className="text-gray-600 mt-1">Connect to your favorite tools and services</p>
+          <h1 className="text-2xl font-bold text-slate-100">Integrations</h1>
+          <p className="text-slate-300 mt-1">Connect to your favorite tools and services</p>
         </div>
         <div className="flex items-center gap-3">
           <Button variant="outline">
@@ -179,48 +179,48 @@ export function IntegrationsModule({ role }: IntegrationsModuleProps) {
 
       {/* Stats */}
       <div className="grid grid-cols-4 gap-4">
-        <div className="bg-white border border-gray-300 rounded-lg p-4">
+        <div className="bg-white border border-white/10 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-sm font-medium text-gray-600">Connected</p>
-            <CheckCircle className="w-4 h-4 text-green-600" />
+            <p className="text-sm font-medium text-slate-300">Connected</p>
+            <CheckCircle className="w-4 h-4 text-green-400" />
           </div>
-          <p className="text-2xl font-bold text-gray-900">{connectedIntegrations.length}</p>
-          <p className="text-xs text-gray-500 mt-1">Active integrations</p>
+          <p className="text-2xl font-bold text-slate-100">{connectedIntegrations.length}</p>
+          <p className="text-xs text-slate-400 mt-1">Active integrations</p>
         </div>
 
-        <div className="bg-white border border-gray-300 rounded-lg p-4">
+        <div className="bg-white border border-white/10 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-sm font-medium text-gray-600">Data Synced</p>
-            <BarChart3 className="w-4 h-4 text-blue-600" />
+            <p className="text-sm font-medium text-slate-300">Data Synced</p>
+            <BarChart3 className="w-4 h-4 text-blue-400" />
           </div>
-          <p className="text-2xl font-bold text-gray-900">
+          <p className="text-2xl font-bold text-slate-100">
             {connectedIntegrations.reduce((sum, i) => sum + i.synced, 0).toLocaleString()}
           </p>
-          <p className="text-xs text-gray-500 mt-1">Records this month</p>
+          <p className="text-xs text-slate-400 mt-1">Records this month</p>
         </div>
 
-        <div className="bg-white border border-gray-300 rounded-lg p-4">
+        <div className="bg-white border border-white/10 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-sm font-medium text-gray-600">Available</p>
-            <Plug className="w-4 h-4 text-purple-600" />
+            <p className="text-sm font-medium text-slate-300">Available</p>
+            <Plug className="w-4 h-4 text-purple-400" />
           </div>
-          <p className="text-2xl font-bold text-gray-900">{availableIntegrations.length}+</p>
-          <p className="text-xs text-gray-500 mt-1">More to connect</p>
+          <p className="text-2xl font-bold text-slate-100">{availableIntegrations.length}+</p>
+          <p className="text-xs text-slate-400 mt-1">More to connect</p>
         </div>
 
-        <div className="bg-white border border-gray-300 rounded-lg p-4">
+        <div className="bg-white border border-white/10 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-sm font-medium text-gray-600">Last Sync</p>
-            <Zap className="w-4 h-4 text-orange-600" />
+            <p className="text-sm font-medium text-slate-300">Last Sync</p>
+            <Zap className="w-4 h-4 text-orange-400" />
           </div>
-          <p className="text-2xl font-bold text-gray-900">Live</p>
-          <p className="text-xs text-green-600 mt-1">All systems operational</p>
+          <p className="text-2xl font-bold text-slate-100">Live</p>
+          <p className="text-xs text-green-400 mt-1">All systems operational</p>
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="bg-white border border-gray-300 rounded-lg overflow-hidden">
-        <div className="border-b border-gray-300 flex">
+      <div className="bg-white border border-white/10 rounded-lg overflow-hidden">
+        <div className="border-b border-white/10 flex">
           {[
             { id: 'connected', label: `Connected (${connectedIntegrations.length})` },
             { id: 'available', label: `Available (${availableIntegrations.length}+)` }
@@ -230,8 +230,8 @@ export function IntegrationsModule({ role }: IntegrationsModuleProps) {
               onClick={() => setActiveTab(tab.id as any)}
               className={`flex-1 px-6 py-4 border-b-2 transition-colors ${
                 activeTab === tab.id
-                  ? 'border-indigo-600 text-indigo-600 font-medium bg-indigo-50'
-                  : 'border-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                  ? 'border-indigo-600 text-indigo-400 font-medium bg-indigo-500/10'
+                  : 'border-transparent text-slate-300 hover:text-slate-100 hover:bg-white/5'
               }`}
             >
               {tab.label}
@@ -248,7 +248,7 @@ export function IntegrationsModule({ role }: IntegrationsModuleProps) {
                   <input
                     type="search"
                     placeholder="Search connected integrations..."
-                    className="pl-10 pr-4 py-2 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="pl-10 pr-4 py-2 w-full border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   />
                 </div>
               </div>
@@ -257,33 +257,33 @@ export function IntegrationsModule({ role }: IntegrationsModuleProps) {
                 {connectedIntegrations.map((integration, idx) => {
                   const Icon = integration.icon;
                   return (
-                    <div key={idx} className="border border-gray-300 rounded-lg p-5 hover:border-indigo-300 transition-colors">
+                    <div key={idx} className="border border-white/10 rounded-lg p-5 hover:border-indigo-300 transition-colors">
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex items-center gap-3">
                           <div className={`w-12 h-12 rounded-lg ${integration.color} flex items-center justify-center`}>
                             <Icon className="w-6 h-6" />
                           </div>
                           <div>
-                            <h3 className="font-semibold text-gray-900">{integration.name}</h3>
-                            <p className="text-xs text-gray-500">{integration.category}</p>
+                            <h3 className="font-semibold text-slate-100">{integration.name}</h3>
+                            <p className="text-xs text-slate-400">{integration.category}</p>
                           </div>
                         </div>
-                        <span className="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium flex items-center gap-1">
+                        <span className="px-2 py-1 bg-green-500/15 text-green-300 rounded-full text-xs font-medium flex items-center gap-1">
                           <div className="w-2 h-2 bg-green-600 rounded-full"></div>
                           Active
                         </span>
                       </div>
 
-                      <p className="text-sm text-gray-600 mb-4">{integration.description}</p>
+                      <p className="text-sm text-slate-300 mb-4">{integration.description}</p>
 
-                      <div className="grid grid-cols-2 gap-3 mb-4 pb-4 border-b border-gray-200">
+                      <div className="grid grid-cols-2 gap-3 mb-4 pb-4 border-b border-white/10">
                         <div>
-                          <p className="text-xs text-gray-500 mb-1">Last Sync</p>
-                          <p className="text-sm font-medium text-gray-900">{integration.lastSync}</p>
+                          <p className="text-xs text-slate-400 mb-1">Last Sync</p>
+                          <p className="text-sm font-medium text-slate-100">{integration.lastSync}</p>
                         </div>
                         <div>
-                          <p className="text-xs text-gray-500 mb-1">Records Synced</p>
-                          <p className="text-sm font-medium text-gray-900">{integration.synced.toLocaleString()}</p>
+                          <p className="text-xs text-slate-400 mb-1">Records Synced</p>
+                          <p className="text-sm font-medium text-slate-100">{integration.synced.toLocaleString()}</p>
                         </div>
                       </div>
 
@@ -312,7 +312,7 @@ export function IntegrationsModule({ role }: IntegrationsModuleProps) {
                   <input
                     type="search"
                     placeholder="Search available integrations..."
-                    className="pl-10 pr-4 py-2 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="pl-10 pr-4 py-2 w-full border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   />
                 </div>
                 <Button variant="outline">
@@ -325,25 +325,25 @@ export function IntegrationsModule({ role }: IntegrationsModuleProps) {
                 {availableIntegrations.map((integration, idx) => {
                   const Icon = integration.icon;
                   return (
-                    <div key={idx} className="border border-gray-300 rounded-lg p-5 hover:border-indigo-300 transition-colors">
+                    <div key={idx} className="border border-white/10 rounded-lg p-5 hover:border-indigo-300 transition-colors">
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex items-center gap-3">
                           <div className={`w-12 h-12 rounded-lg ${integration.color} flex items-center justify-center`}>
                             <Icon className="w-6 h-6" />
                           </div>
                           <div>
-                            <h3 className="font-semibold text-gray-900">{integration.name}</h3>
-                            <p className="text-xs text-gray-500">{integration.category}</p>
+                            <h3 className="font-semibold text-slate-100">{integration.name}</h3>
+                            <p className="text-xs text-slate-400">{integration.category}</p>
                           </div>
                         </div>
                         {integration.popular && (
-                          <span className="px-2 py-1 bg-indigo-100 text-indigo-800 rounded-full text-xs font-medium">
+                          <span className="px-2 py-1 bg-indigo-500/15 text-indigo-300 rounded-full text-xs font-medium">
                             Popular
                           </span>
                         )}
                       </div>
 
-                      <p className="text-sm text-gray-600 mb-4">{integration.description}</p>
+                      <p className="text-sm text-slate-300 mb-4">{integration.description}</p>
 
                       <div className="flex items-center gap-2">
                         <Button className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white">
@@ -364,15 +364,15 @@ export function IntegrationsModule({ role }: IntegrationsModuleProps) {
       </div>
 
       {/* API Documentation */}
-      <div className="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-lg p-6">
+      <div className="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-500/30 rounded-lg p-6">
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center">
               <Globe className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h3 className="font-semibold text-gray-900 mb-1">Build Custom Integrations</h3>
-              <p className="text-sm text-gray-600">Use our REST API and webhooks to build custom integrations</p>
+              <h3 className="font-semibold text-slate-100 mb-1">Build Custom Integrations</h3>
+              <p className="text-sm text-slate-300">Use our REST API and webhooks to build custom integrations</p>
             </div>
           </div>
           <Button variant="outline">

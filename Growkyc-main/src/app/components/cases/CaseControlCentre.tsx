@@ -133,15 +133,15 @@ export function CaseControlCentre({ onOpenCase, complianceOfficerMode = false }:
 
   const getCaseTypeBadge = (type: CaseType) => {
     const configs = {
-      aml_alert: { label: 'AML Alert', color: 'bg-red-100 text-red-700', icon: Shield },
-      pep: { label: 'PEP', color: 'bg-purple-100 text-purple-700', icon: Users },
-      adverse_media: { label: 'Adverse Media', color: 'bg-orange-100 text-orange-700', icon: FileText },
-      sanctions: { label: 'Sanctions', color: 'bg-red-100 text-red-700', icon: Shield },
-      ownership: { label: 'Ownership', color: 'bg-indigo-100 text-indigo-700', icon: Users },
-      sof: { label: 'Source of Funds', color: 'bg-amber-100 text-amber-700', icon: TrendingUp },
-      fraud: { label: 'Fraud/Identity', color: 'bg-pink-100 text-pink-700', icon: AlertTriangle },
-      legal: { label: 'Legal/Court', color: 'bg-gray-100 text-gray-700', icon: FileText },
-      manual: { label: 'Manual Referral', color: 'bg-blue-100 text-blue-700', icon: Eye }
+      aml_alert: { label: 'AML Alert', color: 'bg-red-500/15 text-red-300', icon: Shield },
+      pep: { label: 'PEP', color: 'bg-purple-500/15 text-purple-300', icon: Users },
+      adverse_media: { label: 'Adverse Media', color: 'bg-orange-500/15 text-orange-300', icon: FileText },
+      sanctions: { label: 'Sanctions', color: 'bg-red-500/15 text-red-300', icon: Shield },
+      ownership: { label: 'Ownership', color: 'bg-indigo-500/15 text-indigo-300', icon: Users },
+      sof: { label: 'Source of Funds', color: 'bg-amber-500/15 text-amber-300', icon: TrendingUp },
+      fraud: { label: 'Fraud/Identity', color: 'bg-pink-500/15 text-pink-300', icon: AlertTriangle },
+      legal: { label: 'Legal/Court', color: 'bg-white/5 text-slate-300', icon: FileText },
+      manual: { label: 'Manual Referral', color: 'bg-blue-500/15 text-blue-300', icon: Eye }
     };
     const config = configs[type];
     const Icon = config.icon;
@@ -155,13 +155,13 @@ export function CaseControlCentre({ onOpenCase, complianceOfficerMode = false }:
 
   const getStatusBadge = (status: CaseStatus) => {
     const configs = {
-      new: { label: 'New', color: 'bg-blue-100 text-blue-700', icon: Zap },
-      triage: { label: 'Triage', color: 'bg-purple-100 text-purple-700', icon: Activity },
-      investigating: { label: 'Investigating', color: 'bg-amber-100 text-amber-700', icon: Eye },
-      escalated: { label: 'Escalated', color: 'bg-red-100 text-red-700', icon: AlertTriangle },
-      awaiting_decision: { label: 'Awaiting Decision', color: 'bg-orange-100 text-orange-700', icon: Clock },
-      monitoring: { label: 'Monitoring', color: 'bg-indigo-100 text-indigo-700', icon: Activity },
-      closed: { label: 'Closed', color: 'bg-gray-100 text-gray-700', icon: CheckCircle }
+      new: { label: 'New', color: 'bg-blue-500/15 text-blue-300', icon: Zap },
+      triage: { label: 'Triage', color: 'bg-purple-500/15 text-purple-300', icon: Activity },
+      investigating: { label: 'Investigating', color: 'bg-amber-500/15 text-amber-300', icon: Eye },
+      escalated: { label: 'Escalated', color: 'bg-red-500/15 text-red-300', icon: AlertTriangle },
+      awaiting_decision: { label: 'Awaiting Decision', color: 'bg-orange-500/15 text-orange-300', icon: Clock },
+      monitoring: { label: 'Monitoring', color: 'bg-indigo-500/15 text-indigo-300', icon: Activity },
+      closed: { label: 'Closed', color: 'bg-white/5 text-slate-300', icon: CheckCircle }
     };
     const config = configs[status];
     const Icon = config.icon;
@@ -175,10 +175,10 @@ export function CaseControlCentre({ onOpenCase, complianceOfficerMode = false }:
 
   const getRiskBadge = (risk: RiskLevel) => {
     const configs = {
-      low: 'bg-green-100 text-green-700',
-      medium: 'bg-amber-100 text-amber-700',
-      high: 'bg-orange-100 text-orange-700',
-      critical: 'bg-red-100 text-red-700'
+      low: 'bg-green-500/15 text-green-300',
+      medium: 'bg-amber-500/15 text-amber-300',
+      high: 'bg-orange-500/15 text-orange-300',
+      critical: 'bg-red-500/15 text-red-300'
     };
     return (
       <Badge className={`${configs[risk]} text-xs px-2 py-1 font-bold`}>
@@ -188,10 +188,10 @@ export function CaseControlCentre({ onOpenCase, complianceOfficerMode = false }:
   };
 
   const getSLAColor = (hoursRemaining: number) => {
-    if (hoursRemaining <= 0) return 'text-red-600 font-bold';
-    if (hoursRemaining <= 8) return 'text-orange-600 font-bold';
-    if (hoursRemaining <= 24) return 'text-amber-600';
-    return 'text-green-700';
+    if (hoursRemaining <= 0) return 'text-red-400 font-bold';
+    if (hoursRemaining <= 8) return 'text-orange-400 font-bold';
+    if (hoursRemaining <= 24) return 'text-amber-400';
+    return 'text-green-300';
   };
 
   const personaName = getActivePersonaName();
@@ -328,7 +328,7 @@ export function CaseControlCentre({ onOpenCase, complianceOfficerMode = false }:
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4 sm:p-8">
+    <div className="min-h-screen bg-white/5 p-4 sm:p-8">
       <div className="max-w-[2000px] mx-auto space-y-6">
         {/* Header */}
         <div className="bg-gradient-to-r from-red-900 via-red-800 to-orange-900 rounded-lg p-6 md:p-8 text-white shadow-xl">
@@ -344,7 +344,7 @@ export function CaseControlCentre({ onOpenCase, complianceOfficerMode = false }:
             </div>
             <div className="flex flex-wrap gap-2 md:gap-3 w-full lg:w-auto">
               {!isReadOnly && (
-                <Button className="bg-white text-red-900 hover:bg-red-50 flex-1 sm:flex-initial justify-center text-xs md:text-sm whitespace-nowrap" onClick={() => setIsModalOpen(true)}>
+                <Button className="bg-white text-red-300 hover:bg-red-500/10 flex-1 sm:flex-initial justify-center text-xs md:text-sm whitespace-nowrap" onClick={() => setIsModalOpen(true)}>
                   <Plus className="w-4 h-4 mr-1.5 md:mr-2" />
                   Create Manual Case
                 </Button>
@@ -365,90 +365,90 @@ export function CaseControlCentre({ onOpenCase, complianceOfficerMode = false }:
           <Card
             onClick={() => setFilterKPI('all')}
             className={`cursor-pointer transition-all border-2 ${
-              filterKPI === 'all' ? 'border-blue-500 bg-blue-50 ring-2 ring-blue-200' : 'border-blue-300 hover:border-blue-400'
+              filterKPI === 'all' ? 'border-blue-500 bg-blue-500/10 ring-2 ring-blue-200' : 'border-blue-300 hover:border-blue-400'
             }`}
           >
             <CardContent className="p-4 md:p-6 text-center">
               <div className="flex items-center justify-center gap-1.5 md:gap-2 mb-1.5 md:mb-2">
-                <Activity className="w-5 h-5 md:w-6 md:h-6 text-blue-600 flex-shrink-0" />
-                <p className="text-xs md:text-sm font-bold text-blue-700">Open Cases</p>
+                <Activity className="w-5 h-5 md:w-6 md:h-6 text-blue-400 flex-shrink-0" />
+                <p className="text-xs md:text-sm font-bold text-blue-300">Open Cases</p>
               </div>
-              <p className="text-2xl md:text-4xl font-bold text-blue-900">{kpis.open}</p>
+              <p className="text-2xl md:text-4xl font-bold text-blue-300">{kpis.open}</p>
             </CardContent>
           </Card>
 
           <Card
             onClick={() => setFilterKPI('high_risk')}
             className={`cursor-pointer transition-all border-2 ${
-              filterKPI === 'high_risk' ? 'border-orange-500 bg-orange-50 ring-2 ring-orange-200' : 'border-orange-300 hover:border-orange-400'
+              filterKPI === 'high_risk' ? 'border-orange-500 bg-orange-500/10 ring-2 ring-orange-200' : 'border-orange-300 hover:border-orange-400'
             }`}
           >
             <CardContent className="p-4 md:p-6 text-center">
               <div className="flex items-center justify-center gap-1.5 md:gap-2 mb-1.5 md:mb-2">
-                <AlertTriangle className="w-5 h-5 md:w-6 md:h-6 text-orange-600 flex-shrink-0" />
-                <p className="text-xs md:text-sm font-bold text-orange-700">High-Risk</p>
+                <AlertTriangle className="w-5 h-5 md:w-6 md:h-6 text-orange-400 flex-shrink-0" />
+                <p className="text-xs md:text-sm font-bold text-orange-300">High-Risk</p>
               </div>
-              <p className="text-2xl md:text-4xl font-bold text-orange-900">{kpis.highRisk}</p>
+              <p className="text-2xl md:text-4xl font-bold text-orange-300">{kpis.highRisk}</p>
             </CardContent>
           </Card>
 
           <Card
             onClick={() => setFilterKPI('escalated')}
             className={`cursor-pointer transition-all border-2 ${
-              filterKPI === 'escalated' ? 'border-red-500 bg-red-50 ring-2 ring-red-200' : 'border-red-300 hover:border-red-400'
+              filterKPI === 'escalated' ? 'border-red-500 bg-red-500/10 ring-2 ring-red-200' : 'border-red-300 hover:border-red-400'
             }`}
           >
             <CardContent className="p-4 md:p-6 text-center">
               <div className="flex items-center justify-center gap-1.5 md:gap-2 mb-1.5 md:mb-2">
-                <Zap className="w-5 h-5 md:w-6 md:h-6 text-red-600 flex-shrink-0" />
-                <p className="text-xs md:text-sm font-bold text-red-700">Escalated</p>
+                <Zap className="w-5 h-5 md:w-6 md:h-6 text-red-400 flex-shrink-0" />
+                <p className="text-xs md:text-sm font-bold text-red-300">Escalated</p>
               </div>
-              <p className="text-2xl md:text-4xl font-bold text-red-900">{kpis.escalated}</p>
+              <p className="text-2xl md:text-4xl font-bold text-red-300">{kpis.escalated}</p>
             </CardContent>
           </Card>
 
           <Card
             onClick={() => setFilterKPI('awaiting')}
             className={`cursor-pointer transition-all border-2 ${
-              filterKPI === 'awaiting' ? 'border-amber-500 bg-amber-50 ring-2 ring-amber-200' : 'border-amber-300 hover:border-amber-400'
+              filterKPI === 'awaiting' ? 'border-amber-500 bg-amber-500/10 ring-2 ring-amber-200' : 'border-amber-300 hover:border-amber-400'
             }`}
           >
             <CardContent className="p-4 md:p-6 text-center">
               <div className="flex items-center justify-center gap-1.5 md:gap-2 mb-1.5 md:mb-2">
-                <Clock className="w-5 h-5 md:w-6 md:h-6 text-amber-600 flex-shrink-0" />
-                <p className="text-xs md:text-sm font-bold text-amber-700">Awaiting Decision</p>
+                <Clock className="w-5 h-5 md:w-6 md:h-6 text-amber-400 flex-shrink-0" />
+                <p className="text-xs md:text-sm font-bold text-amber-300">Awaiting Decision</p>
               </div>
-              <p className="text-2xl md:text-4xl font-bold text-amber-900">{kpis.awaitingDecision}</p>
+              <p className="text-2xl md:text-4xl font-bold text-amber-300">{kpis.awaitingDecision}</p>
             </CardContent>
           </Card>
 
           <Card
             onClick={() => setFilterKPI('overdue')}
             className={`cursor-pointer transition-all border-2 ${
-              filterKPI === 'overdue' ? 'border-red-500 bg-red-50 ring-2 ring-red-200' : 'border-red-300 hover:border-red-400'
+              filterKPI === 'overdue' ? 'border-red-500 bg-red-500/10 ring-2 ring-red-200' : 'border-red-300 hover:border-red-400'
             }`}
           >
             <CardContent className="p-4 md:p-6 text-center">
               <div className="flex items-center justify-center gap-1.5 md:gap-2 mb-1.5 md:mb-2">
-                <XCircle className="w-5 h-5 md:w-6 md:h-6 text-red-600 flex-shrink-0" />
-                <p className="text-xs md:text-sm font-bold text-red-700">Overdue</p>
+                <XCircle className="w-5 h-5 md:w-6 md:h-6 text-red-400 flex-shrink-0" />
+                <p className="text-xs md:text-sm font-bold text-red-300">Overdue</p>
               </div>
-              <p className="text-2xl md:text-4xl font-bold text-red-900">{kpis.overdue}</p>
+              <p className="text-2xl md:text-4xl font-bold text-red-300">{kpis.overdue}</p>
             </CardContent>
           </Card>
 
           <Card
             onClick={() => setFilterKPI('closed')}
             className={`cursor-pointer transition-all border-2 ${
-              filterKPI === 'closed' ? 'border-gray-500 bg-gray-50 ring-2 ring-gray-200' : 'border-gray-300 hover:border-gray-400'
+              filterKPI === 'closed' ? 'border-gray-500 bg-white/5 ring-2 ring-gray-200' : 'border-white/10 hover:border-gray-400'
             }`}
           >
             <CardContent className="p-4 md:p-6 text-center">
               <div className="flex items-center justify-center gap-1.5 md:gap-2 mb-1.5 md:mb-2">
-                <CheckCircle className="w-5 h-5 md:w-6 md:h-6 text-gray-600 flex-shrink-0" />
-                <p className="text-xs md:text-sm font-bold text-gray-700">Recently Closed</p>
+                <CheckCircle className="w-5 h-5 md:w-6 md:h-6 text-slate-300 flex-shrink-0" />
+                <p className="text-xs md:text-sm font-bold text-slate-300">Recently Closed</p>
               </div>
-              <p className="text-2xl md:text-4xl font-bold text-gray-900">{kpis.recentlyClosed}</p>
+              <p className="text-2xl md:text-4xl font-bold text-slate-100">{kpis.recentlyClosed}</p>
             </CardContent>
           </Card>
         </div>
@@ -458,7 +458,7 @@ export function CaseControlCentre({ onOpenCase, complianceOfficerMode = false }:
           <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b p-4 md:p-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <CardTitle className="text-xl md:text-2xl flex items-center gap-2">
-                <Shield className="w-6 h-6 md:w-7 md:h-7 text-blue-600" />
+                <Shield className="w-6 h-6 md:w-7 md:h-7 text-blue-400" />
                 Active Cases
               </CardTitle>
               <div className="flex flex-col xs:flex-row gap-2.5 w-full sm:w-auto">
@@ -469,7 +469,7 @@ export function CaseControlCentre({ onOpenCase, complianceOfficerMode = false }:
                     placeholder="Search cases, clients..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="pl-9 pr-4 py-1.5 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full sm:w-64 text-sm"
+                    className="pl-9 pr-4 py-1.5 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full sm:w-64 text-sm"
                   />
                 </div>
                 <Button
@@ -490,7 +490,7 @@ export function CaseControlCentre({ onOpenCase, complianceOfficerMode = false }:
                 <select
                   value={caseTypeFilter}
                   onChange={(e) => setCaseTypeFilter(e.target.value as 'all' | CaseType)}
-                  className="px-3 py-2 border-2 border-gray-300 rounded-lg text-sm"
+                  className="px-3 py-2 border-2 border-white/10 rounded-lg text-sm"
                 >
                   <option value="all">All case types</option>
                   <option value="aml_alert">AML Alert</option>
@@ -506,7 +506,7 @@ export function CaseControlCentre({ onOpenCase, complianceOfficerMode = false }:
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value as 'all' | CaseStatus)}
-                  className="px-3 py-2 border-2 border-gray-300 rounded-lg text-sm"
+                  className="px-3 py-2 border-2 border-white/10 rounded-lg text-sm"
                 >
                   <option value="all">All statuses</option>
                   <option value="new">New</option>
@@ -522,7 +522,7 @@ export function CaseControlCentre({ onOpenCase, complianceOfficerMode = false }:
                     <select
                       value={advancedFilter}
                       onChange={(e) => setAdvancedFilter(e.target.value)}
-                      className="px-3 py-2 border-2 border-gray-300 rounded-lg text-sm min-w-[180px]"
+                      className="px-3 py-2 border-2 border-white/10 rounded-lg text-sm min-w-[180px]"
                     >
                       <option value="all">All cases</option>
                       <option value="assigned_me">Assigned To Me</option>
@@ -543,7 +543,7 @@ export function CaseControlCentre({ onOpenCase, complianceOfficerMode = false }:
                     <select
                       value={sortBy}
                       onChange={(e) => setSortBy(e.target.value as 'updated' | 'risk' | 'sla')}
-                      className="px-3 py-2 border-2 border-gray-300 rounded-lg text-sm"
+                      className="px-3 py-2 border-2 border-white/10 rounded-lg text-sm"
                     >
                       <option value="sla">Sort: SLA</option>
                       <option value="risk">Sort: Risk</option>
@@ -568,18 +568,18 @@ export function CaseControlCentre({ onOpenCase, complianceOfficerMode = false }:
             )}
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-gray-100 border-b-2 border-gray-300">
+                <thead className="bg-white/5 border-b-2 border-white/10">
                   <tr>
-                    <th className="text-left py-4 px-4 text-sm font-bold text-gray-700">Case ID</th>
-                    <th className="text-left py-4 px-4 text-sm font-bold text-gray-700">Client / Entity</th>
-                    <th className="text-left py-4 px-4 text-sm font-bold text-gray-700">Case Type</th>
-                    <th className="text-left py-4 px-4 text-sm font-bold text-gray-700">Trigger Source</th>
-                    <th className="text-left py-4 px-4 text-sm font-bold text-gray-700">Risk Level</th>
-                    <th className="text-left py-4 px-4 text-sm font-bold text-gray-700">Status</th>
-                    <th className="text-left py-4 px-4 text-sm font-bold text-gray-700">Assigned To</th>
-                    <th className="text-left py-4 px-4 text-sm font-bold text-gray-700">Last Updated</th>
-                    <th className="text-left py-4 px-4 text-sm font-bold text-gray-700">SLA Timer</th>
-                    <th className="text-left py-4 px-4 text-sm font-bold text-gray-700">Actions</th>
+                    <th className="text-left py-4 px-4 text-sm font-bold text-slate-300">Case ID</th>
+                    <th className="text-left py-4 px-4 text-sm font-bold text-slate-300">Client / Entity</th>
+                    <th className="text-left py-4 px-4 text-sm font-bold text-slate-300">Case Type</th>
+                    <th className="text-left py-4 px-4 text-sm font-bold text-slate-300">Trigger Source</th>
+                    <th className="text-left py-4 px-4 text-sm font-bold text-slate-300">Risk Level</th>
+                    <th className="text-left py-4 px-4 text-sm font-bold text-slate-300">Status</th>
+                    <th className="text-left py-4 px-4 text-sm font-bold text-slate-300">Assigned To</th>
+                    <th className="text-left py-4 px-4 text-sm font-bold text-slate-300">Last Updated</th>
+                    <th className="text-left py-4 px-4 text-sm font-bold text-slate-300">SLA Timer</th>
+                    <th className="text-left py-4 px-4 text-sm font-bold text-slate-300">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -587,50 +587,50 @@ export function CaseControlCentre({ onOpenCase, complianceOfficerMode = false }:
                     <tr
                       key={caseItem.id}
                       onClick={() => openCase(caseItem)}
-                      className={`border-b border-gray-200 hover:bg-blue-50 cursor-pointer transition-colors ${
-                        caseItem.riskLevel === 'critical' ? 'bg-red-50/30' :
-                        caseItem.slaRemaining <= 0 ? 'bg-orange-50/30' :
+                      className={`border-b border-white/10 hover:bg-blue-500/10 cursor-pointer transition-colors ${
+                        caseItem.riskLevel === 'critical' ? 'bg-red-500/10/30' :
+                        caseItem.slaRemaining <= 0 ? 'bg-orange-500/10/30' :
                         ''
                       }`}
                     >
                       <td className="py-4 px-4">
-                        <span className="font-mono font-bold text-blue-900">{caseItem.id}</span>
+                        <span className="font-mono font-bold text-blue-300">{caseItem.id}</span>
                       </td>
                       <td className="py-4 px-4">
                         <div className="flex items-center gap-2">
                           {caseItem.clientType === 'individual' ? (
-                            <Users className="w-5 h-5 text-gray-600" />
+                            <Users className="w-5 h-5 text-slate-300" />
                           ) : (
-                            <Building className="w-5 h-5 text-gray-600" />
+                            <Building className="w-5 h-5 text-slate-300" />
                           )}
                           <div>
-                            <p className="font-semibold text-gray-900">{caseItem.clientName}</p>
-                            <p className="text-xs text-gray-600 capitalize">{caseItem.clientType}</p>
+                            <p className="font-semibold text-slate-100">{caseItem.clientName}</p>
+                            <p className="text-xs text-slate-300 capitalize">{caseItem.clientType}</p>
                           </div>
                         </div>
                       </td>
                       <td className="py-4 px-4">{getCaseTypeBadge(caseItem.caseType)}</td>
                       <td className="py-4 px-4">
-                        <Badge variant="outline" className="text-xs bg-blue-50 text-blue-700 border-blue-300">
+                        <Badge variant="outline" className="text-xs bg-blue-500/10 text-blue-300 border-blue-300">
                           {caseItem.triggerSource}
                         </Badge>
                       </td>
                       <td className="py-4 px-4">{getRiskBadge(caseItem.riskLevel)}</td>
                       <td className="py-4 px-4">{getStatusBadge(caseItem.status)}</td>
                       <td className="py-4 px-4">
-                        <span className={`text-sm ${caseItem.assignedTo === 'Unassigned' ? 'text-red-600 font-bold' : 'text-gray-700'}`}>
+                        <span className={`text-sm ${caseItem.assignedTo === 'Unassigned' ? 'text-red-400 font-bold' : 'text-slate-300'}`}>
                           {caseItem.assignedTo}
                         </span>
                       </td>
                       <td className="py-4 px-4">
-                        <span className="text-sm text-gray-700">{caseItem.lastUpdated}</span>
+                        <span className="text-sm text-slate-300">{caseItem.lastUpdated}</span>
                       </td>
                       <td className="py-4 px-4">
                         <div>
                           <span className={`text-sm font-semibold ${getSLAColor(caseItem.slaRemaining)}`}>
                             {caseItem.slaRemaining > 0 ? `${caseItem.slaRemaining}h left` : 'OVERDUE'}
                           </span>
-                          <div className="w-full bg-gray-200 rounded-full h-2 mt-1">
+                          <div className="w-full bg-white/10 rounded-full h-2 mt-1">
                             <div
                               className={`h-2 rounded-full ${
                                 caseItem.slaRemaining <= 0 ? 'bg-red-600' :
@@ -647,7 +647,7 @@ export function CaseControlCentre({ onOpenCase, complianceOfficerMode = false }:
                           <Button
                             variant="outline"
                             size="sm"
-                            className="border-2 border-blue-500 text-blue-700 hover:bg-blue-50"
+                            className="border-2 border-blue-500 text-blue-300 hover:bg-blue-500/10"
                             onClick={() => openCase(caseItem)}
                           >
                             <Eye className="w-4 h-4 mr-1" />
@@ -670,13 +670,13 @@ export function CaseControlCentre({ onOpenCase, complianceOfficerMode = false }:
                 </tbody>
               </table>
               {filteredCases.length === 0 && (
-                <div className="p-8 text-center text-gray-500 font-medium">
+                <div className="p-8 text-center text-slate-400 font-medium">
                   No cases found matching the current filters.
                 </div>
               )}
               {complianceOfficerMode && filteredCases.length > 0 && (
-                <div className="flex items-center justify-between px-4 py-3 border-t bg-gray-50">
-                  <span className="text-sm text-gray-600">
+                <div className="flex items-center justify-between px-4 py-3 border-t bg-white/5">
+                  <span className="text-sm text-slate-300">
                     Showing {(page - 1) * pageSize + 1}–{Math.min(page * pageSize, filteredCases.length)} of {filteredCases.length}
                   </span>
                   <div className="flex gap-2">
@@ -715,10 +715,10 @@ export function CaseControlCentre({ onOpenCase, complianceOfficerMode = false }:
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-purple-700 mb-1">Avg Resolution Time</p>
-                  <p className="text-3xl font-bold text-purple-900">{quickStats.avgResolutionDays}</p>
+                  <p className="text-sm text-purple-300 mb-1">Avg Resolution Time</p>
+                  <p className="text-3xl font-bold text-purple-300">{quickStats.avgResolutionDays}</p>
                 </div>
-                <Clock className="w-12 h-12 text-purple-600 opacity-20" />
+                <Clock className="w-12 h-12 text-purple-400 opacity-20" />
               </div>
             </CardContent>
           </Card>
@@ -727,10 +727,10 @@ export function CaseControlCentre({ onOpenCase, complianceOfficerMode = false }:
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-green-700 mb-1">Cases Closed (30 days)</p>
-                  <p className="text-3xl font-bold text-green-900">{quickStats.closed30Days}</p>
+                  <p className="text-sm text-green-300 mb-1">Cases Closed (30 days)</p>
+                  <p className="text-3xl font-bold text-green-300">{quickStats.closed30Days}</p>
                 </div>
-                <CheckCircle className="w-12 h-12 text-green-600 opacity-20" />
+                <CheckCircle className="w-12 h-12 text-green-400 opacity-20" />
               </div>
             </CardContent>
           </Card>
@@ -739,10 +739,10 @@ export function CaseControlCentre({ onOpenCase, complianceOfficerMode = false }:
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-blue-700 mb-1">Auto-Created</p>
-                  <p className="text-3xl font-bold text-blue-900">{quickStats.autoCreatedPct}</p>
+                  <p className="text-sm text-blue-300 mb-1">Auto-Created</p>
+                  <p className="text-3xl font-bold text-blue-300">{quickStats.autoCreatedPct}</p>
                 </div>
-                <Zap className="w-12 h-12 text-blue-600 opacity-20" />
+                <Zap className="w-12 h-12 text-blue-400 opacity-20" />
               </div>
             </CardContent>
           </Card>
@@ -751,10 +751,10 @@ export function CaseControlCentre({ onOpenCase, complianceOfficerMode = false }:
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-amber-700 mb-1">SLA Compliance</p>
-                  <p className="text-3xl font-bold text-amber-900">{quickStats.slaCompliancePct}</p>
+                  <p className="text-sm text-amber-300 mb-1">SLA Compliance</p>
+                  <p className="text-3xl font-bold text-amber-300">{quickStats.slaCompliancePct}</p>
                 </div>
-                <Target className="w-12 h-12 text-amber-600 opacity-20" />
+                <Target className="w-12 h-12 text-amber-400 opacity-20" />
               </div>
             </CardContent>
           </Card>

@@ -109,27 +109,27 @@ export function InvestorOnboarding({ role, onNavigate }: InvestorOnboardingProps
     const statusConfig: { [key: string]: { label: string; className: string; icon: any } } = {
       'pending-cfo-approval': { 
         label: 'Pending CFO Approval', 
-        className: 'bg-yellow-100 text-yellow-800 border-yellow-200',
+        className: 'bg-yellow-500/15 text-yellow-300 border-yellow-500/30',
         icon: Clock 
       },
       'pending-compliance': { 
         label: 'Pending Compliance Review', 
-        className: 'bg-blue-100 text-blue-800 border-blue-200',
+        className: 'bg-blue-500/15 text-blue-300 border-blue-500/30',
         icon: Shield 
       },
       'approved': { 
         label: 'Approved', 
-        className: 'bg-green-100 text-green-800 border-green-200',
+        className: 'bg-green-500/15 text-green-300 border-green-500/30',
         icon: CheckCircle 
       },
       'pending-documents': { 
         label: 'Pending Documents', 
-        className: 'bg-orange-100 text-orange-800 border-orange-200',
+        className: 'bg-orange-500/15 text-orange-300 border-orange-500/30',
         icon: Upload 
       },
       'rejected': { 
         label: 'Rejected', 
-        className: 'bg-red-100 text-red-800 border-red-200',
+        className: 'bg-red-500/15 text-red-300 border-red-500/30',
         icon: X 
       }
     };
@@ -147,11 +147,11 @@ export function InvestorOnboarding({ role, onNavigate }: InvestorOnboardingProps
 
   const getTierBadge = (tier: string) => {
     const tierConfig: { [key: string]: { label: string; className: string } } = {
-      'tier-a': { label: 'Tier A - Institutional Strategic', className: 'bg-purple-100 text-purple-800 border-purple-200' },
-      'tier-b': { label: 'Tier B - Institutional Standard', className: 'bg-indigo-100 text-indigo-800 border-indigo-200' },
-      'tier-c': { label: 'Tier C - HNW Premium', className: 'bg-blue-100 text-blue-800 border-blue-200' },
-      'tier-d': { label: 'Tier D - Conservative', className: 'bg-gray-100 text-gray-800 border-gray-200' },
-      'tier-e': { label: 'Tier E - Pending/Observation', className: 'bg-gray-100 text-gray-600 border-gray-200' }
+      'tier-a': { label: 'Tier A - Institutional Strategic', className: 'bg-purple-500/15 text-purple-300 border-purple-500/30' },
+      'tier-b': { label: 'Tier B - Institutional Standard', className: 'bg-indigo-500/15 text-indigo-300 border-indigo-500/30' },
+      'tier-c': { label: 'Tier C - HNW Premium', className: 'bg-blue-500/15 text-blue-300 border-blue-500/30' },
+      'tier-d': { label: 'Tier D - Conservative', className: 'bg-white/5 text-slate-100 border-white/10' },
+      'tier-e': { label: 'Tier E - Pending/Observation', className: 'bg-white/5 text-slate-300 border-white/10' }
     };
 
     const config = tierConfig[tier] || tierConfig['tier-e'];
@@ -177,8 +177,8 @@ export function InvestorOnboarding({ role, onNavigate }: InvestorOnboardingProps
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Investor Onboarding</h1>
-          <p className="text-gray-600 mt-1">Automated onboarding with tier classification and compliance workflows</p>
+          <h1 className="text-2xl font-bold text-slate-100">Investor Onboarding</h1>
+          <p className="text-slate-300 mt-1">Automated onboarding with tier classification and compliance workflows</p>
         </div>
         <Button onClick={() => setView('new')} className="bg-indigo-600 hover:bg-indigo-700 text-white">
           <User className="w-4 h-4 mr-2" />
@@ -188,54 +188,54 @@ export function InvestorOnboarding({ role, onNavigate }: InvestorOnboardingProps
 
       {/* Stats */}
       <div className="grid grid-cols-4 gap-4">
-        <div className="bg-white border border-gray-300 rounded-lg p-4">
+        <div className="bg-white border border-white/10 rounded-lg p-4">
           <div className="flex items-center gap-2 mb-2">
-            <Clock className="w-5 h-5 text-yellow-600" />
-            <p className="text-sm text-gray-600">Pending Review</p>
+            <Clock className="w-5 h-5 text-yellow-400" />
+            <p className="text-sm text-slate-300">Pending Review</p>
           </div>
-          <p className="text-2xl font-bold text-gray-900">8</p>
+          <p className="text-2xl font-bold text-slate-100">8</p>
         </div>
-        <div className="bg-white border border-gray-300 rounded-lg p-4">
+        <div className="bg-white border border-white/10 rounded-lg p-4">
           <div className="flex items-center gap-2 mb-2">
-            <Shield className="w-5 h-5 text-blue-600" />
-            <p className="text-sm text-gray-600">In Compliance Review</p>
+            <Shield className="w-5 h-5 text-blue-400" />
+            <p className="text-sm text-slate-300">In Compliance Review</p>
           </div>
-          <p className="text-2xl font-bold text-gray-900">3</p>
+          <p className="text-2xl font-bold text-slate-100">3</p>
         </div>
-        <div className="bg-white border border-gray-300 rounded-lg p-4">
+        <div className="bg-white border border-white/10 rounded-lg p-4">
           <div className="flex items-center gap-2 mb-2">
-            <CheckCircle className="w-5 h-5 text-green-600" />
-            <p className="text-sm text-gray-600">Approved This Month</p>
+            <CheckCircle className="w-5 h-5 text-green-400" />
+            <p className="text-sm text-slate-300">Approved This Month</p>
           </div>
-          <p className="text-2xl font-bold text-gray-900">12</p>
+          <p className="text-2xl font-bold text-slate-100">12</p>
         </div>
-        <div className="bg-white border border-gray-300 rounded-lg p-4">
+        <div className="bg-white border border-white/10 rounded-lg p-4">
           <div className="flex items-center gap-2 mb-2">
-            <Users className="w-5 h-5 text-indigo-600" />
-            <p className="text-sm text-gray-600">Total Active</p>
+            <Users className="w-5 h-5 text-indigo-400" />
+            <p className="text-sm text-slate-300">Total Active</p>
           </div>
-          <p className="text-2xl font-bold text-gray-900">147</p>
+          <p className="text-2xl font-bold text-slate-100">147</p>
         </div>
       </div>
 
       {/* Filters */}
-      <div className="bg-white border border-gray-300 rounded-lg p-4">
+      <div className="bg-white border border-white/10 rounded-lg p-4">
         <div className="flex items-center gap-4">
-          <select className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          <select className="px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
             <option>All Statuses</option>
             <option>Pending CFO Approval</option>
             <option>Pending Compliance</option>
             <option>Pending Documents</option>
             <option>Approved</option>
           </select>
-          <select className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          <select className="px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
             <option>All Entity Types</option>
             <option>Individual</option>
             <option>Company</option>
             <option>Trust</option>
             <option>Fund</option>
           </select>
-          <select className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          <select className="px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
             <option>All Tiers</option>
             <option>Tier A</option>
             <option>Tier B</option>
@@ -246,62 +246,62 @@ export function InvestorOnboarding({ role, onNavigate }: InvestorOnboardingProps
           <input
             type="search"
             placeholder="Search by name or ID..."
-            className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
         </div>
       </div>
 
       {/* Applications List */}
-      <div className="bg-white border border-gray-300 rounded-lg overflow-hidden">
+      <div className="bg-white border border-white/10 rounded-lg overflow-hidden">
         <table className="w-full">
-          <thead className="bg-gray-50 border-b border-gray-300">
+          <thead className="bg-white/5 border-b border-white/10">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase tracking-wider">
                 Investor
               </th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase tracking-wider">
                 Entity Type
               </th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase tracking-wider">
                 Submitted
               </th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase tracking-wider">
                 Status
               </th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase tracking-wider">
                 Recommended Tier
               </th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase tracking-wider">
                 KYC
               </th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase tracking-wider">
                 Wholesale
               </th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase tracking-wider">
                 Actions
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-200">
+          <tbody className="divide-y divide-white/10">
             {mockApplications.map((app) => (
-              <tr key={app.id} className="hover:bg-gray-50">
+              <tr key={app.id} className="hover:bg-white/5">
                 <td className="px-6 py-4">
                   <div>
-                    <p className="font-medium text-gray-900">{app.name}</p>
-                    <p className="text-sm text-gray-500">{app.id}</p>
+                    <p className="font-medium text-slate-100">{app.name}</p>
+                    <p className="text-sm text-slate-400">{app.id}</p>
                   </div>
                 </td>
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-2">
-                    {app.entityType === 'company' && <Building2 className="w-4 h-4 text-blue-600" />}
-                    {app.entityType === 'trust' && <Shield className="w-4 h-4 text-purple-600" />}
-                    {app.entityType === 'fund' && <TrendingUp className="w-4 h-4 text-green-600" />}
-                    {app.entityType === 'individual' && <User className="w-4 h-4 text-gray-600" />}
+                    {app.entityType === 'company' && <Building2 className="w-4 h-4 text-blue-400" />}
+                    {app.entityType === 'trust' && <Shield className="w-4 h-4 text-purple-400" />}
+                    {app.entityType === 'fund' && <TrendingUp className="w-4 h-4 text-green-400" />}
+                    {app.entityType === 'individual' && <User className="w-4 h-4 text-slate-300" />}
                     <span className="text-sm capitalize">{app.entityType}</span>
                   </div>
                 </td>
                 <td className="px-6 py-4">
-                  <p className="text-sm text-gray-900">{app.submittedDate}</p>
+                  <p className="text-sm text-slate-100">{app.submittedDate}</p>
                 </td>
                 <td className="px-6 py-4">
                   {getStatusBadge(app.status)}
@@ -311,19 +311,19 @@ export function InvestorOnboarding({ role, onNavigate }: InvestorOnboardingProps
                 </td>
                 <td className="px-6 py-4">
                   {app.kycStatus === 'approved' && (
-                    <div className="flex items-center gap-1 text-green-600">
+                    <div className="flex items-center gap-1 text-green-400">
                       <CheckCircle className="w-4 h-4" />
                       <span className="text-sm">Approved</span>
                     </div>
                   )}
                   {app.kycStatus === 'under-review' && (
-                    <div className="flex items-center gap-1 text-blue-600">
+                    <div className="flex items-center gap-1 text-blue-400">
                       <Clock className="w-4 h-4" />
                       <span className="text-sm">Review</span>
                     </div>
                   )}
                   {app.kycStatus === 'incomplete' && (
-                    <div className="flex items-center gap-1 text-orange-600">
+                    <div className="flex items-center gap-1 text-orange-400">
                       <AlertCircle className="w-4 h-4" />
                       <span className="text-sm">Incomplete</span>
                     </div>
@@ -331,13 +331,13 @@ export function InvestorOnboarding({ role, onNavigate }: InvestorOnboardingProps
                 </td>
                 <td className="px-6 py-4">
                   {app.wholesaleStatus === 'approved' && (
-                    <div className="flex items-center gap-1 text-green-600">
+                    <div className="flex items-center gap-1 text-green-400">
                       <CheckCircle className="w-4 h-4" />
                       <span className="text-sm">Valid</span>
                     </div>
                   )}
                   {app.wholesaleStatus === 'pending' && (
-                    <div className="flex items-center gap-1 text-gray-600">
+                    <div className="flex items-center gap-1 text-slate-300">
                       <Clock className="w-4 h-4" />
                       <span className="text-sm">Pending</span>
                     </div>
@@ -544,13 +544,13 @@ function NewInvestorOnboardingFlow({ onBack, role }: { onBack: () => void; role:
           <ChevronLeft className="w-5 h-5" />
         </Button>
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">New Investor Onboarding</h1>
-          <p className="text-gray-600 mt-1">Complete all steps to submit application for review</p>
+          <h1 className="text-2xl font-bold text-slate-100">New Investor Onboarding</h1>
+          <p className="text-slate-300 mt-1">Complete all steps to submit application for review</p>
         </div>
       </div>
 
       {/* Progress Steps */}
-      <div className="bg-white border border-gray-300 rounded-lg p-6">
+      <div className="bg-white border border-white/10 rounded-lg p-6">
         <div className="flex items-center justify-between">
           {steps.map((step, index) => {
             const Icon = step.icon;
@@ -563,7 +563,7 @@ function NewInvestorOnboardingFlow({ onBack, role }: { onBack: () => void; role:
                   <div className={`w-12 h-12 rounded-full flex items-center justify-center border-2 transition-colors ${
                     isCompleted ? 'bg-green-500 border-green-500' :
                     isActive ? 'bg-indigo-600 border-indigo-600' :
-                    'bg-white border-gray-300'
+                    'bg-white border-white/10'
                   }`}>
                     {isCompleted ? (
                       <Check className="w-6 h-6 text-white" />
@@ -572,7 +572,7 @@ function NewInvestorOnboardingFlow({ onBack, role }: { onBack: () => void; role:
                     )}
                   </div>
                   <p className={`text-xs mt-2 text-center font-medium ${
-                    isActive ? 'text-indigo-600' : isCompleted ? 'text-green-600' : 'text-gray-500'
+                    isActive ? 'text-indigo-400' : isCompleted ? 'text-green-400' : 'text-slate-400'
                   }`}>
                     {step.label}
                   </p>
@@ -626,8 +626,8 @@ function EntityTypeSelection({ entityType, setEntityType, onNext }: any) {
   ];
 
   return (
-    <div className="bg-white border border-gray-300 rounded-lg p-8">
-      <h2 className="text-xl font-semibold text-gray-900 mb-6">Select Entity Type</h2>
+    <div className="bg-white border border-white/10 rounded-lg p-8">
+      <h2 className="text-xl font-semibold text-slate-100 mb-6">Select Entity Type</h2>
       
       <div className="grid grid-cols-2 gap-4 mb-8">
         {entityTypes.map((type) => {
@@ -639,13 +639,13 @@ function EntityTypeSelection({ entityType, setEntityType, onNext }: any) {
               key={type.id}
               onClick={() => setEntityType(type.id)}
               className={`p-6 border-2 rounded-lg text-left transition-all hover:border-indigo-500 ${
-                isSelected ? 'border-indigo-600 bg-indigo-50' : 'border-gray-300 bg-white'
+                isSelected ? 'border-indigo-600 bg-indigo-500/10' : 'border-white/10 bg-white'
               }`}
             >
-              <Icon className={`w-8 h-8 mb-3 ${isSelected ? 'text-indigo-600' : 'text-gray-600'}`} />
-              <h3 className="font-semibold text-gray-900 mb-1">{type.label}</h3>
-              <p className="text-sm text-gray-600 mb-2">{type.description}</p>
-              <p className="text-xs text-gray-500">{type.examples}</p>
+              <Icon className={`w-8 h-8 mb-3 ${isSelected ? 'text-indigo-400' : 'text-slate-300'}`} />
+              <h3 className="font-semibold text-slate-100 mb-1">{type.label}</h3>
+              <p className="text-sm text-slate-300 mb-2">{type.description}</p>
+              <p className="text-xs text-slate-400">{type.examples}</p>
             </button>
           );
         })}
@@ -672,37 +672,37 @@ function EntityDetailsForm({ entityType, formData, setFormData, onNext, onBack }
   };
 
   return (
-    <div className="bg-white border border-gray-300 rounded-lg p-8">
-      <h2 className="text-xl font-semibold text-gray-900 mb-6">Entity Details</h2>
+    <div className="bg-white border border-white/10 rounded-lg p-8">
+      <h2 className="text-xl font-semibold text-slate-100 mb-6">Entity Details</h2>
       
       <div className="space-y-6">
         {entityType === 'individual' && (
           <>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
+                <label className="block text-sm font-medium text-slate-300 mb-2">First Name *</label>
                 <input
                   type="text"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   value={formData.firstName || ''}
                   onChange={(e) => updateField('firstName', e.target.value)}
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
+                <label className="block text-sm font-medium text-slate-300 mb-2">Last Name *</label>
                 <input
                   type="text"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   value={formData.lastName || ''}
                   onChange={(e) => updateField('lastName', e.target.value)}
                 />
               </div>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Date of Birth *</label>
+              <label className="block text-sm font-medium text-slate-300 mb-2">Date of Birth *</label>
               <input
                 type="date"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 value={formData.dob || ''}
                 onChange={(e) => updateField('dob', e.target.value)}
               />
@@ -713,10 +713,10 @@ function EntityDetailsForm({ entityType, formData, setFormData, onNext, onBack }
         {(entityType === 'company' || entityType === 'trust' || entityType === 'fund') && (
           <>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Legal Entity Name *</label>
+              <label className="block text-sm font-medium text-slate-300 mb-2">Legal Entity Name *</label>
               <input
                 type="text"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 value={formData.entityName || ''}
                 onChange={(e) => updateField('entityName', e.target.value)}
                 placeholder="e.g., Acme Capital Pty Ltd"
@@ -724,20 +724,20 @@ function EntityDetailsForm({ entityType, formData, setFormData, onNext, onBack }
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">ABN *</label>
+                <label className="block text-sm font-medium text-slate-300 mb-2">ABN *</label>
                 <input
                   type="text"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   value={formData.abn || ''}
                   onChange={(e) => updateField('abn', e.target.value)}
                   placeholder="11 222 333 444"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">ACN {entityType === 'company' && '*'}</label>
+                <label className="block text-sm font-medium text-slate-300 mb-2">ACN {entityType === 'company' && '*'}</label>
                 <input
                   type="text"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   value={formData.acn || ''}
                   onChange={(e) => updateField('acn', e.target.value)}
                   placeholder="123 456 789"
@@ -748,34 +748,34 @@ function EntityDetailsForm({ entityType, formData, setFormData, onNext, onBack }
         )}
 
         {/* Contact Information */}
-        <div className="border-t border-gray-200 pt-6">
-          <h3 className="font-semibold text-gray-900 mb-4">Contact Information</h3>
+        <div className="border-t border-white/10 pt-6">
+          <h3 className="font-semibold text-slate-100 mb-4">Contact Information</h3>
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                <label className="block text-sm font-medium text-slate-300 mb-2">Email *</label>
                 <input
                   type="email"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   value={formData.email || ''}
                   onChange={(e) => updateField('email', e.target.value)}
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Phone *</label>
+                <label className="block text-sm font-medium text-slate-300 mb-2">Phone *</label>
                 <input
                   type="tel"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   value={formData.phone || ''}
                   onChange={(e) => updateField('phone', e.target.value)}
                 />
               </div>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Residential Address *</label>
+              <label className="block text-sm font-medium text-slate-300 mb-2">Residential Address *</label>
               <input
                 type="text"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-2"
+                className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-2"
                 value={formData.addressLine1 || ''}
                 onChange={(e) => updateField('addressLine1', e.target.value)}
                 placeholder="Street address"
@@ -783,21 +783,21 @@ function EntityDetailsForm({ entityType, formData, setFormData, onNext, onBack }
               <div className="grid grid-cols-3 gap-4">
                 <input
                   type="text"
-                  className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   value={formData.suburb || ''}
                   onChange={(e) => updateField('suburb', e.target.value)}
                   placeholder="Suburb"
                 />
                 <input
                   type="text"
-                  className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   value={formData.state || ''}
                   onChange={(e) => updateField('state', e.target.value)}
                   placeholder="State"
                 />
                 <input
                   type="text"
-                  className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   value={formData.postcode || ''}
                   onChange={(e) => updateField('postcode', e.target.value)}
                   placeholder="Postcode"
@@ -808,22 +808,22 @@ function EntityDetailsForm({ entityType, formData, setFormData, onNext, onBack }
         </div>
 
         {/* Tax Information */}
-        <div className="border-t border-gray-200 pt-6">
-          <h3 className="font-semibold text-gray-900 mb-4">Tax Information</h3>
+        <div className="border-t border-white/10 pt-6">
+          <h3 className="font-semibold text-slate-100 mb-4">Tax Information</h3>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">TFN / Tax Identifier *</label>
+              <label className="block text-sm font-medium text-slate-300 mb-2">TFN / Tax Identifier *</label>
               <input
                 type="text"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 value={formData.tfn || ''}
                 onChange={(e) => updateField('tfn', e.target.value)}
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Tax Residency *</label>
+              <label className="block text-sm font-medium text-slate-300 mb-2">Tax Residency *</label>
               <select
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 value={formData.taxResidency || ''}
                 onChange={(e) => updateField('taxResidency', e.target.value)}
               >
@@ -872,10 +872,10 @@ function OnboardingQuestionnaire({ entityType, answers, setAnswers, onNext, onBa
   };
 
   return (
-    <div className="bg-white border border-gray-300 rounded-lg p-8">
+    <div className="bg-white border border-white/10 rounded-lg p-8">
       <div className="mb-6">
-        <h2 className="text-xl font-semibold text-gray-900">Investment Questionnaire</h2>
-        <p className="text-sm text-gray-600 mt-1">
+        <h2 className="text-xl font-semibold text-slate-100">Investment Questionnaire</h2>
+        <p className="text-sm text-slate-300 mt-1">
           This questionnaire helps us recommend the appropriate investor tier and access level
         </p>
       </div>
@@ -883,16 +883,16 @@ function OnboardingQuestionnaire({ entityType, answers, setAnswers, onNext, onBa
       <div className="space-y-8">
         {/* Financial Capacity */}
         <div>
-          <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
-            <DollarSign className="w-5 h-5 text-green-600" />
+          <h3 className="font-semibold text-slate-100 mb-4 flex items-center gap-2">
+            <DollarSign className="w-5 h-5 text-green-400" />
             Financial Capacity
           </h3>
           
           {entityType !== 'individual' && (
             <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700 mb-2">Annual Revenue *</label>
+              <label className="block text-sm font-medium text-slate-300 mb-2">Annual Revenue *</label>
               <select
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 value={answers.annualRevenue || ''}
                 onChange={(e) => updateAnswer('annualRevenue', e.target.value)}
               >
@@ -906,9 +906,9 @@ function OnboardingQuestionnaire({ entityType, answers, setAnswers, onNext, onBa
           )}
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Net Assets *</label>
+            <label className="block text-sm font-medium text-slate-300 mb-2">Net Assets *</label>
             <select
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               value={answers.netAssets || ''}
               onChange={(e) => updateAnswer('netAssets', e.target.value)}
             >
@@ -923,15 +923,15 @@ function OnboardingQuestionnaire({ entityType, answers, setAnswers, onNext, onBa
 
         {/* Private Markets Experience */}
         <div>
-          <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
-            <Target className="w-5 h-5 text-indigo-600" />
+          <h3 className="font-semibold text-slate-100 mb-4 flex items-center gap-2">
+            <Target className="w-5 h-5 text-indigo-400" />
             Private Markets Experience
           </h3>
           
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 mb-2">Experience Level *</label>
+            <label className="block text-sm font-medium text-slate-300 mb-2">Experience Level *</label>
             <select
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               value={answers.privateMarketsExperience || ''}
               onChange={(e) => updateAnswer('privateMarketsExperience', e.target.value)}
             >
@@ -944,9 +944,9 @@ function OnboardingQuestionnaire({ entityType, answers, setAnswers, onNext, onBa
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Years Investing Experience *</label>
+            <label className="block text-sm font-medium text-slate-300 mb-2">Years Investing Experience *</label>
             <select
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               value={answers.yearsInvestingExperience || ''}
               onChange={(e) => updateAnswer('yearsInvestingExperience', e.target.value)}
             >
@@ -961,15 +961,15 @@ function OnboardingQuestionnaire({ entityType, answers, setAnswers, onNext, onBa
 
         {/* Risk and Liquidity Tolerance */}
         <div>
-          <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
-            <AlertTriangle className="w-5 h-5 text-orange-600" />
+          <h3 className="font-semibold text-slate-100 mb-4 flex items-center gap-2">
+            <AlertTriangle className="w-5 h-5 text-orange-400" />
             Risk & Liquidity Tolerance
           </h3>
           
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 mb-2">Risk Tolerance *</label>
+            <label className="block text-sm font-medium text-slate-300 mb-2">Risk Tolerance *</label>
             <select
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               value={answers.riskTolerance || ''}
               onChange={(e) => updateAnswer('riskTolerance', e.target.value)}
             >
@@ -982,9 +982,9 @@ function OnboardingQuestionnaire({ entityType, answers, setAnswers, onNext, onBa
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Liquidity Needs *</label>
+            <label className="block text-sm font-medium text-slate-300 mb-2">Liquidity Needs *</label>
             <select
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               value={answers.liquidityTolerance || ''}
               onChange={(e) => updateAnswer('liquidityTolerance', e.target.value)}
             >
@@ -999,22 +999,22 @@ function OnboardingQuestionnaire({ entityType, answers, setAnswers, onNext, onBa
 
         {/* Strategy Preferences */}
         <div>
-          <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
-            <TrendingUp className="w-5 h-5 text-blue-600" />
+          <h3 className="font-semibold text-slate-100 mb-4 flex items-center gap-2">
+            <TrendingUp className="w-5 h-5 text-blue-400" />
             Strategy Preferences
           </h3>
-          <p className="text-sm text-gray-600 mb-4">Select all that interest you:</p>
+          <p className="text-sm text-slate-300 mb-4">Select all that interest you:</p>
           
           <div className="grid grid-cols-2 gap-3">
             {['Mortgage', 'SME', 'Asset Finance', 'High Yield', 'Short Duration', 'Long Duration', 'Mezzanine', 'Structured'].map((strategy) => (
-              <label key={strategy} className="flex items-center gap-2 p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+              <label key={strategy} className="flex items-center gap-2 p-3 border border-white/10 rounded-lg cursor-pointer hover:bg-white/5">
                 <input
                   type="checkbox"
                   checked={answers.strategyPreferences?.includes(strategy) || false}
                   onChange={() => toggleStrategyPreference(strategy)}
-                  className="w-4 h-4 text-indigo-600 focus:ring-indigo-500"
+                  className="w-4 h-4 text-indigo-400 focus:ring-indigo-500"
                 />
-                <span className="text-sm font-medium text-gray-700">{strategy}</span>
+                <span className="text-sm font-medium text-slate-300">{strategy}</span>
               </label>
             ))}
           </div>
@@ -1022,15 +1022,15 @@ function OnboardingQuestionnaire({ entityType, answers, setAnswers, onNext, onBa
 
         {/* Governance Strength */}
         <div>
-          <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
-            <Scale className="w-5 h-5 text-purple-600" />
+          <h3 className="font-semibold text-slate-100 mb-4 flex items-center gap-2">
+            <Scale className="w-5 h-5 text-purple-400" />
             Governance & Decision Making
           </h3>
           
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Governance Structure *</label>
+            <label className="block text-sm font-medium text-slate-300 mb-2">Governance Structure *</label>
             <select
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               value={answers.governanceStrength || ''}
               onChange={(e) => updateAnswer('governanceStrength', e.target.value)}
             >
@@ -1044,33 +1044,33 @@ function OnboardingQuestionnaire({ entityType, answers, setAnswers, onNext, onBa
 
         {/* Declarations */}
         <div>
-          <h3 className="font-semibold text-gray-900 mb-4">Declarations</h3>
+          <h3 className="font-semibold text-slate-100 mb-4">Declarations</h3>
           
           <div className="space-y-3">
-            <label className="flex items-start gap-3 p-4 border border-gray-300 rounded-lg">
+            <label className="flex items-start gap-3 p-4 border border-white/10 rounded-lg">
               <input
                 type="checkbox"
-                className="w-4 h-4 mt-1 text-indigo-600 focus:ring-indigo-500"
+                className="w-4 h-4 mt-1 text-indigo-400 focus:ring-indigo-500"
               />
-              <span className="text-sm text-gray-700">
+              <span className="text-sm text-slate-300">
                 I confirm all information provided is true and accurate to the best of my knowledge
               </span>
             </label>
-            <label className="flex items-start gap-3 p-4 border border-gray-300 rounded-lg">
+            <label className="flex items-start gap-3 p-4 border border-white/10 rounded-lg">
               <input
                 type="checkbox"
-                className="w-4 h-4 mt-1 text-indigo-600 focus:ring-indigo-500"
+                className="w-4 h-4 mt-1 text-indigo-400 focus:ring-indigo-500"
               />
-              <span className="text-sm text-gray-700">
+              <span className="text-sm text-slate-300">
                 I understand private credit investments carry risks including potential loss of capital
               </span>
             </label>
-            <label className="flex items-start gap-3 p-4 border border-gray-300 rounded-lg">
+            <label className="flex items-start gap-3 p-4 border border-white/10 rounded-lg">
               <input
                 type="checkbox"
-                className="w-4 h-4 mt-1 text-indigo-600 focus:ring-indigo-500"
+                className="w-4 h-4 mt-1 text-indigo-400 focus:ring-indigo-500"
               />
-              <span className="text-sm text-gray-700">
+              <span className="text-sm text-slate-300">
                 I have read and understood the privacy policy and terms of service
               </span>
             </label>
@@ -1107,44 +1107,44 @@ function KYCDocumentsUpload({ entityType, tierRecommendation, onNext, onBack }: 
     <div className="space-y-6">
       {/* Tier Recommendation Banner */}
       {tierRecommendation && (
-        <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-6">
+        <div className="bg-indigo-500/10 border border-indigo-500/30 rounded-lg p-6">
           <div className="flex items-start gap-4">
             <div className="p-3 bg-indigo-600 rounded-lg">
               <Award className="w-6 h-6 text-white" />
             </div>
             <div className="flex-1">
-              <h3 className="font-semibold text-indigo-900 mb-2">Recommended Tier Classification</h3>
+              <h3 className="font-semibold text-indigo-300 mb-2">Recommended Tier Classification</h3>
               <div className="grid grid-cols-3 gap-4 mb-4">
                 <div>
-                  <p className="text-xs text-indigo-600 mb-1">Internal Tier</p>
-                  <p className="font-semibold text-indigo-900 capitalize">{tierRecommendation.tier.replace('-', ' ')}</p>
+                  <p className="text-xs text-indigo-400 mb-1">Internal Tier</p>
+                  <p className="font-semibold text-indigo-300 capitalize">{tierRecommendation.tier.replace('-', ' ')}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-indigo-600 mb-1">Legal Classification</p>
-                  <p className="font-semibold text-indigo-900 capitalize">{tierRecommendation.legalClassification}</p>
+                  <p className="text-xs text-indigo-400 mb-1">Legal Classification</p>
+                  <p className="font-semibold text-indigo-300 capitalize">{tierRecommendation.legalClassification}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-indigo-600 mb-1">Total Score</p>
-                  <p className="font-semibold text-indigo-900">{tierRecommendation.totalScore}/100</p>
+                  <p className="text-xs text-indigo-400 mb-1">Total Score</p>
+                  <p className="font-semibold text-indigo-300">{tierRecommendation.totalScore}/100</p>
                 </div>
               </div>
               <div className="flex items-center gap-4 text-sm">
                 <div className="flex items-center gap-2">
-                  <Info className="w-4 h-4 text-indigo-600" />
-                  <span className="text-indigo-700">Risk Capacity: {tierRecommendation.riskCapacityScore}</span>
+                  <Info className="w-4 h-4 text-indigo-400" />
+                  <span className="text-indigo-300">Risk Capacity: {tierRecommendation.riskCapacityScore}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Info className="w-4 h-4 text-indigo-600" />
-                  <span className="text-indigo-700">Experience: {tierRecommendation.experienceScore}</span>
+                  <Info className="w-4 h-4 text-indigo-400" />
+                  <span className="text-indigo-300">Experience: {tierRecommendation.experienceScore}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Info className="w-4 h-4 text-indigo-600" />
-                  <span className="text-indigo-700">Governance: {tierRecommendation.governanceScore}</span>
+                  <Info className="w-4 h-4 text-indigo-400" />
+                  <span className="text-indigo-300">Governance: {tierRecommendation.governanceScore}</span>
                 </div>
               </div>
               {tierRecommendation.requiresCFOApproval && (
-                <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
-                  <div className="flex items-center gap-2 text-yellow-800">
+                <div className="mt-4 p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
+                  <div className="flex items-center gap-2 text-yellow-300">
                     <AlertTriangle className="w-4 h-4" />
                     <p className="text-sm font-medium">Tier A requires CFO approval after compliance review</p>
                   </div>
@@ -1156,15 +1156,15 @@ function KYCDocumentsUpload({ entityType, tierRecommendation, onNext, onBack }: 
       )}
 
       {/* KYC Documents */}
-      <div className="bg-white border border-gray-300 rounded-lg p-8">
-        <h2 className="text-xl font-semibold text-gray-900 mb-6">KYC Documents</h2>
+      <div className="bg-white border border-white/10 rounded-lg p-8">
+        <h2 className="text-xl font-semibold text-slate-100 mb-6">KYC Documents</h2>
         
-        <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+        <div className="mb-6 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
           <div className="flex items-start gap-3">
-            <Shield className="w-5 h-5 text-blue-600 mt-0.5" />
+            <Shield className="w-5 h-5 text-blue-400 mt-0.5" />
             <div>
-              <p className="text-sm font-medium text-blue-900 mb-1">AML/CTF Compliance Required</p>
-              <p className="text-sm text-blue-700">
+              <p className="text-sm font-medium text-blue-300 mb-1">AML/CTF Compliance Required</p>
+              <p className="text-sm text-blue-300">
                 All documents must be certified copies less than 3 months old. We will conduct PEP and sanctions screening.
               </p>
             </div>
@@ -1173,29 +1173,29 @@ function KYCDocumentsUpload({ entityType, tierRecommendation, onNext, onBack }: 
 
         <div className="space-y-4">
           {requiredDocuments.map((doc, index) => (
-            <div key={index} className="border border-gray-300 rounded-lg p-4">
+            <div key={index} className="border border-white/10 rounded-lg p-4">
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-3">
-                  <FileText className="w-5 h-5 text-gray-600" />
+                  <FileText className="w-5 h-5 text-slate-300" />
                   <div>
-                    <p className="font-medium text-gray-900">{doc}</p>
-                    <p className="text-xs text-gray-500">PDF, JPG, or PNG (max 10MB)</p>
+                    <p className="font-medium text-slate-100">{doc}</p>
+                    <p className="text-xs text-slate-400">PDF, JPG, or PNG (max 10MB)</p>
                   </div>
                 </div>
                 {uploadedDocs.includes(doc) ? (
-                  <div className="flex items-center gap-2 text-green-600">
+                  <div className="flex items-center gap-2 text-green-400">
                     <CheckCircle className="w-5 h-5" />
                     <span className="text-sm font-medium">Uploaded</span>
                   </div>
                 ) : (
-                  <span className="text-xs text-red-600 font-medium">Required</span>
+                  <span className="text-xs text-red-400 font-medium">Required</span>
                 )}
               </div>
               
               {!uploadedDocs.includes(doc) ? (
-                <label className="flex items-center justify-center gap-2 px-4 py-3 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-indigo-500 hover:bg-indigo-50 transition-colors">
-                  <Upload className="w-4 h-4 text-gray-600" />
-                  <span className="text-sm font-medium text-gray-700">Upload Document</span>
+                <label className="flex items-center justify-center gap-2 px-4 py-3 border-2 border-dashed border-white/10 rounded-lg cursor-pointer hover:border-indigo-500 hover:bg-indigo-500/10 transition-colors">
+                  <Upload className="w-4 h-4 text-slate-300" />
+                  <span className="text-sm font-medium text-slate-300">Upload Document</span>
                   <input
                     type="file"
                     className="hidden"
@@ -1203,10 +1203,10 @@ function KYCDocumentsUpload({ entityType, tierRecommendation, onNext, onBack }: 
                   />
                 </label>
               ) : (
-                <div className="flex items-center justify-between p-3 bg-green-50 border border-green-200 rounded-lg">
+                <div className="flex items-center justify-between p-3 bg-green-500/10 border border-green-500/30 rounded-lg">
                   <div className="flex items-center gap-2">
-                    <FileText className="w-4 h-4 text-green-600" />
-                    <span className="text-sm text-green-900">{doc.toLowerCase().replace(/\s+/g, '_')}.pdf</span>
+                    <FileText className="w-4 h-4 text-green-400" />
+                    <span className="text-sm text-green-300">{doc.toLowerCase().replace(/\s+/g, '_')}.pdf</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Button variant="ghost" size="sm">
@@ -1260,15 +1260,15 @@ function WholesaleEvidenceUpload({ tierRecommendation, onNext, onBack }: any) {
 
   return (
     <div className="space-y-6">
-      <div className="bg-white border border-gray-300 rounded-lg p-8">
-        <h2 className="text-xl font-semibold text-gray-900 mb-6">Wholesale Investor Evidence</h2>
+      <div className="bg-white border border-white/10 rounded-lg p-8">
+        <h2 className="text-xl font-semibold text-slate-100 mb-6">Wholesale Investor Evidence</h2>
         
-        <div className="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+        <div className="mb-6 p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
           <div className="flex items-start gap-3">
-            <AlertTriangle className="w-5 h-5 text-yellow-600 mt-0.5" />
+            <AlertTriangle className="w-5 h-5 text-yellow-400 mt-0.5" />
             <div>
-              <p className="text-sm font-medium text-yellow-900 mb-1">Wholesale Status Required</p>
-              <p className="text-sm text-yellow-700">
+              <p className="text-sm font-medium text-yellow-300 mb-1">Wholesale Status Required</p>
+              <p className="text-sm text-yellow-300">
                 Under Corporations Act 2001, you must meet wholesale investor criteria. Evidence must be current and valid.
               </p>
             </div>
@@ -1276,12 +1276,12 @@ function WholesaleEvidenceUpload({ tierRecommendation, onNext, onBack }: any) {
         </div>
 
         <div className="space-y-4 mb-6">
-          <label className="block text-sm font-medium text-gray-700">Select Evidence Type *</label>
+          <label className="block text-sm font-medium text-slate-300">Select Evidence Type *</label>
           {evidenceOptions.map((option) => (
             <label
               key={option.value}
               className={`flex items-start gap-3 p-4 border-2 rounded-lg cursor-pointer transition-all ${
-                evidenceType === option.value ? 'border-indigo-600 bg-indigo-50' : 'border-gray-300 hover:border-indigo-300'
+                evidenceType === option.value ? 'border-indigo-600 bg-indigo-500/10' : 'border-white/10 hover:border-indigo-300'
               }`}
             >
               <input
@@ -1290,28 +1290,28 @@ function WholesaleEvidenceUpload({ tierRecommendation, onNext, onBack }: any) {
                 value={option.value}
                 checked={evidenceType === option.value}
                 onChange={(e) => setEvidenceType(e.target.value)}
-                className="w-4 h-4 mt-1 text-indigo-600 focus:ring-indigo-500"
+                className="w-4 h-4 mt-1 text-indigo-400 focus:ring-indigo-500"
               />
               <div className="flex-1">
-                <p className="font-medium text-gray-900">{option.label}</p>
-                <p className="text-sm text-gray-600">{option.description}</p>
+                <p className="font-medium text-slate-100">{option.label}</p>
+                <p className="text-sm text-slate-300">{option.description}</p>
               </div>
             </label>
           ))}
         </div>
 
         {evidenceType && (
-          <div className="border border-gray-300 rounded-lg p-4">
+          <div className="border border-white/10 rounded-lg p-4">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-3">
-                <FileText className="w-5 h-5 text-gray-600" />
+                <FileText className="w-5 h-5 text-slate-300" />
                 <div>
-                  <p className="font-medium text-gray-900">Upload Evidence Document</p>
-                  <p className="text-xs text-gray-500">Must be dated within last 6 months</p>
+                  <p className="font-medium text-slate-100">Upload Evidence Document</p>
+                  <p className="text-xs text-slate-400">Must be dated within last 6 months</p>
                 </div>
               </div>
               {uploadedEvidence && (
-                <div className="flex items-center gap-2 text-green-600">
+                <div className="flex items-center gap-2 text-green-400">
                   <CheckCircle className="w-5 h-5" />
                   <span className="text-sm font-medium">Uploaded</span>
                 </div>
@@ -1319,9 +1319,9 @@ function WholesaleEvidenceUpload({ tierRecommendation, onNext, onBack }: any) {
             </div>
             
             {!uploadedEvidence ? (
-              <label className="flex items-center justify-center gap-2 px-4 py-3 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-indigo-500 hover:bg-indigo-50 transition-colors">
-                <Upload className="w-4 h-4 text-gray-600" />
-                <span className="text-sm font-medium text-gray-700">Upload Evidence</span>
+              <label className="flex items-center justify-center gap-2 px-4 py-3 border-2 border-dashed border-white/10 rounded-lg cursor-pointer hover:border-indigo-500 hover:bg-indigo-500/10 transition-colors">
+                <Upload className="w-4 h-4 text-slate-300" />
+                <span className="text-sm font-medium text-slate-300">Upload Evidence</span>
                 <input
                   type="file"
                   className="hidden"
@@ -1329,10 +1329,10 @@ function WholesaleEvidenceUpload({ tierRecommendation, onNext, onBack }: any) {
                 />
               </label>
             ) : (
-              <div className="flex items-center justify-between p-3 bg-green-50 border border-green-200 rounded-lg">
+              <div className="flex items-center justify-between p-3 bg-green-500/10 border border-green-500/30 rounded-lg">
                 <div className="flex items-center gap-2">
-                  <FileText className="w-4 h-4 text-green-600" />
-                  <span className="text-sm text-green-900">wholesale_evidence_{evidenceType}.pdf</span>
+                  <FileText className="w-4 h-4 text-green-400" />
+                  <span className="text-sm text-green-300">wholesale_evidence_{evidenceType}.pdf</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Button variant="ghost" size="sm">
@@ -1380,37 +1380,37 @@ function ReviewAndSubmit({ entityType, formData, questionnaireAnswers, tierRecom
 
   return (
     <div className="space-y-6">
-      <div className="bg-white border border-gray-300 rounded-lg p-8">
-        <h2 className="text-xl font-semibold text-gray-900 mb-6">Review & Submit Application</h2>
+      <div className="bg-white border border-white/10 rounded-lg p-8">
+        <h2 className="text-xl font-semibold text-slate-100 mb-6">Review & Submit Application</h2>
         
         {/* Tier Recommendation Summary */}
-        <div className="mb-8 p-6 bg-gradient-to-r from-indigo-50 to-blue-50 border border-indigo-200 rounded-lg">
+        <div className="mb-8 p-6 bg-gradient-to-r from-indigo-50 to-blue-50 border border-indigo-500/30 rounded-lg">
           <div className="flex items-center gap-4 mb-4">
             <div className="p-3 bg-indigo-600 rounded-lg">
               <Award className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h3 className="font-semibold text-indigo-900">Recommended Classification</h3>
-              <p className="text-sm text-indigo-700">Based on your questionnaire responses</p>
+              <h3 className="font-semibold text-indigo-300">Recommended Classification</h3>
+              <p className="text-sm text-indigo-300">Based on your questionnaire responses</p>
             </div>
           </div>
           
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div className="p-4 bg-white rounded-lg">
-              <p className="text-xs text-gray-600 mb-1">Internal Tier</p>
-              <p className="text-lg font-semibold text-gray-900 capitalize">{tierRecommendation?.tier.replace('-', ' ')}</p>
+              <p className="text-xs text-slate-300 mb-1">Internal Tier</p>
+              <p className="text-lg font-semibold text-slate-100 capitalize">{tierRecommendation?.tier.replace('-', ' ')}</p>
             </div>
             <div className="p-4 bg-white rounded-lg">
-              <p className="text-xs text-gray-600 mb-1">Legal Classification</p>
-              <p className="text-lg font-semibold text-gray-900 capitalize">{tierRecommendation?.legalClassification}</p>
+              <p className="text-xs text-slate-300 mb-1">Legal Classification</p>
+              <p className="text-lg font-semibold text-slate-100 capitalize">{tierRecommendation?.legalClassification}</p>
             </div>
           </div>
 
           <div className="p-4 bg-white rounded-lg">
-            <p className="text-xs text-gray-600 mb-2">Strategy Access</p>
+            <p className="text-xs text-slate-300 mb-2">Strategy Access</p>
             <div className="flex flex-wrap gap-2">
               {tierRecommendation?.strategyFlags.map((strategy: string) => (
-                <span key={strategy} className="px-3 py-1 bg-indigo-100 text-indigo-800 text-xs font-medium rounded-full">
+                <span key={strategy} className="px-3 py-1 bg-indigo-500/15 text-indigo-300 text-xs font-medium rounded-full">
                   {strategy}
                 </span>
               ))}
@@ -1418,19 +1418,19 @@ function ReviewAndSubmit({ entityType, formData, questionnaireAnswers, tierRecom
           </div>
 
           <div className="mt-4 p-4 bg-white rounded-lg">
-            <p className="text-xs text-gray-600 mb-2">Concentration Limits</p>
+            <p className="text-xs text-slate-300 mb-2">Concentration Limits</p>
             <div className="grid grid-cols-3 gap-3 text-sm">
               <div>
-                <p className="text-gray-600">Per SPV</p>
-                <p className="font-semibold text-gray-900">{tierRecommendation?.concentrationLimits.perSPV}%</p>
+                <p className="text-slate-300">Per SPV</p>
+                <p className="font-semibold text-slate-100">{tierRecommendation?.concentrationLimits.perSPV}%</p>
               </div>
               <div>
-                <p className="text-gray-600">Per Sector</p>
-                <p className="font-semibold text-gray-900">{tierRecommendation?.concentrationLimits.perSector}%</p>
+                <p className="text-slate-300">Per Sector</p>
+                <p className="font-semibold text-slate-100">{tierRecommendation?.concentrationLimits.perSector}%</p>
               </div>
               <div>
-                <p className="text-gray-600">Total Exposure</p>
-                <p className="font-semibold text-gray-900">{tierRecommendation?.concentrationLimits.totalExposure}%</p>
+                <p className="text-slate-300">Total Exposure</p>
+                <p className="font-semibold text-slate-100">{tierRecommendation?.concentrationLimits.totalExposure}%</p>
               </div>
             </div>
           </div>
@@ -1438,73 +1438,73 @@ function ReviewAndSubmit({ entityType, formData, questionnaireAnswers, tierRecom
 
         {/* Approval Workflow */}
         <div className="mb-8">
-          <h3 className="font-semibold text-gray-900 mb-4">Approval Workflow</h3>
+          <h3 className="font-semibold text-slate-100 mb-4">Approval Workflow</h3>
           <div className="space-y-3">
-            <div className="flex items-center gap-3 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+            <div className="flex items-center gap-3 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
               <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center">
                 <span className="text-white font-semibold text-sm">1</span>
               </div>
               <div className="flex-1">
-                <p className="font-medium text-blue-900">Compliance Review</p>
-                <p className="text-sm text-blue-700">KYC verification, PEP/sanctions screening, wholesale evidence</p>
+                <p className="font-medium text-blue-300">Compliance Review</p>
+                <p className="text-sm text-blue-300">KYC verification, PEP/sanctions screening, wholesale evidence</p>
               </div>
-              <Shield className="w-5 h-5 text-blue-600" />
+              <Shield className="w-5 h-5 text-blue-400" />
             </div>
 
             {tierRecommendation?.requiresCFOApproval && (
-              <div className="flex items-center gap-3 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+              <div className="flex items-center gap-3 p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
                 <div className="w-8 h-8 rounded-full bg-yellow-600 flex items-center justify-center">
                   <span className="text-white font-semibold text-sm">2</span>
                 </div>
                 <div className="flex-1">
-                  <p className="font-medium text-yellow-900">CFO Approval Required</p>
-                  <p className="text-sm text-yellow-700">Tier A classification requires CFO sign-off</p>
+                  <p className="font-medium text-yellow-300">CFO Approval Required</p>
+                  <p className="text-sm text-yellow-300">Tier A classification requires CFO sign-off</p>
                 </div>
-                <AlertTriangle className="w-5 h-5 text-yellow-600" />
+                <AlertTriangle className="w-5 h-5 text-yellow-400" />
               </div>
             )}
 
-            <div className="flex items-center gap-3 p-4 bg-green-50 border border-green-200 rounded-lg">
+            <div className="flex items-center gap-3 p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
               <div className="w-8 h-8 rounded-full bg-green-600 flex items-center justify-center">
                 <span className="text-white font-semibold text-sm">{tierRecommendation?.requiresCFOApproval ? '3' : '2'}</span>
               </div>
               <div className="flex-1">
-                <p className="font-medium text-green-900">Activation</p>
-                <p className="text-sm text-green-700">Investor portal access granted, marketplace visibility activated</p>
+                <p className="font-medium text-green-300">Activation</p>
+                <p className="text-sm text-green-300">Investor portal access granted, marketplace visibility activated</p>
               </div>
-              <CheckCircle className="w-5 h-5 text-green-600" />
+              <CheckCircle className="w-5 h-5 text-green-400" />
             </div>
           </div>
         </div>
 
         {/* Final Confirmations */}
         <div className="mb-8">
-          <h3 className="font-semibold text-gray-900 mb-4">Final Confirmations</h3>
+          <h3 className="font-semibold text-slate-100 mb-4">Final Confirmations</h3>
           <div className="space-y-3">
-            <label className="flex items-start gap-3 p-4 border border-gray-300 rounded-lg">
+            <label className="flex items-start gap-3 p-4 border border-white/10 rounded-lg">
               <input
                 type="checkbox"
-                className="w-4 h-4 mt-1 text-indigo-600 focus:ring-indigo-500"
+                className="w-4 h-4 mt-1 text-indigo-400 focus:ring-indigo-500"
               />
-              <span className="text-sm text-gray-700">
+              <span className="text-sm text-slate-300">
                 I confirm all information and documents provided are true, accurate, and current
               </span>
             </label>
-            <label className="flex items-start gap-3 p-4 border border-gray-300 rounded-lg">
+            <label className="flex items-start gap-3 p-4 border border-white/10 rounded-lg">
               <input
                 type="checkbox"
-                className="w-4 h-4 mt-1 text-indigo-600 focus:ring-indigo-500"
+                className="w-4 h-4 mt-1 text-indigo-400 focus:ring-indigo-500"
               />
-              <span className="text-sm text-gray-700">
+              <span className="text-sm text-slate-300">
                 I acknowledge this application will be reviewed by compliance and may require additional documentation
               </span>
             </label>
-            <label className="flex items-start gap-3 p-4 border border-gray-300 rounded-lg">
+            <label className="flex items-start gap-3 p-4 border border-white/10 rounded-lg">
               <input
                 type="checkbox"
-                className="w-4 h-4 mt-1 text-indigo-600 focus:ring-indigo-500"
+                className="w-4 h-4 mt-1 text-indigo-400 focus:ring-indigo-500"
               />
-              <span className="text-sm text-gray-700">
+              <span className="text-sm text-slate-300">
                 I understand my tier classification may be adjusted based on compliance review
               </span>
             </label>
@@ -1512,12 +1512,12 @@ function ReviewAndSubmit({ entityType, formData, questionnaireAnswers, tierRecom
         </div>
 
         {/* Notice */}
-        <div className="p-4 bg-gray-50 border border-gray-300 rounded-lg">
+        <div className="p-4 bg-white/5 border border-white/10 rounded-lg">
           <div className="flex items-start gap-3">
-            <Info className="w-5 h-5 text-gray-600 mt-0.5" />
+            <Info className="w-5 h-5 text-slate-300 mt-0.5" />
             <div>
-              <p className="text-sm font-medium text-gray-900 mb-1">What happens next?</p>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm font-medium text-slate-100 mb-1">What happens next?</p>
+              <p className="text-sm text-slate-300">
                 Your application will enter the compliance review queue. You'll receive email notifications at each stage. 
                 Typical review time is 2-5 business days. You can track progress in your dashboard.
               </p>
@@ -1568,14 +1568,14 @@ function InvestorApplicationDetail({ investor, onBack, role }: any) {
             <ChevronLeft className="w-5 h-5" />
           </Button>
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">{investor.name}</h1>
-            <p className="text-gray-600 mt-1">{investor.id} • Submitted {investor.submittedDate}</p>
+            <h1 className="text-2xl font-bold text-slate-100">{investor.name}</h1>
+            <p className="text-slate-300 mt-1">{investor.id} • Submitted {investor.submittedDate}</p>
           </div>
         </div>
         <div className="flex items-center gap-3">
           {canApprove && investor.status !== 'approved' && (
             <>
-              <Button variant="outline" className="text-red-600 border-red-300 hover:bg-red-50">
+              <Button variant="outline" className="text-red-400 border-red-300 hover:bg-red-500/10">
                 <X className="w-4 h-4 mr-2" />
                 Reject
               </Button>
@@ -1586,7 +1586,7 @@ function InvestorApplicationDetail({ investor, onBack, role }: any) {
             </>
           )}
           {investor.status === 'approved' && (
-            <div className="flex items-center gap-2 px-4 py-2 bg-green-100 text-green-800 rounded-lg">
+            <div className="flex items-center gap-2 px-4 py-2 bg-green-500/15 text-green-300 rounded-lg">
               <CheckCircle className="w-5 h-5" />
               <span className="font-medium">Approved</span>
             </div>
@@ -1595,44 +1595,44 @@ function InvestorApplicationDetail({ investor, onBack, role }: any) {
       </div>
 
       {/* Status Banner */}
-      <div className="bg-white border border-gray-300 rounded-lg p-6">
+      <div className="bg-white border border-white/10 rounded-lg p-6">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
-            {investor.status === 'pending-cfo-approval' && <Clock className="w-6 h-6 text-yellow-600" />}
-            {investor.status === 'pending-compliance' && <Shield className="w-6 h-6 text-blue-600" />}
-            {investor.status === 'approved' && <CheckCircle className="w-6 h-6 text-green-600" />}
+            {investor.status === 'pending-cfo-approval' && <Clock className="w-6 h-6 text-yellow-400" />}
+            {investor.status === 'pending-compliance' && <Shield className="w-6 h-6 text-blue-400" />}
+            {investor.status === 'approved' && <CheckCircle className="w-6 h-6 text-green-400" />}
             <div>
-              <h3 className="font-semibold text-gray-900">Application Status</h3>
-              <p className="text-sm text-gray-600">{investor.assignedTo && `Assigned to ${investor.assignedTo}`}</p>
+              <h3 className="font-semibold text-slate-100">Application Status</h3>
+              <p className="text-sm text-slate-300">{investor.assignedTo && `Assigned to ${investor.assignedTo}`}</p>
             </div>
           </div>
           {investor.status === 'pending-cfo-approval' && investor.recommendedTier === 'tier-a' && (
             <div className="text-right">
-              <p className="text-sm font-medium text-yellow-900">⚠️ CFO Approval Required</p>
-              <p className="text-xs text-yellow-700">Tier A classification awaiting sign-off</p>
+              <p className="text-sm font-medium text-yellow-300">⚠️ CFO Approval Required</p>
+              <p className="text-xs text-yellow-300">Tier A classification awaiting sign-off</p>
             </div>
           )}
         </div>
         
         <div className="flex items-center gap-8">
           <div>
-            <p className="text-xs text-gray-600 mb-1">Recommended Tier</p>
-            <p className="font-semibold text-gray-900 capitalize">{investor.recommendedTier.replace('-', ' ')}</p>
+            <p className="text-xs text-slate-300 mb-1">Recommended Tier</p>
+            <p className="font-semibold text-slate-100 capitalize">{investor.recommendedTier.replace('-', ' ')}</p>
           </div>
           <div>
-            <p className="text-xs text-gray-600 mb-1">KYC Status</p>
-            <p className="font-semibold text-gray-900 capitalize">{investor.kycStatus}</p>
+            <p className="text-xs text-slate-300 mb-1">KYC Status</p>
+            <p className="font-semibold text-slate-100 capitalize">{investor.kycStatus}</p>
           </div>
           <div>
-            <p className="text-xs text-gray-600 mb-1">Wholesale Status</p>
-            <p className="font-semibold text-gray-900 capitalize">{investor.wholesaleStatus}</p>
+            <p className="text-xs text-slate-300 mb-1">Wholesale Status</p>
+            <p className="font-semibold text-slate-100 capitalize">{investor.wholesaleStatus}</p>
           </div>
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="bg-white border border-gray-300 rounded-lg overflow-hidden">
-        <div className="border-b border-gray-300">
+      <div className="bg-white border border-white/10 rounded-lg overflow-hidden">
+        <div className="border-b border-white/10">
           <div className="flex">
             {[
               { id: 'overview', label: 'Overview', icon: FileText },
@@ -1647,8 +1647,8 @@ function InvestorApplicationDetail({ investor, onBack, role }: any) {
                   onClick={() => setActiveTab(tab.id as any)}
                   className={`flex items-center gap-2 px-6 py-4 border-b-2 transition-colors ${
                     activeTab === tab.id
-                      ? 'border-indigo-600 text-indigo-600 font-medium'
-                      : 'border-transparent text-gray-600 hover:text-gray-900'
+                      ? 'border-indigo-600 text-indigo-400 font-medium'
+                      : 'border-transparent text-slate-300 hover:text-slate-100'
                   }`}
                 >
                   <Icon className="w-4 h-4" />
@@ -1663,46 +1663,46 @@ function InvestorApplicationDetail({ investor, onBack, role }: any) {
           {activeTab === 'overview' && (
             <div className="space-y-6">
               <div>
-                <h3 className="font-semibold text-gray-900 mb-4">Entity Information</h3>
+                <h3 className="font-semibold text-slate-100 mb-4">Entity Information</h3>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <p className="text-sm text-gray-600">Entity Type</p>
-                    <p className="font-medium text-gray-900 capitalize">{investor.entityType}</p>
+                    <p className="text-sm text-slate-300">Entity Type</p>
+                    <p className="font-medium text-slate-100 capitalize">{investor.entityType}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-600">ABN</p>
-                    <p className="font-medium text-gray-900">12 345 678 901</p>
+                    <p className="text-sm text-slate-300">ABN</p>
+                    <p className="font-medium text-slate-100">12 345 678 901</p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-600">Email</p>
-                    <p className="font-medium text-gray-900">contact@{investor.name.toLowerCase().replace(/\s+/g, '')}.com</p>
+                    <p className="text-sm text-slate-300">Email</p>
+                    <p className="font-medium text-slate-100">contact@{investor.name.toLowerCase().replace(/\s+/g, '')}.com</p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-600">Phone</p>
-                    <p className="font-medium text-gray-900">+61 2 9876 5432</p>
+                    <p className="text-sm text-slate-300">Phone</p>
+                    <p className="font-medium text-slate-100">+61 2 9876 5432</p>
                   </div>
                 </div>
               </div>
 
               <div>
-                <h3 className="font-semibold text-gray-900 mb-4">Tier Recommendation</h3>
-                <div className="p-4 bg-indigo-50 border border-indigo-200 rounded-lg">
+                <h3 className="font-semibold text-slate-100 mb-4">Tier Recommendation</h3>
+                <div className="p-4 bg-indigo-500/10 border border-indigo-500/30 rounded-lg">
                   <div className="grid grid-cols-4 gap-4 mb-4">
                     <div>
-                      <p className="text-xs text-indigo-600 mb-1">Risk Capacity</p>
-                      <p className="text-2xl font-bold text-indigo-900">28/30</p>
+                      <p className="text-xs text-indigo-400 mb-1">Risk Capacity</p>
+                      <p className="text-2xl font-bold text-indigo-300">28/30</p>
                     </div>
                     <div>
-                      <p className="text-xs text-indigo-600 mb-1">Experience</p>
-                      <p className="text-2xl font-bold text-indigo-900">45/50</p>
+                      <p className="text-xs text-indigo-400 mb-1">Experience</p>
+                      <p className="text-2xl font-bold text-indigo-300">45/50</p>
                     </div>
                     <div>
-                      <p className="text-xs text-indigo-600 mb-1">Governance</p>
-                      <p className="text-2xl font-bold text-indigo-900">18/20</p>
+                      <p className="text-xs text-indigo-400 mb-1">Governance</p>
+                      <p className="text-2xl font-bold text-indigo-300">18/20</p>
                     </div>
                     <div>
-                      <p className="text-xs text-indigo-600 mb-1">Total Score</p>
-                      <p className="text-2xl font-bold text-indigo-900">91/100</p>
+                      <p className="text-xs text-indigo-400 mb-1">Total Score</p>
+                      <p className="text-2xl font-bold text-indigo-300">91/100</p>
                     </div>
                   </div>
                   <div className="flex flex-wrap gap-2">
@@ -1719,7 +1719,7 @@ function InvestorApplicationDetail({ investor, onBack, role }: any) {
 
           {activeTab === 'documents' && (
             <div className="space-y-4">
-              <h3 className="font-semibold text-gray-900 mb-4">Uploaded Documents</h3>
+              <h3 className="font-semibold text-slate-100 mb-4">Uploaded Documents</h3>
               {[
                 'Certificate of Incorporation',
                 'Company Constitution',
@@ -1727,12 +1727,12 @@ function InvestorApplicationDetail({ investor, onBack, role }: any) {
                 'Beneficial Owners Register',
                 'Wholesale Evidence - Accountant Certificate'
               ].map((doc, index) => (
-                <div key={index} className="flex items-center justify-between p-4 bg-gray-50 border border-gray-300 rounded-lg">
+                <div key={index} className="flex items-center justify-between p-4 bg-white/5 border border-white/10 rounded-lg">
                   <div className="flex items-center gap-3">
-                    <FileText className="w-5 h-5 text-gray-600" />
+                    <FileText className="w-5 h-5 text-slate-300" />
                     <div>
-                      <p className="font-medium text-gray-900">{doc}</p>
-                      <p className="text-xs text-gray-500">Uploaded {investor.submittedDate}</p>
+                      <p className="font-medium text-slate-100">{doc}</p>
+                      <p className="text-xs text-slate-400">Uploaded {investor.submittedDate}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
@@ -1753,50 +1753,50 @@ function InvestorApplicationDetail({ investor, onBack, role }: any) {
           {activeTab === 'compliance' && (
             <div className="space-y-6">
               <div>
-                <h3 className="font-semibold text-gray-900 mb-4">KYC Verification</h3>
+                <h3 className="font-semibold text-slate-100 mb-4">KYC Verification</h3>
                 <div className="space-y-3">
-                  <div className="flex items-center justify-between p-4 bg-green-50 border border-green-200 rounded-lg">
+                  <div className="flex items-center justify-between p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
                     <div className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      <CheckCircle className="w-5 h-5 text-green-400" />
                       <div>
-                        <p className="font-medium text-green-900">Identity Verification</p>
-                        <p className="text-sm text-green-700">All directors verified</p>
+                        <p className="font-medium text-green-300">Identity Verification</p>
+                        <p className="text-sm text-green-300">All directors verified</p>
                       </div>
                     </div>
-                    <span className="text-sm text-green-600">Completed</span>
+                    <span className="text-sm text-green-400">Completed</span>
                   </div>
-                  <div className="flex items-center justify-between p-4 bg-green-50 border border-green-200 rounded-lg">
+                  <div className="flex items-center justify-between p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
                     <div className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      <CheckCircle className="w-5 h-5 text-green-400" />
                       <div>
-                        <p className="font-medium text-green-900">PEP Screening</p>
-                        <p className="text-sm text-green-700">No matches found</p>
+                        <p className="font-medium text-green-300">PEP Screening</p>
+                        <p className="text-sm text-green-300">No matches found</p>
                       </div>
                     </div>
-                    <span className="text-sm text-green-600">Clear</span>
+                    <span className="text-sm text-green-400">Clear</span>
                   </div>
-                  <div className="flex items-center justify-between p-4 bg-green-50 border border-green-200 rounded-lg">
+                  <div className="flex items-center justify-between p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
                     <div className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      <CheckCircle className="w-5 h-5 text-green-400" />
                       <div>
-                        <p className="font-medium text-green-900">Sanctions Screening</p>
-                        <p className="text-sm text-green-700">No matches found</p>
+                        <p className="font-medium text-green-300">Sanctions Screening</p>
+                        <p className="text-sm text-green-300">No matches found</p>
                       </div>
                     </div>
-                    <span className="text-sm text-green-600">Clear</span>
+                    <span className="text-sm text-green-400">Clear</span>
                   </div>
                 </div>
               </div>
 
               <div>
-                <h3 className="font-semibold text-gray-900 mb-4">Wholesale Status</h3>
-                <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+                <h3 className="font-semibold text-slate-100 mb-4">Wholesale Status</h3>
+                <div className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
                   <div className="flex items-center gap-3 mb-3">
-                    <Award className="w-5 h-5 text-green-600" />
-                    <p className="font-medium text-green-900">Accountant Certificate - Section 708(8)</p>
+                    <Award className="w-5 h-5 text-green-400" />
+                    <p className="font-medium text-green-300">Accountant Certificate - Section 708(8)</p>
                   </div>
-                  <p className="text-sm text-green-700 mb-2">Certificate dated 2024-02-05 • Valid until 2024-08-05</p>
-                  <p className="text-sm text-green-700">Net assets exceed $2.5M AUD</p>
+                  <p className="text-sm text-green-300 mb-2">Certificate dated 2024-02-05 • Valid until 2024-08-05</p>
+                  <p className="text-sm text-green-300">Net assets exceed $2.5M AUD</p>
                 </div>
               </div>
             </div>
@@ -1814,11 +1814,11 @@ function InvestorApplicationDetail({ investor, onBack, role }: any) {
               ].map((activity, index) => {
                 const Icon = activity.icon;
                 return (
-                  <div key={index} className="flex items-start gap-3 p-4 border border-gray-300 rounded-lg">
-                    <Icon className="w-5 h-5 text-gray-600 mt-0.5" />
+                  <div key={index} className="flex items-start gap-3 p-4 border border-white/10 rounded-lg">
+                    <Icon className="w-5 h-5 text-slate-300 mt-0.5" />
                     <div className="flex-1">
-                      <p className="font-medium text-gray-900">{activity.action}</p>
-                      <p className="text-sm text-gray-600">{activity.user} • {activity.date}</p>
+                      <p className="font-medium text-slate-100">{activity.action}</p>
+                      <p className="text-sm text-slate-300">{activity.user} • {activity.date}</p>
                     </div>
                   </div>
                 );

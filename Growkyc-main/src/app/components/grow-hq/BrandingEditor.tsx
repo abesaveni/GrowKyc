@@ -77,8 +77,8 @@ export function BrandingEditor({ onClose, currentBranding, onSave }: BrandingEdi
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Brand Editor</h2>
-            <p className="text-sm text-gray-600 mt-1">Customize your platform's appearance and identity</p>
+            <h2 className="text-2xl font-bold text-slate-100">Brand Editor</h2>
+            <p className="text-sm text-slate-300 mt-1">Customize your platform's appearance and identity</p>
           </div>
           <Button variant="ghost" size="sm" onClick={onClose}>
             <X className="w-5 h-5" />
@@ -94,7 +94,7 @@ export function BrandingEditor({ onClose, currentBranding, onSave }: BrandingEdi
               <Card>
                 <CardHeader>
                   <div className="flex items-center gap-2">
-                    <Building2 className="w-5 h-5 text-blue-600" />
+                    <Building2 className="w-5 h-5 text-blue-400" />
                     <CardTitle className="text-lg">Organization Name</CardTitle>
                   </div>
                 </CardHeader>
@@ -103,10 +103,10 @@ export function BrandingEditor({ onClose, currentBranding, onSave }: BrandingEdi
                     type="text"
                     value={organizationName}
                     onChange={(e) => setOrganizationName(e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-2 border border-white/10 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     placeholder="Enter organization name"
                   />
-                  <p className="text-xs text-gray-500 mt-2">
+                  <p className="text-xs text-slate-400 mt-2">
                     This will appear in the header, emails, and documents
                   </p>
                 </CardContent>
@@ -116,7 +116,7 @@ export function BrandingEditor({ onClose, currentBranding, onSave }: BrandingEdi
               <Card>
                 <CardHeader>
                   <div className="flex items-center gap-2">
-                    <Palette className="w-5 h-5 text-purple-600" />
+                    <Palette className="w-5 h-5 text-purple-400" />
                     <CardTitle className="text-lg">Brand Color</CardTitle>
                   </div>
                 </CardHeader>
@@ -128,17 +128,17 @@ export function BrandingEditor({ onClose, currentBranding, onSave }: BrandingEdi
                         type="color"
                         value={primaryColor}
                         onChange={(e) => setPrimaryColor(e.target.value)}
-                        className="w-16 h-16 rounded-lg cursor-pointer border-2 border-gray-300"
+                        className="w-16 h-16 rounded-lg cursor-pointer border-2 border-white/10"
                       />
                       <div className="flex-1">
                         <input
                           type="text"
                           value={primaryColor}
                           onChange={(e) => setPrimaryColor(e.target.value)}
-                          className="w-full px-4 py-2 border border-gray-300 rounded-lg font-mono text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                          className="w-full px-4 py-2 border border-white/10 rounded-lg font-mono text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                           placeholder="#000000"
                         />
-                        <p className="text-xs text-gray-500 mt-1">
+                        <p className="text-xs text-slate-400 mt-1">
                           Primary color for buttons, links, and accents
                         </p>
                       </div>
@@ -146,7 +146,7 @@ export function BrandingEditor({ onClose, currentBranding, onSave }: BrandingEdi
 
                     {/* Predefined Colors */}
                     <div>
-                      <p className="text-sm font-semibold text-gray-700 mb-2">Quick Colors</p>
+                      <p className="text-sm font-semibold text-slate-300 mb-2">Quick Colors</p>
                       <div className="grid grid-cols-5 gap-2">
                         {predefinedColors.map((color) => (
                           <button
@@ -168,7 +168,7 @@ export function BrandingEditor({ onClose, currentBranding, onSave }: BrandingEdi
                                 </div>
                               )}
                             </div>
-                            <p className="text-xs text-gray-600 mt-1 text-center">{color.name}</p>
+                            <p className="text-xs text-slate-300 mt-1 text-center">{color.name}</p>
                           </button>
                         ))}
                       </div>
@@ -181,7 +181,7 @@ export function BrandingEditor({ onClose, currentBranding, onSave }: BrandingEdi
               <Card>
                 <CardHeader>
                   <div className="flex items-center gap-2">
-                    <Globe className="w-5 h-5 text-green-600" />
+                    <Globe className="w-5 h-5 text-green-400" />
                     <CardTitle className="text-lg">Custom Domain</CardTitle>
                   </div>
                 </CardHeader>
@@ -190,14 +190,14 @@ export function BrandingEditor({ onClose, currentBranding, onSave }: BrandingEdi
                     type="text"
                     value={customDomain}
                     onChange={(e) => setCustomDomain(e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg font-mono text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-2 border border-white/10 rounded-lg font-mono text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     placeholder="yourcompany.grow.cloud"
                   />
-                  <p className="text-xs text-gray-500 mt-2">
+                  <p className="text-xs text-slate-400 mt-2">
                     Point your custom domain with a CNAME record
                   </p>
-                  <div className="mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg">
-                    <p className="text-xs font-mono text-blue-900">
+                  <div className="mt-3 p-3 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+                    <p className="text-xs font-mono text-blue-300">
                       CNAME: {customDomain} → grow.cloud
                     </p>
                   </div>
@@ -208,14 +208,14 @@ export function BrandingEditor({ onClose, currentBranding, onSave }: BrandingEdi
               <Card>
                 <CardHeader>
                   <div className="flex items-center gap-2">
-                    <ImageIcon className="w-5 h-5 text-amber-600" />
+                    <ImageIcon className="w-5 h-5 text-amber-400" />
                     <CardTitle className="text-lg">Logo</CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
                     {logoUrl && (
-                      <div className="p-4 border-2 border-dashed border-gray-300 rounded-lg bg-gray-50">
+                      <div className="p-4 border-2 border-dashed border-white/10 rounded-lg bg-white/5">
                         <img
                           src={logoUrl}
                           alt="Logo Preview"
@@ -233,7 +233,7 @@ export function BrandingEditor({ onClose, currentBranding, onSave }: BrandingEdi
                       {logoUrl ? 'Replace Logo' : 'Upload Logo'}
                     </Button>
                     
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-slate-400">
                       PNG or SVG recommended • 512x512px • Max 2MB
                     </p>
                   </div>
@@ -247,7 +247,7 @@ export function BrandingEditor({ onClose, currentBranding, onSave }: BrandingEdi
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Eye className="w-5 h-5 text-blue-600" />
+                      <Eye className="w-5 h-5 text-blue-400" />
                       <CardTitle className="text-lg">Live Preview</CardTitle>
                     </div>
                     <Button
@@ -261,29 +261,29 @@ export function BrandingEditor({ onClose, currentBranding, onSave }: BrandingEdi
                 </CardHeader>
                 <CardContent>
                   {/* Header Preview */}
-                  <div className="border-2 border-gray-200 rounded-lg overflow-hidden">
-                    <div className="bg-white border-b border-gray-200 p-4">
+                  <div className="border-2 border-white/10 rounded-lg overflow-hidden">
+                    <div className="bg-white border-b border-white/10 p-4">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
                           {logoUrl ? (
                             <img src={logoUrl} alt="Logo" className="h-8" />
                           ) : (
-                            <div className="w-8 h-8 rounded bg-gray-200 flex items-center justify-center">
-                              <Building2 className="w-5 h-5 text-gray-500" />
+                            <div className="w-8 h-8 rounded bg-white/10 flex items-center justify-center">
+                              <Building2 className="w-5 h-5 text-slate-400" />
                             </div>
                           )}
                           <div>
-                            <p className="font-semibold text-gray-900">{organizationName || 'Organization Name'}</p>
-                            <p className="text-xs text-gray-500">Financial Operating System</p>
+                            <p className="font-semibold text-slate-100">{organizationName || 'Organization Name'}</p>
+                            <p className="text-xs text-slate-400">Financial Operating System</p>
                           </div>
                         </div>
                       </div>
                     </div>
 
                     {/* Button Preview */}
-                    <div className="p-6 space-y-4 bg-gray-50">
+                    <div className="p-6 space-y-4 bg-white/5">
                       <div>
-                        <p className="text-sm font-semibold text-gray-700 mb-2">Primary Button</p>
+                        <p className="text-sm font-semibold text-slate-300 mb-2">Primary Button</p>
                         <button
                           className="px-4 py-2 rounded-lg text-white font-medium"
                           style={{ backgroundColor: primaryColor }}
@@ -293,8 +293,8 @@ export function BrandingEditor({ onClose, currentBranding, onSave }: BrandingEdi
                       </div>
 
                       <div>
-                        <p className="text-sm font-semibold text-gray-700 mb-2">Links & Text</p>
-                        <p className="text-gray-700">
+                        <p className="text-sm font-semibold text-slate-300 mb-2">Links & Text</p>
+                        <p className="text-slate-300">
                           This is sample text with a{' '}
                           <span style={{ color: primaryColor }} className="font-semibold cursor-pointer">
                             branded link
@@ -304,7 +304,7 @@ export function BrandingEditor({ onClose, currentBranding, onSave }: BrandingEdi
                       </div>
 
                       <div>
-                        <p className="text-sm font-semibold text-gray-700 mb-2">Status Badge</p>
+                        <p className="text-sm font-semibold text-slate-300 mb-2">Status Badge</p>
                         <span
                           className="px-3 py-1 rounded-full text-sm font-semibold text-white"
                           style={{ backgroundColor: primaryColor }}
@@ -316,11 +316,11 @@ export function BrandingEditor({ onClose, currentBranding, onSave }: BrandingEdi
                   </div>
 
                   {showPreview && (
-                    <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                      <p className="text-sm text-blue-900 font-semibold mb-2">
+                    <div className="mt-4 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+                      <p className="text-sm text-blue-300 font-semibold mb-2">
                         Full Preview Mode
                       </p>
-                      <p className="text-xs text-blue-700">
+                      <p className="text-xs text-blue-300">
                         Save your changes to see the full branding applied across all modules, login pages, and email templates.
                       </p>
                     </div>
@@ -335,18 +335,18 @@ export function BrandingEditor({ onClose, currentBranding, onSave }: BrandingEdi
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between p-3 bg-green-50 border border-green-200 rounded-lg">
+                    <div className="flex items-center justify-between p-3 bg-green-500/10 border border-green-500/30 rounded-lg">
                       <div className="flex items-center gap-2">
-                        <Check className="w-4 h-4 text-green-600" />
-                        <span className="text-sm font-semibold text-gray-900">SSL Certificate</span>
+                        <Check className="w-4 h-4 text-green-400" />
+                        <span className="text-sm font-semibold text-slate-100">SSL Certificate</span>
                       </div>
                       <span className="text-xs px-2 py-1 bg-green-600 text-white rounded font-semibold">ACTIVE</span>
                     </div>
 
-                    <div className="flex items-center justify-between p-3 bg-green-50 border border-green-200 rounded-lg">
+                    <div className="flex items-center justify-between p-3 bg-green-500/10 border border-green-500/30 rounded-lg">
                       <div className="flex items-center gap-2">
-                        <Check className="w-4 h-4 text-green-600" />
-                        <span className="text-sm font-semibold text-gray-900">DNS Configuration</span>
+                        <Check className="w-4 h-4 text-green-400" />
+                        <span className="text-sm font-semibold text-slate-100">DNS Configuration</span>
                       </div>
                       <span className="text-xs px-2 py-1 bg-green-600 text-white rounded font-semibold">VERIFIED</span>
                     </div>
@@ -358,7 +358,7 @@ export function BrandingEditor({ onClose, currentBranding, onSave }: BrandingEdi
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between p-6 border-t bg-gray-50">
+        <div className="flex items-center justify-between p-6 border-t bg-white/5">
           <Button variant="ghost" onClick={handleReset}>
             <RotateCcw className="w-4 h-4 mr-2" />
             Reset Changes

@@ -44,38 +44,38 @@ export function AMLPricingAccessCard({ onNavigate, variant = 'card' }: AMLPricin
   return (
     <Card className="border-2 border-purple-300 hover:border-purple-500 transition-all cursor-pointer" onClick={onNavigate}>
       <CardHeader className="bg-gradient-to-r from-purple-50 to-pink-50">
-        <CardTitle className="flex items-center gap-2 text-purple-900">
+        <CardTitle className="flex items-center gap-2 text-purple-300">
           <DollarSign className="w-6 h-6" />
           AML/CTF Enhanced Checks & Pricing
         </CardTitle>
       </CardHeader>
       <CardContent className="p-6">
-        <p className="text-gray-700 mb-4">
+        <p className="text-slate-300 mb-4">
           View comprehensive pricing for identity verification, director searches, entity checks, and title searches.
         </p>
         
         <div className="space-y-3">
-          <div className="flex items-center gap-3 p-3 bg-red-50 rounded-lg border border-red-200">
-            <Lock className="w-5 h-5 text-red-600 flex-shrink-0" />
+          <div className="flex items-center gap-3 p-3 bg-red-500/10 rounded-lg border border-red-500/30">
+            <Lock className="w-5 h-5 text-red-400 flex-shrink-0" />
             <div>
-              <p className="text-sm font-bold text-red-900">Mandatory: $27.50/person</p>
-              <p className="text-xs text-red-700">IDV + Director/Officer Search</p>
+              <p className="text-sm font-bold text-red-300">Mandatory: $27.50/person</p>
+              <p className="text-xs text-red-300">IDV + Director/Officer Search</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-3 p-3 bg-amber-50 rounded-lg border border-amber-200">
-            <Shield className="w-5 h-5 text-amber-600 flex-shrink-0" />
+          <div className="flex items-center gap-3 p-3 bg-amber-500/10 rounded-lg border border-amber-500/30">
+            <Shield className="w-5 h-5 text-amber-400 flex-shrink-0" />
             <div>
-              <p className="text-sm font-bold text-amber-900">Entity Checks: Per company/trust</p>
-              <p className="text-xs text-amber-700">Finalized after entity identification</p>
+              <p className="text-sm font-bold text-amber-300">Entity Checks: Per company/trust</p>
+              <p className="text-xs text-amber-300">Finalized after entity identification</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-3 p-3 bg-blue-50 rounded-lg border border-blue-200">
-            <MapPin className="w-5 h-5 text-blue-600 flex-shrink-0" />
+          <div className="flex items-center gap-3 p-3 bg-blue-500/10 rounded-lg border border-blue-500/30">
+            <MapPin className="w-5 h-5 text-blue-400 flex-shrink-0" />
             <div>
-              <p className="text-sm font-bold text-blue-900">Title Searches: Per property</p>
-              <p className="text-xs text-blue-700">Current, historical & dealing searches</p>
+              <p className="text-sm font-bold text-blue-300">Title Searches: Per property</p>
+              <p className="text-xs text-blue-300">Current, historical & dealing searches</p>
             </div>
           </div>
         </div>

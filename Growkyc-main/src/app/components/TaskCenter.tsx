@@ -302,11 +302,11 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
-      case 'urgent': return 'bg-red-100 text-red-800 border-red-300';
-      case 'high': return 'bg-orange-100 text-orange-800 border-orange-300';
-      case 'medium': return 'bg-yellow-100 text-yellow-800 border-yellow-300';
-      case 'low': return 'bg-green-100 text-green-800 border-green-300';
-      default: return 'bg-gray-100 text-gray-800 border-gray-300';
+      case 'urgent': return 'bg-red-500/15 text-red-300 border-red-300';
+      case 'high': return 'bg-orange-500/15 text-orange-300 border-orange-300';
+      case 'medium': return 'bg-yellow-500/15 text-yellow-300 border-yellow-300';
+      case 'low': return 'bg-green-500/15 text-green-300 border-green-300';
+      default: return 'bg-white/5 text-slate-100 border-white/10';
     }
   };
 
@@ -322,11 +322,11 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'completed': return 'bg-green-100 text-green-800';
-      case 'in_progress': return 'bg-blue-100 text-blue-800';
-      case 'overdue': return 'bg-red-100 text-red-800';
-      case 'pending': return 'bg-gray-100 text-gray-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case 'completed': return 'bg-green-500/15 text-green-300';
+      case 'in_progress': return 'bg-blue-500/15 text-blue-300';
+      case 'overdue': return 'bg-red-500/15 text-red-300';
+      case 'pending': return 'bg-white/5 text-slate-100';
+      default: return 'bg-white/5 text-slate-100';
     }
   };
 
@@ -338,11 +338,11 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
   };
 
   const getDueDateColor = (date: Date, status: string) => {
-    if (status === 'completed') return 'text-gray-500';
-    if (isPast(date)) return 'text-red-600 font-semibold';
-    if (isToday(date)) return 'text-orange-600 font-semibold';
-    if (isTomorrow(date)) return 'text-yellow-600 font-semibold';
-    return 'text-gray-600';
+    if (status === 'completed') return 'text-slate-400';
+    if (isPast(date)) return 'text-red-400 font-semibold';
+    if (isToday(date)) return 'text-orange-400 font-semibold';
+    if (isTomorrow(date)) return 'text-yellow-400 font-semibold';
+    return 'text-slate-300';
   };
 
   return (
@@ -350,8 +350,8 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Task Center</h1>
-          <p className="text-gray-600 mt-1">Manage all your tasks across Grow platform</p>
+          <h1 className="text-3xl font-bold text-slate-100">Task Center</h1>
+          <p className="text-slate-300 mt-1">Manage all your tasks across Grow platform</p>
         </div>
         <Button onClick={() => setShowNewTaskModal(true)}>
           <Plus className="w-4 h-4 mr-2" />
@@ -365,10 +365,10 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-2xl font-bold text-gray-900">{stats.total}</div>
-                <div className="text-sm text-gray-600">Active Tasks</div>
+                <div className="text-2xl font-bold text-slate-100">{stats.total}</div>
+                <div className="text-sm text-slate-300">Active Tasks</div>
               </div>
-              <CheckSquare className="w-8 h-8 text-blue-600" />
+              <CheckSquare className="w-8 h-8 text-blue-400" />
             </div>
           </CardContent>
         </Card>
@@ -377,10 +377,10 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-2xl font-bold text-red-600">{stats.overdue}</div>
-                <div className="text-sm text-gray-600">Overdue</div>
+                <div className="text-2xl font-bold text-red-400">{stats.overdue}</div>
+                <div className="text-sm text-slate-300">Overdue</div>
               </div>
-              <AlertCircle className="w-8 h-8 text-red-600" />
+              <AlertCircle className="w-8 h-8 text-red-400" />
             </div>
           </CardContent>
         </Card>
@@ -389,10 +389,10 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-2xl font-bold text-orange-600">{stats.dueToday}</div>
-                <div className="text-sm text-gray-600">Due Today</div>
+                <div className="text-2xl font-bold text-orange-400">{stats.dueToday}</div>
+                <div className="text-sm text-slate-300">Due Today</div>
               </div>
-              <Clock className="w-8 h-8 text-orange-600" />
+              <Clock className="w-8 h-8 text-orange-400" />
             </div>
           </CardContent>
         </Card>
@@ -401,10 +401,10 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-2xl font-bold text-purple-600">{stats.urgent}</div>
-                <div className="text-sm text-gray-600">Urgent</div>
+                <div className="text-2xl font-bold text-purple-400">{stats.urgent}</div>
+                <div className="text-sm text-slate-300">Urgent</div>
               </div>
-              <Flag className="w-8 h-8 text-purple-600" />
+              <Flag className="w-8 h-8 text-purple-400" />
             </div>
           </CardContent>
         </Card>
@@ -413,10 +413,10 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-2xl font-bold text-blue-600">{stats.inProgress}</div>
-                <div className="text-sm text-gray-600">In Progress</div>
+                <div className="text-2xl font-bold text-blue-400">{stats.inProgress}</div>
+                <div className="text-sm text-slate-300">In Progress</div>
               </div>
-              <BarChart3 className="w-8 h-8 text-blue-600" />
+              <BarChart3 className="w-8 h-8 text-blue-400" />
             </div>
           </CardContent>
         </Card>
@@ -425,10 +425,10 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-2xl font-bold text-green-600">{stats.completed}</div>
-                <div className="text-sm text-gray-600">Completed</div>
+                <div className="text-2xl font-bold text-green-400">{stats.completed}</div>
+                <div className="text-sm text-slate-300">Completed</div>
               </div>
-              <CheckCircle2 className="w-8 h-8 text-green-600" />
+              <CheckCircle2 className="w-8 h-8 text-green-400" />
             </div>
           </CardContent>
         </Card>
@@ -458,7 +458,7 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
               <select
                 value={filterStatus}
                 onChange={(e) => setFilterStatus(e.target.value)}
-                className="mt-1 w-full h-10 px-3 border border-gray-300 rounded-md text-sm"
+                className="mt-1 w-full h-10 px-3 border border-white/10 rounded-md text-sm"
               >
                 <option value="all">All Status</option>
                 <option value="pending">Pending</option>
@@ -474,7 +474,7 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
               <select
                 value={filterPriority}
                 onChange={(e) => setFilterPriority(e.target.value)}
-                className="mt-1 w-full h-10 px-3 border border-gray-300 rounded-md text-sm"
+                className="mt-1 w-full h-10 px-3 border border-white/10 rounded-md text-sm"
               >
                 <option value="all">All Priorities</option>
                 <option value="urgent">Urgent</option>
@@ -490,7 +490,7 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
               <select
                 value={filterModule}
                 onChange={(e) => setFilterModule(e.target.value)}
-                className="mt-1 w-full h-10 px-3 border border-gray-300 rounded-md text-sm"
+                className="mt-1 w-full h-10 px-3 border border-white/10 rounded-md text-sm"
               >
                 <option value="all">All Modules</option>
                 <option value="Grow MIP">Grow MIP</option>
@@ -546,7 +546,7 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
             >
               {sortOrder === 'asc' ? <SortAsc className="w-4 h-4" /> : <SortDesc className="w-4 h-4" />}
             </Button>
-            <div className="ml-auto text-sm text-gray-600">
+            <div className="ml-auto text-sm text-slate-300">
               Showing {filteredTasks.length} of {tasks.length} tasks
             </div>
           </div>
@@ -565,7 +565,7 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
                     type="checkbox"
                     checked={task.status === 'completed'}
                     onChange={() => toggleTaskStatus(task.id)}
-                    className="w-5 h-5 rounded border-gray-300 cursor-pointer"
+                    className="w-5 h-5 rounded border-white/10 cursor-pointer"
                   />
                 </div>
 
@@ -573,10 +573,10 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
                 <div className="flex-1">
                   <div className="flex items-start justify-between mb-2">
                     <div className="flex-1">
-                      <h3 className={`font-semibold text-lg ${task.status === 'completed' ? 'line-through text-gray-500' : 'text-gray-900'}`}>
+                      <h3 className={`font-semibold text-lg ${task.status === 'completed' ? 'line-through text-slate-400' : 'text-slate-100'}`}>
                         {task.title}
                       </h3>
-                      <p className="text-sm text-gray-600 mt-1">{task.description}</p>
+                      <p className="text-sm text-slate-300 mt-1">{task.description}</p>
                     </div>
                     
                     {/* Actions */}
@@ -595,7 +595,7 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
                         size="sm"
                         onClick={() => deleteTask(task.id)}
                       >
-                        <Trash2 className="w-4 h-4 text-red-600" />
+                        <Trash2 className="w-4 h-4 text-red-400" />
                       </Button>
                     </div>
                   </div>
@@ -624,20 +624,20 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
 
                     {/* Case Number */}
                     {task.caseNumber && (
-                      <div className="flex items-center gap-1 text-sm text-gray-600">
+                      <div className="flex items-center gap-1 text-sm text-slate-300">
                         <FileText className="w-4 h-4" />
                         {task.caseNumber}
                       </div>
                     )}
 
                     {/* Module */}
-                    <div className="flex items-center gap-1 text-sm text-gray-600">
+                    <div className="flex items-center gap-1 text-sm text-slate-300">
                       <Building2 className="w-4 h-4" />
                       {task.module.charAt(0).toUpperCase() + task.module.slice(1)}
                     </div>
 
                     {/* Category */}
-                    <div className="flex items-center gap-1 text-sm text-gray-600">
+                    <div className="flex items-center gap-1 text-sm text-slate-300">
                       <Tag className="w-4 h-4" />
                       {task.category}
                     </div>
@@ -695,8 +695,8 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
           <Card>
             <CardContent className="py-12 text-center">
               <CheckSquare className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">No tasks found</h3>
-              <p className="text-gray-600">
+              <h3 className="text-lg font-semibold text-slate-100 mb-2">No tasks found</h3>
+              <p className="text-slate-300">
                 {searchQuery || filterStatus !== 'all' || filterPriority !== 'all' || filterModule !== 'all'
                   ? 'Try adjusting your filters or search query'
                   : 'Create your first task to get started'}
@@ -721,7 +721,7 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
             <CardContent className="p-6">
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Task Title</label>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Task Title</label>
                   <input
                     type="text"
                     className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
@@ -729,7 +729,7 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Description</label>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Description</label>
                   <textarea
                     className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                     rows={3}
@@ -738,7 +738,7 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Priority</label>
+                    <label className="block text-sm font-medium text-slate-300 mb-2">Priority</label>
                     <select className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
                       <option value="low">Low</option>
                       <option value="medium">Medium</option>
@@ -747,7 +747,7 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Due Date</label>
+                    <label className="block text-sm font-medium text-slate-300 mb-2">Due Date</label>
                     <input
                       type="date"
                       className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
@@ -755,7 +755,7 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Module</label>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Module</label>
                   <select className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
                     <option value="Grow MIP">Grow MIP</option>
                     <option value="grow_accounting">Grow Accounting</option>
@@ -796,7 +796,7 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
             <CardContent className="p-6">
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Task Title</label>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Task Title</label>
                   <input
                     type="text"
                     defaultValue={editingTask.title}
@@ -806,7 +806,7 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Description</label>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Description</label>
                   <textarea
                     defaultValue={editingTask.description}
                     id="edit-task-description"
@@ -817,7 +817,7 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Priority</label>
+                    <label className="block text-sm font-medium text-slate-300 mb-2">Priority</label>
                     <select 
                       defaultValue={editingTask.priority}
                       id="edit-task-priority"
@@ -830,7 +830,7 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Due Date</label>
+                    <label className="block text-sm font-medium text-slate-300 mb-2">Due Date</label>
                     <input
                       type="date"
                       defaultValue={format(editingTask.dueDate, 'yyyy-MM-dd')}
@@ -841,7 +841,7 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Status</label>
+                    <label className="block text-sm font-medium text-slate-300 mb-2">Status</label>
                     <select 
                       defaultValue={editingTask.status}
                       id="edit-task-status"
@@ -854,7 +854,7 @@ export function TaskCenter({ userRole = 'lawyer', userId = 'user-001', onNavigat
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Module</label>
+                    <label className="block text-sm font-medium text-slate-300 mb-2">Module</label>
                     <select 
                       defaultValue={editingTask.module}
                       id="edit-task-module"

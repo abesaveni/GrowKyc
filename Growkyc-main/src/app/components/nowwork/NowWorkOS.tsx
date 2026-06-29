@@ -134,44 +134,44 @@ export function NowWorkOS({ onSwitchModule }: NowWorkOSProps) {
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-gray-600">Today's Hours</span>
-              <Clock className="w-5 h-5 text-blue-600" />
+              <span className="text-sm text-slate-300">Today's Hours</span>
+              <Clock className="w-5 h-5 text-blue-400" />
             </div>
-            <p className="text-3xl font-bold text-gray-900">6.5</p>
-            <p className="text-xs text-gray-500 mt-1">Target: 7.5h</p>
+            <p className="text-3xl font-bold text-slate-100">6.5</p>
+            <p className="text-xs text-slate-400 mt-1">Target: 7.5h</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-gray-600">Active Jobs</span>
-              <Briefcase className="w-5 h-5 text-green-600" />
+              <span className="text-sm text-slate-300">Active Jobs</span>
+              <Briefcase className="w-5 h-5 text-green-400" />
             </div>
-            <p className="text-3xl font-bold text-gray-900">8</p>
-            <p className="text-xs text-gray-500 mt-1">3 due this week</p>
+            <p className="text-3xl font-bold text-slate-100">8</p>
+            <p className="text-xs text-slate-400 mt-1">3 due this week</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-gray-600">This Week</span>
-              <Calendar className="w-5 h-5 text-purple-600" />
+              <span className="text-sm text-slate-300">This Week</span>
+              <Calendar className="w-5 h-5 text-purple-400" />
             </div>
-            <p className="text-3xl font-bold text-gray-900">34.5</p>
-            <p className="text-xs text-gray-500 mt-1">92% utilisation</p>
+            <p className="text-3xl font-bold text-slate-100">34.5</p>
+            <p className="text-xs text-slate-400 mt-1">92% utilisation</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-gray-600">Tasks Due</span>
-              <Target className="w-5 h-5 text-amber-600" />
+              <span className="text-sm text-slate-300">Tasks Due</span>
+              <Target className="w-5 h-5 text-amber-400" />
             </div>
-            <p className="text-3xl font-bold text-gray-900">12</p>
-            <p className="text-xs text-red-600 mt-1">2 overdue</p>
+            <p className="text-3xl font-bold text-slate-100">12</p>
+            <p className="text-xs text-red-400 mt-1">2 overdue</p>
           </CardContent>
         </Card>
       </div>
@@ -189,40 +189,40 @@ export function NowWorkOS({ onSwitchModule }: NowWorkOSProps) {
             {activeJobs.map((job) => (
               <div 
                 key={job.id}
-                className="p-4 border rounded-lg hover:bg-gray-50 cursor-pointer transition-colors"
+                className="p-4 border rounded-lg hover:bg-white/5 cursor-pointer transition-colors"
                 onClick={() => toast.info(`Opening ${job.id}...`)}
               >
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
-                      <span className="font-mono text-sm font-semibold text-gray-900">{job.id}</span>
+                      <span className="font-mono text-sm font-semibold text-slate-100">{job.id}</span>
                       <span className={`px-2 py-0.5 text-xs font-semibold rounded ${
-                        job.status === 'in-progress' ? 'bg-blue-100 text-blue-700' :
-                        job.status === 'review' ? 'bg-purple-100 text-purple-700' :
-                        'bg-gray-100 text-gray-700'
+                        job.status === 'in-progress' ? 'bg-blue-500/15 text-blue-300' :
+                        job.status === 'review' ? 'bg-purple-500/15 text-purple-300' :
+                        'bg-white/5 text-slate-300'
                       }`}>
                         {job.status.toUpperCase()}
                       </span>
                       {job.risk === 'high' && (
-                        <span className="px-2 py-0.5 bg-red-100 text-red-700 text-xs font-semibold rounded">HIGH RISK</span>
+                        <span className="px-2 py-0.5 bg-red-500/15 text-red-300 text-xs font-semibold rounded">HIGH RISK</span>
                       )}
                     </div>
-                    <h4 className="font-semibold text-gray-900">{job.client}</h4>
-                    <p className="text-sm text-gray-600">{job.service}</p>
+                    <h4 className="font-semibold text-slate-100">{job.client}</h4>
+                    <p className="text-sm text-slate-300">{job.service}</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-sm font-semibold text-gray-900">Due {job.due}</p>
-                    <p className="text-xs text-gray-500 mt-1">{job.hours}h logged</p>
+                    <p className="text-sm font-semibold text-slate-100">Due {job.due}</p>
+                    <p className="text-xs text-slate-400 mt-1">{job.hours}h logged</p>
                   </div>
                 </div>
                 
                 {/* Progress Bar */}
                 <div className="mb-2">
-                  <div className="flex items-center justify-between text-xs text-gray-600 mb-1">
+                  <div className="flex items-center justify-between text-xs text-slate-300 mb-1">
                     <span>Budget Progress</span>
                     <span>${job.actual.toLocaleString()} / ${job.budget.toLocaleString()}</span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div className="w-full bg-white/10 rounded-full h-2">
                     <div 
                       className={`h-2 rounded-full ${job.actual > job.budget ? 'bg-red-500' : 'bg-green-500'}`}
                       style={{ width: `${Math.min((job.actual / job.budget) * 100, 100)}%` }}
@@ -231,7 +231,7 @@ export function NowWorkOS({ onSwitchModule }: NowWorkOSProps) {
                 </div>
 
                 <div className="flex items-center justify-between text-xs">
-                  <span className="text-gray-600">Margin: {job.margin}%</span>
+                  <span className="text-slate-300">Margin: {job.margin}%</span>
                   <Button size="sm" variant="ghost" onClick={(e) => {
                     e.stopPropagation();
                     setCurrentPage('time-tracking');
@@ -260,20 +260,20 @@ export function NowWorkOS({ onSwitchModule }: NowWorkOSProps) {
         <CardContent>
           <div className="space-y-2">
             {recentTime.map((entry, idx) => (
-              <div key={idx} className="flex items-center justify-between p-3 border rounded-lg hover:bg-gray-50">
+              <div key={idx} className="flex items-center justify-between p-3 border rounded-lg hover:bg-white/5">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="text-xs text-gray-500">{entry.date}</span>
-                    <span className="text-sm font-semibold text-gray-900">{entry.client}</span>
-                    {entry.billable && <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded">BILLABLE</span>}
+                    <span className="text-xs text-slate-400">{entry.date}</span>
+                    <span className="text-sm font-semibold text-slate-100">{entry.client}</span>
+                    {entry.billable && <span className="px-2 py-0.5 bg-green-500/15 text-green-300 text-xs font-semibold rounded">BILLABLE</span>}
                   </div>
-                  <p className="text-sm text-gray-600">{entry.task}</p>
-                  <p className="text-xs text-gray-500 mt-1">{entry.job}</p>
+                  <p className="text-sm text-slate-300">{entry.task}</p>
+                  <p className="text-xs text-slate-400 mt-1">{entry.job}</p>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="text-sm font-semibold text-gray-900">{entry.hours}h</span>
+                  <span className="text-sm font-semibold text-slate-100">{entry.hours}h</span>
                   <span className={`px-2 py-1 text-xs font-semibold rounded ${
-                    entry.status === 'approved' ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-700'
+                    entry.status === 'approved' ? 'bg-green-500/15 text-green-300' : 'bg-amber-500/15 text-amber-300'
                   }`}>
                     {entry.status}
                   </span>
@@ -291,74 +291,74 @@ export function NowWorkOS({ onSwitchModule }: NowWorkOSProps) {
       {/* Key Performance Indicators */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <Card className="relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full -mr-16 -mt-16" />
+          <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full -mr-16 -mt-16" />
           <CardContent className="p-6 relative">
             <div className="flex items-center justify-between mb-4">
-              <div className="p-3 bg-blue-100 rounded-lg">
-                <Activity className="w-6 h-6 text-blue-600" />
+              <div className="p-3 bg-blue-500/15 rounded-lg">
+                <Activity className="w-6 h-6 text-blue-400" />
               </div>
-              <div className={`flex items-center gap-1 text-sm font-semibold ${kpiData.utilisationChange >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+              <div className={`flex items-center gap-1 text-sm font-semibold ${kpiData.utilisationChange >= 0 ? 'text-green-400' : 'text-red-400'}`}>
                 <TrendingUp className="w-4 h-4" />
                 {kpiData.utilisationChange}%
               </div>
             </div>
-            <p className="text-sm text-gray-600 mb-1">Utilisation Rate</p>
-            <p className="text-3xl font-bold text-gray-900">{kpiData.utilisation}%</p>
-            <p className="text-xs text-gray-500 mt-2">Target: 75%</p>
+            <p className="text-sm text-slate-300 mb-1">Utilisation Rate</p>
+            <p className="text-3xl font-bold text-slate-100">{kpiData.utilisation}%</p>
+            <p className="text-xs text-slate-400 mt-2">Target: 75%</p>
           </CardContent>
         </Card>
 
         <Card className="relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-green-50 rounded-full -mr-16 -mt-16" />
+          <div className="absolute top-0 right-0 w-32 h-32 bg-green-500/10 rounded-full -mr-16 -mt-16" />
           <CardContent className="p-6 relative">
             <div className="flex items-center justify-between mb-4">
-              <div className="p-3 bg-green-100 rounded-lg">
-                <Target className="w-6 h-6 text-green-600" />
+              <div className="p-3 bg-green-500/15 rounded-lg">
+                <Target className="w-6 h-6 text-green-400" />
               </div>
-              <div className={`flex items-center gap-1 text-sm font-semibold ${kpiData.recoveryChange >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+              <div className={`flex items-center gap-1 text-sm font-semibold ${kpiData.recoveryChange >= 0 ? 'text-green-400' : 'text-red-400'}`}>
                 <TrendingUp className="w-4 h-4" />
                 {kpiData.recoveryChange}%
               </div>
             </div>
-            <p className="text-sm text-gray-600 mb-1">Recovery Rate</p>
-            <p className="text-3xl font-bold text-gray-900">{kpiData.recovery}%</p>
-            <p className="text-xs text-gray-500 mt-2">Target: 90%</p>
+            <p className="text-sm text-slate-300 mb-1">Recovery Rate</p>
+            <p className="text-3xl font-bold text-slate-100">{kpiData.recovery}%</p>
+            <p className="text-xs text-slate-400 mt-2">Target: 90%</p>
           </CardContent>
         </Card>
 
         <Card className="relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-purple-50 rounded-full -mr-16 -mt-16" />
+          <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full -mr-16 -mt-16" />
           <CardContent className="p-6 relative">
             <div className="flex items-center justify-between mb-4">
-              <div className="p-3 bg-purple-100 rounded-lg">
-                <Percent className="w-6 h-6 text-purple-600" />
+              <div className="p-3 bg-purple-500/15 rounded-lg">
+                <Percent className="w-6 h-6 text-purple-400" />
               </div>
-              <div className={`flex items-center gap-1 text-sm font-semibold ${kpiData.realisationChange >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+              <div className={`flex items-center gap-1 text-sm font-semibold ${kpiData.realisationChange >= 0 ? 'text-green-400' : 'text-red-400'}`}>
                 <TrendingUp className="w-4 h-4" />
                 {kpiData.realisationChange}%
               </div>
             </div>
-            <p className="text-sm text-gray-600 mb-1">Realisation Rate</p>
-            <p className="text-3xl font-bold text-gray-900">{kpiData.realisation}%</p>
-            <p className="text-xs text-gray-500 mt-2">Target: 95%</p>
+            <p className="text-sm text-slate-300 mb-1">Realisation Rate</p>
+            <p className="text-3xl font-bold text-slate-100">{kpiData.realisation}%</p>
+            <p className="text-xs text-slate-400 mt-2">Target: 95%</p>
           </CardContent>
         </Card>
 
         <Card className="relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-amber-50 rounded-full -mr-16 -mt-16" />
+          <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full -mr-16 -mt-16" />
           <CardContent className="p-6 relative">
             <div className="flex items-center justify-between mb-4">
-              <div className="p-3 bg-amber-100 rounded-lg">
-                <DollarSign className="w-6 h-6 text-amber-600" />
+              <div className="p-3 bg-amber-500/15 rounded-lg">
+                <DollarSign className="w-6 h-6 text-amber-400" />
               </div>
-              <div className={`flex items-center gap-1 text-sm font-semibold ${kpiData.marginChange >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+              <div className={`flex items-center gap-1 text-sm font-semibold ${kpiData.marginChange >= 0 ? 'text-green-400' : 'text-red-400'}`}>
                 <TrendingUp className="w-4 h-4" />
                 {kpiData.marginChange}%
               </div>
             </div>
-            <p className="text-sm text-gray-600 mb-1">Average Margin</p>
-            <p className="text-3xl font-bold text-gray-900">{kpiData.avgMargin}%</p>
-            <p className="text-xs text-gray-500 mt-2">Target: 40%</p>
+            <p className="text-sm text-slate-300 mb-1">Average Margin</p>
+            <p className="text-3xl font-bold text-slate-100">{kpiData.avgMargin}%</p>
+            <p className="text-xs text-slate-400 mt-2">Target: 40%</p>
           </CardContent>
         </Card>
       </div>
@@ -368,42 +368,42 @@ export function NowWorkOS({ onSwitchModule }: NowWorkOSProps) {
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
-              <span className="text-sm text-gray-600">Monthly Revenue</span>
-              <div className={`flex items-center gap-1 text-sm font-semibold ${kpiData.revenueChange >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+              <span className="text-sm text-slate-300">Monthly Revenue</span>
+              <div className={`flex items-center gap-1 text-sm font-semibold ${kpiData.revenueChange >= 0 ? 'text-green-400' : 'text-red-400'}`}>
                 <TrendingUp className="w-4 h-4" />
                 {kpiData.revenueChange}%
               </div>
             </div>
-            <p className="text-3xl font-bold text-gray-900">${(kpiData.monthlyRevenue / 1000).toFixed(0)}K</p>
-            <p className="text-xs text-gray-500 mt-2">vs last month</p>
+            <p className="text-3xl font-bold text-slate-100">${(kpiData.monthlyRevenue / 1000).toFixed(0)}K</p>
+            <p className="text-xs text-slate-400 mt-2">vs last month</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
-              <span className="text-sm text-gray-600">WIP Balance</span>
-              <div className={`flex items-center gap-1 text-sm font-semibold ${kpiData.wipChange < 0 ? 'text-green-600' : 'text-red-600'}`}>
+              <span className="text-sm text-slate-300">WIP Balance</span>
+              <div className={`flex items-center gap-1 text-sm font-semibold ${kpiData.wipChange < 0 ? 'text-green-400' : 'text-red-400'}`}>
                 <TrendingUp className="w-4 h-4" />
                 {Math.abs(kpiData.wipChange)}%
               </div>
             </div>
-            <p className="text-3xl font-bold text-gray-900">${(kpiData.wipBalance / 1000).toFixed(0)}K</p>
-            <p className="text-xs text-gray-500 mt-2">Aging &lt; 60 days</p>
+            <p className="text-3xl font-bold text-slate-100">${(kpiData.wipBalance / 1000).toFixed(0)}K</p>
+            <p className="text-xs text-slate-400 mt-2">Aging &lt; 60 days</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
-              <span className="text-sm text-gray-600">Debtors</span>
-              <div className={`flex items-center gap-1 text-sm font-semibold ${kpiData.debtorChange < 0 ? 'text-green-600' : 'text-red-600'}`}>
+              <span className="text-sm text-slate-300">Debtors</span>
+              <div className={`flex items-center gap-1 text-sm font-semibold ${kpiData.debtorChange < 0 ? 'text-green-400' : 'text-red-400'}`}>
                 <TrendingUp className="w-4 h-4" />
                 {Math.abs(kpiData.debtorChange)}%
               </div>
             </div>
-            <p className="text-3xl font-bold text-gray-900">${(kpiData.debtorBalance / 1000).toFixed(0)}K</p>
-            <p className="text-xs text-gray-500 mt-2">Average 28 days</p>
+            <p className="text-3xl font-bold text-slate-100">${(kpiData.debtorBalance / 1000).toFixed(0)}K</p>
+            <p className="text-xs text-slate-400 mt-2">Average 28 days</p>
           </CardContent>
         </Card>
       </div>
@@ -416,7 +416,7 @@ export function NowWorkOS({ onSwitchModule }: NowWorkOSProps) {
         <CardContent>
           <div className="space-y-3">
             {teamUtilisation.map((member, idx) => (
-              <div key={idx} className="p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+              <div key={idx} className="p-4 border rounded-lg hover:bg-white/5 transition-colors">
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-3">
                     <Avatar>
@@ -425,32 +425,32 @@ export function NowWorkOS({ onSwitchModule }: NowWorkOSProps) {
                       </AvatarFallback>
                     </Avatar>
                     <div>
-                      <p className="font-semibold text-gray-900">{member.name}</p>
-                      <p className="text-sm text-gray-600">{member.role}</p>
+                      <p className="font-semibold text-slate-100">{member.name}</p>
+                      <p className="text-sm text-slate-300">{member.role}</p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-sm font-semibold text-gray-900">${(member.revenue / 1000).toFixed(0)}K</p>
-                    <p className="text-xs text-gray-500">{member.hours}h logged</p>
+                    <p className="text-sm font-semibold text-slate-100">${(member.revenue / 1000).toFixed(0)}K</p>
+                    <p className="text-xs text-slate-400">{member.hours}h logged</p>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-4 gap-4 text-center">
                   <div>
-                    <p className="text-xs text-gray-500 mb-1">Utilisation</p>
-                    <p className="text-sm font-semibold text-gray-900">{member.util}%</p>
+                    <p className="text-xs text-slate-400 mb-1">Utilisation</p>
+                    <p className="text-sm font-semibold text-slate-100">{member.util}%</p>
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500 mb-1">Recovery</p>
-                    <p className="text-sm font-semibold text-gray-900">{member.recovery}%</p>
+                    <p className="text-xs text-slate-400 mb-1">Recovery</p>
+                    <p className="text-sm font-semibold text-slate-100">{member.recovery}%</p>
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500 mb-1">Margin</p>
-                    <p className="text-sm font-semibold text-gray-900">{member.margin}%</p>
+                    <p className="text-xs text-slate-400 mb-1">Margin</p>
+                    <p className="text-sm font-semibold text-slate-100">{member.margin}%</p>
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500 mb-1">Status</p>
-                    <span className={`text-xs font-semibold ${member.util >= 80 ? 'text-green-600' : member.util >= 65 ? 'text-amber-600' : 'text-red-600'}`}>
+                    <p className="text-xs text-slate-400 mb-1">Status</p>
+                    <span className={`text-xs font-semibold ${member.util >= 80 ? 'text-green-400' : member.util >= 65 ? 'text-amber-400' : 'text-red-400'}`}>
                       {member.util >= 80 ? 'Optimal' : member.util >= 65 ? 'On Track' : 'Low'}
                     </span>
                   </div>
@@ -471,23 +471,23 @@ export function NowWorkOS({ onSwitchModule }: NowWorkOSProps) {
             {activeJobs.filter(j => j.risk === 'high' || j.actual > j.budget).map((job) => (
               <div 
                 key={job.id}
-                className="p-4 border border-red-200 bg-red-50 rounded-lg cursor-pointer hover:bg-red-100 transition-colors"
+                className="p-4 border border-red-500/30 bg-red-500/10 rounded-lg cursor-pointer hover:bg-red-500/15 transition-colors"
                 onClick={() => toast.warning(`Opening ${job.id}...`)}
               >
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
-                      <AlertCircle className="w-5 h-5 text-red-600" />
-                      <span className="font-mono text-sm font-semibold text-gray-900">{job.id}</span>
-                      <span className="px-2 py-0.5 bg-red-100 text-red-700 text-xs font-semibold rounded">OVER BUDGET</span>
+                      <AlertCircle className="w-5 h-5 text-red-400" />
+                      <span className="font-mono text-sm font-semibold text-slate-100">{job.id}</span>
+                      <span className="px-2 py-0.5 bg-red-500/15 text-red-300 text-xs font-semibold rounded">OVER BUDGET</span>
                     </div>
-                    <h4 className="font-semibold text-gray-900">{job.client} - {job.service}</h4>
-                    <p className="text-sm text-red-700 mt-2">
+                    <h4 className="font-semibold text-slate-100">{job.client} - {job.service}</h4>
+                    <p className="text-sm text-red-300 mt-2">
                       Budget: ${job.budget.toLocaleString()} | Actual: ${job.actual.toLocaleString()} | 
                       Variance: +${(job.actual - job.budget).toLocaleString()} ({Math.round(((job.actual - job.budget) / job.budget) * 100)}%)
                     </p>
                   </div>
-                  <Button size="sm" variant="outline" className="text-red-700 border-red-300">
+                  <Button size="sm" variant="outline" className="text-red-300 border-red-300">
                     Review
                   </Button>
                 </div>
@@ -503,27 +503,27 @@ export function NowWorkOS({ onSwitchModule }: NowWorkOSProps) {
     return (
       <div className="space-y-6">
         {/* Live Timer Card */}
-        <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-white">
+        <Card className="border-2 border-blue-500/30 bg-gradient-to-br from-blue-50 to-white">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Timer className="w-5 h-5 text-blue-600" />
+              <Timer className="w-5 h-5 text-blue-400" />
               Live Timer
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-center mb-6">
-              <p className="text-6xl font-bold text-blue-600 mb-2">
+              <p className="text-6xl font-bold text-blue-400 mb-2">
                 {Math.floor(timerSeconds / 3600).toString().padStart(2, '0')}:
                 {Math.floor((timerSeconds % 3600) / 60).toString().padStart(2, '0')}:
                 {(timerSeconds % 60).toString().padStart(2, '0')}
               </p>
-              <p className="text-sm text-gray-600">Hours : Minutes : Seconds</p>
+              <p className="text-sm text-slate-300">Hours : Minutes : Seconds</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Client / Job</label>
-                <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <label className="block text-sm font-medium text-slate-300 mb-2">Client / Job</label>
+                <select className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                   <option>Select job...</option>
                   <option>Acme Corp - JOB-2024-047</option>
                   <option>TechStart Pty - JOB-2024-046</option>
@@ -531,11 +531,11 @@ export function NowWorkOS({ onSwitchModule }: NowWorkOSProps) {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Task Description</label>
+                <label className="block text-sm font-medium text-slate-300 mb-2">Task Description</label>
                 <input
                   type="text"
                   placeholder="What are you working on?"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
             </div>
@@ -588,23 +588,23 @@ export function NowWorkOS({ onSwitchModule }: NowWorkOSProps) {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Plus className="w-5 h-5 text-green-600" />
+              <Plus className="w-5 h-5 text-green-400" />
               Manual Time Entry
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Date</label>
+                <label className="block text-sm font-medium text-slate-300 mb-2">Date</label>
                 <input
                   type="date"
                   defaultValue={new Date().toISOString().split('T')[0]}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Client / Job</label>
-                <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <label className="block text-sm font-medium text-slate-300 mb-2">Client / Job</label>
+                <select className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                   <option>Select job...</option>
                   <option>Acme Corp - JOB-2024-047</option>
                   <option>TechStart Pty - JOB-2024-046</option>
@@ -612,28 +612,28 @@ export function NowWorkOS({ onSwitchModule }: NowWorkOSProps) {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Hours</label>
+                <label className="block text-sm font-medium text-slate-300 mb-2">Hours</label>
                 <input
                   type="number"
                   step="0.25"
                   placeholder="0.00"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Type</label>
-                <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <label className="block text-sm font-medium text-slate-300 mb-2">Type</label>
+                <select className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                   <option>Billable</option>
                   <option>Non-Billable</option>
                 </select>
               </div>
             </div>
             <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700 mb-2">Task Description</label>
+              <label className="block text-sm font-medium text-slate-300 mb-2">Task Description</label>
               <textarea
                 rows={2}
                 placeholder="Describe what you worked on..."
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
             <Button 
@@ -666,36 +666,36 @@ export function NowWorkOS({ onSwitchModule }: NowWorkOSProps) {
           <CardContent>
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-gray-50">
+                <thead className="bg-white/5">
                   <tr>
-                    <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Date</th>
-                    <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Client</th>
-                    <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Job</th>
-                    <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Task</th>
-                    <th className="px-4 py-3 text-center text-xs font-semibold text-gray-600 uppercase">Hours</th>
-                    <th className="px-4 py-3 text-center text-xs font-semibold text-gray-600 uppercase">Type</th>
-                    <th className="px-4 py-3 text-center text-xs font-semibold text-gray-600 uppercase">Status</th>
-                    <th className="px-4 py-3 text-right text-xs font-semibold text-gray-600 uppercase">Actions</th>
+                    <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Date</th>
+                    <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Client</th>
+                    <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Job</th>
+                    <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Task</th>
+                    <th className="px-4 py-3 text-center text-xs font-semibold text-slate-300 uppercase">Hours</th>
+                    <th className="px-4 py-3 text-center text-xs font-semibold text-slate-300 uppercase">Type</th>
+                    <th className="px-4 py-3 text-center text-xs font-semibold text-slate-300 uppercase">Status</th>
+                    <th className="px-4 py-3 text-right text-xs font-semibold text-slate-300 uppercase">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-200">
+                <tbody className="divide-y divide-white/10">
                   {recentTime.map((entry, idx) => (
-                    <tr key={idx} className="hover:bg-gray-50">
-                      <td className="px-4 py-3 text-sm text-gray-900">{entry.date}</td>
-                      <td className="px-4 py-3 text-sm font-medium text-gray-900">{entry.client}</td>
-                      <td className="px-4 py-3 text-sm text-gray-600 font-mono">{entry.job}</td>
-                      <td className="px-4 py-3 text-sm text-gray-600">{entry.task}</td>
-                      <td className="px-4 py-3 text-sm text-center font-semibold text-gray-900">{entry.hours}h</td>
+                    <tr key={idx} className="hover:bg-white/5">
+                      <td className="px-4 py-3 text-sm text-slate-100">{entry.date}</td>
+                      <td className="px-4 py-3 text-sm font-medium text-slate-100">{entry.client}</td>
+                      <td className="px-4 py-3 text-sm text-slate-300 font-mono">{entry.job}</td>
+                      <td className="px-4 py-3 text-sm text-slate-300">{entry.task}</td>
+                      <td className="px-4 py-3 text-sm text-center font-semibold text-slate-100">{entry.hours}h</td>
                       <td className="px-4 py-3 text-center">
                         <span className={`px-2 py-1 text-xs font-semibold rounded ${
-                          entry.billable ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-700'
+                          entry.billable ? 'bg-green-500/15 text-green-300' : 'bg-white/5 text-slate-300'
                         }`}>
                           {entry.billable ? 'Billable' : 'Non-Bill'}
                         </span>
                       </td>
                       <td className="px-4 py-3 text-center">
                         <span className={`px-2 py-1 text-xs font-semibold rounded ${
-                          entry.status === 'approved' ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-700'
+                          entry.status === 'approved' ? 'bg-green-500/15 text-green-300' : 'bg-amber-500/15 text-amber-300'
                         }`}>
                           {entry.status}
                         </span>
@@ -705,7 +705,7 @@ export function NowWorkOS({ onSwitchModule }: NowWorkOSProps) {
                           <Button size="sm" variant="ghost" onClick={() => toast.info('Edit time entry')}>
                             <Edit className="w-4 h-4" />
                           </Button>
-                          <Button size="sm" variant="ghost" className="text-red-600" onClick={() => toast.error('Delete time entry')}>
+                          <Button size="sm" variant="ghost" className="text-red-400" onClick={() => toast.error('Delete time entry')}>
                             <Trash2 className="w-4 h-4" />
                           </Button>
                         </div>
@@ -713,11 +713,11 @@ export function NowWorkOS({ onSwitchModule }: NowWorkOSProps) {
                     </tr>
                   ))}
                 </tbody>
-                <tfoot className="bg-gray-50">
+                <tfoot className="bg-white/5">
                   <tr>
-                    <td colSpan={4} className="px-4 py-3 text-sm font-semibold text-gray-900">Total This Week</td>
-                    <td className="px-4 py-3 text-sm text-center font-bold text-blue-600">34.5h</td>
-                    <td colSpan={3} className="px-4 py-3 text-sm text-gray-600">28.5h Billable | 6h Non-Billable</td>
+                    <td colSpan={4} className="px-4 py-3 text-sm font-semibold text-slate-100">Total This Week</td>
+                    <td className="px-4 py-3 text-sm text-center font-bold text-blue-400">34.5h</td>
+                    <td colSpan={3} className="px-4 py-3 text-sm text-slate-300">28.5h Billable | 6h Non-Billable</td>
                   </tr>
                 </tfoot>
               </table>
@@ -730,44 +730,44 @@ export function NowWorkOS({ onSwitchModule }: NowWorkOSProps) {
           <Card>
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm text-gray-600">Total Hours</span>
-                <Clock className="w-5 h-5 text-blue-600" />
+                <span className="text-sm text-slate-300">Total Hours</span>
+                <Clock className="w-5 h-5 text-blue-400" />
               </div>
-              <p className="text-3xl font-bold text-gray-900">34.5</p>
-              <p className="text-xs text-green-600 mt-1">â†‘ 12% vs last week</p>
+              <p className="text-3xl font-bold text-slate-100">34.5</p>
+              <p className="text-xs text-green-400 mt-1">â†‘ 12% vs last week</p>
             </CardContent>
           </Card>
 
           <Card>
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm text-gray-600">Billable</span>
-                <DollarSign className="w-5 h-5 text-green-600" />
+                <span className="text-sm text-slate-300">Billable</span>
+                <DollarSign className="w-5 h-5 text-green-400" />
               </div>
-              <p className="text-3xl font-bold text-gray-900">28.5</p>
-              <p className="text-xs text-gray-500 mt-1">82.6% of total</p>
+              <p className="text-3xl font-bold text-slate-100">28.5</p>
+              <p className="text-xs text-slate-400 mt-1">82.6% of total</p>
             </CardContent>
           </Card>
 
           <Card>
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm text-gray-600">Utilisation</span>
-                <Activity className="w-5 h-5 text-purple-600" />
+                <span className="text-sm text-slate-300">Utilisation</span>
+                <Activity className="w-5 h-5 text-purple-400" />
               </div>
-              <p className="text-3xl font-bold text-gray-900">92%</p>
-              <p className="text-xs text-green-600 mt-1">Above target</p>
+              <p className="text-3xl font-bold text-slate-100">92%</p>
+              <p className="text-xs text-green-400 mt-1">Above target</p>
             </CardContent>
           </Card>
 
           <Card>
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm text-gray-600">Pending</span>
-                <AlertCircle className="w-5 h-5 text-amber-600" />
+                <span className="text-sm text-slate-300">Pending</span>
+                <AlertCircle className="w-5 h-5 text-amber-400" />
               </div>
-              <p className="text-3xl font-bold text-gray-900">6.5</p>
-              <p className="text-xs text-gray-500 mt-1">Needs approval</p>
+              <p className="text-3xl font-bold text-slate-100">6.5</p>
+              <p className="text-xs text-slate-400 mt-1">Needs approval</p>
             </CardContent>
           </Card>
         </div>
@@ -830,9 +830,9 @@ export function NowWorkOS({ onSwitchModule }: NowWorkOSProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white/5">
       {/* Top Navigation Bar */}
-      <nav className="bg-white border-b border-gray-200 fixed w-full top-0 z-50">
+      <nav className="bg-white border-b border-white/10 fixed w-full top-0 z-50">
         <div className="px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo and Brand */}
@@ -842,9 +842,9 @@ export function NowWorkOS({ onSwitchModule }: NowWorkOSProps) {
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
                 {mobileMenuOpen ? (
-                  <X className="w-6 h-6 text-gray-600" />
+                  <X className="w-6 h-6 text-slate-300" />
                 ) : (
-                  <Menu className="w-6 h-6 text-gray-600" />
+                  <Menu className="w-6 h-6 text-slate-300" />
                 )}
               </button>
               
@@ -853,8 +853,8 @@ export function NowWorkOS({ onSwitchModule }: NowWorkOSProps) {
                   <Zap className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h1 className="text-lg font-bold text-gray-900">Now Work</h1>
-                  <p className="text-xs text-gray-500">Time & Revenue OS</p>
+                  <h1 className="text-lg font-bold text-slate-100">Now Work</h1>
+                  <p className="text-xs text-slate-400">Time & Revenue OS</p>
                 </div>
               </div>
             </div>
@@ -872,7 +872,7 @@ export function NowWorkOS({ onSwitchModule }: NowWorkOSProps) {
                     setCurrentPage('management-dashboard');
                   }
                 }}
-                className="px-3 py-2 border border-blue-300 rounded-lg text-sm font-medium text-blue-700 bg-blue-50 hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="px-3 py-2 border border-blue-300 rounded-lg text-sm font-medium text-blue-300 bg-blue-500/10 hover:bg-blue-500/15 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="staff">ðŸ‘¤ Staff</option>
                 <option value="manager">ðŸ“Š Manager</option>
@@ -884,7 +884,7 @@ export function NowWorkOS({ onSwitchModule }: NowWorkOSProps) {
               <select
                 value="nowwork"
                 onChange={(e) => onSwitchModule(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="px-3 py-2 border border-white/10 rounded-lg text-sm font-medium text-slate-300 bg-white hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="nowwork">Now Work OS</option>
                 <option value="Grow MIP">Switch to Grow MIP</option>
@@ -903,8 +903,8 @@ export function NowWorkOS({ onSwitchModule }: NowWorkOSProps) {
               
               <div className="flex items-center gap-3 pl-3 border-l">
                 <div className="text-right hidden sm:block">
-                  <p className="text-sm font-medium text-gray-900">Michael Carter</p>
-                  <p className="text-xs text-gray-500 capitalize">{userRole}</p>
+                  <p className="text-sm font-medium text-slate-100">Michael Carter</p>
+                  <p className="text-xs text-slate-400 capitalize">{userRole}</p>
                 </div>
                 <Avatar>
                   <AvatarFallback className="bg-blue-600 text-white">MC</AvatarFallback>
@@ -959,8 +959,8 @@ export function NowWorkOS({ onSwitchModule }: NowWorkOSProps) {
         <div className="max-w-7xl mx-auto">
           {/* Page Header */}
           <div className="mb-6">
-            <h2 className="text-2xl font-semibold text-gray-900">{getPageTitle()}</h2>
-            <p className="text-gray-600 text-sm mt-1">
+            <h2 className="text-2xl font-semibold text-slate-100">{getPageTitle()}</h2>
+            <p className="text-slate-300 text-sm mt-1">
               {currentPage === 'staff-dashboard' && 'Your personal workspace for jobs, time and tasks'}
               {currentPage === 'management-dashboard' && 'Real-time business performance and team metrics'}
               {currentPage === 'time-tracking' && 'Track billable and non-billable time'}

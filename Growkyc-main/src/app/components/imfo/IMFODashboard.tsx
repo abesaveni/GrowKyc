@@ -80,67 +80,67 @@ export function IMFODashboard({ onNavigate }: IMFODashboardProps) {
     <div className="p-6 space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">IMFO Platform Dashboard</h1>
-        <p className="text-gray-600 mt-1">Investment Management & Fund Operations Overview</p>
+        <h1 className="text-2xl font-bold text-slate-100">IMFO Platform Dashboard</h1>
+        <p className="text-slate-300 mt-1">Investment Management & Fund Operations Overview</p>
       </div>
 
       {/* Key Metrics */}
       <div className="grid grid-cols-4 gap-6">
-        <div className="bg-white border border-gray-300 rounded-lg p-6">
+        <div className="bg-white border border-white/10 rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-sm text-gray-600">Total AUM</p>
-            <DollarSign className="w-5 h-5 text-purple-600" />
+            <p className="text-sm text-slate-300">Total AUM</p>
+            <DollarSign className="w-5 h-5 text-purple-400" />
           </div>
-          <p className="text-3xl font-bold text-gray-900">
+          <p className="text-3xl font-bold text-slate-100">
             ${(totalAUM / 1000000).toFixed(0)}M
           </p>
           <div className="flex items-center gap-1 mt-2">
-            <TrendingUp className="w-4 h-4 text-green-600" />
-            <p className="text-sm text-green-600">+12.5% YTD</p>
+            <TrendingUp className="w-4 h-4 text-green-400" />
+            <p className="text-sm text-green-400">+12.5% YTD</p>
           </div>
         </div>
 
-        <div className="bg-white border border-gray-300 rounded-lg p-6">
+        <div className="bg-white border border-white/10 rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-sm text-gray-600">Total Investors</p>
-            <Users className="w-5 h-5 text-blue-600" />
+            <p className="text-sm text-slate-300">Total Investors</p>
+            <Users className="w-5 h-5 text-blue-400" />
           </div>
-          <p className="text-3xl font-bold text-gray-900">{totalInvestors}</p>
+          <p className="text-3xl font-bold text-slate-100">{totalInvestors}</p>
           <div className="flex items-center gap-1 mt-2">
-            <TrendingUp className="w-4 h-4 text-green-600" />
-            <p className="text-sm text-green-600">+8 this quarter</p>
+            <TrendingUp className="w-4 h-4 text-green-400" />
+            <p className="text-sm text-green-400">+8 this quarter</p>
           </div>
         </div>
 
-        <div className="bg-white border border-gray-300 rounded-lg p-6">
+        <div className="bg-white border border-white/10 rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-sm text-gray-600">Avg IRR</p>
-            <TrendingUp className="w-5 h-5 text-green-600" />
+            <p className="text-sm text-slate-300">Avg IRR</p>
+            <TrendingUp className="w-5 h-5 text-green-400" />
           </div>
-          <p className="text-3xl font-bold text-gray-900">{avgIRR.toFixed(1)}%</p>
+          <p className="text-3xl font-bold text-slate-100">{avgIRR.toFixed(1)}%</p>
           <div className="flex items-center gap-1 mt-2">
-            <ArrowUpRight className="w-4 h-4 text-green-600" />
-            <p className="text-sm text-green-600">Above benchmark</p>
+            <ArrowUpRight className="w-4 h-4 text-green-400" />
+            <p className="text-sm text-green-400">Above benchmark</p>
           </div>
         </div>
 
-        <div className="bg-white border border-gray-300 rounded-lg p-6">
+        <div className="bg-white border border-white/10 rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-sm text-gray-600">Portfolio Companies</p>
-            <Briefcase className="w-5 h-5 text-orange-600" />
+            <p className="text-sm text-slate-300">Portfolio Companies</p>
+            <Briefcase className="w-5 h-5 text-orange-400" />
           </div>
-          <p className="text-3xl font-bold text-gray-900">{portfolioCompanies.length}</p>
+          <p className="text-3xl font-bold text-slate-100">{portfolioCompanies.length}</p>
           <div className="flex items-center gap-1 mt-2">
-            <Activity className="w-4 h-4 text-gray-600" />
-            <p className="text-sm text-gray-600">Across {funds.length} funds</p>
+            <Activity className="w-4 h-4 text-slate-300" />
+            <p className="text-sm text-slate-300">Across {funds.length} funds</p>
           </div>
         </div>
       </div>
 
       {/* Funds Overview */}
-      <div className="bg-white border border-gray-300 rounded-lg p-6">
+      <div className="bg-white border border-white/10 rounded-lg p-6">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-semibold text-gray-900">Fund Performance</h2>
+          <h2 className="text-lg font-semibold text-slate-100">Fund Performance</h2>
           <Button variant="outline" size="sm" onClick={() => onNavigate('fund-performance')}>
             View All Funds
           </Button>
@@ -148,42 +148,42 @@ export function IMFODashboard({ onNavigate }: IMFODashboardProps) {
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-gray-200">
-                <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Fund Name</th>
-                <th className="text-right py-3 px-4 text-sm font-semibold text-gray-900">AUM</th>
-                <th className="text-right py-3 px-4 text-sm font-semibold text-gray-900">Investors</th>
-                <th className="text-right py-3 px-4 text-sm font-semibold text-gray-900">Vintage</th>
-                <th className="text-right py-3 px-4 text-sm font-semibold text-gray-900">IRR</th>
-                <th className="text-right py-3 px-4 text-sm font-semibold text-gray-900">MOIC</th>
-                <th className="text-center py-3 px-4 text-sm font-semibold text-gray-900">Status</th>
-                <th className="text-center py-3 px-4 text-sm font-semibold text-gray-900">Performance</th>
+              <tr className="border-b border-white/10">
+                <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100">Fund Name</th>
+                <th className="text-right py-3 px-4 text-sm font-semibold text-slate-100">AUM</th>
+                <th className="text-right py-3 px-4 text-sm font-semibold text-slate-100">Investors</th>
+                <th className="text-right py-3 px-4 text-sm font-semibold text-slate-100">Vintage</th>
+                <th className="text-right py-3 px-4 text-sm font-semibold text-slate-100">IRR</th>
+                <th className="text-right py-3 px-4 text-sm font-semibold text-slate-100">MOIC</th>
+                <th className="text-center py-3 px-4 text-sm font-semibold text-slate-100">Status</th>
+                <th className="text-center py-3 px-4 text-sm font-semibold text-slate-100">Performance</th>
               </tr>
             </thead>
             <tbody>
               {funds.map((fund, idx) => (
-                <tr key={idx} className="border-b border-gray-100 hover:bg-gray-50">
+                <tr key={idx} className="border-b border-white/10 hover:bg-white/5">
                   <td className="py-3 px-4">
-                    <p className="font-semibold text-gray-900">{fund.name}</p>
+                    <p className="font-semibold text-slate-100">{fund.name}</p>
                   </td>
-                  <td className="py-3 px-4 text-right font-semibold text-gray-900">
+                  <td className="py-3 px-4 text-right font-semibold text-slate-100">
                     ${(fund.aum / 1000000).toFixed(0)}M
                   </td>
-                  <td className="py-3 px-4 text-right text-gray-900">{fund.investors}</td>
-                  <td className="py-3 px-4 text-right text-gray-900">{fund.vintage}</td>
+                  <td className="py-3 px-4 text-right text-slate-100">{fund.investors}</td>
+                  <td className="py-3 px-4 text-right text-slate-100">{fund.vintage}</td>
                   <td className="py-3 px-4 text-right">
-                    <span className="flex items-center justify-end gap-1 text-green-600 font-semibold">
+                    <span className="flex items-center justify-end gap-1 text-green-400 font-semibold">
                       <TrendingUp className="w-4 h-4" />
                       {fund.irr}%
                     </span>
                   </td>
-                  <td className="py-3 px-4 text-right font-semibold text-gray-900">
+                  <td className="py-3 px-4 text-right font-semibold text-slate-100">
                     {fund.moic}x
                   </td>
                   <td className="py-3 px-4 text-center">
                     <span className={`px-2 py-1 rounded text-xs font-medium ${
                       fund.status === 'Active' 
-                        ? 'bg-green-100 text-green-700' 
-                        : 'bg-blue-100 text-blue-700'
+                        ? 'bg-green-500/15 text-green-300' 
+                        : 'bg-blue-500/15 text-blue-300'
                     }`}>
                       {fund.status}
                     </span>
@@ -191,8 +191,8 @@ export function IMFODashboard({ onNavigate }: IMFODashboardProps) {
                   <td className="py-3 px-4 text-center">
                     <span className={`px-2 py-1 rounded text-xs font-medium ${
                       fund.performance === 'Outperforming' 
-                        ? 'bg-green-100 text-green-700' 
-                        : 'bg-blue-100 text-blue-700'
+                        ? 'bg-green-500/15 text-green-300' 
+                        : 'bg-blue-500/15 text-blue-300'
                     }`}>
                       {fund.performance}
                     </span>
@@ -206,32 +206,32 @@ export function IMFODashboard({ onNavigate }: IMFODashboardProps) {
 
       <div className="grid grid-cols-2 gap-6">
         {/* Portfolio Companies */}
-        <div className="bg-white border border-gray-300 rounded-lg p-6">
+        <div className="bg-white border border-white/10 rounded-lg p-6">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold text-gray-900">Portfolio Companies</h2>
+            <h2 className="text-lg font-semibold text-slate-100">Portfolio Companies</h2>
             <Button variant="outline" size="sm" onClick={() => onNavigate('portfolio-management')}>
               View All
             </Button>
           </div>
           <div className="space-y-3">
             {portfolioCompanies.map((company, idx) => (
-              <div key={idx} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+              <div key={idx} className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
                 <div className="flex-1">
-                  <p className="font-semibold text-gray-900">{company.name}</p>
-                  <p className="text-xs text-gray-600">{company.sector}</p>
+                  <p className="font-semibold text-slate-100">{company.name}</p>
+                  <p className="text-xs text-slate-300">{company.sector}</p>
                 </div>
                 <div className="text-right mr-4">
-                  <p className="text-sm font-semibold text-gray-900">
+                  <p className="text-sm font-semibold text-slate-100">
                     ${(company.investment / 1000000).toFixed(1)}M
                   </p>
-                  <p className="text-xs text-gray-600">{company.ownership}% ownership</p>
+                  <p className="text-xs text-slate-300">{company.ownership}% ownership</p>
                 </div>
                 <span className={`px-2 py-1 rounded text-xs font-medium ${
                   company.status === 'Performing' 
-                    ? 'bg-green-100 text-green-700' 
+                    ? 'bg-green-500/15 text-green-300' 
                     : company.status === 'Watch List'
-                    ? 'bg-yellow-100 text-yellow-700'
-                    : 'bg-red-100 text-red-700'
+                    ? 'bg-yellow-500/15 text-yellow-300'
+                    : 'bg-red-500/15 text-red-300'
                 }`}>
                   {company.status}
                 </span>
@@ -241,43 +241,43 @@ export function IMFODashboard({ onNavigate }: IMFODashboardProps) {
         </div>
 
         {/* Deal Pipeline */}
-        <div className="bg-white border border-gray-300 rounded-lg p-6">
+        <div className="bg-white border border-white/10 rounded-lg p-6">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold text-gray-900">Deal Pipeline</h2>
+            <h2 className="text-lg font-semibold text-slate-100">Deal Pipeline</h2>
             <Button variant="outline" size="sm" onClick={() => onNavigate('deal-pipeline')}>
               View All
             </Button>
           </div>
           <div className="space-y-3">
             {deals.map((deal, idx) => (
-              <div key={idx} className="border border-gray-200 rounded-lg p-3">
+              <div key={idx} className="border border-white/10 rounded-lg p-3">
                 <div className="flex items-start justify-between mb-2">
                   <div className="flex-1">
-                    <p className="font-semibold text-gray-900">{deal.name}</p>
-                    <p className="text-xs text-gray-600">{deal.sector}</p>
+                    <p className="font-semibold text-slate-100">{deal.name}</p>
+                    <p className="text-xs text-slate-300">{deal.sector}</p>
                   </div>
                   <span className={`px-2 py-1 rounded text-xs font-medium ${
                     deal.stage === 'LOI Signed' 
-                      ? 'bg-green-100 text-green-700' 
+                      ? 'bg-green-500/15 text-green-300' 
                       : deal.stage === 'Due Diligence' || deal.stage === 'Term Sheet'
-                      ? 'bg-blue-100 text-blue-700'
-                      : 'bg-gray-100 text-gray-700'
+                      ? 'bg-blue-500/15 text-blue-300'
+                      : 'bg-white/5 text-slate-300'
                   }`}>
                     {deal.stage}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <p className="text-sm font-semibold text-gray-900">
+                  <p className="text-sm font-semibold text-slate-100">
                     ${(deal.amount / 1000000).toFixed(1)}M
                   </p>
                   <div className="flex items-center gap-2">
-                    <div className="w-24 bg-gray-200 rounded-full h-2">
+                    <div className="w-24 bg-white/10 rounded-full h-2">
                       <div 
                         className="bg-purple-600 h-2 rounded-full" 
                         style={{ width: `${deal.probability}%` }}
                       ></div>
                     </div>
-                    <span className="text-xs text-gray-600">{deal.probability}%</span>
+                    <span className="text-xs text-slate-300">{deal.probability}%</span>
                   </div>
                 </div>
               </div>

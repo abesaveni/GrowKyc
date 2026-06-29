@@ -33,21 +33,21 @@ export function CreditCheckSecurity({
       <Card className="border-2 border-indigo-300">
         <CardHeader className="bg-gradient-to-r from-indigo-50 to-purple-50">
           <CardTitle className="text-lg flex items-center gap-2">
-            <FileSearch className="w-5 h-5 text-indigo-600" />
+            <FileSearch className="w-5 h-5 text-indigo-400" />
             Step 4: Credit Check Requirements (NCCP & Privacy Act)
           </CardTitle>
-          <p className="text-sm text-gray-600 mt-1">
+          <p className="text-sm text-slate-300 mt-1">
             Obtain credit report and review repayment history. Privacy Act 1988 applies to credit information collection.
           </p>
         </CardHeader>
         <CardContent className="p-6 space-y-4">
           {/* Privacy Consent */}
-          <div className="p-4 bg-yellow-50 border-2 border-yellow-300 rounded-lg">
+          <div className="p-4 bg-yellow-500/10 border-2 border-yellow-300 rounded-lg">
             <div className="flex items-start gap-2">
-              <AlertCircle className="w-5 h-5 text-yellow-700 mt-0.5 flex-shrink-0" />
+              <AlertCircle className="w-5 h-5 text-yellow-300 mt-0.5 flex-shrink-0" />
               <div>
-                <p className="text-sm font-bold text-yellow-900 mb-1">Privacy Act 1988 Compliance</p>
-                <p className="text-xs text-yellow-800 mb-2">
+                <p className="text-sm font-bold text-yellow-300 mb-1">Privacy Act 1988 Compliance</p>
+                <p className="text-xs text-yellow-300 mb-2">
                   Before accessing credit information, the borrower must consent under the Privacy Act.
                   Credit reporting bodies (CRBs) can only provide data with valid consent.
                 </p>
@@ -58,7 +58,7 @@ export function CreditCheckSecurity({
                     onChange={(e) => onInputChange('creditCheckConsentObtained', e.target.checked)}
                     className="w-4 h-4"
                   />
-                  <span className="text-xs font-semibold text-yellow-900">
+                  <span className="text-xs font-semibold text-yellow-300">
                     Borrower consent obtained to access credit report *
                   </span>
                 </label>
@@ -73,7 +73,7 @@ export function CreditCheckSecurity({
               id="creditBureau"
               value={formData.creditBureau || ''}
               onChange={(e) => onInputChange('creditBureau', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+              className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
             >
               <option value="">Select...</option>
               <option value="equifax">Equifax</option>
@@ -97,12 +97,12 @@ export function CreditCheckSecurity({
           )}
 
           {creditCheckStatus === 'running' && (
-            <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+            <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
               <div className="flex items-center gap-3">
-                <Clock className="w-5 h-5 text-blue-600 animate-spin" />
+                <Clock className="w-5 h-5 text-blue-400 animate-spin" />
                 <div>
-                  <p className="font-semibold text-blue-900">Running Credit Check...</p>
-                  <p className="text-sm text-blue-700">Accessing credit bureau data</p>
+                  <p className="font-semibold text-blue-300">Running Credit Check...</p>
+                  <p className="text-sm text-blue-300">Accessing credit bureau data</p>
                 </div>
               </div>
             </div>
@@ -110,19 +110,19 @@ export function CreditCheckSecurity({
 
           {creditCheckStatus === 'complete' && (
             <>
-              <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+              <div className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
                 <div className="flex items-center gap-3">
-                  <CheckCircle className="w-6 h-6 text-green-600" />
+                  <CheckCircle className="w-6 h-6 text-green-400" />
                   <div>
-                    <p className="font-semibold text-green-900">✅ Credit Check Complete</p>
-                    <p className="text-sm text-green-700">Credit report obtained and reviewed</p>
+                    <p className="font-semibold text-green-300">✅ Credit Check Complete</p>
+                    <p className="text-sm text-green-300">Credit report obtained and reviewed</p>
                   </div>
                 </div>
               </div>
 
               {/* Credit Report Findings */}
               <div className="space-y-3">
-                <h4 className="font-bold text-gray-900">Credit Report Findings:</h4>
+                <h4 className="font-bold text-slate-100">Credit Report Findings:</h4>
                 
                 <div>
                   <Label htmlFor="creditScore">Credit Score</Label>
@@ -133,7 +133,7 @@ export function CreditCheckSecurity({
                     onChange={(e) => onInputChange('creditScore', e.target.value)}
                     placeholder="650"
                   />
-                  <p className="text-xs text-gray-500 mt-1">Typical range: 300-850 (higher is better)</p>
+                  <p className="text-xs text-slate-400 mt-1">Typical range: 300-850 (higher is better)</p>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-4">
@@ -188,7 +188,7 @@ export function CreditCheckSecurity({
                     id="adverseListings"
                     value={formData.adverseListings || ''}
                     onChange={(e) => onInputChange('adverseListings', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
                     rows={3}
                     placeholder="List any defaults, judgements, or adverse information..."
                   />
@@ -202,8 +202,8 @@ export function CreditCheckSecurity({
                     className="w-4 h-4 mt-1"
                   />
                   <div>
-                    <span className="font-semibold text-sm text-gray-900">Repayment History Reviewed *</span>
-                    <p className="text-xs text-gray-600">Comprehensive Consumer Credit (CCC) repayment history information reviewed</p>
+                    <span className="font-semibold text-sm text-slate-100">Repayment History Reviewed *</span>
+                    <p className="text-xs text-slate-300">Comprehensive Consumer Credit (CCC) repayment history information reviewed</p>
                   </div>
                 </label>
               </div>
@@ -211,12 +211,12 @@ export function CreditCheckSecurity({
           )}
 
           {creditCheckStatus === 'flagged' && (
-            <div className="p-4 bg-red-50 border-2 border-red-300 rounded-lg">
+            <div className="p-4 bg-red-500/10 border-2 border-red-300 rounded-lg">
               <div className="flex items-start gap-3">
-                <AlertTriangle className="w-6 h-6 text-red-600 mt-0.5 flex-shrink-0" />
+                <AlertTriangle className="w-6 h-6 text-red-400 mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="font-semibold text-red-900">⚠️ Adverse Credit Information Identified</p>
-                  <p className="text-sm text-red-800 mt-1">
+                  <p className="font-semibold text-red-300">⚠️ Adverse Credit Information Identified</p>
+                  <p className="text-sm text-red-300 mt-1">
                     The credit report contains adverse information that requires enhanced assessment. 
                     Consider impact on responsible lending obligations.
                   </p>
@@ -231,10 +231,10 @@ export function CreditCheckSecurity({
       <Card className="border-2 border-rose-300">
         <CardHeader className="bg-gradient-to-r from-rose-50 to-pink-50">
           <CardTitle className="text-lg flex items-center gap-2">
-            <Home className="w-5 h-5 text-rose-600" />
+            <Home className="w-5 h-5 text-rose-400" />
             Step 7: Mortgage / Security Requirements (PPSA)
           </CardTitle>
-          <p className="text-sm text-gray-600 mt-1">
+          <p className="text-sm text-slate-300 mt-1">
             For secured lending, properly document security and register on appropriate registers
           </p>
         </CardHeader>
@@ -245,7 +245,7 @@ export function CreditCheckSecurity({
               id="securityType"
               value={formData.securityType || ''}
               onChange={(e) => onInputChange('securityType', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+              className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
             >
               <option value="">Select...</option>
               <option value="residential_property">Residential Property (First Mortgage)</option>
@@ -262,7 +262,7 @@ export function CreditCheckSecurity({
             <>
               {/* Valuation */}
               <div>
-                <h4 className="font-bold text-gray-900 mb-3">Valuation Requirements</h4>
+                <h4 className="font-bold text-slate-100 mb-3">Valuation Requirements</h4>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <Label htmlFor="valuationObtained">Valuation Obtained *</Label>
@@ -270,7 +270,7 @@ export function CreditCheckSecurity({
                       id="valuationObtained"
                       value={formData.valuationObtained || ''}
                       onChange={(e) => onInputChange('valuationObtained', e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                      className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
                     >
                       <option value="">Select...</option>
                       <option value="full_valuation">Full Valuation (Licensed Valuer)</option>
@@ -307,12 +307,12 @@ export function CreditCheckSecurity({
 
               {/* LVR Calculation */}
               {formData.valuationAmount && formData.originalLoanAmount && (
-                <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                  <p className="font-bold text-sm text-blue-900 mb-2">Loan-to-Value Ratio (LVR):</p>
-                  <p className="text-2xl font-bold text-blue-700">
+                <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+                  <p className="font-bold text-sm text-blue-300 mb-2">Loan-to-Value Ratio (LVR):</p>
+                  <p className="text-2xl font-bold text-blue-300">
                     {((parseFloat(formData.originalLoanAmount) / parseFloat(formData.valuationAmount)) * 100).toFixed(2)}%
                   </p>
-                  <p className="text-xs text-blue-800 mt-1">
+                  <p className="text-xs text-blue-300 mt-1">
                     Loan: ${parseFloat(formData.originalLoanAmount).toLocaleString()} / 
                     Valuation: ${parseFloat(formData.valuationAmount).toLocaleString()}
                   </p>
@@ -321,7 +321,7 @@ export function CreditCheckSecurity({
 
               {/* Registration Requirements */}
               <div>
-                <h4 className="font-bold text-gray-900 mb-3">Registration Requirements</h4>
+                <h4 className="font-bold text-slate-100 mb-3">Registration Requirements</h4>
                 <div className="space-y-3">
                   {(formData.securityType?.includes('property') || formData.securityType === 'land') && (
                     <>
@@ -333,10 +333,10 @@ export function CreditCheckSecurity({
                           className="w-4 h-4 mt-1"
                         />
                         <div>
-                          <span className="font-semibold text-sm text-gray-900">
+                          <span className="font-semibold text-sm text-slate-100">
                             Mortgage Properly Documented *
                           </span>
-                          <p className="text-xs text-gray-600">Mortgage deed prepared by solicitor</p>
+                          <p className="text-xs text-slate-300">Mortgage deed prepared by solicitor</p>
                         </div>
                       </label>
 
@@ -348,10 +348,10 @@ export function CreditCheckSecurity({
                           className="w-4 h-4 mt-1"
                         />
                         <div>
-                          <span className="font-semibold text-sm text-gray-900">
+                          <span className="font-semibold text-sm text-slate-100">
                             Mortgage Registered on Title *
                           </span>
-                          <p className="text-xs text-gray-600">
+                          <p className="text-xs text-slate-300">
                             Registered with state land titles office (e.g., NSW Land Registry Services)
                           </p>
                         </div>
@@ -364,7 +364,7 @@ export function CreditCheckSecurity({
                             id="mortgagePriority"
                             value={formData.mortgagePriority || ''}
                             onChange={(e) => onInputChange('mortgagePriority', e.target.value)}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
                           >
                             <option value="">Select...</option>
                             <option value="first">First Mortgage</option>
@@ -394,10 +394,10 @@ export function CreditCheckSecurity({
                         className="w-4 h-4 mt-1"
                       />
                       <div>
-                        <span className="font-semibold text-sm text-gray-900">
+                        <span className="font-semibold text-sm text-slate-100">
                           PPSR Registration Complete *
                         </span>
-                        <p className="text-xs text-gray-600">
+                        <p className="text-xs text-slate-300">
                           Security interest registered on Personal Property Securities Register (PPSR)
                         </p>
                         {formData.ppsrRegistered && (
@@ -424,10 +424,10 @@ export function CreditCheckSecurity({
                       className="w-4 h-4 mt-1"
                     />
                     <div>
-                      <span className="font-semibold text-sm text-gray-900">
+                      <span className="font-semibold text-sm text-slate-100">
                         Priority Position Confirmed *
                       </span>
-                      <p className="text-xs text-gray-600">
+                      <p className="text-xs text-slate-300">
                         Title search confirms security has appropriate priority
                       </p>
                     </div>
@@ -437,7 +437,7 @@ export function CreditCheckSecurity({
 
               {/* Insurance */}
               <div>
-                <h4 className="font-bold text-gray-900 mb-3">Insurance Requirements</h4>
+                <h4 className="font-bold text-slate-100 mb-3">Insurance Requirements</h4>
                 <label className="flex items-start gap-2">
                   <input
                     type="checkbox"
@@ -446,10 +446,10 @@ export function CreditCheckSecurity({
                     className="w-4 h-4 mt-1"
                   />
                   <div>
-                    <span className="font-semibold text-sm text-gray-900">
+                    <span className="font-semibold text-sm text-slate-100">
                       Building Insurance Required *
                     </span>
-                    <p className="text-xs text-gray-600">
+                    <p className="text-xs text-slate-300">
                       Property must be insured with lender noted as interested party
                     </p>
                   </div>
@@ -457,8 +457,8 @@ export function CreditCheckSecurity({
               </div>
 
               {/* Warning */}
-              <div className="p-4 bg-rose-50 border border-rose-300 rounded-lg">
-                <p className="text-xs text-rose-900">
+              <div className="p-4 bg-rose-500/10 border border-rose-300 rounded-lg">
+                <p className="text-xs text-rose-300">
                   <strong>⚠️ Security Perfection:</strong> Failure to properly register security may result in loss 
                   of priority or the security being unenforceable. Always confirm registration completion and priority position.
                 </p>

@@ -112,11 +112,11 @@ export function XeroAccountMapping({ onNavigate }: XeroAccountMappingProps) {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'mapped':
-        return <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded">Mapped</span>;
+        return <span className="px-2 py-0.5 bg-green-500/15 text-green-300 text-xs font-semibold rounded">Mapped</span>;
       case 'unmapped':
-        return <span className="px-2 py-0.5 bg-gray-100 text-gray-700 text-xs font-semibold rounded">Unmapped</span>;
+        return <span className="px-2 py-0.5 bg-white/5 text-slate-300 text-xs font-semibold rounded">Unmapped</span>;
       case 'conflict':
-        return <span className="px-2 py-0.5 bg-orange-100 text-orange-700 text-xs font-semibold rounded">Conflict</span>;
+        return <span className="px-2 py-0.5 bg-orange-500/15 text-orange-300 text-xs font-semibold rounded">Conflict</span>;
       default:
         return null;
     }
@@ -133,8 +133,8 @@ export function XeroAccountMapping({ onNavigate }: XeroAccountMappingProps) {
               Back to Integrations
             </Button>
             <div>
-              <h1 className="text-2xl font-semibold text-gray-900">Xero Account Mapping</h1>
-              <p className="text-sm text-gray-600 mt-1">Map Xero chart of accounts to workpaper line items</p>
+              <h1 className="text-2xl font-semibold text-slate-100">Xero Account Mapping</h1>
+              <p className="text-sm text-slate-300 mt-1">Map Xero chart of accounts to workpaper line items</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -150,23 +150,23 @@ export function XeroAccountMapping({ onNavigate }: XeroAccountMappingProps) {
         </div>
 
         {/* Stats Bar */}
-        <div className="bg-gray-50 border border-gray-300 rounded px-6 py-3">
+        <div className="bg-white/5 border border-white/10 rounded px-6 py-3">
           <div className="flex items-center gap-8 text-sm">
             <div className="flex items-center gap-2">
-              <span className="text-gray-600">Mapped:</span>
-              <span className="font-semibold text-green-600">{mappedCount}</span>
+              <span className="text-slate-300">Mapped:</span>
+              <span className="font-semibold text-green-400">{mappedCount}</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-gray-600">Unmapped:</span>
-              <span className="font-semibold text-gray-600">{unmappedCount}</span>
+              <span className="text-slate-300">Unmapped:</span>
+              <span className="font-semibold text-slate-300">{unmappedCount}</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-gray-600">Conflicts:</span>
-              <span className="font-semibold text-orange-600">{conflictCount}</span>
+              <span className="text-slate-300">Conflicts:</span>
+              <span className="font-semibold text-orange-400">{conflictCount}</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-gray-600">Progress:</span>
-              <span className="font-semibold text-blue-600">
+              <span className="text-slate-300">Progress:</span>
+              <span className="font-semibold text-blue-400">
                 {Math.round((mappedCount / mappings.length) * 100)}%
               </span>
             </div>
@@ -174,12 +174,12 @@ export function XeroAccountMapping({ onNavigate }: XeroAccountMappingProps) {
         </div>
 
         {/* Info Banner */}
-        <div className="bg-blue-50 border border-blue-200 rounded px-4 py-3">
+        <div className="bg-blue-500/10 border border-blue-500/30 rounded px-4 py-3">
           <div className="flex items-start gap-3">
-            <LinkIcon className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+            <LinkIcon className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
             <div>
-              <h3 className="font-semibold text-blue-900 mb-1">How Account Mapping Works</h3>
-              <p className="text-sm text-blue-800">
+              <h3 className="font-semibold text-blue-300 mb-1">How Account Mapping Works</h3>
+              <p className="text-sm text-blue-300">
                 Link Xero chart of accounts to workpaper fields. When you sync, balances automatically populate into workpapers. 
                 AI suggests mappings based on account names and types.
               </p>
@@ -188,43 +188,43 @@ export function XeroAccountMapping({ onNavigate }: XeroAccountMappingProps) {
         </div>
 
         {/* Mapping Table */}
-        <div className="border border-gray-300 rounded bg-white overflow-hidden">
-          <div className="bg-gray-50 border-b border-gray-300 px-4 py-2">
-            <h3 className="font-semibold text-gray-900">Account Mappings</h3>
+        <div className="border border-white/10 rounded bg-white overflow-hidden">
+          <div className="bg-white/5 border-b border-white/10 px-4 py-2">
+            <h3 className="font-semibold text-slate-100">Account Mappings</h3>
           </div>
           <table className="w-full text-sm border-collapse">
             <thead>
-              <tr className="bg-gray-50">
-                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700 w-8">Ref</th>
-                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700 w-40">WP Section</th>
-                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">WP Line Item</th>
-                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700 w-24">Xero Code</th>
-                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Xero Account</th>
-                <th className="border border-gray-300 px-3 py-2 text-right font-semibold text-gray-700 w-28">Current Bal.</th>
-                <th className="border border-gray-300 px-3 py-2 text-right font-semibold text-gray-700 w-28">Prior Bal.</th>
-                <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-24">Status</th>
-                <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-16">Auto</th>
+              <tr className="bg-white/5">
+                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300 w-8">Ref</th>
+                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300 w-40">WP Section</th>
+                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">WP Line Item</th>
+                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300 w-24">Xero Code</th>
+                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Xero Account</th>
+                <th className="border border-white/10 px-3 py-2 text-right font-semibold text-slate-300 w-28">Current Bal.</th>
+                <th className="border border-white/10 px-3 py-2 text-right font-semibold text-slate-300 w-28">Prior Bal.</th>
+                <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-24">Status</th>
+                <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-16">Auto</th>
               </tr>
             </thead>
             <tbody>
               {mappings.map((mapping) => (
                 <tr 
                   key={mapping.id}
-                  className={`hover:bg-gray-50 ${
-                    mapping.status === 'mapped' ? 'bg-green-50' :
-                    mapping.status === 'conflict' ? 'bg-orange-50' : ''
+                  className={`hover:bg-white/5 ${
+                    mapping.status === 'mapped' ? 'bg-green-500/10' :
+                    mapping.status === 'conflict' ? 'bg-orange-500/10' : ''
                   }`}
                 >
-                  <td className="border border-gray-300 px-3 py-2 text-center text-gray-600 font-mono text-xs">
+                  <td className="border border-white/10 px-3 py-2 text-center text-slate-300 font-mono text-xs">
                     {mapping.id}
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-gray-700 text-xs">
+                  <td className="border border-white/10 px-3 py-2 text-slate-300 text-xs">
                     {mapping.workpaperSection}
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-gray-900">
+                  <td className="border border-white/10 px-3 py-2 text-slate-100">
                     {mapping.workpaperLine}
                   </td>
-                  <td className="border border-gray-300 px-2 py-2">
+                  <td className="border border-white/10 px-2 py-2">
                     <input
                       type="text"
                       value={mapping.xeroAccountCode}
@@ -235,10 +235,10 @@ export function XeroAccountMapping({ onNavigate }: XeroAccountMappingProps) {
                         setMappings(newMappings);
                       }}
                       placeholder="Code"
-                      className="w-full px-2 py-1 text-xs border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 font-mono"
+                      className="w-full px-2 py-1 text-xs border border-white/10 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 font-mono"
                     />
                   </td>
-                  <td className="border border-gray-300 px-2 py-2">
+                  <td className="border border-white/10 px-2 py-2">
                     <select
                       value={mapping.xeroAccountName}
                       onChange={(e) => {
@@ -247,7 +247,7 @@ export function XeroAccountMapping({ onNavigate }: XeroAccountMappingProps) {
                         newMappings[index].xeroAccountName = e.target.value;
                         setMappings(newMappings);
                       }}
-                      className="w-full px-2 py-1 text-xs border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
+                      className="w-full px-2 py-1 text-xs border border-white/10 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
                     >
                       <option value="">Select account...</option>
                       <option value="Sales - General">200 - Sales - General</option>
@@ -259,18 +259,18 @@ export function XeroAccountMapping({ onNavigate }: XeroAccountMappingProps) {
                       <option value="Office Expenses">429 - Office Expenses</option>
                     </select>
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-right font-mono text-gray-900">
+                  <td className="border border-white/10 px-3 py-2 text-right font-mono text-slate-100">
                     {mapping.currentYearBalance > 0 ? mapping.currentYearBalance.toLocaleString() : '-'}
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-right font-mono text-gray-600">
+                  <td className="border border-white/10 px-3 py-2 text-right font-mono text-slate-300">
                     {mapping.priorYearBalance > 0 ? mapping.priorYearBalance.toLocaleString() : '-'}
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-center">
+                  <td className="border border-white/10 px-3 py-2 text-center">
                     {getStatusBadge(mapping.status)}
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-center">
+                  <td className="border border-white/10 px-3 py-2 text-center">
                     {mapping.autoMapped && (
-                      <CheckCircle className="w-4 h-4 text-green-600 mx-auto" title="AI auto-mapped" />
+                      <CheckCircle className="w-4 h-4 text-green-400 mx-auto" title="AI auto-mapped" />
                     )}
                   </td>
                 </tr>
@@ -281,12 +281,12 @@ export function XeroAccountMapping({ onNavigate }: XeroAccountMappingProps) {
 
         {/* Conflict Resolution */}
         {conflictCount > 0 && (
-          <div className="bg-orange-50 border border-orange-300 rounded px-4 py-3">
+          <div className="bg-orange-500/10 border border-orange-300 rounded px-4 py-3">
             <div className="flex items-start gap-3">
-              <AlertCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
+              <AlertCircle className="w-5 h-5 text-orange-400 flex-shrink-0 mt-0.5" />
               <div>
-                <h3 className="font-semibold text-orange-900 mb-1">Mapping Conflicts Detected</h3>
-                <p className="text-sm text-orange-800">
+                <h3 className="font-semibold text-orange-300 mb-1">Mapping Conflicts Detected</h3>
+                <p className="text-sm text-orange-300">
                   {conflictCount} mapping{conflictCount > 1 ? 's' : ''} require attention. 
                   The selected Xero account may not match the workpaper line item type. Review and update as needed.
                 </p>

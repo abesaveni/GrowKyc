@@ -128,8 +128,8 @@ export function EmailIntegration({ onNavigate }: EmailIntegrationProps) {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-[32px] font-bold text-gray-900">Email Integration</h1>
-            <p className="text-sm text-gray-600 mt-1">Manage client emails and link to jobs</p>
+            <h1 className="text-[32px] font-bold text-slate-100">Email Integration</h1>
+            <p className="text-sm text-slate-300 mt-1">Manage client emails and link to jobs</p>
           </div>
           <Button 
             className="bg-[#2855a6] hover:bg-[#1e4089]"
@@ -146,7 +146,7 @@ export function EmailIntegration({ onNavigate }: EmailIntegrationProps) {
           <div className="col-span-3">
             <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
               <CardContent className="p-4">
-                <h3 className="font-semibold text-gray-900 mb-3">Folders</h3>
+                <h3 className="font-semibold text-slate-100 mb-3">Folders</h3>
                 <div className="space-y-1">
                   {folders.map((folder) => (
                     <button
@@ -157,8 +157,8 @@ export function EmailIntegration({ onNavigate }: EmailIntegrationProps) {
                       }}
                       className={`w-full flex items-center justify-between p-3 rounded-lg transition-colors ${
                         selectedFolder === folder.id
-                          ? 'bg-blue-50 text-[#2855a6]'
-                          : 'hover:bg-gray-50 text-gray-700'
+                          ? 'bg-blue-500/10 text-[#2855a6]'
+                          : 'hover:bg-white/5 text-slate-300'
                       }`}
                     >
                       <div className="flex items-center gap-3">
@@ -169,7 +169,7 @@ export function EmailIntegration({ onNavigate }: EmailIntegrationProps) {
                         <span className={`px-2 py-0.5 rounded-full text-xs font-semibold ${
                           selectedFolder === folder.id
                             ? 'bg-[#2855a6] text-white'
-                            : 'bg-gray-200 text-gray-700'
+                            : 'bg-white/10 text-slate-300'
                         }`}>
                           {folder.count}
                         </span>
@@ -178,14 +178,14 @@ export function EmailIntegration({ onNavigate }: EmailIntegrationProps) {
                   ))}
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-gray-200">
-                  <h4 className="font-semibold text-gray-900 text-sm mb-2">Quick Links</h4>
+                <div className="mt-6 pt-4 border-t border-white/10">
+                  <h4 className="font-semibold text-slate-100 text-sm mb-2">Quick Links</h4>
                   <div className="space-y-1">
-                    <button className="w-full flex items-center gap-2 p-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">
+                    <button className="w-full flex items-center gap-2 p-2 text-sm text-slate-300 hover:bg-white/5 rounded-lg">
                       <Tag className="w-4 h-4" />
                       Labels
                     </button>
-                    <button className="w-full flex items-center gap-2 p-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">
+                    <button className="w-full flex items-center gap-2 p-2 text-sm text-slate-300 hover:bg-white/5 rounded-lg">
                       <FolderOpen className="w-4 h-4" />
                       Link to Job
                     </button>
@@ -207,7 +207,7 @@ export function EmailIntegration({ onNavigate }: EmailIntegrationProps) {
                       <input
                         type="text"
                         placeholder="Search emails..."
-                        className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+                        className="w-full pl-10 pr-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
                       />
                     </div>
                     <Button variant="outline" size="sm">
@@ -224,36 +224,36 @@ export function EmailIntegration({ onNavigate }: EmailIntegrationProps) {
                         onClick={() => setSelectedEmail(email)}
                         className={`p-4 border rounded-lg cursor-pointer transition-all ${
                           email.unread
-                            ? 'bg-blue-50 border-blue-200 hover:bg-blue-100'
-                            : 'bg-white border-gray-200 hover:bg-gray-50'
+                            ? 'bg-blue-500/10 border-blue-500/30 hover:bg-blue-500/15'
+                            : 'bg-white border-white/10 hover:bg-white/5'
                         }`}
                       >
                         <div className="flex items-start justify-between mb-2">
                           <div className="flex-1">
                             <div className="flex items-center gap-2 mb-1">
-                              <span className={`font-semibold text-sm ${email.unread ? 'text-gray-900' : 'text-gray-700'}`}>
+                              <span className={`font-semibold text-sm ${email.unread ? 'text-slate-100' : 'text-slate-300'}`}>
                                 {email.fromName}
                               </span>
                               {email.starred && <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />}
                               {email.hasAttachments && <Paperclip className="w-4 h-4 text-gray-400" />}
                             </div>
-                            <h4 className={`text-sm mb-1 ${email.unread ? 'font-semibold text-gray-900' : 'text-gray-700'}`}>
+                            <h4 className={`text-sm mb-1 ${email.unread ? 'font-semibold text-slate-100' : 'text-slate-300'}`}>
                               {email.subject}
                             </h4>
-                            <p className="text-xs text-gray-600 line-clamp-2">{email.preview}</p>
+                            <p className="text-xs text-slate-300 line-clamp-2">{email.preview}</p>
                           </div>
-                          <span className="text-xs text-gray-500 ml-4">{email.date}</span>
+                          <span className="text-xs text-slate-400 ml-4">{email.date}</span>
                         </div>
 
                         <div className="flex items-center gap-2 mt-2">
-                          <span className="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs rounded">
+                          <span className="px-2 py-0.5 bg-blue-500/15 text-blue-300 text-xs rounded">
                             {email.client}
                           </span>
-                          <span className="px-2 py-0.5 bg-gray-100 text-gray-700 text-xs rounded">
+                          <span className="px-2 py-0.5 bg-white/5 text-slate-300 text-xs rounded">
                             {email.job}
                           </span>
                           {email.labels.map((label, idx) => (
-                            <span key={idx} className="px-2 py-0.5 bg-orange-100 text-orange-700 text-xs rounded">
+                            <span key={idx} className="px-2 py-0.5 bg-orange-500/15 text-orange-300 text-xs rounded">
                               {label}
                             </span>
                           ))}
@@ -302,29 +302,29 @@ export function EmailIntegration({ onNavigate }: EmailIntegrationProps) {
                   {/* Email Content */}
                   <div className="space-y-4">
                     <div>
-                      <h2 className="text-xl font-bold text-gray-900 mb-4">{selectedEmail.subject}</h2>
+                      <h2 className="text-xl font-bold text-slate-100 mb-4">{selectedEmail.subject}</h2>
                       
-                      <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-lg mb-4">
+                      <div className="flex items-start gap-4 p-4 bg-white/5 rounded-lg mb-4">
                         <div className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-semibold">
                           {selectedEmail.fromName.charAt(0)}
                         </div>
                         <div className="flex-1">
                           <div className="flex items-center justify-between mb-1">
-                            <span className="font-semibold text-gray-900">{selectedEmail.fromName}</span>
-                            <span className="text-sm text-gray-500">{selectedEmail.date}</span>
+                            <span className="font-semibold text-slate-100">{selectedEmail.fromName}</span>
+                            <span className="text-sm text-slate-400">{selectedEmail.date}</span>
                           </div>
-                          <p className="text-sm text-gray-600">{selectedEmail.from}</p>
-                          <p className="text-sm text-gray-600 mt-1">to: {selectedEmail.to}</p>
+                          <p className="text-sm text-slate-300">{selectedEmail.from}</p>
+                          <p className="text-sm text-slate-300 mt-1">to: {selectedEmail.to}</p>
                         </div>
                       </div>
 
                       {/* Linked Job/Client */}
                       <div className="flex items-center gap-2 mb-4">
-                        <span className="px-3 py-1.5 bg-blue-100 text-blue-700 text-sm rounded-lg flex items-center gap-2">
+                        <span className="px-3 py-1.5 bg-blue-500/15 text-blue-300 text-sm rounded-lg flex items-center gap-2">
                           <User className="w-4 h-4" />
                           {selectedEmail.client}
                         </span>
-                        <span className="px-3 py-1.5 bg-purple-100 text-purple-700 text-sm rounded-lg flex items-center gap-2">
+                        <span className="px-3 py-1.5 bg-purple-500/15 text-purple-300 text-sm rounded-lg flex items-center gap-2">
                           <FileText className="w-4 h-4" />
                           {selectedEmail.job}
                         </span>
@@ -335,20 +335,20 @@ export function EmailIntegration({ onNavigate }: EmailIntegrationProps) {
                     </div>
 
                     {/* Email Body */}
-                    <div className="p-4 bg-white border border-gray-200 rounded-lg">
-                      <p className="text-gray-900 whitespace-pre-wrap">{selectedEmail.body}</p>
+                    <div className="p-4 bg-white border border-white/10 rounded-lg">
+                      <p className="text-slate-100 whitespace-pre-wrap">{selectedEmail.body}</p>
                     </div>
 
                     {/* Attachments */}
                     {selectedEmail.hasAttachments && (
                       <div>
-                        <h4 className="font-semibold text-gray-900 mb-3">Attachments ({selectedEmail.attachments.length})</h4>
+                        <h4 className="font-semibold text-slate-100 mb-3">Attachments ({selectedEmail.attachments.length})</h4>
                         <div className="space-y-2">
                           {selectedEmail.attachments.map((attachment: string, idx: number) => (
-                            <div key={idx} className="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
+                            <div key={idx} className="flex items-center justify-between p-3 border border-white/10 rounded-lg">
                               <div className="flex items-center gap-3">
                                 <Paperclip className="w-5 h-5 text-gray-400" />
-                                <span className="text-sm text-gray-900">{attachment}</span>
+                                <span className="text-sm text-slate-100">{attachment}</span>
                               </div>
                               <Button size="sm" variant="outline">
                                 <Download className="w-4 h-4 mr-2" />
@@ -361,14 +361,14 @@ export function EmailIntegration({ onNavigate }: EmailIntegrationProps) {
                     )}
 
                     {/* Reply Box */}
-                    <div className="pt-4 border-t border-gray-200">
-                      <h4 className="font-semibold text-gray-900 mb-3">Reply</h4>
+                    <div className="pt-4 border-t border-white/10">
+                      <h4 className="font-semibold text-slate-100 mb-3">Reply</h4>
                       <textarea
                         rows={4}
                         value={replyText}
                         onChange={(e) => setReplyText(e.target.value)}
                         placeholder="Type your reply..."
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+                        className="w-full px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
                       />
                       <div className="flex items-center gap-2 mt-3">
                         <Button className="bg-[#2855a6] hover:bg-[#1e4089]">
@@ -394,7 +394,7 @@ export function EmailIntegration({ onNavigate }: EmailIntegrationProps) {
             <Card className="w-full max-w-3xl shadow-2xl">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-bold text-gray-900">New Email</h3>
+                  <h3 className="text-lg font-bold text-slate-100">New Email</h3>
                   <Button 
                     variant="ghost" 
                     size="sm"
@@ -406,26 +406,26 @@ export function EmailIntegration({ onNavigate }: EmailIntegrationProps) {
 
                 <div className="space-y-4">
                   <div>
-                    <label className="text-sm text-gray-600 mb-1 block">To</label>
+                    <label className="text-sm text-slate-300 mb-1 block">To</label>
                     <input
                       type="email"
                       placeholder="client@example.com"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+                      className="w-full px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
                     />
                   </div>
 
                   <div>
-                    <label className="text-sm text-gray-600 mb-1 block">Subject</label>
+                    <label className="text-sm text-slate-300 mb-1 block">Subject</label>
                     <input
                       type="text"
                       placeholder="Email subject"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+                      className="w-full px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
                     />
                   </div>
 
                   <div>
-                    <label className="text-sm text-gray-600 mb-1 block">Link to Job (Optional)</label>
-                    <select className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]">
+                    <label className="text-sm text-slate-300 mb-1 block">Link to Job (Optional)</label>
+                    <select className="w-full px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]">
                       <option>Select a job...</option>
                       <option>BAS Q4 2024 - Smith SMSF</option>
                       <option>Annual Return 2024 - ABC Pty Ltd</option>
@@ -434,15 +434,15 @@ export function EmailIntegration({ onNavigate }: EmailIntegrationProps) {
                   </div>
 
                   <div>
-                    <label className="text-sm text-gray-600 mb-1 block">Message</label>
+                    <label className="text-sm text-slate-300 mb-1 block">Message</label>
                     <textarea
                       rows={8}
                       placeholder="Type your message..."
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+                      className="w-full px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
                     />
                   </div>
 
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+                  <div className="flex items-center justify-between pt-4 border-t border-white/10">
                     <Button variant="outline">
                       <Paperclip className="w-4 h-4 mr-2" />
                       Attach Files

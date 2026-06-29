@@ -167,25 +167,25 @@ export function SuspiciousMatterReporting({ onBack }: SuspiciousMatterReportingP
             <div className="text-xs text-slate-300 mt-1">Total Cases</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600">
+            <div className="text-3xl font-bold text-blue-400">
               {smrCases.filter(c => c.status === 'Open').length}
             </div>
             <div className="text-xs text-slate-300 mt-1">Open</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-amber-600">
+            <div className="text-3xl font-bold text-amber-400">
               {smrCases.filter(c => c.status === 'Under Review').length}
             </div>
             <div className="text-xs text-slate-300 mt-1">Under Review</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-purple-600">
+            <div className="text-3xl font-bold text-purple-400">
               {smrCases.filter(c => c.status === 'Approved').length}
             </div>
             <div className="text-xs text-slate-300 mt-1">Approved</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-green-600">
+            <div className="text-3xl font-bold text-green-400">
               {smrCases.filter(c => c.status === 'Lodged').length}
             </div>
             <div className="text-xs text-slate-300 mt-1">Lodged</div>
@@ -231,7 +231,7 @@ export function SuspiciousMatterReporting({ onBack }: SuspiciousMatterReportingP
                       {/* Case ID & Client */}
                       <div className="md:col-span-3">
                         <div className="flex items-center gap-2 mb-2">
-                          <AlertTriangle className="w-5 h-5 text-red-600" />
+                          <AlertTriangle className="w-5 h-5 text-red-400" />
                           <div>
                             <div className="font-bold text-white">{smrCase.caseId}</div>
                             <div className="text-sm text-slate-300">{smrCase.clientName}</div>
@@ -304,7 +304,7 @@ export function SuspiciousMatterReporting({ onBack }: SuspiciousMatterReportingP
 
                     {/* Additional Details (if lodged) */}
                     {smrCase.status === 'Lodged' && smrCase.austractReference && (
-                      <div className="mt-4 p-3 bg-green-50 rounded-lg border border-green-200">
+                      <div className="mt-4 p-3 bg-green-500/10 rounded-lg border border-green-500/30">
                         <div className="grid md:grid-cols-2 gap-4 text-sm">
                           <div>
                             <span className="text-slate-300">Lodged Date: </span>
@@ -325,7 +325,7 @@ export function SuspiciousMatterReporting({ onBack }: SuspiciousMatterReportingP
 
           {/* INVESTIGATION TAB */}
           <TabsContent value="investigation">
-            <Card className="border-2 border-blue-200">
+            <Card className="border-2 border-blue-500/30">
               <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50">
                 <CardTitle>Internal Investigation</CardTitle>
                 <CardDescription>
@@ -334,9 +334,9 @@ export function SuspiciousMatterReporting({ onBack }: SuspiciousMatterReportingP
               </CardHeader>
               <CardContent className="p-6 space-y-6">
                 {/* Investigation Summary */}
-                <div className="bg-[#1e293b] rounded-lg p-4 border-2 border-blue-200">
+                <div className="bg-[#1e293b] rounded-lg p-4 border-2 border-blue-500/30">
                   <h3 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-blue-600" />
+                    <FileText className="w-5 h-5 text-blue-400" />
                     Investigation Summary
                   </h3>
                   <div className="grid md:grid-cols-2 gap-4 mb-4">
@@ -360,9 +360,9 @@ export function SuspiciousMatterReporting({ onBack }: SuspiciousMatterReportingP
                 </div>
 
                 {/* Linked Customer Profile */}
-                <div className="bg-cyan-50 rounded-lg p-4 border-2 border-cyan-200">
-                  <h3 className="font-bold text-cyan-900 mb-3 flex items-center gap-2">
-                    <User className="w-5 h-5 text-cyan-600" />
+                <div className="bg-cyan-500/10 rounded-lg p-4 border-2 border-cyan-500/30">
+                  <h3 className="font-bold text-cyan-300 mb-3 flex items-center gap-2">
+                    <User className="w-5 h-5 text-cyan-400" />
                     Linked Customer Profile
                   </h3>
                   <div className="grid md:grid-cols-3 gap-4 text-sm">
@@ -382,9 +382,9 @@ export function SuspiciousMatterReporting({ onBack }: SuspiciousMatterReportingP
                 </div>
 
                 {/* Linked Transaction Activity */}
-                <div className="bg-amber-50 rounded-lg p-4 border-2 border-amber-200">
-                  <h3 className="font-bold text-amber-900 mb-3 flex items-center gap-2">
-                    <Activity className="w-5 h-5 text-amber-600" />
+                <div className="bg-amber-500/10 rounded-lg p-4 border-2 border-amber-500/30">
+                  <h3 className="font-bold text-amber-300 mb-3 flex items-center gap-2">
+                    <Activity className="w-5 h-5 text-amber-400" />
                     Linked Transaction Activity
                   </h3>
                   <div className="space-y-2">
@@ -395,7 +395,7 @@ export function SuspiciousMatterReporting({ onBack }: SuspiciousMatterReportingP
                     ].map((txn, idx) => (
                       <div key={idx} className="flex items-center justify-between p-3 bg-[#1e293b] rounded border border-amber-300">
                         <div className="flex items-center gap-3">
-                          <DollarSign className="w-4 h-4 text-amber-600" />
+                          <DollarSign className="w-4 h-4 text-amber-400" />
                           <div>
                             <div className="font-semibold text-white">{txn.id}</div>
                             <div className="text-xs text-slate-300">{txn.type}</div>
@@ -408,8 +408,8 @@ export function SuspiciousMatterReporting({ onBack }: SuspiciousMatterReportingP
                       </div>
                     ))}
                   </div>
-                  <div className="mt-3 p-3 bg-red-50 rounded border-2 border-red-300">
-                    <p className="text-sm font-semibold text-red-900">
+                  <div className="mt-3 p-3 bg-red-500/10 rounded border-2 border-red-300">
+                    <p className="text-sm font-semibold text-red-300">
                       🚨 Pattern Detected: Three transactions just below $50,000 reporting threshold within 5 days - 
                       potential structuring to avoid TTR requirements
                     </p>
@@ -464,7 +464,7 @@ Recommendation: Escalate to Senior Partner for SMR lodgement decision."
 
           {/* APPROVAL WORKFLOW TAB */}
           <TabsContent value="approval">
-            <Card className="border-2 border-purple-200">
+            <Card className="border-2 border-purple-500/30">
               <CardHeader className="bg-gradient-to-r from-purple-50 to-pink-50">
                 <CardTitle>Decision & Approval Workflow</CardTitle>
                 <CardDescription>
@@ -473,7 +473,7 @@ Recommendation: Escalate to Senior Partner for SMR lodgement decision."
               </CardHeader>
               <CardContent className="p-6 space-y-6">
                 {/* Status Timeline */}
-                <div className="bg-[#1e293b] rounded-lg p-4 border-2 border-purple-200">
+                <div className="bg-[#1e293b] rounded-lg p-4 border-2 border-purple-500/30">
                   <h3 className="font-bold text-white mb-4">Status Timeline</h3>
                   <div className="space-y-4">
                     {[
@@ -507,8 +507,8 @@ Recommendation: Escalate to Senior Partner for SMR lodgement decision."
                 </div>
 
                 {/* Decision Form */}
-                <div className="bg-amber-50 rounded-lg p-4 border-2 border-amber-200">
-                  <h3 className="font-bold text-amber-900 mb-4">Lodgement Decision</h3>
+                <div className="bg-amber-500/10 rounded-lg p-4 border-2 border-amber-500/30">
+                  <h3 className="font-bold text-amber-300 mb-4">Lodgement Decision</h3>
                   
                   <div className="space-y-4">
                     <div>
@@ -563,7 +563,7 @@ Recommendation: Escalate to Senior Partner for SMR lodgement decision."
                 <div>
                   <h3 className="font-bold text-white mb-3">Reporting Officer Log</h3>
                   <div className="space-y-2">
-                    <div className="p-3 bg-green-50 rounded-lg border border-green-200">
+                    <div className="p-3 bg-green-500/10 rounded-lg border border-green-500/30">
                       <div className="flex items-center justify-between mb-2">
                         <span className="font-semibold text-white">SMR-2024-002 - Lodged</span>
                         <Badge className="bg-green-600">Completed</Badge>

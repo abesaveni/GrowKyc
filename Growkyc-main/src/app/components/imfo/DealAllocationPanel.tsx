@@ -120,7 +120,7 @@ export function DealAllocationPanel({ dealId, targetRaise, role }: DealAllocatio
   ];
 
   if (loading && !summary) {
-    return <p className="text-gray-500 py-8 text-center">Loading allocation data…</p>;
+    return <p className="text-slate-400 py-8 text-center">Loading allocation data…</p>;
   }
 
   if (!summary) return null;
@@ -136,9 +136,9 @@ export function DealAllocationPanel({ dealId, targetRaise, role }: DealAllocatio
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2">
-          <h3 className="font-semibold text-gray-900">Allocation dashboard</h3>
+          <h3 className="font-semibold text-slate-100">Allocation dashboard</h3>
           {summary.fullySubscribed && (
-            <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-green-100 text-green-800 text-xs font-medium">
+            <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-green-500/15 text-green-300 text-xs font-medium">
               <CheckCircle className="w-3.5 h-3.5" />
               Fully subscribed
             </span>
@@ -154,17 +154,17 @@ export function DealAllocationPanel({ dealId, targetRaise, role }: DealAllocatio
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {stats.map((s) => (
-          <div key={s.label} className="bg-indigo-50 border border-indigo-100 rounded-lg p-4">
-            <p className="text-xs text-indigo-700">{s.label}</p>
-            <p className="text-xl font-bold text-indigo-900">{s.value}</p>
+          <div key={s.label} className="bg-indigo-500/10 border border-indigo-500/20 rounded-lg p-4">
+            <p className="text-xs text-indigo-300">{s.label}</p>
+            <p className="text-xl font-bold text-indigo-300">{s.value}</p>
           </div>
         ))}
       </div>
 
-      <div className="bg-white border border-gray-200 rounded-lg p-4">
+      <div className="bg-white border border-white/10 rounded-lg p-4">
         <div className="flex items-center gap-2 mb-2">
-          <TrendingUp className="w-5 h-5 text-indigo-600" />
-          <span className="text-sm font-medium text-gray-700">Subscription progress</span>
+          <TrendingUp className="w-5 h-5 text-indigo-400" />
+          <span className="text-sm font-medium text-slate-300">Subscription progress</span>
         </div>
         <ProgressBar value={pctFilled} showPercent colorClass="bg-indigo-600" />
       </div>
@@ -190,41 +190,41 @@ export function DealAllocationPanel({ dealId, targetRaise, role }: DealAllocatio
             onSubmit={handleInvest}
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 className="text-lg font-semibold text-gray-900">Record allocation</h3>
-            <p className="text-sm text-gray-600">Remaining capacity: {formatMoney(summary.remaining)}</p>
+            <h3 className="text-lg font-semibold text-slate-100">Record allocation</h3>
+            <p className="text-sm text-slate-300">Remaining capacity: {formatMoney(summary.remaining)}</p>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Investor name *</label>
+              <label className="block text-sm font-medium text-slate-300 mb-1">Investor name *</label>
               <input
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm"
+                className="w-full border border-white/10 rounded-lg px-3 py-2 text-sm"
                 value={form.investorName}
                 onChange={(e) => setForm({ ...form, investorName: e.target.value })}
               />
-              {errors.investorName && <p className="text-xs text-red-600 mt-1">{errors.investorName}</p>}
+              {errors.investorName && <p className="text-xs text-red-400 mt-1">{errors.investorName}</p>}
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Allocation amount *</label>
+              <label className="block text-sm font-medium text-slate-300 mb-1">Allocation amount *</label>
               <input
                 type="number"
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm"
+                className="w-full border border-white/10 rounded-lg px-3 py-2 text-sm"
                 value={form.allocationAmount}
                 onChange={(e) => setForm({ ...form, allocationAmount: e.target.value })}
               />
-              {errors.allocationAmount && <p className="text-xs text-red-600 mt-1">{errors.allocationAmount}</p>}
+              {errors.allocationAmount && <p className="text-xs text-red-400 mt-1">{errors.allocationAmount}</p>}
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Allocation % (optional)</label>
+              <label className="block text-sm font-medium text-slate-300 mb-1">Allocation % (optional)</label>
               <input
                 type="number"
                 step="0.1"
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm"
+                className="w-full border border-white/10 rounded-lg px-3 py-2 text-sm"
                 value={form.allocationPercentage}
                 onChange={(e) => setForm({ ...form, allocationPercentage: e.target.value })}
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Notes</label>
+              <label className="block text-sm font-medium text-slate-300 mb-1">Notes</label>
               <textarea
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm"
+                className="w-full border border-white/10 rounded-lg px-3 py-2 text-sm"
                 rows={2}
                 value={form.notes}
                 onChange={(e) => setForm({ ...form, notes: e.target.value })}

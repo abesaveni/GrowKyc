@@ -104,12 +104,12 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
               className={`text-left p-4 rounded-xl border transition-all ${
                 activeTab === module.key
                   ? 'border-[#13B5EA] bg-[#13B5EA]/10 shadow-sm'
-                  : 'border-white/10 bg-[#1e293b] hover:border-gray-300'
+                  : 'border-white/10 bg-[#1e293b] hover:border-white/10'
               }`}
             >
               <div className="flex items-center justify-between mb-2">
                 <Icon className="w-5 h-5 text-[#0E7C9E]" />
-                <CheckCircle className="w-4 h-4 text-green-600" />
+                <CheckCircle className="w-4 h-4 text-green-400" />
               </div>
               <div className="text-sm font-semibold text-white">{module.label}</div>
               <div className="text-xs text-slate-300 mt-1">{module.score}% complete</div>
@@ -150,10 +150,10 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
                 <CardTitle className="text-lg">Data Breach Workflow</CardTitle>
               </CardHeader>
               <CardContent className="space-y-2 text-sm text-slate-300">
-                <div className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-600" />Detection and triage</div>
-                <div className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-600" />OAIC notification timer</div>
-                <div className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-600" />Customer impact tracking</div>
-                <div className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-600" />Regulator evidence pack export</div>
+                <div className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-400" />Detection and triage</div>
+                <div className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-400" />OAIC notification timer</div>
+                <div className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-400" />Customer impact tracking</div>
+                <div className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-green-400" />Regulator evidence pack export</div>
                 <Button size="sm" className="w-full mt-3 bg-[#13B5EA] hover:bg-[#0E7C9E]">Launch Breach Drill</Button>
               </CardContent>
             </Card>
@@ -190,7 +190,7 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
             </CardHeader>
             <CardContent>
               <div className="text-5xl font-bold text-white">82</div>
-              <div className="text-sm text-amber-600 mt-2 flex items-center gap-1">
+              <div className="text-sm text-amber-400 mt-2 flex items-center gap-1">
                 <AlertTriangle className="w-4 h-4" />
                 Elevated, within tolerance band
               </div>
@@ -203,7 +203,7 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
             </CardHeader>
             <CardContent>
               <div className="text-5xl font-bold text-white">7</div>
-              <div className="text-sm text-red-600 mt-2">2 require board decision this week</div>
+              <div className="text-sm text-red-400 mt-2">2 require board decision this week</div>
             </CardContent>
           </Card>
 
@@ -213,7 +213,7 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
             </CardHeader>
             <CardContent>
               <div className="text-5xl font-bold text-white">+18%</div>
-              <div className="text-sm text-green-600 mt-2 flex items-center gap-1">
+              <div className="text-sm text-green-400 mt-2 flex items-center gap-1">
                 <TrendingUp className="w-4 h-4" />
                 Month-over-month improvement
               </div>
@@ -230,17 +230,17 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-3 gap-3">
-                <div className="p-3 rounded-lg bg-red-50 border border-red-200">
-                  <div className="text-sm text-red-800">High</div>
-                  <div className="text-2xl font-bold text-red-900">14%</div>
+                <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/30">
+                  <div className="text-sm text-red-300">High</div>
+                  <div className="text-2xl font-bold text-red-300">14%</div>
                 </div>
-                <div className="p-3 rounded-lg bg-amber-50 border border-amber-200">
-                  <div className="text-sm text-amber-800">Medium</div>
-                  <div className="text-2xl font-bold text-amber-900">31%</div>
+                <div className="p-3 rounded-lg bg-amber-500/10 border border-amber-500/30">
+                  <div className="text-sm text-amber-300">Medium</div>
+                  <div className="text-2xl font-bold text-amber-300">31%</div>
                 </div>
-                <div className="p-3 rounded-lg bg-green-50 border border-green-200">
-                  <div className="text-sm text-green-800">Low</div>
-                  <div className="text-2xl font-bold text-green-900">55%</div>
+                <div className="p-3 rounded-lg bg-green-500/10 border border-green-500/30">
+                  <div className="text-sm text-green-300">Low</div>
+                  <div className="text-2xl font-bold text-green-300">55%</div>
                 </div>
               </div>
               <div className="flex gap-3">
@@ -310,7 +310,7 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
                 <Download className="w-4 h-4 mr-2" />
                 Export Audit File
               </Button>
-              <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg text-sm text-blue-800">
+              <div className="p-3 bg-blue-500/10 border border-blue-500/30 rounded-lg text-sm text-blue-300">
                 92% of findings have owners and due dates.
               </div>
             </CardContent>
@@ -381,7 +381,7 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
             </CardHeader>
             <CardContent>
               <div className="text-4xl font-bold text-white">$38.20</div>
-              <div className="text-sm text-green-600 mt-2">-9% vs last quarter</div>
+              <div className="text-sm text-green-400 mt-2">-9% vs last quarter</div>
             </CardContent>
           </Card>
 
@@ -391,7 +391,7 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
             </CardHeader>
             <CardContent>
               <div className="text-4xl font-bold text-white">2.7d</div>
-              <div className="text-sm text-green-600 mt-2">-0.6 days improvement</div>
+              <div className="text-sm text-green-400 mt-2">-0.6 days improvement</div>
             </CardContent>
           </Card>
 
@@ -401,7 +401,7 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
             </CardHeader>
             <CardContent>
               <div className="text-4xl font-bold text-white">84%</div>
-              <div className="text-sm text-amber-600 mt-2">Near optimal workload</div>
+              <div className="text-sm text-amber-400 mt-2">Near optimal workload</div>
             </CardContent>
           </Card>
 
@@ -411,7 +411,7 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
             </CardHeader>
             <CardContent>
               <div className="text-4xl font-bold text-white">71%</div>
-              <div className="text-sm text-blue-600 mt-2">+12% since rollout</div>
+              <div className="text-sm text-blue-400 mt-2">+12% since rollout</div>
             </CardContent>
           </Card>
 
@@ -451,7 +451,7 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
                 <Download className="w-4 h-4 mr-2" />
                 Export KPI Snapshot
               </Button>
-              <div className="p-3 bg-green-50 border border-green-200 rounded-lg text-sm text-green-800">
+              <div className="p-3 bg-green-500/10 border border-green-500/30 rounded-lg text-sm text-green-300">
                 <div className="flex items-center gap-2 font-semibold">
                   <Lock className="w-4 h-4" />
                   Audit-safe dataset

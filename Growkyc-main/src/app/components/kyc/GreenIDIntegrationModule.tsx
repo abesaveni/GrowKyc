@@ -97,10 +97,10 @@ export function GreenIDIntegrationModule() {
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'verified': return <CheckCircle className="w-5 h-5 text-green-600" />;
-      case 'pending': return <Clock className="w-5 h-5 text-blue-600" />;
-      case 'failed': return <XCircle className="w-5 h-5 text-red-600" />;
-      case 'manual-review': return <AlertTriangle className="w-5 h-5 text-orange-600" />;
+      case 'verified': return <CheckCircle className="w-5 h-5 text-green-400" />;
+      case 'pending': return <Clock className="w-5 h-5 text-blue-400" />;
+      case 'failed': return <XCircle className="w-5 h-5 text-red-400" />;
+      case 'manual-review': return <AlertTriangle className="w-5 h-5 text-orange-400" />;
     }
   };
 
@@ -117,11 +117,11 @@ export function GreenIDIntegrationModule() {
             </div>
           </div>
           <div className="flex gap-3">
-            <Button className="bg-white text-green-600 hover:bg-green-50">
+            <Button className="bg-white text-green-400 hover:bg-green-500/10">
               <Zap className="w-5 h-5 mr-2" />
               New Verification
             </Button>
-            <Button className="bg-white text-green-600 hover:bg-green-50">
+            <Button className="bg-white text-green-400 hover:bg-green-500/10">
               <Download className="w-5 h-5 mr-2" />
               Export Report
             </Button>
@@ -173,26 +173,26 @@ export function GreenIDIntegrationModule() {
       </div>
 
       {/* Integration Status */}
-      <div className="bg-green-50 border-2 border-green-500 rounded-lg p-6">
+      <div className="bg-green-500/10 border-2 border-green-500 rounded-lg p-6">
         <div className="flex items-start gap-3">
-          <CheckCircle className="w-6 h-6 text-green-600 mt-0.5" />
+          <CheckCircle className="w-6 h-6 text-green-400 mt-0.5" />
           <div>
-            <h3 className="font-bold text-green-900 mb-2">GreenID Integration Active</h3>
-            <p className="text-sm text-green-800 mb-3">
+            <h3 className="font-bold text-green-300 mb-2">GreenID Integration Active</h3>
+            <p className="text-sm text-green-300 mb-3">
               Connected to GreenID identity verification service. Real-time checks against Australian government databases.
             </p>
             <div className="grid grid-cols-3 gap-4">
-              <div className="p-3 bg-white border border-green-200 rounded-lg">
-                <p className="text-xs text-green-700 font-semibold mb-1">API Status</p>
-                <p className="font-bold text-green-900">✓ Connected</p>
+              <div className="p-3 bg-white border border-green-500/30 rounded-lg">
+                <p className="text-xs text-green-300 font-semibold mb-1">API Status</p>
+                <p className="font-bold text-green-300">✓ Connected</p>
               </div>
-              <div className="p-3 bg-white border border-green-200 rounded-lg">
-                <p className="text-xs text-green-700 font-semibold mb-1">Data Sources</p>
-                <p className="font-bold text-green-900">12 Active</p>
+              <div className="p-3 bg-white border border-green-500/30 rounded-lg">
+                <p className="text-xs text-green-300 font-semibold mb-1">Data Sources</p>
+                <p className="font-bold text-green-300">12 Active</p>
               </div>
-              <div className="p-3 bg-white border border-green-200 rounded-lg">
-                <p className="text-xs text-green-700 font-semibold mb-1">Last Sync</p>
-                <p className="font-bold text-green-900">Just now</p>
+              <div className="p-3 bg-white border border-green-500/30 rounded-lg">
+                <p className="text-xs text-green-300 font-semibold mb-1">Last Sync</p>
+                <p className="font-bold text-green-300">Just now</p>
               </div>
             </div>
           </div>
@@ -200,8 +200,8 @@ export function GreenIDIntegrationModule() {
       </div>
 
       {/* Data Sources */}
-      <div className="bg-white rounded-lg border border-gray-200 p-6">
-        <h3 className="text-xl font-bold text-gray-900 mb-4">Available Data Sources</h3>
+      <div className="bg-white rounded-lg border border-white/10 p-6">
+        <h3 className="text-xl font-bold text-slate-100 mb-4">Available Data Sources</h3>
         <div className="grid grid-cols-3 gap-4">
           {[
             { name: 'DVS - Drivers License', icon: CreditCard, status: 'active' },
@@ -216,12 +216,12 @@ export function GreenIDIntegrationModule() {
           ].map((source, index) => {
             const Icon = source.icon;
             return (
-              <div key={index} className="p-4 border border-gray-200 rounded-lg">
+              <div key={index} className="p-4 border border-white/10 rounded-lg">
                 <div className="flex items-start gap-3">
-                  <Icon className="w-6 h-6 text-green-600 mt-0.5" />
+                  <Icon className="w-6 h-6 text-green-400 mt-0.5" />
                   <div className="flex-1">
-                    <h4 className="font-bold text-gray-900 text-sm mb-1">{source.name}</h4>
-                    <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded-full">
+                    <h4 className="font-bold text-slate-100 text-sm mb-1">{source.name}</h4>
+                    <span className="px-2 py-0.5 bg-green-500/15 text-green-300 text-xs font-bold rounded-full">
                       {source.status.toUpperCase()}
                     </span>
                   </div>
@@ -233,7 +233,7 @@ export function GreenIDIntegrationModule() {
       </div>
 
       {/* Search */}
-      <div className="bg-white rounded-lg border border-gray-200 p-4">
+      <div className="bg-white rounded-lg border border-white/10 p-4">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
           <input
@@ -241,29 +241,29 @@ export function GreenIDIntegrationModule() {
             placeholder="Search verification records by client name or ID..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full pl-10 pr-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
           />
         </div>
       </div>
 
       {/* Recent Verifications */}
-      <div className="bg-white rounded-lg border border-gray-200 p-6">
-        <h3 className="text-xl font-bold text-gray-900 mb-4">Recent Verifications</h3>
+      <div className="bg-white rounded-lg border border-white/10 p-6">
+        <h3 className="text-xl font-bold text-slate-100 mb-4">Recent Verifications</h3>
         <div className="space-y-3">
           {verifications.map((verification) => {
             const statusColor = getStatusColor(verification.status);
             return (
-              <div key={verification.id} className="p-4 border-2 border-gray-200 rounded-lg hover:shadow-md transition-shadow">
+              <div key={verification.id} className="p-4 border-2 border-white/10 rounded-lg hover:shadow-md transition-shadow">
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
                       <span className="px-3 py-1 bg-gray-800 text-white text-xs font-mono font-bold rounded">
                         {verification.id}
                       </span>
-                      <span className="text-sm text-gray-600">{verification.timestamp}</span>
+                      <span className="text-sm text-slate-300">{verification.timestamp}</span>
                     </div>
-                    <h4 className="text-lg font-bold text-gray-900 mb-1">{verification.clientName}</h4>
-                    <p className="text-sm text-gray-600 capitalize">
+                    <h4 className="text-lg font-bold text-slate-100 mb-1">{verification.clientName}</h4>
+                    <p className="text-sm text-slate-300 capitalize">
                       {verification.verificationType.replace('-', ' ')} Verification
                     </p>
                   </div>
@@ -276,11 +276,11 @@ export function GreenIDIntegrationModule() {
                       </span>
                     </div>
                     <div className="text-right">
-                      <p className="text-xs text-gray-600">GreenID Score</p>
+                      <p className="text-xs text-slate-300">GreenID Score</p>
                       <p className={`text-2xl font-bold ${
-                        verification.greenIDScore >= 90 ? 'text-green-600' :
-                        verification.greenIDScore >= 70 ? 'text-orange-600' :
-                        'text-red-600'
+                        verification.greenIDScore >= 90 ? 'text-green-400' :
+                        verification.greenIDScore >= 70 ? 'text-orange-400' :
+                        'text-red-400'
                       }`}>
                         {verification.greenIDScore}
                       </p>
@@ -288,12 +288,12 @@ export function GreenIDIntegrationModule() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 mt-4 pt-4 border-t border-gray-200">
+                <div className="grid grid-cols-2 gap-4 mt-4 pt-4 border-t border-white/10">
                   <div>
-                    <p className="text-xs text-gray-600 font-semibold mb-2">Documents Checked</p>
+                    <p className="text-xs text-slate-300 font-semibold mb-2">Documents Checked</p>
                     <div className="flex flex-wrap gap-1">
                       {verification.documentsChecked.map((doc, index) => (
-                        <span key={index} className="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded">
+                        <span key={index} className="px-2 py-1 bg-blue-500/15 text-blue-300 text-xs font-semibold rounded">
                           {doc}
                         </span>
                       ))}
@@ -301,10 +301,10 @@ export function GreenIDIntegrationModule() {
                   </div>
 
                   <div>
-                    <p className="text-xs text-gray-600 font-semibold mb-2">Data Sources</p>
+                    <p className="text-xs text-slate-300 font-semibold mb-2">Data Sources</p>
                     <div className="flex flex-wrap gap-1">
                       {verification.dataSources.map((source, index) => (
-                        <span key={index} className="px-2 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded">
+                        <span key={index} className="px-2 py-1 bg-green-500/15 text-green-300 text-xs font-semibold rounded">
                           {source}
                         </span>
                       ))}
@@ -334,8 +334,8 @@ export function GreenIDIntegrationModule() {
       </div>
 
       {/* Benefits */}
-      <div className="bg-white rounded-lg border border-gray-200 p-6">
-        <h3 className="text-xl font-bold text-gray-900 mb-4">GreenID Benefits</h3>
+      <div className="bg-white rounded-lg border border-white/10 p-6">
+        <h3 className="text-xl font-bold text-slate-100 mb-4">GreenID Benefits</h3>
         <div className="grid grid-cols-2 gap-4">
           {[
             { title: 'Instant Verification', desc: 'Real-time checks in under 60 seconds' },
@@ -345,9 +345,9 @@ export function GreenIDIntegrationModule() {
             { title: 'Audit Trail', desc: 'Complete documentation for compliance records' },
             { title: 'High Success Rate', desc: '94%+ verification success rate' }
           ].map((benefit, index) => (
-            <div key={index} className="p-4 border border-gray-200 rounded-lg">
-              <h4 className="font-bold text-gray-900 mb-1">{benefit.title}</h4>
-              <p className="text-sm text-gray-600">{benefit.desc}</p>
+            <div key={index} className="p-4 border border-white/10 rounded-lg">
+              <h4 className="font-bold text-slate-100 mb-1">{benefit.title}</h4>
+              <p className="text-sm text-slate-300">{benefit.desc}</p>
             </div>
           ))}
         </div>

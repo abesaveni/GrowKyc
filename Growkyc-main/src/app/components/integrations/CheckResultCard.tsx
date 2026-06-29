@@ -107,7 +107,7 @@ export function CheckResultCard({
       case 'clear':
       case 'active':
         return (
-          <Badge className="bg-green-100 text-green-700 border-green-300">
+          <Badge className="bg-green-500/15 text-green-300 border-green-300">
             <CheckCircle className="w-3 h-3 mr-1" />
             {status === 'verified' ? 'Verified' : status === 'clear' ? 'Clear' : 'Active'}
           </Badge>
@@ -115,7 +115,7 @@ export function CheckResultCard({
       case 'review':
       case 'possible_match':
         return (
-          <Badge className="bg-amber-100 text-amber-700 border-amber-300">
+          <Badge className="bg-amber-500/15 text-amber-300 border-amber-300">
             <AlertTriangle className="w-3 h-3 mr-1" />
             {status === 'review' ? 'Review Required' : 'Possible Match'}
           </Badge>
@@ -125,28 +125,28 @@ export function CheckResultCard({
       case 'inactive':
       case 'mismatch':
         return (
-          <Badge className="bg-red-100 text-red-700 border-red-300">
+          <Badge className="bg-red-500/15 text-red-300 border-red-300">
             <XCircle className="w-3 h-3 mr-1" />
             {status === 'failed' ? 'Failed' : status === 'confirmed_match' ? 'Confirmed Match' : status === 'inactive' ? 'Inactive' : 'Mismatch'}
           </Badge>
         );
       case 'running':
         return (
-          <Badge className="bg-blue-100 text-blue-700 border-blue-300">
+          <Badge className="bg-blue-500/15 text-blue-300 border-blue-300">
             <RefreshCw className="w-3 h-3 mr-1 animate-spin" />
             Running
           </Badge>
         );
       case 'not_run':
         return (
-          <Badge className="bg-gray-100 text-gray-700 border-gray-300">
+          <Badge className="bg-white/5 text-slate-300 border-white/10">
             <Clock className="w-3 h-3 mr-1" />
             Not Run
           </Badge>
         );
       case 'completed':
         return (
-          <Badge className="bg-green-100 text-green-700 border-green-300">
+          <Badge className="bg-green-500/15 text-green-300 border-green-300">
             <CheckCircle className="w-3 h-3 mr-1" />
             Completed
           </Badge>
@@ -160,10 +160,10 @@ export function CheckResultCard({
     if (!riskLevel) return null;
 
     const config = {
-      low: 'bg-green-100 text-green-700 border-green-300',
-      medium: 'bg-amber-100 text-amber-700 border-amber-300',
-      high: 'bg-orange-100 text-orange-700 border-orange-300',
-      critical: 'bg-red-100 text-red-700 border-red-300'
+      low: 'bg-green-500/15 text-green-300 border-green-300',
+      medium: 'bg-amber-500/15 text-amber-300 border-amber-300',
+      high: 'bg-orange-500/15 text-orange-300 border-orange-300',
+      critical: 'bg-red-500/15 text-red-300 border-red-300'
     };
 
     return (
@@ -176,7 +176,7 @@ export function CheckResultCard({
   const Icon = getCheckIcon();
 
   return (
-    <Card className="border-2 border-gray-200 hover:border-purple-300 transition-all">
+    <Card className="border-2 border-white/10 hover:border-purple-300 transition-all">
       <CardHeader className="pb-3 bg-gradient-to-r from-gray-50 to-blue-50 border-b">
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-3">
@@ -206,17 +206,17 @@ export function CheckResultCard({
       <CardContent className="p-4">
         {/* Summary */}
         <div className="mb-4">
-          <p className="text-sm text-gray-700">{summary}</p>
+          <p className="text-sm text-slate-300">{summary}</p>
         </div>
 
         {/* Confidence Score */}
         {confidence !== undefined && (
-          <div className="mb-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
+          <div className="mb-4 p-3 bg-blue-500/10 rounded-lg border border-blue-500/30">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-semibold text-blue-900">Confidence Score</span>
-              <span className="text-lg font-bold text-blue-900">{(confidence * 100).toFixed(0)}%</span>
+              <span className="text-sm font-semibold text-blue-300">Confidence Score</span>
+              <span className="text-lg font-bold text-blue-300">{(confidence * 100).toFixed(0)}%</span>
             </div>
-            <div className="w-full bg-blue-200 rounded-full h-2">
+            <div className="w-full bg-blue-500/20 rounded-full h-2">
               <div
                 className="bg-blue-600 h-2 rounded-full transition-all"
                 style={{ width: `${confidence * 100}%` }}
@@ -227,14 +227,14 @@ export function CheckResultCard({
 
         {/* Flags */}
         {flags.length > 0 && (
-          <div className="mb-4 p-3 bg-amber-50 rounded-lg border border-amber-200">
-            <p className="text-xs font-semibold text-amber-900 mb-2 flex items-center gap-1">
+          <div className="mb-4 p-3 bg-amber-500/10 rounded-lg border border-amber-500/30">
+            <p className="text-xs font-semibold text-amber-300 mb-2 flex items-center gap-1">
               <AlertTriangle className="w-4 h-4" />
               Flags ({flags.length})
             </p>
             <div className="space-y-1">
               {flags.map((flag, idx) => (
-                <div key={idx} className="text-xs text-amber-800">
+                <div key={idx} className="text-xs text-amber-300">
                   • {flag}
                 </div>
               ))}
@@ -247,9 +247,9 @@ export function CheckResultCard({
           <div className="space-y-3 pt-3 border-t">
             <div className="grid grid-cols-2 gap-3">
               {details.map((detail, idx) => (
-                <div key={idx} className="p-2 bg-gray-50 rounded border border-gray-200">
-                  <p className="text-xs text-gray-600 mb-1">{detail.label}</p>
-                  <p className="text-sm font-semibold text-gray-900">
+                <div key={idx} className="p-2 bg-white/5 rounded border border-white/10">
+                  <p className="text-xs text-slate-300 mb-1">{detail.label}</p>
+                  <p className="text-sm font-semibold text-slate-100">
                     {typeof detail.value === 'boolean'
                       ? detail.value
                         ? 'Yes'
@@ -261,7 +261,7 @@ export function CheckResultCard({
             </div>
 
             {/* Timestamp */}
-            <div className="flex items-center gap-2 text-xs text-gray-600 pt-2 border-t">
+            <div className="flex items-center gap-2 text-xs text-slate-300 pt-2 border-t">
               <Clock className="w-4 h-4" />
               <span>Checked at: {new Date(checkedAt).toLocaleString()}</span>
             </div>

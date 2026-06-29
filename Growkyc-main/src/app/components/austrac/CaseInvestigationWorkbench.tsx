@@ -124,7 +124,7 @@ export function CaseInvestigationWorkbench({ caseId, onBack }: CaseInvestigation
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
+    <div className="min-h-screen bg-white/5 p-8">
       <div className="max-w-[1900px] mx-auto space-y-6">
         {/* Header */}
         <div className="bg-gradient-to-r from-red-900 via-red-800 to-orange-900 rounded-lg p-6 text-white shadow-xl">
@@ -145,11 +145,11 @@ export function CaseInvestigationWorkbench({ caseId, onBack }: CaseInvestigation
               </div>
             </div>
             <div className="flex gap-3">
-              <Badge className="bg-red-100 text-red-700 text-lg px-4 py-2">
+              <Badge className="bg-red-500/15 text-red-300 text-lg px-4 py-2">
                 <Clock className="w-5 h-5 mr-2" />
                 SLA: {caseData.slaRemaining}
               </Badge>
-              <Button className="bg-white text-red-900 hover:bg-red-50">
+              <Button className="bg-white text-red-300 hover:bg-red-500/10">
                 Save Progress
               </Button>
             </div>
@@ -162,7 +162,7 @@ export function CaseInvestigationWorkbench({ caseId, onBack }: CaseInvestigation
             <Card className="border-2 border-blue-300 shadow-lg sticky top-6">
               <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
                 <CardTitle className="flex items-center gap-2">
-                  <Calendar className="w-6 h-6 text-blue-600" />
+                  <Calendar className="w-6 h-6 text-blue-400" />
                   Timeline
                 </CardTitle>
               </CardHeader>
@@ -181,8 +181,8 @@ export function CaseInvestigationWorkbench({ caseId, onBack }: CaseInvestigation
                           )}
                         </div>
                         <div className="flex-1 pb-4">
-                          <p className="text-xs text-gray-600 mb-1">{event.date}</p>
-                          <p className="text-sm font-semibold text-gray-900">{event.event}</p>
+                          <p className="text-xs text-slate-300 mb-1">{event.date}</p>
+                          <p className="text-sm font-semibold text-slate-100">{event.event}</p>
                         </div>
                       </div>
                     );
@@ -206,7 +206,7 @@ export function CaseInvestigationWorkbench({ caseId, onBack }: CaseInvestigation
                         className={
                           activeTab === tab.id
                             ? 'bg-purple-600 text-white'
-                            : 'bg-white text-gray-700 hover:bg-purple-100'
+                            : 'bg-white text-slate-300 hover:bg-purple-500/15'
                         }
                         size="sm"
                       >
@@ -221,40 +221,40 @@ export function CaseInvestigationWorkbench({ caseId, onBack }: CaseInvestigation
                 {/* Facts Tab */}
                 {activeTab === 'facts' && (
                   <div className="space-y-4">
-                    <h3 className="text-xl font-bold text-gray-900 mb-4">Core Facts</h3>
+                    <h3 className="text-xl font-bold text-slate-100 mb-4">Core Facts</h3>
                     <div className="grid grid-cols-2 gap-4">
-                      <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-                        <p className="text-xs text-blue-700 mb-1">Subject Name</p>
-                        <p className="font-bold text-gray-900">ABC Enterprises Pty Ltd</p>
+                      <div className="p-4 bg-blue-500/10 rounded-lg border border-blue-500/30">
+                        <p className="text-xs text-blue-300 mb-1">Subject Name</p>
+                        <p className="font-bold text-slate-100">ABC Enterprises Pty Ltd</p>
                       </div>
-                      <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-                        <p className="text-xs text-blue-700 mb-1">Entity Type</p>
-                        <p className="font-bold text-gray-900">Proprietary Company</p>
+                      <div className="p-4 bg-blue-500/10 rounded-lg border border-blue-500/30">
+                        <p className="text-xs text-blue-300 mb-1">Entity Type</p>
+                        <p className="font-bold text-slate-100">Proprietary Company</p>
                       </div>
-                      <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-                        <p className="text-xs text-blue-700 mb-1">ABN</p>
-                        <p className="font-bold text-gray-900">12 345 678 901</p>
+                      <div className="p-4 bg-blue-500/10 rounded-lg border border-blue-500/30">
+                        <p className="text-xs text-blue-300 mb-1">ABN</p>
+                        <p className="font-bold text-slate-100">12 345 678 901</p>
                       </div>
-                      <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-                        <p className="text-xs text-blue-700 mb-1">Registration Date</p>
-                        <p className="font-bold text-gray-900">2020-04-15</p>
+                      <div className="p-4 bg-blue-500/10 rounded-lg border border-blue-500/30">
+                        <p className="text-xs text-blue-300 mb-1">Registration Date</p>
+                        <p className="font-bold text-slate-100">2020-04-15</p>
                       </div>
-                      <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-                        <p className="text-xs text-blue-700 mb-1">Industry</p>
-                        <p className="font-bold text-gray-900">Technology Services</p>
+                      <div className="p-4 bg-blue-500/10 rounded-lg border border-blue-500/30">
+                        <p className="text-xs text-blue-300 mb-1">Industry</p>
+                        <p className="font-bold text-slate-100">Technology Services</p>
                       </div>
-                      <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-                        <p className="text-xs text-blue-700 mb-1">Jurisdiction</p>
-                        <p className="font-bold text-gray-900">Australia (VIC)</p>
+                      <div className="p-4 bg-blue-500/10 rounded-lg border border-blue-500/30">
+                        <p className="text-xs text-blue-300 mb-1">Jurisdiction</p>
+                        <p className="font-bold text-slate-100">Australia (VIC)</p>
                       </div>
                     </div>
 
-                    <div className="mt-6 p-4 bg-amber-50 rounded-lg border-2 border-amber-300">
-                      <h4 className="font-bold text-amber-900 mb-3 flex items-center gap-2">
+                    <div className="mt-6 p-4 bg-amber-500/10 rounded-lg border-2 border-amber-300">
+                      <h4 className="font-bold text-amber-300 mb-3 flex items-center gap-2">
                         <AlertTriangle className="w-5 h-5" />
                         Key Risk Indicators
                       </h4>
-                      <ul className="space-y-2 text-sm text-amber-800">
+                      <ul className="space-y-2 text-sm text-amber-300">
                         <li>• Director matches DFAT sanctions list (94% confidence)</li>
                         <li>• Severe adverse media linking to financial crime (3 articles, 2025-2026)</li>
                         <li>• Unexplained source of funds - $2.5M capital injection</li>
@@ -268,21 +268,21 @@ export function CaseInvestigationWorkbench({ caseId, onBack }: CaseInvestigation
                 {/* Evidence Tab */}
                 {activeTab === 'evidence' && (
                   <div className="space-y-4">
-                    <h3 className="text-xl font-bold text-gray-900 mb-4">Supporting Evidence</h3>
+                    <h3 className="text-xl font-bold text-slate-100 mb-4">Supporting Evidence</h3>
                     {evidenceItems.map((evidence) => (
-                      <Card key={evidence.id} className="border-2 border-gray-300 hover:border-purple-400 transition-colors">
+                      <Card key={evidence.id} className="border-2 border-white/10 hover:border-purple-400 transition-colors">
                         <CardContent className="p-4">
                           <div className="flex items-start justify-between mb-3">
                             <div>
-                              <Badge className="bg-purple-100 text-purple-700 text-xs mb-2">
+                              <Badge className="bg-purple-500/15 text-purple-300 text-xs mb-2">
                                 {evidence.type}
                               </Badge>
-                              <h4 className="font-bold text-gray-900">{evidence.title}</h4>
-                              <p className="text-xs text-gray-600 mt-1">Source: {evidence.source} | {evidence.date}</p>
+                              <h4 className="font-bold text-slate-100">{evidence.title}</h4>
+                              <p className="text-xs text-slate-300 mt-1">Source: {evidence.source} | {evidence.date}</p>
                             </div>
                             <div className="text-right">
-                              <p className="text-sm text-gray-600">Confidence</p>
-                              <p className="text-2xl font-bold text-purple-900">{evidence.confidence}%</p>
+                              <p className="text-sm text-slate-300">Confidence</p>
+                              <p className="text-2xl font-bold text-purple-300">{evidence.confidence}%</p>
                             </div>
                           </div>
                           <div className="flex gap-2">
@@ -304,10 +304,10 @@ export function CaseInvestigationWorkbench({ caseId, onBack }: CaseInvestigation
                 {/* Screening History Tab */}
                 {activeTab === 'screening' && (
                   <div className="space-y-4">
-                    <h3 className="text-xl font-bold text-gray-900 mb-4">Screening History</h3>
+                    <h3 className="text-xl font-bold text-slate-100 mb-4">Screening History</h3>
                     <div className="overflow-x-auto">
                       <table className="w-full">
-                        <thead className="bg-gray-100 border-b-2">
+                        <thead className="bg-white/5 border-b-2">
                           <tr>
                             <th className="text-left py-2 px-3 text-sm font-bold">Date</th>
                             <th className="text-left py-2 px-3 text-sm font-bold">Check</th>
@@ -318,7 +318,7 @@ export function CaseInvestigationWorkbench({ caseId, onBack }: CaseInvestigation
                         </thead>
                         <tbody>
                           {screeningHistory.map((check, idx) => (
-                            <tr key={idx} className="border-b hover:bg-purple-50">
+                            <tr key={idx} className="border-b hover:bg-purple-500/10">
                               <td className="py-2 px-3 text-sm">{check.date}</td>
                               <td className="py-2 px-3 text-sm font-semibold">{check.check}</td>
                               <td className="py-2 px-3 text-sm">
@@ -327,10 +327,10 @@ export function CaseInvestigationWorkbench({ caseId, onBack }: CaseInvestigation
                               <td className="py-2 px-3 text-sm">{check.result}</td>
                               <td className="py-2 px-3">
                                 <Badge className={
-                                  check.risk === 'Critical' ? 'bg-red-100 text-red-700' :
-                                  check.risk === 'High' ? 'bg-orange-100 text-orange-700' :
-                                  check.risk === 'Medium' ? 'bg-amber-100 text-amber-700' :
-                                  'bg-green-100 text-green-700'
+                                  check.risk === 'Critical' ? 'bg-red-500/15 text-red-300' :
+                                  check.risk === 'High' ? 'bg-orange-500/15 text-orange-300' :
+                                  check.risk === 'Medium' ? 'bg-amber-500/15 text-amber-300' :
+                                  'bg-green-500/15 text-green-300'
                                 }>
                                   {check.risk}
                                 </Badge>
@@ -346,20 +346,20 @@ export function CaseInvestigationWorkbench({ caseId, onBack }: CaseInvestigation
                 {/* Related Subjects Tab */}
                 {activeTab === 'related' && (
                   <div className="space-y-4">
-                    <h3 className="text-xl font-bold text-gray-900 mb-4">Related Subjects</h3>
+                    <h3 className="text-xl font-bold text-slate-100 mb-4">Related Subjects</h3>
                     {relatedSubjects.map((subject, idx) => (
-                      <Card key={idx} className="border-2 border-gray-300">
+                      <Card key={idx} className="border-2 border-white/10">
                         <CardContent className="p-4">
                           <div className="flex items-start justify-between">
                             <div className="flex items-start gap-3">
-                              <Users className="w-10 h-10 text-blue-600 bg-blue-100 p-2 rounded-lg" />
+                              <Users className="w-10 h-10 text-blue-400 bg-blue-500/15 p-2 rounded-lg" />
                               <div>
-                                <h4 className="font-bold text-gray-900">{subject.name}</h4>
-                                <p className="text-sm text-gray-600">{subject.role}</p>
-                                <p className="text-xs text-gray-600 mt-1">{subject.relationship}</p>
+                                <h4 className="font-bold text-slate-100">{subject.name}</h4>
+                                <p className="text-sm text-slate-300">{subject.role}</p>
+                                <p className="text-xs text-slate-300 mt-1">{subject.relationship}</p>
                               </div>
                             </div>
-                            <Badge className="bg-red-100 text-red-700 border-red-300">
+                            <Badge className="bg-red-500/15 text-red-300 border-red-300">
                               {subject.riskFlag}
                             </Badge>
                           </div>
@@ -373,25 +373,25 @@ export function CaseInvestigationWorkbench({ caseId, onBack }: CaseInvestigation
                 {activeTab === 'triggers' && (
                   <div className="text-center py-12">
                     <AlertTriangle className="w-16 h-16 text-orange-400 mx-auto mb-4" />
-                    <p className="text-gray-600">Trigger details shown here</p>
+                    <p className="text-slate-300">Trigger details shown here</p>
                   </div>
                 )}
                 {activeTab === 'financial' && (
                   <div className="text-center py-12">
                     <DollarSign className="w-16 h-16 text-green-400 mx-auto mb-4" />
-                    <p className="text-gray-600">Financial context and transactions shown here</p>
+                    <p className="text-slate-300">Financial context and transactions shown here</p>
                   </div>
                 )}
                 {activeTab === 'service' && (
                   <div className="text-center py-12">
                     <Activity className="w-16 h-16 text-indigo-400 mx-auto mb-4" />
-                    <p className="text-gray-600">Service activity logs shown here</p>
+                    <p className="text-slate-300">Service activity logs shown here</p>
                   </div>
                 )}
                 {activeTab === 'prior' && (
                   <div className="text-center py-12">
                     <Calendar className="w-16 h-16 text-purple-400 mx-auto mb-4" />
-                    <p className="text-gray-600">Prior compliance decisions shown here</p>
+                    <p className="text-slate-300">Prior compliance decisions shown here</p>
                   </div>
                 )}
               </CardContent>
@@ -403,14 +403,14 @@ export function CaseInvestigationWorkbench({ caseId, onBack }: CaseInvestigation
             <Card className="border-2 border-green-300 shadow-lg sticky top-6">
               <CardHeader className="bg-gradient-to-r from-green-50 to-emerald-50 border-b">
                 <CardTitle className="flex items-center gap-2">
-                  <CheckCircle className="w-6 h-6 text-green-600" />
+                  <CheckCircle className="w-6 h-6 text-green-400" />
                   Assessment
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-4 space-y-4">
                 <div>
-                  <label className="block text-sm font-bold text-gray-900 mb-2">Suspicion Category</label>
-                  <select className="w-full px-3 py-2 border-2 border-gray-300 rounded-lg text-sm">
+                  <label className="block text-sm font-bold text-slate-100 mb-2">Suspicion Category</label>
+                  <select className="w-full px-3 py-2 border-2 border-white/10 rounded-lg text-sm">
                     <option>Select category...</option>
                     <option>Money Laundering</option>
                     <option>Terrorism Financing</option>
@@ -421,8 +421,8 @@ export function CaseInvestigationWorkbench({ caseId, onBack }: CaseInvestigation
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-gray-900 mb-2">Suspected Conduct Type</label>
-                  <select className="w-full px-3 py-2 border-2 border-gray-300 rounded-lg text-sm">
+                  <label className="block text-sm font-bold text-slate-100 mb-2">Suspected Conduct Type</label>
+                  <select className="w-full px-3 py-2 border-2 border-white/10 rounded-lg text-sm">
                     <option>Select type...</option>
                     <option>Structuring</option>
                     <option>Third Party Deposits</option>
@@ -433,8 +433,8 @@ export function CaseInvestigationWorkbench({ caseId, onBack }: CaseInvestigation
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-gray-900 mb-2">Internal Risk Severity</label>
-                  <select className="w-full px-3 py-2 border-2 border-gray-300 rounded-lg text-sm">
+                  <label className="block text-sm font-bold text-slate-100 mb-2">Internal Risk Severity</label>
+                  <select className="w-full px-3 py-2 border-2 border-white/10 rounded-lg text-sm">
                     <option>Critical</option>
                     <option>High</option>
                     <option>Medium</option>
@@ -443,26 +443,26 @@ export function CaseInvestigationWorkbench({ caseId, onBack }: CaseInvestigation
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-gray-900 mb-2">Supporting Rationale</label>
+                  <label className="block text-sm font-bold text-slate-100 mb-2">Supporting Rationale</label>
                   <textarea
                     rows={4}
-                    className="w-full px-3 py-2 border-2 border-gray-300 rounded-lg text-sm"
+                    className="w-full px-3 py-2 border-2 border-white/10 rounded-lg text-sm"
                     placeholder="Document your analysis and reasoning..."
                   />
                 </div>
 
-                <div className="p-3 bg-amber-50 rounded-lg border border-amber-300">
-                  <label className="block text-xs font-bold text-amber-900 mb-2">Missing Evidence</label>
+                <div className="p-3 bg-amber-500/10 rounded-lg border border-amber-300">
+                  <label className="block text-xs font-bold text-amber-300 mb-2">Missing Evidence</label>
                   <div className="space-y-1">
-                    <label className="flex items-center gap-2 text-xs text-amber-800">
+                    <label className="flex items-center gap-2 text-xs text-amber-300">
                       <input type="checkbox" />
                       UBO verification incomplete
                     </label>
-                    <label className="flex items-center gap-2 text-xs text-amber-800">
+                    <label className="flex items-center gap-2 text-xs text-amber-300">
                       <input type="checkbox" />
                       SOF documentation required
                     </label>
-                    <label className="flex items-center gap-2 text-xs text-amber-800">
+                    <label className="flex items-center gap-2 text-xs text-amber-300">
                       <input type="checkbox" />
                       Court case details pending
                     </label>
@@ -470,9 +470,9 @@ export function CaseInvestigationWorkbench({ caseId, onBack }: CaseInvestigation
                 </div>
 
                 <div className="pt-4 border-t">
-                  <label className="block text-sm font-bold text-gray-900 mb-3">Recommendation</label>
+                  <label className="block text-sm font-bold text-slate-100 mb-3">Recommendation</label>
                   <div className="space-y-2">
-                    <label className="flex items-center gap-2 p-3 border-2 border-red-300 rounded-lg hover:bg-red-50 cursor-pointer">
+                    <label className="flex items-center gap-2 p-3 border-2 border-red-300 rounded-lg hover:bg-red-500/10 cursor-pointer">
                       <input
                         type="radio"
                         name="recommendation"
@@ -481,12 +481,12 @@ export function CaseInvestigationWorkbench({ caseId, onBack }: CaseInvestigation
                         onChange={(e) => setRecommendation(e.target.value)}
                       />
                       <div className="flex-1">
-                        <p className="font-bold text-red-900 text-sm">Report to AUSTRAC</p>
-                        <p className="text-xs text-red-700">Suspicious matter confirmed</p>
+                        <p className="font-bold text-red-300 text-sm">Report to AUSTRAC</p>
+                        <p className="text-xs text-red-300">Suspicious matter confirmed</p>
                       </div>
                     </label>
 
-                    <label className="flex items-center gap-2 p-3 border-2 border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer">
+                    <label className="flex items-center gap-2 p-3 border-2 border-white/10 rounded-lg hover:bg-white/5 cursor-pointer">
                       <input
                         type="radio"
                         name="recommendation"
@@ -495,12 +495,12 @@ export function CaseInvestigationWorkbench({ caseId, onBack }: CaseInvestigation
                         onChange={(e) => setRecommendation(e.target.value)}
                       />
                       <div className="flex-1">
-                        <p className="font-bold text-gray-900 text-sm">Do Not Report</p>
-                        <p className="text-xs text-gray-700">Not suspicious</p>
+                        <p className="font-bold text-slate-100 text-sm">Do Not Report</p>
+                        <p className="text-xs text-slate-300">Not suspicious</p>
                       </div>
                     </label>
 
-                    <label className="flex items-center gap-2 p-3 border-2 border-indigo-300 rounded-lg hover:bg-indigo-50 cursor-pointer">
+                    <label className="flex items-center gap-2 p-3 border-2 border-indigo-300 rounded-lg hover:bg-indigo-500/10 cursor-pointer">
                       <input
                         type="radio"
                         name="recommendation"
@@ -509,12 +509,12 @@ export function CaseInvestigationWorkbench({ caseId, onBack }: CaseInvestigation
                         onChange={(e) => setRecommendation(e.target.value)}
                       />
                       <div className="flex-1">
-                        <p className="font-bold text-indigo-900 text-sm">Enhanced Monitoring</p>
-                        <p className="text-xs text-indigo-700">Watch for 90 days</p>
+                        <p className="font-bold text-indigo-300 text-sm">Enhanced Monitoring</p>
+                        <p className="text-xs text-indigo-300">Watch for 90 days</p>
                       </div>
                     </label>
 
-                    <label className="flex items-center gap-2 p-3 border-2 border-purple-300 rounded-lg hover:bg-purple-50 cursor-pointer">
+                    <label className="flex items-center gap-2 p-3 border-2 border-purple-300 rounded-lg hover:bg-purple-500/10 cursor-pointer">
                       <input
                         type="radio"
                         name="recommendation"
@@ -523,8 +523,8 @@ export function CaseInvestigationWorkbench({ caseId, onBack }: CaseInvestigation
                         onChange={(e) => setRecommendation(e.target.value)}
                       />
                       <div className="flex-1">
-                        <p className="font-bold text-purple-900 text-sm">Senior Review Required</p>
-                        <p className="text-xs text-purple-700">Escalate to MLRO</p>
+                        <p className="font-bold text-purple-300 text-sm">Senior Review Required</p>
+                        <p className="text-xs text-purple-300">Escalate to MLRO</p>
                       </div>
                     </label>
                   </div>

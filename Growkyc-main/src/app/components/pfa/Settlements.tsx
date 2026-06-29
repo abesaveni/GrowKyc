@@ -92,10 +92,10 @@ export function Settlements({ onNavigate, onBack, onSwitchModule }: SettlementsP
 
   const getStatusBadge = (status: string) => {
     const badges: { [key: string]: JSX.Element } = {
-      'pending': <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-xs font-semibold rounded">PENDING</span>,
-      'scheduled': <span className="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-semibold rounded">SCHEDULED</span>,
-      'completed': <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded">COMPLETED</span>,
-      'failed': <span className="px-2 py-0.5 bg-red-100 text-red-700 text-xs font-semibold rounded">FAILED</span>
+      'pending': <span className="px-2 py-0.5 bg-amber-500/15 text-amber-300 text-xs font-semibold rounded">PENDING</span>,
+      'scheduled': <span className="px-2 py-0.5 bg-blue-500/15 text-blue-300 text-xs font-semibold rounded">SCHEDULED</span>,
+      'completed': <span className="px-2 py-0.5 bg-green-500/15 text-green-300 text-xs font-semibold rounded">COMPLETED</span>,
+      'failed': <span className="px-2 py-0.5 bg-red-500/15 text-red-300 text-xs font-semibold rounded">FAILED</span>
     };
     return badges[status];
   };
@@ -108,9 +108,9 @@ export function Settlements({ onNavigate, onBack, onSwitchModule }: SettlementsP
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white/5">
       {/* Header */}
-      <div className="bg-white border-b border-gray-300 px-6 py-4">
+      <div className="bg-white border-b border-white/10 px-6 py-4">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-3">
             {onBack && (
@@ -118,10 +118,10 @@ export function Settlements({ onNavigate, onBack, onSwitchModule }: SettlementsP
                 <ArrowLeft className="w-4 h-4" />
               </Button>
             )}
-            <CheckCircle className="w-6 h-6 text-green-600" />
+            <CheckCircle className="w-6 h-6 text-green-400" />
             <div>
-              <h1 className="text-xl font-bold text-gray-900">Settlements</h1>
-              <p className="text-xs text-gray-600">Manage loan settlements and drawdowns</p>
+              <h1 className="text-xl font-bold text-slate-100">Settlements</h1>
+              <p className="text-xs text-slate-300">Manage loan settlements and drawdowns</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -138,17 +138,17 @@ export function Settlements({ onNavigate, onBack, onSwitchModule }: SettlementsP
 
         {/* Quick Stats */}
         <div className="grid grid-cols-4 gap-3">
-          <div className="bg-amber-50 rounded p-3 border border-amber-200">
-            <div className="text-xs text-amber-700">Pending</div>
-            <div className="text-lg font-bold text-amber-700">{formatCurrency(stats.pendingValue)}</div>
+          <div className="bg-amber-500/10 rounded p-3 border border-amber-500/30">
+            <div className="text-xs text-amber-300">Pending</div>
+            <div className="text-lg font-bold text-amber-300">{formatCurrency(stats.pendingValue)}</div>
           </div>
-          <div className="bg-blue-50 rounded p-3 border border-blue-200">
-            <div className="text-xs text-blue-700">Scheduled</div>
-            <div className="text-lg font-bold text-blue-700">{formatCurrency(stats.scheduledValue)}</div>
+          <div className="bg-blue-500/10 rounded p-3 border border-blue-500/30">
+            <div className="text-xs text-blue-300">Scheduled</div>
+            <div className="text-lg font-bold text-blue-300">{formatCurrency(stats.scheduledValue)}</div>
           </div>
-          <div className="bg-green-50 rounded p-3 border border-green-200">
-            <div className="text-xs text-green-700">Completed This Month</div>
-            <div className="text-lg font-bold text-green-700">{stats.completedThisMonth}</div>
+          <div className="bg-green-500/10 rounded p-3 border border-green-500/30">
+            <div className="text-xs text-green-300">Completed This Month</div>
+            <div className="text-lg font-bold text-green-300">{stats.completedThisMonth}</div>
           </div>
           <div className="bg-gradient-to-br from-green-600 to-green-700 text-white rounded p-3">
             <div className="text-xs opacity-90">Total Pipeline</div>
@@ -193,7 +193,7 @@ export function Settlements({ onNavigate, onBack, onSwitchModule }: SettlementsP
               </div>
               <button
                 onClick={() => onSwitchModule('grow_settlement')}
-                className="flex items-center gap-2 px-6 py-3 bg-white text-purple-600 rounded-lg hover:bg-purple-50 transition-colors font-bold text-lg whitespace-nowrap"
+                className="flex items-center gap-2 px-6 py-3 bg-white text-purple-400 rounded-lg hover:bg-purple-500/10 transition-colors font-bold text-lg whitespace-nowrap"
               >
                 Launch Settlement Portal
                 <ArrowRight className="w-5 h-5" />
@@ -209,10 +209,10 @@ export function Settlements({ onNavigate, onBack, onSwitchModule }: SettlementsP
             <input
               type="text"
               placeholder="Search settlements..."
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded text-sm"
+              className="w-full pl-10 pr-4 py-2 border border-white/10 rounded text-sm"
             />
           </div>
-          <select className="px-3 py-2 border border-gray-300 rounded text-sm">
+          <select className="px-3 py-2 border border-white/10 rounded text-sm">
             <option value="all">All Status</option>
             <option value="pending">Pending</option>
             <option value="scheduled">Scheduled</option>
@@ -225,54 +225,54 @@ export function Settlements({ onNavigate, onBack, onSwitchModule }: SettlementsP
         </div>
 
         {/* Settlements Table */}
-        <div className="border border-gray-300 rounded bg-white overflow-hidden">
+        <div className="border border-white/10 rounded bg-white overflow-hidden">
           <table className="w-full text-sm border-collapse">
             <thead>
-              <tr className="bg-gray-50">
-                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Loan ID</th>
-                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Borrower</th>
-                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Loan Type</th>
-                <th className="border border-gray-300 px-3 py-2 text-right font-semibold text-gray-700">Amount</th>
-                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Settlement Date</th>
-                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Solicitor</th>
-                <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700">Status</th>
-                <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700">Actions</th>
+              <tr className="bg-white/5">
+                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Loan ID</th>
+                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Borrower</th>
+                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Loan Type</th>
+                <th className="border border-white/10 px-3 py-2 text-right font-semibold text-slate-300">Amount</th>
+                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Settlement Date</th>
+                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Solicitor</th>
+                <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300">Status</th>
+                <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300">Actions</th>
               </tr>
             </thead>
             <tbody>
               {settlements.map((settlement) => (
-                <tr key={settlement.id} className="hover:bg-green-50">
-                  <td className="border border-gray-300 px-3 py-2 text-gray-900 font-mono font-semibold">
+                <tr key={settlement.id} className="hover:bg-green-500/10">
+                  <td className="border border-white/10 px-3 py-2 text-slate-100 font-mono font-semibold">
                     {settlement.id}
                   </td>
-                  <td className="border border-gray-300 px-3 py-2">
-                    <div className="font-semibold text-gray-900">{settlement.borrower}</div>
-                    <div className="text-xs text-gray-600">Broker: {settlement.broker}</div>
+                  <td className="border border-white/10 px-3 py-2">
+                    <div className="font-semibold text-slate-100">{settlement.borrower}</div>
+                    <div className="text-xs text-slate-300">Broker: {settlement.broker}</div>
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-gray-700">
+                  <td className="border border-white/10 px-3 py-2 text-slate-300">
                     {settlement.loanType}
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-right font-mono text-gray-900 font-semibold">
+                  <td className="border border-white/10 px-3 py-2 text-right font-mono text-slate-100 font-semibold">
                     {formatCurrency(settlement.amount)}
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-gray-900">
+                  <td className="border border-white/10 px-3 py-2 text-slate-100">
                     {settlement.settlementDate}
                   </td>
-                  <td className="border border-gray-300 px-3 py-2">
-                    <div className="text-gray-900">{settlement.solicitor}</div>
-                    <div className="text-xs text-gray-600 font-mono">{settlement.drawdownAccount}</div>
+                  <td className="border border-white/10 px-3 py-2">
+                    <div className="text-slate-100">{settlement.solicitor}</div>
+                    <div className="text-xs text-slate-300 font-mono">{settlement.drawdownAccount}</div>
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-center">
+                  <td className="border border-white/10 px-3 py-2 text-center">
                     {getStatusBadge(settlement.status)}
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-center">
+                  <td className="border border-white/10 px-3 py-2 text-center">
                     <div className="flex items-center gap-1 justify-center">
-                      <button className="px-2 py-1 text-xs bg-blue-100 text-blue-700 hover:bg-blue-200 rounded font-semibold">
+                      <button className="px-2 py-1 text-xs bg-blue-500/15 text-blue-300 hover:bg-blue-500/20 rounded font-semibold">
                         <FileText className="w-3 h-3 inline mr-1" />
                         Docs
                       </button>
                       {settlement.status === 'scheduled' && (
-                        <button className="px-2 py-1 text-xs bg-green-100 text-green-700 hover:bg-green-200 rounded font-semibold">
+                        <button className="px-2 py-1 text-xs bg-green-500/15 text-green-300 hover:bg-green-500/20 rounded font-semibold">
                           <CheckCircle className="w-3 h-3 inline mr-1" />
                           Complete
                         </button>
@@ -286,35 +286,35 @@ export function Settlements({ onNavigate, onBack, onSwitchModule }: SettlementsP
         </div>
 
         {/* Settlement Checklist */}
-        <div className="bg-white border border-gray-300 rounded p-4">
-          <h3 className="font-semibold text-gray-900 mb-3">Settlement Checklist</h3>
+        <div className="bg-white border border-white/10 rounded p-4">
+          <h3 className="font-semibold text-slate-100 mb-3">Settlement Checklist</h3>
           <div className="grid grid-cols-2 gap-4 text-sm">
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-green-600" />
-                <span className="text-gray-700">Credit approval obtained</span>
+                <CheckCircle className="w-4 h-4 text-green-400" />
+                <span className="text-slate-300">Credit approval obtained</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-green-600" />
-                <span className="text-gray-700">Loan documents executed</span>
+                <CheckCircle className="w-4 h-4 text-green-400" />
+                <span className="text-slate-300">Loan documents executed</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-green-600" />
-                <span className="text-gray-700">Security registered</span>
+                <CheckCircle className="w-4 h-4 text-green-400" />
+                <span className="text-slate-300">Security registered</span>
               </div>
             </div>
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-green-600" />
-                <span className="text-gray-700">Insurance confirmed</span>
+                <CheckCircle className="w-4 h-4 text-green-400" />
+                <span className="text-slate-300">Insurance confirmed</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-green-600" />
-                <span className="text-gray-700">Valuation completed</span>
+                <CheckCircle className="w-4 h-4 text-green-400" />
+                <span className="text-slate-300">Valuation completed</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-green-600" />
-                <span className="text-gray-700">Drawdown instructions confirmed</span>
+                <CheckCircle className="w-4 h-4 text-green-400" />
+                <span className="text-slate-300">Drawdown instructions confirmed</span>
               </div>
             </div>
           </div>

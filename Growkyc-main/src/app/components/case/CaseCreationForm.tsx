@@ -1119,7 +1119,7 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
               flex items-center justify-center w-8 h-8 rounded-full border-2 text-xs font-bold
               ${currentStep >= step 
                 ? 'bg-blue-600 border-blue-600 text-white' 
-                : 'bg-white border-gray-300 text-gray-400'
+                : 'bg-white border-white/10 text-gray-400'
               }
               transition-all duration-300
             `}>
@@ -1136,22 +1136,22 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
         ))}
       </div>
       <div className="grid grid-cols-11 gap-1 text-xs font-medium text-center">
-        <span className={currentStep >= 1 ? 'text-blue-600' : 'text-gray-400'}>Property</span>
-        <span className={currentStep >= 2 ? 'text-blue-600' : 'text-gray-400'}>Entity</span>
-        <span className={currentStep >= 3 ? 'text-blue-600' : 'text-gray-400'}>Payment</span>
-        <span className={currentStep >= 4 ? 'text-blue-600' : 'text-gray-400'}>Lender</span>
-        <span className={currentStep >= 5 ? 'text-blue-600' : 'text-gray-400'}>Loan</span>
-        <span className={currentStep >= 6 ? 'text-blue-600' : 'text-gray-400'}>Features</span>
-        <span className={currentStep >= 7 ? 'text-blue-600' : 'text-gray-400'}>Parties</span>
-        <span className={currentStep >= 8 ? 'text-blue-600' : 'text-gray-400'}>
+        <span className={currentStep >= 1 ? 'text-blue-400' : 'text-gray-400'}>Property</span>
+        <span className={currentStep >= 2 ? 'text-blue-400' : 'text-gray-400'}>Entity</span>
+        <span className={currentStep >= 3 ? 'text-blue-400' : 'text-gray-400'}>Payment</span>
+        <span className={currentStep >= 4 ? 'text-blue-400' : 'text-gray-400'}>Lender</span>
+        <span className={currentStep >= 5 ? 'text-blue-400' : 'text-gray-400'}>Loan</span>
+        <span className={currentStep >= 6 ? 'text-blue-400' : 'text-gray-400'}>Features</span>
+        <span className={currentStep >= 7 ? 'text-blue-400' : 'text-gray-400'}>Parties</span>
+        <span className={currentStep >= 8 ? 'text-blue-400' : 'text-gray-400'}>
           NCCP{!formData.subjectToNCCP && '*'}
         </span>
-        <span className={currentStep >= 9 ? 'text-blue-600' : 'text-gray-400'}>Disclosure</span>
-        <span className={currentStep >= 10 ? 'text-blue-600' : 'text-gray-400'}>Review</span>
-        <span className={currentStep >= 11 ? 'text-blue-600' : 'text-gray-400'}>Submit</span>
+        <span className={currentStep >= 9 ? 'text-blue-400' : 'text-gray-400'}>Disclosure</span>
+        <span className={currentStep >= 10 ? 'text-blue-400' : 'text-gray-400'}>Review</span>
+        <span className={currentStep >= 11 ? 'text-blue-400' : 'text-gray-400'}>Submit</span>
       </div>
       {!formData.subjectToNCCP && (
-        <p className="text-xs text-gray-500 text-center mt-2">
+        <p className="text-xs text-slate-400 text-center mt-2">
           * Step skipped (NCCP does not apply to this loan)
         </p>
       )}
@@ -1175,12 +1175,12 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
   const renderStep3 = () => (
     <div className="space-y-6">
       <div className="flex items-center gap-3 mb-6">
-        <div className="p-3 bg-teal-50 rounded-lg">
-          <Building2 className="w-6 h-6 text-teal-600" />
+        <div className="p-3 bg-teal-500/10 rounded-lg">
+          <Building2 className="w-6 h-6 text-teal-400" />
         </div>
         <div>
           <h2 className="text-xl font-semibold">Property Features & Condition</h2>
-          <p className="text-gray-600 text-sm">Detailed property information for lender assessment</p>
+          <p className="text-slate-300 text-sm">Detailed property information for lender assessment</p>
         </div>
       </div>
 
@@ -1204,35 +1204,35 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
                   ${avmValuationResults.avmMid?.toLocaleString() || 'N/A'}
                 </p>
               </div>
-              <div className="p-3 bg-white rounded-lg border border-blue-200">
-                <p className="text-xs text-gray-600 mb-1">Low Range</p>
-                <p className="text-xl font-bold text-gray-900">
+              <div className="p-3 bg-white rounded-lg border border-blue-500/30">
+                <p className="text-xs text-slate-300 mb-1">Low Range</p>
+                <p className="text-xl font-bold text-slate-100">
                   ${avmValuationResults.avmLow?.toLocaleString() || 'N/A'}
                 </p>
               </div>
-              <div className="p-3 bg-white rounded-lg border border-blue-200">
-                <p className="text-xs text-gray-600 mb-1">High Range</p>
-                <p className="text-xl font-bold text-gray-900">
+              <div className="p-3 bg-white rounded-lg border border-blue-500/30">
+                <p className="text-xs text-slate-300 mb-1">High Range</p>
+                <p className="text-xl font-bold text-slate-100">
                   ${avmValuationResults.avmHigh?.toLocaleString() || 'N/A'}
                 </p>
               </div>
             </div>
             <div className="grid md:grid-cols-3 gap-3">
-              <div className="p-3 bg-white rounded border border-gray-200">
-                <p className="text-xs text-gray-600 mb-1">Confidence</p>
-                <p className="text-sm font-bold text-green-600">{avmValuationResults.confidence || 'HIGH'}</p>
+              <div className="p-3 bg-white rounded border border-white/10">
+                <p className="text-xs text-slate-300 mb-1">Confidence</p>
+                <p className="text-sm font-bold text-green-400">{avmValuationResults.confidence || 'HIGH'}</p>
               </div>
-              <div className="p-3 bg-white rounded border border-gray-200">
-                <p className="text-xs text-gray-600 mb-1">Report Date</p>
-                <p className="text-sm font-semibold text-gray-900">
+              <div className="p-3 bg-white rounded border border-white/10">
+                <p className="text-xs text-slate-300 mb-1">Report Date</p>
+                <p className="text-sm font-semibold text-slate-100">
                   {avmValuationResults.timestamp ? new Date(avmValuationResults.timestamp).toLocaleDateString('en-AU') : new Date().toLocaleDateString('en-AU')}
                 </p>
               </div>
-              <div className="p-3 bg-white rounded border border-gray-200">
-                <p className="text-xs text-gray-600 mb-1">Status</p>
+              <div className="p-3 bg-white rounded border border-white/10">
+                <p className="text-xs text-slate-300 mb-1">Status</p>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
-                  <span className="text-sm font-bold text-green-600">Paid & Complete</span>
+                  <CheckCircle className="w-4 h-4 text-green-400" />
+                  <span className="text-sm font-bold text-green-400">Paid & Complete</span>
                 </div>
               </div>
             </div>
@@ -1243,7 +1243,7 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Building Details */}
         <div className="md:col-span-2">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Building Specifications</h3>
+          <h3 className="text-lg font-semibold text-slate-100 mb-4">Building Specifications</h3>
         </div>
 
         <div>
@@ -1285,7 +1285,7 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
             id="construction"
             value={formData.construction}
             onChange={(e) => handleInputChange('construction', e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+            className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
           >
             <option value="">Select type</option>
             <option value="brick">Full Brick</option>
@@ -1303,7 +1303,7 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
             id="roofType"
             value={formData.roofType}
             onChange={(e) => handleInputChange('roofType', e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+            className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
           >
             <option value="">Select type</option>
             <option value="tile">Tile</option>
@@ -1319,7 +1319,7 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
             id="condition"
             value={formData.condition}
             onChange={(e) => handleInputChange('condition', e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+            className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
           >
             <option value="excellent">Excellent</option>
             <option value="good">Good</option>
@@ -1353,7 +1353,7 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
 
         {/* Rates & Charges */}
         <div className="md:col-span-2 mt-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Rates & Ongoing Charges</h3>
+          <h3 className="text-lg font-semibold text-slate-100 mb-4">Rates & Ongoing Charges</h3>
         </div>
 
         <div>
@@ -1387,7 +1387,7 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
             onChange={(e) => handleInputChange('strataFees', e.target.value)}
             placeholder="1200"
           />
-          <p className="text-xs text-gray-600 mt-1">If applicable (apartments/townhouses)</p>
+          <p className="text-xs text-slate-300 mt-1">If applicable (apartments/townhouses)</p>
         </div>
 
         <div>
@@ -1399,12 +1399,12 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
             onChange={(e) => handleInputChange('landTax', e.target.value)}
             placeholder="0"
           />
-          <p className="text-xs text-gray-600 mt-1">If applicable (investment property)</p>
+          <p className="text-xs text-slate-300 mt-1">If applicable (investment property)</p>
         </div>
 
         {/* Insurance */}
         <div className="md:col-span-2 mt-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Insurance</h3>
+          <h3 className="text-lg font-semibold text-slate-100 mb-4">Insurance</h3>
         </div>
 
         <div>
@@ -1446,14 +1446,14 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
               {formData.insuranceDocumentUploaded ? 'Change Document' : 'Upload Policy'}
             </Button>
             {formData.insuranceDocumentUploaded && (
-              <CheckCircle className="w-5 h-5 text-green-600" />
+              <CheckCircle className="w-5 h-5 text-green-400" />
             )}
           </div>
         </div>
 
         {/* Sales History */}
         <div className="md:col-span-2 mt-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Sales History</h3>
+          <h3 className="text-lg font-semibold text-slate-100 mb-4">Sales History</h3>
         </div>
 
         <div>
@@ -1500,7 +1500,7 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
 
         {/* Document Uploads */}
         <div className="md:col-span-2 mt-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Supporting Documents</h3>
+          <h3 className="text-lg font-semibold text-slate-100 mb-4">Supporting Documents</h3>
         </div>
 
         <div>
@@ -1511,7 +1511,7 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
               {formData.titleDeedUploaded ? 'Change Document' : 'Upload Title'}
             </Button>
             {formData.titleDeedUploaded && (
-              <CheckCircle className="w-5 h-5 text-green-600" />
+              <CheckCircle className="w-5 h-5 text-green-400" />
             )}
           </div>
         </div>
@@ -1524,7 +1524,7 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
               {formData.rateCertificateUploaded ? 'Change Document' : 'Upload Certificate'}
             </Button>
             {formData.rateCertificateUploaded && (
-              <CheckCircle className="w-5 h-5 text-green-600" />
+              <CheckCircle className="w-5 h-5 text-green-400" />
             )}
           </div>
         </div>
@@ -1537,7 +1537,7 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
               {formData.buildingInspectionUploaded ? 'Change Report' : 'Upload Report'}
             </Button>
             {formData.buildingInspectionUploaded && (
-              <CheckCircle className="w-5 h-5 text-green-600" />
+              <CheckCircle className="w-5 h-5 text-green-400" />
             )}
           </div>
         </div>
@@ -1550,65 +1550,65 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center gap-3 mb-6">
-        <div className="p-3 bg-gradient-to-br from-indigo-50 to-red-50 rounded-lg border-2 border-indigo-200">
-          <FileSearch className="w-6 h-6 text-indigo-600" />
+        <div className="p-3 bg-gradient-to-br from-indigo-50 to-red-50 rounded-lg border-2 border-indigo-500/30">
+          <FileSearch className="w-6 h-6 text-indigo-400" />
         </div>
         <div className="flex-1">
           <h2 className="text-xl font-semibold">InfoTrack Verification & KYC - Regulatory Compliance</h2>
-          <p className="text-gray-600 text-sm">Complete property search and identity verification (AUSTRAC/AFSL/ASIC compliant)</p>
+          <p className="text-slate-300 text-sm">Complete property search and identity verification (AUSTRAC/AFSL/ASIC compliant)</p>
         </div>
         {propertySearchStatus === 'found' && kycStatus === 'clear' && (
-          <div className="flex items-center gap-2 px-4 py-2 bg-green-50 border border-green-200 rounded-lg">
-            <CheckCircle className="w-5 h-5 text-green-600" />
-            <span className="text-sm font-semibold text-green-800">All Verified</span>
+          <div className="flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/30 rounded-lg">
+            <CheckCircle className="w-5 h-5 text-green-400" />
+            <span className="text-sm font-semibold text-green-300">All Verified</span>
           </div>
         )}
       </div>
 
       {/* Section 1: InfoTrack Property Search */}
       {propertySearchStatus === 'idle' && (
-        <Card className="border-2 border-indigo-200">
+        <Card className="border-2 border-indigo-500/30">
           <CardHeader className="bg-gradient-to-br from-indigo-50 to-blue-50">
             <CardTitle className="text-lg flex items-center gap-2">
-              <FileSearch className="w-5 h-5 text-indigo-600" />
+              <FileSearch className="w-5 h-5 text-indigo-400" />
               Step 1: InfoTrack Property Search
             </CardTitle>
           </CardHeader>
           <CardContent className="p-6">
-            <div className="p-6 bg-gradient-to-br from-indigo-50 to-blue-50 border-2 border-indigo-200 rounded-lg">
+            <div className="p-6 bg-gradient-to-br from-indigo-50 to-blue-50 border-2 border-indigo-500/30 rounded-lg">
               <div className="flex items-start gap-4">
                 <div className="p-3 bg-white rounded-lg shadow-sm">
-                  <Zap className="w-8 h-8 text-indigo-600" />
+                  <Zap className="w-8 h-8 text-indigo-400" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">InfoTrack Comprehensive Search</h3>
-                  <p className="text-sm text-gray-700 mb-4">
+                  <h3 className="text-lg font-bold text-slate-100 mb-2">InfoTrack Comprehensive Search</h3>
+                  <p className="text-sm text-slate-300 mb-4">
                     We'll retrieve all essential property information from InfoTrack's database including:
                   </p>
                   
                   <div className="grid grid-cols-2 gap-3 mb-6">
-                    <div className="flex items-center gap-2 text-sm text-gray-700">
-                      <CheckCircle className="w-4 h-4 text-indigo-600" />
+                    <div className="flex items-center gap-2 text-sm text-slate-300">
+                      <CheckCircle className="w-4 h-4 text-indigo-400" />
                       <span>Title Search & Legal Description</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-700">
-                      <CheckCircle className="w-4 h-4 text-indigo-600" />
+                    <div className="flex items-center gap-2 text-sm text-slate-300">
+                      <CheckCircle className="w-4 h-4 text-indigo-400" />
                       <span>Current Ownership Details</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-700">
-                      <CheckCircle className="w-4 h-4 text-indigo-600" />
+                    <div className="flex items-center gap-2 text-sm text-slate-300">
+                      <CheckCircle className="w-4 h-4 text-indigo-400" />
                       <span>Mortgages & Encumbrances</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-700">
-                      <CheckCircle className="w-4 h-4 text-indigo-600" />
+                    <div className="flex items-center gap-2 text-sm text-slate-300">
+                      <CheckCircle className="w-4 h-4 text-indigo-400" />
                       <span>Caveats & Easements</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-700">
-                      <CheckCircle className="w-4 h-4 text-indigo-600" />
+                    <div className="flex items-center gap-2 text-sm text-slate-300">
+                      <CheckCircle className="w-4 h-4 text-indigo-400" />
                       <span>Zoning & Planning Information</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-700">
-                      <CheckCircle className="w-4 h-4 text-indigo-600" />
+                    <div className="flex items-center gap-2 text-sm text-slate-300">
+                      <CheckCircle className="w-4 h-4 text-indigo-400" />
                       <span>Environmental Risk Assessment</span>
                     </div>
                   </div>
@@ -1632,14 +1632,14 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
       {propertySearchStatus === 'found' && (
         <>
           {/* Show property data (collapsed view) */}
-          <Card className="border-2 border-green-200">
+          <Card className="border-2 border-green-500/30">
             <CardHeader className="bg-gradient-to-r from-green-50 to-emerald-50">
               <div className="flex items-center justify-between">
                 <CardTitle className="text-lg flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  <CheckCircle className="w-5 h-5 text-green-400" />
                   Step 1 Complete: InfoTrack Property Search & AVM Valuation
                 </CardTitle>
-                <span className="text-xs text-green-700 font-medium">✓ Data Retrieved</span>
+                <span className="text-xs text-green-300 font-medium">✓ Data Retrieved</span>
               </div>
             </CardHeader>
           </Card>
@@ -1686,26 +1686,26 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
 
       {/* Section 2: KYC Verification */}
       {propertySearchStatus === 'found' && (
-        <Card className="border-2 border-red-200 mt-6">
+        <Card className="border-2 border-red-500/30 mt-6">
           <CardHeader className="bg-gradient-to-r from-red-50 to-orange-50">
             <div className="flex items-center justify-between">
               <div>
                 <CardTitle className="text-lg flex items-center gap-2">
-                  <Shield className="w-5 h-5 text-red-600" />
+                  <Shield className="w-5 h-5 text-red-400" />
                   Step 2: KYC Verification via InfoTrack
                 </CardTitle>
-                <p className="text-sm text-gray-600 mt-1">Complete identity verification using InfoTrack GreenID + AML checks</p>
+                <p className="text-sm text-slate-300 mt-1">Complete identity verification using InfoTrack GreenID + AML checks</p>
               </div>
               {kycStatus === 'clear' && (
-                <div className="flex items-center gap-2 px-4 py-2 bg-green-50 border border-green-200 rounded-lg">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
-                  <span className="text-sm font-semibold text-green-800">Verified</span>
+                <div className="flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/30 rounded-lg">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <span className="text-sm font-semibold text-green-300">Verified</span>
                 </div>
               )}
               {kycStatus === 'flagged' && (
-                <div className="flex items-center gap-2 px-4 py-2 bg-red-50 border border-red-200 rounded-lg">
-                  <XCircle className="w-5 h-5 text-red-600" />
-                  <span className="text-sm font-semibold text-red-800">Flagged</span>
+                <div className="flex items-center gap-2 px-4 py-2 bg-red-500/10 border border-red-500/30 rounded-lg">
+                  <XCircle className="w-5 h-5 text-red-400" />
+                  <span className="text-sm font-semibold text-red-300">Flagged</span>
                 </div>
               )}
             </div>
@@ -1714,52 +1714,52 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
             {/* AUSTRAC/AFSL/ASIC Compliance Banner */}
             <div className="mb-6 p-5 bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-300 rounded-lg">
               <div className="flex items-start gap-3 mb-4">
-                <Shield className="w-6 h-6 text-red-700 mt-0.5 flex-shrink-0" />
+                <Shield className="w-6 h-6 text-red-300 mt-0.5 flex-shrink-0" />
                 <div>
-                  <h4 className="font-bold text-red-900 text-base mb-2">⚖️ Regulatory Compliance Requirements</h4>
-                  <p className="text-sm text-red-800 mb-3">
+                  <h4 className="font-bold text-red-300 text-base mb-2">⚖️ Regulatory Compliance Requirements</h4>
+                  <p className="text-sm text-red-300 mb-3">
                     This KYC verification must meet all Australian regulatory requirements for lending money:
                   </p>
                 </div>
               </div>
               
               <div className="grid md:grid-cols-3 gap-4">
-                <div className="bg-white/60 p-4 rounded-lg border border-red-200">
+                <div className="bg-white/60 p-4 rounded-lg border border-red-500/30">
                   <div className="flex items-center gap-2 mb-2">
                     <div className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center">
                       <span className="text-white font-bold text-sm">A</span>
                     </div>
-                    <h5 className="font-bold text-red-900 text-sm">AUSTRAC</h5>
+                    <h5 className="font-bold text-red-300 text-sm">AUSTRAC</h5>
                   </div>
-                  <p className="text-xs text-red-800 leading-relaxed">
+                  <p className="text-xs text-red-300 leading-relaxed">
                     <strong>AML/CTF Compliance:</strong> Customer identification, verification, 
                     ongoing monitoring, and suspicious matter reporting obligations under the 
                     Anti-Money Laundering and Counter-Terrorism Financing Act 2006.
                   </p>
                 </div>
                 
-                <div className="bg-white/60 p-4 rounded-lg border border-red-200">
+                <div className="bg-white/60 p-4 rounded-lg border border-red-500/30">
                   <div className="flex items-center gap-2 mb-2">
                     <div className="w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center">
                       <span className="text-white font-bold text-sm">F</span>
                     </div>
-                    <h5 className="font-bold text-orange-900 text-sm">AFSL</h5>
+                    <h5 className="font-bold text-orange-300 text-sm">AFSL</h5>
                   </div>
-                  <p className="text-xs text-orange-800 leading-relaxed">
+                  <p className="text-xs text-orange-300 leading-relaxed">
                     <strong>Financial Services License:</strong> Know Your Customer (KYC) requirements, 
                     suitability assessments, and responsible lending obligations under 
                     Australian Financial Services License regulations.
                   </p>
                 </div>
                 
-                <div className="bg-white/60 p-4 rounded-lg border border-red-200">
+                <div className="bg-white/60 p-4 rounded-lg border border-red-500/30">
                   <div className="flex items-center gap-2 mb-2">
                     <div className="w-8 h-8 bg-rose-600 rounded-full flex items-center justify-center">
                       <span className="text-white font-bold text-sm">S</span>
                     </div>
-                    <h5 className="font-bold text-rose-900 text-sm">ASIC</h5>
+                    <h5 className="font-bold text-rose-300 text-sm">ASIC</h5>
                   </div>
-                  <p className="text-xs text-rose-800 leading-relaxed">
+                  <p className="text-xs text-rose-300 leading-relaxed">
                     <strong>Consumer Protection:</strong> Credit licensing obligations, 
                     responsible lending conduct, best interests duty, and design and 
                     distribution obligations under ASIC Act 2001 and NCCP Act.
@@ -1767,10 +1767,10 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
                 </div>
               </div>
               
-              <div className="mt-4 p-3 bg-yellow-50 border border-yellow-300 rounded-lg">
+              <div className="mt-4 p-3 bg-yellow-500/10 border border-yellow-300 rounded-lg">
                 <div className="flex items-start gap-2">
-                  <AlertCircle className="w-4 h-4 text-yellow-700 mt-0.5 flex-shrink-0" />
-                  <p className="text-xs text-yellow-900">
+                  <AlertCircle className="w-4 h-4 text-yellow-300 mt-0.5 flex-shrink-0" />
+                  <p className="text-xs text-yellow-300">
                     <strong>⚠️ Mandatory Checks Required:</strong> Identity verification (100 points check), 
                     sanctions screening (DFAT, UN, OFAC), PEP (Politically Exposed Person) screening, 
                     adverse media checks, source of funds/wealth verification, and ongoing monitoring obligations 
@@ -1798,7 +1798,7 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
                   id="sourceOfFunds"
                   value={formData.sourceOfFunds}
                   onChange={(e) => handleInputChange('sourceOfFunds', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
                 >
                   <option value="">Select...</option>
                   <option value="salary">Salary/Wages</option>
@@ -1818,7 +1818,7 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
                   id="sourceOfWealth"
                   value={formData.sourceOfWealth}
                   onChange={(e) => handleInputChange('sourceOfWealth', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
                 >
                   <option value="">Select...</option>
                   <option value="employment">Employment</option>
@@ -1833,64 +1833,64 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
 
               <div className="md:col-span-2">
                 <Label>PEP Status</Label>
-                <label className="flex items-center gap-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                <label className="flex items-center gap-3 p-3 border border-white/10 rounded-lg hover:bg-white/5 cursor-pointer">
                   <input
                     type="checkbox"
                     checked={formData.pepStatus}
                     onChange={(e) => handleInputChange('pepStatus', e.target.checked)}
-                    className="w-5 h-5 text-blue-600 rounded"
+                    className="w-5 h-5 text-blue-400 rounded"
                   />
-                  <span className="text-sm text-gray-700">Politically Exposed Person (PEP)</span>
+                  <span className="text-sm text-slate-300">Politically Exposed Person (PEP)</span>
                 </label>
               </div>
 
               <div>
                 <Label>Cash Involvement</Label>
-                <label className="flex items-center gap-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                <label className="flex items-center gap-3 p-3 border border-white/10 rounded-lg hover:bg-white/5 cursor-pointer">
                   <input
                     type="checkbox"
                     checked={formData.cashInvolvement}
                     onChange={(e) => handleInputChange('cashInvolvement', e.target.checked)}
-                    className="w-5 h-5 text-blue-600 rounded"
+                    className="w-5 h-5 text-blue-400 rounded"
                   />
-                  <span className="text-sm text-gray-700">Large cash transactions involved</span>
+                  <span className="text-sm text-slate-300">Large cash transactions involved</span>
                 </label>
               </div>
 
               <div>
                 <Label>Crypto Involvement</Label>
-                <label className="flex items-center gap-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                <label className="flex items-center gap-3 p-3 border border-white/10 rounded-lg hover:bg-white/5 cursor-pointer">
                   <input
                     type="checkbox"
                     checked={formData.cryptoInvolvement}
                     onChange={(e) => handleInputChange('cryptoInvolvement', e.target.checked)}
-                    className="w-5 h-5 text-blue-600 rounded"
+                    className="w-5 h-5 text-blue-400 rounded"
                   />
-                  <span className="text-sm text-gray-700">Cryptocurrency involved</span>
+                  <span className="text-sm text-slate-300">Cryptocurrency involved</span>
                 </label>
               </div>
             </div>
 
             {/* InfoTrack Check Status */}
-            <div className="p-4 bg-gradient-to-r from-red-50 to-orange-50 border-2 border-red-200 rounded-lg mb-6">
+            <div className="p-4 bg-gradient-to-r from-red-50 to-orange-50 border-2 border-red-500/30 rounded-lg mb-6">
               <div className="flex items-start gap-3">
-                <Zap className="w-6 h-6 text-red-600 mt-0.5" />
+                <Zap className="w-6 h-6 text-red-400 mt-0.5" />
                 <div className="flex-1">
-                  <p className="text-sm font-bold text-red-900 mb-2">InfoTrack GreenID Integration</p>
-                  <p className="text-xs text-red-800 mb-3">
+                  <p className="text-sm font-bold text-red-300 mb-2">InfoTrack GreenID Integration</p>
+                  <p className="text-xs text-red-300 mb-3">
                     This will run comprehensive identity verification through InfoTrack's GreenID platform plus AML/CTF checks.
                   </p>
-                  <div className="grid grid-cols-3 gap-2 text-xs text-red-800">
+                  <div className="grid grid-cols-3 gap-2 text-xs text-red-300">
                     <div className="flex items-center gap-1">
-                      {infoTrackChecksRun.identity ? <CheckCircle className="w-3 h-3 text-green-600" /> : <Clock className="w-3 h-3" />}
+                      {infoTrackChecksRun.identity ? <CheckCircle className="w-3 h-3 text-green-400" /> : <Clock className="w-3 h-3" />}
                       <span>Identity Verification</span>
                     </div>
                     <div className="flex items-center gap-1">
-                      {infoTrackChecksRun.sanctions ? <CheckCircle className="w-3 h-3 text-green-600" /> : <Clock className="w-3 h-3" />}
+                      {infoTrackChecksRun.sanctions ? <CheckCircle className="w-3 h-3 text-green-400" /> : <Clock className="w-3 h-3" />}
                       <span>Sanctions Screening</span>
                     </div>
                     <div className="flex items-center gap-1">
-                      {infoTrackChecksRun.pep ? <CheckCircle className="w-3 h-3 text-green-600" /> : <Clock className="w-3 h-3" />}
+                      {infoTrackChecksRun.pep ? <CheckCircle className="w-3 h-3 text-green-400" /> : <Clock className="w-3 h-3" />}
                       <span>PEP Checks</span>
                     </div>
                   </div>
@@ -1900,12 +1900,12 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
 
             {kycStatus === 'pending' && (
               <>
-                <div className="mb-4 p-4 bg-blue-50 border-2 border-blue-300 rounded-lg">
+                <div className="mb-4 p-4 bg-blue-500/10 border-2 border-blue-300 rounded-lg">
                   <div className="flex items-start gap-3">
-                    <AlertCircle className="w-5 h-5 text-blue-700 mt-0.5 flex-shrink-0" />
+                    <AlertCircle className="w-5 h-5 text-blue-300 mt-0.5 flex-shrink-0" />
                     <div>
-                      <p className="text-xs font-bold text-blue-900 mb-1">Comprehensive Compliance Verification</p>
-                      <p className="text-xs text-blue-800">
+                      <p className="text-xs font-bold text-blue-300 mb-1">Comprehensive Compliance Verification</p>
+                      <p className="text-xs text-blue-300">
                         This verification satisfies AUSTRAC AML/CTF obligations, AFSL responsible lending requirements, 
                         and ASIC consumer protection standards. All checks are mandatory before loan approval.
                       </p>
@@ -1925,24 +1925,24 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
             )}
 
             {kycStatus === 'clear' && (
-              <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+              <div className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
                 <div className="flex items-center gap-3">
-                  <CheckCircle className="w-6 h-6 text-green-600" />
+                  <CheckCircle className="w-6 h-6 text-green-400" />
                   <div>
-                    <p className="font-semibold text-green-900">✅ KYC Verification Complete - Compliant</p>
-                    <p className="text-sm text-green-700">Identity verified • No sanctions/PEP matches • AUSTRAC/AFSL/ASIC requirements met</p>
+                    <p className="font-semibold text-green-300">✅ KYC Verification Complete - Compliant</p>
+                    <p className="text-sm text-green-300">Identity verified • No sanctions/PEP matches • AUSTRAC/AFSL/ASIC requirements met</p>
                   </div>
                 </div>
               </div>
             )}
 
             {kycStatus === 'flagged' && (
-              <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+              <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
                 <div className="flex items-center gap-3">
-                  <XCircle className="w-6 h-6 text-red-600" />
+                  <XCircle className="w-6 h-6 text-red-400" />
                   <div>
-                    <p className="font-semibold text-red-900">KYC Screening Flagged</p>
-                    <p className="text-sm text-red-700">Requires manual review and approval</p>
+                    <p className="font-semibold text-red-300">KYC Screening Flagged</p>
+                    <p className="text-sm text-red-300">Requires manual review and approval</p>
                   </div>
                 </div>
               </div>
@@ -1978,12 +1978,12 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
   const renderStep4 = () => (
     <div className="space-y-6">
       <div className="flex items-center gap-3 mb-6">
-        <div className="p-3 bg-green-50 rounded-lg">
-          <User className="w-6 h-6 text-green-600" />
+        <div className="p-3 bg-green-500/10 rounded-lg">
+          <User className="w-6 h-6 text-green-400" />
         </div>
         <div>
           <h2 className="text-xl font-semibold">Borrower Details & Entity Structure</h2>
-          <p className="text-gray-600 text-sm">Define the borrowing entity and all related parties</p>
+          <p className="text-slate-300 text-sm">Define the borrowing entity and all related parties</p>
         </div>
       </div>
 
@@ -2006,9 +2006,9 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
       {/* Individual/Personal Borrower Details - Only show if entityType is 'personal' */}
       {formData.entityType === 'personal' && (
         <Card className="border-2 border-indigo-300">
-          <CardHeader className="bg-indigo-50">
+          <CardHeader className="bg-indigo-500/10">
             <CardTitle className="text-lg flex items-center gap-2">
-              <User className="w-5 h-5 text-indigo-600" />
+              <User className="w-5 h-5 text-indigo-400" />
               Personal Details
             </CardTitle>
           </CardHeader>
@@ -2112,7 +2112,7 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
             id="borrowerEmployment"
             value={formData.borrowerEmployment}
             onChange={(e) => handleInputChange('borrowerEmployment', e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+            className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
           >
             <option value="">Select status</option>
             <option value="employed">Full-time Employed</option>
@@ -2140,21 +2140,21 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
   )}
       
       {/* Credit Check Consent & Privacy Act Compliance */}
-      <Card className="border-2 border-red-200 mt-6">
+      <Card className="border-2 border-red-500/30 mt-6">
         <CardHeader className="bg-gradient-to-r from-red-50 to-pink-50">
           <CardTitle className="text-lg flex items-center gap-2">
-            <Shield className="w-5 h-5 text-red-600" />
+            <Shield className="w-5 h-5 text-red-400" />
             Credit Check Requirements (NCCP & Privacy Act)
           </CardTitle>
-          <p className="text-sm text-gray-600 mt-2">
+          <p className="text-sm text-slate-300 mt-2">
             National Consumer Credit Protection Act 2009 & Privacy Act 1988 - Obtain explicit consent before accessing credit information
           </p>
         </CardHeader>
         <CardContent className="p-6">
-          <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+          <div className="bg-red-500/10 border-l-4 border-red-400 p-4 mb-6">
             <div className="flex items-start gap-3">
-              <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
-              <div className="text-sm text-red-800">
+              <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+              <div className="text-sm text-red-300">
                 <p className="font-semibold mb-1">⚠️ MANDATORY PRIVACY ACT COMPLIANCE</p>
                 <p>
                   Under the Privacy Act 1988 (Australian Privacy Principles) and Credit Reporting Code, you MUST obtain explicit written consent from the borrower before accessing their credit report from any credit reporting body (CRB). Failure to obtain consent is a breach of the Privacy Act and may result in penalties.
@@ -2168,7 +2168,7 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
 
           <div className="space-y-6">
             {/* Primary Credit Check Consent */}
-            <div className="bg-red-50 border-2 border-red-300 rounded-lg p-4">
+            <div className="bg-red-500/10 border-2 border-red-300 rounded-lg p-4">
               <div className="flex items-start gap-3">
                 <Checkbox
                   id="creditCheckConsentObtained"
@@ -2177,19 +2177,19 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
                   className="mt-1"
                 />
                 <div className="flex-1">
-                  <Label htmlFor="creditCheckConsentObtained" className="cursor-pointer font-bold text-red-900 text-base">
+                  <Label htmlFor="creditCheckConsentObtained" className="cursor-pointer font-bold text-red-300 text-base">
                     Credit Check Consent Obtained from Borrower *
                   </Label>
-                  <p className="text-sm text-red-700 mt-2">
+                  <p className="text-sm text-red-300 mt-2">
                     I confirm that I have obtained explicit, informed, written consent from the borrower to:
                   </p>
-                  <ul className="text-sm text-red-700 mt-1 ml-4 space-y-1 list-disc">
+                  <ul className="text-sm text-red-300 mt-1 ml-4 space-y-1 list-disc">
                     <li>Access their credit report from a credit reporting body (CRB)</li>
                     <li>Use credit information for the purpose of assessing this credit application</li>
                     <li>Disclose credit information to credit providers and other permitted parties</li>
                     <li>Understand that the credit check will be recorded on their credit file</li>
                   </ul>
-                  <p className="text-xs text-red-600 mt-2 italic font-semibold">
+                  <p className="text-xs text-red-400 mt-2 italic font-semibold">
                     Privacy Act 1988 s21 & Australian Privacy Principles (APP) 3.3 & 6.1
                   </p>
                 </div>
@@ -2209,7 +2209,7 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
                       onChange={(e) => handleInputChange('creditCheckConsentDate', e.target.value)}
                       max={new Date().toISOString().split('T')[0]}
                     />
-                    <p className="text-xs text-gray-500 mt-1">
+                    <p className="text-xs text-slate-400 mt-1">
                       Date when borrower signed consent form
                     </p>
                   </div>
@@ -2220,14 +2220,14 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
                       id="creditCheckConsentMethod"
                       value={formData.creditCheckConsentMethod}
                       onChange={(e) => handleInputChange('creditCheckConsentMethod', e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600"
+                      className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600"
                     >
                       <option value="written">Written (Paper form)</option>
                       <option value="electronic">Electronic (Email/Portal)</option>
                       <option value="digital_signature">Digital Signature</option>
                       <option value="recorded">Recorded (Phone with consent)</option>
                     </select>
-                    <p className="text-xs text-gray-500 mt-1">
+                    <p className="text-xs text-slate-400 mt-1">
                       Consent must be clear, voluntary, and specific
                     </p>
                   </div>
@@ -2242,14 +2242,14 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
                     placeholder="e.g., To assess creditworthiness for mortgage in possession loan application..."
                     rows={2}
                   />
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-slate-400 mt-1">
                     APP 3.3 requires clear statement of purpose when collecting personal information
                   </p>
                 </div>
 
                 {/* Additional Privacy Act Requirements */}
-                <div className="space-y-4 bg-pink-50 border border-pink-200 rounded-lg p-4">
-                  <h4 className="font-semibold text-pink-900 flex items-center gap-2">
+                <div className="space-y-4 bg-pink-500/10 border border-pink-500/30 rounded-lg p-4">
+                  <h4 className="font-semibold text-pink-300 flex items-center gap-2">
                     <FileText className="w-4 h-4" />
                     Additional Privacy Act Requirements
                   </h4>
@@ -2265,7 +2265,7 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
                       <Label htmlFor="privacyPolicyProvided" className="cursor-pointer font-medium">
                         Privacy Policy Provided to Borrower *
                       </Label>
-                      <p className="text-xs text-gray-600 mt-1">
+                      <p className="text-xs text-slate-300 mt-1">
                         APP 1.3 & 1.4 - Privacy policy must be provided before collecting sensitive information
                       </p>
                     </div>
@@ -2295,7 +2295,7 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
                       <Label htmlFor="collectionStatementProvided" className="cursor-pointer font-medium">
                         Collection Statement Provided *
                       </Label>
-                      <p className="text-xs text-gray-600 mt-1">
+                      <p className="text-xs text-slate-300 mt-1">
                         APP 5 - Must inform borrower about collection, use, and disclosure of information
                       </p>
                     </div>
@@ -2312,7 +2312,7 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
                       <Label htmlFor="creditReportingBodyConsent" className="cursor-pointer font-medium">
                         CRB Disclosure Consent Obtained *
                       </Label>
-                      <p className="text-xs text-gray-600 mt-1">
+                      <p className="text-xs text-slate-300 mt-1">
                         Borrower consents to accessing credit report from nominated CRB (Equifax, Experian, Illion)
                       </p>
                     </div>
@@ -2325,7 +2325,7 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
                         id="creditReportingBodyName"
                         value={formData.creditReportingBodyName}
                         onChange={(e) => handleInputChange('creditReportingBodyName', e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-600"
+                        className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-600"
                       >
                         <option value="">Select CRB</option>
                         <option value="equifax">Equifax Australia</option>
@@ -2337,8 +2337,8 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
                 </div>
 
                 {/* Optional Consents */}
-                <div className="space-y-4 bg-blue-50 border border-blue-200 rounded-lg p-4">
-                  <h4 className="font-semibold text-blue-900 flex items-center gap-2">
+                <div className="space-y-4 bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
+                  <h4 className="font-semibold text-blue-300 flex items-center gap-2">
                     <User className="w-4 h-4" />
                     Optional Third-Party Verification Consents
                   </h4>
@@ -2354,7 +2354,7 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
                       <Label htmlFor="consentToContactEmployer" className="cursor-pointer font-medium">
                         Consent to Contact Employer for Income Verification
                       </Label>
-                      <p className="text-xs text-gray-600 mt-1">
+                      <p className="text-xs text-slate-300 mt-1">
                         NCCP s117 - Reasonable inquiries to verify financial situation
                       </p>
                     </div>
@@ -2371,7 +2371,7 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
                       <Label htmlFor="consentToContactReferees" className="cursor-pointer font-medium">
                         Consent to Contact Character/Credit Referees
                       </Label>
-                      <p className="text-xs text-gray-600 mt-1">
+                      <p className="text-xs text-slate-300 mt-1">
                         For character references and additional credit history verification
                       </p>
                     </div>
@@ -2379,7 +2379,7 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
                 </div>
 
                 {/* Final Privacy Act Compliance Confirmation */}
-                <div className="bg-red-50 border-2 border-red-300 rounded-lg p-4">
+                <div className="bg-red-500/10 border-2 border-red-300 rounded-lg p-4">
                   <div className="flex items-start gap-3">
                     <Checkbox
                       id="privacyActComplianceConfirmed"
@@ -2388,13 +2388,13 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
                       className="mt-1"
                     />
                     <div className="flex-1">
-                      <Label htmlFor="privacyActComplianceConfirmed" className="cursor-pointer font-semibold text-red-900">
+                      <Label htmlFor="privacyActComplianceConfirmed" className="cursor-pointer font-semibold text-red-300">
                         I confirm full Privacy Act 1988 compliance *
                       </Label>
-                      <p className="text-xs text-red-700 mt-2">
+                      <p className="text-xs text-red-300 mt-2">
                         By checking this box, I confirm that:
                       </p>
-                      <ul className="text-xs text-red-700 mt-1 ml-4 space-y-1 list-disc">
+                      <ul className="text-xs text-red-300 mt-1 ml-4 space-y-1 list-disc">
                         <li>All required consents have been obtained in writing before accessing credit information</li>
                         <li>The borrower was provided with clear information about the purpose of collection (APP 3.3)</li>
                         <li>Privacy policy and collection statement were provided (APP 1.3, 1.4, 5)</li>
@@ -2407,9 +2407,9 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
                 </div>
 
                 {/* Regulatory References */}
-                <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
-                  <h4 className="font-semibold text-gray-900 text-sm mb-2">Key Privacy Act & Credit Reporting Provisions:</h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs text-gray-700">
+                <div className="bg-white/5 border border-white/10 rounded-lg p-4">
+                  <h4 className="font-semibold text-slate-100 text-sm mb-2">Key Privacy Act & Credit Reporting Provisions:</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs text-slate-300">
                     <div>• <span className="font-medium">APP 1:</span> Privacy policy requirements</div>
                     <div>• <span className="font-medium">APP 3:</span> Collection of personal information</div>
                     <div>• <span className="font-medium">APP 5:</span> Notification of collection</div>
@@ -2417,18 +2417,18 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
                     <div>• <span className="font-medium">s21:</span> Credit reporting</div>
                     <div>• <span className="font-medium">CR Code Part 1:</span> Consent requirements</div>
                   </div>
-                  <p className="text-xs text-red-600 mt-3 font-semibold">
+                  <p className="text-xs text-red-400 mt-3 font-semibold">
                     <strong>WARNING:</strong> Credit checks without proper consent may result in civil penalties up to $2.5 million (Privacy Act s13G)
                   </p>
                 </div>
               </>
             ) : (
-              <div className="bg-yellow-50 border-2 border-yellow-400 rounded-lg p-6 text-center">
-                <AlertTriangle className="w-12 h-12 text-yellow-600 mx-auto mb-3" />
-                <p className="font-semibold text-yellow-900 mb-2">
+              <div className="bg-yellow-500/10 border-2 border-yellow-400 rounded-lg p-6 text-center">
+                <AlertTriangle className="w-12 h-12 text-yellow-400 mx-auto mb-3" />
+                <p className="font-semibold text-yellow-300 mb-2">
                   Credit Check Consent Required
                 </p>
-                <p className="text-sm text-yellow-800">
+                <p className="text-sm text-yellow-300">
                   You must tick the consent checkbox above and complete all required fields before credit checks can be initiated in Step 11.
                 </p>
               </div>
@@ -2442,24 +2442,24 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
   const renderStep6 = () => (
     <div className="space-y-6">
       <div className="flex items-center gap-3 mb-6">
-        <div className="p-3 bg-emerald-50 rounded-lg">
-          <DollarSign className="w-6 h-6 text-emerald-600" />
+        <div className="p-3 bg-emerald-500/10 rounded-lg">
+          <DollarSign className="w-6 h-6 text-emerald-400" />
         </div>
         <div className="flex-1">
           <h2 className="text-xl font-semibold">Payment & Automated Verification</h2>
-          <p className="text-gray-600 text-sm">Complete payment - all searches will run automatically</p>
+          <p className="text-slate-300 text-sm">Complete payment - all searches will run automatically</p>
         </div>
       </div>
 
       {/* Auto-run Notice - Only show if NCCP applies */}
       {formData.subjectToNCCP && (
-        <Card className="bg-gradient-to-r from-indigo-50 to-purple-50 border-2 border-indigo-200 mb-6">
+        <Card className="bg-gradient-to-r from-indigo-50 to-purple-50 border-2 border-indigo-500/30 mb-6">
           <CardContent className="p-4">
             <div className="flex items-start gap-3">
-              <Shield className="w-5 h-5 text-indigo-600 mt-0.5 flex-shrink-0" />
+              <Shield className="w-5 h-5 text-indigo-400 mt-0.5 flex-shrink-0" />
               <div className="flex-1">
-                <p className="text-sm font-bold text-indigo-900 mb-1">Automated Verification Process (NCCP Required)</p>
-                <p className="text-xs text-indigo-700">
+                <p className="text-sm font-bold text-indigo-300 mb-1">Automated Verification Process (NCCP Required)</p>
+                <p className="text-xs text-indigo-300">
                   Upon payment authorization, the system will automatically run: Property Valuation (AVM), 
                   InfoTrack Title Search, Identity Verification (GreenID), AML/CTF Screening (Sanctions & PEP), 
                   Credit Check (Equifax), and Compliance Checks. Results will be displayed on the next screen.
@@ -2484,47 +2484,47 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
       )}
 
       {/* Original Cost Breakdown */}
-      <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200">
+      <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-500/30">
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            <FileText className="w-5 h-5 text-blue-600" />
+            <FileText className="w-5 h-5 text-blue-400" />
             Onboarding & Verification Costs
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
-          <div className="flex justify-between items-center py-2 border-b border-blue-200">
+          <div className="flex justify-between items-center py-2 border-b border-blue-500/30">
             <div>
-              <p className="font-medium text-gray-900">InfoTrack Property Search</p>
-              <p className="text-xs text-gray-600">Title, ownership, encumbrances, zoning</p>
+              <p className="font-medium text-slate-100">InfoTrack Property Search</p>
+              <p className="text-xs text-slate-300">Title, ownership, encumbrances, zoning</p>
             </div>
-            <span className="text-lg font-bold text-gray-900">A$85.00</span>
+            <span className="text-lg font-bold text-slate-100">A$85.00</span>
           </div>
-          <div className="flex justify-between items-center py-2 border-b border-blue-200">
+          <div className="flex justify-between items-center py-2 border-b border-blue-500/30">
             <div>
-              <p className="font-medium text-gray-900">InfoTrack KYC/GreenID Verification</p>
-              <p className="text-xs text-gray-600">Identity, sanctions & PEP screening</p>
+              <p className="font-medium text-slate-100">InfoTrack KYC/GreenID Verification</p>
+              <p className="text-xs text-slate-300">Identity, sanctions & PEP screening</p>
             </div>
-            <span className="text-lg font-bold text-gray-900">A$45.00</span>
+            <span className="text-lg font-bold text-slate-100">A$45.00</span>
           </div>
-          <div className="flex justify-between items-center py-2 border-b border-blue-200">
+          <div className="flex justify-between items-center py-2 border-b border-blue-500/30">
             <div>
-              <p className="font-medium text-gray-900">Platform Onboarding Fee</p>
-              <p className="text-xs text-gray-600">Case setup and processing</p>
+              <p className="font-medium text-slate-100">Platform Onboarding Fee</p>
+              <p className="text-xs text-slate-300">Case setup and processing</p>
             </div>
-            <span className="text-lg font-bold text-gray-900">A$120.00</span>
+            <span className="text-lg font-bold text-slate-100">A$120.00</span>
           </div>
           {formData.contaminationCheck && (
-            <div className="flex justify-between items-center py-2 border-b border-blue-200">
+            <div className="flex justify-between items-center py-2 border-b border-blue-500/30">
               <div>
-                <p className="font-medium text-gray-900">Environmental Contamination Report</p>
-                <p className="text-xs text-gray-600">EPA contamination land search</p>
+                <p className="font-medium text-slate-100">Environmental Contamination Report</p>
+                <p className="text-xs text-slate-300">EPA contamination land search</p>
               </div>
-              <span className="text-lg font-bold text-gray-900">A$45.00</span>
+              <span className="text-lg font-bold text-slate-100">A$45.00</span>
             </div>
           )}
-          <div className="flex justify-between items-center py-3 bg-blue-100 rounded-lg px-4 mt-2">
-            <p className="text-lg font-bold text-blue-900">Total Due Today</p>
-            <span className="text-2xl font-bold text-blue-900">
+          <div className="flex justify-between items-center py-3 bg-blue-500/15 rounded-lg px-4 mt-2">
+            <p className="text-lg font-bold text-blue-300">Total Due Today</p>
+            <span className="text-2xl font-bold text-blue-300">
               A${formData.contaminationCheck ? '295.00' : '250.00'}
             </span>
           </div>
@@ -2533,7 +2533,7 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="md:col-span-2">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Payment Method</h3>
+          <h3 className="text-lg font-semibold text-slate-100 mb-4">Payment Method</h3>
         </div>
 
         <div className="md:col-span-2">
@@ -2542,7 +2542,7 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
             id="paymentMethod"
             value={formData.paymentMethod}
             onChange={(e) => handleInputChange('paymentMethod', e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+            className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
           >
             <option value="credit_card">Credit Card</option>
             <option value="debit_card">Debit Card</option>
@@ -2615,16 +2615,16 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
         </div>
 
         <div className="md:col-span-2 mt-4">
-          <label className="flex items-start gap-3 p-4 border-2 border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer">
+          <label className="flex items-start gap-3 p-4 border-2 border-white/10 rounded-lg hover:bg-white/5 cursor-pointer">
             <input
               type="checkbox"
               checked={formData.agreeToCharges}
               onChange={(e) => handleInputChange('agreeToCharges', e.target.checked)}
-              className="w-5 h-5 text-blue-600 rounded mt-0.5"
+              className="w-5 h-5 text-blue-400 rounded mt-0.5"
             />
             <div className="flex-1">
-              <p className="font-medium text-gray-900">I authorize the charges outlined above *</p>
-              <p className="text-sm text-gray-600 mt-1">
+              <p className="font-medium text-slate-100">I authorize the charges outlined above *</p>
+              <p className="text-sm text-slate-300 mt-1">
                 I understand that these fees cover InfoTrack verification services and platform onboarding. 
                 The charges are non-refundable once the checks have been initiated.
               </p>
@@ -2632,11 +2632,11 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
           </label>
         </div>
 
-        <div className="md:col-span-2 p-4 bg-green-50 border border-green-200 rounded-lg flex items-start gap-3">
-          <Shield className="w-5 h-5 text-green-600 mt-0.5" />
+        <div className="md:col-span-2 p-4 bg-green-500/10 border border-green-500/30 rounded-lg flex items-start gap-3">
+          <Shield className="w-5 h-5 text-green-400 mt-0.5" />
           <div className="flex-1">
-            <p className="text-sm font-semibold text-green-900">Secure Payment</p>
-            <p className="text-xs text-green-700 mt-1">
+            <p className="text-sm font-semibold text-green-300">Secure Payment</p>
+            <p className="text-xs text-green-300 mt-1">
               All payment information is encrypted and processed securely. We never store your full card details.
             </p>
           </div>
@@ -2649,28 +2649,28 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
   const renderStep7 = () => (
     <div className="space-y-6">
       <div className="flex items-center gap-3 mb-6">
-        <div className="p-3 bg-purple-50 rounded-lg">
-          <DollarSign className="w-6 h-6 text-purple-600" />
+        <div className="p-3 bg-purple-500/10 rounded-lg">
+          <DollarSign className="w-6 h-6 text-purple-400" />
         </div>
         <div>
           <h2 className="text-xl font-semibold">Loan Details</h2>
-          <p className="text-gray-600 text-sm">Complete loan and financial information</p>
+          <p className="text-slate-300 text-sm">Complete loan and financial information</p>
         </div>
       </div>
 
       {/* NCCP Applicability */}
-      <Card className="bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-200">
+      <Card className="bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-500/30">
         <CardContent className="p-4">
           <label className="flex items-start gap-3 cursor-pointer">
             <input
               type="checkbox"
               checked={formData.subjectToNCCP}
               onChange={(e) => handleInputChange('subjectToNCCP', e.target.checked)}
-              className="w-5 h-5 text-blue-600 rounded mt-0.5"
+              className="w-5 h-5 text-blue-400 rounded mt-0.5"
             />
             <div className="flex-1">
-              <p className="font-semibold text-blue-900">This loan is subject to NCCP (National Consumer Credit Protection Act 2009)</p>
-              <p className="text-xs text-blue-700 mt-1">
+              <p className="font-semibold text-blue-300">This loan is subject to NCCP (National Consumer Credit Protection Act 2009)</p>
+              <p className="text-xs text-blue-300 mt-1">
                 Check this box if the loan is regulated consumer credit. This will enable comprehensive verification 
                 checks (Step 5) and responsible lending assessment (Step 9) in accordance with NCCP requirements. 
                 Leave unchecked for commercial/business loans not subject to NCCP.
@@ -2731,7 +2731,7 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
             id="repaymentType"
             value={formData.repaymentType}
             onChange={(e) => handleInputChange('repaymentType', e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+            className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
           >
             <option value="principal_interest">Principal & Interest</option>
             <option value="interest_only">Interest Only</option>
@@ -2771,7 +2771,7 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
         </div>
 
         <div className="md:col-span-2 mt-4">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Property Valuation</h3>
+          <h3 className="text-lg font-semibold text-slate-100 mb-4">Property Valuation</h3>
         </div>
 
         <div>
@@ -2813,22 +2813,22 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
               {formData.valuationReportUploaded ? 'Change Report' : 'Upload Report'}
             </Button>
             {formData.valuationReportUploaded && (
-              <CheckCircle className="w-5 h-5 text-green-600" />
+              <CheckCircle className="w-5 h-5 text-green-400" />
             )}
           </div>
-          <p className="text-xs text-gray-600 mt-1">
+          <p className="text-xs text-slate-300 mt-1">
             Note: A valuation report will be automatically generated upon payment in Step 3
           </p>
         </div>
 
         {formData.outstandingDebt && formData.propertyValuation && (
-          <div className="md:col-span-2 p-4 bg-blue-50 rounded-lg border border-blue-200">
+          <div className="md:col-span-2 p-4 bg-blue-500/10 rounded-lg border border-blue-500/30">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-blue-800 font-medium">Loan-to-Value Ratio (LVR)</p>
-                <p className="text-xs text-blue-600 mt-1">Current debt vs property value</p>
+                <p className="text-sm text-blue-300 font-medium">Loan-to-Value Ratio (LVR)</p>
+                <p className="text-xs text-blue-400 mt-1">Current debt vs property value</p>
               </div>
-              <div className="text-3xl font-bold text-blue-900">
+              <div className="text-3xl font-bold text-blue-300">
                 {((parseFloat(formData.outstandingDebt) / parseFloat(formData.propertyValuation)) * 100).toFixed(1)}%
               </div>
             </div>
@@ -2841,12 +2841,12 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
   const renderStep8 = () => (
     <div className="space-y-6">
       <div className="flex items-center gap-3 mb-6">
-        <div className="p-3 bg-indigo-50 rounded-lg">
-          <Building2 className="w-6 h-6 text-indigo-600" />
+        <div className="p-3 bg-indigo-500/10 rounded-lg">
+          <Building2 className="w-6 h-6 text-indigo-400" />
         </div>
         <div>
           <h2 className="text-xl font-semibold">Lender Details & Documents</h2>
-          <p className="text-gray-600 text-sm">Current lender and loan account information</p>
+          <p className="text-slate-300 text-sm">Current lender and loan account information</p>
         </div>
       </div>
 
@@ -2865,14 +2865,14 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
           <CardContent className="p-6">
             <div className="grid gap-3">
               {/* Property Valuation Report */}
-              <div className="flex items-center justify-between p-4 bg-white rounded-lg border-2 border-green-200 hover:border-green-400 transition-colors">
+              <div className="flex items-center justify-between p-4 bg-white rounded-lg border-2 border-green-500/30 hover:border-green-400 transition-colors">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-green-100 rounded">
-                    <FileText className="w-5 h-5 text-green-700" />
+                  <div className="p-2 bg-green-500/15 rounded">
+                    <FileText className="w-5 h-5 text-green-300" />
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900">Property Valuation Report (AVM)</p>
-                    <p className="text-xs text-gray-600">CoreLogic RP Data AVM • Generated {new Date().toLocaleDateString('en-AU')}</p>
+                    <p className="font-semibold text-slate-100">Property Valuation Report (AVM)</p>
+                    <p className="text-xs text-slate-300">CoreLogic RP Data AVM • Generated {new Date().toLocaleDateString('en-AU')}</p>
                   </div>
                 </div>
                 <Button 
@@ -2886,14 +2886,14 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
               </div>
 
               {/* InfoTrack Title Search */}
-              <div className="flex items-center justify-between p-4 bg-white rounded-lg border-2 border-blue-200 hover:border-blue-400 transition-colors">
+              <div className="flex items-center justify-between p-4 bg-white rounded-lg border-2 border-blue-500/30 hover:border-blue-400 transition-colors">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-blue-100 rounded">
-                    <FileText className="w-5 h-5 text-blue-700" />
+                  <div className="p-2 bg-blue-500/15 rounded">
+                    <FileText className="w-5 h-5 text-blue-300" />
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900">InfoTrack Title Search Certificate</p>
-                    <p className="text-xs text-gray-600">Full title search, ownership, encumbrances • Generated {new Date().toLocaleDateString('en-AU')}</p>
+                    <p className="font-semibold text-slate-100">InfoTrack Title Search Certificate</p>
+                    <p className="text-xs text-slate-300">Full title search, ownership, encumbrances • Generated {new Date().toLocaleDateString('en-AU')}</p>
                   </div>
                 </div>
                 <Button 
@@ -2907,14 +2907,14 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
               </div>
 
               {/* Identity Verification Report */}
-              <div className="flex items-center justify-between p-4 bg-white rounded-lg border-2 border-purple-200 hover:border-purple-400 transition-colors">
+              <div className="flex items-center justify-between p-4 bg-white rounded-lg border-2 border-purple-500/30 hover:border-purple-400 transition-colors">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-purple-100 rounded">
-                    <Shield className="w-5 h-5 text-purple-700" />
+                  <div className="p-2 bg-purple-500/15 rounded">
+                    <Shield className="w-5 h-5 text-purple-300" />
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900">Identity Verification Report (GreenID)</p>
-                    <p className="text-xs text-gray-600">InfoTrack GreenID verification • Generated {new Date().toLocaleDateString('en-AU')}</p>
+                    <p className="font-semibold text-slate-100">Identity Verification Report (GreenID)</p>
+                    <p className="text-xs text-slate-300">InfoTrack GreenID verification • Generated {new Date().toLocaleDateString('en-AU')}</p>
                   </div>
                 </div>
                 <Button 
@@ -2928,14 +2928,14 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
               </div>
 
               {/* AML/CTF Screening Report */}
-              <div className="flex items-center justify-between p-4 bg-white rounded-lg border-2 border-red-200 hover:border-red-400 transition-colors">
+              <div className="flex items-center justify-between p-4 bg-white rounded-lg border-2 border-red-500/30 hover:border-red-400 transition-colors">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-red-100 rounded">
-                    <Shield className="w-5 h-5 text-red-700" />
+                  <div className="p-2 bg-red-500/15 rounded">
+                    <Shield className="w-5 h-5 text-red-300" />
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900">AML/CTF Screening Report (WorldCheck)</p>
-                    <p className="text-xs text-gray-600">Sanctions, PEP, adverse media screening • Generated {new Date().toLocaleDateString('en-AU')}</p>
+                    <p className="font-semibold text-slate-100">AML/CTF Screening Report (WorldCheck)</p>
+                    <p className="text-xs text-slate-300">Sanctions, PEP, adverse media screening • Generated {new Date().toLocaleDateString('en-AU')}</p>
                   </div>
                 </div>
                 <Button 
@@ -2949,14 +2949,14 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
               </div>
 
               {/* Credit Check Report */}
-              <div className="flex items-center justify-between p-4 bg-white rounded-lg border-2 border-indigo-200 hover:border-indigo-400 transition-colors">
+              <div className="flex items-center justify-between p-4 bg-white rounded-lg border-2 border-indigo-500/30 hover:border-indigo-400 transition-colors">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-indigo-100 rounded">
-                    <FileText className="w-5 h-5 text-indigo-700" />
+                  <div className="p-2 bg-indigo-500/15 rounded">
+                    <FileText className="w-5 h-5 text-indigo-300" />
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900">Credit Check Report (Equifax)</p>
-                    <p className="text-xs text-gray-600">Full credit report, credit score {formData.creditScore} • Generated {new Date().toLocaleDateString('en-AU')}</p>
+                    <p className="font-semibold text-slate-100">Credit Check Report (Equifax)</p>
+                    <p className="text-xs text-slate-300">Full credit report, credit score {formData.creditScore} • Generated {new Date().toLocaleDateString('en-AU')}</p>
                   </div>
                 </div>
                 <Button 
@@ -2970,14 +2970,14 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
               </div>
 
               {/* Comprehensive Verification Summary */}
-              <div className="flex items-center justify-between p-4 bg-white rounded-lg border-2 border-gray-300 hover:border-gray-400 transition-colors">
+              <div className="flex items-center justify-between p-4 bg-white rounded-lg border-2 border-white/10 hover:border-gray-400 transition-colors">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-gray-100 rounded">
-                    <FileText className="w-5 h-5 text-gray-700" />
+                  <div className="p-2 bg-white/5 rounded">
+                    <FileText className="w-5 h-5 text-slate-300" />
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900">Comprehensive Verification Summary</p>
-                    <p className="text-xs text-gray-600">Combined report of all verification checks • Generated {new Date().toLocaleDateString('en-AU')}</p>
+                    <p className="font-semibold text-slate-100">Comprehensive Verification Summary</p>
+                    <p className="text-xs text-slate-300">Combined report of all verification checks • Generated {new Date().toLocaleDateString('en-AU')}</p>
                   </div>
                 </div>
                 <Button 
@@ -2992,7 +2992,7 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
             </div>
 
             {/* Download All Button */}
-            <div className="mt-4 pt-4 border-t border-gray-200">
+            <div className="mt-4 pt-4 border-t border-white/10">
               <Button 
                 className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700"
                 size="lg"
@@ -3059,12 +3059,12 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
           />
         </div>
 
-        <div className="md:col-span-2 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+        <div className="md:col-span-2 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
           <div className="flex items-start gap-3">
-            <AlertCircle className="w-5 h-5 text-blue-600 mt-0.5" />
+            <AlertCircle className="w-5 h-5 text-blue-400 mt-0.5" />
             <div className="flex-1">
-              <p className="text-sm font-semibold text-blue-900">Lender Coordination</p>
-              <p className="text-xs text-blue-700 mt-1">
+              <p className="text-sm font-semibold text-blue-300">Lender Coordination</p>
+              <p className="text-xs text-blue-300 mt-1">
                 We'll contact the lender to verify the outstanding loan amount and coordinate the settlement process once a buyer is found.
               </p>
             </div>
@@ -3155,15 +3155,15 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
         />
       </div>
 
-      <div className="mt-6 p-4 bg-orange-50 border-2 border-orange-300 rounded-lg">
+      <div className="mt-6 p-4 bg-orange-500/10 border-2 border-orange-300 rounded-lg">
         <div className="flex items-start gap-3">
-          <AlertCircle className="w-6 h-6 text-orange-600 mt-0.5 flex-shrink-0" />
+          <AlertCircle className="w-6 h-6 text-orange-400 mt-0.5 flex-shrink-0" />
           <div className="flex-1">
-            <p className="text-sm font-bold text-orange-900 mb-2">Critical for Mortgage Reassignment</p>
-            <p className="text-xs text-orange-800 mb-3">
+            <p className="text-sm font-bold text-orange-300 mb-2">Critical for Mortgage Reassignment</p>
+            <p className="text-xs text-orange-300 mb-3">
               These documents are essential for a successful mortgage reassignment. Missing documents may delay or prevent the transaction. The lender must provide:
             </p>
-            <ul className="text-xs text-orange-800 space-y-1 list-disc list-inside">
+            <ul className="text-xs text-orange-300 space-y-1 list-disc list-inside">
               <li>All original executed loan documentation</li>
               <li>Current payout figures with settlement instructions</li>
               <li>Registered mortgage documents with dealing numbers</li>
@@ -3179,23 +3179,23 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
   const renderAllParties = () => (
     <div className="space-y-6">
       <div className="flex items-center gap-3 mb-6">
-        <div className="p-3 bg-purple-50 rounded-lg">
-          <Briefcase className="w-6 h-6 text-purple-600" />
+        <div className="p-3 bg-purple-500/10 rounded-lg">
+          <Briefcase className="w-6 h-6 text-purple-400" />
         </div>
         <div>
-          <h3 className="text-xl font-semibold text-gray-900">All Parties Involved</h3>
-          <p className="text-sm text-gray-600 mt-1">
+          <h3 className="text-xl font-semibold text-slate-100">All Parties Involved</h3>
+          <p className="text-sm text-slate-300 mt-1">
             Capture contact details for all professionals involved in the MIP transaction
           </p>
         </div>
       </div>
 
-      <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+      <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
         <div className="flex items-start gap-3">
-          <AlertCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+          <AlertCircle className="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" />
           <div>
-            <p className="text-sm font-medium text-blue-900 mb-1">Why capture all parties?</p>
-            <p className="text-xs text-blue-800">
+            <p className="text-sm font-medium text-blue-300 mb-1">Why capture all parties?</p>
+            <p className="text-xs text-blue-300">
               Having complete contact information for all professionals streamlines communication, 
               ensures compliance, and accelerates the settlement process. Required parties are marked with *.
             </p>
@@ -3207,10 +3207,10 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
       <Card>
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            <User className="w-5 h-5 text-blue-600" />
+            <User className="w-5 h-5 text-blue-400" />
             Borrower's Lawyer / Solicitor *
           </CardTitle>
-          <p className="text-sm text-gray-600">Legal representation for the borrower (Required)</p>
+          <p className="text-sm text-slate-300">Legal representation for the borrower (Required)</p>
         </CardHeader>
         <CardContent className="grid grid-cols-2 gap-4">
           <div>
@@ -3277,10 +3277,10 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
       <Card>
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            <Briefcase className="w-5 h-5 text-indigo-600" />
+            <Briefcase className="w-5 h-5 text-indigo-400" />
             Lender's Lawyer / Solicitor
           </CardTitle>
-          <p className="text-sm text-gray-600">Legal representation for the lender (Optional)</p>
+          <p className="text-sm text-slate-300">Legal representation for the lender (Optional)</p>
         </CardHeader>
         <CardContent className="grid grid-cols-2 gap-4">
           <div>
@@ -3345,10 +3345,10 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
       <Card>
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            <Shield className="w-5 h-5 text-red-600" />
+            <Shield className="w-5 h-5 text-red-400" />
             Receiver / Liquidator
           </CardTitle>
-          <p className="text-sm text-gray-600">Only if a receiver or liquidator has been appointed</p>
+          <p className="text-sm text-slate-300">Only if a receiver or liquidator has been appointed</p>
         </CardHeader>
         <CardContent className="space-y-4">
           <div>
@@ -3439,10 +3439,10 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
       <Card>
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            <Home className="w-5 h-5 text-green-600" />
+            <Home className="w-5 h-5 text-green-400" />
             Real Estate Agent
           </CardTitle>
-          <p className="text-sm text-gray-600">Agent managing the property sale</p>
+          <p className="text-sm text-slate-300">Agent managing the property sale</p>
         </CardHeader>
         <CardContent className="grid grid-cols-2 gap-4">
           <div>
@@ -3516,10 +3516,10 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
       <Card>
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            <DollarSign className="w-5 h-5 text-teal-600" />
+            <DollarSign className="w-5 h-5 text-teal-400" />
             Accountant
           </CardTitle>
-          <p className="text-sm text-gray-600">Accountant handling financial aspects</p>
+          <p className="text-sm text-slate-300">Accountant handling financial aspects</p>
         </CardHeader>
         <CardContent className="grid grid-cols-2 gap-4">
           <div>
@@ -3593,10 +3593,10 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
       <Card>
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            <FileSearch className="w-5 h-5 text-amber-600" />
+            <FileSearch className="w-5 h-5 text-amber-400" />
             Valuer / Appraiser
           </CardTitle>
-          <p className="text-sm text-gray-600">Professional property valuer</p>
+          <p className="text-sm text-slate-300">Professional property valuer</p>
         </CardHeader>
         <CardContent className="grid grid-cols-2 gap-4">
           <div>
@@ -3661,10 +3661,10 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
       <Card>
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            <Zap className="w-5 h-5 text-orange-600" />
+            <Zap className="w-5 h-5 text-orange-400" />
             Auctioneer
           </CardTitle>
-          <p className="text-sm text-gray-600">If property is being sold via auction</p>
+          <p className="text-sm text-slate-300">If property is being sold via auction</p>
         </CardHeader>
         <CardContent className="grid grid-cols-2 gap-4">
           <div>
@@ -3729,10 +3729,10 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
       <Card>
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            <FileText className="w-5 h-5 text-cyan-600" />
+            <FileText className="w-5 h-5 text-cyan-400" />
             Conveyancer / Settlement Agent
           </CardTitle>
-          <p className="text-sm text-gray-600">Handling conveyancing and settlement</p>
+          <p className="text-sm text-slate-300">Handling conveyancing and settlement</p>
         </CardHeader>
         <CardContent className="grid grid-cols-2 gap-4">
           <div>
@@ -3797,10 +3797,10 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
       <Card>
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            <Building2 className="w-5 h-5 text-purple-600" />
+            <Building2 className="w-5 h-5 text-purple-400" />
             Property Manager
           </CardTitle>
-          <p className="text-sm text-gray-600">If property is tenanted or under management</p>
+          <p className="text-sm text-slate-300">If property is tenanted or under management</p>
         </CardHeader>
         <CardContent className="grid grid-cols-2 gap-4">
           <div>
@@ -3865,10 +3865,10 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
       <Card>
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            <Shield className="w-5 h-5 text-rose-600" />
+            <Shield className="w-5 h-5 text-rose-400" />
             Trustee (Bankruptcy)
           </CardTitle>
-          <p className="text-sm text-gray-600">Only if borrower is bankrupt and trustee appointed</p>
+          <p className="text-sm text-slate-300">Only if borrower is bankrupt and trustee appointed</p>
         </CardHeader>
         <CardContent className="space-y-4">
           <div>
@@ -3959,10 +3959,10 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
       <Card>
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            <Shield className="w-5 h-5 text-emerald-600" />
+            <Shield className="w-5 h-5 text-emerald-400" />
             Insurance Broker
           </CardTitle>
-          <p className="text-sm text-gray-600">Managing property and mortgage insurance</p>
+          <p className="text-sm text-slate-300">Managing property and mortgage insurance</p>
         </CardHeader>
         <CardContent className="grid grid-cols-2 gap-4">
           <div>
@@ -4030,11 +4030,11 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
     <div className="space-y-6">
       <div className="flex items-center gap-3 mb-6">
         <div className="p-3 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg border-2 border-blue-300">
-          <Shield className="w-6 h-6 text-blue-600" />
+          <Shield className="w-6 h-6 text-blue-400" />
         </div>
         <div>
           <h2 className="text-xl font-semibold">Responsible Lending Assessment (NCCP)</h2>
-          <p className="text-gray-600 text-sm">National Consumer Credit Protection Act 2009 compliance - Steps A & B</p>
+          <p className="text-slate-300 text-sm">National Consumer Credit Protection Act 2009 compliance - Steps A & B</p>
         </div>
       </div>
 
@@ -4050,11 +4050,11 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
     <div className="space-y-6">
       <div className="flex items-center gap-3 mb-6">
         <div className="p-3 bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg border-2 border-purple-300">
-          <FileText className="w-6 h-6 text-purple-600" />
+          <FileText className="w-6 h-6 text-purple-400" />
         </div>
         <div>
           <h2 className="text-xl font-semibold">Disclosure Requirements & Lender Licence</h2>
-          <p className="text-gray-600 text-sm">NCCP disclosure obligations and Australian Credit Licence verification</p>
+          <p className="text-slate-300 text-sm">NCCP disclosure obligations and Australian Credit Licence verification</p>
         </div>
       </div>
 
@@ -4091,11 +4091,11 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
 
       <div className="max-w-5xl mx-auto space-y-6 pb-12">
       {/* Development Mode Notice */}
-      <div className="p-4 bg-blue-50 border-2 border-blue-200 rounded-lg flex items-start gap-3">
-        <Shield className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+      <div className="p-4 bg-blue-500/10 border-2 border-blue-500/30 rounded-lg flex items-start gap-3">
+        <Shield className="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" />
         <div className="flex-1">
-          <p className="text-sm font-semibold text-blue-900">Development/Demo Mode Active</p>
-          <p className="text-xs text-blue-700 mt-1">
+          <p className="text-sm font-semibold text-blue-300">Development/Demo Mode Active</p>
+          <p className="text-xs text-blue-300 mt-1">
             Professional liability declarations are pre-accepted in this demo environment to allow testing and exploration. 
             In production, users must complete the full Professional Declarations page before creating cases.
           </p>
@@ -4105,9 +4105,9 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Submit New MIP Case</h1>
-          <p className="text-gray-600 mt-1 flex items-center gap-2">
-            <Zap className="w-4 h-4 text-indigo-600" />
+          <h1 className="text-3xl font-bold text-slate-100">Submit New MIP Case</h1>
+          <p className="text-slate-300 mt-1 flex items-center gap-2">
+            <Zap className="w-4 h-4 text-indigo-400" />
             Powered by InfoTrack - Complete property & identity verification
           </p>
         </div>
@@ -4163,7 +4163,7 @@ export function CaseCreationForm({ onBack, onComplete }: CaseCreationFormProps) 
                 Previous
               </Button>
 
-              <div className="text-sm text-gray-600">
+              <div className="text-sm text-slate-300">
                 Step {currentStep} of {totalSteps}
               </div>
 

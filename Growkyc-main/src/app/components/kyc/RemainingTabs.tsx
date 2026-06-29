@@ -93,18 +93,18 @@ function defaultOfficeholderRole(entityType: TestClient['entityType']): string {
 function kycStatusBadgeClass(status: string): string {
   const s = status.toLowerCase();
   if (s.includes('verified') || s.includes('complete') || s.includes('passed')) {
-    return 'bg-green-100 text-green-900 border-green-300';
+    return 'bg-green-500/15 text-green-300 border-green-300';
   }
   if (s.includes('pending') || s.includes('review') || s.includes('enhanced')) {
-    return 'bg-amber-100 text-amber-900 border-amber-300';
+    return 'bg-amber-500/15 text-amber-300 border-amber-300';
   }
   if (s.includes('fail') || s.includes('reject') || s.includes('critical')) {
-    return 'bg-red-100 text-red-900 border-red-300';
+    return 'bg-red-500/15 text-red-300 border-red-300';
   }
   if (s.includes('closed') || s.includes('archive')) {
-    return 'bg-slate-100 text-slate-700 border-slate-300';
+    return 'bg-white/5 text-slate-300 border-white/10';
   }
-  return 'bg-gray-100 text-gray-800 border-gray-300';
+  return 'bg-white/5 text-slate-100 border-white/10';
 }
 
 const getNormalizedId = (id: string) => {
@@ -452,7 +452,7 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
           <Card className="border-2 border-blue-300 shadow-lg">
             <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
               <CardTitle className="flex items-center gap-2">
-                <Building className="w-6 h-6 text-blue-600" />
+                <Building className="w-6 h-6 text-blue-400" />
                 Entity Information
               </CardTitle>
             </CardHeader>
@@ -472,7 +472,7 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
                         type="button"
                         size="sm"
                         variant="outline"
-                        className="border-blue-300 text-blue-800 hover:bg-blue-50"
+                        className="border-blue-300 text-blue-300 hover:bg-blue-500/10"
                         onClick={() => setRegistrationDetailsOpen(true)}
                       >
                         <Eye className="w-4 h-4 mr-1" />
@@ -497,41 +497,41 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
 
                           <div className="space-y-6 pt-2">
                             <div className="grid sm:grid-cols-2 gap-3 text-sm">
-                              <div className="rounded-lg border bg-slate-50 p-3">
-                                <p className="text-xs text-gray-600 mb-1">Entity type</p>
-                                <p className="font-semibold text-gray-900">{client.entityType}</p>
+                              <div className="rounded-lg border bg-white/5 p-3">
+                                <p className="text-xs text-slate-300 mb-1">Entity type</p>
+                                <p className="font-semibold text-slate-100">{client.entityType}</p>
                               </div>
                               {regVm.asicSupplementary && (
-                                <div className="rounded-lg border bg-slate-50 p-3">
-                                  <p className="text-xs text-gray-600 mb-1">Registry / ASIC summary</p>
-                                  <p className="font-semibold text-gray-900">{regVm.asicSupplementary}</p>
+                                <div className="rounded-lg border bg-white/5 p-3">
+                                  <p className="text-xs text-slate-300 mb-1">Registry / ASIC summary</p>
+                                  <p className="font-semibold text-slate-100">{regVm.asicSupplementary}</p>
                                 </div>
                               )}
                               {regVm.lastSyncedLabel && (
-                                <div className="rounded-lg border bg-emerald-50 p-3 sm:col-span-2">
-                                  <p className="text-xs text-gray-600 mb-1">Last registry sync</p>
-                                  <p className="font-semibold text-emerald-900">{regVm.lastSyncedLabel}</p>
+                                <div className="rounded-lg border bg-emerald-500/10 p-3 sm:col-span-2">
+                                  <p className="text-xs text-slate-300 mb-1">Last registry sync</p>
+                                  <p className="font-semibold text-emerald-300">{regVm.lastSyncedLabel}</p>
                                 </div>
                               )}
                             </div>
 
                             <div>
-                              <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
+                              <h4 className="font-semibold text-slate-100 mb-2 flex items-center gap-2">
                                 <History className="w-4 h-4" />
                                 History
                               </h4>
                               {regVm.history.length === 0 ? (
-                                <p className="text-sm text-gray-600">No registry events on file.</p>
+                                <p className="text-sm text-slate-300">No registry events on file.</p>
                               ) : (
                                 <ul className="space-y-2 border rounded-lg divide-y bg-white">
                                   {regVm.history.map((row, idx) => (
                                     <li key={`${row.date}-${idx}`} className="p-3 text-sm">
                                       <div className="flex flex-wrap justify-between gap-2">
-                                        <span className="font-medium text-gray-900">{row.event}</span>
-                                        <span className="text-gray-600 whitespace-nowrap">{row.date}</span>
+                                        <span className="font-medium text-slate-100">{row.event}</span>
+                                        <span className="text-slate-300 whitespace-nowrap">{row.date}</span>
                                       </div>
                                       {row.source && (
-                                        <p className="text-xs text-gray-500 mt-1">Source: {row.source}</p>
+                                        <p className="text-xs text-slate-400 mt-1">Source: {row.source}</p>
                                       )}
                                     </li>
                                   ))}
@@ -540,17 +540,17 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
                             </div>
 
                             <div>
-                              <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
+                              <h4 className="font-semibold text-slate-100 mb-2 flex items-center gap-2">
                                 <Calendar className="w-4 h-4" />
                                 Key dates
                               </h4>
                               {regVm.keyDates.length === 0 ? (
-                                <p className="text-sm text-gray-600">No key dates on file.</p>
+                                <p className="text-sm text-slate-300">No key dates on file.</p>
                               ) : (
                                 <div className="overflow-x-auto border rounded-lg">
                                   <table className="w-full text-sm">
                                     <thead>
-                                      <tr className="bg-slate-100 text-left">
+                                      <tr className="bg-white/5 text-left">
                                         <th className="p-2 font-medium">Label</th>
                                         <th className="p-2 font-medium">Date</th>
                                         <th className="p-2 font-medium">Detail</th>
@@ -559,9 +559,9 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
                                     <tbody>
                                       {regVm.keyDates.map((row, idx) => (
                                         <tr key={`${row.label}-${idx}`} className="border-t">
-                                          <td className="p-2 font-medium text-gray-900">{row.label}</td>
-                                          <td className="p-2 text-gray-800 whitespace-nowrap">{row.date}</td>
-                                          <td className="p-2 text-gray-600">{row.detail ?? '—'}</td>
+                                          <td className="p-2 font-medium text-slate-100">{row.label}</td>
+                                          <td className="p-2 text-slate-100 whitespace-nowrap">{row.date}</td>
+                                          <td className="p-2 text-slate-300">{row.detail ?? '—'}</td>
                                         </tr>
                                       ))}
                                     </tbody>
@@ -574,50 +574,50 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
                     </Dialog>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                      <div className="bg-white rounded-lg p-4 border-2 border-slate-200 shadow-sm">
-                        <p className="text-xs text-gray-600 mb-2">Company status</p>
+                      <div className="bg-white rounded-lg p-4 border-2 border-white/10 shadow-sm">
+                        <p className="text-xs text-slate-300 mb-2">Company status</p>
                         <Badge className={`${companyStatusBadgeClass(regVm.companyStatus)} text-white text-sm px-3 py-1`}>
                           {regVm.companyStatus}
                         </Badge>
                         {regVm.lastSyncedLabel && (
-                          <p className="text-xs text-gray-500 mt-2">Synced {regVm.lastSyncedLabel}</p>
+                          <p className="text-xs text-slate-400 mt-2">Synced {regVm.lastSyncedLabel}</p>
                         )}
                       </div>
-                      <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
-                        <p className="text-xs text-gray-600 mb-1">Entity type</p>
-                        <p className="font-bold text-lg text-gray-900">{client.entityType}</p>
+                      <div className="bg-blue-500/10 rounded-lg p-4 border border-blue-500/30">
+                        <p className="text-xs text-slate-300 mb-1">Entity type</p>
+                        <p className="font-bold text-lg text-slate-100">{client.entityType}</p>
                         {regVm.asicSupplementary && (
-                          <p className="text-xs text-gray-600 mt-2 line-clamp-2" title={regVm.asicSupplementary}>
+                          <p className="text-xs text-slate-300 mt-2 line-clamp-2" title={regVm.asicSupplementary}>
                             {regVm.asicSupplementary}
                           </p>
                         )}
                       </div>
-                      <div className="bg-indigo-50 rounded-lg p-4 border border-indigo-200">
-                        <p className="text-xs text-gray-600 mb-1 flex items-center gap-1">
+                      <div className="bg-indigo-500/10 rounded-lg p-4 border border-indigo-500/30">
+                        <p className="text-xs text-slate-300 mb-1 flex items-center gap-1">
                           <History className="w-3.5 h-3.5" />
                           Latest registry event
                         </p>
                         {latestEvent ? (
                           <>
-                            <p className="font-semibold text-gray-900 text-sm leading-snug">{latestEvent.event}</p>
-                            <p className="text-xs text-gray-600 mt-1">{latestEvent.date}</p>
+                            <p className="font-semibold text-slate-100 text-sm leading-snug">{latestEvent.event}</p>
+                            <p className="text-xs text-slate-300 mt-1">{latestEvent.date}</p>
                           </>
                         ) : (
-                          <p className="text-sm text-gray-600">No events</p>
+                          <p className="text-sm text-slate-300">No events</p>
                         )}
                       </div>
-                      <div className="bg-cyan-50 rounded-lg p-4 border border-cyan-200">
-                        <p className="text-xs text-gray-600 mb-1 flex items-center gap-1">
+                      <div className="bg-cyan-500/10 rounded-lg p-4 border border-cyan-500/30">
+                        <p className="text-xs text-slate-300 mb-1 flex items-center gap-1">
                           <Calendar className="w-3.5 h-3.5" />
                           Next key date
                         </p>
                         {nextKeyDate ? (
                           <>
-                            <p className="font-semibold text-gray-900">{nextKeyDate.label}</p>
-                            <p className="text-sm text-gray-700 mt-1">{nextKeyDate.date}</p>
+                            <p className="font-semibold text-slate-100">{nextKeyDate.label}</p>
+                            <p className="text-sm text-slate-300 mt-1">{nextKeyDate.date}</p>
                           </>
                         ) : (
-                          <p className="text-sm text-gray-600">—</p>
+                          <p className="text-sm text-slate-300">—</p>
                         )}
                       </div>
                     </div>
@@ -630,31 +630,31 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
                 return (
                   <div className="mb-6">
                     <h3 className="font-bold text-lg mb-4">Directors / Partners</h3>
-                    <div className="overflow-x-auto rounded-lg border border-gray-200 bg-white shadow-sm">
+                    <div className="overflow-x-auto rounded-lg border border-white/10 bg-white shadow-sm">
                       <table className="w-full min-w-[720px] text-sm text-left">
                         <thead>
-                          <tr className="bg-slate-100 border-b border-gray-200">
-                            <th className="px-4 py-3 font-semibold text-gray-900">Name</th>
-                            <th className="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">Date of birth</th>
-                            <th className="px-4 py-3 font-semibold text-gray-900">Role</th>
-                            <th className="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">KYC status</th>
-                            <th className="px-4 py-3 font-semibold text-gray-900 min-w-[200px]">Screening batches</th>
+                          <tr className="bg-white/5 border-b border-white/10">
+                            <th className="px-4 py-3 font-semibold text-slate-100">Name</th>
+                            <th className="px-4 py-3 font-semibold text-slate-100 whitespace-nowrap">Date of birth</th>
+                            <th className="px-4 py-3 font-semibold text-slate-100">Role</th>
+                            <th className="px-4 py-3 font-semibold text-slate-100 whitespace-nowrap">KYC status</th>
+                            <th className="px-4 py-3 font-semibold text-slate-100 min-w-[200px]">Screening batches</th>
                           </tr>
                         </thead>
                         <tbody>
                           {directorRows.map((row, idx) => (
-                            <tr key={`${row.name}-${idx}`} className="border-b border-gray-100 last:border-0 hover:bg-slate-50/80">
+                            <tr key={`${row.name}-${idx}`} className="border-b border-white/10 last:border-0 hover:bg-white/5/80">
                               <td className="px-4 py-3 align-top">
-                                <div className="font-semibold text-gray-900">{row.name}</div>
-                                <div className="text-xs text-gray-500 mt-1">
+                                <div className="font-semibold text-slate-100">{row.name}</div>
+                                <div className="text-xs text-slate-400 mt-1">
                                   Appointed {row.appointed}
                                   {row.resigned && (
-                                    <span className="text-red-600 font-medium"> · Resigned {row.resigned}</span>
+                                    <span className="text-red-400 font-medium"> · Resigned {row.resigned}</span>
                                   )}
                                 </div>
                               </td>
-                              <td className="px-4 py-3 align-top text-gray-800 whitespace-nowrap">{row.dateOfBirth}</td>
-                              <td className="px-4 py-3 align-top text-gray-800">{row.role}</td>
+                              <td className="px-4 py-3 align-top text-slate-100 whitespace-nowrap">{row.dateOfBirth}</td>
+                              <td className="px-4 py-3 align-top text-slate-100">{row.role}</td>
                               <td className="px-4 py-3 align-top">
                                 <Badge variant="outline" className={`text-xs font-medium ${kycStatusBadgeClass(row.kycStatus)}`}>
                                   {row.kycStatus}
@@ -667,14 +667,14 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
                                       <Badge
                                         key={batch}
                                         variant="outline"
-                                        className="text-xs font-mono bg-blue-50 text-blue-900 border-blue-200"
+                                        className="text-xs font-mono bg-blue-500/10 text-blue-300 border-blue-500/30"
                                       >
                                         {batch}
                                       </Badge>
                                     ))}
                                   </div>
                                 ) : (
-                                  <span className="text-gray-500">—</span>
+                                  <span className="text-slate-400">—</span>
                                 )}
                               </td>
                             </tr>
@@ -691,17 +691,17 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
                   <h3 className="font-bold text-lg mb-4">Shareholders</h3>
                   <div className="space-y-2">
                     {client.entityData.shareholders.map((shareholder, idx) => (
-                      <div key={idx} className="bg-blue-50 rounded-lg p-4 border border-blue-200">
+                      <div key={idx} className="bg-blue-500/10 rounded-lg p-4 border border-blue-500/30">
                         <div className="flex justify-between items-center">
                           <div>
                             <p className="font-bold">{shareholder.name}</p>
-                            <p className="text-sm text-gray-600">{shareholder.shares.toLocaleString()} shares</p>
+                            <p className="text-sm text-slate-300">{shareholder.shares.toLocaleString()} shares</p>
                           </div>
                           <div className="text-right">
-                            <p className="text-2xl font-bold text-blue-600">{shareholder.percentage}%</p>
+                            <p className="text-2xl font-bold text-blue-400">{shareholder.percentage}%</p>
                           </div>
                         </div>
-                        <div className="w-full bg-gray-200 rounded-full h-2 mt-2">
+                        <div className="w-full bg-white/10 rounded-full h-2 mt-2">
                           <div
                             className="h-2 rounded-full bg-blue-500"
                             style={{ width: `${shareholder.percentage}%` }}
@@ -716,8 +716,8 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
               {client.entityData.trustType && (
                 <div className="mb-6">
                   <h3 className="font-bold text-lg mb-4">Trust Details</h3>
-                  <div className="bg-purple-50 rounded-lg p-4 border border-purple-200 mb-4">
-                    <p className="text-sm text-gray-600 mb-1">Trust Type</p>
+                  <div className="bg-purple-500/10 rounded-lg p-4 border border-purple-500/30 mb-4">
+                    <p className="text-sm text-slate-300 mb-1">Trust Type</p>
                     <p className="font-bold text-lg">{client.entityData.trustType}</p>
                   </div>
 
@@ -726,9 +726,9 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
                       <p className="font-semibold mb-2">Trustees</p>
                       <div className="space-y-2">
                         {client.entityData.trustees.map((trustee, idx) => (
-                          <div key={idx} className="bg-gray-50 rounded-lg p-3 border border-gray-200">
+                          <div key={idx} className="bg-white/5 rounded-lg p-3 border border-white/10">
                             <p className="font-bold">{trustee.name}</p>
-                            <p className="text-sm text-gray-600">{trustee.type}</p>
+                            <p className="text-sm text-slate-300">{trustee.type}</p>
                           </div>
                         ))}
                       </div>
@@ -740,9 +740,9 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
                       <p className="font-semibold mb-2">Beneficiaries</p>
                       <div className="space-y-2">
                         {client.entityData.beneficiaries.map((beneficiary, idx) => (
-                          <div key={idx} className="bg-gray-50 rounded-lg p-3 border border-gray-200">
+                          <div key={idx} className="bg-white/5 rounded-lg p-3 border border-white/10">
                             <p className="font-bold">{beneficiary.name}</p>
-                            <p className="text-sm text-gray-600">{beneficiary.entitlement}</p>
+                            <p className="text-sm text-slate-300">{beneficiary.entitlement}</p>
                           </div>
                         ))}
                       </div>
@@ -752,9 +752,9 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
               )}
 
               {client.entityType === 'Individual' && !client.entityData.registrationDate && (
-                <div className="bg-blue-50 rounded-lg p-6 border border-blue-200">
-                  <p className="text-blue-800 font-semibold">Individual Entity</p>
-                  <p className="text-sm text-blue-700 mt-1">
+                <div className="bg-blue-500/10 rounded-lg p-6 border border-blue-500/30">
+                  <p className="text-blue-300 font-semibold">Individual Entity</p>
+                  <p className="text-sm text-blue-300 mt-1">
                     No corporate structure applicable. See Identity and Ownership tabs for details.
                   </p>
                 </div>
@@ -780,7 +780,7 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
             <Card className="border-2 border-blue-300 shadow-lg">
               <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b flex flex-row items-center justify-between py-4">
                 <CardTitle className="flex items-center gap-2">
-                  <Users className="w-6 h-6 text-blue-600" />
+                  <Users className="w-6 h-6 text-blue-400" />
                   Beneficial Ownership Analysis
                 </CardTitle>
                 <div className="flex items-center gap-3">
@@ -790,7 +790,7 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
                   <Button 
                     variant="outline" 
                     size="sm" 
-                    className="h-8 border-blue-200 text-blue-600 hover:bg-blue-50 gap-2"
+                    className="h-8 border-blue-500/30 text-blue-400 hover:bg-blue-500/10 gap-2"
                     onClick={handleRefresh}
                     disabled={isRefreshing}
                   >
@@ -803,14 +803,14 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
                 <div className="space-y-6">
                   <div>
                     <div className="flex items-center justify-between mb-4">
-                      <h3 className="font-bold text-lg text-gray-900">Ultimate Beneficial Owners ({ubos.length})</h3>
-                      <Badge variant="outline" className="text-blue-600 border-blue-100 bg-blue-50 px-3">
+                      <h3 className="font-bold text-lg text-slate-100">Ultimate Beneficial Owners ({ubos.length})</h3>
+                      <Badge variant="outline" className="text-blue-400 border-blue-500/20 bg-blue-500/10 px-3">
                         {ubos.filter(u => u.verified).length} / {ubos.length} Verified
                       </Badge>
                     </div>
                     
                     {ubos.length === 0 ? (
-                      <div className="p-8 rounded-xl bg-gray-50 border-2 border-dashed border-gray-200 text-center text-gray-500">
+                      <div className="p-8 rounded-xl bg-white/5 border-2 border-dashed border-white/10 text-center text-slate-400">
                         <Users className="w-8 h-8 mx-auto mb-2 opacity-20" />
                         No UBO data currently available for this entity type.
                       </div>
@@ -833,35 +833,35 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
                           }
 
                           return (
-                            <div key={idx} className={`rounded-xl p-5 border-2 transition-all hover:shadow-md ${isVerified ? 'bg-white border-green-100' : isFailed ? 'bg-red-50 border-red-200' : 'bg-white border-orange-100'}`}>
+                            <div key={idx} className={`rounded-xl p-5 border-2 transition-all hover:shadow-md ${isVerified ? 'bg-white border-green-500/20' : isFailed ? 'bg-red-500/10 border-red-500/30' : 'bg-white border-orange-500/20'}`}>
                               <div className="flex justify-between items-start mb-4">
                                 <div className="flex items-center gap-3">
-                                  <div className={`w-12 h-12 rounded-full flex items-center justify-center ${isVerified ? 'bg-green-50 text-green-600' : 'bg-orange-50 text-orange-600'}`}>
+                                  <div className={`w-12 h-12 rounded-full flex items-center justify-center ${isVerified ? 'bg-green-500/10 text-green-400' : 'bg-orange-500/10 text-orange-400'}`}>
                                     <User className="w-6 h-6" />
                                   </div>
                                   <div>
-                                    <p className="font-bold text-gray-900">{ubo.name || 'Unknown Person'}</p>
+                                    <p className="font-bold text-slate-100">{ubo.name || 'Unknown Person'}</p>
                                     <div className="flex items-center gap-1.5 mt-0.5">
                                       <Globe className="w-3 h-3 text-gray-400" />
-                                      <span className="text-xs text-gray-500 font-medium">{ubo.country || 'Not specified'}</span>
+                                      <span className="text-xs text-slate-400 font-medium">{ubo.country || 'Not specified'}</span>
                                     </div>
                                   </div>
                                 </div>
                                 <div className="text-right">
-                                  <p className="text-2xl font-black text-blue-600 leading-none">{ubo.ownership || 0}%</p>
+                                  <p className="text-2xl font-black text-blue-400 leading-none">{ubo.ownership || 0}%</p>
                                   <Badge 
                                     variant="outline" 
                                     className={`mt-2 border-none px-2 py-0.5 text-[10px] font-black uppercase tracking-widest ${
-                                      isVerified ? 'bg-green-100 text-green-700' : 
-                                      isFailed ? 'bg-red-100 text-red-700' : 
-                                      'bg-orange-100 text-orange-700'
+                                      isVerified ? 'bg-green-500/15 text-green-300' : 
+                                      isFailed ? 'bg-red-500/15 text-red-300' : 
+                                      'bg-orange-500/15 text-orange-300'
                                     }`}
                                   >
                                     {displayStatus}
                                   </Badge>
                                 </div>
                               </div>
-                              <div className="w-full bg-gray-100 rounded-full h-2 overflow-hidden">
+                              <div className="w-full bg-white/5 rounded-full h-2 overflow-hidden">
                                 <motion.div
                                   initial={{ width: 0 }}
                                   animate={{ width: `${Math.min(ubo.ownership || 0, 100)}%` }}
@@ -878,29 +878,29 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
                   </div>
 
                   {/* Complex Ownership Structure Diagram */}
-                  <div className="mt-8 border-t border-gray-100 pt-8">
-                    <h3 className="font-bold text-xl text-gray-900 mb-6 flex items-center gap-3">
-                      <Network className="w-6 h-6 text-indigo-600" />
+                  <div className="mt-8 border-t border-white/10 pt-8">
+                    <h3 className="font-bold text-xl text-slate-100 mb-6 flex items-center gap-3">
+                      <Network className="w-6 h-6 text-indigo-400" />
                       Visual Ownership Hierarchy
                     </h3>
                     {ubos.length === 0 ? (
-                      <div className="p-8 rounded-xl bg-gray-50 border-2 border-dashed border-gray-200 flex items-center justify-center text-gray-500 text-sm">
+                      <div className="p-8 rounded-xl bg-white/5 border-2 border-dashed border-white/10 flex items-center justify-center text-slate-400 text-sm">
                         Insufficient data to render the ownership map.
                       </div>
                     ) : (
-                      <div className="bg-slate-50 p-10 rounded-2xl border border-slate-200 overflow-x-auto shadow-inner">
+                      <div className="bg-white/5 p-10 rounded-2xl border border-white/10 overflow-x-auto shadow-inner">
                         <div className="flex flex-col items-center pb-4" style={{ minWidth: `${Math.max(400, ubos.length * 280)}px` }}>
                           {/* Root node */}
                           <motion.div 
                             initial={{ y: -20, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
-                            className="bg-white border-2 border-blue-600 text-blue-600 rounded-2xl px-10 py-6 shadow-xl min-w-[280px] text-center z-10"
+                            className="bg-white border-2 border-blue-600 text-blue-400 rounded-2xl px-10 py-6 shadow-xl min-w-[280px] text-center z-10"
                           >
-                            <Building className="w-10 h-10 mx-auto mb-3 text-blue-600" />
+                            <Building className="w-10 h-10 mx-auto mb-3 text-blue-400" />
                             <span className="font-black text-xl tracking-tight uppercase">{client?.name || 'Primary Entity'}</span>
                             <div className="mt-2 flex items-center justify-center gap-2">
                               <Badge className="bg-blue-600 text-white border-none text-[10px] uppercase font-bold">Target Client</Badge>
-                              <Badge variant="outline" className="text-blue-600 border-blue-200 text-[10px] uppercase font-bold">{client?.entityType}</Badge>
+                              <Badge variant="outline" className="text-blue-400 border-blue-500/30 text-[10px] uppercase font-bold">{client?.entityType}</Badge>
                             </div>
                           </motion.div>
 
@@ -946,20 +946,20 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
                                     className={`p-5 rounded-2xl shadow-xl border-2 w-full transition-all hover:-translate-y-2 hover:shadow-2xl ${isVerified ? 'bg-white border-green-400' : 'bg-white border-orange-400'}`}
                                   >
                                     <div className="text-center mb-4">
-                                      <div className={`w-14 h-14 rounded-full mx-auto mb-3 flex items-center justify-center ${isVerified ? 'bg-green-50 text-green-600' : 'bg-orange-50 text-orange-500'}`}>
+                                      <div className={`w-14 h-14 rounded-full mx-auto mb-3 flex items-center justify-center ${isVerified ? 'bg-green-500/10 text-green-400' : 'bg-orange-500/10 text-orange-500'}`}>
                                         <User className="w-8 h-8" />
                                       </div>
-                                      <p className="font-black text-gray-900 leading-tight text-lg">{ubo.name || 'Unknown'}</p>
+                                      <p className="font-black text-slate-100 leading-tight text-lg">{ubo.name || 'Unknown'}</p>
                                       <p className="text-xs text-gray-400 font-bold uppercase mt-1 tracking-widest">{ubo.country || 'N/A'}</p>
                                     </div>
 
-                                    <div className="flex justify-between items-center text-xs p-3 bg-slate-50 rounded-xl border border-slate-100 mb-4">
+                                    <div className="flex justify-between items-center text-xs p-3 bg-white/5 rounded-xl border border-white/10 mb-4">
                                       <span className="font-bold text-slate-400 uppercase tracking-tighter text-[10px]">Beneficial Int:</span>
-                                      <span className="font-black text-blue-600 text-base">{ubo.ownership || 0}%</span>
+                                      <span className="font-black text-blue-400 text-base">{ubo.ownership || 0}%</span>
                                     </div>
 
                                     <div className="text-center">
-                                      <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest ${isVerified ? 'bg-green-100 text-green-700' : 'bg-orange-100 text-orange-700'}`}>
+                                      <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest ${isVerified ? 'bg-green-500/15 text-green-300' : 'bg-orange-500/15 text-orange-300'}`}>
                                         <div className={`w-1.5 h-1.5 rounded-full ${isVerified ? 'bg-green-500' : 'bg-orange-500 animate-pulse'}`} />
                                         {isVerified ? 'Verified' : 'Pending'}
                                       </div>
@@ -986,23 +986,23 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
           <Card className="border-2 border-blue-300 shadow-lg mb-6">
             <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
               <CardTitle className="flex items-center gap-2">
-                <DollarSign className="w-6 h-6 text-blue-600" />
+                <DollarSign className="w-6 h-6 text-blue-400" />
                 Financial Information
               </CardTitle>
             </CardHeader>
             <CardContent className="p-6">
               <div className="grid grid-cols-3 gap-4 mb-6">
-                <div className="bg-green-50 rounded-lg p-4 border border-green-200">
-                  <p className="text-sm text-gray-600 mb-1">Bank Accounts</p>
-                  <p className="text-3xl font-bold text-green-600">{client.financialData.bankAccounts}</p>
+                <div className="bg-green-500/10 rounded-lg p-4 border border-green-500/30">
+                  <p className="text-sm text-slate-300 mb-1">Bank Accounts</p>
+                  <p className="text-3xl font-bold text-green-400">{client.financialData.bankAccounts}</p>
                 </div>
-                <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
-                  <p className="text-sm text-gray-600 mb-1">Estimated Wealth</p>
-                  <p className="text-xl font-bold text-blue-600">{client.financialData.estimatedWealth}</p>
+                <div className="bg-blue-500/10 rounded-lg p-4 border border-blue-500/30">
+                  <p className="text-sm text-slate-300 mb-1">Estimated Wealth</p>
+                  <p className="text-xl font-bold text-blue-400">{client.financialData.estimatedWealth}</p>
                 </div>
-                <div className={`rounded-lg p-4 border ${client.financialData.highRiskTransactions > 0 ? 'bg-red-50 border-red-200' : 'bg-green-50 border-green-200'}`}>
-                  <p className="text-sm text-gray-600 mb-1">High Risk Transactions</p>
-                  <p className={`text-3xl font-bold ${client.financialData.highRiskTransactions > 0 ? 'text-red-600' : 'text-green-600'}`}>
+                <div className={`rounded-lg p-4 border ${client.financialData.highRiskTransactions > 0 ? 'bg-red-500/10 border-red-500/30' : 'bg-green-500/10 border-green-500/30'}`}>
+                  <p className="text-sm text-slate-300 mb-1">High Risk Transactions</p>
+                  <p className={`text-3xl font-bold ${client.financialData.highRiskTransactions > 0 ? 'text-red-400' : 'text-green-400'}`}>
                     {client.financialData.highRiskTransactions}
                   </p>
                 </div>
@@ -1010,9 +1010,9 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
 
               <div className="mb-6">
                 <h3 className="font-bold text-lg mb-4">Transaction Activity</h3>
-                <div className="bg-cyan-50 rounded-lg p-4 border border-cyan-200">
-                  <p className="text-sm text-gray-600 mb-1">Monthly Transaction Volume</p>
-                  <p className="text-2xl font-bold text-cyan-600">{client.financialData.transactionVolume}</p>
+                <div className="bg-cyan-500/10 rounded-lg p-4 border border-cyan-500/30">
+                  <p className="text-sm text-slate-300 mb-1">Monthly Transaction Volume</p>
+                  <p className="text-2xl font-bold text-cyan-400">{client.financialData.transactionVolume}</p>
                 </div>
               </div>
 
@@ -1031,8 +1031,8 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
 
           {/* SOF / SOW Assessment Panel */}
           <div className="mb-6">
-            <h3 className="font-bold text-2xl mb-6 text-slate-800 dark:text-slate-100 flex items-center gap-3">
-              <ShieldCheck className="w-8 h-8 text-indigo-600" />
+            <h3 className="font-bold text-2xl mb-6 text-slate-100 dark:text-slate-100 flex items-center gap-3">
+              <ShieldCheck className="w-8 h-8 text-indigo-400" />
               Financial Intelligence Assessment
             </h3>
             <SOFAssessmentPanel data={getSOFData(client)} />
@@ -1053,7 +1053,7 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
         <Card className="border-2 border-red-300 shadow-lg">
           <CardHeader className="bg-gradient-to-r from-red-50 to-orange-50 border-b">
             <CardTitle className="flex items-center gap-2">
-              <AlertCircle className="w-6 h-6 text-red-600" />
+              <AlertCircle className="w-6 h-6 text-red-400" />
               Fraud Detection & Analysis
             </CardTitle>
           </CardHeader>
@@ -1061,37 +1061,37 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
             <div className="space-y-6">
               {/* Fraud Risk Score */}
               <div className="grid grid-cols-4 gap-4">
-                <div className="bg-green-50 rounded-lg p-4 border border-green-200">
+                <div className="bg-green-500/10 rounded-lg p-4 border border-green-500/30">
                   <div className="flex items-center gap-2 mb-2">
-                    <CheckCircle className="w-5 h-5 text-green-600" />
+                    <CheckCircle className="w-5 h-5 text-green-400" />
                     <p className="font-semibold">Fraud Score</p>
                   </div>
-                  <p className="text-3xl font-bold text-green-600">Low</p>
-                  <p className="text-sm text-gray-600 mt-1">2/100 risk</p>
+                  <p className="text-3xl font-bold text-green-400">Low</p>
+                  <p className="text-sm text-slate-300 mt-1">2/100 risk</p>
                 </div>
-                <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
+                <div className="bg-blue-500/10 rounded-lg p-4 border border-blue-500/30">
                   <div className="flex items-center gap-2 mb-2">
-                    <Shield className="w-5 h-5 text-blue-600" />
+                    <Shield className="w-5 h-5 text-blue-400" />
                     <p className="font-semibold">Identity Checks</p>
                   </div>
-                  <p className="text-3xl font-bold text-blue-600">Passed</p>
-                  <p className="text-sm text-gray-600 mt-1">All verified</p>
+                  <p className="text-3xl font-bold text-blue-400">Passed</p>
+                  <p className="text-sm text-slate-300 mt-1">All verified</p>
                 </div>
-                <div className="bg-purple-50 rounded-lg p-4 border border-purple-200">
+                <div className="bg-purple-500/10 rounded-lg p-4 border border-purple-500/30">
                   <div className="flex items-center gap-2 mb-2">
-                    <Activity className="w-5 h-5 text-purple-600" />
+                    <Activity className="w-5 h-5 text-purple-400" />
                     <p className="font-semibold">Behavioral</p>
                   </div>
-                  <p className="text-3xl font-bold text-purple-600">Normal</p>
-                  <p className="text-sm text-gray-600 mt-1">No anomalies</p>
+                  <p className="text-3xl font-bold text-purple-400">Normal</p>
+                  <p className="text-sm text-slate-300 mt-1">No anomalies</p>
                 </div>
-                <div className="bg-green-50 rounded-lg p-4 border border-green-200">
+                <div className="bg-green-500/10 rounded-lg p-4 border border-green-500/30">
                   <div className="flex items-center gap-2 mb-2">
-                    <CheckCircle className="w-5 h-5 text-green-600" />
+                    <CheckCircle className="w-5 h-5 text-green-400" />
                     <p className="font-semibold">Device Trust</p>
                   </div>
-                  <p className="text-3xl font-bold text-green-600">Trusted</p>
-                  <p className="text-sm text-gray-600 mt-1">Verified device</p>
+                  <p className="text-3xl font-bold text-green-400">Trusted</p>
+                  <p className="text-sm text-slate-300 mt-1">Verified device</p>
                 </div>
               </div>
 
@@ -1099,42 +1099,42 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
               <div>
                 <h3 className="font-bold text-lg mb-4">Fraud Indicators Assessment</h3>
                 <div className="space-y-3">
-                  <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg border border-green-200">
+                  <div className="flex items-center justify-between p-4 bg-green-500/10 rounded-lg border border-green-500/30">
                     <div className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      <CheckCircle className="w-5 h-5 text-green-400" />
                       <div>
                         <p className="font-semibold">Document Authenticity</p>
-                        <p className="text-sm text-gray-600">All documents verified as genuine</p>
+                        <p className="text-sm text-slate-300">All documents verified as genuine</p>
                       </div>
                     </div>
                     <Badge className="bg-green-600 text-white">Clear</Badge>
                   </div>
-                  <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg border border-green-200">
+                  <div className="flex items-center justify-between p-4 bg-green-500/10 rounded-lg border border-green-500/30">
                     <div className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      <CheckCircle className="w-5 h-5 text-green-400" />
                       <div>
                         <p className="font-semibold">Synthetic Identity Detection</p>
-                        <p className="text-sm text-gray-600">No synthetic identity patterns detected</p>
+                        <p className="text-sm text-slate-300">No synthetic identity patterns detected</p>
                       </div>
                     </div>
                     <Badge className="bg-green-600 text-white">Clear</Badge>
                   </div>
-                  <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg border border-green-200">
+                  <div className="flex items-center justify-between p-4 bg-green-500/10 rounded-lg border border-green-500/30">
                     <div className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      <CheckCircle className="w-5 h-5 text-green-400" />
                       <div>
                         <p className="font-semibold">Velocity Checks</p>
-                        <p className="text-sm text-gray-600">No duplicate or rapid-fire applications</p>
+                        <p className="text-sm text-slate-300">No duplicate or rapid-fire applications</p>
                       </div>
                     </div>
                     <Badge className="bg-green-600 text-white">Clear</Badge>
                   </div>
-                  <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg border border-green-200">
+                  <div className="flex items-center justify-between p-4 bg-green-500/10 rounded-lg border border-green-500/30">
                     <div className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      <CheckCircle className="w-5 h-5 text-green-400" />
                       <div>
                         <p className="font-semibold">Geolocation Analysis</p>
-                        <p className="text-sm text-gray-600">Location data consistent with profile</p>
+                        <p className="text-sm text-slate-300">Location data consistent with profile</p>
                       </div>
                     </div>
                     <Badge className="bg-green-600 text-white">Clear</Badge>
@@ -1143,23 +1143,23 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
               </div>
 
               {/* AI Analysis Summary */}
-              <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6 border border-blue-200">
+              <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6 border border-blue-500/30">
                 <div className="flex items-center gap-2 mb-3">
-                  <AlertCircle className="w-6 h-6 text-blue-600" />
+                  <AlertCircle className="w-6 h-6 text-blue-400" />
                   <h3 className="font-bold text-lg">AI Fraud Analysis Summary</h3>
                 </div>
-                <p className="text-gray-700 mb-4">
+                <p className="text-slate-300 mb-4">
                   Comprehensive fraud detection analysis completed using 14 automated rules and 4 AI models.
                   No fraud indicators detected. All documents authentic, identity consistent, and behavioral patterns normal.
                 </p>
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <p className="text-sm text-gray-600 mb-1">Confidence Score</p>
-                    <p className="text-2xl font-bold text-blue-600">98%</p>
+                    <p className="text-sm text-slate-300 mb-1">Confidence Score</p>
+                    <p className="text-2xl font-bold text-blue-400">98%</p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-600 mb-1">Risk Level</p>
-                    <p className="text-2xl font-bold text-green-600">Low</p>
+                    <p className="text-sm text-slate-300 mb-1">Risk Level</p>
+                    <p className="text-2xl font-bold text-green-400">Low</p>
                   </div>
                 </div>
               </div>
@@ -1173,7 +1173,7 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
         <Card className="border-2 border-blue-300 shadow-lg">
           <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
             <CardTitle className="flex items-center gap-2">
-              <RefreshCw className="w-6 h-6 text-blue-600" />
+              <RefreshCw className="w-6 h-6 text-blue-400" />
               Manual Verification System
             </CardTitle>
           </CardHeader>
@@ -1235,12 +1235,12 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
               <div>
                 <h3 className="font-bold text-lg mb-4">Recent Checks</h3>
                 <div className="space-y-3">
-                  <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg border">
+                  <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg border">
                     <div className="flex items-center gap-3">
-                      <Shield className="w-5 h-5 text-blue-600" />
+                      <Shield className="w-5 h-5 text-blue-400" />
                       <div>
                         <p className="font-semibold">Identity Verification (Equifax)</p>
-                        <p className="text-sm text-gray-600">Run on {new Date().toLocaleDateString()} by compliance@growkyc.com</p>
+                        <p className="text-sm text-slate-300">Run on {new Date().toLocaleDateString()} by compliance@growkyc.com</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
@@ -1251,12 +1251,12 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
                       </Button>
                     </div>
                   </div>
-                  <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg border">
+                  <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg border">
                     <div className="flex items-center gap-3">
-                      <Search className="w-5 h-5 text-purple-600" />
+                      <Search className="w-5 h-5 text-purple-400" />
                       <div>
                         <p className="font-semibold">AML Screening</p>
-                        <p className="text-sm text-gray-600">Run on {new Date().toLocaleDateString()} by compliance@growkyc.com</p>
+                        <p className="text-sm text-slate-300">Run on {new Date().toLocaleDateString()} by compliance@growkyc.com</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
@@ -1267,12 +1267,12 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
                       </Button>
                     </div>
                   </div>
-                  <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg border">
+                  <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg border">
                     <div className="flex items-center gap-3">
-                      <AlertCircle className="w-5 h-5 text-red-600" />
+                      <AlertCircle className="w-5 h-5 text-red-400" />
                       <div>
                         <p className="font-semibold">Fraud Detection Scan</p>
-                        <p className="text-sm text-gray-600">Run on {new Date().toLocaleDateString()} by fraud@growkyc.com</p>
+                        <p className="text-sm text-slate-300">Run on {new Date().toLocaleDateString()} by fraud@growkyc.com</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
@@ -1287,18 +1287,18 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
               </div>
 
               {/* Bulk Actions */}
-              <div className="bg-blue-50 rounded-lg p-6 border border-blue-200">
+              <div className="bg-blue-500/10 rounded-lg p-6 border border-blue-500/30">
                 <div className="flex items-center justify-between mb-4">
                   <div>
                     <h3 className="font-bold text-lg">Bulk Verification</h3>
-                    <p className="text-sm text-gray-600">Run all verification checks at once</p>
+                    <p className="text-sm text-slate-300">Run all verification checks at once</p>
                   </div>
                   <Button className="bg-[#13B5EA] hover:bg-[#0E7C9E]">
                     <RefreshCw className="w-5 h-5 mr-2" />
                     Run All Checks
                   </Button>
                 </div>
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-slate-400">
                   This will run: Identity verification, AML screening, Credit check, Fraud scan, and generate a comprehensive compliance report.
                 </p>
               </div>
@@ -1330,40 +1330,40 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
         <Card className="border-2 border-blue-300 shadow-lg">
           <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
             <CardTitle className="flex items-center gap-2">
-              <Shield className="w-6 h-6 text-blue-600" />
+              <Shield className="w-6 h-6 text-blue-400" />
               Compliance Documents
             </CardTitle>
           </CardHeader>
           <CardContent className="p-6">
             <div className="grid grid-cols-3 gap-4 mb-6">
-              <div className={`rounded-lg p-4 border ${client.legalData.serviceAgreementSigned ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}`}>
+              <div className={`rounded-lg p-4 border ${client.legalData.serviceAgreementSigned ? 'bg-green-500/10 border-green-500/30' : 'bg-red-500/10 border-red-500/30'}`}>
                 <div className="flex items-center gap-2 mb-2">
                   {client.legalData.serviceAgreementSigned ? (
-                    <CheckCircle className="w-5 h-5 text-green-600" />
+                    <CheckCircle className="w-5 h-5 text-green-400" />
                   ) : (
-                    <XCircle className="w-5 h-5 text-red-600" />
+                    <XCircle className="w-5 h-5 text-red-400" />
                   )}
                   <p className="font-semibold">Service Agreement</p>
                 </div>
                 <p className="text-lg">{client.legalData.serviceAgreementSigned ? 'Signed' : 'Pending'}</p>
               </div>
-              <div className={`rounded-lg p-4 border ${client.legalData.termsAccepted ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}`}>
+              <div className={`rounded-lg p-4 border ${client.legalData.termsAccepted ? 'bg-green-500/10 border-green-500/30' : 'bg-red-500/10 border-red-500/30'}`}>
                 <div className="flex items-center gap-2 mb-2">
                   {client.legalData.termsAccepted ? (
-                    <CheckCircle className="w-5 h-5 text-green-600" />
+                    <CheckCircle className="w-5 h-5 text-green-400" />
                   ) : (
-                    <XCircle className="w-5 h-5 text-red-600" />
+                    <XCircle className="w-5 h-5 text-red-400" />
                   )}
                   <p className="font-semibold">Terms Accepted</p>
                 </div>
                 <p className="text-lg">{client.legalData.termsAccepted ? 'Yes' : 'No'}</p>
               </div>
-              <div className={`rounded-lg p-4 border ${client.legalData.privacyConsentGiven ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'}`}>
+              <div className={`rounded-lg p-4 border ${client.legalData.privacyConsentGiven ? 'bg-green-500/10 border-green-500/30' : 'bg-red-500/10 border-red-500/30'}`}>
                 <div className="flex items-center gap-2 mb-2">
                   {client.legalData.privacyConsentGiven ? (
-                    <CheckCircle className="w-5 h-5 text-green-600" />
+                    <CheckCircle className="w-5 h-5 text-green-400" />
                   ) : (
-                    <XCircle className="w-5 h-5 text-red-600" />
+                    <XCircle className="w-5 h-5 text-red-400" />
                   )}
                   <p className="font-semibold">Privacy Consent</p>
                 </div>
@@ -1374,12 +1374,12 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
             <div className="mb-6">
               <h3 className="font-bold text-lg mb-4">Engagement Documents</h3>
               <div className="space-y-3">
-                <div className="bg-cyan-50 rounded-lg p-4 border border-cyan-200">
-                  <p className="text-sm text-gray-600">Engagement Letter Date</p>
+                <div className="bg-cyan-500/10 rounded-lg p-4 border border-cyan-500/30">
+                  <p className="text-sm text-slate-300">Engagement Letter Date</p>
                   <p className="text-lg font-bold">{client.legalData.engagementLetterDate}</p>
                 </div>
-                <div className="bg-cyan-50 rounded-lg p-4 border border-cyan-200">
-                  <p className="text-sm text-gray-600">KYC Consent Date</p>
+                <div className="bg-cyan-500/10 rounded-lg p-4 border border-cyan-500/30">
+                  <p className="text-sm text-slate-300">KYC Consent Date</p>
                   <p className="text-lg font-bold">{client.legalData.kycConsentDate}</p>
                 </div>
               </div>
@@ -1467,7 +1467,7 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
 
       {/* Service Agreement Modal */}
       <Dialog open={showAgreementModal} onOpenChange={setShowAgreementModal}>
-        <DialogContent className="max-w-2xl max-h-[85vh] flex flex-col p-0 overflow-hidden bg-white border border-slate-100 rounded-2xl shadow-2xl">
+        <DialogContent className="max-w-2xl max-h-[85vh] flex flex-col p-0 overflow-hidden bg-white border border-white/10 rounded-2xl shadow-2xl">
           <DialogHeader className="bg-slate-900 p-6 text-white border-b border-slate-800">
             <DialogTitle className="flex items-center gap-3 text-lg font-bold text-white">
               <Shield className="w-6 h-6 text-indigo-400" />
@@ -1481,42 +1481,42 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
             </DialogDescription>
           </DialogHeader>
           
-          <div className="p-6 space-y-4 overflow-y-auto text-sm text-slate-600 leading-relaxed font-normal">
-            <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 flex items-center justify-between text-xs mb-2">
+          <div className="p-6 space-y-4 overflow-y-auto text-sm text-slate-300 leading-relaxed font-normal">
+            <div className="bg-white/5 border border-white/10 rounded-xl p-4 flex items-center justify-between text-xs mb-2">
               <div>
                 <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Contracting Client</span>
-                <span className="font-bold text-slate-800">{client.name}</span>
+                <span className="font-bold text-slate-100">{client.name}</span>
               </div>
               <div className="text-right">
                 <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Agreement Status</span>
-                <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full font-bold ${client.legalData.serviceAgreementSigned ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800'}`}>
+                <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full font-bold ${client.legalData.serviceAgreementSigned ? 'bg-green-500/15 text-green-300' : 'bg-amber-500/15 text-amber-300'}`}>
                   {client.legalData.serviceAgreementSigned ? 'Signed & Executed' : 'Pending Execution'}
                 </span>
               </div>
             </div>
 
-            <h4 className="font-bold text-slate-800 text-base border-b pb-1">1. Scope of Services & AML/CTF Compliance</h4>
+            <h4 className="font-bold text-slate-100 text-base border-b pb-1">1. Scope of Services & AML/CTF Compliance</h4>
             <p>
               Grow KYC Pty Ltd (referred to as the "Service Provider") will perform identity verification, owner screening, and comprehensive AML/CTF reporting services for <strong>{client.name}</strong> (referred to as the "Client") in strict compliance with the Anti-Money Laundering and Counter-Terrorism Financing Act 2006 (Cth) and associated AUSTRAC regulations.
             </p>
 
-            <h4 className="font-bold text-slate-800 text-base border-b pb-1">2. Client Consent & Privacy Policy</h4>
+            <h4 className="font-bold text-slate-100 text-base border-b pb-1">2. Client Consent & Privacy Policy</h4>
             <p>
               By agreeing to this Service Agreement, the Client explicitly consents to the verification of their identity and corporate structure against independent sources, credit reporting bureaus, government registers (including ASIC and ABR), and sanctions databases. Personal data is managed in strict alignment with the Privacy Act 1988 (Cth).
             </p>
 
-            <h4 className="font-bold text-slate-800 text-base border-b pb-1">3. Record Retention Obligations</h4>
+            <h4 className="font-bold text-slate-100 text-base border-b pb-1">3. Record Retention Obligations</h4>
             <p>
               The Service Provider is legally mandated to maintain all audit logs, risk assessment records, evidence packages, and onboarding data for a minimum period of <strong>seven (7) years</strong> following the termination of the business relationship, in accordance with AUSTRAC CDD guidelines.
             </p>
 
-            <h4 className="font-bold text-slate-800 text-base border-b pb-1">4. Cryptographic Validation & Sign-off</h4>
+            <h4 className="font-bold text-slate-100 text-base border-b pb-1">4. Cryptographic Validation & Sign-off</h4>
             <p>
               This document is cryptographically signed and stored in our secure compliance ledger. Any modifications to this document post-execution will invalidate the verification hash.
             </p>
           </div>
 
-          <div className="p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+          <div className="p-4 bg-white/5 border-t border-white/10 flex items-center justify-between">
             <div className="text-xs text-slate-400 font-mono">
               Hash: SHA256-42d8f99e...a28e
             </div>

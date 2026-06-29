@@ -140,12 +140,12 @@ export function SecureAICopilot() {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-12rem)] bg-white border-2 border-gray-200 rounded-lg">
+    <div className="flex flex-col h-[calc(100vh-12rem)] bg-white border-2 border-white/10 rounded-lg">
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b-2 border-gray-200 bg-gradient-to-r from-purple-600 to-indigo-600">
+      <div className="flex items-center justify-between p-4 border-b-2 border-white/10 bg-gradient-to-r from-purple-600 to-indigo-600">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-white rounded-lg">
-            <Bot className="w-6 h-6 text-purple-600" />
+            <Bot className="w-6 h-6 text-purple-400" />
           </div>
           <div className="text-white">
             <h3 className="font-bold text-lg">Secure AI Copilot</h3>
@@ -157,7 +157,7 @@ export function SecureAICopilot() {
             <Shield className="w-3 h-3" />
             SECURE
           </span>
-          <span className="flex items-center gap-1 px-3 py-1 bg-white text-purple-600 text-xs font-bold rounded-full">
+          <span className="flex items-center gap-1 px-3 py-1 bg-white text-purple-400 text-xs font-bold rounded-full">
             <Lock className="w-3 h-3" />
             ENCRYPTED
           </span>
@@ -168,36 +168,36 @@ export function SecureAICopilot() {
       <div className="flex-1 overflow-y-auto p-6 space-y-6">
         {messages.map((message) => (
           <div key={message.id} className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-            <div className={`max-w-3xl ${message.role === 'user' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-900'} rounded-lg p-4`}>
+            <div className={`max-w-3xl ${message.role === 'user' ? 'bg-blue-600 text-white' : 'bg-white/5 text-slate-100'} rounded-lg p-4`}>
               {message.role === 'assistant' && (
                 <div className="flex items-center gap-2 mb-2">
-                  <Sparkles className="w-4 h-4 text-purple-600" />
-                  <span className="text-xs font-bold text-purple-600">AI ASSISTANT</span>
+                  <Sparkles className="w-4 h-4 text-purple-400" />
+                  <span className="text-xs font-bold text-purple-400">AI ASSISTANT</span>
                 </div>
               )}
               <p className="whitespace-pre-line">{message.content}</p>
 
               {/* Sources */}
               {message.sources && message.sources.length > 0 && (
-                <div className="mt-4 pt-4 border-t border-gray-300">
-                  <p className="text-xs font-bold text-gray-700 mb-2">SOURCES:</p>
+                <div className="mt-4 pt-4 border-t border-white/10">
+                  <p className="text-xs font-bold text-slate-300 mb-2">SOURCES:</p>
                   <div className="space-y-2">
                     {message.sources.map((source, idx) => (
-                      <div key={idx} className="flex items-start gap-2 p-2 bg-white border border-gray-200 rounded">
-                        <FileText className="w-4 h-4 text-gray-600 mt-0.5" />
+                      <div key={idx} className="flex items-start gap-2 p-2 bg-white border border-white/10 rounded">
+                        <FileText className="w-4 h-4 text-slate-300 mt-0.5" />
                         <div className="flex-1">
                           <div className="flex items-center gap-2">
-                            <p className="text-xs font-semibold text-gray-900">{source.title}</p>
+                            <p className="text-xs font-semibold text-slate-100">{source.title}</p>
                             {source.type === 'external' && (
-                              <ExternalLink className="w-3 h-3 text-blue-600" />
+                              <ExternalLink className="w-3 h-3 text-blue-400" />
                             )}
                           </div>
                           {source.snippet && (
-                            <p className="text-xs text-gray-600 mt-1">{source.snippet}</p>
+                            <p className="text-xs text-slate-300 mt-1">{source.snippet}</p>
                           )}
                         </div>
-                        <button className="p-1 hover:bg-gray-100 rounded">
-                          <Copy className="w-3 h-3 text-gray-600" />
+                        <button className="p-1 hover:bg-white/5 rounded">
+                          <Copy className="w-3 h-3 text-slate-300" />
                         </button>
                       </div>
                     ))}
@@ -207,14 +207,14 @@ export function SecureAICopilot() {
 
               {/* Suggested Follow-ups */}
               {message.suggested && message.suggested.length > 0 && (
-                <div className="mt-4 pt-4 border-t border-gray-300">
-                  <p className="text-xs font-bold text-gray-700 mb-2">SUGGESTED FOLLOW-UPS:</p>
+                <div className="mt-4 pt-4 border-t border-white/10">
+                  <p className="text-xs font-bold text-slate-300 mb-2">SUGGESTED FOLLOW-UPS:</p>
                   <div className="flex flex-wrap gap-2">
                     {message.suggested.map((suggestion, idx) => (
                       <button
                         key={idx}
                         onClick={() => handleSuggestedClick(suggestion)}
-                        className="px-3 py-1 bg-white border border-purple-300 text-purple-700 text-xs rounded-full hover:bg-purple-50"
+                        className="px-3 py-1 bg-white border border-purple-300 text-purple-300 text-xs rounded-full hover:bg-purple-500/10"
                       >
                         {suggestion}
                       </button>
@@ -225,13 +225,13 @@ export function SecureAICopilot() {
 
               {/* Feedback */}
               {message.role === 'assistant' && (
-                <div className="mt-3 pt-3 border-t border-gray-300 flex items-center gap-2">
-                  <span className="text-xs text-gray-600">Was this helpful?</span>
-                  <button className="p-1 hover:bg-gray-200 rounded" onClick={() => toast.success('Thank you for your feedback!')}>
-                    <ThumbsUp className="w-3 h-3 text-gray-600" />
+                <div className="mt-3 pt-3 border-t border-white/10 flex items-center gap-2">
+                  <span className="text-xs text-slate-300">Was this helpful?</span>
+                  <button className="p-1 hover:bg-white/10 rounded" onClick={() => toast.success('Thank you for your feedback!')}>
+                    <ThumbsUp className="w-3 h-3 text-slate-300" />
                   </button>
-                  <button className="p-1 hover:bg-gray-200 rounded" onClick={() => toast.info('We\'ll improve our responses')}>
-                    <ThumbsDown className="w-3 h-3 text-gray-600" />
+                  <button className="p-1 hover:bg-white/10 rounded" onClick={() => toast.info('We\'ll improve our responses')}>
+                    <ThumbsDown className="w-3 h-3 text-slate-300" />
                   </button>
                 </div>
               )}
@@ -241,10 +241,10 @@ export function SecureAICopilot() {
 
         {isLoading && (
           <div className="flex justify-start">
-            <div className="bg-gray-100 rounded-lg p-4">
+            <div className="bg-white/5 rounded-lg p-4">
               <div className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-purple-600 animate-pulse" />
-                <span className="text-sm text-gray-600">AI is thinking...</span>
+                <Sparkles className="w-4 h-4 text-purple-400 animate-pulse" />
+                <span className="text-sm text-slate-300">AI is thinking...</span>
               </div>
             </div>
           </div>
@@ -252,32 +252,32 @@ export function SecureAICopilot() {
       </div>
 
       {/* Quick Access Buttons */}
-      <div className="px-6 py-3 border-t border-gray-200 bg-gray-50">
+      <div className="px-6 py-3 border-t border-white/10 bg-white/5">
         <div className="flex flex-wrap gap-2">
           <button
             onClick={() => setInputValue('Show me all Division 7A templates')}
-            className="px-3 py-1 bg-white border border-gray-300 text-xs rounded-full hover:bg-gray-100"
+            className="px-3 py-1 bg-white border border-white/10 text-xs rounded-full hover:bg-white/5"
           >
             <Zap className="w-3 h-3 inline mr-1" />
             Division 7A
           </button>
           <button
             onClick={() => setInputValue('Find client onboarding workflows')}
-            className="px-3 py-1 bg-white border border-gray-300 text-xs rounded-full hover:bg-gray-100"
+            className="px-3 py-1 bg-white border border-white/10 text-xs rounded-full hover:bg-white/5"
           >
             <Zap className="w-3 h-3 inline mr-1" />
             Onboarding
           </button>
           <button
             onClick={() => setInputValue('What are the latest ATO changes?')}
-            className="px-3 py-1 bg-white border border-gray-300 text-xs rounded-full hover:bg-gray-100"
+            className="px-3 py-1 bg-white border border-white/10 text-xs rounded-full hover:bg-white/5"
           >
             <Zap className="w-3 h-3 inline mr-1" />
             ATO Updates
           </button>
           <button
             onClick={() => setInputValue('Show engagement letter templates')}
-            className="px-3 py-1 bg-white border border-gray-300 text-xs rounded-full hover:bg-gray-100"
+            className="px-3 py-1 bg-white border border-white/10 text-xs rounded-full hover:bg-white/5"
           >
             <Zap className="w-3 h-3 inline mr-1" />
             Templates
@@ -286,10 +286,10 @@ export function SecureAICopilot() {
       </div>
 
       {/* Input */}
-      <div className="p-4 border-t-2 border-gray-200">
+      <div className="p-4 border-t-2 border-white/10">
         <div className="flex gap-3">
-          <button className="p-3 border-2 border-gray-300 rounded-lg hover:bg-gray-50">
-            <Paperclip className="w-5 h-5 text-gray-600" />
+          <button className="p-3 border-2 border-white/10 rounded-lg hover:bg-white/5">
+            <Paperclip className="w-5 h-5 text-slate-300" />
           </button>
           <input
             type="text"
@@ -297,7 +297,7 @@ export function SecureAICopilot() {
             onChange={(e) => setInputValue(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
             placeholder="Ask me anything about your firm's documents, templates, or compliance..."
-            className="flex-1 px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="flex-1 px-4 py-3 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
           />
           <button
             onClick={handleSendMessage}
@@ -308,7 +308,7 @@ export function SecureAICopilot() {
             Send
           </button>
         </div>
-        <p className="text-xs text-gray-500 mt-2 flex items-center gap-1">
+        <p className="text-xs text-slate-400 mt-2 flex items-center gap-1">
           <Shield className="w-3 h-3" />
           All conversations are encrypted and stored securely. Your data never leaves your firm's environment.
         </p>
@@ -364,13 +364,13 @@ export function TrainingCenter() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">Training & Enablement Center</h2>
-          <p className="text-gray-600">AI-powered learning system with self-paced modules</p>
+          <h2 className="text-2xl font-bold text-slate-100">Training & Enablement Center</h2>
+          <p className="text-slate-300">AI-powered learning system with self-paced modules</p>
         </div>
         <div className="flex items-center gap-3">
           <div className="text-right">
-            <p className="text-sm text-gray-600">Your Progress</p>
-            <p className="text-2xl font-bold text-gray-900">63%</p>
+            <p className="text-sm text-slate-300">Your Progress</p>
+            <p className="text-2xl font-bold text-slate-100">63%</p>
           </div>
           <div className="w-16 h-16 relative">
             <svg className="w-16 h-16 transform -rotate-90">
@@ -403,28 +403,28 @@ export function TrainingCenter() {
           const isCompleted = module.completed === module.lessons;
 
           return (
-            <div key={module.id} className="bg-white border-2 border-gray-200 rounded-lg p-6 hover:border-purple-300 transition-colors">
+            <div key={module.id} className="bg-white border-2 border-white/10 rounded-lg p-6 hover:border-purple-300 transition-colors">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex-1">
-                  <h3 className="font-bold text-gray-900 text-lg mb-1">{module.title}</h3>
-                  <p className="text-sm text-gray-600 mb-3">{module.description}</p>
-                  <div className="flex items-center gap-4 text-xs text-gray-600">
+                  <h3 className="font-bold text-slate-100 text-lg mb-1">{module.title}</h3>
+                  <p className="text-sm text-slate-300 mb-3">{module.description}</p>
+                  <div className="flex items-center gap-4 text-xs text-slate-300">
                     <span>⏱️ {module.duration}</span>
                     <span>📚 {module.lessons} lessons</span>
                   </div>
                 </div>
                 {isCompleted && (
-                  <CheckCircle className="w-6 h-6 text-green-600" />
+                  <CheckCircle className="w-6 h-6 text-green-400" />
                 )}
               </div>
 
               {/* Progress Bar */}
               <div className="mb-4">
                 <div className="flex items-center justify-between text-xs mb-1">
-                  <span className="text-gray-600">Progress</span>
-                  <span className="font-bold text-gray-900">{module.completed}/{module.lessons} completed</span>
+                  <span className="text-slate-300">Progress</span>
+                  <span className="font-bold text-slate-100">{module.completed}/{module.lessons} completed</span>
                 </div>
-                <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+                <div className="h-2 bg-white/10 rounded-full overflow-hidden">
                   <div
                     className="h-full bg-purple-600 transition-all"
                     style={{ width: `${progress}%` }}
@@ -434,10 +434,10 @@ export function TrainingCenter() {
 
               {/* Topics */}
               <div className="mb-4">
-                <p className="text-xs font-bold text-gray-700 uppercase mb-2">Topics Covered</p>
+                <p className="text-xs font-bold text-slate-300 uppercase mb-2">Topics Covered</p>
                 <div className="flex flex-wrap gap-1">
                   {module.topics.map((topic, idx) => (
-                    <span key={idx} className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded">
+                    <span key={idx} className="px-2 py-1 bg-purple-500/15 text-purple-300 text-xs rounded">
                       {topic}
                     </span>
                   ))}
@@ -461,7 +461,7 @@ export function TrainingCenter() {
         <h3 className="font-bold text-xl mb-2">Recommended Learning Path</h3>
         <p className="mb-4 opacity-90">Based on your role and progress, we recommend:</p>
         <div className="flex gap-3">
-          <button className="px-4 py-2 bg-white text-purple-600 rounded-lg hover:bg-gray-100">
+          <button className="px-4 py-2 bg-white text-purple-400 rounded-lg hover:bg-white/5">
             Start Document Management →
           </button>
           <button className="px-4 py-2 bg-purple-700 text-white rounded-lg hover:bg-purple-800">
@@ -478,8 +478,8 @@ export function DocumentCollaboration() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900">Document Collaboration</h2>
-        <p className="text-gray-600">Secure, searchable store with version control</p>
+        <h2 className="text-2xl font-bold text-slate-100">Document Collaboration</h2>
+        <p className="text-slate-300">Secure, searchable store with version control</p>
       </div>
 
       {/* Stats */}
@@ -492,10 +492,10 @@ export function DocumentCollaboration() {
         ].map((stat, idx) => {
           const Icon = stat.icon;
           return (
-            <div key={idx} className="bg-white border-2 border-gray-200 rounded-lg p-4">
+            <div key={idx} className="bg-white border-2 border-white/10 rounded-lg p-4">
               <Icon className={`w-6 h-6 text-${stat.color}-600 mb-2`} />
-              <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
-              <p className="text-sm text-gray-600">{stat.label}</p>
+              <p className="text-2xl font-bold text-slate-100">{stat.value}</p>
+              <p className="text-sm text-slate-300">{stat.label}</p>
             </div>
           );
         })}
@@ -511,34 +511,34 @@ export function DocumentCollaboration() {
           { category: 'Compliance Documents', count: 123, lastUpdated: '5 days ago' },
           { category: 'Marketing Assets', count: 56, lastUpdated: '1 day ago' }
         ].map((cat, idx) => (
-          <div key={idx} className="bg-white border-2 border-gray-200 rounded-lg p-6 hover:border-blue-300 cursor-pointer">
-            <h3 className="font-bold text-gray-900 mb-2">{cat.category}</h3>
-            <p className="text-sm text-gray-600 mb-1">{cat.count} documents</p>
-            <p className="text-xs text-gray-500">Updated {cat.lastUpdated}</p>
+          <div key={idx} className="bg-white border-2 border-white/10 rounded-lg p-6 hover:border-blue-300 cursor-pointer">
+            <h3 className="font-bold text-slate-100 mb-2">{cat.category}</h3>
+            <p className="text-sm text-slate-300 mb-1">{cat.count} documents</p>
+            <p className="text-xs text-slate-400">Updated {cat.lastUpdated}</p>
           </div>
         ))}
       </div>
 
       {/* Version Control Demo */}
-      <div className="bg-white border-2 border-gray-200 rounded-lg p-6">
-        <h3 className="font-bold text-gray-900 mb-4">Recent Version History</h3>
+      <div className="bg-white border-2 border-white/10 rounded-lg p-6">
+        <h3 className="font-bold text-slate-100 mb-4">Recent Version History</h3>
         <div className="space-y-3">
           {[
             { doc: 'Client Engagement Letter', version: '2.4', user: 'Sarah Johnson', time: '2 hours ago', change: 'Updated fee schedule' },
             { doc: 'Tax Checklist Template', version: '1.8', user: 'Mike Chen', time: '1 day ago', change: 'Added Division 7A section' },
             { doc: 'SMSF Annual Workflow', version: '3.1', user: 'Emma Wilson', time: '2 days ago', change: 'Updated compliance steps' }
           ].map((item, idx) => (
-            <div key={idx} className="flex items-center justify-between p-3 bg-gray-50 border border-gray-200 rounded-lg">
+            <div key={idx} className="flex items-center justify-between p-3 bg-white/5 border border-white/10 rounded-lg">
               <div className="flex-1">
-                <p className="font-semibold text-gray-900">{item.doc}</p>
-                <p className="text-xs text-gray-600">v{item.version} • {item.user} • {item.time}</p>
-                <p className="text-xs text-gray-500 mt-1">{item.change}</p>
+                <p className="font-semibold text-slate-100">{item.doc}</p>
+                <p className="text-xs text-slate-300">v{item.version} • {item.user} • {item.time}</p>
+                <p className="text-xs text-slate-400 mt-1">{item.change}</p>
               </div>
               <div className="flex gap-2">
-                <button className="px-3 py-1 bg-blue-100 text-blue-700 text-xs rounded hover:bg-blue-200">
+                <button className="px-3 py-1 bg-blue-500/15 text-blue-300 text-xs rounded hover:bg-blue-500/20">
                   View
                 </button>
-                <button className="px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded hover:bg-gray-200">
+                <button className="px-3 py-1 bg-white/5 text-slate-300 text-xs rounded hover:bg-white/10">
                   Restore
                 </button>
               </div>

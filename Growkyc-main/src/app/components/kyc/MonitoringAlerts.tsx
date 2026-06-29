@@ -167,11 +167,11 @@ export function MonitoringAlerts() {
             </div>
           </div>
           <div className="flex gap-3">
-            <Button className="bg-white text-blue-600 hover:bg-blue-50">
+            <Button className="bg-white text-blue-400 hover:bg-blue-500/10">
               <Zap className="w-5 h-5 mr-2" />
               New Rule
             </Button>
-            <Button className="bg-white text-blue-600 hover:bg-blue-50">
+            <Button className="bg-white text-blue-400 hover:bg-blue-500/10">
               <Download className="w-5 h-5 mr-2" />
               Export Report
             </Button>
@@ -231,7 +231,7 @@ export function MonitoringAlerts() {
       </div>
 
       {/* Navigation Tabs */}
-      <div className="border-b border-gray-200">
+      <div className="border-b border-white/10">
         <div className="flex gap-2">
           {[
             { id: 'overview', label: 'Overview', icon: Target },
@@ -246,8 +246,8 @@ export function MonitoringAlerts() {
                 onClick={() => setActiveTab(tab.id as any)}
                 className={`px-6 py-3 font-semibold flex items-center gap-2 transition-colors relative ${
                   activeTab === tab.id
-                    ? 'border-b-2 border-blue-600 text-blue-600'
-                    : 'text-gray-600 hover:text-gray-900'
+                    ? 'border-b-2 border-blue-600 text-blue-400'
+                    : 'text-slate-300 hover:text-slate-100'
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -265,91 +265,91 @@ export function MonitoringAlerts() {
 
       {/* Monitoring Rules Overview */}
       <div className="grid grid-cols-3 gap-4">
-        <div className="bg-white rounded-lg border-2 border-blue-200 p-6">
+        <div className="bg-white rounded-lg border-2 border-blue-500/30 p-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-              <DollarSign className="w-6 h-6 text-blue-600" />
+            <div className="w-12 h-12 bg-blue-500/15 rounded-lg flex items-center justify-center">
+              <DollarSign className="w-6 h-6 text-blue-400" />
             </div>
             <div>
-              <h3 className="font-bold text-gray-900">Transaction Monitoring</h3>
-              <p className="text-sm text-gray-600">15 Active Rules</p>
+              <h3 className="font-bold text-slate-100">Transaction Monitoring</h3>
+              <p className="text-sm text-slate-300">15 Active Rules</p>
             </div>
           </div>
-          <ul className="text-sm text-gray-700 space-y-2">
+          <ul className="text-sm text-slate-300 space-y-2">
             <li className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-green-600" />
+              <CheckCircle className="w-4 h-4 text-green-400" />
               Large cash transactions (&gt;$10k)
             </li>
             <li className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-green-600" />
+              <CheckCircle className="w-4 h-4 text-green-400" />
               Rapid transaction sequences
             </li>
             <li className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-green-600" />
+              <CheckCircle className="w-4 h-4 text-green-400" />
               Round dollar amounts
             </li>
             <li className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-green-600" />
+              <CheckCircle className="w-4 h-4 text-green-400" />
               Threshold structuring patterns
             </li>
           </ul>
         </div>
 
-        <div className="bg-white rounded-lg border-2 border-purple-200 p-6">
+        <div className="bg-white rounded-lg border-2 border-purple-500/30 p-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-              <Activity className="w-6 h-6 text-purple-600" />
+            <div className="w-12 h-12 bg-purple-500/15 rounded-lg flex items-center justify-center">
+              <Activity className="w-6 h-6 text-purple-400" />
             </div>
             <div>
-              <h3 className="font-bold text-gray-900">Behavior Analysis</h3>
-              <p className="text-sm text-gray-600">8 Active Rules</p>
+              <h3 className="font-bold text-slate-100">Behavior Analysis</h3>
+              <p className="text-sm text-slate-300">8 Active Rules</p>
             </div>
           </div>
-          <ul className="text-sm text-gray-700 space-y-2">
+          <ul className="text-sm text-slate-300 space-y-2">
             <li className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-green-600" />
+              <CheckCircle className="w-4 h-4 text-green-400" />
               Deviation from historical patterns
             </li>
             <li className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-green-600" />
+              <CheckCircle className="w-4 h-4 text-green-400" />
               Geographic anomalies
             </li>
             <li className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-green-600" />
+              <CheckCircle className="w-4 h-4 text-green-400" />
               Transaction velocity changes
             </li>
             <li className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-green-600" />
+              <CheckCircle className="w-4 h-4 text-green-400" />
               Dormant account reactivation
             </li>
           </ul>
         </div>
 
-        <div className="bg-white rounded-lg border-2 border-orange-200 p-6">
+        <div className="bg-white rounded-lg border-2 border-orange-500/30 p-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-              <Clock className="w-6 h-6 text-orange-600" />
+            <div className="w-12 h-12 bg-orange-500/15 rounded-lg flex items-center justify-center">
+              <Clock className="w-6 h-6 text-orange-400" />
             </div>
             <div>
-              <h3 className="font-bold text-gray-900">Compliance Monitoring</h3>
-              <p className="text-sm text-gray-600">6 Active Rules</p>
+              <h3 className="font-bold text-slate-100">Compliance Monitoring</h3>
+              <p className="text-sm text-slate-300">6 Active Rules</p>
             </div>
           </div>
-          <ul className="text-sm text-gray-700 space-y-2">
+          <ul className="text-sm text-slate-300 space-y-2">
             <li className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-green-600" />
+              <CheckCircle className="w-4 h-4 text-green-400" />
               Review due dates
             </li>
             <li className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-green-600" />
+              <CheckCircle className="w-4 h-4 text-green-400" />
               Document expiry warnings
             </li>
             <li className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-green-600" />
+              <CheckCircle className="w-4 h-4 text-green-400" />
               Screening refresh schedules
             </li>
             <li className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-green-600" />
+              <CheckCircle className="w-4 h-4 text-green-400" />
               High-risk client escalations
             </li>
           </ul>
@@ -359,7 +359,7 @@ export function MonitoringAlerts() {
       {/* Active Alerts */}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <h3 className="text-xl font-bold text-gray-900">Active Alerts</h3>
+          <h3 className="text-xl font-bold text-slate-100">Active Alerts</h3>
           <div className="flex gap-2">
             <Button variant="outline" size="sm">
               <Filter className="w-4 h-4 mr-2" />
@@ -374,25 +374,25 @@ export function MonitoringAlerts() {
 
         {alerts.map((alert) => (
           <div key={alert.id} className={`bg-white rounded-lg border-2 p-6 ${
-            alert.severity === 'critical' ? 'border-red-300 bg-red-50' :
-            alert.severity === 'high' ? 'border-orange-300 bg-orange-50' :
-            'border-gray-200'
+            alert.severity === 'critical' ? 'border-red-300 bg-red-500/10' :
+            alert.severity === 'high' ? 'border-orange-300 bg-orange-500/10' :
+            'border-white/10'
           }`}>
             <div className="flex items-start justify-between">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
-                  <h4 className="text-xl font-bold text-gray-900">{alert.title}</h4>
+                  <h4 className="text-xl font-bold text-slate-100">{alert.title}</h4>
                   <span className={`px-3 py-1 bg-${getSeverityColor(alert.severity)}-100 text-${getSeverityColor(alert.severity)}-700 text-sm font-bold rounded-full`}>
                     {alert.severity.toUpperCase()}
                   </span>
                   <span className={`px-3 py-1 bg-${getStatusColor(alert.status)}-100 text-${getStatusColor(alert.status)}-700 text-sm font-bold rounded-full`}>
                     {alert.status.toUpperCase().replace('-', ' ')}
                   </span>
-                  <span className="px-3 py-1 bg-gray-100 text-gray-700 text-sm font-semibold rounded-full">
+                  <span className="px-3 py-1 bg-white/5 text-slate-300 text-sm font-semibold rounded-full">
                     {alertTypeLabels[alert.type]}
                   </span>
                   <div className="flex items-center gap-2">
-                    <span className="text-sm text-gray-600">Risk Score:</span>
+                    <span className="text-sm text-slate-300">Risk Score:</span>
                     <span className={`px-3 py-1 font-bold rounded-full ${
                       alert.riskScore >= 80 ? 'bg-red-500 text-white' :
                       alert.riskScore >= 60 ? 'bg-orange-500 text-white' :
@@ -404,7 +404,7 @@ export function MonitoringAlerts() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4 mb-3 text-sm text-gray-600">
+                <div className="flex items-center gap-4 mb-3 text-sm text-slate-300">
                   <span className="flex items-center gap-1">
                     <Building className="w-4 h-4" />
                     {alert.clientName}
@@ -427,8 +427,8 @@ export function MonitoringAlerts() {
                   )}
                 </div>
 
-                <div className="p-4 bg-white rounded-lg border border-gray-200">
-                  <p className="text-sm text-gray-700">{alert.description}</p>
+                <div className="p-4 bg-white rounded-lg border border-white/10">
+                  <p className="text-sm text-slate-300">{alert.description}</p>
                 </div>
               </div>
 
@@ -453,15 +453,15 @@ export function MonitoringAlerts() {
       </div>
 
       {/* AI Monitoring Note */}
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+      <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-6">
         <div className="flex items-start gap-3">
-          <Zap className="w-6 h-6 text-blue-600 mt-0.5" />
+          <Zap className="w-6 h-6 text-blue-400 mt-0.5" />
           <div>
-            <h3 className="font-bold text-blue-900 mb-2">AI-Powered Monitoring</h3>
-            <p className="text-sm text-blue-800 mb-3">
+            <h3 className="font-bold text-blue-300 mb-2">AI-Powered Monitoring</h3>
+            <p className="text-sm text-blue-300 mb-3">
               The system uses machine learning to detect patterns and reduce false positives. The AI:
             </p>
-            <ul className="text-sm text-blue-800 space-y-1">
+            <ul className="text-sm text-blue-300 space-y-1">
               <li>• Learns from historical alert outcomes to improve accuracy</li>
               <li>• Adapts thresholds based on client behavior patterns</li>
               <li>• Prioritizes alerts by risk score and urgency</li>

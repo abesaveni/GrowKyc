@@ -45,7 +45,7 @@ export function Tier2ComplianceHub({ onBack }: Tier2ComplianceHubProps) {
           )}
           
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-16 h-16 bg-gradient-to-br from-[#13B5EA] to-[#0E7C9E] rounded-2xl flex items-center justify-center shadow-xl">
+            <div className="w-16 h-16 bg-gradient-to-br from-[#0e7490] to-[#155e75] rounded-2xl flex items-center justify-center shadow-xl">
               <Shield className="w-10 h-10 text-white" />
             </div>
             <div>
@@ -56,20 +56,20 @@ export function Tier2ComplianceHub({ onBack }: Tier2ComplianceHubProps) {
           </div>
 
           <div className="bg-gradient-to-r from-purple-50 to-blue-50 border-2 border-purple-300 rounded-xl p-6">
-            <h3 className="font-bold text-purple-900 text-xl mb-2">What Makes Tier 2 Institution-Grade?</h3>
+            <h3 className="font-bold text-purple-300 text-xl mb-2">What Makes Tier 2 Institution-Grade?</h3>
             <div className="grid md:grid-cols-3 gap-4">
-              <div className="bg-[#1e293b] p-4 rounded-lg border border-purple-200">
-                <TrendingUp className="w-8 h-8 text-purple-600 mb-2" />
+              <div className="bg-[#1e293b] p-4 rounded-lg border border-purple-500/30">
+                <TrendingUp className="w-8 h-8 text-purple-400 mb-2" />
                 <p className="font-semibold text-white mb-1">Beyond Onboarding</p>
                 <p className="text-sm text-slate-300">Continuous risk intelligence, not just initial checks</p>
               </div>
-              <div className="bg-[#1e293b] p-4 rounded-lg border border-purple-200">
-                <Network className="w-8 h-8 text-purple-600 mb-2" />
+              <div className="bg-[#1e293b] p-4 rounded-lg border border-purple-500/30">
+                <Network className="w-8 h-8 text-purple-400 mb-2" />
                 <p className="font-semibold text-white mb-1">Relationship Mapping</p>
                 <p className="text-sm text-slate-300">Complete ownership chains and control structures</p>
               </div>
-              <div className="bg-[#1e293b] p-4 rounded-lg border border-purple-200">
-                <Shield className="w-8 h-8 text-purple-600 mb-2" />
+              <div className="bg-[#1e293b] p-4 rounded-lg border border-purple-500/30">
+                <Shield className="w-8 h-8 text-purple-400 mb-2" />
                 <p className="font-semibold text-white mb-1">Lending-Ready</p>
                 <p className="text-sm text-slate-300">Supports credit, investment & fiduciary workflows</p>
               </div>
@@ -101,39 +101,39 @@ export function Tier2ComplianceHub({ onBack }: Tier2ComplianceHubProps) {
 
               <div className="space-y-2 mb-6">
                 <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <CheckCircle className="w-4 h-4 text-green-400" />
                   <span>Ultimate beneficial owner (UBO) identification</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <CheckCircle className="w-4 h-4 text-green-400" />
                   <span>Multi-layer ownership chain mapping</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <CheckCircle className="w-4 h-4 text-green-400" />
                   <span>Control without ownership detection</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <CheckCircle className="w-4 h-4 text-green-400" />
                   <span>Gap & inconsistency flagging</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <CheckCircle className="w-4 h-4 text-green-400" />
                   <span>Interactive ownership graphs</span>
                 </div>
               </div>
 
               <div className="grid grid-cols-3 gap-3 mb-4">
-                <div className="bg-[#1e293b] p-3 rounded border border-purple-200 text-center">
-                  <p className="text-xs text-purple-700">Pending</p>
-                  <p className="text-2xl font-bold text-purple-600">28</p>
+                <div className="bg-[#1e293b] p-3 rounded border border-purple-500/30 text-center">
+                  <p className="text-xs text-purple-300">Pending</p>
+                  <p className="text-2xl font-bold text-purple-400">28</p>
                 </div>
-                <div className="bg-[#1e293b] p-3 rounded border border-purple-200 text-center">
-                  <p className="text-xs text-purple-700">Incomplete</p>
-                  <p className="text-2xl font-bold text-amber-600">11</p>
+                <div className="bg-[#1e293b] p-3 rounded border border-purple-500/30 text-center">
+                  <p className="text-xs text-purple-300">Incomplete</p>
+                  <p className="text-2xl font-bold text-amber-400">11</p>
                 </div>
-                <div className="bg-[#1e293b] p-3 rounded border border-purple-200 text-center">
-                  <p className="text-xs text-purple-700">Missing UBO</p>
-                  <p className="text-2xl font-bold text-red-600">4</p>
+                <div className="bg-[#1e293b] p-3 rounded border border-purple-500/30 text-center">
+                  <p className="text-xs text-purple-300">Missing UBO</p>
+                  <p className="text-2xl font-bold text-red-400">4</p>
                 </div>
               </div>
 
@@ -161,39 +161,39 @@ export function Tier2ComplianceHub({ onBack }: Tier2ComplianceHubProps) {
 
               <div className="space-y-2 mb-6">
                 <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <CheckCircle className="w-4 h-4 text-green-400" />
                   <span>Declared source capture & validation</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <CheckCircle className="w-4 h-4 text-green-400" />
                   <span>Document evidence collection</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <CheckCircle className="w-4 h-4 text-green-400" />
                   <span>Amount & timing validation</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <CheckCircle className="w-4 h-4 text-green-400" />
                   <span>Suspicious pattern detection</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <CheckCircle className="w-4 h-4 text-green-400" />
                   <span>Third-party funding alerts</span>
                 </div>
               </div>
 
               <div className="grid grid-cols-3 gap-3 mb-4">
-                <div className="bg-[#1e293b] p-3 rounded border border-green-200 text-center">
-                  <p className="text-xs text-green-700">Pending</p>
-                  <p className="text-2xl font-bold text-blue-600">19</p>
+                <div className="bg-[#1e293b] p-3 rounded border border-green-500/30 text-center">
+                  <p className="text-xs text-green-300">Pending</p>
+                  <p className="text-2xl font-bold text-blue-400">19</p>
                 </div>
-                <div className="bg-[#1e293b] p-3 rounded border border-green-200 text-center">
-                  <p className="text-xs text-green-700">Verified</p>
-                  <p className="text-2xl font-bold text-green-600">142</p>
+                <div className="bg-[#1e293b] p-3 rounded border border-green-500/30 text-center">
+                  <p className="text-xs text-green-300">Verified</p>
+                  <p className="text-2xl font-bold text-green-400">142</p>
                 </div>
-                <div className="bg-[#1e293b] p-3 rounded border border-green-200 text-center">
-                  <p className="text-xs text-green-700">Flagged</p>
-                  <p className="text-2xl font-bold text-red-600">7</p>
+                <div className="bg-[#1e293b] p-3 rounded border border-green-500/30 text-center">
+                  <p className="text-xs text-green-300">Flagged</p>
+                  <p className="text-2xl font-bold text-red-400">7</p>
                 </div>
               </div>
 
@@ -221,39 +221,39 @@ export function Tier2ComplianceHub({ onBack }: Tier2ComplianceHubProps) {
 
               <div className="space-y-2 mb-6">
                 <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <CheckCircle className="w-4 h-4 text-green-400" />
                   <span>Wealth narrative capture & analysis</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <CheckCircle className="w-4 h-4 text-green-400" />
                   <span>Evidence validation workflow</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <CheckCircle className="w-4 h-4 text-green-400" />
                   <span>Wealth vs income reconciliation</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <CheckCircle className="w-4 h-4 text-green-400" />
                   <span>Timeline & age plausibility checks</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <CheckCircle className="w-4 h-4 text-green-400" />
                   <span>Foreign wealth risk assessment</span>
                 </div>
               </div>
 
               <div className="grid grid-cols-3 gap-3 mb-4">
-                <div className="bg-[#1e293b] p-3 rounded border border-blue-200 text-center">
-                  <p className="text-xs text-blue-700">Pending</p>
-                  <p className="text-2xl font-bold text-blue-600">14</p>
+                <div className="bg-[#1e293b] p-3 rounded border border-blue-500/30 text-center">
+                  <p className="text-xs text-blue-300">Pending</p>
+                  <p className="text-2xl font-bold text-blue-400">14</p>
                 </div>
-                <div className="bg-[#1e293b] p-3 rounded border border-blue-200 text-center">
-                  <p className="text-xs text-blue-700">Verified</p>
-                  <p className="text-2xl font-bold text-green-600">98</p>
+                <div className="bg-[#1e293b] p-3 rounded border border-blue-500/30 text-center">
+                  <p className="text-xs text-blue-300">Verified</p>
+                  <p className="text-2xl font-bold text-green-400">98</p>
                 </div>
-                <div className="bg-[#1e293b] p-3 rounded border border-blue-200 text-center">
-                  <p className="text-xs text-blue-700">High-Risk</p>
-                  <p className="text-2xl font-bold text-red-600">5</p>
+                <div className="bg-[#1e293b] p-3 rounded border border-blue-500/30 text-center">
+                  <p className="text-xs text-blue-300">High-Risk</p>
+                  <p className="text-2xl font-bold text-red-400">5</p>
                 </div>
               </div>
 
@@ -281,39 +281,39 @@ export function Tier2ComplianceHub({ onBack }: Tier2ComplianceHubProps) {
 
               <div className="space-y-2 mb-6">
                 <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <CheckCircle className="w-4 h-4 text-green-400" />
                   <span>Court case & tribunal matter detection</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <CheckCircle className="w-4 h-4 text-green-400" />
                   <span>Bankruptcy & liquidation screening</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <CheckCircle className="w-4 h-4 text-green-400" />
                   <span>Director ban & disqualification checks</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <CheckCircle className="w-4 h-4 text-green-400" />
                   <span>Enforcement action monitoring</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-slate-300">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <CheckCircle className="w-4 h-4 text-green-400" />
                   <span>Active litigation risk assessment</span>
                 </div>
               </div>
 
               <div className="grid grid-cols-3 gap-3 mb-4">
-                <div className="bg-[#1e293b] p-3 rounded border border-amber-200 text-center">
-                  <p className="text-xs text-amber-700">Pending</p>
-                  <p className="text-2xl font-bold text-blue-600">23</p>
+                <div className="bg-[#1e293b] p-3 rounded border border-amber-500/30 text-center">
+                  <p className="text-xs text-amber-300">Pending</p>
+                  <p className="text-2xl font-bold text-blue-400">23</p>
                 </div>
-                <div className="bg-[#1e293b] p-3 rounded border border-amber-200 text-center">
-                  <p className="text-xs text-amber-700">Matches</p>
-                  <p className="text-2xl font-bold text-amber-600">34</p>
+                <div className="bg-[#1e293b] p-3 rounded border border-amber-500/30 text-center">
+                  <p className="text-xs text-amber-300">Matches</p>
+                  <p className="text-2xl font-bold text-amber-400">34</p>
                 </div>
-                <div className="bg-[#1e293b] p-3 rounded border border-amber-200 text-center">
-                  <p className="text-xs text-amber-700">Insolvency</p>
-                  <p className="text-2xl font-bold text-red-600">8</p>
+                <div className="bg-[#1e293b] p-3 rounded border border-amber-500/30 text-center">
+                  <p className="text-xs text-amber-300">Insolvency</p>
+                  <p className="text-2xl font-bold text-red-400">8</p>
                 </div>
               </div>
 
@@ -362,19 +362,19 @@ export function Tier2ComplianceHub({ onBack }: Tier2ComplianceHubProps) {
               })}
             </div>
 
-            <div className="mt-6 p-4 bg-[#1e293b] rounded-lg border border-blue-200">
+            <div className="mt-6 p-4 bg-[#1e293b] rounded-lg border border-blue-500/30">
               <h4 className="font-bold text-white mb-2">Key Tier 2 Capabilities:</h4>
               <div className="grid md:grid-cols-3 gap-4 text-sm text-slate-300">
                 <div>
-                  <p className="font-semibold text-purple-900 mb-1">• Relationship Intelligence</p>
+                  <p className="font-semibold text-purple-300 mb-1">• Relationship Intelligence</p>
                   <p className="text-xs">Complete ownership chains, control structures, UBO identification</p>
                 </div>
                 <div>
-                  <p className="font-semibold text-green-900 mb-1">• Financial Verification</p>
+                  <p className="font-semibold text-green-300 mb-1">• Financial Verification</p>
                   <p className="text-xs">Source of funds, source of wealth, evidence validation</p>
                 </div>
                 <div>
-                  <p className="font-semibold text-amber-900 mb-1">• Legal Exposure</p>
+                  <p className="font-semibold text-amber-300 mb-1">• Legal Exposure</p>
                   <p className="text-xs">Court cases, insolvency, enforcement actions, director bans</p>
                 </div>
               </div>
@@ -388,8 +388,8 @@ export function Tier2ComplianceHub({ onBack }: Tier2ComplianceHubProps) {
             <h3 className="text-2xl font-bold text-white mb-4 text-center">What Tier 2 Achieves</h3>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="text-center">
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <TrendingUp className="w-8 h-8 text-purple-600" />
+                <div className="w-16 h-16 bg-purple-500/15 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <TrendingUp className="w-8 h-8 text-purple-400" />
                 </div>
                 <h4 className="font-bold text-white mb-2">Beyond Onboarding</h4>
                 <p className="text-sm text-slate-300">
@@ -397,8 +397,8 @@ export function Tier2ComplianceHub({ onBack }: Tier2ComplianceHubProps) {
                 </p>
               </div>
               <div className="text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Network className="w-8 h-8 text-blue-600" />
+                <div className="w-16 h-16 bg-blue-500/15 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Network className="w-8 h-8 text-blue-400" />
                 </div>
                 <h4 className="font-bold text-white mb-2">Real Risk Intelligence</h4>
                 <p className="text-sm text-slate-300">
@@ -406,8 +406,8 @@ export function Tier2ComplianceHub({ onBack }: Tier2ComplianceHubProps) {
                 </p>
               </div>
               <div className="text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Shield className="w-8 h-8 text-green-600" />
+                <div className="w-16 h-16 bg-green-500/15 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Shield className="w-8 h-8 text-green-400" />
                 </div>
                 <h4 className="font-bold text-white mb-2">Lending & Investment Ready</h4>
                 <p className="text-sm text-slate-300">

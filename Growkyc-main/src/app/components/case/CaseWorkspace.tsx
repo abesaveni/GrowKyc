@@ -88,7 +88,7 @@ export function CaseWorkspace({ caseId = 'case-001', onBack }: CaseWorkspaceProp
               <StatusBadge status={caseData.status} type="case" />
               <StatusBadge status={caseData.riskLevel} type="risk" />
             </div>
-            <p className="text-gray-600">
+            <p className="text-slate-300">
               {caseData.property.address}, {caseData.property.suburb}, {caseData.property.state} {caseData.property.postcode}
             </p>
           </div>
@@ -100,19 +100,19 @@ export function CaseWorkspace({ caseId = 'case-001', onBack }: CaseWorkspaceProp
 
         <div className="grid grid-cols-4 gap-4 pt-4 border-t">
           <div>
-            <p className="text-sm text-gray-500 mb-1">Borrower</p>
+            <p className="text-sm text-slate-400 mb-1">Borrower</p>
             <p className="font-medium">{caseData.borrowerName}</p>
           </div>
           <div>
-            <p className="text-sm text-gray-500 mb-1">Lender</p>
+            <p className="text-sm text-slate-400 mb-1">Lender</p>
             <p className="font-medium">{caseData.lenderName}</p>
           </div>
           <div>
-            <p className="text-sm text-gray-500 mb-1">Outstanding Debt</p>
+            <p className="text-sm text-slate-400 mb-1">Outstanding Debt</p>
             <p className="font-medium">${caseData.outstandingDebt.toLocaleString()}</p>
           </div>
           <div>
-            <p className="text-sm text-gray-500 mb-1">Property Valuation</p>
+            <p className="text-sm text-slate-400 mb-1">Property Valuation</p>
             <p className="font-medium">${caseData.valuation.amount.toLocaleString()}</p>
           </div>
         </div>
@@ -196,37 +196,37 @@ export function CaseWorkspace({ caseId = 'case-001', onBack }: CaseWorkspaceProp
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-4">
-                  <h3 className="font-semibold text-gray-900 mb-3">Address</h3>
+                  <h3 className="font-semibold text-slate-100 mb-3">Address</h3>
                   <div>
                     <p className="font-medium">{caseData.property.address}</p>
-                    <p className="text-gray-600">
+                    <p className="text-slate-300">
                       {caseData.property.suburb}, {caseData.property.state} {caseData.property.postcode}
                     </p>
                   </div>
                 </div>
 
                 <div className="space-y-4">
-                  <h3 className="font-semibold text-gray-900 mb-3">Property Features</h3>
+                  <h3 className="font-semibold text-slate-100 mb-3">Property Features</h3>
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <p className="text-sm text-gray-500">Type</p>
+                      <p className="text-sm text-slate-400">Type</p>
                       <p className="font-medium">{caseData.property.propertyType}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500">Bedrooms</p>
+                      <p className="text-sm text-slate-400">Bedrooms</p>
                       <p className="font-medium">{caseData.property.bedrooms}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500">Bathrooms</p>
+                      <p className="text-sm text-slate-400">Bathrooms</p>
                       <p className="font-medium">{caseData.property.bathrooms}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500">Parking</p>
+                      <p className="text-sm text-slate-400">Parking</p>
                       <p className="font-medium">{caseData.property.parking}</p>
                     </div>
                     {caseData.property.landSize > 0 && (
                       <div>
-                        <p className="text-sm text-gray-500">Land Size</p>
+                        <p className="text-sm text-slate-400">Land Size</p>
                         <p className="font-medium">{caseData.property.landSize} m²</p>
                       </div>
                     )}
@@ -234,18 +234,18 @@ export function CaseWorkspace({ caseId = 'case-001', onBack }: CaseWorkspaceProp
                 </div>
 
                 <div className="col-span-2">
-                  <h3 className="font-semibold text-gray-900 mb-3">Valuation</h3>
+                  <h3 className="font-semibold text-slate-100 mb-3">Valuation</h3>
                   <div className="grid grid-cols-3 gap-4">
                     <div>
-                      <p className="text-sm text-gray-500">Valuation Amount</p>
+                      <p className="text-sm text-slate-400">Valuation Amount</p>
                       <p className="font-medium text-lg">${caseData.valuation.amount.toLocaleString()}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500">Valuation Date</p>
+                      <p className="text-sm text-slate-400">Valuation Date</p>
                       <p className="font-medium">{format(caseData.valuation.date, 'dd MMM yyyy')}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500">Valuer</p>
+                      <p className="text-sm text-slate-400">Valuer</p>
                       <p className="font-medium">{caseData.valuation.valuerName}</p>
                     </div>
                   </div>
@@ -479,9 +479,9 @@ function ActivityTimeline({ showAll = false }: { showAll?: boolean }) {
         <div key={index} className="flex gap-3">
           <div className="w-2 h-2 bg-indigo-600 rounded-full mt-2" />
           <div className="flex-1">
-            <p className="font-medium text-gray-900">{activity.action}</p>
-            <p className="text-sm text-gray-600">{activity.description}</p>
-            <p className="text-xs text-gray-500 mt-1">
+            <p className="font-medium text-slate-100">{activity.action}</p>
+            <p className="text-sm text-slate-300">{activity.description}</p>
+            <p className="text-xs text-slate-400 mt-1">
               {format(activity.timestamp, "dd MMM yyyy, HH:mm 'AEST'")}
             </p>
           </div>
@@ -598,7 +598,7 @@ function ManageCaseModal({ caseData, onClose, onSave }: { caseData: any; onClose
           <div className="flex items-center justify-between">
             <div>
               <CardTitle>Manage Case: {formData.caseNumber}</CardTitle>
-              <p className="text-sm text-gray-600 mt-1">Update details, upload images, and generate AI content</p>
+              <p className="text-sm text-slate-300 mt-1">Update details, upload images, and generate AI content</p>
             </div>
             <Button variant="ghost" size="sm" onClick={onClose}>
               <XCircle className="w-5 h-5" />
@@ -768,10 +768,10 @@ function ManageCaseModal({ caseData, onClose, onSave }: { caseData: any; onClose
                     ))}
                   </div>
                 ) : (
-                  <div className="border-2 border-dashed border-gray-300 rounded-lg p-12 text-center">
+                  <div className="border-2 border-dashed border-white/10 rounded-lg p-12 text-center">
                     <ImageIcon className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                    <p className="text-gray-600 mb-2">No images uploaded yet</p>
-                    <p className="text-sm text-gray-500">Upload property images or use AI to suggest relevant images</p>
+                    <p className="text-slate-300 mb-2">No images uploaded yet</p>
+                    <p className="text-sm text-slate-400">Upload property images or use AI to suggest relevant images</p>
                   </div>
                 )}
               </div>
@@ -780,12 +780,12 @@ function ManageCaseModal({ caseData, onClose, onSave }: { caseData: any; onClose
             {/* AI Content Tab */}
             {activeTab === 'content' && (
               <div className="space-y-6">
-                <div className="bg-gradient-to-r from-purple-50 to-blue-50 border border-purple-200 rounded-lg p-4">
+                <div className="bg-gradient-to-r from-purple-50 to-blue-50 border border-purple-500/30 rounded-lg p-4">
                   <div className="flex items-start gap-3">
-                    <Sparkles className="w-6 h-6 text-purple-600 flex-shrink-0 mt-1" />
+                    <Sparkles className="w-6 h-6 text-purple-400 flex-shrink-0 mt-1" />
                     <div>
-                      <h3 className="font-bold text-gray-900 mb-1">AI Content Generator</h3>
-                      <p className="text-sm text-gray-700">Generate professional marketing content and investment highlights</p>
+                      <h3 className="font-bold text-slate-100 mb-1">AI Content Generator</h3>
+                      <p className="text-sm text-slate-300">Generate professional marketing content and investment highlights</p>
                     </div>
                   </div>
                 </div>
@@ -873,12 +873,12 @@ function ManageCaseModal({ caseData, onClose, onSave }: { caseData: any; onClose
             {/* Documents Tab */}
             {activeTab === 'documents' && (
               <div className="space-y-6">
-                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-4">
+                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-500/30 rounded-lg p-4">
                   <div className="flex items-start gap-3">
-                    <FileType className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
+                    <FileType className="w-6 h-6 text-blue-400 flex-shrink-0 mt-1" />
                     <div>
-                      <h3 className="font-bold text-gray-900 mb-1">Document Generator</h3>
-                      <p className="text-sm text-gray-700">Generate professional documents using case data</p>
+                      <h3 className="font-bold text-slate-100 mb-1">Document Generator</h3>
+                      <p className="text-sm text-slate-300">Generate professional documents using case data</p>
                     </div>
                   </div>
                 </div>
@@ -887,12 +887,12 @@ function ManageCaseModal({ caseData, onClose, onSave }: { caseData: any; onClose
                   <Card className="hover:shadow-lg transition-shadow">
                     <CardContent className="p-6">
                       <div className="flex items-center gap-3 mb-4">
-                        <div className="p-3 bg-purple-100 rounded-lg">
-                          <FileText className="w-6 h-6 text-purple-600" />
+                        <div className="p-3 bg-purple-500/15 rounded-lg">
+                          <FileText className="w-6 h-6 text-purple-400" />
                         </div>
                         <div>
                           <h4 className="font-bold">Investment Memorandum</h4>
-                          <p className="text-sm text-gray-600">Full professional IM</p>
+                          <p className="text-sm text-slate-300">Full professional IM</p>
                         </div>
                       </div>
                       <Button 
@@ -909,12 +909,12 @@ function ManageCaseModal({ caseData, onClose, onSave }: { caseData: any; onClose
                   <Card className="hover:shadow-lg transition-shadow">
                     <CardContent className="p-6">
                       <div className="flex items-center gap-3 mb-4">
-                        <div className="p-3 bg-blue-100 rounded-lg">
-                          <FileText className="w-6 h-6 text-blue-600" />
+                        <div className="p-3 bg-blue-500/15 rounded-lg">
+                          <FileText className="w-6 h-6 text-blue-400" />
                         </div>
                         <div>
                           <h4 className="font-bold">Marketing Flyer</h4>
-                          <p className="text-sm text-gray-600">Single-page summary</p>
+                          <p className="text-sm text-slate-300">Single-page summary</p>
                         </div>
                       </div>
                       <Button 

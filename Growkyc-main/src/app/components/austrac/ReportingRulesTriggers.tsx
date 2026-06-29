@@ -199,10 +199,10 @@ export function ReportingRulesAndTriggers({ onBack }: { onBack?: () => void }) {
 
   const getSeverityBadge = (severity: string) => {
     const configs = {
-      critical: 'bg-red-100 text-red-700',
-      high: 'bg-orange-100 text-orange-700',
-      medium: 'bg-amber-100 text-amber-700',
-      low: 'bg-green-100 text-green-700'
+      critical: 'bg-red-500/15 text-red-300',
+      high: 'bg-orange-500/15 text-orange-300',
+      medium: 'bg-amber-500/15 text-amber-300',
+      low: 'bg-green-500/15 text-green-300'
     };
     return <Badge className={`${configs[severity as keyof typeof configs]} text-xs px-2 py-1`}>{severity.toUpperCase()}</Badge>;
   };
@@ -213,29 +213,29 @@ export function ReportingRulesAndTriggers({ onBack }: { onBack?: () => void }) {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-50 p-8 flex items-center justify-center">
+      <div className="min-h-screen bg-white/5 p-8 flex items-center justify-center">
         <div className="text-center space-y-4">
-          <RefreshCw className="w-12 h-12 text-red-700 animate-spin mx-auto" />
-          <p className="text-lg font-bold text-gray-700">Syncing Compliance Rules & Triggers...</p>
+          <RefreshCw className="w-12 h-12 text-red-300 animate-spin mx-auto" />
+          <p className="text-lg font-bold text-slate-300">Syncing Compliance Rules & Triggers...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4 md:p-8">
+    <div className="min-h-screen bg-white/5 p-4 md:p-8">
       <div className="max-w-[1800px] mx-auto space-y-6">
         {/* Offline Fallback Banner if API error occurred */}
         {error && (
-          <div className="bg-amber-50 border-2 border-amber-300 rounded-lg p-4 text-amber-800 flex items-center justify-between shadow-sm animate-in fade-in">
+          <div className="bg-amber-500/10 border-2 border-amber-300 rounded-lg p-4 text-amber-300 flex items-center justify-between shadow-sm animate-in fade-in">
             <div className="flex items-center gap-3">
-              <AlertTriangle className="w-6 h-6 text-amber-600 flex-shrink-0" />
+              <AlertTriangle className="w-6 h-6 text-amber-400 flex-shrink-0" />
               <div>
                 <p className="font-bold text-sm">Offline Mode Active</p>
-                <p className="text-xs text-amber-700">Failed to connect to the active rules API ({error}). Serving local system security triggers instead.</p>
+                <p className="text-xs text-amber-300">Failed to connect to the active rules API ({error}). Serving local system security triggers instead.</p>
               </div>
             </div>
-            <Button size="sm" variant="outline" className="border-amber-400 hover:bg-amber-100 text-amber-900" onClick={() => window.location.reload()}>
+            <Button size="sm" variant="outline" className="border-amber-400 hover:bg-amber-500/15 text-amber-300" onClick={() => window.location.reload()}>
               Retry Sync
             </Button>
           </div>
@@ -254,7 +254,7 @@ export function ReportingRulesAndTriggers({ onBack }: { onBack?: () => void }) {
             </div>
             <div className="flex flex-wrap gap-2 w-full sm:w-auto">
               {onBack && (
-                <Button onClick={onBack} className="bg-white text-red-900 hover:bg-red-50 flex-1 sm:flex-initial justify-center">
+                <Button onClick={onBack} className="bg-white text-red-300 hover:bg-red-500/10 flex-1 sm:flex-initial justify-center">
                   Return to Control Centre
                 </Button>
               )}
@@ -301,13 +301,13 @@ export function ReportingRulesAndTriggers({ onBack }: { onBack?: () => void }) {
             onClick={() => setFilterGroup('all')}
             className={`cursor-pointer transition-all ${
               filterGroup === 'all'
-                ? 'border-4 border-purple-500 bg-purple-50'
-                : 'border-2 border-gray-300 hover:border-purple-300'
+                ? 'border-4 border-purple-500 bg-purple-500/10'
+                : 'border-2 border-white/10 hover:border-purple-300'
             }`}
           >
             <CardContent className="p-4 text-center">
-              <p className="font-bold text-gray-900 mb-1">All Rules</p>
-              <p className="text-3xl font-bold text-purple-900">{rules.length}</p>
+              <p className="font-bold text-slate-100 mb-1">All Rules</p>
+              <p className="text-3xl font-bold text-purple-300">{rules.length}</p>
             </CardContent>
           </Card>
 
@@ -319,16 +319,16 @@ export function ReportingRulesAndTriggers({ onBack }: { onBack?: () => void }) {
                 onClick={() => setFilterGroup(group.id)}
                 className={`cursor-pointer transition-all ${
                   filterGroup === group.id
-                    ? 'border-4 border-blue-500 bg-blue-50'
-                    : 'border-2 border-gray-300 hover:border-blue-300'
+                    ? 'border-4 border-blue-500 bg-blue-500/10'
+                    : 'border-2 border-white/10 hover:border-blue-300'
                 }`}
               >
                 <CardContent className="p-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <Icon className="w-5 h-5 text-blue-600" />
+                    <Icon className="w-5 h-5 text-blue-400" />
                   </div>
-                  <p className="font-semibold text-xs text-gray-900 mb-1">{group.label}</p>
-                  <p className="text-2xl font-bold text-blue-900">{group.count}</p>
+                  <p className="font-semibold text-xs text-slate-100 mb-1">{group.label}</p>
+                  <p className="text-2xl font-bold text-blue-300">{group.count}</p>
                 </CardContent>
               </Card>
             );
@@ -336,7 +336,7 @@ export function ReportingRulesAndTriggers({ onBack }: { onBack?: () => void }) {
         </div>
 
         {/* Rules Table */}
-        <Card className="border-2 border-gray-300 shadow-lg">
+        <Card className="border-2 border-white/10 shadow-lg">
           <CardHeader className="bg-gradient-to-r from-gray-50 to-slate-50 border-b">
             <CardTitle className="text-2xl">
               {filterGroup === 'all'
@@ -347,24 +347,24 @@ export function ReportingRulesAndTriggers({ onBack }: { onBack?: () => void }) {
           <CardContent className="p-0">
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-gray-100 border-b-2 border-gray-300">
+                <thead className="bg-white/5 border-b-2 border-white/10">
                   <tr>
-                    <th className="text-left py-3 px-4 text-sm font-bold text-gray-700">Status</th>
-                    <th className="text-left py-3 px-4 text-sm font-bold text-gray-700">Rule Name</th>
-                    <th className="text-left py-3 px-4 text-sm font-bold text-gray-700">Trigger Condition</th>
-                    <th className="text-left py-3 px-4 text-sm font-bold text-gray-700">Action</th>
-                    <th className="text-left py-3 px-4 text-sm font-bold text-gray-700">Severity</th>
-                    <th className="text-left py-3 px-4 text-sm font-bold text-gray-700">Auto-Create</th>
-                    <th className="text-left py-3 px-4 text-sm font-bold text-gray-700">Manager Review</th>
-                    <th className="text-left py-3 px-4 text-sm font-bold text-gray-700">Service Hold</th>
-                    <th className="text-left py-3 px-4 text-sm font-bold text-gray-700">Actions</th>
+                    <th className="text-left py-3 px-4 text-sm font-bold text-slate-300">Status</th>
+                    <th className="text-left py-3 px-4 text-sm font-bold text-slate-300">Rule Name</th>
+                    <th className="text-left py-3 px-4 text-sm font-bold text-slate-300">Trigger Condition</th>
+                    <th className="text-left py-3 px-4 text-sm font-bold text-slate-300">Action</th>
+                    <th className="text-left py-3 px-4 text-sm font-bold text-slate-300">Severity</th>
+                    <th className="text-left py-3 px-4 text-sm font-bold text-slate-300">Auto-Create</th>
+                    <th className="text-left py-3 px-4 text-sm font-bold text-slate-300">Manager Review</th>
+                    <th className="text-left py-3 px-4 text-sm font-bold text-slate-300">Service Hold</th>
+                    <th className="text-left py-3 px-4 text-sm font-bold text-slate-300">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   {filteredRules.map((rule) => (
                     <tr
                       key={rule.id}
-                      className={`border-b border-gray-200 hover:bg-blue-50 transition-colors ${
+                      className={`border-b border-white/10 hover:bg-blue-500/10 transition-colors ${
                         !rule.enabled ? 'opacity-50' : ''
                       }`}
                     >
@@ -374,7 +374,7 @@ export function ReportingRulesAndTriggers({ onBack }: { onBack?: () => void }) {
                           className="focus:outline-none"
                         >
                           {rule.enabled ? (
-                            <ToggleRight className="w-12 h-12 text-green-600" />
+                            <ToggleRight className="w-12 h-12 text-green-400" />
                           ) : (
                             <ToggleLeft className="w-12 h-12 text-gray-400" />
                           )}
@@ -382,23 +382,23 @@ export function ReportingRulesAndTriggers({ onBack }: { onBack?: () => void }) {
                       </td>
                       <td className="py-3 px-4">
                         <div className="flex items-center gap-2">
-                          {React.createElement(rule.icon, { className: 'w-5 h-5 text-blue-600' })}
+                          {React.createElement(rule.icon, { className: 'w-5 h-5 text-blue-400' })}
                           <div>
-                            <p className="font-semibold text-gray-900">{rule.name}</p>
-                            <p className="text-xs text-gray-600">ID: {rule.id}</p>
+                            <p className="font-semibold text-slate-100">{rule.name}</p>
+                            <p className="text-xs text-slate-300">ID: {rule.id}</p>
                           </div>
                         </div>
                       </td>
                       <td className="py-3 px-4">
-                        <p className="text-sm text-gray-800">{rule.triggerCondition}</p>
+                        <p className="text-sm text-slate-100">{rule.triggerCondition}</p>
                         {rule.threshold && (
-                          <p className="text-xs text-gray-600 mt-1">
+                          <p className="text-xs text-slate-300 mt-1">
                             Threshold: <span className="font-semibold">{rule.threshold}</span>
                           </p>
                         )}
                       </td>
                       <td className="py-3 px-4">
-                        <p className="text-sm font-semibold text-gray-900">{rule.action}</p>
+                        <p className="text-sm font-semibold text-slate-100">{rule.action}</p>
                       </td>
                       <td className="py-3 px-4">
                         {getSeverityBadge(rule.severity)}
@@ -409,11 +409,11 @@ export function ReportingRulesAndTriggers({ onBack }: { onBack?: () => void }) {
                           disabled={!rule.enabled}
                         >
                           {rule.autoCreate ? (
-                            <Badge className="bg-green-100 text-green-700 cursor-pointer">
+                            <Badge className="bg-green-500/15 text-green-300 cursor-pointer">
                               ✓ Yes
                             </Badge>
                           ) : (
-                            <Badge className="bg-gray-100 text-gray-700 cursor-pointer">
+                            <Badge className="bg-white/5 text-slate-300 cursor-pointer">
                               ✗ No
                             </Badge>
                           )}
@@ -425,11 +425,11 @@ export function ReportingRulesAndTriggers({ onBack }: { onBack?: () => void }) {
                           disabled={!rule.enabled}
                         >
                           {rule.managerReview ? (
-                            <Badge className="bg-green-100 text-green-700 cursor-pointer">
+                            <Badge className="bg-green-500/15 text-green-300 cursor-pointer">
                               ✓ Yes
                             </Badge>
                           ) : (
-                            <Badge className="bg-gray-100 text-gray-700 cursor-pointer">
+                            <Badge className="bg-white/5 text-slate-300 cursor-pointer">
                               ✗ No
                             </Badge>
                           )}
@@ -441,11 +441,11 @@ export function ReportingRulesAndTriggers({ onBack }: { onBack?: () => void }) {
                           disabled={!rule.enabled}
                         >
                           {rule.serviceHold ? (
-                            <Badge className="bg-red-100 text-red-700 cursor-pointer">
+                            <Badge className="bg-red-500/15 text-red-300 cursor-pointer">
                               ✓ Yes
                             </Badge>
                           ) : (
-                            <Badge className="bg-gray-100 text-gray-700 cursor-pointer">
+                            <Badge className="bg-white/5 text-slate-300 cursor-pointer">
                               ✗ No
                             </Badge>
                           )}
@@ -478,7 +478,7 @@ export function ReportingRulesAndTriggers({ onBack }: { onBack?: () => void }) {
                           <Button
                             variant="outline"
                             size="sm"
-                            className="text-red-600 hover:bg-red-50"
+                            className="text-red-400 hover:bg-red-500/10"
                             onClick={() => {
                               if (confirm(`Are you sure you want to delete the rule "${rule.name}"?`)) {
                                 setRulesData(prev => prev.filter(r => r.id !== rule.id));
@@ -500,13 +500,13 @@ export function ReportingRulesAndTriggers({ onBack }: { onBack?: () => void }) {
         </Card>
 
         {/* Info Banner */}
-        <Card className="border-2 border-amber-300 bg-amber-50">
+        <Card className="border-2 border-amber-300 bg-amber-500/10">
           <CardContent className="p-6">
             <div className="flex items-start gap-3">
-              <AlertTriangle className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
+              <AlertTriangle className="w-6 h-6 text-amber-400 flex-shrink-0 mt-1" />
               <div>
-                <h3 className="font-bold text-amber-900 mb-2">Important: Rule Changes</h3>
-                <p className="text-sm text-amber-800">
+                <h3 className="font-bold text-amber-300 mb-2">Important: Rule Changes</h3>
+                <p className="text-sm text-amber-300">
                   Any changes to rules will apply to new cases going forward. Existing cases will continue under the
                   rules that were active at the time of creation. All rule changes are logged in the audit trail.
                 </p>

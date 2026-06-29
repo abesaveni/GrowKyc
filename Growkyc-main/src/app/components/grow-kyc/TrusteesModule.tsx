@@ -142,10 +142,10 @@ export function TrusteesModule({ onBack }: TrusteesModuleProps) {
 
   const getRiskColor = (level: string) => {
     switch (level) {
-      case 'high': return 'text-red-600 bg-red-100 border-red-300';
-      case 'medium': return 'text-amber-600 bg-amber-100 border-amber-300';
-      case 'low': return 'text-green-600 bg-green-100 border-green-300';
-      default: return 'text-slate-300 bg-[#0f172a] border-gray-300';
+      case 'high': return 'text-red-400 bg-red-500/15 border-red-300';
+      case 'medium': return 'text-amber-400 bg-amber-500/15 border-amber-300';
+      case 'low': return 'text-green-400 bg-green-500/15 border-green-300';
+      default: return 'text-slate-300 bg-[#0f172a] border-white/10';
     }
   };
 
@@ -267,12 +267,12 @@ export function TrusteesModule({ onBack }: TrusteesModuleProps) {
                   <div className="flex items-start justify-between">
                     <div className="flex items-start gap-4 flex-1">
                       <div className={`w-16 h-16 rounded-xl flex items-center justify-center ${
-                        trust.riskLevel === 'high' ? 'bg-red-100' :
-                        trust.riskLevel === 'medium' ? 'bg-amber-100' : 'bg-green-100'
+                        trust.riskLevel === 'high' ? 'bg-red-500/15' :
+                        trust.riskLevel === 'medium' ? 'bg-amber-500/15' : 'bg-green-500/15'
                       }`}>
                         <Shield className={`w-8 h-8 ${
-                          trust.riskLevel === 'high' ? 'text-red-600' :
-                          trust.riskLevel === 'medium' ? 'text-amber-600' : 'text-green-600'
+                          trust.riskLevel === 'high' ? 'text-red-400' :
+                          trust.riskLevel === 'medium' ? 'text-amber-400' : 'text-green-400'
                         }`} />
                       </div>
 
@@ -314,7 +314,7 @@ export function TrusteesModule({ onBack }: TrusteesModuleProps) {
                             <div>
                               <div className="text-sm text-slate-300 mb-1">Appointor</div>
                               <div className="flex items-center gap-2">
-                                <Crown className="w-4 h-4 text-purple-600" />
+                                <Crown className="w-4 h-4 text-purple-400" />
                                 <span className="font-semibold text-white">{trust.appointor}</span>
                               </div>
                             </div>
@@ -323,7 +323,7 @@ export function TrusteesModule({ onBack }: TrusteesModuleProps) {
                           <div>
                             <div className="text-sm text-slate-300 mb-1">Beneficiaries</div>
                             <div className="flex items-center gap-2">
-                              <Users className="w-4 h-4 text-blue-600" />
+                              <Users className="w-4 h-4 text-blue-400" />
                               <span className="font-semibold text-white">{trust.beneficiaries} identified</span>
                             </div>
                           </div>
@@ -386,35 +386,35 @@ export function TrusteesModule({ onBack }: TrusteesModuleProps) {
         {selectedTab === 'authority' && (
           <div className="space-y-6">
             {/* Trust Deed Parsing */}
-            <Card className="border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-pink-50">
+            <Card className="border-2 border-purple-500/30 bg-gradient-to-br from-purple-50 to-pink-50">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <FileText className="w-5 h-5 text-purple-600" />
+                  <FileText className="w-5 h-5 text-purple-400" />
                   Trust Deed Parsing (AI Extraction)
                 </CardTitle>
                 <CardDescription>Auto-extract key parties and provisions from trust deeds</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  <div className="p-6 bg-[#1e293b] rounded-xl border-2 border-purple-200">
+                  <div className="p-6 bg-[#1e293b] rounded-xl border-2 border-purple-500/30">
                     <h4 className="font-bold text-white mb-4">Automatically Extracted Fields:</h4>
                     <div className="grid grid-cols-2 gap-6">
                       <div>
                         <ul className="space-y-2 text-sm text-slate-300">
                           <li className="flex items-center gap-2">
-                            <CheckCircle className="w-4 h-4 text-green-600" />
+                            <CheckCircle className="w-4 h-4 text-green-400" />
                             Trustee name and type
                           </li>
                           <li className="flex items-center gap-2">
-                            <CheckCircle className="w-4 h-4 text-green-600" />
+                            <CheckCircle className="w-4 h-4 text-green-400" />
                             Appointor / Guardian
                           </li>
                           <li className="flex items-center gap-2">
-                            <CheckCircle className="w-4 h-4 text-green-600" />
+                            <CheckCircle className="w-4 h-4 text-green-400" />
                             Beneficiary classes (income, capital)
                           </li>
                           <li className="flex items-center gap-2">
-                            <CheckCircle className="w-4 h-4 text-green-600" />
+                            <CheckCircle className="w-4 h-4 text-green-400" />
                             Settlor details
                           </li>
                         </ul>
@@ -422,19 +422,19 @@ export function TrusteesModule({ onBack }: TrusteesModuleProps) {
                       <div>
                         <ul className="space-y-2 text-sm text-slate-300">
                           <li className="flex items-center gap-2">
-                            <CheckCircle className="w-4 h-4 text-green-600" />
+                            <CheckCircle className="w-4 h-4 text-green-400" />
                             Powers of appointor
                           </li>
                           <li className="flex items-center gap-2">
-                            <CheckCircle className="w-4 h-4 text-green-600" />
+                            <CheckCircle className="w-4 h-4 text-green-400" />
                             Trustee removal provisions
                           </li>
                           <li className="flex items-center gap-2">
-                            <CheckCircle className="w-4 h-4 text-green-600" />
+                            <CheckCircle className="w-4 h-4 text-green-400" />
                             Amendment procedures
                           </li>
                           <li className="flex items-center gap-2">
-                            <CheckCircle className="w-4 h-4 text-green-600" />
+                            <CheckCircle className="w-4 h-4 text-green-400" />
                             Vesting date
                           </li>
                         </ul>
@@ -456,8 +456,8 @@ export function TrusteesModule({ onBack }: TrusteesModuleProps) {
                   {trusts.map((trust) => (
                     <div key={trust.id} className="flex items-center justify-between p-4 bg-[#0f172a] rounded-lg border border-white/10">
                       <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                          <FileCheck className="w-6 h-6 text-purple-600" />
+                        <div className="w-12 h-12 bg-purple-500/15 rounded-lg flex items-center justify-center">
+                          <FileCheck className="w-6 h-6 text-purple-400" />
                         </div>
                         <div>
                           <div className="font-bold text-white">{trust.name}</div>
@@ -489,34 +489,34 @@ export function TrusteesModule({ onBack }: TrusteesModuleProps) {
             </Card>
 
             {/* Trust Role Map */}
-            <Card className="bg-gradient-to-br from-indigo-50 to-blue-50 border-2 border-indigo-200">
+            <Card className="bg-gradient-to-br from-indigo-50 to-blue-50 border-2 border-indigo-500/30">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Network className="w-5 h-5 text-indigo-600" />
+                  <Network className="w-5 h-5 text-indigo-400" />
                   Trust-Specific Ownership Map
                 </CardTitle>
                 <CardDescription>Visual graph of appointor → trustee → beneficiaries</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="p-6 bg-[#1e293b] rounded-xl border border-indigo-200">
+                <div className="p-6 bg-[#1e293b] rounded-xl border border-indigo-500/30">
                   <p className="text-slate-300 mb-4">
                     Structured role fields ensure trust relationships are never stored as free text.
                   </p>
                   <div className="grid grid-cols-4 gap-4">
-                    <div className="p-3 bg-purple-50 border border-purple-200 rounded-lg">
-                      <div className="text-xs font-bold text-purple-600 mb-1">APPOINTOR</div>
+                    <div className="p-3 bg-purple-500/10 border border-purple-500/30 rounded-lg">
+                      <div className="text-xs font-bold text-purple-400 mb-1">APPOINTOR</div>
                       <div className="text-sm text-white">Can remove/appoint trustee</div>
                     </div>
-                    <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg">
-                      <div className="text-xs font-bold text-blue-600 mb-1">TRUSTEE</div>
+                    <div className="p-3 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+                      <div className="text-xs font-bold text-blue-400 mb-1">TRUSTEE</div>
                       <div className="text-sm text-white">Legal owner, manages trust</div>
                     </div>
-                    <div className="p-3 bg-green-50 border border-green-200 rounded-lg">
-                      <div className="text-xs font-bold text-green-600 mb-1">BENEFICIARIES</div>
+                    <div className="p-3 bg-green-500/10 border border-green-500/30 rounded-lg">
+                      <div className="text-xs font-bold text-green-400 mb-1">BENEFICIARIES</div>
                       <div className="text-sm text-white">Receive distributions</div>
                     </div>
-                    <div className="p-3 bg-amber-50 border border-amber-200 rounded-lg">
-                      <div className="text-xs font-bold text-amber-600 mb-1">GUARDIAN</div>
+                    <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-lg">
+                      <div className="text-xs font-bold text-amber-400 mb-1">GUARDIAN</div>
                       <div className="text-sm text-white">Protects beneficiaries</div>
                     </div>
                   </div>
@@ -529,10 +529,10 @@ export function TrusteesModule({ onBack }: TrusteesModuleProps) {
         {selectedTab === 'monitoring' && (
           <div className="space-y-6">
             {/* Control Change Triggers */}
-            <Card className="border-2 border-red-200 bg-gradient-to-br from-red-50 to-orange-50">
+            <Card className="border-2 border-red-500/30 bg-gradient-to-br from-red-50 to-orange-50">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <AlertTriangle className="w-5 h-5 text-red-600" />
+                  <AlertTriangle className="w-5 h-5 text-red-400" />
                   Control Change Monitoring
                 </CardTitle>
                 <CardDescription>Trust amendments trigger automatic re-review</CardDescription>
@@ -540,10 +540,10 @@ export function TrusteesModule({ onBack }: TrusteesModuleProps) {
               <CardContent>
                 <div className="space-y-3">
                   {trusts.filter(t => t.controllerChanges > 0).map((trust) => (
-                    <div key={trust.id} className="flex items-center justify-between p-4 bg-[#1e293b] rounded-lg border-2 border-red-200">
+                    <div key={trust.id} className="flex items-center justify-between p-4 bg-[#1e293b] rounded-lg border-2 border-red-500/30">
                       <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-                          <AlertTriangle className="w-6 h-6 text-red-600" />
+                        <div className="w-12 h-12 bg-red-500/15 rounded-lg flex items-center justify-center">
+                          <AlertTriangle className="w-6 h-6 text-red-400" />
                         </div>
                         <div>
                           <div className="font-bold text-white">{trust.name}</div>
@@ -579,23 +579,23 @@ export function TrusteesModule({ onBack }: TrusteesModuleProps) {
                     <h4 className="font-bold text-white mb-3">Trigger Events:</h4>
                     <ul className="space-y-2 text-sm text-slate-300">
                       <li className="flex items-center gap-2">
-                        <AlertCircle className="w-4 h-4 text-amber-600" />
+                        <AlertCircle className="w-4 h-4 text-amber-400" />
                         Appointor change
                       </li>
                       <li className="flex items-center gap-2">
-                        <AlertCircle className="w-4 h-4 text-amber-600" />
+                        <AlertCircle className="w-4 h-4 text-amber-400" />
                         Trustee removal/appointment
                       </li>
                       <li className="flex items-center gap-2">
-                        <AlertCircle className="w-4 h-4 text-amber-600" />
+                        <AlertCircle className="w-4 h-4 text-amber-400" />
                         Deed variation/amendment
                       </li>
                       <li className="flex items-center gap-2">
-                        <AlertCircle className="w-4 h-4 text-amber-600" />
+                        <AlertCircle className="w-4 h-4 text-amber-400" />
                         Beneficiary class change
                       </li>
                       <li className="flex items-center gap-2">
-                        <AlertCircle className="w-4 h-4 text-amber-600" />
+                        <AlertCircle className="w-4 h-4 text-amber-400" />
                         Corporate trustee director change
                       </li>
                     </ul>
@@ -605,23 +605,23 @@ export function TrusteesModule({ onBack }: TrusteesModuleProps) {
                     <h4 className="font-bold text-white mb-3">Re-verification Actions:</h4>
                     <ul className="space-y-2 text-sm text-slate-300">
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <CheckCircle className="w-4 h-4 text-green-400" />
                         Verify new appointor/trustee identity
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <CheckCircle className="w-4 h-4 text-green-400" />
                         Obtain new authority documents
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <CheckCircle className="w-4 h-4 text-green-400" />
                         Re-screen all controllers (PEP, sanctions)
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <CheckCircle className="w-4 h-4 text-green-400" />
                         Update ownership graph
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <CheckCircle className="w-4 h-4 text-green-400" />
                         Generate new compliance pack
                       </li>
                     </ul>

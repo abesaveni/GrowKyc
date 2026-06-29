@@ -87,8 +87,8 @@ function KYBControlCentre({ onNavigate, onBack }: { onNavigate: (view: ViewMode)
           <Card className="border-2 hover:border-blue-400 transition-colors cursor-pointer">
             <CardContent className="p-4">
               <div className="flex items-center justify-between mb-2">
-                <Clock className="w-5 h-5 text-blue-600" />
-                <Badge className="bg-blue-100 text-blue-700">34</Badge>
+                <Clock className="w-5 h-5 text-blue-400" />
+                <Badge className="bg-blue-500/15 text-blue-300">34</Badge>
               </div>
               <p className="text-sm font-medium text-white">Pending Entities</p>
             </CardContent>
@@ -97,8 +97,8 @@ function KYBControlCentre({ onNavigate, onBack }: { onNavigate: (view: ViewMode)
           <Card className="border-2 hover:border-green-400 transition-colors cursor-pointer">
             <CardContent className="p-4">
               <div className="flex items-center justify-between mb-2">
-                <CheckCircle className="w-5 h-5 text-green-600" />
-                <Badge className="bg-green-100 text-green-700">142</Badge>
+                <CheckCircle className="w-5 h-5 text-green-400" />
+                <Badge className="bg-green-500/15 text-green-300">142</Badge>
               </div>
               <p className="text-sm font-medium text-white">Verified</p>
             </CardContent>
@@ -107,8 +107,8 @@ function KYBControlCentre({ onNavigate, onBack }: { onNavigate: (view: ViewMode)
           <Card className="border-2 hover:border-amber-400 transition-colors cursor-pointer">
             <CardContent className="p-4">
               <div className="flex items-center justify-between mb-2">
-                <AlertTriangle className="w-5 h-5 text-amber-600" />
-                <Badge className="bg-amber-100 text-amber-700">7</Badge>
+                <AlertTriangle className="w-5 h-5 text-amber-400" />
+                <Badge className="bg-amber-500/15 text-amber-300">7</Badge>
               </div>
               <p className="text-sm font-medium text-white">Mismatches</p>
             </CardContent>
@@ -117,8 +117,8 @@ function KYBControlCentre({ onNavigate, onBack }: { onNavigate: (view: ViewMode)
           <Card className="border-2 hover:border-red-400 transition-colors cursor-pointer">
             <CardContent className="p-4">
               <div className="flex items-center justify-between mb-2">
-                <XCircle className="w-5 h-5 text-red-600" />
-                <Badge className="bg-red-100 text-red-700">3</Badge>
+                <XCircle className="w-5 h-5 text-red-400" />
+                <Badge className="bg-red-500/15 text-red-300">3</Badge>
               </div>
               <p className="text-sm font-medium text-white">Failed Checks</p>
             </CardContent>
@@ -131,7 +131,7 @@ function KYBControlCentre({ onNavigate, onBack }: { onNavigate: (view: ViewMode)
           <Card className="border-2">
             <CardHeader className="bg-gradient-to-r from-blue-50 to-blue-100 border-b">
               <CardTitle className="flex items-center gap-2">
-                <Building2 className="w-5 h-5 text-blue-600" />
+                <Building2 className="w-5 h-5 text-blue-400" />
                 Entity Verification Queue
               </CardTitle>
             </CardHeader>
@@ -157,9 +157,9 @@ function KYBControlCentre({ onNavigate, onBack }: { onNavigate: (view: ViewMode)
                         <td className="px-4 py-3 text-xs text-slate-300">{item.abn}</td>
                         <td className="px-4 py-3">
                           <Badge className={
-                            item.status === 'Verified' ? 'bg-green-100 text-green-700' :
-                            item.status === 'Checking' ? 'bg-blue-100 text-blue-700' :
-                            'bg-amber-100 text-amber-700'
+                            item.status === 'Verified' ? 'bg-green-500/15 text-green-300' :
+                            item.status === 'Checking' ? 'bg-blue-500/15 text-blue-300' :
+                            'bg-amber-500/15 text-amber-300'
                           }>
                             {item.status}
                           </Badge>
@@ -170,7 +170,7 @@ function KYBControlCentre({ onNavigate, onBack }: { onNavigate: (view: ViewMode)
                 </table>
               </div>
               <div className="p-4 border-t bg-[#0f172a]">
-                <Button variant="ghost" className="w-full text-blue-700 hover:bg-blue-50" onClick={() => onNavigate('new-verification')}>
+                <Button variant="ghost" className="w-full text-blue-300 hover:bg-blue-500/10" onClick={() => onNavigate('new-verification')}>
                   View All Entities <ChevronRight className="w-4 h-4 ml-1" />
                 </Button>
               </div>
@@ -181,7 +181,7 @@ function KYBControlCentre({ onNavigate, onBack }: { onNavigate: (view: ViewMode)
           <Card className="border-2">
             <CardHeader className="bg-gradient-to-r from-amber-50 to-amber-100 border-b">
               <CardTitle className="flex items-center gap-2">
-                <AlertTriangle className="w-5 h-5 text-amber-600" />
+                <AlertTriangle className="w-5 h-5 text-amber-400" />
                 Flagged Inconsistencies
               </CardTitle>
             </CardHeader>
@@ -204,7 +204,7 @@ function KYBControlCentre({ onNavigate, onBack }: { onNavigate: (view: ViewMode)
                     ].map((item, idx) => (
                       <tr key={idx} className="hover:bg-white/5 cursor-pointer">
                         <td className="px-4 py-3 font-medium text-white">{item.name}</td>
-                        <td className="px-4 py-3 text-xs text-amber-700">{item.issue}</td>
+                        <td className="px-4 py-3 text-xs text-amber-300">{item.issue}</td>
                         <td className="px-4 py-3">
                           <Button size="sm" variant="outline" className="text-xs">
                             Review
@@ -216,7 +216,7 @@ function KYBControlCentre({ onNavigate, onBack }: { onNavigate: (view: ViewMode)
                 </table>
               </div>
               <div className="p-4 border-t bg-[#0f172a]">
-                <Button variant="ghost" className="w-full text-amber-700 hover:bg-amber-50">
+                <Button variant="ghost" className="w-full text-amber-300 hover:bg-amber-500/10">
                   View All Issues <ChevronRight className="w-4 h-4 ml-1" />
                 </Button>
               </div>
@@ -228,34 +228,34 @@ function KYBControlCentre({ onNavigate, onBack }: { onNavigate: (view: ViewMode)
         <Card className="border-2">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Shield className="w-5 h-5 text-green-600" />
+              <Shield className="w-5 h-5 text-green-400" />
               Registry Connection Status
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-3 gap-4">
-              <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+              <div className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
                 <div className="flex items-center justify-between mb-2">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
-                  <Badge className="bg-green-100 text-green-700 text-xs">Active</Badge>
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <Badge className="bg-green-500/15 text-green-300 text-xs">Active</Badge>
                 </div>
                 <p className="font-semibold text-white mb-1">ABR Lookup</p>
                 <p className="text-xs text-slate-300">Last sync: 5 mins ago</p>
               </div>
 
-              <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+              <div className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
                 <div className="flex items-center justify-between mb-2">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
-                  <Badge className="bg-green-100 text-green-700 text-xs">Active</Badge>
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <Badge className="bg-green-500/15 text-green-300 text-xs">Active</Badge>
                 </div>
                 <p className="font-semibold text-white mb-1">ASIC Registry</p>
                 <p className="text-xs text-slate-300">Last sync: 2 mins ago</p>
               </div>
 
-              <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+              <div className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
                 <div className="flex items-center justify-between mb-2">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
-                  <Badge className="bg-green-100 text-green-700 text-xs">Active</Badge>
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <Badge className="bg-green-500/15 text-green-300 text-xs">Active</Badge>
                 </div>
                 <p className="font-semibold text-white mb-1">GST Status</p>
                 <p className="text-xs text-slate-300">Real-time validation</p>
@@ -325,12 +325,12 @@ function EntityVerificationWizard({ onBack }: { onBack: () => void }) {
             ].map((s) => (
               <div key={s.num} className="flex items-center">
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
-                  step >= s.num ? 'bg-green-600 text-white' : 'bg-gray-200 text-slate-300'
+                  step >= s.num ? 'bg-green-600 text-white' : 'bg-white/10 text-slate-300'
                 }`}>
                   {s.num}
                 </div>
                 <div className="ml-2">
-                  <p className={`text-xs font-medium ${step >= s.num ? 'text-green-600' : 'text-slate-400'}`}>
+                  <p className={`text-xs font-medium ${step >= s.num ? 'text-green-400' : 'text-slate-400'}`}>
                     {s.label}
                   </p>
                 </div>
@@ -382,7 +382,7 @@ function EntityVerificationWizard({ onBack }: { onBack: () => void }) {
                   <select
                     value={formData.country}
                     onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                    className="w-full px-3 py-2 border border-white/10 rounded-md"
                   >
                     <option value="Australia">Australia</option>
                     <option value="New Zealand">New Zealand</option>
@@ -392,9 +392,9 @@ function EntityVerificationWizard({ onBack }: { onBack: () => void }) {
                 </div>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <h4 className="font-semibold text-blue-900 mb-2">What We'll Verify</h4>
-                <ul className="text-sm text-blue-800 space-y-1">
+              <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
+                <h4 className="font-semibold text-blue-300 mb-2">What We'll Verify</h4>
+                <ul className="text-sm text-blue-300 space-y-1">
                   <li>• Entity exists in official registry</li>
                   <li>• Entity is currently active</li>
                   <li>• Name matches official records</li>
@@ -427,8 +427,8 @@ function EntityVerificationWizard({ onBack }: { onBack: () => void }) {
             </CardHeader>
             <CardContent className="p-8">
               <div className="text-center space-y-6">
-                <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto animate-pulse">
-                  <Search className="w-10 h-10 text-green-600" />
+                <div className="w-20 h-20 bg-green-500/15 rounded-full flex items-center justify-center mx-auto animate-pulse">
+                  <Search className="w-10 h-10 text-green-400" />
                 </div>
 
                 <div>
@@ -439,15 +439,15 @@ function EntityVerificationWizard({ onBack }: { onBack: () => void }) {
                 </div>
 
                 <div className="space-y-3 max-w-md mx-auto">
-                  <div className="flex items-center gap-3 p-3 bg-green-50 border border-green-200 rounded-lg">
-                    <CheckCircle className="w-5 h-5 text-green-600" />
+                  <div className="flex items-center gap-3 p-3 bg-green-500/10 border border-green-500/30 rounded-lg">
+                    <CheckCircle className="w-5 h-5 text-green-400" />
                     <span className="text-sm text-slate-300">Querying ABR (Australian Business Register)</span>
                   </div>
-                  <div className="flex items-center gap-3 p-3 bg-green-50 border border-green-200 rounded-lg">
-                    <CheckCircle className="w-5 h-5 text-green-600" />
+                  <div className="flex items-center gap-3 p-3 bg-green-500/10 border border-green-500/30 rounded-lg">
+                    <CheckCircle className="w-5 h-5 text-green-400" />
                     <span className="text-sm text-slate-300">Checking ASIC Registry</span>
                   </div>
-                  <div className="flex items-center gap-3 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                  <div className="flex items-center gap-3 p-3 bg-blue-500/10 border border-blue-500/30 rounded-lg">
                     <div className="w-5 h-5 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
                     <span className="text-sm text-slate-300">Validating GST status</span>
                   </div>
@@ -485,7 +485,7 @@ function EntityVerificationWizard({ onBack }: { onBack: () => void }) {
                       <td className="px-4 py-3 text-slate-300">{formData.entityName}</td>
                       <td className="px-4 py-3 text-slate-300">{registryData.name}</td>
                       <td className="px-4 py-3">
-                        <Badge className="bg-green-100 text-green-700">
+                        <Badge className="bg-green-500/15 text-green-300">
                           <CheckCircle className="w-3 h-3 mr-1" /> Match
                         </Badge>
                       </td>
@@ -495,7 +495,7 @@ function EntityVerificationWizard({ onBack }: { onBack: () => void }) {
                       <td className="px-4 py-3 text-slate-300">{formData.abn}</td>
                       <td className="px-4 py-3 text-slate-300">{registryData.abn}</td>
                       <td className="px-4 py-3">
-                        <Badge className="bg-green-100 text-green-700">
+                        <Badge className="bg-green-500/15 text-green-300">
                           <CheckCircle className="w-3 h-3 mr-1" /> Match
                         </Badge>
                       </td>
@@ -505,7 +505,7 @@ function EntityVerificationWizard({ onBack }: { onBack: () => void }) {
                       <td className="px-4 py-3 text-slate-300">{formData.acn}</td>
                       <td className="px-4 py-3 text-slate-300">{registryData.acn}</td>
                       <td className="px-4 py-3">
-                        <Badge className="bg-green-100 text-green-700">
+                        <Badge className="bg-green-500/15 text-green-300">
                           <CheckCircle className="w-3 h-3 mr-1" /> Match
                         </Badge>
                       </td>
@@ -515,7 +515,7 @@ function EntityVerificationWizard({ onBack }: { onBack: () => void }) {
                       <td className="px-4 py-3 text-slate-300">-</td>
                       <td className="px-4 py-3 text-slate-300">{registryData.status}</td>
                       <td className="px-4 py-3">
-                        <Badge className="bg-green-100 text-green-700">
+                        <Badge className="bg-green-500/15 text-green-300">
                           <CheckCircle className="w-3 h-3 mr-1" /> Active
                         </Badge>
                       </td>
@@ -525,7 +525,7 @@ function EntityVerificationWizard({ onBack }: { onBack: () => void }) {
                       <td className="px-4 py-3 text-slate-300">-</td>
                       <td className="px-4 py-3 text-slate-300">{registryData.gstStatus}</td>
                       <td className="px-4 py-3">
-                        <Badge className="bg-green-100 text-green-700">
+                        <Badge className="bg-green-500/15 text-green-300">
                           <CheckCircle className="w-3 h-3 mr-1" /> Verified
                         </Badge>
                       </td>
@@ -534,11 +534,11 @@ function EntityVerificationWizard({ onBack }: { onBack: () => void }) {
                 </table>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <h4 className="font-semibold text-blue-900 mb-2">Directors (from Registry)</h4>
+              <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
+                <h4 className="font-semibold text-blue-300 mb-2">Directors (from Registry)</h4>
                 <div className="flex flex-wrap gap-2">
                   {registryData.directors.map((director: string, idx: number) => (
-                    <Badge key={idx} className="bg-blue-100 text-blue-700">{director}</Badge>
+                    <Badge key={idx} className="bg-blue-500/15 text-blue-300">{director}</Badge>
                   ))}
                 </div>
               </div>
@@ -570,7 +570,7 @@ function EntityVerificationWizard({ onBack }: { onBack: () => void }) {
                 <div className="grid md:grid-cols-2 gap-4 text-left">
                   <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">Verification Status</p>
-                    <p className="font-semibold text-green-600">VERIFIED</p>
+                    <p className="font-semibold text-green-400">VERIFIED</p>
                   </div>
                   <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">Entity Status</p>
@@ -586,7 +586,7 @@ function EntityVerificationWizard({ onBack }: { onBack: () => void }) {
                   </div>
                   <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">GST Status</p>
-                    <p className="font-semibold text-green-600">Registered</p>
+                    <p className="font-semibold text-green-400">Registered</p>
                   </div>
                   <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">Directors</p>
@@ -594,12 +594,12 @@ function EntityVerificationWizard({ onBack }: { onBack: () => void }) {
                   </div>
                 </div>
 
-                <div className="p-4 bg-purple-50 border border-purple-200 rounded-lg text-left">
+                <div className="p-4 bg-purple-500/10 border border-purple-500/30 rounded-lg text-left">
                   <div className="flex items-start gap-2">
-                    <RefreshCw className="w-5 h-5 text-purple-600 mt-0.5" />
+                    <RefreshCw className="w-5 h-5 text-purple-400 mt-0.5" />
                     <div>
-                      <p className="font-semibold text-purple-900">Continuous Monitoring Active</p>
-                      <p className="text-sm text-purple-700 mt-1">
+                      <p className="font-semibold text-purple-300">Continuous Monitoring Active</p>
+                      <p className="text-sm text-purple-300 mt-1">
                         Entity status will be monitored for changes in registration, directors, or deregistration risk.
                       </p>
                     </div>

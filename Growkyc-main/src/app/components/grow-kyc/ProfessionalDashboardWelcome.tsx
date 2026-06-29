@@ -55,7 +55,7 @@ export function ProfessionalDashboardWelcome({
         return [
           { label: 'Active Clients', value: '1,247', change: '+12', trend: 'up', icon: Users, color: 'text-[#13B5EA]' },
           { label: 'Pending Reviews', value: '28', change: '-5', trend: 'down', icon: Clock, color: 'text-[#FFA300]' },
-          { label: 'High Risk Clients', value: '15', change: '+2', trend: 'up', icon: AlertTriangle, color: 'text-red-600' },
+          { label: 'High Risk Clients', value: '15', change: '+2', trend: 'up', icon: AlertTriangle, color: 'text-red-400' },
           { label: 'Compliance Score', value: '96%', change: '+3%', trend: 'up', icon: Award, color: 'text-[#3DD598]' }
         ];
       case 'partner':
@@ -70,7 +70,7 @@ export function ProfessionalDashboardWelcome({
           { label: 'Transactions Monitored', value: '24.5K', change: '+1.2K', trend: 'up', icon: Activity, color: 'text-[#13B5EA]' },
           { label: 'Alerts Generated', value: '147', change: '+23', trend: 'up', icon: AlertCircle, color: 'text-[#FFA300]' },
           { label: 'False Positives', value: '12%', change: '-3%', trend: 'down', icon: CheckCircle, color: 'text-[#3DD598]' },
-          { label: 'Cases Escalated', value: '8', change: '+2', trend: 'up', icon: AlertTriangle, color: 'text-red-600' }
+          { label: 'Cases Escalated', value: '8', change: '+2', trend: 'up', icon: AlertTriangle, color: 'text-red-400' }
         ];
       default:
         return [
@@ -250,10 +250,10 @@ export function ProfessionalDashboardWelcome({
 
   const getUrgencyColor = (urgency: string) => {
     switch(urgency) {
-      case 'high': return 'border-l-4 border-red-500 bg-red-50';
-      case 'medium': return 'border-l-4 border-[#FFA300] bg-orange-50';
-      case 'low': return 'border-l-4 border-[#13B5EA] bg-blue-50';
-      default: return 'border-l-4 border-gray-300 bg-[#0f172a]';
+      case 'high': return 'border-l-4 border-red-500 bg-red-500/10';
+      case 'medium': return 'border-l-4 border-[#FFA300] bg-orange-500/10';
+      case 'low': return 'border-l-4 border-[#13B5EA] bg-blue-500/10';
+      default: return 'border-l-4 border-white/10 bg-[#0f172a]';
     }
   };
 
@@ -387,7 +387,7 @@ export function ProfessionalDashboardWelcome({
                   <button
                     key={index}
                     onClick={() => onNavigate(link.view)}
-                    className="flex flex-col items-center justify-center p-4 rounded-lg border-2 border-white/10 hover:border-[#13B5EA] hover:bg-blue-50 transition-all group"
+                    className="flex flex-col items-center justify-center p-4 rounded-lg border-2 border-white/10 hover:border-[#13B5EA] hover:bg-blue-500/10 transition-all group"
                   >
                     <Icon className="w-6 h-6 text-slate-300 group-hover:text-[#13B5EA] mb-2" />
                     <span className="text-sm font-medium text-white text-center">{link.label}</span>

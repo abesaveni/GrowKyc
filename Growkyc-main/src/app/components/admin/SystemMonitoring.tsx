@@ -150,40 +150,40 @@ export function SystemMonitoring({ onBack }: SystemMonitoringProps) {
               <div className="space-y-6">
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-semibold text-gray-700">CPU Usage</span>
-                    <span className="text-sm font-bold text-gray-900">{metrics.cpuUsage}%</span>
+                    <span className="text-sm font-semibold text-slate-300">CPU Usage</span>
+                    <span className="text-sm font-bold text-slate-100">{metrics.cpuUsage}%</span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-3">
+                  <div className="w-full bg-white/10 rounded-full h-3">
                     <div className="bg-green-600 h-3 rounded-full" style={{ width: `${metrics.cpuUsage}%` }}></div>
                   </div>
                 </div>
 
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-semibold text-gray-700">Memory Usage</span>
-                    <span className="text-sm font-bold text-gray-900">{metrics.memoryUsage}%</span>
+                    <span className="text-sm font-semibold text-slate-300">Memory Usage</span>
+                    <span className="text-sm font-bold text-slate-100">{metrics.memoryUsage}%</span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-3">
+                  <div className="w-full bg-white/10 rounded-full h-3">
                     <div className="bg-amber-600 h-3 rounded-full" style={{ width: `${metrics.memoryUsage}%` }}></div>
                   </div>
                 </div>
 
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-semibold text-gray-700">Storage Used</span>
-                    <span className="text-sm font-bold text-gray-900">{metrics.storageUsed} GB / 500 GB</span>
+                    <span className="text-sm font-semibold text-slate-300">Storage Used</span>
+                    <span className="text-sm font-bold text-slate-100">{metrics.storageUsed} GB / 500 GB</span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-3">
+                  <div className="w-full bg-white/10 rounded-full h-3">
                     <div className="bg-blue-600 h-3 rounded-full" style={{ width: `${(metrics.storageUsed / 500) * 100}%` }}></div>
                   </div>
                 </div>
 
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-semibold text-gray-700">DB Connections</span>
-                    <span className="text-sm font-bold text-gray-900">{metrics.dbConnections} / 120</span>
+                    <span className="text-sm font-semibold text-slate-300">DB Connections</span>
+                    <span className="text-sm font-bold text-slate-100">{metrics.dbConnections} / 120</span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-3">
+                  <div className="w-full bg-white/10 rounded-full h-3">
                     <div className="bg-purple-600 h-3 rounded-full" style={{ width: `${(metrics.dbConnections / 120) * 100}%` }}></div>
                   </div>
                 </div>
@@ -198,37 +198,37 @@ export function SystemMonitoring({ onBack }: SystemMonitoringProps) {
             </CardHeader>
             <CardContent>
               <div className="space-y-6">
-                <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg border border-blue-200">
+                <div className="flex items-center justify-between p-4 bg-blue-500/10 rounded-lg border border-blue-500/30">
                   <div className="flex items-center gap-3">
-                    <Globe className="w-8 h-8 text-blue-600" />
+                    <Globe className="w-8 h-8 text-blue-400" />
                     <div>
-                      <div className="font-bold text-gray-900">Bandwidth Used</div>
-                      <div className="text-sm text-gray-600">Last 24 hours</div>
+                      <div className="font-bold text-slate-100">Bandwidth Used</div>
+                      <div className="text-sm text-slate-300">Last 24 hours</div>
                     </div>
                   </div>
-                  <div className="text-3xl font-bold text-blue-600">{metrics.bandwidthUsed} TB</div>
+                  <div className="text-3xl font-bold text-blue-400">{metrics.bandwidthUsed} TB</div>
                 </div>
 
-                <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg border border-green-200">
+                <div className="flex items-center justify-between p-4 bg-green-500/10 rounded-lg border border-green-500/30">
                   <div className="flex items-center gap-3">
-                    <Zap className="w-8 h-8 text-green-600" />
+                    <Zap className="w-8 h-8 text-green-400" />
                     <div>
-                      <div className="font-bold text-gray-900">API Calls</div>
-                      <div className="text-sm text-gray-600">Last 24 hours</div>
+                      <div className="font-bold text-slate-100">API Calls</div>
+                      <div className="text-sm text-slate-300">Last 24 hours</div>
                     </div>
                   </div>
-                  <div className="text-3xl font-bold text-green-600">{metrics.apiCalls24h.toLocaleString()}</div>
+                  <div className="text-3xl font-bold text-green-400">{metrics.apiCalls24h.toLocaleString()}</div>
                 </div>
 
-                <div className="flex items-center justify-between p-4 bg-purple-50 rounded-lg border border-purple-200">
+                <div className="flex items-center justify-between p-4 bg-purple-500/10 rounded-lg border border-purple-500/30">
                   <div className="flex items-center gap-3">
-                    <Server className="w-8 h-8 text-purple-600" />
+                    <Server className="w-8 h-8 text-purple-400" />
                     <div>
-                      <div className="font-bold text-gray-900">Avg Response Time</div>
-                      <div className="text-sm text-gray-600">Last hour</div>
+                      <div className="font-bold text-slate-100">Avg Response Time</div>
+                      <div className="text-sm text-slate-300">Last hour</div>
                     </div>
                   </div>
-                  <div className="text-3xl font-bold text-purple-600">{metrics.avgResponseTime}ms</div>
+                  <div className="text-3xl font-bold text-purple-400">{metrics.avgResponseTime}ms</div>
                 </div>
               </div>
             </CardContent>
@@ -240,7 +240,7 @@ export function SystemMonitoring({ onBack }: SystemMonitoringProps) {
           <Card className="mb-8">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <AlertTriangle className="w-5 h-5 text-amber-600" />
+                <AlertTriangle className="w-5 h-5 text-amber-400" />
                 Active Alerts
               </CardTitle>
             </CardHeader>
@@ -248,15 +248,15 @@ export function SystemMonitoring({ onBack }: SystemMonitoringProps) {
               <div className="space-y-3">
                 {alerts.map((alert, idx) => (
                   <div key={idx} className={`flex items-center justify-between p-4 rounded-lg border-2 ${
-                    alert.severity === 'warning' ? 'bg-amber-50 border-amber-200' : 'bg-blue-50 border-blue-200'
+                    alert.severity === 'warning' ? 'bg-amber-500/10 border-amber-500/30' : 'bg-blue-500/10 border-blue-500/30'
                   }`}>
                     <div className="flex items-center gap-4">
                       <AlertTriangle className={`w-5 h-5 ${
-                        alert.severity === 'warning' ? 'text-amber-600' : 'text-blue-600'
+                        alert.severity === 'warning' ? 'text-amber-400' : 'text-blue-400'
                       }`} />
                       <div>
-                        <div className="font-semibold text-gray-900">{alert.message}</div>
-                        <div className="text-sm text-gray-600">{alert.time}</div>
+                        <div className="font-semibold text-slate-100">{alert.message}</div>
+                        <div className="text-sm text-slate-300">{alert.time}</div>
                       </div>
                     </div>
                     <Badge className={alert.severity === 'warning' ? 'bg-amber-600 text-white' : 'bg-blue-600 text-white'}>
@@ -284,10 +284,10 @@ export function SystemMonitoring({ onBack }: SystemMonitoringProps) {
                 { endpoint: '/api/screening/asic-banned', calls: 5438, avgTime: 112 },
                 { endpoint: '/api/licensing/afsl-check', calls: 3892, avgTime: 134 }
               ].map((endpoint, idx) => (
-                <div key={idx} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-gray-200">
+                <div key={idx} className="flex items-center justify-between p-4 bg-white/5 rounded-lg border border-white/10">
                   <div className="flex-1">
-                    <div className="font-mono text-sm font-semibold text-gray-900 mb-1">{endpoint.endpoint}</div>
-                    <div className="flex items-center gap-4 text-xs text-gray-600">
+                    <div className="font-mono text-sm font-semibold text-slate-100 mb-1">{endpoint.endpoint}</div>
+                    <div className="flex items-center gap-4 text-xs text-slate-300">
                       <span>{endpoint.calls.toLocaleString()} calls</span>
                       <span>•</span>
                       <span>{endpoint.avgTime}ms avg</span>

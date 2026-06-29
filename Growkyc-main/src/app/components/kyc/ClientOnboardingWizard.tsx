@@ -157,7 +157,7 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
       action: `successfully onboarded client ${newClient.name}`,
       time: 'Just now',
       iconName: 'CheckCircle',
-      color: 'text-green-600'
+      color: 'text-green-400'
     };
     const savedLogs = localStorage.getItem('growkyc_logged_activities');
     const logs = savedLogs ? JSON.parse(savedLogs) : [];
@@ -260,7 +260,7 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
       action: `sent high-risk client ${newClient.name} for senior approval`,
       time: 'Just now',
       iconName: 'AlertTriangle',
-      color: 'text-amber-600'
+      color: 'text-amber-400'
     };
     const savedLogs = localStorage.getItem('growkyc_logged_activities');
     const logs = savedLogs ? JSON.parse(savedLogs) : [];
@@ -404,10 +404,10 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
 
   const getRiskColor = (risk: string) => {
     switch (risk) {
-      case 'low': return 'bg-green-100 text-green-700 border-green-200';
-      case 'medium': return 'bg-yellow-100 text-yellow-700 border-yellow-200';
-      case 'high': return 'bg-red-100 text-red-700 border-red-200';
-      default: return 'bg-gray-100 text-gray-700 border-gray-200';
+      case 'low': return 'bg-green-500/15 text-green-300 border-green-500/30';
+      case 'medium': return 'bg-yellow-500/15 text-yellow-300 border-yellow-500/30';
+      case 'high': return 'bg-red-500/15 text-red-300 border-red-500/30';
+      default: return 'bg-white/5 text-slate-300 border-white/10';
     }
   };
 
@@ -430,8 +430,8 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Client Onboarding</h2>
-            <p className="text-sm text-gray-600 mt-1">Complete CDD for new client</p>
+            <h2 className="text-2xl font-bold text-slate-100">Client Onboarding</h2>
+            <p className="text-sm text-slate-300 mt-1">Complete CDD for new client</p>
           </div>
           <div className="flex items-center gap-3">
             <Button variant="outline" size="sm">
@@ -439,7 +439,7 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
               Save Draft
             </Button>
             {onClose && (
-              <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
+              <button onClick={onClose} className="text-slate-400 hover:text-slate-300">
                 <X className="w-6 h-6" />
               </button>
             )}
@@ -447,7 +447,7 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
         </div>
 
         {/* Progress Steps */}
-        <div className="p-6 border-b bg-gray-50 overflow-x-auto">
+        <div className="p-6 border-b bg-white/5 overflow-x-auto">
           <div className="flex items-center justify-between min-w-[600px]">
             {steps.map((step, index) => {
               const Icon = step.icon;
@@ -460,17 +460,17 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
                     <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold transition-colors mb-1 ${
                       isComplete ? 'bg-green-600 text-white' :
                       isActive ? 'bg-blue-600 text-white' :
-                      'bg-gray-200 text-gray-600'
+                      'bg-white/10 text-slate-300'
                     }`}>
                       {isComplete ? <CheckCircle className="w-5 h-5" /> : <Icon className="w-5 h-5" />}
                     </div>
-                    <span className={`text-[10px] font-semibold ${isActive ? 'text-blue-600' : 'text-gray-600'}`}>
+                    <span className={`text-[10px] font-semibold ${isActive ? 'text-blue-400' : 'text-slate-300'}`}>
                       {step.title}
                     </span>
                   </div>
                   {index < steps.length - 1 && (
                     <div className={`flex-1 h-1 mx-1 rounded transition-colors ${
-                      isComplete ? 'bg-green-600' : 'bg-gray-200'
+                      isComplete ? 'bg-green-600' : 'bg-white/10'
                     }`} />
                   )}
                 </React.Fragment>
@@ -485,8 +485,8 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
           {currentStep === 1 && (
             <div className="space-y-6">
               <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Select Client Type</h3>
-                <p className="text-gray-600">Choose the type of entity you're onboarding</p>
+                <h3 className="text-xl font-bold text-slate-100 mb-2">Select Client Type</h3>
+                <p className="text-slate-300">Choose the type of entity you're onboarding</p>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 {[
@@ -502,15 +502,15 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
                       onClick={() => setClientType(option.type as any)}
                       className={`p-6 rounded-lg border-2 text-left relative transition-all hover:shadow-md ${
                         clientType === option.type
-                          ? 'border-blue-500 bg-blue-50'
-                          : 'border-gray-200 hover:border-blue-300'
+                          ? 'border-blue-500 bg-blue-500/10'
+                          : 'border-white/10 hover:border-blue-300'
                       }`}
                     >
-                      <Icon className={`w-8 h-8 mb-3 ${clientType === option.type ? 'text-blue-600' : 'text-gray-600'}`} />
-                      <h4 className="font-bold text-gray-900 mb-1">{option.label}</h4>
-                      <p className="text-sm text-gray-600">{option.description}</p>
+                      <Icon className={`w-8 h-8 mb-3 ${clientType === option.type ? 'text-blue-400' : 'text-slate-300'}`} />
+                      <h4 className="font-bold text-slate-100 mb-1">{option.label}</h4>
+                      <p className="text-sm text-slate-300">{option.description}</p>
                       {clientType === option.type && (
-                        <CheckCircle className="w-5 h-5 text-blue-600 absolute top-4 right-4" />
+                        <CheckCircle className="w-5 h-5 text-blue-400 absolute top-4 right-4" />
                       )}
                     </button>
                   );
@@ -523,31 +523,31 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
           {currentStep === 2 && (
             <div className="space-y-6">
               <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Basic Details</h3>
-                <p className="text-gray-600">Enter client information</p>
+                <h3 className="text-xl font-bold text-slate-100 mb-2">Basic Details</h3>
+                <p className="text-slate-300">Enter client information</p>
               </div>
               <div className="grid grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-sm font-semibold text-slate-100 mb-2">
                     {clientType === 'individual' ? 'Full Name' : 'Entity Name'} *
                   </label>
                   <input
                     type="text"
                     value={basicDetails.name}
                     onChange={(e) => setBasicDetails({ ...basicDetails, name: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder={clientType === 'individual' ? 'Sarah Mitchell' : 'Apex Holdings Pty Ltd'}
                   />
                 </div>
 
                 {clientType === 'individual' && (
                   <div>
-                    <label className="block text-sm font-semibold text-gray-900 mb-2">Date of Birth *</label>
+                    <label className="block text-sm font-semibold text-slate-100 mb-2">Date of Birth *</label>
                     <input
                       type="date"
                       value={basicDetails.dateOfBirth}
                       onChange={(e) => setBasicDetails({ ...basicDetails, dateOfBirth: e.target.value })}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
                 )}
@@ -555,23 +555,23 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
                 {(clientType === 'company' || clientType === 'trust') && (
                   <>
                     <div>
-                      <label className="block text-sm font-semibold text-gray-900 mb-2">ABN</label>
+                      <label className="block text-sm font-semibold text-slate-100 mb-2">ABN</label>
                       <input
                         type="text"
                         value={basicDetails.abn}
                         onChange={(e) => setBasicDetails({ ...basicDetails, abn: e.target.value })}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="12 345 678 901"
                       />
                     </div>
                     {clientType === 'company' && (
                       <div>
-                        <label className="block text-sm font-semibold text-gray-900 mb-2">ACN</label>
+                        <label className="block text-sm font-semibold text-slate-100 mb-2">ACN</label>
                         <input
                           type="text"
                           value={basicDetails.acn}
                           onChange={(e) => setBasicDetails({ ...basicDetails, acn: e.target.value })}
-                          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                           placeholder="123 456 789"
                         />
                       </div>
@@ -580,44 +580,44 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
                 )}
 
                 <div className="col-span-2">
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">Address *</label>
+                  <label className="block text-sm font-semibold text-slate-100 mb-2">Address *</label>
                   <input
                     type="text"
                     value={basicDetails.address}
                     onChange={(e) => setBasicDetails({ ...basicDetails, address: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="45 Collins Street, Melbourne VIC 3000"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">Email *</label>
+                  <label className="block text-sm font-semibold text-slate-100 mb-2">Email *</label>
                   <input
                     type="email"
                     value={basicDetails.email}
                     onChange={(e) => setBasicDetails({ ...basicDetails, email: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="sarah@example.com"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">Phone</label>
+                  <label className="block text-sm font-semibold text-slate-100 mb-2">Phone</label>
                   <input
                     type="tel"
                     value={basicDetails.phone}
                     onChange={(e) => setBasicDetails({ ...basicDetails, phone: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="0400 123 456"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">Country of Residence *</label>
+                  <label className="block text-sm font-semibold text-slate-100 mb-2">Country of Residence *</label>
                   <select
                     value={basicDetails.countryOfResidence}
                     onChange={(e) => setBasicDetails({ ...basicDetails, countryOfResidence: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   >
                     <option value="Australia">Australia</option>
                     <option value="United States">United States</option>
@@ -635,8 +635,8 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
             <div className="space-y-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Beneficial Ownership</h3>
-                  <p className="text-gray-600">Identify all beneficial owners (25%+ ownership or control)</p>
+                  <h3 className="text-xl font-bold text-slate-100 mb-2">Beneficial Ownership</h3>
+                  <p className="text-slate-300">Identify all beneficial owners (25%+ ownership or control)</p>
                 </div>
                 <Button onClick={addBeneficialOwner}>
                   <Plus className="w-4 h-4 mr-2" />
@@ -646,27 +646,27 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
 
               <div className="space-y-4">
                 {beneficialOwners.map((owner) => (
-                  <div key={owner.id} className="p-4 border-2 border-gray-200 rounded-lg">
+                  <div key={owner.id} className="p-4 border-2 border-white/10 rounded-lg">
                     <div className="grid grid-cols-12 gap-4 items-end">
                       <div className="col-span-5">
-                        <label className="block text-sm font-semibold text-gray-900 mb-2">Name</label>
+                        <label className="block text-sm font-semibold text-slate-100 mb-2">Name</label>
                         <input
                           type="text"
                           value={owner.name}
                           onChange={(e) => updateBeneficialOwner(owner.id, 'name', e.target.value)}
-                          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                           placeholder="Full name"
                         />
                       </div>
                       <div className="col-span-3">
-                        <label className="block text-sm font-semibold text-gray-900 mb-2">Ownership %</label>
+                        <label className="block text-sm font-semibold text-slate-100 mb-2">Ownership %</label>
                         <input
                           type="number"
                           min="0"
                           max="100"
                           value={owner.ownership}
                           onChange={(e) => updateBeneficialOwner(owner.id, 'ownership', parseInt(e.target.value) || 0)}
-                          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                       </div>
                       <div className="col-span-3">
@@ -675,9 +675,9 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
                             type="checkbox"
                             checked={owner.controlFlag}
                             onChange={(e) => updateBeneficialOwner(owner.id, 'controlFlag', e.target.checked)}
-                            className="w-5 h-5 text-blue-600 rounded focus:ring-blue-500"
+                            className="w-5 h-5 text-blue-400 rounded focus:ring-blue-500"
                           />
-                          <span className="text-sm font-semibold text-gray-900">Control</span>
+                          <span className="text-sm font-semibold text-slate-100">Control</span>
                         </label>
                       </div>
                       <div className="col-span-1">
@@ -685,7 +685,7 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
                           variant="outline"
                           size="sm"
                           onClick={() => removeBeneficialOwner(owner.id)}
-                          className="text-red-600 hover:bg-red-50"
+                          className="text-red-400 hover:bg-red-500/10"
                         >
                           <Trash2 className="w-4 h-4" />
                         </Button>
@@ -696,25 +696,25 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
               </div>
 
               {/* Ownership Visualization */}
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-                <h4 className="font-bold text-gray-900 mb-4">Ownership Structure</h4>
+              <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-6">
+                <h4 className="font-bold text-slate-100 mb-4">Ownership Structure</h4>
                 <div className="space-y-3">
                   <div className="bg-white rounded-lg p-4 border-2 border-blue-500">
-                    <p className="font-bold text-center text-gray-900">{basicDetails.name || 'Entity'}</p>
+                    <p className="font-bold text-center text-slate-100">{basicDetails.name || 'Entity'}</p>
                   </div>
                   {beneficialOwners.map((owner) => (
                     <div key={owner.id} className="flex items-center">
                       <div className="w-1 h-12 bg-blue-400 ml-24" />
                       <div className="flex-1">
-                        <div className="bg-white rounded-lg p-3 border-2 border-gray-200 ml-4">
+                        <div className="bg-white rounded-lg p-3 border-2 border-white/10 ml-4">
                           <div className="flex items-center justify-between">
-                            <p className="font-semibold text-gray-900">{owner.name || 'Unnamed Owner'}</p>
+                            <p className="font-semibold text-slate-100">{owner.name || 'Unnamed Owner'}</p>
                             <div className="flex items-center gap-2">
-                              <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-bold">
+                              <span className="px-3 py-1 bg-blue-500/15 text-blue-300 rounded-full text-sm font-bold">
                                 {owner.ownership}%
                               </span>
                               {owner.controlFlag && (
-                                <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-bold">
+                                <span className="px-3 py-1 bg-purple-500/15 text-purple-300 rounded-full text-sm font-bold">
                                   Control
                                 </span>
                               )}
@@ -733,8 +733,8 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
           {currentStep === 4 && (
             <div className="space-y-6">
               <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Identity Verification</h3>
-                <p className="text-gray-600">Verify identity through GreenID or InfoTrack</p>
+                <h3 className="text-xl font-bold text-slate-100 mb-2">Identity Verification</h3>
+                <p className="text-slate-300">Verify identity through GreenID or InfoTrack</p>
               </div>
 
               {!showInfoTrack ? (
@@ -777,27 +777,27 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
                   )}
 
                   {greenIDStatus === 'verified' && (
-                    <div className="bg-green-50 border-2 border-green-200 rounded-lg p-6">
+                    <div className="bg-green-500/10 border-2 border-green-500/30 rounded-lg p-6">
                       <div className="flex items-center mb-4">
-                        <CheckCircle className="w-6 h-6 text-green-600 mr-3" />
-                        <h4 className="font-bold text-green-900 text-lg">Identity Verified</h4>
+                        <CheckCircle className="w-6 h-6 text-green-400 mr-3" />
+                        <h4 className="font-bold text-green-300 text-lg">Identity Verified</h4>
                       </div>
                       <div className="grid grid-cols-2 gap-4">
                         <div>
-                          <p className="text-sm text-gray-600">Verification Status</p>
-                          <p className="font-bold text-green-700">Passed</p>
+                          <p className="text-sm text-slate-300">Verification Status</p>
+                          <p className="font-bold text-green-300">Passed</p>
                         </div>
                         <div>
-                          <p className="text-sm text-gray-600">Confidence Score</p>
-                          <p className="font-bold text-green-700">98%</p>
+                          <p className="text-sm text-slate-300">Confidence Score</p>
+                          <p className="font-bold text-green-300">98%</p>
                         </div>
                         <div>
-                          <p className="text-sm text-gray-600">Documents Verified</p>
-                          <p className="font-bold text-green-700">Driver's License, Passport</p>
+                          <p className="text-sm text-slate-300">Documents Verified</p>
+                          <p className="font-bold text-green-300">Driver's License, Passport</p>
                         </div>
                         <div>
-                          <p className="text-sm text-gray-600">Verification Date</p>
-                          <p className="font-bold text-green-700">{new Date().toLocaleDateString()}</p>
+                          <p className="text-sm text-slate-300">Verification Date</p>
+                          <p className="font-bold text-green-300">{new Date().toLocaleDateString()}</p>
                         </div>
                       </div>
                     </div>
@@ -834,8 +834,8 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
             <div className="space-y-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Screening Checks</h3>
-                  <p className="text-gray-600">Sanctions, PEP, and Adverse Media screening</p>
+                  <h3 className="text-xl font-bold text-slate-100 mb-2">Screening Checks</h3>
+                  <p className="text-slate-300">Sanctions, PEP, and Adverse Media screening</p>
                 </div>
                 <Button onClick={simulateScreening}>
                   <Search className="w-4 h-4 mr-2" />
@@ -847,28 +847,28 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
                 {/* Sanctions card */}
                 <div className={`border-2 rounded-lg p-6 bg-white ${
                   screeningResults.sanctions.status === 'bypassed' 
-                    ? 'border-amber-200 bg-amber-50/20' 
-                    : 'border-green-200'
+                    ? 'border-amber-500/30 bg-amber-500/10/20' 
+                    : 'border-green-500/30'
                 }`}>
                   <div className="flex items-center justify-between mb-4">
-                    <Lock className={`w-8 h-8 ${screeningResults.sanctions.status === 'bypassed' ? 'text-amber-500' : 'text-green-600'}`} />
+                    <Lock className={`w-8 h-8 ${screeningResults.sanctions.status === 'bypassed' ? 'text-amber-500' : 'text-green-400'}`} />
                     {screeningResults.sanctions.status === 'bypassed' ? (
                       <AlertTriangle className="w-6 h-6 text-amber-500" />
                     ) : (
-                      <CheckCircle className="w-6 h-6 text-green-600" />
+                      <CheckCircle className="w-6 h-6 text-green-400" />
                     )}
                   </div>
-                  <h4 className="font-bold text-gray-900 mb-2">Sanctions</h4>
-                  <p className={`text-3xl font-bold mb-1 ${screeningResults.sanctions.status === 'bypassed' ? 'text-amber-600' : 'text-green-600'}`}>
+                  <h4 className="font-bold text-slate-100 mb-2">Sanctions</h4>
+                  <p className={`text-3xl font-bold mb-1 ${screeningResults.sanctions.status === 'bypassed' ? 'text-amber-400' : 'text-green-400'}`}>
                     {screeningResults.sanctions.status === 'bypassed' ? '—' : screeningResults.sanctions.matches}
                   </p>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-slate-300">
                     {screeningResults.sanctions.status === 'bypassed' ? 'Screening disabled' : 'Matches found'}
                   </p>
                   <span className={`inline-block px-3 py-1 rounded-full text-sm font-semibold mt-3 ${
                     screeningResults.sanctions.status === 'bypassed' 
-                      ? 'bg-amber-100 text-amber-700' 
-                      : 'bg-green-100 text-green-700'
+                      ? 'bg-amber-500/15 text-amber-300' 
+                      : 'bg-green-500/15 text-green-300'
                   }`}>
                     {screeningResults.sanctions.status === 'bypassed' ? 'BYPASSED' : 'CLEAR'}
                   </span>
@@ -877,28 +877,28 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
                 {/* PEP check card */}
                 <div className={`border-2 rounded-lg p-6 bg-white ${
                   screeningResults.pep.status === 'bypassed' 
-                    ? 'border-amber-200 bg-amber-50/20' 
-                    : 'border-green-200'
+                    ? 'border-amber-500/30 bg-amber-500/10/20' 
+                    : 'border-green-500/30'
                 }`}>
                   <div className="flex items-center justify-between mb-4">
-                    <Shield className={`w-8 h-8 ${screeningResults.pep.status === 'bypassed' ? 'text-amber-500' : 'text-green-600'}`} />
+                    <Shield className={`w-8 h-8 ${screeningResults.pep.status === 'bypassed' ? 'text-amber-500' : 'text-green-400'}`} />
                     {screeningResults.pep.status === 'bypassed' ? (
                       <AlertTriangle className="w-6 h-6 text-amber-500" />
                     ) : (
-                      <CheckCircle className="w-6 h-6 text-green-600" />
+                      <CheckCircle className="w-6 h-6 text-green-400" />
                     )}
                   </div>
-                  <h4 className="font-bold text-gray-900 mb-2">PEP Check</h4>
-                  <p className={`text-3xl font-bold mb-1 ${screeningResults.pep.status === 'bypassed' ? 'text-amber-600' : 'text-green-600'}`}>
+                  <h4 className="font-bold text-slate-100 mb-2">PEP Check</h4>
+                  <p className={`text-3xl font-bold mb-1 ${screeningResults.pep.status === 'bypassed' ? 'text-amber-400' : 'text-green-400'}`}>
                     {screeningResults.pep.status === 'bypassed' ? '—' : screeningResults.pep.matches}
                   </p>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-slate-300">
                     {screeningResults.pep.status === 'bypassed' ? 'Screening disabled' : 'Matches found'}
                   </p>
                   <span className={`inline-block px-3 py-1 rounded-full text-sm font-semibold mt-3 ${
                     screeningResults.pep.status === 'bypassed' 
-                      ? 'bg-amber-100 text-amber-700' 
-                      : 'bg-green-100 text-green-700'
+                      ? 'bg-amber-500/15 text-amber-300' 
+                      : 'bg-green-500/15 text-green-300'
                   }`}>
                     {screeningResults.pep.status === 'bypassed' ? 'BYPASSED' : 'CLEAR'}
                   </span>
@@ -907,28 +907,28 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
                 {/* Adverse Media card */}
                 <div className={`border-2 rounded-lg p-6 bg-white ${
                   screeningResults.adverseMedia.status === 'bypassed' 
-                    ? 'border-amber-200 bg-amber-50/20' 
-                    : 'border-green-200'
+                    ? 'border-amber-500/30 bg-amber-500/10/20' 
+                    : 'border-green-500/30'
                 }`}>
                   <div className="flex items-center justify-between mb-4">
-                    <AlertTriangle className={`w-8 h-8 ${screeningResults.adverseMedia.status === 'bypassed' ? 'text-amber-500' : 'text-green-600'}`} />
+                    <AlertTriangle className={`w-8 h-8 ${screeningResults.adverseMedia.status === 'bypassed' ? 'text-amber-500' : 'text-green-400'}`} />
                     {screeningResults.adverseMedia.status === 'bypassed' ? (
                       <AlertTriangle className="w-6 h-6 text-amber-500" />
                     ) : (
-                      <CheckCircle className="w-6 h-6 text-green-600" />
+                      <CheckCircle className="w-6 h-6 text-green-400" />
                     )}
                   </div>
-                  <h4 className="font-bold text-gray-900 mb-2">Adverse Media</h4>
-                  <p className={`text-3xl font-bold mb-1 ${screeningResults.adverseMedia.status === 'bypassed' ? 'text-amber-600' : 'text-green-600'}`}>
+                  <h4 className="font-bold text-slate-100 mb-2">Adverse Media</h4>
+                  <p className={`text-3xl font-bold mb-1 ${screeningResults.adverseMedia.status === 'bypassed' ? 'text-amber-400' : 'text-green-400'}`}>
                     {screeningResults.adverseMedia.status === 'bypassed' ? '—' : screeningResults.adverseMedia.matches}
                   </p>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-slate-300">
                     {screeningResults.adverseMedia.status === 'bypassed' ? 'Screening disabled' : 'Matches found'}
                   </p>
                   <span className={`inline-block px-3 py-1 rounded-full text-sm font-semibold mt-3 ${
                     screeningResults.adverseMedia.status === 'bypassed' 
-                      ? 'bg-amber-100 text-amber-700' 
-                      : 'bg-green-100 text-green-700'
+                      ? 'bg-amber-500/15 text-amber-300' 
+                      : 'bg-green-500/15 text-green-300'
                   }`}>
                     {screeningResults.adverseMedia.status === 'bypassed' ? 'BYPASSED' : 'CLEAR'}
                   </span>
@@ -938,15 +938,15 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
               {screeningResults.sanctions.status === 'bypassed' || 
               screeningResults.pep.status === 'bypassed' || 
               screeningResults.adverseMedia.status === 'bypassed' ? (
-                <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
-                  <p className="text-amber-900 font-semibold flex items-center gap-2">
-                    <AlertTriangle className="w-5 h-5 text-amber-600" />
+                <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-4">
+                  <p className="text-amber-300 font-semibold flex items-center gap-2">
+                    <AlertTriangle className="w-5 h-5 text-amber-400" />
                     Warning: Some automated screening bots are disabled in the KYC configuration settings. Bypassed screenings require manual investigation.
                   </p>
                 </div>
               ) : (
-                <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                  <p className="text-green-900 font-semibold">
+                <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-4">
+                  <p className="text-green-300 font-semibold">
                     ✓ All screening checks completed successfully. No adverse findings detected.
                   </p>
                 </div>
@@ -959,8 +959,8 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
             <div className="space-y-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Risk Rating</h3>
-                  <p className="text-gray-600">Auto-calculated risk assessment</p>
+                  <h3 className="text-xl font-bold text-slate-100 mb-2">Risk Rating</h3>
+                  <p className="text-slate-300">Auto-calculated risk assessment</p>
                 </div>
                 <Button onClick={calculateRisk}>
                   <Scale className="w-4 h-4 mr-2" />
@@ -975,13 +975,13 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
               </div>
 
               {riskFactors.length > 0 && (
-                <div className="bg-white border border-gray-200 rounded-lg p-6">
-                  <h4 className="font-bold text-gray-900 mb-3">Risk Factors Identified</h4>
+                <div className="bg-white border border-white/10 rounded-lg p-6">
+                  <h4 className="font-bold text-slate-100 mb-3">Risk Factors Identified</h4>
                   <ul className="space-y-2">
                     {riskFactors.map((factor, index) => (
                       <li key={index} className="flex items-center">
-                        <AlertTriangle className="w-5 h-5 text-yellow-600 mr-3" />
-                        <span className="text-gray-700">{factor}</span>
+                        <AlertTriangle className="w-5 h-5 text-yellow-400 mr-3" />
+                        <span className="text-slate-300">{factor}</span>
                       </li>
                     ))}
                   </ul>
@@ -989,12 +989,12 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
               )}
 
               {requiresEnhancedCDD && (
-                <div className="bg-yellow-50 border-2 border-yellow-200 rounded-lg p-6">
+                <div className="bg-yellow-500/10 border-2 border-yellow-500/30 rounded-lg p-6">
                   <div className="flex items-start">
-                    <AlertTriangle className="w-6 h-6 text-yellow-600 mr-3 mt-1" />
+                    <AlertTriangle className="w-6 h-6 text-yellow-400 mr-3 mt-1" />
                     <div className="flex-1">
-                      <h4 className="font-bold text-yellow-900 mb-2">Enhanced CDD Required</h4>
-                      <p className="text-sm text-yellow-700 mb-4">
+                      <h4 className="font-bold text-yellow-300 mb-2">Enhanced CDD Required</h4>
+                      <p className="text-sm text-yellow-300 mb-4">
                         This client requires enhanced customer due diligence measures before approval.
                       </p>
                       <textarea
@@ -1009,9 +1009,9 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
                 </div>
               )}
 
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <h4 className="font-semibold text-blue-900 mb-2">Required Next Actions:</h4>
-                <ul className="text-sm text-blue-700 space-y-1">
+              <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
+                <h4 className="font-semibold text-blue-300 mb-2">Required Next Actions:</h4>
+                <ul className="text-sm text-blue-300 space-y-1">
                   {riskRating === 'high' && <li>• Enhanced CDD must be completed</li>}
                   {riskRating === 'high' && <li>• Senior Manager approval required</li>}
                   {riskRating === 'medium' && <li>• Additional verification recommended</li>}
@@ -1026,15 +1026,15 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
           {currentStep === 7 && (
             <div className="space-y-6">
               <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Final Approval</h3>
-                <p className="text-gray-600">Review and approve client onboarding</p>
+                <h3 className="text-xl font-bold text-slate-100 mb-2">Final Approval</h3>
+                <p className="text-slate-300">Review and approve client onboarding</p>
               </div>
 
               {approvalRequired ? (
-                <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6 text-center">
-                  <Lock className="w-16 h-16 text-red-600 mx-auto mb-4" />
-                  <h4 className="text-2xl font-bold text-red-900 mb-2">Senior Manager Approval Required</h4>
-                  <p className="text-red-700 mb-6">
+                <div className="bg-red-500/10 border-2 border-red-500/30 rounded-lg p-6 text-center">
+                  <Lock className="w-16 h-16 text-red-400 mx-auto mb-4" />
+                  <h4 className="text-2xl font-bold text-red-300 mb-2">Senior Manager Approval Required</h4>
+                  <p className="text-red-300 mb-6">
                     This high-risk client cannot be activated without senior manager approval.
                   </p>
                   <Button className="bg-red-600 hover:bg-red-700" onClick={handleSendForApproval}>
@@ -1044,29 +1044,29 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
                 </div>
               ) : (
                 <div className="space-y-4">
-                  <div className="bg-green-50 border-2 border-green-200 rounded-lg p-6">
+                  <div className="bg-green-500/10 border-2 border-green-500/30 rounded-lg p-6">
                     <div className="flex items-center mb-4">
-                      <CheckCircle className="w-8 h-8 text-green-600 mr-3" />
-                      <h4 className="text-xl font-bold text-green-900">All Checks Passed</h4>
+                      <CheckCircle className="w-8 h-8 text-green-400 mr-3" />
+                      <h4 className="text-xl font-bold text-green-300">All Checks Passed</h4>
                     </div>
                     <div className="grid grid-cols-2 gap-4 mb-4">
                       <div>
-                        <p className="text-sm text-gray-600">Client Name</p>
-                        <p className="font-bold text-gray-900">{basicDetails.name}</p>
+                        <p className="text-sm text-slate-300">Client Name</p>
+                        <p className="font-bold text-slate-100">{basicDetails.name}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600">Client Type</p>
-                        <p className="font-bold text-gray-900">{clientType}</p>
+                        <p className="text-sm text-slate-300">Client Type</p>
+                        <p className="font-bold text-slate-100">{clientType}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600">Risk Rating</p>
+                        <p className="text-sm text-slate-300">Risk Rating</p>
                         <span className={`inline-block px-3 py-1 rounded-full text-sm font-bold ${getRiskColor(riskRating)}`}>
                           {riskRating.toUpperCase()}
                         </span>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600">Verification Status</p>
-                        <p className="font-bold text-green-700">Verified</p>
+                        <p className="text-sm text-slate-300">Verification Status</p>
+                        <p className="font-bold text-green-300">Verified</p>
                       </div>
                     </div>
                     <Button className="w-full bg-green-600 hover:bg-green-700 py-6 text-lg" onClick={handleComplete}>
@@ -1075,8 +1075,8 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
                     </Button>
                   </div>
 
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                    <p className="text-sm text-blue-900">
+                  <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
+                    <p className="text-sm text-blue-300">
                       <strong>Note:</strong> Client will be set to Active status with monitoring enabled. 
                       Annual risk review will be scheduled. All evidence will be stored in the Evidence Vault.
                     </p>
@@ -1088,7 +1088,7 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
         </div>
 
         {/* Footer Navigation */}
-        <div className="flex items-center justify-between p-6 border-t bg-gray-50">
+        <div className="flex items-center justify-between p-6 border-t bg-white/5">
           <Button
             variant="outline"
             onClick={() => setCurrentStep(Math.max(1, currentStep - 1))}
@@ -1098,7 +1098,7 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
             Previous
           </Button>
           
-          <div className="text-sm text-gray-600">
+          <div className="text-sm text-slate-300">
             Step {currentStep} of {steps.length}
           </div>
 

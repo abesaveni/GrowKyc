@@ -174,7 +174,7 @@ export function HealthCheckDashboard({ onBack }: HealthCheckDashboardProps) {
     switch(status) {
       case 'passed': return <CheckCircle className="w-5 h-5 text-[#3DD598]" />;
       case 'warning': return <AlertTriangle className="w-5 h-5 text-[#FFA300]" />;
-      case 'failed': return <XCircle className="w-5 h-5 text-red-600" />;
+      case 'failed': return <XCircle className="w-5 h-5 text-red-400" />;
       default: return <Activity className="w-5 h-5 text-slate-400" />;
     }
   };

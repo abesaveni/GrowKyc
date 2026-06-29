@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import {
   LayoutDashboard,
   Users,
@@ -242,9 +242,9 @@ export function PaymentGateway({ onSwitchModule }: PaymentGatewayProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white/5">
       {/* Top Navigation Bar */}
-      <nav className="bg-white border-b border-gray-200 fixed w-full top-0 z-50">
+      <nav className="bg-white border-b border-white/10 fixed w-full top-0 z-50">
         <div className="px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo and Tenant Switcher */}
@@ -254,9 +254,9 @@ export function PaymentGateway({ onSwitchModule }: PaymentGatewayProps) {
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
                 {mobileMenuOpen ? (
-                  <X className="w-6 h-6 text-gray-600" />
+                  <X className="w-6 h-6 text-slate-300" />
                 ) : (
-                  <Menu className="w-6 h-6 text-gray-600" />
+                  <Menu className="w-6 h-6 text-slate-300" />
                 )}
               </button>
 
@@ -265,8 +265,8 @@ export function PaymentGateway({ onSwitchModule }: PaymentGatewayProps) {
                   <Gauge className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h1 className="text-lg font-bold text-gray-900">PaymentOS</h1>
-                  <p className="text-xs text-gray-500">Unified Gateway</p>
+                  <h1 className="text-lg font-bold text-slate-100">PaymentOS</h1>
+                  <p className="text-xs text-slate-400">Unified Gateway</p>
                 </div>
               </div>
 
@@ -279,7 +279,7 @@ export function PaymentGateway({ onSwitchModule }: PaymentGatewayProps) {
                       setSelectedTenant(e.target.value);
                       toast.success(`Switched to ${e.target.value}`);
                     }}
-                    className="pl-3 pr-8 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none"
+                    className="pl-3 pr-8 py-2 border border-white/10 rounded-lg text-sm font-medium text-slate-300 bg-white hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none"
                   >
                     {tenants.map((tenant) => (
                       <option key={tenant} value={tenant}>
@@ -287,7 +287,7 @@ export function PaymentGateway({ onSwitchModule }: PaymentGatewayProps) {
                       </option>
                     ))}
                   </select>
-                  <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" />
+                  <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
                 </div>
               )}
             </div>
@@ -299,7 +299,7 @@ export function PaymentGateway({ onSwitchModule }: PaymentGatewayProps) {
                 <input
                   type="text"
                   placeholder="Search loans, customers, payments..."
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full pl-10 pr-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   onFocus={() => toast.info('Global search active')}
                 />
               </div>
@@ -322,7 +322,7 @@ export function PaymentGateway({ onSwitchModule }: PaymentGatewayProps) {
                   setUserRole(e.target.value as Role);
                   setCurrentPage('dashboard');
                 }}
-                className="px-3 py-2 border border-blue-300 rounded-lg text-sm font-medium text-blue-700 bg-blue-50 hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="px-3 py-2 border border-blue-300 rounded-lg text-sm font-medium text-blue-300 bg-blue-500/10 hover:bg-blue-500/15 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="platform-admin">ðŸ”§ Platform Admin</option>
                 <option value="merchant-owner">ðŸª Merchant Owner</option>
@@ -337,7 +337,7 @@ export function PaymentGateway({ onSwitchModule }: PaymentGatewayProps) {
               <select
                 value="payment-gateway"
                 onChange={(e) => onSwitchModule(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="px-3 py-2 border border-white/10 rounded-lg text-sm font-medium text-slate-300 bg-white hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="payment-gateway">PaymentOS Gateway</option>
                 <option value="nowwork">Switch to Now Work OS</option>
@@ -355,8 +355,8 @@ export function PaymentGateway({ onSwitchModule }: PaymentGatewayProps) {
               {/* User Menu */}
               <div className="flex items-center gap-3 pl-3 border-l">
                 <div className="text-right hidden sm:block">
-                  <p className="text-sm font-medium text-gray-900">Alex Morgan</p>
-                  <p className="text-xs text-gray-500">{getRoleLabel(userRole)}</p>
+                  <p className="text-sm font-medium text-slate-100">Alex Morgan</p>
+                  <p className="text-xs text-slate-400">{getRoleLabel(userRole)}</p>
                 </div>
                 <Avatar>
                   <AvatarFallback className="bg-blue-600 text-white">AM</AvatarFallback>
@@ -413,8 +413,8 @@ export function PaymentGateway({ onSwitchModule }: PaymentGatewayProps) {
         <div className="max-w-7xl mx-auto">
           {/* Page Header */}
           <div className="mb-6">
-            <h2 className="text-2xl font-semibold text-gray-900">{getPageTitle()}</h2>
-            <p className="text-gray-600 text-sm mt-1">
+            <h2 className="text-2xl font-semibold text-slate-100">{getPageTitle()}</h2>
+            <p className="text-slate-300 text-sm mt-1">
               {currentPage === 'dashboard' && 'Real-time overview of your payment operations'}
               {currentPage === 'customers' && 'Manage customers, payment methods, and mandates'}
               {currentPage === 'payments' && 'Track and manage all payment transactions'}

@@ -181,30 +181,30 @@ export function EquifaxAMLScreeningModule() {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'clear': return 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300';
-      case 'potential-match': return 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300';
-      case 'confirmed-match': return 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300';
-      case 'under-review': return 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300';
+      case 'clear': return 'bg-green-500/15 text-green-300 dark:bg-green-900 dark:text-green-300';
+      case 'potential-match': return 'bg-yellow-500/15 text-yellow-300 dark:bg-yellow-900 dark:text-yellow-300';
+      case 'confirmed-match': return 'bg-red-500/15 text-red-300 dark:bg-red-900 dark:text-red-300';
+      case 'under-review': return 'bg-blue-500/15 text-blue-300 dark:bg-blue-900 dark:text-blue-300';
       default: return 'bg-[#0f172a] text-slate-300 dark:bg-gray-800 dark:text-gray-300';
     }
   };
 
   const getRiskColor = (level: string) => {
     switch (level) {
-      case 'low': return 'text-green-600';
-      case 'medium': return 'text-yellow-600';
-      case 'high': return 'text-orange-600';
-      case 'critical': return 'text-red-600';
+      case 'low': return 'text-green-400';
+      case 'medium': return 'text-yellow-400';
+      case 'high': return 'text-orange-400';
+      case 'critical': return 'text-red-400';
       default: return 'text-slate-300';
     }
   };
 
   const getSeverityIcon = (severity: string) => {
     switch (severity) {
-      case 'critical': return <Ban className="w-5 h-5 text-red-600" />;
-      case 'high': return <AlertTriangle className="w-5 h-5 text-orange-600" />;
-      case 'medium': return <AlertCircle className="w-5 h-5 text-yellow-600" />;
-      default: return <Info className="w-5 h-5 text-blue-600" />;
+      case 'critical': return <Ban className="w-5 h-5 text-red-400" />;
+      case 'high': return <AlertTriangle className="w-5 h-5 text-orange-400" />;
+      case 'medium': return <AlertCircle className="w-5 h-5 text-yellow-400" />;
+      default: return <Info className="w-5 h-5 text-blue-400" />;
     }
   };
 
@@ -324,7 +324,7 @@ export function EquifaxAMLScreeningModule() {
           <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-purple-500">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
-                <Users className="w-6 h-6 text-purple-600" />
+                <Users className="w-6 h-6 text-purple-400" />
                 <h3 className="font-bold text-white dark:text-white">PEP</h3>
               </div>
               <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(screeningResult.pepStatus)}`}>
@@ -340,7 +340,7 @@ export function EquifaxAMLScreeningModule() {
           <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-red-500">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
-                <Ban className="w-6 h-6 text-red-600" />
+                <Ban className="w-6 h-6 text-red-400" />
                 <h3 className="font-bold text-white dark:text-white">Sanctions</h3>
               </div>
               <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(screeningResult.sanctionsStatus)}`}>
@@ -356,7 +356,7 @@ export function EquifaxAMLScreeningModule() {
           <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-orange-500">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
-                <Flag className="w-6 h-6 text-orange-600" />
+                <Flag className="w-6 h-6 text-orange-400" />
                 <h3 className="font-bold text-white dark:text-white">Watchlists</h3>
               </div>
               <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(screeningResult.watchlistStatus)}`}>
@@ -372,7 +372,7 @@ export function EquifaxAMLScreeningModule() {
           <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-yellow-500">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
-                <FileText className="w-6 h-6 text-yellow-600" />
+                <FileText className="w-6 h-6 text-yellow-400" />
                 <h3 className="font-bold text-white dark:text-white">Adverse Media</h3>
               </div>
               <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(screeningResult.adverseMediaStatus)}`}>
@@ -409,24 +409,24 @@ export function EquifaxAMLScreeningModule() {
             {/* Dashboard Tab */}
             {activeTab === 'dashboard' && (
               <div className="space-y-6">
-                <div className="p-6 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
+                <div className="p-6 bg-green-500/10 dark:bg-green-900/20 rounded-lg border border-green-500/30 dark:border-green-800">
                   <div className="flex items-center gap-3 mb-3">
-                    <CheckCircle className="w-8 h-8 text-green-600" />
-                    <h3 className="text-xl font-bold text-green-900 dark:text-green-100">All Clear</h3>
+                    <CheckCircle className="w-8 h-8 text-green-400" />
+                    <h3 className="text-xl font-bold text-green-300 dark:text-green-100">All Clear</h3>
                   </div>
-                  <p className="text-green-800 dark:text-green-200">
+                  <p className="text-green-300 dark:text-green-200">
                     No adverse findings across PEP, Sanctions, or Watchlist screenings. Client is clear for onboarding.
                   </p>
                   <div className="mt-4 grid grid-cols-3 gap-4">
-                    <div className="flex items-center gap-2 text-green-700 dark:text-green-300">
+                    <div className="flex items-center gap-2 text-green-300 dark:text-green-300">
                       <CheckCircle className="w-4 h-4" />
                       <span className="text-sm">PEP Clear</span>
                     </div>
-                    <div className="flex items-center gap-2 text-green-700 dark:text-green-300">
+                    <div className="flex items-center gap-2 text-green-300 dark:text-green-300">
                       <CheckCircle className="w-4 h-4" />
                       <span className="text-sm">Sanctions Clear</span>
                     </div>
-                    <div className="flex items-center gap-2 text-green-700 dark:text-green-300">
+                    <div className="flex items-center gap-2 text-green-300 dark:text-green-300">
                       <CheckCircle className="w-4 h-4" />
                       <span className="text-sm">Watchlist Clear</span>
                     </div>
@@ -439,28 +439,28 @@ export function EquifaxAMLScreeningModule() {
                     <div>
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-sm text-slate-300 dark:text-slate-400">International Sanctions Lists</span>
-                        <span className="text-sm font-semibold text-green-600">✓ Screened</span>
+                        <span className="text-sm font-semibold text-green-400">✓ Screened</span>
                       </div>
                       <div className="text-xs text-slate-400">OFAC, UN, EU, DFAT, HMT</div>
                     </div>
                     <div>
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-sm text-slate-300 dark:text-slate-400">PEP Databases</span>
-                        <span className="text-sm font-semibold text-green-600">✓ Screened</span>
+                        <span className="text-sm font-semibold text-green-400">✓ Screened</span>
                       </div>
                       <div className="text-xs text-slate-400">Global PEP registry, Domestic & International</div>
                     </div>
                     <div>
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-sm text-slate-300 dark:text-slate-400">Law Enforcement Watchlists</span>
-                        <span className="text-sm font-semibold text-green-600">✓ Screened</span>
+                        <span className="text-sm font-semibold text-green-400">✓ Screened</span>
                       </div>
                       <div className="text-xs text-slate-400">INTERPOL, EUROPOL, National Databases</div>
                     </div>
                     <div>
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-sm text-slate-300 dark:text-slate-400">Adverse Media</span>
-                        <span className="text-sm font-semibold text-green-600">✓ Screened</span>
+                        <span className="text-sm font-semibold text-green-400">✓ Screened</span>
                       </div>
                       <div className="text-xs text-slate-400">Global news sources, financial crime databases</div>
                     </div>
@@ -473,10 +473,10 @@ export function EquifaxAMLScreeningModule() {
             {activeTab === 'pep' && (
               <div className="space-y-4">
                 {screeningResult.pepMatches.length === 0 ? (
-                  <div className="p-6 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800 text-center">
-                    <CheckCircle className="w-12 h-12 text-green-600 mx-auto mb-3" />
-                    <h3 className="text-lg font-bold text-green-900 dark:text-green-100 mb-2">No PEP Matches Found</h3>
-                    <p className="text-green-800 dark:text-green-200">
+                  <div className="p-6 bg-green-500/10 dark:bg-green-900/20 rounded-lg border border-green-500/30 dark:border-green-800 text-center">
+                    <CheckCircle className="w-12 h-12 text-green-400 mx-auto mb-3" />
+                    <h3 className="text-lg font-bold text-green-300 dark:text-green-100 mb-2">No PEP Matches Found</h3>
+                    <p className="text-green-300 dark:text-green-200">
                       Client has been screened against all PEP databases with no matches detected.
                     </p>
                   </div>
@@ -492,10 +492,10 @@ export function EquifaxAMLScreeningModule() {
             {activeTab === 'sanctions' && (
               <div className="space-y-4">
                 {screeningResult.sanctionsMatches.length === 0 ? (
-                  <div className="p-6 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800 text-center">
-                    <CheckCircle className="w-12 h-12 text-green-600 mx-auto mb-3" />
-                    <h3 className="text-lg font-bold text-green-900 dark:text-green-100 mb-2">No Sanctions Matches Found</h3>
-                    <p className="text-green-800 dark:text-green-200">
+                  <div className="p-6 bg-green-500/10 dark:bg-green-900/20 rounded-lg border border-green-500/30 dark:border-green-800 text-center">
+                    <CheckCircle className="w-12 h-12 text-green-400 mx-auto mb-3" />
+                    <h3 className="text-lg font-bold text-green-300 dark:text-green-100 mb-2">No Sanctions Matches Found</h3>
+                    <p className="text-green-300 dark:text-green-200">
                       Client has been screened against all international sanctions lists with no matches detected.
                     </p>
                   </div>
@@ -511,10 +511,10 @@ export function EquifaxAMLScreeningModule() {
             {activeTab === 'watchlist' && (
               <div className="space-y-4">
                 {screeningResult.watchlistHits.length === 0 ? (
-                  <div className="p-6 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800 text-center">
-                    <CheckCircle className="w-12 h-12 text-green-600 mx-auto mb-3" />
-                    <h3 className="text-lg font-bold text-green-900 dark:text-green-100 mb-2">No Watchlist Hits Found</h3>
-                    <p className="text-green-800 dark:text-green-200">
+                  <div className="p-6 bg-green-500/10 dark:bg-green-900/20 rounded-lg border border-green-500/30 dark:border-green-800 text-center">
+                    <CheckCircle className="w-12 h-12 text-green-400 mx-auto mb-3" />
+                    <h3 className="text-lg font-bold text-green-300 dark:text-green-100 mb-2">No Watchlist Hits Found</h3>
+                    <p className="text-green-300 dark:text-green-200">
                       Client has been screened against all law enforcement and financial crime watchlists with no hits detected.
                     </p>
                   </div>

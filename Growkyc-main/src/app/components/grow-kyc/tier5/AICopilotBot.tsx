@@ -99,13 +99,13 @@ export function AICopilotBot({ onBack }: AICopilotBotProps) {
       </div>
 
       <div className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-8 py-6 flex flex-col min-h-0">
-        <div className="flex items-center gap-2 text-xs text-purple-800 bg-purple-50 border border-purple-200 rounded-lg px-3 py-2 mb-4">
+        <div className="flex items-center gap-2 text-xs text-purple-300 bg-purple-500/10 border border-purple-500/30 rounded-lg px-3 py-2 mb-4">
           <Shield className="w-4 h-4 shrink-0" />
           Human approval required for regulatory submissions. Copilot outputs are draft guidance only.
         </div>
 
         {error && (
-          <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-800" role="alert">
+          <div className="mb-4 p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-sm text-red-300" role="alert">
             {error}
           </div>
         )}
@@ -145,7 +145,7 @@ export function AICopilotBot({ onBack }: AICopilotBotProps) {
           {loading && (
             <div className="flex justify-start">
               <div className="bg-[#1e293b] border border-white/10 rounded-2xl px-4 py-3 flex items-center gap-2 text-sm text-slate-300">
-                <Loader2 className="w-4 h-4 animate-spin text-purple-600" />
+                <Loader2 className="w-4 h-4 animate-spin text-purple-400" />
                 Analyzing compliance context...
               </div>
             </div>
@@ -153,7 +153,7 @@ export function AICopilotBot({ onBack }: AICopilotBotProps) {
         </div>
 
         <div className="sticky bottom-0 bg-[#0f172a] pt-2 pb-4">
-          <div className="flex gap-2 bg-[#1e293b] border border-gray-300 rounded-xl p-2 shadow-sm">
+          <div className="flex gap-2 bg-[#1e293b] border border-white/10 rounded-xl p-2 shadow-sm">
             <textarea
               value={input}
               onChange={(e) => setInput(e.target.value)}

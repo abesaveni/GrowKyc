@@ -54,7 +54,7 @@ export function FinalReview({ entity, onComplete }: FinalReviewProps) {
       </CardHeader>
       <CardContent className="space-y-6">
         {/* Summary Card */}
-        <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
+        <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-500/30">
           <CardContent className="p-6">
             <h3 className="font-bold text-white text-lg mb-4">{entity.data.name}</h3>
             <div className="grid grid-cols-2 gap-4 text-sm">
@@ -96,7 +96,7 @@ export function FinalReview({ entity, onComplete }: FinalReviewProps) {
                 <div
                   key={index}
                   className={`flex items-center gap-3 p-3 rounded-lg ${
-                    item.complete ? 'bg-green-50' : 'bg-red-50'
+                    item.complete ? 'bg-green-500/10' : 'bg-red-500/10'
                   }`}
                 >
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
@@ -109,10 +109,10 @@ export function FinalReview({ entity, onComplete }: FinalReviewProps) {
                     )}
                   </div>
                   <Icon className={`w-5 h-5 ${
-                    item.complete ? 'text-green-600' : 'text-red-600'
+                    item.complete ? 'text-green-400' : 'text-red-400'
                   }`} />
                   <span className={`font-medium ${
-                    item.complete ? 'text-green-900' : 'text-red-900'
+                    item.complete ? 'text-green-300' : 'text-red-300'
                   }`}>
                     {item.label}
                   </span>
@@ -126,7 +126,7 @@ export function FinalReview({ entity, onComplete }: FinalReviewProps) {
         </Card>
 
         {/* What Happens Next */}
-        <Card className="bg-blue-50 border-blue-200">
+        <Card className="bg-blue-500/10 border-blue-500/30">
           <CardContent className="p-4">
             <h4 className="font-semibold text-white mb-3">What happens next?</h4>
             <div className="space-y-2 text-sm text-slate-300">
@@ -151,11 +151,11 @@ export function FinalReview({ entity, onComplete }: FinalReviewProps) {
         </Card>
 
         {allComplete && (
-          <Card className="bg-gradient-to-r from-green-50 to-emerald-50 border-green-200 animate-in fade-in slide-in-from-bottom-4">
+          <Card className="bg-gradient-to-r from-green-50 to-emerald-50 border-green-500/30 animate-in fade-in slide-in-from-bottom-4">
             <CardContent className="p-6 text-center">
-              <Award className="w-16 h-16 text-green-600 mx-auto mb-4" />
-              <h3 className="font-bold text-green-900 text-xl mb-2">Ready to Submit! 🎉</h3>
-              <p className="text-green-800">
+              <Award className="w-16 h-16 text-green-400 mx-auto mb-4" />
+              <h3 className="font-bold text-green-300 text-xl mb-2">Ready to Submit! 🎉</h3>
+              <p className="text-green-300">
                 Your application is complete and ready for compliance review.
               </p>
             </CardContent>

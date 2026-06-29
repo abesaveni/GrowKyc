@@ -141,7 +141,7 @@ export function InvestorDashboard({ onNavigate }: InvestorDashboardProps) {
                               ${(featuredDeals[featuredIndex].currentBid! / 1000).toFixed(0)}k
                             </p>
                           </div>
-                          <Button size="lg" className="bg-white text-indigo-900 hover:bg-blue-50" onClick={() => handlePlaceBid(featuredDeals[featuredIndex].id)}>
+                          <Button size="lg" className="bg-white text-indigo-300 hover:bg-blue-500/10" onClick={() => handlePlaceBid(featuredDeals[featuredIndex].id)}>
                             Place Bid
                             <ArrowRight className="w-5 h-5 ml-2" />
                           </Button>
@@ -157,13 +157,13 @@ export function InvestorDashboard({ onNavigate }: InvestorDashboardProps) {
                         onClick={prevFeatured}
                         className="absolute left-2 top-1/2 -translate-y-1/2 p-2 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:bg-white transition-colors"
                       >
-                        <ChevronLeft className="w-6 h-6 text-gray-900" />
+                        <ChevronLeft className="w-6 h-6 text-slate-100" />
                       </button>
                       <button
                         onClick={nextFeatured}
                         className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:bg-white transition-colors"
                       >
-                        <ChevronRight className="w-6 h-6 text-gray-900" />
+                        <ChevronRight className="w-6 h-6 text-slate-100" />
                       </button>
                     </>
                   )}
@@ -185,62 +185,62 @@ export function InvestorDashboard({ onNavigate }: InvestorDashboardProps) {
       <div className="px-6 space-y-6">
         {/* Performance KPIs */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <Card className="relative overflow-hidden border-2 border-red-100 bg-gradient-to-br from-red-50 to-white">
+          <Card className="relative overflow-hidden border-2 border-red-500/20 bg-gradient-to-br from-red-50 to-white">
             <CardContent className="p-6">
               <div className="flex items-start justify-between mb-3">
-                <div className="p-3 bg-red-100 rounded-xl">
-                  <Gavel className="w-6 h-6 text-red-600" />
+                <div className="p-3 bg-red-500/15 rounded-xl">
+                  <Gavel className="w-6 h-6 text-red-400" />
                 </div>
-                <div className="flex items-center gap-1 text-red-600 text-sm font-semibold">
+                <div className="flex items-center gap-1 text-red-400 text-sm font-semibold">
                   <div className="w-2 h-2 bg-red-600 rounded-full animate-pulse"></div>
                   LIVE
                 </div>
               </div>
-              <p className="text-4xl font-bold text-gray-900 mb-1">{liveAuctions.length}</p>
-              <p className="text-sm text-gray-600">Deals Live Now</p>
-              <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-red-100 rounded-full opacity-20"></div>
+              <p className="text-4xl font-bold text-slate-100 mb-1">{liveAuctions.length}</p>
+              <p className="text-sm text-slate-300">Deals Live Now</p>
+              <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-red-500/15 rounded-full opacity-20"></div>
             </CardContent>
           </Card>
 
-          <Card className="relative overflow-hidden border-2 border-blue-100 bg-gradient-to-br from-blue-50 to-white">
+          <Card className="relative overflow-hidden border-2 border-blue-500/20 bg-gradient-to-br from-blue-50 to-white">
             <CardContent className="p-6">
               <div className="flex items-start justify-between mb-3">
-                <div className="p-3 bg-blue-100 rounded-xl">
-                  <Calendar className="w-6 h-6 text-blue-600" />
+                <div className="p-3 bg-blue-500/15 rounded-xl">
+                  <Calendar className="w-6 h-6 text-blue-400" />
                 </div>
                 <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" />
               </div>
-              <p className="text-4xl font-bold text-gray-900 mb-1">7</p>
-              <p className="text-sm text-gray-600">Upcoming Auctions</p>
-              <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-blue-100 rounded-full opacity-20"></div>
+              <p className="text-4xl font-bold text-slate-100 mb-1">7</p>
+              <p className="text-sm text-slate-300">Upcoming Auctions</p>
+              <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-blue-500/15 rounded-full opacity-20"></div>
             </CardContent>
           </Card>
 
-          <Card className="relative overflow-hidden border-2 border-green-100 bg-gradient-to-br from-green-50 to-white">
+          <Card className="relative overflow-hidden border-2 border-green-500/20 bg-gradient-to-br from-green-50 to-white">
             <CardContent className="p-6">
               <div className="flex items-start justify-between mb-3">
-                <div className="p-3 bg-green-100 rounded-xl">
-                  <TrendingUp className="w-6 h-6 text-green-600" />
+                <div className="p-3 bg-green-500/15 rounded-xl">
+                  <TrendingUp className="w-6 h-6 text-green-400" />
                 </div>
-                <Target className="w-5 h-5 text-green-600" />
+                <Target className="w-5 h-5 text-green-400" />
               </div>
-              <p className="text-4xl font-bold text-gray-900 mb-1">3</p>
-              <p className="text-sm text-gray-600">My Active Bids</p>
-              <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-green-100 rounded-full opacity-20"></div>
+              <p className="text-4xl font-bold text-slate-100 mb-1">3</p>
+              <p className="text-sm text-slate-300">My Active Bids</p>
+              <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-green-500/15 rounded-full opacity-20"></div>
             </CardContent>
           </Card>
 
-          <Card className="relative overflow-hidden border-2 border-purple-100 bg-gradient-to-br from-purple-50 to-white">
+          <Card className="relative overflow-hidden border-2 border-purple-500/20 bg-gradient-to-br from-purple-50 to-white">
             <CardContent className="p-6">
               <div className="flex items-start justify-between mb-3">
-                <div className="p-3 bg-purple-100 rounded-xl">
-                  <DollarSign className="w-6 h-6 text-purple-600" />
+                <div className="p-3 bg-purple-500/15 rounded-xl">
+                  <DollarSign className="w-6 h-6 text-purple-400" />
                 </div>
-                <Award className="w-5 h-5 text-purple-600" />
+                <Award className="w-5 h-5 text-purple-400" />
               </div>
-              <p className="text-4xl font-bold text-gray-900 mb-1">$4.2M</p>
-              <p className="text-sm text-gray-600">Capital Deployed</p>
-              <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-purple-100 rounded-full opacity-20"></div>
+              <p className="text-4xl font-bold text-slate-100 mb-1">$4.2M</p>
+              <p className="text-sm text-slate-300">Capital Deployed</p>
+              <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-purple-500/15 rounded-full opacity-20"></div>
             </CardContent>
           </Card>
         </div>
@@ -249,11 +249,11 @@ export function InvestorDashboard({ onNavigate }: InvestorDashboardProps) {
         <div>
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-3">
+              <h2 className="text-2xl font-bold text-slate-100 flex items-center gap-3">
                 <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
                 Ending Soon
               </h2>
-              <p className="text-gray-600 mt-1">Act fast on these time-sensitive opportunities</p>
+              <p className="text-slate-300 mt-1">Act fast on these time-sensitive opportunities</p>
             </div>
             <Button variant="outline" onClick={() => onNavigate?.('auctions')}>
               View All Live Auctions
@@ -290,7 +290,7 @@ export function InvestorDashboard({ onNavigate }: InvestorDashboardProps) {
                   {/* Quick Actions */}
                   <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                     <button className="p-2 bg-white/90 backdrop-blur-sm rounded-lg hover:bg-white transition-colors" onClick={() => handleWatchlistAdd(deal.property.address)}>
-                      <Heart className="w-4 h-4 text-gray-700" />
+                      <Heart className="w-4 h-4 text-slate-300" />
                     </button>
                   </div>
 
@@ -314,38 +314,38 @@ export function InvestorDashboard({ onNavigate }: InvestorDashboardProps) {
                 {/* Card Content */}
                 <CardContent className="p-5">
                   {/* Address */}
-                  <h3 className="font-bold text-gray-900 text-lg mb-1 line-clamp-1">
+                  <h3 className="font-bold text-slate-100 text-lg mb-1 line-clamp-1">
                     {deal.property.address}
                   </h3>
-                  <div className="flex items-center gap-1 text-gray-600 mb-4">
+                  <div className="flex items-center gap-1 text-slate-300 mb-4">
                     <MapPin className="w-4 h-4" />
                     <p className="text-sm">{deal.property.suburb}, {deal.property.state}</p>
                   </div>
 
                   {/* Current Bid - Prominent */}
-                  <div className="bg-green-50 border-2 border-green-200 rounded-lg p-4 mb-4">
-                    <p className="text-sm text-gray-600 mb-1">Current Highest Bid</p>
-                    <p className="text-3xl font-bold text-green-600">
+                  <div className="bg-green-500/10 border-2 border-green-500/30 rounded-lg p-4 mb-4">
+                    <p className="text-sm text-slate-300 mb-1">Current Highest Bid</p>
+                    <p className="text-3xl font-bold text-green-400">
                       ${(deal.currentBid! / 1000).toFixed(0)}k
                     </p>
-                    <p className="text-xs text-gray-500 mt-1">{deal.bidCount} bids placed</p>
+                    <p className="text-xs text-slate-400 mt-1">{deal.bidCount} bids placed</p>
                   </div>
 
                   {/* Metrics Grid */}
                   <div className="grid grid-cols-3 gap-3 mb-4 pb-4 border-b">
                     <div>
-                      <p className="text-xs text-gray-500 mb-1">LVR</p>
-                      <p className="text-sm font-bold text-indigo-600">
+                      <p className="text-xs text-slate-400 mb-1">LVR</p>
+                      <p className="text-sm font-bold text-indigo-400">
                         {calculateLVR(deal.outstandingDebt, deal.valuation.amount)}%
                       </p>
                     </div>
                     <div>
-                      <p className="text-xs text-gray-500 mb-1">Return</p>
-                      <p className="text-sm font-bold text-green-600">14.2%</p>
+                      <p className="text-xs text-slate-400 mb-1">Return</p>
+                      <p className="text-sm font-bold text-green-400">14.2%</p>
                     </div>
                     <div>
-                      <p className="text-xs text-gray-500 mb-1">Risk</p>
-                      <p className="text-sm font-bold text-gray-900">Low</p>
+                      <p className="text-xs text-slate-400 mb-1">Risk</p>
+                      <p className="text-sm font-bold text-slate-100">Low</p>
                     </div>
                   </div>
 
@@ -369,7 +369,7 @@ export function InvestorDashboard({ onNavigate }: InvestorDashboardProps) {
                 <p className="text-blue-100">Browse all available properties or set up alerts for new listings</p>
               </div>
               <div className="flex gap-3">
-                <Button size="lg" variant="outline" className="bg-white text-indigo-600 hover:bg-blue-50 border-0" onClick={() => onNavigate?.('deals')}>
+                <Button size="lg" variant="outline" className="bg-white text-indigo-400 hover:bg-blue-500/10 border-0" onClick={() => onNavigate?.('deals')}>
                   <Eye className="w-5 h-5 mr-2" />
                   Browse All Deals
                 </Button>

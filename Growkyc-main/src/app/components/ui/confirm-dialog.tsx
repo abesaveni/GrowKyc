@@ -32,26 +32,26 @@ export function ConfirmDialog({
   const variantConfig = {
     danger: {
       icon: AlertTriangle,
-      iconBg: 'bg-red-100',
-      iconColor: 'text-red-600',
+      iconBg: 'bg-red-500/15',
+      iconColor: 'text-red-400',
       buttonClass: 'bg-red-600 hover:bg-red-700'
     },
     warning: {
       icon: AlertTriangle,
-      iconBg: 'bg-amber-100',
-      iconColor: 'text-amber-600',
+      iconBg: 'bg-amber-500/15',
+      iconColor: 'text-amber-400',
       buttonClass: 'bg-amber-600 hover:bg-amber-700'
     },
     info: {
       icon: Info,
-      iconBg: 'bg-blue-100',
-      iconColor: 'text-blue-600',
+      iconBg: 'bg-blue-500/15',
+      iconColor: 'text-blue-400',
       buttonClass: 'bg-blue-600 hover:bg-blue-700'
     },
     success: {
       icon: CheckCircle,
-      iconBg: 'bg-green-100',
-      iconColor: 'text-green-600',
+      iconBg: 'bg-green-500/15',
+      iconColor: 'text-green-400',
       buttonClass: 'bg-green-600 hover:bg-green-700'
     }
   };
@@ -67,8 +67,8 @@ export function ConfirmDialog({
             <Icon className={`w-6 h-6 ${config.iconColor}`} />
           </div>
           <div className="flex-1">
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">{title}</h3>
-            <p className="text-sm text-gray-600 mb-6">{description}</p>
+            <h3 className="text-lg font-semibold text-slate-100 mb-2">{title}</h3>
+            <p className="text-sm text-slate-300 mb-6">{description}</p>
             {children}
             <div className="flex gap-3 justify-end mt-6">
               <Button
@@ -90,7 +90,7 @@ export function ConfirmDialog({
           <button
             onClick={onClose}
             disabled={isLoading}
-            className="flex-shrink-0 text-gray-400 hover:text-gray-600"
+            className="flex-shrink-0 text-gray-400 hover:text-slate-300"
           >
             <X className="w-5 h-5" />
           </button>

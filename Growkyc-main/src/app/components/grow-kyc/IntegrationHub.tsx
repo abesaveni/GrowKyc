@@ -378,7 +378,7 @@ export function IntegrationHub({ onBack }: IntegrationHubProps) {
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <Badge className="bg-[#1e293b] text-blue-600 text-sm px-3 py-1">
+              <Badge className="bg-[#1e293b] text-blue-400 text-sm px-3 py-1">
                 <Zap className="w-4 h-4 mr-1" />
                 {summaryStats.active} Active
               </Badge>
@@ -393,32 +393,32 @@ export function IntegrationHub({ onBack }: IntegrationHubProps) {
       <div className="max-w-7xl mx-auto px-6 py-8">
         {/* Summary Cards */}
         <div className="grid grid-cols-4 gap-4 mb-8">
-          <Card className="border-2 border-green-300 bg-green-50">
+          <Card className="border-2 border-green-300 bg-green-500/10">
             <CardContent className="p-6">
-              <div className="text-sm text-green-700">Active Integrations</div>
-              <div className="text-3xl font-bold text-green-900">{summaryStats.active}</div>
-              <div className="text-xs text-green-600 mt-1">Live and operational</div>
+              <div className="text-sm text-green-300">Active Integrations</div>
+              <div className="text-3xl font-bold text-green-300">{summaryStats.active}</div>
+              <div className="text-xs text-green-400 mt-1">Live and operational</div>
             </CardContent>
           </Card>
-          <Card className="border-2 border-blue-300 bg-blue-50">
+          <Card className="border-2 border-blue-300 bg-blue-500/10">
             <CardContent className="p-6">
-              <div className="text-sm text-blue-700">Configured</div>
-              <div className="text-3xl font-bold text-blue-900">{summaryStats.configured}</div>
-              <div className="text-xs text-blue-600 mt-1">Ready to activate</div>
+              <div className="text-sm text-blue-300">Configured</div>
+              <div className="text-3xl font-bold text-blue-300">{summaryStats.configured}</div>
+              <div className="text-xs text-blue-400 mt-1">Ready to activate</div>
             </CardContent>
           </Card>
-          <Card className="border-2 border-amber-300 bg-amber-50">
+          <Card className="border-2 border-amber-300 bg-amber-500/10">
             <CardContent className="p-6">
-              <div className="text-sm text-amber-700">Architected</div>
-              <div className="text-3xl font-bold text-amber-900">{summaryStats.architected}</div>
-              <div className="text-xs text-amber-600 mt-1">Framework ready</div>
+              <div className="text-sm text-amber-300">Architected</div>
+              <div className="text-3xl font-bold text-amber-300">{summaryStats.architected}</div>
+              <div className="text-xs text-amber-400 mt-1">Framework ready</div>
             </CardContent>
           </Card>
-          <Card className="border-2 border-purple-300 bg-purple-50">
+          <Card className="border-2 border-purple-300 bg-purple-500/10">
             <CardContent className="p-6">
-              <div className="text-sm text-purple-700">Monthly Usage</div>
-              <div className="text-3xl font-bold text-purple-900">{summaryStats.totalChecks.toLocaleString()}</div>
-              <div className="text-xs text-purple-600 mt-1">API calls</div>
+              <div className="text-sm text-purple-300">Monthly Usage</div>
+              <div className="text-3xl font-bold text-purple-300">{summaryStats.totalChecks.toLocaleString()}</div>
+              <div className="text-xs text-purple-400 mt-1">API calls</div>
             </CardContent>
           </Card>
         </div>
@@ -447,24 +447,24 @@ export function IntegrationHub({ onBack }: IntegrationHubProps) {
                 key={integration.id}
                 className={`border-2 ${
                   integration.status === 'active' ? 'border-green-300 bg-gradient-to-r from-green-50 to-blue-50' :
-                  integration.status === 'configured' ? 'border-blue-300 bg-blue-50' :
-                  integration.status === 'architected' ? 'border-amber-300 bg-amber-50' :
-                  'border-gray-300 bg-[#0f172a]'
+                  integration.status === 'configured' ? 'border-blue-300 bg-blue-500/10' :
+                  integration.status === 'architected' ? 'border-amber-300 bg-amber-500/10' :
+                  'border-white/10 bg-[#0f172a]'
                 }`}
               >
                 <CardContent className="p-6">
                   <div className="flex items-start justify-between">
                     <div className="flex gap-4 flex-1">
                       <div className={`w-16 h-16 rounded-lg flex items-center justify-center flex-shrink-0 ${
-                        integration.status === 'active' ? 'bg-green-100' :
-                        integration.status === 'configured' ? 'bg-blue-100' :
-                        integration.status === 'architected' ? 'bg-amber-100' :
+                        integration.status === 'active' ? 'bg-green-500/15' :
+                        integration.status === 'configured' ? 'bg-blue-500/15' :
+                        integration.status === 'architected' ? 'bg-amber-500/15' :
                         'bg-[#0f172a]'
                       }`}>
                         <Icon className={`w-8 h-8 ${
-                          integration.status === 'active' ? 'text-green-600' :
-                          integration.status === 'configured' ? 'text-blue-600' :
-                          integration.status === 'architected' ? 'text-amber-600' :
+                          integration.status === 'active' ? 'text-green-400' :
+                          integration.status === 'configured' ? 'text-blue-400' :
+                          integration.status === 'architected' ? 'text-amber-400' :
                           'text-slate-300'
                         }`} />
                       </div>
@@ -509,7 +509,7 @@ export function IntegrationHub({ onBack }: IntegrationHubProps) {
                             {integration.monthlyUsage !== undefined && (
                               <div>
                                 <div className="text-slate-300">This Month</div>
-                                <div className="font-semibold text-blue-600">
+                                <div className="font-semibold text-blue-400">
                                   {integration.monthlyUsage.toLocaleString()} calls
                                 </div>
                               </div>
@@ -517,16 +517,16 @@ export function IntegrationHub({ onBack }: IntegrationHubProps) {
                             {integration.costPerCheck && (
                               <div>
                                 <div className="text-slate-300">Cost Range</div>
-                                <div className="font-semibold text-green-600">{integration.costPerCheck}</div>
+                                <div className="font-semibold text-green-400">{integration.costPerCheck}</div>
                               </div>
                             )}
                           </div>
                         )}
 
                         {integration.status === 'architected' && (
-                          <div className="p-3 bg-amber-100 rounded border border-amber-300 flex items-start gap-2">
-                            <Clock className="w-4 h-4 text-amber-600 mt-0.5" />
-                            <div className="text-xs text-amber-900">
+                          <div className="p-3 bg-amber-500/15 rounded border border-amber-300 flex items-start gap-2">
+                            <Clock className="w-4 h-4 text-amber-400 mt-0.5" />
+                            <div className="text-xs text-amber-300">
                               <div className="font-semibold mb-1">Integration Architected</div>
                               <div>API endpoints defined, data models ready. Configuration required to activate.</div>
                             </div>
@@ -591,28 +591,28 @@ export function IntegrationHub({ onBack }: IntegrationHubProps) {
         </div>
 
         {/* Legend */}
-        <Card className="mt-8 border-2 border-gray-300">
+        <Card className="mt-8 border-2 border-white/10">
           <CardHeader>
             <CardTitle className="text-sm">Integration Status Legend</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-4 gap-4 text-sm">
               <div className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
                 <div>
                   <div className="font-semibold text-white">Active</div>
                   <div className="text-xs text-slate-300">Live, processing requests, fully operational</div>
                 </div>
               </div>
               <div className="flex items-start gap-2">
-                <Settings className="w-5 h-5 text-blue-600 flex-shrink-0" />
+                <Settings className="w-5 h-5 text-blue-400 flex-shrink-0" />
                 <div>
                   <div className="font-semibold text-white">Configured</div>
                   <div className="text-xs text-slate-300">API keys set, ready to activate</div>
                 </div>
               </div>
               <div className="flex items-start gap-2">
-                <Clock className="w-5 h-5 text-amber-600 flex-shrink-0" />
+                <Clock className="w-5 h-5 text-amber-400 flex-shrink-0" />
                 <div>
                   <div className="font-semibold text-white">Architected</div>
                   <div className="text-xs text-slate-300">Framework ready, needs configuration</div>

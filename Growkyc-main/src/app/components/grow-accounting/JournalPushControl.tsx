@@ -161,22 +161,22 @@ export function JournalPushControl({ onBack }: JournalPushControlProps) {
   const getValidationBadge = (status: string) => {
     switch (status) {
       case 'VALID':
-        return <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded flex items-center gap-1">
+        return <span className="px-2 py-0.5 bg-green-500/15 text-green-300 text-xs font-semibold rounded flex items-center gap-1">
           <CheckCircle className="w-3 h-3" />
           VALID
         </span>;
       case 'INVALID':
-        return <span className="px-2 py-0.5 bg-red-100 text-red-700 text-xs font-semibold rounded flex items-center gap-1">
+        return <span className="px-2 py-0.5 bg-red-500/15 text-red-300 text-xs font-semibold rounded flex items-center gap-1">
           <XCircle className="w-3 h-3" />
           INVALID
         </span>;
       case 'WARNING':
-        return <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-xs font-semibold rounded flex items-center gap-1">
+        return <span className="px-2 py-0.5 bg-amber-500/15 text-amber-300 text-xs font-semibold rounded flex items-center gap-1">
           <AlertTriangle className="w-3 h-3" />
           WARNING
         </span>;
       case 'PUSHED':
-        return <span className="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-semibold rounded flex items-center gap-1">
+        return <span className="px-2 py-0.5 bg-blue-500/15 text-blue-300 text-xs font-semibold rounded flex items-center gap-1">
           <CheckCircle className="w-3 h-3" />
           PUSHED
         </span>;
@@ -207,7 +207,7 @@ export function JournalPushControl({ onBack }: JournalPushControlProps) {
   });
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen bg-white/5 p-6">
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">
@@ -218,11 +218,11 @@ export function JournalPushControl({ onBack }: JournalPushControlProps) {
               </Button>
             )}
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
-                <Upload className="w-8 h-8 text-blue-600" />
+              <h1 className="text-3xl font-bold text-slate-100 flex items-center gap-3">
+                <Upload className="w-8 h-8 text-blue-400" />
                 Controlled Journal Push
               </h1>
-              <p className="text-sm text-gray-600 mt-1">
+              <p className="text-sm text-slate-300 mt-1">
                 Push approved draft journals to Xero with validation and approval workflow
               </p>
             </div>
@@ -246,12 +246,12 @@ export function JournalPushControl({ onBack }: JournalPushControlProps) {
         </div>
 
         {/* Control Policy */}
-        <div className="bg-red-50 border border-red-300 rounded px-4 py-3">
+        <div className="bg-red-500/10 border border-red-300 rounded px-4 py-3">
           <div className="flex items-start gap-3">
-            <Lock className="w-5 h-5 text-red-600 mt-0.5" />
+            <Lock className="w-5 h-5 text-red-400 mt-0.5" />
             <div className="flex-1">
-              <h3 className="font-semibold text-red-900 mb-2">Strict Journal Push Controls</h3>
-              <div className="grid grid-cols-2 gap-3 text-sm text-red-800">
+              <h3 className="font-semibold text-red-300 mb-2">Strict Journal Push Controls</h3>
+              <div className="grid grid-cols-2 gap-3 text-sm text-red-300">
                 <div className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />
                   <span>Push ONLY as DRAFT status (never auto-post)</span>
@@ -283,83 +283,83 @@ export function JournalPushControl({ onBack }: JournalPushControlProps) {
 
         {/* Summary Cards */}
         <div className="grid grid-cols-4 gap-4">
-          <div className="bg-white border border-gray-300 rounded p-4">
-            <div className="text-xs text-gray-600 mb-1">Ready to Push</div>
-            <div className="text-2xl font-bold text-green-600 font-mono">{validJournals.length}</div>
-            <div className="text-xs text-gray-600 mt-1">Approved & validated</div>
+          <div className="bg-white border border-white/10 rounded p-4">
+            <div className="text-xs text-slate-300 mb-1">Ready to Push</div>
+            <div className="text-2xl font-bold text-green-400 font-mono">{validJournals.length}</div>
+            <div className="text-xs text-slate-300 mt-1">Approved & validated</div>
           </div>
-          <div className="bg-white border border-gray-300 rounded p-4">
-            <div className="text-xs text-gray-600 mb-1">Requires Approval</div>
-            <div className="text-2xl font-bold text-red-600 font-mono">{invalidJournals.length}</div>
-            <div className="text-xs text-gray-600 mt-1">Missing reviewer sign-off</div>
+          <div className="bg-white border border-white/10 rounded p-4">
+            <div className="text-xs text-slate-300 mb-1">Requires Approval</div>
+            <div className="text-2xl font-bold text-red-400 font-mono">{invalidJournals.length}</div>
+            <div className="text-xs text-slate-300 mt-1">Missing reviewer sign-off</div>
           </div>
-          <div className="bg-white border border-gray-300 rounded p-4">
-            <div className="text-xs text-gray-600 mb-1">Period Warnings</div>
-            <div className="text-2xl font-bold text-amber-600 font-mono">{warningJournals.length}</div>
-            <div className="text-xs text-gray-600 mt-1">Locked period override needed</div>
+          <div className="bg-white border border-white/10 rounded p-4">
+            <div className="text-xs text-slate-300 mb-1">Period Warnings</div>
+            <div className="text-2xl font-bold text-amber-400 font-mono">{warningJournals.length}</div>
+            <div className="text-xs text-slate-300 mt-1">Locked period override needed</div>
           </div>
-          <div className="bg-white border border-gray-300 rounded p-4">
-            <div className="text-xs text-gray-600 mb-1">Already Pushed</div>
-            <div className="text-2xl font-bold text-blue-600 font-mono">{pushedJournals.length}</div>
-            <div className="text-xs text-gray-600 mt-1">In Xero as draft</div>
+          <div className="bg-white border border-white/10 rounded p-4">
+            <div className="text-xs text-slate-300 mb-1">Already Pushed</div>
+            <div className="text-2xl font-bold text-blue-400 font-mono">{pushedJournals.length}</div>
+            <div className="text-xs text-slate-300 mt-1">In Xero as draft</div>
           </div>
         </div>
 
         {/* Journal Lifecycle */}
-        <div className="bg-white border border-gray-300 rounded p-4">
-          <h3 className="font-semibold text-gray-900 mb-3">Journal Lifecycle</h3>
+        <div className="bg-white border border-white/10 rounded p-4">
+          <h3 className="font-semibold text-slate-100 mb-3">Journal Lifecycle</h3>
           <div className="flex items-center gap-2">
-            <div className="px-3 py-2 bg-gray-100 border border-gray-300 rounded text-sm font-semibold text-gray-700">
+            <div className="px-3 py-2 bg-white/5 border border-white/10 rounded text-sm font-semibold text-slate-300">
               Draft
             </div>
-            <div className="flex-1 border-t-2 border-gray-300"></div>
-            <div className="px-3 py-2 bg-blue-100 border border-blue-300 rounded text-sm font-semibold text-blue-700">
+            <div className="flex-1 border-t-2 border-white/10"></div>
+            <div className="px-3 py-2 bg-blue-500/15 border border-blue-300 rounded text-sm font-semibold text-blue-300">
               Reviewer Approved
             </div>
-            <div className="flex-1 border-t-2 border-gray-300"></div>
-            <div className="px-3 py-2 bg-green-100 border border-green-300 rounded text-sm font-semibold text-green-700">
+            <div className="flex-1 border-t-2 border-white/10"></div>
+            <div className="px-3 py-2 bg-green-500/15 border border-green-300 rounded text-sm font-semibold text-green-300">
               Ready to Push
             </div>
-            <div className="flex-1 border-t-2 border-gray-300"></div>
-            <div className="px-3 py-2 bg-purple-100 border border-purple-300 rounded text-sm font-semibold text-purple-700">
+            <div className="flex-1 border-t-2 border-white/10"></div>
+            <div className="px-3 py-2 bg-purple-500/15 border border-purple-300 rounded text-sm font-semibold text-purple-300">
               Pushed to Xero (Draft)
             </div>
-            <div className="flex-1 border-t-2 border-gray-300"></div>
-            <div className="px-3 py-2 bg-indigo-100 border border-indigo-300 rounded text-sm font-semibold text-indigo-700">
+            <div className="flex-1 border-t-2 border-white/10"></div>
+            <div className="px-3 py-2 bg-indigo-500/15 border border-indigo-300 rounded text-sm font-semibold text-indigo-300">
               Posted in Xero (Manual)
             </div>
           </div>
-          <p className="text-xs text-gray-600 mt-3">
+          <p className="text-xs text-slate-300 mt-3">
             <strong>Important:</strong> Journals are never auto-posted. Final posting must be done manually in Xero after review.
           </p>
         </div>
 
         {/* Journal List */}
-        <div className="border border-gray-300 rounded bg-white overflow-hidden">
-          <div className="bg-gray-50 border-b border-gray-300 px-4 py-2">
-            <h3 className="font-semibold text-gray-900">Adjustment Journals ({journals.length})</h3>
+        <div className="border border-white/10 rounded bg-white overflow-hidden">
+          <div className="bg-white/5 border-b border-white/10 px-4 py-2">
+            <h3 className="font-semibold text-slate-100">Adjustment Journals ({journals.length})</h3>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>
-                <tr className="bg-gray-100">
-                  <th className="border border-gray-300 px-2 py-2 text-center font-semibold text-gray-700 w-16">
+                <tr className="bg-white/5">
+                  <th className="border border-white/10 px-2 py-2 text-center font-semibold text-slate-300 w-16">
                     Select
                   </th>
-                  <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Journal #</th>
-                  <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Description</th>
-                  <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Date</th>
-                  <th className="border border-gray-300 px-3 py-2 text-right font-semibold text-gray-700">Amount</th>
-                  <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700">Lines</th>
-                  <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Approved By</th>
-                  <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700">Validation</th>
-                  <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700">Status</th>
+                  <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Journal #</th>
+                  <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Description</th>
+                  <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Date</th>
+                  <th className="border border-white/10 px-3 py-2 text-right font-semibold text-slate-300">Amount</th>
+                  <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300">Lines</th>
+                  <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Approved By</th>
+                  <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300">Validation</th>
+                  <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300">Status</th>
                 </tr>
               </thead>
               <tbody>
                 {journals.map((journal) => (
-                  <tr key={journal.workpaperJournalID} className="hover:bg-blue-50">
-                    <td className="border border-gray-300 px-2 py-2 text-center">
+                  <tr key={journal.workpaperJournalID} className="hover:bg-blue-500/10">
+                    <td className="border border-white/10 px-2 py-2 text-center">
                       <input
                         type="checkbox"
                         checked={selectedJournals.includes(journal.workpaperJournalID)}
@@ -374,42 +374,42 @@ export function JournalPushControl({ onBack }: JournalPushControlProps) {
                         className="w-4 h-4"
                       />
                     </td>
-                    <td className="border border-gray-300 px-3 py-2 text-gray-900 font-mono font-semibold">
+                    <td className="border border-white/10 px-3 py-2 text-slate-100 font-mono font-semibold">
                       {journal.journalNumber}
                     </td>
-                    <td className="border border-gray-300 px-3 py-2 text-gray-900">
+                    <td className="border border-white/10 px-3 py-2 text-slate-100">
                       {journal.description}
                     </td>
-                    <td className="border border-gray-300 px-3 py-2 text-gray-700">
+                    <td className="border border-white/10 px-3 py-2 text-slate-300">
                       {journal.date}
                     </td>
-                    <td className="border border-gray-300 px-3 py-2 text-right text-gray-900 font-mono">
+                    <td className="border border-white/10 px-3 py-2 text-right text-slate-100 font-mono">
                       ${formatCurrency(journal.totalDebit)}
                     </td>
-                    <td className="border border-gray-300 px-3 py-2 text-center text-gray-700">
+                    <td className="border border-white/10 px-3 py-2 text-center text-slate-300">
                       {journal.lineCount}
                     </td>
-                    <td className="border border-gray-300 px-3 py-2 text-gray-700">
+                    <td className="border border-white/10 px-3 py-2 text-slate-300">
                       {journal.approvedBy ? (
                         <div>
                           <div className="font-semibold">{journal.approvedBy}</div>
-                          <div className="text-xs text-gray-600">{journal.approvedAt}</div>
+                          <div className="text-xs text-slate-300">{journal.approvedAt}</div>
                         </div>
                       ) : (
-                        <span className="text-red-600 text-xs">Not approved</span>
+                        <span className="text-red-400 text-xs">Not approved</span>
                       )}
                     </td>
-                    <td className="border border-gray-300 px-3 py-2 text-center">
+                    <td className="border border-white/10 px-3 py-2 text-center">
                       {getValidationBadge(journal.validationStatus)}
                     </td>
-                    <td className="border border-gray-300 px-3 py-2 text-center">
+                    <td className="border border-white/10 px-3 py-2 text-center">
                       {journal.pushedToXero ? (
                         <div>
-                          <div className="text-xs text-blue-700 font-semibold">Pushed to Xero</div>
-                          <div className="text-xs text-gray-600 font-mono">{journal.xeroJournalNumber}</div>
+                          <div className="text-xs text-blue-300 font-semibold">Pushed to Xero</div>
+                          <div className="text-xs text-slate-300 font-mono">{journal.xeroJournalNumber}</div>
                         </div>
                       ) : (
-                        <span className="text-xs text-gray-600">Ready</span>
+                        <span className="text-xs text-slate-300">Ready</span>
                       )}
                     </td>
                   </tr>
@@ -421,24 +421,24 @@ export function JournalPushControl({ onBack }: JournalPushControlProps) {
 
         {/* Validation Checks Detail (for selected journals) */}
         {selectedJournals.length > 0 && (
-          <div className="bg-white border border-gray-300 rounded p-4">
-            <h3 className="font-semibold text-gray-900 mb-3">Validation Checks ({selectedJournals.length} selected)</h3>
+          <div className="bg-white border border-white/10 rounded p-4">
+            <h3 className="font-semibold text-slate-100 mb-3">Validation Checks ({selectedJournals.length} selected)</h3>
             {selectedJournals.map(journalId => {
               const journal = journals.find(j => j.workpaperJournalID === journalId);
               if (!journal) return null;
               
               return (
-                <div key={journalId} className="mb-4 pb-4 border-b border-gray-200 last:border-b-0 last:mb-0 last:pb-0">
-                  <h4 className="font-semibold text-gray-900 mb-2">{journal.journalNumber} - {journal.description}</h4>
+                <div key={journalId} className="mb-4 pb-4 border-b border-white/10 last:border-b-0 last:mb-0 last:pb-0">
+                  <h4 className="font-semibold text-slate-100 mb-2">{journal.journalNumber} - {journal.description}</h4>
                   <div className="grid grid-cols-3 gap-3">
                     {Object.entries(journal.validationChecks).map(([check, passed]) => (
                       <div key={check} className="flex items-center gap-2">
                         {passed ? (
-                          <CheckCircle className="w-4 h-4 text-green-600" />
+                          <CheckCircle className="w-4 h-4 text-green-400" />
                         ) : (
-                          <XCircle className="w-4 h-4 text-red-600" />
+                          <XCircle className="w-4 h-4 text-red-400" />
                         )}
-                        <span className={`text-sm ${passed ? 'text-gray-700' : 'text-red-700 font-semibold'}`}>
+                        <span className={`text-sm ${passed ? 'text-slate-300' : 'text-red-300 font-semibold'}`}>
                           {check.replace(/([A-Z])/g, ' $1').trim()}
                         </span>
                       </div>
@@ -452,12 +452,12 @@ export function JournalPushControl({ onBack }: JournalPushControlProps) {
 
         {/* Push Result */}
         {pushStatus === 'pushing' && (
-          <div className="bg-blue-50 border border-blue-300 rounded px-4 py-3">
+          <div className="bg-blue-500/10 border border-blue-300 rounded px-4 py-3">
             <div className="flex items-center gap-3">
-              <RefreshCw className="w-5 h-5 text-blue-600 animate-spin" />
+              <RefreshCw className="w-5 h-5 text-blue-400 animate-spin" />
               <div className="flex-1">
-                <h3 className="font-semibold text-blue-900">Pushing journals to Xero...</h3>
-                <p className="text-sm text-blue-800">
+                <h3 className="font-semibold text-blue-300">Pushing journals to Xero...</h3>
+                <p className="text-sm text-blue-300">
                   Creating draft manual journals with idempotency keys. This may take a few moments.
                 </p>
               </div>
@@ -466,12 +466,12 @@ export function JournalPushControl({ onBack }: JournalPushControlProps) {
         )}
 
         {/* Architecture Safeguards */}
-        <div className="bg-purple-50 border border-purple-300 rounded p-4">
-          <h3 className="font-semibold text-purple-900 mb-3 flex items-center gap-2">
+        <div className="bg-purple-500/10 border border-purple-300 rounded p-4">
+          <h3 className="font-semibold text-purple-300 mb-3 flex items-center gap-2">
             <Shield className="w-5 h-5" />
             Architecture Safeguards
           </h3>
-          <div className="grid grid-cols-2 gap-3 text-sm text-purple-800">
+          <div className="grid grid-cols-2 gap-3 text-sm text-purple-300">
             <div className="flex items-start gap-2">
               <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />
               <span>Xero tenant ID stored and validated</span>
@@ -501,12 +501,12 @@ export function JournalPushControl({ onBack }: JournalPushControlProps) {
 
         {/* Partner Override (for locked periods) */}
         {warningJournals.length > 0 && (
-          <div className="bg-amber-50 border border-amber-300 rounded p-4">
+          <div className="bg-amber-500/10 border border-amber-300 rounded p-4">
             <div className="flex items-start gap-3">
-              <AlertTriangle className="w-5 h-5 text-amber-600 mt-0.5" />
+              <AlertTriangle className="w-5 h-5 text-amber-400 mt-0.5" />
               <div className="flex-1">
-                <h3 className="font-semibold text-amber-900 mb-2">Partner Override Required</h3>
-                <p className="text-sm text-amber-800 mb-3">
+                <h3 className="font-semibold text-amber-300 mb-2">Partner Override Required</h3>
+                <p className="text-sm text-amber-300 mb-3">
                   {warningJournals.length} journal{warningJournals.length !== 1 ? 's' : ''} target{warningJournals.length === 1 ? 's' : ''} locked periods in Xero. Partner approval required to proceed.
                 </p>
                 <Button variant="outline" size="sm">

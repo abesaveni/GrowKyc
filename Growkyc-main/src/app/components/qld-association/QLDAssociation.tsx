@@ -60,10 +60,10 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
   // Status chip component
   const StatusChip = ({ status, children }: { status: 'green' | 'amber' | 'red' | 'grey'; children: React.ReactNode }) => {
     const colors = {
-      green: 'bg-green-100 text-green-800 border-green-300',
-      amber: 'bg-amber-100 text-amber-800 border-amber-300',
-      red: 'bg-red-100 text-red-800 border-red-300',
-      grey: 'bg-gray-100 text-gray-800 border-gray-300'
+      green: 'bg-green-500/15 text-green-300 border-green-300',
+      amber: 'bg-amber-500/15 text-amber-300 border-amber-300',
+      red: 'bg-red-500/15 text-red-300 border-red-300',
+      grey: 'bg-white/5 text-slate-100 border-white/10'
     };
     return (
       <Badge variant="outline" className={`${colors[status]} border`}>
@@ -78,14 +78,14 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
       <CardContent className="pt-6">
         <div className="flex items-start justify-between mb-2">
           <Icon className={`w-8 h-8 ${
-            status === 'green' ? 'text-green-600' :
-            status === 'amber' ? 'text-amber-600' :
-            status === 'red' ? 'text-red-600' : 'text-gray-600'
+            status === 'green' ? 'text-green-400' :
+            status === 'amber' ? 'text-amber-400' :
+            status === 'red' ? 'text-red-400' : 'text-slate-300'
           }`} />
-          {trend && <span className="text-xs text-gray-600">{trend}</span>}
+          {trend && <span className="text-xs text-slate-300">{trend}</span>}
         </div>
-        <p className="text-3xl font-bold text-gray-900">{value}</p>
-        <p className="text-sm text-gray-600 mt-1">{label}</p>
+        <p className="text-3xl font-bold text-slate-100">{value}</p>
+        <p className="text-sm text-slate-300 mt-1">{label}</p>
       </CardContent>
     </Card>
   );
@@ -93,21 +93,21 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
   // Alert card component
   const AlertCard = ({ type, title, description, action }: any) => (
     <Card className={`border-l-4 ${
-      type === 'critical' ? 'border-l-red-600 bg-red-50' :
-      type === 'warning' ? 'border-l-amber-600 bg-amber-50' :
-      'border-l-blue-600 bg-blue-50'
+      type === 'critical' ? 'border-l-red-600 bg-red-500/10' :
+      type === 'warning' ? 'border-l-amber-600 bg-amber-500/10' :
+      'border-l-blue-600 bg-blue-500/10'
     }`}>
       <CardContent className="pt-6">
         <div className="flex items-start justify-between">
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-2">
               <AlertTriangle className={`w-5 h-5 ${
-                type === 'critical' ? 'text-red-600' :
-                type === 'warning' ? 'text-amber-600' : 'text-blue-600'
+                type === 'critical' ? 'text-red-400' :
+                type === 'warning' ? 'text-amber-400' : 'text-blue-400'
               }`} />
-              <h4 className="font-semibold text-gray-900">{title}</h4>
+              <h4 className="font-semibold text-slate-100">{title}</h4>
             </div>
-            <p className="text-sm text-gray-700">{description}</p>
+            <p className="text-sm text-slate-300">{description}</p>
           </div>
           {action && (
             <Button size="sm" className="ml-4">
@@ -127,22 +127,22 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
           <div className="inline-flex items-center justify-center w-32 h-32 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 mb-4">
             <div className="bg-white rounded-full w-28 h-28 flex items-center justify-center">
               <div>
-                <div className="text-4xl font-bold text-gray-900">{score}</div>
-                <div className="text-xs text-gray-600">/ 100</div>
+                <div className="text-4xl font-bold text-slate-100">{score}</div>
+                <div className="text-xs text-slate-300">/ 100</div>
               </div>
             </div>
           </div>
-          <h3 className="font-semibold text-gray-900">Health Compliance Score</h3>
-          <p className="text-sm text-gray-600">Overall compliance status</p>
+          <h3 className="font-semibold text-slate-100">Health Compliance Score</h3>
+          <p className="text-sm text-slate-300">Overall compliance status</p>
         </div>
         <div className="space-y-2">
           {breakdown.map((item: any, index: number) => (
             <div key={index}>
               <div className="flex justify-between text-xs mb-1">
-                <span className="text-gray-600">{item.label}</span>
-                <span className="font-medium text-gray-900">{item.score}%</span>
+                <span className="text-slate-300">{item.label}</span>
+                <span className="font-medium text-slate-100">{item.score}%</span>
               </div>
-              <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+              <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
                 <div 
                   className={`h-full ${
                     item.score >= 80 ? 'bg-green-500' :
@@ -187,7 +187,7 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
 
       {/* Alerts */}
       <div>
-        <h3 className="font-semibold text-gray-900 mb-4">Alerts Requiring Action</h3>
+        <h3 className="font-semibold text-slate-100 mb-4">Alerts Requiring Action</h3>
         <div className="space-y-3">
           <AlertCard 
             type="critical"
@@ -223,10 +223,10 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
                 { type: 'AGM', date: 'Sat 15 Mar', status: 'amber', quorum: 'Pending' },
                 { type: 'Finance Review', date: 'Wed 5 Mar', status: 'green', quorum: 'Met' }
               ].map((meeting, index) => (
-                <div key={index} className="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
+                <div key={index} className="flex items-center justify-between p-3 border border-white/10 rounded-lg">
                   <div>
-                    <p className="font-medium text-gray-900">{meeting.type}</p>
-                    <p className="text-sm text-gray-600">{meeting.date}</p>
+                    <p className="font-medium text-slate-100">{meeting.type}</p>
+                    <p className="text-sm text-slate-300">{meeting.date}</p>
                   </div>
                   <div className="flex items-center gap-2">
                     <StatusChip status={meeting.status as any}>{meeting.quorum}</StatusChip>
@@ -244,21 +244,21 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
           <CardContent>
             <div className="space-y-4">
               <div className="flex justify-between">
-                <span className="text-sm text-gray-600">Total Income (YTD)</span>
-                <span className="font-semibold text-gray-900">$145,230</span>
+                <span className="text-sm text-slate-300">Total Income (YTD)</span>
+                <span className="font-semibold text-slate-100">$145,230</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-sm text-gray-600">Total Expenses (YTD)</span>
-                <span className="font-semibold text-gray-900">$132,875</span>
+                <span className="text-sm text-slate-300">Total Expenses (YTD)</span>
+                <span className="font-semibold text-slate-100">$132,875</span>
               </div>
-              <div className="flex justify-between pt-3 border-t border-gray-200">
-                <span className="text-sm font-semibold text-gray-900">Net Position</span>
-                <span className="font-bold text-green-600">$12,355</span>
+              <div className="flex justify-between pt-3 border-t border-white/10">
+                <span className="text-sm font-semibold text-slate-100">Net Position</span>
+                <span className="font-bold text-green-400">$12,355</span>
               </div>
-              <div className="mt-4 p-3 bg-amber-50 rounded-lg">
+              <div className="mt-4 p-3 bg-amber-500/10 rounded-lg">
                 <div className="flex items-center gap-2">
-                  <AlertTriangle className="w-4 h-4 text-amber-600" />
-                  <span className="text-sm text-amber-900">2 transactions pending approval</span>
+                  <AlertTriangle className="w-4 h-4 text-amber-400" />
+                  <span className="text-sm text-amber-300">2 transactions pending approval</span>
                 </div>
               </div>
             </div>
@@ -321,22 +321,22 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-gray-200">
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Obligation</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Source</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Category</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Status</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Due Date</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Risk</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900"></th>
+                  <tr className="border-b border-white/10">
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100">Obligation</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100">Source</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100">Category</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100">Status</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100">Due Date</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100">Risk</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100"></th>
                   </tr>
                 </thead>
                 <tbody>
                   {obligations.map((item) => (
-                    <tr key={item.id} className="border-b border-gray-100 hover:bg-gray-50 cursor-pointer"
+                    <tr key={item.id} className="border-b border-white/10 hover:bg-white/5 cursor-pointer"
                         onClick={() => setSelectedCompliance(item)}>
-                      <td className="py-3 px-4 text-sm text-gray-900">{item.obligation}</td>
-                      <td className="py-3 px-4 text-sm text-gray-600">{item.source}</td>
+                      <td className="py-3 px-4 text-sm text-slate-100">{item.obligation}</td>
+                      <td className="py-3 px-4 text-sm text-slate-300">{item.source}</td>
                       <td className="py-3 px-4">
                         <Badge variant="outline">{item.category}</Badge>
                       </td>
@@ -345,12 +345,12 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
                           {item.status === 'green' ? 'Compliant' : 'Attention Required'}
                         </StatusChip>
                       </td>
-                      <td className="py-3 px-4 text-sm text-gray-600">{item.due}</td>
+                      <td className="py-3 px-4 text-sm text-slate-300">{item.due}</td>
                       <td className="py-3 px-4">
                         <Badge variant="outline" className={
-                          item.risk === 'Critical' ? 'bg-red-50 text-red-700 border-red-300' :
-                          item.risk === 'High' ? 'bg-amber-50 text-amber-700 border-amber-300' :
-                          'bg-gray-50 text-gray-700'
+                          item.risk === 'Critical' ? 'bg-red-500/10 text-red-300 border-red-300' :
+                          item.risk === 'High' ? 'bg-amber-500/10 text-amber-300 border-amber-300' :
+                          'bg-white/5 text-slate-300'
                         }>{item.risk}</Badge>
                       </td>
                       <td className="py-3 px-4">
@@ -368,10 +368,10 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
 
         {/* Detail drawer */}
         {selectedCompliance && (
-          <div className="fixed inset-y-0 right-0 w-96 bg-white border-l border-gray-200 shadow-xl z-50 overflow-y-auto">
+          <div className="fixed inset-y-0 right-0 w-96 bg-white border-l border-white/10 shadow-xl z-50 overflow-y-auto">
             <div className="p-6">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="font-semibold text-gray-900">Compliance Detail</h3>
+                <h3 className="font-semibold text-slate-100">Compliance Detail</h3>
                 <Button variant="ghost" size="sm" onClick={() => setSelectedCompliance(null)}>
                   <X className="w-4 h-4" />
                 </Button>
@@ -379,47 +379,47 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
 
               <div className="space-y-6">
                 <div>
-                  <Label className="text-xs text-gray-600">Obligation</Label>
-                  <p className="text-sm font-medium text-gray-900 mt-1">{selectedCompliance.obligation}</p>
+                  <Label className="text-xs text-slate-300">Obligation</Label>
+                  <p className="text-sm font-medium text-slate-100 mt-1">{selectedCompliance.obligation}</p>
                 </div>
 
                 <div>
-                  <Label className="text-xs text-gray-600">Description</Label>
-                  <p className="text-sm text-gray-700 mt-1">
+                  <Label className="text-xs text-slate-300">Description</Label>
+                  <p className="text-sm text-slate-300 mt-1">
                     This is a mandatory requirement under Queensland legislation. Non-compliance may result in penalties.
                   </p>
                 </div>
 
                 <div>
-                  <Label className="text-xs text-gray-600">Evidence Required</Label>
+                  <Label className="text-xs text-slate-300">Evidence Required</Label>
                   <div className="mt-2 space-y-2">
                     <div className="flex items-center gap-2 text-sm">
-                      <CheckCircle className="w-4 h-4 text-green-600" />
-                      <span className="text-gray-700">Meeting notice sent</span>
+                      <CheckCircle className="w-4 h-4 text-green-400" />
+                      <span className="text-slate-300">Meeting notice sent</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm">
-                      <CheckCircle className="w-4 h-4 text-green-600" />
-                      <span className="text-gray-700">Agenda prepared</span>
+                      <CheckCircle className="w-4 h-4 text-green-400" />
+                      <span className="text-slate-300">Agenda prepared</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm">
-                      <Clock className="w-4 h-4 text-amber-600" />
-                      <span className="text-gray-700">Minutes drafted</span>
+                      <Clock className="w-4 h-4 text-amber-400" />
+                      <span className="text-slate-300">Minutes drafted</span>
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <Label className="text-xs text-gray-600">Responsible Role</Label>
-                  <p className="text-sm text-gray-900 mt-1">Secretary</p>
+                  <Label className="text-xs text-slate-300">Responsible Role</Label>
+                  <p className="text-sm text-slate-100 mt-1">Secretary</p>
                 </div>
 
                 <div>
-                  <Label className="text-xs text-gray-600">Linked Documents</Label>
+                  <Label className="text-xs text-slate-300">Linked Documents</Label>
                   <div className="mt-2 space-y-2">
-                    <div className="p-2 border border-gray-200 rounded text-sm">
+                    <div className="p-2 border border-white/10 rounded text-sm">
                       Association Rules.pdf
                     </div>
-                    <div className="p-2 border border-gray-200 rounded text-sm">
+                    <div className="p-2 border border-white/10 rounded text-sm">
                       AGM Notice Template.docx
                     </div>
                   </div>
@@ -446,8 +446,8 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
       <div className="space-y-6">
         <div className="flex justify-between items-center">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Meetings</h2>
-            <p className="text-gray-600 mt-1">Manage governance meetings and AGMs</p>
+            <h2 className="text-2xl font-bold text-slate-100">Meetings</h2>
+            <p className="text-slate-300 mt-1">Manage governance meetings and AGMs</p>
           </div>
           <Button onClick={() => toast.success('Create meeting wizard opened')}>
             <Plus className="w-4 h-4 mr-2" />
@@ -460,21 +460,21 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-gray-200">
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Type</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Date</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Status</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Notice Sent</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Quorum</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900"></th>
+                  <tr className="border-b border-white/10">
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100">Type</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100">Date</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100">Status</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100">Notice Sent</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100">Quorum</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100"></th>
                   </tr>
                 </thead>
                 <tbody>
                   {meetings.map((meeting) => (
-                    <tr key={meeting.id} className="border-b border-gray-100 hover:bg-gray-50 cursor-pointer"
+                    <tr key={meeting.id} className="border-b border-white/10 hover:bg-white/5 cursor-pointer"
                         onClick={() => setSelectedMeeting(meeting)}>
-                      <td className="py-3 px-4 text-sm font-medium text-gray-900">{meeting.type}</td>
-                      <td className="py-3 px-4 text-sm text-gray-600">{meeting.date}</td>
+                      <td className="py-3 px-4 text-sm font-medium text-slate-100">{meeting.type}</td>
+                      <td className="py-3 px-4 text-sm text-slate-300">{meeting.date}</td>
                       <td className="py-3 px-4">
                         <StatusChip status={meeting.status === 'completed' ? 'green' : 'amber' as any}>
                           {meeting.status}
@@ -482,9 +482,9 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
                       </td>
                       <td className="py-3 px-4">
                         {meeting.noticeSent ? (
-                          <CheckCircle className="w-5 h-5 text-green-600" />
+                          <CheckCircle className="w-5 h-5 text-green-400" />
                         ) : (
-                          <XCircle className="w-5 h-5 text-red-600" />
+                          <XCircle className="w-5 h-5 text-red-400" />
                         )}
                       </td>
                       <td className="py-3 px-4">
@@ -523,10 +523,10 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
             <CardContent>
               <div className="space-y-6">
                 {/* Tabs */}
-                <div className="border-b border-gray-200">
+                <div className="border-b border-white/10">
                   <div className="flex gap-6">
                     {['Overview', 'Agenda', 'Papers', 'Minutes', 'Decisions', 'Actions'].map((tab) => (
-                      <button key={tab} className="pb-3 border-b-2 border-blue-600 text-sm font-medium text-blue-600">
+                      <button key={tab} className="pb-3 border-b-2 border-blue-600 text-sm font-medium text-blue-400">
                         {tab}
                       </button>
                     ))}
@@ -536,32 +536,32 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
                 {/* Overview content */}
                 <div className="grid grid-cols-2 gap-6">
                   <div>
-                    <Label className="text-sm text-gray-600">Meeting Type</Label>
-                    <p className="text-sm font-medium text-gray-900 mt-1">{selectedMeeting.type}</p>
+                    <Label className="text-sm text-slate-300">Meeting Type</Label>
+                    <p className="text-sm font-medium text-slate-100 mt-1">{selectedMeeting.type}</p>
                   </div>
                   <div>
-                    <Label className="text-sm text-gray-600">Date & Time</Label>
-                    <p className="text-sm font-medium text-gray-900 mt-1">{selectedMeeting.date} at 7:00 PM</p>
+                    <Label className="text-sm text-slate-300">Date & Time</Label>
+                    <p className="text-sm font-medium text-slate-100 mt-1">{selectedMeeting.date} at 7:00 PM</p>
                   </div>
                   <div>
-                    <Label className="text-sm text-gray-600">Location</Label>
-                    <p className="text-sm font-medium text-gray-900 mt-1">Clubhouse Meeting Room</p>
+                    <Label className="text-sm text-slate-300">Location</Label>
+                    <p className="text-sm font-medium text-slate-100 mt-1">Clubhouse Meeting Room</p>
                   </div>
                   <div>
-                    <Label className="text-sm text-gray-600">Chair</Label>
-                    <p className="text-sm font-medium text-gray-900 mt-1">Sarah Mitchell (President)</p>
+                    <Label className="text-sm text-slate-300">Chair</Label>
+                    <p className="text-sm font-medium text-slate-100 mt-1">Sarah Mitchell (President)</p>
                   </div>
                 </div>
 
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-3">Attendees</h4>
+                  <h4 className="font-semibold text-slate-100 mb-3">Attendees</h4>
                   <div className="space-y-2">
                     {['Sarah Mitchell (President)', 'John Davis (Treasurer)', 'Emma Wilson (Secretary)', 'Michael Brown (Member)'].map((person) => (
-                      <div key={person} className="flex items-center gap-3 p-2 border border-gray-200 rounded">
-                        <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
-                          <Users className="w-4 h-4 text-blue-600" />
+                      <div key={person} className="flex items-center gap-3 p-2 border border-white/10 rounded">
+                        <div className="w-8 h-8 rounded-full bg-blue-500/15 flex items-center justify-center">
+                          <Users className="w-4 h-4 text-blue-400" />
                         </div>
-                        <span className="text-sm text-gray-900">{person}</span>
+                        <span className="text-sm text-slate-100">{person}</span>
                       </div>
                     ))}
                   </div>
@@ -588,8 +588,8 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
       <div className="space-y-6">
         <div className="flex justify-between items-center">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Members</h2>
-            <p className="text-gray-600 mt-1">Manage club members and roles</p>
+            <h2 className="text-2xl font-bold text-slate-100">Members</h2>
+            <p className="text-slate-300 mt-1">Manage club members and roles</p>
           </div>
           <Button>
             <Plus className="w-4 h-4 mr-2" />
@@ -610,28 +610,28 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-gray-200">
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Name</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Role</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Class</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Status</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Voting Eligible</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900"></th>
+                  <tr className="border-b border-white/10">
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100">Name</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100">Role</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100">Class</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100">Status</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100">Voting Eligible</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100"></th>
                   </tr>
                 </thead>
                 <tbody>
                   {members.map((member) => (
-                    <tr key={member.id} className="border-b border-gray-100 hover:bg-gray-50 cursor-pointer"
+                    <tr key={member.id} className="border-b border-white/10 hover:bg-white/5 cursor-pointer"
                         onClick={() => setSelectedMember(member)}>
                       <td className="py-3 px-4">
                         <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
-                            <Users className="w-4 h-4 text-blue-600" />
+                          <div className="w-8 h-8 rounded-full bg-blue-500/15 flex items-center justify-center">
+                            <Users className="w-4 h-4 text-blue-400" />
                           </div>
-                          <span className="text-sm font-medium text-gray-900">{member.name}</span>
+                          <span className="text-sm font-medium text-slate-100">{member.name}</span>
                         </div>
                       </td>
-                      <td className="py-3 px-4 text-sm text-gray-600">{member.role}</td>
+                      <td className="py-3 px-4 text-sm text-slate-300">{member.role}</td>
                       <td className="py-3 px-4">
                         <Badge variant="outline">{member.class}</Badge>
                       </td>
@@ -640,7 +640,7 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
                       </td>
                       <td className="py-3 px-4">
                         {member.voting ? (
-                          <CheckCircle className="w-5 h-5 text-green-600" />
+                          <CheckCircle className="w-5 h-5 text-green-400" />
                         ) : (
                           <XCircle className="w-5 h-5 text-gray-400" />
                         )}
@@ -679,8 +679,8 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
                 Back
               </Button>
               <div>
-                <h2 className="text-2xl font-bold text-gray-900">Cash Session Detail</h2>
-                <p className="text-gray-600">{selectedCashSession.event}</p>
+                <h2 className="text-2xl font-bold text-slate-100">Cash Session Detail</h2>
+                <p className="text-slate-300">{selectedCashSession.event}</p>
               </div>
             </div>
             {selectedCashSession.status === 'pending' && (
@@ -699,22 +699,22 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="flex justify-between">
-                  <span className="text-sm text-gray-600">Cash:</span>
+                  <span className="text-sm text-slate-300">Cash:</span>
                   <span className="font-semibold">$2,125.00</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-sm text-gray-600">EFTPOS:</span>
+                  <span className="text-sm text-slate-300">EFTPOS:</span>
                   <span className="font-semibold">$325.00</span>
                 </div>
                 <div className="flex justify-between pt-3 border-t">
                   <span className="text-sm font-semibold">Total:</span>
-                  <span className="font-bold text-green-600">$2,450.00</span>
+                  <span className="font-bold text-green-400">$2,450.00</span>
                 </div>
                 <div className="mt-4 pt-3 border-t">
-                  <p className="text-xs text-gray-600 mb-2">Counted at: 9:45 PM</p>
+                  <p className="text-xs text-slate-300 mb-2">Counted at: 9:45 PM</p>
                   <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
-                    <span className="text-sm text-gray-700">Signed off</span>
+                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <span className="text-sm text-slate-300">Signed off</span>
                   </div>
                 </div>
               </CardContent>
@@ -728,22 +728,22 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="flex justify-between">
-                  <span className="text-sm text-gray-600">Cash:</span>
+                  <span className="text-sm text-slate-300">Cash:</span>
                   <span className="font-semibold">$2,125.00</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-sm text-gray-600">EFTPOS:</span>
+                  <span className="text-sm text-slate-300">EFTPOS:</span>
                   <span className="font-semibold">$325.00</span>
                 </div>
                 <div className="flex justify-between pt-3 border-t">
                   <span className="text-sm font-semibold">Total:</span>
-                  <span className="font-bold text-green-600">$2,450.00</span>
+                  <span className="font-bold text-green-400">$2,450.00</span>
                 </div>
                 <div className="mt-4 pt-3 border-t">
-                  <p className="text-xs text-gray-600 mb-2">Counted at: 9:52 PM</p>
+                  <p className="text-xs text-slate-300 mb-2">Counted at: 9:52 PM</p>
                   <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
-                    <span className="text-sm text-gray-700">Signed off</span>
+                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <span className="text-sm text-slate-300">Signed off</span>
                   </div>
                 </div>
               </CardContent>
@@ -756,15 +756,15 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
               <CardTitle className="text-base">Variance Check</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg border-2 border-green-300">
+              <div className="flex items-center justify-between p-4 bg-green-500/10 rounded-lg border-2 border-green-300">
                 <div className="flex items-center gap-3">
-                  <CheckCircle className="w-8 h-8 text-green-600" />
+                  <CheckCircle className="w-8 h-8 text-green-400" />
                   <div>
-                    <p className="font-semibold text-gray-900">Counts Match</p>
-                    <p className="text-sm text-gray-600">No variance detected</p>
+                    <p className="font-semibold text-slate-100">Counts Match</p>
+                    <p className="text-sm text-slate-300">No variance detected</p>
                   </div>
                 </div>
-                <div className="text-2xl font-bold text-green-600">$0.00</div>
+                <div className="text-2xl font-bold text-green-400">$0.00</div>
               </div>
             </CardContent>
           </Card>
@@ -775,9 +775,9 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
               <CardTitle className="text-base">Banking Proof</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
+              <div className="border-2 border-dashed border-white/10 rounded-lg p-8 text-center">
                 <Upload className="w-12 h-12 text-gray-400 mx-auto mb-3" />
-                <p className="text-sm text-gray-600 mb-4">Upload bank deposit receipt</p>
+                <p className="text-sm text-slate-300 mb-4">Upload bank deposit receipt</p>
                 <Button variant="outline">
                   <Upload className="w-4 h-4 mr-2" />
                   Choose File
@@ -792,8 +792,8 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
     return (
       <div className="space-y-6">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">Finance</h2>
-          <p className="text-gray-600 mt-1">Manage budgets, transactions, and cash sessions</p>
+          <h2 className="text-2xl font-bold text-slate-100">Finance</h2>
+          <p className="text-slate-300 mt-1">Manage budgets, transactions, and cash sessions</p>
         </div>
 
         {/* Summary tiles */}
@@ -822,27 +822,27 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-gray-200">
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Date</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Event</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Amount</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Variance</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Status</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900"></th>
+                  <tr className="border-b border-white/10">
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100">Date</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100">Event</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100">Amount</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100">Variance</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100">Status</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100"></th>
                   </tr>
                 </thead>
                 <tbody>
                   {cashSessions.map((session) => (
-                    <tr key={session.id} className="border-b border-gray-100 hover:bg-gray-50 cursor-pointer"
+                    <tr key={session.id} className="border-b border-white/10 hover:bg-white/5 cursor-pointer"
                         onClick={() => setSelectedCashSession(session)}>
-                      <td className="py-3 px-4 text-sm text-gray-900">{session.date}</td>
-                      <td className="py-3 px-4 text-sm text-gray-900">{session.event}</td>
-                      <td className="py-3 px-4 text-sm font-semibold text-gray-900">${session.amount.toLocaleString()}</td>
+                      <td className="py-3 px-4 text-sm text-slate-100">{session.date}</td>
+                      <td className="py-3 px-4 text-sm text-slate-100">{session.event}</td>
+                      <td className="py-3 px-4 text-sm font-semibold text-slate-100">${session.amount.toLocaleString()}</td>
                       <td className="py-3 px-4">
                         {session.variance === 0 ? (
-                          <span className="text-sm text-green-600">$0</span>
+                          <span className="text-sm text-green-400">$0</span>
                         ) : (
-                          <span className="text-sm text-amber-600">${session.variance}</span>
+                          <span className="text-sm text-amber-400">${session.variance}</span>
                         )}
                       </td>
                       <td className="py-3 px-4">
@@ -878,16 +878,16 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
               ].map((item, index) => (
                 <div key={index}>
                   <div className="flex justify-between text-sm mb-2">
-                    <span className="text-gray-900 font-medium">{item.category}</span>
+                    <span className="text-slate-100 font-medium">{item.category}</span>
                     <div className="flex gap-4">
-                      <span className="text-gray-600">Budget: ${item.budget.toLocaleString()}</span>
-                      <span className="text-gray-900 font-semibold">Actual: ${item.actual.toLocaleString()}</span>
-                      <span className={item.variance > 0 ? 'text-red-600' : 'text-green-600'}>
+                      <span className="text-slate-300">Budget: ${item.budget.toLocaleString()}</span>
+                      <span className="text-slate-100 font-semibold">Actual: ${item.actual.toLocaleString()}</span>
+                      <span className={item.variance > 0 ? 'text-red-400' : 'text-green-400'}>
                         {item.variance > 0 ? '+' : ''}{item.variance.toLocaleString()}
                       </span>
                     </div>
                   </div>
-                  <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                  <div className="w-full h-3 bg-white/10 rounded-full overflow-hidden">
                     <div 
                       className={`h-full ${item.variance > 0 ? 'bg-red-500' : 'bg-green-500'}`}
                       style={{ width: `${(item.actual / item.budget) * 100}%` }}
@@ -913,8 +913,8 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
               Back
             </Button>
             <div>
-              <h2 className="text-2xl font-bold text-gray-900">Report Incident</h2>
-              <p className="text-gray-600">Document safety incident details</p>
+              <h2 className="text-2xl font-bold text-slate-100">Report Incident</h2>
+              <p className="text-slate-300">Document safety incident details</p>
             </div>
           </div>
 
@@ -949,7 +949,7 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
               <div>
                 <Label>Description</Label>
                 <textarea 
-                  className="w-full mt-2 p-3 border border-gray-300 rounded-lg resize-none"
+                  className="w-full mt-2 p-3 border border-white/10 rounded-lg resize-none"
                   rows={4}
                   placeholder="Describe what happened..."
                 />
@@ -957,9 +957,9 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
 
               <div>
                 <Label>Photos</Label>
-                <div className="mt-2 border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+                <div className="mt-2 border-2 border-dashed border-white/10 rounded-lg p-6 text-center">
                   <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
-                  <p className="text-sm text-gray-600">Upload incident photos</p>
+                  <p className="text-sm text-slate-300">Upload incident photos</p>
                   <Button variant="outline" size="sm" className="mt-3">Choose Files</Button>
                 </div>
               </div>
@@ -967,7 +967,7 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
               <div>
                 <Label>Immediate Action Taken</Label>
                 <textarea 
-                  className="w-full mt-2 p-3 border border-gray-300 rounded-lg resize-none"
+                  className="w-full mt-2 p-3 border border-white/10 rounded-lg resize-none"
                   rows={3}
                   placeholder="What action was taken immediately?"
                 />
@@ -1000,8 +1000,8 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
                 Back
               </Button>
               <div>
-                <h2 className="text-2xl font-bold text-gray-900">Match Day Checklist</h2>
-                <p className="text-gray-600">{selectedEvent.name}</p>
+                <h2 className="text-2xl font-bold text-slate-100">Match Day Checklist</h2>
+                <p className="text-slate-300">{selectedEvent.name}</p>
               </div>
             </div>
             <Button 
@@ -1014,13 +1014,13 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
           </div>
 
           {checklistItems.some(item => !item.completed) && (
-            <Card className="border-l-4 border-l-red-600 bg-red-50">
+            <Card className="border-l-4 border-l-red-600 bg-red-500/10">
               <CardContent className="pt-6">
                 <div className="flex items-center gap-3">
-                  <XCircle className="w-6 h-6 text-red-600" />
+                  <XCircle className="w-6 h-6 text-red-400" />
                   <div>
-                    <p className="font-semibold text-red-900">Match Blocked</p>
-                    <p className="text-sm text-red-700">Complete all checklist items before match can proceed</p>
+                    <p className="font-semibold text-red-300">Match Blocked</p>
+                    <p className="text-sm text-red-300">Complete all checklist items before match can proceed</p>
                   </div>
                 </div>
               </CardContent>
@@ -1035,7 +1035,7 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
             <CardContent>
               <div className="space-y-4">
                 {checklistItems.map((item) => (
-                  <div key={item.id} className="flex items-start gap-4 p-4 border border-gray-200 rounded-lg">
+                  <div key={item.id} className="flex items-start gap-4 p-4 border border-white/10 rounded-lg">
                     <button
                       onClick={() => {
                         setChecklistItems(checklistItems.map(i => 
@@ -1043,13 +1043,13 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
                         ));
                       }}
                       className={`w-6 h-6 rounded border-2 flex items-center justify-center ${
-                        item.completed ? 'bg-green-600 border-green-600' : 'border-gray-300'
+                        item.completed ? 'bg-green-600 border-green-600' : 'border-white/10'
                       }`}
                     >
                       {item.completed && <CheckCircle className="w-4 h-4 text-white" />}
                     </button>
                     <div className="flex-1">
-                      <p className={`text-sm font-medium ${item.completed ? 'text-gray-500 line-through' : 'text-gray-900'}`}>
+                      <p className={`text-sm font-medium ${item.completed ? 'text-slate-400 line-through' : 'text-slate-100'}`}>
                         {item.item}
                       </p>
                     </div>
@@ -1070,8 +1070,8 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
       <div className="space-y-6">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Safety</h2>
-            <p className="text-gray-600 mt-1">Match day checklists and incident management</p>
+            <h2 className="text-2xl font-bold text-slate-100">Safety</h2>
+            <p className="text-slate-300 mt-1">Match day checklists and incident management</p>
           </div>
           <Button onClick={() => setShowIncidentForm(true)} className="bg-red-600 hover:bg-red-700">
             <AlertTriangle className="w-4 h-4 mr-2" />
@@ -1100,11 +1100,11 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
                 { id: 3, name: 'Away Match @ Gold Coast', date: 'Sat 8 Mar', checklist: 'pending' }
               ].map((event) => (
                 <div key={event.id} 
-                     className="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer"
+                     className="flex items-center justify-between p-4 border border-white/10 rounded-lg hover:bg-white/5 cursor-pointer"
                      onClick={() => setSelectedEvent(event)}>
                   <div>
-                    <p className="font-medium text-gray-900">{event.name}</p>
-                    <p className="text-sm text-gray-600">{event.date}</p>
+                    <p className="font-medium text-slate-100">{event.name}</p>
+                    <p className="text-sm text-slate-300">{event.date}</p>
                   </div>
                   <div className="flex items-center gap-3">
                     <StatusChip status="amber">Checklist Pending</StatusChip>
@@ -1129,10 +1129,10 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
                 { date: '15 Feb 2026', type: 'Minor Injury', severity: 'Minor', status: 'Closed' },
                 { date: '8 Feb 2026', type: 'Equipment Damage', severity: 'Minor', status: 'Closed' }
               ].map((incident, index) => (
-                <div key={index} className="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
+                <div key={index} className="flex items-center justify-between p-3 border border-white/10 rounded-lg">
                   <div>
-                    <p className="font-medium text-gray-900">{incident.type}</p>
-                    <p className="text-sm text-gray-600">{incident.date}</p>
+                    <p className="font-medium text-slate-100">{incident.type}</p>
+                    <p className="text-sm text-slate-300">{incident.date}</p>
                   </div>
                   <div className="flex items-center gap-2">
                     <Badge variant="outline">{incident.severity}</Badge>
@@ -1164,19 +1164,19 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
               Back
             </Button>
             <div>
-              <h2 className="text-2xl font-bold text-gray-900">Case {selectedCase.id}</h2>
-              <p className="text-gray-600">{selectedCase.category}</p>
+              <h2 className="text-2xl font-bold text-slate-100">Case {selectedCase.id}</h2>
+              <p className="text-slate-300">{selectedCase.category}</p>
             </div>
           </div>
 
           {selectedCase.restricted && (
-            <Card className="border-l-4 border-l-amber-600 bg-amber-50">
+            <Card className="border-l-4 border-l-amber-600 bg-amber-500/10">
               <CardContent className="pt-6">
                 <div className="flex items-center gap-3">
-                  <Shield className="w-6 h-6 text-amber-600" />
+                  <Shield className="w-6 h-6 text-amber-400" />
                   <div>
-                    <p className="font-semibold text-amber-900">Restricted Access</p>
-                    <p className="text-sm text-amber-700">This case contains confidential information. Access is logged.</p>
+                    <p className="font-semibold text-amber-300">Restricted Access</p>
+                    <p className="text-sm text-amber-300">This case contains confidential information. Access is logged.</p>
                   </div>
                 </div>
               </CardContent>
@@ -1197,8 +1197,8 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
                   <div key={index} className="flex gap-4">
                     <div className="w-2 h-2 rounded-full bg-blue-600 mt-2" />
                     <div className="flex-1">
-                      <p className="text-sm font-medium text-gray-900">{entry.event}</p>
-                      <p className="text-xs text-gray-600">{entry.date} by {entry.user}</p>
+                      <p className="text-sm font-medium text-slate-100">{entry.event}</p>
+                      <p className="text-xs text-slate-300">{entry.date} by {entry.user}</p>
                     </div>
                   </div>
                 ))}
@@ -1212,19 +1212,19 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
             </CardHeader>
             <CardContent>
               <div className="space-y-2">
-                <div className="p-3 border border-gray-200 rounded flex items-center justify-between">
+                <div className="p-3 border border-white/10 rounded flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <FileText className="w-5 h-5 text-gray-600" />
-                    <span className="text-sm text-gray-900">Witness Statement.pdf</span>
+                    <FileText className="w-5 h-5 text-slate-300" />
+                    <span className="text-sm text-slate-100">Witness Statement.pdf</span>
                   </div>
                   <Button variant="ghost" size="sm">
                     <Download className="w-4 h-4" />
                   </Button>
                 </div>
-                <div className="p-3 border border-gray-200 rounded flex items-center justify-between">
+                <div className="p-3 border border-white/10 rounded flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <FileText className="w-5 h-5 text-gray-600" />
-                    <span className="text-sm text-gray-900">Evidence Photo.jpg</span>
+                    <FileText className="w-5 h-5 text-slate-300" />
+                    <span className="text-sm text-slate-100">Evidence Photo.jpg</span>
                   </div>
                   <Button variant="ghost" size="sm">
                     <Download className="w-4 h-4" />
@@ -1240,16 +1240,16 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <Label className="text-sm text-gray-600">Scheduled Date</Label>
-                <p className="text-sm font-medium text-gray-900 mt-1">Tuesday, 25 February 2026 at 7:00 PM</p>
+                <Label className="text-sm text-slate-300">Scheduled Date</Label>
+                <p className="text-sm font-medium text-slate-100 mt-1">Tuesday, 25 February 2026 at 7:00 PM</p>
               </div>
               <div>
-                <Label className="text-sm text-gray-600">Panel Members</Label>
-                <p className="text-sm text-gray-900 mt-1">3 panel members appointed</p>
+                <Label className="text-sm text-slate-300">Panel Members</Label>
+                <p className="text-sm text-slate-100 mt-1">3 panel members appointed</p>
               </div>
               <div>
-                <Label className="text-sm text-gray-600">Location</Label>
-                <p className="text-sm text-gray-900 mt-1">Clubhouse Board Room</p>
+                <Label className="text-sm text-slate-300">Location</Label>
+                <p className="text-sm text-slate-100 mt-1">Clubhouse Board Room</p>
               </div>
             </CardContent>
           </Card>
@@ -1261,8 +1261,8 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
       <div className="space-y-6">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Integrity</h2>
-            <p className="text-gray-600 mt-1">Complaints and code of conduct cases</p>
+            <h2 className="text-2xl font-bold text-slate-100">Integrity</h2>
+            <p className="text-slate-300 mt-1">Complaints and code of conduct cases</p>
           </div>
           <Button>
             <Plus className="w-4 h-4 mr-2" />
@@ -1278,21 +1278,21 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-gray-200">
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Case ID</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Category</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Status</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Severity</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Access</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900"></th>
+                  <tr className="border-b border-white/10">
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100">Case ID</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100">Category</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100">Status</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100">Severity</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100">Access</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100"></th>
                   </tr>
                 </thead>
                 <tbody>
                   {cases.map((caseItem) => (
-                    <tr key={caseItem.id} className="border-b border-gray-100 hover:bg-gray-50 cursor-pointer"
+                    <tr key={caseItem.id} className="border-b border-white/10 hover:bg-white/5 cursor-pointer"
                         onClick={() => setSelectedCase(caseItem)}>
-                      <td className="py-3 px-4 text-sm font-medium text-gray-900">{caseItem.id}</td>
-                      <td className="py-3 px-4 text-sm text-gray-600">{caseItem.category}</td>
+                      <td className="py-3 px-4 text-sm font-medium text-slate-100">{caseItem.id}</td>
+                      <td className="py-3 px-4 text-sm text-slate-300">{caseItem.category}</td>
                       <td className="py-3 px-4">
                         <StatusChip status={caseItem.status === 'Closed' ? 'grey' : 'amber'}>
                           {caseItem.status}
@@ -1300,14 +1300,14 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
                       </td>
                       <td className="py-3 px-4">
                         <Badge variant="outline" className={
-                          caseItem.severity === 'High' ? 'bg-red-50 text-red-700 border-red-300' :
-                          caseItem.severity === 'Medium' ? 'bg-amber-50 text-amber-700 border-amber-300' :
-                          'bg-gray-50 text-gray-700'
+                          caseItem.severity === 'High' ? 'bg-red-500/10 text-red-300 border-red-300' :
+                          caseItem.severity === 'Medium' ? 'bg-amber-500/10 text-amber-300 border-amber-300' :
+                          'bg-white/5 text-slate-300'
                         }>{caseItem.severity}</Badge>
                       </td>
                       <td className="py-3 px-4">
                         {caseItem.restricted && (
-                          <Badge variant="outline" className="bg-amber-50 text-amber-700 border-amber-300">
+                          <Badge variant="outline" className="bg-amber-500/10 text-amber-300 border-amber-300">
                             <Shield className="w-3 h-3 mr-1" />
                             Restricted
                           </Badge>
@@ -1349,8 +1349,8 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
       <div className="space-y-6">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Documents</h2>
-            <p className="text-gray-600 mt-1">Organized document management by category</p>
+            <h2 className="text-2xl font-bold text-slate-100">Documents</h2>
+            <p className="text-slate-300 mt-1">Organized document management by category</p>
           </div>
           <Button>
             <Upload className="w-4 h-4 mr-2" />
@@ -1367,15 +1367,15 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
                 onClick={() => setSelectedCabinet(cabinet.id)}
                 className={`p-6 border-2 rounded-lg text-center transition-all ${
                   selectedCabinet === cabinet.id
-                    ? 'border-blue-600 bg-blue-50'
-                    : 'border-gray-200 hover:border-gray-300'
+                    ? 'border-blue-600 bg-blue-500/10'
+                    : 'border-white/10 hover:border-white/10'
                 }`}
               >
                 <Icon className={`w-8 h-8 mx-auto mb-3 ${
-                  selectedCabinet === cabinet.id ? 'text-blue-600' : 'text-gray-600'
+                  selectedCabinet === cabinet.id ? 'text-blue-400' : 'text-slate-300'
                 }`} />
-                <p className="font-semibold text-gray-900">{cabinet.label}</p>
-                <p className="text-sm text-gray-600 mt-1">{cabinet.count} docs</p>
+                <p className="font-semibold text-slate-100">{cabinet.label}</p>
+                <p className="text-sm text-slate-300 mt-1">{cabinet.count} docs</p>
               </button>
             );
           })}
@@ -1401,34 +1401,34 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-gray-200">
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Name</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Type</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Version</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Status</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Date</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900"></th>
+                  <tr className="border-b border-white/10">
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100">Name</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100">Type</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100">Version</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100">Status</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100">Date</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-100"></th>
                   </tr>
                 </thead>
                 <tbody>
                   {documents.map((doc, index) => (
-                    <tr key={index} className="border-b border-gray-100 hover:bg-gray-50">
+                    <tr key={index} className="border-b border-white/10 hover:bg-white/5">
                       <td className="py-3 px-4">
                         <div className="flex items-center gap-2">
-                          <FileText className="w-4 h-4 text-gray-600" />
-                          <span className="text-sm text-gray-900">{doc.name}</span>
+                          <FileText className="w-4 h-4 text-slate-300" />
+                          <span className="text-sm text-slate-100">{doc.name}</span>
                         </div>
                       </td>
                       <td className="py-3 px-4">
                         <Badge variant="outline">{doc.type}</Badge>
                       </td>
-                      <td className="py-3 px-4 text-sm text-gray-600">{doc.version}</td>
+                      <td className="py-3 px-4 text-sm text-slate-300">{doc.version}</td>
                       <td className="py-3 px-4">
                         <StatusChip status={doc.status === 'Final' || doc.status === 'Current' ? 'green' : 'amber'}>
                           {doc.status}
                         </StatusChip>
                       </td>
-                      <td className="py-3 px-4 text-sm text-gray-600">{doc.date}</td>
+                      <td className="py-3 px-4 text-sm text-slate-300">{doc.date}</td>
                       <td className="py-3 px-4">
                         <div className="flex gap-1">
                           <Button variant="ghost" size="sm">
@@ -1461,8 +1461,8 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
               Back
             </Button>
             <div>
-              <h2 className="text-2xl font-bold text-gray-900">{selectedCourse.title}</h2>
-              <p className="text-gray-600">{selectedCourse.duration}</p>
+              <h2 className="text-2xl font-bold text-slate-100">{selectedCourse.title}</h2>
+              <p className="text-slate-300">{selectedCourse.duration}</p>
             </div>
           </div>
 
@@ -1480,7 +1480,7 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
 
               <div className="space-y-6">
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-3">Course Content</h3>
+                  <h3 className="font-semibold text-slate-100 mb-3">Course Content</h3>
                   <div className="space-y-2">
                     {[
                       { title: 'Introduction', duration: '5 min', completed: false },
@@ -1488,25 +1488,25 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
                       { title: 'Practical Application', duration: '10 min', completed: false },
                       { title: 'Assessment', duration: '5 min', completed: false }
                     ].map((module, index) => (
-                      <div key={index} className="flex items-center justify-between p-3 border border-gray-200 rounded">
+                      <div key={index} className="flex items-center justify-between p-3 border border-white/10 rounded">
                         <div className="flex items-center gap-3">
-                          <div className="w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center">
-                            {module.completed && <CheckCircle className="w-4 h-4 text-green-600" />}
+                          <div className="w-6 h-6 rounded-full border-2 border-white/10 flex items-center justify-center">
+                            {module.completed && <CheckCircle className="w-4 h-4 text-green-400" />}
                           </div>
-                          <span className="text-sm text-gray-900">{module.title}</span>
+                          <span className="text-sm text-slate-100">{module.title}</span>
                         </div>
-                        <span className="text-sm text-gray-600">{module.duration}</span>
+                        <span className="text-sm text-slate-300">{module.duration}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="p-4 bg-blue-50 rounded-lg">
+                <div className="p-4 bg-blue-500/10 rounded-lg">
                   <div className="flex items-start gap-3">
                     <input type="checkbox" className="mt-1" />
                     <div>
-                      <p className="text-sm font-medium text-gray-900">Acknowledgement</p>
-                      <p className="text-sm text-gray-700 mt-1">
+                      <p className="text-sm font-medium text-slate-100">Acknowledgement</p>
+                      <p className="text-sm text-slate-300 mt-1">
                         I confirm that I have completed this training and understand the content covered.
                       </p>
                     </div>
@@ -1529,8 +1529,8 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
     return (
       <div className="space-y-6">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">Training</h2>
-          <p className="text-gray-600 mt-1">Mandatory training and certifications</p>
+          <h2 className="text-2xl font-bold text-slate-100">Training</h2>
+          <p className="text-slate-300 mt-1">Mandatory training and certifications</p>
         </div>
 
         <div className="grid grid-cols-4 gap-4">
@@ -1553,10 +1553,10 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
               ].map((item, index) => (
                 <div key={index}>
                   <div className="flex justify-between text-sm mb-2">
-                    <span className="font-medium text-gray-900">{item.role}</span>
-                    <span className="text-gray-600">{item.completed}/{item.required} completed</span>
+                    <span className="font-medium text-slate-100">{item.role}</span>
+                    <span className="text-slate-300">{item.completed}/{item.required} completed</span>
                   </div>
-                  <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                  <div className="w-full h-3 bg-white/10 rounded-full overflow-hidden">
                     <div 
                       className={`h-full ${item.completed === item.required ? 'bg-green-500' : 'bg-amber-500'}`}
                       style={{ width: `${(item.completed / item.required) * 100}%` }}
@@ -1581,18 +1581,18 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
                 { id: 4, title: 'Child Safety', duration: '60 minutes', status: 'Required', expiry: null }
               ].map((course) => (
                 <div key={course.id} 
-                     className="p-4 border-2 border-gray-200 rounded-lg hover:border-blue-600 cursor-pointer transition-all"
+                     className="p-4 border-2 border-white/10 rounded-lg hover:border-blue-600 cursor-pointer transition-all"
                      onClick={() => setSelectedCourse(course)}>
                   <div className="flex items-start justify-between mb-3">
-                    <GraduationCap className="w-8 h-8 text-blue-600" />
+                    <GraduationCap className="w-8 h-8 text-blue-400" />
                     <StatusChip status={course.status === 'Complete' ? 'green' : 'amber'}>
                       {course.status}
                     </StatusChip>
                   </div>
-                  <h3 className="font-semibold text-gray-900 mb-1">{course.title}</h3>
-                  <p className="text-sm text-gray-600">{course.duration}</p>
+                  <h3 className="font-semibold text-slate-100 mb-1">{course.title}</h3>
+                  <p className="text-sm text-slate-300">{course.duration}</p>
                   {course.expiry && (
-                    <p className="text-xs text-gray-500 mt-2">Expires: {course.expiry}</p>
+                    <p className="text-xs text-slate-400 mt-2">Expires: {course.expiry}</p>
                   )}
                 </div>
               ))}
@@ -1614,8 +1614,8 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
               Back
             </Button>
             <div>
-              <h2 className="text-2xl font-bold text-gray-900">{selectedReport.title}</h2>
-              <p className="text-gray-600">Generated on {new Date().toLocaleDateString()}</p>
+              <h2 className="text-2xl font-bold text-slate-100">{selectedReport.title}</h2>
+              <p className="text-slate-300">Generated on {new Date().toLocaleDateString()}</p>
             </div>
           </div>
 
@@ -1624,23 +1624,23 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
               <CardTitle>Report Summary</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="p-4 bg-green-50 rounded-lg">
+              <div className="p-4 bg-green-500/10 rounded-lg">
                 <div className="flex items-center gap-3 mb-3">
-                  <CheckCircle className="w-6 h-6 text-green-600" />
-                  <p className="font-semibold text-green-900">Report Generated Successfully</p>
+                  <CheckCircle className="w-6 h-6 text-green-400" />
+                  <p className="font-semibold text-green-300">Report Generated Successfully</p>
                 </div>
-                <p className="text-sm text-gray-700">
+                <p className="text-sm text-slate-300">
                   This report contains all required information for {selectedReport.title.toLowerCase()}.
                 </p>
               </div>
 
               <div>
-                <Label className="text-sm text-gray-600">Report Period</Label>
-                <p className="text-sm font-medium text-gray-900 mt-1">Financial Year 2025-2026</p>
+                <Label className="text-sm text-slate-300">Report Period</Label>
+                <p className="text-sm font-medium text-slate-100 mt-1">Financial Year 2025-2026</p>
               </div>
 
               <div>
-                <Label className="text-sm text-gray-600">Sections Included</Label>
+                <Label className="text-sm text-slate-300">Sections Included</Label>
                 <div className="mt-2 space-y-2">
                   {[
                     'Executive Summary',
@@ -1650,8 +1650,8 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
                     'Recommendations'
                   ].map((section, index) => (
                     <div key={index} className="flex items-center gap-2 text-sm">
-                      <CheckCircle className="w-4 h-4 text-green-600" />
-                      <span className="text-gray-700">{section}</span>
+                      <CheckCircle className="w-4 h-4 text-green-400" />
+                      <span className="text-slate-300">{section}</span>
                     </div>
                   ))}
                 </div>
@@ -1676,8 +1676,8 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
     return (
       <div className="space-y-6">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">Reports</h2>
-          <p className="text-gray-600 mt-1">Generate compliance and operational reports</p>
+          <h2 className="text-2xl font-bold text-slate-100">Reports</h2>
+          <p className="text-slate-300 mt-1">Generate compliance and operational reports</p>
         </div>
 
         <Card>
@@ -1697,11 +1697,11 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
                 const Icon = report.icon;
                 return (
                   <div key={report.id} 
-                       className="p-6 border-2 border-gray-200 rounded-lg hover:border-blue-600 cursor-pointer transition-all"
+                       className="p-6 border-2 border-white/10 rounded-lg hover:border-blue-600 cursor-pointer transition-all"
                        onClick={() => setSelectedReport(report)}>
-                    <Icon className="w-8 h-8 text-blue-600 mb-3" />
-                    <h3 className="font-semibold text-gray-900 mb-1">{report.title}</h3>
-                    <p className="text-sm text-gray-600 mb-4">{report.description}</p>
+                    <Icon className="w-8 h-8 text-blue-400 mb-3" />
+                    <h3 className="font-semibold text-slate-100 mb-1">{report.title}</h3>
+                    <p className="text-sm text-slate-300 mb-4">{report.description}</p>
                     <Button size="sm" variant="outline" className="w-full">
                       Generate Report
                     </Button>
@@ -1719,8 +1719,8 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
   const renderSettings = () => (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900">Settings</h2>
-        <p className="text-gray-600 mt-1">Configure your association settings</p>
+        <h2 className="text-2xl font-bold text-slate-100">Settings</h2>
+        <p className="text-slate-300 mt-1">Configure your association settings</p>
       </div>
 
       <Card>
@@ -1763,21 +1763,21 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
               onClick={() => setAutomationMode('assist')}
               className={`p-6 border-2 rounded-lg text-left transition-all ${
                 automationMode === 'assist' 
-                  ? 'border-blue-600 bg-blue-50' 
-                  : 'border-gray-200 hover:border-gray-300'
+                  ? 'border-blue-600 bg-blue-500/10' 
+                  : 'border-white/10 hover:border-white/10'
               }`}
             >
               <div className="flex items-center gap-3 mb-3">
                 <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                  automationMode === 'assist' ? 'border-blue-600' : 'border-gray-300'
+                  automationMode === 'assist' ? 'border-blue-600' : 'border-white/10'
                 }`}>
                   {automationMode === 'assist' && (
                     <div className="w-3 h-3 rounded-full bg-blue-600" />
                   )}
                 </div>
-                <h3 className="font-semibold text-gray-900">Assist Mode</h3>
+                <h3 className="font-semibold text-slate-100">Assist Mode</h3>
               </div>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-slate-300">
                 You approve most actions. System prepares documents and drafts for your review.
               </p>
             </button>
@@ -1786,41 +1786,41 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
               onClick={() => setAutomationMode('autopilot')}
               className={`p-6 border-2 rounded-lg text-left transition-all ${
                 automationMode === 'autopilot' 
-                  ? 'border-blue-600 bg-blue-50' 
-                  : 'border-gray-200 hover:border-gray-300'
+                  ? 'border-blue-600 bg-blue-500/10' 
+                  : 'border-white/10 hover:border-white/10'
               }`}
             >
               <div className="flex items-center gap-3 mb-3">
                 <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                  automationMode === 'autopilot' ? 'border-blue-600' : 'border-gray-300'
+                  automationMode === 'autopilot' ? 'border-blue-600' : 'border-white/10'
                 }`}>
                   {automationMode === 'autopilot' && (
                     <div className="w-3 h-3 rounded-full bg-blue-600" />
                   )}
                 </div>
-                <h3 className="font-semibold text-gray-900">Autopilot Mode</h3>
+                <h3 className="font-semibold text-slate-100">Autopilot Mode</h3>
               </div>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-slate-300">
                 System handles low-risk admin automatically. You review only critical decisions.
               </p>
             </button>
           </div>
 
-          <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-            <h4 className="font-semibold text-gray-900 mb-2">Recent Auto-Actions</h4>
+          <div className="mt-6 p-4 bg-white/5 rounded-lg">
+            <h4 className="font-semibold text-slate-100 mb-2">Recent Auto-Actions</h4>
             <div className="space-y-2">
-              <div className="text-sm text-gray-700">• Meeting notice sent to committee (22 Feb 2026)</div>
-              <div className="text-sm text-gray-700">• Blue card renewal reminder sent (20 Feb 2026)</div>
-              <div className="text-sm text-gray-700">• Financial report generated (18 Feb 2026)</div>
+              <div className="text-sm text-slate-300">• Meeting notice sent to committee (22 Feb 2026)</div>
+              <div className="text-sm text-slate-300">• Blue card renewal reminder sent (20 Feb 2026)</div>
+              <div className="text-sm text-slate-300">• Financial report generated (18 Feb 2026)</div>
             </div>
           </div>
 
-          <div className="mt-4 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+          <div className="mt-4 p-4 bg-amber-500/10 border border-amber-500/30 rounded-lg">
             <div className="flex items-start gap-3">
-              <AlertTriangle className="w-5 h-5 text-amber-600 mt-0.5" />
+              <AlertTriangle className="w-5 h-5 text-amber-400 mt-0.5" />
               <div>
-                <p className="text-sm font-medium text-amber-900">Risk Disclaimer</p>
-                <p className="text-sm text-amber-700 mt-1">
+                <p className="text-sm font-medium text-amber-300">Risk Disclaimer</p>
+                <p className="text-sm text-amber-300 mt-1">
                   Committee remains legally responsible for all actions. Review audit log regularly.
                 </p>
               </div>
@@ -1833,14 +1833,14 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
 
   // AI Panel
   const renderAIPanel = () => (
-    <div className="fixed inset-y-0 right-0 w-96 bg-white border-l border-gray-200 shadow-2xl z-50 overflow-y-auto">
+    <div className="fixed inset-y-0 right-0 w-96 bg-white border-l border-white/10 shadow-2xl z-50 overflow-y-auto">
       <div className="p-6">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center">
               <Sparkles className="w-5 h-5 text-white" />
             </div>
-            <h3 className="font-semibold text-gray-900">AI Assistant</h3>
+            <h3 className="font-semibold text-slate-100">AI Assistant</h3>
           </div>
           <Button variant="ghost" size="sm" onClick={() => setShowAIPanel(false)}>
             <X className="w-4 h-4" />
@@ -1849,7 +1849,7 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
 
         <div className="space-y-6">
           <div>
-            <Label className="text-sm font-medium text-gray-900">Ask a Question</Label>
+            <Label className="text-sm font-medium text-slate-100">Ask a Question</Label>
             <Input 
               placeholder="e.g. When is our AGM due?" 
               className="mt-2"
@@ -1857,13 +1857,13 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
             <Button className="w-full mt-2">Ask</Button>
           </div>
 
-          <div className="border-t border-gray-200 pt-6">
-            <h4 className="text-sm font-semibold text-gray-900 mb-3">Recent Answer</h4>
-            <div className="bg-blue-50 rounded-lg p-4 space-y-3">
-              <p className="text-sm text-gray-900">
+          <div className="border-t border-white/10 pt-6">
+            <h4 className="text-sm font-semibold text-slate-100 mb-3">Recent Answer</h4>
+            <div className="bg-blue-500/10 rounded-lg p-4 space-y-3">
+              <p className="text-sm text-slate-100">
                 Your AGM must be held by <strong>15 March 2026</strong>. Notice must be sent at least 21 days prior.
               </p>
-              <div className="text-xs text-gray-600">
+              <div className="text-xs text-slate-300">
                 <p className="font-medium mb-1">Sources:</p>
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
@@ -1879,8 +1879,8 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
             </div>
           </div>
 
-          <div className="border-t border-gray-200 pt-6">
-            <h4 className="text-sm font-semibold text-gray-900 mb-3">Suggested Actions</h4>
+          <div className="border-t border-white/10 pt-6">
+            <h4 className="text-sm font-semibold text-slate-100 mb-3">Suggested Actions</h4>
             <div className="space-y-2">
               <Button variant="outline" size="sm" className="w-full justify-start">
                 <Calendar className="w-4 h-4 mr-2" />
@@ -1947,17 +1947,17 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="min-h-screen bg-white/5 flex">
       {/* Left Sidebar */}
-      <div className="w-64 bg-white border-r border-gray-200 fixed inset-y-0 left-0">
+      <div className="w-64 bg-white border-r border-white/10 fixed inset-y-0 left-0">
         <div className="p-6">
           <div className="flex items-center gap-3 mb-8">
             <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center">
               <Building2 className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h1 className="font-bold text-gray-900">QLD Assoc OS</h1>
-              <p className="text-xs text-gray-600">Community Platform</p>
+              <h1 className="font-bold text-slate-100">QLD Assoc OS</h1>
+              <p className="text-xs text-slate-300">Community Platform</p>
             </div>
           </div>
 
@@ -1970,8 +1970,8 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
                   onClick={() => setCurrentView(item.id as View)}
                   className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                     currentView === item.id
-                      ? 'bg-blue-50 text-blue-600'
-                      : 'text-gray-700 hover:bg-gray-50'
+                      ? 'bg-blue-500/10 text-blue-400'
+                      : 'text-slate-300 hover:bg-white/5'
                   }`}
                 >
                   <Icon className="w-5 h-5" />
@@ -1986,7 +1986,7 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
       {/* Main Content */}
       <div className="ml-64 flex-1">
         {/* Top Header */}
-        <div className="bg-white border-b border-gray-200 sticky top-0 z-40">
+        <div className="bg-white border-b border-white/10 sticky top-0 z-40">
           <div className="px-8 py-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
@@ -2000,10 +2000,10 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
                   </SelectContent>
                 </Select>
 
-                <div className="flex items-center gap-2 px-3 py-1.5 bg-green-100 border border-green-300 rounded-lg">
+                <div className="flex items-center gap-2 px-3 py-1.5 bg-green-500/15 border border-green-300 rounded-lg">
                   <div className="w-2 h-2 rounded-full bg-green-600" />
-                  <span className="text-sm font-semibold text-green-900">87</span>
-                  <span className="text-xs text-green-700">Compliance Score</span>
+                  <span className="text-sm font-semibold text-green-300">87</span>
+                  <span className="text-xs text-green-300">Compliance Score</span>
                 </div>
               </div>
 
@@ -2019,8 +2019,8 @@ export function QLDAssociation({ onSwitchModule }: QLDAssociationProps) {
                   AI Assistant
                 </Button>
                 <Button variant="ghost" size="icon">
-                  <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
-                    <Users className="w-4 h-4 text-blue-600" />
+                  <div className="w-8 h-8 rounded-full bg-blue-500/15 flex items-center justify-center">
+                    <Users className="w-4 h-4 text-blue-400" />
                   </div>
                 </Button>
               </div>

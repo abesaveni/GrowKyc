@@ -97,10 +97,10 @@ export function SupportTickets() {
 
   const getStatusBadge = (status: string) => {
     const colors = {
-      open: 'bg-blue-100 text-blue-800',
-      in_progress: 'bg-amber-100 text-amber-800',
-      resolved: 'bg-green-100 text-green-800',
-      closed: 'bg-gray-100 text-gray-800'
+      open: 'bg-blue-500/15 text-blue-300',
+      in_progress: 'bg-amber-500/15 text-amber-300',
+      resolved: 'bg-green-500/15 text-green-300',
+      closed: 'bg-white/5 text-slate-100'
     };
     const labels = {
       open: 'Open',
@@ -117,9 +117,9 @@ export function SupportTickets() {
 
   const getPriorityBadge = (priority: string) => {
     const colors = {
-      low: 'bg-gray-100 text-gray-800',
-      medium: 'bg-blue-100 text-blue-800',
-      high: 'bg-red-100 text-red-800'
+      low: 'bg-white/5 text-slate-100',
+      medium: 'bg-blue-500/15 text-blue-300',
+      high: 'bg-red-500/15 text-red-300'
     };
     return (
       <span className={`px-2 py-1 rounded text-xs font-semibold ${colors[priority as keyof typeof colors]}`}>
@@ -184,27 +184,12 @@ export function SupportTickets() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 mb-1">Total Tickets</p>
-                <p className="text-3xl font-semibold text-gray-900">{tickets.length}</p>
-                <p className="text-xs text-gray-500 mt-1">All time</p>
+                <p className="text-sm text-slate-300 mb-1">Total Tickets</p>
+                <p className="text-3xl font-semibold text-slate-100">{tickets.length}</p>
+                <p className="text-xs text-slate-400 mt-1">All time</p>
               </div>
-              <div className="p-3 bg-blue-50 rounded-lg">
-                <MessageSquare className="w-6 h-6 text-blue-600" />
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-600 mb-1">Open Tickets</p>
-                <p className="text-3xl font-semibold text-gray-900">{openTickets}</p>
-                <p className="text-xs text-gray-500 mt-1">Active support</p>
-              </div>
-              <div className="p-3 bg-amber-50 rounded-lg">
-                <Clock className="w-6 h-6 text-amber-600" />
+              <div className="p-3 bg-blue-500/10 rounded-lg">
+                <MessageSquare className="w-6 h-6 text-blue-400" />
               </div>
             </div>
           </CardContent>
@@ -214,12 +199,27 @@ export function SupportTickets() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 mb-1">Resolved</p>
-                <p className="text-3xl font-semibold text-gray-900">{resolvedTickets}</p>
-                <p className="text-xs text-gray-500 mt-1">Completed</p>
+                <p className="text-sm text-slate-300 mb-1">Open Tickets</p>
+                <p className="text-3xl font-semibold text-slate-100">{openTickets}</p>
+                <p className="text-xs text-slate-400 mt-1">Active support</p>
               </div>
-              <div className="p-3 bg-green-50 rounded-lg">
-                <CheckCircle className="w-6 h-6 text-green-600" />
+              <div className="p-3 bg-amber-500/10 rounded-lg">
+                <Clock className="w-6 h-6 text-amber-400" />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-slate-300 mb-1">Resolved</p>
+                <p className="text-3xl font-semibold text-slate-100">{resolvedTickets}</p>
+                <p className="text-xs text-slate-400 mt-1">Completed</p>
+              </div>
+              <div className="p-3 bg-green-500/10 rounded-lg">
+                <CheckCircle className="w-6 h-6 text-green-400" />
               </div>
             </div>
           </CardContent>
@@ -248,7 +248,7 @@ export function SupportTickets() {
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                className="px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="all">All Status</option>
                 <option value="open">Open</option>
@@ -295,25 +295,25 @@ export function SupportTickets() {
               {filteredTickets.map((ticket) => (
                 <div
                   key={ticket.id}
-                  className="p-4 border rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                  className="p-4 border rounded-lg hover:bg-white/5 transition-colors cursor-pointer"
                   onClick={() => handleViewTicket(ticket.id)}
                 >
                   <div className="flex items-start justify-between mb-2">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="text-sm font-mono text-gray-500">{ticket.id}</span>
+                        <span className="text-sm font-mono text-slate-400">{ticket.id}</span>
                         {getStatusBadge(ticket.status)}
                         {getPriorityBadge(ticket.priority)}
-                        <span className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded">
+                        <span className="text-xs text-slate-400 bg-white/5 px-2 py-0.5 rounded">
                           {ticket.category}
                         </span>
                       </div>
-                      <h4 className="font-semibold text-gray-900">{ticket.subject}</h4>
-                      <p className="text-sm text-gray-600 mt-1 line-clamp-2">{ticket.description}</p>
+                      <h4 className="font-semibold text-slate-100">{ticket.subject}</h4>
+                      <p className="text-sm text-slate-300 mt-1 line-clamp-2">{ticket.description}</p>
                     </div>
                   </div>
                   
-                  <div className="flex items-center justify-between text-xs text-gray-500 mt-3 pt-3 border-t">
+                  <div className="flex items-center justify-between text-xs text-slate-400 mt-3 pt-3 border-t">
                     <div className="flex items-center gap-4">
                       <span>Created {formatDistanceToNow(ticket.createdAt, { addSuffix: true })}</span>
                       {ticket.responses > 0 && (
@@ -336,16 +336,16 @@ export function SupportTickets() {
       </Card>
 
       {/* Info Card */}
-      <Card className="border-blue-200 bg-blue-50">
+      <Card className="border-blue-500/30 bg-blue-500/10">
         <CardContent className="p-4">
           <div className="flex items-start gap-3">
-            <MessageSquare className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+            <MessageSquare className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
             <div>
-              <p className="text-sm font-semibold text-blue-900 mb-1">Support Response Times</p>
-              <p className="text-sm text-blue-800">
+              <p className="text-sm font-semibold text-blue-300 mb-1">Support Response Times</p>
+              <p className="text-sm text-blue-300">
                 Our support team typically responds within 4 business hours. High priority tickets are addressed within 1 hour.
               </p>
-              <div className="mt-2 text-xs text-blue-700 space-y-1">
+              <div className="mt-2 text-xs text-blue-300 space-y-1">
                 <p>• Monday-Friday: 9am-5pm AEST</p>
                 <p>• Emergency support available 24/7 for critical issues</p>
               </div>
@@ -388,7 +388,7 @@ export function SupportTickets() {
                     id="category"
                     value={newTicket.category}
                     onChange={(e) => setNewTicket({ ...newTicket, category: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                   >
                     <option value="general">General Question</option>
                     <option value="technical">Technical Issue</option>
@@ -404,7 +404,7 @@ export function SupportTickets() {
                     id="priority"
                     value={newTicket.priority}
                     onChange={(e) => setNewTicket({ ...newTicket, priority: e.target.value as any })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                   >
                     <option value="low">Low</option>
                     <option value="medium">Medium</option>
@@ -422,7 +422,7 @@ export function SupportTickets() {
                   placeholder="Please provide detailed information about your issue..."
                   rows={6}
                 />
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-slate-400 mt-1">
                   Include any relevant case numbers, transaction IDs, or error messages
                 </p>
               </div>

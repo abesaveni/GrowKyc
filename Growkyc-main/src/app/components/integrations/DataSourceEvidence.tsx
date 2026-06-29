@@ -208,7 +208,7 @@ export function DataSourceEvidence({ matterId, subjectId, subjectName }: DataSou
       case 'passed':
       case 'clear':
         return (
-          <Badge className="bg-green-100 text-green-700 border-green-300 text-xs">
+          <Badge className="bg-green-500/15 text-green-300 border-green-300 text-xs">
             <CheckCircle className="w-3 h-3 mr-1" />
             {result === 'passed' ? 'Passed' : 'Clear'}
           </Badge>
@@ -216,21 +216,21 @@ export function DataSourceEvidence({ matterId, subjectId, subjectName }: DataSou
       case 'review':
       case 'match':
         return (
-          <Badge className="bg-amber-100 text-amber-700 border-amber-300 text-xs">
+          <Badge className="bg-amber-500/15 text-amber-300 border-amber-300 text-xs">
             <AlertTriangle className="w-3 h-3 mr-1" />
             {result === 'review' ? 'Review' : 'Match'}
           </Badge>
         );
       case 'failed':
         return (
-          <Badge className="bg-red-100 text-red-700 border-red-300 text-xs">
+          <Badge className="bg-red-500/15 text-red-300 border-red-300 text-xs">
             <XCircle className="w-3 h-3 mr-1" />
             Failed
           </Badge>
         );
       case 'pending':
         return (
-          <Badge className="bg-blue-100 text-blue-700 border-blue-300 text-xs">
+          <Badge className="bg-blue-500/15 text-blue-300 border-blue-300 text-xs">
             <Clock className="w-3 h-3 mr-1" />
             Pending
           </Badge>
@@ -255,13 +255,13 @@ export function DataSourceEvidence({ matterId, subjectId, subjectName }: DataSou
           <div className="flex items-center justify-between">
             <div>
               <CardTitle className="text-2xl flex items-center gap-2">
-                <Shield className="w-7 h-7 text-blue-600" />
+                <Shield className="w-7 h-7 text-blue-400" />
                 Data Sources & Evidence
               </CardTitle>
               <CardDescription className="text-base mt-2">
                 Complete audit trail for <strong>{subjectName}</strong>
               </CardDescription>
-              <div className="flex gap-2 mt-3 text-sm text-gray-600">
+              <div className="flex gap-2 mt-3 text-sm text-slate-300">
                 <div className="flex items-center gap-1">
                   <FileText className="w-4 h-4" />
                   Matter: <span className="font-mono font-semibold">{matterId}</span>
@@ -281,16 +281,16 @@ export function DataSourceEvidence({ matterId, subjectId, subjectName }: DataSou
 
         <CardContent className="p-6">
           {/* Filters */}
-          <div className="flex gap-4 mb-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="flex gap-4 mb-6 p-4 bg-white/5 rounded-lg border border-white/10">
             <div className="flex items-center gap-2">
-              <Filter className="w-4 h-4 text-gray-600" />
-              <span className="text-sm font-semibold text-gray-700">Filters:</span>
+              <Filter className="w-4 h-4 text-slate-300" />
+              <span className="text-sm font-semibold text-slate-300">Filters:</span>
             </div>
             <div className="flex gap-2">
               <select
                 value={filterProvider}
                 onChange={(e) => setFilterProvider(e.target.value)}
-                className="text-sm px-3 py-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="text-sm px-3 py-1 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="all">All Providers</option>
                 {uniqueProviders.map((provider) => (
@@ -302,7 +302,7 @@ export function DataSourceEvidence({ matterId, subjectId, subjectName }: DataSou
               <select
                 value={filterResult}
                 onChange={(e) => setFilterResult(e.target.value)}
-                className="text-sm px-3 py-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="text-sm px-3 py-1 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="all">All Results</option>
                 <option value="passed">Passed</option>
@@ -311,7 +311,7 @@ export function DataSourceEvidence({ matterId, subjectId, subjectName }: DataSou
                 <option value="failed">Failed</option>
               </select>
             </div>
-            <span className="ml-auto text-sm text-gray-600">
+            <span className="ml-auto text-sm text-slate-300">
               Showing <strong>{filteredRecords.length}</strong> of <strong>{evidenceRecords.length}</strong> records
             </span>
           </div>
@@ -320,28 +320,28 @@ export function DataSourceEvidence({ matterId, subjectId, subjectName }: DataSou
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b-2 border-gray-300">
-                  <th className="text-left py-3 px-4 text-sm font-bold text-gray-700">Check</th>
-                  <th className="text-left py-3 px-4 text-sm font-bold text-gray-700">Provider</th>
-                  <th className="text-left py-3 px-4 text-sm font-bold text-gray-700">Date/Time</th>
-                  <th className="text-left py-3 px-4 text-sm font-bold text-gray-700">Result</th>
-                  <th className="text-left py-3 px-4 text-sm font-bold text-gray-700">Reviewer</th>
-                  <th className="text-left py-3 px-4 text-sm font-bold text-gray-700">Decision</th>
-                  <th className="text-left py-3 px-4 text-sm font-bold text-gray-700">Actions</th>
+                <tr className="border-b-2 border-white/10">
+                  <th className="text-left py-3 px-4 text-sm font-bold text-slate-300">Check</th>
+                  <th className="text-left py-3 px-4 text-sm font-bold text-slate-300">Provider</th>
+                  <th className="text-left py-3 px-4 text-sm font-bold text-slate-300">Date/Time</th>
+                  <th className="text-left py-3 px-4 text-sm font-bold text-slate-300">Result</th>
+                  <th className="text-left py-3 px-4 text-sm font-bold text-slate-300">Reviewer</th>
+                  <th className="text-left py-3 px-4 text-sm font-bold text-slate-300">Decision</th>
+                  <th className="text-left py-3 px-4 text-sm font-bold text-slate-300">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {filteredRecords.map((record) => (
                   <tr
                     key={record.checkId}
-                    className="border-b border-gray-200 hover:bg-blue-50 transition-colors"
+                    className="border-b border-white/10 hover:bg-blue-500/10 transition-colors"
                   >
                     <td className="py-3 px-4">
                       <div className="flex items-start gap-2">
-                        <FileText className="w-4 h-4 text-gray-600 mt-0.5 flex-shrink-0" />
+                        <FileText className="w-4 h-4 text-slate-300 mt-0.5 flex-shrink-0" />
                         <div>
-                          <p className="text-sm font-semibold text-gray-900">{record.checkName}</p>
-                          <p className="text-xs text-gray-600 font-mono">{record.checkId}</p>
+                          <p className="text-sm font-semibold text-slate-100">{record.checkName}</p>
+                          <p className="text-xs text-slate-300 font-mono">{record.checkId}</p>
                         </div>
                       </div>
                     </td>
@@ -349,23 +349,23 @@ export function DataSourceEvidence({ matterId, subjectId, subjectName }: DataSou
                       <ProviderBadge provider={record.provider} size="sm" />
                     </td>
                     <td className="py-3 px-4">
-                      <div className="flex items-center gap-1 text-sm text-gray-700">
-                        <Calendar className="w-3 h-3 text-gray-500" />
+                      <div className="flex items-center gap-1 text-sm text-slate-300">
+                        <Calendar className="w-3 h-3 text-slate-400" />
                         <span>{new Date(record.checkedAt).toLocaleString()}</span>
                       </div>
                     </td>
                     <td className="py-3 px-4">{getResultBadge(record.result)}</td>
                     <td className="py-3 px-4">
-                      <div className="flex items-center gap-1 text-sm text-gray-700">
-                        <User className="w-3 h-3 text-gray-500" />
+                      <div className="flex items-center gap-1 text-sm text-slate-300">
+                        <User className="w-3 h-3 text-slate-400" />
                         <span>{record.reviewer || 'N/A'}</span>
                       </div>
                     </td>
                     <td className="py-3 px-4">
                       <div>
-                        <p className="text-sm text-gray-900">{record.decision || 'N/A'}</p>
+                        <p className="text-sm text-slate-100">{record.decision || 'N/A'}</p>
                         {record.overrideReason && (
-                          <p className="text-xs text-amber-700 mt-1">
+                          <p className="text-xs text-amber-300 mt-1">
                             <AlertTriangle className="w-3 h-3 inline mr-1" />
                             Override: {record.overrideReason}
                           </p>
@@ -392,61 +392,61 @@ export function DataSourceEvidence({ matterId, subjectId, subjectName }: DataSou
           {filteredRecords.length === 0 && (
             <div className="text-center py-12">
               <FileText className="w-12 h-12 text-gray-400 mx-auto mb-3" />
-              <p className="text-gray-600">No evidence records match your filters</p>
+              <p className="text-slate-300">No evidence records match your filters</p>
             </div>
           )}
 
           {/* Summary Stats */}
           <div className="grid md:grid-cols-4 gap-4 mt-6 pt-6 border-t">
-            <div className="p-4 bg-green-50 rounded-lg border border-green-200">
+            <div className="p-4 bg-green-500/10 rounded-lg border border-green-500/30">
               <div className="flex items-center gap-2 mb-2">
-                <CheckCircle className="w-5 h-5 text-green-600" />
-                <span className="text-sm font-semibold text-green-900">Passed/Clear</span>
+                <CheckCircle className="w-5 h-5 text-green-400" />
+                <span className="text-sm font-semibold text-green-300">Passed/Clear</span>
               </div>
-              <p className="text-3xl font-bold text-green-900">
+              <p className="text-3xl font-bold text-green-300">
                 {evidenceRecords.filter((r) => r.result === 'passed' || r.result === 'clear').length}
               </p>
             </div>
 
-            <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
+            <div className="p-4 bg-amber-500/10 rounded-lg border border-amber-500/30">
               <div className="flex items-center gap-2 mb-2">
-                <AlertTriangle className="w-5 h-5 text-amber-600" />
-                <span className="text-sm font-semibold text-amber-900">Review/Match</span>
+                <AlertTriangle className="w-5 h-5 text-amber-400" />
+                <span className="text-sm font-semibold text-amber-300">Review/Match</span>
               </div>
-              <p className="text-3xl font-bold text-amber-900">
+              <p className="text-3xl font-bold text-amber-300">
                 {evidenceRecords.filter((r) => r.result === 'review' || r.result === 'match').length}
               </p>
             </div>
 
-            <div className="p-4 bg-red-50 rounded-lg border border-red-200">
+            <div className="p-4 bg-red-500/10 rounded-lg border border-red-500/30">
               <div className="flex items-center gap-2 mb-2">
-                <XCircle className="w-5 h-5 text-red-600" />
-                <span className="text-sm font-semibold text-red-900">Failed</span>
+                <XCircle className="w-5 h-5 text-red-400" />
+                <span className="text-sm font-semibold text-red-300">Failed</span>
               </div>
-              <p className="text-3xl font-bold text-red-900">
+              <p className="text-3xl font-bold text-red-300">
                 {evidenceRecords.filter((r) => r.result === 'failed').length}
               </p>
             </div>
 
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+            <div className="p-4 bg-blue-500/10 rounded-lg border border-blue-500/30">
               <div className="flex items-center gap-2 mb-2">
-                <Shield className="w-5 h-5 text-blue-600" />
-                <span className="text-sm font-semibold text-blue-900">Total Checks</span>
+                <Shield className="w-5 h-5 text-blue-400" />
+                <span className="text-sm font-semibold text-blue-300">Total Checks</span>
               </div>
-              <p className="text-3xl font-bold text-blue-900">{evidenceRecords.length}</p>
+              <p className="text-3xl font-bold text-blue-300">{evidenceRecords.length}</p>
             </div>
           </div>
         </CardContent>
       </Card>
 
       {/* Compliance Note */}
-      <Card className="border-2 border-purple-300 bg-purple-50">
+      <Card className="border-2 border-purple-300 bg-purple-500/10">
         <CardContent className="p-4">
           <div className="flex items-start gap-3">
-            <Shield className="w-6 h-6 text-purple-600 flex-shrink-0" />
+            <Shield className="w-6 h-6 text-purple-400 flex-shrink-0" />
             <div>
-              <h3 className="font-bold text-purple-900 mb-1">Audit & Compliance Ready</h3>
-              <p className="text-sm text-purple-800">
+              <h3 className="font-bold text-purple-300 mb-1">Audit & Compliance Ready</h3>
+              <p className="text-sm text-purple-300">
                 This evidence trail includes: provider source, timestamp, decision, version, and reviewer for every
                 check. All data is normalised to unified canonical schema. Ready for audits, regulators, and partner
                 review.

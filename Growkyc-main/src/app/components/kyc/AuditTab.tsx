@@ -178,35 +178,35 @@ export function AuditTab({ clientId }: { clientId: string }) {
 
   const getActorIcon = (type: AuditEvent['actorType']) => {
     switch (type) {
-      case 'User': return <User className="w-4 h-4 text-blue-600" />;
-      case 'System': return <MonitorSmartphone className="w-4 h-4 text-purple-600" />;
-      case 'API': return <Globe className="w-4 h-4 text-emerald-600" />;
+      case 'User': return <User className="w-4 h-4 text-blue-400" />;
+      case 'System': return <MonitorSmartphone className="w-4 h-4 text-purple-400" />;
+      case 'API': return <Globe className="w-4 h-4 text-emerald-400" />;
     }
   };
 
   const getOutcomeBadge = (outcome: AuditEvent['outcome']) => {
     switch (outcome) {
       case 'Success':
-        return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-bold bg-green-100 text-green-800"><CheckCircle className="w-3 h-3"/> Success</span>;
+        return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-bold bg-green-500/15 text-green-300"><CheckCircle className="w-3 h-3"/> Success</span>;
       case 'Failed':
-        return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-bold bg-red-100 text-red-800"><XCircle className="w-3 h-3"/> Failed</span>;
+        return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-bold bg-red-500/15 text-red-300"><XCircle className="w-3 h-3"/> Failed</span>;
       case 'Denied':
-        return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-bold bg-red-100 text-red-900 border border-red-300"><Shield className="w-3 h-3"/> Denied</span>;
+        return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-bold bg-red-500/15 text-red-300 border border-red-300"><Shield className="w-3 h-3"/> Denied</span>;
       case 'Warning':
-        return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-bold bg-amber-100 text-amber-800"><AlertCircle className="w-3 h-3"/> Warning</span>;
+        return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-bold bg-amber-500/15 text-amber-300"><AlertCircle className="w-3 h-3"/> Warning</span>;
     }
   };
 
   return (
     <div className="space-y-6">
-      <Card className="border-2 border-slate-200 shadow-sm">
-        <CardHeader className="bg-slate-50 border-b pb-4">
+      <Card className="border-2 border-white/10 shadow-sm">
+        <CardHeader className="bg-white/5 border-b pb-4">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <CardTitle className="text-xl font-bold flex items-center gap-2 text-slate-800">
-              <Terminal className="w-6 h-6 text-slate-600" />
+            <CardTitle className="text-xl font-bold flex items-center gap-2 text-slate-100">
+              <Terminal className="w-6 h-6 text-slate-300" />
               Comprehensive Audit Trail
             </CardTitle>
-            <Button variant="outline" className="bg-white hover:bg-slate-100" onClick={() => setIsExportModalOpen(true)}>
+            <Button variant="outline" className="bg-white hover:bg-white/5" onClick={() => setIsExportModalOpen(true)}>
               <Download className="w-4 h-4 mr-2" />
               Export Log
             </Button>
@@ -256,7 +256,7 @@ export function AuditTab({ clientId }: { clientId: string }) {
           {/* Audit Table */}
           <div className="overflow-x-auto">
             <table className="w-full text-sm text-left">
-              <thead className="text-xs text-slate-500 uppercase bg-slate-50/80 border-b">
+              <thead className="text-xs text-slate-400 uppercase bg-white/5/80 border-b">
                 <tr>
                   <th className="px-6 py-4 font-semibold">Timestamp</th>
                   <th className="px-6 py-4 font-semibold">Actor & IP</th>
@@ -265,29 +265,29 @@ export function AuditTab({ clientId }: { clientId: string }) {
                   <th className="px-6 py-4 font-semibold text-center w-24">Details</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 bg-white">
+              <tbody className="divide-y divide-white/10 bg-white">
                 {filteredEvents.length === 0 ? (
                   <tr>
-                    <td colSpan={5} className="px-6 py-12 text-center text-gray-500">
+                    <td colSpan={5} className="px-6 py-12 text-center text-slate-400">
                       No audit events match your current filters.
                     </td>
                   </tr>
                 ) : (
                   filteredEvents.map((evt) => (
-                    <tr key={evt.id} className="hover:bg-slate-50/50 transition-colors">
+                    <tr key={evt.id} className="hover:bg-white/5/50 transition-colors">
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex flex-col">
-                          <span className="font-semibold text-slate-900">{format(evt.timestamp, 'dd MMM yyyy')}</span>
-                          <span className="text-xs text-slate-500">{format(evt.timestamp, 'HH:mm:ss')}</span>
+                          <span className="font-semibold text-slate-100">{format(evt.timestamp, 'dd MMM yyyy')}</span>
+                          <span className="text-xs text-slate-400">{format(evt.timestamp, 'HH:mm:ss')}</span>
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex flex-col gap-1">
                           <div className="flex items-center gap-2">
                             {getActorIcon(evt.actorType)}
-                            <span className="font-semibold text-slate-900">{evt.actor}</span>
+                            <span className="font-semibold text-slate-100">{evt.actor}</span>
                           </div>
-                          <span className="text-xs text-slate-500 font-mono flex items-center gap-1">
+                          <span className="text-xs text-slate-400 font-mono flex items-center gap-1">
                             <Activity className="w-3 h-3" />
                             {evt.ip}
                           </span>
@@ -295,8 +295,8 @@ export function AuditTab({ clientId }: { clientId: string }) {
                       </td>
                       <td className="px-6 py-4">
                         <div className="flex flex-col gap-1">
-                          <span className="font-bold text-slate-800">{evt.action}</span>
-                          <span className="text-xs text-slate-600 bg-slate-100 px-2 py-0.5 rounded-md inline-block w-max border">
+                          <span className="font-bold text-slate-100">{evt.action}</span>
+                          <span className="text-xs text-slate-300 bg-white/5 px-2 py-0.5 rounded-md inline-block w-max border">
                             {evt.entity}
                           </span>
                         </div>
@@ -309,7 +309,7 @@ export function AuditTab({ clientId }: { clientId: string }) {
                           variant="outline"
                           size="sm"
                           onClick={() => setSelectedEvent(evt)}
-                          className="h-8 w-8 p-0 inline-flex items-center justify-center rounded-lg border-slate-200 hover:border-blue-400 hover:bg-blue-50 text-slate-500 hover:text-blue-600 mx-auto"
+                          className="h-8 w-8 p-0 inline-flex items-center justify-center rounded-lg border-white/10 hover:border-blue-400 hover:bg-blue-500/10 text-slate-400 hover:text-blue-400 mx-auto"
                         >
                           <Eye className="w-4 h-4" />
                         </Button>
@@ -326,7 +326,7 @@ export function AuditTab({ clientId }: { clientId: string }) {
       {/* Event Details Modal */}
       {selectedEvent !== null && (
         <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg border border-slate-100 flex flex-col max-h-[85vh] overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg border border-white/10 flex flex-col max-h-[85vh] overflow-hidden animate-in fade-in zoom-in-95 duration-200">
             {/* Modal Header */}
             <div className="bg-slate-900 p-6 text-white flex items-center justify-between">
               <div className="flex items-center gap-3">
@@ -348,10 +348,10 @@ export function AuditTab({ clientId }: { clientId: string }) {
             <div className="p-6 space-y-6 overflow-y-auto">
               
               {/* Event Metadata Grid */}
-              <div className="grid grid-cols-2 gap-4 bg-slate-50 p-4 rounded-xl border border-slate-100">
+              <div className="grid grid-cols-2 gap-4 bg-white/5 p-4 rounded-xl border border-white/10">
                 <div>
                   <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Timestamp</span>
-                  <div className="text-xs font-semibold text-slate-800 mt-0.5">
+                  <div className="text-xs font-semibold text-slate-100 mt-0.5">
                     {format(selectedEvent.timestamp, 'dd MMM yyyy, HH:mm:ss')}
                   </div>
                 </div>
@@ -361,26 +361,26 @@ export function AuditTab({ clientId }: { clientId: string }) {
                 </div>
                 <div>
                   <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Actor</span>
-                  <div className="text-xs font-semibold text-slate-800 mt-0.5 flex items-center gap-1.5">
+                  <div className="text-xs font-semibold text-slate-100 mt-0.5 flex items-center gap-1.5">
                     {getActorIcon(selectedEvent.actorType)}
                     {selectedEvent.actor}
                   </div>
                 </div>
                 <div>
                   <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">IP Address / Source</span>
-                  <div className="text-xs font-mono font-bold text-slate-800 mt-0.5">{selectedEvent.ip}</div>
+                  <div className="text-xs font-mono font-bold text-slate-100 mt-0.5">{selectedEvent.ip}</div>
                 </div>
               </div>
 
               {/* Action / Entity */}
-              <div className="p-4 bg-indigo-50/40 rounded-xl border border-indigo-100/50 space-y-2">
+              <div className="p-4 bg-indigo-500/10/40 rounded-xl border border-indigo-500/20/50 space-y-2">
                 <div>
-                  <span className="text-[10px] font-bold text-indigo-600 uppercase tracking-wider block mb-1">Action Performed</span>
-                  <span className="text-sm font-bold text-indigo-900">{selectedEvent.action}</span>
+                  <span className="text-[10px] font-bold text-indigo-400 uppercase tracking-wider block mb-1">Action Performed</span>
+                  <span className="text-sm font-bold text-indigo-300">{selectedEvent.action}</span>
                 </div>
                 <div>
-                  <span className="text-[10px] font-bold text-indigo-600 uppercase tracking-wider block mb-1">Target Entity</span>
-                  <span className="text-xs font-mono bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded border border-indigo-200 inline-block font-bold">
+                  <span className="text-[10px] font-bold text-indigo-400 uppercase tracking-wider block mb-1">Target Entity</span>
+                  <span className="text-xs font-mono bg-indigo-500/15 text-indigo-300 px-2 py-0.5 rounded border border-indigo-500/30 inline-block font-bold">
                     {selectedEvent.entity}
                   </span>
                 </div>
@@ -390,7 +390,7 @@ export function AuditTab({ clientId }: { clientId: string }) {
               {selectedEvent.details && (
                 <div className="space-y-1.5">
                   <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Outcome Details & Logs</span>
-                  <div className="text-sm text-slate-700 leading-relaxed bg-white border border-slate-200 p-4 rounded-xl font-medium shadow-sm">
+                  <div className="text-sm text-slate-300 leading-relaxed bg-white border border-white/10 p-4 rounded-xl font-medium shadow-sm">
                     {selectedEvent.details}
                   </div>
                 </div>
@@ -398,7 +398,7 @@ export function AuditTab({ clientId }: { clientId: string }) {
             </div>
 
             {/* Modal Footer */}
-            <div className="p-4 bg-slate-50 border-t flex items-center justify-end">
+            <div className="p-4 bg-white/5 border-t flex items-center justify-end">
               <Button 
                 onClick={() => setSelectedEvent(null)}
                 className="bg-slate-900 hover:bg-slate-800 text-white font-semibold px-6"
@@ -414,9 +414,9 @@ export function AuditTab({ clientId }: { clientId: string }) {
       {isExportModalOpen && (
         <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center p-4">
           <Card className="w-full max-w-md shadow-2xl animate-in fade-in zoom-in-95 duration-200 border-0">
-            <CardHeader className="flex flex-row items-center justify-between border-b bg-slate-50 pb-4">
+            <CardHeader className="flex flex-row items-center justify-between border-b bg-white/5 pb-4">
               <CardTitle className="text-xl font-bold flex items-center gap-2">
-                <Lock className="w-5 h-5 text-indigo-600" />
+                <Lock className="w-5 h-5 text-indigo-400" />
                 Generate Signed Audit Log
               </CardTitle>
               <Button variant="ghost" size="sm" onClick={() => setIsExportModalOpen(false)} className="h-8 w-8 p-0 rounded-full">
@@ -426,7 +426,7 @@ export function AuditTab({ clientId }: { clientId: string }) {
             <CardContent className="p-6 space-y-6">
               
               <div className="space-y-3">
-                <label className="text-sm font-semibold text-slate-700">Export Format</label>
+                <label className="text-sm font-semibold text-slate-300">Export Format</label>
                 <div className="flex gap-4">
                   <Button 
                     variant={exportFormat === 'PDF' ? 'default' : 'outline'}
@@ -447,12 +447,12 @@ export function AuditTab({ clientId }: { clientId: string }) {
                 </div>
               </div>
 
-              <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 space-y-3 font-mono text-sm">
-                <div className="flex items-center gap-2 text-slate-800 font-semibold mb-2">
-                  <Shield className="w-4 h-4 text-emerald-600" />
+              <div className="bg-white/5 border border-white/10 rounded-lg p-4 space-y-3 font-mono text-sm">
+                <div className="flex items-center gap-2 text-slate-100 font-semibold mb-2">
+                  <Shield className="w-4 h-4 text-emerald-400" />
                   Cryptographic Metadata Preview
                 </div>
-                <div className="grid grid-cols-[100px_1fr] gap-x-2 gap-y-1 text-xs text-slate-600">
+                <div className="grid grid-cols-[100px_1fr] gap-x-2 gap-y-1 text-xs text-slate-300">
                   <span className="text-slate-400">Generated:</span>
                   <span>{format(new Date(), 'dd MMM yyyy, HH:mm:ss')}</span>
                   <span className="text-slate-400">Target Entity:</span>
@@ -460,7 +460,7 @@ export function AuditTab({ clientId }: { clientId: string }) {
                   <span className="text-slate-400">Generated By:</span>
                   <span>Current Authorized User</span>
                   <span className="text-slate-400">Signature:</span>
-                  <span className="text-emerald-600 break-all">SHA256:7b42f...a19c (Pending Generation)</span>
+                  <span className="text-emerald-400 break-all">SHA256:7b42f...a19c (Pending Generation)</span>
                 </div>
               </div>
 

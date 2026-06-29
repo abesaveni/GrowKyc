@@ -189,19 +189,19 @@ export function DocumentManagement({ onNavigate, initialClient, initialClientNam
   const getAIStatusBadge = (status: string) => {
     switch (status) {
       case 'completed':
-        return <span className="flex items-center gap-1 px-2 py-1 bg-green-50 text-green-700 text-xs font-semibold rounded border border-green-300">
+        return <span className="flex items-center gap-1 px-2 py-1 bg-green-500/10 text-green-300 text-xs font-semibold rounded border border-green-300">
           <CheckCircle className="w-3 h-3" /> AI Processed
         </span>;
       case 'processing':
-        return <span className="flex items-center gap-1 px-2 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded border border-blue-300">
+        return <span className="flex items-center gap-1 px-2 py-1 bg-blue-500/10 text-blue-300 text-xs font-semibold rounded border border-blue-300">
           <Sparkles className="w-3 h-3 animate-pulse" /> Processing
         </span>;
       case 'pending':
-        return <span className="flex items-center gap-1 px-2 py-1 bg-gray-50 text-gray-700 text-xs font-semibold rounded border border-gray-300">
+        return <span className="flex items-center gap-1 px-2 py-1 bg-white/5 text-slate-300 text-xs font-semibold rounded border border-white/10">
           <Clock className="w-3 h-3" /> Pending
         </span>;
       case 'error':
-        return <span className="flex items-center gap-1 px-2 py-1 bg-red-50 text-red-700 text-xs font-semibold rounded border border-red-300">
+        return <span className="flex items-center gap-1 px-2 py-1 bg-red-500/10 text-red-300 text-xs font-semibold rounded border border-red-300">
           <AlertCircle className="w-3 h-3" /> Error
         </span>;
       default:
@@ -210,9 +210,9 @@ export function DocumentManagement({ onNavigate, initialClient, initialClientNam
   };
 
   const getFileIcon = (type: string) => {
-    if (type === 'PDF') return <FileText className="w-5 h-5 text-red-600" />;
-    if (type === 'XLSX' || type === 'XLS') return <File className="w-5 h-5 text-green-600" />;
-    return <File className="w-5 h-5 text-gray-600" />;
+    if (type === 'PDF') return <FileText className="w-5 h-5 text-red-400" />;
+    if (type === 'XLSX' || type === 'XLS') return <File className="w-5 h-5 text-green-400" />;
+    return <File className="w-5 h-5 text-slate-300" />;
   };
 
   return (
@@ -221,8 +221,8 @@ export function DocumentManagement({ onNavigate, initialClient, initialClientNam
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-[32px] font-bold text-gray-900">Document Management</h1>
-            <p className="text-sm text-gray-600 mt-1">Client → Year → Document Type hierarchy with AI-powered extraction</p>
+            <h1 className="text-[32px] font-bold text-slate-100">Document Management</h1>
+            <p className="text-sm text-slate-300 mt-1">Client → Year → Document Type hierarchy with AI-powered extraction</p>
           </div>
           <div className="flex items-center gap-2">
             <Button variant="outline" size="sm">
@@ -241,12 +241,12 @@ export function DocumentManagement({ onNavigate, initialClient, initialClientNam
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-blue-50 rounded-lg">
-                  <File className="w-5 h-5 text-blue-600" />
+                <div className="p-3 bg-blue-500/10 rounded-lg">
+                  <File className="w-5 h-5 text-blue-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-600">Total Documents</p>
-                  <p className="text-2xl font-bold text-gray-900">{stats.totalDocuments.toLocaleString()}</p>
+                  <p className="text-xs text-slate-300">Total Documents</p>
+                  <p className="text-2xl font-bold text-slate-100">{stats.totalDocuments.toLocaleString()}</p>
                 </div>
               </div>
             </CardContent>
@@ -255,12 +255,12 @@ export function DocumentManagement({ onNavigate, initialClient, initialClientNam
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-purple-50 rounded-lg">
-                  <FolderOpen className="w-5 h-5 text-purple-600" />
+                <div className="p-3 bg-purple-500/10 rounded-lg">
+                  <FolderOpen className="w-5 h-5 text-purple-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-600">Storage Used</p>
-                  <p className="text-2xl font-bold text-gray-900">{stats.totalSize}</p>
+                  <p className="text-xs text-slate-300">Storage Used</p>
+                  <p className="text-2xl font-bold text-slate-100">{stats.totalSize}</p>
                 </div>
               </div>
             </CardContent>
@@ -269,12 +269,12 @@ export function DocumentManagement({ onNavigate, initialClient, initialClientNam
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-green-50 rounded-lg">
-                  <Sparkles className="w-5 h-5 text-green-600" />
+                <div className="p-3 bg-green-500/10 rounded-lg">
+                  <Sparkles className="w-5 h-5 text-green-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-600">AI Processed</p>
-                  <p className="text-2xl font-bold text-gray-900">{stats.aiProcessed.toLocaleString()}</p>
+                  <p className="text-xs text-slate-300">AI Processed</p>
+                  <p className="text-2xl font-bold text-slate-100">{stats.aiProcessed.toLocaleString()}</p>
                 </div>
               </div>
             </CardContent>
@@ -283,12 +283,12 @@ export function DocumentManagement({ onNavigate, initialClient, initialClientNam
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-orange-50 rounded-lg">
-                  <Clock className="w-5 h-5 text-orange-600" />
+                <div className="p-3 bg-orange-500/10 rounded-lg">
+                  <Clock className="w-5 h-5 text-orange-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-600">Recent Uploads</p>
-                  <p className="text-2xl font-bold text-gray-900">{stats.recentUploads}</p>
+                  <p className="text-xs text-slate-300">Recent Uploads</p>
+                  <p className="text-2xl font-bold text-slate-100">{stats.recentUploads}</p>
                 </div>
               </div>
             </CardContent>
@@ -312,8 +312,8 @@ export function DocumentManagement({ onNavigate, initialClient, initialClientNam
                       }}
                       className={`${
                         idx === getBreadcrumb().length - 1
-                          ? 'font-semibold text-gray-900'
-                          : 'text-gray-600 hover:text-gray-900'
+                          ? 'font-semibold text-slate-100'
+                          : 'text-slate-300 hover:text-slate-100'
                       }`}
                     >
                       {crumb}
@@ -331,23 +331,23 @@ export function DocumentManagement({ onNavigate, initialClient, initialClientNam
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search documents..."
-                    className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+                    className="pl-10 pr-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
                   />
                 </div>
                 <Button variant="outline" size="sm">
                   <Filter className="w-4 h-4 mr-2" />
                   Filter
                 </Button>
-                <div className="flex border border-gray-300 rounded-lg">
+                <div className="flex border border-white/10 rounded-lg">
                   <button
                     onClick={() => setViewMode('grid')}
-                    className={`p-2 ${viewMode === 'grid' ? 'bg-gray-100' : ''}`}
+                    className={`p-2 ${viewMode === 'grid' ? 'bg-white/5' : ''}`}
                   >
                     <Grid3x3 className="w-4 h-4" />
                   </button>
                   <button
                     onClick={() => setViewMode('list')}
-                    className={`p-2 ${viewMode === 'list' ? 'bg-gray-100' : ''}`}
+                    className={`p-2 ${viewMode === 'list' ? 'bg-white/5' : ''}`}
                   >
                     <List className="w-4 h-4" />
                   </button>
@@ -372,17 +372,17 @@ export function DocumentManagement({ onNavigate, initialClient, initialClientNam
                     }}
                     className={`${
                       viewMode === 'grid'
-                        ? 'p-6 border-2 border-gray-200 rounded-lg hover:border-[#2855a6] cursor-pointer transition-all'
-                        : 'p-4 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer flex items-center justify-between'
+                        ? 'p-6 border-2 border-white/10 rounded-lg hover:border-[#2855a6] cursor-pointer transition-all'
+                        : 'p-4 border border-white/10 rounded-lg hover:bg-white/5 cursor-pointer flex items-center justify-between'
                     }`}
                   >
                     <div className={viewMode === 'grid' ? 'text-center' : 'flex items-center gap-4'}>
                       <Building2 className={`${viewMode === 'grid' ? 'w-16 h-16 mx-auto mb-3' : 'w-12 h-12'} text-[#2855a6]`} />
                       <div>
-                        <h3 className={`font-bold ${viewMode === 'grid' ? 'text-lg' : 'text-base'} text-gray-900`}>{client.name}</h3>
-                        <p className="text-sm text-gray-600 mt-1">{client.count} documents</p>
+                        <h3 className={`font-bold ${viewMode === 'grid' ? 'text-lg' : 'text-base'} text-slate-100`}>{client.name}</h3>
+                        <p className="text-sm text-slate-300 mt-1">{client.count} documents</p>
                         {viewMode === 'list' && (
-                          <p className="text-xs text-gray-500 mt-1">Last modified: {client.lastModified}</p>
+                          <p className="text-xs text-slate-400 mt-1">Last modified: {client.lastModified}</p>
                         )}
                       </div>
                     </div>
@@ -399,8 +399,8 @@ export function DocumentManagement({ onNavigate, initialClient, initialClientNam
                 <div className="mb-6">
                   <div className="flex items-center justify-between mb-4">
                     <div>
-                      <h2 className="text-2xl font-bold text-gray-900">{selectedClient}</h2>
-                      <p className="text-sm text-gray-600 mt-1">Complete document repository</p>
+                      <h2 className="text-2xl font-bold text-slate-100">{selectedClient}</h2>
+                      <p className="text-sm text-slate-300 mt-1">Complete document repository</p>
                     </div>
                     <Button className="bg-[#2855a6] hover:bg-[#1e4089]">
                       <Upload className="w-4 h-4 mr-2" />
@@ -412,30 +412,30 @@ export function DocumentManagement({ onNavigate, initialClient, initialClientNam
                   <div className="grid grid-cols-4 gap-4 mb-6">
                     <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
                       <CardContent className="p-4">
-                        <p className="text-xs text-gray-600 mb-1">Total Documents</p>
-                        <p className="text-2xl font-bold text-gray-900">487</p>
-                        <p className="text-xs text-green-600 mt-1">↑ 23 this month</p>
+                        <p className="text-xs text-slate-300 mb-1">Total Documents</p>
+                        <p className="text-2xl font-bold text-slate-100">487</p>
+                        <p className="text-xs text-green-400 mt-1">↑ 23 this month</p>
                       </CardContent>
                     </Card>
                     <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
                       <CardContent className="p-4">
-                        <p className="text-xs text-gray-600 mb-1">Storage Used</p>
-                        <p className="text-2xl font-bold text-gray-900">12.4 GB</p>
-                        <p className="text-xs text-gray-500 mt-1">Across 5 years</p>
+                        <p className="text-xs text-slate-300 mb-1">Storage Used</p>
+                        <p className="text-2xl font-bold text-slate-100">12.4 GB</p>
+                        <p className="text-xs text-slate-400 mt-1">Across 5 years</p>
                       </CardContent>
                     </Card>
                     <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
                       <CardContent className="p-4">
-                        <p className="text-xs text-gray-600 mb-1">Recent Activity</p>
-                        <p className="text-2xl font-bold text-gray-900">2 days ago</p>
-                        <p className="text-xs text-gray-500 mt-1">Last upload</p>
+                        <p className="text-xs text-slate-300 mb-1">Recent Activity</p>
+                        <p className="text-2xl font-bold text-slate-100">2 days ago</p>
+                        <p className="text-xs text-slate-400 mt-1">Last upload</p>
                       </CardContent>
                     </Card>
                     <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
                       <CardContent className="p-4">
-                        <p className="text-xs text-gray-600 mb-1">AI Processed</p>
-                        <p className="text-2xl font-bold text-gray-900">94%</p>
-                        <p className="text-xs text-blue-600 mt-1">28 processing</p>
+                        <p className="text-xs text-slate-300 mb-1">AI Processed</p>
+                        <p className="text-2xl font-bold text-slate-100">94%</p>
+                        <p className="text-xs text-blue-400 mt-1">28 processing</p>
                       </CardContent>
                     </Card>
                   </div>
@@ -443,15 +443,15 @@ export function DocumentManagement({ onNavigate, initialClient, initialClientNam
 
                 {/* Recent Documents */}
                 <div className="mb-6">
-                  <h3 className="font-semibold text-gray-900 mb-4">Recent Documents (Last 30 Days)</h3>
+                  <h3 className="font-semibold text-slate-100 mb-4">Recent Documents (Last 30 Days)</h3>
                   <div className="space-y-2">
                     {documents.slice(0, 5).map((doc) => (
-                      <div key={doc.id} className="p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer flex items-center justify-between">
+                      <div key={doc.id} className="p-3 border border-white/10 rounded-lg hover:bg-white/5 cursor-pointer flex items-center justify-between">
                         <div className="flex items-center gap-3">
                           {getFileIcon(doc.type)}
                           <div>
-                            <h4 className="font-medium text-sm text-gray-900">{doc.name}</h4>
-                            <div className="flex items-center gap-2 text-xs text-gray-600 mt-1">
+                            <h4 className="font-medium text-sm text-slate-100">{doc.name}</h4>
+                            <div className="flex items-center gap-2 text-xs text-slate-300 mt-1">
                               <span>{doc.year}</span>
                               <span>•</span>
                               <span>{doc.docType}</span>
@@ -473,15 +473,15 @@ export function DocumentManagement({ onNavigate, initialClient, initialClientNam
 
                 {/* Document Type Breakdown */}
                 <div className="mb-6">
-                  <h3 className="font-semibold text-gray-900 mb-4">Documents by Type</h3>
+                  <h3 className="font-semibold text-slate-100 mb-4">Documents by Type</h3>
                   <div className="grid grid-cols-3 gap-3">
                     {docTypes.slice(0, 6).map((type, idx) => (
-                      <div key={idx} className="p-4 border border-gray-200 rounded-lg hover:border-[#2855a6] cursor-pointer transition-all">
+                      <div key={idx} className="p-4 border border-white/10 rounded-lg hover:border-[#2855a6] cursor-pointer transition-all">
                         <div className="flex items-center justify-between mb-2">
-                          <h4 className="font-medium text-sm text-gray-900">{type}</h4>
+                          <h4 className="font-medium text-sm text-slate-100">{type}</h4>
                           <span className="text-lg font-bold text-[#2855a6]">{Math.floor(Math.random() * 50) + 10}</span>
                         </div>
-                        <p className="text-xs text-gray-600">Across all years</p>
+                        <p className="text-xs text-slate-300">Across all years</p>
                       </div>
                     ))}
                   </div>
@@ -489,30 +489,30 @@ export function DocumentManagement({ onNavigate, initialClient, initialClientNam
 
                 {/* Year folders + Permanent File */}
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-4">Browse by Year & Permanent File</h3>
+                  <h3 className="font-semibold text-slate-100 mb-4">Browse by Year & Permanent File</h3>
                   <div className={viewMode === 'grid' ? 'grid grid-cols-2 md:grid-cols-4 gap-4' : 'space-y-2'}>
                     {/* Permanent File - Now looks like a year folder */}
                     <div
                       onClick={() => setSelectedDocType('Permanent File')}
                       className={`${
                         viewMode === 'grid'
-                          ? 'p-6 border-2 border-amber-300 bg-amber-50 rounded-lg hover:border-amber-500 cursor-pointer transition-all'
-                          : 'p-4 border-2 border-amber-300 bg-amber-50 rounded-lg hover:bg-amber-100 cursor-pointer flex items-center justify-between'
+                          ? 'p-6 border-2 border-amber-300 bg-amber-500/10 rounded-lg hover:border-amber-500 cursor-pointer transition-all'
+                          : 'p-4 border-2 border-amber-300 bg-amber-500/10 rounded-lg hover:bg-amber-500/15 cursor-pointer flex items-center justify-between'
                       }`}
                     >
                       <div className={viewMode === 'grid' ? 'text-center' : 'flex items-center gap-4'}>
-                        <FolderClosed className={`${viewMode === 'grid' ? 'w-12 h-12 mx-auto mb-3' : 'w-10 h-10'} text-amber-600`} />
+                        <FolderClosed className={`${viewMode === 'grid' ? 'w-12 h-12 mx-auto mb-3' : 'w-10 h-10'} text-amber-400`} />
                         <div>
                           <div className="flex items-center gap-2 mb-1">
-                            <h3 className={`font-semibold ${viewMode === 'grid' ? 'text-base' : 'text-sm'} text-amber-900`}>🔒 Permanent File</h3>
+                            <h3 className={`font-semibold ${viewMode === 'grid' ? 'text-base' : 'text-sm'} text-amber-300`}>🔒 Permanent File</h3>
                           </div>
-                          <p className="text-xs text-amber-700 mt-1">7 documents</p>
+                          <p className="text-xs text-amber-300 mt-1">7 documents</p>
                           {viewMode === 'list' && (
-                            <p className="text-xs text-amber-600 mt-1">Critical foundational docs</p>
+                            <p className="text-xs text-amber-400 mt-1">Critical foundational docs</p>
                           )}
                         </div>
                       </div>
-                      {viewMode === 'list' && <ChevronRight className="w-5 h-5 text-amber-600" />}
+                      {viewMode === 'list' && <ChevronRight className="w-5 h-5 text-amber-400" />}
                     </div>
 
                     {/* Year folders */}
@@ -525,17 +525,17 @@ export function DocumentManagement({ onNavigate, initialClient, initialClientNam
                         }}
                         className={`${
                           viewMode === 'grid'
-                            ? 'p-6 border-2 border-gray-200 rounded-lg hover:border-[#2855a6] cursor-pointer transition-all'
-                            : 'p-4 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer flex items-center justify-between'
+                            ? 'p-6 border-2 border-white/10 rounded-lg hover:border-[#2855a6] cursor-pointer transition-all'
+                            : 'p-4 border border-white/10 rounded-lg hover:bg-white/5 cursor-pointer flex items-center justify-between'
                         }`}
                       >
                         <div className={viewMode === 'grid' ? 'text-center' : 'flex items-center gap-4'}>
                           <FolderClosed className={`${viewMode === 'grid' ? 'w-12 h-12 mx-auto mb-3' : 'w-10 h-10'} text-blue-500`} />
                           <div>
-                            <h3 className={`font-semibold ${viewMode === 'grid' ? 'text-base' : 'text-sm'} text-gray-900`}>{year.name}</h3>
-                            <p className="text-xs text-gray-600 mt-1">{year.count} documents</p>
+                            <h3 className={`font-semibold ${viewMode === 'grid' ? 'text-base' : 'text-sm'} text-slate-100`}>{year.name}</h3>
+                            <p className="text-xs text-slate-300 mt-1">{year.count} documents</p>
                             {viewMode === 'list' && (
-                              <p className="text-xs text-gray-500 mt-1">Last modified: {year.lastModified}</p>
+                              <p className="text-xs text-slate-400 mt-1">Last modified: {year.lastModified}</p>
                             )}
                           </div>
                         </div>
@@ -556,15 +556,15 @@ export function DocumentManagement({ onNavigate, initialClient, initialClientNam
                     onClick={() => setSelectedDocType(folder.name)}
                     className={`${
                       viewMode === 'grid'
-                        ? 'p-6 border-2 border-gray-200 rounded-lg hover:border-[#2855a6] cursor-pointer transition-all'
-                        : 'p-4 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer flex items-center justify-between'
+                        ? 'p-6 border-2 border-white/10 rounded-lg hover:border-[#2855a6] cursor-pointer transition-all'
+                        : 'p-4 border border-white/10 rounded-lg hover:bg-white/5 cursor-pointer flex items-center justify-between'
                     }`}
                   >
                     <div className={viewMode === 'grid' ? 'text-center' : 'flex items-center gap-4'}>
                       <FolderOpen className={`${viewMode === 'grid' ? 'w-10 h-10 mx-auto mb-3' : 'w-8 h-8'} text-purple-500`} />
                       <div>
-                        <h3 className={`font-semibold ${viewMode === 'grid' ? 'text-sm' : 'text-sm'} text-gray-900`}>{folder.name}</h3>
-                        <p className="text-xs text-gray-600 mt-1">{folder.count} files</p>
+                        <h3 className={`font-semibold ${viewMode === 'grid' ? 'text-sm' : 'text-sm'} text-slate-100`}>{folder.name}</h3>
+                        <p className="text-xs text-slate-300 mt-1">{folder.count} files</p>
                       </div>
                     </div>
                     {viewMode === 'list' && <ChevronRight className="w-5 h-5 text-gray-400" />}
@@ -580,12 +580,12 @@ export function DocumentManagement({ onNavigate, initialClient, initialClientNam
                 {selectedDocType === 'Permanent File' ? (
                   <>
                     {/* Permanent File Header */}
-                    <div className="mb-4 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+                    <div className="mb-4 p-4 bg-amber-500/10 border border-amber-500/30 rounded-lg">
                       <div className="flex items-center gap-3">
-                        <AlertCircle className="w-5 h-5 text-amber-600" />
+                        <AlertCircle className="w-5 h-5 text-amber-400" />
                         <div>
-                          <h4 className="font-semibold text-amber-900">Permanent File Documents</h4>
-                          <p className="text-xs text-amber-700 mt-1">
+                          <h4 className="font-semibold text-amber-300">Permanent File Documents</h4>
+                          <p className="text-xs text-amber-300 mt-1">
                             Critical documents that remain constant across years. These should be updated only when legally changed.
                           </p>
                         </div>
@@ -600,26 +600,26 @@ export function DocumentManagement({ onNavigate, initialClient, initialClientNam
                       return (
                         <div key={idx} className="mb-6">
                           <div className="flex items-center gap-2 mb-3">
-                            <h4 className="font-semibold text-gray-900">{category}</h4>
-                            <span className="px-2 py-0.5 bg-gray-100 text-gray-600 text-xs rounded">
+                            <h4 className="font-semibold text-slate-100">{category}</h4>
+                            <span className="px-2 py-0.5 bg-white/5 text-slate-300 text-xs rounded">
                               {categoryDocs.length}
                             </span>
                           </div>
                           <div className="space-y-2">
                             {categoryDocs.map((doc) => (
-                              <div key={doc.id} className="p-4 border-2 border-amber-200 bg-amber-50 rounded-lg hover:border-amber-400 cursor-pointer transition-all">
+                              <div key={doc.id} className="p-4 border-2 border-amber-500/30 bg-amber-500/10 rounded-lg hover:border-amber-400 cursor-pointer transition-all">
                                 <div className="flex items-center justify-between">
                                   <div className="flex items-center gap-4 flex-1">
                                     {getFileIcon(doc.type)}
                                     <div className="flex-1">
                                       <div className="flex items-center gap-2 mb-1">
-                                        <h4 className="font-semibold text-sm text-gray-900">{doc.name}</h4>
+                                        <h4 className="font-semibold text-sm text-slate-100">{doc.name}</h4>
                                         {doc.starred && <Star className="w-4 h-4 text-amber-500 fill-amber-500" />}
-                                        <span className="px-2 py-0.5 bg-red-100 text-red-700 text-xs font-bold rounded">
+                                        <span className="px-2 py-0.5 bg-red-500/15 text-red-300 text-xs font-bold rounded">
                                           PERMANENT
                                         </span>
                                       </div>
-                                      <div className="flex items-center gap-3 text-xs text-gray-600">
+                                      <div className="flex items-center gap-3 text-xs text-slate-300">
                                         <span>{doc.size}</span>
                                         <span>•</span>
                                         <div className="flex items-center gap-1">
@@ -635,7 +635,7 @@ export function DocumentManagement({ onNavigate, initialClient, initialClientNam
                                       <div className="flex items-center gap-2 mt-2">
                                         {getAIStatusBadge(doc.aiStatus)}
                                         {doc.tags.map((tag, idx) => (
-                                          <span key={idx} className="px-2 py-0.5 bg-amber-100 text-amber-700 text-xs rounded">
+                                          <span key={idx} className="px-2 py-0.5 bg-amber-500/15 text-amber-300 text-xs rounded">
                                             {tag}
                                           </span>
                                         ))}
@@ -664,16 +664,16 @@ export function DocumentManagement({ onNavigate, initialClient, initialClientNam
                 ) : (
                   /* Regular documents */
                   documents.map((doc) => (
-                    <div key={doc.id} className="p-4 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                    <div key={doc.id} className="p-4 border border-white/10 rounded-lg hover:bg-white/5 cursor-pointer">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-4 flex-1">
                           {getFileIcon(doc.type)}
                           <div className="flex-1">
                             <div className="flex items-center gap-2 mb-1">
-                              <h4 className="font-semibold text-sm text-gray-900">{doc.name}</h4>
+                              <h4 className="font-semibold text-sm text-slate-100">{doc.name}</h4>
                               {doc.starred && <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />}
                             </div>
-                            <div className="flex items-center gap-3 text-xs text-gray-600">
+                            <div className="flex items-center gap-3 text-xs text-slate-300">
                               <span>{doc.size}</span>
                               <span>•</span>
                               <div className="flex items-center gap-1">
@@ -689,7 +689,7 @@ export function DocumentManagement({ onNavigate, initialClient, initialClientNam
                             <div className="flex items-center gap-2 mt-2">
                               {getAIStatusBadge(doc.aiStatus)}
                               {doc.tags.map((tag, idx) => (
-                                <span key={idx} className="px-2 py-0.5 bg-gray-100 text-gray-700 text-xs rounded">
+                                <span key={idx} className="px-2 py-0.5 bg-white/5 text-slate-300 text-xs rounded">
                                   {tag}
                                 </span>
                               ))}
@@ -717,32 +717,32 @@ export function DocumentManagement({ onNavigate, initialClient, initialClientNam
         </Card>
 
         {/* AI Agent Info */}
-        <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)] bg-gradient-to-r from-purple-50 to-blue-50 border-purple-200">
+        <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)] bg-gradient-to-r from-purple-50 to-blue-50 border-purple-500/30">
           <CardContent className="p-6">
             <div className="flex items-start gap-4">
-              <div className="p-3 bg-purple-100 rounded-lg">
-                <Sparkles className="w-6 h-6 text-purple-600" />
+              <div className="p-3 bg-purple-500/15 rounded-lg">
+                <Sparkles className="w-6 h-6 text-purple-400" />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-2">AI Document Processing</h3>
-                <p className="text-sm text-gray-700 mb-3">
+                <h3 className="font-semibold text-slate-100 mb-2">AI Document Processing</h3>
+                <p className="text-sm text-slate-300 mb-3">
                   Our AI agents automatically extract data from uploaded documents and populate workpaper fields in real-time.
                 </p>
                 <div className="grid grid-cols-2 gap-3 text-sm">
                   <div className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600 mt-0.5" />
+                    <CheckCircle className="w-4 h-4 text-green-400 mt-0.5" />
                     <span><strong>OCR Extraction:</strong> Text, numbers, dates from PDFs & images</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600 mt-0.5" />
+                    <CheckCircle className="w-4 h-4 text-green-400 mt-0.5" />
                     <span><strong>Data Validation:</strong> Cross-checks against workpaper templates</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600 mt-0.5" />
+                    <CheckCircle className="w-4 h-4 text-green-400 mt-0.5" />
                     <span><strong>Smart Categorization:</strong> Auto-files to correct doc type</span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600 mt-0.5" />
+                    <CheckCircle className="w-4 h-4 text-green-400 mt-0.5" />
                     <span><strong>Workpaper Integration:</strong> Direct data feed to templates</span>
                   </div>
                 </div>

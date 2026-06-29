@@ -231,28 +231,28 @@ export function EquifaxAdminPanel() {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'operational': return 'text-green-600 dark:text-green-400';
-      case 'degraded': return 'text-yellow-600 dark:text-yellow-400';
-      case 'down': return 'text-red-600 dark:text-red-400';
+      case 'operational': return 'text-green-400 dark:text-green-400';
+      case 'degraded': return 'text-yellow-400 dark:text-yellow-400';
+      case 'down': return 'text-red-400 dark:text-red-400';
       default: return 'text-slate-300 dark:text-slate-400';
     }
   };
 
   const getStatusBg = (status: string) => {
     switch (status) {
-      case 'operational': return 'bg-green-100 dark:bg-green-900/20';
-      case 'degraded': return 'bg-yellow-100 dark:bg-yellow-900/20';
-      case 'down': return 'bg-red-100 dark:bg-red-900/20';
+      case 'operational': return 'bg-green-500/15 dark:bg-green-900/20';
+      case 'degraded': return 'bg-yellow-500/15 dark:bg-yellow-900/20';
+      case 'down': return 'bg-red-500/15 dark:bg-red-900/20';
       default: return 'bg-[#0f172a] dark:bg-gray-900/20';
     }
   };
 
   const getSeverityColor = (severity: string) => {
     switch (severity) {
-      case 'low': return 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300';
-      case 'medium': return 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300';
-      case 'high': return 'bg-orange-100 text-orange-700 dark:bg-orange-900 dark:text-orange-300';
-      case 'critical': return 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300';
+      case 'low': return 'bg-blue-500/15 text-blue-300 dark:bg-blue-900 dark:text-blue-300';
+      case 'medium': return 'bg-yellow-500/15 text-yellow-300 dark:bg-yellow-900 dark:text-yellow-300';
+      case 'high': return 'bg-orange-500/15 text-orange-300 dark:bg-orange-900 dark:text-orange-300';
+      case 'critical': return 'bg-red-500/15 text-red-300 dark:bg-red-900 dark:text-red-300';
       default: return 'bg-[#0f172a] text-slate-300 dark:bg-gray-900 dark:text-gray-300';
     }
   };
@@ -292,7 +292,7 @@ export function EquifaxAdminPanel() {
           <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-green-500">
             <div className="flex items-center justify-between mb-2">
               <div className="text-sm text-slate-400">Services Online</div>
-              <CheckCircle className="w-8 h-8 text-green-600" />
+              <CheckCircle className="w-8 h-8 text-green-400" />
             </div>
             <div className="text-3xl font-bold text-white dark:text-white">
               {apiStatuses.filter(s => s.status === 'operational').length}/{apiStatuses.length}
@@ -303,7 +303,7 @@ export function EquifaxAdminPanel() {
           <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-blue-500">
             <div className="flex items-center justify-between mb-2">
               <div className="text-sm text-slate-400">API Calls Today</div>
-              <Activity className="w-8 h-8 text-blue-600" />
+              <Activity className="w-8 h-8 text-blue-400" />
             </div>
             <div className="text-3xl font-bold text-white dark:text-white">
               {totalCallsToday.toLocaleString()}
@@ -314,7 +314,7 @@ export function EquifaxAdminPanel() {
           <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-purple-500">
             <div className="flex items-center justify-between mb-2">
               <div className="text-sm text-slate-400">Cost Today</div>
-              <DollarSign className="w-8 h-8 text-purple-600" />
+              <DollarSign className="w-8 h-8 text-purple-400" />
             </div>
             <div className="text-3xl font-bold text-white dark:text-white">
               ${totalCostToday.toFixed(2)}
@@ -325,7 +325,7 @@ export function EquifaxAdminPanel() {
           <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-orange-500">
             <div className="flex items-center justify-between mb-2">
               <div className="text-sm text-slate-400">Avg Response</div>
-              <Zap className="w-8 h-8 text-orange-600" />
+              <Zap className="w-8 h-8 text-orange-400" />
             </div>
             <div className="text-3xl font-bold text-white dark:text-white">
               {Math.round(usageMetrics.reduce((sum, m) => sum + m.averageResponseTime, 0) / usageMetrics.length)}ms
@@ -436,7 +436,7 @@ export function EquifaxAdminPanel() {
                           <td className="py-3 px-4 text-right text-slate-300 dark:text-gray-300">${metric.costThisMonth.toFixed(2)}</td>
                           <td className="py-3 px-4 text-right text-slate-300 dark:text-gray-300">{metric.averageResponseTime}ms</td>
                           <td className="py-3 px-4 text-right">
-                            <span className="text-green-600 font-semibold">{metric.successRate}%</span>
+                            <span className="text-green-400 font-semibold">{metric.successRate}%</span>
                           </td>
                         </tr>
                       ))}
@@ -478,7 +478,7 @@ export function EquifaxAdminPanel() {
                         </div>
                       </div>
 
-                      <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 mb-2">
+                      <div className="w-full bg-white/10 dark:bg-gray-700 rounded-full h-3 mb-2">
                         <div
                           className={`h-3 rounded-full transition-all ${
                             isNearLimit ? 'bg-red-500' : 'bg-green-500'
@@ -488,7 +488,7 @@ export function EquifaxAdminPanel() {
                       </div>
 
                       <div className="flex items-center justify-between text-xs">
-                        <span className={isNearLimit ? 'text-red-600' : 'text-green-600'}>
+                        <span className={isNearLimit ? 'text-red-400' : 'text-green-400'}>
                           {percentage.toFixed(1)}% used
                         </span>
                         <span className="text-slate-400">
@@ -519,10 +519,10 @@ export function EquifaxAdminPanel() {
                 </div>
 
                 {errorLogs.length === 0 ? (
-                  <div className="p-6 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800 text-center">
-                    <CheckCircle className="w-12 h-12 text-green-600 mx-auto mb-3" />
-                    <h4 className="text-lg font-bold text-green-900 dark:text-green-100 mb-2">No Active Errors</h4>
-                    <p className="text-green-800 dark:text-green-200">All systems running smoothly</p>
+                  <div className="p-6 bg-green-500/10 dark:bg-green-900/20 rounded-lg border border-green-500/30 dark:border-green-800 text-center">
+                    <CheckCircle className="w-12 h-12 text-green-400 mx-auto mb-3" />
+                    <h4 className="text-lg font-bold text-green-300 dark:text-green-100 mb-2">No Active Errors</h4>
+                    <p className="text-green-300 dark:text-green-200">All systems running smoothly</p>
                   </div>
                 ) : (
                   <div className="space-y-3">
@@ -530,7 +530,7 @@ export function EquifaxAdminPanel() {
                       <div key={error.id} className="p-4 bg-[#0f172a] dark:bg-gray-900 rounded-lg">
                         <div className="flex items-start justify-between mb-2">
                           <div className="flex items-center gap-3">
-                            <AlertTriangle className="w-5 h-5 text-red-600" />
+                            <AlertTriangle className="w-5 h-5 text-red-400" />
                             <div>
                               <h4 className="font-semibold text-white dark:text-white">{error.errorType}</h4>
                               <p className="text-sm text-slate-300 dark:text-slate-400">{error.module}</p>
@@ -541,7 +541,7 @@ export function EquifaxAdminPanel() {
                               {error.severity.toUpperCase()}
                             </span>
                             {error.resolved && (
-                              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700">
+                              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-green-500/15 text-green-300">
                                 RESOLVED
                               </span>
                             )}
@@ -573,7 +573,7 @@ export function EquifaxAdminPanel() {
                         type="text"
                         value="https://api.equifax.com.au/v2"
                         readOnly
-                        className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-[#0f172a] dark:bg-gray-800 text-white dark:text-white"
+                        className="w-full px-4 py-2 border border-white/10 dark:border-gray-600 rounded-lg bg-[#0f172a] dark:bg-gray-800 text-white dark:text-white"
                       />
                     </div>
 
@@ -586,7 +586,7 @@ export function EquifaxAdminPanel() {
                           type={showAPIKey ? 'text' : 'password'}
                           value="eq_live_xK7n9pL4mQ2vR8wT5yU1zA3bC6dE0fG"
                           readOnly
-                          className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-[#0f172a] dark:bg-gray-800 text-white dark:text-white"
+                          className="flex-1 px-4 py-2 border border-white/10 dark:border-gray-600 rounded-lg bg-[#0f172a] dark:bg-gray-800 text-white dark:text-white"
                         />
                         <Button
                           variant="outline"
@@ -601,9 +601,9 @@ export function EquifaxAdminPanel() {
                       <label className="block text-sm font-semibold text-slate-300 dark:text-gray-300 mb-2">
                         Connection Status
                       </label>
-                      <div className="flex items-center gap-2 p-3 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
-                        <CheckCircle className="w-5 h-5 text-green-600" />
-                        <span className="text-green-700 dark:text-green-300 font-semibold">Connected</span>
+                      <div className="flex items-center gap-2 p-3 bg-green-500/10 dark:bg-green-900/20 rounded-lg border border-green-500/30 dark:border-green-800">
+                        <CheckCircle className="w-5 h-5 text-green-400" />
+                        <span className="text-green-300 dark:text-green-300 font-semibold">Connected</span>
                       </div>
                     </div>
 
@@ -611,7 +611,7 @@ export function EquifaxAdminPanel() {
                       <label className="block text-sm font-semibold text-slate-300 dark:text-gray-300 mb-2">
                         Environment
                       </label>
-                      <select className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-[#1e293b] dark:bg-gray-800 text-white dark:text-white">
+                      <select className="w-full px-4 py-2 border border-white/10 dark:border-gray-600 rounded-lg bg-[#1e293b] dark:bg-gray-800 text-white dark:text-white">
                         <option value="production">Production</option>
                         <option value="sandbox">Sandbox (Testing)</option>
                       </select>
@@ -639,7 +639,7 @@ export function EquifaxAdminPanel() {
                         <span className="font-medium text-white dark:text-white">{module}</span>
                         <label className="relative inline-flex items-center cursor-pointer">
                           <input type="checkbox" className="sr-only peer" defaultChecked />
-                          <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[#13B5EA]/50 dark:peer-focus:ring-[#0E7C9E]/50 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-[#1e293b] after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-[#13B5EA]"></div>
+                          <div className="w-11 h-6 bg-white/10 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[#13B5EA]/50 dark:peer-focus:ring-[#0E7C9E]/50 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-[#1e293b] after:border-white/10 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-[#13B5EA]"></div>
                         </label>
                       </div>
                     ))}

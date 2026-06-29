@@ -12,7 +12,7 @@ export function ClientFormStep3_IdVerification({ onComplete, onBack }: Step3Prop
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-2xl font-bold text-gray-900">Step 3: Identity Verification</h2>
+        <h2 className="text-2xl font-bold text-slate-100">Step 3: Identity Verification</h2>
         <Button variant="outline" onClick={onBack} className="flex items-center gap-2">
           <ArrowLeft className="w-4 h-4" />
           Back

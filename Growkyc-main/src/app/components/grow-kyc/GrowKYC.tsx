@@ -885,22 +885,22 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
                     value={searchQuery}
                     onChange={(e) => handleSearchChange(e.target.value)}
                     onKeyDown={handleSearchKeyDown}
-                    className="bg-transparent text-white focus:text-gray-900 placeholder-white/60 focus:placeholder-gray-400 text-xs font-semibold focus:outline-none w-full"
+                    className="bg-transparent text-white focus:text-slate-100 placeholder-white/60 focus:placeholder-slate-500 text-xs font-semibold focus:outline-none w-full"
                   />
                 </div>
 
                 {searchQuery.trim() && searchSuggestions.length > 0 && (
                   <>
                     <div className="fixed inset-0 z-40" onClick={() => setSearchQuery('')} />
-                    <div className="absolute right-0 sm:left-0 mt-2 bg-white rounded-xl shadow-2xl border border-gray-100 py-1.5 w-64 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
-                      <div className="px-3 py-1 bg-gray-50 text-[9px] font-bold text-gray-400 tracking-wider rounded-t-lg">
+                    <div className="absolute right-0 sm:left-0 mt-2 bg-white rounded-xl shadow-2xl border border-white/10 py-1.5 w-64 z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                      <div className="px-3 py-1 bg-white/5 text-[9px] font-bold text-gray-400 tracking-wider rounded-t-lg">
                         SUGGESTIONS FOR {currentUser.title.toUpperCase()}
                       </div>
                       {searchSuggestions.map((item, index) => (
                         <button
                           key={index}
                           onClick={() => handleSuggestionClick(item)}
-                          className="w-full text-left text-gray-700 hover:bg-gray-50 flex items-center justify-between px-3.5 py-2 text-xs font-semibold transition-colors"
+                          className="w-full text-left text-slate-300 hover:bg-white/5 flex items-center justify-between px-3.5 py-2 text-xs font-semibold transition-colors"
                         >
                           <span className="flex items-center gap-2 truncate">
                             <item.icon className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" />
@@ -942,20 +942,20 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
                       />
 
                       <Card className="absolute right-0 mt-2 w-80 sm:w-96 z-50 shadow-2xl border-2 animate-in fade-in slide-in-from-top-2">
-                        <CardHeader className="pb-3 bg-gradient-to-r from-blue-50/10 to-indigo-50/10 border-b border-gray-100 flex flex-row items-center justify-between py-3">
+                        <CardHeader className="pb-3 bg-gradient-to-r from-blue-50/10 to-indigo-50/10 border-b border-white/10 flex flex-row items-center justify-between py-3">
                           <div>
-                            <CardTitle className="text-sm font-bold text-gray-900 flex items-center gap-1.5">
-                              <Bell className="w-4 h-4 text-blue-600" />
+                            <CardTitle className="text-sm font-bold text-slate-100 flex items-center gap-1.5">
+                              <Bell className="w-4 h-4 text-blue-400" />
                               Alerts & Notifications
                             </CardTitle>
-                            <p className="text-[10px] text-gray-500 font-semibold mt-0.5">
+                            <p className="text-[10px] text-slate-400 font-semibold mt-0.5">
                               {currentUser.title === 'Head of Compliance' ? 'Head of Compliance Scope' : 'Standard Compliance Scope'}
                             </p>
                           </div>
                           {notificationsCount > 0 && (
                             <button
                               onClick={handleMarkAllNotificationsRead}
-                              className="text-[10px] font-bold text-blue-600 hover:text-blue-700 transition-colors"
+                              className="text-[10px] font-bold text-blue-400 hover:text-blue-300 transition-colors"
                             >
                               Mark all read
                             </button>
@@ -963,21 +963,21 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
                         </CardHeader>
                         <CardContent className="p-0 max-h-96 overflow-y-auto">
                           {filteredNotifications.length === 0 ? (
-                            <div className="p-8 text-center text-gray-500">
+                            <div className="p-8 text-center text-slate-400">
                               <CheckCircle className="w-8 h-8 text-green-500 mx-auto mb-2 opacity-80" />
                               <p className="text-sm font-semibold">All caught up!</p>
                               <p className="text-xs text-gray-400 mt-0.5">No notifications in your queue.</p>
                             </div>
                           ) : (
-                            <div className="divide-y divide-gray-100">
+                            <div className="divide-y divide-white/10">
                               {filteredNotifications.map((notif) => (
                                 <div
                                   key={notif.id}
-                                  className={`p-4 transition-all hover:bg-gray-50 flex items-start gap-3 ${notif.read ? 'opacity-60' : 'bg-blue-50/20'
+                                  className={`p-4 transition-all hover:bg-white/5 flex items-start gap-3 ${notif.read ? 'opacity-60' : 'bg-blue-500/10/20'
                                     }`}
                                 >
                                   <div className="mt-1 flex-shrink-0">
-                                    {notif.type === 'critical' && <XCircle className="w-4 h-4 text-red-600" />}
+                                    {notif.type === 'critical' && <XCircle className="w-4 h-4 text-red-400" />}
                                     {notif.type === 'error' && <AlertCircle className="w-4 h-4 text-red-500" />}
                                     {notif.type === 'warning' && <AlertTriangle className="w-4 h-4 text-amber-500" />}
                                     {notif.type === 'success' && <CheckCircle className="w-4 h-4 text-green-500" />}
@@ -986,17 +986,17 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
                                   </div>
                                   <div className="flex-1 min-w-0">
                                     <div className="flex items-center justify-between gap-2">
-                                      <p className="text-xs font-bold text-gray-900 truncate">{notif.title}</p>
+                                      <p className="text-xs font-bold text-slate-100 truncate">{notif.title}</p>
                                       <span className="text-[9px] text-gray-400 font-semibold flex-shrink-0">{notif.time}</span>
                                     </div>
-                                    <p className="text-[11px] text-gray-500 mt-0.5 leading-relaxed">{notif.desc}</p>
+                                    <p className="text-[11px] text-slate-400 mt-0.5 leading-relaxed">{notif.desc}</p>
                                     <div className="mt-2.5 flex items-center justify-between">
-                                      <span className={`text-[9px] px-1.5 py-0.5 rounded-full font-bold uppercase tracking-wider ${notif.type === 'critical' ? 'bg-red-100 text-red-700' :
-                                          notif.type === 'error' ? 'bg-red-100 text-red-700' :
-                                            notif.type === 'warning' ? 'bg-amber-100 text-amber-700' :
-                                              notif.type === 'success' ? 'bg-green-100 text-green-700' :
-                                                notif.type === 'action' ? 'bg-indigo-100 text-indigo-700' :
-                                                  'bg-blue-100 text-blue-700'
+                                      <span className={`text-[9px] px-1.5 py-0.5 rounded-full font-bold uppercase tracking-wider ${notif.type === 'critical' ? 'bg-red-500/15 text-red-300' :
+                                          notif.type === 'error' ? 'bg-red-500/15 text-red-300' :
+                                            notif.type === 'warning' ? 'bg-amber-500/15 text-amber-300' :
+                                              notif.type === 'success' ? 'bg-green-500/15 text-green-300' :
+                                                notif.type === 'action' ? 'bg-indigo-500/15 text-indigo-300' :
+                                                  'bg-blue-500/15 text-blue-300'
                                         }`}>
                                         {notif.type}
                                       </span>
@@ -1140,7 +1140,7 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
                       />
 
                       {/* Dropdown Menu */}
-                      <div className="absolute right-0 mt-2 bg-white rounded-xl shadow-2xl border border-gray-100 py-1.5 w-60 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                      <div className="absolute right-0 mt-2 bg-white rounded-xl shadow-2xl border border-white/10 py-1.5 w-60 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
 
                         {/* 1. Client Onboarding (Primary highlight) - Restricted from Auditors */}
                         {selectedRole !== 'auditor' && (
@@ -1150,9 +1150,9 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
                               if (!selectedRole) return;
                               navigate(`/${rolePath}/onboarding`);
                             }}
-                            className="w-full text-left text-gray-700 hover:bg-gray-50 flex items-center gap-3 px-4 py-2.5 text-sm font-semibold transition-colors"
+                            className="w-full text-left text-slate-300 hover:bg-white/5 flex items-center gap-3 px-4 py-2.5 text-sm font-semibold transition-colors"
                           >
-                            <Users className="w-4 h-4 text-gray-500 flex-shrink-0" />
+                            <Users className="w-4 h-4 text-slate-400 flex-shrink-0" />
                             <span className="flex-1">Client Onboarding</span>
                           </button>
                         )}
@@ -1164,10 +1164,10 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
                             if (!selectedRole) return;
                             navigate(`/${rolePath}/actions`);
                           }}
-                          className="w-full text-left text-gray-700 hover:bg-gray-50 flex items-center justify-between px-4 py-2.5 text-sm font-semibold transition-colors"
+                          className="w-full text-left text-slate-300 hover:bg-white/5 flex items-center justify-between px-4 py-2.5 text-sm font-semibold transition-colors"
                         >
                           <span className="flex items-center gap-3">
-                            <AlertCircle className="w-4 h-4 text-gray-500 flex-shrink-0" />
+                            <AlertCircle className="w-4 h-4 text-slate-400 flex-shrink-0" />
                             <span>Action Items</span>
                           </span>
                           <span className="bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
@@ -1183,9 +1183,9 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
                                 setIsMoreDropdownOpen(false);
                                 navigate(`/${rolePath}/audit-log`);
                               }}
-                              className="w-full text-left text-gray-700 hover:bg-gray-50 flex items-center gap-3 px-4 py-2.5 text-sm font-semibold transition-colors border-t border-gray-50"
+                              className="w-full text-left text-slate-300 hover:bg-white/5 flex items-center gap-3 px-4 py-2.5 text-sm font-semibold transition-colors border-t border-gray-50"
                             >
-                              <Activity className="w-4 h-4 text-gray-500 flex-shrink-0" />
+                              <Activity className="w-4 h-4 text-slate-400 flex-shrink-0" />
                               <span>Audit Log</span>
                             </button>
                           )}
@@ -1197,9 +1197,9 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
                               setIsMoreDropdownOpen(false);
                               navigate(`/${rolePath}/upgrades`);
                             }}
-                            className="w-full text-left text-gray-700 hover:bg-gray-50 flex items-center gap-3 px-4 py-2.5 text-sm font-semibold transition-colors border-t border-gray-50"
+                            className="w-full text-left text-slate-300 hover:bg-white/5 flex items-center gap-3 px-4 py-2.5 text-sm font-semibold transition-colors border-t border-gray-50"
                           >
-                            <TrendingUp className="w-4 h-4 text-gray-500 flex-shrink-0" />
+                            <TrendingUp className="w-4 h-4 text-slate-400 flex-shrink-0" />
                             <span>Upgrades</span>
                           </button>
                         )}
@@ -1216,7 +1216,7 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
                                   state: { imfoRole: GROW_KYC_TO_IMFO_ROLE[selectedRole] }
                                 });
                               }}
-                              className="w-full text-left text-[#13B5EA] hover:bg-cyan-50/50 flex items-center gap-3 px-4 py-2.5 text-sm font-bold transition-colors border-t border-gray-100 mt-1"
+                              className="w-full text-left text-[#13B5EA] hover:bg-cyan-500/10/50 flex items-center gap-3 px-4 py-2.5 text-sm font-bold transition-colors border-t border-white/10 mt-1"
                             >
                               <Briefcase className="w-4 h-4 text-[#13B5EA] flex-shrink-0" />
                               <span>IMFO Platform</span>

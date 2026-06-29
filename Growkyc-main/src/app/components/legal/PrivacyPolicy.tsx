@@ -4,16 +4,16 @@ import { Shield, FileText, AlertCircle } from 'lucide-react';
 
 export function PrivacyPolicy() {
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-white/5 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
-            <div className="p-3 bg-blue-100 rounded-lg">
-              <Shield className="w-8 h-8 text-blue-600" />
+            <div className="p-3 bg-blue-500/15 rounded-lg">
+              <Shield className="w-8 h-8 text-blue-400" />
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Privacy Policy</h1>
-              <p className="text-sm text-gray-600">Last updated: {new Date().toLocaleDateString()}</p>
+              <h1 className="text-3xl font-bold text-slate-100">Privacy Policy</h1>
+              <p className="text-sm text-slate-300">Last updated: {new Date().toLocaleDateString()}</p>
             </div>
           </div>
         </div>
@@ -21,16 +21,16 @@ export function PrivacyPolicy() {
         <Card className="mb-6">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <AlertCircle className="w-5 h-5 text-blue-600" />
+              <AlertCircle className="w-5 h-5 text-blue-400" />
               Important Information
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <p className="text-gray-700">
+            <p className="text-slate-300">
               This Privacy Policy describes how Grow Platform ("we", "us", or "our") collects, uses, 
               and shares your personal information when you use our services.
             </p>
-            <p className="text-gray-700">
+            <p className="text-slate-300">
               By using our platform, you agree to the collection and use of information in accordance 
               with this policy. We are committed to protecting your privacy and ensuring the security 
               of your personal information.
@@ -115,8 +115,8 @@ export function PrivacyPolicy() {
               <li><strong>Business Transfers:</strong> In connection with a merger, acquisition, or sale</li>
             </ul>
 
-            <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-              <p className="text-sm text-blue-900">
+            <div className="mt-4 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+              <p className="text-sm text-blue-300">
                 <strong>Third-Party Services:</strong> We use Supabase for infrastructure, SendGrid for emails, 
                 and Stripe for payments. These providers have their own privacy policies.
               </p>
@@ -148,7 +148,7 @@ export function PrivacyPolicy() {
                 <li>Request account deletion (Settings → Account → Delete Account)</li>
                 <li>Contact us at privacy@growplatform.com</li>
               </ul>
-              <p className="mt-2 text-sm text-gray-600">
+              <p className="mt-2 text-sm text-slate-300">
                 We will respond to your request within 30 days.
               </p>
             </Subsection>
@@ -206,21 +206,21 @@ export function PrivacyPolicy() {
 
           <Section title="11. Contact Us">
             <p>If you have questions about this Privacy Policy or wish to exercise your rights, contact us:</p>
-            <div className="mt-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <div className="mt-4 p-4 bg-white/5 rounded-lg border border-white/10">
               <p className="font-semibold">Grow Platform Privacy Team</p>
               <p className="text-sm mt-2">Email: privacy@growplatform.com</p>
               <p className="text-sm">Phone: +61 (0)2 XXXX XXXX</p>
               <p className="text-sm">Address: [Your Business Address]</p>
             </div>
 
-            <div className="mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-              <p className="text-sm text-yellow-900">
+            <div className="mt-4 p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
+              <p className="text-sm text-yellow-300">
                 <strong>Data Protection Officer:</strong> For GDPR-related inquiries, contact our Data Protection Officer at dpo@growplatform.com
               </p>
             </div>
 
-            <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
-              <p className="text-sm text-red-900">
+            <div className="mt-4 p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
+              <p className="text-sm text-red-300">
                 <strong>Complaints:</strong> If you believe we have not complied with privacy laws, 
                 you can lodge a complaint with the Office of the Australian Information Commissioner (OAIC) 
                 or your local data protection authority.
@@ -229,16 +229,16 @@ export function PrivacyPolicy() {
           </Section>
         </div>
 
-        <div className="mt-8 p-6 bg-blue-50 border border-blue-200 rounded-lg">
-          <h3 className="font-semibold text-blue-900 mb-2">Quick Actions</h3>
+        <div className="mt-8 p-6 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+          <h3 className="font-semibold text-blue-300 mb-2">Quick Actions</h3>
           <div className="flex gap-4">
             <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
               Export My Data
             </button>
-            <button className="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors">
+            <button className="px-4 py-2 border border-blue-600 text-blue-400 rounded-lg hover:bg-blue-500/10 transition-colors">
               Manage Cookies
             </button>
-            <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+            <button className="px-4 py-2 border border-white/10 text-slate-300 rounded-lg hover:bg-white/5 transition-colors">
               Contact Privacy Team
             </button>
           </div>
@@ -254,7 +254,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
       <CardHeader>
         <CardTitle className="text-xl">{title}</CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4 text-gray-700">
+      <CardContent className="space-y-4 text-slate-300">
         {children}
       </CardContent>
     </Card>
@@ -264,8 +264,8 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 function Subsection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="mt-4">
-      <h4 className="font-semibold text-gray-900 mb-2">{title}</h4>
-      <div className="text-gray-700">{children}</div>
+      <h4 className="font-semibold text-slate-100 mb-2">{title}</h4>
+      <div className="text-slate-300">{children}</div>
     </div>
   );
 }

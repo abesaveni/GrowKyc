@@ -37,7 +37,7 @@ export function ComplianceAIEngine({ onBack }: ComplianceAIEngineProps) {
   }, [runs]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white/5">
       <div className="bg-gradient-to-r from-cyan-600 to-blue-700 text-white px-8 py-10">
         <Button
           variant="ghost"
@@ -79,13 +79,13 @@ export function ComplianceAIEngine({ onBack }: ComplianceAIEngineProps) {
                 <div key={run.id} className="border rounded-lg p-4">
                   <div className="flex items-center justify-between mb-2">
                     <div>
-                      <div className="font-semibold text-gray-900">{run.clientName}</div>
-                      <div className="text-xs text-gray-500">{run.clientId} • {new Date(run.completedAt).toLocaleString()}</div>
+                      <div className="font-semibold text-slate-100">{run.clientName}</div>
+                      <div className="text-xs text-slate-400">{run.clientId} • {new Date(run.completedAt).toLocaleString()}</div>
                     </div>
                     <div className="flex items-center gap-2">
-                      {run.decision === 'auto-approve' && <CheckCircle className="w-4 h-4 text-green-600" />}
-                      {run.decision === 'manual-review' && <AlertTriangle className="w-4 h-4 text-amber-600" />}
-                      {run.decision === 'reject' && <XCircle className="w-4 h-4 text-red-600" />}
+                      {run.decision === 'auto-approve' && <CheckCircle className="w-4 h-4 text-green-400" />}
+                      {run.decision === 'manual-review' && <AlertTriangle className="w-4 h-4 text-amber-400" />}
+                      {run.decision === 'reject' && <XCircle className="w-4 h-4 text-red-400" />}
                       <Badge className={run.decision === 'auto-approve' ? 'bg-green-600 text-white' : run.decision === 'manual-review' ? 'bg-amber-600 text-white' : 'bg-red-600 text-white'}>
                         {run.decision}
                       </Badge>
@@ -93,17 +93,17 @@ export function ComplianceAIEngine({ onBack }: ComplianceAIEngineProps) {
                   </div>
 
                   <div className="grid grid-cols-4 gap-4 mb-3">
-                    <div className="text-sm text-gray-600">Risk Score: <span className="font-semibold text-gray-900">{run.riskScore}</span></div>
-                    <div className="text-sm text-gray-600">Confidence: <span className="font-semibold text-gray-900">{run.confidence}%</span></div>
-                    <div className="text-sm text-gray-600">Findings: <span className="font-semibold text-gray-900">{run.findingsCount}</span></div>
-                    <div className="text-sm text-gray-600">Alerts/Fails: <span className="font-semibold text-gray-900">{run.alertedChecks}/{run.failedChecks}</span></div>
+                    <div className="text-sm text-slate-300">Risk Score: <span className="font-semibold text-slate-100">{run.riskScore}</span></div>
+                    <div className="text-sm text-slate-300">Confidence: <span className="font-semibold text-slate-100">{run.confidence}%</span></div>
+                    <div className="text-sm text-slate-300">Findings: <span className="font-semibold text-slate-100">{run.findingsCount}</span></div>
+                    <div className="text-sm text-slate-300">Alerts/Fails: <span className="font-semibold text-slate-100">{run.alertedChecks}/{run.failedChecks}</span></div>
                   </div>
 
                   <div className="grid grid-cols-3 gap-2">
                     {run.botResults.slice(0, 3).map((result) => (
-                      <div key={result.botId} className="text-sm bg-gray-50 rounded border p-2">
+                      <div key={result.botId} className="text-sm bg-white/5 rounded border p-2">
                         <div className="font-medium">{result.botName}</div>
-                        <div className="text-gray-600">{result.outcome} • {result.confidence}%</div>
+                        <div className="text-slate-300">{result.outcome} • {result.confidence}%</div>
                       </div>
                     ))}
                   </div>
@@ -111,7 +111,7 @@ export function ComplianceAIEngine({ onBack }: ComplianceAIEngineProps) {
               ))}
 
               {runs.length === 0 && (
-                <div className="text-sm text-gray-600">No screening runs found.</div>
+                <div className="text-sm text-slate-300">No screening runs found.</div>
               )}
             </div>
           </CardContent>
@@ -121,7 +121,7 @@ export function ComplianceAIEngine({ onBack }: ComplianceAIEngineProps) {
           <CardHeader>
             <CardTitle>Operational Notes</CardTitle>
           </CardHeader>
-          <CardContent className="grid grid-cols-3 gap-4 text-sm text-gray-700">
+          <CardContent className="grid grid-cols-3 gap-4 text-sm text-slate-300">
             <div className="border rounded p-3">
               <div className="font-semibold flex items-center gap-2 mb-1"><Activity className="w-4 h-4" /> Persistent Run State</div>
               Bot runs are stored and replayable across sessions.

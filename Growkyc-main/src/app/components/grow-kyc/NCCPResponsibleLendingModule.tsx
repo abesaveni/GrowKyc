@@ -212,9 +212,9 @@ export function NCCPResponsibleLendingModule() {
 
   const getOutcomeColor = (outcome: string) => {
     switch (outcome) {
-      case 'suitable': return 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300';
-      case 'marginal': return 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300';
-      case 'unsuitable': return 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300';
+      case 'suitable': return 'bg-green-500/15 text-green-300 dark:bg-green-900 dark:text-green-300';
+      case 'marginal': return 'bg-yellow-500/15 text-yellow-300 dark:bg-yellow-900 dark:text-yellow-300';
+      case 'unsuitable': return 'bg-red-500/15 text-red-300 dark:bg-red-900 dark:text-red-300';
       default: return 'bg-[#0f172a] text-slate-300 dark:bg-gray-800 dark:text-gray-300';
     }
   };
@@ -243,19 +243,19 @@ export function NCCPResponsibleLendingModule() {
 
       <div className="max-w-7xl mx-auto p-6 space-y-6">
         {/* Assessment Outcome Banner */}
-        <div className={`rounded-lg shadow-lg p-6 ${assessment.servicing.outcome === 'suitable' ? 'bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800' : 'bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800'}`}>
+        <div className={`rounded-lg shadow-lg p-6 ${assessment.servicing.outcome === 'suitable' ? 'bg-green-500/10 dark:bg-green-900/20 border border-green-500/30 dark:border-green-800' : 'bg-yellow-500/10 dark:bg-yellow-900/20 border border-yellow-500/30 dark:border-yellow-800'}`}>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               {assessment.servicing.outcome === 'suitable' ? (
-                <CheckCircle className="w-12 h-12 text-green-600" />
+                <CheckCircle className="w-12 h-12 text-green-400" />
               ) : (
-                <AlertTriangle className="w-12 h-12 text-yellow-600" />
+                <AlertTriangle className="w-12 h-12 text-yellow-400" />
               )}
               <div>
-                <h3 className={`text-2xl font-bold mb-1 ${assessment.servicing.outcome === 'suitable' ? 'text-green-900 dark:text-green-100' : 'text-yellow-900 dark:text-yellow-100'}`}>
+                <h3 className={`text-2xl font-bold mb-1 ${assessment.servicing.outcome === 'suitable' ? 'text-green-300 dark:text-green-100' : 'text-yellow-300 dark:text-yellow-100'}`}>
                   Assessment Outcome: {assessment.servicing.outcome.toUpperCase()}
                 </h3>
-                <p className={assessment.servicing.outcome === 'suitable' ? 'text-green-800 dark:text-green-200' : 'text-yellow-800 dark:text-yellow-200'}>
+                <p className={assessment.servicing.outcome === 'suitable' ? 'text-green-300 dark:text-green-200' : 'text-yellow-300 dark:text-yellow-200'}>
                   {assessment.servicing.outcome === 'suitable' 
                     ? 'Borrower can afford the proposed loan without substantial hardship'
                     : 'Marginal affordability - further review recommended'}
@@ -264,7 +264,7 @@ export function NCCPResponsibleLendingModule() {
             </div>
             <div className="text-right">
               <div className="text-sm text-slate-300 dark:text-slate-400">Net Surplus After Buffers</div>
-              <div className={`text-3xl font-bold ${assessment.servicing.surplusAfterBuffers > 0 ? 'text-green-600' : 'text-red-600'}`}>
+              <div className={`text-3xl font-bold ${assessment.servicing.surplusAfterBuffers > 0 ? 'text-green-400' : 'text-red-400'}`}>
                 ${assessment.servicing.surplusAfterBuffers.toLocaleString()}
               </div>
               <div className="text-sm text-slate-300 dark:text-slate-400">per month</div>
@@ -344,7 +344,7 @@ export function NCCPResponsibleLendingModule() {
                         <div className="text-sm text-slate-400 mb-2">Consumer Goals</div>
                         <div className="flex flex-wrap gap-2">
                           {consumerProfile.objectives.goals.map((goal, i) => (
-                            <span key={i} className="px-3 py-1 bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 rounded-full text-sm">
+                            <span key={i} className="px-3 py-1 bg-blue-500/15 text-blue-300 dark:bg-blue-900 dark:text-blue-300 rounded-full text-sm">
                               {goal}
                             </span>
                           ))}
@@ -399,7 +399,7 @@ export function NCCPResponsibleLendingModule() {
                         <div className="flex items-center justify-between mb-3">
                           <h4 className="font-bold text-white dark:text-white">Gross Monthly Income</h4>
                           {consumerProfile.financialSituation.grossIncome.verified && (
-                            <span className="px-3 py-1 bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300 rounded-full text-xs flex items-center gap-1">
+                            <span className="px-3 py-1 bg-green-500/15 text-green-300 dark:bg-green-900 dark:text-green-300 rounded-full text-xs flex items-center gap-1">
                               <CheckCircle className="w-3 h-3" />
                               Verified
                             </span>
@@ -461,9 +461,9 @@ export function NCCPResponsibleLendingModule() {
                             {consumerProfile.dependants.children}
                           </div>
                         </div>
-                        <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg text-center">
+                        <div className="p-4 bg-blue-500/10 dark:bg-blue-900/20 rounded-lg text-center">
                           <div className="text-sm text-slate-400 mb-1">Total</div>
-                          <div className="text-2xl font-bold text-blue-600">
+                          <div className="text-2xl font-bold text-blue-400">
                             {consumerProfile.dependants.totalDependants}
                           </div>
                         </div>
@@ -493,7 +493,7 @@ export function NCCPResponsibleLendingModule() {
                             <div className="flex items-center justify-between mb-2">
                               <div className="font-semibold text-white dark:text-white">{card.issuer}</div>
                               {card.verified && (
-                                <span className="text-green-600 text-xs flex items-center gap-1">
+                                <span className="text-green-400 text-xs flex items-center gap-1">
                                   <CheckCircle className="w-3 h-3" />
                                   Verified
                                 </span>
@@ -529,13 +529,13 @@ export function NCCPResponsibleLendingModule() {
                 <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 p-6">
                   <h3 className="text-lg font-bold text-white dark:text-white mb-4">Income</h3>
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                    <div className="p-4 bg-green-500/10 dark:bg-green-900/20 rounded-lg">
                       <div className="text-sm text-slate-300 dark:text-slate-400 mb-1">Gross Monthly Income</div>
-                      <div className="text-2xl font-bold text-green-600">${assessment.income.grossMonthly.toLocaleString()}</div>
+                      <div className="text-2xl font-bold text-green-400">${assessment.income.grossMonthly.toLocaleString()}</div>
                     </div>
-                    <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                    <div className="p-4 bg-blue-500/10 dark:bg-blue-900/20 rounded-lg">
                       <div className="text-sm text-slate-300 dark:text-slate-400 mb-1">Net Monthly Income</div>
-                      <div className="text-2xl font-bold text-blue-600">${assessment.income.netMonthly.toLocaleString()}</div>
+                      <div className="text-2xl font-bold text-blue-400">${assessment.income.netMonthly.toLocaleString()}</div>
                     </div>
                   </div>
                 </div>
@@ -559,7 +559,7 @@ export function NCCPResponsibleLendingModule() {
                   <div className="pt-4 border-t border-white/10 dark:border-gray-700">
                     <div className="flex items-center justify-between">
                       <span className="text-lg font-bold text-white dark:text-white">Total Expenses</span>
-                      <span className="text-2xl font-bold text-red-600">${assessment.expenses.total.toLocaleString()}</span>
+                      <span className="text-2xl font-bold text-red-400">${assessment.expenses.total.toLocaleString()}</span>
                     </div>
                   </div>
                 </div>
@@ -579,9 +579,9 @@ export function NCCPResponsibleLendingModule() {
                       </div>
                     </div>
 
-                    <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                    <div className="p-4 bg-blue-500/10 dark:bg-blue-900/20 rounded-lg">
                       <div className="text-sm text-slate-300 dark:text-slate-400 mb-1">Buffer Applied</div>
-                      <div className="text-xl font-bold text-blue-600">
+                      <div className="text-xl font-bold text-blue-400">
                         +${assessment.buffers.bufferAmount.toLocaleString()}/month
                       </div>
                       <div className="text-xs text-slate-400 mt-1">
@@ -589,16 +589,16 @@ export function NCCPResponsibleLendingModule() {
                       </div>
                     </div>
 
-                    <div className="p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
+                    <div className="p-4 bg-orange-500/10 dark:bg-orange-900/20 rounded-lg">
                       <div className="text-sm text-slate-300 dark:text-slate-400 mb-1">Total Monthly Commitments</div>
-                      <div className="text-2xl font-bold text-orange-600">
+                      <div className="text-2xl font-bold text-orange-400">
                         ${assessment.servicing.totalMonthlyCommitments.toLocaleString()}
                       </div>
                     </div>
 
-                    <div className={`p-4 rounded-lg ${assessment.servicing.netSurplus > 0 ? 'bg-green-50 dark:bg-green-900/20' : 'bg-red-50 dark:bg-red-900/20'}`}>
+                    <div className={`p-4 rounded-lg ${assessment.servicing.netSurplus > 0 ? 'bg-green-500/10 dark:bg-green-900/20' : 'bg-red-500/10 dark:bg-red-900/20'}`}>
                       <div className="text-sm text-slate-300 dark:text-slate-400 mb-1">Net Surplus (After Buffers)</div>
-                      <div className={`text-3xl font-bold ${assessment.servicing.netSurplus > 0 ? 'text-green-600' : 'text-red-600'}`}>
+                      <div className={`text-3xl font-bold ${assessment.servicing.netSurplus > 0 ? 'text-green-400' : 'text-red-400'}`}>
                         ${assessment.servicing.surplusAfterBuffers.toLocaleString()}
                       </div>
                       <div className="text-xs text-slate-400 mt-1">
@@ -654,7 +654,7 @@ export function NCCPResponsibleLendingModule() {
                   ].map((item, i) => (
                     <div key={i} className="flex items-center justify-between p-4 bg-[#0f172a] dark:bg-gray-900 rounded-lg">
                       <div className="flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-green-600" />
+                        <CheckCircle className="w-5 h-5 text-green-400" />
                         <div>
                           <div className="font-semibold text-white dark:text-white">{item.field}</div>
                           <div className="text-xs text-slate-400">
@@ -663,7 +663,7 @@ export function NCCPResponsibleLendingModule() {
                         </div>
                       </div>
                       <div className="flex items-center gap-2">
-                        <span className="px-3 py-1 bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300 rounded-full text-xs">
+                        <span className="px-3 py-1 bg-green-500/15 text-green-300 dark:bg-green-900 dark:text-green-300 rounded-full text-xs">
                           {item.status.toUpperCase()}
                         </span>
                         <Button size="sm" variant="outline">
@@ -700,8 +700,8 @@ export function NCCPResponsibleLendingModule() {
                       <div className="flex items-center gap-2">
                         <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
                           doc.status === 'complete' 
-                            ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
-                            : 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300'
+                            ? 'bg-green-500/15 text-green-300 dark:bg-green-900 dark:text-green-300'
+                            : 'bg-yellow-500/15 text-yellow-300 dark:bg-yellow-900 dark:text-yellow-300'
                         }`}>
                           {doc.status.toUpperCase()}
                         </span>

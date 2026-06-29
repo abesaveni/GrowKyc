@@ -154,10 +154,10 @@ export function ActionItemsCenter({ onViewClient, onBack }: ActionItemsCenterPro
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'overdue': return 'text-red-600 bg-red-50 border-red-200';
-      case 'due_today': return 'text-[#FFA300] bg-orange-50 border-orange-200';
-      case 'due_soon': return 'text-yellow-700 bg-yellow-50 border-yellow-200';
-      case 'scheduled': return 'text-blue-600 bg-blue-50 border-blue-200';
+      case 'overdue': return 'text-red-400 bg-red-500/10 border-red-500/30';
+      case 'due_today': return 'text-[#FFA300] bg-orange-500/10 border-orange-500/30';
+      case 'due_soon': return 'text-yellow-300 bg-yellow-500/10 border-yellow-500/30';
+      case 'scheduled': return 'text-blue-400 bg-blue-500/10 border-blue-500/30';
       default: return 'text-slate-300 bg-[#0f172a] border-white/10';
     }
   };
@@ -264,9 +264,9 @@ export function ActionItemsCenter({ onViewClient, onBack }: ActionItemsCenterPro
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-xs text-slate-300 mb-1">Overdue</p>
-                  <p className="text-2xl font-bold text-red-600">{stats.overdue}</p>
+                  <p className="text-2xl font-bold text-red-400">{stats.overdue}</p>
                 </div>
-                <AlertCircle className="w-8 h-8 text-red-600" />
+                <AlertCircle className="w-8 h-8 text-red-400" />
               </div>
             </CardContent>
           </Card>
@@ -288,9 +288,9 @@ export function ActionItemsCenter({ onViewClient, onBack }: ActionItemsCenterPro
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-xs text-slate-300 mb-1">Due Soon</p>
-                  <p className="text-2xl font-bold text-yellow-600">{stats.dueSoon}</p>
+                  <p className="text-2xl font-bold text-yellow-400">{stats.dueSoon}</p>
                 </div>
-                <Calendar className="w-8 h-8 text-yellow-600" />
+                <Calendar className="w-8 h-8 text-yellow-400" />
               </div>
             </CardContent>
           </Card>
@@ -300,9 +300,9 @@ export function ActionItemsCenter({ onViewClient, onBack }: ActionItemsCenterPro
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-xs text-slate-300 mb-1">Critical Priority</p>
-                  <p className="text-2xl font-bold text-red-700">{stats.critical}</p>
+                  <p className="text-2xl font-bold text-red-300">{stats.critical}</p>
                 </div>
-                <AlertTriangle className="w-8 h-8 text-red-700" />
+                <AlertTriangle className="w-8 h-8 text-red-300" />
               </div>
             </CardContent>
           </Card>
@@ -332,7 +332,7 @@ export function ActionItemsCenter({ onViewClient, onBack }: ActionItemsCenterPro
                 placeholder="Search action items, clients, or descriptions..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA] focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA] focus:border-transparent"
               />
             </div>
             <Button
@@ -353,7 +353,7 @@ export function ActionItemsCenter({ onViewClient, onBack }: ActionItemsCenterPro
                 <select
                   value={filterPriority}
                   onChange={(e) => setFilterPriority(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA]"
+                  className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA]"
                 >
                   <option value="all">All Priorities</option>
                   <option value="critical">Critical</option>
@@ -368,7 +368,7 @@ export function ActionItemsCenter({ onViewClient, onBack }: ActionItemsCenterPro
                 <select
                   value={filterStatus}
                   onChange={(e) => setFilterStatus(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA]"
+                  className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA]"
                 >
                   <option value="all">All Statuses</option>
                   <option value="overdue">Overdue</option>
@@ -383,7 +383,7 @@ export function ActionItemsCenter({ onViewClient, onBack }: ActionItemsCenterPro
                 <select
                   value={filterCategory}
                   onChange={(e) => setFilterCategory(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA]"
+                  className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA]"
                 >
                   <option value="all">All Categories</option>
                   <option value="kyc_review">KYC Review</option>
@@ -410,7 +410,7 @@ export function ActionItemsCenter({ onViewClient, onBack }: ActionItemsCenterPro
           </div>
         ) : error ? (
           <div className="text-center py-8">
-            <p className="text-red-600">{error}</p>
+            <p className="text-red-400">{error}</p>
           </div>
         ) : (
           sortedItems.map((item) => (
@@ -485,13 +485,13 @@ export function ActionItemsCenter({ onViewClient, onBack }: ActionItemsCenterPro
                     </div>
 
                     {/* Action Required */}
-                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mt-3">
+                    <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-3 mt-3">
                       <div className="flex items-center justify-between">
                         <div className="flex items-start gap-2">
-                          <CheckSquare className="w-4 h-4 text-blue-600 mt-0.5" />
+                          <CheckSquare className="w-4 h-4 text-blue-400 mt-0.5" />
                           <div>
-                            <p className="text-xs font-medium text-blue-900 mb-1">Action Required</p>
-                            <p className="text-sm text-blue-700">{item.actionRequired}</p>
+                            <p className="text-xs font-medium text-blue-300 mb-1">Action Required</p>
+                            <p className="text-sm text-blue-300">{item.actionRequired}</p>
                           </div>
                         </div>
                         <Button

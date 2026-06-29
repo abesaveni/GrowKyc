@@ -159,12 +159,12 @@ export function OrganizationSettings({ onBack }: OrganizationSettingsProps) {
         <Card>
           <CardHeader>
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-indigo-100 rounded-lg">
-                <Building2 className="w-5 h-5 text-indigo-600" />
+              <div className="p-2 bg-indigo-500/15 rounded-lg">
+                <Building2 className="w-5 h-5 text-indigo-400" />
               </div>
               <div>
                 <CardTitle>Organization Details</CardTitle>
-                <p className="text-sm text-gray-600 mt-1">Manage your organization information</p>
+                <p className="text-sm text-slate-300 mt-1">Manage your organization information</p>
               </div>
             </div>
           </CardHeader>
@@ -194,7 +194,7 @@ export function OrganizationSettings({ onBack }: OrganizationSettingsProps) {
                 <select
                   value={orgData.industry}
                   onChange={(e) => handleChange('industry', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 >
                   <option value="Financial Services">Financial Services</option>
                   <option value="Real Estate">Real Estate</option>
@@ -208,7 +208,7 @@ export function OrganizationSettings({ onBack }: OrganizationSettingsProps) {
                 <select
                   value={orgData.size}
                   onChange={(e) => handleChange('size', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 >
                   <option value="1-10 employees">1-10 employees</option>
                   <option value="11-50 employees">11-50 employees</option>
@@ -262,7 +262,7 @@ export function OrganizationSettings({ onBack }: OrganizationSettingsProps) {
                 <select
                   value={orgData.state}
                   onChange={(e) => handleChange('state', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 >
                   <option value="NSW">NSW</option>
                   <option value="VIC">VIC</option>
@@ -292,12 +292,12 @@ export function OrganizationSettings({ onBack }: OrganizationSettingsProps) {
           <CardHeader>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-purple-100 rounded-lg">
-                  <Users className="w-5 h-5 text-purple-600" />
+                <div className="p-2 bg-purple-500/15 rounded-lg">
+                  <Users className="w-5 h-5 text-purple-400" />
                 </div>
                 <div>
                   <CardTitle>Team Members ({teamMembers.length})</CardTitle>
-                  <p className="text-sm text-gray-600 mt-1">Manage who has access to your organization</p>
+                  <p className="text-sm text-slate-300 mt-1">Manage who has access to your organization</p>
                 </div>
               </div>
               <Button onClick={handleInviteMember}>
@@ -309,16 +309,16 @@ export function OrganizationSettings({ onBack }: OrganizationSettingsProps) {
           <CardContent>
             <div className="space-y-3">
               {teamMembers.map((member) => (
-                <div key={member.id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+                <div key={member.id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-white/5 transition-colors">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-semibold">
                       {member.name.split(' ').map(n => n[0]).join('')}
                     </div>
                     <div>
-                      <p className="font-medium text-gray-900">{member.name}</p>
+                      <p className="font-medium text-slate-100">{member.name}</p>
                       <div className="flex items-center gap-2 mt-1">
                         <Mail className="w-3 h-3 text-gray-400" />
-                        <p className="text-sm text-gray-600">{member.email}</p>
+                        <p className="text-sm text-slate-300">{member.email}</p>
                       </div>
                     </div>
                   </div>
@@ -326,7 +326,7 @@ export function OrganizationSettings({ onBack }: OrganizationSettingsProps) {
                     <select
                       value={member.role}
                       onChange={(e) => handleRoleChange(member.id, e.target.value)}
-                      className="px-3 py-1 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="px-3 py-1 border border-white/10 rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                     >
                       <option value="Administrator">Administrator</option>
                       <option value="Member">Member</option>
@@ -337,7 +337,7 @@ export function OrganizationSettings({ onBack }: OrganizationSettingsProps) {
                         variant="ghost"
                         size="sm"
                         onClick={() => handleRemoveMemberClick(member)}
-                        className="text-red-600 hover:text-red-700 hover:bg-red-50"
+                        className="text-red-400 hover:text-red-300 hover:bg-red-500/10"
                       >
                         <Trash2 className="w-4 h-4" />
                       </Button>
@@ -347,11 +347,11 @@ export function OrganizationSettings({ onBack }: OrganizationSettingsProps) {
               ))}
             </div>
 
-            <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-              <p className="text-sm text-blue-800">
+            <div className="mt-4 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+              <p className="text-sm text-blue-300">
                 <strong>Team Member Roles:</strong>
               </p>
-              <ul className="text-sm text-blue-700 mt-2 space-y-1">
+              <ul className="text-sm text-blue-300 mt-2 space-y-1">
                 <li>• <strong>Administrator:</strong> Full access to all settings and data</li>
                 <li>• <strong>Member:</strong> Can view and manage deals, but cannot change organization settings</li>
                 <li>• <strong>Viewer:</strong> Read-only access to organization data</li>
@@ -364,21 +364,21 @@ export function OrganizationSettings({ onBack }: OrganizationSettingsProps) {
         <Card>
           <CardHeader>
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-green-100 rounded-lg">
-                <CreditCard className="w-5 h-5 text-green-600" />
+              <div className="p-2 bg-green-500/15 rounded-lg">
+                <CreditCard className="w-5 h-5 text-green-400" />
               </div>
               <div>
                 <CardTitle>Billing Information</CardTitle>
-                <p className="text-sm text-gray-600 mt-1">Subscription and payment details</p>
+                <p className="text-sm text-slate-300 mt-1">Subscription and payment details</p>
               </div>
             </div>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="flex items-center justify-between p-4 bg-gradient-to-br from-indigo-50 to-white border-2 border-indigo-200 rounded-lg">
+            <div className="flex items-center justify-between p-4 bg-gradient-to-br from-indigo-50 to-white border-2 border-indigo-500/30 rounded-lg">
               <div>
-                <p className="font-semibold text-gray-900 text-lg">Professional Plan</p>
-                <p className="text-sm text-gray-600">A$299/month • Billed annually</p>
-                <p className="text-xs text-gray-500 mt-1">Next billing date: 1 March 2026</p>
+                <p className="font-semibold text-slate-100 text-lg">Professional Plan</p>
+                <p className="text-sm text-slate-300">A$299/month • Billed annually</p>
+                <p className="text-xs text-slate-400 mt-1">Next billing date: 1 March 2026</p>
               </div>
               <Button variant="outline" size="sm" onClick={handleManageSubscription}>
                 Manage Plan
@@ -387,9 +387,9 @@ export function OrganizationSettings({ onBack }: OrganizationSettingsProps) {
 
             <div className="flex items-center justify-between p-4 border rounded-lg">
               <div>
-                <p className="font-medium text-gray-900">Payment Method</p>
-                <p className="text-sm text-gray-600">•••• •••• •••• 4242</p>
-                <p className="text-xs text-gray-500 mt-1">Expires 12/2025</p>
+                <p className="font-medium text-slate-100">Payment Method</p>
+                <p className="text-sm text-slate-300">•••• •••• •••• 4242</p>
+                <p className="text-xs text-slate-400 mt-1">Expires 12/2025</p>
               </div>
               <Button variant="outline" size="sm" onClick={handleUpdatePayment}>
                 <CreditCard className="w-4 h-4 mr-1" />
@@ -397,10 +397,10 @@ export function OrganizationSettings({ onBack }: OrganizationSettingsProps) {
               </Button>
             </div>
 
-            <div className="p-4 bg-amber-50 border border-amber-200 rounded-lg">
+            <div className="p-4 bg-amber-500/10 border border-amber-500/30 rounded-lg">
               <div className="flex items-start gap-2">
-                <AlertCircle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
-                <div className="text-sm text-amber-800">
+                <AlertCircle className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
+                <div className="text-sm text-amber-300">
                   <p className="font-semibold mb-1">Billing Contact</p>
                   <p>All invoices will be sent to the organization administrator email.</p>
                 </div>
@@ -413,7 +413,7 @@ export function OrganizationSettings({ onBack }: OrganizationSettingsProps) {
         <div className="flex justify-between items-center pt-4">
           <div>
             {hasChanges && (
-              <p className="text-sm text-amber-600 flex items-center gap-2">
+              <p className="text-sm text-amber-400 flex items-center gap-2">
                 <span className="w-2 h-2 bg-amber-600 rounded-full"></span>
                 You have unsaved changes
               </p>
@@ -493,22 +493,22 @@ export function OrganizationSettings({ onBack }: OrganizationSettingsProps) {
           <div 
             onClick={() => setSelectedPlan('starter')}
             className={`p-4 border-2 rounded-lg cursor-pointer transition-all ${
-              selectedPlan === 'starter' ? 'border-indigo-600 bg-indigo-50' : 'border-gray-200 hover:border-gray-300'
+              selectedPlan === 'starter' ? 'border-indigo-600 bg-indigo-500/10' : 'border-white/10 hover:border-white/10'
             }`}
           >
             <div className="flex justify-between items-start">
               <div>
-                <h4 className="font-semibold text-gray-900">Starter Plan</h4>
-                <p className="text-sm text-gray-600 mt-1">Perfect for small teams</p>
-                <p className="text-2xl font-bold text-gray-900 mt-2">A$99<span className="text-sm font-normal text-gray-600">/month</span></p>
+                <h4 className="font-semibold text-slate-100">Starter Plan</h4>
+                <p className="text-sm text-slate-300 mt-1">Perfect for small teams</p>
+                <p className="text-2xl font-bold text-slate-100 mt-2">A$99<span className="text-sm font-normal text-slate-300">/month</span></p>
               </div>
               <div className={`w-5 h-5 rounded-full border-2 ${
-                selectedPlan === 'starter' ? 'border-indigo-600 bg-indigo-600' : 'border-gray-300'
+                selectedPlan === 'starter' ? 'border-indigo-600 bg-indigo-600' : 'border-white/10'
               } flex items-center justify-center`}>
                 {selectedPlan === 'starter' && <div className="w-2.5 h-2.5 bg-white rounded-full" />}
               </div>
             </div>
-            <ul className="mt-3 space-y-1 text-sm text-gray-700">
+            <ul className="mt-3 space-y-1 text-sm text-slate-300">
               <li>• Up to 5 team members</li>
               <li>• 10 GB storage</li>
               <li>• Basic support</li>
@@ -518,25 +518,25 @@ export function OrganizationSettings({ onBack }: OrganizationSettingsProps) {
           <div 
             onClick={() => setSelectedPlan('professional')}
             className={`p-4 border-2 rounded-lg cursor-pointer transition-all ${
-              selectedPlan === 'professional' ? 'border-indigo-600 bg-indigo-50' : 'border-gray-200 hover:border-gray-300'
+              selectedPlan === 'professional' ? 'border-indigo-600 bg-indigo-500/10' : 'border-white/10 hover:border-white/10'
             }`}
           >
             <div className="flex justify-between items-start">
               <div>
                 <div className="flex items-center gap-2">
-                  <h4 className="font-semibold text-gray-900">Professional Plan</h4>
+                  <h4 className="font-semibold text-slate-100">Professional Plan</h4>
                   <span className="px-2 py-0.5 bg-indigo-600 text-white text-xs rounded font-semibold">Current</span>
                 </div>
-                <p className="text-sm text-gray-600 mt-1">For growing businesses</p>
-                <p className="text-2xl font-bold text-gray-900 mt-2">A$299<span className="text-sm font-normal text-gray-600">/month</span></p>
+                <p className="text-sm text-slate-300 mt-1">For growing businesses</p>
+                <p className="text-2xl font-bold text-slate-100 mt-2">A$299<span className="text-sm font-normal text-slate-300">/month</span></p>
               </div>
               <div className={`w-5 h-5 rounded-full border-2 ${
-                selectedPlan === 'professional' ? 'border-indigo-600 bg-indigo-600' : 'border-gray-300'
+                selectedPlan === 'professional' ? 'border-indigo-600 bg-indigo-600' : 'border-white/10'
               } flex items-center justify-center`}>
                 {selectedPlan === 'professional' && <div className="w-2.5 h-2.5 bg-white rounded-full" />}
               </div>
             </div>
-            <ul className="mt-3 space-y-1 text-sm text-gray-700">
+            <ul className="mt-3 space-y-1 text-sm text-slate-300">
               <li>• Up to 50 team members</li>
               <li>• 100 GB storage</li>
               <li>• Priority support</li>
@@ -547,22 +547,22 @@ export function OrganizationSettings({ onBack }: OrganizationSettingsProps) {
           <div 
             onClick={() => setSelectedPlan('enterprise')}
             className={`p-4 border-2 rounded-lg cursor-pointer transition-all ${
-              selectedPlan === 'enterprise' ? 'border-indigo-600 bg-indigo-50' : 'border-gray-200 hover:border-gray-300'
+              selectedPlan === 'enterprise' ? 'border-indigo-600 bg-indigo-500/10' : 'border-white/10 hover:border-white/10'
             }`}
           >
             <div className="flex justify-between items-start">
               <div>
-                <h4 className="font-semibold text-gray-900">Enterprise Plan</h4>
-                <p className="text-sm text-gray-600 mt-1">For large organizations</p>
-                <p className="text-2xl font-bold text-gray-900 mt-2">A$799<span className="text-sm font-normal text-gray-600">/month</span></p>
+                <h4 className="font-semibold text-slate-100">Enterprise Plan</h4>
+                <p className="text-sm text-slate-300 mt-1">For large organizations</p>
+                <p className="text-2xl font-bold text-slate-100 mt-2">A$799<span className="text-sm font-normal text-slate-300">/month</span></p>
               </div>
               <div className={`w-5 h-5 rounded-full border-2 ${
-                selectedPlan === 'enterprise' ? 'border-indigo-600 bg-indigo-600' : 'border-gray-300'
+                selectedPlan === 'enterprise' ? 'border-indigo-600 bg-indigo-600' : 'border-white/10'
               } flex items-center justify-center`}>
                 {selectedPlan === 'enterprise' && <div className="w-2.5 h-2.5 bg-white rounded-full" />}
               </div>
             </div>
-            <ul className="mt-3 space-y-1 text-sm text-gray-700">
+            <ul className="mt-3 space-y-1 text-sm text-slate-300">
               <li>• Unlimited team members</li>
               <li>• Unlimited storage</li>
               <li>• 24/7 dedicated support</li>
@@ -634,8 +634,8 @@ export function OrganizationSettings({ onBack }: OrganizationSettingsProps) {
               />
             </div>
           </div>
-          <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg">
-            <p className="text-xs text-blue-800">
+          <div className="p-3 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+            <p className="text-xs text-blue-300">
               🔒 Your payment information is encrypted and stored securely. We never store your CVV.
             </p>
           </div>

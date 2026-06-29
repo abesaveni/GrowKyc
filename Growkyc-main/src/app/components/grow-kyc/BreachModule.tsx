@@ -274,18 +274,18 @@ export function BreachModule({ onBack }: BreachModuleProps) {
           </div>
         </div>
 
-        <Card className="bg-blue-50 border-blue-300">
+        <Card className="bg-blue-500/10 border-blue-300">
           <CardContent className="p-6">
             <div className="flex items-start gap-4">
-              <Shield className="w-8 h-8 text-blue-600 flex-shrink-0" />
+              <Shield className="w-8 h-8 text-blue-400 flex-shrink-0" />
               <div className="flex-1">
-                <h3 className="font-semibold text-lg text-blue-900 mb-2">
+                <h3 className="font-semibold text-lg text-blue-300 mb-2">
                   Assessment Result: REPORTABLE
                 </h3>
-                <p className="text-sm text-blue-800 mb-3">
+                <p className="text-sm text-blue-300 mb-3">
                   Based on your responses, this incident meets the threshold for regulatory reporting.
                 </p>
-                <div className="space-y-1 text-sm text-blue-800">
+                <div className="space-y-1 text-sm text-blue-300">
                   <div className="flex items-center gap-2">
                     <CheckCircle className="w-4 h-4" />
                     <span>Multiple clients impacted</span>
@@ -300,8 +300,8 @@ export function BreachModule({ onBack }: BreachModuleProps) {
                   </div>
                 </div>
                 <div className="mt-4 p-3 bg-[#1e293b] rounded border border-blue-300">
-                  <div className="font-semibold text-blue-900 mb-1">Recommended Actions:</div>
-                  <ul className="text-sm text-blue-800 space-y-1 list-disc list-inside">
+                  <div className="font-semibold text-blue-300 mb-1">Recommended Actions:</div>
+                  <ul className="text-sm text-blue-300 space-y-1 list-disc list-inside">
                     <li>Report to AUSTRAC within 30 days</li>
                     <li>Complete root cause analysis within 90 days</li>
                     <li>Implement remediation plan</li>
@@ -340,7 +340,7 @@ export function BreachModule({ onBack }: BreachModuleProps) {
                 Back
               </Button>
               <div className="h-6 w-px bg-gray-300" />
-              <AlertTriangle className="w-6 h-6 text-red-600" />
+              <AlertTriangle className="w-6 h-6 text-red-400" />
               <div>
                 <h1 className="text-2xl font-bold text-white">Breach & Incident Management</h1>
                 <p className="text-sm text-slate-300">ASIC RG78, Privacy Act & ISO Incident Response</p>
@@ -371,7 +371,7 @@ export function BreachModule({ onBack }: BreachModuleProps) {
                 <CardContent className="p-6">
                   <div className="text-sm text-slate-300">Open Incidents</div>
                   <div className="text-3xl font-bold text-white">3</div>
-                  <div className="text-xs text-amber-600 flex items-center gap-1 mt-1">
+                  <div className="text-xs text-amber-400 flex items-center gap-1 mt-1">
                     <TrendingUp className="w-3 h-3" />
                     2 reportable
                   </div>
@@ -380,13 +380,13 @@ export function BreachModule({ onBack }: BreachModuleProps) {
               <Card>
                 <CardContent className="p-6">
                   <div className="text-sm text-slate-300">Under Investigation</div>
-                  <div className="text-3xl font-bold text-blue-600">2</div>
+                  <div className="text-3xl font-bold text-blue-400">2</div>
                 </CardContent>
               </Card>
               <Card>
                 <CardContent className="p-6">
                   <div className="text-sm text-slate-300">Closed (30d)</div>
-                  <div className="text-3xl font-bold text-green-600">5</div>
+                  <div className="text-3xl font-bold text-green-400">5</div>
                 </CardContent>
               </Card>
               <Card>
@@ -403,18 +403,18 @@ export function BreachModule({ onBack }: BreachModuleProps) {
                 <Card 
                   key={incident.id}
                   className={`border-2 ${
-                    incident.severity === 'high' ? 'border-red-300 bg-red-50' :
-                    incident.severity === 'medium' ? 'border-amber-300 bg-amber-50' :
-                    'border-blue-300 bg-blue-50'
+                    incident.severity === 'high' ? 'border-red-300 bg-red-500/10' :
+                    incident.severity === 'medium' ? 'border-amber-300 bg-amber-500/10' :
+                    'border-blue-300 bg-blue-500/10'
                   }`}
                 >
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between">
                       <div className="flex items-start gap-4 flex-1">
                         <AlertTriangle className={`w-8 h-8 flex-shrink-0 ${
-                          incident.severity === 'high' ? 'text-red-600' :
-                          incident.severity === 'medium' ? 'text-amber-600' :
-                          'text-blue-600'
+                          incident.severity === 'high' ? 'text-red-400' :
+                          incident.severity === 'medium' ? 'text-amber-400' :
+                          'text-blue-400'
                         }`} />
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-2">
@@ -466,7 +466,7 @@ export function BreachModule({ onBack }: BreachModuleProps) {
                           {incident.reportable && (
                             <div className="mt-4 p-3 bg-[#1e293b] rounded border flex items-center justify-between">
                               <div className="flex items-center gap-3">
-                                <Clock className="w-5 h-5 text-red-600" />
+                                <Clock className="w-5 h-5 text-red-400" />
                                 <div>
                                   <div className="text-sm font-semibold text-white">
                                     Report to {incident.reportingBody}
@@ -503,7 +503,7 @@ export function BreachModule({ onBack }: BreachModuleProps) {
             {!showSignificanceTest ? (
               <Card>
                 <CardContent className="p-12 text-center">
-                  <AlertCircle className="w-16 h-16 text-blue-600 mx-auto mb-4" />
+                  <AlertCircle className="w-16 h-16 text-blue-400 mx-auto mb-4" />
                   <h3 className="text-xl font-semibold mb-2">Significance Test Engine</h3>
                   <p className="text-slate-300 mb-6">
                     Answer 5 questions to determine if an incident is reportable to regulators
@@ -550,9 +550,9 @@ export function BreachModule({ onBack }: BreachModuleProps) {
                                     30-Day Reporting Clock
                                   </span>
                                   <span className={`text-sm font-bold ${
-                                    item.daysRemaining < 7 ? 'text-red-600' :
-                                    item.daysRemaining < 14 ? 'text-amber-600' :
-                                    'text-green-600'
+                                    item.daysRemaining < 7 ? 'text-red-400' :
+                                    item.daysRemaining < 14 ? 'text-amber-400' :
+                                    'text-green-400'
                                   }`}>
                                     {item.daysRemaining} days left
                                   </span>
@@ -568,7 +568,7 @@ export function BreachModule({ onBack }: BreachModuleProps) {
                                   <span className="text-sm font-medium text-slate-300">
                                     90-Day Investigation Clock
                                   </span>
-                                  <span className="text-sm font-bold text-green-600">
+                                  <span className="text-sm font-bold text-green-400">
                                     {item.investigationRemaining} days left
                                   </span>
                                 </div>
@@ -580,10 +580,10 @@ export function BreachModule({ onBack }: BreachModuleProps) {
                             </div>
 
                             {item.submitted && item.referenceNumber && (
-                              <div className="mt-4 p-3 bg-green-50 rounded border border-green-300">
+                              <div className="mt-4 p-3 bg-green-500/10 rounded border border-green-300">
                                 <div className="flex items-center gap-2">
-                                  <CheckCircle className="w-4 h-4 text-green-600" />
-                                  <span className="text-sm text-green-900">
+                                  <CheckCircle className="w-4 h-4 text-green-400" />
+                                  <span className="text-sm text-green-300">
                                     Submitted • Reference: {item.referenceNumber}
                                   </span>
                                 </div>

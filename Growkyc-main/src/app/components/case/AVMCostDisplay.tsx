@@ -64,18 +64,18 @@ export function AVMCostDisplay({
       <CardContent className="p-6 space-y-6">
         {/* Cost Breakdown */}
         <div>
-          <h4 className="font-bold text-gray-900 mb-3">Package Includes:</h4>
+          <h4 className="font-bold text-slate-100 mb-3">Package Includes:</h4>
           <div className="space-y-2">
             {checkItems.map((item, idx) => (
               <div 
                 key={idx}
-                className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200"
+                className="flex items-center justify-between p-3 bg-white/5 rounded-lg border border-white/10"
               >
                 <div className="flex items-center gap-3">
-                  <item.icon className="w-4 h-4 text-blue-600" />
-                  <span className="text-sm font-medium text-gray-900">{item.name}</span>
+                  <item.icon className="w-4 h-4 text-blue-400" />
+                  <span className="text-sm font-medium text-slate-100">{item.name}</span>
                 </div>
-                <span className="text-sm font-bold text-gray-900">${item.cost.toFixed(2)}</span>
+                <span className="text-sm font-bold text-slate-100">${item.cost.toFixed(2)}</span>
               </div>
             ))}
           </div>
@@ -83,19 +83,19 @@ export function AVMCostDisplay({
 
         {/* Status Display */}
         {checksRunning && (
-          <div className="p-5 bg-blue-50 border-2 border-blue-300 rounded-lg animate-pulse">
+          <div className="p-5 bg-blue-500/10 border-2 border-blue-300 rounded-lg animate-pulse">
             <div className="flex items-start gap-3">
-              <Loader2 className="w-6 h-6 text-blue-600 animate-spin flex-shrink-0 mt-0.5" />
+              <Loader2 className="w-6 h-6 text-blue-400 animate-spin flex-shrink-0 mt-0.5" />
               <div className="flex-1">
-                <p className="font-bold text-blue-900 mb-2">🔄 Running Automated Checks...</p>
-                <div className="space-y-1 text-xs text-blue-800">
+                <p className="font-bold text-blue-300 mb-2">🔄 Running Automated Checks...</p>
+                <div className="space-y-1 text-xs text-blue-300">
                   <p>⚡ Connecting to RP Data API for AVM valuation...</p>
                   <p>⚡ Running InfoTrack property searches...</p>
                   <p>⚡ Executing GreenID identity verification...</p>
                   <p>⚡ Screening against AUSTRAC sanctions lists...</p>
                   <p>⚡ Checking PEP and RCA databases...</p>
                 </div>
-                <div className="mt-3 w-full bg-blue-200 rounded-full h-2">
+                <div className="mt-3 w-full bg-blue-500/20 rounded-full h-2">
                   <div className="bg-blue-600 h-2 rounded-full animate-pulse" style={{ width: '60%' }}></div>
                 </div>
               </div>
@@ -104,16 +104,16 @@ export function AVMCostDisplay({
         )}
 
         {checksComplete && (
-          <div className="p-5 bg-green-50 border-2 border-green-300 rounded-lg">
+          <div className="p-5 bg-green-500/10 border-2 border-green-300 rounded-lg">
             <div className="flex items-start gap-3">
-              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
+              <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
               <div>
-                <p className="font-bold text-green-900 mb-2">✅ All Checks Complete!</p>
-                <p className="text-sm text-green-800">
+                <p className="font-bold text-green-300 mb-2">✅ All Checks Complete!</p>
+                <p className="text-sm text-green-300">
                   Property valuation, title searches, KYC verification, and compliance screening successfully completed.
                   All results have been attached to this case.
                 </p>
-                <div className="mt-3 flex items-center gap-2 text-xs text-green-900">
+                <div className="mt-3 flex items-center gap-2 text-xs text-green-300">
                   <DollarSign className="w-4 h-4" />
                   <span className="font-semibold">Total charged: ${totalCost.toFixed(2)}</span>
                 </div>
@@ -125,9 +125,9 @@ export function AVMCostDisplay({
         {!checksRunning && !checksComplete && (
           <>
             {/* Benefits */}
-            <div className="p-4 bg-gradient-to-br from-indigo-50 to-purple-50 border border-indigo-200 rounded-lg">
-              <p className="font-bold text-indigo-900 text-sm mb-2">⚡ Instant Automated Processing:</p>
-              <ul className="space-y-1 text-xs text-indigo-800">
+            <div className="p-4 bg-gradient-to-br from-indigo-50 to-purple-50 border border-indigo-500/30 rounded-lg">
+              <p className="font-bold text-indigo-300 text-sm mb-2">⚡ Instant Automated Processing:</p>
+              <ul className="space-y-1 text-xs text-indigo-300">
                 <li>✓ Complete property AVM valuation from RP Data</li>
                 <li>✓ Full title search and ownership verification</li>
                 <li>✓ Encumbrances, caveats & zoning checks</li>
@@ -148,14 +148,14 @@ export function AVMCostDisplay({
               Run All Checks Now - ${totalCost.toFixed(2)}
             </Button>
 
-            <p className="text-xs text-gray-500 text-center">
+            <p className="text-xs text-slate-400 text-center">
               By proceeding, you authorize Grow to charge ${totalCost.toFixed(2)} (inc. GST) to your account for automated verification services.
             </p>
           </>
         )}
 
         {/* Pricing Note */}
-        <div className="p-3 bg-gray-50 border border-gray-200 rounded text-xs text-gray-600">
+        <div className="p-3 bg-white/5 border border-white/10 rounded text-xs text-slate-300">
           <p className="font-semibold mb-1">💰 Transparent Pricing:</p>
           <p>All costs are billed at actual provider rates with no markup. RP Data AVM is ${45.00}, InfoTrack searches ${110.50}, and KYC checks ${30.50}.</p>
         </div>

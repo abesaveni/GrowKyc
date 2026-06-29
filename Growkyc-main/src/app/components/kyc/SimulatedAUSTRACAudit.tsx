@@ -295,7 +295,7 @@ export function SimulatedAUSTRACAudit() {
         type: 'document',
         action: 'completed AUSTRAC Desk Review simulation',
         iconName: 'FileText',
-        color: 'text-purple-600'
+        color: 'text-purple-400'
       });
     }, deskReviewItems.length * 2000 + 1000);
   };
@@ -306,7 +306,7 @@ export function SimulatedAUSTRACAudit() {
       type: 'approval',
       action: 'verified Source of Funds (SOF) declaration',
       iconName: 'CheckCircle',
-      color: 'text-green-600'
+      color: 'text-green-400'
     });
     
     // Fire audit event via ReviewWorkflowService
@@ -449,16 +449,16 @@ export function SimulatedAUSTRACAudit() {
           </div>
         </div>
 
-        <div className="bg-yellow-50 border-2 border-yellow-200 rounded-lg p-6">
+        <div className="bg-yellow-500/10 border-2 border-yellow-500/30 rounded-lg p-6">
           <div className="flex items-start">
-            <AlertTriangle className="w-6 h-6 text-yellow-600 mr-3 mt-0.5" />
+            <AlertTriangle className="w-6 h-6 text-yellow-400 mr-3 mt-0.5" />
             <div>
-              <h3 className="font-bold text-yellow-900 mb-2">Scenario: AUSTRAC Compliance Review</h3>
-              <p className="text-yellow-800 mb-3">
+              <h3 className="font-bold text-yellow-300 mb-2">Scenario: AUSTRAC Compliance Review</h3>
+              <p className="text-yellow-300 mb-3">
                 AUSTRAC conducts desk review followed by onsite review 6 months after Tranche 2 commencement.
                 Your system will be tested on response time, data quality, and resilience against attack vectors.
               </p>
-              <p className="text-sm text-yellow-700 font-semibold">
+              <p className="text-sm text-yellow-300 font-semibold">
                 ⏱️ Desk Review Target: Generate all required documents in under 1 hour
               </p>
             </div>
@@ -541,7 +541,7 @@ export function SimulatedAUSTRACAudit() {
                 onClick={() => !isDisabled && setCurrentStage(stage.stage as AuditStage)}
                 disabled={isDisabled}
                 className={`bg-white rounded-lg border-2 p-6 text-left hover:shadow-lg hover:border-blue-400 transition-all ${
-                  isCompleted ? 'border-green-200 bg-green-50/10' : isDisabled ? 'opacity-50 cursor-not-allowed' : 'border-gray-200'
+                  isCompleted ? 'border-green-500/30 bg-green-500/10/10' : isDisabled ? 'opacity-50 cursor-not-allowed' : 'border-white/10'
                 }`}
               >
                 <div className="flex items-center justify-between mb-4">
@@ -549,19 +549,19 @@ export function SimulatedAUSTRACAudit() {
                     <div className={`w-12 h-12 bg-${stage.color}-100 rounded-lg flex items-center justify-center`}>
                       <Icon className={`w-6 h-6 text-${stage.color}-600`} />
                     </div>
-                    <h3 className="text-lg font-bold text-gray-900">{stage.title}</h3>
+                    <h3 className="text-lg font-bold text-slate-100">{stage.title}</h3>
                   </div>
                   {isCompleted && (
-                    <span className="bg-green-100 text-green-800 text-xs px-2.5 py-0.5 rounded-full font-bold flex items-center gap-1 border border-green-200">
+                    <span className="bg-green-500/15 text-green-300 text-xs px-2.5 py-0.5 rounded-full font-bold flex items-center gap-1 border border-green-500/30">
                       <CheckCircle className="w-3.5 h-3.5" />
                       COMPLETE
                     </span>
                   )}
                 </div>
-                <p className="text-gray-600 mb-4">{stage.description}</p>
+                <p className="text-slate-300 mb-4">{stage.description}</p>
                 <div className="space-y-1">
                   {stage.items.map((item, index) => (
-                    <div key={index} className="flex items-center text-sm text-gray-700">
+                    <div key={index} className="flex items-center text-sm text-slate-300">
                       <div className={`w-1.5 h-1.5 bg-${stage.color}-500 rounded-full mr-2`} />
                       {item}
                     </div>
@@ -583,7 +583,7 @@ export function SimulatedAUSTRACAudit() {
             <CardContent className="p-4 bg-slate-950 text-green-400 font-mono text-xs space-y-2 rounded-b-lg max-h-[200px] overflow-y-auto">
               {auditLogs.map((log) => (
                 <div key={log.id} className="flex flex-col border-b border-slate-800 pb-2">
-                  <div className="flex items-center justify-between text-slate-500">
+                  <div className="flex items-center justify-between text-slate-400">
                     <span>[{log.timestamp}] EVENT: {log.action.toUpperCase()}</span>
                     <span>Tenant: {log.tenant_id} | Case: {log.case_id}</span>
                   </div>
@@ -601,13 +601,13 @@ export function SimulatedAUSTRACAudit() {
           </Card>
         )}
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-          <h3 className="font-bold text-blue-900 mb-3">What AUSTRAC Cares About</h3>
+        <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-6">
+          <h3 className="font-bold text-blue-300 mb-3">What AUSTRAC Cares About</h3>
           <div className="grid grid-cols-5 gap-4">
             {['Governance', 'Risk Logic', 'Decision Documentation', 'Ongoing Monitoring', 'Proof'].map((item, index) => (
               <div key={index} className="text-center">
-                <Shield className="w-8 h-8 text-blue-600 mx-auto mb-2" />
-                <p className="text-sm font-semibold text-blue-900">{item}</p>
+                <Shield className="w-8 h-8 text-blue-400 mx-auto mb-2" />
+                <p className="text-sm font-semibold text-blue-300">{item}</p>
               </div>
             ))}
           </div>
@@ -632,8 +632,8 @@ export function SimulatedAUSTRACAudit() {
           <p className="text-blue-100">Generate all required documents within 10 business days (Target: &lt; 1 hour)</p>
         </div>
 
-        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-          <p className="text-yellow-900">
+        <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4">
+          <p className="text-yellow-300">
             <strong>AUSTRAC Request:</strong> Provide within 10 business days - Latest AML/CTF Program,
             client lists, SMR register, personnel files, and effectiveness reports.
           </p>
@@ -641,9 +641,9 @@ export function SimulatedAUSTRACAudit() {
 
         {!auditStartTime ? (
           <div className="text-center py-12">
-            <Clock className="w-24 h-24 text-blue-600 mx-auto mb-6" />
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Ready to Start Desk Review?</h3>
-            <p className="text-gray-600 mb-6">System will attempt to generate all 10 required documents</p>
+            <Clock className="w-24 h-24 text-blue-400 mx-auto mb-6" />
+            <h3 className="text-2xl font-bold text-slate-100 mb-4">Ready to Start Desk Review?</h3>
+            <p className="text-slate-300 mb-6">System will attempt to generate all 10 required documents</p>
             <Button
               className="bg-blue-600 hover:bg-blue-700 px-8 py-6 text-lg"
               onClick={simulateDeskReview}
@@ -655,40 +655,40 @@ export function SimulatedAUSTRACAudit() {
         ) : (
           <>
             <div className="grid grid-cols-3 gap-4 mb-6">
-              <div className="bg-white rounded-lg border border-gray-200 p-4">
-                <h3 className="font-semibold text-gray-900 mb-2">Generation Status</h3>
-                <p className="text-3xl font-bold text-blue-600">
+              <div className="bg-white rounded-lg border border-white/10 p-4">
+                <h3 className="font-semibold text-slate-100 mb-2">Generation Status</h3>
+                <p className="text-3xl font-bold text-blue-400">
                   {deskReviewItems.filter(i => i.generated).length}/{deskReviewItems.length}
                 </p>
               </div>
-              <div className="bg-white rounded-lg border border-gray-200 p-4">
-                <h3 className="font-semibold text-gray-900 mb-2">Total Time</h3>
-                <p className={`text-3xl font-bold ${totalTime < 3600 ? 'text-green-600' : 'text-red-600'}`}>
+              <div className="bg-white rounded-lg border border-white/10 p-4">
+                <h3 className="font-semibold text-slate-100 mb-2">Total Time</h3>
+                <p className={`text-3xl font-bold ${totalTime < 3600 ? 'text-green-400' : 'text-red-400'}`}>
                   {Math.floor(totalTime / 60)}m {totalTime % 60}s
                 </p>
               </div>
-              <div className="bg-white rounded-lg border border-gray-200 p-4">
-                <h3 className="font-semibold text-gray-900 mb-2">Target</h3>
-                <p className="text-3xl font-bold text-gray-600">&lt; 60m</p>
+              <div className="bg-white rounded-lg border border-white/10 p-4">
+                <h3 className="font-semibold text-slate-100 mb-2">Target</h3>
+                <p className="text-3xl font-bold text-slate-300">&lt; 60m</p>
               </div>
             </div>
 
             <div className="space-y-2">
               {deskReviewItems.map((item) => (
-                <div key={item.id} className={`p-4 rounded-lg border-2 ${item.generated ? 'border-green-200 bg-green-50' : 'border-gray-200 bg-white'
+                <div key={item.id} className={`p-4 rounded-lg border-2 ${item.generated ? 'border-green-500/30 bg-green-500/10' : 'border-white/10 bg-white'
                   }`}>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       {item.generated ? (
-                        <CheckCircle className="w-6 h-6 text-green-600" />
+                        <CheckCircle className="w-6 h-6 text-green-400" />
                       ) : (
                         <Clock className="w-6 h-6 text-gray-400 animate-pulse" />
                       )}
-                      <span className="font-semibold text-gray-900">{item.name}</span>
+                      <span className="font-semibold text-slate-100">{item.name}</span>
                     </div>
                     {item.generated && (
                       <div className="flex items-center gap-4">
-                        <span className="text-sm text-gray-600">Generated in {item.timeSeconds}s</span>
+                        <span className="text-sm text-slate-300">Generated in {item.timeSeconds}s</span>
                         <Button size="sm">
                           <Download className="w-4 h-4 mr-2" />
                           Export
@@ -701,14 +701,14 @@ export function SimulatedAUSTRACAudit() {
             </div>
 
             {deskReviewComplete && (
-              <div className={`rounded-lg border-2 p-6 ${passed ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'
+              <div className={`rounded-lg border-2 p-6 ${passed ? 'bg-green-500/10 border-green-500/30' : 'bg-red-500/10 border-red-500/30'
                 }`}>
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="text-2xl font-bold mb-2">
                       {passed ? '✓ DESK REVIEW: PASS' : '✗ DESK REVIEW: RED FLAG'}
                     </h3>
-                    <p className={passed ? 'text-green-700' : 'text-red-700'}>
+                    <p className={passed ? 'text-green-300' : 'text-red-300'}>
                       {passed
                         ? `All documents generated in ${Math.floor(totalTime / 60)} minutes. System responsive and complete.`
                         : `Generation took ${Math.floor(totalTime / 60)} minutes - exceeds 1 hour target. First red flag to AUSTRAC.`
@@ -716,9 +716,9 @@ export function SimulatedAUSTRACAudit() {
                     </p>
                   </div>
                   {passed ? (
-                    <CheckCircle className="w-16 h-16 text-green-600" />
+                    <CheckCircle className="w-16 h-16 text-green-400" />
                   ) : (
-                    <XCircle className="w-16 h-16 text-red-600" />
+                    <XCircle className="w-16 h-16 text-red-400" />
                   )}
                 </div>
               </div>
@@ -745,32 +745,32 @@ export function SimulatedAUSTRACAudit() {
         </div>
 
         <div className="grid grid-cols-3 gap-4">
-          <div className="bg-white rounded-lg border border-gray-200 p-4">
-            <h3 className="font-semibold text-gray-900 mb-2">Attacks Tested</h3>
-            <p className="text-3xl font-bold text-blue-600">{redTeamAttacks.filter(a => a.passed !== null).length}/{redTeamAttacks.length}</p>
+          <div className="bg-white rounded-lg border border-white/10 p-4">
+            <h3 className="font-semibold text-slate-100 mb-2">Attacks Tested</h3>
+            <p className="text-3xl font-bold text-blue-400">{redTeamAttacks.filter(a => a.passed !== null).length}/{redTeamAttacks.length}</p>
           </div>
-          <div className="bg-white rounded-lg border border-green-200 p-4">
-            <h3 className="font-semibold text-gray-900 mb-2">Attacks Blocked</h3>
-            <p className="text-3xl font-bold text-green-600">{stats.redTeam.passed}</p>
+          <div className="bg-white rounded-lg border border-green-500/30 p-4">
+            <h3 className="font-semibold text-slate-100 mb-2">Attacks Blocked</h3>
+            <p className="text-3xl font-bold text-green-400">{stats.redTeam.passed}</p>
           </div>
-          <div className="bg-white rounded-lg border border-red-200 p-4">
-            <h3 className="font-semibold text-gray-900 mb-2">Vulnerabilities</h3>
-            <p className="text-3xl font-bold text-red-600">{stats.redTeam.failed}</p>
+          <div className="bg-white rounded-lg border border-red-500/30 p-4">
+            <h3 className="font-semibold text-slate-100 mb-2">Vulnerabilities</h3>
+            <p className="text-3xl font-bold text-red-400">{stats.redTeam.failed}</p>
           </div>
         </div>
 
         <div className="space-y-4">
           {redTeamAttacks.map((attack, index) => (
-            <div key={attack.id} className={`border-2 rounded-lg p-6 ${attack.passed === true ? 'border-green-200 bg-green-50' :
-                attack.passed === false ? 'border-red-200 bg-red-50' :
-                  'border-gray-200 bg-white'
+            <div key={attack.id} className={`border-2 rounded-lg p-6 ${attack.passed === true ? 'border-green-500/30 bg-green-500/10' :
+                attack.passed === false ? 'border-red-500/30 bg-red-500/10' :
+                  'border-white/10 bg-white'
               }`}>
               <div className="flex items-start justify-between mb-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-3">
-                    <Zap className={`w-6 h-6 ${attack.severity === 'critical' ? 'text-red-600' : 'text-orange-600'
+                    <Zap className={`w-6 h-6 ${attack.severity === 'critical' ? 'text-red-400' : 'text-orange-400'
                       }`} />
-                    <h3 className="text-xl font-bold text-gray-900">{attack.name}</h3>
+                    <h3 className="text-xl font-bold text-slate-100">{attack.name}</h3>
                     <span className={`px-3 py-1 rounded-full text-xs font-bold ${attack.severity === 'critical' ? 'bg-red-500 text-white' : 'bg-orange-500 text-white'
                       }`}>
                       {attack.severity.toUpperCase()}
@@ -779,15 +779,15 @@ export function SimulatedAUSTRACAudit() {
 
                   <div className="space-y-3">
                     <div>
-                      <p className="text-sm font-semibold text-gray-700 mb-1">Scenario:</p>
-                      <p className="text-gray-800">{attack.scenario}</p>
+                      <p className="text-sm font-semibold text-slate-300 mb-1">Scenario:</p>
+                      <p className="text-slate-100">{attack.scenario}</p>
                     </div>
 
                     <div>
-                      <p className="text-sm font-semibold text-gray-700 mb-2">Tests:</p>
+                      <p className="text-sm font-semibold text-slate-300 mb-2">Tests:</p>
                       <ul className="space-y-1">
                         {attack.test.map((test, idx) => (
-                          <li key={idx} className="flex items-start text-sm text-gray-700">
+                          <li key={idx} className="flex items-start text-sm text-slate-300">
                             <span className="mr-2">•</span>
                             <span>{test}</span>
                           </li>
@@ -796,8 +796,8 @@ export function SimulatedAUSTRACAudit() {
                     </div>
 
                     {attack.passed === false && (
-                      <div className="p-3 bg-red-100 border border-red-300 rounded-lg">
-                        <p className="text-sm font-semibold text-red-900">
+                      <div className="p-3 bg-red-500/15 border border-red-300 rounded-lg">
+                        <p className="text-sm font-semibold text-red-300">
                           ⚠️ Failure Mode: {attack.failure}
                         </p>
                       </div>
@@ -835,13 +835,13 @@ export function SimulatedAUSTRACAudit() {
                     </div>
                   ) : attack.passed ? (
                     <div className="text-center">
-                      <CheckCircle className="w-12 h-12 text-green-600 mx-auto mb-2" />
-                      <p className="text-sm font-bold text-green-700">BLOCKED</p>
+                      <CheckCircle className="w-12 h-12 text-green-400 mx-auto mb-2" />
+                      <p className="text-sm font-bold text-green-300">BLOCKED</p>
                     </div>
                   ) : (
                     <div className="text-center">
-                      <XCircle className="w-12 h-12 text-red-600 mx-auto mb-2" />
-                      <p className="text-sm font-bold text-red-700">VULNERABLE</p>
+                      <XCircle className="w-12 h-12 text-red-400 mx-auto mb-2" />
+                      <p className="text-sm font-bold text-red-300">VULNERABLE</p>
                     </div>
                   )}
                 </div>
@@ -851,12 +851,12 @@ export function SimulatedAUSTRACAudit() {
         </div>
 
         {redTeamAttacks.every(a => a.passed !== null) && (
-          <div className={`rounded-lg border-2 p-6 ${stats.redTeam.failed === 0 ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'
+          <div className={`rounded-lg border-2 p-6 ${stats.redTeam.failed === 0 ? 'bg-green-500/10 border-green-500/30' : 'bg-red-500/10 border-red-500/30'
             }`}>
             <h3 className="text-2xl font-bold mb-4">
               {stats.redTeam.failed === 0 ? '✓ REGULATOR-RESILIENT' : '✗ VULNERABILITIES DETECTED'}
             </h3>
-            <p className={stats.redTeam.failed === 0 ? 'text-green-700' : 'text-red-700'}>
+            <p className={stats.redTeam.failed === 0 ? 'text-green-300' : 'text-red-300'}>
               {stats.redTeam.failed === 0
                 ? 'System withstood all attack scenarios. Governance, risk logic, and controls are robust.'
                 : `${stats.redTeam.failed} vulnerabilities detected. System has exploitable gaps that regulators will identify.`
@@ -898,45 +898,45 @@ export function SimulatedAUSTRACAudit() {
         </div>
 
         <div className="grid grid-cols-2 gap-6">
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Sample Testing Results</h3>
+          <div className="bg-white rounded-lg border border-white/10 p-6">
+            <h3 className="text-xl font-bold text-slate-100 mb-4">Sample Testing Results</h3>
             <div className="space-y-3">
               <div className="flex justify-between items-center">
-                <span className="text-gray-700">Total Tests:</span>
-                <span className="font-bold text-gray-900">{stats.sample.total}</span>
+                <span className="text-slate-300">Total Tests:</span>
+                <span className="font-bold text-slate-100">{stats.sample.total}</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-gray-700">Passed:</span>
-                <span className="font-bold text-green-600">{stats.sample.passed}</span>
+                <span className="text-slate-300">Passed:</span>
+                <span className="font-bold text-green-400">{stats.sample.passed}</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-gray-700">Failed:</span>
-                <span className="font-bold text-red-600">{stats.sample.failed}</span>
+                <span className="text-slate-300">Failed:</span>
+                <span className="font-bold text-red-400">{stats.sample.failed}</span>
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Red Team Attack Results</h3>
+          <div className="bg-white rounded-lg border border-white/10 p-6">
+            <h3 className="text-xl font-bold text-slate-100 mb-4">Red Team Attack Results</h3>
             <div className="space-y-3">
               <div className="flex justify-between items-center">
-                <span className="text-gray-700">Total Attacks:</span>
-                <span className="font-bold text-gray-900">{stats.redTeam.total}</span>
+                <span className="text-slate-300">Total Attacks:</span>
+                <span className="font-bold text-slate-100">{stats.redTeam.total}</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-gray-700">Blocked:</span>
-                <span className="font-bold text-green-600">{stats.redTeam.passed}</span>
+                <span className="text-slate-300">Blocked:</span>
+                <span className="font-bold text-green-400">{stats.redTeam.passed}</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-gray-700">Vulnerabilities:</span>
-                <span className="font-bold text-red-600">{stats.redTeam.failed}</span>
+                <span className="text-slate-300">Vulnerabilities:</span>
+                <span className="font-bold text-red-400">{stats.redTeam.failed}</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-4">Pass Criteria Validation</h3>
+        <div className="bg-white rounded-lg border border-white/10 p-6">
+          <h3 className="text-xl font-bold text-slate-100 mb-4">Pass Criteria Validation</h3>
           <div className="space-y-2">
             {[
               'Complex structure tracing',
@@ -953,12 +953,12 @@ export function SimulatedAUSTRACAudit() {
               // Simplified logic - assume passed if no red team failures
               const passed = stats.redTeam.failed === 0;
               return (
-                <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                  <span className="text-gray-900">{criteria}</span>
+                <div key={index} className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
+                  <span className="text-slate-100">{criteria}</span>
                   {passed ? (
-                    <CheckCircle className="w-5 h-5 text-green-600" />
+                    <CheckCircle className="w-5 h-5 text-green-400" />
                   ) : (
-                    <XCircle className="w-5 h-5 text-red-600" />
+                    <XCircle className="w-5 h-5 text-red-400" />
                   )}
                 </div>
               );
@@ -966,16 +966,16 @@ export function SimulatedAUSTRACAudit() {
           </div>
         </div>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-          <h3 className="font-bold text-blue-900 mb-3">Final Reality Check</h3>
-          <p className="text-blue-800 mb-4">
+        <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-6">
+          <h3 className="font-bold text-blue-300 mb-3">Final Reality Check</h3>
+          <p className="text-blue-300 mb-4">
             AUSTRAC does not care how modern your UI is. They care about:
           </p>
           <div className="grid grid-cols-5 gap-4">
             {['Governance', 'Risk Logic', 'Decision Documentation', 'Ongoing Monitoring', 'Proof'].map((item, index) => (
               <div key={index} className="text-center p-3 bg-white rounded-lg">
-                <Shield className="w-8 h-8 text-blue-600 mx-auto mb-2" />
-                <p className="text-sm font-semibold text-blue-900">{item}</p>
+                <Shield className="w-8 h-8 text-blue-400 mx-auto mb-2" />
+                <p className="text-sm font-semibold text-blue-300">{item}</p>
               </div>
             ))}
           </div>
@@ -1074,20 +1074,20 @@ export function SimulatedAUSTRACAudit() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-6 space-y-4">
-                <div className="p-3 bg-gray-50 rounded-lg flex items-center justify-between">
-                  <span className="font-semibold text-gray-700">Stage 1: Desk Review Docs</span>
+                <div className="p-3 bg-white/5 rounded-lg flex items-center justify-between">
+                  <span className="font-semibold text-slate-300">Stage 1: Desk Review Docs</span>
                   <Badge className="bg-green-600 text-white font-bold">10 / 10 Generated</Badge>
                 </div>
-                <div className="p-3 bg-gray-50 rounded-lg flex items-center justify-between">
-                  <span className="font-semibold text-gray-700">Stage 2: Customer Risk Scoring</span>
+                <div className="p-3 bg-white/5 rounded-lg flex items-center justify-between">
+                  <span className="font-semibold text-slate-300">Stage 2: Customer Risk Scoring</span>
                   <Badge className="bg-green-600 text-white font-bold">Sealed & Verified</Badge>
                 </div>
-                <div className="p-3 bg-gray-50 rounded-lg flex items-center justify-between">
-                  <span className="font-semibold text-gray-700">Stage 3-6: Sample KYC Audits</span>
+                <div className="p-3 bg-white/5 rounded-lg flex items-center justify-between">
+                  <span className="font-semibold text-slate-300">Stage 3-6: Sample KYC Audits</span>
                   <Badge className="bg-green-600 text-white font-bold">12 Files Verified</Badge>
                 </div>
-                <div className="p-3 bg-gray-50 rounded-lg flex items-center justify-between">
-                  <span className="font-semibold text-gray-700">Stage 7: Red Team Penetrations</span>
+                <div className="p-3 bg-white/5 rounded-lg flex items-center justify-between">
+                  <span className="font-semibold text-slate-300">Stage 7: Red Team Penetrations</span>
                   <Badge className={stats.redTeam.failed === 0 ? 'bg-green-600 text-white font-bold' : 'bg-red-600 text-white font-bold animate-pulse'}>
                     {stats.redTeam.failed === 0 ? '10 / 10 Blocked' : `${stats.redTeam.failed} Vulnerability Flags`}
                   </Badge>
@@ -1099,17 +1099,17 @@ export function SimulatedAUSTRACAudit() {
             <Card>
               <CardContent className="p-6">
                 <div className="grid grid-cols-3 gap-4 text-center">
-                  <div className="p-3 bg-gray-50 rounded-lg">
-                    <span className="block text-xs font-semibold text-gray-600 uppercase">Passed Tests</span>
-                    <span className="text-2xl font-bold text-green-600">{stats.overall.passed}</span>
+                  <div className="p-3 bg-white/5 rounded-lg">
+                    <span className="block text-xs font-semibold text-slate-300 uppercase">Passed Tests</span>
+                    <span className="text-2xl font-bold text-green-400">{stats.overall.passed}</span>
                   </div>
-                  <div className="p-3 bg-gray-50 rounded-lg">
-                    <span className="block text-xs font-semibold text-gray-600 uppercase">Failed Tests</span>
-                    <span className="text-2xl font-bold text-red-600">{stats.overall.failed}</span>
+                  <div className="p-3 bg-white/5 rounded-lg">
+                    <span className="block text-xs font-semibold text-slate-300 uppercase">Failed Tests</span>
+                    <span className="text-2xl font-bold text-red-400">{stats.overall.failed}</span>
                   </div>
-                  <div className="p-3 bg-gray-50 rounded-lg">
-                    <span className="block text-xs font-semibold text-gray-600 uppercase">Pass Rate</span>
-                    <span className="text-2xl font-bold text-blue-600">
+                  <div className="p-3 bg-white/5 rounded-lg">
+                    <span className="block text-xs font-semibold text-slate-300 uppercase">Pass Rate</span>
+                    <span className="text-2xl font-bold text-blue-400">
                       {stats.overall.total > 0 ? Math.round((stats.overall.passed / stats.overall.total) * 100) : 100}%
                     </span>
                   </div>
@@ -1135,7 +1135,7 @@ export function SimulatedAUSTRACAudit() {
                   { key: 'immutableLogsConfirmed', label: 'Ensure all compliance audit trail logs are cryptographically sealed' },
                   { key: 'complianceDeclaration', label: 'Declare this AML/CTF simulation is accurate and complete' }
                 ].map((item) => (
-                  <label key={item.key} className="flex items-start gap-3 p-3 bg-white border rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
+                  <label key={item.key} className="flex items-start gap-3 p-3 bg-white border rounded-lg cursor-pointer hover:bg-white/5 transition-colors">
                     <input
                       type="checkbox"
                       className="mt-1 w-5 h-5 rounded text-primary focus:ring-primary focus:ring-offset-0 cursor-pointer"
@@ -1148,7 +1148,7 @@ export function SimulatedAUSTRACAudit() {
                       }}
                       disabled={submittingToAustrac || submissionCompleted}
                     />
-                    <span className="text-sm font-medium text-gray-700 select-none">
+                    <span className="text-sm font-medium text-slate-300 select-none">
                       {item.label}
                     </span>
                   </label>
@@ -1161,7 +1161,7 @@ export function SimulatedAUSTRACAudit() {
               <CardContent className="p-6">
                 {!submittingToAustrac && !submissionCompleted && (
                   <div className="space-y-4">
-                    <p className="text-sm text-gray-600 text-center">
+                    <p className="text-sm text-slate-300 text-center">
                       Ensure the pre-submission checklist is fully completed to unlock secure transmission.
                     </p>
                     <Button
@@ -1177,11 +1177,11 @@ export function SimulatedAUSTRACAudit() {
 
                 {submittingToAustrac && (
                   <div className="space-y-4">
-                    <h3 className="font-semibold text-gray-900 flex items-center gap-2">
+                    <h3 className="font-semibold text-slate-100 flex items-center gap-2">
                       <span className="w-2.5 h-2.5 bg-yellow-500 rounded-full animate-ping" />
                       AUSTRAC Registry Upload in Progress...
                     </h3>
-                    <div className="w-full bg-gray-200 h-2.5 rounded-full overflow-hidden">
+                    <div className="w-full bg-white/10 h-2.5 rounded-full overflow-hidden">
                       <div
                         className="bg-primary h-2.5 transition-all duration-500"
                         style={{ width: `${((submissionStep + 1) / steps.length) * 100}%` }}
@@ -1190,7 +1190,7 @@ export function SimulatedAUSTRACAudit() {
                     <div className="p-4 bg-gray-900 text-green-400 font-mono text-xs rounded-lg min-h-[120px] space-y-1">
                       {steps.slice(0, submissionStep + 1).map((step, idx) => (
                         <div key={idx} className="flex items-center gap-2 text-left">
-                          <span className="text-gray-500">[{idx + 1}]</span>
+                          <span className="text-slate-400">[{idx + 1}]</span>
                           <span>{step}</span>
                         </div>
                       ))}
@@ -1200,15 +1200,15 @@ export function SimulatedAUSTRACAudit() {
 
                 {submissionCompleted && (
                   <div className="space-y-6 text-center py-4">
-                    <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto">
+                    <div className="w-16 h-16 bg-green-500/15 text-green-400 rounded-full flex items-center justify-center mx-auto">
                       <CheckCircle className="w-10 h-10" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900">Submission Succeeded</h3>
-                      <p className="text-sm text-gray-600 mt-1">
+                      <h3 className="text-xl font-bold text-slate-100">Submission Succeeded</h3>
+                      <p className="text-sm text-slate-300 mt-1">
                         Receipt acknowledged by AUSTRAC Central Registry
                       </p>
-                      <div className="mt-3 p-3 bg-gray-50 font-mono text-sm inline-block border rounded-lg">
+                      <div className="mt-3 p-3 bg-white/5 font-mono text-sm inline-block border rounded-lg">
                         Reference: <span className="font-bold text-primary">{submissionRefId}</span>
                       </div>
                     </div>
@@ -1256,81 +1256,81 @@ export function SimulatedAUSTRACAudit() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Sanctions Hit Panel */}
-          <Card className="border-red-200 bg-red-50/20 shadow-sm">
+          <Card className="border-red-500/30 bg-red-500/10/20 shadow-sm">
             <CardHeader className="pb-2">
-              <CardTitle className="text-base font-bold text-red-800 flex items-center gap-2">
-                <AlertTriangle className="w-5 h-5 text-red-600" />
+              <CardTitle className="text-base font-bold text-red-300 flex items-center gap-2">
+                <AlertTriangle className="w-5 h-5 text-red-400" />
                 Sanctions Match Summary
               </CardTitle>
             </CardHeader>
             <CardContent className="text-xs space-y-2">
               <div className="flex justify-between font-semibold">
                 <span>Sanctions list:</span>
-                <span className="text-red-700">DFAT Consolidated List</span>
+                <span className="text-red-300">DFAT Consolidated List</span>
               </div>
               <div className="flex justify-between font-semibold">
                 <span>Matching Score:</span>
-                <span className="text-red-700">85% similarity</span>
+                <span className="text-red-300">85% similarity</span>
               </div>
               <div className="flex justify-between font-semibold">
                 <span>Entity Name:</span>
-                <span className="text-red-700">ABC Enterprises Consolidated</span>
+                <span className="text-red-300">ABC Enterprises Consolidated</span>
               </div>
-              <p className="text-gray-600 leading-relaxed mt-2 pt-2 border-t">
+              <p className="text-slate-300 leading-relaxed mt-2 pt-2 border-t">
                 System matched consolidated entity against potential sanction listing. Compliance review and manual sign-off required.
               </p>
             </CardContent>
           </Card>
 
           {/* PEP Check Panel */}
-          <Card className="border-orange-200 bg-orange-50/20 shadow-sm">
+          <Card className="border-orange-500/30 bg-orange-500/10/20 shadow-sm">
             <CardHeader className="pb-2">
-              <CardTitle className="text-base font-bold text-orange-800 flex items-center gap-2">
-                <Users className="w-5 h-5 text-orange-600" />
+              <CardTitle className="text-base font-bold text-orange-300 flex items-center gap-2">
+                <Users className="w-5 h-5 text-orange-400" />
                 PEP Check Summary
               </CardTitle>
             </CardHeader>
             <CardContent className="text-xs space-y-2">
               <div className="flex justify-between font-semibold">
                 <span>PEP Identified:</span>
-                <span className="text-orange-700">Sir Alexander Downer</span>
+                <span className="text-orange-300">Sir Alexander Downer</span>
               </div>
               <div className="flex justify-between font-semibold">
                 <span>PEP Type:</span>
-                <span className="text-orange-700">Foreign PEP</span>
+                <span className="text-orange-300">Foreign PEP</span>
               </div>
               <div className="flex justify-between font-semibold">
                 <span>Role/Connection:</span>
-                <span className="text-orange-700">Spouse of Foreign Minister</span>
+                <span className="text-orange-300">Spouse of Foreign Minister</span>
               </div>
-              <p className="text-gray-600 leading-relaxed mt-2 pt-2 border-t">
+              <p className="text-slate-300 leading-relaxed mt-2 pt-2 border-t">
                 Beneficial owner identified as high-profile foreign politically exposed person. Automated high-risk rating applied.
               </p>
             </CardContent>
           </Card>
 
           {/* Adverse Media Panel */}
-          <Card className="border-amber-200 bg-amber-50/20 shadow-sm">
+          <Card className="border-amber-500/30 bg-amber-500/10/20 shadow-sm">
             <CardHeader className="pb-2">
-              <CardTitle className="text-base font-bold text-amber-800 flex items-center gap-2">
-                <FileText className="w-5 h-5 text-amber-600" />
+              <CardTitle className="text-base font-bold text-amber-300 flex items-center gap-2">
+                <FileText className="w-5 h-5 text-amber-400" />
                 Adverse Media Snippet
               </CardTitle>
             </CardHeader>
             <CardContent className="text-xs space-y-2">
               <div className="flex justify-between font-semibold">
                 <span>Publication:</span>
-                <span className="text-amber-700">Sydney Morning Herald</span>
+                <span className="text-amber-300">Sydney Morning Herald</span>
               </div>
               <div className="flex justify-between font-semibold">
                 <span>Published Date:</span>
-                <span className="text-amber-700">March 2026</span>
+                <span className="text-amber-300">March 2026</span>
               </div>
               <div className="flex justify-between font-semibold">
                 <span>Sentiment Score:</span>
-                <span className="text-red-600 font-bold">Negative (-0.88)</span>
+                <span className="text-red-400 font-bold">Negative (-0.88)</span>
               </div>
-              <p className="text-gray-600 leading-relaxed mt-2 pt-2 border-t italic">
+              <p className="text-slate-300 leading-relaxed mt-2 pt-2 border-t italic">
                 "...regulators flagged complex corporate layers of ABC Enterprises Pty Ltd, raising inquiries into potential money laundering."
               </p>
             </CardContent>
@@ -1339,7 +1339,7 @@ export function SimulatedAUSTRACAudit() {
 
         {/* Source of Funds Verification Status */}
         <Card className="border-2 border-primary/20 shadow-md">
-          <CardHeader className="border-b bg-gray-50/50">
+          <CardHeader className="border-b bg-white/5/50">
             <CardTitle className="text-lg flex items-center gap-2">
               <Shield className="w-5 h-5 text-primary" />
               Source of Funds (SOF) Verification
@@ -1349,8 +1349,8 @@ export function SimulatedAUSTRACAudit() {
             {!sofData ? (
               <div className="text-center py-8 space-y-4">
                 <AlertTriangle className="w-12 h-12 text-amber-500 mx-auto" />
-                <h3 className="text-lg font-bold text-gray-900">Source of Funds Declaration Required</h3>
-                <p className="text-sm text-gray-600 max-w-md mx-auto">
+                <h3 className="text-lg font-bold text-slate-100">Source of Funds Declaration Required</h3>
+                <p className="text-sm text-slate-300 max-w-md mx-auto">
                   High-risk category customers require a full Source of Funds (SOF) declaration. Please provide details of funding sources, amount, and supporting document evidence.
                 </p>
                 <Button
@@ -1362,38 +1362,38 @@ export function SimulatedAUSTRACAudit() {
               </div>
             ) : (
               <div className="space-y-6">
-                <div className="bg-green-50 border border-green-200 rounded-xl p-4 flex items-center gap-3">
-                  <CheckCircle className="w-8 h-8 text-green-600 flex-shrink-0" />
+                <div className="bg-green-500/10 border border-green-500/30 rounded-xl p-4 flex items-center gap-3">
+                  <CheckCircle className="w-8 h-8 text-green-400 flex-shrink-0" />
                   <div>
-                    <h4 className="font-bold text-green-900 text-sm">Source of Funds Verified & Saved</h4>
-                    <p className="text-xs text-green-700 mt-0.5">Declared details and supporting evidence have been saved successfully.</p>
+                    <h4 className="font-bold text-green-300 text-sm">Source of Funds Verified & Saved</h4>
+                    <p className="text-xs text-green-300 mt-0.5">Declared details and supporting evidence have been saved successfully.</p>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
                   <div className="space-y-3">
                     <div className="flex justify-between border-b pb-2">
-                      <span className="text-gray-600">Source Type:</span>
-                      <span className="font-semibold text-gray-900">{sofData.sourceType}</span>
+                      <span className="text-slate-300">Source Type:</span>
+                      <span className="font-semibold text-slate-100">{sofData.sourceType}</span>
                     </div>
                     <div className="flex justify-between border-b pb-2">
-                      <span className="text-gray-600">Declared Amount:</span>
-                      <span className="font-semibold text-gray-900">${sofData.amount.toLocaleString()} USD</span>
+                      <span className="text-slate-300">Declared Amount:</span>
+                      <span className="font-semibold text-slate-100">${sofData.amount.toLocaleString()} USD</span>
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-gray-600 mb-1 font-semibold">Supporting Narrative:</span>
-                      <p className="p-3 bg-gray-50 border rounded-lg text-xs text-gray-700 leading-relaxed">{sofData.supportingNarrative}</p>
+                      <span className="text-slate-300 mb-1 font-semibold">Supporting Narrative:</span>
+                      <p className="p-3 bg-white/5 border rounded-lg text-xs text-slate-300 leading-relaxed">{sofData.supportingNarrative}</p>
                     </div>
                   </div>
 
                   <div className="space-y-4">
                     <div>
-                      <span className="text-gray-600 block mb-1 font-semibold">Supporting Document:</span>
+                      <span className="text-slate-300 block mb-1 font-semibold">Supporting Document:</span>
                       <a
                         href={sofData.documentUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 p-3 bg-blue-50 border border-blue-200 rounded-lg text-xs font-semibold text-blue-700 hover:underline"
+                        className="inline-flex items-center gap-2 p-3 bg-blue-500/10 border border-blue-500/30 rounded-lg text-xs font-semibold text-blue-300 hover:underline"
                       >
                         <FileText className="w-4 h-4" />
                         {sofData.documentUrl.split('/').pop() || 'evidence.pdf'}
@@ -1401,10 +1401,10 @@ export function SimulatedAUSTRACAudit() {
                     </div>
 
                     <div className="p-4 bg-gray-900 text-green-400 font-mono text-xs rounded-lg space-y-1">
-                      <div className="text-gray-500 font-bold border-b border-gray-700 pb-1 mb-1">ReviewWorkflowService Audits:</div>
+                      <div className="text-slate-400 font-bold border-b border-gray-700 pb-1 mb-1">ReviewWorkflowService Audits:</div>
                       {auditLogs.filter(log => log.case_id === 'AUS-2026-002').map((log, idx) => (
                         <div key={idx} className="flex items-center gap-2 text-left">
-                          <span className="text-gray-500">[{log.timestamp}]</span>
+                          <span className="text-slate-400">[{log.timestamp}]</span>
                           <span className="text-white">{log.action.toUpperCase()}</span>
                           <span className="text-green-500">ID: {log.review_id.substr(0, 10)}</span>
                         </div>
@@ -1452,12 +1452,12 @@ export function SimulatedAUSTRACAudit() {
 
         <Card>
           <CardContent className="p-8 text-center space-y-4">
-            <div className="w-16 h-16 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mx-auto">
+            <div className="w-16 h-16 bg-purple-500/15 text-purple-400 rounded-full flex items-center justify-center mx-auto">
               <Shield className="w-8 h-8" />
             </div>
             <div className="max-w-md mx-auto">
-              <h3 className="text-lg font-bold text-gray-900">Pre-Verified Auditing Stage</h3>
-              <p className="text-sm text-gray-600 mt-2">
+              <h3 className="text-lg font-bold text-slate-100">Pre-Verified Auditing Stage</h3>
+              <p className="text-sm text-slate-300 mt-2">
                 This auditing segment has been dynamically compiled and certified by the automated compliance engine as compliant.
               </p>
             </div>

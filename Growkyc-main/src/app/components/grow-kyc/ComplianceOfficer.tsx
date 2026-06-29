@@ -244,7 +244,7 @@ export function ComplianceOfficer({
           assignee: linkedCase?.assignedTo || userName,
           urgency: isCritical ? 'critical' : 'high',
           icon: isCritical ? AlertTriangle : Flag,
-          color: isCritical ? 'text-red-600 bg-red-100' : 'text-orange-600 bg-orange-100',
+          color: isCritical ? 'text-red-400 bg-red-500/15' : 'text-orange-400 bg-orange-500/15',
         };
       });
   }, [clients, userName, caseRefreshKey]);
@@ -274,7 +274,7 @@ export function ComplianceOfficer({
       action: a.action,
       time: a.time || 'Recently',
       icon: ICON_MAP[a.iconName] || Activity,
-      color: a.color || 'text-blue-600',
+      color: a.color || 'text-blue-400',
     }));
     if (fromLog.length > 0) return fromLog;
     return clients.slice(0, 5).map((c) => ({
@@ -282,7 +282,7 @@ export function ComplianceOfficer({
       action: c.status === 'Active' ? `verified ${c.name}` : `reviewing ${c.name}`,
       time: c.lastReview || 'Recently',
       icon: c.status === 'Active' ? CheckCircle : UserCheck,
-      color: c.status === 'Active' ? 'text-green-600' : 'text-blue-600',
+      color: c.status === 'Active' ? 'text-green-400' : 'text-blue-400',
     }));
   }, [clients, loggedActivities, userName]);
 
@@ -290,7 +290,7 @@ export function ComplianceOfficer({
 
   return (
     <div className="space-y-6 md:space-y-8 bg-[#1e293b] min-h-screen px-4 md:px-8 pb-8">
-      <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] rounded-2xl p-6 md:p-6 text-white shadow-lg mt-4 md:mt-8">
+      <div className="bg-gradient-to-r from-[#0e7490] to-[#155e75] rounded-2xl p-6 md:p-6 text-white shadow-lg mt-4 md:mt-8">
         <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mb-6 text-center sm:text-left">
           <div className="text-4xl">{userAvatar}</div>
           <div>
@@ -383,7 +383,7 @@ export function ComplianceOfficer({
             </div>
             <div>
               <div className="text-xs md:text-sm font-bold text-slate-300 uppercase tracking-wide">Urgent Actions</div>
-              <p className="text-[9px] md:text-[10px] text-red-600 font-black mt-2">
+              <p className="text-[9px] md:text-[10px] text-red-400 font-black mt-2">
                 {metrics.slaBreaches > 0 ? `${metrics.slaBreaches} SLA BREACH` : 'NONE OVERDUE'}
               </p>
             </div>
@@ -409,7 +409,7 @@ export function ComplianceOfficer({
             </div>
             <div>
               <div className="text-xs md:text-sm font-bold text-slate-300 uppercase tracking-wide">Completed Today</div>
-              <p className="text-[9px] md:text-[10px] text-green-600 font-black mt-2">{stats.complianceRate} COMPLIANCE</p>
+              <p className="text-[9px] md:text-[10px] text-green-400 font-black mt-2">{stats.complianceRate} COMPLIANCE</p>
             </div>
           </CardContent>
         </Card>
@@ -432,14 +432,14 @@ export function ComplianceOfficer({
           className="lg:col-span-2 border-2 border-red-300 shadow-lg cursor-pointer hover:shadow-xl transition-all hover:border-red-400"
           onClick={onNavigateToAUSTRAC}
         >
-          <CardHeader className="bg-gradient-to-r from-red-50 to-orange-50 border-b border-red-200">
+          <CardHeader className="bg-gradient-to-r from-red-50 to-orange-50 border-b border-red-500/30">
             <div className="flex items-center justify-between gap-4">
               <div>
-                <CardTitle className="flex items-center gap-2 text-red-900">
+                <CardTitle className="flex items-center gap-2 text-red-300">
                   <Shield className="w-5 h-5" />
                   AUSTRAC Reporting Control Centre
                 </CardTitle>
-                <CardDescription className="text-red-700 mt-1">
+                <CardDescription className="text-red-300 mt-1">
                   SMR workflow, reportable matter triage, submission tracking, and regulatory evidence packs
                 </CardDescription>
               </div>
@@ -463,8 +463,8 @@ export function ComplianceOfficer({
                 { label: 'Monitoring Alerts', value: metrics.monitoringAlerts },
                 { label: 'SLA At Risk', value: metrics.slaBreaches },
               ].map((item) => (
-                <div key={item.label} className="p-4 rounded-lg bg-[#1e293b] border border-red-100 text-center">
-                  <p className="text-2xl font-bold text-red-900">{item.value}</p>
+                <div key={item.label} className="p-4 rounded-lg bg-[#1e293b] border border-red-500/20 text-center">
+                  <p className="text-2xl font-bold text-red-300">{item.value}</p>
                   <p className="text-xs font-semibold text-slate-300 mt-1">{item.label}</p>
                 </div>
               ))}
@@ -472,9 +472,9 @@ export function ComplianceOfficer({
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-amber-200 shadow-sm">
-          <CardHeader className="border-b bg-amber-50">
-            <CardTitle className="text-base flex items-center gap-2 text-amber-900">
+        <Card className="border-2 border-amber-500/30 shadow-sm">
+          <CardHeader className="border-b bg-amber-500/10">
+            <CardTitle className="text-base flex items-center gap-2 text-amber-300">
               <Clock className="w-4 h-4" />
               Regulatory Clocks
             </CardTitle>
@@ -505,10 +505,10 @@ export function ComplianceOfficer({
                 key={clock.type}
                 className={`p-3 rounded-lg border ${
                   clock.status === 'red'
-                    ? 'bg-red-50 border-red-200'
+                    ? 'bg-red-500/10 border-red-500/30'
                     : clock.status === 'amber'
-                      ? 'bg-amber-50 border-amber-200'
-                      : 'bg-green-50 border-green-200'
+                      ? 'bg-amber-500/10 border-amber-500/30'
+                      : 'bg-green-500/10 border-green-500/30'
                 }`}
               >
                 <div className="flex items-center justify-between mb-1">
@@ -528,7 +528,7 @@ export function ComplianceOfficer({
                 <p className="text-xs text-slate-300">{clock.description}</p>
               </div>
             ))}
-            <Button variant="outline" className="w-full border-red-200 text-red-800 hover:bg-red-50" onClick={onNavigateToAUSTRAC}>
+            <Button variant="outline" className="w-full border-red-500/30 text-red-300 hover:bg-red-500/10" onClick={onNavigateToAUSTRAC}>
               Manage in AUSTRAC Centre
             </Button>
           </CardContent>
@@ -590,15 +590,15 @@ export function ComplianceOfficer({
         </Card>
       </div>
 
-      <Card className="border-2 border-red-200 bg-red-50">
+      <Card className="border-2 border-red-500/30 bg-red-500/10">
         <CardHeader>
           <div className="flex items-center justify-between">
             <div>
-              <CardTitle className="flex items-center gap-2 text-red-900">
+              <CardTitle className="flex items-center gap-2 text-red-300">
                 <Eye className="w-5 h-5" />
                 Clients to Watch
               </CardTitle>
-              <CardDescription className="text-red-700">High-priority clients requiring immediate attention</CardDescription>
+              <CardDescription className="text-red-300">High-priority clients requiring immediate attention</CardDescription>
             </div>
             <Badge variant="destructive" className="text-base px-3 py-1">
               {clientsToWatch.length} Active
@@ -671,7 +671,7 @@ export function ComplianceOfficer({
                   <div
                     key={index}
                     className={`flex items-center justify-between p-3 rounded-lg border ${
-                      item.urgent ? 'bg-red-50 border-red-200' : 'bg-[#0f172a] border-white/10'
+                      item.urgent ? 'bg-red-500/10 border-red-500/30' : 'bg-[#0f172a] border-white/10'
                     }`}
                   >
                     <div>

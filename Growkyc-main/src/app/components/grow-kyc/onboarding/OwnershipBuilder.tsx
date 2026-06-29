@@ -280,7 +280,7 @@ export function OwnershipBuilder({ entity, onComplete }: OwnershipBuilderProps) 
             <span className="text-slate-300">Beneficial Owner (≥25%)</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-4 h-4 bg-gray-200 rounded border-2 border-gray-400" />
+            <div className="w-4 h-4 bg-white/10 rounded border-2 border-gray-400" />
             <span className="text-slate-300">Other Roles</span>
           </div>
         </div>
@@ -288,12 +288,12 @@ export function OwnershipBuilder({ entity, onComplete }: OwnershipBuilderProps) 
         {/* People List */}
         <div className="space-y-3">
           {people.map((person) => (
-            <Card key={person.id} className={person.isBeneficialOwner ? 'border-green-500 bg-green-50' : ''}>
+            <Card key={person.id} className={person.isBeneficialOwner ? 'border-green-500 bg-green-500/10' : ''}>
               <CardContent className="p-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3 flex-1">
                     <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                      person.isBeneficialOwner ? 'bg-green-500' : 'bg-gray-200'
+                      person.isBeneficialOwner ? 'bg-green-500' : 'bg-white/10'
                     }`}>
                       {person.isBeneficialOwner ? (
                         <Crown className="w-5 h-5 text-white" />
@@ -334,7 +334,7 @@ export function OwnershipBuilder({ entity, onComplete }: OwnershipBuilderProps) 
 
         {/* Add Person Form */}
         {showAddForm ? (
-          <Card className="border-blue-500 bg-blue-50 animate-in fade-in slide-in-from-top-4">
+          <Card className="border-blue-500 bg-blue-500/10 animate-in fade-in slide-in-from-top-4">
             <CardContent className="p-4 space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="personName">Full Name *</Label>
@@ -370,15 +370,15 @@ export function OwnershipBuilder({ entity, onComplete }: OwnershipBuilderProps) 
                   <Label htmlFor="ownership">Ownership Percentage (if applicable)</Label>
                   <button
                     type="button"
-                    className="text-blue-600 hover:text-blue-700 text-sm flex items-center gap-1"
+                    className="text-blue-400 hover:text-blue-300 text-sm flex items-center gap-1"
                     onClick={() => setShowTooltip(showTooltip === 'ownership' ? null : 'ownership')}
                   >
                     <HelpCircle className="w-4 h-4" />
                   </button>
                 </div>
                 {showTooltip === 'ownership' && (
-                  <Card className="bg-blue-100 border-blue-300">
-                    <CardContent className="p-3 text-sm text-blue-900">
+                  <Card className="bg-blue-500/15 border-blue-300">
+                    <CardContent className="p-3 text-sm text-blue-300">
                       Ownership of 25% or more automatically identifies this person as a Beneficial Owner for AML/CTF compliance.
                     </CardContent>
                   </Card>
@@ -395,10 +395,10 @@ export function OwnershipBuilder({ entity, onComplete }: OwnershipBuilderProps) 
                   <span className="text-slate-300">%</span>
                 </div>
                 {newPerson.ownership >= 25 && (
-                  <Card className="bg-green-50 border-green-200">
+                  <Card className="bg-green-500/10 border-green-500/30">
                     <CardContent className="p-2 flex items-center gap-2">
-                      <Crown className="w-4 h-4 text-green-600" />
-                      <span className="text-sm text-green-900">
+                      <Crown className="w-4 h-4 text-green-400" />
+                      <span className="text-sm text-green-300">
                         Will be identified as Beneficial Owner
                       </span>
                     </CardContent>
@@ -430,10 +430,10 @@ export function OwnershipBuilder({ entity, onComplete }: OwnershipBuilderProps) 
 
         {/* Warning if no beneficial owner */}
         {people.length > 0 && !people.some(p => p.isBeneficialOwner) && entity.type === 'company' && (
-          <Card className="bg-amber-50 border-amber-200">
+          <Card className="bg-amber-500/10 border-amber-500/30">
             <CardContent className="p-4 flex items-start gap-3">
-              <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
-              <div className="text-sm text-amber-900">
+              <AlertCircle className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+              <div className="text-sm text-amber-300">
                 <p className="font-semibold mb-1">Who has ultimate control?</p>
                 <p>
                   If no person owns 25% or more, please identify who has ultimate control through other means 

@@ -143,9 +143,9 @@ export function ReportingVisuals() {
 
   const getStatusBadge = (status: string) => {
     const config = {
-      draft: { bg: 'bg-gray-100', text: 'text-gray-700', label: 'Draft' },
-      ready: { bg: 'bg-blue-100', text: 'text-blue-700', label: 'Ready' },
-      sent: { bg: 'bg-green-100', text: 'text-green-700', label: 'Sent' }
+      draft: { bg: 'bg-white/5', text: 'text-slate-300', label: 'Draft' },
+      ready: { bg: 'bg-blue-500/15', text: 'text-blue-300', label: 'Ready' },
+      sent: { bg: 'bg-green-500/15', text: 'text-green-300', label: 'Sent' }
     };
     const { bg, text, label } = config[status as keyof typeof config] || config.draft;
     return <span className={`px-3 py-1 rounded-full text-xs font-bold ${bg} ${text}`}>{label}</span>;
@@ -155,8 +155,8 @@ export function ReportingVisuals() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h3 className="text-xl font-bold text-gray-900">Entity Blueprint Diagrams</h3>
-          <p className="text-gray-600">Visual representations of entity structures and relationships</p>
+          <h3 className="text-xl font-bold text-slate-100">Entity Blueprint Diagrams</h3>
+          <p className="text-slate-300">Visual representations of entity structures and relationships</p>
         </div>
         <button
           onClick={() => toast.info('Create new blueprint')}
@@ -169,37 +169,37 @@ export function ReportingVisuals() {
 
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-white border-2 border-gray-200 rounded-lg p-4">
+        <div className="bg-white border-2 border-white/10 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-600">Total Blueprints</span>
-            <Network className="w-5 h-5 text-blue-600" />
+            <span className="text-sm text-slate-300">Total Blueprints</span>
+            <Network className="w-5 h-5 text-blue-400" />
           </div>
-          <p className="text-2xl font-bold text-gray-900">{blueprints.length}</p>
+          <p className="text-2xl font-bold text-slate-100">{blueprints.length}</p>
         </div>
-        <div className="bg-white border-2 border-gray-200 rounded-lg p-4">
+        <div className="bg-white border-2 border-white/10 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-600">Group Structures</span>
-            <Layers className="w-5 h-5 text-purple-600" />
+            <span className="text-sm text-slate-300">Group Structures</span>
+            <Layers className="w-5 h-5 text-purple-400" />
           </div>
-          <p className="text-2xl font-bold text-gray-900">
+          <p className="text-2xl font-bold text-slate-100">
             {blueprints.filter(b => b.type === 'group-structure').length}
           </p>
         </div>
-        <div className="bg-white border-2 border-gray-200 rounded-lg p-4">
+        <div className="bg-white border-2 border-white/10 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-600">Trust Diagrams</span>
-            <Users className="w-5 h-5 text-green-600" />
+            <span className="text-sm text-slate-300">Trust Diagrams</span>
+            <Users className="w-5 h-5 text-green-400" />
           </div>
-          <p className="text-2xl font-bold text-gray-900">
+          <p className="text-2xl font-bold text-slate-100">
             {blueprints.filter(b => b.type === 'trust-diagram').length}
           </p>
         </div>
-        <div className="bg-white border-2 border-gray-200 rounded-lg p-4">
+        <div className="bg-white border-2 border-white/10 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-600">Total Entities</span>
-            <Building2 className="w-5 h-5 text-amber-600" />
+            <span className="text-sm text-slate-300">Total Entities</span>
+            <Building2 className="w-5 h-5 text-amber-400" />
           </div>
-          <p className="text-2xl font-bold text-gray-900">
+          <p className="text-2xl font-bold text-slate-100">
             {blueprints.reduce((sum, b) => sum + b.entities, 0)}
           </p>
         </div>
@@ -210,30 +210,30 @@ export function ReportingVisuals() {
         {blueprints.map((blueprint) => {
           const Icon = getTypeIcon(blueprint.type);
           return (
-            <div key={blueprint.id} className="bg-white border-2 border-gray-200 rounded-lg p-6 hover:border-blue-300 transition-colors">
+            <div key={blueprint.id} className="bg-white border-2 border-white/10 rounded-lg p-6 hover:border-blue-300 transition-colors">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-start gap-3 flex-1">
-                  <div className="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
-                    <Icon className="w-6 h-6 text-blue-600" />
+                  <div className="w-12 h-12 rounded-lg bg-blue-500/15 flex items-center justify-center flex-shrink-0">
+                    <Icon className="w-6 h-6 text-blue-400" />
                   </div>
                   <div className="flex-1">
-                    <h4 className="font-bold text-gray-900 mb-1">{blueprint.name}</h4>
-                    <p className="text-sm text-gray-600">{blueprint.client}</p>
+                    <h4 className="font-bold text-slate-100 mb-1">{blueprint.name}</h4>
+                    <p className="text-sm text-slate-300">{blueprint.client}</p>
                   </div>
                 </div>
               </div>
 
               {/* Blueprint Preview */}
-              <div className="bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg p-8 mb-4 min-h-[200px] flex items-center justify-center">
+              <div className="bg-white/5 border-2 border-dashed border-white/10 rounded-lg p-8 mb-4 min-h-[200px] flex items-center justify-center">
                 <div className="text-center">
                   <Network className="w-16 h-16 text-gray-400 mx-auto mb-3" />
-                  <p className="text-sm text-gray-600">{getTypeLabel(blueprint.type)}</p>
-                  <p className="text-xs text-gray-500 mt-1">{blueprint.entities} entities</p>
+                  <p className="text-sm text-slate-300">{getTypeLabel(blueprint.type)}</p>
+                  <p className="text-xs text-slate-400 mt-1">{blueprint.entities} entities</p>
                 </div>
               </div>
 
               {/* Metadata */}
-              <div className="flex items-center gap-4 mb-4 text-xs text-gray-600">
+              <div className="flex items-center gap-4 mb-4 text-xs text-slate-300">
                 <span className="flex items-center gap-1">
                   <Layers className="w-3.5 h-3.5" />
                   {getTypeLabel(blueprint.type)}
@@ -253,13 +253,13 @@ export function ReportingVisuals() {
                   <Eye className="w-4 h-4" />
                   View
                 </button>
-                <button className="flex items-center justify-center gap-2 px-4 py-2 bg-white border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-semibold text-sm">
+                <button className="flex items-center justify-center gap-2 px-4 py-2 bg-white border-2 border-white/10 text-slate-300 rounded-lg hover:bg-white/5 transition-colors font-semibold text-sm">
                   <Edit className="w-4 h-4" />
                 </button>
-                <button className="flex items-center justify-center gap-2 px-4 py-2 bg-white border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-semibold text-sm">
+                <button className="flex items-center justify-center gap-2 px-4 py-2 bg-white border-2 border-white/10 text-slate-300 rounded-lg hover:bg-white/5 transition-colors font-semibold text-sm">
                   <Download className="w-4 h-4" />
                 </button>
-                <button className="flex items-center justify-center gap-2 px-4 py-2 bg-white border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-semibold text-sm">
+                <button className="flex items-center justify-center gap-2 px-4 py-2 bg-white border-2 border-white/10 text-slate-300 rounded-lg hover:bg-white/5 transition-colors font-semibold text-sm">
                   <Share2 className="w-4 h-4" />
                 </button>
               </div>
@@ -274,8 +274,8 @@ export function ReportingVisuals() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h3 className="text-xl font-bold text-gray-900">Visual Meeting Packets</h3>
-          <p className="text-gray-600">Professional presentation materials for client meetings</p>
+          <h3 className="text-xl font-bold text-slate-100">Visual Meeting Packets</h3>
+          <p className="text-slate-300">Professional presentation materials for client meetings</p>
         </div>
         <button
           onClick={() => toast.info('Create new meeting packet')}
@@ -288,37 +288,37 @@ export function ReportingVisuals() {
 
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-white border-2 border-gray-200 rounded-lg p-4">
+        <div className="bg-white border-2 border-white/10 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-600">Total Packets</span>
-            <FileText className="w-5 h-5 text-blue-600" />
+            <span className="text-sm text-slate-300">Total Packets</span>
+            <FileText className="w-5 h-5 text-blue-400" />
           </div>
-          <p className="text-2xl font-bold text-gray-900">{meetingPackets.length}</p>
+          <p className="text-2xl font-bold text-slate-100">{meetingPackets.length}</p>
         </div>
-        <div className="bg-white border-2 border-gray-200 rounded-lg p-4">
+        <div className="bg-white border-2 border-white/10 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-600">Ready to Send</span>
-            <Target className="w-5 h-5 text-green-600" />
+            <span className="text-sm text-slate-300">Ready to Send</span>
+            <Target className="w-5 h-5 text-green-400" />
           </div>
-          <p className="text-2xl font-bold text-gray-900">
+          <p className="text-2xl font-bold text-slate-100">
             {meetingPackets.filter(p => p.status === 'ready').length}
           </p>
         </div>
-        <div className="bg-white border-2 border-gray-200 rounded-lg p-4">
+        <div className="bg-white border-2 border-white/10 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-600">Draft</span>
-            <Edit className="w-5 h-5 text-gray-600" />
+            <span className="text-sm text-slate-300">Draft</span>
+            <Edit className="w-5 h-5 text-slate-300" />
           </div>
-          <p className="text-2xl font-bold text-gray-900">
+          <p className="text-2xl font-bold text-slate-100">
             {meetingPackets.filter(p => p.status === 'draft').length}
           </p>
         </div>
-        <div className="bg-white border-2 border-gray-200 rounded-lg p-4">
+        <div className="bg-white border-2 border-white/10 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-600">Sent</span>
-            <Share2 className="w-5 h-5 text-purple-600" />
+            <span className="text-sm text-slate-300">Sent</span>
+            <Share2 className="w-5 h-5 text-purple-400" />
           </div>
-          <p className="text-2xl font-bold text-gray-900">
+          <p className="text-2xl font-bold text-slate-100">
             {meetingPackets.filter(p => p.status === 'sent').length}
           </p>
         </div>
@@ -329,19 +329,19 @@ export function ReportingVisuals() {
         {meetingPackets.map((packet) => {
           const Icon = getTypeIcon(packet.type);
           return (
-            <div key={packet.id} className="bg-white border-2 border-gray-200 rounded-lg p-6 hover:border-blue-300 transition-colors">
+            <div key={packet.id} className="bg-white border-2 border-white/10 rounded-lg p-6 hover:border-blue-300 transition-colors">
               <div className="flex items-start justify-between">
                 <div className="flex items-start gap-4 flex-1">
-                  <div className="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center flex-shrink-0">
-                    <Icon className="w-6 h-6 text-purple-600" />
+                  <div className="w-12 h-12 rounded-lg bg-purple-500/15 flex items-center justify-center flex-shrink-0">
+                    <Icon className="w-6 h-6 text-purple-400" />
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
-                      <h4 className="font-bold text-gray-900">{packet.title}</h4>
+                      <h4 className="font-bold text-slate-100">{packet.title}</h4>
                       {getStatusBadge(packet.status)}
                     </div>
-                    <p className="text-sm text-gray-600 mb-3">{packet.client}</p>
-                    <div className="flex items-center gap-4 text-xs text-gray-600">
+                    <p className="text-sm text-slate-300 mb-3">{packet.client}</p>
+                    <div className="flex items-center gap-4 text-xs text-slate-300">
                       <span className="flex items-center gap-1">
                         <Calendar className="w-3.5 h-3.5" />
                         {new Date(packet.date).toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' })}
@@ -365,13 +365,13 @@ export function ReportingVisuals() {
                     <Eye className="w-4 h-4" />
                     Preview
                   </button>
-                  <button className="px-4 py-2 bg-white border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-semibold text-sm">
+                  <button className="px-4 py-2 bg-white border-2 border-white/10 text-slate-300 rounded-lg hover:bg-white/5 transition-colors font-semibold text-sm">
                     <Edit className="w-4 h-4" />
                   </button>
-                  <button className="px-4 py-2 bg-white border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-semibold text-sm">
+                  <button className="px-4 py-2 bg-white border-2 border-white/10 text-slate-300 rounded-lg hover:bg-white/5 transition-colors font-semibold text-sm">
                     <Download className="w-4 h-4" />
                   </button>
-                  <button className="px-4 py-2 bg-white border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-semibold text-sm">
+                  <button className="px-4 py-2 bg-white border-2 border-white/10 text-slate-300 rounded-lg hover:bg-white/5 transition-colors font-semibold text-sm">
                     <Share2 className="w-4 h-4" />
                   </button>
                 </div>
@@ -386,70 +386,70 @@ export function ReportingVisuals() {
   const renderDashboards = () => (
     <div className="space-y-6">
       <div>
-        <h3 className="text-xl font-bold text-gray-900">Client Dashboards</h3>
-        <p className="text-gray-600">Real-time visual analytics for client performance</p>
+        <h3 className="text-xl font-bold text-slate-100">Client Dashboards</h3>
+        <p className="text-slate-300">Real-time visual analytics for client performance</p>
       </div>
 
       {/* Example Dashboard */}
-      <div className="bg-white border-2 border-gray-200 rounded-lg p-6">
-        <h4 className="font-bold text-gray-900 mb-4">Sample Client Dashboard</h4>
+      <div className="bg-white border-2 border-white/10 rounded-lg p-6">
+        <h4 className="font-bold text-slate-100 mb-4">Sample Client Dashboard</h4>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-          <div className="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-lg p-4">
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-500/30 rounded-lg p-4">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-blue-700 font-semibold">Revenue</span>
-              <TrendingUp className="w-5 h-5 text-blue-600" />
+              <span className="text-sm text-blue-300 font-semibold">Revenue</span>
+              <TrendingUp className="w-5 h-5 text-blue-400" />
             </div>
-            <p className="text-3xl font-bold text-blue-900">$2.4M</p>
+            <p className="text-3xl font-bold text-blue-300">$2.4M</p>
             <div className="flex items-center gap-1 mt-2 text-sm">
-              <ArrowUpRight className="w-4 h-4 text-green-600" />
-              <span className="text-green-600 font-semibold">12.5%</span>
-              <span className="text-gray-600">vs last year</span>
+              <ArrowUpRight className="w-4 h-4 text-green-400" />
+              <span className="text-green-400 font-semibold">12.5%</span>
+              <span className="text-slate-300">vs last year</span>
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-green-50 to-green-100 border border-green-200 rounded-lg p-4">
+          <div className="bg-gradient-to-br from-green-50 to-green-100 border border-green-500/30 rounded-lg p-4">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-green-700 font-semibold">Profit Margin</span>
-              <Target className="w-5 h-5 text-green-600" />
+              <span className="text-sm text-green-300 font-semibold">Profit Margin</span>
+              <Target className="w-5 h-5 text-green-400" />
             </div>
-            <p className="text-3xl font-bold text-green-900">18.2%</p>
+            <p className="text-3xl font-bold text-green-300">18.2%</p>
             <div className="flex items-center gap-1 mt-2 text-sm">
-              <ArrowUpRight className="w-4 h-4 text-green-600" />
-              <span className="text-green-600 font-semibold">2.1%</span>
-              <span className="text-gray-600">improvement</span>
+              <ArrowUpRight className="w-4 h-4 text-green-400" />
+              <span className="text-green-400 font-semibold">2.1%</span>
+              <span className="text-slate-300">improvement</span>
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200 rounded-lg p-4">
+          <div className="bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-500/30 rounded-lg p-4">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-purple-700 font-semibold">Growth Rate</span>
-              <Activity className="w-5 h-5 text-purple-600" />
+              <span className="text-sm text-purple-300 font-semibold">Growth Rate</span>
+              <Activity className="w-5 h-5 text-purple-400" />
             </div>
-            <p className="text-3xl font-bold text-purple-900">24%</p>
+            <p className="text-3xl font-bold text-purple-300">24%</p>
             <div className="flex items-center gap-1 mt-2 text-sm">
-              <ArrowUpRight className="w-4 h-4 text-green-600" />
-              <span className="text-green-600 font-semibold">8.5%</span>
-              <span className="text-gray-600">YoY growth</span>
+              <ArrowUpRight className="w-4 h-4 text-green-400" />
+              <span className="text-green-400 font-semibold">8.5%</span>
+              <span className="text-slate-300">YoY growth</span>
             </div>
           </div>
         </div>
 
         {/* Chart Placeholders */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="border-2 border-gray-200 rounded-lg p-6 min-h-[250px] flex items-center justify-center">
+          <div className="border-2 border-white/10 rounded-lg p-6 min-h-[250px] flex items-center justify-center">
             <div className="text-center">
               <BarChart3 className="w-16 h-16 text-gray-400 mx-auto mb-3" />
-              <p className="text-sm text-gray-600 font-semibold">Revenue Trend</p>
-              <p className="text-xs text-gray-500">Monthly comparison</p>
+              <p className="text-sm text-slate-300 font-semibold">Revenue Trend</p>
+              <p className="text-xs text-slate-400">Monthly comparison</p>
             </div>
           </div>
 
-          <div className="border-2 border-gray-200 rounded-lg p-6 min-h-[250px] flex items-center justify-center">
+          <div className="border-2 border-white/10 rounded-lg p-6 min-h-[250px] flex items-center justify-center">
             <div className="text-center">
               <PieChart className="w-16 h-16 text-gray-400 mx-auto mb-3" />
-              <p className="text-sm text-gray-600 font-semibold">Expense Breakdown</p>
-              <p className="text-xs text-gray-500">Category analysis</p>
+              <p className="text-sm text-slate-300 font-semibold">Expense Breakdown</p>
+              <p className="text-xs text-slate-400">Category analysis</p>
             </div>
           </div>
         </div>
@@ -460,8 +460,8 @@ export function ReportingVisuals() {
   const renderTemplates = () => (
     <div className="space-y-6">
       <div>
-        <h3 className="text-xl font-bold text-gray-900">Report Templates</h3>
-        <p className="text-gray-600">Pre-designed templates for common reports and presentations</p>
+        <h3 className="text-xl font-bold text-slate-100">Report Templates</h3>
+        <p className="text-slate-300">Pre-designed templates for common reports and presentations</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -475,12 +475,12 @@ export function ReportingVisuals() {
         ].map((template, idx) => {
           const Icon = template.icon;
           return (
-            <div key={idx} className="bg-white border-2 border-gray-200 rounded-lg p-6 hover:border-blue-300 transition-colors cursor-pointer">
-              <div className="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center mb-4">
-                <Icon className="w-6 h-6 text-blue-600" />
+            <div key={idx} className="bg-white border-2 border-white/10 rounded-lg p-6 hover:border-blue-300 transition-colors cursor-pointer">
+              <div className="w-12 h-12 rounded-lg bg-blue-500/15 flex items-center justify-center mb-4">
+                <Icon className="w-6 h-6 text-blue-400" />
               </div>
-              <h4 className="font-bold text-gray-900 mb-2">{template.name}</h4>
-              <p className="text-sm text-gray-600 mb-4">{template.slides} slides included</p>
+              <h4 className="font-bold text-slate-100 mb-2">{template.name}</h4>
+              <p className="text-sm text-slate-300 mb-4">{template.slides} slides included</p>
               <button
                 onClick={() => toast.info(`Using template: ${template.name}`)}
                 className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold text-sm"
@@ -499,18 +499,18 @@ export function ReportingVisuals() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h2 className="text-2xl font-bold text-gray-900">Reporting & Visuals</h2>
-        <p className="text-gray-600">Create professional blueprints, dashboards, and meeting materials</p>
+        <h2 className="text-2xl font-bold text-slate-100">Reporting & Visuals</h2>
+        <p className="text-slate-300">Create professional blueprints, dashboards, and meeting materials</p>
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-2 border-b border-gray-200">
+      <div className="flex gap-2 border-b border-white/10">
         <button
           onClick={() => setActiveTab('blueprints')}
           className={`px-4 py-2 font-semibold transition-colors border-b-2 ${
             activeTab === 'blueprints'
-              ? 'border-blue-600 text-blue-600'
-              : 'border-transparent text-gray-600 hover:text-gray-900'
+              ? 'border-blue-600 text-blue-400'
+              : 'border-transparent text-slate-300 hover:text-slate-100'
           }`}
         >
           Blueprint Diagrams
@@ -519,8 +519,8 @@ export function ReportingVisuals() {
           onClick={() => setActiveTab('packets')}
           className={`px-4 py-2 font-semibold transition-colors border-b-2 ${
             activeTab === 'packets'
-              ? 'border-blue-600 text-blue-600'
-              : 'border-transparent text-gray-600 hover:text-gray-900'
+              ? 'border-blue-600 text-blue-400'
+              : 'border-transparent text-slate-300 hover:text-slate-100'
           }`}
         >
           Meeting Packets
@@ -529,8 +529,8 @@ export function ReportingVisuals() {
           onClick={() => setActiveTab('dashboards')}
           className={`px-4 py-2 font-semibold transition-colors border-b-2 ${
             activeTab === 'dashboards'
-              ? 'border-blue-600 text-blue-600'
-              : 'border-transparent text-gray-600 hover:text-gray-900'
+              ? 'border-blue-600 text-blue-400'
+              : 'border-transparent text-slate-300 hover:text-slate-100'
           }`}
         >
           Dashboards
@@ -539,8 +539,8 @@ export function ReportingVisuals() {
           onClick={() => setActiveTab('templates')}
           className={`px-4 py-2 font-semibold transition-colors border-b-2 ${
             activeTab === 'templates'
-              ? 'border-blue-600 text-blue-600'
-              : 'border-transparent text-gray-600 hover:text-gray-900'
+              ? 'border-blue-600 text-blue-400'
+              : 'border-transparent text-slate-300 hover:text-slate-100'
           }`}
         >
           Templates
@@ -557,13 +557,13 @@ export function ReportingVisuals() {
       {selectedBlueprint && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-6">
           <div className="bg-white rounded-lg shadow-xl max-w-6xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex items-center justify-between">
+            <div className="sticky top-0 bg-white border-b border-white/10 p-6 flex items-center justify-between">
               <div>
-                <h3 className="text-2xl font-bold text-gray-900">{selectedBlueprint.name}</h3>
-                <p className="text-sm text-gray-600 mt-1">{selectedBlueprint.client}</p>
+                <h3 className="text-2xl font-bold text-slate-100">{selectedBlueprint.name}</h3>
+                <p className="text-sm text-slate-300 mt-1">{selectedBlueprint.client}</p>
               </div>
               <button onClick={() => setSelectedBlueprint(null)}>
-                <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
@@ -571,11 +571,11 @@ export function ReportingVisuals() {
 
             <div className="p-6">
               {/* Large Blueprint Visualization */}
-              <div className="bg-gray-50 border-2 border-gray-300 rounded-lg p-12 mb-6 min-h-[500px] flex items-center justify-center">
+              <div className="bg-white/5 border-2 border-white/10 rounded-lg p-12 mb-6 min-h-[500px] flex items-center justify-center">
                 <div className="text-center">
                   <Network className="w-32 h-32 text-gray-400 mx-auto mb-4" />
-                  <p className="text-xl font-bold text-gray-900 mb-2">{getTypeLabel(selectedBlueprint.type)}</p>
-                  <p className="text-gray-600">{selectedBlueprint.entities} entities in structure</p>
+                  <p className="text-xl font-bold text-slate-100 mb-2">{getTypeLabel(selectedBlueprint.type)}</p>
+                  <p className="text-slate-300">{selectedBlueprint.entities} entities in structure</p>
                 </div>
               </div>
 
@@ -585,10 +585,10 @@ export function ReportingVisuals() {
                   <Edit className="w-5 h-5" />
                   Edit Blueprint
                 </button>
-                <button className="px-6 py-3 bg-white border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-semibold">
+                <button className="px-6 py-3 bg-white border-2 border-white/10 text-slate-300 rounded-lg hover:bg-white/5 transition-colors font-semibold">
                   <Download className="w-5 h-5" />
                 </button>
-                <button className="px-6 py-3 bg-white border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-semibold">
+                <button className="px-6 py-3 bg-white border-2 border-white/10 text-slate-300 rounded-lg hover:bg-white/5 transition-colors font-semibold">
                   <Share2 className="w-5 h-5" />
                 </button>
               </div>
@@ -601,13 +601,13 @@ export function ReportingVisuals() {
       {selectedPacket && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-6">
           <div className="bg-white rounded-lg shadow-xl max-w-6xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex items-center justify-between">
+            <div className="sticky top-0 bg-white border-b border-white/10 p-6 flex items-center justify-between">
               <div>
-                <h3 className="text-2xl font-bold text-gray-900">{selectedPacket.title}</h3>
-                <p className="text-sm text-gray-600 mt-1">{selectedPacket.client}</p>
+                <h3 className="text-2xl font-bold text-slate-100">{selectedPacket.title}</h3>
+                <p className="text-sm text-slate-300 mt-1">{selectedPacket.client}</p>
               </div>
               <button onClick={() => setSelectedPacket(null)}>
-                <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
@@ -615,11 +615,11 @@ export function ReportingVisuals() {
 
             <div className="p-6">
               {/* Packet Preview */}
-              <div className="bg-gray-50 border-2 border-gray-300 rounded-lg p-12 mb-6 min-h-[500px] flex items-center justify-center">
+              <div className="bg-white/5 border-2 border-white/10 rounded-lg p-12 mb-6 min-h-[500px] flex items-center justify-center">
                 <div className="text-center">
                   <FileText className="w-32 h-32 text-gray-400 mx-auto mb-4" />
-                  <p className="text-xl font-bold text-gray-900 mb-2">{selectedPacket.title}</p>
-                  <p className="text-gray-600">{selectedPacket.pages} pages • {getTypeLabel(selectedPacket.type)}</p>
+                  <p className="text-xl font-bold text-slate-100 mb-2">{selectedPacket.title}</p>
+                  <p className="text-slate-300">{selectedPacket.pages} pages • {getTypeLabel(selectedPacket.type)}</p>
                 </div>
               </div>
 
@@ -629,10 +629,10 @@ export function ReportingVisuals() {
                   <Share2 className="w-5 h-5" />
                   Send to Client
                 </button>
-                <button className="px-6 py-3 bg-white border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-semibold">
+                <button className="px-6 py-3 bg-white border-2 border-white/10 text-slate-300 rounded-lg hover:bg-white/5 transition-colors font-semibold">
                   <Edit className="w-5 h-5" />
                 </button>
-                <button className="px-6 py-3 bg-white border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-semibold">
+                <button className="px-6 py-3 bg-white border-2 border-white/10 text-slate-300 rounded-lg hover:bg-white/5 transition-colors font-semibold">
                   <Download className="w-5 h-5" />
                 </button>
               </div>

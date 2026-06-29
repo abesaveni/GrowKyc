@@ -75,10 +75,10 @@ export function CustomerRiskScoringEngine({
 
   // Determine risk band
   const getRiskBand = (score: number) => {
-    if (score >= 8) return { label: 'EXTREME', color: 'bg-red-600', textColor: 'text-red-600' };
-    if (score >= 6) return { label: 'HIGH', color: 'bg-orange-600', textColor: 'text-orange-600' };
-    if (score >= 4) return { label: 'MEDIUM', color: 'bg-amber-600', textColor: 'text-amber-600' };
-    return { label: 'LOW', color: 'bg-green-600', textColor: 'text-green-600' };
+    if (score >= 8) return { label: 'EXTREME', color: 'bg-red-600', textColor: 'text-red-400' };
+    if (score >= 6) return { label: 'HIGH', color: 'bg-orange-600', textColor: 'text-orange-400' };
+    if (score >= 4) return { label: 'MEDIUM', color: 'bg-amber-600', textColor: 'text-amber-400' };
+    return { label: 'LOW', color: 'bg-green-600', textColor: 'text-green-400' };
   };
 
   const riskBand = getRiskBand(weightedScore);
@@ -209,10 +209,10 @@ export function CustomerRiskScoringEngine({
       {/* Main Content */}
       <div className="p-6 max-w-7xl mx-auto">
         {/* Risk Score Summary Card */}
-        <Card className="mb-6 border-2 border-cyan-200">
+        <Card className="mb-6 border-2 border-cyan-500/30">
           <CardHeader className="bg-gradient-to-r from-cyan-50 to-blue-50">
             <CardTitle className="flex items-center gap-2">
-              <Shield className="w-6 h-6 text-cyan-600" />
+              <Shield className="w-6 h-6 text-cyan-400" />
               Overall Risk Assessment
             </CardTitle>
           </CardHeader>
@@ -220,7 +220,7 @@ export function CustomerRiskScoringEngine({
             <div className="grid md:grid-cols-3 gap-6">
               {/* Weighted Score */}
               <div className="text-center">
-                <div className="text-6xl font-bold text-cyan-600 mb-2">{weightedScore}</div>
+                <div className="text-6xl font-bold text-cyan-400 mb-2">{weightedScore}</div>
                 <div className="text-sm text-slate-300 mb-4">Weighted Risk Score (out of 10)</div>
                 <Progress value={weightedScore * 10} className="h-3" />
               </div>
@@ -235,12 +235,12 @@ export function CustomerRiskScoringEngine({
               </div>
 
               {/* Actions Required */}
-              <div className="bg-amber-50 rounded-lg p-4 border-2 border-amber-200">
-                <h3 className="font-bold text-amber-900 mb-3 flex items-center gap-2">
+              <div className="bg-amber-500/10 rounded-lg p-4 border-2 border-amber-500/30">
+                <h3 className="font-bold text-amber-300 mb-3 flex items-center gap-2">
                   <AlertTriangle className="w-5 h-5" />
                   Actions Required
                 </h3>
-                <ul className="text-sm text-amber-800 space-y-1">
+                <ul className="text-sm text-amber-300 space-y-1">
                   {weightedScore >= 6 && <li>✓ Enhanced Due Diligence (EDD)</li>}
                   {weightedScore >= 4 && <li>✓ Annual review required</li>}
                   {riskFactors.ownershipComplexity.score >= 5 && <li>✓ Beneficial ownership verification</li>}
@@ -285,7 +285,7 @@ export function CustomerRiskScoringEngine({
                       <div className="grid md:grid-cols-12 gap-6 items-center">
                         {/* Icon & Label */}
                         <div className="md:col-span-3 flex items-center gap-3">
-                          <Icon className="w-8 h-8 text-cyan-600" />
+                          <Icon className="w-8 h-8 text-cyan-400" />
                           <div>
                             <div className="font-bold text-white">{label}</div>
                             <div className="text-xs text-slate-300">Weight: {factor.weight}%</div>
@@ -367,7 +367,7 @@ export function CustomerRiskScoringEngine({
             </div>
 
             {/* Score Breakdown */}
-            <Card className="mt-6 border-2 border-blue-200">
+            <Card className="mt-6 border-2 border-blue-500/30">
               <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50">
                 <CardTitle>Score Calculation Breakdown</CardTitle>
                 <CardDescription>How the weighted score is calculated</CardDescription>
@@ -382,7 +382,7 @@ export function CustomerRiskScoringEngine({
                       </span>
                     </div>
                   ))}
-                  <div className="border-t-2 border-gray-300 pt-2 mt-2">
+                  <div className="border-t-2 border-white/10 pt-2 mt-2">
                     <div className="flex items-center justify-between font-bold text-lg">
                       <span>Weighted Average Risk Score:</span>
                       <span className={`${riskBand.textColor}`}>{weightedScore} / 10</span>
@@ -407,7 +407,7 @@ export function CustomerRiskScoringEngine({
                       key={idx}
                       className={`p-4 rounded-lg border-2 ${
                         trigger.triggered
-                          ? 'bg-red-50 border-red-300'
+                          ? 'bg-red-500/10 border-red-300'
                           : 'bg-[#0f172a] border-white/10'
                       }`}
                     >
@@ -415,7 +415,7 @@ export function CustomerRiskScoringEngine({
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-2">
                             {trigger.triggered ? (
-                              <AlertTriangle className="w-5 h-5 text-red-600" />
+                              <AlertTriangle className="w-5 h-5 text-red-400" />
                             ) : (
                               <CheckCircle className="w-5 h-5 text-slate-400" />
                             )}
@@ -474,10 +474,10 @@ export function CustomerRiskScoringEngine({
 
           {/* OVERRIDE TAB */}
           <TabsContent value="override">
-            <Card className="border-2 border-amber-200">
+            <Card className="border-2 border-amber-500/30">
               <CardHeader className="bg-gradient-to-r from-amber-50 to-orange-50">
                 <CardTitle className="flex items-center gap-2">
-                  <Lock className="w-5 h-5 text-amber-600" />
+                  <Lock className="w-5 h-5 text-amber-400" />
                   Risk Score Override
                 </CardTitle>
                 <CardDescription>
@@ -485,12 +485,12 @@ export function CustomerRiskScoringEngine({
                 </CardDescription>
               </CardHeader>
               <CardContent className="p-6">
-                <div className="bg-amber-50 rounded-lg p-4 border-2 border-amber-300 mb-6">
+                <div className="bg-amber-500/10 rounded-lg p-4 border-2 border-amber-300 mb-6">
                   <div className="flex items-start gap-2">
-                    <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <AlertTriangle className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-sm font-semibold text-amber-900">Override Warning</p>
-                      <p className="text-xs text-amber-700 mt-1">
+                      <p className="text-sm font-semibold text-amber-300">Override Warning</p>
+                      <p className="text-xs text-amber-300 mt-1">
                         Risk score overrides must be approved by a Senior Partner and documented with clear rationale. 
                         All overrides are logged in the audit trail and subject to independent review.
                       </p>
@@ -502,7 +502,7 @@ export function CustomerRiskScoringEngine({
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <Label>Current Calculated Score</Label>
-                      <div className="text-3xl font-bold text-cyan-600 mt-2">{weightedScore}</div>
+                      <div className="text-3xl font-bold text-cyan-400 mt-2">{weightedScore}</div>
                     </div>
                     <div>
                       <Label>Current Risk Band</Label>

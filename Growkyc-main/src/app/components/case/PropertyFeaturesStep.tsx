@@ -14,19 +14,19 @@ export function PropertyFeaturesStep({ formData, handleInputChange }: PropertyFe
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-3 mb-6">
-        <div className="p-3 bg-teal-50 rounded-lg">
-          <Building2 className="w-6 h-6 text-teal-600" />
+        <div className="p-3 bg-teal-500/10 rounded-lg">
+          <Building2 className="w-6 h-6 text-teal-400" />
         </div>
         <div>
           <h2 className="text-xl font-semibold">Property Features & Condition</h2>
-          <p className="text-gray-600 text-sm">Detailed property information for lender assessment</p>
+          <p className="text-slate-300 text-sm">Detailed property information for lender assessment</p>
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Building Details */}
         <div className="md:col-span-2">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Building Specifications</h3>
+          <h3 className="text-lg font-semibold text-slate-100 mb-4">Building Specifications</h3>
         </div>
 
         <div>
@@ -68,7 +68,7 @@ export function PropertyFeaturesStep({ formData, handleInputChange }: PropertyFe
             id="construction"
             value={formData.construction}
             onChange={(e) => handleInputChange('construction', e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+            className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
           >
             <option value="">Select type</option>
             <option value="brick">Full Brick</option>
@@ -86,7 +86,7 @@ export function PropertyFeaturesStep({ formData, handleInputChange }: PropertyFe
             id="roofType"
             value={formData.roofType}
             onChange={(e) => handleInputChange('roofType', e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+            className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
           >
             <option value="">Select type</option>
             <option value="tile">Tile</option>
@@ -102,7 +102,7 @@ export function PropertyFeaturesStep({ formData, handleInputChange }: PropertyFe
             id="condition"
             value={formData.condition}
             onChange={(e) => handleInputChange('condition', e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+            className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
           >
             <option value="excellent">Excellent</option>
             <option value="good">Good</option>
@@ -136,7 +136,7 @@ export function PropertyFeaturesStep({ formData, handleInputChange }: PropertyFe
 
         {/* Rates & Charges */}
         <div className="md:col-span-2 mt-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Rates & Ongoing Charges</h3>
+          <h3 className="text-lg font-semibold text-slate-100 mb-4">Rates & Ongoing Charges</h3>
         </div>
 
         <div>
@@ -170,7 +170,7 @@ export function PropertyFeaturesStep({ formData, handleInputChange }: PropertyFe
             onChange={(e) => handleInputChange('strataFees', e.target.value)}
             placeholder="1200"
           />
-          <p className="text-xs text-gray-600 mt-1">If applicable (apartments/townhouses)</p>
+          <p className="text-xs text-slate-300 mt-1">If applicable (apartments/townhouses)</p>
         </div>
 
         <div>
@@ -182,12 +182,12 @@ export function PropertyFeaturesStep({ formData, handleInputChange }: PropertyFe
             onChange={(e) => handleInputChange('landTax', e.target.value)}
             placeholder="0"
           />
-          <p className="text-xs text-gray-600 mt-1">If applicable (investment property)</p>
+          <p className="text-xs text-slate-300 mt-1">If applicable (investment property)</p>
         </div>
 
         {/* Insurance */}
         <div className="md:col-span-2 mt-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Insurance</h3>
+          <h3 className="text-lg font-semibold text-slate-100 mb-4">Insurance</h3>
         </div>
 
         <div>
@@ -229,14 +229,14 @@ export function PropertyFeaturesStep({ formData, handleInputChange }: PropertyFe
               {formData.insuranceDocumentUploaded ? 'Change Document' : 'Upload Policy'}
             </Button>
             {formData.insuranceDocumentUploaded && (
-              <CheckCircle className="w-5 h-5 text-green-600" />
+              <CheckCircle className="w-5 h-5 text-green-400" />
             )}
           </div>
         </div>
 
         {/* Sales History */}
         <div className="md:col-span-2 mt-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Sales History</h3>
+          <h3 className="text-lg font-semibold text-slate-100 mb-4">Sales History</h3>
         </div>
 
         <div>
@@ -283,7 +283,7 @@ export function PropertyFeaturesStep({ formData, handleInputChange }: PropertyFe
 
         {/* Document Uploads */}
         <div className="md:col-span-2 mt-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Supporting Documents</h3>
+          <h3 className="text-lg font-semibold text-slate-100 mb-4">Supporting Documents</h3>
         </div>
 
         <div>
@@ -294,7 +294,7 @@ export function PropertyFeaturesStep({ formData, handleInputChange }: PropertyFe
               {formData.titleDeedUploaded ? 'Change Document' : 'Upload Title'}
             </Button>
             {formData.titleDeedUploaded && (
-              <CheckCircle className="w-5 h-5 text-green-600" />
+              <CheckCircle className="w-5 h-5 text-green-400" />
             )}
           </div>
         </div>
@@ -307,7 +307,7 @@ export function PropertyFeaturesStep({ formData, handleInputChange }: PropertyFe
               {formData.rateCertificateUploaded ? 'Change Document' : 'Upload Certificate'}
             </Button>
             {formData.rateCertificateUploaded && (
-              <CheckCircle className="w-5 h-5 text-green-600" />
+              <CheckCircle className="w-5 h-5 text-green-400" />
             )}
           </div>
         </div>
@@ -320,7 +320,7 @@ export function PropertyFeaturesStep({ formData, handleInputChange }: PropertyFe
               {formData.buildingInspectionUploaded ? 'Change Report' : 'Upload Report'}
             </Button>
             {formData.buildingInspectionUploaded && (
-              <CheckCircle className="w-5 h-5 text-green-600" />
+              <CheckCircle className="w-5 h-5 text-green-400" />
             )}
           </div>
         </div>

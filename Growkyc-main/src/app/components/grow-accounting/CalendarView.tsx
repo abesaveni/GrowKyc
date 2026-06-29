@@ -71,23 +71,23 @@ export function CalendarView({ onNavigate }: CalendarProps) {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'overdue': return 'bg-red-100 text-red-700 border-red-300';
-      case 'due-soon': return 'bg-orange-100 text-orange-700 border-orange-300';
-      case 'upcoming': return 'bg-blue-100 text-blue-700 border-blue-300';
-      case 'completed': return 'bg-green-100 text-green-700 border-green-300';
-      default: return 'bg-gray-100 text-gray-700 border-gray-300';
+      case 'overdue': return 'bg-red-500/15 text-red-300 border-red-300';
+      case 'due-soon': return 'bg-orange-500/15 text-orange-300 border-orange-300';
+      case 'upcoming': return 'bg-blue-500/15 text-blue-300 border-blue-300';
+      case 'completed': return 'bg-green-500/15 text-green-300 border-green-300';
+      default: return 'bg-white/5 text-slate-300 border-white/10';
     }
   };
 
   const getTypeColor = (type: string) => {
     switch (type) {
-      case 'BAS': return 'bg-purple-50 text-purple-700';
-      case 'Tax Return': return 'bg-blue-50 text-blue-700';
-      case 'SMSF': return 'bg-green-50 text-green-700';
-      case 'Meeting': return 'bg-orange-50 text-orange-700';
-      case 'Review': return 'bg-pink-50 text-pink-700';
-      case 'Lodgement': return 'bg-indigo-50 text-indigo-700';
-      default: return 'bg-gray-50 text-gray-700';
+      case 'BAS': return 'bg-purple-500/10 text-purple-300';
+      case 'Tax Return': return 'bg-blue-500/10 text-blue-300';
+      case 'SMSF': return 'bg-green-500/10 text-green-300';
+      case 'Meeting': return 'bg-orange-500/10 text-orange-300';
+      case 'Review': return 'bg-pink-500/10 text-pink-300';
+      case 'Lodgement': return 'bg-indigo-500/10 text-indigo-300';
+      default: return 'bg-white/5 text-slate-300';
     }
   };
 
@@ -104,8 +104,8 @@ export function CalendarView({ onNavigate }: CalendarProps) {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-[32px] font-bold text-gray-900">Calendar & Deadlines</h1>
-            <p className="text-sm text-gray-600 mt-1">Manage job deadlines and important dates</p>
+            <h1 className="text-[32px] font-bold text-slate-100">Calendar & Deadlines</h1>
+            <p className="text-sm text-slate-300 mt-1">Manage job deadlines and important dates</p>
           </div>
           <div className="flex items-center gap-2">
             <Button variant="outline" size="sm">
@@ -124,12 +124,12 @@ export function CalendarView({ onNavigate }: CalendarProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-red-50 rounded-lg">
-                  <AlertCircle className="w-5 h-5 text-red-600" />
+                <div className="p-3 bg-red-500/10 rounded-lg">
+                  <AlertCircle className="w-5 h-5 text-red-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-600">Overdue</p>
-                  <p className="text-2xl font-bold text-red-600">{stats.overdue}</p>
+                  <p className="text-xs text-slate-300">Overdue</p>
+                  <p className="text-2xl font-bold text-red-400">{stats.overdue}</p>
                 </div>
               </div>
             </CardContent>
@@ -138,12 +138,12 @@ export function CalendarView({ onNavigate }: CalendarProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-orange-50 rounded-lg">
-                  <Clock className="w-5 h-5 text-orange-600" />
+                <div className="p-3 bg-orange-500/10 rounded-lg">
+                  <Clock className="w-5 h-5 text-orange-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-600">Due Soon</p>
-                  <p className="text-2xl font-bold text-orange-600">{stats.dueSoon}</p>
+                  <p className="text-xs text-slate-300">Due Soon</p>
+                  <p className="text-2xl font-bold text-orange-400">{stats.dueSoon}</p>
                 </div>
               </div>
             </CardContent>
@@ -152,12 +152,12 @@ export function CalendarView({ onNavigate }: CalendarProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-blue-50 rounded-lg">
-                  <CalendarIcon className="w-5 h-5 text-blue-600" />
+                <div className="p-3 bg-blue-500/10 rounded-lg">
+                  <CalendarIcon className="w-5 h-5 text-blue-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-600">Upcoming</p>
-                  <p className="text-2xl font-bold text-blue-600">{stats.upcoming}</p>
+                  <p className="text-xs text-slate-300">Upcoming</p>
+                  <p className="text-2xl font-bold text-blue-400">{stats.upcoming}</p>
                 </div>
               </div>
             </CardContent>
@@ -166,12 +166,12 @@ export function CalendarView({ onNavigate }: CalendarProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-purple-50 rounded-lg">
-                  <Briefcase className="w-5 h-5 text-purple-600" />
+                <div className="p-3 bg-purple-500/10 rounded-lg">
+                  <Briefcase className="w-5 h-5 text-purple-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-600">Total</p>
-                  <p className="text-2xl font-bold text-gray-900">{stats.total}</p>
+                  <p className="text-xs text-slate-300">Total</p>
+                  <p className="text-2xl font-bold text-slate-100">{stats.total}</p>
                 </div>
               </div>
             </CardContent>
@@ -186,7 +186,7 @@ export function CalendarView({ onNavigate }: CalendarProps) {
                 {/* Calendar Header */}
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-4">
-                    <h2 className="text-xl font-bold text-gray-900">
+                    <h2 className="text-xl font-bold text-slate-100">
                       {monthNames[currentDate.getMonth()]} {currentDate.getFullYear()}
                     </h2>
                     <div className="flex items-center gap-1">
@@ -235,14 +235,14 @@ export function CalendarView({ onNavigate }: CalendarProps) {
                 <div className="grid grid-cols-7 gap-2">
                   {/* Day Headers */}
                   {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
-                    <div key={day} className="text-center font-semibold text-sm text-gray-700 py-2">
+                    <div key={day} className="text-center font-semibold text-sm text-slate-300 py-2">
                       {day}
                     </div>
                   ))}
 
                   {/* Empty cells for days before month starts */}
                   {Array.from({ length: firstDay }).map((_, idx) => (
-                    <div key={`empty-${idx}`} className="aspect-square border border-gray-200 rounded-lg bg-gray-50" />
+                    <div key={`empty-${idx}`} className="aspect-square border border-white/10 rounded-lg bg-white/5" />
                   ))}
 
                   {/* Days of month */}
@@ -255,11 +255,11 @@ export function CalendarView({ onNavigate }: CalendarProps) {
                       <div
                         key={day}
                         className={`aspect-square border rounded-lg p-2 ${
-                          isToday ? 'border-2 border-[#2855a6] bg-blue-50' : 'border-gray-200'
-                        } hover:bg-gray-50 cursor-pointer`}
+                          isToday ? 'border-2 border-[#2855a6] bg-blue-500/10' : 'border-white/10'
+                        } hover:bg-white/5 cursor-pointer`}
                       >
                         <div className={`text-sm font-semibold mb-1 ${
-                          isToday ? 'text-[#2855a6]' : 'text-gray-900'
+                          isToday ? 'text-[#2855a6]' : 'text-slate-100'
                         }`}>
                           {day}
                         </div>
@@ -274,7 +274,7 @@ export function CalendarView({ onNavigate }: CalendarProps) {
                             </div>
                           ))}
                           {dayDeadlines.length > 2 && (
-                            <div className="text-xs text-gray-600 px-1">
+                            <div className="text-xs text-slate-300 px-1">
                               +{dayDeadlines.length - 2} more
                             </div>
                           )}
@@ -292,7 +292,7 @@ export function CalendarView({ onNavigate }: CalendarProps) {
             <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-semibold text-gray-900">Upcoming Deadlines</h3>
+                  <h3 className="font-semibold text-slate-100">Upcoming Deadlines</h3>
                   <Button size="sm" variant="outline">
                     <Filter className="w-4 h-4" />
                   </Button>
@@ -305,22 +305,22 @@ export function CalendarView({ onNavigate }: CalendarProps) {
                       <div
                         key={deadline.id}
                         className={`p-3 rounded-lg border-l-4 ${
-                          deadline.status === 'overdue' ? 'border-red-500 bg-red-50' :
-                          deadline.status === 'due-soon' ? 'border-orange-500 bg-orange-50' :
-                          'border-blue-500 bg-blue-50'
+                          deadline.status === 'overdue' ? 'border-red-500 bg-red-500/10' :
+                          deadline.status === 'due-soon' ? 'border-orange-500 bg-orange-500/10' :
+                          'border-blue-500 bg-blue-500/10'
                         }`}
                       >
                         <div className="flex items-start justify-between mb-2">
                           <div className="flex-1">
-                            <h4 className="font-semibold text-sm text-gray-900 mb-1">{deadline.title}</h4>
-                            <p className="text-xs text-gray-600">{deadline.client}</p>
+                            <h4 className="font-semibold text-sm text-slate-100 mb-1">{deadline.title}</h4>
+                            <p className="text-xs text-slate-300">{deadline.client}</p>
                           </div>
                           <span className={`px-2 py-1 text-xs font-semibold rounded ${getTypeColor(deadline.type)}`}>
                             {deadline.type}
                           </span>
                         </div>
 
-                        <div className="flex items-center justify-between text-xs text-gray-600">
+                        <div className="flex items-center justify-between text-xs text-slate-300">
                           <div className="flex items-center gap-1">
                             <Clock className="w-3 h-3" />
                             <span>{deadline.dueDate}</span>

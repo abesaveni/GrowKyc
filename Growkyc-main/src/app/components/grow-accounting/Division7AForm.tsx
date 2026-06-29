@@ -67,9 +67,9 @@ export function Division7AForm({ onBack }: Division7AFormProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white/5">
       {/* Fixed Header */}
-      <div className="bg-white border-b border-gray-300 px-6 py-4">
+      <div className="bg-white border-b border-white/10 px-6 py-4">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-3">
             {onBack && (
@@ -77,10 +77,10 @@ export function Division7AForm({ onBack }: Division7AFormProps) {
                 <ArrowLeft className="w-4 h-4" />
               </Button>
             )}
-            <FileEdit className="w-6 h-6 text-purple-600" />
+            <FileEdit className="w-6 h-6 text-purple-400" />
             <div>
-              <h1 className="text-xl font-bold text-gray-900">Division 7A Loan Calculation</h1>
-              <p className="text-xs text-gray-600">Structured Form Workpaper • Auto-calc enabled • FY2024</p>
+              <h1 className="text-xl font-bold text-slate-100">Division 7A Loan Calculation</h1>
+              <p className="text-xs text-slate-300">Structured Form Workpaper • Auto-calc enabled • FY2024</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -115,28 +115,28 @@ export function Division7AForm({ onBack }: Division7AFormProps) {
         {/* Metadata Bar */}
         <div className="grid grid-cols-6 gap-4 text-sm">
           <div>
-            <span className="text-gray-600 text-xs">Status:</span>
-            <div className="font-semibold text-amber-700">DRAFT</div>
+            <span className="text-slate-300 text-xs">Status:</span>
+            <div className="font-semibold text-amber-300">DRAFT</div>
           </div>
           <div>
-            <span className="text-gray-600 text-xs">Risk:</span>
-            <div className="font-semibold text-red-700">HIGH</div>
+            <span className="text-slate-300 text-xs">Risk:</span>
+            <div className="font-semibold text-red-300">HIGH</div>
           </div>
           <div>
-            <span className="text-gray-600 text-xs">Material:</span>
-            <div className="font-semibold text-blue-700">YES</div>
+            <span className="text-slate-300 text-xs">Material:</span>
+            <div className="font-semibold text-blue-300">YES</div>
           </div>
           <div>
-            <span className="text-gray-600 text-xs">Preparer:</span>
-            <div className="font-semibold text-gray-900">Emma Wilson</div>
+            <span className="text-slate-300 text-xs">Preparer:</span>
+            <div className="font-semibold text-slate-100">Emma Wilson</div>
           </div>
           <div>
-            <span className="text-gray-600 text-xs">Reviewer:</span>
-            <div className="font-semibold text-gray-900">Sarah Chen</div>
+            <span className="text-slate-300 text-xs">Reviewer:</span>
+            <div className="font-semibold text-slate-100">Sarah Chen</div>
           </div>
           <div>
-            <span className="text-gray-600 text-xs">Last Updated:</span>
-            <div className="font-semibold text-gray-900">2024-02-14</div>
+            <span className="text-slate-300 text-xs">Last Updated:</span>
+            <div className="font-semibold text-slate-100">2024-02-14</div>
           </div>
         </div>
       </div>
@@ -145,12 +145,12 @@ export function Division7AForm({ onBack }: Division7AFormProps) {
       <div className="p-6 space-y-6">
         {/* Compliance Alert */}
         {!formData.compliant && (
-          <div className="bg-red-50 border border-red-300 rounded px-4 py-3">
+          <div className="bg-red-500/10 border border-red-300 rounded px-4 py-3">
             <div className="flex items-start gap-3">
-              <AlertTriangle className="w-5 h-5 text-red-600 mt-0.5" />
+              <AlertTriangle className="w-5 h-5 text-red-400 mt-0.5" />
               <div className="flex-1">
-                <h3 className="font-semibold text-red-900 mb-1">Non-Compliant Loan Arrangement</h3>
-                <p className="text-sm text-red-800">
+                <h3 className="font-semibold text-red-300 mb-1">Non-Compliant Loan Arrangement</h3>
+                <p className="text-sm text-red-300">
                   This loan does not meet Division 7A minimum requirements. A deemed dividend of ${formatCurrency(formData.deemed_dividend)} will be assessable to the shareholder.
                 </p>
               </div>
@@ -159,12 +159,12 @@ export function Division7AForm({ onBack }: Division7AFormProps) {
         )}
 
         {/* AI Insights */}
-        <div className="bg-purple-50 border border-purple-300 rounded px-4 py-3">
+        <div className="bg-purple-500/10 border border-purple-300 rounded px-4 py-3">
           <div className="flex items-start gap-3">
-            <Brain className="w-5 h-5 text-purple-600 mt-0.5" />
+            <Brain className="w-5 h-5 text-purple-400 mt-0.5" />
             <div className="flex-1">
-              <h3 className="font-semibold text-purple-900 mb-2">AI Commentary</h3>
-              <div className="space-y-2 text-sm text-purple-800">
+              <h3 className="font-semibold text-purple-300 mb-2">AI Commentary</h3>
+              <div className="space-y-2 text-sm text-purple-300">
                 <p>⚠️ <strong>Benchmark rate verification:</strong> Confirm RBA indicator lending rate of {formatPercent(formData.benchmark_rate)} applies for FY2024.</p>
                 <p>⚠️ <strong>Interest shortfall:</strong> Actual interest paid (${formatCurrency(formData.actual_interest)}) is below minimum (${formatCurrency(formData.calculated_min_interest)}) by ${formatCurrency(formData.interest_shortfall)}.</p>
                 <p>⚠️ <strong>Principal shortfall:</strong> Required annual principal repayment (${formatCurrency(formData.annual_principal_required)}) not met. Shortfall: ${formatCurrency(formData.principal_shortfall)}.</p>
@@ -175,14 +175,14 @@ export function Division7AForm({ onBack }: Division7AFormProps) {
         </div>
 
         {/* Section 1: Loan Details */}
-        <div className="border border-gray-300 rounded bg-white overflow-hidden">
-          <div className="bg-gray-50 border-b border-gray-300 px-4 py-2">
-            <h3 className="font-semibold text-gray-900">1. Loan Details</h3>
+        <div className="border border-white/10 rounded bg-white overflow-hidden">
+          <div className="bg-white/5 border-b border-white/10 px-4 py-2">
+            <h3 className="font-semibold text-slate-100">1. Loan Details</h3>
           </div>
           <div className="p-4 space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1">
+                <label className="block text-sm font-semibold text-slate-300 mb-1">
                   Loan ID *
                 </label>
                 <input
@@ -190,11 +190,11 @@ export function Division7AForm({ onBack }: Division7AFormProps) {
                   value={formData.loan_id}
                   onChange={(e) => handleInputChange('loan_id', e.target.value)}
                   disabled={isLocked}
-                  className="w-full px-3 py-2 border border-gray-300 rounded font-mono text-sm"
+                  className="w-full px-3 py-2 border border-white/10 rounded font-mono text-sm"
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1">
+                <label className="block text-sm font-semibold text-slate-300 mb-1">
                   Loan Date *
                 </label>
                 <input
@@ -202,14 +202,14 @@ export function Division7AForm({ onBack }: Division7AFormProps) {
                   value={formData.loan_date}
                   onChange={(e) => handleInputChange('loan_date', e.target.value)}
                   disabled={isLocked}
-                  className="w-full px-3 py-2 border border-gray-300 rounded text-sm"
+                  className="w-full px-3 py-2 border border-white/10 rounded text-sm"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1">
+                <label className="block text-sm font-semibold text-slate-300 mb-1">
                   Shareholder Name *
                 </label>
                 <input
@@ -217,11 +217,11 @@ export function Division7AForm({ onBack }: Division7AFormProps) {
                   value={formData.shareholder_name}
                   onChange={(e) => handleInputChange('shareholder_name', e.target.value)}
                   disabled={isLocked}
-                  className="w-full px-3 py-2 border border-gray-300 rounded text-sm"
+                  className="w-full px-3 py-2 border border-white/10 rounded text-sm"
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1">
+                <label className="block text-sm font-semibold text-slate-300 mb-1">
                   Shareholder ABN
                 </label>
                 <input
@@ -229,29 +229,29 @@ export function Division7AForm({ onBack }: Division7AFormProps) {
                   value={formData.shareholder_abn}
                   onChange={(e) => handleInputChange('shareholder_abn', e.target.value)}
                   disabled={isLocked}
-                  className="w-full px-3 py-2 border border-gray-300 rounded font-mono text-sm"
+                  className="w-full px-3 py-2 border border-white/10 rounded font-mono text-sm"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1">
+                <label className="block text-sm font-semibold text-slate-300 mb-1">
                   Original Loan Amount *
                 </label>
                 <div className="relative">
-                  <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600">$</span>
+                  <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-300">$</span>
                   <input
                     type="number"
                     value={formData.loan_amount}
                     onChange={(e) => handleInputChange('loan_amount', parseFloat(e.target.value))}
                     disabled={isLocked}
-                    className="w-full pl-7 pr-3 py-2 border border-gray-300 rounded font-mono text-sm"
+                    className="w-full pl-7 pr-3 py-2 border border-white/10 rounded font-mono text-sm"
                   />
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1">
+                <label className="block text-sm font-semibold text-slate-300 mb-1">
                   Maximum Term (Years) *
                 </label>
                 <input
@@ -259,77 +259,77 @@ export function Division7AForm({ onBack }: Division7AFormProps) {
                   value={formData.max_term_years}
                   onChange={(e) => handleInputChange('max_term_years', parseInt(e.target.value))}
                   disabled={isLocked}
-                  className="w-full px-3 py-2 border border-gray-300 rounded font-mono text-sm"
+                  className="w-full px-3 py-2 border border-white/10 rounded font-mono text-sm"
                 />
-                <p className="text-xs text-gray-600 mt-1">7 years for secured, 25 years for property</p>
+                <p className="text-xs text-slate-300 mt-1">7 years for secured, 25 years for property</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* Section 2: Current Year Activity */}
-        <div className="border border-gray-300 rounded bg-white overflow-hidden">
-          <div className="bg-gray-50 border-b border-gray-300 px-4 py-2">
-            <h3 className="font-semibold text-gray-900">2. Current Year Activity (FY2024)</h3>
+        <div className="border border-white/10 rounded bg-white overflow-hidden">
+          <div className="bg-white/5 border-b border-white/10 px-4 py-2">
+            <h3 className="font-semibold text-slate-100">2. Current Year Activity (FY2024)</h3>
           </div>
           <table className="w-full text-sm border-collapse">
             <tbody>
-              <tr className="hover:bg-blue-50">
-                <td className="border border-gray-300 px-4 py-2 text-gray-900 font-semibold">
+              <tr className="hover:bg-blue-500/10">
+                <td className="border border-white/10 px-4 py-2 text-slate-100 font-semibold">
                   Opening Balance (01/07/2023)
                 </td>
-                <td className="border border-gray-300 px-4 py-2 text-right">
+                <td className="border border-white/10 px-4 py-2 text-right">
                   <div className="relative inline-block">
-                    <span className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-600">$</span>
+                    <span className="absolute left-2 top-1/2 transform -translate-y-1/2 text-slate-300">$</span>
                     <input
                       type="number"
                       value={formData.opening_balance}
                       onChange={(e) => handleInputChange('opening_balance', parseFloat(e.target.value))}
                       disabled={isLocked}
-                      className="w-48 pl-6 pr-3 py-1 border border-gray-300 rounded font-mono text-right"
+                      className="w-48 pl-6 pr-3 py-1 border border-white/10 rounded font-mono text-right"
                     />
                   </div>
                 </td>
               </tr>
-              <tr className="hover:bg-blue-50">
-                <td className="border border-gray-300 px-4 py-2 text-gray-900">
+              <tr className="hover:bg-blue-500/10">
+                <td className="border border-white/10 px-4 py-2 text-slate-100">
                   Principal Payments
                 </td>
-                <td className="border border-gray-300 px-4 py-2 text-right">
+                <td className="border border-white/10 px-4 py-2 text-right">
                   <div className="relative inline-block">
-                    <span className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-600">$</span>
+                    <span className="absolute left-2 top-1/2 transform -translate-y-1/2 text-slate-300">$</span>
                     <input
                       type="number"
                       value={formData.payments_principal}
                       onChange={(e) => handleInputChange('payments_principal', parseFloat(e.target.value))}
                       disabled={isLocked}
-                      className="w-48 pl-6 pr-3 py-1 border border-gray-300 rounded font-mono text-right"
+                      className="w-48 pl-6 pr-3 py-1 border border-white/10 rounded font-mono text-right"
                     />
                   </div>
                 </td>
               </tr>
-              <tr className="hover:bg-blue-50">
-                <td className="border border-gray-300 px-4 py-2 text-gray-900">
+              <tr className="hover:bg-blue-500/10">
+                <td className="border border-white/10 px-4 py-2 text-slate-100">
                   Interest Payments
                 </td>
-                <td className="border border-gray-300 px-4 py-2 text-right">
+                <td className="border border-white/10 px-4 py-2 text-right">
                   <div className="relative inline-block">
-                    <span className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-600">$</span>
+                    <span className="absolute left-2 top-1/2 transform -translate-y-1/2 text-slate-300">$</span>
                     <input
                       type="number"
                       value={formData.payments_interest}
                       onChange={(e) => handleInputChange('payments_interest', parseFloat(e.target.value))}
                       disabled={isLocked}
-                      className="w-48 pl-6 pr-3 py-1 border border-gray-300 rounded font-mono text-right"
+                      className="w-48 pl-6 pr-3 py-1 border border-white/10 rounded font-mono text-right"
                     />
                   </div>
                 </td>
               </tr>
-              <tr className="bg-blue-50">
-                <td className="border border-gray-300 px-4 py-2 text-gray-900 font-bold">
+              <tr className="bg-blue-500/10">
+                <td className="border border-white/10 px-4 py-2 text-slate-100 font-bold">
                   Closing Balance (30/06/2024)
                 </td>
-                <td className="border border-gray-300 px-4 py-2 text-right text-gray-900 font-mono font-bold">
+                <td className="border border-white/10 px-4 py-2 text-right text-slate-100 font-mono font-bold">
                   ${formatCurrency(formData.closing_balance)}
                 </td>
               </tr>
@@ -338,9 +338,9 @@ export function Division7AForm({ onBack }: Division7AFormProps) {
         </div>
 
         {/* Section 3: Minimum Interest Calculation */}
-        <div className="border border-gray-300 rounded bg-white overflow-hidden">
-          <div className="bg-gray-50 border-b border-gray-300 px-4 py-2 flex items-center justify-between">
-            <h3 className="font-semibold text-gray-900">3. Minimum Interest Calculation</h3>
+        <div className="border border-white/10 rounded bg-white overflow-hidden">
+          <div className="bg-white/5 border-b border-white/10 px-4 py-2 flex items-center justify-between">
+            <h3 className="font-semibold text-slate-100">3. Minimum Interest Calculation</h3>
             <Button size="sm" variant="outline">
               <Calculator className="w-4 h-4 mr-2" />
               Recalculate
@@ -348,11 +348,11 @@ export function Division7AForm({ onBack }: Division7AFormProps) {
           </div>
           <table className="w-full text-sm border-collapse">
             <tbody>
-              <tr className="hover:bg-blue-50">
-                <td className="border border-gray-300 px-4 py-2 text-gray-900">
+              <tr className="hover:bg-blue-500/10">
+                <td className="border border-white/10 px-4 py-2 text-slate-100">
                   RBA Benchmark Rate (FY2024)
                 </td>
-                <td className="border border-gray-300 px-4 py-2 text-right">
+                <td className="border border-white/10 px-4 py-2 text-right">
                   <div className="relative inline-block">
                     <input
                       type="number"
@@ -360,34 +360,34 @@ export function Division7AForm({ onBack }: Division7AFormProps) {
                       value={formData.benchmark_rate}
                       onChange={(e) => handleInputChange('benchmark_rate', parseFloat(e.target.value))}
                       disabled={isLocked}
-                      className="w-32 pr-8 py-1 border border-gray-300 rounded font-mono text-right"
+                      className="w-32 pr-8 py-1 border border-white/10 rounded font-mono text-right"
                     />
-                    <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600">%</span>
+                    <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-300">%</span>
                   </div>
                 </td>
               </tr>
-              <tr className="bg-blue-50">
-                <td className="border border-gray-300 px-4 py-2 text-gray-900 font-semibold">
+              <tr className="bg-blue-500/10">
+                <td className="border border-white/10 px-4 py-2 text-slate-100 font-semibold">
                   Minimum Interest Required
                 </td>
-                <td className="border border-gray-300 px-4 py-2 text-right text-blue-700 font-mono font-bold">
+                <td className="border border-white/10 px-4 py-2 text-right text-blue-300 font-mono font-bold">
                   ${formatCurrency(formData.calculated_min_interest)}
                 </td>
               </tr>
-              <tr className="hover:bg-blue-50">
-                <td className="border border-gray-300 px-4 py-2 text-gray-900">
+              <tr className="hover:bg-blue-500/10">
+                <td className="border border-white/10 px-4 py-2 text-slate-100">
                   Actual Interest Paid
                 </td>
-                <td className="border border-gray-300 px-4 py-2 text-right text-gray-900 font-mono">
+                <td className="border border-white/10 px-4 py-2 text-right text-slate-100 font-mono">
                   ${formatCurrency(formData.actual_interest)}
                 </td>
               </tr>
-              <tr className="bg-red-50">
-                <td className="border border-gray-300 px-4 py-2 text-red-900 font-bold flex items-center gap-2">
+              <tr className="bg-red-500/10">
+                <td className="border border-white/10 px-4 py-2 text-red-300 font-bold flex items-center gap-2">
                   <AlertTriangle className="w-4 h-4" />
                   Interest Shortfall
                 </td>
-                <td className="border border-gray-300 px-4 py-2 text-right text-red-700 font-mono font-bold">
+                <td className="border border-white/10 px-4 py-2 text-right text-red-300 font-mono font-bold">
                   ${formatCurrency(formData.interest_shortfall)}
                 </td>
               </tr>
@@ -396,34 +396,34 @@ export function Division7AForm({ onBack }: Division7AFormProps) {
         </div>
 
         {/* Section 4: Minimum Principal Repayment */}
-        <div className="border border-gray-300 rounded bg-white overflow-hidden">
-          <div className="bg-gray-50 border-b border-gray-300 px-4 py-2">
-            <h3 className="font-semibold text-gray-900">4. Minimum Principal Repayment</h3>
+        <div className="border border-white/10 rounded bg-white overflow-hidden">
+          <div className="bg-white/5 border-b border-white/10 px-4 py-2">
+            <h3 className="font-semibold text-slate-100">4. Minimum Principal Repayment</h3>
           </div>
           <table className="w-full text-sm border-collapse">
             <tbody>
-              <tr className="bg-blue-50">
-                <td className="border border-gray-300 px-4 py-2 text-gray-900 font-semibold">
+              <tr className="bg-blue-500/10">
+                <td className="border border-white/10 px-4 py-2 text-slate-100 font-semibold">
                   Annual Principal Required (Opening Balance ÷ {formData.max_term_years} years)
                 </td>
-                <td className="border border-gray-300 px-4 py-2 text-right text-blue-700 font-mono font-bold">
+                <td className="border border-white/10 px-4 py-2 text-right text-blue-300 font-mono font-bold">
                   ${formatCurrency(formData.annual_principal_required)}
                 </td>
               </tr>
-              <tr className="hover:bg-blue-50">
-                <td className="border border-gray-300 px-4 py-2 text-gray-900">
+              <tr className="hover:bg-blue-500/10">
+                <td className="border border-white/10 px-4 py-2 text-slate-100">
                   Actual Principal Paid
                 </td>
-                <td className="border border-gray-300 px-4 py-2 text-right text-gray-900 font-mono">
+                <td className="border border-white/10 px-4 py-2 text-right text-slate-100 font-mono">
                   ${formatCurrency(formData.actual_principal)}
                 </td>
               </tr>
-              <tr className="bg-red-50">
-                <td className="border border-gray-300 px-4 py-2 text-red-900 font-bold flex items-center gap-2">
+              <tr className="bg-red-500/10">
+                <td className="border border-white/10 px-4 py-2 text-red-300 font-bold flex items-center gap-2">
                   <AlertTriangle className="w-4 h-4" />
                   Principal Shortfall
                 </td>
-                <td className="border border-gray-300 px-4 py-2 text-right text-red-700 font-mono font-bold">
+                <td className="border border-white/10 px-4 py-2 text-right text-red-300 font-mono font-bold">
                   ${formatCurrency(formData.principal_shortfall)}
                 </td>
               </tr>
@@ -432,34 +432,34 @@ export function Division7AForm({ onBack }: Division7AFormProps) {
         </div>
 
         {/* Section 5: Deemed Dividend */}
-        <div className="border border-gray-300 rounded bg-white overflow-hidden">
-          <div className="bg-gray-50 border-b border-gray-300 px-4 py-2">
-            <h3 className="font-semibold text-gray-900">5. Deemed Dividend Calculation</h3>
+        <div className="border border-white/10 rounded bg-white overflow-hidden">
+          <div className="bg-white/5 border-b border-white/10 px-4 py-2">
+            <h3 className="font-semibold text-slate-100">5. Deemed Dividend Calculation</h3>
           </div>
           <table className="w-full text-sm border-collapse">
             <tbody>
-              <tr className="hover:bg-blue-50">
-                <td className="border border-gray-300 px-4 py-2 text-gray-900">
+              <tr className="hover:bg-blue-500/10">
+                <td className="border border-white/10 px-4 py-2 text-slate-100">
                   Interest Shortfall (from Section 3)
                 </td>
-                <td className="border border-gray-300 px-4 py-2 text-right text-gray-900 font-mono">
+                <td className="border border-white/10 px-4 py-2 text-right text-slate-100 font-mono">
                   ${formatCurrency(formData.interest_shortfall)}
                 </td>
               </tr>
-              <tr className="hover:bg-blue-50">
-                <td className="border border-gray-300 px-4 py-2 text-gray-900">
+              <tr className="hover:bg-blue-500/10">
+                <td className="border border-white/10 px-4 py-2 text-slate-100">
                   Principal Shortfall (from Section 4)
                 </td>
-                <td className="border border-gray-300 px-4 py-2 text-right text-gray-900 font-mono">
+                <td className="border border-white/10 px-4 py-2 text-right text-slate-100 font-mono">
                   ${formatCurrency(formData.principal_shortfall)}
                 </td>
               </tr>
-              <tr className="bg-red-100 border-2 border-red-400">
-                <td className="border border-gray-300 px-4 py-3 text-red-900 font-bold text-lg flex items-center gap-2">
+              <tr className="bg-red-500/15 border-2 border-red-400">
+                <td className="border border-white/10 px-4 py-3 text-red-300 font-bold text-lg flex items-center gap-2">
                   <AlertTriangle className="w-5 h-5" />
                   DEEMED DIVIDEND (Assessable to Shareholder)
                 </td>
-                <td className="border border-gray-300 px-4 py-3 text-right text-red-700 font-mono font-bold text-lg">
+                <td className="border border-white/10 px-4 py-3 text-right text-red-300 font-mono font-bold text-lg">
                   ${formatCurrency(formData.deemed_dividend)}
                 </td>
               </tr>
@@ -468,12 +468,12 @@ export function Division7AForm({ onBack }: Division7AFormProps) {
         </div>
 
         {/* Export Mapping Info */}
-        <div className="bg-blue-50 border border-blue-300 rounded px-4 py-3">
+        <div className="bg-blue-500/10 border border-blue-300 rounded px-4 py-3">
           <div className="flex items-start gap-3">
-            <Info className="w-5 h-5 text-blue-600 mt-0.5" />
+            <Info className="w-5 h-5 text-blue-400 mt-0.5" />
             <div className="flex-1">
-              <h3 className="font-semibold text-blue-900 mb-1">Auto-Export Configuration</h3>
-              <p className="text-sm text-blue-800">
+              <h3 className="font-semibold text-blue-300 mb-1">Auto-Export Configuration</h3>
+              <p className="text-sm text-blue-300">
                 Deemed dividend of ${formatCurrency(formData.deemed_dividend)} will automatically populate Item 11H of the Company Tax Return and create franking account entry.
               </p>
             </div>

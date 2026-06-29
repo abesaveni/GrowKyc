@@ -242,19 +242,19 @@ export function OngoingDueDiligenceHub({ onBack }: OngoingDueDiligenceHubProps) 
             <div className="text-xs text-slate-300 mt-1">Total Clients</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-red-600">{stats.overdue}</div>
+            <div className="text-3xl font-bold text-red-400">{stats.overdue}</div>
             <div className="text-xs text-slate-300 mt-1">Overdue</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-amber-600">{stats.dueSoon}</div>
+            <div className="text-3xl font-bold text-amber-400">{stats.dueSoon}</div>
             <div className="text-xs text-slate-300 mt-1">Due Soon</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600">{stats.inProgress}</div>
+            <div className="text-3xl font-bold text-blue-400">{stats.inProgress}</div>
             <div className="text-xs text-slate-300 mt-1">In Progress</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-green-600">{stats.current}</div>
+            <div className="text-3xl font-bold text-green-400">{stats.current}</div>
             <div className="text-xs text-slate-300 mt-1">Current</div>
           </div>
         </div>
@@ -318,8 +318,8 @@ export function OngoingDueDiligenceHub({ onBack }: OngoingDueDiligenceHubProps) 
               <div className="space-y-3">
                 {filteredQueue.map((client) => (
                   <Card key={client.clientId} className={`border-2 ${
-                    client.status === 'Overdue' ? 'border-red-300 bg-red-50' :
-                    client.status === 'Due Soon' ? 'border-amber-300 bg-amber-50' :
+                    client.status === 'Overdue' ? 'border-red-300 bg-red-500/10' :
+                    client.status === 'Due Soon' ? 'border-amber-300 bg-amber-500/10' :
                     'border-white/10'
                   }`}>
                     <CardContent className="p-6">
@@ -327,7 +327,7 @@ export function OngoingDueDiligenceHub({ onBack }: OngoingDueDiligenceHubProps) 
                         {/* Client Info */}
                         <div className="md:col-span-4">
                           <div className="flex items-center gap-2 mb-2">
-                            <Building className="w-5 h-5 text-cyan-600" />
+                            <Building className="w-5 h-5 text-cyan-400" />
                             <div>
                               <div className="font-bold text-white">{client.clientName}</div>
                               <div className="text-xs text-slate-300">{client.clientId}</div>
@@ -353,7 +353,7 @@ export function OngoingDueDiligenceHub({ onBack }: OngoingDueDiligenceHubProps) 
                             <div className="flex justify-between">
                               <span className="text-slate-300">Next Due:</span>
                               <span className={`font-semibold ${
-                                client.daysOverdue > 0 ? 'text-red-600' : 'text-white'
+                                client.daysOverdue > 0 ? 'text-red-400' : 'text-white'
                               }`}>
                                 {client.nextReviewDue}
                                 {client.daysOverdue > 0 && ` (${client.daysOverdue}d overdue)`}
@@ -428,7 +428,7 @@ export function OngoingDueDiligenceHub({ onBack }: OngoingDueDiligenceHubProps) 
                       className="flex items-center justify-between p-4 bg-[#0f172a] rounded-lg border border-white/10 hover:bg-white/5 transition-colors"
                     >
                       <div className="flex items-center gap-4">
-                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-cyan-100 text-cyan-600 font-bold text-sm">
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-cyan-500/15 text-cyan-400 font-bold text-sm">
                           {item.id}
                         </div>
                         <div>
@@ -446,23 +446,23 @@ export function OngoingDueDiligenceHub({ onBack }: OngoingDueDiligenceHubProps) 
                   ))}
                 </div>
 
-                <div className="mt-6 p-4 bg-blue-50 rounded-lg border-2 border-blue-200">
-                  <h3 className="font-bold text-blue-900 mb-2">Review Frequency by Risk Rating</h3>
+                <div className="mt-6 p-4 bg-blue-500/10 rounded-lg border-2 border-blue-500/30">
+                  <h3 className="font-bold text-blue-300 mb-2">Review Frequency by Risk Rating</h3>
                   <div className="grid md:grid-cols-4 gap-4 text-sm">
-                    <div className="p-3 bg-[#1e293b] rounded border border-red-200">
-                      <div className="font-bold text-red-600 mb-1">EXTREME RISK</div>
+                    <div className="p-3 bg-[#1e293b] rounded border border-red-500/30">
+                      <div className="font-bold text-red-400 mb-1">EXTREME RISK</div>
                       <div className="text-slate-300">Every 6 months</div>
                     </div>
-                    <div className="p-3 bg-[#1e293b] rounded border border-orange-200">
-                      <div className="font-bold text-orange-600 mb-1">HIGH RISK</div>
+                    <div className="p-3 bg-[#1e293b] rounded border border-orange-500/30">
+                      <div className="font-bold text-orange-400 mb-1">HIGH RISK</div>
                       <div className="text-slate-300">Every 12 months</div>
                     </div>
-                    <div className="p-3 bg-[#1e293b] rounded border border-amber-200">
-                      <div className="font-bold text-amber-600 mb-1">MEDIUM RISK</div>
+                    <div className="p-3 bg-[#1e293b] rounded border border-amber-500/30">
+                      <div className="font-bold text-amber-400 mb-1">MEDIUM RISK</div>
                       <div className="text-slate-300">Every 18 months</div>
                     </div>
-                    <div className="p-3 bg-[#1e293b] rounded border border-green-200">
-                      <div className="font-bold text-green-600 mb-1">LOW RISK</div>
+                    <div className="p-3 bg-[#1e293b] rounded border border-green-500/30">
+                      <div className="font-bold text-green-400 mb-1">LOW RISK</div>
                       <div className="text-slate-300">Every 36 months</div>
                     </div>
                   </div>
@@ -489,7 +489,7 @@ export function OngoingDueDiligenceHub({ onBack }: OngoingDueDiligenceHubProps) 
                     >
                       <div className="flex items-center justify-between mb-3">
                         <div className="flex items-center gap-3">
-                          <AlertTriangle className="w-5 h-5 text-amber-600" />
+                          <AlertTriangle className="w-5 h-5 text-amber-400" />
                           <div>
                             <div className="font-bold text-white">{trigger.type}</div>
                             <div className="text-sm text-slate-300 mt-1">{trigger.description}</div>
@@ -556,10 +556,10 @@ export function OngoingDueDiligenceHub({ onBack }: OngoingDueDiligenceHubProps) 
                       nextReview: '2024-09-10'
                     }
                   ].map((review, idx) => (
-                    <div key={idx} className="p-4 bg-green-50 rounded-lg border-2 border-green-200">
+                    <div key={idx} className="p-4 bg-green-500/10 rounded-lg border-2 border-green-500/30">
                       <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center gap-3">
-                          <CheckCircle className="w-5 h-5 text-green-600" />
+                          <CheckCircle className="w-5 h-5 text-green-400" />
                           <div>
                             <div className="font-bold text-white">{review.reviewId}</div>
                             <div className="text-sm text-slate-300">{review.client}</div>

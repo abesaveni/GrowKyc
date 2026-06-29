@@ -380,7 +380,7 @@ export function IndustryModules() {
             </div>
           </div>
           <div className="flex gap-3">
-            <Button className="bg-white text-teal-600 hover:bg-teal-50">
+            <Button className="bg-white text-teal-400 hover:bg-teal-500/10">
               <Settings className="w-5 h-5 mr-2" />
               Configure
             </Button>
@@ -424,15 +424,15 @@ export function IndustryModules() {
       </div>
 
       {/* Industry Overview */}
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+      <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-6">
         <div className="flex items-start gap-3">
-          <Target className="w-6 h-6 text-blue-600 mt-0.5" />
+          <Target className="w-6 h-6 text-blue-400 mt-0.5" />
           <div>
-            <h3 className="font-bold text-blue-900 mb-2">Industry-Specific Compliance</h3>
-            <p className="text-sm text-blue-800 mb-3">
+            <h3 className="font-bold text-blue-300 mb-2">Industry-Specific Compliance</h3>
+            <p className="text-sm text-blue-300 mb-3">
               Each industry has unique AML/CTF risk profiles and regulatory requirements. These modules provide:
             </p>
-            <ul className="text-sm text-blue-800 space-y-1">
+            <ul className="text-sm text-blue-300 space-y-1">
               <li>• Tailored risk assessment criteria based on industry characteristics</li>
               <li>• Industry-specific red flag indicators and suspicious activity patterns</li>
               <li>• Customized CDD questionnaires relevant to the industry</li>
@@ -452,17 +452,17 @@ export function IndustryModules() {
               key={industry.id}
               onClick={() => setSelectedIndustry(industry.id)}
               className={`bg-white rounded-lg border-2 p-6 cursor-pointer transition-all hover:shadow-lg ${
-                selectedIndustry === industry.id ? 'border-teal-500 shadow-lg' : 'border-gray-200'
+                selectedIndustry === industry.id ? 'border-teal-500 shadow-lg' : 'border-white/10'
               }`}
             >
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div className={`w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center`}>
-                    <Icon className="w-6 h-6 text-teal-600" />
+                  <div className={`w-12 h-12 bg-teal-500/15 rounded-lg flex items-center justify-center`}>
+                    <Icon className="w-6 h-6 text-teal-400" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900">{industry.name}</h3>
-                    <p className="text-sm text-gray-600">{industry.clientCount} clients</p>
+                    <h3 className="font-bold text-slate-100">{industry.name}</h3>
+                    <p className="text-sm text-slate-300">{industry.clientCount} clients</p>
                   </div>
                 </div>
                 <div className="flex flex-col gap-2 items-end">
@@ -475,7 +475,7 @@ export function IndustryModules() {
                 </div>
               </div>
 
-              <p className="text-sm text-gray-700 mb-3">{industry.description}</p>
+              <p className="text-sm text-slate-300 mb-3">{industry.description}</p>
 
               {industry.status !== 'coming-soon' && (
                 <Button 
@@ -494,8 +494,8 @@ export function IndustryModules() {
       {selectedModule && selectedModule.status !== 'coming-soon' && (
         <div className="bg-white rounded-lg border-2 border-teal-500 p-6">
           <div className="flex items-center gap-3 mb-6">
-            {React.createElement(selectedModule.icon, { className: "w-8 h-8 text-teal-600" })}
-            <h2 className="text-2xl font-bold text-gray-900">{selectedModule.name}</h2>
+            {React.createElement(selectedModule.icon, { className: "w-8 h-8 text-teal-400" })}
+            <h2 className="text-2xl font-bold text-slate-100">{selectedModule.name}</h2>
             <span className={`px-3 py-1 bg-${getRiskColor(selectedModule.riskProfile)}-100 text-${getRiskColor(selectedModule.riskProfile)}-700 text-sm font-bold rounded-full`}>
               {selectedModule.riskProfile.toUpperCase()} RISK INDUSTRY
             </span>
@@ -503,14 +503,14 @@ export function IndustryModules() {
 
           <div className="grid grid-cols-3 gap-6">
             {/* Specific Requirements */}
-            <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+            <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
               <div className="flex items-center gap-2 mb-3">
-                <Shield className="w-5 h-5 text-blue-600" />
-                <h4 className="font-bold text-blue-900">Specific Requirements</h4>
+                <Shield className="w-5 h-5 text-blue-400" />
+                <h4 className="font-bold text-blue-300">Specific Requirements</h4>
               </div>
               <ul className="space-y-2">
                 {selectedModule.specificRequirements.map((req, index) => (
-                  <li key={index} className="flex items-start gap-2 text-sm text-blue-800">
+                  <li key={index} className="flex items-start gap-2 text-sm text-blue-300">
                     <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />
                     <span>{req}</span>
                   </li>
@@ -519,14 +519,14 @@ export function IndustryModules() {
             </div>
 
             {/* Common Red Flags */}
-            <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+            <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
               <div className="flex items-center gap-2 mb-3">
-                <AlertTriangle className="w-5 h-5 text-red-600" />
-                <h4 className="font-bold text-red-900">Common Red Flags</h4>
+                <AlertTriangle className="w-5 h-5 text-red-400" />
+                <h4 className="font-bold text-red-300">Common Red Flags</h4>
               </div>
               <ul className="space-y-2">
                 {selectedModule.commonRedFlags.map((flag, index) => (
-                  <li key={index} className="flex items-start gap-2 text-sm text-red-800">
+                  <li key={index} className="flex items-start gap-2 text-sm text-red-300">
                     <AlertTriangle className="w-4 h-4 mt-0.5 flex-shrink-0" />
                     <span>{flag}</span>
                   </li>
@@ -535,14 +535,14 @@ export function IndustryModules() {
             </div>
 
             {/* Typical Transactions */}
-            <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+            <div className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
               <div className="flex items-center gap-2 mb-3">
-                <DollarSign className="w-5 h-5 text-green-600" />
-                <h4 className="font-bold text-green-900">Typical Transactions</h4>
+                <DollarSign className="w-5 h-5 text-green-400" />
+                <h4 className="font-bold text-green-300">Typical Transactions</h4>
               </div>
               <ul className="space-y-2">
                 {selectedModule.typicalTransactions.map((transaction, index) => (
-                  <li key={index} className="flex items-start gap-2 text-sm text-green-800">
+                  <li key={index} className="flex items-start gap-2 text-sm text-green-300">
                     <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />
                     <span>{transaction}</span>
                   </li>

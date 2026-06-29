@@ -130,7 +130,7 @@ export function EnterpriseDataTable<T extends Record<string, any>>({
               {searchTerm && (
                 <button
                   onClick={() => setSearchTerm('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-slate-300"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -177,7 +177,7 @@ export function EnterpriseDataTable<T extends Record<string, any>>({
                     size="sm"
                     onClick={() => action.onClick(selectedData)}
                     className={`gap-2 ${
-                      action.variant === 'danger' ? 'text-red-600 hover:bg-red-50' : ''
+                      action.variant === 'danger' ? 'text-red-400 hover:bg-red-500/10' : ''
                     }`}
                   >
                     {Icon && <Icon className="w-4 h-4" />}
@@ -191,7 +191,7 @@ export function EnterpriseDataTable<T extends Record<string, any>>({
       </div>
 
       {/* Results count */}
-      <div className="text-sm text-gray-600">
+      <div className="text-sm text-slate-300">
         Showing {sortedData.length} of {data.length} results
         {selectedRows.size > 0 && ` • ${selectedRows.size} selected`}
       </div>
@@ -200,7 +200,7 @@ export function EnterpriseDataTable<T extends Record<string, any>>({
       <div className="border rounded-lg overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-gray-50 border-b">
+            <thead className="bg-white/5 border-b">
               <tr>
                 {actions.length > 0 && (
                   <th className="w-12 px-4 py-3">
@@ -208,15 +208,15 @@ export function EnterpriseDataTable<T extends Record<string, any>>({
                       type="checkbox"
                       checked={selectedRows.size === sortedData.length && sortedData.length > 0}
                       onChange={handleSelectAll}
-                      className="rounded border-gray-300"
+                      className="rounded border-white/10"
                     />
                   </th>
                 )}
                 {columns.map((column, idx) => (
                   <th
                     key={idx}
-                    className={`px-4 py-3 text-left text-sm font-semibold text-gray-900 ${
-                      column.sortable ? 'cursor-pointer hover:bg-gray-100' : ''
+                    className={`px-4 py-3 text-left text-sm font-semibold text-slate-100 ${
+                      column.sortable ? 'cursor-pointer hover:bg-white/5' : ''
                     }`}
                     style={{ width: column.width }}
                     onClick={() => column.sortable && handleSort(String(column.key))}
@@ -238,7 +238,7 @@ export function EnterpriseDataTable<T extends Record<string, any>>({
                 <tr>
                   <td
                     colSpan={columns.length + (actions.length > 0 ? 1 : 0)}
-                    className="px-4 py-12 text-center text-gray-500"
+                    className="px-4 py-12 text-center text-slate-400"
                   >
                     {emptyMessage}
                   </td>
@@ -247,9 +247,9 @@ export function EnterpriseDataTable<T extends Record<string, any>>({
                 sortedData.map((row, rowIdx) => (
                   <tr
                     key={rowIdx}
-                    className={`hover:bg-gray-50 transition-colors ${
+                    className={`hover:bg-white/5 transition-colors ${
                       onRowClick ? 'cursor-pointer' : ''
-                    } ${selectedRows.has(rowIdx) ? 'bg-blue-50' : ''}`}
+                    } ${selectedRows.has(rowIdx) ? 'bg-blue-500/10' : ''}`}
                     onClick={() => onRowClick?.(row)}
                   >
                     {actions.length > 0 && (
@@ -262,12 +262,12 @@ export function EnterpriseDataTable<T extends Record<string, any>>({
                             handleSelectRow(rowIdx);
                           }}
                           onClick={(e) => e.stopPropagation()}
-                          className="rounded border-gray-300"
+                          className="rounded border-white/10"
                         />
                       </td>
                     )}
                     {columns.map((column, colIdx) => (
-                      <td key={colIdx} className="px-4 py-3 text-sm text-gray-900">
+                      <td key={colIdx} className="px-4 py-3 text-sm text-slate-100">
                         {column.render
                           ? column.render(row[column.key as keyof T], row)
                           : String(row[column.key as keyof T] ?? '')}

@@ -195,7 +195,7 @@ export function UserApprovalQueue({ onBack }: UserApprovalQueueProps) {
 
       <div className="p-8 max-w-7xl mx-auto">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold text-gray-900">
+          <h2 className="text-2xl font-bold text-slate-100">
             Pending Accounts ({pendingUsers.length})
           </h2>
           <Button variant="outline" size="sm" onClick={fetchPendingUsers} disabled={loading}>
@@ -207,14 +207,14 @@ export function UserApprovalQueue({ onBack }: UserApprovalQueueProps) {
         {loading ? (
           <div className="flex items-center justify-center py-24">
             <Loader2 className="w-8 h-8 animate-spin text-gray-400" />
-            <span className="ml-3 text-gray-500">Loading pending users...</span>
+            <span className="ml-3 text-slate-400">Loading pending users...</span>
           </div>
         ) : pendingUsers.length === 0 ? (
-          <Card className="border-2 border-green-200 bg-green-50">
+          <Card className="border-2 border-green-500/30 bg-green-500/10">
             <CardContent className="p-12 text-center">
-              <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-green-900 mb-2">All clear!</h3>
-              <p className="text-green-700">No pending accounts require review at this time.</p>
+              <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-4" />
+              <h3 className="text-2xl font-bold text-green-300 mb-2">All clear!</h3>
+              <p className="text-green-300">No pending accounts require review at this time.</p>
             </CardContent>
           </Card>
         ) : (
@@ -226,18 +226,18 @@ export function UserApprovalQueue({ onBack }: UserApprovalQueueProps) {
               return (
                 <Card
                   key={user.id}
-                  className={`border-2 ${hasRisk ? 'border-red-200 bg-red-50' : 'border-green-200 bg-green-50'}`}
+                  className={`border-2 ${hasRisk ? 'border-red-500/30 bg-red-500/10' : 'border-green-500/30 bg-green-500/10'}`}
                 >
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between">
                       <div className="flex items-start gap-4 flex-1">
-                        <div className={`w-16 h-16 rounded-xl flex items-center justify-center ${hasRisk ? 'bg-red-100' : 'bg-green-100'}`}>
-                          <Users className={`w-8 h-8 ${hasRisk ? 'text-red-600' : 'text-green-600'}`} />
+                        <div className={`w-16 h-16 rounded-xl flex items-center justify-center ${hasRisk ? 'bg-red-500/15' : 'bg-green-500/15'}`}>
+                          <Users className={`w-8 h-8 ${hasRisk ? 'text-red-400' : 'text-green-400'}`} />
                         </div>
 
                         <div className="flex-1">
                           <div className="flex items-center gap-3 mb-2">
-                            <h3 className="text-2xl font-bold text-gray-900">{user.name}</h3>
+                            <h3 className="text-2xl font-bold text-slate-100">{user.name}</h3>
                             <Badge className={getRoleBadgeColor(user.role)}>
                               {user.role}
                             </Badge>
@@ -251,26 +251,26 @@ export function UserApprovalQueue({ onBack }: UserApprovalQueueProps) {
 
                           <div className="grid grid-cols-3 gap-6 mb-4">
                             <div>
-                              <div className="text-xs text-gray-600 mb-1">Email</div>
+                              <div className="text-xs text-slate-300 mb-1">Email</div>
                               <div className="flex items-center gap-2">
-                                <Mail className="w-4 h-4 text-gray-500" />
-                                <span className="font-semibold text-gray-900">{user.email}</span>
+                                <Mail className="w-4 h-4 text-slate-400" />
+                                <span className="font-semibold text-slate-100">{user.email}</span>
                                 {user.verified ? (
-                                  <CheckCircle className="w-4 h-4 text-green-600" />
+                                  <CheckCircle className="w-4 h-4 text-green-400" />
                                 ) : (
-                                  <XCircle className="w-4 h-4 text-red-600" />
+                                  <XCircle className="w-4 h-4 text-red-400" />
                                 )}
                               </div>
                             </div>
 
                             <div>
-                              <div className="text-xs text-gray-600 mb-1">User ID</div>
-                              <div className="font-semibold text-gray-900">#{user.id}</div>
+                              <div className="text-xs text-slate-300 mb-1">User ID</div>
+                              <div className="font-semibold text-slate-100">#{user.id}</div>
                             </div>
 
                             <div>
-                              <div className="text-xs text-gray-600 mb-1">Registered</div>
-                              <div className="font-semibold text-gray-900">
+                              <div className="text-xs text-slate-300 mb-1">Registered</div>
+                              <div className="font-semibold text-slate-100">
                                 {format(user.joinedDate, 'dd MMM yyyy, HH:mm')}
                               </div>
                             </div>
@@ -296,7 +296,7 @@ export function UserApprovalQueue({ onBack }: UserApprovalQueueProps) {
                         <Button
                           size="sm"
                           variant="outline"
-                          className="text-red-600 hover:text-red-700 border-red-300"
+                          className="text-red-400 hover:text-red-300 border-red-300"
                           onClick={() => handleReject(user)}
                           disabled={isProcessing}
                         >
@@ -329,54 +329,54 @@ export function UserApprovalQueue({ onBack }: UserApprovalQueueProps) {
         )}
 
         {/* Approval Guidelines */}
-        <Card className="mt-12 bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200">
+        <Card className="mt-12 bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-500/30">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Shield className="w-5 h-5 text-purple-600" />
+              <Shield className="w-5 h-5 text-purple-400" />
               Approval Guidelines
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 gap-6">
               <div>
-                <h4 className="font-bold text-gray-900 mb-3">Required for Approval:</h4>
-                <ul className="space-y-2 text-sm text-gray-700">
+                <h4 className="font-bold text-slate-100 mb-3">Required for Approval:</h4>
+                <ul className="space-y-2 text-sm text-slate-300">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-400" />
                     Valid email address verified
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-400" />
                     Business registration confirmed
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-400" />
                     No matches on DFAT sanctions list
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-400" />
                     No matches on ASIC banned/disqualified list
                   </li>
                 </ul>
               </div>
 
               <div>
-                <h4 className="font-bold text-gray-900 mb-3">Automatic Rejection Triggers:</h4>
-                <ul className="space-y-2 text-sm text-gray-700">
+                <h4 className="font-bold text-slate-100 mb-3">Automatic Rejection Triggers:</h4>
+                <ul className="space-y-2 text-sm text-slate-300">
                   <li className="flex items-center gap-2">
-                    <XCircle className="w-4 h-4 text-red-600" />
+                    <XCircle className="w-4 h-4 text-red-400" />
                     Match on DFAT sanctions list
                   </li>
                   <li className="flex items-center gap-2">
-                    <XCircle className="w-4 h-4 text-red-600" />
+                    <XCircle className="w-4 h-4 text-red-400" />
                     Match on ASIC banned/disqualified list
                   </li>
                   <li className="flex items-center gap-2">
-                    <XCircle className="w-4 h-4 text-red-600" />
+                    <XCircle className="w-4 h-4 text-red-400" />
                     Fake/disposable email address
                   </li>
                   <li className="flex items-center gap-2">
-                    <XCircle className="w-4 h-4 text-red-600" />
+                    <XCircle className="w-4 h-4 text-red-400" />
                     High-risk jurisdiction with no local presence
                   </li>
                 </ul>

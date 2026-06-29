@@ -176,44 +176,44 @@ export const renderInternalDashboard = (onMatterClick: (id: string) => void) => 
       <Card>
         <CardContent className="p-6">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-600">Settlements This Week</span>
-            <Calendar className="w-5 h-5 text-blue-600" />
+            <span className="text-sm text-slate-300">Settlements This Week</span>
+            <Calendar className="w-5 h-5 text-blue-400" />
           </div>
-          <p className="text-3xl font-bold text-gray-900">12</p>
-          <p className="text-xs text-gray-500 mt-1">3 today, 9 upcoming</p>
+          <p className="text-3xl font-bold text-slate-100">12</p>
+          <p className="text-xs text-slate-400 mt-1">3 today, 9 upcoming</p>
         </CardContent>
       </Card>
 
       <Card>
         <CardContent className="p-6">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-600">Overdue Conditions</span>
-            <AlertTriangle className="w-5 h-5 text-red-600" />
+            <span className="text-sm text-slate-300">Overdue Conditions</span>
+            <AlertTriangle className="w-5 h-5 text-red-400" />
           </div>
-          <p className="text-3xl font-bold text-red-600">9</p>
-          <p className="text-xs text-gray-500 mt-1">Requires attention</p>
+          <p className="text-3xl font-bold text-red-400">9</p>
+          <p className="text-xs text-slate-400 mt-1">Requires attention</p>
         </CardContent>
       </Card>
 
       <Card>
         <CardContent className="p-6">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-600">Active PEXA Workspaces</span>
-            <Building2 className="w-5 h-5 text-green-600" />
+            <span className="text-sm text-slate-300">Active PEXA Workspaces</span>
+            <Building2 className="w-5 h-5 text-green-400" />
           </div>
-          <p className="text-3xl font-bold text-gray-900">28</p>
-          <p className="text-xs text-green-600 mt-1">4 ready to settle</p>
+          <p className="text-3xl font-bold text-slate-100">28</p>
+          <p className="text-xs text-green-400 mt-1">4 ready to settle</p>
         </CardContent>
       </Card>
 
       <Card>
         <CardContent className="p-6">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-600">Risk Alerts</span>
-            <Shield className="w-5 h-5 text-amber-600" />
+            <span className="text-sm text-slate-300">Risk Alerts</span>
+            <Shield className="w-5 h-5 text-amber-400" />
           </div>
-          <p className="text-3xl font-bold text-gray-900">5</p>
-          <p className="text-xs text-gray-500 mt-1">2 high priority</p>
+          <p className="text-3xl font-bold text-slate-100">5</p>
+          <p className="text-xs text-slate-400 mt-1">2 high priority</p>
         </CardContent>
       </Card>
     </div>
@@ -226,19 +226,19 @@ export const renderInternalDashboard = (onMatterClick: (id: string) => void) => 
       <CardContent>
         <div className="grid grid-cols-1 md:grid-cols-9 gap-3">
           {[
-            { stage: 'Intake', count: 8, color: 'bg-gray-100' },
-            { stage: 'Verification', count: 12, color: 'bg-blue-100' },
-            { stage: 'Conditions', count: 15, color: 'bg-purple-100' },
-            { stage: 'Doc Prep', count: 18, color: 'bg-amber-100' },
-            { stage: 'Signing', count: 10, color: 'bg-teal-100' },
-            { stage: 'Pre-Settlement', count: 6, color: 'bg-green-100' },
-            { stage: 'Settlement', count: 3, color: 'bg-emerald-100' },
-            { stage: 'Post-Settlement', count: 4, color: 'bg-indigo-100' },
-            { stage: 'Archive', count: 142, color: 'bg-gray-50' }
+            { stage: 'Intake', count: 8, color: 'bg-white/5' },
+            { stage: 'Verification', count: 12, color: 'bg-blue-500/15' },
+            { stage: 'Conditions', count: 15, color: 'bg-purple-500/15' },
+            { stage: 'Doc Prep', count: 18, color: 'bg-amber-500/15' },
+            { stage: 'Signing', count: 10, color: 'bg-teal-500/15' },
+            { stage: 'Pre-Settlement', count: 6, color: 'bg-green-500/15' },
+            { stage: 'Settlement', count: 3, color: 'bg-emerald-500/15' },
+            { stage: 'Post-Settlement', count: 4, color: 'bg-indigo-500/15' },
+            { stage: 'Archive', count: 142, color: 'bg-white/5' }
           ].map((item, idx) => (
             <div key={idx} className={`${item.color} p-4 rounded-lg text-center cursor-pointer hover:shadow-md transition-shadow`} onClick={() => toast.info(`${item.count} matters in ${item.stage}`)}>
-              <p className="text-2xl font-bold text-gray-900">{item.count}</p>
-              <p className="text-xs text-gray-600 mt-1">{item.stage}</p>
+              <p className="text-2xl font-bold text-slate-100">{item.count}</p>
+              <p className="text-xs text-slate-300 mt-1">{item.stage}</p>
             </div>
           ))}
         </div>
@@ -259,22 +259,22 @@ export const renderInternalDashboard = (onMatterClick: (id: string) => void) => 
       <CardContent>
         <div className="space-y-3">
           {testMatters.slice(0, 3).map((matter) => (
-            <div key={matter.id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 cursor-pointer" onClick={() => onMatterClick(matter.id)}>
+            <div key={matter.id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-white/5 cursor-pointer" onClick={() => onMatterClick(matter.id)}>
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
-                  <p className="font-semibold text-gray-900">{matter.name}</p>
+                  <p className="font-semibold text-slate-100">{matter.name}</p>
                   <span className={`px-2 py-1 text-xs font-semibold rounded ${
-                    matter.status === 'on_track' ? 'bg-green-100 text-green-700' :
-                    matter.status === 'at_risk' ? 'bg-amber-100 text-amber-700' :
-                    'bg-red-100 text-red-700'
+                    matter.status === 'on_track' ? 'bg-green-500/15 text-green-300' :
+                    matter.status === 'at_risk' ? 'bg-amber-500/15 text-amber-300' :
+                    'bg-red-500/15 text-red-300'
                   }`}>
                     {matter.stage}
                   </span>
-                  <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-semibold rounded">
+                  <span className="px-2 py-1 bg-white/5 text-slate-300 text-xs font-semibold rounded">
                     {matter.state}
                   </span>
                 </div>
-                <div className="flex items-center gap-4 text-sm text-gray-600">
+                <div className="flex items-center gap-4 text-sm text-slate-300">
                   <span className="flex items-center gap-1">
                     <MapPin className="w-4 h-4" />
                     {matter.property}
@@ -308,18 +308,18 @@ export const renderInternalDashboard = (onMatterClick: (id: string) => void) => 
             { matter: 'MAT-2024-1246', property: '45 George Street', risk: 'PEXA drift detected', severity: 'medium', age: '2 days' },
             { matter: 'MAT-2024-1243', property: '156 St Georges Terrace', risk: 'Expired ID document', severity: 'medium', age: '3 days' }
           ].map((alert, idx) => (
-            <div key={idx} className="flex items-center justify-between p-3 border-l-4 border-red-500 bg-red-50 rounded">
+            <div key={idx} className="flex items-center justify-between p-3 border-l-4 border-red-500 bg-red-500/10 rounded">
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-1">
-                  <p className="font-mono text-sm font-semibold text-gray-900">{alert.matter}</p>
+                  <p className="font-mono text-sm font-semibold text-slate-100">{alert.matter}</p>
                   <span className={`px-2 py-1 text-xs font-semibold rounded ${
-                    alert.severity === 'high' ? 'bg-red-600 text-white' : 'bg-amber-100 text-amber-700'
+                    alert.severity === 'high' ? 'bg-red-600 text-white' : 'bg-amber-500/15 text-amber-300'
                   }`}>
                     {alert.severity.toUpperCase()}
                   </span>
                 </div>
-                <p className="text-sm text-gray-900">{alert.risk}</p>
-                <p className="text-xs text-gray-600">{alert.property} • Aging: {alert.age}</p>
+                <p className="text-sm text-slate-100">{alert.risk}</p>
+                <p className="text-xs text-slate-300">{alert.property} • Aging: {alert.age}</p>
               </div>
               <Button size="sm" onClick={() => toast.info('Review alert')}>
                 Review
@@ -342,22 +342,22 @@ export const renderExternalDashboard = (onMatterClick: (id: string) => void) => 
       <CardContent>
         <div className="space-y-3">
           {testMatters.slice(0, 2).map((matter) => (
-            <div key={matter.id} className="p-4 border rounded-lg hover:bg-gray-50 cursor-pointer" onClick={() => onMatterClick(matter.id)}>
+            <div key={matter.id} className="p-4 border rounded-lg hover:bg-white/5 cursor-pointer" onClick={() => onMatterClick(matter.id)}>
               <div className="flex items-center justify-between mb-3">
                 <div>
-                  <p className="font-semibold text-gray-900 mb-1">{matter.name}</p>
-                  <p className="text-sm text-gray-600">{matter.property}</p>
+                  <p className="font-semibold text-slate-100 mb-1">{matter.name}</p>
+                  <p className="text-sm text-slate-300">{matter.property}</p>
                 </div>
                 <span className={`px-3 py-1 text-xs font-semibold rounded ${
-                  matter.status === 'on_track' ? 'bg-green-100 text-green-700' :
-                  matter.status === 'at_risk' ? 'bg-amber-100 text-amber-700' :
-                  'bg-red-100 text-red-700'
+                  matter.status === 'on_track' ? 'bg-green-500/15 text-green-300' :
+                  matter.status === 'at_risk' ? 'bg-amber-500/15 text-amber-300' :
+                  'bg-red-500/15 text-red-300'
                 }`}>
                   {matter.stage}
                 </span>
               </div>
               <div className="flex items-center justify-between text-sm">
-                <span className="text-gray-600">Settlement: {matter.settlementDate}</span>
+                <span className="text-slate-300">Settlement: {matter.settlementDate}</span>
                 <Button size="sm" variant="outline">
                   View Details
                 </Button>
@@ -374,19 +374,19 @@ export const renderExternalDashboard = (onMatterClick: (id: string) => void) => 
       </CardHeader>
       <CardContent>
         <div className="space-y-3">
-          <div className="flex items-center gap-3 p-3 bg-amber-50 border border-amber-200 rounded-lg">
-            <AlertCircle className="w-5 h-5 text-amber-600" />
+          <div className="flex items-center gap-3 p-3 bg-amber-500/10 border border-amber-500/30 rounded-lg">
+            <AlertCircle className="w-5 h-5 text-amber-400" />
             <div className="flex-1">
-              <p className="font-medium text-gray-900">Upload signed Contract of Sale</p>
-              <p className="text-sm text-gray-600">123 Collins Street Purchase • Due today</p>
+              <p className="font-medium text-slate-100">Upload signed Contract of Sale</p>
+              <p className="text-sm text-slate-300">123 Collins Street Purchase • Due today</p>
             </div>
             <Button size="sm">Upload</Button>
           </div>
-          <div className="flex items-center gap-3 p-3 bg-blue-50 border border-blue-200 rounded-lg">
-            <Info className="w-5 h-5 text-blue-600" />
+          <div className="flex items-center gap-3 p-3 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+            <Info className="w-5 h-5 text-blue-400" />
             <div className="flex-1">
-              <p className="font-medium text-gray-900">Review settlement statement</p>
-              <p className="text-sm text-gray-600">45 George Street Refinance • Due in 2 days</p>
+              <p className="font-medium text-slate-100">Review settlement statement</p>
+              <p className="text-sm text-slate-300">45 George Street Refinance • Due in 2 days</p>
             </div>
             <Button size="sm" variant="outline">View</Button>
           </div>
@@ -407,10 +407,10 @@ export const renderMatters = (onMatterClick: (id: string) => void) => (
           <input
             type="text"
             placeholder="Search matters..."
-            className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="pl-10 pr-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
-        <select className="px-3 py-2 border border-gray-300 rounded-lg text-sm">
+        <select className="px-3 py-2 border border-white/10 rounded-lg text-sm">
           <option>All States</option>
           <option>NSW</option>
           <option>VIC</option>
@@ -421,7 +421,7 @@ export const renderMatters = (onMatterClick: (id: string) => void) => (
           <option>TAS</option>
           <option>NT</option>
         </select>
-        <select className="px-3 py-2 border border-gray-300 rounded-lg text-sm">
+        <select className="px-3 py-2 border border-white/10 rounded-lg text-sm">
           <option>All Types</option>
           <option>Purchase</option>
           <option>Sale</option>
@@ -447,45 +447,45 @@ export const renderMatters = (onMatterClick: (id: string) => void) => (
             <div className="flex items-start justify-between mb-4">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
-                  <h3 className="text-lg font-bold text-gray-900">{matter.name}</h3>
-                  <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-semibold rounded">
+                  <h3 className="text-lg font-bold text-slate-100">{matter.name}</h3>
+                  <span className="px-2 py-1 bg-white/5 text-slate-300 text-xs font-semibold rounded">
                     {matter.state}
                   </span>
                   <span className={`px-2 py-1 text-xs font-semibold rounded ${
-                    matter.status === 'on_track' ? 'bg-green-100 text-green-700' :
-                    matter.status === 'at_risk' ? 'bg-amber-100 text-amber-700' :
-                    'bg-red-100 text-red-700'
+                    matter.status === 'on_track' ? 'bg-green-500/15 text-green-300' :
+                    matter.status === 'at_risk' ? 'bg-amber-500/15 text-amber-300' :
+                    'bg-red-500/15 text-red-300'
                   }`}>
                     {matter.stage}
                   </span>
                   {matter.pexaWorkspaceId && (
-                    <span className="px-2 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded flex items-center gap-1">
+                    <span className="px-2 py-1 bg-blue-500/10 text-blue-300 text-xs font-semibold rounded flex items-center gap-1">
                       <Building2 className="w-3 h-3" />
                       {matter.pexaWorkspaceId}
                     </span>
                   )}
                 </div>
-                <p className="text-sm text-gray-600 mb-3 flex items-center gap-1">
+                <p className="text-sm text-slate-300 mb-3 flex items-center gap-1">
                   <MapPin className="w-4 h-4" />
                   {matter.property}
                 </p>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   <div>
-                    <p className="text-xs text-gray-500 mb-1">Settlement</p>
-                    <p className="text-sm font-semibold text-gray-900">{matter.settlementDate}</p>
-                    <p className="text-xs text-gray-600">{matter.settlementTime}</p>
+                    <p className="text-xs text-slate-400 mb-1">Settlement</p>
+                    <p className="text-sm font-semibold text-slate-100">{matter.settlementDate}</p>
+                    <p className="text-xs text-slate-300">{matter.settlementTime}</p>
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500 mb-1">Type</p>
-                    <p className="text-sm font-semibold text-gray-900">{matter.type}</p>
+                    <p className="text-xs text-slate-400 mb-1">Type</p>
+                    <p className="text-sm font-semibold text-slate-100">{matter.type}</p>
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500 mb-1">Borrower/Vendor</p>
-                    <p className="text-sm font-semibold text-gray-900">{matter.borrower || matter.vendor}</p>
+                    <p className="text-xs text-slate-400 mb-1">Borrower/Vendor</p>
+                    <p className="text-sm font-semibold text-slate-100">{matter.borrower || matter.vendor}</p>
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500 mb-1">Lender</p>
-                    <p className="text-sm font-semibold text-gray-900">{matter.lender || matter.incomingLender || 'N/A'}</p>
+                    <p className="text-xs text-slate-400 mb-1">Lender</p>
+                    <p className="text-sm font-semibold text-slate-100">{matter.lender || matter.incomingLender || 'N/A'}</p>
                   </div>
                 </div>
               </div>
@@ -495,22 +495,22 @@ export const renderMatters = (onMatterClick: (id: string) => void) => (
               <div className="grid grid-cols-3 gap-4">
                 <div className="flex items-center gap-2">
                   <CheckSquare className="w-4 h-4 text-gray-400" />
-                  <span className="text-sm text-gray-600">
+                  <span className="text-sm text-slate-300">
                     Conditions: <span className="font-semibold">{matter.conditions.cleared}/{matter.conditions.total}</span>
                     {matter.conditions.overdue > 0 && (
-                      <span className="ml-1 text-red-600">({matter.conditions.overdue} overdue)</span>
+                      <span className="ml-1 text-red-400">({matter.conditions.overdue} overdue)</span>
                     )}
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-gray-400" />
-                  <span className="text-sm text-gray-600">
+                  <span className="text-sm text-slate-300">
                     Tasks: <span className="font-semibold">{matter.tasks.completed}/{matter.tasks.total}</span>
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
                   <FileText className="w-4 h-4 text-gray-400" />
-                  <span className="text-sm text-gray-600">
+                  <span className="text-sm text-slate-300">
                     Documents: <span className="font-semibold">{matter.documents}</span>
                   </span>
                 </div>
@@ -543,55 +543,55 @@ export const renderMatterDetail = (matterId: string, onBack: () => void, onNavig
           <div className="flex items-start justify-between mb-4">
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-2">
-                <h1 className="text-2xl font-bold text-gray-900">{matter.name}</h1>
-                <span className="px-3 py-1 bg-gray-100 text-gray-700 text-sm font-semibold rounded">
+                <h1 className="text-2xl font-bold text-slate-100">{matter.name}</h1>
+                <span className="px-3 py-1 bg-white/5 text-slate-300 text-sm font-semibold rounded">
                   {matter.state}
                 </span>
                 <span className={`px-3 py-1 text-sm font-semibold rounded ${
-                  matter.status === 'on_track' ? 'bg-green-100 text-green-700' :
-                  matter.status === 'at_risk' ? 'bg-amber-100 text-amber-700' :
-                  'bg-red-100 text-red-700'
+                  matter.status === 'on_track' ? 'bg-green-500/15 text-green-300' :
+                  matter.status === 'at_risk' ? 'bg-amber-500/15 text-amber-300' :
+                  'bg-red-500/15 text-red-300'
                 }`}>
                   {matter.stage}
                 </span>
                 {matter.pexaWorkspaceId && (
-                  <span className="px-3 py-1 bg-blue-50 text-blue-700 text-sm font-semibold rounded flex items-center gap-2">
+                  <span className="px-3 py-1 bg-blue-500/10 text-blue-300 text-sm font-semibold rounded flex items-center gap-2">
                     <Building2 className="w-4 h-4" />
                     {matter.pexaWorkspaceId}
                   </span>
                 )}
               </div>
-              <p className="text-gray-600 mb-4 flex items-center gap-2">
+              <p className="text-slate-300 mb-4 flex items-center gap-2">
                 <MapPin className="w-5 h-5" />
                 {matter.property}
               </p>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div>
-                  <p className="text-sm text-gray-500 mb-1">Settlement Date</p>
-                  <p className="font-semibold text-gray-900">{matter.settlementDate}</p>
-                  <p className="text-sm text-gray-600">{matter.settlementTime}</p>
+                  <p className="text-sm text-slate-400 mb-1">Settlement Date</p>
+                  <p className="font-semibold text-slate-100">{matter.settlementDate}</p>
+                  <p className="text-sm text-slate-300">{matter.settlementTime}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-500 mb-1">Transaction Type</p>
-                  <p className="font-semibold text-gray-900">{matter.type}</p>
+                  <p className="text-sm text-slate-400 mb-1">Transaction Type</p>
+                  <p className="font-semibold text-slate-100">{matter.type}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-500 mb-1">Risk Level</p>
+                  <p className="text-sm text-slate-400 mb-1">Risk Level</p>
                   <span className={`px-2 py-1 text-xs font-semibold rounded ${
-                    matter.riskLevel === 'low' ? 'bg-green-100 text-green-700' :
-                    matter.riskLevel === 'medium' ? 'bg-amber-100 text-amber-700' :
-                    'bg-red-100 text-red-700'
+                    matter.riskLevel === 'low' ? 'bg-green-500/15 text-green-300' :
+                    matter.riskLevel === 'medium' ? 'bg-amber-500/15 text-amber-300' :
+                    'bg-red-500/15 text-red-300'
                   }`}>
                     {matter.riskLevel.toUpperCase()}
                   </span>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-500 mb-1">PEXA Status</p>
+                  <p className="text-sm text-slate-400 mb-1">PEXA Status</p>
                   <span className={`px-2 py-1 text-xs font-semibold rounded ${
-                    matter.pexaStatus === 'ready_to_settle' ? 'bg-green-100 text-green-700' :
-                    matter.pexaStatus === 'active' ? 'bg-blue-100 text-blue-700' :
-                    matter.pexaStatus === 'pending' ? 'bg-amber-100 text-amber-700' :
-                    'bg-gray-100 text-gray-700'
+                    matter.pexaStatus === 'ready_to_settle' ? 'bg-green-500/15 text-green-300' :
+                    matter.pexaStatus === 'active' ? 'bg-blue-500/15 text-blue-300' :
+                    matter.pexaStatus === 'pending' ? 'bg-amber-500/15 text-amber-300' :
+                    'bg-white/5 text-slate-300'
                   }`}>
                     {matter.pexaStatus?.replace('_', ' ').toUpperCase() || 'NOT CREATED'}
                   </span>
@@ -637,7 +637,7 @@ export const renderMatterDetail = (matterId: string, onBack: () => void, onNavig
                 <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
                   stage.status === 'complete' ? 'bg-green-500' :
                   stage.status === 'active' ? 'bg-blue-500' :
-                  'bg-gray-200'
+                  'bg-white/10'
                 }`}>
                   {stage.status === 'complete' ? (
                     <CheckCircle className="w-6 h-6 text-white" />
@@ -647,7 +647,7 @@ export const renderMatterDetail = (matterId: string, onBack: () => void, onNavig
                     <div className="w-3 h-3 bg-gray-400 rounded-full" />
                   )}
                 </div>
-                <p className="text-xs font-medium text-gray-700 mt-2 text-center">{stage.name}</p>
+                <p className="text-xs font-medium text-slate-300 mt-2 text-center">{stage.name}</p>
               </div>
             ))}
           </div>
@@ -659,14 +659,14 @@ export const renderMatterDetail = (matterId: string, onBack: () => void, onNavig
         <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => onNavigate?.('conditions')}>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
-              <ListChecks className="w-8 h-8 text-purple-600" />
-              <span className="text-3xl font-bold text-gray-900">{matter.conditions.total}</span>
+              <ListChecks className="w-8 h-8 text-purple-400" />
+              <span className="text-3xl font-bold text-slate-100">{matter.conditions.total}</span>
             </div>
-            <h3 className="font-semibold text-gray-900 mb-2">Conditions</h3>
+            <h3 className="font-semibold text-slate-100 mb-2">Conditions</h3>
             <div className="space-y-1 text-sm">
-              <p className="text-green-600">✓ {matter.conditions.cleared} Cleared</p>
-              <p className="text-amber-600">⏳ {matter.conditions.pending} Pending</p>
-              <p className="text-red-600">⚠ {matter.conditions.overdue} Overdue</p>
+              <p className="text-green-400">✓ {matter.conditions.cleared} Cleared</p>
+              <p className="text-amber-400">⏳ {matter.conditions.pending} Pending</p>
+              <p className="text-red-400">⚠ {matter.conditions.overdue} Overdue</p>
             </div>
           </CardContent>
         </Card>
@@ -674,25 +674,25 @@ export const renderMatterDetail = (matterId: string, onBack: () => void, onNavig
         <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => onNavigate?.('documents')}>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
-              <FileText className="w-8 h-8 text-blue-600" />
-              <span className="text-3xl font-bold text-gray-900">{matter.documents}</span>
+              <FileText className="w-8 h-8 text-blue-400" />
+              <span className="text-3xl font-bold text-slate-100">{matter.documents}</span>
             </div>
-            <h3 className="font-semibold text-gray-900 mb-2">Documents</h3>
-            <p className="text-sm text-gray-600">12 signed, 6 pending, 6 draft</p>
+            <h3 className="font-semibold text-slate-100 mb-2">Documents</h3>
+            <p className="text-sm text-slate-300">12 signed, 6 pending, 6 draft</p>
           </CardContent>
         </Card>
 
         <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => onNavigate?.('tasks')}>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
-              <CheckSquare className="w-8 h-8 text-green-600" />
-              <span className="text-3xl font-bold text-gray-900">{matter.tasks.total}</span>
+              <CheckSquare className="w-8 h-8 text-green-400" />
+              <span className="text-3xl font-bold text-slate-100">{matter.tasks.total}</span>
             </div>
-            <h3 className="font-semibold text-gray-900 mb-2">Tasks</h3>
+            <h3 className="font-semibold text-slate-100 mb-2">Tasks</h3>
             <div className="space-y-1 text-sm">
-              <p className="text-green-600">✓ {matter.tasks.completed} Completed</p>
-              <p className="text-blue-600">→ {matter.tasks.inProgress} In Progress</p>
-              <p className="text-gray-600">○ {matter.tasks.notStarted} Not Started</p>
+              <p className="text-green-400">✓ {matter.tasks.completed} Completed</p>
+              <p className="text-blue-400">→ {matter.tasks.inProgress} In Progress</p>
+              <p className="text-slate-300">○ {matter.tasks.notStarted} Not Started</p>
             </div>
           </CardContent>
         </Card>
@@ -718,22 +718,22 @@ export const renderMatterDetail = (matterId: string, onBack: () => void, onNavig
               { name: 'Michael Johnson', role: 'Vendor Lawyer', party: 'Vendor', access: 'Full', status: 'Active', lastActive: '3 hours ago' },
               { name: matter.lender || matter.incomingLender, role: 'Lender', party: 'Financier', access: 'View Only', status: 'Active', lastActive: '1 hour ago' }
             ].map((participant, idx) => (
-              <div key={idx} className="flex items-center justify-between p-3 border rounded-lg hover:bg-gray-50">
+              <div key={idx} className="flex items-center justify-between p-3 border rounded-lg hover:bg-white/5">
                 <div className="flex-1">
-                  <p className="font-semibold text-gray-900">{participant.name}</p>
-                  <div className="flex items-center gap-3 text-sm text-gray-600">
+                  <p className="font-semibold text-slate-100">{participant.name}</p>
+                  <div className="flex items-center gap-3 text-sm text-slate-300">
                     <span>{participant.role}</span>
                     <span>•</span>
                     <span>{participant.party}</span>
                     <span>•</span>
-                    <span className="text-xs px-2 py-0.5 bg-blue-50 text-blue-700 rounded">{participant.access}</span>
+                    <span className="text-xs px-2 py-0.5 bg-blue-500/10 text-blue-300 rounded">{participant.access}</span>
                   </div>
                 </div>
                 <div className="text-right">
-                  <span className="px-2 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded">
+                  <span className="px-2 py-1 bg-green-500/15 text-green-300 text-xs font-semibold rounded">
                     {participant.status}
                   </span>
-                  <p className="text-xs text-gray-500 mt-1">{participant.lastActive}</p>
+                  <p className="text-xs text-slate-400 mt-1">{participant.lastActive}</p>
                 </div>
               </div>
             ))}
@@ -750,19 +750,19 @@ export const renderMatterDetail = (matterId: string, onBack: () => void, onNavig
           <CardContent>
             <div className="grid grid-cols-3 gap-6">
               <div>
-                <p className="text-sm text-gray-500 mb-1">Purchase Price</p>
-                <p className="text-2xl font-bold text-gray-900">${matter.purchasePrice.toLocaleString()}</p>
+                <p className="text-sm text-slate-400 mb-1">Purchase Price</p>
+                <p className="text-2xl font-bold text-slate-100">${matter.purchasePrice.toLocaleString()}</p>
               </div>
               {matter.deposit && (
                 <div>
-                  <p className="text-sm text-gray-500 mb-1">Deposit Paid</p>
-                  <p className="text-2xl font-bold text-green-700">${matter.deposit.toLocaleString()}</p>
+                  <p className="text-sm text-slate-400 mb-1">Deposit Paid</p>
+                  <p className="text-2xl font-bold text-green-300">${matter.deposit.toLocaleString()}</p>
                 </div>
               )}
               {matter.balance && (
                 <div>
-                  <p className="text-sm text-gray-500 mb-1">Balance Due</p>
-                  <p className="text-2xl font-bold text-blue-700">${matter.balance.toLocaleString()}</p>
+                  <p className="text-sm text-slate-400 mb-1">Balance Due</p>
+                  <p className="text-2xl font-bold text-blue-300">${matter.balance.toLocaleString()}</p>
                 </div>
               )}
             </div>
@@ -777,7 +777,7 @@ export const renderMatterDetail = (matterId: string, onBack: () => void, onNavig
 export const renderTasks = () => (
   <div className="space-y-6">
     <div className="flex items-center justify-between">
-      <h2 className="text-2xl font-bold text-gray-900">Tasks</h2>
+      <h2 className="text-2xl font-bold text-slate-100">Tasks</h2>
       <Button onClick={() => toast.success('Task created')}>
         <Plus className="w-4 h-4 mr-2" />
         New Task
@@ -787,7 +787,7 @@ export const renderTasks = () => (
     {/* Kanban View */}
     <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
       {[
-        { status: 'To Do', count: 12, color: 'border-gray-300' },
+        { status: 'To Do', count: 12, color: 'border-white/10' },
         { status: 'In Progress', count: 8, color: 'border-blue-500' },
         { status: 'Blocked', count: 3, color: 'border-red-500' },
         { status: 'Complete', count: 45, color: 'border-green-500' }
@@ -796,7 +796,7 @@ export const renderTasks = () => (
           <CardHeader>
             <div className="flex items-center justify-between">
               <CardTitle className="text-sm">{column.status}</CardTitle>
-              <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-semibold rounded">
+              <span className="px-2 py-1 bg-white/5 text-slate-300 text-xs font-semibold rounded">
                 {column.count}
               </span>
             </div>
@@ -805,7 +805,7 @@ export const renderTasks = () => (
             <div className="space-y-3">
               {[...Array(Math.min(column.count, 3))].map((_, taskIdx) => (
                 <div key={taskIdx} className="p-3 bg-white border rounded-lg hover:shadow-md cursor-pointer transition-shadow" onClick={() => toast.info('View task')}>
-                  <p className="font-semibold text-sm text-gray-900 mb-1">
+                  <p className="font-semibold text-sm text-slate-100 mb-1">
                     {taskIdx === 0 && column.status === 'To Do' ? 'Verify ID documents' :
                      taskIdx === 1 && column.status === 'To Do' ? 'Obtain contract signed' :
                      taskIdx === 0 && column.status === 'In Progress' ? 'Review PEXA workspace' :
@@ -813,10 +813,10 @@ export const renderTasks = () => (
                      taskIdx === 0 && column.status === 'Blocked' ? 'Missing VOI - escalated' :
                      'Complete task'}
                   </p>
-                  <p className="text-xs text-gray-600 mb-2">MAT-2024-{1247 - taskIdx}</p>
+                  <p className="text-xs text-slate-300 mb-2">MAT-2024-{1247 - taskIdx}</p>
                   <div className="flex items-center justify-between">
-                    <span className="text-xs text-gray-500">Due: 2024-03-{15 + taskIdx}</span>
-                    <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center text-xs font-semibold text-blue-700">
+                    <span className="text-xs text-slate-400">Due: 2024-03-{15 + taskIdx}</span>
+                    <div className="w-6 h-6 bg-blue-500/15 rounded-full flex items-center justify-center text-xs font-semibold text-blue-300">
                       SC
                     </div>
                   </div>
@@ -834,7 +834,7 @@ export const renderTasks = () => (
 export const renderDocuments = () => (
   <div className="space-y-6">
     <div className="flex items-center justify-between">
-      <h2 className="text-2xl font-bold text-gray-900">Documents</h2>
+      <h2 className="text-2xl font-bold text-slate-100">Documents</h2>
       <div className="flex gap-2">
         <Button variant="outline" size="sm">
           <Filter className="w-4 h-4 mr-1" />
@@ -851,18 +851,18 @@ export const renderDocuments = () => (
       <CardContent className="p-0">
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-gray-50">
+            <thead className="bg-white/5">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Document</th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Matter</th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Category</th>
-                <th className="px-6 py-3 text-center text-xs font-semibold text-gray-600 uppercase">Status</th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Visibility</th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Updated</th>
-                <th className="px-6 py-3 text-right text-xs font-semibold text-gray-600 uppercase">Actions</th>
+                <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Document</th>
+                <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Matter</th>
+                <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Category</th>
+                <th className="px-6 py-3 text-center text-xs font-semibold text-slate-300 uppercase">Status</th>
+                <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Visibility</th>
+                <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Updated</th>
+                <th className="px-6 py-3 text-right text-xs font-semibold text-slate-300 uppercase">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-200">
+            <tbody className="divide-y divide-white/10">
               {[
                 { name: 'Contract of Sale - Signed.pdf', matter: 'MAT-2024-1247', category: 'Contract', status: 'signed', visibility: 'Shared', updated: '2 hours ago' },
                 { name: 'Transfer of Land.pdf', matter: 'MAT-2024-1247', category: 'Transfer', status: 'draft', visibility: 'Internal', updated: '5 hours ago' },
@@ -870,31 +870,31 @@ export const renderDocuments = () => (
                 { name: 'Discharge Authority.pdf', matter: 'MAT-2024-1246', category: 'Discharge', status: 'signed', visibility: 'Shared', updated: '2 days ago' },
                 { name: 'Settlement Statement.pdf', matter: 'MAT-2024-1245', category: 'Settlement', status: 'final', visibility: 'Borrower Viewable', updated: '3 hours ago' }
               ].map((doc, idx) => (
-                <tr key={idx} className="hover:bg-gray-50">
+                <tr key={idx} className="hover:bg-white/5">
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-2">
                       <FileText className="w-5 h-5 text-gray-400" />
-                      <span className="font-medium text-gray-900">{doc.name}</span>
+                      <span className="font-medium text-slate-100">{doc.name}</span>
                     </div>
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-600 font-mono">{doc.matter}</td>
+                  <td className="px-6 py-4 text-sm text-slate-300 font-mono">{doc.matter}</td>
                   <td className="px-6 py-4">
-                    <span className="px-2 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded">
+                    <span className="px-2 py-1 bg-blue-500/10 text-blue-300 text-xs font-semibold rounded">
                       {doc.category}
                     </span>
                   </td>
                   <td className="px-6 py-4 text-center">
                     <span className={`px-2 py-1 text-xs font-semibold rounded ${
-                      doc.status === 'signed' ? 'bg-green-100 text-green-700' :
-                      doc.status === 'final' ? 'bg-purple-100 text-purple-700' :
-                      doc.status === 'pending_signature' ? 'bg-amber-100 text-amber-700' :
-                      'bg-gray-100 text-gray-700'
+                      doc.status === 'signed' ? 'bg-green-500/15 text-green-300' :
+                      doc.status === 'final' ? 'bg-purple-500/15 text-purple-300' :
+                      doc.status === 'pending_signature' ? 'bg-amber-500/15 text-amber-300' :
+                      'bg-white/5 text-slate-300'
                     }`}>
                       {doc.status.replace('_', ' ').toUpperCase()}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-600">{doc.visibility}</td>
-                  <td className="px-6 py-4 text-sm text-gray-600">{doc.updated}</td>
+                  <td className="px-6 py-4 text-sm text-slate-300">{doc.visibility}</td>
+                  <td className="px-6 py-4 text-sm text-slate-300">{doc.updated}</td>
                   <td className="px-6 py-4 text-right">
                     <div className="flex items-center justify-end gap-2">
                       <Button size="sm" variant="ghost" onClick={() => toast.info('View document')}>
@@ -919,7 +919,7 @@ export const renderDocuments = () => (
 export const renderConditions = () => (
   <div className="space-y-6">
     <div className="flex items-center justify-between">
-      <h2 className="text-2xl font-bold text-gray-900">Condition Register</h2>
+      <h2 className="text-2xl font-bold text-slate-100">Condition Register</h2>
       <Button onClick={() => toast.success('Condition added')}>
         <Plus className="w-4 h-4 mr-2" />
         Add Condition
@@ -929,15 +929,15 @@ export const renderConditions = () => (
     {/* Condition Stats */}
     <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
       {[
-        { status: 'Not Started', count: 8, color: 'bg-gray-100 text-gray-700' },
-        { status: 'Evidence Uploaded', count: 12, color: 'bg-blue-100 text-blue-700' },
-        { status: 'Under Review', count: 5, color: 'bg-purple-100 text-purple-700' },
-        { status: 'Cleared', count: 42, color: 'bg-green-100 text-green-700' },
-        { status: 'Rejected', count: 2, color: 'bg-red-100 text-red-700' }
+        { status: 'Not Started', count: 8, color: 'bg-white/5 text-slate-300' },
+        { status: 'Evidence Uploaded', count: 12, color: 'bg-blue-500/15 text-blue-300' },
+        { status: 'Under Review', count: 5, color: 'bg-purple-500/15 text-purple-300' },
+        { status: 'Cleared', count: 42, color: 'bg-green-500/15 text-green-300' },
+        { status: 'Rejected', count: 2, color: 'bg-red-500/15 text-red-300' }
       ].map((stat, idx) => (
         <Card key={idx}>
           <CardContent className="p-4 text-center">
-            <p className="text-2xl font-bold text-gray-900">{stat.count}</p>
+            <p className="text-2xl font-bold text-slate-100">{stat.count}</p>
             <p className={`text-xs font-medium mt-1 px-2 py-1 rounded ${stat.color}`}>{stat.status}</p>
           </CardContent>
         </Card>
@@ -948,18 +948,18 @@ export const renderConditions = () => (
       <CardContent className="p-0">
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-gray-50">
+            <thead className="bg-white/5">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">ID</th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Description</th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Matter</th>
-                <th className="px-6 py-3 text-center text-xs font-semibold text-gray-600 uppercase">Status</th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Owner</th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Due Date</th>
-                <th className="px-6 py-3 text-right text-xs font-semibold text-gray-600 uppercase">Actions</th>
+                <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">ID</th>
+                <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Description</th>
+                <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Matter</th>
+                <th className="px-6 py-3 text-center text-xs font-semibold text-slate-300 uppercase">Status</th>
+                <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Owner</th>
+                <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Due Date</th>
+                <th className="px-6 py-3 text-right text-xs font-semibold text-slate-300 uppercase">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-200">
+            <tbody className="divide-y divide-white/10">
               {[
                 { id: 'COND-1247-01', desc: 'Contract signed by all parties', matter: 'MAT-2024-1247', status: 'cleared', owner: 'Sarah Chen', due: '2024-03-10', evidence: 'Yes' },
                 { id: 'COND-1247-02', desc: 'Pest and building inspection', matter: 'MAT-2024-1247', status: 'evidence_uploaded', owner: 'John Smith', due: '2024-03-12', evidence: 'Yes' },
@@ -967,22 +967,22 @@ export const renderConditions = () => (
                 { id: 'COND-1245-01', desc: 'Finance approval', matter: 'MAT-2024-1245', status: 'cleared', owner: 'Mike Johnson', due: '2024-03-05', evidence: 'Yes' },
                 { id: 'COND-1244-01', desc: 'Title search', matter: 'MAT-2024-1244', status: 'escalated', owner: 'Emma Davis', due: '2024-03-01', evidence: 'No' }
               ].map((condition, idx) => (
-                <tr key={idx} className="hover:bg-gray-50">
-                  <td className="px-6 py-4 font-mono text-sm font-semibold text-gray-900">{condition.id}</td>
-                  <td className="px-6 py-4 text-sm text-gray-900">{condition.desc}</td>
-                  <td className="px-6 py-4 text-sm text-gray-600 font-mono">{condition.matter}</td>
+                <tr key={idx} className="hover:bg-white/5">
+                  <td className="px-6 py-4 font-mono text-sm font-semibold text-slate-100">{condition.id}</td>
+                  <td className="px-6 py-4 text-sm text-slate-100">{condition.desc}</td>
+                  <td className="px-6 py-4 text-sm text-slate-300 font-mono">{condition.matter}</td>
                   <td className="px-6 py-4 text-center">
                     <span className={`px-2 py-1 text-xs font-semibold rounded ${
-                      condition.status === 'cleared' ? 'bg-green-100 text-green-700' :
-                      condition.status === 'evidence_uploaded' ? 'bg-blue-100 text-blue-700' :
-                      condition.status === 'rejected' ? 'bg-red-100 text-red-700' :
-                      'bg-amber-100 text-amber-700'
+                      condition.status === 'cleared' ? 'bg-green-500/15 text-green-300' :
+                      condition.status === 'evidence_uploaded' ? 'bg-blue-500/15 text-blue-300' :
+                      condition.status === 'rejected' ? 'bg-red-500/15 text-red-300' :
+                      'bg-amber-500/15 text-amber-300'
                     }`}>
                       {condition.status.replace('_', ' ').toUpperCase()}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-600">{condition.owner}</td>
-                  <td className="px-6 py-4 text-sm text-gray-600">{condition.due}</td>
+                  <td className="px-6 py-4 text-sm text-slate-300">{condition.owner}</td>
+                  <td className="px-6 py-4 text-sm text-slate-300">{condition.due}</td>
                   <td className="px-6 py-4 text-right">
                     <div className="flex items-center justify-end gap-2">
                       <Button size="sm" variant="ghost" onClick={() => toast.info('View condition')}>
@@ -1009,7 +1009,7 @@ export const renderConditions = () => (
 export const renderPEXA = () => (
   <div className="space-y-6">
     <div className="flex items-center justify-between">
-      <h2 className="text-2xl font-bold text-gray-900">PEXA Workspaces</h2>
+      <h2 className="text-2xl font-bold text-slate-100">PEXA Workspaces</h2>
       <Button onClick={() => toast.success('PEXA workspace created')}>
         <Plus className="w-4 h-4 mr-2" />
         Create Workspace
@@ -1020,30 +1020,30 @@ export const renderPEXA = () => (
     <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
       <Card>
         <CardContent className="p-6">
-          <p className="text-sm text-gray-600 mb-2">Active Workspaces</p>
-          <p className="text-3xl font-bold text-gray-900">28</p>
-          <p className="text-xs text-gray-500 mt-1">Across 5 states</p>
+          <p className="text-sm text-slate-300 mb-2">Active Workspaces</p>
+          <p className="text-3xl font-bold text-slate-100">28</p>
+          <p className="text-xs text-slate-400 mt-1">Across 5 states</p>
         </CardContent>
       </Card>
       <Card>
         <CardContent className="p-6">
-          <p className="text-sm text-gray-600 mb-2">Ready to Settle</p>
-          <p className="text-3xl font-bold text-green-600">4</p>
-          <p className="text-xs text-gray-500 mt-1">All conditions met</p>
+          <p className="text-sm text-slate-300 mb-2">Ready to Settle</p>
+          <p className="text-3xl font-bold text-green-400">4</p>
+          <p className="text-xs text-slate-400 mt-1">All conditions met</p>
         </CardContent>
       </Card>
       <Card>
         <CardContent className="p-6">
-          <p className="text-sm text-gray-600 mb-2">Drift Warnings</p>
-          <p className="text-3xl font-bold text-amber-600">3</p>
-          <p className="text-xs text-gray-500 mt-1">Data mismatch</p>
+          <p className="text-sm text-slate-300 mb-2">Drift Warnings</p>
+          <p className="text-3xl font-bold text-amber-400">3</p>
+          <p className="text-xs text-slate-400 mt-1">Data mismatch</p>
         </CardContent>
       </Card>
       <Card>
         <CardContent className="p-6">
-          <p className="text-sm text-gray-600 mb-2">Settled Today</p>
-          <p className="text-3xl font-bold text-blue-600">2</p>
-          <p className="text-xs text-gray-500 mt-1">Total: $2.1M</p>
+          <p className="text-sm text-slate-300 mb-2">Settled Today</p>
+          <p className="text-3xl font-bold text-blue-400">2</p>
+          <p className="text-xs text-slate-400 mt-1">Total: $2.1M</p>
         </CardContent>
       </Card>
     </div>
@@ -1053,32 +1053,32 @@ export const renderPEXA = () => (
       <CardContent className="p-0">
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-gray-50">
+            <thead className="bg-white/5">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Workspace ID</th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Matter</th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Property</th>
-                <th className="px-6 py-3 text-center text-xs font-semibold text-gray-600 uppercase">Status</th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Last Sync</th>
-                <th className="px-6 py-3 text-right text-xs font-semibold text-gray-600 uppercase">Actions</th>
+                <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Workspace ID</th>
+                <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Matter</th>
+                <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Property</th>
+                <th className="px-6 py-3 text-center text-xs font-semibold text-slate-300 uppercase">Status</th>
+                <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Last Sync</th>
+                <th className="px-6 py-3 text-right text-xs font-semibold text-slate-300 uppercase">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-200">
+            <tbody className="divide-y divide-white/10">
               {testMatters.filter(m => m.pexaWorkspaceId).map((matter, idx) => (
-                <tr key={idx} className="hover:bg-gray-50">
-                  <td className="px-6 py-4 font-mono text-sm font-semibold text-blue-700">{matter.pexaWorkspaceId}</td>
-                  <td className="px-6 py-4 font-mono text-sm text-gray-600">{matter.id}</td>
-                  <td className="px-6 py-4 text-sm text-gray-900">{matter.property}</td>
+                <tr key={idx} className="hover:bg-white/5">
+                  <td className="px-6 py-4 font-mono text-sm font-semibold text-blue-300">{matter.pexaWorkspaceId}</td>
+                  <td className="px-6 py-4 font-mono text-sm text-slate-300">{matter.id}</td>
+                  <td className="px-6 py-4 text-sm text-slate-100">{matter.property}</td>
                   <td className="px-6 py-4 text-center">
                     <span className={`px-2 py-1 text-xs font-semibold rounded ${
-                      matter.pexaStatus === 'ready_to_settle' ? 'bg-green-100 text-green-700' :
-                      matter.pexaStatus === 'active' ? 'bg-blue-100 text-blue-700' :
-                      'bg-amber-100 text-amber-700'
+                      matter.pexaStatus === 'ready_to_settle' ? 'bg-green-500/15 text-green-300' :
+                      matter.pexaStatus === 'active' ? 'bg-blue-500/15 text-blue-300' :
+                      'bg-amber-500/15 text-amber-300'
                     }`}>
                       {matter.pexaStatus?.replace('_', ' ').toUpperCase()}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-600">{matter.lastActivity}</td>
+                  <td className="px-6 py-4 text-sm text-slate-300">{matter.lastActivity}</td>
                   <td className="px-6 py-4 text-right">
                     <div className="flex items-center justify-end gap-2">
                       <Button size="sm" variant="ghost" onClick={() => toast.success('Synced with PEXA')}>
@@ -1102,7 +1102,7 @@ export const renderPEXA = () => (
 // ===== REPORTS PAGE =====
 export const renderReports = () => (
   <div className="space-y-6">
-    <h2 className="text-2xl font-bold text-gray-900">Reports & Analytics</h2>
+    <h2 className="text-2xl font-bold text-slate-100">Reports & Analytics</h2>
 
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
       {[
@@ -1117,9 +1117,9 @@ export const renderReports = () => (
         return (
           <Card key={idx} className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => toast.success(`Generating ${report.title}...`)}>
             <CardContent className="p-6">
-              <Icon className="w-8 h-8 text-blue-600 mb-4" />
-              <h3 className="font-bold text-gray-900 mb-1">{report.title}</h3>
-              <p className="text-sm text-gray-600">{report.desc}</p>
+              <Icon className="w-8 h-8 text-blue-400 mb-4" />
+              <h3 className="font-bold text-slate-100 mb-1">{report.title}</h3>
+              <p className="text-sm text-slate-300">{report.desc}</p>
             </CardContent>
           </Card>
         );
@@ -1131,7 +1131,7 @@ export const renderReports = () => (
 // ===== ADMIN PAGE =====
 export const renderAdmin = () => (
   <div className="space-y-6">
-    <h2 className="text-2xl font-bold text-gray-900">Admin Settings</h2>
+    <h2 className="text-2xl font-bold text-slate-100">Admin Settings</h2>
 
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       <Card>
@@ -1150,8 +1150,8 @@ export const renderAdmin = () => (
               'TAS Transfer',
               'NT Refinance'
             ].map((template, idx) => (
-              <div key={idx} className="flex items-center justify-between p-3 border rounded-lg hover:bg-gray-50">
-                <span className="text-sm font-medium text-gray-900">{template}</span>
+              <div key={idx} className="flex items-center justify-between p-3 border rounded-lg hover:bg-white/5">
+                <span className="text-sm font-medium text-slate-100">{template}</span>
                 <Button size="sm" variant="outline" onClick={() => toast.info(`Edit ${template}`)}>
                   Edit
                 </Button>

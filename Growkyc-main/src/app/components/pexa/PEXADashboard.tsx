@@ -146,10 +146,10 @@ export function PEXADashboard({ onNavigate, caseNumber }: PEXADashboardProps) {
 
   // Recent activities
   const recentActivities = [
-    { id: 1, timestamp: new Date(), action: 'Document verified', workspace: 'PEX-NSW-2024-001234', user: 'PEXA System', icon: CheckCircle, color: 'text-green-600' },
-    { id: 2, timestamp: addDays(new Date(), -1), action: 'Transfer document uploaded', workspace: 'PEX-NSW-2024-001234', user: 'Corporate Legal', icon: Upload, color: 'text-blue-600' },
-    { id: 3, timestamp: addDays(new Date(), -2), action: 'Workspace created', workspace: 'PEX-VIC-2024-005678', user: 'Admin', icon: Plus, color: 'text-purple-600' },
-    { id: 4, timestamp: addDays(new Date(), -2), action: 'Settlement date confirmed', workspace: 'PEX-NSW-2024-001234', user: 'Smith & Partners', icon: Calendar, color: 'text-amber-600' }
+    { id: 1, timestamp: new Date(), action: 'Document verified', workspace: 'PEX-NSW-2024-001234', user: 'PEXA System', icon: CheckCircle, color: 'text-green-400' },
+    { id: 2, timestamp: addDays(new Date(), -1), action: 'Transfer document uploaded', workspace: 'PEX-NSW-2024-001234', user: 'Corporate Legal', icon: Upload, color: 'text-blue-400' },
+    { id: 3, timestamp: addDays(new Date(), -2), action: 'Workspace created', workspace: 'PEX-VIC-2024-005678', user: 'Admin', icon: Plus, color: 'text-purple-400' },
+    { id: 4, timestamp: addDays(new Date(), -2), action: 'Settlement date confirmed', workspace: 'PEX-NSW-2024-001234', user: 'Smith & Partners', icon: Calendar, color: 'text-amber-400' }
   ];
 
   const handleCreateWorkspace = () => {
@@ -184,7 +184,7 @@ export function PEXADashboard({ onNavigate, caseNumber }: PEXADashboardProps) {
       render: (val: string) => (
         <div className="flex items-center gap-2">
           <Home className="w-4 h-4 text-gray-400" />
-          <span className="font-semibold text-gray-900">{val}</span>
+          <span className="font-semibold text-slate-100">{val}</span>
         </div>
       )
     },
@@ -194,8 +194,8 @@ export function PEXADashboard({ onNavigate, caseNumber }: PEXADashboardProps) {
       sortable: true,
       render: (val: Date) => (
         <div>
-          <p className="font-semibold text-gray-900">{format(val, 'dd MMM yyyy')}</p>
-          <p className="text-xs text-gray-600">{format(val, 'EEEE, h:mm a')}</p>
+          <p className="font-semibold text-slate-100">{format(val, 'dd MMM yyyy')}</p>
+          <p className="text-xs text-slate-300">{format(val, 'EEEE, h:mm a')}</p>
         </div>
       )
     },
@@ -209,7 +209,7 @@ export function PEXADashboard({ onNavigate, caseNumber }: PEXADashboardProps) {
       key: 'caseNumber',
       label: 'Linked Case',
       render: (val: string) => val ? (
-        <span className="font-mono text-sm text-blue-600">{val}</span>
+        <span className="font-mono text-sm text-blue-400">{val}</span>
       ) : (
         <span className="text-gray-400 text-sm">â€”</span>
       )
@@ -321,7 +321,7 @@ export function PEXADashboard({ onNavigate, caseNumber }: PEXADashboardProps) {
             <div className="flex flex-col gap-3">
               <Button
                 size="lg"
-                className="bg-white text-blue-900 hover:bg-gray-100 gap-2"
+                className="bg-white text-blue-300 hover:bg-white/5 gap-2"
                 onClick={() => setActiveTab('create')}
               >
                 <Plus className="w-5 h-5" />
@@ -378,12 +378,12 @@ export function PEXADashboard({ onNavigate, caseNumber }: PEXADashboardProps) {
               className={`flex items-center gap-2 px-6 py-4 font-semibold border-b-2 transition-colors ${
                 activeTab === 'workspaces'
                   ? 'border-primary text-primary bg-primary/5'
-                  : 'border-transparent text-gray-600 hover:text-gray-900'
+                  : 'border-transparent text-slate-300 hover:text-slate-100'
               }`}
             >
               <Home className="w-5 h-5" />
               Workspaces
-              <span className="px-2 py-0.5 bg-gray-200 text-gray-700 text-xs rounded-full font-bold">
+              <span className="px-2 py-0.5 bg-white/10 text-slate-300 text-xs rounded-full font-bold">
                 {workspaces.length}
               </span>
             </button>
@@ -392,7 +392,7 @@ export function PEXADashboard({ onNavigate, caseNumber }: PEXADashboardProps) {
               className={`flex items-center gap-2 px-6 py-4 font-semibold border-b-2 transition-colors ${
                 activeTab === 'create'
                   ? 'border-primary text-primary bg-primary/5'
-                  : 'border-transparent text-gray-600 hover:text-gray-900'
+                  : 'border-transparent text-slate-300 hover:text-slate-100'
               }`}
             >
               <Plus className="w-5 h-5" />
@@ -403,7 +403,7 @@ export function PEXADashboard({ onNavigate, caseNumber }: PEXADashboardProps) {
               className={`flex items-center gap-2 px-6 py-4 font-semibold border-b-2 transition-colors ${
                 activeTab === 'documents'
                   ? 'border-primary text-primary bg-primary/5'
-                  : 'border-transparent text-gray-600 hover:text-gray-900'
+                  : 'border-transparent text-slate-300 hover:text-slate-100'
               }`}
             >
               <FileText className="w-5 h-5" />
@@ -414,7 +414,7 @@ export function PEXADashboard({ onNavigate, caseNumber }: PEXADashboardProps) {
               className={`flex items-center gap-2 px-6 py-4 font-semibold border-b-2 transition-colors ${
                 activeTab === 'activities'
                   ? 'border-primary text-primary bg-primary/5'
-                  : 'border-transparent text-gray-600 hover:text-gray-900'
+                  : 'border-transparent text-slate-300 hover:text-slate-100'
               }`}
             >
               <Activity className="w-5 h-5" />
@@ -427,7 +427,7 @@ export function PEXADashboard({ onNavigate, caseNumber }: PEXADashboardProps) {
       {/* Tab Content */}
       {activeTab === 'workspaces' && (
         <Card>
-          <CardHeader className="border-b bg-gray-50">
+          <CardHeader className="border-b bg-white/5">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-primary/10 rounded-lg">
@@ -435,7 +435,7 @@ export function PEXADashboard({ onNavigate, caseNumber }: PEXADashboardProps) {
                 </div>
                 <div>
                   <CardTitle className="text-xl">PEXA Workspaces</CardTitle>
-                  <p className="text-sm text-gray-600 mt-1">Manage digital property settlements</p>
+                  <p className="text-sm text-slate-300 mt-1">Manage digital property settlements</p>
                 </div>
               </div>
               <div className="flex gap-2">
@@ -484,12 +484,12 @@ export function PEXADashboard({ onNavigate, caseNumber }: PEXADashboardProps) {
           <CardContent className="p-6">
             <div className="max-w-3xl space-y-6">
               {/* Info Banner */}
-              <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-4">
+              <div className="bg-blue-500/10 border-2 border-blue-500/30 rounded-lg p-4">
                 <div className="flex gap-3">
-                  <Zap className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <Zap className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-semibold text-blue-900 mb-1">ðŸš§ Building: Automated Workspace Creation</h4>
-                    <p className="text-sm text-blue-800">
+                    <h4 className="font-semibold text-blue-300 mb-1">ðŸš§ Building: Automated Workspace Creation</h4>
+                    <p className="text-sm text-blue-300">
                       This will automatically create PEXA workspaces from MIP cases, pre-populate party details from case data,
                       and link all relevant documents. Real PEXA API integration is in progress.
                     </p>
@@ -499,25 +499,25 @@ export function PEXADashboard({ onNavigate, caseNumber }: PEXADashboardProps) {
 
               {/* Property Details */}
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Property Details</h3>
+                <h3 className="text-lg font-semibold text-slate-100 mb-4">Property Details</h3>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="col-span-2">
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-slate-300 mb-2">
                       Property Address *
                     </label>
                     <Input placeholder="Enter property address" />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-slate-300 mb-2">
                       Title Reference
                     </label>
                     <Input placeholder="e.g., Lot 1 DP 123456" />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-slate-300 mb-2">
                       Jurisdiction
                     </label>
-                    <select className="w-full px-3 py-2 border border-gray-300 rounded-lg">
+                    <select className="w-full px-3 py-2 border border-white/10 rounded-lg">
                       <option>NSW</option>
                       <option>VIC</option>
                       <option>QLD</option>
@@ -530,28 +530,28 @@ export function PEXADashboard({ onNavigate, caseNumber }: PEXADashboardProps) {
 
               {/* Financial Details */}
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Financial Details</h3>
+                <h3 className="text-lg font-semibold text-slate-100 mb-4">Financial Details</h3>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-slate-300 mb-2">
                       Purchase Price *
                     </label>
                     <Input type="number" placeholder="0.00" />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-slate-300 mb-2">
                       Deposit Paid
                     </label>
                     <Input type="number" placeholder="0.00" />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-slate-300 mb-2">
                       Settlement Date *
                     </label>
                     <Input type="date" />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-slate-300 mb-2">
                       Settlement Time
                     </label>
                     <Input type="time" defaultValue="14:00" />
@@ -561,34 +561,34 @@ export function PEXADashboard({ onNavigate, caseNumber }: PEXADashboardProps) {
 
               {/* Parties */}
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Parties</h3>
+                <h3 className="text-lg font-semibold text-slate-100 mb-4">Parties</h3>
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-slate-300 mb-2">
                       Vendor(s)
                     </label>
                     <Input placeholder="Enter vendor name(s)" />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-slate-300 mb-2">
                       Vendor Solicitor
                     </label>
                     <Input placeholder="Enter solicitor/conveyancer" />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-slate-300 mb-2">
                       Purchaser(s)
                     </label>
                     <Input placeholder="Enter purchaser name(s)" />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-slate-300 mb-2">
                       Purchaser Solicitor
                     </label>
                     <Input placeholder="Enter solicitor/conveyancer" />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-slate-300 mb-2">
                       Financial Institution (if applicable)
                     </label>
                     <Input placeholder="Enter bank/lender name" />
@@ -598,13 +598,13 @@ export function PEXADashboard({ onNavigate, caseNumber }: PEXADashboardProps) {
 
               {/* Link to Case */}
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Link to Grow MIP Case</h3>
+                <h3 className="text-lg font-semibold text-slate-100 mb-4">Link to Grow MIP Case</h3>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-slate-300 mb-2">
                     MIP Case Number (Optional)
                   </label>
                   <Input placeholder="e.g., MIP-2024-001" defaultValue={caseNumber} />
-                  <p className="text-xs text-gray-600 mt-1">
+                  <p className="text-xs text-slate-300 mt-1">
                     Link this PEXA workspace to an existing MIP case for unified management
                   </p>
                 </div>
@@ -653,7 +653,7 @@ export function PEXADashboard({ onNavigate, caseNumber }: PEXADashboardProps) {
                   <FileText className="w-5 h-5 text-primary" />
                   Settlement Documents
                   {selectedWorkspace && (
-                    <span className="text-sm font-normal text-gray-600">
+                    <span className="text-sm font-normal text-slate-300">
                       - {selectedWorkspace.workspaceId}
                     </span>
                   )}
@@ -663,12 +663,12 @@ export function PEXADashboard({ onNavigate, caseNumber }: PEXADashboardProps) {
                 {selectedWorkspace ? (
                   <div className="space-y-3">
                     {/* Building Notice */}
-                    <div className="bg-amber-50 border-2 border-amber-200 rounded-lg p-4 mb-4">
+                    <div className="bg-amber-500/10 border-2 border-amber-500/30 rounded-lg p-4 mb-4">
                       <div className="flex gap-3">
-                        <Zap className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                        <Zap className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
                         <div>
-                          <h4 className="font-semibold text-amber-900 mb-1">ðŸš§ Building: Smart Document Detection</h4>
-                          <p className="text-sm text-amber-800">
+                          <h4 className="font-semibold text-amber-300 mb-1">ðŸš§ Building: Smart Document Detection</h4>
+                          <p className="text-sm text-amber-300">
                             AI will automatically detect document types, extract key information, and verify against PEXA requirements.
                             OCR and validation engines are in development.
                           </p>
@@ -678,37 +678,37 @@ export function PEXADashboard({ onNavigate, caseNumber }: PEXADashboardProps) {
 
                     {selectedWorkspace.documents.map((doc) => (
                       <Card key={doc.id} className={`border-2 ${
-                        doc.status === 'verified' ? 'border-green-200 bg-green-50' :
-                        doc.status === 'uploaded' ? 'border-blue-200 bg-blue-50' :
-                        doc.status === 'lodged' ? 'border-purple-200 bg-purple-50' :
-                        'border-amber-200 bg-amber-50'
+                        doc.status === 'verified' ? 'border-green-500/30 bg-green-500/10' :
+                        doc.status === 'uploaded' ? 'border-blue-500/30 bg-blue-500/10' :
+                        doc.status === 'lodged' ? 'border-purple-500/30 bg-purple-500/10' :
+                        'border-amber-500/30 bg-amber-500/10'
                       }`}>
                         <CardContent className="p-4">
                           <div className="flex items-start justify-between">
                             <div className="flex items-start gap-3 flex-1">
                               <div className={`p-2 rounded-lg ${
-                                doc.status === 'verified' ? 'bg-green-100' :
-                                doc.status === 'uploaded' ? 'bg-blue-100' :
-                                doc.status === 'lodged' ? 'bg-purple-100' :
-                                'bg-amber-100'
+                                doc.status === 'verified' ? 'bg-green-500/15' :
+                                doc.status === 'uploaded' ? 'bg-blue-500/15' :
+                                doc.status === 'lodged' ? 'bg-purple-500/15' :
+                                'bg-amber-500/15'
                               }`}>
                                 <FileText className={`w-5 h-5 ${
-                                  doc.status === 'verified' ? 'text-green-600' :
-                                  doc.status === 'uploaded' ? 'text-blue-600' :
-                                  doc.status === 'lodged' ? 'text-purple-600' :
-                                  'text-amber-600'
+                                  doc.status === 'verified' ? 'text-green-400' :
+                                  doc.status === 'uploaded' ? 'text-blue-400' :
+                                  doc.status === 'lodged' ? 'text-purple-400' :
+                                  'text-amber-400'
                                 }`} />
                               </div>
                               <div className="flex-1">
                                 <div className="flex items-center gap-2 mb-1">
-                                  <h4 className="font-semibold text-gray-900">{doc.name}</h4>
+                                  <h4 className="font-semibold text-slate-100">{doc.name}</h4>
                                   <StatusBadge status={doc.status as any} size="sm" />
                                 </div>
-                                <p className="text-sm text-gray-600">
+                                <p className="text-sm text-slate-300">
                                   Type: {doc.type}
                                 </p>
                                 {doc.uploadedBy && (
-                                  <p className="text-xs text-gray-600 mt-1">
+                                  <p className="text-xs text-slate-300 mt-1">
                                     Uploaded by {doc.uploadedBy} on {format(doc.uploadedDate!, 'dd MMM yyyy')}
                                   </p>
                                 )}
@@ -748,7 +748,7 @@ export function PEXADashboard({ onNavigate, caseNumber }: PEXADashboardProps) {
                     </Button>
                   </div>
                 ) : (
-                  <div className="text-center py-12 text-gray-500">
+                  <div className="text-center py-12 text-slate-400">
                     <FileText className="w-12 h-12 mx-auto mb-3 text-gray-400" />
                     <p>Select a workspace to view documents</p>
                   </div>
@@ -768,21 +768,21 @@ export function PEXADashboard({ onNavigate, caseNumber }: PEXADashboardProps) {
                   <CardContent className="p-4">
                     <div className="space-y-3 text-sm">
                       <div>
-                        <p className="text-gray-600 mb-1">Workspace ID</p>
-                        <p className="font-mono font-semibold text-gray-900">{selectedWorkspace.workspaceId}</p>
+                        <p className="text-slate-300 mb-1">Workspace ID</p>
+                        <p className="font-mono font-semibold text-slate-100">{selectedWorkspace.workspaceId}</p>
                       </div>
                       <div>
-                        <p className="text-gray-600 mb-1">Property</p>
-                        <p className="font-semibold text-gray-900">{selectedWorkspace.propertyAddress}</p>
+                        <p className="text-slate-300 mb-1">Property</p>
+                        <p className="font-semibold text-slate-100">{selectedWorkspace.propertyAddress}</p>
                       </div>
                       <div>
-                        <p className="text-gray-600 mb-1">Settlement Date</p>
-                        <p className="font-semibold text-gray-900">
+                        <p className="text-slate-300 mb-1">Settlement Date</p>
+                        <p className="font-semibold text-slate-100">
                           {format(selectedWorkspace.settlementDate, 'dd MMMM yyyy')}
                         </p>
                       </div>
                       <div>
-                        <p className="text-gray-600 mb-1">Status</p>
+                        <p className="text-slate-300 mb-1">Status</p>
                         <StatusBadge status={selectedWorkspace.status as any} />
                       </div>
                     </div>
@@ -796,23 +796,23 @@ export function PEXADashboard({ onNavigate, caseNumber }: PEXADashboardProps) {
                   <CardContent className="p-4">
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between">
-                        <span className="text-gray-600">Purchase Price</span>
+                        <span className="text-slate-300">Purchase Price</span>
                         <span className="font-semibold">A${selectedWorkspace.financials.purchasePrice.toLocaleString()}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-600">Deposit</span>
+                        <span className="text-slate-300">Deposit</span>
                         <span className="font-semibold">A${selectedWorkspace.financials.deposit.toLocaleString()}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-600">Balance</span>
+                        <span className="text-slate-300">Balance</span>
                         <span className="font-semibold">A${selectedWorkspace.financials.balance.toLocaleString()}</span>
                       </div>
                       <div className="flex justify-between pt-2 border-t">
-                        <span className="text-gray-600">Stamp Duty</span>
+                        <span className="text-slate-300">Stamp Duty</span>
                         <span className="font-semibold">A${selectedWorkspace.financials.stampDuty.toLocaleString()}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-600">Transfer Fee</span>
+                        <span className="text-slate-300">Transfer Fee</span>
                         <span className="font-semibold">A${selectedWorkspace.financials.transferFee.toLocaleString()}</span>
                       </div>
                     </div>
@@ -826,29 +826,29 @@ export function PEXADashboard({ onNavigate, caseNumber }: PEXADashboardProps) {
                   <CardContent className="p-4">
                     <div className="space-y-3 text-sm">
                       <div>
-                        <p className="text-gray-600 mb-1">Vendors</p>
+                        <p className="text-slate-300 mb-1">Vendors</p>
                         {selectedWorkspace.parties.vendors.map((v, idx) => (
-                          <p key={idx} className="font-semibold text-gray-900">{v}</p>
+                          <p key={idx} className="font-semibold text-slate-100">{v}</p>
                         ))}
                       </div>
                       <div>
-                        <p className="text-gray-600 mb-1">Purchasers</p>
+                        <p className="text-slate-300 mb-1">Purchasers</p>
                         {selectedWorkspace.parties.purchasers.map((p, idx) => (
-                          <p key={idx} className="font-semibold text-gray-900">{p}</p>
+                          <p key={idx} className="font-semibold text-slate-100">{p}</p>
                         ))}
                       </div>
                       <div>
-                        <p className="text-gray-600 mb-1">Vendor Solicitor</p>
-                        <p className="font-semibold text-gray-900">{selectedWorkspace.parties.vendorSolicitor}</p>
+                        <p className="text-slate-300 mb-1">Vendor Solicitor</p>
+                        <p className="font-semibold text-slate-100">{selectedWorkspace.parties.vendorSolicitor}</p>
                       </div>
                       <div>
-                        <p className="text-gray-600 mb-1">Purchaser Solicitor</p>
-                        <p className="font-semibold text-gray-900">{selectedWorkspace.parties.purchaserSolicitor}</p>
+                        <p className="text-slate-300 mb-1">Purchaser Solicitor</p>
+                        <p className="font-semibold text-slate-100">{selectedWorkspace.parties.purchaserSolicitor}</p>
                       </div>
                       {selectedWorkspace.parties.financialInstitution && (
                         <div>
-                          <p className="text-gray-600 mb-1">Financier</p>
-                          <p className="font-semibold text-gray-900">{selectedWorkspace.parties.financialInstitution}</p>
+                          <p className="text-slate-300 mb-1">Financier</p>
+                          <p className="font-semibold text-slate-100">{selectedWorkspace.parties.financialInstitution}</p>
                         </div>
                       )}
                     </div>
@@ -862,7 +862,7 @@ export function PEXADashboard({ onNavigate, caseNumber }: PEXADashboardProps) {
               </>
             ) : (
               <Card>
-                <CardContent className="p-12 text-center text-gray-500">
+                <CardContent className="p-12 text-center text-slate-400">
                   <Building className="w-12 h-12 mx-auto mb-3 text-gray-400" />
                   <p>Select a workspace</p>
                 </CardContent>
@@ -881,12 +881,12 @@ export function PEXADashboard({ onNavigate, caseNumber }: PEXADashboardProps) {
             </CardTitle>
           </CardHeader>
           <CardContent className="p-6">
-            <div className="bg-purple-50 border-2 border-purple-200 rounded-lg p-4 mb-6">
+            <div className="bg-purple-500/10 border-2 border-purple-500/30 rounded-lg p-4 mb-6">
               <div className="flex gap-3">
-                <Zap className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                <Zap className="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold text-purple-900 mb-1">ðŸš§ Building: Real-time Activity Feed</h4>
-                  <p className="text-sm text-purple-800">
+                  <h4 className="font-semibold text-purple-300 mb-1">ðŸš§ Building: Real-time Activity Feed</h4>
+                  <p className="text-sm text-purple-300">
                     Live activity stream with webhook notifications from PEXA. All document uploads, verifications,
                     lodgements, and settlement milestones will appear here in real-time.
                   </p>
@@ -898,16 +898,16 @@ export function PEXADashboard({ onNavigate, caseNumber }: PEXADashboardProps) {
               {recentActivities.map((activity) => {
                 const Icon = activity.icon;
                 return (
-                  <div key={activity.id} className="flex gap-4 p-4 border rounded-lg hover:bg-gray-50 transition-colors">
-                    <div className="p-2 bg-gray-100 rounded-full h-fit">
+                  <div key={activity.id} className="flex gap-4 p-4 border rounded-lg hover:bg-white/5 transition-colors">
+                    <div className="p-2 bg-white/5 rounded-full h-fit">
                       <Icon className={`w-5 h-5 ${activity.color}`} />
                     </div>
                     <div className="flex-1">
-                      <p className="font-semibold text-gray-900">{activity.action}</p>
-                      <p className="text-sm text-gray-600 mt-1">
+                      <p className="font-semibold text-slate-100">{activity.action}</p>
+                      <p className="text-sm text-slate-300 mt-1">
                         Workspace: <span className="font-mono">{activity.workspace}</span>
                       </p>
-                      <p className="text-xs text-gray-500 mt-1">
+                      <p className="text-xs text-slate-400 mt-1">
                         By {activity.user} â€¢ {format(activity.timestamp, 'dd MMM yyyy, h:mm a')}
                       </p>
                     </div>

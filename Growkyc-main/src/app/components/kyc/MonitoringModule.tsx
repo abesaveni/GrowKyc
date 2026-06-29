@@ -148,22 +148,22 @@ export function MonitoringModule() {
 
   const getSeverityColor = (severity: string) => {
     switch (severity) {
-      case 'critical': return 'bg-red-100 text-red-700 border-red-200';
-      case 'high': return 'bg-orange-100 text-orange-700 border-orange-200';
-      case 'medium': return 'bg-yellow-100 text-yellow-700 border-yellow-200';
-      case 'low': return 'bg-blue-100 text-blue-700 border-blue-200';
-      default: return 'bg-gray-100 text-gray-700 border-gray-200';
+      case 'critical': return 'bg-red-500/15 text-red-300 border-red-500/30';
+      case 'high': return 'bg-orange-500/15 text-orange-300 border-orange-500/30';
+      case 'medium': return 'bg-yellow-500/15 text-yellow-300 border-yellow-500/30';
+      case 'low': return 'bg-blue-500/15 text-blue-300 border-blue-500/30';
+      default: return 'bg-white/5 text-slate-300 border-white/10';
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'pending': return 'bg-orange-100 text-orange-700';
-      case 'under_review': return 'bg-blue-100 text-blue-700';
-      case 'escalated': return 'bg-red-100 text-red-700';
-      case 'closed': return 'bg-gray-100 text-gray-700';
-      case 'false_positive': return 'bg-green-100 text-green-700';
-      default: return 'bg-gray-100 text-gray-700';
+      case 'pending': return 'bg-orange-500/15 text-orange-300';
+      case 'under_review': return 'bg-blue-500/15 text-blue-300';
+      case 'escalated': return 'bg-red-500/15 text-red-300';
+      case 'closed': return 'bg-white/5 text-slate-300';
+      case 'false_positive': return 'bg-green-500/15 text-green-300';
+      default: return 'bg-white/5 text-slate-300';
     }
   };
 
@@ -185,8 +185,8 @@ export function MonitoringModule() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Monitoring & Alerts</h1>
-          <p className="text-gray-600 mt-1">Ongoing customer due diligence and risk monitoring</p>
+          <h1 className="text-3xl font-bold text-slate-100">Monitoring & Alerts</h1>
+          <p className="text-slate-300 mt-1">Ongoing customer due diligence and risk monitoring</p>
         </div>
         <div className="flex items-center gap-3">
           <Button variant="outline">
@@ -202,48 +202,48 @@ export function MonitoringModule() {
 
       {/* Stats */}
       <div className="grid grid-cols-4 gap-4">
-        <div className="bg-white rounded-lg border border-gray-200 p-4">
+        <div className="bg-white rounded-lg border border-white/10 p-4">
           <div className="flex items-center justify-between mb-2">
-            <Bell className="w-8 h-8 text-blue-600" />
-            <span className="text-3xl font-bold text-gray-900">{stats.total}</span>
+            <Bell className="w-8 h-8 text-blue-400" />
+            <span className="text-3xl font-bold text-slate-100">{stats.total}</span>
           </div>
-          <p className="text-sm text-gray-600">Total Alerts</p>
+          <p className="text-sm text-slate-300">Total Alerts</p>
         </div>
-        <div className="bg-white rounded-lg border border-red-200 p-4">
+        <div className="bg-white rounded-lg border border-red-500/30 p-4">
           <div className="flex items-center justify-between mb-2">
-            <AlertTriangle className="w-8 h-8 text-red-600" />
-            <span className="text-3xl font-bold text-red-600">{stats.critical}</span>
+            <AlertTriangle className="w-8 h-8 text-red-400" />
+            <span className="text-3xl font-bold text-red-400">{stats.critical}</span>
           </div>
-          <p className="text-sm text-gray-600">Critical</p>
+          <p className="text-sm text-slate-300">Critical</p>
         </div>
-        <div className="bg-white rounded-lg border border-orange-200 p-4">
+        <div className="bg-white rounded-lg border border-orange-500/30 p-4">
           <div className="flex items-center justify-between mb-2">
-            <Clock className="w-8 h-8 text-orange-600" />
-            <span className="text-3xl font-bold text-orange-600">{stats.pending}</span>
+            <Clock className="w-8 h-8 text-orange-400" />
+            <span className="text-3xl font-bold text-orange-400">{stats.pending}</span>
           </div>
-          <p className="text-sm text-gray-600">Pending Review</p>
+          <p className="text-sm text-slate-300">Pending Review</p>
         </div>
-        <div className="bg-white rounded-lg border border-red-200 p-4">
+        <div className="bg-white rounded-lg border border-red-500/30 p-4">
           <div className="flex items-center justify-between mb-2">
-            <TrendingUp className="w-8 h-8 text-red-600" />
-            <span className="text-3xl font-bold text-red-600">{stats.escalated}</span>
+            <TrendingUp className="w-8 h-8 text-red-400" />
+            <span className="text-3xl font-bold text-red-400">{stats.escalated}</span>
           </div>
-          <p className="text-sm text-gray-600">Escalated</p>
+          <p className="text-sm text-slate-300">Escalated</p>
         </div>
       </div>
 
       {/* Filters */}
-      <div className="bg-white rounded-lg border border-gray-200 p-4">
+      <div className="bg-white rounded-lg border border-white/10 p-4">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
-            <Filter className="w-5 h-5 text-gray-600" />
-            <span className="font-semibold text-gray-900">Filters:</span>
+            <Filter className="w-5 h-5 text-slate-300" />
+            <span className="font-semibold text-slate-100">Filters:</span>
           </div>
           <div>
             <select
               value={filterSeverity}
               onChange={(e) => setFilterSeverity(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="all">All Severity</option>
               <option value="critical">Critical</option>
@@ -256,7 +256,7 @@ export function MonitoringModule() {
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="all">All Status</option>
               <option value="pending">Pending</option>
@@ -266,42 +266,42 @@ export function MonitoringModule() {
               <option value="false_positive">False Positive</option>
             </select>
           </div>
-          <div className="ml-auto text-sm text-gray-600">
+          <div className="ml-auto text-sm text-slate-300">
             Showing {filteredAlerts.length} of {alerts.length} alerts
           </div>
         </div>
       </div>
 
       {/* Alerts Table */}
-      <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+      <div className="bg-white rounded-lg border border-white/10 overflow-hidden">
         <table className="w-full">
-          <thead className="bg-gray-50 border-b border-gray-200">
+          <thead className="bg-white/5 border-b border-white/10">
             <tr>
-              <th className="text-left py-4 px-4 font-semibold text-gray-900">Client</th>
-              <th className="text-left py-4 px-4 font-semibold text-gray-900">Alert Type</th>
-              <th className="text-center py-4 px-4 font-semibold text-gray-900">Source</th>
-              <th className="text-center py-4 px-4 font-semibold text-gray-900">Severity</th>
-              <th className="text-center py-4 px-4 font-semibold text-gray-900">Risk Delta</th>
-              <th className="text-center py-4 px-4 font-semibold text-gray-900">Status</th>
-              <th className="text-left py-4 px-4 font-semibold text-gray-900">Assigned To</th>
-              <th className="text-center py-4 px-4 font-semibold text-gray-900">Actions</th>
+              <th className="text-left py-4 px-4 font-semibold text-slate-100">Client</th>
+              <th className="text-left py-4 px-4 font-semibold text-slate-100">Alert Type</th>
+              <th className="text-center py-4 px-4 font-semibold text-slate-100">Source</th>
+              <th className="text-center py-4 px-4 font-semibold text-slate-100">Severity</th>
+              <th className="text-center py-4 px-4 font-semibold text-slate-100">Risk Delta</th>
+              <th className="text-center py-4 px-4 font-semibold text-slate-100">Status</th>
+              <th className="text-left py-4 px-4 font-semibold text-slate-100">Assigned To</th>
+              <th className="text-center py-4 px-4 font-semibold text-slate-100">Actions</th>
             </tr>
           </thead>
           <tbody>
             {filteredAlerts.map((alert) => (
-              <tr key={alert.id} className="border-b border-gray-100 hover:bg-gray-50">
+              <tr key={alert.id} className="border-b border-white/10 hover:bg-white/5">
                 <td className="py-4 px-4">
                   <div>
-                    <p className="font-semibold text-gray-900">{alert.clientName}</p>
-                    <p className="text-sm text-gray-600">{alert.clientId}</p>
+                    <p className="font-semibold text-slate-100">{alert.clientName}</p>
+                    <p className="text-sm text-slate-300">{alert.clientId}</p>
                   </div>
                 </td>
                 <td className="py-4 px-4">
-                  <p className="font-semibold text-gray-900">{alert.alertType}</p>
-                  <p className="text-xs text-gray-600">{new Date(alert.timestamp).toLocaleString()}</p>
+                  <p className="font-semibold text-slate-100">{alert.alertType}</p>
+                  <p className="text-xs text-slate-300">{new Date(alert.timestamp).toLocaleString()}</p>
                 </td>
                 <td className="text-center py-4 px-4">
-                  <span className="inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-semibold">
+                  <span className="inline-block px-3 py-1 bg-white/5 text-slate-300 rounded-full text-sm font-semibold">
                     {alert.source}
                   </span>
                 </td>
@@ -311,7 +311,7 @@ export function MonitoringModule() {
                   </span>
                 </td>
                 <td className="text-center py-4 px-4">
-                  <span className="font-semibold text-red-600">{alert.riskDelta}</span>
+                  <span className="font-semibold text-red-400">{alert.riskDelta}</span>
                 </td>
                 <td className="text-center py-4 px-4">
                   <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(alert.status)}`}>
@@ -319,7 +319,7 @@ export function MonitoringModule() {
                   </span>
                 </td>
                 <td className="py-4 px-4">
-                  <span className="text-sm text-gray-900">{alert.assignedTo}</span>
+                  <span className="text-sm text-slate-100">{alert.assignedTo}</span>
                 </td>
                 <td className="text-center py-4 px-4">
                   <Button
@@ -357,37 +357,37 @@ export function MonitoringModule() {
               {/* Client Info */}
               <div className="grid grid-cols-2 gap-6">
                 <div>
-                  <h4 className="font-bold text-gray-900 mb-3">Client Information</h4>
+                  <h4 className="font-bold text-slate-100 mb-3">Client Information</h4>
                   <div className="space-y-2">
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Client Name:</span>
+                      <span className="text-slate-300">Client Name:</span>
                       <span className="font-semibold">{selectedAlert.clientName}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Client ID:</span>
+                      <span className="text-slate-300">Client ID:</span>
                       <span className="font-semibold">{selectedAlert.clientId}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Alert Time:</span>
+                      <span className="text-slate-300">Alert Time:</span>
                       <span className="font-semibold">{new Date(selectedAlert.timestamp).toLocaleString()}</span>
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <h4 className="font-bold text-gray-900 mb-3">Alert Details</h4>
+                  <h4 className="font-bold text-slate-100 mb-3">Alert Details</h4>
                   <div className="space-y-2">
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Source:</span>
+                      <span className="text-slate-300">Source:</span>
                       <span className="font-semibold">{selectedAlert.source}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Confidence:</span>
+                      <span className="text-slate-300">Confidence:</span>
                       <span className="font-semibold">{selectedAlert.confidence}%</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Risk Delta:</span>
-                      <span className="font-semibold text-red-600">{selectedAlert.riskDelta}</span>
+                      <span className="text-slate-300">Risk Delta:</span>
+                      <span className="font-semibold text-red-400">{selectedAlert.riskDelta}</span>
                     </div>
                   </div>
                 </div>
@@ -395,19 +395,19 @@ export function MonitoringModule() {
 
               {/* Description */}
               <div>
-                <h4 className="font-bold text-gray-900 mb-2">Description</h4>
-                <p className="text-gray-700 bg-gray-50 p-4 rounded-lg">{selectedAlert.description}</p>
+                <h4 className="font-bold text-slate-100 mb-2">Description</h4>
+                <p className="text-slate-300 bg-white/5 p-4 rounded-lg">{selectedAlert.description}</p>
               </div>
 
               {/* Linked Parties */}
               {selectedAlert.linkedParties && selectedAlert.linkedParties.length > 0 && (
                 <div>
-                  <h4 className="font-bold text-gray-900 mb-2">Linked Parties</h4>
+                  <h4 className="font-bold text-slate-100 mb-2">Linked Parties</h4>
                   <div className="space-y-2">
                     {selectedAlert.linkedParties.map((party, index) => (
-                      <div key={index} className="flex items-center p-3 bg-blue-50 rounded-lg border border-blue-200">
-                        <User className="w-5 h-5 text-blue-600 mr-3" />
-                        <span className="font-semibold text-gray-900">{party}</span>
+                      <div key={index} className="flex items-center p-3 bg-blue-500/10 rounded-lg border border-blue-500/30">
+                        <User className="w-5 h-5 text-blue-400 mr-3" />
+                        <span className="font-semibold text-slate-100">{party}</span>
                         <Button size="sm" variant="outline" className="ml-auto">
                           View Profile
                         </Button>
@@ -418,12 +418,12 @@ export function MonitoringModule() {
               )}
 
               {/* Risk Recalculation Preview */}
-              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-                <h4 className="font-bold text-yellow-900 mb-3">Risk Recalculation Preview</h4>
+              <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4">
+                <h4 className="font-bold text-yellow-300 mb-3">Risk Recalculation Preview</h4>
                 <div className="grid grid-cols-3 gap-4">
                   <div className="text-center">
-                    <p className="text-sm text-gray-600 mb-1">Current Risk</p>
-                    <span className="inline-block px-4 py-2 bg-green-100 text-green-700 rounded-full font-bold">
+                    <p className="text-sm text-slate-300 mb-1">Current Risk</p>
+                    <span className="inline-block px-4 py-2 bg-green-500/15 text-green-300 rounded-full font-bold">
                       LOW
                     </span>
                   </div>
@@ -431,8 +431,8 @@ export function MonitoringModule() {
                     <ChevronRight className="w-8 h-8 text-gray-400" />
                   </div>
                   <div className="text-center">
-                    <p className="text-sm text-gray-600 mb-1">New Risk (if confirmed)</p>
-                    <span className="inline-block px-4 py-2 bg-red-100 text-red-700 rounded-full font-bold">
+                    <p className="text-sm text-slate-300 mb-1">New Risk (if confirmed)</p>
+                    <span className="inline-block px-4 py-2 bg-red-500/15 text-red-300 rounded-full font-bold">
                       HIGH
                     </span>
                   </div>
@@ -440,9 +440,9 @@ export function MonitoringModule() {
               </div>
 
               {/* Recommended Action */}
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <h4 className="font-bold text-blue-900 mb-2">Recommended Action</h4>
-                <p className="text-sm text-blue-700">
+              <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
+                <h4 className="font-bold text-blue-300 mb-2">Recommended Action</h4>
+                <p className="text-sm text-blue-300">
                   {selectedAlert.severity === 'critical' && 
                     'Immediate escalation required. Restrict client access pending investigation. Prepare case file for potential SMR.'}
                   {selectedAlert.severity === 'high' && 
@@ -456,7 +456,7 @@ export function MonitoringModule() {
 
               {/* Actions */}
               <div className="grid grid-cols-2 gap-3">
-                <Button variant="outline" className="border-green-300 text-green-700 hover:bg-green-50">
+                <Button variant="outline" className="border-green-300 text-green-300 hover:bg-green-500/10">
                   <CheckCircle className="w-4 h-4 mr-2" />
                   Close as False Positive
                 </Button>
@@ -464,7 +464,7 @@ export function MonitoringModule() {
                   <AlertTriangle className="w-4 h-4 mr-2" />
                   Escalate to Case
                 </Button>
-                <Button variant="outline" className="border-orange-300 text-orange-700 hover:bg-orange-50">
+                <Button variant="outline" className="border-orange-300 text-orange-300 hover:bg-orange-500/10">
                   <Lock className="w-4 h-4 mr-2" />
                   Restrict Client
                 </Button>

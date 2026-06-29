@@ -100,24 +100,24 @@ export default function ApexTrust({ onSwitchModule }: ApexTrustProps = {}) {
         <Card className="border-l-4 border-blue-600">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-semibold text-gray-600">Total Trust Cash</span>
-              <Wallet className="w-5 h-5 text-blue-600" />
+              <span className="text-sm font-semibold text-slate-300">Total Trust Cash</span>
+              <Wallet className="w-5 h-5 text-blue-400" />
             </div>
-            <p className="text-3xl font-bold text-gray-900">$8,547,293</p>
-            <p className="text-xs text-gray-500 mt-1">Across 4 bank accounts</p>
+            <p className="text-3xl font-bold text-slate-100">$8,547,293</p>
+            <p className="text-xs text-slate-400 mt-1">Across 4 bank accounts</p>
           </CardContent>
         </Card>
 
         <Card className="border-l-4 border-green-600">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-semibold text-gray-600">Total Trust Liabilities</span>
-              <Scale className="w-5 h-5 text-green-600" />
+              <span className="text-sm font-semibold text-slate-300">Total Trust Liabilities</span>
+              <Scale className="w-5 h-5 text-green-400" />
             </div>
-            <p className="text-3xl font-bold text-gray-900">$8,547,293</p>
+            <p className="text-3xl font-bold text-slate-100">$8,547,293</p>
             <div className="flex items-center gap-1 mt-1">
-              <Check className="w-3 h-3 text-green-600" />
-              <p className="text-xs text-green-600">Balanced</p>
+              <Check className="w-3 h-3 text-green-400" />
+              <p className="text-xs text-green-400">Balanced</p>
             </div>
           </CardContent>
         </Card>
@@ -125,22 +125,22 @@ export default function ApexTrust({ onSwitchModule }: ApexTrustProps = {}) {
         <Card className="border-l-4 border-red-600">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-semibold text-gray-600">Overdrawn Matters</span>
-              <AlertTriangle className="w-5 h-5 text-red-600" />
+              <span className="text-sm font-semibold text-slate-300">Overdrawn Matters</span>
+              <AlertTriangle className="w-5 h-5 text-red-400" />
             </div>
-            <p className="text-3xl font-bold text-red-600">0</p>
-            <p className="text-xs text-gray-500 mt-1">System blocked</p>
+            <p className="text-3xl font-bold text-red-400">0</p>
+            <p className="text-xs text-slate-400 mt-1">System blocked</p>
           </CardContent>
         </Card>
 
         <Card className="border-l-4 border-purple-600">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-semibold text-gray-600">Fund NAV</span>
-              <TrendingUp className="w-5 h-5 text-purple-600" />
+              <span className="text-sm font-semibold text-slate-300">Fund NAV</span>
+              <TrendingUp className="w-5 h-5 text-purple-400" />
             </div>
-            <p className="text-3xl font-bold text-gray-900">$15.2M</p>
-            <p className="text-xs text-green-600 mt-1">+2.3% this month</p>
+            <p className="text-3xl font-bold text-slate-100">$15.2M</p>
+            <p className="text-xs text-green-400 mt-1">+2.3% this month</p>
           </CardContent>
         </Card>
       </div>
@@ -150,22 +150,22 @@ export default function ApexTrust({ onSwitchModule }: ApexTrustProps = {}) {
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center gap-3 mb-4">
-              <div className="p-2 bg-green-100 rounded-lg">
-                <CheckCircle className="w-6 h-6 text-green-600" />
+              <div className="p-2 bg-green-500/15 rounded-lg">
+                <CheckCircle className="w-6 h-6 text-green-400" />
               </div>
               <div>
-                <p className="font-semibold text-gray-900">Trust Reconciliation</p>
-                <p className="text-sm text-gray-600">Last reconciled: 2 hours ago</p>
+                <p className="font-semibold text-slate-100">Trust Reconciliation</p>
+                <p className="text-sm text-slate-300">Last reconciled: 2 hours ago</p>
               </div>
             </div>
             <div className="space-y-2 text-sm">
               <div className="flex items-center justify-between">
-                <span className="text-gray-600">3-way reconciliation</span>
-                <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded">PASSED</span>
+                <span className="text-slate-300">3-way reconciliation</span>
+                <span className="px-2 py-0.5 bg-green-500/15 text-green-300 text-xs font-semibold rounded">PASSED</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-gray-600">Period lock status</span>
-                <span className="text-gray-900 font-medium">Feb 2026 locked</span>
+                <span className="text-slate-300">Period lock status</span>
+                <span className="text-slate-100 font-medium">Feb 2026 locked</span>
               </div>
             </div>
           </CardContent>
@@ -174,22 +174,22 @@ export default function ApexTrust({ onSwitchModule }: ApexTrustProps = {}) {
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center gap-3 mb-4">
-              <div className="p-2 bg-amber-100 rounded-lg">
-                <Clock className="w-6 h-6 text-amber-600" />
+              <div className="p-2 bg-amber-500/15 rounded-lg">
+                <Clock className="w-6 h-6 text-amber-400" />
               </div>
               <div>
-                <p className="font-semibold text-gray-900">Pending Approvals</p>
-                <p className="text-sm text-gray-600">Requires action</p>
+                <p className="font-semibold text-slate-100">Pending Approvals</p>
+                <p className="text-sm text-slate-300">Requires action</p>
               </div>
             </div>
             <div className="space-y-2 text-sm">
               <div className="flex items-center justify-between">
-                <span className="text-gray-600">Payment batches</span>
-                <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-xs font-semibold rounded">3 pending</span>
+                <span className="text-slate-300">Payment batches</span>
+                <span className="px-2 py-0.5 bg-amber-500/15 text-amber-300 text-xs font-semibold rounded">3 pending</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-gray-600">Capital calls</span>
-                <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-xs font-semibold rounded">2 pending</span>
+                <span className="text-slate-300">Capital calls</span>
+                <span className="px-2 py-0.5 bg-amber-500/15 text-amber-300 text-xs font-semibold rounded">2 pending</span>
               </div>
             </div>
           </CardContent>
@@ -198,22 +198,22 @@ export default function ApexTrust({ onSwitchModule }: ApexTrustProps = {}) {
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center gap-3 mb-4">
-              <div className="p-2 bg-blue-100 rounded-lg">
-                <Shield className="w-6 h-6 text-blue-600" />
+              <div className="p-2 bg-blue-500/15 rounded-lg">
+                <Shield className="w-6 h-6 text-blue-400" />
               </div>
               <div>
-                <p className="font-semibold text-gray-900">Compliance Status</p>
-                <p className="text-sm text-gray-600">All checks passed</p>
+                <p className="font-semibold text-slate-100">Compliance Status</p>
+                <p className="text-sm text-slate-300">All checks passed</p>
               </div>
             </div>
             <div className="space-y-2 text-sm">
               <div className="flex items-center justify-between">
-                <span className="text-gray-600">AML checks</span>
-                <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded">CURRENT</span>
+                <span className="text-slate-300">AML checks</span>
+                <span className="px-2 py-0.5 bg-green-500/15 text-green-300 text-xs font-semibold rounded">CURRENT</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-gray-600">Breach alerts</span>
-                <span className="text-gray-900 font-medium">0 active</span>
+                <span className="text-slate-300">Breach alerts</span>
+                <span className="text-slate-100 font-medium">0 active</span>
               </div>
             </div>
           </CardContent>
@@ -227,25 +227,25 @@ export default function ApexTrust({ onSwitchModule }: ApexTrustProps = {}) {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-            <div className="p-4 bg-gray-50 rounded-lg">
-              <p className="text-sm text-gray-600 mb-1">Committed Capital</p>
-              <p className="text-2xl font-bold text-gray-900">$25.0M</p>
+            <div className="p-4 bg-white/5 rounded-lg">
+              <p className="text-sm text-slate-300 mb-1">Committed Capital</p>
+              <p className="text-2xl font-bold text-slate-100">$25.0M</p>
             </div>
-            <div className="p-4 bg-blue-50 rounded-lg">
-              <p className="text-sm text-gray-600 mb-1">Called Capital</p>
-              <p className="text-2xl font-bold text-blue-900">$15.2M</p>
+            <div className="p-4 bg-blue-500/10 rounded-lg">
+              <p className="text-sm text-slate-300 mb-1">Called Capital</p>
+              <p className="text-2xl font-bold text-blue-300">$15.2M</p>
             </div>
-            <div className="p-4 bg-green-50 rounded-lg">
-              <p className="text-sm text-gray-600 mb-1">Paid Capital</p>
-              <p className="text-2xl font-bold text-green-900">$14.8M</p>
+            <div className="p-4 bg-green-500/10 rounded-lg">
+              <p className="text-sm text-slate-300 mb-1">Paid Capital</p>
+              <p className="text-2xl font-bold text-green-300">$14.8M</p>
             </div>
-            <div className="p-4 bg-amber-50 rounded-lg">
-              <p className="text-sm text-gray-600 mb-1">Uncalled Capital</p>
-              <p className="text-2xl font-bold text-amber-900">$9.8M</p>
+            <div className="p-4 bg-amber-500/10 rounded-lg">
+              <p className="text-sm text-slate-300 mb-1">Uncalled Capital</p>
+              <p className="text-2xl font-bold text-amber-300">$9.8M</p>
             </div>
-            <div className="p-4 bg-purple-50 rounded-lg border-2 border-purple-300">
-              <p className="text-sm text-purple-700 mb-1">Call Rate</p>
-              <p className="text-2xl font-bold text-purple-900">60.8%</p>
+            <div className="p-4 bg-purple-500/10 rounded-lg border-2 border-purple-300">
+              <p className="text-sm text-purple-300 mb-1">Call Rate</p>
+              <p className="text-2xl font-bold text-purple-300">60.8%</p>
             </div>
           </div>
         </CardContent>
@@ -264,20 +264,20 @@ export default function ApexTrust({ onSwitchModule }: ApexTrustProps = {}) {
                 { type: 'Payment', matter: 'MAT-2024-142', amount: -85000, desc: 'Settlement disbursement', time: '4 hours ago' },
                 { type: 'Receipt', matter: 'MAT-2024-148', amount: 50000, desc: 'Trust receipt - Contract deposit', time: '1 day ago' }
               ].map((txn, idx) => (
-                <div key={idx} className="flex items-center justify-between p-3 border rounded-lg hover:bg-gray-50">
+                <div key={idx} className="flex items-center justify-between p-3 border rounded-lg hover:bg-white/5">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
                       <span className={`px-2 py-0.5 text-xs font-semibold rounded ${
-                        txn.type === 'Receipt' ? 'bg-green-100 text-green-700' : 'bg-blue-100 text-blue-700'
+                        txn.type === 'Receipt' ? 'bg-green-500/15 text-green-300' : 'bg-blue-500/15 text-blue-300'
                       }`}>
                         {txn.type}
                       </span>
-                      <span className="text-sm font-mono font-semibold text-gray-900">{txn.matter}</span>
+                      <span className="text-sm font-mono font-semibold text-slate-100">{txn.matter}</span>
                     </div>
-                    <p className="text-sm text-gray-900">{txn.desc}</p>
-                    <p className="text-xs text-gray-500">{txn.time}</p>
+                    <p className="text-sm text-slate-100">{txn.desc}</p>
+                    <p className="text-xs text-slate-400">{txn.time}</p>
                   </div>
-                  <p className={`text-lg font-bold ${txn.amount > 0 ? 'text-green-600' : 'text-gray-900'}`}>
+                  <p className={`text-lg font-bold ${txn.amount > 0 ? 'text-green-400' : 'text-slate-100'}`}>
                     ${Math.abs(txn.amount).toLocaleString()}
                   </p>
                 </div>
@@ -298,13 +298,13 @@ export default function ApexTrust({ onSwitchModule }: ApexTrustProps = {}) {
                 { type: 'success', message: 'Trust reconciliation completed', time: '2 hours ago', priority: 'low' }
               ].map((alert, idx) => (
                 <div key={idx} className={`flex items-start gap-3 p-3 border-l-4 rounded-lg ${
-                  alert.type === 'warning' ? 'bg-amber-50 border-amber-500' :
-                  alert.type === 'success' ? 'bg-green-50 border-green-500' :
-                  'bg-blue-50 border-blue-500'
+                  alert.type === 'warning' ? 'bg-amber-500/10 border-amber-500' :
+                  alert.type === 'success' ? 'bg-green-500/10 border-green-500' :
+                  'bg-blue-500/10 border-blue-500'
                 }`}>
                   <div className="flex-1">
-                    <p className="text-sm font-medium text-gray-900">{alert.message}</p>
-                    <p className="text-xs text-gray-600 mt-1">{alert.time}</p>
+                    <p className="text-sm font-medium text-slate-100">{alert.message}</p>
+                    <p className="text-xs text-slate-300 mt-1">{alert.time}</p>
                   </div>
                   {alert.priority === 'medium' && (
                     <Button size="sm" variant="outline">Review</Button>
@@ -321,7 +321,7 @@ export default function ApexTrust({ onSwitchModule }: ApexTrustProps = {}) {
   const renderTrustAccounts = () => (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-gray-900">Trust Accounts</h2>
+        <h2 className="text-2xl font-bold text-slate-100">Trust Accounts</h2>
         <Button onClick={() => toast.success('Add new trust account')}>
           <Plus className="w-4 h-4 mr-2" />
           Add Account
@@ -338,20 +338,20 @@ export default function ApexTrust({ onSwitchModule }: ApexTrustProps = {}) {
           <Card key={idx} className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => toast.info(`View ${account.name}`)}>
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <div className="p-2 bg-blue-100 rounded-lg">
-                  <Building2 className="w-6 h-6 text-blue-600" />
+                <div className="p-2 bg-blue-500/15 rounded-lg">
+                  <Building2 className="w-6 h-6 text-blue-400" />
                 </div>
-                <span className="px-2 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded">RECONCILED</span>
+                <span className="px-2 py-1 bg-green-500/15 text-green-300 text-xs font-semibold rounded">RECONCILED</span>
               </div>
-              <h3 className="font-bold text-gray-900 mb-2">{account.name}</h3>
-              <div className="space-y-1 text-sm text-gray-600 mb-4">
+              <h3 className="font-bold text-slate-100 mb-2">{account.name}</h3>
+              <div className="space-y-1 text-sm text-slate-300 mb-4">
                 <p>{account.bank}</p>
                 <p className="font-mono">{account.bsb} {account.account}</p>
               </div>
               <div className="border-t pt-4">
-                <p className="text-sm text-gray-600 mb-1">Account Balance</p>
-                <p className="text-2xl font-bold text-gray-900">${account.balance.toLocaleString()}</p>
-                <p className="text-xs text-gray-500 mt-2">{account.matters} active matters</p>
+                <p className="text-sm text-slate-300 mb-1">Account Balance</p>
+                <p className="text-2xl font-bold text-slate-100">${account.balance.toLocaleString()}</p>
+                <p className="text-xs text-slate-400 mt-2">{account.matters} active matters</p>
               </div>
             </CardContent>
           </Card>
@@ -371,27 +371,27 @@ export default function ApexTrust({ onSwitchModule }: ApexTrustProps = {}) {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-4 bg-blue-50 rounded-lg border-2 border-blue-300">
-              <p className="text-sm font-semibold text-blue-900 mb-2">Bank Balance</p>
-              <p className="text-3xl font-bold text-blue-900">$8,547,293</p>
-              <p className="text-xs text-blue-700 mt-1">As per bank statement</p>
+            <div className="p-4 bg-blue-500/10 rounded-lg border-2 border-blue-300">
+              <p className="text-sm font-semibold text-blue-300 mb-2">Bank Balance</p>
+              <p className="text-3xl font-bold text-blue-300">$8,547,293</p>
+              <p className="text-xs text-blue-300 mt-1">As per bank statement</p>
             </div>
-            <div className="p-4 bg-green-50 rounded-lg border-2 border-green-300">
-              <p className="text-sm font-semibold text-green-900 mb-2">Trust GL Balance</p>
-              <p className="text-3xl font-bold text-green-900">$8,547,293</p>
-              <p className="text-xs text-green-700 mt-1">As per general ledger</p>
+            <div className="p-4 bg-green-500/10 rounded-lg border-2 border-green-300">
+              <p className="text-sm font-semibold text-green-300 mb-2">Trust GL Balance</p>
+              <p className="text-3xl font-bold text-green-300">$8,547,293</p>
+              <p className="text-xs text-green-300 mt-1">As per general ledger</p>
             </div>
-            <div className="p-4 bg-purple-50 rounded-lg border-2 border-purple-300">
-              <p className="text-sm font-semibold text-purple-900 mb-2">Matter Liabilities</p>
-              <p className="text-3xl font-bold text-purple-900">$8,547,293</p>
-              <p className="text-xs text-purple-700 mt-1">Sum of all matter balances</p>
+            <div className="p-4 bg-purple-500/10 rounded-lg border-2 border-purple-300">
+              <p className="text-sm font-semibold text-purple-300 mb-2">Matter Liabilities</p>
+              <p className="text-3xl font-bold text-purple-300">$8,547,293</p>
+              <p className="text-xs text-purple-300 mt-1">Sum of all matter balances</p>
             </div>
           </div>
-          <div className="mt-6 p-4 bg-green-50 border-2 border-green-300 rounded-lg flex items-center gap-3">
-            <CheckCircle className="w-6 h-6 text-green-600" />
+          <div className="mt-6 p-4 bg-green-500/10 border-2 border-green-300 rounded-lg flex items-center gap-3">
+            <CheckCircle className="w-6 h-6 text-green-400" />
             <div>
-              <p className="font-semibold text-green-900">Reconciliation Passed</p>
-              <p className="text-sm text-green-700">All three sources match. Trust account is balanced.</p>
+              <p className="font-semibold text-green-300">Reconciliation Passed</p>
+              <p className="text-sm text-green-300">All three sources match. Trust account is balanced.</p>
             </div>
           </div>
         </CardContent>
@@ -405,28 +405,28 @@ export default function ApexTrust({ onSwitchModule }: ApexTrustProps = {}) {
         <CardContent>
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-gray-50">
+              <thead className="bg-white/5">
                 <tr>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Matter</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Client</th>
-                  <th className="px-4 py-3 text-right text-xs font-semibold text-gray-600 uppercase">Trust Balance</th>
-                  <th className="px-4 py-3 text-center text-xs font-semibold text-gray-600 uppercase">Status</th>
-                  <th className="px-4 py-3 text-right text-xs font-semibold text-gray-600 uppercase">Actions</th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Matter</th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Client</th>
+                  <th className="px-4 py-3 text-right text-xs font-semibold text-slate-300 uppercase">Trust Balance</th>
+                  <th className="px-4 py-3 text-center text-xs font-semibold text-slate-300 uppercase">Status</th>
+                  <th className="px-4 py-3 text-right text-xs font-semibold text-slate-300 uppercase">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200">
+              <tbody className="divide-y divide-white/10">
                 {[
                   { matter: 'MAT-2024-145', client: 'John & Sarah Smith', balance: 125000, status: 'active' },
                   { matter: 'MAT-2024-142', client: 'Property Investors Pty Ltd', balance: 450000, status: 'active' },
                   { matter: 'MAT-2024-138', client: 'Melbourne Holdings Ltd', balance: 850000, status: 'active' },
                   { matter: 'MAT-2024-125', client: 'Chen Family Trust', balance: 220000, status: 'active' }
                 ].map((matter, idx) => (
-                  <tr key={idx} className="hover:bg-gray-50">
-                    <td className="px-4 py-3 text-sm font-mono font-semibold text-gray-900">{matter.matter}</td>
-                    <td className="px-4 py-3 text-sm text-gray-900">{matter.client}</td>
-                    <td className="px-4 py-3 text-sm font-bold text-right text-gray-900">${matter.balance.toLocaleString()}</td>
+                  <tr key={idx} className="hover:bg-white/5">
+                    <td className="px-4 py-3 text-sm font-mono font-semibold text-slate-100">{matter.matter}</td>
+                    <td className="px-4 py-3 text-sm text-slate-100">{matter.client}</td>
+                    <td className="px-4 py-3 text-sm font-bold text-right text-slate-100">${matter.balance.toLocaleString()}</td>
                     <td className="px-4 py-3 text-center">
-                      <span className="px-2 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded">
+                      <span className="px-2 py-1 bg-green-500/15 text-green-300 text-xs font-semibold rounded">
                         {matter.status.toUpperCase()}
                       </span>
                     </td>
@@ -448,7 +448,7 @@ export default function ApexTrust({ onSwitchModule }: ApexTrustProps = {}) {
   const renderMatters = () => (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-gray-900">Matters</h2>
+        <h2 className="text-2xl font-bold text-slate-100">Matters</h2>
         <Button onClick={() => toast.success('Add new matter')}>
           <Plus className="w-4 h-4 mr-2" />
           Add Matter
@@ -466,19 +466,19 @@ export default function ApexTrust({ onSwitchModule }: ApexTrustProps = {}) {
           <Card key={idx} className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => toast.info(`View ${matter.name}`)}>
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <div className="p-2 bg-blue-100 rounded-lg">
-                  <Building2 className="w-6 h-6 text-blue-600" />
+                <div className="p-2 bg-blue-500/15 rounded-lg">
+                  <Building2 className="w-6 h-6 text-blue-400" />
                 </div>
-                <span className="px-2 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded">RECONCILED</span>
+                <span className="px-2 py-1 bg-green-500/15 text-green-300 text-xs font-semibold rounded">RECONCILED</span>
               </div>
-              <h3 className="font-bold text-gray-900 mb-2">{matter.name}</h3>
-              <div className="space-y-1 text-sm text-gray-600 mb-4">
+              <h3 className="font-bold text-slate-100 mb-2">{matter.name}</h3>
+              <div className="space-y-1 text-sm text-slate-300 mb-4">
                 <p>{matter.client}</p>
                 <p className="font-mono">Balance: ${matter.balance.toLocaleString()}</p>
               </div>
               <div className="border-t pt-4">
-                <p className="text-sm text-gray-600 mb-1">Status</p>
-                <p className="text-2xl font-bold text-gray-900">{matter.status.toUpperCase()}</p>
+                <p className="text-sm text-slate-300 mb-1">Status</p>
+                <p className="text-2xl font-bold text-slate-100">{matter.status.toUpperCase()}</p>
               </div>
             </CardContent>
           </Card>
@@ -493,26 +493,26 @@ export default function ApexTrust({ onSwitchModule }: ApexTrustProps = {}) {
         <CardContent>
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-gray-50">
+              <thead className="bg-white/5">
                 <tr>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Transaction</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Date</th>
-                  <th className="px-4 py-3 text-right text-xs font-semibold text-gray-600 uppercase">Amount</th>
-                  <th className="px-4 py-3 text-center text-xs font-semibold text-gray-600 uppercase">Description</th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Transaction</th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Date</th>
+                  <th className="px-4 py-3 text-right text-xs font-semibold text-slate-300 uppercase">Amount</th>
+                  <th className="px-4 py-3 text-center text-xs font-semibold text-slate-300 uppercase">Description</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200">
+              <tbody className="divide-y divide-white/10">
                 {[
                   { transaction: 'MAT-2024-145-001', date: '2024-02-15', amount: 125000, desc: 'Deposit received - 45 Collins St' },
                   { transaction: 'MAT-2024-142-002', date: '2024-02-14', amount: -85000, desc: 'Settlement disbursement' },
                   { transaction: 'MAT-2024-148-003', date: '2024-02-13', amount: 50000, desc: 'Trust receipt - Contract deposit' }
                 ].map((txn, idx) => (
-                  <tr key={idx} className="hover:bg-gray-50">
-                    <td className="px-4 py-3 text-sm font-mono font-semibold text-gray-900">{txn.transaction}</td>
-                    <td className="px-4 py-3 text-sm text-gray-900">{txn.date}</td>
-                    <td className="px-4 py-3 text-sm font-bold text-right text-gray-900">${Math.abs(txn.amount).toLocaleString()}</td>
+                  <tr key={idx} className="hover:bg-white/5">
+                    <td className="px-4 py-3 text-sm font-mono font-semibold text-slate-100">{txn.transaction}</td>
+                    <td className="px-4 py-3 text-sm text-slate-100">{txn.date}</td>
+                    <td className="px-4 py-3 text-sm font-bold text-right text-slate-100">${Math.abs(txn.amount).toLocaleString()}</td>
                     <td className="px-4 py-3 text-center">
-                      <span className="px-2 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded">
+                      <span className="px-2 py-1 bg-green-500/15 text-green-300 text-xs font-semibold rounded">
                         {txn.amount > 0 ? 'Receipt' : 'Payment'}
                       </span>
                     </td>
@@ -559,7 +559,7 @@ export default function ApexTrust({ onSwitchModule }: ApexTrustProps = {}) {
   };
 
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex h-screen bg-white/5">
       {/* Left Sidebar */}
       <div className={`${sidebarOpen ? 'w-64' : 'w-0'} bg-gray-900 text-white transition-all duration-300 overflow-hidden flex flex-col`}>
         {/* Logo */}
@@ -612,7 +612,7 @@ export default function ApexTrust({ onSwitchModule }: ApexTrustProps = {}) {
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Top Bar */}
-        <header className="bg-white border-b border-gray-200 px-6 py-4">
+        <header className="bg-white border-b border-white/10 px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <Button variant="ghost" size="sm" onClick={() => setSidebarOpen(!sidebarOpen)}>
@@ -625,7 +625,7 @@ export default function ApexTrust({ onSwitchModule }: ApexTrustProps = {}) {
                 <input
                   type="text"
                   placeholder="Search matters, transactions, investors..."
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full pl-10 pr-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
             </div>
@@ -635,7 +635,7 @@ export default function ApexTrust({ onSwitchModule }: ApexTrustProps = {}) {
               <select
                 value={currentRole}
                 onChange={(e) => setCurrentRole(e.target.value as UserRole)}
-                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="system_admin">System Admin</option>
                 <option value="finance_manager">Finance Manager</option>
@@ -647,13 +647,13 @@ export default function ApexTrust({ onSwitchModule }: ApexTrustProps = {}) {
               </select>
 
               {/* Notifications */}
-              <button className="relative p-2 hover:bg-gray-100 rounded-lg">
-                <Bell className="w-5 h-5 text-gray-600" />
+              <button className="relative p-2 hover:bg-white/5 rounded-lg">
+                <Bell className="w-5 h-5 text-slate-300" />
                 <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
               </button>
 
               {/* User Profile */}
-              <button className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 rounded-lg">
+              <button className="flex items-center gap-2 px-3 py-2 hover:bg-white/5 rounded-lg">
                 <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
                   <span className="text-white text-sm font-semibold">JD</span>
                 </div>

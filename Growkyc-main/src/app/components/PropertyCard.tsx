@@ -35,7 +35,7 @@ export function PropertyCard({
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-200">
       {/* Property Image */}
-      <div className="relative h-48 bg-gray-200 overflow-hidden">
+      <div className="relative h-48 bg-white/10 overflow-hidden">
         <img
           src={imgSrc}
           alt={caseData.property.address}
@@ -59,25 +59,25 @@ export function PropertyCard({
         {/* Property Address */}
         <div className="mb-4">
           <div className="flex items-start justify-between gap-2 mb-1">
-            <h3 className="font-semibold text-lg text-gray-900 leading-tight">
+            <h3 className="font-semibold text-lg text-slate-100 leading-tight">
               {caseData.property.address}
             </h3>
             {caseData.currentBid && (
-              <div className="flex items-center gap-1 text-green-600 text-xs font-medium bg-green-50 px-2 py-1 rounded">
+              <div className="flex items-center gap-1 text-green-400 text-xs font-medium bg-green-500/10 px-2 py-1 rounded">
                 <TrendingUp className="w-3 h-3" />
                 {caseData.bidCount}
               </div>
             )}
           </div>
-          <div className="flex items-center gap-1 text-gray-600 text-sm">
+          <div className="flex items-center gap-1 text-slate-300 text-sm">
             <MapPin className="w-4 h-4" />
             <span>{caseData.property.suburb}, {caseData.property.state} {caseData.property.postcode}</span>
           </div>
-          <p className="text-xs text-gray-500 mt-1">{caseData.caseNumber}</p>
+          <p className="text-xs text-slate-400 mt-1">{caseData.caseNumber}</p>
         </div>
 
         {/* Property Features */}
-        <div className="flex items-center gap-4 mb-4 pb-4 border-b text-sm text-gray-600">
+        <div className="flex items-center gap-4 mb-4 pb-4 border-b text-sm text-slate-300">
           <div className="flex items-center gap-1">
             <Home className="w-4 h-4" />
             <span className="font-medium">{caseData.property.propertyType}</span>
@@ -99,16 +99,16 @@ export function PropertyCard({
         {/* Financial Details */}
         <div className="space-y-3 mb-4">
           <div className="flex justify-between items-baseline">
-            <span className="text-sm text-gray-600">Valuation</span>
-            <span className="font-semibold text-gray-900">
+            <span className="text-sm text-slate-300">Valuation</span>
+            <span className="font-semibold text-slate-100">
               ${caseData.valuation.amount.toLocaleString()}
             </span>
           </div>
           
           {caseData.minimumBid && (
             <div className="flex justify-between items-baseline">
-              <span className="text-sm text-gray-600">Minimum Bid</span>
-              <span className="font-semibold text-indigo-600">
+              <span className="text-sm text-slate-300">Minimum Bid</span>
+              <span className="font-semibold text-indigo-400">
                 ${caseData.minimumBid.toLocaleString()}
               </span>
             </div>
@@ -116,35 +116,35 @@ export function PropertyCard({
 
           {caseData.currentBid ? (
             <div className="flex justify-between items-baseline">
-              <span className="text-sm text-gray-600">Current Bid</span>
+              <span className="text-sm text-slate-300">Current Bid</span>
               <div className="text-right">
-                <span className="font-semibold text-green-600 text-lg">
+                <span className="font-semibold text-green-400 text-lg">
                   ${caseData.currentBid.toLocaleString()}
                 </span>
-                <p className="text-xs text-gray-500">{currentBidPercentage}% of valuation</p>
+                <p className="text-xs text-slate-400">{currentBidPercentage}% of valuation</p>
               </div>
             </div>
           ) : (
             <div className="flex justify-between items-baseline">
-              <span className="text-sm text-gray-600">Status</span>
-              <span className="text-sm font-medium text-amber-600">No bids yet</span>
+              <span className="text-sm text-slate-300">Status</span>
+              <span className="text-sm font-medium text-amber-400">No bids yet</span>
             </div>
           )}
 
           <div className="flex justify-between items-baseline pt-3 border-t">
-            <span className="text-sm text-gray-600">Outstanding Debt</span>
-            <span className="font-medium text-gray-700">
+            <span className="text-sm text-slate-300">Outstanding Debt</span>
+            <span className="font-medium text-slate-300">
               ${caseData.outstandingDebt.toLocaleString()}
             </span>
           </div>
 
           <div className="flex justify-between items-baseline">
-            <span className="text-sm text-gray-600">Equity Available</span>
+            <span className="text-sm text-slate-300">Equity Available</span>
             <div className="text-right">
-              <span className="font-semibold text-green-700">
+              <span className="font-semibold text-green-300">
                 ${(caseData.valuation.amount - caseData.outstandingDebt).toLocaleString()}
               </span>
-              <p className="text-xs text-gray-500">{equityPercentage}% equity</p>
+              <p className="text-xs text-slate-400">{equityPercentage}% equity</p>
             </div>
           </div>
         </div>
@@ -170,7 +170,7 @@ export function PropertyCard({
         )}
 
         {/* Lender Info */}
-        <div className="mt-4 pt-4 border-t text-xs text-gray-500">
+        <div className="mt-4 pt-4 border-t text-xs text-slate-400">
           <div className="flex justify-between">
             <span>Lender: {caseData.lenderName}</span>
             <span>Listed {new Date(caseData.createdAt).toLocaleDateString('en-AU', { month: 'short', day: 'numeric' })}</span>

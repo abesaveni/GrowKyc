@@ -133,15 +133,15 @@ export function ScreeningVerification() {
             </div>
           </div>
           <div className="flex gap-3">
-            <Button className="bg-white text-red-600 hover:bg-red-50">
+            <Button className="bg-white text-red-400 hover:bg-red-500/10">
               <Search className="w-5 h-5 mr-2" />
               New Screening
             </Button>
-            <Button className="bg-white text-red-600 hover:bg-red-50">
+            <Button className="bg-white text-red-400 hover:bg-red-500/10">
               <RefreshCw className="w-5 h-5 mr-2" />
               Batch Re-screen
             </Button>
-            <Button className="bg-white text-red-600 hover:bg-red-50">
+            <Button className="bg-white text-red-400 hover:bg-red-500/10">
               <Download className="w-5 h-5 mr-2" />
               Export Report
             </Button>
@@ -201,7 +201,7 @@ export function ScreeningVerification() {
       </div>
 
       {/* Navigation Tabs */}
-      <div className="border-b border-gray-200">
+      <div className="border-b border-white/10">
         <div className="flex gap-2">
           {[
             { id: 'overview', label: 'Overview', icon: Target },
@@ -218,8 +218,8 @@ export function ScreeningVerification() {
                 onClick={() => setActiveTab(tab.id as any)}
                 className={`px-6 py-3 font-semibold flex items-center gap-2 transition-colors ${
                   activeTab === tab.id
-                    ? 'border-b-2 border-red-600 text-red-600'
-                    : 'text-gray-600 hover:text-gray-900'
+                    ? 'border-b-2 border-red-600 text-red-400'
+                    : 'text-slate-300 hover:text-slate-100'
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -232,79 +232,79 @@ export function ScreeningVerification() {
 
       {/* Screening Lists Info */}
       <div className="grid grid-cols-4 gap-4">
-        <div className="bg-white rounded-lg border-2 border-red-200 p-6">
+        <div className="bg-white rounded-lg border-2 border-red-500/30 p-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-              <Shield className="w-6 h-6 text-red-600" />
+            <div className="w-12 h-12 bg-red-500/15 rounded-lg flex items-center justify-center">
+              <Shield className="w-6 h-6 text-red-400" />
             </div>
             <div>
-              <h3 className="font-bold text-gray-900">Sanctions Lists</h3>
-              <p className="text-sm text-gray-600">DFAT, UN, OFAC, EU</p>
+              <h3 className="font-bold text-slate-100">Sanctions Lists</h3>
+              <p className="text-sm text-slate-300">DFAT, UN, OFAC, EU</p>
             </div>
           </div>
-          <p className="text-sm text-gray-700 mb-3">
+          <p className="text-sm text-slate-300 mb-3">
             Real-time screening against Australian DFAT, UN Security Council, US OFAC, and EU sanctions lists.
           </p>
           <div className="flex items-center justify-between">
-            <span className="text-xs text-gray-600">Updated: Daily</span>
-            <span className="px-2 py-1 bg-green-100 text-green-700 text-xs font-bold rounded">ACTIVE</span>
+            <span className="text-xs text-slate-300">Updated: Daily</span>
+            <span className="px-2 py-1 bg-green-500/15 text-green-300 text-xs font-bold rounded">ACTIVE</span>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg border-2 border-purple-200 p-6">
+        <div className="bg-white rounded-lg border-2 border-purple-500/30 p-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-              <User className="w-6 h-6 text-purple-600" />
+            <div className="w-12 h-12 bg-purple-500/15 rounded-lg flex items-center justify-center">
+              <User className="w-6 h-6 text-purple-400" />
             </div>
             <div>
-              <h3 className="font-bold text-gray-900">PEP Database</h3>
-              <p className="text-sm text-gray-600">Domestic & Foreign</p>
+              <h3 className="font-bold text-slate-100">PEP Database</h3>
+              <p className="text-sm text-slate-300">Domestic & Foreign</p>
             </div>
           </div>
-          <p className="text-sm text-gray-700 mb-3">
+          <p className="text-sm text-slate-300 mb-3">
             Politically Exposed Persons screening including government officials, diplomats, and close associates.
           </p>
           <div className="flex items-center justify-between">
-            <span className="text-xs text-gray-600">Updated: Weekly</span>
-            <span className="px-2 py-1 bg-green-100 text-green-700 text-xs font-bold rounded">ACTIVE</span>
+            <span className="text-xs text-slate-300">Updated: Weekly</span>
+            <span className="px-2 py-1 bg-green-500/15 text-green-300 text-xs font-bold rounded">ACTIVE</span>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg border-2 border-blue-200 p-6">
+        <div className="bg-white rounded-lg border-2 border-blue-500/30 p-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-              <Globe className="w-6 h-6 text-blue-600" />
+            <div className="w-12 h-12 bg-blue-500/15 rounded-lg flex items-center justify-center">
+              <Globe className="w-6 h-6 text-blue-400" />
             </div>
             <div>
-              <h3 className="font-bold text-gray-900">Adverse Media</h3>
-              <p className="text-sm text-gray-600">Global News Sources</p>
+              <h3 className="font-bold text-slate-100">Adverse Media</h3>
+              <p className="text-sm text-slate-300">Global News Sources</p>
             </div>
           </div>
-          <p className="text-sm text-gray-700 mb-3">
+          <p className="text-sm text-slate-300 mb-3">
             Automated screening of 50,000+ global news sources for financial crime, fraud, corruption, and regulatory issues.
           </p>
           <div className="flex items-center justify-between">
-            <span className="text-xs text-gray-600">Updated: Real-time</span>
-            <span className="px-2 py-1 bg-green-100 text-green-700 text-xs font-bold rounded">ACTIVE</span>
+            <span className="text-xs text-slate-300">Updated: Real-time</span>
+            <span className="px-2 py-1 bg-green-500/15 text-green-300 text-xs font-bold rounded">ACTIVE</span>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg border-2 border-orange-200 p-6">
+        <div className="bg-white rounded-lg border-2 border-orange-500/30 p-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-              <AlertTriangle className="w-6 h-6 text-orange-600" />
+            <div className="w-12 h-12 bg-orange-500/15 rounded-lg flex items-center justify-center">
+              <AlertTriangle className="w-6 h-6 text-orange-400" />
             </div>
             <div>
-              <h3 className="font-bold text-gray-900">Watchlists</h3>
-              <p className="text-sm text-gray-600">Custom & Industry</p>
+              <h3 className="font-bold text-slate-100">Watchlists</h3>
+              <p className="text-sm text-slate-300">Custom & Industry</p>
             </div>
           </div>
-          <p className="text-sm text-gray-700 mb-3">
+          <p className="text-sm text-slate-300 mb-3">
             Custom internal watchlists plus industry enforcement lists from ASIC, APRA, and international regulators.
           </p>
           <div className="flex items-center justify-between">
-            <span className="text-xs text-gray-600">Updated: On-demand</span>
-            <span className="px-2 py-1 bg-green-100 text-green-700 text-xs font-bold rounded">ACTIVE</span>
+            <span className="text-xs text-slate-300">Updated: On-demand</span>
+            <span className="px-2 py-1 bg-green-500/15 text-green-300 text-xs font-bold rounded">ACTIVE</span>
           </div>
         </div>
       </div>
@@ -312,7 +312,7 @@ export function ScreeningVerification() {
       {/* Screening Results */}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <h3 className="text-xl font-bold text-gray-900">Recent Screening Results</h3>
+          <h3 className="text-xl font-bold text-slate-100">Recent Screening Results</h3>
           <div className="flex gap-2">
             <Button variant="outline" size="sm">
               <Filter className="w-4 h-4 mr-2" />
@@ -327,19 +327,19 @@ export function ScreeningVerification() {
 
         {screeningResults.map((result) => (
           <div key={result.id} className={`bg-white rounded-lg border-2 p-6 ${
-            result.status === 'match' ? 'border-red-300 bg-red-50' :
-            result.status === 'potential-match' ? 'border-orange-300 bg-orange-50' :
-            result.status === 'clear' ? 'border-green-200' :
-            'border-gray-200'
+            result.status === 'match' ? 'border-red-300 bg-red-500/10' :
+            result.status === 'potential-match' ? 'border-orange-300 bg-orange-500/10' :
+            result.status === 'clear' ? 'border-green-500/30' :
+            'border-white/10'
           }`}>
             <div className="flex items-start justify-between">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
-                  <h4 className="text-xl font-bold text-gray-900">{result.clientName}</h4>
+                  <h4 className="text-xl font-bold text-slate-100">{result.clientName}</h4>
                   <span className={`px-3 py-1 bg-${getStatusColor(result.status)}-100 text-${getStatusColor(result.status)}-700 text-sm font-bold rounded-full`}>
                     {result.status.toUpperCase().replace('-', ' ')}
                   </span>
-                  <span className="px-3 py-1 bg-gray-100 text-gray-700 text-sm font-semibold rounded-full">
+                  <span className="px-3 py-1 bg-white/5 text-slate-300 text-sm font-semibold rounded-full">
                     {screeningTypeLabels[result.screeningType]}
                   </span>
                   {result.matchScore > 0 && (
@@ -353,7 +353,7 @@ export function ScreeningVerification() {
                   )}
                 </div>
 
-                <div className="flex items-center gap-4 text-sm text-gray-600 mb-3">
+                <div className="flex items-center gap-4 text-sm text-slate-300 mb-3">
                   <span>ID: {result.id}</span>
                   <span>•</span>
                   <span>Client: {result.clientId}</span>
@@ -367,15 +367,15 @@ export function ScreeningVerification() {
                   )}
                 </div>
 
-                <div className="p-4 bg-white rounded-lg border border-gray-200">
-                  <p className="text-sm font-semibold text-gray-900 mb-1">Screening Details:</p>
-                  <p className="text-sm text-gray-700">{result.details}</p>
+                <div className="p-4 bg-white rounded-lg border border-white/10">
+                  <p className="text-sm font-semibold text-slate-100 mb-1">Screening Details:</p>
+                  <p className="text-sm text-slate-300">{result.details}</p>
                 </div>
 
                 {result.resolution && (
-                  <div className="mt-3 p-3 bg-green-50 border border-green-200 rounded-lg">
-                    <p className="text-sm font-semibold text-green-900 mb-1">Resolution:</p>
-                    <p className="text-sm text-green-800">{result.resolution}</p>
+                  <div className="mt-3 p-3 bg-green-500/10 border border-green-500/30 rounded-lg">
+                    <p className="text-sm font-semibold text-green-300 mb-1">Resolution:</p>
+                    <p className="text-sm text-green-300">{result.resolution}</p>
                   </div>
                 )}
               </div>
@@ -407,12 +407,12 @@ export function ScreeningVerification() {
       </div>
 
       {/* Screening Configuration */}
-      <div className="bg-white rounded-lg border border-gray-200 p-6">
-        <h3 className="text-xl font-bold text-gray-900 mb-4">Screening Configuration</h3>
+      <div className="bg-white rounded-lg border border-white/10 p-6">
+        <h3 className="text-xl font-bold text-slate-100 mb-4">Screening Configuration</h3>
         
         <div className="grid grid-cols-2 gap-6">
           <div>
-            <h4 className="font-semibold text-gray-900 mb-3">Automated Screening</h4>
+            <h4 className="font-semibold text-slate-100 mb-3">Automated Screening</h4>
             <div className="space-y-3">
               {[
                 { label: 'New client onboarding', enabled: true },
@@ -424,32 +424,32 @@ export function ScreeningVerification() {
                   <input 
                     type="checkbox" 
                     checked={config.enabled} 
-                    className="w-5 h-5 text-red-600"
+                    className="w-5 h-5 text-red-400"
                     readOnly
                   />
-                  <span className="text-sm text-gray-700">{config.label}</span>
+                  <span className="text-sm text-slate-300">{config.label}</span>
                 </label>
               ))}
             </div>
           </div>
 
           <div>
-            <h4 className="font-semibold text-gray-900 mb-3">Match Threshold Settings</h4>
+            <h4 className="font-semibold text-slate-100 mb-3">Match Threshold Settings</h4>
             <div className="space-y-3">
               <div>
-                <label className="text-sm text-gray-700 block mb-1">Exact Match</label>
+                <label className="text-sm text-slate-300 block mb-1">Exact Match</label>
                 <input type="range" min="80" max="100" value="95" className="w-full" readOnly />
-                <span className="text-xs text-gray-600">95% - Automatic flag</span>
+                <span className="text-xs text-slate-300">95% - Automatic flag</span>
               </div>
               <div>
-                <label className="text-sm text-gray-700 block mb-1">Potential Match</label>
+                <label className="text-sm text-slate-300 block mb-1">Potential Match</label>
                 <input type="range" min="50" max="79" value="70" className="w-full" readOnly />
-                <span className="text-xs text-gray-600">70% - Manual review</span>
+                <span className="text-xs text-slate-300">70% - Manual review</span>
               </div>
               <div>
-                <label className="text-sm text-gray-700 block mb-1">Low Confidence</label>
+                <label className="text-sm text-slate-300 block mb-1">Low Confidence</label>
                 <input type="range" min="0" max="49" value="50" className="w-full" readOnly />
-                <span className="text-xs text-gray-600">&lt;50% - Cleared with note</span>
+                <span className="text-xs text-slate-300">&lt;50% - Cleared with note</span>
               </div>
             </div>
           </div>

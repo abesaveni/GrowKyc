@@ -88,8 +88,8 @@ function OwnershipControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
           <Card className="border-2 hover:border-blue-400 transition-colors cursor-pointer">
             <CardContent className="p-4">
               <div className="flex items-center justify-between mb-2">
-                <Clock className="w-5 h-5 text-blue-600" />
-                <Badge className="bg-blue-100 text-blue-700">28</Badge>
+                <Clock className="w-5 h-5 text-blue-400" />
+                <Badge className="bg-blue-500/15 text-blue-300">28</Badge>
               </div>
               <p className="text-sm font-medium text-white">Pending Mapping</p>
             </CardContent>
@@ -98,8 +98,8 @@ function OwnershipControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
           <Card className="border-2 hover:border-amber-400 transition-colors cursor-pointer">
             <CardContent className="p-4">
               <div className="flex items-center justify-between mb-2">
-                <AlertTriangle className="w-5 h-5 text-amber-600" />
-                <Badge className="bg-amber-100 text-amber-700">11</Badge>
+                <AlertTriangle className="w-5 h-5 text-amber-400" />
+                <Badge className="bg-amber-500/15 text-amber-300">11</Badge>
               </div>
               <p className="text-sm font-medium text-white">Incomplete Structures</p>
             </CardContent>
@@ -108,8 +108,8 @@ function OwnershipControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
           <Card className="border-2 hover:border-red-400 transition-colors cursor-pointer">
             <CardContent className="p-4">
               <div className="flex items-center justify-between mb-2">
-                <XCircle className="w-5 h-5 text-red-600" />
-                <Badge className="bg-red-100 text-red-700">4</Badge>
+                <XCircle className="w-5 h-5 text-red-400" />
+                <Badge className="bg-red-500/15 text-red-300">4</Badge>
               </div>
               <p className="text-sm font-medium text-white">Missing UBOs</p>
             </CardContent>
@@ -118,8 +118,8 @@ function OwnershipControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
           <Card className="border-2 hover:border-orange-400 transition-colors cursor-pointer">
             <CardContent className="p-4">
               <div className="flex items-center justify-between mb-2">
-                <AlertTriangle className="w-5 h-5 text-orange-600" />
-                <Badge className="bg-orange-100 text-orange-700">6</Badge>
+                <AlertTriangle className="w-5 h-5 text-orange-400" />
+                <Badge className="bg-orange-500/15 text-orange-300">6</Badge>
               </div>
               <p className="text-sm font-medium text-white">High-Risk Structures</p>
             </CardContent>
@@ -128,8 +128,8 @@ function OwnershipControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
           <Card className="border-2 hover:border-purple-400 transition-colors cursor-pointer">
             <CardContent className="p-4">
               <div className="flex items-center justify-between mb-2">
-                <Eye className="w-5 h-5 text-purple-600" />
-                <Badge className="bg-purple-100 text-purple-700">9</Badge>
+                <Eye className="w-5 h-5 text-purple-400" />
+                <Badge className="bg-purple-500/15 text-purple-300">9</Badge>
               </div>
               <p className="text-sm font-medium text-white">Escalations</p>
             </CardContent>
@@ -142,7 +142,7 @@ function OwnershipControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
           <Card className="border-2">
             <CardHeader className="bg-gradient-to-r from-purple-50 to-purple-100 border-b">
               <CardTitle className="flex items-center gap-2">
-                <Building2 className="w-5 h-5 text-purple-600" />
+                <Building2 className="w-5 h-5 text-purple-400" />
                 Entity Mapping Queue
               </CardTitle>
             </CardHeader>
@@ -169,10 +169,10 @@ function OwnershipControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
                         <td className="px-4 py-3 text-xs text-slate-300">{item.type}</td>
                         <td className="px-4 py-3">
                           <Badge className={
-                            item.ubo === 'Identified' ? 'bg-green-100 text-green-700' :
-                            item.ubo === 'Pending' ? 'bg-blue-100 text-blue-700' :
-                            item.ubo === 'Incomplete' ? 'bg-amber-100 text-amber-700' :
-                            'bg-red-100 text-red-700'
+                            item.ubo === 'Identified' ? 'bg-green-500/15 text-green-300' :
+                            item.ubo === 'Pending' ? 'bg-blue-500/15 text-blue-300' :
+                            item.ubo === 'Incomplete' ? 'bg-amber-500/15 text-amber-300' :
+                            'bg-red-500/15 text-red-300'
                           }>
                             {item.ubo}
                           </Badge>
@@ -180,8 +180,8 @@ function OwnershipControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
                         <td className="px-4 py-3">
                           <Badge className={
                             item.risk === 'Low' ? 'bg-[#0f172a] text-slate-300' :
-                            item.risk === 'Medium' ? 'bg-amber-100 text-amber-700' :
-                            'bg-red-100 text-red-700'
+                            item.risk === 'Medium' ? 'bg-amber-500/15 text-amber-300' :
+                            'bg-red-500/15 text-red-300'
                           }>
                             {item.risk}
                           </Badge>
@@ -192,7 +192,7 @@ function OwnershipControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
                 </table>
               </div>
               <div className="p-4 border-t bg-[#0f172a]">
-                <Button variant="ghost" className="w-full text-purple-700 hover:bg-purple-50" onClick={() => onNavigate('new-mapping')}>
+                <Button variant="ghost" className="w-full text-purple-300 hover:bg-purple-500/10" onClick={() => onNavigate('new-mapping')}>
                   View All Entities <ChevronRight className="w-4 h-4 ml-1" />
                 </Button>
               </div>
@@ -203,7 +203,7 @@ function OwnershipControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
           <Card className="border-2">
             <CardHeader className="bg-gradient-to-r from-red-50 to-red-100 border-b">
               <CardTitle className="flex items-center gap-2">
-                <AlertTriangle className="w-5 h-5 text-red-600" />
+                <AlertTriangle className="w-5 h-5 text-red-400" />
                 Ownership Issues
               </CardTitle>
             </CardHeader>
@@ -231,8 +231,8 @@ function OwnershipControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
                         <td className="px-4 py-3">
                           <Badge className={
                             item.severity === 'Critical' ? 'bg-red-600 text-white' :
-                            item.severity === 'High' ? 'bg-orange-100 text-orange-700' :
-                            'bg-amber-100 text-amber-700'
+                            item.severity === 'High' ? 'bg-orange-500/15 text-orange-300' :
+                            'bg-amber-500/15 text-amber-300'
                           }>
                             {item.severity}
                           </Badge>
@@ -248,7 +248,7 @@ function OwnershipControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
                 </table>
               </div>
               <div className="p-4 border-t bg-[#0f172a]">
-                <Button variant="ghost" className="w-full text-red-700 hover:bg-red-50">
+                <Button variant="ghost" className="w-full text-red-300 hover:bg-red-500/10">
                   View All Issues <ChevronRight className="w-4 h-4 ml-1" />
                 </Button>
               </div>
@@ -257,29 +257,29 @@ function OwnershipControlCentre({ onNavigate, onBack }: { onNavigate: (view: Vie
         </div>
 
         {/* Tranche 2 Compliance Notice */}
-        <Card className="border-2 border-purple-400 bg-purple-50">
+        <Card className="border-2 border-purple-400 bg-purple-500/10">
           <CardContent className="p-6">
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
                 <Network className="w-7 h-7 text-white" />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-purple-900 mb-2">AUSTRAC Tranche 2 Ready</h3>
-                <p className="text-purple-800 mb-4">
+                <h3 className="text-xl font-bold text-purple-300 mb-2">AUSTRAC Tranche 2 Ready</h3>
+                <p className="text-purple-300 mb-4">
                   Beneficial ownership mapping meets AUSTRAC requirements for identifying and verifying ultimate beneficial owners (UBOs) at or above 25% ownership threshold. System automatically detects control without ownership and flags incomplete structures.
                 </p>
                 <div className="grid md:grid-cols-3 gap-3">
                   <div className="bg-[#1e293b] p-3 rounded border border-purple-300">
-                    <p className="text-xs text-purple-700">Default UBO Threshold</p>
-                    <p className="font-bold text-purple-900">25%</p>
+                    <p className="text-xs text-purple-300">Default UBO Threshold</p>
+                    <p className="font-bold text-purple-300">25%</p>
                   </div>
                   <div className="bg-[#1e293b] p-3 rounded border border-purple-300">
-                    <p className="text-xs text-purple-700">Control Detection</p>
-                    <p className="font-bold text-purple-900">AI-Powered</p>
+                    <p className="text-xs text-purple-300">Control Detection</p>
+                    <p className="font-bold text-purple-300">AI-Powered</p>
                   </div>
                   <div className="bg-[#1e293b] p-3 rounded border border-purple-300">
-                    <p className="text-xs text-purple-700">Missing UBOs</p>
-                    <p className="font-bold text-red-900">AUTO FAIL</p>
+                    <p className="text-xs text-purple-300">Missing UBOs</p>
+                    <p className="font-bold text-red-300">AUTO FAIL</p>
                   </div>
                 </div>
               </div>
@@ -333,12 +333,12 @@ function OwnershipMappingWizard({ onBack }: { onBack: () => void }) {
             ].map((s) => (
               <div key={s.num} className="flex items-center">
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
-                  step >= s.num ? 'bg-purple-600 text-white' : 'bg-gray-200 text-slate-300'
+                  step >= s.num ? 'bg-purple-600 text-white' : 'bg-white/10 text-slate-300'
                 }`}>
                   {s.num}
                 </div>
                 <div className="ml-2">
-                  <p className={`text-xs font-medium ${step >= s.num ? 'text-purple-600' : 'text-slate-400'}`}>
+                  <p className={`text-xs font-medium ${step >= s.num ? 'text-purple-400' : 'text-slate-400'}`}>
                     {s.label}
                   </p>
                 </div>
@@ -372,7 +372,7 @@ function OwnershipMappingWizard({ onBack }: { onBack: () => void }) {
                   <select
                     value={formData.entityType}
                     onChange={(e) => setFormData({ ...formData, entityType: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                    className="w-full px-3 py-2 border border-white/10 rounded-md"
                   >
                     <option value="company">Company (Pty Ltd)</option>
                     <option value="trust">Trust</option>
@@ -406,7 +406,7 @@ function OwnershipMappingWizard({ onBack }: { onBack: () => void }) {
                 </div>
               </div>
 
-              <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-purple-400 cursor-pointer transition-colors">
+              <div className="border-2 border-dashed border-white/10 rounded-lg p-8 text-center hover:border-purple-400 cursor-pointer transition-colors">
                 <Upload className="w-12 h-12 text-slate-400 mx-auto mb-3" />
                 <p className="font-medium text-white mb-1">Upload Ownership Documents</p>
                 <p className="text-sm text-slate-300 mb-3">Trust deeds, shareholder registers, company extracts</p>
@@ -416,9 +416,9 @@ function OwnershipMappingWizard({ onBack }: { onBack: () => void }) {
                 </Button>
               </div>
 
-              <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
-                <h4 className="font-semibold text-purple-900 mb-2">AUSTRAC Tranche 2 Requirements</h4>
-                <ul className="text-sm text-purple-800 space-y-1">
+              <div className="bg-purple-500/10 border border-purple-500/30 rounded-lg p-4">
+                <h4 className="font-semibold text-purple-300 mb-2">AUSTRAC Tranche 2 Requirements</h4>
+                <ul className="text-sm text-purple-300 space-y-1">
                   <li>• Identify all beneficial owners at or above 25% ownership</li>
                   <li>• Detect control without ownership (voting rights, appointments)</li>
                   <li>• Map complete ownership chains to ultimate beneficial owners</li>
@@ -445,13 +445,13 @@ function OwnershipMappingWizard({ onBack }: { onBack: () => void }) {
           <Card className="border-2">
             <CardHeader className="bg-gradient-to-r from-purple-50 to-purple-100">
               <CardTitle className="flex items-center gap-2">
-                <Sparkles className="w-5 h-5 text-purple-600" />
+                <Sparkles className="w-5 h-5 text-purple-400" />
                 Step 4: Interactive Ownership Graph
               </CardTitle>
               <CardDescription>Visual map of ownership structure and control</CardDescription>
             </CardHeader>
             <CardContent className="p-6">
-              <div className="aspect-video bg-[#0f172a] rounded-lg flex items-center justify-center mb-6 border-2 border-gray-300">
+              <div className="aspect-video bg-[#0f172a] rounded-lg flex items-center justify-center mb-6 border-2 border-white/10">
                 <div className="text-center">
                   <Network className="w-24 h-24 text-purple-400 mx-auto mb-4" />
                   <p className="text-slate-300 mb-2">Interactive Ownership Graph</p>
@@ -460,36 +460,36 @@ function OwnershipMappingWizard({ onBack }: { onBack: () => void }) {
               </div>
 
               <div className="grid md:grid-cols-3 gap-4 mb-6">
-                <Card className="bg-green-50 border-green-200">
+                <Card className="bg-green-500/10 border-green-500/30">
                   <CardContent className="p-4">
                     <div className="flex items-center gap-2 mb-2">
-                      <Users className="w-5 h-5 text-green-600" />
-                      <p className="font-semibold text-green-900">UBOs Identified</p>
+                      <Users className="w-5 h-5 text-green-400" />
+                      <p className="font-semibold text-green-300">UBOs Identified</p>
                     </div>
-                    <p className="text-3xl font-bold text-green-600">3</p>
-                    <p className="text-xs text-green-700 mt-1">Above 25% threshold</p>
+                    <p className="text-3xl font-bold text-green-400">3</p>
+                    <p className="text-xs text-green-300 mt-1">Above 25% threshold</p>
                   </CardContent>
                 </Card>
 
-                <Card className="bg-blue-50 border-blue-200">
+                <Card className="bg-blue-500/10 border-blue-500/30">
                   <CardContent className="p-4">
                     <div className="flex items-center gap-2 mb-2">
-                      <Network className="w-5 h-5 text-blue-600" />
-                      <p className="font-semibold text-blue-900">Total Layers</p>
+                      <Network className="w-5 h-5 text-blue-400" />
+                      <p className="font-semibold text-blue-300">Total Layers</p>
                     </div>
-                    <p className="text-3xl font-bold text-blue-600">2</p>
-                    <p className="text-xs text-blue-700 mt-1">Ownership levels</p>
+                    <p className="text-3xl font-bold text-blue-400">2</p>
+                    <p className="text-xs text-blue-300 mt-1">Ownership levels</p>
                   </CardContent>
                 </Card>
 
-                <Card className="bg-purple-50 border-purple-200">
+                <Card className="bg-purple-500/10 border-purple-500/30">
                   <CardContent className="p-4">
                     <div className="flex items-center gap-2 mb-2">
-                      <CheckCircle className="w-5 h-5 text-purple-600" />
-                      <p className="font-semibold text-purple-900">Coverage</p>
+                      <CheckCircle className="w-5 h-5 text-purple-400" />
+                      <p className="font-semibold text-purple-300">Coverage</p>
                     </div>
-                    <p className="text-3xl font-bold text-purple-600">100%</p>
-                    <p className="text-xs text-purple-700 mt-1">All ownership mapped</p>
+                    <p className="text-3xl font-bold text-purple-400">100%</p>
+                    <p className="text-xs text-purple-300 mt-1">All ownership mapped</p>
                   </CardContent>
                 </Card>
               </div>
@@ -521,7 +521,7 @@ function OwnershipMappingWizard({ onBack }: { onBack: () => void }) {
                 <div className="grid md:grid-cols-2 gap-4 text-left">
                   <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">UBOs Identified</p>
-                    <p className="font-semibold text-green-600">3 persons</p>
+                    <p className="font-semibold text-green-400">3 persons</p>
                   </div>
                   <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">Total Coverage</p>
@@ -529,11 +529,11 @@ function OwnershipMappingWizard({ onBack }: { onBack: () => void }) {
                   </div>
                   <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">Structure Risk</p>
-                    <p className="font-semibold text-green-600">Low</p>
+                    <p className="font-semibold text-green-400">Low</p>
                   </div>
                   <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">Mapping Status</p>
-                    <p className="font-semibold text-green-600">COMPLETE</p>
+                    <p className="font-semibold text-green-400">COMPLETE</p>
                   </div>
                 </div>
               </div>

@@ -327,15 +327,15 @@ export function Workpapers({ onNavigate }: WorkpapersProps) {
 
   const getCategoryColor = (category: string) => {
     const colors: { [key: string]: string } = {
-      'BAS & GST': 'bg-blue-50 text-blue-700 border-blue-200',
-      'Fringe Benefits Tax': 'bg-purple-50 text-purple-700 border-purple-200',
-      'SMSF': 'bg-green-50 text-green-700 border-green-200',
-      'Payroll & Super': 'bg-orange-50 text-orange-700 border-orange-200',
-      'Bookkeeping': 'bg-pink-50 text-pink-700 border-pink-200',
-      'Year-End': 'bg-indigo-50 text-indigo-700 border-indigo-200',
-      'Tax Compliance': 'bg-red-50 text-red-700 border-red-200'
+      'BAS & GST': 'bg-blue-500/10 text-blue-300 border-blue-500/30',
+      'Fringe Benefits Tax': 'bg-purple-500/10 text-purple-300 border-purple-500/30',
+      'SMSF': 'bg-green-500/10 text-green-300 border-green-500/30',
+      'Payroll & Super': 'bg-orange-500/10 text-orange-300 border-orange-500/30',
+      'Bookkeeping': 'bg-pink-500/10 text-pink-300 border-pink-500/30',
+      'Year-End': 'bg-indigo-500/10 text-indigo-300 border-indigo-500/30',
+      'Tax Compliance': 'bg-red-500/10 text-red-300 border-red-500/30'
     };
-    return colors[category] || 'bg-gray-50 text-gray-700 border-gray-200';
+    return colors[category] || 'bg-white/5 text-slate-300 border-white/10';
   };
 
   return (
@@ -344,8 +344,8 @@ export function Workpapers({ onNavigate }: WorkpapersProps) {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-[32px] font-bold text-gray-900">Workpaper Templates</h1>
-            <p className="text-sm text-gray-600 mt-1">Manage and customize your workpaper library</p>
+            <h1 className="text-[32px] font-bold text-slate-100">Workpaper Templates</h1>
+            <p className="text-sm text-slate-300 mt-1">Manage and customize your workpaper library</p>
           </div>
           <Button 
             className="bg-[#2855a6] hover:bg-[#1e4089]"
@@ -361,12 +361,12 @@ export function Workpapers({ onNavigate }: WorkpapersProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-blue-50 rounded-lg">
-                  <FileText className="w-5 h-5 text-blue-600" />
+                <div className="p-3 bg-blue-500/10 rounded-lg">
+                  <FileText className="w-5 h-5 text-blue-400" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Total Templates</p>
-                  <p className="text-2xl font-bold text-gray-900">{filteredTemplates.length}</p>
+                  <p className="text-sm text-slate-300">Total Templates</p>
+                  <p className="text-2xl font-bold text-slate-100">{filteredTemplates.length}</p>
                 </div>
               </div>
             </CardContent>
@@ -375,12 +375,12 @@ export function Workpapers({ onNavigate }: WorkpapersProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-green-50 rounded-lg">
-                  <TrendingUp className="w-5 h-5 text-green-600" />
+                <div className="p-3 bg-green-500/10 rounded-lg">
+                  <TrendingUp className="w-5 h-5 text-green-400" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Total Usage</p>
-                  <p className="text-2xl font-bold text-gray-900">
+                  <p className="text-sm text-slate-300">Total Usage</p>
+                  <p className="text-2xl font-bold text-slate-100">
                     {filteredTemplates.reduce((sum, t) => sum + t.timesUsed, 0).toLocaleString()}
                   </p>
                 </div>
@@ -391,12 +391,12 @@ export function Workpapers({ onNavigate }: WorkpapersProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-purple-50 rounded-lg">
-                  <Zap className="w-5 h-5 text-purple-600" />
+                <div className="p-3 bg-purple-500/10 rounded-lg">
+                  <Zap className="w-5 h-5 text-purple-400" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">AI Enabled</p>
-                  <p className="text-2xl font-bold text-gray-900">
+                  <p className="text-sm text-slate-300">AI Enabled</p>
+                  <p className="text-2xl font-bold text-slate-100">
                     {filteredTemplates.filter(t => t.aiEnabled).length}
                   </p>
                 </div>
@@ -407,12 +407,12 @@ export function Workpapers({ onNavigate }: WorkpapersProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-orange-50 rounded-lg">
-                  <Target className="w-5 h-5 text-orange-600" />
+                <div className="p-3 bg-orange-500/10 rounded-lg">
+                  <Target className="w-5 h-5 text-orange-400" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Avg Accuracy</p>
-                  <p className="text-2xl font-bold text-gray-900">
+                  <p className="text-sm text-slate-300">Avg Accuracy</p>
+                  <p className="text-2xl font-bold text-slate-100">
                     {Math.round(filteredTemplates.reduce((sum, t) => sum + t.accuracy, 0) / filteredTemplates.length)}%
                   </p>
                 </div>
@@ -434,7 +434,7 @@ export function Workpapers({ onNavigate }: WorkpapersProps) {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search templates by name or description..."
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+                    className="w-full pl-10 pr-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
                   />
                 </div>
               </div>
@@ -443,7 +443,7 @@ export function Workpapers({ onNavigate }: WorkpapersProps) {
               <select
                 value={filterCategory}
                 onChange={(e) => setFilterCategory(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+                className="px-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
               >
                 {categories.map(cat => (
                   <option key={cat} value={cat}>{cat}</option>
@@ -454,7 +454,7 @@ export function Workpapers({ onNavigate }: WorkpapersProps) {
               <select
                 value={filterEntity}
                 onChange={(e) => setFilterEntity(e.target.value)}
-                className="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+                className="px-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
               >
                 <option value="all">All Entity Types</option>
                 <option value="Company">Company</option>
@@ -479,10 +479,10 @@ export function Workpapers({ onNavigate }: WorkpapersProps) {
                 {/* Header */}
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex-1">
-                    <h3 className="font-semibold text-gray-900 mb-1">{template.name}</h3>
-                    <p className="text-xs text-gray-500 font-mono">{template.id}</p>
+                    <h3 className="font-semibold text-slate-100 mb-1">{template.name}</h3>
+                    <p className="text-xs text-slate-400 font-mono">{template.id}</p>
                   </div>
-                  <button className="p-1 hover:bg-gray-100 rounded">
+                  <button className="p-1 hover:bg-white/5 rounded">
                     <MoreVertical className="w-4 h-4 text-gray-400" />
                   </button>
                 </div>
@@ -495,54 +495,54 @@ export function Workpapers({ onNavigate }: WorkpapersProps) {
                 </div>
 
                 {/* Description */}
-                <p className="text-sm text-gray-600 mb-4 line-clamp-2">
+                <p className="text-sm text-slate-300 mb-4 line-clamp-2">
                   {template.description}
                 </p>
 
                 {/* Entity Types */}
                 <div className="flex flex-wrap gap-1 mb-4">
                   {template.entityTypes.map((type, idx) => (
-                    <span key={idx} className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
+                    <span key={idx} className="px-2 py-1 bg-white/5 text-slate-300 text-xs rounded">
                       {type}
                     </span>
                   ))}
                 </div>
 
                 {/* Stats */}
-                <div className="grid grid-cols-2 gap-3 mb-4 pb-4 border-b border-gray-100">
+                <div className="grid grid-cols-2 gap-3 mb-4 pb-4 border-b border-white/10">
                   <div>
-                    <p className="text-xs text-gray-600 mb-1">Times Used</p>
-                    <p className="text-lg font-bold text-blue-600">{template.timesUsed}</p>
+                    <p className="text-xs text-slate-300 mb-1">Times Used</p>
+                    <p className="text-lg font-bold text-blue-400">{template.timesUsed}</p>
                   </div>
                   <div>
-                    <p className="text-xs text-gray-600 mb-1">Avg Time</p>
-                    <p className="text-lg font-bold text-orange-600">{template.avgCompletionTime}</p>
+                    <p className="text-xs text-slate-300 mb-1">Avg Time</p>
+                    <p className="text-lg font-bold text-orange-400">{template.avgCompletionTime}</p>
                   </div>
                 </div>
 
                 {/* AI & Accuracy */}
                 <div className="flex items-center justify-between">
                   {template.aiEnabled && (
-                    <div className="flex items-center gap-1 px-2 py-1 bg-purple-50 rounded">
-                      <Zap className="w-3 h-3 text-purple-600" />
-                      <span className="text-xs text-purple-700 font-semibold">AI Enabled</span>
+                    <div className="flex items-center gap-1 px-2 py-1 bg-purple-500/10 rounded">
+                      <Zap className="w-3 h-3 text-purple-400" />
+                      <span className="text-xs text-purple-300 font-semibold">AI Enabled</span>
                     </div>
                   )}
                   <div className="flex items-center gap-1">
-                    <Target className="w-3 h-3 text-green-600" />
-                    <span className="text-xs text-green-700 font-semibold">{template.accuracy}% accuracy</span>
+                    <Target className="w-3 h-3 text-green-400" />
+                    <span className="text-xs text-green-300 font-semibold">{template.accuracy}% accuracy</span>
                   </div>
                 </div>
 
                 {/* Footer */}
-                <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
-                  <span className="text-xs text-gray-500">Updated {template.lastUpdated}</span>
+                <div className="flex items-center justify-between mt-4 pt-4 border-t border-white/10">
+                  <span className="text-xs text-slate-400">Updated {template.lastUpdated}</span>
                   <div className="flex items-center gap-2">
-                    <button className="p-1 hover:bg-gray-100 rounded" title="Copy">
-                      <Copy className="w-3 h-3 text-gray-600" />
+                    <button className="p-1 hover:bg-white/5 rounded" title="Copy">
+                      <Copy className="w-3 h-3 text-slate-300" />
                     </button>
-                    <button className="p-1 hover:bg-gray-100 rounded" title="Edit">
-                      <Edit className="w-3 h-3 text-gray-600" />
+                    <button className="p-1 hover:bg-white/5 rounded" title="Edit">
+                      <Edit className="w-3 h-3 text-slate-300" />
                     </button>
                   </div>
                 </div>
@@ -555,8 +555,8 @@ export function Workpapers({ onNavigate }: WorkpapersProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-12 text-center">
               <FileText className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">No templates found</h3>
-              <p className="text-gray-600 mb-4">Try adjusting your search or filter criteria</p>
+              <h3 className="text-lg font-semibold text-slate-100 mb-2">No templates found</h3>
+              <p className="text-slate-300 mb-4">Try adjusting your search or filter criteria</p>
               <Button variant="outline">Clear Filters</Button>
             </CardContent>
           </Card>

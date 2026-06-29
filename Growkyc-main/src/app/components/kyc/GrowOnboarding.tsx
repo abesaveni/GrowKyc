@@ -119,8 +119,8 @@ export function GrowOnboarding() {
   const renderClientTypeStep = () => (
     <div className="space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">Select Client Type</h2>
-        <p className="text-gray-600">Choose the entity type for this onboarding</p>
+        <h2 className="text-3xl font-bold text-slate-100 mb-2">Select Client Type</h2>
+        <p className="text-slate-300">Choose the entity type for this onboarding</p>
       </div>
 
       <div className="grid grid-cols-2 gap-4">
@@ -138,18 +138,18 @@ export function GrowOnboarding() {
               onClick={() => setClientType(type.id as ClientType)}
               className={`p-6 rounded-lg border-2 transition-all ${
                 clientType === type.id
-                  ? 'border-blue-500 bg-blue-50'
-                  : 'border-gray-200 hover:border-blue-300'
+                  ? 'border-blue-500 bg-blue-500/10'
+                  : 'border-white/10 hover:border-blue-300'
               }`}
             >
               <Icon className={`w-12 h-12 mx-auto mb-3 ${
-                clientType === type.id ? 'text-blue-600' : 'text-gray-400'
+                clientType === type.id ? 'text-blue-400' : 'text-gray-400'
               }`} />
-              <h3 className="font-bold text-gray-900 mb-1">{type.label}</h3>
-              <p className="text-sm text-gray-600">{type.description}</p>
+              <h3 className="font-bold text-slate-100 mb-1">{type.label}</h3>
+              <p className="text-sm text-slate-300">{type.description}</p>
               {clientType === type.id && (
                 <div className="mt-3">
-                  <CheckCircle className="w-6 h-6 text-blue-600 mx-auto" />
+                  <CheckCircle className="w-6 h-6 text-blue-400 mx-auto" />
                 </div>
               )}
             </button>
@@ -157,8 +157,8 @@ export function GrowOnboarding() {
         })}
       </div>
 
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-8">
-        <h3 className="font-bold text-blue-900 mb-3">Industry Type</h3>
+      <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-6 mt-8">
+        <h3 className="font-bold text-blue-300 mb-3">Industry Type</h3>
         <div className="grid grid-cols-3 gap-3">
           {[
             { id: 'accounting', label: 'Accounting Practice', desc: 'Standard CDD requirements' },
@@ -171,11 +171,11 @@ export function GrowOnboarding() {
               className={`p-4 rounded-lg border-2 transition-all text-left ${
                 industryType === industry.id
                   ? 'border-blue-500 bg-white'
-                  : 'border-blue-200 hover:border-blue-400'
+                  : 'border-blue-500/30 hover:border-blue-400'
               }`}
             >
-              <h4 className="font-bold text-blue-900 text-sm mb-1">{industry.label}</h4>
-              <p className="text-xs text-blue-700">{industry.desc}</p>
+              <h4 className="font-bold text-blue-300 text-sm mb-1">{industry.label}</h4>
+              <p className="text-xs text-blue-300">{industry.desc}</p>
             </button>
           ))}
         </div>
@@ -186,84 +186,84 @@ export function GrowOnboarding() {
   const renderContactInfoStep = () => (
     <div className="space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">Contact Information</h2>
-        <p className="text-gray-600">Full name, date of birth, and residential address</p>
+        <h2 className="text-3xl font-bold text-slate-100 mb-2">Contact Information</h2>
+        <p className="text-slate-300">Full name, date of birth, and residential address</p>
       </div>
 
-      <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-4">
+      <div className="bg-white rounded-lg border border-white/10 p-6 space-y-4">
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-semibold text-gray-900 mb-2">Full Legal Name *</label>
+            <label className="block text-sm font-semibold text-slate-100 mb-2">Full Legal Name *</label>
             <input
               type="text"
               value={formData.fullName}
               onChange={(e) => setFormData({...formData, fullName: e.target.value})}
               placeholder="As per passport or driver license"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-900 mb-2">Date of Birth *</label>
+            <label className="block text-sm font-semibold text-slate-100 mb-2">Date of Birth *</label>
             <input
               type="date"
               value={formData.dob}
               onChange={(e) => setFormData({...formData, dob: e.target.value})}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
         </div>
 
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-semibold text-gray-900 mb-2">Email Address *</label>
+            <label className="block text-sm font-semibold text-slate-100 mb-2">Email Address *</label>
             <input
               type="email"
               value={formData.email}
               onChange={(e) => setFormData({...formData, email: e.target.value})}
               placeholder="your.email@example.com"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-900 mb-2">Phone Number *</label>
+            <label className="block text-sm font-semibold text-slate-100 mb-2">Phone Number *</label>
             <input
               type="tel"
               value={formData.phone}
               onChange={(e) => setFormData({...formData, phone: e.target.value})}
               placeholder="0400 000 000"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-gray-900 mb-2">Residential Address *</label>
+          <label className="block text-sm font-semibold text-slate-100 mb-2">Residential Address *</label>
           <input
             type="text"
             value={formData.address}
             onChange={(e) => setFormData({...formData, address: e.target.value})}
             placeholder="Street address"
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
         <div className="grid grid-cols-4 gap-4">
           <div className="col-span-2">
-            <label className="block text-sm font-semibold text-gray-900 mb-2">Suburb/City *</label>
+            <label className="block text-sm font-semibold text-slate-100 mb-2">Suburb/City *</label>
             <input
               type="text"
               value={formData.suburb}
               onChange={(e) => setFormData({...formData, suburb: e.target.value})}
               placeholder="Melbourne"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-900 mb-2">State *</label>
+            <label className="block text-sm font-semibold text-slate-100 mb-2">State *</label>
             <select
               value={formData.state}
               onChange={(e) => setFormData({...formData, state: e.target.value})}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="">Select</option>
               <option value="VIC">VIC</option>
@@ -277,24 +277,24 @@ export function GrowOnboarding() {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-900 mb-2">Postcode *</label>
+            <label className="block text-sm font-semibold text-slate-100 mb-2">Postcode *</label>
             <input
               type="text"
               value={formData.postcode}
               onChange={(e) => setFormData({...formData, postcode: e.target.value})}
               placeholder="3000"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
         </div>
       </div>
 
-      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+      <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4">
         <div className="flex items-start gap-3">
-          <AlertTriangle className="w-5 h-5 text-yellow-600 mt-0.5" />
+          <AlertTriangle className="w-5 h-5 text-yellow-400 mt-0.5" />
           <div>
-            <h4 className="font-bold text-yellow-900 text-sm">AUSTRAC Requirement</h4>
-            <p className="text-sm text-yellow-800">All fields must be verified from reliable, independent sources (e.g., government ID, utility bills)</p>
+            <h4 className="font-bold text-yellow-300 text-sm">AUSTRAC Requirement</h4>
+            <p className="text-sm text-yellow-300">All fields must be verified from reliable, independent sources (e.g., government ID, utility bills)</p>
           </div>
         </div>
       </div>
@@ -304,8 +304,8 @@ export function GrowOnboarding() {
   const renderEntityDetailsStep = () => (
     <div className="space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">Entity Details</h2>
-        <p className="text-gray-600">
+        <h2 className="text-3xl font-bold text-slate-100 mb-2">Entity Details</h2>
+        <p className="text-slate-300">
           {clientType === 'company' && 'Company registration and director information'}
           {clientType === 'trust' && 'Trust details and trustee information'}
           {clientType === 'partnership' && 'Partnership details and partner information'}
@@ -315,49 +315,49 @@ export function GrowOnboarding() {
       </div>
 
       {clientType === 'company' && (
-        <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-4">
+        <div className="bg-white rounded-lg border border-white/10 p-6 space-y-4">
           <div>
-            <label className="block text-sm font-semibold text-gray-900 mb-2">Company Name *</label>
+            <label className="block text-sm font-semibold text-slate-100 mb-2">Company Name *</label>
             <input
               type="text"
               value={formData.entityName}
               onChange={(e) => setFormData({...formData, entityName: e.target.value})}
               placeholder="Company Pty Ltd"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-semibold text-gray-900 mb-2">ABN *</label>
+              <label className="block text-sm font-semibold text-slate-100 mb-2">ABN *</label>
               <input
                 type="text"
                 value={formData.abn}
                 onChange={(e) => setFormData({...formData, abn: e.target.value})}
                 placeholder="12 345 678 901"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-gray-900 mb-2">ACN *</label>
+              <label className="block text-sm font-semibold text-slate-100 mb-2">ACN *</label>
               <input
                 type="text"
                 value={formData.acn}
                 onChange={(e) => setFormData({...formData, acn: e.target.value})}
                 placeholder="123 456 789"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-900 mb-2">Registered Office Address *</label>
+            <label className="block text-sm font-semibold text-slate-100 mb-2">Registered Office Address *</label>
             <input
               type="text"
               value={formData.registeredAddress}
               onChange={(e) => setFormData({...formData, registeredAddress: e.target.value})}
               placeholder="As per ASIC"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
@@ -369,34 +369,34 @@ export function GrowOnboarding() {
       )}
 
       {clientType === 'individual' && (
-        <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-4">
+        <div className="bg-white rounded-lg border border-white/10 p-6 space-y-4">
           <div>
-            <label className="block text-sm font-semibold text-gray-900 mb-2">Occupation *</label>
+            <label className="block text-sm font-semibold text-slate-100 mb-2">Occupation *</label>
             <input
               type="text"
               value={formData.entityType}
               onChange={(e) => setFormData({...formData, entityType: e.target.value})}
               placeholder="e.g., Software Engineer, Accountant"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-900 mb-2">Employment Details</label>
+            <label className="block text-sm font-semibold text-slate-100 mb-2">Employment Details</label>
             <textarea
               value={formData.employmentDetails}
               onChange={(e) => setFormData({...formData, employmentDetails: e.target.value})}
               placeholder="Employer name, position, years employed"
               rows={3}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
         </div>
       )}
 
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-        <h4 className="font-bold text-blue-900 text-sm mb-2">Required Documents</h4>
-        <ul className="text-sm text-blue-800 space-y-1">
+      <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
+        <h4 className="font-bold text-blue-300 text-sm mb-2">Required Documents</h4>
+        <ul className="text-sm text-blue-300 space-y-1">
           {clientType === 'company' && (
             <>
               <li>• ASIC Company Extract (current)</li>
@@ -418,23 +418,23 @@ export function GrowOnboarding() {
   const renderBeneficialOwnershipStep = () => (
     <div className="space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">Beneficial Ownership</h2>
-        <p className="text-gray-600">Identify all individuals with 25%+ ownership or control</p>
+        <h2 className="text-3xl font-bold text-slate-100 mb-2">Beneficial Ownership</h2>
+        <p className="text-slate-300">Identify all individuals with 25%+ ownership or control</p>
       </div>
 
       {clientType === 'individual' ? (
-        <div className="bg-green-50 border border-green-200 rounded-lg p-8 text-center">
-          <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
-          <h3 className="text-xl font-bold text-green-900 mb-2">No Additional UBO Required</h3>
-          <p className="text-green-800">
+        <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-8 text-center">
+          <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-4" />
+          <h3 className="text-xl font-bold text-green-300 mb-2">No Additional UBO Required</h3>
+          <p className="text-green-300">
             For individual clients, the beneficial owner is the individual themselves
           </p>
         </div>
       ) : (
         <>
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
+          <div className="bg-white rounded-lg border border-white/10 p-6">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-bold text-gray-900">Ultimate Beneficial Owners (UBO)</h3>
+              <h3 className="font-bold text-slate-100">Ultimate Beneficial Owners (UBO)</h3>
               <Button size="sm">
                 <Plus className="w-4 h-4 mr-2" />
                 Add UBO
@@ -442,7 +442,7 @@ export function GrowOnboarding() {
             </div>
 
             {formData.beneficialOwners.length === 0 ? (
-              <div className="text-center py-8 text-gray-500">
+              <div className="text-center py-8 text-slate-400">
                 <Users className="w-12 h-12 mx-auto mb-3 text-gray-400" />
                 <p>No beneficial owners added yet</p>
                 <p className="text-sm mt-1">Click "Add UBO" to get started</p>
@@ -450,18 +450,18 @@ export function GrowOnboarding() {
             ) : (
               <div className="space-y-3">
                 {formData.beneficialOwners.map((owner, idx) => (
-                  <div key={idx} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                  <div key={idx} className="flex items-center justify-between p-4 bg-white/5 rounded-lg">
                     <div className="flex-1">
-                      <h4 className="font-bold text-gray-900">{owner.name}</h4>
-                      <p className="text-sm text-gray-600">Ownership: {owner.ownership}</p>
+                      <h4 className="font-bold text-slate-100">{owner.name}</h4>
+                      <p className="text-sm text-slate-300">Ownership: {owner.ownership}</p>
                     </div>
                     <div className="flex items-center gap-3">
                       {owner.verified ? (
-                        <span className="px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full">
+                        <span className="px-3 py-1 bg-green-500/15 text-green-300 text-xs font-bold rounded-full">
                           VERIFIED
                         </span>
                       ) : (
-                        <span className="px-3 py-1 bg-yellow-100 text-yellow-700 text-xs font-bold rounded-full">
+                        <span className="px-3 py-1 bg-yellow-500/15 text-yellow-300 text-xs font-bold rounded-full">
                           PENDING
                         </span>
                       )}
@@ -475,15 +475,15 @@ export function GrowOnboarding() {
             )}
           </div>
 
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+          <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-4">
             <div className="flex items-start gap-3">
-              <AlertTriangle className="w-5 h-5 text-red-600 mt-0.5" />
+              <AlertTriangle className="w-5 h-5 text-red-400 mt-0.5" />
               <div>
-                <h4 className="font-bold text-red-900 text-sm">AUSTRAC Requirement</h4>
-                <p className="text-sm text-red-800 mt-1">
+                <h4 className="font-bold text-red-300 text-sm">AUSTRAC Requirement</h4>
+                <p className="text-sm text-red-300 mt-1">
                   You MUST identify and verify all individuals who:
                 </p>
-                <ul className="text-sm text-red-800 mt-2 space-y-1">
+                <ul className="text-sm text-red-300 mt-2 space-y-1">
                   <li>• Own 25% or more of the entity</li>
                   <li>• Exercise control over the entity</li>
                   <li>• If no one meets 25%, identify senior managing official</li>
@@ -499,35 +499,35 @@ export function GrowOnboarding() {
   const renderIdentityVerificationStep = () => (
     <div className="space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">Identity Verification</h2>
-        <p className="text-gray-600">Electronic verification via GreenID / InfoTrack</p>
+        <h2 className="text-3xl font-bold text-slate-100 mb-2">Identity Verification</h2>
+        <p className="text-slate-300">Electronic verification via GreenID / InfoTrack</p>
       </div>
 
-      <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-6">
+      <div className="bg-white rounded-lg border border-white/10 p-6 space-y-6">
         <div>
-          <label className="block text-sm font-semibold text-gray-900 mb-2">Verification Method</label>
+          <label className="block text-sm font-semibold text-slate-100 mb-2">Verification Method</label>
           <div className="grid grid-cols-2 gap-4">
             <button
               onClick={() => setFormData({...formData, verificationMethod: 'greenid'})}
               className={`p-4 rounded-lg border-2 transition-all ${
                 formData.verificationMethod === 'greenid'
-                  ? 'border-blue-500 bg-blue-50'
-                  : 'border-gray-200 hover:border-blue-300'
+                  ? 'border-blue-500 bg-blue-500/10'
+                  : 'border-white/10 hover:border-blue-300'
               }`}
             >
-              <h4 className="font-bold text-gray-900">GreenID (Recommended)</h4>
-              <p className="text-sm text-gray-600 mt-1">Electronic verification with biometrics</p>
+              <h4 className="font-bold text-slate-100">GreenID (Recommended)</h4>
+              <p className="text-sm text-slate-300 mt-1">Electronic verification with biometrics</p>
             </button>
             <button
               onClick={() => setFormData({...formData, verificationMethod: 'manual'})}
               className={`p-4 rounded-lg border-2 transition-all ${
                 formData.verificationMethod === 'manual'
-                  ? 'border-blue-500 bg-blue-50'
-                  : 'border-gray-200 hover:border-blue-300'
+                  ? 'border-blue-500 bg-blue-500/10'
+                  : 'border-white/10 hover:border-blue-300'
               }`}
             >
-              <h4 className="font-bold text-gray-900">Manual Upload</h4>
-              <p className="text-sm text-gray-600 mt-1">Upload certified copies</p>
+              <h4 className="font-bold text-slate-100">Manual Upload</h4>
+              <p className="text-sm text-slate-300 mt-1">Upload certified copies</p>
             </button>
           </div>
         </div>
@@ -539,7 +539,7 @@ export function GrowOnboarding() {
             <p className="text-green-100 mb-6">
               Verify identity in real-time using government databases and biometric checks
             </p>
-            <Button className="bg-white text-green-600 hover:bg-green-50">
+            <Button className="bg-white text-green-400 hover:bg-green-500/10">
               <CheckCircle className="w-5 h-5 mr-2" />
               Start GreenID Verification
             </Button>
@@ -552,11 +552,11 @@ export function GrowOnboarding() {
         {formData.verificationMethod === 'manual' && (
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-semibold text-gray-900 mb-2">Primary ID Document *</label>
+              <label className="block text-sm font-semibold text-slate-100 mb-2">Primary ID Document *</label>
               <select
                 value={formData.idType}
                 onChange={(e) => setFormData({...formData, idType: e.target.value})}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">Select document type</option>
                 <option value="passport">Australian Passport</option>
@@ -568,22 +568,22 @@ export function GrowOnboarding() {
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">Document Number *</label>
+                <label className="block text-sm font-semibold text-slate-100 mb-2">Document Number *</label>
                 <input
                   type="text"
                   value={formData.idNumber}
                   onChange={(e) => setFormData({...formData, idNumber: e.target.value})}
                   placeholder="Enter document number"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">Expiry Date</label>
+                <label className="block text-sm font-semibold text-slate-100 mb-2">Expiry Date</label>
                 <input
                   type="date"
                   value={formData.idExpiry}
                   onChange={(e) => setFormData({...formData, idExpiry: e.target.value})}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
             </div>
@@ -596,9 +596,9 @@ export function GrowOnboarding() {
         )}
       </div>
 
-      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-        <h4 className="font-bold text-yellow-900 text-sm mb-2">Verification Requirements</h4>
-        <ul className="text-sm text-yellow-800 space-y-1">
+      <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4">
+        <h4 className="font-bold text-yellow-300 text-sm mb-2">Verification Requirements</h4>
+        <ul className="text-sm text-yellow-300 space-y-1">
           <li>• Must use reliable, independent source</li>
           <li>• Electronic verification (EIV) preferred</li>
           <li>• Manual documents must be certified copies</li>
@@ -611,8 +611,8 @@ export function GrowOnboarding() {
   const renderScreeningStep = () => (
     <div className="space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">Screening & Checks</h2>
-        <p className="text-gray-600">Mandatory sanctions, PEP, and adverse media screening</p>
+        <h2 className="text-3xl font-bold text-slate-100 mb-2">Screening & Checks</h2>
+        <p className="text-slate-300">Mandatory sanctions, PEP, and adverse media screening</p>
       </div>
 
       <div className="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg p-8 text-white">
@@ -650,15 +650,15 @@ export function GrowOnboarding() {
         </div>
       </div>
 
-      <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+      <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-6">
         <div className="flex items-start gap-4">
-          <CheckCircle className="w-8 h-8 text-green-600 mt-1" />
+          <CheckCircle className="w-8 h-8 text-green-400 mt-1" />
           <div>
-            <h3 className="text-lg font-bold text-green-900 mb-2">All Screening Checks Passed</h3>
-            <p className="text-green-800 mb-3">
+            <h3 className="text-lg font-bold text-green-300 mb-2">All Screening Checks Passed</h3>
+            <p className="text-green-300 mb-3">
               No sanctions matches, PEP exposure, or adverse media findings detected
             </p>
-            <Button size="sm" variant="outline" className="border-green-600 text-green-600">
+            <Button size="sm" variant="outline" className="border-green-600 text-green-400">
               <Download className="w-4 h-4 mr-2" />
               Download Screening Report
             </Button>
@@ -666,9 +666,9 @@ export function GrowOnboarding() {
         </div>
       </div>
 
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-        <h4 className="font-bold text-blue-900 text-sm mb-2">Ongoing Monitoring</h4>
-        <p className="text-sm text-blue-800">
+      <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
+        <h4 className="font-bold text-blue-300 text-sm mb-2">Ongoing Monitoring</h4>
+        <p className="text-sm text-blue-300">
           This client will be automatically re-screened quarterly for sanctions, PEP, and adverse media updates
         </p>
       </div>
@@ -678,13 +678,13 @@ export function GrowOnboarding() {
   const renderRiskAssessmentStep = () => (
     <div className="space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">ML/TF Risk Assessment</h2>
-        <p className="text-gray-600">Assess money laundering and terrorism financing risk</p>
+        <h2 className="text-3xl font-bold text-slate-100 mb-2">ML/TF Risk Assessment</h2>
+        <p className="text-slate-300">Assess money laundering and terrorism financing risk</p>
       </div>
 
-      <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-6">
+      <div className="bg-white rounded-lg border border-white/10 p-6 space-y-6">
         <div>
-          <h3 className="font-bold text-gray-900 mb-4">Risk Factors</h3>
+          <h3 className="font-bold text-slate-100 mb-4">Risk Factors</h3>
           <div className="space-y-3">
             {[
               { factor: 'Client Type', assessment: clientType, risk: 'Low' },
@@ -696,15 +696,15 @@ export function GrowOnboarding() {
               { factor: 'Sanctions Exposure', assessment: 'No matches', risk: 'Low' },
               { factor: 'Transaction Profile', assessment: 'Expected to be routine', risk: 'Low' }
             ].map((item, idx) => (
-              <div key={idx} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+              <div key={idx} className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
                 <div className="flex-1">
-                  <p className="font-semibold text-gray-900 text-sm">{item.factor}</p>
-                  <p className="text-sm text-gray-600">{item.assessment}</p>
+                  <p className="font-semibold text-slate-100 text-sm">{item.factor}</p>
+                  <p className="text-sm text-slate-300">{item.assessment}</p>
                 </div>
                 <span className={`px-3 py-1 text-xs font-bold rounded-full ${
-                  item.risk === 'Low' ? 'bg-green-100 text-green-700' :
-                  item.risk === 'Medium' ? 'bg-yellow-100 text-yellow-700' :
-                  'bg-red-100 text-red-700'
+                  item.risk === 'Low' ? 'bg-green-500/15 text-green-300' :
+                  item.risk === 'Medium' ? 'bg-yellow-500/15 text-yellow-300' :
+                  'bg-red-500/15 text-red-300'
                 }`}>
                   {item.risk.toUpperCase()}
                 </span>
@@ -713,11 +713,11 @@ export function GrowOnboarding() {
           </div>
         </div>
 
-        <div className="bg-green-50 border-2 border-green-500 rounded-lg p-6">
+        <div className="bg-green-500/10 border-2 border-green-500 rounded-lg p-6">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-2xl font-bold text-green-900 mb-1">Overall Risk Rating</h3>
-              <p className="text-green-800">Standard CDD procedures apply</p>
+              <h3 className="text-2xl font-bold text-green-300 mb-1">Overall Risk Rating</h3>
+              <p className="text-green-300">Standard CDD procedures apply</p>
             </div>
             <div className="text-center">
               <div className="w-24 h-24 rounded-full bg-green-600 flex items-center justify-center">
@@ -728,9 +728,9 @@ export function GrowOnboarding() {
         </div>
       </div>
 
-      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-        <h4 className="font-bold text-yellow-900 text-sm mb-2">Enhanced CDD Not Required</h4>
-        <p className="text-sm text-yellow-800">
+      <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4">
+        <h4 className="font-bold text-yellow-300 text-sm mb-2">Enhanced CDD Not Required</h4>
+        <p className="text-sm text-yellow-300">
           Client assessed as LOW risk. Standard Customer Due Diligence procedures are sufficient.
         </p>
       </div>
@@ -740,20 +740,20 @@ export function GrowOnboarding() {
   const renderSourceOfFundsStep = () => (
     <div className="space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">Source of Funds & Wealth</h2>
-        <p className="text-gray-600">
+        <h2 className="text-3xl font-bold text-slate-100 mb-2">Source of Funds & Wealth</h2>
+        <p className="text-slate-300">
           {industryType === 'lending' && 'Required for lenders - Verify deposit, equity, and repayment sources'}
           {industryType === 'fund-management' && 'Required for fund managers - Verify subscription capital origin'}
         </p>
       </div>
 
-      <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-4">
+      <div className="bg-white rounded-lg border border-white/10 p-6 space-y-4">
         <div>
-          <label className="block text-sm font-semibold text-gray-900 mb-2">Source of Funds *</label>
+          <label className="block text-sm font-semibold text-slate-100 mb-2">Source of Funds *</label>
           <select
             value={formData.sourceOfFunds}
             onChange={(e) => setFormData({...formData, sourceOfFunds: e.target.value})}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="">Select source</option>
             <option value="employment">Employment Income</option>
@@ -766,35 +766,35 @@ export function GrowOnboarding() {
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-gray-900 mb-2">Source of Wealth *</label>
+          <label className="block text-sm font-semibold text-slate-100 mb-2">Source of Wealth *</label>
           <textarea
             value={formData.sourceOfWealth}
             onChange={(e) => setFormData({...formData, sourceOfWealth: e.target.value})}
             placeholder="Describe how wealth was accumulated over time"
             rows={4}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
         {industryType === 'lending' && (
           <>
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
-              <h4 className="font-bold text-blue-900 text-sm mb-3">Lender Requirements</h4>
-              <div className="space-y-2 text-sm text-blue-800">
+            <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4 mt-4">
+              <h4 className="font-bold text-blue-300 text-sm mb-3">Lender Requirements</h4>
+              <div className="space-y-2 text-sm text-blue-300">
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-blue-600" />
+                  <CheckCircle className="w-4 h-4 text-blue-400" />
                   <span>Deposit source verification</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-blue-600" />
+                  <CheckCircle className="w-4 h-4 text-blue-400" />
                   <span>Equity contribution origin</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-blue-600" />
+                  <CheckCircle className="w-4 h-4 text-blue-400" />
                   <span>Expected repayment source</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-blue-600" />
+                  <CheckCircle className="w-4 h-4 text-blue-400" />
                   <span>Third-party funding disclosure</span>
                 </div>
               </div>
@@ -803,23 +803,23 @@ export function GrowOnboarding() {
         )}
 
         {industryType === 'fund-management' && (
-          <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mt-4">
-            <h4 className="font-bold text-purple-900 text-sm mb-3">Fund Manager Requirements</h4>
-            <div className="space-y-2 text-sm text-purple-800">
+          <div className="bg-purple-500/10 border border-purple-500/30 rounded-lg p-4 mt-4">
+            <h4 className="font-bold text-purple-300 text-sm mb-3">Fund Manager Requirements</h4>
+            <div className="space-y-2 text-sm text-purple-300">
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-purple-600" />
+                <CheckCircle className="w-4 h-4 text-purple-400" />
                 <span>Origin of subscription capital</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-purple-600" />
+                <CheckCircle className="w-4 h-4 text-purple-400" />
                 <span>Bank account ownership verified</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-purple-600" />
+                <CheckCircle className="w-4 h-4 text-purple-400" />
                 <span>Regulated institution confirmation</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-purple-600" />
+                <CheckCircle className="w-4 h-4 text-purple-400" />
                 <span>Offshore capital disclosure</span>
               </div>
             </div>
@@ -832,12 +832,12 @@ export function GrowOnboarding() {
         </Button>
       </div>
 
-      <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+      <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-4">
         <div className="flex items-start gap-3">
-          <AlertTriangle className="w-5 h-5 text-red-600 mt-0.5" />
+          <AlertTriangle className="w-5 h-5 text-red-400 mt-0.5" />
           <div>
-            <h4 className="font-bold text-red-900 text-sm">Red Flags to Watch</h4>
-            <ul className="text-sm text-red-800 mt-2 space-y-1">
+            <h4 className="font-bold text-red-300 text-sm">Red Flags to Watch</h4>
+            <ul className="text-sm text-red-300 mt-2 space-y-1">
               <li>• Circular payments between related entities</li>
               <li>• Undocumented private loans</li>
               <li>• Offshore funding without clear explanation</li>
@@ -852,11 +852,11 @@ export function GrowOnboarding() {
   const renderDocumentsStep = () => (
     <div className="space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">Supporting Documents</h2>
-        <p className="text-gray-600">Upload all required verification documents</p>
+        <h2 className="text-3xl font-bold text-slate-100 mb-2">Supporting Documents</h2>
+        <p className="text-slate-300">Upload all required verification documents</p>
       </div>
 
-      <div className="bg-white rounded-lg border border-gray-200 p-6">
+      <div className="bg-white rounded-lg border border-white/10 p-6">
         <div className="grid grid-cols-2 gap-4 mb-6">
           {[
             { type: 'ID Documents', required: true, uploaded: true },
@@ -870,23 +870,23 @@ export function GrowOnboarding() {
               key={idx}
               className={`p-4 rounded-lg border-2 ${
                 doc.uploaded
-                  ? 'border-green-200 bg-green-50'
+                  ? 'border-green-500/30 bg-green-500/10'
                   : doc.required
-                  ? 'border-yellow-200 bg-yellow-50'
-                  : 'border-gray-200 bg-gray-50'
+                  ? 'border-yellow-500/30 bg-yellow-500/10'
+                  : 'border-white/10 bg-white/5'
               }`}
             >
               <div className="flex items-center justify-between mb-2">
-                <h4 className="font-bold text-gray-900 text-sm">{doc.type}</h4>
+                <h4 className="font-bold text-slate-100 text-sm">{doc.type}</h4>
                 {doc.uploaded ? (
-                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  <CheckCircle className="w-5 h-5 text-green-400" />
                 ) : doc.required ? (
-                  <Clock className="w-5 h-5 text-yellow-600" />
+                  <Clock className="w-5 h-5 text-yellow-400" />
                 ) : (
                   <FileText className="w-5 h-5 text-gray-400" />
                 )}
               </div>
-              <p className="text-xs text-gray-600 mb-3">
+              <p className="text-xs text-slate-300 mb-3">
                 {doc.required ? 'Required document' : 'Optional'}
               </p>
               <Button size="sm" variant="outline" className="w-full">
@@ -898,22 +898,22 @@ export function GrowOnboarding() {
         </div>
 
         <div className="border-t pt-6">
-          <h3 className="font-bold text-gray-900 mb-3">Uploaded Documents</h3>
+          <h3 className="font-bold text-slate-100 mb-3">Uploaded Documents</h3>
           <div className="space-y-2">
             {[
               { name: 'Passport.pdf', size: '1.2 MB', date: '2024-02-19', status: 'Verified' },
               { name: 'Proof-of-Address.pdf', size: '856 KB', date: '2024-02-19', status: 'Verified' }
             ].map((file, idx) => (
-              <div key={idx} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+              <div key={idx} className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
                 <div className="flex items-center gap-3">
-                  <FileText className="w-6 h-6 text-blue-600" />
+                  <FileText className="w-6 h-6 text-blue-400" />
                   <div>
-                    <p className="font-semibold text-gray-900 text-sm">{file.name}</p>
-                    <p className="text-xs text-gray-600">{file.size} • Uploaded {file.date}</p>
+                    <p className="font-semibold text-slate-100 text-sm">{file.name}</p>
+                    <p className="text-xs text-slate-300">{file.size} • Uploaded {file.date}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="px-2 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full">
+                  <span className="px-2 py-1 bg-green-500/15 text-green-300 text-xs font-bold rounded-full">
                     {file.status}
                   </span>
                   <Button size="sm" variant="outline">
@@ -926,9 +926,9 @@ export function GrowOnboarding() {
         </div>
       </div>
 
-      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-        <h4 className="font-bold text-yellow-900 text-sm mb-2">Document Requirements</h4>
-        <ul className="text-sm text-yellow-800 space-y-1">
+      <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4">
+        <h4 className="font-bold text-yellow-300 text-sm mb-2">Document Requirements</h4>
+        <ul className="text-sm text-yellow-300 space-y-1">
           <li>• Documents must be clear and legible</li>
           <li>• All pages must be complete and unaltered</li>
           <li>• Documents must be current (within 3 months)</li>
@@ -941,12 +941,12 @@ export function GrowOnboarding() {
   const renderDeclarationsStep = () => (
     <div className="space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">Declarations & Consent</h2>
-        <p className="text-gray-600">Review and accept all required declarations</p>
+        <h2 className="text-3xl font-bold text-slate-100 mb-2">Declarations & Consent</h2>
+        <p className="text-slate-300">Review and accept all required declarations</p>
       </div>
 
-      <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-4">
-        <div className="flex items-start gap-3 p-4 bg-blue-50 rounded-lg">
+      <div className="bg-white rounded-lg border border-white/10 p-6 space-y-4">
+        <div className="flex items-start gap-3 p-4 bg-blue-500/10 rounded-lg">
           <input
             type="checkbox"
             checked={formData.pepDeclaration}
@@ -954,14 +954,14 @@ export function GrowOnboarding() {
             className="mt-1"
           />
           <div>
-            <h4 className="font-bold text-gray-900 text-sm mb-1">PEP Declaration *</h4>
-            <p className="text-sm text-gray-700">
+            <h4 className="font-bold text-slate-100 text-sm mb-1">PEP Declaration *</h4>
+            <p className="text-sm text-slate-300">
               I declare that I am NOT a Politically Exposed Person (PEP), nor am I a family member or close associate of a PEP
             </p>
           </div>
         </div>
 
-        <div className="flex items-start gap-3 p-4 bg-blue-50 rounded-lg">
+        <div className="flex items-start gap-3 p-4 bg-blue-500/10 rounded-lg">
           <input
             type="checkbox"
             checked={formData.termsAccepted}
@@ -969,14 +969,14 @@ export function GrowOnboarding() {
             className="mt-1"
           />
           <div>
-            <h4 className="font-bold text-gray-900 text-sm mb-1">Terms & Conditions *</h4>
-            <p className="text-sm text-gray-700">
+            <h4 className="font-bold text-slate-100 text-sm mb-1">Terms & Conditions *</h4>
+            <p className="text-sm text-slate-300">
               I have read, understood, and agree to the Terms & Conditions, Privacy Policy, and AML/CTF Policy
             </p>
           </div>
         </div>
 
-        <div className="flex items-start gap-3 p-4 bg-blue-50 rounded-lg">
+        <div className="flex items-start gap-3 p-4 bg-blue-500/10 rounded-lg">
           <input
             type="checkbox"
             checked={formData.accuracyConfirmed}
@@ -984,16 +984,16 @@ export function GrowOnboarding() {
             className="mt-1"
           />
           <div>
-            <h4 className="font-bold text-gray-900 text-sm mb-1">Accuracy Confirmation *</h4>
-            <p className="text-sm text-gray-700">
+            <h4 className="font-bold text-slate-100 text-sm mb-1">Accuracy Confirmation *</h4>
+            <p className="text-sm text-slate-300">
               I confirm that all information provided is true, accurate, and complete to the best of my knowledge
             </p>
           </div>
         </div>
 
-        <div className="bg-green-50 border border-green-200 rounded-lg p-4 mt-6">
-          <h4 className="font-bold text-green-900 text-sm mb-2">Consent for Processing</h4>
-          <ul className="text-sm text-green-800 space-y-1">
+        <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-4 mt-6">
+          <h4 className="font-bold text-green-300 text-sm mb-2">Consent for Processing</h4>
+          <ul className="text-sm text-green-300 space-y-1">
             <li>✓ Identity verification via electronic or manual means</li>
             <li>✓ Sanctions, PEP, and adverse media screening</li>
             <li>✓ Ongoing monitoring and re-screening</li>
@@ -1003,14 +1003,14 @@ export function GrowOnboarding() {
         </div>
       </div>
 
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-        <h4 className="font-bold text-blue-900 text-sm mb-2">Electronic Signature</h4>
-        <p className="text-sm text-blue-800 mb-3">
+      <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
+        <h4 className="font-bold text-blue-300 text-sm mb-2">Electronic Signature</h4>
+        <p className="text-sm text-blue-300 mb-3">
           By proceeding, you are providing a legally binding electronic signature
         </p>
         <div className="flex items-center gap-3">
           <div className="flex-1">
-            <label className="block text-sm font-semibold text-blue-900 mb-2">Full Name (as signature)</label>
+            <label className="block text-sm font-semibold text-blue-300 mb-2">Full Name (as signature)</label>
             <input
               type="text"
               value={formData.fullName}
@@ -1019,7 +1019,7 @@ export function GrowOnboarding() {
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-blue-900 mb-2">Date</label>
+            <label className="block text-sm font-semibold text-blue-300 mb-2">Date</label>
             <input
               type="text"
               value={new Date().toLocaleDateString()}
@@ -1035,8 +1035,8 @@ export function GrowOnboarding() {
   const renderReviewStep = () => (
     <div className="space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">Review & Submit</h2>
-        <p className="text-gray-600">Review all information before final submission</p>
+        <h2 className="text-3xl font-bold text-slate-100 mb-2">Review & Submit</h2>
+        <p className="text-slate-300">Review all information before final submission</p>
       </div>
 
       <div className="grid grid-cols-2 gap-4">
@@ -1053,17 +1053,17 @@ export function GrowOnboarding() {
           { step: 'Declarations', status: 'complete', value: 'All signed' }
         ].map((item, idx) => (
           <div key={idx} className={`p-4 rounded-lg border-2 ${
-            item.status === 'complete' ? 'border-green-200 bg-green-50' : 'border-gray-200 bg-gray-50'
+            item.status === 'complete' ? 'border-green-500/30 bg-green-500/10' : 'border-white/10 bg-white/5'
           }`}>
             <div className="flex items-center justify-between mb-2">
-              <h4 className="font-bold text-gray-900 text-sm">{item.step}</h4>
+              <h4 className="font-bold text-slate-100 text-sm">{item.step}</h4>
               {item.status === 'complete' ? (
-                <CheckCircle className="w-5 h-5 text-green-600" />
+                <CheckCircle className="w-5 h-5 text-green-400" />
               ) : (
                 <XCircle className="w-5 h-5 text-gray-400" />
               )}
             </div>
-            <p className="text-sm text-gray-600">{item.value}</p>
+            <p className="text-sm text-slate-300">{item.value}</p>
           </div>
         ))}
       </div>
@@ -1074,7 +1074,7 @@ export function GrowOnboarding() {
         <p className="text-blue-100 mb-6">
           All required information has been collected and verified
         </p>
-        <Button className="bg-white text-blue-600 hover:bg-blue-50" size="lg">
+        <Button className="bg-white text-blue-400 hover:bg-blue-500/10" size="lg">
           <Send className="w-5 h-5 mr-2" />
           Submit for Approval
         </Button>
@@ -1083,9 +1083,9 @@ export function GrowOnboarding() {
         </p>
       </div>
 
-      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-        <h4 className="font-bold text-yellow-900 text-sm mb-2">What happens next?</h4>
-        <ul className="text-sm text-yellow-800 space-y-1">
+      <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4">
+        <h4 className="font-bold text-yellow-300 text-sm mb-2">What happens next?</h4>
+        <ul className="text-sm text-yellow-300 space-y-1">
           <li>• Compliance officer will review all information</li>
           <li>• AI Copilot will assist with compliance checks</li>
           <li>• You may be contacted for additional information</li>
@@ -1171,7 +1171,7 @@ export function GrowOnboarding() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-white/5 py-8">
       <div className="max-w-5xl mx-auto px-6">
         {/* Header */}
         <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg p-8 text-white mb-8">
@@ -1202,7 +1202,7 @@ export function GrowOnboarding() {
 
         {/* Step Indicators */}
         {currentStep !== 'complete' && (
-          <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
+          <div className="bg-white rounded-lg border border-white/10 p-6 mb-8">
             <div className="flex items-center justify-between">
               {steps.filter(s => s.id !== 'complete' && (s.industry ? s.industry.includes(industryType) : true)).map((step, idx) => {
                 const isActive = step.id === currentStep;
@@ -1214,19 +1214,19 @@ export function GrowOnboarding() {
                       <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${
                         isComplete ? 'bg-green-600 text-white' :
                         isActive ? 'bg-blue-600 text-white' :
-                        'bg-gray-200 text-gray-600'
+                        'bg-white/10 text-slate-300'
                       }`}>
                         {isComplete ? <Check className="w-6 h-6" /> : idx + 1}
                       </div>
                       <p className={`text-xs mt-2 text-center max-w-[80px] ${
-                        isActive ? 'text-blue-600 font-bold' : 'text-gray-600'
+                        isActive ? 'text-blue-400 font-bold' : 'text-slate-300'
                       }`}>
                         {step.label}
                       </p>
                     </div>
                     {idx < steps.filter(s => s.id !== 'complete' && (s.industry ? s.industry.includes(industryType) : true)).length - 1 && (
                       <div className={`w-12 h-1 mx-2 ${
-                        isComplete ? 'bg-green-600' : 'bg-gray-200'
+                        isComplete ? 'bg-green-600' : 'bg-white/10'
                       }`} />
                     )}
                   </div>
@@ -1237,7 +1237,7 @@ export function GrowOnboarding() {
         )}
 
         {/* Step Content */}
-        <div className="bg-white rounded-lg border border-gray-200 p-8 mb-8">
+        <div className="bg-white rounded-lg border border-white/10 p-8 mb-8">
           {renderStepContent()}
         </div>
 

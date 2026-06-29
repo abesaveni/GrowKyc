@@ -312,15 +312,15 @@ export function WorkpaperManager({ onNavigate }: WorkpaperManagerProps) {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'draft':
-        return <span className="px-2 py-0.5 bg-gray-100 text-gray-700 text-xs font-semibold rounded">DRAFT</span>;
+        return <span className="px-2 py-0.5 bg-white/5 text-slate-300 text-xs font-semibold rounded">DRAFT</span>;
       case 'in_progress':
-        return <span className="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-semibold rounded">IN PROGRESS</span>;
+        return <span className="px-2 py-0.5 bg-blue-500/15 text-blue-300 text-xs font-semibold rounded">IN PROGRESS</span>;
       case 'in_review':
-        return <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-xs font-semibold rounded">IN REVIEW</span>;
+        return <span className="px-2 py-0.5 bg-amber-500/15 text-amber-300 text-xs font-semibold rounded">IN REVIEW</span>;
       case 'approved':
-        return <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded">APPROVED</span>;
+        return <span className="px-2 py-0.5 bg-green-500/15 text-green-300 text-xs font-semibold rounded">APPROVED</span>;
       case 'sealed':
-        return <span className="px-2 py-0.5 bg-purple-100 text-purple-700 text-xs font-semibold rounded flex items-center gap-1">
+        return <span className="px-2 py-0.5 bg-purple-500/15 text-purple-300 text-xs font-semibold rounded flex items-center gap-1">
           <Lock className="w-3 h-3" />
           SEALED
         </span>;
@@ -331,22 +331,22 @@ export function WorkpaperManager({ onNavigate }: WorkpaperManagerProps) {
 
   const getRiskBadge = (score: number) => {
     if (score >= 70) {
-      return <span className="px-2 py-0.5 bg-red-100 text-red-700 text-xs font-semibold rounded">HIGH RISK</span>;
+      return <span className="px-2 py-0.5 bg-red-500/15 text-red-300 text-xs font-semibold rounded">HIGH RISK</span>;
     } else if (score >= 40) {
-      return <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-xs font-semibold rounded">MED RISK</span>;
+      return <span className="px-2 py-0.5 bg-amber-500/15 text-amber-300 text-xs font-semibold rounded">MED RISK</span>;
     } else {
-      return <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded">LOW RISK</span>;
+      return <span className="px-2 py-0.5 bg-green-500/15 text-green-300 text-xs font-semibold rounded">LOW RISK</span>;
     }
   };
 
   const getMaterialityBadge = (materiality: string) => {
     switch (materiality) {
       case 'material':
-        return <span className="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-semibold rounded">MATERIAL</span>;
+        return <span className="px-2 py-0.5 bg-blue-500/15 text-blue-300 text-xs font-semibold rounded">MATERIAL</span>;
       case 'normal':
-        return <span className="px-2 py-0.5 bg-gray-100 text-gray-700 text-xs font-semibold rounded">NORMAL</span>;
+        return <span className="px-2 py-0.5 bg-white/5 text-slate-300 text-xs font-semibold rounded">NORMAL</span>;
       case 'immaterial':
-        return <span className="px-2 py-0.5 bg-gray-50 text-gray-500 text-xs font-semibold rounded">IMMATERIAL</span>;
+        return <span className="px-2 py-0.5 bg-white/5 text-slate-400 text-xs font-semibold rounded">IMMATERIAL</span>;
       default:
         return null;
     }
@@ -364,11 +364,11 @@ export function WorkpaperManager({ onNavigate }: WorkpaperManagerProps) {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
-              <FolderOpen className="w-8 h-8 text-blue-600" />
+            <h1 className="text-3xl font-bold text-slate-100 flex items-center gap-3">
+              <FolderOpen className="w-8 h-8 text-blue-400" />
               Workpaper Manager
             </h1>
-            <p className="text-sm text-gray-600 mt-1">
+            <p className="text-sm text-slate-300 mt-1">
               Enterprise workpaper system • 7 workpaper types • Full audit trail
             </p>
           </div>
@@ -390,14 +390,14 @@ export function WorkpaperManager({ onNavigate }: WorkpaperManagerProps) {
 
         {/* Binder Info Card */}
         {selectedBinderData && (
-          <div className="bg-white border border-gray-300 rounded p-4">
+          <div className="bg-white border border-white/10 rounded p-4">
             <div className="flex items-start justify-between">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
-                  <h2 className="text-xl font-bold text-gray-900">{selectedBinderData.client_name}</h2>
+                  <h2 className="text-xl font-bold text-slate-100">{selectedBinderData.client_name}</h2>
                   {getStatusBadge(selectedBinderData.status)}
                   {selectedBinderData.locked && (
-                    <span className="px-2 py-0.5 bg-red-100 text-red-700 text-xs font-semibold rounded flex items-center gap-1">
+                    <span className="px-2 py-0.5 bg-red-500/15 text-red-300 text-xs font-semibold rounded flex items-center gap-1">
                       <Lock className="w-3 h-3" />
                       LOCKED
                     </span>
@@ -405,24 +405,24 @@ export function WorkpaperManager({ onNavigate }: WorkpaperManagerProps) {
                 </div>
                 <div className="grid grid-cols-5 gap-4 text-sm">
                   <div>
-                    <span className="text-gray-600">Entity Type:</span>
-                    <div className="font-semibold text-gray-900 capitalize">{selectedBinderData.entity_type}</div>
+                    <span className="text-slate-300">Entity Type:</span>
+                    <div className="font-semibold text-slate-100 capitalize">{selectedBinderData.entity_type}</div>
                   </div>
                   <div>
-                    <span className="text-gray-600">Year:</span>
-                    <div className="font-semibold text-gray-900">{selectedBinderData.year}</div>
+                    <span className="text-slate-300">Year:</span>
+                    <div className="font-semibold text-slate-100">{selectedBinderData.year}</div>
                   </div>
                   <div>
-                    <span className="text-gray-600">Sections:</span>
-                    <div className="font-semibold text-gray-900">{selectedBinderData.sections.length}</div>
+                    <span className="text-slate-300">Sections:</span>
+                    <div className="font-semibold text-slate-100">{selectedBinderData.sections.length}</div>
                   </div>
                   <div>
-                    <span className="text-gray-600">Workpapers:</span>
-                    <div className="font-semibold text-gray-900">{workpapers.length}</div>
+                    <span className="text-slate-300">Workpapers:</span>
+                    <div className="font-semibold text-slate-100">{workpapers.length}</div>
                   </div>
                   <div>
-                    <span className="text-gray-600">Last Updated:</span>
-                    <div className="font-semibold text-gray-900">{selectedBinderData.last_updated}</div>
+                    <span className="text-slate-300">Last Updated:</span>
+                    <div className="font-semibold text-slate-100">{selectedBinderData.last_updated}</div>
                   </div>
                 </div>
               </div>
@@ -435,46 +435,46 @@ export function WorkpaperManager({ onNavigate }: WorkpaperManagerProps) {
         )}
 
         {/* Workpaper Type Legend */}
-        <div className="bg-blue-50 border border-blue-300 rounded p-4">
-          <h3 className="font-semibold text-blue-900 mb-3 flex items-center gap-2">
+        <div className="bg-blue-500/10 border border-blue-300 rounded p-4">
+          <h3 className="font-semibold text-blue-300 mb-3 flex items-center gap-2">
             <Zap className="w-4 h-4" />
             7 Enterprise Workpaper Types
           </h3>
           <div className="grid grid-cols-7 gap-3">
-            <div className="bg-white border border-blue-200 rounded p-2">
-              <FileSpreadsheet className="w-5 h-5 text-blue-600 mb-1" />
-              <div className="text-xs font-semibold text-gray-900">Grid</div>
-              <div className="text-xs text-gray-600">Spreadsheet</div>
+            <div className="bg-white border border-blue-500/30 rounded p-2">
+              <FileSpreadsheet className="w-5 h-5 text-blue-400 mb-1" />
+              <div className="text-xs font-semibold text-slate-100">Grid</div>
+              <div className="text-xs text-slate-300">Spreadsheet</div>
             </div>
-            <div className="bg-white border border-blue-200 rounded p-2">
-              <Target className="w-5 h-5 text-green-600 mb-1" />
-              <div className="text-xs font-semibold text-gray-900">Lead Schedule</div>
-              <div className="text-xs text-gray-600">TB-Controlled</div>
+            <div className="bg-white border border-blue-500/30 rounded p-2">
+              <Target className="w-5 h-5 text-green-400 mb-1" />
+              <div className="text-xs font-semibold text-slate-100">Lead Schedule</div>
+              <div className="text-xs text-slate-300">TB-Controlled</div>
             </div>
-            <div className="bg-white border border-blue-200 rounded p-2">
-              <FileEdit className="w-5 h-5 text-purple-600 mb-1" />
-              <div className="text-xs font-semibold text-gray-900">Structured Form</div>
-              <div className="text-xs text-gray-600">Div 7A, BAS, etc</div>
+            <div className="bg-white border border-blue-500/30 rounded p-2">
+              <FileEdit className="w-5 h-5 text-purple-400 mb-1" />
+              <div className="text-xs font-semibold text-slate-100">Structured Form</div>
+              <div className="text-xs text-slate-300">Div 7A, BAS, etc</div>
             </div>
-            <div className="bg-white border border-blue-200 rounded p-2">
-              <CheckSquare className="w-5 h-5 text-amber-600 mb-1" />
-              <div className="text-xs font-semibold text-gray-900">Checklist</div>
-              <div className="text-xs text-gray-600">Program</div>
+            <div className="bg-white border border-blue-500/30 rounded p-2">
+              <CheckSquare className="w-5 h-5 text-amber-400 mb-1" />
+              <div className="text-xs font-semibold text-slate-100">Checklist</div>
+              <div className="text-xs text-slate-300">Program</div>
             </div>
-            <div className="bg-white border border-blue-200 rounded p-2">
-              <BookOpen className="w-5 h-5 text-indigo-600 mb-1" />
-              <div className="text-xs font-semibold text-gray-900">Journal Register</div>
-              <div className="text-xs text-gray-600">Adjustments</div>
+            <div className="bg-white border border-blue-500/30 rounded p-2">
+              <BookOpen className="w-5 h-5 text-indigo-400 mb-1" />
+              <div className="text-xs font-semibold text-slate-100">Journal Register</div>
+              <div className="text-xs text-slate-300">Adjustments</div>
             </div>
-            <div className="bg-white border border-blue-200 rounded p-2">
-              <Image className="w-5 h-5 text-pink-600 mb-1" />
-              <div className="text-xs font-semibold text-gray-900">Evidence</div>
-              <div className="text-xs text-gray-600">Documents</div>
+            <div className="bg-white border border-blue-500/30 rounded p-2">
+              <Image className="w-5 h-5 text-pink-400 mb-1" />
+              <div className="text-xs font-semibold text-slate-100">Evidence</div>
+              <div className="text-xs text-slate-300">Documents</div>
             </div>
-            <div className="bg-white border border-blue-200 rounded p-2">
-              <FileText className="w-5 h-5 text-teal-600 mb-1" />
-              <div className="text-xs font-semibold text-gray-900">Narrative</div>
-              <div className="text-xs text-gray-600">Memo</div>
+            <div className="bg-white border border-blue-500/30 rounded p-2">
+              <FileText className="w-5 h-5 text-teal-400 mb-1" />
+              <div className="text-xs font-semibold text-slate-100">Narrative</div>
+              <div className="text-xs text-slate-300">Memo</div>
             </div>
           </div>
         </div>
@@ -487,13 +487,13 @@ export function WorkpaperManager({ onNavigate }: WorkpaperManagerProps) {
               <input
                 type="text"
                 placeholder="Search workpapers..."
-                className="pl-10 pr-4 py-2 border border-gray-300 rounded text-sm w-80"
+                className="pl-10 pr-4 py-2 border border-white/10 rounded text-sm w-80"
               />
             </div>
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded text-sm"
+              className="px-3 py-2 border border-white/10 rounded text-sm"
             >
               <option value="all">All Status</option>
               <option value="draft">Draft</option>
@@ -533,14 +533,14 @@ export function WorkpaperManager({ onNavigate }: WorkpaperManagerProps) {
               return (
                 <div
                   key={wp.workpaper_id}
-                  className="bg-white border border-gray-300 rounded p-4 hover:border-blue-500 hover:shadow-md transition-all cursor-pointer"
+                  className="bg-white border border-white/10 rounded p-4 hover:border-blue-500 hover:shadow-md transition-all cursor-pointer"
                 >
                   <div className="flex items-start justify-between mb-3">
-                    <Icon className="w-6 h-6 text-blue-600" />
+                    <Icon className="w-6 h-6 text-blue-400" />
                     {getStatusBadge(wp.status)}
                   </div>
-                  <h3 className="font-semibold text-gray-900 mb-1">{wp.name}</h3>
-                  <p className="text-xs text-gray-600 mb-3">{wp.section}</p>
+                  <h3 className="font-semibold text-slate-100 mb-1">{wp.name}</h3>
+                  <p className="text-xs text-slate-300 mb-3">{wp.section}</p>
                   
                   <div className="flex flex-wrap gap-2 mb-3">
                     {getRiskBadge(wp.risk_score)}
@@ -548,36 +548,36 @@ export function WorkpaperManager({ onNavigate }: WorkpaperManagerProps) {
                   </div>
 
                   {wp.ai_flags.length > 0 && (
-                    <div className="bg-purple-50 border border-purple-200 rounded px-2 py-1 mb-3">
+                    <div className="bg-purple-500/10 border border-purple-500/30 rounded px-2 py-1 mb-3">
                       <div className="flex items-start gap-1">
-                        <Brain className="w-3 h-3 text-purple-600 mt-0.5 flex-shrink-0" />
-                        <span className="text-xs text-purple-800">{wp.ai_flags[0]}</span>
+                        <Brain className="w-3 h-3 text-purple-400 mt-0.5 flex-shrink-0" />
+                        <span className="text-xs text-purple-300">{wp.ai_flags[0]}</span>
                       </div>
                     </div>
                   )}
 
-                  <div className="border-t border-gray-200 pt-3 mt-3 space-y-2">
-                    <div className="flex items-center gap-2 text-xs text-gray-600">
+                  <div className="border-t border-white/10 pt-3 mt-3 space-y-2">
+                    <div className="flex items-center gap-2 text-xs text-slate-300">
                       <User className="w-3 h-3" />
                       <span>Preparer: <strong>{wp.preparer}</strong></span>
                     </div>
                     {wp.reviewer && (
-                      <div className="flex items-center gap-2 text-xs text-gray-600">
+                      <div className="flex items-center gap-2 text-xs text-slate-300">
                         <CheckCircle className="w-3 h-3" />
                         <span>Reviewer: <strong>{wp.reviewer}</strong></span>
                       </div>
                     )}
-                    <div className="flex items-center gap-2 text-xs text-gray-600">
+                    <div className="flex items-center gap-2 text-xs text-slate-300">
                       <Clock className="w-3 h-3" />
                       <span>Updated: {wp.last_updated}</span>
                     </div>
-                    <div className="flex items-center gap-2 text-xs text-gray-600">
+                    <div className="flex items-center gap-2 text-xs text-slate-300">
                       <TrendingUp className="w-3 h-3" />
                       <span>AI Confidence: {(wp.ai_confidence_score * 100).toFixed(0)}%</span>
                     </div>
                   </div>
 
-                  <div className="mt-3 pt-3 border-t border-gray-200">
+                  <div className="mt-3 pt-3 border-t border-white/10">
                     <Button 
                       size="sm" 
                       className="w-full"
@@ -611,56 +611,56 @@ export function WorkpaperManager({ onNavigate }: WorkpaperManagerProps) {
 
         {/* Workpapers List View */}
         {viewMode === 'list' && (
-          <div className="border border-gray-300 rounded bg-white overflow-hidden">
+          <div className="border border-white/10 rounded bg-white overflow-hidden">
             <table className="w-full text-sm border-collapse">
               <thead>
-                <tr className="bg-gray-100">
-                  <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Type</th>
-                  <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Name</th>
-                  <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Section</th>
-                  <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700">Status</th>
-                  <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700">Risk</th>
-                  <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700">Material</th>
-                  <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Preparer</th>
-                  <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Reviewer</th>
-                  <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Last Updated</th>
-                  <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700">Actions</th>
+                <tr className="bg-white/5">
+                  <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Type</th>
+                  <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Name</th>
+                  <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Section</th>
+                  <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300">Status</th>
+                  <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300">Risk</th>
+                  <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300">Material</th>
+                  <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Preparer</th>
+                  <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Reviewer</th>
+                  <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Last Updated</th>
+                  <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {filteredWorkpapers.map((wp) => {
                   const Icon = getWorkpaperIcon(wp.type);
                   return (
-                    <tr key={wp.workpaper_id} className="hover:bg-blue-50">
-                      <td className="border border-gray-300 px-3 py-2">
-                        <Icon className="w-4 h-4 text-blue-600" />
+                    <tr key={wp.workpaper_id} className="hover:bg-blue-500/10">
+                      <td className="border border-white/10 px-3 py-2">
+                        <Icon className="w-4 h-4 text-blue-400" />
                       </td>
-                      <td className="border border-gray-300 px-3 py-2 text-gray-900 font-medium">
+                      <td className="border border-white/10 px-3 py-2 text-slate-100 font-medium">
                         {wp.name}
-                        {wp.sealed && <Lock className="w-3 h-3 text-red-600 inline ml-2" />}
+                        {wp.sealed && <Lock className="w-3 h-3 text-red-400 inline ml-2" />}
                       </td>
-                      <td className="border border-gray-300 px-3 py-2 text-gray-700 text-xs">
+                      <td className="border border-white/10 px-3 py-2 text-slate-300 text-xs">
                         {wp.section}
                       </td>
-                      <td className="border border-gray-300 px-3 py-2 text-center">
+                      <td className="border border-white/10 px-3 py-2 text-center">
                         {getStatusBadge(wp.status)}
                       </td>
-                      <td className="border border-gray-300 px-3 py-2 text-center">
+                      <td className="border border-white/10 px-3 py-2 text-center">
                         {getRiskBadge(wp.risk_score)}
                       </td>
-                      <td className="border border-gray-300 px-3 py-2 text-center">
+                      <td className="border border-white/10 px-3 py-2 text-center">
                         {getMaterialityBadge(wp.materiality)}
                       </td>
-                      <td className="border border-gray-300 px-3 py-2 text-gray-700">
+                      <td className="border border-white/10 px-3 py-2 text-slate-300">
                         {wp.preparer}
                       </td>
-                      <td className="border border-gray-300 px-3 py-2 text-gray-700">
+                      <td className="border border-white/10 px-3 py-2 text-slate-300">
                         {wp.reviewer || '-'}
                       </td>
-                      <td className="border border-gray-300 px-3 py-2 text-gray-700">
+                      <td className="border border-white/10 px-3 py-2 text-slate-300">
                         {wp.last_updated}
                       </td>
-                      <td className="border border-gray-300 px-3 py-2 text-center">
+                      <td className="border border-white/10 px-3 py-2 text-center">
                         <Button 
                           size="sm" 
                           variant="outline"

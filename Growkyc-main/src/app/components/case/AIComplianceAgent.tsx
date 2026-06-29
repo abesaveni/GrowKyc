@@ -502,29 +502,29 @@ export function AIComplianceAgent({
 
   const getSeverityColor = (severity: string) => {
     switch (severity) {
-      case 'critical': return 'bg-red-100 text-red-800 border-red-300';
-      case 'high': return 'bg-orange-100 text-orange-800 border-orange-300';
-      case 'medium': return 'bg-yellow-100 text-yellow-800 border-yellow-300';
-      case 'low': return 'bg-blue-100 text-blue-800 border-blue-300';
-      default: return 'bg-gray-100 text-gray-800 border-gray-300';
+      case 'critical': return 'bg-red-500/15 text-red-300 border-red-300';
+      case 'high': return 'bg-orange-500/15 text-orange-300 border-orange-300';
+      case 'medium': return 'bg-yellow-500/15 text-yellow-300 border-yellow-300';
+      case 'low': return 'bg-blue-500/15 text-blue-300 border-blue-300';
+      default: return 'bg-white/5 text-slate-100 border-white/10';
     }
   };
 
   const getSeverityIcon = (severity: string) => {
     switch (severity) {
-      case 'critical': return <XCircle className="w-5 h-5 text-red-600" />;
-      case 'high': return <AlertTriangle className="w-5 h-5 text-orange-600" />;
-      case 'medium': return <AlertCircle className="w-5 h-5 text-yellow-600" />;
-      case 'low': return <AlertCircle className="w-5 h-5 text-blue-600" />;
-      default: return <AlertCircle className="w-5 h-5 text-gray-600" />;
+      case 'critical': return <XCircle className="w-5 h-5 text-red-400" />;
+      case 'high': return <AlertTriangle className="w-5 h-5 text-orange-400" />;
+      case 'medium': return <AlertCircle className="w-5 h-5 text-yellow-400" />;
+      case 'low': return <AlertCircle className="w-5 h-5 text-blue-400" />;
+      default: return <AlertCircle className="w-5 h-5 text-slate-300" />;
     }
   };
 
   const getScoreColor = (score: number) => {
-    if (score >= 80) return 'text-green-600';
-    if (score >= 60) return 'text-yellow-600';
-    if (score >= 40) return 'text-orange-600';
-    return 'text-red-600';
+    if (score >= 80) return 'text-green-400';
+    if (score >= 60) return 'text-yellow-400';
+    if (score >= 40) return 'text-orange-400';
+    return 'text-red-400';
   };
 
   const handleApplySuggestion = (issue: ComplianceIssue) => {
@@ -534,8 +534,8 @@ export function AIComplianceAgent({
   };
 
   return (
-    <Card className="border-2 border-purple-200 shadow-lg">
-      <CardHeader className="bg-gradient-to-r from-purple-50 via-indigo-50 to-blue-50 border-b-2 border-purple-200">
+    <Card className="border-2 border-purple-500/30 shadow-lg">
+      <CardHeader className="bg-gradient-to-r from-purple-50 via-indigo-50 to-blue-50 border-b-2 border-purple-500/30">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="p-3 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg shadow-md">
@@ -544,9 +544,9 @@ export function AIComplianceAgent({
             <div>
               <CardTitle className="text-xl flex items-center gap-2">
                 AI Compliance Agent
-                <Sparkles className="w-5 h-5 text-purple-600" />
+                <Sparkles className="w-5 h-5 text-purple-400" />
               </CardTitle>
-              <p className="text-sm text-gray-600 mt-1">
+              <p className="text-sm text-slate-300 mt-1">
                 Automated compliance checking & data verification assistant
               </p>
             </div>
@@ -571,10 +571,10 @@ export function AIComplianceAgent({
         </div>
 
         {/* AI Disclaimer Banner */}
-        <div className="mt-4 bg-yellow-50 border-l-4 border-yellow-400 p-3 rounded">
+        <div className="mt-4 bg-yellow-500/10 border-l-4 border-yellow-400 p-3 rounded">
           <div className="flex items-start gap-2">
-            <AlertTriangle className="w-5 h-5 text-yellow-600 flex-shrink-0 mt-0.5" />
-            <div className="text-xs text-yellow-800">
+            <AlertTriangle className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" />
+            <div className="text-xs text-yellow-300">
               <p className="font-semibold">AI ASSISTANT DISCLAIMER</p>
               <p className="mt-1">
                 This AI agent is an <span className="font-bold">assistive tool only</span>. All suggestions must be reviewed and validated by a qualified professional. 
@@ -587,7 +587,7 @@ export function AIComplianceAgent({
 
       <CardContent className="pt-6 space-y-6">
         {!report && !isAnalyzing && (
-          <div className="text-center py-12 text-gray-500">
+          <div className="text-center py-12 text-slate-400">
             <Bot className="w-16 h-16 mx-auto mb-4 text-gray-400" />
             <p className="text-lg font-medium">Click "Run Analysis" to start AI compliance checking</p>
             <p className="text-sm mt-2">I'll check for missing data, incorrect information, document mismatches, and compliance issues</p>
@@ -596,19 +596,19 @@ export function AIComplianceAgent({
 
         {isAnalyzing && (
           <div className="text-center py-12">
-            <Loader2 className="w-16 h-16 mx-auto mb-4 text-purple-600 animate-spin" />
-            <p className="text-lg font-medium text-gray-700">AI Agent is analyzing your case...</p>
-            <p className="text-sm text-gray-500 mt-2">Checking data completeness, validating information, reviewing documents, and assessing compliance</p>
+            <Loader2 className="w-16 h-16 mx-auto mb-4 text-purple-400 animate-spin" />
+            <p className="text-lg font-medium text-slate-300">AI Agent is analyzing your case...</p>
+            <p className="text-sm text-slate-400 mt-2">Checking data completeness, validating information, reviewing documents, and assessing compliance</p>
           </div>
         )}
 
         {report && !isAnalyzing && (
           <div className="space-y-6">
             {/* Overall Score */}
-            <div className="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-lg p-6 border-2 border-purple-200">
+            <div className="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-lg p-6 border-2 border-purple-500/30">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-sm font-medium text-gray-600 mb-2">Overall Compliance Score</h3>
+                  <h3 className="text-sm font-medium text-slate-300 mb-2">Overall Compliance Score</h3>
                   <div className="flex items-baseline gap-2">
                     <span className={`text-5xl font-bold ${getScoreColor(report.overallScore)}`}>
                       {report.overallScore}
@@ -620,7 +620,7 @@ export function AIComplianceAgent({
                   <div className="flex items-center gap-2 mb-2">
                     <TrendingUp className={`w-6 h-6 ${getScoreColor(report.overallScore)}`} />
                   </div>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-slate-300">
                     {report.overallScore >= 80 && 'Excellent compliance'}
                     {report.overallScore >= 60 && report.overallScore < 80 && 'Good - Minor issues'}
                     {report.overallScore >= 40 && report.overallScore < 60 && 'Fair - Action required'}
@@ -632,41 +632,41 @@ export function AIComplianceAgent({
 
             {/* Issue Summary */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4">
+              <div className="bg-red-500/10 border-2 border-red-500/30 rounded-lg p-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-red-600 font-medium">Critical</p>
-                    <p className="text-3xl font-bold text-red-700">{report.criticalIssues}</p>
+                    <p className="text-sm text-red-400 font-medium">Critical</p>
+                    <p className="text-3xl font-bold text-red-300">{report.criticalIssues}</p>
                   </div>
                   <XCircle className="w-8 h-8 text-red-400" />
                 </div>
               </div>
 
-              <div className="bg-orange-50 border-2 border-orange-200 rounded-lg p-4">
+              <div className="bg-orange-500/10 border-2 border-orange-500/30 rounded-lg p-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-orange-600 font-medium">High</p>
-                    <p className="text-3xl font-bold text-orange-700">{report.highIssues}</p>
+                    <p className="text-sm text-orange-400 font-medium">High</p>
+                    <p className="text-3xl font-bold text-orange-300">{report.highIssues}</p>
                   </div>
                   <AlertTriangle className="w-8 h-8 text-orange-400" />
                 </div>
               </div>
 
-              <div className="bg-yellow-50 border-2 border-yellow-200 rounded-lg p-4">
+              <div className="bg-yellow-500/10 border-2 border-yellow-500/30 rounded-lg p-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-yellow-600 font-medium">Medium</p>
-                    <p className="text-3xl font-bold text-yellow-700">{report.mediumIssues}</p>
+                    <p className="text-sm text-yellow-400 font-medium">Medium</p>
+                    <p className="text-3xl font-bold text-yellow-300">{report.mediumIssues}</p>
                   </div>
                   <AlertCircle className="w-8 h-8 text-yellow-400" />
                 </div>
               </div>
 
-              <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-4">
+              <div className="bg-blue-500/10 border-2 border-blue-500/30 rounded-lg p-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-blue-600 font-medium">Low</p>
-                    <p className="text-3xl font-bold text-blue-700">{report.lowIssues}</p>
+                    <p className="text-sm text-blue-400 font-medium">Low</p>
+                    <p className="text-3xl font-bold text-blue-300">{report.lowIssues}</p>
                   </div>
                   <AlertCircle className="w-8 h-8 text-blue-400" />
                 </div>
@@ -674,33 +674,33 @@ export function AIComplianceAgent({
             </div>
 
             {/* Compliance Checks */}
-            <div className="border-2 border-gray-200 rounded-lg p-4">
+            <div className="border-2 border-white/10 rounded-lg p-4">
               <h3 className="font-semibold text-lg mb-3 flex items-center gap-2">
-                <Shield className="w-5 h-5 text-purple-600" />
+                <Shield className="w-5 h-5 text-purple-400" />
                 Regulatory Compliance Checks
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                <div className={`p-3 rounded-lg border-2 ${report.complianceChecks.nccp ? 'bg-green-50 border-green-300' : 'bg-red-50 border-red-300'}`}>
+                <div className={`p-3 rounded-lg border-2 ${report.complianceChecks.nccp ? 'bg-green-500/10 border-green-300' : 'bg-red-500/10 border-red-300'}`}>
                   <div className="flex items-center gap-2">
-                    {report.complianceChecks.nccp ? <CheckCircle2 className="w-5 h-5 text-green-600" /> : <XCircle className="w-5 h-5 text-red-600" />}
+                    {report.complianceChecks.nccp ? <CheckCircle2 className="w-5 h-5 text-green-400" /> : <XCircle className="w-5 h-5 text-red-400" />}
                     <span className="text-sm font-medium">NCCP Act</span>
                   </div>
                 </div>
-                <div className={`p-3 rounded-lg border-2 ${report.complianceChecks.privacyAct ? 'bg-green-50 border-green-300' : 'bg-red-50 border-red-300'}`}>
+                <div className={`p-3 rounded-lg border-2 ${report.complianceChecks.privacyAct ? 'bg-green-500/10 border-green-300' : 'bg-red-500/10 border-red-300'}`}>
                   <div className="flex items-center gap-2">
-                    {report.complianceChecks.privacyAct ? <CheckCircle2 className="w-5 h-5 text-green-600" /> : <XCircle className="w-5 h-5 text-red-600" />}
+                    {report.complianceChecks.privacyAct ? <CheckCircle2 className="w-5 h-5 text-green-400" /> : <XCircle className="w-5 h-5 text-red-400" />}
                     <span className="text-sm font-medium">Privacy Act</span>
                   </div>
                 </div>
-                <div className={`p-3 rounded-lg border-2 ${report.complianceChecks.ppsa ? 'bg-green-50 border-green-300' : 'bg-red-50 border-red-300'}`}>
+                <div className={`p-3 rounded-lg border-2 ${report.complianceChecks.ppsa ? 'bg-green-500/10 border-green-300' : 'bg-red-500/10 border-red-300'}`}>
                   <div className="flex items-center gap-2">
-                    {report.complianceChecks.ppsa ? <CheckCircle2 className="w-5 h-5 text-green-600" /> : <XCircle className="w-5 h-5 text-red-600" />}
+                    {report.complianceChecks.ppsa ? <CheckCircle2 className="w-5 h-5 text-green-400" /> : <XCircle className="w-5 h-5 text-red-400" />}
                     <span className="text-sm font-medium">PPSA</span>
                   </div>
                 </div>
-                <div className={`p-3 rounded-lg border-2 ${report.complianceChecks.amlCtf ? 'bg-green-50 border-green-300' : 'bg-red-50 border-red-300'}`}>
+                <div className={`p-3 rounded-lg border-2 ${report.complianceChecks.amlCtf ? 'bg-green-500/10 border-green-300' : 'bg-red-500/10 border-red-300'}`}>
                   <div className="flex items-center gap-2">
-                    {report.complianceChecks.amlCtf ? <CheckCircle2 className="w-5 h-5 text-green-600" /> : <XCircle className="w-5 h-5 text-red-600" />}
+                    {report.complianceChecks.amlCtf ? <CheckCircle2 className="w-5 h-5 text-green-400" /> : <XCircle className="w-5 h-5 text-red-400" />}
                     <span className="text-sm font-medium">AML/CTF</span>
                   </div>
                 </div>
@@ -709,9 +709,9 @@ export function AIComplianceAgent({
 
             {/* Issues List */}
             {report.issues.length > 0 && (
-              <div className="border-2 border-gray-200 rounded-lg p-4">
+              <div className="border-2 border-white/10 rounded-lg p-4">
                 <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
-                  <ClipboardCheck className="w-5 h-5 text-purple-600" />
+                  <ClipboardCheck className="w-5 h-5 text-purple-400" />
                   Detailed Issues ({report.totalIssues})
                 </h3>
                 <div className="space-y-3">
@@ -790,9 +790,9 @@ export function AIComplianceAgent({
             )}
 
             {/* Document Analysis */}
-            <div className="border-2 border-gray-200 rounded-lg p-4">
+            <div className="border-2 border-white/10 rounded-lg p-4">
               <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
-                <FileSearch className="w-5 h-5 text-purple-600" />
+                <FileSearch className="w-5 h-5 text-purple-400" />
                 Document Verification Status
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -801,20 +801,20 @@ export function AIComplianceAgent({
                     key={idx}
                     className={`p-3 rounded-lg border-2 ${
                       doc.status === 'verified'
-                        ? 'bg-green-50 border-green-300'
+                        ? 'bg-green-500/10 border-green-300'
                         : doc.status === 'missing'
-                        ? 'bg-red-50 border-red-300'
-                        : 'bg-yellow-50 border-yellow-300'
+                        ? 'bg-red-500/10 border-red-300'
+                        : 'bg-yellow-500/10 border-yellow-300'
                     }`}
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         {doc.status === 'verified' ? (
-                          <CheckCircle2 className="w-4 h-4 text-green-600" />
+                          <CheckCircle2 className="w-4 h-4 text-green-400" />
                         ) : doc.status === 'missing' ? (
-                          <XCircle className="w-4 h-4 text-red-600" />
+                          <XCircle className="w-4 h-4 text-red-400" />
                         ) : (
-                          <AlertCircle className="w-4 h-4 text-yellow-600" />
+                          <AlertCircle className="w-4 h-4 text-yellow-400" />
                         )}
                         <span className="text-sm font-medium">{doc.documentName}</span>
                       </div>
@@ -822,17 +822,17 @@ export function AIComplianceAgent({
                         variant="outline"
                         className={`text-xs ${
                           doc.status === 'verified'
-                            ? 'bg-green-100'
+                            ? 'bg-green-500/15'
                             : doc.status === 'missing'
-                            ? 'bg-red-100'
-                            : 'bg-yellow-100'
+                            ? 'bg-red-500/15'
+                            : 'bg-yellow-500/15'
                         }`}
                       >
                         {doc.status}
                       </Badge>
                     </div>
                     {doc.issues.length > 0 && (
-                      <p className="text-xs mt-2 text-gray-600">{doc.issues[0]}</p>
+                      <p className="text-xs mt-2 text-slate-300">{doc.issues[0]}</p>
                     )}
                   </div>
                 ))}
@@ -840,15 +840,15 @@ export function AIComplianceAgent({
             </div>
 
             {/* Recommendations */}
-            <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-4">
+            <div className="bg-blue-500/10 border-2 border-blue-500/30 rounded-lg p-4">
               <h3 className="font-semibold text-lg mb-3 flex items-center gap-2">
-                <Eye className="w-5 h-5 text-blue-600" />
+                <Eye className="w-5 h-5 text-blue-400" />
                 AI Recommendations
               </h3>
               <ul className="space-y-2">
                 {report.recommendations.map((rec, idx) => (
                   <li key={idx} className="flex items-start gap-2 text-sm">
-                    <span className="text-blue-600 font-bold mt-0.5">•</span>
+                    <span className="text-blue-400 font-bold mt-0.5">•</span>
                     <span>{rec}</span>
                   </li>
                 ))}
@@ -856,7 +856,7 @@ export function AIComplianceAgent({
             </div>
 
             {/* Timestamp */}
-            <p className="text-xs text-gray-500 text-center">
+            <p className="text-xs text-slate-400 text-center">
               Analysis completed at {new Date(report.timestamp).toLocaleString()}
             </p>
           </div>

@@ -232,12 +232,12 @@ export function SettlementCentre({ caseData, userRole }: SettlementCentreProps) 
                     className="w-[120px] h-[80px] object-cover rounded-lg"
                   />
                   <div>
-                    <p className="text-sm text-gray-500">Deal ID: {caseData.caseNumber}</p>
+                    <p className="text-sm text-slate-400">Deal ID: {caseData.caseNumber}</p>
                     <h3 className="font-semibold text-lg">{caseData.property.address}</h3>
-                    <p className="text-gray-600">{caseData.property.suburb}, {caseData.property.state}</p>
+                    <p className="text-slate-300">{caseData.property.suburb}, {caseData.property.state}</p>
                     <div className="flex items-center gap-3 mt-2">
                       <div className="flex items-center gap-2">
-                        <Clock className="w-4 h-4 text-gray-500" />
+                        <Clock className="w-4 h-4 text-slate-400" />
                         <span className="text-sm">Settlement: {format(new Date(Date.now() + 15 * 24 * 60 * 60 * 1000), 'dd MMM yyyy')}</span>
                       </div>
                       <StatusBadge status="pending_docs" type="settlement" />
@@ -248,15 +248,15 @@ export function SettlementCentre({ caseData, userRole }: SettlementCentreProps) 
                 {/* Right: Progress & Actions */}
                 <div className="flex flex-col items-end gap-3">
                   <div className="text-right">
-                    <p className="text-sm text-gray-600 mb-2">Settlement Readiness</p>
+                    <p className="text-sm text-slate-300 mb-2">Settlement Readiness</p>
                     <div className="flex items-center gap-3">
-                      <div className="w-64 h-3 bg-gray-200 rounded-full overflow-hidden">
+                      <div className="w-64 h-3 bg-white/10 rounded-full overflow-hidden">
                         <div 
                           className="h-full bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-300"
                           style={{ width: `${settlementReadiness}%` }}
                         />
                       </div>
-                      <span className="font-bold text-lg text-indigo-600">{settlementReadiness}%</span>
+                      <span className="font-bold text-lg text-indigo-400">{settlementReadiness}%</span>
                     </div>
                   </div>
                   {userRole === 'admin' && (
@@ -302,14 +302,14 @@ export function SettlementCentre({ caseData, userRole }: SettlementCentreProps) 
                           const isOverdue = daysRemaining < 0;
                           
                           return (
-                            <TableRow key={item.id} className={isOverdue ? 'bg-red-50' : ''}>
+                            <TableRow key={item.id} className={isOverdue ? 'bg-red-500/10' : ''}>
                               <TableCell className="font-medium">{item.title}</TableCell>
                               <TableCell>
-                                <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
+                                <span className="px-2 py-1 bg-white/5 text-slate-300 text-xs rounded">
                                   {item.responsible}
                                 </span>
                               </TableCell>
-                              <TableCell className={isOverdue ? 'text-red-600 font-semibold' : ''}>
+                              <TableCell className={isOverdue ? 'text-red-400 font-semibold' : ''}>
                                 {format(item.dueDate, 'dd MMM yyyy')}
                                 {isOverdue && <span className="ml-2 text-xs">(Overdue)</span>}
                               </TableCell>
@@ -317,7 +317,7 @@ export function SettlementCentre({ caseData, userRole }: SettlementCentreProps) 
                                 <select
                                   value={item.status}
                                   onChange={(e) => handleStatusChange(item.id, e.target.value)}
-                                  className="px-2 py-1 border border-gray-300 rounded text-sm"
+                                  className="px-2 py-1 border border-white/10 rounded text-sm"
                                   disabled={userRole !== 'admin' && userRole !== item.responsible.toLowerCase()}
                                 >
                                   <option value="Open">Open</option>
@@ -353,17 +353,17 @@ export function SettlementCentre({ caseData, userRole }: SettlementCentreProps) 
                   {/* Overdue */}
                   {outstanding.overdue.length > 0 && (
                     <div>
-                      <h4 className="text-sm font-semibold text-red-600 mb-2 flex items-center gap-2">
+                      <h4 className="text-sm font-semibold text-red-400 mb-2 flex items-center gap-2">
                         <AlertTriangle className="w-4 h-4" />
                         Overdue ({outstanding.overdue.length})
                       </h4>
                       <div className="space-y-2">
                         {outstanding.overdue.map(item => (
-                          <div key={item.id} className="p-3 bg-red-50 border border-red-200 rounded-lg">
+                          <div key={item.id} className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
                             <p className="font-medium text-sm">{item.title}</p>
                             <div className="flex items-center justify-between mt-1">
                               <span className="text-xs px-2 py-1 bg-white rounded">{item.responsible}</span>
-                              <span className="text-xs text-red-600 font-semibold">
+                              <span className="text-xs text-red-400 font-semibold">
                                 {Math.abs(getDaysRemaining(item.dueDate))} days overdue
                               </span>
                             </div>
@@ -376,17 +376,17 @@ export function SettlementCentre({ caseData, userRole }: SettlementCentreProps) 
                   {/* Due Soon */}
                   {outstanding.dueSoon.length > 0 && (
                     <div>
-                      <h4 className="text-sm font-semibold text-amber-600 mb-2 flex items-center gap-2">
+                      <h4 className="text-sm font-semibold text-amber-400 mb-2 flex items-center gap-2">
                         <Clock className="w-4 h-4" />
                         Due Soon ({outstanding.dueSoon.length})
                       </h4>
                       <div className="space-y-2">
                         {outstanding.dueSoon.map(item => (
-                          <div key={item.id} className="p-3 bg-amber-50 border border-amber-200 rounded-lg">
+                          <div key={item.id} className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-lg">
                             <p className="font-medium text-sm">{item.title}</p>
                             <div className="flex items-center justify-between mt-1">
                               <span className="text-xs px-2 py-1 bg-white rounded">{item.responsible}</span>
-                              <span className="text-xs text-amber-600">
+                              <span className="text-xs text-amber-400">
                                 {getDaysRemaining(item.dueDate)} days left
                               </span>
                             </div>
@@ -399,13 +399,13 @@ export function SettlementCentre({ caseData, userRole }: SettlementCentreProps) 
                   {/* Awaiting Approval */}
                   {outstanding.awaitingApproval.length > 0 && (
                     <div>
-                      <h4 className="text-sm font-semibold text-blue-600 mb-2 flex items-center gap-2">
+                      <h4 className="text-sm font-semibold text-blue-400 mb-2 flex items-center gap-2">
                         <Eye className="w-4 h-4" />
                         Awaiting Approval ({outstanding.awaitingApproval.length})
                       </h4>
                       <div className="space-y-2">
                         {outstanding.awaitingApproval.map(item => (
-                          <div key={item.id} className="p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                          <div key={item.id} className="p-3 bg-blue-500/10 border border-blue-500/30 rounded-lg">
                             <p className="font-medium text-sm">{item.title}</p>
                             <div className="flex items-center justify-between mt-1">
                               <span className="text-xs px-2 py-1 bg-white rounded">{item.responsible}</span>
@@ -422,7 +422,7 @@ export function SettlementCentre({ caseData, userRole }: SettlementCentreProps) 
                   )}
 
                   {outstanding.overdue.length === 0 && outstanding.dueSoon.length === 0 && outstanding.awaitingApproval.length === 0 && (
-                    <div className="text-center py-8 text-gray-500">
+                    <div className="text-center py-8 text-slate-400">
                       <CheckCircle className="w-12 h-12 mx-auto mb-2 text-green-500" />
                       <p className="text-sm">All items up to date!</p>
                     </div>
@@ -436,15 +436,15 @@ export function SettlementCentre({ caseData, userRole }: SettlementCentreProps) 
               <Card>
                 <CardHeader className="border-b">
                   <CardTitle className="text-base">Settlement Thread</CardTitle>
-                  <p className="text-xs text-gray-500 mt-1">Settlement-specific communication</p>
+                  <p className="text-xs text-slate-400 mt-1">Settlement-specific communication</p>
                 </CardHeader>
                 <CardContent className="p-4">
                   {/* Pinned Messages */}
                   {settlementMessages.filter(m => m.isPinned).length > 0 && (
-                    <div className="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
-                      <p className="text-xs font-semibold text-yellow-800 mb-2">📌 Pinned</p>
+                    <div className="mb-4 p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
+                      <p className="text-xs font-semibold text-yellow-300 mb-2">📌 Pinned</p>
                       {settlementMessages.filter(m => m.isPinned).map(msg => (
-                        <div key={msg.id} className="text-sm text-gray-700">
+                        <div key={msg.id} className="text-sm text-slate-300">
                           {msg.message}
                         </div>
                       ))}
@@ -461,10 +461,10 @@ export function SettlementCentre({ caseData, userRole }: SettlementCentreProps) 
                         <div className="flex-1">
                           <div className="flex items-baseline gap-2">
                             <span className="font-semibold text-sm">{msg.sender}</span>
-                            <span className="text-xs text-gray-500">{msg.role}</span>
+                            <span className="text-xs text-slate-400">{msg.role}</span>
                             <span className="text-xs text-gray-400">{format(msg.timestamp, 'HH:mm')}</span>
                           </div>
-                          <p className="text-sm text-gray-700 mt-1">{msg.message}</p>
+                          <p className="text-sm text-slate-300 mt-1">{msg.message}</p>
                         </div>
                       </div>
                     ))}
@@ -502,12 +502,12 @@ export function SettlementCentre({ caseData, userRole }: SettlementCentreProps) 
                     <CardContent className="p-4">
                       <div className="flex items-start justify-between mb-3">
                         <div className="flex items-start gap-3">
-                          <div className="p-2 bg-indigo-100 rounded-lg">
-                            <FileText className="w-5 h-5 text-indigo-600" />
+                          <div className="p-2 bg-indigo-500/15 rounded-lg">
+                            <FileText className="w-5 h-5 text-indigo-400" />
                           </div>
                           <div>
                             <h4 className="font-semibold">{doc.name}</h4>
-                            <p className="text-sm text-gray-600">Responsible: {doc.responsible}</p>
+                            <p className="text-sm text-slate-300">Responsible: {doc.responsible}</p>
                           </div>
                         </div>
                         <StatusBadge status={doc.status.toLowerCase()} type="document" />
@@ -516,8 +516,8 @@ export function SettlementCentre({ caseData, userRole }: SettlementCentreProps) 
                       {doc.status === 'Uploaded' || doc.status === 'Approved' ? (
                         <div className="space-y-2">
                           <div className="flex items-center justify-between text-sm">
-                            <span className="text-gray-600">Version {doc.version}</span>
-                            <span className="text-gray-600">by {doc.uploadedBy}</span>
+                            <span className="text-slate-300">Version {doc.version}</span>
+                            <span className="text-slate-300">by {doc.uploadedBy}</span>
                           </div>
                           <div className="flex gap-2">
                             <Button variant="outline" size="sm" className="flex-1">
@@ -551,7 +551,7 @@ export function SettlementCentre({ caseData, userRole }: SettlementCentreProps) 
             <CardContent className="p-6">
               <div className="relative">
                 {/* Timeline Line */}
-                <div className="absolute top-6 left-0 right-0 h-1 bg-gray-200" />
+                <div className="absolute top-6 left-0 right-0 h-1 bg-white/10" />
                 
                 {/* Milestones */}
                 <div className="relative flex justify-between">
@@ -574,7 +574,7 @@ export function SettlementCentre({ caseData, userRole }: SettlementCentreProps) 
                       </div>
                       <div className="text-center mt-3">
                         <p className="font-semibold text-sm">{milestone.label}</p>
-                        <p className="text-xs text-gray-600 mt-1">{format(milestone.date, 'dd MMM yyyy')}</p>
+                        <p className="text-xs text-slate-300 mt-1">{format(milestone.date, 'dd MMM yyyy')}</p>
                       </div>
                     </div>
                   ))}
@@ -585,9 +585,9 @@ export function SettlementCentre({ caseData, userRole }: SettlementCentreProps) 
 
           {/* Admin Controls */}
           {userRole === 'admin' && (
-            <Card className="border-2 border-indigo-200 bg-indigo-50">
-              <CardHeader className="border-b border-indigo-200">
-                <CardTitle className="flex items-center gap-2 text-indigo-900">
+            <Card className="border-2 border-indigo-500/30 bg-indigo-500/10">
+              <CardHeader className="border-b border-indigo-500/30">
+                <CardTitle className="flex items-center gap-2 text-indigo-300">
                   <Lock className="w-5 h-5" />
                   Settlement Controls (Admin Only)
                 </CardTitle>
@@ -687,7 +687,7 @@ function AddChecklistItemModal({ onClose, onSave }: { onClose: () => void; onSav
                 <select
                   value={formData.responsible}
                   onChange={(e) => setFormData({ ...formData, responsible: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                  className="w-full px-3 py-2 border border-white/10 rounded-lg"
                 >
                   <option value="Borrower">Borrower</option>
                   <option value="Lender">Lender</option>

@@ -184,9 +184,9 @@ export function TaxWorksheet({ onBack }: TaxWorksheetProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white/5">
       {/* Fixed Header */}
-      <div className="bg-white border-b border-gray-300 px-6 py-4">
+      <div className="bg-white border-b border-white/10 px-6 py-4">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-3">
             {onBack && (
@@ -194,10 +194,10 @@ export function TaxWorksheet({ onBack }: TaxWorksheetProps) {
                 <ArrowLeft className="w-4 h-4" />
               </Button>
             )}
-            <Calculator className="w-6 h-6 text-blue-600" />
+            <Calculator className="w-6 h-6 text-blue-400" />
             <div>
-              <h1 className="text-xl font-bold text-gray-900">Income Tax Reconciliation Worksheet</h1>
-              <p className="text-xs text-gray-600">Company Tax Return • FY2024 • Base Rate Entity 25%</p>
+              <h1 className="text-xl font-bold text-slate-100">Income Tax Reconciliation Worksheet</h1>
+              <p className="text-xs text-slate-300">Company Tax Return • FY2024 • Base Rate Entity 25%</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -219,28 +219,28 @@ export function TaxWorksheet({ onBack }: TaxWorksheetProps) {
         {/* Metadata Bar */}
         <div className="grid grid-cols-6 gap-4 text-sm">
           <div>
-            <span className="text-gray-600 text-xs">Client:</span>
-            <div className="font-semibold text-gray-900">ABC Manufacturing Pty Ltd</div>
+            <span className="text-slate-300 text-xs">Client:</span>
+            <div className="font-semibold text-slate-100">ABC Manufacturing Pty Ltd</div>
           </div>
           <div>
-            <span className="text-gray-600 text-xs">ABN:</span>
-            <div className="font-semibold text-gray-900">12 345 678 901</div>
+            <span className="text-slate-300 text-xs">ABN:</span>
+            <div className="font-semibold text-slate-100">12 345 678 901</div>
           </div>
           <div>
-            <span className="text-gray-600 text-xs">Year End:</span>
-            <div className="font-semibold text-gray-900">30 June 2024</div>
+            <span className="text-slate-300 text-xs">Year End:</span>
+            <div className="font-semibold text-slate-100">30 June 2024</div>
           </div>
           <div>
-            <span className="text-gray-600 text-xs">Tax Rate:</span>
-            <div className="font-semibold text-blue-700">25%</div>
+            <span className="text-slate-300 text-xs">Tax Rate:</span>
+            <div className="font-semibold text-blue-300">25%</div>
           </div>
           <div>
-            <span className="text-gray-600 text-xs">Preparer:</span>
-            <div className="font-semibold text-gray-900">Sarah Chen</div>
+            <span className="text-slate-300 text-xs">Preparer:</span>
+            <div className="font-semibold text-slate-100">Sarah Chen</div>
           </div>
           <div>
-            <span className="text-gray-600 text-xs">Reviewer:</span>
-            <div className="font-semibold text-gray-900">Michael Ross</div>
+            <span className="text-slate-300 text-xs">Reviewer:</span>
+            <div className="font-semibold text-slate-100">Michael Ross</div>
           </div>
         </div>
       </div>
@@ -249,45 +249,45 @@ export function TaxWorksheet({ onBack }: TaxWorksheetProps) {
       <div className="p-6 space-y-6">
         {/* Tax Summary Cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="bg-white border border-gray-300 rounded p-4">
-            <div className="text-xs text-gray-600 mb-1">Accounting Profit</div>
-            <div className="text-2xl font-bold text-gray-900 font-mono">{formatCurrency(accountingProfit)}</div>
+          <div className="bg-white border border-white/10 rounded p-4">
+            <div className="text-xs text-slate-300 mb-1">Accounting Profit</div>
+            <div className="text-2xl font-bold text-slate-100 font-mono">{formatCurrency(accountingProfit)}</div>
           </div>
-          <div className="bg-white border border-gray-300 rounded p-4">
-            <div className="text-xs text-gray-600 mb-1">Taxable Income</div>
-            <div className="text-2xl font-bold text-blue-600 font-mono">{formatCurrency(taxableIncome)}</div>
+          <div className="bg-white border border-white/10 rounded p-4">
+            <div className="text-xs text-slate-300 mb-1">Taxable Income</div>
+            <div className="text-2xl font-bold text-blue-400 font-mono">{formatCurrency(taxableIncome)}</div>
           </div>
-          <div className="bg-white border border-gray-300 rounded p-4">
-            <div className="text-xs text-gray-600 mb-1">Tax Payable @ 25%</div>
-            <div className="text-2xl font-bold text-red-600 font-mono">{formatCurrency(taxPayable)}</div>
+          <div className="bg-white border border-white/10 rounded p-4">
+            <div className="text-xs text-slate-300 mb-1">Tax Payable @ 25%</div>
+            <div className="text-2xl font-bold text-red-400 font-mono">{formatCurrency(taxPayable)}</div>
           </div>
-          <div className="bg-white border border-gray-300 rounded p-4">
-            <div className="text-xs text-gray-600 mb-1">Balance Due</div>
-            <div className="text-2xl font-bold text-amber-600 font-mono">{formatCurrency(balanceDue)}</div>
+          <div className="bg-white border border-white/10 rounded p-4">
+            <div className="text-xs text-slate-300 mb-1">Balance Due</div>
+            <div className="text-2xl font-bold text-amber-400 font-mono">{formatCurrency(balanceDue)}</div>
           </div>
         </div>
 
         {/* AI Tax Review Alert */}
-        <div className="bg-purple-50 border border-purple-300 rounded px-4 py-3">
+        <div className="bg-purple-500/10 border border-purple-300 rounded px-4 py-3">
           <div className="flex items-start gap-3">
-            <Brain className="w-5 h-5 text-purple-600 mt-0.5" />
+            <Brain className="w-5 h-5 text-purple-400 mt-0.5" />
             <div className="flex-1">
-              <h3 className="font-semibold text-purple-900 mb-2">AI Tax Review</h3>
-              <div className="space-y-2 text-sm text-purple-800">
+              <h3 className="font-semibold text-purple-300 mb-2">AI Tax Review</h3>
+              <div className="space-y-2 text-sm text-purple-300">
                 <div className="flex items-start gap-2">
-                  <AlertCircle className="w-4 h-4 text-amber-600 mt-0.5" />
+                  <AlertCircle className="w-4 h-4 text-amber-400 mt-0.5" />
                   <div>
                     <strong>Division 7A Issue:</strong> Director loan $47,500 deemed dividend added to taxable income. Consider complying loan agreement for future years.
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
-                  <AlertCircle className="w-4 h-4 text-red-600 mt-0.5" />
+                  <AlertCircle className="w-4 h-4 text-red-400 mt-0.5" />
                   <div>
                     <strong>Late Super Payment:</strong> $2,400 super paid after due date - not deductible this year. Review payment timing for FY2025.
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-600 mt-0.5" />
+                  <CheckCircle className="w-4 h-4 text-green-400 mt-0.5" />
                   <div>
                     <strong>TFE Opportunity:</strong> Machinery purchase $15k claimed under Temporary Full Expensing. Verify eligibility documentation.
                   </div>
@@ -298,44 +298,44 @@ export function TaxWorksheet({ onBack }: TaxWorksheetProps) {
         </div>
 
         {/* Tax Reconciliation Table */}
-        <div className="border border-gray-300 rounded bg-white overflow-hidden">
-          <div className="bg-gray-50 border-b border-gray-300 px-4 py-2">
-            <h3 className="font-semibold text-gray-900">Tax Reconciliation - Accounting to Taxable Income</h3>
+        <div className="border border-white/10 rounded bg-white overflow-hidden">
+          <div className="bg-white/5 border-b border-white/10 px-4 py-2">
+            <h3 className="font-semibold text-slate-100">Tax Reconciliation - Accounting to Taxable Income</h3>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>
-                <tr className="bg-gray-100">
-                  <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700 w-32">Item</th>
-                  <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Description</th>
-                  <th className="border border-gray-300 px-3 py-2 text-right font-semibold text-gray-700 w-40">Amount</th>
-                  <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700 w-32">Reference</th>
-                  <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Notes</th>
+                <tr className="bg-white/5">
+                  <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300 w-32">Item</th>
+                  <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Description</th>
+                  <th className="border border-white/10 px-3 py-2 text-right font-semibold text-slate-300 w-40">Amount</th>
+                  <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300 w-32">Reference</th>
+                  <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Notes</th>
                 </tr>
               </thead>
               <tbody>
                 {/* Starting Profit */}
-                <tr className="bg-blue-50">
-                  <td className="border border-gray-300 px-3 py-2 font-mono font-semibold text-blue-900">
+                <tr className="bg-blue-500/10">
+                  <td className="border border-white/10 px-3 py-2 font-mono font-semibold text-blue-300">
                     START
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-gray-900 font-semibold">
+                  <td className="border border-white/10 px-3 py-2 text-slate-100 font-semibold">
                     Net Profit Before Tax (Accounting)
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-right font-mono font-bold text-blue-900">
+                  <td className="border border-white/10 px-3 py-2 text-right font-mono font-bold text-blue-300">
                     {formatCurrency(accountingProfit)}
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-gray-700 font-mono text-xs">
+                  <td className="border border-white/10 px-3 py-2 text-slate-300 font-mono text-xs">
                     P&L
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-gray-700 text-xs">
+                  <td className="border border-white/10 px-3 py-2 text-slate-300 text-xs">
                     From financial statements
                   </td>
                 </tr>
 
                 {/* Add-backs Header */}
-                <tr className="bg-red-50">
-                  <td colSpan={5} className="border border-gray-300 px-3 py-2 font-semibold text-red-900">
+                <tr className="bg-red-500/10">
+                  <td colSpan={5} className="border border-white/10 px-3 py-2 font-semibold text-red-300">
                     ADD-BACKS (Non-deductible items)
                   </td>
                 </tr>
@@ -344,39 +344,39 @@ export function TaxWorksheet({ onBack }: TaxWorksheetProps) {
                 {taxAdjustments
                   .filter(item => item.addBack)
                   .map((item) => (
-                    <tr key={item.code} className="hover:bg-red-50">
-                      <td className="border border-gray-300 px-3 py-2 font-mono text-gray-700">
+                    <tr key={item.code} className="hover:bg-red-500/10">
+                      <td className="border border-white/10 px-3 py-2 font-mono text-slate-300">
                         {item.code}
                       </td>
-                      <td className="border border-gray-300 px-3 py-2 text-gray-900">
+                      <td className="border border-white/10 px-3 py-2 text-slate-100">
                         {item.description}
                       </td>
-                      <td className="border border-gray-300 px-3 py-2 text-right font-mono text-red-700 font-semibold">
+                      <td className="border border-white/10 px-3 py-2 text-right font-mono text-red-300 font-semibold">
                         {formatCurrency(item.addBack!)}
                       </td>
-                      <td className="border border-gray-300 px-3 py-2 text-gray-700 font-mono text-xs">
+                      <td className="border border-white/10 px-3 py-2 text-slate-300 font-mono text-xs">
                         {item.reference}
                       </td>
-                      <td className="border border-gray-300 px-3 py-2 text-gray-700 text-xs">
+                      <td className="border border-white/10 px-3 py-2 text-slate-300 text-xs">
                         {item.notes}
                       </td>
                     </tr>
                   ))}
 
                 {/* Add-backs Subtotal */}
-                <tr className="bg-red-100">
-                  <td colSpan={2} className="border border-gray-300 px-3 py-2 text-right font-semibold text-red-900">
+                <tr className="bg-red-500/15">
+                  <td colSpan={2} className="border border-white/10 px-3 py-2 text-right font-semibold text-red-300">
                     Total Add-backs:
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-right font-mono font-bold text-red-900">
+                  <td className="border border-white/10 px-3 py-2 text-right font-mono font-bold text-red-300">
                     {formatCurrency(totalAddBacks)}
                   </td>
-                  <td colSpan={2} className="border border-gray-300"></td>
+                  <td colSpan={2} className="border border-white/10"></td>
                 </tr>
 
                 {/* Deductions Header */}
-                <tr className="bg-green-50">
-                  <td colSpan={5} className="border border-gray-300 px-3 py-2 font-semibold text-green-900">
+                <tr className="bg-green-500/10">
+                  <td colSpan={5} className="border border-white/10 px-3 py-2 font-semibold text-green-300">
                     DEDUCTIONS (Tax-specific deductions)
                   </td>
                 </tr>
@@ -385,51 +385,51 @@ export function TaxWorksheet({ onBack }: TaxWorksheetProps) {
                 {taxAdjustments
                   .filter(item => item.deductible)
                   .map((item) => (
-                    <tr key={item.code} className="hover:bg-green-50">
-                      <td className="border border-gray-300 px-3 py-2 font-mono text-gray-700">
+                    <tr key={item.code} className="hover:bg-green-500/10">
+                      <td className="border border-white/10 px-3 py-2 font-mono text-slate-300">
                         {item.code}
                       </td>
-                      <td className="border border-gray-300 px-3 py-2 text-gray-900">
+                      <td className="border border-white/10 px-3 py-2 text-slate-100">
                         {item.description}
                       </td>
-                      <td className="border border-gray-300 px-3 py-2 text-right font-mono text-green-700 font-semibold">
+                      <td className="border border-white/10 px-3 py-2 text-right font-mono text-green-300 font-semibold">
                         {formatCurrency(item.deductible!)}
                       </td>
-                      <td className="border border-gray-300 px-3 py-2 text-gray-700 font-mono text-xs">
+                      <td className="border border-white/10 px-3 py-2 text-slate-300 font-mono text-xs">
                         {item.reference}
                       </td>
-                      <td className="border border-gray-300 px-3 py-2 text-gray-700 text-xs">
+                      <td className="border border-white/10 px-3 py-2 text-slate-300 text-xs">
                         {item.notes}
                       </td>
                     </tr>
                   ))}
 
                 {/* Deductions Subtotal */}
-                <tr className="bg-green-100">
-                  <td colSpan={2} className="border border-gray-300 px-3 py-2 text-right font-semibold text-green-900">
+                <tr className="bg-green-500/15">
+                  <td colSpan={2} className="border border-white/10 px-3 py-2 text-right font-semibold text-green-300">
                     Total Deductions:
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-right font-mono font-bold text-green-900">
+                  <td className="border border-white/10 px-3 py-2 text-right font-mono font-bold text-green-300">
                     {formatCurrency(totalDeductions)}
                   </td>
-                  <td colSpan={2} className="border border-gray-300"></td>
+                  <td colSpan={2} className="border border-white/10"></td>
                 </tr>
 
                 {/* Final Taxable Income */}
-                <tr className="bg-blue-100">
-                  <td className="border border-gray-300 px-3 py-2 font-mono font-bold text-blue-900">
+                <tr className="bg-blue-500/15">
+                  <td className="border border-white/10 px-3 py-2 font-mono font-bold text-blue-300">
                     FINAL
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-gray-900 font-bold">
+                  <td className="border border-white/10 px-3 py-2 text-slate-100 font-bold">
                     Taxable Income (Label A)
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-right font-mono font-bold text-blue-900 text-lg">
+                  <td className="border border-white/10 px-3 py-2 text-right font-mono font-bold text-blue-300 text-lg">
                     {formatCurrency(taxableIncome)}
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-gray-700 font-mono text-xs">
+                  <td className="border border-white/10 px-3 py-2 text-slate-300 font-mono text-xs">
                     Tax Return
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-gray-700 text-xs">
+                  <td className="border border-white/10 px-3 py-2 text-slate-300 text-xs">
                     Amount to report in company tax return
                   </td>
                 </tr>
@@ -439,52 +439,52 @@ export function TaxWorksheet({ onBack }: TaxWorksheetProps) {
         </div>
 
         {/* Tax Calculation Summary */}
-        <div className="border border-gray-300 rounded bg-white overflow-hidden">
-          <div className="bg-gray-50 border-b border-gray-300 px-4 py-2">
-            <h3 className="font-semibold text-gray-900">Tax Calculation & Payment Summary</h3>
+        <div className="border border-white/10 rounded bg-white overflow-hidden">
+          <div className="bg-white/5 border-b border-white/10 px-4 py-2">
+            <h3 className="font-semibold text-slate-100">Tax Calculation & Payment Summary</h3>
           </div>
           <div className="p-4 space-y-4">
             {/* Tax Calculation */}
-            <div className="border border-gray-300 rounded">
+            <div className="border border-white/10 rounded">
               <table className="w-full text-sm border-collapse">
                 <tbody>
-                  <tr className="bg-gray-50">
-                    <td className="border border-gray-300 px-3 py-2 text-gray-900 font-semibold">
+                  <tr className="bg-white/5">
+                    <td className="border border-white/10 px-3 py-2 text-slate-100 font-semibold">
                       Taxable Income
                     </td>
-                    <td className="border border-gray-300 px-3 py-2 text-right font-mono text-gray-900">
+                    <td className="border border-white/10 px-3 py-2 text-right font-mono text-slate-100">
                       {formatCurrency(taxableIncome)}
                     </td>
                   </tr>
                   <tr>
-                    <td className="border border-gray-300 px-3 py-2 text-gray-900">
+                    <td className="border border-white/10 px-3 py-2 text-slate-100">
                       Tax Rate (Base Rate Entity)
                     </td>
-                    <td className="border border-gray-300 px-3 py-2 text-right font-mono text-gray-900">
+                    <td className="border border-white/10 px-3 py-2 text-right font-mono text-slate-100">
                       25%
                     </td>
                   </tr>
-                  <tr className="bg-blue-50">
-                    <td className="border border-gray-300 px-3 py-2 text-blue-900 font-semibold">
+                  <tr className="bg-blue-500/10">
+                    <td className="border border-white/10 px-3 py-2 text-blue-300 font-semibold">
                       Tax Payable
                     </td>
-                    <td className="border border-gray-300 px-3 py-2 text-right font-mono font-bold text-blue-900">
+                    <td className="border border-white/10 px-3 py-2 text-right font-mono font-bold text-blue-300">
                       {formatCurrency(taxPayable)}
                     </td>
                   </tr>
                   <tr>
-                    <td className="border border-gray-300 px-3 py-2 text-gray-900">
+                    <td className="border border-white/10 px-3 py-2 text-slate-100">
                       Less: Franking Credits
                     </td>
-                    <td className="border border-gray-300 px-3 py-2 text-right font-mono text-gray-900">
+                    <td className="border border-white/10 px-3 py-2 text-right font-mono text-slate-100">
                       {formatCurrency(frankingCredits)}
                     </td>
                   </tr>
-                  <tr className="bg-green-50">
-                    <td className="border border-gray-300 px-3 py-2 text-green-900 font-semibold">
+                  <tr className="bg-green-500/10">
+                    <td className="border border-white/10 px-3 py-2 text-green-300 font-semibold">
                       Net Tax Payable
                     </td>
-                    <td className="border border-gray-300 px-3 py-2 text-right font-mono font-bold text-green-900">
+                    <td className="border border-white/10 px-3 py-2 text-right font-mono font-bold text-green-300">
                       {formatCurrency(netTaxPayable)}
                     </td>
                   </tr>
@@ -494,50 +494,50 @@ export function TaxWorksheet({ onBack }: TaxWorksheetProps) {
 
             {/* PAYG Instalments */}
             <div>
-              <h4 className="font-semibold text-gray-900 mb-3">PAYG Instalments Paid</h4>
-              <table className="w-full text-sm border-collapse border border-gray-300">
+              <h4 className="font-semibold text-slate-100 mb-3">PAYG Instalments Paid</h4>
+              <table className="w-full text-sm border-collapse border border-white/10">
                 <thead>
-                  <tr className="bg-gray-100">
-                    <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Date</th>
-                    <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Description</th>
-                    <th className="border border-gray-300 px-3 py-2 text-right font-semibold text-gray-700">Amount</th>
-                    <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Reference</th>
+                  <tr className="bg-white/5">
+                    <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Date</th>
+                    <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Description</th>
+                    <th className="border border-white/10 px-3 py-2 text-right font-semibold text-slate-300">Amount</th>
+                    <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Reference</th>
                   </tr>
                 </thead>
                 <tbody>
                   {taxPayments.map((payment, idx) => (
-                    <tr key={idx} className="hover:bg-blue-50">
-                      <td className="border border-gray-300 px-3 py-2 text-gray-700 font-mono text-xs">
+                    <tr key={idx} className="hover:bg-blue-500/10">
+                      <td className="border border-white/10 px-3 py-2 text-slate-300 font-mono text-xs">
                         {payment.date}
                       </td>
-                      <td className="border border-gray-300 px-3 py-2 text-gray-900">
+                      <td className="border border-white/10 px-3 py-2 text-slate-100">
                         {payment.description}
                       </td>
-                      <td className="border border-gray-300 px-3 py-2 text-right font-mono text-gray-900">
+                      <td className="border border-white/10 px-3 py-2 text-right font-mono text-slate-100">
                         {formatCurrency(payment.amount)}
                       </td>
-                      <td className="border border-gray-300 px-3 py-2 text-gray-700 font-mono text-xs">
+                      <td className="border border-white/10 px-3 py-2 text-slate-300 font-mono text-xs">
                         {payment.reference}
                       </td>
                     </tr>
                   ))}
-                  <tr className="bg-blue-100">
-                    <td colSpan={2} className="border border-gray-300 px-3 py-2 text-right font-semibold text-blue-900">
+                  <tr className="bg-blue-500/15">
+                    <td colSpan={2} className="border border-white/10 px-3 py-2 text-right font-semibold text-blue-300">
                       Total PAYG Paid:
                     </td>
-                    <td className="border border-gray-300 px-3 py-2 text-right font-mono font-bold text-blue-900">
+                    <td className="border border-white/10 px-3 py-2 text-right font-mono font-bold text-blue-300">
                       {formatCurrency(totalPayments)}
                     </td>
-                    <td className="border border-gray-300"></td>
+                    <td className="border border-white/10"></td>
                   </tr>
-                  <tr className="bg-amber-100">
-                    <td colSpan={2} className="border border-gray-300 px-3 py-2 text-right font-semibold text-amber-900">
+                  <tr className="bg-amber-500/15">
+                    <td colSpan={2} className="border border-white/10 px-3 py-2 text-right font-semibold text-amber-300">
                       Balance Due / (Refund):
                     </td>
-                    <td className="border border-gray-300 px-3 py-2 text-right font-mono font-bold text-amber-900 text-lg">
+                    <td className="border border-white/10 px-3 py-2 text-right font-mono font-bold text-amber-300 text-lg">
                       {formatCurrency(balanceDue)}
                     </td>
-                    <td className="border border-gray-300 px-3 py-2 text-xs text-amber-700">
+                    <td className="border border-white/10 px-3 py-2 text-xs text-amber-300">
                       Due: 15 Feb 2025
                     </td>
                   </tr>
@@ -548,82 +548,82 @@ export function TaxWorksheet({ onBack }: TaxWorksheetProps) {
         </div>
 
         {/* Franking Account */}
-        <div className="border border-gray-300 rounded bg-white overflow-hidden">
-          <div className="bg-gray-50 border-b border-gray-300 px-4 py-2">
-            <h3 className="font-semibold text-gray-900">Franking Account Movement</h3>
+        <div className="border border-white/10 rounded bg-white overflow-hidden">
+          <div className="bg-white/5 border-b border-white/10 px-4 py-2">
+            <h3 className="font-semibold text-slate-100">Franking Account Movement</h3>
           </div>
           <div className="p-4">
-            <table className="w-full text-sm border-collapse border border-gray-300">
+            <table className="w-full text-sm border-collapse border border-white/10">
               <thead>
-                <tr className="bg-gray-100">
-                  <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Description</th>
-                  <th className="border border-gray-300 px-3 py-2 text-right font-semibold text-gray-700 w-40">Debit</th>
-                  <th className="border border-gray-300 px-3 py-2 text-right font-semibold text-gray-700 w-40">Credit</th>
-                  <th className="border border-gray-300 px-3 py-2 text-right font-semibold text-gray-700 w-40">Balance</th>
+                <tr className="bg-white/5">
+                  <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Description</th>
+                  <th className="border border-white/10 px-3 py-2 text-right font-semibold text-slate-300 w-40">Debit</th>
+                  <th className="border border-white/10 px-3 py-2 text-right font-semibold text-slate-300 w-40">Credit</th>
+                  <th className="border border-white/10 px-3 py-2 text-right font-semibold text-slate-300 w-40">Balance</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td className="border border-gray-300 px-3 py-2 text-gray-900">
+                  <td className="border border-white/10 px-3 py-2 text-slate-100">
                     Opening Balance 1 July 2023
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-right font-mono text-gray-700">
+                  <td className="border border-white/10 px-3 py-2 text-right font-mono text-slate-300">
                     -
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-right font-mono text-gray-700">
+                  <td className="border border-white/10 px-3 py-2 text-right font-mono text-slate-300">
                     -
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-right font-mono text-gray-900">
+                  <td className="border border-white/10 px-3 py-2 text-right font-mono text-slate-100">
                     $12,400
                   </td>
                 </tr>
-                <tr className="hover:bg-blue-50">
-                  <td className="border border-gray-300 px-3 py-2 text-gray-900">
+                <tr className="hover:bg-blue-500/10">
+                  <td className="border border-white/10 px-3 py-2 text-slate-100">
                     Tax Paid FY2023 (credited 15 Feb 2024)
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-right font-mono text-gray-700">
+                  <td className="border border-white/10 px-3 py-2 text-right font-mono text-slate-300">
                     -
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-right font-mono text-green-700">
+                  <td className="border border-white/10 px-3 py-2 text-right font-mono text-green-300">
                     $22,100
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-right font-mono text-gray-900">
+                  <td className="border border-white/10 px-3 py-2 text-right font-mono text-slate-100">
                     $34,500
                   </td>
                 </tr>
-                <tr className="hover:bg-blue-50">
-                  <td className="border border-gray-300 px-3 py-2 text-gray-900">
+                <tr className="hover:bg-blue-500/10">
+                  <td className="border border-white/10 px-3 py-2 text-slate-100">
                     Franked Dividends Paid (no dividends this year)
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-right font-mono text-gray-700">
+                  <td className="border border-white/10 px-3 py-2 text-right font-mono text-slate-300">
                     -
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-right font-mono text-gray-700">
+                  <td className="border border-white/10 px-3 py-2 text-right font-mono text-slate-300">
                     -
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-right font-mono text-gray-900">
+                  <td className="border border-white/10 px-3 py-2 text-right font-mono text-slate-100">
                     $34,500
                   </td>
                 </tr>
-                <tr className="bg-blue-100">
-                  <td className="border border-gray-300 px-3 py-2 text-blue-900 font-semibold">
+                <tr className="bg-blue-500/15">
+                  <td className="border border-white/10 px-3 py-2 text-blue-300 font-semibold">
                     Closing Balance 30 June 2024
                   </td>
-                  <td colSpan={2} className="border border-gray-300 px-3 py-2 text-right font-mono text-blue-700">
+                  <td colSpan={2} className="border border-white/10 px-3 py-2 text-right font-mono text-blue-300">
                     -
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-right font-mono font-bold text-blue-900">
+                  <td className="border border-white/10 px-3 py-2 text-right font-mono font-bold text-blue-300">
                     $34,500
                   </td>
                 </tr>
-                <tr className="bg-green-50">
-                  <td className="border border-gray-300 px-3 py-2 text-green-900 font-semibold">
+                <tr className="bg-green-500/10">
+                  <td className="border border-white/10 px-3 py-2 text-green-300 font-semibold">
                     After FY2024 Tax Paid (Projected)
                   </td>
-                  <td colSpan={2} className="border border-gray-300 px-3 py-2 text-right text-xs text-green-700">
+                  <td colSpan={2} className="border border-white/10 px-3 py-2 text-right text-xs text-green-300">
                     Plus $33,788 credit
                   </td>
-                  <td className="border border-gray-300 px-3 py-2 text-right font-mono font-bold text-green-900">
+                  <td className="border border-white/10 px-3 py-2 text-right font-mono font-bold text-green-300">
                     $68,288
                   </td>
                 </tr>
@@ -633,60 +633,60 @@ export function TaxWorksheet({ onBack }: TaxWorksheetProps) {
         </div>
 
         {/* Key Tax Notes */}
-        <div className="border border-gray-300 rounded bg-white p-4">
-          <h3 className="font-semibold text-gray-900 mb-3">Key Tax Notes & Considerations</h3>
+        <div className="border border-white/10 rounded bg-white p-4">
+          <h3 className="font-semibold text-slate-100 mb-3">Key Tax Notes & Considerations</h3>
           <div className="space-y-3 text-sm">
             <div className="flex items-start gap-3">
-              <div className="w-6 h-6 bg-blue-100 rounded flex items-center justify-center flex-shrink-0">
-                <span className="text-xs font-bold text-blue-700">1</span>
+              <div className="w-6 h-6 bg-blue-500/15 rounded flex items-center justify-center flex-shrink-0">
+                <span className="text-xs font-bold text-blue-300">1</span>
               </div>
               <div>
-                <strong className="text-gray-900">Base Rate Entity (BRE) Test:</strong>
-                <p className="text-gray-700 mt-1">
+                <strong className="text-slate-100">Base Rate Entity (BRE) Test:</strong>
+                <p className="text-slate-300 mt-1">
                   Company qualifies for 25% BRE rate. Passive income &lt;80% and aggregated turnover &lt;$50m. BRE eligibility worksheet attached.
                 </p>
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <div className="w-6 h-6 bg-red-100 rounded flex items-center justify-center flex-shrink-0">
-                <span className="text-xs font-bold text-red-700">2</span>
+              <div className="w-6 h-6 bg-red-500/15 rounded flex items-center justify-center flex-shrink-0">
+                <span className="text-xs font-bold text-red-300">2</span>
               </div>
               <div>
-                <strong className="text-gray-900">Division 7A Deemed Dividend:</strong>
-                <p className="text-gray-700 mt-1">
+                <strong className="text-slate-100">Division 7A Deemed Dividend:</strong>
+                <p className="text-slate-300 mt-1">
                   Director loan $47,500 overdrawn at year-end. No complying loan agreement in place. Entire amount treated as deemed dividend under Div 7A s109D. Client advised to regularize for future years.
                 </p>
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <div className="w-6 h-6 bg-amber-100 rounded flex items-center justify-center flex-shrink-0">
-                <span className="text-xs font-bold text-amber-700">3</span>
+              <div className="w-6 h-6 bg-amber-500/15 rounded flex items-center justify-center flex-shrink-0">
+                <span className="text-xs font-bold text-amber-300">3</span>
               </div>
               <div>
-                <strong className="text-gray-900">Superannuation Timing:</strong>
-                <p className="text-gray-700 mt-1">
+                <strong className="text-slate-100">Superannuation Timing:</strong>
+                <p className="text-slate-300 mt-1">
                   $2,400 super paid after lodgement due date (28 Oct 2024). Not deductible in FY2024 per TR 2010/1. Deductible in FY2025 when paid.
                 </p>
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <div className="w-6 h-6 bg-green-100 rounded flex items-center justify-center flex-shrink-0">
-                <span className="text-xs font-bold text-green-700">4</span>
+              <div className="w-6 h-6 bg-green-500/15 rounded flex items-center justify-center flex-shrink-0">
+                <span className="text-xs font-bold text-green-300">4</span>
               </div>
               <div>
-                <strong className="text-gray-900">Temporary Full Expensing:</strong>
-                <p className="text-gray-700 mt-1">
+                <strong className="text-slate-100">Temporary Full Expensing:</strong>
+                <p className="text-slate-300 mt-1">
                   Machinery purchase $15,000 eligible for TFE. Claimed in full in FY2024. Verify purchase date between 6 Oct 2020 and 30 June 2023 (extended to 30 June 2025 for small business).
                 </p>
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <div className="w-6 h-6 bg-purple-100 rounded flex items-center justify-center flex-shrink-0">
-                <span className="text-xs font-bold text-purple-700">5</span>
+              <div className="w-6 h-6 bg-purple-500/15 rounded flex items-center justify-center flex-shrink-0">
+                <span className="text-xs font-bold text-purple-300">5</span>
               </div>
               <div>
-                <strong className="text-gray-900">Franking Account:</strong>
-                <p className="text-gray-700 mt-1">
+                <strong className="text-slate-100">Franking Account:</strong>
+                <p className="text-slate-300 mt-1">
                   Available franking credits $34,500. Sufficient to frank dividends up to $46,000 (fully franked at 75%). Consider dividend planning for shareholders.
                 </p>
               </div>
@@ -695,45 +695,45 @@ export function TaxWorksheet({ onBack }: TaxWorksheetProps) {
         </div>
 
         {/* Supporting Workpapers */}
-        <div className="bg-blue-50 border border-blue-300 rounded p-4">
-          <h3 className="font-semibold text-blue-900 mb-3 flex items-center gap-2">
+        <div className="bg-blue-500/10 border border-blue-300 rounded p-4">
+          <h3 className="font-semibold text-blue-300 mb-3 flex items-center gap-2">
             <FileText className="w-5 h-5" />
             Supporting Tax Workpapers
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-            <button className="bg-white border border-blue-200 rounded px-3 py-2 hover:bg-blue-50 text-left text-sm">
-              <div className="font-semibold text-gray-900">Division 7A Calculation</div>
-              <div className="text-xs text-gray-600 mt-1">Loan agreement & deemed dividend</div>
+            <button className="bg-white border border-blue-500/30 rounded px-3 py-2 hover:bg-blue-500/10 text-left text-sm">
+              <div className="font-semibold text-slate-100">Division 7A Calculation</div>
+              <div className="text-xs text-slate-300 mt-1">Loan agreement & deemed dividend</div>
             </button>
-            <button className="bg-white border border-blue-200 rounded px-3 py-2 hover:bg-blue-50 text-left text-sm">
-              <div className="font-semibold text-gray-900">Depreciation Schedule</div>
-              <div className="text-xs text-gray-600 mt-1">Tax vs accounting depreciation</div>
+            <button className="bg-white border border-blue-500/30 rounded px-3 py-2 hover:bg-blue-500/10 text-left text-sm">
+              <div className="font-semibold text-slate-100">Depreciation Schedule</div>
+              <div className="text-xs text-slate-300 mt-1">Tax vs accounting depreciation</div>
             </button>
-            <button className="bg-white border border-blue-200 rounded px-3 py-2 hover:bg-blue-50 text-left text-sm">
-              <div className="font-semibold text-gray-900">Base Rate Entity Test</div>
-              <div className="text-xs text-gray-600 mt-1">Eligibility for 25% rate</div>
+            <button className="bg-white border border-blue-500/30 rounded px-3 py-2 hover:bg-blue-500/10 text-left text-sm">
+              <div className="font-semibold text-slate-100">Base Rate Entity Test</div>
+              <div className="text-xs text-slate-300 mt-1">Eligibility for 25% rate</div>
             </button>
-            <button className="bg-white border border-blue-200 rounded px-3 py-2 hover:bg-blue-50 text-left text-sm">
-              <div className="font-semibold text-gray-900">Entertainment Analysis</div>
-              <div className="text-xs text-gray-600 mt-1">Deductible vs non-deductible split</div>
+            <button className="bg-white border border-blue-500/30 rounded px-3 py-2 hover:bg-blue-500/10 text-left text-sm">
+              <div className="font-semibold text-slate-100">Entertainment Analysis</div>
+              <div className="text-xs text-slate-300 mt-1">Deductible vs non-deductible split</div>
             </button>
-            <button className="bg-white border border-blue-200 rounded px-3 py-2 hover:bg-blue-50 text-left text-sm">
-              <div className="font-semibold text-gray-900">Franking Account</div>
-              <div className="text-xs text-gray-600 mt-1">Movements and balance</div>
+            <button className="bg-white border border-blue-500/30 rounded px-3 py-2 hover:bg-blue-500/10 text-left text-sm">
+              <div className="font-semibold text-slate-100">Franking Account</div>
+              <div className="text-xs text-slate-300 mt-1">Movements and balance</div>
             </button>
-            <button className="bg-white border border-blue-200 rounded px-3 py-2 hover:bg-blue-50 text-left text-sm">
-              <div className="font-semibold text-gray-900">Prior Year Losses</div>
-              <div className="text-xs text-gray-600 mt-1">Available losses & carryforward</div>
+            <button className="bg-white border border-blue-500/30 rounded px-3 py-2 hover:bg-blue-500/10 text-left text-sm">
+              <div className="font-semibold text-slate-100">Prior Year Losses</div>
+              <div className="text-xs text-slate-300 mt-1">Available losses & carryforward</div>
             </button>
           </div>
         </div>
 
         {/* Manager Review */}
-        <div className="bg-green-50 border border-green-300 rounded p-4">
+        <div className="bg-green-500/10 border border-green-300 rounded p-4">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="font-semibold text-green-900 mb-2">Tax Worksheet Review Status</h3>
-              <p className="text-sm text-green-800">
+              <h3 className="font-semibold text-green-300 mb-2">Tax Worksheet Review Status</h3>
+              <p className="text-sm text-green-300">
                 All tax adjustments verified • Division 7A reviewed • Deductions substantiated • Ready for manager approval
               </p>
             </div>

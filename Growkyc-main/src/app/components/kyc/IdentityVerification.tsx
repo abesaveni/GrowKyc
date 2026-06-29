@@ -36,7 +36,7 @@ function ProgressStepper({ currentStep, steps }: ProgressStepperProps) {
                 ? 'bg-green-600 text-white'
                 : index === currentStep
                 ? 'bg-blue-600 text-white'
-                : 'bg-gray-200 text-gray-600'
+                : 'bg-white/10 text-slate-300'
             }`}>
               {index < currentStep ? (
                 <CheckCircle className="w-6 h-6" />
@@ -46,16 +46,16 @@ function ProgressStepper({ currentStep, steps }: ProgressStepperProps) {
             </div>
             <div className="flex flex-col">
               <span className={`text-sm font-semibold ${
-                index <= currentStep ? 'text-gray-900' : 'text-gray-500'
+                index <= currentStep ? 'text-slate-100' : 'text-slate-400'
               }`}>
                 {step.title}
               </span>
-              <span className="text-xs text-gray-500">{step.description}</span>
+              <span className="text-xs text-slate-400">{step.description}</span>
             </div>
           </div>
           {index < steps.length - 1 && (
             <div className={`h-1 flex-1 mx-4 rounded transition-colors ${
-              index < currentStep ? 'bg-green-600' : 'bg-gray-200'
+              index < currentStep ? 'bg-green-600' : 'bg-white/10'
             }`} />
           )}
         </div>
@@ -147,7 +147,7 @@ Your verification is now pending review.
             <Button 
               onClick={onBack} 
               variant="outline" 
-              className="bg-white text-blue-600 hover:bg-blue-50 flex items-center gap-2"
+              className="bg-white text-blue-400 hover:bg-blue-500/10 flex items-center gap-2"
             >
               <ArrowLeft className="w-4 h-4" />
               Back
@@ -164,10 +164,10 @@ Your verification is now pending review.
 
       {/* Step 1: Personal Details */}
       {currentStep === 0 && (
-        <Card className="border-2 border-blue-200">
-          <CardHeader className="bg-blue-50">
+        <Card className="border-2 border-blue-500/30">
+          <CardHeader className="bg-blue-500/10">
             <CardTitle className="flex items-center gap-2">
-              <User className="w-6 h-6 text-blue-600" />
+              <User className="w-6 h-6 text-blue-400" />
               Step 1: Personal Details
             </CardTitle>
             <CardDescription>
@@ -269,14 +269,14 @@ Your verification is now pending review.
               </div>
             </div>
 
-            <div className="mt-6 p-4 bg-blue-50 border-2 border-blue-200 rounded-lg">
+            <div className="mt-6 p-4 bg-blue-500/10 border-2 border-blue-500/30 rounded-lg">
               <div className="flex gap-3">
-                <AlertCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                <AlertCircle className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-sm font-semibold text-blue-900 mb-1">
+                  <p className="text-sm font-semibold text-blue-300 mb-1">
                     What's Next?
                   </p>
-                  <p className="text-sm text-blue-800">
+                  <p className="text-sm text-blue-300">
                     After completing your personal details, you'll upload multiple ID documents 
                     to reach the required 100 points for verification. You can combine documents 
                     like passport + Medicare card + utility bill.
@@ -301,10 +301,10 @@ Your verification is now pending review.
       {/* Step 2: 100-Point ID Verification */}
       {currentStep === 1 && (
         <div className="space-y-6">
-          <Card className="border-2 border-green-200">
-            <CardHeader className="bg-green-50">
+          <Card className="border-2 border-green-500/30">
+            <CardHeader className="bg-green-500/10">
               <CardTitle className="flex items-center gap-2">
-                <Shield className="w-6 h-6 text-green-600" />
+                <Shield className="w-6 h-6 text-green-400" />
                 Step 2: Upload ID Documents (100-Point System)
               </CardTitle>
               <CardDescription>
@@ -330,10 +330,10 @@ Your verification is now pending review.
 
       {/* Step 3: Review & Submit */}
       {currentStep === 2 && (
-        <Card className="border-2 border-purple-200">
-          <CardHeader className="bg-purple-50">
+        <Card className="border-2 border-purple-500/30">
+          <CardHeader className="bg-purple-500/10">
             <CardTitle className="flex items-center gap-2">
-              <CheckCircle className="w-6 h-6 text-purple-600" />
+              <CheckCircle className="w-6 h-6 text-purple-400" />
               Step 3: Review & Submit
             </CardTitle>
             <CardDescription>
@@ -343,33 +343,33 @@ Your verification is now pending review.
           <CardContent className="p-6">
             {/* Personal Details Summary */}
             <div className="mb-6">
-              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <h3 className="text-lg font-bold text-slate-100 mb-4 flex items-center gap-2">
                 <User className="w-5 h-5" />
                 Personal Details
               </h3>
-              <div className="grid grid-cols-2 gap-4 p-4 bg-gray-50 rounded-lg border">
+              <div className="grid grid-cols-2 gap-4 p-4 bg-white/5 rounded-lg border">
                 <div>
-                  <p className="text-sm text-gray-600">Name</p>
-                  <p className="font-semibold text-gray-900">{formData.firstName} {formData.lastName}</p>
+                  <p className="text-sm text-slate-300">Name</p>
+                  <p className="font-semibold text-slate-100">{formData.firstName} {formData.lastName}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Date of Birth</p>
-                  <p className="font-semibold text-gray-900">{formData.dateOfBirth}</p>
+                  <p className="text-sm text-slate-300">Date of Birth</p>
+                  <p className="font-semibold text-slate-100">{formData.dateOfBirth}</p>
                 </div>
                 <div className="col-span-2">
-                  <p className="text-sm text-gray-600">Address</p>
-                  <p className="font-semibold text-gray-900">{formData.address}</p>
+                  <p className="text-sm text-slate-300">Address</p>
+                  <p className="font-semibold text-slate-100">{formData.address}</p>
                 </div>
                 {formData.company && (
                   <div>
-                    <p className="text-sm text-gray-600">Company</p>
-                    <p className="font-semibold text-gray-900">{formData.company}</p>
+                    <p className="text-sm text-slate-300">Company</p>
+                    <p className="font-semibold text-slate-100">{formData.company}</p>
                   </div>
                 )}
                 {formData.abn && (
                   <div>
-                    <p className="text-sm text-gray-600">ABN</p>
-                    <p className="font-semibold text-gray-900">{formData.abn}</p>
+                    <p className="text-sm text-slate-300">ABN</p>
+                    <p className="font-semibold text-slate-100">{formData.abn}</p>
                   </div>
                 )}
               </div>
@@ -377,30 +377,30 @@ Your verification is now pending review.
 
             {/* ID Verification Summary */}
             <div className="mb-6">
-              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <h3 className="text-lg font-bold text-slate-100 mb-4 flex items-center gap-2">
                 <Shield className="w-5 h-5" />
                 ID Verification
               </h3>
-              <div className="p-4 bg-green-50 rounded-lg border-2 border-green-200">
+              <div className="p-4 bg-green-500/10 rounded-lg border-2 border-green-500/30">
                 <div className="flex items-center justify-between mb-4">
                   <div>
-                    <p className="text-sm text-gray-600">Total Points</p>
-                    <p className="text-3xl font-bold text-green-600">
+                    <p className="text-sm text-slate-300">Total Points</p>
+                    <p className="text-3xl font-bold text-green-400">
                       {idVerificationData.selectedDocuments.reduce((sum: number, doc: any) => sum + doc.points, 0)} / 100
                     </p>
                   </div>
                   <div className="text-right">
-                    <p className="text-sm text-gray-600">Documents Uploaded</p>
-                    <p className="text-3xl font-bold text-gray-900">{idVerificationData.selectedDocuments.length}</p>
+                    <p className="text-sm text-slate-300">Documents Uploaded</p>
+                    <p className="text-3xl font-bold text-slate-100">{idVerificationData.selectedDocuments.length}</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-sm text-gray-600">Files</p>
-                    <p className="text-3xl font-bold text-gray-900">{Object.keys(idVerificationData.uploadedFiles).length}</p>
+                    <p className="text-sm text-slate-300">Files</p>
+                    <p className="text-3xl font-bold text-slate-100">{Object.keys(idVerificationData.uploadedFiles).length}</p>
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <p className="text-sm font-semibold text-gray-900">Documents:</p>
+                  <p className="text-sm font-semibold text-slate-100">Documents:</p>
                   {idVerificationData.selectedDocuments.map((doc: any, index: number) => (
                     <div key={index} className="flex items-center justify-between p-3 bg-white rounded border">
                       <div className="flex items-center gap-3">
@@ -410,14 +410,14 @@ Your verification is now pending review.
                           CAT {doc.category}
                         </div>
                         <div>
-                          <p className="font-semibold text-gray-900">{doc.name}</p>
-                          <p className="text-xs text-gray-600">#{doc.number}</p>
+                          <p className="font-semibold text-slate-100">{doc.name}</p>
+                          <p className="text-xs text-slate-300">#{doc.number}</p>
                         </div>
                       </div>
                       <div className="text-right">
-                        <p className="text-lg font-bold text-green-600">+{doc.points}</p>
+                        <p className="text-lg font-bold text-green-400">+{doc.points}</p>
                         {idVerificationData.uploadedFiles[doc.id] && (
-                          <p className="text-xs text-gray-600">
+                          <p className="text-xs text-slate-300">
                             <FileCheck className="w-3 h-3 inline mr-1" />
                             File uploaded
                           </p>
@@ -430,23 +430,23 @@ Your verification is now pending review.
             </div>
 
             {/* Compliance Checks */}
-            <div className="mb-6 p-4 bg-blue-50 rounded-lg border-2 border-blue-200">
-              <h3 className="text-sm font-bold text-blue-900 mb-3">✓ Compliance Checks Passed</h3>
-              <div className="space-y-2 text-sm text-blue-800">
+            <div className="mb-6 p-4 bg-blue-500/10 rounded-lg border-2 border-blue-500/30">
+              <h3 className="text-sm font-bold text-blue-300 mb-3">✓ Compliance Checks Passed</h3>
+              <div className="space-y-2 text-sm text-blue-300">
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <CheckCircle className="w-4 h-4 text-green-400" />
                   <span>Minimum 100 points achieved</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <CheckCircle className="w-4 h-4 text-green-400" />
                   <span>Category A (Photo ID) document provided</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <CheckCircle className="w-4 h-4 text-green-400" />
                   <span>Date of birth verified</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <CheckCircle className="w-4 h-4 text-green-400" />
                   <span>All documents have uploaded files</span>
                 </div>
               </div>

@@ -152,10 +152,10 @@ export function FundManagersModule({ onBack }: FundManagersModuleProps) {
 
   const getRiskColor = (level: string) => {
     switch (level) {
-      case 'high': return 'text-red-600 bg-red-100 border-red-300';
-      case 'medium': return 'text-amber-600 bg-amber-100 border-amber-300';
-      case 'low': return 'text-green-600 bg-green-100 border-green-300';
-      default: return 'text-slate-300 bg-[#0f172a] border-gray-300';
+      case 'high': return 'text-red-400 bg-red-500/15 border-red-300';
+      case 'medium': return 'text-amber-400 bg-amber-500/15 border-amber-300';
+      case 'low': return 'text-green-400 bg-green-500/15 border-green-300';
+      default: return 'text-slate-300 bg-[#0f172a] border-white/10';
     }
   };
 
@@ -279,10 +279,10 @@ export function FundManagersModule({ onBack }: FundManagersModuleProps) {
                   key={investor.id}
                   className={`border-2 ${
                     investor.riskLevel === 'high'
-                      ? 'border-red-200 bg-red-50'
+                      ? 'border-red-500/30 bg-red-500/10'
                       : investor.status === 'pending'
-                      ? 'border-amber-200 bg-amber-50'
-                      : 'border-green-200 bg-green-50'
+                      ? 'border-amber-500/30 bg-amber-500/10'
+                      : 'border-green-500/30 bg-green-500/10'
                   }`}
                 >
                   <CardContent className="p-6">
@@ -290,17 +290,17 @@ export function FundManagersModule({ onBack }: FundManagersModuleProps) {
                       <div className="flex items-start gap-4 flex-1">
                         <div className={`w-16 h-16 rounded-xl flex items-center justify-center ${
                           investor.riskLevel === 'high'
-                            ? 'bg-red-100'
+                            ? 'bg-red-500/15'
                             : investor.status === 'pending'
-                            ? 'bg-amber-100'
-                            : 'bg-green-100'
+                            ? 'bg-amber-500/15'
+                            : 'bg-green-500/15'
                         }`}>
                           <InvestorIcon className={`w-8 h-8 ${
                             investor.riskLevel === 'high'
-                              ? 'text-red-600'
+                              ? 'text-red-400'
                               : investor.status === 'pending'
-                              ? 'text-amber-600'
-                              : 'text-green-600'
+                              ? 'text-amber-400'
+                              : 'text-green-400'
                           }`} />
                         </div>
 
@@ -353,30 +353,30 @@ export function FundManagersModule({ onBack }: FundManagersModuleProps) {
                           <div className="grid grid-cols-2 gap-4 mb-4">
                             <div className={`p-3 rounded-lg border-2 ${
                               investor.trusteeApproved
-                                ? 'border-green-300 bg-green-100'
-                                : 'border-amber-300 bg-amber-100'
+                                ? 'border-green-300 bg-green-500/15'
+                                : 'border-amber-300 bg-amber-500/15'
                             }`}>
                               <div className="flex items-center justify-between">
                                 <span className="text-sm font-semibold text-slate-300">Trustee Approval</span>
                                 {investor.trusteeApproved ? (
-                                  <CheckCircle className="w-5 h-5 text-green-600" />
+                                  <CheckCircle className="w-5 h-5 text-green-400" />
                                 ) : (
-                                  <Clock className="w-5 h-5 text-amber-600" />
+                                  <Clock className="w-5 h-5 text-amber-400" />
                                 )}
                               </div>
                             </div>
 
                             <div className={`p-3 rounded-lg border-2 ${
                               investor.managerApproved
-                                ? 'border-green-300 bg-green-100'
-                                : 'border-amber-300 bg-amber-100'
+                                ? 'border-green-300 bg-green-500/15'
+                                : 'border-amber-300 bg-amber-500/15'
                             }`}>
                               <div className="flex items-center justify-between">
                                 <span className="text-sm font-semibold text-slate-300">Manager Approval</span>
                                 {investor.managerApproved ? (
-                                  <CheckCircle className="w-5 h-5 text-green-600" />
+                                  <CheckCircle className="w-5 h-5 text-green-400" />
                                 ) : (
-                                  <Clock className="w-5 h-5 text-amber-600" />
+                                  <Clock className="w-5 h-5 text-amber-400" />
                                 )}
                               </div>
                             </div>
@@ -433,10 +433,10 @@ export function FundManagersModule({ onBack }: FundManagersModuleProps) {
         {selectedTab === 'subscriptions' && (
           <div className="space-y-6">
             {/* Subscription Workflow */}
-            <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-cyan-50">
+            <Card className="border-2 border-blue-500/30 bg-gradient-to-br from-blue-50 to-cyan-50">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <FileText className="w-5 h-5 text-blue-600" />
+                  <FileText className="w-5 h-5 text-blue-400" />
                   Subscription Document Workflow
                 </CardTitle>
                 <CardDescription>Application → Payment → Acceptance</CardDescription>
@@ -444,10 +444,10 @@ export function FundManagersModule({ onBack }: FundManagersModuleProps) {
               <CardContent>
                 <div className="space-y-4">
                   {investors.map((investor) => (
-                    <div key={investor.id} className="flex items-center justify-between p-4 bg-[#1e293b] rounded-lg border-2 border-blue-200">
+                    <div key={investor.id} className="flex items-center justify-between p-4 bg-[#1e293b] rounded-lg border-2 border-blue-500/30">
                       <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                          <FileText className="w-6 h-6 text-blue-600" />
+                        <div className="w-12 h-12 bg-blue-500/15 rounded-lg flex items-center justify-center">
+                          <FileText className="w-6 h-6 text-blue-400" />
                         </div>
                         <div>
                           <div className="font-bold text-white">{investor.name}</div>
@@ -474,10 +474,10 @@ export function FundManagersModule({ onBack }: FundManagersModuleProps) {
             </Card>
 
             {/* Subscription Gate */}
-            <Card className="border-2 border-red-200 bg-gradient-to-br from-red-50 to-orange-50">
+            <Card className="border-2 border-red-500/30 bg-gradient-to-br from-red-50 to-orange-50">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <AlertTriangle className="w-5 h-5 text-red-600" />
+                  <AlertTriangle className="w-5 h-5 text-red-400" />
                   No Subscription Until KYC Cleared
                 </CardTitle>
                 <CardDescription>Compliance gate prevents allocation before verification</CardDescription>
@@ -485,10 +485,10 @@ export function FundManagersModule({ onBack }: FundManagersModuleProps) {
               <CardContent>
                 <div className="space-y-3">
                   {investors.filter(i => i.kycStatus !== 'complete').map((investor) => (
-                    <div key={investor.id} className="flex items-center justify-between p-4 bg-[#1e293b] rounded-lg border-2 border-red-200">
+                    <div key={investor.id} className="flex items-center justify-between p-4 bg-[#1e293b] rounded-lg border-2 border-red-500/30">
                       <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-                          <AlertTriangle className="w-6 h-6 text-red-600" />
+                        <div className="w-12 h-12 bg-red-500/15 rounded-lg flex items-center justify-center">
+                          <AlertTriangle className="w-6 h-6 text-red-400" />
                         </div>
                         <div>
                           <div className="font-bold text-white">{investor.name}</div>
@@ -515,10 +515,10 @@ export function FundManagersModule({ onBack }: FundManagersModuleProps) {
         {selectedTab === 'compliance' && (
           <div className="space-y-6">
             {/* Ongoing Monitoring */}
-            <Card className="border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-pink-50">
+            <Card className="border-2 border-purple-500/30 bg-gradient-to-br from-purple-50 to-pink-50">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <RefreshCw className="w-5 h-5 text-purple-600" />
+                  <RefreshCw className="w-5 h-5 text-purple-400" />
                   Ongoing Investor Monitoring
                 </CardTitle>
                 <CardDescription>Auto-rescreen monthly for high-risk, quarterly for others</CardDescription>
@@ -526,10 +526,10 @@ export function FundManagersModule({ onBack }: FundManagersModuleProps) {
               <CardContent>
                 <div className="space-y-3">
                   {investors.map((investor) => (
-                    <div key={investor.id} className="flex items-center justify-between p-4 bg-[#1e293b] rounded-lg border border-purple-200">
+                    <div key={investor.id} className="flex items-center justify-between p-4 bg-[#1e293b] rounded-lg border border-purple-500/30">
                       <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                          <RefreshCw className="w-6 h-6 text-purple-600" />
+                        <div className="w-12 h-12 bg-purple-500/15 rounded-lg flex items-center justify-center">
+                          <RefreshCw className="w-6 h-6 text-purple-400" />
                         </div>
                         <div>
                           <div className="font-bold text-white">{investor.name}</div>
@@ -576,7 +576,7 @@ export function FundManagersModule({ onBack }: FundManagersModuleProps) {
                       </div>
                       <div className="grid grid-cols-2 gap-4">
                         <div className="flex items-center gap-3">
-                          <Crown className="w-5 h-5 text-purple-600" />
+                          <Crown className="w-5 h-5 text-purple-400" />
                           <div>
                             <div className="text-sm text-slate-300">Trustee</div>
                             <div className="font-semibold text-white">
@@ -585,7 +585,7 @@ export function FundManagersModule({ onBack }: FundManagersModuleProps) {
                           </div>
                         </div>
                         <div className="flex items-center gap-3">
-                          <Target className="w-5 h-5 text-indigo-600" />
+                          <Target className="w-5 h-5 text-indigo-400" />
                           <div>
                             <div className="text-sm text-slate-300">Manager</div>
                             <div className="font-semibold text-white">
@@ -601,7 +601,7 @@ export function FundManagersModule({ onBack }: FundManagersModuleProps) {
             </Card>
 
             {/* Fund Registry Integration */}
-            <Card className="bg-gradient-to-br from-indigo-50 to-blue-50 border-2 border-indigo-200">
+            <Card className="bg-gradient-to-br from-indigo-50 to-blue-50 border-2 border-indigo-500/30">
               <CardHeader>
                 <CardTitle>Fund Registry Integration</CardTitle>
                 <CardDescription>Sync with Mainstream, Link, Apex</CardDescription>
@@ -613,7 +613,7 @@ export function FundManagersModule({ onBack }: FundManagersModuleProps) {
                     { name: 'Link Group', status: 'Disconnected', investors: 0 },
                     { name: 'Apex', status: 'Disconnected', investors: 0 }
                   ].map((registry, idx) => (
-                    <div key={idx} className="p-4 bg-[#1e293b] rounded-lg border border-indigo-200">
+                    <div key={idx} className="p-4 bg-[#1e293b] rounded-lg border border-indigo-500/30">
                       <div className="font-bold text-white mb-2">{registry.name}</div>
                       <div className="text-sm text-slate-300 mb-3">
                         {registry.status === 'Connected' ? `${registry.investors} investors synced` : 'Not connected'}

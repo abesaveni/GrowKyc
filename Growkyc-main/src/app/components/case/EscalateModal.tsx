@@ -46,7 +46,7 @@ export const EscalateModal: React.FC<EscalateModalProps> = ({ isOpen, onClose, c
       onConfirm={handleSubmit(onSubmit)}
       confirmLabel="Escalate"
     >
-      <div className="text-sm text-gray-600 mb-2">Client: {caseData?.clientName || caseData?.borrowerName}</div>
+      <div className="text-sm text-slate-300 mb-2">Client: {caseData?.clientName || caseData?.borrowerName}</div>
 
       <select
         {...register('level')}
@@ -57,7 +57,7 @@ export const EscalateModal: React.FC<EscalateModalProps> = ({ isOpen, onClose, c
         <option value="Medium">Medium</option>
         <option value="Low">Low</option>
       </select>
-      {errors.level && <p className="text-sm text-red-600 mb-2">{errors.level.message}</p>}
+      {errors.level && <p className="text-sm text-red-400 mb-2">{errors.level.message}</p>}
 
       <Textarea
         {...register('notes')}
@@ -66,7 +66,7 @@ export const EscalateModal: React.FC<EscalateModalProps> = ({ isOpen, onClose, c
       />
       <div className="flex items-center space-x-2 mt-4">
         <Switch id="notify" {...register('notify')} />
-        <label htmlFor="notify" className="text-sm text-gray-700">Notify senior team</label>
+        <label htmlFor="notify" className="text-sm text-slate-300">Notify senior team</label>
       </div>
     </ActionModal>
   );

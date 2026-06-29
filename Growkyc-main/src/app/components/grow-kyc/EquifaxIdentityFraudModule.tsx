@@ -217,19 +217,19 @@ export function EquifaxIdentityFraudModule() {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'verified': return 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300';
-      case 'partial': return 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300';
-      case 'failed': return 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300';
+      case 'verified': return 'bg-green-500/15 text-green-300 dark:bg-green-900 dark:text-green-300';
+      case 'partial': return 'bg-yellow-500/15 text-yellow-300 dark:bg-yellow-900 dark:text-yellow-300';
+      case 'failed': return 'bg-red-500/15 text-red-300 dark:bg-red-900 dark:text-red-300';
       default: return 'bg-[#0f172a] text-slate-300 dark:bg-gray-800 dark:text-gray-300';
     }
   };
 
   const getFraudRiskColor = (level: string) => {
     switch (level) {
-      case 'low': return 'text-green-600 dark:text-green-400';
-      case 'medium': return 'text-yellow-600 dark:text-yellow-400';
-      case 'high': return 'text-orange-600 dark:text-orange-400';
-      case 'critical': return 'text-red-600 dark:text-red-400';
+      case 'low': return 'text-green-400 dark:text-green-400';
+      case 'medium': return 'text-yellow-400 dark:text-yellow-400';
+      case 'high': return 'text-orange-400 dark:text-orange-400';
+      case 'critical': return 'text-red-400 dark:text-red-400';
       default: return 'text-slate-300 dark:text-slate-400';
     }
   };
@@ -356,7 +356,7 @@ export function EquifaxIdentityFraudModule() {
                       {source.replace(/([A-Z])/g, ' $1').trim()}
                     </span>
                     {matched ? (
-                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      <CheckCircle className="w-5 h-5 text-green-400" />
                     ) : (
                       <XCircle className="w-5 h-5 text-slate-400" />
                     )}
@@ -391,15 +391,15 @@ export function EquifaxIdentityFraudModule() {
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-sm font-semibold text-slate-300 dark:text-gray-300">Face Match</span>
                       {verificationResult.biometric.faceMatch ? (
-                        <CheckCircle className="w-5 h-5 text-green-600" />
+                        <CheckCircle className="w-5 h-5 text-green-400" />
                       ) : (
-                        <XCircle className="w-5 h-5 text-red-600" />
+                        <XCircle className="w-5 h-5 text-red-400" />
                       )}
                     </div>
                     <div className="text-2xl font-bold text-white dark:text-white">
                       {verificationResult.biometric.faceMatchScore}%
                     </div>
-                    <div className="mt-2 w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                    <div className="mt-2 w-full bg-white/10 dark:bg-gray-700 rounded-full h-2">
                       <div
                         className="bg-green-600 h-2 rounded-full"
                         style={{ width: `${verificationResult.biometric.faceMatchScore}%` }}
@@ -411,9 +411,9 @@ export function EquifaxIdentityFraudModule() {
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-sm font-semibold text-slate-300 dark:text-gray-300">Liveness Check</span>
                       {verificationResult.biometric.livenessCheck ? (
-                        <CheckCircle className="w-5 h-5 text-green-600" />
+                        <CheckCircle className="w-5 h-5 text-green-400" />
                       ) : (
-                        <XCircle className="w-5 h-5 text-red-600" />
+                        <XCircle className="w-5 h-5 text-red-400" />
                       )}
                     </div>
                     <div className="text-sm text-slate-300 dark:text-slate-400">
@@ -425,9 +425,9 @@ export function EquifaxIdentityFraudModule() {
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-sm font-semibold text-slate-300 dark:text-gray-300">Document Authenticity</span>
                       {verificationResult.biometric.documentAuthenticity ? (
-                        <CheckCircle className="w-5 h-5 text-green-600" />
+                        <CheckCircle className="w-5 h-5 text-green-400" />
                       ) : (
-                        <XCircle className="w-5 h-5 text-red-600" />
+                        <XCircle className="w-5 h-5 text-red-400" />
                       )}
                     </div>
                     <div className="text-sm text-slate-300 dark:text-slate-400">
@@ -447,7 +447,7 @@ export function EquifaxIdentityFraudModule() {
             className="w-full px-6 py-4 flex items-center justify-between bg-[#0f172a] dark:bg-gray-900 hover:bg-white/5 dark:hover:bg-gray-850 transition-colors"
           >
             <div className="flex items-center gap-3">
-              <AlertTriangle className="w-5 h-5 text-red-600" />
+              <AlertTriangle className="w-5 h-5 text-red-400" />
               <h3 className="text-lg font-bold text-white dark:text-white">Fraud Risk Indicators</h3>
             </div>
             {expandedSections.fraudIndicators ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
@@ -461,25 +461,25 @@ export function EquifaxIdentityFraudModule() {
                     key={indicator}
                     className={`flex items-center justify-between p-3 rounded-lg ${
                       detected
-                        ? 'bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800'
-                        : 'bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800'
+                        ? 'bg-red-500/10 dark:bg-red-900/20 border border-red-500/30 dark:border-red-800'
+                        : 'bg-green-500/10 dark:bg-green-900/20 border border-green-500/30 dark:border-green-800'
                     }`}
                   >
                     <span className="text-sm font-medium text-slate-300 dark:text-gray-300 capitalize">
                       {indicator.replace(/([A-Z])/g, ' $1').trim()}
                     </span>
                     {detected ? (
-                      <AlertTriangle className="w-5 h-5 text-red-600" />
+                      <AlertTriangle className="w-5 h-5 text-red-400" />
                     ) : (
-                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      <CheckCircle className="w-5 h-5 text-green-400" />
                     )}
                   </div>
                 ))}
               </div>
               
               {Object.values(verificationResult.fraudIndicators).every(v => !v) && (
-                <div className="mt-4 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
-                  <div className="flex items-center gap-2 text-green-700 dark:text-green-300">
+                <div className="mt-4 p-4 bg-green-500/10 dark:bg-green-900/20 rounded-lg border border-green-500/30 dark:border-green-800">
+                  <div className="flex items-center gap-2 text-green-300 dark:text-green-300">
                     <CheckCircle className="w-5 h-5" />
                     <span className="font-semibold">No fraud indicators detected</span>
                   </div>
@@ -510,11 +510,11 @@ export function EquifaxIdentityFraudModule() {
                   <div>
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-sm font-semibold text-slate-300 dark:text-gray-300">Risk Score</span>
-                      <span className={`text-2xl font-bold ${verificationResult.emailRisk.score < 30 ? 'text-green-600' : verificationResult.emailRisk.score < 60 ? 'text-yellow-600' : 'text-red-600'}`}>
+                      <span className={`text-2xl font-bold ${verificationResult.emailRisk.score < 30 ? 'text-green-400' : verificationResult.emailRisk.score < 60 ? 'text-yellow-400' : 'text-red-400'}`}>
                         {verificationResult.emailRisk.score}/100
                       </span>
                     </div>
-                    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                    <div className="w-full bg-white/10 dark:bg-gray-700 rounded-full h-2">
                       <div
                         className={`h-2 rounded-full ${verificationResult.emailRisk.score < 30 ? 'bg-green-600' : verificationResult.emailRisk.score < 60 ? 'bg-yellow-600' : 'bg-red-600'}`}
                         style={{ width: `${verificationResult.emailRisk.score}%` }}
@@ -523,11 +523,11 @@ export function EquifaxIdentityFraudModule() {
                   </div>
 
                   <div className="grid grid-cols-2 gap-3">
-                    <div className={`p-3 rounded-lg ${verificationResult.emailRisk.disposable ? 'bg-red-50 dark:bg-red-900/20' : 'bg-green-50 dark:bg-green-900/20'}`}>
+                    <div className={`p-3 rounded-lg ${verificationResult.emailRisk.disposable ? 'bg-red-500/10 dark:bg-red-900/20' : 'bg-green-500/10 dark:bg-green-900/20'}`}>
                       <div className="text-xs text-slate-300 dark:text-slate-400">Disposable</div>
                       <div className="text-sm font-semibold">{verificationResult.emailRisk.disposable ? 'Yes' : 'No'}</div>
                     </div>
-                    <div className={`p-3 rounded-lg ${verificationResult.emailRisk.suspicious ? 'bg-red-50 dark:bg-red-900/20' : 'bg-green-50 dark:bg-green-900/20'}`}>
+                    <div className={`p-3 rounded-lg ${verificationResult.emailRisk.suspicious ? 'bg-red-500/10 dark:bg-red-900/20' : 'bg-green-500/10 dark:bg-green-900/20'}`}>
                       <div className="text-xs text-slate-300 dark:text-slate-400">Suspicious</div>
                       <div className="text-sm font-semibold">{verificationResult.emailRisk.suspicious ? 'Yes' : 'No'}</div>
                     </div>
@@ -537,7 +537,7 @@ export function EquifaxIdentityFraudModule() {
                         {verificationResult.emailRisk.firstSeen?.toLocaleDateString() || 'Unknown'}
                       </div>
                     </div>
-                    <div className={`p-3 rounded-lg ${verificationResult.emailRisk.breachHistory ? 'bg-yellow-50 dark:bg-yellow-900/20' : 'bg-green-50 dark:bg-green-900/20'}`}>
+                    <div className={`p-3 rounded-lg ${verificationResult.emailRisk.breachHistory ? 'bg-yellow-500/10 dark:bg-yellow-900/20' : 'bg-green-500/10 dark:bg-green-900/20'}`}>
                       <div className="text-xs text-slate-300 dark:text-slate-400">Breach History</div>
                       <div className="text-sm font-semibold">{verificationResult.emailRisk.breachHistory ? 'Yes' : 'No'}</div>
                     </div>
@@ -566,11 +566,11 @@ export function EquifaxIdentityFraudModule() {
                   <div>
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-sm font-semibold text-slate-300 dark:text-gray-300">Risk Score</span>
-                      <span className={`text-2xl font-bold ${verificationResult.deviceRisk.score < 30 ? 'text-green-600' : verificationResult.deviceRisk.score < 60 ? 'text-yellow-600' : 'text-red-600'}`}>
+                      <span className={`text-2xl font-bold ${verificationResult.deviceRisk.score < 30 ? 'text-green-400' : verificationResult.deviceRisk.score < 60 ? 'text-yellow-400' : 'text-red-400'}`}>
                         {verificationResult.deviceRisk.score}/100
                       </span>
                     </div>
-                    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                    <div className="w-full bg-white/10 dark:bg-gray-700 rounded-full h-2">
                       <div
                         className={`h-2 rounded-full ${verificationResult.deviceRisk.score < 30 ? 'bg-green-600' : verificationResult.deviceRisk.score < 60 ? 'bg-yellow-600' : 'bg-red-600'}`}
                         style={{ width: `${verificationResult.deviceRisk.score}%` }}
@@ -579,27 +579,27 @@ export function EquifaxIdentityFraudModule() {
                   </div>
 
                   <div className="grid grid-cols-2 gap-3">
-                    <div className={`p-3 rounded-lg ${verificationResult.deviceRisk.vpnDetected ? 'bg-yellow-50 dark:bg-yellow-900/20' : 'bg-green-50 dark:bg-green-900/20'}`}>
+                    <div className={`p-3 rounded-lg ${verificationResult.deviceRisk.vpnDetected ? 'bg-yellow-500/10 dark:bg-yellow-900/20' : 'bg-green-500/10 dark:bg-green-900/20'}`}>
                       <div className="text-xs text-slate-300 dark:text-slate-400">VPN</div>
                       <div className="text-sm font-semibold">{verificationResult.deviceRisk.vpnDetected ? 'Detected' : 'None'}</div>
                     </div>
-                    <div className={`p-3 rounded-lg ${verificationResult.deviceRisk.proxyDetected ? 'bg-red-50 dark:bg-red-900/20' : 'bg-green-50 dark:bg-green-900/20'}`}>
+                    <div className={`p-3 rounded-lg ${verificationResult.deviceRisk.proxyDetected ? 'bg-red-500/10 dark:bg-red-900/20' : 'bg-green-500/10 dark:bg-green-900/20'}`}>
                       <div className="text-xs text-slate-300 dark:text-slate-400">Proxy</div>
                       <div className="text-sm font-semibold">{verificationResult.deviceRisk.proxyDetected ? 'Detected' : 'None'}</div>
                     </div>
-                    <div className={`p-3 rounded-lg ${verificationResult.deviceRisk.emulatorDetected ? 'bg-red-50 dark:bg-red-900/20' : 'bg-green-50 dark:bg-green-900/20'}`}>
+                    <div className={`p-3 rounded-lg ${verificationResult.deviceRisk.emulatorDetected ? 'bg-red-500/10 dark:bg-red-900/20' : 'bg-green-500/10 dark:bg-green-900/20'}`}>
                       <div className="text-xs text-slate-300 dark:text-slate-400">Emulator</div>
                       <div className="text-sm font-semibold">{verificationResult.deviceRisk.emulatorDetected ? 'Detected' : 'None'}</div>
                     </div>
-                    <div className={`p-3 rounded-lg ${verificationResult.deviceRisk.botDetected ? 'bg-red-50 dark:bg-red-900/20' : 'bg-green-50 dark:bg-green-900/20'}`}>
+                    <div className={`p-3 rounded-lg ${verificationResult.deviceRisk.botDetected ? 'bg-red-500/10 dark:bg-red-900/20' : 'bg-green-500/10 dark:bg-green-900/20'}`}>
                       <div className="text-xs text-slate-300 dark:text-slate-400">Bot</div>
                       <div className="text-sm font-semibold">{verificationResult.deviceRisk.botDetected ? 'Detected' : 'None'}</div>
                     </div>
                   </div>
 
                   {verificationResult.deviceRisk.trustedDevice && (
-                    <div className="p-3 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
-                      <div className="flex items-center gap-2 text-green-700 dark:text-green-300 text-sm">
+                    <div className="p-3 bg-green-500/10 dark:bg-green-900/20 rounded-lg border border-green-500/30 dark:border-green-800">
+                      <div className="flex items-center gap-2 text-green-300 dark:text-green-300 text-sm">
                         <Lock className="w-4 h-4" />
                         <span className="font-semibold">Trusted Device</span>
                       </div>

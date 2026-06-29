@@ -11,47 +11,47 @@ export function ProviderBadge({ provider, size = 'md', showIcon = false }: Provi
   const providerConfig: Record<string, { label: string; color: string; icon: string }> = {
     asic: {
       label: 'ASIC Direct',
-      color: 'bg-blue-50 text-blue-700 border-blue-300',
+      color: 'bg-blue-500/10 text-blue-300 border-blue-300',
       icon: '🏛️'
     },
     equifax: {
       label: 'Equifax',
-      color: 'bg-purple-50 text-purple-700 border-purple-300',
+      color: 'bg-purple-500/10 text-purple-300 border-purple-300',
       icon: '📊'
     },
     illion: {
       label: 'Illion',
-      color: 'bg-indigo-50 text-indigo-700 border-indigo-300',
+      color: 'bg-indigo-500/10 text-indigo-300 border-indigo-300',
       icon: '🏢'
     },
     complyadvantage: {
       label: 'ComplyAdvantage',
-      color: 'bg-green-50 text-green-700 border-green-300',
+      color: 'bg-green-500/10 text-green-300 border-green-300',
       icon: '🛡️'
     },
     lexisnexis: {
       label: 'LexisNexis',
-      color: 'bg-amber-50 text-amber-700 border-amber-300',
+      color: 'bg-amber-500/10 text-amber-300 border-amber-300',
       icon: '⚖️'
     },
     chainalysis: {
       label: 'Chainalysis',
-      color: 'bg-orange-50 text-orange-700 border-orange-300',
+      color: 'bg-orange-500/10 text-orange-300 border-orange-300',
       icon: '₿'
     },
     internal: {
       label: 'Internal',
-      color: 'bg-gray-50 text-gray-700 border-gray-300',
+      color: 'bg-white/5 text-slate-300 border-white/10',
       icon: '⚙️'
     },
     internal_ai: {
       label: 'Internal AI',
-      color: 'bg-cyan-50 text-cyan-700 border-cyan-300',
+      color: 'bg-cyan-500/10 text-cyan-300 border-cyan-300',
       icon: '🤖'
     },
     analytics: {
       label: 'Analytics',
-      color: 'bg-pink-50 text-pink-700 border-pink-300',
+      color: 'bg-pink-500/10 text-pink-300 border-pink-300',
       icon: '📈'
     }
   };

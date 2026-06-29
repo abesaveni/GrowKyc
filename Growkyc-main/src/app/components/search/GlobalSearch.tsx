@@ -139,27 +139,27 @@ export function GlobalSearch() {
   const getResultIcon = (type: string) => {
     switch (type) {
       case 'case':
-        return <Briefcase className="w-5 h-5 text-blue-600" />;
+        return <Briefcase className="w-5 h-5 text-blue-400" />;
       case 'user':
-        return <User className="w-5 h-5 text-green-600" />;
+        return <User className="w-5 h-5 text-green-400" />;
       case 'document':
-        return <FileText className="w-5 h-5 text-purple-600" />;
+        return <FileText className="w-5 h-5 text-purple-400" />;
       case 'message':
-        return <MessageSquare className="w-5 h-5 text-amber-600" />;
+        return <MessageSquare className="w-5 h-5 text-amber-400" />;
       case 'contract':
-        return <FileText className="w-5 h-5 text-indigo-600" />;
+        return <FileText className="w-5 h-5 text-indigo-400" />;
       default:
-        return <Search className="w-5 h-5 text-gray-600" />;
+        return <Search className="w-5 h-5 text-slate-300" />;
     }
   };
 
   const getTypeBadge = (type: string) => {
     const colors = {
-      case: 'bg-blue-100 text-blue-800',
-      user: 'bg-green-100 text-green-800',
-      document: 'bg-purple-100 text-purple-800',
-      message: 'bg-amber-100 text-amber-800',
-      contract: 'bg-indigo-100 text-indigo-800'
+      case: 'bg-blue-500/15 text-blue-300',
+      user: 'bg-green-500/15 text-green-300',
+      document: 'bg-purple-500/15 text-purple-300',
+      message: 'bg-amber-500/15 text-amber-300',
+      contract: 'bg-indigo-500/15 text-indigo-300'
     };
     return (
       <span className={`px-2 py-0.5 rounded text-xs font-semibold ${colors[type as keyof typeof colors]}`}>
@@ -180,8 +180,8 @@ export function GlobalSearch() {
 
       {/* Search Header */}
       <div className="text-center mb-8">
-        <h1 className="text-3xl font-semibold text-gray-900 mb-2">Search Everything</h1>
-        <p className="text-gray-600">Find cases, users, documents, messages, and contracts</p>
+        <h1 className="text-3xl font-semibold text-slate-100 mb-2">Search Everything</h1>
+        <p className="text-slate-300">Find cases, users, documents, messages, and contracts</p>
       </div>
 
       {/* Search Bar */}
@@ -211,7 +211,7 @@ export function GlobalSearch() {
 
             {/* Filters */}
             <div className="flex items-center gap-3">
-              <span className="text-sm text-gray-600">Filter by type:</span>
+              <span className="text-sm text-slate-300">Filter by type:</span>
               <div className="flex gap-2">
                 {['all', 'case', 'user', 'document', 'message', 'contract'].map((type) => (
                   <Button
@@ -252,7 +252,7 @@ export function GlobalSearch() {
             {isSearching ? (
               <div className="text-center py-12">
                 <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-                <p className="text-gray-600 mt-4">Searching...</p>
+                <p className="text-slate-300 mt-4">Searching...</p>
               </div>
             ) : results.length === 0 ? (
               <EmptyState
@@ -267,32 +267,32 @@ export function GlobalSearch() {
                 {results.map((result) => (
                   <div
                     key={result.id}
-                    className="p-4 border rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                    className="p-4 border rounded-lg hover:bg-white/5 transition-colors cursor-pointer"
                     onClick={() => toast.info(`Opening: ${result.title}`)}
                   >
                     <div className="flex items-start gap-3">
                       {/* Icon */}
-                      <div className="flex-shrink-0 p-2 bg-gray-100 rounded-lg">
+                      <div className="flex-shrink-0 p-2 bg-white/5 rounded-lg">
                         {getResultIcon(result.type)}
                       </div>
 
                       {/* Content */}
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-1">
-                          <h4 className="font-semibold text-gray-900">{result.title}</h4>
+                          <h4 className="font-semibold text-slate-100">{result.title}</h4>
                           {getTypeBadge(result.type)}
                           {result.metadata?.status && (
-                            <span className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded">
+                            <span className="text-xs text-slate-400 bg-white/5 px-2 py-0.5 rounded">
                               {result.metadata.status}
                             </span>
                           )}
                         </div>
                         
-                        <p className="text-sm text-gray-600 line-clamp-2 mb-2">
+                        <p className="text-sm text-slate-300 line-clamp-2 mb-2">
                           {result.description}
                         </p>
 
-                        <div className="flex items-center gap-4 text-xs text-gray-500">
+                        <div className="flex items-center gap-4 text-xs text-slate-400">
                           {result.metadata?.caseNumber && (
                             <span className="flex items-center gap-1">
                               <Briefcase className="w-3 h-3" />
@@ -325,13 +325,13 @@ export function GlobalSearch() {
 
       {/* Search Tips */}
       {!hasSearched && (
-        <Card className="border-blue-200 bg-blue-50">
+        <Card className="border-blue-500/30 bg-blue-500/10">
           <CardContent className="p-6">
             <div className="flex items-start gap-3">
-              <Search className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+              <Search className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
               <div>
-                <p className="text-sm font-semibold text-blue-900 mb-1">Search Tips</p>
-                <div className="text-sm text-blue-800 space-y-1">
+                <p className="text-sm font-semibold text-blue-300 mb-1">Search Tips</p>
+                <div className="text-sm text-blue-300 space-y-1">
                   <p>• Use case numbers (e.g., "MIP-2024-001") for quick access</p>
                   <p>• Search by property location (e.g., "Bondi", "Melbourne")</p>
                   <p>• Find users by name or organization</p>

@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Button } from '../ui/button';
 import {
   Home,
@@ -223,9 +223,9 @@ export function PFAModule({ onSwitchModule, initialRole = 'broker' }: PFAModuleP
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white/5">
       {/* Top Navigation Bar */}
-      <nav className="bg-white border-b border-gray-200 fixed w-full top-0 z-50">
+      <nav className="bg-white border-b border-white/10 fixed w-full top-0 z-50">
         <div className="px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo and Brand */}
@@ -235,17 +235,17 @@ export function PFAModule({ onSwitchModule, initialRole = 'broker' }: PFAModuleP
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
                 {mobileMenuOpen ? (
-                  <X className="w-6 h-6 text-gray-600" />
+                  <X className="w-6 h-6 text-slate-300" />
                 ) : (
-                  <Menu className="w-6 h-6 text-gray-600" />
+                  <Menu className="w-6 h-6 text-slate-300" />
                 )}
               </button>
               
               <div className="flex items-center gap-3">
                 <img src={logo} alt="PFA" className="h-8" />
                 <div>
-                  <h1 className="text-lg font-semibold text-gray-900">PFA Loan Management</h1>
-                  <p className="text-xs text-gray-500">Business Lending Platform</p>
+                  <h1 className="text-lg font-semibold text-slate-100">PFA Loan Management</h1>
+                  <p className="text-xs text-slate-400">Business Lending Platform</p>
                 </div>
               </div>
             </div>
@@ -259,7 +259,7 @@ export function PFAModule({ onSwitchModule, initialRole = 'broker' }: PFAModuleP
                   setUserRole(e.target.value as PFARole);
                   setCurrentPage('dashboard');
                 }}
-                className="px-3 py-2 border border-blue-300 rounded-lg text-sm font-medium text-blue-700 bg-blue-50 hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="px-3 py-2 border border-blue-300 rounded-lg text-sm font-medium text-blue-300 bg-blue-500/10 hover:bg-blue-500/15 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="broker">ðŸ¤ Broker</option>
                 <option value="lender">ðŸ¦ Lender</option>
@@ -271,7 +271,7 @@ export function PFAModule({ onSwitchModule, initialRole = 'broker' }: PFAModuleP
               {onSwitchModule && (
                 <select
                   onChange={(e) => onSwitchModule(e.target.value)}
-                  className="px-3 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="px-3 py-2 border border-white/10 rounded-lg text-sm font-medium text-slate-300 bg-white hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   defaultValue="pfa"
                 >
                   <option value="Grow MIP">Switch to Grow MIP</option>
@@ -288,8 +288,8 @@ export function PFAModule({ onSwitchModule, initialRole = 'broker' }: PFAModuleP
               
               <div className="flex items-center gap-3 pl-3 border-l">
                 <div className="text-right hidden sm:block">
-                  <p className="text-sm font-medium text-gray-900">{mockUser.name}</p>
-                  <p className="text-xs text-gray-500 capitalize">{mockUser.company}</p>
+                  <p className="text-sm font-medium text-slate-100">{mockUser.name}</p>
+                  <p className="text-xs text-slate-400 capitalize">{mockUser.company}</p>
                 </div>
                 <Avatar>
                   <AvatarFallback className="bg-blue-600 text-white">
@@ -462,9 +462,9 @@ export function PFAModule({ onSwitchModule, initialRole = 'broker' }: PFAModuleP
 function PlaceholderPage({ title, description }: { title: string; description: string }) {
   return (
     <div className="p-6">
-      <div className="bg-white rounded-lg border border-gray-300 p-8 text-center">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">{title}</h2>
-        <p className="text-gray-600">{description}</p>
+      <div className="bg-white rounded-lg border border-white/10 p-8 text-center">
+        <h2 className="text-2xl font-bold text-slate-100 mb-2">{title}</h2>
+        <p className="text-slate-300">{description}</p>
       </div>
     </div>
   );

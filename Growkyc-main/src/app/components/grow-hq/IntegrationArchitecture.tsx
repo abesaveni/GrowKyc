@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import {
@@ -182,7 +182,7 @@ export function IntegrationArchitecture({ onBack }: IntegrationArchitectureProps
   const selectedModuleData = specializedModules.find(m => m.id === selectedModule);
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
+    <div className="min-h-screen bg-white/5 p-8">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Header */}
         <div>
@@ -192,13 +192,13 @@ export function IntegrationArchitecture({ onBack }: IntegrationArchitectureProps
           </Button>
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Integration Architecture</h1>
-              <p className="text-gray-600 mt-2">
+              <h1 className="text-3xl font-bold text-slate-100">Integration Architecture</h1>
+              <p className="text-slate-300 mt-2">
                 How core add-on modules integrate with specialized modules
               </p>
             </div>
-            <div className="px-4 py-2 bg-blue-50 border-2 border-blue-300 rounded-lg">
-              <p className="text-sm font-semibold text-blue-900">
+            <div className="px-4 py-2 bg-blue-500/10 border-2 border-blue-300 rounded-lg">
+              <p className="text-sm font-semibold text-blue-300">
                 8 Specialized Modules + 4 Core Add-Ons = Unified Platform
               </p>
             </div>
@@ -209,37 +209,37 @@ export function IntegrationArchitecture({ onBack }: IntegrationArchitectureProps
         <Card className="border-2 border-blue-300 bg-gradient-to-br from-blue-50 to-purple-50">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Layout className="w-6 h-6 text-blue-600" />
+              <Layout className="w-6 h-6 text-blue-400" />
               Platform Architecture Model
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              <div className="p-4 bg-white rounded-lg border-2 border-blue-200">
-                <h3 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
-                  <Target className="w-5 h-5 text-blue-600" />
+              <div className="p-4 bg-white rounded-lg border-2 border-blue-500/30">
+                <h3 className="font-bold text-slate-100 mb-3 flex items-center gap-2">
+                  <Target className="w-5 h-5 text-blue-400" />
                   Integration Philosophy
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="p-3 bg-blue-50 rounded">
-                    <p className="font-semibold text-blue-900 mb-1">Shared Services</p>
-                    <p className="text-sm text-blue-800">Core modules provide shared functionality that all specialized modules can leverage</p>
+                  <div className="p-3 bg-blue-500/10 rounded">
+                    <p className="font-semibold text-blue-300 mb-1">Shared Services</p>
+                    <p className="text-sm text-blue-300">Core modules provide shared functionality that all specialized modules can leverage</p>
                   </div>
-                  <div className="p-3 bg-purple-50 rounded">
-                    <p className="font-semibold text-purple-900 mb-1">Opt-In Model</p>
-                    <p className="text-sm text-purple-800">Operators only pay for what they need. Add-ons enhance capabilities without forcing adoption</p>
+                  <div className="p-3 bg-purple-500/10 rounded">
+                    <p className="font-semibold text-purple-300 mb-1">Opt-In Model</p>
+                    <p className="text-sm text-purple-300">Operators only pay for what they need. Add-ons enhance capabilities without forcing adoption</p>
                   </div>
-                  <div className="p-3 bg-green-50 rounded">
-                    <p className="font-semibold text-green-900 mb-1">Data Unification</p>
-                    <p className="text-sm text-green-800">When enabled, core modules unify data across specialized modules for enterprise insights</p>
+                  <div className="p-3 bg-green-500/10 rounded">
+                    <p className="font-semibold text-green-300 mb-1">Data Unification</p>
+                    <p className="text-sm text-green-300">When enabled, core modules unify data across specialized modules for enterprise insights</p>
                   </div>
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="p-4 bg-white rounded-lg">
-                  <h4 className="font-semibold text-gray-900 mb-2">Without Core Add-Ons</h4>
-                  <ul className="space-y-1 text-sm text-gray-600">
+                  <h4 className="font-semibold text-slate-100 mb-2">Without Core Add-Ons</h4>
+                  <ul className="space-y-1 text-sm text-slate-300">
                     <li className="flex items-start gap-2">
                       <span className="text-gray-400">â€¢</span>
                       <span>Each module has isolated contacts, documents, and time tracking</span>
@@ -256,22 +256,22 @@ export function IntegrationArchitecture({ onBack }: IntegrationArchitectureProps
                 </div>
 
                 <div className="p-4 bg-gradient-to-br from-green-50 to-blue-50 rounded-lg border-2 border-green-300">
-                  <h4 className="font-semibold text-green-900 mb-2">With Core Add-Ons Enabled</h4>
-                  <ul className="space-y-1 text-sm text-green-900">
+                  <h4 className="font-semibold text-green-300 mb-2">With Core Add-Ons Enabled</h4>
+                  <ul className="space-y-1 text-sm text-green-300">
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                      <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5" />
                       <span>Unified contact database accessible from every module</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                      <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5" />
                       <span>Enterprise document repository with smart search</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                      <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5" />
                       <span>Organization-wide time tracking and automated billing</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                      <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5" />
                       <span>Centralized management console for all modules</span>
                     </li>
                   </ul>
@@ -283,22 +283,22 @@ export function IntegrationArchitecture({ onBack }: IntegrationArchitectureProps
 
         {/* Core Add-On Modules */}
         <div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Core Add-On Modules</h2>
+          <h2 className="text-2xl font-bold text-slate-100 mb-4">Core Add-On Modules</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {coreModules.map((module) => {
               const Icon = module.icon;
               const isExpanded = expandedCore === module.id;
               const colorMap = {
-                blue: 'bg-blue-50 border-blue-300 text-blue-600',
-                purple: 'bg-purple-50 border-purple-300 text-purple-600',
-                green: 'bg-green-50 border-green-300 text-green-600',
-                orange: 'bg-orange-50 border-orange-300 text-orange-600'
+                blue: 'bg-blue-500/10 border-blue-300 text-blue-400',
+                purple: 'bg-purple-500/10 border-purple-300 text-purple-400',
+                green: 'bg-green-500/10 border-green-300 text-green-400',
+                orange: 'bg-orange-500/10 border-orange-300 text-orange-400'
               };
               return (
                 <Card 
                   key={module.id}
                   className={`border-2 cursor-pointer transition-all hover:shadow-lg ${
-                    isExpanded ? colorMap[module.color] : 'border-gray-300'
+                    isExpanded ? colorMap[module.color] : 'border-white/10'
                   }`}
                   onClick={() => setExpandedCore(isExpanded ? null : module.id)}
                 >
@@ -308,20 +308,20 @@ export function IntegrationArchitecture({ onBack }: IntegrationArchitectureProps
                         <Icon className="w-6 h-6" />
                       </div>
                       {isExpanded ? (
-                        <ChevronDown className="w-5 h-5 text-gray-600" />
+                        <ChevronDown className="w-5 h-5 text-slate-300" />
                       ) : (
                         <ChevronRight className="w-5 h-5 text-gray-400" />
                       )}
                     </div>
-                    <h3 className="font-bold text-gray-900 mb-1">{module.name}</h3>
-                    <p className="text-xs text-gray-600">{module.description}</p>
+                    <h3 className="font-bold text-slate-100 mb-1">{module.name}</h3>
+                    <p className="text-xs text-slate-300">{module.description}</p>
                     
                     {isExpanded && (
                       <div className="mt-4 pt-4 border-t space-y-2">
                         {module.benefits.map((benefit, idx) => (
                           <div key={idx} className="flex items-start gap-2">
-                            <CheckCircle className="w-3 h-3 text-green-600 mt-0.5 flex-shrink-0" />
-                            <p className="text-xs text-gray-700">{benefit}</p>
+                            <CheckCircle className="w-3 h-3 text-green-400 mt-0.5 flex-shrink-0" />
+                            <p className="text-xs text-slate-300">{benefit}</p>
                           </div>
                         ))}
                       </div>
@@ -335,8 +335,8 @@ export function IntegrationArchitecture({ onBack }: IntegrationArchitectureProps
 
         {/* Specialized Modules */}
         <div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Specialized Modules</h2>
-          <p className="text-gray-600 mb-4">
+          <h2 className="text-2xl font-bold text-slate-100 mb-4">Specialized Modules</h2>
+          <p className="text-slate-300 mb-4">
             Click any module to see how core add-ons integrate and enhance functionality
           </p>
           
@@ -345,21 +345,21 @@ export function IntegrationArchitecture({ onBack }: IntegrationArchitectureProps
               <Card
                 key={module.id}
                 className={`cursor-pointer transition-all hover:shadow-lg border-2 ${
-                  selectedModule === module.id ? 'border-blue-500 bg-blue-50' : 'border-gray-300'
+                  selectedModule === module.id ? 'border-blue-500 bg-blue-500/10' : 'border-white/10'
                 }`}
                 onClick={() => setSelectedModule(selectedModule === module.id ? null : module.id)}
               >
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-3">
-                    <div className="p-2 bg-gray-100 rounded-lg">
-                      <Package className="w-5 h-5 text-gray-600" />
+                    <div className="p-2 bg-white/5 rounded-lg">
+                      <Package className="w-5 h-5 text-slate-300" />
                     </div>
                     {selectedModule === module.id && (
-                      <CheckCircle className="w-5 h-5 text-blue-600" />
+                      <CheckCircle className="w-5 h-5 text-blue-400" />
                     )}
                   </div>
-                  <h3 className="font-bold text-gray-900 mb-1">{module.name}</h3>
-                  <p className="text-xs text-gray-600">{module.subtitle}</p>
+                  <h3 className="font-bold text-slate-100 mb-1">{module.name}</h3>
+                  <p className="text-xs text-slate-300">{module.subtitle}</p>
                 </CardContent>
               </Card>
             ))}
@@ -388,84 +388,84 @@ export function IntegrationArchitecture({ onBack }: IntegrationArchitectureProps
             <CardContent className="p-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Grow CRM Integration */}
-                <div className="p-4 border-2 border-blue-200 bg-blue-50 rounded-lg">
+                <div className="p-4 border-2 border-blue-500/30 bg-blue-500/10 rounded-lg">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="p-2 bg-blue-600 rounded-lg">
                       <Users className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-gray-900">Grow CRM</h3>
-                      <p className="text-xs text-gray-600">Contact & Relationship Management</p>
+                      <h3 className="font-bold text-slate-100">Grow CRM</h3>
+                      <p className="text-xs text-slate-300">Contact & Relationship Management</p>
                     </div>
                   </div>
                   <div className="space-y-2">
                     {selectedModuleData.integrations.grow_crm.map((item, idx) => (
                       <div key={idx} className="flex items-start gap-2 text-sm">
-                        <ArrowRight className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-800">{item}</span>
+                        <ArrowRight className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-slate-100">{item}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
                 {/* Grow Documents Integration */}
-                <div className="p-4 border-2 border-purple-200 bg-purple-50 rounded-lg">
+                <div className="p-4 border-2 border-purple-500/30 bg-purple-500/10 rounded-lg">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="p-2 bg-purple-600 rounded-lg">
                       <FileText className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-gray-900">Grow Documents</h3>
-                      <p className="text-xs text-gray-600">Document Management System</p>
+                      <h3 className="font-bold text-slate-100">Grow Documents</h3>
+                      <p className="text-xs text-slate-300">Document Management System</p>
                     </div>
                   </div>
                   <div className="space-y-2">
                     {selectedModuleData.integrations.grow_documents.map((item, idx) => (
                       <div key={idx} className="flex items-start gap-2 text-sm">
-                        <ArrowRight className="w-4 h-4 text-purple-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-800">{item}</span>
+                        <ArrowRight className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-slate-100">{item}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
                 {/* Grow Time Integration */}
-                <div className="p-4 border-2 border-green-200 bg-green-50 rounded-lg">
+                <div className="p-4 border-2 border-green-500/30 bg-green-500/10 rounded-lg">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="p-2 bg-green-600 rounded-lg">
                       <Clock className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-gray-900">Grow Time & Revenue</h3>
-                      <p className="text-xs text-gray-600">Time Tracking & Billing</p>
+                      <h3 className="font-bold text-slate-100">Grow Time & Revenue</h3>
+                      <p className="text-xs text-slate-300">Time Tracking & Billing</p>
                     </div>
                   </div>
                   <div className="space-y-2">
                     {selectedModuleData.integrations.grow_time.map((item, idx) => (
                       <div key={idx} className="flex items-start gap-2 text-sm">
-                        <ArrowRight className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-800">{item}</span>
+                        <ArrowRight className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-slate-100">{item}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
                 {/* Grow HQ Integration */}
-                <div className="p-4 border-2 border-orange-200 bg-orange-50 rounded-lg">
+                <div className="p-4 border-2 border-orange-500/30 bg-orange-500/10 rounded-lg">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="p-2 bg-orange-600 rounded-lg">
                       <Settings className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-gray-900">Grow HQ</h3>
-                      <p className="text-xs text-gray-600">SaaS Management Console</p>
+                      <h3 className="font-bold text-slate-100">Grow HQ</h3>
+                      <p className="text-xs text-slate-300">SaaS Management Console</p>
                     </div>
                   </div>
                   <div className="space-y-2">
                     {selectedModuleData.integrations.grow_hq.map((item, idx) => (
                       <div key={idx} className="flex items-start gap-2 text-sm">
-                        <ArrowRight className="w-4 h-4 text-orange-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-800">{item}</span>
+                        <ArrowRight className="w-4 h-4 text-orange-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-slate-100">{item}</span>
                       </div>
                     ))}
                   </div>
@@ -479,39 +479,39 @@ export function IntegrationArchitecture({ onBack }: IntegrationArchitectureProps
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <DollarSign className="w-6 h-6 text-green-600" />
+              <DollarSign className="w-6 h-6 text-green-400" />
               Pricing & Licensing Model
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <h3 className="font-semibold text-gray-900 mb-3">Specialized Modules</h3>
+                <h3 className="font-semibold text-slate-100 mb-3">Specialized Modules</h3>
                 <div className="space-y-3">
                   <div className="p-3 border rounded-lg">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="font-semibold text-gray-900">Base Price</span>
-                      <span className="text-2xl font-bold text-blue-600">$199</span>
+                      <span className="font-semibold text-slate-100">Base Price</span>
+                      <span className="text-2xl font-bold text-blue-400">$199</span>
                     </div>
-                    <p className="text-xs text-gray-600">Per module, per month</p>
+                    <p className="text-xs text-slate-300">Per module, per month</p>
                   </div>
-                  <div className="p-3 bg-gray-50 rounded text-sm text-gray-700">
+                  <div className="p-3 bg-white/5 rounded text-sm text-slate-300">
                     <p className="font-medium mb-1">Includes:</p>
                     <ul className="space-y-1 text-xs">
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-3 h-3 text-green-600" />
+                        <CheckCircle className="w-3 h-3 text-green-400" />
                         Module-specific functionality
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-3 h-3 text-green-600" />
+                        <CheckCircle className="w-3 h-3 text-green-400" />
                         Basic contacts & documents (module-isolated)
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-3 h-3 text-green-600" />
+                        <CheckCircle className="w-3 h-3 text-green-400" />
                         Simple time tracking
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-3 h-3 text-green-600" />
+                        <CheckCircle className="w-3 h-3 text-green-400" />
                         Unlimited users
                       </li>
                     </ul>
@@ -520,7 +520,7 @@ export function IntegrationArchitecture({ onBack }: IntegrationArchitectureProps
               </div>
 
               <div>
-                <h3 className="font-semibold text-gray-900 mb-3">Core Add-On Modules</h3>
+                <h3 className="font-semibold text-slate-100 mb-3">Core Add-On Modules</h3>
                 <div className="space-y-3">
                   {[
                     { name: 'Grow CRM', price: '$99', features: ['Unified contacts', 'Pipeline management', 'Email sync'] },
@@ -528,15 +528,15 @@ export function IntegrationArchitecture({ onBack }: IntegrationArchitectureProps
                     { name: 'Grow Time & Revenue', price: '$129', features: ['Cross-module time tracking', 'Automated billing', 'Revenue recognition'] },
                     { name: 'Grow HQ', price: 'FREE', features: ['Always included', 'SaaS management', 'Multi-module admin'] }
                   ].map((addon, idx) => (
-                    <div key={idx} className="p-3 border-2 border-blue-200 bg-blue-50 rounded-lg">
+                    <div key={idx} className="p-3 border-2 border-blue-500/30 bg-blue-500/10 rounded-lg">
                       <div className="flex items-center justify-between mb-2">
-                        <span className="font-semibold text-gray-900">{addon.name}</span>
-                        <span className="text-lg font-bold text-blue-600">{addon.price}</span>
+                        <span className="font-semibold text-slate-100">{addon.name}</span>
+                        <span className="text-lg font-bold text-blue-400">{addon.price}</span>
                       </div>
                       <div className="space-y-1">
                         {addon.features.map((feature, fidx) => (
-                          <p key={fidx} className="text-xs text-gray-700 flex items-center gap-1">
-                            <span className="text-blue-600">â€¢</span>
+                          <p key={fidx} className="text-xs text-slate-300 flex items-center gap-1">
+                            <span className="text-blue-400">â€¢</span>
                             {feature}
                           </p>
                         ))}
@@ -549,24 +549,24 @@ export function IntegrationArchitecture({ onBack }: IntegrationArchitectureProps
 
             <div className="mt-6 p-4 bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-300 rounded-lg">
               <div className="flex items-start gap-3">
-                <Zap className="w-6 h-6 text-green-600 flex-shrink-0" />
+                <Zap className="w-6 h-6 text-green-400 flex-shrink-0" />
                 <div>
-                  <p className="font-bold text-green-900 mb-2">Example Bundle Pricing</p>
+                  <p className="font-bold text-green-300 mb-2">Example Bundle Pricing</p>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                     <div>
-                      <p className="font-semibold text-gray-900">Small Practice</p>
-                      <p className="text-xs text-gray-600 mb-1">Grow Accounting + Grow CRM</p>
-                      <p className="text-lg font-bold text-blue-600">$298/month</p>
+                      <p className="font-semibold text-slate-100">Small Practice</p>
+                      <p className="text-xs text-slate-300 mb-1">Grow Accounting + Grow CRM</p>
+                      <p className="text-lg font-bold text-blue-400">$298/month</p>
                     </div>
                     <div>
-                      <p className="font-semibold text-gray-900">Mid-Size Firm</p>
-                      <p className="text-xs text-gray-600 mb-1">3 modules + all add-ons</p>
-                      <p className="text-lg font-bold text-blue-600">$974/month</p>
+                      <p className="font-semibold text-slate-100">Mid-Size Firm</p>
+                      <p className="text-xs text-slate-300 mb-1">3 modules + all add-ons</p>
+                      <p className="text-lg font-bold text-blue-400">$974/month</p>
                     </div>
                     <div>
-                      <p className="font-semibold text-gray-900">Enterprise</p>
-                      <p className="text-xs text-gray-600 mb-1">All 11 modules + add-ons</p>
-                      <p className="text-lg font-bold text-blue-600">$2,566/month</p>
+                      <p className="font-semibold text-slate-100">Enterprise</p>
+                      <p className="text-xs text-slate-300 mb-1">All 11 modules + add-ons</p>
+                      <p className="text-lg font-bold text-blue-400">$2,566/month</p>
                     </div>
                   </div>
                 </div>
@@ -579,7 +579,7 @@ export function IntegrationArchitecture({ onBack }: IntegrationArchitectureProps
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Database className="w-6 h-6 text-purple-600" />
+              <Database className="w-6 h-6 text-purple-400" />
               Technical Implementation
             </CardTitle>
           </CardHeader>
@@ -587,36 +587,36 @@ export function IntegrationArchitecture({ onBack }: IntegrationArchitectureProps
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Data Architecture */}
               <div>
-                <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                  <Database className="w-5 h-5 text-blue-600" />
+                <h3 className="font-semibold text-slate-100 mb-4 flex items-center gap-2">
+                  <Database className="w-5 h-5 text-blue-400" />
                   Data Architecture
                 </h3>
                 <div className="space-y-3">
-                  <div className="p-4 bg-gray-50 rounded-lg border">
-                    <p className="font-semibold text-gray-900 mb-2">Shared Database Layer</p>
-                    <ul className="space-y-2 text-sm text-gray-700">
+                  <div className="p-4 bg-white/5 rounded-lg border">
+                    <p className="font-semibold text-slate-100 mb-2">Shared Database Layer</p>
+                    <ul className="space-y-2 text-sm text-slate-300">
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-600 mt-0.5" />
+                        <CheckCircle className="w-4 h-4 text-green-400 mt-0.5" />
                         <span><strong>contacts_universal</strong> - Single source of truth for all contacts</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-600 mt-0.5" />
+                        <CheckCircle className="w-4 h-4 text-green-400 mt-0.5" />
                         <span><strong>documents_enterprise</strong> - Centralized document storage</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-600 mt-0.5" />
+                        <CheckCircle className="w-4 h-4 text-green-400 mt-0.5" />
                         <span><strong>time_entries_global</strong> - Cross-module time tracking</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-600 mt-0.5" />
+                        <CheckCircle className="w-4 h-4 text-green-400 mt-0.5" />
                         <span><strong>organization_config</strong> - Branding & settings</span>
                       </li>
                     </ul>
                   </div>
 
-                  <div className="p-4 bg-blue-50 rounded-lg border-2 border-blue-300">
-                    <p className="font-semibold text-blue-900 mb-2">Module-Specific Tables</p>
-                    <p className="text-sm text-blue-800">
+                  <div className="p-4 bg-blue-500/10 rounded-lg border-2 border-blue-300">
+                    <p className="font-semibold text-blue-300 mb-2">Module-Specific Tables</p>
+                    <p className="text-sm text-blue-300">
                       Each specialized module maintains its own tables (loans, jobs, matters, etc.) 
                       but links to shared core tables via foreign keys
                     </p>
@@ -626,40 +626,40 @@ export function IntegrationArchitecture({ onBack }: IntegrationArchitectureProps
 
               {/* API Integration */}
               <div>
-                <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                  <Share2 className="w-5 h-5 text-purple-600" />
+                <h3 className="font-semibold text-slate-100 mb-4 flex items-center gap-2">
+                  <Share2 className="w-5 h-5 text-purple-400" />
                   API & Service Integration
                 </h3>
                 <div className="space-y-3">
-                  <div className="p-4 bg-gray-50 rounded-lg border">
-                    <p className="font-semibold text-gray-900 mb-2">Microservices Architecture</p>
-                    <ul className="space-y-2 text-sm text-gray-700">
+                  <div className="p-4 bg-white/5 rounded-lg border">
+                    <p className="font-semibold text-slate-100 mb-2">Microservices Architecture</p>
+                    <ul className="space-y-2 text-sm text-slate-300">
                       <li className="flex items-start gap-2">
-                        <LinkIcon className="w-4 h-4 text-purple-600 mt-0.5" />
+                        <LinkIcon className="w-4 h-4 text-purple-400 mt-0.5" />
                         <span><strong>CRM Service API</strong> - /api/crm/* endpoints</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <LinkIcon className="w-4 h-4 text-purple-600 mt-0.5" />
+                        <LinkIcon className="w-4 h-4 text-purple-400 mt-0.5" />
                         <span><strong>Documents Service API</strong> - /api/docs/* endpoints</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <LinkIcon className="w-4 h-4 text-purple-600 mt-0.5" />
+                        <LinkIcon className="w-4 h-4 text-purple-400 mt-0.5" />
                         <span><strong>Time Service API</strong> - /api/time/* endpoints</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <LinkIcon className="w-4 h-4 text-purple-600 mt-0.5" />
+                        <LinkIcon className="w-4 h-4 text-purple-400 mt-0.5" />
                         <span><strong>Admin Service API</strong> - /api/admin/* endpoints</span>
                       </li>
                     </ul>
                   </div>
 
-                  <div className="p-4 bg-purple-50 rounded-lg border-2 border-purple-300">
-                    <p className="font-semibold text-purple-900 mb-2">Feature Flag System</p>
-                    <p className="text-sm text-purple-800 mb-3">
+                  <div className="p-4 bg-purple-500/10 rounded-lg border-2 border-purple-300">
+                    <p className="font-semibold text-purple-300 mb-2">Feature Flag System</p>
+                    <p className="text-sm text-purple-300 mb-3">
                       Core modules are feature-flagged per organization. UI components detect 
                       enabled modules and render accordingly.
                     </p>
-                    <div className="bg-white p-3 rounded border font-mono text-xs text-gray-700">
+                    <div className="bg-white p-3 rounded border font-mono text-xs text-slate-300">
                       {`if (org.hasModule('grow_crm')) {`}
                       <br />
                       {'  '}// Show CRM integration buttons
@@ -675,16 +675,16 @@ export function IntegrationArchitecture({ onBack }: IntegrationArchitectureProps
 
         {/* Use Case Example */}
         <Card className="border-2 border-green-300">
-          <CardHeader className="bg-green-50">
+          <CardHeader className="bg-green-500/10">
             <CardTitle className="flex items-center gap-2">
-              <Zap className="w-6 h-6 text-green-600" />
+              <Zap className="w-6 h-6 text-green-400" />
               Real-World Integration Example
             </CardTitle>
           </CardHeader>
           <CardContent className="p-6">
             <div className="space-y-4">
-              <div className="p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg border-2 border-blue-200">
-                <h3 className="font-bold text-gray-900 mb-3">
+              <div className="p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg border-2 border-blue-500/30">
+                <h3 className="font-bold text-slate-100 mb-3">
                   Scenario: Law Firm Using Grow Trust + Grow Settlement + All Add-Ons
                 </h3>
                 <div className="space-y-4">
@@ -746,12 +746,12 @@ export function IntegrationArchitecture({ onBack }: IntegrationArchitectureProps
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
-                          <span className="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-semibold rounded">
+                          <span className="px-2 py-0.5 bg-blue-500/15 text-blue-300 text-xs font-semibold rounded">
                             {item.module}
                           </span>
-                          <span className="text-sm font-semibold text-gray-900">{item.action}</span>
+                          <span className="text-sm font-semibold text-slate-100">{item.action}</span>
                         </div>
-                        <p className="text-sm text-green-700">
+                        <p className="text-sm text-green-300">
                           <strong>Result:</strong> {item.result}
                         </p>
                       </div>
@@ -761,60 +761,60 @@ export function IntegrationArchitecture({ onBack }: IntegrationArchitectureProps
               </div>
 
               <div className="space-y-4">
-                <div className="p-4 bg-green-50 border-2 border-green-300 rounded-lg">
-                  <h3 className="font-bold text-green-900 mb-3">Benefits Realized</h3>
-                  <ul className="space-y-2 text-sm text-green-800">
+                <div className="p-4 bg-green-500/10 border-2 border-green-300 rounded-lg">
+                  <h3 className="font-bold text-green-300 mb-3">Benefits Realized</h3>
+                  <ul className="space-y-2 text-sm text-green-300">
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-600 mt-0.5" />
+                      <CheckCircle className="w-4 h-4 text-green-400 mt-0.5" />
                       <span><strong>Zero Data Re-Entry:</strong> Contact entered once, available everywhere</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-600 mt-0.5" />
+                      <CheckCircle className="w-4 h-4 text-green-400 mt-0.5" />
                       <span><strong>Complete Audit Trail:</strong> All documents, time, and transactions linked</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-600 mt-0.5" />
+                      <CheckCircle className="w-4 h-4 text-green-400 mt-0.5" />
                       <span><strong>Automated Billing:</strong> Invoice generated from time & trust data</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-600 mt-0.5" />
+                      <CheckCircle className="w-4 h-4 text-green-400 mt-0.5" />
                       <span><strong>Cross-Sell Opportunity:</strong> CRM identifies future opportunities</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-600 mt-0.5" />
+                      <CheckCircle className="w-4 h-4 text-green-400 mt-0.5" />
                       <span><strong>Unified Search:</strong> Find any record across all modules instantly</span>
                     </li>
                   </ul>
                 </div>
 
-                <div className="p-4 bg-blue-50 border-2 border-blue-300 rounded-lg">
-                  <h3 className="font-bold text-blue-900 mb-3">Without Add-Ons</h3>
-                  <ul className="space-y-2 text-sm text-blue-800">
+                <div className="p-4 bg-blue-500/10 border-2 border-blue-300 rounded-lg">
+                  <h3 className="font-bold text-blue-300 mb-3">Without Add-Ons</h3>
+                  <ul className="space-y-2 text-sm text-blue-300">
                     <li className="flex items-start gap-2">
-                      <AlertTriangle className="w-4 h-4 text-amber-600 mt-0.5" />
+                      <AlertTriangle className="w-4 h-4 text-amber-400 mt-0.5" />
                       <span>Contact must be entered separately in Trust and Settlement</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <AlertTriangle className="w-4 h-4 text-amber-600 mt-0.5" />
+                      <AlertTriangle className="w-4 h-4 text-amber-400 mt-0.5" />
                       <span>Documents stored in each module separately</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <AlertTriangle className="w-4 h-4 text-amber-600 mt-0.5" />
+                      <AlertTriangle className="w-4 h-4 text-amber-400 mt-0.5" />
                       <span>Time tracked per module, manual consolidation needed</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <AlertTriangle className="w-4 h-4 text-amber-600 mt-0.5" />
+                      <AlertTriangle className="w-4 h-4 text-amber-400 mt-0.5" />
                       <span>No cross-module insights or relationship tracking</span>
                     </li>
                   </ul>
                 </div>
 
-                <div className="p-4 bg-yellow-50 border-2 border-yellow-300 rounded-lg">
+                <div className="p-4 bg-yellow-500/10 border-2 border-yellow-300 rounded-lg">
                   <div className="flex items-start gap-2">
-                    <Info className="w-5 h-5 text-yellow-700 flex-shrink-0 mt-0.5" />
+                    <Info className="w-5 h-5 text-yellow-300 flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-semibold text-yellow-900 mb-1">Cost vs. Efficiency</p>
-                      <p className="text-sm text-yellow-800">
+                      <p className="font-semibold text-yellow-300 mb-1">Cost vs. Efficiency</p>
+                      <p className="text-sm text-yellow-300">
                         Total add-on cost: <strong>$377/month</strong><br />
                         Time saved per month: <strong>~40 hours</strong><br />
                         ROI at $100/hour billing: <strong>$4,000 saved = 10.6x return</strong>
@@ -831,7 +831,7 @@ export function IntegrationArchitecture({ onBack }: IntegrationArchitectureProps
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Target className="w-6 h-6 text-indigo-600" />
+              <Target className="w-6 h-6 text-indigo-400" />
               Activation & Implementation Roadmap
             </CardTitle>
           </CardHeader>
@@ -884,12 +884,12 @@ export function IntegrationArchitecture({ onBack }: IntegrationArchitectureProps
                     <span className="px-3 py-1 bg-blue-600 text-white text-xs font-bold rounded">
                       {phase.duration}
                     </span>
-                    <h4 className="font-bold text-gray-900">{phase.phase}</h4>
+                    <h4 className="font-bold text-slate-100">{phase.phase}</h4>
                   </div>
                   <ul className="space-y-1 ml-2">
                     {phase.steps.map((step, sidx) => (
-                      <li key={sidx} className="flex items-start gap-2 text-sm text-gray-700">
-                        <span className="text-blue-600 mt-1">â€¢</span>
+                      <li key={sidx} className="flex items-start gap-2 text-sm text-slate-300">
+                        <span className="text-blue-400 mt-1">â€¢</span>
                         <span>{step}</span>
                       </li>
                     ))}
@@ -909,52 +909,52 @@ export function IntegrationArchitecture({ onBack }: IntegrationArchitectureProps
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="bg-gray-50">
-                    <th className="px-4 py-3 text-left font-semibold text-gray-700 border">Specialized Module</th>
-                    <th className="px-4 py-3 text-center font-semibold text-gray-700 border">Grow CRM</th>
-                    <th className="px-4 py-3 text-center font-semibold text-gray-700 border">Grow Documents</th>
-                    <th className="px-4 py-3 text-center font-semibold text-gray-700 border">Grow Time</th>
-                    <th className="px-4 py-3 text-center font-semibold text-gray-700 border">Grow HQ</th>
+                  <tr className="bg-white/5">
+                    <th className="px-4 py-3 text-left font-semibold text-slate-300 border">Specialized Module</th>
+                    <th className="px-4 py-3 text-center font-semibold text-slate-300 border">Grow CRM</th>
+                    <th className="px-4 py-3 text-center font-semibold text-slate-300 border">Grow Documents</th>
+                    <th className="px-4 py-3 text-center font-semibold text-slate-300 border">Grow Time</th>
+                    <th className="px-4 py-3 text-center font-semibold text-slate-300 border">Grow HQ</th>
                   </tr>
                 </thead>
                 <tbody>
                   {specializedModules.map((module) => (
-                    <tr key={module.id} className="hover:bg-gray-50">
-                      <td className="px-4 py-3 font-medium text-gray-900 border">
+                    <tr key={module.id} className="hover:bg-white/5">
+                      <td className="px-4 py-3 font-medium text-slate-100 border">
                         {module.name}
-                        <p className="text-xs text-gray-600">{module.subtitle}</p>
+                        <p className="text-xs text-slate-300">{module.subtitle}</p>
                       </td>
                       <td className="px-4 py-3 text-center border">
-                        <span className="inline-flex items-center justify-center w-6 h-6 bg-green-100 rounded-full">
-                          <CheckCircle className="w-4 h-4 text-green-600" />
+                        <span className="inline-flex items-center justify-center w-6 h-6 bg-green-500/15 rounded-full">
+                          <CheckCircle className="w-4 h-4 text-green-400" />
                         </span>
                       </td>
                       <td className="px-4 py-3 text-center border">
-                        <span className="inline-flex items-center justify-center w-6 h-6 bg-green-100 rounded-full">
-                          <CheckCircle className="w-4 h-4 text-green-600" />
+                        <span className="inline-flex items-center justify-center w-6 h-6 bg-green-500/15 rounded-full">
+                          <CheckCircle className="w-4 h-4 text-green-400" />
                         </span>
                       </td>
                       <td className="px-4 py-3 text-center border">
-                        <span className="inline-flex items-center justify-center w-6 h-6 bg-green-100 rounded-full">
-                          <CheckCircle className="w-4 h-4 text-green-600" />
+                        <span className="inline-flex items-center justify-center w-6 h-6 bg-green-500/15 rounded-full">
+                          <CheckCircle className="w-4 h-4 text-green-400" />
                         </span>
                       </td>
                       <td className="px-4 py-3 text-center border">
-                        <span className="inline-flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full">
-                          <Shield className="w-4 h-4 text-blue-600" />
+                        <span className="inline-flex items-center justify-center w-6 h-6 bg-blue-500/15 rounded-full">
+                          <Shield className="w-4 h-4 text-blue-400" />
                         </span>
                       </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
-              <div className="mt-4 flex items-center gap-6 text-xs text-gray-600">
+              <div className="mt-4 flex items-center gap-6 text-xs text-slate-300">
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <CheckCircle className="w-4 h-4 text-green-400" />
                   <span>Full Integration Available</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Shield className="w-4 h-4 text-blue-600" />
+                  <Shield className="w-4 h-4 text-blue-400" />
                   <span>Always Included (Free)</span>
                 </div>
               </div>
@@ -966,64 +966,64 @@ export function IntegrationArchitecture({ onBack }: IntegrationArchitectureProps
         <Card className="border-2 border-indigo-300 bg-gradient-to-br from-indigo-50 to-blue-50">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Target className="w-6 h-6 text-indigo-600" />
+              <Target className="w-6 h-6 text-indigo-400" />
               Operator Recommendations
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="p-4 bg-white rounded-lg border-2 border-green-300">
-                <h3 className="font-bold text-green-900 mb-2">High Priority</h3>
-                <p className="text-sm text-green-800 mb-3">
+                <h3 className="font-bold text-green-300 mb-2">High Priority</h3>
+                <p className="text-sm text-green-300 mb-3">
                   Operators using <strong>2+ specialized modules</strong>
                 </p>
                 <div className="space-y-2 text-sm">
                   <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-400" />
                     <span>Enable Grow CRM</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <CheckCircle className="w-4 h-4 text-green-400" />
                     <span>Enable Grow Documents</span>
                   </div>
-                  <p className="text-xs text-gray-600 mt-2">
+                  <p className="text-xs text-slate-300 mt-2">
                     Eliminates data silos and saves 15-20 hours/month
                   </p>
                 </div>
               </div>
 
               <div className="p-4 bg-white rounded-lg border-2 border-blue-300">
-                <h3 className="font-bold text-blue-900 mb-2">Medium Priority</h3>
-                <p className="text-sm text-blue-800 mb-3">
+                <h3 className="font-bold text-blue-300 mb-2">Medium Priority</h3>
+                <p className="text-sm text-blue-300 mb-3">
                   Operators with <strong>billable services</strong>
                 </p>
                 <div className="space-y-2 text-sm">
                   <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-blue-600" />
+                    <CheckCircle className="w-4 h-4 text-blue-400" />
                     <span>Enable Grow Time & Revenue</span>
                   </div>
-                  <p className="text-xs text-gray-600 mt-2">
+                  <p className="text-xs text-slate-300 mt-2">
                     Captures 95%+ of billable time vs. 60-70% manual tracking
                   </p>
                 </div>
               </div>
 
               <div className="p-4 bg-white rounded-lg border-2 border-orange-300">
-                <h3 className="font-bold text-orange-900 mb-2">Always Included</h3>
-                <p className="text-sm text-orange-800 mb-3">
+                <h3 className="font-bold text-orange-300 mb-2">Always Included</h3>
+                <p className="text-sm text-orange-300 mb-3">
                   <strong>Every operator</strong> gets Grow HQ
                 </p>
                 <div className="space-y-2 text-sm">
                   <div className="flex items-center gap-2">
-                    <Shield className="w-4 h-4 text-orange-600" />
+                    <Shield className="w-4 h-4 text-orange-400" />
                     <span>Module management</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Shield className="w-4 h-4 text-orange-600" />
+                    <Shield className="w-4 h-4 text-orange-400" />
                     <span>User administration</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Shield className="w-4 h-4 text-orange-600" />
+                    <Shield className="w-4 h-4 text-orange-400" />
                     <span>White-label control</span>
                   </div>
                 </div>

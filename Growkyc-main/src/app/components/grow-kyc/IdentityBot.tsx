@@ -90,8 +90,8 @@ function IdentityControlCentre({ onNavigate, onBack }: { onNavigate: (view: View
           <Card className="border-2 hover:border-blue-400 transition-colors cursor-pointer">
             <CardContent className="p-4">
               <div className="flex items-center justify-between mb-2">
-                <Clock className="w-5 h-5 text-blue-600" />
-                <Badge className="bg-blue-100 text-blue-700">23</Badge>
+                <Clock className="w-5 h-5 text-blue-400" />
+                <Badge className="bg-blue-500/15 text-blue-300">23</Badge>
               </div>
               <p className="text-sm font-medium text-white">Pending Verifications</p>
             </CardContent>
@@ -100,8 +100,8 @@ function IdentityControlCentre({ onNavigate, onBack }: { onNavigate: (view: View
           <Card className="border-2 hover:border-green-400 transition-colors cursor-pointer">
             <CardContent className="p-4">
               <div className="flex items-center justify-between mb-2">
-                <CheckCircle className="w-5 h-5 text-green-600" />
-                <Badge className="bg-green-100 text-green-700">187</Badge>
+                <CheckCircle className="w-5 h-5 text-green-400" />
+                <Badge className="bg-green-500/15 text-green-300">187</Badge>
               </div>
               <p className="text-sm font-medium text-white">Completed Today</p>
             </CardContent>
@@ -110,8 +110,8 @@ function IdentityControlCentre({ onNavigate, onBack }: { onNavigate: (view: View
           <Card className="border-2 hover:border-red-400 transition-colors cursor-pointer">
             <CardContent className="p-4">
               <div className="flex items-center justify-between mb-2">
-                <XCircle className="w-5 h-5 text-red-600" />
-                <Badge className="bg-red-100 text-red-700">8</Badge>
+                <XCircle className="w-5 h-5 text-red-400" />
+                <Badge className="bg-red-500/15 text-red-300">8</Badge>
               </div>
               <p className="text-sm font-medium text-white">Failed</p>
             </CardContent>
@@ -120,8 +120,8 @@ function IdentityControlCentre({ onNavigate, onBack }: { onNavigate: (view: View
           <Card className="border-2 hover:border-amber-400 transition-colors cursor-pointer">
             <CardContent className="p-4">
               <div className="flex items-center justify-between mb-2">
-                <Eye className="w-5 h-5 text-amber-600" />
-                <Badge className="bg-amber-100 text-amber-700">14</Badge>
+                <Eye className="w-5 h-5 text-amber-400" />
+                <Badge className="bg-amber-500/15 text-amber-300">14</Badge>
               </div>
               <p className="text-sm font-medium text-white">Manual Reviews</p>
             </CardContent>
@@ -130,8 +130,8 @@ function IdentityControlCentre({ onNavigate, onBack }: { onNavigate: (view: View
           <Card className="border-2 hover:border-purple-400 transition-colors cursor-pointer">
             <CardContent className="p-4">
               <div className="flex items-center justify-between mb-2">
-                <AlertTriangle className="w-5 h-5 text-purple-600" />
-                <Badge className="bg-purple-100 text-purple-700">3</Badge>
+                <AlertTriangle className="w-5 h-5 text-purple-400" />
+                <Badge className="bg-purple-500/15 text-purple-300">3</Badge>
               </div>
               <p className="text-sm font-medium text-white">Duplicate Alerts</p>
             </CardContent>
@@ -144,7 +144,7 @@ function IdentityControlCentre({ onNavigate, onBack }: { onNavigate: (view: View
           <Card className="border-2">
             <CardHeader className="bg-gradient-to-r from-blue-50 to-blue-100 border-b">
               <CardTitle className="flex items-center gap-2">
-                <User className="w-5 h-5 text-blue-600" />
+                <User className="w-5 h-5 text-blue-400" />
                 Active Verifications
               </CardTitle>
             </CardHeader>
@@ -171,16 +171,16 @@ function IdentityControlCentre({ onNavigate, onBack }: { onNavigate: (view: View
                         <td className="px-4 py-3 text-xs text-slate-300">{item.doc}</td>
                         <td className="px-4 py-3">
                           <Badge className={
-                            item.status === 'Verified' ? 'bg-green-100 text-green-700' :
-                            item.status === 'Processing' ? 'bg-blue-100 text-blue-700' :
-                            'bg-amber-100 text-amber-700'
+                            item.status === 'Verified' ? 'bg-green-500/15 text-green-300' :
+                            item.status === 'Processing' ? 'bg-blue-500/15 text-blue-300' :
+                            'bg-amber-500/15 text-amber-300'
                           }>
                             {item.status}
                           </Badge>
                         </td>
                         <td className="px-4 py-3">
                           {item.match !== null ? (
-                            <span className={`font-semibold ${item.match >= 90 ? 'text-green-600' : item.match >= 75 ? 'text-amber-600' : 'text-red-600'}`}>
+                            <span className={`font-semibold ${item.match >= 90 ? 'text-green-400' : item.match >= 75 ? 'text-amber-400' : 'text-red-400'}`}>
                               {item.match}%
                             </span>
                           ) : (
@@ -193,7 +193,7 @@ function IdentityControlCentre({ onNavigate, onBack }: { onNavigate: (view: View
                 </table>
               </div>
               <div className="p-4 border-t bg-[#0f172a]">
-                <Button variant="ghost" className="w-full text-blue-700 hover:bg-blue-50" onClick={() => onNavigate('new-verification')}>
+                <Button variant="ghost" className="w-full text-blue-300 hover:bg-blue-500/10" onClick={() => onNavigate('new-verification')}>
                   View All Verifications <ChevronRight className="w-4 h-4 ml-1" />
                 </Button>
               </div>
@@ -204,7 +204,7 @@ function IdentityControlCentre({ onNavigate, onBack }: { onNavigate: (view: View
           <Card className="border-2">
             <CardHeader className="bg-gradient-to-r from-red-50 to-red-100 border-b">
               <CardTitle className="flex items-center gap-2">
-                <XCircle className="w-5 h-5 text-red-600" />
+                <XCircle className="w-5 h-5 text-red-400" />
                 Failed Attempts
               </CardTitle>
             </CardHeader>
@@ -228,7 +228,7 @@ function IdentityControlCentre({ onNavigate, onBack }: { onNavigate: (view: View
                     ].map((item, idx) => (
                       <tr key={idx} className="hover:bg-white/5 cursor-pointer">
                         <td className="px-4 py-3 font-medium text-white">{item.name}</td>
-                        <td className="px-4 py-3 text-xs text-red-700">{item.reason}</td>
+                        <td className="px-4 py-3 text-xs text-red-300">{item.reason}</td>
                         <td className="px-4 py-3 text-xs text-slate-300">{item.attempts}</td>
                         <td className="px-4 py-3">
                           <Button size="sm" variant="outline" className="text-xs">
@@ -241,7 +241,7 @@ function IdentityControlCentre({ onNavigate, onBack }: { onNavigate: (view: View
                 </table>
               </div>
               <div className="p-4 border-t bg-[#0f172a]">
-                <Button variant="ghost" className="w-full text-red-700 hover:bg-red-50">
+                <Button variant="ghost" className="w-full text-red-300 hover:bg-red-500/10">
                   View All Failed <ChevronRight className="w-4 h-4 ml-1" />
                 </Button>
               </div>
@@ -253,8 +253,8 @@ function IdentityControlCentre({ onNavigate, onBack }: { onNavigate: (view: View
         <div className="grid md:grid-cols-4 gap-6">
           <Card className="border-2">
             <CardContent className="p-6 text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                <CreditCard className="w-8 h-8 text-blue-600" />
+              <div className="w-16 h-16 bg-blue-500/15 rounded-full flex items-center justify-center mx-auto mb-3">
+                <CreditCard className="w-8 h-8 text-blue-400" />
               </div>
               <p className="text-xs text-slate-300 mb-1">Document Types</p>
               <p className="text-2xl font-bold text-white mb-2">3</p>
@@ -264,33 +264,33 @@ function IdentityControlCentre({ onNavigate, onBack }: { onNavigate: (view: View
 
           <Card className="border-2">
             <CardContent className="p-6 text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                <CheckCircle className="w-8 h-8 text-green-600" />
+              <div className="w-16 h-16 bg-green-500/15 rounded-full flex items-center justify-center mx-auto mb-3">
+                <CheckCircle className="w-8 h-8 text-green-400" />
               </div>
               <p className="text-xs text-slate-300 mb-1">Success Rate</p>
-              <p className="text-2xl font-bold text-green-600 mb-2">94.2%</p>
+              <p className="text-2xl font-bold text-green-400 mb-2">94.2%</p>
               <p className="text-xs text-slate-400">Last 30 days</p>
             </CardContent>
           </Card>
 
           <Card className="border-2">
             <CardContent className="p-6 text-center">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                <Scan className="w-8 h-8 text-purple-600" />
+              <div className="w-16 h-16 bg-purple-500/15 rounded-full flex items-center justify-center mx-auto mb-3">
+                <Scan className="w-8 h-8 text-purple-400" />
               </div>
               <p className="text-xs text-slate-300 mb-1">Avg Match Score</p>
-              <p className="text-2xl font-bold text-purple-600 mb-2">96.7%</p>
+              <p className="text-2xl font-bold text-purple-400 mb-2">96.7%</p>
               <p className="text-xs text-slate-400">Biometric accuracy</p>
             </CardContent>
           </Card>
 
           <Card className="border-2">
             <CardContent className="p-6 text-center">
-              <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                <Clock className="w-8 h-8 text-amber-600" />
+              <div className="w-16 h-16 bg-amber-500/15 rounded-full flex items-center justify-center mx-auto mb-3">
+                <Clock className="w-8 h-8 text-amber-400" />
               </div>
               <p className="text-xs text-slate-300 mb-1">Avg Processing</p>
-              <p className="text-2xl font-bold text-amber-600 mb-2">8.4s</p>
+              <p className="text-2xl font-bold text-amber-400 mb-2">8.4s</p>
               <p className="text-xs text-slate-400">Per verification</p>
             </CardContent>
           </Card>
@@ -352,12 +352,12 @@ function IdentityVerificationFlow({ onBack }: { onBack: () => void }) {
             ].map((s) => (
               <div key={s.num} className="flex items-center">
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
-                  step >= s.num ? 'bg-blue-600 text-white' : 'bg-gray-200 text-slate-300'
+                  step >= s.num ? 'bg-blue-600 text-white' : 'bg-white/10 text-slate-300'
                 }`}>
                   {s.num}
                 </div>
                 <div className="ml-2">
-                  <p className={`text-xs font-medium ${step >= s.num ? 'text-blue-600' : 'text-slate-400'}`}>
+                  <p className={`text-xs font-medium ${step >= s.num ? 'text-blue-400' : 'text-slate-400'}`}>
                     {s.label}
                   </p>
                 </div>
@@ -390,7 +390,7 @@ function IdentityVerificationFlow({ onBack }: { onBack: () => void }) {
                       <label 
                         key={doc.value}
                         className={`flex flex-col items-center gap-3 p-6 border-2 rounded-lg cursor-pointer hover:border-blue-400 ${
-                          documentType === doc.value ? 'border-blue-500 bg-blue-50' : 'border-gray-300'
+                          documentType === doc.value ? 'border-blue-500 bg-blue-500/10' : 'border-white/10'
                         }`}
                       >
                         <input
@@ -401,7 +401,7 @@ function IdentityVerificationFlow({ onBack }: { onBack: () => void }) {
                           onChange={(e) => setDocumentType(e.target.value as any)}
                           className="sr-only"
                         />
-                        <Icon className="w-12 h-12 text-blue-600" />
+                        <Icon className="w-12 h-12 text-blue-400" />
                         <span className="font-medium text-white">{doc.label}</span>
                       </label>
                     );
@@ -409,7 +409,7 @@ function IdentityVerificationFlow({ onBack }: { onBack: () => void }) {
                 </div>
               </div>
 
-              <div className="border-2 border-dashed border-gray-300 rounded-lg p-12 text-center hover:border-blue-400 cursor-pointer transition-colors">
+              <div className="border-2 border-dashed border-white/10 rounded-lg p-12 text-center hover:border-blue-400 cursor-pointer transition-colors">
                 <Upload className="w-16 h-16 text-slate-400 mx-auto mb-4" />
                 <p className="text-lg font-medium text-white mb-2">Upload Document Image</p>
                 <p className="text-sm text-slate-300 mb-4">
@@ -424,9 +424,9 @@ function IdentityVerificationFlow({ onBack }: { onBack: () => void }) {
                 </p>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <h4 className="font-semibold text-blue-900 mb-2">Document Requirements</h4>
-                <ul className="text-sm text-blue-800 space-y-1">
+              <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
+                <h4 className="font-semibold text-blue-300 mb-2">Document Requirements</h4>
+                <ul className="text-sm text-blue-300 space-y-1">
                   <li>• Clear, well-lit image of document</li>
                   <li>• All text and details must be readable</li>
                   <li>• Document must not be expired</li>
@@ -467,32 +467,32 @@ function IdentityVerificationFlow({ onBack }: { onBack: () => void }) {
               </div>
 
               <div className="grid md:grid-cols-3 gap-4">
-                <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+                <div className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
                   <div className="flex items-center gap-2 mb-2">
-                    <CheckCircle className="w-5 h-5 text-green-600" />
-                    <p className="font-semibold text-green-900">Liveness Detection</p>
+                    <CheckCircle className="w-5 h-5 text-green-400" />
+                    <p className="font-semibold text-green-300">Liveness Detection</p>
                   </div>
-                  <p className="text-sm text-green-700">Active - Ready</p>
+                  <p className="text-sm text-green-300">Active - Ready</p>
                 </div>
-                <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+                <div className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
                   <div className="flex items-center gap-2 mb-2">
-                    <CheckCircle className="w-5 h-5 text-green-600" />
-                    <p className="font-semibold text-green-900">Anti-Spoofing</p>
+                    <CheckCircle className="w-5 h-5 text-green-400" />
+                    <p className="font-semibold text-green-300">Anti-Spoofing</p>
                   </div>
-                  <p className="text-sm text-green-700">Enabled</p>
+                  <p className="text-sm text-green-300">Enabled</p>
                 </div>
-                <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+                <div className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
                   <div className="flex items-center gap-2 mb-2">
-                    <CheckCircle className="w-5 h-5 text-green-600" />
-                    <p className="font-semibold text-green-900">Face Detection</p>
+                    <CheckCircle className="w-5 h-5 text-green-400" />
+                    <p className="font-semibold text-green-300">Face Detection</p>
                   </div>
-                  <p className="text-sm text-green-700">Active</p>
+                  <p className="text-sm text-green-300">Active</p>
                 </div>
               </div>
 
-              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
-                <h4 className="font-semibold text-amber-900 mb-2">Selfie Tips</h4>
-                <ul className="text-sm text-amber-800 space-y-1">
+              <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-4">
+                <h4 className="font-semibold text-amber-300 mb-2">Selfie Tips</h4>
+                <ul className="text-sm text-amber-300 space-y-1">
                   <li>• Look directly at the camera</li>
                   <li>• Ensure good lighting on your face</li>
                   <li>• Remove glasses and face coverings</li>
@@ -521,15 +521,15 @@ function IdentityVerificationFlow({ onBack }: { onBack: () => void }) {
             </CardHeader>
             <CardContent className="p-8">
               <div className="text-center space-y-6">
-                <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto animate-pulse">
-                  <Scan className="w-10 h-10 text-blue-600" />
+                <div className="w-20 h-20 bg-blue-500/15 rounded-full flex items-center justify-center mx-auto animate-pulse">
+                  <Scan className="w-10 h-10 text-blue-400" />
                 </div>
 
                 <div className="space-y-4 max-w-md mx-auto">
                   <div>
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-sm text-slate-300">OCR Extraction</span>
-                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      <CheckCircle className="w-5 h-5 text-green-400" />
                     </div>
                     <Progress value={100} className="h-2" />
                   </div>
@@ -537,7 +537,7 @@ function IdentityVerificationFlow({ onBack }: { onBack: () => void }) {
                   <div>
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-sm text-slate-300">Document Validation</span>
-                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      <CheckCircle className="w-5 h-5 text-green-400" />
                     </div>
                     <Progress value={100} className="h-2" />
                   </div>
@@ -572,77 +572,77 @@ function IdentityVerificationFlow({ onBack }: { onBack: () => void }) {
           <Card className="border-2">
             <CardHeader className="bg-gradient-to-r from-green-50 to-green-100">
               <CardTitle className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5 text-green-600" />
+                <CheckCircle className="w-5 h-5 text-green-400" />
                 Step 4: Verification Results
               </CardTitle>
             </CardHeader>
             <CardContent className="p-6 space-y-6">
-              <div className="p-6 bg-green-50 border-2 border-green-400 rounded-lg">
+              <div className="p-6 bg-green-500/10 border-2 border-green-400 rounded-lg">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
                       <CheckCircle className="w-7 h-7 text-white" />
                     </div>
                     <div>
-                      <p className="text-2xl font-bold text-green-900">IDENTITY VERIFIED</p>
-                      <p className="text-sm text-green-700">All checks passed successfully</p>
+                      <p className="text-2xl font-bold text-green-300">IDENTITY VERIFIED</p>
+                      <p className="text-sm text-green-300">All checks passed successfully</p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-4xl font-bold text-green-600">98%</p>
-                    <p className="text-xs text-green-700">Match Score</p>
+                    <p className="text-4xl font-bold text-green-400">98%</p>
+                    <p className="text-xs text-green-300">Match Score</p>
                   </div>
                 </div>
               </div>
 
               <div className="grid md:grid-cols-2 gap-4">
-                <Card className="bg-green-50 border-green-200">
+                <Card className="bg-green-500/10 border-green-500/30">
                   <CardContent className="p-4">
                     <div className="flex items-center justify-between mb-2">
                       <p className="font-semibold text-white">Biometric Face Match</p>
-                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      <CheckCircle className="w-5 h-5 text-green-400" />
                     </div>
-                    <p className="text-3xl font-bold text-green-600">98%</p>
+                    <p className="text-3xl font-bold text-green-400">98%</p>
                     <p className="text-xs text-slate-300 mt-1">Very High Confidence</p>
                   </CardContent>
                 </Card>
 
-                <Card className="bg-green-50 border-green-200">
+                <Card className="bg-green-500/10 border-green-500/30">
                   <CardContent className="p-4">
                     <div className="flex items-center justify-between mb-2">
                       <p className="font-semibold text-white">Document Validity</p>
-                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      <CheckCircle className="w-5 h-5 text-green-400" />
                     </div>
-                    <p className="text-lg font-bold text-green-600">VALID</p>
+                    <p className="text-lg font-bold text-green-400">VALID</p>
                     <p className="text-xs text-slate-300 mt-1">Authentic document detected</p>
                   </CardContent>
                 </Card>
 
-                <Card className="bg-green-50 border-green-200">
+                <Card className="bg-green-500/10 border-green-500/30">
                   <CardContent className="p-4">
                     <div className="flex items-center justify-between mb-2">
                       <p className="font-semibold text-white">Expiry Status</p>
-                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      <CheckCircle className="w-5 h-5 text-green-400" />
                     </div>
-                    <p className="text-lg font-bold text-green-600">CURRENT</p>
+                    <p className="text-lg font-bold text-green-400">CURRENT</p>
                     <p className="text-xs text-slate-300 mt-1">Expires: 2028-06-15</p>
                   </CardContent>
                 </Card>
 
-                <Card className="bg-green-50 border-green-200">
+                <Card className="bg-green-500/10 border-green-500/30">
                   <CardContent className="p-4">
                     <div className="flex items-center justify-between mb-2">
                       <p className="font-semibold text-white">Liveness Check</p>
-                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      <CheckCircle className="w-5 h-5 text-green-400" />
                     </div>
-                    <p className="text-lg font-bold text-green-600">PASSED</p>
+                    <p className="text-lg font-bold text-green-400">PASSED</p>
                     <p className="text-xs text-slate-300 mt-1">Live capture confirmed</p>
                   </CardContent>
                 </Card>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <h4 className="font-semibold text-blue-900 mb-3">Extracted Data</h4>
+              <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
+                <h4 className="font-semibold text-blue-300 mb-3">Extracted Data</h4>
                 <div className="grid md:grid-cols-2 gap-3 text-sm">
                   <div>
                     <p className="text-slate-300">Full Name</p>
@@ -690,7 +690,7 @@ function IdentityVerificationFlow({ onBack }: { onBack: () => void }) {
                 <div className="grid md:grid-cols-2 gap-4 text-left">
                   <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">Verification Status</p>
-                    <p className="font-semibold text-green-600">APPROVED</p>
+                    <p className="font-semibold text-green-400">APPROVED</p>
                   </div>
                   <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">Face Match Score</p>

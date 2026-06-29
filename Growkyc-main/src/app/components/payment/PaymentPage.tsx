@@ -128,36 +128,36 @@ export function PaymentPage({ onBack, propertyId }: PaymentPageProps) {
   if (step === 3) {
     return (
       <div className="max-w-3xl mx-auto">
-        <Card className="border-2 border-green-200 bg-green-50">
+        <Card className="border-2 border-green-500/30 bg-green-500/10">
           <CardContent className="p-12 text-center">
             <div className="w-20 h-20 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
               <CheckCircle className="w-12 h-12 text-white" />
             </div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-4">
+            <h1 className="text-3xl font-bold text-slate-100 mb-4">
               Payment Successful!
             </h1>
-            <p className="text-lg text-gray-700 mb-8">
+            <p className="text-lg text-slate-300 mb-8">
               Your purchase has been confirmed. The settlement process will begin shortly.
             </p>
             
-            <div className="bg-white border border-green-200 rounded-lg p-6 mb-8 text-left">
-              <h3 className="font-semibold text-gray-900 mb-4">Transaction Details</h3>
+            <div className="bg-white border border-green-500/30 rounded-lg p-6 mb-8 text-left">
+              <h3 className="font-semibold text-slate-100 mb-4">Transaction Details</h3>
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Transaction ID:</span>
+                  <span className="text-slate-300">Transaction ID:</span>
                   <span className="font-mono font-semibold">TXN-{Date.now()}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Property:</span>
+                  <span className="text-slate-300">Property:</span>
                   <span className="font-semibold">{property.property.address}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Case Number:</span>
+                  <span className="text-slate-300">Case Number:</span>
                   <span className="font-semibold">{property.caseNumber}</span>
                 </div>
                 <div className="flex justify-between pt-3 border-t">
-                  <span className="text-gray-600">Amount Paid:</span>
-                  <span className="font-bold text-lg text-green-600">
+                  <span className="text-slate-300">Amount Paid:</span>
+                  <span className="font-bold text-lg text-green-400">
                     A${totalCost.toLocaleString()}
                   </span>
                 </div>
@@ -165,20 +165,20 @@ export function PaymentPage({ onBack, propertyId }: PaymentPageProps) {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-              <div className="bg-white border border-gray-200 rounded-lg p-4">
-                <FileText className="w-8 h-8 text-blue-600 mx-auto mb-2" />
-                <p className="text-sm font-semibold text-gray-900 mb-1">Documents Sent</p>
-                <p className="text-xs text-gray-600">Check your email</p>
+              <div className="bg-white border border-white/10 rounded-lg p-4">
+                <FileText className="w-8 h-8 text-blue-400 mx-auto mb-2" />
+                <p className="text-sm font-semibold text-slate-100 mb-1">Documents Sent</p>
+                <p className="text-xs text-slate-300">Check your email</p>
               </div>
-              <div className="bg-white border border-gray-200 rounded-lg p-4">
-                <Calendar className="w-8 h-8 text-purple-600 mx-auto mb-2" />
-                <p className="text-sm font-semibold text-gray-900 mb-1">Settlement: 45 Days</p>
-                <p className="text-xs text-gray-600">Expected completion</p>
+              <div className="bg-white border border-white/10 rounded-lg p-4">
+                <Calendar className="w-8 h-8 text-purple-400 mx-auto mb-2" />
+                <p className="text-sm font-semibold text-slate-100 mb-1">Settlement: 45 Days</p>
+                <p className="text-xs text-slate-300">Expected completion</p>
               </div>
-              <div className="bg-white border border-gray-200 rounded-lg p-4">
-                <Shield className="w-8 h-8 text-green-600 mx-auto mb-2" />
-                <p className="text-sm font-semibold text-gray-900 mb-1">Funds Secured</p>
-                <p className="text-xs text-gray-600">In escrow</p>
+              <div className="bg-white border border-white/10 rounded-lg p-4">
+                <Shield className="w-8 h-8 text-green-400 mx-auto mb-2" />
+                <p className="text-sm font-semibold text-slate-100 mb-1">Funds Secured</p>
+                <p className="text-xs text-slate-300">In escrow</p>
               </div>
             </div>
 
@@ -215,21 +215,21 @@ export function PaymentPage({ onBack, propertyId }: PaymentPageProps) {
         <CardContent className="p-6">
           <div className="flex items-center justify-between">
             <div className={`flex items-center gap-3 ${step >= 1 ? 'text-primary' : 'text-gray-400'}`}>
-              <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${step >= 1 ? 'bg-primary text-white' : 'bg-gray-200'}`}>
+              <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${step >= 1 ? 'bg-primary text-white' : 'bg-white/10'}`}>
                 1
               </div>
               <span className="font-semibold hidden sm:block">Review Order</span>
             </div>
-            <div className={`flex-1 h-1 mx-4 ${step >= 2 ? 'bg-primary' : 'bg-gray-200'}`}></div>
+            <div className={`flex-1 h-1 mx-4 ${step >= 2 ? 'bg-primary' : 'bg-white/10'}`}></div>
             <div className={`flex items-center gap-3 ${step >= 2 ? 'text-primary' : 'text-gray-400'}`}>
-              <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${step >= 2 ? 'bg-primary text-white' : 'bg-gray-200'}`}>
+              <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${step >= 2 ? 'bg-primary text-white' : 'bg-white/10'}`}>
                 2
               </div>
               <span className="font-semibold hidden sm:block">Payment</span>
             </div>
-            <div className={`flex-1 h-1 mx-4 ${step >= 3 ? 'bg-primary' : 'bg-gray-200'}`}></div>
+            <div className={`flex-1 h-1 mx-4 ${step >= 3 ? 'bg-primary' : 'bg-white/10'}`}></div>
             <div className={`flex items-center gap-3 ${step >= 3 ? 'text-primary' : 'text-gray-400'}`}>
-              <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${step >= 3 ? 'bg-primary text-white' : 'bg-gray-200'}`}>
+              <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${step >= 3 ? 'bg-primary text-white' : 'bg-white/10'}`}>
                 3
               </div>
               <span className="font-semibold hidden sm:block">Confirmation</span>
@@ -253,10 +253,10 @@ export function PaymentPage({ onBack, propertyId }: PaymentPageProps) {
                 </CardHeader>
                 <CardContent className="p-6">
                   <div className="flex gap-4">
-                    <div className="w-32 h-32 bg-gray-200 rounded-lg flex-shrink-0"></div>
+                    <div className="w-32 h-32 bg-white/10 rounded-lg flex-shrink-0"></div>
                     <div className="flex-1">
                       <h3 className="font-bold text-lg mb-2">{property.property.address}</h3>
-                      <div className="flex items-center gap-1 text-gray-600 mb-3">
+                      <div className="flex items-center gap-1 text-slate-300 mb-3">
                         <MapPin className="w-4 h-4" />
                         <span className="text-sm">
                           {property.property.suburb}, {property.property.state} {property.property.postcode}
@@ -283,9 +283,9 @@ export function PaymentPage({ onBack, propertyId }: PaymentPageProps) {
                 </CardHeader>
                 <CardContent className="p-6">
                   <div className="space-y-4">
-                    <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                    <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
                       <h4 className="font-semibold text-sm mb-2">Purchase Agreement</h4>
-                      <p className="text-sm text-gray-700">
+                      <p className="text-sm text-slate-300">
                         This is a binding purchase agreement for the property at {property.property.address}. 
                         By proceeding with payment, you agree to purchase the property at the stated price 
                         and complete settlement within 45 days.
@@ -300,7 +300,7 @@ export function PaymentPage({ onBack, propertyId }: PaymentPageProps) {
                           checked={termsAccepted.memorandum}
                           onChange={(e) => setTermsAccepted({...termsAccepted, memorandum: e.target.checked})}
                         />
-                        <span className="text-sm text-gray-700">
+                        <span className="text-sm text-slate-300">
                           I have read and understood the Investment Memorandum and Property Inspection Report
                         </span>
                       </label>
@@ -311,7 +311,7 @@ export function PaymentPage({ onBack, propertyId }: PaymentPageProps) {
                           checked={termsAccepted.terms}
                           onChange={(e) => setTermsAccepted({...termsAccepted, terms: e.target.checked})}
                         />
-                        <span className="text-sm text-gray-700">
+                        <span className="text-sm text-slate-300">
                           I agree to the purchase terms, conditions, and settlement period of 45 days
                         </span>
                       </label>
@@ -322,7 +322,7 @@ export function PaymentPage({ onBack, propertyId }: PaymentPageProps) {
                           checked={termsAccepted.risks}
                           onChange={(e) => setTermsAccepted({...termsAccepted, risks: e.target.checked})}
                         />
-                        <span className="text-sm text-gray-700">
+                        <span className="text-sm text-slate-300">
                           I acknowledge this is a purchase of a defaulted loan and accept all associated risks
                         </span>
                       </label>
@@ -333,7 +333,7 @@ export function PaymentPage({ onBack, propertyId }: PaymentPageProps) {
                           checked={termsAccepted.aml}
                           onChange={(e) => setTermsAccepted({...termsAccepted, aml: e.target.checked})}
                         />
-                        <span className="text-sm text-gray-700">
+                        <span className="text-sm text-slate-300">
                           I confirm my funds are from legitimate sources and comply with AML/CTF regulations
                         </span>
                       </label>
@@ -367,13 +367,13 @@ export function PaymentPage({ onBack, propertyId }: PaymentPageProps) {
                       onClick={() => setPaymentMethod('card')}
                       className={`p-6 border-2 rounded-lg transition-all ${
                         paymentMethod === 'card' 
-                          ? 'border-primary bg-blue-50' 
-                          : 'border-gray-200 hover:border-gray-300'
+                          ? 'border-primary bg-blue-500/10' 
+                          : 'border-white/10 hover:border-white/10'
                       }`}
                     >
                       <CreditCard className={`w-8 h-8 mb-3 ${paymentMethod === 'card' ? 'text-primary' : 'text-gray-400'}`} />
                       <p className="font-semibold">Credit/Debit Card</p>
-                      <p className="text-sm text-gray-600">Instant processing</p>
+                      <p className="text-sm text-slate-300">Instant processing</p>
                     </button>
                     <button
                       onClick={() => {
@@ -382,20 +382,20 @@ export function PaymentPage({ onBack, propertyId }: PaymentPageProps) {
                       }}
                       className={`p-6 border-2 rounded-lg transition-all ${
                         paymentMethod === 'bank' 
-                          ? 'border-primary bg-blue-50' 
-                          : 'border-gray-200 hover:border-gray-300'
+                          ? 'border-primary bg-blue-500/10' 
+                          : 'border-white/10 hover:border-white/10'
                       }`}
                     >
                       <Building2 className={`w-8 h-8 mb-3 ${paymentMethod === 'bank' ? 'text-primary' : 'text-gray-400'}`} />
                       <p className="font-semibold">Bank Transfer</p>
-                      <p className="text-sm text-gray-600">1-3 business days</p>
+                      <p className="text-sm text-slate-300">1-3 business days</p>
                     </button>
                   </div>
 
                   {paymentMethod === 'card' && (
                     <div className="space-y-4">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm font-medium text-slate-300 mb-2">
                           Card Number
                         </label>
                         <Input 
@@ -408,7 +408,7 @@ export function PaymentPage({ onBack, propertyId }: PaymentPageProps) {
                       </div>
                       <div className="grid grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                          <label className="block text-sm font-medium text-slate-300 mb-2">
                             Expiry Date
                           </label>
                           <Input 
@@ -419,7 +419,7 @@ export function PaymentPage({ onBack, propertyId }: PaymentPageProps) {
                           />
                         </div>
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                          <label className="block text-sm font-medium text-slate-300 mb-2">
                             CVV
                           </label>
                           <Input 
@@ -432,7 +432,7 @@ export function PaymentPage({ onBack, propertyId }: PaymentPageProps) {
                         </div>
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm font-medium text-slate-300 mb-2">
                           Cardholder Name
                         </label>
                         <Input 
@@ -446,23 +446,23 @@ export function PaymentPage({ onBack, propertyId }: PaymentPageProps) {
 
                   {paymentMethod === 'bank' && (
                     <div className="space-y-4">
-                      <div className="p-4 bg-amber-50 border border-amber-200 rounded-lg">
+                      <div className="p-4 bg-amber-500/10 border border-amber-500/30 rounded-lg">
                         <div className="flex items-start gap-3">
-                          <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                          <AlertCircle className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
                           <div>
-                            <p className="text-sm font-semibold text-amber-900 mb-1">
+                            <p className="text-sm font-semibold text-amber-300 mb-1">
                               Bank Transfer Instructions
                             </p>
-                            <p className="text-sm text-amber-800">
+                            <p className="text-sm text-amber-300">
                               Please transfer the full amount to the account details below. 
                               Your purchase will be confirmed once funds are received (1-3 business days).
                             </p>
                           </div>
                         </div>
                       </div>
-                      <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg space-y-2 font-mono text-sm">
+                      <div className="p-4 bg-white/5 border border-white/10 rounded-lg space-y-2 font-mono text-sm">
                         <div className="flex justify-between">
-                          <span className="text-gray-600">Account Name:</span>
+                          <span className="text-slate-300">Account Name:</span>
                           <button 
                             onClick={() => handleCopyBankDetails('Grow MIP Escrow Trust')}
                             className="font-semibold hover:text-primary"
@@ -471,7 +471,7 @@ export function PaymentPage({ onBack, propertyId }: PaymentPageProps) {
                           </button>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-gray-600">BSB:</span>
+                          <span className="text-slate-300">BSB:</span>
                           <button 
                             onClick={() => handleCopyBankDetails('062-000')}
                             className="font-semibold hover:text-primary"
@@ -480,7 +480,7 @@ export function PaymentPage({ onBack, propertyId }: PaymentPageProps) {
                           </button>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-gray-600">Account Number:</span>
+                          <span className="text-slate-300">Account Number:</span>
                           <button 
                             onClick={() => handleCopyBankDetails('1234 5678')}
                             className="font-semibold hover:text-primary"
@@ -489,7 +489,7 @@ export function PaymentPage({ onBack, propertyId }: PaymentPageProps) {
                           </button>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-gray-600">Reference:</span>
+                          <span className="text-slate-300">Reference:</span>
                           <button 
                             onClick={() => handleCopyBankDetails(property.caseNumber)}
                             className="font-semibold hover:text-primary"
@@ -501,14 +501,14 @@ export function PaymentPage({ onBack, propertyId }: PaymentPageProps) {
                     </div>
                   )}
 
-                  <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+                  <div className="mt-6 p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
                     <div className="flex items-start gap-3">
-                      <Lock className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <Lock className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
                       <div>
-                        <p className="text-sm font-semibold text-green-900 mb-1">
+                        <p className="text-sm font-semibold text-green-300 mb-1">
                           Secure Payment
                         </p>
-                        <p className="text-sm text-green-800">
+                        <p className="text-sm text-green-300">
                           All payments are processed securely and held in escrow until settlement. 
                           Your payment information is encrypted and protected.
                         </p>
@@ -557,30 +557,30 @@ export function PaymentPage({ onBack, propertyId }: PaymentPageProps) {
             <CardContent className="p-6">
               <div className="space-y-4">
                 <div>
-                  <p className="text-sm text-gray-600 mb-2">Property</p>
-                  <p className="font-semibold text-gray-900">{property.property.address}</p>
-                  <p className="text-sm text-gray-600">{property.caseNumber}</p>
+                  <p className="text-sm text-slate-300 mb-2">Property</p>
+                  <p className="font-semibold text-slate-100">{property.property.address}</p>
+                  <p className="text-sm text-slate-300">{property.caseNumber}</p>
                 </div>
 
                 <div className="pt-4 border-t space-y-3">
                   <div className="flex justify-between text-sm">
-                    <span className="text-gray-600">Purchase Price</span>
+                    <span className="text-slate-300">Purchase Price</span>
                     <span className="font-semibold">A${buyNowPrice.toLocaleString()}</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-gray-600">Legal Fees</span>
+                    <span className="text-slate-300">Legal Fees</span>
                     <span className="font-semibold">A${legalFees.toLocaleString()}</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-gray-600">Stamp Duty (est.)</span>
+                    <span className="text-slate-300">Stamp Duty (est.)</span>
                     <span className="font-semibold">A${stampDuty.toLocaleString()}</span>
                   </div>
                 </div>
 
                 <div className="pt-4 border-t">
                   <div className="flex justify-between items-center">
-                    <span className="font-semibold text-gray-900">Total</span>
-                    <span className="text-2xl font-bold text-gray-900">
+                    <span className="font-semibold text-slate-100">Total</span>
+                    <span className="text-2xl font-bold text-slate-100">
                       A${totalCost.toLocaleString()}
                     </span>
                   </div>
@@ -588,35 +588,35 @@ export function PaymentPage({ onBack, propertyId }: PaymentPageProps) {
 
                 <div className="pt-4 border-t space-y-3">
                   <div className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-sm font-semibold text-gray-900">Settlement in 45 days</p>
-                      <p className="text-xs text-gray-600">Professional conveyancing included</p>
+                      <p className="text-sm font-semibold text-slate-100">Settlement in 45 days</p>
+                      <p className="text-xs text-slate-300">Professional conveyancing included</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-sm font-semibold text-gray-900">Funds held in escrow</p>
-                      <p className="text-xs text-gray-600">Protected until settlement</p>
+                      <p className="text-sm font-semibold text-slate-100">Funds held in escrow</p>
+                      <p className="text-xs text-slate-300">Protected until settlement</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-sm font-semibold text-gray-900">Full documentation</p>
-                      <p className="text-xs text-gray-600">Contract & IM provided</p>
+                      <p className="text-sm font-semibold text-slate-100">Full documentation</p>
+                      <p className="text-xs text-slate-300">Contract & IM provided</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="pt-4 border-t">
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-                    <p className="text-xs font-semibold text-blue-900 mb-1">Instant Equity</p>
-                    <p className="text-lg font-bold text-blue-600">
+                  <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-3">
+                    <p className="text-xs font-semibold text-blue-300 mb-1">Instant Equity</p>
+                    <p className="text-lg font-bold text-blue-400">
                       A${((property.valuation.amount - buyNowPrice) / 1000).toFixed(0)}k
                     </p>
-                    <p className="text-xs text-blue-800">
+                    <p className="text-xs text-blue-300">
                       Property valued at A${(property.valuation.amount / 1000).toFixed(0)}k
                     </p>
                   </div>

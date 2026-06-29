@@ -196,11 +196,11 @@ export function ComplaintsModule({ onBack }: ComplaintsModuleProps) {
 
   const getSLAColor = (status: string) => {
     switch (status) {
-      case 'On Track': return 'text-green-600';
-      case 'At Risk': return 'text-amber-600';
-      case 'Overdue': return 'text-red-600';
+      case 'On Track': return 'text-green-400';
+      case 'At Risk': return 'text-amber-400';
+      case 'Overdue': return 'text-red-400';
       case 'Completed': return 'text-slate-300';
-      case 'Pending Acknowledgment': return 'text-blue-600';
+      case 'Pending Acknowledgment': return 'text-blue-400';
       default: return 'text-slate-300';
     }
   };
@@ -248,31 +248,31 @@ export function ComplaintsModule({ onBack }: ComplaintsModuleProps) {
             <div className="text-xs text-slate-300 mt-1">Total</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600">{stats.new}</div>
+            <div className="text-3xl font-bold text-blue-400">{stats.new}</div>
             <div className="text-xs text-slate-300 mt-1">New</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-cyan-600">{stats.acknowledged}</div>
+            <div className="text-3xl font-bold text-cyan-400">{stats.acknowledged}</div>
             <div className="text-xs text-slate-300 mt-1">Acknowledged</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-amber-600">{stats.investigating}</div>
+            <div className="text-3xl font-bold text-amber-400">{stats.investigating}</div>
             <div className="text-xs text-slate-300 mt-1">Investigating</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-green-600">{stats.resolved}</div>
+            <div className="text-3xl font-bold text-green-400">{stats.resolved}</div>
             <div className="text-xs text-slate-300 mt-1">Resolved</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-red-600">{stats.overdue}</div>
+            <div className="text-3xl font-bold text-red-400">{stats.overdue}</div>
             <div className="text-xs text-slate-300 mt-1">Overdue</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-orange-600">{stats.urgent}</div>
+            <div className="text-3xl font-bold text-orange-400">{stats.urgent}</div>
             <div className="text-xs text-slate-300 mt-1">Urgent</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-purple-600">{stats.hardship}</div>
+            <div className="text-3xl font-bold text-purple-400">{stats.hardship}</div>
             <div className="text-xs text-slate-300 mt-1">Hardship</div>
           </div>
         </div>
@@ -311,8 +311,8 @@ export function ComplaintsModule({ onBack }: ComplaintsModuleProps) {
                 <Card 
                   key={complaint.complaintId} 
                   className={`border-2 ${
-                    complaint.urgentFlag ? 'border-red-300 bg-red-50' :
-                    complaint.hardshipFlag ? 'border-purple-300 bg-purple-50' :
+                    complaint.urgentFlag ? 'border-red-300 bg-red-500/10' :
+                    complaint.hardshipFlag ? 'border-purple-300 bg-purple-500/10' :
                     'border-white/10'
                   } hover:border-cyan-300 transition-colors`}
                 >
@@ -321,7 +321,7 @@ export function ComplaintsModule({ onBack }: ComplaintsModuleProps) {
                       {/* Complaint ID & Flags */}
                       <div className="md:col-span-3">
                         <div className="flex items-center gap-2 mb-2">
-                          <MessageSquare className="w-5 h-5 text-cyan-600" />
+                          <MessageSquare className="w-5 h-5 text-cyan-400" />
                           <div>
                             <div className="font-bold text-white">{complaint.complaintId}</div>
                             <div className="text-sm text-slate-300">{complaint.complainantName}</div>
@@ -411,7 +411,7 @@ export function ComplaintsModule({ onBack }: ComplaintsModuleProps) {
                         {complaint.outcome ? (
                           <div className="text-sm">
                             <div className="text-xs text-slate-300 mb-1">Outcome</div>
-                            <div className="font-semibold text-green-700">{complaint.outcome}</div>
+                            <div className="font-semibold text-green-300">{complaint.outcome}</div>
                             {complaint.resolutionDate && (
                               <div className="text-xs text-slate-300 mt-1">
                                 Resolved: {complaint.resolutionDate}
@@ -458,7 +458,7 @@ export function ComplaintsModule({ onBack }: ComplaintsModuleProps) {
 
           {/* DETAIL VIEW TAB */}
           <TabsContent value="detail">
-            <Card className="border-2 border-cyan-200">
+            <Card className="border-2 border-cyan-500/30">
               <CardHeader className="bg-gradient-to-r from-cyan-50 to-blue-50">
                 <CardTitle>Complaint Detail: COMP-2024-002</CardTitle>
                 <CardDescription>
@@ -467,9 +467,9 @@ export function ComplaintsModule({ onBack }: ComplaintsModuleProps) {
               </CardHeader>
               <CardContent className="p-6 space-y-6">
                 {/* Complainant Details */}
-                <div className="bg-blue-50 rounded-lg p-4 border-2 border-blue-200">
-                  <h3 className="font-bold text-blue-900 mb-3 flex items-center gap-2">
-                    <User className="w-5 h-5 text-blue-600" />
+                <div className="bg-blue-500/10 rounded-lg p-4 border-2 border-blue-500/30">
+                  <h3 className="font-bold text-blue-300 mb-3 flex items-center gap-2">
+                    <User className="w-5 h-5 text-blue-400" />
                     Complainant Details
                   </h3>
                   <div className="grid md:grid-cols-3 gap-4 text-sm">
@@ -519,8 +519,8 @@ Client states they were not asked about existing commitments and expenses were u
                 </div>
 
                 {/* Resolution Workflow */}
-                <div className="bg-green-50 rounded-lg p-4 border-2 border-green-200">
-                  <h3 className="font-bold text-green-900 mb-4">Resolution Workflow</h3>
+                <div className="bg-green-500/10 rounded-lg p-4 border-2 border-green-500/30">
+                  <h3 className="font-bold text-green-300 mb-4">Resolution Workflow</h3>
                   
                   <div className="space-y-4">
                     <div>
@@ -591,7 +591,7 @@ Client states they were not asked about existing commitments and expenses were u
           <TabsContent value="sla">
             <div className="grid gap-6">
               {/* SLA Requirements */}
-              <Card className="border-2 border-amber-200">
+              <Card className="border-2 border-amber-500/30">
                 <CardHeader className="bg-gradient-to-r from-amber-50 to-orange-50">
                   <CardTitle>ASIC RG271 SLA Requirements</CardTitle>
                   <CardDescription>
@@ -600,69 +600,69 @@ Client states they were not asked about existing commitments and expenses were u
                 </CardHeader>
                 <CardContent className="p-6">
                   <div className="space-y-4">
-                    <div className="p-4 bg-blue-50 rounded-lg border-2 border-blue-200">
-                      <h3 className="font-bold text-blue-900 mb-2">24-Hour Acknowledgment Requirement</h3>
-                      <p className="text-sm text-blue-800 mb-3">
+                    <div className="p-4 bg-blue-500/10 rounded-lg border-2 border-blue-500/30">
+                      <h3 className="font-bold text-blue-300 mb-2">24-Hour Acknowledgment Requirement</h3>
+                      <p className="text-sm text-blue-300 mb-3">
                         All complaints must be acknowledged within 24 hours of receipt (RG271.53)
                       </p>
                       <div className="grid md:grid-cols-2 gap-4">
                         <div className="p-3 bg-[#1e293b] rounded border border-blue-300">
                           <div className="text-xs text-slate-300">Acknowledged in 24hrs</div>
-                          <div className="text-2xl font-bold text-green-600">
+                          <div className="text-2xl font-bold text-green-400">
                             {complaints.filter(c => c.acknowledgmentDate).length}
                           </div>
                         </div>
                         <div className="p-3 bg-[#1e293b] rounded border border-red-300">
                           <div className="text-xs text-slate-300">Pending Acknowledgment</div>
-                          <div className="text-2xl font-bold text-red-600">
+                          <div className="text-2xl font-bold text-red-400">
                             {complaints.filter(c => !c.acknowledgmentDate).length}
                           </div>
                         </div>
                       </div>
                     </div>
 
-                    <div className="p-4 bg-green-50 rounded-lg border-2 border-green-200">
-                      <h3 className="font-bold text-green-900 mb-2">30-Day Resolution Requirement</h3>
-                      <p className="text-sm text-green-800 mb-3">
+                    <div className="p-4 bg-green-500/10 rounded-lg border-2 border-green-500/30">
+                      <h3 className="font-bold text-green-300 mb-2">30-Day Resolution Requirement</h3>
+                      <p className="text-sm text-green-300 mb-3">
                         Complaints must be resolved within 30 calendar days (RG271.60)
                       </p>
                       <div className="grid md:grid-cols-3 gap-4">
                         <div className="p-3 bg-[#1e293b] rounded border border-green-300">
                           <div className="text-xs text-slate-300">On Track</div>
-                          <div className="text-2xl font-bold text-green-600">
+                          <div className="text-2xl font-bold text-green-400">
                             {complaints.filter(c => c.slaStatus === 'On Track').length}
                           </div>
                         </div>
                         <div className="p-3 bg-[#1e293b] rounded border border-amber-300">
                           <div className="text-xs text-slate-300">At Risk</div>
-                          <div className="text-2xl font-bold text-amber-600">
+                          <div className="text-2xl font-bold text-amber-400">
                             {complaints.filter(c => c.slaStatus === 'At Risk').length}
                           </div>
                         </div>
                         <div className="p-3 bg-[#1e293b] rounded border border-red-300">
                           <div className="text-xs text-slate-300">Overdue</div>
-                          <div className="text-2xl font-bold text-red-600">
+                          <div className="text-2xl font-bold text-red-400">
                             {complaints.filter(c => c.daysRemaining < 0).length}
                           </div>
                         </div>
                       </div>
                     </div>
 
-                    <div className="p-4 bg-purple-50 rounded-lg border-2 border-purple-200">
-                      <h3 className="font-bold text-purple-900 mb-2">Urgent Complaint Escalation</h3>
-                      <p className="text-sm text-purple-800 mb-3">
+                    <div className="p-4 bg-purple-500/10 rounded-lg border-2 border-purple-500/30">
+                      <h3 className="font-bold text-purple-300 mb-2">Urgent Complaint Escalation</h3>
+                      <p className="text-sm text-purple-300 mb-3">
                         Urgent complaints (hardship, vulnerable customers) require priority handling
                       </p>
                       <div className="grid md:grid-cols-2 gap-4">
                         <div className="p-3 bg-[#1e293b] rounded border border-purple-300">
                           <div className="text-xs text-slate-300">Urgent Complaints</div>
-                          <div className="text-2xl font-bold text-orange-600">
+                          <div className="text-2xl font-bold text-orange-400">
                             {stats.urgent}
                           </div>
                         </div>
                         <div className="p-3 bg-[#1e293b] rounded border border-purple-300">
                           <div className="text-xs text-slate-300">Hardship Cases</div>
-                          <div className="text-2xl font-bold text-purple-600">
+                          <div className="text-2xl font-bold text-purple-400">
                             {stats.hardship}
                           </div>
                         </div>
@@ -673,10 +673,10 @@ Client states they were not asked about existing commitments and expenses were u
               </Card>
 
               {/* Overdue Alerts */}
-              <Card className="border-2 border-red-200">
+              <Card className="border-2 border-red-500/30">
                 <CardHeader className="bg-gradient-to-r from-red-50 to-orange-50">
                   <CardTitle className="flex items-center gap-2">
-                    <AlertTriangle className="w-5 h-5 text-red-600" />
+                    <AlertTriangle className="w-5 h-5 text-red-400" />
                     Overdue Complaints
                   </CardTitle>
                   <CardDescription>
@@ -686,7 +686,7 @@ Client states they were not asked about existing commitments and expenses were u
                 <CardContent className="p-6">
                   {complaints.filter(c => c.daysRemaining < 5 && c.status !== 'Resolved').length === 0 ? (
                     <div className="text-center py-8 text-slate-300">
-                      <CheckCircle className="w-12 h-12 text-green-600 mx-auto mb-3" />
+                      <CheckCircle className="w-12 h-12 text-green-400 mx-auto mb-3" />
                       <p>No overdue complaints - all on track! ✓</p>
                     </div>
                   ) : (
@@ -711,10 +711,10 @@ Client states they were not asked about existing commitments and expenses were u
               <CardContent className="p-6">
                 <div className="space-y-3">
                   {complaints.filter(c => c.outcome).map((complaint) => (
-                    <div key={complaint.complaintId} className="p-4 bg-green-50 rounded-lg border-2 border-green-200">
+                    <div key={complaint.complaintId} className="p-4 bg-green-500/10 rounded-lg border-2 border-green-500/30">
                       <div className="flex items-center justify-between mb-3">
                         <div className="flex items-center gap-2">
-                          <CheckCircle className="w-5 h-5 text-green-600" />
+                          <CheckCircle className="w-5 h-5 text-green-400" />
                           <div>
                             <div className="font-bold text-white">{complaint.complaintId}</div>
                             <div className="text-sm text-slate-300">{complaint.complainantName}</div>
@@ -745,7 +745,7 @@ Client states they were not asked about existing commitments and expenses were u
 
           {/* REPORTING TAB */}
           <TabsContent value="reporting">
-            <Card className="border-2 border-indigo-200">
+            <Card className="border-2 border-indigo-500/30">
               <CardHeader className="bg-gradient-to-r from-indigo-50 to-purple-50">
                 <CardTitle>Management Reporting Dashboard</CardTitle>
                 <CardDescription>
@@ -755,7 +755,7 @@ Client states they were not asked about existing commitments and expenses were u
               <CardContent className="p-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   {/* By Category */}
-                  <div className="p-4 bg-[#1e293b] rounded-lg border-2 border-indigo-200">
+                  <div className="p-4 bg-[#1e293b] rounded-lg border-2 border-indigo-500/30">
                     <h3 className="font-bold text-white mb-4">Complaints by Category</h3>
                     <div className="space-y-2">
                       {[
@@ -769,7 +769,7 @@ Client states they were not asked about existing commitments and expenses were u
                         <div key={idx} className="flex items-center justify-between">
                           <span className="text-sm text-slate-300">{item.category}</span>
                           <div className="flex items-center gap-2">
-                            <div className="w-24 bg-gray-200 rounded-full h-2">
+                            <div className="w-24 bg-white/10 rounded-full h-2">
                               <div className={`${item.color} h-2 rounded-full`} style={{ width: `${(item.count / stats.total) * 100}%` }} />
                             </div>
                             <span className="text-sm font-bold text-white w-6">{item.count}</span>
@@ -780,7 +780,7 @@ Client states they were not asked about existing commitments and expenses were u
                   </div>
 
                   {/* By Channel */}
-                  <div className="p-4 bg-[#1e293b] rounded-lg border-2 border-indigo-200">
+                  <div className="p-4 bg-[#1e293b] rounded-lg border-2 border-indigo-500/30">
                     <h3 className="font-bold text-white mb-4">Complaints by Channel</h3>
                     <div className="space-y-2">
                       {[

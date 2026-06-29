@@ -199,7 +199,7 @@ export function ClientAccountingIntegration({
           <div className="flex items-start justify-between">
             <div>
               <CardTitle className="flex items-center gap-2">
-                <Database className="w-5 h-5 text-blue-600" />
+                <Database className="w-5 h-5 text-blue-400" />
                 Connect Client Accounting Software
               </CardTitle>
               <CardDescription className="mt-1">
@@ -216,10 +216,10 @@ export function ClientAccountingIntegration({
           {/* STEP 1: SELECT PLATFORM */}
           {step === 'select' && (
             <div className="space-y-6">
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
                 <div className="flex gap-2">
-                  <Shield className="w-5 h-5 text-blue-600 flex-shrink-0" />
-                  <div className="text-sm text-blue-800">
+                  <Shield className="w-5 h-5 text-blue-400 flex-shrink-0" />
+                  <div className="text-sm text-blue-300">
                     <p className="font-semibold mb-1">Client-Specific Integration</p>
                     <p>Connect to this client's accounting software to monitor their bank transactions. Only flagged transactions will be saved for investigation.</p>
                   </div>
@@ -275,10 +275,10 @@ export function ClientAccountingIntegration({
                 </p>
               </div>
 
-              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+              <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-4">
                 <div className="flex gap-2">
-                  <Shield className="w-5 h-5 text-amber-600 flex-shrink-0" />
-                  <div className="text-sm text-amber-800">
+                  <Shield className="w-5 h-5 text-amber-400 flex-shrink-0" />
+                  <div className="text-sm text-amber-300">
                     <p className="font-semibold mb-1">Security & Privacy</p>
                     <p>Credentials are encrypted and stored securely. We only access transaction data for AML/CTF monitoring. Only transactions flagged as suspicious will be saved.</p>
                   </div>
@@ -393,10 +393,10 @@ export function ClientAccountingIntegration({
                 </p>
               </div>
 
-              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+              <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-4">
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
-                  <div className="text-sm text-green-800">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <div className="text-sm text-green-300">
                     <p className="font-semibold">Connection Successful!</p>
                     <p>Select accounts below to enable AML transaction monitoring.</p>
                   </div>
@@ -411,14 +411,14 @@ export function ClientAccountingIntegration({
                     <Card 
                       key={account.id} 
                       className={`border-2 transition-all ${
-                        isSelected ? 'border-blue-500 bg-blue-50' : 'border-white/10'
+                        isSelected ? 'border-blue-500 bg-blue-500/10' : 'border-white/10'
                       }`}
                     >
                       <CardContent className="p-4">
                         <div className="flex items-start justify-between">
                           <div className="flex items-start gap-4 flex-1">
-                            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                              <Database className="w-6 h-6 text-blue-600" />
+                            <div className="w-12 h-12 bg-blue-500/15 rounded-lg flex items-center justify-center">
+                              <Database className="w-6 h-6 text-blue-400" />
                             </div>
                             <div className="flex-1">
                               <div className="flex items-center gap-2 mb-1">
@@ -449,7 +449,7 @@ export function ClientAccountingIntegration({
                                 {account.suspicious > 0 && (
                                   <div className="flex items-center gap-1">
                                     <AlertTriangle className="w-3 h-3 text-red-500" />
-                                    <span className="text-red-600 font-semibold">{account.suspicious} flagged</span>
+                                    <span className="text-red-400 font-semibold">{account.suspicious} flagged</span>
                                   </div>
                                 )}
                               </div>
@@ -477,19 +477,19 @@ export function ClientAccountingIntegration({
               </div>
 
               {selectedAccounts.length > 0 && (
-                <Card className="bg-blue-50 border-blue-200">
+                <Card className="bg-blue-500/10 border-blue-500/30">
                   <CardContent className="p-4">
                     <div className="flex items-start justify-between">
                       <div>
-                        <p className="font-semibold text-blue-900">
+                        <p className="font-semibold text-blue-300">
                           {selectedAccounts.length} account(s) selected for monitoring
                         </p>
-                        <p className="text-sm text-blue-700 mt-1">
+                        <p className="text-sm text-blue-300 mt-1">
                           Total flagged transactions: {availableAccounts
                             .filter(acc => selectedAccounts.includes(acc.id))
                             .reduce((sum, acc) => sum + acc.suspicious, 0)}
                         </p>
-                        <p className="text-xs text-blue-600 mt-2">
+                        <p className="text-xs text-blue-400 mt-2">
                           Only transactions flagged as suspicious will be saved to the system for investigation.
                         </p>
                       </div>

@@ -35,10 +35,10 @@ export function DisclosureRequirements({
       <Card className="border-2 border-purple-300">
         <CardHeader className="bg-gradient-to-r from-purple-50 to-indigo-50">
           <CardTitle className="text-lg flex items-center gap-2">
-            <Shield className="w-5 h-5 text-purple-600" />
+            <Shield className="w-5 h-5 text-purple-400" />
             Step 1: Confirm Lender Licence Status (NCCP s29)
           </CardTitle>
-          <p className="text-sm text-gray-600 mt-1">
+          <p className="text-sm text-slate-300 mt-1">
             For regulated consumer credit, the lender must hold an Australian Credit Licence or be an authorised credit representative
           </p>
         </CardHeader>
@@ -49,7 +49,7 @@ export function DisclosureRequirements({
               id="lenderLicenceType"
               value={formData.lenderLicenceType || ''}
               onChange={(e) => onInputChange('lenderLicenceType', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+              className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
             >
               <option value="">Select...</option>
               <option value="acl_holder">Australian Credit Licence (ACL) Holder</option>
@@ -80,10 +80,10 @@ export function DisclosureRequirements({
                   placeholder="ABC Lending Pty Ltd"
                 />
               </div>
-              <div className="p-3 bg-purple-50 border border-purple-200 rounded-lg">
-                <p className="text-xs text-purple-900">
+              <div className="p-3 bg-purple-500/10 border border-purple-500/30 rounded-lg">
+                <p className="text-xs text-purple-300">
                   <strong>✓ Verification:</strong> Check ASIC's Australian Credit Licence Register at 
-                  <a href="https://connectonline.asic.gov.au" className="text-purple-700 underline ml-1" target="_blank" rel="noopener noreferrer">
+                  <a href="https://connectonline.asic.gov.au" className="text-purple-300 underline ml-1" target="_blank" rel="noopener noreferrer">
                     connectonline.asic.gov.au
                   </a>
                 </p>
@@ -92,12 +92,12 @@ export function DisclosureRequirements({
           )}
 
           {formData.lenderLicenceType === 'commercial' && (
-            <div className="p-4 bg-yellow-50 border-2 border-yellow-300 rounded-lg">
+            <div className="p-4 bg-yellow-500/10 border-2 border-yellow-300 rounded-lg">
               <div className="flex items-start gap-2">
-                <AlertCircle className="w-5 h-5 text-yellow-700 mt-0.5 flex-shrink-0" />
+                <AlertCircle className="w-5 h-5 text-yellow-300 mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="text-sm font-bold text-yellow-900 mb-1">Commercial Lending (Outside NCCP)</p>
-                  <p className="text-xs text-yellow-800">
+                  <p className="text-sm font-bold text-yellow-300 mb-1">Commercial Lending (Outside NCCP)</p>
+                  <p className="text-xs text-yellow-300">
                     While outside NCCP responsible lending obligations, misleading conduct laws still apply 
                     under ASIC Act 2001 s12DA and ACCC regulations. Ensure all representations are accurate.
                   </p>
@@ -114,17 +114,17 @@ export function DisclosureRequirements({
           <div className="flex items-center justify-between">
             <div>
               <CardTitle className="text-lg flex items-center gap-2">
-                <FileText className="w-5 h-5 text-blue-600" />
+                <FileText className="w-5 h-5 text-blue-400" />
                 Step 5: Disclosure Requirements (NCCP Part 3-2)
               </CardTitle>
-              <p className="text-sm text-gray-600 mt-1">
+              <p className="text-sm text-slate-300 mt-1">
                 All required disclosures must be provided before the borrower signs the credit contract
               </p>
             </div>
             {allDisclosuresProvided && (
-              <div className="flex items-center gap-2 px-3 py-1 bg-green-100 border border-green-300 rounded-lg">
-                <CheckCircle className="w-4 h-4 text-green-700" />
-                <span className="text-xs font-bold text-green-900">All Provided</span>
+              <div className="flex items-center gap-2 px-3 py-1 bg-green-500/15 border border-green-300 rounded-lg">
+                <CheckCircle className="w-4 h-4 text-green-300" />
+                <span className="text-xs font-bold text-green-300">All Provided</span>
               </div>
             )}
           </div>
@@ -174,18 +174,18 @@ export function DisclosureRequirements({
                 key={item.id}
                 className={`p-4 rounded-lg border-2 ${
                   formData[item.id] 
-                    ? 'bg-green-50 border-green-200' 
+                    ? 'bg-green-500/10 border-green-500/30' 
                     : item.required 
-                    ? 'bg-red-50 border-red-200' 
-                    : 'bg-gray-50 border-gray-200'
+                    ? 'bg-red-500/10 border-red-500/30' 
+                    : 'bg-white/5 border-white/10'
                 }`}
               >
                 <label className="flex items-start gap-3 cursor-pointer">
                   <div className="pt-1">
                     {formData[item.id] ? (
-                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      <CheckCircle className="w-5 h-5 text-green-400" />
                     ) : item.required ? (
-                      <Clock className="w-5 h-5 text-red-600" />
+                      <Clock className="w-5 h-5 text-red-400" />
                     ) : (
                       <Clock className="w-5 h-5 text-gray-400" />
                     )}
@@ -199,17 +199,17 @@ export function DisclosureRequirements({
                         className="w-4 h-4"
                       />
                       <span className={`font-semibold text-sm ${
-                        formData[item.id] ? 'text-green-900' : 'text-gray-900'
+                        formData[item.id] ? 'text-green-300' : 'text-slate-100'
                       }`}>
                         {item.label}
-                        {item.required && <span className="text-red-600 ml-1">*</span>}
+                        {item.required && <span className="text-red-400 ml-1">*</span>}
                       </span>
                     </div>
-                    <p className="text-xs text-gray-600 mt-1 ml-6">{item.description}</p>
+                    <p className="text-xs text-slate-300 mt-1 ml-6">{item.description}</p>
                     
                     {formData[item.id] && (
                       <div className="mt-2 ml-6 flex items-center gap-2">
-                        <Label htmlFor={`${item.id}Date`} className="text-xs text-gray-600">
+                        <Label htmlFor={`${item.id}Date`} className="text-xs text-slate-300">
                           Date provided:
                         </Label>
                         <Input
@@ -228,7 +228,7 @@ export function DisclosureRequirements({
           </div>
 
           {/* Comparison Rate */}
-          <div className="grid md:grid-cols-2 gap-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+          <div className="grid md:grid-cols-2 gap-4 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
             <div>
               <Label htmlFor="disclosedInterestRate">Disclosed Interest Rate (% p.a.) *</Label>
               <Input
@@ -250,18 +250,18 @@ export function DisclosureRequirements({
                 onChange={(e) => onInputChange('comparisonRate', e.target.value)}
                 placeholder="6.75"
               />
-              <p className="text-xs text-gray-600 mt-1">Must include all fees and charges</p>
+              <p className="text-xs text-slate-300 mt-1">Must include all fees and charges</p>
             </div>
           </div>
 
           {/* Warning */}
           {!allDisclosuresProvided && (
-            <div className="p-4 bg-red-50 border-2 border-red-300 rounded-lg">
+            <div className="p-4 bg-red-500/10 border-2 border-red-300 rounded-lg">
               <div className="flex items-start gap-2">
-                <AlertCircle className="w-5 h-5 text-red-700 mt-0.5 flex-shrink-0" />
+                <AlertCircle className="w-5 h-5 text-red-300 mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="text-sm font-bold text-red-900 mb-1">⚠️ Incomplete Disclosures</p>
-                  <p className="text-xs text-red-800">
+                  <p className="text-sm font-bold text-red-300 mb-1">⚠️ Incomplete Disclosures</p>
+                  <p className="text-xs text-red-300">
                     All required disclosures must be provided before the credit contract is signed. 
                     Failure to provide disclosures may result in ASIC enforcement action and the contract may be voidable.
                   </p>
@@ -276,10 +276,10 @@ export function DisclosureRequirements({
       <Card className="border-2 border-teal-300">
         <CardHeader className="bg-gradient-to-r from-teal-50 to-cyan-50">
           <CardTitle className="text-lg flex items-center gap-2">
-            <FileText className="w-5 h-5 text-teal-600" />
+            <FileText className="w-5 h-5 text-teal-400" />
             Step 8: Hardship & Complaint Handling (NCCP Part 3-2A)
           </CardTitle>
-          <p className="text-sm text-gray-600 mt-1">
+          <p className="text-sm text-slate-300 mt-1">
             Lender must have processes in place for hardship and complaints
           </p>
         </CardHeader>
@@ -293,10 +293,10 @@ export function DisclosureRequirements({
                 className="w-4 h-4 mt-1"
               />
               <div>
-                <span className="font-semibold text-sm text-gray-900">
+                <span className="font-semibold text-sm text-slate-100">
                   Internal Dispute Resolution (IDR) Process *
                 </span>
-                <p className="text-xs text-gray-600 mt-1">
+                <p className="text-xs text-slate-300 mt-1">
                   Lender has documented IDR process compliant with RG 165
                 </p>
               </div>
@@ -310,10 +310,10 @@ export function DisclosureRequirements({
                 className="w-4 h-4 mt-1"
               />
               <div>
-                <span className="font-semibold text-sm text-gray-900">
+                <span className="font-semibold text-sm text-slate-100">
                   AFCA Membership *
                 </span>
-                <p className="text-xs text-gray-600 mt-1">
+                <p className="text-xs text-slate-300 mt-1">
                   Lender is a member of Australian Financial Complaints Authority (AFCA)
                 </p>
                 {formData.afcaMemberConfirmed && (
@@ -339,18 +339,18 @@ export function DisclosureRequirements({
                 className="w-4 h-4 mt-1"
               />
               <div>
-                <span className="font-semibold text-sm text-gray-900">
+                <span className="font-semibold text-sm text-slate-100">
                   Hardship Variation Rights (NCCP s72)
                 </span>
-                <p className="text-xs text-gray-600 mt-1">
+                <p className="text-xs text-slate-300 mt-1">
                   Borrower informed of right to request hardship variation if circumstances change
                 </p>
               </div>
             </label>
           </div>
 
-          <div className="p-4 bg-teal-50 border border-teal-200 rounded-lg">
-            <p className="text-xs text-teal-900">
+          <div className="p-4 bg-teal-500/10 border border-teal-500/30 rounded-lg">
+            <p className="text-xs text-teal-300">
               <strong>📋 Note:</strong> Under NCCP s72-74, if a borrower experiences financial hardship, 
               they may request a variation to their credit contract. The lender must have a process 
               to consider and respond to hardship requests within 21 days.

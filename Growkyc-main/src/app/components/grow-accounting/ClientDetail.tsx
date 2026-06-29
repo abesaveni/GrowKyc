@@ -118,19 +118,19 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
 
   const getStatusBadge = (status: string) => {
     const styles = {
-      active: 'bg-green-50 text-green-700 border-green-300',
-      inactive: 'bg-gray-50 text-gray-700 border-gray-300',
-      pending: 'bg-yellow-50 text-yellow-700 border-yellow-300'
+      active: 'bg-green-500/10 text-green-300 border-green-300',
+      inactive: 'bg-white/5 text-slate-300 border-white/10',
+      pending: 'bg-yellow-500/10 text-yellow-300 border-yellow-300'
     };
     return styles[status as keyof typeof styles] || styles.active;
   };
 
   const getJobStatusBadge = (status: string) => {
     const styles = {
-      in_progress: 'bg-blue-50 text-blue-700 border-blue-300',
-      complete: 'bg-green-50 text-green-700 border-green-300',
-      pending: 'bg-gray-50 text-gray-700 border-gray-300',
-      overdue: 'bg-red-50 text-red-700 border-red-300'
+      in_progress: 'bg-blue-500/10 text-blue-300 border-blue-300',
+      complete: 'bg-green-500/10 text-green-300 border-green-300',
+      pending: 'bg-white/5 text-slate-300 border-white/10',
+      overdue: 'bg-red-500/10 text-red-300 border-red-300'
     };
     return styles[status as keyof typeof styles] || styles.pending;
   };
@@ -161,16 +161,16 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
             </Button>
             <div>
               <div className="flex items-center gap-3">
-                <h1 className="text-2xl font-bold text-gray-900">{clientData.name}</h1>
+                <h1 className="text-2xl font-bold text-slate-100">{clientData.name}</h1>
                 <span className={`px-2 py-1 text-xs font-semibold rounded border ${getStatusBadge(clientData.status)}`}>
                   {clientData.status.toUpperCase()}
                 </span>
                 <div className="flex items-center gap-1">
                   <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-                  <span className="text-sm font-semibold text-gray-900">{clientData.rating}</span>
+                  <span className="text-sm font-semibold text-slate-100">{clientData.rating}</span>
                 </div>
               </div>
-              <div className="flex items-center gap-4 mt-1 text-sm text-gray-600">
+              <div className="flex items-center gap-4 mt-1 text-sm text-slate-300">
                 <span>{clientData.entityType}</span>
                 <span>•</span>
                 <span>ABN: {clientData.abn}</span>
@@ -200,12 +200,12 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-blue-50 rounded-lg">
-                  <Briefcase className="w-5 h-5 text-blue-600" />
+                <div className="p-3 bg-blue-500/10 rounded-lg">
+                  <Briefcase className="w-5 h-5 text-blue-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-600">Active Jobs</p>
-                  <p className="text-2xl font-bold text-gray-900">
+                  <p className="text-xs text-slate-300">Active Jobs</p>
+                  <p className="text-2xl font-bold text-slate-100">
                     {jobs.filter(j => j.status === 'in_progress').length}
                   </p>
                 </div>
@@ -216,12 +216,12 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-green-50 rounded-lg">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
+                <div className="p-3 bg-green-500/10 rounded-lg">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-600">Jobs Complete</p>
-                  <p className="text-2xl font-bold text-gray-900">{clientData.performance.jobsCompleted}</p>
+                  <p className="text-xs text-slate-300">Jobs Complete</p>
+                  <p className="text-2xl font-bold text-slate-100">{clientData.performance.jobsCompleted}</p>
                 </div>
               </div>
             </CardContent>
@@ -230,12 +230,12 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-purple-50 rounded-lg">
-                  <TrendingUp className="w-5 h-5 text-purple-600" />
+                <div className="p-3 bg-purple-500/10 rounded-lg">
+                  <TrendingUp className="w-5 h-5 text-purple-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-600">On-Time Rate</p>
-                  <p className="text-2xl font-bold text-gray-900">{clientData.performance.onTimeCompletion}%</p>
+                  <p className="text-xs text-slate-300">On-Time Rate</p>
+                  <p className="text-2xl font-bold text-slate-100">{clientData.performance.onTimeCompletion}%</p>
                 </div>
               </div>
             </CardContent>
@@ -244,12 +244,12 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-orange-50 rounded-lg">
-                  <DollarSign className="w-5 h-5 text-orange-600" />
+                <div className="p-3 bg-orange-500/10 rounded-lg">
+                  <DollarSign className="w-5 h-5 text-orange-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-600">Total Billed</p>
-                  <p className="text-2xl font-bold text-gray-900">{clientData.billingInfo.totalBilled}</p>
+                  <p className="text-xs text-slate-300">Total Billed</p>
+                  <p className="text-2xl font-bold text-slate-100">{clientData.billingInfo.totalBilled}</p>
                 </div>
               </div>
             </CardContent>
@@ -264,13 +264,13 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
             <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
               <CardContent className="p-6">
                 {/* Tab Navigation */}
-                <div className="flex items-center gap-2 mb-6 border-b border-gray-200">
+                <div className="flex items-center gap-2 mb-6 border-b border-white/10">
                   <button
                     onClick={() => setActiveTab('overview')}
                     className={`px-4 py-2 text-sm font-medium transition-colors ${
                       activeTab === 'overview' 
                         ? 'text-[#2855a6] border-b-2 border-[#2855a6]' 
-                        : 'text-gray-600 hover:text-gray-900'
+                        : 'text-slate-300 hover:text-slate-100'
                     }`}
                   >
                     Overview
@@ -280,7 +280,7 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
                     className={`px-4 py-2 text-sm font-medium transition-colors ${
                       activeTab === 'jobs' 
                         ? 'text-[#2855a6] border-b-2 border-[#2855a6]' 
-                        : 'text-gray-600 hover:text-gray-900'
+                        : 'text-slate-300 hover:text-slate-100'
                     }`}
                   >
                     Jobs ({jobs.length})
@@ -290,7 +290,7 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
                     className={`px-4 py-2 text-sm font-medium transition-colors ${
                       activeTab === 'documents' 
                         ? 'text-[#2855a6] border-b-2 border-[#2855a6]' 
-                        : 'text-gray-600 hover:text-gray-900'
+                        : 'text-slate-300 hover:text-slate-100'
                     }`}
                   >
                     Documents
@@ -300,7 +300,7 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
                     className={`px-4 py-2 text-sm font-medium transition-colors ${
                       activeTab === 'contacts' 
                         ? 'text-[#2855a6] border-b-2 border-[#2855a6]' 
-                        : 'text-gray-600 hover:text-gray-900'
+                        : 'text-slate-300 hover:text-slate-100'
                     }`}
                   >
                     Contacts ({contacts.length})
@@ -310,7 +310,7 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
                     className={`px-4 py-2 text-sm font-medium transition-colors ${
                       activeTab === 'notes' 
                         ? 'text-[#2855a6] border-b-2 border-[#2855a6]' 
-                        : 'text-gray-600 hover:text-gray-900'
+                        : 'text-slate-300 hover:text-slate-100'
                     }`}
                   >
                     Notes ({notes.length})
@@ -322,24 +322,24 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
                   <div className="space-y-6">
                     {/* Performance Metrics */}
                     <div>
-                      <h3 className="font-semibold text-gray-900 mb-4">Performance</h3>
+                      <h3 className="font-semibold text-slate-100 mb-4">Performance</h3>
                       <div className="grid grid-cols-2 gap-4">
-                        <div className="p-4 bg-gray-50 rounded-lg">
-                          <p className="text-sm text-gray-600 mb-1">Jobs Completed</p>
-                          <p className="text-2xl font-bold text-gray-900">{clientData.performance.jobsCompleted}</p>
+                        <div className="p-4 bg-white/5 rounded-lg">
+                          <p className="text-sm text-slate-300 mb-1">Jobs Completed</p>
+                          <p className="text-2xl font-bold text-slate-100">{clientData.performance.jobsCompleted}</p>
                         </div>
-                        <div className="p-4 bg-gray-50 rounded-lg">
-                          <p className="text-sm text-gray-600 mb-1">On-Time Completion</p>
-                          <p className="text-2xl font-bold text-green-600">{clientData.performance.onTimeCompletion}%</p>
+                        <div className="p-4 bg-white/5 rounded-lg">
+                          <p className="text-sm text-slate-300 mb-1">On-Time Completion</p>
+                          <p className="text-2xl font-bold text-green-400">{clientData.performance.onTimeCompletion}%</p>
                         </div>
-                        <div className="p-4 bg-gray-50 rounded-lg">
-                          <p className="text-sm text-gray-600 mb-1">Avg Response Time</p>
-                          <p className="text-2xl font-bold text-gray-900">{clientData.performance.avgResponseTime}</p>
+                        <div className="p-4 bg-white/5 rounded-lg">
+                          <p className="text-sm text-slate-300 mb-1">Avg Response Time</p>
+                          <p className="text-2xl font-bold text-slate-100">{clientData.performance.avgResponseTime}</p>
                         </div>
-                        <div className="p-4 bg-gray-50 rounded-lg">
-                          <p className="text-sm text-gray-600 mb-1">Satisfaction</p>
+                        <div className="p-4 bg-white/5 rounded-lg">
+                          <p className="text-sm text-slate-300 mb-1">Satisfaction</p>
                           <div className="flex items-center gap-2">
-                            <p className="text-2xl font-bold text-gray-900">{clientData.performance.satisfaction}</p>
+                            <p className="text-2xl font-bold text-slate-100">{clientData.performance.satisfaction}</p>
                             <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" />
                           </div>
                         </div>
@@ -348,27 +348,27 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
 
                     {/* Recent Activity */}
                     <div>
-                      <h3 className="font-semibold text-gray-900 mb-4">Recent Activity</h3>
+                      <h3 className="font-semibold text-slate-100 mb-4">Recent Activity</h3>
                       <div className="space-y-3">
-                        <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
-                          <Activity className="w-4 h-4 text-blue-600 mt-0.5" />
+                        <div className="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
+                          <Activity className="w-4 h-4 text-blue-400 mt-0.5" />
                           <div className="flex-1">
-                            <p className="text-sm text-gray-900">BAS Reconciliation updated</p>
-                            <p className="text-xs text-gray-500">Mike Brown • 2 hours ago</p>
+                            <p className="text-sm text-slate-100">BAS Reconciliation updated</p>
+                            <p className="text-xs text-slate-400">Mike Brown • 2 hours ago</p>
                           </div>
                         </div>
-                        <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
-                          <FileText className="w-4 h-4 text-green-600 mt-0.5" />
+                        <div className="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
+                          <FileText className="w-4 h-4 text-green-400 mt-0.5" />
                           <div className="flex-1">
-                            <p className="text-sm text-gray-900">Document uploaded: Bank Statement</p>
-                            <p className="text-xs text-gray-500">Client Portal • 1 day ago</p>
+                            <p className="text-sm text-slate-100">Document uploaded: Bank Statement</p>
+                            <p className="text-xs text-slate-400">Client Portal • 1 day ago</p>
                           </div>
                         </div>
-                        <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
-                          <CheckCircle className="w-4 h-4 text-green-600 mt-0.5" />
+                        <div className="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
+                          <CheckCircle className="w-4 h-4 text-green-400 mt-0.5" />
                           <div className="flex-1">
-                            <p className="text-sm text-gray-900">Super Compliance job completed</p>
-                            <p className="text-xs text-gray-500">Emily Davis • 3 days ago</p>
+                            <p className="text-sm text-slate-100">Super Compliance job completed</p>
+                            <p className="text-xs text-slate-400">Emily Davis • 3 days ago</p>
                           </div>
                         </div>
                       </div>
@@ -381,13 +381,13 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
                     {jobs.map((job) => (
                       <div
                         key={job.id}
-                        className="p-4 border border-gray-200 rounded-lg hover:border-[#2855a6] hover:bg-blue-50 cursor-pointer transition-all"
+                        className="p-4 border border-white/10 rounded-lg hover:border-[#2855a6] hover:bg-blue-500/10 cursor-pointer transition-all"
                         onClick={() => onNavigate?.('job-detail', job.id)}
                       >
                         <div className="flex items-center justify-between mb-3">
                           <div className="flex-1">
-                            <h4 className="font-semibold text-gray-900 mb-1">{job.type}</h4>
-                            <p className="text-sm text-gray-600">{job.year} • {job.id}</p>
+                            <h4 className="font-semibold text-slate-100 mb-1">{job.type}</h4>
+                            <p className="text-sm text-slate-300">{job.year} • {job.id}</p>
                           </div>
                           <span className={`px-2 py-1 text-xs font-semibold rounded border ${getJobStatusBadge(job.status)}`}>
                             {getJobStatusLabel(job.status)}
@@ -395,17 +395,17 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
                         </div>
 
                         <div className="flex items-center justify-between mb-2">
-                          <span className="text-xs text-gray-600">Progress</span>
-                          <span className="text-xs font-semibold text-gray-900">{job.progress}%</span>
+                          <span className="text-xs text-slate-300">Progress</span>
+                          <span className="text-xs font-semibold text-slate-100">{job.progress}%</span>
                         </div>
-                        <div className="h-2 bg-gray-100 rounded-full overflow-hidden mb-3">
+                        <div className="h-2 bg-white/5 rounded-full overflow-hidden mb-3">
                           <div 
                             className="h-full bg-[#2855a6] transition-all"
                             style={{ width: `${job.progress}%` }}
                           />
                         </div>
 
-                        <div className="flex items-center justify-between text-xs text-gray-600">
+                        <div className="flex items-center justify-between text-xs text-slate-300">
                           <div className="flex items-center gap-1">
                             <User className="w-3 h-3" />
                             <span>{job.assignedTo}</span>
@@ -432,7 +432,7 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
                       <div className="flex items-center gap-2 text-sm mb-4">
                         <button 
                           onClick={() => { setSelectedYear(null); setSelectedDocType(null); }}
-                          className="text-gray-600 hover:text-gray-900"
+                          className="text-slate-300 hover:text-slate-100"
                         >
                           Documents
                         </button>
@@ -441,7 +441,7 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
                             <ChevronRight className="w-4 h-4 text-gray-400" />
                             <button
                               onClick={() => setSelectedDocType(null)}
-                              className={selectedDocType ? "text-gray-600 hover:text-gray-900" : "font-semibold text-gray-900"}
+                              className={selectedDocType ? "text-slate-300 hover:text-slate-100" : "font-semibold text-slate-100"}
                             >
                               {selectedYear}
                             </button>
@@ -450,7 +450,7 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
                         {selectedDocType && (
                           <>
                             <ChevronRight className="w-4 h-4 text-gray-400" />
-                            <span className="font-semibold text-gray-900">{selectedDocType}</span>
+                            <span className="font-semibold text-slate-100">{selectedDocType}</span>
                           </>
                         )}
                       </div>
@@ -461,28 +461,28 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
                       <>
                         {/* Document Stats for this client */}
                         <div className="grid grid-cols-4 gap-3">
-                          <div className="p-3 bg-blue-50 rounded-lg">
-                            <p className="text-xs text-gray-600 mb-1">Total Documents</p>
-                            <p className="text-xl font-bold text-gray-900">487</p>
+                          <div className="p-3 bg-blue-500/10 rounded-lg">
+                            <p className="text-xs text-slate-300 mb-1">Total Documents</p>
+                            <p className="text-xl font-bold text-slate-100">487</p>
                           </div>
-                          <div className="p-3 bg-purple-50 rounded-lg">
-                            <p className="text-xs text-gray-600 mb-1">Storage Used</p>
-                            <p className="text-xl font-bold text-gray-900">12.4 GB</p>
+                          <div className="p-3 bg-purple-500/10 rounded-lg">
+                            <p className="text-xs text-slate-300 mb-1">Storage Used</p>
+                            <p className="text-xl font-bold text-slate-100">12.4 GB</p>
                           </div>
-                          <div className="p-3 bg-green-50 rounded-lg">
-                            <p className="text-xs text-gray-600 mb-1">AI Processed</p>
-                            <p className="text-xl font-bold text-gray-900">94%</p>
+                          <div className="p-3 bg-green-500/10 rounded-lg">
+                            <p className="text-xs text-slate-300 mb-1">AI Processed</p>
+                            <p className="text-xl font-bold text-slate-100">94%</p>
                           </div>
-                          <div className="p-3 bg-orange-50 rounded-lg">
-                            <p className="text-xs text-gray-600 mb-1">Recent</p>
-                            <p className="text-xl font-bold text-gray-900">23</p>
+                          <div className="p-3 bg-orange-500/10 rounded-lg">
+                            <p className="text-xs text-slate-300 mb-1">Recent</p>
+                            <p className="text-xl font-bold text-slate-100">23</p>
                           </div>
                         </div>
 
                         {/* Document Folders */}
                         <div>
                           <div className="flex items-center justify-between mb-3">
-                            <h4 className="font-semibold text-gray-900">Document Folders</h4>
+                            <h4 className="font-semibold text-slate-100">Document Folders</h4>
                             <Button size="sm" variant="outline">
                               <Upload className="w-4 h-4 mr-2" />
                               Upload
@@ -492,17 +492,17 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
                           {/* Permanent File Folder */}
                           <div 
                             onClick={() => setSelectedYear('Permanent File')}
-                            className="mb-3 p-4 border-2 border-amber-300 bg-amber-50 rounded-lg hover:border-amber-500 cursor-pointer transition-all"
+                            className="mb-3 p-4 border-2 border-amber-300 bg-amber-500/10 rounded-lg hover:border-amber-500 cursor-pointer transition-all"
                           >
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-3">
-                                <FolderClosed className="w-8 h-8 text-amber-600" />
+                                <FolderClosed className="w-8 h-8 text-amber-400" />
                                 <div>
-                                  <h4 className="font-semibold text-amber-900">🔒 Permanent File</h4>
-                                  <p className="text-xs text-amber-700 mt-1">7 documents • Critical foundational docs</p>
+                                  <h4 className="font-semibold text-amber-300">🔒 Permanent File</h4>
+                                  <p className="text-xs text-amber-300 mt-1">7 documents • Critical foundational docs</p>
                                 </div>
                               </div>
-                              <ChevronRight className="w-5 h-5 text-amber-600" />
+                              <ChevronRight className="w-5 h-5 text-amber-400" />
                             </div>
                           </div>
 
@@ -514,13 +514,13 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
                                 <div 
                                   key={year}
                                   onClick={() => setSelectedYear(year)}
-                                  className="p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer flex items-center justify-between"
+                                  className="p-3 border border-white/10 rounded-lg hover:bg-white/5 cursor-pointer flex items-center justify-between"
                                 >
                                   <div className="flex items-center gap-3">
                                     <FolderClosed className="w-6 h-6 text-blue-500" />
                                     <div>
-                                      <h4 className="font-semibold text-gray-900 text-sm">{year}</h4>
-                                      <p className="text-xs text-gray-600">{counts[idx]} documents</p>
+                                      <h4 className="font-semibold text-slate-100 text-sm">{year}</h4>
+                                      <p className="text-xs text-slate-300">{counts[idx]} documents</p>
                                     </div>
                                   </div>
                                   <ChevronRight className="w-4 h-4 text-gray-400" />
@@ -532,17 +532,17 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
 
                         {/* Recent Documents */}
                         <div>
-                          <h4 className="font-semibold text-gray-900 mb-3">Recent Documents</h4>
+                          <h4 className="font-semibold text-slate-100 mb-3">Recent Documents</h4>
                           <div className="space-y-2">
-                            <div className="p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                            <div className="p-3 border border-white/10 rounded-lg hover:bg-white/5 cursor-pointer">
                               <div className="flex items-center gap-3">
-                                <FileText className="w-5 h-5 text-red-600" />
+                                <FileText className="w-5 h-5 text-red-400" />
                                 <div className="flex-1">
-                                  <h5 className="font-medium text-sm text-gray-900">Annual_Return_2024.pdf</h5>
-                                  <p className="text-xs text-gray-600">2024 • Tax Returns • 2.4 MB • 2 days ago</p>
+                                  <h5 className="font-medium text-sm text-slate-100">Annual_Return_2024.pdf</h5>
+                                  <p className="text-xs text-slate-300">2024 • Tax Returns • 2.4 MB • 2 days ago</p>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                  <CheckCircle className="w-4 h-4 text-green-600" />
+                                  <CheckCircle className="w-4 h-4 text-green-400" />
                                   <Button size="sm" variant="ghost">
                                     <Download className="w-4 h-4" />
                                   </Button>
@@ -550,15 +550,15 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
                               </div>
                             </div>
 
-                            <div className="p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                            <div className="p-3 border border-white/10 rounded-lg hover:bg-white/5 cursor-pointer">
                               <div className="flex items-center gap-3">
-                                <FileText className="w-5 h-5 text-green-600" />
+                                <FileText className="w-5 h-5 text-green-400" />
                                 <div className="flex-1">
-                                  <h5 className="font-medium text-sm text-gray-900">Q4_BAS_Worksheet.xlsx</h5>
-                                  <p className="text-xs text-gray-600">2024 • BAS Lodgements • 845 KB • 3 days ago</p>
+                                  <h5 className="font-medium text-sm text-slate-100">Q4_BAS_Worksheet.xlsx</h5>
+                                  <p className="text-xs text-slate-300">2024 • BAS Lodgements • 845 KB • 3 days ago</p>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                  <CheckCircle className="w-4 h-4 text-green-600" />
+                                  <CheckCircle className="w-4 h-4 text-green-400" />
                                   <Button size="sm" variant="ghost">
                                     <Download className="w-4 h-4" />
                                   </Button>
@@ -566,15 +566,15 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
                               </div>
                             </div>
 
-                            <div className="p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                            <div className="p-3 border border-white/10 rounded-lg hover:bg-white/5 cursor-pointer">
                               <div className="flex items-center gap-3">
-                                <FileText className="w-5 h-5 text-red-600" />
+                                <FileText className="w-5 h-5 text-red-400" />
                                 <div className="flex-1">
-                                  <h5 className="font-medium text-sm text-gray-900">Bank_Statement_Jan_2024.pdf</h5>
-                                  <p className="text-xs text-gray-600">2024 • Bank Statements • 1.2 MB • 5 days ago</p>
+                                  <h5 className="font-medium text-sm text-slate-100">Bank_Statement_Jan_2024.pdf</h5>
+                                  <p className="text-xs text-slate-300">2024 • Bank Statements • 1.2 MB • 5 days ago</p>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                  <CheckCircle className="w-4 h-4 text-green-600" />
+                                  <CheckCircle className="w-4 h-4 text-green-400" />
                                   <Button size="sm" variant="ghost">
                                     <Download className="w-4 h-4" />
                                   </Button>
@@ -582,15 +582,15 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
                               </div>
                             </div>
 
-                            <div className="p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                            <div className="p-3 border border-white/10 rounded-lg hover:bg-white/5 cursor-pointer">
                               <div className="flex items-center gap-3">
-                                <FileText className="w-5 h-5 text-red-600" />
+                                <FileText className="w-5 h-5 text-red-400" />
                                 <div className="flex-1">
-                                  <h5 className="font-medium text-sm text-gray-900">Investment_Portfolio_Summary.pdf</h5>
-                                  <p className="text-xs text-gray-600">2024 • Financial Statements • 3.1 MB • 1 week ago</p>
+                                  <h5 className="font-medium text-sm text-slate-100">Investment_Portfolio_Summary.pdf</h5>
+                                  <p className="text-xs text-slate-300">2024 • Financial Statements • 3.1 MB • 1 week ago</p>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                  <Clock className="w-4 h-4 text-blue-600" />
+                                  <Clock className="w-4 h-4 text-blue-400" />
                                   <Button size="sm" variant="ghost">
                                     <Download className="w-4 h-4" />
                                   </Button>
@@ -605,7 +605,7 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
                     {/* Show document type folders when year is selected but not doc type */}
                     {selectedYear && !selectedDocType && (
                       <div>
-                        <h4 className="font-semibold text-gray-900 mb-3">Document Types in {selectedYear}</h4>
+                        <h4 className="font-semibold text-slate-100 mb-3">Document Types in {selectedYear}</h4>
                         <div className="space-y-2">
                           {[
                             { name: 'Tax Returns', count: 12, icon: '📄' },
@@ -618,15 +618,15 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
                             <div 
                               key={idx}
                               onClick={() => setSelectedDocType(docType.name)}
-                              className="p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer flex items-center justify-between"
+                              className="p-3 border border-white/10 rounded-lg hover:bg-white/5 cursor-pointer flex items-center justify-between"
                             >
                               <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center">
+                                <div className="w-10 h-10 bg-blue-500/10 rounded-lg flex items-center justify-center">
                                   <span className="text-xl">{docType.icon}</span>
                                 </div>
                                 <div>
-                                  <h4 className="font-semibold text-gray-900 text-sm">{docType.name}</h4>
-                                  <p className="text-xs text-gray-600">{docType.count} documents</p>
+                                  <h4 className="font-semibold text-slate-100 text-sm">{docType.name}</h4>
+                                  <p className="text-xs text-slate-300">{docType.count} documents</p>
                                 </div>
                               </div>
                               <ChevronRight className="w-4 h-4 text-gray-400" />
@@ -639,7 +639,7 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
                     {/* Show documents when both year and doc type are selected */}
                     {selectedYear && selectedDocType && (
                       <div>
-                        <h4 className="font-semibold text-gray-900 mb-3">{selectedDocType} - {selectedYear}</h4>
+                        <h4 className="font-semibold text-slate-100 mb-3">{selectedDocType} - {selectedYear}</h4>
                         <div className="space-y-2">
                           {[
                             { name: 'Annual_Return.pdf', size: '2.4 MB', date: '2 days ago' },
@@ -649,15 +649,15 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
                             { name: 'Q4_Summary.xlsx', size: '654 KB', date: '2 weeks ago' },
                             { name: 'Year_End_File.pdf', size: '432 KB', date: '3 weeks ago' },
                           ].map((doc, idx) => (
-                            <div key={idx} className="p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                            <div key={idx} className="p-3 border border-white/10 rounded-lg hover:bg-white/5 cursor-pointer">
                               <div className="flex items-center gap-3">
-                                <FileText className={`w-5 h-5 ${doc.name.endsWith('.pdf') ? 'text-red-600' : 'text-green-600'}`} />
+                                <FileText className={`w-5 h-5 ${doc.name.endsWith('.pdf') ? 'text-red-400' : 'text-green-400'}`} />
                                 <div className="flex-1">
-                                  <h5 className="font-medium text-sm text-gray-900">{doc.name}</h5>
-                                  <p className="text-xs text-gray-600">{doc.size} • {doc.date}</p>
+                                  <h5 className="font-medium text-sm text-slate-100">{doc.name}</h5>
+                                  <p className="text-xs text-slate-300">{doc.size} • {doc.date}</p>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                  <CheckCircle className="w-4 h-4 text-green-600" />
+                                  <CheckCircle className="w-4 h-4 text-green-400" />
                                   <Button size="sm" variant="ghost">
                                     <Download className="w-4 h-4" />
                                   </Button>
@@ -674,18 +674,18 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
                 {activeTab === 'contacts' && (
                   <div className="space-y-3">
                     {contacts.map((contact) => (
-                      <div key={contact.id} className="p-4 border border-gray-200 rounded-lg">
+                      <div key={contact.id} className="p-4 border border-white/10 rounded-lg">
                         <div className="flex items-start justify-between mb-3">
                           <div>
                             <div className="flex items-center gap-2 mb-1">
-                              <h4 className="font-semibold text-gray-900">{contact.name}</h4>
+                              <h4 className="font-semibold text-slate-100">{contact.name}</h4>
                               {contact.isPrimary && (
-                                <span className="px-2 py-0.5 bg-blue-50 text-blue-700 text-xs font-semibold rounded">
+                                <span className="px-2 py-0.5 bg-blue-500/10 text-blue-300 text-xs font-semibold rounded">
                                   Primary
                                 </span>
                               )}
                             </div>
-                            <p className="text-sm text-gray-600">{contact.role}</p>
+                            <p className="text-sm text-slate-300">{contact.role}</p>
                           </div>
                           <Button size="sm" variant="ghost">
                             <Edit className="w-4 h-4" />
@@ -693,13 +693,13 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
                         </div>
 
                         <div className="space-y-2">
-                          <div className="flex items-center gap-2 text-sm text-gray-600">
+                          <div className="flex items-center gap-2 text-sm text-slate-300">
                             <Mail className="w-4 h-4" />
                             <a href={`mailto:${contact.email}`} className="hover:text-[#2855a6]">
                               {contact.email}
                             </a>
                           </div>
-                          <div className="flex items-center gap-2 text-sm text-gray-600">
+                          <div className="flex items-center gap-2 text-sm text-slate-300">
                             <Phone className="w-4 h-4" />
                             <a href={`tel:${contact.phone}`} className="hover:text-[#2855a6]">
                               {contact.phone}
@@ -725,7 +725,7 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
                         rows={3}
                         value={newNote}
                         onChange={(e) => setNewNote(e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+                        className="w-full px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
                       />
                       <Button size="sm">
                         <Plus className="w-4 h-4 mr-2" />
@@ -734,11 +734,11 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
                     </div>
 
                     {/* Notes List */}
-                    <div className="space-y-3 pt-4 border-t border-gray-200">
+                    <div className="space-y-3 pt-4 border-t border-white/10">
                       {notes.map((note) => (
-                        <div key={note.id} className="p-4 bg-gray-50 rounded-lg">
-                          <p className="text-sm text-gray-900 mb-2">{note.text}</p>
-                          <div className="flex items-center justify-between text-xs text-gray-500">
+                        <div key={note.id} className="p-4 bg-white/5 rounded-lg">
+                          <p className="text-sm text-slate-100 mb-2">{note.text}</p>
+                          <div className="flex items-center justify-between text-xs text-slate-400">
                             <span>{note.createdBy}</span>
                             <span>{note.createdAt}</span>
                           </div>
@@ -756,27 +756,27 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
             {/* Contact Information */}
             <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
               <CardContent className="p-4">
-                <h3 className="font-semibold text-gray-900 mb-3">Contact Information</h3>
+                <h3 className="font-semibold text-slate-100 mb-3">Contact Information</h3>
                 <div className="space-y-3">
                   <div className="flex items-start gap-2">
-                    <Building2 className="w-4 h-4 text-gray-600 mt-0.5" />
+                    <Building2 className="w-4 h-4 text-slate-300 mt-0.5" />
                     <div className="flex-1 text-sm">
-                      <p className="text-gray-900 font-medium">{clientData.name}</p>
-                      <p className="text-gray-600">{clientData.entityType}</p>
+                      <p className="text-slate-100 font-medium">{clientData.name}</p>
+                      <p className="text-slate-300">{clientData.entityType}</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-2">
-                    <User className="w-4 h-4 text-gray-600 mt-0.5" />
+                    <User className="w-4 h-4 text-slate-300 mt-0.5" />
                     <div className="flex-1 text-sm">
-                      <p className="text-gray-600">Trustee</p>
-                      <p className="text-gray-900">{clientData.trustee}</p>
+                      <p className="text-slate-300">Trustee</p>
+                      <p className="text-slate-100">{clientData.trustee}</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-2">
-                    <MapPin className="w-4 h-4 text-gray-600 mt-0.5" />
+                    <MapPin className="w-4 h-4 text-slate-300 mt-0.5" />
                     <div className="flex-1 text-sm">
-                      <p className="text-gray-900">{clientData.address.street}</p>
-                      <p className="text-gray-600">
+                      <p className="text-slate-100">{clientData.address.street}</p>
+                      <p className="text-slate-300">
                         {clientData.address.city}, {clientData.address.state} {clientData.address.postcode}
                       </p>
                     </div>
@@ -788,23 +788,23 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
             {/* Billing Information */}
             <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
               <CardContent className="p-4">
-                <h3 className="font-semibold text-gray-900 mb-3">Billing</h3>
+                <h3 className="font-semibold text-slate-100 mb-3">Billing</h3>
                 <div className="space-y-3 text-sm">
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Total Billed</span>
-                    <span className="font-semibold text-gray-900">{clientData.billingInfo.totalBilled}</span>
+                    <span className="text-slate-300">Total Billed</span>
+                    <span className="font-semibold text-slate-100">{clientData.billingInfo.totalBilled}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Current Balance</span>
-                    <span className="font-semibold text-orange-600">{clientData.billingInfo.currentBalance}</span>
+                    <span className="text-slate-300">Current Balance</span>
+                    <span className="font-semibold text-orange-400">{clientData.billingInfo.currentBalance}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Last Invoice</span>
-                    <span className="text-gray-900">{clientData.billingInfo.lastInvoice}</span>
+                    <span className="text-slate-300">Last Invoice</span>
+                    <span className="text-slate-100">{clientData.billingInfo.lastInvoice}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Payment Terms</span>
-                    <span className="text-gray-900">{clientData.billingInfo.paymentTerms}</span>
+                    <span className="text-slate-300">Payment Terms</span>
+                    <span className="text-slate-100">{clientData.billingInfo.paymentTerms}</span>
                   </div>
                 </div>
                 <Button variant="outline" size="sm" className="w-full mt-3">
@@ -817,7 +817,7 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
             {/* Quick Actions */}
             <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
               <CardContent className="p-4">
-                <h3 className="font-semibold text-gray-900 mb-3">Quick Actions</h3>
+                <h3 className="font-semibold text-slate-100 mb-3">Quick Actions</h3>
                 <div className="space-y-2">
                   <Button variant="outline" size="sm" className="w-full justify-start">
                     <Plus className="w-3 h-3 mr-2" />
@@ -842,14 +842,14 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
             {/* Documents Overview */}
             <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
               <CardContent className="p-4">
-                <h3 className="font-semibold text-gray-900 mb-4">Client Files</h3>
+                <h3 className="font-semibold text-slate-100 mb-4">Client Files</h3>
                 
                 {/* Tabs */}
                 <div className="space-y-3">
                   {/* Documents Tab */}
                   <button 
                     onClick={() => onNavigate?.('documents', clientData.id, clientData.name)}
-                    className="w-full p-3 bg-gray-50 hover:bg-blue-50 rounded-lg text-left transition-colors group"
+                    className="w-full p-3 bg-white/5 hover:bg-blue-500/10 rounded-lg text-left transition-colors group"
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
@@ -857,8 +857,8 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
                           <FileText className="w-4 h-4 text-[#2855a6]" />
                         </div>
                         <div>
-                          <h4 className="font-semibold text-gray-900 text-sm">Documents</h4>
-                          <p className="text-xs text-gray-600">487 files • 12.4 GB</p>
+                          <h4 className="font-semibold text-slate-100 text-sm">Documents</h4>
+                          <p className="text-xs text-slate-300">487 files • 12.4 GB</p>
                         </div>
                       </div>
                       <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-[#2855a6]" />
@@ -866,45 +866,45 @@ export function ClientDetail({ onNavigate, clientId = 'CLT-001' }: ClientDetailP
                   </button>
 
                   {/* Jobs Tab */}
-                  <div className="p-3 bg-gray-50 rounded-lg">
+                  <div className="p-3 bg-white/5 rounded-lg">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         <div className="p-2 bg-white rounded-lg shadow-sm">
-                          <Briefcase className="w-4 h-4 text-green-600" />
+                          <Briefcase className="w-4 h-4 text-green-400" />
                         </div>
                         <div>
-                          <h4 className="font-semibold text-gray-900 text-sm">Jobs</h4>
-                          <p className="text-xs text-gray-600">{jobs.length} active jobs</p>
+                          <h4 className="font-semibold text-slate-100 text-sm">Jobs</h4>
+                          <p className="text-xs text-slate-300">{jobs.length} active jobs</p>
                         </div>
                       </div>
                     </div>
                   </div>
 
                   {/* Contacts Tab */}
-                  <div className="p-3 bg-gray-50 rounded-lg">
+                  <div className="p-3 bg-white/5 rounded-lg">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         <div className="p-2 bg-white rounded-lg shadow-sm">
-                          <User className="w-4 h-4 text-purple-600" />
+                          <User className="w-4 h-4 text-purple-400" />
                         </div>
                         <div>
-                          <h4 className="font-semibold text-gray-900 text-sm">Contacts</h4>
-                          <p className="text-xs text-gray-600">{contacts.length} contacts</p>
+                          <h4 className="font-semibold text-slate-100 text-sm">Contacts</h4>
+                          <p className="text-xs text-slate-300">{contacts.length} contacts</p>
                         </div>
                       </div>
                     </div>
                   </div>
 
                   {/* Notes Tab */}
-                  <div className="p-3 bg-gray-50 rounded-lg">
+                  <div className="p-3 bg-white/5 rounded-lg">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         <div className="p-2 bg-white rounded-lg shadow-sm">
-                          <MessageSquare className="w-4 h-4 text-orange-600" />
+                          <MessageSquare className="w-4 h-4 text-orange-400" />
                         </div>
                         <div>
-                          <h4 className="font-semibold text-gray-900 text-sm">Notes</h4>
-                          <p className="text-xs text-gray-600">{notes.length} notes</p>
+                          <h4 className="font-semibold text-slate-100 text-sm">Notes</h4>
+                          <p className="text-xs text-slate-300">{notes.length} notes</p>
                         </div>
                       </div>
                     </div>

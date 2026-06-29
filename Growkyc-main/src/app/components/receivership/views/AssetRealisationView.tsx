@@ -23,10 +23,10 @@ function DifferenceCell({ estimated, realised }: { estimated: number; realised: 
   const positive = diff >= 0;
   return (
     <div>
-      <span className={`font-medium ${positive ? 'text-green-700' : 'text-red-700'}`}>
+      <span className={`font-medium ${positive ? 'text-green-300' : 'text-red-300'}`}>
         {diff === 0 ? '—' : `${positive ? '+' : '-'}${formatMoney(Math.abs(diff))}`}
       </span>
-      {diff !== 0 && <p className={`text-xs ${positive ? 'text-green-600' : 'text-red-600'}`}>{pct}%</p>}
+      {diff !== 0 && <p className={`text-xs ${positive ? 'text-green-400' : 'text-red-400'}`}>{pct}%</p>}
     </div>
   );
 }
@@ -94,7 +94,7 @@ export function AssetRealisationView({ matterId }: { matterId?: string }) {
       render: (r) => (
         <button
           type="button"
-          className="text-indigo-600 hover:underline text-left"
+          className="text-indigo-400 hover:underline text-left"
           onClick={(e) => {
             e.stopPropagation();
             setSelectedAgent(r);
@@ -125,21 +125,21 @@ export function AssetRealisationView({ matterId }: { matterId?: string }) {
       />
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="bg-white border border-gray-200 rounded-lg p-4">
-          <p className="text-sm text-gray-600">Total estimated</p>
-          <p className="text-2xl font-bold text-gray-900">{formatMoney(totalEst)}</p>
+        <div className="bg-white border border-white/10 rounded-lg p-4">
+          <p className="text-sm text-slate-300">Total estimated</p>
+          <p className="text-2xl font-bold text-slate-100">{formatMoney(totalEst)}</p>
         </div>
-        <div className="bg-white border border-gray-200 rounded-lg p-4">
-          <p className="text-sm text-gray-600">Total realised</p>
-          <p className="text-2xl font-bold text-green-700">{formatMoney(totalReal)}</p>
+        <div className="bg-white border border-white/10 rounded-lg p-4">
+          <p className="text-sm text-slate-300">Total realised</p>
+          <p className="text-2xl font-bold text-green-300">{formatMoney(totalReal)}</p>
         </div>
-        <div className="bg-white border border-gray-200 rounded-lg p-4">
-          <p className="text-sm text-gray-600">Assets in register</p>
-          <p className="text-2xl font-bold text-gray-900">{filtered.length}</p>
+        <div className="bg-white border border-white/10 rounded-lg p-4">
+          <p className="text-sm text-slate-300">Assets in register</p>
+          <p className="text-2xl font-bold text-slate-100">{filtered.length}</p>
         </div>
       </div>
 
-      <div className="bg-white border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row gap-3">
+      <div className="bg-white border border-white/10 rounded-lg p-4 flex flex-col md:flex-row gap-3">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
           <input
@@ -147,13 +147,13 @@ export function AssetRealisationView({ matterId }: { matterId?: string }) {
             placeholder="Search assets or agents..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm"
+            className="w-full pl-10 pr-4 py-2 border border-white/10 rounded-lg text-sm"
           />
         </div>
         <select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-lg text-sm"
+          className="px-3 py-2 border border-white/10 rounded-lg text-sm"
         >
           <option value="all">All statuses</option>
           <option value="marketing">Marketing</option>
@@ -164,7 +164,7 @@ export function AssetRealisationView({ matterId }: { matterId?: string }) {
         <select
           value={typeFilter}
           onChange={(e) => setTypeFilter(e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-lg text-sm"
+          className="px-3 py-2 border border-white/10 rounded-lg text-sm"
         >
           <option value="all">All types</option>
           {types.map((t) => (
@@ -191,14 +191,14 @@ export function AssetRealisationView({ matterId }: { matterId?: string }) {
         >
           <div className="bg-white rounded-xl shadow-xl max-w-md w-full p-6 my-auto" onClick={(e) => e.stopPropagation()}>
             <div className="flex justify-between items-start mb-4">
-              <h3 className="text-lg font-semibold text-gray-900">Selling agent</h3>
+              <h3 className="text-lg font-semibold text-slate-100">Selling agent</h3>
               <button type="button" onClick={() => setSelectedAgent(null)}><X className="w-5 h-5" /></button>
             </div>
-            <p className="text-sm text-gray-600 mb-4">{selectedAgent.assetName}</p>
+            <p className="text-sm text-slate-300 mb-4">{selectedAgent.assetName}</p>
             <div className="space-y-3 text-sm">
-              <div className="flex gap-3"><User className="w-5 h-5 text-gray-400" /><div><p className="font-medium">{selectedAgent.agentName}</p><p className="text-gray-600">{selectedAgent.agentCompany}</p></div></div>
-              <p><span className="text-gray-600">Email:</span> {selectedAgent.agentEmail}</p>
-              <p><span className="text-gray-600">Phone:</span> {selectedAgent.agentPhone}</p>
+              <div className="flex gap-3"><User className="w-5 h-5 text-gray-400" /><div><p className="font-medium">{selectedAgent.agentName}</p><p className="text-slate-300">{selectedAgent.agentCompany}</p></div></div>
+              <p><span className="text-slate-300">Email:</span> {selectedAgent.agentEmail}</p>
+              <p><span className="text-slate-300">Phone:</span> {selectedAgent.agentPhone}</p>
               <ProgressBar value={selectedAgent.saleProgress} label="Sale progress" />
             </div>
             <Button className="w-full mt-6" variant="outline" onClick={() => setSelectedAgent(null)}>Close</Button>

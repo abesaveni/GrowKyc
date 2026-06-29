@@ -51,12 +51,12 @@ export function FinalSubmitStep({
           </p>
         </CardHeader>
         <CardContent className="p-6">
-          <div className="bg-green-100 border-2 border-green-400 rounded-lg p-6 mb-6">
+          <div className="bg-green-500/15 border-2 border-green-400 rounded-lg p-6 mb-6">
             <div className="flex items-start gap-4">
-              <CheckCircle className="w-8 h-8 text-green-600 flex-shrink-0" />
+              <CheckCircle className="w-8 h-8 text-green-400 flex-shrink-0" />
               <div>
-                <h3 className="font-bold text-green-900 text-lg mb-2">All Pre-Checks Passed ✓</h3>
-                <ul className="space-y-2 text-sm text-green-800">
+                <h3 className="font-bold text-green-300 text-lg mb-2">All Pre-Checks Passed ✓</h3>
+                <ul className="space-y-2 text-sm text-green-300">
                   <li className="flex items-center gap-2">
                     <CheckCircle className="w-4 h-4" />
                     Property valuation and title search completed
@@ -86,10 +86,10 @@ export function FinalSubmitStep({
             </div>
           </div>
 
-          <div className="bg-yellow-50 border-2 border-yellow-300 rounded-lg p-4 mb-6">
+          <div className="bg-yellow-500/10 border-2 border-yellow-300 rounded-lg p-4 mb-6">
             <div className="flex items-start gap-3">
-              <AlertCircle className="w-5 h-5 text-yellow-600 flex-shrink-0 mt-0.5" />
-              <div className="text-sm text-yellow-800">
+              <AlertCircle className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" />
+              <div className="text-sm text-yellow-300">
                 <p className="font-semibold mb-1">⚠️ Final Confirmation Required</p>
                 <p>
                   By submitting this case, you confirm that all information provided is accurate and complete. 

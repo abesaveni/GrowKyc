@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
@@ -24,15 +24,15 @@ function Stepper({ currentStep, steps }: StepperProps) {
                 ? 'bg-green-600 text-white'
                 : index === currentStep
                 ? 'bg-indigo-600 text-white'
-                : 'bg-gray-200 text-gray-500'
+                : 'bg-white/10 text-slate-400'
             }`}>
               {index < currentStep ? '✓' : index + 1}
             </div>
-            <span className="text-xs mt-2 text-gray-600">{step}</span>
+            <span className="text-xs mt-2 text-slate-300">{step}</span>
           </div>
           {index < steps.length - 1 && (
             <div className={`w-16 h-1 mx-2 rounded transition-colors ${
-              index < currentStep ? 'bg-green-600' : 'bg-gray-200'
+              index < currentStep ? 'bg-green-600' : 'bg-white/10'
             }`} />
           )}
         </React.Fragment>
@@ -110,7 +110,7 @@ export function OnboardingWizard({ onNavigateToSignIn }: OnboardingWizardProps =
             <img src={logo} alt="Grow MIP" className="h-12" />
           </div>
           <CardTitle className="text-2xl">Welcome to Grow MIP</CardTitle>
-          <p className="text-gray-600 text-sm mt-2">
+          <p className="text-slate-300 text-sm mt-2">
             Complete your onboarding to access the platform
           </p>
         </CardHeader>
@@ -122,7 +122,7 @@ export function OnboardingWizard({ onNavigateToSignIn }: OnboardingWizardProps =
             <div className="space-y-6">
               <div className="text-center mb-6">
                 <h3 className="text-lg font-semibold mb-2">Select Your Role</h3>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-slate-300">
                   Choose the role that best describes your participation
                 </p>
               </div>
@@ -137,23 +137,23 @@ export function OnboardingWizard({ onNavigateToSignIn }: OnboardingWizardProps =
                       onClick={() => handleRoleSelect(role.id)}
                       className={`p-6 border-2 rounded-lg text-left transition-all hover:shadow-lg ${
                         isSelected
-                          ? 'border-indigo-600 bg-indigo-50 shadow-md'
-                          : 'border-gray-200 hover:border-gray-300'
+                          ? 'border-indigo-600 bg-indigo-500/10 shadow-md'
+                          : 'border-white/10 hover:border-white/10'
                       }`}
                     >
                       <div className={`p-3 rounded-lg w-fit mb-3 ${
-                        role.color === 'blue' ? 'bg-blue-100' :
-                        role.color === 'purple' ? 'bg-purple-100' :
-                        'bg-green-100'
+                        role.color === 'blue' ? 'bg-blue-500/15' :
+                        role.color === 'purple' ? 'bg-purple-500/15' :
+                        'bg-green-500/15'
                       }`}>
                         <Icon className={`w-6 h-6 ${
-                          role.color === 'blue' ? 'text-blue-600' :
-                          role.color === 'purple' ? 'text-purple-600' :
-                          'text-green-600'
+                          role.color === 'blue' ? 'text-blue-400' :
+                          role.color === 'purple' ? 'text-purple-400' :
+                          'text-green-400'
                         }`} />
                       </div>
                       <h4 className="font-semibold mb-1">{role.name}</h4>
-                      <p className="text-sm text-gray-600">{role.description}</p>
+                      <p className="text-sm text-slate-300">{role.description}</p>
                     </button>
                   );
                 })}
@@ -166,7 +166,7 @@ export function OnboardingWizard({ onNavigateToSignIn }: OnboardingWizardProps =
             <div className="space-y-6">
               <div className="text-center mb-6">
                 <h3 className="text-lg font-semibold mb-2">KYC Verification</h3>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-slate-300">
                   Provide your details for identity verification
                 </p>
               </div>
@@ -224,12 +224,12 @@ export function OnboardingWizard({ onNavigateToSignIn }: OnboardingWizardProps =
                 </div>
               </div>
 
-              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+              <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-4">
                 <div className="flex gap-3">
-                  <Shield className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                  <Shield className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-sm font-medium text-amber-900">Identity Verification Required</p>
-                    <p className="text-xs text-amber-800 mt-1">
+                    <p className="text-sm font-medium text-amber-300">Identity Verification Required</p>
+                    <p className="text-xs text-amber-300 mt-1">
                       You will need to upload government-issued ID and proof of address in the next step.
                     </p>
                   </div>
@@ -243,32 +243,32 @@ export function OnboardingWizard({ onNavigateToSignIn }: OnboardingWizardProps =
             <div className="space-y-6">
               <div className="text-center mb-6">
                 <h3 className="text-lg font-semibold mb-2">Proof of Funds</h3>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-slate-300">
                   Upload documents to verify your financial capacity
                 </p>
               </div>
 
               <div className="space-y-4">
-                <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-indigo-400 transition-colors cursor-pointer">
+                <div className="border-2 border-dashed border-white/10 rounded-lg p-8 text-center hover:border-indigo-400 transition-colors cursor-pointer">
                   <div className="flex flex-col items-center">
-                    <div className="p-4 bg-indigo-50 rounded-full mb-3">
-                      <Building2 className="w-8 h-8 text-indigo-600" />
+                    <div className="p-4 bg-indigo-500/10 rounded-full mb-3">
+                      <Building2 className="w-8 h-8 text-indigo-400" />
                     </div>
                     <h4 className="font-medium mb-1">Upload Bank Statements</h4>
-                    <p className="text-sm text-gray-600 mb-4">
+                    <p className="text-sm text-slate-300 mb-4">
                       Last 3 months of statements (PDF, max 10MB)
                     </p>
                     <Button variant="outline">Choose Files</Button>
                   </div>
                 </div>
 
-                <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-indigo-400 transition-colors cursor-pointer">
+                <div className="border-2 border-dashed border-white/10 rounded-lg p-8 text-center hover:border-indigo-400 transition-colors cursor-pointer">
                   <div className="flex flex-col items-center">
-                    <div className="p-4 bg-green-50 rounded-full mb-3">
-                      <Shield className="w-8 h-8 text-green-600" />
+                    <div className="p-4 bg-green-500/10 rounded-full mb-3">
+                      <Shield className="w-8 h-8 text-green-400" />
                     </div>
                     <h4 className="font-medium mb-1">Upload ID Documents</h4>
-                    <p className="text-sm text-gray-600 mb-4">
+                    <p className="text-sm text-slate-300 mb-4">
                       Passport or Driver's License (PDF, JPG, PNG)
                     </p>
                     <Button variant="outline">Choose Files</Button>
@@ -282,29 +282,29 @@ export function OnboardingWizard({ onNavigateToSignIn }: OnboardingWizardProps =
           {currentStep === 3 && (
             <div className="space-y-6 text-center py-8">
               <div className="flex justify-center">
-                <div className="p-4 bg-green-100 rounded-full">
-                  <Shield className="w-12 h-12 text-green-600" />
+                <div className="p-4 bg-green-500/15 rounded-full">
+                  <Shield className="w-12 h-12 text-green-400" />
                 </div>
               </div>
               <div>
                 <h3 className="text-2xl font-semibold mb-2">Onboarding Complete!</h3>
-                <p className="text-gray-600">
+                <p className="text-slate-300">
                   Your application is under review. We'll notify you once approved.
                 </p>
               </div>
-              <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-6 text-left max-w-md mx-auto">
+              <div className="bg-indigo-500/10 border border-indigo-500/30 rounded-lg p-6 text-left max-w-md mx-auto">
                 <h4 className="font-semibold mb-3">What happens next?</h4>
-                <ul className="space-y-2 text-sm text-gray-700">
+                <ul className="space-y-2 text-sm text-slate-300">
                   <li className="flex gap-2">
-                    <span className="text-indigo-600">1.</span>
+                    <span className="text-indigo-400">1.</span>
                     <span>Our compliance team reviews your documents (24-48 hours)</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-indigo-600">2.</span>
+                    <span className="text-indigo-400">2.</span>
                     <span>You'll receive an email notification upon approval</span>
                   </li>
                   <li className="flex gap-2">
-                    <span className="text-indigo-600">3.</span>
+                    <span className="text-indigo-400">3.</span>
                     <span>Access full platform features once verified</span>
                   </li>
                 </ul>

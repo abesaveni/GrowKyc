@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '../ui/card';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
@@ -621,21 +621,21 @@ export function IntegrationsSettings() {
     switch (status) {
       case 'connected':
         return (
-          <div className="flex items-center gap-2 px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">
+          <div className="flex items-center gap-2 px-3 py-1 bg-green-500/15 text-green-300 rounded-full text-sm font-semibold">
             <CheckCircle className="w-4 h-4" />
             Connected
           </div>
         );
       case 'disconnected':
         return (
-          <div className="flex items-center gap-2 px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-semibold">
+          <div className="flex items-center gap-2 px-3 py-1 bg-white/5 text-slate-300 rounded-full text-sm font-semibold">
             <XCircle className="w-4 h-4" />
             Disconnected
           </div>
         );
       case 'error':
         return (
-          <div className="flex items-center gap-2 px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-semibold">
+          <div className="flex items-center gap-2 px-3 py-1 bg-red-500/15 text-red-300 rounded-full text-sm font-semibold">
             <AlertCircle className="w-4 h-4" />
             Error
           </div>
@@ -647,8 +647,8 @@ export function IntegrationsSettings() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h2 className="text-2xl font-bold text-gray-900">API Integrations</h2>
-        <p className="text-gray-600 mt-1">
+        <h2 className="text-2xl font-bold text-slate-100">API Integrations</h2>
+        <p className="text-slate-300 mt-1">
           Manage third-party API connections for KYC, property data, payments, and compliance
         </p>
       </div>
@@ -667,7 +667,7 @@ export function IntegrationsSettings() {
                     </div>
                     <div>
                       <CardTitle className="text-xl">{integration.name}</CardTitle>
-                      <p className="text-sm text-gray-600 mt-1">{integration.description}</p>
+                      <p className="text-sm text-slate-300 mt-1">{integration.description}</p>
                     </div>
                   </div>
                   {getStatusBadge(integration.status)}
@@ -679,7 +679,7 @@ export function IntegrationsSettings() {
                   <div className="grid grid-cols-1 gap-4">
                     {integration.fields.map((field) => (
                       <div key={field.id}>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        <label className="block text-sm font-semibold text-slate-300 mb-2">
                           {field.label}
                         </label>
                         <div className="relative">
@@ -693,7 +693,7 @@ export function IntegrationsSettings() {
                           {field.type === 'password' && (
                             <button
                               onClick={() => toggleShowApiKey(`${integration.id}-${field.id}`)}
-                              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-slate-300"
                             >
                               {showApiKeys[`${integration.id}-${field.id}`] ? (
                                 <EyeOff className="w-4 h-4" />
@@ -712,15 +712,15 @@ export function IntegrationsSettings() {
                     <div>
                       {integration.lastTested && (
                         <div className="flex items-center gap-2 text-sm">
-                          <span className="text-gray-600">Last tested:</span>
-                          <span className="font-semibold text-gray-900">
+                          <span className="text-slate-300">Last tested:</span>
+                          <span className="font-semibold text-slate-100">
                             {integration.lastTested.toLocaleString()}
                           </span>
                           {integration.testResult === 'success' && (
-                            <CheckCircle className="w-4 h-4 text-green-600" />
+                            <CheckCircle className="w-4 h-4 text-green-400" />
                           )}
                           {integration.testResult === 'failed' && (
-                            <XCircle className="w-4 h-4 text-red-600" />
+                            <XCircle className="w-4 h-4 text-red-400" />
                           )}
                         </div>
                       )}
@@ -752,15 +752,15 @@ export function IntegrationsSettings() {
       </div>
 
       {/* Add New Integration */}
-      <Card className="border-2 border-dashed border-gray-300 bg-gray-50">
+      <Card className="border-2 border-dashed border-white/10 bg-white/5">
         <CardContent className="p-8 text-center">
           <div className="flex flex-col items-center gap-3">
-            <div className="p-3 bg-gray-200 rounded-full">
-              <Plus className="w-6 h-6 text-gray-600" />
+            <div className="p-3 bg-white/10 rounded-full">
+              <Plus className="w-6 h-6 text-slate-300" />
             </div>
             <div>
-              <h3 className="font-semibold text-gray-900">Need Another Integration?</h3>
-              <p className="text-sm text-gray-600 mt-1">
+              <h3 className="font-semibold text-slate-100">Need Another Integration?</h3>
+              <p className="text-sm text-slate-300 mt-1">
                 Contact support to add custom API integrations
               </p>
             </div>

@@ -138,45 +138,45 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
   const kycStatusConfig = {
     current: {
       label: 'Current',
-      color: 'bg-green-100 text-green-700 border-green-300',
+      color: 'bg-green-500/15 text-green-300 border-green-300',
       icon: CheckCircle,
-      iconColor: 'text-green-600'
+      iconColor: 'text-green-400'
     },
     overdue: {
       label: 'CDD Overdue',
-      color: 'bg-red-100 text-red-700 border-red-300',
+      color: 'bg-red-500/15 text-red-300 border-red-300',
       icon: XCircle,
-      iconColor: 'text-red-600'
+      iconColor: 'text-red-400'
     },
     aml_alert: {
       label: 'AML Alert',
-      color: 'bg-red-100 text-red-700 border-red-300',
+      color: 'bg-red-500/15 text-red-300 border-red-300',
       icon: AlertTriangle,
-      iconColor: 'text-red-600'
+      iconColor: 'text-red-400'
     },
     pep_detected: {
       label: 'PEP Detected',
-      color: 'bg-orange-100 text-orange-700 border-orange-300',
+      color: 'bg-orange-500/15 text-orange-300 border-orange-300',
       icon: AlertTriangle,
-      iconColor: 'text-orange-600'
+      iconColor: 'text-orange-400'
     },
     pending_verification: {
       label: 'Pending Verification',
-      color: 'bg-yellow-100 text-yellow-700 border-yellow-300',
+      color: 'bg-yellow-500/15 text-yellow-300 border-yellow-300',
       icon: Clock,
-      iconColor: 'text-yellow-600'
+      iconColor: 'text-yellow-400'
     },
     id_expiring: {
       label: 'ID Expiring Soon',
-      color: 'bg-yellow-100 text-yellow-700 border-yellow-300',
+      color: 'bg-yellow-500/15 text-yellow-300 border-yellow-300',
       icon: Clock,
-      iconColor: 'text-yellow-600'
+      iconColor: 'text-yellow-400'
     },
     verification_failed: {
       label: 'Verification Failed',
-      color: 'bg-orange-100 text-orange-700 border-orange-300',
+      color: 'bg-orange-500/15 text-orange-300 border-orange-300',
       icon: XCircle,
-      iconColor: 'text-orange-600'
+      iconColor: 'text-orange-400'
     }
   };
 
@@ -188,12 +188,12 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
   };
 
   const engagementStatusConfig = {
-    'Active': 'bg-green-100 text-green-700 border-green-300',
-    'Active - High Risk': 'bg-orange-100 text-orange-700 border-orange-300',
-    'Restricted': 'bg-yellow-100 text-yellow-700 border-yellow-300',
-    'Suspended': 'bg-red-100 text-red-700 border-red-300',
-    'Offboarding': 'bg-[#0f172a] text-slate-300 border-gray-300',
-    'Closed': 'bg-[#0f172a] text-slate-300 border-gray-300'
+    'Active': 'bg-green-500/15 text-green-300 border-green-300',
+    'Active - High Risk': 'bg-orange-500/15 text-orange-300 border-orange-300',
+    'Restricted': 'bg-yellow-500/15 text-yellow-300 border-yellow-300',
+    'Suspended': 'bg-red-500/15 text-red-300 border-red-300',
+    'Offboarding': 'bg-[#0f172a] text-slate-300 border-white/10',
+    'Closed': 'bg-[#0f172a] text-slate-300 border-white/10'
   };
 
   const filteredClients = clients.filter((client) => {
@@ -273,55 +273,55 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
                 <p className="text-sm text-slate-300">Total Clients</p>
                 <p className="text-3xl font-bold text-white mt-1">{stats.total}</p>
               </div>
-              <Users className="w-8 h-8 text-blue-600" />
+              <Users className="w-8 h-8 text-blue-400" />
             </div>
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-red-300 bg-red-50">
+        <Card className="border-2 border-red-300 bg-red-500/10">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-red-700 font-semibold">Critical Risk</p>
-                <p className="text-3xl font-bold text-red-700 mt-1">{stats.critical}</p>
+                <p className="text-sm text-red-300 font-semibold">Critical Risk</p>
+                <p className="text-3xl font-bold text-red-300 mt-1">{stats.critical}</p>
               </div>
-              <AlertTriangle className="w-8 h-8 text-red-600" />
+              <AlertTriangle className="w-8 h-8 text-red-400" />
             </div>
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-orange-300 bg-orange-50">
+        <Card className="border-2 border-orange-300 bg-orange-500/10">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-orange-700 font-semibold">High Risk</p>
-                <p className="text-3xl font-bold text-orange-700 mt-1">{stats.high}</p>
+                <p className="text-sm text-orange-300 font-semibold">High Risk</p>
+                <p className="text-3xl font-bold text-orange-300 mt-1">{stats.high}</p>
               </div>
-              <AlertTriangle className="w-8 h-8 text-orange-600" />
+              <AlertTriangle className="w-8 h-8 text-orange-400" />
             </div>
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-yellow-300 bg-yellow-50">
+        <Card className="border-2 border-yellow-300 bg-yellow-500/10">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-yellow-700 font-semibold">Overdue</p>
-                <p className="text-3xl font-bold text-yellow-700 mt-1">{stats.overdue}</p>
+                <p className="text-sm text-yellow-300 font-semibold">Overdue</p>
+                <p className="text-3xl font-bold text-yellow-300 mt-1">{stats.overdue}</p>
               </div>
-              <Clock className="w-8 h-8 text-yellow-600" />
+              <Clock className="w-8 h-8 text-yellow-400" />
             </div>
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-purple-300 bg-purple-50">
+        <Card className="border-2 border-purple-300 bg-purple-500/10">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-purple-700 font-semibold">Restricted</p>
-                <p className="text-3xl font-bold text-purple-700 mt-1">{stats.restricted}</p>
+                <p className="text-sm text-purple-300 font-semibold">Restricted</p>
+                <p className="text-3xl font-bold text-purple-300 mt-1">{stats.restricted}</p>
               </div>
-              <XCircle className="w-8 h-8 text-purple-600" />
+              <XCircle className="w-8 h-8 text-purple-400" />
             </div>
           </CardContent>
         </Card>
@@ -340,7 +340,7 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
                   placeholder="Search by name or ABN..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full pl-10 pr-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
             </div>
@@ -350,7 +350,7 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
               <select
                 value={clientType}
                 onChange={(e) => setClientType(e.target.value as ClientType)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="all">All Types</option>
                 <option value="individual">Individual</option>
@@ -365,7 +365,7 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
               <select
                 value={riskFilter}
                 onChange={(e) => setRiskFilter(e.target.value as RiskTier)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="all">All Risk Levels</option>
                 <option value="critical">Critical</option>
@@ -400,11 +400,11 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex items-start gap-4 flex-1">
-                      <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <div className="w-12 h-12 bg-blue-500/15 rounded-full flex items-center justify-center flex-shrink-0">
                         {client.type === 'individual' ? (
-                          <User className="w-6 h-6 text-blue-600" />
+                          <User className="w-6 h-6 text-blue-400" />
                         ) : (
-                          <Building2 className="w-6 h-6 text-blue-600" />
+                          <Building2 className="w-6 h-6 text-blue-400" />
                         )}
                       </div>
 
@@ -469,7 +469,7 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
                 <select
                   name="clientType"
                   required
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-3 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                   <option value="">Select client type...</option>
                   <option value="individual">Individual</option>
@@ -490,7 +490,7 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
                     type="text"
                     required
                     placeholder="e.g., John Smith or ABC Pty Ltd"
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-3 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
 
@@ -502,7 +502,7 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
                     name="abn"
                     type="text"
                     placeholder="XX XXX XXX XXX"
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-3 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
               </div>
@@ -518,7 +518,7 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
                     type="email"
                     required
                     placeholder="client@example.com"
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-3 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
 
@@ -531,7 +531,7 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
                     type="tel"
                     required
                     placeholder="+61 4XX XXX XXX"
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-3 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
               </div>
@@ -546,26 +546,26 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
                   type="text"
                   required
                   placeholder="Street address"
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-2"
+                  className="w-full px-4 py-3 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-2"
                 />
                 <div className="grid grid-cols-3 gap-2">
                   <input
                     type="text"
                     placeholder="City"
                     required
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-3 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                   <input
                     type="text"
                     placeholder="State"
                     required
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-3 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                   <input
                     type="text"
                     placeholder="Postcode"
                     required
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-3 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
               </div>
@@ -577,7 +577,7 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
                 </label>
                 <select
                   required
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-3 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                   <option value="">Assess risk level...</option>
                   <option value="low">Low Risk</option>
@@ -599,21 +599,21 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
                   required
                   rows={3}
                   placeholder="Describe the source of wealth or funds..."
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-3 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
 
               {/* PEP Screening */}
-              <div className="bg-yellow-50 border-2 border-yellow-300 rounded-lg p-4">
+              <div className="bg-yellow-500/10 border-2 border-yellow-300 rounded-lg p-4">
                 <div className="flex items-start gap-3">
-                  <AlertTriangle className="w-5 h-5 text-yellow-600 mt-0.5" />
+                  <AlertTriangle className="w-5 h-5 text-yellow-400 mt-0.5" />
                   <div className="flex-1">
-                    <p className="text-sm font-semibold text-yellow-900 mb-2">
+                    <p className="text-sm font-semibold text-yellow-300 mb-2">
                       AML/CTF Compliance Required
                     </p>
                     <label className="flex items-center gap-2">
                       <input type="checkbox" className="w-4 h-4" required />
-                      <span className="text-sm text-yellow-800">
+                      <span className="text-sm text-yellow-300">
                         I confirm PEP screening will be conducted before engagement
                       </span>
                     </label>

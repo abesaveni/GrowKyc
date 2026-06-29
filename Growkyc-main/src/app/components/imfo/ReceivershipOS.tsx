@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Button } from '../ui/button';
 import {
   TradingView,
@@ -169,9 +169,9 @@ export function ReceivershipOS({ onNavigate, onSwitchModule, role = 'receiver' }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white/5">
       {/* Top Navigation */}
-      <nav className="bg-white border-b border-gray-300 fixed w-full top-0 z-50">
+      <nav className="bg-white border-b border-white/10 fixed w-full top-0 z-50">
         <div className="px-6">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-4">
@@ -180,8 +180,8 @@ export function ReceivershipOS({ onNavigate, onSwitchModule, role = 'receiver' }
                   <Gavel className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h1 className="text-lg font-bold text-gray-900">Receivership OS</h1>
-                  <p className="text-xs text-gray-500">MIP & Restructuring Platform</p>
+                  <h1 className="text-lg font-bold text-slate-100">Receivership OS</h1>
+                  <p className="text-xs text-slate-400">MIP & Restructuring Platform</p>
                 </div>
               </div>
             </div>
@@ -193,11 +193,11 @@ export function ReceivershipOS({ onNavigate, onSwitchModule, role = 'receiver' }
                 <input
                   type="search"
                   placeholder="Search matters..."
-                  className="pl-10 pr-4 py-2 w-80 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
+                  className="pl-10 pr-4 py-2 w-80 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
                 />
               </div>
 
-              <select className="px-3 py-2 border border-gray-300 rounded-lg text-sm font-medium focus:outline-none focus:ring-2 focus:ring-red-500">
+              <select className="px-3 py-2 border border-white/10 rounded-lg text-sm font-medium focus:outline-none focus:ring-2 focus:ring-red-500">
                 <option>Acme Trading Pty Ltd</option>
                 <option>Brisbane Retail Co</option>
                 <option>Coastal Developments</option>
@@ -210,7 +210,7 @@ export function ReceivershipOS({ onNavigate, onSwitchModule, role = 'receiver' }
               <select
                 value={userRole}
                 onChange={(e) => setUserRole(e.target.value as ReceivershipRole)}
-                className="px-3 py-2 border border-red-300 rounded-lg text-xs font-medium text-red-700 bg-red-50 hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="px-3 py-2 border border-red-300 rounded-lg text-xs font-medium text-red-300 bg-red-500/10 hover:bg-red-500/15 focus:outline-none focus:ring-2 focus:ring-red-500"
               >
                 <option value="system-owner">System Owner</option>
                 <option value="receiver">Receiver</option>
@@ -226,7 +226,7 @@ export function ReceivershipOS({ onNavigate, onSwitchModule, role = 'receiver' }
               {onSwitchModule && (
                 <select
                   onChange={(e) => onSwitchModule(e.target.value)}
-                  className="px-3 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-500"
+                  className="px-3 py-2 border border-white/10 rounded-lg text-sm font-medium text-slate-300 bg-white hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-red-500"
                   defaultValue="receivership"
                 >
                   <option value="Grow MIP">Switch to Grow MIP</option>
@@ -244,10 +244,10 @@ export function ReceivershipOS({ onNavigate, onSwitchModule, role = 'receiver' }
                 <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
               </Button>
 
-              <div className="flex items-center gap-3 pl-3 border-l border-gray-300">
+              <div className="flex items-center gap-3 pl-3 border-l border-white/10">
                 <div className="text-right">
-                  <p className="text-sm font-medium text-gray-900">{mockUser.name}</p>
-                  <p className="text-xs text-gray-500">{mockUser.firm}</p>
+                  <p className="text-sm font-medium text-slate-100">{mockUser.name}</p>
+                  <p className="text-xs text-slate-400">{mockUser.firm}</p>
                 </div>
                 <div className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center text-white font-semibold">
                   {mockUser.name.split(' ').map(n => n[0]).join('')}
@@ -315,8 +315,8 @@ function ReceivershipDashboard({ onNavigate, role }: any) {
     <div className="p-6 space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Receivership Dashboard</h1>
-          <p className="text-gray-600 mt-1">Control distressed entities, enforce security, and manage restructuring</p>
+          <h1 className="text-2xl font-bold text-slate-100">Receivership Dashboard</h1>
+          <p className="text-slate-300 mt-1">Control distressed entities, enforce security, and manage restructuring</p>
         </div>
         <Button className="bg-red-600 hover:bg-red-700 text-white" onClick={handleNewAppointment}>
           <Plus className="w-4 h-4 mr-2" />
@@ -326,57 +326,57 @@ function ReceivershipDashboard({ onNavigate, role }: any) {
 
       {/* Stats Grid */}
       <div className="grid grid-cols-5 gap-4">
-        <div className="bg-white border border-gray-300 rounded-lg p-4 cursor-pointer hover:shadow-md transition-shadow" onClick={() => onNavigate('matters')}>
+        <div className="bg-white border border-white/10 rounded-lg p-4 cursor-pointer hover:shadow-md transition-shadow" onClick={() => onNavigate('matters')}>
           <div className="flex items-center gap-2 mb-2">
-            <Briefcase className="w-5 h-5 text-red-600" />
-            <p className="text-sm text-gray-600">Active Matters</p>
+            <Briefcase className="w-5 h-5 text-red-400" />
+            <p className="text-sm text-slate-300">Active Matters</p>
           </div>
-          <p className="text-3xl font-bold text-gray-900">12</p>
-          <p className="text-xs text-gray-500 mt-1">3 trading, 9 non-trading</p>
+          <p className="text-3xl font-bold text-slate-100">12</p>
+          <p className="text-xs text-slate-400 mt-1">3 trading, 9 non-trading</p>
         </div>
 
-        <div className="bg-white border border-gray-300 rounded-lg p-4 cursor-pointer hover:shadow-md transition-shadow" onClick={() => onNavigate('assets')}>
+        <div className="bg-white border border-white/10 rounded-lg p-4 cursor-pointer hover:shadow-md transition-shadow" onClick={() => onNavigate('assets')}>
           <div className="flex items-center gap-2 mb-2">
-            <DollarSign className="w-5 h-5 text-green-600" />
-            <p className="text-sm text-gray-600">Total Assets</p>
+            <DollarSign className="w-5 h-5 text-green-400" />
+            <p className="text-sm text-slate-300">Total Assets</p>
           </div>
-          <p className="text-3xl font-bold text-gray-900">$45.2M</p>
-          <p className="text-xs text-gray-500 mt-1">Across all matters</p>
+          <p className="text-3xl font-bold text-slate-100">$45.2M</p>
+          <p className="text-xs text-slate-400 mt-1">Across all matters</p>
         </div>
 
-        <div className="bg-white border border-gray-300 rounded-lg p-4 cursor-pointer hover:shadow-md transition-shadow" onClick={() => onNavigate('trust-accounting')}>
+        <div className="bg-white border border-white/10 rounded-lg p-4 cursor-pointer hover:shadow-md transition-shadow" onClick={() => onNavigate('trust-accounting')}>
           <div className="flex items-center gap-2 mb-2">
-            <Wallet className="w-5 h-5 text-blue-600" />
-            <p className="text-sm text-gray-600">Trust Balance</p>
+            <Wallet className="w-5 h-5 text-blue-400" />
+            <p className="text-sm text-slate-300">Trust Balance</p>
           </div>
-          <p className="text-3xl font-bold text-gray-900">$8.7M</p>
-          <p className="text-xs text-gray-500 mt-1">Across 12 accounts</p>
+          <p className="text-3xl font-bold text-slate-100">$8.7M</p>
+          <p className="text-xs text-slate-400 mt-1">Across 12 accounts</p>
         </div>
 
-        <div className="bg-white border border-gray-300 rounded-lg p-4 cursor-pointer hover:shadow-md transition-shadow" onClick={() => onNavigate('workflow')}>
+        <div className="bg-white border border-white/10 rounded-lg p-4 cursor-pointer hover:shadow-md transition-shadow" onClick={() => onNavigate('workflow')}>
           <div className="flex items-center gap-2 mb-2">
-            <AlertTriangle className="w-5 h-5 text-orange-600" />
-            <p className="text-sm text-gray-600">Pending Actions</p>
+            <AlertTriangle className="w-5 h-5 text-orange-400" />
+            <p className="text-sm text-slate-300">Pending Actions</p>
           </div>
-          <p className="text-3xl font-bold text-gray-900">24</p>
-          <p className="text-xs text-gray-500 mt-1">8 urgent</p>
+          <p className="text-3xl font-bold text-slate-100">24</p>
+          <p className="text-xs text-slate-400 mt-1">8 urgent</p>
         </div>
 
-        <div className="bg-white border border-gray-300 rounded-lg p-4 cursor-pointer hover:shadow-md transition-shadow" onClick={() => onNavigate('restructuring')}>
+        <div className="bg-white border border-white/10 rounded-lg p-4 cursor-pointer hover:shadow-md transition-shadow" onClick={() => onNavigate('restructuring')}>
           <div className="flex items-center gap-2 mb-2">
-            <Calculator className="w-5 h-5 text-purple-600" />
-            <p className="text-sm text-gray-600">Restructuring</p>
+            <Calculator className="w-5 h-5 text-purple-400" />
+            <p className="text-sm text-slate-300">Restructuring</p>
           </div>
-          <p className="text-3xl font-bold text-gray-900">4</p>
-          <p className="text-xs text-gray-500 mt-1">Active proposals</p>
+          <p className="text-3xl font-bold text-slate-100">4</p>
+          <p className="text-xs text-slate-400 mt-1">Active proposals</p>
         </div>
       </div>
 
       {/* Urgent Actions */}
-      <div className="bg-orange-50 border border-orange-200 rounded-lg p-6">
+      <div className="bg-orange-500/10 border border-orange-500/30 rounded-lg p-6">
         <div className="flex items-center gap-2 mb-4">
-          <AlertCircle className="w-5 h-5 text-orange-600" />
-          <h3 className="font-semibold text-orange-900">Urgent Actions Required</h3>
+          <AlertCircle className="w-5 h-5 text-orange-400" />
+          <h3 className="font-semibold text-orange-300">Urgent Actions Required</h3>
         </div>
         <div className="space-y-3">
           {[
@@ -386,12 +386,12 @@ function ReceivershipDashboard({ onNavigate, role }: any) {
           ].map((item, idx) => (
             <div key={idx} className="flex items-center justify-between p-3 bg-white rounded-lg">
               <div>
-                <p className="font-medium text-gray-900">{item.matter}</p>
-                <p className="text-sm text-gray-600">{item.action}</p>
+                <p className="font-medium text-slate-100">{item.matter}</p>
+                <p className="text-sm text-slate-300">{item.action}</p>
               </div>
               <div className="flex items-center gap-3">
                 <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                  item.priority === 'high' ? 'bg-red-100 text-red-800' : 'bg-orange-100 text-orange-800'
+                  item.priority === 'high' ? 'bg-red-500/15 text-red-300' : 'bg-orange-500/15 text-orange-300'
                 }`}>
                   Due {item.due}
                 </span>
@@ -405,8 +405,8 @@ function ReceivershipDashboard({ onNavigate, role }: any) {
       {/* Active Matters Grid */}
       <div className="grid grid-cols-2 gap-6">
         {/* Recent Activity */}
-        <div className="bg-white border border-gray-300 rounded-lg p-6">
-          <h3 className="font-semibold text-gray-900 mb-4">Recent Activity</h3>
+        <div className="bg-white border border-white/10 rounded-lg p-6">
+          <h3 className="font-semibold text-slate-100 mb-4">Recent Activity</h3>
           <div className="space-y-3">
             {[
               { time: '10 mins ago', user: 'Sarah Chen', action: 'Approved asset sale', matter: 'Acme Trading' },
@@ -414,11 +414,11 @@ function ReceivershipDashboard({ onNavigate, role }: any) {
               { time: '2 hours ago', user: 'Trust System', action: 'Reconciled bank account', matter: 'Coastal Dev' },
               { time: '4 hours ago', user: 'John Davis', action: 'Updated restructure proposal', matter: 'Metro Holdings' }
             ].map((activity, idx) => (
-              <div key={idx} className="flex items-start gap-3 pb-3 border-b border-gray-200 last:border-0">
+              <div key={idx} className="flex items-start gap-3 pb-3 border-b border-white/10 last:border-0">
                 <Clock className="w-4 h-4 text-gray-400 mt-1" />
                 <div className="flex-1">
-                  <p className="text-sm text-gray-900"><span className="font-medium">{activity.user}</span> {activity.action}</p>
-                  <p className="text-xs text-gray-500">{activity.matter} â€¢ {activity.time}</p>
+                  <p className="text-sm text-slate-100"><span className="font-medium">{activity.user}</span> {activity.action}</p>
+                  <p className="text-xs text-slate-400">{activity.matter} â€¢ {activity.time}</p>
                 </div>
               </div>
             ))}
@@ -426,8 +426,8 @@ function ReceivershipDashboard({ onNavigate, role }: any) {
         </div>
 
         {/* Risk Alerts */}
-        <div className="bg-white border border-gray-300 rounded-lg p-6">
-          <h3 className="font-semibold text-gray-900 mb-4">Risk Alerts</h3>
+        <div className="bg-white border border-white/10 rounded-lg p-6">
+          <h3 className="font-semibold text-slate-100 mb-4">Risk Alerts</h3>
           <div className="space-y-3">
             {[
               { severity: 'high', alert: 'Negative cashflow forecast', matter: 'Acme Trading', impact: 'Trading may cease' },
@@ -436,19 +436,19 @@ function ReceivershipDashboard({ onNavigate, role }: any) {
             ].map((alert, idx) => (
               <div key={idx} className={`p-3 rounded-lg border ${
                 alert.severity === 'high' 
-                  ? 'bg-red-50 border-red-200' 
-                  : 'bg-yellow-50 border-yellow-200'
+                  ? 'bg-red-500/10 border-red-500/30' 
+                  : 'bg-yellow-500/10 border-yellow-500/30'
               }`}>
                 <div className="flex items-start gap-2">
                   <AlertTriangle className={`w-4 h-4 mt-0.5 ${
-                    alert.severity === 'high' ? 'text-red-600' : 'text-yellow-600'
+                    alert.severity === 'high' ? 'text-red-400' : 'text-yellow-400'
                   }`} />
                   <div className="flex-1">
                     <p className={`text-sm font-medium ${
-                      alert.severity === 'high' ? 'text-red-900' : 'text-yellow-900'
+                      alert.severity === 'high' ? 'text-red-300' : 'text-yellow-300'
                     }`}>{alert.alert}</p>
-                    <p className="text-xs text-gray-600 mt-1">{alert.matter}</p>
-                    <p className="text-xs text-gray-500 mt-1">{alert.impact}</p>
+                    <p className="text-xs text-slate-300 mt-1">{alert.matter}</p>
+                    <p className="text-xs text-slate-400 mt-1">{alert.impact}</p>
                   </div>
                 </div>
               </div>
@@ -533,8 +533,8 @@ function MattersView({ onSelectMatter, role }: any) {
     <div className="p-6 space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Matters</h1>
-          <p className="text-gray-600 mt-1">Manage all appointments and receiverships</p>
+          <h1 className="text-2xl font-bold text-slate-100">Matters</h1>
+          <p className="text-slate-300 mt-1">Manage all appointments and receiverships</p>
         </div>
         <div className="flex items-center gap-3">
           <Button variant="outline" onClick={handleFilter}>
@@ -553,27 +553,27 @@ function MattersView({ onSelectMatter, role }: any) {
         {mockMatters.map((matter) => (
           <div
             key={matter.id}
-            className="bg-white border border-gray-300 rounded-lg p-6 hover:shadow-lg transition-shadow cursor-pointer"
+            className="bg-white border border-white/10 rounded-lg p-6 hover:shadow-lg transition-shadow cursor-pointer"
             onClick={() => onSelectMatter(matter)}
           >
             <div className="flex items-start justify-between mb-4">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
-                  <h3 className="text-lg font-bold text-gray-900">{matter.name}</h3>
+                  <h3 className="text-lg font-bold text-slate-100">{matter.name}</h3>
                   <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                    matter.status === 'trading' ? 'bg-green-100 text-green-800' :
-                    matter.status === 'restructuring' ? 'bg-purple-100 text-purple-800' :
-                    'bg-gray-100 text-gray-800'
+                    matter.status === 'trading' ? 'bg-green-500/15 text-green-300' :
+                    matter.status === 'restructuring' ? 'bg-purple-500/15 text-purple-300' :
+                    'bg-white/5 text-slate-100'
                   }`}>
                     {matter.status}
                   </span>
                 </div>
-                <p className="text-sm text-gray-600">{matter.id} â€¢ {matter.type} â€¢ {matter.daysActive} days active</p>
+                <p className="text-sm text-slate-300">{matter.id} â€¢ {matter.type} â€¢ {matter.daysActive} days active</p>
               </div>
               <div className="text-right">
-                <p className="text-sm text-gray-600 mb-1">Exit Probability</p>
+                <p className="text-sm text-slate-300 mb-1">Exit Probability</p>
                 <div className="flex items-center gap-2">
-                  <div className="w-24 h-2 bg-gray-200 rounded-full">
+                  <div className="w-24 h-2 bg-white/10 rounded-full">
                     <div
                       className={`h-2 rounded-full ${
                         matter.exitProbability >= 60 ? 'bg-green-600' :
@@ -582,34 +582,34 @@ function MattersView({ onSelectMatter, role }: any) {
                       style={{ width: `${matter.exitProbability}%` }}
                     />
                   </div>
-                  <span className="text-sm font-semibold text-gray-900">{matter.exitProbability}%</span>
+                  <span className="text-sm font-semibold text-slate-100">{matter.exitProbability}%</span>
                 </div>
               </div>
             </div>
 
             {/* Metrics Grid */}
             <div className="grid grid-cols-4 gap-4 mb-4">
-              <div className="p-3 bg-blue-50 rounded-lg">
-                <p className="text-xs text-blue-600 mb-1">Cash at Bank</p>
-                <p className="text-lg font-bold text-blue-900">${(matter.cashAtBank / 1000).toFixed(0)}K</p>
+              <div className="p-3 bg-blue-500/10 rounded-lg">
+                <p className="text-xs text-blue-400 mb-1">Cash at Bank</p>
+                <p className="text-lg font-bold text-blue-300">${(matter.cashAtBank / 1000).toFixed(0)}K</p>
               </div>
-              <div className="p-3 bg-green-50 rounded-lg">
-                <p className="text-xs text-green-600 mb-1">Total Assets</p>
-                <p className="text-lg font-bold text-green-900">${(matter.totalAssets / 1000000).toFixed(1)}M</p>
+              <div className="p-3 bg-green-500/10 rounded-lg">
+                <p className="text-xs text-green-400 mb-1">Total Assets</p>
+                <p className="text-lg font-bold text-green-300">${(matter.totalAssets / 1000000).toFixed(1)}M</p>
               </div>
-              <div className="p-3 bg-orange-50 rounded-lg">
-                <p className="text-xs text-orange-600 mb-1">Secured Debt</p>
-                <p className="text-lg font-bold text-orange-900">${(matter.secured / 1000000).toFixed(1)}M</p>
+              <div className="p-3 bg-orange-500/10 rounded-lg">
+                <p className="text-xs text-orange-400 mb-1">Secured Debt</p>
+                <p className="text-lg font-bold text-orange-300">${(matter.secured / 1000000).toFixed(1)}M</p>
               </div>
-              <div className="p-3 bg-purple-50 rounded-lg">
-                <p className="text-xs text-purple-600 mb-1">Unsecured</p>
-                <p className="text-lg font-bold text-purple-900">${(matter.unsecured / 1000000).toFixed(1)}M</p>
+              <div className="p-3 bg-purple-500/10 rounded-lg">
+                <p className="text-xs text-purple-400 mb-1">Unsecured</p>
+                <p className="text-lg font-bold text-purple-300">${(matter.unsecured / 1000000).toFixed(1)}M</p>
               </div>
             </div>
 
             {/* Footer */}
-            <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-              <div className="flex items-center gap-2 text-sm text-gray-600">
+            <div className="flex items-center justify-between pt-4 border-t border-white/10">
+              <div className="flex items-center gap-2 text-sm text-slate-300">
                 <Clock className="w-4 h-4" />
                 <span>{matter.nextDeadline}</span>
               </div>
@@ -635,13 +635,13 @@ function MattersView({ onSelectMatter, role }: any) {
 
       {/* Filter Menu */}
       {showFilterMenu && (
-        <div className="absolute top-20 right-6 bg-white border border-gray-300 rounded-lg shadow-xl p-4 z-50">
-          <h4 className="font-semibold text-gray-900 mb-3">Filter Matters</h4>
+        <div className="absolute top-20 right-6 bg-white border border-white/10 rounded-lg shadow-xl p-4 z-50">
+          <h4 className="font-semibold text-slate-100 mb-3">Filter Matters</h4>
           <div className="space-y-2">
             {['All', 'Trading', 'Non-Trading', 'Restructuring'].map((filter) => (
               <label key={filter} className="flex items-center gap-2">
                 <input type="checkbox" className="rounded" />
-                <span className="text-sm text-gray-700">{filter}</span>
+                <span className="text-sm text-slate-300">{filter}</span>
               </label>
             ))}
           </div>
@@ -664,8 +664,8 @@ function MatterDetail({ matter, onBack, role }: any) {
             <ChevronRight className="w-5 h-5 rotate-180" />
           </Button>
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">{matter.name}</h1>
-            <p className="text-gray-600">{matter.id} â€¢ {matter.type}</p>
+            <h1 className="text-2xl font-bold text-slate-100">{matter.name}</h1>
+            <p className="text-slate-300">{matter.id} â€¢ {matter.type}</p>
           </div>
         </div>
         <div className="flex items-center gap-3">
@@ -681,49 +681,49 @@ function MatterDetail({ matter, onBack, role }: any) {
       </div>
 
       {/* Status Bar */}
-      <div className="bg-white border border-gray-300 rounded-lg p-6">
+      <div className="bg-white border border-white/10 rounded-lg p-6">
         <div className="grid grid-cols-6 gap-4">
           <div>
-            <p className="text-xs text-gray-600 mb-1">Days Active</p>
-            <p className="text-2xl font-bold text-gray-900">{matter.daysActive}</p>
+            <p className="text-xs text-slate-300 mb-1">Days Active</p>
+            <p className="text-2xl font-bold text-slate-100">{matter.daysActive}</p>
           </div>
           <div>
-            <p className="text-xs text-gray-600 mb-1">Status</p>
+            <p className="text-xs text-slate-300 mb-1">Status</p>
             <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${
-              matter.status === 'trading' ? 'bg-green-100 text-green-800' :
-              matter.status === 'restructuring' ? 'bg-purple-100 text-purple-800' :
-              'bg-gray-100 text-gray-800'
+              matter.status === 'trading' ? 'bg-green-500/15 text-green-300' :
+              matter.status === 'restructuring' ? 'bg-purple-500/15 text-purple-300' :
+              'bg-white/5 text-slate-100'
             }`}>
               {matter.status}
             </span>
           </div>
           <div>
-            <p className="text-xs text-gray-600 mb-1">Cash at Bank</p>
-            <p className="text-xl font-bold text-gray-900">${(matter.cashAtBank / 1000).toFixed(0)}K</p>
+            <p className="text-xs text-slate-300 mb-1">Cash at Bank</p>
+            <p className="text-xl font-bold text-slate-100">${(matter.cashAtBank / 1000).toFixed(0)}K</p>
           </div>
           <div>
-            <p className="text-xs text-gray-600 mb-1">Total Assets</p>
-            <p className="text-xl font-bold text-gray-900">${(matter.totalAssets / 1000000).toFixed(1)}M</p>
+            <p className="text-xs text-slate-300 mb-1">Total Assets</p>
+            <p className="text-xl font-bold text-slate-100">${(matter.totalAssets / 1000000).toFixed(1)}M</p>
           </div>
           <div>
-            <p className="text-xs text-gray-600 mb-1">Exit Probability</p>
+            <p className="text-xs text-slate-300 mb-1">Exit Probability</p>
             <div className="flex items-center gap-2">
-              <div className="flex-1 h-2 bg-gray-200 rounded-full">
+              <div className="flex-1 h-2 bg-white/10 rounded-full">
                 <div className="h-2 bg-green-600 rounded-full" style={{ width: `${matter.exitProbability}%` }} />
               </div>
               <span className="text-sm font-semibold">{matter.exitProbability}%</span>
             </div>
           </div>
           <div>
-            <p className="text-xs text-gray-600 mb-1">Next Deadline</p>
-            <p className="text-sm font-semibold text-orange-600">{matter.nextDeadline}</p>
+            <p className="text-xs text-slate-300 mb-1">Next Deadline</p>
+            <p className="text-sm font-semibold text-orange-400">{matter.nextDeadline}</p>
           </div>
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="bg-white border border-gray-300 rounded-lg overflow-hidden">
-        <div className="border-b border-gray-300 flex">
+      <div className="bg-white border border-white/10 rounded-lg overflow-hidden">
+        <div className="border-b border-white/10 flex">
           {[
             { id: 'overview', label: 'Overview', icon: Home },
             { id: 'assets', label: 'Assets', icon: Package },
@@ -738,8 +738,8 @@ function MatterDetail({ matter, onBack, role }: any) {
                 onClick={() => setActiveTab(tab.id as any)}
                 className={`flex items-center gap-2 px-6 py-4 border-b-2 transition-colors ${
                   activeTab === tab.id
-                    ? 'border-red-600 text-red-600 font-medium bg-red-50'
-                    : 'border-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                    ? 'border-red-600 text-red-400 font-medium bg-red-500/10'
+                    : 'border-transparent text-slate-300 hover:text-slate-100 hover:bg-white/5'
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -767,24 +767,24 @@ function MatterOverviewTab({ matter }: any) {
     <div className="space-y-6">
       <div className="grid grid-cols-2 gap-6">
         <div>
-          <h3 className="font-semibold text-gray-900 mb-4">Appointment Details</h3>
+          <h3 className="font-semibold text-slate-100 mb-4">Appointment Details</h3>
           <div className="space-y-3">
-            <div className="flex justify-between py-2 border-b border-gray-200">
-              <span className="text-sm text-gray-600">Appointment Type</span>
-              <span className="text-sm font-medium text-gray-900">{matter.type}</span>
+            <div className="flex justify-between py-2 border-b border-white/10">
+              <span className="text-sm text-slate-300">Appointment Type</span>
+              <span className="text-sm font-medium text-slate-100">{matter.type}</span>
             </div>
-            <div className="flex justify-between py-2 border-b border-gray-200">
-              <span className="text-sm text-gray-600">Appointment Date</span>
-              <span className="text-sm font-medium text-gray-900">{matter.appointmentDate}</span>
+            <div className="flex justify-between py-2 border-b border-white/10">
+              <span className="text-sm text-slate-300">Appointment Date</span>
+              <span className="text-sm font-medium text-slate-100">{matter.appointmentDate}</span>
             </div>
-            <div className="flex justify-between py-2 border-b border-gray-200">
-              <span className="text-sm text-gray-600">Days Active</span>
-              <span className="text-sm font-medium text-gray-900">{matter.daysActive} days</span>
+            <div className="flex justify-between py-2 border-b border-white/10">
+              <span className="text-sm text-slate-300">Days Active</span>
+              <span className="text-sm font-medium text-slate-100">{matter.daysActive} days</span>
             </div>
-            <div className="flex justify-between py-2 border-b border-gray-200">
-              <span className="text-sm text-gray-600">Trading Status</span>
+            <div className="flex justify-between py-2 border-b border-white/10">
+              <span className="text-sm text-slate-300">Trading Status</span>
               <span className={`text-sm font-medium ${
-                matter.status === 'trading' ? 'text-green-600' : 'text-gray-900'
+                matter.status === 'trading' ? 'text-green-400' : 'text-slate-100'
               }`}>
                 {matter.status === 'trading' ? 'Trading' : 'Non-trading'}
               </span>
@@ -793,23 +793,23 @@ function MatterOverviewTab({ matter }: any) {
         </div>
 
         <div>
-          <h3 className="font-semibold text-gray-900 mb-4">Financial Summary</h3>
+          <h3 className="font-semibold text-slate-100 mb-4">Financial Summary</h3>
           <div className="space-y-3">
-            <div className="flex justify-between py-2 border-b border-gray-200">
-              <span className="text-sm text-gray-600">Cash at Bank</span>
-              <span className="text-sm font-medium text-gray-900">${(matter.cashAtBank / 1000).toFixed(0)}K</span>
+            <div className="flex justify-between py-2 border-b border-white/10">
+              <span className="text-sm text-slate-300">Cash at Bank</span>
+              <span className="text-sm font-medium text-slate-100">${(matter.cashAtBank / 1000).toFixed(0)}K</span>
             </div>
-            <div className="flex justify-between py-2 border-b border-gray-200">
-              <span className="text-sm text-gray-600">Total Assets</span>
-              <span className="text-sm font-medium text-gray-900">${(matter.totalAssets / 1000000).toFixed(1)}M</span>
+            <div className="flex justify-between py-2 border-b border-white/10">
+              <span className="text-sm text-slate-300">Total Assets</span>
+              <span className="text-sm font-medium text-slate-100">${(matter.totalAssets / 1000000).toFixed(1)}M</span>
             </div>
-            <div className="flex justify-between py-2 border-b border-gray-200">
-              <span className="text-sm text-gray-600">Secured Debt</span>
-              <span className="text-sm font-medium text-gray-900">${(matter.secured / 1000000).toFixed(1)}M</span>
+            <div className="flex justify-between py-2 border-b border-white/10">
+              <span className="text-sm text-slate-300">Secured Debt</span>
+              <span className="text-sm font-medium text-slate-100">${(matter.secured / 1000000).toFixed(1)}M</span>
             </div>
-            <div className="flex justify-between py-2 border-b border-gray-200">
-              <span className="text-sm text-gray-600">Unsecured Claims</span>
-              <span className="text-sm font-medium text-gray-900">${(matter.unsecured / 1000000).toFixed(1)}M</span>
+            <div className="flex justify-between py-2 border-b border-white/10">
+              <span className="text-sm text-slate-300">Unsecured Claims</span>
+              <span className="text-sm font-medium text-slate-100">${(matter.unsecured / 1000000).toFixed(1)}M</span>
             </div>
           </div>
         </div>
@@ -817,25 +817,25 @@ function MatterOverviewTab({ matter }: any) {
 
       {/* Activity Timeline */}
       <div>
-        <h3 className="font-semibold text-gray-900 mb-4">Recent Activity</h3>
+        <h3 className="font-semibold text-slate-100 mb-4">Recent Activity</h3>
         <div className="space-y-3">
           {[
             { date: '2024-02-28', user: 'Michael Thompson', action: 'Updated asset register', type: 'update' },
             { date: '2024-02-27', user: 'Sarah Chen', action: 'Approved payment batch', type: 'approval' },
             { date: '2024-02-25', user: 'System', action: 'Generated statutory report', type: 'system' }
           ].map((activity, idx) => (
-            <div key={idx} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+            <div key={idx} className="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
               <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                activity.type === 'approval' ? 'bg-green-100' :
-                activity.type === 'system' ? 'bg-blue-100' : 'bg-gray-100'
+                activity.type === 'approval' ? 'bg-green-500/15' :
+                activity.type === 'system' ? 'bg-blue-500/15' : 'bg-white/5'
               }`}>
-                {activity.type === 'approval' ? <CheckCircle className="w-4 h-4 text-green-600" /> :
-                 activity.type === 'system' ? <Zap className="w-4 h-4 text-blue-600" /> :
-                 <Edit className="w-4 h-4 text-gray-600" />}
+                {activity.type === 'approval' ? <CheckCircle className="w-4 h-4 text-green-400" /> :
+                 activity.type === 'system' ? <Zap className="w-4 h-4 text-blue-400" /> :
+                 <Edit className="w-4 h-4 text-slate-300" />}
               </div>
               <div className="flex-1">
-                <p className="text-sm font-medium text-gray-900">{activity.action}</p>
-                <p className="text-xs text-gray-500">{activity.user} â€¢ {activity.date}</p>
+                <p className="text-sm font-medium text-slate-100">{activity.action}</p>
+                <p className="text-xs text-slate-400">{activity.user} â€¢ {activity.date}</p>
               </div>
             </div>
           ))}
@@ -849,9 +849,9 @@ function MatterOverviewTab({ matter }: any) {
 function MatterAssetsTab({ matter }: any) {
   return (
     <div className="space-y-4">
-      <p className="text-gray-600">Asset register for {matter.name}</p>
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-        <p className="text-sm text-blue-900">Full asset management system with valuations, insurance tracking, sale campaigns, and proceeds allocation.</p>
+      <p className="text-slate-300">Asset register for {matter.name}</p>
+      <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
+        <p className="text-sm text-blue-300">Full asset management system with valuations, insurance tracking, sale campaigns, and proceeds allocation.</p>
       </div>
     </div>
   );
@@ -875,8 +875,8 @@ function AssetsView({ role }: any) {
     <div className="p-6 space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Asset Register</h1>
-          <p className="text-gray-600 mt-1">Track all assets across matters with valuations and sale campaigns</p>
+          <h1 className="text-2xl font-bold text-slate-100">Asset Register</h1>
+          <p className="text-slate-300 mt-1">Track all assets across matters with valuations and sale campaigns</p>
         </div>
         <div className="flex items-center gap-3">
           <Button variant="outline">
@@ -900,28 +900,28 @@ function AssetsView({ role }: any) {
         ].map((stat, idx) => {
           const Icon = stat.icon;
           return (
-            <div key={idx} className="bg-white border border-gray-300 rounded-lg p-4">
+            <div key={idx} className="bg-white border border-white/10 rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
                 <Icon className={`w-5 h-5 text-${stat.color}-600`} />
-                <p className="text-sm text-gray-600">{stat.label}</p>
+                <p className="text-sm text-slate-300">{stat.label}</p>
               </div>
-              <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
+              <p className="text-2xl font-bold text-slate-100">{stat.value}</p>
             </div>
           );
         })}
       </div>
 
       {/* Assets Table */}
-      <div className="bg-white border border-gray-300 rounded-lg overflow-hidden">
-        <div className="p-4 border-b border-gray-300 bg-gray-50 flex items-center justify-between">
-          <h3 className="font-semibold text-gray-900">Asset Inventory</h3>
+      <div className="bg-white border border-white/10 rounded-lg overflow-hidden">
+        <div className="p-4 border-b border-white/10 bg-white/5 flex items-center justify-between">
+          <h3 className="font-semibold text-slate-100">Asset Inventory</h3>
           <div className="flex items-center gap-3">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
               <input
                 type="search"
                 placeholder="Search assets..."
-                className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm"
+                className="pl-10 pr-4 py-2 border border-white/10 rounded-lg text-sm"
               />
             </div>
             <Button variant="outline" size="sm">
@@ -931,17 +931,17 @@ function AssetsView({ role }: any) {
           </div>
         </div>
         <table className="w-full">
-          <thead className="bg-gray-50 border-b border-gray-300">
+          <thead className="bg-white/5 border-b border-white/10">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Asset</th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Matter</th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Type</th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Valuation</th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Status</th>
-              <th className="px-6 py-3 text-right text-xs font-semibold text-gray-600 uppercase">Actions</th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Asset</th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Matter</th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Type</th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Valuation</th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Status</th>
+              <th className="px-6 py-3 text-right text-xs font-semibold text-slate-300 uppercase">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-200">
+          <tbody className="divide-y divide-white/10">
             {[
               { name: 'Commercial Property - 123 Main St', matter: 'Acme Trading', type: 'Real Estate', valuation: '$8.5M', status: 'for-sale' },
               { name: 'Machinery & Equipment', matter: 'Brisbane Retail', type: 'Plant & Equipment', valuation: '$450K', status: 'sold' },
@@ -949,25 +949,25 @@ function AssetsView({ role }: any) {
               { name: 'Commercial Vehicles (5x)', matter: 'Acme Trading', type: 'Motor Vehicles', valuation: '$185K', status: 'for-sale' },
               { name: 'Intellectual Property', matter: 'Coastal Dev', type: 'Intangible', valuation: '$1.2M', status: 'under-valuation' }
             ].map((asset, idx) => (
-              <tr key={idx} className="hover:bg-gray-50">
+              <tr key={idx} className="hover:bg-white/5">
                 <td className="px-6 py-4">
-                  <p className="font-medium text-gray-900">{asset.name}</p>
+                  <p className="font-medium text-slate-100">{asset.name}</p>
                 </td>
                 <td className="px-6 py-4">
-                  <p className="text-sm text-gray-600">{asset.matter}</p>
+                  <p className="text-sm text-slate-300">{asset.matter}</p>
                 </td>
                 <td className="px-6 py-4">
-                  <p className="text-sm text-gray-900">{asset.type}</p>
+                  <p className="text-sm text-slate-100">{asset.type}</p>
                 </td>
                 <td className="px-6 py-4">
-                  <p className="text-sm font-semibold text-gray-900">{asset.valuation}</p>
+                  <p className="text-sm font-semibold text-slate-100">{asset.valuation}</p>
                 </td>
                 <td className="px-6 py-4">
                   <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                    asset.status === 'sold' ? 'bg-green-100 text-green-800' :
-                    asset.status === 'for-sale' ? 'bg-blue-100 text-blue-800' :
-                    asset.status === 'liquidating' ? 'bg-orange-100 text-orange-800' :
-                    'bg-gray-100 text-gray-800'
+                    asset.status === 'sold' ? 'bg-green-500/15 text-green-300' :
+                    asset.status === 'for-sale' ? 'bg-blue-500/15 text-blue-300' :
+                    asset.status === 'liquidating' ? 'bg-orange-500/15 text-orange-300' :
+                    'bg-white/5 text-slate-100'
                   }`}>
                     {asset.status}
                   </span>
@@ -1019,7 +1019,7 @@ function SecurityDebtView({ role }: any) {
   return (
     <div className="p-6 space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-900">Security & Debt</h1>
+        <h1 className="text-2xl font-bold text-slate-100">Security & Debt</h1>
         <Button 
           className="bg-red-600 hover:bg-red-700 text-white" 
           onClick={handleCalculateWaterfall}
@@ -1031,20 +1031,20 @@ function SecurityDebtView({ role }: any) {
       </div>
 
       {/* Waterfall Visualization */}
-      <div className="bg-white border border-gray-300 rounded-lg p-6">
-        <h3 className="font-semibold text-gray-900 mb-6">Distribution Waterfall</h3>
+      <div className="bg-white border border-white/10 rounded-lg p-6">
+        <h3 className="font-semibold text-slate-100 mb-6">Distribution Waterfall</h3>
         
         {/* Visual Waterfall */}
         <div className="space-y-4">
           {/* Sale Proceeds */}
           <div className="relative">
-            <div className="bg-blue-100 border border-blue-300 rounded-lg p-4">
+            <div className="bg-blue-500/15 border border-blue-300 rounded-lg p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-blue-900">Sale Proceeds</p>
-                  <p className="text-xs text-blue-700">Total realization</p>
+                  <p className="text-sm font-medium text-blue-300">Sale Proceeds</p>
+                  <p className="text-xs text-blue-300">Total realization</p>
                 </div>
-                <p className="text-2xl font-bold text-blue-900">${(mockWaterfall.saleProceeds / 1000000).toFixed(1)}M</p>
+                <p className="text-2xl font-bold text-blue-300">${(mockWaterfall.saleProceeds / 1000000).toFixed(1)}M</p>
               </div>
             </div>
             <div className="absolute left-1/2 -bottom-4 w-0.5 h-4 bg-gray-300" />
@@ -1052,15 +1052,15 @@ function SecurityDebtView({ role }: any) {
 
           {/* Receiver Costs */}
           <div className="relative pl-8">
-            <div className="bg-purple-100 border border-purple-300 rounded-lg p-4">
+            <div className="bg-purple-500/15 border border-purple-300 rounded-lg p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-purple-900">Receiver Costs & Expenses</p>
-                  <p className="text-xs text-purple-700">Professional fees, legal costs</p>
+                  <p className="text-sm font-medium text-purple-300">Receiver Costs & Expenses</p>
+                  <p className="text-xs text-purple-300">Professional fees, legal costs</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-xl font-bold text-purple-900">${(mockWaterfall.receiverCosts / 1000).toFixed(0)}K</p>
-                  <p className="text-xs text-purple-700">{((mockWaterfall.receiverCosts / mockWaterfall.saleProceeds) * 100).toFixed(1)}% of proceeds</p>
+                  <p className="text-xl font-bold text-purple-300">${(mockWaterfall.receiverCosts / 1000).toFixed(0)}K</p>
+                  <p className="text-xs text-purple-300">{((mockWaterfall.receiverCosts / mockWaterfall.saleProceeds) * 100).toFixed(1)}% of proceeds</p>
                 </div>
               </div>
             </div>
@@ -1069,21 +1069,21 @@ function SecurityDebtView({ role }: any) {
 
           {/* Secured Creditors */}
           <div className="relative pl-8">
-            <div className="bg-green-100 border border-green-300 rounded-lg p-4">
+            <div className="bg-green-500/15 border border-green-300 rounded-lg p-4">
               <div className="mb-3">
-                <p className="text-sm font-medium text-green-900">Secured Creditors</p>
-                <p className="text-xs text-green-700">First and second ranking security</p>
+                <p className="text-sm font-medium text-green-300">Secured Creditors</p>
+                <p className="text-xs text-green-300">First and second ranking security</p>
               </div>
               <div className="space-y-2">
                 {mockWaterfall.securedClaims.map((claim, idx) => (
                   <div key={idx} className="flex items-center justify-between p-2 bg-white rounded">
                     <div>
-                      <p className="text-sm font-medium text-gray-900">{claim.creditor}</p>
-                      <p className="text-xs text-gray-600">{claim.ranking} Ranking</p>
+                      <p className="text-sm font-medium text-slate-100">{claim.creditor}</p>
+                      <p className="text-xs text-slate-300">{claim.ranking} Ranking</p>
                     </div>
                     <div className="text-right">
-                      <p className="text-sm font-bold text-green-900">${(claim.recovery / 1000000).toFixed(1)}M</p>
-                      <p className="text-xs text-green-700">100% recovery</p>
+                      <p className="text-sm font-bold text-green-300">${(claim.recovery / 1000000).toFixed(1)}M</p>
+                      <p className="text-xs text-green-300">100% recovery</p>
                     </div>
                   </div>
                 ))}
@@ -1094,15 +1094,15 @@ function SecurityDebtView({ role }: any) {
 
           {/* Priority Claims */}
           <div className="relative pl-8">
-            <div className="bg-orange-100 border border-orange-300 rounded-lg p-4">
+            <div className="bg-orange-500/15 border border-orange-300 rounded-lg p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-orange-900">Priority Claims</p>
-                  <p className="text-xs text-orange-700">Employee entitlements, taxes</p>
+                  <p className="text-sm font-medium text-orange-300">Priority Claims</p>
+                  <p className="text-xs text-orange-300">Employee entitlements, taxes</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-xl font-bold text-orange-900">${(mockWaterfall.priorityClaims / 1000).toFixed(0)}K</p>
-                  <p className="text-xs text-orange-700">100% recovery</p>
+                  <p className="text-xl font-bold text-orange-300">${(mockWaterfall.priorityClaims / 1000).toFixed(0)}K</p>
+                  <p className="text-xs text-orange-300">100% recovery</p>
                 </div>
               </div>
             </div>
@@ -1111,15 +1111,15 @@ function SecurityDebtView({ role }: any) {
 
           {/* Unsecured Creditors */}
           <div className="relative pl-8">
-            <div className="bg-red-100 border border-red-300 rounded-lg p-4">
+            <div className="bg-red-500/15 border border-red-300 rounded-lg p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-red-900">Unsecured Creditors</p>
-                  <p className="text-xs text-red-700">General unsecured claims</p>
+                  <p className="text-sm font-medium text-red-300">Unsecured Creditors</p>
+                  <p className="text-xs text-red-300">General unsecured claims</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-xl font-bold text-red-900">${(mockWaterfall.unsecuredRecovery / 1000).toFixed(0)}K</p>
-                  <p className="text-xs text-red-700">{mockWaterfall.unsecuredRate}% recovery (${(mockWaterfall.unsecuredClaims / 1000).toFixed(0)}K claimed)</p>
+                  <p className="text-xl font-bold text-red-300">${(mockWaterfall.unsecuredRecovery / 1000).toFixed(0)}K</p>
+                  <p className="text-xs text-red-300">{mockWaterfall.unsecuredRate}% recovery (${(mockWaterfall.unsecuredClaims / 1000).toFixed(0)}K claimed)</p>
                 </div>
               </div>
             </div>
@@ -1127,21 +1127,21 @@ function SecurityDebtView({ role }: any) {
         </div>
 
         {/* Summary */}
-        <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
+        <div className="mt-6 p-4 bg-white/5 rounded-lg border border-white/10">
           <div className="grid grid-cols-3 gap-4 text-center">
             <div>
-              <p className="text-xs text-gray-600 mb-1">Total Distributed</p>
-              <p className="text-xl font-bold text-gray-900">
+              <p className="text-xs text-slate-300 mb-1">Total Distributed</p>
+              <p className="text-xl font-bold text-slate-100">
                 ${((mockWaterfall.receiverCosts + mockWaterfall.securedClaims.reduce((sum, c) => sum + c.recovery, 0) + mockWaterfall.priorityClaims + mockWaterfall.unsecuredRecovery) / 1000000).toFixed(1)}M
               </p>
             </div>
             <div>
-              <p className="text-xs text-gray-600 mb-1">Secured Recovery</p>
-              <p className="text-xl font-bold text-green-600">100%</p>
+              <p className="text-xs text-slate-300 mb-1">Secured Recovery</p>
+              <p className="text-xl font-bold text-green-400">100%</p>
             </div>
             <div>
-              <p className="text-xs text-gray-600 mb-1">Unsecured Recovery</p>
-              <p className="text-xl font-bold text-red-600">{mockWaterfall.unsecuredRate}%</p>
+              <p className="text-xs text-slate-300 mb-1">Unsecured Recovery</p>
+              <p className="text-xl font-bold text-red-400">{mockWaterfall.unsecuredRate}%</p>
             </div>
           </div>
         </div>
@@ -1170,7 +1170,7 @@ function TrustAccountingView({ role }: any) {
   return (
     <div className="p-6 space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-900">Trust Accounting</h1>
+        <h1 className="text-2xl font-bold text-slate-100">Trust Accounting</h1>
         <div className="flex items-center gap-3">
           <Button variant="outline" onClick={handleReconcile} disabled={reconciling}>
             <RefreshCw className={`w-4 h-4 mr-2 ${reconciling ? 'animate-spin' : ''}`} />
@@ -1185,65 +1185,65 @@ function TrustAccountingView({ role }: any) {
 
       {/* Account Summary */}
       <div className="grid grid-cols-4 gap-4">
-        <div className="bg-white border border-gray-300 rounded-lg p-4">
-          <p className="text-sm text-gray-600 mb-1">Trust Balance</p>
-          <p className="text-2xl font-bold text-gray-900">$8.7M</p>
+        <div className="bg-white border border-white/10 rounded-lg p-4">
+          <p className="text-sm text-slate-300 mb-1">Trust Balance</p>
+          <p className="text-2xl font-bold text-slate-100">$8.7M</p>
         </div>
-        <div className="bg-white border border-gray-300 rounded-lg p-4">
-          <p className="text-sm text-gray-600 mb-1">Pending Payments</p>
-          <p className="text-2xl font-bold text-orange-600">$245K</p>
+        <div className="bg-white border border-white/10 rounded-lg p-4">
+          <p className="text-sm text-slate-300 mb-1">Pending Payments</p>
+          <p className="text-2xl font-bold text-orange-400">$245K</p>
         </div>
-        <div className="bg-white border border-gray-300 rounded-lg p-4">
-          <p className="text-sm text-gray-600 mb-1">Receipts (MTD)</p>
-          <p className="text-2xl font-bold text-green-600">$1.2M</p>
+        <div className="bg-white border border-white/10 rounded-lg p-4">
+          <p className="text-sm text-slate-300 mb-1">Receipts (MTD)</p>
+          <p className="text-2xl font-bold text-green-400">$1.2M</p>
         </div>
-        <div className="bg-white border border-gray-300 rounded-lg p-4">
-          <p className="text-sm text-gray-600 mb-1">Payments (MTD)</p>
-          <p className="text-2xl font-bold text-red-600">$890K</p>
+        <div className="bg-white border border-white/10 rounded-lg p-4">
+          <p className="text-sm text-slate-300 mb-1">Payments (MTD)</p>
+          <p className="text-2xl font-bold text-red-400">$890K</p>
         </div>
       </div>
 
       {/* Recent Transactions */}
-      <div className="bg-white border border-gray-300 rounded-lg overflow-hidden">
-        <div className="p-4 border-b border-gray-300 bg-gray-50">
-          <h3 className="font-semibold text-gray-900">Recent Transactions</h3>
+      <div className="bg-white border border-white/10 rounded-lg overflow-hidden">
+        <div className="p-4 border-b border-white/10 bg-white/5">
+          <h3 className="font-semibold text-slate-100">Recent Transactions</h3>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-gray-50 border-b border-gray-300">
+            <thead className="bg-white/5 border-b border-white/10">
               <tr>
-                <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Date</th>
-                <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Type</th>
-                <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Description</th>
-                <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Amount</th>
-                <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Status</th>
+                <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Date</th>
+                <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Type</th>
+                <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Description</th>
+                <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Amount</th>
+                <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Status</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-200">
+            <tbody className="divide-y divide-white/10">
               {[
                 { date: '2024-02-28', type: 'Receipt', desc: 'Asset sale proceeds - Property 123', amount: 450000, status: 'cleared' },
                 { date: '2024-02-27', type: 'Payment', desc: 'Professional fees - Legal', amount: -25000, status: 'cleared' },
                 { date: '2024-02-27', type: 'Receipt', desc: 'Trading receipts', amount: 18500, status: 'cleared' },
                 { date: '2024-02-26', type: 'Payment', desc: 'Employee entitlements', amount: -85000, status: 'pending' }
               ].map((txn, idx) => (
-                <tr key={idx} className="hover:bg-gray-50">
-                  <td className="px-4 py-3 text-sm text-gray-900">{txn.date}</td>
+                <tr key={idx} className="hover:bg-white/5">
+                  <td className="px-4 py-3 text-sm text-slate-100">{txn.date}</td>
                   <td className="px-4 py-3">
                     <span className={`px-2 py-1 rounded text-xs font-medium ${
-                      txn.type === 'Receipt' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                      txn.type === 'Receipt' ? 'bg-green-500/15 text-green-300' : 'bg-red-500/15 text-red-300'
                     }`}>
                       {txn.type}
                     </span>
                   </td>
-                  <td className="px-4 py-3 text-sm text-gray-900">{txn.desc}</td>
+                  <td className="px-4 py-3 text-sm text-slate-100">{txn.desc}</td>
                   <td className={`px-4 py-3 text-sm font-semibold ${
-                    txn.amount > 0 ? 'text-green-600' : 'text-red-600'
+                    txn.amount > 0 ? 'text-green-400' : 'text-red-400'
                   }`}>
                     ${Math.abs(txn.amount).toLocaleString()}
                   </td>
                   <td className="px-4 py-3">
                     <span className={`px-2 py-1 rounded text-xs font-medium ${
-                      txn.status === 'cleared' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'
+                      txn.status === 'cleared' ? 'bg-green-500/15 text-green-300' : 'bg-yellow-500/15 text-yellow-300'
                     }`}>
                       {txn.status}
                     </span>
@@ -1310,8 +1310,8 @@ function RestructuringView({ role }: any) {
     <div className="p-6 space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Restructuring Module</h1>
-          <p className="text-gray-600 mt-1">Debt restructure builder and scenario analysis</p>
+          <h1 className="text-2xl font-bold text-slate-100">Restructuring Module</h1>
+          <p className="text-slate-300 mt-1">Debt restructure builder and scenario analysis</p>
         </div>
         <Button 
           className="bg-purple-600 hover:bg-purple-700 text-white"
@@ -1325,46 +1325,46 @@ function RestructuringView({ role }: any) {
 
       {/* Trading Dashboard */}
       <div className="grid grid-cols-4 gap-4">
-        <div className="bg-white border border-gray-300 rounded-lg p-4">
+        <div className="bg-white border border-white/10 rounded-lg p-4">
           <div className="flex items-center gap-2 mb-2">
-            <TrendingUp className="w-5 h-5 text-green-600" />
-            <p className="text-sm text-gray-600">Trading P&L (MTD)</p>
+            <TrendingUp className="w-5 h-5 text-green-400" />
+            <p className="text-sm text-slate-300">Trading P&L (MTD)</p>
           </div>
-          <p className="text-2xl font-bold text-green-600">+$45K</p>
-          <p className="text-xs text-gray-500 mt-1">Revenue $185K, Costs $140K</p>
+          <p className="text-2xl font-bold text-green-400">+$45K</p>
+          <p className="text-xs text-slate-400 mt-1">Revenue $185K, Costs $140K</p>
         </div>
 
-        <div className="bg-white border border-gray-300 rounded-lg p-4">
+        <div className="bg-white border border-white/10 rounded-lg p-4">
           <div className="flex items-center gap-2 mb-2">
-            <Activity className="w-5 h-5 text-blue-600" />
-            <p className="text-sm text-gray-600">Burn Rate</p>
+            <Activity className="w-5 h-5 text-blue-400" />
+            <p className="text-sm text-slate-300">Burn Rate</p>
           </div>
-          <p className="text-2xl font-bold text-blue-900">$85K/wk</p>
-          <p className="text-xs text-gray-500 mt-1">13-week runway</p>
+          <p className="text-2xl font-bold text-blue-300">$85K/wk</p>
+          <p className="text-xs text-slate-400 mt-1">13-week runway</p>
         </div>
 
-        <div className="bg-white border border-gray-300 rounded-lg p-4">
+        <div className="bg-white border border-white/10 rounded-lg p-4">
           <div className="flex items-center gap-2 mb-2">
-            <Target className="w-5 h-5 text-purple-600" />
-            <p className="text-sm text-gray-600">Break-even</p>
+            <Target className="w-5 h-5 text-purple-400" />
+            <p className="text-sm text-slate-300">Break-even</p>
           </div>
-          <p className="text-2xl font-bold text-purple-900">8 weeks</p>
-          <p className="text-xs text-gray-500 mt-1">With restructure</p>
+          <p className="text-2xl font-bold text-purple-300">8 weeks</p>
+          <p className="text-xs text-slate-400 mt-1">With restructure</p>
         </div>
 
-        <div className="bg-white border border-gray-300 rounded-lg p-4">
+        <div className="bg-white border border-white/10 rounded-lg p-4">
           <div className="flex items-center gap-2 mb-2">
-            <BarChart3 className="w-5 h-5 text-orange-600" />
-            <p className="text-sm text-gray-600">Viability Score</p>
+            <BarChart3 className="w-5 h-5 text-orange-400" />
+            <p className="text-sm text-slate-300">Viability Score</p>
           </div>
-          <p className="text-2xl font-bold text-orange-900">72%</p>
-          <p className="text-xs text-gray-500 mt-1">High probability</p>
+          <p className="text-2xl font-bold text-orange-300">72%</p>
+          <p className="text-xs text-slate-400 mt-1">High probability</p>
         </div>
       </div>
 
       {/* Scenario Selector */}
-      <div className="bg-white border border-gray-300 rounded-lg p-6">
-        <h3 className="font-semibold text-gray-900 mb-4">Restructuring Scenarios</h3>
+      <div className="bg-white border border-white/10 rounded-lg p-6">
+        <h3 className="font-semibold text-slate-100 mb-4">Restructuring Scenarios</h3>
         <div className="grid grid-cols-4 gap-4 mb-6">
           {(Object.keys(scenarios) as Array<keyof typeof scenarios>).map((key) => {
             const scenario = scenarios[key];
@@ -1374,15 +1374,15 @@ function RestructuringView({ role }: any) {
                 onClick={() => setActiveScenario(key)}
                 className={`p-4 rounded-lg border-2 transition-all ${
                   activeScenario === key
-                    ? 'border-purple-600 bg-purple-50'
-                    : 'border-gray-300 hover:border-purple-300'
+                    ? 'border-purple-600 bg-purple-500/10'
+                    : 'border-white/10 hover:border-purple-300'
                 }`}
               >
-                <p className="font-semibold text-gray-900 mb-2">{scenario.label}</p>
+                <p className="font-semibold text-slate-100 mb-2">{scenario.label}</p>
                 <div className="space-y-1 text-left">
-                  <p className="text-xs text-gray-600">Secured: {scenario.securedRecovery}%</p>
-                  <p className="text-xs text-gray-600">Unsecured: {scenario.unsecuredRecovery}%</p>
-                  <p className="text-xs text-gray-600">Timeline: {scenario.timeline}</p>
+                  <p className="text-xs text-slate-300">Secured: {scenario.securedRecovery}%</p>
+                  <p className="text-xs text-slate-300">Unsecured: {scenario.unsecuredRecovery}%</p>
+                  <p className="text-xs text-slate-300">Timeline: {scenario.timeline}</p>
                 </div>
               </button>
             );
@@ -1390,31 +1390,31 @@ function RestructuringView({ role }: any) {
         </div>
 
         {/* Selected Scenario Details */}
-        <div className="bg-purple-50 border border-purple-200 rounded-lg p-6">
-          <h4 className="font-semibold text-purple-900 mb-4">{scenarios[activeScenario].label}</h4>
+        <div className="bg-purple-500/10 border border-purple-500/30 rounded-lg p-6">
+          <h4 className="font-semibold text-purple-300 mb-4">{scenarios[activeScenario].label}</h4>
           <div className="grid grid-cols-4 gap-4 mb-4">
             <div>
-              <p className="text-xs text-purple-700 mb-1">Total Recovery</p>
-              <p className="text-xl font-bold text-purple-900">${(scenarios[activeScenario].totalRecovery / 1000000).toFixed(1)}M</p>
+              <p className="text-xs text-purple-300 mb-1">Total Recovery</p>
+              <p className="text-xl font-bold text-purple-300">${(scenarios[activeScenario].totalRecovery / 1000000).toFixed(1)}M</p>
             </div>
             <div>
-              <p className="text-xs text-purple-700 mb-1">Secured Recovery</p>
-              <p className="text-xl font-bold text-purple-900">{scenarios[activeScenario].securedRecovery}%</p>
+              <p className="text-xs text-purple-300 mb-1">Secured Recovery</p>
+              <p className="text-xl font-bold text-purple-300">{scenarios[activeScenario].securedRecovery}%</p>
             </div>
             <div>
-              <p className="text-xs text-purple-700 mb-1">Unsecured Recovery</p>
-              <p className="text-xl font-bold text-purple-900">{scenarios[activeScenario].unsecuredRecovery}%</p>
+              <p className="text-xs text-purple-300 mb-1">Unsecured Recovery</p>
+              <p className="text-xl font-bold text-purple-300">{scenarios[activeScenario].unsecuredRecovery}%</p>
             </div>
             <div>
-              <p className="text-xs text-purple-700 mb-1">Timeline</p>
-              <p className="text-lg font-semibold text-purple-900">{scenarios[activeScenario].timeline}</p>
+              <p className="text-xs text-purple-300 mb-1">Timeline</p>
+              <p className="text-lg font-semibold text-purple-300">{scenarios[activeScenario].timeline}</p>
             </div>
           </div>
 
           {/* Viability Indicator */}
           <div className="flex items-center gap-3">
-            <span className="text-sm font-medium text-purple-900">Viability:</span>
-            <div className="flex-1 h-2 bg-purple-200 rounded-full">
+            <span className="text-sm font-medium text-purple-300">Viability:</span>
+            <div className="flex-1 h-2 bg-purple-500/20 rounded-full">
               <div
                 className={`h-2 rounded-full ${
                   scenarios[activeScenario].viability === 'high' ? 'bg-green-600' :
@@ -1424,8 +1424,8 @@ function RestructuringView({ role }: any) {
               />
             </div>
             <span className={`text-sm font-semibold capitalize ${
-              scenarios[activeScenario].viability === 'high' ? 'text-green-600' :
-              scenarios[activeScenario].viability === 'medium' ? 'text-yellow-600' : 'text-red-600'
+              scenarios[activeScenario].viability === 'high' ? 'text-green-400' :
+              scenarios[activeScenario].viability === 'medium' ? 'text-yellow-400' : 'text-red-400'
             }`}>
               {scenarios[activeScenario].viability}
             </span>
@@ -1434,72 +1434,72 @@ function RestructuringView({ role }: any) {
       </div>
 
       {/* Debt Schedule */}
-      <div className="bg-white border border-gray-300 rounded-lg p-6">
-        <h3 className="font-semibold text-gray-900 mb-4">Debt Restructure Terms</h3>
+      <div className="bg-white border border-white/10 rounded-lg p-6">
+        <h3 className="font-semibold text-slate-100 mb-4">Debt Restructure Terms</h3>
         <div className="grid grid-cols-2 gap-6">
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Standstill Period</label>
+              <label className="block text-sm font-medium text-slate-300 mb-2">Standstill Period</label>
               <input
                 type="number"
                 defaultValue={6}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
-              <p className="text-xs text-gray-500 mt-1">Months</p>
+              <p className="text-xs text-slate-400 mt-1">Months</p>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Haircut %</label>
+              <label className="block text-sm font-medium text-slate-300 mb-2">Haircut %</label>
               <input
                 type="number"
                 defaultValue={25}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
-              <p className="text-xs text-gray-500 mt-1">Percentage reduction</p>
+              <p className="text-xs text-slate-400 mt-1">Percentage reduction</p>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Extension Term</label>
+              <label className="block text-sm font-medium text-slate-300 mb-2">Extension Term</label>
               <input
                 type="number"
                 defaultValue={24}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
-              <p className="text-xs text-gray-500 mt-1">Months</p>
+              <p className="text-xs text-slate-400 mt-1">Months</p>
             </div>
           </div>
 
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Equity Injection</label>
+              <label className="block text-sm font-medium text-slate-300 mb-2">Equity Injection</label>
               <input
                 type="number"
                 defaultValue={2000000}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
-              <p className="text-xs text-gray-500 mt-1">New capital</p>
+              <p className="text-xs text-slate-400 mt-1">New capital</p>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Asset Disposals</label>
+              <label className="block text-sm font-medium text-slate-300 mb-2">Asset Disposals</label>
               <input
                 type="number"
                 defaultValue={3500000}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
-              <p className="text-xs text-gray-500 mt-1">Planned sales</p>
+              <p className="text-xs text-slate-400 mt-1">Planned sales</p>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">New Interest Rate</label>
+              <label className="block text-sm font-medium text-slate-300 mb-2">New Interest Rate</label>
               <input
                 type="number"
                 step="0.1"
                 defaultValue={8.5}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
-              <p className="text-xs text-gray-500 mt-1">% per annum</p>
+              <p className="text-xs text-slate-400 mt-1">% per annum</p>
             </div>
           </div>
         </div>
 
-        <div className="mt-6 pt-6 border-t border-gray-200">
+        <div className="mt-6 pt-6 border-t border-white/10">
           <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white">
             <Calculator className="w-4 h-4 mr-2" />
             Recalculate Scenario
@@ -1508,8 +1508,8 @@ function RestructuringView({ role }: any) {
       </div>
 
       {/* Exit Planning */}
-      <div className="bg-white border border-gray-300 rounded-lg p-6">
-        <h3 className="font-semibold text-gray-900 mb-4">Exit Planning</h3>
+      <div className="bg-white border border-white/10 rounded-lg p-6">
+        <h3 className="font-semibold text-slate-100 mb-4">Exit Planning</h3>
         <div className="grid grid-cols-4 gap-4">
           {[
             { condition: 'Debt Reduction', target: '$8M', current: '$6.2M', progress: 78, status: 'on-track' },
@@ -1517,18 +1517,18 @@ function RestructuringView({ role }: any) {
             { condition: 'Creditor Approval', target: '75%', current: '68%', progress: 91, status: 'pending' },
             { condition: 'Funding Secured', target: 'Yes', current: 'In progress', progress: 60, status: 'pending' }
           ].map((item, idx) => (
-            <div key={idx} className="p-4 border border-gray-300 rounded-lg">
+            <div key={idx} className="p-4 border border-white/10 rounded-lg">
               <div className="flex items-center gap-2 mb-3">
                 {item.status === 'on-track' ? (
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <CheckCircle className="w-4 h-4 text-green-400" />
                 ) : (
-                  <Clock className="w-4 h-4 text-orange-600" />
+                  <Clock className="w-4 h-4 text-orange-400" />
                 )}
-                <p className="text-xs font-medium text-gray-700">{item.condition}</p>
+                <p className="text-xs font-medium text-slate-300">{item.condition}</p>
               </div>
-              <p className="text-sm text-gray-900 mb-1">Target: {item.target}</p>
-              <p className="text-sm font-semibold text-gray-900 mb-2">Current: {item.current}</p>
-              <div className="w-full h-2 bg-gray-200 rounded-full">
+              <p className="text-sm text-slate-100 mb-1">Target: {item.target}</p>
+              <p className="text-sm font-semibold text-slate-100 mb-2">Current: {item.current}</p>
+              <div className="w-full h-2 bg-white/10 rounded-full">
                 <div
                   className={`h-2 rounded-full ${item.status === 'on-track' ? 'bg-green-600' : 'bg-orange-600'}`}
                   style={{ width: `${item.progress}%` }}
@@ -1550,7 +1550,7 @@ function ReportsView({ role }: any) {
 
   return (
     <div className="p-6 space-y-6">
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">Reports</h1>
+      <h1 className="text-2xl font-bold text-slate-100 mb-6">Reports</h1>
       
       <div className="grid grid-cols-3 gap-4">
         {[
@@ -1563,11 +1563,11 @@ function ReportsView({ role }: any) {
         ].map((report, idx) => {
           const Icon = report.icon;
           return (
-            <div key={idx} className="bg-white border border-gray-300 rounded-lg p-6 hover:shadow-lg transition-shadow">
+            <div key={idx} className="bg-white border border-white/10 rounded-lg p-6 hover:shadow-lg transition-shadow">
               <div className={`w-12 h-12 bg-${report.color}-100 rounded-lg flex items-center justify-center mb-4`}>
                 <Icon className={`w-6 h-6 text-${report.color}-600`} />
               </div>
-              <p className="font-semibold text-gray-900 mb-2">{report.name}</p>
+              <p className="font-semibold text-slate-100 mb-2">{report.name}</p>
               <Button 
                 size="sm" 
                 variant="outline" 
@@ -1609,29 +1609,29 @@ function NewAppointmentModal({ onClose, onSave }: { onClose: () => void, onSave:
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-        <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gradient-to-r from-red-50 to-orange-50">
+        <div className="flex items-center justify-between p-6 border-b border-white/10 bg-gradient-to-r from-red-50 to-orange-50">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-lg bg-red-600 flex items-center justify-center">
               <Gavel className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-gray-900">New Appointment</h2>
-              <p className="text-sm text-gray-600">Create a new receivership or administration</p>
+              <h2 className="text-2xl font-bold text-slate-100">New Appointment</h2>
+              <p className="text-sm text-slate-300">Create a new receivership or administration</p>
             </div>
           </div>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+          <button onClick={onClose} className="text-gray-400 hover:text-slate-300">
             <X className="w-6 h-6" />
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Company Name *</label>
+            <label className="block text-sm font-medium text-slate-300 mb-2">Company Name *</label>
             <input
               type="text"
               value={companyName}
               onChange={(e) => setCompanyName(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
               placeholder="e.g., Acme Trading Pty Ltd"
               required
             />
@@ -1639,11 +1639,11 @@ function NewAppointmentModal({ onClose, onSave }: { onClose: () => void, onSave:
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Appointment Type *</label>
+              <label className="block text-sm font-medium text-slate-300 mb-2">Appointment Type *</label>
               <select
                 value={appointmentType}
                 onChange={(e) => setAppointmentType(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
               >
                 <option value="Receivership">Receivership</option>
                 <option value="Voluntary Administration">Voluntary Administration</option>
@@ -1653,52 +1653,52 @@ function NewAppointmentModal({ onClose, onSave }: { onClose: () => void, onSave:
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Appointment Date *</label>
+              <label className="block text-sm font-medium text-slate-300 mb-2">Appointment Date *</label>
               <input
                 type="date"
                 value={appointmentDate}
                 onChange={(e) => setAppointmentDate(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
                 required
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Appointing Party</label>
+            <label className="block text-sm font-medium text-slate-300 mb-2">Appointing Party</label>
             <input
               type="text"
               value={appointingParty}
               onChange={(e) => setAppointingParty(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
               placeholder="e.g., ANZ Bank, Director"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Secured Debt</label>
+              <label className="block text-sm font-medium text-slate-300 mb-2">Secured Debt</label>
               <div className="relative">
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">$</span>
                 <input
                   type="number"
                   value={secured}
                   onChange={(e) => setSecured(e.target.value)}
-                  className="w-full pl-8 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                  className="w-full pl-8 pr-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
                   placeholder="0"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Unsecured Debt</label>
+              <label className="block text-sm font-medium text-slate-300 mb-2">Unsecured Debt</label>
               <div className="relative">
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">$</span>
                 <input
                   type="number"
                   value={unsecured}
                   onChange={(e) => setUnsecured(e.target.value)}
-                  className="w-full pl-8 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                  className="w-full pl-8 pr-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
                   placeholder="0"
                 />
               </div>
@@ -1734,32 +1734,32 @@ function NewMatterModal({ onClose, onSave }: { onClose: () => void, onSave: (dat
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-lg shadow-2xl max-w-2xl w-full">
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
-          <h2 className="text-xl font-bold text-gray-900">Add New Matter</h2>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+        <div className="flex items-center justify-between p-6 border-b border-white/10">
+          <h2 className="text-xl font-bold text-slate-100">Add New Matter</h2>
+          <button onClick={onClose} className="text-gray-400 hover:text-slate-300">
             <X className="w-6 h-6" />
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Matter Name *</label>
+            <label className="block text-sm font-medium text-slate-300 mb-2">Matter Name *</label>
             <input
               type="text"
               value={matterName}
               onChange={(e) => setMatterName(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
               required
             />
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Matter Type *</label>
+              <label className="block text-sm font-medium text-slate-300 mb-2">Matter Type *</label>
               <select
                 value={matterType}
                 onChange={(e) => setMatterType(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
               >
                 <option value="Receivership">Receivership</option>
                 <option value="Voluntary Administration">Voluntary Administration</option>
@@ -1768,12 +1768,12 @@ function NewMatterModal({ onClose, onSave }: { onClose: () => void, onSave: (dat
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Appointment Date *</label>
+              <label className="block text-sm font-medium text-slate-300 mb-2">Appointment Date *</label>
               <input
                 type="date"
                 value={matterDate}
                 onChange={(e) => setMatterDate(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
                 required
               />
             </div>

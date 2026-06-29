@@ -232,9 +232,9 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
       {toast && (
         <div className="fixed bottom-6 right-6 z-50 bg-[#1e293b] dark:bg-gray-800 border-l-4 border-purple-600 shadow-2xl rounded-lg p-4 flex items-center gap-3 max-w-sm transition-all duration-300 transform translate-y-0 scale-100">
           <div className={`p-2 rounded-full ${
-            toast.type === 'success' ? 'bg-green-100 text-green-600' :
-            toast.type === 'info' ? 'bg-blue-100 text-blue-600' :
-            'bg-red-100 text-red-600'
+            toast.type === 'success' ? 'bg-green-500/15 text-green-400' :
+            toast.type === 'info' ? 'bg-blue-500/15 text-blue-400' :
+            'bg-red-500/15 text-red-400'
           }`}>
             {toast.type === 'success' ? <Check className="w-5 h-5" /> : toast.type === 'info' ? <Info className="w-5 h-5" /> : <AlertTriangle className="w-5 h-5" />}
           </div>
@@ -253,7 +253,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
               Back
             </Button>
             <div className="h-6 w-px bg-gray-300 hidden sm:block" />
-            <Settings className="w-6 h-6 md:w-8 md:h-8 text-purple-600 flex-shrink-0" />
+            <Settings className="w-6 h-6 md:w-8 md:h-8 text-purple-400 flex-shrink-0" />
             <div className="min-w-0">
               <h1 className="text-lg md:text-2xl font-bold text-white truncate">System Settings & Configuration</h1>
               <p className="text-xs md:text-sm text-slate-300 truncate">Complete control center for your KYC platform</p>
@@ -267,11 +267,11 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
       </div>
 
       {isReadOnly && (
-        <div className="bg-amber-50 border-l-4 border-amber-500 p-4 mx-4 md:mx-6 mt-4 rounded-r-lg flex items-center gap-3 shadow-md">
+        <div className="bg-amber-500/10 border-l-4 border-amber-500 p-4 mx-4 md:mx-6 mt-4 rounded-r-lg flex items-center gap-3 shadow-md">
           <AlertCircle className="w-5 h-5 text-amber-500 flex-shrink-0" />
           <div>
-            <p className="text-sm font-bold text-amber-900">Read-Only Mode</p>
-            <p className="text-xs text-amber-700">
+            <p className="text-sm font-bold text-amber-300">Read-Only Mode</p>
+            <p className="text-xs text-amber-300">
               As an {persona.title}, you have view-only access to system settings. Saving or changing configurations is disabled.
             </p>
           </div>
@@ -316,10 +316,10 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
             {/* KYC CONFIGURATION TAB */}
             <TabsContent value="kyc-config" className="space-y-6">
             {/* Ownership Threshold */}
-            <Card className="border-2 border-cyan-200">
+            <Card className="border-2 border-cyan-500/30">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Percent className="w-5 h-5 text-cyan-600" />
+                  <Percent className="w-5 h-5 text-cyan-400" />
                   Ownership & Control Thresholds
                 </CardTitle>
                 <CardDescription>
@@ -327,7 +327,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="bg-cyan-50 rounded-lg p-6 border-2 border-cyan-200">
+                <div className="bg-cyan-500/10 rounded-lg p-6 border-2 border-cyan-500/30">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <Label htmlFor="ownership-threshold" className="text-sm font-semibold mb-3 block">
@@ -341,13 +341,13 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                           onChange={e => setOwnershipThreshold(Number(e.target.value))}
                           className="text-2xl font-bold border-2 border-cyan-300 focus:border-cyan-500 w-32"
                         />
-                        <span className="text-3xl font-bold text-cyan-600">%</span>
+                        <span className="text-3xl font-bold text-cyan-400">%</span>
                       </div>
                       <p className="text-xs text-slate-300 mt-2">
                         Default: 24% (anyone with 24%+ ownership is automatically screened)
                       </p>
                     </div>
-                    <div className="bg-[#1e293b] rounded-lg p-4 border border-cyan-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-cyan-500/30">
                       <p className="text-xs font-semibold text-slate-300 mb-2">Auto-screening triggers:</p>
                       <ul className="text-xs text-slate-300 space-y-1">
                         <li>• Directors (always screened)</li>
@@ -361,9 +361,9 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="bg-purple-50 rounded-lg p-4 border border-purple-200">
+                  <div className="bg-purple-500/10 rounded-lg p-4 border border-purple-500/30">
                     <Label className="text-sm font-semibold mb-3 block flex items-center gap-2">
-                      <Target className="w-4 h-4 text-purple-600" />
+                      <Target className="w-4 h-4 text-purple-400" />
                       Control Threshold
                     </Label>
                     <div className="flex items-center gap-2">
@@ -371,16 +371,16 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         type="number"
                         value={controlThreshold}
                         onChange={e => setControlThreshold(Number(e.target.value))}
-                        className="border-2 border-purple-200 bg-[#1e293b]"
+                        className="border-2 border-purple-500/30 bg-[#1e293b]"
                       />
-                      <span className="font-semibold text-purple-600">%</span>
+                      <span className="font-semibold text-purple-400">%</span>
                     </div>
                     <p className="text-xs text-slate-300 mt-2">Flagged as controlling interest</p>
                   </div>
 
-                  <div className="bg-amber-50 rounded-lg p-4 border border-amber-200">
+                  <div className="bg-amber-500/10 rounded-lg p-4 border border-amber-500/30">
                     <Label className="text-sm font-semibold mb-3 block flex items-center gap-2">
-                      <AlertTriangle className="w-4 h-4 text-amber-600" />
+                      <AlertTriangle className="w-4 h-4 text-amber-400" />
                       High Risk Threshold
                     </Label>
                     <div className="flex items-center gap-2">
@@ -388,9 +388,9 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         type="number"
                         value={highRiskThreshold}
                         onChange={e => setHighRiskThreshold(Number(e.target.value))}
-                        className="border-2 border-amber-200 bg-[#1e293b]"
+                        className="border-2 border-amber-500/30 bg-[#1e293b]"
                       />
-                      <span className="font-semibold text-amber-600">%</span>
+                      <span className="font-semibold text-amber-400">%</span>
                     </div>
                     <p className="text-xs text-slate-300 mt-2">Trigger enhanced due diligence</p>
                   </div>
@@ -399,10 +399,10 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
             </Card>
 
             {/* Entity Expansion Rules */}
-            <Card className="border-2 border-indigo-200">
+            <Card className="border-2 border-indigo-500/30">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Workflow className="w-5 h-5 text-indigo-600" />
+                  <Workflow className="w-5 h-5 text-indigo-400" />
                   Entity Expansion & Discovery Rules
                 </CardTitle>
                 <CardDescription>
@@ -411,7 +411,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="flex items-center justify-between p-4 bg-indigo-50 rounded-lg border border-indigo-200">
+                  <div className="flex items-center justify-between p-4 bg-indigo-500/10 rounded-lg border border-indigo-500/30">
                     <div>
                       <p className="font-semibold text-white">Auto-discover entities</p>
                       <p className="text-xs text-slate-300">Automatically find linked companies</p>
@@ -419,7 +419,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     <Switch checked={autoDiscover} onCheckedChange={setAutoDiscover} />
                   </div>
 
-                  <div className="flex items-center justify-between p-4 bg-indigo-50 rounded-lg border border-indigo-200">
+                  <div className="flex items-center justify-between p-4 bg-indigo-500/10 rounded-lg border border-indigo-500/30">
                     <div>
                       <p className="font-semibold text-white">Recursive expansion</p>
                       <p className="text-xs text-slate-300">Expand through entity chains</p>
@@ -427,7 +427,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     <Switch checked={recursiveExpansion} onCheckedChange={setRecursiveExpansion} />
                   </div>
 
-                  <div className="flex items-center justify-between p-4 bg-indigo-50 rounded-lg border border-indigo-200">
+                  <div className="flex items-center justify-between p-4 bg-indigo-500/10 rounded-lg border border-indigo-500/30">
                     <div>
                       <p className="font-semibold text-white">Auto-screen directors</p>
                       <p className="text-xs text-slate-300">Always run AML on directors</p>
@@ -435,7 +435,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     <Switch checked={autoScreenDirectors} onCheckedChange={setAutoScreenDirectors} />
                   </div>
 
-                  <div className="flex items-center justify-between p-4 bg-indigo-50 rounded-lg border border-indigo-200">
+                  <div className="flex items-center justify-between p-4 bg-indigo-500/10 rounded-lg border border-indigo-500/30">
                     <div>
                       <p className="font-semibold text-white">Auto-screen shareholders</p>
                       <p className="text-xs text-slate-300">Based on threshold %</p>
@@ -460,10 +460,10 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
             </Card>
 
             {/* Bot Configuration */}
-            <Card className="border-2 border-purple-200">
+            <Card className="border-2 border-purple-500/30">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Bot className="w-5 h-5 text-purple-600" />
+                  <Bot className="w-5 h-5 text-purple-400" />
                   AI Bot Execution Settings
                 </CardTitle>
                 <CardDescription>
@@ -486,9 +486,9 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     { name: 'Monitoring Trigger Bot', enabled: true },
                     { name: 'Compliance File QA Bot', enabled: true }
                   ].map((bot, idx) => (
-                    <div key={idx} className="flex items-center justify-between p-3 bg-purple-50 rounded-lg border border-purple-200">
+                    <div key={idx} className="flex items-center justify-between p-3 bg-purple-500/10 rounded-lg border border-purple-500/30">
                       <div className="flex items-center gap-2">
-                        <Bot className="w-4 h-4 text-purple-600" />
+                        <Bot className="w-4 h-4 text-purple-400" />
                         <span className="text-sm font-semibold text-white">{bot.name}</span>
                       </div>
                       <Switch
@@ -504,12 +504,12 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                   ))}
                 </div>
 
-                <div className="bg-green-50 rounded-lg p-4 border border-green-200">
+                <div className="bg-green-500/10 rounded-lg p-4 border border-green-500/30">
                   <div className="flex items-start gap-2">
-                    <Sparkles className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <Sparkles className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-sm font-semibold text-green-900">Bot Execution Mode</p>
-                      <p className="text-xs text-green-700 mt-1">
+                      <p className="text-sm font-semibold text-green-300">Bot Execution Mode</p>
+                      <p className="text-xs text-green-300 mt-1">
                         All enabled bots run automatically after external checks complete. Disable individual bots to run them manually only.
                       </p>
                     </div>
@@ -519,10 +519,10 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
             </Card>
 
             {/* Document Retention */}
-            <Card className="border-2 border-blue-200">
+            <Card className="border-2 border-blue-500/30">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <FileText className="w-5 h-5 text-blue-600" />
+                  <FileText className="w-5 h-5 text-blue-400" />
                   Document & Data Retention
                 </CardTitle>
                 <CardDescription>
@@ -531,7 +531,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
+                  <div className="bg-blue-500/10 rounded-lg p-4 border border-blue-500/30">
                     <Label className="text-sm font-semibold mb-3 block">ID Documents Retention</Label>
                     <div className="flex items-center gap-2">
                       <Input
@@ -545,7 +545,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     <p className="text-xs text-slate-400 mt-2">AUSTRAC compliance: minimum 7 years</p>
                   </div>
 
-                  <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
+                  <div className="bg-blue-500/10 rounded-lg p-4 border border-blue-500/30">
                     <Label className="text-sm font-semibold mb-3 block">Screening Results Retention</Label>
                     <div className="flex items-center gap-2">
                       <Input
@@ -559,7 +559,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     <p className="text-xs text-slate-400 mt-2">AML/CTF audit trail</p>
                   </div>
 
-                  <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
+                  <div className="bg-blue-500/10 rounded-lg p-4 border border-blue-500/30">
                     <Label className="text-sm font-semibold mb-3 block">Case Records Retention</Label>
                     <div className="flex items-center gap-2">
                       <Input
@@ -573,7 +573,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     <p className="text-xs text-slate-400 mt-2">Compliance investigation history</p>
                   </div>
 
-                  <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
+                  <div className="bg-blue-500/10 rounded-lg p-4 border border-blue-500/30">
                     <Label className="text-sm font-semibold mb-3 block">Audit Logs Retention</Label>
                     <div className="flex items-center gap-2">
                       <Input
@@ -628,12 +628,12 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
 
           {/* OLD INTEGRATIONS CONTENT - KEEPING FOR REFERENCE BUT HIDDEN */}
           <div className="hidden">
-            <Card className="border-2 border-green-200">
+            <Card className="border-2 border-green-500/30">
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div>
                     <CardTitle className="flex items-center gap-2">
-                      <Zap className="w-5 h-5 text-green-600" />
+                      <Zap className="w-5 h-5 text-green-400" />
                       External Integration Credentials
                     </CardTitle>
                     <CardDescription>Manage API keys and credentials for external providers</CardDescription>
@@ -646,10 +646,10 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
               </CardHeader>
               <CardContent className="space-y-4">
                 {/* Equifax */}
-                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 border-2 border-blue-200">
+                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 border-2 border-blue-500/30">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <Shield className="w-8 h-8 text-blue-600" />
+                      <Shield className="w-8 h-8 text-blue-400" />
                       <div>
                         <h3 className="font-bold text-lg text-white">Equifax</h3>
                         <p className="text-xs text-slate-300">Identity verification & credit checks</p>
@@ -684,10 +684,10 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                 </div>
 
                 {/* Illion */}
-                <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-6 border-2 border-purple-200">
+                <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-6 border-2 border-purple-500/30">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <Building2 className="w-8 h-8 text-purple-600" />
+                      <Building2 className="w-8 h-8 text-purple-400" />
                       <div>
                         <h3 className="font-bold text-lg text-white">Illion</h3>
                         <p className="text-xs text-slate-300">Business credit & insolvency</p>
@@ -708,10 +708,10 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                 </div>
 
                 {/* ComplyAdvantage */}
-                <div className="bg-gradient-to-r from-red-50 to-orange-50 rounded-lg p-6 border-2 border-red-200">
+                <div className="bg-gradient-to-r from-red-50 to-orange-50 rounded-lg p-6 border-2 border-red-500/30">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <AlertTriangle className="w-8 h-8 text-red-600" />
+                      <AlertTriangle className="w-8 h-8 text-red-400" />
                       <div>
                         <h3 className="font-bold text-lg text-white">ComplyAdvantage</h3>
                         <p className="text-xs text-slate-300">AML screening - Sanctions, PEP, Adverse Media</p>
@@ -732,10 +732,10 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                 </div>
 
                 {/* ASIC */}
-                <div className="bg-gradient-to-r from-cyan-50 to-teal-50 rounded-lg p-6 border-2 border-cyan-200">
+                <div className="bg-gradient-to-r from-cyan-50 to-teal-50 rounded-lg p-6 border-2 border-cyan-500/30">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <FileText className="w-8 h-8 text-cyan-600" />
+                      <FileText className="w-8 h-8 text-cyan-400" />
                       <div>
                         <h3 className="font-bold text-lg text-white">ASIC Connect</h3>
                         <p className="text-xs text-slate-300">Company extracts & entity records</p>
@@ -756,10 +756,10 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                 </div>
 
                 {/* InfoTrack */}
-                <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-6 border-2 border-green-200">
+                <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-6 border-2 border-green-500/30">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <Eye className="w-8 h-8 text-green-600" />
+                      <Eye className="w-8 h-8 text-green-400" />
                       <div>
                         <h3 className="font-bold text-lg text-white">InfoTrack</h3>
                         <p className="text-xs text-slate-300">ID verification & KYC checks</p>
@@ -780,7 +780,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                 </div>
 
                 {/* LexisNexis (Optional) */}
-                <div className="bg-gradient-to-r from-gray-50 to-slate-50 rounded-lg p-6 border-2 border-gray-300">
+                <div className="bg-gradient-to-r from-gray-50 to-slate-50 rounded-lg p-6 border-2 border-white/10">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
                       <Database className="w-8 h-8 text-slate-300" />
@@ -812,14 +812,14 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                 <CardDescription>Receive real-time updates from external providers</CardDescription>
               </CardHeader>
               <CardContent className="space-y-3">
-                <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                <div className="p-4 bg-blue-500/10 rounded-lg border border-blue-500/30">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm font-semibold">ComplyAdvantage Monitoring Alerts</span>
                     <Badge className="bg-green-600">Active</Badge>
                   </div>
                   <p className="text-xs text-slate-300 font-mono">https://api.grow.com/webhooks/ca-monitoring</p>
                 </div>
-                <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                <div className="p-4 bg-blue-500/10 rounded-lg border border-blue-500/30">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm font-semibold">Illion Credit Updates</span>
                     <Badge className="bg-green-600">Active</Badge>
@@ -832,10 +832,10 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
 
           {/* RISK & RULES TAB */}
           <TabsContent value="risk-rules" className="space-y-6">
-            <Card className="border-2 border-red-200">
+            <Card className="border-2 border-red-500/30">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Activity className="w-5 h-5 text-red-600" />
+                  <Activity className="w-5 h-5 text-red-400" />
                   Risk Scoring Configuration
                 </CardTitle>
                 <CardDescription>
@@ -843,7 +843,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="bg-red-50 rounded-lg p-6 border-2 border-red-200">
+                <div className="bg-red-500/10 rounded-lg p-6 border-2 border-red-500/30">
                   <h3 className="font-bold text-lg mb-4">Risk Factor Weights</h3>
                   <div className="space-y-4">
                     {[
@@ -870,7 +870,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                           }}
                           className="w-24 border-2 bg-[#1e293b]"
                         />
-                        <div className="flex-1 bg-gray-200 rounded-full h-2">
+                        <div className="flex-1 bg-white/10 rounded-full h-2">
                           <div
                             className={`bg-${factor.color === 'red' ? 'red' : factor.color === 'orange' ? 'orange' : factor.color === 'amber' ? 'amber' : factor.color === 'yellow' ? 'yellow' : factor.color === 'lime' ? 'lime' : factor.color === 'green' ? 'green' : factor.color === 'cyan' ? 'cyan' : 'blue'}-600 h-2 rounded-full`}
                             style={{ width: `${riskWeights[factor.name as keyof typeof riskWeights] ?? factor.weight}%` }}
@@ -882,8 +882,8 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-4">
-                  <div className="bg-green-50 rounded-lg p-4 border-2 border-green-300">
-                    <Label className="text-sm font-semibold mb-3 block text-green-900">Low Risk Threshold</Label>
+                  <div className="bg-green-500/10 rounded-lg p-4 border-2 border-green-300">
+                    <Label className="text-sm font-semibold mb-3 block text-green-300">Low Risk Threshold</Label>
                     <div className="flex items-center gap-2">
                       <Input
                         type="number"
@@ -900,8 +900,8 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                       />
                     </div>
                   </div>
-                  <div className="bg-amber-50 rounded-lg p-4 border-2 border-amber-300">
-                    <Label className="text-sm font-semibold mb-3 block text-amber-900">Medium Risk Threshold</Label>
+                  <div className="bg-amber-500/10 rounded-lg p-4 border-2 border-amber-300">
+                    <Label className="text-sm font-semibold mb-3 block text-amber-300">Medium Risk Threshold</Label>
                     <div className="flex items-center gap-2">
                       <Input
                         type="number"
@@ -918,8 +918,8 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                       />
                     </div>
                   </div>
-                  <div className="bg-red-50 rounded-lg p-4 border-2 border-red-300">
-                    <Label className="text-sm font-semibold mb-3 block text-red-900">High Risk Threshold</Label>
+                  <div className="bg-red-500/10 rounded-lg p-4 border-2 border-red-300">
+                    <Label className="text-sm font-semibold mb-3 block text-red-300">High Risk Threshold</Label>
                     <div className="flex items-center gap-2">
                       <Input
                         type="number"
@@ -941,10 +941,10 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
             </Card>
 
             {/* Auto Case Creation Rules */}
-            <Card className="border-2 border-purple-200">
+            <Card className="border-2 border-purple-500/30">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Target className="w-5 h-5 text-purple-600" />
+                  <Target className="w-5 h-5 text-purple-400" />
                   Automated Case Creation Rules
                 </CardTitle>
                 <CardDescription>
@@ -953,7 +953,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
               </CardHeader>
               <CardContent className="space-y-3">
                 {autoCaseCreationRules.map((rule, idx) => (
-                  <div key={idx} className="flex items-center justify-between p-4 bg-purple-50 rounded-lg border border-purple-200">
+                  <div key={idx} className="flex items-center justify-between p-4 bg-purple-500/10 rounded-lg border border-purple-500/30">
                     <div className="flex items-center gap-4 flex-1">
                       <Switch
                         checked={rule.enabled}
@@ -980,10 +980,10 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
             </Card>
 
             {/* Monitoring Configuration */}
-            <Card className="border-2 border-green-200">
+            <Card className="border-2 border-green-500/30">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Bell className="w-5 h-5 text-green-600" />
+                  <Bell className="w-5 h-5 text-green-400" />
                   Ongoing Monitoring Configuration
                 </CardTitle>
                 <CardDescription>
@@ -992,7 +992,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid md:grid-cols-3 gap-4">
-                  <div className="bg-green-50 rounded-lg p-4 border border-green-200">
+                  <div className="bg-green-500/10 rounded-lg p-4 border border-green-500/30">
                     <Label className="text-sm font-semibold mb-3 block">Standard Risk Review</Label>
                     <div className="flex items-center gap-2">
                       <Input
@@ -1004,7 +1004,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                       <span className="text-sm text-slate-300">months</span>
                     </div>
                   </div>
-                  <div className="bg-amber-50 rounded-lg p-4 border border-amber-200">
+                  <div className="bg-amber-500/10 rounded-lg p-4 border border-amber-500/30">
                     <Label className="text-sm font-semibold mb-3 block">Medium Risk Review</Label>
                     <div className="flex items-center gap-2">
                       <Input
@@ -1016,7 +1016,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                       <span className="text-sm text-slate-300">months</span>
                     </div>
                   </div>
-                  <div className="bg-red-50 rounded-lg p-4 border border-red-200">
+                  <div className="bg-red-500/10 rounded-lg p-4 border border-red-500/30">
                     <Label className="text-sm font-semibold mb-3 block">High Risk Review</Label>
                     <div className="flex items-center gap-2">
                       <Input
@@ -1031,7 +1031,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg border border-green-200">
+                  <div className="flex items-center justify-between p-4 bg-green-500/10 rounded-lg border border-green-500/30">
                     <div>
                       <p className="font-semibold text-white">Real-time sanctions monitoring</p>
                       <p className="text-xs text-slate-300">Continuous screening via ComplyAdvantage</p>
@@ -1041,7 +1041,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                       onCheckedChange={c => setMonitoringAlerts(prev => ({ ...prev, 'Real-time sanctions monitoring': c }))}
                     />
                   </div>
-                  <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg border border-green-200">
+                  <div className="flex items-center justify-between p-4 bg-green-500/10 rounded-lg border border-green-500/30">
                     <div>
                       <p className="font-semibold text-white">PEP status monitoring</p>
                       <p className="text-xs text-slate-300">Daily PEP list updates</p>
@@ -1051,7 +1051,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                       onCheckedChange={c => setMonitoringAlerts(prev => ({ ...prev, 'PEP status monitoring': c }))}
                     />
                   </div>
-                  <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg border border-green-200">
+                  <div className="flex items-center justify-between p-4 bg-green-500/10 rounded-lg border border-green-500/30">
                     <div>
                       <p className="font-semibold text-white">Adverse media monitoring</p>
                       <p className="text-xs text-slate-300">Weekly media scans</p>
@@ -1061,7 +1061,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                       onCheckedChange={c => setMonitoringAlerts(prev => ({ ...prev, 'Adverse media monitoring': c }))}
                     />
                   </div>
-                  <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg border border-green-200">
+                  <div className="flex items-center justify-between p-4 bg-green-500/10 rounded-lg border border-green-500/30">
                     <div>
                       <p className="font-semibold text-white">Credit monitoring alerts</p>
                       <p className="text-xs text-slate-300">Credit score changes</p>
@@ -1103,12 +1103,12 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
           {/* PRICING TAB (Existing) */}
           <TabsContent value="pricing" className="space-y-6">
             {/* Pricing Configuration */}
-            <Card className="border-2 border-cyan-200">
+            <Card className="border-2 border-cyan-500/30">
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div>
                     <CardTitle className="text-xl flex items-center gap-2">
-                      <DollarSign className="w-6 h-6 text-cyan-600" />
+                      <DollarSign className="w-6 h-6 text-cyan-400" />
                       KYC Verification Pricing
                     </CardTitle>
                     <CardDescription className="mt-1">Configure client-facing fees for verification services</CardDescription>
@@ -1129,9 +1129,9 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
               </CardHeader>
               <CardContent className="space-y-6">
                 {/* One-Time Verification Fee */}
-                <div className="bg-gradient-to-r from-cyan-50 to-blue-50 rounded-lg p-6 border-2 border-cyan-200">
+                <div className="bg-gradient-to-r from-cyan-50 to-blue-50 rounded-lg p-6 border-2 border-cyan-500/30">
                   <h3 className="font-bold text-lg text-white mb-4 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-cyan-600" />
+                    <CheckCircle className="w-5 h-5 text-cyan-400" />
                     One-Time Verification Fee
                   </h3>
                   <p className="text-sm text-slate-300 mb-4">
@@ -1153,23 +1153,23 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         />
                       </div>
                     </div>
-                    <div className="bg-[#1e293b] rounded-lg p-4 border border-cyan-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-cyan-500/30">
                       <p className="text-xs text-slate-300 mb-2">This fee includes:</p>
                       <ul className="text-xs text-slate-300 space-y-1">
                         <li className="flex items-center gap-1">
-                          <Check className="w-3 h-3 text-green-600" />
+                          <Check className="w-3 h-3 text-green-400" />
                           Identity verification (Equifax)
                         </li>
                         <li className="flex items-center gap-1">
-                          <Check className="w-3 h-3 text-green-600" />
+                          <Check className="w-3 h-3 text-green-400" />
                           AML screening (ComplyAdvantage)
                         </li>
                         <li className="flex items-center gap-1">
-                          <Check className="w-3 h-3 text-green-600" />
+                          <Check className="w-3 h-3 text-green-400" />
                           Business risk assessment (Illion)
                         </li>
                         <li className="flex items-center gap-1">
-                          <Check className="w-3 h-3 text-green-600" />
+                          <Check className="w-3 h-3 text-green-400" />
                           Entity and ownership analysis
                         </li>
                       </ul>
@@ -1178,9 +1178,9 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                 </div>
 
                 {/* Individual Search Costs */}
-                <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-6 border-2 border-purple-200">
+                <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-6 border-2 border-purple-500/30">
                   <h3 className="font-bold text-lg text-white mb-4 flex items-center gap-2">
-                    <Search className="w-5 h-5 text-purple-600" />
+                    <Search className="w-5 h-5 text-purple-400" />
                     Individual Search Costs
                   </h3>
                   <p className="text-sm text-slate-300 mb-4">
@@ -1188,13 +1188,13 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                   </p>
                   <div className="grid md:grid-cols-2 gap-4">
                     {/* Equifax */}
-                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-500/30">
                       <div className="flex items-center justify-between mb-3">
                         <div>
                           <p className="font-semibold text-white">Equifax Identity Check</p>
                           <p className="text-xs text-slate-300">Identity, fraud, credit signals</p>
                         </div>
-                        <Shield className="w-6 h-6 text-purple-600" />
+                        <Shield className="w-6 h-6 text-purple-400" />
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="text-lg font-semibold text-slate-300">$</span>
@@ -1202,19 +1202,19 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                           type="number"
                           value={individualSearchCosts['Equifax Identity Check']}
                           onChange={e => setIndividualSearchCosts(prev => ({ ...prev, 'Equifax Identity Check': Number(e.target.value) }))}
-                          className="border-2 border-purple-200 focus:border-purple-400 bg-[#1e293b]"
+                          className="border-2 border-purple-500/30 focus:border-purple-400 bg-[#1e293b]"
                         />
                       </div>
                     </div>
 
                     {/* Illion */}
-                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-500/30">
                       <div className="flex items-center justify-between mb-3">
                         <div>
                           <p className="font-semibold text-white">Illion Business Check</p>
                           <p className="text-xs text-slate-300">Credit, insolvency, court data</p>
                         </div>
-                        <Building2 className="w-6 h-6 text-purple-600" />
+                        <Building2 className="w-6 h-6 text-purple-400" />
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="text-lg font-semibold text-slate-300">$</span>
@@ -1222,19 +1222,19 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                           type="number"
                           value={individualSearchCosts['Illion Business Check']}
                           onChange={e => setIndividualSearchCosts(prev => ({ ...prev, 'Illion Business Check': Number(e.target.value) }))}
-                          className="border-2 border-purple-200 focus:border-purple-400 bg-[#1e293b]"
+                          className="border-2 border-purple-500/30 focus:border-purple-400 bg-[#1e293b]"
                         />
                       </div>
                     </div>
 
                     {/* ComplyAdvantage */}
-                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-500/30">
                       <div className="flex items-center justify-between mb-3">
                         <div>
                           <p className="font-semibold text-white">ComplyAdvantage AML</p>
                           <p className="text-xs text-slate-300">Sanctions, PEP, adverse media</p>
                         </div>
-                        <AlertTriangle className="w-6 h-6 text-purple-600" />
+                        <AlertTriangle className="w-6 h-6 text-purple-400" />
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="text-lg font-semibold text-slate-300">$</span>
@@ -1242,19 +1242,19 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                           type="number"
                           value={individualSearchCosts['ComplyAdvantage AML']}
                           onChange={e => setIndividualSearchCosts(prev => ({ ...prev, 'ComplyAdvantage AML': Number(e.target.value) }))}
-                          className="border-2 border-purple-200 focus:border-purple-400 bg-[#1e293b]"
+                          className="border-2 border-purple-500/30 focus:border-purple-400 bg-[#1e293b]"
                         />
                       </div>
                     </div>
 
                     {/* ASIC */}
-                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-500/30">
                       <div className="flex items-center justify-between mb-3">
                         <div>
                           <p className="font-semibold text-white">ASIC Company Extract</p>
                           <p className="text-xs text-slate-300">Entity records, directors, shares</p>
                         </div>
-                        <FileText className="w-6 h-6 text-purple-600" />
+                        <FileText className="w-6 h-6 text-purple-400" />
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="text-lg font-semibold text-slate-300">$</span>
@@ -1262,19 +1262,19 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                           type="number"
                           value={individualSearchCosts['ASIC Company Extract']}
                           onChange={e => setIndividualSearchCosts(prev => ({ ...prev, 'ASIC Company Extract': Number(e.target.value) }))}
-                          className="border-2 border-purple-200 focus:border-purple-400 bg-[#1e293b]"
+                          className="border-2 border-purple-500/30 focus:border-purple-400 bg-[#1e293b]"
                         />
                       </div>
                     </div>
 
                     {/* InfoTrack KYC */}
-                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-500/30">
                       <div className="flex items-center justify-between mb-3">
                         <div>
                           <p className="font-semibold text-white">InfoTrack ID Verification</p>
                           <p className="text-xs text-slate-300">Document verification</p>
                         </div>
-                        <Eye className="w-6 h-6 text-purple-600" />
+                        <Eye className="w-6 h-6 text-purple-400" />
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="text-lg font-semibold text-slate-300">$</span>
@@ -1282,19 +1282,19 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                           type="number"
                           value={individualSearchCosts['InfoTrack ID Verification']}
                           onChange={e => setIndividualSearchCosts(prev => ({ ...prev, 'InfoTrack ID Verification': Number(e.target.value) }))}
-                          className="border-2 border-purple-200 focus:border-purple-400 bg-[#1e293b]"
+                          className="border-2 border-purple-500/30 focus:border-purple-400 bg-[#1e293b]"
                         />
                       </div>
                     </div>
 
                     {/* LexisNexis (Optional) */}
-                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-500/30">
                       <div className="flex items-center justify-between mb-3">
                         <div>
                           <p className="font-semibold text-white">LexisNexis Legal Check</p>
                           <p className="text-xs text-slate-300">Court records, litigation</p>
                         </div>
-                        <Database className="w-6 h-6 text-purple-600" />
+                        <Database className="w-6 h-6 text-purple-400" />
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="text-lg font-semibold text-slate-300">$</span>
@@ -1302,7 +1302,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                           type="number"
                           value={individualSearchCosts['LexisNexis Legal Check']}
                           onChange={e => setIndividualSearchCosts(prev => ({ ...prev, 'LexisNexis Legal Check': Number(e.target.value) }))}
-                          className="border-2 border-purple-200 focus:border-purple-400 bg-[#1e293b]"
+                          className="border-2 border-purple-500/30 focus:border-purple-400 bg-[#1e293b]"
                         />
                       </div>
                     </div>
@@ -1310,10 +1310,10 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
 
                   <div className="mt-4 bg-[#1e293b] rounded-lg p-4 border border-purple-300">
                     <div className="flex items-start gap-2">
-                      <Info className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                      <Info className="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" />
                       <div>
-                        <p className="text-sm font-semibold text-purple-900">Cost Tracking</p>
-                        <p className="text-xs text-purple-700 mt-1">
+                        <p className="text-sm font-semibold text-purple-300">Cost Tracking</p>
+                        <p className="text-xs text-purple-300 mt-1">
                           These costs are for internal tracking and margin analysis. The client is charged the one-time verification fee regardless of how many individual checks are performed.
                         </p>
                       </div>
@@ -1322,9 +1322,9 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                 </div>
 
                 {/* Ongoing Monitoring Fee */}
-                <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-6 border-2 border-green-200">
+                <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-6 border-2 border-green-500/30">
                   <h3 className="font-bold text-lg text-white mb-4 flex items-center gap-2">
-                    <Activity className="w-5 h-5 text-green-600" />
+                    <Activity className="w-5 h-5 text-green-400" />
                     Ongoing Monitoring Subscription
                   </h3>
                   <p className="text-sm text-slate-300 mb-4">
@@ -1350,31 +1350,31 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         Billed monthly per client entity
                       </p>
                     </div>
-                    <div className="bg-[#1e293b] rounded-lg p-4 border border-green-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-green-500/30">
                       <p className="text-xs text-slate-300 mb-2">Monthly monitoring includes:</p>
                       <ul className="text-xs text-slate-300 space-y-1">
                         <li className="flex items-center gap-1">
-                          <Check className="w-3 h-3 text-green-600" />
+                          <Check className="w-3 h-3 text-green-400" />
                           Real-time sanctions screening
                         </li>
                         <li className="flex items-center gap-1">
-                          <Check className="w-3 h-3 text-green-600" />
+                          <Check className="w-3 h-3 text-green-400" />
                           PEP status monitoring
                         </li>
                         <li className="flex items-center gap-1">
-                          <Check className="w-3 h-3 text-green-600" />
+                          <Check className="w-3 h-3 text-green-400" />
                           Adverse media alerts
                         </li>
                         <li className="flex items-center gap-1">
-                          <Check className="w-3 h-3 text-green-600" />
+                          <Check className="w-3 h-3 text-green-400" />
                           Credit and business risk updates
                         </li>
                         <li className="flex items-center gap-1">
-                          <Check className="w-3 h-3 text-green-600" />
+                          <Check className="w-3 h-3 text-green-400" />
                           Associated party monitoring
                         </li>
                         <li className="flex items-center gap-1">
-                          <Check className="w-3 h-3 text-green-600" />
+                          <Check className="w-3 h-3 text-green-400" />
                           Automated case creation on alerts
                         </li>
                       </ul>
@@ -1414,43 +1414,43 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                 </div>
 
                 {/* Pricing Summary */}
-                <div className="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-lg p-6 border-2 border-indigo-200">
+                <div className="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-lg p-6 border-2 border-indigo-500/30">
                   <h3 className="font-bold text-lg text-white mb-4 flex items-center gap-2">
-                    <BarChart3 className="w-5 h-5 text-indigo-600" />
+                    <BarChart3 className="w-5 h-5 text-indigo-400" />
                     Pricing Summary
                   </h3>
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <p className="text-sm font-semibold text-slate-300 mb-3">Revenue Model</p>
                       <div className="space-y-2">
-                        <div className="flex items-center justify-between p-3 bg-[#1e293b] rounded-lg border border-indigo-200">
+                        <div className="flex items-center justify-between p-3 bg-[#1e293b] rounded-lg border border-indigo-500/30">
                           <span className="text-sm text-slate-300">Initial Verification</span>
-                          <span className="font-bold text-indigo-600">$49.00</span>
+                          <span className="font-bold text-indigo-400">$49.00</span>
                         </div>
-                        <div className="flex items-center justify-between p-3 bg-[#1e293b] rounded-lg border border-indigo-200">
+                        <div className="flex items-center justify-between p-3 bg-[#1e293b] rounded-lg border border-indigo-500/30">
                           <span className="text-sm text-slate-300">Monthly Monitoring (Standard)</span>
-                          <span className="font-bold text-indigo-600">$15.00</span>
+                          <span className="font-bold text-indigo-400">$15.00</span>
                         </div>
-                        <div className="flex items-center justify-between p-3 bg-indigo-100 rounded-lg border-2 border-indigo-300">
-                          <span className="text-sm font-semibold text-indigo-900">12-Month Client Value</span>
-                          <span className="font-bold text-xl text-indigo-600">$229</span>
+                        <div className="flex items-center justify-between p-3 bg-indigo-500/15 rounded-lg border-2 border-indigo-300">
+                          <span className="text-sm font-semibold text-indigo-300">12-Month Client Value</span>
+                          <span className="font-bold text-xl text-indigo-400">$229</span>
                         </div>
                       </div>
                     </div>
                     <div>
                       <p className="text-sm font-semibold text-slate-300 mb-3">Cost Structure</p>
                       <div className="space-y-2">
-                        <div className="flex items-center justify-between p-3 bg-[#1e293b] rounded-lg border border-indigo-200">
+                        <div className="flex items-center justify-between p-3 bg-[#1e293b] rounded-lg border border-indigo-500/30">
                           <span className="text-sm text-slate-300">Total External Checks</span>
                           <span className="font-bold text-white">~$46.50</span>
                         </div>
-                        <div className="flex items-center justify-between p-3 bg-[#1e293b] rounded-lg border border-indigo-200">
+                        <div className="flex items-center justify-between p-3 bg-[#1e293b] rounded-lg border border-indigo-500/30">
                           <span className="text-sm text-slate-300">Monitoring Cost (est.)</span>
                           <span className="font-bold text-white">~$5.00/mo</span>
                         </div>
-                        <div className="flex items-center justify-between p-3 bg-green-100 rounded-lg border-2 border-green-300">
-                          <span className="text-sm font-semibold text-green-900">12-Month Margin</span>
-                          <span className="font-bold text-xl text-green-600">$122.50</span>
+                        <div className="flex items-center justify-between p-3 bg-green-500/15 rounded-lg border-2 border-green-300">
+                          <span className="text-sm font-semibold text-green-300">12-Month Margin</span>
+                          <span className="font-bold text-xl text-green-400">$122.50</span>
                         </div>
                       </div>
                     </div>
@@ -1462,12 +1462,12 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
 
           {/* ORGANIZATION TAB (SaaS Ready) */}
           <TabsContent value="organization" className="space-y-6">
-            <Card className="border-2 border-blue-200">
+            <Card className="border-2 border-blue-500/30">
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div>
                     <CardTitle className="flex items-center gap-2">
-                      <Building2 className="w-5 h-5 text-blue-600" />
+                      <Building2 className="w-5 h-5 text-blue-400" />
                       Organization Profile
                     </CardTitle>
                     <CardDescription>
@@ -1552,10 +1552,10 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
             </Card>
 
             {/* White-labeling (SaaS Ready) */}
-            <Card className="border-2 border-purple-200">
+            <Card className="border-2 border-purple-500/30">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Palette className="w-5 h-5 text-purple-600" />
+                  <Palette className="w-5 h-5 text-purple-400" />
                   Branding & White-labeling
                 </CardTitle>
                 <CardDescription>
@@ -1564,7 +1564,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-purple-50 rounded-lg p-4 border border-purple-200">
+                  <div className="bg-purple-500/10 rounded-lg p-4 border border-purple-500/30">
                     <Label className="text-sm font-semibold mb-3 block">Logo Upload</Label>
                     <div className="border-2 border-dashed border-purple-300 rounded-lg p-6 text-center bg-[#1e293b]">
                       <Upload className="w-8 h-8 text-purple-400 mx-auto mb-2" />
@@ -1573,7 +1573,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     </div>
                   </div>
 
-                  <div className="bg-purple-50 rounded-lg p-4 border border-purple-200">
+                  <div className="bg-purple-500/10 rounded-lg p-4 border border-purple-500/30">
                     <Label className="text-sm font-semibold mb-3 block">Primary Brand Color</Label>
                     <div className="flex items-center gap-3">
                       <Input
@@ -1592,12 +1592,12 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                   </div>
                 </div>
 
-                <div className="bg-amber-50 rounded-lg p-4 border-2 border-amber-300">
+                <div className="bg-amber-500/10 rounded-lg p-4 border-2 border-amber-300">
                   <div className="flex items-start gap-2">
-                    <Sparkles className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <Sparkles className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-sm font-semibold text-amber-900">Stage 2 SaaS Feature</p>
-                      <p className="text-xs text-amber-700 mt-1">
+                      <p className="text-sm font-semibold text-amber-300">Stage 2 SaaS Feature</p>
+                      <p className="text-xs text-amber-300 mt-1">
                         Full white-labeling, custom domains, and multi-tenant branding will be available in Stage 2.
                       </p>
                     </div>
@@ -1607,12 +1607,12 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
             </Card>
 
             {/* User Management */}
-            <Card className="border-2 border-green-200">
+            <Card className="border-2 border-green-500/30">
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div>
                     <CardTitle className="flex items-center gap-2">
-                      <Users className="w-5 h-5 text-green-600" />
+                      <Users className="w-5 h-5 text-green-400" />
                       User Management
                     </CardTitle>
                     <CardDescription>Manage team members and access levels</CardDescription>
@@ -1631,7 +1631,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     { name: 'Emma Williams', email: 'emma@grow.com', role: 'Analyst', status: 'Active' },
                     { name: 'David Thompson', email: 'david@grow.com', role: 'Auditor', status: 'Active' }
                   ].map((user, idx) => (
-                    <div key={idx} className="flex items-center justify-between p-4 bg-green-50 rounded-lg border border-green-200">
+                    <div key={idx} className="flex items-center justify-between p-4 bg-green-500/10 rounded-lg border border-green-500/30">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center text-white font-bold">
                           {user.name.split(' ').map(n => n[0]).join('')}
@@ -1655,12 +1655,12 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
           {/* ADVANCED TAB */}
           <TabsContent value="advanced" className="space-y-6">
             {/* Data Residency */}
-            <Card className="border-2 border-indigo-200">
+            <Card className="border-2 border-indigo-500/30">
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div>
                     <CardTitle className="flex items-center gap-2">
-                      <Globe className="w-5 h-5 text-indigo-600" />
+                      <Globe className="w-5 h-5 text-indigo-400" />
                       Data Residency & Compliance
                     </CardTitle>
                     <CardDescription>
@@ -1685,7 +1685,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                 </div>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="bg-indigo-50 rounded-lg p-4 border border-indigo-200">
+                <div className="bg-indigo-500/10 rounded-lg p-4 border border-indigo-500/30">
                   <Label className="text-sm font-semibold mb-3 block">Primary Data Region</Label>
                   <select
                     value={primaryRegion}
@@ -1707,7 +1707,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
 
                 <div className="bg-[#1e293b] rounded-lg p-4 border-2 border-indigo-300">
                   <h3 className="font-bold text-sm text-white mb-3 flex items-center gap-2">
-                    <Shield className="w-4 h-4 text-indigo-600" />
+                    <Shield className="w-4 h-4 text-indigo-400" />
                     Multi-Jurisdictional Compliance Modes
                   </h3>
                   <p className="text-xs text-slate-300 mb-4">
@@ -1716,7 +1716,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
 
                   <div className="grid md:grid-cols-2 gap-3">
                     {/* Australia */}
-                    <div className="flex items-start justify-between p-4 bg-indigo-50 rounded-lg border-2 border-indigo-200">
+                    <div className="flex items-start justify-between p-4 bg-indigo-500/10 rounded-lg border-2 border-indigo-500/30">
                       <div className="flex-1 pr-3">
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-lg">🇦🇺</span>
@@ -1732,7 +1732,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     </div>
 
                     {/* European Union - GDPR */}
-                    <div className="flex items-start justify-between p-4 bg-indigo-50 rounded-lg border-2 border-indigo-200">
+                    <div className="flex items-start justify-between p-4 bg-indigo-500/10 rounded-lg border-2 border-indigo-500/30">
                       <div className="flex-1 pr-3">
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-lg">🇪🇺</span>
@@ -1748,7 +1748,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     </div>
 
                     {/* United States - CCPA */}
-                    <div className="flex items-start justify-between p-4 bg-indigo-50 rounded-lg border-2 border-indigo-200">
+                    <div className="flex items-start justify-between p-4 bg-indigo-500/10 rounded-lg border-2 border-indigo-500/30">
                       <div className="flex-1 pr-3">
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-lg">🇺🇸</span>
@@ -1764,7 +1764,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     </div>
 
                     {/* United Kingdom */}
-                    <div className="flex items-start justify-between p-4 bg-indigo-50 rounded-lg border-2 border-indigo-200">
+                    <div className="flex items-start justify-between p-4 bg-indigo-500/10 rounded-lg border-2 border-indigo-500/30">
                       <div className="flex-1 pr-3">
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-lg">🇬🇧</span>
@@ -1780,7 +1780,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     </div>
 
                     {/* Canada */}
-                    <div className="flex items-start justify-between p-4 bg-indigo-50 rounded-lg border-2 border-indigo-200">
+                    <div className="flex items-start justify-between p-4 bg-indigo-500/10 rounded-lg border-2 border-indigo-500/30">
                       <div className="flex-1 pr-3">
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-lg">🇨🇦</span>
@@ -1796,7 +1796,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     </div>
 
                     {/* Singapore */}
-                    <div className="flex items-start justify-between p-4 bg-indigo-50 rounded-lg border-2 border-indigo-200">
+                    <div className="flex items-start justify-between p-4 bg-indigo-500/10 rounded-lg border-2 border-indigo-500/30">
                       <div className="flex-1 pr-3">
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-lg">🇸🇬</span>
@@ -1812,7 +1812,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     </div>
 
                     {/* New Zealand */}
-                    <div className="flex items-start justify-between p-4 bg-indigo-50 rounded-lg border-2 border-indigo-200">
+                    <div className="flex items-start justify-between p-4 bg-indigo-500/10 rounded-lg border-2 border-indigo-500/30">
                       <div className="flex-1 pr-3">
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-lg">🇳🇿</span>
@@ -1828,7 +1828,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     </div>
 
                     {/* Hong Kong */}
-                    <div className="flex items-start justify-between p-4 bg-indigo-50 rounded-lg border-2 border-indigo-200">
+                    <div className="flex items-start justify-between p-4 bg-indigo-500/10 rounded-lg border-2 border-indigo-500/30">
                       <div className="flex-1 pr-3">
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-lg">🇭🇰</span>
@@ -1846,12 +1846,12 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                 </div>
 
                 {/* Compliance Impact Notice */}
-                <div className="bg-amber-50 rounded-lg p-4 border-2 border-amber-300">
+                <div className="bg-amber-500/10 rounded-lg p-4 border-2 border-amber-300">
                   <div className="flex items-start gap-2">
-                    <Info className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <Info className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-sm font-semibold text-amber-900">Compliance Impact</p>
-                      <p className="text-xs text-amber-700 mt-1">
+                      <p className="text-sm font-semibold text-amber-300">Compliance Impact</p>
+                      <p className="text-xs text-amber-300 mt-1">
                         Enabling compliance modes will activate additional data protection controls, consent requirements, 
                         right-to-access workflows, and data retention policies specific to each jurisdiction. This may affect 
                         how client data is collected, stored, and processed.
@@ -1863,10 +1863,10 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
             </Card>
 
             {/* Security Settings */}
-            <Card className="border-2 border-red-200">
+            <Card className="border-2 border-red-500/30">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Lock className="w-5 h-5 text-red-600" />
+                  <Lock className="w-5 h-5 text-red-400" />
                   Security & Authentication
                 </CardTitle>
                 <CardDescription>
@@ -1875,7 +1875,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="flex items-center justify-between p-4 bg-red-50 rounded-lg border border-red-200">
+                  <div className="flex items-center justify-between p-4 bg-red-500/10 rounded-lg border border-red-500/30">
                     <div>
                       <p className="font-semibold text-white">Require MFA for all users</p>
                       <p className="text-xs text-slate-300">Multi-factor authentication</p>
@@ -1885,7 +1885,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                       onCheckedChange={setRequireMfa}
                     />
                   </div>
-                  <div className="flex items-center justify-between p-4 bg-red-50 rounded-lg border border-red-200">
+                  <div className="flex items-center justify-between p-4 bg-red-500/10 rounded-lg border border-red-500/30">
                     <div>
                       <p className="font-semibold text-white">SSO / SAML Integration</p>
                       <p className="text-xs text-slate-300">Single sign-on</p>
@@ -1895,7 +1895,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                       onCheckedChange={setSSOIntegration}
                     />
                   </div>
-                  <div className="flex items-center justify-between p-4 bg-red-50 rounded-lg border border-red-200">
+                  <div className="flex items-center justify-between p-4 bg-red-500/10 rounded-lg border border-red-500/30">
                     <div>
                       <p className="font-semibold text-white">IP Whitelisting</p>
                       <p className="text-xs text-slate-300">Restrict access by IP</p>
@@ -1905,7 +1905,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                       onCheckedChange={setIpWhitelisting}
                     />
                   </div>
-                  <div className="flex items-center justify-between p-4 bg-red-50 rounded-lg border border-red-200">
+                  <div className="flex items-center justify-between p-4 bg-red-500/10 rounded-lg border border-red-500/30">
                     <div>
                       <p className="font-semibold text-white">Session timeout</p>
                       <p className="text-xs text-slate-300">Auto-logout after inactivity</p>
@@ -1925,10 +1925,10 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
             </Card>
 
             {/* Audit & Export */}
-            <Card className="border-2 border-blue-200">
+            <Card className="border-2 border-blue-500/30">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Download className="w-5 h-5 text-blue-600" />
+                  <Download className="w-5 h-5 text-blue-400" />
                   Audit Log & Data Export
                 </CardTitle>
                 <CardDescription>
@@ -1956,16 +1956,16 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
             </Card>
 
             {/* SaaS Migration Notice */}
-            <Card className="border-2 border-purple-200 bg-gradient-to-r from-purple-50 to-pink-50">
+            <Card className="border-2 border-purple-500/30 bg-gradient-to-r from-purple-50 to-pink-50">
               <CardContent className="p-6">
                 <div className="flex items-start gap-3">
-                  <Crown className="w-8 h-8 text-purple-600 flex-shrink-0" />
+                  <Crown className="w-8 h-8 text-purple-400 flex-shrink-0" />
                   <div>
-                    <h3 className="font-bold text-lg text-purple-900 mb-2">Stage 2: SaaS Transformation Ready</h3>
-                    <p className="text-sm text-purple-800 mb-3">
+                    <h3 className="font-bold text-lg text-purple-300 mb-2">Stage 2: SaaS Transformation Ready</h3>
+                    <p className="text-sm text-purple-300 mb-3">
                       This platform is architected for multi-tenant SaaS deployment. Stage 2 will include:
                     </p>
-                    <ul className="text-sm text-purple-700 space-y-1">
+                    <ul className="text-sm text-purple-300 space-y-1">
                       <li>• Full white-labeling per tenant</li>
                       <li>• Custom domain mapping</li>
                       <li>• Tenant isolation & data segregation</li>

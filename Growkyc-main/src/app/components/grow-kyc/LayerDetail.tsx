@@ -478,7 +478,7 @@ export function LayerDetail({ layerId, onBack }: LayerDetailProps) {
                         <div className="space-y-2">
                           {feature.benefits.map((benefit, bidx) => (
                             <div key={bidx} className="flex items-center gap-2">
-                              <CheckCircle className="w-4 h-4 text-green-600" />
+                              <CheckCircle className="w-4 h-4 text-green-400" />
                               <span className="text-sm text-slate-300">{benefit}</span>
                             </div>
                           ))}
@@ -499,7 +499,7 @@ export function LayerDetail({ layerId, onBack }: LayerDetailProps) {
             {layer.modules.map((module, idx) => (
               <Card key={idx} className="bg-[#0f172a] hover:bg-white/5 transition-colors">
                 <CardContent className="p-4 text-center">
-                  <CheckCircle className="w-6 h-6 text-green-600 mx-auto mb-2" />
+                  <CheckCircle className="w-6 h-6 text-green-400 mx-auto mb-2" />
                   <p className="text-sm font-medium text-white">{module}</p>
                 </CardContent>
               </Card>
@@ -516,17 +516,17 @@ export function LayerDetail({ layerId, onBack }: LayerDetailProps) {
                 <CardContent className="p-6">
                   <h3 className="text-lg font-bold text-white mb-4">{useCase.scenario}</h3>
                   <div className="grid md:grid-cols-2 gap-6">
-                    <div className="bg-red-50 p-4 rounded-lg border-2 border-red-200">
+                    <div className="bg-red-500/10 p-4 rounded-lg border-2 border-red-500/30">
                       <div className="flex items-center gap-2 mb-2">
-                        <AlertCircle className="w-5 h-5 text-red-600" />
-                        <span className="font-semibold text-red-900">Before</span>
+                        <AlertCircle className="w-5 h-5 text-red-400" />
+                        <span className="font-semibold text-red-300">Before</span>
                       </div>
                       <p className="text-sm text-slate-300">{useCase.before}</p>
                     </div>
-                    <div className="bg-green-50 p-4 rounded-lg border-2 border-green-200">
+                    <div className="bg-green-500/10 p-4 rounded-lg border-2 border-green-500/30">
                       <div className="flex items-center gap-2 mb-2">
-                        <CheckCircle className="w-5 h-5 text-green-600" />
-                        <span className="font-semibold text-green-900">After</span>
+                        <CheckCircle className="w-5 h-5 text-green-400" />
+                        <span className="font-semibold text-green-300">After</span>
                       </div>
                       <p className="text-sm text-slate-300">{useCase.after}</p>
                     </div>
@@ -552,7 +552,7 @@ export function LayerDetail({ layerId, onBack }: LayerDetailProps) {
               <div className="space-y-2">
                 {layer.integrations.map((integration, idx) => (
                   <div key={idx} className="flex items-center gap-2 p-2 bg-[#0f172a] rounded">
-                    <Zap className="w-4 h-4 text-blue-600" />
+                    <Zap className="w-4 h-4 text-blue-400" />
                     <span className="text-sm text-white">{integration}</span>
                   </div>
                 ))}
@@ -564,7 +564,7 @@ export function LayerDetail({ layerId, onBack }: LayerDetailProps) {
           <Card className="border-2">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Shield className="w-6 h-6 text-green-600" />
+                <Shield className="w-6 h-6 text-green-400" />
                 Compliance Coverage
               </CardTitle>
               <CardDescription>Regulatory requirements met</CardDescription>
@@ -572,8 +572,8 @@ export function LayerDetail({ layerId, onBack }: LayerDetailProps) {
             <CardContent>
               <div className="space-y-2">
                 {layer.compliance.map((comp, idx) => (
-                  <div key={idx} className="flex items-center gap-2 p-2 bg-green-50 rounded border border-green-200">
-                    <CheckCircle className="w-4 h-4 text-green-600" />
+                  <div key={idx} className="flex items-center gap-2 p-2 bg-green-500/10 rounded border border-green-500/30">
+                    <CheckCircle className="w-4 h-4 text-green-400" />
                     <span className="text-sm font-medium text-white">{comp}</span>
                   </div>
                 ))}

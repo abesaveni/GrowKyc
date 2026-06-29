@@ -319,27 +319,27 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
         <div className="p-8 max-w-7xl mx-auto">
           {/* Wins/Loses */}
           <div className="grid grid-cols-2 gap-6 mb-8">
-            <Card className="border-2 border-green-300 bg-green-50">
+            <Card className="border-2 border-green-300 bg-green-500/10">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-green-900">
+                <CardTitle className="flex items-center gap-2 text-green-300">
                   <Trophy className="w-5 h-5" />
                   Wins On
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-lg font-semibold text-green-800">{selectedComp.winsOn}</p>
+                <p className="text-lg font-semibold text-green-300">{selectedComp.winsOn}</p>
               </CardContent>
             </Card>
 
-            <Card className="border-2 border-red-300 bg-red-50">
+            <Card className="border-2 border-red-300 bg-red-500/10">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-red-900">
+                <CardTitle className="flex items-center gap-2 text-red-300">
                   <AlertCircle className="w-5 h-5" />
                   Loses On
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-lg font-semibold text-red-800">{selectedComp.losesOn}</p>
+                <p className="text-lg font-semibold text-red-300">{selectedComp.losesOn}</p>
               </CardContent>
             </Card>
           </div>
@@ -349,7 +349,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  <CheckCircle className="w-5 h-5 text-green-400" />
                   Strengths
                 </CardTitle>
               </CardHeader>
@@ -357,7 +357,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
                 <ul className="space-y-2">
                   {selectedComp.strengths.map((strength, idx) => (
                     <li key={idx} className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-600 mt-1 flex-shrink-0" />
+                      <CheckCircle className="w-4 h-4 text-green-400 mt-1 flex-shrink-0" />
                       <span className="text-slate-300">{strength}</span>
                     </li>
                   ))}
@@ -368,7 +368,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <X className="w-5 h-5 text-red-600" />
+                  <X className="w-5 h-5 text-red-400" />
                   Weaknesses
                 </CardTitle>
               </CardHeader>
@@ -376,7 +376,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
                 <ul className="space-y-2">
                   {selectedComp.weaknesses.map((weakness, idx) => (
                     <li key={idx} className="flex items-start gap-2">
-                      <X className="w-4 h-4 text-red-600 mt-1 flex-shrink-0" />
+                      <X className="w-4 h-4 text-red-400 mt-1 flex-shrink-0" />
                       <span className="text-slate-300">{weakness}</span>
                     </li>
                   ))}
@@ -386,15 +386,15 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
           </div>
 
           {/* Pricing */}
-          <Card className="mb-8 bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200">
+          <Card className="mb-8 bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-500/30">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <DollarSign className="w-5 h-5 text-blue-600" />
+                <DollarSign className="w-5 h-5 text-blue-400" />
                 Pricing
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-2xl font-bold text-blue-900">{selectedComp.pricing}</p>
+              <p className="text-2xl font-bold text-blue-300">{selectedComp.pricing}</p>
             </CardContent>
           </Card>
 
@@ -402,15 +402,15 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
           <Card className="bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-300">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-2xl">
-                <Target className="w-6 h-6 text-green-600" />
+                <Target className="w-6 h-6 text-green-400" />
                 How Grow Beats {selectedComp.name}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <ul className="space-y-3">
                 {selectedComp.howToBeat.map((strategy, idx) => (
-                  <li key={idx} className="flex items-start gap-3 p-3 bg-[#1e293b] rounded-lg border border-green-200">
-                    <Flame className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                  <li key={idx} className="flex items-start gap-3 p-3 bg-[#1e293b] rounded-lg border border-green-500/30">
+                    <Flame className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
                     <span className="text-white font-medium">{strategy}</span>
                   </li>
                 ))}
@@ -451,7 +451,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
         <Card className="mb-12 border-2 border-amber-300 bg-gradient-to-br from-amber-50 to-orange-50">
           <CardHeader>
             <CardTitle className="flex items-center gap-3 text-2xl">
-              <Target className="w-6 h-6 text-amber-600" />
+              <Target className="w-6 h-6 text-amber-400" />
               Critical Market Gaps
             </CardTitle>
             <CardDescription className="text-base">
@@ -476,19 +476,19 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
                     <div
                       className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${
                         gap.severity === 'critical'
-                          ? 'bg-red-100'
+                          ? 'bg-red-500/15'
                           : gap.severity === 'high'
-                          ? 'bg-orange-100'
-                          : 'bg-yellow-100'
+                          ? 'bg-orange-500/15'
+                          : 'bg-yellow-500/15'
                       }`}
                     >
                       <GapIcon
                         className={`w-6 h-6 ${
                           gap.severity === 'critical'
-                            ? 'text-red-600'
+                            ? 'text-red-400'
                             : gap.severity === 'high'
-                            ? 'text-orange-600'
-                            : 'text-yellow-600'
+                            ? 'text-orange-400'
+                            : 'text-yellow-400'
                         }`}
                       />
                     </div>
@@ -540,20 +540,20 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
                 </div>
 
                 <div className="space-y-3">
-                  <div className="p-3 bg-green-50 border border-green-200 rounded-lg">
+                  <div className="p-3 bg-green-500/10 border border-green-500/30 rounded-lg">
                     <div className="flex items-center gap-2 mb-1">
-                      <Trophy className="w-4 h-4 text-green-600" />
-                      <span className="text-xs font-semibold text-green-900">WINS ON</span>
+                      <Trophy className="w-4 h-4 text-green-400" />
+                      <span className="text-xs font-semibold text-green-300">WINS ON</span>
                     </div>
-                    <p className="text-sm text-green-800">{comp.winsOn}</p>
+                    <p className="text-sm text-green-300">{comp.winsOn}</p>
                   </div>
 
-                  <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
+                  <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
                     <div className="flex items-center gap-2 mb-1">
-                      <AlertCircle className="w-4 h-4 text-red-600" />
-                      <span className="text-xs font-semibold text-red-900">LOSES ON</span>
+                      <AlertCircle className="w-4 h-4 text-red-400" />
+                      <span className="text-xs font-semibold text-red-300">LOSES ON</span>
                     </div>
-                    <p className="text-sm text-red-800">{comp.losesOn}</p>
+                    <p className="text-sm text-red-300">{comp.losesOn}</p>
                   </div>
                 </div>
               </CardContent>
@@ -571,7 +571,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="border-b-2 border-gray-300">
+                  <tr className="border-b-2 border-white/10">
                     <th className="text-left py-3 px-4 font-bold">Feature</th>
                     <th className="text-center py-3 px-2">IdentityCheck</th>
                     <th className="text-center py-3 px-2">Nagaris</th>
@@ -589,44 +589,44 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
                       <td className="py-3 px-4 font-medium text-white">{row.feature}</td>
                       <td className="text-center py-3 px-2">
                         {row.identitycheck ? (
-                          <CheckCircle className="w-5 h-5 text-green-600 mx-auto" />
+                          <CheckCircle className="w-5 h-5 text-green-400 mx-auto" />
                         ) : (
                           <X className="w-5 h-5 text-gray-300 mx-auto" />
                         )}
                       </td>
                       <td className="text-center py-3 px-2">
                         {row.nagaris ? (
-                          <CheckCircle className="w-5 h-5 text-green-600 mx-auto" />
+                          <CheckCircle className="w-5 h-5 text-green-400 mx-auto" />
                         ) : (
                           <X className="w-5 h-5 text-gray-300 mx-auto" />
                         )}
                       </td>
                       <td className="text-center py-3 px-2">
                         {row.onboardme ? (
-                          <CheckCircle className="w-5 h-5 text-green-600 mx-auto" />
+                          <CheckCircle className="w-5 h-5 text-green-400 mx-auto" />
                         ) : (
                           <X className="w-5 h-5 text-gray-300 mx-auto" />
                         )}
                       </td>
                       <td className="text-center py-3 px-2">
                         {row.seamlss ? (
-                          <CheckCircle className="w-5 h-5 text-green-600 mx-auto" />
+                          <CheckCircle className="w-5 h-5 text-green-400 mx-auto" />
                         ) : (
                           <X className="w-5 h-5 text-gray-300 mx-auto" />
                         )}
                       </td>
                       <td className="text-center py-3 px-2">
                         {row.verifime ? (
-                          <CheckCircle className="w-5 h-5 text-green-600 mx-auto" />
+                          <CheckCircle className="w-5 h-5 text-green-400 mx-auto" />
                         ) : (
                           <X className="w-5 h-5 text-gray-300 mx-auto" />
                         )}
                       </td>
                       <td className="text-center py-3 px-2 bg-gradient-to-br from-purple-50 to-pink-50">
                         {row.grow ? (
-                          <CheckCircle className="w-5 h-5 text-purple-600 mx-auto" />
+                          <CheckCircle className="w-5 h-5 text-purple-400 mx-auto" />
                         ) : (
-                          <Clock className="w-5 h-5 text-amber-600 mx-auto" title="Planned" />
+                          <Clock className="w-5 h-5 text-amber-400 mx-auto" title="Planned" />
                         )}
                       </td>
                     </tr>
@@ -638,10 +638,10 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
         </Card>
 
         {/* Winning Strategy */}
-        <Card className="bg-gradient-to-br from-indigo-50 to-purple-50 border-2 border-indigo-200">
+        <Card className="bg-gradient-to-br from-indigo-50 to-purple-50 border-2 border-indigo-500/30">
           <CardHeader>
             <CardTitle className="flex items-center gap-3 text-2xl">
-              <Flame className="w-6 h-6 text-indigo-600" />
+              <Flame className="w-6 h-6 text-indigo-400" />
               Winning Strategy: Beat All 5 Competitors
             </CardTitle>
             <CardDescription className="text-base">
@@ -653,21 +653,21 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
               {winningStrategy.map((strat, idx) => {
                 const StratIcon = strat.icon;
                 return (
-                  <div key={idx} className="p-5 bg-[#1e293b] rounded-xl border-2 border-indigo-200 hover:shadow-lg transition-shadow">
+                  <div key={idx} className="p-5 bg-[#1e293b] rounded-xl border-2 border-indigo-500/30 hover:shadow-lg transition-shadow">
                     <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                        <StratIcon className="w-6 h-6 text-indigo-600" />
+                      <div className="w-12 h-12 bg-indigo-500/15 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <StratIcon className="w-6 h-6 text-indigo-400" />
                       </div>
                       <div className="flex-1">
                         <h3 className="font-bold text-white mb-2">{strat.title}</h3>
                         <p className="text-sm text-slate-300 mb-3">{strat.strategy}</p>
                         <div className="flex items-center gap-4 text-xs">
                           <div className="flex items-center gap-1">
-                            <Clock className="w-3 h-3 text-blue-600" />
+                            <Clock className="w-3 h-3 text-blue-400" />
                             <span className="text-slate-300">{strat.timeline}</span>
                           </div>
                           <div className="flex items-center gap-1">
-                            <DollarSign className="w-3 h-3 text-green-600" />
+                            <DollarSign className="w-3 h-3 text-green-400" />
                             <span className="text-slate-300">{strat.investment}</span>
                           </div>
                         </div>

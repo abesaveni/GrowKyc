@@ -82,25 +82,25 @@ export function UltimateOS() {
           { label: 'Active Projects', value: '156', change: '+12', trend: 'up', color: 'purple' },
           { label: 'Team Utilisation', value: '87%', change: '-3%', trend: 'down', color: 'orange' }
         ].map((metric, idx) => (
-          <div key={idx} className="bg-white border-2 border-gray-200 rounded-lg p-6">
+          <div key={idx} className="bg-white border-2 border-white/10 rounded-lg p-6">
             <div className="flex items-center justify-between mb-4">
               <TrendingUp className={`w-8 h-8 text-${metric.color}-600`} />
               <span className={`text-xs font-bold px-2 py-1 rounded ${
-                metric.trend === 'up' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
+                metric.trend === 'up' ? 'bg-green-500/15 text-green-300' : 'bg-red-500/15 text-red-300'
               }`}>
                 {metric.change}
               </span>
             </div>
-            <p className="text-3xl font-bold text-gray-900 mb-1">{metric.value}</p>
-            <p className="text-sm text-gray-600">{metric.label}</p>
+            <p className="text-3xl font-bold text-slate-100 mb-1">{metric.value}</p>
+            <p className="text-sm text-slate-300">{metric.label}</p>
           </div>
         ))}
       </div>
 
       {/* Core Data Model Overview */}
-      <div className="bg-white border-2 border-gray-200 rounded-lg p-6">
-        <h3 className="font-bold text-gray-900 text-lg mb-4 flex items-center gap-2">
-          <Database className="w-5 h-5 text-blue-600" />
+      <div className="bg-white border-2 border-white/10 rounded-lg p-6">
+        <h3 className="font-bold text-slate-100 text-lg mb-4 flex items-center gap-2">
+          <Database className="w-5 h-5 text-blue-400" />
           Universal Data Model
         </h3>
         <div className="grid grid-cols-6 gap-4">
@@ -127,13 +127,13 @@ export function UltimateOS() {
           { module: 'Automation Studio', status: 'Active', records: '67 workflows', color: 'indigo' },
           { module: 'AI Layer', status: 'Active', records: 'Full access', color: 'violet' }
         ].map((mod, idx) => (
-          <div key={idx} className="bg-white border-2 border-gray-200 rounded-lg p-6 hover:border-gray-300">
+          <div key={idx} className="bg-white border-2 border-white/10 rounded-lg p-6 hover:border-white/10">
             <div className="flex items-center justify-between mb-3">
-              <h4 className="font-bold text-gray-900">{mod.module}</h4>
+              <h4 className="font-bold text-slate-100">{mod.module}</h4>
               <StatusBadge status="activated" />
             </div>
-            <p className="text-sm text-gray-600 mb-2">{mod.records}</p>
-            <button className="w-full px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-900 rounded-lg text-sm font-semibold">
+            <p className="text-sm text-slate-300 mb-2">{mod.records}</p>
+            <button className="w-full px-4 py-2 bg-white/5 hover:bg-white/10 text-slate-100 rounded-lg text-sm font-semibold">
               Open Module
             </button>
           </div>
@@ -142,9 +142,9 @@ export function UltimateOS() {
 
       {/* Recent Activity */}
       <div className="grid grid-cols-2 gap-6">
-        <div className="bg-white border-2 border-gray-200 rounded-lg p-6">
-          <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-            <Activity className="w-5 h-5 text-blue-600" />
+        <div className="bg-white border-2 border-white/10 rounded-lg p-6">
+          <h3 className="font-bold text-slate-100 mb-4 flex items-center gap-2">
+            <Activity className="w-5 h-5 text-blue-400" />
             Recent Activity
           </h3>
           <div className="space-y-3">
@@ -154,24 +154,24 @@ export function UltimateOS() {
               { action: 'Project milestone completed', entity: 'Q4 Implementation', time: '1 hour ago', type: 'work' },
               { action: 'Document approved', entity: 'Master Services Agreement', time: '2 hours ago', type: 'documents' }
             ].map((item, idx) => (
-              <div key={idx} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+              <div key={idx} className="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
                 <div className={`w-2 h-2 rounded-full mt-2 ${
                   item.type === 'crm' ? 'bg-green-600' : 
                   item.type === 'finance' ? 'bg-purple-600' :
                   item.type === 'work' ? 'bg-blue-600' : 'bg-orange-600'
                 }`} />
                 <div className="flex-1">
-                  <p className="text-sm font-semibold text-gray-900">{item.action}</p>
-                  <p className="text-xs text-gray-600">{item.entity} • {item.time}</p>
+                  <p className="text-sm font-semibold text-slate-100">{item.action}</p>
+                  <p className="text-xs text-slate-300">{item.entity} • {item.time}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="bg-white border-2 border-gray-200 rounded-lg p-6">
-          <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-            <AlertCircle className="w-5 h-5 text-orange-600" />
+        <div className="bg-white border-2 border-white/10 rounded-lg p-6">
+          <h3 className="font-bold text-slate-100 mb-4 flex items-center gap-2">
+            <AlertCircle className="w-5 h-5 text-orange-400" />
             Attention Required
           </h3>
           <div className="space-y-3">
@@ -181,13 +181,13 @@ export function UltimateOS() {
               { item: '3 SLA deadlines today', priority: 'high', action: 'Check Status' },
               { item: '8 tasks due this week', priority: 'medium', action: 'View Tasks' }
             ].map((alert, idx) => (
-              <div key={idx} className="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
+              <div key={idx} className="flex items-center justify-between p-3 border border-white/10 rounded-lg">
                 <div className="flex-1">
-                  <p className="text-sm font-semibold text-gray-900">{alert.item}</p>
+                  <p className="text-sm font-semibold text-slate-100">{alert.item}</p>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className={`px-2 py-1 text-xs font-bold rounded ${
-                    alert.priority === 'high' ? 'bg-red-100 text-red-700' : 'bg-amber-100 text-amber-700'
+                    alert.priority === 'high' ? 'bg-red-500/15 text-red-300' : 'bg-amber-500/15 text-amber-300'
                   }`}>
                     {alert.priority}
                   </span>
@@ -207,8 +207,8 @@ export function UltimateOS() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">CRM & Sales</h2>
-          <p className="text-gray-600">Lead capture, pipeline management, and customer relationships</p>
+          <h2 className="text-2xl font-bold text-slate-100">CRM & Sales</h2>
+          <p className="text-slate-300">Lead capture, pipeline management, and customer relationships</p>
         </div>
         <PrimaryButton onClick={() => toast.info('Create new lead')}>
           <Users className="w-4 h-4 mr-2" />
@@ -217,8 +217,8 @@ export function UltimateOS() {
       </div>
 
       {/* Pipeline Stages */}
-      <div className="bg-white border-2 border-gray-200 rounded-lg p-6">
-        <h3 className="font-bold text-gray-900 mb-4">Sales Pipeline</h3>
+      <div className="bg-white border-2 border-white/10 rounded-lg p-6">
+        <h3 className="font-bold text-slate-100 mb-4">Sales Pipeline</h3>
         <div className="grid grid-cols-5 gap-4">
           {[
             { stage: 'Leads', count: 45, value: '$450K', probability: 10, color: 'gray' },
@@ -230,8 +230,8 @@ export function UltimateOS() {
             <div key={idx} className={`p-4 bg-${stage.color}-50 border-2 border-${stage.color}-200 rounded-lg`}>
               <p className={`text-xs font-bold text-${stage.color}-600 uppercase mb-2`}>{stage.stage}</p>
               <p className={`text-2xl font-bold text-${stage.color}-900 mb-1`}>{stage.count}</p>
-              <p className="text-sm text-gray-900 font-semibold mb-1">{stage.value}</p>
-              <p className="text-xs text-gray-600">{stage.probability}% probability</p>
+              <p className="text-sm text-slate-100 font-semibold mb-1">{stage.value}</p>
+              <p className="text-xs text-slate-300">{stage.probability}% probability</p>
             </div>
           ))}
         </div>
@@ -249,10 +249,10 @@ export function UltimateOS() {
         ].map((feature, idx) => {
           const Icon = feature.icon;
           return (
-            <div key={idx} className="bg-white border-2 border-gray-200 rounded-lg p-6 hover:border-blue-300">
-              <Icon className="w-8 h-8 text-blue-600 mb-3" />
-              <h4 className="font-bold text-gray-900 mb-2">{feature.title}</h4>
-              <p className="text-sm text-gray-600">{feature.desc}</p>
+            <div key={idx} className="bg-white border-2 border-white/10 rounded-lg p-6 hover:border-blue-300">
+              <Icon className="w-8 h-8 text-blue-400 mb-3" />
+              <h4 className="font-bold text-slate-100 mb-2">{feature.title}</h4>
+              <p className="text-sm text-slate-300">{feature.desc}</p>
             </div>
           );
         })}
@@ -264,8 +264,8 @@ export function UltimateOS() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">Work Management</h2>
-          <p className="text-gray-600">Tasks, projects, time tracking, and capacity planning</p>
+          <h2 className="text-2xl font-bold text-slate-100">Work Management</h2>
+          <p className="text-slate-300">Tasks, projects, time tracking, and capacity planning</p>
         </div>
         <PrimaryButton onClick={() => toast.info('Create new task')}>
           <CheckSquare className="w-4 h-4 mr-2" />
@@ -278,7 +278,7 @@ export function UltimateOS() {
         {['Kanban', 'Gantt', 'Calendar', 'List'].map((view) => (
           <button
             key={view}
-            className="px-4 py-2 bg-white border-2 border-gray-200 rounded-lg hover:border-blue-300 font-semibold"
+            className="px-4 py-2 bg-white border-2 border-white/10 rounded-lg hover:border-blue-300 font-semibold"
           >
             {view}
           </button>
@@ -295,10 +295,10 @@ export function UltimateOS() {
         ].map((stat, idx) => {
           const Icon = stat.icon;
           return (
-            <div key={idx} className="bg-white border-2 border-gray-200 rounded-lg p-4">
+            <div key={idx} className="bg-white border-2 border-white/10 rounded-lg p-4">
               <Icon className={`w-6 h-6 text-${stat.color}-600 mb-2`} />
-              <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
-              <p className="text-sm text-gray-600">{stat.label}</p>
+              <p className="text-2xl font-bold text-slate-100">{stat.value}</p>
+              <p className="text-sm text-slate-300">{stat.label}</p>
             </div>
           );
         })}
@@ -316,10 +316,10 @@ export function UltimateOS() {
         ].map((feature, idx) => {
           const Icon = feature.icon;
           return (
-            <div key={idx} className="bg-white border-2 border-gray-200 rounded-lg p-6">
-              <Icon className="w-8 h-8 text-purple-600 mb-3" />
-              <h4 className="font-bold text-gray-900 mb-2">{feature.title}</h4>
-              <p className="text-sm text-gray-600">{feature.desc}</p>
+            <div key={idx} className="bg-white border-2 border-white/10 rounded-lg p-6">
+              <Icon className="w-8 h-8 text-purple-400 mb-3" />
+              <h4 className="font-bold text-slate-100 mb-2">{feature.title}</h4>
+              <p className="text-sm text-slate-300">{feature.desc}</p>
             </div>
           );
         })}
@@ -331,8 +331,8 @@ export function UltimateOS() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">Automation & Workflow Studio</h2>
-          <p className="text-gray-600">No-code builder for processes and automations</p>
+          <h2 className="text-2xl font-bold text-slate-100">Automation & Workflow Studio</h2>
+          <p className="text-slate-300">No-code builder for processes and automations</p>
         </div>
         <PrimaryButton onClick={() => toast.info('Create new workflow')}>
           <WorkflowIcon className="w-4 h-4 mr-2" />
@@ -360,7 +360,7 @@ export function UltimateOS() {
         <h3 className="font-bold text-xl mb-2">Visual Workflow Builder</h3>
         <p className="mb-4 opacity-90">Drag-and-drop automation with triggers, conditions, and actions</p>
         <div className="flex gap-3">
-          <button className="px-4 py-2 bg-white text-indigo-600 rounded-lg hover:bg-gray-100">
+          <button className="px-4 py-2 bg-white text-indigo-400 rounded-lg hover:bg-white/5">
             Open Builder
           </button>
           <button className="px-4 py-2 bg-indigo-700 text-white rounded-lg hover:bg-indigo-800">
@@ -376,15 +376,15 @@ export function UltimateOS() {
           { title: 'Conditions', desc: 'Logic, rules, and branching', items: ['If/Then', 'Switch', 'Loop', 'Wait'] },
           { title: 'Actions', desc: 'Tasks, emails, updates, integrations', items: ['Create record', 'Send email', 'Update field', 'Call API'] }
         ].map((section, idx) => (
-          <div key={idx} className="bg-white border-2 border-gray-200 rounded-lg p-6">
-            <Zap className="w-8 h-8 text-indigo-600 mb-3" />
-            <h4 className="font-bold text-gray-900 mb-2">{section.title}</h4>
-            <p className="text-sm text-gray-600 mb-3">{section.desc}</p>
+          <div key={idx} className="bg-white border-2 border-white/10 rounded-lg p-6">
+            <Zap className="w-8 h-8 text-indigo-400 mb-3" />
+            <h4 className="font-bold text-slate-100 mb-2">{section.title}</h4>
+            <p className="text-sm text-slate-300 mb-3">{section.desc}</p>
             <div className="space-y-1">
               {section.items.map((item, iidx) => (
                 <div key={iidx} className="flex items-center gap-2">
                   <div className="w-1 h-1 rounded-full bg-indigo-600" />
-                  <span className="text-xs text-gray-700">{item}</span>
+                  <span className="text-xs text-slate-300">{item}</span>
                 </div>
               ))}
             </div>
@@ -398,11 +398,11 @@ export function UltimateOS() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">AI Layer</h2>
-          <p className="text-gray-600">Practical, controlled AI with guardrails and source citations</p>
+          <h2 className="text-2xl font-bold text-slate-100">AI Layer</h2>
+          <p className="text-slate-300">Practical, controlled AI with guardrails and source citations</p>
         </div>
         <div className="flex items-center gap-2">
-          <span className="px-3 py-1 bg-green-100 text-green-700 text-sm font-bold rounded-full">
+          <span className="px-3 py-1 bg-green-500/15 text-green-300 text-sm font-bold rounded-full">
             AI ACTIVE
           </span>
         </div>
@@ -423,16 +423,16 @@ export function UltimateOS() {
             <div key={idx} className={`bg-${ai.color}-50 border-2 border-${ai.color}-200 rounded-lg p-6`}>
               <Icon className={`w-8 h-8 text-${ai.color}-600 mb-3`} />
               <h4 className={`font-bold text-${ai.color}-900 mb-2`}>{ai.capability}</h4>
-              <p className="text-sm text-gray-700">{ai.desc}</p>
+              <p className="text-sm text-slate-300">{ai.desc}</p>
             </div>
           );
         })}
       </div>
 
       {/* AI Guardrails */}
-      <div className="bg-white border-2 border-gray-200 rounded-lg p-6">
-        <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-          <Shield className="w-5 h-5 text-green-600" />
+      <div className="bg-white border-2 border-white/10 rounded-lg p-6">
+        <h3 className="font-bold text-slate-100 mb-4 flex items-center gap-2">
+          <Shield className="w-5 h-5 text-green-400" />
           AI Guardrails & Controls
         </h3>
         <div className="grid grid-cols-2 gap-4">
@@ -442,16 +442,16 @@ export function UltimateOS() {
             { control: 'PII Redaction', status: 'Enabled', desc: 'Automatically redacts sensitive data' },
             { control: 'Human Review', status: 'Required', desc: 'AI suggests, humans decide' }
           ].map((guard, idx) => (
-            <div key={idx} className="flex items-start gap-3 p-4 bg-green-50 border border-green-200 rounded-lg">
-              <Shield className="w-5 h-5 text-green-600 mt-0.5" />
+            <div key={idx} className="flex items-start gap-3 p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
+              <Shield className="w-5 h-5 text-green-400 mt-0.5" />
               <div className="flex-1">
                 <div className="flex items-center justify-between mb-1">
-                  <p className="font-bold text-gray-900">{guard.control}</p>
-                  <span className="px-2 py-1 bg-green-100 text-green-700 text-xs font-bold rounded">
+                  <p className="font-bold text-slate-100">{guard.control}</p>
+                  <span className="px-2 py-1 bg-green-500/15 text-green-300 text-xs font-bold rounded">
                     {guard.status}
                   </span>
                 </div>
-                <p className="text-xs text-gray-600">{guard.desc}</p>
+                <p className="text-xs text-slate-300">{guard.desc}</p>
               </div>
             </div>
           ))}
@@ -478,7 +478,7 @@ export function UltimateOS() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white/5">
       {/* Top Bar */}
       <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -487,7 +487,7 @@ export function UltimateOS() {
             <p className="text-sm opacity-90">One data model, many workflows</p>
           </div>
           <div className="flex items-center gap-3">
-            <button className="px-4 py-2 bg-white text-indigo-600 rounded-lg hover:bg-gray-100 font-semibold">
+            <button className="px-4 py-2 bg-white text-indigo-400 rounded-lg hover:bg-white/5 font-semibold">
               <Brain className="w-4 h-4 inline mr-2" />
               Ask AI
             </button>
@@ -500,7 +500,7 @@ export function UltimateOS() {
       </div>
 
       {/* Module Navigation */}
-      <div className="bg-white border-b-2 border-gray-200">
+      <div className="bg-white border-b-2 border-white/10">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex gap-2 overflow-x-auto py-4">
             {[
@@ -529,7 +529,7 @@ export function UltimateOS() {
                   className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold whitespace-nowrap transition-colors ${
                     isActive
                       ? 'bg-indigo-600 text-white'
-                      : 'text-gray-600 hover:bg-gray-100'
+                      : 'text-slate-300 hover:bg-white/5'
                   }`}
                 >
                   <Icon className="w-4 h-4" />

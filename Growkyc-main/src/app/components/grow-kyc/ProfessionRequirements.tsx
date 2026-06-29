@@ -765,11 +765,11 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'completed':
-        return <CheckCircle className="w-5 h-5 text-green-600 cursor-pointer" />;
+        return <CheckCircle className="w-5 h-5 text-green-400 cursor-pointer" />;
       case 'in-progress':
-        return <Clock className="w-5 h-5 text-amber-600 cursor-pointer" />;
+        return <Clock className="w-5 h-5 text-amber-400 cursor-pointer" />;
       case 'pending':
-        return <XCircle className="w-5 h-5 text-red-600 cursor-pointer" />;
+        return <XCircle className="w-5 h-5 text-red-400 cursor-pointer" />;
       default:
         return <AlertTriangle className="w-5 h-5 text-slate-400 cursor-pointer" />;
     }
@@ -778,11 +778,11 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'completed':
-        return <Badge className="bg-green-100 text-green-800 border-green-300 select-none cursor-pointer">Completed</Badge>;
+        return <Badge className="bg-green-500/15 text-green-300 border-green-300 select-none cursor-pointer">Completed</Badge>;
       case 'in-progress':
-        return <Badge className="bg-amber-100 text-amber-800 border-amber-300 select-none cursor-pointer">In Progress</Badge>;
+        return <Badge className="bg-amber-500/15 text-amber-300 border-amber-300 select-none cursor-pointer">In Progress</Badge>;
       case 'pending':
-        return <Badge className="bg-red-100 text-red-800 border-red-300 select-none cursor-pointer">Pending</Badge>;
+        return <Badge className="bg-red-500/15 text-red-300 border-red-300 select-none cursor-pointer">Pending</Badge>;
       default:
         return <Badge variant="secondary">Unknown</Badge>;
     }
@@ -856,7 +856,7 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
           const SectionIcon = ICON_COMPONENTS[section.iconName] || Shield;
           return (
             <Card key={sectionIndex} className="border border-white/10 shadow-lg rounded-2xl overflow-hidden">
-              <CardHeader className="bg-gray-50/70 border-b border-white/10 py-6">
+              <CardHeader className="bg-white/5/70 border-b border-white/10 py-6">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <CardTitle className="flex items-center gap-3.5 text-2xl font-black text-white">
                     <div className="w-12 h-12 bg-[#13B5EA]/10 rounded-xl flex items-center justify-center">
@@ -881,7 +881,7 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
               <CardContent className="p-4 md:p-6 space-y-4">
                 {/* Form to add a new requirement */}
                 {showAddForm === sectionIndex && (
-                  <Card className="border-2 border-dashed border-[#13B5EA] bg-cyan-50/20 p-5 rounded-xl space-y-4 mb-4 animate-in fade-in duration-200">
+                  <Card className="border-2 border-dashed border-[#13B5EA] bg-cyan-500/10/20 p-5 rounded-xl space-y-4 mb-4 animate-in fade-in duration-200">
                     <div className="flex items-center justify-between border-b border-white/10 pb-2">
                       <h4 className="font-bold text-white flex items-center gap-1.5">
                         <Plus className="w-4 h-4 text-[#13B5EA]" /> Add New Requirement
@@ -899,7 +899,7 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
                           placeholder="e.g. Annual Compliance Audit Review" 
                           value={newTitle} 
                           onChange={(e) => setNewTitle(e.target.value)}
-                          className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA]"
+                          className="w-full px-3 py-2 text-sm border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA]"
                         />
                       </div>
                       <div className="space-y-1">
@@ -909,7 +909,7 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
                           placeholder="e.g. AML/CTF Rules Rule 8.6" 
                           value={newLegal} 
                           onChange={(e) => setNewLegal(e.target.value)}
-                          className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA]"
+                          className="w-full px-3 py-2 text-sm border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA]"
                         />
                       </div>
                       <div className="space-y-1">
@@ -919,7 +919,7 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
                           placeholder="e.g. Annual, Ongoing" 
                           value={newFreq} 
                           onChange={(e) => setNewFreq(e.target.value)}
-                          className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA]"
+                          className="w-full px-3 py-2 text-sm border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA]"
                         />
                       </div>
                       <div className="space-y-1">
@@ -927,7 +927,7 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
                         <select 
                           value={newStatus} 
                           onChange={(e) => setNewStatus(e.target.value as any)}
-                          className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA] bg-[#1e293b]"
+                          className="w-full px-3 py-2 text-sm border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA] bg-[#1e293b]"
                         >
                           <option value="pending">Pending</option>
                           <option value="in-progress">In Progress</option>
@@ -941,7 +941,7 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
                           value={newDesc} 
                           onChange={(e) => setNewDesc(e.target.value)}
                           rows={2}
-                          className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA]"
+                          className="w-full px-3 py-2 text-sm border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA]"
                         />
                       </div>
                     </div>
@@ -956,7 +956,7 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
                 )}
 
                 {section.items.length === 0 ? (
-                  <div className="p-8 text-center text-slate-400 border border-dashed rounded-xl bg-gray-50/50">
+                  <div className="p-8 text-center text-slate-400 border border-dashed rounded-xl bg-white/5/50">
                     No requirements defined in this section.
                   </div>
                 ) : (
@@ -1003,14 +1003,14 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
                                 <span className="text-white font-medium">{item.frequency}</span>
                               </div>
                               <div className="flex items-center gap-2">
-                                <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
+                                <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
                                 <span className="font-semibold text-slate-300">Last Completed:</span>
                                 <span className="text-white font-medium">{item.lastCompleted || 'N/A'}</span>
                               </div>
                             </div>
 
                             {/* Documents Vault section */}
-                            <div className="bg-gray-50/50 rounded-xl p-3 border border-white/10 space-y-2 mt-4">
+                            <div className="bg-white/5/50 rounded-xl p-3 border border-white/10 space-y-2 mt-4">
                               <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-2">
                                   <FileText className="w-4 h-4 text-[#13B5EA] flex-shrink-0" />
@@ -1025,7 +1025,7 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
                                       value={docText}
                                       onChange={(e) => setDocText(e.target.value)}
                                       onKeyDown={(e) => e.key === 'Enter' && handleAddDocument(item.id)}
-                                      className="px-2 py-0.5 text-xs border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-[#13B5EA] w-48"
+                                      className="px-2 py-0.5 text-xs border border-white/10 rounded focus:outline-none focus:ring-1 focus:ring-[#13B5EA] w-48"
                                     />
                                     <Button size="sm" className="h-6 px-2 bg-green-600 hover:bg-green-700 text-white text-[10px]" onClick={() => handleAddDocument(item.id)}>
                                       Add
@@ -1051,14 +1051,14 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
                               ) : (
                                 <ul className="ml-6 space-y-1.5">
                                   {item.documents.map((doc, docIndex) => (
-                                    <li key={docIndex} className="text-xs text-slate-300 flex items-center justify-between group/doc py-0.5 hover:bg-gray-100/50 px-2 rounded">
+                                    <li key={docIndex} className="text-xs text-slate-300 flex items-center justify-between group/doc py-0.5 hover:bg-white/5/50 px-2 rounded">
                                       <span className="flex items-center gap-2 truncate">
                                         <div className="w-1.5 h-1.5 bg-[#13B5EA] rounded-full flex-shrink-0"></div>
                                         <span className="truncate">{doc}</span>
                                       </span>
                                       <button 
                                         onClick={() => handleDeleteDocument(item.id, docIndex)}
-                                        className="text-slate-400 hover:text-red-600 opacity-0 group-hover/doc:opacity-100 transition-opacity ml-2"
+                                        className="text-slate-400 hover:text-red-400 opacity-0 group-hover/doc:opacity-100 transition-opacity ml-2"
                                         title="Delete Document"
                                       >
                                         <Trash2 className="w-3.5 h-3.5" />
@@ -1074,7 +1074,7 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
                             <Button 
                               variant="ghost" 
                               size="sm" 
-                              className="text-slate-400 hover:text-red-600 hover:bg-red-50 p-2 rounded-lg"
+                              className="text-slate-400 hover:text-red-400 hover:bg-red-500/10 p-2 rounded-lg"
                               onClick={() => handleDeleteRequirement(item.id)}
                               title="Delete requirement"
                             >
@@ -1101,34 +1101,34 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
           </CardHeader>
           <CardContent className="p-6">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              <div className="bg-[#1e293b] rounded-xl p-5 border border-green-100 shadow-sm">
+              <div className="bg-[#1e293b] rounded-xl p-5 border border-green-500/20 shadow-sm">
                 <div className="flex items-center gap-3 mb-2">
-                  <CheckCircle className="w-6 h-6 text-green-600" />
+                  <CheckCircle className="w-6 h-6 text-green-400" />
                   <span className="text-sm font-semibold text-slate-300">Completed Obligations</span>
                 </div>
-                <div className="text-4xl font-black text-green-600">{completedRequirements}</div>
+                <div className="text-4xl font-black text-green-400">{completedRequirements}</div>
                 <div className="text-xs text-slate-400 mt-1 font-medium">
                   {totalRequirements > 0 ? ((completedRequirements / totalRequirements) * 100).toFixed(1) : 0}% of total
                 </div>
               </div>
 
-              <div className="bg-[#1e293b] rounded-xl p-5 border border-amber-100 shadow-sm">
+              <div className="bg-[#1e293b] rounded-xl p-5 border border-amber-500/20 shadow-sm">
                 <div className="flex items-center gap-3 mb-2">
-                  <Clock className="w-6 h-6 text-amber-600" />
+                  <Clock className="w-6 h-6 text-amber-400" />
                   <span className="text-sm font-semibold text-slate-300">In Progress</span>
                 </div>
-                <div className="text-4xl font-black text-amber-600">{inProgressRequirements}</div>
+                <div className="text-4xl font-black text-amber-400">{inProgressRequirements}</div>
                 <div className="text-xs text-slate-400 mt-1 font-medium">
                   {totalRequirements > 0 ? ((inProgressRequirements / totalRequirements) * 100).toFixed(1) : 0}% of total
                 </div>
               </div>
 
-              <div className="bg-[#1e293b] rounded-xl p-5 border border-red-100 shadow-sm">
+              <div className="bg-[#1e293b] rounded-xl p-5 border border-red-500/20 shadow-sm">
                 <div className="flex items-center gap-3 mb-2">
-                  <XCircle className="w-6 h-6 text-red-600" />
+                  <XCircle className="w-6 h-6 text-red-400" />
                   <span className="text-sm font-semibold text-slate-300">Pending Actions</span>
                 </div>
-                <div className="text-4xl font-black text-red-600">{pendingRequirements}</div>
+                <div className="text-4xl font-black text-red-400">{pendingRequirements}</div>
                 <div className="text-xs text-slate-400 mt-1 font-medium">
                   {totalRequirements > 0 ? ((pendingRequirements / totalRequirements) * 100).toFixed(1) : 0}% of total
                 </div>

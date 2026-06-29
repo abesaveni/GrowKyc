@@ -231,13 +231,13 @@ export function AuctionRoom({ onBack }: AuctionRoomProps) {
           onClick={prevImage}
           className="absolute left-6 top-1/2 -translate-y-1/2 p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-xl hover:bg-white transition-colors"
         >
-          <ChevronLeft className="w-6 h-6 text-gray-900" />
+          <ChevronLeft className="w-6 h-6 text-slate-100" />
         </button>
         <button
           onClick={nextImage}
           className="absolute right-6 top-1/2 -translate-y-1/2 p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-xl hover:bg-white transition-colors"
         >
-          <ChevronRight className="w-6 h-6 text-gray-900" />
+          <ChevronRight className="w-6 h-6 text-slate-100" />
         </button>
 
         {/* Property Info Overlay */}
@@ -322,69 +322,69 @@ export function AuctionRoom({ onBack }: AuctionRoomProps) {
           <TabsContent value="auction" className="space-y-6">
             {/* Critical Loan Metrics - Top Dashboard */}
             <div className="grid grid-cols-1 md:grid-cols-6 gap-4">
-              <Card className="bg-gradient-to-br from-red-50 to-white border-2 border-red-200">
+              <Card className="bg-gradient-to-br from-red-50 to-white border-2 border-red-500/30">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <AlertTriangle className="w-5 h-5 text-red-600" />
-                    <p className="text-xs font-medium text-gray-600">Days in Default</p>
+                    <AlertTriangle className="w-5 h-5 text-red-400" />
+                    <p className="text-xs font-medium text-slate-300">Days in Default</p>
                   </div>
-                  <p className="text-3xl font-bold text-red-600">{loanMetrics.daysInDefault}</p>
-                  <p className="text-xs text-gray-500 mt-1">Critical status</p>
+                  <p className="text-3xl font-bold text-red-400">{loanMetrics.daysInDefault}</p>
+                  <p className="text-xs text-slate-400 mt-1">Critical status</p>
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-br from-amber-50 to-white border-2 border-amber-200">
+              <Card className="bg-gradient-to-br from-amber-50 to-white border-2 border-amber-500/30">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <Calendar className="w-5 h-5 text-amber-600" />
-                    <p className="text-xs font-medium text-gray-600">Days in Arrears</p>
+                    <Calendar className="w-5 h-5 text-amber-400" />
+                    <p className="text-xs font-medium text-slate-300">Days in Arrears</p>
                   </div>
-                  <p className="text-3xl font-bold text-amber-600">{loanMetrics.daysInArrears}</p>
-                  <p className="text-xs text-gray-500 mt-1">{loanMetrics.missedPayments} missed payments</p>
+                  <p className="text-3xl font-bold text-amber-400">{loanMetrics.daysInArrears}</p>
+                  <p className="text-xs text-slate-400 mt-1">{loanMetrics.missedPayments} missed payments</p>
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-br from-blue-50 to-white border-2 border-blue-200">
+              <Card className="bg-gradient-to-br from-blue-50 to-white border-2 border-blue-500/30">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <TrendingUp className="w-5 h-5 text-blue-600" />
-                    <p className="text-xs font-medium text-gray-600">Interest Rate</p>
+                    <TrendingUp className="w-5 h-5 text-blue-400" />
+                    <p className="text-xs font-medium text-slate-300">Interest Rate</p>
                   </div>
-                  <p className="text-3xl font-bold text-blue-600">{loanMetrics.interestRate}%</p>
-                  <p className="text-xs text-gray-500 mt-1">Original rate</p>
+                  <p className="text-3xl font-bold text-blue-400">{loanMetrics.interestRate}%</p>
+                  <p className="text-xs text-slate-400 mt-1">Original rate</p>
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-br from-purple-50 to-white border-2 border-purple-200">
+              <Card className="bg-gradient-to-br from-purple-50 to-white border-2 border-purple-500/30">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <TrendingDown className="w-5 h-5 text-purple-600" />
-                    <p className="text-xs font-medium text-gray-600">Default Rate</p>
+                    <TrendingDown className="w-5 h-5 text-purple-400" />
+                    <p className="text-xs font-medium text-slate-300">Default Rate</p>
                   </div>
-                  <p className="text-3xl font-bold text-purple-600">{loanMetrics.defaultRate}%</p>
-                  <p className="text-xs text-gray-500 mt-1">Current penalty rate</p>
+                  <p className="text-3xl font-bold text-purple-400">{loanMetrics.defaultRate}%</p>
+                  <p className="text-xs text-slate-400 mt-1">Current penalty rate</p>
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-br from-green-50 to-white border-2 border-green-200">
+              <Card className="bg-gradient-to-br from-green-50 to-white border-2 border-green-500/30">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <Target className="w-5 h-5 text-green-600" />
-                    <p className="text-xs font-medium text-gray-600">LVR</p>
+                    <Target className="w-5 h-5 text-green-400" />
+                    <p className="text-xs font-medium text-slate-300">LVR</p>
                   </div>
-                  <p className="text-3xl font-bold text-green-600">{loanMetrics.loanToValue}%</p>
-                  <p className="text-xs text-gray-500 mt-1">Loan to value</p>
+                  <p className="text-3xl font-bold text-green-400">{loanMetrics.loanToValue}%</p>
+                  <p className="text-xs text-slate-400 mt-1">Loan to value</p>
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-br from-indigo-50 to-white border-2 border-indigo-200">
+              <Card className="bg-gradient-to-br from-indigo-50 to-white border-2 border-indigo-500/30">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <DollarSign className="w-5 h-5 text-indigo-600" />
-                    <p className="text-xs font-medium text-gray-600">Total Arrears</p>
+                    <DollarSign className="w-5 h-5 text-indigo-400" />
+                    <p className="text-xs font-medium text-slate-300">Total Arrears</p>
                   </div>
-                  <p className="text-3xl font-bold text-indigo-600">A${(loanMetrics.totalArrears / 1000).toFixed(0)}k</p>
-                  <p className="text-xs text-gray-500 mt-1">Outstanding</p>
+                  <p className="text-3xl font-bold text-indigo-400">A${(loanMetrics.totalArrears / 1000).toFixed(0)}k</p>
+                  <p className="text-xs text-slate-400 mt-1">Outstanding</p>
                 </CardContent>
               </Card>
             </div>
@@ -404,41 +404,41 @@ export function AuctionRoom({ onBack }: AuctionRoomProps) {
                   <CardContent className="p-6">
                     <div className="grid grid-cols-2 gap-6">
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Original Loan Amount</p>
-                        <p className="text-2xl font-bold text-gray-900">A${loanMetrics.originalLoanAmount.toLocaleString()}</p>
+                        <p className="text-sm text-slate-300 mb-1">Original Loan Amount</p>
+                        <p className="text-2xl font-bold text-slate-100">A${loanMetrics.originalLoanAmount.toLocaleString()}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Outstanding Debt</p>
-                        <p className="text-2xl font-bold text-gray-900">A${loanMetrics.outstandingDebt.toLocaleString()}</p>
+                        <p className="text-sm text-slate-300 mb-1">Outstanding Debt</p>
+                        <p className="text-2xl font-bold text-slate-100">A${loanMetrics.outstandingDebt.toLocaleString()}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Last Payment Date</p>
-                        <p className="text-lg font-semibold text-gray-900">
+                        <p className="text-sm text-slate-300 mb-1">Last Payment Date</p>
+                        <p className="text-lg font-semibold text-slate-100">
                           {format(loanMetrics.lastPaymentDate, 'dd MMM yyyy')}
                         </p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Last Payment Amount</p>
-                        <p className="text-lg font-semibold text-gray-900">A${loanMetrics.lastPaymentAmount.toLocaleString()}</p>
+                        <p className="text-sm text-slate-300 mb-1">Last Payment Amount</p>
+                        <p className="text-lg font-semibold text-slate-100">A${loanMetrics.lastPaymentAmount.toLocaleString()}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Property Valuation</p>
-                        <p className="text-2xl font-bold text-green-600">A${property.valuation.amount.toLocaleString()}</p>
+                        <p className="text-sm text-slate-300 mb-1">Property Valuation</p>
+                        <p className="text-2xl font-bold text-green-400">A${property.valuation.amount.toLocaleString()}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Equity Available</p>
-                        <p className="text-2xl font-bold text-green-600">
+                        <p className="text-sm text-slate-300 mb-1">Equity Available</p>
+                        <p className="text-2xl font-bold text-green-400">
                           A${(property.valuation.amount - loanMetrics.outstandingDebt).toLocaleString()}
                         </p>
                       </div>
                     </div>
 
-                    <div className="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+                    <div className="mt-6 p-4 bg-amber-500/10 border border-amber-500/30 rounded-lg">
                       <div className="flex items-start gap-3">
-                        <Shield className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                        <Shield className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
                         <div>
-                          <p className="text-sm font-semibold text-gray-900 mb-1">Risk Assessment</p>
-                          <p className="text-sm text-gray-700">
+                          <p className="text-sm font-semibold text-slate-100 mb-1">Risk Assessment</p>
+                          <p className="text-sm text-slate-300">
                             This loan is {loanMetrics.daysInDefault} days in default with {loanMetrics.missedPayments} missed payments. 
                             Current LVR of {loanMetrics.loanToValue}% provides adequate security. Property valuation is current as of {format(property.valuation.date, 'MMM yyyy')}.
                           </p>
@@ -459,28 +459,28 @@ export function AuctionRoom({ onBack }: AuctionRoomProps) {
                   <CardContent className="p-6">
                     <div className="grid grid-cols-2 gap-6">
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Property Type</p>
-                        <p className="text-lg font-semibold text-gray-900">{property.property.propertyType}</p>
+                        <p className="text-sm text-slate-300 mb-1">Property Type</p>
+                        <p className="text-lg font-semibold text-slate-100">{property.property.propertyType}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Land Size</p>
-                        <p className="text-lg font-semibold text-gray-900">{property.property.landSize} m²</p>
+                        <p className="text-sm text-slate-300 mb-1">Land Size</p>
+                        <p className="text-lg font-semibold text-slate-100">{property.property.landSize} m²</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Bedrooms</p>
-                        <p className="text-lg font-semibold text-gray-900">{property.property.bedrooms}</p>
+                        <p className="text-sm text-slate-300 mb-1">Bedrooms</p>
+                        <p className="text-lg font-semibold text-slate-100">{property.property.bedrooms}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Bathrooms</p>
-                        <p className="text-lg font-semibold text-gray-900">{property.property.bathrooms}</p>
+                        <p className="text-sm text-slate-300 mb-1">Bathrooms</p>
+                        <p className="text-lg font-semibold text-slate-100">{property.property.bathrooms}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Parking</p>
-                        <p className="text-lg font-semibold text-gray-900">{property.property.parking}</p>
+                        <p className="text-sm text-slate-300 mb-1">Parking</p>
+                        <p className="text-lg font-semibold text-slate-100">{property.property.parking}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Valuer</p>
-                        <p className="text-lg font-semibold text-gray-900">{property.valuation.valuerName}</p>
+                        <p className="text-sm text-slate-300 mb-1">Valuer</p>
+                        <p className="text-lg font-semibold text-slate-100">{property.valuation.valuerName}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -497,8 +497,8 @@ export function AuctionRoom({ onBack }: AuctionRoomProps) {
                   <CardContent className="p-6">
                     <div className="space-y-4">
                       <div>
-                        <h4 className="font-semibold text-gray-900 mb-2">Reason for MIP Status</h4>
-                        <p className="text-gray-700 leading-relaxed">
+                        <h4 className="font-semibold text-slate-100 mb-2">Reason for MIP Status</h4>
+                        <p className="text-slate-300 leading-relaxed">
                           This property has entered mortgage in possession status due to payment default on the secured loan. 
                           The borrower has been in arrears for {loanMetrics.daysInArrears} days and in formal default for {loanMetrics.daysInDefault} days, 
                           with {loanMetrics.missedPayments} consecutive missed monthly payments totaling A${loanMetrics.totalArrears.toLocaleString()} in arrears.
@@ -507,33 +507,33 @@ export function AuctionRoom({ onBack }: AuctionRoomProps) {
 
                       <div className="grid grid-cols-2 gap-4 pt-4 border-t">
                         <div>
-                          <p className="text-sm text-gray-600 mb-1">Last Payment Made</p>
-                          <p className="text-lg font-semibold text-gray-900">{format(loanMetrics.lastPaymentDate, 'dd MMM yyyy')}</p>
-                          <p className="text-sm text-gray-600">Amount: A${loanMetrics.lastPaymentAmount.toLocaleString()}</p>
+                          <p className="text-sm text-slate-300 mb-1">Last Payment Made</p>
+                          <p className="text-lg font-semibold text-slate-100">{format(loanMetrics.lastPaymentDate, 'dd MMM yyyy')}</p>
+                          <p className="text-sm text-slate-300">Amount: A${loanMetrics.lastPaymentAmount.toLocaleString()}</p>
                         </div>
                         <div>
-                          <p className="text-sm text-gray-600 mb-1">Default Notice Issued</p>
-                          <p className="text-lg font-semibold text-gray-900">{format(new Date(loanMetrics.lastPaymentDate.getTime() + 45 * 24 * 60 * 60 * 1000), 'dd MMM yyyy')}</p>
-                          <p className="text-sm text-gray-600">Formal enforcement commenced</p>
+                          <p className="text-sm text-slate-300 mb-1">Default Notice Issued</p>
+                          <p className="text-lg font-semibold text-slate-100">{format(new Date(loanMetrics.lastPaymentDate.getTime() + 45 * 24 * 60 * 60 * 1000), 'dd MMM yyyy')}</p>
+                          <p className="text-sm text-slate-300">Formal enforcement commenced</p>
                         </div>
                         <div>
-                          <p className="text-sm text-gray-600 mb-1">Total Arrears</p>
-                          <p className="text-lg font-semibold text-gray-900">A${loanMetrics.totalArrears.toLocaleString()}</p>
-                          <p className="text-sm text-gray-600">{loanMetrics.missedPayments} missed payments</p>
+                          <p className="text-sm text-slate-300 mb-1">Total Arrears</p>
+                          <p className="text-lg font-semibold text-slate-100">A${loanMetrics.totalArrears.toLocaleString()}</p>
+                          <p className="text-sm text-slate-300">{loanMetrics.missedPayments} missed payments</p>
                         </div>
                         <div>
-                          <p className="text-sm text-gray-600 mb-1">Default Interest Rate</p>
-                          <p className="text-lg font-semibold text-gray-900">{loanMetrics.defaultRate}% p.a.</p>
-                          <p className="text-sm text-gray-600">Additional {(loanMetrics.defaultRate - loanMetrics.interestRate).toFixed(2)}% penalty</p>
+                          <p className="text-sm text-slate-300 mb-1">Default Interest Rate</p>
+                          <p className="text-lg font-semibold text-slate-100">{loanMetrics.defaultRate}% p.a.</p>
+                          <p className="text-sm text-slate-300">Additional {(loanMetrics.defaultRate - loanMetrics.interestRate).toFixed(2)}% penalty</p>
                         </div>
                       </div>
 
-                      <div className="mt-4 p-4 bg-gray-50 border border-gray-200 rounded-lg">
-                        <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
-                          <Shield className="w-4 h-4 text-blue-600" />
+                      <div className="mt-4 p-4 bg-white/5 border border-white/10 rounded-lg">
+                        <h4 className="font-semibold text-slate-100 mb-2 flex items-center gap-2">
+                          <Shield className="w-4 h-4 text-blue-400" />
                           Legal Process & Timeline
                         </h4>
-                        <ul className="text-sm text-gray-700 space-y-2">
+                        <ul className="text-sm text-slate-300 space-y-2">
                           <li>✓ Pre-litigation demand letter sent and expired</li>
                           <li>✓ Section 57(2)(b) default notice issued under National Credit Code</li>
                           <li>✓ Mortgagee possession proceedings initiated</li>
@@ -543,8 +543,8 @@ export function AuctionRoom({ onBack }: AuctionRoomProps) {
                       </div>
 
                       {property.nccpCompliance?.borrowerCooperation && (
-                        <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                          <p className="text-sm text-gray-700">
+                        <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+                          <p className="text-sm text-slate-300">
                             <strong>Borrower Status:</strong> {property.nccpCompliance.borrowerCooperation}. 
                             {property.nccpCompliance.possessionStatus && ` Property possession: ${property.nccpCompliance.possessionStatus}.`}
                           </p>
@@ -566,77 +566,77 @@ export function AuctionRoom({ onBack }: AuctionRoomProps) {
                     <div className="space-y-6">
                       {/* InfoTrack Checks */}
                       <div>
-                        <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                          <CheckCircle className="w-5 h-5 text-blue-600" />
+                        <h4 className="font-semibold text-slate-100 mb-3 flex items-center gap-2">
+                          <CheckCircle className="w-5 h-5 text-blue-400" />
                           InfoTrack Verification Suite
                         </h4>
                         <div className="grid grid-cols-2 gap-3">
-                          <div className={`p-3 rounded-lg border ${property.documentsTracking?.titleSearchCompleted ? 'bg-green-50 border-green-200' : 'bg-gray-50 border-gray-200'}`}>
+                          <div className={`p-3 rounded-lg border ${property.documentsTracking?.titleSearchCompleted ? 'bg-green-500/10 border-green-500/30' : 'bg-white/5 border-white/10'}`}>
                             <div className="flex items-center justify-between mb-1">
-                              <span className="text-sm font-semibold text-gray-900">Title Search</span>
+                              <span className="text-sm font-semibold text-slate-100">Title Search</span>
                               {property.documentsTracking?.titleSearchCompleted ? (
-                                <CheckCircle className="w-4 h-4 text-green-600" />
+                                <CheckCircle className="w-4 h-4 text-green-400" />
                               ) : (
                                 <div className="w-4 h-4 rounded-full border-2 border-gray-400" />
                               )}
                             </div>
-                            <p className="text-xs text-gray-600">
+                            <p className="text-xs text-slate-300">
                               {property.documentsTracking?.titleSearchCompleted ? 'Clean title confirmed' : 'Pending'}
                             </p>
                           </div>
 
-                          <div className={`p-3 rounded-lg border ${property.documentsTracking?.identityVerificationCompleted ? 'bg-green-50 border-green-200' : 'bg-gray-50 border-gray-200'}`}>
+                          <div className={`p-3 rounded-lg border ${property.documentsTracking?.identityVerificationCompleted ? 'bg-green-500/10 border-green-500/30' : 'bg-white/5 border-white/10'}`}>
                             <div className="flex items-center justify-between mb-1">
-                              <span className="text-sm font-semibold text-gray-900">Identity Verification</span>
+                              <span className="text-sm font-semibold text-slate-100">Identity Verification</span>
                               {property.documentsTracking?.identityVerificationCompleted ? (
-                                <CheckCircle className="w-4 h-4 text-green-600" />
+                                <CheckCircle className="w-4 h-4 text-green-400" />
                               ) : (
                                 <div className="w-4 h-4 rounded-full border-2 border-gray-400" />
                               )}
                             </div>
-                            <p className="text-xs text-gray-600">
+                            <p className="text-xs text-slate-300">
                               {property.documentsTracking?.identityVerificationCompleted ? 'All parties verified' : 'Pending'}
                             </p>
                           </div>
 
-                          <div className={`p-3 rounded-lg border ${property.documentsTracking?.encumbranceCheckCompleted ? 'bg-green-50 border-green-200' : 'bg-gray-50 border-gray-200'}`}>
+                          <div className={`p-3 rounded-lg border ${property.documentsTracking?.encumbranceCheckCompleted ? 'bg-green-500/10 border-green-500/30' : 'bg-white/5 border-white/10'}`}>
                             <div className="flex items-center justify-between mb-1">
-                              <span className="text-sm font-semibold text-gray-900">Encumbrance Check</span>
+                              <span className="text-sm font-semibold text-slate-100">Encumbrance Check</span>
                               {property.documentsTracking?.encumbranceCheckCompleted ? (
-                                <CheckCircle className="w-4 h-4 text-green-600" />
+                                <CheckCircle className="w-4 h-4 text-green-400" />
                               ) : (
                                 <div className="w-4 h-4 rounded-full border-2 border-gray-400" />
                               )}
                             </div>
-                            <p className="text-xs text-gray-600">
+                            <p className="text-xs text-slate-300">
                               {property.documentsTracking?.encumbranceCheckCompleted ? 'No secondary liens' : 'Pending'}
                             </p>
                           </div>
 
-                          <div className={`p-3 rounded-lg border ${property.documentsTracking?.zoningCheckCompleted ? 'bg-green-50 border-green-200' : 'bg-gray-50 border-gray-200'}`}>
+                          <div className={`p-3 rounded-lg border ${property.documentsTracking?.zoningCheckCompleted ? 'bg-green-500/10 border-green-500/30' : 'bg-white/5 border-white/10'}`}>
                             <div className="flex items-center justify-between mb-1">
-                              <span className="text-sm font-semibold text-gray-900">Zoning Check</span>
+                              <span className="text-sm font-semibold text-slate-100">Zoning Check</span>
                               {property.documentsTracking?.zoningCheckCompleted ? (
-                                <CheckCircle className="w-4 h-4 text-green-600" />
+                                <CheckCircle className="w-4 h-4 text-green-400" />
                               ) : (
                                 <div className="w-4 h-4 rounded-full border-2 border-gray-400" />
                               )}
                             </div>
-                            <p className="text-xs text-gray-600">
+                            <p className="text-xs text-slate-300">
                               {property.documentsTracking?.zoningCheckCompleted ? 'Compliant for use' : 'Pending'}
                             </p>
                           </div>
 
-                          <div className={`p-3 rounded-lg border ${property.documentsTracking?.environmentalCheckCompleted ? 'bg-green-50 border-green-200' : 'bg-gray-50 border-gray-200'}`}>
+                          <div className={`p-3 rounded-lg border ${property.documentsTracking?.environmentalCheckCompleted ? 'bg-green-500/10 border-green-500/30' : 'bg-white/5 border-white/10'}`}>
                             <div className="flex items-center justify-between mb-1">
-                              <span className="text-sm font-semibold text-gray-900">Environmental Check</span>
+                              <span className="text-sm font-semibold text-slate-100">Environmental Check</span>
                               {property.documentsTracking?.environmentalCheckCompleted ? (
-                                <CheckCircle className="w-4 h-4 text-green-600" />
+                                <CheckCircle className="w-4 h-4 text-green-400" />
                               ) : (
                                 <div className="w-4 h-4 rounded-full border-2 border-gray-400" />
                               )}
                             </div>
-                            <p className="text-xs text-gray-600">
+                            <p className="text-xs text-slate-300">
                               {property.documentsTracking?.environmentalCheckCompleted ? 'No risks identified' : 'Pending'}
                             </p>
                           </div>
@@ -645,83 +645,83 @@ export function AuctionRoom({ onBack }: AuctionRoomProps) {
 
                       {/* Additional Checks */}
                       <div className="pt-4 border-t">
-                        <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                          <FileText className="w-5 h-5 text-indigo-600" />
+                        <h4 className="font-semibold text-slate-100 mb-3 flex items-center gap-2">
+                          <FileText className="w-5 h-5 text-indigo-400" />
                           Additional Verification
                         </h4>
                         <div className="grid grid-cols-3 gap-3">
-                          <div className={`p-3 rounded-lg border ${property.infoTrackChecksCompleted ? 'bg-green-50 border-green-200' : 'bg-gray-50 border-gray-200'}`}>
+                          <div className={`p-3 rounded-lg border ${property.infoTrackChecksCompleted ? 'bg-green-500/10 border-green-500/30' : 'bg-white/5 border-white/10'}`}>
                             <div className="flex items-center justify-between mb-1">
-                              <span className="text-sm font-semibold text-gray-900">InfoTrack Suite</span>
+                              <span className="text-sm font-semibold text-slate-100">InfoTrack Suite</span>
                               {property.infoTrackChecksCompleted ? (
-                                <CheckCircle className="w-4 h-4 text-green-600" />
+                                <CheckCircle className="w-4 h-4 text-green-400" />
                               ) : (
                                 <div className="w-4 h-4 rounded-full border-2 border-gray-400" />
                               )}
                             </div>
-                            <p className="text-xs text-gray-600">
+                            <p className="text-xs text-slate-300">
                               {property.infoTrackChecksCompleted ? '✓ Complete' : 'Pending'}
                             </p>
                           </div>
 
-                          <div className={`p-3 rounded-lg border ${property.automatedChecksCompleted ? 'bg-green-50 border-green-200' : 'bg-gray-50 border-gray-200'}`}>
+                          <div className={`p-3 rounded-lg border ${property.automatedChecksCompleted ? 'bg-green-500/10 border-green-500/30' : 'bg-white/5 border-white/10'}`}>
                             <div className="flex items-center justify-between mb-1">
-                              <span className="text-sm font-semibold text-gray-900">Automated Checks</span>
+                              <span className="text-sm font-semibold text-slate-100">Automated Checks</span>
                               {property.automatedChecksCompleted ? (
-                                <CheckCircle className="w-4 h-4 text-green-600" />
+                                <CheckCircle className="w-4 h-4 text-green-400" />
                               ) : (
                                 <div className="w-4 h-4 rounded-full border-2 border-gray-400" />
                               )}
                             </div>
-                            <p className="text-xs text-gray-600">
+                            <p className="text-xs text-slate-300">
                               {property.automatedChecksCompleted ? '✓ Validated' : 'Pending'}
                             </p>
                           </div>
 
-                          <div className={`p-3 rounded-lg border ${property.creditCheckCompleted ? 'bg-green-50 border-green-200' : 'bg-gray-50 border-gray-200'}`}>
+                          <div className={`p-3 rounded-lg border ${property.creditCheckCompleted ? 'bg-green-500/10 border-green-500/30' : 'bg-white/5 border-white/10'}`}>
                             <div className="flex items-center justify-between mb-1">
-                              <span className="text-sm font-semibold text-gray-900">Credit Check</span>
+                              <span className="text-sm font-semibold text-slate-100">Credit Check</span>
                               {property.creditCheckCompleted ? (
-                                <CheckCircle className="w-4 h-4 text-green-600" />
+                                <CheckCircle className="w-4 h-4 text-green-400" />
                               ) : (
                                 <div className="w-4 h-4 rounded-full border-2 border-gray-400" />
                               )}
                             </div>
-                            <p className="text-xs text-gray-600">
+                            <p className="text-xs text-slate-300">
                               {property.creditCheckCompleted ? '✓ Assessed' : 'Pending'}
                             </p>
                           </div>
 
-                          <div className={`p-3 rounded-lg border ${property.paymentVerified ? 'bg-green-50 border-green-200' : 'bg-gray-50 border-gray-200'}`}>
+                          <div className={`p-3 rounded-lg border ${property.paymentVerified ? 'bg-green-500/10 border-green-500/30' : 'bg-white/5 border-white/10'}`}>
                             <div className="flex items-center justify-between mb-1">
-                              <span className="text-sm font-semibold text-gray-900">Payment History</span>
+                              <span className="text-sm font-semibold text-slate-100">Payment History</span>
                               {property.paymentVerified ? (
-                                <CheckCircle className="w-4 h-4 text-green-600" />
+                                <CheckCircle className="w-4 h-4 text-green-400" />
                               ) : (
                                 <div className="w-4 h-4 rounded-full border-2 border-gray-400" />
                               )}
                             </div>
-                            <p className="text-xs text-gray-600">
+                            <p className="text-xs text-slate-300">
                               {property.paymentVerified ? '✓ Verified' : 'Pending'}
                             </p>
                           </div>
 
-                          <div className={`p-3 rounded-lg border ${property.valuation.amount > 0 ? 'bg-green-50 border-green-200' : 'bg-gray-50 border-gray-200'}`}>
+                          <div className={`p-3 rounded-lg border ${property.valuation.amount > 0 ? 'bg-green-500/10 border-green-500/30' : 'bg-white/5 border-white/10'}`}>
                             <div className="flex items-center justify-between mb-1">
-                              <span className="text-sm font-semibold text-gray-900">Valuation</span>
-                              <CheckCircle className="w-4 h-4 text-green-600" />
+                              <span className="text-sm font-semibold text-slate-100">Valuation</span>
+                              <CheckCircle className="w-4 h-4 text-green-400" />
                             </div>
-                            <p className="text-xs text-gray-600">
+                            <p className="text-xs text-slate-300">
                               Current as of {format(property.valuation.date, 'MMM yyyy')}
                             </p>
                           </div>
 
-                          <div className={`p-3 rounded-lg border ${property.status === 'in_auction' ? 'bg-green-50 border-green-200' : 'bg-gray-50 border-gray-200'}`}>
+                          <div className={`p-3 rounded-lg border ${property.status === 'in_auction' ? 'bg-green-500/10 border-green-500/30' : 'bg-white/5 border-white/10'}`}>
                             <div className="flex items-center justify-between mb-1">
-                              <span className="text-sm font-semibold text-gray-900">Legal Status</span>
-                              <CheckCircle className="w-4 h-4 text-green-600" />
+                              <span className="text-sm font-semibold text-slate-100">Legal Status</span>
+                              <CheckCircle className="w-4 h-4 text-green-400" />
                             </div>
-                            <p className="text-xs text-gray-600">
+                            <p className="text-xs text-slate-300">
                               Cleared for auction
                             </p>
                           </div>
@@ -730,21 +730,21 @@ export function AuctionRoom({ onBack }: AuctionRoomProps) {
 
                       {/* Document Completion Summary */}
                       <div className="pt-4 border-t">
-                        <h4 className="font-semibold text-gray-900 mb-3">Document Collection Status</h4>
+                        <h4 className="font-semibold text-slate-100 mb-3">Document Collection Status</h4>
                         <div className="bg-gradient-to-br from-indigo-50 to-purple-50 p-4 rounded-lg">
                           <div className="flex justify-between items-center mb-2">
-                            <span className="text-sm font-semibold text-gray-900">Overall Completion</span>
-                            <span className="text-lg font-bold text-indigo-600">
+                            <span className="text-sm font-semibold text-slate-100">Overall Completion</span>
+                            <span className="text-lg font-bold text-indigo-400">
                               {Math.round((Object.values(property.documentsTracking || {}).filter(Boolean).length / 13) * 100)}%
                             </span>
                           </div>
-                          <div className="w-full bg-gray-200 rounded-full h-3 mb-2">
+                          <div className="w-full bg-white/10 rounded-full h-3 mb-2">
                             <div 
                               className="bg-gradient-to-r from-indigo-600 to-purple-600 h-3 rounded-full transition-all"
                               style={{ width: `${(Object.values(property.documentsTracking || {}).filter(Boolean).length / 13) * 100}%` }}
                             />
                           </div>
-                          <p className="text-xs text-gray-600">
+                          <p className="text-xs text-slate-300">
                             {Object.values(property.documentsTracking || {}).filter(Boolean).length} of 13 documents collected and verified
                           </p>
                         </div>
@@ -764,54 +764,54 @@ export function AuctionRoom({ onBack }: AuctionRoomProps) {
                   <CardContent className="p-6">
                     <div className="grid grid-cols-2 gap-6">
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Lender Name</p>
-                        <p className="text-lg font-semibold text-gray-900">{loanMetrics.lenderName}</p>
+                        <p className="text-sm text-slate-300 mb-1">Lender Name</p>
+                        <p className="text-lg font-semibold text-slate-100">{loanMetrics.lenderName}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">ACL Number</p>
-                        <p className="text-lg font-semibold text-gray-900">{loanMetrics.lenderACL}</p>
+                        <p className="text-sm text-slate-300 mb-1">ACL Number</p>
+                        <p className="text-lg font-semibold text-slate-100">{loanMetrics.lenderACL}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Loan Start Date</p>
-                        <p className="text-lg font-semibold text-gray-900">{format(loanMetrics.loanStartDate, 'dd MMM yyyy')}</p>
+                        <p className="text-sm text-slate-300 mb-1">Loan Start Date</p>
+                        <p className="text-lg font-semibold text-slate-100">{format(loanMetrics.loanStartDate, 'dd MMM yyyy')}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Maturity Date</p>
-                        <p className="text-lg font-semibold text-gray-900">{format(loanMetrics.maturityDate, 'dd MMM yyyy')}</p>
+                        <p className="text-sm text-slate-300 mb-1">Maturity Date</p>
+                        <p className="text-lg font-semibold text-slate-100">{format(loanMetrics.maturityDate, 'dd MMM yyyy')}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Loan Term</p>
-                        <p className="text-lg font-semibold text-gray-900">{loanMetrics.loanTerm} years</p>
+                        <p className="text-sm text-slate-300 mb-1">Loan Term</p>
+                        <p className="text-lg font-semibold text-slate-100">{loanMetrics.loanTerm} years</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Repayment Type</p>
-                        <p className="text-lg font-semibold text-gray-900">{loanMetrics.repaymentType}</p>
+                        <p className="text-sm text-slate-300 mb-1">Repayment Type</p>
+                        <p className="text-lg font-semibold text-slate-100">{loanMetrics.repaymentType}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Monthly Payment</p>
-                        <p className="text-lg font-semibold text-gray-900">A${loanMetrics.monthlyRepayment.toLocaleString()}</p>
+                        <p className="text-sm text-slate-300 mb-1">Monthly Payment</p>
+                        <p className="text-lg font-semibold text-slate-100">A${loanMetrics.monthlyRepayment.toLocaleString()}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Loan Purpose</p>
-                        <p className="text-lg font-semibold text-gray-900">{loanMetrics.loanPurpose}</p>
+                        <p className="text-sm text-slate-300 mb-1">Loan Purpose</p>
+                        <p className="text-lg font-semibold text-slate-100">{loanMetrics.loanPurpose}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Security Type</p>
-                        <p className="text-lg font-semibold text-gray-900">{loanMetrics.securityType}</p>
+                        <p className="text-sm text-slate-300 mb-1">Security Type</p>
+                        <p className="text-lg font-semibold text-slate-100">{loanMetrics.securityType}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-600 mb-1">Contact Person</p>
-                        <p className="text-lg font-semibold text-gray-900">{loanMetrics.lenderContact}</p>
+                        <p className="text-sm text-slate-300 mb-1">Contact Person</p>
+                        <p className="text-lg font-semibold text-slate-100">{loanMetrics.lenderContact}</p>
                       </div>
                     </div>
 
                     {property.nccpCompliance?.subjectToNCCP && (
-                      <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                      <div className="mt-6 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
                         <div className="flex items-start gap-3">
-                          <Shield className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                          <Shield className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
                           <div>
-                            <p className="text-sm font-semibold text-gray-900 mb-1">NCCP Compliance</p>
-                            <p className="text-sm text-gray-700">
+                            <p className="text-sm font-semibold text-slate-100 mb-1">NCCP Compliance</p>
+                            <p className="text-sm text-slate-300">
                               This loan is subject to the National Consumer Credit Protection Act 2009. 
                               {property.nccpCompliance.loanPurpose && ` Loan Purpose: ${property.nccpCompliance.loanPurpose}.`}
                               {property.nccpCompliance.preContractualDisclosureProvided && ' Pre-contractual disclosure has been provided.'}
@@ -834,12 +834,12 @@ export function AuctionRoom({ onBack }: AuctionRoomProps) {
                   <CardContent className="p-6">
                     <div className="space-y-3">
                       {documents.map((doc, index) => (
-                        <div key={index} className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+                        <div key={index} className="flex items-center justify-between p-4 border rounded-lg hover:bg-white/5 transition-colors">
                           <div className="flex items-center gap-3">
                             <FileText className="w-5 h-5 text-gray-400" />
                             <div>
-                              <p className="font-semibold text-gray-900">{doc.name}</p>
-                              <p className="text-sm text-gray-500">{doc.type} • {doc.size}</p>
+                              <p className="font-semibold text-slate-100">{doc.name}</p>
+                              <p className="text-sm text-slate-400">{doc.type} • {doc.size}</p>
                             </div>
                           </div>
                           <div className="flex gap-2">
@@ -861,29 +861,29 @@ export function AuctionRoom({ onBack }: AuctionRoomProps) {
               {/* Right Column - 1/3 width */}
               <div className="space-y-6">
                 {/* Current Bid Status */}
-                <Card className="bg-gradient-to-br from-green-50 to-white border-2 border-green-200">
+                <Card className="bg-gradient-to-br from-green-50 to-white border-2 border-green-500/30">
                   <CardContent className="p-6">
                     <div className="text-center">
-                      <p className="text-sm text-gray-600 mb-2">Current Highest Bid</p>
-                      <p className="text-5xl font-bold text-green-600 mb-4">
+                      <p className="text-sm text-slate-300 mb-2">Current Highest Bid</p>
+                      <p className="text-5xl font-bold text-green-400 mb-4">
                         A${(loanMetrics.currentBid / 1000).toFixed(0)}k
                       </p>
-                      <div className="flex items-center justify-center gap-2 text-sm text-gray-600 mb-4">
+                      <div className="flex items-center justify-center gap-2 text-sm text-slate-300 mb-4">
                         <Users className="w-4 h-4" />
                         <span>{bidHistory.length} bids from {new Set(bidHistory.map(b => b.bidder)).size} bidders</span>
                       </div>
                       <div className="pt-4 border-t">
-                        <p className="text-sm text-gray-600 mb-1">Reserve Price</p>
-                        <p className="text-2xl font-bold text-gray-900">A${(loanMetrics.reservePrice / 1000).toFixed(0)}k</p>
-                        <p className="text-xs text-green-600 font-semibold mt-1">✓ Reserve Met</p>
+                        <p className="text-sm text-slate-300 mb-1">Reserve Price</p>
+                        <p className="text-2xl font-bold text-slate-100">A${(loanMetrics.reservePrice / 1000).toFixed(0)}k</p>
+                        <p className="text-xs text-green-400 font-semibold mt-1">✓ Reserve Met</p>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
 
                 {/* Place Bid */}
-                <Card className="border-2 border-indigo-200">
-                  <CardHeader className="border-b bg-indigo-50">
+                <Card className="border-2 border-indigo-500/30">
+                  <CardHeader className="border-b bg-indigo-500/10">
                     <CardTitle className="flex items-center gap-2">
                       <Gavel className="w-5 h-5 text-primary" />
                       Place Your Bid
@@ -892,11 +892,11 @@ export function AuctionRoom({ onBack }: AuctionRoomProps) {
                   <CardContent className="p-6">
                     <div className="space-y-4">
                       <div>
-                        <label className="text-sm font-medium text-gray-700 mb-2 block">
+                        <label className="text-sm font-medium text-slate-300 mb-2 block">
                           Bid Amount (AUD)
                         </label>
                         <div className="relative">
-                          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 font-semibold">A$</span>
+                          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 font-semibold">A$</span>
                           <Input
                             type="number"
                             value={bidAmount}
@@ -905,7 +905,7 @@ export function AuctionRoom({ onBack }: AuctionRoomProps) {
                             className="pl-10 text-lg font-semibold h-12"
                           />
                         </div>
-                        <p className="text-xs text-gray-500 mt-2">
+                        <p className="text-xs text-slate-400 mt-2">
                           Minimum increment: A$10,000 • Current bid: A${loanMetrics.currentBid.toLocaleString()}
                         </p>
                       </div>
@@ -956,11 +956,11 @@ export function AuctionRoom({ onBack }: AuctionRoomProps) {
 
                       <div className="pt-4 border-t space-y-2 text-sm">
                         <div className="flex justify-between">
-                          <span className="text-gray-600">Your bid:</span>
+                          <span className="text-slate-300">Your bid:</span>
                           <span className="font-semibold">A${bidAmount ? parseInt(bidAmount).toLocaleString() : '0'}</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-gray-600">Buyer premium (2%):</span>
+                          <span className="text-slate-300">Buyer premium (2%):</span>
                           <span className="font-semibold">A${bidAmount ? (parseInt(bidAmount) * 0.02).toLocaleString() : '0'}</span>
                         </div>
                         <div className="flex justify-between pt-2 border-t">
@@ -986,12 +986,12 @@ export function AuctionRoom({ onBack }: AuctionRoomProps) {
                         <div 
                           key={index} 
                           className={`p-3 border rounded-lg ${
-                            bid.isYou ? 'bg-indigo-50 border-indigo-200' : 'bg-white'
+                            bid.isYou ? 'bg-indigo-500/10 border-indigo-500/30' : 'bg-white'
                           }`}
                         >
                           <div className="flex justify-between items-start mb-2">
                             <div className="flex items-center gap-2">
-                              <span className={`font-semibold ${bid.isYou ? 'text-indigo-600' : 'text-gray-900'}`}>
+                              <span className={`font-semibold ${bid.isYou ? 'text-indigo-400' : 'text-slate-100'}`}>
                                 {bid.bidder}
                               </span>
                               {bid.isYou && (
@@ -1000,22 +1000,22 @@ export function AuctionRoom({ onBack }: AuctionRoomProps) {
                                 </span>
                               )}
                               {bid.status === 'winning' && (
-                                <CheckCircle className="w-4 h-4 text-green-600" />
+                                <CheckCircle className="w-4 h-4 text-green-400" />
                               )}
                             </div>
-                            <span className="text-xs text-gray-500">
+                            <span className="text-xs text-slate-400">
                               {format(bid.time, 'HH:mm')}
                             </span>
                           </div>
-                          <p className="text-lg font-bold text-gray-900">A${(bid.amount / 1000).toFixed(0)}k</p>
+                          <p className="text-lg font-bold text-slate-100">A${(bid.amount / 1000).toFixed(0)}k</p>
                           <div className="flex items-center justify-between mt-1">
                             <p className={`text-xs font-semibold ${
-                              bid.status === 'winning' ? 'text-green-600' : 'text-gray-500'
+                              bid.status === 'winning' ? 'text-green-400' : 'text-slate-400'
                             }`}>
                               {bid.status === 'winning' ? '✓ Winning' : 'Outbid'}
                             </p>
                             {index < bidHistory.length - 1 && (
-                              <p className="text-xs text-gray-500">
+                              <p className="text-xs text-slate-400">
                                 +A${((bid.amount - bidHistory[index + 1].amount) / 1000).toFixed(0)}k
                               </p>
                             )}
@@ -1027,27 +1027,27 @@ export function AuctionRoom({ onBack }: AuctionRoomProps) {
                 </Card>
 
                 {/* Investment Summary */}
-                <Card className="bg-gradient-to-br from-indigo-50 to-white border-2 border-indigo-200">
+                <Card className="bg-gradient-to-br from-indigo-50 to-white border-2 border-indigo-500/30">
                   <CardHeader className="border-b">
                     <CardTitle className="text-lg">Investment Summary</CardTitle>
                   </CardHeader>
                   <CardContent className="p-6">
                     <div className="space-y-3 text-sm">
                       <div className="flex justify-between">
-                        <span className="text-gray-600">Expected ROI:</span>
-                        <span className="font-bold text-green-600">12.4%</span>
+                        <span className="text-slate-300">Expected ROI:</span>
+                        <span className="font-bold text-green-400">12.4%</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-600">Recovery Rate:</span>
+                        <span className="text-slate-300">Recovery Rate:</span>
                         <span className="font-bold">87.5%</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-600">Time to Settlement:</span>
+                        <span className="text-slate-300">Time to Settlement:</span>
                         <span className="font-bold">45-60 days</span>
                       </div>
                       <div className="flex justify-between pt-3 border-t">
-                        <span className="text-gray-600">Risk Level:</span>
-                        <span className="px-2 py-1 bg-amber-100 text-amber-800 rounded text-xs font-semibold">Medium</span>
+                        <span className="text-slate-300">Risk Level:</span>
+                        <span className="px-2 py-1 bg-amber-500/15 text-amber-300 rounded text-xs font-semibold">Medium</span>
                       </div>
                     </div>
                   </CardContent>

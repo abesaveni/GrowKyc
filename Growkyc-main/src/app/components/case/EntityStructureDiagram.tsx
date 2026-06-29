@@ -54,7 +54,7 @@ export function EntityStructureDiagram({
     <div className="flex flex-col items-center gap-6 py-8">
       {/* Main Borrower */}
       <div className="flex flex-col items-center">
-        <div className="text-xs text-gray-500 mb-2 uppercase font-semibold">Borrowing Entity</div>
+        <div className="text-xs text-slate-400 mb-2 uppercase font-semibold">Borrowing Entity</div>
         <div className="bg-gradient-to-br from-indigo-500 to-blue-600 text-white p-6 rounded-xl shadow-lg border-4 border-indigo-300 min-w-[280px]">
           <div className="flex items-center gap-3 mb-2">
             <User className="w-6 h-6" />
@@ -75,7 +75,7 @@ export function EntityStructureDiagram({
           </div>
           
           <div className="flex flex-col items-center">
-            <div className="text-xs text-gray-500 mb-3 uppercase font-semibold">Guarantors ({guarantors.length})</div>
+            <div className="text-xs text-slate-400 mb-3 uppercase font-semibold">Guarantors ({guarantors.length})</div>
             <div className="flex flex-wrap gap-4 justify-center max-w-4xl">
               {guarantors.map((guarantor, idx) => (
                 <div key={idx} className="bg-gradient-to-br from-teal-500 to-cyan-600 text-white p-4 rounded-lg shadow-md border-2 border-teal-300 min-w-[220px]">
@@ -110,15 +110,15 @@ export function EntityStructureDiagram({
           </div>
           
           <div className="flex flex-col items-center w-full max-w-md">
-            <div className="text-xs text-gray-500 mb-3 uppercase font-semibold">Guarantors</div>
-            <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 w-full bg-gray-50/50">
+            <div className="text-xs text-slate-400 mb-3 uppercase font-semibold">Guarantors</div>
+            <div className="border-2 border-dashed border-white/10 rounded-lg p-6 w-full bg-white/5/50">
               <div className="flex flex-col items-center gap-3 text-center">
-                <div className="bg-gray-200 rounded-full p-3">
+                <div className="bg-white/10 rounded-full p-3">
                   <Plus className="w-6 h-6 text-gray-400" />
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-gray-700 mb-1">No Guarantors Added</div>
-                  <div className="text-xs text-gray-500">
+                  <div className="text-sm font-semibold text-slate-300 mb-1">No Guarantors Added</div>
+                  <div className="text-xs text-slate-400">
                     Add guarantors if required for this borrowing entity
                   </div>
                 </div>
@@ -134,7 +134,7 @@ export function EntityStructureDiagram({
     <div className="flex flex-col items-center gap-6 py-8">
       {/* Company Entity */}
       <div className="flex flex-col items-center">
-        <div className="text-xs text-gray-500 mb-2 uppercase font-semibold">Borrowing Entity</div>
+        <div className="text-xs text-slate-400 mb-2 uppercase font-semibold">Borrowing Entity</div>
         <div className="bg-gradient-to-br from-purple-600 to-indigo-700 text-white p-6 rounded-xl shadow-lg border-4 border-purple-300 min-w-[320px]">
           <div className="flex items-center gap-3 mb-2">
             <Building2 className="w-7 h-7" />
@@ -158,7 +158,7 @@ export function EntityStructureDiagram({
             {/* Directors */}
             {directors.length > 0 ? (
               <div className="flex flex-col">
-                <div className="text-xs text-gray-500 mb-3 uppercase font-semibold text-center">
+                <div className="text-xs text-slate-400 mb-3 uppercase font-semibold text-center">
                   Directors ({directors.length})
                 </div>
                 <div className="space-y-3">
@@ -178,17 +178,17 @@ export function EntityStructureDiagram({
               </div>
             ) : (
               <div className="flex flex-col">
-                <div className="text-xs text-gray-500 mb-3 uppercase font-semibold text-center">
+                <div className="text-xs text-slate-400 mb-3 uppercase font-semibold text-center">
                   Directors
                 </div>
-                <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 bg-gray-50/50">
+                <div className="border-2 border-dashed border-white/10 rounded-lg p-6 bg-white/5/50">
                   <div className="flex flex-col items-center gap-2 text-center">
-                    <div className="bg-gray-200 rounded-full p-2">
+                    <div className="bg-white/10 rounded-full p-2">
                       <User className="w-5 h-5 text-gray-400" />
                     </div>
                     <div>
-                      <div className="text-sm font-semibold text-gray-700 mb-1">No Directors</div>
-                      <div className="text-xs text-gray-500">
+                      <div className="text-sm font-semibold text-slate-300 mb-1">No Directors</div>
+                      <div className="text-xs text-slate-400">
                         Add company directors
                       </div>
                     </div>
@@ -200,7 +200,7 @@ export function EntityStructureDiagram({
             {/* Shareholders */}
             {shareholders.length > 0 ? (
               <div className="flex flex-col">
-                <div className="text-xs text-gray-500 mb-3 uppercase font-semibold text-center">
+                <div className="text-xs text-slate-400 mb-3 uppercase font-semibold text-center">
                   Shareholders 25%+ ({shareholders.length})
                 </div>
                 <div className="space-y-3">
@@ -220,17 +220,17 @@ export function EntityStructureDiagram({
               </div>
             ) : (
               <div className="flex flex-col">
-                <div className="text-xs text-gray-500 mb-3 uppercase font-semibold text-center">
+                <div className="text-xs text-slate-400 mb-3 uppercase font-semibold text-center">
                   Shareholders 25%+
                 </div>
-                <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 bg-gray-50/50">
+                <div className="border-2 border-dashed border-white/10 rounded-lg p-6 bg-white/5/50">
                   <div className="flex flex-col items-center gap-2 text-center">
-                    <div className="bg-gray-200 rounded-full p-2">
+                    <div className="bg-white/10 rounded-full p-2">
                       <Users className="w-5 h-5 text-gray-400" />
                     </div>
                     <div>
-                      <div className="text-sm font-semibold text-gray-700 mb-1">No Shareholders</div>
-                      <div className="text-xs text-gray-500">
+                      <div className="text-sm font-semibold text-slate-300 mb-1">No Shareholders</div>
+                      <div className="text-xs text-slate-400">
                         Add shareholders with 25%+ ownership
                       </div>
                     </div>
@@ -247,14 +247,14 @@ export function EntityStructureDiagram({
           </div>
           
           <div className="flex flex-col items-center w-full max-w-md">
-            <div className="border-2 border-dashed border-amber-300 rounded-lg p-6 w-full bg-amber-50/50">
+            <div className="border-2 border-dashed border-amber-300 rounded-lg p-6 w-full bg-amber-500/10/50">
               <div className="flex flex-col items-center gap-3 text-center">
-                <div className="bg-amber-200 rounded-full p-3">
-                  <AlertCircle className="w-6 h-6 text-amber-600" />
+                <div className="bg-amber-500/20 rounded-full p-3">
+                  <AlertCircle className="w-6 h-6 text-amber-400" />
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-amber-900 mb-1">Company Structure Required</div>
-                  <div className="text-xs text-amber-700">
+                  <div className="text-sm font-semibold text-amber-300 mb-1">Company Structure Required</div>
+                  <div className="text-xs text-amber-300">
                     Please add directors and shareholders (25%+ ownership) to complete the company structure
                   </div>
                 </div>
@@ -272,7 +272,7 @@ export function EntityStructureDiagram({
           </div>
           
           <div className="flex flex-col items-center w-full">
-            <div className="text-xs text-gray-500 mb-3 uppercase font-semibold">Guarantors ({guarantors.length})</div>
+            <div className="text-xs text-slate-400 mb-3 uppercase font-semibold">Guarantors ({guarantors.length})</div>
             <div className="flex flex-wrap gap-4 justify-center max-w-4xl">
               {guarantors.map((guarantor, idx) => (
                 <div key={idx} className="bg-gradient-to-br from-teal-500 to-cyan-600 text-white p-4 rounded-lg shadow-md border-2 border-teal-300 min-w-[220px]">
@@ -306,15 +306,15 @@ export function EntityStructureDiagram({
           </div>
           
           <div className="flex flex-col items-center w-full max-w-md">
-            <div className="text-xs text-gray-500 mb-3 uppercase font-semibold">Guarantors</div>
-            <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 w-full bg-gray-50/50">
+            <div className="text-xs text-slate-400 mb-3 uppercase font-semibold">Guarantors</div>
+            <div className="border-2 border-dashed border-white/10 rounded-lg p-6 w-full bg-white/5/50">
               <div className="flex flex-col items-center gap-3 text-center">
-                <div className="bg-gray-200 rounded-full p-3">
+                <div className="bg-white/10 rounded-full p-3">
                   <Plus className="w-6 h-6 text-gray-400" />
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-gray-700 mb-1">No Guarantors Added</div>
-                  <div className="text-xs text-gray-500">
+                  <div className="text-sm font-semibold text-slate-300 mb-1">No Guarantors Added</div>
+                  <div className="text-xs text-slate-400">
                     Add guarantors if required for this borrowing entity
                   </div>
                 </div>
@@ -330,7 +330,7 @@ export function EntityStructureDiagram({
     <div className="flex flex-col items-center gap-6 py-8">
       {/* Trust Entity */}
       <div className="flex flex-col items-center">
-        <div className="text-xs text-gray-500 mb-2 uppercase font-semibold">Borrowing Entity</div>
+        <div className="text-xs text-slate-400 mb-2 uppercase font-semibold">Borrowing Entity</div>
         <div className="bg-gradient-to-br from-amber-500 to-orange-600 text-white p-6 rounded-xl shadow-lg border-4 border-amber-300 min-w-[320px]">
           <div className="flex items-center gap-3 mb-2">
             <Shield className="w-7 h-7" />
@@ -351,7 +351,7 @@ export function EntityStructureDiagram({
           </div>
           
           <div className="flex flex-col items-center w-full">
-            <div className="text-xs text-gray-500 mb-3 uppercase font-semibold">Trustees ({trustees.length})</div>
+            <div className="text-xs text-slate-400 mb-3 uppercase font-semibold">Trustees ({trustees.length})</div>
             <div className="flex flex-wrap gap-4 justify-center max-w-4xl">
               {trustees.map((trustee, idx) => (
                 <div key={idx} className="flex flex-col items-center">
@@ -398,15 +398,15 @@ export function EntityStructureDiagram({
           </div>
           
           <div className="flex flex-col items-center w-full max-w-md">
-            <div className="text-xs text-gray-500 mb-3 uppercase font-semibold">Trustees</div>
-            <div className="border-2 border-dashed border-amber-300 rounded-lg p-6 w-full bg-amber-50/50">
+            <div className="text-xs text-slate-400 mb-3 uppercase font-semibold">Trustees</div>
+            <div className="border-2 border-dashed border-amber-300 rounded-lg p-6 w-full bg-amber-500/10/50">
               <div className="flex flex-col items-center gap-3 text-center">
-                <div className="bg-amber-200 rounded-full p-3">
-                  <AlertCircle className="w-6 h-6 text-amber-600" />
+                <div className="bg-amber-500/20 rounded-full p-3">
+                  <AlertCircle className="w-6 h-6 text-amber-400" />
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-amber-900 mb-1">Trust Structure Required</div>
-                  <div className="text-xs text-amber-700">
+                  <div className="text-sm font-semibold text-amber-300 mb-1">Trust Structure Required</div>
+                  <div className="text-xs text-amber-300">
                     Please add at least one trustee (individual or corporate) to complete the trust structure
                   </div>
                 </div>
@@ -424,7 +424,7 @@ export function EntityStructureDiagram({
           </div>
           
           <div className="flex flex-col items-center w-full">
-            <div className="text-xs text-gray-500 mb-3 uppercase font-semibold">Guarantors ({guarantors.length})</div>
+            <div className="text-xs text-slate-400 mb-3 uppercase font-semibold">Guarantors ({guarantors.length})</div>
             <div className="flex flex-wrap gap-4 justify-center max-w-4xl">
               {guarantors.map((guarantor, idx) => (
                 <div key={idx} className="bg-gradient-to-br from-teal-500 to-cyan-600 text-white p-4 rounded-lg shadow-md border-2 border-teal-300 min-w-[220px]">
@@ -458,15 +458,15 @@ export function EntityStructureDiagram({
           </div>
           
           <div className="flex flex-col items-center w-full max-w-md">
-            <div className="text-xs text-gray-500 mb-3 uppercase font-semibold">Guarantors</div>
-            <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 w-full bg-gray-50/50">
+            <div className="text-xs text-slate-400 mb-3 uppercase font-semibold">Guarantors</div>
+            <div className="border-2 border-dashed border-white/10 rounded-lg p-6 w-full bg-white/5/50">
               <div className="flex flex-col items-center gap-3 text-center">
-                <div className="bg-gray-200 rounded-full p-3">
+                <div className="bg-white/10 rounded-full p-3">
                   <Plus className="w-6 h-6 text-gray-400" />
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-gray-700 mb-1">No Guarantors Added</div>
-                  <div className="text-xs text-gray-500">
+                  <div className="text-sm font-semibold text-slate-300 mb-1">No Guarantors Added</div>
+                  <div className="text-xs text-slate-400">
                     Add guarantors if required for this borrowing entity
                   </div>
                 </div>
@@ -495,24 +495,24 @@ export function EntityStructureDiagram({
         {entityType === 'trust' && renderTrustStructure()}
 
         {/* Legend */}
-        <div className="mt-8 pt-6 border-t border-gray-200">
-          <div className="text-xs text-gray-500 mb-3 uppercase font-semibold">Legend</div>
+        <div className="mt-8 pt-6 border-t border-white/10">
+          <div className="text-xs text-slate-400 mb-3 uppercase font-semibold">Legend</div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-green-600" />
-              <span className="text-gray-700">Verified</span>
+              <CheckCircle className="w-4 h-4 text-green-400" />
+              <span className="text-slate-300">Verified</span>
             </div>
             <div className="flex items-center gap-2">
-              <User className="w-4 h-4 text-gray-600" />
-              <span className="text-gray-700">Individual</span>
+              <User className="w-4 h-4 text-slate-300" />
+              <span className="text-slate-300">Individual</span>
             </div>
             <div className="flex items-center gap-2">
-              <Building2 className="w-4 h-4 text-gray-600" />
-              <span className="text-gray-700">Company</span>
+              <Building2 className="w-4 h-4 text-slate-300" />
+              <span className="text-slate-300">Company</span>
             </div>
             <div className="flex items-center gap-2">
-              <Shield className="w-4 h-4 text-gray-600" />
-              <span className="text-gray-700">Trust</span>
+              <Shield className="w-4 h-4 text-slate-300" />
+              <span className="text-slate-300">Trust</span>
             </div>
           </div>
         </div>

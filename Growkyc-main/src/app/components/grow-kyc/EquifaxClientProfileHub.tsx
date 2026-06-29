@@ -142,20 +142,20 @@ export function EquifaxClientProfileHub() {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'complete': return 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300';
-      case 'pending': return 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300';
-      case 'expired': return 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300';
-      case 'error': return 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300';
+      case 'complete': return 'bg-green-500/15 text-green-300 dark:bg-green-900 dark:text-green-300';
+      case 'pending': return 'bg-yellow-500/15 text-yellow-300 dark:bg-yellow-900 dark:text-yellow-300';
+      case 'expired': return 'bg-red-500/15 text-red-300 dark:bg-red-900 dark:text-red-300';
+      case 'error': return 'bg-red-500/15 text-red-300 dark:bg-red-900 dark:text-red-300';
       default: return 'bg-[#0f172a] text-slate-300 dark:bg-gray-800 dark:text-gray-300';
     }
   };
 
   const getRiskColor = (level: string) => {
     switch (level) {
-      case 'low': return 'text-green-600 dark:text-green-400';
-      case 'medium': return 'text-yellow-600 dark:text-yellow-400';
-      case 'high': return 'text-orange-600 dark:text-orange-400';
-      case 'critical': return 'text-red-600 dark:text-red-400';
+      case 'low': return 'text-green-400 dark:text-green-400';
+      case 'medium': return 'text-yellow-400 dark:text-yellow-400';
+      case 'high': return 'text-orange-400 dark:text-orange-400';
+      case 'critical': return 'text-red-400 dark:text-red-400';
       default: return 'text-slate-300 dark:text-slate-400';
     }
   };
@@ -269,7 +269,7 @@ export function EquifaxClientProfileHub() {
               </div>
             </div>
             <div className="text-right">
-              <Button variant="outline" className="bg-[#1e293b] text-[#0E7C9E] hover:bg-cyan-50">
+              <Button variant="outline" className="bg-[#1e293b] text-[#0E7C9E] hover:bg-cyan-500/10">
                 <Settings className="w-4 h-4 mr-2" />
                 Manage Integrations
               </Button>
@@ -290,7 +290,7 @@ export function EquifaxClientProfileHub() {
                   <span className="text-lg text-slate-400">/{Object.keys(clientProfile.modules).length}</span>
                 </div>
               </div>
-              <CheckCircle className="w-12 h-12 text-green-600" />
+              <CheckCircle className="w-12 h-12 text-green-400" />
             </div>
           </div>
 
@@ -302,7 +302,7 @@ export function EquifaxClientProfileHub() {
                   {Object.values(clientProfile.modules).reduce((sum, m) => sum + m.alerts, 0)}
                 </div>
               </div>
-              <Bell className="w-12 h-12 text-yellow-600" />
+              <Bell className="w-12 h-12 text-yellow-400" />
             </div>
           </div>
 
@@ -310,11 +310,11 @@ export function EquifaxClientProfileHub() {
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-sm text-slate-400 mb-1">Overall Risk</div>
-                <div className="text-3xl font-bold text-green-600">
+                <div className="text-3xl font-bold text-green-400">
                   Low
                 </div>
               </div>
-              <Shield className="w-12 h-12 text-blue-600" />
+              <Shield className="w-12 h-12 text-blue-400" />
             </div>
           </div>
 
@@ -327,7 +327,7 @@ export function EquifaxClientProfileHub() {
                 </div>
                 <div className="text-xs text-slate-400">2 hours ago</div>
               </div>
-              <Activity className="w-12 h-12 text-purple-600" />
+              <Activity className="w-12 h-12 text-purple-400" />
             </div>
           </div>
         </div>
@@ -377,7 +377,7 @@ export function EquifaxClientProfileHub() {
                 <div className="space-y-3">
                   <div className="flex items-center justify-between p-3 bg-[#0f172a] dark:bg-gray-900 rounded-lg">
                     <div className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      <CheckCircle className="w-5 h-5 text-green-400" />
                       <div>
                         <div className="text-sm font-semibold text-white dark:text-white">Identity Verified</div>
                         <div className="text-xs text-slate-400">Face match 96%, Document authentic</div>
@@ -387,7 +387,7 @@ export function EquifaxClientProfileHub() {
                   </div>
                   <div className="flex items-center justify-between p-3 bg-[#0f172a] dark:bg-gray-900 rounded-lg">
                     <div className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      <CheckCircle className="w-5 h-5 text-green-400" />
                       <div>
                         <div className="text-sm font-semibold text-white dark:text-white">Fraud Score: 12/100</div>
                         <div className="text-xs text-slate-400">Low risk - No indicators detected</div>
@@ -413,28 +413,28 @@ export function EquifaxClientProfileHub() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-purple-500">
                   <div className="flex items-center gap-2 mb-3">
-                    <User className="w-5 h-5 text-purple-600" />
+                    <User className="w-5 h-5 text-purple-400" />
                     <h3 className="font-bold text-white dark:text-white">PEP</h3>
                   </div>
-                  <div className="text-3xl font-bold text-green-600">Clear</div>
+                  <div className="text-3xl font-bold text-green-400">Clear</div>
                   <div className="text-xs text-slate-400 mt-1">No matches found</div>
                 </div>
                 
                 <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-red-500">
                   <div className="flex items-center gap-2 mb-3">
-                    <Shield className="w-5 h-5 text-red-600" />
+                    <Shield className="w-5 h-5 text-red-400" />
                     <h3 className="font-bold text-white dark:text-white">Sanctions</h3>
                   </div>
-                  <div className="text-3xl font-bold text-green-600">Clear</div>
+                  <div className="text-3xl font-bold text-green-400">Clear</div>
                   <div className="text-xs text-slate-400 mt-1">No matches found</div>
                 </div>
                 
                 <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-orange-500">
                   <div className="flex items-center gap-2 mb-3">
-                    <AlertTriangle className="w-5 h-5 text-orange-600" />
+                    <AlertTriangle className="w-5 h-5 text-orange-400" />
                     <h3 className="font-bold text-white dark:text-white">Watchlists</h3>
                   </div>
-                  <div className="text-3xl font-bold text-green-600">Clear</div>
+                  <div className="text-3xl font-bold text-green-400">Clear</div>
                   <div className="text-xs text-slate-400 mt-1">No hits detected</div>
                 </div>
               </div>
@@ -463,7 +463,7 @@ export function EquifaxClientProfileHub() {
                   </div>
                   <div>
                     <div className="text-sm text-slate-400 mb-2">Net Surplus</div>
-                    <div className="text-2xl font-bold text-green-600">$2,850</div>
+                    <div className="text-2xl font-bold text-green-400">$2,850</div>
                   </div>
                 </div>
               </div>
@@ -505,9 +505,9 @@ export function EquifaxClientProfileHub() {
                 </div>
                 
                 <div className="grid grid-cols-3 gap-4">
-                  <div className="p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                  <div className="p-3 bg-green-500/10 dark:bg-green-900/20 rounded-lg">
                     <div className="text-xs text-slate-300 dark:text-slate-400">Repayment History</div>
-                    <div className="text-lg font-bold text-green-600">Excellent</div>
+                    <div className="text-lg font-bold text-green-400">Excellent</div>
                   </div>
                   <div className="p-3 bg-[#0f172a] dark:bg-gray-900 rounded-lg">
                     <div className="text-xs text-slate-300 dark:text-slate-400">Defaults</div>
@@ -515,7 +515,7 @@ export function EquifaxClientProfileHub() {
                   </div>
                   <div className="p-3 bg-[#0f172a] dark:bg-gray-900 rounded-lg">
                     <div className="text-xs text-slate-300 dark:text-slate-400">Insolvency</div>
-                    <div className="text-lg font-bold text-green-600">None</div>
+                    <div className="text-lg font-bold text-green-400">None</div>
                   </div>
                 </div>
               </div>
@@ -557,7 +557,7 @@ export function EquifaxClientProfileHub() {
                       <input
                         type="text"
                         placeholder="Search evidence..."
-                        className="pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-[#1e293b] dark:bg-gray-700 text-white dark:text-white"
+                        className="pl-10 pr-4 py-2 border border-white/10 dark:border-gray-600 rounded-lg bg-[#1e293b] dark:bg-gray-700 text-white dark:text-white"
                       />
                     </div>
                     <Button variant="outline" size="sm">

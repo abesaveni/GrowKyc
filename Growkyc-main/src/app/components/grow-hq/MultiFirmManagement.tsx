@@ -76,8 +76,8 @@ export function MultiFirmManagement({ onBack }: { onBack: () => void }) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Multi-Firm Management</h1>
-          <p className="text-gray-600 mt-1">Manage multiple firms with isolated databases and white-label branding</p>
+          <h1 className="text-3xl font-bold text-slate-100">Multi-Firm Management</h1>
+          <p className="text-slate-300 mt-1">Manage multiple firms with isolated databases and white-label branding</p>
         </div>
         <div className="flex gap-3">
           <Button variant="outline" onClick={onBack}>
@@ -140,19 +140,19 @@ export function MultiFirmManagement({ onBack }: { onBack: () => void }) {
             <div className="p-6 space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <p className="text-sm text-gray-600 mb-1">Clients</p>
-                  <p className="text-2xl font-bold text-gray-900">{firm.clients}</p>
+                  <p className="text-sm text-slate-300 mb-1">Clients</p>
+                  <p className="text-2xl font-bold text-slate-100">{firm.clients}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600 mb-1">Revenue</p>
-                  <p className="text-2xl font-bold text-gray-900">
+                  <p className="text-sm text-slate-300 mb-1">Revenue</p>
+                  <p className="text-2xl font-bold text-slate-100">
                     ${(firm.revenue / 1000).toFixed(0)}K
                   </p>
                 </div>
               </div>
 
               <div>
-                <p className="text-sm text-gray-600 mb-2">Active Modules ({firm.modules.length})</p>
+                <p className="text-sm text-slate-300 mb-2">Active Modules ({firm.modules.length})</p>
                 <div className="flex flex-wrap gap-2">
                   {firm.modules.map((module) => (
                     <span key={module} className={`px-2 py-1 bg-${firm.color}-100 text-${firm.color}-700 text-xs font-semibold rounded`}>
@@ -164,8 +164,8 @@ export function MultiFirmManagement({ onBack }: { onBack: () => void }) {
 
               <div className="pt-4 border-t">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-sm text-gray-600">{firm.users} users</span>
-                  <span className={`px-2 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full`}>
+                  <span className="text-sm text-slate-300">{firm.users} users</span>
+                  <span className={`px-2 py-1 bg-green-500/15 text-green-300 text-xs font-bold rounded-full`}>
                     {firm.status.toUpperCase()}
                   </span>
                 </div>
@@ -187,8 +187,8 @@ export function MultiFirmManagement({ onBack }: { onBack: () => void }) {
 
       {/* Features Detail */}
       <div className="grid grid-cols-2 gap-6">
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-4">Database Isolation</h3>
+        <div className="bg-white rounded-lg border border-white/10 p-6">
+          <h3 className="text-xl font-bold text-slate-100 mb-4">Database Isolation</h3>
           <div className="space-y-3">
             {[
               { label: 'Separate Databases', value: 'Complete data isolation', icon: Database },
@@ -198,23 +198,23 @@ export function MultiFirmManagement({ onBack }: { onBack: () => void }) {
             ].map((item) => {
               const Icon = item.icon;
               return (
-                <div key={item.label} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                <div key={item.label} className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
                   <div className="flex items-center gap-3">
-                    <Icon className="w-5 h-5 text-blue-600" />
+                    <Icon className="w-5 h-5 text-blue-400" />
                     <div>
-                      <p className="font-semibold text-gray-900 text-sm">{item.label}</p>
-                      <p className="text-xs text-gray-600">{item.value}</p>
+                      <p className="font-semibold text-slate-100 text-sm">{item.label}</p>
+                      <p className="text-xs text-slate-300">{item.value}</p>
                     </div>
                   </div>
-                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  <CheckCircle className="w-5 h-5 text-green-400" />
                 </div>
               );
             })}
           </div>
         </div>
 
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-4">White Label Capabilities</h3>
+        <div className="bg-white rounded-lg border border-white/10 p-6">
+          <h3 className="text-xl font-bold text-slate-100 mb-4">White Label Capabilities</h3>
           <div className="space-y-3">
             {[
               { label: 'Custom Branding', value: 'Logo, colors, fonts', icon: Palette },
@@ -224,15 +224,15 @@ export function MultiFirmManagement({ onBack }: { onBack: () => void }) {
             ].map((item) => {
               const Icon = item.icon;
               return (
-                <div key={item.label} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                <div key={item.label} className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
                   <div className="flex items-center gap-3">
-                    <Icon className="w-5 h-5 text-purple-600" />
+                    <Icon className="w-5 h-5 text-purple-400" />
                     <div>
-                      <p className="font-semibold text-gray-900 text-sm">{item.label}</p>
-                      <p className="text-xs text-gray-600">{item.value}</p>
+                      <p className="font-semibold text-slate-100 text-sm">{item.label}</p>
+                      <p className="text-xs text-slate-300">{item.value}</p>
                     </div>
                   </div>
-                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  <CheckCircle className="w-5 h-5 text-green-400" />
                 </div>
               );
             })}
@@ -241,8 +241,8 @@ export function MultiFirmManagement({ onBack }: { onBack: () => void }) {
       </div>
 
       {/* Revenue Analytics */}
-      <div className="bg-white rounded-lg border border-gray-200 p-6">
-        <h3 className="text-xl font-bold text-gray-900 mb-4">Revenue Performance</h3>
+      <div className="bg-white rounded-lg border border-white/10 p-6">
+        <h3 className="text-xl font-bold text-slate-100 mb-4">Revenue Performance</h3>
         <div className="grid grid-cols-4 gap-4">
           {[
             { label: 'Total Revenue', value: '$2.61M', change: '+24%', color: 'green' },
@@ -251,8 +251,8 @@ export function MultiFirmManagement({ onBack }: { onBack: () => void }) {
             { label: 'Avg per Client', value: '$5,305', change: '+8%', color: 'orange' }
           ].map((metric) => (
             <div key={metric.label} className={`p-4 bg-${metric.color}-50 border-2 border-${metric.color}-200 rounded-lg`}>
-              <p className="text-sm text-gray-600 mb-1">{metric.label}</p>
-              <p className="text-2xl font-bold text-gray-900 mb-1">{metric.value}</p>
+              <p className="text-sm text-slate-300 mb-1">{metric.label}</p>
+              <p className="text-2xl font-bold text-slate-100 mb-1">{metric.value}</p>
               <div className="flex items-center gap-1">
                 <TrendingUp className={`w-4 h-4 text-${metric.color}-600`} />
                 <span className={`text-sm font-semibold text-${metric.color}-600`}>{metric.change}</span>

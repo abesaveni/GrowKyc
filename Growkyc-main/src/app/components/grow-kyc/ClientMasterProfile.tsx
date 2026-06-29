@@ -109,19 +109,19 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'active': return 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300';
-      case 'suspended': return 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300';
-      case 'pending': return 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300';
+      case 'active': return 'bg-green-500/15 text-green-300 dark:bg-green-900 dark:text-green-300';
+      case 'suspended': return 'bg-red-500/15 text-red-300 dark:bg-red-900 dark:text-red-300';
+      case 'pending': return 'bg-yellow-500/15 text-yellow-300 dark:bg-yellow-900 dark:text-yellow-300';
       default: return 'bg-[#0f172a] text-slate-300 dark:bg-gray-800 dark:text-gray-300';
     }
   };
 
   const getRiskColor = (tier: string) => {
     switch (tier) {
-      case 'low': return 'text-green-600 dark:text-green-400';
-      case 'medium': return 'text-yellow-600 dark:text-yellow-400';
-      case 'high': return 'text-orange-600 dark:text-orange-400';
-      case 'critical': return 'text-red-600 dark:text-red-400';
+      case 'low': return 'text-green-400 dark:text-green-400';
+      case 'medium': return 'text-yellow-400 dark:text-yellow-400';
+      case 'high': return 'text-orange-400 dark:text-orange-400';
+      case 'critical': return 'text-red-400 dark:text-red-400';
       default: return 'text-slate-300 dark:text-slate-400';
     }
   };
@@ -172,15 +172,15 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
             </div>
             <div className="text-right">
               <div className="flex gap-2">
-                <Button variant="outline" className="bg-[#1e293b] text-[#0E7C9E] hover:bg-cyan-50">
+                <Button variant="outline" className="bg-[#1e293b] text-[#0E7C9E] hover:bg-cyan-500/10">
                   <RefreshCw className="w-4 h-4 mr-2" />
                   Refresh All
                 </Button>
-                <Button variant="outline" className="bg-[#1e293b] text-[#0E7C9E] hover:bg-cyan-50">
+                <Button variant="outline" className="bg-[#1e293b] text-[#0E7C9E] hover:bg-cyan-500/10">
                   <Download className="w-4 h-4 mr-2" />
                   Export Profile
                 </Button>
-                <Button variant="outline" className="bg-[#1e293b] text-[#0E7C9E] hover:bg-cyan-50">
+                <Button variant="outline" className="bg-[#1e293b] text-[#0E7C9E] hover:bg-cyan-500/10">
                   <Edit className="w-4 h-4 mr-2" />
                   Edit
                 </Button>
@@ -221,7 +221,7 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
                 <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-green-500">
                   <div className="flex items-center justify-between mb-2">
                     <div className="text-sm text-slate-400">KYC Status</div>
-                    <Shield className="w-8 h-8 text-green-600" />
+                    <Shield className="w-8 h-8 text-green-400" />
                   </div>
                   <div className="text-2xl font-bold text-white dark:text-white capitalize">{client.kycStatus}</div>
                   <div className="text-xs text-slate-400 mt-1">Last verified {client.lastReviewDate}</div>
@@ -230,7 +230,7 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
                 <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-blue-500">
                   <div className="flex items-center justify-between mb-2">
                     <div className="text-sm text-slate-400">Risk Score</div>
-                    <TrendingUp className="w-8 h-8 text-blue-600" />
+                    <TrendingUp className="w-8 h-8 text-blue-400" />
                   </div>
                   <div className={`text-2xl font-bold capitalize ${getRiskColor(client.riskTier)}`}>
                     {client.riskScore}/100
@@ -241,7 +241,7 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
                 <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-purple-500">
                   <div className="flex items-center justify-between mb-2">
                     <div className="text-sm text-slate-400">Active Alerts</div>
-                    <Bell className="w-8 h-8 text-purple-600" />
+                    <Bell className="w-8 h-8 text-purple-400" />
                   </div>
                   <div className="text-2xl font-bold text-white dark:text-white">
                     {Object.values(client.modules).reduce((sum, m) => sum + m.alerts, 0)}
@@ -252,7 +252,7 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
                 <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-orange-500">
                   <div className="flex items-center justify-between mb-2">
                     <div className="text-sm text-slate-400">Next Review</div>
-                    <Clock className="w-8 h-8 text-orange-600" />
+                    <Clock className="w-8 h-8 text-orange-400" />
                   </div>
                   <div className="text-lg font-bold text-white dark:text-white">
                     {new Date(client.nextReviewDue).toLocaleDateString()}
@@ -306,16 +306,16 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
                       </div>
                       <div className="flex items-center gap-2">
                         {module.complete ? (
-                          <span className="text-green-600">
+                          <span className="text-green-400">
                             <CheckSquare className="w-5 h-5" />
                           </span>
                         ) : (
-                          <span className="text-yellow-600">
+                          <span className="text-yellow-400">
                             <Clock className="w-5 h-5" />
                           </span>
                         )}
                         {module.alerts > 0 && (
-                          <span className="px-2 py-1 bg-red-100 text-red-700 text-xs rounded-full">
+                          <span className="px-2 py-1 bg-red-500/15 text-red-300 text-xs rounded-full">
                             {module.alerts} alerts
                           </span>
                         )}
@@ -412,11 +412,11 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="px-3 py-1 bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300 rounded-full text-xs font-semibold">
+                      <span className="px-3 py-1 bg-green-500/15 text-green-300 dark:bg-green-900 dark:text-green-300 rounded-full text-xs font-semibold">
                         {party.status}
                       </span>
                       {party.verified && (
-                        <CheckCircle className="w-5 h-5 text-green-600" />
+                        <CheckCircle className="w-5 h-5 text-green-400" />
                       )}
                       <Button size="sm" variant="outline">
                         <Eye className="w-4 h-4 mr-2" />

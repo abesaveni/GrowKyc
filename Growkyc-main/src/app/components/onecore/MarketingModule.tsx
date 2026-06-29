@@ -89,8 +89,8 @@ export function MarketingModule({ role }: any) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Marketing Automation</h1>
-          <p className="text-gray-600 mt-1">Email campaigns, workflows, lead capture, and analytics</p>
+          <h1 className="text-2xl font-bold text-slate-100">Marketing Automation</h1>
+          <p className="text-slate-300 mt-1">Email campaigns, workflows, lead capture, and analytics</p>
         </div>
         <div className="flex items-center gap-3">
           <Button variant="outline" type="button" onClick={handleExportData}>
@@ -106,55 +106,55 @@ export function MarketingModule({ role }: any) {
 
       {/* Stats Grid */}
       <div className="grid grid-cols-5 gap-4">
-        <div className="bg-white border border-gray-300 rounded-lg p-4">
+        <div className="bg-white border border-white/10 rounded-lg p-4">
           <div className="flex items-center gap-2 mb-2">
-            <Mail className="w-5 h-5 text-purple-600" />
-            <p className="text-sm text-gray-600">Campaigns</p>
+            <Mail className="w-5 h-5 text-purple-400" />
+            <p className="text-sm text-slate-300">Campaigns</p>
           </div>
-          <p className="text-2xl font-bold text-gray-900">24</p>
-          <p className="text-xs text-gray-500 mt-1">12 active</p>
+          <p className="text-2xl font-bold text-slate-100">24</p>
+          <p className="text-xs text-slate-400 mt-1">12 active</p>
         </div>
 
-        <div className="bg-white border border-gray-300 rounded-lg p-4">
+        <div className="bg-white border border-white/10 rounded-lg p-4">
           <div className="flex items-center gap-2 mb-2">
-            <Send className="w-5 h-5 text-blue-600" />
-            <p className="text-sm text-gray-600">Emails Sent</p>
+            <Send className="w-5 h-5 text-blue-400" />
+            <p className="text-sm text-slate-300">Emails Sent</p>
           </div>
-          <p className="text-2xl font-bold text-gray-900">45.2K</p>
-          <p className="text-xs text-green-600 mt-1">+18% this month</p>
+          <p className="text-2xl font-bold text-slate-100">45.2K</p>
+          <p className="text-xs text-green-400 mt-1">+18% this month</p>
         </div>
 
-        <div className="bg-white border border-gray-300 rounded-lg p-4">
+        <div className="bg-white border border-white/10 rounded-lg p-4">
           <div className="flex items-center gap-2 mb-2">
-            <Eye className="w-5 h-5 text-orange-600" />
-            <p className="text-sm text-gray-600">Open Rate</p>
+            <Eye className="w-5 h-5 text-orange-400" />
+            <p className="text-sm text-slate-300">Open Rate</p>
           </div>
-          <p className="text-2xl font-bold text-gray-900">28.5%</p>
-          <p className="text-xs text-green-600 mt-1">+2.3% vs avg</p>
+          <p className="text-2xl font-bold text-slate-100">28.5%</p>
+          <p className="text-xs text-green-400 mt-1">+2.3% vs avg</p>
         </div>
 
-        <div className="bg-white border border-gray-300 rounded-lg p-4">
+        <div className="bg-white border border-white/10 rounded-lg p-4">
           <div className="flex items-center gap-2 mb-2">
-            <MousePointer className="w-5 h-5 text-green-600" />
-            <p className="text-sm text-gray-600">Click Rate</p>
+            <MousePointer className="w-5 h-5 text-green-400" />
+            <p className="text-sm text-slate-300">Click Rate</p>
           </div>
-          <p className="text-2xl font-bold text-gray-900">4.2%</p>
-          <p className="text-xs text-gray-500 mt-1">Above industry avg</p>
+          <p className="text-2xl font-bold text-slate-100">4.2%</p>
+          <p className="text-xs text-slate-400 mt-1">Above industry avg</p>
         </div>
 
-        <div className="bg-white border border-gray-300 rounded-lg p-4">
+        <div className="bg-white border border-white/10 rounded-lg p-4">
           <div className="flex items-center gap-2 mb-2">
-            <Target className="w-5 h-5 text-indigo-600" />
-            <p className="text-sm text-gray-600">Conversions</p>
+            <Target className="w-5 h-5 text-indigo-400" />
+            <p className="text-sm text-slate-300">Conversions</p>
           </div>
-          <p className="text-2xl font-bold text-gray-900">1,247</p>
-          <p className="text-xs text-green-600 mt-1">+24% this month</p>
+          <p className="text-2xl font-bold text-slate-100">1,247</p>
+          <p className="text-xs text-green-400 mt-1">+24% this month</p>
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="bg-white border border-gray-300 rounded-lg overflow-hidden">
-        <div className="flex border-b border-gray-300">
+      <div className="bg-white border border-white/10 rounded-lg overflow-hidden">
+        <div className="flex border-b border-white/10">
           {[
             { id: 'campaigns', label: 'Campaigns', icon: Mail },
             { id: 'workflows', label: 'Workflows', icon: Zap },
@@ -168,8 +168,8 @@ export function MarketingModule({ role }: any) {
                 onClick={() => setActiveTab(tab.id as any)}
                 className={`flex items-center gap-2 px-6 py-4 border-b-2 transition-colors ${
                   activeTab === tab.id
-                    ? 'border-purple-600 text-purple-600 font-medium bg-purple-50'
-                    : 'border-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                    ? 'border-purple-600 text-purple-400 font-medium bg-purple-500/10'
+                    : 'border-transparent text-slate-300 hover:text-slate-100 hover:bg-white/5'
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -295,7 +295,7 @@ function CampaignsTab() {
             placeholder="Search campaigns..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="w-full pl-10 pr-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
           />
         </div>
         <Button variant="outline" type="button" onClick={handleFilter}>
@@ -307,23 +307,23 @@ function CampaignsTab() {
       {/* Campaigns List */}
       <div className="space-y-3">
         {mockCampaigns.map((campaign) => (
-          <div key={campaign.id} className="bg-white border border-gray-300 rounded-lg p-6 hover:shadow-md transition-shadow">
+          <div key={campaign.id} className="bg-white border border-white/10 rounded-lg p-6 hover:shadow-md transition-shadow">
             <div className="flex items-start justify-between mb-4">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
-                  <h3 className="text-lg font-semibold text-gray-900">{campaign.name}</h3>
+                  <h3 className="text-lg font-semibold text-slate-100">{campaign.name}</h3>
                   <span className={`px-2 py-1 rounded text-xs font-medium ${
-                    campaign.status === 'active' ? 'bg-green-100 text-green-800' :
-                    campaign.status === 'scheduled' ? 'bg-blue-100 text-blue-800' :
-                    'bg-gray-100 text-gray-800'
+                    campaign.status === 'active' ? 'bg-green-500/15 text-green-300' :
+                    campaign.status === 'scheduled' ? 'bg-blue-500/15 text-blue-300' :
+                    'bg-white/5 text-slate-100'
                   }`}>
                     {campaign.status}
                   </span>
-                  <span className="px-2 py-1 bg-purple-100 text-purple-800 rounded text-xs font-medium">
+                  <span className="px-2 py-1 bg-purple-500/15 text-purple-300 rounded text-xs font-medium">
                     {campaign.type}
                   </span>
                 </div>
-                <p className="text-sm text-gray-600">{campaign.id}</p>
+                <p className="text-sm text-slate-300">{campaign.id}</p>
               </div>
 
               <div className="flex items-center gap-2">
@@ -342,38 +342,38 @@ function CampaignsTab() {
 
             {campaign.status === 'active' && (
               <div className="grid grid-cols-5 gap-4">
-                <div className="p-3 bg-blue-50 rounded-lg">
-                  <p className="text-xs text-blue-600 mb-1">Sent</p>
-                  <p className="text-lg font-bold text-blue-900">{campaign.sent.toLocaleString()}</p>
+                <div className="p-3 bg-blue-500/10 rounded-lg">
+                  <p className="text-xs text-blue-400 mb-1">Sent</p>
+                  <p className="text-lg font-bold text-blue-300">{campaign.sent.toLocaleString()}</p>
                 </div>
-                <div className="p-3 bg-green-50 rounded-lg">
-                  <p className="text-xs text-green-600 mb-1">Opens</p>
-                  <p className="text-lg font-bold text-green-900">{campaign.opens?.toLocaleString()}</p>
-                  <p className="text-xs text-green-700">{((campaign.opens! / campaign.sent) * 100).toFixed(1)}%</p>
+                <div className="p-3 bg-green-500/10 rounded-lg">
+                  <p className="text-xs text-green-400 mb-1">Opens</p>
+                  <p className="text-lg font-bold text-green-300">{campaign.opens?.toLocaleString()}</p>
+                  <p className="text-xs text-green-300">{((campaign.opens! / campaign.sent) * 100).toFixed(1)}%</p>
                 </div>
-                <div className="p-3 bg-indigo-50 rounded-lg">
-                  <p className="text-xs text-indigo-600 mb-1">Clicks</p>
-                  <p className="text-lg font-bold text-indigo-900">{campaign.clicks?.toLocaleString()}</p>
-                  <p className="text-xs text-indigo-700">{((campaign.clicks! / campaign.sent) * 100).toFixed(1)}%</p>
+                <div className="p-3 bg-indigo-500/10 rounded-lg">
+                  <p className="text-xs text-indigo-400 mb-1">Clicks</p>
+                  <p className="text-lg font-bold text-indigo-300">{campaign.clicks?.toLocaleString()}</p>
+                  <p className="text-xs text-indigo-300">{((campaign.clicks! / campaign.sent) * 100).toFixed(1)}%</p>
                 </div>
-                <div className="p-3 bg-purple-50 rounded-lg">
-                  <p className="text-xs text-purple-600 mb-1">Conversions</p>
-                  <p className="text-lg font-bold text-purple-900">{campaign.conversions}</p>
-                  <p className="text-xs text-purple-700">{((campaign.conversions! / campaign.sent) * 100).toFixed(2)}%</p>
+                <div className="p-3 bg-purple-500/10 rounded-lg">
+                  <p className="text-xs text-purple-400 mb-1">Conversions</p>
+                  <p className="text-lg font-bold text-purple-300">{campaign.conversions}</p>
+                  <p className="text-xs text-purple-300">{((campaign.conversions! / campaign.sent) * 100).toFixed(2)}%</p>
                 </div>
-                <div className="p-3 bg-gray-50 rounded-lg">
-                  <p className="text-xs text-gray-600 mb-1">Last Sent</p>
-                  <p className="text-sm font-medium text-gray-900">{campaign.lastSent}</p>
+                <div className="p-3 bg-white/5 rounded-lg">
+                  <p className="text-xs text-slate-300 mb-1">Last Sent</p>
+                  <p className="text-sm font-medium text-slate-100">{campaign.lastSent}</p>
                 </div>
               </div>
             )}
 
             {campaign.status === 'scheduled' && (
-              <div className="flex items-center gap-4 p-4 bg-blue-50 rounded-lg">
-                <Clock className="w-5 h-5 text-blue-600" />
+              <div className="flex items-center gap-4 p-4 bg-blue-500/10 rounded-lg">
+                <Clock className="w-5 h-5 text-blue-400" />
                 <div>
-                  <p className="text-sm font-medium text-blue-900">Scheduled for {campaign.scheduledFor}</p>
-                  <p className="text-xs text-blue-700">{campaign.recipients} recipients</p>
+                  <p className="text-sm font-medium text-blue-300">Scheduled for {campaign.scheduledFor}</p>
+                  <p className="text-xs text-blue-300">{campaign.recipients} recipients</p>
                 </div>
               </div>
             )}
@@ -388,12 +388,12 @@ function CampaignsTab() {
 function WorkflowsTab() {
   return (
     <div className="space-y-6">
-      <div className="bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-200 rounded-lg p-6">
+      <div className="bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-500/30 rounded-lg p-6">
         <div className="flex items-center gap-3 mb-4">
-          <Zap className="w-6 h-6 text-purple-600" />
-          <h3 className="font-semibold text-purple-900">Marketing Automation Workflows</h3>
+          <Zap className="w-6 h-6 text-purple-400" />
+          <h3 className="font-semibold text-purple-300">Marketing Automation Workflows</h3>
         </div>
-        <p className="text-sm text-purple-800 mb-4">
+        <p className="text-sm text-purple-300 mb-4">
           Build visual workflows with email sequences, SMS, conditional logic, and lead scoring
         </p>
         
@@ -404,16 +404,16 @@ function WorkflowsTab() {
             { name: 'Re-engagement Campaign', status: 'active', enrolled: 450, completed: 180 },
             { name: 'Abandoned Cart Recovery', status: 'draft', enrolled: 0, completed: 0 }
           ].map((workflow, idx) => (
-            <div key={idx} className="bg-white border border-purple-200 rounded-lg p-4">
+            <div key={idx} className="bg-white border border-purple-500/30 rounded-lg p-4">
               <div className="flex items-center justify-between mb-2">
-                <p className="font-medium text-gray-900">{workflow.name}</p>
+                <p className="font-medium text-slate-100">{workflow.name}</p>
                 <span className={`px-2 py-0.5 rounded text-xs font-medium ${
-                  workflow.status === 'active' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'
+                  workflow.status === 'active' ? 'bg-green-500/15 text-green-300' : 'bg-white/5 text-slate-100'
                 }`}>
                   {workflow.status}
                 </span>
               </div>
-              <div className="text-xs text-gray-600 space-y-1">
+              <div className="text-xs text-slate-300 space-y-1">
                 <p>Enrolled: {workflow.enrolled}</p>
                 <p>Completed: {workflow.completed}</p>
               </div>
@@ -424,7 +424,7 @@ function WorkflowsTab() {
 
       <div className="text-center py-12">
         <Zap className="w-16 h-16 text-purple-400 mx-auto mb-4" />
-        <p className="text-gray-600">Visual workflow builder coming soon</p>
+        <p className="text-slate-300">Visual workflow builder coming soon</p>
       </div>
     </div>
   );
@@ -532,16 +532,16 @@ function FormsTab() {
 
       <div className="grid grid-cols-3 gap-4">
         {mockForms.map((form, idx) => (
-          <div key={idx} className="bg-white border border-gray-300 rounded-lg p-6">
-            <h4 className="font-semibold text-gray-900 mb-4">{form.name}</h4>
+          <div key={idx} className="bg-white border border-white/10 rounded-lg p-6">
+            <h4 className="font-semibold text-slate-100 mb-4">{form.name}</h4>
             <div className="space-y-3">
               <div>
-                <p className="text-sm text-gray-600">Submissions</p>
-                <p className="text-2xl font-bold text-gray-900">{form.submissions}</p>
+                <p className="text-sm text-slate-300">Submissions</p>
+                <p className="text-2xl font-bold text-slate-100">{form.submissions}</p>
               </div>
               <div>
-                <p className="text-sm text-gray-600">Conversion Rate</p>
-                <p className="text-xl font-bold text-green-600">{form.conversionRate}%</p>
+                <p className="text-sm text-slate-300">Conversion Rate</p>
+                <p className="text-xl font-bold text-green-400">{form.conversionRate}%</p>
               </div>
             </div>
             <div className="flex gap-2 mt-4">
@@ -566,68 +566,68 @@ function AnalyticsTab() {
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-3 gap-6">
-        <div className="bg-white border border-gray-300 rounded-lg p-6">
-          <h3 className="font-semibold text-gray-900 mb-4">Email Performance</h3>
+        <div className="bg-white border border-white/10 rounded-lg p-6">
+          <h3 className="font-semibold text-slate-100 mb-4">Email Performance</h3>
           <div className="space-y-3">
-            <div className="flex justify-between py-2 border-b border-gray-200">
-              <span className="text-sm text-gray-600">Avg Open Rate</span>
-              <span className="text-sm font-semibold text-gray-900">28.5%</span>
+            <div className="flex justify-between py-2 border-b border-white/10">
+              <span className="text-sm text-slate-300">Avg Open Rate</span>
+              <span className="text-sm font-semibold text-slate-100">28.5%</span>
             </div>
-            <div className="flex justify-between py-2 border-b border-gray-200">
-              <span className="text-sm text-gray-600">Avg Click Rate</span>
-              <span className="text-sm font-semibold text-gray-900">4.2%</span>
+            <div className="flex justify-between py-2 border-b border-white/10">
+              <span className="text-sm text-slate-300">Avg Click Rate</span>
+              <span className="text-sm font-semibold text-slate-100">4.2%</span>
             </div>
-            <div className="flex justify-between py-2 border-b border-gray-200">
-              <span className="text-sm text-gray-600">Bounce Rate</span>
-              <span className="text-sm font-semibold text-gray-900">1.8%</span>
+            <div className="flex justify-between py-2 border-b border-white/10">
+              <span className="text-sm text-slate-300">Bounce Rate</span>
+              <span className="text-sm font-semibold text-slate-100">1.8%</span>
             </div>
             <div className="flex justify-between py-2">
-              <span className="text-sm text-gray-600">Unsubscribe Rate</span>
-              <span className="text-sm font-semibold text-gray-900">0.3%</span>
+              <span className="text-sm text-slate-300">Unsubscribe Rate</span>
+              <span className="text-sm font-semibold text-slate-100">0.3%</span>
             </div>
           </div>
         </div>
 
-        <div className="bg-white border border-gray-300 rounded-lg p-6">
-          <h3 className="font-semibold text-gray-900 mb-4">Lead Generation</h3>
+        <div className="bg-white border border-white/10 rounded-lg p-6">
+          <h3 className="font-semibold text-slate-100 mb-4">Lead Generation</h3>
           <div className="space-y-3">
-            <div className="flex justify-between py-2 border-b border-gray-200">
-              <span className="text-sm text-gray-600">New Leads</span>
-              <span className="text-sm font-semibold text-gray-900">1,847</span>
+            <div className="flex justify-between py-2 border-b border-white/10">
+              <span className="text-sm text-slate-300">New Leads</span>
+              <span className="text-sm font-semibold text-slate-100">1,847</span>
             </div>
-            <div className="flex justify-between py-2 border-b border-gray-200">
-              <span className="text-sm text-gray-600">Qualified Leads</span>
-              <span className="text-sm font-semibold text-gray-900">685</span>
+            <div className="flex justify-between py-2 border-b border-white/10">
+              <span className="text-sm text-slate-300">Qualified Leads</span>
+              <span className="text-sm font-semibold text-slate-100">685</span>
             </div>
-            <div className="flex justify-between py-2 border-b border-gray-200">
-              <span className="text-sm text-gray-600">Conversion Rate</span>
-              <span className="text-sm font-semibold text-green-600">37.1%</span>
+            <div className="flex justify-between py-2 border-b border-white/10">
+              <span className="text-sm text-slate-300">Conversion Rate</span>
+              <span className="text-sm font-semibold text-green-400">37.1%</span>
             </div>
             <div className="flex justify-between py-2">
-              <span className="text-sm text-gray-600">Cost Per Lead</span>
-              <span className="text-sm font-semibold text-gray-900">$24.50</span>
+              <span className="text-sm text-slate-300">Cost Per Lead</span>
+              <span className="text-sm font-semibold text-slate-100">$24.50</span>
             </div>
           </div>
         </div>
 
-        <div className="bg-white border border-gray-300 rounded-lg p-6">
-          <h3 className="font-semibold text-gray-900 mb-4">ROI Metrics</h3>
+        <div className="bg-white border border-white/10 rounded-lg p-6">
+          <h3 className="font-semibold text-slate-100 mb-4">ROI Metrics</h3>
           <div className="space-y-3">
-            <div className="flex justify-between py-2 border-b border-gray-200">
-              <span className="text-sm text-gray-600">Marketing Spend</span>
-              <span className="text-sm font-semibold text-gray-900">$45,200</span>
+            <div className="flex justify-between py-2 border-b border-white/10">
+              <span className="text-sm text-slate-300">Marketing Spend</span>
+              <span className="text-sm font-semibold text-slate-100">$45,200</span>
             </div>
-            <div className="flex justify-between py-2 border-b border-gray-200">
-              <span className="text-sm text-gray-600">Revenue Generated</span>
-              <span className="text-sm font-semibold text-green-600">$284,500</span>
+            <div className="flex justify-between py-2 border-b border-white/10">
+              <span className="text-sm text-slate-300">Revenue Generated</span>
+              <span className="text-sm font-semibold text-green-400">$284,500</span>
             </div>
-            <div className="flex justify-between py-2 border-b border-gray-200">
-              <span className="text-sm text-gray-600">ROI</span>
-              <span className="text-sm font-semibold text-green-600">529%</span>
+            <div className="flex justify-between py-2 border-b border-white/10">
+              <span className="text-sm text-slate-300">ROI</span>
+              <span className="text-sm font-semibold text-green-400">529%</span>
             </div>
             <div className="flex justify-between py-2">
-              <span className="text-sm text-gray-600">CAC</span>
-              <span className="text-sm font-semibold text-gray-900">$65.90</span>
+              <span className="text-sm text-slate-300">CAC</span>
+              <span className="text-sm font-semibold text-slate-100">$65.90</span>
             </div>
           </div>
         </div>
@@ -663,9 +663,9 @@ function NewCampaignModal({ onClose, onContinue }: { onClose: () => void, onCont
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
-          <h2 className="text-2xl font-bold text-gray-900">Create New Campaign</h2>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600 transition-colors">
+        <div className="flex items-center justify-between p-6 border-b border-white/10">
+          <h2 className="text-2xl font-bold text-slate-100">Create New Campaign</h2>
+          <button onClick={onClose} className="text-gray-400 hover:text-slate-300 transition-colors">
             <X className="w-6 h-6" />
           </button>
         </div>
@@ -674,7 +674,7 @@ function NewCampaignModal({ onClose, onContinue }: { onClose: () => void, onCont
         <div className="p-6 space-y-6">
           {/* Campaign Name */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-slate-300 mb-2">
               Campaign Name *
             </label>
             <input
@@ -682,13 +682,13 @@ function NewCampaignModal({ onClose, onContinue }: { onClose: () => void, onCont
               placeholder="e.g., Summer Product Launch 2024"
               value={campaignName}
               onChange={(e) => setCampaignName(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
             />
           </div>
 
           {/* Campaign Type */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-slate-300 mb-2">
               Campaign Type *
             </label>
             <div className="grid grid-cols-3 gap-3">
@@ -699,8 +699,8 @@ function NewCampaignModal({ onClose, onContinue }: { onClose: () => void, onCont
                   onClick={() => setCampaignType(type)}
                   className={`px-4 py-3 rounded-lg border-2 text-sm font-medium transition-all ${
                     campaignType === type
-                      ? 'border-purple-600 bg-purple-50 text-purple-700'
-                      : 'border-gray-300 bg-white text-gray-700 hover:border-gray-400'
+                      ? 'border-purple-600 bg-purple-500/10 text-purple-300'
+                      : 'border-white/10 bg-white text-slate-300 hover:border-gray-400'
                   }`}
                 >
                   {type === 'Email' && <Mail className="w-4 h-4 inline mr-2" />}
@@ -715,7 +715,7 @@ function NewCampaignModal({ onClose, onContinue }: { onClose: () => void, onCont
           {/* Subject Line (Email only) */}
           {campaignType === 'Email' && (
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-slate-300 mb-2">
                 Subject Line *
               </label>
               <input
@@ -723,20 +723,20 @@ function NewCampaignModal({ onClose, onContinue }: { onClose: () => void, onCont
                 placeholder="Enter email subject"
                 value={subject}
                 onChange={(e) => setSubject(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
             </div>
           )}
 
           {/* Target Audience */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-slate-300 mb-2">
               Target Audience *
             </label>
             <select
               value={audience}
               onChange={(e) => setAudience(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full px-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
             >
               <option>All Contacts</option>
               <option>Active Customers</option>
@@ -749,7 +749,7 @@ function NewCampaignModal({ onClose, onContinue }: { onClose: () => void, onCont
 
           {/* Schedule */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-slate-300 mb-2">
               Schedule
             </label>
             <div className="grid grid-cols-2 gap-3">
@@ -760,8 +760,8 @@ function NewCampaignModal({ onClose, onContinue }: { onClose: () => void, onCont
                   onClick={() => setScheduleType(type)}
                   className={`px-4 py-3 rounded-lg border-2 text-sm font-medium transition-all ${
                     scheduleType === type
-                      ? 'border-purple-600 bg-purple-50 text-purple-700'
-                      : 'border-gray-300 bg-white text-gray-700 hover:border-gray-400'
+                      ? 'border-purple-600 bg-purple-500/10 text-purple-300'
+                      : 'border-white/10 bg-white text-slate-300 hover:border-gray-400'
                   }`}
                 >
                   {type === 'Send Now' && <Send className="w-4 h-4 inline mr-2" />}
@@ -774,22 +774,22 @@ function NewCampaignModal({ onClose, onContinue }: { onClose: () => void, onCont
 
           {scheduleType === 'Schedule Later' && (
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-slate-300 mb-2">
                 Schedule Date & Time
               </label>
               <input
                 type="datetime-local"
                 value={scheduledDate}
                 onChange={(e) => setScheduledDate(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
             </div>
           )}
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between p-6 border-t border-gray-200 bg-gray-50">
-          <p className="text-sm text-gray-600">
+        <div className="flex items-center justify-between p-6 border-t border-white/10 bg-white/5">
+          <p className="text-sm text-slate-300">
             You'll be able to design the content in the next step
           </p>
           <div className="flex gap-3">
@@ -820,41 +820,41 @@ function CampaignViewModal({ campaign, onClose }: { campaign: any, onClose: () =
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gradient-to-r from-purple-50 to-indigo-50">
+        <div className="flex items-center justify-between p-6 border-b border-white/10 bg-gradient-to-r from-purple-50 to-indigo-50">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-lg bg-purple-600 flex items-center justify-center">
               <Mail className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-gray-900">{campaign.name}</h2>
-              <p className="text-sm text-gray-600">{campaign.id}</p>
+              <h2 className="text-2xl font-bold text-slate-100">{campaign.name}</h2>
+              <p className="text-sm text-slate-300">{campaign.id}</p>
             </div>
           </div>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600 transition-colors">
+          <button onClick={onClose} className="text-gray-400 hover:text-slate-300 transition-colors">
             <X className="w-6 h-6" />
           </button>
         </div>
 
         {/* Status Bar */}
-        <div className="px-6 py-4 bg-white border-b border-gray-200">
+        <div className="px-6 py-4 bg-white border-b border-white/10">
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2">
               <span className={`px-3 py-1.5 rounded-full text-sm font-medium ${
-                campaign.status === 'active' ? 'bg-green-100 text-green-800' :
-                campaign.status === 'scheduled' ? 'bg-blue-100 text-blue-800' :
-                'bg-gray-100 text-gray-800'
+                campaign.status === 'active' ? 'bg-green-500/15 text-green-300' :
+                campaign.status === 'scheduled' ? 'bg-blue-500/15 text-blue-300' :
+                'bg-white/5 text-slate-100'
               }`}>
                 {campaign.status}
               </span>
-              <span className="px-3 py-1.5 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">
+              <span className="px-3 py-1.5 bg-purple-500/15 text-purple-300 rounded-full text-sm font-medium">
                 {campaign.type}
               </span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-gray-600">
+            <div className="flex items-center gap-2 text-sm text-slate-300">
               <Calendar className="w-4 h-4" />
               Created: {campaign.createdDate}
             </div>
-            <div className="flex items-center gap-2 text-sm text-gray-600">
+            <div className="flex items-center gap-2 text-sm text-slate-300">
               <Users className="w-4 h-4" />
               {campaign.audience}
             </div>
@@ -862,7 +862,7 @@ function CampaignViewModal({ campaign, onClose }: { campaign: any, onClose: () =
         </div>
 
         {/* Tabs */}
-        <div className="border-b border-gray-200">
+        <div className="border-b border-white/10">
           <div className="flex px-6">
             {[
               { id: 'overview', label: 'Overview', icon: BarChart3 },
@@ -876,8 +876,8 @@ function CampaignViewModal({ campaign, onClose }: { campaign: any, onClose: () =
                   onClick={() => setActiveViewTab(tab.id as any)}
                   className={`flex items-center gap-2 px-4 py-3 border-b-2 transition-colors ${
                     activeViewTab === tab.id
-                      ? 'border-purple-600 text-purple-600 font-medium'
-                      : 'border-transparent text-gray-600 hover:text-gray-900'
+                      ? 'border-purple-600 text-purple-400 font-medium'
+                      : 'border-transparent text-slate-300 hover:text-slate-100'
                   }`}
                 >
                   <Icon className="w-4 h-4" />
@@ -893,85 +893,85 @@ function CampaignViewModal({ campaign, onClose }: { campaign: any, onClose: () =
           {activeViewTab === 'overview' && (
             <div className="space-y-6">
               <div className="grid grid-cols-4 gap-4">
-                <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                <div className="p-4 bg-blue-500/10 rounded-lg border border-blue-500/30">
                   <div className="flex items-center gap-2 mb-2">
-                    <Send className="w-5 h-5 text-blue-600" />
-                    <p className="text-sm font-medium text-blue-700">Sent</p>
+                    <Send className="w-5 h-5 text-blue-400" />
+                    <p className="text-sm font-medium text-blue-300">Sent</p>
                   </div>
-                  <p className="text-2xl font-bold text-blue-900">{campaign.sent?.toLocaleString() || 0}</p>
+                  <p className="text-2xl font-bold text-blue-300">{campaign.sent?.toLocaleString() || 0}</p>
                 </div>
 
-                <div className="p-4 bg-green-50 rounded-lg border border-green-200">
+                <div className="p-4 bg-green-500/10 rounded-lg border border-green-500/30">
                   <div className="flex items-center gap-2 mb-2">
-                    <Eye className="w-5 h-5 text-green-600" />
-                    <p className="text-sm font-medium text-green-700">Opens</p>
+                    <Eye className="w-5 h-5 text-green-400" />
+                    <p className="text-sm font-medium text-green-300">Opens</p>
                   </div>
-                  <p className="text-2xl font-bold text-green-900">{campaign.opens?.toLocaleString() || 0}</p>
-                  <p className="text-xs text-green-700">{campaign.sent > 0 ? ((campaign.opens! / campaign.sent) * 100).toFixed(1) : 0}%</p>
+                  <p className="text-2xl font-bold text-green-300">{campaign.opens?.toLocaleString() || 0}</p>
+                  <p className="text-xs text-green-300">{campaign.sent > 0 ? ((campaign.opens! / campaign.sent) * 100).toFixed(1) : 0}%</p>
                 </div>
 
-                <div className="p-4 bg-indigo-50 rounded-lg border border-indigo-200">
+                <div className="p-4 bg-indigo-500/10 rounded-lg border border-indigo-500/30">
                   <div className="flex items-center gap-2 mb-2">
-                    <MousePointer className="w-5 h-5 text-indigo-600" />
-                    <p className="text-sm font-medium text-indigo-700">Clicks</p>
+                    <MousePointer className="w-5 h-5 text-indigo-400" />
+                    <p className="text-sm font-medium text-indigo-300">Clicks</p>
                   </div>
-                  <p className="text-2xl font-bold text-indigo-900">{campaign.clicks?.toLocaleString() || 0}</p>
-                  <p className="text-xs text-indigo-700">{campaign.sent > 0 ? ((campaign.clicks! / campaign.sent) * 100).toFixed(1) : 0}%</p>
+                  <p className="text-2xl font-bold text-indigo-300">{campaign.clicks?.toLocaleString() || 0}</p>
+                  <p className="text-xs text-indigo-300">{campaign.sent > 0 ? ((campaign.clicks! / campaign.sent) * 100).toFixed(1) : 0}%</p>
                 </div>
 
-                <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
+                <div className="p-4 bg-purple-500/10 rounded-lg border border-purple-500/30">
                   <div className="flex items-center gap-2 mb-2">
-                    <Target className="w-5 h-5 text-purple-600" />
-                    <p className="text-sm font-medium text-purple-700">Conversions</p>
+                    <Target className="w-5 h-5 text-purple-400" />
+                    <p className="text-sm font-medium text-purple-300">Conversions</p>
                   </div>
-                  <p className="text-2xl font-bold text-purple-900">{campaign.conversions || 0}</p>
-                  <p className="text-xs text-purple-700">{campaign.sent > 0 ? ((campaign.conversions! / campaign.sent) * 100).toFixed(2) : 0}%</p>
+                  <p className="text-2xl font-bold text-purple-300">{campaign.conversions || 0}</p>
+                  <p className="text-xs text-purple-300">{campaign.sent > 0 ? ((campaign.conversions! / campaign.sent) * 100).toFixed(2) : 0}%</p>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-6">
                 <div className="space-y-4">
-                  <h3 className="font-semibold text-gray-900">Campaign Details</h3>
+                  <h3 className="font-semibold text-slate-100">Campaign Details</h3>
                   <div className="space-y-3">
-                    <div className="flex justify-between py-2 border-b border-gray-200">
-                      <span className="text-sm text-gray-600">Created Date</span>
-                      <span className="text-sm font-medium text-gray-900">{campaign.createdDate}</span>
+                    <div className="flex justify-between py-2 border-b border-white/10">
+                      <span className="text-sm text-slate-300">Created Date</span>
+                      <span className="text-sm font-medium text-slate-100">{campaign.createdDate}</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-200">
-                      <span className="text-sm text-gray-600">Last Sent</span>
-                      <span className="text-sm font-medium text-gray-900">{campaign.lastSent || 'N/A'}</span>
+                    <div className="flex justify-between py-2 border-b border-white/10">
+                      <span className="text-sm text-slate-300">Last Sent</span>
+                      <span className="text-sm font-medium text-slate-100">{campaign.lastSent || 'N/A'}</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-200">
-                      <span className="text-sm text-gray-600">From</span>
-                      <span className="text-sm font-medium text-gray-900">{campaign.from || 'N/A'}</span>
+                    <div className="flex justify-between py-2 border-b border-white/10">
+                      <span className="text-sm text-slate-300">From</span>
+                      <span className="text-sm font-medium text-slate-100">{campaign.from || 'N/A'}</span>
                     </div>
                     <div className="flex justify-between py-2">
-                      <span className="text-sm text-gray-600">Target Audience</span>
-                      <span className="text-sm font-medium text-gray-900">{campaign.audience}</span>
+                      <span className="text-sm text-slate-300">Target Audience</span>
+                      <span className="text-sm font-medium text-slate-100">{campaign.audience}</span>
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-4">
-                  <h3 className="font-semibold text-gray-900">Delivery Metrics</h3>
+                  <h3 className="font-semibold text-slate-100">Delivery Metrics</h3>
                   <div className="space-y-3">
-                    <div className="flex justify-between py-2 border-b border-gray-200">
-                      <span className="text-sm text-gray-600">Bounces</span>
-                      <span className="text-sm font-medium text-red-600">{campaign.bounces || 0}</span>
+                    <div className="flex justify-between py-2 border-b border-white/10">
+                      <span className="text-sm text-slate-300">Bounces</span>
+                      <span className="text-sm font-medium text-red-400">{campaign.bounces || 0}</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-200">
-                      <span className="text-sm text-gray-600">Unsubscribes</span>
-                      <span className="text-sm font-medium text-red-600">{campaign.unsubscribes || 0}</span>
+                    <div className="flex justify-between py-2 border-b border-white/10">
+                      <span className="text-sm text-slate-300">Unsubscribes</span>
+                      <span className="text-sm font-medium text-red-400">{campaign.unsubscribes || 0}</span>
                     </div>
-                    <div className="flex justify-between py-2 border-b border-gray-200">
-                      <span className="text-sm text-gray-600">Bounce Rate</span>
-                      <span className="text-sm font-medium text-gray-900">
+                    <div className="flex justify-between py-2 border-b border-white/10">
+                      <span className="text-sm text-slate-300">Bounce Rate</span>
+                      <span className="text-sm font-medium text-slate-100">
                         {campaign.sent > 0 ? ((campaign.bounces! / campaign.sent) * 100).toFixed(2) : 0}%
                       </span>
                     </div>
                     <div className="flex justify-between py-2">
-                      <span className="text-sm text-gray-600">Unsubscribe Rate</span>
-                      <span className="text-sm font-medium text-gray-900">
+                      <span className="text-sm text-slate-300">Unsubscribe Rate</span>
+                      <span className="text-sm font-medium text-slate-100">
                         {campaign.sent > 0 ? ((campaign.unsubscribes! / campaign.sent) * 100).toFixed(2) : 0}%
                       </span>
                     </div>
@@ -983,31 +983,31 @@ function CampaignViewModal({ campaign, onClose }: { campaign: any, onClose: () =
 
           {activeViewTab === 'performance' && (
             <div className="space-y-6">
-              <div className="bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-200 rounded-lg p-6">
-                <h3 className="font-semibold text-purple-900 mb-4">Performance Summary</h3>
+              <div className="bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-500/30 rounded-lg p-6">
+                <h3 className="font-semibold text-purple-300 mb-4">Performance Summary</h3>
                 <div className="grid grid-cols-3 gap-4">
                   <div>
-                    <p className="text-sm text-purple-700 mb-1">Engagement Rate</p>
-                    <p className="text-2xl font-bold text-purple-900">
+                    <p className="text-sm text-purple-300 mb-1">Engagement Rate</p>
+                    <p className="text-2xl font-bold text-purple-300">
                       {campaign.sent > 0 ? (((campaign.opens! + campaign.clicks!) / campaign.sent) * 100).toFixed(1) : 0}%
                     </p>
                   </div>
                   <div>
-                    <p className="text-sm text-purple-700 mb-1">Click-to-Open Rate</p>
-                    <p className="text-2xl font-bold text-purple-900">
+                    <p className="text-sm text-purple-300 mb-1">Click-to-Open Rate</p>
+                    <p className="text-2xl font-bold text-purple-300">
                       {campaign.opens > 0 ? ((campaign.clicks! / campaign.opens!) * 100).toFixed(1) : 0}%
                     </p>
                   </div>
                   <div>
-                    <p className="text-sm text-purple-700 mb-1">Conversion Rate</p>
-                    <p className="text-2xl font-bold text-purple-900">
+                    <p className="text-sm text-purple-300 mb-1">Conversion Rate</p>
+                    <p className="text-2xl font-bold text-purple-300">
                       {campaign.sent > 0 ? ((campaign.conversions! / campaign.sent) * 100).toFixed(2) : 0}%
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="text-center py-8 text-gray-500">
+              <div className="text-center py-8 text-slate-400">
                 <BarChart3 className="w-16 h-16 mx-auto mb-4 text-gray-400" />
                 <p>Detailed performance charts coming soon</p>
               </div>
@@ -1018,24 +1018,24 @@ function CampaignViewModal({ campaign, onClose }: { campaign: any, onClose: () =
             <div className="space-y-6">
               {campaign.subject && (
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-2">Subject Line</h3>
-                  <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                    <p className="text-gray-900">{campaign.subject}</p>
+                  <h3 className="font-semibold text-slate-100 mb-2">Subject Line</h3>
+                  <div className="p-4 bg-white/5 rounded-lg border border-white/10">
+                    <p className="text-slate-100">{campaign.subject}</p>
                   </div>
                 </div>
               )}
 
               {campaign.message && (
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-2">Message Content</h3>
-                  <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                    <p className="text-gray-900">{campaign.message}</p>
+                  <h3 className="font-semibold text-slate-100 mb-2">Message Content</h3>
+                  <div className="p-4 bg-white/5 rounded-lg border border-white/10">
+                    <p className="text-slate-100">{campaign.message}</p>
                   </div>
                 </div>
               )}
 
               {!campaign.subject && !campaign.message && (
-                <div className="text-center py-8 text-gray-500">
+                <div className="text-center py-8 text-slate-400">
                   <FileText className="w-16 h-16 mx-auto mb-4 text-gray-400" />
                   <p>Content preview coming soon</p>
                 </div>
@@ -1045,7 +1045,7 @@ function CampaignViewModal({ campaign, onClose }: { campaign: any, onClose: () =
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between p-6 border-t border-gray-200 bg-gray-50">
+        <div className="flex items-center justify-between p-6 border-t border-white/10 bg-white/5">
           <div className="flex gap-3">
             <Button type="button" variant="outline" onClick={() => alert('Edit functionality')}>
               <Edit className="w-4 h-4 mr-2" />
@@ -1073,38 +1073,38 @@ function FormViewModal({ form, onClose }: { form: any, onClose: () => void }) {
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gradient-to-r from-purple-50 to-indigo-50">
+        <div className="flex items-center justify-between p-6 border-b border-white/10 bg-gradient-to-r from-purple-50 to-indigo-50">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-lg bg-purple-600 flex items-center justify-center">
               <Globe className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-gray-900">{form.name}</h2>
-              <p className="text-sm text-gray-600">{form.id}</p>
+              <h2 className="text-2xl font-bold text-slate-100">{form.name}</h2>
+              <p className="text-sm text-slate-300">{form.id}</p>
             </div>
           </div>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600 transition-colors">
+          <button onClick={onClose} className="text-gray-400 hover:text-slate-300 transition-colors">
             <X className="w-6 h-6" />
           </button>
         </div>
 
         {/* Status Bar */}
-        <div className="px-6 py-4 bg-white border-b border-gray-200">
+        <div className="px-6 py-4 bg-white border-b border-white/10">
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2">
               <span className={`px-3 py-1.5 rounded-full text-sm font-medium ${
-                form.status === 'active' ? 'bg-green-100 text-green-800' :
-                form.status === 'scheduled' ? 'bg-blue-100 text-blue-800' :
-                'bg-gray-100 text-gray-800'
+                form.status === 'active' ? 'bg-green-500/15 text-green-300' :
+                form.status === 'scheduled' ? 'bg-blue-500/15 text-blue-300' :
+                'bg-white/5 text-slate-100'
               }`}>
                 {form.status}
               </span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-gray-600">
+            <div className="flex items-center gap-2 text-sm text-slate-300">
               <Calendar className="w-4 h-4" />
               Created: {form.createdDate}
             </div>
-            <div className="flex items-center gap-2 text-sm text-gray-600">
+            <div className="flex items-center gap-2 text-sm text-slate-300">
               <FileText className="w-4 h-4" />
               {form.fields.length} fields
             </div>
@@ -1112,7 +1112,7 @@ function FormViewModal({ form, onClose }: { form: any, onClose: () => void }) {
         </div>
 
         {/* Tabs */}
-        <div className="border-b border-gray-200">
+        <div className="border-b border-white/10">
           <div className="flex px-6">
             {[
               { id: 'overview', label: 'Overview', icon: BarChart3 },
@@ -1126,8 +1126,8 @@ function FormViewModal({ form, onClose }: { form: any, onClose: () => void }) {
                   onClick={() => setActiveViewTab(tab.id as any)}
                   className={`flex items-center gap-2 px-4 py-3 border-b-2 transition-colors ${
                     activeViewTab === tab.id
-                      ? 'border-purple-600 text-purple-600 font-medium'
-                      : 'border-transparent text-gray-600 hover:text-gray-900'
+                      ? 'border-purple-600 text-purple-400 font-medium'
+                      : 'border-transparent text-slate-300 hover:text-slate-100'
                   }`}
                 >
                   <Icon className="w-4 h-4" />
@@ -1143,49 +1143,49 @@ function FormViewModal({ form, onClose }: { form: any, onClose: () => void }) {
           {activeViewTab === 'overview' && (
             <div className="space-y-6">
               <div className="grid grid-cols-3 gap-4">
-                <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                <div className="p-4 bg-blue-500/10 rounded-lg border border-blue-500/30">
                   <div className="flex items-center gap-2 mb-2">
-                    <Users className="w-5 h-5 text-blue-600" />
-                    <p className="text-sm font-medium text-blue-700">Submissions</p>
+                    <Users className="w-5 h-5 text-blue-400" />
+                    <p className="text-sm font-medium text-blue-300">Submissions</p>
                   </div>
-                  <p className="text-2xl font-bold text-blue-900">{form.submissions?.toLocaleString() || 0}</p>
+                  <p className="text-2xl font-bold text-blue-300">{form.submissions?.toLocaleString() || 0}</p>
                 </div>
 
-                <div className="p-4 bg-green-50 rounded-lg border border-green-200">
+                <div className="p-4 bg-green-500/10 rounded-lg border border-green-500/30">
                   <div className="flex items-center gap-2 mb-2">
-                    <TrendingUp className="w-5 h-5 text-green-600" />
-                    <p className="text-sm font-medium text-green-700">Conversion Rate</p>
+                    <TrendingUp className="w-5 h-5 text-green-400" />
+                    <p className="text-sm font-medium text-green-300">Conversion Rate</p>
                   </div>
-                  <p className="text-2xl font-bold text-green-900">{form.conversionRate?.toLocaleString() || 0}%</p>
+                  <p className="text-2xl font-bold text-green-300">{form.conversionRate?.toLocaleString() || 0}%</p>
                 </div>
 
-                <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
+                <div className="p-4 bg-purple-500/10 rounded-lg border border-purple-500/30">
                   <div className="flex items-center gap-2 mb-2">
-                    <Eye className="w-5 h-5 text-purple-600" />
-                    <p className="text-sm font-medium text-purple-700">Views</p>
+                    <Eye className="w-5 h-5 text-purple-400" />
+                    <p className="text-sm font-medium text-purple-300">Views</p>
                   </div>
-                  <p className="text-2xl font-bold text-purple-900">{form.views?.toLocaleString() || 0}</p>
+                  <p className="text-2xl font-bold text-purple-300">{form.views?.toLocaleString() || 0}</p>
                 </div>
               </div>
 
               <div className="space-y-4">
-                <h3 className="font-semibold text-gray-900">Form Details</h3>
+                <h3 className="font-semibold text-slate-100">Form Details</h3>
                 <div className="space-y-3">
-                  <div className="flex justify-between py-2 border-b border-gray-200">
-                    <span className="text-sm text-gray-600">Form ID</span>
-                    <span className="text-sm font-medium text-gray-900">{form.id}</span>
+                  <div className="flex justify-between py-2 border-b border-white/10">
+                    <span className="text-sm text-slate-300">Form ID</span>
+                    <span className="text-sm font-medium text-slate-100">{form.id}</span>
                   </div>
-                  <div className="flex justify-between py-2 border-b border-gray-200">
-                    <span className="text-sm text-gray-600">Created Date</span>
-                    <span className="text-sm font-medium text-gray-900">{form.createdDate}</span>
+                  <div className="flex justify-between py-2 border-b border-white/10">
+                    <span className="text-sm text-slate-300">Created Date</span>
+                    <span className="text-sm font-medium text-slate-100">{form.createdDate}</span>
                   </div>
-                  <div className="flex justify-between py-2 border-b border-gray-200">
-                    <span className="text-sm text-gray-600">Number of Fields</span>
-                    <span className="text-sm font-medium text-gray-900">{form.fields.length}</span>
+                  <div className="flex justify-between py-2 border-b border-white/10">
+                    <span className="text-sm text-slate-300">Number of Fields</span>
+                    <span className="text-sm font-medium text-slate-100">{form.fields.length}</span>
                   </div>
                   <div className="flex justify-between py-2">
-                    <span className="text-sm text-gray-600">Status</span>
-                    <span className="text-sm font-medium text-green-600">{form.status}</span>
+                    <span className="text-sm text-slate-300">Status</span>
+                    <span className="text-sm font-medium text-green-400">{form.status}</span>
                   </div>
                 </div>
               </div>
@@ -1194,38 +1194,38 @@ function FormViewModal({ form, onClose }: { form: any, onClose: () => void }) {
 
           {activeViewTab === 'fields' && (
             <div className="space-y-4">
-              <h3 className="font-semibold text-gray-900 mb-4">Form Fields Configuration</h3>
+              <h3 className="font-semibold text-slate-100 mb-4">Form Fields Configuration</h3>
               <div className="space-y-3">
                 {form.fields.map((field: any, idx: number) => (
-                  <div key={field.id} className="bg-gray-50 rounded-lg border border-gray-200 p-4">
+                  <div key={field.id} className="bg-white/5 rounded-lg border border-white/10 p-4">
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
-                          <span className="text-sm font-medium text-gray-500">#{idx + 1}</span>
-                          <h4 className="text-base font-semibold text-gray-900">{field.label}</h4>
+                          <span className="text-sm font-medium text-slate-400">#{idx + 1}</span>
+                          <h4 className="text-base font-semibold text-slate-100">{field.label}</h4>
                           {field.required && (
-                            <span className="px-2 py-0.5 bg-red-100 text-red-700 rounded text-xs font-medium">
+                            <span className="px-2 py-0.5 bg-red-500/15 text-red-300 rounded text-xs font-medium">
                               Required
                             </span>
                           )}
                         </div>
                         <div className="grid grid-cols-2 gap-4 mt-3">
                           <div>
-                            <p className="text-xs text-gray-600">Field Type</p>
-                            <p className="text-sm font-medium text-gray-900">{field.type}</p>
+                            <p className="text-xs text-slate-300">Field Type</p>
+                            <p className="text-sm font-medium text-slate-100">{field.type}</p>
                           </div>
                           {field.placeholder && (
                             <div>
-                              <p className="text-xs text-gray-600">Placeholder</p>
-                              <p className="text-sm font-medium text-gray-900">{field.placeholder}</p>
+                              <p className="text-xs text-slate-300">Placeholder</p>
+                              <p className="text-sm font-medium text-slate-100">{field.placeholder}</p>
                             </div>
                           )}
                           {field.options && (
                             <div className="col-span-2">
-                              <p className="text-xs text-gray-600 mb-1">Options</p>
+                              <p className="text-xs text-slate-300 mb-1">Options</p>
                               <div className="flex gap-2 flex-wrap">
                                 {field.options.map((option: string, i: number) => (
-                                  <span key={i} className="px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs">
+                                  <span key={i} className="px-2 py-1 bg-purple-500/15 text-purple-300 rounded text-xs">
                                     {option}
                                   </span>
                                 ))}
@@ -1243,30 +1243,30 @@ function FormViewModal({ form, onClose }: { form: any, onClose: () => void }) {
 
           {activeViewTab === 'preview' && (
             <div className="space-y-6">
-              <div className="bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-200 rounded-lg p-6">
-                <h3 className="font-semibold text-purple-900 mb-4">Form Preview</h3>
+              <div className="bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-500/30 rounded-lg p-6">
+                <h3 className="font-semibold text-purple-300 mb-4">Form Preview</h3>
                 <div className="bg-white rounded-lg p-6 space-y-4">
                   {form.fields.map((field: any) => (
                     <div key={field.id}>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        {field.label} {field.required && <span className="text-red-600">*</span>}
+                      <label className="block text-sm font-medium text-slate-300 mb-2">
+                        {field.label} {field.required && <span className="text-red-400">*</span>}
                       </label>
                       {field.type === 'text' || field.type === 'email' || field.type === 'tel' ? (
                         <input
                           type={field.type}
                           placeholder={field.placeholder}
-                          className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm"
+                          className="w-full px-4 py-2 border border-white/10 rounded-lg text-sm"
                           disabled
                         />
                       ) : field.type === 'textarea' ? (
                         <textarea
                           placeholder={field.placeholder}
                           rows={4}
-                          className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm"
+                          className="w-full px-4 py-2 border border-white/10 rounded-lg text-sm"
                           disabled
                         />
                       ) : field.type === 'select' ? (
-                        <select className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm" disabled>
+                        <select className="w-full px-4 py-2 border border-white/10 rounded-lg text-sm" disabled>
                           <option>Select an option</option>
                           {field.options?.map((option: string, i: number) => (
                             <option key={i}>{option}</option>
@@ -1275,7 +1275,7 @@ function FormViewModal({ form, onClose }: { form: any, onClose: () => void }) {
                       ) : field.type === 'date' ? (
                         <input
                           type="date"
-                          className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm"
+                          className="w-full px-4 py-2 border border-white/10 rounded-lg text-sm"
                           disabled
                         />
                       ) : field.type === 'checkbox-group' ? (
@@ -1283,7 +1283,7 @@ function FormViewModal({ form, onClose }: { form: any, onClose: () => void }) {
                           {field.options?.map((option: string, i: number) => (
                             <label key={i} className="flex items-center gap-2">
                               <input type="checkbox" disabled className="rounded" />
-                              <span className="text-sm text-gray-700">{option}</span>
+                              <span className="text-sm text-slate-300">{option}</span>
                             </label>
                           ))}
                         </div>
@@ -1300,7 +1300,7 @@ function FormViewModal({ form, onClose }: { form: any, onClose: () => void }) {
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between p-6 border-t border-gray-200 bg-gray-50">
+        <div className="flex items-center justify-between p-6 border-t border-white/10 bg-white/5">
           <div className="flex gap-3">
             <Button type="button" variant="outline" onClick={() => alert('Edit functionality')}>
               <Edit className="w-4 h-4 mr-2" />
@@ -1349,23 +1349,23 @@ function FormEditModal({ form, onClose, onSave }: { form: any, onClose: () => vo
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-lg shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gradient-to-r from-purple-50 to-indigo-50">
+        <div className="flex items-center justify-between p-6 border-b border-white/10 bg-gradient-to-r from-purple-50 to-indigo-50">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-lg bg-purple-600 flex items-center justify-center">
               <Edit className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-gray-900">Edit Form</h2>
-              <p className="text-sm text-gray-600">{form.id}</p>
+              <h2 className="text-2xl font-bold text-slate-100">Edit Form</h2>
+              <p className="text-sm text-slate-300">{form.id}</p>
             </div>
           </div>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600 transition-colors">
+          <button onClick={onClose} className="text-gray-400 hover:text-slate-300 transition-colors">
             <X className="w-6 h-6" />
           </button>
         </div>
 
         {/* Tabs */}
-        <div className="border-b border-gray-200">
+        <div className="border-b border-white/10">
           <div className="flex px-6">
             {[
               { id: 'settings', label: 'Settings', icon: Settings },
@@ -1379,8 +1379,8 @@ function FormEditModal({ form, onClose, onSave }: { form: any, onClose: () => vo
                   onClick={() => setActiveEditTab(tab.id as any)}
                   className={`flex items-center gap-2 px-4 py-3 border-b-2 transition-colors ${
                     activeEditTab === tab.id
-                      ? 'border-purple-600 text-purple-600 font-medium'
-                      : 'border-transparent text-gray-600 hover:text-gray-900'
+                      ? 'border-purple-600 text-purple-400 font-medium'
+                      : 'border-transparent text-slate-300 hover:text-slate-100'
                   }`}
                 >
                   <Icon className="w-4 h-4" />
@@ -1396,7 +1396,7 @@ function FormEditModal({ form, onClose, onSave }: { form: any, onClose: () => vo
           {activeEditTab === 'settings' && (
             <div className="space-y-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-slate-300 mb-2">
                   Form Name *
                 </label>
                 <input
@@ -1404,15 +1404,15 @@ function FormEditModal({ form, onClose, onSave }: { form: any, onClose: () => vo
                   placeholder="e.g., Contact Us Form"
                   value={formName}
                   onChange={(e) => setFormName(e.target.value)}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className="w-full px-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-slate-300 mb-2">
                   Form Status
                 </label>
-                <select className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+                <select className="w-full px-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
                   <option value="active">Active</option>
                   <option value="draft">Draft</option>
                   <option value="archived">Archived</option>
@@ -1420,25 +1420,25 @@ function FormEditModal({ form, onClose, onSave }: { form: any, onClose: () => vo
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-slate-300 mb-2">
                   Success Message
                 </label>
                 <textarea
                   rows={3}
                   placeholder="Thank you for your submission!"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className="w-full px-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-slate-300 mb-2">
                   Submit Button Text
                 </label>
                 <input
                   type="text"
                   placeholder="Submit"
                   defaultValue="Submit"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className="w-full px-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
                 />
               </div>
             </div>
@@ -1447,7 +1447,7 @@ function FormEditModal({ form, onClose, onSave }: { form: any, onClose: () => vo
           {activeEditTab === 'fields' && (
             <div className="space-y-6">
               <div className="flex items-center justify-between">
-                <h3 className="font-semibold text-gray-900">Form Fields</h3>
+                <h3 className="font-semibold text-slate-100">Form Fields</h3>
                 <Button type="button" size="sm" onClick={handleAddField}>
                   <Plus className="w-4 h-4 mr-2" />
                   Add Field
@@ -1456,12 +1456,12 @@ function FormEditModal({ form, onClose, onSave }: { form: any, onClose: () => vo
 
               <div className="space-y-3">
                 {formFields.map((field: any, idx: number) => (
-                  <div key={field.id} className="bg-gray-50 rounded-lg border border-gray-200 p-4">
+                  <div key={field.id} className="bg-white/5 rounded-lg border border-white/10 p-4">
                     <div className="flex items-start gap-4">
                       <div className="flex-1 space-y-3">
                         <div className="grid grid-cols-2 gap-3">
                           <div>
-                            <label className="block text-xs font-medium text-gray-600 mb-1">
+                            <label className="block text-xs font-medium text-slate-300 mb-1">
                               Field Label
                             </label>
                             <input
@@ -1472,11 +1472,11 @@ function FormEditModal({ form, onClose, onSave }: { form: any, onClose: () => vo
                                 updated[idx].label = e.target.value;
                                 setFormFields(updated);
                               }}
-                              className="w-full px-3 py-2 border border-gray-300 rounded text-sm"
+                              className="w-full px-3 py-2 border border-white/10 rounded text-sm"
                             />
                           </div>
                           <div>
-                            <label className="block text-xs font-medium text-gray-600 mb-1">
+                            <label className="block text-xs font-medium text-slate-300 mb-1">
                               Field Type
                             </label>
                             <select
@@ -1486,7 +1486,7 @@ function FormEditModal({ form, onClose, onSave }: { form: any, onClose: () => vo
                                 updated[idx].type = e.target.value;
                                 setFormFields(updated);
                               }}
-                              className="w-full px-3 py-2 border border-gray-300 rounded text-sm"
+                              className="w-full px-3 py-2 border border-white/10 rounded text-sm"
                             >
                               <option value="text">Text</option>
                               <option value="email">Email</option>
@@ -1511,14 +1511,14 @@ function FormEditModal({ form, onClose, onSave }: { form: any, onClose: () => vo
                               }}
                               className="rounded"
                             />
-                            <span className="text-xs text-gray-700">Required field</span>
+                            <span className="text-xs text-slate-300">Required field</span>
                           </label>
                         </div>
                       </div>
 
                       <button
                         onClick={() => handleRemoveField(field.id)}
-                        className="text-red-600 hover:text-red-700 p-2"
+                        className="text-red-400 hover:text-red-300 p-2"
                       >
                         <Trash2 className="w-4 h-4" />
                       </button>
@@ -1528,9 +1528,9 @@ function FormEditModal({ form, onClose, onSave }: { form: any, onClose: () => vo
               </div>
 
               {formFields.length === 0 && (
-                <div className="text-center py-12 bg-gray-50 rounded-lg">
+                <div className="text-center py-12 bg-white/5 rounded-lg">
                   <FileText className="w-16 h-16 mx-auto mb-4 text-gray-400" />
-                  <p className="text-gray-600 mb-4">No fields added yet</p>
+                  <p className="text-slate-300 mb-4">No fields added yet</p>
                   <Button type="button" onClick={handleAddField}>
                     <Plus className="w-4 h-4 mr-2" />
                     Add Your First Field
@@ -1580,32 +1580,32 @@ function FormEditModal({ form, onClose, onSave }: { form: any, onClose: () => vo
               </div>
 
               {/* AI Insights */}
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
                 <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
-                    <Sparkles className="w-5 h-5 text-blue-600" />
+                  <div className="w-10 h-10 rounded-lg bg-blue-500/15 flex items-center justify-center flex-shrink-0">
+                    <Sparkles className="w-5 h-5 text-blue-400" />
                   </div>
                   <div className="flex-1">
-                    <h4 className="font-semibold text-blue-900 mb-2">AI Recommendations</h4>
-                    <ul className="space-y-2 text-sm text-blue-800">
+                    <h4 className="font-semibold text-blue-300 mb-2">AI Recommendations</h4>
+                    <ul className="space-y-2 text-sm text-blue-300">
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
                         <span>Reduce form fields from {formFields.length} to {Math.max(3, Math.floor(formFields.length * 0.6))} for 34% higher conversion</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
                         <span>Add progress indicator for multi-step forms - increases completion by 28%</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
                         <span>Use action-oriented button text like "Get Started" instead of "Submit"</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
                         <span>Add trust indicators (SSL badge, privacy policy link) for 23% boost</span>
                       </li>
                     </ul>
-                    <button className="mt-4 text-sm font-medium text-blue-700 hover:text-blue-800 flex items-center gap-2">
+                    <button className="mt-4 text-sm font-medium text-blue-300 hover:text-blue-300 flex items-center gap-2">
                       Apply All Recommendations
                       <ArrowRight className="w-4 h-4" />
                     </button>
@@ -1614,12 +1614,12 @@ function FormEditModal({ form, onClose, onSave }: { form: any, onClose: () => vo
               </div>
 
               {/* Manual Styling Options */}
-              <div className="bg-white border border-gray-300 rounded-lg p-6">
-                <h3 className="font-semibold text-gray-900 mb-4">Manual Styling</h3>
+              <div className="bg-white border border-white/10 rounded-lg p-6">
+                <h3 className="font-semibold text-slate-100 mb-4">Manual Styling</h3>
                 <div className="space-y-6">
                   {/* Color Scheme */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-3">
+                    <label className="block text-sm font-medium text-slate-300 mb-3">
                       Color Scheme
                     </label>
                     <div className="grid grid-cols-4 gap-3">
@@ -1632,13 +1632,13 @@ function FormEditModal({ form, onClose, onSave }: { form: any, onClose: () => vo
                         <button
                           key={scheme.name}
                           type="button"
-                          className="p-3 border-2 border-gray-300 rounded-lg hover:border-gray-400 transition-colors"
+                          className="p-3 border-2 border-white/10 rounded-lg hover:border-gray-400 transition-colors"
                         >
                           <div className="flex gap-2 mb-2">
                             <div className="w-8 h-8 rounded" style={{ backgroundColor: scheme.primary }} />
                             <div className="w-8 h-8 rounded" style={{ backgroundColor: scheme.secondary }} />
                           </div>
-                          <p className="text-xs font-medium text-gray-700">{scheme.name}</p>
+                          <p className="text-xs font-medium text-slate-300">{scheme.name}</p>
                         </button>
                       ))}
                     </div>
@@ -1646,10 +1646,10 @@ function FormEditModal({ form, onClose, onSave }: { form: any, onClose: () => vo
 
                   {/* Typography */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-slate-300 mb-2">
                       Font Family
                     </label>
-                    <select className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    <select className="w-full px-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500">
                       <option>Inter (Recommended)</option>
                       <option>Roboto</option>
                       <option>Open Sans</option>
@@ -1661,20 +1661,20 @@ function FormEditModal({ form, onClose, onSave }: { form: any, onClose: () => vo
 
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-slate-300 mb-2">
                         Font Size
                       </label>
-                      <select className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm">
+                      <select className="w-full px-4 py-2 border border-white/10 rounded-lg text-sm">
                         <option>Small (14px)</option>
                         <option>Medium (16px)</option>
                         <option>Large (18px)</option>
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-slate-300 mb-2">
                         Label Position
                       </label>
-                      <select className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm">
+                      <select className="w-full px-4 py-2 border border-white/10 rounded-lg text-sm">
                         <option>Above Field</option>
                         <option>Left of Field</option>
                         <option>Inside Field (Floating)</option>
@@ -1684,7 +1684,7 @@ function FormEditModal({ form, onClose, onSave }: { form: any, onClose: () => vo
 
                   {/* Layout */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-3">
+                    <label className="block text-sm font-medium text-slate-300 mb-3">
                       Form Layout
                     </label>
                     <div className="grid grid-cols-3 gap-3">
@@ -1696,10 +1696,10 @@ function FormEditModal({ form, onClose, onSave }: { form: any, onClose: () => vo
                         <button
                           key={layout.name}
                           type="button"
-                          className="p-4 border-2 border-gray-300 rounded-lg hover:border-purple-500 transition-colors text-center"
+                          className="p-4 border-2 border-white/10 rounded-lg hover:border-purple-500 transition-colors text-center"
                         >
                           <div className="text-3xl mb-2 text-gray-400">{layout.icon}</div>
-                          <p className="text-xs font-medium text-gray-700">{layout.name}</p>
+                          <p className="text-xs font-medium text-slate-300">{layout.name}</p>
                         </button>
                       ))}
                     </div>
@@ -1707,7 +1707,7 @@ function FormEditModal({ form, onClose, onSave }: { form: any, onClose: () => vo
 
                   {/* Field Style */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-slate-300 mb-2">
                       Field Border Style
                     </label>
                     <div className="grid grid-cols-4 gap-3">
@@ -1720,13 +1720,13 @@ function FormEditModal({ form, onClose, onSave }: { form: any, onClose: () => vo
                         <button
                           key={style.name}
                           type="button"
-                          className="p-3 border-2 border-gray-300 rounded-lg hover:border-purple-500 transition-colors"
+                          className="p-3 border-2 border-white/10 rounded-lg hover:border-purple-500 transition-colors"
                         >
                           <div 
-                            className="w-full h-8 bg-gray-100 border-2 border-gray-400 mb-2" 
+                            className="w-full h-8 bg-white/5 border-2 border-gray-400 mb-2" 
                             style={{ borderRadius: style.value }}
                           />
-                          <p className="text-xs font-medium text-gray-700">{style.name}</p>
+                          <p className="text-xs font-medium text-slate-300">{style.name}</p>
                         </button>
                       ))}
                     </div>
@@ -1734,24 +1734,24 @@ function FormEditModal({ form, onClose, onSave }: { form: any, onClose: () => vo
 
                   {/* Button Style */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-3">
+                    <label className="block text-sm font-medium text-slate-300 mb-3">
                       Submit Button Style
                     </label>
                     <div className="grid grid-cols-3 gap-3">
                       {[
                         { name: 'Solid', class: 'bg-purple-600 text-white' },
-                        { name: 'Outline', class: 'bg-white border-2 border-purple-600 text-purple-600' },
+                        { name: 'Outline', class: 'bg-white border-2 border-purple-600 text-purple-400' },
                         { name: 'Gradient', class: 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white' }
                       ].map((style) => (
                         <button
                           key={style.name}
                           type="button"
-                          className="p-3 border-2 border-gray-300 rounded-lg hover:border-purple-500 transition-colors"
+                          className="p-3 border-2 border-white/10 rounded-lg hover:border-purple-500 transition-colors"
                         >
                           <div className={`w-full py-2 rounded font-medium text-sm mb-2 ${style.class}`}>
                             Submit
                           </div>
-                          <p className="text-xs font-medium text-gray-700">{style.name}</p>
+                          <p className="text-xs font-medium text-slate-300">{style.name}</p>
                         </button>
                       ))}
                     </div>
@@ -1759,8 +1759,8 @@ function FormEditModal({ form, onClose, onSave }: { form: any, onClose: () => vo
 
                   {/* Spacing */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Field Spacing: <span className="font-normal text-gray-500">16px</span>
+                    <label className="block text-sm font-medium text-slate-300 mb-2">
+                      Field Spacing: <span className="font-normal text-slate-400">16px</span>
                     </label>
                     <input
                       type="range"
@@ -1773,10 +1773,10 @@ function FormEditModal({ form, onClose, onSave }: { form: any, onClose: () => vo
 
                   {/* Form Width */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-slate-300 mb-2">
                       Form Width
                     </label>
-                    <select className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm">
+                    <select className="w-full px-4 py-2 border border-white/10 rounded-lg text-sm">
                       <option>Narrow (400px)</option>
                       <option>Medium (600px)</option>
                       <option>Wide (800px)</option>
@@ -1787,20 +1787,20 @@ function FormEditModal({ form, onClose, onSave }: { form: any, onClose: () => vo
               </div>
 
               {/* AI Design History */}
-              <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
-                <h3 className="font-semibold text-gray-900 mb-4">AI Design History</h3>
+              <div className="bg-white/5 border border-white/10 rounded-lg p-6">
+                <h3 className="font-semibold text-slate-100 mb-4">AI Design History</h3>
                 <div className="space-y-3">
                   {[
                     { action: 'Optimized button placement', time: '2 hours ago', impact: '+12% conversion' },
                     { action: 'Reduced form fields', time: '1 day ago', impact: '+18% completion' },
                     { action: 'Applied color scheme', time: '3 days ago', impact: '+8% engagement' }
                   ].map((item, idx) => (
-                    <div key={idx} className="flex items-center justify-between py-2 border-b border-gray-200 last:border-0">
+                    <div key={idx} className="flex items-center justify-between py-2 border-b border-white/10 last:border-0">
                       <div>
-                        <p className="text-sm font-medium text-gray-900">{item.action}</p>
-                        <p className="text-xs text-gray-500">{item.time}</p>
+                        <p className="text-sm font-medium text-slate-100">{item.action}</p>
+                        <p className="text-xs text-slate-400">{item.time}</p>
                       </div>
-                      <span className="px-2 py-1 bg-green-100 text-green-700 rounded text-xs font-medium">
+                      <span className="px-2 py-1 bg-green-500/15 text-green-300 rounded text-xs font-medium">
                         {item.impact}
                       </span>
                     </div>
@@ -1812,7 +1812,7 @@ function FormEditModal({ form, onClose, onSave }: { form: any, onClose: () => vo
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between p-6 border-t border-gray-200 bg-gray-50">
+        <div className="flex items-center justify-between p-6 border-t border-white/10 bg-white/5">
           <div className="flex gap-3">
             <Button type="button" variant="outline" onClick={onClose}>
               Cancel

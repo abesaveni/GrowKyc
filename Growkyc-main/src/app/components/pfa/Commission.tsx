@@ -132,13 +132,13 @@ export function Commission({ onNavigate, onBack }: CommissionProps) {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'paid':
-        return 'bg-green-100 text-green-700 border-green-300';
+        return 'bg-green-500/15 text-green-300 border-green-300';
       case 'pending':
-        return 'bg-yellow-100 text-yellow-700 border-yellow-300';
+        return 'bg-yellow-500/15 text-yellow-300 border-yellow-300';
       case 'processing':
-        return 'bg-blue-100 text-blue-700 border-blue-300';
+        return 'bg-blue-500/15 text-blue-300 border-blue-300';
       default:
-        return 'bg-gray-100 text-gray-700 border-gray-300';
+        return 'bg-white/5 text-slate-300 border-white/10';
     }
   };
 
@@ -166,8 +166,8 @@ export function Commission({ onNavigate, onBack }: CommissionProps) {
             </Button>
           )}
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">Commission Management</h1>
-            <p className="text-gray-600 mt-1">Track and manage your commission earnings</p>
+            <h1 className="text-3xl font-bold text-slate-100">Commission Management</h1>
+            <p className="text-slate-300 mt-1">Track and manage your commission earnings</p>
           </div>
         </div>
         <div className="flex gap-3">
@@ -187,18 +187,18 @@ export function Commission({ onNavigate, onBack }: CommissionProps) {
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                <DollarSign className="w-6 h-6 text-green-600" />
+              <div className="w-12 h-12 bg-green-500/15 rounded-lg flex items-center justify-center">
+                <DollarSign className="w-6 h-6 text-green-400" />
               </div>
-              <span className="text-xs font-medium text-green-600 bg-green-100 px-2 py-1 rounded">
+              <span className="text-xs font-medium text-green-400 bg-green-500/15 px-2 py-1 rounded">
                 This Month
               </span>
             </div>
-            <p className="text-sm text-gray-600 mb-1">Total Earned</p>
-            <p className="text-2xl font-bold text-gray-900">
+            <p className="text-sm text-slate-300 mb-1">Total Earned</p>
+            <p className="text-2xl font-bold text-slate-100">
               ${commissionSummary.thisMonth.total.toLocaleString()}
             </p>
-            <p className="text-xs text-gray-500 mt-2">
+            <p className="text-xs text-slate-400 mt-2">
               From {commissionSummary.thisMonth.deals} deals
             </p>
           </CardContent>
@@ -207,15 +207,15 @@ export function Commission({ onNavigate, onBack }: CommissionProps) {
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                <CheckCircle className="w-6 h-6 text-blue-600" />
+              <div className="w-12 h-12 bg-blue-500/15 rounded-lg flex items-center justify-center">
+                <CheckCircle className="w-6 h-6 text-blue-400" />
               </div>
             </div>
-            <p className="text-sm text-gray-600 mb-1">Paid</p>
-            <p className="text-2xl font-bold text-blue-900">
+            <p className="text-sm text-slate-300 mb-1">Paid</p>
+            <p className="text-2xl font-bold text-blue-300">
               ${commissionSummary.thisMonth.paid.toLocaleString()}
             </p>
-            <p className="text-xs text-green-600 mt-2 flex items-center gap-1">
+            <p className="text-xs text-green-400 mt-2 flex items-center gap-1">
               <TrendingUp className="w-3 h-3" />
               71% of total
             </p>
@@ -225,15 +225,15 @@ export function Commission({ onNavigate, onBack }: CommissionProps) {
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
-                <Clock className="w-6 h-6 text-yellow-600" />
+              <div className="w-12 h-12 bg-yellow-500/15 rounded-lg flex items-center justify-center">
+                <Clock className="w-6 h-6 text-yellow-400" />
               </div>
             </div>
-            <p className="text-sm text-gray-600 mb-1">Pending</p>
-            <p className="text-2xl font-bold text-yellow-900">
+            <p className="text-sm text-slate-300 mb-1">Pending</p>
+            <p className="text-2xl font-bold text-yellow-300">
               ${commissionSummary.thisMonth.pending.toLocaleString()}
             </p>
-            <p className="text-xs text-gray-500 mt-2">
+            <p className="text-xs text-slate-400 mt-2">
               Expected in 7-14 days
             </p>
           </CardContent>
@@ -242,15 +242,15 @@ export function Commission({ onNavigate, onBack }: CommissionProps) {
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                <TrendingUp className="w-6 h-6 text-purple-600" />
+              <div className="w-12 h-12 bg-purple-500/15 rounded-lg flex items-center justify-center">
+                <TrendingUp className="w-6 h-6 text-purple-400" />
               </div>
             </div>
-            <p className="text-sm text-gray-600 mb-1">Year to Date</p>
-            <p className="text-2xl font-bold text-purple-900">
+            <p className="text-sm text-slate-300 mb-1">Year to Date</p>
+            <p className="text-2xl font-bold text-purple-300">
               ${commissionSummary.ytd.total.toLocaleString()}
             </p>
-            <p className="text-xs text-gray-500 mt-2">
+            <p className="text-xs text-slate-400 mt-2">
               From {commissionSummary.ytd.deals} deals
             </p>
           </CardContent>
@@ -268,13 +268,13 @@ export function Commission({ onNavigate, onBack }: CommissionProps) {
                 placeholder="Search by client, deal ID, or commission ID..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full pl-10 pr-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
             <select
               value={selectedPeriod}
               onChange={(e) => setSelectedPeriod(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
             >
               <option value="this-month">This Month</option>
               <option value="last-month">Last Month</option>
@@ -300,12 +300,12 @@ export function Commission({ onNavigate, onBack }: CommissionProps) {
             {filteredCommissions.map((commission) => (
               <div
                 key={commission.id}
-                className="border border-gray-200 rounded-lg p-4 hover:border-indigo-300 hover:shadow-md transition-all"
+                className="border border-white/10 rounded-lg p-4 hover:border-indigo-300 hover:shadow-md transition-all"
               >
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
-                      <h3 className="font-semibold text-gray-900">{commission.client}</h3>
+                      <h3 className="font-semibold text-slate-100">{commission.client}</h3>
                       <span className={`px-3 py-1 rounded-full text-xs font-semibold border flex items-center gap-1 ${getStatusColor(commission.status)}`}>
                         {getStatusIcon(commission.status)}
                         {commission.status.charAt(0).toUpperCase() + commission.status.slice(1)}
@@ -313,39 +313,39 @@ export function Commission({ onNavigate, onBack }: CommissionProps) {
                     </div>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
                       <div>
-                        <p className="text-gray-500">Commission ID</p>
-                        <p className="font-medium text-gray-900">{commission.id}</p>
+                        <p className="text-slate-400">Commission ID</p>
+                        <p className="font-medium text-slate-100">{commission.id}</p>
                       </div>
                       <div>
-                        <p className="text-gray-500">Deal ID</p>
-                        <p className="font-medium text-gray-900">{commission.dealId}</p>
+                        <p className="text-slate-400">Deal ID</p>
+                        <p className="font-medium text-slate-100">{commission.dealId}</p>
                       </div>
                       <div>
-                        <p className="text-gray-500">Loan Amount</p>
-                        <p className="font-medium text-gray-900">${commission.loanAmount.toLocaleString()}</p>
+                        <p className="text-slate-400">Loan Amount</p>
+                        <p className="font-medium text-slate-100">${commission.loanAmount.toLocaleString()}</p>
                       </div>
                       <div>
-                        <p className="text-gray-500">Commission Rate</p>
-                        <p className="font-medium text-gray-900">{commission.commissionRate}%</p>
+                        <p className="text-slate-400">Commission Rate</p>
+                        <p className="font-medium text-slate-100">{commission.commissionRate}%</p>
                       </div>
                     </div>
                   </div>
                   <div className="text-right ml-4">
-                    <p className="text-2xl font-bold text-indigo-600">
+                    <p className="text-2xl font-bold text-indigo-400">
                       ${commission.commissionAmount.toLocaleString()}
                     </p>
-                    <p className="text-xs text-gray-500 mt-1">
+                    <p className="text-xs text-slate-400 mt-1">
                       {commission.status === 'paid' ? (
-                        <span className="text-green-600">Paid {commission.paidDate}</span>
+                        <span className="text-green-400">Paid {commission.paidDate}</span>
                       ) : (
-                        <span className="text-yellow-600">Expected {commission.expectedDate}</span>
+                        <span className="text-yellow-400">Expected {commission.expectedDate}</span>
                       )}
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between pt-3 border-t border-gray-200">
-                  <div className="flex items-center gap-4 text-sm text-gray-600">
+                <div className="flex items-center justify-between pt-3 border-t border-white/10">
+                  <div className="flex items-center gap-4 text-sm text-slate-300">
                     <div className="flex items-center gap-1">
                       <Calendar className="w-4 h-4" />
                       Settled: {commission.settledDate}
@@ -373,7 +373,7 @@ export function Commission({ onNavigate, onBack }: CommissionProps) {
           {filteredCommissions.length === 0 && (
             <div className="text-center py-12">
               <DollarSign className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-              <p className="text-gray-600">No commissions found matching your search.</p>
+              <p className="text-slate-300">No commissions found matching your search.</p>
             </div>
           )}
         </CardContent>
