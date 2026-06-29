@@ -1096,7 +1096,7 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
                     onClick={() => openAUSTRACCentre(navigate, rolePath)}
                     className="text-white hover:bg-white/10 px-2 3xl:px-3 text-xs 3xl:text-sm h-9 flex items-center justify-center flex-shrink-0"
                   >
-                    <Shield className="w-4 h-4 mr-1.5 text-amber-300 animate-pulse flex-shrink-0" />
+                    <Shield className="w-4 h-4 mr-1.5 flex-shrink-0" />
                     <span>AUSTRAC Compliance</span>
                   </Button>
                 )}

@@ -116,6 +116,25 @@ export function AuditEvidencePack({ onBack }: AuditEvidencePackProps = {}) {
   const current = REGISTERS[selectedReport];
   const table = REGISTER_TABLES[selectedReport];
 
+  // Real client-side CSV export of the currently-selected register.
+  const exportCsv = () => {
+    if (!table) return;
+    const esc = (c: string) => `"${String(c).replace(/"/g, '""')}"`;
+    const csv = [table.columns, ...table.rows]
+      .map((row) => row.map(esc).join(','))
+      .join('\r\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${current.label.replace(/[^a-z0-9]+/gi, '_')}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+    toast.success(`Exported ${table.rows.length} record(s) to CSV`);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 p-6 md:p-8">
       <div className="max-w-[1600px] mx-auto space-y-6">
@@ -177,7 +196,7 @@ export function AuditEvidencePack({ onBack }: AuditEvidencePackProps = {}) {
                 <CardTitle className="text-lg">{current.label}</CardTitle>
                 <div className="flex gap-2">
                   <Button variant="outline" size="sm" onClick={() => toast.info('Opening filters…')}><Filter className="w-4 h-4 mr-2" />Filters</Button>
-                  <Button size="sm" onClick={() => toast.info('Generating Excel export…')} className="bg-blue-600 hover:bg-blue-700 text-white"><Download className="w-4 h-4 mr-2" />Export Excel</Button>
+                  <Button size="sm" onClick={exportCsv} className="bg-blue-600 hover:bg-blue-700 text-white"><Download className="w-4 h-4 mr-2" />Export CSV</Button>
                 </div>
               </div>
             </CardHeader>
