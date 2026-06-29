@@ -28,6 +28,7 @@ from routers import (admin, auth, clients, communications, compatibility,
                      dashboard, documents, integrations, kyc, notifications, payments, pexa,
                      route_aliases, square_payments)
 from routers.ai import router as ai_router
+from routers.alerts import router as alerts_router
 from routers.cases import router as cases_router
 from routers.didit import router as didit_router
 from routers.edd import router as edd_router
@@ -490,6 +491,13 @@ app.include_router(
 # Phase 8: Regulatory Reporting router
 app.include_router(
     reports_router,
+    prefix=f"/{api_prefix}",
+    responses={401: {"model": ErrorResponse}, 403: {"model": ErrorResponse}},
+)
+
+# Monitoring / Alerts router
+app.include_router(
+    alerts_router,
     prefix=f"/{api_prefix}",
     responses={401: {"model": ErrorResponse}, 403: {"model": ErrorResponse}},
 )

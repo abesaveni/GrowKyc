@@ -911,16 +911,8 @@ async def compat_list_findings(
     }
 
 
-@router.post("/alerts", status_code=status.HTTP_201_CREATED)
-async def compat_create_alert(payload: Dict[str, Any] = Body(default_factory=dict)):
-    return accepted("/alerts", alertId=f"alert-{uuid4().hex[:8]}", payload=payload)
-
-
-@router.post("/alerts/{alert_id}/resolve")
-async def compat_resolve_alert(
-    alert_id: str, payload: Dict[str, Any] = Body(default_factory=dict)
-):
-    return accepted(f"/alerts/{alert_id}/resolve", alertId=alert_id, payload=payload)
+# NOTE: the /alerts and /alerts/{id}/resolve stubs were removed — the real
+# monitoring alerts API is now served by routers/alerts.py.
 
 
 @router.post("/periodic-reviews", status_code=status.HTTP_201_CREATED)
