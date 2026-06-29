@@ -1129,14 +1129,14 @@ export function AUSTRACControlCentre({ navigateTo, goBack, defaultSelectedCaseId
 
         {/* Create Manual Case Referral Dialog */}
         <Dialog open={showReferralModal} onOpenChange={setShowReferralModal}>
-          <DialogContent className="max-w-[95vw] w-[1500px] xl:max-w-[85vw] max-h-[95vh] overflow-y-auto p-6 bg-white rounded-xl shadow-2xl">
+          <DialogContent className="max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 bg-white rounded-xl shadow-2xl">
             <DialogHeader className="border-b pb-4 mb-4">
-              <DialogTitle className="text-3xl font-bold flex items-center gap-2 text-red-900">
-                <AlertTriangle className="w-8 h-8 text-red-600" />
-                Manual Case Referral
+              <DialogTitle className="text-xl font-semibold flex items-center gap-2 text-gray-900">
+                <AlertTriangle className="w-5 h-5 text-slate-600" />
+                Create Manual Case
               </DialogTitle>
-              <DialogDescription className="text-gray-600 text-sm">
-                Fill in the details below to log a suspicious activity manually. The compliance officer will review it within target SLAs.
+              <DialogDescription className="text-gray-500 text-sm">
+                Log a suspicious matter manually. A compliance officer will review it within target SLAs.
               </DialogDescription>
             </DialogHeader>
             <InternalReferral

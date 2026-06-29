@@ -223,7 +223,7 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
 
   return (
     <div className={isEmbed ? "bg-white p-4" : "min-h-screen bg-gray-50 p-8"}>
-      <div className="max-w-[1400px] mx-auto space-y-6">
+      <div className="w-full space-y-6">
         {/* Header */}
         {!isEmbed && (
           <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white shadow-xl">
@@ -267,9 +267,9 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
           </CardContent>
         </Card>
 
-        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-5">
           {/* Left Column - Subject Selection */}
-          <Card className="border-2 border-purple-300 shadow-lg">
+          <Card className="border border-gray-200">
             <CardHeader className="bg-gray-50 border-b">
               <CardTitle className="flex items-center gap-2">
                 <User className="w-6 h-6 text-purple-600" />
@@ -323,7 +323,7 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
               </div>
 
               {selectedSubject && (
-                <div className="p-4 bg-green-50 rounded-lg border-2 border-green-300">
+                <div className="p-4 bg-green-50 rounded-lg border border-gray-200">
                   <div className="flex items-center gap-2 mb-2">
                     <CheckCircle className="w-5 h-5 text-green-600" />
                     <span className="font-bold text-green-900">Subject Selected</span>
@@ -336,7 +336,7 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
           </Card>
 
           {/* Center Column - Concern Details */}
-          <Card className="lg:col-span-2 border-2 border-orange-300 shadow-lg">
+          <Card className="lg:col-span-2 border border-gray-200">
             <CardHeader className="bg-gray-50 border-b">
               <CardTitle className="flex items-center gap-2">
                 <FileText className="w-6 h-6 text-orange-600" />
@@ -461,7 +461,7 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
               </div>
 
               {/* Immediate Service Hold */}
-              <div className="p-6 bg-red-50 rounded-lg border-2 border-red-300">
+              <div className="p-6 bg-red-50 rounded-lg border border-gray-200">
                 <label className="flex items-start gap-3">
                   <input
                     type="checkbox"
@@ -487,7 +487,7 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
               </div>
 
               {immediateHold && (
-                <div className="p-4 bg-amber-50 rounded-lg border-2 border-amber-300">
+                <div className="p-4 bg-amber-50 rounded-lg border border-gray-200">
                   <label className="block text-sm font-bold text-amber-900 mb-2">
                     Reason for Immediate Hold *
                   </label>
@@ -495,7 +495,7 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
                     rows={3}
                     value={immediateHoldReason}
                     onChange={(e) => setImmediateHoldReason(e.target.value)}
-                    className="w-full px-4 py-3 border-2 border-amber-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
                     placeholder="Explain why immediate service suspension is required..."
                   />
                 </div>
@@ -548,12 +548,12 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
 
         {/* Confirmation Banner */}
         {immediateHold && (
-          <Card className="border-4 border-red-500 bg-red-50 shadow-2xl animate-pulse">
+          <Card className="border border-red-200 bg-red-50">
             <CardContent className="p-6">
               <div className="flex items-center gap-4">
                 <Ban className="w-16 h-16 text-red-600 flex-shrink-0" />
                 <div>
-                  <h3 className="text-2xl font-bold text-red-900 mb-2">Service Hold Will Be Applied</h3>
+                  <h3 className="text-base font-semibold text-red-700 mb-2">Service Hold Will Be Applied</h3>
                   <p className="text-red-800 text-lg">
                     Upon submission, all services for the selected client will be immediately placed under review.
                     The compliance team will be notified via email and SMS. This action cannot be undone.
