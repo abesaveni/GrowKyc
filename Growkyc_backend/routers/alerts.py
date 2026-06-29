@@ -21,9 +21,29 @@ from core.tenant_context import get_tenant_id, set_tenant_id
 from database import get_db
 from dependencies import get_admin_or_agent_user
 from models import Alert, Client, User
+from services.case_workflow_service import CaseWorkflowService
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/alerts", tags=["monitoring"])
+
+
+def _open_case_for_alert(db: Session, alert: Alert, actor: User) -> int:
+    """Open an investigation case for an alert and persist the link on the alert.
+
+    Returns the new case id. The caller commits.
+    """
+    priority = "high" if alert.severity in ("high", "critical") else "medium"
+    case = CaseWorkflowService(db).create_enterprise_case(
+        client_id=alert.client_id,
+        title=f"Alert #{alert.id}: {alert.title}",
+        description=alert.description or f"Escalated from monitoring alert #{alert.id} ({alert.alert_type}).",
+        priority=priority,
+        queue_name="investigation",
+        creator_id=actor.id,
+    )
+    alert.case_id = case.id
+    alert.status = "escalated"
+    return case.id
 
 VALID_STATUSES = {"open", "in_review", "escalated", "resolved", "dismissed", "false_positive"}
 VALID_SEVERITIES = {"low", "medium", "high", "critical"}
@@ -170,8 +190,32 @@ async def update_alert_status(
     return _serialize(alert)
 
 
+@router.post("/{alert_id}/escalate")
+async def escalate_alert_to_case(
+    alert_id: int,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_admin_or_agent_user),
+):
+    """Open an investigation case from an alert and link them (alert.case_id)."""
+    _bind_tenant(current_user)
+    alert = db.query(Alert).filter(Alert.id == alert_id).first()
+    if not alert:
+        raise HTTPException(status_code=404, detail="Alert not found")
+    if alert.case_id:
+        return {"alert_id": alert.id, "case_id": alert.case_id, "already_linked": True}
+    try:
+        case_id = _open_case_for_alert(db, alert, current_user)
+        db.commit()
+        return {"alert_id": alert.id, "case_id": case_id, "status": alert.status}
+    except Exception as e:
+        db.rollback()
+        logger.error(f"Failed to escalate alert {alert_id}: {e}")
+        raise HTTPException(status_code=400, detail=str(e))
+
+
 @router.post("/generate")
 async def generate_alerts(
+    auto_escalate: bool = Query(False, description="Auto-open a case for each critical alert"),
     db: Session = Depends(get_db),
     current_user: User = Depends(get_admin_or_agent_user),
 ):
@@ -199,22 +243,24 @@ async def generate_alerts(
             is not None
         )
 
+    new_alerts: list = []
+
     def raise_alert(c: Client, alert_type: str, severity: str, title: str, desc: str):
         nonlocal created
         if has_open(c.id, alert_type):
             return
-        db.add(
-            Alert(
-                client_id=c.id,
-                tenant_id=current_user.tenant_id,
-                alert_type=alert_type,
-                severity=severity,
-                title=title,
-                description=desc,
-                status="open",
-                triggered_by="risk_engine",
-            )
+        alert = Alert(
+            client_id=c.id,
+            tenant_id=current_user.tenant_id,
+            alert_type=alert_type,
+            severity=severity,
+            title=title,
+            description=desc,
+            status="open",
+            triggered_by="risk_engine",
         )
+        db.add(alert)
+        new_alerts.append(alert)
         created += 1
 
     for c in clients:
@@ -231,6 +277,17 @@ async def generate_alerts(
             raise_alert(c, "high_risk", sev, f"High risk score ({score}) — {name}",
                         f"Client risk score of {score} exceeds the monitoring threshold.")
 
+    escalated = 0
+    if auto_escalate and new_alerts:
+        db.flush()  # assign ids to the new alerts
+        for alert in new_alerts:
+            if alert.severity == "critical":
+                _open_case_for_alert(db, alert, current_user)
+                escalated += 1
+
     db.commit()
-    logger.info(f"Alert rule engine created {created} alert(s) by user {current_user.id}")
-    return {"created": created, "clients_scanned": len(clients)}
+    logger.info(
+        f"Alert rule engine created {created} alert(s), auto-escalated {escalated} "
+        f"by user {current_user.id}"
+    )
+    return {"created": created, "clients_scanned": len(clients), "escalated": escalated}

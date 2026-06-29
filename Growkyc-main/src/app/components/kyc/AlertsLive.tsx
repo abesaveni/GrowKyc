@@ -73,13 +73,16 @@ export function AlertsLive({ onBack }: { onBack?: () => void } = {}) {
 
   useEffect(() => { load(); loadClients(); }, [load, loadClients]);
 
-  const generate = async () => {
+  const generate = async (autoEscalate = false) => {
     setGenerating(true);
     try {
-      const res = await fetch('/api/v1/alerts/generate', { method: 'POST', headers: getAuthHeader() });
+      const res = await fetch(`/api/v1/alerts/generate${autoEscalate ? '?auto_escalate=true' : ''}`, {
+        method: 'POST', headers: getAuthHeader(),
+      });
       if (!res.ok) { toast.error(`Rule engine failed (${res.status})`); return; }
       const data = await res.json();
-      toast.success(`Rule engine: ${data.created} new alert(s) from ${data.clients_scanned} client(s)`);
+      const extra = data.escalated ? `, auto-opened ${data.escalated} case(s)` : '';
+      toast.success(`Rule engine: ${data.created} new alert(s) from ${data.clients_scanned} client(s)${extra}`);
       await load();
     } catch {
       toast.error('Network error running rule engine');
@@ -116,31 +119,19 @@ export function AlertsLive({ onBack }: { onBack?: () => void } = {}) {
     }
   };
 
-  // Cross-module workflow: turn an alert into a real investigation case, then
-  // mark the alert escalated. Mirrors how an AML team triages monitoring hits.
+  // Cross-module workflow: escalate an alert into a real investigation case.
+  // The backend opens the case AND links it (alert.case_id), then marks the
+  // alert escalated — one atomic call.
   const escalateToCase = async (a: Alert) => {
     setBusyId(a.id);
     try {
-      const priority = a.severity === 'critical' ? 'high' : a.severity === 'high' ? 'high' : 'medium';
-      const res = await fetch('/api/v1/cases', {
+      const res = await fetch(`/api/v1/alerts/${a.id}/escalate`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
-        body: JSON.stringify({
-          client_id: a.client_id,
-          title: `Alert #${a.id}: ${a.title}`,
-          description: a.description || `Escalated from monitoring alert #${a.id} (${a.alert_type}).`,
-          priority,
-          queue_name: 'investigation',
-        }),
+        headers: getAuthHeader(),
       });
       if (!res.ok) { toast.error(`Could not open case (${res.status})`); return; }
-      const c = await res.json();
-      await fetch(`/api/v1/alerts/${a.id}/status`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
-        body: JSON.stringify({ status: 'escalated' }),
-      });
-      toast.success(`Opened case #${c.case_id ?? '—'} from alert #${a.id}`);
+      const data = await res.json();
+      toast.success(`Opened case #${data.case_id ?? '—'} from alert #${a.id}`);
       await load();
     } catch {
       toast.error('Network error escalating alert');
@@ -200,7 +191,8 @@ export function AlertsLive({ onBack }: { onBack?: () => void } = {}) {
             </div>
           </div>
           <div className="ml-auto flex flex-wrap gap-2">
-            <Button variant="outline" size="sm" onClick={generate} disabled={generating}><Zap className={`w-4 h-4 mr-2 ${generating ? 'animate-pulse' : ''}`} />Run Rule Engine</Button>
+            <Button variant="outline" size="sm" onClick={() => generate(false)} disabled={generating}><Zap className={`w-4 h-4 mr-2 ${generating ? 'animate-pulse' : ''}`} />Run Rule Engine</Button>
+            <Button variant="outline" size="sm" className="text-indigo-700 border-indigo-200" onClick={() => generate(true)} disabled={generating}><Zap className="w-4 h-4 mr-2" />Run + Auto-escalate</Button>
             <Button variant="outline" size="sm" onClick={exportCsv}><Download className="w-4 h-4 mr-2" />Export CSV</Button>
             <Button variant="outline" size="sm" onClick={load} disabled={loading}><RefreshCw className={`w-4 h-4 mr-2 ${loading ? 'animate-spin' : ''}`} />Refresh</Button>
             <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white" onClick={() => setShowCreate(true)}><Plus className="w-4 h-4 mr-2" />New Alert</Button>
