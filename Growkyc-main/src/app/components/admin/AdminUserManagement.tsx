@@ -274,8 +274,8 @@ export function AdminUserManagement() {
       {/* Header + Create User */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">User Management</h1>
-          <p className="text-sm text-gray-500">Create users and assign compliance roles.</p>
+          <h1 className="text-2xl font-semibold text-white">User Management</h1>
+          <p className="text-sm text-slate-400">Create users and assign compliance roles.</p>
         </div>
         <Button onClick={() => setShowCreate(true)}>
           <UserCheck className="w-4 h-4 mr-2" />

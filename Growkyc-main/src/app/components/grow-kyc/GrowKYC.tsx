@@ -843,13 +843,15 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
   const isComplianceOfficer = selectedRole === 'compliance_officer';
 
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden">
+    <div className="min-h-screen bg-[#0a0e17] overflow-x-hidden">
       {/* Navigation Bar */}
       {currentView !== 'client_kyc_dashboard' && (
-        <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] border-b border-[#0E7C9E]/20 px-4 sm:px-6 py-3 sm:py-4 shadow-md">
+        <div className="bg-[#0d121d] border-b border-white/10 px-4 sm:px-6 py-3 sm:py-4 shadow-lg">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 sm:gap-4 max-w-[70%] sm:max-w-none">
-              <Shield className="w-6 h-6 sm:w-8 sm:h-8 text-white flex-shrink-0" />
+              <div className="size-8 sm:size-9 rounded-lg bg-gradient-to-br from-[#13B5EA] to-[#0E7C9E] flex items-center justify-center shadow-lg shadow-[#13B5EA]/20 flex-shrink-0">
+                <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+              </div>
               <div className="min-w-0">
                 <h1 className="text-lg sm:text-2xl font-bold text-white truncate">Grow KYC</h1>
                 <p className="text-[10px] sm:text-xs text-white/90 hidden sm:block truncate">
@@ -1250,7 +1252,7 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
 
       {/* Mobile Navigation Dropdown */}
       {currentView !== 'client_kyc_dashboard' && isMobileMenuOpen && (
-        <div className="2xl:hidden bg-gradient-to-b from-[#13B5EA] to-[#0E7C9E] border-b border-[#0E7C9E]/30 px-6 py-4 space-y-3 shadow-inner animate-in slide-in-from-top duration-200">
+        <div className="2xl:hidden bg-[#0d121d] border-b border-white/10 px-6 py-4 space-y-3 shadow-inner animate-in slide-in-from-top duration-200">
           <div className="flex flex-col gap-2">
             {selectedRole && IMFO_HEADER_ROLES.includes(selectedRole) && (() => {
               const persona = getPersonaConfig(selectedUser);
