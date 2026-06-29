@@ -63,6 +63,7 @@ import { EnterpriseUpgradeHub } from './EnterpriseUpgradeHub';
 import { KYCClientDetails } from './KYCClientDetails';
 import { InvoicesPage } from '../grow/InvoicesPage';
 import { AdminAuditLog } from '../admin/AdminAuditLog';
+import { AdminUserManagement } from '../admin/AdminUserManagement';
 
 type ViewRole = 'compliance_officer' | 'partner' | 'auditor' | 'analyst';
 type View =
@@ -89,7 +90,8 @@ type View =
   | 'enterprise_upgrade_hub'
   | 'client_review'
   | 'invoices'
-  | 'admin_audit_log';
+  | 'admin_audit_log'
+  | 'user_management';
 
 const getPersonaConfig = (userId: string) => {
   const configs: Record<string, { name: string; title: string; role: string }> = {
@@ -247,6 +249,29 @@ const VIEW_ROLE_TO_DASHBOARD: Record<ViewRole, View> = {
   analyst: 'compliance_dashboard',
 };
 
+// Title shown in the header + used to pick the correct dashboard variant
+// (e.g. "Head of Compliance" -> HeadOfComplianceDashboard).
+const CANONICAL_TO_TITLE: Record<string, string> = {
+  Head_of_Compliance: 'Head of Compliance',
+  MLRO: 'Head of Compliance',
+  Senior_Compliance_Officer: 'Senior Compliance Officer',
+  Compliance_Officer: 'Compliance Officer',
+  Partner: 'Managing Partner',
+  Managing_Partner: 'Managing Partner',
+  Analyst: 'AML Analyst',
+  AML_Analyst: 'AML Analyst',
+  Agent: 'AML Analyst',
+  Admin: 'System Administrator',
+  User: 'Client',
+};
+
+// The landing view for a user, given their canonical role. Admins land on the
+// User Management console; everyone else on their role dashboard.
+function defaultViewForRole(canonicalRole: string | undefined, viewRole: ViewRole): View {
+  if (canonicalRole === 'Admin') return 'user_management';
+  return VIEW_ROLE_TO_DASHBOARD[viewRole];
+}
+
 // Map each internal view to its URL suffix (WITHOUT role)
 const VIEW_TO_PATH_SUFFIX: Partial<Record<View, string>> = {
   role_selection: '/',
@@ -273,6 +298,7 @@ const VIEW_TO_PATH_SUFFIX: Partial<Record<View, string>> = {
   client_kyc_dashboard: '/kyc',    // Note: dynamic clientId handled separately
   invoices: '/invoices',
   admin_audit_log: '/audit-log',
+  user_management: '/user-management',
 };
 
 // Reverse map: URL path suffix → default view
@@ -296,6 +322,7 @@ const PATH_SUFFIX_TO_VIEW: Record<string, View> = {
   '/upgrades': 'enterprise_upgrade_hub',
   '/invoices': 'invoices',
   '/audit-log': 'admin_audit_log',
+  '/user-management': 'user_management',
 };
 
 interface GrowKYCProps {
@@ -309,7 +336,8 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
   const { role: urlRole, view: urlView } = useParams();
   const { logout, user } = useAuth();
   // The authenticated user's role drives their landing (no persona picker).
-  const authViewRole = canonicalRoleToViewRole(roleOverride ?? (user?.role as string | undefined));
+  const authRoleValue = (roleOverride ?? (user?.role as string | undefined)) || '';
+  const authViewRole = canonicalRoleToViewRole(authRoleValue);
 
   const [currentView, setCurrentView] = useState<View>(() => {
     if (urlRole && PATH_TO_ROLE[urlRole]) {
@@ -318,8 +346,9 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
       if (internalRole === 'auditor') return 'audit_dashboard';
       return 'compliance_dashboard';
     }
-    // No role in the URL: land on the authenticated role's dashboard.
-    return VIEW_ROLE_TO_DASHBOARD[authViewRole];
+    // No role in the URL: land on the authenticated role's default view
+    // (Admins -> User Management; everyone else -> their role dashboard).
+    return defaultViewForRole(authRoleValue, authViewRole);
   });
   const [selectedRole, setSelectedRole] = useState<ViewRole | null>(
     urlRole ? PATH_TO_ROLE[urlRole] || null : authViewRole
@@ -402,7 +431,15 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
     }
   ];
 
-  const currentUser = users.find(u => u.id === selectedUser) || users[0];
+  // Derive the header/dashboard identity from the REAL authenticated user
+  // (no persona switching). Title drives which dashboard variant renders.
+  const currentUser = {
+    id: user?.id || 'me',
+    name: user?.name || user?.email || 'User',
+    role: authViewRole,
+    title: CANONICAL_TO_TITLE[authRoleValue] || 'Compliance Officer',
+    avatar: '👤',
+  };
 
   const [isNotificationPanelOpen, setIsNotificationPanelOpen] = useState(false);
 
@@ -608,7 +645,11 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
 
     // Handle root and architecture
     if (pathname === '/') {
-      // Land on the authenticated role's dashboard instead of the persona picker.
+      // Admins land on the User Management console; others on their role dashboard.
+      if (authRoleValue === 'Admin') {
+        navigate('/compliance/user-management', { replace: true });
+        return;
+      }
       const rolePath = ROLE_TO_PATH[authViewRole] || 'compliance';
       navigate(`/${rolePath}/dashboard`, { replace: true });
       return;
@@ -819,68 +860,15 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
                 </p>
               </div>
 
-              {/* User Switcher - Left Side */}
+              {/* Logged-in user (read-only; role switching removed) */}
               <div className="relative ml-1 sm:ml-4 flex-shrink-0">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                  className="flex items-center gap-1 sm:gap-2 border border-white/30 sm:border-2 bg-white/10 text-white hover:bg-white/20 hover:border-white/50 px-2 py-1 h-8 sm:h-9"
-                >
-                  <User className="w-3.5 h-3.5 hidden sm:block" />
+                <div className="flex items-center gap-2 border border-white/30 bg-white/10 text-white rounded-md px-2 py-1 h-8 sm:h-9">
                   <span className="text-base sm:text-lg">{currentUser.avatar}</span>
-                  <div className="text-left hidden md:block">
+                  <div className="text-left hidden md:block leading-tight">
                     <div className="text-xs font-semibold">{currentUser.name}</div>
+                    <div className="text-[10px] text-white/70">{currentUser.title}</div>
                   </div>
-                  <ChevronDown className={`w-3 h-3 transition-transform ${isUserMenuOpen ? 'rotate-180' : ''}`} />
-                </Button>
-
-                {isUserMenuOpen && (
-                  <>
-                    {/* Backdrop */}
-                    <div
-                      className="fixed inset-0 z-40"
-                      onClick={() => setIsUserMenuOpen(false)}
-                    />
-
-                    {/* Dropdown Menu */}
-                    <Card className="absolute left-0 mt-2 w-80 z-50 shadow-2xl border-2 animate-in fade-in slide-in-from-top-2">
-                      <CardHeader className="pb-3 bg-gradient-to-r from-[#13B5EA]/10 to-[#0E7C9E]/10">
-                        <CardTitle className="text-sm font-semibold text-gray-900">
-                          Switch User Persona
-                        </CardTitle>
-                        <p className="text-xs text-gray-600 mt-1">
-                          Demo different user roles and access levels
-                        </p>
-                      </CardHeader>
-                      <CardContent className="p-2">
-                        {users.map((user) => (
-                          <button
-                            key={user.id}
-                            onClick={() => handleUserSwitch(user.id)}
-                            className={`w-full text-left p-3 rounded-lg hover:bg-gray-100 transition-colors ${selectedUser === user.id ? 'bg-[#13B5EA]/10 border-2 border-[#13B5EA]' : ''
-                              }`}
-                          >
-                            <div className="flex items-center gap-3">
-                              <span className="text-2xl">{user.avatar}</span>
-                              <div className="flex-1">
-                                <div className="flex items-center gap-2">
-                                  <span className="font-semibold text-gray-900">{user.name}</span>
-                                  {selectedUser === user.id && (
-                                    <CheckCircle className="w-4 h-4 text-[#13B5EA]" />
-                                  )}
-                                </div>
-                                <div className="text-xs text-gray-600">{user.title}</div>
-                                <div className="text-xs text-gray-500 mt-1">{user.description}</div>
-                              </div>
-                            </div>
-                          </button>
-                        ))}
-
-                      </CardContent>
-                    </Card>
-                  </>
-                )}
+                </div>
               </div>
             </div>
 
@@ -1744,6 +1732,12 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
                 else setCurrentView('compliance_dashboard');
               }}
             />
+          </div>
+        )}
+
+        {currentView === 'user_management' && (
+          <div className="p-6">
+            <AdminUserManagement />
           </div>
         )}
       </div>
