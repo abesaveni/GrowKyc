@@ -12,10 +12,23 @@ from fastapi import APIRouter, Depends, HTTPException, Query, status
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
+from core.tenant_context import get_tenant_id, set_tenant_id
 from database import get_db
 from dependencies import get_admin_or_agent_user, get_admin_user
 from models import User
 from services.case_workflow_service import CaseWorkflowService
+
+
+def _bind_tenant(current_user: User) -> None:
+    """Bind the request's tenant context from the authenticated user.
+
+    Starlette's BaseHTTPMiddleware does not reliably propagate the contextvar
+    set in TenantContextMiddleware into the endpoint execution context, so derive
+    it here from the trusted current_user (a user only ever acts within their own
+    tenant). Required for inserts into tenant-scoped tables (e.g. case_assignments).
+    """
+    if get_tenant_id() is None and current_user.tenant_id is not None:
+        set_tenant_id(current_user.tenant_id)
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/cases", tags=["cases"])
@@ -64,6 +77,7 @@ async def list_cases(
     current_user: User = Depends(get_admin_or_agent_user),
 ):
     """List all enterprise cases with optional status filter."""
+    _bind_tenant(current_user)
     from models import Case
     query = db.query(Case)
     if case_status:
@@ -93,6 +107,7 @@ async def update_case_status(
     current_user: User = Depends(get_admin_or_agent_user),
 ):
     """Update the status of an enterprise case."""
+    _bind_tenant(current_user)
     from models import Case
     from core.enums import CaseStatus
     case = db.query(Case).filter(Case.id == case_id).first()
@@ -129,6 +144,7 @@ async def create_enterprise_case(
     current_user: User = Depends(get_admin_or_agent_user),
 ):
     """Create a new enterprise investigation case."""
+    _bind_tenant(current_user)
     try:
         service = CaseWorkflowService(db)
         case = service.create_enterprise_case(
@@ -173,6 +189,7 @@ async def assign_case(
     current_user: User = Depends(get_admin_or_agent_user),
 ):
     """Assign a case to an analyst or MLRO."""
+    _bind_tenant(current_user)
     try:
         service = CaseWorkflowService(db)
         assignment = service.assign_case(
@@ -197,6 +214,7 @@ async def escalate_case(
     current_user: User = Depends(get_admin_or_agent_user),
 ):
     """Escalate a case to the MLRO review queue."""
+    _bind_tenant(current_user)
     try:
         service = CaseWorkflowService(db)
         assignment = service.escalate_case(
@@ -217,6 +235,7 @@ async def link_evidence(
     current_user: User = Depends(get_admin_or_agent_user),
 ):
     """Link an external document, report, or screening to this case."""
+    _bind_tenant(current_user)
     try:
         service = CaseWorkflowService(db)
         evidence = service.link_evidence(
@@ -239,6 +258,7 @@ async def add_comment(
     current_user: User = Depends(get_admin_or_agent_user),
 ):
     """Add an analyst note to the case."""
+    _bind_tenant(current_user)
     try:
         service = CaseWorkflowService(db)
         comment = service.add_comment(
@@ -257,6 +277,7 @@ async def close_case(
     current_user: User = Depends(get_admin_or_agent_user),
 ):
     """Close the case and generate an immutable regulatory snapshot."""
+    _bind_tenant(current_user)
     try:
         service = CaseWorkflowService(db)
         case = service.close_with_snapshot(

@@ -177,13 +177,30 @@ async def get_admin_user(
     return current_user
 
 
+# Staff roles permitted to perform compliance operations (KYC review, case
+# management, etc.). Excludes plain clients (USER). Mirrors the compliance roles
+# defined in the RBAC matrix (core/permissions.py).
+STAFF_ROLES = (
+    UserRole.ADMIN,
+    UserRole.AGENT,
+    UserRole.ANALYST,
+    UserRole.COMPLIANCE_OFFICER,
+    UserRole.SENIOR_COMPLIANCE_OFFICER,
+    UserRole.HEAD_OF_COMPLIANCE,
+    UserRole.MLRO,
+    UserRole.PARTNER,
+)
+
+
 async def get_admin_or_agent_user(
     current_user: User = Depends(get_current_user),
 ) -> User:
     """
-    Role-based access control: Admin or Agent.
+    Role-based access control: compliance staff (not plain clients).
 
-    Use this dependency on endpoints requiring admin or agent privileges.
+    Permits Admin, Agent and all compliance roles (Analyst, Compliance Officer,
+    Senior Compliance Officer, Head of Compliance, MLRO, Managing Partner). Use
+    this on endpoints requiring staff/compliance privileges.
 
     Args:
         current_user: The authenticated user from get_current_user
@@ -203,14 +220,14 @@ async def get_admin_or_agent_user(
             # Only admin or agent can execute this
             pass
     """
-    if current_user.role not in (UserRole.ADMIN, UserRole.AGENT):
+    if current_user.role not in STAFF_ROLES:
         logger.warning(
-            f"Agent/Admin endpoint access attempt by "
+            f"Staff endpoint access attempt by "
             f"{current_user.role}: {current_user.id}"
         )
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
-            detail="Admin or Agent privileges required",
+            detail="Compliance staff privileges required",
         )
 
     return current_user
