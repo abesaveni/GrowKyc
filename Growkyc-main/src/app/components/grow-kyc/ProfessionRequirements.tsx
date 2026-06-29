@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { toast } from '../../lib/toast';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../ui/card';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
@@ -687,7 +688,7 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
 
   const handleAddRequirement = (sectionIndex: number) => {
     if (!newTitle.trim()) {
-      alert('Requirement title is required');
+      toast.info('Requirement title is required');
       return;
     }
 

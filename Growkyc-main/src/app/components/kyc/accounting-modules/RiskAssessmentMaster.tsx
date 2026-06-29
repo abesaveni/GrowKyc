@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from '../../../lib/toast';
 import { Button } from '../../ui/button';
 import {
   Shield,
@@ -152,7 +153,7 @@ export function RiskAssessmentMaster({ onComplete }: RiskAssessmentMasterProps) 
 
   const handleSubmit = () => {
     if (!checkCompleteness()) {
-      alert('Cannot activate program: All rows must be completed with inherent risk, risk appetite, and control statements where required.');
+      toast.success('Cannot activate program: All rows must be completed with inherent risk, risk appetite, and control statements where required.');
       return;
     }
 

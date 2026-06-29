@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from '../../lib/toast';
 import { Button } from '../ui/button';
 import {
   Shield,
@@ -311,7 +312,7 @@ export function EquifaxAMLScreeningModule() {
                 <Download className="w-4 h-4 mr-2" />
                 Download Report
               </Button>
-              <Button size="sm" variant="outline" onClick={() => alert('Refresh requested')}>
+              <Button size="sm" variant="outline" onClick={() => toast.info('Refresh requested')}>
                 <RefreshCw className="w-4 h-4 mr-2" />
                 Re-Screen
               </Button>
@@ -575,15 +576,15 @@ export function EquifaxAMLScreeningModule() {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
           <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Actions</h3>
           <div className="flex gap-3">
-            <Button onClick={() => alert('Re-screening...')}>
+            <Button onClick={() => toast.info('Re-screening...')}>
               <RefreshCw className="w-4 h-4 mr-2" />
               Re-Screen Now
             </Button>
-            <Button variant="outline" onClick={() => alert('Escalating...')}>
+            <Button variant="outline" onClick={() => toast.info('Escalating...')}>
               <AlertCircle className="w-4 h-4 mr-2" />
               Escalate to Compliance
             </Button>
-            <Button variant="outline" onClick={() => alert('Add note dialog...')}>
+            <Button variant="outline" onClick={() => toast.info('Add note dialog...')}>
               <FileText className="w-4 h-4 mr-2" />
               Add Note
             </Button>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { toast } from '../../lib/toast';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../ui/table';
@@ -24,11 +25,11 @@ export function ContractsList({ onNavigate }: ContractsListProps) {
 
   const handleDownloadContract = (contract: any) => {
     // Simulate PDF download
-    alert(`Downloading contract ${contract.caseNumber}...\n\nContract for ${contract.property.address}`);
+    toast.info(`Downloading contract ${contract.caseNumber}...\n\nContract for ${contract.property.address}`);
   };
 
   const handleCreateContract = () => {
-    alert('Create New Contract\n\nThis would open a contract creation wizard.');
+    toast.info('Create New Contract\n\nThis would open a contract creation wizard.');
   };
 
   // Property images mapping

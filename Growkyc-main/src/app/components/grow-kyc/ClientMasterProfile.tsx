@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from '../../lib/toast';
 import { Button } from '../ui/button';
 import {
   ArrowLeft,
@@ -358,7 +359,7 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
               <p className="text-gray-600 dark:text-gray-400 mb-4">
                 Complete identity verification powered by Equifax, including fraud detection, biometrics, and document authenticity checks.
               </p>
-              <Button onClick={() => alert('Navigate to EquifaxIdentityFraudModule')}>
+              <Button onClick={() => toast.info('Navigate to EquifaxIdentityFraudModule')}>
                 <Eye className="w-4 h-4 mr-2" />
                 Open Identity Module
               </Button>
@@ -373,11 +374,11 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
                 Comprehensive AML/CTF screening including PEP, sanctions, watchlists, and risk scoring.
               </p>
               <div className="flex gap-3">
-                <Button onClick={() => alert('Navigate to EquifaxAMLScreeningModule')}>
+                <Button onClick={() => toast.info('Navigate to EquifaxAMLScreeningModule')}>
                   <Eye className="w-4 h-4 mr-2" />
                   AML Screening
                 </Button>
-                <Button variant="outline" onClick={() => alert('Navigate to CustomerRiskScoringEngine')}>
+                <Button variant="outline" onClick={() => toast.info('Navigate to CustomerRiskScoringEngine')}>
                   <Eye className="w-4 h-4 mr-2" />
                   Risk Engine
                 </Button>

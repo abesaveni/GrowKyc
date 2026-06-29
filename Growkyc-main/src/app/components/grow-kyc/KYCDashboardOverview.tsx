@@ -514,7 +514,7 @@ assignedOfficer: 'Compliance Officer'
               <Download className="w-4 h-4 mr-1.5" />
               Export
             </Button>
-            <Button variant="outline" size="sm" onClick={() => alert("Dashboard data refreshed dynamically.")} className="flex-1 sm:flex-none justify-center text-xs md:text-sm whitespace-nowrap">
+            <Button variant="outline" size="sm" onClick={() => toast.info("Dashboard data refreshed dynamically.")} className="flex-1 sm:flex-none justify-center text-xs md:text-sm whitespace-nowrap">
               <RefreshCw className="w-4 h-4 mr-1.5" />
               Refresh
             </Button>

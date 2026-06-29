@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from '../../lib/toast';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../ui/card';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
@@ -253,7 +254,7 @@ export function IntegrationsDemo() {
                     { label: 'Review Required', value: false }
                   ]}
                   flags={['Thin file detected - acceptable for new business']}
-                  onRecheck={() => alert('POST /api/checks/identity - Re-running check...')}
+                  onRecheck={() => toast.info('POST /api/checks/identity - Re-running check...')}
                 />
 
                 {/* AML Check Result */}
@@ -273,7 +274,7 @@ export function IntegrationsDemo() {
                     { label: 'Hard Stop', value: false },
                     { label: 'Review Required', value: false }
                   ]}
-                  onRecheck={() => alert('POST /api/checks/aml - Re-running AML screening...')}
+                  onRecheck={() => toast.info('POST /api/checks/aml - Re-running AML screening...')}
                 />
 
                 {/* Entity Check Result */}
@@ -291,7 +292,7 @@ export function IntegrationsDemo() {
                     { label: 'Officer Count', value: 2 },
                     { label: 'Mismatch Flags', value: 'None' }
                   ]}
-                  onRecheck={() => alert('POST /api/checks/entity - Re-running ASIC lookup...')}
+                  onRecheck={() => toast.info('POST /api/checks/entity - Re-running ASIC lookup...')}
                 />
 
                 {/* Business Risk Check */}
@@ -312,7 +313,7 @@ export function IntegrationsDemo() {
                     { label: 'Review Required', value: true }
                   ]}
                   flags={['Minor civil case - reviewed and accepted by analyst']}
-                  onRecheck={() => alert('POST /api/checks/business-risk - Re-running Illion checks...')}
+                  onRecheck={() => toast.info('POST /api/checks/business-risk - Re-running Illion checks...')}
                 />
 
                 {/* Optional: Advanced Legal (Trigger-based) */}
@@ -326,7 +327,7 @@ export function IntegrationsDemo() {
                     { label: 'Trigger Conditions Met', value: false },
                     { label: 'Manual Override Available', value: true }
                   ]}
-                  onRecheck={() => alert('POST /api/checks/advanced-legal - Manual trigger...')}
+                  onRecheck={() => toast.info('POST /api/checks/advanced-legal - Manual trigger...')}
                 />
 
                 {/* Optional: Crypto Risk (Trigger-based) */}

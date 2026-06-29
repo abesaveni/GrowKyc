@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from '../../lib/toast';
 import { Button } from '../ui/button';
 import { ArrowRight, Mail, Lock, User, Building2, CheckCircle } from 'lucide-react';
 
@@ -28,21 +29,21 @@ export function SignUpFlow({ onComplete }: SignUpFlowProps) {
     if (step === 1) {
       // Validate step 1
       if (!formData.firstName || !formData.lastName || !formData.email) {
-        alert('Please fill in all required fields');
+        toast.info('Please fill in all required fields');
         return;
       }
       setStep(2);
     } else if (step === 2) {
       // Validate step 2
       if (!formData.password || formData.password !== formData.confirmPassword) {
-        alert('Passwords must match');
+        toast.info('Passwords must match');
         return;
       }
       setStep(3);
     } else if (step === 3) {
       // Validate step 3
       if (!formData.organizationName || !formData.agreeToTerms) {
-        alert('Please complete all fields and agree to terms');
+        toast.success('Please complete all fields and agree to terms');
         return;
       }
       // Complete signup

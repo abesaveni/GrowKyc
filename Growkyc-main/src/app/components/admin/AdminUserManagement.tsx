@@ -515,7 +515,7 @@ export function AdminUserManagement() {
                           <Button
                             variant="outline"
                             size="sm"
-                            onClick={() => alert(`User: ${user.name}\nEmail: ${user.email}\nRole: ${user.role}\nStatus: ${user.status}`)}
+                            onClick={() => toast.info(`User: ${user.name}\nEmail: ${user.email}\nRole: ${user.role}\nStatus: ${user.status}`)}
                             title="View User"
                           >
                             <Eye className="w-4 h-4" />

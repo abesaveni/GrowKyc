@@ -45,7 +45,7 @@ export function IdentityTab({ client }: IdentityTabProps) {
   const [lastRefreshed, setLastRefreshed] = useState(new Date().toLocaleTimeString());
 
   const handleRerunVerification = () => {
-    alert("Re-running verification...");
+    toast.info("Re-running verification...");
     setIsRefreshing(true);
     toast.info('Starting fresh identity verification pulse...');
 

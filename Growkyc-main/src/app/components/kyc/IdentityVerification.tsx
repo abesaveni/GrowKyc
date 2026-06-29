@@ -117,7 +117,7 @@ ${idVerificationData.selectedDocuments.map((doc: any) => `• ${doc.name} (${doc
 Your verification is now pending review.
     `;
     
-    alert(summary);
+    toast.info(summary);
     toast.success('Verification submitted for review!');
   };
 

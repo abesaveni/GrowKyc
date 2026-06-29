@@ -1,4 +1,5 @@
 import React from 'react';
+import { toast } from '../../lib/toast';
 import { IdVerification100Point } from './IdVerification100Point';
 import { Button } from '../ui/button';
 import { ArrowLeft } from 'lucide-react';
@@ -16,7 +17,7 @@ Documents:
 ${data.selectedDocuments.map((doc: any) => `• ${doc.name} (${doc.points} points)`).join('\n')}
     `;
     
-    alert(summary);
+    toast.info(summary);
   };
 
   return (

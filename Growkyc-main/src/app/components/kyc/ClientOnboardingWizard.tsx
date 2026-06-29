@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from '../../lib/toast';
 import { Button } from '../ui/button';
 import {
   User,
@@ -165,7 +166,7 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
     localStorage.setItem('growkyc_logged_activities', JSON.stringify(logs));
     window.dispatchEvent(new CustomEvent('growkyc:activity_logged'));
 
-    alert(`🎉 Successfully onboarded client: ${newClient.name}!`);
+    toast.success(`🎉 Successfully onboarded client: ${newClient.name}!`);
     if (onClose) onClose();
   };
 
@@ -268,7 +269,7 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
     localStorage.setItem('growkyc_logged_activities', JSON.stringify(logs));
     window.dispatchEvent(new CustomEvent('growkyc:activity_logged'));
 
-    alert(`⚠️ High-risk client ${newClient.name} submitted for senior approval!`);
+    toast.info(`⚠️ High-risk client ${newClient.name} submitted for senior approval!`);
     if (onClose) onClose();
   };
 

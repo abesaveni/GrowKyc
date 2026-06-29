@@ -1,4 +1,5 @@
 import React from 'react';
+import { toast } from '../../lib/toast';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../ui/card';
 import { Badge } from '../ui/badge';
@@ -1216,7 +1217,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
                 <Button
                   variant="destructive"
                   onClick={() => {
-                    alert(`Declined: ${selectedApproval.item}\n\nComment: ${approvalComment || '(No comment provided)'}\n\nThis action has been logged in the audit trail.`);
+                    toast.info(`Declined: ${selectedApproval.item}\n\nComment: ${approvalComment || '(No comment provided)'}\n\nThis action has been logged in the audit trail.`);
                     setApprovalModalOpen(false);
                     setApprovalComment('');
                   }}
@@ -1229,7 +1230,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
                   variant="default"
                   className="bg-green-600 hover:bg-green-700"
                   onClick={() => {
-                    alert(`✅ APPROVED: ${selectedApproval.item}\n\nApproved by: ${userName}\nComment: ${approvalComment}\n\nStatus: Awaiting 2nd approval\nAudit Log: Recorded\n\nThis approval has been logged in the compliance audit trail.`);
+                    toast.success(`✅ APPROVED: ${selectedApproval.item}\n\nApproved by: ${userName}\nComment: ${approvalComment}\n\nStatus: Awaiting 2nd approval\nAudit Log: Recorded\n\nThis approval has been logged in the compliance audit trail.`);
                     setApprovalModalOpen(false);
                     setApprovalComment('');
                   }}

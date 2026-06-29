@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from '../../lib/toast';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
@@ -137,8 +138,8 @@ export function AuditEvidencePack({ onBack }: AuditEvidencePackProps = {}) {
               </div>
             </div>
             <div className="flex gap-2">
-              <Button className="bg-white text-slate-800 hover:bg-slate-100"><Printer className="w-4 h-4 mr-2" />Print</Button>
-              <Button className="bg-white text-slate-800 hover:bg-slate-100"><Download className="w-4 h-4 mr-2" />Download All</Button>
+              <Button onClick={() => toast.info('Preparing print view…')} className="bg-white text-slate-800 hover:bg-slate-100"><Printer className="w-4 h-4 mr-2" />Print</Button>
+              <Button onClick={() => toast.success('Download started')} className="bg-white text-slate-800 hover:bg-slate-100"><Download className="w-4 h-4 mr-2" />Download All</Button>
             </div>
           </div>
         </div>
@@ -175,8 +176,8 @@ export function AuditEvidencePack({ onBack }: AuditEvidencePackProps = {}) {
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <CardTitle className="text-lg">{current.label}</CardTitle>
                 <div className="flex gap-2">
-                  <Button variant="outline" size="sm"><Filter className="w-4 h-4 mr-2" />Filters</Button>
-                  <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white"><Download className="w-4 h-4 mr-2" />Export Excel</Button>
+                  <Button variant="outline" size="sm" onClick={() => toast.info('Opening filters…')}><Filter className="w-4 h-4 mr-2" />Filters</Button>
+                  <Button size="sm" onClick={() => toast.info('Generating Excel export…')} className="bg-blue-600 hover:bg-blue-700 text-white"><Download className="w-4 h-4 mr-2" />Export Excel</Button>
                 </div>
               </div>
             </CardHeader>
@@ -198,7 +199,7 @@ export function AuditEvidencePack({ onBack }: AuditEvidencePackProps = {}) {
                           <td key={ci} className={`py-3 px-4 ${ci === 0 ? 'font-mono font-medium text-gray-900' : 'text-gray-700'}`}>{cell}</td>
                         ))}
                         <td className="py-3 px-4">
-                          <Button variant="outline" size="sm"><Eye className="w-4 h-4 mr-1" />View</Button>
+                          <Button variant="outline" size="sm" onClick={() => toast.info(`Opening ${row[0]}…`)}><Eye className="w-4 h-4 mr-1" />View</Button>
                         </td>
                       </tr>
                     ))}
@@ -258,8 +259,8 @@ export function AuditEvidencePack({ onBack }: AuditEvidencePackProps = {}) {
                     ))}
                   </div>
                   <div className="grid md:grid-cols-2 gap-3 pt-2">
-                    <Button className="bg-blue-600 hover:bg-blue-700 text-white"><Download className="w-5 h-5 mr-2" />Download PDF Pack</Button>
-                    <Button variant="outline"><Download className="w-5 h-5 mr-2" />Download ZIP (all files)</Button>
+                    <Button onClick={() => toast.success('Generating PDF pack…')} className="bg-blue-600 hover:bg-blue-700 text-white"><Download className="w-5 h-5 mr-2" />Download PDF Pack</Button>
+                    <Button variant="outline" onClick={() => toast.success('Preparing ZIP archive…')}><Download className="w-5 h-5 mr-2" />Download ZIP (all files)</Button>
                   </div>
                 </div>
               )}
@@ -302,7 +303,7 @@ export function AuditEvidencePack({ onBack }: AuditEvidencePackProps = {}) {
                     <li>• Average case resolution time: 4.2 days (target: 5 days)</li>
                   </ul>
                 </div>
-                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white mt-2"><Download className="w-5 h-5 mr-2" />Download Executive Report (PDF)</Button>
+                <Button onClick={() => toast.success('Generating executive report…')} className="w-full bg-blue-600 hover:bg-blue-700 text-white mt-2"><Download className="w-5 h-5 mr-2" />Download Executive Report (PDF)</Button>
               </CardContent>
             </Card>
           </div>

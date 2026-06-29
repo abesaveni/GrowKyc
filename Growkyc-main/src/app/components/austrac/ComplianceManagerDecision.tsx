@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from '../../lib/toast';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
@@ -440,7 +441,7 @@ export function ComplianceManagerDecision({ caseId, onBack }: ComplianceManagerD
                       onClick={() => {
                         setShowConfirmation(false);
                         // Here you would actually submit the decision
-                        alert('Decision recorded and logged to audit trail');
+                        toast.success('Decision recorded and logged to audit trail');
                       }}
                       className="flex-1 bg-red-600 hover:bg-red-700 text-white text-lg py-6"
                     >

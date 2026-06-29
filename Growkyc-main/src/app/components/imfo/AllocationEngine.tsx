@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from '../../lib/toast';
 import { Button } from '../ui/button';
 import {
   Target,
@@ -796,7 +797,7 @@ function DealAllocationDetail({ deal, eois, onBack, role }: any) {
           onClose={() => setShowConfirmModal(false)}
           onConfirm={() => {
             // Handle allocation confirmation
-            alert('Allocation confirmed! Capital calls will be generated.');
+            toast.success('Allocation confirmed! Capital calls will be generated.');
             setShowConfirmModal(false);
           }}
         />

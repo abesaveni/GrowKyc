@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from '../../lib/toast';
 import { Button } from '../ui/button';
 import {
   Users,
@@ -45,12 +46,12 @@ export function ContactsModule({ role }: ContactsModuleProps) {
 
   const handleImport = () => {
     // Placeholder for import functionality
-    alert('Import contacts functionality - CSV/Excel upload coming soon');
+    toast.info('Import contacts functionality - CSV/Excel upload coming soon');
   };
 
   const handleExport = () => {
     // Placeholder for export functionality
-    alert('Exporting contacts as CSV...');
+    toast.info('Exporting contacts as CSV...');
   };
 
   const handleNewContact = () => {

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from '../../lib/toast';
 import { Button } from '../ui/button';
 import {
   ChevronRight,
@@ -131,7 +132,7 @@ export function ClientKYCWizard() {
     if (!canProceed()) return;
     
     // Create submission
-    alert('KYC Submission Complete! Your application is now under review. You will receive updates via email and in your portal.');
+    toast.success('KYC Submission Complete! Your application is now under review. You will receive updates via email and in your portal.');
   };
 
   const requiredDocuments = {

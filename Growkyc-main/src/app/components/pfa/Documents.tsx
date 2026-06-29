@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from '../../lib/toast';
 import { Button } from '../ui/button';
 import {
   ArrowLeft,
@@ -127,7 +128,7 @@ export function Documents({ onNavigate, onBack }: DocumentsProps) {
   };
 
   const handleFiles = (files: FileList) => {
-    alert(`Uploading ${files.length} file(s): ${Array.from(files).map(f => f.name).join(', ')}`);
+    toast.info(`Uploading ${files.length} file(s): ${Array.from(files).map(f => f.name).join(', ')}`);
   };
 
   const getStatusBadge = (status: string) => {

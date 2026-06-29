@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from '../../lib/toast';
 import { Button } from '../ui/button';
 import {
   Settings,
@@ -365,7 +366,7 @@ export function EquifaxAdminPanel() {
               <div className="space-y-4">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-lg font-bold text-gray-900 dark:text-white">Service Health Monitor</h3>
-                  <Button size="sm" variant="outline" onClick={() => alert('Refreshing status...')}>
+                  <Button size="sm" variant="outline" onClick={() => toast.info('Refreshing status...')}>
                     <RefreshCw className="w-4 h-4 mr-2" />
                     Refresh
                   </Button>
@@ -407,7 +408,7 @@ export function EquifaxAdminPanel() {
               <div className="space-y-4">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-lg font-bold text-gray-900 dark:text-white">API Usage & Cost Analysis</h3>
-                  <Button size="sm" variant="outline" onClick={() => alert('Downloading report...')}>
+                  <Button size="sm" variant="outline" onClick={() => toast.info('Downloading report...')}>
                     <Download className="w-4 h-4 mr-2" />
                     Download Report
                   </Button>
