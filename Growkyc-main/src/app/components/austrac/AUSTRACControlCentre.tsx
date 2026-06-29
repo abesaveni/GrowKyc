@@ -676,7 +676,7 @@ export function AUSTRACControlCentre({ navigateTo, goBack, defaultSelectedCaseId
     <div className="min-h-screen bg-gray-50 p-4 md:p-8">
       <div className="max-w-[1800px] mx-auto space-y-6">
         {/* Header */}
-        <div className="bg-gradient-to-r from-red-900 via-red-800 to-orange-900 rounded-lg p-6 md:p-8 text-white shadow-xl">
+        <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 md:p-8 text-white shadow-xl">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
             <div className="flex flex-col sm:flex-row sm:items-center gap-4">
               <Button 
@@ -721,7 +721,7 @@ export function AUSTRACControlCentre({ navigateTo, goBack, defaultSelectedCaseId
                 <Users className="w-4 h-4 mr-1.5 md:mr-2" />
                 Manager Decisions
               </Button>
-              <Button onClick={() => setShowReferralModal(true)} className="bg-white text-red-900 hover:bg-red-50 px-2.5 md:px-3 py-1.5 text-xs md:text-sm whitespace-nowrap flex-shrink-0 justify-center">
+              <Button onClick={() => setShowReferralModal(true)} className="bg-white text-slate-800 hover:bg-slate-100 px-2.5 md:px-3 py-1.5 text-xs md:text-sm whitespace-nowrap flex-shrink-0 justify-center">
                 <Plus className="w-4 h-4 mr-1.5 md:mr-2" />
                 Create Manual Case
               </Button>
@@ -735,90 +735,90 @@ export function AUSTRACControlCentre({ navigateTo, goBack, defaultSelectedCaseId
 
         {/* KPI Cards Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
-          <Card className="border-2 border-blue-300 bg-blue-50">
+          <Card className="border border-gray-200 bg-white">
             <CardContent className="p-4">
               <div className="flex items-center gap-2 mb-2">
                 <AlertTriangle className="w-5 h-5 text-blue-600" />
-                <p className="text-xs text-blue-700 font-semibold">Open Matters</p>
+                <p className="text-xs text-gray-600 font-semibold">Open Matters</p>
               </div>
-              <p className="text-2xl md:text-3xl font-bold text-blue-900">{kpis.openMatters}</p>
+              <p className="text-2xl md:text-3xl font-bold text-gray-900">{kpis.openMatters}</p>
             </CardContent>
           </Card>
 
-          <Card className="border-2 border-orange-300 bg-orange-50">
+          <Card className="border border-gray-200 bg-white">
             <CardContent className="p-4">
               <div className="flex items-center gap-2 mb-2">
                 <FileText className="w-5 h-5 text-orange-600" />
-                <p className="text-xs text-orange-700 font-semibold">Drafts Pending</p>
+                <p className="text-xs text-gray-600 font-semibold">Drafts Pending</p>
               </div>
-              <p className="text-2xl md:text-3xl font-bold text-orange-900">{kpis.draftsPending}</p>
+              <p className="text-2xl md:text-3xl font-bold text-gray-900">{kpis.draftsPending}</p>
             </CardContent>
           </Card>
 
-          <Card className="border-2 border-red-300 bg-red-50">
+          <Card className="border border-gray-200 bg-white">
             <CardContent className="p-4">
               <div className="flex items-center gap-2 mb-2">
                 <AlertCircle className="w-5 h-5 text-red-600" />
-                <p className="text-xs text-red-700 font-semibold">Escalated</p>
+                <p className="text-xs text-gray-600 font-semibold">Escalated</p>
               </div>
-              <p className="text-2xl md:text-3xl font-bold text-red-900">{kpis.escalatedCases}</p>
+              <p className="text-2xl md:text-3xl font-bold text-gray-900">{kpis.escalatedCases}</p>
             </CardContent>
           </Card>
 
-          <Card onClick={() => setActiveSubPanel('tracking')} className="border-2 border-green-300 bg-green-50 cursor-pointer transition-all hover:bg-green-100 hover:scale-105 duration-200">
+          <Card onClick={() => setActiveSubPanel('tracking')} className="border border-gray-200 bg-white cursor-pointer transition-all hover:bg-gray-50 hover:scale-105 duration-200">
             <CardContent className="p-4">
               <div className="flex items-center gap-2 mb-2">
                 <CheckCircle className="w-5 h-5 text-green-600" />
-                <p className="text-xs text-green-700 font-semibold">Submitted</p>
+                <p className="text-xs text-gray-600 font-semibold">Submitted</p>
               </div>
-              <p className="text-2xl md:text-3xl font-bold text-green-900">{kpis.submittedReports}</p>
+              <p className="text-2xl md:text-3xl font-bold text-gray-900">{kpis.submittedReports}</p>
             </CardContent>
           </Card>
 
-          <Card className="border-2 border-gray-300 bg-gray-50">
+          <Card className="border border-gray-200 bg-white">
             <CardContent className="p-4">
               <div className="flex items-center gap-2 mb-2">
                 <XCircle className="w-5 h-5 text-gray-600" />
-                <p className="text-xs text-gray-700 font-semibold">Not Reported</p>
+                <p className="text-xs text-gray-600 font-semibold">Not Reported</p>
               </div>
               <p className="text-2xl md:text-3xl font-bold text-gray-900">{kpis.notReported}</p>
             </CardContent>
           </Card>
 
-          <Card className="border-2 border-red-300 bg-red-50">
+          <Card className="border border-gray-200 bg-white">
             <CardContent className="p-4">
               <div className="flex items-center gap-2 mb-2">
                 <Clock className="w-5 h-5 text-red-600" />
-                <p className="text-xs text-red-700 font-semibold">Overdue</p>
+                <p className="text-xs text-gray-600 font-semibold">Overdue</p>
               </div>
-              <p className="text-2xl md:text-3xl font-bold text-red-900">{kpis.overdueReviews}</p>
+              <p className="text-2xl md:text-3xl font-bold text-gray-900">{kpis.overdueReviews}</p>
             </CardContent>
           </Card>
 
-          <Card className="border-2 border-indigo-300 bg-indigo-50">
+          <Card className="border border-gray-200 bg-white">
             <CardContent className="p-4">
               <div className="flex items-center gap-2 mb-2">
                 <Activity className="w-5 h-5 text-indigo-600" />
-                <p className="text-xs text-indigo-700 font-semibold">Mon. Alerts</p>
+                <p className="text-xs text-gray-600 font-semibold">Mon. Alerts</p>
               </div>
-              <p className="text-2xl md:text-3xl font-bold text-indigo-900">{kpis.monitoringAlerts}</p>
+              <p className="text-2xl md:text-3xl font-bold text-gray-900">{kpis.monitoringAlerts}</p>
             </CardContent>
           </Card>
 
-          <Card className="border-2 border-purple-300 bg-purple-50">
+          <Card className="border border-gray-200 bg-white">
             <CardContent className="p-4">
               <div className="flex items-center gap-2 mb-2">
                 <AlertTriangle className="w-5 h-5 text-purple-600" />
-                <p className="text-xs text-purple-700 font-semibold">QA Issues</p>
+                <p className="text-xs text-gray-600 font-semibold">QA Issues</p>
               </div>
-              <p className="text-2xl md:text-3xl font-bold text-purple-900">{kpis.qaIssues}</p>
+              <p className="text-2xl md:text-3xl font-bold text-gray-900">{kpis.qaIssues}</p>
             </CardContent>
           </Card>
         </div>
 
         {/* Table A - Active Reportable Matters */}
         <Card className="border-2 border-blue-300 shadow-lg">
-          <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b p-4 md:p-6">
+          <CardHeader className="bg-gray-50 border-b p-4 md:p-6">
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
               <CardTitle className="text-xl md:text-2xl flex items-center gap-2">
                 <AlertTriangle className="w-6 h-6 md:w-7 md:h-7 text-blue-600" />
@@ -974,7 +974,7 @@ export function AUSTRACControlCentre({ navigateTo, goBack, defaultSelectedCaseId
 
         {/* Table B - Draft Reports */}
         <Card className="border-2 border-orange-300 shadow-lg">
-          <CardHeader className="bg-gradient-to-r from-orange-50 to-amber-50 border-b">
+          <CardHeader className="bg-gray-50 border-b">
             <CardTitle className="text-2xl flex items-center gap-2">
               <FileText className="w-7 h-7 text-orange-600" />
               Draft Reports Awaiting Decision
@@ -1041,7 +1041,7 @@ export function AUSTRACControlCentre({ navigateTo, goBack, defaultSelectedCaseId
 
         {/* Table C - Recent Submissions */}
         <Card className="border-2 border-gray-300 shadow-lg">
-          <CardHeader className="bg-gradient-to-r from-gray-50 to-slate-50 border-b">
+          <CardHeader className="bg-gray-50 border-b">
             <CardTitle className="text-2xl flex items-center gap-2">
               <CheckCircle className="w-7 h-7 text-gray-600" />
               Recent Submissions and Closures
