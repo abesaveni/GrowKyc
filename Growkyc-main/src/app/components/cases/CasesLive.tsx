@@ -170,6 +170,7 @@ export function CasesLive({ onBack }: { onBack?: () => void } = {}) {
         headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
         body: JSON.stringify({
           client_id: c.client_id,
+          case_id: c.case_id,
           reason_for_suspicion: `Raised from case #${c.case_id}: ${c.title}`,
           narrative: `SAR raised in connection with investigation case #${c.case_id}.`,
         }),

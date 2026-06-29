@@ -17,6 +17,7 @@ function getAuthHeader(): Record<string, string> {
 interface SAR {
   id: number;
   client_id: number;
+  case_id: number | null;
   status: string;
   raised_at: string | null;
   filed_at: string | null;
@@ -158,8 +159,8 @@ export function AustracSARRegister({ onBack }: { onBack?: () => void } = {}) {
     if (sars.length === 0) { toast.error('No SARs to export'); return; }
     const n = downloadCsv(
       `austrac_sars_${csvDate(new Date())}.csv`,
-      ['SAR ID', 'Client ID', 'Status', 'Raised', 'Filed', 'Regulator Reference'],
-      sars.map((s) => [s.id, s.client_id, s.status, csvDate(s.raised_at), csvDate(s.filed_at), s.regulator_reference || '']),
+      ['SAR ID', 'Client ID', 'Case ID', 'Status', 'Raised', 'Filed', 'Regulator Reference'],
+      sars.map((s) => [s.id, s.client_id, s.case_id ?? '', s.status, csvDate(s.raised_at), csvDate(s.filed_at), s.regulator_reference || '']),
     );
     toast.success(`Exported ${n} SAR(s) to CSV`);
   };
@@ -227,13 +228,14 @@ export function AustracSARRegister({ onBack }: { onBack?: () => void } = {}) {
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead className="bg-gray-50 border-b">
-                    <tr>{['SAR ID', 'Client', 'Status', 'Raised', 'Reg. Reference', 'Actions'].map((h) => <th key={h} className="text-left py-3 px-4 font-semibold text-gray-600">{h}</th>)}</tr>
+                    <tr>{['SAR ID', 'Client', 'Case', 'Status', 'Raised', 'Reg. Reference', 'Actions'].map((h) => <th key={h} className="text-left py-3 px-4 font-semibold text-gray-600">{h}</th>)}</tr>
                   </thead>
                   <tbody>
                     {sars.map((s) => (
                       <tr key={s.id} className="border-b last:border-0 hover:bg-gray-50">
                         <td className="py-3 px-4 font-mono font-medium text-gray-900">SAR-{s.id}</td>
                         <td className="py-3 px-4 text-gray-600">{s.client_id}</td>
+                        <td className="py-3 px-4 text-gray-600">{s.case_id ? `#${s.case_id}` : '—'}</td>
                         <td className="py-3 px-4">{statusBadge(s.status)}</td>
                         <td className="py-3 px-4 text-gray-500">{csvDate(s.raised_at)}</td>
                         <td className="py-3 px-4 text-gray-700 font-mono text-xs">{s.regulator_reference || '—'}</td>

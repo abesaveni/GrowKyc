@@ -27,6 +27,7 @@ class SARService:
         raised_by: int,
         reason_for_suspicion: str,
         kyc_id: Optional[int] = None,
+        case_id: Optional[int] = None,
         tenant_id: Optional[int] = None,
         transaction_details: Optional[str] = None,
         narrative: Optional[str] = None,
@@ -35,6 +36,7 @@ class SARService:
             sar = SAR(
                 client_id=client_id,
                 kyc_id=kyc_id,
+                case_id=case_id,
                 tenant_id=tenant_id,
                 raised_by=raised_by,
                 status="draft",

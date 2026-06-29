@@ -27,6 +27,7 @@ _COMPLIANCE_ROLES = ["Admin", "Compliance_Officer", "MLRO"]
 class SARCreate(BaseModel):
     client_id: int
     kyc_id: Optional[int] = None
+    case_id: Optional[int] = None
     reason_for_suspicion: str
     transaction_details: Optional[str] = None
     narrative: Optional[str] = None
@@ -60,6 +61,7 @@ async def create_sar(
             raised_by=current_user.id,
             reason_for_suspicion=data.reason_for_suspicion,
             kyc_id=data.kyc_id,
+            case_id=data.case_id,
             tenant_id=getattr(current_user, "tenant_id", None),
             transaction_details=data.transaction_details,
             narrative=data.narrative,
@@ -158,6 +160,7 @@ async def list_sars(
             {
                 "id": s.id,
                 "client_id": s.client_id,
+                "case_id": s.case_id,
                 "status": s.status,
                 "raised_at": s.raised_at,
                 "filed_at": s.filed_at,
