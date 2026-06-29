@@ -79,6 +79,8 @@ export function ClientList() {
   const [selectedClient, setSelectedClient] = useState<Client | null>(null);
 
   const [loading, setLoading] = useState(false);
+  const [isLive, setIsLive] = useState(false);
+  const [busyId, setBusyId] = useState<string | null>(null);
 
   const [clients, setClients] = useState<Client[]>([
     {
@@ -386,45 +388,80 @@ export function ClientList() {
       });
       if (!res.ok) return;
       const data = await res.json();
-      const mapped: Client[] = (data.items || []).map((c: any) => ({
-        id: String(c.id),
-        name: c.name,
-        clientType: c.entity_profile ? 'company' : 'individual' as ClientType,
-        status: c.compliance_status === 'approved' ? 'active' : c.compliance_status === 'flagged' ? 'restricted' : 'active' as ClientStatus,
-        riskTier: (c.risk_level || 'LOW').toLowerCase() as RiskTier,
-        onboardedDate: new Date(c.created_at),
-        lastReviewDate: c.approved_at ? new Date(c.approved_at) : new Date(c.created_at),
-        nextReviewDue: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000),
-        email: c.individual_profile?.email || c.entity_profile?.contact_email || '',
-        phone: c.individual_profile?.phone || c.entity_profile?.phone,
-        address: c.individual_profile?.address || c.entity_profile?.registered_address || '',
-        assignedManager: '—',
-        abn: c.entity_profile?.abn,
-        acn: c.entity_profile?.acn,
-        kycComplete: c.compliance_status === 'approved',
-        documentsUpToDate: !c.is_locked,
-        screeningStatus: c.is_sanctioned ? 'failed' : c.is_pep ? 'match-review' : 'clear',
-        engagementValue: c.income_level * 1000 || 0,
-        complianceScore: Math.max(0, 100 - (c.risk_score || 0)),
-        tier1Status: c.compliance_status === 'approved' ? 'passed' : 'pending' as ComplianceStatus,
-        tier2Status: 'pending' as ComplianceStatus,
-        tier3Status: 'pending' as ComplianceStatus,
-        tier4Status: 'pending' as ComplianceStatus,
-        tier5Status: 'pending' as ComplianceStatus,
-        lastSanctionsCheck: new Date(c.created_at),
-        transactionMonitoring: 'inactive' as const,
-        identityWallet: false,
-        botsActive: 0,
-      }));
-      if (mapped.length > 0) setClients(mapped);
+      // Map the backend ClientResponse (id, name, risk_score, is_pep,
+      // is_sanctioned, is_locked, approved_at, individual/entity_profile) to the
+      // display model. Status and risk tier are derived from real fields.
+      const riskTierFrom = (score: number): RiskTier =>
+        score >= 70 ? 'critical' : score >= 40 ? 'high' : score >= 20 ? 'medium' : 'low';
+      const statusFrom = (c: any): ClientStatus =>
+        c.is_locked ? 'restricted' : c.approved_at ? 'active' : 'inactive';
+      const mapped: Client[] = (data.items || []).map((c: any) => {
+        const approved = !!c.approved_at && !c.is_locked;
+        return {
+          id: String(c.id),
+          name: c.name,
+          clientType: (c.entity_profile ? 'company' : 'individual') as ClientType,
+          status: statusFrom(c),
+          riskTier: riskTierFrom(c.risk_score || 0),
+          onboardedDate: new Date(c.created_at),
+          lastReviewDate: c.approved_at ? new Date(c.approved_at) : new Date(c.created_at),
+          nextReviewDue: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000),
+          email: c.individual_profile?.email || c.entity_profile?.contact_email || '',
+          phone: c.individual_profile?.mobile_phone || c.entity_profile?.contact_phone,
+          address: c.individual_profile?.residential_address || c.entity_profile?.registered_address || c.geography || '',
+          assignedManager: '—',
+          abn: c.entity_profile?.abn,
+          acn: c.entity_profile?.acn,
+          kycComplete: approved,
+          documentsUpToDate: !c.is_locked,
+          screeningStatus: c.is_sanctioned ? 'failed' : c.is_pep ? 'match-review' : 'clear',
+          engagementValue: (c.income_level || 0) * 1000,
+          complianceScore: Math.max(0, 100 - (c.risk_score || 0)),
+          tier1Status: (approved ? 'passed' : 'pending') as ComplianceStatus,
+          tier2Status: 'pending' as ComplianceStatus,
+          tier3Status: 'pending' as ComplianceStatus,
+          tier4Status: 'pending' as ComplianceStatus,
+          tier5Status: 'pending' as ComplianceStatus,
+          lastSanctionsCheck: new Date(c.created_at),
+          transactionMonitoring: 'inactive' as const,
+          identityWallet: false,
+          botsActive: 0,
+        };
+      });
+      // Reflect the API as the source of truth (including an empty list),
+      // rather than silently falling back to seed/mock rows.
+      setClients(mapped);
+      setIsLive(true);
     } catch {
-      // keep mock data on failure
+      // network/parse failure — leave existing rows, surface nothing destructive
     } finally {
       setLoading(false);
     }
   }, []);
 
   useEffect(() => { fetchClients(); }, [fetchClients]);
+
+  // Persist a client status change through the real API (approve / flag).
+  const updateClientStatus = async (clientId: string, status: 'approved' | 'flagged') => {
+    const token = sessionStorage.getItem('growkyc_token');
+    if (!token) return;
+    setBusyId(clientId);
+    try {
+      const res = await fetch(`/api/v1/clients/${clientId}/status`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ status }),
+      });
+      if (res.status === 403) { toast.error('You do not have permission to change client status'); return; }
+      if (!res.ok) { toast.error(`Update failed (${res.status})`); return; }
+      toast.success(status === 'approved' ? 'Client approved' : 'Client flagged for review');
+      await fetchClients();
+    } catch {
+      toast.error('Network error updating client');
+    } finally {
+      setBusyId(null);
+    }
+  };
 
   const getStatusColor = (status: ClientStatus) => {
     switch (status) {
@@ -528,7 +565,14 @@ export function ClientList() {
             <Users className="w-16 h-16" />
             <div>
               <h1 className="text-4xl font-bold mb-2">Client List</h1>
-              <p className="text-xl text-indigo-100">Manage Your Client Portfolio</p>
+              <p className="text-xl text-indigo-100">
+                Manage Your Client Portfolio
+                {isLive && (
+                  <span className="ml-3 inline-flex items-center gap-1 text-sm font-semibold bg-green-500/20 text-green-100 px-2 py-0.5 rounded-full align-middle">
+                    <span className="w-2 h-2 rounded-full bg-green-300" /> Live · API
+                  </span>
+                )}
+              </p>
             </div>
           </div>
           <div className="flex gap-3">
@@ -864,17 +908,25 @@ export function ClientList() {
                 </div>
               </div>
 
-              <div className="flex gap-2 ml-6">
+              <div className="flex flex-col gap-2 ml-6">
                 <Button size="sm" className="bg-indigo-600 hover:bg-indigo-700" onClick={() => setSelectedClient(client)}>
                   <Eye className="w-4 h-4 mr-2" />
                   View Profile
                 </Button>
-                <Button size="sm" variant="outline">
-                  <Edit className="w-4 h-4" />
-                </Button>
-                <Button size="sm" variant="outline">
-                  <Download className="w-4 h-4" />
-                </Button>
+                {client.status !== 'active' && (
+                  <Button size="sm" variant="outline" className="text-green-700 border-green-200"
+                    disabled={busyId === client.id}
+                    onClick={() => updateClientStatus(client.id, 'approved')}>
+                    <CheckCircle className="w-4 h-4 mr-2" />Approve
+                  </Button>
+                )}
+                {client.status !== 'restricted' && (
+                  <Button size="sm" variant="outline" className="text-red-700 border-red-200"
+                    disabled={busyId === client.id}
+                    onClick={() => updateClientStatus(client.id, 'flagged')}>
+                    <AlertTriangle className="w-4 h-4 mr-2" />Flag
+                  </Button>
+                )}
               </div>
             </div>
           </div>
