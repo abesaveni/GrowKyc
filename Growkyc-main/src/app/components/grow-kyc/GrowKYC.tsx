@@ -62,6 +62,7 @@ import { AdminKYCReview } from '../admin/AdminKYCReview';
 import { SubmitKYC } from '../kyc/SubmitKYC';
 import { CasesLive } from '../cases/CasesLive';
 import { AustracSARRegister } from '../austrac/AustracSARRegister';
+import { LiveStatsBar } from './LiveStatsBar';
 import { HealthCheckDashboard } from './HealthCheckDashboard';
 import { EnterpriseUpgradeHub } from './EnterpriseUpgradeHub';
 import { KYCClientDetails } from './KYCClientDetails';
@@ -1586,6 +1587,11 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
 
       {/* Content Area */}
       <div className="bg-white min-h-screen">
+        {(currentView === 'compliance_dashboard' || currentView === 'partner_dashboard' || currentView === 'audit_dashboard') && (
+          <div className="px-6 pt-6">
+            <LiveStatsBar />
+          </div>
+        )}
         {currentView === 'compliance_dashboard' && selectedRole === 'compliance_officer' && (
           currentUser.title === 'Head of Compliance' ? (
             <HeadOfComplianceDashboard
