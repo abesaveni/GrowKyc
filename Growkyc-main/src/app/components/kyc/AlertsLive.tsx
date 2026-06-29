@@ -73,15 +73,17 @@ export function AlertsLive({ onBack }: { onBack?: () => void } = {}) {
 
   useEffect(() => { load(); loadClients(); }, [load, loadClients]);
 
-  const generate = async (autoEscalate = false) => {
+  const generate = async (autoActions = false) => {
     setGenerating(true);
     try {
-      const res = await fetch(`/api/v1/alerts/generate${autoEscalate ? '?auto_escalate=true' : ''}`, {
-        method: 'POST', headers: getAuthHeader(),
-      });
+      const qs = autoActions ? '?auto_escalate=true&auto_edd=true' : '';
+      const res = await fetch(`/api/v1/alerts/generate${qs}`, { method: 'POST', headers: getAuthHeader() });
       if (!res.ok) { toast.error(`Rule engine failed (${res.status})`); return; }
       const data = await res.json();
-      const extra = data.escalated ? `, auto-opened ${data.escalated} case(s)` : '';
+      const bits = [];
+      if (data.escalated) bits.push(`opened ${data.escalated} case(s)`);
+      if (data.edd_initiated) bits.push(`started ${data.edd_initiated} EDD`);
+      const extra = bits.length ? `, ${bits.join(', ')}` : '';
       toast.success(`Rule engine: ${data.created} new alert(s) from ${data.clients_scanned} client(s)${extra}`);
       await load();
     } catch {
@@ -192,7 +194,7 @@ export function AlertsLive({ onBack }: { onBack?: () => void } = {}) {
           </div>
           <div className="ml-auto flex flex-wrap gap-2">
             <Button variant="outline" size="sm" onClick={() => generate(false)} disabled={generating}><Zap className={`w-4 h-4 mr-2 ${generating ? 'animate-pulse' : ''}`} />Run Rule Engine</Button>
-            <Button variant="outline" size="sm" className="text-indigo-700 border-indigo-200" onClick={() => generate(true)} disabled={generating}><Zap className="w-4 h-4 mr-2" />Run + Auto-escalate</Button>
+            <Button variant="outline" size="sm" className="text-indigo-700 border-indigo-200" onClick={() => generate(true)} disabled={generating}><Zap className="w-4 h-4 mr-2" />Run + Auto-actions</Button>
             <Button variant="outline" size="sm" onClick={exportCsv}><Download className="w-4 h-4 mr-2" />Export CSV</Button>
             <Button variant="outline" size="sm" onClick={load} disabled={loading}><RefreshCw className={`w-4 h-4 mr-2 ${loading ? 'animate-spin' : ''}`} />Refresh</Button>
             <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white" onClick={() => setShowCreate(true)}><Plus className="w-4 h-4 mr-2" />New Alert</Button>

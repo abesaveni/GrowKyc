@@ -233,6 +233,7 @@ async def escalate_alert_to_case(
 @router.post("/generate")
 async def generate_alerts(
     auto_escalate: bool = Query(False, description="Auto-open a case for each critical alert"),
+    auto_edd: bool = Query(False, description="Auto-initiate EDD for each flagged high-risk client"),
     db: Session = Depends(get_db),
     current_user: User = Depends(get_admin_or_agent_user),
 ):
@@ -280,19 +281,31 @@ async def generate_alerts(
         new_alerts.append(alert)
         created += 1
 
+    # Track the strongest EDD trigger per flagged client (sanctions > pep > high_risk).
+    edd_triggers: dict = {}
+
+    def flag_edd(client_id: int, reason: str, score: float):
+        rank = {"sanctions": 0, "pep": 1, "high_risk": 2}
+        cur = edd_triggers.get(client_id)
+        if cur is None or rank[reason] < rank[cur[0]]:
+            edd_triggers[client_id] = (reason, score)
+
     for c in clients:
         name = c.name or f"Client {c.id}"
+        score = getattr(c, "risk_score", 0) or 0
         if getattr(c, "is_sanctioned", False):
             raise_alert(c, "sanctions_hit", "critical", f"Sanctions match — {name}",
                         "Client flagged against a sanctions list. Immediate review required.")
+            flag_edd(c.id, "sanctions", score)
         if getattr(c, "is_pep", False):
             raise_alert(c, "pep_match", "high", f"PEP match — {name}",
                         "Client identified as a Politically Exposed Person.")
-        score = getattr(c, "risk_score", 0) or 0
+            flag_edd(c.id, "pep", score)
         if score >= 70:
             sev = "critical" if score >= 85 else "high"
             raise_alert(c, "high_risk", sev, f"High risk score ({score}) — {name}",
                         f"Client risk score of {score} exceeds the monitoring threshold.")
+            flag_edd(c.id, "high_risk", score)
 
     escalated = 0
     if auto_escalate and new_alerts:
@@ -302,9 +315,33 @@ async def generate_alerts(
                 _open_case_for_alert(db, alert, current_user)
                 escalated += 1
 
+    edd_initiated = 0
+    if auto_edd and edd_triggers:
+        from services.edd_service import EDDService
+
+        edd_service = EDDService(db)
+        for client_id, (reason, score) in edd_triggers.items():
+            try:
+                before = edd_service.get_active_edd_for_client(client_id)
+                edd_service.initiate_edd(
+                    client_id=client_id,
+                    trigger_reason=reason,
+                    triggered_by_user_id=current_user.id,
+                    initial_risk_score=score or None,
+                )
+                if before is None:  # only count newly created workflows
+                    edd_initiated += 1
+            except Exception as e:  # noqa: BLE001
+                logger.warning(f"auto-EDD for client {client_id} failed: {e}")
+
     db.commit()
     logger.info(
-        f"Alert rule engine created {created} alert(s), auto-escalated {escalated} "
-        f"by user {current_user.id}"
+        f"Alert rule engine created {created} alert(s), auto-escalated {escalated}, "
+        f"auto-EDD {edd_initiated} by user {current_user.id}"
     )
-    return {"created": created, "clients_scanned": len(clients), "escalated": escalated}
+    return {
+        "created": created,
+        "clients_scanned": len(clients),
+        "escalated": escalated,
+        "edd_initiated": edd_initiated,
+    }
