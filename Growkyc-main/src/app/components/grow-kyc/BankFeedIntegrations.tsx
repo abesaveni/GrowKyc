@@ -400,7 +400,7 @@ export function BankFeedIntegrations({ onBack }: BankFeedIntegrationsProps) {
               <CardContent className="p-6">
                 <div className="flex items-start justify-between">
                   <div className="flex items-start gap-4 flex-1">
-                    <div className="w-16 h-16 bg-[#0a0e17] rounded-lg flex items-center justify-center text-3xl">
+                    <div className="w-16 h-16 bg-[#0f172a] rounded-lg flex items-center justify-center text-3xl">
                       {integration.logo}
                     </div>
                     <div className="flex-1">

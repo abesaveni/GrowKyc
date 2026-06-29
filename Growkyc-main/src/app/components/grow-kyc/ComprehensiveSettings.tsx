@@ -227,10 +227,10 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
 
 
   return (
-    <div className="min-h-screen bg-[#0a0e17] relative">
+    <div className="min-h-screen bg-[#0f172a] relative">
       {/* Toast Notification */}
       {toast && (
-        <div className="fixed bottom-6 right-6 z-50 bg-[#0d121d] dark:bg-gray-800 border-l-4 border-purple-600 shadow-2xl rounded-lg p-4 flex items-center gap-3 max-w-sm transition-all duration-300 transform translate-y-0 scale-100">
+        <div className="fixed bottom-6 right-6 z-50 bg-[#1e293b] dark:bg-gray-800 border-l-4 border-purple-600 shadow-2xl rounded-lg p-4 flex items-center gap-3 max-w-sm transition-all duration-300 transform translate-y-0 scale-100">
           <div className={`p-2 rounded-full ${
             toast.type === 'success' ? 'bg-green-100 text-green-600' :
             toast.type === 'info' ? 'bg-blue-100 text-blue-600' :
@@ -245,7 +245,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
         </div>
       )}
       {/* Header */}
-      <div className="bg-[#0d121d] border-b border-white/10 px-4 md:px-6 py-4">
+      <div className="bg-[#1e293b] border-b border-white/10 px-4 md:px-6 py-4">
         <div className="flex flex-col sm:flex-row gap-4 sm:items-center justify-between">
           <div className="flex flex-wrap items-center gap-2 sm:gap-4">
             <Button variant="ghost" size="sm" onClick={onBack} className="flex-shrink-0">
@@ -281,7 +281,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
       {/* Main Content */}
       <div className="p-4 md:p-6 max-w-7xl mx-auto">
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="flex lg:grid lg:grid-cols-7 w-full overflow-x-auto mb-6 p-1 bg-[#0a0e17] rounded-lg whitespace-nowrap overflow-y-hidden max-w-full gap-1 lg:gap-0 scrollbar-thin">
+          <TabsList className="flex lg:grid lg:grid-cols-7 w-full overflow-x-auto mb-6 p-1 bg-[#0f172a] rounded-lg whitespace-nowrap overflow-y-hidden max-w-full gap-1 lg:gap-0 scrollbar-thin">
             <TabsTrigger value="kyc-config" className="flex items-center gap-2 flex-shrink-0 px-3 py-1.5 text-xs lg:text-sm">
               <Shield className="w-4 h-4" />
               KYC Config
@@ -347,7 +347,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         Default: 24% (anyone with 24%+ ownership is automatically screened)
                       </p>
                     </div>
-                    <div className="bg-[#0d121d] rounded-lg p-4 border border-cyan-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-cyan-200">
                       <p className="text-xs font-semibold text-slate-300 mb-2">Auto-screening triggers:</p>
                       <ul className="text-xs text-slate-300 space-y-1">
                         <li>• Directors (always screened)</li>
@@ -371,7 +371,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         type="number"
                         value={controlThreshold}
                         onChange={e => setControlThreshold(Number(e.target.value))}
-                        className="border-2 border-purple-200 bg-[#0d121d]"
+                        className="border-2 border-purple-200 bg-[#1e293b]"
                       />
                       <span className="font-semibold text-purple-600">%</span>
                     </div>
@@ -388,7 +388,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         type="number"
                         value={highRiskThreshold}
                         onChange={e => setHighRiskThreshold(Number(e.target.value))}
-                        className="border-2 border-amber-200 bg-[#0d121d]"
+                        className="border-2 border-amber-200 bg-[#1e293b]"
                       />
                       <span className="font-semibold text-amber-600">%</span>
                     </div>
@@ -444,7 +444,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                   </div>
                 </div>
 
-                <div className="bg-[#0d121d] rounded-lg p-4 border-2 border-indigo-300">
+                <div className="bg-[#1e293b] rounded-lg p-4 border-2 border-indigo-300">
                   <Label className="text-sm font-semibold mb-3 block">Maximum Expansion Depth</Label>
                   <div className="flex items-center gap-4">
                     <Input
@@ -538,7 +538,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         type="number"
                         value={retentionIdDocs}
                         onChange={e => setRetentionIdDocs(Number(e.target.value))}
-                        className="w-24 border-2 bg-[#0d121d]"
+                        className="w-24 border-2 bg-[#1e293b]"
                       />
                       <span className="text-sm text-slate-300">years</span>
                     </div>
@@ -552,7 +552,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         type="number"
                         value={retentionScreening}
                         onChange={e => setRetentionScreening(Number(e.target.value))}
-                        className="w-24 border-2 bg-[#0d121d]"
+                        className="w-24 border-2 bg-[#1e293b]"
                       />
                       <span className="text-sm text-slate-300">years</span>
                     </div>
@@ -566,7 +566,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         type="number"
                         value={retentionCase}
                         onChange={e => setRetentionCase(Number(e.target.value))}
-                        className="w-24 border-2 bg-[#0d121d]"
+                        className="w-24 border-2 bg-[#1e293b]"
                       />
                       <span className="text-sm text-slate-300">years</span>
                     </div>
@@ -580,7 +580,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         type="number"
                         value={retentionAudit}
                         onChange={e => setRetentionAudit(Number(e.target.value))}
-                        className="w-24 border-2 bg-[#0d121d]"
+                        className="w-24 border-2 bg-[#1e293b]"
                       />
                       <span className="text-sm text-slate-300">years</span>
                     </div>
@@ -868,7 +868,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                               [factor.name]: newWeight
                             }));
                           }}
-                          className="w-24 border-2 bg-[#0d121d]"
+                          className="w-24 border-2 bg-[#1e293b]"
                         />
                         <div className="flex-1 bg-gray-200 rounded-full h-2">
                           <div
@@ -889,14 +889,14 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         type="number"
                         value={riskLowMin}
                         onChange={e => setRiskLowMin(Number(e.target.value))}
-                        className="border-2 bg-[#0d121d]"
+                        className="border-2 bg-[#1e293b]"
                       />
                       <span className="text-sm">-</span>
                       <Input
                         type="number"
                         value={riskLowMax}
                         onChange={e => setRiskLowMax(Number(e.target.value))}
-                        className="border-2 bg-[#0d121d]"
+                        className="border-2 bg-[#1e293b]"
                       />
                     </div>
                   </div>
@@ -907,14 +907,14 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         type="number"
                         value={riskMedMin}
                         onChange={e => setRiskMedMin(Number(e.target.value))}
-                        className="border-2 bg-[#0d121d]"
+                        className="border-2 bg-[#1e293b]"
                       />
                       <span className="text-sm">-</span>
                       <Input
                         type="number"
                         value={riskMedMax}
                         onChange={e => setRiskMedMax(Number(e.target.value))}
-                        className="border-2 bg-[#0d121d]"
+                        className="border-2 bg-[#1e293b]"
                       />
                     </div>
                   </div>
@@ -925,14 +925,14 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         type="number"
                         value={riskHighMin}
                         onChange={e => setRiskHighMin(Number(e.target.value))}
-                        className="border-2 bg-[#0d121d]"
+                        className="border-2 bg-[#1e293b]"
                       />
                       <span className="text-sm">-</span>
                       <Input
                         type="number"
                         value={riskHighMax}
                         onChange={e => setRiskHighMax(Number(e.target.value))}
-                        className="border-2 bg-[#0d121d]"
+                        className="border-2 bg-[#1e293b]"
                       />
                     </div>
                   </div>
@@ -999,7 +999,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         type="number"
                         value={standardReviewMonths}
                         onChange={e => setStandardReviewMonths(Number(e.target.value))}
-                        className="w-24 border-2 bg-[#0d121d]"
+                        className="w-24 border-2 bg-[#1e293b]"
                       />
                       <span className="text-sm text-slate-300">months</span>
                     </div>
@@ -1011,7 +1011,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         type="number"
                         value={mediumReviewMonths}
                         onChange={e => setMediumReviewMonths(Number(e.target.value))}
-                        className="w-24 border-2 bg-[#0d121d]"
+                        className="w-24 border-2 bg-[#1e293b]"
                       />
                       <span className="text-sm text-slate-300">months</span>
                     </div>
@@ -1023,7 +1023,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         type="number"
                         value={highReviewMonths}
                         onChange={e => setHighReviewMonths(Number(e.target.value))}
-                        className="w-24 border-2 bg-[#0d121d]"
+                        className="w-24 border-2 bg-[#1e293b]"
                       />
                       <span className="text-sm text-slate-300">months</span>
                     </div>
@@ -1149,11 +1149,11 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                           type="number"
                           value={verificationFee}
                           onChange={e => setVerificationFee(Number(e.target.value))}
-                          className="text-lg font-semibold border-2 border-cyan-300 focus:border-cyan-500 bg-[#0d121d]"
+                          className="text-lg font-semibold border-2 border-cyan-300 focus:border-cyan-500 bg-[#1e293b]"
                         />
                       </div>
                     </div>
-                    <div className="bg-[#0d121d] rounded-lg p-4 border border-cyan-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-cyan-200">
                       <p className="text-xs text-slate-300 mb-2">This fee includes:</p>
                       <ul className="text-xs text-slate-300 space-y-1">
                         <li className="flex items-center gap-1">
@@ -1188,7 +1188,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                   </p>
                   <div className="grid md:grid-cols-2 gap-4">
                     {/* Equifax */}
-                    <div className="bg-[#0d121d] rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-200">
                       <div className="flex items-center justify-between mb-3">
                         <div>
                           <p className="font-semibold text-white">Equifax Identity Check</p>
@@ -1202,13 +1202,13 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                           type="number"
                           value={individualSearchCosts['Equifax Identity Check']}
                           onChange={e => setIndividualSearchCosts(prev => ({ ...prev, 'Equifax Identity Check': Number(e.target.value) }))}
-                          className="border-2 border-purple-200 focus:border-purple-400 bg-[#0d121d]"
+                          className="border-2 border-purple-200 focus:border-purple-400 bg-[#1e293b]"
                         />
                       </div>
                     </div>
 
                     {/* Illion */}
-                    <div className="bg-[#0d121d] rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-200">
                       <div className="flex items-center justify-between mb-3">
                         <div>
                           <p className="font-semibold text-white">Illion Business Check</p>
@@ -1222,13 +1222,13 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                           type="number"
                           value={individualSearchCosts['Illion Business Check']}
                           onChange={e => setIndividualSearchCosts(prev => ({ ...prev, 'Illion Business Check': Number(e.target.value) }))}
-                          className="border-2 border-purple-200 focus:border-purple-400 bg-[#0d121d]"
+                          className="border-2 border-purple-200 focus:border-purple-400 bg-[#1e293b]"
                         />
                       </div>
                     </div>
 
                     {/* ComplyAdvantage */}
-                    <div className="bg-[#0d121d] rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-200">
                       <div className="flex items-center justify-between mb-3">
                         <div>
                           <p className="font-semibold text-white">ComplyAdvantage AML</p>
@@ -1242,13 +1242,13 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                           type="number"
                           value={individualSearchCosts['ComplyAdvantage AML']}
                           onChange={e => setIndividualSearchCosts(prev => ({ ...prev, 'ComplyAdvantage AML': Number(e.target.value) }))}
-                          className="border-2 border-purple-200 focus:border-purple-400 bg-[#0d121d]"
+                          className="border-2 border-purple-200 focus:border-purple-400 bg-[#1e293b]"
                         />
                       </div>
                     </div>
 
                     {/* ASIC */}
-                    <div className="bg-[#0d121d] rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-200">
                       <div className="flex items-center justify-between mb-3">
                         <div>
                           <p className="font-semibold text-white">ASIC Company Extract</p>
@@ -1262,13 +1262,13 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                           type="number"
                           value={individualSearchCosts['ASIC Company Extract']}
                           onChange={e => setIndividualSearchCosts(prev => ({ ...prev, 'ASIC Company Extract': Number(e.target.value) }))}
-                          className="border-2 border-purple-200 focus:border-purple-400 bg-[#0d121d]"
+                          className="border-2 border-purple-200 focus:border-purple-400 bg-[#1e293b]"
                         />
                       </div>
                     </div>
 
                     {/* InfoTrack KYC */}
-                    <div className="bg-[#0d121d] rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-200">
                       <div className="flex items-center justify-between mb-3">
                         <div>
                           <p className="font-semibold text-white">InfoTrack ID Verification</p>
@@ -1282,13 +1282,13 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                           type="number"
                           value={individualSearchCosts['InfoTrack ID Verification']}
                           onChange={e => setIndividualSearchCosts(prev => ({ ...prev, 'InfoTrack ID Verification': Number(e.target.value) }))}
-                          className="border-2 border-purple-200 focus:border-purple-400 bg-[#0d121d]"
+                          className="border-2 border-purple-200 focus:border-purple-400 bg-[#1e293b]"
                         />
                       </div>
                     </div>
 
                     {/* LexisNexis (Optional) */}
-                    <div className="bg-[#0d121d] rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-200">
                       <div className="flex items-center justify-between mb-3">
                         <div>
                           <p className="font-semibold text-white">LexisNexis Legal Check</p>
@@ -1302,13 +1302,13 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                           type="number"
                           value={individualSearchCosts['LexisNexis Legal Check']}
                           onChange={e => setIndividualSearchCosts(prev => ({ ...prev, 'LexisNexis Legal Check': Number(e.target.value) }))}
-                          className="border-2 border-purple-200 focus:border-purple-400 bg-[#0d121d]"
+                          className="border-2 border-purple-200 focus:border-purple-400 bg-[#1e293b]"
                         />
                       </div>
                     </div>
                   </div>
 
-                  <div className="mt-4 bg-[#0d121d] rounded-lg p-4 border border-purple-300">
+                  <div className="mt-4 bg-[#1e293b] rounded-lg p-4 border border-purple-300">
                     <div className="flex items-start gap-2">
                       <Info className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
                       <div>
@@ -1342,7 +1342,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                           type="number"
                           value={monitoringFee}
                           onChange={e => setMonitoringFee(Number(e.target.value))}
-                          className="text-lg font-semibold border-2 border-green-300 focus:border-green-500 bg-[#0d121d]"
+                          className="text-lg font-semibold border-2 border-green-300 focus:border-green-500 bg-[#1e293b]"
                         />
                         <span className="text-sm text-slate-300 whitespace-nowrap">/ month</span>
                       </div>
@@ -1350,7 +1350,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         Billed monthly per client entity
                       </p>
                     </div>
-                    <div className="bg-[#0d121d] rounded-lg p-4 border border-green-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-green-200">
                       <p className="text-xs text-slate-300 mb-2">Monthly monitoring includes:</p>
                       <ul className="text-xs text-slate-300 space-y-1">
                         <li className="flex items-center gap-1">
@@ -1383,7 +1383,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
 
                   {/* Monitoring Tiers */}
                   <div className="mt-4 grid md:grid-cols-3 gap-3">
-                    <div className="bg-[#0d121d] rounded-lg p-4 border-2 border-green-300">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border-2 border-green-300">
                       <div className="flex items-center justify-between mb-2">
                         <Badge className="bg-blue-600">Standard</Badge>
                         <span className="font-bold text-lg">$15</span>
@@ -1392,7 +1392,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         Monthly checks, standard alerts
                       </p>
                     </div>
-                    <div className="bg-[#0d121d] rounded-lg p-4 border-2 border-amber-400">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border-2 border-amber-400">
                       <div className="flex items-center justify-between mb-2">
                         <Badge className="bg-amber-600">Enhanced</Badge>
                         <span className="font-bold text-lg">$35</span>
@@ -1401,7 +1401,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         Weekly checks, priority alerts
                       </p>
                     </div>
-                    <div className="bg-[#0d121d] rounded-lg p-4 border-2 border-purple-400">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border-2 border-purple-400">
                       <div className="flex items-center justify-between mb-2">
                         <Badge className="bg-purple-600">Premium</Badge>
                         <span className="font-bold text-lg">$75</span>
@@ -1423,11 +1423,11 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     <div>
                       <p className="text-sm font-semibold text-slate-300 mb-3">Revenue Model</p>
                       <div className="space-y-2">
-                        <div className="flex items-center justify-between p-3 bg-[#0d121d] rounded-lg border border-indigo-200">
+                        <div className="flex items-center justify-between p-3 bg-[#1e293b] rounded-lg border border-indigo-200">
                           <span className="text-sm text-slate-300">Initial Verification</span>
                           <span className="font-bold text-indigo-600">$49.00</span>
                         </div>
-                        <div className="flex items-center justify-between p-3 bg-[#0d121d] rounded-lg border border-indigo-200">
+                        <div className="flex items-center justify-between p-3 bg-[#1e293b] rounded-lg border border-indigo-200">
                           <span className="text-sm text-slate-300">Monthly Monitoring (Standard)</span>
                           <span className="font-bold text-indigo-600">$15.00</span>
                         </div>
@@ -1440,11 +1440,11 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     <div>
                       <p className="text-sm font-semibold text-slate-300 mb-3">Cost Structure</p>
                       <div className="space-y-2">
-                        <div className="flex items-center justify-between p-3 bg-[#0d121d] rounded-lg border border-indigo-200">
+                        <div className="flex items-center justify-between p-3 bg-[#1e293b] rounded-lg border border-indigo-200">
                           <span className="text-sm text-slate-300">Total External Checks</span>
                           <span className="font-bold text-white">~$46.50</span>
                         </div>
-                        <div className="flex items-center justify-between p-3 bg-[#0d121d] rounded-lg border border-indigo-200">
+                        <div className="flex items-center justify-between p-3 bg-[#1e293b] rounded-lg border border-indigo-200">
                           <span className="text-sm text-slate-300">Monitoring Cost (est.)</span>
                           <span className="font-bold text-white">~$5.00/mo</span>
                         </div>
@@ -1494,7 +1494,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     <Input
                       value={orgProfile.name}
                       onChange={e => setOrgProfile(prev => ({ ...prev, name: e.target.value }))}
-                      className="border-2 bg-[#0d121d]"
+                      className="border-2 bg-[#1e293b]"
                     />
                   </div>
                   <div>
@@ -1502,7 +1502,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     <Input
                       value={orgProfile.tradingName}
                       onChange={e => setOrgProfile(prev => ({ ...prev, tradingName: e.target.value }))}
-                      className="border-2 bg-[#0d121d]"
+                      className="border-2 bg-[#1e293b]"
                     />
                   </div>
                   <div>
@@ -1510,7 +1510,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     <Input
                       value={orgProfile.abn}
                       onChange={e => setOrgProfile(prev => ({ ...prev, abn: e.target.value }))}
-                      className="border-2 bg-[#0d121d]"
+                      className="border-2 bg-[#1e293b]"
                     />
                   </div>
                   <div>
@@ -1518,7 +1518,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     <Input
                       value={orgProfile.acn}
                       onChange={e => setOrgProfile(prev => ({ ...prev, acn: e.target.value }))}
-                      className="border-2 bg-[#0d121d]"
+                      className="border-2 bg-[#1e293b]"
                     />
                   </div>
                   <div className="md:col-span-2">
@@ -1526,7 +1526,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                     <Input
                       value={orgProfile.address}
                       onChange={e => setOrgProfile(prev => ({ ...prev, address: e.target.value }))}
-                      className="border-2 bg-[#0d121d]"
+                      className="border-2 bg-[#1e293b]"
                     />
                   </div>
                   <div>
@@ -1535,7 +1535,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                       type="email"
                       value={orgProfile.email}
                       onChange={e => setOrgProfile(prev => ({ ...prev, email: e.target.value }))}
-                      className="border-2 bg-[#0d121d]"
+                      className="border-2 bg-[#1e293b]"
                     />
                   </div>
                   <div>
@@ -1544,7 +1544,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                       type="tel"
                       value={orgProfile.phone}
                       onChange={e => setOrgProfile(prev => ({ ...prev, phone: e.target.value }))}
-                      className="border-2 bg-[#0d121d]"
+                      className="border-2 bg-[#1e293b]"
                     />
                   </div>
                 </div>
@@ -1566,7 +1566,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-purple-50 rounded-lg p-4 border border-purple-200">
                     <Label className="text-sm font-semibold mb-3 block">Logo Upload</Label>
-                    <div className="border-2 border-dashed border-purple-300 rounded-lg p-6 text-center bg-[#0d121d]">
+                    <div className="border-2 border-dashed border-purple-300 rounded-lg p-6 text-center bg-[#1e293b]">
                       <Upload className="w-8 h-8 text-purple-400 mx-auto mb-2" />
                       <p className="text-sm text-slate-300 mb-2">Upload your organization logo</p>
                       <Button size="sm" variant="outline" onClick={() => showToast('Logo upload is locked in demo mode.', 'info')}>Choose File</Button>
@@ -1580,12 +1580,12 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         type="color"
                         value={brandColor}
                         onChange={e => setBrandColor(e.target.value)}
-                        className="w-20 h-12 border-2 bg-[#0d121d] cursor-pointer"
+                        className="w-20 h-12 border-2 bg-[#1e293b] cursor-pointer"
                       />
                       <Input
                         value={brandColor}
                         onChange={e => setBrandColor(e.target.value)}
-                        className="border-2 bg-[#0d121d]"
+                        className="border-2 bg-[#1e293b]"
                       />
                     </div>
                     <p className="text-xs text-slate-300 mt-2">Used for buttons, links, and accents</p>
@@ -1690,7 +1690,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                   <select
                     value={primaryRegion}
                     onChange={e => setPrimaryRegion(e.target.value)}
-                    className="w-full px-4 py-2 border-2 rounded-lg bg-[#0d121d]"
+                    className="w-full px-4 py-2 border-2 rounded-lg bg-[#1e293b]"
                   >
                     <option>Australia (Sydney)</option>
                     <option>New Zealand (Auckland)</option>
@@ -1705,7 +1705,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                   <p className="text-xs text-slate-300 mt-2">All client data will be stored in this region</p>
                 </div>
 
-                <div className="bg-[#0d121d] rounded-lg p-4 border-2 border-indigo-300">
+                <div className="bg-[#1e293b] rounded-lg p-4 border-2 border-indigo-300">
                   <h3 className="font-bold text-sm text-white mb-3 flex items-center gap-2">
                     <Shield className="w-4 h-4 text-indigo-600" />
                     Multi-Jurisdictional Compliance Modes
@@ -1915,7 +1915,7 @@ export function ComprehensiveSettings({ role, userId, onBack }: ComprehensiveSet
                         type="number"
                         value={sessionTimeout}
                         onChange={e => setSessionTimeout(Number(e.target.value))}
-                        className="w-20 border-2 bg-[#0d121d]"
+                        className="w-20 border-2 bg-[#1e293b]"
                       />
                       <span className="text-xs">min</span>
                     </div>

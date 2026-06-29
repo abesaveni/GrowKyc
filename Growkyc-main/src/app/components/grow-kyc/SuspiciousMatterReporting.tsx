@@ -136,7 +136,7 @@ export function SuspiciousMatterReporting({ onBack }: SuspiciousMatterReportingP
   const statusStates = ['Open', 'Under Review', 'Approved', 'Lodged', 'Closed'];
 
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
+    <div className="min-h-screen bg-[#0f172a]">
       {/* Header */}
       <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] text-white px-6 py-4">
         <div className="flex items-center justify-between">
@@ -152,7 +152,7 @@ export function SuspiciousMatterReporting({ onBack }: SuspiciousMatterReportingP
               <p className="text-sm text-white/90">AUSTRAC Suspicious Matter Report Workflow</p>
             </div>
           </div>
-          <Button className="bg-[#0d121d] text-[#13B5EA] hover:bg-white/5">
+          <Button className="bg-[#1e293b] text-[#13B5EA] hover:bg-white/5">
             <Flag className="w-4 h-4 mr-2" />
             New SMR Case
           </Button>
@@ -160,7 +160,7 @@ export function SuspiciousMatterReporting({ onBack }: SuspiciousMatterReportingP
       </div>
 
       {/* Stats Bar */}
-      <div className="bg-[#0d121d] border-b border-white/10 px-6 py-4">
+      <div className="bg-[#1e293b] border-b border-white/10 px-6 py-4">
         <div className="grid grid-cols-6 gap-4">
           <div className="text-center">
             <div className="text-3xl font-bold text-white">{smrCases.length}</div>
@@ -334,7 +334,7 @@ export function SuspiciousMatterReporting({ onBack }: SuspiciousMatterReportingP
               </CardHeader>
               <CardContent className="p-6 space-y-6">
                 {/* Investigation Summary */}
-                <div className="bg-[#0d121d] rounded-lg p-4 border-2 border-blue-200">
+                <div className="bg-[#1e293b] rounded-lg p-4 border-2 border-blue-200">
                   <h3 className="font-bold text-white mb-3 flex items-center gap-2">
                     <FileText className="w-5 h-5 text-blue-600" />
                     Investigation Summary
@@ -393,7 +393,7 @@ export function SuspiciousMatterReporting({ onBack }: SuspiciousMatterReportingP
                       { id: 'TXN-2024-4523', date: '2024-03-07', amount: '$48,800', type: 'Cash Deposit' },
                       { id: 'TXN-2024-4528', date: '2024-03-09', amount: '$49,200', type: 'Cash Deposit' }
                     ].map((txn, idx) => (
-                      <div key={idx} className="flex items-center justify-between p-3 bg-[#0d121d] rounded border border-amber-300">
+                      <div key={idx} className="flex items-center justify-between p-3 bg-[#1e293b] rounded border border-amber-300">
                         <div className="flex items-center gap-3">
                           <DollarSign className="w-4 h-4 text-amber-600" />
                           <div>
@@ -442,7 +442,7 @@ Recommendation: Escalate to Senior Partner for SMR lodgement decision."
                       { name: 'Client_Interview_Notes.pdf', size: '156 KB', date: '2024-03-12' },
                       { name: 'Contract_of_Sale_Evidence.pdf', size: '3.1 MB', date: '2024-03-14' }
                     ].map((file, idx) => (
-                      <div key={idx} className="flex items-center justify-between p-3 bg-[#0a0e17] rounded border border-white/10">
+                      <div key={idx} className="flex items-center justify-between p-3 bg-[#0f172a] rounded border border-white/10">
                         <div className="flex items-center gap-2">
                           <FileText className="w-4 h-4 text-slate-300" />
                           <div>
@@ -473,7 +473,7 @@ Recommendation: Escalate to Senior Partner for SMR lodgement decision."
               </CardHeader>
               <CardContent className="p-6 space-y-6">
                 {/* Status Timeline */}
-                <div className="bg-[#0d121d] rounded-lg p-4 border-2 border-purple-200">
+                <div className="bg-[#1e293b] rounded-lg p-4 border-2 border-purple-200">
                   <h3 className="font-bold text-white mb-4">Status Timeline</h3>
                   <div className="space-y-4">
                     {[
@@ -624,7 +624,7 @@ Recommendation: Escalate to Senior Partner for SMR lodgement decision."
                       details: 'Automated structuring alert triggered for CL-2024-1847'
                     }
                   ].map((entry, idx) => (
-                    <div key={idx} className="flex items-start gap-3 p-3 bg-[#0a0e17] rounded-lg border border-white/10">
+                    <div key={idx} className="flex items-start gap-3 p-3 bg-[#0f172a] rounded-lg border border-white/10">
                       <div className="w-2 h-2 rounded-full bg-cyan-600 mt-2" />
                       <div className="flex-1">
                         <div className="flex items-center justify-between mb-1">

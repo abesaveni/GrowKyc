@@ -159,7 +159,7 @@ export function ProposalEngagementModule({ onBack }: ProposalEngagementModulePro
   };
 
   return (
-    <div className="min-h-screen bg-[#0d121d]">
+    <div className="min-h-screen bg-[#1e293b]">
       {/* Header */}
       <div className="bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-600 text-white px-8 py-12">
         <Button
@@ -316,7 +316,7 @@ export function ProposalEngagementModule({ onBack }: ProposalEngagementModulePro
                           {/* Services */}
                           <div className="space-y-2 mb-4">
                             {proposal.services.map((service) => (
-                              <div key={service.id} className="flex items-center justify-between p-3 bg-[#0a0e17] rounded-lg">
+                              <div key={service.id} className="flex items-center justify-between p-3 bg-[#0f172a] rounded-lg">
                                 <div className="flex-1">
                                   <div className="font-semibold text-white">{service.name}</div>
                                   <div className="text-sm text-slate-300">{service.description}</div>
@@ -391,7 +391,7 @@ export function ProposalEngagementModule({ onBack }: ProposalEngagementModulePro
               <CardContent>
                 <div className="grid grid-cols-3 gap-4">
                   {proposals.filter(p => p.status === 'accepted').map((proposal) => (
-                    <div key={proposal.id} className="p-4 bg-[#0d121d] rounded-lg border-2 border-green-200">
+                    <div key={proposal.id} className="p-4 bg-[#1e293b] rounded-lg border-2 border-green-200">
                       <div className="flex items-center justify-between mb-3">
                         <h4 className="font-bold text-white">{proposal.clientName}</h4>
                         {proposal.engagementSigned ? (
@@ -434,7 +434,7 @@ export function ProposalEngagementModule({ onBack }: ProposalEngagementModulePro
                     { name: 'Advisory Services', count: 5 },
                     { name: 'Bookkeeping Services', count: 3 }
                   ].map((template, idx) => (
-                    <div key={idx} className="p-4 bg-[#0a0e17] rounded-lg border border-white/10 hover:border-blue-300 cursor-pointer">
+                    <div key={idx} className="p-4 bg-[#0f172a] rounded-lg border border-white/10 hover:border-blue-300 cursor-pointer">
                       <div className="flex items-center justify-between mb-2">
                         <h4 className="font-bold text-white">{template.name}</h4>
                         <Badge variant="outline">{template.count} active</Badge>
@@ -463,19 +463,19 @@ export function ProposalEngagementModule({ onBack }: ProposalEngagementModulePro
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-4 gap-4 mb-6">
-                  <div className="p-4 bg-[#0d121d] rounded-lg border border-blue-200">
+                  <div className="p-4 bg-[#1e293b] rounded-lg border border-blue-200">
                     <div className="text-sm text-slate-300 mb-1">Total Outstanding</div>
                     <div className="text-2xl font-bold text-white">${proposals.filter(p => p.paymentStatus === 'pending').reduce((sum, p) => sum + p.totalFee, 0).toLocaleString()}</div>
                   </div>
-                  <div className="p-4 bg-[#0d121d] rounded-lg border border-green-200">
+                  <div className="p-4 bg-[#1e293b] rounded-lg border border-green-200">
                     <div className="text-sm text-slate-300 mb-1">Collected</div>
                     <div className="text-2xl font-bold text-green-600">${stats.paidValue.toLocaleString()}</div>
                   </div>
-                  <div className="p-4 bg-[#0d121d] rounded-lg border border-amber-200">
+                  <div className="p-4 bg-[#1e293b] rounded-lg border border-amber-200">
                     <div className="text-sm text-slate-300 mb-1">Deposits Paid</div>
                     <div className="text-2xl font-bold text-amber-600">${proposals.filter(p => p.paymentStatus === 'deposit-paid').reduce((sum, p) => sum + p.totalFee * 0.3, 0).toLocaleString()}</div>
                   </div>
-                  <div className="p-4 bg-[#0d121d] rounded-lg border border-red-200">
+                  <div className="p-4 bg-[#1e293b] rounded-lg border border-red-200">
                     <div className="text-sm text-slate-300 mb-1">Overdue</div>
                     <div className="text-2xl font-bold text-red-600">$0</div>
                   </div>
@@ -484,7 +484,7 @@ export function ProposalEngagementModule({ onBack }: ProposalEngagementModulePro
                 {/* Payment Options */}
                 <div className="space-y-3">
                   {proposals.filter(p => p.status === 'accepted').map((proposal) => (
-                    <div key={proposal.id} className="flex items-center justify-between p-4 bg-[#0d121d] rounded-lg border-2 border-white/10">
+                    <div key={proposal.id} className="flex items-center justify-between p-4 bg-[#1e293b] rounded-lg border-2 border-white/10">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                           <Banknote className="w-6 h-6 text-blue-600" />
@@ -538,7 +538,7 @@ export function ProposalEngagementModule({ onBack }: ProposalEngagementModulePro
                   ].map((method, idx) => {
                     const MethodIcon = method.icon;
                     return (
-                      <div key={idx} className="p-4 bg-[#0a0e17] rounded-lg border border-white/10">
+                      <div key={idx} className="p-4 bg-[#0f172a] rounded-lg border border-white/10">
                         <div className="flex items-center gap-3 mb-3">
                           <div className={`w-10 h-10 ${method.color} rounded-lg flex items-center justify-center`}>
                             <MethodIcon className="w-5 h-5" />
@@ -572,7 +572,7 @@ export function ProposalEngagementModule({ onBack }: ProposalEngagementModulePro
           <CardContent>
             <div className="grid grid-cols-3 gap-4">
               {serviceTemplates.map((template) => (
-                <div key={template.id} className="p-4 bg-[#0d121d] rounded-lg border border-purple-200 hover:border-purple-400 cursor-pointer">
+                <div key={template.id} className="p-4 bg-[#1e293b] rounded-lg border border-purple-200 hover:border-purple-400 cursor-pointer">
                   <div className="font-bold text-white mb-1">{template.name}</div>
                   <div className="text-sm text-slate-300 mb-2">{template.description}</div>
                   <div className="flex items-center justify-between">

@@ -713,7 +713,7 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
             <div className="space-y-4">
               <h3 className="font-semibold text-lg">Step 2: Review & Submit</h3>
               
-              <Card className="bg-[#0a0e17]">
+              <Card className="bg-[#0f172a]">
                 <CardContent className="p-4">
                   <h4 className="font-semibold mb-3">Request Payload Preview</h4>
                   <pre className="text-xs bg-gray-900 text-green-400 p-4 rounded overflow-auto max-h-64">
@@ -840,7 +840,7 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
                   <CardTitle>Evidence Package</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  <div className="flex items-center justify-between p-3 bg-[#0a0e17] rounded">
+                  <div className="flex items-center justify-between p-3 bg-[#0f172a] rounded">
                     <div className="flex items-center gap-3">
                       <FileText className="w-5 h-5 text-blue-600" />
                       <div>
@@ -853,7 +853,7 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
                       Download
                     </Button>
                   </div>
-                  <div className="flex items-center justify-between p-3 bg-[#0a0e17] rounded">
+                  <div className="flex items-center justify-between p-3 bg-[#0f172a] rounded">
                     <div className="flex items-center gap-3">
                       <Code className="w-5 h-5 text-green-600" />
                       <div>
@@ -958,14 +958,14 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
             <div>
               <div className="text-sm text-slate-300 mb-2">Directors</div>
               <div className="space-y-2">
-                <div className="flex items-center justify-between p-2 bg-[#0d121d] rounded">
+                <div className="flex items-center justify-between p-2 bg-[#1e293b] rounded">
                   <div>
                     <div className="font-medium">John Smith</div>
                     <div className="text-sm text-slate-300">Appointed: 2020-01-15</div>
                   </div>
                   <CheckCircle className="w-4 h-4 text-green-600" />
                 </div>
-                <div className="flex items-center justify-between p-2 bg-[#0d121d] rounded">
+                <div className="flex items-center justify-between p-2 bg-[#1e293b] rounded">
                   <div>
                     <div className="font-medium">Jane Doe</div>
                     <div className="text-sm text-slate-300">Appointed: 2020-01-15</div>
@@ -975,7 +975,7 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
               </div>
             </div>
 
-            <div className="flex items-center gap-2 p-3 bg-[#0d121d] rounded">
+            <div className="flex items-center gap-2 p-3 bg-[#1e293b] rounded">
               <CheckCircle className="w-5 h-5 text-green-600" />
               <span>No watchlist hits detected</span>
             </div>
@@ -1488,7 +1488,7 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
         <CardContent className="p-0">
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-[#0a0e17] border-b">
+              <thead className="bg-[#0f172a] border-b">
                 <tr>
                   <th className="text-left p-4 text-sm font-semibold text-white">Timestamp</th>
                   <th className="text-left p-4 text-sm font-semibold text-white">Provider</th>
@@ -1849,9 +1849,9 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
   // NAVIGATION
   // ============================================================================
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
+    <div className="min-h-screen bg-[#0f172a]">
       {/* Top Navigation Bar */}
-      <div className="bg-[#0d121d] border-b sticky top-0 z-10">
+      <div className="bg-[#1e293b] border-b sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -1875,7 +1875,7 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
       </div>
 
       {/* Secondary Navigation */}
-      <div className="bg-[#0d121d] border-b">
+      <div className="bg-[#1e293b] border-b">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex gap-1 overflow-x-auto">
             {[
@@ -1964,7 +1964,7 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
                     />
                   </div>
 
-                  <Card className="bg-[#0a0e17]">
+                  <Card className="bg-[#0f172a]">
                     <CardContent className="p-3 text-sm">
                       <div className="flex items-start gap-2">
                         <FileText className="w-4 h-4 text-slate-300 flex-shrink-0 mt-0.5" />

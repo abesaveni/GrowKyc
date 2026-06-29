@@ -286,7 +286,7 @@ export function AdminUserManagement() {
       {/* Create User modal */}
       {showCreate && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4" onClick={() => !creating && setShowCreate(false)}>
-          <div className="bg-[#0d121d] border border-white/10 rounded-lg shadow-2xl w-full max-w-md p-6 space-y-4" onClick={e => e.stopPropagation()}>
+          <div className="bg-[#1e293b] border border-white/10 rounded-lg shadow-2xl w-full max-w-md p-6 space-y-4" onClick={e => e.stopPropagation()}>
             <h2 className="text-lg font-semibold text-white">Create User</h2>
             <div className="space-y-3">
               <div>
@@ -304,7 +304,7 @@ export function AdminUserManagement() {
               <div>
                 <label className="text-sm text-slate-300">Role</label>
                 <select
-                  className="w-full border border-white/10 bg-[#0a0e17] text-white rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#13B5EA]/30"
+                  className="w-full border border-white/10 bg-[#0f172a] text-white rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#13B5EA]/30"
                   value={createForm.role}
                   onChange={e => setCreateForm(f => ({ ...f, role: e.target.value }))}
                 >
@@ -407,7 +407,7 @@ export function AdminUserManagement() {
               <select
                 value={roleFilter}
                 onChange={(e) => setRoleFilter(e.target.value)}
-                className="px-3 py-2 border border-white/10 bg-[#0d121d] text-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#13B5EA]/30"
+                className="px-3 py-2 border border-white/10 bg-[#1e293b] text-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#13B5EA]/30"
               >
                 <option value="all">All Roles</option>
                 {roles.map(r => <option key={r.value} value={r.value}>{r.label}</option>)}
@@ -416,7 +416,7 @@ export function AdminUserManagement() {
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="px-3 py-2 border border-white/10 bg-[#0d121d] text-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#13B5EA]/30"
+                className="px-3 py-2 border border-white/10 bg-[#1e293b] text-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#13B5EA]/30"
               >
                 <option value="all">All Status</option>
                 <option value="active">Active</option>
@@ -494,7 +494,7 @@ export function AdminUserManagement() {
                         <select
                           value={user.role}
                           onChange={(e) => handleRoleChange(user.id, e.target.value)}
-                          className="px-2 py-1 border border-white/10 bg-[#0d121d] text-slate-200 rounded text-sm focus:outline-none focus:ring-2 focus:ring-[#13B5EA]/30"
+                          className="px-2 py-1 border border-white/10 bg-[#1e293b] text-slate-200 rounded text-sm focus:outline-none focus:ring-2 focus:ring-[#13B5EA]/30"
                           onClick={(e) => e.stopPropagation()}
                         >
                           {/* Ensure the user's current role is selectable even if

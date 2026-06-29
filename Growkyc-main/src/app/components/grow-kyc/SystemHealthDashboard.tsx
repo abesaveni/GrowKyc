@@ -277,7 +277,7 @@ export function SystemHealthDashboard({ onBack }: SystemHealthDashboardProps) {
             {systemComponents.map((component, index) => {
               const Icon = component.icon;
               return (
-                <div key={index} className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-lg">
+                <div key={index} className="flex items-center justify-between p-4 bg-[#0f172a] rounded-lg">
                   <div className="flex items-center gap-3">
                     <Icon className={`w-5 h-5 ${component.color}`} />
                     <div>
@@ -309,7 +309,7 @@ export function SystemHealthDashboard({ onBack }: SystemHealthDashboardProps) {
             {integrationStatus.map((integration, index) => {
               const Icon = integration.icon;
               return (
-                <div key={index} className="p-4 bg-[#0a0e17] rounded-lg">
+                <div key={index} className="p-4 bg-[#0f172a] rounded-lg">
                   <div className="flex items-center justify-between mb-3">
                     <Icon className="w-5 h-5 text-[#13B5EA]" />
                     {getStatusBadge(integration.status)}

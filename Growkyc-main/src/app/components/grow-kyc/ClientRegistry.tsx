@@ -192,8 +192,8 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
     'Active - High Risk': 'bg-orange-100 text-orange-700 border-orange-300',
     'Restricted': 'bg-yellow-100 text-yellow-700 border-yellow-300',
     'Suspended': 'bg-red-100 text-red-700 border-red-300',
-    'Offboarding': 'bg-[#0a0e17] text-slate-300 border-gray-300',
-    'Closed': 'bg-[#0a0e17] text-slate-300 border-gray-300'
+    'Offboarding': 'bg-[#0f172a] text-slate-300 border-gray-300',
+    'Closed': 'bg-[#0f172a] text-slate-300 border-gray-300'
   };
 
   const filteredClients = clients.filter((client) => {
@@ -395,7 +395,7 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
               return (
                 <div
                   key={client.id}
-                  className="p-4 bg-[#0a0e17] border-2 border-white/10 rounded-lg hover:shadow-lg transition-all cursor-pointer hover:border-blue-400"
+                  className="p-4 bg-[#0f172a] border-2 border-white/10 rounded-lg hover:shadow-lg transition-all cursor-pointer hover:border-blue-400"
                   onClick={() => onViewClient(client.id)}
                 >
                   <div className="flex items-start justify-between">
@@ -449,8 +449,8 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
       {/* Add Client Modal */}
       {showAddClientModal && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-          <div className="bg-[#0d121d] rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="p-6 border-b border-white/10 flex items-center justify-between sticky top-0 bg-[#0d121d]">
+          <div className="bg-[#1e293b] rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6 border-b border-white/10 flex items-center justify-between sticky top-0 bg-[#1e293b]">
               <h2 className="text-xl font-bold text-white">Add New Client</h2>
               <button
                 onClick={() => setShowAddClientModal(false)}

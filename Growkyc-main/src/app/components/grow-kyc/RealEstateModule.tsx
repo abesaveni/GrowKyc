@@ -154,12 +154,12 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
       case 'high': return 'text-red-600 bg-red-100 border-red-300';
       case 'medium': return 'text-amber-600 bg-amber-100 border-amber-300';
       case 'low': return 'text-green-600 bg-green-100 border-green-300';
-      default: return 'text-slate-300 bg-[#0a0e17] border-gray-300';
+      default: return 'text-slate-300 bg-[#0f172a] border-gray-300';
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#0d121d]">
+    <div className="min-h-screen bg-[#1e293b]">
       {/* Header */}
       <div className="bg-gradient-to-r from-teal-600 via-green-600 to-emerald-600 text-white px-8 py-12">
         <Button
@@ -323,11 +323,11 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
                           </div>
 
                           <div className="grid grid-cols-2 gap-4 mb-4">
-                            <div className="p-3 bg-[#0d121d] rounded-lg border border-white/10">
+                            <div className="p-3 bg-[#1e293b] rounded-lg border border-white/10">
                               <div className="text-xs text-slate-300 mb-1">Vendor</div>
                               <div className="font-semibold text-white">{txn.vendor}</div>
                             </div>
-                            <div className="p-3 bg-[#0d121d] rounded-lg border border-white/10">
+                            <div className="p-3 bg-[#1e293b] rounded-lg border border-white/10">
                               <div className="text-xs text-slate-300 mb-1">Purchaser</div>
                               <div className="flex items-center gap-2">
                                 <PurchaserIcon className="w-4 h-4 text-slate-300" />
@@ -372,7 +372,7 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
                             </div>
                           </div>
 
-                          <div className="p-4 bg-[#0d121d] rounded-lg border border-white/10 mb-4">
+                          <div className="p-4 bg-[#1e293b] rounded-lg border border-white/10 mb-4">
                             <div className="text-sm text-slate-300 mb-1">Source of Funds</div>
                             <div className="font-semibold text-white">{txn.sourceOfFunds}</div>
                           </div>
@@ -456,7 +456,7 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
               <CardContent>
                 <div className="space-y-3">
                   {transactions.filter(t => t.offshoreFlag).map((txn) => (
-                    <div key={txn.id} className="flex items-center justify-between p-4 bg-[#0d121d] rounded-lg border-2 border-red-200">
+                    <div key={txn.id} className="flex items-center justify-between p-4 bg-[#1e293b] rounded-lg border-2 border-red-200">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
                           <Globe className="w-6 h-6 text-red-600" />
@@ -546,7 +546,7 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
-                  <div className="p-4 bg-[#0d121d] rounded-lg border border-amber-200">
+                  <div className="p-4 bg-[#1e293b] rounded-lg border border-amber-200">
                     <h4 className="font-bold text-white mb-2">High-Risk Jurisdictions:</h4>
                     <div className="flex flex-wrap gap-2">
                       {['Russia', 'North Korea', 'Iran', 'Myanmar', 'Syria', 'Venezuela'].map((country, idx) => (
@@ -557,7 +557,7 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
                     </div>
                   </div>
 
-                  <div className="p-4 bg-[#0d121d] rounded-lg border border-amber-200">
+                  <div className="p-4 bg-[#1e293b] rounded-lg border border-amber-200">
                     <h4 className="font-bold text-white mb-2">Enhanced Screening Required:</h4>
                     <ul className="space-y-2 text-sm text-slate-300">
                       <li className="flex items-center gap-2">
@@ -602,7 +602,7 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
                       key={txn.id}
                       className={`flex items-center justify-between p-4 rounded-lg border-2 ${
                         txn.settlementReady
-                          ? 'bg-[#0d121d] border-green-200'
+                          ? 'bg-[#1e293b] border-green-200'
                           : 'bg-red-50 border-red-200'
                       }`}
                     >
@@ -728,7 +728,7 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
                     { name: 'InfoTrack', status: 'Disconnected', transactions: 0 },
                     { name: 'Sympli', status: 'Disconnected', transactions: 0 }
                   ].map((platform, idx) => (
-                    <div key={idx} className="p-4 bg-[#0d121d] rounded-lg border border-indigo-200">
+                    <div key={idx} className="p-4 bg-[#1e293b] rounded-lg border border-indigo-200">
                       <div className="font-bold text-white mb-2">{platform.name}</div>
                       <div className="text-sm text-slate-300 mb-3">
                         {platform.status === 'Connected' ? `${platform.transactions} transactions synced` : 'Not connected'}

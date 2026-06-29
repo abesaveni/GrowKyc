@@ -430,7 +430,7 @@ assignedOfficer: 'Compliance Officer'
       case 'medium': return 'bg-[#FFA300]/10 text-[#FFA300] border-[#FFA300]';
       case 'high': return 'bg-red-100 text-red-600 border-red-600';
       case 'critical': return 'bg-red-200 text-red-800 border-red-800';
-      default: return 'bg-[#0a0e17] text-slate-300 border-gray-600';
+      default: return 'bg-[#0f172a] text-slate-300 border-gray-600';
     }
   };
 
@@ -501,7 +501,7 @@ assignedOfficer: 'Compliance Officer'
   };
 
   return (
-    <div className="p-4 sm:p-6 bg-[#0a0e17] min-h-screen">
+    <div className="p-4 sm:p-6 bg-[#0f172a] min-h-screen">
       {/* Header */}
       <div className="mb-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
@@ -845,7 +845,7 @@ assignedOfficer: 'Compliance Officer'
           onClick={() => { resetOnboardForm(); setShowOnboardModal(false); }}
         >
           <div
-            className="bg-[#0d121d] rounded-2xl shadow-2xl w-full max-w-2xl border border-white/10 flex flex-col max-h-[90vh] animate-in fade-in zoom-in-95 duration-200"
+            className="bg-[#1e293b] rounded-2xl shadow-2xl w-full max-w-2xl border border-white/10 flex flex-col max-h-[90vh] animate-in fade-in zoom-in-95 duration-200"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
@@ -890,7 +890,7 @@ assignedOfficer: 'Compliance Officer'
                   <select
                     value={newClientType}
                     onChange={(e) => setNewClientType(e.target.value as any)}
-                    className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA] focus:border-transparent text-white bg-[#0d121d]"
+                    className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA] focus:border-transparent text-white bg-[#1e293b]"
                   >
                     <option value="Individual">Individual</option>
                     <option value="Company">Company</option>
@@ -936,7 +936,7 @@ assignedOfficer: 'Compliance Officer'
                   <select
                     value={newClientRisk}
                     onChange={(e) => setNewClientRisk(e.target.value as any)}
-                    className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA] focus:border-transparent text-white bg-[#0d121d]"
+                    className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA] focus:border-transparent text-white bg-[#1e293b]"
                   >
                     <option value="Low">Low Risk</option>
                     <option value="Medium">Medium Risk</option>
@@ -952,7 +952,7 @@ assignedOfficer: 'Compliance Officer'
                   <label className="block text-sm font-medium text-slate-300">
                     KYC Documents <span className="text-slate-400 font-normal">(optional — up to 5)</span>
                   </label>
-                  <Badge className={uploadedDocCount > 0 ? 'bg-green-100 text-green-700' : 'bg-[#0a0e17] text-slate-300'}>
+                  <Badge className={uploadedDocCount > 0 ? 'bg-green-100 text-green-700' : 'bg-[#0f172a] text-slate-300'}>
                     {uploadedDocCount}/{ONBOARD_DOCUMENT_SLOTS.length} uploaded
                   </Badge>
                 </div>
@@ -961,7 +961,7 @@ assignedOfficer: 'Compliance Officer'
                     <div
                       key={slot.slotId}
                       className={`p-3 rounded-lg border-2 transition-colors ${
-                        slot.file ? 'border-green-300 bg-green-50' : 'border-white/10 bg-[#0a0e17]'
+                        slot.file ? 'border-green-300 bg-green-50' : 'border-white/10 bg-[#0f172a]'
                       }`}
                     >
                       <div className="flex items-start justify-between gap-3">

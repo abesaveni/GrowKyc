@@ -512,7 +512,7 @@ export function DocumentUploadSystem({ documentType, onComplete, onBack }: Docum
         <CardContent>
           <div className="space-y-2">
             {docConfig.verificationChecks.map((check, idx) => (
-              <div key={idx} className="flex items-center justify-between p-3 bg-[#0a0e17] rounded-lg">
+              <div key={idx} className="flex items-center justify-between p-3 bg-[#0f172a] rounded-lg">
                 <span className="text-sm font-medium text-slate-300">{check}</span>
                 {verificationResults.documentIntegrity ? (
                   <Badge className="bg-green-500">

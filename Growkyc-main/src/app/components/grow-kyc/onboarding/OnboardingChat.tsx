@@ -179,7 +179,7 @@ export function OnboardingChat({ onClose }: OnboardingChatProps) {
                 className={`max-w-[85%] rounded-lg p-3 ${
                   message.role === 'user'
                     ? 'bg-blue-600 text-white'
-                    : 'bg-[#0a0e17] text-white'
+                    : 'bg-[#0f172a] text-white'
                 }`}
               >
                 <div className="whitespace-pre-wrap text-sm">{message.content}</div>
@@ -195,7 +195,7 @@ export function OnboardingChat({ onClose }: OnboardingChatProps) {
 
           {isTyping && (
             <div className="flex justify-start">
-              <div className="bg-[#0a0e17] rounded-lg p-3">
+              <div className="bg-[#0f172a] rounded-lg p-3">
                 <div className="flex gap-1">
                   <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
                   <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />

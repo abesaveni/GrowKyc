@@ -155,12 +155,12 @@ export function FundManagersModule({ onBack }: FundManagersModuleProps) {
       case 'high': return 'text-red-600 bg-red-100 border-red-300';
       case 'medium': return 'text-amber-600 bg-amber-100 border-amber-300';
       case 'low': return 'text-green-600 bg-green-100 border-green-300';
-      default: return 'text-slate-300 bg-[#0a0e17] border-gray-300';
+      default: return 'text-slate-300 bg-[#0f172a] border-gray-300';
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#0d121d]">
+    <div className="min-h-screen bg-[#1e293b]">
       {/* Header */}
       <div className="bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-600 text-white px-8 py-12">
         <Button
@@ -383,7 +383,7 @@ export function FundManagersModule({ onBack }: FundManagersModuleProps) {
                           </div>
 
                           {/* Screening Schedule */}
-                          <div className="p-3 bg-[#0d121d] rounded-lg border border-white/10">
+                          <div className="p-3 bg-[#1e293b] rounded-lg border border-white/10">
                             <div className="flex items-center justify-between text-sm">
                               <div>
                                 <span className="text-slate-300">Last screening: </span>
@@ -444,7 +444,7 @@ export function FundManagersModule({ onBack }: FundManagersModuleProps) {
               <CardContent>
                 <div className="space-y-4">
                   {investors.map((investor) => (
-                    <div key={investor.id} className="flex items-center justify-between p-4 bg-[#0d121d] rounded-lg border-2 border-blue-200">
+                    <div key={investor.id} className="flex items-center justify-between p-4 bg-[#1e293b] rounded-lg border-2 border-blue-200">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                           <FileText className="w-6 h-6 text-blue-600" />
@@ -485,7 +485,7 @@ export function FundManagersModule({ onBack }: FundManagersModuleProps) {
               <CardContent>
                 <div className="space-y-3">
                   {investors.filter(i => i.kycStatus !== 'complete').map((investor) => (
-                    <div key={investor.id} className="flex items-center justify-between p-4 bg-[#0d121d] rounded-lg border-2 border-red-200">
+                    <div key={investor.id} className="flex items-center justify-between p-4 bg-[#1e293b] rounded-lg border-2 border-red-200">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
                           <AlertTriangle className="w-6 h-6 text-red-600" />
@@ -526,7 +526,7 @@ export function FundManagersModule({ onBack }: FundManagersModuleProps) {
               <CardContent>
                 <div className="space-y-3">
                   {investors.map((investor) => (
-                    <div key={investor.id} className="flex items-center justify-between p-4 bg-[#0d121d] rounded-lg border border-purple-200">
+                    <div key={investor.id} className="flex items-center justify-between p-4 bg-[#1e293b] rounded-lg border border-purple-200">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
                           <RefreshCw className="w-6 h-6 text-purple-600" />
@@ -563,7 +563,7 @@ export function FundManagersModule({ onBack }: FundManagersModuleProps) {
               <CardContent>
                 <div className="space-y-3">
                   {investors.map((investor) => (
-                    <div key={investor.id} className="p-4 bg-[#0a0e17] rounded-lg border border-white/10">
+                    <div key={investor.id} className="p-4 bg-[#0f172a] rounded-lg border border-white/10">
                       <div className="flex items-center justify-between mb-3">
                         <div className="font-bold text-white">{investor.name}</div>
                         <Badge className={
@@ -613,7 +613,7 @@ export function FundManagersModule({ onBack }: FundManagersModuleProps) {
                     { name: 'Link Group', status: 'Disconnected', investors: 0 },
                     { name: 'Apex', status: 'Disconnected', investors: 0 }
                   ].map((registry, idx) => (
-                    <div key={idx} className="p-4 bg-[#0d121d] rounded-lg border border-indigo-200">
+                    <div key={idx} className="p-4 bg-[#1e293b] rounded-lg border border-indigo-200">
                       <div className="font-bold text-white mb-2">{registry.name}</div>
                       <div className="text-sm text-slate-300 mb-3">
                         {registry.status === 'Connected' ? `${registry.investors} investors synced` : 'Not connected'}

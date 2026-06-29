@@ -237,7 +237,7 @@ export function ClientAccountingIntegration({
                     >
                       <CardContent className="p-6">
                         <div className="text-center">
-                          <div className="w-16 h-16 bg-[#0a0e17] rounded-lg flex items-center justify-center text-4xl mx-auto mb-3">
+                          <div className="w-16 h-16 bg-[#0f172a] rounded-lg flex items-center justify-center text-4xl mx-auto mb-3">
                             {platform.icon}
                           </div>
                           <h3 className="font-bold text-white mb-1">{platform.name}</h3>
@@ -501,7 +501,7 @@ export function ClientAccountingIntegration({
           )}
         </CardContent>
 
-        <div className="border-t p-4 bg-[#0a0e17] flex justify-end gap-2">
+        <div className="border-t p-4 bg-[#0f172a] flex justify-end gap-2">
           <Button variant="outline" onClick={onClose}>
             Cancel
           </Button>

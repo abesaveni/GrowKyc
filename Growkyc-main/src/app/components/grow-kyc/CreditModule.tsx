@@ -116,9 +116,9 @@ export function CreditModule({ onBack }: CreditModuleProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
+    <div className="min-h-screen bg-[#0f172a]">
       {/* Header */}
-      <div className="bg-[#0d121d] border-b sticky top-0 z-10">
+      <div className="bg-[#1e293b] border-b sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -442,7 +442,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                 <CardContent className="space-y-6">
                   {/* Summary Cards */}
                   <div className="grid grid-cols-3 gap-4">
-                    <Card className="bg-[#0d121d]">
+                    <Card className="bg-[#1e293b]">
                       <CardContent className="p-4">
                         <div className="text-sm text-slate-300">Monthly Payment</div>
                         <div className="text-2xl font-bold text-white">
@@ -454,7 +454,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                       </CardContent>
                     </Card>
 
-                    <Card className="bg-[#0d121d]">
+                    <Card className="bg-[#1e293b]">
                       <CardContent className="p-4">
                         <div className="text-sm text-slate-300">Monthly Surplus</div>
                         <div className={`text-2xl font-bold ${
@@ -468,7 +468,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                       </CardContent>
                     </Card>
 
-                    <Card className="bg-[#0d121d]">
+                    <Card className="bg-[#1e293b]">
                       <CardContent className="p-4">
                         <div className="text-sm text-slate-300">Debt Service Ratio</div>
                         <div className={`text-2xl font-bold ${
@@ -484,7 +484,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                   </div>
 
                   {/* Breakdown */}
-                  <Card className="bg-[#0d121d]">
+                  <Card className="bg-[#1e293b]">
                     <CardHeader>
                       <CardTitle className="text-base">Monthly Breakdown</CardTitle>
                     </CardHeader>
@@ -749,7 +749,7 @@ export function CreditModule({ onBack }: CreditModuleProps) {
                               </div>
                             </div>
                             {decision.conditions.length > 0 && (
-                              <div className="p-3 bg-[#0d121d] rounded border">
+                              <div className="p-3 bg-[#1e293b] rounded border">
                                 <div className="text-sm font-semibold text-white mb-2">
                                   Conditions:
                                 </div>

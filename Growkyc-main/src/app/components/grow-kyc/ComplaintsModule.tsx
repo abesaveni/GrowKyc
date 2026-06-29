@@ -217,7 +217,7 @@ export function ComplaintsModule({ onBack }: ComplaintsModuleProps) {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
+    <div className="min-h-screen bg-[#0f172a]">
       {/* Header */}
       <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] text-white px-6 py-4">
         <div className="flex items-center justify-between">
@@ -233,7 +233,7 @@ export function ComplaintsModule({ onBack }: ComplaintsModuleProps) {
               <p className="text-sm text-white/90">ASIC RG271 Complaints Handling</p>
             </div>
           </div>
-          <Button className="bg-[#0d121d] text-[#13B5EA] hover:bg-white/5">
+          <Button className="bg-[#1e293b] text-[#13B5EA] hover:bg-white/5">
             <Flag className="w-4 h-4 mr-2" />
             Lodge Complaint
           </Button>
@@ -241,7 +241,7 @@ export function ComplaintsModule({ onBack }: ComplaintsModuleProps) {
       </div>
 
       {/* SLA Dashboard */}
-      <div className="bg-[#0d121d] border-b border-white/10 px-6 py-4">
+      <div className="bg-[#1e293b] border-b border-white/10 px-6 py-4">
         <div className="grid grid-cols-8 gap-4">
           <div className="text-center">
             <div className="text-3xl font-bold text-white">{stats.total}</div>
@@ -606,13 +606,13 @@ Client states they were not asked about existing commitments and expenses were u
                         All complaints must be acknowledged within 24 hours of receipt (RG271.53)
                       </p>
                       <div className="grid md:grid-cols-2 gap-4">
-                        <div className="p-3 bg-[#0d121d] rounded border border-blue-300">
+                        <div className="p-3 bg-[#1e293b] rounded border border-blue-300">
                           <div className="text-xs text-slate-300">Acknowledged in 24hrs</div>
                           <div className="text-2xl font-bold text-green-600">
                             {complaints.filter(c => c.acknowledgmentDate).length}
                           </div>
                         </div>
-                        <div className="p-3 bg-[#0d121d] rounded border border-red-300">
+                        <div className="p-3 bg-[#1e293b] rounded border border-red-300">
                           <div className="text-xs text-slate-300">Pending Acknowledgment</div>
                           <div className="text-2xl font-bold text-red-600">
                             {complaints.filter(c => !c.acknowledgmentDate).length}
@@ -627,19 +627,19 @@ Client states they were not asked about existing commitments and expenses were u
                         Complaints must be resolved within 30 calendar days (RG271.60)
                       </p>
                       <div className="grid md:grid-cols-3 gap-4">
-                        <div className="p-3 bg-[#0d121d] rounded border border-green-300">
+                        <div className="p-3 bg-[#1e293b] rounded border border-green-300">
                           <div className="text-xs text-slate-300">On Track</div>
                           <div className="text-2xl font-bold text-green-600">
                             {complaints.filter(c => c.slaStatus === 'On Track').length}
                           </div>
                         </div>
-                        <div className="p-3 bg-[#0d121d] rounded border border-amber-300">
+                        <div className="p-3 bg-[#1e293b] rounded border border-amber-300">
                           <div className="text-xs text-slate-300">At Risk</div>
                           <div className="text-2xl font-bold text-amber-600">
                             {complaints.filter(c => c.slaStatus === 'At Risk').length}
                           </div>
                         </div>
-                        <div className="p-3 bg-[#0d121d] rounded border border-red-300">
+                        <div className="p-3 bg-[#1e293b] rounded border border-red-300">
                           <div className="text-xs text-slate-300">Overdue</div>
                           <div className="text-2xl font-bold text-red-600">
                             {complaints.filter(c => c.daysRemaining < 0).length}
@@ -654,13 +654,13 @@ Client states they were not asked about existing commitments and expenses were u
                         Urgent complaints (hardship, vulnerable customers) require priority handling
                       </p>
                       <div className="grid md:grid-cols-2 gap-4">
-                        <div className="p-3 bg-[#0d121d] rounded border border-purple-300">
+                        <div className="p-3 bg-[#1e293b] rounded border border-purple-300">
                           <div className="text-xs text-slate-300">Urgent Complaints</div>
                           <div className="text-2xl font-bold text-orange-600">
                             {stats.urgent}
                           </div>
                         </div>
-                        <div className="p-3 bg-[#0d121d] rounded border border-purple-300">
+                        <div className="p-3 bg-[#1e293b] rounded border border-purple-300">
                           <div className="text-xs text-slate-300">Hardship Cases</div>
                           <div className="text-2xl font-bold text-purple-600">
                             {stats.hardship}
@@ -732,7 +732,7 @@ Client states they were not asked about existing commitments and expenses were u
                           <span className="font-semibold">{complaint.resolutionDate}</span>
                         </div>
                       </div>
-                      <div className="p-3 bg-[#0d121d] rounded border border-green-300">
+                      <div className="p-3 bg-[#1e293b] rounded border border-green-300">
                         <div className="text-xs text-slate-300 mb-1">Outcome:</div>
                         <div className="font-semibold text-white">{complaint.outcome}</div>
                       </div>
@@ -755,7 +755,7 @@ Client states they were not asked about existing commitments and expenses were u
               <CardContent className="p-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   {/* By Category */}
-                  <div className="p-4 bg-[#0d121d] rounded-lg border-2 border-indigo-200">
+                  <div className="p-4 bg-[#1e293b] rounded-lg border-2 border-indigo-200">
                     <h3 className="font-bold text-white mb-4">Complaints by Category</h3>
                     <div className="space-y-2">
                       {[
@@ -780,7 +780,7 @@ Client states they were not asked about existing commitments and expenses were u
                   </div>
 
                   {/* By Channel */}
-                  <div className="p-4 bg-[#0d121d] rounded-lg border-2 border-indigo-200">
+                  <div className="p-4 bg-[#1e293b] rounded-lg border-2 border-indigo-200">
                     <h3 className="font-bold text-white mb-4">Complaints by Channel</h3>
                     <div className="space-y-2">
                       {[
@@ -791,7 +791,7 @@ Client states they were not asked about existing commitments and expenses were u
                       ].map((item, idx) => {
                         const Icon = item.icon;
                         return (
-                          <div key={idx} className="flex items-center justify-between p-2 bg-[#0a0e17] rounded">
+                          <div key={idx} className="flex items-center justify-between p-2 bg-[#0f172a] rounded">
                             <div className="flex items-center gap-2">
                               <Icon className="w-4 h-4 text-slate-300" />
                               <span className="text-sm text-slate-300">{item.channel}</span>

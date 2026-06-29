@@ -215,7 +215,7 @@ export function NCCPResponsibleLendingModule() {
       case 'suitable': return 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300';
       case 'marginal': return 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300';
       case 'unsuitable': return 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300';
-      default: return 'bg-[#0a0e17] text-slate-300 dark:bg-gray-800 dark:text-gray-300';
+      default: return 'bg-[#0f172a] text-slate-300 dark:bg-gray-800 dark:text-gray-300';
     }
   };
 
@@ -273,7 +273,7 @@ export function NCCPResponsibleLendingModule() {
         </div>
 
         {/* Tabs */}
-        <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+        <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
           <div className="flex border-b border-white/10 dark:border-gray-700">
             {[
               { id: 'consumer', label: 'Consumer Profile', icon: User },
@@ -301,10 +301,10 @@ export function NCCPResponsibleLendingModule() {
             {activeTab === 'consumer' && (
               <div className="space-y-6">
                 {/* Objectives */}
-                <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 overflow-hidden">
+                <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 overflow-hidden">
                   <button
                     onClick={() => toggleSection('objectives')}
-                    className="w-full px-6 py-4 flex items-center justify-between bg-[#0a0e17] dark:bg-gray-900 hover:bg-white/5 dark:hover:bg-gray-850"
+                    className="w-full px-6 py-4 flex items-center justify-between bg-[#0f172a] dark:bg-gray-900 hover:bg-white/5 dark:hover:bg-gray-850"
                   >
                     <div className="flex items-center gap-3">
                       <TrendingUp className="w-5 h-5 text-[#13B5EA]" />
@@ -355,10 +355,10 @@ export function NCCPResponsibleLendingModule() {
                 </div>
 
                 {/* Financial Situation */}
-                <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 overflow-hidden">
+                <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 overflow-hidden">
                   <button
                     onClick={() => toggleSection('financial')}
-                    className="w-full px-6 py-4 flex items-center justify-between bg-[#0a0e17] dark:bg-gray-900 hover:bg-white/5 dark:hover:bg-gray-850"
+                    className="w-full px-6 py-4 flex items-center justify-between bg-[#0f172a] dark:bg-gray-900 hover:bg-white/5 dark:hover:bg-gray-850"
                   >
                     <div className="flex items-center gap-3">
                       <Briefcase className="w-5 h-5 text-[#13B5EA]" />
@@ -406,13 +406,13 @@ export function NCCPResponsibleLendingModule() {
                           )}
                         </div>
                         <div className="grid grid-cols-2 gap-3">
-                          <div className="p-3 bg-[#0a0e17] dark:bg-gray-900 rounded-lg">
+                          <div className="p-3 bg-[#0f172a] dark:bg-gray-900 rounded-lg">
                             <div className="text-xs text-slate-400">Salary</div>
                             <div className="text-lg font-bold text-white dark:text-white">
                               ${consumerProfile.financialSituation.grossIncome.salary.toLocaleString()}
                             </div>
                           </div>
-                          <div className="p-3 bg-[#0a0e17] dark:bg-gray-900 rounded-lg">
+                          <div className="p-3 bg-[#0f172a] dark:bg-gray-900 rounded-lg">
                             <div className="text-xs text-slate-400">Total Income</div>
                             <div className="text-lg font-bold text-white dark:text-white">
                               ${consumerProfile.financialSituation.grossIncome.total.toLocaleString()}
@@ -435,10 +435,10 @@ export function NCCPResponsibleLendingModule() {
                 </div>
 
                 {/* Dependants */}
-                <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 overflow-hidden">
+                <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 overflow-hidden">
                   <button
                     onClick={() => toggleSection('dependants')}
-                    className="w-full px-6 py-4 flex items-center justify-between bg-[#0a0e17] dark:bg-gray-900 hover:bg-white/5 dark:hover:bg-gray-850"
+                    className="w-full px-6 py-4 flex items-center justify-between bg-[#0f172a] dark:bg-gray-900 hover:bg-white/5 dark:hover:bg-gray-850"
                   >
                     <div className="flex items-center gap-3">
                       <Users className="w-5 h-5 text-[#13B5EA]" />
@@ -449,13 +449,13 @@ export function NCCPResponsibleLendingModule() {
                   {expandedSections.dependants && (
                     <div className="p-6">
                       <div className="grid grid-cols-3 gap-4">
-                        <div className="p-4 bg-[#0a0e17] dark:bg-gray-900 rounded-lg text-center">
+                        <div className="p-4 bg-[#0f172a] dark:bg-gray-900 rounded-lg text-center">
                           <div className="text-sm text-slate-400 mb-1">Adults</div>
                           <div className="text-2xl font-bold text-white dark:text-white">
                             {consumerProfile.dependants.adults}
                           </div>
                         </div>
-                        <div className="p-4 bg-[#0a0e17] dark:bg-gray-900 rounded-lg text-center">
+                        <div className="p-4 bg-[#0f172a] dark:bg-gray-900 rounded-lg text-center">
                           <div className="text-sm text-slate-400 mb-1">Children</div>
                           <div className="text-2xl font-bold text-white dark:text-white">
                             {consumerProfile.dependants.children}
@@ -473,10 +473,10 @@ export function NCCPResponsibleLendingModule() {
                 </div>
 
                 {/* Existing Commitments */}
-                <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 overflow-hidden">
+                <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 overflow-hidden">
                   <button
                     onClick={() => toggleSection('commitments')}
-                    className="w-full px-6 py-4 flex items-center justify-between bg-[#0a0e17] dark:bg-gray-900 hover:bg-white/5 dark:hover:bg-gray-850"
+                    className="w-full px-6 py-4 flex items-center justify-between bg-[#0f172a] dark:bg-gray-900 hover:bg-white/5 dark:hover:bg-gray-850"
                   >
                     <div className="flex items-center gap-3">
                       <CreditCard className="w-5 h-5 text-[#13B5EA]" />
@@ -489,7 +489,7 @@ export function NCCPResponsibleLendingModule() {
                       <div>
                         <h4 className="font-semibold text-white dark:text-white mb-3">Credit Cards</h4>
                         {consumerProfile.existingCommitments.creditCards.map((card, i) => (
-                          <div key={i} className="p-3 bg-[#0a0e17] dark:bg-gray-900 rounded-lg mb-2">
+                          <div key={i} className="p-3 bg-[#0f172a] dark:bg-gray-900 rounded-lg mb-2">
                             <div className="flex items-center justify-between mb-2">
                               <div className="font-semibold text-white dark:text-white">{card.issuer}</div>
                               {card.verified && (
@@ -526,7 +526,7 @@ export function NCCPResponsibleLendingModule() {
             {activeTab === 'assessment' && (
               <div className="space-y-6">
                 {/* Income Summary */}
-                <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 p-6">
+                <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 p-6">
                   <h3 className="text-lg font-bold text-white dark:text-white mb-4">Income</h3>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
@@ -541,7 +541,7 @@ export function NCCPResponsibleLendingModule() {
                 </div>
 
                 {/* Expenses Breakdown */}
-                <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 p-6">
+                <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-lg font-bold text-white dark:text-white">Monthly Expenses</h3>
                     <span className="text-sm text-slate-300 dark:text-slate-400">
@@ -550,7 +550,7 @@ export function NCCPResponsibleLendingModule() {
                   </div>
                   <div className="grid grid-cols-2 gap-3 mb-4">
                     {Object.entries(assessment.expenses).filter(([key]) => !['total', 'method'].includes(key)).map(([key, value]) => (
-                      <div key={key} className="flex items-center justify-between p-3 bg-[#0a0e17] dark:bg-gray-900 rounded-lg">
+                      <div key={key} className="flex items-center justify-between p-3 bg-[#0f172a] dark:bg-gray-900 rounded-lg">
                         <span className="text-sm font-medium text-slate-300 dark:text-gray-300 capitalize">{key}</span>
                         <span className="text-sm font-bold text-white dark:text-white">${(value as number).toLocaleString()}</span>
                       </div>
@@ -565,11 +565,11 @@ export function NCCPResponsibleLendingModule() {
                 </div>
 
                 {/* Servicing Calculation */}
-                <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 p-6">
+                <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 p-6">
                   <h3 className="text-lg font-bold text-white dark:text-white mb-4">Servicing Calculation</h3>
                   
                   <div className="space-y-4">
-                    <div className="p-4 bg-[#0a0e17] dark:bg-gray-900 rounded-lg">
+                    <div className="p-4 bg-[#0f172a] dark:bg-gray-900 rounded-lg">
                       <div className="text-sm text-slate-300 dark:text-slate-400 mb-1">Proposed Loan Repayment</div>
                       <div className="text-xl font-bold text-white dark:text-white">
                         ${assessment.proposedLoan.monthlyRepayment.toLocaleString()}/month
@@ -640,7 +640,7 @@ export function NCCPResponsibleLendingModule() {
 
             {/* Verification Hub Tab */}
             {activeTab === 'verification' && (
-              <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 p-6">
+              <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 p-6">
                 <h3 className="text-lg font-bold text-white dark:text-white mb-4">Verification Hub</h3>
                 <p className="text-slate-300 dark:text-slate-400 mb-4">
                   All income, expenses, and liability information linked to supporting evidence with verification status and audit trail.
@@ -652,7 +652,7 @@ export function NCCPResponsibleLendingModule() {
                     { field: 'Credit Card - CommBank', status: 'verified', evidence: 'EV-2024-003', verifiedBy: 'System (Equifax)', date: '2024-03-20' },
                     { field: 'Residential Address', status: 'verified', evidence: 'EV-2024-004', verifiedBy: 'compliance@growkyc.com', date: '2024-03-20' }
                   ].map((item, i) => (
-                    <div key={i} className="flex items-center justify-between p-4 bg-[#0a0e17] dark:bg-gray-900 rounded-lg">
+                    <div key={i} className="flex items-center justify-between p-4 bg-[#0f172a] dark:bg-gray-900 rounded-lg">
                       <div className="flex items-center gap-3">
                         <CheckCircle className="w-5 h-5 text-green-600" />
                         <div>
@@ -679,7 +679,7 @@ export function NCCPResponsibleLendingModule() {
 
             {/* Disclosure Register Tab */}
             {activeTab === 'disclosure' && (
-              <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 p-6">
+              <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 p-6">
                 <h3 className="text-lg font-bold text-white dark:text-white mb-4">NCCP Disclosure Register</h3>
                 <div className="space-y-3">
                   {[
@@ -687,7 +687,7 @@ export function NCCPResponsibleLendingModule() {
                     { document: 'Credit Proposal Disclosure', issued: '2024-03-18', acknowledged: '2024-03-18', status: 'complete' },
                     { document: 'Pre-contractual Statement', issued: '2024-03-20', acknowledged: null, status: 'pending' }
                   ].map((doc, i) => (
-                    <div key={i} className="flex items-center justify-between p-4 bg-[#0a0e17] dark:bg-gray-900 rounded-lg">
+                    <div key={i} className="flex items-center justify-between p-4 bg-[#0f172a] dark:bg-gray-900 rounded-lg">
                       <div className="flex items-center gap-3">
                         <FileText className="w-5 h-5 text-[#13B5EA]" />
                         <div>

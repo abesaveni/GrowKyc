@@ -21,7 +21,7 @@ const AVAILABILITY_STYLES: Record<AvailabilityStatus, string> = {
   available: 'bg-green-100 text-green-800',
   busy: 'bg-amber-100 text-amber-900',
   away: 'bg-blue-100 text-blue-800',
-  offline: 'bg-[#0a0e17] text-slate-300'
+  offline: 'bg-[#0f172a] text-slate-300'
 };
 
 const ASSIGNMENT_STYLES: Record<AssignmentStatus, string> = {
@@ -92,7 +92,7 @@ export function ResourceManagementModule({ onBack }: ResourceManagementModulePro
             <span>{row.activeCases}</span>
             <span>{row.capacity}</span>
           </div>
-          <div className="h-2 bg-[#0a0e17] rounded-full overflow-hidden">
+          <div className="h-2 bg-[#0f172a] rounded-full overflow-hidden">
             <div
               className={`h-full rounded-full ${
                 row.activeCases > row.capacity ? 'bg-red-500' : row.activeCases >= row.capacity * 0.85 ? 'bg-amber-500' : 'bg-green-500'
@@ -133,8 +133,8 @@ export function ResourceManagementModule({ onBack }: ResourceManagementModulePro
   ];
 
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
-      <div className="bg-[#0d121d] border-b">
+    <div className="min-h-screen bg-[#0f172a]">
+      <div className="bg-[#1e293b] border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 py-6">
           <Button onClick={onBack} variant="ghost" className="mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -187,7 +187,7 @@ export function ResourceManagementModule({ onBack }: ResourceManagementModulePro
             { label: 'At capacity', value: members.filter((m) => m.assignmentStatus === 'at-capacity').length },
             { label: 'Overloaded', value: members.filter((m) => m.assignmentStatus === 'overloaded').length }
           ].map((s) => (
-            <div key={s.label} className="bg-[#0d121d] border border-white/10 rounded-lg p-4">
+            <div key={s.label} className="bg-[#1e293b] border border-white/10 rounded-lg p-4">
               <p className="text-xs text-slate-400">{s.label}</p>
               <p className="text-2xl font-bold text-white">{loading ? '—' : s.value}</p>
             </div>
@@ -209,7 +209,7 @@ export function ResourceManagementModule({ onBack }: ResourceManagementModulePro
         <div className="md:hidden grid gap-4">
           {!loading &&
             members.map((m) => (
-              <div key={m.id} className="bg-[#0d121d] border border-white/10 rounded-lg p-4">
+              <div key={m.id} className="bg-[#1e293b] border border-white/10 rounded-lg p-4">
                 <div className="flex justify-between items-start mb-2">
                   <div>
                     <p className="font-semibold text-white">{m.name}</p>
@@ -245,7 +245,7 @@ export function ResourceManagementModule({ onBack }: ResourceManagementModulePro
           onClick={() => !assigning && setAssignTarget(null)}
         >
           <div
-            className="bg-[#0d121d] rounded-xl max-w-md w-full p-6 shadow-xl my-auto"
+            className="bg-[#1e293b] rounded-xl max-w-md w-full p-6 shadow-xl my-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <h3 className="text-lg font-semibold text-white">Assign cases</h3>

@@ -98,7 +98,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
 
   if (!isAuthorized) {
     return (
-      <div className="min-h-screen bg-[#0a0e17] flex items-center justify-center p-6">
+      <div className="min-h-screen bg-[#0f172a] flex items-center justify-center p-6">
         <Card className="max-w-md w-full shadow-2xl border-2 border-amber-200">
           <CardHeader className="bg-amber-50 text-amber-900 pb-4">
             <div className="flex items-center gap-3">
@@ -113,7 +113,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
             <p className="text-sm text-slate-300 leading-relaxed">
               This settings panel contains critical system integrations, rule configurations, and role access controls that are restricted.
             </p>
-            <div className="p-3 bg-[#0a0e17] rounded-lg text-xs font-semibold text-slate-300">
+            <div className="p-3 bg-[#0f172a] rounded-lg text-xs font-semibold text-slate-300">
               Authorized roles: Head of Compliance, Managing Partner, Risk Partner.
             </div>
             <div className="flex justify-end gap-3">
@@ -128,9 +128,9 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
+    <div className="min-h-screen bg-[#0f172a]">
       {/* Header */}
-      <div className="bg-[#0d121d] border-b border-white/10 px-6 py-4">
+      <div className="bg-[#1e293b] border-b border-white/10 px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Button variant="ghost" size="sm" onClick={onBack}>
@@ -655,7 +655,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     { name: 'Amanda Foster', email: 'amanda.foster@growfinancial.com', role: 'Analyst', avatar: '👩‍💼', status: 'active', lastActive: '2 hours ago', permissions: 'Standard' },
                     { name: 'James Wilson', email: 'james.wilson@growfinancial.com', role: 'Compliance Officer', avatar: '👨‍💼', status: 'inactive', lastActive: '2 days ago', permissions: 'Full Access' }
                   ].map((user, index) => (
-                    <div key={index} className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-lg border hover:bg-white/5 transition-colors">
+                    <div key={index} className="flex items-center justify-between p-4 bg-[#0f172a] rounded-lg border hover:bg-white/5 transition-colors">
                       <div className="flex items-center gap-4 flex-1">
                         <div className="text-3xl">{user.avatar}</div>
                         <div className="flex-1">
@@ -787,28 +787,28 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                 <CardDescription>Configure authentication methods and security policies</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-lg">
+                <div className="flex items-center justify-between p-4 bg-[#0f172a] rounded-lg">
                   <div className="flex-1">
                     <div className="font-semibold mb-1">Two-Factor Authentication (2FA)</div>
                     <div className="text-sm text-slate-300">Require 2FA for all users</div>
                   </div>
                   <Switch defaultChecked />
                 </div>
-                <div className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-lg">
+                <div className="flex items-center justify-between p-4 bg-[#0f172a] rounded-lg">
                   <div className="flex-1">
                     <div className="font-semibold mb-1">Single Sign-On (SSO)</div>
                     <div className="text-sm text-slate-300">Enable SSO via Azure AD or Okta</div>
                   </div>
                   <Switch defaultChecked />
                 </div>
-                <div className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-lg">
+                <div className="flex items-center justify-between p-4 bg-[#0f172a] rounded-lg">
                   <div className="flex-1">
                     <div className="font-semibold mb-1">IP Whitelist</div>
                     <div className="text-sm text-slate-300">Restrict access to specific IP addresses</div>
                   </div>
                   <Switch />
                 </div>
-                <div className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-lg">
+                <div className="flex items-center justify-between p-4 bg-[#0f172a] rounded-lg">
                   <div className="flex-1">
                     <div className="font-semibold mb-1">Session Timeout</div>
                     <div className="text-sm text-slate-300">Auto-logout after inactivity</div>
@@ -901,7 +901,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     { event: 'Password changed', user: 'emma.williams@growfinancial.com', ip: '203.45.12.69', time: '2 hours ago', status: 'success' },
                     { event: '2FA enabled', user: 'david.thompson@growfinancial.com', ip: '203.45.12.70', time: '3 hours ago', status: 'success' }
                   ].map((log, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 bg-[#0a0e17] rounded-lg text-sm">
+                    <div key={index} className="flex items-center justify-between p-3 bg-[#0f172a] rounded-lg text-sm">
                       <div className="flex items-center gap-3 flex-1">
                         <div className={`w-2 h-2 rounded-full ${log.status === 'success' ? 'bg-green-500' : 'bg-red-500'}`} />
                         <span className="font-semibold">{log.event}</span>
@@ -937,7 +937,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                   { category: 'Weekly Reports', email: true, push: false, sms: false, description: 'Weekly compliance summary reports' },
                   { category: 'Integration Status', email: false, push: false, sms: false, description: 'Integration health and connectivity alerts' }
                 ].map((notification, index) => (
-                  <div key={index} className="p-4 bg-[#0a0e17] rounded-lg">
+                  <div key={index} className="p-4 bg-[#0f172a] rounded-lg">
                     <div className="flex items-start justify-between mb-3">
                       <div>
                         <div className="font-semibold mb-1">{notification.category}</div>
@@ -970,7 +970,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                 <CardDescription>Configure where notifications are sent</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="p-4 bg-[#0a0e17] rounded-lg">
+                <div className="p-4 bg-[#0f172a] rounded-lg">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-3">
                       <Mail className="w-5 h-5 text-blue-600" />
@@ -982,7 +982,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     <Badge variant="default" className="bg-green-600">Verified</Badge>
                   </div>
                 </div>
-                <div className="p-4 bg-[#0a0e17] rounded-lg">
+                <div className="p-4 bg-[#0f172a] rounded-lg">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-3">
                       <Bell className="w-5 h-5 text-purple-600" />
@@ -994,7 +994,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     <Badge variant="default" className="bg-green-600">Connected</Badge>
                   </div>
                 </div>
-                <div className="p-4 bg-[#0a0e17] rounded-lg">
+                <div className="p-4 bg-[#0f172a] rounded-lg">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-3">
                       <Phone className="w-5 h-5 text-green-600" />
@@ -1153,7 +1153,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                 <CardDescription>Manage data retention and privacy settings</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-lg">
+                <div className="flex items-center justify-between p-4 bg-[#0f172a] rounded-lg">
                   <div className="flex-1">
                     <div className="font-semibold mb-1">Data Retention Period</div>
                     <div className="text-sm text-slate-300">How long to retain compliance records</div>
@@ -1170,14 +1170,14 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-lg">
+                <div className="flex items-center justify-between p-4 bg-[#0f172a] rounded-lg">
                   <div className="flex-1">
                     <div className="font-semibold mb-1">Data Encryption at Rest</div>
                     <div className="text-sm text-slate-300">AES-256 encryption for stored data</div>
                   </div>
                   <Badge variant="default" className="bg-green-600">Enabled</Badge>
                 </div>
-                <div className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-lg">
+                <div className="flex items-center justify-between p-4 bg-[#0f172a] rounded-lg">
                   <div className="flex-1">
                     <div className="font-semibold mb-1">GDPR Compliance Mode</div>
                     <div className="text-sm text-slate-300">Enhanced privacy controls for EU clients</div>
@@ -1217,7 +1217,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     { name: 'Staging API Key', key: 'gk_stag_xxxxxxxxxxxxxxxxxxx', created: '2 months ago', lastUsed: '1 hour ago', calls: '450K' },
                     { name: 'Development API Key', key: 'gk_dev_xxxxxxxxxxxxxxxxxxx', created: '1 week ago', lastUsed: '5 hours ago', calls: '12K' }
                   ].map((apiKey, index) => (
-                    <div key={index} className="p-4 bg-[#0a0e17] rounded-lg border">
+                    <div key={index} className="p-4 bg-[#0f172a] rounded-lg border">
                       <div className="flex items-center justify-between mb-2">
                         <div className="font-semibold">{apiKey.name}</div>
                         <div className="flex items-center gap-2">
@@ -1232,7 +1232,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                           </Button>
                         </div>
                       </div>
-                      <div className="font-mono text-sm bg-[#0d121d] p-2 rounded border mb-2">
+                      <div className="font-mono text-sm bg-[#1e293b] p-2 rounded border mb-2">
                         {showApiKey ? apiKey.key : '••••••••••••••••••••'}
                       </div>
                       <div className="flex items-center gap-4 text-xs text-slate-300">
@@ -1268,7 +1268,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     { url: 'https://api.yourapp.com/webhooks/kyc', events: ['case.created', 'case.updated', 'risk.flagged'], status: 'active', success: 99.8 },
                     { url: 'https://staging.yourapp.com/webhooks/compliance', events: ['document.approved', 'client.verified'], status: 'active', success: 98.5 }
                   ].map((webhook, index) => (
-                    <div key={index} className="p-4 bg-[#0a0e17] rounded-lg border">
+                    <div key={index} className="p-4 bg-[#0f172a] rounded-lg border">
                       <div className="flex items-center justify-between mb-2">
                         <div>
                           <div className="font-mono text-sm font-semibold mb-1">{webhook.url}</div>
@@ -1380,7 +1380,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                         />
                       </div>
                     </div>
-                    <div className="bg-[#0d121d] rounded-lg p-4 border border-cyan-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-cyan-200">
                       <p className="text-xs text-slate-300 mb-2">This fee includes:</p>
                       <ul className="text-xs text-slate-300 space-y-1">
                         <li className="flex items-center gap-1">
@@ -1415,7 +1415,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                   </p>
                   <div className="grid md:grid-cols-2 gap-4">
                     {/* Equifax */}
-                    <div className="bg-[#0d121d] rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-200">
                       <div className="flex items-center justify-between mb-3">
                         <div>
                           <p className="font-semibold text-white">Equifax Identity Check</p>
@@ -1434,7 +1434,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     </div>
 
                     {/* Illion */}
-                    <div className="bg-[#0d121d] rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-200">
                       <div className="flex items-center justify-between mb-3">
                         <div>
                           <p className="font-semibold text-white">Illion Business Check</p>
@@ -1453,7 +1453,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     </div>
 
                     {/* ComplyAdvantage */}
-                    <div className="bg-[#0d121d] rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-200">
                       <div className="flex items-center justify-between mb-3">
                         <div>
                           <p className="font-semibold text-white">ComplyAdvantage AML</p>
@@ -1472,7 +1472,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     </div>
 
                     {/* ASIC */}
-                    <div className="bg-[#0d121d] rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-200">
                       <div className="flex items-center justify-between mb-3">
                         <div>
                           <p className="font-semibold text-white">ASIC Company Extract</p>
@@ -1491,7 +1491,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     </div>
 
                     {/* InfoTrack KYC */}
-                    <div className="bg-[#0d121d] rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-200">
                       <div className="flex items-center justify-between mb-3">
                         <div>
                           <p className="font-semibold text-white">InfoTrack ID Verification</p>
@@ -1510,7 +1510,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     </div>
 
                     {/* LexisNexis (Optional) */}
-                    <div className="bg-[#0d121d] rounded-lg p-4 border border-purple-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-purple-200">
                       <div className="flex items-center justify-between mb-3">
                         <div>
                           <p className="font-semibold text-white">LexisNexis Legal Check</p>
@@ -1529,7 +1529,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     </div>
                   </div>
 
-                  <div className="mt-4 bg-[#0d121d] rounded-lg p-4 border border-purple-300">
+                  <div className="mt-4 bg-[#1e293b] rounded-lg p-4 border border-purple-300">
                     <div className="flex items-start gap-2">
                       <Info className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
                       <div>
@@ -1570,7 +1570,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                         Billed monthly per client entity
                       </p>
                     </div>
-                    <div className="bg-[#0d121d] rounded-lg p-4 border border-green-200">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border border-green-200">
                       <p className="text-xs text-slate-300 mb-2">Monthly monitoring includes:</p>
                       <ul className="text-xs text-slate-300 space-y-1">
                         <li className="flex items-center gap-1">
@@ -1603,7 +1603,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
 
                   {/* Monitoring Tiers */}
                   <div className="mt-4 grid md:grid-cols-3 gap-3">
-                    <div className="bg-[#0d121d] rounded-lg p-4 border-2 border-green-300">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border-2 border-green-300">
                       <div className="flex items-center justify-between mb-2">
                         <Badge className="bg-blue-600">Standard</Badge>
                         <span className="font-bold text-lg">$15</span>
@@ -1612,7 +1612,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                         Monthly checks, standard alerts
                       </p>
                     </div>
-                    <div className="bg-[#0d121d] rounded-lg p-4 border-2 border-amber-400">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border-2 border-amber-400">
                       <div className="flex items-center justify-between mb-2">
                         <Badge className="bg-amber-600">Enhanced</Badge>
                         <span className="font-bold text-lg">$35</span>
@@ -1621,7 +1621,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                         Weekly checks, priority alerts
                       </p>
                     </div>
-                    <div className="bg-[#0d121d] rounded-lg p-4 border-2 border-purple-400">
+                    <div className="bg-[#1e293b] rounded-lg p-4 border-2 border-purple-400">
                       <div className="flex items-center justify-between mb-2">
                         <Badge className="bg-purple-600">Premium</Badge>
                         <span className="font-bold text-lg">$75</span>
@@ -1643,11 +1643,11 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     <div>
                       <p className="text-sm font-semibold text-slate-300 mb-3">Revenue Model</p>
                       <div className="space-y-2">
-                        <div className="flex items-center justify-between p-3 bg-[#0d121d] rounded-lg border border-indigo-200">
+                        <div className="flex items-center justify-between p-3 bg-[#1e293b] rounded-lg border border-indigo-200">
                           <span className="text-sm text-slate-300">Initial Verification</span>
                           <span className="font-bold text-indigo-600">$49.00</span>
                         </div>
-                        <div className="flex items-center justify-between p-3 bg-[#0d121d] rounded-lg border border-indigo-200">
+                        <div className="flex items-center justify-between p-3 bg-[#1e293b] rounded-lg border border-indigo-200">
                           <span className="text-sm text-slate-300">Monthly Monitoring (Standard)</span>
                           <span className="font-bold text-indigo-600">$15.00</span>
                         </div>
@@ -1660,11 +1660,11 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     <div>
                       <p className="text-sm font-semibold text-slate-300 mb-3">Cost Structure</p>
                       <div className="space-y-2">
-                        <div className="flex items-center justify-between p-3 bg-[#0d121d] rounded-lg border border-indigo-200">
+                        <div className="flex items-center justify-between p-3 bg-[#1e293b] rounded-lg border border-indigo-200">
                           <span className="text-sm text-slate-300">Total External Checks</span>
                           <span className="font-bold text-white">~$46.50</span>
                         </div>
-                        <div className="flex items-center justify-between p-3 bg-[#0d121d] rounded-lg border border-indigo-200">
+                        <div className="flex items-center justify-between p-3 bg-[#1e293b] rounded-lg border border-indigo-200">
                           <span className="text-sm text-slate-300">Monitoring Cost (est.)</span>
                           <span className="font-bold text-white">~$5.00/mo</span>
                         </div>
@@ -1791,7 +1791,7 @@ export function SystemSettings({ onBack }: SystemSettingsProps) {
                     { date: 'Jan 1, 2026', amount: '$2,499.00', status: 'paid', invoice: 'INV-2026-01' },
                     { date: 'Dec 1, 2025', amount: '$2,499.00', status: 'paid', invoice: 'INV-2025-12' }
                   ].map((bill, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 bg-[#0a0e17] rounded-lg">
+                    <div key={index} className="flex items-center justify-between p-3 bg-[#0f172a] rounded-lg">
                       <div className="flex items-center gap-4">
                         <FileText className="w-5 h-5 text-slate-400" />
                         <div>

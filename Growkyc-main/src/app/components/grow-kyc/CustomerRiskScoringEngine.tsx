@@ -154,7 +154,7 @@ export function CustomerRiskScoringEngine({
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
+    <div className="min-h-screen bg-[#0f172a]">
       {/* Header */}
       <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] text-white px-6 py-4">
         <div className="flex items-center justify-between">
@@ -185,7 +185,7 @@ export function CustomerRiskScoringEngine({
       </div>
 
       {/* Client Info Bar */}
-      <div className="bg-[#0d121d] border-b border-white/10 px-6 py-3">
+      <div className="bg-[#1e293b] border-b border-white/10 px-6 py-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-6">
             <div>
@@ -342,7 +342,7 @@ export function CustomerRiskScoringEngine({
                       </div>
 
                       {/* Rationale */}
-                      <div className="mt-4 p-3 bg-[#0a0e17] rounded-lg border border-white/10">
+                      <div className="mt-4 p-3 bg-[#0f172a] rounded-lg border border-white/10">
                         <div className="text-xs font-semibold text-slate-300 mb-1">Rationale:</div>
                         {isEditMode ? (
                           <Textarea
@@ -375,7 +375,7 @@ export function CustomerRiskScoringEngine({
               <CardContent className="p-6">
                 <div className="space-y-2 text-sm">
                   {Object.entries(riskFactors).map(([key, factor]) => (
-                    <div key={key} className="flex items-center justify-between p-2 bg-[#0a0e17] rounded">
+                    <div key={key} className="flex items-center justify-between p-2 bg-[#0f172a] rounded">
                       <span className="text-slate-300">{factorLabels[key as keyof typeof factorLabels]}</span>
                       <span className="font-mono text-white">
                         {factor.score} × {factor.weight}% = {((factor.score * factor.weight) / 100).toFixed(2)}
@@ -408,7 +408,7 @@ export function CustomerRiskScoringEngine({
                       className={`p-4 rounded-lg border-2 ${
                         trigger.triggered
                           ? 'bg-red-50 border-red-300'
-                          : 'bg-[#0a0e17] border-white/10'
+                          : 'bg-[#0f172a] border-white/10'
                       }`}
                     >
                       <div className="flex items-center justify-between">
@@ -446,7 +446,7 @@ export function CustomerRiskScoringEngine({
                   {riskHistory.map((entry, idx) => {
                     const entryBand = getRiskBand(entry.score);
                     return (
-                      <div key={idx} className="flex items-start gap-4 p-4 bg-[#0a0e17] rounded-lg border border-white/10">
+                      <div key={idx} className="flex items-start gap-4 p-4 bg-[#0f172a] rounded-lg border border-white/10">
                         <div className={`w-3 h-3 rounded-full mt-1.5 ${
                           entry.type === 'increase' ? 'bg-red-600' :
                           entry.type === 'override' ? 'bg-amber-600' :
@@ -555,7 +555,7 @@ export function CustomerRiskScoringEngine({
                 <div className="mt-8 pt-6 border-t border-white/10">
                   <h3 className="font-bold text-white mb-4">Previous Overrides</h3>
                   <div className="space-y-2">
-                    <div className="p-3 bg-[#0a0e17] rounded-lg border border-white/10">
+                    <div className="p-3 bg-[#0f172a] rounded-lg border border-white/10">
                       <div className="flex items-center justify-between mb-2">
                         <span className="font-semibold text-white">Override: 6.2 → 5.8</span>
                         <Badge className="bg-green-600">Approved</Badge>

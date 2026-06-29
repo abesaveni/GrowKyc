@@ -76,9 +76,9 @@ export function AdverseMediaBot({ onBack }: AdverseMediaBotProps) {
 // Screen 1: Adverse Media Control Centre
 function AdverseMediaControlCentre({ onNavigate, onBack }: { onNavigate: (view: ViewMode) => void; onBack?: () => void }) {
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
+    <div className="min-h-screen bg-[#0f172a]">
       {/* Header */}
-      <div className="bg-[#0d121d] border-b border-white/10">
+      <div className="bg-[#1e293b] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-8 py-6">
           {onBack && (
             <Button onClick={onBack} variant="ghost" className="mb-4">
@@ -185,7 +185,7 @@ function AdverseMediaControlCentre({ onNavigate, onBack }: { onNavigate: (view: 
             <CardContent className="p-3">
               <div className="flex items-center justify-between mb-2">
                 <Ban className="w-4 h-4 text-slate-300" />
-                <Badge className="bg-[#0a0e17] text-slate-300 text-xs">3</Badge>
+                <Badge className="bg-[#0f172a] text-slate-300 text-xs">3</Badge>
               </div>
               <p className="text-xs font-medium text-white">Failed Jobs</p>
             </CardContent>
@@ -216,7 +216,7 @@ function AdverseMediaControlCentre({ onNavigate, onBack }: { onNavigate: (view: 
             <CardContent className="p-0">
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
-                  <thead className="bg-[#0a0e17] border-b">
+                  <thead className="bg-[#0f172a] border-b">
                     <tr>
                       <th className="px-4 py-3 text-left font-medium text-slate-300">Name</th>
                       <th className="px-4 py-3 text-left font-medium text-slate-300">Type</th>
@@ -242,7 +242,7 @@ function AdverseMediaControlCentre({ onNavigate, onBack }: { onNavigate: (view: 
                         <td className="px-4 py-3 text-xs text-slate-300">{item.role}</td>
                         <td className="px-4 py-3">
                           <Badge className={
-                            item.status === 'Queued' ? 'bg-[#0a0e17] text-slate-300' :
+                            item.status === 'Queued' ? 'bg-[#0f172a] text-slate-300' :
                             item.status === 'Searching' ? 'bg-blue-100 text-blue-700' :
                             'bg-amber-100 text-amber-700'
                           }>
@@ -254,7 +254,7 @@ function AdverseMediaControlCentre({ onNavigate, onBack }: { onNavigate: (view: 
                   </tbody>
                 </table>
               </div>
-              <div className="p-4 border-t bg-[#0a0e17]">
+              <div className="p-4 border-t bg-[#0f172a]">
                 <Button variant="ghost" className="w-full text-blue-700 hover:bg-blue-50" onClick={() => onNavigate('new-check')}>
                   View All New Screens <ChevronRight className="w-4 h-4 ml-1" />
                 </Button>
@@ -274,7 +274,7 @@ function AdverseMediaControlCentre({ onNavigate, onBack }: { onNavigate: (view: 
             <CardContent className="p-0">
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
-                  <thead className="bg-[#0a0e17] border-b">
+                  <thead className="bg-[#0f172a] border-b">
                     <tr>
                       <th className="px-4 py-3 text-left font-medium text-slate-300">Name</th>
                       <th className="px-4 py-3 text-left font-medium text-slate-300">Last Review</th>
@@ -313,7 +313,7 @@ function AdverseMediaControlCentre({ onNavigate, onBack }: { onNavigate: (view: 
                   </tbody>
                 </table>
               </div>
-              <div className="p-4 border-t bg-[#0a0e17]">
+              <div className="p-4 border-t bg-[#0f172a]">
                 <Button variant="ghost" className="w-full text-purple-700 hover:bg-purple-50" onClick={() => onNavigate('monthly-queue')}>
                   View All Monthly Reviews <ChevronRight className="w-4 h-4 ml-1" />
                 </Button>
@@ -341,7 +341,7 @@ function AdverseMediaControlCentre({ onNavigate, onBack }: { onNavigate: (view: 
                   </p>
                   <div className="flex items-center gap-3 mt-2">
                     <Badge className="bg-red-600 text-white text-xs">Level 4 Severity</Badge>
-                    <Badge className="bg-[#0a0e17] text-slate-300 text-xs">Official Court Source</Badge>
+                    <Badge className="bg-[#0f172a] text-slate-300 text-xs">Official Court Source</Badge>
                     <span className="text-xs text-red-600">Action Required: Escalate & Block Relationship</span>
                   </div>
                 </div>
@@ -516,9 +516,9 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
+    <div className="min-h-screen bg-[#0f172a]">
       {/* Header */}
-      <div className="bg-[#0d121d] border-b border-white/10">
+      <div className="bg-[#1e293b] border-b border-white/10">
         <div className="max-w-5xl mx-auto px-8 py-6">
           <Button onClick={onBack} variant="ghost" className="mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -911,7 +911,7 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
                     'International Regulator Notices',
                     'Web Archive (Wayback Machine)'
                   ].map((source, idx) => (
-                    <div key={idx} className="flex items-center gap-2 p-2 bg-[#0a0e17] rounded text-xs">
+                    <div key={idx} className="flex items-center gap-2 p-2 bg-[#0f172a] rounded text-xs">
                       <CheckCircle className="w-3 h-3 text-green-600" />
                       <span className="text-slate-300">{source}</span>
                     </div>
@@ -973,7 +973,7 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
                 </div>
               </div>
 
-              <div className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-lg">
+              <div className="flex items-center justify-between p-4 bg-[#0f172a] rounded-lg">
                 <div>
                   <p className="text-sm font-medium text-slate-300">Expected Runtime</p>
                   <p className="text-xs text-slate-300">Based on search scope and source coverage</p>
@@ -1023,19 +1023,19 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
                 </div>
 
                 <div className="grid md:grid-cols-4 gap-3 mt-4">
-                  <div className="bg-[#0d121d] p-3 rounded">
+                  <div className="bg-[#1e293b] p-3 rounded">
                     <p className="text-xs text-slate-300">Sources Searched</p>
                     <p className="text-xl font-bold text-white">24</p>
                   </div>
-                  <div className="bg-[#0d121d] p-3 rounded">
+                  <div className="bg-[#1e293b] p-3 rounded">
                     <p className="text-xs text-slate-300">Search Duration</p>
                     <p className="text-xl font-bold text-white">87s</p>
                   </div>
-                  <div className="bg-[#0d121d] p-3 rounded">
+                  <div className="bg-[#1e293b] p-3 rounded">
                     <p className="text-xs text-slate-300">Identity Confidence</p>
                     <p className="text-xl font-bold text-green-600">High</p>
                   </div>
-                  <div className="bg-[#0d121d] p-3 rounded">
+                  <div className="bg-[#1e293b] p-3 rounded">
                     <p className="text-xs text-slate-300">Severity Level</p>
                     <p className="text-xl font-bold text-green-600">0</p>
                   </div>
@@ -1051,10 +1051,10 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
                   { type: 'Crime / Fraud Risk', confidence: 0, severity: 0, matches: 0, color: 'gray' },
                   { type: 'Reputational Concern', confidence: 0, severity: 0, matches: 0, color: 'gray' },
                 ].map((result, idx) => (
-                  <div key={idx} className={`p-4 border-2 rounded-lg bg-[#0a0e17] border-white/10`}>
+                  <div key={idx} className={`p-4 border-2 rounded-lg bg-[#0f172a] border-white/10`}>
                     <div className="flex items-center justify-between mb-2">
                       <p className="font-semibold text-white">{result.type}</p>
-                      <Badge className="bg-[#0a0e17] text-slate-300">
+                      <Badge className="bg-[#0f172a] text-slate-300">
                         {result.matches} matches
                       </Badge>
                     </div>
@@ -1172,35 +1172,35 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
 
               <div className="max-w-2xl mx-auto space-y-4 mb-8">
                 <div className="grid md:grid-cols-2 gap-4 text-left">
-                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                  <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">Final Result</p>
                     <p className="font-semibold text-white">Clear - No adverse media</p>
                   </div>
-                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                  <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">Severity Level</p>
                     <p className="font-semibold text-green-600">Level 0 (Clear)</p>
                   </div>
-                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                  <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">Search Date</p>
                     <p className="font-semibold text-white">{new Date().toLocaleDateString('en-AU')}</p>
                   </div>
-                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                  <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">Sources Searched</p>
                     <p className="font-semibold text-white">24 official & credible sources</p>
                   </div>
-                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                  <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">Reviewer</p>
                     <p className="font-semibold text-white">Current User</p>
                   </div>
-                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                  <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">Risk Impact</p>
                     <p className="font-semibold text-green-600">Low Risk - Proceed</p>
                   </div>
-                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                  <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">Next Review Date</p>
                     <p className="font-semibold text-white">{new Date(Date.now() + 30*24*60*60*1000).toLocaleDateString('en-AU')}</p>
                   </div>
-                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                  <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">Issue Categories</p>
                     <p className="font-semibold text-white">None detected</p>
                   </div>
@@ -1242,8 +1242,8 @@ function NewAdverseMediaWizard({ onBack }: { onBack: () => void }) {
 // Screen 3: Monthly Media Queue
 function MonthlyMediaQueue({ onBack }: { onBack: () => void }) {
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
-      <div className="bg-[#0d121d] border-b border-white/10">
+    <div className="min-h-screen bg-[#0f172a]">
+      <div className="bg-[#1e293b] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-8 py-6">
           <Button onClick={onBack} variant="ghost" className="mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -1337,8 +1337,8 @@ function MonthlyMediaQueue({ onBack }: { onBack: () => void }) {
 // Screen 10: Bulk Portfolio Monitor
 function BulkPortfolioMonitor({ onBack }: { onBack: () => void }) {
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
-      <div className="bg-[#0d121d] border-b border-white/10">
+    <div className="min-h-screen bg-[#0f172a]">
+      <div className="bg-[#1e293b] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-8 py-6">
           <Button onClick={onBack} variant="ghost" className="mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -1403,7 +1403,7 @@ function BulkPortfolioMonitor({ onBack }: { onBack: () => void }) {
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-5 gap-4 mb-6">
-              <div className="p-4 bg-[#0a0e17] rounded-lg text-center">
+              <div className="p-4 bg-[#0f172a] rounded-lg text-center">
                 <p className="text-xs text-slate-300 mb-1">Total Subjects</p>
                 <p className="text-3xl font-bold text-white">1,847</p>
               </div>

@@ -50,8 +50,8 @@ export function Tier4CommercialEngine({ onBack }: Tier4CommercialEngineProps) {
 
   // Hub View
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
-      <div className="bg-[#0d121d] border-b border-white/10">
+    <div className="min-h-screen bg-[#0f172a]">
+      <div className="bg-[#1e293b] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-8 py-6">
           {onBack && (
             <Button onClick={onBack} variant="ghost" className="mb-4">
@@ -77,22 +77,22 @@ export function Tier4CommercialEngine({ onBack }: Tier4CommercialEngineProps) {
               What Makes Tier 4 A Commercial Engine
             </h3>
             <div className="grid md:grid-cols-4 gap-6">
-              <div className="bg-[#0d121d] p-6 rounded-xl border-2 border-green-300 shadow-lg">
+              <div className="bg-[#1e293b] p-6 rounded-xl border-2 border-green-300 shadow-lg">
                 <Target className="w-12 h-12 text-green-600 mb-3" />
                 <p className="font-bold text-white text-lg mb-2">Client Selection</p>
                 <p className="text-sm text-slate-300">Score every client on compliance risk, operational burden, and profitability to drive retention and exit decisions</p>
               </div>
-              <div className="bg-[#0d121d] p-6 rounded-xl border-2 border-blue-300 shadow-lg">
+              <div className="bg-[#1e293b] p-6 rounded-xl border-2 border-blue-300 shadow-lg">
                 <DollarSign className="w-12 h-12 text-blue-600 mb-3" />
                 <p className="font-bold text-white text-lg mb-2">Pricing Decisions</p>
                 <p className="text-sm text-slate-300">Automatically recommend pricing based on entity complexity, risk level, and historical workload—risk = price premium</p>
               </div>
-              <div className="bg-[#0d121d] p-6 rounded-xl border-2 border-purple-300 shadow-lg">
+              <div className="bg-[#1e293b] p-6 rounded-xl border-2 border-purple-300 shadow-lg">
                 <PieChart className="w-12 h-12 text-purple-600 mb-3" />
                 <p className="font-bold text-white text-lg mb-2">Portfolio Risk Control</p>
                 <p className="text-sm text-slate-300">Live firm-wide risk exposure: PEP concentration, geographic clusters, industry concentration—manage the portfolio</p>
               </div>
-              <div className="bg-[#0d121d] p-6 rounded-xl border-2 border-amber-300 shadow-lg">
+              <div className="bg-[#1e293b] p-6 rounded-xl border-2 border-amber-300 shadow-lg">
                 <TrendingUp className="w-12 h-12 text-amber-600 mb-3" />
                 <p className="font-bold text-white text-lg mb-2">Revenue Optimization</p>
                 <p className="text-sm text-slate-300">Detect revenue leakage, underbilling, scope creep—recover lost revenue and improve margins</p>
@@ -157,11 +157,11 @@ export function Tier4CommercialEngine({ onBack }: Tier4CommercialEngineProps) {
               </div>
 
               <div className="grid grid-cols-2 gap-3 mb-4">
-                <div className="bg-[#0d121d] p-4 rounded-lg border-2 border-green-300 text-center">
+                <div className="bg-[#1e293b] p-4 rounded-lg border-2 border-green-300 text-center">
                   <p className="text-xs text-green-700">High Value</p>
                   <p className="text-3xl font-bold text-green-600">142</p>
                 </div>
-                <div className="bg-[#0d121d] p-4 rounded-lg border-2 border-red-300 text-center">
+                <div className="bg-[#1e293b] p-4 rounded-lg border-2 border-red-300 text-center">
                   <p className="text-xs text-red-700">Loss-Making</p>
                   <p className="text-3xl font-bold text-red-600">23</p>
                 </div>
@@ -216,11 +216,11 @@ export function Tier4CommercialEngine({ onBack }: Tier4CommercialEngineProps) {
               </div>
 
               <div className="grid grid-cols-2 gap-3 mb-4">
-                <div className="bg-[#0d121d] p-4 rounded-lg border-2 border-blue-300 text-center">
+                <div className="bg-[#1e293b] p-4 rounded-lg border-2 border-blue-300 text-center">
                   <p className="text-xs text-blue-700">Avg Margin</p>
                   <p className="text-3xl font-bold text-blue-600">42%</p>
                 </div>
-                <div className="bg-[#0d121d] p-4 rounded-lg border-2 border-amber-300 text-center">
+                <div className="bg-[#1e293b] p-4 rounded-lg border-2 border-amber-300 text-center">
                   <p className="text-xs text-amber-700">Underpriced</p>
                   <p className="text-3xl font-bold text-amber-600">34</p>
                 </div>
@@ -275,11 +275,11 @@ export function Tier4CommercialEngine({ onBack }: Tier4CommercialEngineProps) {
               </div>
 
               <div className="grid grid-cols-2 gap-3 mb-4">
-                <div className="bg-[#0d121d] p-4 rounded-lg border-2 border-purple-300 text-center">
+                <div className="bg-[#1e293b] p-4 rounded-lg border-2 border-purple-300 text-center">
                   <p className="text-xs text-purple-700">Total Clients</p>
                   <p className="text-3xl font-bold text-purple-600">1,847</p>
                 </div>
-                <div className="bg-[#0d121d] p-4 rounded-lg border-2 border-red-300 text-center">
+                <div className="bg-[#1e293b] p-4 rounded-lg border-2 border-red-300 text-center">
                   <p className="text-xs text-red-700">High Risk %</p>
                   <p className="text-3xl font-bold text-red-600">12.4%</p>
                 </div>
@@ -334,11 +334,11 @@ export function Tier4CommercialEngine({ onBack }: Tier4CommercialEngineProps) {
               </div>
 
               <div className="grid grid-cols-2 gap-3 mb-4">
-                <div className="bg-[#0d121d] p-4 rounded-lg border-2 border-amber-300 text-center">
+                <div className="bg-[#1e293b] p-4 rounded-lg border-2 border-amber-300 text-center">
                   <p className="text-xs text-amber-700">Total Billed</p>
                   <p className="text-3xl font-bold text-green-600">$2.4M</p>
                 </div>
-                <div className="bg-[#0d121d] p-4 rounded-lg border-2 border-red-300 text-center">
+                <div className="bg-[#1e293b] p-4 rounded-lg border-2 border-red-300 text-center">
                   <p className="text-xs text-red-700">Leakage</p>
                   <p className="text-3xl font-bold text-red-600">$187K</p>
                 </div>
@@ -384,7 +384,7 @@ export function Tier4CommercialEngine({ onBack }: Tier4CommercialEngineProps) {
               })}
             </div>
 
-            <div className="bg-[#0d121d] rounded-xl border-2 border-green-300 p-6 shadow-lg">
+            <div className="bg-[#1e293b] rounded-xl border-2 border-green-300 p-6 shadow-lg">
               <h4 className="font-bold text-white text-xl mb-4">What Tier 4 Achieves:</h4>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
@@ -447,8 +447,8 @@ export function Tier4CommercialEngine({ onBack }: Tier4CommercialEngineProps) {
 // Client Risk & Profitability Bot
 function ClientProfitabilityBot({ onBack }: { onBack: () => void }) {
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
-      <div className="bg-[#0d121d] border-b border-white/10">
+    <div className="min-h-screen bg-[#0f172a]">
+      <div className="bg-[#1e293b] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-8 py-6">
           <Button onClick={onBack} variant="ghost" className="mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -504,7 +504,7 @@ function ClientProfitabilityBot({ onBack }: { onBack: () => void }) {
           <CardContent className="p-0">
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
-                <thead className="bg-[#0a0e17] border-b">
+                <thead className="bg-[#0f172a] border-b">
                   <tr>
                     <th className="px-4 py-3 text-left font-medium text-slate-300">Client Name</th>
                     <th className="px-4 py-3 text-left font-medium text-slate-300">Revenue</th>
@@ -549,7 +549,7 @@ function ClientProfitabilityBot({ onBack }: { onBack: () => void }) {
                 </tbody>
               </table>
             </div>
-            <div className="p-4 border-t bg-[#0a0e17]">
+            <div className="p-4 border-t bg-[#0f172a]">
               <Button variant="ghost" className="w-full text-green-700 hover:bg-green-50">
                 View All Clients <ChevronRight className="w-4 h-4 ml-1" />
               </Button>
@@ -573,7 +573,7 @@ function ClientProfitabilityBot({ onBack }: { onBack: () => void }) {
                 { rule: 'High Admin Burden', action: 'FLAG FOR REVIEW', color: 'orange' },
                 { rule: 'High Value + Low Risk', action: 'RETAIN & EXPAND', color: 'green' }
               ].map((rule, idx) => (
-                <div key={idx} className="bg-[#0d121d] p-4 rounded-lg border-2 border-green-200 flex items-center justify-between">
+                <div key={idx} className="bg-[#1e293b] p-4 rounded-lg border-2 border-green-200 flex items-center justify-between">
                   <p className="font-medium text-white">{rule.rule}</p>
                   <Badge className={`bg-${rule.color}-600 text-white`}>{rule.action}</Badge>
                 </div>
@@ -589,8 +589,8 @@ function ClientProfitabilityBot({ onBack }: { onBack: () => void }) {
 // Pricing Intelligence Bot
 function PricingIntelligenceBot({ onBack }: { onBack: () => void }) {
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
-      <div className="bg-[#0d121d] border-b border-white/10">
+    <div className="min-h-screen bg-[#0f172a]">
+      <div className="bg-[#1e293b] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-8 py-6">
           <Button onClick={onBack} variant="ghost" className="mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -627,7 +627,7 @@ function PricingIntelligenceBot({ onBack }: { onBack: () => void }) {
                 'Foreign PEP = Enhanced CDD Premium',
                 'Missing UBO = Cannot Price Until Complete'
               ].map((rule, idx) => (
-                <div key={idx} className="bg-[#0d121d] p-3 rounded-lg border border-blue-200 flex items-center gap-3">
+                <div key={idx} className="bg-[#1e293b] p-3 rounded-lg border border-blue-200 flex items-center gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600" />
                   <p className="font-medium text-white">{rule}</p>
                 </div>
@@ -643,8 +643,8 @@ function PricingIntelligenceBot({ onBack }: { onBack: () => void }) {
 // Portfolio Risk Dashboard
 function PortfolioRiskDashboard({ onBack }: { onBack: () => void }) {
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
-      <div className="bg-[#0d121d] border-b border-white/10">
+    <div className="min-h-screen bg-[#0f172a]">
+      <div className="bg-[#1e293b] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-8 py-6">
           <Button onClick={onBack} variant="ghost" className="mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -703,7 +703,7 @@ function PortfolioRiskDashboard({ onBack }: { onBack: () => void }) {
                 { alert: 'Foreign PEP Concentration', value: '2.5% of portfolio', severity: 'Medium' },
                 { alert: 'High-Risk Client Cluster', value: '12.4% trending up', severity: 'High' }
               ].map((item, idx) => (
-                <div key={idx} className="bg-[#0d121d] p-4 rounded-lg border-2 border-purple-200 flex items-center justify-between">
+                <div key={idx} className="bg-[#1e293b] p-4 rounded-lg border-2 border-purple-200 flex items-center justify-between">
                   <div>
                     <p className="font-medium text-white">{item.alert}</p>
                     <p className="text-sm text-slate-300">{item.value}</p>
@@ -727,8 +727,8 @@ function PortfolioRiskDashboard({ onBack }: { onBack: () => void }) {
 // Revenue Leakage Bot
 function RevenueLeakageBot({ onBack }: { onBack: () => void }) {
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
-      <div className="bg-[#0d121d] border-b border-white/10">
+    <div className="min-h-screen bg-[#0f172a]">
+      <div className="bg-[#1e293b] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-8 py-6">
           <Button onClick={onBack} variant="ghost" className="mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -786,7 +786,7 @@ function RevenueLeakageBot({ onBack }: { onBack: () => void }) {
                 { category: 'Missed Billing', amount: '$41K', percentage: '22%' },
                 { category: 'Excessive Revisions', amount: '$27K', percentage: '14%' }
               ].map((item, idx) => (
-                <div key={idx} className="bg-[#0d121d] p-4 rounded-lg border-2 border-amber-200">
+                <div key={idx} className="bg-[#1e293b] p-4 rounded-lg border-2 border-amber-200">
                   <div className="flex items-center justify-between mb-2">
                     <p className="font-medium text-white">{item.category}</p>
                     <Badge className="bg-red-100 text-red-700">{item.percentage}</Badge>

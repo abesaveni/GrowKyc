@@ -78,7 +78,7 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0a0e17] p-6 space-y-6">
+    <div className="min-h-screen bg-[#0f172a] p-6 space-y-6">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-white">Enterprise Upgrade Hub</h1>
@@ -104,7 +104,7 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
               className={`text-left p-4 rounded-xl border transition-all ${
                 activeTab === module.key
                   ? 'border-[#13B5EA] bg-[#13B5EA]/10 shadow-sm'
-                  : 'border-white/10 bg-[#0d121d] hover:border-gray-300'
+                  : 'border-white/10 bg-[#1e293b] hover:border-gray-300'
               }`}
             >
               <div className="flex items-center justify-between mb-2">
@@ -422,15 +422,15 @@ export function EnterpriseUpgradeHub({ onBack }: EnterpriseUpgradeHubProps) {
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-3 gap-4">
-                <div className="p-4 rounded-lg bg-[#0a0e17] border">
+                <div className="p-4 rounded-lg bg-[#0f172a] border">
                   <div className="text-sm text-slate-300">SLA on-time</div>
                   <div className="text-2xl font-bold text-white mt-1">96.2%</div>
                 </div>
-                <div className="p-4 rounded-lg bg-[#0a0e17] border">
+                <div className="p-4 rounded-lg bg-[#0f172a] border">
                   <div className="text-sm text-slate-300">Cases processed / week</div>
                   <div className="text-2xl font-bold text-white mt-1">412</div>
                 </div>
-                <div className="p-4 rounded-lg bg-[#0a0e17] border">
+                <div className="p-4 rounded-lg bg-[#0f172a] border">
                   <div className="text-sm text-slate-300">Manual touchpoints / case</div>
                   <div className="text-2xl font-bold text-white mt-1">3.1</div>
                 </div>

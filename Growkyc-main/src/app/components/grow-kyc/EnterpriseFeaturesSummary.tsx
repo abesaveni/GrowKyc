@@ -188,7 +188,7 @@ export function EnterpriseFeaturesSummary() {
       title: 'Security & Access',
       icon: Lock,
       color: 'text-slate-300',
-      bgColor: 'bg-[#0a0e17]',
+      bgColor: 'bg-[#0f172a]',
       features: [
         { name: 'Role-Based Access Control', icon: Shield },
         { name: 'MFA Ready', icon: Lock },
@@ -266,7 +266,7 @@ export function EnterpriseFeaturesSummary() {
             <Card key={index} className="hover:shadow-xl transition-shadow">
               <CardHeader className={`${category.bgColor} border-b`}>
                 <CardTitle className="flex items-center gap-3">
-                  <div className={`p-2 bg-[#0d121d] rounded-lg ${category.color}`}>
+                  <div className={`p-2 bg-[#1e293b] rounded-lg ${category.color}`}>
                     <CategoryIcon className="w-6 h-6" />
                   </div>
                   <span className="text-white">{category.title}</span>

@@ -97,10 +97,10 @@ export default function SignIn({ onSuccess }: SignInProps) {
   };
 
   return (
-    <div className="flex h-screen w-screen overflow-hidden bg-[#0a0e17] text-slate-200">
+    <div className="flex h-screen w-screen overflow-hidden bg-[#0f172a] text-slate-200">
 
       {/* ── Left panel (form) ── */}
-      <div className="flex flex-col justify-between w-[46%] min-w-[420px] h-full bg-[#0d121d] border-r border-white/5 px-12 py-8">
+      <div className="flex flex-col justify-between w-[46%] min-w-[420px] h-full bg-[#1e293b] border-r border-white/5 px-12 py-8">
 
         {/* Logo */}
         <div className="flex items-center gap-2.5">
@@ -227,7 +227,7 @@ export default function SignIn({ onSuccess }: SignInProps) {
       </div>
 
       {/* ── Right panel (showcase) ── */}
-      <div className="flex-1 h-full relative overflow-hidden flex flex-col justify-between p-12 bg-gradient-to-br from-[#0d121d] via-[#0f1b2d] to-[#0a1622]">
+      <div className="flex-1 h-full relative overflow-hidden flex flex-col justify-between p-12 bg-gradient-to-br from-[#1e293b] via-[#0f1b2d] to-[#0a1622]">
 
         {/* Decorative glow */}
         <div className="absolute -top-32 -right-24 w-[28rem] h-[28rem] rounded-full bg-[#13B5EA]/10 blur-3xl" />

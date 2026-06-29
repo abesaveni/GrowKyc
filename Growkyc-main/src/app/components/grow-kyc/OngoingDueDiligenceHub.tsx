@@ -215,7 +215,7 @@ export function OngoingDueDiligenceHub({ onBack }: OngoingDueDiligenceHubProps) 
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
+    <div className="min-h-screen bg-[#0f172a]">
       {/* Header */}
       <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] text-white px-6 py-4">
         <div className="flex items-center justify-between">
@@ -235,7 +235,7 @@ export function OngoingDueDiligenceHub({ onBack }: OngoingDueDiligenceHubProps) 
       </div>
 
       {/* Stats Bar */}
-      <div className="bg-[#0d121d] border-b border-white/10 px-6 py-4">
+      <div className="bg-[#1e293b] border-b border-white/10 px-6 py-4">
         <div className="grid grid-cols-5 gap-4">
           <div className="text-center">
             <div className="text-3xl font-bold text-white">{stats.total}</div>
@@ -425,7 +425,7 @@ export function OngoingDueDiligenceHub({ onBack }: OngoingDueDiligenceHubProps) 
                   {reviewChecklist.map((item) => (
                     <div
                       key={item.id}
-                      className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-lg border border-white/10 hover:bg-white/5 transition-colors"
+                      className="flex items-center justify-between p-4 bg-[#0f172a] rounded-lg border border-white/10 hover:bg-white/5 transition-colors"
                     >
                       <div className="flex items-center gap-4">
                         <div className="flex items-center justify-center w-8 h-8 rounded-full bg-cyan-100 text-cyan-600 font-bold text-sm">
@@ -449,19 +449,19 @@ export function OngoingDueDiligenceHub({ onBack }: OngoingDueDiligenceHubProps) 
                 <div className="mt-6 p-4 bg-blue-50 rounded-lg border-2 border-blue-200">
                   <h3 className="font-bold text-blue-900 mb-2">Review Frequency by Risk Rating</h3>
                   <div className="grid md:grid-cols-4 gap-4 text-sm">
-                    <div className="p-3 bg-[#0d121d] rounded border border-red-200">
+                    <div className="p-3 bg-[#1e293b] rounded border border-red-200">
                       <div className="font-bold text-red-600 mb-1">EXTREME RISK</div>
                       <div className="text-slate-300">Every 6 months</div>
                     </div>
-                    <div className="p-3 bg-[#0d121d] rounded border border-orange-200">
+                    <div className="p-3 bg-[#1e293b] rounded border border-orange-200">
                       <div className="font-bold text-orange-600 mb-1">HIGH RISK</div>
                       <div className="text-slate-300">Every 12 months</div>
                     </div>
-                    <div className="p-3 bg-[#0d121d] rounded border border-amber-200">
+                    <div className="p-3 bg-[#1e293b] rounded border border-amber-200">
                       <div className="font-bold text-amber-600 mb-1">MEDIUM RISK</div>
                       <div className="text-slate-300">Every 18 months</div>
                     </div>
-                    <div className="p-3 bg-[#0d121d] rounded border border-green-200">
+                    <div className="p-3 bg-[#1e293b] rounded border border-green-200">
                       <div className="font-bold text-green-600 mb-1">LOW RISK</div>
                       <div className="text-slate-300">Every 36 months</div>
                     </div>
@@ -485,7 +485,7 @@ export function OngoingDueDiligenceHub({ onBack }: OngoingDueDiligenceHubProps) 
                   {triggerEvents.map((trigger, idx) => (
                     <div
                       key={idx}
-                      className="p-4 rounded-lg border-2 border-white/10 bg-[#0a0e17]"
+                      className="p-4 rounded-lg border-2 border-white/10 bg-[#0f172a]"
                     >
                       <div className="flex items-center justify-between mb-3">
                         <div className="flex items-center gap-3">

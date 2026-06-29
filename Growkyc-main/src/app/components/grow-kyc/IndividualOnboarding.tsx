@@ -985,7 +985,7 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
         </div>
 
         {/* Declaration */}
-        <Card className="bg-[#0a0e17] border-white/10">
+        <Card className="bg-[#0f172a] border-white/10">
           <CardContent className="p-4">
             <h4 className="font-semibold text-white mb-2">Declaration</h4>
             <p className="text-sm text-slate-300">
@@ -1486,7 +1486,7 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0e17] p-6">
+    <div className="min-h-screen bg-[#0f172a] p-6">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="mb-6">
@@ -1499,7 +1499,7 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
             </div>
             <div className="flex items-center gap-3">
               {/* Developer Mode Toggle */}
-              <Card className={`border-2 transition-all ${devMode ? 'border-amber-500 bg-amber-50 shadow-lg' : 'border-gray-300 bg-[#0d121d]'}`}>
+              <Card className={`border-2 transition-all ${devMode ? 'border-amber-500 bg-amber-50 shadow-lg' : 'border-gray-300 bg-[#1e293b]'}`}>
                 <CardContent className="p-3">
                   <div className="flex items-center gap-3">
                     <Bug className={`w-5 h-5 ${devMode ? 'text-amber-600' : 'text-slate-400'}`} />
@@ -1525,7 +1525,7 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
                       }`}
                     >
                       <span
-                        className={`inline-block h-4 w-4 transform rounded-full bg-[#0d121d] transition-transform ${
+                        className={`inline-block h-4 w-4 transform rounded-full bg-[#1e293b] transition-transform ${
                           devMode ? 'translate-x-6' : 'translate-x-1'
                         }`}
                       />

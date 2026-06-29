@@ -236,7 +236,7 @@ export function VerificationEvidenceHub({
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
+    <div className="min-h-screen bg-[#0f172a]">
       {/* Header */}
       <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] text-white px-6 py-4">
         <div className="flex items-center justify-between">
@@ -256,7 +256,7 @@ export function VerificationEvidenceHub({
       </div>
 
       {/* Client Info & Completeness Bar */}
-      <div className="bg-[#0d121d] border-b border-white/10 px-6 py-4">
+      <div className="bg-[#1e293b] border-b border-white/10 px-6 py-4">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-6">
             <div>
@@ -409,7 +409,7 @@ export function VerificationEvidenceHub({
                     </div>
 
                     {/* Verification Notes */}
-                    <div className="mt-4 p-3 bg-[#0a0e17] rounded-lg border border-white/10">
+                    <div className="mt-4 p-3 bg-[#0f172a] rounded-lg border border-white/10">
                       <div className="text-xs font-semibold text-slate-300 mb-1">Verification Notes:</div>
                       <div className="text-sm text-white">{evidence.notes}</div>
                     </div>
@@ -494,7 +494,7 @@ export function VerificationEvidenceHub({
                     </div>
 
                     {/* Verification Notes */}
-                    <div className="mt-4 p-3 bg-[#0a0e17] rounded-lg border border-white/10">
+                    <div className="mt-4 p-3 bg-[#0f172a] rounded-lg border border-white/10">
                       <div className="text-xs font-semibold text-slate-300 mb-1">Verification Notes:</div>
                       <div className="text-sm text-white">{evidence.notes}</div>
                     </div>
@@ -579,7 +579,7 @@ export function VerificationEvidenceHub({
                     </div>
 
                     {/* Verification Notes */}
-                    <div className="mt-4 p-3 bg-[#0a0e17] rounded-lg border border-white/10">
+                    <div className="mt-4 p-3 bg-[#0f172a] rounded-lg border border-white/10">
                       <div className="text-xs font-semibold text-slate-300 mb-1">Verification Notes:</div>
                       <div className="text-sm text-white">{evidence.notes}</div>
                     </div>
@@ -664,7 +664,7 @@ export function VerificationEvidenceHub({
                     </div>
 
                     {/* Verification Notes */}
-                    <div className="mt-4 p-3 bg-[#0a0e17] rounded-lg border border-white/10">
+                    <div className="mt-4 p-3 bg-[#0f172a] rounded-lg border border-white/10">
                       <div className="text-xs font-semibold text-slate-300 mb-1">Verification Notes:</div>
                       <div className="text-sm text-white">{evidence.notes}</div>
                     </div>
@@ -704,7 +704,7 @@ export function VerificationEvidenceHub({
                       </h3>
                       <div className="space-y-2">
                         {missingEvidence.map((field, idx) => (
-                          <div key={idx} className="p-3 bg-[#0d121d] rounded border border-red-200">
+                          <div key={idx} className="p-3 bg-[#1e293b] rounded border border-red-200">
                             <div className="font-semibold text-white">{field.field}</div>
                             <div className="text-sm text-slate-300">Required: {field.documentType}</div>
                           </div>

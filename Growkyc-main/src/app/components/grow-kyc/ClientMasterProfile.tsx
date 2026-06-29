@@ -112,7 +112,7 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
       case 'active': return 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300';
       case 'suspended': return 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300';
       case 'pending': return 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300';
-      default: return 'bg-[#0a0e17] text-slate-300 dark:bg-gray-800 dark:text-gray-300';
+      default: return 'bg-[#0f172a] text-slate-300 dark:bg-gray-800 dark:text-gray-300';
     }
   };
 
@@ -172,15 +172,15 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
             </div>
             <div className="text-right">
               <div className="flex gap-2">
-                <Button variant="outline" className="bg-[#0d121d] text-[#0E7C9E] hover:bg-cyan-50">
+                <Button variant="outline" className="bg-[#1e293b] text-[#0E7C9E] hover:bg-cyan-50">
                   <RefreshCw className="w-4 h-4 mr-2" />
                   Refresh All
                 </Button>
-                <Button variant="outline" className="bg-[#0d121d] text-[#0E7C9E] hover:bg-cyan-50">
+                <Button variant="outline" className="bg-[#1e293b] text-[#0E7C9E] hover:bg-cyan-50">
                   <Download className="w-4 h-4 mr-2" />
                   Export Profile
                 </Button>
-                <Button variant="outline" className="bg-[#0d121d] text-[#0E7C9E] hover:bg-cyan-50">
+                <Button variant="outline" className="bg-[#1e293b] text-[#0E7C9E] hover:bg-cyan-50">
                   <Edit className="w-4 h-4 mr-2" />
                   Edit
                 </Button>
@@ -192,7 +192,7 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
 
       <div className="max-w-7xl mx-auto p-6">
         {/* Tab Navigation */}
-        <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg mb-6 overflow-hidden">
+        <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg mb-6 overflow-hidden">
           <div className="flex overflow-x-auto border-b border-white/10 dark:border-gray-700">
             {tabs.map((tab) => (
               <button
@@ -218,7 +218,7 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
             <div className="space-y-6">
               {/* Quick Stats */}
               <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-green-500">
+                <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-green-500">
                   <div className="flex items-center justify-between mb-2">
                     <div className="text-sm text-slate-400">KYC Status</div>
                     <Shield className="w-8 h-8 text-green-600" />
@@ -227,7 +227,7 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
                   <div className="text-xs text-slate-400 mt-1">Last verified {client.lastReviewDate}</div>
                 </div>
 
-                <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-blue-500">
+                <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-blue-500">
                   <div className="flex items-center justify-between mb-2">
                     <div className="text-sm text-slate-400">Risk Score</div>
                     <TrendingUp className="w-8 h-8 text-blue-600" />
@@ -238,7 +238,7 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
                   <div className="text-xs text-slate-400 mt-1 capitalize">{client.riskTier} Risk</div>
                 </div>
 
-                <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-purple-500">
+                <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-purple-500">
                   <div className="flex items-center justify-between mb-2">
                     <div className="text-sm text-slate-400">Active Alerts</div>
                     <Bell className="w-8 h-8 text-purple-600" />
@@ -249,7 +249,7 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
                   <div className="text-xs text-slate-400 mt-1">All clear</div>
                 </div>
 
-                <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-orange-500">
+                <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-orange-500">
                   <div className="flex items-center justify-between mb-2">
                     <div className="text-sm text-slate-400">Next Review</div>
                     <Clock className="w-8 h-8 text-orange-600" />
@@ -264,7 +264,7 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
               </div>
 
               {/* Client Information */}
-              <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6">
+              <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6">
                 <h3 className="text-lg font-bold text-white dark:text-white mb-4">Client Information</h3>
                 <div className="grid grid-cols-2 gap-6">
                   <div>
@@ -291,11 +291,11 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
               </div>
 
               {/* Module Status */}
-              <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6">
+              <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6">
                 <h3 className="text-lg font-bold text-white dark:text-white mb-4">Module Status</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {Object.entries(client.modules).map(([key, module]) => (
-                    <div key={key} className="flex items-center justify-between p-4 bg-[#0a0e17] dark:bg-gray-900 rounded-lg">
+                    <div key={key} className="flex items-center justify-between p-4 bg-[#0f172a] dark:bg-gray-900 rounded-lg">
                       <div>
                         <div className="font-semibold text-white dark:text-white capitalize">
                           {key.replace(/([A-Z])/g, ' $1').trim()}
@@ -326,7 +326,7 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
               </div>
 
               {/* Recent Activity */}
-              <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6">
+              <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6">
                 <h3 className="text-lg font-bold text-white dark:text-white mb-4">Recent Activity</h3>
                 <div className="space-y-3">
                   {[
@@ -335,7 +335,7 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
                     { date: '2024-03-20 10:30', action: 'AML screening completed', user: 'compliance@growkyc.com', status: 'success' },
                     { date: '2024-03-20 09:15', action: 'Credit report pulled', user: 'System', status: 'success' }
                   ].map((activity, i) => (
-                    <div key={i} className="flex items-center justify-between p-3 bg-[#0a0e17] dark:bg-gray-900 rounded-lg">
+                    <div key={i} className="flex items-center justify-between p-3 bg-[#0f172a] dark:bg-gray-900 rounded-lg">
                       <div className="flex items-center gap-3">
                         <Activity className="w-5 h-5 text-[#13B5EA]" />
                         <div>
@@ -353,7 +353,7 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
 
           {/* Identity Tab - Link to existing Equifax module */}
           {activeTab === 'identity' && (
-            <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6">
+            <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6">
               <h3 className="text-lg font-bold text-white dark:text-white mb-4">Identity Verification Module</h3>
               <p className="text-slate-300 dark:text-slate-400 mb-4">
                 Complete identity verification powered by Equifax, including fraud detection, biometrics, and document authenticity checks.
@@ -367,7 +367,7 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
 
           {/* AML / Risk Tab - Link to existing modules */}
           {activeTab === 'aml-risk' && (
-            <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6">
+            <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6">
               <h3 className="text-lg font-bold text-white dark:text-white mb-4">AML Screening & Risk Assessment</h3>
               <p className="text-slate-300 dark:text-slate-400 mb-4">
                 Comprehensive AML/CTF screening including PEP, sanctions, watchlists, and risk scoring.
@@ -387,7 +387,7 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
 
           {/* Related Parties Tab */}
           {activeTab === 'related-parties' && (
-            <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6">
+            <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6">
               <h3 className="text-lg font-bold text-white dark:text-white mb-4">Related Parties & Associations</h3>
               <p className="text-slate-300 dark:text-slate-400 mb-6">
                 View and manage related individuals, entities, and business associations for this client.
@@ -399,7 +399,7 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
                   { name: 'John Mitchell', type: 'Individual', relationship: 'Spouse', status: 'Active', verified: true },
                   { name: 'Mitchell Consulting Pty Ltd', type: 'Company', relationship: 'Director', status: 'Active', verified: true }
                 ].map((party, i) => (
-                  <div key={i} className="flex items-center justify-between p-4 bg-[#0a0e17] dark:bg-gray-900 rounded-lg border border-white/10 dark:border-gray-700">
+                  <div key={i} className="flex items-center justify-between p-4 bg-[#0f172a] dark:bg-gray-900 rounded-lg border border-white/10 dark:border-gray-700">
                     <div className="flex items-center gap-4">
                       <div className="w-10 h-10 rounded-full bg-[#13B5EA] text-white flex items-center justify-center font-semibold">
                         {party.name.charAt(0)}
@@ -448,7 +448,7 @@ export function ClientMasterProfile({ clientId, onBack }: ClientMasterProfilePro
 
           {/* Placeholder for other tabs */}
           {!['overview', 'identity', 'aml-risk', 'related-parties', 'fraud-detection', 'run-checks'].includes(activeTab) && (
-            <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6">
+            <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6">
               <h3 className="text-lg font-bold text-white dark:text-white mb-4 capitalize">
                 {activeTab.replace('-', ' / ')} Module
               </h3>

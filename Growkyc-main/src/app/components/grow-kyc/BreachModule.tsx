@@ -299,7 +299,7 @@ export function BreachModule({ onBack }: BreachModuleProps) {
                     <span>Regulatory obligation triggered</span>
                   </div>
                 </div>
-                <div className="mt-4 p-3 bg-[#0d121d] rounded border border-blue-300">
+                <div className="mt-4 p-3 bg-[#1e293b] rounded border border-blue-300">
                   <div className="font-semibold text-blue-900 mb-1">Recommended Actions:</div>
                   <ul className="text-sm text-blue-800 space-y-1 list-disc list-inside">
                     <li>Report to AUSTRAC within 30 days</li>
@@ -329,9 +329,9 @@ export function BreachModule({ onBack }: BreachModuleProps) {
   );
 
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
+    <div className="min-h-screen bg-[#0f172a]">
       {/* Header */}
-      <div className="bg-[#0d121d] border-b sticky top-0 z-10">
+      <div className="bg-[#1e293b] border-b sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -464,7 +464,7 @@ export function BreachModule({ onBack }: BreachModuleProps) {
                             </div>
                           </div>
                           {incident.reportable && (
-                            <div className="mt-4 p-3 bg-[#0d121d] rounded border flex items-center justify-between">
+                            <div className="mt-4 p-3 bg-[#1e293b] rounded border flex items-center justify-between">
                               <div className="flex items-center gap-3">
                                 <Clock className="w-5 h-5 text-red-600" />
                                 <div>

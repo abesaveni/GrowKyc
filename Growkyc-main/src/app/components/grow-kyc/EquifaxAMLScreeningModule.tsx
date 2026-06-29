@@ -185,7 +185,7 @@ export function EquifaxAMLScreeningModule() {
       case 'potential-match': return 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300';
       case 'confirmed-match': return 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300';
       case 'under-review': return 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300';
-      default: return 'bg-[#0a0e17] text-slate-300 dark:bg-gray-800 dark:text-gray-300';
+      default: return 'bg-[#0f172a] text-slate-300 dark:bg-gray-800 dark:text-gray-300';
     }
   };
 
@@ -241,7 +241,7 @@ export function EquifaxAMLScreeningModule() {
 
       <div className="max-w-7xl mx-auto p-6 space-y-6">
         {/* Summary Dashboard */}
-        <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-[#13B5EA]">
+        <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-[#13B5EA]">
           <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
             <div>
               <div className="flex items-center gap-2 mb-2">
@@ -321,7 +321,7 @@ export function EquifaxAMLScreeningModule() {
 
         {/* Screening Categories Grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-purple-500">
+          <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-purple-500">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
                 <Users className="w-6 h-6 text-purple-600" />
@@ -337,7 +337,7 @@ export function EquifaxAMLScreeningModule() {
             <div className="text-xs text-slate-400 mt-1">Matches Found</div>
           </div>
 
-          <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-red-500">
+          <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-red-500">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
                 <Ban className="w-6 h-6 text-red-600" />
@@ -353,7 +353,7 @@ export function EquifaxAMLScreeningModule() {
             <div className="text-xs text-slate-400 mt-1">Matches Found</div>
           </div>
 
-          <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-orange-500">
+          <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-orange-500">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
                 <Flag className="w-6 h-6 text-orange-600" />
@@ -369,7 +369,7 @@ export function EquifaxAMLScreeningModule() {
             <div className="text-xs text-slate-400 mt-1">Hits Found</div>
           </div>
 
-          <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-yellow-500">
+          <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-yellow-500">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
                 <FileText className="w-6 h-6 text-yellow-600" />
@@ -387,7 +387,7 @@ export function EquifaxAMLScreeningModule() {
         </div>
 
         {/* Tabs */}
-        <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+        <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
           <div className="flex border-b border-white/10 dark:border-gray-700 overflow-x-auto">
             {tabs.map(tab => (
               <button
@@ -433,7 +433,7 @@ export function EquifaxAMLScreeningModule() {
                   </div>
                 </div>
 
-                <div className="bg-[#0a0e17] dark:bg-gray-900 rounded-lg p-6">
+                <div className="bg-[#0f172a] dark:bg-gray-900 rounded-lg p-6">
                   <h3 className="font-bold text-white dark:text-white mb-4">Screening Coverage</h3>
                   <div className="space-y-3">
                     <div>
@@ -530,7 +530,7 @@ export function EquifaxAMLScreeningModule() {
             {activeTab === 'timeline' && (
               <div className="space-y-4">
                 {screeningHistory.map((record, index) => (
-                  <div key={index} className="flex gap-4 p-4 bg-[#0a0e17] dark:bg-gray-900 rounded-lg">
+                  <div key={index} className="flex gap-4 p-4 bg-[#0f172a] dark:bg-gray-900 rounded-lg">
                     <div className="flex-shrink-0">
                       <div className="w-10 h-10 rounded-full bg-[#13B5EA] flex items-center justify-center text-white font-bold">
                         {index + 1}
@@ -572,7 +572,7 @@ export function EquifaxAMLScreeningModule() {
         </div>
 
         {/* Actions */}
-        <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6">
+        <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6">
           <h3 className="text-lg font-bold text-white dark:text-white mb-4">Actions</h3>
           <div className="flex gap-3">
             <Button onClick={() => alert('Re-screening...')}>

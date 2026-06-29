@@ -44,8 +44,8 @@ export function KYBBot({ onBack }: KYBBotProps) {
 // Screen 1: KYB Control Centre
 function KYBControlCentre({ onNavigate, onBack }: { onNavigate: (view: ViewMode) => void; onBack?: () => void }) {
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
-      <div className="bg-[#0d121d] border-b border-white/10">
+    <div className="min-h-screen bg-[#0f172a]">
+      <div className="bg-[#1e293b] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-8 py-6">
           {onBack && (
             <Button onClick={onBack} variant="ghost" className="mb-4">
@@ -138,7 +138,7 @@ function KYBControlCentre({ onNavigate, onBack }: { onNavigate: (view: ViewMode)
             <CardContent className="p-0">
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
-                  <thead className="bg-[#0a0e17] border-b">
+                  <thead className="bg-[#0f172a] border-b">
                     <tr>
                       <th className="px-4 py-3 text-left font-medium text-slate-300">Entity Name</th>
                       <th className="px-4 py-3 text-left font-medium text-slate-300">ABN</th>
@@ -169,7 +169,7 @@ function KYBControlCentre({ onNavigate, onBack }: { onNavigate: (view: ViewMode)
                   </tbody>
                 </table>
               </div>
-              <div className="p-4 border-t bg-[#0a0e17]">
+              <div className="p-4 border-t bg-[#0f172a]">
                 <Button variant="ghost" className="w-full text-blue-700 hover:bg-blue-50" onClick={() => onNavigate('new-verification')}>
                   View All Entities <ChevronRight className="w-4 h-4 ml-1" />
                 </Button>
@@ -188,7 +188,7 @@ function KYBControlCentre({ onNavigate, onBack }: { onNavigate: (view: ViewMode)
             <CardContent className="p-0">
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
-                  <thead className="bg-[#0a0e17] border-b">
+                  <thead className="bg-[#0f172a] border-b">
                     <tr>
                       <th className="px-4 py-3 text-left font-medium text-slate-300">Entity Name</th>
                       <th className="px-4 py-3 text-left font-medium text-slate-300">Issue</th>
@@ -215,7 +215,7 @@ function KYBControlCentre({ onNavigate, onBack }: { onNavigate: (view: ViewMode)
                   </tbody>
                 </table>
               </div>
-              <div className="p-4 border-t bg-[#0a0e17]">
+              <div className="p-4 border-t bg-[#0f172a]">
                 <Button variant="ghost" className="w-full text-amber-700 hover:bg-amber-50">
                   View All Issues <ChevronRight className="w-4 h-4 ml-1" />
                 </Button>
@@ -296,8 +296,8 @@ function EntityVerificationWizard({ onBack }: { onBack: () => void }) {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
-      <div className="bg-[#0d121d] border-b border-white/10">
+    <div className="min-h-screen bg-[#0f172a]">
+      <div className="bg-[#1e293b] border-b border-white/10">
         <div className="max-w-5xl mx-auto px-8 py-6">
           <Button onClick={onBack} variant="ghost" className="mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -471,7 +471,7 @@ function EntityVerificationWizard({ onBack }: { onBack: () => void }) {
             <CardContent className="space-y-6">
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
-                  <thead className="bg-[#0a0e17] border-b">
+                  <thead className="bg-[#0f172a] border-b">
                     <tr>
                       <th className="px-4 py-3 text-left font-medium text-slate-300">Field</th>
                       <th className="px-4 py-3 text-left font-medium text-slate-300">Provided</th>
@@ -568,27 +568,27 @@ function EntityVerificationWizard({ onBack }: { onBack: () => void }) {
 
               <div className="max-w-2xl mx-auto space-y-4 mb-8">
                 <div className="grid md:grid-cols-2 gap-4 text-left">
-                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                  <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">Verification Status</p>
                     <p className="font-semibold text-green-600">VERIFIED</p>
                   </div>
-                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                  <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">Entity Status</p>
                     <p className="font-semibold text-white">Active</p>
                   </div>
-                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                  <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">ABN</p>
                     <p className="font-semibold text-white">{registryData?.abn}</p>
                   </div>
-                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                  <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">ACN</p>
                     <p className="font-semibold text-white">{registryData?.acn}</p>
                   </div>
-                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                  <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">GST Status</p>
                     <p className="font-semibold text-green-600">Registered</p>
                   </div>
-                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                  <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">Directors</p>
                     <p className="font-semibold text-white">{registryData?.directors.length}</p>
                   </div>

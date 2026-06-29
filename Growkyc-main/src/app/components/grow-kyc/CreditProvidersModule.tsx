@@ -198,12 +198,12 @@ export function CreditProvidersModule({ onBack }: CreditProvidersModuleProps) {
       case 'high': return 'text-red-600 bg-red-100 border-red-300';
       case 'medium': return 'text-amber-600 bg-amber-100 border-amber-300';
       case 'low': return 'text-green-600 bg-green-100 border-green-300';
-      default: return 'text-slate-300 bg-[#0a0e17] border-gray-300';
+      default: return 'text-slate-300 bg-[#0f172a] border-gray-300';
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#0d121d]">
+    <div className="min-h-screen bg-[#1e293b]">
       {/* Header */}
       <div className="bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 text-white px-8 py-12">
         <Button
@@ -528,7 +528,7 @@ export function CreditProvidersModule({ onBack }: CreditProvidersModuleProps) {
                             </div>
                           </div>
 
-                          <div className="p-4 bg-[#0a0e17] rounded-lg border border-white/10">
+                          <div className="p-4 bg-[#0f172a] rounded-lg border border-white/10">
                             <div className="text-sm text-slate-300 mb-1">Loan Purpose</div>
                             <div className="font-semibold text-white">{borrower.loanPurpose}</div>
                           </div>
@@ -573,7 +573,7 @@ export function CreditProvidersModule({ onBack }: CreditProvidersModuleProps) {
               <CardContent>
                 <div className="space-y-3">
                   {deals.filter(d => d.kycGate).map((deal) => (
-                    <div key={deal.id} className="flex items-center justify-between p-4 bg-[#0d121d] rounded-lg border-2 border-red-200">
+                    <div key={deal.id} className="flex items-center justify-between p-4 bg-[#1e293b] rounded-lg border-2 border-red-200">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
                           <AlertTriangle className="w-6 h-6 text-red-600" />
@@ -721,7 +721,7 @@ export function CreditProvidersModule({ onBack }: CreditProvidersModuleProps) {
                     { name: 'Connective', status: 'Disconnected', deals: 0 },
                     { name: 'SimpleNexus', status: 'Disconnected', deals: 0 }
                   ].map((los, idx) => (
-                    <div key={idx} className="p-4 bg-[#0d121d] rounded-lg border border-blue-200">
+                    <div key={idx} className="p-4 bg-[#1e293b] rounded-lg border border-blue-200">
                       <div className="font-bold text-white mb-2">{los.name}</div>
                       <div className="text-sm text-slate-300 mb-3">
                         {los.status === 'Connected' ? `${los.deals} active deals` : 'Not connected'}

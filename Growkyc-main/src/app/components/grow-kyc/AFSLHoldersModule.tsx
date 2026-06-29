@@ -152,12 +152,12 @@ export function AFSLHoldersModule({ onBack }: AFSLHoldersModuleProps) {
       case 'growth': return 'text-orange-600 bg-orange-100 border-orange-300';
       case 'balanced': return 'text-blue-600 bg-blue-100 border-blue-300';
       case 'conservative': return 'text-green-600 bg-green-100 border-green-300';
-      default: return 'text-slate-300 bg-[#0a0e17] border-gray-300';
+      default: return 'text-slate-300 bg-[#0f172a] border-gray-300';
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#0d121d]">
+    <div className="min-h-screen bg-[#1e293b]">
       {/* Header */}
       <div className="bg-gradient-to-r from-purple-600 via-pink-600 to-rose-600 text-white px-8 py-12">
         <Button
@@ -330,11 +330,11 @@ export function AFSLHoldersModule({ onBack }: AFSLHoldersModuleProps) {
                           </div>
 
                           <div className="grid grid-cols-2 gap-4">
-                            <div className="p-3 bg-[#0a0e17] rounded-lg">
+                            <div className="p-3 bg-[#0f172a] rounded-lg">
                               <div className="text-xs text-slate-300 mb-1">Last Review</div>
                               <div className="font-semibold text-white">{client.lastReview}</div>
                             </div>
-                            <div className="p-3 bg-[#0a0e17] rounded-lg">
+                            <div className="p-3 bg-[#0f172a] rounded-lg">
                               <div className="text-xs text-slate-300 mb-1">Next Review</div>
                               <div className="font-semibold text-white">{client.nextReview}</div>
                             </div>
@@ -385,7 +385,7 @@ export function AFSLHoldersModule({ onBack }: AFSLHoldersModuleProps) {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-3 gap-6">
-                  <div className="p-6 bg-[#0d121d] rounded-xl border-2 border-purple-200">
+                  <div className="p-6 bg-[#1e293b] rounded-xl border-2 border-purple-200">
                     <div className="flex items-center gap-3 mb-4">
                       <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
                         <User className="w-6 h-6 text-purple-600" />
@@ -415,7 +415,7 @@ export function AFSLHoldersModule({ onBack }: AFSLHoldersModuleProps) {
                     </ul>
                   </div>
 
-                  <div className="p-6 bg-[#0d121d] rounded-xl border-2 border-indigo-200">
+                  <div className="p-6 bg-[#1e293b] rounded-xl border-2 border-indigo-200">
                     <div className="flex items-center gap-3 mb-4">
                       <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
                         <Award className="w-6 h-6 text-indigo-600" />
@@ -445,7 +445,7 @@ export function AFSLHoldersModule({ onBack }: AFSLHoldersModuleProps) {
                     </ul>
                   </div>
 
-                  <div className="p-6 bg-[#0d121d] rounded-xl border-2 border-blue-200">
+                  <div className="p-6 bg-[#1e293b] rounded-xl border-2 border-blue-200">
                     <div className="flex items-center gap-3 mb-4">
                       <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                         <TrendingUp className="w-6 h-6 text-blue-600" />
@@ -548,7 +548,7 @@ export function AFSLHoldersModule({ onBack }: AFSLHoldersModuleProps) {
               <CardContent>
                 <div className="space-y-3">
                   {clients.filter(c => c.feeConsentStatus !== 'signed').map((client) => (
-                    <div key={client.id} className="flex items-center justify-between p-4 bg-[#0d121d] rounded-lg border-2 border-amber-200">
+                    <div key={client.id} className="flex items-center justify-between p-4 bg-[#1e293b] rounded-lg border-2 border-amber-200">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center">
                           <AlertCircle className="w-6 h-6 text-amber-600" />
@@ -582,7 +582,7 @@ export function AFSLHoldersModule({ onBack }: AFSLHoldersModuleProps) {
               <CardContent>
                 <div className="space-y-3">
                   {clients.map((client) => (
-                    <div key={client.id} className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-lg border border-white/10">
+                    <div key={client.id} className="flex items-center justify-between p-4 bg-[#0f172a] rounded-lg border border-white/10">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                           <Clock className="w-6 h-6 text-blue-600" />
@@ -621,7 +621,7 @@ export function AFSLHoldersModule({ onBack }: AFSLHoldersModuleProps) {
                     { name: 'Netwealth', status: 'Disconnected', clients: 0 },
                     { name: 'Praemium', status: 'Disconnected', clients: 0 }
                   ].map((platform, idx) => (
-                    <div key={idx} className="p-4 bg-[#0d121d] rounded-lg border border-indigo-200">
+                    <div key={idx} className="p-4 bg-[#1e293b] rounded-lg border border-indigo-200">
                       <div className="font-bold text-white mb-2">{platform.name}</div>
                       <div className="text-sm text-slate-300 mb-3">
                         {platform.status === 'Connected' ? `${platform.clients} clients synced` : 'Not connected'}

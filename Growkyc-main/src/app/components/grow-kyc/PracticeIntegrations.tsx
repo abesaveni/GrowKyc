@@ -203,7 +203,7 @@ export function PracticeIntegrations({ onBack }: PracticeIntegrationsProps) {
   };
 
   return (
-    <div className="min-h-screen bg-[#0d121d]">
+    <div className="min-h-screen bg-[#1e293b]">
       {/* Header */}
       <div className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 text-white px-8 py-12">
         <Button
@@ -314,7 +314,7 @@ export function PracticeIntegrations({ onBack }: PracticeIntegrationsProps) {
                 <div className="flex items-start justify-between">
                   <div className="flex items-start gap-4 flex-1">
                     {/* Logo */}
-                    <div className="w-16 h-16 bg-[#0d121d] rounded-xl flex items-center justify-center text-4xl border-2 border-white/10">
+                    <div className="w-16 h-16 bg-[#1e293b] rounded-xl flex items-center justify-center text-4xl border-2 border-white/10">
                       {integration.logo}
                     </div>
 
@@ -472,7 +472,7 @@ export function PracticeIntegrations({ onBack }: PracticeIntegrationsProps) {
                   runs: 32
                 }
               ].map((workflow, idx) => (
-                <div key={idx} className="p-5 bg-[#0d121d] rounded-xl border-2 border-indigo-200">
+                <div key={idx} className="p-5 bg-[#1e293b] rounded-xl border-2 border-indigo-200">
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
@@ -525,7 +525,7 @@ export function PracticeIntegrations({ onBack }: PracticeIntegrationsProps) {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-3 gap-4">
-              <div className="p-4 bg-[#0d121d] rounded-lg border border-blue-200">
+              <div className="p-4 bg-[#1e293b] rounded-lg border border-blue-200">
                 <div className="flex items-center gap-2 mb-2">
                   <Lock className="w-4 h-4 text-blue-600" />
                   <h4 className="font-bold text-white">API Keys</h4>
@@ -536,7 +536,7 @@ export function PracticeIntegrations({ onBack }: PracticeIntegrationsProps) {
                 </Button>
               </div>
 
-              <div className="p-4 bg-[#0d121d] rounded-lg border border-blue-200">
+              <div className="p-4 bg-[#1e293b] rounded-lg border border-blue-200">
                 <div className="flex items-center gap-2 mb-2">
                   <FileText className="w-4 h-4 text-blue-600" />
                   <h4 className="font-bold text-white">Documentation</h4>
@@ -547,7 +547,7 @@ export function PracticeIntegrations({ onBack }: PracticeIntegrationsProps) {
                 </Button>
               </div>
 
-              <div className="p-4 bg-[#0d121d] rounded-lg border border-blue-200">
+              <div className="p-4 bg-[#1e293b] rounded-lg border border-blue-200">
                 <div className="flex items-center gap-2 mb-2">
                   <TrendingUp className="w-4 h-4 text-blue-600" />
                   <h4 className="font-bold text-white">Webhooks</h4>

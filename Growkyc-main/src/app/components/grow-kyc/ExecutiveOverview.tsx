@@ -163,7 +163,7 @@ export function ExecutiveOverview({ onSelectRole, onViewArchitecture }: Executiv
   }
 
   return (
-    <div className="min-h-screen bg-[#0d121d]">
+    <div className="min-h-screen bg-[#1e293b]">
       {/* Hero Section */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-gray-50 to-gray-100" />
@@ -199,7 +199,7 @@ export function ExecutiveOverview({ onSelectRole, onViewArchitecture }: Executiv
                 <CheckCircle className="w-4 h-4 mr-2" />
                 NCCP Compliant
               </Badge>
-              <Badge className="bg-[#0a0e17] text-slate-300 border-gray-300 px-3 py-1.5 text-xs sm:text-sm">
+              <Badge className="bg-[#0f172a] text-slate-300 border-gray-300 px-3 py-1.5 text-xs sm:text-sm">
                 <CheckCircle className="w-4 h-4 mr-2" />
                 ASIC RG78 + RG271
               </Badge>
@@ -211,7 +211,7 @@ export function ExecutiveOverview({ onSelectRole, onViewArchitecture }: Executiv
           </div>
 
           {/* 5 Layer Architecture */}
-          <Card className="bg-[#0d121d] border-white/10 shadow-lg mb-12">
+          <Card className="bg-[#1e293b] border-white/10 shadow-lg mb-12">
             <CardHeader className="p-4 sm:p-6">
               <div className="flex flex-col sm:flex-row gap-4 sm:items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -358,7 +358,7 @@ export function ExecutiveOverview({ onSelectRole, onViewArchitecture }: Executiv
                 return (
                   <Card 
                     key={industry.label}
-                    className={`bg-[#0d121d] border-white/10 hover:border-[#13B5EA] hover:shadow-lg transition-all cursor-pointer ${selectedIndustry === industry.label ? 'ring-2 ring-[#13B5EA] shadow-lg' : ''}`}
+                    className={`bg-[#1e293b] border-white/10 hover:border-[#13B5EA] hover:shadow-lg transition-all cursor-pointer ${selectedIndustry === industry.label ? 'ring-2 ring-[#13B5EA] shadow-lg' : ''}`}
                     onClick={() => {
                       setSelectedIndustryDetail(industry.label);
                       setCurrentView('industry');
@@ -379,7 +379,7 @@ export function ExecutiveOverview({ onSelectRole, onViewArchitecture }: Executiv
 
           {/* Core Capabilities Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <Card className="bg-[#0d121d] border-white/10 shadow-lg">
+            <Card className="bg-[#1e293b] border-white/10 shadow-lg">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
@@ -408,7 +408,7 @@ export function ExecutiveOverview({ onSelectRole, onViewArchitecture }: Executiv
               </CardContent>
             </Card>
 
-            <Card className="bg-[#0d121d] border-white/10 shadow-lg">
+            <Card className="bg-[#1e293b] border-white/10 shadow-lg">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
@@ -437,7 +437,7 @@ export function ExecutiveOverview({ onSelectRole, onViewArchitecture }: Executiv
               </CardContent>
             </Card>
 
-            <Card className="bg-[#0d121d] border-white/10 shadow-lg">
+            <Card className="bg-[#1e293b] border-white/10 shadow-lg">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
@@ -746,28 +746,28 @@ export function ExecutiveOverview({ onSelectRole, onViewArchitecture }: Executiv
                     </p>
                     
                     <div className="grid grid-cols-2 gap-3 mb-4">
-                      <div className="bg-[#0d121d] p-4 rounded-lg border-2 border-purple-300">
+                      <div className="bg-[#1e293b] p-4 rounded-lg border-2 border-purple-300">
                         <div className="flex items-center gap-2 mb-2">
                           <Network className="w-5 h-5 text-purple-600" />
                           <p className="font-bold text-purple-900">Beneficial Ownership Bot</p>
                         </div>
                         <p className="text-xs text-slate-300">UBO identification • Ownership mapping • Tranche 2 ready</p>
                       </div>
-                      <div className="bg-[#0d121d] p-4 rounded-lg border-2 border-green-300">
+                      <div className="bg-[#1e293b] p-4 rounded-lg border-2 border-green-300">
                         <div className="flex items-center gap-2 mb-2">
                           <DollarSign className="w-5 h-5 text-green-600" />
                           <p className="font-bold text-green-900">Source of Funds Bot</p>
                         </div>
                         <p className="text-xs text-slate-300">Fund verification • Evidence validation • Pattern detection</p>
                       </div>
-                      <div className="bg-[#0d121d] p-4 rounded-lg border-2 border-blue-300">
+                      <div className="bg-[#1e293b] p-4 rounded-lg border-2 border-blue-300">
                         <div className="flex items-center gap-2 mb-2">
                           <Landmark className="w-5 h-5 text-blue-600" />
                           <p className="font-bold text-blue-900">Source of Wealth Bot</p>
                         </div>
                         <p className="text-xs text-slate-300">Wealth validation • Plausibility assessment • High-value CDD</p>
                       </div>
-                      <div className="bg-[#0d121d] p-4 rounded-lg border-2 border-amber-300">
+                      <div className="bg-[#1e293b] p-4 rounded-lg border-2 border-amber-300">
                         <div className="flex items-center gap-2 mb-2">
                           <Gavel className="w-5 h-5 text-amber-600" />
                           <p className="font-bold text-amber-900">Court & Litigation Bot</p>
@@ -832,28 +832,28 @@ export function ExecutiveOverview({ onSelectRole, onViewArchitecture }: Executiv
                     </p>
                     
                     <div className="grid grid-cols-2 gap-3 mb-4">
-                      <div className="bg-[#0d121d] p-4 rounded-lg border-2 border-purple-300">
+                      <div className="bg-[#1e293b] p-4 rounded-lg border-2 border-purple-300">
                         <div className="flex items-center gap-2 mb-2">
                           <Network className="w-5 h-5 text-purple-600" />
                           <p className="font-bold text-purple-900">Beneficial Ownership Bot</p>
                         </div>
                         <p className="text-xs text-slate-300">UBO identification • Ownership mapping • Tranche 2 ready</p>
                       </div>
-                      <div className="bg-[#0d121d] p-4 rounded-lg border-2 border-green-300">
+                      <div className="bg-[#1e293b] p-4 rounded-lg border-2 border-green-300">
                         <div className="flex items-center gap-2 mb-2">
                           <DollarSign className="w-5 h-5 text-green-600" />
                           <p className="font-bold text-green-900">Source of Funds Bot</p>
                         </div>
                         <p className="text-xs text-slate-300">Fund verification • Evidence validation • Pattern detection</p>
                       </div>
-                      <div className="bg-[#0d121d] p-4 rounded-lg border-2 border-blue-300">
+                      <div className="bg-[#1e293b] p-4 rounded-lg border-2 border-blue-300">
                         <div className="flex items-center gap-2 mb-2">
                           <Landmark className="w-5 h-5 text-blue-600" />
                           <p className="font-bold text-blue-900">Source of Wealth Bot</p>
                         </div>
                         <p className="text-xs text-slate-300">Wealth validation • Plausibility assessment • High-value CDD</p>
                       </div>
-                      <div className="bg-[#0d121d] p-4 rounded-lg border-2 border-amber-300">
+                      <div className="bg-[#1e293b] p-4 rounded-lg border-2 border-amber-300">
                         <div className="flex items-center gap-2 mb-2">
                           <Gavel className="w-5 h-5 text-amber-600" />
                           <p className="font-bold text-amber-900">Court & Litigation Bot</p>
@@ -918,28 +918,28 @@ export function ExecutiveOverview({ onSelectRole, onViewArchitecture }: Executiv
                     </p>
                     
                     <div className="grid grid-cols-2 gap-3 mb-4">
-                      <div className="bg-[#0d121d] p-4 rounded-lg border-2 border-purple-300">
+                      <div className="bg-[#1e293b] p-4 rounded-lg border-2 border-purple-300">
                         <div className="flex items-center gap-2 mb-2">
                           <Network className="w-5 h-5 text-purple-600" />
                           <p className="font-bold text-purple-900">Beneficial Ownership Bot</p>
                         </div>
                         <p className="text-xs text-slate-300">UBO identification • Ownership mapping • Tranche 2 ready</p>
                       </div>
-                      <div className="bg-[#0d121d] p-4 rounded-lg border-2 border-green-300">
+                      <div className="bg-[#1e293b] p-4 rounded-lg border-2 border-green-300">
                         <div className="flex items-center gap-2 mb-2">
                           <DollarSign className="w-5 h-5 text-green-600" />
                           <p className="font-bold text-green-900">Source of Funds Bot</p>
                         </div>
                         <p className="text-xs text-slate-300">Fund verification • Evidence validation • Pattern detection</p>
                       </div>
-                      <div className="bg-[#0d121d] p-4 rounded-lg border-2 border-blue-300">
+                      <div className="bg-[#1e293b] p-4 rounded-lg border-2 border-blue-300">
                         <div className="flex items-center gap-2 mb-2">
                           <Landmark className="w-5 h-5 text-blue-600" />
                           <p className="font-bold text-blue-900">Source of Wealth Bot</p>
                         </div>
                         <p className="text-xs text-slate-300">Wealth validation • Plausibility assessment • High-value CDD</p>
                       </div>
-                      <div className="bg-[#0d121d] p-4 rounded-lg border-2 border-amber-300">
+                      <div className="bg-[#1e293b] p-4 rounded-lg border-2 border-amber-300">
                         <div className="flex items-center gap-2 mb-2">
                           <Gavel className="w-5 h-5 text-amber-600" />
                           <p className="font-bold text-amber-900">Court & Litigation Bot</p>
@@ -986,14 +986,14 @@ export function ExecutiveOverview({ onSelectRole, onViewArchitecture }: Executiv
           </Card>
 
           {/* Role Selection */}
-          <Card className="bg-[#0d121d] border-white/10 shadow-xl overflow-hidden rounded-2xl border-t-4 border-t-[#13B5EA]">
+          <Card className="bg-[#1e293b] border-white/10 shadow-xl overflow-hidden rounded-2xl border-t-4 border-t-[#13B5EA]">
             <CardHeader className="bg-gray-50/50 pb-6 border-b border-white/10">
               <CardTitle className="text-white text-3xl font-extrabold text-center tracking-tight">Select Your Workspace Persona</CardTitle>
               <CardDescription className="text-slate-300 text-center text-base max-w-2xl mx-auto mt-2">
                 Gain instant, dynamic access to role-tailored workflows, dynamic risk policies, and custom compliance features.
               </CardDescription>
             </CardHeader>
-            <CardContent className="p-8 bg-[#0d121d] space-y-8">
+            <CardContent className="p-8 bg-[#1e293b] space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 
                 {/* 1. Head of Compliance */}
@@ -1081,7 +1081,7 @@ export function ExecutiveOverview({ onSelectRole, onViewArchitecture }: Executiv
                 </div>
                 <div className="w-full md:w-80">
                   <select 
-                    className="block w-full px-4 py-2.5 text-sm text-slate-300 bg-[#0d121d] border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#13B5EA] focus:border-[#13B5EA]"
+                    className="block w-full px-4 py-2.5 text-sm text-slate-300 bg-[#1e293b] border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#13B5EA] focus:border-[#13B5EA]"
                     defaultValue=""
                     onChange={(e) => {
                       const val = e.target.value;

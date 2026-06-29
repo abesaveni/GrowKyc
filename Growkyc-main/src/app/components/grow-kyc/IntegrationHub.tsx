@@ -360,7 +360,7 @@ export function IntegrationHub({ onBack }: IntegrationHubProps) {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
+    <div className="min-h-screen bg-[#0f172a]">
       {/* Header */}
       <div className="bg-gradient-to-r from-blue-600 to-purple-600 border-b sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-6 py-4">
@@ -378,7 +378,7 @@ export function IntegrationHub({ onBack }: IntegrationHubProps) {
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <Badge className="bg-[#0d121d] text-blue-600 text-sm px-3 py-1">
+              <Badge className="bg-[#1e293b] text-blue-600 text-sm px-3 py-1">
                 <Zap className="w-4 h-4 mr-1" />
                 {summaryStats.active} Active
               </Badge>
@@ -449,7 +449,7 @@ export function IntegrationHub({ onBack }: IntegrationHubProps) {
                   integration.status === 'active' ? 'border-green-300 bg-gradient-to-r from-green-50 to-blue-50' :
                   integration.status === 'configured' ? 'border-blue-300 bg-blue-50' :
                   integration.status === 'architected' ? 'border-amber-300 bg-amber-50' :
-                  'border-gray-300 bg-[#0a0e17]'
+                  'border-gray-300 bg-[#0f172a]'
                 }`}
               >
                 <CardContent className="p-6">
@@ -459,7 +459,7 @@ export function IntegrationHub({ onBack }: IntegrationHubProps) {
                         integration.status === 'active' ? 'bg-green-100' :
                         integration.status === 'configured' ? 'bg-blue-100' :
                         integration.status === 'architected' ? 'bg-amber-100' :
-                        'bg-[#0a0e17]'
+                        'bg-[#0f172a]'
                       }`}>
                         <Icon className={`w-8 h-8 ${
                           integration.status === 'active' ? 'text-green-600' :

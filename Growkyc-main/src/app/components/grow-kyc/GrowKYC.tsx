@@ -843,10 +843,10 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
   const isComplianceOfficer = selectedRole === 'compliance_officer';
 
   return (
-    <div className="min-h-screen bg-[#0a0e17] overflow-x-hidden">
+    <div className="min-h-screen bg-[#0f172a] overflow-x-hidden">
       {/* Navigation Bar */}
       {currentView !== 'client_kyc_dashboard' && (
-        <div className="bg-[#0d121d] border-b border-white/10 px-4 sm:px-6 py-3 sm:py-4 shadow-lg">
+        <div className="bg-[#1e293b] border-b border-white/10 px-4 sm:px-6 py-3 sm:py-4 shadow-lg">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 sm:gap-4 max-w-[70%] sm:max-w-none">
               <div className="size-8 sm:size-9 rounded-lg bg-gradient-to-br from-[#13B5EA] to-[#0E7C9E] flex items-center justify-center shadow-lg shadow-[#13B5EA]/20 flex-shrink-0">
@@ -1252,7 +1252,7 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
 
       {/* Mobile Navigation Dropdown */}
       {currentView !== 'client_kyc_dashboard' && isMobileMenuOpen && (
-        <div className="2xl:hidden bg-[#0d121d] border-b border-white/10 px-6 py-4 space-y-3 shadow-inner animate-in slide-in-from-top duration-200">
+        <div className="2xl:hidden bg-[#1e293b] border-b border-white/10 px-6 py-4 space-y-3 shadow-inner animate-in slide-in-from-top duration-200">
           <div className="flex flex-col gap-2">
             {selectedRole && IMFO_HEADER_ROLES.includes(selectedRole) && (() => {
               const persona = getPersonaConfig(selectedUser);

@@ -289,12 +289,12 @@ export function ComplianceOfficer({
   const navCase = onNavigateToCaseControl || onNavigateToCases;
 
   return (
-    <div className="space-y-6 md:space-y-8 bg-[#0d121d] min-h-screen px-4 md:px-8 pb-8">
-      <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] rounded-2xl p-6 md:p-12 text-white shadow-lg mt-4 md:mt-8">
+    <div className="space-y-6 md:space-y-8 bg-[#1e293b] min-h-screen px-4 md:px-8 pb-8">
+      <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] rounded-2xl p-6 md:p-6 text-white shadow-lg mt-4 md:mt-8">
         <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mb-6 text-center sm:text-left">
-          <div className="text-5xl md:text-6xl">{userAvatar}</div>
+          <div className="text-4xl">{userAvatar}</div>
           <div>
-            <h1 className="text-2xl md:text-4xl font-bold mb-2">Welcome back, {userName.split(' ')[0]}!</h1>
+            <h1 className="text-2xl md:text-3xl font-bold mb-2">Welcome back, {userName.split(' ')[0]}!</h1>
             <p className="text-white/90 text-sm md:text-xl">
               {userTitle} •{' '}
               {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
@@ -307,7 +307,7 @@ export function ComplianceOfficer({
             className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 cursor-pointer hover:bg-white/20 hover:scale-105 transition-all duration-300 h-32 md:h-40 flex flex-col justify-between"
           >
             <div>
-              <div className="text-3xl md:text-4xl font-bold mb-1">{stats.pendingReviews}</div>
+              <div className="text-3xl md:text-3xl font-bold mb-1">{stats.pendingReviews}</div>
               <div className="text-xs md:text-sm text-white/90 font-medium">Pending Reviews</div>
             </div>
             <div className="text-[10px] text-white/70 uppercase tracking-wider font-bold">Click to view</div>
@@ -317,7 +317,7 @@ export function ComplianceOfficer({
             className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 cursor-pointer hover:bg-white/20 hover:scale-105 transition-all duration-300 h-32 md:h-40 flex flex-col justify-between"
           >
             <div>
-              <div className="text-3xl md:text-4xl font-bold mb-1">{stats.highRiskAlerts}</div>
+              <div className="text-3xl md:text-3xl font-bold mb-1">{stats.highRiskAlerts}</div>
               <div className="text-xs md:text-sm text-white/90 font-medium">High Risk Alerts</div>
             </div>
             <div className="text-[10px] text-white/70 uppercase tracking-wider font-bold">Click to view</div>
@@ -327,7 +327,7 @@ export function ComplianceOfficer({
             className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 cursor-pointer hover:bg-white/20 hover:scale-105 transition-all duration-300 h-32 md:h-40 flex flex-col justify-between"
           >
             <div>
-              <div className="text-3xl md:text-4xl font-bold mb-1">{stats.totalClients}</div>
+              <div className="text-3xl md:text-3xl font-bold mb-1">{stats.totalClients}</div>
               <div className="text-xs md:text-sm text-white/90 font-medium">Total Clients</div>
             </div>
             <div className="text-[10px] text-white/70 uppercase tracking-wider font-bold">{stats.activeClients} active</div>
@@ -337,7 +337,7 @@ export function ComplianceOfficer({
             className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 cursor-pointer hover:bg-white/20 hover:scale-105 transition-all duration-300 h-32 md:h-40 flex flex-col justify-between"
           >
             <div>
-              <div className="text-3xl md:text-4xl font-bold mb-1">{stats.complianceRate}</div>
+              <div className="text-3xl md:text-3xl font-bold mb-1">{stats.complianceRate}</div>
               <div className="text-xs md:text-sm text-white/90 font-medium">Compliance Rate</div>
             </div>
             <div className="text-[10px] text-white/70 uppercase tracking-wider font-bold">Click to view</div>
@@ -378,7 +378,7 @@ export function ComplianceOfficer({
         >
           <CardContent className="p-4 md:p-5 flex-1 flex flex-col justify-between">
             <div className="flex items-center justify-between">
-              <div className="text-3xl md:text-4xl font-bold text-white">{stats.urgentActions}</div>
+              <div className="text-3xl md:text-3xl font-bold text-white">{stats.urgentActions}</div>
               <AlertTriangle className="w-6 h-6 md:w-8 md:h-8 text-red-500" />
             </div>
             <div>
@@ -392,7 +392,7 @@ export function ComplianceOfficer({
         <Card className="border-l-4 border-l-amber-500 shadow-sm hover:shadow-md transition-all h-36 md:h-40 flex flex-col">
           <CardContent className="p-4 md:p-5 flex-1 flex flex-col justify-between">
             <div className="flex items-center justify-between">
-              <div className="text-3xl md:text-4xl font-bold text-white">{stats.pendingReviews}</div>
+              <div className="text-3xl md:text-3xl font-bold text-white">{stats.pendingReviews}</div>
               <Clock className="w-6 h-6 md:w-8 md:h-8 text-amber-500" />
             </div>
             <div>
@@ -404,7 +404,7 @@ export function ComplianceOfficer({
         <Card className="border-l-4 border-l-green-500 shadow-sm hover:shadow-md transition-all h-36 md:h-40 flex flex-col">
           <CardContent className="p-4 md:p-5 flex-1 flex flex-col justify-between">
             <div className="flex items-center justify-between">
-              <div className="text-3xl md:text-4xl font-bold text-white">{stats.completedToday}</div>
+              <div className="text-3xl md:text-3xl font-bold text-white">{stats.completedToday}</div>
               <CheckCircle className="w-6 h-6 md:w-8 md:h-8 text-green-500" />
             </div>
             <div>
@@ -416,7 +416,7 @@ export function ComplianceOfficer({
         <Card className="border-l-4 border-l-blue-500 shadow-sm hover:shadow-md transition-all h-36 md:h-40 flex flex-col">
           <CardContent className="p-4 md:p-5 flex-1 flex flex-col justify-between">
             <div className="flex items-center justify-between">
-              <div className="text-3xl md:text-4xl font-bold text-white">{stats.teamPerformance}</div>
+              <div className="text-3xl md:text-3xl font-bold text-white">{stats.teamPerformance}</div>
               <Users className="w-6 h-6 md:w-8 md:h-8 text-blue-500" />
             </div>
             <div>
@@ -463,7 +463,7 @@ export function ComplianceOfficer({
                 { label: 'Monitoring Alerts', value: metrics.monitoringAlerts },
                 { label: 'SLA At Risk', value: metrics.slaBreaches },
               ].map((item) => (
-                <div key={item.label} className="p-4 rounded-lg bg-[#0d121d] border border-red-100 text-center">
+                <div key={item.label} className="p-4 rounded-lg bg-[#1e293b] border border-red-100 text-center">
                   <p className="text-2xl font-bold text-red-900">{item.value}</p>
                   <p className="text-xs font-semibold text-slate-300 mt-1">{item.label}</p>
                 </div>
@@ -613,7 +613,7 @@ export function ComplianceOfficer({
               {clientsToWatch.map((client, index) => (
                 <div
                   key={index}
-                  className={`p-4 bg-[#0d121d] rounded-lg border-2 ${
+                  className={`p-4 bg-[#1e293b] rounded-lg border-2 ${
                     client.urgency === 'critical' ? 'border-red-300' : 'border-orange-300'
                   } hover:shadow-md transition-shadow`}
                 >
@@ -671,7 +671,7 @@ export function ComplianceOfficer({
                   <div
                     key={index}
                     className={`flex items-center justify-between p-3 rounded-lg border ${
-                      item.urgent ? 'bg-red-50 border-red-200' : 'bg-[#0a0e17] border-white/10'
+                      item.urgent ? 'bg-red-50 border-red-200' : 'bg-[#0f172a] border-white/10'
                     }`}
                   >
                     <div>
@@ -701,7 +701,7 @@ export function ComplianceOfficer({
             <div className="space-y-4">
               {recentActivity.map((activity, index) => (
                 <div key={index} className="flex items-start gap-3">
-                  <div className={`w-8 h-8 rounded-full bg-[#0a0e17] flex items-center justify-center flex-shrink-0 ${activity.color}`}>
+                  <div className={`w-8 h-8 rounded-full bg-[#0f172a] flex items-center justify-center flex-shrink-0 ${activity.color}`}>
                     <activity.icon className="w-4 h-4" />
                   </div>
                   <div>

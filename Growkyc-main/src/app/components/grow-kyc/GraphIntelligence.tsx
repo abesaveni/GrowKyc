@@ -194,7 +194,7 @@ export function GraphIntelligence({ onBack }: GraphIntelligenceProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
+    <div className="min-h-screen bg-[#0f172a]">
       {/* Header */}
       <div className="bg-gradient-to-r from-indigo-600 to-purple-600 border-b sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-6 py-4">
@@ -211,7 +211,7 @@ export function GraphIntelligence({ onBack }: GraphIntelligenceProps) {
                 <p className="text-sm text-white/90">Ownership Network & Risk Cluster Analytics</p>
               </div>
             </div>
-            <Badge className="bg-[#0d121d] text-indigo-600 text-sm px-3 py-1">
+            <Badge className="bg-[#1e293b] text-indigo-600 text-sm px-3 py-1">
               <Zap className="w-4 h-4 mr-1" />
               AI Network Scanning Active
             </Badge>
@@ -343,7 +343,7 @@ export function GraphIntelligence({ onBack }: GraphIntelligenceProps) {
                   </div>
 
                   {/* Legend */}
-                  <div className="absolute bottom-4 right-4 bg-[#0d121d] rounded-lg shadow-lg p-4 border-2 border-indigo-200">
+                  <div className="absolute bottom-4 right-4 bg-[#1e293b] rounded-lg shadow-lg p-4 border-2 border-indigo-200">
                     <div className="text-xs font-semibold text-white mb-2">Legend</div>
                     <div className="space-y-2 text-xs">
                       <div className="flex items-center gap-2">

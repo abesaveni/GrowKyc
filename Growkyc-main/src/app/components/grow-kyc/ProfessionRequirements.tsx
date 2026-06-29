@@ -789,7 +789,7 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
   };
 
   return (
-    <div className="min-h-screen bg-[#0d121d] pb-12">
+    <div className="min-h-screen bg-[#1e293b] pb-12">
       {/* Header */}
       <div className={`bg-gradient-to-r ${data.color} text-white px-8 py-8 shadow-md`}>
         <div className="flex items-center justify-between mb-6">
@@ -927,7 +927,7 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
                         <select 
                           value={newStatus} 
                           onChange={(e) => setNewStatus(e.target.value as any)}
-                          className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA] bg-[#0d121d]"
+                          className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA] bg-[#1e293b]"
                         >
                           <option value="pending">Pending</option>
                           <option value="in-progress">In Progress</option>
@@ -1101,7 +1101,7 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
           </CardHeader>
           <CardContent className="p-6">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              <div className="bg-[#0d121d] rounded-xl p-5 border border-green-100 shadow-sm">
+              <div className="bg-[#1e293b] rounded-xl p-5 border border-green-100 shadow-sm">
                 <div className="flex items-center gap-3 mb-2">
                   <CheckCircle className="w-6 h-6 text-green-600" />
                   <span className="text-sm font-semibold text-slate-300">Completed Obligations</span>
@@ -1112,7 +1112,7 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
                 </div>
               </div>
 
-              <div className="bg-[#0d121d] rounded-xl p-5 border border-amber-100 shadow-sm">
+              <div className="bg-[#1e293b] rounded-xl p-5 border border-amber-100 shadow-sm">
                 <div className="flex items-center gap-3 mb-2">
                   <Clock className="w-6 h-6 text-amber-600" />
                   <span className="text-sm font-semibold text-slate-300">In Progress</span>
@@ -1123,7 +1123,7 @@ export function ProfessionRequirements({ profession, onBack }: ProfessionRequire
                 </div>
               </div>
 
-              <div className="bg-[#0d121d] rounded-xl p-5 border border-red-100 shadow-sm">
+              <div className="bg-[#1e293b] rounded-xl p-5 border border-red-100 shadow-sm">
                 <div className="flex items-center gap-3 mb-2">
                   <XCircle className="w-6 h-6 text-red-600" />
                   <span className="text-sm font-semibold text-slate-300">Pending Actions</span>

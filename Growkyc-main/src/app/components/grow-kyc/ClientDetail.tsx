@@ -129,7 +129,7 @@ export function ClientDetail({ clientId, onBack }: ClientDetailProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0a0e17] p-8">
+    <div className="min-h-screen bg-[#0f172a] p-8">
       {/* Breadcrumbs */}
       <Breadcrumbs
         items={[
@@ -331,7 +331,7 @@ export function ClientDetail({ clientId, onBack }: ClientDetailProps) {
             </CardHeader>
             <CardContent className="space-y-3">
               {complianceChecks.slice(0, 4).map(check => (
-                <div key={check.id} className="flex items-center justify-between p-3 bg-[#0a0e17] rounded-lg">
+                <div key={check.id} className="flex items-center justify-between p-3 bg-[#0f172a] rounded-lg">
                   <div className="flex items-center gap-3">
                     <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
                       check.status === 'passed' ? 'bg-green-100' :
@@ -380,7 +380,7 @@ export function ClientDetail({ clientId, onBack }: ClientDetailProps) {
                   { action: 'Compliance review scheduled', time: '5 days ago', type: 'info', icon: Calendar, color: 'text-purple-600' }
                 ].map((activity, index) => (
                   <div key={index} className="flex items-center gap-3 pb-3 border-b last:border-b-0">
-                    <div className={`w-8 h-8 rounded-full bg-[#0a0e17] flex items-center justify-center ${activity.color}`}>
+                    <div className={`w-8 h-8 rounded-full bg-[#0f172a] flex items-center justify-center ${activity.color}`}>
                       <activity.icon className="w-4 h-4" />
                     </div>
                     <div className="flex-1">

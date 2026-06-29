@@ -246,7 +246,7 @@ export function BeneficialOwnershipMapper({ onBack }: BeneficialOwnershipMapperP
       case 'high': return 'text-red-600 bg-red-100 border-red-300';
       case 'medium': return 'text-amber-600 bg-amber-100 border-amber-300';
       case 'low': return 'text-green-600 bg-green-100 border-green-300';
-      default: return 'text-slate-300 bg-[#0a0e17] border-gray-300';
+      default: return 'text-slate-300 bg-[#0f172a] border-gray-300';
     }
   };
 
@@ -261,7 +261,7 @@ export function BeneficialOwnershipMapper({ onBack }: BeneficialOwnershipMapperP
   };
 
   return (
-    <div className="min-h-screen bg-[#0d121d]">
+    <div className="min-h-screen bg-[#1e293b]">
       {/* Header */}
       <div className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white px-8 py-12">
         <Button
@@ -547,7 +547,7 @@ export function BeneficialOwnershipMapper({ onBack }: BeneficialOwnershipMapperP
                               className={`p-3 rounded-lg border ${
                                 ubo.sanctionsMatch || ubo.isPEP
                                   ? 'border-red-300 bg-red-100'
-                                  : 'border-purple-300 bg-[#0d121d]'
+                                  : 'border-purple-300 bg-[#1e293b]'
                               }`}
                             >
                               <div className="flex items-center gap-2 mb-2">

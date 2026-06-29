@@ -148,10 +148,10 @@ export function PartnerDashboard({
   }, [clients.length]);
 
   return (
-    <div className="bg-[#0d121d] min-h-screen">
-      <div className="space-y-6 bg-[#0d121d] min-h-screen px-4 md:px-8 pb-8">
+    <div className="bg-[#1e293b] min-h-screen">
+      <div className="space-y-6 bg-[#1e293b] min-h-screen px-4 md:px-8 pb-8">
         {/* Executive Welcome */}
-        <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl p-6 md:p-8 text-white mt-4 md:mt-6">
+        <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl p-6 md:p-6 text-white mt-4 md:mt-6">
           <div className="flex flex-col sm:flex-row gap-4 justify-between sm:items-center">
             <div className="flex flex-col sm:flex-row items-center text-center sm:text-left gap-4">
               <div className="text-5xl">{userAvatar}</div>
@@ -162,7 +162,7 @@ export function PartnerDashboard({
             </div>
             <div className="text-center sm:text-right">
               <div className="text-xs md:text-sm text-purple-100">Overall Compliance Health</div>
-              <div className="text-3xl md:text-4xl font-bold">{partnerStats.targetAchievement}%</div>
+              <div className="text-3xl md:text-3xl font-bold">{partnerStats.targetAchievement}%</div>
             </div>
           </div>
         </div>
@@ -173,7 +173,7 @@ export function PartnerDashboard({
             className="relative overflow-hidden bg-gradient-to-br from-emerald-600 to-teal-700 border-0 cursor-pointer hover:shadow-2xl hover:scale-105 transition-all duration-300 group"
             onClick={onNavigateToClients}
           >
-            <CardContent className="p-5 md:p-8 relative z-10">
+            <CardContent className="p-5 md:p-6 relative z-10">
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500" />
               <div className="absolute bottom-0 left-0 w-24 h-24 bg-black/5 rounded-full -ml-12 -mb-12 group-hover:scale-150 transition-transform duration-500" />
               <Users className="w-10 h-10 md:w-12 md:h-12 text-white/90 mb-4 drop-shadow-lg group-hover:scale-110 transition-transform" />
@@ -203,7 +203,7 @@ export function PartnerDashboard({
               }, 100);
             }}
           >
-            <CardContent className="p-5 md:p-8 relative z-10">
+            <CardContent className="p-5 md:p-6 relative z-10">
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500" />
               <div className="absolute bottom-0 left-0 w-24 h-24 bg-black/5 rounded-full -ml-12 -mb-12 group-hover:scale-150 transition-transform duration-500" />
               <div className="relative">
@@ -223,7 +223,7 @@ export function PartnerDashboard({
             className="relative overflow-hidden bg-gradient-to-br from-rose-600 to-red-700 border-0 cursor-pointer hover:shadow-2xl hover:scale-105 transition-all duration-300 group"
             onClick={onNavigateToCases}
           >
-            <CardContent className="p-5 md:p-8 relative z-10">
+            <CardContent className="p-5 md:p-6 relative z-10">
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500" />
               <div className="absolute bottom-0 left-0 w-24 h-24 bg-black/5 rounded-full -ml-12 -mb-12 group-hover:scale-150 transition-transform duration-500" />
               <div className="relative">
@@ -242,7 +242,7 @@ export function PartnerDashboard({
           </Card>
 
           <Card className="relative overflow-hidden bg-gradient-to-br from-indigo-600 to-violet-700 border-0 hover:shadow-2xl hover:scale-105 transition-all duration-300 group">
-            <CardContent className="p-5 md:p-8 relative z-10">
+            <CardContent className="p-5 md:p-6 relative z-10">
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500" />
               <div className="absolute bottom-0 left-0 w-24 h-24 bg-black/5 rounded-full -ml-12 -mb-12 group-hover:scale-150 transition-transform duration-500" />
               <Target className="w-10 h-10 md:w-12 md:h-12 text-white/90 mb-4 drop-shadow-lg group-hover:scale-110 group-hover:rotate-180 transition-all duration-500" />
@@ -290,7 +290,7 @@ export function PartnerDashboard({
             <CardContent>
               <div className="space-y-3">
                 {partnerApprovalsData.map((approval, index) => (
-                  <div key={index} className="p-3 bg-[#0a0e17] rounded-lg border">
+                  <div key={index} className="p-3 bg-[#0f172a] rounded-lg border">
                     <div className="flex items-start justify-between mb-1">
                       <div className="font-semibold text-sm">{approval.item}</div>
                       <Badge variant={approval.priority === 'High' ? 'destructive' : 'default'} className="text-xs">
@@ -345,7 +345,7 @@ export function PartnerDashboard({
             <CardContent>
               <div className="space-y-3">
                 {strategicInsightsData.map((item, index) => (
-                  <div key={index} className="flex items-start gap-3 p-3 bg-[#0a0e17] rounded-lg">
+                  <div key={index} className="flex items-start gap-3 p-3 bg-[#0f172a] rounded-lg">
                     <item.icon className={`w-5 h-5 flex-shrink-0 ${item.color}`} />
                     <p className="text-sm text-white">{item.insight}</p>
                   </div>
@@ -359,7 +359,7 @@ export function PartnerDashboard({
       {/* Approval Modal */}
       {approvalModalOpen && selectedApproval && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-          <div className="bg-[#0d121d] rounded-xl shadow-2xl max-w-2xl w-full">
+          <div className="bg-[#1e293b] rounded-xl shadow-2xl max-w-2xl w-full">
             <div className="p-6 border-b border-white/10 flex items-center justify-between">
               <div>
                 <h2 className="text-xl font-bold text-white">Review & Approve</h2>
@@ -374,7 +374,7 @@ export function PartnerDashboard({
             </div>
 
             <div className="p-6 space-y-4">
-              <div className="bg-[#0a0e17] rounded-lg p-4 border border-white/10">
+              <div className="bg-[#0f172a] rounded-lg p-4 border border-white/10">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <p className="text-xs text-slate-300 mb-1">Type</p>

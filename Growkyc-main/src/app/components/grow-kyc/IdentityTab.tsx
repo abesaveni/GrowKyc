@@ -171,7 +171,7 @@ export function IdentityTab({ client }: IdentityTabProps) {
                 </span>
                 <span className="text-sm text-slate-400 font-bold uppercase tracking-tight">/ 100 Points</span>
               </div>
-              <div className="w-48 h-2 bg-[#0a0e17] rounded-full overflow-hidden border border-gray-200/50">
+              <div className="w-48 h-2 bg-[#0f172a] rounded-full overflow-hidden border border-gray-200/50">
                 <motion.div 
                   initial={{ width: 0 }}
                   animate={{ width: `${Math.min((totalPoints / 100) * 100, 100)}%` }}
@@ -198,7 +198,7 @@ export function IdentityTab({ client }: IdentityTabProps) {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {identityData?.primaryID && (
-                <div className="flex items-center justify-between p-4 bg-[#0d121d] border border-white/10 rounded-xl shadow-sm hover:border-blue-200 transition-colors">
+                <div className="flex items-center justify-between p-4 bg-[#1e293b] border border-white/10 rounded-xl shadow-sm hover:border-blue-200 transition-colors">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center">
                       <FileText className="w-5 h-5 text-blue-600" />
@@ -216,7 +216,7 @@ export function IdentityTab({ client }: IdentityTabProps) {
               )}
 
               {identityData?.secondaryID && (
-                <div className="flex items-center justify-between p-4 bg-[#0d121d] border border-white/10 rounded-xl shadow-sm hover:border-blue-200 transition-colors">
+                <div className="flex items-center justify-between p-4 bg-[#1e293b] border border-white/10 rounded-xl shadow-sm hover:border-blue-200 transition-colors">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center">
                       <FileText className="w-5 h-5 text-indigo-600" />
@@ -233,9 +233,9 @@ export function IdentityTab({ client }: IdentityTabProps) {
                 </div>
               )}
               {identityData?.additionalDocuments?.map((doc, idx) => (
-                <div key={idx} className="flex items-center justify-between p-4 bg-[#0d121d] border border-white/10 rounded-xl shadow-sm hover:border-blue-200 transition-colors">
+                <div key={idx} className="flex items-center justify-between p-4 bg-[#1e293b] border border-white/10 rounded-xl shadow-sm hover:border-blue-200 transition-colors">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-[#0a0e17] flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-full bg-[#0f172a] flex items-center justify-center">
                       <FileText className="w-5 h-5 text-slate-300" />
                     </div>
                     <div>
@@ -253,7 +253,7 @@ export function IdentityTab({ client }: IdentityTabProps) {
 
             <div className="pt-4 border-t border-dashed border-white/10 flex items-center justify-between">
               <p className="text-sm text-slate-400 font-medium italic">Calculated based on standard 100-Point Identity Check guidelines.</p>
-              <div className="flex items-center gap-1.5 px-3 py-1 bg-[#0a0e17] rounded-full border border-white/10">
+              <div className="flex items-center gap-1.5 px-3 py-1 bg-[#0f172a] rounded-full border border-white/10">
                 <div className={`w-2 h-2 rounded-full ${hasDeficiency ? 'bg-red-400' : 'bg-green-400 animate-pulse'}`} />
                 <span className="text-[11px] font-bold text-slate-300 uppercase tracking-wide">
                   {hasDeficiency ? 'Requirement Not Met' : 'Requirement Satisfied'}
@@ -265,7 +265,7 @@ export function IdentityTab({ client }: IdentityTabProps) {
               <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Accepted Document Types & Points</p>
               <div className="flex flex-wrap gap-2">
                   {Object.entries(DOCUMENT_POINTS).map(([doc, pts]) => (
-                    <Badge key={doc} variant="outline" className="bg-[#0a0e17] text-slate-300 border-white/10">
+                    <Badge key={doc} variant="outline" className="bg-[#0f172a] text-slate-300 border-white/10">
                       {doc} <span className="ml-1 text-slate-400 font-semibold">({pts})</span>
                     </Badge>
                   ))}
@@ -287,7 +287,7 @@ export function IdentityTab({ client }: IdentityTabProps) {
           <CardContent className="p-6 space-y-4">
             <div className="grid grid-cols-2 gap-4">
               {identityData?.primaryID ? (
-                <div className="p-4 rounded-lg bg-[#0d121d] border border-white/10 shadow-sm">
+                <div className="p-4 rounded-lg bg-[#1e293b] border border-white/10 shadow-sm">
                   <p className="text-xs font-bold text-slate-400 uppercase mb-1">Primary Document</p>
                   <p className="font-bold text-white">{identityData.primaryID.type}</p>
                   <p className="text-sm text-slate-400 font-mono mt-1">{identityData.primaryID.number}</p>
@@ -300,12 +300,12 @@ export function IdentityTab({ client }: IdentityTabProps) {
                   </Badge>
                 </div>
               ) : (
-                <div className="p-4 rounded-lg bg-[#0a0e17] border border-white/10 shadow-sm flex items-center justify-center text-slate-400">
+                <div className="p-4 rounded-lg bg-[#0f172a] border border-white/10 shadow-sm flex items-center justify-center text-slate-400">
                   No Primary Document Provided
                 </div>
               )}
               {identityData?.secondaryID && (
-                <div className="p-4 rounded-lg bg-[#0d121d] border border-white/10 shadow-sm">
+                <div className="p-4 rounded-lg bg-[#1e293b] border border-white/10 shadow-sm">
                   <p className="text-xs font-bold text-slate-400 uppercase mb-1">Secondary Document</p>
                   <p className="font-bold text-white">{identityData.secondaryID.type}</p>
                   <p className="text-sm text-slate-400 font-mono mt-1">{identityData.secondaryID.number}</p>
@@ -319,7 +319,7 @@ export function IdentityTab({ client }: IdentityTabProps) {
                 </div>
               )}
               {identityData?.additionalDocuments?.map((doc, idx) => (
-                <div key={idx} className="p-4 rounded-lg bg-[#0d121d] border border-white/10 shadow-sm">
+                <div key={idx} className="p-4 rounded-lg bg-[#1e293b] border border-white/10 shadow-sm">
                   <p className="text-xs font-bold text-slate-400 uppercase mb-1">Supporting Document</p>
                   <p className="font-bold text-white">{doc.type}</p>
                   <p className="text-sm text-slate-400 font-mono mt-1">{doc.number}</p>
@@ -347,7 +347,7 @@ export function IdentityTab({ client }: IdentityTabProps) {
                   variant={identityData?.biometricStatus === 'Passed' ? 'default' : 'secondary'} 
                   className={
                     identityData?.biometricStatus === 'Passed' ? 'bg-green-100 text-green-700 hover:bg-green-100 border-none' : 
-                    identityData?.biometricStatus === 'Not Required' ? 'bg-[#0a0e17] text-slate-400 hover:bg-white/5 border-none' : 
+                    identityData?.biometricStatus === 'Not Required' ? 'bg-[#0f172a] text-slate-400 hover:bg-white/5 border-none' : 
                     'bg-red-100 text-red-700 hover:bg-red-100 border-none'
                   }
                 >

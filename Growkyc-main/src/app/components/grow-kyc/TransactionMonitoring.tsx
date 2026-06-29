@@ -280,7 +280,7 @@ export function TransactionMonitoring({ onBack, onOpenReferral, complianceOffice
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
+    <div className="min-h-screen bg-[#0f172a]">
       {/* Header */}
       <div className="bg-gradient-to-r from-green-600 to-blue-600 border-b sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-6 py-4">
@@ -297,7 +297,7 @@ export function TransactionMonitoring({ onBack, onOpenReferral, complianceOffice
                 <p className="text-sm text-white/90">Real-Time AML Surveillance & Pattern Detection</p>
               </div>
             </div>
-            <Badge className="bg-[#0d121d] text-green-600 text-sm px-3 py-1">
+            <Badge className="bg-[#1e293b] text-green-600 text-sm px-3 py-1">
               <Zap className="w-4 h-4 mr-1" />
               {liveRefresh ? 'Live Monitoring Active' : 'Live Monitoring Paused'}
             </Badge>
@@ -371,7 +371,7 @@ export function TransactionMonitoring({ onBack, onOpenReferral, complianceOffice
               </Button>
             </div>
 
-            {isLoading && <div className="p-6 bg-[#0d121d] rounded border">Loading alerts...</div>}
+            {isLoading && <div className="p-6 bg-[#1e293b] rounded border">Loading alerts...</div>}
             {error && (
               <div className="p-4 bg-red-50 border border-red-200 rounded text-red-700 flex items-center gap-2">
                 <AlertCircle className="w-4 h-4" /> {error}
@@ -379,7 +379,7 @@ export function TransactionMonitoring({ onBack, onOpenReferral, complianceOffice
             )}
 
             {!isLoading && visibleAlerts.length === 0 && (
-              <div className="p-10 bg-[#0d121d] rounded border text-center text-slate-300">
+              <div className="p-10 bg-[#1e293b] rounded border text-center text-slate-300">
                 No alerts match current filters.
               </div>
             )}
@@ -413,7 +413,7 @@ export function TransactionMonitoring({ onBack, onOpenReferral, complianceOffice
                           </Badge>
                         </div>
 
-                        <p className="text-sm text-white mb-4 p-3 bg-[#0d121d] rounded border">
+                        <p className="text-sm text-white mb-4 p-3 bg-[#1e293b] rounded border">
                           {alert.details}
                         </p>
 

@@ -220,7 +220,7 @@ export function EquifaxIdentityFraudModule() {
       case 'verified': return 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300';
       case 'partial': return 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300';
       case 'failed': return 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300';
-      default: return 'bg-[#0a0e17] text-slate-300 dark:bg-gray-800 dark:text-gray-300';
+      default: return 'bg-[#0f172a] text-slate-300 dark:bg-gray-800 dark:text-gray-300';
     }
   };
 
@@ -257,7 +257,7 @@ export function EquifaxIdentityFraudModule() {
 
       <div className="max-w-7xl mx-auto p-6 space-y-6">
         {/* Summary Card */}
-        <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-[#13B5EA]">
+        <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-[#13B5EA]">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             <div>
               <div className="flex items-center gap-2 mb-2">
@@ -335,10 +335,10 @@ export function EquifaxIdentityFraudModule() {
         </div>
 
         {/* Match Sources Section */}
-        <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+        <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
           <button
             onClick={() => toggleSection('matchSources')}
-            className="w-full px-6 py-4 flex items-center justify-between bg-[#0a0e17] dark:bg-gray-900 hover:bg-white/5 dark:hover:bg-gray-850 transition-colors"
+            className="w-full px-6 py-4 flex items-center justify-between bg-[#0f172a] dark:bg-gray-900 hover:bg-white/5 dark:hover:bg-gray-850 transition-colors"
           >
             <div className="flex items-center gap-3">
               <CheckCircle className="w-5 h-5 text-[#13B5EA]" />
@@ -351,7 +351,7 @@ export function EquifaxIdentityFraudModule() {
             <div className="p-6">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {Object.entries(verificationResult.matchSources).map(([source, matched]) => (
-                  <div key={source} className="flex items-center justify-between p-3 bg-[#0a0e17] dark:bg-gray-900 rounded-lg">
+                  <div key={source} className="flex items-center justify-between p-3 bg-[#0f172a] dark:bg-gray-900 rounded-lg">
                     <span className="text-sm font-medium text-slate-300 dark:text-gray-300 capitalize">
                       {source.replace(/([A-Z])/g, ' $1').trim()}
                     </span>
@@ -372,10 +372,10 @@ export function EquifaxIdentityFraudModule() {
 
         {/* Biometric Results */}
         {verificationResult.biometric && (
-          <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+          <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
             <button
               onClick={() => toggleSection('biometric')}
-              className="w-full px-6 py-4 flex items-center justify-between bg-[#0a0e17] dark:bg-gray-900 hover:bg-white/5 dark:hover:bg-gray-850 transition-colors"
+              className="w-full px-6 py-4 flex items-center justify-between bg-[#0f172a] dark:bg-gray-900 hover:bg-white/5 dark:hover:bg-gray-850 transition-colors"
             >
               <div className="flex items-center gap-3">
                 <Scan className="w-5 h-5 text-[#13B5EA]" />
@@ -387,7 +387,7 @@ export function EquifaxIdentityFraudModule() {
             {expandedSections.biometric && (
               <div className="p-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="p-4 bg-[#0a0e17] dark:bg-gray-900 rounded-lg">
+                  <div className="p-4 bg-[#0f172a] dark:bg-gray-900 rounded-lg">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-sm font-semibold text-slate-300 dark:text-gray-300">Face Match</span>
                       {verificationResult.biometric.faceMatch ? (
@@ -407,7 +407,7 @@ export function EquifaxIdentityFraudModule() {
                     </div>
                   </div>
 
-                  <div className="p-4 bg-[#0a0e17] dark:bg-gray-900 rounded-lg">
+                  <div className="p-4 bg-[#0f172a] dark:bg-gray-900 rounded-lg">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-sm font-semibold text-slate-300 dark:text-gray-300">Liveness Check</span>
                       {verificationResult.biometric.livenessCheck ? (
@@ -421,7 +421,7 @@ export function EquifaxIdentityFraudModule() {
                     </div>
                   </div>
 
-                  <div className="p-4 bg-[#0a0e17] dark:bg-gray-900 rounded-lg">
+                  <div className="p-4 bg-[#0f172a] dark:bg-gray-900 rounded-lg">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-sm font-semibold text-slate-300 dark:text-gray-300">Document Authenticity</span>
                       {verificationResult.biometric.documentAuthenticity ? (
@@ -441,10 +441,10 @@ export function EquifaxIdentityFraudModule() {
         )}
 
         {/* Fraud Indicators */}
-        <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden border-l-4 border-red-500">
+        <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden border-l-4 border-red-500">
           <button
             onClick={() => toggleSection('fraudIndicators')}
-            className="w-full px-6 py-4 flex items-center justify-between bg-[#0a0e17] dark:bg-gray-900 hover:bg-white/5 dark:hover:bg-gray-850 transition-colors"
+            className="w-full px-6 py-4 flex items-center justify-between bg-[#0f172a] dark:bg-gray-900 hover:bg-white/5 dark:hover:bg-gray-850 transition-colors"
           >
             <div className="flex items-center gap-3">
               <AlertTriangle className="w-5 h-5 text-red-600" />
@@ -492,10 +492,10 @@ export function EquifaxIdentityFraudModule() {
         {/* Email & Device Risk */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Email Risk */}
-          <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+          <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
             <button
               onClick={() => toggleSection('emailRisk')}
-              className="w-full px-6 py-4 flex items-center justify-between bg-[#0a0e17] dark:bg-gray-900 hover:bg-white/5 dark:hover:bg-gray-850 transition-colors"
+              className="w-full px-6 py-4 flex items-center justify-between bg-[#0f172a] dark:bg-gray-900 hover:bg-white/5 dark:hover:bg-gray-850 transition-colors"
             >
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-[#13B5EA]" />
@@ -531,7 +531,7 @@ export function EquifaxIdentityFraudModule() {
                       <div className="text-xs text-slate-300 dark:text-slate-400">Suspicious</div>
                       <div className="text-sm font-semibold">{verificationResult.emailRisk.suspicious ? 'Yes' : 'No'}</div>
                     </div>
-                    <div className="p-3 rounded-lg bg-[#0a0e17] dark:bg-gray-900">
+                    <div className="p-3 rounded-lg bg-[#0f172a] dark:bg-gray-900">
                       <div className="text-xs text-slate-300 dark:text-slate-400">First Seen</div>
                       <div className="text-sm font-semibold">
                         {verificationResult.emailRisk.firstSeen?.toLocaleDateString() || 'Unknown'}
@@ -548,10 +548,10 @@ export function EquifaxIdentityFraudModule() {
           </div>
 
           {/* Device Risk */}
-          <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+          <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
             <button
               onClick={() => toggleSection('deviceRisk')}
-              className="w-full px-6 py-4 flex items-center justify-between bg-[#0a0e17] dark:bg-gray-900 hover:bg-white/5 dark:hover:bg-gray-850 transition-colors"
+              className="w-full px-6 py-4 flex items-center justify-between bg-[#0f172a] dark:bg-gray-900 hover:bg-white/5 dark:hover:bg-gray-850 transition-colors"
             >
               <div className="flex items-center gap-3">
                 <Smartphone className="w-5 h-5 text-[#13B5EA]" />
@@ -612,10 +612,10 @@ export function EquifaxIdentityFraudModule() {
         </div>
 
         {/* History Panel */}
-        <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+        <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
           <button
             onClick={() => setShowHistory(!showHistory)}
-            className="w-full px-6 py-4 flex items-center justify-between bg-[#0a0e17] dark:bg-gray-900 hover:bg-white/5 dark:hover:bg-gray-850 transition-colors"
+            className="w-full px-6 py-4 flex items-center justify-between bg-[#0f172a] dark:bg-gray-900 hover:bg-white/5 dark:hover:bg-gray-850 transition-colors"
           >
             <div className="flex items-center gap-3">
               <Activity className="w-5 h-5 text-[#13B5EA]" />
@@ -628,7 +628,7 @@ export function EquifaxIdentityFraudModule() {
             <div className="p-6">
               <div className="space-y-4">
                 {history.map((record, index) => (
-                  <div key={index} className="flex gap-4 p-4 bg-[#0a0e17] dark:bg-gray-900 rounded-lg">
+                  <div key={index} className="flex gap-4 p-4 bg-[#0f172a] dark:bg-gray-900 rounded-lg">
                     <div className="flex-shrink-0">
                       <div className="w-10 h-10 rounded-full bg-[#13B5EA] flex items-center justify-center text-white font-bold">
                         {index + 1}
@@ -666,10 +666,10 @@ export function EquifaxIdentityFraudModule() {
         </div>
 
         {/* Raw Data View */}
-        <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+        <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
           <button
             onClick={() => setShowRawData(!showRawData)}
-            className="w-full px-6 py-4 flex items-center justify-between bg-[#0a0e17] dark:bg-gray-900 hover:bg-white/5 dark:hover:bg-gray-850 transition-colors"
+            className="w-full px-6 py-4 flex items-center justify-between bg-[#0f172a] dark:bg-gray-900 hover:bg-white/5 dark:hover:bg-gray-850 transition-colors"
           >
             <div className="flex items-center gap-3">
               <FileText className="w-5 h-5 text-[#13B5EA]" />
@@ -688,7 +688,7 @@ export function EquifaxIdentityFraudModule() {
         </div>
 
         {/* Actions */}
-        <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6">
+        <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6">
           <h3 className="text-lg font-bold text-white dark:text-white mb-4">Actions</h3>
           <div className="flex gap-3">
             <Button onClick={() => alert('Refreshing data...')}>

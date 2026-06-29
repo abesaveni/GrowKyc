@@ -269,7 +269,7 @@ export function HealthCheckDashboard({ onBack }: HealthCheckDashboardProps) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
         {healthCategories.map((category, index) => (
           <Card key={index} className="hover:shadow-xl transition-shadow">
-            <CardHeader className="border-b bg-[#0a0e17]">
+            <CardHeader className="border-b bg-[#0f172a]">
               <div className="flex items-center justify-between">
                 <CardTitle className="flex items-center gap-3">
                   {getStatusIcon(category.status)}
@@ -286,7 +286,7 @@ export function HealthCheckDashboard({ onBack }: HealthCheckDashboardProps) {
                 {category.items.map((item, itemIndex) => (
                   <div 
                     key={itemIndex}
-                    className="flex items-center justify-between p-3 bg-[#0a0e17] rounded-lg"
+                    className="flex items-center justify-between p-3 bg-[#0f172a] rounded-lg"
                   >
                     <div className="flex items-center gap-3">
                       {getStatusIcon(item.status)}
@@ -379,7 +379,7 @@ export function HealthCheckDashboard({ onBack }: HealthCheckDashboardProps) {
 
       {/* Footer */}
       <div className="mt-8 text-center">
-        <div className="inline-flex items-center gap-3 px-6 py-3 bg-[#0d121d] rounded-full shadow-lg">
+        <div className="inline-flex items-center gap-3 px-6 py-3 bg-[#1e293b] rounded-full shadow-lg">
           <Award className="w-6 h-6 text-[#3DD598]" />
           <span className="font-bold text-white">Production Ready</span>
           <span className="text-slate-400">•</span>

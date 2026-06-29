@@ -389,8 +389,8 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
       case 'completed': return 'bg-green-100 text-green-800 border-green-300';
       case 'in-progress': return 'bg-blue-100 text-blue-800 border-blue-300';
       case 'planned': return 'bg-purple-100 text-purple-800 border-purple-300';
-      case 'future': return 'bg-[#0a0e17] text-white border-gray-300';
-      default: return 'bg-[#0a0e17] text-slate-300 border-gray-300';
+      case 'future': return 'bg-[#0f172a] text-white border-gray-300';
+      default: return 'bg-[#0f172a] text-slate-300 border-gray-300';
     }
   };
 
@@ -409,7 +409,7 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
     : phases;
 
   return (
-    <div className="min-h-screen bg-[#0d121d]">
+    <div className="min-h-screen bg-[#1e293b]">
       {/* Header */}
       <div className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white px-8 py-12">
         <div className="flex items-center justify-between mb-6">
@@ -702,7 +702,7 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
               ].map((win, idx) => {
                 const WinIcon = win.icon;
                 return (
-                  <div key={idx} className="flex items-start gap-3 p-4 bg-[#0d121d] rounded-lg border-2 border-green-200 hover:shadow-md transition-shadow">
+                  <div key={idx} className="flex items-start gap-3 p-4 bg-[#1e293b] rounded-lg border-2 border-green-200 hover:shadow-md transition-shadow">
                     <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
                       <WinIcon className="w-5 h-5 text-green-600" />
                     </div>
@@ -859,7 +859,7 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
               ].map((advantage, idx) => {
                 const AdvantageIcon = advantage.icon;
                 return (
-                  <div key={idx} className="flex items-start gap-4 p-5 bg-[#0d121d] rounded-xl border-2 border-amber-200 hover:shadow-lg transition-shadow">
+                  <div key={idx} className="flex items-start gap-4 p-5 bg-[#1e293b] rounded-xl border-2 border-amber-200 hover:shadow-lg transition-shadow">
                     <div className={`w-12 h-12 ${advantage.color} rounded-xl flex items-center justify-center flex-shrink-0`}>
                       <AdvantageIcon className="w-6 h-6" />
                     </div>

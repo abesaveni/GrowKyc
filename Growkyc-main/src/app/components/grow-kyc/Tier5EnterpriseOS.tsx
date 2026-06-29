@@ -62,8 +62,8 @@ export function Tier5EnterpriseOS({ onBack }: Tier5EnterpriseOSProps) {
 
   // Hub View
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
-      <div className="bg-[#0d121d] border-b border-white/10">
+    <div className="min-h-screen bg-[#0f172a]">
+      <div className="bg-[#1e293b] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-8 py-6">
           {onBack && (
             <Button onClick={onBack} variant="ghost" className="mb-4">
@@ -89,17 +89,17 @@ export function Tier5EnterpriseOS({ onBack }: Tier5EnterpriseOSProps) {
               The Biggest Moat: Multi-Firm Autonomous Operations
             </h3>
             <div className="grid md:grid-cols-3 gap-6 mb-6">
-              <div className="bg-[#0d121d] p-6 rounded-xl border-2 border-purple-300 shadow-lg">
+              <div className="bg-[#1e293b] p-6 rounded-xl border-2 border-purple-300 shadow-lg">
                 <Bot className="w-12 h-12 text-purple-600 mb-3" />
                 <p className="font-bold text-white text-lg mb-2">AI-Driven Orchestration</p>
                 <p className="text-sm text-slate-300">Autonomous workflow execution, predictive routing, AI copilot support—work happens automatically</p>
               </div>
-              <div className="bg-[#0d121d] p-6 rounded-xl border-2 border-blue-300 shadow-lg">
+              <div className="bg-[#1e293b] p-6 rounded-xl border-2 border-blue-300 shadow-lg">
                 <Wallet className="w-12 h-12 text-blue-600 mb-3" />
                 <p className="font-bold text-white text-lg mb-2">Reusable Intelligence</p>
                 <p className="text-sm text-slate-300">One-time verification, perpetual wallet—identity & entity data reused across all services forever</p>
               </div>
-              <div className="bg-[#0d121d] p-6 rounded-xl border-2 border-green-300 shadow-lg">
+              <div className="bg-[#1e293b] p-6 rounded-xl border-2 border-green-300 shadow-lg">
                 <Building className="w-12 h-12 text-green-600 mb-3" />
                 <p className="font-bold text-white text-lg mb-2">Multi-Firm Enterprise</p>
                 <p className="text-sm text-slate-300">Accounting firms, lenders, brokers, investor groups—one platform, isolated data, central oversight</p>
@@ -107,17 +107,17 @@ export function Tier5EnterpriseOS({ onBack }: Tier5EnterpriseOSProps) {
             </div>
             
             <div className="grid md:grid-cols-3 gap-6">
-              <div className="bg-[#0d121d] p-6 rounded-xl border-2 border-amber-300 shadow-lg">
+              <div className="bg-[#1e293b] p-6 rounded-xl border-2 border-amber-300 shadow-lg">
                 <TrendingUp className="w-12 h-12 text-amber-600 mb-3" />
                 <p className="font-bold text-white text-lg mb-2">Predictive Capacity</p>
                 <p className="text-sm text-slate-300">Forecast staffing needs, bottlenecks, overload risk—practice management intelligence</p>
               </div>
-              <div className="bg-[#0d121d] p-6 rounded-xl border-2 border-indigo-300 shadow-lg">
+              <div className="bg-[#1e293b] p-6 rounded-xl border-2 border-indigo-300 shadow-lg">
                 <Target className="w-12 h-12 text-indigo-600 mb-3" />
                 <p className="font-bold text-white text-lg mb-2">Investor & Lender Views</p>
                 <p className="text-sm text-slate-300">Deal intelligence, borrower profiling, security tracking—extends beyond accounting to private capital</p>
               </div>
-              <div className="bg-[#0d121d] p-6 rounded-xl border-2 border-pink-300 shadow-lg">
+              <div className="bg-[#1e293b] p-6 rounded-xl border-2 border-pink-300 shadow-lg">
                 <Brain className="w-12 h-12 text-pink-600 mb-3" />
                 <p className="font-bold text-white text-lg mb-2">Explainable AI Copilot</p>
                 <p className="text-sm text-slate-300">Draft memos, summarize findings, explain decisions—AI beside every reviewer</p>
@@ -179,11 +179,11 @@ export function Tier5EnterpriseOS({ onBack }: Tier5EnterpriseOSProps) {
               </div>
 
               <div className="grid grid-cols-2 gap-2 mb-3">
-                <div className="bg-[#0d121d] p-2 rounded border-2 border-purple-300 text-center">
+                <div className="bg-[#1e293b] p-2 rounded border-2 border-purple-300 text-center">
                   <p className="text-xs text-purple-700">Cases Today</p>
                   <p className="text-xl font-bold text-purple-600">247</p>
                 </div>
-                <div className="bg-[#0d121d] p-2 rounded border-2 border-purple-300 text-center">
+                <div className="bg-[#1e293b] p-2 rounded border-2 border-purple-300 text-center">
                   <p className="text-xs text-purple-700">Memos Drafted</p>
                   <p className="text-xl font-bold text-purple-600">89</p>
                 </div>
@@ -234,11 +234,11 @@ export function Tier5EnterpriseOS({ onBack }: Tier5EnterpriseOSProps) {
               </div>
 
               <div className="grid grid-cols-2 gap-2 mb-3">
-                <div className="bg-[#0d121d] p-2 rounded border-2 border-blue-300 text-center">
+                <div className="bg-[#1e293b] p-2 rounded border-2 border-blue-300 text-center">
                   <p className="text-xs text-blue-700">Active Workflows</p>
                   <p className="text-xl font-bold text-blue-600">1,234</p>
                 </div>
-                <div className="bg-[#0d121d] p-2 rounded border-2 border-blue-300 text-center">
+                <div className="bg-[#1e293b] p-2 rounded border-2 border-blue-300 text-center">
                   <p className="text-xs text-blue-700">Auto-Advanced</p>
                   <p className="text-xl font-bold text-blue-600">892</p>
                 </div>
@@ -289,11 +289,11 @@ export function Tier5EnterpriseOS({ onBack }: Tier5EnterpriseOSProps) {
               </div>
 
               <div className="grid grid-cols-2 gap-2 mb-3">
-                <div className="bg-[#0d121d] p-2 rounded border-2 border-green-300 text-center">
+                <div className="bg-[#1e293b] p-2 rounded border-2 border-green-300 text-center">
                   <p className="text-xs text-green-700">Utilization</p>
                   <p className="text-xl font-bold text-green-600">87%</p>
                 </div>
-                <div className="bg-[#0d121d] p-2 rounded border-2 border-red-300 text-center">
+                <div className="bg-[#1e293b] p-2 rounded border-2 border-red-300 text-center">
                   <p className="text-xs text-red-700">Overloaded</p>
                   <p className="text-xl font-bold text-red-600">3</p>
                 </div>
@@ -344,11 +344,11 @@ export function Tier5EnterpriseOS({ onBack }: Tier5EnterpriseOSProps) {
               </div>
 
               <div className="grid grid-cols-2 gap-2 mb-3">
-                <div className="bg-[#0d121d] p-2 rounded border-2 border-amber-300 text-center">
+                <div className="bg-[#1e293b] p-2 rounded border-2 border-amber-300 text-center">
                   <p className="text-xs text-amber-700">Active Deals</p>
                   <p className="text-xl font-bold text-amber-600">47</p>
                 </div>
-                <div className="bg-[#0d121d] p-2 rounded border-2 border-amber-300 text-center">
+                <div className="bg-[#1e293b] p-2 rounded border-2 border-amber-300 text-center">
                   <p className="text-xs text-amber-700">Deal Ready</p>
                   <p className="text-xl font-bold text-green-600">34</p>
                 </div>
@@ -399,11 +399,11 @@ export function Tier5EnterpriseOS({ onBack }: Tier5EnterpriseOSProps) {
               </div>
 
               <div className="grid grid-cols-2 gap-2 mb-3">
-                <div className="bg-[#0d121d] p-2 rounded border-2 border-indigo-300 text-center">
+                <div className="bg-[#1e293b] p-2 rounded border-2 border-indigo-300 text-center">
                   <p className="text-xs text-indigo-700">Active Wallets</p>
                   <p className="text-xl font-bold text-indigo-600">12,847</p>
                 </div>
-                <div className="bg-[#0d121d] p-2 rounded border-2 border-indigo-300 text-center">
+                <div className="bg-[#1e293b] p-2 rounded border-2 border-indigo-300 text-center">
                   <p className="text-xs text-indigo-700">Reused/Month</p>
                   <p className="text-xl font-bold text-green-600">2,341</p>
                 </div>
@@ -454,11 +454,11 @@ export function Tier5EnterpriseOS({ onBack }: Tier5EnterpriseOSProps) {
               </div>
 
               <div className="grid grid-cols-2 gap-2 mb-3">
-                <div className="bg-[#0d121d] p-2 rounded border-2 border-pink-300 text-center">
+                <div className="bg-[#1e293b] p-2 rounded border-2 border-pink-300 text-center">
                   <p className="text-xs text-pink-700">Active Firms</p>
                   <p className="text-xl font-bold text-pink-600">23</p>
                 </div>
-                <div className="bg-[#0d121d] p-2 rounded border-2 border-pink-300 text-center">
+                <div className="bg-[#1e293b] p-2 rounded border-2 border-pink-300 text-center">
                   <p className="text-xs text-pink-700">Total Users</p>
                   <p className="text-xl font-bold text-pink-600">847</p>
                 </div>
@@ -497,7 +497,7 @@ export function Tier5EnterpriseOS({ onBack }: Tier5EnterpriseOSProps) {
               ].map((step, idx) => {
                 const Icon = step.icon;
                 return (
-                  <div key={idx} className="flex items-center gap-4 p-4 bg-[#0d121d] rounded-lg border-2 border-purple-200 shadow-sm">
+                  <div key={idx} className="flex items-center gap-4 p-4 bg-[#1e293b] rounded-lg border-2 border-purple-200 shadow-sm">
                     <div className={`w-12 h-12 bg-${step.color}-100 rounded-full flex items-center justify-center border-2 border-${step.color}-400`}>
                       <Icon className={`w-6 h-6 text-${step.color}-700`} />
                     </div>
@@ -510,7 +510,7 @@ export function Tier5EnterpriseOS({ onBack }: Tier5EnterpriseOSProps) {
               })}
             </div>
 
-            <div className="bg-[#0d121d] rounded-xl border-2 border-purple-300 p-6 shadow-lg">
+            <div className="bg-[#1e293b] rounded-xl border-2 border-purple-300 p-6 shadow-lg">
               <h4 className="font-bold text-white text-xl mb-4">What Tier 5 Achieves:</h4>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
@@ -611,8 +611,8 @@ export function Tier5EnterpriseOS({ onBack }: Tier5EnterpriseOSProps) {
 
 function WorkflowOrchestratorBot({ onBack }: { onBack: () => void }) {
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
-      <div className="bg-[#0d121d] border-b">
+    <div className="min-h-screen bg-[#0f172a]">
+      <div className="bg-[#1e293b] border-b">
         <div className="max-w-7xl mx-auto px-8 py-6">
           <Button onClick={onBack} variant="ghost" className="mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />Back to Tier 5 Hub
@@ -635,8 +635,8 @@ function WorkflowOrchestratorBot({ onBack }: { onBack: () => void }) {
 
 function InvestorIntelligenceBot({ onBack }: { onBack: () => void }) {
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
-      <div className="bg-[#0d121d] border-b">
+    <div className="min-h-screen bg-[#0f172a]">
+      <div className="bg-[#1e293b] border-b">
         <div className="max-w-7xl mx-auto px-8 py-6">
           <Button onClick={onBack} variant="ghost" className="mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />Back to Tier 5 Hub
@@ -659,8 +659,8 @@ function InvestorIntelligenceBot({ onBack }: { onBack: () => void }) {
 
 function IdentityWalletBot({ onBack }: { onBack: () => void }) {
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
-      <div className="bg-[#0d121d] border-b">
+    <div className="min-h-screen bg-[#0f172a]">
+      <div className="bg-[#1e293b] border-b">
         <div className="max-w-7xl mx-auto px-8 py-6">
           <Button onClick={onBack} variant="ghost" className="mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />Back to Tier 5 Hub
@@ -683,8 +683,8 @@ function IdentityWalletBot({ onBack }: { onBack: () => void }) {
 
 function MultiFirmControlBot({ onBack }: { onBack: () => void }) {
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
-      <div className="bg-[#0d121d] border-b">
+    <div className="min-h-screen bg-[#0f172a]">
+      <div className="bg-[#1e293b] border-b">
         <div className="max-w-7xl mx-auto px-8 py-6">
           <Button onClick={onBack} variant="ghost" className="mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />Back to Tier 5 Hub

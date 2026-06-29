@@ -300,7 +300,7 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
   if (selectedVert) {
     const VertIcon = selectedVert.icon;
     return (
-      <div className="min-h-screen bg-[#0d121d]">
+      <div className="min-h-screen bg-[#1e293b]">
         {/* Header */}
         <div className={`bg-gradient-to-r ${selectedVert.color} text-white px-8 py-12`}>
           <Button
@@ -393,7 +393,7 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
             <CardContent>
               <ul className="space-y-2">
                 {selectedVert.keyNeeds.map((need, idx) => (
-                  <li key={idx} className="flex items-start gap-3 p-3 bg-[#0a0e17] rounded-lg">
+                  <li key={idx} className="flex items-start gap-3 p-3 bg-[#0f172a] rounded-lg">
                     <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
                     <span className="text-white">{need}</span>
                   </li>
@@ -413,7 +413,7 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
             <CardContent>
               <div className="grid grid-cols-2 gap-3">
                 {selectedVert.integrations.map((integration, idx) => (
-                  <div key={idx} className="flex items-center gap-2 p-3 bg-[#0d121d] rounded-lg border border-indigo-200">
+                  <div key={idx} className="flex items-center gap-2 p-3 bg-[#1e293b] rounded-lg border border-indigo-200">
                     <Zap className="w-4 h-4 text-indigo-600" />
                     <span className="font-medium text-white">{integration}</span>
                   </div>
@@ -436,7 +436,7 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
             <CardContent>
               <div className="space-y-3">
                 {selectedVert.winningFeatures.map((feature, idx) => (
-                  <div key={idx} className="flex items-start gap-3 p-4 bg-[#0d121d] rounded-xl border-2 border-green-200">
+                  <div key={idx} className="flex items-start gap-3 p-4 bg-[#1e293b] rounded-xl border-2 border-green-200">
                     <Rocket className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
                     <span className="text-lg font-semibold text-white">{feature}</span>
                   </div>
@@ -450,7 +450,7 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
   }
 
   return (
-    <div className="min-h-screen bg-[#0d121d]">
+    <div className="min-h-screen bg-[#1e293b]">
       {/* Header */}
       <div className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 text-white px-8 py-12">
         <Button
@@ -559,21 +559,21 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
                         <p className="text-slate-300 mb-4 text-lg">{vertical.mainUseCase}</p>
                         
                         <div className="grid grid-cols-3 gap-4 mb-4">
-                          <div className="p-3 bg-[#0a0e17] rounded-lg">
+                          <div className="p-3 bg-[#0f172a] rounded-lg">
                             <div className="flex items-center gap-2 mb-1">
                               <Globe className="w-4 h-4 text-slate-300" />
                               <span className="text-xs font-semibold text-slate-300">MARKET SIZE</span>
                             </div>
                             <p className="text-sm font-medium text-white">{vertical.marketSize.split(',')[0]}</p>
                           </div>
-                          <div className="p-3 bg-[#0a0e17] rounded-lg">
+                          <div className="p-3 bg-[#0f172a] rounded-lg">
                             <div className="flex items-center gap-2 mb-1">
                               <DollarSign className="w-4 h-4 text-slate-300" />
                               <span className="text-xs font-semibold text-slate-300">PRICING</span>
                             </div>
                             <p className="text-sm font-medium text-white">{vertical.pricing}</p>
                           </div>
-                          <div className="p-3 bg-[#0a0e17] rounded-lg">
+                          <div className="p-3 bg-[#0f172a] rounded-lg">
                             <div className="flex items-center gap-2 mb-1">
                               <Target className="w-4 h-4 text-slate-300" />
                               <span className="text-xs font-semibold text-slate-300">ARR POTENTIAL</span>
@@ -653,7 +653,7 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 gap-6">
-              <div className="p-6 bg-[#0d121d] rounded-xl border-2 border-blue-200">
+              <div className="p-6 bg-[#1e293b] rounded-xl border-2 border-blue-200">
                 <h4 className="font-bold text-white mb-4 flex items-center gap-2">
                   <CheckCircle className="w-5 h-5 text-blue-600" />
                   Shared Core Engine (All Verticals)
@@ -670,7 +670,7 @@ export function VerticalUserTypes({ onBack }: VerticalUserTypesProps) {
                 </ul>
               </div>
 
-              <div className="p-6 bg-[#0d121d] rounded-xl border-2 border-purple-200">
+              <div className="p-6 bg-[#1e293b] rounded-xl border-2 border-purple-200">
                 <h4 className="font-bold text-white mb-4 flex items-center gap-2">
                   <FileText className="w-5 h-5 text-purple-600" />
                   Vertical-Specific Overlays

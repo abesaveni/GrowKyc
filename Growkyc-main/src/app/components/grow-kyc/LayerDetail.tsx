@@ -419,7 +419,7 @@ export function LayerDetail({ layerId, onBack }: LayerDetailProps) {
   
   if (!layer) {
     return (
-      <div className="min-h-screen bg-[#0d121d] p-8">
+      <div className="min-h-screen bg-[#1e293b] p-8">
         <Button onClick={onBack} variant="outline">
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back
@@ -434,9 +434,9 @@ export function LayerDetail({ layerId, onBack }: LayerDetailProps) {
   const LayerIcon = layer.icon;
 
   return (
-    <div className="min-h-screen bg-[#0d121d]">
+    <div className="min-h-screen bg-[#1e293b]">
       {/* Header */}
-      <div className="border-b border-white/10 bg-[#0a0e17]">
+      <div className="border-b border-white/10 bg-[#0f172a]">
         <div className="max-w-7xl mx-auto px-8 py-6">
           <Button onClick={onBack} variant="ghost" className="mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -497,7 +497,7 @@ export function LayerDetail({ layerId, onBack }: LayerDetailProps) {
           <h2 className="text-3xl font-bold text-white mb-8">Included Modules</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {layer.modules.map((module, idx) => (
-              <Card key={idx} className="bg-[#0a0e17] hover:bg-white/5 transition-colors">
+              <Card key={idx} className="bg-[#0f172a] hover:bg-white/5 transition-colors">
                 <CardContent className="p-4 text-center">
                   <CheckCircle className="w-6 h-6 text-green-600 mx-auto mb-2" />
                   <p className="text-sm font-medium text-white">{module}</p>
@@ -551,7 +551,7 @@ export function LayerDetail({ layerId, onBack }: LayerDetailProps) {
             <CardContent>
               <div className="space-y-2">
                 {layer.integrations.map((integration, idx) => (
-                  <div key={idx} className="flex items-center gap-2 p-2 bg-[#0a0e17] rounded">
+                  <div key={idx} className="flex items-center gap-2 p-2 bg-[#0f172a] rounded">
                     <Zap className="w-4 h-4 text-blue-600" />
                     <span className="text-sm text-white">{integration}</span>
                   </div>
@@ -592,7 +592,7 @@ export function LayerDetail({ layerId, onBack }: LayerDetailProps) {
             <div className="flex items-center justify-center gap-4">
               <Button 
                 size="lg"
-                className="bg-[#0d121d] text-[#13B5EA] hover:bg-white/90"
+                className="bg-[#1e293b] text-[#13B5EA] hover:bg-white/90"
                 onClick={onBack}
               >
                 Explore Other Layers

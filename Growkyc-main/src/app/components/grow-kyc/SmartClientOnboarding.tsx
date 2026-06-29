@@ -407,7 +407,7 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                   key={step.id}
                   className={`flex-1 h-2 rounded-full transition-all ${
                     index <= currentStepIndex
-                      ? 'bg-[#0d121d] shadow-lg'
+                      ? 'bg-[#1e293b] shadow-lg'
                       : 'bg-white/30'
                   }`}
                 />
@@ -703,7 +703,7 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                     {uploadedFiles.map((file, index) => (
                       <div
                         key={index}
-                        className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-xl border-2 border-white/10 hover:border-[#13B5EA] transition-colors"
+                        className="flex items-center justify-between p-4 bg-[#0f172a] rounded-xl border-2 border-white/10 hover:border-[#13B5EA] transition-colors"
                       >
                         <div className="flex items-center gap-4 flex-1">
                           <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
@@ -794,7 +794,7 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                       ].map((check, idx) => {
                         const CheckIcon = check.icon;
                         return (
-                          <div key={idx} className="p-4 bg-[#0a0e17] rounded-xl border-2 border-white/10">
+                          <div key={idx} className="p-4 bg-[#0f172a] rounded-xl border-2 border-white/10">
                             <CheckIcon className="w-6 h-6 text-[#13B5EA] mx-auto mb-2" />
                             <p className="text-xs font-semibold text-slate-300">{check.label}</p>
                           </div>

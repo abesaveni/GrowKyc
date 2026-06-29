@@ -750,9 +750,9 @@ export function IntegrationsSettings({ role }: IntegrationsSettingsProps) {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'connected': return 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300';
-      case 'disconnected': return 'bg-[#0a0e17] text-slate-300 dark:bg-gray-800 dark:text-gray-300';
+      case 'disconnected': return 'bg-[#0f172a] text-slate-300 dark:bg-gray-800 dark:text-gray-300';
       case 'error': return 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300';
-      default: return 'bg-[#0a0e17] text-slate-300';
+      default: return 'bg-[#0f172a] text-slate-300';
     }
   };
 
@@ -791,7 +791,7 @@ export function IntegrationsSettings({ role }: IntegrationsSettingsProps) {
             </div>
             <p className="text-cyan-100">Connect external services and manage API credentials</p>
           </div>
-          <Button disabled={isReadOnly} onClick={handleSaveAll} className="bg-[#0d121d] text-[#0E7C9E] hover:bg-cyan-50 font-bold shadow-md">
+          <Button disabled={isReadOnly} onClick={handleSaveAll} className="bg-[#1e293b] text-[#0E7C9E] hover:bg-cyan-50 font-bold shadow-md">
             <Save className="w-5 h-5 mr-2" />
             Save All Changes
           </Button>
@@ -819,7 +819,7 @@ export function IntegrationsSettings({ role }: IntegrationsSettingsProps) {
       </div>
 
       {/* Category Filter */}
-      <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6">
+      <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6">
         <h3 className="font-bold text-white dark:text-white mb-4">Filter by Category</h3>
         <div className="flex flex-wrap gap-2">
           {categories.map(category => (
@@ -829,7 +829,7 @@ export function IntegrationsSettings({ role }: IntegrationsSettingsProps) {
               className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
                 selectedCategory === category.id
                   ? 'bg-[#13B5EA] text-white'
-                  : 'bg-[#0a0e17] dark:bg-gray-700 text-slate-300 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+                  : 'bg-[#0f172a] dark:bg-gray-700 text-slate-300 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
               }`}
             >
               {category.label}
@@ -850,7 +850,7 @@ export function IntegrationsSettings({ role }: IntegrationsSettingsProps) {
           return (
             <div
               key={integration.id}
-              className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden border-2 border-white/10 dark:border-gray-700"
+              className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden border-2 border-white/10 dark:border-gray-700"
             >
               {/* Header */}
               <div className="p-6">
@@ -929,7 +929,7 @@ export function IntegrationsSettings({ role }: IntegrationsSettingsProps) {
 
               {/* Expanded Credentials Section */}
               {isExpanded && (
-                <div className="border-t border-white/10 dark:border-gray-700 p-6 bg-[#0a0e17] dark:bg-gray-900">
+                <div className="border-t border-white/10 dark:border-gray-700 p-6 bg-[#0f172a] dark:bg-gray-900">
                   <h4 className="font-bold text-white dark:text-white mb-4">API Credentials</h4>
                   <div className="space-y-4">
                     {integration.credentials.map((cred, i) => (
@@ -945,7 +945,7 @@ export function IntegrationsSettings({ role }: IntegrationsSettingsProps) {
                               value={cred.value || ''}
                               onChange={e => handleCredentialsChange(integration.id, i, e.target.value)}
                               placeholder={`Enter ${cred.name}`}
-                              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-[#0d121d] dark:bg-gray-800 text-white dark:text-white disabled:opacity-50"
+                              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-[#1e293b] dark:bg-gray-800 text-white dark:text-white disabled:opacity-50"
                             />
                             {cred.type === 'password' && (
                               <button

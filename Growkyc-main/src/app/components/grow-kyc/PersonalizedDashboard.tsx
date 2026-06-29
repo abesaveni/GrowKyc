@@ -197,7 +197,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
 
   // Render dashboard based on role
   const renderComplianceOfficerDashboard = () => (
-    <div className="space-y-8 bg-[#0d121d] min-h-screen px-8 pb-8">
+    <div className="space-y-8 bg-[#1e293b] min-h-screen px-8 pb-8">
       {/* Welcome Section */}
       <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] rounded-2xl p-12 text-white shadow-lg mt-8">
         <div className="flex items-center gap-6 mb-6">
@@ -464,7 +464,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
             ].map((client, index) => (
               <div
                 key={index}
-                className={`p-4 bg-[#0d121d] rounded-lg border-2 ${client.urgency === 'critical' ? 'border-red-300' :
+                className={`p-4 bg-[#1e293b] rounded-lg border-2 ${client.urgency === 'critical' ? 'border-red-300' :
                     client.urgency === 'high' ? 'border-orange-300' :
                       'border-amber-300'
                   } hover:shadow-md transition-shadow`}
@@ -544,7 +544,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
                 { client: 'Phoenix Ventures', action: 'Risk Assessment Update', risk: 'High', time: '1d ago', urgent: true },
                 { client: 'Metro Financial', action: 'KYC Refresh', risk: 'Medium', time: '2d ago', urgent: false }
               ].map((item, index) => (
-                <div key={index} className={`flex items-center justify-between p-3 rounded-lg border ${item.urgent ? 'bg-red-50 border-red-200' : 'bg-[#0a0e17] border-white/10'}`}>
+                <div key={index} className={`flex items-center justify-between p-3 rounded-lg border ${item.urgent ? 'bg-red-50 border-red-200' : 'bg-[#0f172a] border-white/10'}`}>
                   <div className="flex-1">
                     <div className="font-semibold text-sm">{item.client}</div>
                     <div className="text-xs text-slate-300">{item.action}</div>
@@ -574,7 +574,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
             <div className="space-y-4">
               {recentActivityData.map((activity, index) => (
                 <div key={index} className="flex items-start gap-3">
-                  <div className={`w-8 h-8 rounded-full bg-[#0a0e17] flex items-center justify-center flex-shrink-0 ${activity.color}`}>
+                  <div className={`w-8 h-8 rounded-full bg-[#0f172a] flex items-center justify-center flex-shrink-0 ${activity.color}`}>
                     <activity.icon className="w-4 h-4" />
                   </div>
                   <div className="flex-1">
@@ -738,7 +738,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
                 { item: 'Annual Compliance Budget', type: 'Budget', priority: 'Medium' },
                 { item: 'New Jurisdiction Expansion', type: 'Strategic', priority: 'High' }
               ].map((approval, index) => (
-                <div key={index} className="p-3 bg-[#0a0e17] rounded-lg border">
+                <div key={index} className="p-3 bg-[#0f172a] rounded-lg border">
                   <div className="flex items-start justify-between mb-1">
                     <div className="font-semibold text-sm">{approval.item}</div>
                     <Badge variant={approval.priority === 'High' ? 'destructive' : 'default'} className="text-xs">
@@ -805,7 +805,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
                 { insight: 'Recommended: Update sanctions screening rules', icon: Shield, color: 'text-purple-600' },
                 { insight: 'Team capacity: 12% above industry average', icon: Users, color: 'text-green-600' }
               ].map((item, index) => (
-                <div key={index} className="flex items-start gap-3 p-3 bg-[#0a0e17] rounded-lg">
+                <div key={index} className="flex items-start gap-3 p-3 bg-[#0f172a] rounded-lg">
                   <item.icon className={`w-5 h-5 flex-shrink-0 ${item.color}`} />
                   <p className="text-sm text-white">{item.insight}</p>
                 </div>
@@ -818,7 +818,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
   );
 
   const renderAnalystDashboard = () => (
-    <div className="space-y-8 bg-[#0d121d] min-h-screen px-8 pb-8">
+    <div className="space-y-8 bg-[#1e293b] min-h-screen px-8 pb-8">
       {/* Analyst Welcome */}
       <div className="bg-gradient-to-r from-cyan-600 to-blue-600 rounded-2xl p-12 text-white shadow-lg mt-8">
         <div className="flex items-center gap-6 mb-6">
@@ -896,7 +896,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
           <CardContent>
             <div className="space-y-3">
               {activeCasesData.map((caseItem, index) => (
-                <div key={index} className="flex items-center justify-between p-3 bg-[#0a0e17] rounded-lg border">
+                <div key={index} className="flex items-center justify-between p-3 bg-[#0f172a] rounded-lg border">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
                       <span className="font-mono text-xs text-slate-400">{caseItem.caseId}</span>
@@ -1074,7 +1074,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
                 { action: 'Flagged policy violation in Case-1023', status: 'error', time: '12h ago' },
                 { action: 'Generated compliance report for Q2', status: 'success', time: '18h ago' }
               ].map((activity, index) => (
-                <div key={index} className="flex items-start gap-3 p-3 bg-[#0a0e17] rounded-lg">
+                <div key={index} className="flex items-start gap-3 p-3 bg-[#0f172a] rounded-lg">
                   <div className={`w-2 h-2 rounded-full mt-1.5 flex-shrink-0 ${activity.status === 'success' ? 'bg-green-500' :
                       activity.status === 'warning' ? 'bg-amber-500' :
                         activity.status === 'error' ? 'bg-red-500' :
@@ -1136,12 +1136,12 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
   };
 
   return (
-    <div className="bg-[#0d121d] min-h-screen">
+    <div className="bg-[#1e293b] min-h-screen">
       {renderDashboard()}
       {/* Approval Modal */}
       {approvalModalOpen && selectedApproval && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-          <div className="bg-[#0d121d] rounded-xl shadow-2xl max-w-2xl w-full">
+          <div className="bg-[#1e293b] rounded-xl shadow-2xl max-w-2xl w-full">
             <div className="p-6 border-b border-white/10 flex items-center justify-between">
               <div>
                 <h2 className="text-xl font-bold text-white">Review & Approve</h2>
@@ -1156,7 +1156,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
             </div>
 
             <div className="p-6 space-y-4">
-              <div className="bg-[#0a0e17] rounded-lg p-4 border border-white/10">
+              <div className="bg-[#0f172a] rounded-lg p-4 border border-white/10">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <p className="text-xs text-slate-300 mb-1">Type</p>

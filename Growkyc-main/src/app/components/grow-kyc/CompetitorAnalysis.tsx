@@ -295,7 +295,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
 
   if (selectedComp) {
     return (
-      <div className="min-h-screen bg-[#0d121d]">
+      <div className="min-h-screen bg-[#1e293b]">
         {/* Header */}
         <div className={`bg-gradient-to-r ${selectedComp.color} text-white px-8 py-12`}>
           <Button
@@ -409,7 +409,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
             <CardContent>
               <ul className="space-y-3">
                 {selectedComp.howToBeat.map((strategy, idx) => (
-                  <li key={idx} className="flex items-start gap-3 p-3 bg-[#0d121d] rounded-lg border border-green-200">
+                  <li key={idx} className="flex items-start gap-3 p-3 bg-[#1e293b] rounded-lg border border-green-200">
                     <Flame className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
                     <span className="text-white font-medium">{strategy}</span>
                   </li>
@@ -423,7 +423,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
   }
 
   return (
-    <div className="min-h-screen bg-[#0d121d]">
+    <div className="min-h-screen bg-[#1e293b]">
       {/* Header */}
       <div className="bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 text-white px-8 py-12">
         <Button
@@ -465,7 +465,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
                 return (
                   <div
                     key={idx}
-                    className={`flex items-start gap-4 p-5 bg-[#0d121d] rounded-xl border-2 ${
+                    className={`flex items-start gap-4 p-5 bg-[#1e293b] rounded-xl border-2 ${
                       gap.severity === 'critical'
                         ? 'border-red-300'
                         : gap.severity === 'high'
@@ -653,7 +653,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
               {winningStrategy.map((strat, idx) => {
                 const StratIcon = strat.icon;
                 return (
-                  <div key={idx} className="p-5 bg-[#0d121d] rounded-xl border-2 border-indigo-200 hover:shadow-lg transition-shadow">
+                  <div key={idx} className="p-5 bg-[#1e293b] rounded-xl border-2 border-indigo-200 hover:shadow-lg transition-shadow">
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center flex-shrink-0">
                         <StratIcon className="w-6 h-6 text-indigo-600" />

@@ -484,7 +484,7 @@ export function FraudDetectionSettings({ role }: FraudDetectionSettingsProps = {
       case 'high': return 'bg-orange-100 text-orange-700 border-orange-300 dark:bg-orange-900 dark:text-orange-300';
       case 'medium': return 'bg-yellow-100 text-yellow-700 border-yellow-300 dark:bg-yellow-900 dark:text-yellow-300';
       case 'low': return 'bg-blue-100 text-blue-700 border-blue-300 dark:bg-blue-900 dark:text-blue-300';
-      default: return 'bg-[#0a0e17] text-slate-300 border-gray-300 dark:bg-gray-800 dark:text-gray-300';
+      default: return 'bg-[#0f172a] text-slate-300 border-gray-300 dark:bg-gray-800 dark:text-gray-300';
     }
   };
 
@@ -539,7 +539,7 @@ export function FraudDetectionSettings({ role }: FraudDetectionSettingsProps = {
             </div>
             <p className="text-red-100">Advanced fraud detection rules, AI models, and automated case creation</p>
           </div>
-          <Button disabled={isReadOnly} onClick={() => saveAllSettings()} className="bg-[#0d121d] text-red-600 hover:bg-red-50 font-bold shadow-md">
+          <Button disabled={isReadOnly} onClick={() => saveAllSettings()} className="bg-[#1e293b] text-red-600 hover:bg-red-50 font-bold shadow-md">
             <Save className="w-5 h-5 mr-2" />
             Save All Settings
           </Button>
@@ -567,7 +567,7 @@ export function FraudDetectionSettings({ role }: FraudDetectionSettingsProps = {
       </div>
 
       {/* Tab Navigation */}
-      <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+      <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
         <div className="flex border-b border-white/10 dark:border-gray-700">
           {[
             { id: 'rules', label: 'Fraud Rules', icon: Shield },
@@ -602,7 +602,7 @@ export function FraudDetectionSettings({ role }: FraudDetectionSettingsProps = {
                   return (
                     <button
                       key={cat.id}
-                      className="flex items-center gap-2 px-4 py-2 bg-[#0a0e17] dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                      className="flex items-center gap-2 px-4 py-2 bg-[#0f172a] dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
                     >
                       <Icon className="w-4 h-4" />
                       <span className="text-sm font-semibold">{cat.label}</span>
@@ -620,7 +620,7 @@ export function FraudDetectionSettings({ role }: FraudDetectionSettingsProps = {
                     <div
                       key={rule.id}
                       className={`border-2 rounded-lg p-5 ${
-                        rule.enabled ? 'bg-[#0d121d] dark:bg-gray-800' : 'bg-[#0a0e17] dark:bg-gray-900 opacity-60'
+                        rule.enabled ? 'bg-[#1e293b] dark:bg-gray-800' : 'bg-[#0f172a] dark:bg-gray-900 opacity-60'
                       } ${getSeverityColor(rule.severity)} border-l-4`}
                     >
                       <div className="flex items-start justify-between mb-4">
@@ -727,7 +727,7 @@ export function FraudDetectionSettings({ role }: FraudDetectionSettingsProps = {
                       <span className={`px-3 py-1 rounded-full text-xs font-bold ${
                         model.status === 'active' 
                           ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
-                          : 'bg-[#0a0e17] text-slate-300 dark:bg-gray-800 dark:text-gray-300'
+                          : 'bg-[#0f172a] text-slate-300 dark:bg-gray-800 dark:text-gray-300'
                       }`}>
                         {model.status.toUpperCase()}
                       </span>
@@ -789,7 +789,7 @@ export function FraudDetectionSettings({ role }: FraudDetectionSettingsProps = {
               {caseTriggers.map((trigger: CaseTrigger) => (
                 <div
                   key={trigger.id}
-                  className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-orange-500"
+                  className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-orange-500"
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex-1">
@@ -849,7 +849,7 @@ export function FraudDetectionSettings({ role }: FraudDetectionSettingsProps = {
           {/* Notifications Tab */}
           {activeTab === 'notifications' && (
             <div className="space-y-6">
-              <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 p-6">
+              <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 p-6">
                 <h4 className="font-bold text-white dark:text-white mb-4">Notification Settings</h4>
                 <div className="space-y-4">
                   {notificationSettings.map((notification: NotificationSetting, i: number) => (

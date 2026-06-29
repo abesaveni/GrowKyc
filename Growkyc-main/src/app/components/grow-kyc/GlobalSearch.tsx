@@ -272,13 +272,13 @@ export function GlobalSearch({ isOpen, onClose, onNavigate }: GlobalSearchProps)
                     <p className="text-sm mt-2">Try natural language queries:</p>
                   </div>
                   <div className="space-y-2 text-left max-w-md mx-auto">
-                    <div className="p-2 bg-[#0a0e17] rounded text-sm">
+                    <div className="p-2 bg-[#0f172a] rounded text-sm">
                       "show me high risk clients with PEP flags"
                     </div>
-                    <div className="p-2 bg-[#0a0e17] rounded text-sm">
+                    <div className="p-2 bg-[#0f172a] rounded text-sm">
                       "cases expiring this week"
                     </div>
-                    <div className="p-2 bg-[#0a0e17] rounded text-sm">
+                    <div className="p-2 bg-[#0f172a] rounded text-sm">
                       "clients in Singapore with overdue CDD"
                     </div>
                   </div>
@@ -331,7 +331,7 @@ export function GlobalSearch({ isOpen, onClose, onNavigate }: GlobalSearchProps)
             </>
           ) : (
             <>
-              <div className="px-4 py-2 bg-[#0a0e17] text-xs font-semibold text-slate-300 border-b">
+              <div className="px-4 py-2 bg-[#0f172a] text-xs font-semibold text-slate-300 border-b">
                 COMMANDS
               </div>
               {commands.map((command, index) => {
@@ -350,7 +350,7 @@ export function GlobalSearch({ isOpen, onClose, onNavigate }: GlobalSearchProps)
                     <div className="flex-1">
                       <span className="font-medium text-white">{command.title}</span>
                     </div>
-                    <kbd className="px-2 py-1 text-xs bg-[#0a0e17] rounded border">↵</kbd>
+                    <kbd className="px-2 py-1 text-xs bg-[#0f172a] rounded border">↵</kbd>
                   </div>
                 );
               })}
@@ -361,16 +361,16 @@ export function GlobalSearch({ isOpen, onClose, onNavigate }: GlobalSearchProps)
         <div className="border-t px-4 py-2 flex items-center justify-between text-xs text-slate-400">
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 bg-[#0a0e17] rounded border">↑</kbd>
-              <kbd className="px-1.5 py-0.5 bg-[#0a0e17] rounded border">↓</kbd>
+              <kbd className="px-1.5 py-0.5 bg-[#0f172a] rounded border">↑</kbd>
+              <kbd className="px-1.5 py-0.5 bg-[#0f172a] rounded border">↓</kbd>
               to navigate
             </span>
             <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 bg-[#0a0e17] rounded border">↵</kbd>
+              <kbd className="px-1.5 py-0.5 bg-[#0f172a] rounded border">↵</kbd>
               to select
             </span>
             <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 bg-[#0a0e17] rounded border">esc</kbd>
+              <kbd className="px-1.5 py-0.5 bg-[#0f172a] rounded border">esc</kbd>
               to close
             </span>
           </div>

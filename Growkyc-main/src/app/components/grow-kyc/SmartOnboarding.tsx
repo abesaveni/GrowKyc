@@ -415,7 +415,7 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
       <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
         <CardContent className="p-6">
           <div className="flex items-start gap-4">
-            <div className="w-12 h-12 bg-[#0d121d] rounded-full flex items-center justify-center">
+            <div className="w-12 h-12 bg-[#1e293b] rounded-full flex items-center justify-center">
               <Sparkles className="w-6 h-6 text-blue-600" />
             </div>
             <div className="flex-1">
@@ -462,7 +462,7 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
 
   if (currentStage === 'master') {
     return (
-      <div className="min-h-screen bg-[#0a0e17] p-6">
+      <div className="min-h-screen bg-[#0f172a] p-6">
         {renderMasterDashboard()}
         {isChatOpen && <OnboardingChat onClose={() => setIsChatOpen(false)} />}
       </div>
@@ -471,9 +471,9 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
 
   // Stage view with progress
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
+    <div className="min-h-screen bg-[#0f172a]">
       {/* Top Progress Bar */}
-      <div className="bg-[#0d121d] border-b sticky top-0 z-40">
+      <div className="bg-[#1e293b] border-b sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between mb-4">
             <Button variant="ghost" size="sm" onClick={handleBackToMaster}>
@@ -492,7 +492,7 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
                     onChange={(e) => setDevMode(e.target.checked)}
                     className="sr-only peer"
                   />
-                  <div className="w-9 h-5 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-[#0d121d] after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-green-600"></div>
+                  <div className="w-9 h-5 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-[#1e293b] after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-green-600"></div>
                 </label>
               </div>
               <div className="text-sm text-slate-300">

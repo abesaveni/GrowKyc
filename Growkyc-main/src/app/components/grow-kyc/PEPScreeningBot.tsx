@@ -70,9 +70,9 @@ export function PEPScreeningBot({ onBack }: PEPScreeningBotProps) {
 // Screen 1: PEP Control Centre Dashboard
 function PEPControlCentre({ onNavigate, onBack }: { onNavigate: (view: ViewMode) => void; onBack?: () => void }) {
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
+    <div className="min-h-screen bg-[#0f172a]">
       {/* Header */}
-      <div className="bg-[#0d121d] border-b border-white/10">
+      <div className="bg-[#1e293b] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-8 py-6">
           {onBack && (
             <Button onClick={onBack} variant="ghost" className="mb-4">
@@ -192,7 +192,7 @@ function PEPControlCentre({ onNavigate, onBack }: { onNavigate: (view: ViewMode)
             <CardContent className="p-0">
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
-                  <thead className="bg-[#0a0e17] border-b">
+                  <thead className="bg-[#0f172a] border-b">
                     <tr>
                       <th className="px-4 py-3 text-left font-medium text-slate-300">Name</th>
                       <th className="px-4 py-3 text-left font-medium text-slate-300">Role</th>
@@ -218,7 +218,7 @@ function PEPControlCentre({ onNavigate, onBack }: { onNavigate: (view: ViewMode)
                         </td>
                         <td className="px-4 py-3">
                           <Badge className={
-                            item.status === 'Queued' ? 'bg-[#0a0e17] text-slate-300' :
+                            item.status === 'Queued' ? 'bg-[#0f172a] text-slate-300' :
                             item.status === 'Searching' ? 'bg-blue-100 text-blue-700' :
                             'bg-amber-100 text-amber-700'
                           }>
@@ -230,7 +230,7 @@ function PEPControlCentre({ onNavigate, onBack }: { onNavigate: (view: ViewMode)
                   </tbody>
                 </table>
               </div>
-              <div className="p-4 border-t bg-[#0a0e17]">
+              <div className="p-4 border-t bg-[#0f172a]">
                 <Button variant="ghost" className="w-full text-blue-700 hover:bg-blue-50" onClick={() => onNavigate('new-check')}>
                   View All New Checks <ChevronRight className="w-4 h-4 ml-1" />
                 </Button>
@@ -250,7 +250,7 @@ function PEPControlCentre({ onNavigate, onBack }: { onNavigate: (view: ViewMode)
             <CardContent className="p-0">
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
-                  <thead className="bg-[#0a0e17] border-b">
+                  <thead className="bg-[#0f172a] border-b">
                     <tr>
                       <th className="px-4 py-3 text-left font-medium text-slate-300">Name</th>
                       <th className="px-4 py-3 text-left font-medium text-slate-300">Last Screened</th>
@@ -283,7 +283,7 @@ function PEPControlCentre({ onNavigate, onBack }: { onNavigate: (view: ViewMode)
                   </tbody>
                 </table>
               </div>
-              <div className="p-4 border-t bg-[#0a0e17]">
+              <div className="p-4 border-t bg-[#0f172a]">
                 <Button variant="ghost" className="w-full text-purple-700 hover:bg-purple-50" onClick={() => onNavigate('monthly-queue')}>
                   View All Monthly Reviews <ChevronRight className="w-4 h-4 ml-1" />
                 </Button>
@@ -409,9 +409,9 @@ function NewCheckWizard({ onBack }: { onBack: () => void }) {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
+    <div className="min-h-screen bg-[#0f172a]">
       {/* Header */}
-      <div className="bg-[#0d121d] border-b border-white/10">
+      <div className="bg-[#1e293b] border-b border-white/10">
         <div className="max-w-5xl mx-auto px-8 py-6">
           <Button onClick={onBack} variant="ghost" className="mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -718,7 +718,7 @@ function NewCheckWizard({ onBack }: { onBack: () => void }) {
                     'ABC News Archive (Family/Associate)',
                     'SMH Archive (Family/Associate)'
                   ].map((source, idx) => (
-                    <div key={idx} className="flex items-center gap-2 p-2 bg-[#0a0e17] rounded text-xs">
+                    <div key={idx} className="flex items-center gap-2 p-2 bg-[#0f172a] rounded text-xs">
                       <CheckCircle className="w-3 h-3 text-green-600" />
                       <span className="text-slate-300">{source}</span>
                     </div>
@@ -756,7 +756,7 @@ function NewCheckWizard({ onBack }: { onBack: () => void }) {
                 </div>
               </div>
 
-              <div className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-lg">
+              <div className="flex items-center justify-between p-4 bg-[#0f172a] rounded-lg">
                 <div>
                   <p className="text-sm font-medium text-slate-300">Expected Runtime</p>
                   <p className="text-xs text-slate-300">Based on search scope and coverage</p>
@@ -806,15 +806,15 @@ function NewCheckWizard({ onBack }: { onBack: () => void }) {
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-3 mt-4">
-                  <div className="bg-[#0d121d] p-3 rounded">
+                  <div className="bg-[#1e293b] p-3 rounded">
                     <p className="text-xs text-slate-300">Sources Searched</p>
                     <p className="text-xl font-bold text-white">18</p>
                   </div>
-                  <div className="bg-[#0d121d] p-3 rounded">
+                  <div className="bg-[#1e293b] p-3 rounded">
                     <p className="text-xs text-slate-300">Search Duration</p>
                     <p className="text-xl font-bold text-white">42s</p>
                   </div>
-                  <div className="bg-[#0d121d] p-3 rounded">
+                  <div className="bg-[#1e293b] p-3 rounded">
                     <p className="text-xs text-slate-300">Identity Confidence</p>
                     <p className="text-xl font-bold text-green-600">High</p>
                   </div>
@@ -936,27 +936,27 @@ function NewCheckWizard({ onBack }: { onBack: () => void }) {
 
               <div className="max-w-2xl mx-auto space-y-4 mb-8">
                 <div className="grid md:grid-cols-2 gap-4 text-left">
-                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                  <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">Result</p>
                     <p className="font-semibold text-white">Not a PEP</p>
                   </div>
-                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                  <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">Date of Check</p>
                     <p className="font-semibold text-white">{new Date().toLocaleDateString('en-AU')}</p>
                   </div>
-                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                  <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">Sources Searched</p>
                     <p className="font-semibold text-white">18 official sources</p>
                   </div>
-                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                  <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">Reviewer</p>
                     <p className="font-semibold text-white">Current User</p>
                   </div>
-                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                  <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">Final Risk Impact</p>
                     <p className="font-semibold text-green-600">Low Risk</p>
                   </div>
-                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                  <div className="p-4 bg-[#0f172a] rounded-lg">
                     <p className="text-xs text-slate-300">Next Review Date</p>
                     <p className="font-semibold text-white">{new Date(Date.now() + 30*24*60*60*1000).toLocaleDateString('en-AU')}</p>
                   </div>
@@ -998,8 +998,8 @@ function NewCheckWizard({ onBack }: { onBack: () => void }) {
 // Screen 3: Monthly Rescreening Queue
 function MonthlyRescreeningQueue({ onBack }: { onBack: () => void }) {
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
-      <div className="bg-[#0d121d] border-b border-white/10">
+    <div className="min-h-screen bg-[#0f172a]">
+      <div className="bg-[#1e293b] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-8 py-6">
           <Button onClick={onBack} variant="ghost" className="mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -1082,8 +1082,8 @@ function MonthlyRescreeningQueue({ onBack }: { onBack: () => void }) {
 // Screen 4: Search Results Review Workbench
 function SearchResultsWorkbench({ onBack }: { onBack: () => void }) {
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
-      <div className="bg-[#0d121d] border-b border-white/10">
+    <div className="min-h-screen bg-[#0f172a]">
+      <div className="bg-[#1e293b] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-8 py-6">
           <Button onClick={onBack} variant="ghost" className="mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />

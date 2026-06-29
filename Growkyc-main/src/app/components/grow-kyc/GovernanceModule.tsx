@@ -205,9 +205,9 @@ export function GovernanceModule({ onBack }: GovernanceModuleProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
+    <div className="min-h-screen bg-[#0f172a]">
       {/* Header */}
-      <div className="bg-[#0d121d] border-b sticky top-0 z-10">
+      <div className="bg-[#1e293b] border-b sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -453,7 +453,7 @@ export function GovernanceModule({ onBack }: GovernanceModuleProps) {
               <CardContent>
                 <div className="overflow-x-auto">
                   <table className="w-full">
-                    <thead className="bg-[#0a0e17] border-b">
+                    <thead className="bg-[#0f172a] border-b">
                       <tr>
                         <th className="text-left p-4 text-sm font-semibold text-white">Policy</th>
                         <th className="text-left p-4 text-sm font-semibold text-white">Version</th>

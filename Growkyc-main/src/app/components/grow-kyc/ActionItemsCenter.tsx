@@ -158,7 +158,7 @@ export function ActionItemsCenter({ onViewClient, onBack }: ActionItemsCenterPro
       case 'due_today': return 'text-[#FFA300] bg-orange-50 border-orange-200';
       case 'due_soon': return 'text-yellow-700 bg-yellow-50 border-yellow-200';
       case 'scheduled': return 'text-blue-600 bg-blue-50 border-blue-200';
-      default: return 'text-slate-300 bg-[#0a0e17] border-white/10';
+      default: return 'text-slate-300 bg-[#0f172a] border-white/10';
     }
   };
 
@@ -225,7 +225,7 @@ export function ActionItemsCenter({ onViewClient, onBack }: ActionItemsCenterPro
   });
 
   return (
-    <div className="p-6 bg-[#0a0e17] min-h-screen">
+    <div className="p-6 bg-[#0f172a] min-h-screen">
       {/* Header */}
       <div className="mb-6">
         <div className="flex items-center justify-between mb-4">

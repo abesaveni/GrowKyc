@@ -100,7 +100,7 @@ export function AMLProgramManagement({ onBack }: AMLProgramManagementProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
+    <div className="min-h-screen bg-[#0f172a]">
       {/* Header */}
       <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] text-white px-6 py-4">
         <div className="flex items-center justify-between">
@@ -121,7 +121,7 @@ export function AMLProgramManagement({ onBack }: AMLProgramManagementProps) {
               <CheckCircle className="w-4 h-4 mr-2" />
               {currentProgram.status}
             </Badge>
-            <Badge className="bg-[#0d121d] text-[#13B5EA] px-4 py-2 font-bold">
+            <Badge className="bg-[#1e293b] text-[#13B5EA] px-4 py-2 font-bold">
               Version {currentProgram.version}
             </Badge>
           </div>
@@ -129,7 +129,7 @@ export function AMLProgramManagement({ onBack }: AMLProgramManagementProps) {
       </div>
 
       {/* Quick Status Bar */}
-      <div className="bg-[#0d121d] border-b border-white/10 px-6 py-4">
+      <div className="bg-[#1e293b] border-b border-white/10 px-6 py-4">
         <div className="grid grid-cols-5 gap-4">
           <div>
             <div className="text-xs text-slate-300 mb-1">Policy Owner</div>
@@ -249,7 +249,7 @@ export function AMLProgramManagement({ onBack }: AMLProgramManagementProps) {
                     </div>
                   </div>
 
-                  <div className="mt-6 p-4 bg-[#0d121d] rounded-lg border-2 border-cyan-200">
+                  <div className="mt-6 p-4 bg-[#1e293b] rounded-lg border-2 border-cyan-200">
                     <h3 className="font-bold text-white mb-3">Version {currentProgram.version} - Key Updates</h3>
                     <ul className="text-sm text-slate-300 space-y-2">
                       <li className="flex items-start gap-2">
@@ -509,7 +509,7 @@ export function AMLProgramManagement({ onBack }: AMLProgramManagementProps) {
               <CardContent className="p-6">
                 <div className="space-y-2">
                   {linkedProcedures.map((proc, idx) => (
-                    <div key={idx} className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-lg border border-white/10 hover:bg-white/5 transition-colors">
+                    <div key={idx} className="flex items-center justify-between p-4 bg-[#0f172a] rounded-lg border border-white/10 hover:bg-white/5 transition-colors">
                       <div className="flex items-center gap-3">
                         <BookOpen className="w-5 h-5 text-cyan-600" />
                         <div>
@@ -636,7 +636,7 @@ export function AMLProgramManagement({ onBack }: AMLProgramManagementProps) {
                       { date: '2024-01-10', user: 'Sarah Chen', action: 'Updated Part A Section 4.8 (Risk Assessment)', type: 'edit' },
                       { date: '2024-01-08', user: 'Emma Williams', action: 'Updated Part B Section 5.1 (SMR procedures)', type: 'edit' }
                     ].map((entry, idx) => (
-                      <div key={idx} className="flex items-start gap-3 p-3 bg-[#0a0e17] rounded-lg border border-white/10">
+                      <div key={idx} className="flex items-start gap-3 p-3 bg-[#0f172a] rounded-lg border border-white/10">
                         <div className={`w-2 h-2 rounded-full mt-2 ${
                           entry.type === 'approval' ? 'bg-green-600' :
                           entry.type === 'review' ? 'bg-blue-600' :
@@ -672,7 +672,7 @@ export function AMLProgramManagement({ onBack }: AMLProgramManagementProps) {
                       className={`p-4 rounded-lg border-2 ${
                         version.status === 'Current' 
                           ? 'bg-green-50 border-green-300' 
-                          : 'bg-[#0a0e17] border-white/10'
+                          : 'bg-[#0f172a] border-white/10'
                       }`}
                     >
                       <div className="flex items-center justify-between mb-2">

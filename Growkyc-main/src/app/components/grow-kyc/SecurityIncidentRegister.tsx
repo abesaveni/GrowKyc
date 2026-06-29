@@ -149,7 +149,7 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
+    <div className="min-h-screen bg-[#0f172a]">
       {/* Header */}
       <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] text-white px-6 py-4">
         <div className="flex items-center justify-between">
@@ -165,7 +165,7 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
               <p className="text-sm text-white/90">ISO 27001 Incident Management & Response</p>
             </div>
           </div>
-          <Button className="bg-[#0d121d] text-[#13B5EA] hover:bg-white/5">
+          <Button className="bg-[#1e293b] text-[#13B5EA] hover:bg-white/5">
             <Flag className="w-4 h-4 mr-2" />
             Report Incident
           </Button>
@@ -173,7 +173,7 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
       </div>
 
       {/* Stats Bar */}
-      <div className="bg-[#0d121d] border-b border-white/10 px-6 py-4">
+      <div className="bg-[#1e293b] border-b border-white/10 px-6 py-4">
         <div className="grid grid-cols-7 gap-4">
           <div className="text-center">
             <div className="text-3xl font-bold text-white">{stats.total}</div>
@@ -591,7 +591,7 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
               <CardContent className="p-6">
                 <div className="space-y-4">
                   {incidents.filter(i => i.status === 'Closed').map((incident) => (
-                    <div key={incident.incidentId} className="p-4 bg-[#0a0e17] rounded-lg border border-white/10">
+                    <div key={incident.incidentId} className="p-4 bg-[#0f172a] rounded-lg border border-white/10">
                       <div className="flex items-center justify-between mb-3">
                         <div>
                           <div className="font-bold text-white">{incident.incidentId} - {incident.type}</div>
@@ -603,7 +603,7 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
                       </div>
                       
                       <div className="space-y-3 text-sm">
-                        <div className="p-3 bg-[#0d121d] rounded border border-white/10">
+                        <div className="p-3 bg-[#1e293b] rounded border border-white/10">
                           <div className="text-xs text-slate-300 mb-1">Root Cause:</div>
                           <div className="text-white">
                             {incident.type === 'Phishing Attack' && 'Staff member clicked malicious link in spoofed email'}
@@ -650,7 +650,7 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
               <CardContent className="p-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   {/* By Type */}
-                  <div className="p-4 bg-[#0d121d] rounded-lg border-2 border-indigo-200">
+                  <div className="p-4 bg-[#1e293b] rounded-lg border-2 border-indigo-200">
                     <h3 className="font-bold text-white mb-4">Incidents by Type</h3>
                     <div className="space-y-2">
                       {[
@@ -660,7 +660,7 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
                         { type: 'Malware Detection', count: 1, color: 'bg-purple-600' },
                         { type: 'System Misconfiguration', count: 1, color: 'bg-blue-600' }
                       ].map((item, idx) => (
-                        <div key={idx} className="flex items-center justify-between p-2 bg-[#0a0e17] rounded">
+                        <div key={idx} className="flex items-center justify-between p-2 bg-[#0f172a] rounded">
                           <span className="text-sm text-slate-300">{item.type}</span>
                           <div className="flex items-center gap-2">
                             <div className="w-20 bg-gray-200 rounded-full h-2">
@@ -674,7 +674,7 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
                   </div>
 
                   {/* By Severity */}
-                  <div className="p-4 bg-[#0d121d] rounded-lg border-2 border-indigo-200">
+                  <div className="p-4 bg-[#1e293b] rounded-lg border-2 border-indigo-200">
                     <h3 className="font-bold text-white mb-4">Incidents by Severity</h3>
                     <div className="space-y-3">
                       {[
@@ -692,14 +692,14 @@ export function SecurityIncidentRegister({ onBack }: SecurityIncidentRegisterPro
                   </div>
 
                   {/* Mean Time to Contain */}
-                  <div className="p-4 bg-[#0d121d] rounded-lg border-2 border-green-200">
+                  <div className="p-4 bg-[#1e293b] rounded-lg border-2 border-green-200">
                     <h3 className="font-bold text-white mb-2">Mean Time to Contain</h3>
                     <div className="text-4xl font-bold text-green-600">4.2 hrs</div>
                     <p className="text-sm text-slate-300 mt-1">Average containment time</p>
                   </div>
 
                   {/* Mean Time to Resolve */}
-                  <div className="p-4 bg-[#0d121d] rounded-lg border-2 border-blue-200">
+                  <div className="p-4 bg-[#1e293b] rounded-lg border-2 border-blue-200">
                     <h3 className="font-bold text-white mb-2">Mean Time to Resolve</h3>
                     <div className="text-4xl font-bold text-blue-600">2.3 days</div>
                     <p className="text-sm text-slate-300 mt-1">Average resolution time</p>

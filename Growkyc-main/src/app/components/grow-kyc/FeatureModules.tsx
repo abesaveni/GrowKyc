@@ -234,7 +234,7 @@ export function FeatureModules({ onBack }: FeatureModulesProps) {
   }
 
   return (
-    <div className="min-h-screen bg-[#0d121d]">
+    <div className="min-h-screen bg-[#1e293b]">
       {/* Header */}
       <div className="bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 text-white px-8 py-12">
         <Button

@@ -46,8 +46,8 @@ export function Tier3DecisionEngine({ onBack }: Tier3DecisionEngineProps) {
 
   // Hub View
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
-      <div className="bg-[#0d121d] border-b border-white/10">
+    <div className="min-h-screen bg-[#0f172a]">
+      <div className="bg-[#1e293b] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-8 py-6">
           {onBack && (
             <Button onClick={onBack} variant="ghost" className="mb-4">
@@ -73,17 +73,17 @@ export function Tier3DecisionEngine({ onBack }: Tier3DecisionEngineProps) {
               What Makes Tier 3 Your Real Moat
             </h3>
             <div className="grid md:grid-cols-3 gap-6">
-              <div className="bg-[#0d121d] p-6 rounded-xl border-2 border-red-300 shadow-lg">
+              <div className="bg-[#1e293b] p-6 rounded-xl border-2 border-red-300 shadow-lg">
                 <Brain className="w-12 h-12 text-red-600 mb-3" />
                 <p className="font-bold text-white text-lg mb-2">Automated Decisions</p>
                 <p className="text-sm text-slate-300">AI ingests all Tier 1 + 2 outputs and produces final risk ratings, onboarding decisions, and required controls with full explainability</p>
               </div>
-              <div className="bg-[#0d121d] p-6 rounded-xl border-2 border-orange-300 shadow-lg">
+              <div className="bg-[#1e293b] p-6 rounded-xl border-2 border-orange-300 shadow-lg">
                 <Activity className="w-12 h-12 text-orange-600 mb-3" />
                 <p className="font-bold text-white text-lg mb-2">Live Monitoring</p>
                 <p className="text-sm text-slate-300">System automatically triggers reviews when anything changes—PEP status, adverse media, ownership, directors—making compliance continuous, not static</p>
               </div>
-              <div className="bg-[#0d121d] p-6 rounded-xl border-2 border-amber-300 shadow-lg">
+              <div className="bg-[#1e293b] p-6 rounded-xl border-2 border-amber-300 shadow-lg">
                 <FileCheck className="w-12 h-12 text-amber-600 mb-3" />
                 <p className="font-bold text-white text-lg mb-2">Audit-Ready QA</p>
                 <p className="text-sm text-slate-300">Every file validated for completeness, compliance, and audit-readiness with automated checklists and issue detection</p>
@@ -147,11 +147,11 @@ export function Tier3DecisionEngine({ onBack }: Tier3DecisionEngineProps) {
               </div>
 
               <div className="grid grid-cols-2 gap-3 mb-4">
-                <div className="bg-[#0d121d] p-4 rounded-lg border-2 border-red-300 text-center">
+                <div className="bg-[#1e293b] p-4 rounded-lg border-2 border-red-300 text-center">
                   <p className="text-xs text-red-700">Pending</p>
                   <p className="text-3xl font-bold text-red-600">47</p>
                 </div>
-                <div className="bg-[#0d121d] p-4 rounded-lg border-2 border-red-300 text-center">
+                <div className="bg-[#1e293b] p-4 rounded-lg border-2 border-red-300 text-center">
                   <p className="text-xs text-red-700">Approved</p>
                   <p className="text-3xl font-bold text-green-600">234</p>
                 </div>
@@ -206,11 +206,11 @@ export function Tier3DecisionEngine({ onBack }: Tier3DecisionEngineProps) {
               </div>
 
               <div className="grid grid-cols-2 gap-3 mb-4">
-                <div className="bg-[#0d121d] p-4 rounded-lg border-2 border-orange-300 text-center">
+                <div className="bg-[#1e293b] p-4 rounded-lg border-2 border-orange-300 text-center">
                   <p className="text-xs text-orange-700">Active Subjects</p>
                   <p className="text-3xl font-bold text-orange-600">1,847</p>
                 </div>
-                <div className="bg-[#0d121d] p-4 rounded-lg border-2 border-orange-300 text-center">
+                <div className="bg-[#1e293b] p-4 rounded-lg border-2 border-orange-300 text-center">
                   <p className="text-xs text-orange-700">Alerts Today</p>
                   <p className="text-3xl font-bold text-red-600">12</p>
                 </div>
@@ -265,11 +265,11 @@ export function Tier3DecisionEngine({ onBack }: Tier3DecisionEngineProps) {
               </div>
 
               <div className="grid grid-cols-2 gap-3 mb-4">
-                <div className="bg-[#0d121d] p-4 rounded-lg border-2 border-amber-300 text-center">
+                <div className="bg-[#1e293b] p-4 rounded-lg border-2 border-amber-300 text-center">
                   <p className="text-xs text-amber-700">Compliant</p>
                   <p className="text-3xl font-bold text-green-600">892</p>
                 </div>
-                <div className="bg-[#0d121d] p-4 rounded-lg border-2 border-amber-300 text-center">
+                <div className="bg-[#1e293b] p-4 rounded-lg border-2 border-amber-300 text-center">
                   <p className="text-xs text-amber-700">Issues Found</p>
                   <p className="text-3xl font-bold text-red-600">23</p>
                 </div>
@@ -315,7 +315,7 @@ export function Tier3DecisionEngine({ onBack }: Tier3DecisionEngineProps) {
               })}
             </div>
 
-            <div className="bg-[#0d121d] rounded-xl border-2 border-red-300 p-6 shadow-lg">
+            <div className="bg-[#1e293b] rounded-xl border-2 border-red-300 p-6 shadow-lg">
               <h4 className="font-bold text-white text-xl mb-4">What Tier 3 Achieves:</h4>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
@@ -378,8 +378,8 @@ export function Tier3DecisionEngine({ onBack }: Tier3DecisionEngineProps) {
 // Compliance Decision Bot Component
 function ComplianceDecisionBot({ onBack }: { onBack: () => void }) {
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
-      <div className="bg-[#0d121d] border-b border-white/10">
+    <div className="min-h-screen bg-[#0f172a]">
+      <div className="bg-[#1e293b] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-8 py-6">
           <Button onClick={onBack} variant="ghost" className="mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -436,7 +436,7 @@ function ComplianceDecisionBot({ onBack }: { onBack: () => void }) {
           <CardContent className="p-0">
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
-                <thead className="bg-[#0a0e17] border-b">
+                <thead className="bg-[#0f172a] border-b">
                   <tr>
                     <th className="px-4 py-3 text-left font-medium text-slate-300">Client / Entity</th>
                     <th className="px-4 py-3 text-left font-medium text-slate-300">Risk Score</th>
@@ -489,7 +489,7 @@ function ComplianceDecisionBot({ onBack }: { onBack: () => void }) {
                 </tbody>
               </table>
             </div>
-            <div className="p-4 border-t bg-[#0a0e17]">
+            <div className="p-4 border-t bg-[#0f172a]">
               <Button variant="ghost" className="w-full text-red-700 hover:bg-red-50">
                 View All Decisions <ChevronRight className="w-4 h-4 ml-1" />
               </Button>
@@ -515,7 +515,7 @@ function ComplianceDecisionBot({ onBack }: { onBack: () => void }) {
                 { rule: 'All Decisions', action: 'Must Explain', color: 'blue' },
                 { rule: 'Expired ID', action: 'AUTO FAIL', color: 'red' }
               ].map((rule, idx) => (
-                <div key={idx} className="bg-[#0d121d] p-4 rounded-lg border-2 border-red-200 flex items-center justify-between">
+                <div key={idx} className="bg-[#1e293b] p-4 rounded-lg border-2 border-red-200 flex items-center justify-between">
                   <p className="font-medium text-white">{rule.rule}</p>
                   <Badge className={`bg-${rule.color}-600 text-white`}>{rule.action}</Badge>
                 </div>
@@ -531,8 +531,8 @@ function ComplianceDecisionBot({ onBack }: { onBack: () => void }) {
 // Monitoring Trigger Bot Component
 function MonitoringTriggerBot({ onBack }: { onBack: () => void }) {
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
-      <div className="bg-[#0d121d] border-b border-white/10">
+    <div className="min-h-screen bg-[#0f172a]">
+      <div className="bg-[#1e293b] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-8 py-6">
           <Button onClick={onBack} variant="ghost" className="mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -588,7 +588,7 @@ function MonitoringTriggerBot({ onBack }: { onBack: () => void }) {
           <CardContent className="p-0">
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
-                <thead className="bg-[#0a0e17] border-b">
+                <thead className="bg-[#0f172a] border-b">
                   <tr>
                     <th className="px-4 py-3 text-left font-medium text-slate-300">Subject</th>
                     <th className="px-4 py-3 text-left font-medium text-slate-300">Change Type</th>
@@ -651,7 +651,7 @@ function MonitoringTriggerBot({ onBack }: { onBack: () => void }) {
                 'Sanctions Match → AUTO BLOCK',
                 'Ownership Change → Revalidate UBO'
               ].map((rule, idx) => (
-                <div key={idx} className="bg-[#0d121d] p-3 rounded-lg border border-orange-200 flex items-center gap-3">
+                <div key={idx} className="bg-[#1e293b] p-3 rounded-lg border border-orange-200 flex items-center gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600" />
                   <p className="font-medium text-white">{rule}</p>
                 </div>
@@ -667,8 +667,8 @@ function MonitoringTriggerBot({ onBack }: { onBack: () => void }) {
 // Compliance File QA Bot Component
 function ComplianceFileQABot({ onBack }: { onBack: () => void }) {
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
-      <div className="bg-[#0d121d] border-b border-white/10">
+    <div className="min-h-screen bg-[#0f172a]">
+      <div className="bg-[#1e293b] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-8 py-6">
           <Button onClick={onBack} variant="ghost" className="mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -768,7 +768,7 @@ function ComplianceFileQABot({ onBack }: { onBack: () => void }) {
                 'Missing UBO = FAIL',
                 'No Decision Record = FAIL'
               ].map((rule, idx) => (
-                <div key={idx} className="bg-[#0d121d] p-3 rounded-lg border-2 border-red-300 flex items-center gap-3">
+                <div key={idx} className="bg-[#1e293b] p-3 rounded-lg border-2 border-red-300 flex items-center gap-3">
                   <XCircle className="w-5 h-5 text-red-600" />
                   <p className="font-medium text-white">{rule}</p>
                 </div>

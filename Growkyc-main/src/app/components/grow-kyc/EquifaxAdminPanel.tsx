@@ -243,7 +243,7 @@ export function EquifaxAdminPanel() {
       case 'operational': return 'bg-green-100 dark:bg-green-900/20';
       case 'degraded': return 'bg-yellow-100 dark:bg-yellow-900/20';
       case 'down': return 'bg-red-100 dark:bg-red-900/20';
-      default: return 'bg-[#0a0e17] dark:bg-gray-900/20';
+      default: return 'bg-[#0f172a] dark:bg-gray-900/20';
     }
   };
 
@@ -253,7 +253,7 @@ export function EquifaxAdminPanel() {
       case 'medium': return 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300';
       case 'high': return 'bg-orange-100 text-orange-700 dark:bg-orange-900 dark:text-orange-300';
       case 'critical': return 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300';
-      default: return 'bg-[#0a0e17] text-slate-300 dark:bg-gray-900 dark:text-gray-300';
+      default: return 'bg-[#0f172a] text-slate-300 dark:bg-gray-900 dark:text-gray-300';
     }
   };
 
@@ -289,7 +289,7 @@ export function EquifaxAdminPanel() {
       <div className="max-w-7xl mx-auto p-6 space-y-6">
         {/* Overview Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-green-500">
+          <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-green-500">
             <div className="flex items-center justify-between mb-2">
               <div className="text-sm text-slate-400">Services Online</div>
               <CheckCircle className="w-8 h-8 text-green-600" />
@@ -300,7 +300,7 @@ export function EquifaxAdminPanel() {
             <div className="text-xs text-slate-400 mt-1">100% Uptime</div>
           </div>
 
-          <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-blue-500">
+          <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-blue-500">
             <div className="flex items-center justify-between mb-2">
               <div className="text-sm text-slate-400">API Calls Today</div>
               <Activity className="w-8 h-8 text-blue-600" />
@@ -311,7 +311,7 @@ export function EquifaxAdminPanel() {
             <div className="text-xs text-slate-400 mt-1">{totalCallsMonth.toLocaleString()} this month</div>
           </div>
 
-          <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-purple-500">
+          <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-purple-500">
             <div className="flex items-center justify-between mb-2">
               <div className="text-sm text-slate-400">Cost Today</div>
               <DollarSign className="w-8 h-8 text-purple-600" />
@@ -322,7 +322,7 @@ export function EquifaxAdminPanel() {
             <div className="text-xs text-slate-400 mt-1">${totalCostMonth.toFixed(2)} this month</div>
           </div>
 
-          <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-orange-500">
+          <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-orange-500">
             <div className="flex items-center justify-between mb-2">
               <div className="text-sm text-slate-400">Avg Response</div>
               <Zap className="w-8 h-8 text-orange-600" />
@@ -335,7 +335,7 @@ export function EquifaxAdminPanel() {
         </div>
 
         {/* Tabs */}
-        <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+        <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
           <div className="flex border-b border-white/10 dark:border-gray-700 overflow-x-auto">
             {[
               { id: 'status', label: 'API Status', icon: Server },
@@ -372,7 +372,7 @@ export function EquifaxAdminPanel() {
                 </div>
 
                 {apiStatuses.map((service, index) => (
-                  <div key={index} className="p-4 bg-[#0a0e17] dark:bg-gray-900 rounded-lg">
+                  <div key={index} className="p-4 bg-[#0f172a] dark:bg-gray-900 rounded-lg">
                     <div className="flex items-center justify-between mb-3">
                       <div className="flex items-center gap-3">
                         <div className={`w-3 h-3 rounded-full ${service.status === 'operational' ? 'bg-green-500' : service.status === 'degraded' ? 'bg-yellow-500' : 'bg-red-500'}`} />
@@ -440,7 +440,7 @@ export function EquifaxAdminPanel() {
                           </td>
                         </tr>
                       ))}
-                      <tr className="bg-[#0a0e17] dark:bg-gray-800 font-bold">
+                      <tr className="bg-[#0f172a] dark:bg-gray-800 font-bold">
                         <td className="py-3 px-4 text-white dark:text-white">Total</td>
                         <td className="py-3 px-4 text-right text-white dark:text-white">{totalCallsToday}</td>
                         <td className="py-3 px-4 text-right text-white dark:text-white">{totalCallsMonth.toLocaleString()}</td>
@@ -470,7 +470,7 @@ export function EquifaxAdminPanel() {
                   const isNearLimit = percentage > 80;
 
                   return (
-                    <div key={index} className="p-4 bg-[#0a0e17] dark:bg-gray-900 rounded-lg">
+                    <div key={index} className="p-4 bg-[#0f172a] dark:bg-gray-900 rounded-lg">
                       <div className="flex items-center justify-between mb-3">
                         <h4 className="font-semibold text-white dark:text-white">{limit.endpoint}</h4>
                         <div className="text-sm text-slate-300 dark:text-slate-400">
@@ -527,7 +527,7 @@ export function EquifaxAdminPanel() {
                 ) : (
                   <div className="space-y-3">
                     {errorLogs.map((error) => (
-                      <div key={error.id} className="p-4 bg-[#0a0e17] dark:bg-gray-900 rounded-lg">
+                      <div key={error.id} className="p-4 bg-[#0f172a] dark:bg-gray-900 rounded-lg">
                         <div className="flex items-start justify-between mb-2">
                           <div className="flex items-center gap-3">
                             <AlertTriangle className="w-5 h-5 text-red-600" />
@@ -573,7 +573,7 @@ export function EquifaxAdminPanel() {
                         type="text"
                         value="https://api.equifax.com.au/v2"
                         readOnly
-                        className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-[#0a0e17] dark:bg-gray-800 text-white dark:text-white"
+                        className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-[#0f172a] dark:bg-gray-800 text-white dark:text-white"
                       />
                     </div>
 
@@ -586,7 +586,7 @@ export function EquifaxAdminPanel() {
                           type={showAPIKey ? 'text' : 'password'}
                           value="eq_live_xK7n9pL4mQ2vR8wT5yU1zA3bC6dE0fG"
                           readOnly
-                          className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-[#0a0e17] dark:bg-gray-800 text-white dark:text-white"
+                          className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-[#0f172a] dark:bg-gray-800 text-white dark:text-white"
                         />
                         <Button
                           variant="outline"
@@ -611,7 +611,7 @@ export function EquifaxAdminPanel() {
                       <label className="block text-sm font-semibold text-slate-300 dark:text-gray-300 mb-2">
                         Environment
                       </label>
-                      <select className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-[#0d121d] dark:bg-gray-800 text-white dark:text-white">
+                      <select className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-[#1e293b] dark:bg-gray-800 text-white dark:text-white">
                         <option value="production">Production</option>
                         <option value="sandbox">Sandbox (Testing)</option>
                       </select>
@@ -635,11 +635,11 @@ export function EquifaxAdminPanel() {
                   
                   <div className="space-y-3">
                     {['Identity Verification', 'AML Screening', 'Credit Reports', 'Business Reports', 'Property Data', 'Monitoring Alerts'].map((module, index) => (
-                      <div key={index} className="flex items-center justify-between p-3 bg-[#0a0e17] dark:bg-gray-900 rounded-lg">
+                      <div key={index} className="flex items-center justify-between p-3 bg-[#0f172a] dark:bg-gray-900 rounded-lg">
                         <span className="font-medium text-white dark:text-white">{module}</span>
                         <label className="relative inline-flex items-center cursor-pointer">
                           <input type="checkbox" className="sr-only peer" defaultChecked />
-                          <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[#13B5EA]/50 dark:peer-focus:ring-[#0E7C9E]/50 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-[#0d121d] after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-[#13B5EA]"></div>
+                          <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[#13B5EA]/50 dark:peer-focus:ring-[#0E7C9E]/50 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-[#1e293b] after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-[#13B5EA]"></div>
                         </label>
                       </div>
                     ))}

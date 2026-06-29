@@ -289,7 +289,7 @@ export function RegulatoryEngine({ onBack }: RegulatoryEngineProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0a0e17]">
+    <div className="min-h-screen bg-[#0f172a]">
       {/* Header */}
       <div className="bg-gradient-to-r from-purple-600 to-blue-600 border-b sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-6 py-4">
@@ -306,7 +306,7 @@ export function RegulatoryEngine({ onBack }: RegulatoryEngineProps) {
                 <p className="text-sm text-white/90">Multi-Jurisdiction Rule Orchestration</p>
               </div>
             </div>
-            <Badge className="bg-[#0d121d] text-purple-600 text-sm px-3 py-1">
+            <Badge className="bg-[#1e293b] text-purple-600 text-sm px-3 py-1">
               <Zap className="w-4 h-4 mr-1" />
               Global Intelligence Active
             </Badge>
@@ -365,13 +365,13 @@ export function RegulatoryEngine({ onBack }: RegulatoryEngineProps) {
                   className={`border-2 ${
                     jur.status === 'active' 
                       ? 'border-green-300 bg-gradient-to-r from-green-50 to-blue-50' 
-                      : 'border-gray-300 bg-[#0a0e17]'
+                      : 'border-gray-300 bg-[#0f172a]'
                   }`}
                 >
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between">
                       <div className="flex items-start gap-6 flex-1">
-                        <div className="w-24 h-24 bg-[#0d121d] rounded-lg shadow-sm flex items-center justify-center border-2 border-white/10">
+                        <div className="w-24 h-24 bg-[#1e293b] rounded-lg shadow-sm flex items-center justify-center border-2 border-white/10">
                           <span className="text-3xl font-bold text-slate-300">{jur.code}</span>
                         </div>
                         <div className="flex-1">
@@ -499,7 +499,7 @@ export function RegulatoryEngine({ onBack }: RegulatoryEngineProps) {
                             <div className="space-y-2">
                               {rule.logic.conditions.map((condition, idx) => (
                                 <div key={idx} className="flex items-center gap-2 text-sm">
-                                  <Badge variant="outline" className="bg-[#0d121d]">
+                                  <Badge variant="outline" className="bg-[#1e293b]">
                                     {condition.field}
                                   </Badge>
                                   <span className="text-slate-300 font-mono">{condition.operator}</span>
@@ -611,7 +611,7 @@ export function RegulatoryEngine({ onBack }: RegulatoryEngineProps) {
               <CardContent>
                 <div className="overflow-x-auto">
                   <table className="w-full">
-                    <thead className="bg-[#0a0e17] border-b-2">
+                    <thead className="bg-[#0f172a] border-b-2">
                       <tr>
                         <th className="text-left p-4 text-sm font-semibold text-white">Rec #</th>
                         <th className="text-left p-4 text-sm font-semibold text-white">FATF Recommendation</th>

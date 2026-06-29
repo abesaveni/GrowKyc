@@ -134,7 +134,7 @@ export function ClientFraudPanel({ clientId, clientName }: ClientFraudPanelProps
       case 'high': return 'bg-orange-100 text-orange-700 border-orange-300 dark:bg-orange-900/40 dark:text-orange-300';
       case 'medium': return 'bg-yellow-100 text-yellow-700 border-yellow-300 dark:bg-yellow-900/40 dark:text-yellow-300';
       case 'low': return 'bg-blue-100 text-blue-700 border-blue-300 dark:bg-blue-900/40 dark:text-blue-300';
-      default: return 'bg-[#0a0e17] text-slate-300 border-gray-300 dark:bg-gray-800 dark:text-gray-300';
+      default: return 'bg-[#0f172a] text-slate-300 border-gray-300 dark:bg-gray-800 dark:text-gray-300';
     }
   };
 
@@ -200,7 +200,7 @@ export function ClientFraudPanel({ clientId, clientName }: ClientFraudPanelProps
       </div>
 
       {/* Tab Navigation */}
-      <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+      <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
         <div className="flex border-b border-white/10 dark:border-gray-700">
           {[
             { id: 'overview', label: 'Overview', icon: Eye },
@@ -236,7 +236,7 @@ export function ClientFraudPanel({ clientId, clientName }: ClientFraudPanelProps
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {aiPredictions.map((prediction, i) => (
-                    <div key={i} className="bg-[#0d121d] dark:bg-gray-800 rounded-lg p-4 border border-purple-200 dark:border-purple-700">
+                    <div key={i} className="bg-[#1e293b] dark:bg-gray-800 rounded-lg p-4 border border-purple-200 dark:border-purple-700">
                       <div className="text-sm font-semibold text-slate-300 dark:text-gray-300 mb-2">{prediction.model}</div>
                       <div className={`text-3xl font-bold mb-1 ${getScoreColor(prediction.fraudProbability)}`}>
                         {prediction.fraudProbability}%
@@ -268,7 +268,7 @@ export function ClientFraudPanel({ clientId, clientName }: ClientFraudPanelProps
 
               {/* Summary Cards */}
               <div className="grid grid-cols-3 gap-6">
-                <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-blue-500">
+                <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-blue-500">
                   <div className="flex items-center justify-between mb-4">
                     <Smartphone className="w-8 h-8 text-blue-600" />
                     <div className="text-3xl font-bold text-blue-600">{deviceProfile.trustScore}%</div>
@@ -286,7 +286,7 @@ export function ClientFraudPanel({ clientId, clientName }: ClientFraudPanelProps
                   </div>
                 </div>
 
-                <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-green-500">
+                <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-green-500">
                   <div className="flex items-center justify-between mb-4">
                     <Activity className="w-8 h-8 text-green-600" />
                     <div className="text-3xl font-bold text-green-600">{behaviorMetrics.anomalyScore}</div>
@@ -304,7 +304,7 @@ export function ClientFraudPanel({ clientId, clientName }: ClientFraudPanelProps
                   </div>
                 </div>
 
-                <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-purple-500">
+                <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-purple-500">
                   <div className="flex items-center justify-between mb-4">
                     <Users className="w-8 h-8 text-purple-600" />
                     <div className="text-3xl font-bold text-purple-600">{networkAnalysis.networkRiskScore}</div>
@@ -387,7 +387,7 @@ export function ClientFraudPanel({ clientId, clientName }: ClientFraudPanelProps
           {/* Device Analysis Tab */}
           {activeView === 'device' && (
             <div className="space-y-6">
-              <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 p-6">
+              <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 p-6">
                 <h4 className="font-bold text-white dark:text-white mb-4 flex items-center gap-2">
                   <Smartphone className="w-5 h-5 text-[#13B5EA]" />
                   Device Profile
@@ -455,7 +455,7 @@ export function ClientFraudPanel({ clientId, clientName }: ClientFraudPanelProps
           {activeView === 'behavior' && (
             <div className="space-y-6">
               <div className="grid grid-cols-2 gap-6">
-                <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 p-6">
+                <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 p-6">
                   <h4 className="font-bold text-white dark:text-white mb-4">Session Patterns</h4>
                   <div className="space-y-4">
                     <div>
@@ -473,7 +473,7 @@ export function ClientFraudPanel({ clientId, clientName }: ClientFraudPanelProps
                   </div>
                 </div>
 
-                <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 p-6">
+                <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 p-6">
                   <h4 className="font-bold text-white dark:text-white mb-4">Consistency Metrics</h4>
                   <div className="space-y-4">
                     <div>
@@ -528,15 +528,15 @@ export function ClientFraudPanel({ clientId, clientName }: ClientFraudPanelProps
                   No suspicious connections or fraud ring associations detected.
                 </p>
                 <div className="grid grid-cols-3 gap-4 mt-6 max-w-2xl mx-auto">
-                  <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg p-4">
+                  <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg p-4">
                     <div className="text-3xl font-bold text-white dark:text-white mb-1">{networkAnalysis.relatedAccounts}</div>
                     <div className="text-sm text-slate-300 dark:text-slate-400">Related Accounts</div>
                   </div>
-                  <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg p-4">
+                  <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg p-4">
                     <div className="text-3xl font-bold text-white dark:text-white mb-1">{networkAnalysis.sharedDevices}</div>
                     <div className="text-sm text-slate-300 dark:text-slate-400">Shared Devices</div>
                   </div>
-                  <div className="bg-[#0d121d] dark:bg-gray-800 rounded-lg p-4">
+                  <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg p-4">
                     <div className="text-3xl font-bold text-white dark:text-white mb-1">{networkAnalysis.knownFraudRings}</div>
                     <div className="text-sm text-slate-300 dark:text-slate-400">Fraud Rings</div>
                   </div>

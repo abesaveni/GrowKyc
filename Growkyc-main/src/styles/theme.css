@@ -1,4 +1,4 @@
-﻿@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:is(.dark *));
 
 :root {
   /* Grow MIP Design System - Blue Theme */
@@ -74,28 +74,28 @@
 
 .dark {
   /* Grow KYC — modern dark/pro (slate + Grow cyan accent) */
-  --background: #0a0e17;
-  --surface: #0d121d;
+  --background: #0f172a;
+  --surface: #1e293b;
   --foreground: #e5e7eb;
-  --card: #0d121d;
+  --card: #1e293b;
   --card-foreground: #e5e7eb;
-  --popover: #0f1524;
+  --popover: #1e293b;
   --popover-foreground: #e5e7eb;
   --primary: #13B5EA;
   --primary-hover: #0E9BCC;
   --primary-foreground: #04141d;
   --primary-ring: #13B5EA;
-  --secondary: #161d2b;
+  --secondary: #334155;
   --secondary-foreground: #e5e7eb;
-  --muted: #141b29;
+  --muted: #1e293b;
   --muted-foreground: #94a3b8;
-  --accent: #11283a;
+  --accent: #1e293b;
   --accent-foreground: #5fd0f5;
   --destructive: #f87171;
   --destructive-foreground: #1a0606;
-  --border: #1f2a3a;
-  --input: #1f2a3a;
-  --input-background: #111827;
+  --border: #2a3850;
+  --input: #2a3850;
+  --input-background: #1e293b;
   --switch-background: #334155;
   --ring: #13B5EA;
 
@@ -107,7 +107,7 @@
   --text-main: #e5e7eb;
   --text-muted: #94a3b8;
 
-  --sidebar: #0a0e17;
+  --sidebar: #0f172a;
   --sidebar-foreground: #e5e7eb;
   --sidebar-primary: #13B5EA;
   --sidebar-primary-foreground: #04141d;

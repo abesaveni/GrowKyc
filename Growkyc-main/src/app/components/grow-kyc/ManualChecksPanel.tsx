@@ -393,7 +393,7 @@ export function ManualChecksPanel({ clientId, clientName }: ManualChecksPanelPro
       case 'entity': return 'border-green-500 bg-green-50 dark:bg-green-900/20';
       case 'property': return 'border-orange-500 bg-orange-50 dark:bg-orange-900/20';
       case 'affordability': return 'border-cyan-500 bg-cyan-50 dark:bg-cyan-900/20';
-      default: return 'border-gray-500 bg-[#0a0e17] dark:bg-gray-900/20';
+      default: return 'border-gray-500 bg-[#0f172a] dark:bg-gray-900/20';
     }
   };
 
@@ -435,7 +435,7 @@ export function ManualChecksPanel({ clientId, clientName }: ManualChecksPanelPro
             <Button
               onClick={() => runAllChecks()}
               disabled={runningChecks.size > 0}
-              className="bg-[#0d121d] text-[#0E7C9E] hover:bg-cyan-50"
+              className="bg-[#1e293b] text-[#0E7C9E] hover:bg-cyan-50"
             >
               <Zap className="w-5 h-5 mr-2" />
               Run All Checks ({checks.length})
@@ -483,7 +483,7 @@ export function ManualChecksPanel({ clientId, clientName }: ManualChecksPanelPro
         const categoryCost = categoryChecks.reduce((sum, c) => sum + (c.cost || 0), 0);
 
         return (
-          <div key={category.id} className={`bg-[#0d121d] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden border-l-4 ${getCategoryColor(category.id)}`}>
+          <div key={category.id} className={`bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden border-l-4 ${getCategoryColor(category.id)}`}>
             <div className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
@@ -513,7 +513,7 @@ export function ManualChecksPanel({ clientId, clientName }: ManualChecksPanelPro
                   return (
                     <div
                       key={check.id}
-                      className="flex items-center justify-between p-4 bg-[#0a0e17] dark:bg-gray-900 rounded-lg border border-white/10 dark:border-gray-700"
+                      className="flex items-center justify-between p-4 bg-[#0f172a] dark:bg-gray-900 rounded-lg border border-white/10 dark:border-gray-700"
                     >
                       <div className="flex items-center gap-4 flex-1">
                         <check.icon className="w-5 h-5 text-slate-300 dark:text-slate-400" />

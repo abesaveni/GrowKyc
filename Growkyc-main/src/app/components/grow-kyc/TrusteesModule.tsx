@@ -145,12 +145,12 @@ export function TrusteesModule({ onBack }: TrusteesModuleProps) {
       case 'high': return 'text-red-600 bg-red-100 border-red-300';
       case 'medium': return 'text-amber-600 bg-amber-100 border-amber-300';
       case 'low': return 'text-green-600 bg-green-100 border-green-300';
-      default: return 'text-slate-300 bg-[#0a0e17] border-gray-300';
+      default: return 'text-slate-300 bg-[#0f172a] border-gray-300';
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#0d121d]">
+    <div className="min-h-screen bg-[#1e293b]">
       {/* Header */}
       <div className="bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 text-white px-8 py-12">
         <Button
@@ -330,19 +330,19 @@ export function TrusteesModule({ onBack }: TrusteesModuleProps) {
                         </div>
 
                         <div className="grid grid-cols-3 gap-4">
-                          <div className="p-3 bg-[#0a0e17] rounded-lg">
+                          <div className="p-3 bg-[#0f172a] rounded-lg">
                             <div className="text-xs text-slate-300 mb-1">Risk Level</div>
                             <Badge className={getRiskColor(trust.riskLevel)}>
                               {trust.riskLevel}
                             </Badge>
                           </div>
 
-                          <div className="p-3 bg-[#0a0e17] rounded-lg">
+                          <div className="p-3 bg-[#0f172a] rounded-lg">
                             <div className="text-xs text-slate-300 mb-1">Last Review</div>
                             <div className="font-semibold text-white">{trust.lastReview}</div>
                           </div>
 
-                          <div className="p-3 bg-[#0a0e17] rounded-lg">
+                          <div className="p-3 bg-[#0f172a] rounded-lg">
                             <div className="text-xs text-slate-300 mb-1">Control Changes</div>
                             <div className="font-semibold text-white">
                               {trust.controllerChanges === 0 ? 'None' : trust.controllerChanges}
@@ -396,7 +396,7 @@ export function TrusteesModule({ onBack }: TrusteesModuleProps) {
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  <div className="p-6 bg-[#0d121d] rounded-xl border-2 border-purple-200">
+                  <div className="p-6 bg-[#1e293b] rounded-xl border-2 border-purple-200">
                     <h4 className="font-bold text-white mb-4">Automatically Extracted Fields:</h4>
                     <div className="grid grid-cols-2 gap-6">
                       <div>
@@ -454,7 +454,7 @@ export function TrusteesModule({ onBack }: TrusteesModuleProps) {
               <CardContent>
                 <div className="space-y-3">
                   {trusts.map((trust) => (
-                    <div key={trust.id} className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-lg border border-white/10">
+                    <div key={trust.id} className="flex items-center justify-between p-4 bg-[#0f172a] rounded-lg border border-white/10">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
                           <FileCheck className="w-6 h-6 text-purple-600" />
@@ -498,7 +498,7 @@ export function TrusteesModule({ onBack }: TrusteesModuleProps) {
                 <CardDescription>Visual graph of appointor → trustee → beneficiaries</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="p-6 bg-[#0d121d] rounded-xl border border-indigo-200">
+                <div className="p-6 bg-[#1e293b] rounded-xl border border-indigo-200">
                   <p className="text-slate-300 mb-4">
                     Structured role fields ensure trust relationships are never stored as free text.
                   </p>
@@ -540,7 +540,7 @@ export function TrusteesModule({ onBack }: TrusteesModuleProps) {
               <CardContent>
                 <div className="space-y-3">
                   {trusts.filter(t => t.controllerChanges > 0).map((trust) => (
-                    <div key={trust.id} className="flex items-center justify-between p-4 bg-[#0d121d] rounded-lg border-2 border-red-200">
+                    <div key={trust.id} className="flex items-center justify-between p-4 bg-[#1e293b] rounded-lg border-2 border-red-200">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
                           <AlertTriangle className="w-6 h-6 text-red-600" />

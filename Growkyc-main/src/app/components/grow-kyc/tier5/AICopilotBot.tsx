@@ -78,8 +78,8 @@ export function AICopilotBot({ onBack }: AICopilotBotProps) {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0e17] flex flex-col">
-      <div className="bg-[#0d121d] border-b shrink-0">
+    <div className="min-h-screen bg-[#0f172a] flex flex-col">
+      <div className="bg-[#1e293b] border-b shrink-0">
         <div className="max-w-5xl mx-auto px-4 sm:px-8 py-6">
           <Button onClick={onBack} variant="ghost" className="mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -123,7 +123,7 @@ export function AICopilotBot({ onBack }: AICopilotBotProps) {
                 className={`max-w-[85%] sm:max-w-[75%] rounded-2xl px-4 py-3 ${
                   msg.role === 'user'
                     ? 'bg-purple-600 text-white rounded-br-md'
-                    : 'bg-[#0d121d] border border-white/10 text-white rounded-bl-md shadow-sm'
+                    : 'bg-[#1e293b] border border-white/10 text-white rounded-bl-md shadow-sm'
                 }`}
               >
                 <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
@@ -144,7 +144,7 @@ export function AICopilotBot({ onBack }: AICopilotBotProps) {
           ))}
           {loading && (
             <div className="flex justify-start">
-              <div className="bg-[#0d121d] border border-white/10 rounded-2xl px-4 py-3 flex items-center gap-2 text-sm text-slate-300">
+              <div className="bg-[#1e293b] border border-white/10 rounded-2xl px-4 py-3 flex items-center gap-2 text-sm text-slate-300">
                 <Loader2 className="w-4 h-4 animate-spin text-purple-600" />
                 Analyzing compliance context...
               </div>
@@ -152,8 +152,8 @@ export function AICopilotBot({ onBack }: AICopilotBotProps) {
           )}
         </div>
 
-        <div className="sticky bottom-0 bg-[#0a0e17] pt-2 pb-4">
-          <div className="flex gap-2 bg-[#0d121d] border border-gray-300 rounded-xl p-2 shadow-sm">
+        <div className="sticky bottom-0 bg-[#0f172a] pt-2 pb-4">
+          <div className="flex gap-2 bg-[#1e293b] border border-gray-300 rounded-xl p-2 shadow-sm">
             <textarea
               value={input}
               onChange={(e) => setInput(e.target.value)}

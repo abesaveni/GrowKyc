@@ -449,18 +449,18 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
                   <CardContent>
                     <div className="space-y-3">
                       <div className="grid grid-cols-2 gap-4 mb-4">
-                        <div className="p-3 bg-[#0a0e17] rounded-lg">
+                        <div className="p-3 bg-[#0f172a] rounded-lg">
                           <div className="text-xs text-slate-300 mb-1">Scope</div>
                           <div className="font-semibold text-sm">{tier.scope}</div>
                         </div>
-                        <div className="p-3 bg-[#0a0e17] rounded-lg">
+                        <div className="p-3 bg-[#0f172a] rounded-lg">
                           <div className="text-xs text-slate-300 mb-1">Total Roles</div>
                           <div className="font-semibold text-sm">{tier.roles.length} role types</div>
                         </div>
                       </div>
                       <div className="space-y-2">
                         {tier.roles.map((role) => (
-                          <div key={role.id} className="flex items-center justify-between p-3 bg-[#0a0e17] rounded-lg">
+                          <div key={role.id} className="flex items-center justify-between p-3 bg-[#0f172a] rounded-lg">
                             <div className="flex items-center gap-3">
                               <UserCheck className="w-5 h-5 text-slate-400" />
                               <div>
@@ -490,7 +490,7 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
             <CardContent>
               <div className="space-y-3">
                 {specialRoles.map((role) => (
-                  <div key={role.id} className="flex items-start justify-between p-4 bg-[#0a0e17] rounded-lg border">
+                  <div key={role.id} className="flex items-start justify-between p-4 bg-[#0f172a] rounded-lg border">
                     <div className="flex items-start gap-3">
                       <div className="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center">
                         <role.icon className="w-5 h-5 text-purple-600" />
@@ -577,7 +577,7 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
                   { rule: 'Compliance cannot modify their own audit trails', tiers: [2], type: 'Audit integrity', status: 'active' },
                   { rule: 'Two Tier 2+ users required for sanctions override', tiers: [2], type: 'Dual control', status: 'active' }
                 ].map((rule, index) => (
-                  <div key={index} className="flex items-start justify-between p-4 bg-[#0a0e17] rounded-lg border-l-4 border-l-purple-500">
+                  <div key={index} className="flex items-start justify-between p-4 bg-[#0f172a] rounded-lg border-l-4 border-l-purple-500">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
                         <GitBranch className="w-4 h-4 text-purple-600" />
@@ -611,7 +611,7 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b-2 bg-[#0a0e17]">
+                  <tr className="border-b-2 bg-[#0f172a]">
                     <th className="text-left py-3 px-4 font-semibold">Action</th>
                     <th className="text-left py-3 px-4 font-semibold">Category</th>
                     <th className="text-center py-3 px-4 font-semibold">Tier 0<br/><span className="text-xs font-normal text-slate-300">Client</span></th>
@@ -704,7 +704,7 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
             <CardContent>
               <div className="space-y-3">
                 {dualControlActions.map((action, index) => (
-                  <div key={index} className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-lg border-l-4 border-l-amber-500">
+                  <div key={index} className="flex items-center justify-between p-4 bg-[#0f172a] rounded-lg border-l-4 border-l-amber-500">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-2">
                         <CheckCheck className="w-5 h-5 text-amber-600" />
@@ -877,15 +877,15 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
                 </div>
 
                 <div className="grid grid-cols-3 gap-4">
-                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                  <div className="p-4 bg-[#0f172a] rounded-lg">
                     <div className="text-sm text-slate-300 mb-1">Access Review</div>
                     <div className="font-semibold">Quarterly</div>
                   </div>
-                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                  <div className="p-4 bg-[#0f172a] rounded-lg">
                     <div className="text-sm text-slate-300 mb-1">Role Recertification</div>
                     <div className="font-semibold">Quarterly</div>
                   </div>
-                  <div className="p-4 bg-[#0a0e17] rounded-lg">
+                  <div className="p-4 bg-[#0f172a] rounded-lg">
                     <div className="text-sm text-slate-300 mb-1">Independent Audit</div>
                     <div className="font-semibold">Annual</div>
                   </div>
@@ -910,7 +910,7 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
                   { control: 'Login Attempt Monitoring', status: 'enabled', compliance: 100, icon: ShieldAlert },
                   { control: 'Password Complexity', status: 'enabled', compliance: 100, icon: Lock }
                 ].map((control, index) => (
-                  <div key={index} className="flex items-center justify-between p-4 bg-[#0a0e17] rounded-lg">
+                  <div key={index} className="flex items-center justify-between p-4 bg-[#0f172a] rounded-lg">
                     <div className="flex items-center gap-3">
                       <control.icon className="w-5 h-5 text-purple-600" />
                       <div>
@@ -944,7 +944,7 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
                   <div key={tier.level} className={`p-4 rounded-lg border-2 ${tier.color}`}>
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-full bg-[#0d121d] flex items-center justify-center font-bold">
+                        <div className="w-8 h-8 rounded-full bg-[#1e293b] flex items-center justify-center font-bold">
                           {tier.level}
                         </div>
                         <span className="font-bold">{tier.name}</span>
@@ -1039,7 +1039,7 @@ export function RoleAccessControl({ onBack }: RoleAccessControlProps) {
                     log.severity === 'high' ? 'bg-red-50 border-l-red-500' :
                     log.severity === 'warning' ? 'bg-amber-50 border-l-amber-500' :
                     log.severity === 'medium' ? 'bg-blue-50 border-l-blue-500' :
-                    'bg-[#0a0e17] border-l-gray-300'
+                    'bg-[#0f172a] border-l-gray-300'
                   }`}>
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">

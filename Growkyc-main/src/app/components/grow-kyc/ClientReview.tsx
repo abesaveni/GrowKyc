@@ -484,7 +484,7 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
         ← Back to Dashboard
       </Button>
       
-      <div className="bg-[#0d121d] rounded-xl shadow-lg border-2 border-blue-100 p-8">
+      <div className="bg-[#1e293b] rounded-xl shadow-lg border-2 border-blue-100 p-8">
         <div className="flex items-center gap-4 mb-8">
           <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
             <User className="w-8 h-8 text-blue-600" />
@@ -519,7 +519,7 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
         </div>
 
         <div className="space-y-6">
-          <div className="p-6 bg-[#0a0e17] rounded-lg border border-white/10">
+          <div className="p-6 bg-[#0f172a] rounded-lg border border-white/10">
             <h3 className="font-bold text-white mb-4 flex items-center gap-2">
               <Shield className="w-5 h-5 text-blue-600" />
               Verification Checkpoints
@@ -575,7 +575,7 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
                     : 'text-slate-400'
                 }
               ].map((check, i) => (
-                <div key={i} className="flex items-center justify-between p-3 bg-[#0d121d] rounded border">
+                <div key={i} className="flex items-center justify-between p-3 bg-[#1e293b] rounded border">
                   <span className="text-sm font-medium">{check.label}</span>
                   <span className={`text-sm font-bold ${check.color}`}>{check.status}</span>
                 </div>
@@ -665,7 +665,7 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
       {/* ==================== PREMIUM REQUEST MORE INFO DIALOG ==================== */}
       {showInfoModal && (
         <div className="fixed inset-0 bg-black/75 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-[#0d121d] rounded-2xl shadow-2xl w-full max-w-2xl border border-white/10 flex flex-col max-h-[90vh] overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+          <div className="bg-[#1e293b] rounded-2xl shadow-2xl w-full max-w-2xl border border-white/10 flex flex-col max-h-[90vh] overflow-hidden animate-in fade-in zoom-in-95 duration-200">
             {/* Header */}
             <div className="bg-gradient-to-r from-amber-500 to-amber-600 p-6 text-white flex items-center justify-between">
               <div className="flex items-center gap-3">
@@ -705,7 +705,7 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
                       className={`flex items-start gap-3 p-3 rounded-xl border-2 cursor-pointer transition-all ${
                         selectedDocs[doc.id] 
                           ? 'bg-amber-50/70 border-amber-400 shadow-sm' 
-                          : 'bg-[#0d121d] border-white/10 hover:bg-white/5'
+                          : 'bg-[#1e293b] border-white/10 hover:bg-white/5'
                       }`}
                     >
                       <input 
@@ -756,7 +756,7 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
                       className={`flex-1 flex items-center justify-center p-3 rounded-xl border-2 cursor-pointer text-xs font-bold transition-all ${
                         urgency === opt.level
                           ? `${opt.color} border-current shadow-md ring-1 ring-current`
-                          : 'bg-[#0d121d] border-white/10 text-slate-300 hover:bg-white/5'
+                          : 'bg-[#1e293b] border-white/10 text-slate-300 hover:bg-white/5'
                       }`}
                     >
                       <input 
