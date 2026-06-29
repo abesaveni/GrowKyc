@@ -73,40 +73,48 @@
 }
 
 .dark {
-  --background: #0B1220;
-  --surface: #1F2937;
-  --foreground: #F9FAFB;
-  --card: #111827;
-  --card-foreground: #F9FAFB;
-  --popover: #111827;
-  --popover-foreground: #F9FAFB;
-  --primary: #60A5FA;
-  --primary-hover: #3B82F6;
-  --primary-foreground: #0B1220;
-  --secondary: #1F2937;
-  --secondary-foreground: #F9FAFB;
-  --muted: #1F2937;
-  --muted-foreground: #9CA3AF;
-  --accent: #1F2937;
-  --accent-foreground: #60A5FA;
-  --destructive: #EF4444;
-  --destructive-foreground: #F9FAFB;
-  --border: #374151;
-  --input: #374151;
-  --input-background: #1F2937;
-  --ring: #3B82F6;
-  
-  --text-main: #F9FAFB;
-  --text-muted: #9CA3AF;
-  
-  --sidebar: #0B1220;
-  --sidebar-foreground: #F9FAFB;
-  --sidebar-primary: #60A5FA;
-  --sidebar-primary-foreground: #0B1220;
-  --sidebar-accent: #1F2937;
-  --sidebar-accent-foreground: #F9FAFB;
-  --sidebar-border: #1F2937;
-  --sidebar-ring: #3B82F6;
+  /* Grow KYC — modern dark/pro (slate + Grow cyan accent) */
+  --background: #0a0e17;
+  --surface: #0d121d;
+  --foreground: #e5e7eb;
+  --card: #0d121d;
+  --card-foreground: #e5e7eb;
+  --popover: #0f1524;
+  --popover-foreground: #e5e7eb;
+  --primary: #13B5EA;
+  --primary-hover: #0E9BCC;
+  --primary-foreground: #04141d;
+  --primary-ring: #13B5EA;
+  --secondary: #161d2b;
+  --secondary-foreground: #e5e7eb;
+  --muted: #141b29;
+  --muted-foreground: #94a3b8;
+  --accent: #11283a;
+  --accent-foreground: #5fd0f5;
+  --destructive: #f87171;
+  --destructive-foreground: #1a0606;
+  --border: #1f2a3a;
+  --input: #1f2a3a;
+  --input-background: #111827;
+  --switch-background: #334155;
+  --ring: #13B5EA;
+
+  --success: #34d399;
+  --warning: #fbbf24;
+  --error: #f87171;
+  --info: #38bdf8;
+
+  --text-main: #e5e7eb;
+  --text-muted: #94a3b8;
+
+  --sidebar: #0a0e17;
+  --sidebar-foreground: #e5e7eb;
+  --sidebar-primary: #13B5EA;
+  --sidebar-primary-foreground: #04141d;
+  --sidebar-accent: #141b29;
+  --sidebar-accent-foreground: #e5e7eb;
+  --sidebar-border: #1f2a3a;
+  --sidebar-ring: #13B5EA;
 }
 
 @theme inline {
