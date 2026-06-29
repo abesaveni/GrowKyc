@@ -885,15 +885,46 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
                 </p>
               </div>
 
-              {/* Logged-in user (read-only; role switching removed) */}
+              {/* Logged-in user — click for the Sign Out menu */}
               <div className="relative ml-1 sm:ml-4 flex-shrink-0">
-                <div className="flex items-center gap-2 border border-white/30 bg-white/10 text-white rounded-md px-2 py-1 h-8 sm:h-9">
+                <button
+                  onClick={() => setIsUserMenuOpen((o) => !o)}
+                  className="flex items-center gap-2 border border-white/30 bg-white/10 hover:bg-white/20 text-white rounded-md px-2 py-1 h-8 sm:h-9 transition-colors"
+                >
                   <span className="text-base sm:text-lg">{currentUser.avatar}</span>
                   <div className="text-left hidden md:block leading-tight">
                     <div className="text-xs font-semibold">{currentUser.name}</div>
                     <div className="text-[10px] text-white/70">{currentUser.title}</div>
                   </div>
-                </div>
+                  <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isUserMenuOpen ? 'rotate-180' : ''}`} />
+                </button>
+                {isUserMenuOpen && (
+                  <>
+                    <div className="fixed inset-0 z-40" onClick={() => setIsUserMenuOpen(false)} />
+                    <div className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-gray-200 z-50 overflow-hidden">
+                      <div className="px-4 py-3 border-b border-gray-100">
+                        <p className="text-sm font-semibold text-gray-900">{currentUser.name}</p>
+                        <p className="text-xs text-gray-500">{currentUser.title}</p>
+                      </div>
+                      <button
+                        onClick={() => {
+                          setIsUserMenuOpen(false);
+                          if (!selectedRole) return;
+                          navigate(`/${rolePath}/settings`);
+                        }}
+                        className="w-full text-left px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 flex items-center gap-2"
+                      >
+                        <Settings className="w-4 h-4 text-gray-500" />Settings
+                      </button>
+                      <button
+                        onClick={() => { setIsUserMenuOpen(false); logout(); }}
+                        className="w-full text-left px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 flex items-center gap-2 border-t border-gray-100"
+                      >
+                        <LogOut className="w-4 h-4" />Sign Out
+                      </button>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
 

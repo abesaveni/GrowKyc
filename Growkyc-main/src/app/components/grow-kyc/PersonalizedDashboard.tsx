@@ -204,14 +204,14 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
         <div className="flex items-center gap-6 mb-6">
           <div className="text-6xl">{userAvatar}</div>
           <div>
-            <h1 className="text-4xl font-bold mb-2">Welcome back, {userName.split(' ')[0]}!</h1>
+            <h1 className="text-2xl font-bold mb-1">Welcome back, {userName.split(' ')[0]}!</h1>
             <p className="text-white/90 text-xl">{userTitle} • {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}</p>
           </div>
         </div>
         <div className="grid grid-cols-4 gap-6 mt-8">
           <div
             onClick={onNavigateToRequirements}
-            className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 cursor-pointer hover:bg-white/20 hover:scale-105 transition-all duration-300 h-40 flex flex-col justify-between"
+            className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 cursor-pointer hover:bg-white/20 hover:scale-105 transition-all duration-300 h-40 flex flex-col justify-between"
           >
             <div>
               <div className="text-4xl font-bold mb-1">23</div>
@@ -221,7 +221,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
           </div>
           <div
             onClick={onNavigateToRequirements}
-            className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 cursor-pointer hover:bg-white/20 hover:scale-105 transition-all duration-300 h-40 flex flex-col justify-between"
+            className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 cursor-pointer hover:bg-white/20 hover:scale-105 transition-all duration-300 h-40 flex flex-col justify-between"
           >
             <div>
               <div className="text-4xl font-bold mb-1">8</div>
@@ -231,7 +231,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
           </div>
           <div
             onClick={onNavigateToRequirements}
-            className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 cursor-pointer hover:bg-white/20 hover:scale-105 transition-all duration-300 h-40 flex flex-col justify-between"
+            className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 cursor-pointer hover:bg-white/20 hover:scale-105 transition-all duration-300 h-40 flex flex-col justify-between"
           >
             <div>
               <div className="text-4xl font-bold mb-1">156</div>
@@ -241,7 +241,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
           </div>
           <div
             onClick={onNavigateToRequirements}
-            className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 cursor-pointer hover:bg-white/20 hover:scale-105 transition-all duration-300 h-40 flex flex-col justify-between"
+            className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 cursor-pointer hover:bg-white/20 hover:scale-105 transition-all duration-300 h-40 flex flex-col justify-between"
           >
             <div>
               <div className="text-4xl font-bold mb-1">94%</div>
@@ -830,19 +830,19 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
           </div>
         </div>
         <div className="grid grid-cols-4 gap-6 mt-8">
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 hover:bg-white/20 transition-all">
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/20 transition-all">
             <div className="text-4xl font-bold mb-1">14</div>
             <div className="text-sm text-cyan-100 font-medium">Cases Assigned</div>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 hover:bg-white/20 transition-all">
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/20 transition-all">
             <div className="text-4xl font-bold mb-1">6</div>
             <div className="text-sm text-cyan-100 font-medium">High Priority</div>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 hover:bg-white/20 transition-all">
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/20 transition-all">
             <div className="text-4xl font-bold mb-1">23</div>
             <div className="text-sm text-cyan-100 font-medium">Alerts Today</div>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 hover:bg-white/20 transition-all">
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/20 transition-all">
             <div className="text-4xl font-bold mb-1">87%</div>
             <div className="text-sm text-cyan-100 font-medium">Resolution Rate</div>
           </div>

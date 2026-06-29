@@ -117,7 +117,7 @@ export function ComplianceManagerDecision({ caseId, onBack }: ComplianceManagerD
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
+    <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-[1600px] mx-auto space-y-6">
         {/* Header */}
         <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white shadow-xl">
@@ -129,11 +129,11 @@ export function ComplianceManagerDecision({ caseId, onBack }: ComplianceManagerD
                   Back
                 </Button>
               )}
-              <div className="w-14 h-14 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border-2 border-white/20">
+              <div className="w-11 h-11 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border-2 border-white/20">
                 <Shield className="w-8 h-8" />
               </div>
               <div>
-                <h1 className="text-3xl font-bold">Compliance Manager Decision</h1>
+                <h1 className="text-2xl font-bold">Compliance Manager Decision</h1>
                 <p className="text-white/90">Final decision point for {caseData.caseId}</p>
               </div>
             </div>
@@ -152,7 +152,7 @@ export function ComplianceManagerDecision({ caseId, onBack }: ComplianceManagerD
             </CardTitle>
           </CardHeader>
           <CardContent className="p-6">
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-3 gap-4">
               <div>
                 <p className="text-sm text-gray-600 mb-1">Subject</p>
                 <p className="font-bold text-lg text-gray-900">{caseData.subject}</p>
@@ -203,7 +203,7 @@ export function ComplianceManagerDecision({ caseId, onBack }: ComplianceManagerD
             </CardTitle>
           </CardHeader>
           <CardContent className="p-6">
-            <div className="grid md:grid-cols-3 gap-6 mb-6">
+            <div className="grid md:grid-cols-3 gap-4 mb-6">
               <div>
                 <p className="text-sm text-gray-600 mb-1">Analyst</p>
                 <p className="font-bold text-gray-900">{recommendation.analyst}</p>
@@ -350,7 +350,7 @@ export function ComplianceManagerDecision({ caseId, onBack }: ComplianceManagerD
 
                 <Button
                   onClick={handleDecision}
-                  className="w-full bg-red-600 hover:bg-red-700 text-white text-xl py-8"
+                  className="w-full bg-red-600 hover:bg-red-700 text-white text-base py-4"
                 >
                   <CheckCircle className="w-6 h-6 mr-3" />
                   Confirm Final Decision
@@ -409,12 +409,12 @@ export function ComplianceManagerDecision({ caseId, onBack }: ComplianceManagerD
           <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
             <Card className="w-full max-w-2xl border-4 border-red-500 shadow-2xl">
               <CardHeader className="bg-red-900 text-white">
-                <CardTitle className="text-2xl flex items-center gap-3">
+                <CardTitle className="text-xl flex items-center gap-2">
                   <AlertTriangle className="w-8 h-8" />
                   Confirm Final Decision
                 </CardTitle>
               </CardHeader>
-              <CardContent className="p-8">
+              <CardContent className="p-6">
                 <div className="space-y-6">
                   <p className="text-lg text-gray-900">
                     You are about to make a final decision on case <strong>{caseData.caseId}</strong>.
