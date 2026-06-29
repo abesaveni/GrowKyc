@@ -83,6 +83,7 @@ type View =
   | 'transaction_monitoring'
   | 'individual_onboarding'
   | 'client_onboarding'
+  | 'entity_onboarding'
   | 'system_settings'
   | 'integration_hub'
   | 'health_check'
@@ -128,6 +129,7 @@ const getRoleSearchItems = (role: ViewRole): SearchSuggestionItem[] => {
       { label: 'AUSTRAC Compliance', type: 'tab', icon: Shield, view: 'au' },
       { label: 'Audit Log', type: 'tab', icon: Activity, view: 'admin_audit_log' },
       { label: 'Client Onboarding', type: 'page', icon: Users, view: 'client_onboarding' },
+      { label: 'Entity Onboarding', type: 'page', icon: Briefcase, view: 'entity_onboarding' },
       { label: 'Alpha Holdings Pty Ltd', type: 'client', icon: Users, view: 'client_detail', id: 'C001' },
       { label: 'John Smith', type: 'client', icon: Users, view: 'client_detail', id: 'C002' },
       { label: 'EDD Investigation - Alpha Holdings', type: 'case', icon: FileText, view: 'case_detail', id: 'CASE-001' },
@@ -289,6 +291,7 @@ const VIEW_TO_PATH_SUFFIX: Partial<Record<View, string>> = {
   transaction_monitoring: '/transactions',
   individual_onboarding: '/onboarding',
   client_onboarding: '/client-onboarding',
+  entity_onboarding: '/entity-onboarding',
   system_settings: '/settings',
   integration_hub: '/integrations',
   health_check: '/health',
@@ -315,6 +318,7 @@ const PATH_SUFFIX_TO_VIEW: Record<string, View> = {
   '/transactions': 'transaction_monitoring',
   '/onboarding': 'individual_onboarding',
   '/client-onboarding': 'client_onboarding',
+  '/entity-onboarding': 'entity_onboarding',
   '/settings': 'system_settings',
   '/integrations': 'integration_hub',
   '/health': 'health_check',
@@ -1155,6 +1159,21 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
                           </button>
                         )}
 
+                        {/* 1b. Entity Onboarding (company/trust/partnership) - Restricted from Auditors */}
+                        {selectedRole !== 'auditor' && (
+                          <button
+                            onClick={() => {
+                              setIsMoreDropdownOpen(false);
+                              if (!selectedRole) return;
+                              navigate(`/${rolePath}/entity-onboarding`);
+                            }}
+                            className="w-full text-left text-gray-700 hover:bg-gray-50 flex items-center gap-3 px-4 py-2.5 text-sm font-semibold transition-colors"
+                          >
+                            <Briefcase className="w-4 h-4 text-gray-500 flex-shrink-0" />
+                            <span className="flex-1">Entity Onboarding</span>
+                          </button>
+                        )}
+
                         {/* 2. Action Items */}
                         <button
                           onClick={() => {
@@ -1676,6 +1695,17 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
               if (selectedRole === 'partner') setCurrentView('partner_dashboard');
               if (selectedRole === 'auditor') setCurrentView('audit_dashboard');
               if (selectedRole === 'analyst') setCurrentView('compliance_dashboard');
+            }}
+          />
+        )}
+        {currentView === 'entity_onboarding' && (
+          <ClientOnboardingWizard
+            onClose={() => {
+              if (selectedRole === 'compliance_officer') setCurrentView('compliance_dashboard');
+              else if (selectedRole === 'partner') setCurrentView('partner_dashboard');
+              else if (selectedRole === 'auditor') setCurrentView('audit_dashboard');
+              else if (selectedRole === 'analyst') setCurrentView('compliance_dashboard');
+              else setCurrentView('kyc_dashboard_overview');
             }}
           />
         )}
