@@ -151,6 +151,29 @@ async def get_profile(
     return UserResponse.model_validate(current_user)
 
 
+@router.get("/permissions")
+async def get_my_permissions(
+    current_user: User = Depends(get_current_user),
+) -> dict:
+    """Return the current user's role, label, and granted permission keys.
+
+    The frontend uses this single source of truth to drive landing pages,
+    navigation visibility, and per-action gating.
+    """
+    from core.permissions import label_for, permissions_for
+
+    role_value = (
+        current_user.role.value
+        if hasattr(current_user.role, "value")
+        else current_user.role
+    )
+    return {
+        "role": role_value,
+        "role_label": label_for(current_user.role),
+        "permissions": sorted(permissions_for(current_user.role)),
+    }
+
+
 @router.post("/refresh-token", response_model=TokenResponse)
 @limiter.limit("20/minute")
 async def refresh_token(

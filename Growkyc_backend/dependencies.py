@@ -256,6 +256,47 @@ def require_role(allowed_roles: list[str]):
     return role_checker
 
 
+def require_permission(permission: str):
+    """Permission-based access control dependency (RBAC matrix).
+
+    Prefer this over role lists: it checks the single source-of-truth matrix in
+    core/permissions.py, so endpoints declare the capability they need rather
+    than hard-coding which roles have it.
+
+    Example:
+        @router.post("/cases")
+        async def create_case(
+            user: User = Depends(require_permission("case:create"))
+        ):
+            ...
+    """
+
+    async def permission_checker(
+        current_user: User = Depends(get_current_user),
+    ) -> User:
+        from core.permissions import has_permission
+
+        if not has_permission(current_user.role, permission):
+            role_value = (
+                current_user.role.value
+                if hasattr(current_user.role, "value")
+                else current_user.role
+            )
+            logger.warning(
+                "Permission denied: user %s (role %s) lacks %s",
+                current_user.id,
+                role_value,
+                permission,
+            )
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail=f"Missing required permission: {permission}",
+            )
+        return current_user
+
+    return permission_checker
+
+
 async def get_active_user(
     current_user: User = Depends(get_current_user),
 ) -> User:
