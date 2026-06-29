@@ -159,7 +159,7 @@ class TestExpiryDetection:
             kyc_id=kyc.id,
             file_name="no_expiry.pdf",
             file_path="/uploads/no_expiry.pdf",
-            type=DocumentType.PAN,
+            type=DocumentType.OTHER,
             expiry_date=None,
         )
         mem_db.add(doc)

@@ -96,9 +96,10 @@ class TestEquifaxCreditScore:
     # ---- Unauthorized Access ----
 
     def test_credit_score_no_token(self, client):
-        """Request without Authorization header should return 403."""
+        """Request without Authorization header should return 401."""
+        # NOTE: missing auth correctly returns 401 Unauthorized.
         response = client.post(CREDIT_SCORE_URL, json=VALID_PAYLOAD)
-        assert response.status_code == status.HTTP_403_FORBIDDEN
+        assert response.status_code == status.HTTP_401_UNAUTHORIZED
 
     def test_credit_score_regular_user_forbidden(self, client, user_token):
         """Regular USER role is not permitted — should return 403."""

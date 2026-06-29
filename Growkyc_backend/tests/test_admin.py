@@ -63,7 +63,18 @@ class TestAdminKYCOperations:
                 json={"aadhaar": f"12345678901{i}", "name": f"User {i}"},
             )
             if response.status_code == status.HTTP_201_CREATED:
-                kyc_ids.append(response.json()["id"])
+                kyc_id = response.json()["id"]
+                kyc_ids.append(kyc_id)
+                # NOTE: approval requires at least one supporting document.
+                client.post(
+                    "/api/v1/kyc/upload-document",
+                    headers=user_headers,
+                    json={
+                        "kyc_id": kyc_id,
+                        "document_type": "Passport",
+                        "file_name": f"passport_{i}.pdf",
+                    },
+                )
 
         # Bulk approve
         admin_headers = {"Authorization": f"Bearer {admin_token}"}
@@ -86,6 +97,17 @@ class TestAdminKYCOperations:
             json={"aadhaar": "123456789012", "name": "John Doe"},
         )
         kyc_id = kyc_response.json()["id"]
+
+        # NOTE: approval requires at least one supporting document.
+        client.post(
+            "/api/v1/kyc/upload-document",
+            headers=user_headers,
+            json={
+                "kyc_id": kyc_id,
+                "document_type": "Passport",
+                "file_name": "passport.pdf",
+            },
+        )
 
         # Approve it
         agent_headers = {"Authorization": f"Bearer {agent_token}"}

@@ -54,9 +54,11 @@ class TestKYCSubmission:
 
     def test_submit_kyc_no_identifiers(self, client, user_token):
         """Test KYC submission without identifiers."""
+        # NOTE: name is now a valid identifier (Australian clients submit docs
+        # separately), so an empty body is required to trigger the 422.
         headers = {"Authorization": f"Bearer {user_token}"}
         response = client.post(
-            "/api/v1/kyc/submit", headers=headers, json={"name": "John Doe"}
+            "/api/v1/kyc/submit", headers=headers, json={}
         )
         assert response.status_code == status.HTTP_422_UNPROCESSABLE_ENTITY
 
@@ -82,11 +84,12 @@ class TestKYCSubmission:
 
     def test_submit_kyc_without_auth(self, client):
         """Test KYC submission without authentication."""
+        # NOTE: missing auth correctly returns 401 Unauthorized.
         response = client.post(
             "/api/v1/kyc/submit",
             json={"aadhaar": "123456789012", "name": "John Doe"},
         )
-        assert response.status_code == status.HTTP_403_FORBIDDEN
+        assert response.status_code == status.HTTP_401_UNAUTHORIZED
 
 
 class TestKYCStatus:
@@ -119,8 +122,9 @@ class TestKYCStatus:
 
     def test_get_kyc_status_without_auth(self, client):
         """Test getting status without authentication."""
+        # NOTE: missing auth correctly returns 401 Unauthorized.
         response = client.get("/api/v1/kyc/status")
-        assert response.status_code == status.HTTP_403_FORBIDDEN
+        assert response.status_code == status.HTTP_401_UNAUTHORIZED
 
 
 class TestDocumentUpload:
@@ -140,18 +144,19 @@ class TestDocumentUpload:
         kyc_id = kyc_response.json()["id"]
 
         # Upload document
+        # NOTE: DocumentType enum is Australian; "Passport" is a valid value.
         doc_response = client.post(
             "/api/v1/kyc/upload-document",
             headers=headers,
             json={
                 "kyc_id": kyc_id,
-                "document_type": "AadhaarCard",
-                "file_name": "aadhaar_front.pdf",
+                "document_type": "Passport",
+                "file_name": "passport_front.pdf",
             },
         )
         assert doc_response.status_code == status.HTTP_201_CREATED
         data = doc_response.json()
-        assert data["type"] == "AadhaarCard"
+        assert data["type"] == "Passport"
         assert "uploads" in data["file_path"]
 
     def test_upload_document_invalid_kyc(self, client, user_token):
@@ -162,7 +167,7 @@ class TestDocumentUpload:
             headers=headers,
             json={
                 "kyc_id": 9999,
-                "document_type": "AadhaarCard",
+                "document_type": "Passport",
                 "file_name": "file.pdf",
             },
         )
@@ -170,15 +175,16 @@ class TestDocumentUpload:
 
     def test_upload_document_without_auth(self, client):
         """Test document upload without authentication."""
+        # NOTE: missing auth correctly returns 401 Unauthorized.
         response = client.post(
             "/api/v1/kyc/upload-document",
             json={
                 "kyc_id": 1,
-                "document_type": "AadhaarCard",
+                "document_type": "Passport",
                 "file_name": "file.pdf",
             },
         )
-        assert response.status_code == status.HTTP_403_FORBIDDEN
+        assert response.status_code == status.HTTP_401_UNAUTHORIZED
 
 
 class TestKYCApproval:
@@ -194,6 +200,17 @@ class TestKYCApproval:
             json={"aadhaar": "123456789012", "name": "John Doe"},
         )
         kyc_id = kyc_response.json()["id"]
+
+        # NOTE: approval now requires at least one uploaded supporting document.
+        client.post(
+            "/api/v1/kyc/upload-document",
+            headers=user_headers,
+            json={
+                "kyc_id": kyc_id,
+                "document_type": "Passport",
+                "file_name": "passport.pdf",
+            },
+        )
 
         # Approve as agent
         agent_headers = {"Authorization": f"Bearer {agent_token}"}

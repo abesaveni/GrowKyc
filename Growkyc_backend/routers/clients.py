@@ -10,6 +10,7 @@ import os
 
 from core.enums import UserRole
 from core.limiter import limiter
+from core.tenant_context import get_tenant_id, set_tenant_id
 from database import get_db
 from dependencies import get_admin_or_agent_user, get_current_user
 from models import Client, User, Payment, PaymentStatus
@@ -103,6 +104,14 @@ async def create_individual_client(
     """
     Onboard a retail client. Creates Client and IndividualProfile.
     """
+    # Ensure tenant context is bound to the authenticated user's tenant.
+    # Starlette's BaseHTTPMiddleware does not reliably propagate the contextvar
+    # set in TenantContextMiddleware into the endpoint/service execution
+    # context, so derive it here from the trusted current_user. A user can only
+    # ever act within their own tenant, so this does not weaken isolation.
+    if get_tenant_id() is None and current_user.tenant_id is not None:
+        set_tenant_id(current_user.tenant_id)
+
     payment_required = os.getenv("PAYMENT_REQUIRED", "false").lower() == "true"
     if payment_required:
         has_paid = db.query(Payment.id).filter(
@@ -137,6 +146,11 @@ async def create_entity_client(
     """
     Onboard a corporate client. Creates Client and EntityProfile.
     """
+    # See create_individual_client: bind tenant context from the trusted
+    # current_user because BaseHTTPMiddleware does not reliably propagate it.
+    if get_tenant_id() is None and current_user.tenant_id is not None:
+        set_tenant_id(current_user.tenant_id)
+
     payment_required = os.getenv("PAYMENT_REQUIRED", "false").lower() == "true"
     if payment_required:
         has_paid = db.query(Payment.id).filter(
