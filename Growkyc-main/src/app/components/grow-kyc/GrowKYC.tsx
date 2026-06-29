@@ -55,6 +55,7 @@ import { ClientKYCDashboard } from '../kyc/ClientKYCDashboard';
 import { CaseControlCentre, CaseWorkbench } from '../cases';
 import { KYCDashboardOverview } from './KYCDashboardOverview';
 import { ActionItemsCenter } from './ActionItemsCenter';
+import { ActionItemsLive } from '../kyc/ActionItemsLive';
 import { ClientReview } from './ClientReview';
 import { ClientOnboarding } from '../kyc/ClientOnboarding';
 import { ClientOnboardingWizard } from '../kyc/ClientOnboardingWizard';
@@ -1817,11 +1818,13 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
           />
         )}
         {currentView === 'action_items' && (
-          <ActionItemsCenter
-            onViewClient={(clientId) => {
-              setSelectedClientId(clientId);
-              setCurrentView('client_kyc_dashboard');
+          <ActionItemsLive
+            onBack={() => {
+              if (selectedRole === 'partner') setCurrentView('partner_dashboard');
+              else if (selectedRole === 'auditor') setCurrentView('audit_dashboard');
+              else setCurrentView('compliance_dashboard');
             }}
+            onNavigate={(view) => setCurrentView(view as typeof currentView)}
           />
         )}
         {currentView === 'case_management' && (
