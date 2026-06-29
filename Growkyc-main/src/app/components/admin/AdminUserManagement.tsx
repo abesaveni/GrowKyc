@@ -22,11 +22,17 @@ import {
 } from 'lucide-react';
 import { format } from 'date-fns';
 
+interface RoleOption {
+  value: string;
+  label: string;
+}
+
 interface User {
   id: string;
   name: string;
   email: string;
-  role: 'admin' | 'agent' | 'user';
+  role: string;        // canonical backend role value, e.g. "Compliance_Officer"
+  roleLabel: string;   // human label, e.g. "Compliance Officer"
   status: 'active' | 'suspended';
   kycStatus: 'approved' | 'pending';
   joinedDate: Date;
@@ -42,7 +48,8 @@ function mapBackendUser(u: any): User {
     id: String(u.id),
     name: u.name || u.email,
     email: u.email,
-    role: (u.role || 'user').toLowerCase() as User['role'],
+    role: u.role || 'User',
+    roleLabel: u.role_label || u.role || 'User',
     status: u.is_active ? 'active' : 'suspended',
     kycStatus: u.verified ? 'approved' : 'pending',
     joinedDate: new Date(u.created_at),
@@ -60,6 +67,55 @@ export function AdminUserManagement() {
     type: 'delete' | 'suspend' | 'activate' | null;
     user: User | null;
   }>({ open: false, type: null, user: null });
+
+  const [roles, setRoles] = useState<RoleOption[]>([]);
+  const [showCreate, setShowCreate] = useState(false);
+  const [creating, setCreating] = useState(false);
+  const [createForm, setCreateForm] = useState({ name: '', email: '', password: '', role: '' });
+
+  const roleLabelFor = useCallback(
+    (value: string) => roles.find(r => r.value === value)?.label || value,
+    [roles]
+  );
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await fetch('/api/v1/admin/roles', {
+          headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
+        });
+        if (res.ok) setRoles(await res.json());
+      } catch { /* roles are best-effort; dropdown falls back to raw values */ }
+    })();
+  }, []);
+
+  const handleCreateUser = async () => {
+    const { name, email, password, role } = createForm;
+    if (!name || !email || !password || !role) {
+      toast.error('All fields are required');
+      return;
+    }
+    setCreating(true);
+    try {
+      const res = await fetch('/api/v1/admin/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
+        body: JSON.stringify({ name, email, password, role }),
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(typeof err?.detail === 'string' ? err.detail : `Create failed (${res.status})`);
+      }
+      toast.success(`${name} created as ${roleLabelFor(role)}`);
+      setShowCreate(false);
+      setCreateForm({ name: '', email: '', password: '', role: '' });
+      fetchUsers();
+    } catch (err: any) {
+      toast.error(err?.message || 'Failed to create user');
+    } finally {
+      setCreating(false);
+    }
+  };
 
   const fetchUsers = useCallback(async () => {
     setLoading(true);
@@ -215,6 +271,59 @@ export function AdminUserManagement() {
     <div className="space-y-6">
       <Breadcrumbs items={breadcrumbItems} />
 
+      {/* Header + Create User */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-semibold text-gray-900">User Management</h1>
+          <p className="text-sm text-gray-500">Create users and assign compliance roles.</p>
+        </div>
+        <Button onClick={() => setShowCreate(true)}>
+          <UserCheck className="w-4 h-4 mr-2" />
+          Create User
+        </Button>
+      </div>
+
+      {/* Create User modal */}
+      {showCreate && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4" onClick={() => !creating && setShowCreate(false)}>
+          <div className="bg-white rounded-lg shadow-xl w-full max-w-md p-6 space-y-4" onClick={e => e.stopPropagation()}>
+            <h2 className="text-lg font-semibold text-gray-900">Create User</h2>
+            <div className="space-y-3">
+              <div>
+                <label className="text-sm text-gray-700">Full name</label>
+                <Input value={createForm.name} onChange={e => setCreateForm(f => ({ ...f, name: e.target.value }))} placeholder="Jane Smith" />
+              </div>
+              <div>
+                <label className="text-sm text-gray-700">Email</label>
+                <Input type="email" value={createForm.email} onChange={e => setCreateForm(f => ({ ...f, email: e.target.value }))} placeholder="jane@firm.com" />
+              </div>
+              <div>
+                <label className="text-sm text-gray-700">Temporary password</label>
+                <Input type="password" value={createForm.password} onChange={e => setCreateForm(f => ({ ...f, password: e.target.value }))} placeholder="Min 12 chars, 1 special" />
+              </div>
+              <div>
+                <label className="text-sm text-gray-700">Role</label>
+                <select
+                  className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
+                  value={createForm.role}
+                  onChange={e => setCreateForm(f => ({ ...f, role: e.target.value }))}
+                >
+                  <option value="">Select a role…</option>
+                  {roles.map(r => <option key={r.value} value={r.value}>{r.label}</option>)}
+                </select>
+              </div>
+            </div>
+            <div className="flex justify-end gap-2 pt-2">
+              <Button variant="outline" onClick={() => setShowCreate(false)} disabled={creating}>Cancel</Button>
+              <Button onClick={handleCreateUser} disabled={creating}>
+                {creating ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : null}
+                Create
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <Card>
@@ -301,9 +410,7 @@ export function AdminUserManagement() {
                 className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="all">All Roles</option>
-                <option value="admin">Admin</option>
-                <option value="agent">Agent</option>
-                <option value="user">User</option>
+                {roles.map(r => <option key={r.value} value={r.value}>{r.label}</option>)}
               </select>
 
               <select
@@ -387,12 +494,15 @@ export function AdminUserManagement() {
                         <select
                           value={user.role}
                           onChange={(e) => handleRoleChange(user.id, e.target.value)}
-                          className="px-2 py-1 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary capitalize"
+                          className="px-2 py-1 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          <option value="admin">Admin</option>
-                          <option value="agent">Agent</option>
-                          <option value="user">User</option>
+                          {/* Ensure the user's current role is selectable even if
+                              not in the assignable list (e.g. legacy roles). */}
+                          {!roles.some(r => r.value === user.role) && (
+                            <option value={user.role}>{user.roleLabel}</option>
+                          )}
+                          {roles.map(r => <option key={r.value} value={r.value}>{r.label}</option>)}
                         </select>
                       </TableCell>
                       <TableCell>{getStatusBadge(user.status)}</TableCell>
