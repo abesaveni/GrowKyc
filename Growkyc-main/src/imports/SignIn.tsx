@@ -97,27 +97,30 @@ export default function SignIn({ onSuccess }: SignInProps) {
   };
 
   return (
-    <div className="flex h-screen w-screen overflow-hidden bg-[#f0f2f5]">
+    <div className="flex h-screen w-screen overflow-hidden bg-[#0a0e17] text-slate-200">
 
-      {/* ── Left panel ── */}
-      <div className="flex flex-col justify-between w-[46%] min-w-[420px] h-full bg-white px-12 py-8 shadow-sm">
+      {/* ── Left panel (form) ── */}
+      <div className="flex flex-col justify-between w-[46%] min-w-[420px] h-full bg-[#0d121d] border-r border-white/5 px-12 py-8">
 
         {/* Logo */}
-        <div className="flex items-center">
-          <img src={imgPrimaryLogoGrow260X1043} alt="Grow Advisory Group" className="h-10 object-contain" />
+        <div className="flex items-center gap-2.5">
+          <div className="size-9 rounded-lg bg-gradient-to-br from-[#13B5EA] to-[#0E7C9E] flex items-center justify-center shadow-lg shadow-[#13B5EA]/20">
+            <svg viewBox="0 0 24 24" className="size-5 text-white" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2L4 5v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V5l-8-3z" strokeLinejoin="round"/></svg>
+          </div>
+          <span className="text-[15px] font-semibold tracking-tight text-white">Grow KYC</span>
         </div>
 
         {/* Form centred vertically */}
         <div className="flex flex-col gap-5 w-full max-w-[400px] mx-auto">
           <div className="mb-1">
-            <h1 className="text-[22px] font-semibold text-[#1a1f36] tracking-tight">Sign in to your account</h1>
-            <p className="text-[13px] text-[#6b7280] mt-1">Welcome back. Enter your credentials to continue.</p>
+            <h1 className="text-[24px] font-semibold text-white tracking-tight">Welcome back</h1>
+            <p className="text-[13px] text-slate-400 mt-1.5">Sign in to your compliance workspace.</p>
           </div>
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             {/* Email */}
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="email" className="text-[13px] font-medium text-[#374151]">Email address</label>
+              <label htmlFor="email" className="text-[12px] font-medium text-slate-400">Email address</label>
               <input
                 id="email"
                 type="email"
@@ -126,17 +129,17 @@ export default function SignIn({ onSuccess }: SignInProps) {
                 placeholder="you@organisation.com.au"
                 autoComplete="email"
                 required
-                className="h-[42px] w-full rounded-lg border border-[#d1d5db] bg-white px-3.5 text-[13px] text-[#1a1f36] placeholder:text-[#9ca3af] outline-none focus:border-[#2855a6] focus:ring-2 focus:ring-[#2855a6]/10 transition-all"
+                className="h-[44px] w-full rounded-lg border border-white/10 bg-white/[0.03] px-3.5 text-[13px] text-white placeholder:text-slate-500 outline-none focus:border-[#13B5EA] focus:ring-2 focus:ring-[#13B5EA]/20 transition-all"
               />
             </div>
 
             {/* Password */}
             <div className="flex flex-col gap-1.5">
               <div className="flex items-center justify-between">
-                <label htmlFor="password" className="text-[13px] font-medium text-[#374151]">Password</label>
-                <button type="button" className="text-[12px] text-[#2855a6] hover:underline font-medium">Forgot password?</button>
+                <label htmlFor="password" className="text-[12px] font-medium text-slate-400">Password</label>
+                <button type="button" className="text-[12px] text-[#13B5EA] hover:text-[#3fc7f5] font-medium transition-colors">Forgot password?</button>
               </div>
-              <div className="h-[42px] w-full rounded-lg border border-[#d1d5db] bg-white flex items-center px-3.5 gap-2 focus-within:border-[#2855a6] focus-within:ring-2 focus-within:ring-[#2855a6]/10 transition-all">
+              <div className="h-[44px] w-full rounded-lg border border-white/10 bg-white/[0.03] flex items-center px-3.5 gap-2 focus-within:border-[#13B5EA] focus-within:ring-2 focus-within:ring-[#13B5EA]/20 transition-all">
                 <input
                   id="password"
                   type={showPassword ? 'text' : 'password'}
@@ -145,7 +148,7 @@ export default function SignIn({ onSuccess }: SignInProps) {
                   placeholder="Enter your password"
                   autoComplete="current-password"
                   required
-                  className="flex-1 bg-transparent text-[13px] text-[#1a1f36] placeholder:text-[#9ca3af] outline-none"
+                  className="flex-1 bg-transparent text-[13px] text-white placeholder:text-slate-500 outline-none"
                 />
                 {showPassword
                   ? <EyeOnIcon onClick={() => setShowPassword(false)} />
@@ -160,14 +163,14 @@ export default function SignIn({ onSuccess }: SignInProps) {
                 type="checkbox"
                 checked={rememberMe}
                 onChange={(e) => setRememberMe(e.target.checked)}
-                className="size-[14px] rounded border-[#d1d5db] accent-[#2855a6] cursor-pointer"
+                className="size-[14px] rounded border-white/20 bg-transparent accent-[#13B5EA] cursor-pointer"
               />
-              <span className="text-[13px] text-[#374151]">Remember me for 30 days</span>
+              <span className="text-[13px] text-slate-400">Remember me for 30 days</span>
             </label>
 
             {/* Error */}
             {error && (
-              <div className="rounded-lg bg-red-50 border border-red-200 text-red-700 text-[12px] px-3.5 py-2.5 leading-relaxed">
+              <div className="rounded-lg bg-red-500/10 border border-red-500/30 text-red-300 text-[12px] px-3.5 py-2.5 leading-relaxed">
                 {error}
               </div>
             )}
@@ -176,7 +179,7 @@ export default function SignIn({ onSuccess }: SignInProps) {
             <button
               type="submit"
               disabled={loading}
-              className="h-[42px] w-full rounded-lg bg-[#2855a6] text-white text-[13px] font-semibold tracking-wide hover:bg-[#1e4491] active:bg-[#1a3a7c] disabled:opacity-60 transition-colors shadow-sm"
+              className="h-[44px] w-full rounded-lg bg-gradient-to-r from-[#13B5EA] to-[#0E9BCC] text-white text-[13px] font-semibold tracking-wide hover:from-[#28c0f0] hover:to-[#13a6d8] active:opacity-90 disabled:opacity-60 transition-all shadow-lg shadow-[#13B5EA]/20"
             >
               {loading ? 'Signing in…' : 'Sign in'}
             </button>
@@ -184,9 +187,9 @@ export default function SignIn({ onSuccess }: SignInProps) {
 
           {/* Divider */}
           <div className="flex items-center gap-3">
-            <div className="flex-1 h-px bg-[#e5e7eb]" />
-            <span className="text-[12px] text-[#9ca3af] font-medium">or continue with</span>
-            <div className="flex-1 h-px bg-[#e5e7eb]" />
+            <div className="flex-1 h-px bg-white/10" />
+            <span className="text-[12px] text-slate-500 font-medium">or continue with</span>
+            <div className="flex-1 h-px bg-white/10" />
           </div>
 
           {/* OAuth */}
@@ -195,7 +198,7 @@ export default function SignIn({ onSuccess }: SignInProps) {
               type="button"
               onClick={() => handleOAuth('google')}
               disabled={!!oauthLoading}
-              className="h-[40px] flex items-center justify-center gap-2 rounded-lg border border-[#d1d5db] bg-white text-[13px] text-[#374151] font-medium hover:bg-[#f9fafb] active:bg-[#f3f4f6] disabled:opacity-60 transition-colors"
+              className="h-[42px] flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/[0.03] text-[13px] text-slate-300 font-medium hover:bg-white/[0.06] active:bg-white/[0.08] disabled:opacity-60 transition-colors"
             >
               <GoogleIcon />
               {oauthLoading === 'google' ? 'Redirecting…' : 'Google'}
@@ -204,7 +207,7 @@ export default function SignIn({ onSuccess }: SignInProps) {
               type="button"
               onClick={() => handleOAuth('microsoft')}
               disabled={!!oauthLoading}
-              className="h-[40px] flex items-center justify-center gap-2 rounded-lg border border-[#d1d5db] bg-white text-[13px] text-[#374151] font-medium hover:bg-[#f9fafb] active:bg-[#f3f4f6] disabled:opacity-60 transition-colors"
+              className="h-[42px] flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/[0.03] text-[13px] text-slate-300 font-medium hover:bg-white/[0.06] active:bg-white/[0.08] disabled:opacity-60 transition-colors"
             >
               <MicrosoftIcon />
               {oauthLoading === 'microsoft' ? 'Redirecting…' : 'Microsoft'}
@@ -213,48 +216,48 @@ export default function SignIn({ onSuccess }: SignInProps) {
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between text-[11px] text-[#9ca3af]">
+        <div className="flex items-center justify-between text-[11px] text-slate-500">
           <span>© {new Date().getFullYear()} Grow Advisory Group</span>
           <div className="flex items-center gap-3">
-            <button type="button" className="hover:text-[#2855a6] hover:underline transition-colors">Privacy Policy</button>
+            <button type="button" className="hover:text-slate-300 transition-colors">Privacy Policy</button>
             <span>·</span>
-            <button type="button" className="hover:text-[#2855a6] hover:underline transition-colors">Terms of Use</button>
+            <button type="button" className="hover:text-slate-300 transition-colors">Terms of Use</button>
           </div>
         </div>
       </div>
 
-      {/* ── Right panel ── */}
-      <div className="flex-1 h-full bg-[#2855a6] relative overflow-hidden flex flex-col justify-between p-12">
+      {/* ── Right panel (showcase) ── */}
+      <div className="flex-1 h-full relative overflow-hidden flex flex-col justify-between p-12 bg-gradient-to-br from-[#0d121d] via-[#0f1b2d] to-[#0a1622]">
 
-        {/* Background decorative circles */}
-        <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-white/5" />
-        <div className="absolute top-1/3 -right-16 w-64 h-64 rounded-full bg-white/5" />
-        <div className="absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-white/5" />
+        {/* Decorative glow */}
+        <div className="absolute -top-32 -right-24 w-[28rem] h-[28rem] rounded-full bg-[#13B5EA]/10 blur-3xl" />
+        <div className="absolute -bottom-32 -left-24 w-[24rem] h-[24rem] rounded-full bg-[#0E7C9E]/10 blur-3xl" />
+        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '32px 32px' }} />
 
         {/* Headline */}
         <div className="relative z-10 flex flex-col gap-4 mt-8">
-          <div className="inline-flex items-center gap-2 bg-white/10 rounded-full px-4 py-1.5 w-fit">
-            <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-            <span className="text-white/90 text-[12px] font-medium tracking-wide">Trusted by Australian Financial Services</span>
+          <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 w-fit">
+            <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-slate-300 text-[12px] font-medium tracking-wide">Trusted by Australian Financial Services</span>
           </div>
-          <h2 className="text-white text-[36px] font-bold leading-tight tracking-tight">
-            Australia's leading<br />compliance platform
+          <h2 className="text-white text-[38px] font-bold leading-[1.1] tracking-tight">
+            Australia's leading<br /><span className="bg-gradient-to-r from-[#13B5EA] to-[#5eead4] bg-clip-text text-transparent">compliance platform</span>
           </h2>
-          <p className="text-white/70 text-[14px] leading-relaxed max-w-xs">
+          <p className="text-slate-400 text-[14px] leading-relaxed max-w-sm">
             Streamline KYC onboarding, AML/CTF screening, and regulatory reporting with AI-powered automation.
           </p>
         </div>
 
-        {/* Analytics card */}
-        <div className="relative z-10 bg-white rounded-2xl p-6 shadow-xl">
+        {/* Analytics card (dark glass) */}
+        <div className="relative z-10 bg-white/[0.04] backdrop-blur-xl border border-white/10 rounded-2xl p-6 shadow-2xl">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <p className="text-[14px] font-semibold text-[#1a1f36]">Compliance Overview</p>
-              <p className="text-[12px] text-[#6b7280] mt-0.5">Monthly verification performance</p>
+              <p className="text-[14px] font-semibold text-white">Compliance Overview</p>
+              <p className="text-[12px] text-slate-400 mt-0.5">Monthly verification performance</p>
             </div>
-            <div className="flex items-center gap-1.5 bg-emerald-50 rounded-full px-3 py-1">
-              <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-              <span className="text-[11px] text-emerald-700 font-semibold">98.4% pass rate</span>
+            <div className="flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">
+              <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              <span className="text-[11px] text-emerald-300 font-semibold">98.4% pass rate</span>
             </div>
           </div>
 
@@ -263,27 +266,27 @@ export default function SignIn({ onSuccess }: SignInProps) {
             {STAT_BARS.map((bar) => (
               <div key={bar.label} className="flex flex-col items-center gap-1 flex-1">
                 <div
-                  className={`w-full rounded-md transition-all ${bar.active ? 'bg-[#2855a6]' : 'bg-[#e9eef6]'}`}
+                  className={`w-full rounded-md transition-all ${bar.active ? 'bg-gradient-to-t from-[#0E7C9E] to-[#13B5EA]' : 'bg-white/10'}`}
                   style={{ height: `${bar.h}px` }}
                 />
-                <span className="text-[10px] text-[#9ca3af] font-medium">{bar.label}</span>
+                <span className="text-[10px] text-slate-500 font-medium">{bar.label}</span>
               </div>
             ))}
           </div>
 
           {/* Stats row */}
-          <div className="grid grid-cols-3 gap-3 mt-4 pt-4 border-t border-[#f3f4f6]">
+          <div className="grid grid-cols-3 gap-3 mt-4 pt-4 border-t border-white/10">
             <div>
-              <p className="text-[18px] font-bold text-[#1a1f36]">12,847</p>
-              <p className="text-[11px] text-[#9ca3af]">Verifications</p>
+              <p className="text-[18px] font-bold text-white">12,847</p>
+              <p className="text-[11px] text-slate-500">Verifications</p>
             </div>
             <div>
-              <p className="text-[18px] font-bold text-[#1a1f36]">99.1%</p>
-              <p className="text-[11px] text-[#9ca3af]">Uptime SLA</p>
+              <p className="text-[18px] font-bold text-white">99.1%</p>
+              <p className="text-[11px] text-slate-500">Uptime SLA</p>
             </div>
             <div>
-              <p className="text-[18px] font-bold text-[#1a1f36]">{'<2s'}</p>
-              <p className="text-[11px] text-[#9ca3af]">Avg. response</p>
+              <p className="text-[18px] font-bold text-white">{'<2s'}</p>
+              <p className="text-[11px] text-slate-500">Avg. response</p>
             </div>
           </div>
         </div>
