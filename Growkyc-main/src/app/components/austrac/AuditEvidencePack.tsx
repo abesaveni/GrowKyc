@@ -3,6 +3,7 @@ import { toast } from '../../lib/toast';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
+import { downloadRecordPdf, downloadTablePdf } from '../../lib/exportPdf';
 import {
   FileText,
   Download,
@@ -112,9 +113,37 @@ const BOARD_STATS = [
 export function AuditEvidencePack({ onBack }: AuditEvidencePackProps = {}) {
   const [selectedReport, setSelectedReport] = useState<ReportType>('active_cases');
   const [selectedCase, setSelectedCase] = useState<string | null>(null);
+  const [selectedRow, setSelectedRow] = useState<{ columns: string[]; row: string[] } | null>(null);
 
   const current = REGISTERS[selectedReport];
   const table = REGISTER_TABLES[selectedReport];
+
+  // Download the currently-selected register as a real PDF.
+  const downloadRegisterPdf = () => {
+    if (!table) {
+      toast.info('This register has no tabular data to download');
+      return;
+    }
+    downloadTablePdf(
+      `${current.label.replace(/[^a-z0-9]+/gi, '_')}.pdf`,
+      current.label,
+      table.columns,
+      table.rows,
+      table.note,
+    );
+    toast.success(`Downloaded ${table.rows.length} record(s) as PDF`);
+  };
+
+  // Download a single register record as a real PDF.
+  const downloadRowPdf = () => {
+    if (!selectedRow) return;
+    downloadRecordPdf(
+      `${selectedRow.row[0] || 'record'}.pdf`,
+      `${current.label} — ${selectedRow.row[0] || ''}`,
+      selectedRow.columns.map((c, i) => [c, selectedRow.row[i]] as [string, string]),
+    );
+    toast.success('Record downloaded as PDF');
+  };
 
   // Real client-side CSV export of the currently-selected register.
   const exportCsv = () => {
@@ -157,8 +186,8 @@ export function AuditEvidencePack({ onBack }: AuditEvidencePackProps = {}) {
               </div>
             </div>
             <div className="flex gap-2">
-              <Button onClick={() => toast.info('Preparing print view…')} className="bg-white text-slate-800 hover:bg-slate-100"><Printer className="w-4 h-4 mr-2" />Print</Button>
-              <Button onClick={() => toast.success('Download started')} className="bg-white text-slate-800 hover:bg-slate-100"><Download className="w-4 h-4 mr-2" />Download All</Button>
+              <Button onClick={() => window.print()} className="bg-white text-slate-800 hover:bg-slate-100"><Printer className="w-4 h-4 mr-2" />Print</Button>
+              <Button onClick={downloadRegisterPdf} className="bg-white text-slate-800 hover:bg-slate-100"><Download className="w-4 h-4 mr-2" />Download PDF</Button>
             </div>
           </div>
         </div>
@@ -218,7 +247,7 @@ export function AuditEvidencePack({ onBack }: AuditEvidencePackProps = {}) {
                           <td key={ci} className={`py-3 px-4 ${ci === 0 ? 'font-mono font-medium text-gray-900' : 'text-gray-700'}`}>{cell}</td>
                         ))}
                         <td className="py-3 px-4">
-                          <Button variant="outline" size="sm" onClick={() => toast.info(`Opening ${row[0]}…`)}><Eye className="w-4 h-4 mr-1" />View</Button>
+                          <Button variant="outline" size="sm" onClick={() => setSelectedRow({ columns: table.columns, row })}><Eye className="w-4 h-4 mr-1" />View</Button>
                         </td>
                       </tr>
                     ))}
@@ -277,9 +306,29 @@ export function AuditEvidencePack({ onBack }: AuditEvidencePackProps = {}) {
                       </div>
                     ))}
                   </div>
-                  <div className="grid md:grid-cols-2 gap-3 pt-2">
-                    <Button onClick={() => toast.success('Generating PDF pack…')} className="bg-blue-600 hover:bg-blue-700 text-white"><Download className="w-5 h-5 mr-2" />Download PDF Pack</Button>
-                    <Button variant="outline" onClick={() => toast.success('Preparing ZIP archive…')}><Download className="w-5 h-5 mr-2" />Download ZIP (all files)</Button>
+                  <div className="pt-2">
+                    <Button
+                      onClick={() => {
+                        const c = SAMPLE_CASES.find((s) => s.id === selectedCase);
+                        downloadRecordPdf(
+                          `evidence_pack_${selectedCase}.pdf`,
+                          `AUSTRAC Evidence Pack — ${selectedCase}`,
+                          [
+                            ['Case ID', selectedCase || ''],
+                            ['Subject', c?.subject || ''],
+                            ['Status', c?.status || ''],
+                            ...PACK_CONTENTS.map(
+                              (s) => [s.category, s.items.join('; ')] as [string, string],
+                            ),
+                          ],
+                          'Regulator-ready evidence pack. Generated from the GrowKYC AUSTRAC module.',
+                        );
+                        toast.success('Evidence pack downloaded as PDF');
+                      }}
+                      className="bg-blue-600 hover:bg-blue-700 text-white w-full"
+                    >
+                      <Download className="w-5 h-5 mr-2" />Download PDF Pack
+                    </Button>
                   </div>
                 </div>
               )}
@@ -322,12 +371,66 @@ export function AuditEvidencePack({ onBack }: AuditEvidencePackProps = {}) {
                     <li>• Average case resolution time: 4.2 days (target: 5 days)</li>
                   </ul>
                 </div>
-                <Button onClick={() => toast.success('Generating executive report…')} className="w-full bg-blue-600 hover:bg-blue-700 text-white mt-2"><Download className="w-5 h-5 mr-2" />Download Executive Report (PDF)</Button>
+                <Button
+                  onClick={() => {
+                    downloadRecordPdf(
+                      'austrac_executive_report_Q1_2026.pdf',
+                      'AUSTRAC Executive Report — Q1 2026',
+                      [
+                        ...BOARD_STATS.map((s) => [s.label, s.value] as [string, string]),
+                        ['Matters reviewed', '45'],
+                        ['Submitted as SMRs', '28'],
+                        ['Closed (not reportable)', '15'],
+                        ['Under review', '2'],
+                        ['Avg case resolution', '4.2 days (target 5)'],
+                        ['Key trend', 'Sanctions-related alerts +40% vs Q4 2025'],
+                      ],
+                      'Executive summary for board / partner oversight. Generated from the GrowKYC AUSTRAC module.',
+                    );
+                    toast.success('Executive report downloaded as PDF');
+                  }}
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white mt-2"
+                ><Download className="w-5 h-5 mr-2" />Download Executive Report (PDF)</Button>
               </CardContent>
             </Card>
           </div>
         )}
       </div>
+
+      {/* Record detail modal (opened by a row "View" button) */}
+      {selectedRow && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4"
+          onClick={() => setSelectedRow(null)}
+        >
+          <div
+            className="bg-white rounded-lg shadow-xl w-full max-w-lg max-h-[85vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between border-b px-6 py-4">
+              <div>
+                <h3 className="text-lg font-bold text-gray-900">{selectedRow.row[0]}</h3>
+                <p className="text-sm text-gray-500">{current.label}</p>
+              </div>
+              <Button variant="ghost" size="sm" onClick={() => setSelectedRow(null)}>✕</Button>
+            </div>
+            <div className="px-6 py-4 space-y-3">
+              {selectedRow.columns.map((col, i) => (
+                <div key={col} className="flex justify-between gap-4 border-b border-gray-100 pb-2 last:border-0">
+                  <span className="text-sm font-semibold text-gray-600">{col}</span>
+                  <span className="text-sm text-gray-900 text-right">{selectedRow.row[i] || '—'}</span>
+                </div>
+              ))}
+            </div>
+            <div className="flex justify-end gap-2 border-t px-6 py-4">
+              <Button variant="outline" onClick={() => setSelectedRow(null)}>Close</Button>
+              <Button onClick={downloadRowPdf} className="bg-blue-600 hover:bg-blue-700 text-white">
+                <Download className="w-4 h-4 mr-2" />Download PDF
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

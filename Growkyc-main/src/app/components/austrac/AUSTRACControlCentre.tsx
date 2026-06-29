@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
 import { toast } from '../../lib/toast';
+import { downloadRecordPdf } from '../../lib/exportPdf';
 import { InternalReferral } from './InternalReferral';
 import { ReportableMatterTriage } from './ReportableMatterTriage';
 import { SubmissionTracking } from './SubmissionTracking';
@@ -232,15 +233,20 @@ export function AUSTRACControlCentre({ navigateTo, goBack, defaultSelectedCaseId
   };
 
   const handleDownloadReceipt = (caseId: string) => {
-    const text = `AUSTRAC SUBMISSION FILING RECEIPT\n=================================\nSubmission ID: SUB-${Math.floor(100000 + Math.random() * 900000)}\nDate filed: ${new Date().toISOString().split('T')[0]}\nFiling Authority: AUSTRAC Gateway Production\nSubject Case ID: ${caseId}\nStatus: ACKNOWLEDGED / ARCHIVED\nCompliance Officer Signature MD5: ${Math.random().toString(36).substring(7)}\n=================================\nCONFIDENTIAL SECURE SYSTEM RECORD`;
-    const file = new Blob([text], {type: 'text/plain'});
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(file);
-    link.download = `austrac_filing_receipt_${caseId}.txt`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    toast.success(`Filing compliance receipt for ${caseId} downloaded successfully!`);
+    downloadRecordPdf(
+      `austrac_filing_receipt_${caseId}.pdf`,
+      'AUSTRAC Submission Filing Receipt',
+      [
+        ['Submission ID', `SUB-${Math.floor(100000 + Math.random() * 900000)}`],
+        ['Date Filed', new Date().toISOString().split('T')[0]],
+        ['Filing Authority', 'AUSTRAC Gateway Production'],
+        ['Subject Case ID', caseId],
+        ['Status', 'ACKNOWLEDGED / ARCHIVED'],
+        ['Signature (MD5)', Math.random().toString(36).substring(7)],
+      ],
+      'CONFIDENTIAL SECURE SYSTEM RECORD — generated from the GrowKYC AUSTRAC module.',
+    );
+    toast.success(`Filing receipt for ${caseId} downloaded as PDF`);
   };
 
 

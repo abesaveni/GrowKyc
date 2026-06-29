@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
 import { toast } from 'sonner';
+import { downloadRecordPdf } from '../../lib/exportPdf';
 import {
   Send,
   CheckCircle,
@@ -371,15 +372,19 @@ export function SubmissionTracking({ onBack }: { onBack?: () => void }) {
                             size="sm"
                             onClick={(e) => {
                               e.stopPropagation();
-                              const text = `AUSTRAC Report: ${submission.reportType.toUpperCase()}\nSubject: ${submission.subject}\nCase ID: ${submission.caseId}\nStatus: ${submission.status}\nSubmitted By: ${submission.submittedBy}\nAck: ${submission.acknowledgementStatus}`;
-                              const file = new Blob([text], {type: 'text/plain'});
-                              const link = document.createElement("a");
-                              link.href = URL.createObjectURL(file);
-                              link.download = `austrac_report_${submission.caseId}.txt`;
-                              document.body.appendChild(link);
-                              link.click();
-                              document.body.removeChild(link);
-                              toast.success(`Report file for ${submission.caseId} successfully downloaded!`);
+                              downloadRecordPdf(
+                                `austrac_report_${submission.caseId}.pdf`,
+                                `AUSTRAC Report — ${submission.caseId}`,
+                                [
+                                  ['Report Type', submission.reportType.toUpperCase()],
+                                  ['Subject', submission.subject],
+                                  ['Case ID', submission.caseId],
+                                  ['Status', submission.status],
+                                  ['Submitted By', submission.submittedBy],
+                                  ['Acknowledgement', submission.acknowledgementStatus],
+                                ],
+                              );
+                              toast.success(`Report for ${submission.caseId} downloaded as PDF`);
                             }}
                           >
                             <Download className="w-4 h-4" />
@@ -506,14 +511,21 @@ export function SubmissionTracking({ onBack }: { onBack?: () => void }) {
                         variant="outline" 
                         size="sm"
                         onClick={() => {
-                          const file = new Blob([`SMR Draft Report PDF Content for ${selectedSubmission.caseId}`], {type: 'text/plain'});
-                          const link = document.createElement("a");
-                          link.href = URL.createObjectURL(file);
-                          link.download = `smr_draft_report_${selectedSubmission.caseId}.pdf`;
-                          document.body.appendChild(link);
-                          link.click();
-                          document.body.removeChild(link);
-                          toast.success('SMR Draft Report downloaded successfully!');
+                          downloadRecordPdf(
+                            `smr_draft_report_${selectedSubmission.caseId}.pdf`,
+                            `SMR Draft Report — ${selectedSubmission.caseId}`,
+                            [
+                              ['Report Type', selectedSubmission.reportType?.toUpperCase() || 'SMR'],
+                              ['Subject', selectedSubmission.subject],
+                              ['Case ID', selectedSubmission.caseId],
+                              ['Status', selectedSubmission.status],
+                              ['Submission Ref', selectedSubmission.submissionRef || '—'],
+                              ['Submission Method', selectedSubmission.submissionMethod || '—'],
+                              ['Submitted By', selectedSubmission.submittedBy],
+                            ],
+                            'Suspicious Matter Report (draft). Generated from the GrowKYC AUSTRAC module.',
+                          );
+                          toast.success('SMR Draft Report downloaded as PDF');
                         }}
                       >
                         <Download className="w-4 h-4 mr-1" />
@@ -523,20 +535,27 @@ export function SubmissionTracking({ onBack }: { onBack?: () => void }) {
                     <div className="flex items-center justify-between p-3 bg-white rounded border border-purple-200">
                       <div className="flex items-center gap-2">
                         <FileText className="w-5 h-5 text-purple-600" />
-                        <span className="font-semibold text-gray-900">Evidence Pack.zip</span>
+                        <span className="font-semibold text-gray-900">Evidence Pack.pdf</span>
                       </div>
-                      <Button 
-                        variant="outline" 
+                      <Button
+                        variant="outline"
                         size="sm"
                         onClick={() => {
-                          const file = new Blob([`Evidence Pack ZIP Content for ${selectedSubmission.caseId}`], {type: 'text/plain'});
-                          const link = document.createElement("a");
-                          link.href = URL.createObjectURL(file);
-                          link.download = `evidence_pack_${selectedSubmission.caseId}.zip`;
-                          document.body.appendChild(link);
-                          link.click();
-                          document.body.removeChild(link);
-                          toast.success('Evidence Pack downloaded successfully!');
+                          downloadRecordPdf(
+                            `evidence_pack_${selectedSubmission.caseId}.pdf`,
+                            `Evidence Pack — ${selectedSubmission.caseId}`,
+                            [
+                              ['Case ID', selectedSubmission.caseId],
+                              ['Subject', selectedSubmission.subject],
+                              ['Report Type', selectedSubmission.reportType?.toUpperCase() || '—'],
+                              ['Status', selectedSubmission.status],
+                              ['Submission Ref', selectedSubmission.submissionRef || '—'],
+                              ['Acknowledgement', selectedSubmission.acknowledgementStatus],
+                              ['Last Updated', selectedSubmission.lastUpdated || '—'],
+                            ],
+                            'Regulator-ready evidence pack. Generated from the GrowKYC AUSTRAC module.',
+                          );
+                          toast.success('Evidence Pack downloaded as PDF');
                         }}
                       >
                         <Download className="w-4 h-4 mr-1" />
@@ -613,25 +632,47 @@ export function SubmissionTracking({ onBack }: { onBack?: () => void }) {
 
                 {/* Actions */}
                 <div className="flex gap-3 pt-6 border-t">
-                  <Button 
+                  <Button
                     onClick={() => {
-                      toast.success(`Loading active matter case: ${selectedSubmission.caseId}`);
+                      downloadRecordPdf(
+                        `full_case_${selectedSubmission.caseId}.pdf`,
+                        `Full Case Report — ${selectedSubmission.caseId}`,
+                        [
+                          ['Case ID', selectedSubmission.caseId],
+                          ['Subject', selectedSubmission.subject],
+                          ['Report Type', selectedSubmission.reportType?.toUpperCase() || '—'],
+                          ['Status', selectedSubmission.status],
+                          ['Submission Method', selectedSubmission.submissionMethod || '—'],
+                          ['Submission Ref', selectedSubmission.submissionRef || '—'],
+                          ['Submitted By', selectedSubmission.submittedBy],
+                          ['Acknowledgement', selectedSubmission.acknowledgementStatus],
+                          ['Retry Count', String(selectedSubmission.retryCount ?? 0)],
+                          ['Last Updated', selectedSubmission.lastUpdated || '—'],
+                        ],
+                        'Complete case report generated from the GrowKYC AUSTRAC module.',
+                      );
+                      toast.success(`Full case report for ${selectedSubmission.caseId} downloaded as PDF`);
                     }}
                     className="flex-1 bg-blue-600 hover:bg-blue-700 text-white"
                   >
                     <Eye className="w-5 h-5 mr-2" />
-                    View Full Case
+                    Full Case Report (PDF)
                   </Button>
-                  <Button 
+                  <Button
                     onClick={() => {
-                      const file = new Blob([`SMR Documents Package for ${selectedSubmission.caseId}`], {type: 'text/plain'});
-                      const link = document.createElement("a");
-                      link.href = URL.createObjectURL(file);
-                      link.download = `smr_documents_all_${selectedSubmission.caseId}.txt`;
-                      document.body.appendChild(link);
-                      link.click();
-                      document.body.removeChild(link);
-                      toast.success(`All files for ${selectedSubmission.caseId} downloaded as a package!`);
+                      downloadRecordPdf(
+                        `smr_documents_all_${selectedSubmission.caseId}.pdf`,
+                        `SMR Documents Package — ${selectedSubmission.caseId}`,
+                        [
+                          ['Case ID', selectedSubmission.caseId],
+                          ['Subject', selectedSubmission.subject],
+                          ['Included', 'SMR Draft Report; Evidence Pack; AUSTRAC Acknowledgement'],
+                          ['Status', selectedSubmission.status],
+                          ['Submission Ref', selectedSubmission.submissionRef || '—'],
+                        ],
+                        'Consolidated SMR document package. Generated from the GrowKYC AUSTRAC module.',
+                      );
+                      toast.success(`Document package for ${selectedSubmission.caseId} downloaded as PDF`);
                     }}
                     className="flex-1 bg-purple-600 hover:bg-purple-700 text-white"
                   >
