@@ -73,7 +73,7 @@ export function LegalMattersDisplay({ legalData }: LegalMattersDisplayProps) {
   return (
     <div className="space-y-6">
       {/* NETWORK-WIDE ASSOCIATE LEGAL SCREENING */}
-      <Card className="border-2 border-purple-400 shadow-lg bg-gradient-to-r from-purple-50 to-indigo-50">
+      <Card className="border-2 border-purple-400 shadow-lg bg-gray-50">
         <CardHeader className="border-b-2 border-purple-200">
           <CardTitle className="flex items-center gap-2">
             <Users className="w-6 h-6 text-purple-600" />
@@ -150,7 +150,7 @@ export function LegalMattersDisplay({ legalData }: LegalMattersDisplayProps) {
       {/* OPEN LEGAL MATTERS */}
       {openMatters.length > 0 && (
         <Card className="border-2 border-red-400 shadow-lg">
-          <CardHeader className="bg-gradient-to-r from-red-50 to-orange-50 border-b-2 border-red-200">
+          <CardHeader className="bg-gray-50 border-b-2 border-red-200">
             <CardTitle className="flex items-center gap-2">
               <AlertTriangle className="w-6 h-6 text-red-600" />
               Open Legal Matters ({openMatters.length})
@@ -223,12 +223,12 @@ export function LegalMattersDisplay({ legalData }: LegalMattersDisplayProps) {
                         {/* Court & Case Details */}
                         {matter.court && (
                           <div className="grid grid-cols-2 gap-3">
-                            <div className="bg-blue-100 border border-blue-300 rounded-lg p-3">
+                            <div className="bg-white border border-gray-200 rounded-lg p-3">
                               <p className="text-xs text-gray-600 mb-1">Court</p>
                               <p className="font-semibold text-gray-900">{matter.court}</p>
                             </div>
                             {matter.caseNumber && (
-                              <div className="bg-purple-100 border border-purple-300 rounded-lg p-3">
+                              <div className="bg-white border border-gray-200 rounded-lg p-3">
                                 <p className="text-xs text-gray-600 mb-1">Case Number</p>
                                 <p className="font-semibold text-gray-900">{matter.caseNumber}</p>
                               </div>
@@ -237,7 +237,7 @@ export function LegalMattersDisplay({ legalData }: LegalMattersDisplayProps) {
                         )}
 
                         {/* Parties Involved */}
-                        <div className="bg-cyan-100 border border-cyan-300 rounded-lg p-3">
+                        <div className="bg-white border border-gray-200 rounded-lg p-3">
                           <h5 className="font-bold text-sm text-gray-900 mb-2">Parties Involved</h5>
                           <div className="flex flex-wrap gap-2">
                             {matter.parties.map((party, idx) => (
@@ -250,7 +250,7 @@ export function LegalMattersDisplay({ legalData }: LegalMattersDisplayProps) {
 
                         {/* Financial Impact */}
                         {matter.financialImpact && (
-                          <div className="bg-red-100 border-2 border-red-400 rounded-lg p-3">
+                          <div className="bg-white border border-gray-200 rounded-lg p-3">
                             <div className="flex items-center gap-2 mb-1">
                               <AlertTriangle className="w-4 h-4 text-red-600" />
                               <h5 className="font-bold text-sm text-red-900">Financial Impact</h5>
@@ -272,7 +272,7 @@ export function LegalMattersDisplay({ legalData }: LegalMattersDisplayProps) {
 
                         {/* Related Entities */}
                         {matter.relatedEntities && matter.relatedEntities.length > 0 && (
-                          <div className="bg-orange-100 border-2 border-orange-400 rounded-lg p-3">
+                          <div className="bg-white border border-gray-200 rounded-lg p-3">
                             <h5 className="font-bold text-sm text-orange-900 mb-2">Related Entities</h5>
                             <div className="flex flex-wrap gap-2">
                               {matter.relatedEntities.map((entity, idx) => (
@@ -286,7 +286,7 @@ export function LegalMattersDisplay({ legalData }: LegalMattersDisplayProps) {
 
                         {/* Documents */}
                         {matter.documents && matter.documents.length > 0 && (
-                          <div className="bg-blue-50 border border-blue-300 rounded-lg p-3">
+                          <div className="bg-white border border-gray-200 rounded-lg p-3">
                             <h5 className="font-bold text-sm text-gray-900 mb-2">Documents</h5>
                             <div className="space-y-1">
                               {matter.documents.map((doc, idx) => (
@@ -323,7 +323,7 @@ export function LegalMattersDisplay({ legalData }: LegalMattersDisplayProps) {
       {/* REGULATORY ACTIONS */}
       {legalData.regulatoryActions.length > 0 && (
         <Card className="border-2 border-orange-400 shadow-lg">
-          <CardHeader className="bg-gradient-to-r from-orange-50 to-yellow-50 border-b">
+          <CardHeader className="bg-gray-50 border-b">
             <CardTitle className="flex items-center gap-2">
               <ShieldAlert className="w-6 h-6 text-orange-600" />
               Regulatory Actions ({legalData.regulatoryActions.length})
@@ -377,7 +377,7 @@ export function LegalMattersDisplay({ legalData }: LegalMattersDisplayProps) {
       {/* COMPANY STRIKE-OFFS */}
       {legalData.companyStrikeOffs.length > 0 && (
         <Card className="border-2 border-red-400 shadow-lg">
-          <CardHeader className="bg-gradient-to-r from-red-50 to-pink-50 border-b">
+          <CardHeader className="bg-gray-50 border-b">
             <CardTitle className="flex items-center gap-2">
               <TrendingDown className="w-6 h-6 text-red-600" />
               Company Strike-offs ({legalData.companyStrikeOffs.length})
@@ -386,7 +386,7 @@ export function LegalMattersDisplay({ legalData }: LegalMattersDisplayProps) {
           <CardContent className="p-6">
             <div className="space-y-3">
               {legalData.companyStrikeOffs.map((strikeOff) => (
-                <div key={strikeOff.id} className="border-2 border-red-300 bg-red-50 rounded-lg p-4">
+                <div key={strikeOff.id} className="border border-gray-200 bg-white rounded-lg p-4">
                   <div className="flex items-start gap-3 mb-3">
                     <Building className="w-6 h-6 text-red-600 flex-shrink-0 mt-1" />
                     <div className="flex-1">
@@ -406,7 +406,7 @@ export function LegalMattersDisplay({ legalData }: LegalMattersDisplayProps) {
                           <p className="font-semibold text-gray-900">{strikeOff.strikeOffDate}</p>
                         </div>
                       </div>
-                      <div className="bg-red-100 border border-red-300 rounded p-3 mb-3">
+                      <div className="bg-white border border-gray-200 rounded p-3 mb-3">
                         <p className="text-xs text-gray-600 mb-1">Reason</p>
                         <p className="text-sm font-semibold text-red-900">{strikeOff.reason}</p>
                       </div>
@@ -438,7 +438,7 @@ export function LegalMattersDisplay({ legalData }: LegalMattersDisplayProps) {
       {/* LEGAL CONCERNS */}
       {legalData.legalConcerns.length > 0 && (
         <Card className="border-2 border-yellow-400 shadow-lg">
-          <CardHeader className="bg-gradient-to-r from-yellow-50 to-amber-50 border-b">
+          <CardHeader className="bg-gray-50 border-b">
             <CardTitle className="flex items-center gap-2">
               <AlertTriangle className="w-6 h-6 text-yellow-600" />
               Legal Concerns ({legalData.legalConcerns.length})
@@ -529,7 +529,7 @@ export function LegalMattersDisplay({ legalData }: LegalMattersDisplayProps) {
                         </div>
                       </div>
                       {matter.outcome && (
-                        <div className="bg-green-100 border border-green-300 rounded p-2">
+                        <div className="bg-white border border-gray-200 rounded p-2">
                           <p className="text-xs text-gray-600 mb-1">Outcome</p>
                           <p className="text-sm font-semibold text-green-900">{matter.outcome}</p>
                         </div>
@@ -545,14 +545,14 @@ export function LegalMattersDisplay({ legalData }: LegalMattersDisplayProps) {
 
       {/* NO LEGAL ISSUES */}
       {!legalData.hasLegalIssues && (
-        <Card className="border-2 border-green-300 bg-green-50 shadow-lg">
+        <Card className="border border-gray-200 bg-white shadow-lg">
           <CardContent className="p-8 text-center">
             <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
             <h3 className="text-2xl font-bold text-green-900 mb-2">No Legal Issues Found</h3>
             <p className="text-green-800">
               This client has a clean legal record with no open litigation, regulatory actions, or legal concerns.
             </p>
-            <div className="mt-4 inline-block bg-green-200 border-2 border-green-400 rounded-lg px-6 py-3">
+            <div className="mt-4 inline-block bg-white border border-gray-200 rounded-lg px-6 py-3">
               <p className="font-bold text-green-900">Legal Risk: {legalData.overallLegalRisk}</p>
             </div>
           </CardContent>

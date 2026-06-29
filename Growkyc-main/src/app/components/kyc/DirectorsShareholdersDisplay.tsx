@@ -151,7 +151,7 @@ export function DirectorsShareholdersDisplay({ directors, shareholders }: Direct
 
                   {/* Red Flags */}
                   {director.amlScreening.redFlags.length > 0 && (
-                    <div className="mt-3 p-2 bg-red-100 border-2 border-red-400 rounded">
+                    <div className="mt-3 p-2 bg-white border border-gray-200 rounded">
                       <div className="flex items-center gap-2 mb-1">
                         <AlertTriangle className="w-4 h-4 text-red-600" />
                         <p className="font-bold text-xs text-red-900">Red Flags Identified</p>
@@ -298,7 +298,7 @@ export function DirectorsShareholdersDisplay({ directors, shareholders }: Direct
 
                   {/* Red Flags */}
                   {shareholder.amlScreening.redFlags.length > 0 && (
-                    <div className="mt-3 p-2 bg-red-100 border-2 border-red-400 rounded">
+                    <div className="mt-3 p-2 bg-white border border-gray-200 rounded">
                       <div className="flex items-center gap-2 mb-1">
                         <AlertTriangle className="w-4 h-4 text-red-600" />
                         <p className="font-bold text-xs text-red-900">Red Flags Identified</p>

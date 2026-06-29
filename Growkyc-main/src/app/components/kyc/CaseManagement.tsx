@@ -843,7 +843,7 @@ function CaseDetailView({ case: caseData, onClose }: { case: Case; onClose: () =
 
         {activeTab === 'risk' && (
           <div className="space-y-6">
-            <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6 text-center">
+            <div className="bg-white border border-gray-200 rounded-lg p-6 text-center">
               <Scale className="w-16 h-16 text-red-600 mx-auto mb-3" />
               <h3 className="text-2xl font-bold text-red-900 mb-2">HIGH RISK</h3>
               <p className="text-red-700">Enhanced due diligence required</p>

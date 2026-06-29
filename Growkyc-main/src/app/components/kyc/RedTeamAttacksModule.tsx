@@ -231,7 +231,7 @@ export function RedTeamAttacksModule() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-gradient-to-r from-red-600 to-orange-600 rounded-lg p-8 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-8 text-white">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Shield className="w-16 h-16" />
@@ -366,7 +366,7 @@ export function RedTeamAttacksModule() {
                   
                   {scenario.result && (
                     <div className={`p-3 rounded-lg ${
-                      scenario.status === 'passed' ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'
+                      scenario.status === 'passed' ? 'bg-white border border-gray-200' : 'bg-white border border-gray-200'
                     }`}>
                       <p className={`text-sm font-semibold ${
                         scenario.status === 'passed' ? 'text-green-900' : 'text-red-900'

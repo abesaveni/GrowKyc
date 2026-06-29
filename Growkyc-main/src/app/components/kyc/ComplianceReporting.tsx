@@ -120,7 +120,7 @@ export function ComplianceReporting() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-gradient-to-r from-orange-600 to-red-600 rounded-lg p-8 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-8 text-white">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <AlertTriangle className="w-16 h-16" />
@@ -437,7 +437,7 @@ export function ComplianceReporting() {
       </div>
 
       {/* AI Safety Notice */}
-      <div className="bg-yellow-50 border-2 border-yellow-400 rounded-lg p-6">
+      <div className="bg-white border border-gray-200 rounded-lg p-6">
         <div className="flex items-start gap-3">
           <Shield className="w-6 h-6 text-yellow-600 mt-0.5 flex-shrink-0" />
           <div>

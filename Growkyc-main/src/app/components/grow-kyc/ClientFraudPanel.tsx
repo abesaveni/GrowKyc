@@ -158,7 +158,7 @@ export function ClientFraudPanel({ clientId, clientName }: ClientFraudPanelProps
   return (
     <div className="space-y-6">
       {/* Header with Fraud Score */}
-      <div className="bg-gradient-to-r from-red-600 to-orange-600 rounded-lg shadow-lg p-6 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg shadow-lg p-6 text-white">
         <div className="flex items-center justify-between">
           <div>
             <div className="flex items-center gap-3 mb-2">
@@ -229,7 +229,7 @@ export function ClientFraudPanel({ clientId, clientName }: ClientFraudPanelProps
           {activeView === 'overview' && (
             <div className="space-y-6">
               {/* AI Predictions */}
-              <div className="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-800 dark:to-gray-700 rounded-lg shadow-lg p-6">
+              <div className="bg-gray-50 dark:from-gray-800 dark:to-gray-700 rounded-lg shadow-lg p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <Brain className="w-6 h-6 text-purple-600" />
                   <h4 className="text-lg font-bold text-gray-900 dark:text-white">AI Model Predictions</h4>
@@ -442,7 +442,7 @@ export function ClientFraudPanel({ clientId, clientName }: ClientFraudPanelProps
                   </div>
                   <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-3">
                     <div
-                      className="bg-gradient-to-r from-green-600 to-blue-600 h-3 rounded-full"
+                      className="bg-gradient-to-r from-slate-800 to-slate-700 h-3 rounded-full"
                       style={{ width: `${deviceProfile.trustScore}%` }}
                     />
                   </div>

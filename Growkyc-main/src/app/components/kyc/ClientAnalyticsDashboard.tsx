@@ -51,7 +51,7 @@ export function ClientAnalyticsDashboard() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg p-8 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-8 text-white">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <BarChart className="w-16 h-16" />
@@ -237,7 +237,7 @@ export function ClientAnalyticsDashboard() {
       <div className="bg-white rounded-lg border border-gray-200 p-6">
         <h3 className="text-xl font-bold text-gray-900 mb-4">Client Acquisition & Churn Trends</h3>
         <div className="grid grid-cols-3 gap-6">
-          <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+          <div className="p-4 bg-white border border-gray-200 rounded-lg">
             <div className="flex items-center justify-between mb-3">
               <h4 className="font-semibold text-green-900">New Clients</h4>
               <Users className="w-6 h-6 text-green-600" />
@@ -247,7 +247,7 @@ export function ClientAnalyticsDashboard() {
             <p className="text-xs text-green-600 mt-2">↑ 15% from last month</p>
           </div>
 
-          <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+          <div className="p-4 bg-white border border-gray-200 rounded-lg">
             <div className="flex items-center justify-between mb-3">
               <h4 className="font-semibold text-red-900">Churn Rate</h4>
               <Activity className="w-6 h-6 text-red-600" />
@@ -257,7 +257,7 @@ export function ClientAnalyticsDashboard() {
             <p className="text-xs text-green-600 mt-2">↓ 0.5% improvement</p>
           </div>
 
-          <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+          <div className="p-4 bg-white border border-gray-200 rounded-lg">
             <div className="flex items-center justify-between mb-3">
               <h4 className="font-semibold text-blue-900">Net Growth</h4>
               <TrendingUp className="w-6 h-6 text-blue-600" />

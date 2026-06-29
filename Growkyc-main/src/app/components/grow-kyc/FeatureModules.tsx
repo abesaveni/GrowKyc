@@ -42,7 +42,7 @@ export function FeatureModules({ onBack }: FeatureModulesProps) {
       name: 'Beneficial Ownership Mapper',
       description: 'Visual ownership graphs • UBO detection • Layered tracing',
       icon: Network,
-      color: 'from-indigo-600 to-purple-600',
+      color: 'from-slate-800 to-slate-700',
       phase: 'Phase 1',
       status: 'built',
       features: [
@@ -60,7 +60,7 @@ export function FeatureModules({ onBack }: FeatureModulesProps) {
       name: 'Proposal & Engagement',
       description: 'Create proposals • Capture payments • Automate engagement',
       icon: FileText,
-      color: 'from-blue-600 to-cyan-600',
+      color: 'from-slate-800 to-slate-700',
       phase: 'Phase 1',
       status: 'built',
       features: [
@@ -78,7 +78,7 @@ export function FeatureModules({ onBack }: FeatureModulesProps) {
       name: 'Practice Integrations',
       description: 'Connect practice tools • Automate workflows • Sync data',
       icon: Zap,
-      color: 'from-purple-600 to-indigo-600',
+      color: 'from-slate-800 to-slate-700',
       phase: 'Phase 1',
       status: 'built',
       features: [
@@ -96,7 +96,7 @@ export function FeatureModules({ onBack }: FeatureModulesProps) {
       name: 'Credit Providers Vertical',
       description: 'Lender KYC • Pre-settlement compliance • Deal management',
       icon: Landmark,
-      color: 'from-green-600 to-emerald-600',
+      color: 'from-slate-800 to-slate-700',
       phase: 'Phase 2',
       status: 'built',
       features: [
@@ -114,7 +114,7 @@ export function FeatureModules({ onBack }: FeatureModulesProps) {
       name: 'AFSL Holders Vertical',
       description: 'Financial adviser KYC • Investor classification • Advice compliance',
       icon: Briefcase,
-      color: 'from-purple-600 to-pink-600',
+      color: 'from-slate-800 to-slate-700',
       phase: 'Phase 3',
       status: 'built',
       features: [
@@ -132,7 +132,7 @@ export function FeatureModules({ onBack }: FeatureModulesProps) {
       name: 'Fund Managers Vertical',
       description: 'Investor onboarding • Subscription approval • Registry management',
       icon: TrendingUp,
-      color: 'from-indigo-600 to-blue-600',
+      color: 'from-slate-800 to-slate-700',
       phase: 'Phase 3',
       status: 'built',
       features: [
@@ -150,7 +150,7 @@ export function FeatureModules({ onBack }: FeatureModulesProps) {
       name: 'Trustees Vertical',
       description: 'Trust deed parsing • Authority verification • Control mapping',
       icon: Scale,
-      color: 'from-amber-600 to-orange-600',
+      color: 'from-slate-800 to-slate-700',
       phase: 'Phase 4',
       status: 'built',
       features: [
@@ -168,7 +168,7 @@ export function FeatureModules({ onBack }: FeatureModulesProps) {
       name: 'Legal Firms Vertical',
       description: 'Matter-based KYC • Source of funds • Compliance partner review',
       icon: Gavel,
-      color: 'from-red-600 to-rose-600',
+      color: 'from-slate-800 to-slate-700',
       phase: 'Phase 4',
       status: 'built',
       features: [
@@ -186,7 +186,7 @@ export function FeatureModules({ onBack }: FeatureModulesProps) {
       name: 'Real Estate Vertical',
       description: 'Transaction-based KYC • Offshore buyer screening • Settlement gates',
       icon: Home,
-      color: 'from-teal-600 to-green-600',
+      color: 'from-slate-800 to-slate-700',
       phase: 'Phase 4',
       status: 'built',
       features: [
@@ -324,7 +324,7 @@ export function FeatureModules({ onBack }: FeatureModulesProps) {
               return (
                 <Card
                   key={module.id}
-                  className="border-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 hover:shadow-xl transition-all cursor-pointer"
+                  className="border-2 border-green-200 bg-gray-50 hover:shadow-xl transition-all cursor-pointer"
                   onClick={() => setSelectedModule(module.id)}
                 >
                   <CardContent className="p-6">
@@ -433,7 +433,7 @@ export function FeatureModules({ onBack }: FeatureModulesProps) {
         </div>
 
         {/* Implementation Timeline */}
-        <Card className="mt-12 bg-gradient-to-br from-indigo-50 to-purple-50 border-2 border-indigo-200">
+        <Card className="mt-12 bg-gray-50 border-2 border-indigo-200">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Rocket className="w-5 h-5 text-indigo-600" />

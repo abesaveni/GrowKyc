@@ -349,7 +349,7 @@ export function LegalFirmsModule({ onBack }: LegalFirmsModuleProps) {
                         </div>
 
                         {matter.unusualTransactions > 0 && (
-                          <div className="p-3 bg-red-100 border-2 border-red-300 rounded-lg">
+                          <div className="p-3 bg-white border border-gray-200 rounded-lg">
                             <div className="flex items-center gap-2">
                               <AlertTriangle className="w-5 h-5 text-red-600" />
                               <span className="font-bold text-red-900">
@@ -395,7 +395,7 @@ export function LegalFirmsModule({ onBack }: LegalFirmsModuleProps) {
         {selectedTab === 'compliance' && (
           <div className="space-y-6">
             {/* Matter Opening Gate */}
-            <Card className="border-2 border-red-200 bg-gradient-to-br from-red-50 to-orange-50">
+            <Card className="border-2 border-red-200 bg-gray-50">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <AlertTriangle className="w-5 h-5 text-red-600" />
@@ -432,7 +432,7 @@ export function LegalFirmsModule({ onBack }: LegalFirmsModuleProps) {
             </Card>
 
             {/* Compliance Partner Review Queue */}
-            <Card className="border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-pink-50">
+            <Card className="border-2 border-purple-200 bg-gray-50">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Crown className="w-5 h-5 text-purple-600" />
@@ -558,7 +558,7 @@ export function LegalFirmsModule({ onBack }: LegalFirmsModuleProps) {
         {selectedTab === 'trust-account' && (
           <div className="space-y-6">
             {/* Trust Account Event Triggers */}
-            <Card className="border-2 border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50">
+            <Card className="border-2 border-amber-200 bg-gray-50">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <AlertTriangle className="w-5 h-5 text-amber-600" />
@@ -660,7 +660,7 @@ export function LegalFirmsModule({ onBack }: LegalFirmsModuleProps) {
             </Card>
 
             {/* Practice Management Integration */}
-            <Card className="bg-gradient-to-br from-indigo-50 to-blue-50 border-2 border-indigo-200">
+            <Card className="bg-gray-50 border-2 border-indigo-200">
               <CardHeader>
                 <CardTitle>Practice Management Integration</CardTitle>
                 <CardDescription>Sync with LEAP, Smokeball, ActionStep, Clio</CardDescription>

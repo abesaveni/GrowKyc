@@ -110,7 +110,7 @@ export function AuditEvidencePack({ onBack }: AuditEvidencePackProps = {}) {
     <div className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-[1600px] mx-auto space-y-6">
         {/* Header */}
-        <div className="bg-gradient-to-r from-red-900 via-red-800 to-orange-900 rounded-lg p-6 text-white shadow-xl">
+        <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white shadow-xl">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               {onBack && (
@@ -128,11 +128,11 @@ export function AuditEvidencePack({ onBack }: AuditEvidencePackProps = {}) {
               </div>
             </div>
             <div className="flex gap-3">
-              <Button className="bg-white text-red-900 hover:bg-red-50">
+              <Button className="bg-white text-slate-800 hover:bg-slate-100">
                 <Printer className="w-5 h-5 mr-2" />
                 Print
               </Button>
-              <Button className="bg-white text-red-900 hover:bg-red-50">
+              <Button className="bg-white text-slate-800 hover:bg-slate-100">
                 <Download className="w-5 h-5 mr-2" />
                 Download All
               </Button>
@@ -172,7 +172,7 @@ export function AuditEvidencePack({ onBack }: AuditEvidencePackProps = {}) {
         {/* Active Cases Report */}
         {selectedReport === 'active_cases' && (
           <Card className="border-2 border-blue-300 shadow-lg">
-            <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
+            <CardHeader className="bg-gray-50 border-b">
               <div className="flex items-center justify-between">
                 <CardTitle className="text-2xl">Active AUSTRAC Case Register</CardTitle>
                 <div className="flex gap-2">
@@ -241,7 +241,7 @@ export function AuditEvidencePack({ onBack }: AuditEvidencePackProps = {}) {
         {selectedReport === 'case_pack' && (
           <div className="space-y-6">
             <Card className="border-2 border-purple-300 shadow-lg">
-              <CardHeader className="bg-gradient-to-r from-purple-50 to-pink-50 border-b">
+              <CardHeader className="bg-gray-50 border-b">
                 <CardTitle className="text-2xl">Generate Case-Level Evidence Pack</CardTitle>
               </CardHeader>
               <CardContent className="p-6">
@@ -322,7 +322,7 @@ export function AuditEvidencePack({ onBack }: AuditEvidencePackProps = {}) {
             </Card>
 
             {/* Compliance Note */}
-            <Card className="border-2 border-blue-300 bg-blue-50">
+            <Card className="border border-gray-200 bg-white">
               <CardContent className="p-6">
                 <div className="flex items-start gap-3">
                   <Shield className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
@@ -349,7 +349,7 @@ export function AuditEvidencePack({ onBack }: AuditEvidencePackProps = {}) {
         {/* Board/Partner Summary */}
         {selectedReport === 'board_summary' && (
           <Card className="border-2 border-indigo-300 shadow-lg">
-            <CardHeader className="bg-gradient-to-r from-indigo-50 to-blue-50 border-b">
+            <CardHeader className="bg-gray-50 border-b">
               <CardTitle className="text-2xl">Board/Partner Oversight Summary</CardTitle>
             </CardHeader>
             <CardContent className="p-8">

@@ -388,7 +388,7 @@ export function ClientPolicy() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg p-8 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-8 text-white">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <FileText className="w-16 h-16" />
@@ -499,7 +499,7 @@ export function ClientPolicy() {
 
           {/* Key Principles */}
           <div className="grid grid-cols-3 gap-6">
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+            <div className="bg-white border border-gray-200 rounded-lg p-6">
               <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
                 <Target className="w-6 h-6 text-white" />
               </div>
@@ -510,7 +510,7 @@ export function ClientPolicy() {
               </p>
             </div>
 
-            <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+            <div className="bg-white border border-gray-200 rounded-lg p-6">
               <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mb-4">
                 <Shield className="w-6 h-6 text-white" />
               </div>
@@ -521,7 +521,7 @@ export function ClientPolicy() {
               </p>
             </div>
 
-            <div className="bg-orange-50 border border-orange-200 rounded-lg p-6">
+            <div className="bg-white border border-gray-200 rounded-lg p-6">
               <div className="w-12 h-12 bg-orange-600 rounded-lg flex items-center justify-center mb-4">
                 <Activity className="w-6 h-6 text-white" />
               </div>
@@ -764,7 +764,7 @@ export function ClientPolicy() {
       {/* EDD Triggers Tab */}
       {activeTab === 'edd-triggers' && (
         <div className="space-y-6">
-          <div className="bg-orange-50 border border-orange-200 rounded-lg p-6">
+          <div className="bg-white border border-gray-200 rounded-lg p-6">
             <div className="flex items-start gap-3">
               <AlertTriangle className="w-6 h-6 text-orange-600 mt-0.5" />
               <div>
@@ -854,7 +854,7 @@ export function ClientPolicy() {
       {/* SDD Criteria Tab */}
       {activeTab === 'sdd-criteria' && (
         <div className="space-y-6">
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+          <div className="bg-white border border-gray-200 rounded-lg p-6">
             <div className="flex items-start gap-3">
               <Zap className="w-6 h-6 text-blue-600 mt-0.5" />
               <div>
@@ -905,7 +905,7 @@ export function ClientPolicy() {
                 </div>
               </div>
 
-              <div className="p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+              <div className="p-3 bg-white border border-gray-200 rounded-lg">
                 <h4 className="font-semibold text-yellow-900 mb-2">Restrictions & Limitations</h4>
                 <ul className="space-y-1">
                   {criteria.restrictions.map((restriction, restrictionIndex) => (
@@ -936,7 +936,7 @@ export function ClientPolicy() {
                 </div>
                 <div className="flex-1">
                   <h4 className="font-bold text-gray-900 mb-2">Initial Assessment</h4>
-                  <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                  <div className="p-4 bg-white border border-gray-200 rounded-lg">
                     <p className="text-sm text-gray-700 mb-2"><strong>Responsible:</strong> Client Manager</p>
                     <p className="text-sm text-gray-700 mb-3"><strong>Actions:</strong></p>
                     <ul className="space-y-1 text-sm text-gray-700">
@@ -961,7 +961,7 @@ export function ClientPolicy() {
                   </div>
                   <div className="flex-1">
                     <h4 className="font-bold text-green-900 mb-2">Auto-Approval Path</h4>
-                    <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+                    <div className="p-4 bg-white border border-gray-200 rounded-lg">
                       <p className="text-sm text-gray-700 mb-2"><strong>Criteria:</strong></p>
                       <ul className="space-y-1 text-sm text-gray-700 mb-3">
                         <li>• Risk tier: Low</li>
@@ -981,7 +981,7 @@ export function ClientPolicy() {
                   </div>
                   <div className="flex-1">
                     <h4 className="font-bold text-orange-900 mb-2">Manual Review Path</h4>
-                    <div className="p-4 bg-orange-50 border border-orange-200 rounded-lg">
+                    <div className="p-4 bg-white border border-gray-200 rounded-lg">
                       <p className="text-sm text-gray-700 mb-2"><strong>Triggers:</strong></p>
                       <ul className="space-y-1 text-sm text-gray-700 mb-3">
                         <li>• Risk tier: Medium or High</li>
@@ -1006,7 +1006,7 @@ export function ClientPolicy() {
                 </div>
                 <div className="flex-1">
                   <h4 className="font-bold text-gray-900 mb-2">Senior Manager Review</h4>
-                  <div className="p-4 bg-purple-50 border border-purple-200 rounded-lg">
+                  <div className="p-4 bg-white border border-gray-200 rounded-lg">
                     <p className="text-sm text-gray-700 mb-2"><strong>Responsible:</strong> Senior Manager</p>
                     <p className="text-sm text-gray-700 mb-3"><strong>Review Criteria:</strong></p>
                     <ul className="space-y-1 text-sm text-gray-700 mb-3">
@@ -1032,7 +1032,7 @@ export function ClientPolicy() {
                 </div>
                 <div className="flex-1">
                   <h4 className="font-bold text-gray-900 mb-2">Compliance Officer Review (High Risk Only)</h4>
-                  <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+                  <div className="p-4 bg-white border border-gray-200 rounded-lg">
                     <p className="text-sm text-gray-700 mb-2"><strong>Responsible:</strong> AML/CTF Compliance Officer</p>
                     <p className="text-sm text-gray-700 mb-3"><strong>Required for:</strong></p>
                     <ul className="space-y-1 text-sm text-gray-700 mb-3">
@@ -1052,17 +1052,17 @@ export function ClientPolicy() {
           <div className="bg-white rounded-lg border border-gray-200 p-6">
             <h3 className="text-xl font-bold text-gray-900 mb-4">Service Level Agreement (SLA) Timeframes</h3>
             <div className="grid grid-cols-3 gap-4">
-              <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+              <div className="p-4 bg-white border border-gray-200 rounded-lg">
                 <h4 className="font-semibold text-green-900 mb-2">Auto-Approval</h4>
                 <p className="text-3xl font-bold text-green-600">Instant</p>
                 <p className="text-sm text-green-700 mt-2">System processes immediately</p>
               </div>
-              <div className="p-4 bg-orange-50 border border-orange-200 rounded-lg">
+              <div className="p-4 bg-white border border-gray-200 rounded-lg">
                 <h4 className="font-semibold text-orange-900 mb-2">Senior Manager Review</h4>
                 <p className="text-3xl font-bold text-orange-600">2 days</p>
                 <p className="text-sm text-orange-700 mt-2">Business days from submission</p>
               </div>
-              <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+              <div className="p-4 bg-white border border-gray-200 rounded-lg">
                 <h4 className="font-semibold text-red-900 mb-2">Compliance Review</h4>
                 <p className="text-3xl font-bold text-red-600">5 days</p>
                 <p className="text-sm text-red-700 mt-2">Business days (high risk cases)</p>
@@ -1258,7 +1258,7 @@ export function ClientPolicy() {
           <div className="bg-white rounded-lg border border-gray-200 p-6">
             <h3 className="text-xl font-bold text-gray-900 mb-4">Policy Governance</h3>
             <div className="grid grid-cols-2 gap-6">
-              <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+              <div className="p-4 bg-white border border-gray-200 rounded-lg">
                 <h4 className="font-semibold text-blue-900 mb-3">Review Schedule</h4>
                 <ul className="space-y-2 text-sm text-blue-800">
                   <li>• <strong>Annual Review:</strong> July of each year</li>
@@ -1268,7 +1268,7 @@ export function ClientPolicy() {
                 </ul>
               </div>
 
-              <div className="p-4 bg-purple-50 border border-purple-200 rounded-lg">
+              <div className="p-4 bg-white border border-gray-200 rounded-lg">
                 <h4 className="font-semibold text-purple-900 mb-3">Approval Authority</h4>
                 <ul className="space-y-2 text-sm text-purple-800">
                   <li>• <strong>Draft Policy:</strong> Compliance Officer prepares</li>

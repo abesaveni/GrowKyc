@@ -216,7 +216,7 @@ export function SubmissionTracking({ onBack }: { onBack?: () => void }) {
     <div className="min-h-screen bg-gray-50 p-4 md:p-8">
       <div className="max-w-[1800px] mx-auto space-y-6">
         {/* Header */}
-        <div className="bg-gradient-to-r from-red-900 via-red-800 to-orange-900 rounded-lg p-6 text-white shadow-xl">
+        <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white shadow-xl">
           <div className="flex flex-col sm:flex-row gap-4 justify-between sm:items-center">
             <div className="flex items-center gap-4">
               <div className="w-14 h-14 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border-2 border-white/20 flex-shrink-0">
@@ -229,7 +229,7 @@ export function SubmissionTracking({ onBack }: { onBack?: () => void }) {
             </div>
             <div className="flex flex-wrap gap-2 w-full sm:w-auto">
               {onBack && (
-                <Button onClick={onBack} className="bg-white text-red-900 hover:bg-red-50 flex-1 sm:flex-initial justify-center">
+                <Button onClick={onBack} className="bg-white text-slate-800 hover:bg-slate-100 flex-1 sm:flex-initial justify-center">
                   Return to Control Centre
                 </Button>
               )}
@@ -398,7 +398,7 @@ export function SubmissionTracking({ onBack }: { onBack?: () => void }) {
         {selectedSubmission && (
           <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-end justify-center z-50">
             <Card className="w-full max-w-4xl border-t-4 border-blue-500 shadow-2xl rounded-t-2xl max-h-[90vh] overflow-y-auto">
-              <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b sticky top-0 z-10">
+              <CardHeader className="bg-gray-50 border-b sticky top-0 z-10">
                 <div className="flex items-center justify-between">
                   <CardTitle className="text-2xl">Submission Details</CardTitle>
                   <Button onClick={() => setSelectedSubmission(null)} variant="outline">

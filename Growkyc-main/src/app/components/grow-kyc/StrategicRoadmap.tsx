@@ -58,7 +58,7 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
       timeline: 'Q2 2026 (3 months)',
       status: 'in-progress',
       investment: '$800K',
-      color: 'from-blue-600 to-cyan-600',
+      color: 'from-slate-800 to-slate-700',
       icon: Rocket,
       completion: 45,
       initiatives: [
@@ -136,7 +136,7 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
       timeline: 'Q3 2026 (3 months)',
       status: 'planned',
       investment: '$1.2M',
-      color: 'from-purple-600 to-pink-600',
+      color: 'from-slate-800 to-slate-700',
       icon: Brain,
       completion: 0,
       initiatives: [
@@ -214,7 +214,7 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
       timeline: 'Q4 2026 (3 months)',
       status: 'planned',
       investment: '$1.1M',
-      color: 'from-green-600 to-emerald-600',
+      color: 'from-slate-800 to-slate-700',
       icon: Globe,
       completion: 0,
       initiatives: [
@@ -292,7 +292,7 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
       timeline: '2027 (12 months)',
       status: 'future',
       investment: '$1.4M',
-      color: 'from-amber-600 to-orange-600',
+      color: 'from-slate-800 to-slate-700',
       icon: Award,
       completion: 0,
       initiatives: [
@@ -680,7 +680,7 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
         </div>
 
         {/* Quick Wins Section */}
-        <Card className="mt-12 border-2 border-green-300 bg-gradient-to-br from-green-50 to-emerald-50">
+        <Card className="mt-12 border-2 border-green-300 bg-gray-50">
           <CardHeader>
             <CardTitle className="flex items-center gap-3 text-2xl">
               <Sparkles className="w-6 h-6 text-green-600" />
@@ -718,7 +718,7 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
         </Card>
 
         {/* Success Metrics */}
-        <Card className="mt-12 bg-gradient-to-br from-indigo-50 to-purple-50 border-2 border-indigo-200">
+        <Card className="mt-12 bg-gray-50 border-2 border-indigo-200">
           <CardHeader>
             <CardTitle className="flex items-center gap-3 text-2xl">
               <Award className="w-6 h-6 text-indigo-600" />
@@ -807,7 +807,7 @@ export function StrategicRoadmap({ onBack }: StrategicRoadmapProps) {
         </Card>
 
         {/* Competitive Advantage */}
-        <Card className="mt-12 bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-200">
+        <Card className="mt-12 bg-gray-50 border-2 border-amber-200">
           <CardHeader>
             <CardTitle className="flex items-center gap-3 text-2xl">
               <Lightbulb className="w-6 h-6 text-amber-600" />

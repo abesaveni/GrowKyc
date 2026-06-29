@@ -278,7 +278,7 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-red-300 bg-red-50">
+        <Card className="border border-gray-200 bg-white">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
@@ -290,7 +290,7 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-orange-300 bg-orange-50">
+        <Card className="border border-gray-200 bg-white">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
@@ -302,7 +302,7 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-yellow-300 bg-yellow-50">
+        <Card className="border border-gray-200 bg-white">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
@@ -314,7 +314,7 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-purple-300 bg-purple-50">
+        <Card className="border border-gray-200 bg-white">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
@@ -604,7 +604,7 @@ export function ClientRegistry({ onViewClient, onBack, onAddClient }: ClientRegi
               </div>
 
               {/* PEP Screening */}
-              <div className="bg-yellow-50 border-2 border-yellow-300 rounded-lg p-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
                 <div className="flex items-start gap-3">
                   <AlertTriangle className="w-5 h-5 text-yellow-600 mt-0.5" />
                   <div className="flex-1">

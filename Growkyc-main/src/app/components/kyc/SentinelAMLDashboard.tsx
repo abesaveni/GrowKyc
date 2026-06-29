@@ -160,7 +160,7 @@ export function SentinelAMLDashboard() {
       </div>
 
       {/* Critical Alerts Banner */}
-      <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4">
+      <div className="bg-white border border-gray-200 rounded-lg p-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <AlertTriangle className="w-6 h-6 text-red-600 mr-3" />
@@ -385,7 +385,7 @@ export function SentinelAMLDashboard() {
       </div>
 
       {/* Program Compliance Status */}
-      <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg p-6 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <Shield className="w-12 h-12 mr-4" />

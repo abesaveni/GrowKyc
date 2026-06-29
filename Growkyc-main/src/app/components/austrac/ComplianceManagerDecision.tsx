@@ -119,7 +119,7 @@ export function ComplianceManagerDecision({ caseId, onBack }: ComplianceManagerD
     <div className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-[1600px] mx-auto space-y-6">
         {/* Header */}
-        <div className="bg-gradient-to-r from-red-900 via-red-800 to-orange-900 rounded-lg p-6 text-white shadow-xl">
+        <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white shadow-xl">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               {onBack && (
@@ -144,7 +144,7 @@ export function ComplianceManagerDecision({ caseId, onBack }: ComplianceManagerD
 
         {/* Section A - Case Summary */}
         <Card className="border-2 border-blue-300 shadow-lg">
-          <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
+          <CardHeader className="bg-gray-50 border-b">
             <CardTitle className="flex items-center gap-2">
               <FileText className="w-6 h-6 text-blue-600" />
               Case Summary
@@ -195,7 +195,7 @@ export function ComplianceManagerDecision({ caseId, onBack }: ComplianceManagerD
 
         {/* Section B - Recommendation Summary */}
         <Card className="border-2 border-purple-300 shadow-lg">
-          <CardHeader className="bg-gradient-to-r from-purple-50 to-pink-50 border-b">
+          <CardHeader className="bg-gray-50 border-b">
             <CardTitle className="flex items-center gap-2">
               <User className="w-6 h-6 text-purple-600" />
               Analyst Recommendation
@@ -261,7 +261,7 @@ export function ComplianceManagerDecision({ caseId, onBack }: ComplianceManagerD
 
         {/* Section C - Final Decision Panel */}
         <Card className="border-4 border-red-300 shadow-2xl">
-          <CardHeader className="bg-gradient-to-r from-red-50 to-orange-50 border-b">
+          <CardHeader className="bg-gray-50 border-b">
             <CardTitle className="flex items-center gap-2 text-2xl">
               <Shield className="w-8 h-8 text-red-600" />
               Final Decision

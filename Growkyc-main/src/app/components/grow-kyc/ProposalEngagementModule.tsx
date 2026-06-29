@@ -330,7 +330,7 @@ export function ProposalEngagementModule({ onBack }: ProposalEngagementModulePro
                           </div>
 
                           {/* Total */}
-                          <div className="flex items-center justify-between p-4 bg-gradient-to-r from-blue-50 to-cyan-50 border-2 border-blue-200 rounded-xl">
+                          <div className="flex items-center justify-between p-4 bg-gray-50 border-2 border-blue-200 rounded-xl">
                             <span className="font-bold text-gray-900 text-lg">Total Fee</span>
                             <span className="text-3xl font-bold text-blue-600">${proposal.totalFee.toLocaleString()}</span>
                           </div>
@@ -380,7 +380,7 @@ export function ProposalEngagementModule({ onBack }: ProposalEngagementModulePro
 
         {selectedTab === 'engagements' && (
           <div className="space-y-6">
-            <Card className="border-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50">
+            <Card className="border-2 border-green-200 bg-gray-50">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <FileCheck className="w-5 h-5 text-green-600" />
@@ -453,7 +453,7 @@ export function ProposalEngagementModule({ onBack }: ProposalEngagementModulePro
 
         {selectedTab === 'payments' && (
           <div className="space-y-6">
-            <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50">
+            <Card className="border-2 border-blue-200 bg-gray-50">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <CreditCard className="w-5 h-5 text-blue-600" />
@@ -561,7 +561,7 @@ export function ProposalEngagementModule({ onBack }: ProposalEngagementModulePro
         )}
 
         {/* Service Templates Library */}
-        <Card className="mt-12 bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200">
+        <Card className="mt-12 bg-gray-50 border-2 border-purple-200">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Zap className="w-5 h-5 text-purple-600" />

@@ -227,7 +227,7 @@ export function ReportingRulesAndTriggers({ onBack }: { onBack?: () => void }) {
       <div className="max-w-[1800px] mx-auto space-y-6">
         {/* Offline Fallback Banner if API error occurred */}
         {error && (
-          <div className="bg-amber-50 border-2 border-amber-300 rounded-lg p-4 text-amber-800 flex items-center justify-between shadow-sm animate-in fade-in">
+          <div className="bg-white border border-gray-200 rounded-lg p-4 text-amber-800 flex items-center justify-between shadow-sm animate-in fade-in">
             <div className="flex items-center gap-3">
               <AlertTriangle className="w-6 h-6 text-amber-600 flex-shrink-0" />
               <div>
@@ -241,7 +241,7 @@ export function ReportingRulesAndTriggers({ onBack }: { onBack?: () => void }) {
           </div>
         )}
         {/* Header */}
-        <div className="bg-gradient-to-r from-red-900 via-red-800 to-orange-900 rounded-lg p-6 text-white shadow-xl">
+        <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white shadow-xl">
           <div className="flex flex-col sm:flex-row gap-4 justify-between sm:items-center">
             <div className="flex items-center gap-4">
               <div className="w-14 h-14 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border-2 border-white/20 flex-shrink-0">
@@ -254,7 +254,7 @@ export function ReportingRulesAndTriggers({ onBack }: { onBack?: () => void }) {
             </div>
             <div className="flex flex-wrap gap-2 w-full sm:w-auto">
               {onBack && (
-                <Button onClick={onBack} className="bg-white text-red-900 hover:bg-red-50 flex-1 sm:flex-initial justify-center">
+                <Button onClick={onBack} className="bg-white text-slate-800 hover:bg-slate-100 flex-1 sm:flex-initial justify-center">
                   Return to Control Centre
                 </Button>
               )}
@@ -500,7 +500,7 @@ export function ReportingRulesAndTriggers({ onBack }: { onBack?: () => void }) {
         </Card>
 
         {/* Info Banner */}
-        <Card className="border-2 border-amber-300 bg-amber-50">
+        <Card className="border border-gray-200 bg-white">
           <CardContent className="p-6">
             <div className="flex items-start gap-3">
               <AlertTriangle className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />

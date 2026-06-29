@@ -530,7 +530,7 @@ export function FraudDetectionSettings({ role }: FraudDetectionSettingsProps = {
       )}
 
       {/* Header */}
-      <div className="bg-gradient-to-r from-red-600 to-orange-600 rounded-lg shadow-lg p-6 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg shadow-lg p-6 text-white">
         <div className="flex items-center justify-between">
           <div>
             <div className="flex items-center gap-3 mb-2">
@@ -715,7 +715,7 @@ export function FraudDetectionSettings({ role }: FraudDetectionSettingsProps = {
             <div className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {aiModels.map((model: AIModel) => (
-                  <div key={model.id} className="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-800 dark:to-gray-700 rounded-lg shadow-lg p-6 border border-purple-200 dark:border-purple-700">
+                  <div key={model.id} className="bg-gray-50 dark:from-gray-800 dark:to-gray-700 rounded-lg shadow-lg p-6 border border-purple-200 dark:border-purple-700">
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex items-center gap-3">
                         <Brain className="w-8 h-8 text-purple-600" />
@@ -743,7 +743,7 @@ export function FraudDetectionSettings({ role }: FraudDetectionSettingsProps = {
                         </div>
                         <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2">
                           <div
-                            className="bg-gradient-to-r from-purple-600 to-blue-600 h-2 rounded-full"
+                            className="bg-gradient-to-r from-slate-800 to-slate-700 h-2 rounded-full"
                             style={{ width: `${model.accuracy}%` }}
                           />
                         </div>

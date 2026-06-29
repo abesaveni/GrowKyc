@@ -358,7 +358,7 @@ export function EnhancedMonitoringTab({ clientId, clientName, monitoringData }: 
     <div className="space-y-6">
       {/* Header Stats */}
       <div className="grid grid-cols-4 gap-4">
-        <Card className="border-2 border-cyan-300 shadow-lg bg-gradient-to-br from-cyan-50 to-blue-50">
+        <Card className="border-2 border-cyan-300 shadow-lg bg-gray-50">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
               <Activity className="w-8 h-8 text-cyan-600" />
@@ -370,7 +370,7 @@ export function EnhancedMonitoringTab({ clientId, clientName, monitoringData }: 
           </CardContent>
         </Card>
 
-        <Card className={`border-2 shadow-lg ${activeAlerts > 0 ? 'border-red-400 bg-gradient-to-br from-red-50 to-orange-50' : 'border-green-400 bg-gradient-to-br from-green-50 to-emerald-50'}`}>
+        <Card className={`border-2 shadow-lg ${activeAlerts > 0 ? 'border-red-400 bg-gray-50' : 'border-green-400 bg-gray-50'}`}>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
               <Bell className={`w-8 h-8 ${activeAlerts > 0 ? 'text-red-600' : 'text-green-600'}`} />
@@ -388,7 +388,7 @@ export function EnhancedMonitoringTab({ clientId, clientName, monitoringData }: 
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-purple-300 shadow-lg bg-gradient-to-br from-purple-50 to-indigo-50">
+        <Card className="border-2 border-purple-300 shadow-lg bg-gray-50">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
               <Target className="w-8 h-8 text-purple-600" />
@@ -400,7 +400,7 @@ export function EnhancedMonitoringTab({ clientId, clientName, monitoringData }: 
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-orange-300 shadow-lg bg-gradient-to-br from-orange-50 to-amber-50">
+        <Card className="border-2 border-orange-300 shadow-lg bg-gray-50">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
               <BarChart3 className="w-8 h-8 text-orange-600" />
@@ -417,7 +417,7 @@ export function EnhancedMonitoringTab({ clientId, clientName, monitoringData }: 
 
       {/* Active Alerts Section */}
       <Card className="border-2 border-red-300 shadow-lg">
-        <CardHeader className="bg-gradient-to-r from-red-50 to-orange-50 border-b">
+        <CardHeader className="bg-gray-50 border-b">
           <CardTitle className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Bell className="w-6 h-6 text-red-600" />
@@ -492,7 +492,7 @@ export function EnhancedMonitoringTab({ clientId, clientName, monitoringData }: 
 
       {/* Run On-Demand Checks */}
       <Card className="border-2 border-blue-300 shadow-lg">
-        <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
+        <CardHeader className="bg-gray-50 border-b">
           <CardTitle className="flex items-center gap-2">
             <Zap className="w-6 h-6 text-blue-600" />
             Run On-Demand Verification Checks
@@ -612,7 +612,7 @@ export function EnhancedMonitoringTab({ clientId, clientName, monitoringData }: 
 
       {/* Monitoring Timeline */}
       <Card className="border-2 border-purple-300 shadow-lg">
-        <CardHeader className="bg-gradient-to-r from-purple-50 to-indigo-50 border-b">
+        <CardHeader className="bg-gray-50 border-b">
           <CardTitle className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Clock className="w-6 h-6 text-purple-600" />
@@ -692,7 +692,7 @@ export function EnhancedMonitoringTab({ clientId, clientName, monitoringData }: 
 
       {/* Change Detection Summary */}
       <Card className="border-2 border-green-300 shadow-lg">
-        <CardHeader className="bg-gradient-to-r from-green-50 to-emerald-50 border-b">
+        <CardHeader className="bg-gray-50 border-b">
           <CardTitle className="flex items-center gap-2">
             <Activity className="w-6 h-6 text-green-600" />
             Change Detection Summary
@@ -700,7 +700,7 @@ export function EnhancedMonitoringTab({ clientId, clientName, monitoringData }: 
         </CardHeader>
         <CardContent className="p-6">
           <div className="grid grid-cols-3 gap-4">
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-6 border-2 border-blue-200">
+            <div className="bg-gray-50 rounded-lg p-6 border-2 border-blue-200">
               <div className="flex items-center gap-3 mb-3">
                 <div className="p-3 bg-blue-200 rounded-lg">
                   <User className="w-6 h-6 text-blue-700" />
@@ -718,7 +718,7 @@ export function EnhancedMonitoringTab({ clientId, clientName, monitoringData }: 
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg p-6 border-2 border-purple-200">
+            <div className="bg-gray-50 rounded-lg p-6 border-2 border-purple-200">
               <div className="flex items-center gap-3 mb-3">
                 <div className="p-3 bg-purple-200 rounded-lg">
                   <Globe className="w-6 h-6 text-purple-700" />
@@ -736,7 +736,7 @@ export function EnhancedMonitoringTab({ clientId, clientName, monitoringData }: 
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-lg p-6 border-2 border-orange-200">
+            <div className="bg-gray-50 rounded-lg p-6 border-2 border-orange-200">
               <div className="flex items-center gap-3 mb-3">
                 <div className="p-3 bg-orange-200 rounded-lg">
                   <Building className="w-6 h-6 text-orange-700" />

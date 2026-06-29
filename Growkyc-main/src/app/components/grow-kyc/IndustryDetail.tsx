@@ -797,7 +797,7 @@ export function IndustryDetail({ industryId, onBack }: IndustryDetailProps) {
 
         {/* ROI */}
         <Card className="mb-16 border-2 border-[#13B5EA]">
-          <CardHeader className="bg-gradient-to-r from-blue-50 to-purple-50">
+          <CardHeader className="bg-gray-50">
             <CardTitle className="flex items-center gap-2 text-2xl">
               <DollarSign className="w-8 h-8 text-green-600" />
               Return on Investment
@@ -869,7 +869,7 @@ export function IndustryDetail({ industryId, onBack }: IndustryDetailProps) {
         </Card>
 
         {/* CTA */}
-        <Card className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] text-white border-0">
+        <Card className="bg-gradient-to-r from-slate-800 to-slate-700 text-white border-0">
           <CardContent className="p-8 text-center">
             <h3 className="text-3xl font-bold mb-4">Ready to Transform Your {industryId} Practice?</h3>
             <p className="text-white/90 mb-6 text-lg max-w-2xl mx-auto">

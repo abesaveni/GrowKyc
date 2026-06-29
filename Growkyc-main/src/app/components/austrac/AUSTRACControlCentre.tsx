@@ -697,7 +697,7 @@ export function AUSTRACControlCentre({ navigateTo, goBack, defaultSelectedCaseId
                 </div>
               </div>
             </div>
-            <div className="flex flex-wrap lg:flex-nowrap items-center gap-1.5 md:gap-2 w-full lg:w-auto">
+            <div className="flex flex-wrap items-center gap-1.5 md:gap-2 w-full lg:w-auto lg:justify-end">
               <Button onClick={() => setActiveSubPanel('tracking')} className="bg-white/10 border-2 border-white/20 text-white hover:bg-white/20 px-2.5 md:px-3 py-1.5 text-xs md:text-sm whitespace-nowrap flex-shrink-0 justify-center">
                 <Activity className="w-4 h-4 mr-1.5 md:mr-2" />
                 Submission Tracking

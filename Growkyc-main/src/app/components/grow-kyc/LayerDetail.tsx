@@ -583,7 +583,7 @@ export function LayerDetail({ layerId, onBack }: LayerDetailProps) {
         </div>
 
         {/* CTA */}
-        <Card className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] text-white border-0">
+        <Card className="bg-gradient-to-r from-slate-800 to-slate-700 text-white border-0">
           <CardContent className="p-8 text-center">
             <h3 className="text-2xl font-bold mb-4">Ready to see {layer.name} in action?</h3>
             <p className="text-white/90 mb-6 text-lg">

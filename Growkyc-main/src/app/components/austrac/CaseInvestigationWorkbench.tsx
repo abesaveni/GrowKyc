@@ -127,7 +127,7 @@ export function CaseInvestigationWorkbench({ caseId, onBack }: CaseInvestigation
     <div className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-[1900px] mx-auto space-y-6">
         {/* Header */}
-        <div className="bg-gradient-to-r from-red-900 via-red-800 to-orange-900 rounded-lg p-6 text-white shadow-xl">
+        <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white shadow-xl">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               {onBack && (
@@ -149,7 +149,7 @@ export function CaseInvestigationWorkbench({ caseId, onBack }: CaseInvestigation
                 <Clock className="w-5 h-5 mr-2" />
                 SLA: {caseData.slaRemaining}
               </Badge>
-              <Button className="bg-white text-red-900 hover:bg-red-50">
+              <Button className="bg-white text-slate-800 hover:bg-slate-100">
                 Save Progress
               </Button>
             </div>
@@ -160,7 +160,7 @@ export function CaseInvestigationWorkbench({ caseId, onBack }: CaseInvestigation
           {/* LEFT PANEL - Timeline (3 columns) */}
           <div className="col-span-3">
             <Card className="border-2 border-blue-300 shadow-lg sticky top-6">
-              <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
+              <CardHeader className="bg-gray-50 border-b">
                 <CardTitle className="flex items-center gap-2">
                   <Calendar className="w-6 h-6 text-blue-600" />
                   Timeline
@@ -195,7 +195,7 @@ export function CaseInvestigationWorkbench({ caseId, onBack }: CaseInvestigation
           {/* CENTRE PANEL - Investigation Tabs (6 columns) */}
           <div className="col-span-6">
             <Card className="border-2 border-purple-300 shadow-lg">
-              <CardHeader className="bg-gradient-to-r from-purple-50 to-pink-50 border-b">
+              <CardHeader className="bg-gray-50 border-b">
                 <div className="flex gap-2 flex-wrap">
                   {tabs.map((tab) => {
                     const Icon = tab.icon;
@@ -401,7 +401,7 @@ export function CaseInvestigationWorkbench({ caseId, onBack }: CaseInvestigation
           {/* RIGHT PANEL - Investigator Assessment (3 columns) */}
           <div className="col-span-3">
             <Card className="border-2 border-green-300 shadow-lg sticky top-6">
-              <CardHeader className="bg-gradient-to-r from-green-50 to-emerald-50 border-b">
+              <CardHeader className="bg-gray-50 border-b">
                 <CardTitle className="flex items-center gap-2">
                   <CheckCircle className="w-6 h-6 text-green-600" />
                   Assessment

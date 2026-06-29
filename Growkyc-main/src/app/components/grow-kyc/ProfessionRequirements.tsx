@@ -94,7 +94,7 @@ const DEFAULT_PROFESSION_DATA: Record<string, ProfessionData> = {
   compliance_officer: {
     title: 'Compliance Officer',
     subtitle: 'AML/CTF Compliance Requirements',
-    color: 'from-[#13B5EA] to-[#0E7C9E]',
+    color: 'from-slate-800 to-slate-700',
     iconName: 'Shield',
     avatar: '👩‍💼',
     sections: [
@@ -383,7 +383,7 @@ const DEFAULT_PROFESSION_DATA: Record<string, ProfessionData> = {
   partner: {
     title: 'Managing Partner',
     subtitle: 'Executive Governance & Oversight Requirements',
-    color: 'from-purple-600 to-pink-600',
+    color: 'from-slate-800 to-slate-700',
     iconName: 'Briefcase',
     avatar: '👨‍💼',
     sections: [
@@ -504,7 +504,7 @@ const DEFAULT_PROFESSION_DATA: Record<string, ProfessionData> = {
   analyst: {
     title: 'AML Analyst',
     subtitle: 'Transaction Monitoring & Investigation Requirements',
-    color: 'from-cyan-600 to-blue-600',
+    color: 'from-slate-800 to-slate-700',
     iconName: 'Activity',
     avatar: '👩‍💻',
     sections: [
@@ -549,7 +549,7 @@ const DEFAULT_PROFESSION_DATA: Record<string, ProfessionData> = {
   auditor: {
     title: 'Compliance Auditor',
     subtitle: 'Audit & Quality Assurance Requirements',
-    color: 'from-indigo-600 to-purple-600',
+    color: 'from-slate-800 to-slate-700',
     iconName: 'ClipboardCheck',
     avatar: '🧑‍💼',
     sections: [

@@ -290,7 +290,7 @@ export function HeadOfComplianceDashboard({
 
   return (
     <div className="space-y-6 md:space-y-8 bg-white min-h-screen px-4 md:px-8 pb-8">
-      <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] rounded-2xl p-6 md:p-12 text-white shadow-lg mt-4 md:mt-8">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-2xl p-6 md:p-12 text-white shadow-lg mt-4 md:mt-8">
         <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mb-6 text-center sm:text-left">
           <div className="text-5xl md:text-6xl">{userAvatar}</div>
           <div>
@@ -406,7 +406,7 @@ export function HeadOfComplianceDashboard({
           className="lg:col-span-2 border-2 border-red-300 shadow-lg cursor-pointer hover:shadow-xl transition-all hover:border-red-400"
           onClick={onNavigateToAUSTRAC}
         >
-          <CardHeader className="bg-gradient-to-r from-red-50 to-orange-50 border-b border-red-200">
+          <CardHeader className="bg-gray-50 border-b border-red-200">
             <div className="flex items-center justify-between gap-4">
               <div>
                 <CardTitle className="flex items-center gap-2 text-red-900">
@@ -564,7 +564,7 @@ export function HeadOfComplianceDashboard({
         </Card>
       </div>
 
-      <Card className="border-2 border-red-200 bg-red-50">
+      <Card className="border border-gray-200 bg-white">
         <CardHeader>
           <div className="flex items-center justify-between">
             <div>

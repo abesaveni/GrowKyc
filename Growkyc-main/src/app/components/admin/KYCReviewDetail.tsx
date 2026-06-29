@@ -327,7 +327,7 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
       </div>
 
       {/* Action Buttons with state transition integration */}
-      <Card className="border-2 border-indigo-200 bg-indigo-50/60 shadow-sm">
+      <Card className="border border-gray-200 bg-white/60 shadow-sm">
         <CardContent className="p-5">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
@@ -379,7 +379,7 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
       </Card>
 
       {/* AI Insights Banner */}
-      <Card className="border-2 border-green-200 bg-gradient-to-r from-green-50 to-emerald-50">
+      <Card className="border-2 border-green-200 bg-gray-50">
         <CardContent className="p-6">
           <div className="flex items-start gap-4">
             <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
@@ -585,7 +585,7 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
                       Risk Assessment
                     </h3>
                     <div className="grid grid-cols-2 gap-4">
-                      <div className="p-4 bg-green-50 border border-green-200 rounded-lg col-span-2">
+                      <div className="p-4 bg-white border border-gray-200 rounded-lg col-span-2">
                         <p className="text-sm text-gray-600 mb-1">Overall Risk Level</p>
                         <p className="text-2xl font-bold text-green-600">{kycData.riskAssessment.overallRisk}</p>
                       </div>
@@ -710,23 +710,23 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
                   {/* Severity Summary Visual Dashboard */}
                   {reviewData?.severitySummary && (
                     <div className="grid grid-cols-2 md:grid-cols-5 gap-3 p-4 bg-gray-50/60 border border-gray-200/80 rounded-xl">
-                      <div className="p-3 bg-red-50 border border-red-200 rounded-xl text-center shadow-sm">
+                      <div className="p-3 bg-white border border-gray-200 rounded-xl text-center shadow-sm">
                         <p className="text-[10px] text-red-700 font-bold uppercase tracking-wider mb-1">Critical</p>
                         <p className="text-2xl font-extrabold text-red-700">{reviewData.severitySummary.critical}</p>
                       </div>
-                      <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl text-center shadow-sm">
+                      <div className="p-3 bg-white border border-gray-200 rounded-xl text-center shadow-sm">
                         <p className="text-[10px] text-amber-700 font-bold uppercase tracking-wider mb-1">High</p>
                         <p className="text-2xl font-extrabold text-amber-700">{reviewData.severitySummary.high}</p>
                       </div>
-                      <div className="p-3 bg-orange-50 border border-orange-200 rounded-xl text-center shadow-sm">
+                      <div className="p-3 bg-white border border-gray-200 rounded-xl text-center shadow-sm">
                         <p className="text-[10px] text-orange-700 font-bold uppercase tracking-wider mb-1">Medium</p>
                         <p className="text-2xl font-extrabold text-orange-700">{reviewData.severitySummary.medium}</p>
                       </div>
-                      <div className="p-3 bg-blue-50 border border-blue-200 rounded-xl text-center shadow-sm">
+                      <div className="p-3 bg-white border border-gray-200 rounded-xl text-center shadow-sm">
                         <p className="text-[10px] text-blue-700 font-bold uppercase tracking-wider mb-1">Low</p>
                         <p className="text-2xl font-extrabold text-blue-700">{reviewData.severitySummary.low}</p>
                       </div>
-                      <div className="p-3 bg-indigo-50 border border-indigo-200 rounded-xl text-center shadow-sm col-span-2 md:col-span-1">
+                      <div className="p-3 bg-white border border-gray-200 rounded-xl text-center shadow-sm col-span-2 md:col-span-1">
                         <p className="text-[10px] text-indigo-700 font-bold uppercase tracking-wider mb-1">Total Issues</p>
                         <p className="text-2xl font-extrabold text-indigo-700">{reviewData.severitySummary.total_issues}</p>
                       </div>

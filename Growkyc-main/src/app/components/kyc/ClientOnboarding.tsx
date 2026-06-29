@@ -1040,7 +1040,7 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                               </div>
                             </div>
 
-                            <label className="flex items-start gap-3 p-4 bg-amber-50 border-2 border-amber-200 rounded-xl cursor-pointer hover:bg-amber-100/80 transition-colors">
+                            <label className="flex items-start gap-3 p-4 bg-white border border-gray-200 rounded-xl cursor-pointer hover:bg-amber-100/80 transition-colors">
                               <input
                                 type="checkbox"
                                 checked={bpayPaymentMade}
@@ -1226,7 +1226,7 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                             paymentProcessing ||
                             (paymentMethod === 'bpay' && (!bpayPaymentMade || bpayReferenceInput.length < 6))
                           }
-                          className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white text-lg py-7 rounded-xl shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="w-full bg-gradient-to-r from-slate-800 to-slate-700 hover:from-green-700 hover:to-emerald-700 text-white text-lg py-7 rounded-xl shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                           {paymentProcessing ? (
                             <>
@@ -1247,7 +1247,7 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                       </>
                     ) : (
                       <div className="bg-white rounded-2xl border-2 border-green-300 overflow-hidden shadow-lg">
-                        <div className="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-6 py-4 flex items-center gap-3">
+                        <div className="bg-gradient-to-r from-slate-800 to-slate-700 text-white px-6 py-4 flex items-center gap-3">
                           <CheckCircle className="w-8 h-8" />
                           <div>
                             <p className="font-bold text-xl">Payment Successful</p>

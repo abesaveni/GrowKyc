@@ -392,7 +392,7 @@ export function EnhancedAustracTab({ clientName, smrs, summary }: EnhancedAustra
 
       {/* 4. Detailed SMR Report View (Existing UI integration) */}
       <Card className="border-2 border-cyan-300 shadow-lg">
-        <CardHeader className="bg-gradient-to-r from-cyan-50 to-blue-50 border-b">
+        <CardHeader className="bg-gray-50 border-b">
           <CardTitle className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Shield className="w-6 h-6 text-cyan-600" />

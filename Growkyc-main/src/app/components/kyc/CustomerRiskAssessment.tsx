@@ -174,7 +174,7 @@ export function CustomerRiskAssessment({ caseData, onComplete }: CustomerRiskAss
     switch (lvl) {
       case 'HIGH':
         return {
-          bg: 'bg-gradient-to-r from-red-600 to-orange-600',
+          bg: 'bg-gradient-to-r from-slate-800 to-slate-700',
           text: 'text-red-600',
           badge: 'bg-red-500 text-white',
           desc: 'Immediate enhanced due diligence and senior management approval required.'
@@ -291,7 +291,7 @@ export function CustomerRiskAssessment({ caseData, onComplete }: CustomerRiskAss
               </div>
 
               {isOverridden && (
-                <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-800">
+                <div className="p-3 bg-white border border-gray-200 rounded-xl text-xs text-amber-800">
                   <p className="font-bold">⚠️ Compliance Override Active</p>
                   <p className="mt-1">Standard scoring overridden by officer. Justification attached to permanent audit logs.</p>
                 </div>

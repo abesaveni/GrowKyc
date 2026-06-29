@@ -424,7 +424,7 @@ function IdentityVerificationFlow({ onBack }: { onBack: () => void }) {
                 </p>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
                 <h4 className="font-semibold text-blue-900 mb-2">Document Requirements</h4>
                 <ul className="text-sm text-blue-800 space-y-1">
                   <li>• Clear, well-lit image of document</li>
@@ -467,21 +467,21 @@ function IdentityVerificationFlow({ onBack }: { onBack: () => void }) {
               </div>
 
               <div className="grid md:grid-cols-3 gap-4">
-                <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+                <div className="p-4 bg-white border border-gray-200 rounded-lg">
                   <div className="flex items-center gap-2 mb-2">
                     <CheckCircle className="w-5 h-5 text-green-600" />
                     <p className="font-semibold text-green-900">Liveness Detection</p>
                   </div>
                   <p className="text-sm text-green-700">Active - Ready</p>
                 </div>
-                <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+                <div className="p-4 bg-white border border-gray-200 rounded-lg">
                   <div className="flex items-center gap-2 mb-2">
                     <CheckCircle className="w-5 h-5 text-green-600" />
                     <p className="font-semibold text-green-900">Anti-Spoofing</p>
                   </div>
                   <p className="text-sm text-green-700">Enabled</p>
                 </div>
-                <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+                <div className="p-4 bg-white border border-gray-200 rounded-lg">
                   <div className="flex items-center gap-2 mb-2">
                     <CheckCircle className="w-5 h-5 text-green-600" />
                     <p className="font-semibold text-green-900">Face Detection</p>
@@ -490,7 +490,7 @@ function IdentityVerificationFlow({ onBack }: { onBack: () => void }) {
                 </div>
               </div>
 
-              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
                 <h4 className="font-semibold text-amber-900 mb-2">Selfie Tips</h4>
                 <ul className="text-sm text-amber-800 space-y-1">
                   <li>• Look directly at the camera</li>
@@ -577,19 +577,19 @@ function IdentityVerificationFlow({ onBack }: { onBack: () => void }) {
               </CardTitle>
             </CardHeader>
             <CardContent className="p-6 space-y-6">
-              <div className="p-6 bg-green-50 border-2 border-green-400 rounded-lg">
+              <div className="p-6 bg-white border border-gray-200 rounded-lg">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
                       <CheckCircle className="w-7 h-7 text-white" />
                     </div>
                     <div>
-                      <p className="text-2xl font-bold text-green-900">IDENTITY VERIFIED</p>
-                      <p className="text-sm text-green-700">All checks passed successfully</p>
+                      <p className="text-2xl font-bold text-gray-900">IDENTITY VERIFIED</p>
+                      <p className="text-sm text-gray-600">All checks passed successfully</p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-4xl font-bold text-green-600">98%</p>
+                    <p className="text-4xl font-bold text-gray-500">98%</p>
                     <p className="text-xs text-green-700">Match Score</p>
                   </div>
                 </div>
@@ -641,7 +641,7 @@ function IdentityVerificationFlow({ onBack }: { onBack: () => void }) {
                 </Card>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
                 <h4 className="font-semibold text-blue-900 mb-3">Extracted Data</h4>
                 <div className="grid md:grid-cols-2 gap-3 text-sm">
                   <div>

@@ -304,7 +304,7 @@ export function ClientPortalHome() {
 
               {/* Action Required Banner */}
               {highPriorityTasks.length > 0 && (
-                <div className="bg-orange-50 border-2 border-orange-200 rounded-lg p-6 mb-6">
+                <div className="bg-white border border-gray-200 rounded-lg p-6 mb-6">
                   <div className="flex items-start gap-3">
                     <AlertTriangle className="w-6 h-6 text-orange-600 mt-0.5" />
                     <div className="flex-1">

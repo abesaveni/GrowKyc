@@ -168,13 +168,13 @@ export function RiskAssessmentMaster({ onComplete }: RiskAssessmentMasterProps) 
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg p-6 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white">
         <h1 className="text-3xl font-bold mb-2">1. Risk Assessment Module</h1>
         <p className="text-purple-100">Complete all sections to activate AML/CTF program</p>
       </div>
 
       {/* Critical Rule */}
-      <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4">
+      <div className="bg-white border border-gray-200 rounded-lg p-4">
         <div className="flex items-start">
           <AlertTriangle className="w-5 h-5 text-red-600 mr-3 mt-0.5" />
           <div>

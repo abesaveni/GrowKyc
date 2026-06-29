@@ -184,7 +184,7 @@ export function IdentityTab({ client }: IdentityTabProps) {
         <CardContent className="p-6">
           <div className="space-y-6">
             {hasDeficiency && (
-                <div className="p-4 bg-orange-50 border border-orange-200 rounded-xl flex items-start gap-3 shadow-sm">
+                <div className="p-4 bg-white border border-gray-200 rounded-xl flex items-start gap-3 shadow-sm">
                   <AlertCircle className="w-5 h-5 text-orange-600 mt-0.5" />
                   <div>
                     <p className="font-bold text-orange-900">Additional Documentation Required</p>
@@ -398,7 +398,7 @@ export function IdentityTab({ client }: IdentityTabProps) {
           <CardContent className="p-6">
             <div className="space-y-4">
               {fraudFlags.length === 0 ? (
-                <div className="p-4 bg-green-50 border border-green-200 rounded-xl text-center shadow-sm">
+                <div className="p-4 bg-white border border-gray-200 rounded-xl text-center shadow-sm">
                   <CheckCircle2 className="w-6 h-6 text-green-600 mx-auto mb-2" />
                   <p className="font-bold text-green-900">System Clear</p>
                   <p className="text-sm text-green-700">No fraud flags or anomalies detected on this identity profile.</p>

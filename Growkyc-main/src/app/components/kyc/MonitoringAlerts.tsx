@@ -157,7 +157,7 @@ export function MonitoringAlerts() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg p-8 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-8 text-white">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Bell className="w-16 h-16" />
@@ -453,7 +453,7 @@ export function MonitoringAlerts() {
       </div>
 
       {/* AI Monitoring Note */}
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+      <div className="bg-white border border-gray-200 rounded-lg p-6">
         <div className="flex items-start gap-3">
           <Zap className="w-6 h-6 text-blue-600 mt-0.5" />
           <div>

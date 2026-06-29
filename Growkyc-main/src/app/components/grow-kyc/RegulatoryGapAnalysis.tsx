@@ -308,7 +308,7 @@ export function RegulatoryGapAnalysis({ onBack }: RegulatoryGapAnalysisProps) {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-6">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 text-white px-6 py-6">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-4">
             <Button variant="ghost" size="sm" onClick={onBack} className="text-white hover:bg-white/20">
@@ -450,7 +450,7 @@ export function RegulatoryGapAnalysis({ onBack }: RegulatoryGapAnalysisProps) {
 
         {/* Implementation Roadmap */}
         <Card className="mt-6 border-2 border-purple-200">
-          <CardHeader className="bg-gradient-to-r from-purple-50 to-pink-50">
+          <CardHeader className="bg-gray-50">
             <CardTitle className="text-xl">📋 Implementation Roadmap - Priority Sequence</CardTitle>
             <CardDescription>Recommended order for closing regulatory gaps</CardDescription>
           </CardHeader>

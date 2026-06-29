@@ -681,7 +681,7 @@ export function CaseWorkbench({ caseId, onBack, complianceOfficerMode = false }:
     <div className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-[2000px] mx-auto space-y-6">
         {/* Header */}
-        <div className="bg-gradient-to-r from-red-900 via-red-800 to-orange-900 rounded-lg p-6 text-white shadow-xl">
+        <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white shadow-xl">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <Button className="bg-white/20 border-2 border-white/30 text-white hover:bg-white/30" onClick={onBack}>
@@ -729,7 +729,7 @@ export function CaseWorkbench({ caseId, onBack, complianceOfficerMode = false }:
           {/* LEFT PANEL - Timeline */}
           <div className="col-span-3">
             <Card className="border-2 border-blue-300 shadow-lg sticky top-6">
-              <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
+              <CardHeader className="bg-gray-50 border-b">
                 <CardTitle className="flex items-center gap-2">
                   <Calendar className="w-6 h-6 text-blue-600" />
                   Timeline
@@ -765,7 +765,7 @@ export function CaseWorkbench({ caseId, onBack, complianceOfficerMode = false }:
           {/* CENTRE PANEL - Investigation */}
           <div className="col-span-6">
             <Card className="border-2 border-purple-300 shadow-lg">
-              <CardHeader className="bg-gradient-to-r from-purple-50 to-pink-50 border-b">
+              <CardHeader className="bg-gray-50 border-b">
                 <div className="flex gap-2 flex-wrap">
                   {tabs.map((tab) => {
                     const Icon = tab.icon;
@@ -1109,7 +1109,7 @@ export function CaseWorkbench({ caseId, onBack, complianceOfficerMode = false }:
                     </Card>
 
                     {/* Summary */}
-                    <Card className="border-2 border-red-400 bg-red-50">
+                    <Card className="border border-gray-200 bg-white">
                       <CardContent className="p-6">
                         <h3 className="text-xl font-bold text-red-900 mb-4 flex items-center gap-2"><AlertTriangle className="w-7 h-7" />Screening Summary & Risk Assessment</h3>
                         <div className="grid grid-cols-3 gap-4 mb-4">
@@ -1149,7 +1149,7 @@ export function CaseWorkbench({ caseId, onBack, complianceOfficerMode = false }:
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         <h3 className="text-xl font-bold text-gray-900">Audit Events Timeline</h3>
-                        <span className="flex items-center gap-1.5 px-2.5 py-1 bg-green-50 border border-green-200 rounded-full text-xs font-semibold text-green-700">
+                        <span className="flex items-center gap-1.5 px-2.5 py-1 bg-white border border-gray-200 rounded-full text-xs font-semibold text-green-700">
                           <span className="relative flex h-2 w-2">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
@@ -1205,7 +1205,7 @@ export function CaseWorkbench({ caseId, onBack, complianceOfficerMode = false }:
 
                     {/* Error state */}
                     {error && (
-                      <div className="p-4 bg-red-50 border-2 border-red-300 rounded-lg flex items-start gap-3">
+                      <div className="p-4 bg-white border border-gray-200 rounded-lg flex items-start gap-3">
                         <XCircle className="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" />
                         <div>
                           <p className="text-sm font-semibold text-red-800">Failed to load audit events</p>
@@ -1319,7 +1319,7 @@ export function CaseWorkbench({ caseId, onBack, complianceOfficerMode = false }:
                     <h3 className="text-xl font-bold text-gray-900 mb-2">Case Notes</h3>
                     
                     {/* Add/Edit Note Section */}
-                    <Card className="border-2 border-blue-200 bg-blue-50/50 shadow-sm">
+                    <Card className="border border-gray-200 bg-white/50 shadow-sm">
                       <CardContent className="p-4 space-y-3">
                         <h4 className="font-semibold text-blue-900 flex items-center gap-2">
                           <MessageSquare className="w-4 h-4" />
@@ -1777,7 +1777,7 @@ export function CaseWorkbench({ caseId, onBack, complianceOfficerMode = false }:
           {/* RIGHT PANEL - Actions + Decision */}
           <div className="col-span-3">
             <Card className="border-2 border-green-300 shadow-lg sticky top-6">
-              <CardHeader className="bg-gradient-to-r from-green-50 to-emerald-50 border-b">
+              <CardHeader className="bg-gray-50 border-b">
                 <CardTitle className="flex items-center gap-2">
                   <Target className="w-6 h-6 text-green-600" />
                   Actions & Decision
@@ -1908,7 +1908,7 @@ export function CaseWorkbench({ caseId, onBack, complianceOfficerMode = false }:
                 </div>
 
                 {complianceOfficerMode && caseRecord && (decision === 'approve' || decision === 'approve_conditions') && (
-                  <div className="mb-3 p-3 bg-amber-50 border border-amber-200 rounded-lg text-xs space-y-1">
+                  <div className="mb-3 p-3 bg-white border border-gray-200 rounded-lg text-xs space-y-1">
                     <p className="font-bold text-amber-900">Approval requirements</p>
                     {getApprovalBlockers(caseRecord, approvalReadiness, getActivePersonaId()).length === 0 ? (
                       <p className="text-green-700">All mandatory checks satisfied for your role.</p>
@@ -2069,7 +2069,7 @@ export function CaseWorkbench({ caseId, onBack, complianceOfficerMode = false }:
       {previewDoc && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <Card className="max-w-2xl w-full max-h-[85vh] overflow-y-auto border-2 border-blue-400 shadow-2xl">
-            <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b flex flex-row items-center justify-between py-4">
+            <CardHeader className="bg-gray-50 border-b flex flex-row items-center justify-between py-4">
               <div>
                 <CardTitle className="text-xl font-bold text-gray-900 flex items-center gap-2">
                   <FileText className="w-5 h-5 text-blue-600" />

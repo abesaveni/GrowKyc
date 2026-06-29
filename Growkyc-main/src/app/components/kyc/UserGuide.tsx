@@ -63,14 +63,14 @@ export function UserGuide() {
           title: 'Welcome to Grow KYC',
           content: (
             <div className="space-y-6">
-              <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg p-8 text-white">
+              <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-8 text-white">
                 <h1 className="text-4xl font-bold mb-4">Welcome to Grow KYC</h1>
                 <p className="text-xl text-blue-100">
                   Your complete AUSTRAC-compliant AML/CTF compliance platform for accounting firms
                 </p>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+              <div className="bg-white border border-gray-200 rounded-lg p-6">
                 <h3 className="text-xl font-bold text-blue-900 mb-3">What is Grow KYC?</h3>
                 <p className="text-blue-800 mb-4">
                   Grow KYC (Sentinel AML) is a comprehensive compliance platform designed specifically for 
@@ -114,7 +114,7 @@ export function UserGuide() {
                 })}
               </div>
 
-              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
                 <div className="flex items-start">
                   <AlertTriangle className="w-5 h-5 text-yellow-600 mr-3 mt-0.5" />
                   <div>
@@ -209,7 +209,7 @@ export function UserGuide() {
                 ))}
               </div>
 
-              <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+              <div className="bg-white border border-gray-200 rounded-lg p-6">
                 <div className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-green-600 mr-3 mt-0.5" />
                   <div>
@@ -294,7 +294,7 @@ export function UserGuide() {
                 </div>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+              <div className="bg-white border border-gray-200 rounded-lg p-6">
                 <h3 className="text-xl font-bold text-blue-900 mb-3">Key Integrations</h3>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-white rounded-lg p-4">
@@ -335,7 +335,7 @@ export function UserGuide() {
             <div className="space-y-6">
               <h2 className="text-3xl font-bold text-gray-900">Designated Services Configuration</h2>
               
-              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
                 <div className="flex items-start">
                   <AlertTriangle className="w-5 h-5 text-yellow-600 mr-3 mt-0.5" />
                   <div>
@@ -377,15 +377,15 @@ export function UserGuide() {
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-3">Step 2: Set Inherent Risk</h4>
                     <div className="grid grid-cols-3 gap-3">
-                      <div className="p-3 bg-green-50 border border-green-200 rounded-lg">
+                      <div className="p-3 bg-white border border-gray-200 rounded-lg">
                         <p className="font-bold text-green-900">LOW</p>
                         <p className="text-xs text-green-700">Simple, transparent transactions</p>
                       </div>
-                      <div className="p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+                      <div className="p-3 bg-white border border-gray-200 rounded-lg">
                         <p className="font-bold text-yellow-900">MEDIUM</p>
                         <p className="text-xs text-yellow-700">Some complexity or risk factors</p>
                       </div>
-                      <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
+                      <div className="p-3 bg-white border border-gray-200 rounded-lg">
                         <p className="font-bold text-red-900">HIGH</p>
                         <p className="text-xs text-red-700">Complex, high-value, or opaque</p>
                       </div>
@@ -395,13 +395,13 @@ export function UserGuide() {
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-3">Step 3: Set Risk Appetite</h4>
                     <div className="space-y-3">
-                      <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+                      <div className="p-4 bg-white border border-gray-200 rounded-lg">
                         <p className="font-bold text-green-900 mb-1">YES - Accept the Risk</p>
                         <p className="text-sm text-green-700">
                           Service is within risk appetite. Will provide this service with standard controls.
                         </p>
                       </div>
-                      <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+                      <div className="p-4 bg-white border border-gray-200 rounded-lg">
                         <p className="font-bold text-red-900 mb-1">NO - Do Not Accept</p>
                         <p className="text-sm text-red-700 mb-2">
                           Service is outside risk appetite. Must provide control statement explaining why.
@@ -415,7 +415,7 @@ export function UserGuide() {
 
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-3">Step 4: Document Control Statement</h4>
-                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <div className="bg-white border border-gray-200 rounded-lg p-4">
                       <p className="text-sm text-blue-900 mb-2">
                         <strong>Example Control Statements:</strong>
                       </p>
@@ -430,7 +430,7 @@ export function UserGuide() {
                 </div>
               </div>
 
-              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
                 <div className="flex items-start">
                   <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5" />
                   <div>
@@ -452,7 +452,7 @@ export function UserGuide() {
             <div className="space-y-6">
               <h2 className="text-3xl font-bold text-gray-900">Country Risk Assessment</h2>
 
-              <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
                 <div className="flex items-start">
                   <AlertTriangle className="w-5 h-5 text-red-600 mr-3 mt-0.5" />
                   <div>
@@ -492,7 +492,7 @@ export function UserGuide() {
                     <p className="text-sm text-gray-600 mb-2">
                       Financial Action Task Force high-risk jurisdiction list
                     </p>
-                    <div className="bg-red-50 border border-red-200 rounded p-3">
+                    <div className="bg-white border border-gray-200 rounded p-3">
                       <p className="text-sm text-red-900 font-semibold">
                         ⚠️ If FATF listed → Automatic HIGH risk (cannot be overridden)
                       </p>
@@ -504,7 +504,7 @@ export function UserGuide() {
                     <p className="text-sm text-gray-600 mb-2">
                       Australian Department of Foreign Affairs and Trade sanctions list
                     </p>
-                    <div className="bg-red-50 border border-red-200 rounded p-3">
+                    <div className="bg-white border border-gray-200 rounded p-3">
                       <p className="text-sm text-red-900 font-semibold">
                         ⚠️ If DFAT sanctioned → Automatic HIGH risk (cannot be overridden)
                       </p>
@@ -540,7 +540,7 @@ export function UserGuide() {
                 </div>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+              <div className="bg-white border border-gray-200 rounded-lg p-6">
                 <h3 className="font-bold text-blue-900 mb-3">Stress Test Example</h3>
                 <div className="space-y-3">
                   <p className="text-sm text-blue-800">
@@ -575,7 +575,7 @@ export function UserGuide() {
             <div className="space-y-6">
               <h2 className="text-3xl font-bold text-gray-900">Customer Due Diligence (CDD) Workflow</h2>
 
-              <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
                 <div className="flex items-start">
                   <Lock className="w-6 h-6 text-red-600 mr-3 mt-0.5" />
                   <div>
@@ -666,7 +666,7 @@ export function UserGuide() {
                 </div>
               </div>
 
-              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+              <div className="bg-white border border-gray-200 rounded-lg p-6">
                 <h3 className="font-bold text-yellow-900 mb-3">Delayed CDD Logic</h3>
                 <p className="text-sm text-yellow-800 mb-3">
                   In limited circumstances, CDD may be delayed. If delay permitted:
@@ -679,7 +679,7 @@ export function UserGuide() {
                 </ul>
               </div>
 
-              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
                 <h3 className="font-bold text-green-900 mb-2">Total CDD Time</h3>
                 <p className="text-sm text-green-800">
                   <strong>Standard client:</strong> 15-25 minutes
@@ -700,7 +700,7 @@ export function UserGuide() {
               <h2 className="text-3xl font-bold text-gray-900">Identity Verification Services</h2>
 
               <div className="grid grid-cols-2 gap-6">
-                <div className="bg-gradient-to-br from-green-600 to-emerald-600 rounded-lg p-6 text-white">
+                <div className="bg-gradient-to-br from-slate-800 to-slate-700 rounded-lg p-6 text-white">
                   <h3 className="text-2xl font-bold mb-4">GreenID</h3>
                   <p className="text-green-100 mb-4">DVS-Certified Identity Verification</p>
                   <div className="space-y-2 text-sm">
@@ -723,7 +723,7 @@ export function UserGuide() {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg p-6 text-white">
+                <div className="bg-gradient-to-br from-slate-800 to-slate-700 rounded-lg p-6 text-white">
                   <h3 className="text-2xl font-bold mb-4">InfoTrack</h3>
                   <p className="text-blue-100 mb-4">Comprehensive Verification</p>
                   <div className="space-y-2 text-sm">
@@ -751,7 +751,7 @@ export function UserGuide() {
                 <h3 className="text-xl font-bold text-gray-900 mb-4">When to Use Each Service</h3>
                 
                 <div className="space-y-4">
-                  <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+                  <div className="p-4 bg-white border border-gray-200 rounded-lg">
                     <h4 className="font-bold text-green-900 mb-2">Use GreenID For:</h4>
                     <ul className="text-sm text-green-800 space-y-1">
                       <li>• Individual identity verification (primary method)</li>
@@ -762,7 +762,7 @@ export function UserGuide() {
                     </ul>
                   </div>
 
-                  <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                  <div className="p-4 bg-white border border-gray-200 rounded-lg">
                     <h4 className="font-bold text-blue-900 mb-2">Use InfoTrack For:</h4>
                     <ul className="text-sm text-blue-800 space-y-1">
                       <li>• Company and trust verification</li>
@@ -776,7 +776,7 @@ export function UserGuide() {
                 </div>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+              <div className="bg-white border border-gray-200 rounded-lg p-6">
                 <h3 className="font-bold text-blue-900 mb-3">Integration Workflow</h3>
                 <div className="space-y-3">
                   {[
@@ -841,7 +841,7 @@ export function UserGuide() {
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Review Cycles</h3>
                 
                 <div className="space-y-3">
-                  <div className="flex items-center justify-between p-4 bg-red-50 border border-red-200 rounded-lg">
+                  <div className="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg">
                     <div>
                       <p className="font-bold text-red-900">High Risk Clients</p>
                       <p className="text-sm text-red-700">Full review required</p>
@@ -851,7 +851,7 @@ export function UserGuide() {
                     </span>
                   </div>
 
-                  <div className="flex items-center justify-between p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                  <div className="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg">
                     <div>
                       <p className="font-bold text-yellow-900">Medium Risk Clients</p>
                       <p className="text-sm text-yellow-700">Standard review required</p>
@@ -861,7 +861,7 @@ export function UserGuide() {
                     </span>
                   </div>
 
-                  <div className="flex items-center justify-between p-4 bg-green-50 border border-green-200 rounded-lg">
+                  <div className="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg">
                     <div>
                       <p className="font-bold text-green-900">Low Risk Clients</p>
                       <p className="text-sm text-green-700">Light-touch review required</p>
@@ -873,7 +873,7 @@ export function UserGuide() {
                 </div>
               </div>
 
-              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
                 <div className="flex items-start">
                   <AlertTriangle className="w-5 h-5 text-yellow-600 mr-3 mt-0.5" />
                   <div>
@@ -984,7 +984,7 @@ export function UserGuide() {
                 </div>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+              <div className="bg-white border border-gray-200 rounded-lg p-6">
                 <h3 className="font-bold text-blue-900 mb-3">Best Practices</h3>
                 <ul className="text-sm text-blue-800 space-y-2">
                   <li className="flex items-start">
@@ -1026,7 +1026,7 @@ export function UserGuide() {
             <div className="space-y-6">
               <h2 className="text-3xl font-bold text-gray-900">Suspicious Matter Reporting (SMR)</h2>
 
-              <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6">
+              <div className="bg-white border border-gray-200 rounded-lg p-6">
                 <div className="flex items-start">
                   <Lock className="w-6 h-6 text-red-600 mr-3 mt-0.5" />
                   <div>
@@ -1043,7 +1043,7 @@ export function UserGuide() {
                 <h3 className="text-xl font-bold text-gray-900 mb-4">SMR Timers</h3>
                 
                 <div className="space-y-3">
-                  <div className="p-4 bg-red-50 border-2 border-red-200 rounded-lg">
+                  <div className="p-4 bg-white border border-gray-200 rounded-lg">
                     <div className="flex items-center justify-between mb-2">
                       <h4 className="font-bold text-red-900">Terrorism Financing</h4>
                       <span className="px-3 py-1 bg-red-600 text-white font-bold rounded">24 HOURS</span>
@@ -1053,7 +1053,7 @@ export function UserGuide() {
                     </p>
                   </div>
 
-                  <div className="p-4 bg-orange-50 border-2 border-orange-200 rounded-lg">
+                  <div className="p-4 bg-white border border-gray-200 rounded-lg">
                     <div className="flex items-center justify-between mb-2">
                       <h4 className="font-bold text-orange-900">All Other Suspicious Matters</h4>
                       <span className="px-3 py-1 bg-orange-600 text-white font-bold rounded">3 BUSINESS DAYS</span>
@@ -1091,7 +1091,7 @@ export function UserGuide() {
                 </div>
               </div>
 
-              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
                 <div className="flex items-start">
                   <AlertTriangle className="w-5 h-5 text-yellow-600 mr-3 mt-0.5" />
                   <div>
@@ -1104,7 +1104,7 @@ export function UserGuide() {
                 </div>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+              <div className="bg-white border border-gray-200 rounded-lg p-6">
                 <h3 className="font-bold text-blue-900 mb-3">What Makes Something Suspicious?</h3>
                 <ul className="text-sm text-blue-800 space-y-2">
                   <li>• Transactions inconsistent with client's known legitimate business or personal activities</li>
@@ -1134,7 +1134,7 @@ export function UserGuide() {
             <div className="space-y-6">
               <h2 className="text-3xl font-bold text-gray-900">AUSTRAC Review Testing</h2>
 
-              <div className="bg-gradient-to-r from-red-600 to-orange-600 rounded-lg p-6 text-white">
+              <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white">
                 <h3 className="text-2xl font-bold mb-2">Test Your System Before AUSTRAC Does</h3>
                 <p className="text-red-100">
                   90+ compliance checks, stress tests, and red team attack scenarios to validate your AML/CTF program
@@ -1221,7 +1221,7 @@ export function UserGuide() {
                 </div>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+              <div className="bg-white border border-gray-200 rounded-lg p-6">
                 <h3 className="font-bold text-blue-900 mb-3">Pass Criteria</h3>
                 <p className="text-sm text-blue-800 mb-3">
                   You pass comfortably if:
@@ -1253,7 +1253,7 @@ export function UserGuide() {
             <div className="space-y-6">
               <h2 className="text-3xl font-bold text-gray-900">Simulated AUSTRAC Audit</h2>
 
-              <div className="bg-gradient-to-r from-red-600 to-pink-600 rounded-lg p-6 text-white">
+              <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white">
                 <h3 className="text-2xl font-bold mb-2">6-Stage Audit + 10 Red Team Attacks</h3>
                 <p className="text-red-100">
                   Experience a realistic AUSTRAC audit including desk review, sample testing, and adversarial attacks
@@ -1344,7 +1344,7 @@ export function UserGuide() {
                     'Program Change Not Re-Approved - Governance breakdown',
                     'Independent Review Surface Test - Operational evidence'
                   ].map((attack, index) => (
-                    <div key={index} className="flex items-start p-3 bg-red-50 border border-red-200 rounded-lg">
+                    <div key={index} className="flex items-start p-3 bg-white border border-gray-200 rounded-lg">
                       <Zap className="w-4 h-4 text-red-600 mr-2 mt-0.5 flex-shrink-0" />
                       <span className="text-sm text-red-900">{attack}</span>
                     </div>
@@ -1352,7 +1352,7 @@ export function UserGuide() {
                 </div>
               </div>
 
-              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
                 <h3 className="font-bold text-green-900 mb-2">Pass Criteria</h3>
                 <p className="text-sm text-green-800">
                   System is regulator-resilient if it withstands:

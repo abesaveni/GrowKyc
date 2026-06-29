@@ -230,7 +230,7 @@ export function DatabaseManager({ onBack }: DatabaseManagerProps) {
 
       <div className="p-8 max-w-7xl mx-auto">
         {/* Bulk Upload */}
-        <Card className="mb-8 bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200">
+        <Card className="mb-8 bg-gray-50 border-2 border-blue-200">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Upload className="w-5 h-5 text-blue-600" />
@@ -358,7 +358,7 @@ export function DatabaseManager({ onBack }: DatabaseManagerProps) {
         </div>
 
         {/* Automated Refresh Schedule */}
-        <Card className="mt-12 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200">
+        <Card className="mt-12 bg-gray-50 border-2 border-green-200">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Clock className="w-5 h-5 text-green-600" />
@@ -393,7 +393,7 @@ export function DatabaseManager({ onBack }: DatabaseManagerProps) {
         </Card>
 
         {/* Danger Zone */}
-        <Card className="mt-8 bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-200">
+        <Card className="mt-8 bg-gray-50 border-2 border-red-200">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-red-900">
               <AlertTriangle className="w-5 h-5 text-red-600" />

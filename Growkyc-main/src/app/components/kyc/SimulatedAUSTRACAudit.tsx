@@ -439,7 +439,7 @@ export function SimulatedAUSTRACAudit() {
   if (currentStage === 'overview') {
     return (
       <div className="space-y-6">
-        <div className="bg-gradient-to-r from-red-600 to-orange-600 rounded-lg p-8 text-white">
+        <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-8 text-white">
           <div className="flex items-center gap-4 mb-4">
             <Target className="w-16 h-16" />
             <div>
@@ -449,7 +449,7 @@ export function SimulatedAUSTRACAudit() {
           </div>
         </div>
 
-        <div className="bg-yellow-50 border-2 border-yellow-200 rounded-lg p-6">
+        <div className="bg-white border border-gray-200 rounded-lg p-6">
           <div className="flex items-start">
             <AlertTriangle className="w-6 h-6 text-yellow-600 mr-3 mt-0.5" />
             <div>
@@ -601,7 +601,7 @@ export function SimulatedAUSTRACAudit() {
           </Card>
         )}
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+        <div className="bg-white border border-gray-200 rounded-lg p-6">
           <h3 className="font-bold text-blue-900 mb-3">What AUSTRAC Cares About</h3>
           <div className="grid grid-cols-5 gap-4">
             {['Governance', 'Risk Logic', 'Decision Documentation', 'Ongoing Monitoring', 'Proof'].map((item, index) => (
@@ -627,12 +627,12 @@ export function SimulatedAUSTRACAudit() {
           ← Back to Overview
         </Button>
 
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg p-6 text-white">
+        <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white">
           <h2 className="text-3xl font-bold mb-2">STAGE 1: Desk Review Request</h2>
           <p className="text-blue-100">Generate all required documents within 10 business days (Target: &lt; 1 hour)</p>
         </div>
 
-        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+        <div className="bg-white border border-gray-200 rounded-lg p-4">
           <p className="text-yellow-900">
             <strong>AUSTRAC Request:</strong> Provide within 10 business days - Latest AML/CTF Program,
             client lists, SMR register, personnel files, and effectiveness reports.
@@ -739,7 +739,7 @@ export function SimulatedAUSTRACAudit() {
           ← Back to Overview
         </Button>
 
-        <div className="bg-gradient-to-r from-red-600 to-pink-600 rounded-lg p-6 text-white">
+        <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white">
           <h2 className="text-3xl font-bold mb-2">Red Team Attack Testing</h2>
           <p className="text-red-100">10 deliberate attempts to break your AML system</p>
         </div>
@@ -796,7 +796,7 @@ export function SimulatedAUSTRACAudit() {
                     </div>
 
                     {attack.passed === false && (
-                      <div className="p-3 bg-red-100 border border-red-300 rounded-lg">
+                      <div className="p-3 bg-white border border-gray-200 rounded-lg">
                         <p className="text-sm font-semibold text-red-900">
                           ⚠️ Failure Mode: {attack.failure}
                         </p>
@@ -888,10 +888,10 @@ export function SimulatedAUSTRACAudit() {
           ← Back to Overview
         </Button>
 
-        <div className={`bg-gradient-to-r ${outcome.color === 'green' ? 'from-green-600 to-emerald-600' :
-            outcome.color === 'yellow' ? 'from-yellow-600 to-orange-600' :
-              outcome.color === 'orange' ? 'from-orange-600 to-red-600' :
-                'from-red-600 to-pink-600'
+        <div className={`bg-gradient-to-r ${outcome.color === 'green' ? 'from-slate-800 to-slate-700' :
+            outcome.color === 'yellow' ? 'from-slate-800 to-slate-700' :
+              outcome.color === 'orange' ? 'from-slate-800 to-slate-700' :
+                'from-slate-800 to-slate-700'
           } rounded-lg p-8 text-white`}>
           <h1 className="text-5xl font-bold mb-4">{outcome.status}</h1>
           <p className="text-2xl">{outcome.reason}</p>
@@ -966,7 +966,7 @@ export function SimulatedAUSTRACAudit() {
           </div>
         </div>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+        <div className="bg-white border border-gray-200 rounded-lg p-6">
           <h3 className="font-bold text-blue-900 mb-3">Final Reality Check</h3>
           <p className="text-blue-800 mb-4">
             AUSTRAC does not care how modern your UI is. They care about:
@@ -1058,7 +1058,7 @@ export function SimulatedAUSTRACAudit() {
           ← Back to Overview
         </Button>
 
-        <div className="bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg p-6 text-white">
+        <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white">
           <h2 className="text-3xl font-bold mb-2">STAGE 8: Final Submission</h2>
           <p className="text-green-100">Review collected compliance telemetry and execute the secure AUSTRAC submission flow</p>
         </div>
@@ -1167,7 +1167,7 @@ export function SimulatedAUSTRACAudit() {
                     <Button
                       onClick={handleSubmissionFlow}
                       disabled={!allChecked}
-                      className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 py-6 text-lg font-bold shadow-lg gap-2"
+                      className="w-full bg-gradient-to-r from-slate-800 to-slate-700 hover:from-green-700 hover:to-emerald-700 py-6 text-lg font-bold shadow-lg gap-2"
                     >
                       <Shield className="w-5 h-5" />
                       Submit Final Audit Report
@@ -1249,7 +1249,7 @@ export function SimulatedAUSTRACAudit() {
           ← Back to Overview
         </Button>
 
-        <div className="bg-gradient-to-r from-orange-600 to-amber-600 rounded-lg p-6 text-white shadow-md">
+        <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white shadow-md">
           <h2 className="text-3xl font-extrabold mb-1">STAGE 4: High-Risk Customer Deep Dive (EDD)</h2>
           <p className="text-orange-100 text-sm">Perform Enhanced Due Diligence checks and Source of Funds verification on high-risk category clients.</p>
         </div>
@@ -1362,7 +1362,7 @@ export function SimulatedAUSTRACAudit() {
               </div>
             ) : (
               <div className="space-y-6">
-                <div className="bg-green-50 border border-green-200 rounded-xl p-4 flex items-center gap-3">
+                <div className="bg-white border border-gray-200 rounded-xl p-4 flex items-center gap-3">
                   <CheckCircle className="w-8 h-8 text-green-600 flex-shrink-0" />
                   <div>
                     <h4 className="font-bold text-green-900 text-sm">Source of Funds Verified & Saved</h4>
@@ -1393,7 +1393,7 @@ export function SimulatedAUSTRACAudit() {
                         href={sofData.documentUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 p-3 bg-blue-50 border border-blue-200 rounded-lg text-xs font-semibold text-blue-700 hover:underline"
+                        className="inline-flex items-center gap-2 p-3 bg-white border border-gray-200 rounded-lg text-xs font-semibold text-blue-700 hover:underline"
                       >
                         <FileText className="w-4 h-4" />
                         {sofData.documentUrl.split('/').pop() || 'evidence.pdf'}
@@ -1445,7 +1445,7 @@ export function SimulatedAUSTRACAudit() {
           ← Back to Overview
         </Button>
 
-        <div className="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg p-6 text-white shadow-md">
+        <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white shadow-md">
           <h2 className="text-3xl font-bold mb-2">{stageTitles[currentStage]}</h2>
           <p className="text-purple-100">Verification of designated service delivery processes & controls</p>
         </div>

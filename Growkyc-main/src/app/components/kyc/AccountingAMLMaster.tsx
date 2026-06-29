@@ -81,10 +81,10 @@ export function AccountingAMLMaster({ onBack }: AccountingAMLMasterProps) {
   // Navigation View - Master Structure
   if (currentView === 'navigation') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 p-8">
+      <div className="min-h-screen bg-gray-50 p-8">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl p-8 text-white mb-8">
+          <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-2xl p-8 text-white mb-8">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
                 <div className="w-20 h-20 bg-white/20 rounded-xl flex items-center justify-center">
@@ -107,7 +107,7 @@ export function AccountingAMLMaster({ onBack }: AccountingAMLMasterProps) {
 
           {/* Critical Notice */}
           {!programStatus.seniorManagerApproval && (
-            <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6 mb-8">
+            <div className="bg-white border border-gray-200 rounded-lg p-6 mb-8">
               <div className="flex items-start">
                 <AlertTriangle className="w-6 h-6 text-red-600 mr-3 mt-0.5" />
                 <div>
@@ -278,7 +278,7 @@ export function AccountingAMLMaster({ onBack }: AccountingAMLMasterProps) {
           </div>
 
           {/* Compliance Checklist */}
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+          <div className="bg-white border border-gray-200 rounded-lg p-6">
             <h3 className="font-bold text-blue-900 mb-4">Final Compliance Check</h3>
             <div className="grid grid-cols-2 gap-3">
               {[

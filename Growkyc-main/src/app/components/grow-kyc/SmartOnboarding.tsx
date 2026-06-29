@@ -412,7 +412,7 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
       </div>
 
       {/* Help Section */}
-      <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
+      <Card className="bg-gray-50 border-blue-200">
         <CardContent className="p-6">
           <div className="flex items-start gap-4">
             <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
@@ -482,7 +482,7 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
             </Button>
             <div className="flex items-center gap-4">
               {/* Developer Mode Toggle */}
-              <div className="flex items-center gap-2 px-3 py-1 bg-amber-100 border-2 border-amber-300 rounded-lg">
+              <div className="flex items-center gap-2 px-3 py-1 bg-white border border-gray-200 rounded-lg">
                 <Code className="w-4 h-4 text-amber-600" />
                 <span className="text-xs font-semibold text-amber-900">DEV MODE</span>
                 <label className="relative inline-flex items-center cursor-pointer">
@@ -563,7 +563,7 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
         
         {/* Developer Mode Navigation */}
         {devMode && (
-          <Card className="mt-6 border-2 border-amber-300 bg-amber-50">
+          <Card className="mt-6 border border-gray-200 bg-white">
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <Button

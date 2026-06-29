@@ -210,7 +210,7 @@ export function UserApprovalQueue({ onBack }: UserApprovalQueueProps) {
             <span className="ml-3 text-gray-500">Loading pending users...</span>
           </div>
         ) : pendingUsers.length === 0 ? (
-          <Card className="border-2 border-green-200 bg-green-50">
+          <Card className="border border-gray-200 bg-white">
             <CardContent className="p-12 text-center">
               <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
               <h3 className="text-2xl font-bold text-green-900 mb-2">All clear!</h3>
@@ -329,7 +329,7 @@ export function UserApprovalQueue({ onBack }: UserApprovalQueueProps) {
         )}
 
         {/* Approval Guidelines */}
-        <Card className="mt-12 bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200">
+        <Card className="mt-12 bg-gray-50 border-2 border-purple-200">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Shield className="w-5 h-5 text-purple-600" />

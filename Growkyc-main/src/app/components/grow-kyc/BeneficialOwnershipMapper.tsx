@@ -535,7 +535,7 @@ export function BeneficialOwnershipMapper({ onBack }: BeneficialOwnershipMapperP
 
                     {/* Ultimate Beneficial Owners Summary */}
                     {ubos.length > 0 && (
-                      <div className="mt-6 p-4 bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-200 rounded-xl">
+                      <div className="mt-6 p-4 bg-gray-50 border-2 border-purple-200 rounded-xl">
                         <h4 className="font-bold text-purple-900 mb-3 flex items-center gap-2">
                           <Crown className="w-5 h-5 text-purple-600" />
                           Ultimate Beneficial Owners (UBO) - {ubos.length} identified
@@ -677,7 +677,7 @@ export function BeneficialOwnershipMapper({ onBack }: BeneficialOwnershipMapperP
         )}
 
         {/* Help Card */}
-        <Card className="mt-12 bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200">
+        <Card className="mt-12 bg-gray-50 border-2 border-blue-200">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Info className="w-5 h-5 text-blue-600" />

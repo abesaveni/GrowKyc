@@ -362,7 +362,7 @@ export function IntegrationHub({ onBack }: IntegrationHubProps) {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 border-b sticky top-0 z-10">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 border-b sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -393,32 +393,32 @@ export function IntegrationHub({ onBack }: IntegrationHubProps) {
       <div className="max-w-7xl mx-auto px-6 py-8">
         {/* Summary Cards */}
         <div className="grid grid-cols-4 gap-4 mb-8">
-          <Card className="border-2 border-green-300 bg-green-50">
+          <Card className="border border-gray-200 bg-white">
             <CardContent className="p-6">
-              <div className="text-sm text-green-700">Active Integrations</div>
-              <div className="text-3xl font-bold text-green-900">{summaryStats.active}</div>
-              <div className="text-xs text-green-600 mt-1">Live and operational</div>
+              <div className="text-sm text-gray-600">Active Integrations</div>
+              <div className="text-3xl font-bold text-gray-900">{summaryStats.active}</div>
+              <div className="text-xs text-gray-500 mt-1">Live and operational</div>
             </CardContent>
           </Card>
-          <Card className="border-2 border-blue-300 bg-blue-50">
+          <Card className="border border-gray-200 bg-white">
             <CardContent className="p-6">
-              <div className="text-sm text-blue-700">Configured</div>
-              <div className="text-3xl font-bold text-blue-900">{summaryStats.configured}</div>
-              <div className="text-xs text-blue-600 mt-1">Ready to activate</div>
+              <div className="text-sm text-gray-600">Configured</div>
+              <div className="text-3xl font-bold text-gray-900">{summaryStats.configured}</div>
+              <div className="text-xs text-gray-500 mt-1">Ready to activate</div>
             </CardContent>
           </Card>
-          <Card className="border-2 border-amber-300 bg-amber-50">
+          <Card className="border border-gray-200 bg-white">
             <CardContent className="p-6">
-              <div className="text-sm text-amber-700">Architected</div>
-              <div className="text-3xl font-bold text-amber-900">{summaryStats.architected}</div>
-              <div className="text-xs text-amber-600 mt-1">Framework ready</div>
+              <div className="text-sm text-gray-600">Architected</div>
+              <div className="text-3xl font-bold text-gray-900">{summaryStats.architected}</div>
+              <div className="text-xs text-gray-500 mt-1">Framework ready</div>
             </CardContent>
           </Card>
-          <Card className="border-2 border-purple-300 bg-purple-50">
+          <Card className="border border-gray-200 bg-white">
             <CardContent className="p-6">
-              <div className="text-sm text-purple-700">Monthly Usage</div>
-              <div className="text-3xl font-bold text-purple-900">{summaryStats.totalChecks.toLocaleString()}</div>
-              <div className="text-xs text-purple-600 mt-1">API calls</div>
+              <div className="text-sm text-gray-600">Monthly Usage</div>
+              <div className="text-3xl font-bold text-gray-900">{summaryStats.totalChecks.toLocaleString()}</div>
+              <div className="text-xs text-gray-500 mt-1">API calls</div>
             </CardContent>
           </Card>
         </div>
@@ -446,7 +446,7 @@ export function IntegrationHub({ onBack }: IntegrationHubProps) {
               <Card 
                 key={integration.id}
                 className={`border-2 ${
-                  integration.status === 'active' ? 'border-green-300 bg-gradient-to-r from-green-50 to-blue-50' :
+                  integration.status === 'active' ? 'border-green-300 bg-gray-50' :
                   integration.status === 'configured' ? 'border-blue-300 bg-blue-50' :
                   integration.status === 'architected' ? 'border-amber-300 bg-amber-50' :
                   'border-gray-300 bg-gray-50'

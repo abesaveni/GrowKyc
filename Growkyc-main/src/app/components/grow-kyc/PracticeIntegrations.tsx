@@ -432,7 +432,7 @@ export function PracticeIntegrations({ onBack }: PracticeIntegrationsProps) {
         </div>
 
         {/* Workflow Automation */}
-        <Card className="mb-12 bg-gradient-to-br from-indigo-50 to-purple-50 border-2 border-indigo-200">
+        <Card className="mb-12 bg-gray-50 border-2 border-indigo-200">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Zap className="w-5 h-5 text-indigo-600" />
@@ -515,7 +515,7 @@ export function PracticeIntegrations({ onBack }: PracticeIntegrationsProps) {
         </Card>
 
         {/* API Access */}
-        <Card className="bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200">
+        <Card className="bg-gray-50 border-2 border-blue-200">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Code className="w-5 h-5 text-blue-600" />

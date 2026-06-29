@@ -360,7 +360,7 @@ export function AuditTrailModule() {
                 </div>
 
                 {log.changes && log.changes.length > 0 && (
-                  <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                  <div className="p-4 bg-white border border-gray-200 rounded-lg">
                     <p className="font-semibold text-blue-900 mb-2">Changes Made:</p>
                     <div className="space-y-2">
                       {log.changes.map((change, index) => (
@@ -390,7 +390,7 @@ export function AuditTrailModule() {
       </div>
 
       {/* Retention Notice */}
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+      <div className="bg-white border border-gray-200 rounded-lg p-6">
         <div className="flex items-start gap-3">
           <Shield className="w-6 h-6 text-blue-600 mt-0.5" />
           <div>

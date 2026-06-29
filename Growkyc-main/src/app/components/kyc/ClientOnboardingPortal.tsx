@@ -117,7 +117,7 @@ export function ClientOnboardingPortal() {
 
   const renderWelcome = () => (
     <div className="max-w-3xl mx-auto text-center space-y-8">
-      <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mb-6">
+      <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-r from-slate-800 to-slate-700 rounded-full mb-6">
         <Shield className="w-12 h-12 text-white" />
       </div>
       
@@ -128,7 +128,7 @@ export function ClientOnboardingPortal() {
         </p>
       </div>
 
-      <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-6 text-left">
+      <div className="bg-white border border-gray-200 rounded-lg p-6 text-left">
         <h3 className="font-bold text-blue-900 mb-4 flex items-center gap-2">
           <Info className="w-5 h-5" />
           What You'll Need
@@ -391,7 +391,7 @@ export function ClientOnboardingPortal() {
         <p className="text-gray-600">Provide details of all directors and beneficial owners (25% or more ownership)</p>
       </div>
 
-      <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-4 mb-6">
+      <div className="bg-white border border-gray-200 rounded-lg p-4 mb-6">
         <div className="flex items-start gap-3">
           <Info className="w-5 h-5 text-blue-600 mt-0.5" />
           <div>
@@ -483,7 +483,7 @@ export function ClientOnboardingPortal() {
         <p className="text-gray-600">Upload required documents for verification</p>
       </div>
 
-      <div className="bg-yellow-50 border-2 border-yellow-200 rounded-lg p-4 mb-6">
+      <div className="bg-white border border-gray-200 rounded-lg p-4 mb-6">
         <div className="flex items-start gap-3">
           <AlertCircle className="w-5 h-5 text-yellow-600 mt-0.5" />
           <div>
@@ -585,7 +585,7 @@ export function ClientOnboardingPortal() {
         <p className="text-gray-600">Complete your identity verification to proceed</p>
       </div>
 
-      <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg p-8 text-white text-center">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-8 text-white text-center">
         <Shield className="w-16 h-16 mx-auto mb-4" />
         <h3 className="text-2xl font-bold mb-2">Secure ID Verification</h3>
         <p className="text-blue-100 mb-6">
@@ -714,7 +714,7 @@ export function ClientOnboardingPortal() {
         </label>
       </div>
 
-      <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-6">
+      <div className="bg-white border border-gray-200 rounded-lg p-6">
         <h3 className="font-bold text-blue-900 mb-2">What happens next?</h3>
         <ul className="space-y-2 text-blue-800 text-sm">
           <li className="flex items-start gap-2">
@@ -736,7 +736,7 @@ export function ClientOnboardingPortal() {
 
   const renderComplete = () => (
     <div className="max-w-3xl mx-auto text-center space-y-8">
-      <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full mb-6">
+      <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-r from-slate-800 to-slate-700 rounded-full mb-6">
         <CheckCircle className="w-12 h-12 text-white" />
       </div>
       
@@ -747,7 +747,7 @@ export function ClientOnboardingPortal() {
         </p>
       </div>
 
-      <div className="bg-green-50 border-2 border-green-200 rounded-lg p-8">
+      <div className="bg-white border border-gray-200 rounded-lg p-8">
         <h3 className="font-bold text-green-900 text-lg mb-4">Application Reference</h3>
         <p className="text-3xl font-mono font-bold text-green-700 mb-2">CLI-2024-{Math.floor(Math.random() * 1000).toString().padStart(3, '0')}</p>
         <p className="text-sm text-green-800">Please save this reference number for your records</p>
@@ -816,7 +816,7 @@ export function ClientOnboardingPortal() {
               </div>
               <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
                 <div 
-                  className="h-full bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300"
+                  className="h-full bg-gradient-to-r from-slate-800 to-slate-700 transition-all duration-300"
                   style={{ width: `${progress}%` }}
                 />
               </div>

@@ -279,7 +279,7 @@ export function PendingReviews() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg p-8 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-8 text-white">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Eye className="w-16 h-16" />
@@ -597,14 +597,14 @@ export function PendingReviews() {
 
                 {/* Notes */}
                 {review.reviewerNotes && (
-                  <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg mb-4">
+                  <div className="p-3 bg-white border border-gray-200 rounded-lg mb-4">
                     <p className="text-sm font-semibold text-blue-900 mb-1">Reviewer Notes:</p>
                     <p className="text-sm text-blue-800">{review.reviewerNotes}</p>
                   </div>
                 )}
 
                 {review.clientComments && (
-                  <div className="p-3 bg-purple-50 border border-purple-200 rounded-lg">
+                  <div className="p-3 bg-white border border-gray-200 rounded-lg">
                     <p className="text-sm font-semibold text-purple-900 mb-1">Client Comments:</p>
                     <p className="text-sm text-purple-800">{review.clientComments}</p>
                   </div>

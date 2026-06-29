@@ -340,7 +340,7 @@ export function EquifaxRiskModule() {
   return (
     <div className={`min-h-screen ${bgClass}`}>
       {/* Header */}
-      <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-8">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 text-white p-8">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-4">

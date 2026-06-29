@@ -145,7 +145,7 @@ export function NetworkLegalRiskDisplay({ networkData }: NetworkLegalRiskDisplay
       {/* ASSOCIATES WITH LEGAL ISSUES */}
       {networkData.associatesWithIssues > 0 && (
         <Card className="border-2 border-red-400 shadow-lg">
-          <CardHeader className="bg-gradient-to-r from-red-50 to-orange-50 border-b-2 border-red-200">
+          <CardHeader className="bg-gray-50 border-b-2 border-red-200">
             <CardTitle className="flex items-center gap-2">
               <AlertTriangle className="w-6 h-6 text-red-600" />
               Associates with Legal Issues ({networkData.associatesWithIssues})
@@ -227,7 +227,7 @@ export function NetworkLegalRiskDisplay({ networkData }: NetworkLegalRiskDisplay
                           
                           {/* CRIMINAL RECORDS */}
                           {associate.criminalRecord.length > 0 && (
-                            <div className="bg-red-100 border-2 border-red-400 rounded-lg p-4">
+                            <div className="bg-white border border-gray-200 rounded-lg p-4">
                               <div className="flex items-center gap-2 mb-3">
                                 <XCircle className="w-5 h-5 text-red-600" />
                                 <h5 className="font-bold text-red-900">Criminal Records ({associate.criminalRecord.length})</h5>
@@ -262,7 +262,7 @@ export function NetworkLegalRiskDisplay({ networkData }: NetworkLegalRiskDisplay
                                     </div>
                                     <p className="text-sm text-gray-800 mb-2">{record.details}</p>
                                     {record.sentence && (
-                                      <div className="bg-red-50 border border-red-300 rounded p-2">
+                                      <div className="bg-white border border-gray-200 rounded p-2">
                                         <p className="text-xs text-gray-600">Sentence</p>
                                         <p className="text-sm font-bold text-red-900">{record.sentence}</p>
                                       </div>
@@ -275,7 +275,7 @@ export function NetworkLegalRiskDisplay({ networkData }: NetworkLegalRiskDisplay
 
                           {/* CIVIL LITIGATION */}
                           {associate.civilLitigation.length > 0 && (
-                            <div className="bg-orange-100 border-2 border-orange-400 rounded-lg p-4">
+                            <div className="bg-white border border-gray-200 rounded-lg p-4">
                               <div className="flex items-center gap-2 mb-3">
                                 <Scale className="w-5 h-5 text-orange-600" />
                                 <h5 className="font-bold text-orange-900">Civil Litigation ({associate.civilLitigation.length})</h5>
@@ -304,7 +304,7 @@ export function NetworkLegalRiskDisplay({ networkData }: NetworkLegalRiskDisplay
                                       </div>
                                     </div>
                                     {case_.amount && (
-                                      <div className="bg-orange-50 border border-orange-300 rounded p-2 mb-2">
+                                      <div className="bg-white border border-gray-200 rounded p-2 mb-2">
                                         <p className="text-xs text-gray-600">Claim Amount</p>
                                         <p className="text-lg font-bold text-orange-900">{case_.amount}</p>
                                       </div>
@@ -323,7 +323,7 @@ export function NetworkLegalRiskDisplay({ networkData }: NetworkLegalRiskDisplay
 
                           {/* DISQUALIFICATIONS */}
                           {associate.disqualifications.length > 0 && (
-                            <div className="bg-purple-100 border-2 border-purple-400 rounded-lg p-4">
+                            <div className="bg-white border border-gray-200 rounded-lg p-4">
                               <div className="flex items-center gap-2 mb-3">
                                 <ShieldAlert className="w-5 h-5 text-purple-600" />
                                 <h5 className="font-bold text-purple-900">Disqualifications ({associate.disqualifications.length})</h5>
@@ -349,7 +349,7 @@ export function NetworkLegalRiskDisplay({ networkData }: NetworkLegalRiskDisplay
                                         <p className="font-semibold text-gray-900">{dq.startDate} - {dq.endDate || 'Ongoing'}</p>
                                       </div>
                                     </div>
-                                    <div className="bg-purple-50 border border-purple-300 rounded p-2 mb-2">
+                                    <div className="bg-white border border-gray-200 rounded p-2 mb-2">
                                       <p className="text-xs text-gray-600">Reason</p>
                                       <p className="text-sm font-semibold text-purple-900">{dq.reason}</p>
                                     </div>
@@ -362,7 +362,7 @@ export function NetworkLegalRiskDisplay({ networkData }: NetworkLegalRiskDisplay
 
                           {/* BANKRUPTCIES */}
                           {associate.bankruptcies.length > 0 && (
-                            <div className="bg-yellow-100 border-2 border-yellow-400 rounded-lg p-4">
+                            <div className="bg-white border border-gray-200 rounded-lg p-4">
                               <div className="flex items-center gap-2 mb-3">
                                 <AlertTriangle className="w-5 h-5 text-yellow-600" />
                                 <h5 className="font-bold text-yellow-900">Bankruptcies ({associate.bankruptcies.length})</h5>
@@ -389,7 +389,7 @@ export function NetworkLegalRiskDisplay({ networkData }: NetworkLegalRiskDisplay
                                       </div>
                                     </div>
                                     {bk.liabilities && (
-                                      <div className="bg-yellow-50 border border-yellow-300 rounded p-2 mb-2">
+                                      <div className="bg-white border border-gray-200 rounded p-2 mb-2">
                                         <p className="text-xs text-gray-600">Total Liabilities</p>
                                         <p className="text-lg font-bold text-yellow-900">{bk.liabilities}</p>
                                         {bk.creditorCount && (
@@ -406,7 +406,7 @@ export function NetworkLegalRiskDisplay({ networkData }: NetworkLegalRiskDisplay
 
                           {/* REGULATORY ACTIONS */}
                           {associate.regulatoryActions.length > 0 && (
-                            <div className="bg-orange-100 border-2 border-orange-400 rounded-lg p-4">
+                            <div className="bg-white border border-gray-200 rounded-lg p-4">
                               <div className="flex items-center gap-2 mb-3">
                                 <ShieldAlert className="w-5 h-5 text-orange-600" />
                                 <h5 className="font-bold text-orange-900">Regulatory Actions ({associate.regulatoryActions.length})</h5>
@@ -432,7 +432,7 @@ export function NetworkLegalRiskDisplay({ networkData }: NetworkLegalRiskDisplay
                                       </div>
                                     </div>
                                     {action.amount && (
-                                      <div className="bg-orange-50 border border-orange-300 rounded p-2 mt-2">
+                                      <div className="bg-white border border-gray-200 rounded p-2 mt-2">
                                         <p className="text-xs text-gray-600">Amount</p>
                                         <p className="text-lg font-bold text-orange-900">{action.amount}</p>
                                       </div>
@@ -445,7 +445,7 @@ export function NetworkLegalRiskDisplay({ networkData }: NetworkLegalRiskDisplay
 
                           {/* ADVERSE MEDIA */}
                           {associate.adverseMedia.length > 0 && (
-                            <div className="bg-red-100 border-2 border-red-400 rounded-lg p-4">
+                            <div className="bg-white border border-gray-200 rounded-lg p-4">
                               <div className="flex items-center gap-2 mb-3">
                                 <Newspaper className="w-5 h-5 text-red-600" />
                                 <h5 className="font-bold text-red-900">Adverse Media ({associate.adverseMedia.length})</h5>
@@ -499,7 +499,7 @@ export function NetworkLegalRiskDisplay({ networkData }: NetworkLegalRiskDisplay
       {/* CLEAN ASSOCIATES */}
       {networkData.associateLegalRecords.filter(a => !a.hasLegalIssues).length > 0 && (
         <Card className="border-2 border-green-300 shadow-lg">
-          <CardHeader className="bg-gradient-to-r from-green-50 to-emerald-50 border-b">
+          <CardHeader className="bg-gray-50 border-b">
             <CardTitle className="flex items-center gap-2">
               <CheckCircle className="w-6 h-6 text-green-600" />
               Clean Associates ({networkData.associateLegalRecords.filter(a => !a.hasLegalIssues).length})
@@ -510,7 +510,7 @@ export function NetworkLegalRiskDisplay({ networkData }: NetworkLegalRiskDisplay
               {networkData.associateLegalRecords
                 .filter(associate => !associate.hasLegalIssues)
                 .map((associate) => (
-                  <div key={associate.associateId} className="bg-green-50 border border-green-300 rounded-lg p-3">
+                  <div key={associate.associateId} className="bg-white border border-gray-200 rounded-lg p-3">
                     <div className="flex items-center gap-2 mb-2">
                       {getAssociateIcon(associate.associateType)}
                       <div className="flex-1">
@@ -531,14 +531,14 @@ export function NetworkLegalRiskDisplay({ networkData }: NetworkLegalRiskDisplay
 
       {/* ALL CLEAN MESSAGE */}
       {networkData.associatesWithIssues === 0 && (
-        <Card className="border-2 border-green-400 bg-green-50 shadow-lg">
+        <Card className="border border-gray-200 bg-white shadow-lg">
           <CardContent className="p-8 text-center">
             <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
             <h3 className="text-2xl font-bold text-green-900 mb-2">All Associates Clean</h3>
             <p className="text-green-800 mb-4">
               Comprehensive legal screening completed for all {networkData.totalAssociatesChecked} directors, shareholders, UBOs, and related entities. No legal issues identified.
             </p>
-            <div className="inline-block bg-green-200 border-2 border-green-400 rounded-lg px-6 py-3">
+            <div className="inline-block bg-white border border-gray-200 rounded-lg px-6 py-3">
               <p className="font-bold text-green-900">Network Legal Risk: {networkData.overallNetworkRisk}</p>
             </div>
           </CardContent>

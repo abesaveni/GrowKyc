@@ -123,7 +123,7 @@ export function ScreeningVerification() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-gradient-to-r from-red-600 to-pink-600 rounded-lg p-8 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-8 text-white">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Shield className="w-16 h-16" />
@@ -373,7 +373,7 @@ export function ScreeningVerification() {
                 </div>
 
                 {result.resolution && (
-                  <div className="mt-3 p-3 bg-green-50 border border-green-200 rounded-lg">
+                  <div className="mt-3 p-3 bg-white border border-gray-200 rounded-lg">
                     <p className="text-sm font-semibold text-green-900 mb-1">Resolution:</p>
                     <p className="text-sm text-green-800">{result.resolution}</p>
                   </div>

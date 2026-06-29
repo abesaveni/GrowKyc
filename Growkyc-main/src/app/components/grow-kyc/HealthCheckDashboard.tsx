@@ -305,7 +305,7 @@ export function HealthCheckDashboard({ onBack }: HealthCheckDashboardProps) {
 
       {/* Action Items */}
       <Card>
-        <CardHeader className="border-b bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E]">
+        <CardHeader className="border-b bg-gradient-to-r from-slate-800 to-slate-700">
           <CardTitle className="flex items-center gap-2 text-white">
             <Sparkles className="w-5 h-5" />
             Production Deployment Checklist

@@ -262,7 +262,7 @@ export function RiskAssessmentBuilder() {
       </div>
 
       {/* Program Version Status */}
-      <div className="bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg p-6 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mr-4">
@@ -285,7 +285,7 @@ export function RiskAssessmentBuilder() {
       </div>
 
       {/* Warning for Material Changes */}
-      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+      <div className="bg-white border border-gray-200 rounded-lg p-4">
         <div className="flex items-start">
           <AlertTriangle className="w-5 h-5 text-yellow-600 mr-3 mt-0.5" />
           <div>
@@ -429,7 +429,7 @@ export function RiskAssessmentBuilder() {
               Add Country
             </Button>
           </div>
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+          <div className="bg-white border border-gray-200 rounded-lg p-4">
             <div className="flex items-start">
               <Info className="w-5 h-5 text-blue-600 mr-3 mt-0.5" />
               <div>
@@ -503,7 +503,7 @@ export function RiskAssessmentBuilder() {
           <div className="bg-white rounded-lg p-6 max-w-lg w-full mx-4">
             <h3 className="text-xl font-bold text-gray-900 mb-4">Submit for Senior Manager Approval</h3>
             <div className="space-y-4 mb-6">
-              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
                 <p className="text-sm text-yellow-900">
                   This will create a new program version (v2.2) and send it to the Senior Manager for approval.
                   A 14-day implementation period will begin upon approval.

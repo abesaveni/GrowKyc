@@ -260,7 +260,7 @@ export function IntegrationDocumentsDisplay({ documentRepo }: IntegrationDocumen
     <div className="space-y-6">
       {/* Summary Header */}
       <Card className="border-2 border-cyan-300 shadow-lg">
-        <CardHeader className="bg-gradient-to-r from-cyan-50 to-blue-50 border-b">
+        <CardHeader className="bg-gray-50 border-b">
           <CardTitle className="flex items-center gap-2">
             <Database className="w-6 h-6 text-cyan-600" />
             Integration Documents Repository
@@ -268,14 +268,14 @@ export function IntegrationDocumentsDisplay({ documentRepo }: IntegrationDocumen
         </CardHeader>
         <CardContent className="p-6">
           <div className="grid grid-cols-4 gap-4">
-            <div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-lg p-4 border-2 border-cyan-200">
+            <div className="bg-gray-50 rounded-lg p-4 border-2 border-cyan-200">
               <div className="flex items-center gap-2 mb-2">
                 <FileText className="w-5 h-5 text-cyan-600" />
                 <p className="text-sm text-gray-600">Total Documents</p>
               </div>
               <p className="text-3xl font-bold text-cyan-700">{localRepo.totalDocuments}</p>
             </div>
-            <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-lg p-4 border-2 border-purple-200">
+            <div className="bg-gray-50 rounded-lg p-4 border-2 border-purple-200">
               <div className="flex items-center gap-2 mb-2">
                 <Bot className="w-5 h-5 text-purple-600" />
                 <p className="text-sm text-gray-600">AI Analyzed</p>
@@ -285,14 +285,14 @@ export function IntegrationDocumentsDisplay({ documentRepo }: IntegrationDocumen
                 {localRepo.totalDocuments > 0 ? Math.round((localRepo.documentsAnalyzed / localRepo.totalDocuments) * 100) : 0}% Complete
               </p>
             </div>
-            <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg p-4 border-2 border-green-200">
+            <div className="bg-gray-50 rounded-lg p-4 border-2 border-green-200">
               <div className="flex items-center gap-2 mb-2">
                 <Database className="w-5 h-5 text-green-600" />
                 <p className="text-sm text-gray-600">Integration Sources</p>
               </div>
               <p className="text-3xl font-bold text-green-700">{localRepo.integrationSources.length}</p>
             </div>
-            <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-lg p-4 border-2 border-amber-200">
+            <div className="bg-gray-50 rounded-lg p-4 border-2 border-amber-200">
               <div className="flex items-center gap-2 mb-2">
                 <HardDrive className="w-5 h-5 text-amber-600" />
                 <p className="text-sm text-gray-600">Storage Used</p>
@@ -318,7 +318,7 @@ export function IntegrationDocumentsDisplay({ documentRepo }: IntegrationDocumen
 
           {/* AI Analysis Status */}
           {localRepo.aiAnalysisEnabled && (
-            <div className="mt-6 bg-gradient-to-r from-cyan-50 to-purple-50 rounded-lg p-4 border border-cyan-200">
+            <div className="mt-6 bg-gray-50 rounded-lg p-4 border border-cyan-200">
               <div className="flex items-center gap-2">
                 <Sparkles className="w-5 h-5 text-cyan-600" />
                 <div>

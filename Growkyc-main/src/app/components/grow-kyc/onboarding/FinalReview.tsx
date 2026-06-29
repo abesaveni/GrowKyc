@@ -54,7 +54,7 @@ export function FinalReview({ entity, onComplete }: FinalReviewProps) {
       </CardHeader>
       <CardContent className="space-y-6">
         {/* Summary Card */}
-        <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
+        <Card className="bg-gray-50 border-blue-200">
           <CardContent className="p-6">
             <h3 className="font-bold text-gray-900 text-lg mb-4">{entity.data.name}</h3>
             <div className="grid grid-cols-2 gap-4 text-sm">
@@ -151,7 +151,7 @@ export function FinalReview({ entity, onComplete }: FinalReviewProps) {
         </Card>
 
         {allComplete && (
-          <Card className="bg-gradient-to-r from-green-50 to-emerald-50 border-green-200 animate-in fade-in slide-in-from-bottom-4">
+          <Card className="bg-gray-50 border-green-200 animate-in fade-in slide-in-from-bottom-4">
             <CardContent className="p-6 text-center">
               <Award className="w-16 h-16 text-green-600 mx-auto mb-4" />
               <h3 className="font-bold text-green-900 text-xl mb-2">Ready to Submit! 🎉</h3>

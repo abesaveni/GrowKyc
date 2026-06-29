@@ -813,7 +813,7 @@ export function AUSTRACReviewTesting() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-gradient-to-r from-red-600 to-orange-600 rounded-lg p-6 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white">
         <h1 className="text-3xl font-bold mb-2">AUSTRAC Review Testing & Readiness</h1>
         <p className="text-red-100">Test your system before an independent evaluation</p>
       </div>
@@ -974,7 +974,7 @@ export function AUSTRACReviewTesting() {
                         </div>
                         <p className="font-semibold text-gray-900 mb-2">{item.requirement}</p>
                         {item.stressTest && (
-                          <div className="mt-2 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+                          <div className="mt-2 p-3 bg-white border border-gray-200 rounded-lg">
                             <p className="text-sm font-semibold text-yellow-900 mb-1">
                               <PlayCircle className="w-4 h-4 inline mr-2" />
                               Stress Test:
@@ -1009,7 +1009,7 @@ export function AUSTRACReviewTesting() {
       {/* Readiness Scores View */}
       {activeSection === 'readiness' && (
         <div className="space-y-6">
-          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+          <div className="bg-white border border-gray-200 rounded-lg p-4">
             <h3 className="font-bold text-yellow-900 mb-2">Scoring Criteria</h3>
             <p className="text-sm text-yellow-800">
               Each area is scored 1-5. Score below 4 indicates material weakness that independent review will identify.
@@ -1051,7 +1051,7 @@ export function AUSTRACReviewTesting() {
                     />
                   </div>
                   {score < 4 && (
-                    <div className="mt-3 p-3 bg-red-50 border border-red-200 rounded-lg">
+                    <div className="mt-3 p-3 bg-white border border-gray-200 rounded-lg">
                       <p className="text-sm font-semibold text-red-900">⚠️ Material Weakness Detected</p>
                       <p className="text-sm text-red-700">Independent review will likely identify gaps in this area</p>
                     </div>

@@ -200,7 +200,7 @@ export function EnterpriseOnboarding() {
               { rule: 'Auto Deposit Requirement', triggered: 12 },
               { rule: 'Engagement Lock', locked: 3 }
             ].map((rule) => (
-              <div key={rule.rule} className="bg-green-50 border border-green-200 rounded-lg p-3">
+              <div key={rule.rule} className="bg-white border border-gray-200 rounded-lg p-3">
                 <div className="flex items-center justify-between mb-1">
                   <span className="text-sm font-bold text-green-900">{rule.rule}</span>
                   <CheckCircle className="w-5 h-5 text-green-600" />
@@ -374,7 +374,7 @@ export function EnterpriseOnboarding() {
       <h2 className="text-2xl font-bold text-gray-900">Advanced Risk Intelligence Engine</h2>
 
       <div className="grid grid-cols-3 gap-6">
-        <div className="bg-gradient-to-r from-red-600 to-orange-600 rounded-lg p-6 text-white">
+        <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white">
           <Shield className="w-12 h-12 mb-4" />
           <h3 className="text-2xl font-bold mb-2">Risk Scoring Model</h3>
           <p className="text-red-100 mb-4">Weighted multi-factor analysis</p>
@@ -441,7 +441,7 @@ export function EnterpriseOnboarding() {
               { rule: 'Auto Deposit Requirement', status: 'active', triggered: 12 },
               { rule: 'Engagement Lock', status: 'active', locked: 3 }
             ].map((rule) => (
-              <div key={rule.rule} className="bg-green-50 border border-green-200 rounded-lg p-3">
+              <div key={rule.rule} className="bg-white border border-gray-200 rounded-lg p-3">
                 <div className="flex items-center justify-between mb-1">
                   <span className="text-sm font-bold text-green-900">{rule.rule}</span>
                   <CheckCircle className="w-5 h-5 text-green-600" />
@@ -487,7 +487,7 @@ export function EnterpriseOnboarding() {
               { condition: 'Adverse Media Found', action: 'Compliance Review', triggered: 3 },
               { condition: 'Payment Overdue', action: 'Auto Suspension', triggered: 2 }
             ].map((rule) => (
-              <div key={rule.condition} className="p-3 bg-orange-50 border border-orange-200 rounded-lg">
+              <div key={rule.condition} className="p-3 bg-white border border-gray-200 rounded-lg">
                 <div className="flex items-center justify-between mb-1">
                   <p className="font-semibold text-orange-900 text-sm">{rule.condition}</p>
                   <span className="px-2 py-1 bg-orange-600 text-white text-xs font-bold rounded-full">
@@ -507,7 +507,7 @@ export function EnterpriseOnboarding() {
     <div className="space-y-6">
       <h2 className="text-2xl font-bold text-gray-900">Integration Hub</h2>
 
-      <div className="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg p-8 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-8 text-white">
         <div className="flex items-center gap-4 mb-6">
           <Link className="w-16 h-16" />
           <div>
@@ -661,7 +661,7 @@ export function EnterpriseOnboarding() {
       <h2 className="text-2xl font-bold text-gray-900">Full Audit Trail</h2>
 
       <div className="grid grid-cols-4 gap-6">
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg p-6 text-white">
+        <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white">
           <Activity className="w-12 h-12 mb-3" />
           <p className="text-sm mb-1">Total Events</p>
           <p className="text-4xl font-bold">15,247</p>
@@ -721,7 +721,7 @@ export function EnterpriseOnboarding() {
               { field: 'Risk Score', before: '18', after: '15', user: 'System' },
               { field: 'Email', before: 'old@email.com', after: 'new@email.com', user: 'Michael Chen' }
             ].map((change, idx) => (
-              <div key={idx} className="p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+              <div key={idx} className="p-3 bg-white border border-gray-200 rounded-lg">
                 <p className="font-semibold text-gray-900 text-sm mb-2">{change.field}</p>
                 <div className="flex items-center gap-2 text-xs">
                   <span className="px-2 py-1 bg-red-100 text-red-700 rounded line-through">{change.before}</span>
@@ -745,7 +745,7 @@ export function EnterpriseOnboarding() {
               { check: 'KYC Decision Logs', status: 'pass' },
               { check: 'Export Capability', status: 'pass' }
             ].map((item) => (
-              <div key={item.check} className="flex items-center justify-between p-3 bg-green-50 border border-green-200 rounded-lg">
+              <div key={item.check} className="flex items-center justify-between p-3 bg-white border border-gray-200 rounded-lg">
                 <span className="text-sm font-semibold text-green-900">{item.check}</span>
                 <CheckCircle className="w-5 h-5 text-green-600" />
               </div>
@@ -809,7 +809,7 @@ export function EnterpriseOnboarding() {
       )}
 
       {/* Header */}
-      <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-6">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 text-white p-6">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">

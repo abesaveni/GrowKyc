@@ -234,7 +234,7 @@ function KYBControlCentre({ onNavigate, onBack }: { onNavigate: (view: ViewMode)
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-3 gap-4">
-              <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+              <div className="p-4 bg-white border border-gray-200 rounded-lg">
                 <div className="flex items-center justify-between mb-2">
                   <CheckCircle className="w-5 h-5 text-green-600" />
                   <Badge className="bg-green-100 text-green-700 text-xs">Active</Badge>
@@ -243,7 +243,7 @@ function KYBControlCentre({ onNavigate, onBack }: { onNavigate: (view: ViewMode)
                 <p className="text-xs text-gray-600">Last sync: 5 mins ago</p>
               </div>
 
-              <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+              <div className="p-4 bg-white border border-gray-200 rounded-lg">
                 <div className="flex items-center justify-between mb-2">
                   <CheckCircle className="w-5 h-5 text-green-600" />
                   <Badge className="bg-green-100 text-green-700 text-xs">Active</Badge>
@@ -252,7 +252,7 @@ function KYBControlCentre({ onNavigate, onBack }: { onNavigate: (view: ViewMode)
                 <p className="text-xs text-gray-600">Last sync: 2 mins ago</p>
               </div>
 
-              <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+              <div className="p-4 bg-white border border-gray-200 rounded-lg">
                 <div className="flex items-center justify-between mb-2">
                   <CheckCircle className="w-5 h-5 text-green-600" />
                   <Badge className="bg-green-100 text-green-700 text-xs">Active</Badge>
@@ -392,7 +392,7 @@ function EntityVerificationWizard({ onBack }: { onBack: () => void }) {
                 </div>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
                 <h4 className="font-semibold text-blue-900 mb-2">What We'll Verify</h4>
                 <ul className="text-sm text-blue-800 space-y-1">
                   <li>• Entity exists in official registry</li>
@@ -439,15 +439,15 @@ function EntityVerificationWizard({ onBack }: { onBack: () => void }) {
                 </div>
 
                 <div className="space-y-3 max-w-md mx-auto">
-                  <div className="flex items-center gap-3 p-3 bg-green-50 border border-green-200 rounded-lg">
+                  <div className="flex items-center gap-3 p-3 bg-white border border-gray-200 rounded-lg">
                     <CheckCircle className="w-5 h-5 text-green-600" />
                     <span className="text-sm text-gray-700">Querying ABR (Australian Business Register)</span>
                   </div>
-                  <div className="flex items-center gap-3 p-3 bg-green-50 border border-green-200 rounded-lg">
+                  <div className="flex items-center gap-3 p-3 bg-white border border-gray-200 rounded-lg">
                     <CheckCircle className="w-5 h-5 text-green-600" />
                     <span className="text-sm text-gray-700">Checking ASIC Registry</span>
                   </div>
-                  <div className="flex items-center gap-3 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                  <div className="flex items-center gap-3 p-3 bg-white border border-gray-200 rounded-lg">
                     <div className="w-5 h-5 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
                     <span className="text-sm text-gray-700">Validating GST status</span>
                   </div>
@@ -534,7 +534,7 @@ function EntityVerificationWizard({ onBack }: { onBack: () => void }) {
                 </table>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
                 <h4 className="font-semibold text-blue-900 mb-2">Directors (from Registry)</h4>
                 <div className="flex flex-wrap gap-2">
                   {registryData.directors.map((director: string, idx: number) => (
@@ -594,7 +594,7 @@ function EntityVerificationWizard({ onBack }: { onBack: () => void }) {
                   </div>
                 </div>
 
-                <div className="p-4 bg-purple-50 border border-purple-200 rounded-lg text-left">
+                <div className="p-4 bg-white border border-gray-200 rounded-lg text-left">
                   <div className="flex items-start gap-2">
                     <RefreshCw className="w-5 h-5 text-purple-600 mt-0.5" />
                     <div>

@@ -138,7 +138,7 @@ export function SuspiciousMatterReporting({ onBack }: SuspiciousMatterReportingP
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] text-white px-6 py-4">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 text-white px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Button variant="ghost" size="sm" onClick={onBack} className="text-white hover:bg-white/20">
@@ -326,7 +326,7 @@ export function SuspiciousMatterReporting({ onBack }: SuspiciousMatterReportingP
           {/* INVESTIGATION TAB */}
           <TabsContent value="investigation">
             <Card className="border-2 border-blue-200">
-              <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50">
+              <CardHeader className="bg-gray-50">
                 <CardTitle>Internal Investigation</CardTitle>
                 <CardDescription>
                   Investigation notes and findings for SMR-2024-001
@@ -465,7 +465,7 @@ Recommendation: Escalate to Senior Partner for SMR lodgement decision."
           {/* APPROVAL WORKFLOW TAB */}
           <TabsContent value="approval">
             <Card className="border-2 border-purple-200">
-              <CardHeader className="bg-gradient-to-r from-purple-50 to-pink-50">
+              <CardHeader className="bg-gray-50">
                 <CardTitle>Decision & Approval Workflow</CardTitle>
                 <CardDescription>
                   Internal escalation and AUSTRAC lodgement decision

@@ -157,7 +157,7 @@ export function GrowOnboarding() {
         })}
       </div>
 
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-8">
+      <div className="bg-white border border-gray-200 rounded-lg p-6 mt-8">
         <h3 className="font-bold text-blue-900 mb-3">Industry Type</h3>
         <div className="grid grid-cols-3 gap-3">
           {[
@@ -289,7 +289,7 @@ export function GrowOnboarding() {
         </div>
       </div>
 
-      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+      <div className="bg-white border border-gray-200 rounded-lg p-4">
         <div className="flex items-start gap-3">
           <AlertTriangle className="w-5 h-5 text-yellow-600 mt-0.5" />
           <div>
@@ -394,7 +394,7 @@ export function GrowOnboarding() {
         </div>
       )}
 
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+      <div className="bg-white border border-gray-200 rounded-lg p-4">
         <h4 className="font-bold text-blue-900 text-sm mb-2">Required Documents</h4>
         <ul className="text-sm text-blue-800 space-y-1">
           {clientType === 'company' && (
@@ -423,7 +423,7 @@ export function GrowOnboarding() {
       </div>
 
       {clientType === 'individual' ? (
-        <div className="bg-green-50 border border-green-200 rounded-lg p-8 text-center">
+        <div className="bg-white border border-gray-200 rounded-lg p-8 text-center">
           <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
           <h3 className="text-xl font-bold text-green-900 mb-2">No Additional UBO Required</h3>
           <p className="text-green-800">
@@ -475,7 +475,7 @@ export function GrowOnboarding() {
             )}
           </div>
 
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+          <div className="bg-white border border-gray-200 rounded-lg p-4">
             <div className="flex items-start gap-3">
               <AlertTriangle className="w-5 h-5 text-red-600 mt-0.5" />
               <div>
@@ -533,7 +533,7 @@ export function GrowOnboarding() {
         </div>
 
         {formData.verificationMethod === 'greenid' && (
-          <div className="bg-gradient-to-r from-green-600 to-teal-600 rounded-lg p-8 text-white text-center">
+          <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-8 text-white text-center">
             <Shield className="w-16 h-16 mx-auto mb-4" />
             <h3 className="text-2xl font-bold mb-2">Electronic Verification</h3>
             <p className="text-green-100 mb-6">
@@ -596,7 +596,7 @@ export function GrowOnboarding() {
         )}
       </div>
 
-      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+      <div className="bg-white border border-gray-200 rounded-lg p-4">
         <h4 className="font-bold text-yellow-900 text-sm mb-2">Verification Requirements</h4>
         <ul className="text-sm text-yellow-800 space-y-1">
           <li>• Must use reliable, independent source</li>
@@ -615,7 +615,7 @@ export function GrowOnboarding() {
         <p className="text-gray-600">Mandatory sanctions, PEP, and adverse media screening</p>
       </div>
 
-      <div className="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg p-8 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-8 text-white">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-4">
             <Shield className="w-16 h-16" />
@@ -650,7 +650,7 @@ export function GrowOnboarding() {
         </div>
       </div>
 
-      <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+      <div className="bg-white border border-gray-200 rounded-lg p-6">
         <div className="flex items-start gap-4">
           <CheckCircle className="w-8 h-8 text-green-600 mt-1" />
           <div>
@@ -666,7 +666,7 @@ export function GrowOnboarding() {
         </div>
       </div>
 
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+      <div className="bg-white border border-gray-200 rounded-lg p-4">
         <h4 className="font-bold text-blue-900 text-sm mb-2">Ongoing Monitoring</h4>
         <p className="text-sm text-blue-800">
           This client will be automatically re-screened quarterly for sanctions, PEP, and adverse media updates
@@ -728,7 +728,7 @@ export function GrowOnboarding() {
         </div>
       </div>
 
-      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+      <div className="bg-white border border-gray-200 rounded-lg p-4">
         <h4 className="font-bold text-yellow-900 text-sm mb-2">Enhanced CDD Not Required</h4>
         <p className="text-sm text-yellow-800">
           Client assessed as LOW risk. Standard Customer Due Diligence procedures are sufficient.
@@ -778,7 +778,7 @@ export function GrowOnboarding() {
 
         {industryType === 'lending' && (
           <>
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+            <div className="bg-white border border-gray-200 rounded-lg p-4 mt-4">
               <h4 className="font-bold text-blue-900 text-sm mb-3">Lender Requirements</h4>
               <div className="space-y-2 text-sm text-blue-800">
                 <div className="flex items-center gap-2">
@@ -803,7 +803,7 @@ export function GrowOnboarding() {
         )}
 
         {industryType === 'fund-management' && (
-          <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mt-4">
+          <div className="bg-white border border-gray-200 rounded-lg p-4 mt-4">
             <h4 className="font-bold text-purple-900 text-sm mb-3">Fund Manager Requirements</h4>
             <div className="space-y-2 text-sm text-purple-800">
               <div className="flex items-center gap-2">
@@ -832,7 +832,7 @@ export function GrowOnboarding() {
         </Button>
       </div>
 
-      <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+      <div className="bg-white border border-gray-200 rounded-lg p-4">
         <div className="flex items-start gap-3">
           <AlertTriangle className="w-5 h-5 text-red-600 mt-0.5" />
           <div>
@@ -926,7 +926,7 @@ export function GrowOnboarding() {
         </div>
       </div>
 
-      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+      <div className="bg-white border border-gray-200 rounded-lg p-4">
         <h4 className="font-bold text-yellow-900 text-sm mb-2">Document Requirements</h4>
         <ul className="text-sm text-yellow-800 space-y-1">
           <li>• Documents must be clear and legible</li>
@@ -991,7 +991,7 @@ export function GrowOnboarding() {
           </div>
         </div>
 
-        <div className="bg-green-50 border border-green-200 rounded-lg p-4 mt-6">
+        <div className="bg-white border border-gray-200 rounded-lg p-4 mt-6">
           <h4 className="font-bold text-green-900 text-sm mb-2">Consent for Processing</h4>
           <ul className="text-sm text-green-800 space-y-1">
             <li>✓ Identity verification via electronic or manual means</li>
@@ -1003,7 +1003,7 @@ export function GrowOnboarding() {
         </div>
       </div>
 
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+      <div className="bg-white border border-gray-200 rounded-lg p-4">
         <h4 className="font-bold text-blue-900 text-sm mb-2">Electronic Signature</h4>
         <p className="text-sm text-blue-800 mb-3">
           By proceeding, you are providing a legally binding electronic signature
@@ -1068,7 +1068,7 @@ export function GrowOnboarding() {
         ))}
       </div>
 
-      <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg p-8 text-white text-center">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-8 text-white text-center">
         <CheckCircle className="w-16 h-16 mx-auto mb-4" />
         <h3 className="text-2xl font-bold mb-2">Ready for Submission</h3>
         <p className="text-blue-100 mb-6">
@@ -1083,7 +1083,7 @@ export function GrowOnboarding() {
         </p>
       </div>
 
-      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+      <div className="bg-white border border-gray-200 rounded-lg p-4">
         <h4 className="font-bold text-yellow-900 text-sm mb-2">What happens next?</h4>
         <ul className="text-sm text-yellow-800 space-y-1">
           <li>• Compliance officer will review all information</li>
@@ -1098,7 +1098,7 @@ export function GrowOnboarding() {
 
   const renderCompleteStep = () => (
     <div className="space-y-6 text-center">
-      <div className="bg-gradient-to-r from-green-600 to-teal-600 rounded-lg p-12 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-12 text-white">
         <CheckCircle className="w-24 h-24 mx-auto mb-6" />
         <h2 className="text-4xl font-bold mb-4">Onboarding Complete!</h2>
         <p className="text-xl text-green-100 mb-8">
@@ -1174,7 +1174,7 @@ export function GrowOnboarding() {
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-5xl mx-auto px-6">
         {/* Header */}
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg p-8 text-white mb-8">
+        <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-8 text-white mb-8">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <Shield className="w-16 h-16" />

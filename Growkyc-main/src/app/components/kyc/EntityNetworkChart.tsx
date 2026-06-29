@@ -71,7 +71,7 @@ export function EntityNetworkChart({ clientId, clientName }: EntityNetworkChartP
     <div className="space-y-6">
       {/* NETWORK STATISTICS */}
       <Card className="border-2 border-blue-300 shadow-lg">
-        <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
+        <CardHeader className="bg-gray-50 border-b">
           <CardTitle className="flex items-center gap-2">
             <Network className="w-6 h-6 text-blue-600" />
             Entity Network Overview
@@ -113,7 +113,7 @@ export function EntityNetworkChart({ clientId, clientName }: EntityNetworkChartP
 
       {/* VISUAL NETWORK CHART */}
       <Card className="border-2 border-blue-300 shadow-lg">
-        <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
+        <CardHeader className="bg-gray-50 border-b">
           <CardTitle className="flex items-center gap-2">
             <TrendingUp className="w-6 h-6 text-blue-600" />
             Entity Relationship Map
@@ -316,7 +316,7 @@ export function EntityNetworkChart({ clientId, clientName }: EntityNetworkChartP
                                         </div>
                                       )}
                                       {entity.adverseFindings.length > 0 && (
-                                        <div className="bg-red-50 border border-red-300 rounded p-2">
+                                        <div className="bg-white border border-gray-200 rounded p-2">
                                           <div className="flex items-center gap-1 mb-1">
                                             <AlertTriangle className="w-3 h-3 text-red-600" />
                                             <p className="text-red-900 font-bold">Adverse Findings</p>
@@ -382,7 +382,7 @@ export function EntityNetworkChart({ clientId, clientName }: EntityNetworkChartP
       </Card>
 
       {/* INSTRUCTIONS */}
-      <Card className="border-2 border-blue-200 bg-blue-50">
+      <Card className="border border-gray-200 bg-white">
         <CardContent className="p-4">
           <div className="flex items-start gap-3">
             <Network className="w-5 h-5 text-blue-600 mt-0.5" />

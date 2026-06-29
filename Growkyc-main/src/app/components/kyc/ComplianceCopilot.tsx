@@ -333,7 +333,7 @@ Client states Australian registration provides credibility for international con
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg p-8 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-8 text-white">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center">
@@ -395,7 +395,7 @@ Client states Australian registration provides credibility for international con
       </div>
 
       {/* Guardrails Panel */}
-      <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6">
+      <div className="bg-white border border-gray-200 rounded-lg p-6">
         <div className="flex items-center gap-3 mb-4">
           <Shield className="w-6 h-6 text-red-600" />
           <h3 className="text-xl font-bold text-red-900">AI Guardrails - What Copilot Cannot Do</h3>
@@ -506,7 +506,7 @@ Client states Australian registration provides credibility for international con
                 </div>
 
                 {actions.some(a => a.missing && a.missing.length > 0) && (
-                  <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg mb-4">
+                  <div className="p-4 bg-white border border-gray-200 rounded-lg mb-4">
                     <p className="font-semibold text-yellow-900 mb-2">⚠️ Missing Information</p>
                     <ul className="text-sm text-yellow-800 space-y-1">
                       {actions.find(a => a.missing)?.missing?.map((item, index) => (
@@ -691,7 +691,7 @@ Client states Australian registration provides credibility for international con
             ))}
           </div>
 
-          <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+          <div className="mt-6 p-4 bg-white border border-gray-200 rounded-lg">
             <p className="text-sm text-blue-900">
               <strong>Audit Principle:</strong> Every AI action is logged with timestamp, confidence score, 
               evidence references, and outcome. Human decisions are separately logged for regulatory audit trail.
@@ -706,7 +706,7 @@ Client states Australian registration provides credibility for international con
           <div className="bg-white rounded-lg max-w-2xl w-full p-6">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">Approve AI Draft?</h3>
             
-            <div className="mb-4 p-4 bg-purple-50 border border-purple-200 rounded-lg">
+            <div className="mb-4 p-4 bg-white border border-gray-200 rounded-lg">
               <p className="text-sm text-purple-900 mb-2">
                 <strong>Document Type:</strong> {selectedDraft.type}
               </p>
@@ -718,7 +718,7 @@ Client states Australian registration provides credibility for international con
               </p>
             </div>
 
-            <div className="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+            <div className="mb-6 p-4 bg-white border border-gray-200 rounded-lg">
               <p className="text-sm text-yellow-900">
                 <strong>⚠️ Human Responsibility:</strong> By approving this draft, you confirm that you have 
                 reviewed the content, verified the evidence, and take responsibility for the compliance decision. 

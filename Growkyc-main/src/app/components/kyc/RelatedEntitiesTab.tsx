@@ -94,7 +94,7 @@ export function RelatedEntitiesTab({ clientId }: RelatedEntitiesTabProps) {
     <div className="space-y-6">
       {/* SUMMARY STATISTICS */}
       <Card className="border-2 border-blue-300 shadow-lg">
-        <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
+        <CardHeader className="bg-gray-50 border-b">
           <CardTitle className="flex items-center gap-2">
             <Building className="w-6 h-6 text-blue-600" />
             Related Entities Summary

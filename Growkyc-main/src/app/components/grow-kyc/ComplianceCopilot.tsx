@@ -210,14 +210,14 @@ export function ComplianceCopilot({ isOpen, onClose, context }: ComplianceCopilo
       {isMinimized ? (
         <Button
           size="lg"
-          className="rounded-full w-14 h-14 shadow-2xl bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+          className="rounded-full w-14 h-14 shadow-2xl bg-gradient-to-r from-slate-800 to-slate-700 hover:from-blue-700 hover:to-purple-700"
           onClick={() => setIsMinimized(false)}
         >
           <Sparkles className="w-6 h-6" />
         </Button>
       ) : (
         <Card className="w-96 h-[600px] shadow-2xl flex flex-col">
-          <CardHeader className="border-b bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+          <CardHeader className="border-b bg-gradient-to-r from-slate-800 to-slate-700 text-white">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Sparkles className="w-5 h-5" />
@@ -341,7 +341,7 @@ export function ComplianceCopilot({ isOpen, onClose, context }: ComplianceCopilo
               <Button
                 onClick={handleSend}
                 disabled={!input.trim() || isTyping}
-                className="bg-gradient-to-r from-blue-600 to-purple-600"
+                className="bg-gradient-to-r from-slate-800 to-slate-700"
               >
                 <Send className="w-4 h-4" />
               </Button>

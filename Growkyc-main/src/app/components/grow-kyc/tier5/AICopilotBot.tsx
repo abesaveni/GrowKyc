@@ -99,13 +99,13 @@ export function AICopilotBot({ onBack }: AICopilotBotProps) {
       </div>
 
       <div className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-8 py-6 flex flex-col min-h-0">
-        <div className="flex items-center gap-2 text-xs text-purple-800 bg-purple-50 border border-purple-200 rounded-lg px-3 py-2 mb-4">
+        <div className="flex items-center gap-2 text-xs text-purple-800 bg-white border border-gray-200 rounded-lg px-3 py-2 mb-4">
           <Shield className="w-4 h-4 shrink-0" />
           Human approval required for regulatory submissions. Copilot outputs are draft guidance only.
         </div>
 
         {error && (
-          <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-800" role="alert">
+          <div className="mb-4 p-3 bg-white border border-gray-200 rounded-lg text-sm text-red-800" role="alert">
             {error}
           </div>
         )}

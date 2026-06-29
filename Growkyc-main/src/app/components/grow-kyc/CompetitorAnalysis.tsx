@@ -35,7 +35,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
       name: 'IdentityCheck',
       logo: '🔍',
       marketShare: '15-20%',
-      color: 'from-blue-600 to-cyan-600',
+      color: 'from-slate-800 to-slate-700',
       winsOn: 'Fast ID checks and tight practice integrations',
       losesOn: 'No KYB, no beneficial ownership, no monitoring',
       strengths: [
@@ -67,7 +67,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
       name: 'Nagaris',
       logo: '📋',
       marketShare: '10-15%',
-      color: 'from-purple-600 to-pink-600',
+      color: 'from-slate-800 to-slate-700',
       winsOn: 'Proposal-to-job automation and grouped entity onboarding',
       losesOn: 'Weak AML engine, no compliance governance',
       strengths: [
@@ -100,7 +100,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
       name: 'OnboardMe',
       logo: '🚀',
       marketShare: '12-18%',
-      color: 'from-green-600 to-emerald-600',
+      color: 'from-slate-800 to-slate-700',
       winsOn: 'Broad all-round onboarding, payments, and engagement flow',
       losesOn: 'Weak entity structures, limited risk engine',
       strengths: [
@@ -133,7 +133,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
       name: 'Seamlss',
       logo: '⚡',
       marketShare: '8-12%',
-      color: 'from-amber-600 to-orange-600',
+      color: 'from-slate-800 to-slate-700',
       winsOn: 'Accountant-native simplicity and XPM fit',
       losesOn: 'No proposal engine, no beneficial ownership',
       strengths: [
@@ -166,7 +166,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
       name: 'VerifiMe',
       logo: '🛡️',
       marketShare: '20-25%',
-      color: 'from-red-600 to-rose-600',
+      color: 'from-slate-800 to-slate-700',
       winsOn: 'Deep KYC, KYB, AML, beneficial ownership, and Tranche 2 readiness',
       losesOn: 'Poor accountant UX, no practice sync, no proposals',
       strengths: [
@@ -319,7 +319,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
         <div className="p-8 max-w-7xl mx-auto">
           {/* Wins/Loses */}
           <div className="grid grid-cols-2 gap-6 mb-8">
-            <Card className="border-2 border-green-300 bg-green-50">
+            <Card className="border border-gray-200 bg-white">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-green-900">
                   <Trophy className="w-5 h-5" />
@@ -331,7 +331,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
               </CardContent>
             </Card>
 
-            <Card className="border-2 border-red-300 bg-red-50">
+            <Card className="border border-gray-200 bg-white">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-red-900">
                   <AlertCircle className="w-5 h-5" />
@@ -386,7 +386,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
           </div>
 
           {/* Pricing */}
-          <Card className="mb-8 bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200">
+          <Card className="mb-8 bg-gray-50 border-2 border-blue-200">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <DollarSign className="w-5 h-5 text-blue-600" />
@@ -399,7 +399,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
           </Card>
 
           {/* How to Beat */}
-          <Card className="bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-300">
+          <Card className="bg-gray-50 border-2 border-green-300">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-2xl">
                 <Target className="w-6 h-6 text-green-600" />
@@ -448,7 +448,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
 
       <div className="p-8 max-w-7xl mx-auto">
         {/* Market Gaps */}
-        <Card className="mb-12 border-2 border-amber-300 bg-gradient-to-br from-amber-50 to-orange-50">
+        <Card className="mb-12 border-2 border-amber-300 bg-gray-50">
           <CardHeader>
             <CardTitle className="flex items-center gap-3 text-2xl">
               <Target className="w-6 h-6 text-amber-600" />
@@ -540,7 +540,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
                 </div>
 
                 <div className="space-y-3">
-                  <div className="p-3 bg-green-50 border border-green-200 rounded-lg">
+                  <div className="p-3 bg-white border border-gray-200 rounded-lg">
                     <div className="flex items-center gap-2 mb-1">
                       <Trophy className="w-4 h-4 text-green-600" />
                       <span className="text-xs font-semibold text-green-900">WINS ON</span>
@@ -548,7 +548,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
                     <p className="text-sm text-green-800">{comp.winsOn}</p>
                   </div>
 
-                  <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
+                  <div className="p-3 bg-white border border-gray-200 rounded-lg">
                     <div className="flex items-center gap-2 mb-1">
                       <AlertCircle className="w-4 h-4 text-red-600" />
                       <span className="text-xs font-semibold text-red-900">LOSES ON</span>
@@ -622,7 +622,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
                           <X className="w-5 h-5 text-gray-300 mx-auto" />
                         )}
                       </td>
-                      <td className="text-center py-3 px-2 bg-gradient-to-br from-purple-50 to-pink-50">
+                      <td className="text-center py-3 px-2 bg-gray-50">
                         {row.grow ? (
                           <CheckCircle className="w-5 h-5 text-purple-600 mx-auto" />
                         ) : (
@@ -638,7 +638,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
         </Card>
 
         {/* Winning Strategy */}
-        <Card className="bg-gradient-to-br from-indigo-50 to-purple-50 border-2 border-indigo-200">
+        <Card className="bg-gray-50 border-2 border-indigo-200">
           <CardHeader>
             <CardTitle className="flex items-center gap-3 text-2xl">
               <Flame className="w-6 h-6 text-indigo-600" />
@@ -678,7 +678,7 @@ export function CompetitorAnalysis({ onBack }: CompetitorAnalysisProps) {
               })}
             </div>
 
-            <div className="p-6 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl">
+            <div className="p-6 bg-gradient-to-r from-slate-800 to-slate-700 text-white rounded-xl">
               <div className="flex items-center justify-between">
                 <div>
                   <h4 className="text-xl font-bold mb-2">Total Investment to Beat All Competitors</h4>

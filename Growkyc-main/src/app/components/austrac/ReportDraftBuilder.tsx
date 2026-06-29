@@ -457,7 +457,7 @@ export function ReportDraftBuilder({ caseId, onBack }: ReportDraftBuilderProps) 
     <div className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-[1900px] mx-auto space-y-6">
         {/* Header */}
-        <div className="bg-gradient-to-r from-red-900 via-red-800 to-orange-900 rounded-lg p-6 text-white shadow-xl">
+        <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white shadow-xl">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <div className="w-14 h-14 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border-2 border-white/20">
@@ -470,7 +470,7 @@ export function ReportDraftBuilder({ caseId, onBack }: ReportDraftBuilderProps) 
             </div>
             <div className="flex gap-3">
               {onBack && (
-                <Button onClick={onBack} className="bg-white text-red-900 hover:bg-red-50">
+                <Button onClick={onBack} className="bg-white text-slate-800 hover:bg-slate-100">
                   Return to Control Centre
                 </Button>
               )}
@@ -519,7 +519,7 @@ export function ReportDraftBuilder({ caseId, onBack }: ReportDraftBuilderProps) 
         <div className="grid grid-cols-2 gap-6">
           {/* LEFT PANEL - Structured Source Data */}
           <Card className="border-2 border-blue-300 shadow-lg">
-            <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
+            <CardHeader className="bg-gray-50 border-b">
               <CardTitle className="flex items-center gap-2">
                 <Shield className="w-6 h-6 text-blue-600" />
                 Structured Source Data
@@ -720,7 +720,7 @@ export function ReportDraftBuilder({ caseId, onBack }: ReportDraftBuilderProps) 
 
           {/* RIGHT PANEL - Draft Report */}
           <Card className="border-2 border-green-300 shadow-lg">
-            <CardHeader className="bg-gradient-to-r from-green-50 to-emerald-50 border-b">
+            <CardHeader className="bg-gray-50 border-b">
               <div className="flex items-center justify-between">
                 <CardTitle className="flex items-center gap-2">
                   <FileText className="w-6 h-6 text-green-600" />

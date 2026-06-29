@@ -226,7 +226,7 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
       <div className="max-w-[1400px] mx-auto space-y-6">
         {/* Header */}
         {!isEmbed && (
-          <div className="bg-gradient-to-r from-red-900 via-red-800 to-orange-900 rounded-lg p-6 text-white shadow-xl">
+          <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white shadow-xl">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
                 <div className="w-14 h-14 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border-2 border-white/20">
@@ -245,7 +245,7 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
         )}
 
         {/* Info Banner */}
-        <Card className="border-2 border-blue-300 bg-blue-50">
+        <Card className="border border-gray-200 bg-white">
           <CardContent className="p-6">
             <div className="flex items-start gap-3">
               <AlertTriangle className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
@@ -270,7 +270,7 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
           {/* Left Column - Subject Selection */}
           <Card className="border-2 border-purple-300 shadow-lg">
-            <CardHeader className="bg-gradient-to-r from-purple-50 to-pink-50 border-b">
+            <CardHeader className="bg-gray-50 border-b">
               <CardTitle className="flex items-center gap-2">
                 <User className="w-6 h-6 text-purple-600" />
                 Select Subject
@@ -337,7 +337,7 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
 
           {/* Center Column - Concern Details */}
           <Card className="lg:col-span-2 border-2 border-orange-300 shadow-lg">
-            <CardHeader className="bg-gradient-to-r from-orange-50 to-amber-50 border-b">
+            <CardHeader className="bg-gray-50 border-b">
               <CardTitle className="flex items-center gap-2">
                 <FileText className="w-6 h-6 text-orange-600" />
                 Concern Details

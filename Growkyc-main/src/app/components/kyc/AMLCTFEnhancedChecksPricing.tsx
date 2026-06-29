@@ -236,7 +236,7 @@ export function AMLCTFEnhancedChecksPricing() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg p-8 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-8 text-white">
         <div className="flex items-center gap-4">
           <div className="bg-white/20 p-4 rounded-full">
             <Shield className="w-12 h-12" />
@@ -252,7 +252,7 @@ export function AMLCTFEnhancedChecksPricing() {
 
       {/* Pricing Overview */}
       <div className="grid grid-cols-4 gap-4">
-        <Card className="border-2 border-red-300 bg-red-50">
+        <Card className="border border-gray-200 bg-white">
           <CardContent className="p-6">
             <div className="flex items-center gap-3 mb-2">
               <Lock className="w-6 h-6 text-red-600" />
@@ -263,7 +263,7 @@ export function AMLCTFEnhancedChecksPricing() {
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-blue-300 bg-blue-50">
+        <Card className="border border-gray-200 bg-white">
           <CardContent className="p-6">
             <div className="flex items-center gap-3 mb-2">
               <Unlock className="w-6 h-6 text-blue-600" />
@@ -274,7 +274,7 @@ export function AMLCTFEnhancedChecksPricing() {
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-amber-300 bg-amber-50">
+        <Card className="border border-gray-200 bg-white">
           <CardContent className="p-6">
             <div className="flex items-center gap-3 mb-2">
               <Clock className="w-6 h-6 text-amber-600" />
@@ -285,7 +285,7 @@ export function AMLCTFEnhancedChecksPricing() {
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-green-300 bg-green-50">
+        <Card className="border border-gray-200 bg-white">
           <CardContent className="p-6">
             <div className="flex items-center gap-3 mb-2">
               <DollarSign className="w-6 h-6 text-green-600" />
@@ -300,7 +300,7 @@ export function AMLCTFEnhancedChecksPricing() {
       </div>
 
       {/* Important Notice */}
-      <Card className="border-2 border-red-300 bg-red-50">
+      <Card className="border border-gray-200 bg-white">
         <CardContent className="p-6">
           <div className="flex gap-4">
             <AlertCircle className="w-8 h-8 text-red-600 flex-shrink-0" />
@@ -345,7 +345,7 @@ export function AMLCTFEnhancedChecksPricing() {
             return (
               <div
                 key={check.id}
-                className="border-2 border-red-300 bg-red-50 rounded-lg p-6 cursor-not-allowed"
+                className="border border-gray-200 bg-white rounded-lg p-6 cursor-not-allowed"
               >
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-start gap-4 flex-1">
@@ -542,7 +542,7 @@ export function AMLCTFEnhancedChecksPricing() {
       </Card>
 
       {/* Pricing Summary */}
-      <Card className="border-2 border-green-300 bg-green-50">
+      <Card className="border border-gray-200 bg-white">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-green-900">
             <DollarSign className="w-6 h-6" />

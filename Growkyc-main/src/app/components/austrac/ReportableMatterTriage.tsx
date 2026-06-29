@@ -230,7 +230,7 @@ export function ReportableMatterTriage({ caseId, onBack }: ReportableMatterTriag
     <div className="min-h-screen bg-gray-50 p-4 md:p-8">
       <div className="max-w-[1800px] mx-auto space-y-6">
         {/* Header */}
-        <div className="bg-gradient-to-r from-red-900 via-red-800 to-orange-900 rounded-lg p-6 text-white shadow-xl">
+        <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white shadow-xl">
           <div className="flex flex-col sm:flex-row gap-4 justify-between sm:items-center">
             <div className="flex items-center gap-4">
               <div className="w-14 h-14 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border-2 border-white/20 flex-shrink-0">
@@ -241,7 +241,7 @@ export function ReportableMatterTriage({ caseId, onBack }: ReportableMatterTriag
                 <p className="text-sm md:text-base text-white/90">Case ID: {caseInfo.caseId}</p>
               </div>
             </div>
-            <Button onClick={onBack} className="bg-white text-red-900 hover:bg-red-50 w-full sm:w-auto">
+            <Button onClick={onBack} className="bg-white text-slate-800 hover:bg-slate-100 w-full sm:w-auto">
               Return to Control Centre
             </Button>
           </div>
@@ -251,7 +251,7 @@ export function ReportableMatterTriage({ caseId, onBack }: ReportableMatterTriag
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* LEFT PANEL - Case Summary */}
           <Card className="border-2 border-blue-300 shadow-lg">
-            <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
+            <CardHeader className="bg-gray-50 border-b">
               <CardTitle className="flex items-center gap-2">
                 <FileText className="w-6 h-6 text-blue-600" />
                 Case Summary
@@ -326,7 +326,7 @@ export function ReportableMatterTriage({ caseId, onBack }: ReportableMatterTriag
 
           {/* CENTRE PANEL - Trigger Context */}
           <Card className="border-2 border-orange-300 shadow-lg">
-            <CardHeader className="bg-gradient-to-r from-orange-50 to-amber-50 border-b">
+            <CardHeader className="bg-gray-50 border-b">
               <CardTitle className="flex items-center gap-2">
                 <AlertTriangle className="w-6 h-6 text-orange-600" />
                 Trigger Context
@@ -369,7 +369,7 @@ export function ReportableMatterTriage({ caseId, onBack }: ReportableMatterTriag
 
           {/* RIGHT PANEL - Triage Decision */}
           <Card className="border-2 border-purple-300 shadow-lg">
-            <CardHeader className="bg-gradient-to-r from-purple-50 to-pink-50 border-b">
+            <CardHeader className="bg-gray-50 border-b">
               <CardTitle className="flex items-center gap-2">
                 <CheckCircle className="w-6 h-6 text-purple-600" />
                 Triage Decision

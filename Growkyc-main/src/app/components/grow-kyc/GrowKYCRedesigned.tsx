@@ -250,7 +250,7 @@ export function GrowKYCRedesigned({ onBack }: GrowKYCRedesignedProps) {
             {/* Logo & Branding */}
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-[#13B5EA] to-[#0E7C9E] rounded-xl flex items-center justify-center shadow-md">
+                <div className="w-10 h-10 bg-gradient-to-br from-slate-800 to-slate-700 rounded-xl flex items-center justify-center shadow-md">
                   <Shield className="w-6 h-6 text-white" />
                 </div>
                 <div>
@@ -276,7 +276,7 @@ export function GrowKYCRedesigned({ onBack }: GrowKYCRedesignedProps) {
                       onClick={() => setCurrentView(nav.id as View)}
                       className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${
                         isActive
-                          ? 'bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] text-white shadow-lg scale-105'
+                          ? 'bg-gradient-to-r from-slate-800 to-slate-700 text-white shadow-lg scale-105'
                           : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
                       }`}
                     >
@@ -310,7 +310,7 @@ export function GrowKYCRedesigned({ onBack }: GrowKYCRedesignedProps) {
               <div className="relative" id="quick-add">
                 <Button
                   onClick={() => setShowQuickAdd(!showQuickAdd)}
-                  className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] hover:from-[#0E7C9E] hover:to-[#13B5EA] text-white shadow-lg"
+                  className="bg-gradient-to-r from-slate-800 to-slate-700 hover:from-[#0E7C9E] hover:to-[#13B5EA] text-white shadow-lg"
                 >
                   <Plus className="w-4 h-4 mr-2" />
                   Quick Add
@@ -397,7 +397,7 @@ export function GrowKYCRedesigned({ onBack }: GrowKYCRedesignedProps) {
         {currentView === 'dashboard' && (
           <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4">
             {/* Welcome Banner */}
-            <Card className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] text-white border-0 shadow-xl">
+            <Card className="bg-gradient-to-r from-slate-800 to-slate-700 text-white border-0 shadow-xl">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>

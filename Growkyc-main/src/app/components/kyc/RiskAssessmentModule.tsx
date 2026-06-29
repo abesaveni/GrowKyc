@@ -231,7 +231,7 @@ export function RiskAssessmentModule() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-gradient-to-r from-orange-600 to-red-600 rounded-lg p-8 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-8 text-white">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Target className="w-16 h-16" />
@@ -465,7 +465,7 @@ export function RiskAssessmentModule() {
             </div>
 
             {/* Mitigating Controls */}
-            <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+            <div className="mt-6 p-4 bg-white border border-gray-200 rounded-lg">
               <h4 className="font-bold text-green-900 mb-3 flex items-center gap-2">
                 <Shield className="w-5 h-5" />
                 Mitigating Controls
@@ -481,7 +481,7 @@ export function RiskAssessmentModule() {
             </div>
 
             {/* Recommendations */}
-            <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+            <div className="mt-4 p-4 bg-white border border-gray-200 rounded-lg">
               <h4 className="font-bold text-blue-900 mb-3 flex items-center gap-2">
                 <Info className="w-5 h-5" />
                 Recommendations
@@ -520,7 +520,7 @@ export function RiskAssessmentModule() {
       {/* Risk Calculator Tab */}
       {activeTab === 'calculator' && (
         <div className="space-y-6">
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+          <div className="bg-white border border-gray-200 rounded-lg p-6">
             <div className="flex items-start gap-3">
               <Calculator className="w-6 h-6 text-blue-600 mt-0.5" />
               <div>
@@ -601,22 +601,22 @@ export function RiskAssessmentModule() {
 
               <h4 className="text-lg font-bold text-gray-900 mt-6 mb-3">3. Risk Tier Assignment</h4>
               <div className="grid grid-cols-4 gap-4 my-6">
-                <div className="p-4 bg-green-50 border-2 border-green-200 rounded-lg">
+                <div className="p-4 bg-white border border-gray-200 rounded-lg">
                   <p className="font-bold text-green-900 mb-2">LOW RISK</p>
                   <p className="text-3xl font-bold text-green-600 mb-2">0-24</p>
                   <p className="text-sm text-green-700">Standard CDD, Annual review</p>
                 </div>
-                <div className="p-4 bg-yellow-50 border-2 border-yellow-200 rounded-lg">
+                <div className="p-4 bg-white border border-gray-200 rounded-lg">
                   <p className="font-bold text-yellow-900 mb-2">MEDIUM RISK</p>
                   <p className="text-3xl font-bold text-yellow-600 mb-2">25-49</p>
                   <p className="text-sm text-yellow-700">Standard CDD, Semi-annual review</p>
                 </div>
-                <div className="p-4 bg-orange-50 border-2 border-orange-200 rounded-lg">
+                <div className="p-4 bg-white border border-gray-200 rounded-lg">
                   <p className="font-bold text-orange-900 mb-2">HIGH RISK</p>
                   <p className="text-3xl font-bold text-orange-600 mb-2">50-74</p>
                   <p className="text-sm text-orange-700">Enhanced CDD, Quarterly review</p>
                 </div>
-                <div className="p-4 bg-red-50 border-2 border-red-200 rounded-lg">
+                <div className="p-4 bg-white border border-gray-200 rounded-lg">
                   <p className="font-bold text-red-900 mb-2">CRITICAL RISK</p>
                   <p className="text-3xl font-bold text-red-600 mb-2">75-100</p>
                   <p className="text-sm text-red-700">Enhanced CDD, Senior approval, Monthly review</p>

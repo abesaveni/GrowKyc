@@ -199,7 +199,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
   const renderComplianceOfficerDashboard = () => (
     <div className="space-y-8 bg-white min-h-screen px-8 pb-8">
       {/* Welcome Section */}
-      <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] rounded-2xl p-12 text-white shadow-lg mt-8">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-2xl p-12 text-white shadow-lg mt-8">
         <div className="flex items-center gap-6 mb-6">
           <div className="text-6xl">{userAvatar}</div>
           <div>
@@ -383,7 +383,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
       </div>
 
       {/* Clients to Watch */}
-      <Card className="border-2 border-red-200 bg-red-50">
+      <Card className="border border-gray-200 bg-white">
         <CardHeader>
           <div className="flex items-center justify-between">
             <div>
@@ -593,7 +593,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
   const renderPartnerDashboard = () => (
     <div className="space-y-6">
       {/* Executive Welcome */}
-      <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl p-8 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl p-8 text-white">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className="text-5xl">{userAvatar}</div>
@@ -820,7 +820,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
   const renderAnalystDashboard = () => (
     <div className="space-y-8 bg-white min-h-screen px-8 pb-8">
       {/* Analyst Welcome */}
-      <div className="bg-gradient-to-r from-cyan-600 to-blue-600 rounded-2xl p-12 text-white shadow-lg mt-8">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-2xl p-12 text-white shadow-lg mt-8">
         <div className="flex items-center gap-6 mb-6">
           <div className="text-6xl">{userAvatar}</div>
           <div>
@@ -952,7 +952,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
   const renderAuditorDashboard = () => (
     <div className="space-y-6">
       {/* Auditor Welcome */}
-      <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl p-8 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl p-8 text-white">
         <div className="flex items-center gap-4 mb-4">
           <div className="text-5xl">{userAvatar}</div>
           <div>
@@ -1187,7 +1187,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
                 </p>
               </div>
 
-              <div className="bg-amber-50 border-2 border-amber-300 rounded-lg p-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
                 <div className="flex items-start gap-3">
                   <AlertTriangle className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
                   <div className="flex-1">

@@ -151,7 +151,7 @@ export function PartnerDashboard({
     <div className="bg-white min-h-screen">
       <div className="space-y-6 bg-white min-h-screen px-4 md:px-8 pb-8">
         {/* Executive Welcome */}
-        <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl p-6 md:p-8 text-white mt-4 md:mt-6">
+        <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl p-6 md:p-8 text-white mt-4 md:mt-6">
           <div className="flex flex-col sm:flex-row gap-4 justify-between sm:items-center">
             <div className="flex flex-col sm:flex-row items-center text-center sm:text-left gap-4">
               <div className="text-5xl">{userAvatar}</div>
@@ -405,7 +405,7 @@ export function PartnerDashboard({
                 </p>
               </div>
 
-              <div className="bg-amber-50 border-2 border-amber-300 rounded-lg p-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
                 <div className="flex items-start gap-3">
                   <AlertTriangle className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
                   <div className="flex-1">

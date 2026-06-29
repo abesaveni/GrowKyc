@@ -445,7 +445,7 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
         {selectedTab === 'offshore' && (
           <div className="space-y-6">
             {/* Offshore Buyer Workflow */}
-            <Card className="border-2 border-red-200 bg-gradient-to-br from-red-50 to-orange-50">
+            <Card className="border-2 border-red-200 bg-gray-50">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Globe className="w-5 h-5 text-red-600" />
@@ -539,7 +539,7 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
             </Card>
 
             {/* Offshore Buyer Risk Rules */}
-            <Card className="bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-200">
+            <Card className="bg-gray-50 border-2 border-amber-200">
               <CardHeader>
                 <CardTitle>Offshore Buyer Risk Rules</CardTitle>
                 <CardDescription>Auto-escalation for high-risk countries</CardDescription>
@@ -587,7 +587,7 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
         {selectedTab === 'settlement' && (
           <div className="space-y-6">
             {/* Settlement Readiness */}
-            <Card className="border-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50">
+            <Card className="border-2 border-green-200 bg-gray-50">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <CheckCircle className="w-5 h-5 text-green-600" />
@@ -716,7 +716,7 @@ export function RealEstateModule({ onBack }: RealEstateModuleProps) {
             </Card>
 
             {/* Settlement Platform Integration */}
-            <Card className="bg-gradient-to-br from-indigo-50 to-blue-50 border-2 border-indigo-200">
+            <Card className="bg-gray-50 border-2 border-indigo-200">
               <CardHeader>
                 <CardTitle>Settlement Workflow Integration</CardTitle>
                 <CardDescription>Connect with PEXA, InfoTrack, Sympli</CardDescription>

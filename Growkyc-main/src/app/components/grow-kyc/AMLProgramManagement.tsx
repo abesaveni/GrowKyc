@@ -102,7 +102,7 @@ export function AMLProgramManagement({ onBack }: AMLProgramManagementProps) {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] text-white px-6 py-4">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 text-white px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Button variant="ghost" size="sm" onClick={onBack} className="text-white hover:bg-white/20">
@@ -195,7 +195,7 @@ export function AMLProgramManagement({ onBack }: AMLProgramManagementProps) {
             <div className="grid gap-6">
               {/* Program Summary */}
               <Card className="border-2 border-cyan-200">
-                <CardHeader className="bg-gradient-to-r from-cyan-50 to-blue-50">
+                <CardHeader className="bg-gray-50">
                   <CardTitle className="flex items-center gap-2">
                     <Shield className="w-5 h-5 text-cyan-600" />
                     AML/CTF Program Summary
@@ -306,7 +306,7 @@ export function AMLProgramManagement({ onBack }: AMLProgramManagementProps) {
           {/* PART A TAB */}
           <TabsContent value="part-a">
             <Card className="border-2 border-blue-200">
-              <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50">
+              <CardHeader className="bg-gray-50">
                 <CardTitle className="flex items-center gap-2">
                   <Shield className="w-5 h-5 text-blue-600" />
                   Part A: Customer Identification & Due Diligence
@@ -400,7 +400,7 @@ export function AMLProgramManagement({ onBack }: AMLProgramManagementProps) {
           {/* PART B TAB */}
           <TabsContent value="part-b">
             <Card className="border-2 border-purple-200">
-              <CardHeader className="bg-gradient-to-r from-purple-50 to-pink-50">
+              <CardHeader className="bg-gray-50">
                 <CardTitle className="flex items-center gap-2">
                   <FileText className="w-5 h-5 text-purple-600" />
                   Part B: Reporting, Record Keeping & Compliance
@@ -540,7 +540,7 @@ export function AMLProgramManagement({ onBack }: AMLProgramManagementProps) {
             <div className="grid gap-6">
               {/* Board Sign-Off */}
               <Card className="border-2 border-green-200">
-                <CardHeader className="bg-gradient-to-r from-green-50 to-emerald-50">
+                <CardHeader className="bg-gray-50">
                   <CardTitle className="flex items-center gap-2">
                     <CheckCircle className="w-5 h-5 text-green-600" />
                     Board & Senior Management Sign-Off

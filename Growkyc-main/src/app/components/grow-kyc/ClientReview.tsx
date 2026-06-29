@@ -585,7 +585,7 @@ export function ClientReview({ clientId: propClientId, role: propRole }: ClientR
 
           {client.status === 'Active' ? (
             <div className="flex flex-col gap-3">
-              <div className="flex items-center gap-3 p-4 bg-green-50 border-2 border-green-300 rounded-lg">
+              <div className="flex items-center gap-3 p-4 bg-white border border-gray-200 rounded-lg">
                 <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
                 <div>
                   <p className="font-bold text-green-800">Client Approved</p>

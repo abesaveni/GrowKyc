@@ -121,7 +121,7 @@ export function OnboardingChat({ onClose }: OnboardingChatProps) {
       <div className="fixed bottom-4 right-4 z-50 animate-in fade-in slide-in-from-bottom-2">
         <Button
           size="lg"
-          className="rounded-full w-16 h-16 shadow-2xl bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+          className="rounded-full w-16 h-16 shadow-2xl bg-gradient-to-r from-slate-800 to-slate-700 hover:from-blue-700 hover:to-purple-700"
           onClick={() => setIsMinimized(false)}
         >
           <MessageCircle className="w-7 h-7" />
@@ -133,7 +133,7 @@ export function OnboardingChat({ onClose }: OnboardingChatProps) {
   return (
     <div className="fixed bottom-4 right-4 z-50 w-96 shadow-2xl animate-in fade-in slide-in-from-bottom-4">
       <Card className="h-[600px] flex flex-col">
-        <CardHeader className="border-b bg-gradient-to-r from-blue-600 to-purple-600 text-white flex-shrink-0">
+        <CardHeader className="border-b bg-gradient-to-r from-slate-800 to-slate-700 text-white flex-shrink-0">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Sparkles className="w-5 h-5" />

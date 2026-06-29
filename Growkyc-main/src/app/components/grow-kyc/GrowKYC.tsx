@@ -846,7 +846,7 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
     <div className="min-h-screen bg-white overflow-x-hidden">
       {/* Navigation Bar */}
       {currentView !== 'client_kyc_dashboard' && (
-        <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] border-b border-[#0E7C9E]/20 px-4 sm:px-6 py-3 sm:py-4 shadow-md">
+        <div className="bg-gradient-to-r from-slate-800 to-slate-700 border-b border-[#0E7C9E]/20 px-4 sm:px-6 py-3 sm:py-4 shadow-md">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 sm:gap-4 max-w-[70%] sm:max-w-none">
               <Shield className="w-6 h-6 sm:w-8 sm:h-8 text-white flex-shrink-0" />
@@ -1250,7 +1250,7 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
 
       {/* Mobile Navigation Dropdown */}
       {currentView !== 'client_kyc_dashboard' && isMobileMenuOpen && (
-        <div className="2xl:hidden bg-gradient-to-b from-[#13B5EA] to-[#0E7C9E] border-b border-[#0E7C9E]/30 px-6 py-4 space-y-3 shadow-inner animate-in slide-in-from-top duration-200">
+        <div className="2xl:hidden bg-gradient-to-b from-slate-800 to-slate-700 border-b border-[#0E7C9E]/30 px-6 py-4 space-y-3 shadow-inner animate-in slide-in-from-top duration-200">
           <div className="flex flex-col gap-2">
             {selectedRole && IMFO_HEADER_ROLES.includes(selectedRole) && (() => {
               const persona = getPersonaConfig(selectedUser);
@@ -1480,7 +1480,7 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
       {!isCopilotOpen && (
         <Button
           onClick={() => setIsCopilotOpen(true)}
-          className="fixed bottom-6 right-6 z-50 rounded-full w-14 h-14 shadow-2xl bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white flex items-center justify-center border-2 border-white/20 hover:scale-110 transition-transform active:scale-95 duration-200"
+          className="fixed bottom-6 right-6 z-50 rounded-full w-14 h-14 shadow-2xl bg-gradient-to-r from-slate-800 to-slate-700 hover:from-blue-700 hover:to-purple-700 text-white flex items-center justify-center border-2 border-white/20 hover:scale-110 transition-transform active:scale-95 duration-200"
           title="Compliance Copilot AI"
         >
           <Sparkles className="w-6 h-6 text-white animate-pulse" />

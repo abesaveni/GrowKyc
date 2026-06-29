@@ -696,7 +696,7 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
               </div>
 
               {/* Ownership Visualization */}
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+              <div className="bg-white border border-gray-200 rounded-lg p-6">
                 <h4 className="font-bold text-gray-900 mb-4">Ownership Structure</h4>
                 <div className="space-y-3">
                   <div className="bg-white rounded-lg p-4 border-2 border-blue-500">
@@ -740,7 +740,7 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
               {!showInfoTrack ? (
                 <>
                   {/* GreenID Integration */}
-                  <div className="bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg p-6 text-white">
+                  <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center">
                         <div className="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center mr-4">
@@ -777,7 +777,7 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
                   )}
 
                   {greenIDStatus === 'verified' && (
-                    <div className="bg-green-50 border-2 border-green-200 rounded-lg p-6">
+                    <div className="bg-white border border-gray-200 rounded-lg p-6">
                       <div className="flex items-center mb-4">
                         <CheckCircle className="w-6 h-6 text-green-600 mr-3" />
                         <h4 className="font-bold text-green-900 text-lg">Identity Verified</h4>
@@ -938,14 +938,14 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
               {screeningResults.sanctions.status === 'bypassed' || 
               screeningResults.pep.status === 'bypassed' || 
               screeningResults.adverseMedia.status === 'bypassed' ? (
-                <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+                <div className="bg-white border border-gray-200 rounded-lg p-4">
                   <p className="text-amber-900 font-semibold flex items-center gap-2">
                     <AlertTriangle className="w-5 h-5 text-amber-600" />
                     Warning: Some automated screening bots are disabled in the KYC configuration settings. Bypassed screenings require manual investigation.
                   </p>
                 </div>
               ) : (
-                <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                <div className="bg-white border border-gray-200 rounded-lg p-4">
                   <p className="text-green-900 font-semibold">
                     ✓ All screening checks completed successfully. No adverse findings detected.
                   </p>
@@ -989,7 +989,7 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
               )}
 
               {requiresEnhancedCDD && (
-                <div className="bg-yellow-50 border-2 border-yellow-200 rounded-lg p-6">
+                <div className="bg-white border border-gray-200 rounded-lg p-6">
                   <div className="flex items-start">
                     <AlertTriangle className="w-6 h-6 text-yellow-600 mr-3 mt-1" />
                     <div className="flex-1">
@@ -1009,7 +1009,7 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
                 </div>
               )}
 
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-4">
                 <h4 className="font-semibold text-blue-900 mb-2">Required Next Actions:</h4>
                 <ul className="text-sm text-blue-700 space-y-1">
                   {riskRating === 'high' && <li>• Enhanced CDD must be completed</li>}
@@ -1031,7 +1031,7 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
               </div>
 
               {approvalRequired ? (
-                <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6 text-center">
+                <div className="bg-white border border-gray-200 rounded-lg p-6 text-center">
                   <Lock className="w-16 h-16 text-red-600 mx-auto mb-4" />
                   <h4 className="text-2xl font-bold text-red-900 mb-2">Senior Manager Approval Required</h4>
                   <p className="text-red-700 mb-6">
@@ -1044,7 +1044,7 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
                 </div>
               ) : (
                 <div className="space-y-4">
-                  <div className="bg-green-50 border-2 border-green-200 rounded-lg p-6">
+                  <div className="bg-white border border-gray-200 rounded-lg p-6">
                     <div className="flex items-center mb-4">
                       <CheckCircle className="w-8 h-8 text-green-600 mr-3" />
                       <h4 className="text-xl font-bold text-green-900">All Checks Passed</h4>
@@ -1075,7 +1075,7 @@ export function ClientOnboardingWizard({ onClose }: { onClose?: () => void }) {
                     </Button>
                   </div>
 
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                  <div className="bg-white border border-gray-200 rounded-lg p-4">
                     <p className="text-sm text-blue-900">
                       <strong>Note:</strong> Client will be set to Active status with monitoring enabled. 
                       Annual risk review will be scheduled. All evidence will be stored in the Evidence Vault.

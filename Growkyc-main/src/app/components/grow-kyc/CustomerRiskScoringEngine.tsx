@@ -156,7 +156,7 @@ export function CustomerRiskScoringEngine({
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] text-white px-6 py-4">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 text-white px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Button variant="ghost" size="sm" onClick={onBack} className="text-white hover:bg-white/20">
@@ -210,7 +210,7 @@ export function CustomerRiskScoringEngine({
       <div className="p-6 max-w-7xl mx-auto">
         {/* Risk Score Summary Card */}
         <Card className="mb-6 border-2 border-cyan-200">
-          <CardHeader className="bg-gradient-to-r from-cyan-50 to-blue-50">
+          <CardHeader className="bg-gray-50">
             <CardTitle className="flex items-center gap-2">
               <Shield className="w-6 h-6 text-cyan-600" />
               Overall Risk Assessment
@@ -368,7 +368,7 @@ export function CustomerRiskScoringEngine({
 
             {/* Score Breakdown */}
             <Card className="mt-6 border-2 border-blue-200">
-              <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50">
+              <CardHeader className="bg-gray-50">
                 <CardTitle>Score Calculation Breakdown</CardTitle>
                 <CardDescription>How the weighted score is calculated</CardDescription>
               </CardHeader>
@@ -475,7 +475,7 @@ export function CustomerRiskScoringEngine({
           {/* OVERRIDE TAB */}
           <TabsContent value="override">
             <Card className="border-2 border-amber-200">
-              <CardHeader className="bg-gradient-to-r from-amber-50 to-orange-50">
+              <CardHeader className="bg-gray-50">
                 <CardTitle className="flex items-center gap-2">
                   <Lock className="w-5 h-5 text-amber-600" />
                   Risk Score Override

@@ -175,11 +175,11 @@ export function ExecutiveOverview({ onSelectRole, onViewArchitecture }: Executiv
         <div className="relative max-w-7xl mx-auto px-4 sm:px-8 py-10 sm:py-16">
           <div className="text-center mb-12">
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#13B5EA] to-[#0E7C9E] rounded-2xl flex items-center justify-center shadow-2xl flex-shrink-0 animate-bounce">
+              <div className="w-16 h-16 bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl flex items-center justify-center shadow-2xl flex-shrink-0 animate-bounce">
                 <Shield className="w-10 h-10 text-white" />
               </div>
               <div className="text-center sm:text-left">
-                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] bg-clip-text text-transparent">
+                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-slate-800 to-slate-700 bg-clip-text text-transparent">
                   Grow Compliance OS
                 </h1>
                 <p className="text-[#13B5EA] text-base sm:text-lg mt-1">Regulatory Operating System</p>
@@ -469,7 +469,7 @@ export function ExecutiveOverview({ onSelectRole, onViewArchitecture }: Executiv
 
           {/* AI PEP Screening Bot Feature */}
           <Card 
-            className="mb-12 border-2 border-orange-400 bg-gradient-to-r from-orange-50 to-red-50 shadow-xl cursor-pointer hover:shadow-2xl transition-shadow"
+            className="mb-12 border-2 border-orange-400 bg-gray-50 shadow-xl cursor-pointer hover:shadow-2xl transition-shadow"
             onClick={() => setCurrentView('pep-bot')}
           >
             <CardContent className="p-8">
@@ -521,7 +521,7 @@ export function ExecutiveOverview({ onSelectRole, onViewArchitecture }: Executiv
 
           {/* Adverse Media Bot Feature */}
           <Card 
-            className="mb-12 border-2 border-red-400 bg-gradient-to-r from-red-50 to-orange-50 shadow-xl cursor-pointer hover:shadow-2xl transition-shadow"
+            className="mb-12 border-2 border-red-400 bg-gray-50 shadow-xl cursor-pointer hover:shadow-2xl transition-shadow"
             onClick={() => setCurrentView('adverse-media-bot')}
           >
             <CardContent className="p-8">
@@ -573,7 +573,7 @@ export function ExecutiveOverview({ onSelectRole, onViewArchitecture }: Executiv
 
           {/* Sanctions Bot Feature */}
           <Card 
-            className="mb-12 border-2 border-blue-400 bg-gradient-to-r from-blue-50 to-purple-50 shadow-xl cursor-pointer hover:shadow-2xl transition-shadow"
+            className="mb-12 border-2 border-blue-400 bg-gray-50 shadow-xl cursor-pointer hover:shadow-2xl transition-shadow"
             onClick={() => setCurrentView('sanctions-bot')}
           >
             <CardContent className="p-8">
@@ -625,7 +625,7 @@ export function ExecutiveOverview({ onSelectRole, onViewArchitecture }: Executiv
 
           {/* Identity Bot Feature */}
           <Card 
-            className="mb-12 border-2 border-green-400 bg-gradient-to-r from-green-50 to-blue-50 shadow-xl cursor-pointer hover:shadow-2xl transition-shadow"
+            className="mb-12 border-2 border-green-400 bg-gray-50 shadow-xl cursor-pointer hover:shadow-2xl transition-shadow"
             onClick={() => setCurrentView('identity-bot')}
           >
             <CardContent className="p-8">
@@ -677,7 +677,7 @@ export function ExecutiveOverview({ onSelectRole, onViewArchitecture }: Executiv
 
           {/* KYB Bot Feature */}
           <Card 
-            className="mb-12 border-2 border-purple-400 bg-gradient-to-r from-purple-50 to-blue-50 shadow-xl cursor-pointer hover:shadow-2xl transition-shadow"
+            className="mb-12 border-2 border-purple-400 bg-gray-50 shadow-xl cursor-pointer hover:shadow-2xl transition-shadow"
             onClick={() => setCurrentView('kyb-bot')}
           >
             <CardContent className="p-8">
@@ -797,7 +797,7 @@ export function ExecutiveOverview({ onSelectRole, onViewArchitecture }: Executiv
                   </div>
                 </div>
                 <div className="text-right">
-                  <Button size="lg" className="bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white shadow-2xl px-8 py-6 text-lg">
+                  <Button size="lg" className="bg-gradient-to-r from-slate-800 to-slate-700 hover:from-amber-700 hover:to-orange-700 text-white shadow-2xl px-8 py-6 text-lg">
                     Enter Tier 2 Hub
                     <ArrowRight className="w-6 h-6 ml-3" />
                   </Button>
@@ -883,7 +883,7 @@ export function ExecutiveOverview({ onSelectRole, onViewArchitecture }: Executiv
                   </div>
                 </div>
                 <div className="text-right">
-                  <Button size="lg" className="bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white shadow-2xl px-8 py-6 text-lg">
+                  <Button size="lg" className="bg-gradient-to-r from-slate-800 to-slate-700 hover:from-amber-700 hover:to-orange-700 text-white shadow-2xl px-8 py-6 text-lg">
                     Enter Tier 3 Engine
                     <ArrowRight className="w-6 h-6 ml-3" />
                   </Button>
@@ -969,7 +969,7 @@ export function ExecutiveOverview({ onSelectRole, onViewArchitecture }: Executiv
                   </div>
                 </div>
                 <div className="text-right">
-                  <Button size="lg" className="bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white shadow-2xl px-8 py-6 text-lg">
+                  <Button size="lg" className="bg-gradient-to-r from-slate-800 to-slate-700 hover:from-amber-700 hover:to-orange-700 text-white shadow-2xl px-8 py-6 text-lg">
                     Enter Tier 4 Engine
                     <ArrowRight className="w-6 h-6 ml-3" />
                   </Button>
@@ -1103,7 +1103,7 @@ export function ExecutiveOverview({ onSelectRole, onViewArchitecture }: Executiv
 
           {/* Global Ready */}
           <div className="mt-12 text-center px-4">
-            <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-300 shadow-lg block w-full max-w-3xl mx-auto">
+            <Card className="bg-gray-50 border-blue-300 shadow-lg block w-full max-w-3xl mx-auto">
               <CardContent className="p-6">
                 <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
                   <Globe className="w-12 h-12 text-blue-600 flex-shrink-0" />

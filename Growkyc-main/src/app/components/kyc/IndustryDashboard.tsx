@@ -25,7 +25,7 @@ export function IndustryDashboard({ industry }: IndustryDashboardProps) {
   const getFinanceDashboard = () => (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg p-6 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Building2 className="w-12 h-12" />
@@ -148,7 +148,7 @@ export function IndustryDashboard({ industry }: IndustryDashboardProps) {
   const getLegalDashboard = () => (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg p-6 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Scale className="w-12 h-12" />
@@ -271,7 +271,7 @@ export function IndustryDashboard({ industry }: IndustryDashboardProps) {
   const getAccountingDashboard = () => (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg p-6 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Calculator className="w-12 h-12" />
@@ -394,7 +394,7 @@ export function IndustryDashboard({ industry }: IndustryDashboardProps) {
   const getRealEstateDashboard = () => (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-gradient-to-r from-orange-600 to-red-600 rounded-lg p-6 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-6 text-white">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Home className="w-12 h-12" />

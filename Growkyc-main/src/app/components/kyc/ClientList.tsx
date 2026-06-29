@@ -483,7 +483,7 @@ export function ClientList() {
       )}
 
       {/* Header */}
-      <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg p-8 text-white">
+      <div className="bg-gradient-to-r from-slate-800 to-slate-700 rounded-lg p-8 text-white">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Users className="w-16 h-16" />
@@ -790,7 +790,7 @@ export function ClientList() {
                     </div>
                   </div>
 
-                  <div className="p-2 rounded-lg border border-blue-200 bg-blue-50">
+                  <div className="p-2 rounded-lg border border-gray-200 bg-white">
                     <p className="text-xs font-semibold text-gray-700 mb-1">Last Review</p>
                     <p className="text-xs text-blue-700">{client.lastReviewDate.toLocaleDateString()}</p>
                   </div>

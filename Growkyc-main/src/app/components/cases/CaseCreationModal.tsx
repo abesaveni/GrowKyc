@@ -209,7 +209,7 @@ export function CaseCreationModal({ isOpen, onClose, onSuccess }: CaseCreationMo
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-8">
       <Card className="w-full max-w-4xl max-h-[90vh] overflow-y-auto border-4 border-red-400 shadow-2xl">
-        <CardHeader className="bg-gradient-to-r from-red-900 to-orange-900 text-white border-b sticky top-0 z-10">
+        <CardHeader className="bg-gradient-to-r from-slate-800 to-slate-700 text-white border-b sticky top-0 z-10">
           <div className="flex items-center justify-between">
             <CardTitle className="text-2xl flex items-center gap-2">
               <AlertTriangle className="w-8 h-8" />

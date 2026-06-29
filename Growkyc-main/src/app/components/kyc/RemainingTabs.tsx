@@ -450,7 +450,7 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
 
           {/* Entity Information Card */}
           <Card className="border-2 border-blue-300 shadow-lg">
-            <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
+            <CardHeader className="bg-gray-50 border-b">
               <CardTitle className="flex items-center gap-2">
                 <Building className="w-6 h-6 text-blue-600" />
                 Entity Information
@@ -778,7 +778,7 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
         return (
           <div className="space-y-6">
             <Card className="border-2 border-blue-300 shadow-lg">
-              <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b flex flex-row items-center justify-between py-4">
+              <CardHeader className="bg-gray-50 border-b flex flex-row items-center justify-between py-4">
                 <CardTitle className="flex items-center gap-2">
                   <Users className="w-6 h-6 text-blue-600" />
                   Beneficial Ownership Analysis
@@ -984,7 +984,7 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
       {activeTab === 'financial' && (
         <>
           <Card className="border-2 border-blue-300 shadow-lg mb-6">
-            <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
+            <CardHeader className="bg-gray-50 border-b">
               <CardTitle className="flex items-center gap-2">
                 <DollarSign className="w-6 h-6 text-blue-600" />
                 Financial Information
@@ -1051,7 +1051,7 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
       {/* FRAUD DETECTION TAB */}
       {activeTab === 'fraud' && (
         <Card className="border-2 border-red-300 shadow-lg">
-          <CardHeader className="bg-gradient-to-r from-red-50 to-orange-50 border-b">
+          <CardHeader className="bg-gray-50 border-b">
             <CardTitle className="flex items-center gap-2">
               <AlertCircle className="w-6 h-6 text-red-600" />
               Fraud Detection & Analysis
@@ -1143,7 +1143,7 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
               </div>
 
               {/* AI Analysis Summary */}
-              <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6 border border-blue-200">
+              <div className="bg-gray-50 rounded-lg p-6 border border-blue-200">
                 <div className="flex items-center gap-2 mb-3">
                   <AlertCircle className="w-6 h-6 text-blue-600" />
                   <h3 className="font-bold text-lg">AI Fraud Analysis Summary</h3>
@@ -1171,7 +1171,7 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
       {/* RUN CHECKS TAB */}
       {activeTab === 'run-checks' && (
         <Card className="border-2 border-blue-300 shadow-lg">
-          <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
+          <CardHeader className="bg-gray-50 border-b">
             <CardTitle className="flex items-center gap-2">
               <RefreshCw className="w-6 h-6 text-blue-600" />
               Manual Verification System
@@ -1328,7 +1328,7 @@ export function RemainingTabs({ activeTab, client }: RemainingTabsProps) {
       {/* COMPLIANCE TAB */}
       {activeTab === 'compliance' && (
         <Card className="border-2 border-blue-300 shadow-lg">
-          <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
+          <CardHeader className="bg-gray-50 border-b">
             <CardTitle className="flex items-center gap-2">
               <Shield className="w-6 h-6 text-blue-600" />
               Compliance Documents
