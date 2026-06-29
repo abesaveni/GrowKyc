@@ -65,6 +65,54 @@ type OnboardDocSlot = {
   file: File | null;
 };
 
+function getAuthHeader(): Record<string, string> {
+  const token = sessionStorage.getItem('growkyc_token');
+  return token ? { Authorization: `Bearer ${token}` } : {};
+}
+
+// Create the real Client record in the backend, routing individual vs entity by
+// client type. Surfaces failures but never blocks the local onboarding UX.
+async function persistOnboardToBackend(opts: {
+  name: string;
+  type: 'Individual' | 'Company' | 'Trust' | 'Partnership';
+  country: string;
+  industry: string;
+}): Promise<void> {
+  const isIndividual = opts.type === 'Individual';
+  const url = isIndividual ? '/api/v1/clients/individual' : '/api/v1/clients/entity';
+  const payload: Record<string, unknown> = isIndividual
+    ? {
+        first_name: opts.name.split(' ')[0] || opts.name || null,
+        last_name: opts.name.split(' ').slice(1).join(' ') || null,
+        nationality: opts.country || null,
+        occupation: opts.industry || null,
+      }
+    : {
+        legal_name: opts.name || 'Unnamed Entity',
+        entity_type: opts.type.toLowerCase(),
+        incorporation_country: opts.country || null,
+        business_activity: opts.industry || null,
+      };
+  try {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) {
+      const detail = await res.text();
+      console.error('Create client failed', res.status, detail);
+      toast.error(`Saved locally, but backend record failed (${res.status})`);
+      return;
+    }
+    const client = await res.json();
+    toast.success(`Backend client record created (ID ${client.id ?? '—'})`);
+  } catch (err) {
+    console.error('Create client request error', err);
+    toast.error('Network error saving client to backend');
+  }
+}
+
 function emptyOnboardDocs(): OnboardDocSlot[] {
   return ONBOARD_DOCUMENT_SLOTS.map((s) => ({
     slotId: s.id,
@@ -235,6 +283,14 @@ export function KYCDashboardOverview({ onViewClient, onBack }: KYCDashboardOverv
 
     try {
       ClientsDB.addClient(newClient);
+
+      // Create the real backend Client record (individual or entity).
+      void persistOnboardToBackend({
+        name: newClientName,
+        type: newClientType,
+        country: newClientCountry,
+        industry: newClientIndustry,
+      });
 
       // Persist uploaded document metadata for this client
       try {
