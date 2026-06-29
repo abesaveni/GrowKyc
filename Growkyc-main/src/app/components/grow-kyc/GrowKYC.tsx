@@ -59,6 +59,7 @@ import { ClientReview } from './ClientReview';
 import { ClientOnboarding } from '../kyc/ClientOnboarding';
 import { ClientOnboardingWizard } from '../kyc/ClientOnboardingWizard';
 import { AdminKYCReview } from '../admin/AdminKYCReview';
+import { SubmitKYC } from '../kyc/SubmitKYC';
 import { HealthCheckDashboard } from './HealthCheckDashboard';
 import { EnterpriseUpgradeHub } from './EnterpriseUpgradeHub';
 import { KYCClientDetails } from './KYCClientDetails';
@@ -86,6 +87,7 @@ type View =
   | 'client_onboarding'
   | 'entity_onboarding'
   | 'kyc_review'
+  | 'kyc_submit'
   | 'system_settings'
   | 'integration_hub'
   | 'health_check'
@@ -133,6 +135,7 @@ const getRoleSearchItems = (role: ViewRole): SearchSuggestionItem[] => {
       { label: 'Client Onboarding', type: 'page', icon: Users, view: 'client_onboarding' },
       { label: 'Entity Onboarding', type: 'page', icon: Briefcase, view: 'entity_onboarding' },
       { label: 'KYC Review', type: 'page', icon: Eye, view: 'kyc_review' },
+      { label: 'Submit KYC', type: 'page', icon: Shield, view: 'kyc_submit' },
       { label: 'Alpha Holdings Pty Ltd', type: 'client', icon: Users, view: 'client_detail', id: 'C001' },
       { label: 'John Smith', type: 'client', icon: Users, view: 'client_detail', id: 'C002' },
       { label: 'EDD Investigation - Alpha Holdings', type: 'case', icon: FileText, view: 'case_detail', id: 'CASE-001' },
@@ -296,6 +299,7 @@ const VIEW_TO_PATH_SUFFIX: Partial<Record<View, string>> = {
   client_onboarding: '/client-onboarding',
   entity_onboarding: '/entity-onboarding',
   kyc_review: '/kyc-review',
+  kyc_submit: '/kyc-submit',
   system_settings: '/settings',
   integration_hub: '/integrations',
   health_check: '/health',
@@ -324,6 +328,7 @@ const PATH_SUFFIX_TO_VIEW: Record<string, View> = {
   '/client-onboarding': 'client_onboarding',
   '/entity-onboarding': 'entity_onboarding',
   '/kyc-review': 'kyc_review',
+  '/kyc-submit': 'kyc_submit',
   '/settings': 'system_settings',
   '/integrations': 'integration_hub',
   '/health': 'health_check',
@@ -1194,6 +1199,19 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
                           </button>
                         )}
 
+                        {/* 1d. Submit KYC (client self-service, live API) */}
+                        <button
+                          onClick={() => {
+                            setIsMoreDropdownOpen(false);
+                            if (!selectedRole) return;
+                            navigate(`/${rolePath}/kyc-submit`);
+                          }}
+                          className="w-full text-left text-gray-700 hover:bg-gray-50 flex items-center gap-3 px-4 py-2.5 text-sm font-semibold transition-colors"
+                        >
+                          <Shield className="w-4 h-4 text-gray-500 flex-shrink-0" />
+                          <span className="flex-1">Submit KYC</span>
+                        </button>
+
                         {/* 2. Action Items */}
                         <button
                           onClick={() => {
@@ -1722,6 +1740,13 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
           <div className="p-6">
             <AdminKYCReview onNavigate={(_page, id) => { if (id) { setSelectedClientId(id); } }} />
           </div>
+        )}
+        {currentView === 'kyc_submit' && (
+          <SubmitKYC onBack={() => {
+            if (selectedRole === 'partner') setCurrentView('partner_dashboard');
+            else if (selectedRole === 'auditor') setCurrentView('audit_dashboard');
+            else setCurrentView('compliance_dashboard');
+          }} />
         )}
         {currentView === 'entity_onboarding' && (
           <ClientOnboardingWizard
