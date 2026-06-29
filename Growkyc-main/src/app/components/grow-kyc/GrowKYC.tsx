@@ -1048,6 +1048,18 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
                   <span>Dashboard</span>
                 </Button>
 
+                {authRoleValue === 'Admin' && (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => navigate(`/${rolePath}/user-management`)}
+                    className="font-semibold text-white hover:bg-white/10 px-2 3xl:px-3 text-xs 3xl:text-sm h-9 flex items-center justify-center flex-shrink-0"
+                  >
+                    <Users className="w-4 h-4 mr-1.5 flex-shrink-0" />
+                    <span>User Management</span>
+                  </Button>
+                )}
+
                 <Button
                   variant="ghost"
                   size="sm"
@@ -1276,6 +1288,21 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
               <Home className="w-5 h-5 mr-3" />
               Dashboard
             </Button>
+
+            {authRoleValue === 'Admin' && (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => {
+                  navigate(`/${rolePath}/user-management`);
+                  setIsMobileMenuOpen(false);
+                }}
+                className="w-full justify-start text-white hover:bg-white/10 py-3 text-base"
+              >
+                <Users className="w-5 h-5 mr-3" />
+                User Management
+              </Button>
+            )}
 
             <Button
               variant="ghost"
