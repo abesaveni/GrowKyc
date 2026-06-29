@@ -219,6 +219,34 @@ const GROW_KYC_TO_IMFO_ROLE: Record<ViewRole, string> = {
   analyst: 'investment-analyst',
 };
 
+// Map the authenticated user's canonical backend role to a compliance ViewRole,
+// so each role lands on its own dashboard instead of the persona picker.
+const CANONICAL_TO_VIEW_ROLE: Record<string, ViewRole> = {
+  Partner: 'partner',
+  Managing_Partner: 'partner',
+  Analyst: 'analyst',
+  AML_Analyst: 'analyst',
+  Agent: 'analyst',
+  Compliance_Officer: 'compliance_officer',
+  Senior_Compliance_Officer: 'compliance_officer',
+  Head_of_Compliance: 'compliance_officer',
+  MLRO: 'compliance_officer',
+  Admin: 'compliance_officer',
+  User: 'compliance_officer', // Client fallback (dedicated client portal is App-level)
+};
+
+function canonicalRoleToViewRole(role?: string | null): ViewRole {
+  if (!role) return 'compliance_officer';
+  return CANONICAL_TO_VIEW_ROLE[role] || 'compliance_officer';
+}
+
+const VIEW_ROLE_TO_DASHBOARD: Record<ViewRole, View> = {
+  compliance_officer: 'compliance_dashboard',
+  partner: 'partner_dashboard',
+  auditor: 'audit_dashboard',
+  analyst: 'compliance_dashboard',
+};
+
 // Map each internal view to its URL suffix (WITHOUT role)
 const VIEW_TO_PATH_SUFFIX: Partial<Record<View, string>> = {
   role_selection: '/',
@@ -279,7 +307,9 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
   const navigate = useNavigate();
   const location = useLocation();
   const { role: urlRole, view: urlView } = useParams();
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
+  // The authenticated user's role drives their landing (no persona picker).
+  const authViewRole = canonicalRoleToViewRole(roleOverride ?? (user?.role as string | undefined));
 
   const [currentView, setCurrentView] = useState<View>(() => {
     if (urlRole && PATH_TO_ROLE[urlRole]) {
@@ -288,10 +318,11 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
       if (internalRole === 'auditor') return 'audit_dashboard';
       return 'compliance_dashboard';
     }
-    return 'role_selection';
+    // No role in the URL: land on the authenticated role's dashboard.
+    return VIEW_ROLE_TO_DASHBOARD[authViewRole];
   });
   const [selectedRole, setSelectedRole] = useState<ViewRole | null>(
-    urlRole ? PATH_TO_ROLE[urlRole] || null : null
+    urlRole ? PATH_TO_ROLE[urlRole] || null : authViewRole
   );
   const [selectedClientId, setSelectedClientId] = useState<string | null>(null);
   const [selectedCaseId, setSelectedCaseId] = useState<string | null>(null);
@@ -577,7 +608,9 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
 
     // Handle root and architecture
     if (pathname === '/') {
-      if (currentView !== 'role_selection') setCurrentView('role_selection');
+      // Land on the authenticated role's dashboard instead of the persona picker.
+      const rolePath = ROLE_TO_PATH[authViewRole] || 'compliance';
+      navigate(`/${rolePath}/dashboard`, { replace: true });
       return;
     }
     if (pathname === '/architecture') {
