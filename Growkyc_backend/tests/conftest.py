@@ -23,10 +23,16 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
 
 from core.enums import UserRole
+from core.limiter import limiter
 from core.security import hash_password
 from database import get_db
 from main import app
 from models import Base, User
+
+# Disable rate limiting in tests: the TestClient shares one source IP, so the
+# per-minute auth/endpoint limits would otherwise trip (HTTP 429) across the
+# suite. This only affects test runs (conftest is pytest-only).
+limiter.enabled = False
 
 # Use in-memory SQLite for testing
 SQLALCHEMY_TEST_DATABASE_URL = "sqlite:///:memory:"
