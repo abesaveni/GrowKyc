@@ -54,6 +54,21 @@ def _bind_tenant(current_user: User) -> None:
         set_tenant_id(current_user.tenant_id)
 
 
+def _notify(db: Session, user: User, title: str, message: str) -> None:
+    """Best-effort in-app notification for the acting user. Never blocks the
+    primary operation."""
+    try:
+        from core.enums import NotificationType
+        from services.notification_service import NotificationService
+
+        NotificationService(db).create_notification(
+            user_id=user.id, title=title, message=message,
+            notif_type=NotificationType.SYSTEM_ALERT,
+        )
+    except Exception as e:  # noqa: BLE001
+        logger.warning(f"notification emit failed: {e}")
+
+
 class AlertCreate(BaseModel):
     client_id: int
     alert_type: str
@@ -206,6 +221,8 @@ async def escalate_alert_to_case(
     try:
         case_id = _open_case_for_alert(db, alert, current_user)
         db.commit()
+        _notify(db, current_user, "Alert escalated to case",
+                f"Alert #{alert.id} ({alert.alert_type}) opened investigation case #{case_id}.")
         return {"alert_id": alert.id, "case_id": case_id, "status": alert.status}
     except Exception as e:
         db.rollback()

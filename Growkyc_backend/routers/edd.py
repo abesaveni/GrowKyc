@@ -97,6 +97,16 @@ async def initiate_edd(
         triggered_by_user_id=current_user.id,
         initial_risk_score=body.initial_risk_score,
     )
+    try:
+        from core.enums import NotificationType
+        from services.notification_service import NotificationService
+        NotificationService(db).create_notification(
+            user_id=current_user.id, title="EDD initiated",
+            message=f"EDD workflow #{edd.id} initiated for client {body.client_id} ({body.trigger_reason}).",
+            notif_type=NotificationType.SYSTEM_ALERT,
+        )
+    except Exception:  # noqa: BLE001
+        pass
     return {
         "edd_id": edd.id,
         "status": edd.status,

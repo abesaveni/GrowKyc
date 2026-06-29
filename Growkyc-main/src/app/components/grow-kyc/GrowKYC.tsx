@@ -576,7 +576,33 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
   ].map(n => ({ ...n, read: readIds.includes(n.id) ? true : n.read }));
   });
 
-  const filteredNotifications = notifications.filter(n => {
+  // Pull real, per-user notifications from the API and merge them in.
+  useEffect(() => {
+    const token = sessionStorage.getItem('growkyc_token');
+    if (!token) return;
+    fetch('/api/v1/notifications?limit=20', { headers: { Authorization: `Bearer ${token}` } })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (!data?.items?.length) return;
+        const mapped = data.items.map((n: any) => ({
+          id: `api-${n.id}`,
+          realId: n.id,
+          real: true,
+          title: n.title,
+          desc: n.message,
+          type: n.type === 'kyc_rejected' ? 'error' : n.type === 'system_alert' ? 'critical' : 'action',
+          time: n.created_at ? new Date(n.created_at).toLocaleString() : '',
+          roleRestricted: currentUser.title,
+          read: n.status !== 'unread',
+        }));
+        setNotifications((prev: any[]) => [...mapped, ...prev.filter((p) => !p.real)]);
+      })
+      .catch(() => {});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const filteredNotifications = notifications.filter((n: any) => {
+    if (n.real) return true; // real API notifications already belong to this user
     if (currentUser.title === 'Head of Compliance') {
       return n.roleRestricted === 'Head of Compliance';
     } else {
@@ -586,10 +612,16 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
 
   const notificationsCount = filteredNotifications.filter(n => !n.read).length;
 
-  const handleNotificationAction = (notif: typeof notifications[0]) => {
+  const handleNotificationAction = (notif: any) => {
     setIsNotificationPanelOpen(false);
     persistReadId(notif.id);
     setNotifications(prev => prev.map(n => n.id === notif.id ? { ...n, read: true } : n));
+    if (notif.real && notif.realId) {
+      const token = sessionStorage.getItem('growkyc_token');
+      fetch(`/api/v1/notifications/${notif.realId}/read`, {
+        method: 'POST', headers: token ? { Authorization: `Bearer ${token}` } : {},
+      }).catch(() => {});
+    }
 
     if (notif.actionView === 'client_review' && notif.actionId) {
       if (selectedRole) {
@@ -608,13 +640,17 @@ export function GrowKYC({ onBack, roleOverride }: GrowKYCProps) {
   };
 
   const handleMarkAllNotificationsRead = () => {
-    setNotifications(prev => prev.map(n => {
-      const isCurrentRole = currentUser.title === 'Head of Compliance'
+    setNotifications(prev => prev.map((n: any) => {
+      const isCurrentRole = n.real || (currentUser.title === 'Head of Compliance'
         ? n.roleRestricted === 'Head of Compliance'
-        : n.roleRestricted === 'Compliance Officer';
+        : n.roleRestricted === 'Compliance Officer');
       if (isCurrentRole) persistReadId(n.id);
       return isCurrentRole ? { ...n, read: true } : n;
     }));
+    const token = sessionStorage.getItem('growkyc_token');
+    fetch('/api/v1/notifications/read-all', {
+      method: 'POST', headers: token ? { Authorization: `Bearer ${token}` } : {},
+    }).catch(() => {});
   };
 
   // ── URL ↔ View synchronisation ──────────────────────────────────────────

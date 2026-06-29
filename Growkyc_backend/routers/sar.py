@@ -64,6 +64,16 @@ async def create_sar(
             transaction_details=data.transaction_details,
             narrative=data.narrative,
         )
+        try:
+            from core.enums import NotificationType
+            from services.notification_service import NotificationService
+            NotificationService(db).create_notification(
+                user_id=current_user.id, title="SAR raised",
+                message=f"SAR #{sar.id} raised for client {data.client_id}.",
+                notif_type=NotificationType.SYSTEM_ALERT,
+            )
+        except Exception:  # noqa: BLE001
+            pass
         return {"id": sar.id, "status": sar.status, "raised_at": sar.raised_at}
     except DatabaseError as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
