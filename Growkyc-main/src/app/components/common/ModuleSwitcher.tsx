@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { LayoutGrid } from 'lucide-react';
 
 function getRuntimeEnv(): Record<string, string | boolean | undefined> {
@@ -32,8 +32,8 @@ export function ModuleSwitcher({ currentModule, onSwitchModule, className = '' }
     return (
       <div className={`fixed top-4 right-4 z-50 ${className}`}>
         <div className="flex items-center gap-2 bg-white border-2 border-red-300 rounded-lg shadow-xl px-3 py-2">
-          <LayoutGrid className="w-4 h-4 text-red-400" />
-          <span className="text-sm font-semibold text-red-300">Production Lock: Grow KYC only</span>
+          <LayoutGrid className="w-4 h-4 text-red-600" />
+          <span className="text-sm font-semibold text-red-700">Production Lock: Grow KYC only</span>
         </div>
       </div>
     );
@@ -41,12 +41,12 @@ export function ModuleSwitcher({ currentModule, onSwitchModule, className = '' }
 
   return (
     <div className={`fixed top-4 right-4 z-50 ${className}`}>
-      <div className="flex items-center gap-2 bg-white border-2 border-white/10 rounded-lg shadow-xl px-3 py-2">
-        <LayoutGrid className="w-4 h-4 text-slate-300" />
+      <div className="flex items-center gap-2 bg-white border-2 border-gray-300 rounded-lg shadow-xl px-3 py-2">
+        <LayoutGrid className="w-4 h-4 text-gray-600" />
         <select
           value={currentModule || 'Grow MIP'}
           onChange={(e) => onSwitchModule(e.target.value)}
-          className="bg-transparent text-sm font-semibold text-slate-300 focus:outline-none cursor-pointer pr-8"
+          className="bg-transparent text-sm font-semibold text-gray-700 focus:outline-none cursor-pointer pr-8"
         >
           <option value="Grow MIP">Grow MIP</option>
           <option value="grow_kyc">Grow KYC</option>

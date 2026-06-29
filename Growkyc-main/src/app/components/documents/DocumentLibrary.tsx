@@ -162,25 +162,25 @@ export function DocumentLibrary() {
   const getFileIcon = (type: string) => {
     switch (type) {
       case 'pdf':
-        return <FileText className="w-5 h-5 text-red-400" />;
+        return <FileText className="w-5 h-5 text-red-600" />;
       case 'image':
-        return <ImageIcon className="w-5 h-5 text-blue-400" />;
+        return <ImageIcon className="w-5 h-5 text-blue-600" />;
       case 'excel':
-        return <FileType className="w-5 h-5 text-green-400" />;
+        return <FileType className="w-5 h-5 text-green-600" />;
       case 'word':
-        return <FileText className="w-5 h-5 text-blue-400" />;
+        return <FileText className="w-5 h-5 text-blue-600" />;
       default:
-        return <File className="w-5 h-5 text-slate-300" />;
+        return <File className="w-5 h-5 text-gray-600" />;
     }
   };
 
   const getCategoryBadge = (category: string) => {
     const colors = {
-      contract: 'bg-purple-500/15 text-purple-300 border border-purple-500/30',
-      valuation: 'bg-blue-500/15 text-blue-300 border border-blue-500/30',
-      inspection: 'bg-teal-500/15 text-teal-300 border border-teal-500/30',
-      kyc: 'bg-indigo-500/15 text-indigo-300 border border-indigo-500/30',
-      other: 'bg-white/5 text-slate-100 border border-white/10'
+      contract: 'bg-purple-100 text-purple-800 border border-purple-200',
+      valuation: 'bg-blue-100 text-blue-800 border border-blue-200',
+      inspection: 'bg-teal-100 text-teal-800 border border-teal-200',
+      kyc: 'bg-indigo-100 text-indigo-800 border border-indigo-200',
+      other: 'bg-gray-100 text-gray-800 border border-gray-200'
     };
     return (
       <span className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${colors[category as keyof typeof colors]}`}>
@@ -192,13 +192,13 @@ export function DocumentLibrary() {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'Certified':
-        return <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-green-500/15 text-green-300 border border-green-500/30">Certified</span>;
+        return <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-green-100 text-green-800 border border-green-200">Certified</span>;
       case 'Uncertified':
-        return <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-500/15 text-amber-300 border border-amber-500/30">Uncertified</span>;
+        return <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-800 border border-amber-200">Uncertified</span>;
       case 'Expired':
-        return <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-red-500/15 text-red-300 border border-red-500/30">Expired</span>;
+        return <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-red-100 text-red-800 border border-red-200">Expired</span>;
       case 'Rejected':
-        return <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-white/5 text-slate-100 border border-white/10">Rejected</span>;
+        return <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-gray-100 text-gray-800 border border-gray-300">Rejected</span>;
       default:
         return null;
     }
@@ -210,12 +210,12 @@ export function DocumentLibrary() {
     const daysUntil = Math.floor((date.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
     
     if (daysUntil < 0) {
-      return <span className="text-red-400 font-medium">Expired {format(date, 'dd MMM yyyy')}</span>;
+      return <span className="text-red-600 font-medium">Expired {format(date, 'dd MMM yyyy')}</span>;
     }
     if (daysUntil <= 30) {
-      return <span className="text-amber-400 font-medium">Expiring {format(date, 'dd MMM yyyy')}</span>;
+      return <span className="text-amber-600 font-medium">Expiring {format(date, 'dd MMM yyyy')}</span>;
     }
-    return <span className="text-slate-300">Expires {format(date, 'dd MMM yyyy')}</span>;
+    return <span className="text-gray-600">Expires {format(date, 'dd MMM yyyy')}</span>;
   };
 
   const handleToggleStar = (docId: string) => {
@@ -367,27 +367,12 @@ export function DocumentLibrary() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-slate-300 mb-1">Total Documents</p>
-                <p className="text-3xl font-semibold text-slate-100">{documents.length}</p>
-                <p className="text-xs text-slate-400 mt-1">All files</p>
+                <p className="text-sm text-gray-600 mb-1">Total Documents</p>
+                <p className="text-3xl font-semibold text-gray-900">{documents.length}</p>
+                <p className="text-xs text-gray-500 mt-1">All files</p>
               </div>
-              <div className="p-3 bg-blue-500/10 rounded-lg">
-                <FileText className="w-6 h-6 text-blue-400" />
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-slate-300 mb-1">Storage Used</p>
-                <p className="text-3xl font-semibold text-slate-100">{formatFileSize(totalSize)}</p>
-                <p className="text-xs text-slate-400 mt-1">Total size</p>
-              </div>
-              <div className="p-3 bg-green-500/10 rounded-lg">
-                <FolderOpen className="w-6 h-6 text-green-400" />
+              <div className="p-3 bg-blue-50 rounded-lg">
+                <FileText className="w-6 h-6 text-blue-600" />
               </div>
             </div>
           </CardContent>
@@ -397,12 +382,12 @@ export function DocumentLibrary() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-slate-300 mb-1">Starred</p>
-                <p className="text-3xl font-semibold text-slate-100">{starredCount}</p>
-                <p className="text-xs text-slate-400 mt-1">Favorites</p>
+                <p className="text-sm text-gray-600 mb-1">Storage Used</p>
+                <p className="text-3xl font-semibold text-gray-900">{formatFileSize(totalSize)}</p>
+                <p className="text-xs text-gray-500 mt-1">Total size</p>
               </div>
-              <div className="p-3 bg-amber-500/10 rounded-lg">
-                <Star className="w-6 h-6 text-amber-400" />
+              <div className="p-3 bg-green-50 rounded-lg">
+                <FolderOpen className="w-6 h-6 text-green-600" />
               </div>
             </div>
           </CardContent>
@@ -412,14 +397,29 @@ export function DocumentLibrary() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-slate-300 mb-1">This Week</p>
-                <p className="text-3xl font-semibold text-slate-100">
+                <p className="text-sm text-gray-600 mb-1">Starred</p>
+                <p className="text-3xl font-semibold text-gray-900">{starredCount}</p>
+                <p className="text-xs text-gray-500 mt-1">Favorites</p>
+              </div>
+              <div className="p-3 bg-amber-50 rounded-lg">
+                <Star className="w-6 h-6 text-amber-600" />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-gray-600 mb-1">This Week</p>
+                <p className="text-3xl font-semibold text-gray-900">
                   {documents.filter(d => d.uploadedDate > new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)).length}
                 </p>
-                <p className="text-xs text-slate-400 mt-1">Recently added</p>
+                <p className="text-xs text-gray-500 mt-1">Recently added</p>
               </div>
-              <div className="p-3 bg-purple-500/10 rounded-lg">
-                <Upload className="w-6 h-6 text-purple-400" />
+              <div className="p-3 bg-purple-50 rounded-lg">
+                <Upload className="w-6 h-6 text-purple-600" />
               </div>
             </div>
           </CardContent>
@@ -448,7 +448,7 @@ export function DocumentLibrary() {
               <select
                 value={categoryFilter}
                 onChange={(e) => setCategoryFilter(e.target.value)}
-                className="px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="all">All Categories</option>
                 <option value="contract">Contract</option>
@@ -462,7 +462,7 @@ export function DocumentLibrary() {
               <select
                 value={typeFilter}
                 onChange={(e) => setTypeFilter(e.target.value)}
-                className="px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="all">All Types</option>
                 <option value="pdf">PDF</option>
@@ -520,24 +520,24 @@ export function DocumentLibrary() {
               {filteredDocuments.map((doc) => (
                 <div
                   key={doc.id}
-                  className="flex items-center justify-between p-4 border rounded-lg hover:bg-white/5 transition-colors"
+                  className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition-colors"
                 >
                   <div className="flex items-center gap-4 flex-1 min-w-0">
-                    <div className="flex-shrink-0 p-3 bg-white/5 rounded-lg">
+                    <div className="flex-shrink-0 p-3 bg-gray-50 rounded-lg">
                       {getFileIcon(doc.type)}
                     </div>
                     
                     <div className="flex-1 min-w-0 grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
                       <div className="md:col-span-4">
                         <div className="flex items-center gap-2 mb-1">
-                          <p className="font-semibold text-slate-100 truncate hover:text-blue-400 cursor-pointer transition-colors">{doc.name}</p>
+                          <p className="font-semibold text-gray-900 truncate hover:text-blue-600 cursor-pointer transition-colors">{doc.name}</p>
                           {doc.caseNumber && (
-                            <span className="text-xs text-slate-400 bg-white/5 px-2 py-0.5 rounded font-mono">
+                            <span className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded font-mono">
                               {doc.caseNumber}
                             </span>
                           )}
                         </div>
-                        <div className="flex items-center gap-3 text-xs text-slate-400">
+                        <div className="flex items-center gap-3 text-xs text-gray-500">
                           <span>{formatFileSize(doc.size)}</span>
                           <span className="w-1 h-1 rounded-full bg-gray-300"></span>
                           <span>By {doc.uploadedBy}</span>
@@ -547,24 +547,24 @@ export function DocumentLibrary() {
                       </div>
 
                       <div className="md:col-span-2 flex flex-col justify-center mt-2 md:mt-0">
-                        <span className="text-xs text-slate-400 mb-1">Category</span>
+                        <span className="text-xs text-gray-500 mb-1">Category</span>
                         <div className="flex items-start">
                           {getCategoryBadge(doc.category)}
                         </div>
                       </div>
 
                       <div className="md:col-span-2 flex flex-col mt-2 md:mt-0">
-                        <span className="text-xs text-slate-400 mb-1">Expiry Status</span>
+                        <span className="text-xs text-gray-500 mb-1">Expiry Status</span>
                         <div className="text-sm">
                           {getExpiryDisplay(doc.expiryDate)}
                         </div>
                       </div>
 
                       <div className="md:col-span-2 flex flex-col items-start mt-2 md:mt-0">
-                        <span className="text-xs text-slate-400 mb-1">Status</span>
+                        <span className="text-xs text-gray-500 mb-1">Status</span>
                         <div className="mb-1">{getStatusBadge(doc.status)}</div>
                         {(doc.status === 'Certified' || doc.verifiedBy) && (
-                          <div className="text-[10px] text-slate-400 leading-tight">
+                          <div className="text-[10px] text-gray-500 leading-tight">
                             <span>By {doc.verifiedBy}</span>
                             <br />
                             <span>{doc.verifiedDate ? format(doc.verifiedDate, 'dd MMM yy') : ''}</span>
@@ -573,7 +573,7 @@ export function DocumentLibrary() {
                       </div>
 
                       <div className="md:col-span-2 flex flex-col items-start mt-2 md:mt-0">
-                        <span className="text-xs text-slate-400 mb-1">Verify Action</span>
+                        <span className="text-xs text-gray-500 mb-1">Verify Action</span>
                         {doc.status === 'Uncertified' ? (
                           <Button 
                             size="sm" 
@@ -587,7 +587,7 @@ export function DocumentLibrary() {
                           <Button 
                             size="sm" 
                             variant="outline"
-                            className="h-7 px-3 text-xs text-slate-300 hover:bg-white/5 hover:text-slate-100 w-full md:w-auto"
+                            className="h-7 px-3 text-xs text-gray-600 hover:bg-gray-100 hover:text-gray-900 w-full md:w-auto"
                             onClick={() => handleToggleVerification(doc.id, doc.status)}
                           >
                             <X className="w-3 h-3 mr-1.5" />
@@ -603,7 +603,7 @@ export function DocumentLibrary() {
                       variant="ghost"
                       size="sm"
                       onClick={() => handleToggleStar(doc.id)}
-                      className={doc.starred ? 'text-amber-400' : 'text-gray-400'}
+                      className={doc.starred ? 'text-amber-600' : 'text-gray-400'}
                     >
                       {doc.starred ? (
                         <Star className="w-4 h-4 fill-current" />
@@ -640,7 +640,7 @@ export function DocumentLibrary() {
                       variant="ghost"
                       size="sm"
                       onClick={() => handleDeleteClick(doc)}
-                      className="text-red-400 hover:text-red-300 hover:bg-red-500/10"
+                      className="text-red-600 hover:text-red-700 hover:bg-red-50"
                     >
                       <Trash2 className="w-4 h-4" />
                     </Button>
@@ -653,16 +653,16 @@ export function DocumentLibrary() {
       </Card>
 
       {/* Info Card */}
-      <Card className="border-blue-500/30 bg-blue-500/10">
+      <Card className="border-blue-200 bg-blue-50">
         <CardContent className="p-4">
           <div className="flex items-start gap-3">
-            <FolderOpen className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+            <FolderOpen className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
             <div>
-              <p className="text-sm font-semibold text-blue-300 mb-1">Document Management</p>
-              <p className="text-sm text-blue-300">
+              <p className="text-sm font-semibold text-blue-900 mb-1">Document Management</p>
+              <p className="text-sm text-blue-800">
                 All documents are encrypted and stored securely. Documents are retained per Australian compliance requirements.
               </p>
-              <div className="mt-2 text-xs text-blue-300 space-y-1">
+              <div className="mt-2 text-xs text-blue-700 space-y-1">
                 <p>• Maximum file size: 50MB per document</p>
                 <p>• Supported formats: PDF, DOCX, XLSX, images (JPG, PNG)</p>
                 <p>• Version control and audit trail maintained</p>
@@ -687,9 +687,9 @@ export function DocumentLibrary() {
       {isUploadModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
           <Card className="w-full max-w-md shadow-2xl animate-in fade-in zoom-in-95 duration-200">
-            <CardHeader className="flex flex-row items-center justify-between border-b bg-white/5/50 pb-4">
+            <CardHeader className="flex flex-row items-center justify-between border-b bg-gray-50/50 pb-4">
               <CardTitle className="text-xl font-bold flex items-center gap-2">
-                <UploadCloud className="w-5 h-5 text-blue-400" />
+                <UploadCloud className="w-5 h-5 text-blue-600" />
                 Upload Document
               </CardTitle>
               <Button variant="ghost" size="sm" onClick={() => setIsUploadModalOpen(false)} className="h-8 w-8 p-0 rounded-full">
@@ -700,7 +700,7 @@ export function DocumentLibrary() {
               
               {/* Drag and Drop Zone */}
               <div 
-                className={`border-2 border-dashed rounded-xl p-8 text-center transition-colors ${selectedFile ? 'border-blue-400 bg-blue-500/10/50' : 'border-white/10 hover:border-blue-400 hover:bg-white/5'}`}
+                className={`border-2 border-dashed rounded-xl p-8 text-center transition-colors ${selectedFile ? 'border-blue-400 bg-blue-50/50' : 'border-gray-300 hover:border-blue-400 hover:bg-gray-50'}`}
               >
                 <input 
                   type="file" 
@@ -709,19 +709,19 @@ export function DocumentLibrary() {
                   onChange={handleFileSelect}
                 />
                 <label htmlFor="file-upload" className="cursor-pointer flex flex-col items-center gap-3">
-                  <div className={`p-3 rounded-full ${selectedFile ? 'bg-blue-500/15 text-blue-400' : 'bg-white/5 text-slate-400'}`}>
+                  <div className={`p-3 rounded-full ${selectedFile ? 'bg-blue-100 text-blue-600' : 'bg-gray-100 text-gray-500'}`}>
                     {selectedFile ? <FileText className="w-6 h-6" /> : <UploadCloud className="w-6 h-6" />}
                   </div>
                   <div>
                     {selectedFile ? (
                       <>
-                        <p className="font-semibold text-slate-100">{selectedFile.name}</p>
-                        <p className="text-sm text-slate-400">{formatFileSize(selectedFile.size)}</p>
+                        <p className="font-semibold text-gray-900">{selectedFile.name}</p>
+                        <p className="text-sm text-gray-500">{formatFileSize(selectedFile.size)}</p>
                       </>
                     ) : (
                       <>
-                        <p className="font-semibold text-slate-100">Click to upload or drag and drop</p>
-                        <p className="text-sm text-slate-400">SVG, PNG, JPG, PDF or DOCX (max. 50MB)</p>
+                        <p className="font-semibold text-gray-900">Click to upload or drag and drop</p>
+                        <p className="text-sm text-gray-500">SVG, PNG, JPG, PDF or DOCX (max. 50MB)</p>
                       </>
                     )}
                   </div>
@@ -731,11 +731,11 @@ export function DocumentLibrary() {
               {/* Form Fields */}
               <div className="space-y-4">
                 <div className="space-y-1.5">
-                  <label className="text-sm font-medium text-slate-300">Document Category</label>
+                  <label className="text-sm font-medium text-gray-700">Document Category</label>
                   <select 
                     value={uploadCategory}
                     onChange={(e) => setUploadCategory(e.target.value as Document['category'])}
-                    className="w-full px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                   >
                     <option value="kyc">KYC / Identity</option>
                     <option value="contract">Contract / Agreement</option>
@@ -746,7 +746,7 @@ export function DocumentLibrary() {
                 </div>
                 
                 <div className="space-y-1.5">
-                  <label className="text-sm font-medium text-slate-300">Expiry Date (Optional)</label>
+                  <label className="text-sm font-medium text-gray-700">Expiry Date (Optional)</label>
                   <Input 
                     type="date" 
                     value={uploadExpiry}

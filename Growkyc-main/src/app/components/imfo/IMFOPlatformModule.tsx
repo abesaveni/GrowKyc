@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useState } from 'react';
+﻿import React, { Suspense, lazy, useState } from 'react';
 import { Button } from '../ui/button';
 import {
   Home,
@@ -282,9 +282,9 @@ export function IMFOPlatformModule({ onSwitchModule, initialRole = 'fund-account
   };
 
   return (
-    <div className="min-h-screen bg-white/5">
+    <div className="min-h-screen bg-gray-50">
       {/* Top Navigation Bar */}
-      <nav className="bg-white border-b border-white/10 fixed w-full top-0 z-50">
+      <nav className="bg-white border-b border-gray-200 fixed w-full top-0 z-50">
         <div className="px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo and Brand */}
@@ -294,33 +294,33 @@ export function IMFOPlatformModule({ onSwitchModule, initialRole = 'fund-account
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
                 {mobileMenuOpen ? (
-                  <X className="w-6 h-6 text-slate-300" />
+                  <X className="w-6 h-6 text-gray-600" />
                 ) : (
-                  <Menu className="w-6 h-6 text-slate-300" />
+                  <Menu className="w-6 h-6 text-gray-600" />
                 )}
               </button>
               
               <div className="flex items-center gap-3">
                 <img src={logo} alt="IMFO" className="h-8" />
                 <div>
-                  <h1 className="text-lg font-semibold text-slate-100">IMFO Platform</h1>
-                  <p className="text-xs text-slate-400">Investor Management & Fund Operations</p>
+                  <h1 className="text-lg font-semibold text-gray-900">IMFO Platform</h1>
+                  <p className="text-xs text-gray-500">Investor Management & Fund Operations</p>
                 </div>
               </div>
             </div>
 
             {/* Center - Tenant and Fund Selector */}
             <div className="hidden md:flex items-center gap-3">
-              <div className="flex items-center gap-2 px-3 py-2 bg-indigo-500/10 border border-indigo-500/30 rounded-lg">
-                <Building2 className="w-4 h-4 text-indigo-400" />
-                <select className="bg-transparent text-sm font-medium text-indigo-300 border-none focus:outline-none">
+              <div className="flex items-center gap-2 px-3 py-2 bg-indigo-50 border border-indigo-200 rounded-lg">
+                <Building2 className="w-4 h-4 text-indigo-600" />
+                <select className="bg-transparent text-sm font-medium text-indigo-900 border-none focus:outline-none">
                   <option>{selectedTenant}</option>
                 </select>
               </div>
               <ChevronDown className="w-4 h-4 text-gray-400" />
-              <div className="flex items-center gap-2 px-3 py-2 bg-blue-500/10 border border-blue-500/30 rounded-lg">
-                <Briefcase className="w-4 h-4 text-blue-400" />
-                <select className="bg-transparent text-sm font-medium text-blue-300 border-none focus:outline-none">
+              <div className="flex items-center gap-2 px-3 py-2 bg-blue-50 border border-blue-200 rounded-lg">
+                <Briefcase className="w-4 h-4 text-blue-600" />
+                <select className="bg-transparent text-sm font-medium text-blue-900 border-none focus:outline-none">
                   <option>{selectedFund}</option>
                   <option>Opportunity Fund II</option>
                   <option>SME Credit Fund</option>
@@ -337,7 +337,7 @@ export function IMFOPlatformModule({ onSwitchModule, initialRole = 'fund-account
                   setUserRole(e.target.value as IMFOPlatformRole);
                   setCurrentPage('dashboard');
                 }}
-                className="px-3 py-2 border border-indigo-300 rounded-lg text-xs font-medium text-indigo-300 bg-indigo-500/10 hover:bg-indigo-500/15 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="px-3 py-2 border border-indigo-300 rounded-lg text-xs font-medium text-indigo-700 bg-indigo-50 hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               >
                 <option value="spv-accountant">SPV Accountant</option>
                 <option value="fund-accountant">Fund Accountant</option>
@@ -355,7 +355,7 @@ export function IMFOPlatformModule({ onSwitchModule, initialRole = 'fund-account
               {onSwitchModule && (
                 <select
                   onChange={(e) => onSwitchModule(e.target.value)}
-                  className="px-3 py-2 border border-white/10 rounded-lg text-sm font-medium text-slate-300 bg-white hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="px-3 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   defaultValue="imfo"
                 >
                   <option value="Grow MIP">Switch to Grow MIP</option>
@@ -373,8 +373,8 @@ export function IMFOPlatformModule({ onSwitchModule, initialRole = 'fund-account
               
               <div className="flex items-center gap-3 pl-3 border-l">
                 <div className="text-right hidden sm:block">
-                  <p className="text-sm font-medium text-slate-100">{mockUser.name}</p>
-                  <p className="text-xs text-slate-400">{mockUser.email}</p>
+                  <p className="text-sm font-medium text-gray-900">{mockUser.name}</p>
+                  <p className="text-xs text-gray-500">{mockUser.email}</p>
                 </div>
                 <Avatar>
                   <AvatarFallback className="bg-indigo-600 text-white">

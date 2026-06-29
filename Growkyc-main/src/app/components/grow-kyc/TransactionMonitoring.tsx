@@ -280,7 +280,7 @@ export function TransactionMonitoring({ onBack, onOpenReferral, complianceOffice
   };
 
   return (
-    <div className="min-h-screen bg-[#0f172a]">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-gradient-to-r from-green-600 to-blue-600 border-b sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-6 py-4">
@@ -297,7 +297,7 @@ export function TransactionMonitoring({ onBack, onOpenReferral, complianceOffice
                 <p className="text-sm text-white/90">Real-Time AML Surveillance & Pattern Detection</p>
               </div>
             </div>
-            <Badge className="bg-[#1e293b] text-green-400 text-sm px-3 py-1">
+            <Badge className="bg-white text-green-600 text-sm px-3 py-1">
               <Zap className="w-4 h-4 mr-1" />
               {liveRefresh ? 'Live Monitoring Active' : 'Live Monitoring Paused'}
             </Badge>
@@ -321,7 +321,7 @@ export function TransactionMonitoring({ onBack, onOpenReferral, complianceOffice
             <Card>
               <CardContent className="p-4 grid grid-cols-1 lg:grid-cols-5 gap-3">
                 <div className="lg:col-span-2 relative">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                   <Input
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
@@ -364,22 +364,22 @@ export function TransactionMonitoring({ onBack, onOpenReferral, complianceOffice
               </CardContent>
             </Card>
 
-            <div className="flex items-center justify-between text-sm text-slate-300">
+            <div className="flex items-center justify-between text-sm text-gray-600">
               <span>{sortedFilteredAlerts.length} alert(s)</span>
               <Button variant="outline" size="sm" onClick={() => setLiveRefresh((v) => !v)}>
                 {liveRefresh ? 'Pause refresh' : 'Resume refresh'}
               </Button>
             </div>
 
-            {isLoading && <div className="p-6 bg-[#1e293b] rounded border">Loading alerts...</div>}
+            {isLoading && <div className="p-6 bg-white rounded border">Loading alerts...</div>}
             {error && (
-              <div className="p-4 bg-red-500/10 border border-red-500/30 rounded text-red-300 flex items-center gap-2">
+              <div className="p-4 bg-red-50 border border-red-200 rounded text-red-700 flex items-center gap-2">
                 <AlertCircle className="w-4 h-4" /> {error}
               </div>
             )}
 
             {!isLoading && visibleAlerts.length === 0 && (
-              <div className="p-10 bg-[#1e293b] rounded border text-center text-slate-300">
+              <div className="p-10 bg-white rounded border text-center text-gray-600">
                 No alerts match current filters.
               </div>
             )}
@@ -389,9 +389,9 @@ export function TransactionMonitoring({ onBack, onOpenReferral, complianceOffice
                 <Card 
                   key={alert.id}
                   className={`border-2 ${
-                    alert.riskScore >= 90 ? 'border-red-300 bg-red-500/10' :
-                    alert.riskScore >= 70 ? 'border-amber-300 bg-amber-500/10' :
-                    'border-blue-300 bg-blue-500/10'
+                    alert.riskScore >= 90 ? 'border-red-300 bg-red-50' :
+                    alert.riskScore >= 70 ? 'border-amber-300 bg-amber-50' :
+                    'border-blue-300 bg-blue-50'
                   }`}
                 >
                   <CardContent className="p-6">
@@ -399,55 +399,55 @@ export function TransactionMonitoring({ onBack, onOpenReferral, complianceOffice
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-3">
                           <AlertTriangle className={`w-6 h-6 ${
-                            alert.riskScore >= 90 ? 'text-red-400' :
-                            alert.riskScore >= 70 ? 'text-amber-400' :
-                            'text-blue-400'
+                            alert.riskScore >= 90 ? 'text-red-600' :
+                            alert.riskScore >= 70 ? 'text-amber-600' :
+                            'text-blue-600'
                           }`} />
                           <div>
-                            <h3 className="text-lg font-semibold text-white">{alert.client}</h3>
-                            <div className="text-sm text-slate-300">{alert.pattern}</div>
-                            <div className="text-xs text-slate-400 mt-1">Customer {alert.clientId} · Txn {alert.transactionId}</div>
+                            <h3 className="text-lg font-semibold text-gray-900">{alert.client}</h3>
+                            <div className="text-sm text-gray-600">{alert.pattern}</div>
+                            <div className="text-xs text-gray-500 mt-1">Customer {alert.clientId} · Txn {alert.transactionId}</div>
                           </div>
                           <Badge className={severityBadgeClass(alert.severity)}>
                             {alert.severity.toUpperCase()} · {alert.riskScore}/100
                           </Badge>
                         </div>
 
-                        <p className="text-sm text-white mb-4 p-3 bg-[#1e293b] rounded border">
+                        <p className="text-sm text-gray-800 mb-4 p-3 bg-white rounded border">
                           {alert.details}
                         </p>
 
                         <div className="grid grid-cols-4 gap-4 mb-4">
                           <div>
-                            <div className="text-sm text-slate-300">Transactions</div>
+                            <div className="text-sm text-gray-600">Transactions</div>
                             <div className="font-semibold">{alert.transactions}</div>
                           </div>
                           <div>
-                            <div className="text-sm text-slate-300">Total Amount</div>
-                            <div className="font-semibold text-green-400">
+                            <div className="text-sm text-gray-600">Total Amount</div>
+                            <div className="font-semibold text-green-600">
                               ${alert.totalAmount.toLocaleString()}
                             </div>
                           </div>
                           <div>
-                            <div className="text-sm text-slate-300">Timeframe</div>
+                            <div className="text-sm text-gray-600">Timeframe</div>
                             <div className="font-semibold">{alert.timeframe}</div>
                           </div>
                           <div>
-                            <div className="text-sm text-slate-300">Status</div>
+                            <div className="text-sm text-gray-600">Status</div>
                             <Badge variant="outline">{alert.status}</Badge>
                           </div>
                         </div>
 
                         {alert.autoAction !== 'None' && (
-                          <div className="p-3 bg-amber-500/15 rounded border border-amber-300 flex items-center gap-2">
-                            <Shield className="w-4 h-4 text-amber-400" />
-                            <span className="text-sm font-semibold text-amber-300">
+                          <div className="p-3 bg-amber-100 rounded border border-amber-300 flex items-center gap-2">
+                            <Shield className="w-4 h-4 text-amber-600" />
+                            <span className="text-sm font-semibold text-amber-900">
                               Auto Action: {alert.autoAction}
                             </span>
                           </div>
                         )}
 
-                        <div className="text-xs text-slate-400 mt-3">
+                        <div className="text-xs text-gray-500 mt-3">
                           Flagged: {new Date(alert.flaggedAt).toLocaleString('en-AU')}
                         </div>
                       </div>
@@ -492,7 +492,7 @@ export function TransactionMonitoring({ onBack, onOpenReferral, complianceOffice
               <Button variant="outline" size="sm" disabled={currentPage <= 1} onClick={() => setCurrentPage((p) => p - 1)}>
                 Previous
               </Button>
-              <span className="text-sm text-slate-300">Page {currentPage} of {totalPages}</span>
+              <span className="text-sm text-gray-600">Page {currentPage} of {totalPages}</span>
               <Button variant="outline" size="sm" disabled={currentPage >= totalPages} onClick={() => setCurrentPage((p) => p + 1)}>
                 Next
               </Button>
@@ -512,7 +512,7 @@ export function TransactionMonitoring({ onBack, onOpenReferral, complianceOffice
                 <div className="space-y-4">
                   {heatmapData.map((day, idx) => (
                     <div key={idx} className="flex items-center gap-4">
-                      <div className="w-24 text-sm font-medium text-slate-300">
+                      <div className="w-24 text-sm font-medium text-gray-700">
                         {new Date(day.date).toLocaleDateString('en-AU', {
                           month: 'short',
                           day: 'numeric'
@@ -523,15 +523,15 @@ export function TransactionMonitoring({ onBack, onOpenReferral, complianceOffice
                           <Progress 
                             value={day.riskScore} 
                             className={`h-8 ${
-                              day.riskScore >= 80 ? 'bg-red-500/15' :
-                              day.riskScore >= 50 ? 'bg-amber-500/15' :
-                              'bg-green-500/15'
+                              day.riskScore >= 80 ? 'bg-red-100' :
+                              day.riskScore >= 50 ? 'bg-amber-100' :
+                              'bg-green-100'
                             }`}
                           />
                           <span className={`font-bold text-lg ${
-                            day.riskScore >= 80 ? 'text-red-400' :
-                            day.riskScore >= 50 ? 'text-amber-400' :
-                            'text-green-400'
+                            day.riskScore >= 80 ? 'text-red-600' :
+                            day.riskScore >= 50 ? 'text-amber-600' :
+                            'text-green-600'
                           }`}>
                             {day.riskScore}
                           </span>

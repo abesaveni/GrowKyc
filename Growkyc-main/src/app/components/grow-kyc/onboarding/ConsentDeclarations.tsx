@@ -43,11 +43,11 @@ export function ConsentDeclarations({ entity, onComplete }: ConsentDeclarationsP
         </div>
       </CardHeader>
       <CardContent className="space-y-6">
-        <Card className="bg-blue-500/10 border-blue-500/30">
+        <Card className="bg-blue-50 border-blue-200">
           <CardContent className="p-4">
             <div className="flex items-start gap-3">
-              <AlertCircle className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
-              <div className="text-sm text-blue-300">
+              <AlertCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+              <div className="text-sm text-blue-900">
                 <p className="font-semibold mb-1">Legal Requirements</p>
                 <p>These declarations are required under the AML/CTF Act 2006 and other applicable legislation.</p>
               </div>
@@ -56,7 +56,7 @@ export function ConsentDeclarations({ entity, onComplete }: ConsentDeclarationsP
         </Card>
 
         <div className="space-y-4">
-          <div className="flex items-start gap-3 p-4 border rounded-lg hover:bg-white/5 transition-colors">
+          <div className="flex items-start gap-3 p-4 border rounded-lg hover:bg-gray-50 transition-colors">
             <Checkbox
               id="consent1"
               checked={consents.informationCorrect}
@@ -65,14 +65,14 @@ export function ConsentDeclarations({ entity, onComplete }: ConsentDeclarationsP
               }
             />
             <label htmlFor="consent1" className="text-sm cursor-pointer flex-1">
-              <span className="font-semibold text-white">I confirm the information provided is correct</span>
-              <p className="text-slate-300 mt-1">
+              <span className="font-semibold text-gray-900">I confirm the information provided is correct</span>
+              <p className="text-gray-600 mt-1">
                 I declare that all information provided is true and accurate to the best of my knowledge.
               </p>
             </label>
           </div>
 
-          <div className="flex items-start gap-3 p-4 border rounded-lg hover:bg-white/5 transition-colors">
+          <div className="flex items-start gap-3 p-4 border rounded-lg hover:bg-gray-50 transition-colors">
             <Checkbox
               id="consent2"
               checked={consents.identityVerification}
@@ -81,14 +81,14 @@ export function ConsentDeclarations({ entity, onComplete }: ConsentDeclarationsP
               }
             />
             <label htmlFor="consent2" className="text-sm cursor-pointer flex-1">
-              <span className="font-semibold text-white">I consent to identity verification</span>
-              <p className="text-slate-300 mt-1">
+              <span className="font-semibold text-gray-900">I consent to identity verification</span>
+              <p className="text-gray-600 mt-1">
                 I authorize verification of my identity using third-party verification services.
               </p>
             </label>
           </div>
 
-          <div className="flex items-start gap-3 p-4 border rounded-lg hover:bg-white/5 transition-colors">
+          <div className="flex items-start gap-3 p-4 border rounded-lg hover:bg-gray-50 transition-colors">
             <Checkbox
               id="consent3"
               checked={consents.ongoingMonitoring}
@@ -97,14 +97,14 @@ export function ConsentDeclarations({ entity, onComplete }: ConsentDeclarationsP
               }
             />
             <label htmlFor="consent3" className="text-sm cursor-pointer flex-1">
-              <span className="font-semibold text-white">I consent to ongoing monitoring</span>
-              <p className="text-slate-300 mt-1">
+              <span className="font-semibold text-gray-900">I consent to ongoing monitoring</span>
+              <p className="text-gray-600 mt-1">
                 I understand my profile will be subject to ongoing compliance monitoring.
               </p>
             </label>
           </div>
 
-          <div className="flex items-start gap-3 p-4 border rounded-lg hover:bg-white/5 transition-colors">
+          <div className="flex items-start gap-3 p-4 border rounded-lg hover:bg-gray-50 transition-colors">
             <Checkbox
               id="consent4"
               checked={consents.notifyChanges}
@@ -113,8 +113,8 @@ export function ConsentDeclarations({ entity, onComplete }: ConsentDeclarationsP
               }
             />
             <label htmlFor="consent4" className="text-sm cursor-pointer flex-1">
-              <span className="font-semibold text-white">I will notify of material changes</span>
-              <p className="text-slate-300 mt-1">
+              <span className="font-semibold text-gray-900">I will notify of material changes</span>
+              <p className="text-gray-600 mt-1">
                 I agree to notify any material changes to the information provided within 30 days.
               </p>
             </label>
@@ -125,13 +125,13 @@ export function ConsentDeclarations({ entity, onComplete }: ConsentDeclarationsP
         <Card className="border-2">
           <CardHeader className="pb-3">
             <div className="flex items-center gap-2">
-              <PenTool className="w-5 h-5 text-slate-300" />
+              <PenTool className="w-5 h-5 text-gray-700" />
               <CardTitle className="text-base">Digital Signature</CardTitle>
             </div>
           </CardHeader>
           <CardContent>
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-300">
+              <label className="text-sm font-medium text-gray-700">
                 Type your full name to sign *
               </label>
               <input
@@ -139,13 +139,13 @@ export function ConsentDeclarations({ entity, onComplete }: ConsentDeclarationsP
                 value={signature}
                 onChange={(e) => setSignature(e.target.value)}
                 placeholder="Type your full legal name"
-                className="w-full px-4 py-3 border-2 border-white/10 rounded-lg focus:border-blue-500 focus:outline-none font-serif text-lg"
+                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none font-serif text-lg"
               />
               {signature && (
-                <Card className="bg-green-500/10 border-green-500/30 mt-3">
+                <Card className="bg-green-50 border-green-200 mt-3">
                   <CardContent className="p-3 flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
-                    <span className="text-sm text-green-300">
+                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <span className="text-sm text-green-900">
                       Signed on {new Date().toLocaleDateString('en-AU')}
                     </span>
                   </CardContent>

@@ -546,7 +546,7 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
         action: `successfully onboarded individual ${newIndividual.name} and associated entities`,
         time: 'Just now',
         iconName: 'CheckCircle',
-        color: 'text-green-400'
+        color: 'text-green-600'
       };
       const savedLogs = localStorage.getItem('growkyc_logged_activities');
       const logs = savedLogs ? JSON.parse(savedLogs) : [];
@@ -638,38 +638,38 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
         {/* Name Fields */}
         <div className="grid grid-cols-3 gap-4">
           <div>
-            <label className="block text-sm font-semibold text-slate-300 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
               First Name <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
               value={personalData.firstName}
               onChange={(e) => setPersonalData({ ...personalData, firstName: e.target.value })}
-              className="w-full px-4 py-2 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="John"
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-slate-300 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
               Middle Name
             </label>
             <input
               type="text"
               value={personalData.middleName}
               onChange={(e) => setPersonalData({ ...personalData, middleName: e.target.value })}
-              className="w-full px-4 py-2 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Robert"
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-slate-300 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
               Last Name <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
               value={personalData.lastName}
               onChange={(e) => setPersonalData({ ...personalData, lastName: e.target.value })}
-              className="w-full px-4 py-2 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Smith"
             />
           </div>
@@ -677,7 +677,7 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
 
         {/* Date of Birth */}
         <div>
-          <label className="block text-sm font-semibold text-slate-300 mb-2">
+          <label className="block text-sm font-semibold text-gray-700 mb-2">
             <Calendar className="w-4 h-4 inline mr-1" />
             Date of Birth <span className="text-red-500">*</span>
           </label>
@@ -685,14 +685,14 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
             type="date"
             value={personalData.dateOfBirth}
             onChange={(e) => setPersonalData({ ...personalData, dateOfBirth: e.target.value })}
-            className="w-full px-4 py-2 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
         {/* Contact Details */}
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-semibold text-slate-300 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
               <Mail className="w-4 h-4 inline mr-1" />
               Email Address <span className="text-red-500">*</span>
             </label>
@@ -700,12 +700,12 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
               type="email"
               value={personalData.email}
               onChange={(e) => setPersonalData({ ...personalData, email: e.target.value })}
-              className="w-full px-4 py-2 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="john.smith@example.com"
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-slate-300 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
               <Phone className="w-4 h-4 inline mr-1" />
               Phone Number <span className="text-red-500">*</span>
             </label>
@@ -713,7 +713,7 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
               type="tel"
               value={personalData.phone}
               onChange={(e) => setPersonalData({ ...personalData, phone: e.target.value })}
-              className="w-full px-4 py-2 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="0400 000 000"
             />
           </div>
@@ -721,7 +721,7 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
 
         {/* Address */}
         <div>
-          <label className="block text-sm font-semibold text-slate-300 mb-2">
+          <label className="block text-sm font-semibold text-gray-700 mb-2">
             <MapPin className="w-4 h-4 inline mr-1" />
             Street Address <span className="text-red-500">*</span>
           </label>
@@ -729,32 +729,32 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
             type="text"
             value={personalData.address}
             onChange={(e) => setPersonalData({ ...personalData, address: e.target.value })}
-            className="w-full px-4 py-2 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="123 Main Street"
           />
         </div>
 
         <div className="grid grid-cols-4 gap-4">
           <div className="col-span-2">
-            <label className="block text-sm font-semibold text-slate-300 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
               City <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
               value={personalData.city}
               onChange={(e) => setPersonalData({ ...personalData, city: e.target.value })}
-              className="w-full px-4 py-2 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Sydney"
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-slate-300 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
               State <span className="text-red-500">*</span>
             </label>
             <select
               value={personalData.state}
               onChange={(e) => setPersonalData({ ...personalData, state: e.target.value })}
-              className="w-full px-4 py-2 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="">Select</option>
               <option value="NSW">NSW</option>
@@ -768,14 +768,14 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-semibold text-slate-300 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
               Postcode <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
               value={personalData.postcode}
               onChange={(e) => setPersonalData({ ...personalData, postcode: e.target.value })}
-              className="w-full px-4 py-2 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="2000"
             />
           </div>
@@ -783,16 +783,16 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
 
         {/* ID Details */}
         <div className="border-t pt-6">
-          <h3 className="font-bold text-white mb-4">Identity Document</h3>
+          <h3 className="font-bold text-gray-900 mb-4">Identity Document</h3>
           <div className="grid grid-cols-3 gap-4">
             <div>
-              <label className="block text-sm font-semibold text-slate-300 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Document Type <span className="text-red-500">*</span>
               </label>
               <select
                 value={personalData.idType}
                 onChange={(e) => setPersonalData({ ...personalData, idType: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="drivers_licence">Driver's Licence</option>
                 <option value="passport">Passport</option>
@@ -800,26 +800,26 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-semibold text-slate-300 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Document Number <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
                 value={personalData.idNumber}
                 onChange={(e) => setPersonalData({ ...personalData, idNumber: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="12345678"
               />
             </div>
             {personalData.idType === 'drivers_licence' && (
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Licence State <span className="text-red-500">*</span>
                 </label>
                 <select
                   value={personalData.idState}
                   onChange={(e) => setPersonalData({ ...personalData, idState: e.target.value })}
-                  className="w-full px-4 py-2 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                   <option value="">Select</option>
                   <option value="NSW">NSW</option>
@@ -860,10 +860,10 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
               <Shield className="w-8 h-8 text-white" />
             </div>
             <div className="flex-1">
-              <h2 className="text-2xl font-bold text-white mb-1">
+              <h2 className="text-2xl font-bold text-gray-900 mb-1">
                 🏦 Bank-Grade 100-Point ID Verification
               </h2>
-              <p className="text-slate-300">
+              <p className="text-gray-700">
                 Select multiple documents to reach 100 points. At least one Category A document + DOB verification required.
               </p>
             </div>
@@ -916,13 +916,13 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
       </CardHeader>
       <CardContent className="space-y-6">
         {/* Privacy Notice */}
-        <Card className="bg-blue-500/10 border-blue-500/30">
+        <Card className="bg-blue-50 border-blue-200">
           <CardContent className="p-4">
             <div className="flex items-start gap-3">
-              <Info className="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" />
+              <Info className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
               <div>
-                <h4 className="font-semibold text-blue-300 mb-2">Privacy Notice</h4>
-                <p className="text-sm text-blue-300">
+                <h4 className="font-semibold text-blue-900 mb-2">Privacy Notice</h4>
+                <p className="text-sm text-blue-800">
                   We collect your personal information to verify your identity and comply with AML/CTF regulations. 
                   Your information will be used to conduct searches with ASIC, credit bureaus, and other authorized databases.
                 </p>
@@ -932,17 +932,17 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
         </Card>
 
         {/* Consent Checkboxes */}
-        <div className="space-y-4 border-2 border-white/10 rounded-lg p-6">
+        <div className="space-y-4 border-2 border-gray-200 rounded-lg p-6">
           <div className="flex items-start gap-3">
             <input
               type="checkbox"
               checked={consentGiven}
               onChange={(e) => setConsentGiven(e.target.checked)}
-              className="w-5 h-5 mt-1 border-2 border-white/10 rounded focus:ring-2 focus:ring-blue-500"
+              className="w-5 h-5 mt-1 border-2 border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
               id="consent-verify"
             />
-            <label htmlFor="consent-verify" className="text-sm text-slate-300 cursor-pointer">
-              <span className="font-semibold text-white">I consent to identity verification checks</span>
+            <label htmlFor="consent-verify" className="text-sm text-gray-700 cursor-pointer">
+              <span className="font-semibold text-gray-900">I consent to identity verification checks</span>
               <br />
               I authorize Grow to conduct identity verification checks including but not limited to:
               <ul className="list-disc ml-5 mt-2 space-y-1">
@@ -962,16 +962,16 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
               type="checkbox"
               checked={termsAccepted}
               onChange={(e) => setTermsAccepted(e.target.checked)}
-              className="w-5 h-5 mt-1 border-2 border-white/10 rounded focus:ring-2 focus:ring-blue-500"
+              className="w-5 h-5 mt-1 border-2 border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
               id="consent-terms"
             />
-            <label htmlFor="consent-terms" className="text-sm text-slate-300 cursor-pointer">
-              <span className="font-semibold text-white">I accept the Terms & Conditions</span>
+            <label htmlFor="consent-terms" className="text-sm text-gray-700 cursor-pointer">
+              <span className="font-semibold text-gray-900">I accept the Terms & Conditions</span>
               <br />
               I have read and accept the{' '}
-              <a href="#" className="text-blue-400 underline">Terms of Service</a>,{' '}
-              <a href="#" className="text-blue-400 underline">Privacy Policy</a>, and{' '}
-              <a href="#" className="text-blue-400 underline">AML/CTF Policy</a>.
+              <a href="#" className="text-blue-600 underline">Terms of Service</a>,{' '}
+              <a href="#" className="text-blue-600 underline">Privacy Policy</a>, and{' '}
+              <a href="#" className="text-blue-600 underline">AML/CTF Policy</a>.
               <br />
               I understand that:
               <ul className="list-disc ml-5 mt-2 space-y-1">
@@ -985,13 +985,13 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
         </div>
 
         {/* Declaration */}
-        <Card className="bg-[#0f172a] border-white/10">
+        <Card className="bg-gray-50 border-gray-200">
           <CardContent className="p-4">
-            <h4 className="font-semibold text-white mb-2">Declaration</h4>
-            <p className="text-sm text-slate-300">
+            <h4 className="font-semibold text-gray-900 mb-2">Declaration</h4>
+            <p className="text-sm text-gray-700">
               By clicking "Accept & Continue", I declare that:
             </p>
-            <ul className="list-disc ml-5 mt-2 text-sm text-slate-300 space-y-1">
+            <ul className="list-disc ml-5 mt-2 text-sm text-gray-700 space-y-1">
               <li>All information provided is true, accurate, and complete</li>
               <li>I am authorized to provide this information</li>
               <li>I understand the purpose of these checks</li>
@@ -1034,15 +1034,15 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
         </CardHeader>
         <CardContent className="space-y-4">
           {/* Base Search - Always Included */}
-          <div className="p-4 bg-green-500/10 border-2 border-green-500 rounded-lg">
+          <div className="p-4 bg-green-50 border-2 border-green-500 rounded-lg">
             <div className="flex items-start justify-between">
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
-                  <h4 className="font-semibold text-white">{searchPricing.individual.name}</h4>
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  <h4 className="font-semibold text-gray-900">{searchPricing.individual.name}</h4>
                   <Badge className="bg-green-600">Included</Badge>
                 </div>
-                <p className="text-sm text-slate-300 mb-2">{searchPricing.individual.description}</p>
+                <p className="text-sm text-gray-700 mb-2">{searchPricing.individual.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {searchPricing.individual.searches.map((search, idx) => (
                     <Badge key={idx} variant="outline" className="text-xs">{search}</Badge>
@@ -1050,10 +1050,10 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
                 </div>
               </div>
               <div className="text-right">
-                <div className="text-2xl font-bold text-white">
+                <div className="text-2xl font-bold text-gray-900">
                   ${searchPricing.individual.price.toFixed(2)}
                 </div>
-                <div className="text-xs text-slate-300">AUD</div>
+                <div className="text-xs text-gray-600">AUD</div>
               </div>
             </div>
           </div>
@@ -1063,17 +1063,17 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
             return (
               <div
                 key={key}
-                className="p-4 border-2 border-green-500 bg-green-500/10 rounded-lg"
+                className="p-4 border-2 border-green-500 bg-green-50 rounded-lg"
               >
                 <div className="flex items-start justify-between">
                   <div className="flex items-start gap-3 flex-1">
-                    <CheckCircle className="w-5 h-5 text-green-400 mt-1" />
+                    <CheckCircle className="w-5 h-5 text-green-600 mt-1" />
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
-                        <h4 className="font-semibold text-white">{search.name}</h4>
+                        <h4 className="font-semibold text-gray-900">{search.name}</h4>
                         <Badge className="bg-green-600">Included</Badge>
                       </div>
-                      <p className="text-sm text-slate-300 mb-2">{search.description}</p>
+                      <p className="text-sm text-gray-700 mb-2">{search.description}</p>
                       <div className="flex flex-wrap gap-2">
                         {search.searches.map((s: string, idx: number) => (
                           <Badge key={idx} variant="outline" className="text-xs">{s}</Badge>
@@ -1082,10 +1082,10 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
                     </div>
                   </div>
                   <div className="text-right ml-4">
-                    <div className="text-2xl font-bold text-white">
+                    <div className="text-2xl font-bold text-gray-900">
                       ${search.price.toFixed(2)}
                     </div>
-                    <div className="text-xs text-slate-300">AUD</div>
+                    <div className="text-xs text-gray-600">AUD</div>
                   </div>
                 </div>
               </div>
@@ -1096,7 +1096,7 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
 
       {/* Payment Summary */}
       <Card className="border-2 border-blue-500">
-        <CardHeader className="bg-blue-500/10">
+        <CardHeader className="bg-blue-50">
           <CardTitle>Payment Summary</CardTitle>
           <CardDescription>Complete verification package with all compliance checks</CardDescription>
         </CardHeader>
@@ -1115,7 +1115,7 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
             ))}
             <div className="border-t pt-2 mt-2 flex justify-between">
               <span className="font-bold text-lg">Total Amount</span>
-              <span className="font-bold text-2xl text-blue-400">
+              <span className="font-bold text-2xl text-blue-600">
                 ${Object.values(searchPricing).reduce((sum, s) => sum + s.price, 0).toFixed(2)} AUD
               </span>
             </div>
@@ -1123,12 +1123,12 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
 
           {/* Payment Method */}
           <div className="border-t pt-4">
-            <label className="block text-sm font-semibold text-slate-300 mb-3">
+            <label className="block text-sm font-semibold text-gray-700 mb-3">
               Payment Method
             </label>
             <div className="space-y-2">
               <div className={`p-3 border-2 rounded-lg cursor-pointer ${
-                paymentMethod === 'card' ? 'border-blue-500 bg-blue-500/10' : 'border-white/10'
+                paymentMethod === 'card' ? 'border-blue-500 bg-blue-50' : 'border-gray-300'
               }`} onClick={() => setPaymentMethod('card')}>
                 <div className="flex items-center gap-2">
                   <input type="radio" checked={paymentMethod === 'card'} onChange={() => {}} />
@@ -1137,7 +1137,7 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
                 </div>
               </div>
               <div className={`p-3 border-2 rounded-lg cursor-pointer ${
-                paymentMethod === 'bpay' ? 'border-blue-500 bg-blue-500/10' : 'border-white/10'
+                paymentMethod === 'bpay' ? 'border-blue-500 bg-blue-50' : 'border-gray-300'
               }`} onClick={() => setPaymentMethod('bpay')}>
                 <div className="flex items-center gap-2">
                   <input type="radio" checked={paymentMethod === 'bpay'} onChange={() => {}} />
@@ -1152,39 +1152,39 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
           {paymentMethod === 'card' && (
             <div className="border-t pt-4 space-y-3">
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Card Number
                 </label>
                 <input
                   type="text"
                   value={cardNumber}
                   onChange={(e) => setCardNumber(e.target.value)}
-                  className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                  className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                   placeholder="4242 4242 4242 4242"
                 />
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Expiry Date
                   </label>
                   <input
                     type="text"
                     value={cardExpiry}
                     onChange={(e) => setCardExpiry(e.target.value)}
-                    className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                    className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                     placeholder="MM/YY"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
                     CVV
                   </label>
                   <input
                     type="text"
                     value={cardCvv}
                     onChange={(e) => setCardCvv(e.target.value)}
-                    className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                    className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                     placeholder="123"
                   />
                 </div>
@@ -1220,38 +1220,38 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
       <CardContent className="p-12 text-center">
         <div className="flex flex-col items-center gap-6">
           <div className="relative">
-            <div className="w-24 h-24 bg-blue-500/15 rounded-full flex items-center justify-center">
-              <Loader2 className="w-12 h-12 text-blue-400 animate-spin" />
+            <div className="w-24 h-24 bg-blue-100 rounded-full flex items-center justify-center">
+              <Loader2 className="w-12 h-12 text-blue-600 animate-spin" />
             </div>
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-white mb-2">
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">
               Running Identity Verification Checks
             </h2>
-            <p className="text-slate-300">
+            <p className="text-gray-600">
               Please wait while we verify your identity and search for associated entities...
             </p>
           </div>
           <div className="w-full max-w-md space-y-3">
             <div className="flex items-center gap-3 text-sm">
-              <CheckCircle className="w-5 h-5 text-green-400" />
-              <span className="text-slate-300">Verifying identity documents</span>
+              <CheckCircle className="w-5 h-5 text-green-600" />
+              <span className="text-gray-700">Verifying identity documents</span>
             </div>
             <div className="flex items-center gap-3 text-sm">
-              <Loader2 className="w-5 h-5 text-blue-400 animate-spin" />
-              <span className="text-slate-300">Searching ASIC database</span>
+              <Loader2 className="w-5 h-5 text-blue-600 animate-spin" />
+              <span className="text-gray-700">Searching ASIC database</span>
             </div>
             <div className="flex items-center gap-3 text-sm">
-              <Clock className="w-5 h-5 text-slate-400" />
-              <span className="text-slate-400">Searching trust registers</span>
+              <Clock className="w-5 h-5 text-gray-400" />
+              <span className="text-gray-500">Searching trust registers</span>
             </div>
             <div className="flex items-center gap-3 text-sm">
-              <Clock className="w-5 h-5 text-slate-400" />
-              <span className="text-slate-400">Compiling results</span>
+              <Clock className="w-5 h-5 text-gray-400" />
+              <span className="text-gray-500">Compiling results</span>
             </div>
           </div>
           <Progress value={60} className="w-full max-w-md" />
-          <p className="text-sm text-slate-400">This usually takes 30-60 seconds</p>
+          <p className="text-sm text-gray-500">This usually takes 30-60 seconds</p>
         </div>
       </CardContent>
     </Card>
@@ -1265,17 +1265,17 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
     return (
       <div className="space-y-6">
         {/* Verification Success */}
-        <Card className="border-2 border-green-500 bg-green-500/10">
+        <Card className="border-2 border-green-500 bg-green-50">
           <CardContent className="p-6">
             <div className="flex items-center gap-4">
               <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center">
                 <CheckCircle className="w-10 h-10 text-white" />
               </div>
               <div className="flex-1">
-                <h2 className="text-2xl font-bold text-white mb-1">
+                <h2 className="text-2xl font-bold text-gray-900 mb-1">
                   ✅ All Verifications Complete
                 </h2>
-                <p className="text-slate-300">
+                <p className="text-gray-700">
                   {personalData.firstName} {personalData.lastName} + {discoveredEntities.length} associated entities - All verified
                 </p>
               </div>
@@ -1289,33 +1289,33 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
 
         {/* Auto-Charge Notification */}
         {discoveredEntities.length > 0 && (
-          <Card className="border-2 border-blue-500 bg-blue-500/10">
+          <Card className="border-2 border-blue-500 bg-blue-50">
             <CardContent className="p-6">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center">
                   <CreditCard className="w-6 h-6 text-white" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-bold text-white mb-1">
+                  <h3 className="text-lg font-bold text-gray-900 mb-1">
                     💳 Automatic Additional Charge Applied
                   </h3>
-                  <p className="text-sm text-slate-300">
+                  <p className="text-sm text-gray-700">
                     We discovered {discoveredEntities.length} associated {discoveredEntities.length === 1 ? 'entity' : 'entities'} and automatically ran full KYC verification on {discoveredEntities.length === 1 ? 'it' : 'them'}.
                   </p>
                   <div className="mt-3 flex items-center gap-6">
                     <div>
-                      <p className="text-xs text-slate-300">Initial Payment</p>
-                      <p className="text-lg font-bold text-white">${initialPayment.toFixed(2)} AUD</p>
+                      <p className="text-xs text-gray-600">Initial Payment</p>
+                      <p className="text-lg font-bold text-gray-900">${initialPayment.toFixed(2)} AUD</p>
                     </div>
-                    <div className="text-slate-400">+</div>
+                    <div className="text-gray-400">+</div>
                     <div>
-                      <p className="text-xs text-slate-300">Additional Entities</p>
-                      <p className="text-lg font-bold text-blue-400">${additionalCost.toFixed(2)} AUD</p>
+                      <p className="text-xs text-gray-600">Additional Entities</p>
+                      <p className="text-lg font-bold text-blue-600">${additionalCost.toFixed(2)} AUD</p>
                     </div>
-                    <div className="text-slate-400">=</div>
+                    <div className="text-gray-400">=</div>
                     <div>
-                      <p className="text-xs text-slate-300">Total Charged</p>
-                      <p className="text-2xl font-bold text-green-400">${totalPaid.toFixed(2)} AUD</p>
+                      <p className="text-xs text-gray-600">Total Charged</p>
+                      <p className="text-2xl font-bold text-green-600">${totalPaid.toFixed(2)} AUD</p>
                     </div>
                   </div>
                 </div>
@@ -1337,16 +1337,16 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
               {discoveredEntities.map((entity, idx) => {
                 const Icon = entity.type === 'company' ? Building2 : Shield;
                 return (
-                  <Card key={idx} className="border-2 border-green-500/30 bg-green-500/10">
+                  <Card key={idx} className="border-2 border-green-200 bg-green-50">
                     <CardContent className="p-4">
                       <div className="flex items-start justify-between mb-3">
                         <div className="flex items-center gap-3">
-                          <div className="w-12 h-12 bg-green-500/15 rounded-lg flex items-center justify-center">
-                            <Icon className="w-6 h-6 text-green-400" />
+                          <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                            <Icon className="w-6 h-6 text-green-600" />
                           </div>
                           <div>
-                            <h4 className="font-bold text-white">{entity.name}</h4>
-                            <p className="text-sm text-slate-300">ABN: {entity.abn}</p>
+                            <h4 className="font-bold text-gray-900">{entity.name}</h4>
+                            <p className="text-sm text-gray-600">ABN: {entity.abn}</p>
                           </div>
                         </div>
                         <Badge className="bg-green-600">
@@ -1357,31 +1357,31 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
                       
                       <div className="grid grid-cols-4 gap-4 mb-4">
                         <div>
-                          <p className="text-xs text-slate-300">Your Role</p>
+                          <p className="text-xs text-gray-600">Your Role</p>
                           <p className="font-semibold text-sm">{entity.role}</p>
                         </div>
                         <div>
-                          <p className="text-xs text-slate-300">Entity Type</p>
+                          <p className="text-xs text-gray-600">Entity Type</p>
                           <p className="font-semibold text-sm capitalize">{entity.type}</p>
                         </div>
                         <div>
-                          <p className="text-xs text-slate-300">Since</p>
+                          <p className="text-xs text-gray-600">Since</p>
                           <p className="font-semibold text-sm">{entity.since}</p>
                         </div>
                         <div>
-                          <p className="text-xs text-slate-300">Charged</p>
-                          <p className="font-semibold text-sm text-blue-400">${entity.estimatedCost.toFixed(2)}</p>
+                          <p className="text-xs text-gray-600">Charged</p>
+                          <p className="font-semibold text-sm text-blue-600">${entity.estimatedCost.toFixed(2)}</p>
                         </div>
                       </div>
 
-                      <div className="bg-green-500/15 border border-green-300 rounded-lg p-3 mb-3">
+                      <div className="bg-green-100 border border-green-300 rounded-lg p-3 mb-3">
                         <div className="flex items-center gap-2">
-                          <CheckCircle className="w-5 h-5 text-green-400" />
-                          <span className="text-sm font-semibold text-green-300">
+                          <CheckCircle className="w-5 h-5 text-green-600" />
+                          <span className="text-sm font-semibold text-green-900">
                             ✅ Full KYC Verification Complete - Card charged automatically
                           </span>
                         </div>
-                        <p className="text-xs text-green-300 mt-1 ml-7">
+                        <p className="text-xs text-green-800 mt-1 ml-7">
                           All compliance checks passed for this {entity.type}
                         </p>
                       </div>
@@ -1419,32 +1419,32 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
 
         {/* Summary Card */}
         <Card className="border-2 border-blue-500">
-          <CardHeader className="bg-blue-500/10">
+          <CardHeader className="bg-blue-50">
             <CardTitle>Verification Summary</CardTitle>
             <CardDescription>Complete compliance package - All checks passed</CardDescription>
           </CardHeader>
           <CardContent className="pt-6">
             <div className="space-y-3 mb-6">
               <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-green-400" />
+                <CheckCircle className="w-5 h-5 text-green-600" />
                 <span className="text-sm">
                   <strong>Individual verification:</strong> {personalData.firstName} {personalData.lastName} - Verified ✓
                 </span>
               </div>
               <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-green-400" />
+                <CheckCircle className="w-5 h-5 text-green-600" />
                 <span className="text-sm">
                   <strong>{discoveredEntities.length} {discoveredEntities.length === 1 ? 'entity' : 'entities'}:</strong> Automatically discovered and verified ✓
                 </span>
               </div>
               <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-green-400" />
+                <CheckCircle className="w-5 h-5 text-green-600" />
                 <span className="text-sm">
                   <strong>Total charged:</strong> ${totalPaid.toFixed(2)} AUD
                 </span>
               </div>
               <div className="flex items-center gap-3">
-                <Info className="w-5 h-5 text-blue-400" />
+                <Info className="w-5 h-5 text-blue-600" />
                 <span className="text-sm">
                   All compliance reports available for download
                 </span>
@@ -1453,10 +1453,10 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
 
             <div className="bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-500 rounded-lg p-4 mb-4">
               <div className="flex items-center gap-3">
-                <CheckCircle className="w-8 h-8 text-green-400" />
+                <CheckCircle className="w-8 h-8 text-green-600" />
                 <div className="flex-1">
-                  <h4 className="font-bold text-white">🎉 Onboarding Complete!</h4>
-                  <p className="text-sm text-slate-300 mt-1">
+                  <h4 className="font-bold text-gray-900">🎉 Onboarding Complete!</h4>
+                  <p className="text-sm text-gray-700 mt-1">
                     All verifications passed. You're now fully onboarded and compliant with AML/CTF regulations.
                   </p>
                 </div>
@@ -1486,33 +1486,33 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
   };
 
   return (
-    <div className="min-h-screen bg-[#0f172a] p-6">
+    <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="mb-6">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h1 className="text-3xl font-bold text-white">Individual KYC Verification</h1>
-              <p className="text-slate-300 mt-1">
+              <h1 className="text-3xl font-bold text-gray-900">Individual KYC Verification</h1>
+              <p className="text-gray-600 mt-1">
                 Complete your identity verification to discover associated entities
               </p>
             </div>
             <div className="flex items-center gap-3">
               {/* Developer Mode Toggle */}
-              <Card className={`border-2 transition-all ${devMode ? 'border-amber-500 bg-amber-500/10 shadow-lg' : 'border-white/10 bg-[#1e293b]'}`}>
+              <Card className={`border-2 transition-all ${devMode ? 'border-amber-500 bg-amber-50 shadow-lg' : 'border-gray-300 bg-white'}`}>
                 <CardContent className="p-3">
                   <div className="flex items-center gap-3">
-                    <Bug className={`w-5 h-5 ${devMode ? 'text-amber-400' : 'text-slate-400'}`} />
+                    <Bug className={`w-5 h-5 ${devMode ? 'text-amber-600' : 'text-gray-400'}`} />
                     <div>
                       <div className="flex items-center gap-2">
-                        <p className="text-xs font-semibold text-white">Developer Mode</p>
+                        <p className="text-xs font-semibold text-gray-900">Developer Mode</p>
                         {devMode && (
                           <Badge className="bg-amber-600 text-white text-xs px-2 py-0">
                             ON
                           </Badge>
                         )}
                       </div>
-                      <p className="text-xs text-slate-300">Skip validation for testing</p>
+                      <p className="text-xs text-gray-600">Skip validation for testing</p>
                     </div>
                     <button
                       onClick={() => {
@@ -1525,7 +1525,7 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
                       }`}
                     >
                       <span
-                        className={`inline-block h-4 w-4 transform rounded-full bg-[#1e293b] transition-transform ${
+                        className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
                           devMode ? 'translate-x-6' : 'translate-x-1'
                         }`}
                       />
@@ -1565,7 +1565,7 @@ export function IndividualOnboarding({ onBack }: IndividualOnboardingProps) {
                         <Icon className="w-6 h-6 text-white" />
                       )}
                     </div>
-                    <span className={`text-sm mt-2 ${isActive ? 'font-bold text-blue-400' : 'text-slate-300'}`}>
+                    <span className={`text-sm mt-2 ${isActive ? 'font-bold text-blue-600' : 'text-gray-600'}`}>
                       {step.label}
                     </span>
                   </div>

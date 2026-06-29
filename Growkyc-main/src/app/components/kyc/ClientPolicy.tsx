@@ -398,11 +398,11 @@ export function ClientPolicy() {
             </div>
           </div>
           <div className="flex gap-3">
-            <Button className="bg-white text-purple-400 hover:bg-purple-500/10">
+            <Button className="bg-white text-purple-600 hover:bg-purple-50">
               <Download className="w-5 h-5 mr-2" />
               Export Policy
             </Button>
-            <Button className="bg-white text-purple-400 hover:bg-purple-500/10">
+            <Button className="bg-white text-purple-600 hover:bg-purple-50">
               <Edit className="w-5 h-5 mr-2" />
               Edit Policy
             </Button>
@@ -441,7 +441,7 @@ export function ClientPolicy() {
       </div>
 
       {/* Navigation Tabs */}
-      <div className="border-b border-white/10">
+      <div className="border-b border-gray-200">
         <div className="flex gap-2">
           {[
             { id: 'overview', label: 'Overview', icon: BookOpen },
@@ -461,8 +461,8 @@ export function ClientPolicy() {
                 onClick={() => setActiveTab(tab.id as any)}
                 className={`px-4 py-3 font-semibold flex items-center gap-2 transition-colors ${
                   activeTab === tab.id
-                    ? 'border-b-2 border-purple-600 text-purple-400'
-                    : 'text-slate-300 hover:text-slate-100'
+                    ? 'border-b-2 border-purple-600 text-purple-600'
+                    : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -477,20 +477,20 @@ export function ClientPolicy() {
       {activeTab === 'overview' && (
         <div className="space-y-6">
           {/* Policy Statement */}
-          <div className="bg-white rounded-lg border border-white/10 p-6">
-            <h3 className="text-xl font-bold text-slate-100 mb-4">Policy Statement</h3>
+          <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <h3 className="text-xl font-bold text-gray-900 mb-4">Policy Statement</h3>
             <div className="prose max-w-none">
-              <p className="text-slate-300 mb-4">
+              <p className="text-gray-700 mb-4">
                 This Client Policy establishes the framework for client acceptance, customer due diligence (CDD), 
                 and ongoing monitoring in accordance with the Anti-Money Laundering and Counter-Terrorism Financing 
                 Act 2006 (Cth) and associated Rules.
               </p>
-              <p className="text-slate-300 mb-4">
+              <p className="text-gray-700 mb-4">
                 The firm adopts a <strong>risk-based approach</strong> to client acceptance and due diligence, 
                 with the level of scrutiny proportionate to the identified money laundering and terrorism financing 
                 (ML/TF) risks.
               </p>
-              <p className="text-slate-300">
+              <p className="text-gray-700">
                 All staff must adhere to this policy. Non-compliance may result in disciplinary action and 
                 potential breaches of the AML/CTF Act.
               </p>
@@ -499,34 +499,34 @@ export function ClientPolicy() {
 
           {/* Key Principles */}
           <div className="grid grid-cols-3 gap-6">
-            <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-6">
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
               <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
                 <Target className="w-6 h-6 text-white" />
               </div>
-              <h4 className="font-bold text-blue-300 mb-2">Risk-Based Approach</h4>
-              <p className="text-sm text-blue-300">
+              <h4 className="font-bold text-blue-900 mb-2">Risk-Based Approach</h4>
+              <p className="text-sm text-blue-800">
                 CDD measures are scaled according to the assessed ML/TF risk. Higher risk clients receive 
                 enhanced scrutiny and ongoing monitoring.
               </p>
             </div>
 
-            <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-6">
+            <div className="bg-green-50 border border-green-200 rounded-lg p-6">
               <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mb-4">
                 <Shield className="w-6 h-6 text-white" />
               </div>
-              <h4 className="font-bold text-green-300 mb-2">Know Your Client</h4>
-              <p className="text-sm text-green-300">
+              <h4 className="font-bold text-green-900 mb-2">Know Your Client</h4>
+              <p className="text-sm text-green-800">
                 We verify the identity of clients and beneficial owners, understand the purpose and nature 
                 of the business relationship, and monitor transactions.
               </p>
             </div>
 
-            <div className="bg-orange-500/10 border border-orange-500/30 rounded-lg p-6">
+            <div className="bg-orange-50 border border-orange-200 rounded-lg p-6">
               <div className="w-12 h-12 bg-orange-600 rounded-lg flex items-center justify-center mb-4">
                 <Activity className="w-6 h-6 text-white" />
               </div>
-              <h4 className="font-bold text-orange-300 mb-2">Ongoing Monitoring</h4>
-              <p className="text-sm text-orange-300">
+              <h4 className="font-bold text-orange-900 mb-2">Ongoing Monitoring</h4>
+              <p className="text-sm text-orange-800">
                 Client information is kept up-to-date through periodic reviews, transaction monitoring, 
                 and trigger-based reassessments.
               </p>
@@ -534,55 +534,55 @@ export function ClientPolicy() {
           </div>
 
           {/* CDD Levels Overview */}
-          <div className="bg-white rounded-lg border border-white/10 p-6">
-            <h3 className="text-xl font-bold text-slate-100 mb-4">Customer Due Diligence Levels</h3>
+          <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <h3 className="text-xl font-bold text-gray-900 mb-4">Customer Due Diligence Levels</h3>
             
             <div className="space-y-4">
-              <div className="flex gap-4 p-4 bg-blue-500/10 border-l-4 border-blue-500 rounded-r-lg">
+              <div className="flex gap-4 p-4 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg">
                 <div className="flex-shrink-0">
-                  <Zap className="w-8 h-8 text-blue-400" />
+                  <Zap className="w-8 h-8 text-blue-600" />
                 </div>
                 <div className="flex-1">
-                  <h4 className="font-bold text-blue-300 mb-2">Simplified Due Diligence (SDD)</h4>
-                  <p className="text-sm text-blue-300 mb-2">
+                  <h4 className="font-bold text-blue-900 mb-2">Simplified Due Diligence (SDD)</h4>
+                  <p className="text-sm text-blue-800 mb-2">
                     Applied to low-risk clients such as Australian Government entities, ASX-listed companies, 
                     and APRA-regulated financial institutions.
                   </p>
-                  <p className="text-xs text-blue-300">
+                  <p className="text-xs text-blue-700">
                     <strong>Requirements:</strong> Reduced documentation, verification via public registers, 
                     no beneficial ownership investigation required.
                   </p>
                 </div>
               </div>
 
-              <div className="flex gap-4 p-4 bg-green-500/10 border-l-4 border-green-500 rounded-r-lg">
+              <div className="flex gap-4 p-4 bg-green-50 border-l-4 border-green-500 rounded-r-lg">
                 <div className="flex-shrink-0">
-                  <CheckCircle className="w-8 h-8 text-green-400" />
+                  <CheckCircle className="w-8 h-8 text-green-600" />
                 </div>
                 <div className="flex-1">
-                  <h4 className="font-bold text-green-300 mb-2">Standard Due Diligence (CDD)</h4>
-                  <p className="text-sm text-green-300 mb-2">
+                  <h4 className="font-bold text-green-900 mb-2">Standard Due Diligence (CDD)</h4>
+                  <p className="text-sm text-green-800 mb-2">
                     Default level for most clients. Verifies identity, collects beneficial ownership information, 
                     and assesses risk.
                   </p>
-                  <p className="text-xs text-green-300">
+                  <p className="text-xs text-green-700">
                     <strong>Requirements:</strong> Government-issued ID, proof of address, business documents, 
                     beneficial ownership declaration, source of funds/wealth.
                   </p>
                 </div>
               </div>
 
-              <div className="flex gap-4 p-4 bg-orange-500/10 border-l-4 border-orange-500 rounded-r-lg">
+              <div className="flex gap-4 p-4 bg-orange-50 border-l-4 border-orange-500 rounded-r-lg">
                 <div className="flex-shrink-0">
-                  <AlertTriangle className="w-8 h-8 text-orange-400" />
+                  <AlertTriangle className="w-8 h-8 text-orange-600" />
                 </div>
                 <div className="flex-1">
-                  <h4 className="font-bold text-orange-300 mb-2">Enhanced Due Diligence (EDD)</h4>
-                  <p className="text-sm text-orange-300 mb-2">
+                  <h4 className="font-bold text-orange-900 mb-2">Enhanced Due Diligence (EDD)</h4>
+                  <p className="text-sm text-orange-800 mb-2">
                     Applied to high-risk clients including PEPs, high-risk jurisdictions, complex structures, 
                     and cash-intensive businesses.
                   </p>
-                  <p className="text-xs text-orange-300">
+                  <p className="text-xs text-orange-700">
                     <strong>Requirements:</strong> All CDD requirements PLUS additional verification, source of wealth 
                     evidence, senior management approval, and enhanced ongoing monitoring (quarterly).
                   </p>
@@ -593,39 +593,39 @@ export function ClientPolicy() {
 
           {/* Statistics Dashboard */}
           <div className="grid grid-cols-4 gap-4">
-            <div className="bg-white rounded-lg border border-white/10 p-4">
+            <div className="bg-white rounded-lg border border-gray-200 p-4">
               <div className="flex items-center justify-between mb-2">
-                <h4 className="font-semibold text-slate-100">Active Clients</h4>
-                <Users className="w-5 h-5 text-slate-300" />
+                <h4 className="font-semibold text-gray-900">Active Clients</h4>
+                <Users className="w-5 h-5 text-gray-600" />
               </div>
-              <p className="text-3xl font-bold text-slate-100">287</p>
+              <p className="text-3xl font-bold text-gray-900">287</p>
             </div>
 
-            <div className="bg-white rounded-lg border border-green-500/30 p-4">
+            <div className="bg-white rounded-lg border border-green-200 p-4">
               <div className="flex items-center justify-between mb-2">
-                <h4 className="font-semibold text-slate-100">Standard CDD</h4>
-                <CheckCircle className="w-5 h-5 text-green-400" />
+                <h4 className="font-semibold text-gray-900">Standard CDD</h4>
+                <CheckCircle className="w-5 h-5 text-green-600" />
               </div>
-              <p className="text-3xl font-bold text-green-400">245</p>
-              <p className="text-xs text-slate-300">85% of portfolio</p>
+              <p className="text-3xl font-bold text-green-600">245</p>
+              <p className="text-xs text-gray-600">85% of portfolio</p>
             </div>
 
-            <div className="bg-white rounded-lg border border-orange-500/30 p-4">
+            <div className="bg-white rounded-lg border border-orange-200 p-4">
               <div className="flex items-center justify-between mb-2">
-                <h4 className="font-semibold text-slate-100">Enhanced CDD</h4>
-                <AlertTriangle className="w-5 h-5 text-orange-400" />
+                <h4 className="font-semibold text-gray-900">Enhanced CDD</h4>
+                <AlertTriangle className="w-5 h-5 text-orange-600" />
               </div>
-              <p className="text-3xl font-bold text-orange-400">38</p>
-              <p className="text-xs text-slate-300">13% of portfolio</p>
+              <p className="text-3xl font-bold text-orange-600">38</p>
+              <p className="text-xs text-gray-600">13% of portfolio</p>
             </div>
 
-            <div className="bg-white rounded-lg border border-blue-500/30 p-4">
+            <div className="bg-white rounded-lg border border-blue-200 p-4">
               <div className="flex items-center justify-between mb-2">
-                <h4 className="font-semibold text-slate-100">Simplified CDD</h4>
-                <Zap className="w-5 h-5 text-blue-400" />
+                <h4 className="font-semibold text-gray-900">Simplified CDD</h4>
+                <Zap className="w-5 h-5 text-blue-600" />
               </div>
-              <p className="text-3xl font-bold text-blue-400">4</p>
-              <p className="text-xs text-slate-300">2% of portfolio</p>
+              <p className="text-3xl font-bold text-blue-600">4</p>
+              <p className="text-xs text-gray-600">2% of portfolio</p>
             </div>
           </div>
         </div>
@@ -635,15 +635,15 @@ export function ClientPolicy() {
       {activeTab === 'acceptance' && (
         <div className="space-y-6">
           {/* Filter */}
-          <div className="bg-white rounded-lg border border-white/10 p-4">
+          <div className="bg-white rounded-lg border border-gray-200 p-4">
             <div className="flex items-center gap-4">
-              <span className="font-semibold text-slate-100">Filter by Client Type:</span>
+              <span className="font-semibold text-gray-900">Filter by Client Type:</span>
               <button
                 onClick={() => setSelectedClientType('all')}
                 className={`px-4 py-2 rounded-lg transition-colors ${
                   selectedClientType === 'all'
                     ? 'bg-purple-600 text-white'
-                    : 'bg-white/5 text-slate-300 hover:bg-white/10'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
                 All ({clientRules.length})
@@ -657,7 +657,7 @@ export function ClientPolicy() {
                     className={`px-4 py-2 rounded-lg transition-colors ${
                       selectedClientType === type
                         ? 'bg-purple-600 text-white'
-                        : 'bg-white/5 text-slate-300 hover:bg-white/10'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                   >
                     {label} ({count})
@@ -671,25 +671,25 @@ export function ClientPolicy() {
           <div className="space-y-4">
             {filteredRules.map((rule) => (
               <div key={rule.id} className={`bg-white rounded-lg border-2 p-6 ${
-                rule.cddLevel === 'enhanced' ? 'border-orange-500/30' :
-                rule.cddLevel === 'simplified' ? 'border-blue-500/30' :
-                'border-green-500/30'
+                rule.cddLevel === 'enhanced' ? 'border-orange-200' :
+                rule.cddLevel === 'simplified' ? 'border-blue-200' :
+                'border-green-200'
               }`}>
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
-                      <h3 className="text-xl font-bold text-slate-100">{rule.name}</h3>
+                      <h3 className="text-xl font-bold text-gray-900">{rule.name}</h3>
                       <span className={`px-3 py-1 bg-${getCDDLevelColor(rule.cddLevel)}-100 text-${getCDDLevelColor(rule.cddLevel)}-700 text-sm font-bold rounded-full`}>
                         {rule.cddLevel.toUpperCase().replace('-', ' ')}
                       </span>
                       {rule.requiresApproval && (
-                        <span className="px-3 py-1 bg-yellow-500/15 text-yellow-300 text-sm font-semibold rounded-full flex items-center gap-1">
+                        <span className="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm font-semibold rounded-full flex items-center gap-1">
                           <Lock className="w-4 h-4" />
                           APPROVAL REQUIRED
                         </span>
                       )}
                     </div>
-                    <p className="text-sm text-slate-300">Rule ID: {rule.id} • Client Type: {clientTypeLabels[rule.clientType]}</p>
+                    <p className="text-sm text-gray-600">Rule ID: {rule.id} • Client Type: {clientTypeLabels[rule.clientType]}</p>
                   </div>
 
                   <div className="flex gap-2">
@@ -705,11 +705,11 @@ export function ClientPolicy() {
 
                 <div className="grid grid-cols-2 gap-6">
                   <div>
-                    <h4 className="font-semibold text-slate-100 mb-3">Risk Factors</h4>
+                    <h4 className="font-semibold text-gray-900 mb-3">Risk Factors</h4>
                     <ul className="space-y-1">
                       {rule.riskFactors.map((factor, index) => (
-                        <li key={index} className="text-sm text-slate-300 flex items-start">
-                          <CheckCircle className="w-4 h-4 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
+                        <li key={index} className="text-sm text-gray-700 flex items-start">
+                          <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
                           <span>{factor}</span>
                         </li>
                       ))}
@@ -717,11 +717,11 @@ export function ClientPolicy() {
 
                     {rule.prohibitedIndicators.length > 0 && (
                       <>
-                        <h4 className="font-semibold text-red-300 mb-3 mt-4">Prohibited Indicators</h4>
+                        <h4 className="font-semibold text-red-900 mb-3 mt-4">Prohibited Indicators</h4>
                         <ul className="space-y-1">
                           {rule.prohibitedIndicators.map((indicator, index) => (
-                            <li key={index} className="text-sm text-red-300 flex items-start">
-                              <XCircle className="w-4 h-4 text-red-400 mr-2 mt-0.5 flex-shrink-0" />
+                            <li key={index} className="text-sm text-red-700 flex items-start">
+                              <XCircle className="w-4 h-4 text-red-600 mr-2 mt-0.5 flex-shrink-0" />
                               <span>{indicator}</span>
                             </li>
                           ))}
@@ -731,25 +731,25 @@ export function ClientPolicy() {
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-slate-100 mb-3">Document Requirements</h4>
+                    <h4 className="font-semibold text-gray-900 mb-3">Document Requirements</h4>
                     <ul className="space-y-1">
                       {rule.documentRequirements.map((doc, index) => (
-                        <li key={index} className="text-sm text-slate-300 flex items-start">
-                          <FileText className="w-4 h-4 text-blue-400 mr-2 mt-0.5 flex-shrink-0" />
+                        <li key={index} className="text-sm text-gray-700 flex items-start">
+                          <FileText className="w-4 h-4 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
                           <span>{doc}</span>
                         </li>
                       ))}
                     </ul>
 
-                    <div className="mt-4 p-3 bg-white/5 rounded-lg">
+                    <div className="mt-4 p-3 bg-gray-50 rounded-lg">
                       <div className="grid grid-cols-2 gap-3 text-sm">
                         <div>
-                          <p className="text-slate-300 mb-1">Approval Authority</p>
-                          <p className="font-semibold text-slate-100">{rule.approvalAuthority}</p>
+                          <p className="text-gray-600 mb-1">Approval Authority</p>
+                          <p className="font-semibold text-gray-900">{rule.approvalAuthority}</p>
                         </div>
                         <div>
-                          <p className="text-slate-300 mb-1">Monitoring Frequency</p>
-                          <p className="font-semibold text-slate-100">{rule.monitoringFrequency}</p>
+                          <p className="text-gray-600 mb-1">Monitoring Frequency</p>
+                          <p className="font-semibold text-gray-900">{rule.monitoringFrequency}</p>
                         </div>
                       </div>
                     </div>
@@ -764,12 +764,12 @@ export function ClientPolicy() {
       {/* EDD Triggers Tab */}
       {activeTab === 'edd-triggers' && (
         <div className="space-y-6">
-          <div className="bg-orange-500/10 border border-orange-500/30 rounded-lg p-6">
+          <div className="bg-orange-50 border border-orange-200 rounded-lg p-6">
             <div className="flex items-start gap-3">
-              <AlertTriangle className="w-6 h-6 text-orange-400 mt-0.5" />
+              <AlertTriangle className="w-6 h-6 text-orange-600 mt-0.5" />
               <div>
-                <h3 className="font-bold text-orange-300 mb-2">Enhanced Due Diligence Triggers</h3>
-                <p className="text-sm text-orange-300">
+                <h3 className="font-bold text-orange-900 mb-2">Enhanced Due Diligence Triggers</h3>
+                <p className="text-sm text-orange-800">
                   When ANY of the following indicators are present, Enhanced Due Diligence (EDD) must be applied. 
                   This includes additional verification steps, senior management approval, and enhanced ongoing monitoring.
                 </p>
@@ -778,13 +778,13 @@ export function ClientPolicy() {
           </div>
 
           {eddTriggers.map((category, index) => (
-            <div key={index} className="bg-white rounded-lg border border-white/10 p-6">
-              <h3 className="text-xl font-bold text-slate-100 mb-4">{category.category}</h3>
+            <div key={index} className="bg-white rounded-lg border border-gray-200 p-6">
+              <h3 className="text-xl font-bold text-gray-900 mb-4">{category.category}</h3>
               <div className="space-y-3">
                 {category.triggers.map((trigger, triggerIndex) => (
-                  <div key={triggerIndex} className="flex items-start gap-3 p-3 bg-orange-500/10 rounded-lg">
-                    <AlertTriangle className="w-5 h-5 text-orange-400 mt-0.5 flex-shrink-0" />
-                    <p className="text-sm text-slate-100">{trigger}</p>
+                  <div key={triggerIndex} className="flex items-start gap-3 p-3 bg-orange-50 rounded-lg">
+                    <AlertTriangle className="w-5 h-5 text-orange-600 mt-0.5 flex-shrink-0" />
+                    <p className="text-sm text-gray-800">{trigger}</p>
                   </div>
                 ))}
               </div>
@@ -792,56 +792,56 @@ export function ClientPolicy() {
           ))}
 
           {/* EDD Process */}
-          <div className="bg-white rounded-lg border border-white/10 p-6">
-            <h3 className="text-xl font-bold text-slate-100 mb-4">EDD Process Requirements</h3>
+          <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <h3 className="text-xl font-bold text-gray-900 mb-4">EDD Process Requirements</h3>
             <div className="grid grid-cols-2 gap-6">
               <div>
-                <h4 className="font-semibold text-slate-100 mb-3">Additional Verification Steps</h4>
+                <h4 className="font-semibold text-gray-900 mb-3">Additional Verification Steps</h4>
                 <ul className="space-y-2">
-                  <li className="flex items-start gap-2 text-sm text-slate-300">
-                    <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
+                  <li className="flex items-start gap-2 text-sm text-gray-700">
+                    <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
                     <span>Independent verification of source of wealth (bank statements, tax returns, asset valuations)</span>
                   </li>
-                  <li className="flex items-start gap-2 text-sm text-slate-300">
-                    <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
+                  <li className="flex items-start gap-2 text-sm text-gray-700">
+                    <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
                     <span>Enhanced screening (PEP, sanctions, adverse media)</span>
                   </li>
-                  <li className="flex items-start gap-2 text-sm text-slate-300">
-                    <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
+                  <li className="flex items-start gap-2 text-sm text-gray-700">
+                    <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
                     <span>Background checks on key individuals</span>
                   </li>
-                  <li className="flex items-start gap-2 text-sm text-slate-300">
-                    <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
+                  <li className="flex items-start gap-2 text-sm text-gray-700">
+                    <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
                     <span>Business premises verification (if applicable)</span>
                   </li>
-                  <li className="flex items-start gap-2 text-sm text-slate-300">
-                    <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
+                  <li className="flex items-start gap-2 text-sm text-gray-700">
+                    <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
                     <span>Third-party references (bank, legal, business)</span>
                   </li>
                 </ul>
               </div>
 
               <div>
-                <h4 className="font-semibold text-slate-100 mb-3">Approval & Monitoring</h4>
+                <h4 className="font-semibold text-gray-900 mb-3">Approval & Monitoring</h4>
                 <ul className="space-y-2">
-                  <li className="flex items-start gap-2 text-sm text-slate-300">
-                    <Lock className="w-4 h-4 text-orange-400 mt-0.5 flex-shrink-0" />
+                  <li className="flex items-start gap-2 text-sm text-gray-700">
+                    <Lock className="w-4 h-4 text-orange-600 mt-0.5 flex-shrink-0" />
                     <span><strong>Senior Manager</strong> approval required before acceptance</span>
                   </li>
-                  <li className="flex items-start gap-2 text-sm text-slate-300">
-                    <Lock className="w-4 h-4 text-orange-400 mt-0.5 flex-shrink-0" />
+                  <li className="flex items-start gap-2 text-sm text-gray-700">
+                    <Lock className="w-4 h-4 text-orange-600 mt-0.5 flex-shrink-0" />
                     <span><strong>Compliance Officer</strong> review and sign-off</span>
                   </li>
-                  <li className="flex items-start gap-2 text-sm text-slate-300">
-                    <Activity className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
+                  <li className="flex items-start gap-2 text-sm text-gray-700">
+                    <Activity className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
                     <span><strong>Quarterly</strong> monitoring and review</span>
                   </li>
-                  <li className="flex items-start gap-2 text-sm text-slate-300">
-                    <Bell className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
+                  <li className="flex items-start gap-2 text-sm text-gray-700">
+                    <Bell className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
                     <span><strong>Transaction alerts</strong> for unusual activity</span>
                   </li>
-                  <li className="flex items-start gap-2 text-sm text-slate-300">
-                    <FileText className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
+                  <li className="flex items-start gap-2 text-sm text-gray-700">
+                    <FileText className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
                     <span><strong>Enhanced record keeping</strong> with full justification</span>
                   </li>
                 </ul>
@@ -854,12 +854,12 @@ export function ClientPolicy() {
       {/* SDD Criteria Tab */}
       {activeTab === 'sdd-criteria' && (
         <div className="space-y-6">
-          <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-6">
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
             <div className="flex items-start gap-3">
-              <Zap className="w-6 h-6 text-blue-400 mt-0.5" />
+              <Zap className="w-6 h-6 text-blue-600 mt-0.5" />
               <div>
-                <h3 className="font-bold text-blue-300 mb-2">Simplified Due Diligence Eligibility</h3>
-                <p className="text-sm text-blue-300">
+                <h3 className="font-bold text-blue-900 mb-2">Simplified Due Diligence Eligibility</h3>
+                <p className="text-sm text-blue-800">
                   SDD may only be applied to specific low-risk entities. All eligibility criteria must be met 
                   and verified. If any criterion is not satisfied, standard CDD applies.
                 </p>
@@ -868,24 +868,24 @@ export function ClientPolicy() {
           </div>
 
           {sddCriteria.map((criteria, index) => (
-            <div key={index} className="bg-white rounded-lg border-2 border-blue-500/30 p-6">
+            <div key={index} className="bg-white rounded-lg border-2 border-blue-200 p-6">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-blue-500/15 rounded-lg flex items-center justify-center">
-                  <Shield className="w-6 h-6 text-blue-400" />
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <Shield className="w-6 h-6 text-blue-600" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-blue-400">{criteria.category}</p>
-                  <h3 className="text-xl font-bold text-slate-100">{criteria.description}</h3>
+                  <p className="text-sm font-semibold text-blue-600">{criteria.category}</p>
+                  <h3 className="text-xl font-bold text-gray-900">{criteria.description}</h3>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-6 mb-4">
                 <div>
-                  <h4 className="font-semibold text-slate-100 mb-3">Eligibility Criteria</h4>
+                  <h4 className="font-semibold text-gray-900 mb-3">Eligibility Criteria</h4>
                   <ul className="space-y-2">
                     {criteria.criteria.map((criterion, criterionIndex) => (
-                      <li key={criterionIndex} className="flex items-start gap-2 text-sm text-slate-300">
-                        <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
+                      <li key={criterionIndex} className="flex items-start gap-2 text-sm text-gray-700">
+                        <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
                         <span>{criterion}</span>
                       </li>
                     ))}
@@ -893,11 +893,11 @@ export function ClientPolicy() {
                 </div>
 
                 <div>
-                  <h4 className="font-semibold text-slate-100 mb-3">Reduced CDD Requirements</h4>
+                  <h4 className="font-semibold text-gray-900 mb-3">Reduced CDD Requirements</h4>
                   <ul className="space-y-2">
                     {criteria.cddRequirements.map((req, reqIndex) => (
-                      <li key={reqIndex} className="flex items-start gap-2 text-sm text-slate-300">
-                        <FileText className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
+                      <li key={reqIndex} className="flex items-start gap-2 text-sm text-gray-700">
+                        <FileText className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
                         <span>{req}</span>
                       </li>
                     ))}
@@ -905,12 +905,12 @@ export function ClientPolicy() {
                 </div>
               </div>
 
-              <div className="p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
-                <h4 className="font-semibold text-yellow-300 mb-2">Restrictions & Limitations</h4>
+              <div className="p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+                <h4 className="font-semibold text-yellow-900 mb-2">Restrictions & Limitations</h4>
                 <ul className="space-y-1">
                   {criteria.restrictions.map((restriction, restrictionIndex) => (
-                    <li key={restrictionIndex} className="flex items-start gap-2 text-sm text-yellow-300">
-                      <AlertTriangle className="w-4 h-4 text-yellow-400 mt-0.5 flex-shrink-0" />
+                    <li key={restrictionIndex} className="flex items-start gap-2 text-sm text-yellow-800">
+                      <AlertTriangle className="w-4 h-4 text-yellow-600 mt-0.5 flex-shrink-0" />
                       <span>{restriction}</span>
                     </li>
                   ))}
@@ -924,8 +924,8 @@ export function ClientPolicy() {
       {/* Approval Workflow Tab */}
       {activeTab === 'approval-workflow' && (
         <div className="space-y-6">
-          <div className="bg-white rounded-lg border border-white/10 p-6">
-            <h3 className="text-xl font-bold text-slate-100 mb-6">Client Acceptance Approval Workflow</h3>
+          <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <h3 className="text-xl font-bold text-gray-900 mb-6">Client Acceptance Approval Workflow</h3>
 
             {/* Workflow Diagram */}
             <div className="space-y-6">
@@ -935,11 +935,11 @@ export function ClientPolicy() {
                   1
                 </div>
                 <div className="flex-1">
-                  <h4 className="font-bold text-slate-100 mb-2">Initial Assessment</h4>
-                  <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
-                    <p className="text-sm text-slate-300 mb-2"><strong>Responsible:</strong> Client Manager</p>
-                    <p className="text-sm text-slate-300 mb-3"><strong>Actions:</strong></p>
-                    <ul className="space-y-1 text-sm text-slate-300">
+                  <h4 className="font-bold text-gray-900 mb-2">Initial Assessment</h4>
+                  <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                    <p className="text-sm text-gray-700 mb-2"><strong>Responsible:</strong> Client Manager</p>
+                    <p className="text-sm text-gray-700 mb-3"><strong>Actions:</strong></p>
+                    <ul className="space-y-1 text-sm text-gray-700">
                       <li>• Collect preliminary information</li>
                       <li>• Run initial screening (sanctions, PEP, adverse media)</li>
                       <li>• Assess risk tier (Low/Medium/High)</li>
@@ -960,16 +960,16 @@ export function ClientPolicy() {
                     2a
                   </div>
                   <div className="flex-1">
-                    <h4 className="font-bold text-green-300 mb-2">Auto-Approval Path</h4>
-                    <div className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
-                      <p className="text-sm text-slate-300 mb-2"><strong>Criteria:</strong></p>
-                      <ul className="space-y-1 text-sm text-slate-300 mb-3">
+                    <h4 className="font-bold text-green-900 mb-2">Auto-Approval Path</h4>
+                    <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+                      <p className="text-sm text-gray-700 mb-2"><strong>Criteria:</strong></p>
+                      <ul className="space-y-1 text-sm text-gray-700 mb-3">
                         <li>• Risk tier: Low</li>
                         <li>• CDD level: Standard or Simplified</li>
                         <li>• No red flags in screening</li>
                         <li>• Client type eligible for auto-approval</li>
                       </ul>
-                      <p className="text-sm text-slate-300"><strong>Outcome:</strong> Client accepted immediately</p>
+                      <p className="text-sm text-gray-700"><strong>Outcome:</strong> Client accepted immediately</p>
                     </div>
                   </div>
                 </div>
@@ -980,16 +980,16 @@ export function ClientPolicy() {
                     2b
                   </div>
                   <div className="flex-1">
-                    <h4 className="font-bold text-orange-300 mb-2">Manual Review Path</h4>
-                    <div className="p-4 bg-orange-500/10 border border-orange-500/30 rounded-lg">
-                      <p className="text-sm text-slate-300 mb-2"><strong>Triggers:</strong></p>
-                      <ul className="space-y-1 text-sm text-slate-300 mb-3">
+                    <h4 className="font-bold text-orange-900 mb-2">Manual Review Path</h4>
+                    <div className="p-4 bg-orange-50 border border-orange-200 rounded-lg">
+                      <p className="text-sm text-gray-700 mb-2"><strong>Triggers:</strong></p>
+                      <ul className="space-y-1 text-sm text-gray-700 mb-3">
                         <li>• Risk tier: Medium or High</li>
                         <li>• CDD level: Enhanced</li>
                         <li>• Any EDD triggers present</li>
                         <li>• Foreign entity or complex structure</li>
                       </ul>
-                      <p className="text-sm text-slate-300"><strong>Action:</strong> Escalate to Stage 3</p>
+                      <p className="text-sm text-gray-700"><strong>Action:</strong> Escalate to Stage 3</p>
                     </div>
                   </div>
                 </div>
@@ -1005,11 +1005,11 @@ export function ClientPolicy() {
                   3
                 </div>
                 <div className="flex-1">
-                  <h4 className="font-bold text-slate-100 mb-2">Senior Manager Review</h4>
-                  <div className="p-4 bg-purple-500/10 border border-purple-500/30 rounded-lg">
-                    <p className="text-sm text-slate-300 mb-2"><strong>Responsible:</strong> Senior Manager</p>
-                    <p className="text-sm text-slate-300 mb-3"><strong>Review Criteria:</strong></p>
-                    <ul className="space-y-1 text-sm text-slate-300 mb-3">
+                  <h4 className="font-bold text-gray-900 mb-2">Senior Manager Review</h4>
+                  <div className="p-4 bg-purple-50 border border-purple-200 rounded-lg">
+                    <p className="text-sm text-gray-700 mb-2"><strong>Responsible:</strong> Senior Manager</p>
+                    <p className="text-sm text-gray-700 mb-3"><strong>Review Criteria:</strong></p>
+                    <ul className="space-y-1 text-sm text-gray-700 mb-3">
                       <li>• Adequacy of CDD documentation</li>
                       <li>• Risk assessment accuracy</li>
                       <li>• Source of funds/wealth verification</li>
@@ -1031,17 +1031,17 @@ export function ClientPolicy() {
                   4
                 </div>
                 <div className="flex-1">
-                  <h4 className="font-bold text-slate-100 mb-2">Compliance Officer Review (High Risk Only)</h4>
-                  <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
-                    <p className="text-sm text-slate-300 mb-2"><strong>Responsible:</strong> AML/CTF Compliance Officer</p>
-                    <p className="text-sm text-slate-300 mb-3"><strong>Required for:</strong></p>
-                    <ul className="space-y-1 text-sm text-slate-300 mb-3">
+                  <h4 className="font-bold text-gray-900 mb-2">Compliance Officer Review (High Risk Only)</h4>
+                  <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+                    <p className="text-sm text-gray-700 mb-2"><strong>Responsible:</strong> AML/CTF Compliance Officer</p>
+                    <p className="text-sm text-gray-700 mb-3"><strong>Required for:</strong></p>
+                    <ul className="space-y-1 text-sm text-gray-700 mb-3">
                       <li>• Risk tier: High</li>
                       <li>• PEP or sanctioned individual (with further investigation)</li>
                       <li>• Foreign entity from high-risk jurisdiction</li>
                       <li>• Complex beneficial ownership structure</li>
                     </ul>
-                    <p className="text-sm text-slate-300"><strong>Final Decision:</strong> Compliance Officer must sign off before acceptance</p>
+                    <p className="text-sm text-gray-700"><strong>Final Decision:</strong> Compliance Officer must sign off before acceptance</p>
                   </div>
                 </div>
               </div>
@@ -1049,23 +1049,23 @@ export function ClientPolicy() {
           </div>
 
           {/* SLA Timeframes */}
-          <div className="bg-white rounded-lg border border-white/10 p-6">
-            <h3 className="text-xl font-bold text-slate-100 mb-4">Service Level Agreement (SLA) Timeframes</h3>
+          <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <h3 className="text-xl font-bold text-gray-900 mb-4">Service Level Agreement (SLA) Timeframes</h3>
             <div className="grid grid-cols-3 gap-4">
-              <div className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
-                <h4 className="font-semibold text-green-300 mb-2">Auto-Approval</h4>
-                <p className="text-3xl font-bold text-green-400">Instant</p>
-                <p className="text-sm text-green-300 mt-2">System processes immediately</p>
+              <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+                <h4 className="font-semibold text-green-900 mb-2">Auto-Approval</h4>
+                <p className="text-3xl font-bold text-green-600">Instant</p>
+                <p className="text-sm text-green-700 mt-2">System processes immediately</p>
               </div>
-              <div className="p-4 bg-orange-500/10 border border-orange-500/30 rounded-lg">
-                <h4 className="font-semibold text-orange-300 mb-2">Senior Manager Review</h4>
-                <p className="text-3xl font-bold text-orange-400">2 days</p>
-                <p className="text-sm text-orange-300 mt-2">Business days from submission</p>
+              <div className="p-4 bg-orange-50 border border-orange-200 rounded-lg">
+                <h4 className="font-semibold text-orange-900 mb-2">Senior Manager Review</h4>
+                <p className="text-3xl font-bold text-orange-600">2 days</p>
+                <p className="text-sm text-orange-700 mt-2">Business days from submission</p>
               </div>
-              <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
-                <h4 className="font-semibold text-red-300 mb-2">Compliance Review</h4>
-                <p className="text-3xl font-bold text-red-400">5 days</p>
-                <p className="text-sm text-red-300 mt-2">Business days (high risk cases)</p>
+              <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+                <h4 className="font-semibold text-red-900 mb-2">Compliance Review</h4>
+                <p className="text-3xl font-bold text-red-600">5 days</p>
+                <p className="text-sm text-red-700 mt-2">Business days (high risk cases)</p>
               </div>
             </div>
           </div>
@@ -1075,9 +1075,9 @@ export function ClientPolicy() {
       {/* Version History Tab */}
       {activeTab === 'versions' && (
         <div className="space-y-6">
-          <div className="bg-white rounded-lg border border-white/10 p-6">
+          <div className="bg-white rounded-lg border border-gray-200 p-6">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="text-xl font-bold text-slate-100">Policy Version History</h3>
+              <h3 className="text-xl font-bold text-gray-900">Policy Version History</h3>
               {!policyVersions.some(v => v.status === 'draft' || v.status === 'review') && (
                 <Button 
                   onClick={() => setShowDraftModal(true)}
@@ -1090,11 +1090,11 @@ export function ClientPolicy() {
             </div>
 
             {showDraftModal && (
-              <div className="mb-6 p-6 border-2 border-dashed border-indigo-500/30 bg-indigo-500/10/20 rounded-xl space-y-4">
-                <h4 className="text-lg font-bold text-indigo-300">New Policy Version Draft</h4>
+              <div className="mb-6 p-6 border-2 border-dashed border-indigo-200 bg-indigo-50/20 rounded-xl space-y-4">
+                <h4 className="text-lg font-bold text-indigo-900">New Policy Version Draft</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Version Number</label>
+                    <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Version Number</label>
                     <input 
                       type="text" 
                       placeholder="e.g. 3.3" 
@@ -1104,7 +1104,7 @@ export function ClientPolicy() {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Add Key Change</label>
+                    <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Add Key Change</label>
                     <div className="flex gap-2">
                       <input 
                         type="text" 
@@ -1133,11 +1133,11 @@ export function ClientPolicy() {
                     <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Changes List</span>
                     <ul className="space-y-1 bg-white p-3 border rounded-lg">
                       {newChanges.map((ch, idx) => (
-                        <li key={idx} className="text-xs text-slate-300 font-medium flex items-center justify-between">
+                        <li key={idx} className="text-xs text-gray-700 font-medium flex items-center justify-between">
                           <span>• {ch}</span>
                           <button 
                             onClick={() => setNewChanges(prev => prev.filter((_, i) => i !== idx))}
-                            className="text-red-500 hover:text-red-300 font-bold"
+                            className="text-red-500 hover:text-red-700 font-bold"
                           >
                             ✕
                           </button>
@@ -1174,25 +1174,25 @@ export function ClientPolicy() {
                 
                 return (
                   <div key={index} className={`p-6 rounded-lg border-2 ${
-                    isActive ? 'border-green-500 bg-green-500/10' :
-                    isReview ? 'border-indigo-400 bg-indigo-500/10/20' :
-                    isDraft ? 'border-yellow-500 bg-yellow-500/10/20' :
-                    'border-white/10 bg-white/5'
+                    isActive ? 'border-green-500 bg-green-50' :
+                    isReview ? 'border-indigo-400 bg-indigo-50/20' :
+                    isDraft ? 'border-yellow-500 bg-yellow-50/20' :
+                    'border-gray-200 bg-gray-50'
                   }`}>
                     <div className="flex items-start justify-between mb-4">
                       <div>
                         <div className="flex items-center gap-3 mb-2">
-                          <h4 className="text-2xl font-bold text-slate-100">Version {version.version}</h4>
+                          <h4 className="text-2xl font-bold text-gray-900">Version {version.version}</h4>
                           <span className={`px-3 py-1 rounded-full text-xs font-bold ${
                             isActive ? 'bg-green-500 text-white' :
                             isReview ? 'bg-indigo-600 text-white' :
-                            isDraft ? 'bg-yellow-500 text-yellow-300 border border-yellow-500/30' :
+                            isDraft ? 'bg-yellow-500 text-yellow-800 border border-yellow-200' :
                             'bg-gray-400 text-white'
                           }`}>
                             {version.status.toUpperCase() === 'REVIEW' ? 'PENDING APPROVAL' : version.status.toUpperCase()}
                           </span>
                         </div>
-                        <div className="flex items-center gap-6 text-sm text-slate-300">
+                        <div className="flex items-center gap-6 text-sm text-gray-600">
                           <span>{isActive ? 'Effective Date' : 'Created Date'}: {version.effectiveDate.toLocaleDateString()}</span>
                           <span>•</span>
                           <span>Approved by: {isActive ? version.approvedBy : 'Pending Sign-off'}</span>
@@ -1238,11 +1238,11 @@ export function ClientPolicy() {
                     </div>
 
                     <div>
-                      <h5 className="font-semibold text-slate-100 mb-2">Key Changes:</h5>
+                      <h5 className="font-semibold text-gray-900 mb-2">Key Changes:</h5>
                       <ul className="space-y-1">
                         {version.changes.map((change, changeIndex) => (
-                          <li key={changeIndex} className="text-sm text-slate-300 flex items-start">
-                            <CheckCircle className="w-4 h-4 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
+                          <li key={changeIndex} className="text-sm text-gray-700 flex items-start">
+                            <CheckCircle className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
                             <span>{change}</span>
                           </li>
                         ))}
@@ -1255,12 +1255,12 @@ export function ClientPolicy() {
           </div>
 
           {/* Policy Governance */}
-          <div className="bg-white rounded-lg border border-white/10 p-6">
-            <h3 className="text-xl font-bold text-slate-100 mb-4">Policy Governance</h3>
+          <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <h3 className="text-xl font-bold text-gray-900 mb-4">Policy Governance</h3>
             <div className="grid grid-cols-2 gap-6">
-              <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
-                <h4 className="font-semibold text-blue-300 mb-3">Review Schedule</h4>
-                <ul className="space-y-2 text-sm text-blue-300">
+              <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                <h4 className="font-semibold text-blue-900 mb-3">Review Schedule</h4>
+                <ul className="space-y-2 text-sm text-blue-800">
                   <li>• <strong>Annual Review:</strong> July of each year</li>
                   <li>• <strong>Trigger-based Review:</strong> Material AUSTRAC Rule changes</li>
                   <li>• <strong>Ad-hoc Review:</strong> Significant firm risk profile changes</li>
@@ -1268,9 +1268,9 @@ export function ClientPolicy() {
                 </ul>
               </div>
 
-              <div className="p-4 bg-purple-500/10 border border-purple-500/30 rounded-lg">
-                <h4 className="font-semibold text-purple-300 mb-3">Approval Authority</h4>
-                <ul className="space-y-2 text-sm text-purple-300">
+              <div className="p-4 bg-purple-50 border border-purple-200 rounded-lg">
+                <h4 className="font-semibold text-purple-900 mb-3">Approval Authority</h4>
+                <ul className="space-y-2 text-sm text-purple-800">
                   <li>• <strong>Draft Policy:</strong> Compliance Officer prepares</li>
                   <li>• <strong>Policy Changes:</strong> Senior Manager reviews</li>
                   <li>• <strong>Final Approval:</strong> Governing Body approves</li>

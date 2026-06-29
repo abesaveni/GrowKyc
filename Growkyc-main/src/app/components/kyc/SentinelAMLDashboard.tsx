@@ -106,30 +106,30 @@ export function SentinelAMLDashboard() {
 
   const getSeverityColor = (severity: string) => {
     switch (severity) {
-      case 'critical': return 'text-red-400 bg-red-500/10 border-red-500/30';
-      case 'high': return 'text-orange-400 bg-orange-500/10 border-orange-500/30';
-      case 'medium': return 'text-yellow-400 bg-yellow-500/10 border-yellow-500/30';
-      case 'low': return 'text-blue-400 bg-blue-500/10 border-blue-500/30';
-      default: return 'text-slate-300 bg-white/5 border-white/10';
+      case 'critical': return 'text-red-600 bg-red-50 border-red-200';
+      case 'high': return 'text-orange-600 bg-orange-50 border-orange-200';
+      case 'medium': return 'text-yellow-600 bg-yellow-50 border-yellow-200';
+      case 'low': return 'text-blue-600 bg-blue-50 border-blue-200';
+      default: return 'text-gray-600 bg-gray-50 border-gray-200';
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'cleared': return 'bg-green-500/15 text-green-300';
-      case 'under_review': return 'bg-blue-500/15 text-blue-300';
-      case 'investigating': return 'bg-yellow-500/15 text-yellow-300';
-      case 'pending': return 'bg-orange-500/15 text-orange-300';
-      default: return 'bg-white/5 text-slate-300';
+      case 'cleared': return 'bg-green-100 text-green-700';
+      case 'under_review': return 'bg-blue-100 text-blue-700';
+      case 'investigating': return 'bg-yellow-100 text-yellow-700';
+      case 'pending': return 'bg-orange-100 text-orange-700';
+      default: return 'bg-gray-100 text-gray-700';
     }
   };
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
-      case 'critical': return 'border-l-4 border-red-500 bg-red-500/10';
-      case 'high': return 'border-l-4 border-orange-500 bg-orange-500/10';
-      case 'medium': return 'border-l-4 border-yellow-500 bg-yellow-500/10';
-      default: return 'border-l-4 border-blue-500 bg-blue-500/10';
+      case 'critical': return 'border-l-4 border-red-500 bg-red-50';
+      case 'high': return 'border-l-4 border-orange-500 bg-orange-50';
+      case 'medium': return 'border-l-4 border-yellow-500 bg-yellow-50';
+      default: return 'border-l-4 border-blue-500 bg-blue-50';
     }
   };
 
@@ -138,14 +138,14 @@ export function SentinelAMLDashboard() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-slate-100">Sentinel AML Dashboard</h1>
-          <p className="text-slate-300 mt-1">AUSTRAC Tranche 2 Compliance Platform</p>
+          <h1 className="text-3xl font-bold text-gray-900">Sentinel AML Dashboard</h1>
+          <p className="text-gray-600 mt-1">AUSTRAC Tranche 2 Compliance Platform</p>
         </div>
         <div className="flex items-center gap-3">
           <select
             value={selectedPeriod}
             onChange={(e) => setSelectedPeriod(e.target.value)}
-            className="px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="24h">Last 24 Hours</option>
             <option value="7d">Last 7 Days</option>
@@ -160,16 +160,16 @@ export function SentinelAMLDashboard() {
       </div>
 
       {/* Critical Alerts Banner */}
-      <div className="bg-red-500/10 border-2 border-red-500/30 rounded-lg p-4">
+      <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <AlertTriangle className="w-6 h-6 text-red-400 mr-3" />
+            <AlertTriangle className="w-6 h-6 text-red-600 mr-3" />
             <div>
-              <h3 className="font-bold text-red-300">Critical Alert: Sanctions Match Detected</h3>
-              <p className="text-sm text-red-300">Apex Holdings Pty Ltd - Immediate action required</p>
+              <h3 className="font-bold text-red-900">Critical Alert: Sanctions Match Detected</h3>
+              <p className="text-sm text-red-700">Apex Holdings Pty Ltd - Immediate action required</p>
             </div>
           </div>
-          <Button variant="outline" className="border-red-300 text-red-300 hover:bg-red-500/15">
+          <Button variant="outline" className="border-red-300 text-red-700 hover:bg-red-100">
             Review Now
           </Button>
         </div>
@@ -180,21 +180,21 @@ export function SentinelAMLDashboard() {
         {metrics.map((metric, index) => {
           const Icon = metric.icon;
           return (
-            <div key={index} className="bg-white rounded-lg border border-white/10 p-4 hover:shadow-md transition-shadow">
+            <div key={index} className="bg-white rounded-lg border border-gray-200 p-4 hover:shadow-md transition-shadow">
               <div className="flex items-center justify-between mb-2">
                 <div className={`w-10 h-10 rounded-lg flex items-center justify-center bg-${metric.color}-100`}>
                   <Icon className={`w-5 h-5 text-${metric.color}-600`} />
                 </div>
                 {metric.change && (
                   <span className={`text-xs font-semibold ${
-                    metric.trend === 'up' ? 'text-red-400' : 'text-green-400'
+                    metric.trend === 'up' ? 'text-red-600' : 'text-green-600'
                   }`}>
                     {metric.change}
                   </span>
                 )}
               </div>
-              <div className="text-2xl font-bold text-slate-100">{metric.value}</div>
-              <div className="text-xs text-slate-300 mt-1">{metric.label}</div>
+              <div className="text-2xl font-bold text-gray-900">{metric.value}</div>
+              <div className="text-xs text-gray-600 mt-1">{metric.label}</div>
             </div>
           );
         })}
@@ -203,19 +203,19 @@ export function SentinelAMLDashboard() {
       {/* Risk Heatmap & Recent Alerts */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Risk Distribution */}
-        <div className="bg-white rounded-lg border border-white/10 p-6">
-          <h3 className="font-bold text-slate-100 mb-4 flex items-center">
-            <Activity className="w-5 h-5 mr-2 text-blue-400" />
+        <div className="bg-white rounded-lg border border-gray-200 p-6">
+          <h3 className="font-bold text-gray-900 mb-4 flex items-center">
+            <Activity className="w-5 h-5 mr-2 text-blue-600" />
             Client Risk Distribution
           </h3>
           <div className="space-y-4">
             {riskDistribution.map((risk, index) => (
               <div key={index}>
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-semibold text-slate-300">{risk.level} Risk</span>
-                  <span className="text-sm text-slate-300">{risk.count} clients ({risk.percentage}%)</span>
+                  <span className="text-sm font-semibold text-gray-700">{risk.level} Risk</span>
+                  <span className="text-sm text-gray-600">{risk.count} clients ({risk.percentage}%)</span>
                 </div>
-                <div className="w-full bg-white/10 rounded-full h-3">
+                <div className="w-full bg-gray-200 rounded-full h-3">
                   <div
                     className={`${risk.color} h-3 rounded-full transition-all`}
                     style={{ width: `${risk.percentage}%` }}
@@ -226,25 +226,25 @@ export function SentinelAMLDashboard() {
           </div>
 
           <div className="mt-6 pt-6 border-t">
-            <h4 className="font-semibold text-slate-100 mb-3">Risk Trends</h4>
+            <h4 className="font-semibold text-gray-900 mb-3">Risk Trends</h4>
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-slate-300">High Risk Increase</span>
-                <span className="font-semibold text-red-400">+3 this week</span>
+                <span className="text-gray-600">High Risk Increase</span>
+                <span className="font-semibold text-red-600">+3 this week</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-slate-300">Enhanced CDD Required</span>
-                <span className="font-semibold text-orange-400">5 pending</span>
+                <span className="text-gray-600">Enhanced CDD Required</span>
+                <span className="font-semibold text-orange-600">5 pending</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Recent Alerts */}
-        <div className="lg:col-span-2 bg-white rounded-lg border border-white/10 p-6">
+        <div className="lg:col-span-2 bg-white rounded-lg border border-gray-200 p-6">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-bold text-slate-100 flex items-center">
-              <Bell className="w-5 h-5 mr-2 text-orange-400" />
+            <h3 className="font-bold text-gray-900 flex items-center">
+              <Bell className="w-5 h-5 mr-2 text-orange-600" />
               Recent Monitoring Alerts
             </h3>
             <Button variant="outline" size="sm">View All</Button>
@@ -282,9 +282,9 @@ export function SentinelAMLDashboard() {
       {/* Upcoming Tasks & Quick Actions */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Upcoming Tasks */}
-        <div className="bg-white rounded-lg border border-white/10 p-6">
-          <h3 className="font-bold text-slate-100 mb-4 flex items-center">
-            <Clock className="w-5 h-5 mr-2 text-blue-400" />
+        <div className="bg-white rounded-lg border border-gray-200 p-6">
+          <h3 className="font-bold text-gray-900 mb-4 flex items-center">
+            <Clock className="w-5 h-5 mr-2 text-blue-600" />
             Upcoming Tasks & Reviews
           </h3>
           <div className="space-y-2">
@@ -295,8 +295,8 @@ export function SentinelAMLDashboard() {
               >
                 <div className="flex items-center justify-between">
                   <div className="flex-1">
-                    <p className="font-semibold text-slate-100 text-sm">{task.task}</p>
-                    <p className="text-xs text-slate-300 mt-1">Due: {task.due}</p>
+                    <p className="font-semibold text-gray-900 text-sm">{task.task}</p>
+                    <p className="text-xs text-gray-600 mt-1">Due: {task.due}</p>
                   </div>
                   <Button size="sm" variant="outline">
                     Start
@@ -308,8 +308,8 @@ export function SentinelAMLDashboard() {
         </div>
 
         {/* Quick Actions */}
-        <div className="bg-white rounded-lg border border-white/10 p-6">
-          <h3 className="font-bold text-slate-100 mb-4">Quick Actions</h3>
+        <div className="bg-white rounded-lg border border-gray-200 p-6">
+          <h3 className="font-bold text-gray-900 mb-4">Quick Actions</h3>
           <div className="grid grid-cols-2 gap-3">
             <Button className="justify-start h-auto py-4 bg-blue-600 hover:bg-blue-700">
               <Users className="w-5 h-5 mr-2" />
@@ -356,25 +356,25 @@ export function SentinelAMLDashboard() {
           </div>
 
           <div className="mt-6 pt-6 border-t">
-            <h4 className="font-semibold text-slate-100 mb-3">System Status</h4>
+            <h4 className="font-semibold text-gray-900 mb-3">System Status</h4>
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-sm text-slate-300">GreenID Integration</span>
-                <span className="flex items-center text-green-400 text-sm font-semibold">
+                <span className="text-sm text-gray-600">GreenID Integration</span>
+                <span className="flex items-center text-green-600 text-sm font-semibold">
                   <CheckCircle className="w-4 h-4 mr-1" />
                   Active
                 </span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm text-slate-300">InfoTrack Integration</span>
-                <span className="flex items-center text-green-400 text-sm font-semibold">
+                <span className="text-sm text-gray-600">InfoTrack Integration</span>
+                <span className="flex items-center text-green-600 text-sm font-semibold">
                   <CheckCircle className="w-4 h-4 mr-1" />
                   Active
                 </span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm text-slate-300">AUSTRAC Enrolment</span>
-                <span className="flex items-center text-green-400 text-sm font-semibold">
+                <span className="text-sm text-gray-600">AUSTRAC Enrolment</span>
+                <span className="flex items-center text-green-600 text-sm font-semibold">
                   <CheckCircle className="w-4 h-4 mr-1" />
                   Current
                 </span>

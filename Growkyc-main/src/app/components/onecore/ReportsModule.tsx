@@ -27,8 +27,8 @@ export function ReportsModule({ role }: ReportsModuleProps) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-100">Reports & Analytics</h1>
-          <p className="text-slate-300 mt-1">Custom dashboards and business intelligence</p>
+          <h1 className="text-2xl font-bold text-gray-900">Reports & Analytics</h1>
+          <p className="text-gray-600 mt-1">Custom dashboards and business intelligence</p>
         </div>
         <div className="flex items-center gap-3">
           <Button variant="outline">
@@ -48,64 +48,64 @@ export function ReportsModule({ role }: ReportsModuleProps) {
 
       {/* KPIs */}
       <div className="grid grid-cols-4 gap-4">
-        <div className="bg-white border border-white/10 rounded-lg p-6">
+        <div className="bg-white border border-gray-300 rounded-lg p-6">
           <div className="flex items-center justify-between mb-4">
-            <p className="text-sm font-medium text-slate-300">Total Revenue</p>
-            <DollarSign className="w-5 h-5 text-green-400" />
+            <p className="text-sm font-medium text-gray-600">Total Revenue</p>
+            <DollarSign className="w-5 h-5 text-green-600" />
           </div>
-          <p className="text-3xl font-bold text-slate-100">$324.5K</p>
+          <p className="text-3xl font-bold text-gray-900">$324.5K</p>
           <div className="flex items-center gap-1 mt-2">
-            <TrendingUp className="w-4 h-4 text-green-400" />
-            <span className="text-sm text-green-400 font-medium">+18.2%</span>
-            <span className="text-xs text-slate-400">vs last period</span>
+            <TrendingUp className="w-4 h-4 text-green-600" />
+            <span className="text-sm text-green-600 font-medium">+18.2%</span>
+            <span className="text-xs text-gray-500">vs last period</span>
           </div>
         </div>
 
-        <div className="bg-white border border-white/10 rounded-lg p-6">
+        <div className="bg-white border border-gray-300 rounded-lg p-6">
           <div className="flex items-center justify-between mb-4">
-            <p className="text-sm font-medium text-slate-300">New Customers</p>
-            <Users className="w-5 h-5 text-blue-400" />
+            <p className="text-sm font-medium text-gray-600">New Customers</p>
+            <Users className="w-5 h-5 text-blue-600" />
           </div>
-          <p className="text-3xl font-bold text-slate-100">142</p>
+          <p className="text-3xl font-bold text-gray-900">142</p>
           <div className="flex items-center gap-1 mt-2">
-            <TrendingUp className="w-4 h-4 text-green-400" />
-            <span className="text-sm text-green-400 font-medium">+12.5%</span>
-            <span className="text-xs text-slate-400">vs last period</span>
+            <TrendingUp className="w-4 h-4 text-green-600" />
+            <span className="text-sm text-green-600 font-medium">+12.5%</span>
+            <span className="text-xs text-gray-500">vs last period</span>
           </div>
         </div>
 
-        <div className="bg-white border border-white/10 rounded-lg p-6">
+        <div className="bg-white border border-gray-300 rounded-lg p-6">
           <div className="flex items-center justify-between mb-4">
-            <p className="text-sm font-medium text-slate-300">Conversion Rate</p>
-            <Target className="w-5 h-5 text-purple-400" />
+            <p className="text-sm font-medium text-gray-600">Conversion Rate</p>
+            <Target className="w-5 h-5 text-purple-600" />
           </div>
-          <p className="text-3xl font-bold text-slate-100">24.8%</p>
+          <p className="text-3xl font-bold text-gray-900">24.8%</p>
           <div className="flex items-center gap-1 mt-2">
-            <TrendingDown className="w-4 h-4 text-red-400" />
-            <span className="text-sm text-red-400 font-medium">-2.1%</span>
-            <span className="text-xs text-slate-400">vs last period</span>
+            <TrendingDown className="w-4 h-4 text-red-600" />
+            <span className="text-sm text-red-600 font-medium">-2.1%</span>
+            <span className="text-xs text-gray-500">vs last period</span>
           </div>
         </div>
 
-        <div className="bg-white border border-white/10 rounded-lg p-6">
+        <div className="bg-white border border-gray-300 rounded-lg p-6">
           <div className="flex items-center justify-between mb-4">
-            <p className="text-sm font-medium text-slate-300">Avg Deal Size</p>
-            <BarChart3 className="w-5 h-5 text-orange-400" />
+            <p className="text-sm font-medium text-gray-600">Avg Deal Size</p>
+            <BarChart3 className="w-5 h-5 text-orange-600" />
           </div>
-          <p className="text-3xl font-bold text-slate-100">$23.4K</p>
+          <p className="text-3xl font-bold text-gray-900">$23.4K</p>
           <div className="flex items-center gap-1 mt-2">
-            <TrendingUp className="w-4 h-4 text-green-400" />
-            <span className="text-sm text-green-400 font-medium">+8.7%</span>
-            <span className="text-xs text-slate-400">vs last period</span>
+            <TrendingUp className="w-4 h-4 text-green-600" />
+            <span className="text-sm text-green-600 font-medium">+8.7%</span>
+            <span className="text-xs text-gray-500">vs last period</span>
           </div>
         </div>
       </div>
 
       {/* Charts */}
       <div className="grid grid-cols-2 gap-6">
-        <div className="bg-white border border-white/10 rounded-lg p-6">
+        <div className="bg-white border border-gray-300 rounded-lg p-6">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="font-semibold text-slate-100">Revenue Trend</h3>
+            <h3 className="font-semibold text-gray-900">Revenue Trend</h3>
             <Button variant="ghost" size="sm">
               <Share2 className="w-4 h-4" />
             </Button>
@@ -117,15 +117,15 @@ export function ReportsModule({ role }: ReportsModuleProps) {
                   className="w-full bg-indigo-600 rounded-t hover:bg-indigo-700 transition-colors cursor-pointer"
                   style={{ height: `${value}%` }}
                 />
-                <span className="text-xs text-slate-400">{idx + 1}</span>
+                <span className="text-xs text-gray-500">{idx + 1}</span>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="bg-white border border-white/10 rounded-lg p-6">
+        <div className="bg-white border border-gray-300 rounded-lg p-6">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="font-semibold text-slate-100">Lead Sources</h3>
+            <h3 className="font-semibold text-gray-900">Lead Sources</h3>
             <Button variant="ghost" size="sm">
               <Share2 className="w-4 h-4" />
             </Button>
@@ -140,13 +140,13 @@ export function ReportsModule({ role }: ReportsModuleProps) {
             ].map((item, idx) => (
               <div key={idx} className="space-y-2">
                 <div className="flex items-center justify-between text-sm">
-                  <span className="font-medium text-slate-100">{item.source}</span>
+                  <span className="font-medium text-gray-900">{item.source}</span>
                   <div className="flex items-center gap-3">
-                    <span className="text-slate-300">{item.count} leads</span>
-                    <span className="font-semibold text-slate-100">{item.percentage}%</span>
+                    <span className="text-gray-600">{item.count} leads</span>
+                    <span className="font-semibold text-gray-900">{item.percentage}%</span>
                   </div>
                 </div>
-                <div className="h-2 bg-white/10 rounded-full">
+                <div className="h-2 bg-gray-200 rounded-full">
                   <div
                     className={`h-2 ${item.color} rounded-full`}
                     style={{ width: `${item.percentage}%` }}
@@ -157,9 +157,9 @@ export function ReportsModule({ role }: ReportsModuleProps) {
           </div>
         </div>
 
-        <div className="bg-white border border-white/10 rounded-lg p-6">
+        <div className="bg-white border border-gray-300 rounded-lg p-6">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="font-semibold text-slate-100">Sales Pipeline</h3>
+            <h3 className="font-semibold text-gray-900">Sales Pipeline</h3>
             <Button variant="ghost" size="sm">
               <Share2 className="w-4 h-4" />
             </Button>
@@ -175,13 +175,13 @@ export function ReportsModule({ role }: ReportsModuleProps) {
               <div key={idx} className="flex items-center gap-4">
                 <div className="flex-1">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-medium text-slate-100">{stage.stage}</span>
+                    <span className="text-sm font-medium text-gray-900">{stage.stage}</span>
                     <div className="text-right">
-                      <p className="text-sm font-semibold text-slate-100">${(stage.value / 1000).toFixed(0)}K</p>
-                      <p className="text-xs text-slate-400">{stage.deals} deals</p>
+                      <p className="text-sm font-semibold text-gray-900">${(stage.value / 1000).toFixed(0)}K</p>
+                      <p className="text-xs text-gray-500">{stage.deals} deals</p>
                     </div>
                   </div>
-                  <div className="h-2 bg-white/10 rounded-full">
+                  <div className="h-2 bg-gray-200 rounded-full">
                     <div className={`h-2 ${stage.color} rounded-full`} style={{ width: `${(stage.value / 285000) * 100}%` }} />
                   </div>
                 </div>
@@ -190,9 +190,9 @@ export function ReportsModule({ role }: ReportsModuleProps) {
           </div>
         </div>
 
-        <div className="bg-white border border-white/10 rounded-lg p-6">
+        <div className="bg-white border border-gray-300 rounded-lg p-6">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="font-semibold text-slate-100">Team Performance</h3>
+            <h3 className="font-semibold text-gray-900">Team Performance</h3>
             <Button variant="ghost" size="sm">
               <Share2 className="w-4 h-4" />
             </Button>
@@ -208,19 +208,19 @@ export function ReportsModule({ role }: ReportsModuleProps) {
               <div key={idx} className="space-y-2">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-indigo-500/15 flex items-center justify-center">
-                      <span className="text-xs font-semibold text-indigo-400">
+                    <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center">
+                      <span className="text-xs font-semibold text-indigo-600">
                         {member.name.split(' ').map(n => n[0]).join('')}
                       </span>
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-slate-100">{member.name}</p>
-                      <p className="text-xs text-slate-400">{member.deals} deals • ${(member.revenue / 1000).toFixed(0)}K</p>
+                      <p className="text-sm font-medium text-gray-900">{member.name}</p>
+                      <p className="text-xs text-gray-500">{member.deals} deals • ${(member.revenue / 1000).toFixed(0)}K</p>
                     </div>
                   </div>
-                  <span className="text-sm font-semibold text-slate-100">{member.quota}%</span>
+                  <span className="text-sm font-semibold text-gray-900">{member.quota}%</span>
                 </div>
-                <div className="h-2 bg-white/10 rounded-full">
+                <div className="h-2 bg-gray-200 rounded-full">
                   <div
                     className={`h-2 rounded-full ${
                       member.quota >= 90 ? 'bg-green-600' :

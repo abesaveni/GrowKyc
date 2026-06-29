@@ -116,7 +116,7 @@ export function ComplianceManagerDecision({ caseId, onBack }: ComplianceManagerD
   };
 
   return (
-    <div className="min-h-screen bg-white/5 p-8">
+    <div className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-[1600px] mx-auto space-y-6">
         {/* Header */}
         <div className="bg-gradient-to-r from-red-900 via-red-800 to-orange-900 rounded-lg p-6 text-white shadow-xl">
@@ -136,7 +136,7 @@ export function ComplianceManagerDecision({ caseId, onBack }: ComplianceManagerD
                 <p className="text-white/90">Final decision point for {caseData.caseId}</p>
               </div>
             </div>
-            <Badge className="bg-white text-red-300 text-xl px-6 py-3">
+            <Badge className="bg-white text-red-900 text-xl px-6 py-3">
               MLRO DECISION REQUIRED
             </Badge>
           </div>
@@ -146,48 +146,48 @@ export function ComplianceManagerDecision({ caseId, onBack }: ComplianceManagerD
         <Card className="border-2 border-blue-300 shadow-lg">
           <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
             <CardTitle className="flex items-center gap-2">
-              <FileText className="w-6 h-6 text-blue-400" />
+              <FileText className="w-6 h-6 text-blue-600" />
               Case Summary
             </CardTitle>
           </CardHeader>
           <CardContent className="p-6">
             <div className="grid md:grid-cols-3 gap-6">
               <div>
-                <p className="text-sm text-slate-300 mb-1">Subject</p>
-                <p className="font-bold text-lg text-slate-100">{caseData.subject}</p>
-                <p className="text-sm text-slate-300 mt-1">Case: {caseData.caseId}</p>
+                <p className="text-sm text-gray-600 mb-1">Subject</p>
+                <p className="font-bold text-lg text-gray-900">{caseData.subject}</p>
+                <p className="text-sm text-gray-600 mt-1">Case: {caseData.caseId}</p>
               </div>
               <div>
-                <p className="text-sm text-slate-300 mb-1">Trigger Reason</p>
-                <p className="font-semibold text-slate-100">{caseData.triggerReason}</p>
+                <p className="text-sm text-gray-600 mb-1">Trigger Reason</p>
+                <p className="font-semibold text-gray-900">{caseData.triggerReason}</p>
               </div>
               <div>
-                <p className="text-sm text-slate-300 mb-1">Current Risk Rating</p>
-                <Badge className="bg-red-500/15 text-red-300 border-red-300 text-lg px-4 py-2">
+                <p className="text-sm text-gray-600 mb-1">Current Risk Rating</p>
+                <Badge className="bg-red-100 text-red-700 border-red-300 text-lg px-4 py-2">
                   {caseData.currentRisk.toUpperCase()}
                 </Badge>
               </div>
               <div>
-                <p className="text-sm text-slate-300 mb-1">Summary of Findings</p>
-                <p className="text-sm text-slate-100">
+                <p className="text-sm text-gray-600 mb-1">Summary of Findings</p>
+                <p className="text-sm text-gray-800">
                   Director matched to DFAT sanctions list. Severe adverse media linking to money laundering
                   investigation. Unexplained $2.5M capital injection.
                 </p>
               </div>
               <div>
-                <p className="text-sm text-slate-300 mb-1">Service Status</p>
+                <p className="text-sm text-gray-600 mb-1">Service Status</p>
                 <div className="flex items-center gap-2">
-                  <Ban className="w-5 h-5 text-orange-400" />
-                  <p className="font-semibold text-orange-300">{caseData.serviceStatus}</p>
+                  <Ban className="w-5 h-5 text-orange-600" />
+                  <p className="font-semibold text-orange-700">{caseData.serviceStatus}</p>
                 </div>
               </div>
               <div>
-                <p className="text-sm text-slate-300 mb-1">Investigation Completed</p>
+                <p className="text-sm text-gray-600 mb-1">Investigation Completed</p>
                 <div className="flex items-center gap-2">
-                  <Calendar className="w-5 h-5 text-slate-300" />
-                  <p className="font-semibold text-slate-100">{caseData.completedDate}</p>
+                  <Calendar className="w-5 h-5 text-gray-600" />
+                  <p className="font-semibold text-gray-900">{caseData.completedDate}</p>
                 </div>
-                <p className="text-sm text-slate-300">By: {caseData.assignedAnalyst}</p>
+                <p className="text-sm text-gray-600">By: {caseData.assignedAnalyst}</p>
               </div>
             </div>
           </CardContent>
@@ -197,62 +197,62 @@ export function ComplianceManagerDecision({ caseId, onBack }: ComplianceManagerD
         <Card className="border-2 border-purple-300 shadow-lg">
           <CardHeader className="bg-gradient-to-r from-purple-50 to-pink-50 border-b">
             <CardTitle className="flex items-center gap-2">
-              <User className="w-6 h-6 text-purple-400" />
+              <User className="w-6 h-6 text-purple-600" />
               Analyst Recommendation
             </CardTitle>
           </CardHeader>
           <CardContent className="p-6">
             <div className="grid md:grid-cols-3 gap-6 mb-6">
               <div>
-                <p className="text-sm text-slate-300 mb-1">Analyst</p>
-                <p className="font-bold text-slate-100">{recommendation.analyst}</p>
+                <p className="text-sm text-gray-600 mb-1">Analyst</p>
+                <p className="font-bold text-gray-900">{recommendation.analyst}</p>
               </div>
               <div>
-                <p className="text-sm text-slate-300 mb-1">Recommendation</p>
+                <p className="text-sm text-gray-600 mb-1">Recommendation</p>
                 {recommendation.recommendation === 'submit' && (
-                  <Badge className="bg-red-500/15 text-red-300 border-red-300 text-lg px-4 py-2">
+                  <Badge className="bg-red-100 text-red-700 border-red-300 text-lg px-4 py-2">
                     <Send className="w-5 h-5 mr-2" />
                     SUBMIT TO AUSTRAC
                   </Badge>
                 )}
               </div>
               <div>
-                <p className="text-sm text-slate-300 mb-1">Confidence</p>
-                <Badge className="bg-green-500/15 text-green-300 border-green-300 text-lg px-4 py-2">
+                <p className="text-sm text-gray-600 mb-1">Confidence</p>
+                <Badge className="bg-green-100 text-green-700 border-green-300 text-lg px-4 py-2">
                   {recommendation.confidence}
                 </Badge>
               </div>
             </div>
 
             <div className="mb-4">
-              <p className="text-sm font-bold text-slate-100 mb-2">Key Evidence</p>
+              <p className="text-sm font-bold text-gray-900 mb-2">Key Evidence</p>
               <div className="space-y-2">
                 {recommendation.keyEvidence.map((evidence, idx) => (
-                  <div key={idx} className="flex items-start gap-2 p-3 bg-red-500/10 rounded-lg border border-red-500/30">
-                    <CheckCircle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
-                    <p className="text-sm text-red-300">{evidence}</p>
+                  <div key={idx} className="flex items-start gap-2 p-3 bg-red-50 rounded-lg border border-red-200">
+                    <CheckCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+                    <p className="text-sm text-red-900">{evidence}</p>
                   </div>
                 ))}
               </div>
             </div>
 
             {recommendation.missingEvidence.length > 0 ? (
-              <div className="p-4 bg-amber-500/10 rounded-lg border border-amber-300">
+              <div className="p-4 bg-amber-50 rounded-lg border border-amber-300">
                 <div className="flex items-center gap-2 mb-2">
-                  <AlertTriangle className="w-5 h-5 text-amber-400" />
-                  <p className="font-bold text-amber-300">Missing Evidence</p>
+                  <AlertTriangle className="w-5 h-5 text-amber-600" />
+                  <p className="font-bold text-amber-900">Missing Evidence</p>
                 </div>
-                <ul className="space-y-1 text-sm text-amber-300">
+                <ul className="space-y-1 text-sm text-amber-800">
                   {recommendation.missingEvidence.map((item, idx) => (
                     <li key={idx}>• {item}</li>
                   ))}
                 </ul>
               </div>
             ) : (
-              <div className="p-4 bg-green-500/10 rounded-lg border border-green-300">
+              <div className="p-4 bg-green-50 rounded-lg border border-green-300">
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
-                  <p className="font-bold text-green-300">All evidence complete - case ready for decision</p>
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  <p className="font-bold text-green-900">All evidence complete - case ready for decision</p>
                 </div>
               </div>
             )}
@@ -263,7 +263,7 @@ export function ComplianceManagerDecision({ caseId, onBack }: ComplianceManagerD
         <Card className="border-4 border-red-300 shadow-2xl">
           <CardHeader className="bg-gradient-to-r from-red-50 to-orange-50 border-b">
             <CardTitle className="flex items-center gap-2 text-2xl">
-              <Shield className="w-8 h-8 text-red-400" />
+              <Shield className="w-8 h-8 text-red-600" />
               Final Decision
             </CardTitle>
           </CardHeader>
@@ -279,7 +279,7 @@ export function ComplianceManagerDecision({ caseId, onBack }: ComplianceManagerD
                     className={`p-5 rounded-xl border-3 cursor-pointer transition-all ${
                       isSelected
                         ? `border-${option.color}-500 bg-${option.color}-50 ring-4 ring-${option.color}-200`
-                        : 'border-white/10 hover:border-gray-400 bg-white'
+                        : 'border-gray-300 hover:border-gray-400 bg-white'
                     }`}
                   >
                     <div className="flex items-start gap-4">
@@ -288,13 +288,13 @@ export function ComplianceManagerDecision({ caseId, onBack }: ComplianceManagerD
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
-                          <h3 className="text-lg font-bold text-slate-100">{option.label}</h3>
+                          <h3 className="text-lg font-bold text-gray-900">{option.label}</h3>
                           {isSelected && (
                             <CheckCircle className={`w-6 h-6 text-${option.color}-600`} />
                           )}
                         </div>
-                        <p className="text-sm text-slate-300 mb-2">{option.description}</p>
-                        <p className="text-xs text-slate-300">
+                        <p className="text-sm text-gray-700 mb-2">{option.description}</p>
+                        <p className="text-xs text-gray-600">
                           <strong>Impact:</strong> {option.impact}
                         </p>
                       </div>
@@ -307,38 +307,38 @@ export function ComplianceManagerDecision({ caseId, onBack }: ComplianceManagerD
             {finalDecision && (
               <div className="space-y-4 pt-6 border-t">
                 <div>
-                  <label className="block text-sm font-bold text-slate-100 mb-2">Decision Reason / Rationale *</label>
+                  <label className="block text-sm font-bold text-gray-900 mb-2">Decision Reason / Rationale *</label>
                   <textarea
                     rows={4}
-                    className="w-full px-4 py-3 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
                     placeholder="Document your reasoning for this decision. This will form part of the audit trail..."
                   />
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-bold text-slate-100 mb-2">Reviewer Name</label>
+                    <label className="block text-sm font-bold text-gray-900 mb-2">Reviewer Name</label>
                     <input
                       type="text"
                       value="Lisa Martinez (MLRO)"
                       disabled
-                      className="w-full px-4 py-3 border-2 border-white/10 rounded-lg bg-white/5"
+                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg bg-gray-100"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-slate-100 mb-2">Approval Date</label>
+                    <label className="block text-sm font-bold text-gray-900 mb-2">Approval Date</label>
                     <input
                       type="text"
                       value={new Date().toISOString().split('T')[0]}
                       disabled
-                      className="w-full px-4 py-3 border-2 border-white/10 rounded-lg bg-white/5"
+                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg bg-gray-100"
                     />
                   </div>
                 </div>
 
                 {(finalDecision === 'service_restrictions' || finalDecision === 'disengage') && (
-                  <div className="p-4 bg-red-500/10 rounded-lg border-2 border-red-300">
-                    <label className="block text-sm font-bold text-red-300 mb-2">Service Action Details</label>
+                  <div className="p-4 bg-red-50 rounded-lg border-2 border-red-300">
+                    <label className="block text-sm font-bold text-red-900 mb-2">Service Action Details</label>
                     <textarea
                       rows={3}
                       className="w-full px-4 py-3 border-2 border-red-300 rounded-lg"
@@ -360,10 +360,10 @@ export function ComplianceManagerDecision({ caseId, onBack }: ComplianceManagerD
         </Card>
 
         {/* Section D - Submission Status Tracker */}
-        <Card className="border-2 border-white/10 shadow-lg">
+        <Card className="border-2 border-gray-300 shadow-lg">
           <CardHeader className="bg-gradient-to-r from-gray-50 to-slate-50 border-b">
             <CardTitle className="flex items-center gap-2">
-              <Activity className="w-6 h-6 text-slate-300" />
+              <Activity className="w-6 h-6 text-gray-600" />
               Submission Status Tracker
             </CardTitle>
           </CardHeader>
@@ -374,22 +374,22 @@ export function ComplianceManagerDecision({ caseId, onBack }: ComplianceManagerD
                   <div className="flex flex-col items-center">
                     <div className={`w-14 h-14 rounded-full flex items-center justify-center border-4 ${
                       item.status === 'complete'
-                        ? 'bg-green-500/15 border-green-500'
-                        : 'bg-white/5 border-white/10'
+                        ? 'bg-green-100 border-green-500'
+                        : 'bg-gray-100 border-gray-300'
                     }`}>
                       {item.status === 'complete' ? (
-                        <CheckCircle className="w-8 h-8 text-green-400" />
+                        <CheckCircle className="w-8 h-8 text-green-600" />
                       ) : (
                         <div className="w-4 h-4 bg-gray-400 rounded-full"></div>
                       )}
                     </div>
                     <p className={`text-xs font-semibold mt-2 text-center ${
-                      item.status === 'complete' ? 'text-green-300' : 'text-slate-300'
+                      item.status === 'complete' ? 'text-green-900' : 'text-gray-600'
                     }`}>
                       {item.step}
                     </p>
                     {item.date && (
-                      <p className="text-xs text-slate-400">{item.date}</p>
+                      <p className="text-xs text-gray-500">{item.date}</p>
                     )}
                   </div>
                   {idx < submissionTracker.length - 1 && (
@@ -415,21 +415,21 @@ export function ComplianceManagerDecision({ caseId, onBack }: ComplianceManagerD
               </CardHeader>
               <CardContent className="p-8">
                 <div className="space-y-6">
-                  <p className="text-lg text-slate-100">
+                  <p className="text-lg text-gray-900">
                     You are about to make a final decision on case <strong>{caseData.caseId}</strong>.
                   </p>
 
-                  <div className="p-6 bg-red-500/10 rounded-lg border-2 border-red-300">
-                    <p className="font-bold text-red-300 text-xl mb-2">
+                  <div className="p-6 bg-red-50 rounded-lg border-2 border-red-300">
+                    <p className="font-bold text-red-900 text-xl mb-2">
                       Decision: {decisionOptions.find(d => d.value === finalDecision)?.label}
                     </p>
-                    <p className="text-red-300">
+                    <p className="text-red-800">
                       {decisionOptions.find(d => d.value === finalDecision)?.impact}
                     </p>
                   </div>
 
-                  <div className="p-4 bg-amber-500/10 rounded-lg border border-amber-300">
-                    <p className="text-sm text-amber-300">
+                  <div className="p-4 bg-amber-50 rounded-lg border border-amber-300">
+                    <p className="text-sm text-amber-900">
                       <strong>Important:</strong> This decision will be logged in the audit trail and cannot be undone.
                       All actions will be timestamped and attributed to you.
                     </p>

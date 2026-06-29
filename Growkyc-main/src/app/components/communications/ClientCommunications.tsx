@@ -254,11 +254,11 @@ export function ClientCommunications({ onBack }: ClientCommunicationsProps) {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-slate-300">Total Templates</p>
-                <p className="text-2xl font-bold text-slate-100 mt-1">{emailTemplates.length}</p>
-                <p className="text-xs text-slate-400 mt-1">5 active</p>
+                <p className="text-sm font-medium text-gray-600">Total Templates</p>
+                <p className="text-2xl font-bold text-gray-900 mt-1">{emailTemplates.length}</p>
+                <p className="text-xs text-gray-500 mt-1">5 active</p>
               </div>
-              <FileText className="w-12 h-12 text-blue-400 opacity-20" />
+              <FileText className="w-12 h-12 text-blue-600 opacity-20" />
             </div>
           </CardContent>
         </Card>
@@ -267,11 +267,11 @@ export function ClientCommunications({ onBack }: ClientCommunicationsProps) {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-slate-300">Active Campaigns</p>
-                <p className="text-2xl font-bold text-slate-100 mt-1">4</p>
-                <p className="text-xs text-green-400 mt-1">2 scheduled</p>
+                <p className="text-sm font-medium text-gray-600">Active Campaigns</p>
+                <p className="text-2xl font-bold text-gray-900 mt-1">4</p>
+                <p className="text-xs text-green-600 mt-1">2 scheduled</p>
               </div>
-              <Send className="w-12 h-12 text-green-400 opacity-20" />
+              <Send className="w-12 h-12 text-green-600 opacity-20" />
             </div>
           </CardContent>
         </Card>
@@ -280,11 +280,11 @@ export function ClientCommunications({ onBack }: ClientCommunicationsProps) {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-slate-300">User Segments</p>
-                <p className="text-2xl font-bold text-slate-100 mt-1">{segments.length}</p>
-                <p className="text-xs text-slate-400 mt-1">837 total contacts</p>
+                <p className="text-sm font-medium text-gray-600">User Segments</p>
+                <p className="text-2xl font-bold text-gray-900 mt-1">{segments.length}</p>
+                <p className="text-xs text-gray-500 mt-1">837 total contacts</p>
               </div>
-              <Users className="w-12 h-12 text-purple-400 opacity-20" />
+              <Users className="w-12 h-12 text-purple-600 opacity-20" />
             </div>
           </CardContent>
         </Card>
@@ -293,11 +293,11 @@ export function ClientCommunications({ onBack }: ClientCommunicationsProps) {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-slate-300">Avg Open Rate</p>
-                <p className="text-2xl font-bold text-slate-100 mt-1">78%</p>
-                <p className="text-xs text-green-400 mt-1">â†‘ 12% vs last month</p>
+                <p className="text-sm font-medium text-gray-600">Avg Open Rate</p>
+                <p className="text-2xl font-bold text-gray-900 mt-1">78%</p>
+                <p className="text-xs text-green-600 mt-1">â†‘ 12% vs last month</p>
               </div>
-              <TrendingUp className="w-12 h-12 text-orange-400 opacity-20" />
+              <TrendingUp className="w-12 h-12 text-orange-600 opacity-20" />
             </div>
           </CardContent>
         </Card>
@@ -320,10 +320,10 @@ export function ClientCommunications({ onBack }: ClientCommunicationsProps) {
         <CardContent>
           <div className="space-y-4">
             {campaigns.slice(0, 3).map((campaign) => (
-              <div key={campaign.id} className="flex items-center justify-between p-4 border border-white/10 rounded-lg hover:bg-white/5">
+              <div key={campaign.id} className="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
                 <div className="flex-1">
                   <div className="flex items-center gap-3">
-                    <h3 className="font-semibold text-slate-100">{campaign.name}</h3>
+                    <h3 className="font-semibold text-gray-900">{campaign.name}</h3>
                     <Badge variant={
                       campaign.status === 'sent' ? 'default' :
                       campaign.status === 'scheduled' ? 'secondary' :
@@ -333,27 +333,27 @@ export function ClientCommunications({ onBack }: ClientCommunicationsProps) {
                       {campaign.status}
                     </Badge>
                   </div>
-                  <p className="text-sm text-slate-300 mt-1">
+                  <p className="text-sm text-gray-600 mt-1">
                     {campaign.recipients} recipients â€¢ {campaign.template}
                   </p>
                   {campaign.status === 'sent' && (
                     <div className="flex gap-4 mt-2">
-                      <span className="text-xs text-slate-300">
-                        Open Rate: <span className="font-semibold text-green-400">{campaign.openRate}%</span>
+                      <span className="text-xs text-gray-600">
+                        Open Rate: <span className="font-semibold text-green-600">{campaign.openRate}%</span>
                       </span>
-                      <span className="text-xs text-slate-300">
-                        Click Rate: <span className="font-semibold text-blue-400">{campaign.clickRate}%</span>
+                      <span className="text-xs text-gray-600">
+                        Click Rate: <span className="font-semibold text-blue-600">{campaign.clickRate}%</span>
                       </span>
                     </div>
                   )}
                   {campaign.status === 'scheduled' && (
-                    <p className="text-xs text-orange-400 mt-2">
+                    <p className="text-xs text-orange-600 mt-2">
                       <Clock className="w-3 h-3 inline mr-1" />
                       Scheduled for {campaign.scheduledDate}
                     </p>
                   )}
                   {campaign.status === 'sending' && (
-                    <p className="text-xs text-blue-400 mt-2">
+                    <p className="text-xs text-blue-600 mt-2">
                       <Send className="w-3 h-3 inline mr-1" />
                       Sending: {campaign.sent}/{campaign.recipients}
                     </p>
@@ -434,21 +434,21 @@ export function ClientCommunications({ onBack }: ClientCommunicationsProps) {
           {/* Templates List */}
           <div className="space-y-3">
             {emailTemplates.map((template) => (
-              <div key={template.id} className="flex items-center justify-between p-4 border border-white/10 rounded-lg hover:bg-white/5">
+              <div key={template.id} className="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
                 <div className="flex-1">
                   <div className="flex items-center gap-3">
-                    <FileText className="w-5 h-5 text-blue-400" />
+                    <FileText className="w-5 h-5 text-blue-600" />
                     <div>
-                      <h3 className="font-semibold text-slate-100">{template.name}</h3>
-                      <p className="text-sm text-slate-300 mt-1">
+                      <h3 className="font-semibold text-gray-900">{template.name}</h3>
+                      <p className="text-sm text-gray-600 mt-1">
                         {template.subject}
                       </p>
                       <div className="flex gap-4 mt-2">
                         <Badge variant="outline">{template.category}</Badge>
-                        <span className="text-xs text-slate-400">
+                        <span className="text-xs text-gray-500">
                           Used {template.usageCount} times
                         </span>
-                        <span className="text-xs text-slate-400">
+                        <span className="text-xs text-gray-500">
                           Modified {template.lastModified}
                         </span>
                       </div>
@@ -466,7 +466,7 @@ export function ClientCommunications({ onBack }: ClientCommunicationsProps) {
                     <Copy className="w-4 h-4" />
                   </Button>
                   <Button variant="ghost" size="sm" onClick={() => toast.success('Template deleted')}>
-                    <Trash2 className="w-4 h-4 text-red-400" />
+                    <Trash2 className="w-4 h-4 text-red-600" />
                   </Button>
                 </div>
               </div>
@@ -494,11 +494,11 @@ export function ClientCommunications({ onBack }: ClientCommunicationsProps) {
         </CardHeader>
         <CardContent>
           {/* Campaign Status Tabs */}
-          <div className="flex gap-2 mb-6 border-b border-white/10">
+          <div className="flex gap-2 mb-6 border-b border-gray-200">
             {['all', 'sent', 'scheduled', 'draft', 'sending'].map((status) => (
               <button
                 key={status}
-                className="px-4 py-2 text-sm font-medium text-slate-300 hover:text-slate-100 border-b-2 border-transparent hover:border-white/10"
+                className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-300"
               >
                 {status.charAt(0).toUpperCase() + status.slice(1)}
                 <span className="ml-2 text-xs text-gray-400">
@@ -511,11 +511,11 @@ export function ClientCommunications({ onBack }: ClientCommunicationsProps) {
           {/* Campaigns List */}
           <div className="space-y-4">
             {campaigns.map((campaign) => (
-              <div key={campaign.id} className="p-6 border border-white/10 rounded-lg hover:shadow-md transition-shadow">
+              <div key={campaign.id} className="p-6 border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
-                      <h3 className="font-semibold text-lg text-slate-100">{campaign.name}</h3>
+                      <h3 className="font-semibold text-lg text-gray-900">{campaign.name}</h3>
                       <Badge variant={
                         campaign.status === 'sent' ? 'default' :
                         campaign.status === 'scheduled' ? 'secondary' :
@@ -526,7 +526,7 @@ export function ClientCommunications({ onBack }: ClientCommunicationsProps) {
                       </Badge>
                     </div>
                     
-                    <div className="flex gap-6 text-sm text-slate-300 mb-4">
+                    <div className="flex gap-6 text-sm text-gray-600 mb-4">
                       <span>
                         <Users className="w-4 h-4 inline mr-1" />
                         {campaign.recipients} recipients
@@ -552,26 +552,26 @@ export function ClientCommunications({ onBack }: ClientCommunicationsProps) {
                     {campaign.status === 'sent' && (
                       <div className="flex gap-6">
                         <div className="flex items-center gap-2">
-                          <div className="w-32 bg-white/10 rounded-full h-2">
+                          <div className="w-32 bg-gray-200 rounded-full h-2">
                             <div className="bg-green-600 h-2 rounded-full" style={{ width: `${campaign.openRate}%` }} />
                           </div>
-                          <span className="text-sm font-semibold text-green-400">{campaign.openRate}% opened</span>
+                          <span className="text-sm font-semibold text-green-600">{campaign.openRate}% opened</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <div className="w-32 bg-white/10 rounded-full h-2">
+                          <div className="w-32 bg-gray-200 rounded-full h-2">
                             <div className="bg-blue-600 h-2 rounded-full" style={{ width: `${campaign.clickRate}%` }} />
                           </div>
-                          <span className="text-sm font-semibold text-blue-400">{campaign.clickRate}% clicked</span>
+                          <span className="text-sm font-semibold text-blue-600">{campaign.clickRate}% clicked</span>
                         </div>
                       </div>
                     )}
 
                     {campaign.status === 'sending' && (
                       <div className="flex items-center gap-2">
-                        <div className="flex-1 bg-white/10 rounded-full h-2">
+                        <div className="flex-1 bg-gray-200 rounded-full h-2">
                           <div className="bg-blue-600 h-2 rounded-full" style={{ width: `${(campaign.sent! / campaign.recipients) * 100}%` }} />
                         </div>
-                        <span className="text-sm font-semibold text-blue-400">
+                        <span className="text-sm font-semibold text-blue-600">
                           {campaign.sent}/{campaign.recipients} sent
                         </span>
                       </div>
@@ -639,8 +639,8 @@ export function ClientCommunications({ onBack }: ClientCommunicationsProps) {
                         <Users className={`w-6 h-6 text-${segment.color}-600`} />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-slate-100">{segment.name}</h3>
-                        <p className="text-sm text-slate-300">{segment.count} contacts</p>
+                        <h3 className="font-semibold text-gray-900">{segment.name}</h3>
+                        <p className="text-sm text-gray-600">{segment.count} contacts</p>
                       </div>
                     </div>
                     <Button variant="ghost" size="sm">
@@ -648,11 +648,11 @@ export function ClientCommunications({ onBack }: ClientCommunicationsProps) {
                     </Button>
                   </div>
                   
-                  <p className="text-sm text-slate-300 mb-4">{segment.description}</p>
+                  <p className="text-sm text-gray-600 mb-4">{segment.description}</p>
                   
-                  <div className="p-3 bg-white/5 rounded-lg mb-4">
-                    <p className="text-xs text-slate-400 font-medium mb-1">Criteria:</p>
-                    <p className="text-xs text-slate-300">{segment.criteria}</p>
+                  <div className="p-3 bg-gray-50 rounded-lg mb-4">
+                    <p className="text-xs text-gray-500 font-medium mb-1">Criteria:</p>
+                    <p className="text-xs text-gray-700">{segment.criteria}</p>
                   </div>
 
                   <div className="flex gap-2">
@@ -688,29 +688,29 @@ export function ClientCommunications({ onBack }: ClientCommunicationsProps) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <Card>
               <CardContent className="pt-6">
-                <p className="text-sm font-medium text-slate-300">Total Emails Sent</p>
-                <p className="text-3xl font-bold text-slate-100 mt-2">
+                <p className="text-sm font-medium text-gray-600">Total Emails Sent</p>
+                <p className="text-3xl font-bold text-gray-900 mt-2">
                   {loadingAnalytics ? '...' : analyticsSummary ? analyticsSummary.totalSent.toLocaleString() : '3,796'}
                 </p>
-                <p className="text-sm text-green-400 mt-1">↑ 24% from last month</p>
+                <p className="text-sm text-green-600 mt-1">↑ 24% from last month</p>
               </CardContent>
             </Card>
             <Card>
               <CardContent className="pt-6">
-                <p className="text-sm font-medium text-slate-300">Average Open Rate</p>
-                <p className="text-3xl font-bold text-slate-100 mt-2">
+                <p className="text-sm font-medium text-gray-600">Average Open Rate</p>
+                <p className="text-3xl font-bold text-gray-900 mt-2">
                   {loadingAnalytics ? '...' : analyticsSummary ? `${analyticsSummary.avgEmailOpenRate}%` : '78%'}
                 </p>
-                <p className="text-sm text-green-400 mt-1">↑ 12% from last month</p>
+                <p className="text-sm text-green-600 mt-1">↑ 12% from last month</p>
               </CardContent>
             </Card>
             <Card>
               <CardContent className="pt-6">
-                <p className="text-sm font-medium text-slate-300">Average Click Rate</p>
-                <p className="text-3xl font-bold text-slate-100 mt-2">
+                <p className="text-sm font-medium text-gray-600">Average Click Rate</p>
+                <p className="text-3xl font-bold text-gray-900 mt-2">
                   {loadingAnalytics ? '...' : analyticsSummary ? `${analyticsSummary.avgEmailClickRate}%` : '34%'}
                 </p>
-                <p className="text-sm text-green-400 mt-1">↑ 8% from last month</p>
+                <p className="text-sm text-green-600 mt-1">↑ 8% from last month</p>
               </CardContent>
             </Card>
           </div>
@@ -720,10 +720,10 @@ export function ClientCommunications({ onBack }: ClientCommunicationsProps) {
               <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-[#13B5EA]"></div>
             </div>
           ) : analyticsError ? (
-            <div className="bg-red-500/10 text-red-400 p-6 rounded-lg text-center border border-red-500/30">
+            <div className="bg-red-50 text-red-600 p-6 rounded-lg text-center border border-red-200">
               <p className="font-semibold">Error Loading Analytics</p>
               <p className="text-sm mt-1">{analyticsError}</p>
-              <Button size="sm" variant="outline" className="mt-4 border-red-300 text-red-300 hover:bg-red-500/15" onClick={fetchAnalytics}>
+              <Button size="sm" variant="outline" className="mt-4 border-red-300 text-red-700 hover:bg-red-100" onClick={fetchAnalytics}>
                 Retry
               </Button>
             </div>
@@ -795,9 +795,9 @@ export function ClientCommunications({ onBack }: ClientCommunicationsProps) {
   );
 
   return (
-    <div className="min-h-screen bg-white/5">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-white border-b border-white/10">
+      <div className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -807,8 +807,8 @@ export function ClientCommunications({ onBack }: ClientCommunicationsProps) {
                 </Button>
               )}
               <div>
-                <h1 className="text-2xl font-bold text-slate-100">Client Communications</h1>
-                <p className="text-sm text-slate-300 mt-1">Bulk email, segmented campaigns, and templates</p>
+                <h1 className="text-2xl font-bold text-gray-900">Client Communications</h1>
+                <p className="text-sm text-gray-600 mt-1">Bulk email, segmented campaigns, and templates</p>
               </div>
             </div>
             <div className="flex gap-2">
@@ -824,7 +824,7 @@ export function ClientCommunications({ onBack }: ClientCommunicationsProps) {
           </div>
 
           {/* Tabs */}
-          <div className="flex gap-1 mt-6 border-b border-white/10">
+          <div className="flex gap-1 mt-6 border-b border-gray-200">
             {[
               { id: 'overview', label: 'Overview', icon: BarChart3 },
               { id: 'templates', label: 'Templates', icon: FileText },
@@ -839,8 +839,8 @@ export function ClientCommunications({ onBack }: ClientCommunicationsProps) {
                   onClick={() => setActiveTab(tab.id as any)}
                   className={`flex items-center gap-2 px-4 py-3 text-sm font-medium border-b-2 transition-colors ${
                     activeTab === tab.id
-                      ? 'border-blue-600 text-blue-400'
-                      : 'border-transparent text-slate-300 hover:text-slate-100 hover:border-white/10'
+                      ? 'border-blue-600 text-blue-600'
+                      : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
                   }`}
                 >
                   <Icon className="w-4 h-4" />
@@ -877,7 +877,7 @@ export function ClientCommunications({ onBack }: ClientCommunicationsProps) {
             </div>
             <div>
               <Label>Category</Label>
-              <select className="w-full px-3 py-2 border border-white/10 rounded-lg">
+              <select className="w-full px-3 py-2 border border-gray-300 rounded-lg">
                 <option>Onboarding</option>
                 <option>Marketing</option>
                 <option>Transactional</option>
@@ -924,7 +924,7 @@ export function ClientCommunications({ onBack }: ClientCommunicationsProps) {
             </div>
             <div>
               <Label>Select Template</Label>
-              <select className="w-full px-3 py-2 border border-white/10 rounded-lg">
+              <select className="w-full px-3 py-2 border border-gray-300 rounded-lg">
                 {emailTemplates.map(t => (
                   <option key={t.id}>{t.name}</option>
                 ))}
@@ -932,7 +932,7 @@ export function ClientCommunications({ onBack }: ClientCommunicationsProps) {
             </div>
             <div>
               <Label>Select Segment</Label>
-              <select className="w-full px-3 py-2 border border-white/10 rounded-lg">
+              <select className="w-full px-3 py-2 border border-gray-300 rounded-lg">
                 {segments.map(s => (
                   <option key={s.id}>{s.name} ({s.count} contacts)</option>
                 ))}
@@ -987,16 +987,16 @@ export function ClientCommunications({ onBack }: ClientCommunicationsProps) {
             </div>
             <div>
               <Label>Criteria</Label>
-              <div className="space-y-3 border border-white/10 rounded-lg p-4">
+              <div className="space-y-3 border border-gray-200 rounded-lg p-4">
                 <div className="flex gap-3">
-                  <select className="flex-1 px-3 py-2 border border-white/10 rounded-lg">
+                  <select className="flex-1 px-3 py-2 border border-gray-300 rounded-lg">
                     <option>User Role</option>
                     <option>Account Status</option>
                     <option>Last Activity</option>
                     <option>Case Count</option>
                     <option>Total Value</option>
                   </select>
-                  <select className="px-3 py-2 border border-white/10 rounded-lg">
+                  <select className="px-3 py-2 border border-gray-300 rounded-lg">
                     <option>equals</option>
                     <option>contains</option>
                     <option>greater than</option>
@@ -1010,8 +1010,8 @@ export function ClientCommunications({ onBack }: ClientCommunicationsProps) {
                 </Button>
               </div>
             </div>
-            <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
-              <p className="text-sm text-blue-300">
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <p className="text-sm text-blue-800">
                 <strong>Estimated contacts:</strong> This segment will include approximately 247 contacts
               </p>
             </div>

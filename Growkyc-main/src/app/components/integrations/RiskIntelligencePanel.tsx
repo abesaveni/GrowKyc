@@ -71,28 +71,28 @@ export function RiskIntelligencePanel({ matterId, riskProfile }: RiskIntelligenc
     switch (decision) {
       case 'approve':
         return (
-          <Badge className="bg-green-500/15 text-green-300 border-green-300 text-sm">
+          <Badge className="bg-green-100 text-green-700 border-green-300 text-sm">
             <CheckCircle className="w-4 h-4 mr-1" />
             Recommend: Approve
           </Badge>
         );
       case 'escalate':
         return (
-          <Badge className="bg-amber-500/15 text-amber-300 border-amber-300 text-sm">
+          <Badge className="bg-amber-100 text-amber-700 border-amber-300 text-sm">
             <AlertTriangle className="w-4 h-4 mr-1" />
             Recommend: Escalate
           </Badge>
         );
       case 'reject':
         return (
-          <Badge className="bg-red-500/15 text-red-300 border-red-300 text-sm">
+          <Badge className="bg-red-100 text-red-700 border-red-300 text-sm">
             <XCircle className="w-4 h-4 mr-1" />
             Recommend: Reject
           </Badge>
         );
       case 'manual_review':
         return (
-          <Badge className="bg-blue-500/15 text-blue-300 border-blue-300 text-sm">
+          <Badge className="bg-blue-100 text-blue-700 border-blue-300 text-sm">
             <AlertTriangle className="w-4 h-4 mr-1" />
             Manual Review Required
           </Badge>
@@ -164,13 +164,13 @@ export function RiskIntelligencePanel({ matterId, riskProfile }: RiskIntelligenc
 
       {/* Hard Stop Flags */}
       {hardStopFlags.length > 0 && hardStopFlags[0] !== 'none' && (
-        <div className="p-4 bg-red-500/10 border-b border-red-500/30">
+        <div className="p-4 bg-red-50 border-b border-red-200">
           <div className="flex items-start gap-2 mb-2">
-            <XCircle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+            <XCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
             <div>
-              <h3 className="font-bold text-red-300 mb-2">Hard Stop Flags</h3>
+              <h3 className="font-bold text-red-900 mb-2">Hard Stop Flags</h3>
               {hardStopFlags.map((flag, idx) => (
-                <div key={idx} className="text-sm text-red-300 mb-1">
+                <div key={idx} className="text-sm text-red-800 mb-1">
                   • {flag}
                 </div>
               ))}
@@ -182,11 +182,11 @@ export function RiskIntelligencePanel({ matterId, riskProfile }: RiskIntelligenc
       {/* Risk Category Breakdown */}
       <div className="p-6 space-y-4">
         <div className="border-b pb-3 mb-4">
-          <h3 className="font-bold text-slate-100 text-lg flex items-center gap-2">
-            <TrendingUp className="w-5 h-5 text-purple-400" />
+          <h3 className="font-bold text-gray-900 text-lg flex items-center gap-2">
+            <TrendingUp className="w-5 h-5 text-purple-600" />
             Risk Breakdown
           </h3>
-          <p className="text-xs text-slate-300 mt-1">Data from 6 providers combined</p>
+          <p className="text-xs text-gray-600 mt-1">Data from 6 providers combined</p>
         </div>
 
         {riskCategories.map((category) => {
@@ -194,7 +194,7 @@ export function RiskIntelligencePanel({ matterId, riskProfile }: RiskIntelligenc
           const color = getRiskColor(category.score);
 
           return (
-            <Card key={category.key} className="border-2 border-white/10 hover:border-purple-300 transition-colors">
+            <Card key={category.key} className="border-2 border-gray-200 hover:border-purple-300 transition-colors">
               <CardContent className="p-4">
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center gap-2">
@@ -202,10 +202,10 @@ export function RiskIntelligencePanel({ matterId, riskProfile }: RiskIntelligenc
                       <Icon className={`w-5 h-5 text-${color}-600`} />
                     </div>
                     <div>
-                      <p className="font-semibold text-slate-100 text-sm">{category.label}</p>
+                      <p className="font-semibold text-gray-900 text-sm">{category.label}</p>
                       <div className="flex gap-1 mt-1">
                         {category.providers.map((provider, idx) => (
-                          <Badge key={idx} variant="outline" className="text-xs bg-blue-500/10 text-blue-300 border-blue-300 px-2 py-0">
+                          <Badge key={idx} variant="outline" className="text-xs bg-blue-50 text-blue-700 border-blue-300 px-2 py-0">
                             {provider}
                           </Badge>
                         ))}
@@ -216,7 +216,7 @@ export function RiskIntelligencePanel({ matterId, riskProfile }: RiskIntelligenc
                     <span className={`text-2xl font-bold text-${color}-600`}>{category.score}</span>
                   </div>
                 </div>
-                <div className="w-full bg-white/10 rounded-full h-2 overflow-hidden">
+                <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
                   <div
                     className={`h-full bg-${color}-500 transition-all duration-500`}
                     style={{ width: `${category.score}%` }}
@@ -230,33 +230,33 @@ export function RiskIntelligencePanel({ matterId, riskProfile }: RiskIntelligenc
 
       {/* Review Flags */}
       {reviewFlags.length > 0 && (
-        <div className="p-6 border-t bg-amber-500/10">
+        <div className="p-6 border-t bg-amber-50">
           <div className="flex items-start gap-2 mb-3">
-            <AlertTriangle className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+            <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
             <div className="flex-1">
-              <h3 className="font-bold text-amber-300 mb-1">Review Flags ({reviewFlags.length})</h3>
-              <p className="text-xs text-amber-300 mb-3">Items requiring analyst attention</p>
+              <h3 className="font-bold text-amber-900 mb-1">Review Flags ({reviewFlags.length})</h3>
+              <p className="text-xs text-amber-700 mb-3">Items requiring analyst attention</p>
               <div className="space-y-2">
                 {reviewFlags.map((flag, idx) => (
-                  <div key={idx} className="bg-white rounded-lg p-3 border border-amber-500/30">
+                  <div key={idx} className="bg-white rounded-lg p-3 border border-amber-200">
                     <div className="flex items-start justify-between mb-1">
-                      <p className="font-semibold text-sm text-slate-100">{flag.type}</p>
+                      <p className="font-semibold text-sm text-gray-900">{flag.type}</p>
                       <Badge
                         className={
                           flag.severity === 'critical'
-                            ? 'bg-red-500/15 text-red-300 text-xs'
+                            ? 'bg-red-100 text-red-700 text-xs'
                             : flag.severity === 'high'
-                            ? 'bg-orange-500/15 text-orange-300 text-xs'
+                            ? 'bg-orange-100 text-orange-700 text-xs'
                             : flag.severity === 'medium'
-                            ? 'bg-amber-500/15 text-amber-300 text-xs'
-                            : 'bg-green-500/15 text-green-300 text-xs'
+                            ? 'bg-amber-100 text-amber-700 text-xs'
+                            : 'bg-green-100 text-green-700 text-xs'
                         }
                       >
                         {flag.severity.toUpperCase()}
                       </Badge>
                     </div>
-                    <p className="text-xs text-slate-300 mb-1">{flag.message}</p>
-                    <Badge variant="outline" className="text-xs bg-blue-500/10 text-blue-300 border-blue-300 mt-1">
+                    <p className="text-xs text-gray-700 mb-1">{flag.message}</p>
+                    <Badge variant="outline" className="text-xs bg-blue-50 text-blue-700 border-blue-300 mt-1">
                       Source: {flag.source}
                     </Badge>
                   </div>
@@ -268,11 +268,11 @@ export function RiskIntelligencePanel({ matterId, riskProfile }: RiskIntelligenc
       )}
 
       {/* Data Sources Summary */}
-      <div className="p-6 border-t bg-white/5">
-        <h3 className="font-bold text-slate-100 mb-3 text-sm">Data Sources Used</h3>
+      <div className="p-6 border-t bg-gray-50">
+        <h3 className="font-bold text-gray-900 mb-3 text-sm">Data Sources Used</h3>
         <div className="grid grid-cols-2 gap-2">
           {['ASIC', 'Equifax', 'Illion', 'ComplyAdvantage', 'Internal AI', 'Analytics'].map((source, idx) => (
-            <div key={idx} className="flex items-center gap-2 text-xs text-slate-300">
+            <div key={idx} className="flex items-center gap-2 text-xs text-gray-700">
               <div className="w-2 h-2 bg-green-500 rounded-full"></div>
               <span>{source}</span>
             </div>
@@ -281,11 +281,11 @@ export function RiskIntelligencePanel({ matterId, riskProfile }: RiskIntelligenc
       </div>
 
       {/* Matter Reference */}
-      <div className="p-4 border-t bg-white/5 text-center">
-        <p className="text-xs text-slate-300">
-          Matter ID: <span className="font-mono font-semibold text-slate-100">{matterId}</span>
+      <div className="p-4 border-t bg-gray-100 text-center">
+        <p className="text-xs text-gray-600">
+          Matter ID: <span className="font-mono font-semibold text-gray-900">{matterId}</span>
         </p>
-        <p className="text-xs text-slate-400 mt-1">
+        <p className="text-xs text-gray-500 mt-1">
           Last updated: {new Date().toLocaleString()}
         </p>
       </div>

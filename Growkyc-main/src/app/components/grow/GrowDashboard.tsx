@@ -61,11 +61,11 @@ export function GrowDashboard({ onNavigate }: GrowDashboardProps) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-100">Financial Dashboard</h1>
-          <p className="text-slate-300">Overview of your financial performance</p>
+          <h1 className="text-2xl font-bold text-gray-900">Financial Dashboard</h1>
+          <p className="text-gray-600">Overview of your financial performance</p>
         </div>
         <div className="flex items-center gap-3">
-          <select className="px-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]">
+          <select className="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]">
             <option>This Month</option>
             <option>Last Month</option>
             <option>This Quarter</option>
@@ -84,19 +84,19 @@ export function GrowDashboard({ onNavigate }: GrowDashboardProps) {
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
-              <div className="p-3 bg-green-500/10 rounded-lg">
-                <TrendingUp className="w-6 h-6 text-green-400" />
+              <div className="p-3 bg-green-50 rounded-lg">
+                <TrendingUp className="w-6 h-6 text-green-600" />
               </div>
-              <div className="flex items-center gap-1 text-sm font-semibold text-green-400">
+              <div className="flex items-center gap-1 text-sm font-semibold text-green-600">
                 <ArrowUpRight className="w-4 h-4" />
                 {financialData.revenue.trend}%
               </div>
             </div>
-            <p className="text-sm text-slate-300 mb-1">Total Revenue</p>
-            <p className="text-2xl font-bold text-slate-100">
+            <p className="text-sm text-gray-600 mb-1">Total Revenue</p>
+            <p className="text-2xl font-bold text-gray-900">
               ${financialData.revenue.current.toLocaleString()}
             </p>
-            <p className="text-xs text-slate-400 mt-2">
+            <p className="text-xs text-gray-500 mt-2">
               vs ${financialData.revenue.previous.toLocaleString()} last month
             </p>
           </CardContent>
@@ -106,19 +106,19 @@ export function GrowDashboard({ onNavigate }: GrowDashboardProps) {
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
-              <div className="p-3 bg-red-500/10 rounded-lg">
-                <TrendingDown className="w-6 h-6 text-red-400" />
+              <div className="p-3 bg-red-50 rounded-lg">
+                <TrendingDown className="w-6 h-6 text-red-600" />
               </div>
-              <div className="flex items-center gap-1 text-sm font-semibold text-red-400">
+              <div className="flex items-center gap-1 text-sm font-semibold text-red-600">
                 <ArrowUpRight className="w-4 h-4" />
                 {financialData.expenses.trend}%
               </div>
             </div>
-            <p className="text-sm text-slate-300 mb-1">Total Expenses</p>
-            <p className="text-2xl font-bold text-slate-100">
+            <p className="text-sm text-gray-600 mb-1">Total Expenses</p>
+            <p className="text-2xl font-bold text-gray-900">
               ${financialData.expenses.current.toLocaleString()}
             </p>
-            <p className="text-xs text-slate-400 mt-2">
+            <p className="text-xs text-gray-500 mt-2">
               vs ${financialData.expenses.previous.toLocaleString()} last month
             </p>
           </CardContent>
@@ -128,19 +128,19 @@ export function GrowDashboard({ onNavigate }: GrowDashboardProps) {
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
-              <div className="p-3 bg-blue-500/10 rounded-lg">
-                <DollarSign className="w-6 h-6 text-blue-400" />
+              <div className="p-3 bg-blue-50 rounded-lg">
+                <DollarSign className="w-6 h-6 text-blue-600" />
               </div>
-              <div className="flex items-center gap-1 text-sm font-semibold text-green-400">
+              <div className="flex items-center gap-1 text-sm font-semibold text-green-600">
                 <ArrowUpRight className="w-4 h-4" />
                 {financialData.profit.trend}%
               </div>
             </div>
-            <p className="text-sm text-slate-300 mb-1">Net Profit</p>
-            <p className="text-2xl font-bold text-slate-100">
+            <p className="text-sm text-gray-600 mb-1">Net Profit</p>
+            <p className="text-2xl font-bold text-gray-900">
               ${financialData.profit.current.toLocaleString()}
             </p>
-            <p className="text-xs text-slate-400 mt-2">
+            <p className="text-xs text-gray-500 mt-2">
               Margin: {((financialData.profit.current / financialData.revenue.current) * 100).toFixed(1)}%
             </p>
           </CardContent>
@@ -150,19 +150,19 @@ export function GrowDashboard({ onNavigate }: GrowDashboardProps) {
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
-              <div className="p-3 bg-purple-500/10 rounded-lg">
-                <CreditCard className="w-6 h-6 text-purple-400" />
+              <div className="p-3 bg-purple-50 rounded-lg">
+                <CreditCard className="w-6 h-6 text-purple-600" />
               </div>
-              <div className="flex items-center gap-1 text-sm font-semibold text-green-400">
+              <div className="flex items-center gap-1 text-sm font-semibold text-green-600">
                 <ArrowUpRight className="w-4 h-4" />
                 {financialData.cashBalance.trend}%
               </div>
             </div>
-            <p className="text-sm text-slate-300 mb-1">Cash Balance</p>
-            <p className="text-2xl font-bold text-slate-100">
+            <p className="text-sm text-gray-600 mb-1">Cash Balance</p>
+            <p className="text-2xl font-bold text-gray-900">
               ${financialData.cashBalance.current.toLocaleString()}
             </p>
-            <p className="text-xs text-slate-400 mt-2">
+            <p className="text-xs text-gray-500 mt-2">
               Available funds
             </p>
           </CardContent>
@@ -182,15 +182,15 @@ export function GrowDashboard({ onNavigate }: GrowDashboardProps) {
               <div className="flex items-center gap-6">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 bg-green-500 rounded" />
-                  <span className="text-sm text-slate-300">Revenue</span>
+                  <span className="text-sm text-gray-600">Revenue</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 bg-red-500 rounded" />
-                  <span className="text-sm text-slate-300">Expenses</span>
+                  <span className="text-sm text-gray-600">Expenses</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 bg-blue-500 rounded" />
-                  <span className="text-sm text-slate-300">Profit</span>
+                  <span className="text-sm text-gray-600">Profit</span>
                 </div>
               </div>
 
@@ -216,7 +216,7 @@ export function GrowDashboard({ onNavigate }: GrowDashboardProps) {
                         </div>
                       </div>
                     </div>
-                    <span className="text-xs text-slate-400 font-medium">{data.month}</span>
+                    <span className="text-xs text-gray-500 font-medium">{data.month}</span>
                   </div>
                 ))}
               </div>
@@ -231,46 +231,46 @@ export function GrowDashboard({ onNavigate }: GrowDashboardProps) {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              <div className="p-4 bg-blue-500/10 rounded-lg">
+              <div className="p-4 bg-blue-50 rounded-lg">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm text-slate-300">Outstanding Invoices</span>
-                  <FileText className="w-5 h-5 text-blue-400" />
+                  <span className="text-sm text-gray-600">Outstanding Invoices</span>
+                  <FileText className="w-5 h-5 text-blue-600" />
                 </div>
-                <p className="text-2xl font-bold text-slate-100">
+                <p className="text-2xl font-bold text-gray-900">
                   ${financialData.outstandingInvoices.toLocaleString()}
                 </p>
-                <p className="text-xs text-slate-400 mt-1">Awaiting payment</p>
+                <p className="text-xs text-gray-500 mt-1">Awaiting payment</p>
               </div>
 
-              <div className="p-4 bg-red-500/10 rounded-lg">
+              <div className="p-4 bg-red-50 rounded-lg">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm text-slate-300">Overdue Invoices</span>
-                  <AlertCircle className="w-5 h-5 text-red-400" />
+                  <span className="text-sm text-gray-600">Overdue Invoices</span>
+                  <AlertCircle className="w-5 h-5 text-red-600" />
                 </div>
-                <p className="text-2xl font-bold text-slate-100">
+                <p className="text-2xl font-bold text-gray-900">
                   ${financialData.overdueInvoices.toLocaleString()}
                 </p>
-                <p className="text-xs text-slate-400 mt-1">{overdueInvoices.length} invoices</p>
+                <p className="text-xs text-gray-500 mt-1">{overdueInvoices.length} invoices</p>
               </div>
 
-              <div className="p-4 bg-amber-500/10 rounded-lg">
+              <div className="p-4 bg-amber-50 rounded-lg">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm text-slate-300">Unpaid Bills</span>
-                  <CreditCard className="w-5 h-5 text-amber-400" />
+                  <span className="text-sm text-gray-600">Unpaid Bills</span>
+                  <CreditCard className="w-5 h-5 text-amber-600" />
                 </div>
-                <p className="text-2xl font-bold text-slate-100">
+                <p className="text-2xl font-bold text-gray-900">
                   ${financialData.unpaidBills.toLocaleString()}
                 </p>
-                <p className="text-xs text-slate-400 mt-1">Due this month</p>
+                <p className="text-xs text-gray-500 mt-1">Due this month</p>
               </div>
 
-              <div className="p-4 bg-green-500/10 rounded-lg">
+              <div className="p-4 bg-green-50 rounded-lg">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm text-slate-300">Active Clients</span>
-                  <Users className="w-5 h-5 text-green-400" />
+                  <span className="text-sm text-gray-600">Active Clients</span>
+                  <Users className="w-5 h-5 text-green-600" />
                 </div>
-                <p className="text-2xl font-bold text-slate-100">{financialData.clients}</p>
-                <p className="text-xs text-slate-400 mt-1">Total clients</p>
+                <p className="text-2xl font-bold text-gray-900">{financialData.clients}</p>
+                <p className="text-xs text-gray-500 mt-1">Total clients</p>
               </div>
             </div>
           </CardContent>
@@ -292,21 +292,21 @@ export function GrowDashboard({ onNavigate }: GrowDashboardProps) {
           <CardContent>
             <div className="space-y-3">
               {recentTransactions.map((txn) => (
-                <div key={txn.id} className="flex items-center justify-between p-3 border rounded-lg hover:bg-white/5 transition-colors">
+                <div key={txn.id} className="flex items-center justify-between p-3 border rounded-lg hover:bg-gray-50 transition-colors">
                   <div className="flex items-center gap-3">
-                    <div className={`p-2 rounded-lg ${txn.type === 'income' ? 'bg-green-500/10' : 'bg-red-500/10'}`}>
+                    <div className={`p-2 rounded-lg ${txn.type === 'income' ? 'bg-green-50' : 'bg-red-50'}`}>
                       {txn.type === 'income' ? (
-                        <ArrowDownRight className="w-4 h-4 text-green-400" />
+                        <ArrowDownRight className="w-4 h-4 text-green-600" />
                       ) : (
-                        <ArrowUpRight className="w-4 h-4 text-red-400" />
+                        <ArrowUpRight className="w-4 h-4 text-red-600" />
                       )}
                     </div>
                     <div>
-                      <p className="font-medium text-sm text-slate-100">{txn.description}</p>
-                      <p className="text-xs text-slate-400">{txn.date} • {txn.category}</p>
+                      <p className="font-medium text-sm text-gray-900">{txn.description}</p>
+                      <p className="text-xs text-gray-500">{txn.date} • {txn.category}</p>
                     </div>
                   </div>
-                  <p className={`font-semibold ${txn.type === 'income' ? 'text-green-400' : 'text-red-400'}`}>
+                  <p className={`font-semibold ${txn.type === 'income' ? 'text-green-600' : 'text-red-600'}`}>
                     {txn.type === 'income' ? '+' : ''} ${Math.abs(txn.amount).toLocaleString()}
                   </p>
                 </div>
@@ -328,19 +328,19 @@ export function GrowDashboard({ onNavigate }: GrowDashboardProps) {
           <CardContent>
             <div className="space-y-3">
               {overdueInvoices.map((invoice) => (
-                <div key={invoice.id} className="p-4 border border-red-500/30 bg-red-500/10 rounded-lg">
+                <div key={invoice.id} className="p-4 border border-red-200 bg-red-50 rounded-lg">
                   <div className="flex items-start justify-between mb-2">
                     <div>
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="text-sm font-mono text-slate-300">{invoice.id}</span>
-                        <span className="px-2 py-0.5 bg-red-500/15 text-red-300 text-xs font-semibold rounded">
+                        <span className="text-sm font-mono text-gray-700">{invoice.id}</span>
+                        <span className="px-2 py-0.5 bg-red-100 text-red-700 text-xs font-semibold rounded">
                           {invoice.daysOverdue}d overdue
                         </span>
                       </div>
-                      <p className="font-semibold text-slate-100">{invoice.client}</p>
-                      <p className="text-xs text-slate-300 mt-1">Due: {invoice.dueDate}</p>
+                      <p className="font-semibold text-gray-900">{invoice.client}</p>
+                      <p className="text-xs text-gray-600 mt-1">Due: {invoice.dueDate}</p>
                     </div>
-                    <p className="text-lg font-bold text-slate-100">${invoice.amount.toLocaleString()}</p>
+                    <p className="text-lg font-bold text-gray-900">${invoice.amount.toLocaleString()}</p>
                   </div>
                   <Button size="sm" className="w-full mt-2 bg-[#2855a6] hover:bg-[#1e4089]">
                     Send Reminder

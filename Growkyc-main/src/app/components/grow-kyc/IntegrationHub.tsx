@@ -360,7 +360,7 @@ export function IntegrationHub({ onBack }: IntegrationHubProps) {
   };
 
   return (
-    <div className="min-h-screen bg-[#0f172a]">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-gradient-to-r from-blue-600 to-purple-600 border-b sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-6 py-4">
@@ -378,7 +378,7 @@ export function IntegrationHub({ onBack }: IntegrationHubProps) {
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <Badge className="bg-[#1e293b] text-blue-400 text-sm px-3 py-1">
+              <Badge className="bg-white text-blue-600 text-sm px-3 py-1">
                 <Zap className="w-4 h-4 mr-1" />
                 {summaryStats.active} Active
               </Badge>
@@ -393,32 +393,32 @@ export function IntegrationHub({ onBack }: IntegrationHubProps) {
       <div className="max-w-7xl mx-auto px-6 py-8">
         {/* Summary Cards */}
         <div className="grid grid-cols-4 gap-4 mb-8">
-          <Card className="border-2 border-green-300 bg-green-500/10">
+          <Card className="border-2 border-green-300 bg-green-50">
             <CardContent className="p-6">
-              <div className="text-sm text-green-300">Active Integrations</div>
-              <div className="text-3xl font-bold text-green-300">{summaryStats.active}</div>
-              <div className="text-xs text-green-400 mt-1">Live and operational</div>
+              <div className="text-sm text-green-700">Active Integrations</div>
+              <div className="text-3xl font-bold text-green-900">{summaryStats.active}</div>
+              <div className="text-xs text-green-600 mt-1">Live and operational</div>
             </CardContent>
           </Card>
-          <Card className="border-2 border-blue-300 bg-blue-500/10">
+          <Card className="border-2 border-blue-300 bg-blue-50">
             <CardContent className="p-6">
-              <div className="text-sm text-blue-300">Configured</div>
-              <div className="text-3xl font-bold text-blue-300">{summaryStats.configured}</div>
-              <div className="text-xs text-blue-400 mt-1">Ready to activate</div>
+              <div className="text-sm text-blue-700">Configured</div>
+              <div className="text-3xl font-bold text-blue-900">{summaryStats.configured}</div>
+              <div className="text-xs text-blue-600 mt-1">Ready to activate</div>
             </CardContent>
           </Card>
-          <Card className="border-2 border-amber-300 bg-amber-500/10">
+          <Card className="border-2 border-amber-300 bg-amber-50">
             <CardContent className="p-6">
-              <div className="text-sm text-amber-300">Architected</div>
-              <div className="text-3xl font-bold text-amber-300">{summaryStats.architected}</div>
-              <div className="text-xs text-amber-400 mt-1">Framework ready</div>
+              <div className="text-sm text-amber-700">Architected</div>
+              <div className="text-3xl font-bold text-amber-900">{summaryStats.architected}</div>
+              <div className="text-xs text-amber-600 mt-1">Framework ready</div>
             </CardContent>
           </Card>
-          <Card className="border-2 border-purple-300 bg-purple-500/10">
+          <Card className="border-2 border-purple-300 bg-purple-50">
             <CardContent className="p-6">
-              <div className="text-sm text-purple-300">Monthly Usage</div>
-              <div className="text-3xl font-bold text-purple-300">{summaryStats.totalChecks.toLocaleString()}</div>
-              <div className="text-xs text-purple-400 mt-1">API calls</div>
+              <div className="text-sm text-purple-700">Monthly Usage</div>
+              <div className="text-3xl font-bold text-purple-900">{summaryStats.totalChecks.toLocaleString()}</div>
+              <div className="text-xs text-purple-600 mt-1">API calls</div>
             </CardContent>
           </Card>
         </div>
@@ -447,31 +447,31 @@ export function IntegrationHub({ onBack }: IntegrationHubProps) {
                 key={integration.id}
                 className={`border-2 ${
                   integration.status === 'active' ? 'border-green-300 bg-gradient-to-r from-green-50 to-blue-50' :
-                  integration.status === 'configured' ? 'border-blue-300 bg-blue-500/10' :
-                  integration.status === 'architected' ? 'border-amber-300 bg-amber-500/10' :
-                  'border-white/10 bg-[#0f172a]'
+                  integration.status === 'configured' ? 'border-blue-300 bg-blue-50' :
+                  integration.status === 'architected' ? 'border-amber-300 bg-amber-50' :
+                  'border-gray-300 bg-gray-50'
                 }`}
               >
                 <CardContent className="p-6">
                   <div className="flex items-start justify-between">
                     <div className="flex gap-4 flex-1">
                       <div className={`w-16 h-16 rounded-lg flex items-center justify-center flex-shrink-0 ${
-                        integration.status === 'active' ? 'bg-green-500/15' :
-                        integration.status === 'configured' ? 'bg-blue-500/15' :
-                        integration.status === 'architected' ? 'bg-amber-500/15' :
-                        'bg-[#0f172a]'
+                        integration.status === 'active' ? 'bg-green-100' :
+                        integration.status === 'configured' ? 'bg-blue-100' :
+                        integration.status === 'architected' ? 'bg-amber-100' :
+                        'bg-gray-100'
                       }`}>
                         <Icon className={`w-8 h-8 ${
-                          integration.status === 'active' ? 'text-green-400' :
-                          integration.status === 'configured' ? 'text-blue-400' :
-                          integration.status === 'architected' ? 'text-amber-400' :
-                          'text-slate-300'
+                          integration.status === 'active' ? 'text-green-600' :
+                          integration.status === 'configured' ? 'text-blue-600' :
+                          integration.status === 'architected' ? 'text-amber-600' :
+                          'text-gray-600'
                         }`} />
                       </div>
                       
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
-                          <h3 className="text-lg font-bold text-white">{integration.name}</h3>
+                          <h3 className="text-lg font-bold text-gray-900">{integration.name}</h3>
                           {getStatusBadge(integration.status)}
                           {integration.uptime && (
                             <Badge variant="outline" className="text-xs">
@@ -480,10 +480,10 @@ export function IntegrationHub({ onBack }: IntegrationHubProps) {
                           )}
                         </div>
 
-                        <p className="text-sm text-slate-300 mb-3">{integration.description}</p>
+                        <p className="text-sm text-gray-600 mb-3">{integration.description}</p>
 
                         <div className="mb-3">
-                          <div className="text-xs font-semibold text-slate-300 mb-1">Capabilities:</div>
+                          <div className="text-xs font-semibold text-gray-700 mb-1">Capabilities:</div>
                           <div className="flex flex-wrap gap-1">
                             {integration.capabilities.slice(0, 3).map((cap, idx) => (
                               <Badge key={idx} variant="outline" className="text-xs">
@@ -502,31 +502,31 @@ export function IntegrationHub({ onBack }: IntegrationHubProps) {
                           <div className="grid grid-cols-3 gap-4 text-sm">
                             {integration.lastSync && (
                               <div>
-                                <div className="text-slate-300">Last Sync</div>
+                                <div className="text-gray-600">Last Sync</div>
                                 <div className="font-semibold">{integration.lastSync}</div>
                               </div>
                             )}
                             {integration.monthlyUsage !== undefined && (
                               <div>
-                                <div className="text-slate-300">This Month</div>
-                                <div className="font-semibold text-blue-400">
+                                <div className="text-gray-600">This Month</div>
+                                <div className="font-semibold text-blue-600">
                                   {integration.monthlyUsage.toLocaleString()} calls
                                 </div>
                               </div>
                             )}
                             {integration.costPerCheck && (
                               <div>
-                                <div className="text-slate-300">Cost Range</div>
-                                <div className="font-semibold text-green-400">{integration.costPerCheck}</div>
+                                <div className="text-gray-600">Cost Range</div>
+                                <div className="font-semibold text-green-600">{integration.costPerCheck}</div>
                               </div>
                             )}
                           </div>
                         )}
 
                         {integration.status === 'architected' && (
-                          <div className="p-3 bg-amber-500/15 rounded border border-amber-300 flex items-start gap-2">
-                            <Clock className="w-4 h-4 text-amber-400 mt-0.5" />
-                            <div className="text-xs text-amber-300">
+                          <div className="p-3 bg-amber-100 rounded border border-amber-300 flex items-start gap-2">
+                            <Clock className="w-4 h-4 text-amber-600 mt-0.5" />
+                            <div className="text-xs text-amber-900">
                               <div className="font-semibold mb-1">Integration Architected</div>
                               <div>API endpoints defined, data models ready. Configuration required to activate.</div>
                             </div>
@@ -591,38 +591,38 @@ export function IntegrationHub({ onBack }: IntegrationHubProps) {
         </div>
 
         {/* Legend */}
-        <Card className="mt-8 border-2 border-white/10">
+        <Card className="mt-8 border-2 border-gray-300">
           <CardHeader>
             <CardTitle className="text-sm">Integration Status Legend</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-4 gap-4 text-sm">
               <div className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
                 <div>
-                  <div className="font-semibold text-white">Active</div>
-                  <div className="text-xs text-slate-300">Live, processing requests, fully operational</div>
+                  <div className="font-semibold text-gray-900">Active</div>
+                  <div className="text-xs text-gray-600">Live, processing requests, fully operational</div>
                 </div>
               </div>
               <div className="flex items-start gap-2">
-                <Settings className="w-5 h-5 text-blue-400 flex-shrink-0" />
+                <Settings className="w-5 h-5 text-blue-600 flex-shrink-0" />
                 <div>
-                  <div className="font-semibold text-white">Configured</div>
-                  <div className="text-xs text-slate-300">API keys set, ready to activate</div>
+                  <div className="font-semibold text-gray-900">Configured</div>
+                  <div className="text-xs text-gray-600">API keys set, ready to activate</div>
                 </div>
               </div>
               <div className="flex items-start gap-2">
-                <Clock className="w-5 h-5 text-amber-400 flex-shrink-0" />
+                <Clock className="w-5 h-5 text-amber-600 flex-shrink-0" />
                 <div>
-                  <div className="font-semibold text-white">Architected</div>
-                  <div className="text-xs text-slate-300">Framework ready, needs configuration</div>
+                  <div className="font-semibold text-gray-900">Architected</div>
+                  <div className="text-xs text-gray-600">Framework ready, needs configuration</div>
                 </div>
               </div>
               <div className="flex items-start gap-2">
-                <Download className="w-5 h-5 text-slate-300 flex-shrink-0" />
+                <Download className="w-5 h-5 text-gray-600 flex-shrink-0" />
                 <div>
-                  <div className="font-semibold text-white">Available</div>
-                  <div className="text-xs text-slate-300">Can be installed on request</div>
+                  <div className="font-semibold text-gray-900">Available</div>
+                  <div className="text-xs text-gray-600">Can be installed on request</div>
                 </div>
               </div>
             </div>

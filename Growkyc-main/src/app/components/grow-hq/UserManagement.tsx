@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { EmptyState } from '../ui/empty-state';
@@ -134,10 +134,10 @@ export function UserManagement() {
 
   const getRoleBadge = (role: User['role']) => {
     const config = {
-      super_admin: { label: 'Super Admin', className: 'bg-purple-500/15 text-purple-300' },
-      admin: { label: 'Admin', className: 'bg-blue-500/15 text-blue-300' },
-      user: { label: 'User', className: 'bg-green-500/15 text-green-300' },
-      viewer: { label: 'Viewer', className: 'bg-white/5 text-slate-300' }
+      super_admin: { label: 'Super Admin', className: 'bg-purple-100 text-purple-700' },
+      admin: { label: 'Admin', className: 'bg-blue-100 text-blue-700' },
+      user: { label: 'User', className: 'bg-green-100 text-green-700' },
+      viewer: { label: 'Viewer', className: 'bg-gray-100 text-gray-700' }
     };
     
     const { label, className } = config[role];
@@ -151,11 +151,11 @@ export function UserManagement() {
   const getStatusIcon = (status: User['status']) => {
     switch (status) {
       case 'active':
-        return <CheckCircle className="w-4 h-4 text-green-400" />;
+        return <CheckCircle className="w-4 h-4 text-green-600" />;
       case 'inactive':
         return <Clock className="w-4 h-4 text-gray-400" />;
       case 'suspended':
-        return <XCircle className="w-4 h-4 text-red-400" />;
+        return <XCircle className="w-4 h-4 text-red-600" />;
     }
   };
 
@@ -254,8 +254,8 @@ export function UserManagement() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-100">User Management</h1>
-          <p className="text-slate-300">Manage users and their access across all modules</p>
+          <h1 className="text-2xl font-bold text-gray-900">User Management</h1>
+          <p className="text-gray-600">Manage users and their access across all modules</p>
         </div>
         <Button className="bg-indigo-600 hover:bg-indigo-700" onClick={() => setShowAddModal(true)}>
           <Plus className="w-4 h-4 mr-2" />
@@ -268,44 +268,44 @@ export function UserManagement() {
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-slate-300">Total Users</span>
+              <span className="text-sm text-gray-600">Total Users</span>
               <Users className="w-5 h-5 text-gray-400" />
             </div>
-            <p className="text-2xl font-bold text-slate-100">{stats.total}</p>
-            <p className="text-xs text-slate-400 mt-1">Across all modules</p>
+            <p className="text-2xl font-bold text-gray-900">{stats.total}</p>
+            <p className="text-xs text-gray-500 mt-1">Across all modules</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-slate-300">Active Users</span>
-              <CheckCircle className="w-5 h-5 text-green-400" />
+              <span className="text-sm text-gray-600">Active Users</span>
+              <CheckCircle className="w-5 h-5 text-green-600" />
             </div>
-            <p className="text-2xl font-bold text-slate-100">{stats.active}</p>
-            <p className="text-xs text-green-400 mt-1">{((stats.active / stats.total) * 100).toFixed(0)}% of total</p>
+            <p className="text-2xl font-bold text-gray-900">{stats.active}</p>
+            <p className="text-xs text-green-600 mt-1">{((stats.active / stats.total) * 100).toFixed(0)}% of total</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-slate-300">Administrators</span>
-              <Shield className="w-5 h-5 text-blue-400" />
+              <span className="text-sm text-gray-600">Administrators</span>
+              <Shield className="w-5 h-5 text-blue-600" />
             </div>
-            <p className="text-2xl font-bold text-slate-100">{stats.admins}</p>
-            <p className="text-xs text-blue-400 mt-1">With elevated access</p>
+            <p className="text-2xl font-bold text-gray-900">{stats.admins}</p>
+            <p className="text-xs text-blue-600 mt-1">With elevated access</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-slate-300">Suspended</span>
-              <XCircle className="w-5 h-5 text-red-400" />
+              <span className="text-sm text-gray-600">Suspended</span>
+              <XCircle className="w-5 h-5 text-red-600" />
             </div>
-            <p className="text-2xl font-bold text-slate-100">{stats.suspended}</p>
-            <p className="text-xs text-red-400 mt-1">Requires review</p>
+            <p className="text-2xl font-bold text-gray-900">{stats.suspended}</p>
+            <p className="text-xs text-red-600 mt-1">Requires review</p>
           </CardContent>
         </Card>
       </div>
@@ -378,29 +378,29 @@ export function UserManagement() {
           <CardContent className="p-0">
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-white/5 border-b">
+                <thead className="bg-gray-50 border-b">
                   <tr>
-                    <th className="text-left px-6 py-3 text-xs font-semibold text-slate-300 uppercase">User</th>
-                    <th className="text-left px-6 py-3 text-xs font-semibold text-slate-300 uppercase">Role</th>
-                    <th className="text-left px-6 py-3 text-xs font-semibold text-slate-300 uppercase">Modules</th>
-                    <th className="text-left px-6 py-3 text-xs font-semibold text-slate-300 uppercase">Status</th>
-                    <th className="text-left px-6 py-3 text-xs font-semibold text-slate-300 uppercase">Last Login</th>
-                    <th className="text-right px-6 py-3 text-xs font-semibold text-slate-300 uppercase">Actions</th>
+                    <th className="text-left px-6 py-3 text-xs font-semibold text-gray-600 uppercase">User</th>
+                    <th className="text-left px-6 py-3 text-xs font-semibold text-gray-600 uppercase">Role</th>
+                    <th className="text-left px-6 py-3 text-xs font-semibold text-gray-600 uppercase">Modules</th>
+                    <th className="text-left px-6 py-3 text-xs font-semibold text-gray-600 uppercase">Status</th>
+                    <th className="text-left px-6 py-3 text-xs font-semibold text-gray-600 uppercase">Last Login</th>
+                    <th className="text-right px-6 py-3 text-xs font-semibold text-gray-600 uppercase">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-white/10">
+                <tbody className="divide-y divide-gray-200">
                   {sortedUsers.map((user) => (
-                    <tr key={user.id} className="hover:bg-white/5 transition-colors">
+                    <tr key={user.id} className="hover:bg-gray-50 transition-colors">
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-3">
                           <Avatar>
-                            <AvatarFallback className="bg-indigo-500/15 text-indigo-300">
+                            <AvatarFallback className="bg-indigo-100 text-indigo-700">
                               {user.name.split(' ').map(n => n[0]).join('')}
                             </AvatarFallback>
                           </Avatar>
                           <div>
-                            <p className="font-medium text-slate-100">{user.name}</p>
-                            <p className="text-sm text-slate-400 flex items-center gap-1">
+                            <p className="font-medium text-gray-900">{user.name}</p>
+                            <p className="text-sm text-gray-500 flex items-center gap-1">
                               <Mail className="w-3 h-3" />
                               {user.email}
                             </p>
@@ -415,7 +415,7 @@ export function UserManagement() {
                           {user.modules.map((module) => (
                             <span
                               key={module}
-                              className="px-2 py-0.5 bg-white/5 text-slate-300 text-xs rounded"
+                              className="px-2 py-0.5 bg-gray-100 text-gray-700 text-xs rounded"
                             >
                               {module.replace('_', ' ')}
                             </span>
@@ -425,11 +425,11 @@ export function UserManagement() {
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-2">
                           {getStatusIcon(user.status)}
-                          <span className="text-sm text-slate-300 capitalize">{user.status}</span>
+                          <span className="text-sm text-gray-600 capitalize">{user.status}</span>
                         </div>
                       </td>
                       <td className="px-6 py-4">
-                        <div className="flex items-center gap-1 text-sm text-slate-300">
+                        <div className="flex items-center gap-1 text-sm text-gray-600">
                           <Calendar className="w-4 h-4" />
                           {user.lastLogin}
                         </div>
@@ -449,9 +449,9 @@ export function UserManagement() {
                             onClick={() => handleSuspendUser(user.id)}
                           >
                             {user.status === 'suspended' ? (
-                              <CheckCircle className="w-4 h-4 text-green-400" />
+                              <CheckCircle className="w-4 h-4 text-green-600" />
                             ) : (
-                              <XCircle className="w-4 h-4 text-red-400" />
+                              <XCircle className="w-4 h-4 text-red-600" />
                             )}
                           </Button>
                           {user.role !== 'super_admin' && (
@@ -460,7 +460,7 @@ export function UserManagement() {
                               size="sm"
                               onClick={() => handleDeleteUser(user)}
                             >
-                              <Trash2 className="w-4 h-4 text-red-400" />
+                              <Trash2 className="w-4 h-4 text-red-600" />
                             </Button>
                           )}
                         </div>
@@ -489,39 +489,39 @@ export function UserManagement() {
             <CardContent className="p-6">
               <div className="space-y-4">
                 <div>
-                  <label className="text-sm font-medium text-slate-300 block mb-2">
+                  <label className="text-sm font-medium text-gray-700 block mb-2">
                     Full Name *
                   </label>
                   <input
                     type="text"
                     value={newUser.name}
                     onChange={(e) => setNewUser({ ...newUser, name: e.target.value })}
-                    className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
                     placeholder="John Smith"
                   />
                 </div>
 
                 <div>
-                  <label className="text-sm font-medium text-slate-300 block mb-2">
+                  <label className="text-sm font-medium text-gray-700 block mb-2">
                     Email Address *
                   </label>
                   <input
                     type="email"
                     value={newUser.email}
                     onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
-                    className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
                     placeholder="john@example.com"
                   />
                 </div>
 
                 <div>
-                  <label className="text-sm font-medium text-slate-300 block mb-2">
+                  <label className="text-sm font-medium text-gray-700 block mb-2">
                     Role
                   </label>
                   <select
                     value={newUser.role}
                     onChange={(e) => setNewUser({ ...newUser, role: e.target.value as User['role'] })}
-                    className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
                   >
                     <option value="user">User</option>
                     <option value="admin">Admin</option>
@@ -531,22 +531,22 @@ export function UserManagement() {
                 </div>
 
                 <div>
-                  <label className="text-sm font-medium text-slate-300 block mb-2">
+                  <label className="text-sm font-medium text-gray-700 block mb-2">
                     Module Access
                   </label>
                   <div className="space-y-2">
                     {(['Grow MIP', 'grow_accounting', 'pfa', 'grow_hq'] as const).map((module) => (
                       <label
                         key={module}
-                        className="flex items-center gap-3 p-3 border rounded-lg hover:bg-white/5 cursor-pointer"
+                        className="flex items-center gap-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer"
                       >
                         <input
                           type="checkbox"
                           checked={newUser.modules.includes(module)}
                           onChange={() => toggleModule(module)}
-                          className="w-4 h-4 text-indigo-400 focus:ring-indigo-500 border-white/10 rounded"
+                          className="w-4 h-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
                         />
-                        <span className="text-sm font-medium text-slate-100 capitalize">
+                        <span className="text-sm font-medium text-gray-900 capitalize">
                           {module.replace('_', ' ')}
                         </span>
                       </label>
@@ -586,39 +586,39 @@ export function UserManagement() {
             <CardContent className="p-6">
               <div className="space-y-4">
                 <div>
-                  <label className="text-sm font-medium text-slate-300 block mb-2">
+                  <label className="text-sm font-medium text-gray-700 block mb-2">
                     Full Name *
                   </label>
                   <input
                     type="text"
                     value={editingUser.name}
                     onChange={(e) => setEditingUser({ ...editingUser, name: e.target.value })}
-                    className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
                     placeholder="John Smith"
                   />
                 </div>
 
                 <div>
-                  <label className="text-sm font-medium text-slate-300 block mb-2">
+                  <label className="text-sm font-medium text-gray-700 block mb-2">
                     Email Address *
                   </label>
                   <input
                     type="email"
                     value={editingUser.email}
                     onChange={(e) => setEditingUser({ ...editingUser, email: e.target.value })}
-                    className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
                     placeholder="john@example.com"
                   />
                 </div>
 
                 <div>
-                  <label className="text-sm font-medium text-slate-300 block mb-2">
+                  <label className="text-sm font-medium text-gray-700 block mb-2">
                     Role
                   </label>
                   <select
                     value={editingUser.role}
                     onChange={(e) => setEditingUser({ ...editingUser, role: e.target.value as User['role'] })}
-                    className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
                   >
                     <option value="user">User</option>
                     <option value="admin">Admin</option>
@@ -628,22 +628,22 @@ export function UserManagement() {
                 </div>
 
                 <div>
-                  <label className="text-sm font-medium text-slate-300 block mb-2">
+                  <label className="text-sm font-medium text-gray-700 block mb-2">
                     Module Access
                   </label>
                   <div className="space-y-2">
                     {(['Grow MIP', 'grow_accounting', 'pfa', 'grow_hq'] as const).map((module) => (
                       <label
                         key={module}
-                        className="flex items-center gap-3 p-3 border rounded-lg hover:bg-white/5 cursor-pointer"
+                        className="flex items-center gap-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer"
                       >
                         <input
                           type="checkbox"
                           checked={editingUser.modules.includes(module)}
                           onChange={() => toggleEditModule(module)}
-                          className="w-4 h-4 text-indigo-400 focus:ring-indigo-500 border-white/10 rounded"
+                          className="w-4 h-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
                         />
-                        <span className="text-sm font-medium text-slate-100 capitalize">
+                        <span className="text-sm font-medium text-gray-900 capitalize">
                           {module.replace('_', ' ')}
                         </span>
                       </label>

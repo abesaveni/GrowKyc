@@ -325,29 +325,29 @@ export function EnhancedMonitoringTab({ clientId, clientName, monitoringData }: 
 
   const getAlertColor = (type: string) => {
     switch (type) {
-      case 'High': return 'bg-red-500/15 text-red-300 border-red-300';
-      case 'Medium': return 'bg-orange-500/15 text-orange-300 border-orange-300';
-      case 'Low': return 'bg-yellow-500/15 text-yellow-300 border-yellow-300';
-      default: return 'bg-white/5 text-slate-100 border-white/10';
+      case 'High': return 'bg-red-100 text-red-800 border-red-300';
+      case 'Medium': return 'bg-orange-100 text-orange-800 border-orange-300';
+      case 'Low': return 'bg-yellow-100 text-yellow-800 border-yellow-300';
+      default: return 'bg-gray-100 text-gray-800 border-gray-300';
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'Current': return 'bg-green-500/15 text-green-300 border-green-300';
-      case 'Due': return 'bg-orange-500/15 text-orange-300 border-orange-300';
-      case 'Running': return 'bg-blue-500/15 text-blue-300 border-blue-300';
-      case 'Never Run': return 'bg-white/5 text-slate-100 border-white/10';
-      default: return 'bg-white/5 text-slate-100 border-white/10';
+      case 'Current': return 'bg-green-100 text-green-800 border-green-300';
+      case 'Due': return 'bg-orange-100 text-orange-800 border-orange-300';
+      case 'Running': return 'bg-blue-100 text-blue-800 border-blue-300';
+      case 'Never Run': return 'bg-gray-100 text-gray-800 border-gray-300';
+      default: return 'bg-gray-100 text-gray-800 border-gray-300';
     }
   };
 
   const getAlertStatusColor = (status: string) => {
     switch (status) {
-      case 'Active': return 'bg-red-500/15 text-red-300 border-red-300';
-      case 'Investigating': return 'bg-orange-500/15 text-orange-300 border-orange-300';
-      case 'Resolved': return 'bg-green-500/15 text-green-300 border-green-300';
-      default: return 'bg-white/5 text-slate-100 border-white/10';
+      case 'Active': return 'bg-red-100 text-red-800 border-red-300';
+      case 'Investigating': return 'bg-orange-100 text-orange-800 border-orange-300';
+      case 'Resolved': return 'bg-green-100 text-green-800 border-green-300';
+      default: return 'bg-gray-100 text-gray-800 border-gray-300';
     }
   };
 
@@ -361,56 +361,56 @@ export function EnhancedMonitoringTab({ clientId, clientName, monitoringData }: 
         <Card className="border-2 border-cyan-300 shadow-lg bg-gradient-to-br from-cyan-50 to-blue-50">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <Activity className="w-8 h-8 text-cyan-400" />
+              <Activity className="w-8 h-8 text-cyan-600" />
               <TrendingUp className="w-6 h-6 text-cyan-500" />
             </div>
-            <p className="text-sm text-slate-300 mb-1">Active Monitoring</p>
-            <p className="text-4xl font-bold text-cyan-300">24/7</p>
-            <p className="text-xs text-cyan-400 mt-2">Real-time surveillance</p>
+            <p className="text-sm text-gray-600 mb-1">Active Monitoring</p>
+            <p className="text-4xl font-bold text-cyan-700">24/7</p>
+            <p className="text-xs text-cyan-600 mt-2">Real-time surveillance</p>
           </CardContent>
         </Card>
 
         <Card className={`border-2 shadow-lg ${activeAlerts > 0 ? 'border-red-400 bg-gradient-to-br from-red-50 to-orange-50' : 'border-green-400 bg-gradient-to-br from-green-50 to-emerald-50'}`}>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <Bell className={`w-8 h-8 ${activeAlerts > 0 ? 'text-red-400' : 'text-green-400'}`} />
+              <Bell className={`w-8 h-8 ${activeAlerts > 0 ? 'text-red-600' : 'text-green-600'}`} />
               {activeAlerts > 0 ? (
                 <AlertTriangle className="w-6 h-6 text-red-500" />
               ) : (
                 <CheckCircle className="w-6 h-6 text-green-500" />
               )}
             </div>
-            <p className="text-sm text-slate-300 mb-1">Active Alerts</p>
-            <p className={`text-4xl font-bold ${activeAlerts > 0 ? 'text-red-300' : 'text-green-300'}`}>
+            <p className="text-sm text-gray-600 mb-1">Active Alerts</p>
+            <p className={`text-4xl font-bold ${activeAlerts > 0 ? 'text-red-700' : 'text-green-700'}`}>
               {activeAlerts}
             </p>
-            <p className="text-xs text-slate-300 mt-2">{alerts.length} total alerts (30d)</p>
+            <p className="text-xs text-gray-600 mt-2">{alerts.length} total alerts (30d)</p>
           </CardContent>
         </Card>
 
         <Card className="border-2 border-purple-300 shadow-lg bg-gradient-to-br from-purple-50 to-indigo-50">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <Target className="w-8 h-8 text-purple-400" />
+              <Target className="w-8 h-8 text-purple-600" />
               <Radio className="w-6 h-6 text-purple-500 animate-pulse" />
             </div>
-            <p className="text-sm text-slate-300 mb-1">Checks Available</p>
-            <p className="text-4xl font-bold text-purple-300">{availableChecks.length}</p>
-            <p className="text-xs text-purple-400 mt-2">Run on-demand</p>
+            <p className="text-sm text-gray-600 mb-1">Checks Available</p>
+            <p className="text-4xl font-bold text-purple-700">{availableChecks.length}</p>
+            <p className="text-xs text-purple-600 mt-2">Run on-demand</p>
           </CardContent>
         </Card>
 
         <Card className="border-2 border-orange-300 shadow-lg bg-gradient-to-br from-orange-50 to-amber-50">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <BarChart3 className="w-8 h-8 text-orange-400" />
+              <BarChart3 className="w-8 h-8 text-orange-600" />
               <TrendingDown className="w-6 h-6 text-orange-500" />
             </div>
-            <p className="text-sm text-slate-300 mb-1">Changes Detected</p>
-            <p className="text-4xl font-bold text-orange-300">
+            <p className="text-sm text-gray-600 mb-1">Changes Detected</p>
+            <p className="text-4xl font-bold text-orange-700">
               {monitoringData.nameChanges + monitoringData.addressChanges + monitoringData.ownershipChanges}
             </p>
-            <p className="text-xs text-orange-400 mt-2">Last 30 days</p>
+            <p className="text-xs text-orange-600 mt-2">Last 30 days</p>
           </CardContent>
         </Card>
       </div>
@@ -420,7 +420,7 @@ export function EnhancedMonitoringTab({ clientId, clientName, monitoringData }: 
         <CardHeader className="bg-gradient-to-r from-red-50 to-orange-50 border-b">
           <CardTitle className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Bell className="w-6 h-6 text-red-400" />
+              <Bell className="w-6 h-6 text-red-600" />
               Active Alerts & Notifications
             </div>
             <Badge className="bg-red-600 text-white px-3 py-1">
@@ -431,19 +431,19 @@ export function EnhancedMonitoringTab({ clientId, clientName, monitoringData }: 
         <CardContent className="p-6">
           <div className="space-y-3">
             {alerts.filter(a => a.status === 'Active').length === 0 ? (
-              <div className="bg-green-500/10 rounded-lg p-8 border-2 border-green-500/30 text-center">
-                <CheckCircle className="w-12 h-12 text-green-400 mx-auto mb-3" />
-                <p className="text-lg font-semibold text-green-300">No Active Alerts</p>
-                <p className="text-sm text-green-400 mt-1">All monitoring checks are clear</p>
+              <div className="bg-green-50 rounded-lg p-8 border-2 border-green-200 text-center">
+                <CheckCircle className="w-12 h-12 text-green-600 mx-auto mb-3" />
+                <p className="text-lg font-semibold text-green-800">No Active Alerts</p>
+                <p className="text-sm text-green-600 mt-1">All monitoring checks are clear</p>
               </div>
             ) : (
               alerts.filter(a => a.status === 'Active').map((alert) => (
                 <div
                   key={alert.id}
                   className={`rounded-lg p-4 border-2 ${
-                    alert.type === 'High' ? 'bg-red-500/10 border-red-300' :
-                    alert.type === 'Medium' ? 'bg-orange-500/10 border-orange-300' :
-                    'bg-yellow-500/10 border-yellow-300'
+                    alert.type === 'High' ? 'bg-red-50 border-red-300' :
+                    alert.type === 'Medium' ? 'bg-orange-50 border-orange-300' :
+                    'bg-yellow-50 border-yellow-300'
                   }`}
                 >
                   <div className="flex items-start justify-between">
@@ -455,12 +455,12 @@ export function EnhancedMonitoringTab({ clientId, clientName, monitoringData }: 
                         <Badge variant="outline" className="text-xs">
                           {alert.category}
                         </Badge>
-                        <span className="text-xs text-slate-400">{alert.date}</span>
+                        <span className="text-xs text-gray-500">{alert.date}</span>
                       </div>
-                      <h4 className="font-semibold text-slate-100 mb-1">{alert.title}</h4>
-                      <p className="text-sm text-slate-300 mb-2">{alert.description}</p>
+                      <h4 className="font-semibold text-gray-900 mb-1">{alert.title}</h4>
+                      <p className="text-sm text-gray-700 mb-2">{alert.description}</p>
                       {alert.assignedTo && (
-                        <p className="text-xs text-slate-400">Assigned to: {alert.assignedTo}</p>
+                        <p className="text-xs text-gray-500">Assigned to: {alert.assignedTo}</p>
                       )}
                     </div>
                     <div className="flex gap-2 ml-4">
@@ -481,7 +481,7 @@ export function EnhancedMonitoringTab({ clientId, clientName, monitoringData }: 
           {/* Show resolved alerts summary */}
           {alerts.filter(a => a.status === 'Resolved').length > 0 && (
             <div className="mt-4 pt-4 border-t">
-              <button className="text-sm text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
+              <button className="text-sm text-cyan-600 hover:text-cyan-700 flex items-center gap-1">
                 <Clock className="w-4 h-4" />
                 View {alerts.filter(a => a.status === 'Resolved').length} resolved alerts
               </button>
@@ -494,7 +494,7 @@ export function EnhancedMonitoringTab({ clientId, clientName, monitoringData }: 
       <Card className="border-2 border-blue-300 shadow-lg">
         <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
           <CardTitle className="flex items-center gap-2">
-            <Zap className="w-6 h-6 text-blue-400" />
+            <Zap className="w-6 h-6 text-blue-600" />
             Run On-Demand Verification Checks
           </CardTitle>
         </CardHeader>
@@ -509,57 +509,57 @@ export function EnhancedMonitoringTab({ clientId, clientName, monitoringData }: 
                 <div
                   key={check.id}
                   className={`rounded-lg border-2 p-4 transition-all ${
-                    isRunning ? 'bg-blue-500/10 border-blue-400 shadow-lg' :
-                    isDue ? 'bg-orange-500/10 border-orange-300' :
-                    'bg-white border-white/10 hover:border-cyan-400 hover:shadow-md'
+                    isRunning ? 'bg-blue-50 border-blue-400 shadow-lg' :
+                    isDue ? 'bg-orange-50 border-orange-300' :
+                    'bg-white border-gray-200 hover:border-cyan-400 hover:shadow-md'
                   }`}
                 >
                   <div className="flex items-start gap-3">
                     <div className={`p-3 rounded-lg ${
-                      isRunning ? 'bg-blue-500/20' :
-                      isDue ? 'bg-orange-500/20' :
-                      'bg-cyan-500/15'
+                      isRunning ? 'bg-blue-200' :
+                      isDue ? 'bg-orange-200' :
+                      'bg-cyan-100'
                     }`}>
                       <Icon className={`w-6 h-6 ${
-                        isRunning ? 'text-blue-300' :
-                        isDue ? 'text-orange-300' :
-                        'text-cyan-300'
+                        isRunning ? 'text-blue-700' :
+                        isDue ? 'text-orange-700' :
+                        'text-cyan-700'
                       }`} />
                     </div>
                     
                     <div className="flex-1">
                       <div className="flex items-center justify-between mb-1">
-                        <h4 className="font-semibold text-slate-100">{check.name}</h4>
+                        <h4 className="font-semibold text-gray-900">{check.name}</h4>
                         {isDue && (
-                          <Badge className="bg-orange-500/15 text-orange-300 border-orange-300 border text-xs">
+                          <Badge className="bg-orange-100 text-orange-800 border-orange-300 border text-xs">
                             Due
                           </Badge>
                         )}
                       </div>
-                      <p className="text-xs text-slate-300 mb-3">{check.description}</p>
+                      <p className="text-xs text-gray-600 mb-3">{check.description}</p>
                       
                       {/* Check Status Info */}
                       <div className="grid grid-cols-2 gap-2 mb-3 text-xs">
                         <div>
-                          <p className="text-slate-400">Last Run</p>
+                          <p className="text-gray-500">Last Run</p>
                           <p className="font-semibold">{check.lastRun || 'Never'}</p>
                         </div>
                         <div>
-                          <p className="text-slate-400">Provider</p>
+                          <p className="text-gray-500">Provider</p>
                           <p className="font-semibold">{check.provider}</p>
                         </div>
                       </div>
 
                       {/* Next scheduled */}
                       {check.nextScheduled && (
-                        <div className="mb-3 text-xs bg-white/5 rounded p-2">
-                          <p className="text-slate-400">Next Scheduled: {check.nextScheduled}</p>
+                        <div className="mb-3 text-xs bg-gray-50 rounded p-2">
+                          <p className="text-gray-500">Next Scheduled: {check.nextScheduled}</p>
                         </div>
                       )}
 
                       {/* Action Button */}
                       <div className="flex items-center justify-between">
-                        <span className="text-xs text-slate-400">{check.cost}</span>
+                        <span className="text-xs text-gray-500">{check.cost}</span>
                         <Button
                           size="sm"
                           onClick={() => handleRunCheck(check.id)}
@@ -615,7 +615,7 @@ export function EnhancedMonitoringTab({ clientId, clientName, monitoringData }: 
         <CardHeader className="bg-gradient-to-r from-purple-50 to-indigo-50 border-b">
           <CardTitle className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Clock className="w-6 h-6 text-purple-400" />
+              <Clock className="w-6 h-6 text-purple-600" />
               Monitoring Timeline
             </div>
             <div className="flex gap-2">
@@ -626,7 +626,7 @@ export function EnhancedMonitoringTab({ clientId, clientName, monitoringData }: 
                   className={`px-3 py-1 rounded text-xs font-medium transition-colors ${
                     selectedTimeRange === range
                       ? 'bg-purple-600 text-white'
-                      : 'bg-white text-slate-300 hover:bg-purple-500/10'
+                      : 'bg-white text-gray-600 hover:bg-purple-50'
                   }`}
                 >
                   {range === '7d' ? '7 Days' : range === '30d' ? '30 Days' : range === '90d' ? '90 Days' : '1 Year'}
@@ -646,16 +646,16 @@ export function EnhancedMonitoringTab({ clientId, clientName, monitoringData }: 
                 <div key={idx} className="relative pl-12">
                   {/* Timeline Dot */}
                   <div className={`absolute left-[11px] top-[6px] w-5 h-5 rounded-full border-4 ${
-                    event.severity === 'high' ? 'bg-red-500 border-red-500/30' :
-                    event.severity === 'medium' ? 'bg-orange-500 border-orange-500/30' :
-                    'bg-cyan-500 border-cyan-500/30'
+                    event.severity === 'high' ? 'bg-red-500 border-red-200' :
+                    event.severity === 'medium' ? 'bg-orange-500 border-orange-200' :
+                    'bg-cyan-500 border-cyan-200'
                   }`} />
                   
                   {/* Event Card */}
                   <div className={`rounded-lg p-4 border ${
-                    event.severity === 'high' ? 'bg-red-500/10 border-red-500/30' :
-                    event.severity === 'medium' ? 'bg-orange-500/10 border-orange-500/30' :
-                    'bg-cyan-500/10 border-cyan-500/30'
+                    event.severity === 'high' ? 'bg-red-50 border-red-200' :
+                    event.severity === 'medium' ? 'bg-orange-50 border-orange-200' :
+                    'bg-cyan-50 border-cyan-200'
                   }`}>
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
@@ -663,11 +663,11 @@ export function EnhancedMonitoringTab({ clientId, clientName, monitoringData }: 
                           <Badge variant="outline" className="text-xs">
                             {event.type}
                           </Badge>
-                          <span className="text-xs text-slate-400">{event.date}</span>
+                          <span className="text-xs text-gray-500">{event.date}</span>
                         </div>
-                        <h4 className="font-semibold text-slate-100">{event.title}</h4>
-                        <p className="text-sm text-slate-300 mt-1">{event.description}</p>
-                        <p className="text-xs text-slate-400 mt-2">By: {event.user}</p>
+                        <h4 className="font-semibold text-gray-900">{event.title}</h4>
+                        <p className="text-sm text-gray-600 mt-1">{event.description}</p>
+                        <p className="text-xs text-gray-500 mt-2">By: {event.user}</p>
                       </div>
                       <Button size="sm" variant="outline">
                         <Eye className="w-3 h-3 mr-1" />
@@ -694,23 +694,23 @@ export function EnhancedMonitoringTab({ clientId, clientName, monitoringData }: 
       <Card className="border-2 border-green-300 shadow-lg">
         <CardHeader className="bg-gradient-to-r from-green-50 to-emerald-50 border-b">
           <CardTitle className="flex items-center gap-2">
-            <Activity className="w-6 h-6 text-green-400" />
+            <Activity className="w-6 h-6 text-green-600" />
             Change Detection Summary
           </CardTitle>
         </CardHeader>
         <CardContent className="p-6">
           <div className="grid grid-cols-3 gap-4">
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-6 border-2 border-blue-500/30">
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-6 border-2 border-blue-200">
               <div className="flex items-center gap-3 mb-3">
-                <div className="p-3 bg-blue-500/20 rounded-lg">
-                  <User className="w-6 h-6 text-blue-300" />
+                <div className="p-3 bg-blue-200 rounded-lg">
+                  <User className="w-6 h-6 text-blue-700" />
                 </div>
                 <div>
-                  <p className="text-sm text-slate-300">Name Changes</p>
-                  <p className="text-3xl font-bold text-blue-300">{monitoringData.nameChanges}</p>
+                  <p className="text-sm text-gray-600">Name Changes</p>
+                  <p className="text-3xl font-bold text-blue-700">{monitoringData.nameChanges}</p>
                 </div>
               </div>
-              <div className="w-full bg-blue-500/20 rounded-full h-2">
+              <div className="w-full bg-blue-200 rounded-full h-2">
                 <div 
                   className="h-2 rounded-full bg-blue-600"
                   style={{ width: `${Math.min(monitoringData.nameChanges * 50, 100)}%` }}
@@ -718,17 +718,17 @@ export function EnhancedMonitoringTab({ clientId, clientName, monitoringData }: 
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg p-6 border-2 border-purple-500/30">
+            <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg p-6 border-2 border-purple-200">
               <div className="flex items-center gap-3 mb-3">
-                <div className="p-3 bg-purple-500/20 rounded-lg">
-                  <Globe className="w-6 h-6 text-purple-300" />
+                <div className="p-3 bg-purple-200 rounded-lg">
+                  <Globe className="w-6 h-6 text-purple-700" />
                 </div>
                 <div>
-                  <p className="text-sm text-slate-300">Address Changes</p>
-                  <p className="text-3xl font-bold text-purple-300">{monitoringData.addressChanges}</p>
+                  <p className="text-sm text-gray-600">Address Changes</p>
+                  <p className="text-3xl font-bold text-purple-700">{monitoringData.addressChanges}</p>
                 </div>
               </div>
-              <div className="w-full bg-purple-500/20 rounded-full h-2">
+              <div className="w-full bg-purple-200 rounded-full h-2">
                 <div 
                   className="h-2 rounded-full bg-purple-600"
                   style={{ width: `${Math.min(monitoringData.addressChanges * 50, 100)}%` }}
@@ -736,17 +736,17 @@ export function EnhancedMonitoringTab({ clientId, clientName, monitoringData }: 
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-lg p-6 border-2 border-orange-500/30">
+            <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-lg p-6 border-2 border-orange-200">
               <div className="flex items-center gap-3 mb-3">
-                <div className="p-3 bg-orange-500/20 rounded-lg">
-                  <Building className="w-6 h-6 text-orange-300" />
+                <div className="p-3 bg-orange-200 rounded-lg">
+                  <Building className="w-6 h-6 text-orange-700" />
                 </div>
                 <div>
-                  <p className="text-sm text-slate-300">Ownership Changes</p>
-                  <p className="text-3xl font-bold text-orange-300">{monitoringData.ownershipChanges}</p>
+                  <p className="text-sm text-gray-600">Ownership Changes</p>
+                  <p className="text-3xl font-bold text-orange-700">{monitoringData.ownershipChanges}</p>
                 </div>
               </div>
-              <div className="w-full bg-orange-500/20 rounded-full h-2">
+              <div className="w-full bg-orange-200 rounded-full h-2">
                 <div 
                   className="h-2 rounded-full bg-orange-600"
                   style={{ width: `${Math.min(monitoringData.ownershipChanges * 50, 100)}%` }}

@@ -235,8 +235,8 @@ export function XeroMapping({ onNavigate }: XeroMappingProps) {
               Back to Xero
             </Button>
             <div>
-              <h1 className="text-2xl font-semibold text-slate-100">Xero Account Mappings</h1>
-              <p className="text-sm text-slate-300 mt-1">Map Xero chart of accounts to workpaper line items</p>
+              <h1 className="text-2xl font-semibold text-gray-900">Xero Account Mappings</h1>
+              <p className="text-sm text-gray-600 mt-1">Map Xero chart of accounts to workpaper line items</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -260,29 +260,29 @@ export function XeroMapping({ onNavigate }: XeroMappingProps) {
         </div>
 
         {/* Stats Bar */}
-        <div className="bg-white/5 border border-white/10 rounded px-6 py-3">
+        <div className="bg-gray-50 border border-gray-300 rounded px-6 py-3">
           <div className="flex items-center gap-8 text-sm">
             <div className="flex items-center gap-2">
-              <span className="text-slate-300">Total Accounts:</span>
-              <span className="font-semibold text-slate-100">{mappings.length}</span>
+              <span className="text-gray-600">Total Accounts:</span>
+              <span className="font-semibold text-gray-900">{mappings.length}</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-slate-300">Mapped:</span>
-              <span className="font-semibold text-green-400">{mappedCount}</span>
+              <span className="text-gray-600">Mapped:</span>
+              <span className="font-semibold text-green-600">{mappedCount}</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-slate-300">Unmapped:</span>
-              <span className="font-semibold text-orange-400">{unmappedCount}</span>
+              <span className="text-gray-600">Unmapped:</span>
+              <span className="font-semibold text-orange-600">{unmappedCount}</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-slate-300">Auto-Sync Enabled:</span>
-              <span className="font-semibold text-blue-400">{autoSyncCount}</span>
+              <span className="text-gray-600">Auto-Sync Enabled:</span>
+              <span className="font-semibold text-blue-600">{autoSyncCount}</span>
             </div>
           </div>
         </div>
 
         {/* Search */}
-        <div className="bg-white border border-white/10 rounded px-4 py-2">
+        <div className="bg-white border border-gray-300 rounded px-4 py-2">
           <div className="flex items-center gap-2">
             <Search className="w-4 h-4 text-gray-400" />
             <input
@@ -296,19 +296,19 @@ export function XeroMapping({ onNavigate }: XeroMappingProps) {
         </div>
 
         {/* Mappings Table */}
-        <div className="border border-white/10 rounded bg-white overflow-hidden">
+        <div className="border border-gray-300 rounded bg-white overflow-hidden">
           <table className="w-full text-sm border-collapse">
             {/* Header Row */}
             <thead>
-              <tr className="bg-white/5">
-                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300 w-8">Ref</th>
-                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300 w-24">Code</th>
-                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Xero Account</th>
-                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300 w-16">→</th>
-                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300 w-48">Workpaper Section</th>
-                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Workpaper Line Item</th>
-                <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-24">Auto-Sync</th>
-                <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-20">Status</th>
+              <tr className="bg-gray-50">
+                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700 w-8">Ref</th>
+                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700 w-24">Code</th>
+                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Xero Account</th>
+                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700 w-16">→</th>
+                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700 w-48">Workpaper Section</th>
+                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Workpaper Line Item</th>
+                <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-24">Auto-Sync</th>
+                <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-20">Status</th>
               </tr>
             </thead>
 
@@ -318,17 +318,17 @@ export function XeroMapping({ onNavigate }: XeroMappingProps) {
                 <React.Fragment key={type}>
                   {/* Section Header Row */}
                   <tr 
-                    className="bg-white/5 cursor-pointer hover:bg-white/10"
+                    className="bg-gray-100 cursor-pointer hover:bg-gray-200"
                     onClick={() => toggleSection(type)}
                   >
-                    <td colSpan={8} className="border border-white/10 px-3 py-2">
+                    <td colSpan={8} className="border border-gray-300 px-3 py-2">
                       <div className="flex items-center gap-2">
                         {expandedSections.has(type) ? (
-                          <ChevronDown className="w-4 h-4 text-slate-300" />
+                          <ChevronDown className="w-4 h-4 text-gray-600" />
                         ) : (
-                          <ChevronRight className="w-4 h-4 text-slate-300" />
+                          <ChevronRight className="w-4 h-4 text-gray-600" />
                         )}
-                        <span className="font-semibold text-slate-100 uppercase text-xs">
+                        <span className="font-semibold text-gray-900 uppercase text-xs">
                           {type} ({items.length})
                         </span>
                       </div>
@@ -339,25 +339,25 @@ export function XeroMapping({ onNavigate }: XeroMappingProps) {
                   {expandedSections.has(type) && items.map((mapping) => (
                     <tr 
                       key={mapping.id} 
-                      className={`hover:bg-white/5 ${!mapping.mapped ? 'bg-orange-500/10' : ''}`}
+                      className={`hover:bg-gray-50 ${!mapping.mapped ? 'bg-orange-50' : ''}`}
                     >
-                      <td className="border border-white/10 px-3 py-2 text-center text-slate-300 font-mono text-xs">
+                      <td className="border border-gray-300 px-3 py-2 text-center text-gray-600 font-mono text-xs">
                         {mapping.id.replace('M', '')}
                       </td>
-                      <td className="border border-white/10 px-3 py-2 text-slate-300 font-mono text-xs">
+                      <td className="border border-gray-300 px-3 py-2 text-gray-700 font-mono text-xs">
                         {mapping.xeroAccountCode}
                       </td>
-                      <td className="border border-white/10 px-3 py-2 text-slate-100">
+                      <td className="border border-gray-300 px-3 py-2 text-gray-900">
                         {mapping.xeroAccount}
                       </td>
-                      <td className="border border-white/10 px-3 py-2 text-center">
+                      <td className="border border-gray-300 px-3 py-2 text-center">
                         <LinkIcon className="w-4 h-4 text-gray-400 mx-auto" />
                       </td>
-                      <td className="border border-white/10 px-2 py-2">
+                      <td className="border border-gray-300 px-2 py-2">
                         <select
                           value={mapping.workpaperSection}
                           onChange={(e) => handleMappingChange(mapping.id, 'workpaperSection', e.target.value)}
-                          className="w-full px-2 py-1 text-xs border border-white/10 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
+                          className="w-full px-2 py-1 text-xs border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
                         >
                           <option value="">Select section...</option>
                           <option value="Income Indiv. 1">Income Indiv. 1</option>
@@ -369,28 +369,28 @@ export function XeroMapping({ onNavigate }: XeroMappingProps) {
                           <option value="Capital Gains">Capital Gains</option>
                         </select>
                       </td>
-                      <td className="border border-white/10 px-2 py-2">
+                      <td className="border border-gray-300 px-2 py-2">
                         <input
                           type="text"
                           value={mapping.workpaperLineItem}
                           onChange={(e) => handleMappingChange(mapping.id, 'workpaperLineItem', e.target.value)}
                           placeholder="Enter line item..."
-                          className="w-full px-2 py-1 text-xs border border-white/10 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
+                          className="w-full px-2 py-1 text-xs border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
                         />
                       </td>
-                      <td className="border border-white/10 px-3 py-2 text-center">
+                      <td className="border border-gray-300 px-3 py-2 text-center">
                         <input
                           type="checkbox"
                           checked={mapping.autoSync}
                           onChange={(e) => handleMappingChange(mapping.id, 'autoSync', e.target.checked)}
-                          className="w-4 h-4 rounded border-white/10 text-blue-400 focus:ring-blue-500"
+                          className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                         />
                       </td>
-                      <td className="border border-white/10 px-3 py-2 text-center">
+                      <td className="border border-gray-300 px-3 py-2 text-center">
                         {mapping.mapped ? (
-                          <CheckCircle className="w-4 h-4 text-green-400 mx-auto" />
+                          <CheckCircle className="w-4 h-4 text-green-600 mx-auto" />
                         ) : (
-                          <XCircle className="w-4 h-4 text-orange-400 mx-auto" />
+                          <XCircle className="w-4 h-4 text-orange-600 mx-auto" />
                         )}
                       </td>
                     </tr>
@@ -402,12 +402,12 @@ export function XeroMapping({ onNavigate }: XeroMappingProps) {
         </div>
 
         {/* Help Text */}
-        <div className="bg-blue-500/10 border border-blue-300 rounded px-4 py-3">
+        <div className="bg-blue-50 border border-blue-300 rounded px-4 py-3">
           <div className="flex items-start gap-3">
-            <AlertCircle className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+            <AlertCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
             <div>
-              <h4 className="font-semibold text-blue-300">Mapping Instructions</h4>
-              <ul className="text-sm text-blue-300 mt-1 space-y-1 list-disc pl-5">
+              <h4 className="font-semibold text-blue-900">Mapping Instructions</h4>
+              <ul className="text-sm text-blue-800 mt-1 space-y-1 list-disc pl-5">
                 <li>Select the workpaper section and line item for each Xero account</li>
                 <li>Enable Auto-Sync to automatically pull data during scheduled syncs</li>
                 <li>Unmapped accounts (orange highlight) won't be imported</li>

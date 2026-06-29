@@ -353,52 +353,52 @@ Client states Australian registration provides credibility for international con
 
       {/* Stats Cards */}
       <div className="grid grid-cols-5 gap-4">
-        <div className="bg-white rounded-lg border border-white/10 p-4">
+        <div className="bg-white rounded-lg border border-gray-200 p-4">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="font-semibold text-slate-100">Total Tasks</h3>
-            <Activity className="w-5 h-5 text-slate-300" />
+            <h3 className="font-semibold text-gray-900">Total Tasks</h3>
+            <Activity className="w-5 h-5 text-gray-600" />
           </div>
-          <p className="text-3xl font-bold text-slate-100">{workloadStats.totalTasks}</p>
+          <p className="text-3xl font-bold text-gray-900">{workloadStats.totalTasks}</p>
         </div>
         
-        <div className="bg-white rounded-lg border border-green-500/30 p-4">
+        <div className="bg-white rounded-lg border border-green-200 p-4">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="font-semibold text-slate-100">AI Completed</h3>
-            <CheckCircle className="w-5 h-5 text-green-400" />
+            <h3 className="font-semibold text-gray-900">AI Completed</h3>
+            <CheckCircle className="w-5 h-5 text-green-600" />
           </div>
-          <p className="text-3xl font-bold text-green-400">{workloadStats.completedByAI}</p>
+          <p className="text-3xl font-bold text-green-600">{workloadStats.completedByAI}</p>
         </div>
 
-        <div className="bg-white rounded-lg border border-orange-500/30 p-4">
+        <div className="bg-white rounded-lg border border-orange-200 p-4">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="font-semibold text-slate-100">Human Review</h3>
-            <Eye className="w-5 h-5 text-orange-400" />
+            <h3 className="font-semibold text-gray-900">Human Review</h3>
+            <Eye className="w-5 h-5 text-orange-600" />
           </div>
-          <p className="text-3xl font-bold text-orange-400">{workloadStats.requiresHumanReview}</p>
+          <p className="text-3xl font-bold text-orange-600">{workloadStats.requiresHumanReview}</p>
         </div>
 
-        <div className="bg-white rounded-lg border border-red-500/30 p-4">
+        <div className="bg-white rounded-lg border border-red-200 p-4">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="font-semibold text-slate-100">Blocked</h3>
-            <Lock className="w-5 h-5 text-red-400" />
+            <h3 className="font-semibold text-gray-900">Blocked</h3>
+            <Lock className="w-5 h-5 text-red-600" />
           </div>
-          <p className="text-3xl font-bold text-red-400">{workloadStats.blockedByHuman}</p>
+          <p className="text-3xl font-bold text-red-600">{workloadStats.blockedByHuman}</p>
         </div>
 
-        <div className="bg-white rounded-lg border border-blue-500/30 p-4">
+        <div className="bg-white rounded-lg border border-blue-200 p-4">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="font-semibold text-slate-100">Time Saved</h3>
-            <Clock className="w-5 h-5 text-blue-400" />
+            <h3 className="font-semibold text-gray-900">Time Saved</h3>
+            <Clock className="w-5 h-5 text-blue-600" />
           </div>
-          <p className="text-3xl font-bold text-blue-400">{workloadStats.timesSaved}h</p>
+          <p className="text-3xl font-bold text-blue-600">{workloadStats.timesSaved}h</p>
         </div>
       </div>
 
       {/* Guardrails Panel */}
-      <div className="bg-red-500/10 border-2 border-red-500/30 rounded-lg p-6">
+      <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6">
         <div className="flex items-center gap-3 mb-4">
-          <Shield className="w-6 h-6 text-red-400" />
-          <h3 className="text-xl font-bold text-red-300">AI Guardrails - What Copilot Cannot Do</h3>
+          <Shield className="w-6 h-6 text-red-600" />
+          <h3 className="text-xl font-bold text-red-900">AI Guardrails - What Copilot Cannot Do</h3>
         </div>
         <div className="grid grid-cols-4 gap-3">
           {guardrails.map((guardrail, index) => {
@@ -409,18 +409,18 @@ Client states Australian registration provides credibility for international con
                   <Icon className={`w-4 h-4 text-${guardrail.color}-600`} />
                   <span className={`text-xs font-bold text-${guardrail.color}-700`}>{guardrail.status}</span>
                 </div>
-                <p className="text-sm text-slate-100">{guardrail.action}</p>
+                <p className="text-sm text-gray-900">{guardrail.action}</p>
               </div>
             );
           })}
         </div>
-        <p className="text-sm text-red-300 mt-4">
+        <p className="text-sm text-red-800 mt-4">
           <strong>Principle:</strong> AI suggests. Humans decide. All critical compliance decisions require human approval.
         </p>
       </div>
 
       {/* Tabs */}
-      <div className="border-b border-white/10">
+      <div className="border-b border-gray-200">
         <div className="flex gap-2">
           {[
             { id: 'dashboard', label: 'Dashboard', icon: TrendingUp },
@@ -435,8 +435,8 @@ Client states Australian registration provides credibility for international con
                 onClick={() => setActiveTab(tab.id as any)}
                 className={`px-6 py-3 font-semibold flex items-center gap-2 transition-colors ${
                   activeTab === tab.id
-                    ? 'border-b-2 border-purple-600 text-purple-400'
-                    : 'text-slate-300 hover:text-slate-100'
+                    ? 'border-b-2 border-purple-600 text-purple-600'
+                    : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -450,18 +450,18 @@ Client states Australian registration provides credibility for international con
       {/* Dashboard Tab */}
       {activeTab === 'dashboard' && (
         <div className="space-y-6">
-          <div className="bg-white rounded-lg border border-white/10 p-6">
-            <h3 className="text-xl font-bold text-slate-100 mb-4">Active Workflows</h3>
+          <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <h3 className="text-xl font-bold text-gray-900 mb-4">Active Workflows</h3>
             
             <div className="space-y-4">
               {/* Workflow 1: Company Client */}
-              <div className="border-2 border-blue-500/30 rounded-lg p-6 bg-blue-500/10">
+              <div className="border-2 border-blue-200 rounded-lg p-6 bg-blue-50">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
-                    <Users className="w-6 h-6 text-blue-400" />
+                    <Users className="w-6 h-6 text-blue-600" />
                     <div>
-                      <h4 className="font-bold text-slate-100">TechCorp Pty Ltd - Company Onboarding</h4>
-                      <p className="text-sm text-slate-300">High-risk client requiring Enhanced CDD</p>
+                      <h4 className="font-bold text-gray-900">TechCorp Pty Ltd - Company Onboarding</h4>
+                      <p className="text-sm text-gray-600">High-risk client requiring Enhanced CDD</p>
                     </div>
                   </div>
                   <span className="px-3 py-1 bg-orange-500 text-white font-bold rounded-full text-sm">
@@ -474,16 +474,16 @@ Client states Australian registration provides credibility for international con
                     <div key={action.id} className="flex items-center justify-between p-3 bg-white rounded-lg">
                       <div className="flex items-center gap-3">
                         {action.status === 'complete' ? (
-                          <CheckCircle className="w-5 h-5 text-green-400" />
+                          <CheckCircle className="w-5 h-5 text-green-600" />
                         ) : action.status === 'requires-approval' ? (
-                          <AlertTriangle className="w-5 h-5 text-orange-400" />
+                          <AlertTriangle className="w-5 h-5 text-orange-600" />
                         ) : (
                           <Clock className="w-5 h-5 text-gray-400" />
                         )}
                         <div>
-                          <p className="font-semibold text-slate-100">{action.title}</p>
+                          <p className="font-semibold text-gray-900">{action.title}</p>
                           {action.output && (
-                            <p className="text-xs text-slate-300">
+                            <p className="text-xs text-gray-600">
                               {action.type === 'draft' && `${action.output.parties} parties, ${action.output.beneficialOwners} beneficial owners`}
                               {action.type === 'check' && `Identity: ${action.output.identity}, Sanctions: ${action.output.sanctions}`}
                               {action.type === 'analysis' && `Risk: ${action.output.riskTier}`}
@@ -492,7 +492,7 @@ Client states Australian registration provides credibility for international con
                         </div>
                       </div>
                       <div className="flex items-center gap-3">
-                        <span className="text-xs text-slate-400">
+                        <span className="text-xs text-gray-500">
                           {action.confidence > 0 && `${Math.round(action.confidence * 100)}% confidence`}
                         </span>
                         {action.status === 'requires-approval' && (
@@ -506,9 +506,9 @@ Client states Australian registration provides credibility for international con
                 </div>
 
                 {actions.some(a => a.missing && a.missing.length > 0) && (
-                  <div className="p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-lg mb-4">
-                    <p className="font-semibold text-yellow-300 mb-2">⚠️ Missing Information</p>
-                    <ul className="text-sm text-yellow-300 space-y-1">
+                  <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg mb-4">
+                    <p className="font-semibold text-yellow-900 mb-2">⚠️ Missing Information</p>
+                    <ul className="text-sm text-yellow-800 space-y-1">
                       {actions.find(a => a.missing)?.missing?.map((item, index) => (
                         <li key={index}>• {item}</li>
                       ))}
@@ -533,13 +533,13 @@ Client states Australian registration provides credibility for international con
               </div>
 
               {/* Workflow 2: Monitoring Alert */}
-              <div className="border-2 border-green-500/30 rounded-lg p-6 bg-green-500/10">
+              <div className="border-2 border-green-200 rounded-lg p-6 bg-green-50">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
-                    <Activity className="w-6 h-6 text-green-400" />
+                    <Activity className="w-6 h-6 text-green-600" />
                     <div>
-                      <h4 className="font-bold text-slate-100">Alert Triage - 5 New Monitoring Events</h4>
-                      <p className="text-sm text-slate-300">Copilot grouped related alerts and triaged</p>
+                      <h4 className="font-bold text-gray-900">Alert Triage - 5 New Monitoring Events</h4>
+                      <p className="text-sm text-gray-600">Copilot grouped related alerts and triaged</p>
                     </div>
                   </div>
                   <span className="px-3 py-1 bg-green-500 text-white font-bold rounded-full text-sm">
@@ -549,23 +549,23 @@ Client states Australian registration provides credibility for international con
 
                 <div className="grid grid-cols-3 gap-3 mb-4">
                   <div className="p-3 bg-white rounded-lg">
-                    <p className="text-sm text-slate-300 mb-1">Duplicate Alerts</p>
-                    <p className="text-2xl font-bold text-green-400">3</p>
-                    <p className="text-xs text-slate-400">Auto-closed</p>
+                    <p className="text-sm text-gray-600 mb-1">Duplicate Alerts</p>
+                    <p className="text-2xl font-bold text-green-600">3</p>
+                    <p className="text-xs text-gray-500">Auto-closed</p>
                   </div>
                   <div className="p-3 bg-white rounded-lg">
-                    <p className="text-sm text-slate-300 mb-1">False Positives</p>
-                    <p className="text-2xl font-bold text-green-400">1</p>
-                    <p className="text-xs text-slate-400">Auto-dismissed</p>
+                    <p className="text-sm text-gray-600 mb-1">False Positives</p>
+                    <p className="text-2xl font-bold text-green-600">1</p>
+                    <p className="text-xs text-gray-500">Auto-dismissed</p>
                   </div>
                   <div className="p-3 bg-white rounded-lg">
-                    <p className="text-sm text-slate-300 mb-1">Requires Review</p>
-                    <p className="text-2xl font-bold text-orange-400">1</p>
-                    <p className="text-xs text-slate-400">Escalated to compliance</p>
+                    <p className="text-sm text-gray-600 mb-1">Requires Review</p>
+                    <p className="text-2xl font-bold text-orange-600">1</p>
+                    <p className="text-xs text-gray-500">Escalated to compliance</p>
                   </div>
                 </div>
 
-                <p className="text-sm text-green-300">
+                <p className="text-sm text-green-800">
                   <strong>Time saved:</strong> 2.5 hours of manual alert review
                 </p>
               </div>
@@ -579,15 +579,15 @@ Client states Australian registration provides credibility for international con
         <div className="space-y-4">
           {drafts.map((draft) => (
             <div key={draft.id} className={`border-2 rounded-lg p-6 ${
-              draft.status === 'draft' ? 'border-orange-500/30 bg-orange-500/10' :
-              draft.status === 'approved' ? 'border-green-500/30 bg-green-500/10' :
-              'border-red-500/30 bg-red-500/10'
+              draft.status === 'draft' ? 'border-orange-200 bg-orange-50' :
+              draft.status === 'approved' ? 'border-green-200 bg-green-50' :
+              'border-red-200 bg-red-50'
             }`}>
               <div className="flex items-center justify-between mb-4">
                 <div>
                   <div className="flex items-center gap-3 mb-2">
-                    <FileText className="w-6 h-6 text-slate-300" />
-                    <h3 className="text-xl font-bold text-slate-100">
+                    <FileText className="w-6 h-6 text-gray-700" />
+                    <h3 className="text-xl font-bold text-gray-900">
                       {draft.type === 'risk-rationale' && 'Risk Rationale Draft'}
                       {draft.type === 'enhanced-cdd' && 'Enhanced CDD Memo Draft'}
                       {draft.type === 'source-funds' && 'Source of Funds Summary'}
@@ -595,11 +595,11 @@ Client states Australian registration provides credibility for international con
                       {draft.type === 'approval-pack' && 'Senior Manager Approval Pack'}
                     </h3>
                   </div>
-                  <div className="flex items-center gap-4 text-sm text-slate-300">
+                  <div className="flex items-center gap-4 text-sm text-gray-600">
                     <span>Created: {draft.timestamp.toLocaleString()}</span>
                     <span>By: {draft.createdBy}</span>
                     <span className="flex items-center">
-                      <Sparkles className="w-4 h-4 mr-1 text-purple-400" />
+                      <Sparkles className="w-4 h-4 mr-1 text-purple-600" />
                       Confidence: {Math.round(draft.confidence * 100)}%
                     </span>
                   </div>
@@ -631,19 +631,19 @@ Client states Australian registration provides credibility for international con
                 </div>
               </div>
 
-              <div className="mb-4 p-4 bg-white rounded-lg border border-white/10">
+              <div className="mb-4 p-4 bg-white rounded-lg border border-gray-200">
                 <div className="prose max-w-none">
-                  <pre className="text-sm whitespace-pre-wrap font-sans text-slate-100">{draft.content}</pre>
+                  <pre className="text-sm whitespace-pre-wrap font-sans text-gray-800">{draft.content}</pre>
                 </div>
               </div>
 
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <div>
-                    <p className="text-sm font-semibold text-slate-100 mb-1">Evidence Cited:</p>
+                    <p className="text-sm font-semibold text-gray-900 mb-1">Evidence Cited:</p>
                     <div className="flex gap-2">
                       {draft.evidence.map((ev, index) => (
-                        <span key={index} className="px-2 py-1 bg-blue-500/15 text-blue-300 text-xs font-semibold rounded">
+                        <span key={index} className="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded">
                           {ev}
                         </span>
                       ))}
@@ -662,8 +662,8 @@ Client states Australian registration provides credibility for international con
 
       {/* Audit Trail Tab */}
       {activeTab === 'audit' && (
-        <div className="bg-white rounded-lg border border-white/10 p-6">
-          <h3 className="text-xl font-bold text-slate-100 mb-4">Complete Audit Trail</h3>
+        <div className="bg-white rounded-lg border border-gray-200 p-6">
+          <h3 className="text-xl font-bold text-gray-900 mb-4">Complete Audit Trail</h3>
           
           <div className="space-y-3">
             {[
@@ -674,16 +674,16 @@ Client states Australian registration provides credibility for international con
               { time: '10:28:30', action: 'AI requested InfoTrack ASIC extract', user: 'System', confidence: 100 },
               { time: '10:25:00', action: 'User submitted client onboarding form', user: 'Sarah Chen', confidence: null }
             ].map((log, index) => (
-              <div key={index} className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
+              <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                 <div className="flex items-center gap-3">
                   <Clock className="w-5 h-5 text-gray-400" />
                   <div>
-                    <p className="font-semibold text-slate-100">{log.action}</p>
-                    <p className="text-xs text-slate-400">{log.time} - {log.user}</p>
+                    <p className="font-semibold text-gray-900">{log.action}</p>
+                    <p className="text-xs text-gray-500">{log.time} - {log.user}</p>
                   </div>
                 </div>
                 {log.confidence && (
-                  <span className="px-3 py-1 bg-purple-500/15 text-purple-300 text-xs font-bold rounded">
+                  <span className="px-3 py-1 bg-purple-100 text-purple-700 text-xs font-bold rounded">
                     {log.confidence}% confidence
                   </span>
                 )}
@@ -691,8 +691,8 @@ Client states Australian registration provides credibility for international con
             ))}
           </div>
 
-          <div className="mt-6 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
-            <p className="text-sm text-blue-300">
+          <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+            <p className="text-sm text-blue-900">
               <strong>Audit Principle:</strong> Every AI action is logged with timestamp, confidence score, 
               evidence references, and outcome. Human decisions are separately logged for regulatory audit trail.
             </p>
@@ -704,22 +704,22 @@ Client states Australian registration provides credibility for international con
       {showApprovalModal && selectedDraft && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-lg max-w-2xl w-full p-6">
-            <h3 className="text-2xl font-bold text-slate-100 mb-4">Approve AI Draft?</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Approve AI Draft?</h3>
             
-            <div className="mb-4 p-4 bg-purple-500/10 border border-purple-500/30 rounded-lg">
-              <p className="text-sm text-purple-300 mb-2">
+            <div className="mb-4 p-4 bg-purple-50 border border-purple-200 rounded-lg">
+              <p className="text-sm text-purple-900 mb-2">
                 <strong>Document Type:</strong> {selectedDraft.type}
               </p>
-              <p className="text-sm text-purple-300 mb-2">
+              <p className="text-sm text-purple-900 mb-2">
                 <strong>AI Confidence:</strong> {Math.round(selectedDraft.confidence * 100)}%
               </p>
-              <p className="text-sm text-purple-300">
+              <p className="text-sm text-purple-900">
                 <strong>Evidence Cited:</strong> {selectedDraft.evidence.join(', ')}
               </p>
             </div>
 
-            <div className="mb-6 p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
-              <p className="text-sm text-yellow-300">
+            <div className="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+              <p className="text-sm text-yellow-900">
                 <strong>⚠️ Human Responsibility:</strong> By approving this draft, you confirm that you have 
                 reviewed the content, verified the evidence, and take responsibility for the compliance decision. 
                 Your approval will be logged in the audit trail.

@@ -26,7 +26,7 @@ export function CaseDetail({ caseId, onBack }: CaseDetailProps) {
           <CardTitle>Case Detail: {caseId}</CardTitle>
         </CardHeader>
         <CardContent className="p-6">
-          <p className="text-slate-300">Case detail view coming soon...</p>
+          <p className="text-gray-600">Case detail view coming soon...</p>
         </CardContent>
       </Card>
     </div>

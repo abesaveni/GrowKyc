@@ -63,57 +63,57 @@ export function AuctionsList({ onNavigate }: { onNavigate?: (page: string, id?: 
     <div className="space-y-6">
       {/* Header Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <Card className="bg-gradient-to-br from-red-50 to-white border-2 border-red-500/30">
+        <Card className="bg-gradient-to-br from-red-50 to-white border-2 border-red-200">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-slate-300 mb-1">Live Now</p>
-                <p className="text-4xl font-bold text-red-400">{liveAuctions.length}</p>
+                <p className="text-sm text-gray-600 mb-1">Live Now</p>
+                <p className="text-4xl font-bold text-red-600">{liveAuctions.length}</p>
               </div>
-              <div className="p-3 bg-red-500/15 rounded-xl">
-                <Activity className="w-6 h-6 text-red-400" />
+              <div className="p-3 bg-red-100 rounded-xl">
+                <Activity className="w-6 h-6 text-red-600" />
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-blue-50 to-white border-2 border-blue-500/30">
+        <Card className="bg-gradient-to-br from-blue-50 to-white border-2 border-blue-200">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-slate-300 mb-1">Upcoming</p>
-                <p className="text-4xl font-bold text-blue-400">{upcomingAuctions.length}</p>
+                <p className="text-sm text-gray-600 mb-1">Upcoming</p>
+                <p className="text-4xl font-bold text-blue-600">{upcomingAuctions.length}</p>
               </div>
-              <div className="p-3 bg-blue-500/15 rounded-xl">
-                <Calendar className="w-6 h-6 text-blue-400" />
+              <div className="p-3 bg-blue-100 rounded-xl">
+                <Calendar className="w-6 h-6 text-blue-600" />
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-green-50 to-white border-2 border-green-500/30">
+        <Card className="bg-gradient-to-br from-green-50 to-white border-2 border-green-200">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-slate-300 mb-1">Total Value</p>
-                <p className="text-4xl font-bold text-green-400">$8.2M</p>
+                <p className="text-sm text-gray-600 mb-1">Total Value</p>
+                <p className="text-4xl font-bold text-green-600">$8.2M</p>
               </div>
-              <div className="p-3 bg-green-500/15 rounded-xl">
-                <DollarSign className="w-6 h-6 text-green-400" />
+              <div className="p-3 bg-green-100 rounded-xl">
+                <DollarSign className="w-6 h-6 text-green-600" />
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-purple-50 to-white border-2 border-purple-500/30">
+        <Card className="bg-gradient-to-br from-purple-50 to-white border-2 border-purple-200">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-slate-300 mb-1">Active Bidders</p>
-                <p className="text-4xl font-bold text-purple-400">24</p>
+                <p className="text-sm text-gray-600 mb-1">Active Bidders</p>
+                <p className="text-4xl font-bold text-purple-600">24</p>
               </div>
-              <div className="p-3 bg-purple-500/15 rounded-xl">
-                <Users className="w-6 h-6 text-purple-400" />
+              <div className="p-3 bg-purple-100 rounded-xl">
+                <Users className="w-6 h-6 text-purple-600" />
               </div>
             </div>
           </CardContent>
@@ -140,7 +140,7 @@ export function AuctionsList({ onNavigate }: { onNavigate?: (page: string, id?: 
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="w-full px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary h-10"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary h-10"
               >
                 <option value="all">All Auctions</option>
                 <option value="live">Live Now</option>
@@ -152,7 +152,7 @@ export function AuctionsList({ onNavigate }: { onNavigate?: (page: string, id?: 
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="w-full px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary h-10"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary h-10"
               >
                 <option value="ending_soon">Ending Soon</option>
                 <option value="newest">Newest First</option>
@@ -174,7 +174,7 @@ export function AuctionsList({ onNavigate }: { onNavigate?: (page: string, id?: 
       {/* Results */}
       <div>
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold text-slate-100">
+          <h2 className="text-2xl font-bold text-gray-900">
             {filteredAuctions.length} {filteredAuctions.length === 1 ? 'Auction' : 'Auctions'}
           </h2>
         </div>
@@ -247,7 +247,7 @@ function AuctionCard({ auction, image, isLive, onNavigate }: AuctionCardProps) {
         {/* Quick Actions */}
         <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
           <button className="p-2 bg-white/90 backdrop-blur-sm rounded-lg hover:bg-white transition-colors">
-            <Heart className="w-4 h-4 text-slate-300" />
+            <Heart className="w-4 h-4 text-gray-700" />
           </button>
         </div>
 
@@ -299,10 +299,10 @@ function AuctionCard({ auction, image, isLive, onNavigate }: AuctionCardProps) {
       <CardContent className="p-5">
         {/* Address */}
         <div className="mb-4">
-          <h3 className="font-bold text-slate-100 text-lg mb-1 line-clamp-1">
+          <h3 className="font-bold text-gray-900 text-lg mb-1 line-clamp-1">
             {auction.property.address}
           </h3>
-          <div className="flex items-center gap-1 text-slate-300">
+          <div className="flex items-center gap-1 text-gray-600">
             <MapPin className="w-4 h-4 flex-shrink-0" />
             <p className="text-sm">
               {auction.property.suburb}, {auction.property.state}
@@ -312,48 +312,48 @@ function AuctionCard({ auction, image, isLive, onNavigate }: AuctionCardProps) {
 
         {/* Loan Metrics Snapshot */}
         <div className="grid grid-cols-3 gap-2 mb-4 pb-4 border-b">
-          <div className="text-center p-2 bg-red-500/10 rounded-lg">
-            <p className="text-xs text-slate-300 mb-1">Default</p>
-            <p className="text-sm font-bold text-red-400">{daysInDefault}d</p>
+          <div className="text-center p-2 bg-red-50 rounded-lg">
+            <p className="text-xs text-gray-600 mb-1">Default</p>
+            <p className="text-sm font-bold text-red-600">{daysInDefault}d</p>
           </div>
-          <div className="text-center p-2 bg-amber-500/10 rounded-lg">
-            <p className="text-xs text-slate-300 mb-1">Arrears</p>
-            <p className="text-sm font-bold text-amber-400">{daysInArrears}d</p>
+          <div className="text-center p-2 bg-amber-50 rounded-lg">
+            <p className="text-xs text-gray-600 mb-1">Arrears</p>
+            <p className="text-sm font-bold text-amber-600">{daysInArrears}d</p>
           </div>
-          <div className="text-center p-2 bg-purple-500/10 rounded-lg">
-            <p className="text-xs text-slate-300 mb-1">Rate</p>
-            <p className="text-sm font-bold text-purple-400">{defaultRate}%</p>
+          <div className="text-center p-2 bg-purple-50 rounded-lg">
+            <p className="text-xs text-gray-600 mb-1">Rate</p>
+            <p className="text-sm font-bold text-purple-600">{defaultRate}%</p>
           </div>
         </div>
 
         {/* Financial Details */}
         <div className="space-y-3 mb-4">
           <div className="flex justify-between items-center">
-            <span className="text-sm text-slate-300">Outstanding Debt</span>
-            <span className="text-lg font-bold text-slate-100">
+            <span className="text-sm text-gray-600">Outstanding Debt</span>
+            <span className="text-lg font-bold text-gray-900">
               ${(auction.outstandingDebt / 1000).toFixed(0)}k
             </span>
           </div>
 
           {isLive && auction.currentBid && (
             <div className="flex justify-between items-center">
-              <span className="text-sm text-slate-300">Current Bid</span>
-              <span className="text-lg font-bold text-green-400">
+              <span className="text-sm text-gray-600">Current Bid</span>
+              <span className="text-lg font-bold text-green-600">
                 ${(auction.currentBid / 1000).toFixed(0)}k
               </span>
             </div>
           )}
 
           <div className="flex justify-between items-center">
-            <span className="text-sm text-slate-300">Property Value</span>
-            <span className="text-lg font-bold text-slate-100">
+            <span className="text-sm text-gray-600">Property Value</span>
+            <span className="text-lg font-bold text-gray-900">
               ${(auction.valuation.amount / 1000).toFixed(0)}k
             </span>
           </div>
 
           <div className="flex justify-between items-center pt-3 border-t">
-            <span className="text-sm text-slate-300">LVR</span>
-            <span className="text-lg font-bold text-indigo-400">
+            <span className="text-sm text-gray-600">LVR</span>
+            <span className="text-lg font-bold text-indigo-600">
               {calculateLVR(auction.outstandingDebt, auction.valuation.amount)}%
             </span>
           </div>
@@ -361,31 +361,31 @@ function AuctionCard({ auction, image, isLive, onNavigate }: AuctionCardProps) {
 
         {/* Bidder Count (Live Only) */}
         {isLive && auction.bidCount && (
-          <div className="flex items-center justify-between mb-4 text-sm text-slate-300">
+          <div className="flex items-center justify-between mb-4 text-sm text-gray-600">
             <div className="flex items-center gap-2">
               <Users className="w-4 h-4" />
               <span>{auction.bidCount} bidders</span>
             </div>
             <div className="flex items-center gap-2">
-              <AlertTriangle className="w-4 h-4 text-amber-400" />
-              <span className="text-amber-400 font-medium">High Activity</span>
+              <AlertTriangle className="w-4 h-4 text-amber-600" />
+              <span className="text-amber-600 font-medium">High Activity</span>
             </div>
           </div>
         )}
 
         {/* Investment Metrics */}
-        <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-3 mb-4">
+        <div className="bg-green-50 border border-green-200 rounded-lg p-3 mb-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-xs text-slate-300 mb-1">Expected Return</p>
+              <p className="text-xs text-gray-600 mb-1">Expected Return</p>
               <div className="flex items-center gap-1">
-                <TrendingUp className="w-4 h-4 text-green-400" />
-                <p className="text-xl font-bold text-green-400">12.4%</p>
+                <TrendingUp className="w-4 h-4 text-green-600" />
+                <p className="text-xl font-bold text-green-600">12.4%</p>
               </div>
             </div>
             <div className="text-right">
-              <p className="text-xs text-slate-300 mb-1">Equity</p>
-              <p className="text-lg font-bold text-slate-100">
+              <p className="text-xs text-gray-600 mb-1">Equity</p>
+              <p className="text-lg font-bold text-gray-900">
                 ${((auction.valuation.amount - auction.outstandingDebt) / 1000).toFixed(0)}k
               </p>
             </div>
@@ -418,7 +418,7 @@ function AuctionCard({ auction, image, isLive, onNavigate }: AuctionCardProps) {
         </div>
 
         {/* Deal ID */}
-        <p className="text-xs text-slate-400 text-center mt-3">
+        <p className="text-xs text-gray-500 text-center mt-3">
           Deal ID: {auction.caseNumber}
         </p>
       </CardContent>

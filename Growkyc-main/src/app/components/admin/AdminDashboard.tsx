@@ -79,7 +79,7 @@ export function AdminDashboard({ onBack, onNavigate }: AdminDashboardProps) {
   }
 
   return (
-    <div className="min-h-screen bg-white/5">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-gradient-to-r from-purple-900 via-indigo-900 to-blue-900 text-white px-8 py-12">
         <Button
@@ -163,12 +163,12 @@ export function AdminDashboard({ onBack, onNavigate }: AdminDashboardProps) {
          <CardContent className="p-6">
            <div className="flex items-center justify-between mb-4">
              <div className="flex items-center gap-2">
-               <FileText className="w-5 h-5 text-orange-400" />
-               <span className="font-semibold text-slate-100">Document Expiry</span>
+               <FileText className="w-5 h-5 text-orange-600" />
+               <span className="font-semibold text-gray-900">Document Expiry</span>
              </div>
-             <span className="text-2xl font-bold text-orange-400">{expiringSoon}/{expired}</span>
+             <span className="text-2xl font-bold text-orange-600">{expiringSoon}/{expired}</span>
            </div>
-           <div className="text-sm text-slate-300">
+           <div className="text-sm text-gray-600">
              <span>{expiringSoon} expiring soon</span> • <span>{expired} expired</span>
            </div>
          </CardContent>
@@ -179,17 +179,17 @@ export function AdminDashboard({ onBack, onNavigate }: AdminDashboardProps) {
         {/* Quick Actions */}
         <div className="grid grid-cols-4 gap-6 mb-12">
           <Card
-            className="border-2 border-purple-500/30 hover:border-purple-400 cursor-pointer transition-all hover:shadow-lg"
+            className="border-2 border-purple-200 hover:border-purple-400 cursor-pointer transition-all hover:shadow-lg"
             onClick={() => setSelectedView('integrations')}
           >
             <CardContent className="p-6">
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-16 h-16 bg-gradient-to-br from-purple-100 to-indigo-100 rounded-xl flex items-center justify-center">
-                  <Globe className="w-8 h-8 text-purple-400" />
+                  <Globe className="w-8 h-8 text-purple-600" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-bold text-slate-100 text-lg">Data Integrations</h3>
-                  <p className="text-sm text-slate-300">9 gov't APIs connected</p>
+                  <h3 className="font-bold text-gray-900 text-lg">Data Integrations</h3>
+                  <p className="text-sm text-gray-600">9 gov't APIs connected</p>
                 </div>
               </div>
               <Button className="w-full">
@@ -199,17 +199,17 @@ export function AdminDashboard({ onBack, onNavigate }: AdminDashboardProps) {
           </Card>
 
           <Card
-            className="border-2 border-blue-500/30 hover:border-blue-400 cursor-pointer transition-all hover:shadow-lg"
+            className="border-2 border-blue-200 hover:border-blue-400 cursor-pointer transition-all hover:shadow-lg"
             onClick={() => setSelectedView('users')}
           >
             <CardContent className="p-6">
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-xl flex items-center justify-center">
-                  <Users className="w-8 h-8 text-blue-400" />
+                  <Users className="w-8 h-8 text-blue-600" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-bold text-slate-100 text-lg">User Approvals</h3>
-                  <p className="text-sm text-slate-300">{stats.pendingApprovals} pending</p>
+                  <h3 className="font-bold text-gray-900 text-lg">User Approvals</h3>
+                  <p className="text-sm text-gray-600">{stats.pendingApprovals} pending</p>
                 </div>
               </div>
               <Button className="w-full bg-blue-600 hover:bg-blue-700">
@@ -219,17 +219,17 @@ export function AdminDashboard({ onBack, onNavigate }: AdminDashboardProps) {
           </Card>
 
           <Card
-            className="border-2 border-green-500/30 hover:border-green-400 cursor-pointer transition-all hover:shadow-lg"
+            className="border-2 border-green-200 hover:border-green-400 cursor-pointer transition-all hover:shadow-lg"
             onClick={() => setSelectedView('monitoring')}
           >
             <CardContent className="p-6">
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-16 h-16 bg-gradient-to-br from-green-100 to-emerald-100 rounded-xl flex items-center justify-center">
-                  <Activity className="w-8 h-8 text-green-400" />
+                  <Activity className="w-8 h-8 text-green-600" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-bold text-slate-100 text-lg">System Monitoring</h3>
-                  <p className="text-sm text-slate-300">{stats.systemUptime}% uptime</p>
+                  <h3 className="font-bold text-gray-900 text-lg">System Monitoring</h3>
+                  <p className="text-sm text-gray-600">{stats.systemUptime}% uptime</p>
                 </div>
               </div>
               <Button className="w-full bg-green-600 hover:bg-green-700">
@@ -239,17 +239,17 @@ export function AdminDashboard({ onBack, onNavigate }: AdminDashboardProps) {
           </Card>
 
           <Card
-            className="border-2 border-amber-500/30 hover:border-amber-400 cursor-pointer transition-all hover:shadow-lg"
+            className="border-2 border-amber-200 hover:border-amber-400 cursor-pointer transition-all hover:shadow-lg"
             onClick={() => setSelectedView('database')}
           >
             <CardContent className="p-6">
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-16 h-16 bg-gradient-to-br from-amber-100 to-orange-100 rounded-xl flex items-center justify-center">
-                  <Database className="w-8 h-8 text-amber-400" />
+                  <Database className="w-8 h-8 text-amber-600" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-bold text-slate-100 text-lg">Database Manager</h3>
-                  <p className="text-sm text-slate-300">{stats.storageUsed} GB used</p>
+                  <h3 className="font-bold text-gray-900 text-lg">Database Manager</h3>
+                  <p className="text-sm text-gray-600">{stats.storageUsed} GB used</p>
                 </div>
               </div>
               <Button className="w-full bg-amber-600 hover:bg-amber-700">
@@ -274,18 +274,18 @@ export function AdminDashboard({ onBack, onNavigate }: AdminDashboardProps) {
                 { time: '2 hours ago', event: 'Organization pending approval: Martinez Legal', status: 'pending', icon: AlertCircle },
                 { time: '3 hours ago', event: 'ABN Bulk Extract completed (250K records)', status: 'success', icon: Database }
               ].map((activity, idx) => (
-                <div key={idx} className="flex items-center justify-between p-4 bg-white/5 rounded-lg border border-white/10">
+                <div key={idx} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-gray-200">
                   <div className="flex items-center gap-4">
                     <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                      activity.status === 'success' ? 'bg-green-500/15' : 'bg-amber-500/15'
+                      activity.status === 'success' ? 'bg-green-100' : 'bg-amber-100'
                     }`}>
                       <activity.icon className={`w-5 h-5 ${
-                        activity.status === 'success' ? 'text-green-400' : 'text-amber-400'
+                        activity.status === 'success' ? 'text-green-600' : 'text-amber-600'
                       }`} />
                     </div>
                     <div>
-                      <div className="font-semibold text-slate-100">{activity.event}</div>
-                      <div className="text-sm text-slate-300">{activity.time}</div>
+                      <div className="font-semibold text-gray-900">{activity.event}</div>
+                      <div className="text-sm text-gray-600">{activity.time}</div>
                     </div>
                   </div>
                   <Badge className={
@@ -307,30 +307,30 @@ export function AdminDashboard({ onBack, onNavigate }: AdminDashboardProps) {
               <CardDescription>Current month performance</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="text-4xl font-bold text-slate-100 mb-2">
+              <div className="text-4xl font-bold text-gray-900 mb-2">
                 ${stats.monthlyRevenue.toLocaleString()}
               </div>
-              <div className="flex items-center gap-2 text-green-400">
+              <div className="flex items-center gap-2 text-green-600">
                 <TrendingUp className="w-4 h-4" />
                 <span className="font-semibold">+18.4%</span>
-                <span className="text-slate-300">vs last month</span>
+                <span className="text-gray-600">vs last month</span>
               </div>
               <div className="mt-6 space-y-3">
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-slate-300">Accountants</span>
-                  <span className="font-bold text-slate-100">$28,500</span>
+                  <span className="text-gray-600">Accountants</span>
+                  <span className="font-bold text-gray-900">$28,500</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-slate-300">Credit Providers</span>
-                  <span className="font-bold text-slate-100">$15,200</span>
+                  <span className="text-gray-600">Credit Providers</span>
+                  <span className="font-bold text-gray-900">$15,200</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-slate-300">AFSL Holders</span>
-                  <span className="font-bold text-slate-100">$12,800</span>
+                  <span className="text-gray-600">AFSL Holders</span>
+                  <span className="font-bold text-gray-900">$12,800</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-slate-300">Other Verticals</span>
-                  <span className="font-bold text-slate-100">$17,000</span>
+                  <span className="text-gray-600">Other Verticals</span>
+                  <span className="font-bold text-gray-900">$17,000</span>
                 </div>
               </div>
             </CardContent>
@@ -353,10 +353,10 @@ export function AdminDashboard({ onBack, onNavigate }: AdminDashboardProps) {
                   <div key={idx} className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                      <span className="font-semibold text-slate-100">{service.service}</span>
+                      <span className="font-semibold text-gray-900">{service.service}</span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="text-sm text-slate-300">{service.uptime}</span>
+                      <span className="text-sm text-gray-600">{service.uptime}</span>
                       <Badge className="bg-green-600 text-white text-xs">
                         {service.status}
                       </Badge>

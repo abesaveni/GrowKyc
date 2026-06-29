@@ -130,11 +130,11 @@ export function ComplianceReporting() {
             </div>
           </div>
           <div className="flex gap-3">
-            <Button className="bg-white text-orange-400 hover:bg-orange-500/10">
+            <Button className="bg-white text-orange-600 hover:bg-orange-50">
               <Plus className="w-5 h-5 mr-2" />
               New Report
             </Button>
-            <Button className="bg-white text-orange-400 hover:bg-orange-500/10">
+            <Button className="bg-white text-orange-600 hover:bg-orange-50">
               <Download className="w-5 h-5 mr-2" />
               Export Register
             </Button>
@@ -194,7 +194,7 @@ export function ComplianceReporting() {
       </div>
 
       {/* Navigation Tabs */}
-      <div className="border-b border-white/10">
+      <div className="border-b border-gray-200">
         <div className="flex gap-2">
           {[
             { id: 'overview', label: 'Overview', icon: FileText },
@@ -210,8 +210,8 @@ export function ComplianceReporting() {
                 onClick={() => setActiveTab(tab.id as any)}
                 className={`px-6 py-3 font-semibold flex items-center gap-2 transition-colors relative ${
                   activeTab === tab.id
-                    ? 'border-b-2 border-orange-600 text-orange-400'
-                    : 'text-slate-300 hover:text-slate-100'
+                    ? 'border-b-2 border-orange-600 text-orange-600'
+                    : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -229,84 +229,84 @@ export function ComplianceReporting() {
 
       {/* Report Type Info Cards */}
       <div className="grid grid-cols-3 gap-4">
-        <div className="bg-white rounded-lg border-2 border-red-500/30 p-6">
+        <div className="bg-white rounded-lg border-2 border-red-200 p-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-red-500/15 rounded-lg flex items-center justify-center">
-              <AlertTriangle className="w-6 h-6 text-red-400" />
+            <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
+              <AlertTriangle className="w-6 h-6 text-red-600" />
             </div>
             <div>
-              <h3 className="font-bold text-slate-100">SMR</h3>
-              <p className="text-sm text-slate-300">Suspicious Matter Report</p>
+              <h3 className="font-bold text-gray-900">SMR</h3>
+              <p className="text-sm text-gray-600">Suspicious Matter Report</p>
             </div>
           </div>
-          <p className="text-sm text-slate-300 mb-3">
+          <p className="text-sm text-gray-700 mb-3">
             Report suspicious transactions or activities that may indicate money laundering or terrorism financing.
           </p>
           <div className="space-y-2">
-            <p className="text-xs font-semibold text-slate-100">Key Triggers:</p>
-            <ul className="text-xs text-slate-300 space-y-1">
+            <p className="text-xs font-semibold text-gray-900">Key Triggers:</p>
+            <ul className="text-xs text-gray-700 space-y-1">
               <li>• Structuring to avoid thresholds</li>
               <li>• Unusual transaction patterns</li>
               <li>• Inconsistent with client profile</li>
               <li>• Source of funds unclear</li>
             </ul>
           </div>
-          <div className="mt-4 pt-4 border-t border-white/10">
-            <p className="text-xs text-slate-300">Deadline: <strong>3 business days</strong> from suspicion</p>
+          <div className="mt-4 pt-4 border-t border-gray-200">
+            <p className="text-xs text-gray-600">Deadline: <strong>3 business days</strong> from suspicion</p>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg border-2 border-blue-500/30 p-6">
+        <div className="bg-white rounded-lg border-2 border-blue-200 p-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-blue-500/15 rounded-lg flex items-center justify-center">
-              <DollarSign className="w-6 h-6 text-blue-400" />
+            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+              <DollarSign className="w-6 h-6 text-blue-600" />
             </div>
             <div>
-              <h3 className="font-bold text-slate-100">TTR</h3>
-              <p className="text-sm text-slate-300">Threshold Transaction Report</p>
+              <h3 className="font-bold text-gray-900">TTR</h3>
+              <p className="text-sm text-gray-600">Threshold Transaction Report</p>
             </div>
           </div>
-          <p className="text-sm text-slate-300 mb-3">
+          <p className="text-sm text-gray-700 mb-3">
             Report cash transactions of $10,000 or more (or foreign currency equivalent).
           </p>
           <div className="space-y-2">
-            <p className="text-xs font-semibold text-slate-100">Reportable Transactions:</p>
-            <ul className="text-xs text-slate-300 space-y-1">
+            <p className="text-xs font-semibold text-gray-900">Reportable Transactions:</p>
+            <ul className="text-xs text-gray-700 space-y-1">
               <li>• Cash deposits ≥ $10,000</li>
               <li>• Cash withdrawals ≥ $10,000</li>
               <li>• Cash transfers ≥ $10,000</li>
               <li>• Foreign currency exchange</li>
             </ul>
           </div>
-          <div className="mt-4 pt-4 border-t border-white/10">
-            <p className="text-xs text-slate-300">Deadline: <strong>10 business days</strong> from transaction</p>
+          <div className="mt-4 pt-4 border-t border-gray-200">
+            <p className="text-xs text-gray-600">Deadline: <strong>10 business days</strong> from transaction</p>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg border-2 border-purple-500/30 p-6">
+        <div className="bg-white rounded-lg border-2 border-purple-200 p-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-purple-500/15 rounded-lg flex items-center justify-center">
-              <Send className="w-6 h-6 text-purple-400" />
+            <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+              <Send className="w-6 h-6 text-purple-600" />
             </div>
             <div>
-              <h3 className="font-bold text-slate-100">IFTI</h3>
-              <p className="text-sm text-slate-300">International Funds Transfer</p>
+              <h3 className="font-bold text-gray-900">IFTI</h3>
+              <p className="text-sm text-gray-600">International Funds Transfer</p>
             </div>
           </div>
-          <p className="text-sm text-slate-300 mb-3">
+          <p className="text-sm text-gray-700 mb-3">
             Report international funds transfer instructions of any amount.
           </p>
           <div className="space-y-2">
-            <p className="text-xs font-semibold text-slate-100">Requirements:</p>
-            <ul className="text-xs text-slate-300 space-y-1">
+            <p className="text-xs font-semibold text-gray-900">Requirements:</p>
+            <ul className="text-xs text-gray-700 space-y-1">
               <li>• All outgoing transfers</li>
               <li>• All incoming transfers</li>
               <li>• Complete sender/receiver details</li>
               <li>• Purpose of transfer</li>
             </ul>
           </div>
-          <div className="mt-4 pt-4 border-t border-white/10">
-            <p className="text-xs text-slate-300">Deadline: <strong>10 business days</strong> from instruction</p>
+          <div className="mt-4 pt-4 border-t border-gray-200">
+            <p className="text-xs text-gray-600">Deadline: <strong>10 business days</strong> from instruction</p>
           </div>
         </div>
       </div>
@@ -314,7 +314,7 @@ export function ComplianceReporting() {
       {/* Reports Queue */}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <h3 className="text-xl font-bold text-slate-100">Active Reports</h3>
+          <h3 className="text-xl font-bold text-gray-900">Active Reports</h3>
           <div className="flex gap-2">
             <Button variant="outline" size="sm">
               <Filter className="w-4 h-4 mr-2" />
@@ -329,14 +329,14 @@ export function ComplianceReporting() {
 
         {reports.map((report) => (
           <div key={report.id} className={`bg-white rounded-lg border-2 p-6 ${
-            report.type === 'smr' ? 'border-red-500/30 bg-red-500/10' :
-            report.type === 'ttr' ? 'border-blue-500/30' :
-            'border-purple-500/30'
+            report.type === 'smr' ? 'border-red-200 bg-red-50' :
+            report.type === 'ttr' ? 'border-blue-200' :
+            'border-purple-200'
           }`}>
             <div className="flex items-start justify-between">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
-                  <h4 className="text-xl font-bold text-slate-100">{report.id}</h4>
+                  <h4 className="text-xl font-bold text-gray-900">{report.id}</h4>
                   <span className={`px-3 py-1 bg-${getStatusColor(report.status)}-100 text-${getStatusColor(report.status)}-700 text-sm font-bold rounded-full`}>
                     {report.status.toUpperCase().replace('-', ' ')}
                   </span>
@@ -351,25 +351,25 @@ export function ComplianceReporting() {
 
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <div>
-                    <p className="text-sm text-slate-300 mb-1">Client Details</p>
+                    <p className="text-sm text-gray-600 mb-1">Client Details</p>
                     <div className="flex items-center gap-2">
-                      <Building className="w-4 h-4 text-slate-300" />
-                      <span className="font-semibold text-slate-100">{report.clientName}</span>
+                      <Building className="w-4 h-4 text-gray-600" />
+                      <span className="font-semibold text-gray-900">{report.clientName}</span>
                     </div>
-                    <p className="text-xs text-slate-300 ml-6">{report.clientId}</p>
+                    <p className="text-xs text-gray-600 ml-6">{report.clientId}</p>
                   </div>
 
                   {report.transactionAmount && (
                     <div>
-                      <p className="text-sm text-slate-300 mb-1">Transaction Amount</p>
+                      <p className="text-sm text-gray-600 mb-1">Transaction Amount</p>
                       <div className="flex items-center gap-2">
-                        <DollarSign className="w-4 h-4 text-slate-300" />
-                        <span className="font-bold text-slate-100">
+                        <DollarSign className="w-4 h-4 text-gray-600" />
+                        <span className="font-bold text-gray-900">
                           ${report.transactionAmount.toLocaleString()}
                         </span>
                       </div>
                       {report.transactionDate && (
-                        <p className="text-xs text-slate-300 ml-6">
+                        <p className="text-xs text-gray-600 ml-6">
                           {report.transactionDate.toLocaleDateString()}
                         </p>
                       )}
@@ -378,13 +378,13 @@ export function ComplianceReporting() {
                 </div>
 
                 {report.suspicionReason && (
-                  <div className="p-4 bg-white rounded-lg border border-red-500/30 mb-3">
-                    <p className="text-sm font-semibold text-red-300 mb-1">Suspicion Reason:</p>
-                    <p className="text-sm text-slate-300">{report.suspicionReason}</p>
+                  <div className="p-4 bg-white rounded-lg border border-red-200 mb-3">
+                    <p className="text-sm font-semibold text-red-900 mb-1">Suspicion Reason:</p>
+                    <p className="text-sm text-gray-700">{report.suspicionReason}</p>
                   </div>
                 )}
 
-                <div className="flex items-center gap-4 text-sm text-slate-300">
+                <div className="flex items-center gap-4 text-sm text-gray-600">
                   <span className="flex items-center gap-1">
                     <User className="w-4 h-4" />
                     Created by {report.createdBy}
@@ -397,7 +397,7 @@ export function ComplianceReporting() {
                   {report.submittedDate && (
                     <>
                       <span>•</span>
-                      <span className="flex items-center gap-1 text-green-400 font-semibold">
+                      <span className="flex items-center gap-1 text-green-600 font-semibold">
                         <CheckCircle className="w-4 h-4" />
                         Submitted {report.submittedDate.toLocaleDateString()}
                       </span>
@@ -437,27 +437,27 @@ export function ComplianceReporting() {
       </div>
 
       {/* AI Safety Notice */}
-      <div className="bg-yellow-500/10 border-2 border-yellow-400 rounded-lg p-6">
+      <div className="bg-yellow-50 border-2 border-yellow-400 rounded-lg p-6">
         <div className="flex items-start gap-3">
-          <Shield className="w-6 h-6 text-yellow-400 mt-0.5 flex-shrink-0" />
+          <Shield className="w-6 h-6 text-yellow-600 mt-0.5 flex-shrink-0" />
           <div>
-            <h3 className="font-bold text-yellow-300 mb-2">AI Safety Principle: "AI Suggests, Humans Decide"</h3>
-            <p className="text-sm text-yellow-300 mb-3">
+            <h3 className="font-bold text-yellow-900 mb-2">AI Safety Principle: "AI Suggests, Humans Decide"</h3>
+            <p className="text-sm text-yellow-800 mb-3">
               The AI Compliance Copilot can draft reports and identify potential suspicious activities, but:
             </p>
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-white rounded-lg p-3 border border-yellow-500/30">
-                <p className="text-xs font-bold text-yellow-300 mb-2">✓ AI CAN:</p>
-                <ul className="text-xs text-slate-300 space-y-1">
+              <div className="bg-white rounded-lg p-3 border border-yellow-200">
+                <p className="text-xs font-bold text-yellow-900 mb-2">✓ AI CAN:</p>
+                <ul className="text-xs text-gray-700 space-y-1">
                   <li>• Flag potential suspicious activity</li>
                   <li>• Draft report narratives</li>
                   <li>• Pre-fill transaction details</li>
                   <li>• Suggest suspicion reasons</li>
                 </ul>
               </div>
-              <div className="bg-white rounded-lg p-3 border border-yellow-500/30">
-                <p className="text-xs font-bold text-red-300 mb-2">✗ AI CANNOT:</p>
-                <ul className="text-xs text-slate-300 space-y-1">
+              <div className="bg-white rounded-lg p-3 border border-yellow-200">
+                <p className="text-xs font-bold text-red-900 mb-2">✗ AI CANNOT:</p>
+                <ul className="text-xs text-gray-700 space-y-1">
                   <li>• Decide "suspicious" alone</li>
                   <li>• Submit SMR/TTR without human approval</li>
                   <li>• Override compliance officer judgment</li>

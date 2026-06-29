@@ -55,7 +55,7 @@ export function ProfessionalDashboardWelcome({
         return [
           { label: 'Active Clients', value: '1,247', change: '+12', trend: 'up', icon: Users, color: 'text-[#13B5EA]' },
           { label: 'Pending Reviews', value: '28', change: '-5', trend: 'down', icon: Clock, color: 'text-[#FFA300]' },
-          { label: 'High Risk Clients', value: '15', change: '+2', trend: 'up', icon: AlertTriangle, color: 'text-red-400' },
+          { label: 'High Risk Clients', value: '15', change: '+2', trend: 'up', icon: AlertTriangle, color: 'text-red-600' },
           { label: 'Compliance Score', value: '96%', change: '+3%', trend: 'up', icon: Award, color: 'text-[#3DD598]' }
         ];
       case 'partner':
@@ -70,7 +70,7 @@ export function ProfessionalDashboardWelcome({
           { label: 'Transactions Monitored', value: '24.5K', change: '+1.2K', trend: 'up', icon: Activity, color: 'text-[#13B5EA]' },
           { label: 'Alerts Generated', value: '147', change: '+23', trend: 'up', icon: AlertCircle, color: 'text-[#FFA300]' },
           { label: 'False Positives', value: '12%', change: '-3%', trend: 'down', icon: CheckCircle, color: 'text-[#3DD598]' },
-          { label: 'Cases Escalated', value: '8', change: '+2', trend: 'up', icon: AlertTriangle, color: 'text-red-400' }
+          { label: 'Cases Escalated', value: '8', change: '+2', trend: 'up', icon: AlertTriangle, color: 'text-red-600' }
         ];
       default:
         return [
@@ -250,10 +250,10 @@ export function ProfessionalDashboardWelcome({
 
   const getUrgencyColor = (urgency: string) => {
     switch(urgency) {
-      case 'high': return 'border-l-4 border-red-500 bg-red-500/10';
-      case 'medium': return 'border-l-4 border-[#FFA300] bg-orange-500/10';
-      case 'low': return 'border-l-4 border-[#13B5EA] bg-blue-500/10';
-      default: return 'border-l-4 border-white/10 bg-[#0f172a]';
+      case 'high': return 'border-l-4 border-red-500 bg-red-50';
+      case 'medium': return 'border-l-4 border-[#FFA300] bg-orange-50';
+      case 'low': return 'border-l-4 border-[#13B5EA] bg-blue-50';
+      default: return 'border-l-4 border-gray-300 bg-gray-50';
     }
   };
 
@@ -263,10 +263,10 @@ export function ProfessionalDashboardWelcome({
       <div className="mb-8">
         <div className="flex items-center justify-between mb-2">
           <div>
-            <h1 className="text-3xl font-bold text-white">
+            <h1 className="text-3xl font-bold text-gray-900">
               {getGreeting()}, {userName.split(' ')[0]} 👋
             </h1>
-            <p className="text-slate-300 mt-1">
+            <p className="text-gray-600 mt-1">
               {currentTime.toLocaleDateString('en-AU', { 
                 weekday: 'long', 
                 year: 'numeric', 
@@ -296,7 +296,7 @@ export function ProfessionalDashboardWelcome({
             <Card key={index} className="hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <div className={`p-3 rounded-lg bg-[#0f172a] ${metric.color}`}>
+                  <div className={`p-3 rounded-lg bg-gray-100 ${metric.color}`}>
                     <Icon className="w-6 h-6" />
                   </div>
                   {metric.trend === 'up' && (
@@ -313,8 +313,8 @@ export function ProfessionalDashboardWelcome({
                   )}
                 </div>
                 <div>
-                  <p className="text-sm text-slate-300 mb-1">{metric.label}</p>
-                  <p className="text-2xl font-bold text-white">{metric.value}</p>
+                  <p className="text-sm text-gray-600 mb-1">{metric.label}</p>
+                  <p className="text-2xl font-bold text-gray-900">{metric.value}</p>
                 </div>
               </CardContent>
             </Card>
@@ -344,17 +344,17 @@ export function ProfessionalDashboardWelcome({
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
-                          <Icon className="w-5 h-5 text-slate-300" />
-                          <h3 className="font-semibold text-white">{action.title}</h3>
-                          <span className="px-2 py-1 bg-[#1e293b] rounded-full text-sm font-bold text-white">
+                          <Icon className="w-5 h-5 text-gray-700" />
+                          <h3 className="font-semibold text-gray-900">{action.title}</h3>
+                          <span className="px-2 py-1 bg-white rounded-full text-sm font-bold text-gray-900">
                             {action.count}
                           </span>
                         </div>
-                        <p className="text-sm text-slate-300 ml-8">{action.description}</p>
+                        <p className="text-sm text-gray-600 ml-8">{action.description}</p>
                       </div>
                       <Button 
                         size="sm" 
-                        className="bg-[#1e293b] text-white hover:bg-white/5 shadow-sm"
+                        className="bg-white text-gray-900 hover:bg-gray-100 shadow-sm"
                         onClick={(e) => {
                           e.stopPropagation();
                           onNavigate(action.view);
@@ -387,12 +387,12 @@ export function ProfessionalDashboardWelcome({
                   <button
                     key={index}
                     onClick={() => onNavigate(link.view)}
-                    className="flex flex-col items-center justify-center p-4 rounded-lg border-2 border-white/10 hover:border-[#13B5EA] hover:bg-blue-500/10 transition-all group"
+                    className="flex flex-col items-center justify-center p-4 rounded-lg border-2 border-gray-200 hover:border-[#13B5EA] hover:bg-blue-50 transition-all group"
                   >
-                    <Icon className="w-6 h-6 text-slate-300 group-hover:text-[#13B5EA] mb-2" />
-                    <span className="text-sm font-medium text-white text-center">{link.label}</span>
+                    <Icon className="w-6 h-6 text-gray-600 group-hover:text-[#13B5EA] mb-2" />
+                    <span className="text-sm font-medium text-gray-900 text-center">{link.label}</span>
                     {link.shortcut && (
-                      <span className="text-xs text-slate-400 mt-1">{link.shortcut}</span>
+                      <span className="text-xs text-gray-500 mt-1">{link.shortcut}</span>
                     )}
                   </button>
                 );
@@ -415,29 +415,29 @@ export function ProfessionalDashboardWelcome({
             <div className="flex items-center gap-3">
               <div className="w-3 h-3 rounded-full bg-[#3DD598] animate-pulse"></div>
               <div>
-                <p className="text-sm text-slate-300">All Systems</p>
-                <p className="font-semibold text-white">Operational</p>
+                <p className="text-sm text-gray-600">All Systems</p>
+                <p className="font-semibold text-gray-900">Operational</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
               <div className="w-3 h-3 rounded-full bg-[#3DD598]"></div>
               <div>
-                <p className="text-sm text-slate-300">Integrations</p>
-                <p className="font-semibold text-white">50/50 Active</p>
+                <p className="text-sm text-gray-600">Integrations</p>
+                <p className="font-semibold text-gray-900">50/50 Active</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
               <div className="w-3 h-3 rounded-full bg-[#3DD598]"></div>
               <div>
-                <p className="text-sm text-slate-300">Last Sync</p>
-                <p className="font-semibold text-white">2 mins ago</p>
+                <p className="text-sm text-gray-600">Last Sync</p>
+                <p className="font-semibold text-gray-900">2 mins ago</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
               <div className="w-3 h-3 rounded-full bg-[#3DD598]"></div>
               <div>
-                <p className="text-sm text-slate-300">Data Quality</p>
-                <p className="font-semibold text-white">99.8%</p>
+                <p className="text-sm text-gray-600">Data Quality</p>
+                <p className="font-semibold text-gray-900">99.8%</p>
               </div>
             </div>
           </div>

@@ -63,7 +63,7 @@ const FIELD_TYPES = [
     id: 'signature', 
     name: 'Signature', 
     icon: FileSignature, 
-    color: 'bg-yellow-500/15 text-yellow-300 border-yellow-300',
+    color: 'bg-yellow-100 text-yellow-700 border-yellow-300',
     description: 'Signer\'s full signature',
     width: 200,
     height: 50
@@ -72,7 +72,7 @@ const FIELD_TYPES = [
     id: 'initials', 
     name: 'Initials', 
     icon: Pencil, 
-    color: 'bg-yellow-500/15 text-yellow-300 border-yellow-300',
+    color: 'bg-yellow-100 text-yellow-700 border-yellow-300',
     description: 'Signer\'s initials',
     width: 80,
     height: 40
@@ -81,7 +81,7 @@ const FIELD_TYPES = [
     id: 'text', 
     name: 'Text', 
     icon: Type, 
-    color: 'bg-blue-500/15 text-blue-300 border-blue-300',
+    color: 'bg-blue-100 text-blue-700 border-blue-300',
     description: 'Single line text input',
     width: 200,
     height: 30
@@ -90,7 +90,7 @@ const FIELD_TYPES = [
     id: 'textarea', 
     name: 'Text Area', 
     icon: AlignLeft, 
-    color: 'bg-blue-500/15 text-blue-300 border-blue-300',
+    color: 'bg-blue-100 text-blue-700 border-blue-300',
     description: 'Multi-line text input',
     width: 300,
     height: 80
@@ -99,7 +99,7 @@ const FIELD_TYPES = [
     id: 'date', 
     name: 'Date Signed', 
     icon: Calendar, 
-    color: 'bg-green-500/15 text-green-300 border-green-300',
+    color: 'bg-green-100 text-green-700 border-green-300',
     description: 'Date when document was signed',
     width: 150,
     height: 30
@@ -108,7 +108,7 @@ const FIELD_TYPES = [
     id: 'date_input', 
     name: 'Date Input', 
     icon: Calendar, 
-    color: 'bg-green-500/15 text-green-300 border-green-300',
+    color: 'bg-green-100 text-green-700 border-green-300',
     description: 'Manual date entry by signer',
     width: 150,
     height: 30
@@ -117,7 +117,7 @@ const FIELD_TYPES = [
     id: 'checkbox', 
     name: 'Checkbox', 
     icon: CheckSquare, 
-    color: 'bg-purple-500/15 text-purple-300 border-purple-300',
+    color: 'bg-purple-100 text-purple-700 border-purple-300',
     description: 'Single checkbox',
     width: 20,
     height: 20
@@ -126,7 +126,7 @@ const FIELD_TYPES = [
     id: 'radio', 
     name: 'Radio Button', 
     icon: Circle, 
-    color: 'bg-purple-500/15 text-purple-300 border-purple-300',
+    color: 'bg-purple-100 text-purple-700 border-purple-300',
     description: 'Radio button group',
     width: 20,
     height: 20
@@ -135,7 +135,7 @@ const FIELD_TYPES = [
     id: 'dropdown', 
     name: 'Dropdown', 
     icon: List, 
-    color: 'bg-indigo-500/15 text-indigo-300 border-indigo-300',
+    color: 'bg-indigo-100 text-indigo-700 border-indigo-300',
     description: 'Dropdown selection list',
     width: 200,
     height: 35
@@ -144,7 +144,7 @@ const FIELD_TYPES = [
     id: 'name', 
     name: 'Full Name', 
     icon: Users, 
-    color: 'bg-cyan-500/15 text-cyan-300 border-cyan-300',
+    color: 'bg-cyan-100 text-cyan-700 border-cyan-300',
     description: 'Signer\'s full name',
     width: 200,
     height: 30
@@ -153,7 +153,7 @@ const FIELD_TYPES = [
     id: 'email', 
     name: 'Email', 
     icon: AtSign, 
-    color: 'bg-cyan-500/15 text-cyan-300 border-cyan-300',
+    color: 'bg-cyan-100 text-cyan-700 border-cyan-300',
     description: 'Email address',
     width: 250,
     height: 30
@@ -162,7 +162,7 @@ const FIELD_TYPES = [
     id: 'phone', 
     name: 'Phone', 
     icon: Phone, 
-    color: 'bg-cyan-500/15 text-cyan-300 border-cyan-300',
+    color: 'bg-cyan-100 text-cyan-700 border-cyan-300',
     description: 'Phone number',
     width: 180,
     height: 30
@@ -171,7 +171,7 @@ const FIELD_TYPES = [
     id: 'company', 
     name: 'Company', 
     icon: FileText, 
-    color: 'bg-cyan-500/15 text-cyan-300 border-cyan-300',
+    color: 'bg-cyan-100 text-cyan-700 border-cyan-300',
     description: 'Company name',
     width: 200,
     height: 30
@@ -180,7 +180,7 @@ const FIELD_TYPES = [
     id: 'title', 
     name: 'Title/Position', 
     icon: FileText, 
-    color: 'bg-cyan-500/15 text-cyan-300 border-cyan-300',
+    color: 'bg-cyan-100 text-cyan-700 border-cyan-300',
     description: 'Job title or position',
     width: 200,
     height: 30
@@ -189,7 +189,7 @@ const FIELD_TYPES = [
     id: 'number', 
     name: 'Number', 
     icon: Hash, 
-    color: 'bg-orange-500/15 text-orange-300 border-orange-300',
+    color: 'bg-orange-100 text-orange-700 border-orange-300',
     description: 'Numeric input',
     width: 120,
     height: 30
@@ -198,7 +198,7 @@ const FIELD_TYPES = [
     id: 'currency', 
     name: 'Currency', 
     icon: DollarSign, 
-    color: 'bg-orange-500/15 text-orange-300 border-orange-300',
+    color: 'bg-orange-100 text-orange-700 border-orange-300',
     description: 'Currency amount',
     width: 150,
     height: 30
@@ -207,7 +207,7 @@ const FIELD_TYPES = [
     id: 'ssn', 
     name: 'SSN/Tax ID', 
     icon: Hash, 
-    color: 'bg-red-500/15 text-red-300 border-red-300',
+    color: 'bg-red-100 text-red-700 border-red-300',
     description: 'Social Security Number or Tax ID',
     width: 150,
     height: 30
@@ -216,7 +216,7 @@ const FIELD_TYPES = [
     id: 'attachment', 
     name: 'Attachment', 
     icon: Paperclip, 
-    color: 'bg-white/5 text-slate-300 border-white/10',
+    color: 'bg-gray-100 text-gray-700 border-gray-300',
     description: 'File attachment upload',
     width: 150,
     height: 40
@@ -225,7 +225,7 @@ const FIELD_TYPES = [
     id: 'image', 
     name: 'Image', 
     icon: ImageIcon, 
-    color: 'bg-white/5 text-slate-300 border-white/10',
+    color: 'bg-gray-100 text-gray-700 border-gray-300',
     description: 'Image upload',
     width: 150,
     height: 150
@@ -234,7 +234,7 @@ const FIELD_TYPES = [
     id: 'formula', 
     name: 'Formula', 
     icon: Hash, 
-    color: 'bg-pink-500/15 text-pink-300 border-pink-300',
+    color: 'bg-pink-100 text-pink-700 border-pink-300',
     description: 'Calculated field',
     width: 120,
     height: 30
@@ -243,7 +243,7 @@ const FIELD_TYPES = [
     id: 'approve', 
     name: 'Approve', 
     icon: CheckCircle, 
-    color: 'bg-green-500/15 text-green-300 border-green-300',
+    color: 'bg-green-100 text-green-700 border-green-300',
     description: 'Approval button',
     width: 100,
     height: 35
@@ -252,7 +252,7 @@ const FIELD_TYPES = [
     id: 'decline', 
     name: 'Decline', 
     icon: X, 
-    color: 'bg-red-500/15 text-red-300 border-red-300',
+    color: 'bg-red-100 text-red-700 border-red-300',
     description: 'Decline button',
     width: 100,
     height: 35
@@ -261,7 +261,7 @@ const FIELD_TYPES = [
     id: 'note', 
     name: 'Note', 
     icon: FileText, 
-    color: 'bg-amber-500/15 text-amber-300 border-amber-300',
+    color: 'bg-amber-100 text-amber-700 border-amber-300',
     description: 'Informational note for signer',
     width: 250,
     height: 60
@@ -270,7 +270,7 @@ const FIELD_TYPES = [
     id: 'witness_signature', 
     name: 'Witness Signature', 
     icon: Users, 
-    color: 'bg-teal-500/15 text-teal-300 border-teal-300',
+    color: 'bg-teal-100 text-teal-700 border-teal-300',
     description: 'Witness signature field',
     width: 200,
     height: 50
@@ -279,7 +279,7 @@ const FIELD_TYPES = [
     id: 'notary_seal', 
     name: 'Notary Seal', 
     icon: CheckCircle, 
-    color: 'bg-purple-500/15 text-purple-300 border-purple-300',
+    color: 'bg-purple-100 text-purple-700 border-purple-300',
     description: 'Notary seal placement',
     width: 100,
     height: 100
@@ -468,9 +468,9 @@ export function DocumentFieldEditor({ documentId, documentName, onBack, onSave }
   };
 
   return (
-    <div className="h-screen flex flex-col bg-white/5">
+    <div className="h-screen flex flex-col bg-gray-50">
       {/* Header */}
-      <div className="bg-white border-b border-white/10 px-6 py-4">
+      <div className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Button variant="outline" onClick={onBack}>
@@ -478,14 +478,14 @@ export function DocumentFieldEditor({ documentId, documentName, onBack, onSave }
               Back
             </Button>
             <div>
-              <h1 className="text-xl font-bold text-slate-100">Document Field Editor</h1>
-              <p className="text-sm text-slate-300">{documentName || 'Untitled Document'}</p>
+              <h1 className="text-xl font-bold text-gray-900">Document Field Editor</h1>
+              <p className="text-sm text-gray-600">{documentName || 'Untitled Document'}</p>
             </div>
           </div>
 
           <div className="flex items-center gap-3">
             {/* Zoom Controls */}
-            <div className="flex items-center gap-2 border border-white/10 rounded-lg px-2">
+            <div className="flex items-center gap-2 border border-gray-300 rounded-lg px-2">
               <Button variant="ghost" size="sm" onClick={() => setZoom(Math.max(50, zoom - 10))}>
                 <ZoomOut className="w-4 h-4" />
               </Button>
@@ -508,7 +508,7 @@ export function DocumentFieldEditor({ documentId, documentName, onBack, onSave }
 
         {/* Signers Bar */}
         <div className="flex items-center gap-3 mt-4">
-          <span className="text-sm font-medium text-slate-300">Assign fields to:</span>
+          <span className="text-sm font-medium text-gray-700">Assign fields to:</span>
           <div className="flex gap-2">
             {signers.map(signer => (
               <button
@@ -517,7 +517,7 @@ export function DocumentFieldEditor({ documentId, documentName, onBack, onSave }
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   selectedSigner === signer.id
                     ? `${signer.color} text-white shadow-lg`
-                    : 'bg-white/10 text-slate-300 hover:bg-gray-300'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                 }`}
               >
                 {signer.role}
@@ -531,7 +531,7 @@ export function DocumentFieldEditor({ documentId, documentName, onBack, onSave }
         </div>
 
         {/* Stats */}
-        <div className="flex gap-6 mt-3 text-sm text-slate-300">
+        <div className="flex gap-6 mt-3 text-sm text-gray-600">
           <span><strong>{fields.length}</strong> fields</span>
           <span><strong>{fields.filter(f => f.required).length}</strong> required</span>
           <span><strong>{fields.filter(f => f.type === 'signature').length}</strong> signatures</span>
@@ -542,15 +542,15 @@ export function DocumentFieldEditor({ documentId, documentName, onBack, onSave }
       {/* Main Content */}
       <div className="flex-1 flex overflow-hidden">
         {/* Field Palette - Left Sidebar */}
-        <div className="w-80 bg-white border-r border-white/10 overflow-y-auto">
+        <div className="w-80 bg-white border-r border-gray-200 overflow-y-auto">
           <div className="p-4">
-            <h2 className="font-bold text-slate-100 mb-1">Field Types</h2>
-            <p className="text-xs text-slate-300 mb-4">Drag fields onto the document</p>
+            <h2 className="font-bold text-gray-900 mb-1">Field Types</h2>
+            <p className="text-xs text-gray-600 mb-4">Drag fields onto the document</p>
 
             {/* Standard Fields */}
             <div className="space-y-3">
               <div>
-                <h3 className="text-sm font-semibold text-slate-300 mb-2">Signature Fields</h3>
+                <h3 className="text-sm font-semibold text-gray-700 mb-2">Signature Fields</h3>
                 <div className="space-y-2">
                   {FIELD_TYPES.filter(f => ['signature', 'initials', 'date', 'witness_signature', 'notary_seal'].includes(f.id)).map(field => {
                     const Icon = field.icon;
@@ -574,7 +574,7 @@ export function DocumentFieldEditor({ documentId, documentName, onBack, onSave }
               </div>
 
               <div>
-                <h3 className="text-sm font-semibold text-slate-300 mb-2">Text Fields</h3>
+                <h3 className="text-sm font-semibold text-gray-700 mb-2">Text Fields</h3>
                 <div className="space-y-2">
                   {FIELD_TYPES.filter(f => ['text', 'textarea', 'name', 'email', 'phone', 'company', 'title'].includes(f.id)).map(field => {
                     const Icon = field.icon;
@@ -598,7 +598,7 @@ export function DocumentFieldEditor({ documentId, documentName, onBack, onSave }
               </div>
 
               <div>
-                <h3 className="text-sm font-semibold text-slate-300 mb-2">Selection Fields</h3>
+                <h3 className="text-sm font-semibold text-gray-700 mb-2">Selection Fields</h3>
                 <div className="space-y-2">
                   {FIELD_TYPES.filter(f => ['checkbox', 'radio', 'dropdown'].includes(f.id)).map(field => {
                     const Icon = field.icon;
@@ -622,7 +622,7 @@ export function DocumentFieldEditor({ documentId, documentName, onBack, onSave }
               </div>
 
               <div>
-                <h3 className="text-sm font-semibold text-slate-300 mb-2">Data Fields</h3>
+                <h3 className="text-sm font-semibold text-gray-700 mb-2">Data Fields</h3>
                 <div className="space-y-2">
                   {FIELD_TYPES.filter(f => ['number', 'currency', 'ssn', 'date_input', 'formula'].includes(f.id)).map(field => {
                     const Icon = field.icon;
@@ -646,7 +646,7 @@ export function DocumentFieldEditor({ documentId, documentName, onBack, onSave }
               </div>
 
               <div>
-                <h3 className="text-sm font-semibold text-slate-300 mb-2">Advanced Fields</h3>
+                <h3 className="text-sm font-semibold text-gray-700 mb-2">Advanced Fields</h3>
                 <div className="space-y-2">
                   {FIELD_TYPES.filter(f => ['attachment', 'image', 'approve', 'decline', 'note'].includes(f.id)).map(field => {
                     const Icon = field.icon;
@@ -673,7 +673,7 @@ export function DocumentFieldEditor({ documentId, documentName, onBack, onSave }
         </div>
 
         {/* Document Canvas - Center */}
-        <div className="flex-1 overflow-auto bg-white/5 p-8">
+        <div className="flex-1 overflow-auto bg-gray-100 p-8">
           <div className="max-w-4xl mx-auto">
             <div
               ref={documentRef}
@@ -694,7 +694,7 @@ export function DocumentFieldEditor({ documentId, documentName, onBack, onSave }
                 <p className="mb-2">You can add signature fields, text fields, checkboxes, and many other field types.</p>
                 <p className="mb-4">Fields are assigned to specific signers and can be configured as required or optional.</p>
                 
-                <div className="border-t border-white/10 my-6"></div>
+                <div className="border-t border-gray-200 my-6"></div>
                 
                 <p className="mb-2">Signer Name: _________________________________</p>
                 <p className="mb-2">Date: _________________________________</p>
@@ -730,7 +730,7 @@ export function DocumentFieldEditor({ documentId, documentName, onBack, onSave }
                         <span className="text-xs font-medium truncate">
                           {field.label || fieldType?.name}
                         </span>
-                        {field.required && <span className="text-red-400 text-xs">*</span>}
+                        {field.required && <span className="text-red-600 text-xs">*</span>}
                       </div>
 
                       {/* Signer Badge */}
@@ -779,9 +779,9 @@ export function DocumentFieldEditor({ documentId, documentName, onBack, onSave }
 
               {/* Drop Zone Hint */}
               {isDragging && (
-                <div className="absolute inset-0 bg-blue-500/10 bg-opacity-50 border-4 border-dashed border-blue-500 flex items-center justify-center pointer-events-none">
+                <div className="absolute inset-0 bg-blue-50 bg-opacity-50 border-4 border-dashed border-blue-500 flex items-center justify-center pointer-events-none">
                   <div className="bg-white px-6 py-4 rounded-lg shadow-lg">
-                    <p className="text-blue-400 font-semibold">Drop field here</p>
+                    <p className="text-blue-600 font-semibold">Drop field here</p>
                   </div>
                 </div>
               )}
@@ -791,10 +791,10 @@ export function DocumentFieldEditor({ documentId, documentName, onBack, onSave }
 
         {/* Field Properties - Right Sidebar */}
         {showFieldProperties && selectedField && (
-          <div className="w-80 bg-white border-l border-white/10 overflow-y-auto">
+          <div className="w-80 bg-white border-l border-gray-200 overflow-y-auto">
             <div className="p-4">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="font-bold text-slate-100">Field Properties</h2>
+                <h2 className="font-bold text-gray-900">Field Properties</h2>
                 <Button variant="ghost" size="sm" onClick={() => setShowFieldProperties(false)}>
                   <X className="w-4 h-4" />
                 </Button>
@@ -803,7 +803,7 @@ export function DocumentFieldEditor({ documentId, documentName, onBack, onSave }
               <div className="space-y-4">
                 {/* Field Type */}
                 <div>
-                  <Label className="text-sm font-medium text-slate-300 mb-2 block">Field Type</Label>
+                  <Label className="text-sm font-medium text-gray-700 mb-2 block">Field Type</Label>
                   <div className={`p-3 rounded-lg border-2 ${getFieldType(selectedField.type)?.color}`}>
                     {getFieldType(selectedField.type)?.name}
                   </div>
@@ -811,7 +811,7 @@ export function DocumentFieldEditor({ documentId, documentName, onBack, onSave }
 
                 {/* Assigned To */}
                 <div>
-                  <Label className="text-sm font-medium text-slate-300 mb-2 block">Assigned To</Label>
+                  <Label className="text-sm font-medium text-gray-700 mb-2 block">Assigned To</Label>
                   <Select
                     value={selectedField.assignedTo}
                     onValueChange={(value) => updateFieldProperty(selectedField.id, 'assignedTo', value)}
@@ -841,10 +841,10 @@ export function DocumentFieldEditor({ documentId, documentName, onBack, onSave }
                 </div>
 
                 {/* Required */}
-                <div className="flex items-center justify-between p-3 border border-white/10 rounded-lg">
+                <div className="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
                   <div>
                     <p className="font-medium text-sm">Required Field</p>
-                    <p className="text-xs text-slate-300">Signer must complete this field</p>
+                    <p className="text-xs text-gray-600">Signer must complete this field</p>
                   </div>
                   <Switch
                     checked={selectedField.required}
@@ -954,10 +954,10 @@ export function DocumentFieldEditor({ documentId, documentName, onBack, onSave }
                 )}
 
                 {/* Readonly */}
-                <div className="flex items-center justify-between p-3 border border-white/10 rounded-lg">
+                <div className="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
                   <div>
                     <p className="font-medium text-sm">Read Only</p>
-                    <p className="text-xs text-slate-300">Signer cannot edit this field</p>
+                    <p className="text-xs text-gray-600">Signer cannot edit this field</p>
                   </div>
                   <Switch
                     checked={selectedField.readonly || false}
@@ -967,7 +967,7 @@ export function DocumentFieldEditor({ documentId, documentName, onBack, onSave }
 
                 {/* Position & Size */}
                 <div>
-                  <Label className="text-sm font-medium text-slate-300 mb-2 block">Position & Size</Label>
+                  <Label className="text-sm font-medium text-gray-700 mb-2 block">Position & Size</Label>
                   <div className="grid grid-cols-2 gap-2">
                     <div>
                       <Label htmlFor="field-x" className="text-xs">X Position</Label>
@@ -1009,7 +1009,7 @@ export function DocumentFieldEditor({ documentId, documentName, onBack, onSave }
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex gap-2 pt-4 border-t border-white/10">
+                <div className="flex gap-2 pt-4 border-t border-gray-200">
                   <Button
                     variant="outline"
                     className="flex-1"

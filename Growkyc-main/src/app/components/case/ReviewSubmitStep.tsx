@@ -36,12 +36,12 @@ export function ReviewSubmitStep({
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-3 mb-6">
-        <div className="p-3 bg-orange-500/10 rounded-lg">
-          <FileText className="w-6 h-6 text-orange-400" />
+        <div className="p-3 bg-orange-50 rounded-lg">
+          <FileText className="w-6 h-6 text-orange-600" />
         </div>
         <div>
           <h2 className="text-xl font-semibold">Review & Submit</h2>
-          <p className="text-slate-300 text-sm">Final details and case review</p>
+          <p className="text-gray-600 text-sm">Final details and case review</p>
         </div>
       </div>
 
@@ -74,7 +74,7 @@ export function ReviewSubmitStep({
             id="borrowerCooperation"
             value={formData.borrowerCooperation}
             onChange={(e) => handleInputChange('borrowerCooperation', e.target.value)}
-            className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
           >
             <option value="yes">Yes - Fully Cooperative</option>
             <option value="partial">Partially Cooperative</option>
@@ -89,7 +89,7 @@ export function ReviewSubmitStep({
             id="possessionStatus"
             value={formData.possessionStatus}
             onChange={(e) => handleInputChange('possessionStatus', e.target.value)}
-            className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
           >
             <option value="owner_occupied">Owner Occupied</option>
             <option value="tenant_occupied">Tenant Occupied</option>
@@ -128,7 +128,7 @@ export function ReviewSubmitStep({
             id="urgency"
             value={formData.urgency}
             onChange={(e) => handleInputChange('urgency', e.target.value)}
-            className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
           >
             <option value="low">Low - Standard processing (30+ days)</option>
             <option value="medium">Medium - Priority processing (14-30 days)</option>
@@ -155,10 +155,10 @@ export function ReviewSubmitStep({
         />
 
         {/* InfoTrack Checks Summary */}
-        <Card className="bg-gradient-to-br from-indigo-50 to-blue-50 border-2 border-indigo-500/30">
+        <Card className="bg-gradient-to-br from-indigo-50 to-blue-50 border-2 border-indigo-200">
           <CardHeader>
             <CardTitle className="text-lg flex items-center gap-2">
-              <Shield className="w-5 h-5 text-indigo-400" />
+              <Shield className="w-5 h-5 text-indigo-600" />
               InfoTrack Verification Status
             </CardTitle>
           </CardHeader>
@@ -176,11 +176,11 @@ export function ReviewSubmitStep({
               ].map((check, idx) => (
                 <div key={idx} className="flex items-center gap-2 text-sm">
                   {check.status ? (
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                   ) : (
                     <XCircle className="w-4 h-4 text-gray-400" />
                   )}
-                  <span className={check.status ? 'text-green-300 font-medium' : 'text-slate-300'}>
+                  <span className={check.status ? 'text-green-800 font-medium' : 'text-gray-600'}>
                     {check.label}
                   </span>
                 </div>
@@ -190,57 +190,57 @@ export function ReviewSubmitStep({
         </Card>
 
         {/* Summary Card */}
-        <Card className="bg-white/5">
+        <Card className="bg-gray-50">
           <CardHeader>
             <CardTitle className="text-lg">Complete Case Summary</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <p className="text-sm text-slate-300">Property</p>
+                <p className="text-sm text-gray-600">Property</p>
                 <p className="font-semibold">{formData.propertyAddress || 'Not provided'}</p>
-                <p className="text-sm text-slate-400">{formData.propertySuburb}, {formData.propertyState}</p>
+                <p className="text-sm text-gray-500">{formData.propertySuburb}, {formData.propertyState}</p>
                 {formData.lotNumber && (
-                  <p className="text-xs text-slate-400">Lot {formData.lotNumber}, {formData.planNumber}</p>
+                  <p className="text-xs text-gray-500">Lot {formData.lotNumber}, {formData.planNumber}</p>
                 )}
               </div>
               <div>
-                <p className="text-sm text-slate-300">Borrower</p>
+                <p className="text-sm text-gray-600">Borrower</p>
                 <p className="font-semibold">{formData.borrowerFirstName} {formData.borrowerLastName || 'Not provided'}</p>
-                <p className="text-sm text-slate-400">{formData.borrowerEmail || 'No email'}</p>
+                <p className="text-sm text-gray-500">{formData.borrowerEmail || 'No email'}</p>
               </div>
               <div>
-                <p className="text-sm text-slate-300">KYC Status</p>
+                <p className="text-sm text-gray-600">KYC Status</p>
                 <div className="flex items-center gap-2 mt-1">
                   {kycStatus === 'clear' && (
                     <>
-                      <CheckCircle className="w-4 h-4 text-green-400" />
-                      <span className="text-sm font-semibold text-green-300">InfoTrack Verified</span>
+                      <CheckCircle className="w-4 h-4 text-green-600" />
+                      <span className="text-sm font-semibold text-green-800">InfoTrack Verified</span>
                     </>
                   )}
                   {kycStatus === 'flagged' && (
                     <>
-                      <XCircle className="w-4 h-4 text-red-400" />
-                      <span className="text-sm font-semibold text-red-300">Requires Review</span>
+                      <XCircle className="w-4 h-4 text-red-600" />
+                      <span className="text-sm font-semibold text-red-800">Requires Review</span>
                     </>
                   )}
                   {kycStatus === 'pending' && (
-                    <span className="text-sm text-slate-300">Not completed</span>
+                    <span className="text-sm text-gray-600">Not completed</span>
                   )}
                 </div>
               </div>
               <div>
-                <p className="text-sm text-slate-300">Lender</p>
+                <p className="text-sm text-gray-600">Lender</p>
                 <p className="font-semibold">{formData.lenderName || 'Not provided'}</p>
               </div>
               <div>
-                <p className="text-sm text-slate-300">Outstanding Debt</p>
+                <p className="text-sm text-gray-600">Outstanding Debt</p>
                 <p className="font-semibold text-lg">
                   {formData.outstandingDebt ? `A$${parseFloat(formData.outstandingDebt).toLocaleString()}` : 'Not provided'}
                 </p>
               </div>
               <div>
-                <p className="text-sm text-slate-300">Property Valuation</p>
+                <p className="text-sm text-gray-600">Property Valuation</p>
                 <p className="font-semibold text-lg">
                   {formData.propertyValuation ? `A$${parseFloat(formData.propertyValuation).toLocaleString()}` : 'Not provided'}
                 </p>
@@ -253,8 +253,8 @@ export function ReviewSubmitStep({
                   <span className="text-sm font-medium">Loan-to-Value Ratio (LVR)</span>
                   <span className={`text-lg font-bold ${
                     ((parseFloat(formData.outstandingDebt) / parseFloat(formData.propertyValuation)) * 100) > 80 
-                      ? 'text-red-400' 
-                      : 'text-green-400'
+                      ? 'text-red-600' 
+                      : 'text-green-600'
                   }`}>
                     {((parseFloat(formData.outstandingDebt) / parseFloat(formData.propertyValuation)) * 100).toFixed(1)}%
                   </span>
@@ -264,11 +264,11 @@ export function ReviewSubmitStep({
           </CardContent>
         </Card>
 
-        <div className="p-4 bg-amber-500/10 border border-amber-500/30 rounded-lg flex items-start gap-3">
-          <AlertCircle className="w-5 h-5 text-amber-400 mt-0.5" />
+        <div className="p-4 bg-amber-50 border border-amber-200 rounded-lg flex items-start gap-3">
+          <AlertCircle className="w-5 h-5 text-amber-600 mt-0.5" />
           <div className="flex-1">
-            <p className="text-sm font-medium text-amber-300">Ready to submit?</p>
-            <p className="text-xs text-amber-300 mt-1">
+            <p className="text-sm font-medium text-amber-900">Ready to submit?</p>
+            <p className="text-xs text-amber-700 mt-1">
               This case will be verified via InfoTrack, processed by our platform, and made available to qualified investors. All lender information will be kept confidential until a deal is accepted.
             </p>
           </div>

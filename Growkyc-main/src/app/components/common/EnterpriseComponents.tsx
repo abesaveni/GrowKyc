@@ -15,35 +15,35 @@ export function EnterpriseAlert({ type, title, message, onClose, actions }: Ente
   const config = {
     success: {
       icon: CheckCircle,
-      bg: 'bg-green-500/10',
-      border: 'border-green-500/30',
-      iconColor: 'text-green-400',
-      titleColor: 'text-green-300',
-      messageColor: 'text-green-300'
+      bg: 'bg-green-50',
+      border: 'border-green-200',
+      iconColor: 'text-green-600',
+      titleColor: 'text-green-900',
+      messageColor: 'text-green-700'
     },
     error: {
       icon: AlertCircle,
-      bg: 'bg-red-500/10',
-      border: 'border-red-500/30',
-      iconColor: 'text-red-400',
-      titleColor: 'text-red-300',
-      messageColor: 'text-red-300'
+      bg: 'bg-red-50',
+      border: 'border-red-200',
+      iconColor: 'text-red-600',
+      titleColor: 'text-red-900',
+      messageColor: 'text-red-700'
     },
     warning: {
       icon: AlertTriangle,
-      bg: 'bg-amber-500/10',
-      border: 'border-amber-500/30',
-      iconColor: 'text-amber-400',
-      titleColor: 'text-amber-300',
-      messageColor: 'text-amber-300'
+      bg: 'bg-amber-50',
+      border: 'border-amber-200',
+      iconColor: 'text-amber-600',
+      titleColor: 'text-amber-900',
+      messageColor: 'text-amber-700'
     },
     info: {
       icon: Info,
-      bg: 'bg-blue-500/10',
-      border: 'border-blue-500/30',
-      iconColor: 'text-blue-400',
-      titleColor: 'text-blue-300',
-      messageColor: 'text-blue-300'
+      bg: 'bg-blue-50',
+      border: 'border-blue-200',
+      iconColor: 'text-blue-600',
+      titleColor: 'text-blue-900',
+      messageColor: 'text-blue-700'
     }
   };
 
@@ -85,11 +85,11 @@ interface EmptyStateProps {
 export function EmptyState({ icon: Icon, title, description, action }: EmptyStateProps) {
   return (
     <div className="flex flex-col items-center justify-center py-12 px-4">
-      <div className="p-4 bg-white/5 rounded-full mb-4">
+      <div className="p-4 bg-gray-100 rounded-full mb-4">
         <Icon className="w-8 h-8 text-gray-400" />
       </div>
-      <h3 className="text-lg font-semibold text-slate-100 mb-2">{title}</h3>
-      <p className="text-slate-300 text-center max-w-md mb-6">{description}</p>
+      <h3 className="text-lg font-semibold text-gray-900 mb-2">{title}</h3>
+      <p className="text-gray-600 text-center max-w-md mb-6">{description}</p>
       {action && (
         <button
           onClick={action.onClick}
@@ -116,8 +116,8 @@ export function LoadingState({ message = 'Loading...', size = 'md' }: LoadingSta
 
   return (
     <div className="flex flex-col items-center justify-center py-12">
-      <div className={`${sizes[size]} border-4 border-white/10 border-t-primary rounded-full animate-spin mb-4`} />
-      <p className="text-slate-300 font-medium">{message}</p>
+      <div className={`${sizes[size]} border-4 border-gray-200 border-t-primary rounded-full animate-spin mb-4`} />
+      <p className="text-gray-600 font-medium">{message}</p>
     </div>
   );
 }
@@ -148,20 +148,20 @@ export function ConfirmDialog({
   const variants = {
     danger: {
       icon: AlertCircle,
-      iconColor: 'text-red-400',
-      bgColor: 'bg-red-500/10',
+      iconColor: 'text-red-600',
+      bgColor: 'bg-red-50',
       buttonColor: 'bg-red-600 hover:bg-red-700'
     },
     warning: {
       icon: AlertTriangle,
-      iconColor: 'text-amber-400',
-      bgColor: 'bg-amber-500/10',
+      iconColor: 'text-amber-600',
+      bgColor: 'bg-amber-50',
       buttonColor: 'bg-amber-600 hover:bg-amber-700'
     },
     default: {
       icon: Info,
-      iconColor: 'text-blue-400',
-      bgColor: 'bg-blue-500/10',
+      iconColor: 'text-blue-600',
+      bgColor: 'bg-blue-50',
       buttonColor: 'bg-primary hover:bg-primary/90'
     }
   };
@@ -178,15 +178,15 @@ export function ConfirmDialog({
               <Icon className={`w-6 h-6 ${style.iconColor}`} />
             </div>
             <div className="flex-1">
-              <h3 className="text-lg font-semibold text-slate-100 mb-2">{title}</h3>
-              <p className="text-slate-300">{message}</p>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">{title}</h3>
+              <p className="text-gray-600">{message}</p>
             </div>
           </div>
         </div>
-        <div className="px-6 py-4 bg-white/5 border-t flex gap-3 justify-end rounded-b-lg">
+        <div className="px-6 py-4 bg-gray-50 border-t flex gap-3 justify-end rounded-b-lg">
           <button
             onClick={onCancel}
-            className="px-4 py-2 border border-white/10 rounded-lg text-slate-300 font-semibold hover:bg-white/5 transition-colors"
+            className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 font-semibold hover:bg-gray-50 transition-colors"
           >
             {cancelLabel}
           </button>
@@ -215,15 +215,15 @@ export function StatusBadge({ status, size = 'md' }: StatusBadgeProps) {
   };
 
   const styles = {
-    active: 'bg-green-500/15 text-green-300',
-    pending: 'bg-amber-500/15 text-amber-300',
-    completed: 'bg-blue-500/15 text-blue-300',
-    cancelled: 'bg-white/5 text-slate-300',
-    error: 'bg-red-500/15 text-red-300',
-    draft: 'bg-white/5 text-slate-300',
-    review: 'bg-purple-500/15 text-purple-300',
-    approved: 'bg-green-500/15 text-green-300',
-    rejected: 'bg-red-500/15 text-red-300'
+    active: 'bg-green-100 text-green-700',
+    pending: 'bg-amber-100 text-amber-700',
+    completed: 'bg-blue-100 text-blue-700',
+    cancelled: 'bg-gray-100 text-gray-700',
+    error: 'bg-red-100 text-red-700',
+    draft: 'bg-gray-100 text-gray-600',
+    review: 'bg-purple-100 text-purple-700',
+    approved: 'bg-green-100 text-green-700',
+    rejected: 'bg-red-100 text-red-700'
   };
 
   return (

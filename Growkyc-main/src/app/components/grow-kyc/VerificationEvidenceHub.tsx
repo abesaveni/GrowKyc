@@ -219,10 +219,10 @@ export function VerificationEvidenceHub({
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'Verified': return <CheckCircle className="w-4 h-4 text-green-400" />;
-      case 'Declared': return <AlertTriangle className="w-4 h-4 text-amber-400" />;
-      case 'Pending': return <XCircle className="w-4 h-4 text-red-400" />;
-      default: return <XCircle className="w-4 h-4 text-slate-400" />;
+      case 'Verified': return <CheckCircle className="w-4 h-4 text-green-600" />;
+      case 'Declared': return <AlertTriangle className="w-4 h-4 text-amber-600" />;
+      case 'Pending': return <XCircle className="w-4 h-4 text-red-600" />;
+      default: return <XCircle className="w-4 h-4 text-gray-400" />;
     }
   };
 
@@ -236,7 +236,7 @@ export function VerificationEvidenceHub({
   };
 
   return (
-    <div className="min-h-screen bg-[#0f172a]">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] text-white px-6 py-4">
         <div className="flex items-center justify-between">
@@ -256,28 +256,28 @@ export function VerificationEvidenceHub({
       </div>
 
       {/* Client Info & Completeness Bar */}
-      <div className="bg-[#1e293b] border-b border-white/10 px-6 py-4">
+      <div className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-6">
             <div>
-              <div className="text-xs text-slate-300">Client ID</div>
-              <div className="font-semibold text-white">{clientId}</div>
+              <div className="text-xs text-gray-600">Client ID</div>
+              <div className="font-semibold text-gray-900">{clientId}</div>
             </div>
             <div className="h-8 w-px bg-gray-300" />
             <div>
-              <div className="text-xs text-slate-300">Client Name</div>
-              <div className="font-semibold text-white">{clientName}</div>
+              <div className="text-xs text-gray-600">Client Name</div>
+              <div className="font-semibold text-gray-900">{clientName}</div>
             </div>
             <div className="h-8 w-px bg-gray-300" />
             <div>
-              <div className="text-xs text-slate-300">Assessment Date</div>
-              <div className="font-semibold text-white">2024-03-17</div>
+              <div className="text-xs text-gray-600">Assessment Date</div>
+              <div className="font-semibold text-gray-900">2024-03-17</div>
             </div>
           </div>
           <div className="flex items-center gap-4">
             <div className="text-right">
-              <div className="text-3xl font-bold text-green-400">{completeness}%</div>
-              <div className="text-xs text-slate-300">Verification Complete</div>
+              <div className="text-3xl font-bold text-green-600">{completeness}%</div>
+              <div className="text-xs text-gray-600">Verification Complete</div>
             </div>
             <div className="w-32">
               <Progress value={completeness} className="h-3" />
@@ -287,23 +287,23 @@ export function VerificationEvidenceHub({
 
         {/* Stats */}
         <div className="grid grid-cols-4 gap-4">
-          <div className="text-center p-3 bg-green-500/10 rounded-lg border border-green-500/30">
-            <div className="text-2xl font-bold text-green-400">{verifiedCount}</div>
-            <div className="text-xs text-slate-300">Verified</div>
+          <div className="text-center p-3 bg-green-50 rounded-lg border border-green-200">
+            <div className="text-2xl font-bold text-green-600">{verifiedCount}</div>
+            <div className="text-xs text-gray-600">Verified</div>
           </div>
-          <div className="text-center p-3 bg-amber-500/10 rounded-lg border border-amber-500/30">
-            <div className="text-2xl font-bold text-amber-400">
+          <div className="text-center p-3 bg-amber-50 rounded-lg border border-amber-200">
+            <div className="text-2xl font-bold text-amber-600">
               {allFields.filter(f => f.verificationStatus === 'Declared').length}
             </div>
-            <div className="text-xs text-slate-300">Declared</div>
+            <div className="text-xs text-gray-600">Declared</div>
           </div>
-          <div className="text-center p-3 bg-red-500/10 rounded-lg border border-red-500/30">
-            <div className="text-2xl font-bold text-red-400">{missingEvidence.length}</div>
-            <div className="text-xs text-slate-300">Missing</div>
+          <div className="text-center p-3 bg-red-50 rounded-lg border border-red-200">
+            <div className="text-2xl font-bold text-red-600">{missingEvidence.length}</div>
+            <div className="text-xs text-gray-600">Missing</div>
           </div>
-          <div className="text-center p-3 bg-blue-500/10 rounded-lg border border-blue-500/30">
-            <div className="text-2xl font-bold text-blue-400">{allFields.length}</div>
-            <div className="text-xs text-slate-300">Total Fields</div>
+          <div className="text-center p-3 bg-blue-50 rounded-lg border border-blue-200">
+            <div className="text-2xl font-bold text-blue-600">{allFields.length}</div>
+            <div className="text-xs text-gray-600">Total Fields</div>
           </div>
         </div>
       </div>
@@ -338,31 +338,31 @@ export function VerificationEvidenceHub({
           <TabsContent value="income">
             <div className="space-y-3">
               {evidenceMapping.income.map((evidence, idx) => (
-                <Card key={idx} className="border-2 border-green-500/30">
+                <Card key={idx} className="border-2 border-green-200">
                   <CardContent className="p-6">
                     <div className="grid md:grid-cols-12 gap-4 items-start">
                       {/* Field Info */}
                       <div className="md:col-span-3">
                         <div className="flex items-center gap-2 mb-2">
-                          <DollarSign className="w-5 h-5 text-green-400" />
+                          <DollarSign className="w-5 h-5 text-green-600" />
                           <div>
-                            <div className="font-bold text-white">{evidence.field}</div>
-                            <div className="text-lg font-semibold text-green-400">{evidence.value}</div>
+                            <div className="font-bold text-gray-900">{evidence.field}</div>
+                            <div className="text-lg font-semibold text-green-600">{evidence.value}</div>
                           </div>
                         </div>
                       </div>
 
                       {/* Document Link */}
                       <div className="md:col-span-4">
-                        <div className="bg-blue-500/10 rounded-lg p-3 border border-blue-500/30">
+                        <div className="bg-blue-50 rounded-lg p-3 border border-blue-200">
                           <div className="flex items-center gap-2 mb-1">
-                            <LinkIcon className="w-4 h-4 text-blue-400" />
-                            <span className="text-xs text-slate-300">Linked Document</span>
+                            <LinkIcon className="w-4 h-4 text-blue-600" />
+                            <span className="text-xs text-gray-600">Linked Document</span>
                           </div>
                           <div className="flex items-center justify-between">
                             <div>
-                              <div className="font-semibold text-sm text-white">{evidence.documentName}</div>
-                              <div className="text-xs text-slate-300">
+                              <div className="font-semibold text-sm text-gray-900">{evidence.documentName}</div>
+                              <div className="text-xs text-gray-600">
                                 {evidence.documentType} • {evidence.documentRef}
                               </div>
                             </div>
@@ -382,7 +382,7 @@ export function VerificationEvidenceHub({
                               {evidence.verificationStatus}
                             </Badge>
                           </div>
-                          <div className="text-xs text-slate-300">
+                          <div className="text-xs text-gray-600">
                             <div className="flex items-center gap-1">
                               <User className="w-3 h-3" />
                               {evidence.verifiedBy}
@@ -409,9 +409,9 @@ export function VerificationEvidenceHub({
                     </div>
 
                     {/* Verification Notes */}
-                    <div className="mt-4 p-3 bg-[#0f172a] rounded-lg border border-white/10">
-                      <div className="text-xs font-semibold text-slate-300 mb-1">Verification Notes:</div>
-                      <div className="text-sm text-white">{evidence.notes}</div>
+                    <div className="mt-4 p-3 bg-gray-50 rounded-lg border border-gray-200">
+                      <div className="text-xs font-semibold text-gray-700 mb-1">Verification Notes:</div>
+                      <div className="text-sm text-gray-900">{evidence.notes}</div>
                     </div>
                   </CardContent>
                 </Card>
@@ -423,31 +423,31 @@ export function VerificationEvidenceHub({
           <TabsContent value="expenses">
             <div className="space-y-3">
               {evidenceMapping.expenses.map((evidence, idx) => (
-                <Card key={idx} className="border-2 border-amber-500/30">
+                <Card key={idx} className="border-2 border-amber-200">
                   <CardContent className="p-6">
                     <div className="grid md:grid-cols-12 gap-4 items-start">
                       {/* Field Info */}
                       <div className="md:col-span-3">
                         <div className="flex items-center gap-2 mb-2">
-                          <TrendingUp className="w-5 h-5 text-amber-400" />
+                          <TrendingUp className="w-5 h-5 text-amber-600" />
                           <div>
-                            <div className="font-bold text-white">{evidence.field}</div>
-                            <div className="text-lg font-semibold text-amber-400">{evidence.value}</div>
+                            <div className="font-bold text-gray-900">{evidence.field}</div>
+                            <div className="text-lg font-semibold text-amber-600">{evidence.value}</div>
                           </div>
                         </div>
                       </div>
 
                       {/* Document Link */}
                       <div className="md:col-span-4">
-                        <div className="bg-blue-500/10 rounded-lg p-3 border border-blue-500/30">
+                        <div className="bg-blue-50 rounded-lg p-3 border border-blue-200">
                           <div className="flex items-center gap-2 mb-1">
-                            <LinkIcon className="w-4 h-4 text-blue-400" />
-                            <span className="text-xs text-slate-300">Linked Document</span>
+                            <LinkIcon className="w-4 h-4 text-blue-600" />
+                            <span className="text-xs text-gray-600">Linked Document</span>
                           </div>
                           <div className="flex items-center justify-between">
                             <div>
-                              <div className="font-semibold text-sm text-white">{evidence.documentName}</div>
-                              <div className="text-xs text-slate-300">
+                              <div className="font-semibold text-sm text-gray-900">{evidence.documentName}</div>
+                              <div className="text-xs text-gray-600">
                                 {evidence.documentType} • {evidence.documentRef}
                               </div>
                             </div>
@@ -467,7 +467,7 @@ export function VerificationEvidenceHub({
                               {evidence.verificationStatus}
                             </Badge>
                           </div>
-                          <div className="text-xs text-slate-300">
+                          <div className="text-xs text-gray-600">
                             <div className="flex items-center gap-1">
                               <User className="w-3 h-3" />
                               {evidence.verifiedBy}
@@ -494,9 +494,9 @@ export function VerificationEvidenceHub({
                     </div>
 
                     {/* Verification Notes */}
-                    <div className="mt-4 p-3 bg-[#0f172a] rounded-lg border border-white/10">
-                      <div className="text-xs font-semibold text-slate-300 mb-1">Verification Notes:</div>
-                      <div className="text-sm text-white">{evidence.notes}</div>
+                    <div className="mt-4 p-3 bg-gray-50 rounded-lg border border-gray-200">
+                      <div className="text-xs font-semibold text-gray-700 mb-1">Verification Notes:</div>
+                      <div className="text-sm text-gray-900">{evidence.notes}</div>
                     </div>
                   </CardContent>
                 </Card>
@@ -508,31 +508,31 @@ export function VerificationEvidenceHub({
           <TabsContent value="liabilities">
             <div className="space-y-3">
               {evidenceMapping.liabilities.map((evidence, idx) => (
-                <Card key={idx} className="border-2 border-red-500/30">
+                <Card key={idx} className="border-2 border-red-200">
                   <CardContent className="p-6">
                     <div className="grid md:grid-cols-12 gap-4 items-start">
                       {/* Field Info */}
                       <div className="md:col-span-3">
                         <div className="flex items-center gap-2 mb-2">
-                          <CreditCard className="w-5 h-5 text-red-400" />
+                          <CreditCard className="w-5 h-5 text-red-600" />
                           <div>
-                            <div className="font-bold text-white">{evidence.field}</div>
-                            <div className="text-lg font-semibold text-red-400">{evidence.value}</div>
+                            <div className="font-bold text-gray-900">{evidence.field}</div>
+                            <div className="text-lg font-semibold text-red-600">{evidence.value}</div>
                           </div>
                         </div>
                       </div>
 
                       {/* Document Link */}
                       <div className="md:col-span-4">
-                        <div className="bg-blue-500/10 rounded-lg p-3 border border-blue-500/30">
+                        <div className="bg-blue-50 rounded-lg p-3 border border-blue-200">
                           <div className="flex items-center gap-2 mb-1">
-                            <LinkIcon className="w-4 h-4 text-blue-400" />
-                            <span className="text-xs text-slate-300">Linked Document</span>
+                            <LinkIcon className="w-4 h-4 text-blue-600" />
+                            <span className="text-xs text-gray-600">Linked Document</span>
                           </div>
                           <div className="flex items-center justify-between">
                             <div>
-                              <div className="font-semibold text-sm text-white">{evidence.documentName}</div>
-                              <div className="text-xs text-slate-300">
+                              <div className="font-semibold text-sm text-gray-900">{evidence.documentName}</div>
+                              <div className="text-xs text-gray-600">
                                 {evidence.documentType} • {evidence.documentRef}
                               </div>
                             </div>
@@ -552,7 +552,7 @@ export function VerificationEvidenceHub({
                               {evidence.verificationStatus}
                             </Badge>
                           </div>
-                          <div className="text-xs text-slate-300">
+                          <div className="text-xs text-gray-600">
                             <div className="flex items-center gap-1">
                               <User className="w-3 h-3" />
                               {evidence.verifiedBy}
@@ -579,9 +579,9 @@ export function VerificationEvidenceHub({
                     </div>
 
                     {/* Verification Notes */}
-                    <div className="mt-4 p-3 bg-[#0f172a] rounded-lg border border-white/10">
-                      <div className="text-xs font-semibold text-slate-300 mb-1">Verification Notes:</div>
-                      <div className="text-sm text-white">{evidence.notes}</div>
+                    <div className="mt-4 p-3 bg-gray-50 rounded-lg border border-gray-200">
+                      <div className="text-xs font-semibold text-gray-700 mb-1">Verification Notes:</div>
+                      <div className="text-sm text-gray-900">{evidence.notes}</div>
                     </div>
                   </CardContent>
                 </Card>
@@ -593,31 +593,31 @@ export function VerificationEvidenceHub({
           <TabsContent value="assets">
             <div className="space-y-3">
               {evidenceMapping.assets.map((evidence, idx) => (
-                <Card key={idx} className="border-2 border-blue-500/30">
+                <Card key={idx} className="border-2 border-blue-200">
                   <CardContent className="p-6">
                     <div className="grid md:grid-cols-12 gap-4 items-start">
                       {/* Field Info */}
                       <div className="md:col-span-3">
                         <div className="flex items-center gap-2 mb-2">
-                          <Home className="w-5 h-5 text-blue-400" />
+                          <Home className="w-5 h-5 text-blue-600" />
                           <div>
-                            <div className="font-bold text-white">{evidence.field}</div>
-                            <div className="text-lg font-semibold text-blue-400">{evidence.value}</div>
+                            <div className="font-bold text-gray-900">{evidence.field}</div>
+                            <div className="text-lg font-semibold text-blue-600">{evidence.value}</div>
                           </div>
                         </div>
                       </div>
 
                       {/* Document Link */}
                       <div className="md:col-span-4">
-                        <div className="bg-blue-500/10 rounded-lg p-3 border border-blue-500/30">
+                        <div className="bg-blue-50 rounded-lg p-3 border border-blue-200">
                           <div className="flex items-center gap-2 mb-1">
-                            <LinkIcon className="w-4 h-4 text-blue-400" />
-                            <span className="text-xs text-slate-300">Linked Document</span>
+                            <LinkIcon className="w-4 h-4 text-blue-600" />
+                            <span className="text-xs text-gray-600">Linked Document</span>
                           </div>
                           <div className="flex items-center justify-between">
                             <div>
-                              <div className="font-semibold text-sm text-white">{evidence.documentName}</div>
-                              <div className="text-xs text-slate-300">
+                              <div className="font-semibold text-sm text-gray-900">{evidence.documentName}</div>
+                              <div className="text-xs text-gray-600">
                                 {evidence.documentType} • {evidence.documentRef}
                               </div>
                             </div>
@@ -637,7 +637,7 @@ export function VerificationEvidenceHub({
                               {evidence.verificationStatus}
                             </Badge>
                           </div>
-                          <div className="text-xs text-slate-300">
+                          <div className="text-xs text-gray-600">
                             <div className="flex items-center gap-1">
                               <User className="w-3 h-3" />
                               {evidence.verifiedBy}
@@ -664,9 +664,9 @@ export function VerificationEvidenceHub({
                     </div>
 
                     {/* Verification Notes */}
-                    <div className="mt-4 p-3 bg-[#0f172a] rounded-lg border border-white/10">
-                      <div className="text-xs font-semibold text-slate-300 mb-1">Verification Notes:</div>
-                      <div className="text-sm text-white">{evidence.notes}</div>
+                    <div className="mt-4 p-3 bg-gray-50 rounded-lg border border-gray-200">
+                      <div className="text-xs font-semibold text-gray-700 mb-1">Verification Notes:</div>
+                      <div className="text-sm text-gray-900">{evidence.notes}</div>
                     </div>
                   </CardContent>
                 </Card>
@@ -676,7 +676,7 @@ export function VerificationEvidenceHub({
 
           {/* SUMMARY TAB */}
           <TabsContent value="summary">
-            <Card className="border-2 border-cyan-500/30">
+            <Card className="border-2 border-cyan-200">
               <CardHeader className="bg-gradient-to-r from-cyan-50 to-blue-50">
                 <CardTitle>Verification Completeness Summary</CardTitle>
                 <CardDescription>
@@ -686,27 +686,27 @@ export function VerificationEvidenceHub({
               <CardContent className="p-6">
                 <div className="grid gap-6">
                   {/* Completeness Widget */}
-                  <div className="text-center p-6 bg-green-500/10 rounded-lg border-2 border-green-300">
-                    <div className="text-6xl font-bold text-green-400 mb-2">{completeness}%</div>
-                    <div className="text-lg text-white mb-4">Verification Complete</div>
+                  <div className="text-center p-6 bg-green-50 rounded-lg border-2 border-green-300">
+                    <div className="text-6xl font-bold text-green-600 mb-2">{completeness}%</div>
+                    <div className="text-lg text-gray-900 mb-4">Verification Complete</div>
                     <Progress value={completeness} className="h-4 mb-4" />
-                    <p className="text-sm text-slate-300">
+                    <p className="text-sm text-gray-700">
                       {verifiedCount} of {allFields.length} fields have verified evidence
                     </p>
                   </div>
 
                   {/* Missing Evidence Alerts */}
                   {missingEvidence.length > 0 && (
-                    <div className="bg-red-500/10 rounded-lg p-4 border-2 border-red-300">
-                      <h3 className="font-bold text-red-300 mb-3 flex items-center gap-2">
-                        <AlertTriangle className="w-5 h-5 text-red-400" />
+                    <div className="bg-red-50 rounded-lg p-4 border-2 border-red-300">
+                      <h3 className="font-bold text-red-900 mb-3 flex items-center gap-2">
+                        <AlertTriangle className="w-5 h-5 text-red-600" />
                         Missing Evidence ({missingEvidence.length})
                       </h3>
                       <div className="space-y-2">
                         {missingEvidence.map((field, idx) => (
-                          <div key={idx} className="p-3 bg-[#1e293b] rounded border border-red-500/30">
-                            <div className="font-semibold text-white">{field.field}</div>
-                            <div className="text-sm text-slate-300">Required: {field.documentType}</div>
+                          <div key={idx} className="p-3 bg-white rounded border border-red-200">
+                            <div className="font-semibold text-gray-900">{field.field}</div>
+                            <div className="text-sm text-gray-600">Required: {field.documentType}</div>
                           </div>
                         ))}
                       </div>

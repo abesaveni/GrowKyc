@@ -80,7 +80,7 @@ export function DataTable<T extends Record<string, any>>({
 
   if (loading) {
     return (
-      <div className="bg-white border border-white/10 rounded-lg p-4">
+      <div className="bg-white border border-gray-200 rounded-lg p-4">
         <TableSkeleton rows={6} />
       </div>
     );
@@ -88,29 +88,29 @@ export function DataTable<T extends Record<string, any>>({
 
   if (data.length === 0) {
     return (
-      <div className="bg-white border border-white/10 rounded-lg">
+      <div className="bg-white border border-gray-200 rounded-lg">
         <EmptyState icon={FileSearch} title={emptyTitle} description={emptyDescription} />
       </div>
     );
   }
 
   return (
-    <div className="bg-white border border-white/10 rounded-lg overflow-hidden">
+    <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
       <div className="overflow-x-auto">
         <table className="w-full min-w-[720px]">
-          <thead className="bg-white/5 border-b border-white/10">
+          <thead className="bg-gray-50 border-b border-gray-200">
             <tr>
               {columns.map((col) => (
                 <th
                   key={col.key}
-                  className={`px-4 py-3 text-xs font-semibold text-slate-300 uppercase tracking-wider ${
+                  className={`px-4 py-3 text-xs font-semibold text-gray-600 uppercase tracking-wider ${
                     col.align === 'right' ? 'text-right' : col.align === 'center' ? 'text-center' : 'text-left'
                   }`}
                 >
                   {col.sortable ? (
                     <button
                       type="button"
-                      className="inline-flex items-center gap-1 hover:text-slate-100"
+                      className="inline-flex items-center gap-1 hover:text-gray-900"
                       onClick={() => toggleSort(col.key)}
                     >
                       {col.label}
@@ -127,17 +127,17 @@ export function DataTable<T extends Record<string, any>>({
               ))}
             </tr>
           </thead>
-          <tbody className="divide-y divide-white/10">
+          <tbody className="divide-y divide-gray-100">
             {pageData.map((row) => (
               <tr
                 key={getRowId(row)}
-                className={onRowClick ? 'hover:bg-white/5 cursor-pointer' : 'hover:bg-white/5'}
+                className={onRowClick ? 'hover:bg-gray-50 cursor-pointer' : 'hover:bg-gray-50'}
                 onClick={() => onRowClick?.(row)}
               >
                 {columns.map((col) => (
                   <td
                     key={col.key}
-                    className={`px-4 py-3 text-sm text-slate-100 ${
+                    className={`px-4 py-3 text-sm text-gray-900 ${
                       col.align === 'right' ? 'text-right' : col.align === 'center' ? 'text-center' : ''
                     }`}
                   >
@@ -150,8 +150,8 @@ export function DataTable<T extends Record<string, any>>({
         </table>
       </div>
       {totalPages > 1 && (
-        <div className="flex items-center justify-between px-4 py-3 border-t border-white/10 bg-white/5 text-sm">
-          <span className="text-slate-300">
+        <div className="flex items-center justify-between px-4 py-3 border-t border-gray-200 bg-gray-50 text-sm">
+          <span className="text-gray-600">
             Page {safePage + 1} of {totalPages} · {sorted.length} records
           </span>
           <div className="flex gap-2">
@@ -159,7 +159,7 @@ export function DataTable<T extends Record<string, any>>({
               type="button"
               disabled={safePage === 0}
               onClick={() => setPage((p) => Math.max(0, p - 1))}
-              className="px-3 py-1 rounded border border-white/10 disabled:opacity-40 bg-white"
+              className="px-3 py-1 rounded border border-gray-300 disabled:opacity-40 bg-white"
             >
               Previous
             </button>
@@ -167,7 +167,7 @@ export function DataTable<T extends Record<string, any>>({
               type="button"
               disabled={safePage >= totalPages - 1}
               onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
-              className="px-3 py-1 rounded border border-white/10 disabled:opacity-40 bg-white"
+              className="px-3 py-1 rounded border border-gray-300 disabled:opacity-40 bg-white"
             >
               Next
             </button>

@@ -230,10 +230,10 @@ export function DatabaseManager({ onBack }: DatabaseManagerProps) {
 
       <div className="p-8 max-w-7xl mx-auto">
         {/* Bulk Upload */}
-        <Card className="mb-8 bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-500/30">
+        <Card className="mb-8 bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Upload className="w-5 h-5 text-blue-400" />
+              <Upload className="w-5 h-5 text-blue-600" />
               Bulk Data Upload
             </CardTitle>
             <CardDescription>Upload CSV files from government data sources</CardDescription>
@@ -241,27 +241,27 @@ export function DatabaseManager({ onBack }: DatabaseManagerProps) {
           <CardContent>
             <div className="grid grid-cols-3 gap-4">
               <div className="p-6 bg-white rounded-xl border-2 border-dashed border-blue-300 hover:border-blue-500 cursor-pointer transition-all">
-                <Upload className="w-8 h-8 text-blue-400 mb-3" />
-                <h4 className="font-bold text-slate-100 mb-1">DFAT Sanctions</h4>
-                <p className="text-sm text-slate-300 mb-3">Upload CSV/XML from DFAT</p>
+                <Upload className="w-8 h-8 text-blue-600 mb-3" />
+                <h4 className="font-bold text-gray-900 mb-1">DFAT Sanctions</h4>
+                <p className="text-sm text-gray-600 mb-3">Upload CSV/XML from DFAT</p>
                 <Button size="sm" className="w-full">
                   Select File
                 </Button>
               </div>
 
               <div className="p-6 bg-white rounded-xl border-2 border-dashed border-blue-300 hover:border-blue-500 cursor-pointer transition-all">
-                <Upload className="w-8 h-8 text-blue-400 mb-3" />
-                <h4 className="font-bold text-slate-100 mb-1">ABN Bulk Extract</h4>
-                <p className="text-sm text-slate-300 mb-3">Upload ZIP from data.gov.au</p>
+                <Upload className="w-8 h-8 text-blue-600 mb-3" />
+                <h4 className="font-bold text-gray-900 mb-1">ABN Bulk Extract</h4>
+                <p className="text-sm text-gray-600 mb-3">Upload ZIP from data.gov.au</p>
                 <Button size="sm" className="w-full">
                   Select File
                 </Button>
               </div>
 
               <div className="p-6 bg-white rounded-xl border-2 border-dashed border-blue-300 hover:border-blue-500 cursor-pointer transition-all">
-                <Upload className="w-8 h-8 text-blue-400 mb-3" />
-                <h4 className="font-bold text-slate-100 mb-1">ASIC Datasets</h4>
-                <p className="text-sm text-slate-300 mb-3">Upload CSV from ASIC</p>
+                <Upload className="w-8 h-8 text-blue-600 mb-3" />
+                <h4 className="font-bold text-gray-900 mb-1">ASIC Datasets</h4>
+                <p className="text-sm text-gray-600 mb-3">Upload CSV from ASIC</p>
                 <Button size="sm" className="w-full">
                   Select File
                 </Button>
@@ -294,12 +294,12 @@ export function DatabaseManager({ onBack }: DatabaseManagerProps) {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4 flex-1">
                     <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-indigo-100 rounded-lg flex items-center justify-center">
-                      <Database className="w-6 h-6 text-purple-400" />
+                      <Database className="w-6 h-6 text-purple-600" />
                     </div>
 
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="font-mono font-bold text-slate-100 text-lg">{table.name}</h3>
+                        <h3 className="font-mono font-bold text-gray-900 text-lg">{table.name}</h3>
                         <Badge className={table.category === 'gov_data' ? 'bg-blue-600 text-white' : 'bg-green-600 text-white'}>
                           {table.category === 'gov_data' ? 'Government' : 'Client'}
                         </Badge>
@@ -307,25 +307,25 @@ export function DatabaseManager({ onBack }: DatabaseManagerProps) {
 
                       <div className="grid grid-cols-4 gap-6">
                         <div>
-                          <div className="text-xs text-slate-300 mb-1">Records</div>
-                          <div className="font-bold text-slate-100">{table.records.toLocaleString()}</div>
+                          <div className="text-xs text-gray-600 mb-1">Records</div>
+                          <div className="font-bold text-gray-900">{table.records.toLocaleString()}</div>
                         </div>
 
                         <div>
-                          <div className="text-xs text-slate-300 mb-1">Size</div>
-                          <div className="font-bold text-slate-100">
+                          <div className="text-xs text-gray-600 mb-1">Size</div>
+                          <div className="font-bold text-gray-900">
                             {table.size > 1000 ? `${(table.size / 1000).toFixed(1)} GB` : `${table.size.toFixed(1)} MB`}
                           </div>
                         </div>
 
                         <div>
-                          <div className="text-xs text-slate-300 mb-1">Last Updated</div>
-                          <div className="font-bold text-slate-100">{table.lastUpdated}</div>
+                          <div className="text-xs text-gray-600 mb-1">Last Updated</div>
+                          <div className="font-bold text-gray-900">{table.lastUpdated}</div>
                         </div>
 
                         <div>
-                          <div className="text-xs text-slate-300 mb-1">Update Frequency</div>
-                          <div className="font-bold text-slate-100">{table.updateFrequency}</div>
+                          <div className="text-xs text-gray-600 mb-1">Update Frequency</div>
+                          <div className="font-bold text-gray-900">{table.updateFrequency}</div>
                         </div>
                       </div>
                     </div>
@@ -345,7 +345,7 @@ export function DatabaseManager({ onBack }: DatabaseManagerProps) {
                       Export
                     </Button>
                     {table.category === 'gov_data' && (
-                      <Button variant="outline" size="sm" className="text-red-400 hover:text-red-300">
+                      <Button variant="outline" size="sm" className="text-red-600 hover:text-red-700">
                         <Trash2 className="w-4 h-4 mr-2" />
                         Clear
                       </Button>
@@ -358,10 +358,10 @@ export function DatabaseManager({ onBack }: DatabaseManagerProps) {
         </div>
 
         {/* Automated Refresh Schedule */}
-        <Card className="mt-12 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-500/30">
+        <Card className="mt-12 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Clock className="w-5 h-5 text-green-400" />
+              <Clock className="w-5 h-5 text-green-600" />
               Automated Refresh Jobs
             </CardTitle>
             <CardDescription>Scheduled data updates from government sources</CardDescription>
@@ -374,12 +374,12 @@ export function DatabaseManager({ onBack }: DatabaseManagerProps) {
                 { name: 'ASIC Datasets Weekly Refresh', schedule: 'Sundays at 5:00 AM', nextRun: '2026-03-24 05:00', status: 'scheduled' },
                 { name: 'ASIC Companies Monthly Refresh', schedule: '1st of month at 3:00 AM', nextRun: '2026-04-01 03:00', status: 'scheduled' }
               ].map((job, idx) => (
-                <div key={idx} className="flex items-center justify-between p-4 bg-white rounded-lg border border-green-500/30">
+                <div key={idx} className="flex items-center justify-between p-4 bg-white rounded-lg border border-green-200">
                   <div className="flex items-center gap-4">
-                    <RefreshCw className="w-5 h-5 text-green-400" />
+                    <RefreshCw className="w-5 h-5 text-green-600" />
                     <div>
-                      <div className="font-bold text-slate-100">{job.name}</div>
-                      <div className="text-sm text-slate-300">{job.schedule} • Next: {job.nextRun}</div>
+                      <div className="font-bold text-gray-900">{job.name}</div>
+                      <div className="text-sm text-gray-600">{job.schedule} • Next: {job.nextRun}</div>
                     </div>
                   </div>
                   <Badge className="bg-green-600 text-white">
@@ -393,31 +393,31 @@ export function DatabaseManager({ onBack }: DatabaseManagerProps) {
         </Card>
 
         {/* Danger Zone */}
-        <Card className="mt-8 bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-500/30">
+        <Card className="mt-8 bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-200">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-red-300">
-              <AlertTriangle className="w-5 h-5 text-red-400" />
+            <CardTitle className="flex items-center gap-2 text-red-900">
+              <AlertTriangle className="w-5 h-5 text-red-600" />
               Danger Zone
             </CardTitle>
             <CardDescription>Irreversible actions - use with caution</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              <div className="flex items-center justify-between p-4 bg-white rounded-lg border border-red-500/30">
+              <div className="flex items-center justify-between p-4 bg-white rounded-lg border border-red-200">
                 <div>
-                  <div className="font-bold text-slate-100">Clear All Government Data</div>
-                  <div className="text-sm text-slate-300">Removes all DFAT, ABN, ASIC datasets (can be re-synced)</div>
+                  <div className="font-bold text-gray-900">Clear All Government Data</div>
+                  <div className="text-sm text-gray-600">Removes all DFAT, ABN, ASIC datasets (can be re-synced)</div>
                 </div>
-                <Button variant="outline" className="text-red-400 hover:text-red-300 border-red-300">
+                <Button variant="outline" className="text-red-600 hover:text-red-700 border-red-300">
                   <Trash2 className="w-4 h-4 mr-2" />
                   Clear Gov Data
                 </Button>
               </div>
 
-              <div className="flex items-center justify-between p-4 bg-white rounded-lg border border-red-500/30">
+              <div className="flex items-center justify-between p-4 bg-white rounded-lg border border-red-200">
                 <div>
-                  <div className="font-bold text-slate-100">Database Backup</div>
-                  <div className="text-sm text-slate-300">Create full database backup before major changes</div>
+                  <div className="font-bold text-gray-900">Database Backup</div>
+                  <div className="text-sm text-gray-600">Create full database backup before major changes</div>
                 </div>
                 <Button variant="outline" className="border-blue-300">
                   <Download className="w-4 h-4 mr-2" />

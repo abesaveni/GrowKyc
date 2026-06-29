@@ -62,15 +62,15 @@ export function FileUpload({
 
   return (
     <div className="space-y-3">
-      <label className="block text-sm font-medium text-slate-300">
+      <label className="block text-sm font-medium text-gray-700">
         {label}
       </label>
       
       <div
         className={`relative border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
           dragActive
-            ? 'border-indigo-500 bg-indigo-500/10'
-            : 'border-white/10 bg-white hover:border-gray-400'
+            ? 'border-indigo-500 bg-indigo-50'
+            : 'border-gray-300 bg-white hover:border-gray-400'
         }`}
         onDragEnter={handleDrag}
         onDragLeave={handleDrag}
@@ -89,13 +89,13 @@ export function FileUpload({
         <Upload className="mx-auto h-10 w-10 text-gray-400 mb-3" />
         
         <div className="space-y-2">
-          <p className="text-sm text-slate-300">
+          <p className="text-sm text-gray-600">
             Drag and drop files here, or{' '}
-            <label htmlFor="file-upload" className="text-indigo-400 hover:text-indigo-300 font-medium cursor-pointer">
+            <label htmlFor="file-upload" className="text-indigo-600 hover:text-indigo-700 font-medium cursor-pointer">
               browse
             </label>
           </p>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-gray-500">
             {acceptedTypes.replace(/\./g, '').toUpperCase()} up to {maxSize}MB
           </p>
         </div>
@@ -106,19 +106,19 @@ export function FileUpload({
           {uploadedFiles.map((file, index) => (
             <div
               key={index}
-              className="flex items-center justify-between p-3 bg-white/5 rounded-lg border border-white/10"
+              className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200"
             >
               <div className="flex items-center gap-3">
-                <File className="w-5 h-5 text-indigo-400" />
+                <File className="w-5 h-5 text-indigo-600" />
                 <div>
-                  <p className="text-sm font-medium text-slate-100">{file.name}</p>
-                  <p className="text-xs text-slate-400">
+                  <p className="text-sm font-medium text-gray-900">{file.name}</p>
+                  <p className="text-xs text-gray-500">
                     {(file.size / 1024 / 1024).toFixed(2)} MB
                   </p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-green-400" />
+                <CheckCircle2 className="w-5 h-5 text-green-600" />
                 <Button
                   variant="ghost"
                   size="sm"

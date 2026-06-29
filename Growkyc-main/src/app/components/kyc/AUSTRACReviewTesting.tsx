@@ -799,9 +799,9 @@ export function AUSTRACReviewTesting() {
   };
 
   const getScoreColor = (score: number) => {
-    if (score >= 4) return 'text-green-400';
-    if (score >= 3) return 'text-yellow-400';
-    return 'text-red-400';
+    if (score >= 4) return 'text-green-600';
+    if (score >= 3) return 'text-yellow-600';
+    return 'text-red-600';
   };
 
   const getScoreLabel = (score: number) => {
@@ -820,67 +820,67 @@ export function AUSTRACReviewTesting() {
 
       {/* Completion Stats */}
       <div className="grid grid-cols-4 gap-4">
-        <div className="bg-white rounded-lg border border-white/10 p-4">
+        <div className="bg-white rounded-lg border border-gray-200 p-4">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="font-semibold text-slate-100">Overall Progress</h3>
-            <Activity className="w-6 h-6 text-blue-400" />
+            <h3 className="font-semibold text-gray-900">Overall Progress</h3>
+            <Activity className="w-6 h-6 text-blue-600" />
           </div>
-          <div className="text-3xl font-bold text-blue-400 mb-2">{completionPercentage}%</div>
-          <div className="text-sm text-slate-300">{completionStats.completed}/{completionStats.total} items</div>
-          <div className="w-full bg-white/10 rounded-full h-2 mt-2">
+          <div className="text-3xl font-bold text-blue-600 mb-2">{completionPercentage}%</div>
+          <div className="text-sm text-gray-600">{completionStats.completed}/{completionStats.total} items</div>
+          <div className="w-full bg-gray-200 rounded-full h-2 mt-2">
             <div className="bg-blue-600 h-2 rounded-full" style={{ width: `${completionPercentage}%` }} />
           </div>
         </div>
 
-        <div className="bg-white rounded-lg border border-white/10 p-4">
+        <div className="bg-white rounded-lg border border-gray-200 p-4">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="font-semibold text-slate-100">Critical Items</h3>
-            <AlertTriangle className="w-6 h-6 text-red-400" />
+            <h3 className="font-semibold text-gray-900">Critical Items</h3>
+            <AlertTriangle className="w-6 h-6 text-red-600" />
           </div>
-          <div className="text-3xl font-bold text-red-400 mb-2">{criticalPercentage}%</div>
-          <div className="text-sm text-slate-300">{completionStats.criticalComplete}/{completionStats.critical} critical</div>
-          <div className="w-full bg-white/10 rounded-full h-2 mt-2">
+          <div className="text-3xl font-bold text-red-600 mb-2">{criticalPercentage}%</div>
+          <div className="text-sm text-gray-600">{completionStats.criticalComplete}/{completionStats.critical} critical</div>
+          <div className="w-full bg-gray-200 rounded-full h-2 mt-2">
             <div className="bg-red-600 h-2 rounded-full" style={{ width: `${criticalPercentage}%` }} />
           </div>
         </div>
 
-        <div className="bg-white rounded-lg border border-white/10 p-4">
+        <div className="bg-white rounded-lg border border-gray-200 p-4">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="font-semibold text-slate-100">Readiness Score</h3>
-            <TrendingUp className="w-6 h-6 text-green-400" />
+            <h3 className="font-semibold text-gray-900">Readiness Score</h3>
+            <TrendingUp className="w-6 h-6 text-green-600" />
           </div>
-          <div className="text-3xl font-bold text-green-400 mb-2">
+          <div className="text-3xl font-bold text-green-600 mb-2">
             {Object.values(readinessScores).reduce((a, b) => a + b, 0) > 0 
               ? (Object.values(readinessScores).reduce((a, b) => a + b, 0) / 5).toFixed(1)
               : 'N/A'
             }
           </div>
-          <div className="text-sm text-slate-300">Out of 5.0</div>
+          <div className="text-sm text-gray-600">Out of 5.0</div>
           <Button size="sm" className="w-full mt-2" onClick={calculateReadiness}>
             Calculate
           </Button>
         </div>
 
-        <div className="bg-white rounded-lg border border-white/10 p-4">
+        <div className="bg-white rounded-lg border border-gray-200 p-4">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="font-semibold text-slate-100">Review Status</h3>
+            <h3 className="font-semibold text-gray-900">Review Status</h3>
             {criticalPercentage === 100 ? (
-              <CheckCircle className="w-6 h-6 text-green-400" />
+              <CheckCircle className="w-6 h-6 text-green-600" />
             ) : (
-              <XCircle className="w-6 h-6 text-red-400" />
+              <XCircle className="w-6 h-6 text-red-600" />
             )}
           </div>
-          <div className={`text-3xl font-bold mb-2 ${criticalPercentage === 100 ? 'text-green-400' : 'text-red-400'}`}>
+          <div className={`text-3xl font-bold mb-2 ${criticalPercentage === 100 ? 'text-green-600' : 'text-red-600'}`}>
             {criticalPercentage === 100 ? 'READY' : 'NOT READY'}
           </div>
-          <div className="text-sm text-slate-300">
+          <div className="text-sm text-gray-600">
             {criticalPercentage === 100 ? 'All critical items complete' : `${completionStats.critical - completionStats.criticalComplete} critical remaining`}
           </div>
         </div>
       </div>
 
       {/* Section Tabs */}
-      <div className="border-b border-white/10">
+      <div className="border-b border-gray-200">
         <div className="flex gap-2">
           {[
             { id: 'checklist', label: 'Compliance Checklist', icon: CheckCircle },
@@ -896,8 +896,8 @@ export function AUSTRACReviewTesting() {
                 onClick={() => setActiveSection(section.id as any)}
                 className={`px-6 py-3 font-semibold flex items-center gap-2 transition-colors ${
                   activeSection === section.id
-                    ? 'border-b-2 border-red-600 text-red-400'
-                    : 'text-slate-300 hover:text-slate-100'
+                    ? 'border-b-2 border-red-600 text-red-600'
+                    : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -912,9 +912,9 @@ export function AUSTRACReviewTesting() {
       {activeSection === 'checklist' && (
         <div className="space-y-4">
           {/* Category Filter */}
-          <div className="bg-white rounded-lg border border-white/10 p-4">
+          <div className="bg-white rounded-lg border border-gray-200 p-4">
             <div className="flex items-center gap-4">
-              <span className="font-semibold text-slate-100">Filter by Category:</span>
+              <span className="font-semibold text-gray-900">Filter by Category:</span>
               {categories.map(cat => (
                 <button
                   key={cat}
@@ -922,7 +922,7 @@ export function AUSTRACReviewTesting() {
                   className={`px-4 py-2 rounded-lg transition-colors ${
                     filterCategory === cat
                       ? 'bg-red-600 text-white'
-                      : 'bg-white/5 text-slate-300 hover:bg-white/10'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
                   {cat}
@@ -935,9 +935,9 @@ export function AUSTRACReviewTesting() {
           <div className="space-y-2">
             {filteredChecklist.map((item, index) => (
               <div key={item.id} className={`bg-white rounded-lg border-2 p-4 ${
-                item.completed ? 'border-green-500/30 bg-green-500/10' :
-                item.priority === 'critical' ? 'border-red-500/30 bg-red-500/10' :
-                'border-white/10'
+                item.completed ? 'border-green-200 bg-green-50' :
+                item.priority === 'critical' ? 'border-red-200 bg-red-50' :
+                'border-gray-200'
               }`}>
                 <div className="flex items-start gap-4">
                   <button
@@ -950,7 +950,7 @@ export function AUSTRACReviewTesting() {
                     className={`w-6 h-6 rounded border-2 flex items-center justify-center flex-shrink-0 mt-1 ${
                       item.completed 
                         ? 'bg-green-600 border-green-600' 
-                        : 'border-white/10 hover:border-green-500'
+                        : 'border-gray-300 hover:border-green-500'
                     }`}
                   >
                     {item.completed && <CheckCircle className="w-5 h-5 text-white" />}
@@ -960,7 +960,7 @@ export function AUSTRACReviewTesting() {
                     <div className="flex items-start justify-between">
                       <div>
                         <div className="flex items-center gap-3 mb-2">
-                          <span className="font-mono text-sm text-slate-400">{item.id}</span>
+                          <span className="font-mono text-sm text-gray-500">{item.id}</span>
                           <span className={`px-2 py-1 rounded text-xs font-bold ${
                             item.priority === 'critical' ? 'bg-red-500 text-white' :
                             item.priority === 'high' ? 'bg-orange-500 text-white' :
@@ -968,18 +968,18 @@ export function AUSTRACReviewTesting() {
                           }`}>
                             {item.priority.toUpperCase()}
                           </span>
-                          <span className="px-2 py-1 rounded text-xs font-semibold bg-white/5 text-slate-300">
+                          <span className="px-2 py-1 rounded text-xs font-semibold bg-gray-100 text-gray-700">
                             {item.category}
                           </span>
                         </div>
-                        <p className="font-semibold text-slate-100 mb-2">{item.requirement}</p>
+                        <p className="font-semibold text-gray-900 mb-2">{item.requirement}</p>
                         {item.stressTest && (
-                          <div className="mt-2 p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
-                            <p className="text-sm font-semibold text-yellow-300 mb-1">
+                          <div className="mt-2 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+                            <p className="text-sm font-semibold text-yellow-900 mb-1">
                               <PlayCircle className="w-4 h-4 inline mr-2" />
                               Stress Test:
                             </p>
-                            <p className="text-sm text-yellow-300">{item.stressTest}</p>
+                            <p className="text-sm text-yellow-800">{item.stressTest}</p>
                           </div>
                         )}
                       </div>
@@ -1009,9 +1009,9 @@ export function AUSTRACReviewTesting() {
       {/* Readiness Scores View */}
       {activeSection === 'readiness' && (
         <div className="space-y-6">
-          <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4">
-            <h3 className="font-bold text-yellow-300 mb-2">Scoring Criteria</h3>
-            <p className="text-sm text-yellow-300">
+          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+            <h3 className="font-bold text-yellow-900 mb-2">Scoring Criteria</h3>
+            <p className="text-sm text-yellow-800">
               Each area is scored 1-5. Score below 4 indicates material weakness that independent review will identify.
             </p>
           </div>
@@ -1027,11 +1027,11 @@ export function AUSTRACReviewTesting() {
               const Icon = area.icon;
               const score = readinessScores[area.key as keyof ReadinessScore];
               return (
-                <div key={area.key} className="bg-white rounded-lg border-2 border-white/10 p-6">
+                <div key={area.key} className="bg-white rounded-lg border-2 border-gray-200 p-6">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <Icon className="w-6 h-6 text-slate-300" />
-                      <h3 className="text-xl font-bold text-slate-100">{area.label}</h3>
+                      <Icon className="w-6 h-6 text-gray-600" />
+                      <h3 className="text-xl font-bold text-gray-900">{area.label}</h3>
                     </div>
                     <div className="text-right">
                       <div className={`text-4xl font-bold ${getScoreColor(score)}`}>
@@ -1042,7 +1042,7 @@ export function AUSTRACReviewTesting() {
                       </div>
                     </div>
                   </div>
-                  <div className="w-full bg-white/10 rounded-full h-4">
+                  <div className="w-full bg-gray-200 rounded-full h-4">
                     <div 
                       className={`h-4 rounded-full ${
                         score >= 4 ? 'bg-green-600' : score >= 3 ? 'bg-yellow-600' : 'bg-red-600'
@@ -1051,9 +1051,9 @@ export function AUSTRACReviewTesting() {
                     />
                   </div>
                   {score < 4 && (
-                    <div className="mt-3 p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
-                      <p className="text-sm font-semibold text-red-300">⚠️ Material Weakness Detected</p>
-                      <p className="text-sm text-red-300">Independent review will likely identify gaps in this area</p>
+                    <div className="mt-3 p-3 bg-red-50 border border-red-200 rounded-lg">
+                      <p className="text-sm font-semibold text-red-900">⚠️ Material Weakness Detected</p>
+                      <p className="text-sm text-red-700">Independent review will likely identify gaps in this area</p>
                     </div>
                   )}
                 </div>
@@ -1064,8 +1064,8 @@ export function AUSTRACReviewTesting() {
           {/* Overall Assessment */}
           <div className={`rounded-lg border-2 p-6 ${
             Object.values(readinessScores).every(s => s >= 4)
-              ? 'bg-green-500/10 border-green-500/30'
-              : 'bg-red-500/10 border-red-500/30'
+              ? 'bg-green-50 border-green-200'
+              : 'bg-red-50 border-red-200'
           }`}>
             <h3 className="text-2xl font-bold mb-4">
               {Object.values(readinessScores).every(s => s >= 4)
@@ -1075,8 +1075,8 @@ export function AUSTRACReviewTesting() {
             </h3>
             <p className={`${
               Object.values(readinessScores).every(s => s >= 4)
-                ? 'text-green-300'
-                : 'text-red-300'
+                ? 'text-green-700'
+                : 'text-red-700'
             }`}>
               {Object.values(readinessScores).every(s => s >= 4)
                 ? 'All areas score 4.0 or above. You have strong structural compliance and evidence quality.'
@@ -1090,42 +1090,42 @@ export function AUSTRACReviewTesting() {
       {/* Final Report */}
       {activeSection === 'report' && (
         <div className="space-y-6">
-          <div className="bg-white rounded-lg border border-white/10 p-6">
-            <h2 className="text-2xl font-bold text-slate-100 mb-6">AUSTRAC Readiness Report</h2>
+          <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">AUSTRAC Readiness Report</h2>
             
             <div className="space-y-6">
               <div>
-                <h3 className="text-lg font-bold text-slate-100 mb-3">Executive Summary</h3>
+                <h3 className="text-lg font-bold text-gray-900 mb-3">Executive Summary</h3>
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="p-4 bg-blue-500/10 rounded-lg">
-                    <p className="text-sm text-slate-300">Overall Completion</p>
-                    <p className="text-3xl font-bold text-blue-400">{completionPercentage}%</p>
+                  <div className="p-4 bg-blue-50 rounded-lg">
+                    <p className="text-sm text-gray-600">Overall Completion</p>
+                    <p className="text-3xl font-bold text-blue-600">{completionPercentage}%</p>
                   </div>
-                  <div className="p-4 bg-red-500/10 rounded-lg">
-                    <p className="text-sm text-slate-300">Critical Items</p>
-                    <p className="text-3xl font-bold text-red-400">{criticalPercentage}%</p>
+                  <div className="p-4 bg-red-50 rounded-lg">
+                    <p className="text-sm text-gray-600">Critical Items</p>
+                    <p className="text-3xl font-bold text-red-600">{criticalPercentage}%</p>
                   </div>
                 </div>
               </div>
 
               <div>
-                <h3 className="text-lg font-bold text-slate-100 mb-3">Three Key Tests</h3>
+                <h3 className="text-lg font-bold text-gray-900 mb-3">Three Key Tests</h3>
                 <div className="space-y-3">
-                  <div className="p-4 border-l-4 border-blue-600 bg-blue-500/10 rounded-r-lg">
-                    <p className="font-bold text-blue-300">1. Do you understand your risk?</p>
-                    <p className="text-sm text-blue-300">
+                  <div className="p-4 border-l-4 border-blue-600 bg-blue-50 rounded-r-lg">
+                    <p className="font-bold text-blue-900">1. Do you understand your risk?</p>
+                    <p className="text-sm text-blue-700">
                       Risk Assessment: {Math.round((checklist.filter(i => i.category === 'Risk Assessment' && i.completed).length / checklist.filter(i => i.category === 'Risk Assessment').length) * 100)}% complete
                     </p>
                   </div>
-                  <div className="p-4 border-l-4 border-purple-600 bg-purple-500/10 rounded-r-lg">
-                    <p className="font-bold text-purple-300">2. Do you follow your own rules?</p>
-                    <p className="text-sm text-purple-300">
+                  <div className="p-4 border-l-4 border-purple-600 bg-purple-50 rounded-r-lg">
+                    <p className="font-bold text-purple-900">2. Do you follow your own rules?</p>
+                    <p className="text-sm text-purple-700">
                       Operational Compliance: {Math.round((checklist.filter(i => ['Client CDD', 'Monitoring'].includes(i.category) && i.completed).length / checklist.filter(i => ['Client CDD', 'Monitoring'].includes(i.category)).length) * 100)}% complete
                     </p>
                   </div>
-                  <div className="p-4 border-l-4 border-green-600 bg-green-500/10 rounded-r-lg">
-                    <p className="font-bold text-green-300">3. Can you prove it?</p>
-                    <p className="text-sm text-green-300">
+                  <div className="p-4 border-l-4 border-green-600 bg-green-50 rounded-r-lg">
+                    <p className="font-bold text-green-900">3. Can you prove it?</p>
+                    <p className="text-sm text-green-700">
                       Record Keeping: {Math.round((checklist.filter(i => i.category === 'Record Keeping' && i.completed).length / checklist.filter(i => i.category === 'Record Keeping').length) * 100)}% complete
                     </p>
                   </div>

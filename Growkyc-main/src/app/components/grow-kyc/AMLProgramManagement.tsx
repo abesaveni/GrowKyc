@@ -100,7 +100,7 @@ export function AMLProgramManagement({ onBack }: AMLProgramManagementProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0f172a]">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] text-white px-6 py-4">
         <div className="flex items-center justify-between">
@@ -121,7 +121,7 @@ export function AMLProgramManagement({ onBack }: AMLProgramManagementProps) {
               <CheckCircle className="w-4 h-4 mr-2" />
               {currentProgram.status}
             </Badge>
-            <Badge className="bg-[#1e293b] text-[#13B5EA] px-4 py-2 font-bold">
+            <Badge className="bg-white text-[#13B5EA] px-4 py-2 font-bold">
               Version {currentProgram.version}
             </Badge>
           </div>
@@ -129,30 +129,30 @@ export function AMLProgramManagement({ onBack }: AMLProgramManagementProps) {
       </div>
 
       {/* Quick Status Bar */}
-      <div className="bg-[#1e293b] border-b border-white/10 px-6 py-4">
+      <div className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="grid grid-cols-5 gap-4">
           <div>
-            <div className="text-xs text-slate-300 mb-1">Policy Owner</div>
-            <div className="text-sm font-semibold text-white">{currentProgram.policyOwner}</div>
+            <div className="text-xs text-gray-600 mb-1">Policy Owner</div>
+            <div className="text-sm font-semibold text-gray-900">{currentProgram.policyOwner}</div>
           </div>
           <div>
-            <div className="text-xs text-slate-300 mb-1">Approved Date</div>
-            <div className="text-sm font-semibold text-white">{currentProgram.approvedDate}</div>
+            <div className="text-xs text-gray-600 mb-1">Approved Date</div>
+            <div className="text-sm font-semibold text-gray-900">{currentProgram.approvedDate}</div>
           </div>
           <div>
-            <div className="text-xs text-slate-300 mb-1">Effective Date</div>
-            <div className="text-sm font-semibold text-white">{currentProgram.effectiveDate}</div>
+            <div className="text-xs text-gray-600 mb-1">Effective Date</div>
+            <div className="text-sm font-semibold text-gray-900">{currentProgram.effectiveDate}</div>
           </div>
           <div>
-            <div className="text-xs text-slate-300 mb-1">Review Due</div>
-            <div className="text-sm font-semibold text-amber-400 flex items-center gap-1">
+            <div className="text-xs text-gray-600 mb-1">Review Due</div>
+            <div className="text-sm font-semibold text-amber-600 flex items-center gap-1">
               <Clock className="w-4 h-4" />
               {currentProgram.reviewDueDate}
             </div>
           </div>
           <div>
-            <div className="text-xs text-slate-300 mb-1">Board Sign-Off</div>
-            <div className="text-sm font-semibold text-green-400 flex items-center gap-1">
+            <div className="text-xs text-gray-600 mb-1">Board Sign-Off</div>
+            <div className="text-sm font-semibold text-green-600 flex items-center gap-1">
               <CheckCircle className="w-4 h-4" />
               {currentProgram.boardSignOffDate}
             </div>
@@ -194,10 +194,10 @@ export function AMLProgramManagement({ onBack }: AMLProgramManagementProps) {
           <TabsContent value="overview">
             <div className="grid gap-6">
               {/* Program Summary */}
-              <Card className="border-2 border-cyan-500/30">
+              <Card className="border-2 border-cyan-200">
                 <CardHeader className="bg-gradient-to-r from-cyan-50 to-blue-50">
                   <CardTitle className="flex items-center gap-2">
-                    <Shield className="w-5 h-5 text-cyan-400" />
+                    <Shield className="w-5 h-5 text-cyan-600" />
                     AML/CTF Program Summary
                   </CardTitle>
                   <CardDescription>
@@ -206,66 +206,66 @@ export function AMLProgramManagement({ onBack }: AMLProgramManagementProps) {
                 </CardHeader>
                 <CardContent className="p-6">
                   <div className="grid md:grid-cols-2 gap-6">
-                    <div className="bg-green-500/10 rounded-lg p-4 border-2 border-green-500/30">
+                    <div className="bg-green-50 rounded-lg p-4 border-2 border-green-200">
                       <div className="flex items-center gap-2 mb-3">
-                        <CheckCircle className="w-5 h-5 text-green-400" />
-                        <h3 className="font-bold text-green-300">Compliance Status</h3>
+                        <CheckCircle className="w-5 h-5 text-green-600" />
+                        <h3 className="font-bold text-green-900">Compliance Status</h3>
                       </div>
                       <div className="space-y-2 text-sm">
                         <div className="flex justify-between">
-                          <span className="text-slate-300">Part A (CIP & CDD):</span>
+                          <span className="text-gray-700">Part A (CIP & CDD):</span>
                           <Badge className="bg-green-600">Compliant</Badge>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-slate-300">Part B (Reporting):</span>
+                          <span className="text-gray-700">Part B (Reporting):</span>
                           <Badge className="bg-green-600">Compliant</Badge>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-slate-300">Independent Review:</span>
+                          <span className="text-gray-700">Independent Review:</span>
                           <Badge className="bg-amber-600">Due Q1 2025</Badge>
                         </div>
                       </div>
                     </div>
 
-                    <div className="bg-blue-500/10 rounded-lg p-4 border-2 border-blue-500/30">
+                    <div className="bg-blue-50 rounded-lg p-4 border-2 border-blue-200">
                       <div className="flex items-center gap-2 mb-3">
-                        <Calendar className="w-5 h-5 text-blue-400" />
-                        <h3 className="font-bold text-blue-300">Key Dates</h3>
+                        <Calendar className="w-5 h-5 text-blue-600" />
+                        <h3 className="font-bold text-blue-900">Key Dates</h3>
                       </div>
                       <div className="space-y-2 text-sm">
                         <div className="flex justify-between">
-                          <span className="text-slate-300">Program Approved:</span>
+                          <span className="text-gray-700">Program Approved:</span>
                           <span className="font-semibold">{currentProgram.approvedDate}</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-slate-300">Became Effective:</span>
+                          <span className="text-gray-700">Became Effective:</span>
                           <span className="font-semibold">{currentProgram.effectiveDate}</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-slate-300">Next Review Due:</span>
-                          <span className="font-semibold text-amber-400">{currentProgram.reviewDueDate}</span>
+                          <span className="text-gray-700">Next Review Due:</span>
+                          <span className="font-semibold text-amber-600">{currentProgram.reviewDueDate}</span>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <div className="mt-6 p-4 bg-[#1e293b] rounded-lg border-2 border-cyan-500/30">
-                    <h3 className="font-bold text-white mb-3">Version {currentProgram.version} - Key Updates</h3>
-                    <ul className="text-sm text-slate-300 space-y-2">
+                  <div className="mt-6 p-4 bg-white rounded-lg border-2 border-cyan-200">
+                    <h3 className="font-bold text-gray-900 mb-3">Version {currentProgram.version} - Key Updates</h3>
+                    <ul className="text-sm text-gray-700 space-y-2">
                       <li className="flex items-start gap-2">
-                        <Sparkles className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
+                        <Sparkles className="w-4 h-4 text-cyan-600 flex-shrink-0 mt-0.5" />
                         <span><strong>Enhanced Risk Scoring:</strong> Implemented 10-factor customer risk assessment methodology aligned with AUSTRAC guidance</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <Sparkles className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
+                        <Sparkles className="w-4 h-4 text-cyan-600 flex-shrink-0 mt-0.5" />
                         <span><strong>Crypto Asset Screening:</strong> Added procedures for digital asset verification and blockchain analysis</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <Sparkles className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
+                        <Sparkles className="w-4 h-4 text-cyan-600 flex-shrink-0 mt-0.5" />
                         <span><strong>Automated Monitoring:</strong> Integrated real-time sanctions and PEP screening via ComplyAdvantage</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <Sparkles className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
+                        <Sparkles className="w-4 h-4 text-cyan-600 flex-shrink-0 mt-0.5" />
                         <span><strong>Enhanced ODD:</strong> Revised ongoing due diligence triggers and review frequencies by risk band</span>
                       </li>
                     </ul>
@@ -305,10 +305,10 @@ export function AMLProgramManagement({ onBack }: AMLProgramManagementProps) {
 
           {/* PART A TAB */}
           <TabsContent value="part-a">
-            <Card className="border-2 border-blue-500/30">
+            <Card className="border-2 border-blue-200">
               <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50">
                 <CardTitle className="flex items-center gap-2">
-                  <Shield className="w-5 h-5 text-blue-400" />
+                  <Shield className="w-5 h-5 text-blue-600" />
                   Part A: Customer Identification & Due Diligence
                 </CardTitle>
                 <CardDescription>
@@ -376,18 +376,18 @@ export function AMLProgramManagement({ onBack }: AMLProgramManagementProps) {
                       content: '10-factor risk scoring model: jurisdiction, entity type, ownership, PEP, sanctions, SOF, service, delivery channel, adverse media, overall weighted score'
                     }
                   ].map((item, idx) => (
-                    <div key={idx} className="bg-blue-500/10 rounded-lg p-4 border-2 border-blue-500/30">
+                    <div key={idx} className="bg-blue-50 rounded-lg p-4 border-2 border-blue-200">
                       <div className="flex items-start justify-between mb-2">
                         <div>
                           <div className="flex items-center gap-2">
                             <Badge className="bg-blue-600">Section {item.section}</Badge>
-                            <h3 className="font-bold text-white">{item.title}</h3>
+                            <h3 className="font-bold text-gray-900">{item.title}</h3>
                           </div>
-                          <p className="text-sm text-slate-300 mt-2">{item.content}</p>
+                          <p className="text-sm text-gray-700 mt-2">{item.content}</p>
                         </div>
                         <Badge className="bg-green-600">{item.status}</Badge>
                       </div>
-                      <div className="text-xs text-slate-300 mt-2">
+                      <div className="text-xs text-gray-600 mt-2">
                         Last reviewed: {item.lastReview}
                       </div>
                     </div>
@@ -399,10 +399,10 @@ export function AMLProgramManagement({ onBack }: AMLProgramManagementProps) {
 
           {/* PART B TAB */}
           <TabsContent value="part-b">
-            <Card className="border-2 border-purple-500/30">
+            <Card className="border-2 border-purple-200">
               <CardHeader className="bg-gradient-to-r from-purple-50 to-pink-50">
                 <CardTitle className="flex items-center gap-2">
-                  <FileText className="w-5 h-5 text-purple-400" />
+                  <FileText className="w-5 h-5 text-purple-600" />
                   Part B: Reporting, Record Keeping & Compliance
                 </CardTitle>
                 <CardDescription>
@@ -470,18 +470,18 @@ export function AMLProgramManagement({ onBack }: AMLProgramManagementProps) {
                       content: 'Board approval, senior management responsibilities, compliance reporting, and escalation procedures'
                     }
                   ].map((item, idx) => (
-                    <div key={idx} className="bg-purple-500/10 rounded-lg p-4 border-2 border-purple-500/30">
+                    <div key={idx} className="bg-purple-50 rounded-lg p-4 border-2 border-purple-200">
                       <div className="flex items-start justify-between mb-2">
                         <div>
                           <div className="flex items-center gap-2">
                             <Badge className="bg-purple-600">Section {item.section}</Badge>
-                            <h3 className="font-bold text-white">{item.title}</h3>
+                            <h3 className="font-bold text-gray-900">{item.title}</h3>
                           </div>
-                          <p className="text-sm text-slate-300 mt-2">{item.content}</p>
+                          <p className="text-sm text-gray-700 mt-2">{item.content}</p>
                         </div>
                         <Badge className="bg-green-600">{item.status}</Badge>
                       </div>
-                      <div className="text-xs text-slate-300 mt-2">
+                      <div className="text-xs text-gray-600 mt-2">
                         Last reviewed: {item.lastReview}
                       </div>
                     </div>
@@ -509,15 +509,15 @@ export function AMLProgramManagement({ onBack }: AMLProgramManagementProps) {
               <CardContent className="p-6">
                 <div className="space-y-2">
                   {linkedProcedures.map((proc, idx) => (
-                    <div key={idx} className="flex items-center justify-between p-4 bg-[#0f172a] rounded-lg border border-white/10 hover:bg-white/5 transition-colors">
+                    <div key={idx} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 transition-colors">
                       <div className="flex items-center gap-3">
-                        <BookOpen className="w-5 h-5 text-cyan-400" />
+                        <BookOpen className="w-5 h-5 text-cyan-600" />
                         <div>
                           <div className="flex items-center gap-2">
-                            <span className="font-semibold text-white">{proc.title}</span>
+                            <span className="font-semibold text-gray-900">{proc.title}</span>
                             <Badge variant="outline" className="text-xs">{proc.id}</Badge>
                           </div>
-                          <div className="text-xs text-slate-300 mt-0.5">Category: {proc.category}</div>
+                          <div className="text-xs text-gray-600 mt-0.5">Category: {proc.category}</div>
                         </div>
                       </div>
                       <div className="flex items-center gap-2">
@@ -539,10 +539,10 @@ export function AMLProgramManagement({ onBack }: AMLProgramManagementProps) {
           <TabsContent value="approvals">
             <div className="grid gap-6">
               {/* Board Sign-Off */}
-              <Card className="border-2 border-green-500/30">
+              <Card className="border-2 border-green-200">
                 <CardHeader className="bg-gradient-to-r from-green-50 to-emerald-50">
                   <CardTitle className="flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-400" />
+                    <CheckCircle className="w-5 h-5 text-green-600" />
                     Board & Senior Management Sign-Off
                   </CardTitle>
                   <CardDescription>
@@ -551,69 +551,69 @@ export function AMLProgramManagement({ onBack }: AMLProgramManagementProps) {
                 </CardHeader>
                 <CardContent className="p-6">
                   <div className="space-y-4">
-                    <div className="bg-green-500/10 rounded-lg p-4 border-2 border-green-300">
+                    <div className="bg-green-50 rounded-lg p-4 border-2 border-green-300">
                       <div className="flex items-center justify-between mb-3">
-                        <h3 className="font-bold text-green-300">Board Approval</h3>
+                        <h3 className="font-bold text-green-900">Board Approval</h3>
                         <Badge className="bg-green-600">Approved</Badge>
                       </div>
                       <div className="grid md:grid-cols-2 gap-4 text-sm">
                         <div>
-                          <span className="text-slate-300">Meeting Date:</span>
-                          <span className="font-semibold text-white ml-2">{currentProgram.boardSignOffDate}</span>
+                          <span className="text-gray-600">Meeting Date:</span>
+                          <span className="font-semibold text-gray-900 ml-2">{currentProgram.boardSignOffDate}</span>
                         </div>
                         <div>
-                          <span className="text-slate-300">Board Minutes Reference:</span>
-                          <span className="font-semibold text-white ml-2">{currentProgram.boardMinutesRef}</span>
+                          <span className="text-gray-600">Board Minutes Reference:</span>
+                          <span className="font-semibold text-gray-900 ml-2">{currentProgram.boardMinutesRef}</span>
                         </div>
                         <div>
-                          <span className="text-slate-300">Approved By:</span>
-                          <span className="font-semibold text-white ml-2">Board of Directors</span>
+                          <span className="text-gray-600">Approved By:</span>
+                          <span className="font-semibold text-gray-900 ml-2">Board of Directors</span>
                         </div>
                         <div>
-                          <span className="text-slate-300">Resolution Number:</span>
-                          <span className="font-semibold text-white ml-2">RES-2024-003</span>
+                          <span className="text-gray-600">Resolution Number:</span>
+                          <span className="font-semibold text-gray-900 ml-2">RES-2024-003</span>
                         </div>
                       </div>
                     </div>
 
-                    <div className="bg-blue-500/10 rounded-lg p-4 border-2 border-blue-500/30">
+                    <div className="bg-blue-50 rounded-lg p-4 border-2 border-blue-200">
                       <div className="flex items-center justify-between mb-3">
-                        <h3 className="font-bold text-blue-300">Managing Partner Approval</h3>
+                        <h3 className="font-bold text-blue-900">Managing Partner Approval</h3>
                         <Badge className="bg-blue-600">Approved</Badge>
                       </div>
                       <div className="grid md:grid-cols-2 gap-4 text-sm">
                         <div>
-                          <span className="text-slate-300">Approved By:</span>
-                          <span className="font-semibold text-white ml-2">{currentProgram.approvedBy}</span>
+                          <span className="text-gray-600">Approved By:</span>
+                          <span className="font-semibold text-gray-900 ml-2">{currentProgram.approvedBy}</span>
                         </div>
                         <div>
-                          <span className="text-slate-300">Approval Date:</span>
-                          <span className="font-semibold text-white ml-2">{currentProgram.approvedDate}</span>
+                          <span className="text-gray-600">Approval Date:</span>
+                          <span className="font-semibold text-gray-900 ml-2">{currentProgram.approvedDate}</span>
                         </div>
                         <div>
-                          <span className="text-slate-300">Electronic Signature:</span>
-                          <span className="font-semibold text-white ml-2">Verified ✓</span>
+                          <span className="text-gray-600">Electronic Signature:</span>
+                          <span className="font-semibold text-gray-900 ml-2">Verified ✓</span>
                         </div>
                       </div>
                     </div>
 
-                    <div className="bg-cyan-500/10 rounded-lg p-4 border-2 border-cyan-500/30">
+                    <div className="bg-cyan-50 rounded-lg p-4 border-2 border-cyan-200">
                       <div className="flex items-center justify-between mb-3">
-                        <h3 className="font-bold text-cyan-300">Policy Owner</h3>
+                        <h3 className="font-bold text-cyan-900">Policy Owner</h3>
                         <Badge className="bg-cyan-600">Assigned</Badge>
                       </div>
                       <div className="grid md:grid-cols-2 gap-4 text-sm">
                         <div>
-                          <span className="text-slate-300">Owner:</span>
-                          <span className="font-semibold text-white ml-2">{currentProgram.policyOwner}</span>
+                          <span className="text-gray-600">Owner:</span>
+                          <span className="font-semibold text-gray-900 ml-2">{currentProgram.policyOwner}</span>
                         </div>
                         <div>
-                          <span className="text-slate-300">Assigned Date:</span>
-                          <span className="font-semibold text-white ml-2">2024-01-15</span>
+                          <span className="text-gray-600">Assigned Date:</span>
+                          <span className="font-semibold text-gray-900 ml-2">2024-01-15</span>
                         </div>
                         <div>
-                          <span className="text-slate-300">Responsibility:</span>
-                          <span className="font-semibold text-white ml-2">Program implementation & monitoring</span>
+                          <span className="text-gray-600">Responsibility:</span>
+                          <span className="font-semibold text-gray-900 ml-2">Program implementation & monitoring</span>
                         </div>
                       </div>
                     </div>
@@ -636,7 +636,7 @@ export function AMLProgramManagement({ onBack }: AMLProgramManagementProps) {
                       { date: '2024-01-10', user: 'Sarah Chen', action: 'Updated Part A Section 4.8 (Risk Assessment)', type: 'edit' },
                       { date: '2024-01-08', user: 'Emma Williams', action: 'Updated Part B Section 5.1 (SMR procedures)', type: 'edit' }
                     ].map((entry, idx) => (
-                      <div key={idx} className="flex items-start gap-3 p-3 bg-[#0f172a] rounded-lg border border-white/10">
+                      <div key={idx} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
                         <div className={`w-2 h-2 rounded-full mt-2 ${
                           entry.type === 'approval' ? 'bg-green-600' :
                           entry.type === 'review' ? 'bg-blue-600' :
@@ -644,10 +644,10 @@ export function AMLProgramManagement({ onBack }: AMLProgramManagementProps) {
                         }`} />
                         <div className="flex-1">
                           <div className="flex items-center justify-between">
-                            <span className="font-semibold text-white">{entry.action}</span>
-                            <span className="text-xs text-slate-300">{entry.date}</span>
+                            <span className="font-semibold text-gray-900">{entry.action}</span>
+                            <span className="text-xs text-gray-600">{entry.date}</span>
                           </div>
-                          <div className="text-xs text-slate-300 mt-1">By: {entry.user}</div>
+                          <div className="text-xs text-gray-600 mt-1">By: {entry.user}</div>
                         </div>
                       </div>
                     ))}
@@ -671,8 +671,8 @@ export function AMLProgramManagement({ onBack }: AMLProgramManagementProps) {
                       key={idx}
                       className={`p-4 rounded-lg border-2 ${
                         version.status === 'Current' 
-                          ? 'bg-green-500/10 border-green-300' 
-                          : 'bg-[#0f172a] border-white/10'
+                          ? 'bg-green-50 border-green-300' 
+                          : 'bg-gray-50 border-gray-200'
                       }`}
                     >
                       <div className="flex items-center justify-between mb-2">
@@ -680,15 +680,15 @@ export function AMLProgramManagement({ onBack }: AMLProgramManagementProps) {
                           <Badge className={version.status === 'Current' ? 'bg-green-600' : 'bg-gray-500'}>
                             Version {version.version}
                           </Badge>
-                          <span className="font-semibold text-white">{version.status}</span>
+                          <span className="font-semibold text-gray-900">{version.status}</span>
                         </div>
-                        <div className="flex items-center gap-2 text-sm text-slate-300">
+                        <div className="flex items-center gap-2 text-sm text-gray-600">
                           <Calendar className="w-4 h-4" />
                           {version.date}
                         </div>
                       </div>
-                      <p className="text-sm text-slate-300 mb-2">{version.changes}</p>
-                      <div className="flex items-center justify-between text-xs text-slate-300">
+                      <p className="text-sm text-gray-700 mb-2">{version.changes}</p>
+                      <div className="flex items-center justify-between text-xs text-gray-600">
                         <span>Approved by: {version.approver}</span>
                         <Button size="sm" variant="outline">
                           <Download className="w-3 h-3 mr-1" />

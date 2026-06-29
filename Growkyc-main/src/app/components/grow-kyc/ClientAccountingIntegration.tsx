@@ -199,7 +199,7 @@ export function ClientAccountingIntegration({
           <div className="flex items-start justify-between">
             <div>
               <CardTitle className="flex items-center gap-2">
-                <Database className="w-5 h-5 text-blue-400" />
+                <Database className="w-5 h-5 text-blue-600" />
                 Connect Client Accounting Software
               </CardTitle>
               <CardDescription className="mt-1">
@@ -216,10 +216,10 @@ export function ClientAccountingIntegration({
           {/* STEP 1: SELECT PLATFORM */}
           {step === 'select' && (
             <div className="space-y-6">
-              <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
                 <div className="flex gap-2">
-                  <Shield className="w-5 h-5 text-blue-400 flex-shrink-0" />
-                  <div className="text-sm text-blue-300">
+                  <Shield className="w-5 h-5 text-blue-600 flex-shrink-0" />
+                  <div className="text-sm text-blue-800">
                     <p className="font-semibold mb-1">Client-Specific Integration</p>
                     <p>Connect to this client's accounting software to monitor their bank transactions. Only flagged transactions will be saved for investigation.</p>
                   </div>
@@ -227,7 +227,7 @@ export function ClientAccountingIntegration({
               </div>
 
               <div>
-                <h3 className="font-semibold text-white mb-4">Select Accounting Platform</h3>
+                <h3 className="font-semibold text-gray-900 mb-4">Select Accounting Platform</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {platforms.map((platform) => (
                     <Card 
@@ -237,11 +237,11 @@ export function ClientAccountingIntegration({
                     >
                       <CardContent className="p-6">
                         <div className="text-center">
-                          <div className="w-16 h-16 bg-[#0f172a] rounded-lg flex items-center justify-center text-4xl mx-auto mb-3">
+                          <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center text-4xl mx-auto mb-3">
                             {platform.icon}
                           </div>
-                          <h3 className="font-bold text-white mb-1">{platform.name}</h3>
-                          <p className="text-sm text-slate-300 mb-3">{platform.description}</p>
+                          <h3 className="font-bold text-gray-900 mb-1">{platform.name}</h3>
+                          <p className="text-sm text-gray-600 mb-3">{platform.description}</p>
                           <Badge variant="outline" className="text-xs">
                             {platform.requiresOAuth ? 'OAuth 2.0' : 'API Key'}
                           </Badge>
@@ -267,18 +267,18 @@ export function ClientAccountingIntegration({
               </Button>
 
               <div>
-                <h3 className="text-lg font-bold text-white mb-2">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">
                   Connect to {platforms.find(p => p.id === selectedPlatform)?.name}
                 </h3>
-                <p className="text-sm text-slate-300">
+                <p className="text-sm text-gray-600">
                   Enter the client's accounting software credentials
                 </p>
               </div>
 
-              <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-4">
+              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
                 <div className="flex gap-2">
-                  <Shield className="w-5 h-5 text-amber-400 flex-shrink-0" />
-                  <div className="text-sm text-amber-300">
+                  <Shield className="w-5 h-5 text-amber-600 flex-shrink-0" />
+                  <div className="text-sm text-amber-800">
                     <p className="font-semibold mb-1">Security & Privacy</p>
                     <p>Credentials are encrypted and stored securely. We only access transaction data for AML/CTF monitoring. Only transactions flagged as suspicious will be saved.</p>
                   </div>
@@ -385,18 +385,18 @@ export function ClientAccountingIntegration({
           {step === 'accounts' && (
             <div className="space-y-6">
               <div>
-                <h3 className="text-lg font-bold text-white mb-2">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">
                   Select Bank Accounts to Monitor
                 </h3>
-                <p className="text-sm text-slate-300">
+                <p className="text-sm text-gray-600">
                   Found {availableAccounts.length} accounts. Select which accounts to monitor for suspicious transactions.
                 </p>
               </div>
 
-              <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-4">
+              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
-                  <div className="text-sm text-green-300">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  <div className="text-sm text-green-800">
                     <p className="font-semibold">Connection Successful!</p>
                     <p>Select accounts below to enable AML transaction monitoring.</p>
                   </div>
@@ -411,23 +411,23 @@ export function ClientAccountingIntegration({
                     <Card 
                       key={account.id} 
                       className={`border-2 transition-all ${
-                        isSelected ? 'border-blue-500 bg-blue-500/10' : 'border-white/10'
+                        isSelected ? 'border-blue-500 bg-blue-50' : 'border-gray-200'
                       }`}
                     >
                       <CardContent className="p-4">
                         <div className="flex items-start justify-between">
                           <div className="flex items-start gap-4 flex-1">
-                            <div className="w-12 h-12 bg-blue-500/15 rounded-lg flex items-center justify-center">
-                              <Database className="w-6 h-6 text-blue-400" />
+                            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                              <Database className="w-6 h-6 text-blue-600" />
                             </div>
                             <div className="flex-1">
                               <div className="flex items-center gap-2 mb-1">
-                                <h4 className="font-semibold text-white">{account.accountName}</h4>
+                                <h4 className="font-semibold text-gray-900">{account.accountName}</h4>
                                 <Badge variant="outline" className="text-xs">
                                   {account.accountType}
                                 </Badge>
                               </div>
-                              <div className="grid grid-cols-2 gap-x-6 gap-y-1 text-sm text-slate-300 mb-2">
+                              <div className="grid grid-cols-2 gap-x-6 gap-y-1 text-sm text-gray-600 mb-2">
                                 <div>
                                   <span className="text-xs">Bank:</span> {account.bankName}
                                 </div>
@@ -443,13 +443,13 @@ export function ClientAccountingIntegration({
                               </div>
                               <div className="flex items-center gap-4 text-sm">
                                 <div className="flex items-center gap-1">
-                                  <Database className="w-3 h-3 text-slate-400" />
-                                  <span className="text-slate-300">{account.transactionCount} transactions</span>
+                                  <Database className="w-3 h-3 text-gray-500" />
+                                  <span className="text-gray-600">{account.transactionCount} transactions</span>
                                 </div>
                                 {account.suspicious > 0 && (
                                   <div className="flex items-center gap-1">
                                     <AlertTriangle className="w-3 h-3 text-red-500" />
-                                    <span className="text-red-400 font-semibold">{account.suspicious} flagged</span>
+                                    <span className="text-red-600 font-semibold">{account.suspicious} flagged</span>
                                   </div>
                                 )}
                               </div>
@@ -477,19 +477,19 @@ export function ClientAccountingIntegration({
               </div>
 
               {selectedAccounts.length > 0 && (
-                <Card className="bg-blue-500/10 border-blue-500/30">
+                <Card className="bg-blue-50 border-blue-200">
                   <CardContent className="p-4">
                     <div className="flex items-start justify-between">
                       <div>
-                        <p className="font-semibold text-blue-300">
+                        <p className="font-semibold text-blue-900">
                           {selectedAccounts.length} account(s) selected for monitoring
                         </p>
-                        <p className="text-sm text-blue-300 mt-1">
+                        <p className="text-sm text-blue-700 mt-1">
                           Total flagged transactions: {availableAccounts
                             .filter(acc => selectedAccounts.includes(acc.id))
                             .reduce((sum, acc) => sum + acc.suspicious, 0)}
                         </p>
-                        <p className="text-xs text-blue-400 mt-2">
+                        <p className="text-xs text-blue-600 mt-2">
                           Only transactions flagged as suspicious will be saved to the system for investigation.
                         </p>
                       </div>
@@ -501,7 +501,7 @@ export function ClientAccountingIntegration({
           )}
         </CardContent>
 
-        <div className="border-t p-4 bg-[#0f172a] flex justify-end gap-2">
+        <div className="border-t p-4 bg-gray-50 flex justify-end gap-2">
           <Button variant="outline" onClick={onClose}>
             Cancel
           </Button>

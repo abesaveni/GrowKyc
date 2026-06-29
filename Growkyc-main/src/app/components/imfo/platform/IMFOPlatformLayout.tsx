@@ -32,7 +32,7 @@ export function IMFOPlatformLayout({
       />
       <PageHeader title={title} description={description} actions={actions} />
       {loading ? (
-        <div className="bg-white border border-white/10 rounded-lg p-4">
+        <div className="bg-white border border-gray-200 rounded-lg p-4">
           <TableSkeleton rows={5} />
         </div>
       ) : (

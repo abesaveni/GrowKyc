@@ -59,10 +59,10 @@ export function RelatedEntitiesTab({ clientId }: RelatedEntitiesTabProps) {
 
   const getRiskBg = (risk: string) => {
     switch (risk) {
-      case 'Critical': return 'bg-red-500/10';
-      case 'High': return 'bg-orange-500/10';
-      case 'Medium': return 'bg-yellow-500/10';
-      default: return 'bg-green-500/10';
+      case 'Critical': return 'bg-red-50';
+      case 'High': return 'bg-orange-50';
+      case 'Medium': return 'bg-yellow-50';
+      default: return 'bg-green-50';
     }
   };
 
@@ -96,58 +96,58 @@ export function RelatedEntitiesTab({ clientId }: RelatedEntitiesTabProps) {
       <Card className="border-2 border-blue-300 shadow-lg">
         <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
           <CardTitle className="flex items-center gap-2">
-            <Building className="w-6 h-6 text-blue-400" />
+            <Building className="w-6 h-6 text-blue-600" />
             Related Entities Summary
           </CardTitle>
         </CardHeader>
         <CardContent className="p-6">
           <div className="grid grid-cols-5 gap-4">
-            <div className="bg-blue-500/10 rounded-lg p-4 border border-blue-500/30">
-              <p className="text-sm text-slate-300 mb-1">Total Entities</p>
-              <p className="text-4xl font-bold text-blue-400">{entities.length}</p>
+            <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
+              <p className="text-sm text-gray-600 mb-1">Total Entities</p>
+              <p className="text-4xl font-bold text-blue-600">{entities.length}</p>
             </div>
-            <div className={`rounded-lg p-4 border ${criticalEntities.length > 0 ? 'bg-red-500/10 border-red-500/30' : 'bg-white/5 border-white/10'}`}>
+            <div className={`rounded-lg p-4 border ${criticalEntities.length > 0 ? 'bg-red-50 border-red-200' : 'bg-gray-50 border-gray-200'}`}>
               <div className="flex items-center gap-2 mb-1">
-                {criticalEntities.length > 0 && <XCircle className="w-5 h-5 text-red-400" />}
-                <p className="text-sm text-slate-300">Critical Risk</p>
+                {criticalEntities.length > 0 && <XCircle className="w-5 h-5 text-red-600" />}
+                <p className="text-sm text-gray-600">Critical Risk</p>
               </div>
-              <p className={`text-4xl font-bold ${criticalEntities.length > 0 ? 'text-red-400' : 'text-gray-400'}`}>
+              <p className={`text-4xl font-bold ${criticalEntities.length > 0 ? 'text-red-600' : 'text-gray-400'}`}>
                 {criticalEntities.length}
               </p>
             </div>
-            <div className={`rounded-lg p-4 border ${highRiskEntities.length > 0 ? 'bg-orange-500/10 border-orange-500/30' : 'bg-white/5 border-white/10'}`}>
+            <div className={`rounded-lg p-4 border ${highRiskEntities.length > 0 ? 'bg-orange-50 border-orange-200' : 'bg-gray-50 border-gray-200'}`}>
               <div className="flex items-center gap-2 mb-1">
-                {highRiskEntities.length > 0 && <AlertTriangle className="w-5 h-5 text-orange-400" />}
-                <p className="text-sm text-slate-300">High Risk</p>
+                {highRiskEntities.length > 0 && <AlertTriangle className="w-5 h-5 text-orange-600" />}
+                <p className="text-sm text-gray-600">High Risk</p>
               </div>
-              <p className={`text-4xl font-bold ${highRiskEntities.length > 0 ? 'text-orange-400' : 'text-gray-400'}`}>
+              <p className={`text-4xl font-bold ${highRiskEntities.length > 0 ? 'text-orange-600' : 'text-gray-400'}`}>
                 {highRiskEntities.length}
               </p>
             </div>
-            <div className={`rounded-lg p-4 border ${mediumRiskEntities.length > 0 ? 'bg-yellow-500/10 border-yellow-500/30' : 'bg-white/5 border-white/10'}`}>
-              <p className="text-sm text-slate-300 mb-1">Medium Risk</p>
-              <p className={`text-4xl font-bold ${mediumRiskEntities.length > 0 ? 'text-yellow-400' : 'text-gray-400'}`}>
+            <div className={`rounded-lg p-4 border ${mediumRiskEntities.length > 0 ? 'bg-yellow-50 border-yellow-200' : 'bg-gray-50 border-gray-200'}`}>
+              <p className="text-sm text-gray-600 mb-1">Medium Risk</p>
+              <p className={`text-4xl font-bold ${mediumRiskEntities.length > 0 ? 'text-yellow-600' : 'text-gray-400'}`}>
                 {mediumRiskEntities.length}
               </p>
             </div>
-            <div className={`rounded-lg p-4 border ${lowRiskEntities.length > 0 ? 'bg-green-500/10 border-green-500/30' : 'bg-white/5 border-white/10'}`}>
+            <div className={`rounded-lg p-4 border ${lowRiskEntities.length > 0 ? 'bg-green-50 border-green-200' : 'bg-gray-50 border-gray-200'}`}>
               <div className="flex items-center gap-2 mb-1">
-                {lowRiskEntities.length > 0 && <CheckCircle className="w-5 h-5 text-green-400" />}
-                <p className="text-sm text-slate-300">Low Risk</p>
+                {lowRiskEntities.length > 0 && <CheckCircle className="w-5 h-5 text-green-600" />}
+                <p className="text-sm text-gray-600">Low Risk</p>
               </div>
-              <p className={`text-4xl font-bold ${lowRiskEntities.length > 0 ? 'text-green-400' : 'text-gray-400'}`}>
+              <p className={`text-4xl font-bold ${lowRiskEntities.length > 0 ? 'text-green-600' : 'text-gray-400'}`}>
                 {lowRiskEntities.length}
               </p>
             </div>
           </div>
 
           {(criticalEntities.length > 0 || highRiskEntities.length > 0) && (
-            <div className="mt-6 p-4 bg-red-500/10 rounded-lg border-2 border-red-300">
+            <div className="mt-6 p-4 bg-red-50 rounded-lg border-2 border-red-300">
               <div className="flex items-center gap-3">
-                <AlertTriangle className="w-8 h-8 text-red-400" />
+                <AlertTriangle className="w-8 h-8 text-red-600" />
                 <div>
-                  <p className="font-bold text-lg text-red-300">High Risk Entities Identified</p>
-                  <p className="text-sm text-red-300">
+                  <p className="font-bold text-lg text-red-900">High Risk Entities Identified</p>
+                  <p className="text-sm text-red-700">
                     {criticalEntities.length + highRiskEntities.length} entities require enhanced due diligence and ongoing monitoring
                   </p>
                 </div>
@@ -160,16 +160,16 @@ export function RelatedEntitiesTab({ clientId }: RelatedEntitiesTabProps) {
       {/* ENTITIES LIST */}
       <div>
         <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-          <Building className="w-6 h-6 text-slate-300" />
+          <Building className="w-6 h-6 text-gray-700" />
           All Related Entities ({entities.length})
         </h2>
         
         {entities.length === 0 ? (
-          <Card className="border-2 border-white/10">
+          <Card className="border-2 border-gray-300">
             <CardContent className="p-8 text-center">
               <Building className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-xl font-bold text-slate-300 mb-2">No Related Entities Found</h3>
-              <p className="text-slate-300">
+              <h3 className="text-xl font-bold text-gray-700 mb-2">No Related Entities Found</h3>
+              <p className="text-gray-600">
                 No entities found where directors or shareholders hold more than {ownershipThreshold}% ownership
               </p>
             </CardContent>
@@ -185,7 +185,7 @@ export function RelatedEntitiesTab({ clientId }: RelatedEntitiesTabProps) {
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-3">
-                        <h3 className="text-xl font-bold text-slate-100">{entity.entityName}</h3>
+                        <h3 className="text-xl font-bold text-gray-900">{entity.entityName}</h3>
                         <Badge className={`${getRiskColor(entity.riskRating)} text-white`}>
                           {entity.riskRating} Risk
                         </Badge>
@@ -193,7 +193,7 @@ export function RelatedEntitiesTab({ clientId }: RelatedEntitiesTabProps) {
                           {entity.status}
                         </Badge>
                         {entity.adverseFindings.length > 0 && (
-                          <Badge variant="outline" className="bg-red-500/15 text-red-300 border-red-300">
+                          <Badge variant="outline" className="bg-red-100 text-red-700 border-red-300">
                             {entity.adverseFindings.length} Adverse Finding{entity.adverseFindings.length > 1 ? 's' : ''}
                           </Badge>
                         )}
@@ -201,29 +201,29 @@ export function RelatedEntitiesTab({ clientId }: RelatedEntitiesTabProps) {
 
                       <div className="grid grid-cols-4 gap-4">
                         <div>
-                          <p className="text-xs text-slate-300 mb-1">Related Person</p>
-                          <p className="font-semibold text-slate-100">{entity.personName}</p>
+                          <p className="text-xs text-gray-600 mb-1">Related Person</p>
+                          <p className="font-semibold text-gray-900">{entity.personName}</p>
                         </div>
                         <div>
-                          <p className="text-xs text-slate-300 mb-1">Relationship</p>
-                          <p className="font-semibold text-slate-100">{entity.relationship}</p>
+                          <p className="text-xs text-gray-600 mb-1">Relationship</p>
+                          <p className="font-semibold text-gray-900">{entity.relationship}</p>
                         </div>
                         <div>
-                          <p className="text-xs text-slate-300 mb-1">Ownership</p>
-                          <p className="font-semibold text-2xl text-blue-400">{entity.ownershipPercentage}%</p>
+                          <p className="text-xs text-gray-600 mb-1">Ownership</p>
+                          <p className="font-semibold text-2xl text-blue-600">{entity.ownershipPercentage}%</p>
                         </div>
                         <div>
-                          <p className="text-xs text-slate-300 mb-1">Directorship</p>
+                          <p className="text-xs text-gray-600 mb-1">Directorship</p>
                           <div className="flex items-center gap-2">
                             {entity.directorshipActive ? (
                               <>
-                                <CheckCircle className="w-5 h-5 text-green-400" />
-                                <p className="font-semibold text-green-400">Active</p>
+                                <CheckCircle className="w-5 h-5 text-green-600" />
+                                <p className="font-semibold text-green-600">Active</p>
                               </>
                             ) : (
                               <>
                                 <XCircle className="w-5 h-5 text-gray-400" />
-                                <p className="font-semibold text-slate-400">No</p>
+                                <p className="font-semibold text-gray-500">No</p>
                               </>
                             )}
                           </div>
@@ -232,10 +232,10 @@ export function RelatedEntitiesTab({ clientId }: RelatedEntitiesTabProps) {
                     </div>
 
                     <button className={`ml-4 ${
-                      entity.riskRating === 'Critical' ? 'text-red-400 hover:text-red-300' :
-                      entity.riskRating === 'High' ? 'text-orange-400 hover:text-orange-300' :
-                      entity.riskRating === 'Medium' ? 'text-yellow-400 hover:text-yellow-300' :
-                      'text-green-400 hover:text-green-300'
+                      entity.riskRating === 'Critical' ? 'text-red-600 hover:text-red-800' :
+                      entity.riskRating === 'High' ? 'text-orange-600 hover:text-orange-800' :
+                      entity.riskRating === 'Medium' ? 'text-yellow-600 hover:text-yellow-800' :
+                      'text-green-600 hover:text-green-800'
                     }`}>
                       {expandedEntities.has(entity.id) ? (
                         <ChevronUp className="w-8 h-8" />
@@ -252,96 +252,96 @@ export function RelatedEntitiesTab({ clientId }: RelatedEntitiesTabProps) {
                       {/* Left Column */}
                       <div className="space-y-4">
                         <div>
-                          <h4 className="font-semibold text-slate-100 mb-3 flex items-center gap-2">
-                            <Building className="w-5 h-5 text-slate-300" />
+                          <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                            <Building className="w-5 h-5 text-gray-600" />
                             Entity Details
                           </h4>
                           <div className="space-y-2">
-                            <div className="bg-white/5 rounded-lg p-3 border border-white/10">
-                              <p className="text-xs text-slate-300 mb-1">Entity Type</p>
-                              <p className="font-semibold text-slate-100">{entity.entityType}</p>
+                            <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
+                              <p className="text-xs text-gray-600 mb-1">Entity Type</p>
+                              <p className="font-semibold text-gray-900">{entity.entityType}</p>
                             </div>
-                            <div className="bg-white/5 rounded-lg p-3 border border-white/10">
-                              <p className="text-xs text-slate-300 mb-1">Industry</p>
-                              <p className="font-semibold text-slate-100">{entity.industry}</p>
+                            <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
+                              <p className="text-xs text-gray-600 mb-1">Industry</p>
+                              <p className="font-semibold text-gray-900">{entity.industry}</p>
                             </div>
-                            <div className="bg-white/5 rounded-lg p-3 border border-white/10">
-                              <p className="text-xs text-slate-300 mb-1">Jurisdiction</p>
+                            <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
+                              <p className="text-xs text-gray-600 mb-1">Jurisdiction</p>
                               <div className="flex items-center gap-2">
-                                <Globe className="w-4 h-4 text-blue-400" />
-                                <p className="font-semibold text-slate-100">{entity.jurisdiction}</p>
+                                <Globe className="w-4 h-4 text-blue-600" />
+                                <p className="font-semibold text-gray-900">{entity.jurisdiction}</p>
                               </div>
                             </div>
                           </div>
                         </div>
 
                         {entity.registrationNumber && (
-                          <div className="bg-blue-500/10 rounded-lg p-3 border border-blue-500/30">
-                            <p className="text-xs text-slate-300 mb-1">Registration Number</p>
-                            <p className="font-semibold text-slate-100">{entity.registrationNumber}</p>
+                          <div className="bg-blue-50 rounded-lg p-3 border border-blue-200">
+                            <p className="text-xs text-gray-600 mb-1">Registration Number</p>
+                            <p className="font-semibold text-gray-900">{entity.registrationNumber}</p>
                           </div>
                         )}
 
-                        <div className="bg-cyan-500/10 rounded-lg p-3 border border-cyan-500/30">
+                        <div className="bg-cyan-50 rounded-lg p-3 border border-cyan-200">
                           <div className="flex items-center gap-2 mb-1">
-                            <Calendar className="w-4 h-4 text-cyan-400" />
-                            <p className="text-xs text-slate-300">Registration Date</p>
+                            <Calendar className="w-4 h-4 text-cyan-600" />
+                            <p className="text-xs text-gray-600">Registration Date</p>
                           </div>
-                          <p className="font-semibold text-slate-100">{entity.registrationDate}</p>
+                          <p className="font-semibold text-gray-900">{entity.registrationDate}</p>
                         </div>
                       </div>
 
                       {/* Right Column */}
                       <div className="space-y-4">
                         <div>
-                          <h4 className="font-semibold text-slate-100 mb-3 flex items-center gap-2">
-                            <TrendingUp className="w-5 h-5 text-slate-300" />
+                          <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                            <TrendingUp className="w-5 h-5 text-gray-600" />
                             Business Information
                           </h4>
                           <div className="space-y-2">
                             {entity.annualRevenue && (
-                              <div className="bg-green-500/10 rounded-lg p-3 border border-green-500/30">
-                                <p className="text-xs text-slate-300 mb-1">Annual Revenue</p>
+                              <div className="bg-green-50 rounded-lg p-3 border border-green-200">
+                                <p className="text-xs text-gray-600 mb-1">Annual Revenue</p>
                                 <div className="flex items-center gap-2">
-                                  <DollarSign className="w-4 h-4 text-green-400" />
-                                  <p className="font-semibold text-slate-100">{entity.annualRevenue}</p>
+                                  <DollarSign className="w-4 h-4 text-green-600" />
+                                  <p className="font-semibold text-gray-900">{entity.annualRevenue}</p>
                                 </div>
                               </div>
                             )}
                             {entity.employees && (
-                              <div className="bg-purple-500/10 rounded-lg p-3 border border-purple-500/30">
-                                <p className="text-xs text-slate-300 mb-1">Employees</p>
+                              <div className="bg-purple-50 rounded-lg p-3 border border-purple-200">
+                                <p className="text-xs text-gray-600 mb-1">Employees</p>
                                 <div className="flex items-center gap-2">
-                                  <Users className="w-4 h-4 text-purple-400" />
-                                  <p className="font-semibold text-slate-100">{entity.employees}</p>
+                                  <Users className="w-4 h-4 text-purple-600" />
+                                  <p className="font-semibold text-gray-900">{entity.employees}</p>
                                 </div>
                               </div>
                             )}
-                            <div className="bg-white/5 rounded-lg p-3 border border-white/10">
-                              <p className="text-xs text-slate-300 mb-1">Last Updated</p>
-                              <p className="font-semibold text-slate-100">{entity.lastUpdated}</p>
+                            <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
+                              <p className="text-xs text-gray-600 mb-1">Last Updated</p>
+                              <p className="font-semibold text-gray-900">{entity.lastUpdated}</p>
                             </div>
                           </div>
                         </div>
 
                         <div className={`rounded-lg p-4 border-2 ${
-                          entity.riskRating === 'Critical' ? 'bg-red-500/10 border-red-300' :
-                          entity.riskRating === 'High' ? 'bg-orange-500/10 border-orange-300' :
-                          entity.riskRating === 'Medium' ? 'bg-yellow-500/10 border-yellow-300' :
-                          'bg-green-500/10 border-green-300'
+                          entity.riskRating === 'Critical' ? 'bg-red-50 border-red-300' :
+                          entity.riskRating === 'High' ? 'bg-orange-50 border-orange-300' :
+                          entity.riskRating === 'Medium' ? 'bg-yellow-50 border-yellow-300' :
+                          'bg-green-50 border-green-300'
                         }`}>
-                          <p className="text-xs text-slate-300 mb-2">Risk Assessment</p>
+                          <p className="text-xs text-gray-600 mb-2">Risk Assessment</p>
                           <div className="flex items-center gap-2">
                             {entity.riskRating === 'Critical' || entity.riskRating === 'High' ? (
-                              <AlertTriangle className={`w-6 h-6 ${entity.riskRating === 'Critical' ? 'text-red-400' : 'text-orange-400'}`} />
+                              <AlertTriangle className={`w-6 h-6 ${entity.riskRating === 'Critical' ? 'text-red-600' : 'text-orange-600'}`} />
                             ) : (
-                              <CheckCircle className={`w-6 h-6 ${entity.riskRating === 'Medium' ? 'text-yellow-400' : 'text-green-400'}`} />
+                              <CheckCircle className={`w-6 h-6 ${entity.riskRating === 'Medium' ? 'text-yellow-600' : 'text-green-600'}`} />
                             )}
                             <p className={`text-2xl font-bold ${
-                              entity.riskRating === 'Critical' ? 'text-red-400' :
-                              entity.riskRating === 'High' ? 'text-orange-400' :
-                              entity.riskRating === 'Medium' ? 'text-yellow-400' :
-                              'text-green-400'
+                              entity.riskRating === 'Critical' ? 'text-red-600' :
+                              entity.riskRating === 'High' ? 'text-orange-600' :
+                              entity.riskRating === 'Medium' ? 'text-yellow-600' :
+                              'text-green-600'
                             }`}>
                               {entity.riskRating} Risk
                             </p>
@@ -352,16 +352,16 @@ export function RelatedEntitiesTab({ clientId }: RelatedEntitiesTabProps) {
 
                     {/* Adverse Findings */}
                     {entity.adverseFindings.length > 0 && (
-                      <div className="mb-6 p-4 bg-red-500/10 rounded-lg border-2 border-red-300">
+                      <div className="mb-6 p-4 bg-red-50 rounded-lg border-2 border-red-300">
                         <div className="flex items-center gap-2 mb-3">
-                          <AlertTriangle className="w-6 h-6 text-red-400" />
-                          <h4 className="font-bold text-lg text-red-300">Adverse Findings</h4>
+                          <AlertTriangle className="w-6 h-6 text-red-600" />
+                          <h4 className="font-bold text-lg text-red-900">Adverse Findings</h4>
                         </div>
                         <ul className="space-y-2">
                           {entity.adverseFindings.map((finding, idx) => (
                             <li key={idx} className="flex items-start gap-2">
-                              <XCircle className="w-5 h-5 text-red-400 mt-0.5 flex-shrink-0" />
-                              <p className="text-slate-100">{finding}</p>
+                              <XCircle className="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0" />
+                              <p className="text-gray-900">{finding}</p>
                             </li>
                           ))}
                         </ul>

@@ -124,23 +124,23 @@ export function PaymentStep({ entities, onBack, onContinue }: PaymentStepProps) 
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-slate-100">Payment & Onboarding Fees</h2>
-        <p className="text-slate-300">Secure your payment details to proceed with onboarding</p>
+        <h2 className="text-2xl font-bold text-gray-900">Payment & Onboarding Fees</h2>
+        <p className="text-gray-600">Secure your payment details to proceed with onboarding</p>
       </div>
 
       {/* Testing Mode Notice */}
-      <div className="bg-amber-500/10 border-2 border-amber-300 rounded-lg p-4">
+      <div className="bg-amber-50 border-2 border-amber-300 rounded-lg p-4">
         <div className="flex items-center gap-2">
-          <AlertCircle className="w-5 h-5 text-amber-400" />
-          <p className="text-sm font-semibold text-amber-300">
+          <AlertCircle className="w-5 h-5 text-amber-600" />
+          <p className="text-sm font-semibold text-amber-900">
             TESTING MODE: No payment validation required - Click "Pay & Continue" to proceed
           </p>
         </div>
       </div>
 
       {/* Cost Breakdown */}
-      <div className="bg-blue-500/10 border-2 border-blue-500/30 rounded-lg p-6">
-        <h3 className="font-bold text-blue-300 mb-4 flex items-center gap-2">
+      <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-6">
+        <h3 className="font-bold text-blue-900 mb-4 flex items-center gap-2">
           <DollarSign className="w-5 h-5" />
           Payment Breakdown
         </h3>
@@ -148,46 +148,46 @@ export function PaymentStep({ entities, onBack, onContinue }: PaymentStepProps) 
         <div className="space-y-4">
           {/* Onboarding Fees */}
           <div>
-            <p className="font-semibold text-blue-300 mb-2">Onboarding Fees</p>
+            <p className="font-semibold text-blue-900 mb-2">Onboarding Fees</p>
             <div className="bg-white rounded-lg p-4 space-y-2">
               {entities.map(entity => (
                 <div key={entity.id} className="flex justify-between text-sm">
-                  <span className="text-slate-300">{entity.name || 'Unnamed Entity'} ({entity.type})</span>
-                  <span className="font-semibold text-slate-100">${onboardingFeePerEntity.toLocaleString()}</span>
+                  <span className="text-gray-700">{entity.name || 'Unnamed Entity'} ({entity.type})</span>
+                  <span className="font-semibold text-gray-900">${onboardingFeePerEntity.toLocaleString()}</span>
                 </div>
               ))}
-              <div className="flex justify-between text-sm pt-2 border-t border-white/10">
-                <span className="font-semibold text-slate-100">Subtotal</span>
-                <span className="font-semibold text-slate-100">${totalOnboardingFee.toLocaleString()}</span>
+              <div className="flex justify-between text-sm pt-2 border-t border-gray-200">
+                <span className="font-semibold text-gray-900">Subtotal</span>
+                <span className="font-semibold text-gray-900">${totalOnboardingFee.toLocaleString()}</span>
               </div>
             </div>
           </div>
 
           {/* Compliance Checks */}
           <div>
-            <p className="font-semibold text-blue-300 mb-2">Compliance & Verification Checks</p>
+            <p className="font-semibold text-blue-900 mb-2">Compliance & Verification Checks</p>
             <div className="bg-white rounded-lg p-4 space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-slate-300">Sanctions Screening ({entities.length} entities)</span>
-                <span className="font-semibold text-slate-100">${(entities.length * sanctionsScreeningCost).toLocaleString()}</span>
+                <span className="text-gray-700">Sanctions Screening ({entities.length} entities)</span>
+                <span className="font-semibold text-gray-900">${(entities.length * sanctionsScreeningCost).toLocaleString()}</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-slate-300">PEP Screening ({entities.length} entities)</span>
-                <span className="font-semibold text-slate-100">${(entities.length * pepScreeningCost).toLocaleString()}</span>
+                <span className="text-gray-700">PEP Screening ({entities.length} entities)</span>
+                <span className="font-semibold text-gray-900">${(entities.length * pepScreeningCost).toLocaleString()}</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-slate-300">ID Verification ({entities.length} entities)</span>
-                <span className="font-semibold text-slate-100">${(entities.length * idVerificationCost).toLocaleString()}</span>
+                <span className="text-gray-700">ID Verification ({entities.length} entities)</span>
+                <span className="font-semibold text-gray-900">${(entities.length * idVerificationCost).toLocaleString()}</span>
               </div>
               {complexEntities > 0 && (
                 <div className="flex justify-between text-sm">
-                  <span className="text-slate-300">Company/Trust Searches ({complexEntities} entities)</span>
-                  <span className="font-semibold text-slate-100">${(complexEntities * companySearchCost).toLocaleString()}</span>
+                  <span className="text-gray-700">Company/Trust Searches ({complexEntities} entities)</span>
+                  <span className="font-semibold text-gray-900">${(complexEntities * companySearchCost).toLocaleString()}</span>
                 </div>
               )}
-              <div className="flex justify-between text-sm pt-2 border-t border-white/10">
-                <span className="font-semibold text-slate-100">Subtotal</span>
-                <span className="font-semibold text-slate-100">${totalComplianceChecks.toLocaleString()}</span>
+              <div className="flex justify-between text-sm pt-2 border-t border-gray-200">
+                <span className="font-semibold text-gray-900">Subtotal</span>
+                <span className="font-semibold text-gray-900">${totalComplianceChecks.toLocaleString()}</span>
               </div>
             </div>
           </div>
@@ -195,27 +195,27 @@ export function PaymentStep({ entities, onBack, onContinue }: PaymentStepProps) 
           {/* Tax & Total */}
           <div className="bg-white rounded-lg p-4 space-y-2 border-2 border-blue-300">
             <div className="flex justify-between text-sm">
-              <span className="text-slate-300">Onboarding Total (ex GST)</span>
-              <span className="font-semibold text-slate-100">${totalOnboardingCost.toLocaleString()}</span>
+              <span className="text-gray-700">Onboarding Total (ex GST)</span>
+              <span className="font-semibold text-gray-900">${totalOnboardingCost.toLocaleString()}</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-slate-300">GST (10%)</span>
-              <span className="font-semibold text-slate-100">${gst.toFixed(2)}</span>
+              <span className="text-gray-700">GST (10%)</span>
+              <span className="font-semibold text-gray-900">${gst.toFixed(2)}</span>
             </div>
-            <div className="flex justify-between text-sm pt-2 border-t border-blue-500/30">
-              <span className="font-bold text-blue-300">Onboarding Total (inc GST)</span>
-              <span className="font-bold text-blue-300">${totalIncGst.toFixed(2)}</span>
+            <div className="flex justify-between text-sm pt-2 border-t border-blue-200">
+              <span className="font-bold text-blue-900">Onboarding Total (inc GST)</span>
+              <span className="font-bold text-blue-900">${totalIncGst.toFixed(2)}</span>
             </div>
           </div>
 
           {/* First Month Service Fee */}
-          <div className="bg-green-500/10 border-2 border-green-500/30 rounded-lg p-4">
+          <div className="bg-green-50 border-2 border-green-200 rounded-lg p-4">
             <div className="flex justify-between">
               <div>
-                <p className="font-semibold text-green-300">First Month Service Fee</p>
-                <p className="text-xs text-green-300">(${totalAnnualFees.toLocaleString()} annual / 12 months)</p>
+                <p className="font-semibold text-green-900">First Month Service Fee</p>
+                <p className="text-xs text-green-700">(${totalAnnualFees.toLocaleString()} annual / 12 months)</p>
               </div>
-              <span className="font-bold text-green-300">${firstMonthFee.toLocaleString()}</span>
+              <span className="font-bold text-green-900">${firstMonthFee.toLocaleString()}</span>
             </div>
           </div>
 
@@ -234,30 +234,30 @@ export function PaymentStep({ entities, onBack, onContinue }: PaymentStepProps) 
 
       {/* Payment Form */}
       {!paymentComplete && (
-        <div className="bg-white border-2 border-white/10 rounded-lg p-6">
-          <h3 className="font-bold text-slate-100 mb-6 flex items-center gap-2">
-            <CreditCard className="w-6 h-6 text-blue-400" />
+        <div className="bg-white border-2 border-gray-200 rounded-lg p-6">
+          <h3 className="font-bold text-gray-900 mb-6 flex items-center gap-2">
+            <CreditCard className="w-6 h-6 text-blue-600" />
             Payment Details
           </h3>
 
           <div className="space-y-4">
             {/* Card Information */}
             <div>
-              <label className="block text-sm font-semibold text-slate-300 mb-2">
-                Cardholder Name <span className="text-red-400">*</span>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                Cardholder Name <span className="text-red-600">*</span>
               </label>
               <input
                 type="text"
                 value={paymentData.cardName}
                 onChange={(e) => setPaymentData({ ...paymentData, cardName: e.target.value })}
-                className="w-full px-4 py-2 border border-white/10 rounded-lg"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                 placeholder="John Smith"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-slate-300 mb-2">
-                Card Number <span className="text-red-400">*</span>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                Card Number <span className="text-red-600">*</span>
               </label>
               <input
                 type="text"
@@ -268,7 +268,7 @@ export function PaymentStep({ entities, onBack, onContinue }: PaymentStepProps) 
                     setPaymentData({ ...paymentData, cardNumber: formatCardNumber(value) });
                   }
                 }}
-                className="w-full px-4 py-2 border border-white/10 rounded-lg font-mono"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg font-mono"
                 placeholder="4242 4242 4242 4242"
                 maxLength={19}
               />
@@ -276,13 +276,13 @@ export function PaymentStep({ entities, onBack, onContinue }: PaymentStepProps) 
 
             <div className="grid grid-cols-3 gap-4">
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
-                  Month <span className="text-red-400">*</span>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  Month <span className="text-red-600">*</span>
                 </label>
                 <select
                   value={paymentData.expiryMonth}
                   onChange={(e) => setPaymentData({ ...paymentData, expiryMonth: e.target.value })}
-                  className="w-full px-4 py-2 border border-white/10 rounded-lg"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                 >
                   <option value="">MM</option>
                   {Array.from({ length: 12 }, (_, i) => i + 1).map(month => (
@@ -293,13 +293,13 @@ export function PaymentStep({ entities, onBack, onContinue }: PaymentStepProps) 
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
-                  Year <span className="text-red-400">*</span>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  Year <span className="text-red-600">*</span>
                 </label>
                 <select
                   value={paymentData.expiryYear}
                   onChange={(e) => setPaymentData({ ...paymentData, expiryYear: e.target.value })}
-                  className="w-full px-4 py-2 border border-white/10 rounded-lg"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                 >
                   <option value="">YY</option>
                   {Array.from({ length: 10 }, (_, i) => 2024 + i).map(year => (
@@ -310,8 +310,8 @@ export function PaymentStep({ entities, onBack, onContinue }: PaymentStepProps) 
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
-                  CVV <span className="text-red-400">*</span>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  CVV <span className="text-red-600">*</span>
                 </label>
                 <input
                   type="text"
@@ -322,7 +322,7 @@ export function PaymentStep({ entities, onBack, onContinue }: PaymentStepProps) 
                       setPaymentData({ ...paymentData, cvv: value });
                     }
                   }}
-                  className="w-full px-4 py-2 border border-white/10 rounded-lg font-mono"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg font-mono"
                   placeholder="123"
                   maxLength={4}
                 />
@@ -330,44 +330,44 @@ export function PaymentStep({ entities, onBack, onContinue }: PaymentStepProps) 
             </div>
 
             {/* Billing Address */}
-            <div className="pt-4 border-t border-white/10">
-              <h4 className="font-semibold text-slate-100 mb-4">Billing Address</h4>
+            <div className="pt-4 border-t border-gray-200">
+              <h4 className="font-semibold text-gray-900 mb-4">Billing Address</h4>
               
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2">
-                    Street Address <span className="text-red-400">*</span>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Street Address <span className="text-red-600">*</span>
                   </label>
                   <input
                     type="text"
                     value={paymentData.billingAddress}
                     onChange={(e) => setPaymentData({ ...paymentData, billingAddress: e.target.value })}
-                    className="w-full px-4 py-2 border border-white/10 rounded-lg"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                     placeholder="123 Example Street"
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-semibold text-slate-300 mb-2">
-                      City <span className="text-red-400">*</span>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      City <span className="text-red-600">*</span>
                     </label>
                     <input
                       type="text"
                       value={paymentData.billingCity}
                       onChange={(e) => setPaymentData({ ...paymentData, billingCity: e.target.value })}
-                      className="w-full px-4 py-2 border border-white/10 rounded-lg"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                       placeholder="Sydney"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-slate-300 mb-2">
-                      State <span className="text-red-400">*</span>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      State <span className="text-red-600">*</span>
                     </label>
                     <select
                       value={paymentData.billingState}
                       onChange={(e) => setPaymentData({ ...paymentData, billingState: e.target.value })}
-                      className="w-full px-4 py-2 border border-white/10 rounded-lg"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                     >
                       <option value="">Select State</option>
                       <option value="NSW">NSW</option>
@@ -384,8 +384,8 @@ export function PaymentStep({ entities, onBack, onContinue }: PaymentStepProps) 
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-semibold text-slate-300 mb-2">
-                      Postcode <span className="text-red-400">*</span>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Postcode <span className="text-red-600">*</span>
                     </label>
                     <input
                       type="text"
@@ -396,20 +396,20 @@ export function PaymentStep({ entities, onBack, onContinue }: PaymentStepProps) 
                           setPaymentData({ ...paymentData, billingPostcode: value });
                         }
                       }}
-                      className="w-full px-4 py-2 border border-white/10 rounded-lg"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                       placeholder="2000"
                       maxLength={4}
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-slate-300 mb-2">
-                      Country <span className="text-red-400">*</span>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Country <span className="text-red-600">*</span>
                     </label>
                     <input
                       type="text"
                       value={paymentData.billingCountry}
                       readOnly
-                      className="w-full px-4 py-2 border border-white/10 rounded-lg bg-white/5"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-50"
                     />
                   </div>
                 </div>
@@ -417,7 +417,7 @@ export function PaymentStep({ entities, onBack, onContinue }: PaymentStepProps) 
             </div>
 
             {/* Terms and Conditions */}
-            <div className="pt-4 border-t border-white/10 space-y-3">
+            <div className="pt-4 border-t border-gray-200 space-y-3">
               <label className="flex items-start gap-3">
                 <input
                   type="checkbox"
@@ -425,8 +425,8 @@ export function PaymentStep({ entities, onBack, onContinue }: PaymentStepProps) 
                   onChange={(e) => setPaymentData({ ...paymentData, agreedToTerms: e.target.checked })}
                   className="mt-1 w-5 h-5"
                 />
-                <span className="text-sm text-slate-300">
-                  I accept the <a href="#" className="text-blue-400 underline">Terms and Conditions</a> and <a href="#" className="text-blue-400 underline">Privacy Policy</a> <span className="text-red-400">*</span>
+                <span className="text-sm text-gray-700">
+                  I accept the <a href="#" className="text-blue-600 underline">Terms and Conditions</a> and <a href="#" className="text-blue-600 underline">Privacy Policy</a> <span className="text-red-600">*</span>
                 </span>
               </label>
 
@@ -437,19 +437,19 @@ export function PaymentStep({ entities, onBack, onContinue }: PaymentStepProps) 
                   onChange={(e) => setPaymentData({ ...paymentData, agreedToCharges: e.target.checked })}
                   className="mt-1 w-5 h-5"
                 />
-                <span className="text-sm text-slate-300">
-                  I acknowledge that ${totalPaymentToday.toLocaleString()} will be charged today (one-time onboarding fee of ${totalIncGst.toFixed(2)} + first month service fee of ${firstMonthFee.toLocaleString()}), and ${firstMonthFee.toLocaleString()}/month will be charged thereafter <span className="text-red-400">*</span>
+                <span className="text-sm text-gray-700">
+                  I acknowledge that ${totalPaymentToday.toLocaleString()} will be charged today (one-time onboarding fee of ${totalIncGst.toFixed(2)} + first month service fee of ${firstMonthFee.toLocaleString()}), and ${firstMonthFee.toLocaleString()}/month will be charged thereafter <span className="text-red-600">*</span>
                 </span>
               </label>
             </div>
 
             {/* Security Notice */}
-            <div className="bg-green-500/10 border-2 border-green-500/30 rounded-lg p-4">
+            <div className="bg-green-50 border-2 border-green-200 rounded-lg p-4">
               <div className="flex items-start gap-3">
-                <Lock className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                <Lock className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                 <div>
-                  <p className="font-semibold text-green-300 text-sm">Secure Payment</p>
-                  <p className="text-xs text-green-300 mt-1">
+                  <p className="font-semibold text-green-900 text-sm">Secure Payment</p>
+                  <p className="text-xs text-green-700 mt-1">
                     Your payment information is encrypted and secure. We use industry-standard SSL encryption.
                   </p>
                 </div>
@@ -461,13 +461,13 @@ export function PaymentStep({ entities, onBack, onContinue }: PaymentStepProps) 
 
       {/* Payment Success */}
       {paymentComplete && (
-        <div className="bg-green-500/10 border-2 border-green-500/30 rounded-lg p-8 text-center">
-          <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-4" />
-          <h3 className="text-2xl font-bold text-green-300 mb-2">Payment Successful!</h3>
-          <p className="text-green-300 mb-4">
+        <div className="bg-green-50 border-2 border-green-200 rounded-lg p-8 text-center">
+          <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
+          <h3 className="text-2xl font-bold text-green-900 mb-2">Payment Successful!</h3>
+          <p className="text-green-700 mb-4">
             ${totalPaymentToday.toLocaleString()} charged successfully
           </p>
-          <p className="text-sm text-green-400">
+          <p className="text-sm text-green-600">
             Proceeding with onboarding and compliance checks...
           </p>
         </div>

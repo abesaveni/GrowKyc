@@ -66,9 +66,9 @@ const mockUserProfile = {
     }
   ],
   badges: [
-    { id: 'verified', name: 'Verified Investor', icon: CheckCircle, color: 'text-green-400' },
-    { id: 'top-bidder', name: 'Top Bidder', icon: Award, color: 'text-amber-400' },
-    { id: 'trusted', name: 'Trusted Member', icon: Shield, color: 'text-blue-400' }
+    { id: 'verified', name: 'Verified Investor', icon: CheckCircle, color: 'text-green-600' },
+    { id: 'top-bidder', name: 'Top Bidder', icon: Award, color: 'text-amber-600' },
+    { id: 'trusted', name: 'Trusted Member', icon: Shield, color: 'text-blue-600' }
   ]
 };
 
@@ -117,12 +117,12 @@ export function UserProfile({ userId = 'user-001', onBack }: UserProfileProps) {
               <div className="flex items-start justify-between mb-4">
                 <div>
                   <div className="flex items-center gap-3 mb-2">
-                    <h1 className="text-2xl font-semibold text-slate-100">{profile.name}</h1>
+                    <h1 className="text-2xl font-semibold text-gray-900">{profile.name}</h1>
                     {profile.verified && (
-                      <CheckCircle className="w-6 h-6 text-green-400" />
+                      <CheckCircle className="w-6 h-6 text-green-600" />
                     )}
                   </div>
-                  <div className="flex items-center gap-4 text-slate-300 mb-3">
+                  <div className="flex items-center gap-4 text-gray-600 mb-3">
                     <span className="capitalize font-medium">{profile.role}</span>
                     <span>•</span>
                     <span className="flex items-center gap-1">
@@ -143,22 +143,22 @@ export function UserProfile({ userId = 'user-001', onBack }: UserProfileProps) {
                 </div>
               </div>
 
-              <p className="text-slate-300 mb-4">{profile.bio}</p>
+              <p className="text-gray-700 mb-4">{profile.bio}</p>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="flex items-center gap-2 text-slate-300">
+                <div className="flex items-center gap-2 text-gray-600">
                   <Mail className="w-4 h-4" />
                   <span className="text-sm">{profile.email}</span>
                 </div>
-                <div className="flex items-center gap-2 text-slate-300">
+                <div className="flex items-center gap-2 text-gray-600">
                   <Phone className="w-4 h-4" />
                   <span className="text-sm">{profile.phone}</span>
                 </div>
-                <div className="flex items-center gap-2 text-slate-300">
+                <div className="flex items-center gap-2 text-gray-600">
                   <MapPin className="w-4 h-4" />
                   <span className="text-sm">{profile.location}</span>
                 </div>
-                <div className="flex items-center gap-2 text-slate-300">
+                <div className="flex items-center gap-2 text-gray-600">
                   <Building2 className="w-4 h-4" />
                   <span className="text-sm">{profile.organization}</span>
                 </div>
@@ -173,54 +173,54 @@ export function UserProfile({ userId = 'user-001', onBack }: UserProfileProps) {
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <Briefcase className="w-5 h-5 text-blue-400" />
+              <Briefcase className="w-5 h-5 text-blue-600" />
             </div>
-            <p className="text-2xl font-semibold text-slate-100">{profile.stats.totalBids}</p>
-            <p className="text-sm text-slate-300">Total Bids</p>
+            <p className="text-2xl font-semibold text-gray-900">{profile.stats.totalBids}</p>
+            <p className="text-sm text-gray-600">Total Bids</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <Award className="w-5 h-5 text-green-400" />
+              <Award className="w-5 h-5 text-green-600" />
             </div>
-            <p className="text-2xl font-semibold text-slate-100">{profile.stats.wonBids}</p>
-            <p className="text-sm text-slate-300">Won Bids</p>
+            <p className="text-2xl font-semibold text-gray-900">{profile.stats.wonBids}</p>
+            <p className="text-sm text-gray-600">Won Bids</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <DollarSign className="w-5 h-5 text-emerald-400" />
+              <DollarSign className="w-5 h-5 text-emerald-600" />
             </div>
-            <p className="text-2xl font-semibold text-slate-100">
+            <p className="text-2xl font-semibold text-gray-900">
               A${(profile.stats.totalInvested / 1000000).toFixed(1)}M
             </p>
-            <p className="text-sm text-slate-300">Total Invested</p>
+            <p className="text-sm text-gray-600">Total Invested</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <TrendingUp className="w-5 h-5 text-purple-400" />
+              <TrendingUp className="w-5 h-5 text-purple-600" />
             </div>
-            <p className="text-2xl font-semibold text-slate-100">
+            <p className="text-2xl font-semibold text-gray-900">
               A${(profile.stats.avgBid / 1000).toFixed(0)}K
             </p>
-            <p className="text-sm text-slate-300">Avg Bid</p>
+            <p className="text-sm text-gray-600">Avg Bid</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <Star className="w-5 h-5 text-amber-400" />
+              <Star className="w-5 h-5 text-amber-600" />
             </div>
-            <p className="text-2xl font-semibold text-slate-100">{profile.stats.successRate}%</p>
-            <p className="text-sm text-slate-300">Success Rate</p>
+            <p className="text-2xl font-semibold text-gray-900">{profile.stats.successRate}%</p>
+            <p className="text-sm text-gray-600">Success Rate</p>
           </CardContent>
         </Card>
       </div>
@@ -236,10 +236,10 @@ export function UserProfile({ userId = 'user-001', onBack }: UserProfileProps) {
               {profile.badges.map((badge) => {
                 const Icon = badge.icon;
                 return (
-                  <div key={badge.id} className="flex items-center gap-3 p-3 bg-white/5 rounded-lg">
+                  <div key={badge.id} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                     <Icon className={`w-6 h-6 ${badge.color}`} />
                     <div>
-                      <p className="font-semibold text-slate-100">{badge.name}</p>
+                      <p className="font-semibold text-gray-900">{badge.name}</p>
                     </div>
                   </div>
                 );
@@ -259,8 +259,8 @@ export function UserProfile({ userId = 'user-001', onBack }: UserProfileProps) {
                 <div key={activity.id} className="flex gap-3 p-3 border rounded-lg">
                   <div className="w-2 h-2 bg-indigo-600 rounded-full mt-2" />
                   <div className="flex-1">
-                    <p className="font-medium text-slate-100">{activity.description}</p>
-                    <p className="text-sm text-slate-400 mt-1">
+                    <p className="font-medium text-gray-900">{activity.description}</p>
+                    <p className="text-sm text-gray-500 mt-1">
                       {format(activity.date, "dd MMM yyyy, HH:mm 'AEST'")}
                     </p>
                   </div>
@@ -272,13 +272,13 @@ export function UserProfile({ userId = 'user-001', onBack }: UserProfileProps) {
       </div>
 
       {/* Additional Info */}
-      <Card className="border-blue-500/30 bg-blue-500/10">
+      <Card className="border-blue-200 bg-blue-50">
         <CardContent className="p-4">
           <div className="flex items-start gap-3">
-            <Shield className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+            <Shield className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
             <div>
-              <p className="text-sm font-semibold text-blue-300 mb-1">Verified Account</p>
-              <p className="text-sm text-blue-300">
+              <p className="text-sm font-semibold text-blue-900 mb-1">Verified Account</p>
+              <p className="text-sm text-blue-800">
                 This user has completed identity verification and is an active participant on the platform. 
                 All transactions are secured and monitored for compliance.
               </p>

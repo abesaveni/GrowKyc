@@ -324,32 +324,32 @@ export function VerificationResultsDashboard({
       {/* Header */}
       <div className="flex items-center gap-3 mb-6">
         <div className="p-3 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg border-2 border-blue-300">
-          <Shield className="w-6 h-6 text-blue-400" />
+          <Shield className="w-6 h-6 text-blue-600" />
         </div>
         <div className="flex-1">
-          <h2 className="text-2xl font-bold text-slate-100">Comprehensive Verification Results Dashboard</h2>
-          <p className="text-slate-300 text-sm">
+          <h2 className="text-2xl font-bold text-gray-900">Comprehensive Verification Results Dashboard</h2>
+          <p className="text-gray-600 text-sm">
             Integrated data from ASIC, InfoTrack, and uploaded documents with cross-verification
           </p>
         </div>
-        <div className="flex items-center gap-2 px-4 py-2 bg-green-500/10 border-2 border-green-300 rounded-lg">
-          <CheckCircle className="w-5 h-5 text-green-400" />
-          <span className="text-sm font-bold text-green-300">ALL VERIFIED</span>
+        <div className="flex items-center gap-2 px-4 py-2 bg-green-50 border-2 border-green-300 rounded-lg">
+          <CheckCircle className="w-5 h-5 text-green-600" />
+          <span className="text-sm font-bold text-green-800">ALL VERIFIED</span>
         </div>
       </div>
 
       {/* OVERVIEW - Quick Summary */}
       <Card className="bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-300">
         <CardHeader 
-          className="cursor-pointer hover:bg-green-500/15 transition-colors"
+          className="cursor-pointer hover:bg-green-100 transition-colors"
           onClick={() => toggleSection('overview')}
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <CheckSquare className="w-6 h-6 text-green-400" />
+              <CheckSquare className="w-6 h-6 text-green-600" />
               <div>
                 <CardTitle className="text-xl">Verification Overview</CardTitle>
-                <p className="text-sm text-slate-300 mt-1">Summary of all verification sources</p>
+                <p className="text-sm text-gray-600 mt-1">Summary of all verification sources</p>
               </div>
             </div>
             {expandedSections.overview ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
@@ -358,49 +358,49 @@ export function VerificationResultsDashboard({
         {expandedSections.overview && (
           <CardContent className="p-6">
             <div className="grid md:grid-cols-4 gap-4">
-              <div className="p-4 bg-white rounded-lg border-2 border-green-500/30">
+              <div className="p-4 bg-white rounded-lg border-2 border-green-200">
                 <div className="flex items-center gap-2 mb-2">
-                  <Building2 className="w-5 h-5 text-purple-400" />
-                  <span className="text-sm font-semibold text-slate-300">ASIC</span>
+                  <Building2 className="w-5 h-5 text-purple-600" />
+                  <span className="text-sm font-semibold text-gray-700">ASIC</span>
                 </div>
-                <div className="text-2xl font-bold text-green-400 mb-1">5/5</div>
-                <div className="text-xs text-slate-300">Checks Passed</div>
+                <div className="text-2xl font-bold text-green-600 mb-1">5/5</div>
+                <div className="text-xs text-gray-600">Checks Passed</div>
               </div>
               
-              <div className="p-4 bg-white rounded-lg border-2 border-green-500/30">
+              <div className="p-4 bg-white rounded-lg border-2 border-green-200">
                 <div className="flex items-center gap-2 mb-2">
-                  <Search className="w-5 h-5 text-blue-400" />
-                  <span className="text-sm font-semibold text-slate-300">InfoTrack</span>
+                  <Search className="w-5 h-5 text-blue-600" />
+                  <span className="text-sm font-semibold text-gray-700">InfoTrack</span>
                 </div>
-                <div className="text-2xl font-bold text-green-400 mb-1">3/3</div>
-                <div className="text-xs text-slate-300">Services Verified</div>
+                <div className="text-2xl font-bold text-green-600 mb-1">3/3</div>
+                <div className="text-xs text-gray-600">Services Verified</div>
               </div>
               
-              <div className="p-4 bg-white rounded-lg border-2 border-green-500/30">
+              <div className="p-4 bg-white rounded-lg border-2 border-green-200">
                 <div className="flex items-center gap-2 mb-2">
-                  <FileCheck className="w-5 h-5 text-orange-400" />
-                  <span className="text-sm font-semibold text-slate-300">Documents</span>
+                  <FileCheck className="w-5 h-5 text-orange-600" />
+                  <span className="text-sm font-semibold text-gray-700">Documents</span>
                 </div>
-                <div className="text-2xl font-bold text-green-400 mb-1">12/12</div>
-                <div className="text-xs text-slate-300">Verified</div>
+                <div className="text-2xl font-bold text-green-600 mb-1">12/12</div>
+                <div className="text-xs text-gray-600">Verified</div>
               </div>
               
-              <div className="p-4 bg-white rounded-lg border-2 border-green-500/30">
+              <div className="p-4 bg-white rounded-lg border-2 border-green-200">
                 <div className="flex items-center gap-2 mb-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
-                  <span className="text-sm font-semibold text-slate-300">Cross-Check</span>
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  <span className="text-sm font-semibold text-gray-700">Cross-Check</span>
                 </div>
-                <div className="text-2xl font-bold text-green-400 mb-1">7/7</div>
-                <div className="text-xs text-slate-300">Matched</div>
+                <div className="text-2xl font-bold text-green-600 mb-1">7/7</div>
+                <div className="text-xs text-gray-600">Matched</div>
               </div>
             </div>
 
-            <div className="mt-6 p-4 bg-white rounded-lg border border-white/10">
+            <div className="mt-6 p-4 bg-white rounded-lg border border-gray-200">
               <div className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
+                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
                 <div>
-                  <h4 className="font-bold text-green-300 mb-2">✅ All Verifications Complete</h4>
-                  <p className="text-sm text-slate-300 leading-relaxed">
+                  <h4 className="font-bold text-green-900 mb-2">✅ All Verifications Complete</h4>
+                  <p className="text-sm text-gray-700 leading-relaxed">
                     All third-party verification checks have been completed successfully. Data from ASIC, 
                     InfoTrack (GreenID, WorldCheck, Credit Bureau) has been gathered, cross-checked with uploaded 
                     documents, and verified. No discrepancies or adverse findings identified. Ready for final review.
@@ -415,21 +415,21 @@ export function VerificationResultsDashboard({
       {/* ASIC VERIFICATION RESULTS */}
       <Card className="border-2 border-purple-300">
         <CardHeader 
-          className="cursor-pointer bg-purple-500/10 hover:bg-purple-500/15 transition-colors"
+          className="cursor-pointer bg-purple-50 hover:bg-purple-100 transition-colors"
           onClick={() => toggleSection('asicResults')}
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Building2 className="w-6 h-6 text-purple-400" />
+              <Building2 className="w-6 h-6 text-purple-600" />
               <div>
                 <CardTitle className="text-lg">1. ASIC Verification Results</CardTitle>
-                <p className="text-xs text-slate-300 mt-1">
+                <p className="text-xs text-gray-600 mt-1">
                   Australian Securities and Investments Commission - Company & Entity Verification
                 </p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <span className="px-3 py-1 bg-green-500/15 text-green-300 text-xs font-bold rounded-full">
+              <span className="px-3 py-1 bg-green-100 text-green-800 text-xs font-bold rounded-full">
                 5/5 VERIFIED
               </span>
               {expandedSections.asicResults ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
@@ -439,60 +439,60 @@ export function VerificationResultsDashboard({
         {expandedSections.asicResults && (
           <CardContent className="p-6 space-y-4">
             {/* Company Details */}
-            <div className="p-4 bg-purple-500/10 rounded-lg border-2 border-purple-500/30">
-              <h4 className="font-bold text-purple-300 mb-3 flex items-center gap-2">
+            <div className="p-4 bg-purple-50 rounded-lg border-2 border-purple-200">
+              <h4 className="font-bold text-purple-900 mb-3 flex items-center gap-2">
                 <Building2 className="w-5 h-5" />
                 Company/Entity Details
               </h4>
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <p className="text-xs text-slate-300 mb-1">Company Name</p>
-                  <p className="font-bold text-slate-100">{asicData.companyName}</p>
+                  <p className="text-xs text-gray-600 mb-1">Company Name</p>
+                  <p className="font-bold text-gray-900">{asicData.companyName}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-slate-300 mb-1">ABN</p>
-                  <p className="font-mono text-slate-100">{asicData.abn}</p>
+                  <p className="text-xs text-gray-600 mb-1">ABN</p>
+                  <p className="font-mono text-gray-900">{asicData.abn}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-slate-300 mb-1">ACN</p>
-                  <p className="font-mono text-slate-100">{asicData.acn}</p>
+                  <p className="text-xs text-gray-600 mb-1">ACN</p>
+                  <p className="font-mono text-gray-900">{asicData.acn}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-slate-300 mb-1">Company Type</p>
-                  <p className="text-sm text-slate-100">{asicData.companyType}</p>
+                  <p className="text-xs text-gray-600 mb-1">Company Type</p>
+                  <p className="text-sm text-gray-900">{asicData.companyType}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-slate-300 mb-1">Registration Date</p>
-                  <p className="text-sm text-slate-100">{new Date(asicData.registrationDate).toLocaleDateString('en-AU')}</p>
+                  <p className="text-xs text-gray-600 mb-1">Registration Date</p>
+                  <p className="text-sm text-gray-900">{new Date(asicData.registrationDate).toLocaleDateString('en-AU')}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-slate-300 mb-1">Status</p>
+                  <p className="text-xs text-gray-600 mb-1">Status</p>
                   <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
-                    <span className="text-sm font-bold text-green-400">{asicData.status}</span>
+                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <span className="text-sm font-bold text-green-600">{asicData.status}</span>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* ASIC Checks Performed */}
-            <div className="p-4 bg-white rounded-lg border border-white/10">
-              <h4 className="font-bold text-slate-100 mb-3 flex items-center gap-2">
-                <Database className="w-5 h-5 text-purple-400" />
+            <div className="p-4 bg-white rounded-lg border border-gray-200">
+              <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                <Database className="w-5 h-5 text-purple-600" />
                 ASIC Database Checks
               </h4>
               <div className="space-y-2">
                 {Object.entries(asicData.asicChecks).map(([key, value]: [string, any]) => (
-                  <div key={key} className="flex items-center justify-between p-3 bg-white/5 rounded border border-white/10">
+                  <div key={key} className="flex items-center justify-between p-3 bg-gray-50 rounded border border-gray-200">
                     <div className="flex items-center gap-3">
-                      <CheckCircle className="w-4 h-4 text-green-400" />
-                      <span className="text-sm font-medium text-slate-100">
+                      <CheckCircle className="w-4 h-4 text-green-600" />
+                      <span className="text-sm font-medium text-gray-900">
                         {key.split(/(?=[A-Z])/).join(' ').replace(/^\w/, c => c.toUpperCase())}
                       </span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="text-xs text-slate-400">{value.timestamp}</span>
-                      <span className="px-2 py-1 bg-green-500/15 text-green-300 text-xs font-bold rounded">
+                      <span className="text-xs text-gray-500">{value.timestamp}</span>
+                      <span className="px-2 py-1 bg-green-100 text-green-800 text-xs font-bold rounded">
                         {value.status.toUpperCase()}
                       </span>
                     </div>
@@ -503,21 +503,21 @@ export function VerificationResultsDashboard({
 
             {/* Directors */}
             {asicData.directors.length > 0 && (
-              <div className="p-4 bg-white rounded-lg border border-white/10">
-                <h4 className="font-bold text-slate-100 mb-3 flex items-center gap-2">
-                  <User className="w-5 h-5 text-blue-400" />
+              <div className="p-4 bg-white rounded-lg border border-gray-200">
+                <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                  <User className="w-5 h-5 text-blue-600" />
                   Directors (ASIC Verified)
                 </h4>
                 <div className="space-y-2">
                   {asicData.directors.map((director, idx) => (
-                    <div key={idx} className="flex items-center justify-between p-3 bg-blue-500/10 rounded border border-blue-500/30">
+                    <div key={idx} className="flex items-center justify-between p-3 bg-blue-50 rounded border border-blue-200">
                       <div>
-                        <p className="font-medium text-slate-100">{director.name}</p>
-                        <p className="text-xs text-slate-300">
+                        <p className="font-medium text-gray-900">{director.name}</p>
+                        <p className="text-xs text-gray-600">
                           Appointed: {new Date(director.appointedDate).toLocaleDateString('en-AU')}
                         </p>
                       </div>
-                      <span className="px-2 py-1 bg-green-500/15 text-green-300 text-xs font-bold rounded">
+                      <span className="px-2 py-1 bg-green-100 text-green-800 text-xs font-bold rounded">
                         {director.currentStatus}
                       </span>
                     </div>
@@ -528,19 +528,19 @@ export function VerificationResultsDashboard({
 
             {/* Shareholders */}
             {asicData.shareholders.length > 0 && (
-              <div className="p-4 bg-white rounded-lg border border-white/10">
-                <h4 className="font-bold text-slate-100 mb-3 flex items-center gap-2">
-                  <Users className="w-5 h-5 text-green-400" />
+              <div className="p-4 bg-white rounded-lg border border-gray-200">
+                <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                  <Users className="w-5 h-5 text-green-600" />
                   Shareholders (ASIC Verified)
                 </h4>
                 <div className="space-y-2">
                   {asicData.shareholders.map((shareholder, idx) => (
-                    <div key={idx} className="flex items-center justify-between p-3 bg-green-500/10 rounded border border-green-500/30">
+                    <div key={idx} className="flex items-center justify-between p-3 bg-green-50 rounded border border-green-200">
                       <div>
-                        <p className="font-medium text-slate-100">{shareholder.name}</p>
-                        <p className="text-xs text-slate-300">{shareholder.shares} shares</p>
+                        <p className="font-medium text-gray-900">{shareholder.name}</p>
+                        <p className="text-xs text-gray-600">{shareholder.shares} shares</p>
                       </div>
-                      <span className="px-2 py-1 bg-green-500/15 text-green-300 text-xs font-bold rounded">
+                      <span className="px-2 py-1 bg-green-100 text-green-800 text-xs font-bold rounded">
                         {shareholder.percentage}% ownership
                       </span>
                     </div>
@@ -566,21 +566,21 @@ export function VerificationResultsDashboard({
       {/* INFOTRACK IDENTITY VERIFICATION */}
       <Card className="border-2 border-blue-300">
         <CardHeader 
-          className="cursor-pointer bg-blue-500/10 hover:bg-blue-500/15 transition-colors"
+          className="cursor-pointer bg-blue-50 hover:bg-blue-100 transition-colors"
           onClick={() => toggleSection('infoTrackIdentity')}
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <User className="w-6 h-6 text-blue-400" />
+              <User className="w-6 h-6 text-blue-600" />
               <div>
                 <CardTitle className="text-lg">2. InfoTrack Identity Verification (GreenID)</CardTitle>
-                <p className="text-xs text-slate-300 mt-1">
+                <p className="text-xs text-gray-600 mt-1">
                   100-Point ID Check with Government Database Cross-Verification • {borrowerData.name}
                 </p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <span className="px-3 py-1 bg-green-500/15 text-green-300 text-xs font-bold rounded-full">
+              <span className="px-3 py-1 bg-green-100 text-green-800 text-xs font-bold rounded-full">
                 VERIFIED 100/100
               </span>
               {expandedSections.infoTrackIdentity ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
@@ -590,44 +590,44 @@ export function VerificationResultsDashboard({
         {expandedSections.infoTrackIdentity && (
           <CardContent className="p-6 space-y-4">
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="p-4 bg-blue-500/10 rounded-lg border-2 border-blue-500/30 text-center">
-                <p className="text-xs text-slate-300 mb-2">GreenID Verification Score</p>
-                <p className="text-4xl font-bold text-blue-400">{infoTrackIdentity.greenIDScore}/100</p>
-                <p className="text-sm font-bold text-blue-300 mt-2">{infoTrackIdentity.verificationLevel}</p>
+              <div className="p-4 bg-blue-50 rounded-lg border-2 border-blue-200 text-center">
+                <p className="text-xs text-gray-600 mb-2">GreenID Verification Score</p>
+                <p className="text-4xl font-bold text-blue-600">{infoTrackIdentity.greenIDScore}/100</p>
+                <p className="text-sm font-bold text-blue-800 mt-2">{infoTrackIdentity.verificationLevel}</p>
               </div>
-              <div className="p-4 bg-white/5 rounded border border-white/10">
-                <p className="text-xs text-slate-300 mb-2 font-semibold">Verification Details</p>
-                <p className="text-xs text-slate-300 mb-1">
+              <div className="p-4 bg-gray-50 rounded border border-gray-200">
+                <p className="text-xs text-gray-600 mb-2 font-semibold">Verification Details</p>
+                <p className="text-xs text-gray-700 mb-1">
                   <span className="font-semibold">ID:</span> {infoTrackIdentity.verificationId}
                 </p>
-                <p className="text-xs text-slate-300 mb-1">
+                <p className="text-xs text-gray-700 mb-1">
                   <span className="font-semibold">Timestamp:</span> {infoTrackIdentity.timestamp}
                 </p>
-                <p className="text-xs text-slate-300">
+                <p className="text-xs text-gray-700">
                   <span className="font-semibold">Provider:</span> {infoTrackIdentity.provider}
                 </p>
               </div>
             </div>
 
             {/* Documents Verified */}
-            <div className="p-4 bg-white rounded-lg border border-white/10">
-              <h4 className="font-bold text-slate-100 mb-3 flex items-center gap-2">
-                <FileText className="w-5 h-5 text-blue-400" />
+            <div className="p-4 bg-white rounded-lg border border-gray-200">
+              <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                <FileText className="w-5 h-5 text-blue-600" />
                 Identity Documents Verified
               </h4>
               <div className="space-y-2">
                 {infoTrackIdentity.documentsVerified.map((doc, idx) => (
-                  <div key={idx} className="flex items-center justify-between p-3 bg-blue-500/10 rounded border border-blue-500/30">
+                  <div key={idx} className="flex items-center justify-between p-3 bg-blue-50 rounded border border-blue-200">
                     <div className="flex items-center gap-3">
-                      <CheckCircle className="w-4 h-4 text-green-400" />
+                      <CheckCircle className="w-4 h-4 text-green-600" />
                       <div>
-                        <p className="text-sm font-medium text-slate-100">{doc.type}</p>
-                        <p className="text-xs text-slate-300">{doc.number || `${doc.state || ''}`}</p>
+                        <p className="text-sm font-medium text-gray-900">{doc.type}</p>
+                        <p className="text-xs text-gray-600">{doc.number || `${doc.state || ''}`}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-xs font-semibold text-slate-300">{doc.confidence}%</span>
-                      <span className="px-2 py-1 bg-green-500/15 text-green-300 text-xs font-bold rounded">
+                      <span className="text-xs font-semibold text-gray-600">{doc.confidence}%</span>
+                      <span className="px-2 py-1 bg-green-100 text-green-800 text-xs font-bold rounded">
                         {doc.status}
                       </span>
                     </div>
@@ -637,40 +637,40 @@ export function VerificationResultsDashboard({
             </div>
 
             {/* Database Cross-Checks */}
-            <div className="p-4 bg-white rounded-lg border border-white/10">
-              <h4 className="font-bold text-slate-100 mb-3 flex items-center gap-2">
-                <Database className="w-5 h-5 text-green-400" />
+            <div className="p-4 bg-white rounded-lg border border-gray-200">
+              <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                <Database className="w-5 h-5 text-green-600" />
                 Government Database Cross-Verification
               </h4>
               <div className="grid md:grid-cols-2 gap-2">
                 {infoTrackIdentity.databaseChecks.map((check, idx) => (
-                  <div key={idx} className="flex items-center justify-between p-3 bg-green-500/10 rounded border border-green-500/30">
+                  <div key={idx} className="flex items-center justify-between p-3 bg-green-50 rounded border border-green-200">
                     <div>
-                      <p className="text-sm font-medium text-slate-100">{check.source}</p>
-                      <p className="text-xs text-slate-300">{check.confidence}% confidence</p>
+                      <p className="text-sm font-medium text-gray-900">{check.source}</p>
+                      <p className="text-xs text-gray-600">{check.confidence}% confidence</p>
                     </div>
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Biometric Checks */}
-            <div className="p-4 bg-white rounded-lg border border-white/10">
-              <h4 className="font-bold text-slate-100 mb-3 flex items-center gap-2">
-                <Shield className="w-5 h-5 text-purple-400" />
+            <div className="p-4 bg-white rounded-lg border border-gray-200">
+              <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                <Shield className="w-5 h-5 text-purple-600" />
                 Biometric & Document Authenticity Checks
               </h4>
               <div className="grid md:grid-cols-3 gap-3">
                 {Object.entries(infoTrackIdentity.biometricChecks).map(([key, value]: [string, any]) => (
-                  <div key={key} className="p-3 bg-purple-500/10 rounded border border-purple-500/30">
+                  <div key={key} className="p-3 bg-purple-50 rounded border border-purple-200">
                     <div className="flex items-center gap-2 mb-1">
-                      <CheckCircle className="w-4 h-4 text-green-400" />
-                      <span className="text-xs font-semibold text-slate-100">
+                      <CheckCircle className="w-4 h-4 text-green-600" />
+                      <span className="text-xs font-semibold text-gray-900">
                         {key.split(/(?=[A-Z])/).join(' ').replace(/^\w/, c => c.toUpperCase())}
                       </span>
                     </div>
-                    <p className="text-xs text-slate-300">Confidence: {value.confidence}%</p>
+                    <p className="text-xs text-gray-600">Confidence: {value.confidence}%</p>
                   </div>
                 ))}
               </div>
@@ -687,21 +687,21 @@ export function VerificationResultsDashboard({
       {/* INFOTRACK AML/CTF SCREENING */}
       <Card className="border-2 border-red-300">
         <CardHeader 
-          className="cursor-pointer bg-red-500/10 hover:bg-red-500/15 transition-colors"
+          className="cursor-pointer bg-red-50 hover:bg-red-100 transition-colors"
           onClick={() => toggleSection('infoTrackAML')}
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Shield className="w-6 h-6 text-red-400" />
+              <Shield className="w-6 h-6 text-red-600" />
               <div>
                 <CardTitle className="text-lg">3. InfoTrack AML/CTF Screening (WorldCheck)</CardTitle>
-                <p className="text-xs text-slate-300 mt-1">
+                <p className="text-xs text-gray-600 mt-1">
                   AUSTRAC Compliance - Sanctions, PEP, Adverse Media & Watchlist Screening
                 </p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <span className="px-3 py-1 bg-green-500/15 text-green-300 text-xs font-bold rounded-full">
+              <span className="px-3 py-1 bg-green-100 text-green-800 text-xs font-bold rounded-full">
                 CLEAR - LOW RISK
               </span>
               {expandedSections.infoTrackAML ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
@@ -711,37 +711,37 @@ export function VerificationResultsDashboard({
         {expandedSections.infoTrackAML && (
           <CardContent className="p-6 space-y-4">
             <div className="grid md:grid-cols-3 gap-4">
-              <div className="p-4 bg-green-500/10 rounded-lg border-2 border-green-300 text-center">
-                <p className="text-xs text-slate-300 mb-2">Overall Result</p>
-                <p className="text-2xl font-bold text-green-400">{infoTrackAML.overallResult}</p>
+              <div className="p-4 bg-green-50 rounded-lg border-2 border-green-300 text-center">
+                <p className="text-xs text-gray-600 mb-2">Overall Result</p>
+                <p className="text-2xl font-bold text-green-600">{infoTrackAML.overallResult}</p>
               </div>
-              <div className="p-4 bg-green-500/10 rounded-lg border-2 border-green-300 text-center">
-                <p className="text-xs text-slate-300 mb-2">Risk Level</p>
-                <p className="text-2xl font-bold text-green-400">{infoTrackAML.riskLevel}</p>
+              <div className="p-4 bg-green-50 rounded-lg border-2 border-green-300 text-center">
+                <p className="text-xs text-gray-600 mb-2">Risk Level</p>
+                <p className="text-2xl font-bold text-green-600">{infoTrackAML.riskLevel}</p>
               </div>
-              <div className="p-4 bg-white/5 rounded border border-white/10">
-                <p className="text-xs text-slate-300 mb-1">Screening ID</p>
-                <p className="text-xs font-mono text-slate-100">{infoTrackAML.screeningId}</p>
-                <p className="text-xs text-slate-300 mt-2">Timestamp</p>
-                <p className="text-xs text-slate-100">{infoTrackAML.timestamp}</p>
+              <div className="p-4 bg-gray-50 rounded border border-gray-200">
+                <p className="text-xs text-gray-600 mb-1">Screening ID</p>
+                <p className="text-xs font-mono text-gray-900">{infoTrackAML.screeningId}</p>
+                <p className="text-xs text-gray-600 mt-2">Timestamp</p>
+                <p className="text-xs text-gray-900">{infoTrackAML.timestamp}</p>
               </div>
             </div>
 
             {/* Sanctions Screening */}
-            <div className="p-4 bg-white rounded-lg border border-white/10">
-              <h4 className="font-bold text-slate-100 mb-3 flex items-center gap-2">
-                <Flag className="w-5 h-5 text-red-400" />
+            <div className="p-4 bg-white rounded-lg border border-gray-200">
+              <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                <Flag className="w-5 h-5 text-red-600" />
                 Sanctions Screening (0 Matches)
               </h4>
               <div className="grid md:grid-cols-3 gap-2">
                 {Object.entries(infoTrackAML.sanctionsScreening).map(([key, value]: [string, any]) => (
-                  <div key={key} className="flex items-center justify-between p-3 bg-green-500/10 rounded border border-green-500/30">
-                    <span className="text-xs font-medium text-slate-100">
+                  <div key={key} className="flex items-center justify-between p-3 bg-green-50 rounded border border-green-200">
+                    <span className="text-xs font-medium text-gray-900">
                       {key.toUpperCase().replace(/([A-Z])/g, ' $1').trim()}
                     </span>
                     <div className="flex items-center gap-2">
-                      <span className="text-xs font-bold text-green-400">{value.matches}</span>
-                      <CheckCircle className="w-4 h-4 text-green-400" />
+                      <span className="text-xs font-bold text-green-600">{value.matches}</span>
+                      <CheckCircle className="w-4 h-4 text-green-600" />
                     </div>
                   </div>
                 ))}
@@ -749,20 +749,20 @@ export function VerificationResultsDashboard({
             </div>
 
             {/* PEP Screening */}
-            <div className="p-4 bg-white rounded-lg border border-white/10">
-              <h4 className="font-bold text-slate-100 mb-3 flex items-center gap-2">
-                <Briefcase className="w-5 h-5 text-orange-400" />
+            <div className="p-4 bg-white rounded-lg border border-gray-200">
+              <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                <Briefcase className="w-5 h-5 text-orange-600" />
                 PEP Screening (0 Matches)
               </h4>
               <div className="grid md:grid-cols-2 gap-2">
                 {Object.entries(infoTrackAML.pepScreening).map(([key, value]: [string, any]) => (
-                  <div key={key} className="flex items-center justify-between p-3 bg-green-500/10 rounded border border-green-500/30">
-                    <span className="text-xs font-medium text-slate-100">
+                  <div key={key} className="flex items-center justify-between p-3 bg-green-50 rounded border border-green-200">
+                    <span className="text-xs font-medium text-gray-900">
                       {key.replace(/([A-Z])/g, ' $1').trim()}
                     </span>
                     <div className="flex items-center gap-2">
-                      <span className="text-xs font-bold text-green-400">{value.matches}</span>
-                      <CheckCircle className="w-4 h-4 text-green-400" />
+                      <span className="text-xs font-bold text-green-600">{value.matches}</span>
+                      <CheckCircle className="w-4 h-4 text-green-600" />
                     </div>
                   </div>
                 ))}
@@ -770,20 +770,20 @@ export function VerificationResultsDashboard({
             </div>
 
             {/* Adverse Media */}
-            <div className="p-4 bg-white rounded-lg border border-white/10">
-              <h4 className="font-bold text-slate-100 mb-3 flex items-center gap-2">
-                <AlertCircle className="w-5 h-5 text-yellow-400" />
+            <div className="p-4 bg-white rounded-lg border border-gray-200">
+              <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                <AlertCircle className="w-5 h-5 text-yellow-600" />
                 Adverse Media Screening (0 Articles)
               </h4>
               <div className="grid md:grid-cols-3 gap-2">
                 {Object.entries(infoTrackAML.adverseMedia).map(([key, value]: [string, any]) => (
-                  <div key={key} className="flex items-center justify-between p-3 bg-green-500/10 rounded border border-green-500/30">
-                    <span className="text-xs font-medium text-slate-100">
+                  <div key={key} className="flex items-center justify-between p-3 bg-green-50 rounded border border-green-200">
+                    <span className="text-xs font-medium text-gray-900">
                       {key.replace(/([A-Z])/g, ' $1').trim()}
                     </span>
                     <div className="flex items-center gap-2">
-                      <span className="text-xs font-bold text-green-400">{value.articles}</span>
-                      <CheckCircle className="w-4 h-4 text-green-400" />
+                      <span className="text-xs font-bold text-green-600">{value.articles}</span>
+                      <CheckCircle className="w-4 h-4 text-green-600" />
                     </div>
                   </div>
                 ))}
@@ -792,25 +792,25 @@ export function VerificationResultsDashboard({
 
             {/* Source of Funds/Wealth */}
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="p-4 bg-blue-500/10 rounded-lg border border-blue-500/30">
-                <h4 className="font-bold text-blue-300 mb-2">Source of Funds</h4>
-                <p className="text-sm text-slate-100 mb-2">{infoTrackAML.sourceOfFunds.declared}</p>
+              <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                <h4 className="font-bold text-blue-900 mb-2">Source of Funds</h4>
+                <p className="text-sm text-gray-900 mb-2">{infoTrackAML.sourceOfFunds.declared}</p>
                 <div className="flex items-center gap-2 mb-2">
-                  <CheckCircle className="w-4 h-4 text-green-400" />
-                  <span className="text-xs font-semibold text-green-400">Verified</span>
+                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <span className="text-xs font-semibold text-green-600">Verified</span>
                 </div>
-                <p className="text-xs text-slate-300">
+                <p className="text-xs text-gray-600">
                   Supporting: {infoTrackAML.sourceOfFunds.supporting.join(', ')}
                 </p>
               </div>
-              <div className="p-4 bg-blue-500/10 rounded-lg border border-blue-500/30">
-                <h4 className="font-bold text-blue-300 mb-2">Source of Wealth</h4>
-                <p className="text-sm text-slate-100 mb-2">{infoTrackAML.sourceOfWealth.declared}</p>
+              <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                <h4 className="font-bold text-blue-900 mb-2">Source of Wealth</h4>
+                <p className="text-sm text-gray-900 mb-2">{infoTrackAML.sourceOfWealth.declared}</p>
                 <div className="flex items-center gap-2 mb-2">
-                  <CheckCircle className="w-4 h-4 text-green-400" />
-                  <span className="text-xs font-semibold text-green-400">Verified</span>
+                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <span className="text-xs font-semibold text-green-600">Verified</span>
                 </div>
-                <p className="text-xs text-slate-300">
+                <p className="text-xs text-gray-600">
                   Supporting: {infoTrackAML.sourceOfWealth.supporting.join(', ')}
                 </p>
               </div>
@@ -827,21 +827,21 @@ export function VerificationResultsDashboard({
       {/* INFOTRACK CREDIT CHECK */}
       <Card className="border-2 border-orange-300">
         <CardHeader 
-          className="cursor-pointer bg-orange-500/10 hover:bg-orange-500/15 transition-colors"
+          className="cursor-pointer bg-orange-50 hover:bg-orange-100 transition-colors"
           onClick={() => toggleSection('infoTrackCredit')}
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <CreditCard className="w-6 h-6 text-orange-400" />
+              <CreditCard className="w-6 h-6 text-orange-600" />
               <div>
                 <CardTitle className="text-lg">4. InfoTrack Credit Assessment (Equifax)</CardTitle>
-                <p className="text-xs text-slate-300 mt-1">
+                <p className="text-xs text-gray-600 mt-1">
                   Comprehensive Credit Reporting (CCR) with {infoTrackCredit.creditHistory} History
                 </p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <span className="px-3 py-1 bg-green-500/15 text-green-300 text-xs font-bold rounded-full">
+              <span className="px-3 py-1 bg-green-100 text-green-800 text-xs font-bold rounded-full">
                 SCORE: {infoTrackCredit.creditScore}
               </span>
               {expandedSections.infoTrackCredit ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
@@ -851,42 +851,42 @@ export function VerificationResultsDashboard({
         {expandedSections.infoTrackCredit && (
           <CardContent className="p-6 space-y-4">
             <div className="grid md:grid-cols-3 gap-4">
-              <div className="p-4 bg-orange-500/10 rounded-lg border-2 border-orange-300 text-center col-span-1">
-                <p className="text-xs text-slate-300 mb-2">Credit Score</p>
-                <p className="text-4xl font-bold text-orange-400">{infoTrackCredit.creditScore}</p>
-                <p className="text-sm font-semibold text-orange-300 mt-2">{infoTrackCredit.scoreBand}</p>
-                <p className="text-xs text-slate-300 mt-1">Range: {infoTrackCredit.scoreRange}</p>
+              <div className="p-4 bg-orange-50 rounded-lg border-2 border-orange-300 text-center col-span-1">
+                <p className="text-xs text-gray-600 mb-2">Credit Score</p>
+                <p className="text-4xl font-bold text-orange-600">{infoTrackCredit.creditScore}</p>
+                <p className="text-sm font-semibold text-orange-800 mt-2">{infoTrackCredit.scoreBand}</p>
+                <p className="text-xs text-gray-600 mt-1">Range: {infoTrackCredit.scoreRange}</p>
               </div>
               <div className="col-span-2 grid grid-cols-2 gap-3">
-                <div className="p-3 bg-white/5 rounded border border-white/10">
-                  <p className="text-xs text-slate-300 mb-1">Payment History</p>
-                  <p className="text-lg font-bold text-green-400">{infoTrackCredit.paymentHistory.onTimePayments}</p>
-                  <p className="text-xs text-slate-300">{infoTrackCredit.paymentHistory.latePayments} late payments</p>
+                <div className="p-3 bg-gray-50 rounded border border-gray-200">
+                  <p className="text-xs text-gray-600 mb-1">Payment History</p>
+                  <p className="text-lg font-bold text-green-600">{infoTrackCredit.paymentHistory.onTimePayments}</p>
+                  <p className="text-xs text-gray-600">{infoTrackCredit.paymentHistory.latePayments} late payments</p>
                 </div>
-                <div className="p-3 bg-white/5 rounded border border-white/10">
-                  <p className="text-xs text-slate-300 mb-1">Credit Utilization</p>
-                  <p className="text-lg font-bold text-green-400">{infoTrackCredit.creditUtilization}</p>
-                  <p className="text-xs text-slate-300">Well below threshold</p>
+                <div className="p-3 bg-gray-50 rounded border border-gray-200">
+                  <p className="text-xs text-gray-600 mb-1">Credit Utilization</p>
+                  <p className="text-lg font-bold text-green-600">{infoTrackCredit.creditUtilization}</p>
+                  <p className="text-xs text-gray-600">Well below threshold</p>
                 </div>
-                <div className="p-3 bg-white/5 rounded border border-white/10">
-                  <p className="text-xs text-slate-300 mb-1">Active Accounts</p>
-                  <p className="text-lg font-bold text-slate-100">{infoTrackCredit.creditAccounts.active}/{infoTrackCredit.creditAccounts.total}</p>
-                  <p className="text-xs text-slate-300">{infoTrackCredit.creditAccounts.inDefault} in default</p>
+                <div className="p-3 bg-gray-50 rounded border border-gray-200">
+                  <p className="text-xs text-gray-600 mb-1">Active Accounts</p>
+                  <p className="text-lg font-bold text-gray-900">{infoTrackCredit.creditAccounts.active}/{infoTrackCredit.creditAccounts.total}</p>
+                  <p className="text-xs text-gray-600">{infoTrackCredit.creditAccounts.inDefault} in default</p>
                 </div>
-                <div className="p-3 bg-white/5 rounded border border-white/10">
-                  <p className="text-xs text-slate-300 mb-1">Credit History</p>
-                  <p className="text-lg font-bold text-slate-100">{infoTrackCredit.creditHistory}</p>
-                  <p className="text-xs text-slate-300">Established</p>
+                <div className="p-3 bg-gray-50 rounded border border-gray-200">
+                  <p className="text-xs text-gray-600 mb-1">Credit History</p>
+                  <p className="text-lg font-bold text-gray-900">{infoTrackCredit.creditHistory}</p>
+                  <p className="text-xs text-gray-600">Established</p>
                 </div>
               </div>
             </div>
 
-            <div className="p-4 bg-green-500/10 border-2 border-green-300 rounded-lg">
+            <div className="p-4 bg-green-50 border-2 border-green-300 rounded-lg">
               <div className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
                 <div>
-                  <h4 className="font-bold text-green-300 mb-2">✅ Strong Credit Profile</h4>
-                  <ul className="space-y-1 text-xs text-green-300">
+                  <h4 className="font-bold text-green-900 mb-2">✅ Strong Credit Profile</h4>
+                  <ul className="space-y-1 text-xs text-green-800">
                     <li>✓ No defaults: {infoTrackCredit.paymentHistory.defaults}</li>
                     <li>✓ No court judgements: {infoTrackCredit.publicRecords.courtJudgements}</li>
                     <li>✓ No bankruptcies: {infoTrackCredit.publicRecords.bankruptcies}</li>
@@ -898,9 +898,9 @@ export function VerificationResultsDashboard({
               </div>
             </div>
 
-            <div className="p-3 bg-white/5 rounded border border-white/10">
-              <p className="text-xs text-slate-300 mb-1">Risk Assessment</p>
-              <p className="text-sm font-bold text-green-400">{infoTrackCredit.riskAssessment}</p>
+            <div className="p-3 bg-gray-50 rounded border border-gray-200">
+              <p className="text-xs text-gray-600 mb-1">Risk Assessment</p>
+              <p className="text-sm font-bold text-green-600">{infoTrackCredit.riskAssessment}</p>
             </div>
 
             <Button variant="outline" size="sm" className="w-full">
@@ -914,21 +914,21 @@ export function VerificationResultsDashboard({
       {/* DOCUMENT VERIFICATION */}
       <Card className="border-2 border-teal-300">
         <CardHeader 
-          className="cursor-pointer bg-teal-500/10 hover:bg-teal-500/15 transition-colors"
+          className="cursor-pointer bg-teal-50 hover:bg-teal-100 transition-colors"
           onClick={() => toggleSection('documentVerification')}
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Upload className="w-6 h-6 text-teal-400" />
+              <Upload className="w-6 h-6 text-teal-600" />
               <div>
                 <CardTitle className="text-lg">5. Document Verification Status</CardTitle>
-                <p className="text-xs text-slate-300 mt-1">
+                <p className="text-xs text-gray-600 mt-1">
                   Uploaded documents verified and cross-checked with third-party data
                 </p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <span className="px-3 py-1 bg-green-500/15 text-green-300 text-xs font-bold rounded-full">
+              <span className="px-3 py-1 bg-green-100 text-green-800 text-xs font-bold rounded-full">
                 {documentVerification.verified}/{documentVerification.totalDocuments} VERIFIED
               </span>
               {expandedSections.documentVerification ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
@@ -938,24 +938,24 @@ export function VerificationResultsDashboard({
         {expandedSections.documentVerification && (
           <CardContent className="p-6 space-y-4">
             {documentVerification.documents.map((category, idx) => (
-              <div key={idx} className="p-4 bg-white rounded-lg border border-white/10">
-                <h4 className="font-bold text-slate-100 mb-3 flex items-center gap-2">
-                  <FileCheck className="w-5 h-5 text-teal-400" />
+              <div key={idx} className="p-4 bg-white rounded-lg border border-gray-200">
+                <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                  <FileCheck className="w-5 h-5 text-teal-600" />
                   {category.category}
                 </h4>
                 <div className="space-y-2">
                   {category.items.map((doc, docIdx) => (
-                    <div key={docIdx} className="flex items-center justify-between p-3 bg-teal-500/10 rounded border border-teal-500/30">
+                    <div key={docIdx} className="flex items-center justify-between p-3 bg-teal-50 rounded border border-teal-200">
                       <div className="flex items-center gap-3">
-                        <CheckCircle className="w-4 h-4 text-green-400" />
+                        <CheckCircle className="w-4 h-4 text-green-600" />
                         <div>
-                          <p className="text-sm font-medium text-slate-100">{doc.name}</p>
-                          <p className="text-xs text-slate-300">Verified by: {doc.source}</p>
+                          <p className="text-sm font-medium text-gray-900">{doc.name}</p>
+                          <p className="text-xs text-gray-600">Verified by: {doc.source}</p>
                         </div>
                       </div>
                       <div className="flex items-center gap-2">
-                        <span className="text-xs text-slate-300">{doc.matchStatus}</span>
-                        <span className="px-2 py-1 bg-green-500/15 text-green-300 text-xs font-bold rounded">
+                        <span className="text-xs text-gray-600">{doc.matchStatus}</span>
+                        <span className="px-2 py-1 bg-green-100 text-green-800 text-xs font-bold rounded">
                           ✓ Verified
                         </span>
                       </div>
@@ -971,21 +971,21 @@ export function VerificationResultsDashboard({
       {/* CROSS-CHECK VERIFICATION */}
       <Card className="border-2 border-indigo-300">
         <CardHeader 
-          className="cursor-pointer bg-indigo-500/10 hover:bg-indigo-500/15 transition-colors"
+          className="cursor-pointer bg-indigo-50 hover:bg-indigo-100 transition-colors"
           onClick={() => toggleSection('crossCheck')}
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <CheckSquare className="w-6 h-6 text-indigo-400" />
+              <CheckSquare className="w-6 h-6 text-indigo-600" />
               <div>
                 <CardTitle className="text-lg">6. Cross-Check Verification Results</CardTitle>
-                <p className="text-xs text-slate-300 mt-1">
+                <p className="text-xs text-gray-600 mt-1">
                   Data consistency verification across ASIC, InfoTrack, and uploaded documents
                 </p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <span className="px-3 py-1 bg-green-500/15 text-green-300 text-xs font-bold rounded-full">
+              <span className="px-3 py-1 bg-green-100 text-green-800 text-xs font-bold rounded-full">
                 {crossCheckResults.checks.filter(c => c.status === 'PASS').length}/{crossCheckResults.checks.length} PASSED
               </span>
               {expandedSections.crossCheck ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
@@ -994,12 +994,12 @@ export function VerificationResultsDashboard({
         </CardHeader>
         {expandedSections.crossCheck && (
           <CardContent className="p-6 space-y-4">
-            <div className="p-4 bg-green-500/10 border-2 border-green-300 rounded-lg">
+            <div className="p-4 bg-green-50 border-2 border-green-300 rounded-lg">
               <div className="flex items-center gap-3">
-                <CheckCircle className="w-6 h-6 text-green-400" />
+                <CheckCircle className="w-6 h-6 text-green-600" />
                 <div>
-                  <h4 className="font-bold text-green-300">{crossCheckResults.overallStatus}</h4>
-                  <p className="text-sm text-green-300 mt-1">
+                  <h4 className="font-bold text-green-900">{crossCheckResults.overallStatus}</h4>
+                  <p className="text-sm text-green-800 mt-1">
                     All cross-verification checks passed. Data is consistent across all sources.
                   </p>
                 </div>
@@ -1008,25 +1008,25 @@ export function VerificationResultsDashboard({
 
             <div className="space-y-3">
               {crossCheckResults.checks.map((check, idx) => (
-                <div key={idx} className="p-4 bg-white rounded-lg border border-white/10">
+                <div key={idx} className="p-4 bg-white rounded-lg border border-gray-200">
                   <div className="flex items-start justify-between mb-2">
                     <div className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
                       <div>
-                        <h5 className="font-bold text-slate-100">{check.check}</h5>
-                        <p className="text-sm text-slate-300 mt-1">{check.description}</p>
+                        <h5 className="font-bold text-gray-900">{check.check}</h5>
+                        <p className="text-sm text-gray-700 mt-1">{check.description}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-xs font-semibold text-slate-300">{check.confidence}%</span>
-                      <span className="px-2 py-1 bg-green-500/15 text-green-300 text-xs font-bold rounded">
+                      <span className="text-xs font-semibold text-gray-600">{check.confidence}%</span>
+                      <span className="px-2 py-1 bg-green-100 text-green-800 text-xs font-bold rounded">
                         {check.status}
                       </span>
                     </div>
                   </div>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {check.sources.map((source, sourceIdx) => (
-                      <span key={sourceIdx} className="px-2 py-1 bg-indigo-500/10 text-indigo-300 text-xs rounded border border-indigo-500/30">
+                      <span key={sourceIdx} className="px-2 py-1 bg-indigo-50 text-indigo-700 text-xs rounded border border-indigo-200">
                         {source}
                       </span>
                     ))}
@@ -1041,15 +1041,15 @@ export function VerificationResultsDashboard({
       {/* COMPLIANCE STATUS */}
       <Card className="bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-300">
         <CardHeader 
-          className="cursor-pointer hover:bg-green-500/15 transition-colors"
+          className="cursor-pointer hover:bg-green-100 transition-colors"
           onClick={() => toggleSection('complianceStatus')}
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Shield className="w-6 h-6 text-green-400" />
+              <Shield className="w-6 h-6 text-green-600" />
               <div>
-                <CardTitle className="text-lg text-green-300">7. Compliance Status Summary</CardTitle>
-                <p className="text-xs text-green-300 mt-1">
+                <CardTitle className="text-lg text-green-900">7. Compliance Status Summary</CardTitle>
+                <p className="text-xs text-green-700 mt-1">
                   Australian Lending Compliance (NCCP Act 2009) & AUSTRAC AML/CTF Requirements
                 </p>
               </div>
@@ -1065,59 +1065,59 @@ export function VerificationResultsDashboard({
         {expandedSections.complianceStatus && (
           <CardContent className="p-6 space-y-4">
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="p-4 bg-white rounded-lg border-2 border-green-500/30">
-                <h4 className="font-bold text-green-300 mb-3 flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
+              <div className="p-4 bg-white rounded-lg border-2 border-green-200">
+                <h4 className="font-bold text-green-900 mb-3 flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
                   AUSTRAC AML/CTF Compliance
                 </h4>
-                <ul className="space-y-2 text-sm text-slate-300">
+                <ul className="space-y-2 text-sm text-gray-700">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                     Identity verification complete (100-point check)
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                     Sanctions & PEP screening complete (CLEAR)
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                     Source of funds/wealth verified
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                     Risk assessment: LOW RISK
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                     No enhanced due diligence required
                   </li>
                 </ul>
               </div>
 
-              <div className="p-4 bg-white rounded-lg border-2 border-green-500/30">
-                <h4 className="font-bold text-green-300 mb-3 flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
+              <div className="p-4 bg-white rounded-lg border-2 border-green-200">
+                <h4 className="font-bold text-green-900 mb-3 flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
                   NCCP Act 2009 Compliance
                 </h4>
-                <ul className="space-y-2 text-sm text-slate-300">
+                <ul className="space-y-2 text-sm text-gray-700">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                     Borrower identity verified (GreenID)
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                     Financial capacity assessed (Equifax)
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                     Company/entity structure verified (ASIC)
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                     Supporting documents collected & verified
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                     Credit assessment complete (LOW RISK)
                   </li>
                 </ul>

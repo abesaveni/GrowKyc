@@ -21,34 +21,34 @@ import { RiskAssessmentMaster } from './accounting-modules/RiskAssessmentMaster'
 
 // Mock components for modules that do not exist
 const PersonnelPolicyMaster = ({ onComplete }: { onComplete: (data: any) => void }) => (
-  <div className="bg-white border border-white/10 rounded-lg p-6">
+  <div className="bg-white border border-gray-200 rounded-lg p-6">
     <h3 className="text-xl font-bold mb-4">Personnel Policy Master</h3>
     <Button onClick={() => onComplete(null)}>Complete Module</Button>
   </div>
 );
 
 const ClientPolicyMaster = ({ onComplete }: { onComplete: (data: any) => void }) => (
-  <div className="bg-white border border-white/10 rounded-lg p-6">
+  <div className="bg-white border border-gray-200 rounded-lg p-6">
     <h3 className="text-xl font-bold mb-4">Client Policy Master</h3>
     <Button onClick={() => onComplete(null)}>Complete Module</Button>
   </div>
 );
 
 const MaintainProgramMaster = ({ onComplete }: { onComplete: (data: any) => void }) => (
-  <div className="bg-white border border-white/10 rounded-lg p-6">
+  <div className="bg-white border border-gray-200 rounded-lg p-6">
     <h3 className="text-xl font-bold mb-4">Maintain Program Master</h3>
     <Button onClick={() => onComplete(null)}>Complete Module</Button>
   </div>
 );
 
 const ProcessesAndForms = () => (
-  <div className="bg-white border border-white/10 rounded-lg p-6">
+  <div className="bg-white border border-gray-200 rounded-lg p-6">
     <h3 className="text-xl font-bold mb-4">Processes & Forms</h3>
   </div>
 );
 
 const DocumentApprovalLayer = ({ programStatus, onApprove }: { programStatus: any; onApprove: () => void }) => (
-  <div className="bg-white border border-white/10 rounded-lg p-6">
+  <div className="bg-white border border-gray-200 rounded-lg p-6">
     <h3 className="text-xl font-bold mb-4">Document & Approve Layer</h3>
     <Button onClick={onApprove}>Approve Program</Button>
   </div>
@@ -107,26 +107,26 @@ export function AccountingAMLMaster({ onBack }: AccountingAMLMasterProps) {
 
           {/* Critical Notice */}
           {!programStatus.seniorManagerApproval && (
-            <div className="bg-red-500/10 border-2 border-red-500/30 rounded-lg p-6 mb-8">
+            <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6 mb-8">
               <div className="flex items-start">
-                <AlertTriangle className="w-6 h-6 text-red-400 mr-3 mt-0.5" />
+                <AlertTriangle className="w-6 h-6 text-red-600 mr-3 mt-0.5" />
                 <div>
-                  <h3 className="font-bold text-red-300 mb-2">PROGRAM ACTIVATION BLOCKED</h3>
-                  <p className="text-red-300 mb-3">
+                  <h3 className="font-bold text-red-900 mb-2">PROGRAM ACTIVATION BLOCKED</h3>
+                  <p className="text-red-700 mb-3">
                     Cannot provide designated services until ALL modules are complete and Senior Manager approval obtained.
                   </p>
                   <div className="space-y-1 text-sm">
                     {!programStatus.riskAssessmentComplete && (
-                      <p className="text-red-300">• Risk Assessment incomplete</p>
+                      <p className="text-red-700">• Risk Assessment incomplete</p>
                     )}
                     {!programStatus.personnelPolicyComplete && (
-                      <p className="text-red-300">• Personnel Policy incomplete</p>
+                      <p className="text-red-700">• Personnel Policy incomplete</p>
                     )}
                     {!programStatus.clientPolicyComplete && (
-                      <p className="text-red-300">• Client Policy incomplete</p>
+                      <p className="text-red-700">• Client Policy incomplete</p>
                     )}
                     {!programStatus.maintainProgramComplete && (
-                      <p className="text-red-300">• Maintain Program incomplete</p>
+                      <p className="text-red-700">• Maintain Program incomplete</p>
                     )}
                   </div>
                 </div>
@@ -136,56 +136,56 @@ export function AccountingAMLMaster({ onBack }: AccountingAMLMasterProps) {
 
           {/* Program Status Overview */}
           <div className="grid grid-cols-3 gap-4 mb-8">
-            <div className="bg-white rounded-lg border border-white/10 p-6">
+            <div className="bg-white rounded-lg border border-gray-200 p-6">
               <div className="flex items-center justify-between mb-3">
-                <h3 className="font-bold text-slate-100">Program Status</h3>
+                <h3 className="font-bold text-gray-900">Program Status</h3>
                 {programStatus.seniorManagerApproval ? (
-                  <CheckCircle className="w-6 h-6 text-green-400" />
+                  <CheckCircle className="w-6 h-6 text-green-600" />
                 ) : (
-                  <Lock className="w-6 h-6 text-red-400" />
+                  <Lock className="w-6 h-6 text-red-600" />
                 )}
               </div>
-              <p className={`text-2xl font-bold ${programStatus.seniorManagerApproval ? 'text-green-400' : 'text-red-400'}`}>
+              <p className={`text-2xl font-bold ${programStatus.seniorManagerApproval ? 'text-green-600' : 'text-red-600'}`}>
                 {programStatus.seniorManagerApproval ? 'ACTIVE' : 'PENDING'}
               </p>
-              <p className="text-sm text-slate-300 mt-2">
+              <p className="text-sm text-gray-600 mt-2">
                 {programStatus.seniorManagerApproval ? 'Designated services permitted' : 'Services blocked until approval'}
               </p>
             </div>
 
-            <div className="bg-white rounded-lg border border-white/10 p-6">
+            <div className="bg-white rounded-lg border border-gray-200 p-6">
               <div className="flex items-center justify-between mb-3">
-                <h3 className="font-bold text-slate-100">AUSTRAC Enrolment</h3>
+                <h3 className="font-bold text-gray-900">AUSTRAC Enrolment</h3>
                 {programStatus.austracEnrolled ? (
-                  <CheckCircle className="w-6 h-6 text-green-400" />
+                  <CheckCircle className="w-6 h-6 text-green-600" />
                 ) : (
-                  <AlertTriangle className="w-6 h-6 text-orange-400" />
+                  <AlertTriangle className="w-6 h-6 text-orange-600" />
                 )}
               </div>
-              <p className={`text-2xl font-bold ${programStatus.austracEnrolled ? 'text-green-400' : 'text-orange-400'}`}>
+              <p className={`text-2xl font-bold ${programStatus.austracEnrolled ? 'text-green-600' : 'text-orange-600'}`}>
                 {programStatus.austracEnrolled ? 'ENROLLED' : 'REQUIRED'}
               </p>
-              <p className="text-sm text-slate-300 mt-2">
+              <p className="text-sm text-gray-600 mt-2">
                 {programStatus.austracEnrolled ? 'Updates within 14 days' : 'Must enrol before services'}
               </p>
             </div>
 
-            <div className="bg-white rounded-lg border border-white/10 p-6">
+            <div className="bg-white rounded-lg border border-gray-200 p-6">
               <div className="flex items-center justify-between mb-3">
-                <h3 className="font-bold text-slate-100">Completion Status</h3>
-                <TrendingUp className="w-6 h-6 text-blue-400" />
+                <h3 className="font-bold text-gray-900">Completion Status</h3>
+                <TrendingUp className="w-6 h-6 text-blue-600" />
               </div>
-              <p className="text-2xl font-bold text-blue-400">
+              <p className="text-2xl font-bold text-blue-600">
                 {Object.values(programStatus).filter(Boolean).length}/6
               </p>
-              <p className="text-sm text-slate-300 mt-2">Modules completed</p>
+              <p className="text-sm text-gray-600 mt-2">Modules completed</p>
             </div>
           </div>
 
           {/* Master Structure - Exact Hierarchy */}
-          <div className="bg-white rounded-lg border-2 border-white/10 p-6 mb-8">
-            <h2 className="text-2xl font-bold text-slate-100 mb-6 flex items-center">
-              <Scale className="w-6 h-6 text-green-400 mr-3" />
+          <div className="bg-white rounded-lg border-2 border-gray-300 p-6 mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+              <Scale className="w-6 h-6 text-green-600 mr-3" />
               AUSTRAC AML/CTF Program Structure
             </h2>
             <div className="space-y-3">
@@ -238,16 +238,16 @@ export function AccountingAMLMaster({ onBack }: AccountingAMLMasterProps) {
                   onClick={() => setCurrentView(module.id as MasterView)}
                   className={`w-full p-6 rounded-lg border-2 text-left transition-all hover:shadow-lg ${
                     module.complete
-                      ? 'border-green-500 bg-green-500/10'
+                      ? 'border-green-500 bg-green-50'
                       : module.critical
-                      ? 'border-red-300 bg-red-500/10'
-                      : 'border-white/10 hover:border-blue-300'
+                      ? 'border-red-300 bg-red-50'
+                      : 'border-gray-200 hover:border-blue-300'
                   }`}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-xl font-bold text-slate-100">{module.title}</h3>
+                        <h3 className="text-xl font-bold text-gray-900">{module.title}</h3>
                         {module.critical && !module.complete && (
                           <span className="px-3 py-1 bg-red-500 text-white text-xs font-bold rounded-full">
                             CRITICAL
@@ -259,13 +259,13 @@ export function AccountingAMLMaster({ onBack }: AccountingAMLMasterProps) {
                           </span>
                         )}
                       </div>
-                      <p className="text-slate-300">{module.description}</p>
+                      <p className="text-gray-600">{module.description}</p>
                     </div>
                     <div className="flex items-center gap-4">
                       {module.complete ? (
-                        <CheckCircle className="w-8 h-8 text-green-400" />
+                        <CheckCircle className="w-8 h-8 text-green-600" />
                       ) : module.critical ? (
-                        <AlertTriangle className="w-8 h-8 text-red-400" />
+                        <AlertTriangle className="w-8 h-8 text-red-600" />
                       ) : (
                         <Clock className="w-8 h-8 text-gray-400" />
                       )}
@@ -278,8 +278,8 @@ export function AccountingAMLMaster({ onBack }: AccountingAMLMasterProps) {
           </div>
 
           {/* Compliance Checklist */}
-          <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-6">
-            <h3 className="font-bold text-blue-300 mb-4">Final Compliance Check</h3>
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+            <h3 className="font-bold text-blue-900 mb-4">Final Compliance Check</h3>
             <div className="grid grid-cols-2 gap-3">
               {[
                 'Risk module with appetite enforcement',
@@ -301,8 +301,8 @@ export function AccountingAMLMaster({ onBack }: AccountingAMLMasterProps) {
                 'Senior manager approval workflow'
               ].map((item, index) => (
                 <div key={index} className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-blue-300">{item}</span>
+                  <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-sm text-blue-900">{item}</span>
                 </div>
               ))}
             </div>
@@ -314,7 +314,7 @@ export function AccountingAMLMaster({ onBack }: AccountingAMLMasterProps) {
 
   // Module Views
   return (
-    <div className="min-h-screen bg-white/5 p-8">
+    <div className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-7xl mx-auto">
         <Button
           variant="ghost"

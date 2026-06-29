@@ -94,9 +94,9 @@ export function LoanBook({ onNavigate, onBack }: LoanBookProps) {
 
   const getStatusBadge = (status: string) => {
     const badges: { [key: string]: JSX.Element } = {
-      'current': <span className="px-2 py-0.5 bg-green-500/15 text-green-300 text-xs font-semibold rounded">CURRENT</span>,
-      'arrears': <span className="px-2 py-0.5 bg-amber-500/15 text-amber-300 text-xs font-semibold rounded">ARREARS</span>,
-      'default': <span className="px-2 py-0.5 bg-red-500/15 text-red-300 text-xs font-semibold rounded">DEFAULT</span>
+      'current': <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded">CURRENT</span>,
+      'arrears': <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-xs font-semibold rounded">ARREARS</span>,
+      'default': <span className="px-2 py-0.5 bg-red-100 text-red-700 text-xs font-semibold rounded">DEFAULT</span>
     };
     return badges[status];
   };
@@ -112,9 +112,9 @@ export function LoanBook({ onNavigate, onBack }: LoanBookProps) {
   };
 
   return (
-    <div className="min-h-screen bg-white/5">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-white border-b border-white/10 px-6 py-4">
+      <div className="bg-white border-b border-gray-300 px-6 py-4">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-3">
             {onBack && (
@@ -122,10 +122,10 @@ export function LoanBook({ onNavigate, onBack }: LoanBookProps) {
                 <ArrowLeft className="w-4 h-4" />
               </Button>
             )}
-            <Building2 className="w-6 h-6 text-blue-400" />
+            <Building2 className="w-6 h-6 text-blue-600" />
             <div>
-              <h1 className="text-xl font-bold text-slate-100">Loan Book</h1>
-              <p className="text-xs text-slate-300">Active loan portfolio and performance</p>
+              <h1 className="text-xl font-bold text-gray-900">Loan Book</h1>
+              <p className="text-xs text-gray-600">Active loan portfolio and performance</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -142,25 +142,25 @@ export function LoanBook({ onNavigate, onBack }: LoanBookProps) {
 
         {/* Portfolio Summary */}
         <div className="grid grid-cols-5 gap-3">
-          <div className="bg-blue-500/10 rounded p-3 border border-blue-500/30">
-            <div className="text-xs text-blue-300">Active Loans</div>
-            <div className="text-2xl font-bold text-blue-300">{stats.totalLoans}</div>
+          <div className="bg-blue-50 rounded p-3 border border-blue-200">
+            <div className="text-xs text-blue-700">Active Loans</div>
+            <div className="text-2xl font-bold text-blue-700">{stats.totalLoans}</div>
           </div>
           <div className="bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded p-3">
             <div className="text-xs opacity-90">Total Balance</div>
             <div className="text-lg font-bold">{formatCurrency(stats.totalBalance)}</div>
           </div>
-          <div className="bg-green-500/10 rounded p-3 border border-green-500/30">
-            <div className="text-xs text-green-300">Current Loans</div>
-            <div className="text-2xl font-bold text-green-300">{stats.currentLoans}</div>
+          <div className="bg-green-50 rounded p-3 border border-green-200">
+            <div className="text-xs text-green-700">Current Loans</div>
+            <div className="text-2xl font-bold text-green-700">{stats.currentLoans}</div>
           </div>
-          <div className="bg-amber-500/10 rounded p-3 border border-amber-500/30">
-            <div className="text-xs text-amber-300">In Arrears</div>
-            <div className="text-2xl font-bold text-amber-300">{stats.arrearsLoans}</div>
+          <div className="bg-amber-50 rounded p-3 border border-amber-200">
+            <div className="text-xs text-amber-700">In Arrears</div>
+            <div className="text-2xl font-bold text-amber-700">{stats.arrearsLoans}</div>
           </div>
-          <div className="bg-purple-500/10 rounded p-3 border border-purple-500/30">
-            <div className="text-xs text-purple-300">Avg Rate</div>
-            <div className="text-2xl font-bold text-purple-300">{stats.weightedAvgRate.toFixed(2)}%</div>
+          <div className="bg-purple-50 rounded p-3 border border-purple-200">
+            <div className="text-xs text-purple-700">Avg Rate</div>
+            <div className="text-2xl font-bold text-purple-700">{stats.weightedAvgRate.toFixed(2)}%</div>
           </div>
         </div>
       </div>
@@ -173,16 +173,16 @@ export function LoanBook({ onNavigate, onBack }: LoanBookProps) {
             <input
               type="text"
               placeholder="Search by borrower, loan ID..."
-              className="w-full pl-10 pr-4 py-2 border border-white/10 rounded text-sm"
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded text-sm"
             />
           </div>
-          <select className="px-3 py-2 border border-white/10 rounded text-sm">
+          <select className="px-3 py-2 border border-gray-300 rounded text-sm">
             <option value="all">All Status</option>
             <option value="current">Current</option>
             <option value="arrears">Arrears</option>
             <option value="default">Default</option>
           </select>
-          <select className="px-3 py-2 border border-white/10 rounded text-sm">
+          <select className="px-3 py-2 border border-gray-300 rounded text-sm">
             <option value="all">All Products</option>
             <option value="mortgage">Commercial Mortgage</option>
             <option value="private">Private Lending</option>
@@ -196,59 +196,59 @@ export function LoanBook({ onNavigate, onBack }: LoanBookProps) {
         </div>
 
         {/* Loan Book Table */}
-        <div className="border border-white/10 rounded bg-white overflow-hidden">
+        <div className="border border-gray-300 rounded bg-white overflow-hidden">
           <table className="w-full text-sm border-collapse">
             <thead>
-              <tr className="bg-white/5">
-                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Loan ID</th>
-                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Borrower</th>
-                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Product</th>
-                <th className="border border-white/10 px-3 py-2 text-right font-semibold text-slate-300">Original</th>
-                <th className="border border-white/10 px-3 py-2 text-right font-semibold text-slate-300">Current Balance</th>
-                <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300">Rate</th>
-                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Next Payment</th>
-                <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300">Status</th>
-                <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300">Actions</th>
+              <tr className="bg-gray-50">
+                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Loan ID</th>
+                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Borrower</th>
+                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Product</th>
+                <th className="border border-gray-300 px-3 py-2 text-right font-semibold text-gray-700">Original</th>
+                <th className="border border-gray-300 px-3 py-2 text-right font-semibold text-gray-700">Current Balance</th>
+                <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700">Rate</th>
+                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Next Payment</th>
+                <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700">Status</th>
+                <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700">Actions</th>
               </tr>
             </thead>
             <tbody>
               {loans.map((loan) => (
-                <tr key={loan.id} className="hover:bg-blue-500/10">
-                  <td className="border border-white/10 px-3 py-2 text-slate-100 font-mono font-semibold">
+                <tr key={loan.id} className="hover:bg-blue-50">
+                  <td className="border border-gray-300 px-3 py-2 text-gray-900 font-mono font-semibold">
                     {loan.id}
                   </td>
-                  <td className="border border-white/10 px-3 py-2">
-                    <div className="font-semibold text-slate-100">{loan.borrower}</div>
+                  <td className="border border-gray-300 px-3 py-2">
+                    <div className="font-semibold text-gray-900">{loan.borrower}</div>
                   </td>
-                  <td className="border border-white/10 px-3 py-2 text-slate-300">
+                  <td className="border border-gray-300 px-3 py-2 text-gray-700">
                     {loan.product}
                   </td>
-                  <td className="border border-white/10 px-3 py-2 text-right font-mono text-slate-300">
+                  <td className="border border-gray-300 px-3 py-2 text-right font-mono text-gray-600">
                     {formatCurrency(loan.originalAmount)}
                   </td>
-                  <td className="border border-white/10 px-3 py-2 text-right font-mono text-slate-100 font-semibold">
+                  <td className="border border-gray-300 px-3 py-2 text-right font-mono text-gray-900 font-semibold">
                     {formatCurrency(loan.currentBalance)}
                   </td>
-                  <td className="border border-white/10 px-3 py-2 text-center font-semibold text-purple-300">
+                  <td className="border border-gray-300 px-3 py-2 text-center font-semibold text-purple-700">
                     {loan.interestRate}%
                   </td>
-                  <td className="border border-white/10 px-3 py-2">
-                    <div className="text-slate-100">{loan.nextPayment}</div>
-                    <div className="text-xs text-slate-300 font-mono">{formatCurrency(loan.nextPaymentAmount)}</div>
+                  <td className="border border-gray-300 px-3 py-2">
+                    <div className="text-gray-900">{loan.nextPayment}</div>
+                    <div className="text-xs text-gray-600 font-mono">{formatCurrency(loan.nextPaymentAmount)}</div>
                     {loan.daysOverdue > 0 && (
-                      <div className="text-xs text-red-400 font-semibold mt-1">
+                      <div className="text-xs text-red-600 font-semibold mt-1">
                         {loan.daysOverdue} days overdue
                       </div>
                     )}
                   </td>
-                  <td className="border border-white/10 px-3 py-2 text-center">
+                  <td className="border border-gray-300 px-3 py-2 text-center">
                     {getStatusBadge(loan.status)}
                   </td>
-                  <td className="border border-white/10 px-3 py-2 text-center">
+                  <td className="border border-gray-300 px-3 py-2 text-center">
                     <div className="flex items-center gap-1 justify-center">
                       <button 
                         onClick={() => onNavigate?.('lender-loan-ledger')}
-                        className="px-2 py-1 text-xs bg-blue-500/15 text-blue-300 hover:bg-blue-500/20 rounded font-semibold"
+                        className="px-2 py-1 text-xs bg-blue-100 text-blue-700 hover:bg-blue-200 rounded font-semibold"
                       >
                         <Eye className="w-3 h-3 inline mr-1" />
                         View
@@ -256,7 +256,7 @@ export function LoanBook({ onNavigate, onBack }: LoanBookProps) {
                       {loan.status === 'arrears' && (
                         <button 
                           onClick={() => onNavigate?.('lender-arrears')}
-                          className="px-2 py-1 text-xs bg-red-500/15 text-red-300 hover:bg-red-500/20 rounded font-semibold"
+                          className="px-2 py-1 text-xs bg-red-100 text-red-700 hover:bg-red-200 rounded font-semibold"
                         >
                           <AlertTriangle className="w-3 h-3 inline mr-1" />
                           Arrears
@@ -271,28 +271,28 @@ export function LoanBook({ onNavigate, onBack }: LoanBookProps) {
         </div>
 
         {/* Portfolio Quality Indicators */}
-        <div className="bg-white border border-white/10 rounded p-4">
-          <h3 className="font-semibold text-slate-100 mb-3">Portfolio Quality Indicators</h3>
+        <div className="bg-white border border-gray-300 rounded p-4">
+          <h3 className="font-semibold text-gray-900 mb-3">Portfolio Quality Indicators</h3>
           <div className="grid grid-cols-4 gap-4 text-sm">
-            <div className="bg-green-500/10 border border-green-500/30 rounded p-3">
-              <div className="text-xs text-green-300 mb-1">Current Rate</div>
-              <div className="text-2xl font-bold text-green-300">
+            <div className="bg-green-50 border border-green-200 rounded p-3">
+              <div className="text-xs text-green-700 mb-1">Current Rate</div>
+              <div className="text-2xl font-bold text-green-700">
                 {((stats.currentLoans / stats.totalLoans) * 100).toFixed(1)}%
               </div>
             </div>
-            <div className="bg-amber-500/10 border border-amber-500/30 rounded p-3">
-              <div className="text-xs text-amber-300 mb-1">Arrears Rate</div>
-              <div className="text-2xl font-bold text-amber-300">
+            <div className="bg-amber-50 border border-amber-200 rounded p-3">
+              <div className="text-xs text-amber-700 mb-1">Arrears Rate</div>
+              <div className="text-2xl font-bold text-amber-700">
                 {((stats.arrearsLoans / stats.totalLoans) * 100).toFixed(1)}%
               </div>
             </div>
-            <div className="bg-blue-500/10 border border-blue-500/30 rounded p-3">
-              <div className="text-xs text-blue-300 mb-1">Avg LVR</div>
-              <div className="text-2xl font-bold text-blue-300">65.2%</div>
+            <div className="bg-blue-50 border border-blue-200 rounded p-3">
+              <div className="text-xs text-blue-700 mb-1">Avg LVR</div>
+              <div className="text-2xl font-bold text-blue-700">65.2%</div>
             </div>
-            <div className="bg-purple-500/10 border border-purple-500/30 rounded p-3">
-              <div className="text-xs text-purple-300 mb-1">Avg DSCR</div>
-              <div className="text-2xl font-bold text-purple-300">1.42x</div>
+            <div className="bg-purple-50 border border-purple-200 rounded p-3">
+              <div className="text-xs text-purple-700 mb-1">Avg DSCR</div>
+              <div className="text-2xl font-bold text-purple-700">1.42x</div>
             </div>
           </div>
         </div>

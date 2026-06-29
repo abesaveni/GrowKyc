@@ -150,29 +150,29 @@ export function EnhancedClientPortal() {
       </div>
 
       <div>
-        <h1 className="text-4xl font-bold text-slate-100 mb-4">Welcome to Our Firm</h1>
-        <p className="text-xl text-slate-300">
+        <h1 className="text-4xl font-bold text-gray-900 mb-4">Welcome to Our Firm</h1>
+        <p className="text-xl text-gray-600">
           Let's get you started with our secure onboarding process
         </p>
       </div>
 
-      <div className="bg-white border-2 border-white/10 rounded-lg p-8 text-left">
-        <h3 className="font-bold text-slate-100 mb-4 text-lg">What to Expect</h3>
-        <ul className="space-y-3 text-slate-300">
+      <div className="bg-white border-2 border-gray-200 rounded-lg p-8 text-left">
+        <h3 className="font-bold text-gray-900 mb-4 text-lg">What to Expect</h3>
+        <ul className="space-y-3 text-gray-700">
           <li className="flex items-start gap-3">
-            <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
+            <CheckCircle className="w-5 h-5 text-green-600 mt-0.5" />
             <span>Simple step-by-step process (approx. 10-15 minutes)</span>
           </li>
           <li className="flex items-start gap-3">
-            <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
+            <CheckCircle className="w-5 h-5 text-green-600 mt-0.5" />
             <span>Secure document upload</span>
           </li>
           <li className="flex items-start gap-3">
-            <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
+            <CheckCircle className="w-5 h-5 text-green-600 mt-0.5" />
             <span>Bank-level encryption</span>
           </li>
           <li className="flex items-start gap-3">
-            <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
+            <CheckCircle className="w-5 h-5 text-green-600 mt-0.5" />
             <span>AUSTRAC compliant</span>
           </li>
         </ul>
@@ -186,10 +186,10 @@ export function EnhancedClientPortal() {
         ].map((item, idx) => {
           const Icon = item.icon;
           return (
-            <div key={idx} className="bg-white border-2 border-white/10 rounded-lg p-6 text-center">
-              <Icon className="w-8 h-8 text-blue-400 mx-auto mb-3" />
-              <h4 className="font-bold text-slate-100 mb-1">{item.label}</h4>
-              <p className="text-sm text-slate-300">{item.desc}</p>
+            <div key={idx} className="bg-white border-2 border-gray-200 rounded-lg p-6 text-center">
+              <Icon className="w-8 h-8 text-blue-600 mx-auto mb-3" />
+              <h4 className="font-bold text-gray-900 mb-1">{item.label}</h4>
+              <p className="text-sm text-gray-600">{item.desc}</p>
             </div>
           );
         })}
@@ -210,8 +210,8 @@ export function EnhancedClientPortal() {
   const renderEntitySelection = () => (
     <div className="max-w-4xl mx-auto space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-slate-100 mb-2">Select Your Entity Type</h2>
-        <p className="text-slate-300">Choose the option that best describes your business</p>
+        <h2 className="text-3xl font-bold text-gray-900 mb-2">Select Your Entity Type</h2>
+        <p className="text-gray-600">Choose the option that best describes your business</p>
       </div>
 
       <div className="grid grid-cols-2 gap-6">
@@ -231,13 +231,13 @@ export function EnhancedClientPortal() {
               onClick={() => setEntityType(entity.type)}
               className={`p-8 border-2 rounded-lg text-left transition-all ${
                 isSelected
-                  ? 'border-blue-600 bg-blue-500/10'
-                  : 'border-white/10 bg-white hover:border-white/10'
+                  ? 'border-blue-600 bg-blue-50'
+                  : 'border-gray-200 bg-white hover:border-gray-300'
               }`}
             >
-              <Icon className={`w-12 h-12 mb-4 ${isSelected ? 'text-blue-400' : 'text-gray-400'}`} />
-              <h3 className="text-xl font-bold text-slate-100 mb-1">{entity.label}</h3>
-              <p className="text-sm text-slate-300">{entity.desc}</p>
+              <Icon className={`w-12 h-12 mb-4 ${isSelected ? 'text-blue-600' : 'text-gray-400'}`} />
+              <h3 className="text-xl font-bold text-gray-900 mb-1">{entity.label}</h3>
+              <p className="text-sm text-gray-600">{entity.desc}</p>
             </button>
           );
         })}
@@ -249,11 +249,11 @@ export function EnhancedClientPortal() {
     <div className="max-w-5xl mx-auto">
       <div className="grid grid-cols-3 gap-6">
         {/* Left Panel: Navigation */}
-        <div className="col-span-1 bg-white border-2 border-white/10 rounded-lg p-6 h-fit sticky top-6">
-          <h3 className="font-bold text-slate-100 mb-4">Sections</h3>
+        <div className="col-span-1 bg-white border-2 border-gray-200 rounded-lg p-6 h-fit sticky top-6">
+          <h3 className="font-bold text-gray-900 mb-4">Sections</h3>
           <div className="space-y-2">
             {['Company Details', 'Registered Address', 'Contact Information'].map((section, idx) => (
-              <div key={idx} className="flex items-center gap-2 p-2 rounded-lg bg-blue-500/10 text-blue-300">
+              <div key={idx} className="flex items-center gap-2 p-2 rounded-lg bg-blue-50 text-blue-700">
                 <CheckCircle className="w-4 h-4" />
                 <span className="text-sm font-semibold">{section}</span>
               </div>
@@ -265,8 +265,8 @@ export function EnhancedClientPortal() {
         <div className="col-span-2 space-y-6">
           {entityType === 'company' && (
             <>
-              <div className="bg-white border-2 border-white/10 rounded-lg p-6 space-y-4">
-                <h3 className="font-bold text-slate-100 text-lg mb-4">Company Details</h3>
+              <div className="bg-white border-2 border-gray-200 rounded-lg p-6 space-y-4">
+                <h3 className="font-bold text-gray-900 text-lg mb-4">Company Details</h3>
                 
                 <TextInput
                   label="ACN (Australian Company Number)"
@@ -277,14 +277,14 @@ export function EnhancedClientPortal() {
                 />
 
                 {acn.length === 11 && (
-                  <div className="bg-blue-500/10 border-2 border-blue-500/30 rounded-lg p-4">
-                    <p className="text-sm font-semibold text-blue-300 mb-2">ASIC Data Preview</p>
-                    <div className="space-y-1 text-sm text-blue-300">
+                  <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-4">
+                    <p className="text-sm font-semibold text-blue-900 mb-2">ASIC Data Preview</p>
+                    <div className="space-y-1 text-sm text-blue-800">
                       <p><strong>Company Name:</strong> {companyName || 'Loading...'}</p>
                       <p><strong>Status:</strong> Registered</p>
                       <p><strong>Directors:</strong> John Smith, Jane Doe</p>
                     </div>
-                    <p className="text-xs text-blue-400 mt-2">✓ Confirm these details or edit below</p>
+                    <p className="text-xs text-blue-600 mt-2">✓ Confirm these details or edit below</p>
                   </div>
                 )}
 
@@ -305,8 +305,8 @@ export function EnhancedClientPortal() {
                 />
               </div>
 
-              <div className="bg-white border-2 border-white/10 rounded-lg p-6 space-y-4">
-                <h3 className="font-bold text-slate-100 text-lg mb-4">Registered Address</h3>
+              <div className="bg-white border-2 border-gray-200 rounded-lg p-6 space-y-4">
+                <h3 className="font-bold text-gray-900 text-lg mb-4">Registered Address</h3>
                 <TextInput
                   label="Street Address"
                   value=""
@@ -346,8 +346,8 @@ export function EnhancedClientPortal() {
                 </div>
               </div>
 
-              <div className="bg-white border-2 border-white/10 rounded-lg p-6 space-y-4">
-                <h3 className="font-bold text-slate-100 text-lg mb-4">Contact Information</h3>
+              <div className="bg-white border-2 border-gray-200 rounded-lg p-6 space-y-4">
+                <h3 className="font-bold text-gray-900 text-lg mb-4">Contact Information</h3>
                 <div className="grid grid-cols-2 gap-4">
                   <TextInput
                     label="Contact Name"
@@ -394,27 +394,27 @@ export function EnhancedClientPortal() {
   const renderOwnershipBuilder = () => (
     <div className="max-w-5xl mx-auto space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-slate-100 mb-2">Ownership Structure</h2>
-        <p className="text-slate-300">Build your ownership diagram (beneficial owners with 25%+ highlighted)</p>
+        <h2 className="text-3xl font-bold text-gray-900 mb-2">Ownership Structure</h2>
+        <p className="text-gray-600">Build your ownership diagram (beneficial owners with 25%+ highlighted)</p>
       </div>
 
       {/* Interactive Ownership Diagram would go here */}
-      <div className="bg-white border-2 border-white/10 rounded-lg p-8">
-        <div className="text-center py-12 border-2 border-dashed border-white/10 rounded-lg">
+      <div className="bg-white border-2 border-gray-200 rounded-lg p-8">
+        <div className="text-center py-12 border-2 border-dashed border-gray-300 rounded-lg">
           <Building className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-          <p className="text-slate-300 mb-4">Interactive ownership diagram builder</p>
+          <p className="text-gray-600 mb-4">Interactive ownership diagram builder</p>
           <PrimaryButton onClick={() => toast.info('Ownership builder opened')}>
             Build Ownership Structure
           </PrimaryButton>
         </div>
       </div>
 
-      <div className="bg-amber-500/10 border-2 border-amber-500/30 rounded-lg p-6">
+      <div className="bg-amber-50 border-2 border-amber-200 rounded-lg p-6">
         <div className="flex items-start gap-3">
-          <AlertTriangle className="w-6 h-6 text-amber-400 mt-0.5" />
+          <AlertTriangle className="w-6 h-6 text-amber-600 mt-0.5" />
           <div>
-            <p className="font-bold text-amber-300 mb-1">UBO Requirement</p>
-            <p className="text-sm text-amber-300">
+            <p className="font-bold text-amber-900 mb-1">UBO Requirement</p>
+            <p className="text-sm text-amber-800">
               We must identify all beneficial owners who hold 25% or more ownership. This is a legal requirement.
             </p>
           </div>
@@ -426,16 +426,16 @@ export function EnhancedClientPortal() {
   const renderIdentityUpload = () => (
     <div className="max-w-4xl mx-auto space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-slate-100 mb-2">Identity Verification</h2>
-        <p className="text-slate-300">Upload identification documents for all directors and beneficial owners</p>
+        <h2 className="text-3xl font-bold text-gray-900 mb-2">Identity Verification</h2>
+        <p className="text-gray-600">Upload identification documents for all directors and beneficial owners</p>
       </div>
 
       {/* Directors/Owners Cards */}
       <div className="space-y-4">
         {['John Smith (Director, 50%)', 'Jane Doe (Director, 50%)'].map((person, idx) => (
-          <div key={idx} className="bg-white border-2 border-white/10 rounded-lg p-6">
+          <div key={idx} className="bg-white border-2 border-gray-200 rounded-lg p-6">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-bold text-slate-100">{person}</h3>
+              <h3 className="font-bold text-gray-900">{person}</h3>
               <StatusBadge status="pending" />
             </div>
 
@@ -457,9 +457,9 @@ export function EnhancedClientPortal() {
         ))}
       </div>
 
-      <div className="bg-blue-500/10 border-2 border-blue-500/30 rounded-lg p-6">
-        <p className="text-sm font-semibold text-blue-300 mb-2">OCR Auto-Extract</p>
-        <p className="text-sm text-blue-300">
+      <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-6">
+        <p className="text-sm font-semibold text-blue-900 mb-2">OCR Auto-Extract</p>
+        <p className="text-sm text-blue-800">
           We'll automatically extract data from your documents for verification. You'll be able to review before submitting.
         </p>
       </div>
@@ -469,12 +469,12 @@ export function EnhancedClientPortal() {
   const renderRiskQuestions = () => (
     <div className="max-w-4xl mx-auto space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-slate-100 mb-2">Risk Assessment</h2>
-        <p className="text-slate-300">Help us understand your business activities</p>
+        <h2 className="text-3xl font-bold text-gray-900 mb-2">Risk Assessment</h2>
+        <p className="text-gray-600">Help us understand your business activities</p>
       </div>
 
       {/* Live Risk Score */}
-      <div className="bg-white border-2 border-white/10 rounded-lg p-6">
+      <div className="bg-white border-2 border-gray-200 rounded-lg p-6">
         <RiskMeter score={riskScore} label="Current Risk Score" size="lg" />
       </div>
 
@@ -529,8 +529,8 @@ export function EnhancedClientPortal() {
   const renderDocuments = () => (
     <div className="max-w-4xl mx-auto space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-slate-100 mb-2">Supporting Documents</h2>
-        <p className="text-slate-300">Upload required documents</p>
+        <h2 className="text-3xl font-bold text-gray-900 mb-2">Supporting Documents</h2>
+        <p className="text-gray-600">Upload required documents</p>
       </div>
 
       <div className="space-y-4">
@@ -557,14 +557,14 @@ export function EnhancedClientPortal() {
   const renderEngagementPayment = () => (
     <div className="max-w-4xl mx-auto space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-slate-100 mb-2">Engagement & Payment</h2>
-        <p className="text-slate-300">Review our engagement letter and setup payment</p>
+        <h2 className="text-3xl font-bold text-gray-900 mb-2">Engagement & Payment</h2>
+        <p className="text-gray-600">Review our engagement letter and setup payment</p>
       </div>
 
-      <div className="bg-white border-2 border-white/10 rounded-lg p-6">
-        <h3 className="font-bold text-slate-100 mb-4">Engagement Letter</h3>
-        <div className="bg-white/5 border border-white/10 rounded-lg p-6 max-h-96 overflow-y-auto">
-          <p className="text-sm text-slate-300 whitespace-pre-line">
+      <div className="bg-white border-2 border-gray-200 rounded-lg p-6">
+        <h3 className="font-bold text-gray-900 mb-4">Engagement Letter</h3>
+        <div className="bg-gray-50 border border-gray-300 rounded-lg p-6 max-h-96 overflow-y-auto">
+          <p className="text-sm text-gray-700 whitespace-pre-line">
             {`This engagement letter confirms the terms of our professional services...
 
 1. Services to be provided
@@ -578,26 +578,26 @@ export function EnhancedClientPortal() {
         </div>
       </div>
 
-      <div className="bg-white border-2 border-white/10 rounded-lg p-6">
-        <h3 className="font-bold text-slate-100 mb-4">Fee Structure</h3>
+      <div className="bg-white border-2 border-gray-200 rounded-lg p-6">
+        <h3 className="font-bold text-gray-900 mb-4">Fee Structure</h3>
         <div className="space-y-2">
           <div className="flex items-center justify-between py-2">
-            <span className="text-slate-300">Onboarding Fee</span>
-            <span className="font-bold text-slate-100">$500.00</span>
+            <span className="text-gray-700">Onboarding Fee</span>
+            <span className="font-bold text-gray-900">$500.00</span>
           </div>
           <div className="flex items-center justify-between py-2">
-            <span className="text-slate-300">Monthly Service Fee</span>
-            <span className="font-bold text-slate-100">$150.00</span>
+            <span className="text-gray-700">Monthly Service Fee</span>
+            <span className="font-bold text-gray-900">$150.00</span>
           </div>
-          <div className="border-t-2 border-white/10 pt-2 flex items-center justify-between">
-            <span className="font-bold text-slate-100">Total Due Today</span>
-            <span className="font-bold text-blue-400 text-xl">$500.00</span>
+          <div className="border-t-2 border-gray-200 pt-2 flex items-center justify-between">
+            <span className="font-bold text-gray-900">Total Due Today</span>
+            <span className="font-bold text-blue-600 text-xl">$500.00</span>
           </div>
         </div>
       </div>
 
-      <div className="bg-white border-2 border-white/10 rounded-lg p-6 space-y-4">
-        <h3 className="font-bold text-slate-100 mb-4">Payment Method</h3>
+      <div className="bg-white border-2 border-gray-200 rounded-lg p-6 space-y-4">
+        <h3 className="font-bold text-gray-900 mb-4">Payment Method</h3>
         <TextInput
           label="Cardholder Name"
           value=""
@@ -631,9 +631,9 @@ export function EnhancedClientPortal() {
         </div>
       </div>
 
-      <div className="flex items-start gap-3 p-4 bg-white/5 border border-white/10 rounded-lg">
+      <div className="flex items-start gap-3 p-4 bg-gray-50 border border-gray-300 rounded-lg">
         <input type="checkbox" className="mt-1 w-5 h-5" required />
-        <p className="text-sm text-slate-300">
+        <p className="text-sm text-gray-700">
           I agree to the engagement letter terms and authorize payment of $500.00
         </p>
       </div>
@@ -643,74 +643,74 @@ export function EnhancedClientPortal() {
   const renderReviewSubmit = () => (
     <div className="max-w-4xl mx-auto space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-slate-100 mb-2">Review & Submit</h2>
-        <p className="text-slate-300">Please review all information before submitting</p>
+        <h2 className="text-3xl font-bold text-gray-900 mb-2">Review & Submit</h2>
+        <p className="text-gray-600">Please review all information before submitting</p>
       </div>
 
-      <div className="bg-white border-2 border-white/10 rounded-lg p-6">
-        <h3 className="font-bold text-slate-100 mb-4">Entity Details</h3>
+      <div className="bg-white border-2 border-gray-200 rounded-lg p-6">
+        <h3 className="font-bold text-gray-900 mb-4">Entity Details</h3>
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <p className="text-sm text-slate-300">Entity Type</p>
-            <p className="font-semibold text-slate-100 capitalize">{entityType}</p>
+            <p className="text-sm text-gray-600">Entity Type</p>
+            <p className="font-semibold text-gray-900 capitalize">{entityType}</p>
           </div>
           <div>
-            <p className="text-sm text-slate-300">Company Name</p>
-            <p className="font-semibold text-slate-100">{companyName || 'Not provided'}</p>
+            <p className="text-sm text-gray-600">Company Name</p>
+            <p className="font-semibold text-gray-900">{companyName || 'Not provided'}</p>
           </div>
           <div>
-            <p className="text-sm text-slate-300">ABN</p>
-            <p className="font-semibold text-slate-100">{abn || 'Not provided'}</p>
+            <p className="text-sm text-gray-600">ABN</p>
+            <p className="font-semibold text-gray-900">{abn || 'Not provided'}</p>
           </div>
           <div>
-            <p className="text-sm text-slate-300">ACN</p>
-            <p className="font-semibold text-slate-100">{acn || 'Not provided'}</p>
+            <p className="text-sm text-gray-600">ACN</p>
+            <p className="font-semibold text-gray-900">{acn || 'Not provided'}</p>
           </div>
         </div>
       </div>
 
-      <div className="bg-white border-2 border-white/10 rounded-lg p-6">
-        <h3 className="font-bold text-slate-100 mb-4">Risk Assessment</h3>
+      <div className="bg-white border-2 border-gray-200 rounded-lg p-6">
+        <h3 className="font-bold text-gray-900 mb-4">Risk Assessment</h3>
         <RiskMeter score={riskScore} size="lg" />
       </div>
 
-      <div className="bg-white border-2 border-white/10 rounded-lg p-6">
-        <h3 className="font-bold text-slate-100 mb-4">Declarations</h3>
+      <div className="bg-white border-2 border-gray-200 rounded-lg p-6">
+        <h3 className="font-bold text-gray-900 mb-4">Declarations</h3>
         <div className="space-y-3">
           <label className="flex items-start gap-3 cursor-pointer">
             <input type="checkbox" className="mt-1 w-5 h-5" required />
-            <span className="text-sm text-slate-300">
+            <span className="text-sm text-gray-700">
               I declare that all information provided is true and accurate
             </span>
           </label>
           <label className="flex items-start gap-3 cursor-pointer">
             <input type="checkbox" className="mt-1 w-5 h-5" required />
-            <span className="text-sm text-slate-300">
+            <span className="text-sm text-gray-700">
               I consent to AML/CTF verification checks and ongoing monitoring
             </span>
           </label>
           <label className="flex items-start gap-3 cursor-pointer">
             <input type="checkbox" className="mt-1 w-5 h-5" required />
-            <span className="text-sm text-slate-300">
+            <span className="text-sm text-gray-700">
               I understand that providing false information may result in criminal penalties
             </span>
           </label>
         </div>
       </div>
 
-      <div className="bg-blue-500/10 border-2 border-blue-500/30 rounded-lg p-6">
-        <h3 className="font-bold text-blue-300 mb-2">What happens next?</h3>
-        <ul className="space-y-2 text-sm text-blue-300">
+      <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-6">
+        <h3 className="font-bold text-blue-900 mb-2">What happens next?</h3>
+        <ul className="space-y-2 text-sm text-blue-800">
           <li className="flex items-start gap-2">
-            <CheckCircle className="w-4 h-4 text-blue-400 mt-0.5" />
+            <CheckCircle className="w-4 h-4 text-blue-600 mt-0.5" />
             <span>Your application will be reviewed within 1-2 business days</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle className="w-4 h-4 text-blue-400 mt-0.5" />
+            <CheckCircle className="w-4 h-4 text-blue-600 mt-0.5" />
             <span>We'll contact you if additional information is required</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle className="w-4 h-4 text-blue-400 mt-0.5" />
+            <CheckCircle className="w-4 h-4 text-blue-600 mt-0.5" />
             <span>You'll receive an email once your account is activated</span>
           </li>
         </ul>
@@ -719,21 +719,21 @@ export function EnhancedClientPortal() {
   );
 
   return (
-    <div className="min-h-screen bg-white/5">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-white border-b-2 border-white/10 sticky top-0 z-50">
+      <div className="bg-white border-b-2 border-gray-200 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Shield className="w-8 h-8 text-blue-400" />
+              <Shield className="w-8 h-8 text-blue-600" />
               <div>
-                <h1 className="text-xl font-bold text-slate-100">Professional Services</h1>
-                <p className="text-sm text-slate-300">Secure Onboarding Portal</p>
+                <h1 className="text-xl font-bold text-gray-900">Professional Services</h1>
+                <p className="text-sm text-gray-600">Secure Onboarding Portal</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
-              <Lock className="w-5 h-5 text-green-400" />
-              <span className="text-sm font-semibold text-green-400">SECURE CONNECTION</span>
+              <Lock className="w-5 h-5 text-green-600" />
+              <span className="text-sm font-semibold text-green-600">SECURE CONNECTION</span>
             </div>
           </div>
         </div>
@@ -741,7 +741,7 @@ export function EnhancedClientPortal() {
 
       {/* Progress Bar */}
       {currentStep !== 'welcome' && (
-        <div className="bg-white border-b-2 border-white/10">
+        <div className="bg-white border-b-2 border-gray-200">
           <div className="max-w-7xl mx-auto px-6 py-6">
             <ProgressIndicator
               currentStep={getCurrentStepIndex()}
@@ -767,7 +767,7 @@ export function EnhancedClientPortal() {
 
       {/* Navigation Footer */}
       {currentStep !== 'welcome' && (
-        <div className="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-white/10 shadow-lg">
+        <div className="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-gray-200 shadow-lg">
           <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
             <SecondaryButton onClick={handleBack}>
               Back

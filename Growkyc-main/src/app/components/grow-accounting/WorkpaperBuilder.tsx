@@ -294,8 +294,8 @@ export function WorkpaperBuilder({ onNavigate, jobId = 'JOB-2024-003' }: Workpap
               Back to Jobs
             </Button>
             <div>
-              <h1 className="text-[32px] font-bold text-slate-100">Workpaper Builder</h1>
-              <p className="text-sm text-slate-300 mt-1">Select sections to include in this job's workpaper template</p>
+              <h1 className="text-[32px] font-bold text-gray-900">Workpaper Builder</h1>
+              <p className="text-sm text-gray-600 mt-1">Select sections to include in this job's workpaper template</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -322,7 +322,7 @@ export function WorkpaperBuilder({ onNavigate, jobId = 'JOB-2024-003' }: Workpap
                 className={`px-6 py-3 rounded-lg font-medium transition-all ${
                   selectedEntity === 'individual'
                     ? 'bg-[#2855a6] text-white shadow-md'
-                    : 'bg-white/5 text-slate-300 hover:bg-white/10'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
                 Individual
@@ -332,7 +332,7 @@ export function WorkpaperBuilder({ onNavigate, jobId = 'JOB-2024-003' }: Workpap
                 className={`px-6 py-3 rounded-lg font-medium transition-all ${
                   selectedEntity === 'company'
                     ? 'bg-[#2855a6] text-white shadow-md'
-                    : 'bg-white/5 text-slate-300 hover:bg-white/10'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
                 Company
@@ -342,7 +342,7 @@ export function WorkpaperBuilder({ onNavigate, jobId = 'JOB-2024-003' }: Workpap
                 className={`px-6 py-3 rounded-lg font-medium transition-all ${
                   selectedEntity === 'trust'
                     ? 'bg-[#2855a6] text-white shadow-md'
-                    : 'bg-white/5 text-slate-300 hover:bg-white/10'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
                 Trust
@@ -352,7 +352,7 @@ export function WorkpaperBuilder({ onNavigate, jobId = 'JOB-2024-003' }: Workpap
                 className={`px-6 py-3 rounded-lg font-medium transition-all ${
                   selectedEntity === 'smsf'
                     ? 'bg-[#2855a6] text-white shadow-md'
-                    : 'bg-white/5 text-slate-300 hover:bg-white/10'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
                 SMSF
@@ -386,14 +386,14 @@ export function WorkpaperBuilder({ onNavigate, jobId = 'JOB-2024-003' }: Workpap
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       placeholder="Search sections..."
-                      className="w-full pl-10 pr-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+                      className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
                     />
                   </div>
 
                   {/* Section Groups */}
                   {Object.entries(filteredGroups).map(([group, sections]) => (
                     <div key={group}>
-                      <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                      <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
                         {group}
                       </h3>
                       <div className="space-y-1">
@@ -405,32 +405,32 @@ export function WorkpaperBuilder({ onNavigate, jobId = 'JOB-2024-003' }: Workpap
                               onClick={() => handleToggleSection(section)}
                               className={`p-3 border rounded-lg cursor-pointer transition-all ${
                                 isSelected
-                                  ? 'bg-blue-500/10 border-blue-300'
-                                  : 'bg-white border-white/10 hover:border-[#2855a6] hover:bg-blue-500/10'
+                                  ? 'bg-blue-50 border-blue-300'
+                                  : 'bg-white border-gray-200 hover:border-[#2855a6] hover:bg-blue-50'
                               }`}
                             >
                               <div className="flex items-start gap-3">
                                 <div className={`mt-0.5 w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 ${
                                   isSelected
                                     ? 'bg-[#2855a6] border-[#2855a6]'
-                                    : 'border-white/10'
+                                    : 'border-gray-300'
                                 }`}>
                                   {isSelected && <Check className="w-3 h-3 text-white" />}
                                 </div>
                                 <div className="flex-1 min-w-0">
                                   <div className="flex items-center gap-2">
-                                    <p className="text-sm font-medium text-slate-100">{section.name}</p>
+                                    <p className="text-sm font-medium text-gray-900">{section.name}</p>
                                     {section.isCore && (
-                                      <span className="px-2 py-0.5 bg-green-500/15 text-green-300 text-xs font-semibold rounded">
+                                      <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded">
                                         Core
                                       </span>
                                     )}
                                   </div>
                                   {section.hint && (
-                                    <p className="text-xs text-slate-300 mt-1">{section.hint}</p>
+                                    <p className="text-xs text-gray-600 mt-1">{section.hint}</p>
                                   )}
                                   {section.requiredDocs && section.requiredDocs > 0 && (
-                                    <p className="text-xs text-slate-400 mt-1">
+                                    <p className="text-xs text-gray-500 mt-1">
                                       {section.requiredDocs} required docs
                                     </p>
                                   )}
@@ -453,8 +453,8 @@ export function WorkpaperBuilder({ onNavigate, jobId = 'JOB-2024-003' }: Workpap
               <CardContent className="p-6 flex-1 flex flex-col">
                 <div className="flex items-center justify-between mb-4">
                   <div>
-                    <h3 className="font-semibold text-slate-100">Selected Sections</h3>
-                    <p className="text-sm text-slate-300">{selectedSections.length} sections selected</p>
+                    <h3 className="font-semibold text-gray-900">Selected Sections</h3>
+                    <p className="text-sm text-gray-600">{selectedSections.length} sections selected</p>
                   </div>
                   <Button variant="outline" size="sm">
                     <Zap className="w-4 h-4 mr-2" />
@@ -466,8 +466,8 @@ export function WorkpaperBuilder({ onNavigate, jobId = 'JOB-2024-003' }: Workpap
                   <div className="flex-1 flex items-center justify-center text-center">
                     <div>
                       <FileText className="w-16 h-16 mx-auto text-gray-300 mb-4" />
-                      <p className="text-slate-300 mb-2">No sections selected yet</p>
-                      <p className="text-sm text-slate-400">
+                      <p className="text-gray-600 mb-2">No sections selected yet</p>
+                      <p className="text-sm text-gray-500">
                         Select sections from the left panel or click "Load Core Defaults"
                       </p>
                     </div>
@@ -475,40 +475,40 @@ export function WorkpaperBuilder({ onNavigate, jobId = 'JOB-2024-003' }: Workpap
                 ) : (
                   <div className="flex-1 overflow-auto">
                     <table className="w-full">
-                      <thead className="sticky top-0 bg-white/5 border-b border-white/10">
+                      <thead className="sticky top-0 bg-gray-50 border-b border-gray-200">
                         <tr>
-                          <th className="text-left py-3 px-3 text-xs font-semibold text-slate-300 uppercase tracking-wider w-12">
+                          <th className="text-left py-3 px-3 text-xs font-semibold text-gray-600 uppercase tracking-wider w-12">
                             Order
                           </th>
-                          <th className="text-left py-3 px-3 text-xs font-semibold text-slate-300 uppercase tracking-wider">
+                          <th className="text-left py-3 px-3 text-xs font-semibold text-gray-600 uppercase tracking-wider">
                             Section
                           </th>
-                          <th className="text-left py-3 px-3 text-xs font-semibold text-slate-300 uppercase tracking-wider">
+                          <th className="text-left py-3 px-3 text-xs font-semibold text-gray-600 uppercase tracking-wider">
                             Owner
                           </th>
-                          <th className="text-left py-3 px-3 text-xs font-semibold text-slate-300 uppercase tracking-wider">
+                          <th className="text-left py-3 px-3 text-xs font-semibold text-gray-600 uppercase tracking-wider">
                             Due Date
                           </th>
-                          <th className="text-center py-3 px-3 text-xs font-semibold text-slate-300 uppercase tracking-wider">
+                          <th className="text-center py-3 px-3 text-xs font-semibold text-gray-600 uppercase tracking-wider">
                             In Checklist
                           </th>
                           <th className="w-12"></th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-white/10">
+                      <tbody className="divide-y divide-gray-200">
                         {selectedSections.map((selected, index) => (
-                          <tr key={selected.id} className="hover:bg-white/5">
+                          <tr key={selected.id} className="hover:bg-gray-50">
                             <td className="py-3 px-3">
                               <GripVertical className="w-4 h-4 text-gray-400 cursor-move" />
                             </td>
                             <td className="py-3 px-3">
                               <div>
-                                <p className="text-sm font-medium text-slate-100">{selected.section.name}</p>
-                                <p className="text-xs text-slate-400">{selected.section.group}</p>
+                                <p className="text-sm font-medium text-gray-900">{selected.section.name}</p>
+                                <p className="text-xs text-gray-500">{selected.section.group}</p>
                               </div>
                             </td>
                             <td className="py-3 px-3">
-                              <select className="text-sm border border-white/10 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-[#2855a6]">
+                              <select className="text-sm border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-[#2855a6]">
                                 <option>Unassigned</option>
                                 <option>Sarah Johnson</option>
                                 <option>Mike Brown</option>
@@ -518,7 +518,7 @@ export function WorkpaperBuilder({ onNavigate, jobId = 'JOB-2024-003' }: Workpap
                             <td className="py-3 px-3">
                               <input
                                 type="date"
-                                className="text-sm border border-white/10 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+                                className="text-sm border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
                               />
                             </td>
                             <td className="py-3 px-3 text-center">
@@ -532,9 +532,9 @@ export function WorkpaperBuilder({ onNavigate, jobId = 'JOB-2024-003' }: Workpap
                             <td className="py-3 px-3">
                               <button
                                 onClick={() => handleRemoveSection(selected.id)}
-                                className="p-1 hover:bg-white/5 rounded"
+                                className="p-1 hover:bg-gray-100 rounded"
                               >
-                                <Trash2 className="w-4 h-4 text-red-400" />
+                                <Trash2 className="w-4 h-4 text-red-600" />
                               </button>
                             </td>
                           </tr>
@@ -549,13 +549,13 @@ export function WorkpaperBuilder({ onNavigate, jobId = 'JOB-2024-003' }: Workpap
         </div>
 
         {/* Info Card */}
-        <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)] bg-blue-500/10 border-blue-500/30">
+        <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)] bg-blue-50 border-blue-200">
           <CardContent className="p-4">
             <div className="flex items-start gap-3">
-              <AlertCircle className="w-5 h-5 text-blue-400 mt-0.5" />
+              <AlertCircle className="w-5 h-5 text-blue-600 mt-0.5" />
               <div>
-                <h4 className="font-semibold text-blue-300 mb-1">How Workpaper Builder Works</h4>
-                <ul className="text-sm text-blue-300 space-y-1">
+                <h4 className="font-semibold text-blue-900 mb-1">How Workpaper Builder Works</h4>
+                <ul className="text-sm text-blue-800 space-y-1">
                   <li>• Select entity type and tick applicable sections to create a job-specific template</li>
                   <li>• Only selected sections will appear in the Workpaper Editor sidebar</li>
                   <li>• Checklist generation uses selected sections + requires staff approval</li>

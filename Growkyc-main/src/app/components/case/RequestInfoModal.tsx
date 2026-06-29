@@ -52,11 +52,11 @@ export const RequestInfoModal: React.FC<RequestInfoModalProps> = ({ isOpen, onCl
         className="mb-4"
       />
       {errors.description && (
-        <p className="text-sm text-red-400">{errors.description.message}</p>
+        <p className="text-sm text-red-600">{errors.description.message}</p>
       )}
       <div className="flex items-center space-x-2">
         <Switch id="notify" {...register('notify')} />
-        <label htmlFor="notify" className="text-sm text-slate-300">Notify client via email</label>
+        <label htmlFor="notify" className="text-sm text-gray-700">Notify client via email</label>
       </div>
     </ActionModal>
   );

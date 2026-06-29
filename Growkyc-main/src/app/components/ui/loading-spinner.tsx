@@ -15,7 +15,7 @@ export function LoadingSpinner({ size = 'md', className }: LoadingSpinnerProps) 
   };
 
   return (
-    <Loader2 className={cn('animate-spin text-slate-400', sizeClasses[size], className)} />
+    <Loader2 className={cn('animate-spin text-gray-500', sizeClasses[size], className)} />
   );
 }
 
@@ -28,7 +28,7 @@ export function LoadingOverlay({ message = 'Loading...' }: LoadingOverlayProps) 
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
       <div className="bg-white rounded-lg p-6 flex flex-col items-center gap-4">
         <LoadingSpinner size="lg" />
-        <p className="text-slate-100 font-medium">{message}</p>
+        <p className="text-gray-900 font-medium">{message}</p>
       </div>
     </div>
   );
@@ -43,7 +43,7 @@ export function LoadingState({ message = 'Loading...', children }: LoadingStateP
   return (
     <div className="flex flex-col items-center justify-center py-12 gap-4">
       <LoadingSpinner size="lg" />
-      <p className="text-slate-300">{message}</p>
+      <p className="text-gray-600">{message}</p>
       {children}
     </div>
   );

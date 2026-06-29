@@ -130,29 +130,29 @@ export function ClientFraudPanel({ clientId, clientName }: ClientFraudPanelProps
 
   const getSeverityColor = (severity: string) => {
     switch (severity) {
-      case 'critical': return 'bg-red-500/15 text-red-300 border-red-300 dark:bg-red-900/40 dark:text-red-300';
-      case 'high': return 'bg-orange-500/15 text-orange-300 border-orange-300 dark:bg-orange-900/40 dark:text-orange-300';
-      case 'medium': return 'bg-yellow-500/15 text-yellow-300 border-yellow-300 dark:bg-yellow-900/40 dark:text-yellow-300';
-      case 'low': return 'bg-blue-500/15 text-blue-300 border-blue-300 dark:bg-blue-900/40 dark:text-blue-300';
-      default: return 'bg-[#0f172a] text-slate-300 border-white/10 dark:bg-gray-800 dark:text-gray-300';
+      case 'critical': return 'bg-red-100 text-red-700 border-red-300 dark:bg-red-900/40 dark:text-red-300';
+      case 'high': return 'bg-orange-100 text-orange-700 border-orange-300 dark:bg-orange-900/40 dark:text-orange-300';
+      case 'medium': return 'bg-yellow-100 text-yellow-700 border-yellow-300 dark:bg-yellow-900/40 dark:text-yellow-300';
+      case 'low': return 'bg-blue-100 text-blue-700 border-blue-300 dark:bg-blue-900/40 dark:text-blue-300';
+      default: return 'bg-gray-100 text-gray-700 border-gray-300 dark:bg-gray-800 dark:text-gray-300';
     }
   };
 
   const getRiskColor = (level: string) => {
     switch (level) {
-      case 'critical': return 'text-red-400 dark:text-red-400';
-      case 'high': return 'text-orange-400 dark:text-orange-400';
-      case 'medium': return 'text-yellow-400 dark:text-yellow-400';
-      case 'low': return 'text-green-400 dark:text-green-400';
-      default: return 'text-slate-300 dark:text-slate-400';
+      case 'critical': return 'text-red-600 dark:text-red-400';
+      case 'high': return 'text-orange-600 dark:text-orange-400';
+      case 'medium': return 'text-yellow-600 dark:text-yellow-400';
+      case 'low': return 'text-green-600 dark:text-green-400';
+      default: return 'text-gray-600 dark:text-gray-400';
     }
   };
 
   const getScoreColor = (score: number) => {
-    if (score >= 75) return 'text-red-400';
-    if (score >= 50) return 'text-orange-400';
-    if (score >= 25) return 'text-yellow-400';
-    return 'text-green-400';
+    if (score >= 75) return 'text-red-600';
+    if (score >= 50) return 'text-orange-600';
+    if (score >= 25) return 'text-yellow-600';
+    return 'text-green-600';
   };
 
   return (
@@ -200,8 +200,8 @@ export function ClientFraudPanel({ clientId, clientName }: ClientFraudPanelProps
       </div>
 
       {/* Tab Navigation */}
-      <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
-        <div className="flex border-b border-white/10 dark:border-gray-700">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+        <div className="flex border-b border-gray-200 dark:border-gray-700">
           {[
             { id: 'overview', label: 'Overview', icon: Eye },
             { id: 'indicators', label: 'Fraud Indicators', icon: AlertTriangle },
@@ -215,7 +215,7 @@ export function ClientFraudPanel({ clientId, clientName }: ClientFraudPanelProps
               className={`flex items-center gap-2 px-6 py-4 font-semibold transition-colors ${
                 activeView === tab.id
                   ? 'bg-red-600 text-white border-b-2 border-red-700'
-                  : 'text-slate-300 dark:text-slate-400 hover:bg-white/5 dark:hover:bg-gray-700'
+                  : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'
               }`}
             >
               <tab.icon className="w-5 h-5" />
@@ -231,32 +231,32 @@ export function ClientFraudPanel({ clientId, clientName }: ClientFraudPanelProps
               {/* AI Predictions */}
               <div className="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-800 dark:to-gray-700 rounded-lg shadow-lg p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <Brain className="w-6 h-6 text-purple-400" />
-                  <h4 className="text-lg font-bold text-white dark:text-white">AI Model Predictions</h4>
+                  <Brain className="w-6 h-6 text-purple-600" />
+                  <h4 className="text-lg font-bold text-gray-900 dark:text-white">AI Model Predictions</h4>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {aiPredictions.map((prediction, i) => (
-                    <div key={i} className="bg-[#1e293b] dark:bg-gray-800 rounded-lg p-4 border border-purple-500/30 dark:border-purple-700">
-                      <div className="text-sm font-semibold text-slate-300 dark:text-gray-300 mb-2">{prediction.model}</div>
+                    <div key={i} className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-purple-200 dark:border-purple-700">
+                      <div className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">{prediction.model}</div>
                       <div className={`text-3xl font-bold mb-1 ${getScoreColor(prediction.fraudProbability)}`}>
                         {prediction.fraudProbability}%
                       </div>
-                      <div className="text-xs text-slate-400 mb-3">Fraud Probability</div>
+                      <div className="text-xs text-gray-500 mb-3">Fraud Probability</div>
                       <div className="flex items-center justify-between text-xs mb-3">
-                        <span className="text-slate-300 dark:text-slate-400">Confidence</span>
-                        <span className="font-bold text-white dark:text-white">{prediction.confidence}%</span>
+                        <span className="text-gray-600 dark:text-gray-400">Confidence</span>
+                        <span className="font-bold text-gray-900 dark:text-white">{prediction.confidence}%</span>
                       </div>
                       <div className={`px-3 py-1 rounded-full text-xs font-bold text-center ${
                         prediction.verdict === 'Low Risk'
-                          ? 'bg-green-500/15 text-green-300 dark:bg-green-900 dark:text-green-300'
-                          : 'bg-red-500/15 text-red-300 dark:bg-red-900 dark:text-red-300'
+                          ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
+                          : 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300'
                       }`}>
                         {prediction.verdict}
                       </div>
                       <div className="mt-3 space-y-1">
                         {prediction.factors.map((factor, j) => (
-                          <div key={j} className="text-xs text-slate-300 dark:text-slate-400 flex items-start gap-2">
-                            <CheckCircle className="w-3 h-3 text-green-400 mt-0.5 flex-shrink-0" />
+                          <div key={j} className="text-xs text-gray-600 dark:text-gray-400 flex items-start gap-2">
+                            <CheckCircle className="w-3 h-3 text-green-600 mt-0.5 flex-shrink-0" />
                             {factor}
                           </div>
                         ))}
@@ -268,13 +268,13 @@ export function ClientFraudPanel({ clientId, clientName }: ClientFraudPanelProps
 
               {/* Summary Cards */}
               <div className="grid grid-cols-3 gap-6">
-                <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-blue-500">
+                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-blue-500">
                   <div className="flex items-center justify-between mb-4">
-                    <Smartphone className="w-8 h-8 text-blue-400" />
-                    <div className="text-3xl font-bold text-blue-400">{deviceProfile.trustScore}%</div>
+                    <Smartphone className="w-8 h-8 text-blue-600" />
+                    <div className="text-3xl font-bold text-blue-600">{deviceProfile.trustScore}%</div>
                   </div>
-                  <h4 className="font-bold text-white dark:text-white mb-2">Device Trust Score</h4>
-                  <div className="space-y-2 text-sm text-slate-300 dark:text-slate-400">
+                  <h4 className="font-bold text-gray-900 dark:text-white mb-2">Device Trust Score</h4>
+                  <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
                     <div className="flex justify-between">
                       <span>Total Sessions:</span>
                       <span className="font-semibold">{deviceProfile.totalSessions}</span>
@@ -286,13 +286,13 @@ export function ClientFraudPanel({ clientId, clientName }: ClientFraudPanelProps
                   </div>
                 </div>
 
-                <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-green-500">
+                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-green-500">
                   <div className="flex items-center justify-between mb-4">
-                    <Activity className="w-8 h-8 text-green-400" />
-                    <div className="text-3xl font-bold text-green-400">{behaviorMetrics.anomalyScore}</div>
+                    <Activity className="w-8 h-8 text-green-600" />
+                    <div className="text-3xl font-bold text-green-600">{behaviorMetrics.anomalyScore}</div>
                   </div>
-                  <h4 className="font-bold text-white dark:text-white mb-2">Behavior Anomaly</h4>
-                  <div className="space-y-2 text-sm text-slate-300 dark:text-slate-400">
+                  <h4 className="font-bold text-gray-900 dark:text-white mb-2">Behavior Anomaly</h4>
+                  <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
                     <div className="flex justify-between">
                       <span>Consistency:</span>
                       <span className="font-semibold">{behaviorMetrics.locationConsistency}%</span>
@@ -304,13 +304,13 @@ export function ClientFraudPanel({ clientId, clientName }: ClientFraudPanelProps
                   </div>
                 </div>
 
-                <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-purple-500">
+                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 border-l-4 border-purple-500">
                   <div className="flex items-center justify-between mb-4">
-                    <Users className="w-8 h-8 text-purple-400" />
-                    <div className="text-3xl font-bold text-purple-400">{networkAnalysis.networkRiskScore}</div>
+                    <Users className="w-8 h-8 text-purple-600" />
+                    <div className="text-3xl font-bold text-purple-600">{networkAnalysis.networkRiskScore}</div>
                   </div>
-                  <h4 className="font-bold text-white dark:text-white mb-2">Network Risk Score</h4>
-                  <div className="space-y-2 text-sm text-slate-300 dark:text-slate-400">
+                  <h4 className="font-bold text-gray-900 dark:text-white mb-2">Network Risk Score</h4>
+                  <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
                     <div className="flex justify-between">
                       <span>Fraud Rings:</span>
                       <span className="font-semibold">{networkAnalysis.knownFraudRings}</span>
@@ -329,10 +329,10 @@ export function ClientFraudPanel({ clientId, clientName }: ClientFraudPanelProps
           {activeView === 'indicators' && (
             <div className="space-y-4">
               {indicators.length === 0 ? (
-                <div className="bg-green-500/10 dark:bg-green-900/20 border border-green-500/30 dark:border-green-800 rounded-lg p-8 text-center">
-                  <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-4" />
-                  <h4 className="text-xl font-bold text-white dark:text-white mb-2">No Active Fraud Indicators</h4>
-                  <p className="text-slate-300 dark:text-slate-400">This client has a clean fraud profile with no current alerts.</p>
+                <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-8 text-center">
+                  <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
+                  <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">No Active Fraud Indicators</h4>
+                  <p className="text-gray-600 dark:text-gray-400">This client has a clean fraud profile with no current alerts.</p>
                 </div>
               ) : (
                 indicators.map(indicator => (
@@ -343,22 +343,22 @@ export function ClientFraudPanel({ clientId, clientName }: ClientFraudPanelProps
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
-                          <h4 className="text-lg font-bold text-white dark:text-white">{indicator.title}</h4>
+                          <h4 className="text-lg font-bold text-gray-900 dark:text-white">{indicator.title}</h4>
                           <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase ${getSeverityColor(indicator.severity)}`}>
                             {indicator.severity}
                           </span>
                           <span className={`px-3 py-1 rounded-full text-xs font-bold ${
                             indicator.status === 'resolved'
-                              ? 'bg-green-500/15 text-green-300 dark:bg-green-900 dark:text-green-300'
+                              ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
                               : indicator.status === 'investigating'
-                              ? 'bg-blue-500/15 text-blue-300 dark:bg-blue-900 dark:text-blue-300'
-                              : 'bg-red-500/15 text-red-300 dark:bg-red-900 dark:text-red-300'
+                              ? 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300'
+                              : 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300'
                           }`}>
                             {indicator.status.toUpperCase()}
                           </span>
                         </div>
-                        <p className="text-slate-300 dark:text-gray-300 mb-3">{indicator.description}</p>
-                        <div className="flex items-center gap-6 text-sm text-slate-300 dark:text-slate-400">
+                        <p className="text-gray-700 dark:text-gray-300 mb-3">{indicator.description}</p>
+                        <div className="flex items-center gap-6 text-sm text-gray-600 dark:text-gray-400">
                           <div className="flex items-center gap-2">
                             <Clock className="w-4 h-4" />
                             {indicator.detectedAt.toLocaleString()}
@@ -387,60 +387,60 @@ export function ClientFraudPanel({ clientId, clientName }: ClientFraudPanelProps
           {/* Device Analysis Tab */}
           {activeView === 'device' && (
             <div className="space-y-6">
-              <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 p-6">
-                <h4 className="font-bold text-white dark:text-white mb-4 flex items-center gap-2">
+              <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+                <h4 className="font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
                   <Smartphone className="w-5 h-5 text-[#13B5EA]" />
                   Device Profile
                 </h4>
                 <div className="grid grid-cols-2 gap-6">
                   <div>
-                    <div className="text-sm text-slate-400 mb-1">Device ID</div>
-                    <div className="text-base font-semibold text-white dark:text-white">{deviceProfile.deviceId}</div>
+                    <div className="text-sm text-gray-500 mb-1">Device ID</div>
+                    <div className="text-base font-semibold text-gray-900 dark:text-white">{deviceProfile.deviceId}</div>
                   </div>
                   <div>
-                    <div className="text-sm text-slate-400 mb-1">Device Type</div>
-                    <div className="text-base font-semibold text-white dark:text-white">{deviceProfile.deviceType}</div>
+                    <div className="text-sm text-gray-500 mb-1">Device Type</div>
+                    <div className="text-base font-semibold text-gray-900 dark:text-white">{deviceProfile.deviceType}</div>
                   </div>
                   <div>
-                    <div className="text-sm text-slate-400 mb-1">Operating System</div>
-                    <div className="text-base font-semibold text-white dark:text-white">{deviceProfile.os}</div>
+                    <div className="text-sm text-gray-500 mb-1">Operating System</div>
+                    <div className="text-base font-semibold text-gray-900 dark:text-white">{deviceProfile.os}</div>
                   </div>
                   <div>
-                    <div className="text-sm text-slate-400 mb-1">Browser</div>
-                    <div className="text-base font-semibold text-white dark:text-white">{deviceProfile.browser}</div>
+                    <div className="text-sm text-gray-500 mb-1">Browser</div>
+                    <div className="text-base font-semibold text-gray-900 dark:text-white">{deviceProfile.browser}</div>
                   </div>
                   <div>
-                    <div className="text-sm text-slate-400 mb-1">IP Address</div>
-                    <div className="text-base font-semibold text-white dark:text-white flex items-center gap-2">
+                    <div className="text-sm text-gray-500 mb-1">IP Address</div>
+                    <div className="text-base font-semibold text-gray-900 dark:text-white flex items-center gap-2">
                       {deviceProfile.ipAddress}
                       {deviceProfile.vpnDetected && (
-                        <span className="px-2 py-0.5 bg-yellow-500/15 text-yellow-300 dark:bg-yellow-900 dark:text-yellow-300 text-xs rounded-full">VPN</span>
+                        <span className="px-2 py-0.5 bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300 text-xs rounded-full">VPN</span>
                       )}
                     </div>
                   </div>
                   <div>
-                    <div className="text-sm text-slate-400 mb-1">Location</div>
-                    <div className="text-base font-semibold text-white dark:text-white flex items-center gap-2">
+                    <div className="text-sm text-gray-500 mb-1">Location</div>
+                    <div className="text-base font-semibold text-gray-900 dark:text-white flex items-center gap-2">
                       <MapPin className="w-4 h-4" />
                       {deviceProfile.location}
                     </div>
                   </div>
                   <div>
-                    <div className="text-sm text-slate-400 mb-1">First Seen</div>
-                    <div className="text-base font-semibold text-white dark:text-white">{deviceProfile.firstSeen.toLocaleDateString()}</div>
+                    <div className="text-sm text-gray-500 mb-1">First Seen</div>
+                    <div className="text-base font-semibold text-gray-900 dark:text-white">{deviceProfile.firstSeen.toLocaleDateString()}</div>
                   </div>
                   <div>
-                    <div className="text-sm text-slate-400 mb-1">Last Seen</div>
-                    <div className="text-base font-semibold text-white dark:text-white">{deviceProfile.lastSeen.toLocaleDateString()}</div>
+                    <div className="text-sm text-gray-500 mb-1">Last Seen</div>
+                    <div className="text-base font-semibold text-gray-900 dark:text-white">{deviceProfile.lastSeen.toLocaleDateString()}</div>
                   </div>
                 </div>
 
                 <div className="mt-6">
                   <div className="flex items-center justify-between text-sm mb-2">
-                    <span className="text-slate-300 dark:text-slate-400">Device Trust Score</span>
-                    <span className="font-bold text-white dark:text-white">{deviceProfile.trustScore}%</span>
+                    <span className="text-gray-600 dark:text-gray-400">Device Trust Score</span>
+                    <span className="font-bold text-gray-900 dark:text-white">{deviceProfile.trustScore}%</span>
                   </div>
-                  <div className="w-full bg-white/10 dark:bg-gray-600 rounded-full h-3">
+                  <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-3">
                     <div
                       className="bg-gradient-to-r from-green-600 to-blue-600 h-3 rounded-full"
                       style={{ width: `${deviceProfile.trustScore}%` }}
@@ -455,33 +455,33 @@ export function ClientFraudPanel({ clientId, clientName }: ClientFraudPanelProps
           {activeView === 'behavior' && (
             <div className="space-y-6">
               <div className="grid grid-cols-2 gap-6">
-                <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 p-6">
-                  <h4 className="font-bold text-white dark:text-white mb-4">Session Patterns</h4>
+                <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+                  <h4 className="font-bold text-gray-900 dark:text-white mb-4">Session Patterns</h4>
                   <div className="space-y-4">
                     <div>
-                      <div className="text-sm text-slate-400 mb-1">Average Session Duration</div>
-                      <div className="text-2xl font-bold text-white dark:text-white">{behaviorMetrics.avgSessionDuration}</div>
+                      <div className="text-sm text-gray-500 mb-1">Average Session Duration</div>
+                      <div className="text-2xl font-bold text-gray-900 dark:text-white">{behaviorMetrics.avgSessionDuration}</div>
                     </div>
                     <div>
-                      <div className="text-sm text-slate-400 mb-1">Login Frequency</div>
-                      <div className="text-2xl font-bold text-white dark:text-white">{behaviorMetrics.loginFrequency}</div>
+                      <div className="text-sm text-gray-500 mb-1">Login Frequency</div>
+                      <div className="text-2xl font-bold text-gray-900 dark:text-white">{behaviorMetrics.loginFrequency}</div>
                     </div>
                     <div>
-                      <div className="text-sm text-slate-400 mb-1">Typical Login Hours</div>
-                      <div className="text-lg font-semibold text-white dark:text-white">{behaviorMetrics.typicalLoginHours}</div>
+                      <div className="text-sm text-gray-500 mb-1">Typical Login Hours</div>
+                      <div className="text-lg font-semibold text-gray-900 dark:text-white">{behaviorMetrics.typicalLoginHours}</div>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg border border-white/10 dark:border-gray-700 p-6">
-                  <h4 className="font-bold text-white dark:text-white mb-4">Consistency Metrics</h4>
+                <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+                  <h4 className="font-bold text-gray-900 dark:text-white mb-4">Consistency Metrics</h4>
                   <div className="space-y-4">
                     <div>
                       <div className="flex items-center justify-between text-sm mb-2">
-                        <span className="text-slate-300 dark:text-slate-400">Location Consistency</span>
-                        <span className="font-bold text-white dark:text-white">{behaviorMetrics.locationConsistency}%</span>
+                        <span className="text-gray-600 dark:text-gray-400">Location Consistency</span>
+                        <span className="font-bold text-gray-900 dark:text-white">{behaviorMetrics.locationConsistency}%</span>
                       </div>
-                      <div className="w-full bg-white/10 dark:bg-gray-600 rounded-full h-2">
+                      <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2">
                         <div
                           className="bg-green-600 h-2 rounded-full"
                           style={{ width: `${behaviorMetrics.locationConsistency}%` }}
@@ -490,10 +490,10 @@ export function ClientFraudPanel({ clientId, clientName }: ClientFraudPanelProps
                     </div>
                     <div>
                       <div className="flex items-center justify-between text-sm mb-2">
-                        <span className="text-slate-300 dark:text-slate-400">Device Consistency</span>
-                        <span className="font-bold text-white dark:text-white">{behaviorMetrics.deviceConsistency}%</span>
+                        <span className="text-gray-600 dark:text-gray-400">Device Consistency</span>
+                        <span className="font-bold text-gray-900 dark:text-white">{behaviorMetrics.deviceConsistency}%</span>
                       </div>
-                      <div className="w-full bg-white/10 dark:bg-gray-600 rounded-full h-2">
+                      <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2">
                         <div
                           className="bg-green-600 h-2 rounded-full"
                           style={{ width: `${behaviorMetrics.deviceConsistency}%` }}
@@ -502,10 +502,10 @@ export function ClientFraudPanel({ clientId, clientName }: ClientFraudPanelProps
                     </div>
                     <div>
                       <div className="flex items-center justify-between text-sm mb-2">
-                        <span className="text-slate-300 dark:text-slate-400">Anomaly Score</span>
-                        <span className="font-bold text-white dark:text-white">{behaviorMetrics.anomalyScore}/100</span>
+                        <span className="text-gray-600 dark:text-gray-400">Anomaly Score</span>
+                        <span className="font-bold text-gray-900 dark:text-white">{behaviorMetrics.anomalyScore}/100</span>
                       </div>
-                      <div className="w-full bg-white/10 dark:bg-gray-600 rounded-full h-2">
+                      <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2">
                         <div
                           className="bg-yellow-600 h-2 rounded-full"
                           style={{ width: `${behaviorMetrics.anomalyScore}%` }}
@@ -521,24 +521,24 @@ export function ClientFraudPanel({ clientId, clientName }: ClientFraudPanelProps
           {/* Network Graph Tab */}
           {activeView === 'network' && (
             <div className="space-y-6">
-              <div className="bg-green-500/10 dark:bg-green-900/20 border border-green-500/30 dark:border-green-800 rounded-lg p-8 text-center">
-                <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-4" />
-                <h4 className="text-xl font-bold text-white dark:text-white mb-2">Clean Network Profile</h4>
-                <p className="text-slate-300 dark:text-slate-400 mb-4">
+              <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-8 text-center">
+                <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
+                <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Clean Network Profile</h4>
+                <p className="text-gray-600 dark:text-gray-400 mb-4">
                   No suspicious connections or fraud ring associations detected.
                 </p>
                 <div className="grid grid-cols-3 gap-4 mt-6 max-w-2xl mx-auto">
-                  <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg p-4">
-                    <div className="text-3xl font-bold text-white dark:text-white mb-1">{networkAnalysis.relatedAccounts}</div>
-                    <div className="text-sm text-slate-300 dark:text-slate-400">Related Accounts</div>
+                  <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
+                    <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">{networkAnalysis.relatedAccounts}</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">Related Accounts</div>
                   </div>
-                  <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg p-4">
-                    <div className="text-3xl font-bold text-white dark:text-white mb-1">{networkAnalysis.sharedDevices}</div>
-                    <div className="text-sm text-slate-300 dark:text-slate-400">Shared Devices</div>
+                  <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
+                    <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">{networkAnalysis.sharedDevices}</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">Shared Devices</div>
                   </div>
-                  <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg p-4">
-                    <div className="text-3xl font-bold text-white dark:text-white mb-1">{networkAnalysis.knownFraudRings}</div>
-                    <div className="text-sm text-slate-300 dark:text-slate-400">Fraud Rings</div>
+                  <div className="bg-white dark:bg-gray-800 rounded-lg p-4">
+                    <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">{networkAnalysis.knownFraudRings}</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">Fraud Rings</div>
                   </div>
                 </div>
               </div>

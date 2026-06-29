@@ -137,20 +137,20 @@ export function PEXAWorkspaceViewer({ caseData, workspaceId }: PEXAWorkspaceView
       <div className="space-y-6">
         {/* Building Placeholder Alerts */}
         <div className="grid grid-cols-2 gap-4">
-          <Alert className="border-blue-500/30 bg-blue-500/10">
-            <AlertCircle className="w-4 h-4 text-blue-400" />
+          <Alert className="border-blue-200 bg-blue-50">
+            <AlertCircle className="w-4 h-4 text-blue-600" />
             <AlertDescription>
-              <strong className="text-blue-300">🚧 Building: Real-time PEXA Integration</strong>
-              <p className="text-sm text-blue-300 mt-1">
+              <strong className="text-blue-900">🚧 Building: Real-time PEXA Integration</strong>
+              <p className="text-sm text-blue-800 mt-1">
                 Live connection to PEXA for automatic workspace creation, document sync, and settlement tracking. OAuth authentication is in development.
               </p>
             </AlertDescription>
           </Alert>
-          <Alert className="border-purple-500/30 bg-purple-500/10">
-            <AlertCircle className="w-4 h-4 text-purple-400" />
+          <Alert className="border-purple-200 bg-purple-50">
+            <AlertCircle className="w-4 h-4 text-purple-600" />
             <AlertDescription>
-              <strong className="text-purple-300">🚧 Building: Automated Document Lodgement</strong>
-              <p className="text-sm text-purple-300 mt-1">
+              <strong className="text-purple-900">🚧 Building: Automated Document Lodgement</strong>
+              <p className="text-sm text-purple-800 mt-1">
                 Smart document detection, verification, and lodgement with Land Registry Services. OCR and validation engines coming soon.
               </p>
             </AlertDescription>
@@ -160,18 +160,18 @@ export function PEXAWorkspaceViewer({ caseData, workspaceId }: PEXAWorkspaceView
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Building2 className="w-5 h-5 text-blue-400" />
+              <Building2 className="w-5 h-5 text-blue-600" />
               PEXA Integration
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-center py-8 space-y-4">
-              <div className="w-16 h-16 bg-blue-500/15 rounded-full flex items-center justify-center mx-auto">
-                <Building2 className="w-8 h-8 text-blue-400" />
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto">
+                <Building2 className="w-8 h-8 text-blue-600" />
               </div>
               <div>
                 <h3 className="text-lg font-semibold mb-2">Connect to PEXA</h3>
-                <p className="text-sm text-slate-300 mb-4">
+                <p className="text-sm text-gray-600 mb-4">
                   Create a PEXA workspace to manage digital property settlement
                 </p>
               </div>
@@ -196,55 +196,55 @@ export function PEXAWorkspaceViewer({ caseData, workspaceId }: PEXAWorkspaceView
           <CardContent>
             <div className="space-y-4">
               <div className="flex items-start gap-3 p-3 border rounded-lg">
-                <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold text-slate-100">Automatic Workspace Creation</h4>
-                  <p className="text-sm text-slate-300">
+                  <h4 className="font-semibold text-gray-900">Automatic Workspace Creation</h4>
+                  <p className="text-sm text-gray-600">
                     One-click workspace creation from case data with auto-populated property details, parties, and financial information.
                   </p>
                 </div>
               </div>
               <div className="flex items-start gap-3 p-3 border rounded-lg">
-                <Clock className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                <Clock className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold text-slate-100">Real-time Settlement Tracking</h4>
-                  <p className="text-sm text-slate-300">
+                  <h4 className="font-semibold text-gray-900">Real-time Settlement Tracking</h4>
+                  <p className="text-sm text-gray-600">
                     Live updates via webhooks showing document status, party actions, lodgement progress, and settlement milestones.
                   </p>
                 </div>
               </div>
               <div className="flex items-start gap-3 p-3 border rounded-lg">
-                <FileText className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                <FileText className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold text-slate-100">Smart Document Management</h4>
-                  <p className="text-sm text-slate-300">
+                  <h4 className="font-semibold text-gray-900">Smart Document Management</h4>
+                  <p className="text-sm text-gray-600">
                     AI-powered document classification, OCR extraction, automated verification against PEXA requirements, and electronic lodgement.
                   </p>
                 </div>
               </div>
               <div className="flex items-start gap-3 p-3 border rounded-lg">
-                <DollarSign className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                <DollarSign className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold text-slate-100">Automated Financial Settlements</h4>
-                  <p className="text-sm text-slate-300">
+                  <h4 className="font-semibold text-gray-900">Automated Financial Settlements</h4>
+                  <p className="text-sm text-gray-600">
                     Automatic calculation of adjustments, stamp duty, fees, and settlement amounts with real-time validation.
                   </p>
                 </div>
               </div>
               <div className="flex items-start gap-3 p-3 border rounded-lg">
-                <Users className="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" />
+                <Users className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold text-slate-100">Multi-party Collaboration</h4>
-                  <p className="text-sm text-slate-300">
+                  <h4 className="font-semibold text-gray-900">Multi-party Collaboration</h4>
+                  <p className="text-sm text-gray-600">
                     Automated invitations, role allocation, identity verification, and real-time collaboration for all settlement parties.
                   </p>
                 </div>
               </div>
               <div className="flex items-start gap-3 p-3 border rounded-lg">
-                <Landmark className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+                <Landmark className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold text-slate-100">Land Registry Integration</h4>
-                  <p className="text-sm text-slate-300">
+                  <h4 className="font-semibold text-gray-900">Land Registry Integration</h4>
+                  <p className="text-sm text-gray-600">
                     Direct integration with state Land Registry Services for title searches, document lodgement, and registration tracking.
                   </p>
                 </div>
@@ -266,10 +266,10 @@ export function PEXAWorkspaceViewer({ caseData, workspaceId }: PEXAWorkspaceView
           <div className="flex items-center justify-between">
             <div>
               <CardTitle className="flex items-center gap-2">
-                <Building2 className="w-5 h-5 text-blue-400" />
+                <Building2 className="w-5 h-5 text-blue-600" />
                 PEXA Workspace
               </CardTitle>
-              <p className="text-sm text-slate-300 mt-1">
+              <p className="text-sm text-gray-600 mt-1">
                 Workspace ID: {ws.workspaceId}
               </p>
             </div>
@@ -286,23 +286,23 @@ export function PEXAWorkspaceViewer({ caseData, workspaceId }: PEXAWorkspaceView
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-4 gap-4">
-            <div className="text-center p-4 bg-blue-500/10 rounded-lg">
-              <div className="text-2xl font-bold text-blue-400">{ws.parties.length}</div>
-              <div className="text-sm text-slate-300">Parties</div>
+            <div className="text-center p-4 bg-blue-50 rounded-lg">
+              <div className="text-2xl font-bold text-blue-600">{ws.parties.length}</div>
+              <div className="text-sm text-gray-600">Parties</div>
             </div>
-            <div className="text-center p-4 bg-green-500/10 rounded-lg">
-              <div className="text-2xl font-bold text-green-400">
+            <div className="text-center p-4 bg-green-50 rounded-lg">
+              <div className="text-2xl font-bold text-green-600">
                 ${ws.financialSettlement.totalSettlementAmount.toLocaleString()}
               </div>
-              <div className="text-sm text-slate-300">Settlement Amount</div>
+              <div className="text-sm text-gray-600">Settlement Amount</div>
             </div>
-            <div className="text-center p-4 bg-purple-500/10 rounded-lg">
-              <div className="text-2xl font-bold text-purple-400">{ws.documents.length}</div>
-              <div className="text-sm text-slate-300">Documents</div>
+            <div className="text-center p-4 bg-purple-50 rounded-lg">
+              <div className="text-2xl font-bold text-purple-600">{ws.documents.length}</div>
+              <div className="text-sm text-gray-600">Documents</div>
             </div>
-            <div className="text-center p-4 bg-orange-500/10 rounded-lg">
-              <div className="text-2xl font-bold text-orange-400">{ws.tasks.filter((t: any) => t.status === 'outstanding').length}</div>
-              <div className="text-sm text-slate-300">Outstanding Tasks</div>
+            <div className="text-center p-4 bg-orange-50 rounded-lg">
+              <div className="text-2xl font-bold text-orange-600">{ws.tasks.filter((t: any) => t.status === 'outstanding').length}</div>
+              <div className="text-sm text-gray-600">Outstanding Tasks</div>
             </div>
           </div>
         </CardContent>
@@ -314,11 +314,11 @@ export function PEXAWorkspaceViewer({ caseData, workspaceId }: PEXAWorkspaceView
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-blue-500/15 rounded-lg flex items-center justify-center">
-                  <Calendar className="w-6 h-6 text-blue-400" />
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <Calendar className="w-6 h-6 text-blue-600" />
                 </div>
                 <div>
-                  <div className="text-sm text-slate-300">Settlement Date & Time</div>
+                  <div className="text-sm text-gray-600">Settlement Date & Time</div>
                   <div className="text-lg font-semibold">
                     {format(new Date(ws.settlementDateTime), 'EEEE, MMMM d, yyyy \'at\' h:mm a')}
                   </div>
@@ -363,19 +363,19 @@ export function PEXAWorkspaceViewer({ caseData, workspaceId }: PEXAWorkspaceView
             <CardContent className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <div className="text-sm text-slate-300">Status</div>
+                  <div className="text-sm text-gray-600">Status</div>
                   <div className="font-medium">{formatStatus(ws.status)}</div>
                 </div>
                 <div>
-                  <div className="text-sm text-slate-300">Jurisdiction</div>
+                  <div className="text-sm text-gray-600">Jurisdiction</div>
                   <div className="font-medium">{ws.jurisdiction}</div>
                 </div>
                 <div>
-                  <div className="text-sm text-slate-300">Created Date</div>
+                  <div className="text-sm text-gray-600">Created Date</div>
                   <div className="font-medium">{format(new Date(ws.createdDate), 'dd/MM/yyyy')}</div>
                 </div>
                 <div>
-                  <div className="text-sm text-slate-300">Last Modified</div>
+                  <div className="text-sm text-gray-600">Last Modified</div>
                   <div className="font-medium">{format(new Date(ws.lastModifiedDate), 'dd/MM/yyyy')}</div>
                 </div>
               </div>
@@ -390,16 +390,16 @@ export function PEXAWorkspaceViewer({ caseData, workspaceId }: PEXAWorkspaceView
             <CardContent>
               <div className="space-y-3">
                 {ws.roleAllocations.map((role: any) => (
-                  <div key={role.roleId} className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
+                  <div key={role.roleId} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                     <div className="flex items-center gap-3">
-                      <Briefcase className="w-5 h-5 text-slate-300" />
+                      <Briefcase className="w-5 h-5 text-gray-600" />
                       <div>
                         <div className="font-medium">{formatRoleType(role.roleType)}</div>
-                        <div className="text-sm text-slate-300">{role.organisationName || role.capacity}</div>
+                        <div className="text-sm text-gray-600">{role.organisationName || role.capacity}</div>
                       </div>
                     </div>
                     {role.representativeDetails && (
-                      <div className="text-sm text-slate-300 text-right">
+                      <div className="text-sm text-gray-600 text-right">
                         <div>{role.representativeDetails.name}</div>
                         <div>{role.representativeDetails.email}</div>
                       </div>
@@ -442,16 +442,16 @@ export function PEXAWorkspaceViewer({ caseData, workspaceId }: PEXAWorkspaceView
                     </div>
                     <div className="grid grid-cols-2 gap-3 text-sm">
                       <div>
-                        <div className="text-slate-300">Email</div>
+                        <div className="text-gray-600">Email</div>
                         <div>{party.email || 'Not provided'}</div>
                       </div>
                       <div>
-                        <div className="text-slate-300">Phone</div>
+                        <div className="text-gray-600">Phone</div>
                         <div>{party.phone || 'Not provided'}</div>
                       </div>
                       {party.address && (
                         <div className="col-span-2">
-                          <div className="text-slate-300">Address</div>
+                          <div className="text-gray-600">Address</div>
                           <div>
                             {party.address.streetAddress}, {party.address.suburb} {party.address.state} {party.address.postcode}
                           </div>
@@ -471,22 +471,22 @@ export function PEXAWorkspaceViewer({ caseData, workspaceId }: PEXAWorkspaceView
             <Card key={index}>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Home className="w-5 h-5 text-blue-400" />
+                  <Home className="w-5 h-5 text-blue-600" />
                   Land Title Details
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <div className="text-sm text-slate-300">Title Reference</div>
+                    <div className="text-sm text-gray-600">Title Reference</div>
                     <div className="font-medium">{title.titleReference}</div>
                   </div>
                   <div>
-                    <div className="text-sm text-slate-300">Lot/Plan Number</div>
+                    <div className="text-sm text-gray-600">Lot/Plan Number</div>
                     <div className="font-medium">{title.lotPlanNumber}</div>
                   </div>
                   <div className="col-span-2">
-                    <div className="text-sm text-slate-300">Property Address</div>
+                    <div className="text-sm text-gray-600">Property Address</div>
                     <div className="font-medium flex items-center gap-2">
                       <MapPin className="w-4 h-4 text-gray-400" />
                       {title.address.streetAddress}, {title.address.suburb} {title.address.state} {title.address.postcode}
@@ -503,10 +503,10 @@ export function PEXAWorkspaceViewer({ caseData, workspaceId }: PEXAWorkspaceView
                     </h4>
                     <div className="space-y-2">
                       {title.mortgages.map((mortgage: any, idx: number) => (
-                        <div key={idx} className="p-3 bg-white/5 rounded-lg flex items-center justify-between">
+                        <div key={idx} className="p-3 bg-gray-50 rounded-lg flex items-center justify-between">
                           <div>
                             <div className="font-medium">{mortgage.mortgagee}</div>
-                            <div className="text-sm text-slate-300">
+                            <div className="text-sm text-gray-600">
                               ${mortgage.mortgageAmount.toLocaleString()} • {mortgage.mortgageNumber}
                             </div>
                           </div>
@@ -528,11 +528,11 @@ export function PEXAWorkspaceViewer({ caseData, workspaceId }: PEXAWorkspaceView
                     </h4>
                     <div className="space-y-2">
                       {title.caveats.map((caveat: any, idx: number) => (
-                        <div key={idx} className="p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
+                        <div key={idx} className="p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
                           <div className="flex items-center justify-between">
                             <div>
                               <div className="font-medium">{caveat.caveatNumber}</div>
-                              <div className="text-sm text-slate-300">Lodged by: {caveat.lodgedBy}</div>
+                              <div className="text-sm text-gray-600">Lodged by: {caveat.lodgedBy}</div>
                             </div>
                             <Badge>{caveat.action}</Badge>
                           </div>
@@ -554,9 +554,9 @@ export function PEXAWorkspaceViewer({ caseData, workspaceId }: PEXAWorkspaceView
             </CardHeader>
             <CardContent className="space-y-6">
               {/* Summary */}
-              <div className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
-                <div className="text-sm text-slate-300 mb-1">Total Settlement Amount</div>
-                <div className="text-3xl font-bold text-green-400">
+              <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+                <div className="text-sm text-gray-600 mb-1">Total Settlement Amount</div>
+                <div className="text-3xl font-bold text-green-600">
                   ${ws.financialSettlement.totalSettlementAmount.toLocaleString()}
                 </div>
                 <div className="mt-2 flex items-center gap-2">
@@ -569,18 +569,18 @@ export function PEXAWorkspaceViewer({ caseData, workspaceId }: PEXAWorkspaceView
               {/* Source Items */}
               <div>
                 <h4 className="font-semibold mb-3 flex items-center gap-2">
-                  <ArrowDown className="w-4 h-4 text-green-400" />
+                  <ArrowDown className="w-4 h-4 text-green-600" />
                   Source Funds
                 </h4>
                 <div className="space-y-2">
                   {ws.financialSettlement.sourceItems.map((item: any) => (
-                    <div key={item.itemId} className="p-3 bg-green-500/10 rounded-lg flex items-center justify-between">
+                    <div key={item.itemId} className="p-3 bg-green-50 rounded-lg flex items-center justify-between">
                       <div>
                         <div className="font-medium">{item.description}</div>
-                        <div className="text-sm text-slate-300">{item.party}</div>
+                        <div className="text-sm text-gray-600">{item.party}</div>
                       </div>
                       <div className="text-right">
-                        <div className="font-semibold text-green-400">
+                        <div className="font-semibold text-green-600">
                           ${item.amount.toLocaleString()}
                         </div>
                         <Badge variant="outline" className="text-xs">{item.category}</Badge>
@@ -593,18 +593,18 @@ export function PEXAWorkspaceViewer({ caseData, workspaceId }: PEXAWorkspaceView
               {/* Destination Items */}
               <div>
                 <h4 className="font-semibold mb-3 flex items-center gap-2">
-                  <ArrowRight className="w-4 h-4 text-blue-400" />
+                  <ArrowRight className="w-4 h-4 text-blue-600" />
                   Destination Funds
                 </h4>
                 <div className="space-y-2">
                   {ws.financialSettlement.destinationItems.map((item: any) => (
-                    <div key={item.itemId} className="p-3 bg-blue-500/10 rounded-lg flex items-center justify-between">
+                    <div key={item.itemId} className="p-3 bg-blue-50 rounded-lg flex items-center justify-between">
                       <div>
                         <div className="font-medium">{item.description}</div>
-                        <div className="text-sm text-slate-300">{item.party}</div>
+                        <div className="text-sm text-gray-600">{item.party}</div>
                       </div>
                       <div className="text-right">
-                        <div className="font-semibold text-blue-400">
+                        <div className="font-semibold text-blue-600">
                           ${item.amount.toLocaleString()}
                         </div>
                         <Badge variant="outline" className="text-xs">{item.category}</Badge>
@@ -615,19 +615,19 @@ export function PEXAWorkspaceViewer({ caseData, workspaceId }: PEXAWorkspaceView
               </div>
 
               {/* Fees & Duties */}
-              <div className="p-4 bg-white/5 rounded-lg">
+              <div className="p-4 bg-gray-50 rounded-lg">
                 <h4 className="font-semibold mb-3">Fees & Duties</h4>
                 <div className="space-y-2 text-sm">
                   <div className="flex items-center justify-between">
-                    <span className="text-slate-300">PEXA Fees</span>
+                    <span className="text-gray-600">PEXA Fees</span>
                     <span className="font-medium">${ws.financialSettlement.pexaFees.toLocaleString()}</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-slate-300">Lodgement Fees</span>
+                    <span className="text-gray-600">Lodgement Fees</span>
                     <span className="font-medium">${ws.financialSettlement.lodgementFees.toLocaleString()}</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-slate-300">Stamp Duty</span>
+                    <span className="text-gray-600">Stamp Duty</span>
                     <span className="font-medium">${ws.financialSettlement.stampDuty.toLocaleString()}</span>
                   </div>
                 </div>
@@ -639,16 +639,16 @@ export function PEXAWorkspaceViewer({ caseData, workspaceId }: PEXAWorkspaceView
                   <h4 className="font-semibold mb-3">Adjustments</h4>
                   <div className="space-y-2">
                     {ws.financialSettlement.adjustments.map((adj: any) => (
-                      <div key={adj.adjustmentId} className="p-3 bg-purple-500/10 rounded-lg flex items-center justify-between">
+                      <div key={adj.adjustmentId} className="p-3 bg-purple-50 rounded-lg flex items-center justify-between">
                         <div>
                           <div className="font-medium">{adj.description}</div>
-                          <div className="text-sm text-slate-300">
+                          <div className="text-sm text-gray-600">
                             {adj.type} • Adjusted to {format(new Date(adj.adjustedTo), 'dd/MM/yyyy')}
                           </div>
                         </div>
                         <div className="text-right">
                           <div className="font-semibold">${adj.amount.toLocaleString()}</div>
-                          <div className="text-xs text-slate-300">Paid by {adj.paidBy}</div>
+                          <div className="text-xs text-gray-600">Paid by {adj.paidBy}</div>
                         </div>
                       </div>
                     ))}
@@ -688,10 +688,10 @@ export function PEXAWorkspaceViewer({ caseData, workspaceId }: PEXAWorkspaceView
                   <div key={doc.documentId} className="p-4 border rounded-lg">
                     <div className="flex items-start justify-between">
                       <div className="flex items-start gap-3 flex-1">
-                        <FileText className="w-5 h-5 text-blue-400 mt-1" />
+                        <FileText className="w-5 h-5 text-blue-600 mt-1" />
                         <div className="flex-1">
                           <div className="font-medium">{doc.fileName}</div>
-                          <div className="text-sm text-slate-300 mt-1">
+                          <div className="text-sm text-gray-600 mt-1">
                             {formatDocumentType(doc.documentType)} • Uploaded by {doc.uploadedBy} on {format(new Date(doc.uploadedDate), 'dd/MM/yyyy')}
                           </div>
                           {doc.signatureRequired && (
@@ -741,15 +741,15 @@ export function PEXAWorkspaceViewer({ caseData, workspaceId }: PEXAWorkspaceView
                     <div className="flex items-start justify-between">
                       <div className="flex items-start gap-3 flex-1">
                         {task.status === 'completed' ? (
-                          <CheckCircle2 className="w-5 h-5 text-green-400 mt-1" />
+                          <CheckCircle2 className="w-5 h-5 text-green-600 mt-1" />
                         ) : task.status === 'outstanding' ? (
-                          <AlertCircle className="w-5 h-5 text-orange-400 mt-1" />
+                          <AlertCircle className="w-5 h-5 text-orange-600 mt-1" />
                         ) : (
-                          <Clock className="w-5 h-5 text-blue-400 mt-1" />
+                          <Clock className="w-5 h-5 text-blue-600 mt-1" />
                         )}
                         <div className="flex-1">
                           <div className="font-medium">{task.description}</div>
-                          <div className="text-sm text-slate-300 mt-1">
+                          <div className="text-sm text-gray-600 mt-1">
                             Assigned to: {task.assignedTo}
                             {task.dueDate && ` • Due: ${format(new Date(task.dueDate), 'dd/MM/yyyy')}`}
                           </div>

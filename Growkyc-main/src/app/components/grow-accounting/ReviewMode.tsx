@@ -184,9 +184,9 @@ export function ReviewMode({ onNavigate, jobId = 'JOB-2024-045' }: ReviewModePro
   };
 
   const getVarianceColor = (variance: number) => {
-    if (Math.abs(variance) > 20) return 'text-red-400';
-    if (Math.abs(variance) > 10) return 'text-orange-400';
-    return 'text-green-400';
+    if (Math.abs(variance) > 20) return 'text-red-600';
+    if (Math.abs(variance) > 10) return 'text-orange-600';
+    return 'text-green-600';
   };
 
   const getVarianceIcon = (variance: number) => {
@@ -214,8 +214,8 @@ export function ReviewMode({ onNavigate, jobId = 'JOB-2024-045' }: ReviewModePro
               Back to Queue
             </Button>
             <div>
-              <h1 className="text-[28px] font-semibold text-slate-100">Review Mode: Smith, John & Mary</h1>
-              <p className="text-sm text-slate-300 mt-1">Individual Tax Return • FY2024 • {jobId}</p>
+              <h1 className="text-[28px] font-semibold text-gray-900">Review Mode: Smith, John & Mary</h1>
+              <p className="text-sm text-gray-600 mt-1">Individual Tax Return • FY2024 • {jobId}</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -227,7 +227,7 @@ export function ReviewMode({ onNavigate, jobId = 'JOB-2024-045' }: ReviewModePro
               <CheckCircle className="w-4 h-4 mr-2" />
               Approve & Continue
             </Button>
-            <Button variant="outline" className="text-orange-400 border-orange-300">
+            <Button variant="outline" className="text-orange-600 border-orange-300">
               <Send className="w-4 h-4 mr-2" />
               Request Changes
             </Button>
@@ -240,10 +240,10 @@ export function ReviewMode({ onNavigate, jobId = 'JOB-2024-045' }: ReviewModePro
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-slate-300 uppercase tracking-wider">Approved</p>
-                  <p className="text-2xl font-bold text-green-400 mt-1">{approvedCount}</p>
+                  <p className="text-xs text-gray-600 uppercase tracking-wider">Approved</p>
+                  <p className="text-2xl font-bold text-green-600 mt-1">{approvedCount}</p>
                 </div>
-                <CheckCircle className="w-8 h-8 text-green-400" />
+                <CheckCircle className="w-8 h-8 text-green-600" />
               </div>
             </CardContent>
           </Card>
@@ -252,10 +252,10 @@ export function ReviewMode({ onNavigate, jobId = 'JOB-2024-045' }: ReviewModePro
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-slate-300 uppercase tracking-wider">Rejected</p>
-                  <p className="text-2xl font-bold text-red-400 mt-1">{rejectedCount}</p>
+                  <p className="text-xs text-gray-600 uppercase tracking-wider">Rejected</p>
+                  <p className="text-2xl font-bold text-red-600 mt-1">{rejectedCount}</p>
                 </div>
-                <XCircle className="w-8 h-8 text-red-400" />
+                <XCircle className="w-8 h-8 text-red-600" />
               </div>
             </CardContent>
           </Card>
@@ -264,10 +264,10 @@ export function ReviewMode({ onNavigate, jobId = 'JOB-2024-045' }: ReviewModePro
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-slate-300 uppercase tracking-wider">Pending</p>
-                  <p className="text-2xl font-bold text-orange-400 mt-1">{pendingCount}</p>
+                  <p className="text-xs text-gray-600 uppercase tracking-wider">Pending</p>
+                  <p className="text-2xl font-bold text-orange-600 mt-1">{pendingCount}</p>
                 </div>
-                <AlertCircle className="w-8 h-8 text-orange-400" />
+                <AlertCircle className="w-8 h-8 text-orange-600" />
               </div>
             </CardContent>
           </Card>
@@ -276,8 +276,8 @@ export function ReviewMode({ onNavigate, jobId = 'JOB-2024-045' }: ReviewModePro
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-slate-300 uppercase tracking-wider">Progress</p>
-                  <p className="text-2xl font-bold text-blue-400 mt-1">
+                  <p className="text-xs text-gray-600 uppercase tracking-wider">Progress</p>
+                  <p className="text-2xl font-bold text-blue-600 mt-1">
                     {Math.round(((approvedCount + rejectedCount) / items.length) * 100)}%
                   </p>
                 </div>
@@ -315,7 +315,7 @@ export function ReviewMode({ onNavigate, jobId = 'JOB-2024-045' }: ReviewModePro
               <CardContent className="p-4">
                 <div className="space-y-2">
                   <div className="flex items-center justify-between mb-3">
-                    <h3 className="font-semibold text-slate-100">Sections</h3>
+                    <h3 className="font-semibold text-gray-900">Sections</h3>
                     <label className="flex items-center gap-2 text-xs">
                       <input
                         type="checkbox"
@@ -333,7 +333,7 @@ export function ReviewMode({ onNavigate, jobId = 'JOB-2024-045' }: ReviewModePro
                       className={`w-full text-left px-3 py-2 rounded-md text-sm transition-colors ${
                         selectedSection === section.id
                           ? 'bg-blue-600 text-white'
-                          : 'text-slate-300 hover:bg-white/5'
+                          : 'text-gray-700 hover:bg-gray-100'
                       }`}
                     >
                       <div className="flex items-center justify-between">
@@ -341,15 +341,15 @@ export function ReviewMode({ onNavigate, jobId = 'JOB-2024-045' }: ReviewModePro
                         {section.flagsCount > 0 && (
                           <span className={`text-xs px-2 py-0.5 rounded-full ${
                             selectedSection === section.id
-                              ? 'bg-red-500/20 text-red-300'
-                              : 'bg-red-500/15 text-red-300'
+                              ? 'bg-red-200 text-red-800'
+                              : 'bg-red-100 text-red-700'
                           }`}>
                             {section.flagsCount}
                           </span>
                         )}
                       </div>
                       <p className={`text-xs mt-1 ${
-                        selectedSection === section.id ? 'text-blue-100' : 'text-slate-400'
+                        selectedSection === section.id ? 'text-blue-100' : 'text-gray-500'
                       }`}>
                         {section.changesCount} changes
                       </p>
@@ -363,13 +363,13 @@ export function ReviewMode({ onNavigate, jobId = 'JOB-2024-045' }: ReviewModePro
           {/* Center - Comparison Table */}
           <div className="col-span-9 space-y-4">
             {/* Comparison Instructions */}
-            <Card className="bg-blue-500/10 border-blue-500/30">
+            <Card className="bg-blue-50 border-blue-200">
               <CardContent className="p-4">
                 <div className="flex items-start gap-3">
-                  <Zap className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                  <Zap className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-semibold text-blue-300 mb-1">AI-Assisted Review</h4>
-                    <p className="text-sm text-blue-300">
+                    <h4 className="font-semibold text-blue-900 mb-1">AI-Assisted Review</h4>
+                    <p className="text-sm text-blue-800">
                       Review changes and variances below. AI has analyzed each item and provided explanations. 
                       Approve or reject each change, or add your own comments for the preparer.
                     </p>
@@ -383,8 +383,8 @@ export function ReviewMode({ onNavigate, jobId = 'JOB-2024-045' }: ReviewModePro
               <Card 
                 key={item.id} 
                 className={`${
-                  item.reviewerDecision === 'approved' ? 'border-green-300 bg-green-500/10' :
-                  item.reviewerDecision === 'rejected' ? 'border-red-300 bg-red-500/10' :
+                  item.reviewerDecision === 'approved' ? 'border-green-300 bg-green-50' :
+                  item.reviewerDecision === 'rejected' ? 'border-red-300 bg-red-50' :
                   Math.abs(item.variancePercent) > 20 || !item.hasEvidence ? 'border-orange-300' : ''
                 }`}
               >
@@ -393,17 +393,17 @@ export function ReviewMode({ onNavigate, jobId = 'JOB-2024-045' }: ReviewModePro
                     {/* Header Row */}
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
-                        <h3 className="font-semibold text-slate-100 mb-1">{item.lineItem}</h3>
-                        <div className="flex items-center gap-3 text-xs text-slate-300">
+                        <h3 className="font-semibold text-gray-900 mb-1">{item.lineItem}</h3>
+                        <div className="flex items-center gap-3 text-xs text-gray-600">
                           <span>ID: {item.id}</span>
                           {item.hasEvidence && (
-                            <span className="flex items-center gap-1 text-green-400">
+                            <span className="flex items-center gap-1 text-green-600">
                               <FileText className="w-3 h-3" />
                               Evidence attached
                             </span>
                           )}
                           {!item.hasEvidence && (
-                            <span className="flex items-center gap-1 text-orange-400">
+                            <span className="flex items-center gap-1 text-orange-600">
                               <AlertCircle className="w-3 h-3" />
                               No evidence
                             </span>
@@ -416,7 +416,7 @@ export function ReviewMode({ onNavigate, jobId = 'JOB-2024-045' }: ReviewModePro
                             <Button 
                               size="sm" 
                               variant="outline"
-                              className="text-green-400 border-green-300 hover:bg-green-500/10"
+                              className="text-green-600 border-green-300 hover:bg-green-50"
                               onClick={() => handleDecision(item.id, 'approved')}
                             >
                               <ThumbsUp className="w-4 h-4 mr-1" />
@@ -425,7 +425,7 @@ export function ReviewMode({ onNavigate, jobId = 'JOB-2024-045' }: ReviewModePro
                             <Button 
                               size="sm" 
                               variant="outline"
-                              className="text-red-400 border-red-300 hover:bg-red-500/10"
+                              className="text-red-600 border-red-300 hover:bg-red-50"
                               onClick={() => handleDecision(item.id, 'rejected')}
                             >
                               <ThumbsDown className="w-4 h-4 mr-1" />
@@ -434,13 +434,13 @@ export function ReviewMode({ onNavigate, jobId = 'JOB-2024-045' }: ReviewModePro
                           </>
                         )}
                         {item.reviewerDecision === 'approved' && (
-                          <span className="px-3 py-1 bg-green-500/15 text-green-300 text-sm font-semibold rounded flex items-center gap-1">
+                          <span className="px-3 py-1 bg-green-100 text-green-700 text-sm font-semibold rounded flex items-center gap-1">
                             <CheckCircle className="w-4 h-4" />
                             Approved
                           </span>
                         )}
                         {item.reviewerDecision === 'rejected' && (
-                          <span className="px-3 py-1 bg-red-500/15 text-red-300 text-sm font-semibold rounded flex items-center gap-1">
+                          <span className="px-3 py-1 bg-red-100 text-red-700 text-sm font-semibold rounded flex items-center gap-1">
                             <XCircle className="w-4 h-4" />
                             Rejected
                           </span>
@@ -449,22 +449,22 @@ export function ReviewMode({ onNavigate, jobId = 'JOB-2024-045' }: ReviewModePro
                     </div>
 
                     {/* Comparison Table */}
-                    <div className="bg-white rounded-lg border border-white/10 overflow-hidden">
+                    <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
                       <table className="w-full text-sm">
-                        <thead className="bg-white/5 border-b border-white/10">
+                        <thead className="bg-gray-50 border-b border-gray-200">
                           <tr>
-                            <th className="px-4 py-3 text-left font-semibold text-slate-300">Prior Year</th>
-                            <th className="px-4 py-3 text-left font-semibold text-slate-300">Current Year</th>
-                            <th className="px-4 py-3 text-left font-semibold text-slate-300">Variance ($)</th>
-                            <th className="px-4 py-3 text-left font-semibold text-slate-300">Variance (%)</th>
+                            <th className="px-4 py-3 text-left font-semibold text-gray-700">Prior Year</th>
+                            <th className="px-4 py-3 text-left font-semibold text-gray-700">Current Year</th>
+                            <th className="px-4 py-3 text-left font-semibold text-gray-700">Variance ($)</th>
+                            <th className="px-4 py-3 text-left font-semibold text-gray-700">Variance (%)</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
-                            <td className="px-4 py-3 font-mono text-slate-300">
+                            <td className="px-4 py-3 font-mono text-gray-600">
                               ${item.priorYear.toLocaleString()}
                             </td>
-                            <td className="px-4 py-3 font-mono font-semibold text-slate-100">
+                            <td className="px-4 py-3 font-mono font-semibold text-gray-900">
                               ${item.currentYear.toLocaleString()}
                             </td>
                             <td className={`px-4 py-3 font-mono font-semibold ${getVarianceColor(item.variancePercent)}`}>
@@ -482,30 +482,30 @@ export function ReviewMode({ onNavigate, jobId = 'JOB-2024-045' }: ReviewModePro
                     </div>
 
                     {/* AI Explanation */}
-                    <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
+                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
                       <div className="flex items-start gap-3">
-                        <Zap className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                        <Zap className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
                         <div className="flex-1">
                           <div className="flex items-center justify-between mb-2">
-                            <h4 className="text-sm font-semibold text-blue-300">AI Analysis</h4>
-                            <span className="text-xs text-blue-300">
+                            <h4 className="text-sm font-semibold text-blue-900">AI Analysis</h4>
+                            <span className="text-xs text-blue-700">
                               {item.aiConfidence}% confidence
                             </span>
                           </div>
-                          <p className="text-sm text-blue-300">{item.aiNote}</p>
+                          <p className="text-sm text-blue-800">{item.aiNote}</p>
                         </div>
                       </div>
                     </div>
 
                     {/* Reviewer Comment */}
                     <div>
-                      <label className="block text-sm font-medium text-slate-300 mb-2">
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
                         Reviewer Comment
                       </label>
                       <textarea
                         rows={2}
                         placeholder="Add your comment or request changes..."
-                        className="w-full px-3 py-2 text-sm border border-white/10 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         value={item.reviewerComment}
                         onChange={(e) => {
                           setItems(items.map(i => 
@@ -524,13 +524,13 @@ export function ReviewMode({ onNavigate, jobId = 'JOB-2024-045' }: ReviewModePro
             {/* Overall Reviewer Notes */}
             <Card>
               <CardContent className="p-5">
-                <h3 className="font-semibold text-slate-100 mb-3">Overall Review Comments</h3>
+                <h3 className="font-semibold text-gray-900 mb-3">Overall Review Comments</h3>
                 <textarea
                   rows={4}
                   placeholder="Add overall comments for the preparer..."
                   value={reviewerNotes}
                   onChange={(e) => setReviewerNotes(e.target.value)}
-                  className="w-full px-3 py-2 text-sm border border-white/10 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </CardContent>
             </Card>

@@ -26,10 +26,10 @@ function MetricCards({ items }: { items: { label: string; value: string; sub?: s
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
       {items.map((m) => (
-        <div key={m.label} className="bg-white border border-white/10 rounded-lg p-4">
-          <p className="text-sm text-slate-300">{m.label}</p>
-          <p className="text-2xl font-bold text-slate-100 mt-1">{m.value}</p>
-          {m.sub && <p className="text-xs text-slate-400 mt-1">{m.sub}</p>}
+        <div key={m.label} className="bg-white border border-gray-200 rounded-lg p-4">
+          <p className="text-sm text-gray-600">{m.label}</p>
+          <p className="text-2xl font-bold text-gray-900 mt-1">{m.value}</p>
+          {m.sub && <p className="text-xs text-gray-500 mt-1">{m.sub}</p>}
         </div>
       ))}
     </div>
@@ -38,15 +38,15 @@ function MetricCards({ items }: { items: { label: string; value: string; sub?: s
 
 function ActivityTimeline({ events }: { events: { time: string; text: string }[] }) {
   return (
-    <div className="bg-white border border-white/10 rounded-lg p-4">
-      <h3 className="font-semibold text-slate-100 mb-3">Recent activity</h3>
+    <div className="bg-white border border-gray-200 rounded-lg p-4">
+      <h3 className="font-semibold text-gray-900 mb-3">Recent activity</h3>
       <ul className="space-y-3">
         {events.map((e, i) => (
           <li key={i} className="flex gap-3 text-sm">
             <Activity className="w-4 h-4 text-indigo-500 mt-0.5 flex-shrink-0" />
             <div>
-              <p className="text-slate-100">{e.text}</p>
-              <p className="text-slate-400 text-xs">{e.time}</p>
+              <p className="text-gray-900">{e.text}</p>
+              <p className="text-gray-500 text-xs">{e.time}</p>
             </div>
           </li>
         ))}
@@ -150,9 +150,9 @@ export function FeesWaterfallPage({ onNavigate }: PageProps) {
     <IMFOPlatformLayout title="Fees & waterfall" description="Fee models, waterfalls, carry, and clawback." section="Allocation" onNavigate={onNavigate} loading={loading}>
       {data && (
         <div className="grid md:grid-cols-3 gap-4">
-          <div className="bg-white border rounded-lg p-4"><p className="text-sm text-slate-300">Management fee</p><p className="text-2xl font-bold">{data.mgmt}%</p></div>
-          <div className="bg-white border rounded-lg p-4"><p className="text-sm text-slate-300">Performance fee</p><p className="text-2xl font-bold">{data.perf}%</p></div>
-          <div className="bg-white border rounded-lg p-4"><p className="text-sm text-slate-300">Carried interest</p><p className="text-2xl font-bold">{data.carry}%</p></div>
+          <div className="bg-white border rounded-lg p-4"><p className="text-sm text-gray-600">Management fee</p><p className="text-2xl font-bold">{data.mgmt}%</p></div>
+          <div className="bg-white border rounded-lg p-4"><p className="text-sm text-gray-600">Performance fee</p><p className="text-2xl font-bold">{data.perf}%</p></div>
+          <div className="bg-white border rounded-lg p-4"><p className="text-sm text-gray-600">Carried interest</p><p className="text-2xl font-bold">{data.carry}%</p></div>
           <div className="md:col-span-3 bg-white border rounded-lg p-4">
             <h3 className="font-semibold mb-2">Waterfall preview</h3>
             <ProgressBar value={72} label="LP return hurdle" />
@@ -293,10 +293,10 @@ export function XeroIntegrationPage({ onNavigate }: PageProps) {
 export function PlatformSettingsPage({ onNavigate }: PageProps) {
   return (
     <IMFOPlatformLayout title="Settings" description="Tenant, fund defaults, and notification preferences." section="Settings" onNavigate={onNavigate}>
-      <div className="bg-white border border-white/10 rounded-lg divide-y max-w-2xl">
+      <div className="bg-white border border-gray-200 rounded-lg divide-y max-w-2xl">
         {['Organisation profile', 'Fund defaults', 'Email notifications', 'API keys'].map((label) => (
           <div key={label} className="flex items-center justify-between p-4">
-            <span className="font-medium text-slate-100">{label}</span>
+            <span className="font-medium text-gray-900">{label}</span>
             <Button variant="outline" size="sm">Configure</Button>
           </div>
         ))}

@@ -154,17 +154,17 @@ export function GrowDashboard({ onNavigate }: GrowDashboardProps) {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'active':
-        return <span className="px-2 py-0.5 bg-green-500/15 text-green-300 text-xs font-semibold rounded flex items-center gap-1">
+        return <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded flex items-center gap-1">
           <CheckCircle className="w-3 h-3" />
           Active
         </span>;
       case 'syncing':
-        return <span className="px-2 py-0.5 bg-blue-500/15 text-blue-300 text-xs font-semibold rounded flex items-center gap-1">
+        return <span className="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-semibold rounded flex items-center gap-1">
           <RefreshCw className="w-3 h-3 animate-spin" />
           Syncing
         </span>;
       case 'error':
-        return <span className="px-2 py-0.5 bg-red-500/15 text-red-300 text-xs font-semibold rounded flex items-center gap-1">
+        return <span className="px-2 py-0.5 bg-red-100 text-red-700 text-xs font-semibold rounded flex items-center gap-1">
           <AlertCircle className="w-3 h-3" />
           Error
         </span>;
@@ -176,9 +176,9 @@ export function GrowDashboard({ onNavigate }: GrowDashboardProps) {
   const getTrendIcon = (trend?: string) => {
     switch (trend) {
       case 'up':
-        return <TrendingUp className="w-3 h-3 text-green-400" />;
+        return <TrendingUp className="w-3 h-3 text-green-600" />;
       case 'down':
-        return <TrendingDown className="w-3 h-3 text-red-400" />;
+        return <TrendingDown className="w-3 h-3 text-red-600" />;
       default:
         return null;
     }
@@ -190,11 +190,11 @@ export function GrowDashboard({ onNavigate }: GrowDashboardProps) {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-slate-100 flex items-center gap-3">
-              <Zap className="w-8 h-8 text-blue-400" />
+            <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
+              <Zap className="w-8 h-8 text-blue-600" />
               Grow Workpapers Platform
             </h1>
-            <p className="text-sm text-slate-300 mt-1">Cloud-native • Ledger-connected • AI-driven • Audit-ready</p>
+            <p className="text-sm text-gray-600 mt-1">Cloud-native • Ledger-connected • AI-driven • Audit-ready</p>
           </div>
           <div className="flex items-center gap-2">
             <Button variant="outline" size="sm">
@@ -214,27 +214,27 @@ export function GrowDashboard({ onNavigate }: GrowDashboardProps) {
             const Icon = metric.icon;
             const isPositive = metric.trend === 'up';
             return (
-              <div key={metric.label} className="bg-white border border-white/10 rounded p-4">
+              <div key={metric.label} className="bg-white border border-gray-300 rounded p-4">
                 <div className="flex items-center justify-between mb-2">
                   <Icon className="w-5 h-5 text-gray-400" />
-                  <span className={`text-xs font-semibold ${isPositive ? 'text-green-400' : 'text-red-400'}`}>
+                  <span className={`text-xs font-semibold ${isPositive ? 'text-green-600' : 'text-red-600'}`}>
                     {metric.change}
                   </span>
                 </div>
-                <div className="text-2xl font-bold text-slate-100">{metric.value}</div>
-                <div className="text-xs text-slate-300 mt-1">{metric.label}</div>
+                <div className="text-2xl font-bold text-gray-900">{metric.value}</div>
+                <div className="text-xs text-gray-600 mt-1">{metric.label}</div>
               </div>
             );
           })}
         </div>
 
         {/* System Status Banner */}
-        <div className="bg-green-500/10 border border-green-300 rounded px-4 py-3">
+        <div className="bg-green-50 border border-green-300 rounded px-4 py-3">
           <div className="flex items-center gap-3">
-            <Shield className="w-5 h-5 text-green-400" />
+            <Shield className="w-5 h-5 text-green-600" />
             <div className="flex-1">
-              <h3 className="font-semibold text-green-300">All Systems Operational</h3>
-              <p className="text-sm text-green-300">
+              <h3 className="font-semibold text-green-900">All Systems Operational</h3>
+              <p className="text-sm text-green-800">
                 6 modules active • Last system sync 2 minutes ago • 99.8% uptime this month
               </p>
             </div>
@@ -243,50 +243,50 @@ export function GrowDashboard({ onNavigate }: GrowDashboardProps) {
         </div>
 
         {/* Core Modules Table */}
-        <div className="border border-white/10 rounded bg-white overflow-hidden">
-          <div className="bg-white/5 border-b border-white/10 px-4 py-2">
-            <h3 className="font-semibold text-slate-100">Core Platform Modules</h3>
+        <div className="border border-gray-300 rounded bg-white overflow-hidden">
+          <div className="bg-gray-50 border-b border-gray-300 px-4 py-2">
+            <h3 className="font-semibold text-gray-900">Core Platform Modules</h3>
           </div>
           <table className="w-full text-sm border-collapse">
             {/* Header Row */}
             <thead>
-              <tr className="bg-white/5">
-                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Module Name</th>
-                <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-32">Status</th>
-                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300 w-32">Last Update</th>
-                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Metrics</th>
-                <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-32">Actions</th>
+              <tr className="bg-gray-50">
+                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Module Name</th>
+                <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-32">Status</th>
+                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700 w-32">Last Update</th>
+                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Metrics</th>
+                <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-32">Actions</th>
               </tr>
             </thead>
 
             {/* Data Rows */}
             <tbody>
               {modules.map((module) => (
-                <tr key={module.id} className="hover:bg-white/5">
-                  <td className="border border-white/10 px-3 py-2 text-slate-100 font-medium">
+                <tr key={module.id} className="hover:bg-gray-50">
+                  <td className="border border-gray-300 px-3 py-2 text-gray-900 font-medium">
                     {module.name}
                   </td>
-                  <td className="border border-white/10 px-3 py-2 text-center">
+                  <td className="border border-gray-300 px-3 py-2 text-center">
                     {getStatusBadge(module.status)}
                   </td>
-                  <td className="border border-white/10 px-3 py-2 text-slate-300 text-xs">
+                  <td className="border border-gray-300 px-3 py-2 text-gray-700 text-xs">
                     {module.lastUpdate}
                   </td>
-                  <td className="border border-white/10 px-2 py-2">
+                  <td className="border border-gray-300 px-2 py-2">
                     <div className="flex gap-4">
                       {module.metrics.map((metric, idx) => (
                         <div key={idx} className="flex items-center gap-1 text-xs">
-                          <span className="text-slate-300">{metric.label}:</span>
-                          <span className="font-semibold text-slate-100">{metric.value}</span>
+                          <span className="text-gray-600">{metric.label}:</span>
+                          <span className="font-semibold text-gray-900">{metric.value}</span>
                           {getTrendIcon(metric.trend)}
                         </div>
                       ))}
                     </div>
                   </td>
-                  <td className="border border-white/10 px-2 py-2 text-center">
+                  <td className="border border-gray-300 px-2 py-2 text-center">
                     <button
                       onClick={() => onNavigate?.(module.id)}
-                      className="px-3 py-1 text-xs bg-blue-500/15 text-blue-300 hover:bg-blue-500/20 rounded font-semibold"
+                      className="px-3 py-1 text-xs bg-blue-100 text-blue-700 hover:bg-blue-200 rounded font-semibold"
                     >
                       Open →
                     </button>
@@ -301,79 +301,79 @@ export function GrowDashboard({ onNavigate }: GrowDashboardProps) {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <button
             onClick={() => onNavigate?.('trial-balance')}
-            className="bg-white border border-white/10 rounded p-4 hover:bg-white/5 text-left transition-colors"
+            className="bg-white border border-gray-300 rounded p-4 hover:bg-gray-50 text-left transition-colors"
           >
-            <Target className="w-6 h-6 text-blue-400 mb-2" />
-            <div className="font-semibold text-slate-100">Trial Balance Core</div>
-            <div className="text-xs text-slate-300 mt-1">View intelligent TB hub</div>
+            <Target className="w-6 h-6 text-blue-600 mb-2" />
+            <div className="font-semibold text-gray-900">Trial Balance Core</div>
+            <div className="text-xs text-gray-600 mt-1">View intelligent TB hub</div>
           </button>
 
           <button
             onClick={() => onNavigate?.('ai-review')}
-            className="bg-white border border-white/10 rounded p-4 hover:bg-white/5 text-left transition-colors"
+            className="bg-white border border-gray-300 rounded p-4 hover:bg-gray-50 text-left transition-colors"
           >
-            <Brain className="w-6 h-6 text-purple-400 mb-2" />
-            <div className="font-semibold text-slate-100">AI Review Engine</div>
-            <div className="text-xs text-slate-300 mt-1">Open AI review mode</div>
+            <Brain className="w-6 h-6 text-purple-600 mb-2" />
+            <div className="font-semibold text-gray-900">AI Review Engine</div>
+            <div className="text-xs text-gray-600 mt-1">Open AI review mode</div>
           </button>
 
           <button
             onClick={() => onNavigate?.('binder-generator')}
-            className="bg-white border border-white/10 rounded p-4 hover:bg-white/5 text-left transition-colors"
+            className="bg-white border border-gray-300 rounded p-4 hover:bg-gray-50 text-left transition-colors"
           >
-            <FileText className="w-6 h-6 text-green-400 mb-2" />
-            <div className="font-semibold text-slate-100">Dynamic Binder</div>
-            <div className="text-xs text-slate-300 mt-1">Generate workpaper binder</div>
+            <FileText className="w-6 h-6 text-green-600 mb-2" />
+            <div className="font-semibold text-gray-900">Dynamic Binder</div>
+            <div className="text-xs text-gray-600 mt-1">Generate workpaper binder</div>
           </button>
 
           <button
             onClick={() => onNavigate?.('risk-dashboard')}
-            className="bg-white border border-white/10 rounded p-4 hover:bg-white/5 text-left transition-colors"
+            className="bg-white border border-gray-300 rounded p-4 hover:bg-gray-50 text-left transition-colors"
           >
-            <Shield className="w-6 h-6 text-red-400 mb-2" />
-            <div className="font-semibold text-slate-100">Risk Dashboard</div>
-            <div className="text-xs text-slate-300 mt-1">View risk & quality</div>
+            <Shield className="w-6 h-6 text-red-600 mb-2" />
+            <div className="font-semibold text-gray-900">Risk Dashboard</div>
+            <div className="text-xs text-gray-600 mt-1">View risk & quality</div>
           </button>
         </div>
 
         {/* Platform Capabilities */}
-        <div className="bg-blue-500/10 border border-blue-300 rounded px-4 py-3">
-          <h3 className="font-semibold text-blue-300 mb-3">Platform Capabilities</h3>
+        <div className="bg-blue-50 border border-blue-300 rounded px-4 py-3">
+          <h3 className="font-semibold text-blue-900 mb-3">Platform Capabilities</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-sm">
-            <div className="flex items-center gap-2 text-blue-300">
-              <CheckCircle className="w-4 h-4 text-blue-400" />
+            <div className="flex items-center gap-2 text-blue-800">
+              <CheckCircle className="w-4 h-4 text-blue-600" />
               <span>Universal Ledger Sync (Xero, MYOB, QB)</span>
             </div>
-            <div className="flex items-center gap-2 text-blue-300">
-              <CheckCircle className="w-4 h-4 text-blue-400" />
+            <div className="flex items-center gap-2 text-blue-800">
+              <CheckCircle className="w-4 h-4 text-blue-600" />
               <span>ATO Prefill & BAS Integration</span>
             </div>
-            <div className="flex items-center gap-2 text-blue-300">
-              <CheckCircle className="w-4 h-4 text-blue-400" />
+            <div className="flex items-center gap-2 text-blue-800">
+              <CheckCircle className="w-4 h-4 text-blue-600" />
               <span>3-Layer AI Review System</span>
             </div>
-            <div className="flex items-center gap-2 text-blue-300">
-              <CheckCircle className="w-4 h-4 text-blue-400" />
+            <div className="flex items-center gap-2 text-blue-800">
+              <CheckCircle className="w-4 h-4 text-blue-600" />
               <span>Dynamic Binder Generation</span>
             </div>
-            <div className="flex items-center gap-2 text-blue-300">
-              <CheckCircle className="w-4 h-4 text-blue-400" />
+            <div className="flex items-center gap-2 text-blue-800">
+              <CheckCircle className="w-4 h-4 text-blue-600" />
               <span>Risk Scoring & Quality Control</span>
             </div>
-            <div className="flex items-center gap-2 text-blue-300">
-              <CheckCircle className="w-4 h-4 text-blue-400" />
+            <div className="flex items-center gap-2 text-blue-800">
+              <CheckCircle className="w-4 h-4 text-blue-600" />
               <span>Practice Analytics & Billing</span>
             </div>
-            <div className="flex items-center gap-2 text-blue-300">
-              <CheckCircle className="w-4 h-4 text-blue-400" />
+            <div className="flex items-center gap-2 text-blue-800">
+              <CheckCircle className="w-4 h-4 text-blue-600" />
               <span>Multi-Firm & White Label</span>
             </div>
-            <div className="flex items-center gap-2 text-blue-300">
-              <CheckCircle className="w-4 h-4 text-blue-400" />
+            <div className="flex items-center gap-2 text-blue-800">
+              <CheckCircle className="w-4 h-4 text-blue-600" />
               <span>Voice Input & Smart Memos</span>
             </div>
-            <div className="flex items-center gap-2 text-blue-300">
-              <CheckCircle className="w-4 h-4 text-blue-400" />
+            <div className="flex items-center gap-2 text-blue-800">
+              <CheckCircle className="w-4 h-4 text-blue-600" />
               <span>Client Portal & Evidence Hub</span>
             </div>
           </div>

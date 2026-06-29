@@ -35,9 +35,9 @@ function decisionBadge(decision: Decision): string {
 }
 
 function outcomeIcon(outcome: 'passed' | 'alert' | 'failed') {
-  if (outcome === 'passed') return <CheckCircle className="w-4 h-4 text-green-400" />;
-  if (outcome === 'alert') return <AlertTriangle className="w-4 h-4 text-amber-400" />;
-  return <XCircle className="w-4 h-4 text-red-400" />;
+  if (outcome === 'passed') return <CheckCircle className="w-4 h-4 text-green-600" />;
+  if (outcome === 'alert') return <AlertTriangle className="w-4 h-4 text-amber-600" />;
+  return <XCircle className="w-4 h-4 text-red-600" />;
 }
 
 export function ComplianceOrchestrator({ onBack }: ComplianceOrchestratorProps) {
@@ -78,7 +78,7 @@ export function ComplianceOrchestrator({ onBack }: ComplianceOrchestratorProps) 
   };
 
   return (
-    <div className="min-h-screen bg-white/5">
+    <div className="min-h-screen bg-gray-50">
       <div className="bg-gradient-to-r from-indigo-600 to-sky-600 text-white px-8 py-10">
         <Button
           variant="ghost"
@@ -136,7 +136,7 @@ export function ComplianceOrchestrator({ onBack }: ComplianceOrchestratorProps) 
           <CardContent>
             <div className="grid grid-cols-3 gap-3 items-end">
               <div>
-                <label className="text-sm font-medium text-slate-300">Client ID</label>
+                <label className="text-sm font-medium text-gray-700">Client ID</label>
                 <input
                   className="w-full border rounded-md px-3 py-2 mt-1"
                   value={clientId}
@@ -144,7 +144,7 @@ export function ComplianceOrchestrator({ onBack }: ComplianceOrchestratorProps) 
                 />
               </div>
               <div>
-                <label className="text-sm font-medium text-slate-300">Client Name</label>
+                <label className="text-sm font-medium text-gray-700">Client Name</label>
                 <input
                   className="w-full border rounded-md px-3 py-2 mt-1"
                   value={clientName}
@@ -175,19 +175,19 @@ export function ComplianceOrchestrator({ onBack }: ComplianceOrchestratorProps) 
             <CardContent>
               <div className="grid grid-cols-4 gap-4 mb-5">
                 <div className="p-3 rounded-lg border">
-                  <div className="text-xs text-slate-400">Risk Score</div>
+                  <div className="text-xs text-gray-500">Risk Score</div>
                   <div className="text-2xl font-bold">{latestRun.riskScore}</div>
                 </div>
                 <div className="p-3 rounded-lg border">
-                  <div className="text-xs text-slate-400">Confidence</div>
+                  <div className="text-xs text-gray-500">Confidence</div>
                   <div className="text-2xl font-bold">{latestRun.confidence}%</div>
                 </div>
                 <div className="p-3 rounded-lg border">
-                  <div className="text-xs text-slate-400">Findings</div>
+                  <div className="text-xs text-gray-500">Findings</div>
                   <div className="text-2xl font-bold">{latestRun.findingsCount}</div>
                 </div>
                 <div className="p-3 rounded-lg border">
-                  <div className="text-xs text-slate-400">Alerts / Fails</div>
+                  <div className="text-xs text-gray-500">Alerts / Fails</div>
                   <div className="text-2xl font-bold">{latestRun.alertedChecks} / {latestRun.failedChecks}</div>
                 </div>
               </div>
@@ -200,13 +200,13 @@ export function ComplianceOrchestrator({ onBack }: ComplianceOrchestratorProps) 
                         {outcomeIcon(result.outcome)}
                         {result.botName}
                       </div>
-                      <div className="text-sm text-slate-300">
+                      <div className="text-sm text-gray-600">
                         Score {result.score} • Confidence {result.confidence}%
                       </div>
                     </div>
-                    <div className="text-sm text-slate-300 mb-2">{result.summary}</div>
+                    <div className="text-sm text-gray-700 mb-2">{result.summary}</div>
                     {result.findings.map((finding) => (
-                      <div key={finding.id} className="text-sm bg-white/5 border rounded p-2 mb-2">
+                      <div key={finding.id} className="text-sm bg-gray-50 border rounded p-2 mb-2">
                         <span className="font-semibold">{finding.title}</span>: {finding.description}
                       </div>
                     ))}
@@ -227,18 +227,18 @@ export function ComplianceOrchestrator({ onBack }: ComplianceOrchestratorProps) 
             </CardHeader>
             <CardContent>
               {!latestPack ? (
-                <div className="text-sm text-slate-300">No evidence pack generated yet.</div>
+                <div className="text-sm text-gray-600">No evidence pack generated yet.</div>
               ) : (
                 <div className="space-y-2">
-                  <div className="text-sm text-slate-300">Pack ID: {latestPack.id}</div>
-                  <div className="text-sm text-slate-300">
+                  <div className="text-sm text-gray-600">Pack ID: {latestPack.id}</div>
+                  <div className="text-sm text-gray-600">
                     Items: {latestPack.summary.totalItems} • Avg confidence: {latestPack.summary.averageConfidence}%
                   </div>
                   <div className="max-h-52 overflow-y-auto space-y-2">
                     {latestPack.items.map((item) => (
                       <div key={item.id} className="text-sm border rounded p-2">
                         <div className="font-medium">{item.title}</div>
-                        <div className="text-slate-300">{item.botName} • {item.source} • {item.confidence}%</div>
+                        <div className="text-gray-600">{item.botName} • {item.source} • {item.confidence}%</div>
                       </div>
                     ))}
                   </div>
@@ -256,15 +256,15 @@ export function ComplianceOrchestrator({ onBack }: ComplianceOrchestratorProps) 
             </CardHeader>
             <CardContent>
               <div className="space-y-2">
-                {recentAuditEvents.length === 0 && <div className="text-sm text-slate-300">No audit events yet.</div>}
+                {recentAuditEvents.length === 0 && <div className="text-sm text-gray-600">No audit events yet.</div>}
                 {recentAuditEvents.map((event) => (
                   <div key={event.id} className="border rounded p-2 text-sm">
                     <div className="flex items-center justify-between">
                       <span className="font-medium">{event.eventType}</span>
-                      <span className="text-slate-400">{new Date(event.occurredAt).toLocaleTimeString()}</span>
+                      <span className="text-gray-500">{new Date(event.occurredAt).toLocaleTimeString()}</span>
                     </div>
-                    <div className="text-slate-300">{event.description}</div>
-                    <div className="text-xs text-slate-400 mt-1">Actor: {event.actor} • Target: {event.targetId}</div>
+                    <div className="text-gray-600">{event.description}</div>
+                    <div className="text-xs text-gray-500 mt-1">Actor: {event.actor} • Target: {event.targetId}</div>
                   </div>
                 ))}
               </div>

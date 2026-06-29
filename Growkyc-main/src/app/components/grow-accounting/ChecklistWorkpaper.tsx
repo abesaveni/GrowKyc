@@ -675,9 +675,9 @@ export function ChecklistWorkpaper({ onBack, checklistType = 'compliance' }: Che
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'complete':
-        return <CheckCircle className="w-5 h-5 text-green-400" />;
+        return <CheckCircle className="w-5 h-5 text-green-600" />;
       case 'in_progress':
-        return <Clock className="w-5 h-5 text-amber-400" />;
+        return <Clock className="w-5 h-5 text-amber-600" />;
       case 'not_started':
         return <Circle className="w-5 h-5 text-gray-400" />;
       case 'n/a':
@@ -690,13 +690,13 @@ export function ChecklistWorkpaper({ onBack, checklistType = 'compliance' }: Che
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'complete':
-        return <span className="px-2 py-0.5 bg-green-500/15 text-green-300 text-xs font-semibold rounded">COMPLETE</span>;
+        return <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded">COMPLETE</span>;
       case 'in_progress':
-        return <span className="px-2 py-0.5 bg-amber-500/15 text-amber-300 text-xs font-semibold rounded">IN PROGRESS</span>;
+        return <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-xs font-semibold rounded">IN PROGRESS</span>;
       case 'not_started':
-        return <span className="px-2 py-0.5 bg-white/5 text-slate-300 text-xs font-semibold rounded">NOT STARTED</span>;
+        return <span className="px-2 py-0.5 bg-gray-100 text-gray-700 text-xs font-semibold rounded">NOT STARTED</span>;
       case 'n/a':
-        return <span className="px-2 py-0.5 bg-white/5 text-slate-400 text-xs font-semibold rounded">N/A</span>;
+        return <span className="px-2 py-0.5 bg-gray-50 text-gray-500 text-xs font-semibold rounded">N/A</span>;
       default:
         return null;
     }
@@ -724,9 +724,9 @@ export function ChecklistWorkpaper({ onBack, checklistType = 'compliance' }: Che
     : 'Year-End Completion Checklist';
 
   return (
-    <div className="min-h-screen bg-white/5">
+    <div className="min-h-screen bg-gray-50">
       {/* Fixed Header */}
-      <div className="bg-white border-b border-white/10 px-6 py-4">
+      <div className="bg-white border-b border-gray-300 px-6 py-4">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-3">
             {onBack && (
@@ -734,10 +734,10 @@ export function ChecklistWorkpaper({ onBack, checklistType = 'compliance' }: Che
                 <ArrowLeft className="w-4 h-4" />
               </Button>
             )}
-            <CheckSquare className="w-6 h-6 text-amber-400" />
+            <CheckSquare className="w-6 h-6 text-amber-600" />
             <div>
-              <h1 className="text-xl font-bold text-slate-100">{checklistTitle}</h1>
-              <p className="text-xs text-slate-300">Checklist Workpaper • Manager approval required • FY2024</p>
+              <h1 className="text-xl font-bold text-gray-900">{checklistTitle}</h1>
+              <p className="text-xs text-gray-600">Checklist Workpaper • Manager approval required • FY2024</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -755,28 +755,28 @@ export function ChecklistWorkpaper({ onBack, checklistType = 'compliance' }: Che
         {/* Metadata Bar */}
         <div className="grid grid-cols-6 gap-4 text-sm">
           <div>
-            <span className="text-slate-300 text-xs">Status:</span>
-            <div className="font-semibold text-amber-300">IN PROGRESS</div>
+            <span className="text-gray-600 text-xs">Status:</span>
+            <div className="font-semibold text-amber-700">IN PROGRESS</div>
           </div>
           <div>
-            <span className="text-slate-300 text-xs">Completion:</span>
-            <div className="font-semibold text-blue-300">{completionPercent}%</div>
+            <span className="text-gray-600 text-xs">Completion:</span>
+            <div className="font-semibold text-blue-700">{completionPercent}%</div>
           </div>
           <div>
-            <span className="text-slate-300 text-xs">Items:</span>
-            <div className="font-semibold text-slate-100">{completedItems}/{totalItems}</div>
+            <span className="text-gray-600 text-xs">Items:</span>
+            <div className="font-semibold text-gray-900">{completedItems}/{totalItems}</div>
           </div>
           <div>
-            <span className="text-slate-300 text-xs">Preparer:</span>
-            <div className="font-semibold text-slate-100">Sarah Chen</div>
+            <span className="text-gray-600 text-xs">Preparer:</span>
+            <div className="font-semibold text-gray-900">Sarah Chen</div>
           </div>
           <div>
-            <span className="text-slate-300 text-xs">Reviewer:</span>
-            <div className="font-semibold text-slate-100">Michael Ross</div>
+            <span className="text-gray-600 text-xs">Reviewer:</span>
+            <div className="font-semibold text-gray-900">Michael Ross</div>
           </div>
           <div>
-            <span className="text-slate-300 text-xs">Last Updated:</span>
-            <div className="font-semibold text-slate-100">2024-02-14</div>
+            <span className="text-gray-600 text-xs">Last Updated:</span>
+            <div className="font-semibold text-gray-900">2024-02-14</div>
           </div>
         </div>
       </div>
@@ -784,12 +784,12 @@ export function ChecklistWorkpaper({ onBack, checklistType = 'compliance' }: Che
       {/* Main Content */}
       <div className="p-6 space-y-6">
         {/* Progress Bar */}
-        <div className="bg-white border border-white/10 rounded p-4">
+        <div className="bg-white border border-gray-300 rounded p-4">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="font-semibold text-slate-100">Overall Progress</h3>
-            <span className="text-2xl font-bold text-blue-400">{completionPercent}%</span>
+            <h3 className="font-semibold text-gray-900">Overall Progress</h3>
+            <span className="text-2xl font-bold text-blue-600">{completionPercent}%</span>
           </div>
-          <div className="w-full bg-white/10 rounded-full h-4 mb-3">
+          <div className="w-full bg-gray-200 rounded-full h-4 mb-3">
             <div
               className="bg-blue-600 h-4 rounded-full transition-all"
               style={{ width: `${completionPercent}%` }}
@@ -797,16 +797,16 @@ export function ChecklistWorkpaper({ onBack, checklistType = 'compliance' }: Che
           </div>
           <div className="grid grid-cols-3 gap-4 text-sm">
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-green-400" />
-              <span className="text-slate-300">Complete: <strong>{completedItems}</strong></span>
+              <CheckCircle className="w-4 h-4 text-green-600" />
+              <span className="text-gray-700">Complete: <strong>{completedItems}</strong></span>
             </div>
             <div className="flex items-center gap-2">
-              <Clock className="w-4 h-4 text-amber-400" />
-              <span className="text-slate-300">In Progress: <strong>{inProgressItems}</strong></span>
+              <Clock className="w-4 h-4 text-amber-600" />
+              <span className="text-gray-700">In Progress: <strong>{inProgressItems}</strong></span>
             </div>
             <div className="flex items-center gap-2">
               <Circle className="w-4 h-4 text-gray-400" />
-              <span className="text-slate-300">Not Started: <strong>{notStartedItems}</strong></span>
+              <span className="text-gray-700">Not Started: <strong>{notStartedItems}</strong></span>
             </div>
           </div>
         </div>
@@ -817,7 +817,7 @@ export function ChecklistWorkpaper({ onBack, checklistType = 'compliance' }: Che
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value)}
-              className="px-3 py-2 border border-white/10 rounded text-sm"
+              className="px-3 py-2 border border-gray-300 rounded text-sm"
             >
               <option value="all">All Items</option>
               <option value="complete">Complete</option>
@@ -845,15 +845,15 @@ export function ChecklistWorkpaper({ onBack, checklistType = 'compliance' }: Che
           const categoryPercent = Math.round((categoryComplete / categoryTotal) * 100);
 
           return (
-            <div key={category} className="border border-white/10 rounded bg-white overflow-hidden">
-              <div className="bg-white/5 border-b border-white/10 px-4 py-3">
+            <div key={category} className="border border-gray-300 rounded bg-white overflow-hidden">
+              <div className="bg-gray-50 border-b border-gray-300 px-4 py-3">
                 <div className="flex items-center justify-between">
-                  <h3 className="font-semibold text-slate-100">{category}</h3>
+                  <h3 className="font-semibold text-gray-900">{category}</h3>
                   <div className="flex items-center gap-3">
-                    <span className="text-sm text-slate-300">
+                    <span className="text-sm text-gray-600">
                       {categoryComplete}/{categoryTotal} complete
                     </span>
-                    <div className="w-32 bg-white/10 rounded-full h-2">
+                    <div className="w-32 bg-gray-200 rounded-full h-2">
                       <div
                         className="bg-blue-600 h-2 rounded-full"
                         style={{ width: `${categoryPercent}%` }}
@@ -865,63 +865,63 @@ export function ChecklistWorkpaper({ onBack, checklistType = 'compliance' }: Che
 
               <table className="w-full text-sm border-collapse">
                 <thead>
-                  <tr className="bg-white/5">
-                    <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-16">
+                  <tr className="bg-gray-100">
+                    <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-16">
                       Status
                     </th>
-                    <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">
+                    <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">
                       Description
                     </th>
-                    <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-32">
+                    <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-32">
                       Required
                     </th>
-                    <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-32">
+                    <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-32">
                       Signoff
                     </th>
-                    <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300 w-40">
+                    <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700 w-40">
                       Completed By
                     </th>
-                    <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300 w-32">
+                    <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700 w-32">
                       Date
                     </th>
-                    <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-32">
+                    <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-32">
                       Evidence
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   {categoryItems.map((item) => (
-                    <tr key={item.id} className="hover:bg-blue-500/10">
-                      <td className="border border-white/10 px-3 py-2 text-center">
+                    <tr key={item.id} className="hover:bg-blue-50">
+                      <td className="border border-gray-300 px-3 py-2 text-center">
                         {getStatusIcon(item.status)}
                       </td>
-                      <td className="border border-white/10 px-3 py-2 text-slate-100">
+                      <td className="border border-gray-300 px-3 py-2 text-gray-900">
                         {item.description}
                         {item.priority === 'high' && (
-                          <AlertCircle className="w-3 h-3 text-red-400 inline ml-2" />
+                          <AlertCircle className="w-3 h-3 text-red-600 inline ml-2" />
                         )}
                       </td>
-                      <td className="border border-white/10 px-3 py-2 text-center">
+                      <td className="border border-gray-300 px-3 py-2 text-center">
                         {item.required ? (
-                          <span className="px-2 py-0.5 bg-red-500/15 text-red-300 text-xs font-semibold rounded">YES</span>
+                          <span className="px-2 py-0.5 bg-red-100 text-red-700 text-xs font-semibold rounded">YES</span>
                         ) : (
-                          <span className="px-2 py-0.5 bg-white/5 text-slate-300 text-xs font-semibold rounded">NO</span>
+                          <span className="px-2 py-0.5 bg-gray-100 text-gray-600 text-xs font-semibold rounded">NO</span>
                         )}
                       </td>
-                      <td className="border border-white/10 px-3 py-2 text-center">
+                      <td className="border border-gray-300 px-3 py-2 text-center">
                         {item.signoff_required ? (
-                          <span className="px-2 py-0.5 bg-purple-500/15 text-purple-300 text-xs font-semibold rounded">REQ</span>
+                          <span className="px-2 py-0.5 bg-purple-100 text-purple-700 text-xs font-semibold rounded">REQ</span>
                         ) : (
                           <span className="text-gray-400 text-xs">-</span>
                         )}
                       </td>
-                      <td className="border border-white/10 px-3 py-2 text-slate-300">
+                      <td className="border border-gray-300 px-3 py-2 text-gray-700">
                         {item.completed_by || '-'}
                       </td>
-                      <td className="border border-white/10 px-3 py-2 text-slate-300 text-xs">
+                      <td className="border border-gray-300 px-3 py-2 text-gray-700 text-xs">
                         {item.completed_at || '-'}
                       </td>
-                      <td className="border border-white/10 px-3 py-2 text-center">
+                      <td className="border border-gray-300 px-3 py-2 text-center">
                         {item.linked_evidence.length > 0 ? (
                           <Button size="sm" variant="outline">
                             <FileText className="w-3 h-3 mr-1" />
@@ -940,19 +940,19 @@ export function ChecklistWorkpaper({ onBack, checklistType = 'compliance' }: Che
         })}
 
         {/* Manager Approval Section */}
-        <div className="bg-purple-500/10 border border-purple-300 rounded p-4">
-          <h3 className="font-semibold text-purple-300 mb-3 flex items-center gap-2">
+        <div className="bg-purple-50 border border-purple-300 rounded p-4">
+          <h3 className="font-semibold text-purple-900 mb-3 flex items-center gap-2">
             <AlertCircle className="w-5 h-5" />
             Manager Approval Gate
           </h3>
-          <p className="text-sm text-purple-300 mb-4">
+          <p className="text-sm text-purple-800 mb-4">
             All required checklist items must be completed before manager approval. Items requiring signoff must be reviewed by the assigned reviewer.
           </p>
           <div className="flex items-center gap-3">
             <Button variant="outline" disabled={completionPercent < 100}>
               Request Manager Approval
             </Button>
-            <span className="text-sm text-purple-300">
+            <span className="text-sm text-purple-700">
               {completionPercent < 100 ? `${totalItems - completedItems} items remaining` : 'Ready for approval'}
             </span>
           </div>

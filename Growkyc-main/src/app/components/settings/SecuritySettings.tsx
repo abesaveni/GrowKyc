@@ -148,12 +148,12 @@ export function SecuritySettings({ onBack }: SecuritySettingsProps) {
         <Card className="mb-6">
           <CardHeader>
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-indigo-500/15 rounded-lg">
-                <Lock className="w-5 h-5 text-indigo-400" />
+              <div className="p-2 bg-indigo-100 rounded-lg">
+                <Lock className="w-5 h-5 text-indigo-600" />
               </div>
               <div>
                 <CardTitle>Change Password</CardTitle>
-                <p className="text-sm text-slate-300 mt-1">Update your password regularly to keep your account secure</p>
+                <p className="text-sm text-gray-600 mt-1">Update your password regularly to keep your account secure</p>
               </div>
             </div>
           </CardHeader>
@@ -179,16 +179,16 @@ export function SecuritySettings({ onBack }: SecuritySettingsProps) {
               {newPassword && (
                 <div className="mt-2">
                   <div className="flex items-center justify-between text-xs mb-1">
-                    <span className="text-slate-300">Password strength:</span>
+                    <span className="text-gray-600">Password strength:</span>
                     <span className={`font-semibold ${
-                      passwordStrength.label === 'Weak' ? 'text-red-400' :
-                      passwordStrength.label === 'Medium' ? 'text-amber-400' :
-                      'text-green-400'
+                      passwordStrength.label === 'Weak' ? 'text-red-600' :
+                      passwordStrength.label === 'Medium' ? 'text-amber-600' :
+                      'text-green-600'
                     }`}>
                       {passwordStrength.label}
                     </span>
                   </div>
-                  <div className="h-2 bg-white/10 rounded-full overflow-hidden">
+                  <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
                     <div 
                       className={`h-full ${passwordStrength.color} transition-all duration-300`}
                       style={{ width: passwordStrength.width }}
@@ -196,7 +196,7 @@ export function SecuritySettings({ onBack }: SecuritySettingsProps) {
                   </div>
                 </div>
               )}
-              <p className="text-xs text-slate-400 mt-1">Must be at least 8 characters with uppercase, lowercase, and numbers</p>
+              <p className="text-xs text-gray-500 mt-1">Must be at least 8 characters with uppercase, lowercase, and numbers</p>
             </div>
 
             <div>
@@ -208,7 +208,7 @@ export function SecuritySettings({ onBack }: SecuritySettingsProps) {
                 placeholder="Confirm new password"
               />
               {confirmPassword && newPassword !== confirmPassword && (
-                <p className="text-xs text-red-400 mt-1 flex items-center gap-1">
+                <p className="text-xs text-red-600 mt-1 flex items-center gap-1">
                   <AlertCircle className="w-3 h-3" />
                   Passwords do not match
                 </p>
@@ -237,12 +237,12 @@ export function SecuritySettings({ onBack }: SecuritySettingsProps) {
         <Card className="mb-6">
           <CardHeader>
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-green-500/15 rounded-lg">
-                <Shield className="w-5 h-5 text-green-400" />
+              <div className="p-2 bg-green-100 rounded-lg">
+                <Shield className="w-5 h-5 text-green-600" />
               </div>
               <div>
                 <CardTitle>Two-Factor Authentication</CardTitle>
-                <p className="text-sm text-slate-300 mt-1">Add an extra layer of security to your account</p>
+                <p className="text-sm text-gray-600 mt-1">Add an extra layer of security to your account</p>
               </div>
             </div>
           </CardHeader>
@@ -250,20 +250,20 @@ export function SecuritySettings({ onBack }: SecuritySettingsProps) {
             <div className="flex items-start justify-between">
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-2">
-                  <h4 className="font-semibold text-slate-100">Status:</h4>
+                  <h4 className="font-semibold text-gray-900">Status:</h4>
                   {twoFactorEnabled ? (
-                    <span className="flex items-center gap-1 text-green-400 font-medium">
+                    <span className="flex items-center gap-1 text-green-600 font-medium">
                       <CheckCircle className="w-4 h-4" />
                       Enabled
                     </span>
                   ) : (
-                    <span className="flex items-center gap-1 text-amber-400 font-medium">
+                    <span className="flex items-center gap-1 text-amber-600 font-medium">
                       <AlertCircle className="w-4 h-4" />
                       Disabled
                     </span>
                   )}
                 </div>
-                <p className="text-sm text-slate-300">
+                <p className="text-sm text-gray-600">
                   {twoFactorEnabled 
                     ? 'Your account is protected with two-factor authentication.'
                     : 'Enable 2FA to significantly improve your account security.'}
@@ -278,8 +278,8 @@ export function SecuritySettings({ onBack }: SecuritySettingsProps) {
             </div>
 
             {twoFactorEnabled && (
-              <div className="mt-4 p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
-                <p className="text-sm text-green-300 mb-2">
+              <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+                <p className="text-sm text-green-800 mb-2">
                   <strong>2FA is active.</strong> You'll need to enter a code from your authenticator app when signing in.
                 </p>
                 <div className="mt-3 flex gap-2">
@@ -302,39 +302,39 @@ export function SecuritySettings({ onBack }: SecuritySettingsProps) {
             <div className="flex items-center justify-between">
               <div>
                 <CardTitle>Active Sessions</CardTitle>
-                <p className="text-sm text-slate-300 mt-1">Manage devices where you're currently signed in</p>
+                <p className="text-sm text-gray-600 mt-1">Manage devices where you're currently signed in</p>
               </div>
-              <span className="text-sm text-slate-400">3 active</span>
+              <span className="text-sm text-gray-500">3 active</span>
             </div>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="flex items-center justify-between p-4 border rounded-lg bg-blue-500/10 border-blue-500/30">
+            <div className="flex items-center justify-between p-4 border rounded-lg bg-blue-50 border-blue-200">
               <div className="flex items-start gap-3">
-                <Monitor className="w-5 h-5 text-blue-400 mt-0.5" />
+                <Monitor className="w-5 h-5 text-blue-600 mt-0.5" />
                 <div>
-                  <p className="font-medium text-slate-100">Current Session</p>
-                  <p className="text-sm text-slate-300">MacBook Pro • Melbourne, VIC</p>
-                  <p className="text-xs text-slate-400 mt-1">Last active: Just now</p>
+                  <p className="font-medium text-gray-900">Current Session</p>
+                  <p className="text-sm text-gray-600">MacBook Pro • Melbourne, VIC</p>
+                  <p className="text-xs text-gray-500 mt-1">Last active: Just now</p>
                 </div>
               </div>
-              <span className="px-3 py-1 bg-green-500/15 text-green-300 text-xs font-medium rounded-full">
+              <span className="px-3 py-1 bg-green-100 text-green-700 text-xs font-medium rounded-full">
                 Active
               </span>
             </div>
 
-            <div className="flex items-center justify-between p-4 border rounded-lg hover:bg-white/5 transition-colors">
+            <div className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition-colors">
               <div className="flex items-start gap-3">
-                <Smartphone className="w-5 h-5 text-slate-300 mt-0.5" />
+                <Smartphone className="w-5 h-5 text-gray-600 mt-0.5" />
                 <div>
-                  <p className="font-medium text-slate-100">iPhone 14 Pro</p>
-                  <p className="text-sm text-slate-300">iOS • Sydney, NSW</p>
-                  <p className="text-xs text-slate-400 mt-1">Last active: 2 hours ago</p>
+                  <p className="font-medium text-gray-900">iPhone 14 Pro</p>
+                  <p className="text-sm text-gray-600">iOS • Sydney, NSW</p>
+                  <p className="text-xs text-gray-500 mt-1">Last active: 2 hours ago</p>
                 </div>
               </div>
               <Button 
                 variant="ghost" 
                 size="sm" 
-                className="text-red-400 hover:text-red-300 hover:bg-red-500/10"
+                className="text-red-600 hover:text-red-700 hover:bg-red-50"
                 onClick={() => handleSignOutSession('iPhone 14 Pro')}
               >
                 <X className="w-4 h-4 mr-1" />
@@ -342,19 +342,19 @@ export function SecuritySettings({ onBack }: SecuritySettingsProps) {
               </Button>
             </div>
 
-            <div className="flex items-center justify-between p-4 border rounded-lg hover:bg-white/5 transition-colors">
+            <div className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition-colors">
               <div className="flex items-start gap-3">
-                <Monitor className="w-5 h-5 text-slate-300 mt-0.5" />
+                <Monitor className="w-5 h-5 text-gray-600 mt-0.5" />
                 <div>
-                  <p className="font-medium text-slate-100">Windows PC</p>
-                  <p className="text-sm text-slate-300">Chrome • Brisbane, QLD</p>
-                  <p className="text-xs text-slate-400 mt-1">Last active: 1 day ago</p>
+                  <p className="font-medium text-gray-900">Windows PC</p>
+                  <p className="text-sm text-gray-600">Chrome • Brisbane, QLD</p>
+                  <p className="text-xs text-gray-500 mt-1">Last active: 1 day ago</p>
                 </div>
               </div>
               <Button 
                 variant="ghost" 
                 size="sm" 
-                className="text-red-400 hover:text-red-300 hover:bg-red-500/10"
+                className="text-red-600 hover:text-red-700 hover:bg-red-50"
                 onClick={() => handleSignOutSession('Windows PC')}
               >
                 <X className="w-4 h-4 mr-1" />
@@ -365,7 +365,7 @@ export function SecuritySettings({ onBack }: SecuritySettingsProps) {
             <div className="pt-4 border-t">
               <Button 
                 variant="outline" 
-                className="w-full text-red-400 hover:text-red-300 hover:bg-red-500/10"
+                className="w-full text-red-600 hover:text-red-700 hover:bg-red-50"
                 onClick={() => setConfirmSignOutAllOpen(true)}
               >
                 Sign Out All Other Sessions
@@ -375,26 +375,26 @@ export function SecuritySettings({ onBack }: SecuritySettingsProps) {
         </Card>
 
         {/* Security Tips */}
-        <Card className="border-blue-500/30 bg-blue-500/10">
+        <Card className="border-blue-200 bg-blue-50">
           <CardHeader>
             <CardTitle className="text-base">Security Best Practices</CardTitle>
           </CardHeader>
           <CardContent className="space-y-2 text-sm">
             <div className="flex items-start gap-2">
-              <CheckCircle className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
-              <p className="text-blue-300">Use a unique password not used on other sites</p>
+              <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
+              <p className="text-blue-900">Use a unique password not used on other sites</p>
             </div>
             <div className="flex items-start gap-2">
-              <CheckCircle className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
-              <p className="text-blue-300">Enable two-factor authentication for extra protection</p>
+              <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
+              <p className="text-blue-900">Enable two-factor authentication for extra protection</p>
             </div>
             <div className="flex items-start gap-2">
-              <CheckCircle className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
-              <p className="text-blue-300">Review active sessions regularly</p>
+              <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
+              <p className="text-blue-900">Review active sessions regularly</p>
             </div>
             <div className="flex items-start gap-2">
-              <CheckCircle className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
-              <p className="text-blue-300">Never share your password or 2FA codes</p>
+              <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
+              <p className="text-blue-900">Never share your password or 2FA codes</p>
             </div>
           </CardContent>
         </Card>

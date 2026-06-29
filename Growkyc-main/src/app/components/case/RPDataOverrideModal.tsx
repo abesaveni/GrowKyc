@@ -30,17 +30,17 @@ export function RPDataOverrideModal({
           <CardTitle className="text-xl font-bold">Override RP Data Valuation</CardTitle>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-white/5 rounded-lg transition"
+            className="p-2 hover:bg-gray-100 rounded-lg transition"
           >
             <X className="w-5 h-5" />
           </button>
         </CardHeader>
         <CardContent className="p-6 space-y-6">
-          <div className="p-4 bg-amber-500/10 border border-amber-500/30 rounded-lg flex items-start gap-3">
-            <AlertCircle className="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0" />
+          <div className="p-4 bg-amber-50 border border-amber-200 rounded-lg flex items-start gap-3">
+            <AlertCircle className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
             <div>
-              <p className="text-sm font-semibold text-amber-300">Override Warning</p>
-              <p className="text-xs text-amber-300 mt-1">
+              <p className="text-sm font-semibold text-amber-900">Override Warning</p>
+              <p className="text-xs text-amber-700 mt-1">
                 Overriding RP Data valuation requires justification and will be logged for audit purposes.
                 This may trigger additional compliance requirements.
               </p>
@@ -53,7 +53,7 @@ export function RPDataOverrideModal({
               id="rpDataAvmMid"
               value={`A$${parseFloat(formData.rpDataAvmMid || '0').toLocaleString()}`}
               disabled
-              className="bg-white/5"
+              className="bg-gray-100"
             />
           </div>
 
@@ -89,24 +89,24 @@ export function RPDataOverrideModal({
                 {formData.overrideEvidence ? 'Evidence Uploaded' : 'Upload Supporting Documents'}
               </Button>
               {formData.overrideEvidence && (
-                <CheckCircle className="w-5 h-5 text-green-400" />
+                <CheckCircle className="w-5 h-5 text-green-600" />
               )}
             </div>
-            <p className="text-xs text-slate-300 mt-1">
+            <p className="text-xs text-gray-600 mt-1">
               Photos, recent valuations, comparable sales evidence, etc.
             </p>
           </div>
 
-          <label className="flex items-start gap-3 p-4 border-2 border-white/10 rounded-lg hover:bg-white/5 cursor-pointer">
+          <label className="flex items-start gap-3 p-4 border-2 border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer">
             <input
               type="checkbox"
               checked={formData.overrideFlag}
               onChange={(e) => onInputChange('overrideFlag', e.target.checked)}
-              className="w-5 h-5 text-blue-400 rounded mt-0.5"
+              className="w-5 h-5 text-blue-600 rounded mt-0.5"
             />
             <div className="flex-1">
-              <p className="font-medium text-slate-100">I acknowledge this overrides RP Data *</p>
-              <p className="text-sm text-slate-300 mt-1">
+              <p className="font-medium text-gray-900">I acknowledge this overrides RP Data *</p>
+              <p className="text-sm text-gray-600 mt-1">
                 I understand this override will be logged and may require additional documentation or senior approval.
               </p>
             </div>

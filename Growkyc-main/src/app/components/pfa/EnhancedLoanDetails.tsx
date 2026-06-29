@@ -58,88 +58,88 @@ export function EnhancedLoanDetails({ deal }: EnhancedLoanDetailsProps) {
   return (
     <div className="space-y-6">
       {/* Loan Structure */}
-      <div className="bg-white border border-white/10 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-slate-100 mb-4">Loan Structure</h3>
+      <div className="bg-white border border-gray-300 rounded-lg p-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Loan Structure</h3>
         <div className="grid grid-cols-3 gap-4">
           <div>
-            <p className="text-xs text-slate-300 mb-1">Loan Type</p>
-            <p className="font-semibold text-slate-100">{deal.loan.type}</p>
+            <p className="text-xs text-gray-600 mb-1">Loan Type</p>
+            <p className="font-semibold text-gray-900">{deal.loan.type}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Loan Amount</p>
-            <p className="font-semibold text-slate-100 text-lg">${loanAmount.toLocaleString()}</p>
+            <p className="text-xs text-gray-600 mb-1">Loan Amount</p>
+            <p className="font-semibold text-gray-900 text-lg">${loanAmount.toLocaleString()}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Loan Term</p>
-            <p className="font-semibold text-slate-100">{term} months</p>
+            <p className="text-xs text-gray-600 mb-1">Loan Term</p>
+            <p className="font-semibold text-gray-900">{term} months</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Interest Rate</p>
-            <p className="font-semibold text-slate-100">{deal.loan.interestRate}% p.a.</p>
+            <p className="text-xs text-gray-600 mb-1">Interest Rate</p>
+            <p className="font-semibold text-gray-900">{deal.loan.interestRate}% p.a.</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Repayment Type</p>
-            <p className="font-semibold text-slate-100">{deal.loan.repaymentType}</p>
+            <p className="text-xs text-gray-600 mb-1">Repayment Type</p>
+            <p className="font-semibold text-gray-900">{deal.loan.repaymentType}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Frequency</p>
-            <p className="font-semibold text-slate-100">{deal.loan.frequency}</p>
+            <p className="text-xs text-gray-600 mb-1">Frequency</p>
+            <p className="font-semibold text-gray-900">{deal.loan.frequency}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Monthly Repayment</p>
-            <p className="font-semibold text-slate-100 text-lg text-blue-400">
+            <p className="text-xs text-gray-600 mb-1">Monthly Repayment</p>
+            <p className="font-semibold text-gray-900 text-lg text-blue-600">
               ${monthlyInterestPayment.toLocaleString(undefined, {maximumFractionDigits: 0})}
             </p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Purpose</p>
-            <p className="font-semibold text-slate-100">{deal.loan.purpose}</p>
+            <p className="text-xs text-gray-600 mb-1">Purpose</p>
+            <p className="font-semibold text-gray-900">{deal.loan.purpose}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Capitalised Period</p>
-            <p className="font-semibold text-slate-100 text-orange-400">{capitalisedPeriod} months</p>
+            <p className="text-xs text-gray-600 mb-1">Capitalised Period</p>
+            <p className="font-semibold text-gray-900 text-orange-600">{capitalisedPeriod} months</p>
           </div>
         </div>
       </div>
 
       {/* Fees & Costs */}
-      <div className="bg-white border border-white/10 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-slate-100 mb-4">Fees & Costs</h3>
+      <div className="bg-white border border-gray-300 rounded-lg p-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Fees & Costs</h3>
         <div className="grid grid-cols-3 gap-4">
-          <div className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
-            <p className="text-xs text-green-300 mb-1">Establishment Fee (2.0%)</p>
-            <p className="font-bold text-green-300 text-xl">
+          <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+            <p className="text-xs text-green-700 mb-1">Establishment Fee (2.0%)</p>
+            <p className="font-bold text-green-900 text-xl">
               ${establishmentFee.toLocaleString(undefined, {maximumFractionDigits: 0})}
             </p>
-            <p className="text-xs text-green-400 mt-1">Upfront income</p>
+            <p className="text-xs text-green-600 mt-1">Upfront income</p>
           </div>
-          <div className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
-            <p className="text-xs text-green-300 mb-1">Broker Fee (1.5%)</p>
-            <p className="font-bold text-green-300 text-xl">
+          <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+            <p className="text-xs text-green-700 mb-1">Broker Fee (1.5%)</p>
+            <p className="font-bold text-green-900 text-xl">
               ${brokerFee.toLocaleString(undefined, {maximumFractionDigits: 0})}
             </p>
-            <p className="text-xs text-green-400 mt-1">Paid to broker</p>
+            <p className="text-xs text-green-600 mt-1">Paid to broker</p>
           </div>
-          <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
-            <p className="text-xs text-red-300 mb-1">Cost of Funds (5.5% p.a.)</p>
-            <p className="font-bold text-red-300 text-xl">
+          <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+            <p className="text-xs text-red-700 mb-1">Cost of Funds (5.5% p.a.)</p>
+            <p className="font-bold text-red-900 text-xl">
               ${costOfFundsExpense.toLocaleString(undefined, {maximumFractionDigits: 0})}
             </p>
-            <p className="text-xs text-red-400 mt-1">Over {term} months</p>
+            <p className="text-xs text-red-600 mt-1">Over {term} months</p>
           </div>
         </div>
 
-        <div className="mt-4 p-4 bg-white/5 rounded-lg">
+        <div className="mt-4 p-4 bg-gray-50 rounded-lg">
           <div className="grid grid-cols-2 gap-3">
             <div className="flex justify-between">
-              <span className="text-sm text-slate-300">Total Fee Income:</span>
-              <span className="font-semibold text-slate-100">
+              <span className="text-sm text-gray-600">Total Fee Income:</span>
+              <span className="font-semibold text-gray-900">
                 ${totalFeeIncome.toLocaleString(undefined, {maximumFractionDigits: 0})}
               </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-sm text-slate-300">Total Interest Income:</span>
-              <span className="font-semibold text-slate-100">
+              <span className="text-sm text-gray-600">Total Interest Income:</span>
+              <span className="font-semibold text-gray-900">
                 ${totalInterestIncome.toLocaleString(undefined, {maximumFractionDigits: 0})}
               </span>
             </div>
@@ -148,61 +148,61 @@ export function EnhancedLoanDetails({ deal }: EnhancedLoanDetailsProps) {
       </div>
 
       {/* Return Analysis */}
-      <div className="bg-white border border-white/10 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-slate-100 mb-4">Return Analysis</h3>
+      <div className="bg-white border border-gray-300 rounded-lg p-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Return Analysis</h3>
         
         {/* Key Metrics */}
         <div className="grid grid-cols-4 gap-4 mb-6">
-          <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
-            <p className="text-xs text-blue-300 mb-1">Total Income</p>
-            <p className="font-bold text-blue-300 text-xl">
+          <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+            <p className="text-xs text-blue-700 mb-1">Total Income</p>
+            <p className="font-bold text-blue-900 text-xl">
               ${(totalInterestIncome + totalFeeIncome).toLocaleString(undefined, {maximumFractionDigits: 0})}
             </p>
           </div>
-          <div className="p-4 bg-orange-500/10 border border-orange-500/30 rounded-lg">
-            <p className="text-xs text-orange-300 mb-1">Total Costs</p>
-            <p className="font-bold text-orange-300 text-xl">
+          <div className="p-4 bg-orange-50 border border-orange-200 rounded-lg">
+            <p className="text-xs text-orange-700 mb-1">Total Costs</p>
+            <p className="font-bold text-orange-900 text-xl">
               ${costOfFundsExpense.toLocaleString(undefined, {maximumFractionDigits: 0})}
             </p>
           </div>
-          <div className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
-            <p className="text-xs text-green-300 mb-1">Net Return</p>
-            <p className="font-bold text-green-300 text-xl">
+          <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+            <p className="text-xs text-green-700 mb-1">Net Return</p>
+            <p className="font-bold text-green-900 text-xl">
               ${netReturn.toLocaleString(undefined, {maximumFractionDigits: 0})}
             </p>
           </div>
-          <div className="p-4 bg-purple-500/10 border border-purple-500/30 rounded-lg">
-            <p className="text-xs text-purple-300 mb-1">Return on Funds</p>
-            <p className="font-bold text-purple-300 text-xl">
+          <div className="p-4 bg-purple-50 border border-purple-200 rounded-lg">
+            <p className="text-xs text-purple-700 mb-1">Return on Funds</p>
+            <p className="font-bold text-purple-900 text-xl">
               {returnOnFunds.toFixed(2)}%
             </p>
-            <p className="text-xs text-purple-400 mt-1">{annualizedReturn.toFixed(2)}% p.a.</p>
+            <p className="text-xs text-purple-600 mt-1">{annualizedReturn.toFixed(2)}% p.a.</p>
           </div>
         </div>
 
         {/* Decision Indicator */}
         <div className={`p-4 rounded-lg mb-6 ${
           annualizedReturn >= 4.0 
-            ? 'bg-green-500/10 border border-green-500/30' 
+            ? 'bg-green-50 border border-green-200' 
             : annualizedReturn >= 3.0 
-            ? 'bg-yellow-500/10 border border-yellow-500/30'
-            : 'bg-red-500/10 border border-red-500/30'
+            ? 'bg-yellow-50 border border-yellow-200'
+            : 'bg-red-50 border border-red-200'
         }`}>
           <div className="flex items-center gap-3">
             {annualizedReturn >= 4.0 ? (
-              <CheckCircle className="w-6 h-6 text-green-400" />
+              <CheckCircle className="w-6 h-6 text-green-600" />
             ) : annualizedReturn >= 3.0 ? (
-              <AlertCircle className="w-6 h-6 text-yellow-400" />
+              <AlertCircle className="w-6 h-6 text-yellow-600" />
             ) : (
-              <X className="w-6 h-6 text-red-400" />
+              <X className="w-6 h-6 text-red-600" />
             )}
             <div>
               <p className={`font-semibold ${
                 annualizedReturn >= 4.0 
-                  ? 'text-green-300' 
+                  ? 'text-green-900' 
                   : annualizedReturn >= 3.0 
-                  ? 'text-yellow-300'
-                  : 'text-red-300'
+                  ? 'text-yellow-900'
+                  : 'text-red-900'
               }`}>
                 {annualizedReturn >= 4.0 
                   ? '✓ Strong Return - Recommended' 
@@ -212,10 +212,10 @@ export function EnhancedLoanDetails({ deal }: EnhancedLoanDetailsProps) {
               </p>
               <p className={`text-sm mt-1 ${
                 annualizedReturn >= 4.0 
-                  ? 'text-green-300' 
+                  ? 'text-green-700' 
                   : annualizedReturn >= 3.0 
-                  ? 'text-yellow-300'
-                  : 'text-red-300'
+                  ? 'text-yellow-700'
+                  : 'text-red-700'
               }`}>
                 {annualizedReturn >= 4.0 
                   ? 'This loan meets target return thresholds and should be approved subject to credit assessment.' 
@@ -230,8 +230,8 @@ export function EnhancedLoanDetails({ deal }: EnhancedLoanDetailsProps) {
         {/* Cash Flow Graph */}
         <div>
           <div className="flex items-center justify-between mb-4">
-            <h4 className="font-semibold text-slate-100">Cumulative Cash Flow Over Term</h4>
-            <div className="text-xs text-slate-300">
+            <h4 className="font-semibold text-gray-900">Cumulative Cash Flow Over Term</h4>
+            <div className="text-xs text-gray-600">
               <span className="inline-block w-3 h-3 bg-orange-400 mr-1"></span>
               Capitalised Period |
               <span className="inline-block w-3 h-3 bg-blue-400 ml-2 mr-1"></span>
@@ -239,9 +239,9 @@ export function EnhancedLoanDetails({ deal }: EnhancedLoanDetailsProps) {
             </div>
           </div>
           
-          <div className="relative h-80 bg-white/5 rounded-lg p-4 border border-white/10">
+          <div className="relative h-80 bg-gray-50 rounded-lg p-4 border border-gray-200">
             {/* Y-axis labels */}
-            <div className="absolute left-0 top-0 bottom-0 w-16 flex flex-col justify-between text-xs text-slate-300 py-4">
+            <div className="absolute left-0 top-0 bottom-0 w-16 flex flex-col justify-between text-xs text-gray-600 py-4">
               <span>${(Math.max(...cashFlowData.map(d => d.cashFlow)) / 1000).toFixed(0)}k</span>
               <span>$0</span>
               <span>-${(Math.abs(Math.min(...cashFlowData.map(d => d.cashFlow))) / 1000).toFixed(0)}k</span>
@@ -289,7 +289,7 @@ export function EnhancedLoanDetails({ deal }: EnhancedLoanDetailsProps) {
               </div>
 
               {/* X-axis labels */}
-              <div className="flex justify-between text-xs text-slate-300 mt-2">
+              <div className="flex justify-between text-xs text-gray-600 mt-2">
                 <span>0</span>
                 <span>{Math.floor(term / 3)}</span>
                 <span>{Math.floor(term * 2 / 3)}</span>
@@ -299,21 +299,21 @@ export function EnhancedLoanDetails({ deal }: EnhancedLoanDetailsProps) {
           </div>
 
           <div className="mt-4 grid grid-cols-3 gap-3 text-xs">
-            <div className="p-3 bg-white/5 rounded">
-              <p className="text-slate-300 mb-1">Breakeven Point</p>
-              <p className="font-semibold text-slate-100">
+            <div className="p-3 bg-gray-50 rounded">
+              <p className="text-gray-600 mb-1">Breakeven Point</p>
+              <p className="font-semibold text-gray-900">
                 Month {cashFlowData.findIndex(d => d.cashFlow > 0) || 'N/A'}
               </p>
             </div>
-            <div className="p-3 bg-white/5 rounded">
-              <p className="text-slate-300 mb-1">Peak Negative Cash Flow</p>
-              <p className="font-semibold text-slate-100">
+            <div className="p-3 bg-gray-50 rounded">
+              <p className="text-gray-600 mb-1">Peak Negative Cash Flow</p>
+              <p className="font-semibold text-gray-900">
                 ${(Math.min(...cashFlowData.map(d => d.cashFlow)) / 1000).toFixed(0)}k
               </p>
             </div>
-            <div className="p-3 bg-white/5 rounded">
-              <p className="text-slate-300 mb-1">Final Position</p>
-              <p className="font-semibold text-green-400">
+            <div className="p-3 bg-gray-50 rounded">
+              <p className="text-gray-600 mb-1">Final Position</p>
+              <p className="font-semibold text-green-600">
                 ${(cashFlowData[cashFlowData.length - 1].cashFlow / 1000).toFixed(0)}k
               </p>
             </div>
@@ -322,29 +322,29 @@ export function EnhancedLoanDetails({ deal }: EnhancedLoanDetailsProps) {
       </div>
 
       {/* Capitalization Details */}
-      <div className="bg-white border border-white/10 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-slate-100 mb-4">Capitalization Details</h3>
-        <div className="p-4 bg-orange-500/10 border border-orange-500/30 rounded-lg">
+      <div className="bg-white border border-gray-300 rounded-lg p-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Capitalization Details</h3>
+        <div className="p-4 bg-orange-50 border border-orange-200 rounded-lg">
           <div className="flex items-start gap-3">
-            <Clock className="w-5 h-5 text-orange-400 mt-0.5" />
+            <Clock className="w-5 h-5 text-orange-600 mt-0.5" />
             <div>
-              <p className="font-semibold text-orange-300 mb-2">
+              <p className="font-semibold text-orange-900 mb-2">
                 Interest Capitalized for {capitalisedPeriod} Months
               </p>
-              <p className="text-sm text-orange-300 mb-3">
+              <p className="text-sm text-orange-800 mb-3">
                 During the capitalization period, the borrower is not required to make interest payments. 
                 This provides breathing room for business establishment/expansion while interest accrues.
               </p>
               <div className="grid grid-cols-2 gap-3 text-sm">
                 <div>
-                  <p className="text-orange-300 mb-1">Capitalized Interest Amount:</p>
-                  <p className="font-semibold text-orange-300">
+                  <p className="text-orange-700 mb-1">Capitalized Interest Amount:</p>
+                  <p className="font-semibold text-orange-900">
                     ${((monthlyInterestPayment * capitalisedPeriod)).toLocaleString(undefined, {maximumFractionDigits: 0})}
                   </p>
                 </div>
                 <div>
-                  <p className="text-orange-300 mb-1">First Payment Due:</p>
-                  <p className="font-semibold text-orange-300">
+                  <p className="text-orange-700 mb-1">First Payment Due:</p>
+                  <p className="font-semibold text-orange-900">
                     {new Date(new Date().setMonth(new Date().getMonth() + capitalisedPeriod + 1)).toLocaleDateString('en-AU', { month: 'short', year: 'numeric' })}
                   </p>
                 </div>

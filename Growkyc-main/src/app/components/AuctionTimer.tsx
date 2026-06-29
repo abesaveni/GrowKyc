@@ -55,9 +55,9 @@ export function AuctionTimer({ endTime, onExpire }: AuctionTimerProps) {
 
   return (
     <div className={`flex items-center gap-2 px-4 py-2 rounded-lg border ${
-      isExpired ? 'bg-white/5 text-slate-400 border-white/10' :
-      isUrgent ? 'bg-red-500/10 text-red-300 border-red-500/30 animate-pulse' :
-      'bg-indigo-500/10 text-indigo-300 border-indigo-500/30'
+      isExpired ? 'bg-gray-100 text-gray-500 border-gray-200' :
+      isUrgent ? 'bg-red-50 text-red-700 border-red-200 animate-pulse' :
+      'bg-indigo-50 text-indigo-700 border-indigo-200'
     }`}>
       <Clock className="w-4 h-4" />
       <span className="font-semibold text-sm">

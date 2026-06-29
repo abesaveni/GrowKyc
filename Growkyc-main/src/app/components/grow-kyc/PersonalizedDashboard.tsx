@@ -85,11 +85,11 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
   ]);
 
   const [recentActivityData, setRecentActivityData] = React.useState([
-    { type: 'approval', user: 'You', action: 'approved EDD report for Apex Holdings', time: '10 min ago', icon: CheckCircle, color: 'text-green-400' },
-    { type: 'alert', user: 'System', action: 'flagged suspicious transaction pattern', time: '1h ago', icon: AlertTriangle, color: 'text-red-400' },
-    { type: 'review', user: 'Emma Williams', action: 'completed KYC review for 3 clients', time: '2h ago', icon: UserCheck, color: 'text-blue-400' },
-    { type: 'document', user: 'David Thompson', action: 'uploaded audit findings report', time: '3h ago', icon: FileText, color: 'text-purple-400' },
-    { type: 'update', user: 'You', action: 'updated compliance procedures', time: '5h ago', icon: Activity, color: 'text-amber-400' }
+    { type: 'approval', user: 'You', action: 'approved EDD report for Apex Holdings', time: '10 min ago', icon: CheckCircle, color: 'text-green-600' },
+    { type: 'alert', user: 'System', action: 'flagged suspicious transaction pattern', time: '1h ago', icon: AlertTriangle, color: 'text-red-600' },
+    { type: 'review', user: 'Emma Williams', action: 'completed KYC review for 3 clients', time: '2h ago', icon: UserCheck, color: 'text-blue-600' },
+    { type: 'document', user: 'David Thompson', action: 'uploaded audit findings report', time: '3h ago', icon: FileText, color: 'text-purple-600' },
+    { type: 'update', user: 'You', action: 'updated compliance procedures', time: '5h ago', icon: Activity, color: 'text-amber-600' }
   ]);
 
   const [activityData, setActivityData] = React.useState([
@@ -182,10 +182,10 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
       if (Math.random() > 0.7) {
         setRecentActivityData(prev => {
           const newActivities = [
-            { type: 'alert', user: 'System', action: 'auto-cleared low risk alert', time: 'Just now', icon: CheckCircle, color: 'text-green-400' },
-            { type: 'review', user: 'Sarah Chen', action: 'started PEP screening', time: 'Just now', icon: Eye, color: 'text-blue-400' },
-            { type: 'alert', user: 'System', action: 'detected new adverse media', time: 'Just now', icon: AlertTriangle, color: 'text-red-400' },
-            { type: 'document', user: 'System', action: 'generated daily compliance report', time: 'Just now', icon: FileText, color: 'text-purple-400' }
+            { type: 'alert', user: 'System', action: 'auto-cleared low risk alert', time: 'Just now', icon: CheckCircle, color: 'text-green-600' },
+            { type: 'review', user: 'Sarah Chen', action: 'started PEP screening', time: 'Just now', icon: Eye, color: 'text-blue-600' },
+            { type: 'alert', user: 'System', action: 'detected new adverse media', time: 'Just now', icon: AlertTriangle, color: 'text-red-600' },
+            { type: 'document', user: 'System', action: 'generated daily compliance report', time: 'Just now', icon: FileText, color: 'text-purple-600' }
           ];
           const randomActivity = newActivities[Math.floor(Math.random() * newActivities.length)];
           return [randomActivity, ...prev.slice(0, 4)];
@@ -197,9 +197,9 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
 
   // Render dashboard based on role
   const renderComplianceOfficerDashboard = () => (
-    <div className="space-y-8 bg-[#1e293b] min-h-screen px-8 pb-8">
+    <div className="space-y-8 bg-white min-h-screen px-8 pb-8">
       {/* Welcome Section */}
-      <div className="bg-gradient-to-r from-[#0e7490] to-[#155e75] rounded-2xl p-12 text-white shadow-lg mt-8">
+      <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] rounded-2xl p-12 text-white shadow-lg mt-8">
         <div className="flex items-center gap-6 mb-6">
           <div className="text-6xl">{userAvatar}</div>
           <div>
@@ -256,13 +256,13 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
         <Card className="border-l-4 border-l-red-500 shadow-sm hover:shadow-md transition-all h-40 flex flex-col">
           <CardContent className="p-5 flex-1 flex flex-col justify-between">
             <div className="flex items-center justify-between">
-              <div className="text-4xl font-bold text-white">8</div>
+              <div className="text-4xl font-bold text-gray-900">8</div>
               <AlertTriangle className="w-8 h-8 text-red-500" />
             </div>
             <div>
-              <div className="text-sm font-bold text-slate-300 uppercase tracking-wide">Urgent Actions</div>
+              <div className="text-sm font-bold text-gray-700 uppercase tracking-wide">Urgent Actions</div>
               <div className="flex items-center justify-between mt-2">
-                <p className="text-[10px] text-red-400 font-black">+3 FROM YESTERDAY</p>
+                <p className="text-[10px] text-red-600 font-black">+3 FROM YESTERDAY</p>
                 <Button variant="link" className="text-[10px] p-0 h-auto font-black text-[#13B5EA]" onClick={onNavigateToCases}>VIEW ALL</Button>
               </div>
             </div>
@@ -272,13 +272,13 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
         <Card className="border-l-4 border-l-amber-500 shadow-sm hover:shadow-md transition-all h-40 flex flex-col">
           <CardContent className="p-5 flex-1 flex flex-col justify-between">
             <div className="flex items-center justify-between">
-              <div className="text-4xl font-bold text-white">23</div>
+              <div className="text-4xl font-bold text-gray-900">23</div>
               <Clock className="w-8 h-8 text-amber-500" />
             </div>
             <div>
-              <div className="text-sm font-bold text-slate-300 uppercase tracking-wide">Pending Approvals</div>
+              <div className="text-sm font-bold text-gray-700 uppercase tracking-wide">Pending Approvals</div>
               <div className="flex items-center justify-between mt-2">
-                <p className="text-[10px] text-slate-400 font-black">12 DUE THIS WEEK</p>
+                <p className="text-[10px] text-gray-500 font-black">12 DUE THIS WEEK</p>
                 <Button variant="link" className="text-[10px] p-0 h-auto font-black text-[#13B5EA]" onClick={onNavigateToCases}>REVIEW QUEUE</Button>
               </div>
             </div>
@@ -288,13 +288,13 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
         <Card className="border-l-4 border-l-green-500 shadow-sm hover:shadow-md transition-all h-40 flex flex-col">
           <CardContent className="p-5 flex-1 flex flex-col justify-between">
             <div className="flex items-center justify-between">
-              <div className="text-4xl font-bold text-white">34</div>
+              <div className="text-4xl font-bold text-gray-900">34</div>
               <CheckCircle className="w-8 h-8 text-green-500" />
             </div>
             <div>
-              <div className="text-sm font-bold text-slate-300 uppercase tracking-wide">Completed Today</div>
+              <div className="text-sm font-bold text-gray-700 uppercase tracking-wide">Completed Today</div>
               <div className="flex items-center justify-between mt-2">
-                <p className="text-[10px] text-green-400 font-black">+12% VS AVG</p>
+                <p className="text-[10px] text-green-600 font-black">+12% VS AVG</p>
                 <Button variant="link" className="text-[10px] p-0 h-auto font-black text-[#13B5EA]">DETAILS</Button>
               </div>
             </div>
@@ -304,13 +304,13 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
         <Card className="border-l-4 border-l-blue-500 shadow-sm hover:shadow-md transition-all h-40 flex flex-col">
           <CardContent className="p-5 flex-1 flex flex-col justify-between">
             <div className="flex items-center justify-between">
-              <div className="text-4xl font-bold text-white">92%</div>
+              <div className="text-4xl font-bold text-gray-900">92%</div>
               <Users className="w-8 h-8 text-blue-500" />
             </div>
             <div>
-              <div className="text-sm font-bold text-slate-300 uppercase tracking-wide">Team Performance</div>
+              <div className="text-sm font-bold text-gray-700 uppercase tracking-wide">Team Performance</div>
               <div className="flex items-center justify-between mt-2">
-                <p className="text-[10px] text-slate-400 font-black">TEAM AVG SCORE</p>
+                <p className="text-[10px] text-gray-500 font-black">TEAM AVG SCORE</p>
                 <Button variant="link" className="text-[10px] p-0 h-auto font-black text-[#13B5EA]">METRICS</Button>
               </div>
             </div>
@@ -372,7 +372,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
                     <div className="w-3 h-3 rounded-full" style={{ backgroundColor: item.color }} />
                     <div>
                       <div className="font-semibold text-sm">{item.value}</div>
-                      <div className="text-xs text-slate-300">{item.name}</div>
+                      <div className="text-xs text-gray-600">{item.name}</div>
                     </div>
                   </div>
                 ))}
@@ -383,15 +383,15 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
       </div>
 
       {/* Clients to Watch */}
-      <Card className="border-2 border-red-500/30 bg-red-500/10">
+      <Card className="border-2 border-red-200 bg-red-50">
         <CardHeader>
           <div className="flex items-center justify-between">
             <div>
-              <CardTitle className="flex items-center gap-2 text-red-300">
+              <CardTitle className="flex items-center gap-2 text-red-900">
                 <Eye className="w-5 h-5" />
                 Clients to Watch
               </CardTitle>
-              <CardDescription className="text-red-300">High-priority clients requiring immediate attention</CardDescription>
+              <CardDescription className="text-red-700">High-priority clients requiring immediate attention</CardDescription>
             </div>
             <Badge variant="destructive" className="text-base px-3 py-1">
               8 Active
@@ -409,7 +409,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
                 assignee: 'Sarah Chen',
                 urgency: 'critical',
                 icon: AlertTriangle,
-                color: 'text-red-400 bg-red-500/15'
+                color: 'text-red-600 bg-red-100'
               },
               {
                 name: 'GlobalTech Corporation',
@@ -419,7 +419,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
                 assignee: 'Emma Williams',
                 urgency: 'high',
                 icon: Flag,
-                color: 'text-orange-400 bg-orange-500/15'
+                color: 'text-orange-600 bg-orange-100'
               },
               {
                 name: 'Phoenix Ventures Ltd',
@@ -429,7 +429,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
                 assignee: 'Jessica Lee',
                 urgency: 'high',
                 icon: AlertCircle,
-                color: 'text-orange-400 bg-orange-500/15'
+                color: 'text-orange-600 bg-orange-100'
               },
               {
                 name: 'Summit Investment Partners',
@@ -439,7 +439,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
                 assignee: 'David Thompson',
                 urgency: 'medium',
                 icon: Bell,
-                color: 'text-amber-400 bg-amber-500/15'
+                color: 'text-amber-600 bg-amber-100'
               },
               {
                 name: 'Horizon Capital Group',
@@ -449,7 +449,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
                 assignee: 'Emma Williams',
                 urgency: 'medium',
                 icon: Activity,
-                color: 'text-amber-400 bg-amber-500/15'
+                color: 'text-amber-600 bg-amber-100'
               },
               {
                 name: 'Silverstone Enterprises',
@@ -459,12 +459,12 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
                 assignee: 'Sarah Chen',
                 urgency: 'medium',
                 icon: XCircle,
-                color: 'text-amber-400 bg-amber-500/15'
+                color: 'text-amber-600 bg-amber-100'
               }
             ].map((client, index) => (
               <div
                 key={index}
-                className={`p-4 bg-[#1e293b] rounded-lg border-2 ${client.urgency === 'critical' ? 'border-red-300' :
+                className={`p-4 bg-white rounded-lg border-2 ${client.urgency === 'critical' ? 'border-red-300' :
                     client.urgency === 'high' ? 'border-orange-300' :
                       'border-amber-300'
                   } hover:shadow-md transition-shadow`}
@@ -476,7 +476,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="font-bold text-white">{client.name}</span>
+                        <span className="font-bold text-gray-900">{client.name}</span>
                         <Badge
                           variant={client.urgency === 'critical' ? 'destructive' : 'default'}
                           className={
@@ -488,8 +488,8 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
                           {client.riskLevel}
                         </Badge>
                       </div>
-                      <div className="text-sm text-slate-300 font-medium mb-2">{client.reason}</div>
-                      <div className="flex items-center gap-4 text-xs text-slate-300">
+                      <div className="text-sm text-gray-700 font-medium mb-2">{client.reason}</div>
+                      <div className="flex items-center gap-4 text-xs text-gray-600">
                         <span className="flex items-center gap-1">
                           <Clock className="w-3 h-3" />
                           Open {client.daysOpen} {client.daysOpen === 1 ? 'day' : 'days'}
@@ -512,9 +512,9 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
                   </Button>
                 </div>
                 {client.urgency === 'critical' && (
-                  <div className="flex items-center gap-2 pt-3 border-t border-red-500/30">
-                    <AlertTriangle className="w-4 h-4 text-red-400" />
-                    <span className="text-xs font-semibold text-red-400">URGENT: Requires immediate compliance officer review</span>
+                  <div className="flex items-center gap-2 pt-3 border-t border-red-200">
+                    <AlertTriangle className="w-4 h-4 text-red-600" />
+                    <span className="text-xs font-semibold text-red-600">URGENT: Requires immediate compliance officer review</span>
                   </div>
                 )}
               </div>
@@ -544,10 +544,10 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
                 { client: 'Phoenix Ventures', action: 'Risk Assessment Update', risk: 'High', time: '1d ago', urgent: true },
                 { client: 'Metro Financial', action: 'KYC Refresh', risk: 'Medium', time: '2d ago', urgent: false }
               ].map((item, index) => (
-                <div key={index} className={`flex items-center justify-between p-3 rounded-lg border ${item.urgent ? 'bg-red-500/10 border-red-500/30' : 'bg-[#0f172a] border-white/10'}`}>
+                <div key={index} className={`flex items-center justify-between p-3 rounded-lg border ${item.urgent ? 'bg-red-50 border-red-200' : 'bg-gray-50 border-gray-200'}`}>
                   <div className="flex-1">
                     <div className="font-semibold text-sm">{item.client}</div>
-                    <div className="text-xs text-slate-300">{item.action}</div>
+                    <div className="text-xs text-gray-600">{item.action}</div>
                   </div>
                   <div className="flex items-center gap-2">
                     <Badge variant={item.risk === 'High' ? 'destructive' : item.risk === 'Medium' ? 'default' : 'secondary'} className="text-xs">
@@ -574,12 +574,12 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
             <div className="space-y-4">
               {recentActivityData.map((activity, index) => (
                 <div key={index} className="flex items-start gap-3">
-                  <div className={`w-8 h-8 rounded-full bg-[#0f172a] flex items-center justify-center flex-shrink-0 ${activity.color}`}>
+                  <div className={`w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 ${activity.color}`}>
                     <activity.icon className="w-4 h-4" />
                   </div>
                   <div className="flex-1">
                     <p className="text-sm"><span className="font-semibold">{activity.user}</span> {activity.action}</p>
-                    <p className="text-xs text-slate-400">{activity.time}</p>
+                    <p className="text-xs text-gray-500">{activity.time}</p>
                   </div>
                 </div>
               ))}
@@ -738,14 +738,14 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
                 { item: 'Annual Compliance Budget', type: 'Budget', priority: 'Medium' },
                 { item: 'New Jurisdiction Expansion', type: 'Strategic', priority: 'High' }
               ].map((approval, index) => (
-                <div key={index} className="p-3 bg-[#0f172a] rounded-lg border">
+                <div key={index} className="p-3 bg-gray-50 rounded-lg border">
                   <div className="flex items-start justify-between mb-1">
                     <div className="font-semibold text-sm">{approval.item}</div>
                     <Badge variant={approval.priority === 'High' ? 'destructive' : 'default'} className="text-xs">
                       {approval.priority}
                     </Badge>
                   </div>
-                  <div className="text-xs text-slate-300 mb-2">{approval.type}</div>
+                  <div className="text-xs text-gray-600 mb-2">{approval.type}</div>
                   <div className="flex gap-2">
                     <Button size="sm" variant="default" className="flex-1 h-7" onClick={() => {
                       setApprovalModalOpen(true);
@@ -799,15 +799,15 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
           <CardContent>
             <div className="space-y-3">
               {[
-                { insight: 'Onboarding efficiency improved 23% this quarter', icon: TrendingUp, color: 'text-green-400' },
-                { insight: '3 clients approaching high-risk threshold', icon: AlertTriangle, color: 'text-amber-400' },
-                { insight: 'Transaction monitoring accuracy at 97.8%', icon: Target, color: 'text-blue-400' },
-                { insight: 'Recommended: Update sanctions screening rules', icon: Shield, color: 'text-purple-400' },
-                { insight: 'Team capacity: 12% above industry average', icon: Users, color: 'text-green-400' }
+                { insight: 'Onboarding efficiency improved 23% this quarter', icon: TrendingUp, color: 'text-green-600' },
+                { insight: '3 clients approaching high-risk threshold', icon: AlertTriangle, color: 'text-amber-600' },
+                { insight: 'Transaction monitoring accuracy at 97.8%', icon: Target, color: 'text-blue-600' },
+                { insight: 'Recommended: Update sanctions screening rules', icon: Shield, color: 'text-purple-600' },
+                { insight: 'Team capacity: 12% above industry average', icon: Users, color: 'text-green-600' }
               ].map((item, index) => (
-                <div key={index} className="flex items-start gap-3 p-3 bg-[#0f172a] rounded-lg">
+                <div key={index} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
                   <item.icon className={`w-5 h-5 flex-shrink-0 ${item.color}`} />
-                  <p className="text-sm text-white">{item.insight}</p>
+                  <p className="text-sm text-gray-900">{item.insight}</p>
                 </div>
               ))}
             </div>
@@ -818,7 +818,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
   );
 
   const renderAnalystDashboard = () => (
-    <div className="space-y-8 bg-[#1e293b] min-h-screen px-8 pb-8">
+    <div className="space-y-8 bg-white min-h-screen px-8 pb-8">
       {/* Analyst Welcome */}
       <div className="bg-gradient-to-r from-cyan-600 to-blue-600 rounded-2xl p-12 text-white shadow-lg mt-8">
         <div className="flex items-center gap-6 mb-6">
@@ -862,18 +862,18 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
         <CardContent>
           <div className="space-y-2">
             {alertsQueueData.map((alert, index) => (
-              <div key={index} className={`flex items-center justify-between p-4 rounded-lg border-2 ${alert.risk === 'Critical' ? 'bg-red-500/10 border-red-300' :
-                  alert.risk === 'High' ? 'bg-orange-500/10 border-orange-300' :
-                    'bg-yellow-500/10 border-yellow-300'
+              <div key={index} className={`flex items-center justify-between p-4 rounded-lg border-2 ${alert.risk === 'Critical' ? 'bg-red-50 border-red-300' :
+                  alert.risk === 'High' ? 'bg-orange-50 border-orange-300' :
+                    'bg-yellow-50 border-yellow-300'
                 }`}>
                 <div className="flex items-center gap-4 flex-1">
                   <div className="text-center">
-                    <div className="text-xs text-slate-400">{alert.id}</div>
-                    <div className="text-xs text-slate-400">{alert.time}</div>
+                    <div className="text-xs text-gray-500">{alert.id}</div>
+                    <div className="text-xs text-gray-400">{alert.time}</div>
                   </div>
                   <div className="flex-1">
                     <div className="font-semibold">{alert.client}</div>
-                    <div className="text-sm text-slate-300">{alert.type} • {alert.amount}</div>
+                    <div className="text-sm text-gray-600">{alert.type} • {alert.amount}</div>
                   </div>
                   <Badge variant={alert.risk === 'Critical' || alert.risk === 'High' ? 'destructive' : 'default'}>
                     {alert.risk}
@@ -896,16 +896,16 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
           <CardContent>
             <div className="space-y-3">
               {activeCasesData.map((caseItem, index) => (
-                <div key={index} className="flex items-center justify-between p-3 bg-[#0f172a] rounded-lg border">
+                <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="font-mono text-xs text-slate-400">{caseItem.caseId}</span>
+                      <span className="font-mono text-xs text-gray-500">{caseItem.caseId}</span>
                       <Badge variant={caseItem.priority === 'High' ? 'destructive' : caseItem.priority === 'Medium' ? 'default' : 'secondary'} className="text-xs">
                         {caseItem.priority}
                       </Badge>
                     </div>
                     <div className="font-semibold text-sm">{caseItem.client}</div>
-                    <div className="text-xs text-slate-300">{caseItem.status} • {caseItem.days} days open</div>
+                    <div className="text-xs text-gray-600">{caseItem.status} • {caseItem.days} days open</div>
                   </div>
                   <Button size="sm" variant="ghost" onClick={() => navigate(`/${role}/review/${caseItem.client}`)}>
                     <ArrowRight className="w-4 h-4" />
@@ -934,13 +934,13 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
               </BarChart>
             </ResponsiveContainer>
             <div className="grid grid-cols-2 gap-4 mt-4">
-              <div className="p-3 bg-blue-500/10 rounded-lg">
-                <div className="text-2xl font-bold text-blue-400">67</div>
-                <div className="text-xs text-slate-300">Total Cases This Week</div>
+              <div className="p-3 bg-blue-50 rounded-lg">
+                <div className="text-2xl font-bold text-blue-600">67</div>
+                <div className="text-xs text-gray-600">Total Cases This Week</div>
               </div>
-              <div className="p-3 bg-green-500/10 rounded-lg">
-                <div className="text-2xl font-bold text-green-400">99</div>
-                <div className="text-xs text-slate-300">Total Reviews</div>
+              <div className="p-3 bg-green-50 rounded-lg">
+                <div className="text-2xl font-bold text-green-600">99</div>
+                <div className="text-xs text-gray-600">Total Reviews</div>
               </div>
             </div>
           </CardContent>
@@ -982,45 +982,45 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
 
       {/* Audit Findings */}
       <div className="grid grid-cols-3 gap-6">
-        <Card className="bg-red-500/10 border-red-500/30">
+        <Card className="bg-red-50 border-red-200">
           <CardHeader>
-            <CardTitle className="text-red-300 flex items-center gap-2">
+            <CardTitle className="text-red-900 flex items-center gap-2">
               <XCircle className="w-5 h-5" />
               Critical Findings
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-4xl font-bold text-red-400 mb-2">5</div>
+            <div className="text-4xl font-bold text-red-600 mb-2">5</div>
             <Progress value={28} className="mb-2" />
-            <p className="text-sm text-red-300">Require immediate action</p>
+            <p className="text-sm text-red-800">Require immediate action</p>
           </CardContent>
         </Card>
 
-        <Card className="bg-amber-500/10 border-amber-500/30">
+        <Card className="bg-amber-50 border-amber-200">
           <CardHeader>
-            <CardTitle className="text-amber-300 flex items-center gap-2">
+            <CardTitle className="text-amber-900 flex items-center gap-2">
               <AlertCircle className="w-5 h-5" />
               Medium Priority
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-4xl font-bold text-amber-400 mb-2">13</div>
+            <div className="text-4xl font-bold text-amber-600 mb-2">13</div>
             <Progress value={45} className="mb-2" />
-            <p className="text-sm text-amber-300">Review within 30 days</p>
+            <p className="text-sm text-amber-800">Review within 30 days</p>
           </CardContent>
         </Card>
 
-        <Card className="bg-green-500/10 border-green-500/30">
+        <Card className="bg-green-50 border-green-200">
           <CardHeader>
-            <CardTitle className="text-green-300 flex items-center gap-2">
+            <CardTitle className="text-green-900 flex items-center gap-2">
               <CheckCircle className="w-5 h-5" />
               Resolved This Month
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-4xl font-bold text-green-400 mb-2">47</div>
+            <div className="text-4xl font-bold text-green-600 mb-2">47</div>
             <Progress value={85} className="mb-2" />
-            <p className="text-sm text-green-300">Above target by 12%</p>
+            <p className="text-sm text-green-800">Above target by 12%</p>
           </CardContent>
         </Card>
       </div>
@@ -1074,7 +1074,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
                 { action: 'Flagged policy violation in Case-1023', status: 'error', time: '12h ago' },
                 { action: 'Generated compliance report for Q2', status: 'success', time: '18h ago' }
               ].map((activity, index) => (
-                <div key={index} className="flex items-start gap-3 p-3 bg-[#0f172a] rounded-lg">
+                <div key={index} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
                   <div className={`w-2 h-2 rounded-full mt-1.5 flex-shrink-0 ${activity.status === 'success' ? 'bg-green-500' :
                       activity.status === 'warning' ? 'bg-amber-500' :
                         activity.status === 'error' ? 'bg-red-500' :
@@ -1082,7 +1082,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
                     }`} />
                   <div className="flex-1">
                     <p className="text-sm font-medium">{activity.action}</p>
-                    <p className="text-xs text-slate-400">{activity.time}</p>
+                    <p className="text-xs text-gray-500">{activity.time}</p>
                   </div>
                 </div>
               ))}
@@ -1136,16 +1136,16 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
   };
 
   return (
-    <div className="bg-[#1e293b] min-h-screen">
+    <div className="bg-white min-h-screen">
       {renderDashboard()}
       {/* Approval Modal */}
       {approvalModalOpen && selectedApproval && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-          <div className="bg-[#1e293b] rounded-xl shadow-2xl max-w-2xl w-full">
-            <div className="p-6 border-b border-white/10 flex items-center justify-between">
+          <div className="bg-white rounded-xl shadow-2xl max-w-2xl w-full">
+            <div className="p-6 border-b border-gray-200 flex items-center justify-between">
               <div>
-                <h2 className="text-xl font-bold text-white">Review & Approve</h2>
-                <p className="text-sm text-slate-300 mt-1">{selectedApproval.item}</p>
+                <h2 className="text-xl font-bold text-gray-900">Review & Approve</h2>
+                <p className="text-sm text-gray-600 mt-1">{selectedApproval.item}</p>
               </div>
               <Button size="sm" variant="ghost" onClick={() => {
                 setApprovalModalOpen(false);
@@ -1156,14 +1156,14 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
             </div>
 
             <div className="p-6 space-y-4">
-              <div className="bg-[#0f172a] rounded-lg p-4 border border-white/10">
+              <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <p className="text-xs text-slate-300 mb-1">Type</p>
+                    <p className="text-xs text-gray-600 mb-1">Type</p>
                     <p className="font-semibold">{selectedApproval.type}</p>
                   </div>
                   <div>
-                    <p className="text-xs text-slate-300 mb-1">Priority</p>
+                    <p className="text-xs text-gray-600 mb-1">Priority</p>
                     <Badge variant={selectedApproval.priority === 'High' ? 'destructive' : 'default'}>
                       {selectedApproval.priority}
                     </Badge>
@@ -1172,29 +1172,29 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Approval Comments <span className="text-red-500">*</span>
                 </label>
                 <textarea
                   rows={4}
-                  className="w-full px-4 py-3 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   value={approvalComment}
                   onChange={(e) => setApprovalComment(e.target.value)}
                   placeholder="Provide details of your approval decision..."
                 />
-                <p className="text-xs text-slate-400 mt-1">
+                <p className="text-xs text-gray-500 mt-1">
                   Comments will be recorded in the audit trail
                 </p>
               </div>
 
-              <div className="bg-amber-500/10 border-2 border-amber-300 rounded-lg p-4">
+              <div className="bg-amber-50 border-2 border-amber-300 rounded-lg p-4">
                 <div className="flex items-start gap-3">
-                  <AlertTriangle className="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0" />
+                  <AlertTriangle className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
                   <div className="flex-1">
-                    <p className="text-sm font-semibold text-amber-300 mb-1">
+                    <p className="text-sm font-semibold text-amber-900 mb-1">
                       Dual Control Required
                     </p>
-                    <p className="text-sm text-amber-300">
+                    <p className="text-sm text-amber-800">
                       This action requires approval from 2 authorized users. Your approval will be the 1st of 2 required.
                     </p>
                   </div>
@@ -1202,7 +1202,7 @@ export function PersonalizedDashboard({ userName, userRole, userTitle, userAvata
               </div>
             </div>
 
-            <div className="p-6 border-t border-white/10 flex items-center justify-between">
+            <div className="p-6 border-t border-gray-200 flex items-center justify-between">
               <Button
                 variant="outline"
                 onClick={() => {

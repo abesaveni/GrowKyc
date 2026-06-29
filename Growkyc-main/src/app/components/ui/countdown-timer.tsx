@@ -38,7 +38,7 @@ export function CountdownTimer({ endDate, end, onExpire, className, variant = 'd
 
   if (timeLeft.total <= 0) {
     return (
-      <div className={cn('text-red-400 font-semibold', className)}>
+      <div className={cn('text-red-600 font-semibold', className)}>
         Auction Ended
       </div>
     );
@@ -47,7 +47,7 @@ export function CountdownTimer({ endDate, end, onExpire, className, variant = 'd
   if (variant === 'compact') {
     return (
       <div className={cn('flex items-center gap-2 text-sm', className)}>
-        <Clock className="w-4 h-4 text-slate-400" />
+        <Clock className="w-4 h-4 text-gray-500" />
         <span>
           {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m
         </span>
@@ -68,7 +68,7 @@ export function CountdownTimer({ endDate, end, onExpire, className, variant = 'd
 
   return (
     <div className={cn('flex items-center gap-2', className)}>
-      <Clock className="w-5 h-5 text-slate-400" />
+      <Clock className="w-5 h-5 text-gray-500" />
       <span className="font-semibold">
         {timeLeft.days > 0 && `${timeLeft.days}d `}
         {String(timeLeft.hours).padStart(2, '0')}:
@@ -85,7 +85,7 @@ function TimeUnit({ value, label }: { value: number; label: string }) {
       <div className="bg-gray-900 text-white rounded-lg px-4 py-2 min-w-[60px] text-center">
         <span className="text-2xl font-bold">{String(value).padStart(2, '0')}</span>
       </div>
-      <span className="text-xs text-slate-300 mt-1">{label}</span>
+      <span className="text-xs text-gray-600 mt-1">{label}</span>
     </div>
   );
 }

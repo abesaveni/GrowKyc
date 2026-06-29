@@ -190,8 +190,8 @@ export function AIModule({ role }: AIModuleProps) {
             <Brain className="w-7 h-7 text-white" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-slate-100">AI Intelligence</h1>
-            <p className="text-slate-300">AI-powered insights, predictions, and automation</p>
+            <h1 className="text-2xl font-bold text-gray-900">AI Intelligence</h1>
+            <p className="text-gray-600">AI-powered insights, predictions, and automation</p>
           </div>
         </div>
         <Button className="bg-purple-600 hover:bg-purple-700 text-white">
@@ -202,46 +202,46 @@ export function AIModule({ role }: AIModuleProps) {
 
       {/* AI Stats */}
       <div className="grid grid-cols-4 gap-4">
-        <div className="bg-gradient-to-br from-purple-50 to-indigo-50 border border-purple-500/30 rounded-lg p-4">
+        <div className="bg-gradient-to-br from-purple-50 to-indigo-50 border border-purple-200 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-sm font-medium text-purple-300">Insights Generated</p>
-            <Sparkles className="w-4 h-4 text-purple-400" />
+            <p className="text-sm font-medium text-purple-700">Insights Generated</p>
+            <Sparkles className="w-4 h-4 text-purple-600" />
           </div>
-          <p className="text-2xl font-bold text-purple-300">24</p>
-          <p className="text-xs text-purple-400 mt-1">This week</p>
+          <p className="text-2xl font-bold text-purple-900">24</p>
+          <p className="text-xs text-purple-600 mt-1">This week</p>
         </div>
 
-        <div className="bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-500/30 rounded-lg p-4">
+        <div className="bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-200 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-sm font-medium text-blue-300">Accuracy Rate</p>
-            <Target className="w-4 h-4 text-blue-400" />
+            <p className="text-sm font-medium text-blue-700">Accuracy Rate</p>
+            <Target className="w-4 h-4 text-blue-600" />
           </div>
-          <p className="text-2xl font-bold text-blue-300">87%</p>
-          <p className="text-xs text-blue-400 mt-1">Prediction accuracy</p>
+          <p className="text-2xl font-bold text-blue-900">87%</p>
+          <p className="text-xs text-blue-600 mt-1">Prediction accuracy</p>
         </div>
 
-        <div className="bg-gradient-to-br from-green-50 to-emerald-50 border border-green-500/30 rounded-lg p-4">
+        <div className="bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-sm font-medium text-green-300">Actions Taken</p>
-            <Zap className="w-4 h-4 text-green-400" />
+            <p className="text-sm font-medium text-green-700">Actions Taken</p>
+            <Zap className="w-4 h-4 text-green-600" />
           </div>
-          <p className="text-2xl font-bold text-green-300">156</p>
-          <p className="text-xs text-green-400 mt-1">Automated tasks</p>
+          <p className="text-2xl font-bold text-green-900">156</p>
+          <p className="text-xs text-green-600 mt-1">Automated tasks</p>
         </div>
 
-        <div className="bg-gradient-to-br from-orange-50 to-amber-50 border border-orange-500/30 rounded-lg p-4">
+        <div className="bg-gradient-to-br from-orange-50 to-amber-50 border border-orange-200 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-sm font-medium text-orange-300">Time Saved</p>
-            <Clock className="w-4 h-4 text-orange-400" />
+            <p className="text-sm font-medium text-orange-700">Time Saved</p>
+            <Clock className="w-4 h-4 text-orange-600" />
           </div>
-          <p className="text-2xl font-bold text-orange-300">42h</p>
-          <p className="text-xs text-orange-400 mt-1">This month</p>
+          <p className="text-2xl font-bold text-orange-900">42h</p>
+          <p className="text-xs text-orange-600 mt-1">This month</p>
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="bg-white border border-white/10 rounded-lg overflow-hidden">
-        <div className="border-b border-white/10 flex">
+      <div className="bg-white border border-gray-300 rounded-lg overflow-hidden">
+        <div className="border-b border-gray-300 flex">
           {[
             { id: 'insights', label: 'AI Insights', icon: Lightbulb },
             { id: 'predictions', label: 'Deal Predictions', icon: TrendingUp },
@@ -255,8 +255,8 @@ export function AIModule({ role }: AIModuleProps) {
                 onClick={() => setActiveTab(tab.id as any)}
                 className={`flex items-center gap-2 px-6 py-4 border-b-2 transition-colors ${
                   activeTab === tab.id
-                    ? 'border-purple-600 text-purple-400 font-medium bg-purple-500/10'
-                    : 'border-transparent text-slate-300 hover:text-slate-100 hover:bg-white/5'
+                    ? 'border-purple-600 text-purple-600 font-medium bg-purple-50'
+                    : 'border-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -270,8 +270,8 @@ export function AIModule({ role }: AIModuleProps) {
           {activeTab === 'insights' && (
             <div className="space-y-4">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-slate-100">AI-Generated Business Insights</h3>
-                <span className="text-sm text-slate-300">Based on 90 days of data</span>
+                <h3 className="font-semibold text-gray-900">AI-Generated Business Insights</h3>
+                <span className="text-sm text-gray-600">Based on 90 days of data</span>
               </div>
 
               <div className="space-y-3">
@@ -280,43 +280,43 @@ export function AIModule({ role }: AIModuleProps) {
                     key={insight.id}
                     className={`border rounded-lg p-5 ${
                       insight.priority === 'high'
-                        ? 'border-red-300 bg-red-500/10'
-                        : 'border-yellow-300 bg-yellow-500/10'
+                        ? 'border-red-300 bg-red-50'
+                        : 'border-yellow-300 bg-yellow-50'
                     }`}
                   >
                     <div className="flex items-start justify-between mb-3">
                       <div className="flex items-start gap-3 flex-1">
                         <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                          insight.type === 'revenue' ? 'bg-green-500/15' :
-                          insight.type === 'churn' ? 'bg-red-500/15' :
-                          insight.type === 'conversion' ? 'bg-blue-500/15' :
-                          'bg-purple-500/15'
+                          insight.type === 'revenue' ? 'bg-green-100' :
+                          insight.type === 'churn' ? 'bg-red-100' :
+                          insight.type === 'conversion' ? 'bg-blue-100' :
+                          'bg-purple-100'
                         }`}>
-                          {insight.type === 'revenue' && <DollarSign className="w-5 h-5 text-green-400" />}
-                          {insight.type === 'churn' && <AlertCircle className="w-5 h-5 text-red-400" />}
-                          {insight.type === 'conversion' && <Target className="w-5 h-5 text-blue-400" />}
-                          {insight.type === 'efficiency' && <Zap className="w-5 h-5 text-purple-400" />}
+                          {insight.type === 'revenue' && <DollarSign className="w-5 h-5 text-green-600" />}
+                          {insight.type === 'churn' && <AlertCircle className="w-5 h-5 text-red-600" />}
+                          {insight.type === 'conversion' && <Target className="w-5 h-5 text-blue-600" />}
+                          {insight.type === 'efficiency' && <Zap className="w-5 h-5 text-purple-600" />}
                         </div>
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-2">
-                            <h4 className="font-semibold text-slate-100">{insight.title}</h4>
+                            <h4 className="font-semibold text-gray-900">{insight.title}</h4>
                             <span className={`px-2 py-1 rounded text-xs font-medium ${
                               insight.priority === 'high'
-                                ? 'bg-red-500/15 text-red-300'
-                                : 'bg-yellow-500/15 text-yellow-300'
+                                ? 'bg-red-100 text-red-800'
+                                : 'bg-yellow-100 text-yellow-800'
                             }`}>
                               {insight.priority} priority
                             </span>
                           </div>
-                          <p className="text-sm text-slate-300 mb-3">{insight.description}</p>
+                          <p className="text-sm text-gray-700 mb-3">{insight.description}</p>
                           <div className="flex items-center gap-4 text-sm">
                             <div className="flex items-center gap-2">
-                              <TrendingUp className="w-4 h-4 text-green-400" />
-                              <span className="font-semibold text-green-300">{insight.impact}</span>
+                              <TrendingUp className="w-4 h-4 text-green-600" />
+                              <span className="font-semibold text-green-700">{insight.impact}</span>
                             </div>
                             <div className="flex items-center gap-2">
-                              <Target className="w-4 h-4 text-slate-300" />
-                              <span className="text-slate-300">{insight.confidence}% confidence</span>
+                              <Target className="w-4 h-4 text-gray-600" />
+                              <span className="text-gray-600">{insight.confidence}% confidence</span>
                             </div>
                           </div>
                         </div>
@@ -335,30 +335,30 @@ export function AIModule({ role }: AIModuleProps) {
           {activeTab === 'predictions' && (
             <div className="space-y-4">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-slate-100">AI Deal Close Predictions</h3>
-                <span className="text-sm text-slate-300">Updated in real-time</span>
+                <h3 className="font-semibold text-gray-900">AI Deal Close Predictions</h3>
+                <span className="text-sm text-gray-600">Updated in real-time</span>
               </div>
 
               <div className="space-y-4">
                 {dealPredictions.map((deal, idx) => (
-                  <div key={idx} className="border border-white/10 rounded-lg p-5">
+                  <div key={idx} className="border border-gray-300 rounded-lg p-5">
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex-1">
-                        <h4 className="font-semibold text-slate-100 mb-1">{deal.dealName}</h4>
-                        <p className="text-sm text-slate-300">{deal.client}</p>
+                        <h4 className="font-semibold text-gray-900 mb-1">{deal.dealName}</h4>
+                        <p className="text-sm text-gray-600">{deal.client}</p>
                       </div>
                       <div className="text-right">
-                        <p className="text-2xl font-bold text-slate-100">${(deal.value / 1000).toFixed(0)}K</p>
-                        <p className="text-xs text-slate-400">{deal.currentStage}</p>
+                        <p className="text-2xl font-bold text-gray-900">${(deal.value / 1000).toFixed(0)}K</p>
+                        <p className="text-xs text-gray-500">{deal.currentStage}</p>
                       </div>
                     </div>
 
                     <div className="mb-4">
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-sm font-medium text-slate-300">Close Probability</span>
-                        <span className="text-sm font-bold text-slate-100">{deal.closeProbability}%</span>
+                        <span className="text-sm font-medium text-gray-700">Close Probability</span>
+                        <span className="text-sm font-bold text-gray-900">{deal.closeProbability}%</span>
                       </div>
-                      <div className="h-3 bg-white/10 rounded-full">
+                      <div className="h-3 bg-gray-200 rounded-full">
                         <div
                           className={`h-3 rounded-full ${
                             deal.closeProbability >= 80 ? 'bg-green-600' :
@@ -370,23 +370,23 @@ export function AIModule({ role }: AIModuleProps) {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-4 mb-4 pb-4 border-b border-white/10">
+                    <div className="grid grid-cols-2 gap-4 mb-4 pb-4 border-b border-gray-200">
                       <div>
-                        <p className="text-xs text-slate-400 mb-1">Predicted Close Date</p>
-                        <p className="text-sm font-medium text-slate-100">{deal.predictedCloseDate}</p>
+                        <p className="text-xs text-gray-500 mb-1">Predicted Close Date</p>
+                        <p className="text-sm font-medium text-gray-900">{deal.predictedCloseDate}</p>
                       </div>
                       <div>
-                        <p className="text-xs text-slate-400 mb-1">Risk Factors</p>
-                        <p className="text-sm font-medium text-slate-100">{deal.riskFactors.length} identified</p>
+                        <p className="text-xs text-gray-500 mb-1">Risk Factors</p>
+                        <p className="text-sm font-medium text-gray-900">{deal.riskFactors.length} identified</p>
                       </div>
                     </div>
 
                     {deal.riskFactors.length > 0 && (
                       <div className="mb-4">
-                        <p className="text-sm font-semibold text-red-300 mb-2">⚠️ Risk Factors</p>
+                        <p className="text-sm font-semibold text-red-700 mb-2">⚠️ Risk Factors</p>
                         <ul className="space-y-1">
                           {deal.riskFactors.map((risk, i) => (
-                            <li key={i} className="text-sm text-red-400 flex items-center gap-2">
+                            <li key={i} className="text-sm text-red-600 flex items-center gap-2">
                               <div className="w-1 h-1 rounded-full bg-red-600" />
                               {risk}
                             </li>
@@ -396,12 +396,12 @@ export function AIModule({ role }: AIModuleProps) {
                     )}
 
                     <div>
-                      <p className="text-sm font-semibold text-green-300 mb-2">✓ AI Recommendations</p>
+                      <p className="text-sm font-semibold text-green-700 mb-2">✓ AI Recommendations</p>
                       <div className="space-y-2">
                         {deal.recommendations.map((rec, i) => (
                           <div key={i} className="flex items-center gap-2">
-                            <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
-                            <span className="text-sm text-slate-300">{rec}</span>
+                            <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
+                            <span className="text-sm text-gray-700">{rec}</span>
                           </div>
                         ))}
                       </div>
@@ -415,41 +415,41 @@ export function AIModule({ role }: AIModuleProps) {
           {activeTab === 'suggestions' && (
             <div className="space-y-4">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-slate-100">Smart Action Suggestions</h3>
-                <span className="text-sm text-slate-300">AI-powered recommendations</span>
+                <h3 className="font-semibold text-gray-900">Smart Action Suggestions</h3>
+                <span className="text-sm text-gray-600">AI-powered recommendations</span>
               </div>
 
               <div className="space-y-3">
                 {smartSuggestions.map((suggestion) => (
-                  <div key={suggestion.id} className="border border-white/10 rounded-lg p-5 hover:border-purple-300 transition-colors">
+                  <div key={suggestion.id} className="border border-gray-300 rounded-lg p-5 hover:border-purple-300 transition-colors">
                     <div className="flex items-start justify-between mb-3">
                       <div className="flex items-start gap-3 flex-1">
                         <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                          suggestion.category === 'email' ? 'bg-blue-500/15' :
-                          suggestion.category === 'task' ? 'bg-purple-500/15' :
-                          suggestion.category === 'lead-score' ? 'bg-green-500/15' :
-                          'bg-orange-500/15'
+                          suggestion.category === 'email' ? 'bg-blue-100' :
+                          suggestion.category === 'task' ? 'bg-purple-100' :
+                          suggestion.category === 'lead-score' ? 'bg-green-100' :
+                          'bg-orange-100'
                         }`}>
-                          {suggestion.category === 'email' && <Mail className="w-5 h-5 text-blue-400" />}
-                          {suggestion.category === 'task' && <CheckCircle className="w-5 h-5 text-purple-400" />}
-                          {suggestion.category === 'lead-score' && <Star className="w-5 h-5 text-green-400" />}
-                          {suggestion.category === 'opportunity' && <TrendingUp className="w-5 h-5 text-orange-400" />}
+                          {suggestion.category === 'email' && <Mail className="w-5 h-5 text-blue-600" />}
+                          {suggestion.category === 'task' && <CheckCircle className="w-5 h-5 text-purple-600" />}
+                          {suggestion.category === 'lead-score' && <Star className="w-5 h-5 text-green-600" />}
+                          {suggestion.category === 'opportunity' && <TrendingUp className="w-5 h-5 text-orange-600" />}
                         </div>
                         <div className="flex-1">
-                          <h4 className="font-semibold text-slate-100 mb-1">{suggestion.title}</h4>
-                          <p className="text-sm text-slate-300 mb-2">{suggestion.description}</p>
-                          <div className="p-3 bg-white/5 rounded-lg mb-3">
-                            <p className="text-sm text-slate-300 italic">{suggestion.preview}</p>
+                          <h4 className="font-semibold text-gray-900 mb-1">{suggestion.title}</h4>
+                          <p className="text-sm text-gray-600 mb-2">{suggestion.description}</p>
+                          <div className="p-3 bg-gray-50 rounded-lg mb-3">
+                            <p className="text-sm text-gray-700 italic">{suggestion.preview}</p>
                           </div>
                           <div className="flex items-center gap-2">
-                            <span className="text-xs text-slate-400">AI Confidence:</span>
-                            <div className="flex-1 h-1.5 bg-white/10 rounded-full max-w-24">
+                            <span className="text-xs text-gray-500">AI Confidence:</span>
+                            <div className="flex-1 h-1.5 bg-gray-200 rounded-full max-w-24">
                               <div
                                 className="h-1.5 bg-purple-600 rounded-full"
                                 style={{ width: `${suggestion.confidence}%` }}
                               />
                             </div>
-                            <span className="text-xs font-semibold text-purple-300">{suggestion.confidence}%</span>
+                            <span className="text-xs font-semibold text-purple-700">{suggestion.confidence}%</span>
                           </div>
                         </div>
                       </div>
@@ -459,11 +459,11 @@ export function AIModule({ role }: AIModuleProps) {
                           Apply
                         </Button>
                         <div className="flex gap-1">
-                          <button className="p-1.5 hover:bg-white/5 rounded">
-                            <ThumbsUp className="w-4 h-4 text-slate-300" />
+                          <button className="p-1.5 hover:bg-gray-100 rounded">
+                            <ThumbsUp className="w-4 h-4 text-gray-600" />
                           </button>
-                          <button className="p-1.5 hover:bg-white/5 rounded">
-                            <ThumbsDown className="w-4 h-4 text-slate-300" />
+                          <button className="p-1.5 hover:bg-gray-100 rounded">
+                            <ThumbsDown className="w-4 h-4 text-gray-600" />
                           </button>
                         </div>
                       </div>
@@ -477,7 +477,7 @@ export function AIModule({ role }: AIModuleProps) {
           {activeTab === 'automation' && (
             <div className="space-y-4">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-slate-100">Active Automation Workflows</h3>
+                <h3 className="font-semibold text-gray-900">Active Automation Workflows</h3>
                 <Button className="bg-purple-600 hover:bg-purple-700 text-white">
                   <Plus className="w-4 h-4 mr-2" />
                   New Workflow
@@ -486,43 +486,43 @@ export function AIModule({ role }: AIModuleProps) {
 
               <div className="space-y-4">
                 {automationWorkflows.map((workflow) => (
-                  <div key={workflow.id} className="border border-white/10 rounded-lg p-5">
+                  <div key={workflow.id} className="border border-gray-300 rounded-lg p-5">
                     <div className="flex items-start justify-between mb-4">
                       <div>
                         <div className="flex items-center gap-3 mb-2">
-                          <h4 className="font-semibold text-slate-100">{workflow.name}</h4>
+                          <h4 className="font-semibold text-gray-900">{workflow.name}</h4>
                           <span className={`px-2 py-1 rounded text-xs font-medium ${
                             workflow.status === 'active'
-                              ? 'bg-green-500/15 text-green-300'
-                              : 'bg-white/5 text-slate-100'
+                              ? 'bg-green-100 text-green-800'
+                              : 'bg-gray-100 text-gray-800'
                           }`}>
                             {workflow.status}
                           </span>
                         </div>
-                        <p className="text-sm text-slate-300">Trigger: {workflow.trigger}</p>
+                        <p className="text-sm text-gray-600">Trigger: {workflow.trigger}</p>
                       </div>
                       <div className="text-right">
-                        <p className="text-2xl font-bold text-purple-300">{workflow.conversionRate}%</p>
-                        <p className="text-xs text-slate-400">Conversion rate</p>
+                        <p className="text-2xl font-bold text-purple-900">{workflow.conversionRate}%</p>
+                        <p className="text-xs text-gray-500">Conversion rate</p>
                       </div>
                     </div>
 
                     <div className="grid grid-cols-4 gap-4 mb-4">
-                      <div className="bg-blue-500/10 rounded-lg p-3">
-                        <p className="text-xs text-blue-300 mb-1">Sent</p>
-                        <p className="text-lg font-bold text-blue-300">{workflow.performance.sent}</p>
+                      <div className="bg-blue-50 rounded-lg p-3">
+                        <p className="text-xs text-blue-700 mb-1">Sent</p>
+                        <p className="text-lg font-bold text-blue-900">{workflow.performance.sent}</p>
                       </div>
-                      <div className="bg-purple-500/10 rounded-lg p-3">
-                        <p className="text-xs text-purple-300 mb-1">Opened</p>
-                        <p className="text-lg font-bold text-purple-300">{workflow.performance.opened}</p>
+                      <div className="bg-purple-50 rounded-lg p-3">
+                        <p className="text-xs text-purple-700 mb-1">Opened</p>
+                        <p className="text-lg font-bold text-purple-900">{workflow.performance.opened}</p>
                       </div>
-                      <div className="bg-indigo-500/10 rounded-lg p-3">
-                        <p className="text-xs text-indigo-300 mb-1">Clicked</p>
-                        <p className="text-lg font-bold text-indigo-300">{workflow.performance.clicked}</p>
+                      <div className="bg-indigo-50 rounded-lg p-3">
+                        <p className="text-xs text-indigo-700 mb-1">Clicked</p>
+                        <p className="text-lg font-bold text-indigo-900">{workflow.performance.clicked}</p>
                       </div>
-                      <div className="bg-green-500/10 rounded-lg p-3">
-                        <p className="text-xs text-green-300 mb-1">Converted</p>
-                        <p className="text-lg font-bold text-green-300">{workflow.performance.converted}</p>
+                      <div className="bg-green-50 rounded-lg p-3">
+                        <p className="text-xs text-green-700 mb-1">Converted</p>
+                        <p className="text-lg font-bold text-green-900">{workflow.performance.converted}</p>
                       </div>
                     </div>
 

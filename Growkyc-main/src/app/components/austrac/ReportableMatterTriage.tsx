@@ -214,10 +214,10 @@ export function ReportableMatterTriage({ caseId, onBack }: ReportableMatterTriag
 
   const getSeverityBadge = (severity: string) => {
     const config = {
-      low: 'bg-green-500/15 text-green-300 border-green-300',
-      medium: 'bg-amber-500/15 text-amber-300 border-amber-300',
-      high: 'bg-orange-500/15 text-orange-300 border-orange-300',
-      critical: 'bg-red-500/15 text-red-300 border-red-300'
+      low: 'bg-green-100 text-green-700 border-green-300',
+      medium: 'bg-amber-100 text-amber-700 border-amber-300',
+      high: 'bg-orange-100 text-orange-700 border-orange-300',
+      critical: 'bg-red-100 text-red-700 border-red-300'
     };
     return (
       <Badge className={`${config[severity as keyof typeof config]} text-xs px-2 py-1`}>
@@ -227,7 +227,7 @@ export function ReportableMatterTriage({ caseId, onBack }: ReportableMatterTriag
   };
 
   return (
-    <div className="min-h-screen bg-white/5 p-4 md:p-8">
+    <div className="min-h-screen bg-gray-50 p-4 md:p-8">
       <div className="max-w-[1800px] mx-auto space-y-6">
         {/* Header */}
         <div className="bg-gradient-to-r from-red-900 via-red-800 to-orange-900 rounded-lg p-6 text-white shadow-xl">
@@ -241,7 +241,7 @@ export function ReportableMatterTriage({ caseId, onBack }: ReportableMatterTriag
                 <p className="text-sm md:text-base text-white/90">Case ID: {caseInfo.caseId}</p>
               </div>
             </div>
-            <Button onClick={onBack} className="bg-white text-red-300 hover:bg-red-500/10 w-full sm:w-auto">
+            <Button onClick={onBack} className="bg-white text-red-900 hover:bg-red-50 w-full sm:w-auto">
               Return to Control Centre
             </Button>
           </div>
@@ -253,71 +253,71 @@ export function ReportableMatterTriage({ caseId, onBack }: ReportableMatterTriag
           <Card className="border-2 border-blue-300 shadow-lg">
             <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
               <CardTitle className="flex items-center gap-2">
-                <FileText className="w-6 h-6 text-blue-400" />
+                <FileText className="w-6 h-6 text-blue-600" />
                 Case Summary
               </CardTitle>
             </CardHeader>
             <CardContent className="p-6 space-y-4">
               <div>
-                <p className="text-xs text-slate-300 mb-1">Case ID</p>
-                <p className="font-mono font-bold text-blue-300 text-lg">{caseInfo.caseId}</p>
+                <p className="text-xs text-gray-600 mb-1">Case ID</p>
+                <p className="font-mono font-bold text-blue-900 text-lg">{caseInfo.caseId}</p>
               </div>
 
               <div>
-                <p className="text-xs text-slate-300 mb-1">Subject Name</p>
+                <p className="text-xs text-gray-600 mb-1">Subject Name</p>
                 <div className="flex items-center gap-2">
-                  <Building className="w-5 h-5 text-slate-300" />
-                  <p className="font-bold text-slate-100">{caseInfo.subjectName}</p>
+                  <Building className="w-5 h-5 text-gray-600" />
+                  <p className="font-bold text-gray-900">{caseInfo.subjectName}</p>
                 </div>
               </div>
 
               <div>
-                <p className="text-xs text-slate-300 mb-1">Subject Type</p>
-                <Badge variant="outline" className="bg-blue-500/10 text-blue-300 border-blue-300">
+                <p className="text-xs text-gray-600 mb-1">Subject Type</p>
+                <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-300">
                   {caseInfo.subjectType}
                 </Badge>
               </div>
 
               <div>
-                <p className="text-xs text-slate-300 mb-1">Linked Client</p>
-                <p className="font-mono text-sm text-slate-100">{caseInfo.linkedClient}</p>
+                <p className="text-xs text-gray-600 mb-1">Linked Client</p>
+                <p className="font-mono text-sm text-gray-900">{caseInfo.linkedClient}</p>
               </div>
 
               <div className="pt-3 border-t">
-                <p className="text-xs text-slate-300 mb-2">Trigger Source</p>
-                <Badge className="bg-red-500/15 text-red-300 border-red-300 mb-2">
+                <p className="text-xs text-gray-600 mb-2">Trigger Source</p>
+                <Badge className="bg-red-100 text-red-700 border-red-300 mb-2">
                   <Shield className="w-3 h-3 mr-1" />
                   {caseInfo.triggerSource}
                 </Badge>
-                <p className="text-xs text-slate-300">Triggered: {caseInfo.triggerDate}</p>
+                <p className="text-xs text-gray-700">Triggered: {caseInfo.triggerDate}</p>
               </div>
 
               <div className="pt-3 border-t">
-                <p className="text-xs text-slate-300 mb-2">Current Risk Band</p>
-                <Badge className="bg-red-500/15 text-red-300 border-red-300 text-sm px-3 py-1">
+                <p className="text-xs text-gray-600 mb-2">Current Risk Band</p>
+                <Badge className="bg-red-100 text-red-700 border-red-300 text-sm px-3 py-1">
                   {caseInfo.currentRiskBand.toUpperCase()}
                 </Badge>
               </div>
 
               <div className="pt-3 border-t">
-                <p className="text-xs text-slate-300 mb-2">Service Status</p>
+                <p className="text-xs text-gray-600 mb-2">Service Status</p>
                 <div className="flex items-center gap-2">
-                  <Activity className="w-4 h-4 text-amber-400" />
-                  <p className="text-sm text-amber-300 font-semibold">{caseInfo.serviceStatus}</p>
+                  <Activity className="w-4 h-4 text-amber-600" />
+                  <p className="text-sm text-amber-700 font-semibold">{caseInfo.serviceStatus}</p>
                 </div>
               </div>
 
               <div className="pt-3 border-t">
-                <p className="text-xs text-slate-300 mb-2">Monitoring Status</p>
+                <p className="text-xs text-gray-600 mb-2">Monitoring Status</p>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                  <p className="text-sm text-green-300 font-semibold">{caseInfo.monitoringStatus}</p>
+                  <p className="text-sm text-green-700 font-semibold">{caseInfo.monitoringStatus}</p>
                 </div>
               </div>
 
               <div className="pt-3 border-t">
-                <p className="text-xs text-slate-300 mb-2">Case Status</p>
-                <Badge className={caseInfo.status === 'REPORTABLE' ? 'bg-red-600 text-white text-sm px-3 py-1 font-bold' : 'bg-blue-500/15 text-blue-300 border-blue-300 text-sm px-3 py-1'}>
+                <p className="text-xs text-gray-600 mb-2">Case Status</p>
+                <Badge className={caseInfo.status === 'REPORTABLE' ? 'bg-red-600 text-white text-sm px-3 py-1 font-bold' : 'bg-blue-100 text-blue-700 border-blue-300 text-sm px-3 py-1'}>
                   {caseInfo.status.replace('_', ' ')}
                 </Badge>
               </div>
@@ -328,40 +328,40 @@ export function ReportableMatterTriage({ caseId, onBack }: ReportableMatterTriag
           <Card className="border-2 border-orange-300 shadow-lg">
             <CardHeader className="bg-gradient-to-r from-orange-50 to-amber-50 border-b">
               <CardTitle className="flex items-center gap-2">
-                <AlertTriangle className="w-6 h-6 text-orange-400" />
+                <AlertTriangle className="w-6 h-6 text-orange-600" />
                 Trigger Context
               </CardTitle>
-              <p className="text-sm text-slate-300 mt-1">What caused this case</p>
+              <p className="text-sm text-gray-600 mt-1">What caused this case</p>
             </CardHeader>
             <CardContent className="p-6 space-y-4">
               {triggerContexts.map((trigger) => (
                 <div
                   key={trigger.id}
                   className={`p-4 rounded-lg border-2 ${
-                    trigger.severity === 'critical' ? 'border-red-300 bg-red-500/10' :
-                    trigger.severity === 'high' ? 'border-orange-300 bg-orange-500/10' :
-                    trigger.severity === 'medium' ? 'border-amber-300 bg-amber-500/10' :
-                    'border-green-300 bg-green-500/10'
+                    trigger.severity === 'critical' ? 'border-red-300 bg-red-50' :
+                    trigger.severity === 'high' ? 'border-orange-300 bg-orange-50' :
+                    trigger.severity === 'medium' ? 'border-amber-300 bg-amber-50' :
+                    'border-green-300 bg-green-50'
                   }`}
                 >
                   <div className="flex items-start justify-between mb-3">
                     <div>
-                      <Badge variant="outline" className="bg-blue-500/10 text-blue-300 border-blue-300 text-xs mb-2">
+                      <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-300 text-xs mb-2">
                         <Shield className="w-3 h-3 mr-1" />
                         {trigger.sourceModule}
                       </Badge>
-                      <p className="text-xs text-slate-300">{trigger.timestamp}</p>
+                      <p className="text-xs text-gray-600">{trigger.timestamp}</p>
                     </div>
                     <div className="text-right">
                       {getSeverityBadge(trigger.severity)}
-                      <p className="text-xs text-slate-300 mt-1">
+                      <p className="text-xs text-gray-600 mt-1">
                         Confidence: <span className="font-bold">{(trigger.confidence * 100).toFixed(0)}%</span>
                       </p>
                     </div>
                   </div>
 
-                  <h3 className="font-bold text-slate-100 mb-2">{trigger.explanation}</h3>
-                  <p className="text-sm text-slate-300">{trigger.details}</p>
+                  <h3 className="font-bold text-gray-900 mb-2">{trigger.explanation}</h3>
+                  <p className="text-sm text-gray-700">{trigger.details}</p>
                 </div>
               ))}
             </CardContent>
@@ -371,17 +371,17 @@ export function ReportableMatterTriage({ caseId, onBack }: ReportableMatterTriag
           <Card className="border-2 border-purple-300 shadow-lg">
             <CardHeader className="bg-gradient-to-r from-purple-50 to-pink-50 border-b">
               <CardTitle className="flex items-center gap-2">
-                <CheckCircle className="w-6 h-6 text-purple-400" />
+                <CheckCircle className="w-6 h-6 text-purple-600" />
                 Triage Decision
               </CardTitle>
             </CardHeader>
             <CardContent className="p-6 space-y-4">
               <div>
-                <label className="block text-sm font-bold text-slate-100 mb-2">Decision Action</label>
+                <label className="block text-sm font-bold text-gray-900 mb-2">Decision Action</label>
                 <select
                   value={triageDecision}
                   onChange={(e) => setTriageDecision(e.target.value)}
-                  className="w-full px-3 py-2 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className="w-full px-3 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
                 >
                   <option value="">Select decision...</option>
                   <option value="continue">Continue Review</option>
@@ -392,7 +392,7 @@ export function ReportableMatterTriage({ caseId, onBack }: ReportableMatterTriag
                 </select>
               </div>
 
-              <div className="p-4 bg-red-500/10 rounded-lg border-2 border-red-300">
+              <div className="p-4 bg-red-50 rounded-lg border-2 border-red-300">
                 <label className="flex items-center gap-2">
                   <input
                     type="checkbox"
@@ -400,16 +400,16 @@ export function ReportableMatterTriage({ caseId, onBack }: ReportableMatterTriag
                     onChange={(e) => setPreliminarySuspicion(e.target.checked)}
                     className="w-5 h-5"
                   />
-                  <span className="font-bold text-red-300">Preliminary Suspicion Flag</span>
+                  <span className="font-bold text-red-900">Preliminary Suspicion Flag</span>
                 </label>
-                <p className="text-xs text-red-300 mt-2">
+                <p className="text-xs text-red-700 mt-2">
                   Check if initial review indicates suspicious matter
                 </p>
               </div>
 
               <div>
-                <label className="block text-sm font-bold text-slate-100 mb-2">Urgency Level</label>
-                <select className="w-full px-3 py-2 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                <label className="block text-sm font-bold text-gray-900 mb-2">Urgency Level</label>
+                <select className="w-full px-3 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
                   <option value="routine">Routine (72 hours)</option>
                   <option value="priority">Priority (48 hours)</option>
                   <option value="urgent">Urgent (24 hours)</option>
@@ -417,7 +417,7 @@ export function ReportableMatterTriage({ caseId, onBack }: ReportableMatterTriag
                 </select>
               </div>
 
-              <div className="p-4 bg-amber-500/10 rounded-lg border-2 border-amber-300">
+              <div className="p-4 bg-amber-50 rounded-lg border-2 border-amber-300">
                 <label className="flex items-center gap-2">
                   <input
                     type="checkbox"
@@ -425,16 +425,16 @@ export function ReportableMatterTriage({ caseId, onBack }: ReportableMatterTriag
                     onChange={(e) => setServiceHold(e.target.checked)}
                     className="w-5 h-5"
                   />
-                  <span className="font-bold text-amber-300">Service Hold Required</span>
+                  <span className="font-bold text-amber-900">Service Hold Required</span>
                 </label>
-                <p className="text-xs text-amber-300 mt-2">
+                <p className="text-xs text-amber-700 mt-2">
                   Immediately restrict or suspend services during investigation
                 </p>
               </div>
 
               <div>
-                <label className="block text-sm font-bold text-slate-100 mb-2">Assigned Owner</label>
-                <select className="w-full px-3 py-2 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                <label className="block text-sm font-bold text-gray-900 mb-2">Assigned Owner</label>
+                <select className="w-full px-3 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
                   <option value="">Select reviewer...</option>
                   <option value="sarah">Sarah Johnson - Senior Analyst</option>
                   <option value="michael">Michael Chen - Lead Analyst</option>
@@ -444,10 +444,10 @@ export function ReportableMatterTriage({ caseId, onBack }: ReportableMatterTriag
               </div>
 
               <div>
-                <label className="block text-sm font-bold text-slate-100 mb-2">Triage Notes</label>
+                <label className="block text-sm font-bold text-gray-900 mb-2">Triage Notes</label>
                 <textarea
                   rows={4}
-                  className="w-full px-3 py-2 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className="w-full px-3 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
                   placeholder="Enter preliminary observations, concerns, or instructions..."
                 />
               </div>
@@ -510,13 +510,13 @@ export function ReportableMatterTriage({ caseId, onBack }: ReportableMatterTriag
 
         {/* Service Hold Warning Banner */}
         {serviceHold && (
-          <Card className="border-4 border-red-500 bg-red-500/10 shadow-xl animate-pulse">
+          <Card className="border-4 border-red-500 bg-red-50 shadow-xl animate-pulse">
             <CardContent className="p-6">
               <div className="flex items-center gap-4">
-                <Ban className="w-12 h-12 text-red-400" />
+                <Ban className="w-12 h-12 text-red-600" />
                 <div>
-                  <h3 className="text-2xl font-bold text-red-300 mb-1">Service Hold Will Be Applied</h3>
-                  <p className="text-red-300">
+                  <h3 className="text-2xl font-bold text-red-900 mb-1">Service Hold Will Be Applied</h3>
+                  <p className="text-red-800">
                     Upon completing triage, all services for this client will be immediately restricted pending
                     investigation outcome. Client will be notified per policy.
                   </p>

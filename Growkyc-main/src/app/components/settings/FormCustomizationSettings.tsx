@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '../ui/card';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
@@ -252,8 +252,8 @@ export function FormCustomizationSettings() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h2 className="text-2xl font-bold text-slate-100">Form Customization</h2>
-        <p className="text-slate-300 mt-1">
+        <h2 className="text-2xl font-bold text-gray-900">Form Customization</h2>
+        <p className="text-gray-600 mt-1">
           Add custom fields to forms across the Grow MIP platform
         </p>
       </div>
@@ -271,17 +271,17 @@ export function FormCustomizationSettings() {
                   <button
                     key={form.id}
                     onClick={() => setSelectedForm(form.id)}
-                    className={`w-full text-left px-4 py-3 hover:bg-white/5 transition-colors ${
+                    className={`w-full text-left px-4 py-3 hover:bg-gray-50 transition-colors ${
                       selectedForm === form.id ? 'bg-primary/10 border-l-4 border-primary' : ''
                     }`}
                   >
                     <div className="flex items-center gap-2">
-                      <FileText className="w-4 h-4 text-slate-300" />
+                      <FileText className="w-4 h-4 text-gray-600" />
                       <div className="flex-1 min-w-0">
-                        <p className="font-semibold text-sm text-slate-100 truncate">
+                        <p className="font-semibold text-sm text-gray-900 truncate">
                           {form.name}
                         </p>
-                        <p className="text-xs text-slate-300 mt-0.5">
+                        <p className="text-xs text-gray-600 mt-0.5">
                           {form.customFields.length} custom field{form.customFields.length !== 1 ? 's' : ''}
                         </p>
                       </div>
@@ -302,7 +302,7 @@ export function FormCustomizationSettings() {
                 <CardHeader className="border-b">
                   <div>
                     <CardTitle className="text-xl">{currentForm.name}</CardTitle>
-                    <p className="text-sm text-slate-300 mt-1">{currentForm.description}</p>
+                    <p className="text-sm text-gray-600 mt-1">{currentForm.description}</p>
                   </div>
                 </CardHeader>
               </Card>
@@ -317,7 +317,7 @@ export function FormCustomizationSettings() {
                 </CardHeader>
                 <CardContent className="p-6">
                   {currentForm.customFields.length === 0 ? (
-                    <div className="text-center py-8 text-slate-400">
+                    <div className="text-center py-8 text-gray-500">
                       <FileText className="w-12 h-12 mx-auto mb-3 text-gray-400" />
                       <p>No custom fields added yet</p>
                       <p className="text-sm mt-1">Add your first custom field below</p>
@@ -329,22 +329,22 @@ export function FormCustomizationSettings() {
                         return (
                           <div
                             key={field.id}
-                            className="flex items-center gap-4 p-4 border rounded-lg bg-white hover:bg-white/5 transition-colors"
+                            className="flex items-center gap-4 p-4 border rounded-lg bg-white hover:bg-gray-50 transition-colors"
                           >
                             <GripVertical className="w-5 h-5 text-gray-400 cursor-move" />
-                            <div className="p-2 bg-white/5 rounded">
-                              <Icon className="w-4 h-4 text-slate-300" />
+                            <div className="p-2 bg-gray-100 rounded">
+                              <Icon className="w-4 h-4 text-gray-600" />
                             </div>
                             <div className="flex-1 min-w-0">
                               <div className="flex items-center gap-2">
-                                <p className="font-semibold text-slate-100">{field.label}</p>
+                                <p className="font-semibold text-gray-900">{field.label}</p>
                                 {field.required && (
-                                  <span className="px-2 py-0.5 bg-red-500/15 text-red-300 text-xs rounded-full font-semibold">
+                                  <span className="px-2 py-0.5 bg-red-100 text-red-700 text-xs rounded-full font-semibold">
                                     Required
                                   </span>
                                 )}
                               </div>
-                              <p className="text-sm text-slate-300 mt-0.5">
+                              <p className="text-sm text-gray-600 mt-0.5">
                                 Type: {field.type.charAt(0).toUpperCase() + field.type.slice(1)}
                                 {field.options && ` â€¢ ${field.options.length} options`}
                               </p>
@@ -361,7 +361,7 @@ export function FormCustomizationSettings() {
                                 variant="outline"
                                 size="sm"
                                 onClick={() => handleRemoveField(field.id)}
-                                className="text-red-400 hover:text-red-300 hover:bg-red-500/10"
+                                className="text-red-600 hover:text-red-700 hover:bg-red-50"
                               >
                                 <Trash2 className="w-4 h-4" />
                               </Button>
@@ -385,7 +385,7 @@ export function FormCustomizationSettings() {
                 <CardContent className="p-6">
                   <div className="space-y-4">
                     <div>
-                      <label className="block text-sm font-semibold text-slate-300 mb-2">
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">
                         Field Label *
                       </label>
                       <Input
@@ -396,11 +396,11 @@ export function FormCustomizationSettings() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-semibold text-slate-300 mb-2">
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">
                         Field Type *
                       </label>
                       <select
-                        className="w-full px-3 py-2 border border-white/10 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                         value={newFieldType}
                         onChange={(e) => setNewFieldType(e.target.value as CustomField['type'])}
                       >
@@ -419,7 +419,7 @@ export function FormCustomizationSettings() {
 
                     {newFieldType === 'select' && (
                       <div>
-                        <label className="block text-sm font-semibold text-slate-300 mb-2">
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">
                           Dropdown Options (comma-separated)
                         </label>
                         <Input
@@ -427,7 +427,7 @@ export function FormCustomizationSettings() {
                           value={newFieldOptions}
                           onChange={(e) => setNewFieldOptions(e.target.value)}
                         />
-                        <p className="text-xs text-slate-300 mt-1">
+                        <p className="text-xs text-gray-600 mt-1">
                           Separate each option with a comma
                         </p>
                       </div>

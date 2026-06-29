@@ -154,7 +154,7 @@ export function ProfileSettings({ onBack }: ProfileSettingsProps) {
                   </Button>
                   <Button 
                     variant="ghost" 
-                    className="w-full text-red-400 hover:text-red-300 hover:bg-red-500/10"
+                    className="w-full text-red-600 hover:text-red-700 hover:bg-red-50"
                     onClick={handleRemovePhoto}
                   >
                     <X className="w-4 h-4 mr-2" />
@@ -162,7 +162,7 @@ export function ProfileSettings({ onBack }: ProfileSettingsProps) {
                   </Button>
                 </div>
               </div>
-              <div className="pt-4 border-t text-xs text-slate-400">
+              <div className="pt-4 border-t text-xs text-gray-500">
                 <p>Recommended: Square image, at least 400x400px</p>
                 <p className="mt-1">JPG, PNG or GIF. Max 5MB.</p>
               </div>
@@ -176,16 +176,16 @@ export function ProfileSettings({ onBack }: ProfileSettingsProps) {
             </CardHeader>
             <CardContent className="space-y-3 text-sm">
               <div className="flex justify-between">
-                <span className="text-slate-300">Member Since:</span>
+                <span className="text-gray-600">Member Since:</span>
                 <span className="font-semibold">Jan 2024</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-300">Account Type:</span>
+                <span className="text-gray-600">Account Type:</span>
                 <span className="font-semibold">Premium Investor</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-300">Verification:</span>
-                <span className="px-2 py-0.5 bg-green-500/15 text-green-300 rounded text-xs font-semibold">
+                <span className="text-gray-600">Verification:</span>
+                <span className="px-2 py-0.5 bg-green-100 text-green-800 rounded text-xs font-semibold">
                   Verified
                 </span>
               </div>
@@ -282,7 +282,7 @@ export function ProfileSettings({ onBack }: ProfileSettingsProps) {
                   onChange={(e) => handleChange('bio', e.target.value)}
                   placeholder="Tell us about yourself..."
                 />
-                <p className="text-xs text-slate-400 mt-1">{formData.bio.length} / 500 characters</p>
+                <p className="text-xs text-gray-500 mt-1">{formData.bio.length} / 500 characters</p>
               </div>
             </CardContent>
           </Card>
@@ -319,7 +319,7 @@ export function ProfileSettings({ onBack }: ProfileSettingsProps) {
                   <select
                     value={formData.state}
                     onChange={(e) => handleChange('state', e.target.value)}
-                    className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                   >
                     <option value="NSW">NSW</option>
                     <option value="VIC">VIC</option>
@@ -357,7 +357,7 @@ export function ProfileSettings({ onBack }: ProfileSettingsProps) {
           <div className="flex justify-between items-center pt-4">
             <div>
               {hasChanges && (
-                <p className="text-sm text-amber-400 flex items-center gap-2">
+                <p className="text-sm text-amber-600 flex items-center gap-2">
                   <span className="w-2 h-2 bg-amber-600 rounded-full"></span>
                   You have unsaved changes
                 </p>

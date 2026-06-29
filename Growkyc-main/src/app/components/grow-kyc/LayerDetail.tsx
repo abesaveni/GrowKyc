@@ -419,13 +419,13 @@ export function LayerDetail({ layerId, onBack }: LayerDetailProps) {
   
   if (!layer) {
     return (
-      <div className="min-h-screen bg-[#1e293b] p-8">
+      <div className="min-h-screen bg-white p-8">
         <Button onClick={onBack} variant="outline">
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back
         </Button>
         <div className="text-center mt-12">
-          <p className="text-slate-300">Layer not found</p>
+          <p className="text-gray-600">Layer not found</p>
         </div>
       </div>
     );
@@ -434,9 +434,9 @@ export function LayerDetail({ layerId, onBack }: LayerDetailProps) {
   const LayerIcon = layer.icon;
 
   return (
-    <div className="min-h-screen bg-[#1e293b]">
+    <div className="min-h-screen bg-white">
       {/* Header */}
-      <div className="border-b border-white/10 bg-[#0f172a]">
+      <div className="border-b border-gray-200 bg-gray-50">
         <div className="max-w-7xl mx-auto px-8 py-6">
           <Button onClick={onBack} variant="ghost" className="mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -448,12 +448,12 @@ export function LayerDetail({ layerId, onBack }: LayerDetailProps) {
               <LayerIcon className="w-10 h-10 text-white" />
             </div>
             <div>
-              <h1 className="text-4xl font-bold text-white mb-2">{layer.name}</h1>
-              <p className="text-xl text-slate-300">{layer.tagline}</p>
+              <h1 className="text-4xl font-bold text-gray-900 mb-2">{layer.name}</h1>
+              <p className="text-xl text-gray-600">{layer.tagline}</p>
             </div>
           </div>
 
-          <p className="text-lg text-slate-300 max-w-4xl">{layer.description}</p>
+          <p className="text-lg text-gray-700 max-w-4xl">{layer.description}</p>
         </div>
       </div>
 
@@ -461,7 +461,7 @@ export function LayerDetail({ layerId, onBack }: LayerDetailProps) {
       <div className="max-w-7xl mx-auto px-8 py-12">
         {/* Key Features */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-white mb-8">Key Features</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">Key Features</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {layer.keyFeatures.map((feature, idx) => {
               const FeatureIcon = feature.icon;
@@ -473,13 +473,13 @@ export function LayerDetail({ layerId, onBack }: LayerDetailProps) {
                         <FeatureIcon className={`w-6 h-6 text-${layer.color}-600`} />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
-                        <p className="text-slate-300 mb-4">{feature.description}</p>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
+                        <p className="text-gray-600 mb-4">{feature.description}</p>
                         <div className="space-y-2">
                           {feature.benefits.map((benefit, bidx) => (
                             <div key={bidx} className="flex items-center gap-2">
-                              <CheckCircle className="w-4 h-4 text-green-400" />
-                              <span className="text-sm text-slate-300">{benefit}</span>
+                              <CheckCircle className="w-4 h-4 text-green-600" />
+                              <span className="text-sm text-gray-700">{benefit}</span>
                             </div>
                           ))}
                         </div>
@@ -494,13 +494,13 @@ export function LayerDetail({ layerId, onBack }: LayerDetailProps) {
 
         {/* Modules */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-white mb-8">Included Modules</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">Included Modules</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {layer.modules.map((module, idx) => (
-              <Card key={idx} className="bg-[#0f172a] hover:bg-white/5 transition-colors">
+              <Card key={idx} className="bg-gray-50 hover:bg-gray-100 transition-colors">
                 <CardContent className="p-4 text-center">
-                  <CheckCircle className="w-6 h-6 text-green-400 mx-auto mb-2" />
-                  <p className="text-sm font-medium text-white">{module}</p>
+                  <CheckCircle className="w-6 h-6 text-green-600 mx-auto mb-2" />
+                  <p className="text-sm font-medium text-gray-900">{module}</p>
                 </CardContent>
               </Card>
             ))}
@@ -509,26 +509,26 @@ export function LayerDetail({ layerId, onBack }: LayerDetailProps) {
 
         {/* Use Cases */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-white mb-8">Real-World Impact</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">Real-World Impact</h2>
           <div className="space-y-6">
             {layer.useCases.map((useCase, idx) => (
-              <Card key={idx} className="border-2 border-white/10">
+              <Card key={idx} className="border-2 border-gray-200">
                 <CardContent className="p-6">
-                  <h3 className="text-lg font-bold text-white mb-4">{useCase.scenario}</h3>
+                  <h3 className="text-lg font-bold text-gray-900 mb-4">{useCase.scenario}</h3>
                   <div className="grid md:grid-cols-2 gap-6">
-                    <div className="bg-red-500/10 p-4 rounded-lg border-2 border-red-500/30">
+                    <div className="bg-red-50 p-4 rounded-lg border-2 border-red-200">
                       <div className="flex items-center gap-2 mb-2">
-                        <AlertCircle className="w-5 h-5 text-red-400" />
-                        <span className="font-semibold text-red-300">Before</span>
+                        <AlertCircle className="w-5 h-5 text-red-600" />
+                        <span className="font-semibold text-red-900">Before</span>
                       </div>
-                      <p className="text-sm text-slate-300">{useCase.before}</p>
+                      <p className="text-sm text-gray-700">{useCase.before}</p>
                     </div>
-                    <div className="bg-green-500/10 p-4 rounded-lg border-2 border-green-500/30">
+                    <div className="bg-green-50 p-4 rounded-lg border-2 border-green-200">
                       <div className="flex items-center gap-2 mb-2">
-                        <CheckCircle className="w-5 h-5 text-green-400" />
-                        <span className="font-semibold text-green-300">After</span>
+                        <CheckCircle className="w-5 h-5 text-green-600" />
+                        <span className="font-semibold text-green-900">After</span>
                       </div>
-                      <p className="text-sm text-slate-300">{useCase.after}</p>
+                      <p className="text-sm text-gray-700">{useCase.after}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -551,9 +551,9 @@ export function LayerDetail({ layerId, onBack }: LayerDetailProps) {
             <CardContent>
               <div className="space-y-2">
                 {layer.integrations.map((integration, idx) => (
-                  <div key={idx} className="flex items-center gap-2 p-2 bg-[#0f172a] rounded">
-                    <Zap className="w-4 h-4 text-blue-400" />
-                    <span className="text-sm text-white">{integration}</span>
+                  <div key={idx} className="flex items-center gap-2 p-2 bg-gray-50 rounded">
+                    <Zap className="w-4 h-4 text-blue-600" />
+                    <span className="text-sm text-gray-900">{integration}</span>
                   </div>
                 ))}
               </div>
@@ -564,7 +564,7 @@ export function LayerDetail({ layerId, onBack }: LayerDetailProps) {
           <Card className="border-2">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Shield className="w-6 h-6 text-green-400" />
+                <Shield className="w-6 h-6 text-green-600" />
                 Compliance Coverage
               </CardTitle>
               <CardDescription>Regulatory requirements met</CardDescription>
@@ -572,9 +572,9 @@ export function LayerDetail({ layerId, onBack }: LayerDetailProps) {
             <CardContent>
               <div className="space-y-2">
                 {layer.compliance.map((comp, idx) => (
-                  <div key={idx} className="flex items-center gap-2 p-2 bg-green-500/10 rounded border border-green-500/30">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
-                    <span className="text-sm font-medium text-white">{comp}</span>
+                  <div key={idx} className="flex items-center gap-2 p-2 bg-green-50 rounded border border-green-200">
+                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <span className="text-sm font-medium text-gray-900">{comp}</span>
                   </div>
                 ))}
               </div>
@@ -592,7 +592,7 @@ export function LayerDetail({ layerId, onBack }: LayerDetailProps) {
             <div className="flex items-center justify-center gap-4">
               <Button 
                 size="lg"
-                className="bg-[#1e293b] text-[#13B5EA] hover:bg-white/90"
+                className="bg-white text-[#13B5EA] hover:bg-white/90"
                 onClick={onBack}
               >
                 Explore Other Layers

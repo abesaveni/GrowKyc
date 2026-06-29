@@ -203,8 +203,8 @@ export function ExcelWorkpaperBuilder({ onNavigate, jobId = 'JOB-2024-003' }: Ex
               Back
             </Button>
             <div>
-              <h1 className="text-2xl font-semibold text-slate-100">Workpaper Builder</h1>
-              <p className="text-sm text-slate-300 mt-1">Select sections for this job</p>
+              <h1 className="text-2xl font-semibold text-gray-900">Workpaper Builder</h1>
+              <p className="text-sm text-gray-600 mt-1">Select sections for this job</p>
             </div>
           </div>
         </div>
@@ -212,11 +212,11 @@ export function ExcelWorkpaperBuilder({ onNavigate, jobId = 'JOB-2024-003' }: Ex
         {/* Entity & Year Selectors */}
         <div className="flex items-center gap-4">
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-2">Entity Type</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Entity Type</label>
             <select
               value={selectedEntity}
               onChange={(e) => setSelectedEntity(e.target.value as EntityType)}
-              className="px-3 py-2 border border-white/10 rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="individual">Individual</option>
               <option value="company">Company</option>
@@ -225,11 +225,11 @@ export function ExcelWorkpaperBuilder({ onNavigate, jobId = 'JOB-2024-003' }: Ex
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-2">Financial Year</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Financial Year</label>
             <select
               value={selectedYear}
               onChange={(e) => setSelectedYear(e.target.value)}
-              className="px-3 py-2 border border-white/10 rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="FY2024">FY2024</option>
               <option value="FY2023">FY2023</option>
@@ -241,26 +241,26 @@ export function ExcelWorkpaperBuilder({ onNavigate, jobId = 'JOB-2024-003' }: Ex
         {/* Two-Table Layout */}
         <div className="grid grid-cols-2 gap-6">
           {/* LEFT: Section Library */}
-          <div className="border border-white/10 rounded bg-white">
-            <div className="bg-white/5 border-b border-white/10 px-4 py-2">
-              <h3 className="font-semibold text-slate-100">Section Library</h3>
+          <div className="border border-gray-300 rounded bg-white">
+            <div className="bg-gray-50 border-b border-gray-300 px-4 py-2">
+              <h3 className="font-semibold text-gray-900">Section Library</h3>
             </div>
             <div className="overflow-auto" style={{ maxHeight: '600px' }}>
               <table className="w-full text-sm">
-                <thead className="bg-white/5 sticky top-0">
-                  <tr className="border-b border-white/10">
-                    <th className="px-2 py-2 text-left font-semibold text-slate-300 w-8"></th>
-                    <th className="px-3 py-2 text-left font-semibold text-slate-300">Section Name</th>
-                    <th className="px-3 py-2 text-left font-semibold text-slate-300 w-32">Category</th>
-                    <th className="px-3 py-2 text-center font-semibold text-slate-300 w-24">Req. Docs</th>
+                <thead className="bg-gray-50 sticky top-0">
+                  <tr className="border-b border-gray-300">
+                    <th className="px-2 py-2 text-left font-semibold text-gray-700 w-8"></th>
+                    <th className="px-3 py-2 text-left font-semibold text-gray-700">Section Name</th>
+                    <th className="px-3 py-2 text-left font-semibold text-gray-700 w-32">Category</th>
+                    <th className="px-3 py-2 text-center font-semibold text-gray-700 w-24">Req. Docs</th>
                   </tr>
                 </thead>
                 <tbody>
                   {Object.entries(categorizedSections).map(([category, sections]) => (
                     <React.Fragment key={category}>
                       {/* Category Header Row */}
-                      <tr className="bg-white/5">
-                        <td colSpan={4} className="px-3 py-2 font-semibold text-slate-100 text-xs uppercase tracking-wider border-t border-b border-white/10">
+                      <tr className="bg-gray-100">
+                        <td colSpan={4} className="px-3 py-2 font-semibold text-gray-900 text-xs uppercase tracking-wider border-t border-b border-gray-300">
                           {category}
                         </td>
                       </tr>
@@ -270,8 +270,8 @@ export function ExcelWorkpaperBuilder({ onNavigate, jobId = 'JOB-2024-003' }: Ex
                         return (
                           <tr 
                             key={section.id}
-                            className={`border-b border-white/10 hover:bg-white/5 cursor-pointer ${
-                              isSelected ? 'bg-blue-500/10' : ''
+                            className={`border-b border-gray-200 hover:bg-gray-50 cursor-pointer ${
+                              isSelected ? 'bg-blue-50' : ''
                             }`}
                             onClick={() => handleToggleSection(section)}
                           >
@@ -280,12 +280,12 @@ export function ExcelWorkpaperBuilder({ onNavigate, jobId = 'JOB-2024-003' }: Ex
                                 type="checkbox"
                                 checked={isSelected}
                                 onChange={() => {}}
-                                className="w-4 h-4 rounded border-white/10 text-blue-400 focus:ring-blue-500"
+                                className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                               />
                             </td>
-                            <td className="px-3 py-2 text-slate-100">{section.name}</td>
-                            <td className="px-3 py-2 text-slate-300 text-xs">{section.category}</td>
-                            <td className="px-3 py-2 text-center text-slate-100 font-mono">{section.requiredDocs}</td>
+                            <td className="px-3 py-2 text-gray-900">{section.name}</td>
+                            <td className="px-3 py-2 text-gray-600 text-xs">{section.category}</td>
+                            <td className="px-3 py-2 text-center text-gray-900 font-mono">{section.requiredDocs}</td>
                           </tr>
                         );
                       })}
@@ -297,54 +297,54 @@ export function ExcelWorkpaperBuilder({ onNavigate, jobId = 'JOB-2024-003' }: Ex
           </div>
 
           {/* RIGHT: Selected Sections */}
-          <div className="border border-white/10 rounded bg-white">
-            <div className="bg-white/5 border-b border-white/10 px-4 py-2">
-              <h3 className="font-semibold text-slate-100">Selected Sections ({selectedSections.length})</h3>
+          <div className="border border-gray-300 rounded bg-white">
+            <div className="bg-gray-50 border-b border-gray-300 px-4 py-2">
+              <h3 className="font-semibold text-gray-900">Selected Sections ({selectedSections.length})</h3>
             </div>
             <div className="overflow-auto" style={{ maxHeight: '600px' }}>
               {selectedSections.length === 0 ? (
-                <div className="p-8 text-center text-slate-400">
+                <div className="p-8 text-center text-gray-500">
                   <p>No sections selected</p>
                   <p className="text-xs mt-1">Select sections from the left table</p>
                 </div>
               ) : (
                 <table className="w-full text-sm">
-                  <thead className="bg-white/5 sticky top-0">
-                    <tr className="border-b border-white/10">
-                      <th className="px-2 py-2 text-left font-semibold text-slate-300 w-16">Order</th>
-                      <th className="px-3 py-2 text-left font-semibold text-slate-300">Section</th>
-                      <th className="px-3 py-2 text-left font-semibold text-slate-300 w-32">Owner</th>
-                      <th className="px-3 py-2 text-left font-semibold text-slate-300 w-24">Due</th>
-                      <th className="px-2 py-2 text-center font-semibold text-slate-300 w-20">Checklist</th>
-                      <th className="px-2 py-2 text-center font-semibold text-slate-300 w-20"></th>
+                  <thead className="bg-gray-50 sticky top-0">
+                    <tr className="border-b border-gray-300">
+                      <th className="px-2 py-2 text-left font-semibold text-gray-700 w-16">Order</th>
+                      <th className="px-3 py-2 text-left font-semibold text-gray-700">Section</th>
+                      <th className="px-3 py-2 text-left font-semibold text-gray-700 w-32">Owner</th>
+                      <th className="px-3 py-2 text-left font-semibold text-gray-700 w-24">Due</th>
+                      <th className="px-2 py-2 text-center font-semibold text-gray-700 w-20">Checklist</th>
+                      <th className="px-2 py-2 text-center font-semibold text-gray-700 w-20"></th>
                     </tr>
                   </thead>
                   <tbody>
                     {selectedSections.map((selected, index) => (
-                      <tr key={selected.id} className="border-b border-white/10 hover:bg-white/5">
+                      <tr key={selected.id} className="border-b border-gray-200 hover:bg-gray-50">
                         <td className="px-2 py-2">
                           <div className="flex items-center gap-1">
                             <button
                               onClick={() => handleMoveUp(index)}
                               disabled={index === 0}
-                              className="p-0.5 hover:bg-white/10 rounded disabled:opacity-30"
+                              className="p-0.5 hover:bg-gray-200 rounded disabled:opacity-30"
                             >
                               <ArrowUp className="w-3 h-3" />
                             </button>
                             <button
                               onClick={() => handleMoveDown(index)}
                               disabled={index === selectedSections.length - 1}
-                              className="p-0.5 hover:bg-white/10 rounded disabled:opacity-30"
+                              className="p-0.5 hover:bg-gray-200 rounded disabled:opacity-30"
                             >
                               <ArrowDown className="w-3 h-3" />
                             </button>
-                            <span className="ml-1 text-slate-300 font-mono">{selected.order}</span>
+                            <span className="ml-1 text-gray-600 font-mono">{selected.order}</span>
                           </div>
                         </td>
-                        <td className="px-3 py-2 text-slate-100">{selected.section.name}</td>
+                        <td className="px-3 py-2 text-gray-900">{selected.section.name}</td>
                         <td className="px-3 py-2">
                           <select 
-                            className="w-full px-2 py-1 text-xs border border-white/10 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
+                            className="w-full px-2 py-1 text-xs border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
                             value={selected.owner}
                             onChange={(e) => {
                               const newSections = [...selectedSections];
@@ -361,7 +361,7 @@ export function ExcelWorkpaperBuilder({ onNavigate, jobId = 'JOB-2024-003' }: Ex
                         <td className="px-3 py-2">
                           <input
                             type="date"
-                            className="w-full px-2 py-1 text-xs border border-white/10 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
+                            className="w-full px-2 py-1 text-xs border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
                             value={selected.dueDate}
                             onChange={(e) => {
                               const newSections = [...selectedSections];
@@ -379,15 +379,15 @@ export function ExcelWorkpaperBuilder({ onNavigate, jobId = 'JOB-2024-003' }: Ex
                               newSections[index].includeInChecklist = e.target.checked;
                               setSelectedSections(newSections);
                             }}
-                            className="w-4 h-4 rounded border-white/10 text-blue-400 focus:ring-blue-500"
+                            className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                           />
                         </td>
                         <td className="px-2 py-2 text-center">
                           <button
                             onClick={() => handleToggleSection(selected.section)}
-                            className="p-1 hover:bg-white/10 rounded"
+                            className="p-1 hover:bg-gray-200 rounded"
                           >
-                            <X className="w-4 h-4 text-slate-300" />
+                            <X className="w-4 h-4 text-gray-600" />
                           </button>
                         </td>
                       </tr>
@@ -401,7 +401,7 @@ export function ExcelWorkpaperBuilder({ onNavigate, jobId = 'JOB-2024-003' }: Ex
 
         {/* Actions */}
         <div className="flex items-center justify-between">
-          <p className="text-sm text-slate-300">
+          <p className="text-sm text-gray-600">
             {selectedSections.length} sections selected
           </p>
           <Button 

@@ -211,18 +211,18 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
   const getSeverityColor = (severity: string) => {
     switch (severity) {
       case 'critical':
-        return 'bg-red-500/15 text-red-300 border-red-300';
+        return 'bg-red-100 text-red-700 border-red-300';
       case 'high':
-        return 'bg-orange-500/15 text-orange-300 border-orange-300';
+        return 'bg-orange-100 text-orange-700 border-orange-300';
       case 'medium':
-        return 'bg-amber-500/15 text-amber-300 border-amber-300';
+        return 'bg-amber-100 text-amber-700 border-amber-300';
       default:
-        return 'bg-white/5 text-slate-300 border-white/10';
+        return 'bg-gray-100 text-gray-700 border-gray-300';
     }
   };
 
   return (
-    <div className={isEmbed ? "bg-white p-4" : "min-h-screen bg-white/5 p-8"}>
+    <div className={isEmbed ? "bg-white p-4" : "min-h-screen bg-gray-50 p-8"}>
       <div className="max-w-[1400px] mx-auto space-y-6">
         {/* Header */}
         {!isEmbed && (
@@ -237,7 +237,7 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
                   <p className="text-white/90">Raise a suspicious matter concern manually</p>
                 </div>
               </div>
-              <Badge className="bg-white text-red-300 text-lg px-6 py-3">
+              <Badge className="bg-white text-red-900 text-lg px-6 py-3">
                 Manual Case Creation
               </Badge>
             </div>
@@ -245,17 +245,17 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
         )}
 
         {/* Info Banner */}
-        <Card className="border-2 border-blue-300 bg-blue-500/10">
+        <Card className="border-2 border-blue-300 bg-blue-50">
           <CardContent className="p-6">
             <div className="flex items-start gap-3">
-              <AlertTriangle className="w-6 h-6 text-blue-400 flex-shrink-0 mt-1" />
+              <AlertTriangle className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
               <div>
-                <h3 className="font-bold text-blue-300 mb-2">When to Use Internal Referral</h3>
-                <p className="text-sm text-blue-300 mb-2">
+                <h3 className="font-bold text-blue-900 mb-2">When to Use Internal Referral</h3>
+                <p className="text-sm text-blue-800 mb-2">
                   Use this form when you observe suspicious activity that hasn't been automatically flagged by our
                   screening bots. All staff members can raise concerns. Common scenarios:
                 </p>
-                <ul className="text-sm text-blue-300 space-y-1">
+                <ul className="text-sm text-blue-800 space-y-1">
                   <li>• Unusual client behaviour during meetings or communications</li>
                   <li>• Concerns about document authenticity not caught by automated checks</li>
                   <li>• Unexplained wealth or lifestyle inconsistent with declared income</li>
@@ -272,13 +272,13 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
           <Card className="border-2 border-purple-300 shadow-lg">
             <CardHeader className="bg-gradient-to-r from-purple-50 to-pink-50 border-b">
               <CardTitle className="flex items-center gap-2">
-                <User className="w-6 h-6 text-purple-400" />
+                <User className="w-6 h-6 text-purple-600" />
                 Select Subject
               </CardTitle>
             </CardHeader>
             <CardContent className="p-6 space-y-4">
               <div>
-                <label className="block text-sm font-bold text-slate-100 mb-2">
+                <label className="block text-sm font-bold text-gray-900 mb-2">
                   Search for Client/Entity *
                 </label>
                 <div className="relative">
@@ -288,34 +288,34 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
                     placeholder="Search by name, ABN, ACN..."
                     value={searchSubject}
                     onChange={(e) => setSearchSubject(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    className="w-full pl-10 pr-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
                   />
                 </div>
               </div>
 
               <div>
-                <p className="text-sm font-bold text-slate-100 mb-3">Recent Clients</p>
+                <p className="text-sm font-bold text-gray-900 mb-3">Recent Clients</p>
                 <div className="space-y-2">
                   {filteredSubjects.map((subject) => (
                     <div
                       key={subject.id}
                       onClick={() => setSelectedSubject(subject)}
                       className={`p-3 rounded-lg border-2 cursor-pointer transition-all ${selectedSubject?.id === subject.id
-                        ? 'border-purple-500 bg-purple-500/10'
-                        : 'border-white/10 hover:border-purple-300 bg-white'
+                        ? 'border-purple-500 bg-purple-50'
+                        : 'border-gray-300 hover:border-purple-300 bg-white'
                         }`}
                     >
                       <div className="flex items-center gap-2 mb-1">
                         {subject.type === 'individual' ? (
-                          <User className="w-4 h-4 text-slate-300" />
+                          <User className="w-4 h-4 text-gray-600" />
                         ) : (
-                          <Building className="w-4 h-4 text-slate-300" />
+                          <Building className="w-4 h-4 text-gray-600" />
                         )}
-                        <span className="font-semibold text-sm text-slate-100">{subject.name}</span>
+                        <span className="font-semibold text-sm text-gray-900">{subject.name}</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Badge variant="outline" className="text-xs capitalize">{subject.type}</Badge>
-                        <span className="text-xs text-slate-300">{subject.id}</span>
+                        <span className="text-xs text-gray-600">{subject.id}</span>
                       </div>
                     </div>
                   ))}
@@ -323,13 +323,13 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
               </div>
 
               {selectedSubject && (
-                <div className="p-4 bg-green-500/10 rounded-lg border-2 border-green-300">
+                <div className="p-4 bg-green-50 rounded-lg border-2 border-green-300">
                   <div className="flex items-center gap-2 mb-2">
-                    <CheckCircle className="w-5 h-5 text-green-400" />
-                    <span className="font-bold text-green-300">Subject Selected</span>
+                    <CheckCircle className="w-5 h-5 text-green-600" />
+                    <span className="font-bold text-green-900">Subject Selected</span>
                   </div>
-                  <p className="text-sm text-green-300">{selectedSubject.name}</p>
-                  <p className="text-xs text-green-300">{selectedSubject.id}</p>
+                  <p className="text-sm text-green-800">{selectedSubject.name}</p>
+                  <p className="text-xs text-green-700">{selectedSubject.id}</p>
                 </div>
               )}
             </CardContent>
@@ -339,14 +339,14 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
           <Card className="lg:col-span-2 border-2 border-orange-300 shadow-lg">
             <CardHeader className="bg-gradient-to-r from-orange-50 to-amber-50 border-b">
               <CardTitle className="flex items-center gap-2">
-                <FileText className="w-6 h-6 text-orange-400" />
+                <FileText className="w-6 h-6 text-orange-600" />
                 Concern Details
               </CardTitle>
             </CardHeader>
             <CardContent className="p-6 space-y-6">
               {/* Related Matter */}
               <div>
-                <label className="block text-sm font-bold text-slate-100 mb-2">
+                <label className="block text-sm font-bold text-gray-900 mb-2">
                   Related Client or Matter (Optional)
                 </label>
                 <input
@@ -354,13 +354,13 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
                   value={relatedMatter}
                   onChange={(e) => setRelatedMatter(e.target.value)}
                   placeholder="Link to specific deal, transaction, or matter..."
-                  className="w-full px-4 py-3 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-slate-100 bg-white"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-gray-900 bg-white"
                 />
               </div>
 
               {/* Concern Category */}
               <div>
-                <label className="block text-sm font-bold text-slate-100 mb-3">
+                <label className="block text-sm font-bold text-gray-900 mb-3">
                   Concern Category *
                 </label>
                 <div className="grid md:grid-cols-2 gap-3">
@@ -369,19 +369,19 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
                       key={category.value}
                       onClick={() => setConcernCategory(category.value)}
                       className={`p-4 rounded-lg border-2 cursor-pointer transition-all ${concernCategory === category.value
-                        ? 'border-orange-500 bg-orange-500/10 ring-2 ring-orange-200'
-                        : 'border-white/10 hover:border-orange-300 bg-white'
+                        ? 'border-orange-500 bg-orange-50 ring-2 ring-orange-200'
+                        : 'border-gray-300 hover:border-orange-300 bg-white'
                         }`}
                     >
                       <div className="flex items-start justify-between">
                         <div className="flex-1">
-                          <p className="font-semibold text-sm text-slate-100 mb-1">{category.label}</p>
+                          <p className="font-semibold text-sm text-gray-900 mb-1">{category.label}</p>
                           <Badge className={`${getSeverityColor(category.severity)} text-xs`}>
                             {category.severity.toUpperCase()}
                           </Badge>
                         </div>
                         {concernCategory === category.value && (
-                          <CheckCircle className="w-5 h-5 text-orange-400 flex-shrink-0" />
+                          <CheckCircle className="w-5 h-5 text-orange-600 flex-shrink-0" />
                         )}
                       </div>
                     </div>
@@ -391,7 +391,7 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
 
               {/* Concern Summary */}
               <div>
-                <label className="block text-sm font-bold text-slate-100 mb-2">
+                <label className="block text-sm font-bold text-gray-900 mb-2">
                   Concern Summary *
                 </label>
                 <textarea
@@ -399,36 +399,36 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
                   required
                   value={concernSummary}
                   onChange={(e) => setConcernSummary(e.target.value)}
-                  className="w-full px-4 py-3 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-slate-100 bg-white"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-gray-900 bg-white"
                   placeholder="Describe the suspicious activity in detail. Include:&#10;• What you observed&#10;• When it occurred&#10;• Why it raised concern&#10;• Any supporting context&#10;• Who else was involved or aware"
                 />
               </div>
 
               {/* Related Documents */}
               <div>
-                <label className="block text-sm font-bold text-slate-100 mb-2">
+                <label className="block text-sm font-bold text-gray-900 mb-2">
                   Related Documents (Optional)
                 </label>
-                <label className="border-2 border-dashed border-white/10 rounded-lg p-8 text-center hover:border-orange-400 transition-colors cursor-pointer block">
+                <label className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-orange-400 transition-colors cursor-pointer block">
                   <Upload className="w-12 h-12 text-gray-400 mx-auto mb-3" />
-                  <p className="text-sm text-slate-300 mb-1">
+                  <p className="text-sm text-gray-600 mb-1">
                     Click to upload or drag and drop
                   </p>
-                  <p className="text-xs text-slate-400">
+                  <p className="text-xs text-gray-500">
                     PDF, DOC, XLSX, images (max 10MB each)
                   </p>
                   <input type="file" multiple className="hidden" onChange={handleAttachmentUpload} />
                 </label>
                 <div className="mt-3 space-y-2">
                   {attachments.length === 0 && (
-                    <p className="text-xs text-slate-400">No files attached yet.</p>
+                    <p className="text-xs text-gray-500">No files attached yet.</p>
                   )}
                   {attachments.map((file, idx) => (
-                    <div key={`${file.name}-${idx}`} className="flex items-center justify-between p-3 bg-purple-500/10 rounded border border-purple-500/30">
+                    <div key={`${file.name}-${idx}`} className="flex items-center justify-between p-3 bg-purple-50 rounded border border-purple-200">
                       <div className="flex items-center gap-2">
-                        <FileText className="w-5 h-5 text-purple-400" />
-                        <span className="text-sm font-semibold text-slate-100">{file.name}</span>
-                        <Badge className="bg-green-500/15 text-green-300 text-xs">Attached</Badge>
+                        <FileText className="w-5 h-5 text-purple-600" />
+                        <span className="text-sm font-semibold text-gray-900">{file.name}</span>
+                        <Badge className="bg-green-100 text-green-700 text-xs">Attached</Badge>
                       </div>
                       <Button
                         variant="outline"
@@ -445,13 +445,13 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
 
               {/* Urgency */}
               <div>
-                <label className="block text-sm font-bold text-slate-100 mb-2">
+                <label className="block text-sm font-bold text-gray-900 mb-2">
                   Urgency Level *
                 </label>
                 <select
                   value={urgency}
                   onChange={(e) => setUrgency(e.target.value)}
-                  className="w-full px-4 py-3 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-slate-100 bg-white"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-gray-900 bg-white"
                 >
                   <option value="routine">Routine - Review within 72 hours</option>
                   <option value="priority">Priority - Review within 48 hours</option>
@@ -461,7 +461,7 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
               </div>
 
               {/* Immediate Service Hold */}
-              <div className="p-6 bg-red-500/10 rounded-lg border-2 border-red-300">
+              <div className="p-6 bg-red-50 rounded-lg border-2 border-red-300">
                 <label className="flex items-start gap-3">
                   <input
                     type="checkbox"
@@ -471,14 +471,14 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
                   />
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
-                      <Ban className="w-5 h-5 text-red-400" />
-                      <span className="font-bold text-red-300 text-lg">Immediate Service Hold Requested</span>
+                      <Ban className="w-5 h-5 text-red-600" />
+                      <span className="font-bold text-red-900 text-lg">Immediate Service Hold Requested</span>
                     </div>
-                    <p className="text-sm text-red-300 mb-2">
+                    <p className="text-sm text-red-800 mb-2">
                       Check this box if you believe services should be immediately restricted or suspended pending
                       investigation.
                     </p>
-                    <p className="text-xs text-red-300">
+                    <p className="text-xs text-red-700">
                       <strong>Impact:</strong> All client services will be placed under review immediately upon
                       submission. Compliance team will be notified.
                     </p>
@@ -487,8 +487,8 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
               </div>
 
               {immediateHold && (
-                <div className="p-4 bg-amber-500/10 rounded-lg border-2 border-amber-300">
-                  <label className="block text-sm font-bold text-amber-300 mb-2">
+                <div className="p-4 bg-amber-50 rounded-lg border-2 border-amber-300">
+                  <label className="block text-sm font-bold text-amber-900 mb-2">
                     Reason for Immediate Hold *
                   </label>
                   <textarea
@@ -502,31 +502,31 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
               )}
 
               {/* Referrer Information */}
-              <div className="p-4 bg-white/5 rounded-lg border border-white/10">
-                <p className="text-sm font-bold text-slate-100 mb-3">Referrer Information</p>
+              <div className="p-4 bg-gray-50 rounded-lg border border-gray-300">
+                <p className="text-sm font-bold text-gray-900 mb-3">Referrer Information</p>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <p className="text-xs text-slate-300 mb-1">Your Name</p>
-                    <p className="font-semibold text-slate-100">John Smith (Auto-filled)</p>
+                    <p className="text-xs text-gray-600 mb-1">Your Name</p>
+                    <p className="font-semibold text-gray-900">John Smith (Auto-filled)</p>
                   </div>
                   <div>
-                    <p className="text-xs text-slate-300 mb-1">Department</p>
-                    <p className="font-semibold text-slate-100">Client Services</p>
+                    <p className="text-xs text-gray-600 mb-1">Department</p>
+                    <p className="font-semibold text-gray-900">Client Services</p>
                   </div>
                   <div>
-                    <p className="text-xs text-slate-300 mb-1">Date</p>
-                    <p className="font-semibold text-slate-100">{new Date().toISOString().split('T')[0]}</p>
+                    <p className="text-xs text-gray-600 mb-1">Date</p>
+                    <p className="font-semibold text-gray-900">{new Date().toISOString().split('T')[0]}</p>
                   </div>
                   <div>
-                    <p className="text-xs text-slate-300 mb-1">Time</p>
-                    <p className="font-semibold text-slate-100">{new Date().toLocaleTimeString()}</p>
+                    <p className="text-xs text-gray-600 mb-1">Time</p>
+                    <p className="font-semibold text-gray-900">{new Date().toLocaleTimeString()}</p>
                   </div>
                 </div>
               </div>
 
               {/* Actions */}
               <div className="pt-6 border-t space-y-3">
-                <div className="text-xs text-slate-300 text-right">
+                <div className="text-xs text-gray-600 text-right">
                   Draft {isDraftSaved ? 'saved' : 'saving...'}
                 </div>
                 <Button
@@ -537,7 +537,7 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
                   <Send className="w-5 h-5 mr-3 flex-shrink-0" />
                   {isSubmitting ? 'Submitting Internal Referral...' : 'Submit Internal Referral & Create AUSTRAC Case'}
                 </Button>
-                <p className="text-xs text-slate-300 text-center">
+                <p className="text-xs text-gray-600 text-center">
                   By submitting, you confirm that the information provided is accurate to the best of your knowledge.
                   The compliance team will be immediately notified and a formal case will be created.
                 </p>
@@ -548,13 +548,13 @@ export function InternalReferral({ caseId, onSuccess, isEmbed = false }: Interna
 
         {/* Confirmation Banner */}
         {immediateHold && (
-          <Card className="border-4 border-red-500 bg-red-500/10 shadow-2xl animate-pulse">
+          <Card className="border-4 border-red-500 bg-red-50 shadow-2xl animate-pulse">
             <CardContent className="p-6">
               <div className="flex items-center gap-4">
-                <Ban className="w-16 h-16 text-red-400 flex-shrink-0" />
+                <Ban className="w-16 h-16 text-red-600 flex-shrink-0" />
                 <div>
-                  <h3 className="text-2xl font-bold text-red-300 mb-2">Service Hold Will Be Applied</h3>
-                  <p className="text-red-300 text-lg">
+                  <h3 className="text-2xl font-bold text-red-900 mb-2">Service Hold Will Be Applied</h3>
+                  <p className="text-red-800 text-lg">
                     Upon submission, all services for the selected client will be immediately placed under review.
                     The compliance team will be notified via email and SMS. This action cannot be undone.
                   </p>

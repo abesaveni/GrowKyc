@@ -140,9 +140,9 @@ export function IMFOModule({ onSwitchModule, initialRole = 'fund-manager' }: IMF
   };
 
   return (
-    <div className="min-h-screen bg-white/5">
+    <div className="min-h-screen bg-gray-50">
       {/* Top Navigation Bar */}
-      <nav className="bg-white border-b border-white/10 fixed w-full top-0 z-50">
+      <nav className="bg-white border-b border-gray-200 fixed w-full top-0 z-50">
         <div className="px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo and Brand */}
@@ -152,17 +152,17 @@ export function IMFOModule({ onSwitchModule, initialRole = 'fund-manager' }: IMF
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
                 {mobileMenuOpen ? (
-                  <X className="w-6 h-6 text-slate-300" />
+                  <X className="w-6 h-6 text-gray-600" />
                 ) : (
-                  <Menu className="w-6 h-6 text-slate-300" />
+                  <Menu className="w-6 h-6 text-gray-600" />
                 )}
               </button>
               
               <div className="flex items-center gap-3">
                 <img src={logo} alt="IMFO" className="h-8" />
                 <div>
-                  <h1 className="text-lg font-semibold text-slate-100">IMFO Platform</h1>
-                  <p className="text-xs text-slate-400">Investment Management & Fund Operations</p>
+                  <h1 className="text-lg font-semibold text-gray-900">IMFO Platform</h1>
+                  <p className="text-xs text-gray-500">Investment Management & Fund Operations</p>
                 </div>
               </div>
             </div>
@@ -176,7 +176,7 @@ export function IMFOModule({ onSwitchModule, initialRole = 'fund-manager' }: IMF
                   setUserRole(e.target.value as IMFORole);
                   navigate('/finance/dashboard');
                 }}
-                className="px-3 py-2 border border-purple-300 rounded-lg text-sm font-medium text-purple-300 bg-purple-500/10 hover:bg-purple-500/15 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="px-3 py-2 border border-purple-300 rounded-lg text-sm font-medium text-purple-700 bg-purple-50 hover:bg-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-500"
               >
                 <option value="fund-manager">ðŸ“Š Fund Manager</option>
                 <option value="investment-analyst">ðŸ’¼ Investment Analyst</option>
@@ -188,7 +188,7 @@ export function IMFOModule({ onSwitchModule, initialRole = 'fund-manager' }: IMF
               {onSwitchModule && (
                 <select
                   onChange={(e) => onSwitchModule(e.target.value)}
-                  className="px-3 py-2 border border-white/10 rounded-lg text-sm font-medium text-slate-300 bg-white hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className="px-3 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-purple-500"
                   defaultValue="imfo"
                 >
                   <option value="grow_kyc">Grow KYC — Compliance</option>
@@ -207,8 +207,8 @@ export function IMFOModule({ onSwitchModule, initialRole = 'fund-manager' }: IMF
               
               <div className="flex items-center gap-3 pl-3 border-l">
                 <div className="text-right hidden sm:block">
-                  <p className="text-sm font-medium text-slate-100">{mockUser.name}</p>
-                  <p className="text-xs text-slate-400 capitalize">{mockUser.company}</p>
+                  <p className="text-sm font-medium text-gray-900">{mockUser.name}</p>
+                  <p className="text-xs text-gray-500 capitalize">{mockUser.company}</p>
                 </div>
                 <Avatar>
                   <AvatarFallback className="bg-purple-600 text-white">

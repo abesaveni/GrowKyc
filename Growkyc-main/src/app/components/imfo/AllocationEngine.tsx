@@ -289,10 +289,10 @@ export function AllocationEngine({ onNavigate, role }: AllocationEngineProps) {
 
   const getStatusBadge = (status: string) => {
     const config: any = {
-      'collecting-eois': { label: 'Collecting EOIs', className: 'bg-blue-500/15 text-blue-300', icon: Clock },
-      'ready-to-allocate': { label: 'Ready to Allocate', className: 'bg-green-500/15 text-green-300', icon: Target },
-      'allocated': { label: 'Allocated', className: 'bg-purple-500/15 text-purple-300', icon: CheckCircle },
-      'funding': { label: 'Funding', className: 'bg-indigo-500/15 text-indigo-300', icon: DollarSign }
+      'collecting-eois': { label: 'Collecting EOIs', className: 'bg-blue-100 text-blue-800', icon: Clock },
+      'ready-to-allocate': { label: 'Ready to Allocate', className: 'bg-green-100 text-green-800', icon: Target },
+      'allocated': { label: 'Allocated', className: 'bg-purple-100 text-purple-800', icon: CheckCircle },
+      'funding': { label: 'Funding', className: 'bg-indigo-100 text-indigo-800', icon: DollarSign }
     };
 
     const statusConfig = config[status] || config['collecting-eois'];
@@ -308,11 +308,11 @@ export function AllocationEngine({ onNavigate, role }: AllocationEngineProps) {
 
   const getEOIStatusBadge = (status: EOIStatus) => {
     const config = {
-      pending: { label: 'Pending Review', className: 'bg-yellow-500/15 text-yellow-300', icon: Clock },
-      approved: { label: 'Approved', className: 'bg-green-500/15 text-green-300', icon: CheckCircle },
-      rejected: { label: 'Rejected', className: 'bg-red-500/15 text-red-300', icon: XCircle },
-      allocated: { label: 'Allocated', className: 'bg-purple-500/15 text-purple-300', icon: Target },
-      waitlist: { label: 'Waitlist', className: 'bg-orange-500/15 text-orange-300', icon: Clock }
+      pending: { label: 'Pending Review', className: 'bg-yellow-100 text-yellow-800', icon: Clock },
+      approved: { label: 'Approved', className: 'bg-green-100 text-green-800', icon: CheckCircle },
+      rejected: { label: 'Rejected', className: 'bg-red-100 text-red-800', icon: XCircle },
+      allocated: { label: 'Allocated', className: 'bg-purple-100 text-purple-800', icon: Target },
+      waitlist: { label: 'Waitlist', className: 'bg-orange-100 text-orange-800', icon: Clock }
     };
 
     const statusConfig = config[status];
@@ -342,8 +342,8 @@ export function AllocationEngine({ onNavigate, role }: AllocationEngineProps) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-100">Allocation Engine</h1>
-          <p className="text-slate-300 mt-1">Process EOIs and manage capital allocation with concentration enforcement</p>
+          <h1 className="text-2xl font-bold text-gray-900">Allocation Engine</h1>
+          <p className="text-gray-600 mt-1">Process EOIs and manage capital allocation with concentration enforcement</p>
         </div>
         <div className="flex items-center gap-3">
           <Button variant="outline">
@@ -358,8 +358,8 @@ export function AllocationEngine({ onNavigate, role }: AllocationEngineProps) {
       </div>
 
       {/* View Mode Tabs */}
-      <div className="bg-white border border-white/10 rounded-lg overflow-hidden">
-        <div className="flex border-b border-white/10">
+      <div className="bg-white border border-gray-300 rounded-lg overflow-hidden">
+        <div className="flex border-b border-gray-300">
           {[
             { id: 'deals', label: 'Deals', icon: Briefcase },
             { id: 'eoi-queue', label: 'EOI Queue', icon: Clock },
@@ -373,8 +373,8 @@ export function AllocationEngine({ onNavigate, role }: AllocationEngineProps) {
                 onClick={() => setViewMode(tab.id as ViewMode)}
                 className={`flex items-center gap-2 px-6 py-4 border-b-2 transition-colors ${
                   viewMode === tab.id
-                    ? 'border-indigo-600 text-indigo-400 font-medium bg-indigo-500/10'
-                    : 'border-transparent text-slate-300 hover:text-slate-100 hover:bg-white/5'
+                    ? 'border-indigo-600 text-indigo-600 font-medium bg-indigo-50'
+                    : 'border-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -390,49 +390,49 @@ export function AllocationEngine({ onNavigate, role }: AllocationEngineProps) {
         <div className="space-y-6">
           {/* Stats Row */}
           <div className="grid grid-cols-4 gap-4">
-            <div className="bg-white border border-white/10 rounded-lg p-4">
+            <div className="bg-white border border-gray-300 rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
-                <Target className="w-5 h-5 text-green-400" />
-                <p className="text-sm text-slate-300">Ready to Allocate</p>
+                <Target className="w-5 h-5 text-green-600" />
+                <p className="text-sm text-gray-600">Ready to Allocate</p>
               </div>
-              <p className="text-2xl font-bold text-slate-100">
+              <p className="text-2xl font-bold text-gray-900">
                 {mockDeals.filter(d => d.status === 'ready-to-allocate').length}
               </p>
             </div>
 
-            <div className="bg-white border border-white/10 rounded-lg p-4">
+            <div className="bg-white border border-gray-300 rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
-                <Clock className="w-5 h-5 text-blue-400" />
-                <p className="text-sm text-slate-300">Collecting EOIs</p>
+                <Clock className="w-5 h-5 text-blue-600" />
+                <p className="text-sm text-gray-600">Collecting EOIs</p>
               </div>
-              <p className="text-2xl font-bold text-slate-100">
+              <p className="text-2xl font-bold text-gray-900">
                 {mockDeals.filter(d => d.status === 'collecting-eois').length}
               </p>
             </div>
 
-            <div className="bg-white border border-white/10 rounded-lg p-4">
+            <div className="bg-white border border-gray-300 rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
-                <AlertTriangle className="w-5 h-5 text-orange-400" />
-                <p className="text-sm text-slate-300">Oversubscribed</p>
+                <AlertTriangle className="w-5 h-5 text-orange-600" />
+                <p className="text-sm text-gray-600">Oversubscribed</p>
               </div>
-              <p className="text-2xl font-bold text-slate-100">
+              <p className="text-2xl font-bold text-gray-900">
                 {mockDeals.filter(d => d.oversubscribed).length}
               </p>
             </div>
 
-            <div className="bg-white border border-white/10 rounded-lg p-4">
+            <div className="bg-white border border-gray-300 rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
-                <XCircle className="w-5 h-5 text-red-400" />
-                <p className="text-sm text-slate-300">Concentration Issues</p>
+                <XCircle className="w-5 h-5 text-red-600" />
+                <p className="text-sm text-gray-600">Concentration Issues</p>
               </div>
-              <p className="text-2xl font-bold text-slate-100">
+              <p className="text-2xl font-bold text-gray-900">
                 {mockDeals.reduce((sum, d) => sum + d.concentrationIssues, 0)}
               </p>
             </div>
           </div>
 
           {/* Filters */}
-          <div className="bg-white border border-white/10 rounded-lg p-4">
+          <div className="bg-white border border-gray-300 rounded-lg p-4">
             <div className="flex items-center gap-4">
               <div className="flex-1 relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
@@ -441,14 +441,14 @@ export function AllocationEngine({ onNavigate, role }: AllocationEngineProps) {
                   placeholder="Search deals..."
                   value={filters.search}
                   onChange={(e) => setFilters({ ...filters, search: e.target.value })}
-                  className="w-full pl-10 pr-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
 
               <select
                 value={filters.status}
                 onChange={(e) => setFilters({ ...filters, status: e.target.value })}
-                className="px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
               >
                 <option value="all">All Status</option>
                 <option value="collecting-eois">Collecting EOIs</option>
@@ -459,7 +459,7 @@ export function AllocationEngine({ onNavigate, role }: AllocationEngineProps) {
               <select
                 value={filters.strategy}
                 onChange={(e) => setFilters({ ...filters, strategy: e.target.value })}
-                className="px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
               >
                 <option value="all">All Strategies</option>
                 <option value="Mortgage">Mortgage</option>
@@ -474,61 +474,61 @@ export function AllocationEngine({ onNavigate, role }: AllocationEngineProps) {
             {filteredDeals.map((deal) => (
               <div
                 key={deal.id}
-                className="bg-white border border-white/10 rounded-lg p-6 hover:shadow-lg transition-shadow cursor-pointer"
+                className="bg-white border border-gray-300 rounded-lg p-6 hover:shadow-lg transition-shadow cursor-pointer"
                 onClick={() => setSelectedDeal(deal)}
               >
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
-                      <h3 className="text-lg font-bold text-slate-100">{deal.name}</h3>
+                      <h3 className="text-lg font-bold text-gray-900">{deal.name}</h3>
                       {deal.oversubscribed && (
-                        <span className="px-2 py-1 bg-orange-500/15 text-orange-300 rounded text-xs font-medium">
+                        <span className="px-2 py-1 bg-orange-100 text-orange-800 rounded text-xs font-medium">
                           {deal.oversubscriptionRatio.toFixed(1)}x Oversubscribed
                         </span>
                       )}
                       {deal.concentrationIssues > 0 && (
-                        <span className="px-2 py-1 bg-red-500/15 text-red-300 rounded text-xs font-medium flex items-center gap-1">
+                        <span className="px-2 py-1 bg-red-100 text-red-800 rounded text-xs font-medium flex items-center gap-1">
                           <AlertCircle className="w-3 h-3" />
                           {deal.concentrationIssues} Issues
                         </span>
                       )}
                     </div>
-                    <p className="text-sm text-slate-300">{deal.id} • {deal.spvId} • {deal.strategy}</p>
+                    <p className="text-sm text-gray-600">{deal.id} • {deal.spvId} • {deal.strategy}</p>
                   </div>
                   {getStatusBadge(deal.status)}
                 </div>
 
                 {/* Metrics Grid */}
                 <div className="grid grid-cols-5 gap-4 mb-4">
-                  <div className="p-3 bg-blue-500/10 rounded-lg">
-                    <p className="text-xs text-blue-400 mb-1">Target Raise</p>
-                    <p className="text-lg font-bold text-blue-300">${(deal.targetRaise / 1000000).toFixed(1)}M</p>
+                  <div className="p-3 bg-blue-50 rounded-lg">
+                    <p className="text-xs text-blue-600 mb-1">Target Raise</p>
+                    <p className="text-lg font-bold text-blue-900">${(deal.targetRaise / 1000000).toFixed(1)}M</p>
                   </div>
 
-                  <div className="p-3 bg-green-500/10 rounded-lg">
-                    <p className="text-xs text-green-400 mb-1">Approved EOIs</p>
-                    <p className="text-lg font-bold text-green-300">${(deal.approvedEOIs / 1000000).toFixed(1)}M</p>
+                  <div className="p-3 bg-green-50 rounded-lg">
+                    <p className="text-xs text-green-600 mb-1">Approved EOIs</p>
+                    <p className="text-lg font-bold text-green-900">${(deal.approvedEOIs / 1000000).toFixed(1)}M</p>
                   </div>
 
-                  <div className="p-3 bg-purple-500/10 rounded-lg">
-                    <p className="text-xs text-purple-400 mb-1">Total EOIs</p>
-                    <p className="text-lg font-bold text-purple-300">{deal.eoiCount}</p>
+                  <div className="p-3 bg-purple-50 rounded-lg">
+                    <p className="text-xs text-purple-600 mb-1">Total EOIs</p>
+                    <p className="text-lg font-bold text-purple-900">{deal.eoiCount}</p>
                   </div>
 
                   <div className={`p-3 rounded-lg ${
-                    deal.allocatedAmount > 0 ? 'bg-indigo-500/10' : 'bg-white/5'
+                    deal.allocatedAmount > 0 ? 'bg-indigo-50' : 'bg-gray-50'
                   }`}>
                     <p className={`text-xs mb-1 ${
-                      deal.allocatedAmount > 0 ? 'text-indigo-400' : 'text-slate-300'
+                      deal.allocatedAmount > 0 ? 'text-indigo-600' : 'text-gray-600'
                     }`}>Allocated</p>
                     <p className={`text-lg font-bold ${
-                      deal.allocatedAmount > 0 ? 'text-indigo-300' : 'text-slate-100'
+                      deal.allocatedAmount > 0 ? 'text-indigo-900' : 'text-gray-900'
                     }`}>${(deal.allocatedAmount / 1000000).toFixed(1)}M</p>
                   </div>
 
-                  <div className="p-3 bg-orange-500/10 rounded-lg">
-                    <p className="text-xs text-orange-400 mb-1">Method</p>
-                    <p className="text-xs font-semibold text-orange-300 capitalize">
+                  <div className="p-3 bg-orange-50 rounded-lg">
+                    <p className="text-xs text-orange-600 mb-1">Method</p>
+                    <p className="text-xs font-semibold text-orange-900 capitalize">
                       {deal.allocationMethod.replace('-', ' ')}
                     </p>
                   </div>
@@ -537,12 +537,12 @@ export function AllocationEngine({ onNavigate, role }: AllocationEngineProps) {
                 {/* Progress Bar */}
                 <div className="mb-4">
                   <div className="flex items-center justify-between mb-2">
-                    <p className="text-sm text-slate-300">EOI Collection Progress</p>
-                    <p className="text-sm font-semibold text-slate-100">
+                    <p className="text-sm text-gray-600">EOI Collection Progress</p>
+                    <p className="text-sm font-semibold text-gray-900">
                       {((deal.approvedEOIs / deal.targetRaise) * 100).toFixed(0)}% of target
                     </p>
                   </div>
-                  <div className="w-full h-2 bg-white/10 rounded-full">
+                  <div className="w-full h-2 bg-gray-200 rounded-full">
                     <div
                       className={`h-2 rounded-full ${
                         deal.oversubscribed ? 'bg-orange-600' : 'bg-green-600'
@@ -555,20 +555,20 @@ export function AllocationEngine({ onNavigate, role }: AllocationEngineProps) {
                 {/* Tier Breakdown */}
                 <div className="grid grid-cols-3 gap-3 mb-4">
                   {Object.entries(deal.tierBreakdown).map(([tier, data]: [string, any]) => (
-                    <div key={tier} className="p-3 bg-white/5 rounded-lg">
+                    <div key={tier} className="p-3 bg-gray-50 rounded-lg">
                       <div className="flex items-center gap-2 mb-1">
-                        <Award className="w-3.5 h-3.5 text-slate-300" />
-                        <p className="text-xs text-slate-300 capitalize">{tier.replace('-', ' ')}</p>
+                        <Award className="w-3.5 h-3.5 text-gray-600" />
+                        <p className="text-xs text-gray-600 capitalize">{tier.replace('-', ' ')}</p>
                       </div>
-                      <p className="text-sm font-semibold text-slate-100">{data.eois} EOIs</p>
-                      <p className="text-xs text-slate-300">${(data.amount / 1000000).toFixed(1)}M</p>
+                      <p className="text-sm font-semibold text-gray-900">{data.eois} EOIs</p>
+                      <p className="text-xs text-gray-600">${(data.amount / 1000000).toFixed(1)}M</p>
                     </div>
                   ))}
                 </div>
 
                 {/* Footer Actions */}
-                <div className="flex items-center justify-between pt-4 border-t border-white/10">
-                  <div className="flex items-center gap-4 text-sm text-slate-300">
+                <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+                  <div className="flex items-center gap-4 text-sm text-gray-600">
                     <div className="flex items-center gap-1">
                       <Calendar className="w-4 h-4" />
                       <span>Close: {deal.closeDate}</span>
@@ -705,8 +705,8 @@ function DealAllocationDetail({ deal, eois, onBack, role }: any) {
             <ChevronRight className="w-5 h-5 rotate-180" />
           </Button>
           <div>
-            <h1 className="text-2xl font-bold text-slate-100">{deal.name}</h1>
-            <p className="text-slate-300">{deal.id} • {deal.spvId}</p>
+            <h1 className="text-2xl font-bold text-gray-900">{deal.name}</h1>
+            <p className="text-gray-600">{deal.id} • {deal.spvId}</p>
           </div>
         </div>
         
@@ -734,49 +734,49 @@ function DealAllocationDetail({ deal, eois, onBack, role }: any) {
 
       {/* Deal Summary */}
       <div className="grid grid-cols-4 gap-4">
-        <div className="bg-white border border-white/10 rounded-lg p-4">
-          <p className="text-sm text-slate-300 mb-1">Target Raise</p>
-          <p className="text-2xl font-bold text-slate-100">${(deal.targetRaise / 1000000).toFixed(1)}M</p>
+        <div className="bg-white border border-gray-300 rounded-lg p-4">
+          <p className="text-sm text-gray-600 mb-1">Target Raise</p>
+          <p className="text-2xl font-bold text-gray-900">${(deal.targetRaise / 1000000).toFixed(1)}M</p>
         </div>
-        <div className="bg-white border border-white/10 rounded-lg p-4">
-          <p className="text-sm text-slate-300 mb-1">Approved EOIs</p>
-          <p className="text-2xl font-bold text-slate-100">${(deal.approvedEOIs / 1000000).toFixed(1)}M</p>
+        <div className="bg-white border border-gray-300 rounded-lg p-4">
+          <p className="text-sm text-gray-600 mb-1">Approved EOIs</p>
+          <p className="text-2xl font-bold text-gray-900">${(deal.approvedEOIs / 1000000).toFixed(1)}M</p>
         </div>
-        <div className="bg-white border border-white/10 rounded-lg p-4">
-          <p className="text-sm text-slate-300 mb-1">Allocation Method</p>
-          <p className="text-lg font-bold text-slate-100 capitalize">{deal.allocationMethod.replace('-', ' ')}</p>
+        <div className="bg-white border border-gray-300 rounded-lg p-4">
+          <p className="text-sm text-gray-600 mb-1">Allocation Method</p>
+          <p className="text-lg font-bold text-gray-900 capitalize">{deal.allocationMethod.replace('-', ' ')}</p>
         </div>
-        <div className="bg-white border border-white/10 rounded-lg p-4">
-          <p className="text-sm text-slate-300 mb-1">Oversubscription</p>
-          <p className="text-2xl font-bold text-slate-100">{deal.oversubscriptionRatio.toFixed(1)}x</p>
+        <div className="bg-white border border-gray-300 rounded-lg p-4">
+          <p className="text-sm text-gray-600 mb-1">Oversubscription</p>
+          <p className="text-2xl font-bold text-gray-900">{deal.oversubscriptionRatio.toFixed(1)}x</p>
         </div>
       </div>
 
       {/* Allocation Rules */}
-      <div className="bg-indigo-500/10 border border-indigo-500/30 rounded-lg p-6">
-        <h3 className="font-semibold text-indigo-300 mb-4">Allocation Rules</h3>
+      <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-6">
+        <h3 className="font-semibold text-indigo-900 mb-4">Allocation Rules</h3>
         <div className="grid grid-cols-4 gap-4">
           <div className="p-3 bg-white rounded-lg">
-            <p className="text-xs text-indigo-400 mb-1">Tier Priority</p>
+            <p className="text-xs text-indigo-600 mb-1">Tier Priority</p>
             <div className="flex gap-1">
               {deal.allocationRules.tierPriority.map((tier: string) => (
-                <span key={tier} className="px-2 py-0.5 bg-indigo-500/15 text-indigo-300 rounded text-xs font-medium">
+                <span key={tier} className="px-2 py-0.5 bg-indigo-100 text-indigo-800 rounded text-xs font-medium">
                   {tier.toUpperCase()}
                 </span>
               ))}
             </div>
           </div>
           <div className="p-3 bg-white rounded-lg">
-            <p className="text-xs text-indigo-400 mb-1">Max Per Investor</p>
-            <p className="text-sm font-semibold text-indigo-300">${(deal.allocationRules.maxPerInvestor / 1000000).toFixed(1)}M</p>
+            <p className="text-xs text-indigo-600 mb-1">Max Per Investor</p>
+            <p className="text-sm font-semibold text-indigo-900">${(deal.allocationRules.maxPerInvestor / 1000000).toFixed(1)}M</p>
           </div>
           <div className="p-3 bg-white rounded-lg">
-            <p className="text-xs text-indigo-400 mb-1">Min Per Investor</p>
-            <p className="text-sm font-semibold text-indigo-300">${(deal.allocationRules.minPerInvestor / 1000).toFixed(0)}K</p>
+            <p className="text-xs text-indigo-600 mb-1">Min Per Investor</p>
+            <p className="text-sm font-semibold text-indigo-900">${(deal.allocationRules.minPerInvestor / 1000).toFixed(0)}K</p>
           </div>
           <div className="p-3 bg-white rounded-lg">
-            <p className="text-xs text-indigo-400 mb-1">Rounding</p>
-            <p className="text-sm font-semibold text-indigo-300 capitalize">{deal.allocationRules.roundingRule}</p>
+            <p className="text-xs text-indigo-600 mb-1">Rounding</p>
+            <p className="text-sm font-semibold text-indigo-900 capitalize">{deal.allocationRules.roundingRule}</p>
           </div>
         </div>
       </div>
@@ -808,43 +808,43 @@ function DealAllocationDetail({ deal, eois, onBack, role }: any) {
 // EOI List for Deal
 function EOIListForDeal({ eois, deal }: any) {
   return (
-    <div className="bg-white border border-white/10 rounded-lg overflow-hidden">
-      <div className="p-4 border-b border-white/10 bg-white/5">
-        <h3 className="font-semibold text-slate-100">EOI Queue ({eois.length})</h3>
+    <div className="bg-white border border-gray-300 rounded-lg overflow-hidden">
+      <div className="p-4 border-b border-gray-300 bg-gray-50">
+        <h3 className="font-semibold text-gray-900">EOI Queue ({eois.length})</h3>
       </div>
       <div className="overflow-x-auto">
         <table className="w-full">
-          <thead className="bg-white/5 border-b border-white/10">
+          <thead className="bg-gray-50 border-b border-gray-300">
             <tr>
-              <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Investor</th>
-              <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Tier</th>
-              <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Requested</th>
-              <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Status</th>
-              <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Concentration</th>
-              <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Eligible</th>
+              <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Investor</th>
+              <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Tier</th>
+              <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Requested</th>
+              <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Status</th>
+              <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Concentration</th>
+              <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Eligible</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-white/10">
+          <tbody className="divide-y divide-gray-200">
             {eois.map((eoi: any) => (
-              <tr key={eoi.id} className="hover:bg-white/5">
+              <tr key={eoi.id} className="hover:bg-gray-50">
                 <td className="px-4 py-3">
-                  <p className="font-medium text-slate-100">{eoi.investorName}</p>
-                  <p className="text-xs text-slate-400">{eoi.id}</p>
+                  <p className="font-medium text-gray-900">{eoi.investorName}</p>
+                  <p className="text-xs text-gray-500">{eoi.id}</p>
                 </td>
                 <td className="px-4 py-3">
-                  <span className="px-2 py-1 bg-indigo-500/15 text-indigo-300 rounded text-xs font-medium">
+                  <span className="px-2 py-1 bg-indigo-100 text-indigo-800 rounded text-xs font-medium">
                     {eoi.investorTier.toUpperCase()}
                   </span>
                 </td>
                 <td className="px-4 py-3">
-                  <p className="font-semibold text-slate-100">${(eoi.requestedAmount / 1000000).toFixed(2)}M</p>
+                  <p className="font-semibold text-gray-900">${(eoi.requestedAmount / 1000000).toFixed(2)}M</p>
                 </td>
                 <td className="px-4 py-3">
                   {/* Status badge component call */}
                   <span className={`px-2 py-1 rounded text-xs font-medium ${
-                    eoi.status === 'approved' ? 'bg-green-500/15 text-green-300' :
-                    eoi.status === 'pending' ? 'bg-yellow-500/15 text-yellow-300' :
-                    'bg-white/5 text-slate-100'
+                    eoi.status === 'approved' ? 'bg-green-100 text-green-800' :
+                    eoi.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
+                    'bg-gray-100 text-gray-800'
                   }`}>
                     {eoi.status}
                   </span>
@@ -857,9 +857,9 @@ function EOIListForDeal({ eois, deal }: any) {
                         <div
                           key={check}
                           className={`w-6 h-6 rounded flex items-center justify-center text-xs font-bold ${
-                            status === 'ok' ? 'bg-green-500/15 text-green-300' :
-                            status === 'warning' ? 'bg-yellow-500/15 text-yellow-300' :
-                            'bg-red-500/15 text-red-300'
+                            status === 'ok' ? 'bg-green-100 text-green-700' :
+                            status === 'warning' ? 'bg-yellow-100 text-yellow-700' :
+                            'bg-red-100 text-red-700'
                           }`}
                           title={`${check}: ${eoi.concentrationCheck[check].afterAllocation}%`}
                         >
@@ -871,12 +871,12 @@ function EOIListForDeal({ eois, deal }: any) {
                 </td>
                 <td className="px-4 py-3">
                   {eoi.allocationEligible ? (
-                    <div className="flex items-center gap-1 text-green-400">
+                    <div className="flex items-center gap-1 text-green-600">
                       <CheckCircle className="w-4 h-4" />
                       <span className="text-xs font-medium">Yes</span>
                     </div>
                   ) : (
-                    <div className="flex items-center gap-1 text-red-400">
+                    <div className="flex items-center gap-1 text-red-600">
                       <XCircle className="w-4 h-4" />
                       <span className="text-xs font-medium">Blocked</span>
                     </div>
@@ -897,78 +897,78 @@ function AllocationPreview({ preview, deal }: any) {
     <div className="space-y-6">
       {/* Summary Cards */}
       <div className="grid grid-cols-5 gap-4">
-        <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-4">
-          <p className="text-xs text-green-400 mb-1">Total Allocated</p>
-          <p className="text-2xl font-bold text-green-300">${(preview.summary.totalAllocated / 1000000).toFixed(1)}M</p>
+        <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+          <p className="text-xs text-green-600 mb-1">Total Allocated</p>
+          <p className="text-2xl font-bold text-green-900">${(preview.summary.totalAllocated / 1000000).toFixed(1)}M</p>
         </div>
-        <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
-          <p className="text-xs text-blue-400 mb-1">Investors</p>
-          <p className="text-2xl font-bold text-blue-300">{preview.summary.investorsAllocated}</p>
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+          <p className="text-xs text-blue-600 mb-1">Investors</p>
+          <p className="text-2xl font-bold text-blue-900">{preview.summary.investorsAllocated}</p>
         </div>
-        <div className="bg-purple-500/10 border border-purple-500/30 rounded-lg p-4">
-          <p className="text-xs text-purple-400 mb-1">Full Allocation</p>
-          <p className="text-2xl font-bold text-purple-300">{preview.summary.fullAllocations}</p>
+        <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
+          <p className="text-xs text-purple-600 mb-1">Full Allocation</p>
+          <p className="text-2xl font-bold text-purple-900">{preview.summary.fullAllocations}</p>
         </div>
-        <div className="bg-orange-500/10 border border-orange-500/30 rounded-lg p-4">
-          <p className="text-xs text-orange-400 mb-1">Partial</p>
-          <p className="text-2xl font-bold text-orange-300">{preview.summary.partialAllocations}</p>
+        <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
+          <p className="text-xs text-orange-600 mb-1">Partial</p>
+          <p className="text-2xl font-bold text-orange-900">{preview.summary.partialAllocations}</p>
         </div>
-        <div className="bg-white/5 border border-white/10 rounded-lg p-4">
-          <p className="text-xs text-slate-300 mb-1">Waitlist</p>
-          <p className="text-2xl font-bold text-slate-100">{preview.summary.waitlist}</p>
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+          <p className="text-xs text-gray-600 mb-1">Waitlist</p>
+          <p className="text-2xl font-bold text-gray-900">{preview.summary.waitlist}</p>
         </div>
       </div>
 
       {/* Allocation Table */}
-      <div className="bg-white border border-white/10 rounded-lg overflow-hidden">
-        <div className="p-4 border-b border-white/10 bg-white/5">
-          <h3 className="font-semibold text-slate-100">Allocation Breakdown</h3>
+      <div className="bg-white border border-gray-300 rounded-lg overflow-hidden">
+        <div className="p-4 border-b border-gray-300 bg-gray-50">
+          <h3 className="font-semibold text-gray-900">Allocation Breakdown</h3>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-white/5 border-b border-white/10">
+            <thead className="bg-gray-50 border-b border-gray-300">
               <tr>
-                <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Investor</th>
-                <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Tier</th>
-                <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Requested</th>
-                <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Allocated</th>
-                <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Fill Rate</th>
-                <th className="px-4 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Status</th>
+                <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Investor</th>
+                <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Tier</th>
+                <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Requested</th>
+                <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Allocated</th>
+                <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Fill Rate</th>
+                <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Status</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/10">
+            <tbody className="divide-y divide-gray-200">
               {preview.allocations.map((allocation: any) => (
-                <tr key={allocation.id} className="hover:bg-white/5">
+                <tr key={allocation.id} className="hover:bg-gray-50">
                   <td className="px-4 py-3">
-                    <p className="font-medium text-slate-100">{allocation.investorName}</p>
+                    <p className="font-medium text-gray-900">{allocation.investorName}</p>
                   </td>
                   <td className="px-4 py-3">
-                    <span className="px-2 py-1 bg-indigo-500/15 text-indigo-300 rounded text-xs font-medium">
+                    <span className="px-2 py-1 bg-indigo-100 text-indigo-800 rounded text-xs font-medium">
                       {allocation.investorTier.toUpperCase()}
                     </span>
                   </td>
                   <td className="px-4 py-3">
-                    <p className="font-medium text-slate-100">${(allocation.requestedAmount / 1000000).toFixed(2)}M</p>
+                    <p className="font-medium text-gray-900">${(allocation.requestedAmount / 1000000).toFixed(2)}M</p>
                   </td>
                   <td className="px-4 py-3">
-                    <p className="font-bold text-green-400">${(allocation.allocatedAmount / 1000000).toFixed(2)}M</p>
+                    <p className="font-bold text-green-600">${(allocation.allocatedAmount / 1000000).toFixed(2)}M</p>
                   </td>
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-2">
-                      <div className="flex-1 bg-white/10 rounded-full h-2">
+                      <div className="flex-1 bg-gray-200 rounded-full h-2">
                         <div
                           className="bg-green-600 h-2 rounded-full"
                           style={{ width: `${allocation.allocationPercentage}%` }}
                         />
                       </div>
-                      <span className="text-xs font-medium text-slate-100">{allocation.allocationPercentage.toFixed(0)}%</span>
+                      <span className="text-xs font-medium text-gray-900">{allocation.allocationPercentage.toFixed(0)}%</span>
                     </div>
                   </td>
                   <td className="px-4 py-3">
                     <span className={`px-2 py-1 rounded text-xs font-medium ${
-                      allocation.status === 'full' ? 'bg-green-500/15 text-green-300' :
-                      allocation.status === 'partial' ? 'bg-orange-500/15 text-orange-300' :
-                      'bg-white/5 text-slate-100'
+                      allocation.status === 'full' ? 'bg-green-100 text-green-800' :
+                      allocation.status === 'partial' ? 'bg-orange-100 text-orange-800' :
+                      'bg-gray-100 text-gray-800'
                     }`}>
                       {allocation.status}
                     </span>
@@ -993,58 +993,58 @@ function EOIQueueView({ eois, role }: any) {
     <div className="space-y-6">
       {/* Stats */}
       <div className="grid grid-cols-4 gap-4">
-        <div className="bg-white border border-white/10 rounded-lg p-4">
-          <p className="text-sm text-slate-300 mb-1">Pending Review</p>
-          <p className="text-2xl font-bold text-slate-100">{pendingEOIs.length}</p>
+        <div className="bg-white border border-gray-300 rounded-lg p-4">
+          <p className="text-sm text-gray-600 mb-1">Pending Review</p>
+          <p className="text-2xl font-bold text-gray-900">{pendingEOIs.length}</p>
         </div>
-        <div className="bg-white border border-white/10 rounded-lg p-4">
-          <p className="text-sm text-slate-300 mb-1">Approved</p>
-          <p className="text-2xl font-bold text-slate-100">{approvedEOIs.length}</p>
+        <div className="bg-white border border-gray-300 rounded-lg p-4">
+          <p className="text-sm text-gray-600 mb-1">Approved</p>
+          <p className="text-2xl font-bold text-gray-900">{approvedEOIs.length}</p>
         </div>
-        <div className="bg-white border border-white/10 rounded-lg p-4">
-          <p className="text-sm text-slate-300 mb-1">Blocked</p>
-          <p className="text-2xl font-bold text-slate-100">{blockedEOIs.length}</p>
+        <div className="bg-white border border-gray-300 rounded-lg p-4">
+          <p className="text-sm text-gray-600 mb-1">Blocked</p>
+          <p className="text-2xl font-bold text-gray-900">{blockedEOIs.length}</p>
         </div>
-        <div className="bg-white border border-white/10 rounded-lg p-4">
-          <p className="text-sm text-slate-300 mb-1">Total EOIs</p>
-          <p className="text-2xl font-bold text-slate-100">{eois.length}</p>
+        <div className="bg-white border border-gray-300 rounded-lg p-4">
+          <p className="text-sm text-gray-600 mb-1">Total EOIs</p>
+          <p className="text-2xl font-bold text-gray-900">{eois.length}</p>
         </div>
       </div>
 
       {/* Pending Review */}
       {pendingEOIs.length > 0 && (
-        <div className="bg-white border border-white/10 rounded-lg overflow-hidden">
-          <div className="p-4 border-b border-white/10 bg-yellow-500/10">
-            <h3 className="font-semibold text-yellow-300">Pending Review ({pendingEOIs.length})</h3>
+        <div className="bg-white border border-gray-300 rounded-lg overflow-hidden">
+          <div className="p-4 border-b border-gray-300 bg-yellow-50">
+            <h3 className="font-semibold text-yellow-900">Pending Review ({pendingEOIs.length})</h3>
           </div>
           {/* EOI table implementation */}
           <div className="p-4">
-            <p className="text-sm text-slate-300">Review and approve pending EOIs...</p>
+            <p className="text-sm text-gray-600">Review and approve pending EOIs...</p>
           </div>
         </div>
       )}
 
       {/* Blocked EOIs */}
       {blockedEOIs.length > 0 && (
-        <div className="bg-white border border-white/10 rounded-lg overflow-hidden">
-          <div className="p-4 border-b border-white/10 bg-red-500/10">
-            <h3 className="font-semibold text-red-300">Blocked EOIs ({blockedEOIs.length})</h3>
+        <div className="bg-white border border-gray-300 rounded-lg overflow-hidden">
+          <div className="p-4 border-b border-gray-300 bg-red-50">
+            <h3 className="font-semibold text-red-900">Blocked EOIs ({blockedEOIs.length})</h3>
           </div>
-          <div className="divide-y divide-white/10">
+          <div className="divide-y divide-gray-200">
             {blockedEOIs.map((eoi: any) => (
               <div key={eoi.id} className="p-4">
                 <div className="flex items-start justify-between mb-2">
                   <div>
-                    <p className="font-medium text-slate-100">{eoi.investorName}</p>
-                    <p className="text-sm text-slate-300">{eoi.dealName}</p>
+                    <p className="font-medium text-gray-900">{eoi.investorName}</p>
+                    <p className="text-sm text-gray-600">{eoi.dealName}</p>
                   </div>
-                  <span className="px-2 py-1 bg-red-500/15 text-red-300 rounded text-xs font-medium">
+                  <span className="px-2 py-1 bg-red-100 text-red-800 rounded text-xs font-medium">
                     Blocked
                   </span>
                 </div>
                 <div className="space-y-1">
                   {eoi.blockers && eoi.blockers.map((blocker: string, idx: number) => (
-                    <div key={idx} className="flex items-center gap-2 text-sm text-red-300">
+                    <div key={idx} className="flex items-center gap-2 text-sm text-red-700">
                       <AlertCircle className="w-4 h-4" />
                       <span>{blocker}</span>
                     </div>
@@ -1065,16 +1065,16 @@ function AllocationsView({ deals, role }: any) {
 
   return (
     <div className="space-y-6">
-      <div className="bg-white border border-white/10 rounded-lg p-6">
-        <h3 className="font-semibold text-slate-100 mb-4">Completed Allocations</h3>
+      <div className="bg-white border border-gray-300 rounded-lg p-6">
+        <h3 className="font-semibold text-gray-900 mb-4">Completed Allocations</h3>
         {allocatedDeals.length === 0 ? (
-          <p className="text-slate-300 text-center py-8">No completed allocations yet</p>
+          <p className="text-gray-600 text-center py-8">No completed allocations yet</p>
         ) : (
           <div className="space-y-4">
             {allocatedDeals.map((deal: any) => (
-              <div key={deal.id} className="p-4 border border-white/10 rounded-lg">
-                <p className="font-medium text-slate-100">{deal.name}</p>
-                <p className="text-sm text-slate-300 mt-1">
+              <div key={deal.id} className="p-4 border border-gray-300 rounded-lg">
+                <p className="font-medium text-gray-900">{deal.name}</p>
+                <p className="text-sm text-gray-600 mt-1">
                   ${(deal.allocatedAmount / 1000000).toFixed(1)}M allocated to {deal.eoiCount} investors
                 </p>
               </div>
@@ -1090,9 +1090,9 @@ function AllocationsView({ deals, role }: any) {
 function ConcentrationMonitorView({ eois, role }: any) {
   return (
     <div className="space-y-6">
-      <div className="bg-white border border-white/10 rounded-lg p-6">
-        <h3 className="font-semibold text-slate-100 mb-4">Real-Time Concentration Monitoring</h3>
-        <p className="text-slate-300">Monitor concentration limits across all investors and deals...</p>
+      <div className="bg-white border border-gray-300 rounded-lg p-6">
+        <h3 className="font-semibold text-gray-900 mb-4">Real-Time Concentration Monitoring</h3>
+        <p className="text-gray-600">Monitor concentration limits across all investors and deals...</p>
       </div>
     </div>
   );
@@ -1103,22 +1103,22 @@ function AllocationConfirmModal({ preview, deal, onClose, onConfirm }: any) {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-lg max-w-2xl w-full">
-        <div className="p-6 border-b border-white/10">
+        <div className="p-6 border-b border-gray-300">
           <div className="flex items-center justify-between">
-            <h2 className="text-xl font-bold text-slate-100">Confirm Allocation</h2>
-            <button onClick={onClose} className="text-gray-400 hover:text-slate-300">
+            <h2 className="text-xl font-bold text-gray-900">Confirm Allocation</h2>
+            <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
               <X className="w-5 h-5" />
             </button>
           </div>
         </div>
 
         <div className="p-6 space-y-4">
-          <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4">
+          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
             <div className="flex items-start gap-3">
-              <AlertCircle className="w-5 h-5 text-yellow-400 mt-0.5" />
+              <AlertCircle className="w-5 h-5 text-yellow-600 mt-0.5" />
               <div>
-                <p className="font-semibold text-yellow-300 mb-1">Confirm Final Allocation</p>
-                <p className="text-sm text-yellow-300">
+                <p className="font-semibold text-yellow-900 mb-1">Confirm Final Allocation</p>
+                <p className="text-sm text-yellow-700">
                   This will finalize the allocation and trigger capital calls to {preview.summary.investorsAllocated} investors.
                   This action cannot be undone.
                 </p>
@@ -1127,18 +1127,18 @@ function AllocationConfirmModal({ preview, deal, onClose, onConfirm }: any) {
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <div className="p-4 bg-white/5 rounded-lg">
-              <p className="text-sm text-slate-300 mb-1">Total Allocated</p>
-              <p className="text-xl font-bold text-slate-100">${(preview.summary.totalAllocated / 1000000).toFixed(1)}M</p>
+            <div className="p-4 bg-gray-50 rounded-lg">
+              <p className="text-sm text-gray-600 mb-1">Total Allocated</p>
+              <p className="text-xl font-bold text-gray-900">${(preview.summary.totalAllocated / 1000000).toFixed(1)}M</p>
             </div>
-            <div className="p-4 bg-white/5 rounded-lg">
-              <p className="text-sm text-slate-300 mb-1">Investors</p>
-              <p className="text-xl font-bold text-slate-100">{preview.summary.investorsAllocated}</p>
+            <div className="p-4 bg-gray-50 rounded-lg">
+              <p className="text-sm text-gray-600 mb-1">Investors</p>
+              <p className="text-xl font-bold text-gray-900">{preview.summary.investorsAllocated}</p>
             </div>
           </div>
         </div>
 
-        <div className="p-6 border-t border-white/10 flex items-center justify-end gap-3">
+        <div className="p-6 border-t border-gray-300 flex items-center justify-end gap-3">
           <Button variant="outline" onClick={onClose}>
             Cancel
           </Button>

@@ -148,11 +148,11 @@ export function ExcelSignoffSummary({ onNavigate, jobId = 'JOB-2024-045' }: Exce
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'signed':
-        return <span className="px-2 py-0.5 bg-green-500/15 text-green-300 text-xs font-semibold rounded">Signed</span>;
+        return <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded">Signed</span>;
       case 'pending':
-        return <span className="px-2 py-0.5 bg-orange-500/15 text-orange-300 text-xs font-semibold rounded">Pending</span>;
+        return <span className="px-2 py-0.5 bg-orange-100 text-orange-700 text-xs font-semibold rounded">Pending</span>;
       case 'returned':
-        return <span className="px-2 py-0.5 bg-red-500/15 text-red-300 text-xs font-semibold rounded">Returned</span>;
+        return <span className="px-2 py-0.5 bg-red-100 text-red-700 text-xs font-semibold rounded">Returned</span>;
       default:
         return null;
     }
@@ -169,8 +169,8 @@ export function ExcelSignoffSummary({ onNavigate, jobId = 'JOB-2024-045' }: Exce
               Back
             </Button>
             <div>
-              <h1 className="text-2xl font-semibold text-slate-100">Signoff Summary</h1>
-              <p className="text-sm text-slate-300 mt-1">Smith, John & Mary • Individual Tax Return • FY2024 • {jobId}</p>
+              <h1 className="text-2xl font-semibold text-gray-900">Signoff Summary</h1>
+              <p className="text-sm text-gray-600 mt-1">Smith, John & Mary • Individual Tax Return • FY2024 • {jobId}</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -199,12 +199,12 @@ export function ExcelSignoffSummary({ onNavigate, jobId = 'JOB-2024-045' }: Exce
 
         {/* Lock Banner */}
         {isLocked && (
-          <div className="bg-green-500/10 border border-green-300 rounded px-4 py-3">
+          <div className="bg-green-50 border border-green-300 rounded px-4 py-3">
             <div className="flex items-center gap-3">
-              <Shield className="w-5 h-5 text-green-400" />
+              <Shield className="w-5 h-5 text-green-600" />
               <div className="flex-1">
-                <h3 className="font-semibold text-green-300">Workpapers Locked</h3>
-                <p className="text-sm text-green-300">Job is now read-only and ready for lodgement</p>
+                <h3 className="font-semibold text-green-900">Workpapers Locked</h3>
+                <p className="text-sm text-green-800">Job is now read-only and ready for lodgement</p>
               </div>
               <span className="px-3 py-1 bg-green-600 text-white text-sm font-semibold rounded">LOCKED</span>
             </div>
@@ -212,44 +212,44 @@ export function ExcelSignoffSummary({ onNavigate, jobId = 'JOB-2024-045' }: Exce
         )}
 
         {/* Stats Bar */}
-        <div className="bg-white/5 border border-white/10 rounded px-6 py-3">
+        <div className="bg-gray-50 border border-gray-300 rounded px-6 py-3">
           <div className="flex items-center gap-8 text-sm">
             <div className="flex items-center gap-2">
-              <span className="text-slate-300">Signed:</span>
-              <span className="font-semibold text-green-400">{signedCount}/{sections.length}</span>
+              <span className="text-gray-600">Signed:</span>
+              <span className="font-semibold text-green-600">{signedCount}/{sections.length}</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-slate-300">Pending:</span>
-              <span className="font-semibold text-orange-400">{pendingCount}</span>
+              <span className="text-gray-600">Pending:</span>
+              <span className="font-semibold text-orange-600">{pendingCount}</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-slate-300">Returned:</span>
-              <span className="font-semibold text-red-400">{returnedCount}</span>
+              <span className="text-gray-600">Returned:</span>
+              <span className="font-semibold text-red-600">{returnedCount}</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-slate-300">Outstanding Flags:</span>
-              <span className="font-semibold text-red-400">{totalFlagsCount}</span>
+              <span className="text-gray-600">Outstanding Flags:</span>
+              <span className="font-semibold text-red-600">{totalFlagsCount}</span>
             </div>
           </div>
         </div>
 
         {/* Section Status Table */}
-        <div className="border border-white/10 rounded bg-white overflow-hidden">
-          <div className="bg-white/5 border-b border-white/10 px-4 py-2">
-            <h3 className="font-semibold text-slate-100">Section Signoff Status</h3>
+        <div className="border border-gray-300 rounded bg-white overflow-hidden">
+          <div className="bg-gray-50 border-b border-gray-300 px-4 py-2">
+            <h3 className="font-semibold text-gray-900">Section Signoff Status</h3>
           </div>
           <table className="w-full text-sm border-collapse">
             {/* Header Row */}
             <thead>
-              <tr className="bg-white/5">
-                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300 w-8">Ref</th>
-                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Section</th>
-                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300 w-32">Prepared By</th>
-                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300 w-28">Prep. Date</th>
-                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300 w-32">Reviewed By</th>
-                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300 w-28">Review Date</th>
-                <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-20">Flags</th>
-                <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300 w-24">Status</th>
+              <tr className="bg-gray-50">
+                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700 w-8">Ref</th>
+                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Section</th>
+                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700 w-32">Prepared By</th>
+                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700 w-28">Prep. Date</th>
+                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700 w-32">Reviewed By</th>
+                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700 w-28">Review Date</th>
+                <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-20">Flags</th>
+                <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700 w-24">Status</th>
               </tr>
             </thead>
 
@@ -258,37 +258,37 @@ export function ExcelSignoffSummary({ onNavigate, jobId = 'JOB-2024-045' }: Exce
               {sections.map((section) => (
                 <tr 
                   key={section.id} 
-                  className={`hover:bg-white/5 ${
-                    section.status === 'signed' ? 'bg-green-500/10' :
-                    section.status === 'returned' ? 'bg-red-500/10' : ''
+                  className={`hover:bg-gray-50 ${
+                    section.status === 'signed' ? 'bg-green-50' :
+                    section.status === 'returned' ? 'bg-red-50' : ''
                   }`}
                 >
-                  <td className="border border-white/10 px-3 py-2 text-center text-slate-300 font-mono text-xs">
+                  <td className="border border-gray-300 px-3 py-2 text-center text-gray-600 font-mono text-xs">
                     {section.id}
                   </td>
-                  <td className="border border-white/10 px-3 py-2 text-slate-100">
+                  <td className="border border-gray-300 px-3 py-2 text-gray-900">
                     {section.section}
                   </td>
-                  <td className="border border-white/10 px-3 py-2 text-slate-300">
+                  <td className="border border-gray-300 px-3 py-2 text-gray-700">
                     {section.preparedBy || <span className="text-gray-400">-</span>}
                   </td>
-                  <td className="border border-white/10 px-3 py-2 text-slate-300 font-mono text-xs">
+                  <td className="border border-gray-300 px-3 py-2 text-gray-700 font-mono text-xs">
                     {section.preparedDate ? new Date(section.preparedDate).toLocaleDateString() : '-'}
                   </td>
-                  <td className="border border-white/10 px-3 py-2 text-slate-300">
+                  <td className="border border-gray-300 px-3 py-2 text-gray-700">
                     {section.reviewedBy || <span className="text-gray-400">-</span>}
                   </td>
-                  <td className="border border-white/10 px-3 py-2 text-slate-300 font-mono text-xs">
+                  <td className="border border-gray-300 px-3 py-2 text-gray-700 font-mono text-xs">
                     {section.reviewedDate ? new Date(section.reviewedDate).toLocaleDateString() : '-'}
                   </td>
-                  <td className="border border-white/10 px-3 py-2 text-center">
+                  <td className="border border-gray-300 px-3 py-2 text-center">
                     {section.flagsCount > 0 ? (
-                      <span className="text-red-400 font-semibold">{section.flagsCount}</span>
+                      <span className="text-red-600 font-semibold">{section.flagsCount}</span>
                     ) : (
                       <span className="text-gray-400">-</span>
                     )}
                   </td>
-                  <td className="border border-white/10 px-3 py-2 text-center">
+                  <td className="border border-gray-300 px-3 py-2 text-center">
                     {getStatusBadge(section.status)}
                   </td>
                 </tr>
@@ -299,10 +299,10 @@ export function ExcelSignoffSummary({ onNavigate, jobId = 'JOB-2024-045' }: Exce
 
         {/* Declaration */}
         {!isLocked && (
-          <div className="border border-white/10 rounded bg-white p-6">
-            <h3 className="font-semibold text-slate-100 mb-4">Professional Declaration</h3>
+          <div className="border border-gray-300 rounded bg-white p-6">
+            <h3 className="font-semibold text-gray-900 mb-4">Professional Declaration</h3>
             
-            <div className="bg-white/5 border border-white/10 rounded p-4 text-sm text-slate-300 mb-4">
+            <div className="bg-gray-50 border border-gray-300 rounded p-4 text-sm text-gray-700 mb-4">
               <p className="mb-2">I declare that:</p>
               <ul className="list-disc pl-5 space-y-1">
                 <li>All information in this tax return is true and correct</li>
@@ -318,9 +318,9 @@ export function ExcelSignoffSummary({ onNavigate, jobId = 'JOB-2024-045' }: Exce
                 type="checkbox"
                 checked={declarationAccepted}
                 onChange={(e) => setDeclarationAccepted(e.target.checked)}
-                className="mt-1 w-4 h-4 rounded border-white/10 text-blue-400 focus:ring-blue-500"
+                className="mt-1 w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
               />
-              <span className="text-sm text-slate-300">
+              <span className="text-sm text-gray-700">
                 I accept the above declaration and confirm all information is accurate
               </span>
             </label>
@@ -329,46 +329,46 @@ export function ExcelSignoffSummary({ onNavigate, jobId = 'JOB-2024-045' }: Exce
 
         {/* Signatures */}
         {!isLocked && (
-          <div className="border border-white/10 rounded bg-white overflow-hidden">
-            <div className="bg-white/5 border-b border-white/10 px-4 py-2">
-              <h3 className="font-semibold text-slate-100">Signatures</h3>
+          <div className="border border-gray-300 rounded bg-white overflow-hidden">
+            <div className="bg-gray-50 border-b border-gray-300 px-4 py-2">
+              <h3 className="font-semibold text-gray-900">Signatures</h3>
             </div>
             <table className="w-full text-sm border-collapse">
               <thead>
-                <tr className="bg-white/5">
-                  <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300 w-32">Role</th>
-                  <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Name</th>
-                  <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300 w-32">Date</th>
+                <tr className="bg-gray-50">
+                  <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700 w-32">Role</th>
+                  <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Name</th>
+                  <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700 w-32">Date</th>
                 </tr>
               </thead>
               <tbody>
-                <tr className="hover:bg-white/5">
-                  <td className="border border-white/10 px-3 py-2 font-semibold text-slate-100">Preparer</td>
-                  <td className="border border-white/10 px-3 py-2">
+                <tr className="hover:bg-gray-50">
+                  <td className="border border-gray-300 px-3 py-2 font-semibold text-gray-900">Preparer</td>
+                  <td className="border border-gray-300 px-3 py-2">
                     <input
                       type="text"
                       value={preparerSignature}
                       onChange={(e) => setPreparerSignature(e.target.value)}
                       placeholder="Enter full name"
-                      className="w-full px-2 py-1 border border-white/10 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
+                      className="w-full px-2 py-1 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
                     />
                   </td>
-                  <td className="border border-white/10 px-3 py-2 text-slate-300 font-mono text-xs">
+                  <td className="border border-gray-300 px-3 py-2 text-gray-700 font-mono text-xs">
                     {new Date().toLocaleDateString()}
                   </td>
                 </tr>
-                <tr className="hover:bg-white/5">
-                  <td className="border border-white/10 px-3 py-2 font-semibold text-slate-100">Reviewer</td>
-                  <td className="border border-white/10 px-3 py-2">
+                <tr className="hover:bg-gray-50">
+                  <td className="border border-gray-300 px-3 py-2 font-semibold text-gray-900">Reviewer</td>
+                  <td className="border border-gray-300 px-3 py-2">
                     <input
                       type="text"
                       value={reviewerSignature}
                       onChange={(e) => setReviewerSignature(e.target.value)}
                       placeholder="Enter full name"
-                      className="w-full px-2 py-1 border border-white/10 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
+                      className="w-full px-2 py-1 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
                     />
                   </td>
-                  <td className="border border-white/10 px-3 py-2 text-slate-300 font-mono text-xs">
+                  <td className="border border-gray-300 px-3 py-2 text-gray-700 font-mono text-xs">
                     {new Date().toLocaleDateString()}
                   </td>
                 </tr>
@@ -380,29 +380,29 @@ export function ExcelSignoffSummary({ onNavigate, jobId = 'JOB-2024-045' }: Exce
         {/* Locked Signatures View */}
         {isLocked && (
           <div className="border border-green-300 rounded bg-white overflow-hidden">
-            <div className="bg-green-500/10 border-b border-green-300 px-4 py-2">
-              <h3 className="font-semibold text-green-300">Final Signatures (Locked)</h3>
+            <div className="bg-green-50 border-b border-green-300 px-4 py-2">
+              <h3 className="font-semibold text-green-900">Final Signatures (Locked)</h3>
             </div>
             <table className="w-full text-sm border-collapse">
               <thead>
-                <tr className="bg-white/5">
-                  <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300 w-32">Role</th>
-                  <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Name</th>
-                  <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300 w-32">Date</th>
+                <tr className="bg-gray-50">
+                  <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700 w-32">Role</th>
+                  <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Name</th>
+                  <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700 w-32">Date</th>
                 </tr>
               </thead>
               <tbody>
-                <tr className="bg-green-500/10">
-                  <td className="border border-white/10 px-3 py-2 font-semibold text-slate-100">Preparer</td>
-                  <td className="border border-white/10 px-3 py-2 font-semibold text-slate-100">{preparerSignature}</td>
-                  <td className="border border-white/10 px-3 py-2 text-slate-300 font-mono text-xs">
+                <tr className="bg-green-50">
+                  <td className="border border-gray-300 px-3 py-2 font-semibold text-gray-900">Preparer</td>
+                  <td className="border border-gray-300 px-3 py-2 font-semibold text-gray-900">{preparerSignature}</td>
+                  <td className="border border-gray-300 px-3 py-2 text-gray-700 font-mono text-xs">
                     {new Date().toLocaleDateString()}
                   </td>
                 </tr>
-                <tr className="bg-green-500/10">
-                  <td className="border border-white/10 px-3 py-2 font-semibold text-slate-100">Reviewer</td>
-                  <td className="border border-white/10 px-3 py-2 font-semibold text-slate-100">{reviewerSignature}</td>
-                  <td className="border border-white/10 px-3 py-2 text-slate-300 font-mono text-xs">
+                <tr className="bg-green-50">
+                  <td className="border border-gray-300 px-3 py-2 font-semibold text-gray-900">Reviewer</td>
+                  <td className="border border-gray-300 px-3 py-2 font-semibold text-gray-900">{reviewerSignature}</td>
+                  <td className="border border-gray-300 px-3 py-2 text-gray-700 font-mono text-xs">
                     {new Date().toLocaleDateString()}
                   </td>
                 </tr>
@@ -413,12 +413,12 @@ export function ExcelSignoffSummary({ onNavigate, jobId = 'JOB-2024-045' }: Exce
 
         {/* Warning */}
         {!isLocked && !canLock && (
-          <div className="bg-orange-500/10 border border-orange-300 rounded px-4 py-3">
+          <div className="bg-orange-50 border border-orange-300 rounded px-4 py-3">
             <div className="flex items-start gap-3">
-              <AlertCircle className="w-5 h-5 text-orange-400 flex-shrink-0 mt-0.5" />
+              <AlertCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
               <div>
-                <h4 className="font-semibold text-orange-300">Not Ready to Lock</h4>
-                <p className="text-sm text-orange-300">
+                <h4 className="font-semibold text-orange-900">Not Ready to Lock</h4>
+                <p className="text-sm text-orange-800">
                   All sections must be signed off, declaration accepted, and both signatures provided
                 </p>
               </div>

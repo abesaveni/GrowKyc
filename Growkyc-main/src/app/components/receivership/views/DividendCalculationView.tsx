@@ -53,21 +53,21 @@ export function DividendCalculationView() {
       />
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="bg-white border border-white/10 rounded-lg p-4 flex items-start gap-3">
-          <Calculator className="w-8 h-8 text-red-400" />
+        <div className="bg-white border border-gray-200 rounded-lg p-4 flex items-start gap-3">
+          <Calculator className="w-8 h-8 text-red-600" />
           <div>
-            <p className="text-sm text-slate-300">Distribution pool</p>
+            <p className="text-sm text-gray-600">Distribution pool</p>
             <p className="text-2xl font-bold">{formatMoney(totalPool)}</p>
           </div>
         </div>
-        <div className="bg-white border border-white/10 rounded-lg p-4">
-          <p className="text-sm text-slate-300">Total distributed</p>
-          <p className="text-2xl font-bold text-green-300">{formatMoney(totalDistributed)}</p>
+        <div className="bg-white border border-gray-200 rounded-lg p-4">
+          <p className="text-sm text-gray-600">Total distributed</p>
+          <p className="text-2xl font-bold text-green-700">{formatMoney(totalDistributed)}</p>
           <ProgressBar value={pctDistributed} className="mt-2" colorClass="bg-green-600" />
         </div>
-        <div className="bg-white border border-white/10 rounded-lg p-4">
-          <p className="text-sm text-slate-300">Remaining balance</p>
-          <p className="text-2xl font-bold text-slate-100">{formatMoney(remaining)}</p>
+        <div className="bg-white border border-gray-200 rounded-lg p-4">
+          <p className="text-sm text-gray-600">Remaining balance</p>
+          <p className="text-2xl font-bold text-gray-900">{formatMoney(remaining)}</p>
         </div>
       </div>
 

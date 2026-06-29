@@ -188,13 +188,13 @@ export function SubmissionTracking({ onBack }: { onBack?: () => void }) {
 
   const getStatusBadge = (status: SubmissionStatus) => {
     const configs = {
-      draft: { label: 'Draft Only', color: 'bg-white/5 text-slate-300', icon: FileText },
-      approved: { label: 'Approved', color: 'bg-amber-500/15 text-amber-300', icon: CheckCircle },
-      submitted: { label: 'Submitted', color: 'bg-blue-500/15 text-blue-300', icon: Send },
-      acknowledged: { label: 'Acknowledged', color: 'bg-green-500/15 text-green-300', icon: CheckCircle },
-      failed: { label: 'Failed', color: 'bg-red-500/15 text-red-300', icon: XCircle },
-      closed: { label: 'Closed', color: 'bg-white/5 text-slate-300', icon: CheckCircle },
-      not_submitted: { label: 'Not Submitted', color: 'bg-white/5 text-slate-300', icon: XCircle }
+      draft: { label: 'Draft Only', color: 'bg-gray-100 text-gray-700', icon: FileText },
+      approved: { label: 'Approved', color: 'bg-amber-100 text-amber-700', icon: CheckCircle },
+      submitted: { label: 'Submitted', color: 'bg-blue-100 text-blue-700', icon: Send },
+      acknowledged: { label: 'Acknowledged', color: 'bg-green-100 text-green-700', icon: CheckCircle },
+      failed: { label: 'Failed', color: 'bg-red-100 text-red-700', icon: XCircle },
+      closed: { label: 'Closed', color: 'bg-gray-100 text-gray-700', icon: CheckCircle },
+      not_submitted: { label: 'Not Submitted', color: 'bg-gray-100 text-gray-700', icon: XCircle }
     };
 
     const config = configs[status];
@@ -213,7 +213,7 @@ export function SubmissionTracking({ onBack }: { onBack?: () => void }) {
     : submissionsList.filter(s => s.status === filterStatus);
 
   return (
-    <div className="min-h-screen bg-white/5 p-4 md:p-8">
+    <div className="min-h-screen bg-gray-50 p-4 md:p-8">
       <div className="max-w-[1800px] mx-auto space-y-6">
         {/* Header */}
         <div className="bg-gradient-to-r from-red-900 via-red-800 to-orange-900 rounded-lg p-6 text-white shadow-xl">
@@ -229,7 +229,7 @@ export function SubmissionTracking({ onBack }: { onBack?: () => void }) {
             </div>
             <div className="flex flex-wrap gap-2 w-full sm:w-auto">
               {onBack && (
-                <Button onClick={onBack} className="bg-white text-red-300 hover:bg-red-500/10 flex-1 sm:flex-initial justify-center">
+                <Button onClick={onBack} className="bg-white text-red-900 hover:bg-red-50 flex-1 sm:flex-initial justify-center">
                   Return to Control Centre
                 </Button>
               )}
@@ -272,7 +272,7 @@ export function SubmissionTracking({ onBack }: { onBack?: () => void }) {
         <Card className="border-2 border-blue-300">
           <CardContent className="p-4">
             <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-              <span className="font-semibold text-slate-100 flex-shrink-0">Filter by Status:</span>
+              <span className="font-semibold text-gray-900 flex-shrink-0">Filter by Status:</span>
               <div className="flex flex-wrap gap-2">
                 {['all', 'submitted', 'acknowledged', 'approved', 'failed', 'not_submitted', 'closed'].map((status) => (
                   <Button
@@ -282,7 +282,7 @@ export function SubmissionTracking({ onBack }: { onBack?: () => void }) {
                     className={
                       filterStatus === status
                         ? 'bg-blue-600 text-white'
-                        : 'bg-white text-slate-300 hover:bg-blue-500/10'
+                        : 'bg-white text-gray-700 hover:bg-blue-50'
                     }
                   >
                     {status === 'all' ? 'All' : status.replace('_', ' ').toUpperCase()}
@@ -294,45 +294,45 @@ export function SubmissionTracking({ onBack }: { onBack?: () => void }) {
         </Card>
 
         {/* Submissions Table */}
-        <Card className="border-2 border-white/10 shadow-lg">
+        <Card className="border-2 border-gray-300 shadow-lg">
           <CardHeader className="bg-gradient-to-r from-gray-50 to-slate-50 border-b">
             <CardTitle className="text-2xl">Submission Register</CardTitle>
           </CardHeader>
           <CardContent className="p-0">
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-white/5 border-b-2 border-white/10">
+                <thead className="bg-gray-100 border-b-2 border-gray-300">
                   <tr>
-                    <th className="text-left py-3 px-4 text-sm font-bold text-slate-300">Case ID</th>
-                    <th className="text-left py-3 px-4 text-sm font-bold text-slate-300">Report Type</th>
-                    <th className="text-left py-3 px-4 text-sm font-bold text-slate-300">Subject</th>
-                    <th className="text-left py-3 px-4 text-sm font-bold text-slate-300">Decision Date</th>
-                    <th className="text-left py-3 px-4 text-sm font-bold text-slate-300">Method</th>
-                    <th className="text-left py-3 px-4 text-sm font-bold text-slate-300">Status</th>
-                    <th className="text-left py-3 px-4 text-sm font-bold text-slate-300">Submitted By</th>
-                    <th className="text-left py-3 px-4 text-sm font-bold text-slate-300">Acknowledgement</th>
-                    <th className="text-left py-3 px-4 text-sm font-bold text-slate-300">Last Updated</th>
-                    <th className="text-left py-3 px-4 text-sm font-bold text-slate-300">Actions</th>
+                    <th className="text-left py-3 px-4 text-sm font-bold text-gray-700">Case ID</th>
+                    <th className="text-left py-3 px-4 text-sm font-bold text-gray-700">Report Type</th>
+                    <th className="text-left py-3 px-4 text-sm font-bold text-gray-700">Subject</th>
+                    <th className="text-left py-3 px-4 text-sm font-bold text-gray-700">Decision Date</th>
+                    <th className="text-left py-3 px-4 text-sm font-bold text-gray-700">Method</th>
+                    <th className="text-left py-3 px-4 text-sm font-bold text-gray-700">Status</th>
+                    <th className="text-left py-3 px-4 text-sm font-bold text-gray-700">Submitted By</th>
+                    <th className="text-left py-3 px-4 text-sm font-bold text-gray-700">Acknowledgement</th>
+                    <th className="text-left py-3 px-4 text-sm font-bold text-gray-700">Last Updated</th>
+                    <th className="text-left py-3 px-4 text-sm font-bold text-gray-700">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   {filteredSubmissions.map((submission) => (
                     <tr
                       key={submission.caseId}
-                      className="border-b border-white/10 hover:bg-blue-500/10 transition-colors cursor-pointer"
+                      className="border-b border-gray-200 hover:bg-blue-50 transition-colors cursor-pointer"
                       onClick={() => setSelectedSubmission(submission)}
                     >
                       <td className="py-3 px-4">
-                        <span className="font-mono font-semibold text-blue-300">{submission.caseId}</span>
+                        <span className="font-mono font-semibold text-blue-900">{submission.caseId}</span>
                       </td>
                       <td className="py-3 px-4">
                         <Badge variant="outline" className="text-xs">{submission.reportType.toUpperCase()}</Badge>
                       </td>
                       <td className="py-3 px-4">
-                        <span className="font-semibold text-slate-100">{submission.subject}</span>
+                        <span className="font-semibold text-gray-900">{submission.subject}</span>
                       </td>
                       <td className="py-3 px-4">
-                        <span className="text-sm text-slate-300">{submission.decisionDate}</span>
+                        <span className="text-sm text-gray-700">{submission.decisionDate}</span>
                       </td>
                       <td className="py-3 px-4">
                         <Badge variant="outline" className="text-xs capitalize">{submission.submissionMethod}</Badge>
@@ -340,19 +340,19 @@ export function SubmissionTracking({ onBack }: { onBack?: () => void }) {
                       <td className="py-3 px-4">
                         {getStatusBadge(submission.status)}
                         {submission.retryCount !== undefined && submission.retryCount > 0 && (
-                          <Badge className="bg-orange-500/15 text-orange-300 text-xs ml-2">
+                          <Badge className="bg-orange-100 text-orange-700 text-xs ml-2">
                             {submission.retryCount} retries
                           </Badge>
                         )}
                       </td>
                       <td className="py-3 px-4">
-                        <span className="text-sm text-slate-300">{submission.submittedBy}</span>
+                        <span className="text-sm text-gray-700">{submission.submittedBy}</span>
                       </td>
                       <td className="py-3 px-4">
-                        <span className="text-sm text-slate-300">{submission.acknowledgementStatus}</span>
+                        <span className="text-sm text-gray-700">{submission.acknowledgementStatus}</span>
                       </td>
                       <td className="py-3 px-4">
-                        <span className="text-sm text-slate-300">{submission.lastUpdated}</span>
+                        <span className="text-sm text-gray-700">{submission.lastUpdated}</span>
                       </td>
                       <td className="py-3 px-4">
                         <div className="flex gap-2">
@@ -410,45 +410,45 @@ export function SubmissionTracking({ onBack }: { onBack?: () => void }) {
                 {/* Case Info */}
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <p className="text-sm text-slate-300 mb-1">Case ID</p>
-                    <p className="font-mono font-bold text-xl text-blue-300">{selectedSubmission.caseId}</p>
+                    <p className="text-sm text-gray-600 mb-1">Case ID</p>
+                    <p className="font-mono font-bold text-xl text-blue-900">{selectedSubmission.caseId}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-slate-300 mb-1">Subject</p>
-                    <p className="font-bold text-xl text-slate-100">{selectedSubmission.subject}</p>
+                    <p className="text-sm text-gray-600 mb-1">Subject</p>
+                    <p className="font-bold text-xl text-gray-900">{selectedSubmission.subject}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-slate-300 mb-1">Report Type</p>
-                    <Badge className="bg-purple-500/15 text-purple-300 text-lg px-4 py-2">
+                    <p className="text-sm text-gray-600 mb-1">Report Type</p>
+                    <Badge className="bg-purple-100 text-purple-700 text-lg px-4 py-2">
                       {selectedSubmission.reportType.toUpperCase()}
                     </Badge>
                   </div>
                   <div>
-                    <p className="text-sm text-slate-300 mb-1">Status</p>
+                    <p className="text-sm text-gray-600 mb-1">Status</p>
                     {getStatusBadge(selectedSubmission.status)}
                   </div>
                 </div>
 
                 {/* Submission Details */}
                 {selectedSubmission.submissionRef && (
-                  <div className="p-6 bg-blue-500/10 rounded-lg border-2 border-blue-300">
-                    <h3 className="font-bold text-blue-300 mb-4 text-lg">Submission Information</h3>
+                  <div className="p-6 bg-blue-50 rounded-lg border-2 border-blue-300">
+                    <h3 className="font-bold text-blue-900 mb-4 text-lg">Submission Information</h3>
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
-                        <p className="text-sm text-blue-300 mb-1">Submission Reference</p>
-                        <p className="font-mono font-bold text-blue-300">{selectedSubmission.submissionRef}</p>
+                        <p className="text-sm text-blue-700 mb-1">Submission Reference</p>
+                        <p className="font-mono font-bold text-blue-900">{selectedSubmission.submissionRef}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-blue-300 mb-1">Submission Method</p>
-                        <p className="font-semibold text-blue-300 capitalize">{selectedSubmission.submissionMethod}</p>
+                        <p className="text-sm text-blue-700 mb-1">Submission Method</p>
+                        <p className="font-semibold text-blue-900 capitalize">{selectedSubmission.submissionMethod}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-blue-300 mb-1">Submitted By</p>
-                        <p className="font-semibold text-blue-300">{selectedSubmission.submittedBy}</p>
+                        <p className="text-sm text-blue-700 mb-1">Submitted By</p>
+                        <p className="font-semibold text-blue-900">{selectedSubmission.submittedBy}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-blue-300 mb-1">Submitted At</p>
-                        <p className="font-semibold text-blue-300">{selectedSubmission.lastUpdated}</p>
+                        <p className="text-sm text-blue-700 mb-1">Submitted At</p>
+                        <p className="font-semibold text-blue-900">{selectedSubmission.lastUpdated}</p>
                       </div>
                     </div>
                   </div>
@@ -457,35 +457,35 @@ export function SubmissionTracking({ onBack }: { onBack?: () => void }) {
                 {/* Acknowledgement */}
                 <div className={`p-6 rounded-lg border-2 ${
                   selectedSubmission.status === 'acknowledged'
-                    ? 'bg-green-500/10 border-green-300'
+                    ? 'bg-green-50 border-green-300'
                     : selectedSubmission.status === 'failed'
-                    ? 'bg-red-500/10 border-red-300'
-                    : 'bg-white/5 border-white/10'
+                    ? 'bg-red-50 border-red-300'
+                    : 'bg-gray-50 border-gray-300'
                 }`}>
                   <div className="flex items-start gap-3">
                     {selectedSubmission.status === 'acknowledged' ? (
-                      <CheckCircle className="w-8 h-8 text-green-400 flex-shrink-0" />
+                      <CheckCircle className="w-8 h-8 text-green-600 flex-shrink-0" />
                     ) : selectedSubmission.status === 'failed' ? (
-                      <XCircle className="w-8 h-8 text-red-400 flex-shrink-0" />
+                      <XCircle className="w-8 h-8 text-red-600 flex-shrink-0" />
                     ) : (
-                      <Clock className="w-8 h-8 text-slate-300 flex-shrink-0" />
+                      <Clock className="w-8 h-8 text-gray-600 flex-shrink-0" />
                     )}
                     <div className="flex-1">
                       <h3 className={`font-bold text-lg mb-2 ${
                         selectedSubmission.status === 'acknowledged'
-                          ? 'text-green-300'
+                          ? 'text-green-900'
                           : selectedSubmission.status === 'failed'
-                          ? 'text-red-300'
-                          : 'text-slate-100'
+                          ? 'text-red-900'
+                          : 'text-gray-900'
                       }`}>
                         Acknowledgement Status
                       </h3>
                       <p className={`${
                         selectedSubmission.status === 'acknowledged'
-                          ? 'text-green-300'
+                          ? 'text-green-800'
                           : selectedSubmission.status === 'failed'
-                          ? 'text-red-300'
-                          : 'text-slate-100'
+                          ? 'text-red-800'
+                          : 'text-gray-800'
                       }`}>
                         {selectedSubmission.acknowledgementStatus}
                       </p>
@@ -494,13 +494,13 @@ export function SubmissionTracking({ onBack }: { onBack?: () => void }) {
                 </div>
 
                 {/* Attached Files */}
-                <div className="p-6 bg-purple-500/10 rounded-lg border-2 border-purple-300">
-                  <h3 className="font-bold text-purple-300 mb-4 text-lg">Attached Files</h3>
+                <div className="p-6 bg-purple-50 rounded-lg border-2 border-purple-300">
+                  <h3 className="font-bold text-purple-900 mb-4 text-lg">Attached Files</h3>
                   <div className="space-y-2">
-                    <div className="flex items-center justify-between p-3 bg-white rounded border border-purple-500/30">
+                    <div className="flex items-center justify-between p-3 bg-white rounded border border-purple-200">
                       <div className="flex items-center gap-2">
-                        <FileText className="w-5 h-5 text-purple-400" />
-                        <span className="font-semibold text-slate-100">SMR Draft Report.pdf</span>
+                        <FileText className="w-5 h-5 text-purple-600" />
+                        <span className="font-semibold text-gray-900">SMR Draft Report.pdf</span>
                       </div>
                       <Button 
                         variant="outline" 
@@ -520,10 +520,10 @@ export function SubmissionTracking({ onBack }: { onBack?: () => void }) {
                         Download
                       </Button>
                     </div>
-                    <div className="flex items-center justify-between p-3 bg-white rounded border border-purple-500/30">
+                    <div className="flex items-center justify-between p-3 bg-white rounded border border-purple-200">
                       <div className="flex items-center gap-2">
-                        <FileText className="w-5 h-5 text-purple-400" />
-                        <span className="font-semibold text-slate-100">Evidence Pack.zip</span>
+                        <FileText className="w-5 h-5 text-purple-600" />
+                        <span className="font-semibold text-gray-900">Evidence Pack.zip</span>
                       </div>
                       <Button 
                         variant="outline" 
@@ -548,22 +548,22 @@ export function SubmissionTracking({ onBack }: { onBack?: () => void }) {
 
                 {/* Retry History (if failed) */}
                 {selectedSubmission.status === 'failed' && selectedSubmission.retryCount && selectedSubmission.retryCount > 0 && (
-                  <div className="p-6 bg-red-500/10 rounded-lg border-2 border-red-300">
+                  <div className="p-6 bg-red-50 rounded-lg border-2 border-red-300">
                     <div className="flex items-start gap-3 mb-4">
-                      <AlertTriangle className="w-8 h-8 text-red-400 flex-shrink-0" />
+                      <AlertTriangle className="w-8 h-8 text-red-600 flex-shrink-0" />
                       <div>
-                        <h3 className="font-bold text-red-300 text-lg mb-1">Submission Failed</h3>
-                        <p className="text-red-300">Retry count: {selectedSubmission.retryCount}</p>
+                        <h3 className="font-bold text-red-900 text-lg mb-1">Submission Failed</h3>
+                        <p className="text-red-800">Retry count: {selectedSubmission.retryCount}</p>
                       </div>
                     </div>
                     <div className="space-y-2">
-                      <div className="p-3 bg-white rounded border border-red-500/30">
-                        <p className="text-sm text-slate-300">
+                      <div className="p-3 bg-white rounded border border-red-200">
+                        <p className="text-sm text-gray-700">
                           <strong>Attempt 1:</strong> Failed - Network timeout (2026-03-15 11:20)
                         </p>
                       </div>
-                      <div className="p-3 bg-white rounded border border-red-500/30">
-                        <p className="text-sm text-slate-300">
+                      <div className="p-3 bg-white rounded border border-red-200">
+                        <p className="text-sm text-gray-700">
                           <strong>Attempt 2:</strong> Failed - Server error 503 (2026-03-15 11:45)
                         </p>
                       </div>

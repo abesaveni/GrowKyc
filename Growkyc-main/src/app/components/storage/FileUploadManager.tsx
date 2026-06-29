@@ -251,12 +251,12 @@ export function FileUploadManager({
     return (
       <Card>
         <CardHeader className="border-b">
-          <CardTitle className="flex items-center gap-2 text-red-300">
+          <CardTitle className="flex items-center gap-2 text-red-700">
             <AlertCircle className="w-5 h-5" />
             Legacy Storage Blocked in Production
           </CardTitle>
         </CardHeader>
-        <CardContent className="p-6 text-sm text-slate-300">
+        <CardContent className="p-6 text-sm text-gray-700">
           This file manager targets legacy Supabase storage paths and is disabled in production.
         </CardContent>
       </Card>
@@ -268,40 +268,40 @@ export function FileUploadManager({
       <Card>
         <CardHeader className="border-b">
           <CardTitle className="flex items-center gap-2">
-            <FolderOpen className="w-5 h-5 text-blue-400" />
+            <FolderOpen className="w-5 h-5 text-blue-600" />
             File Manager - {module} / {folder}
           </CardTitle>
         </CardHeader>
         <CardContent className="p-6">
           {/* Alerts */}
           {error && (
-            <div className="mb-4 p-4 bg-red-500/10 border border-red-500/30 rounded-lg flex items-start gap-3">
-              <AlertCircle className="w-5 h-5 text-red-400 mt-0.5" />
+            <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
+              <AlertCircle className="w-5 h-5 text-red-600 mt-0.5" />
               <div className="flex-1">
-                <p className="text-sm font-medium text-red-300">Error</p>
-                <p className="text-sm text-red-300">{error}</p>
+                <p className="text-sm font-medium text-red-900">Error</p>
+                <p className="text-sm text-red-700">{error}</p>
               </div>
-              <button onClick={() => setError(null)} className="text-red-400 hover:text-red-300">
+              <button onClick={() => setError(null)} className="text-red-600 hover:text-red-800">
                 <X className="w-4 h-4" />
               </button>
             </div>
           )}
 
           {success && (
-            <div className="mb-4 p-4 bg-green-500/10 border border-green-500/30 rounded-lg flex items-start gap-3">
-              <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
+            <div className="mb-4 p-4 bg-green-50 border border-green-200 rounded-lg flex items-start gap-3">
+              <CheckCircle className="w-5 h-5 text-green-600 mt-0.5" />
               <div className="flex-1">
-                <p className="text-sm font-medium text-green-300">Success</p>
-                <p className="text-sm text-green-300">{success}</p>
+                <p className="text-sm font-medium text-green-900">Success</p>
+                <p className="text-sm text-green-700">{success}</p>
               </div>
-              <button onClick={() => setSuccess(null)} className="text-green-400 hover:text-green-300">
+              <button onClick={() => setSuccess(null)} className="text-green-600 hover:text-green-800">
                 <X className="w-4 h-4" />
               </button>
             </div>
           )}
 
           {/* Upload Section */}
-          <div className="mb-6 p-6 border-2 border-dashed border-white/10 rounded-lg hover:border-blue-400 transition-colors">
+          <div className="mb-6 p-6 border-2 border-dashed border-gray-300 rounded-lg hover:border-blue-400 transition-colors">
             <div className="text-center">
               <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
               <input
@@ -328,7 +328,7 @@ export function FileUploadManager({
                   </>
                 )}
               </label>
-              <p className="text-sm text-slate-400 mt-2">
+              <p className="text-sm text-gray-500 mt-2">
                 Maximum file size: 50MB
               </p>
             </div>
@@ -342,20 +342,20 @@ export function FileUploadManager({
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search files..."
-              className="w-full pl-10 pr-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
 
           {/* Files List */}
           {loading ? (
             <div className="text-center py-12">
-              <Loader2 className="w-8 h-8 animate-spin text-blue-400 mx-auto mb-4" />
-              <p className="text-slate-300">Loading files...</p>
+              <Loader2 className="w-8 h-8 animate-spin text-blue-600 mx-auto mb-4" />
+              <p className="text-gray-600">Loading files...</p>
             </div>
           ) : filteredFiles.length === 0 ? (
             <div className="text-center py-12">
               <File className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-              <p className="text-slate-300 mb-2">
+              <p className="text-gray-600 mb-2">
                 {searchQuery ? 'No files found matching your search' : 'No files uploaded yet'}
               </p>
               {searchQuery && (
@@ -371,19 +371,19 @@ export function FileUploadManager({
                 return (
                   <div
                     key={file.id}
-                    className="flex items-center gap-4 p-4 border border-white/10 rounded-lg hover:bg-white/5 transition-colors"
+                    className="flex items-center gap-4 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
                   >
                     <div className="flex-shrink-0">
-                      <div className="w-10 h-10 bg-blue-500/15 rounded-lg flex items-center justify-center">
-                        <Icon className="w-5 h-5 text-blue-400" />
+                      <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                        <Icon className="w-5 h-5 text-blue-600" />
                       </div>
                     </div>
                     
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-slate-100 truncate">
+                      <p className="text-sm font-medium text-gray-900 truncate">
                         {file.name}
                       </p>
-                      <p className="text-xs text-slate-400">
+                      <p className="text-xs text-gray-500">
                         {formatFileSize(file.size)} • {formatDate(file.uploadedAt)}
                       </p>
                     </div>
@@ -402,7 +402,7 @@ export function FileUploadManager({
                         onClick={() => handleDelete(file.path)}
                         variant="outline"
                         size="sm"
-                        className="flex items-center gap-2 text-red-400 hover:text-red-300 hover:bg-red-500/10"
+                        className="flex items-center gap-2 text-red-600 hover:text-red-700 hover:bg-red-50"
                       >
                         <Trash2 className="w-4 h-4" />
                         Delete
@@ -435,38 +435,38 @@ export function FileUploadManager({
         <CardContent className="p-6">
           <div className="space-y-4 text-sm">
             <div>
-              <p className="font-semibold text-slate-100 mb-1">Upload File</p>
-              <code className="block bg-white/5 p-2 rounded text-xs">
+              <p className="font-semibold text-gray-900 mb-1">Upload File</p>
+              <code className="block bg-gray-100 p-2 rounded text-xs">
                 POST {API_BASE}/files/upload
               </code>
-              <p className="text-slate-300 mt-1">FormData: file, module, folder, metadata</p>
+              <p className="text-gray-600 mt-1">FormData: file, module, folder, metadata</p>
             </div>
             
             <div>
-              <p className="font-semibold text-slate-100 mb-1">List Files</p>
-              <code className="block bg-white/5 p-2 rounded text-xs">
+              <p className="font-semibold text-gray-900 mb-1">List Files</p>
+              <code className="block bg-gray-100 p-2 rounded text-xs">
                 GET {API_BASE}/files/list?module={module}&folder={folder}
               </code>
             </div>
             
             <div>
-              <p className="font-semibold text-slate-100 mb-1">Download File</p>
-              <code className="block bg-white/5 p-2 rounded text-xs">
+              <p className="font-semibold text-gray-900 mb-1">Download File</p>
+              <code className="block bg-gray-100 p-2 rounded text-xs">
                 GET {API_BASE}/files/download/:path
               </code>
-              <p className="text-slate-300 mt-1">Returns signed URL valid for 1 hour</p>
+              <p className="text-gray-600 mt-1">Returns signed URL valid for 1 hour</p>
             </div>
             
             <div>
-              <p className="font-semibold text-slate-100 mb-1">Delete File</p>
-              <code className="block bg-white/5 p-2 rounded text-xs">
+              <p className="font-semibold text-gray-900 mb-1">Delete File</p>
+              <code className="block bg-gray-100 p-2 rounded text-xs">
                 DELETE {API_BASE}/files/delete/:path
               </code>
             </div>
             
             <div>
-              <p className="font-semibold text-slate-100 mb-1">Search Files</p>
-              <code className="block bg-white/5 p-2 rounded text-xs">
+              <p className="font-semibold text-gray-900 mb-1">Search Files</p>
+              <code className="block bg-gray-100 p-2 rounded text-xs">
                 GET {API_BASE}/files/search?q=query&module={module}
               </code>
             </div>

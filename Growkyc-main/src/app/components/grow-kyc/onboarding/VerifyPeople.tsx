@@ -57,11 +57,11 @@ export function VerifyPeople({ entity, onComplete }: VerifyPeopleProps) {
       </CardHeader>
       <CardContent className="space-y-6">
         {/* Progress Overview */}
-        <Card className="bg-blue-500/10 border-blue-500/30">
+        <Card className="bg-blue-50 border-blue-200">
           <CardContent className="p-4">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium text-white">Verification Progress</span>
-              <span className="text-sm font-bold text-blue-400">{verifiedCount} / {people.length}</span>
+              <span className="text-sm font-medium text-gray-900">Verification Progress</span>
+              <span className="text-sm font-bold text-blue-600">{verifiedCount} / {people.length}</span>
             </div>
             <Progress value={(verifiedCount / people.length) * 100} />
           </CardContent>
@@ -72,9 +72,9 @@ export function VerifyPeople({ entity, onComplete }: VerifyPeopleProps) {
           const status = verificationStatus[person.id];
           return (
             <Card key={person.id} className={
-              status === 'verified' ? 'border-green-500 bg-green-500/10' :
-              status === 'reviewing' ? 'border-blue-500 bg-blue-500/10' :
-              'border-white/10'
+              status === 'verified' ? 'border-green-500 bg-green-50' :
+              status === 'reviewing' ? 'border-blue-500 bg-blue-50' :
+              'border-gray-300'
             }>
               <CardContent className="p-6">
                 <div className="flex items-start justify-between mb-4">
@@ -93,8 +93,8 @@ export function VerifyPeople({ entity, onComplete }: VerifyPeopleProps) {
                       )}
                     </div>
                     <div>
-                      <h3 className="font-bold text-white">{person.name}</h3>
-                      <p className="text-sm text-slate-300">{person.role}</p>
+                      <h3 className="font-bold text-gray-900">{person.name}</h3>
+                      <p className="text-sm text-gray-600">{person.role}</p>
                     </div>
                   </div>
                   <Badge className={
@@ -113,20 +113,20 @@ export function VerifyPeople({ entity, onComplete }: VerifyPeopleProps) {
                     <div className="grid grid-cols-3 gap-3">
                       <Card className="hover:shadow-md transition-shadow cursor-pointer">
                         <CardContent className="p-4 text-center" onClick={() => handleVerify(person.id)}>
-                          <FileText className="w-8 h-8 text-blue-400 mx-auto mb-2" />
-                          <p className="text-xs font-medium text-white">Driver License</p>
+                          <FileText className="w-8 h-8 text-blue-600 mx-auto mb-2" />
+                          <p className="text-xs font-medium text-gray-900">Driver License</p>
                         </CardContent>
                       </Card>
                       <Card className="hover:shadow-md transition-shadow cursor-pointer">
                         <CardContent className="p-4 text-center" onClick={() => handleVerify(person.id)}>
-                          <FileText className="w-8 h-8 text-blue-400 mx-auto mb-2" />
-                          <p className="text-xs font-medium text-white">Passport</p>
+                          <FileText className="w-8 h-8 text-blue-600 mx-auto mb-2" />
+                          <p className="text-xs font-medium text-gray-900">Passport</p>
                         </CardContent>
                       </Card>
                       <Card className="hover:shadow-md transition-shadow cursor-pointer">
                         <CardContent className="p-4 text-center" onClick={() => handleVerify(person.id)}>
-                          <Upload className="w-8 h-8 text-blue-400 mx-auto mb-2" />
-                          <p className="text-xs font-medium text-white">Upload File</p>
+                          <Upload className="w-8 h-8 text-blue-600 mx-auto mb-2" />
+                          <p className="text-xs font-medium text-gray-900">Upload File</p>
                         </CardContent>
                       </Card>
                     </div>
@@ -135,15 +135,15 @@ export function VerifyPeople({ entity, onComplete }: VerifyPeopleProps) {
 
                 {status === 'reviewing' && (
                   <div className="text-center py-4">
-                    <Clock className="w-8 h-8 text-blue-400 mx-auto mb-2 animate-spin" />
-                    <p className="text-sm text-slate-300">Verifying document...</p>
+                    <Clock className="w-8 h-8 text-blue-600 mx-auto mb-2 animate-spin" />
+                    <p className="text-sm text-gray-700">Verifying document...</p>
                   </div>
                 )}
 
                 {status === 'verified' && (
-                  <div className="bg-green-500/15 rounded-lg p-3 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-400" />
-                    <span className="text-sm text-green-300 font-medium">Identity verified successfully</span>
+                  <div className="bg-green-100 rounded-lg p-3 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-green-600" />
+                    <span className="text-sm text-green-900 font-medium">Identity verified successfully</span>
                   </div>
                 )}
               </CardContent>

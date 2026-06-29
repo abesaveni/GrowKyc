@@ -204,22 +204,22 @@ export function ClientOnboarding({ onNavigate }: ClientOnboardingProps) {
 
   const getStageColor = (stage: string) => {
     switch (stage) {
-      case 'prospect': return 'bg-white/5 text-slate-300 border-white/10';
-      case 'engagement': return 'bg-blue-500/15 text-blue-300 border-blue-300';
-      case 'documents': return 'bg-purple-500/15 text-purple-300 border-purple-300';
-      case 'setup': return 'bg-orange-500/15 text-orange-300 border-orange-300';
-      case 'complete': return 'bg-green-500/15 text-green-300 border-green-300';
-      default: return 'bg-white/5 text-slate-300 border-white/10';
+      case 'prospect': return 'bg-gray-100 text-gray-700 border-gray-300';
+      case 'engagement': return 'bg-blue-100 text-blue-700 border-blue-300';
+      case 'documents': return 'bg-purple-100 text-purple-700 border-purple-300';
+      case 'setup': return 'bg-orange-100 text-orange-700 border-orange-300';
+      case 'complete': return 'bg-green-100 text-green-700 border-green-300';
+      default: return 'bg-gray-100 text-gray-700 border-gray-300';
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'on-track': return 'text-green-400';
-      case 'at-risk': return 'text-orange-400';
-      case 'delayed': return 'text-red-400';
-      case 'complete': return 'text-green-400';
-      default: return 'text-slate-300';
+      case 'on-track': return 'text-green-600';
+      case 'at-risk': return 'text-orange-600';
+      case 'delayed': return 'text-red-600';
+      case 'complete': return 'text-green-600';
+      default: return 'text-gray-600';
     }
   };
 
@@ -235,10 +235,10 @@ export function ClientOnboarding({ onNavigate }: ClientOnboardingProps) {
 
   const getTaskStatusBadge = (status: string) => {
     switch (status) {
-      case 'completed': return 'bg-green-500/15 text-green-300 border-green-300';
-      case 'in-progress': return 'bg-blue-500/15 text-blue-300 border-blue-300';
-      case 'pending': return 'bg-white/5 text-slate-300 border-white/10';
-      default: return 'bg-white/5 text-slate-300 border-white/10';
+      case 'completed': return 'bg-green-100 text-green-700 border-green-300';
+      case 'in-progress': return 'bg-blue-100 text-blue-700 border-blue-300';
+      case 'pending': return 'bg-gray-100 text-gray-700 border-gray-300';
+      default: return 'bg-gray-100 text-gray-700 border-gray-300';
     }
   };
 
@@ -248,8 +248,8 @@ export function ClientOnboarding({ onNavigate }: ClientOnboardingProps) {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-[32px] font-bold text-slate-100">Client Onboarding</h1>
-            <p className="text-sm text-slate-300 mt-1">Streamline new client setup with automated workflows</p>
+            <h1 className="text-[32px] font-bold text-gray-900">Client Onboarding</h1>
+            <p className="text-sm text-gray-600 mt-1">Streamline new client setup with automated workflows</p>
           </div>
           <div className="flex items-center gap-2">
             <Button variant="outline" size="sm">
@@ -268,12 +268,12 @@ export function ClientOnboarding({ onNavigate }: ClientOnboardingProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-blue-500/10 rounded-lg">
-                  <Users className="w-5 h-5 text-blue-400" />
+                <div className="p-3 bg-blue-50 rounded-lg">
+                  <Users className="w-5 h-5 text-blue-600" />
                 </div>
                 <div>
-                  <p className="text-xs text-slate-300">Total Active</p>
-                  <p className="text-2xl font-bold text-slate-100">5</p>
+                  <p className="text-xs text-gray-600">Total Active</p>
+                  <p className="text-2xl font-bold text-gray-900">5</p>
                 </div>
               </div>
             </CardContent>
@@ -282,12 +282,12 @@ export function ClientOnboarding({ onNavigate }: ClientOnboardingProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-green-500/10 rounded-lg">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
+                <div className="p-3 bg-green-50 rounded-lg">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
                 </div>
                 <div>
-                  <p className="text-xs text-slate-300">On Track</p>
-                  <p className="text-2xl font-bold text-slate-100">4</p>
+                  <p className="text-xs text-gray-600">On Track</p>
+                  <p className="text-2xl font-bold text-gray-900">4</p>
                 </div>
               </div>
             </CardContent>
@@ -296,12 +296,12 @@ export function ClientOnboarding({ onNavigate }: ClientOnboardingProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-orange-500/10 rounded-lg">
-                  <AlertCircle className="w-5 h-5 text-orange-400" />
+                <div className="p-3 bg-orange-50 rounded-lg">
+                  <AlertCircle className="w-5 h-5 text-orange-600" />
                 </div>
                 <div>
-                  <p className="text-xs text-slate-300">At Risk</p>
-                  <p className="text-2xl font-bold text-slate-100">1</p>
+                  <p className="text-xs text-gray-600">At Risk</p>
+                  <p className="text-2xl font-bold text-gray-900">1</p>
                 </div>
               </div>
             </CardContent>
@@ -310,12 +310,12 @@ export function ClientOnboarding({ onNavigate }: ClientOnboardingProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-purple-500/10 rounded-lg">
-                  <Clock className="w-5 h-5 text-purple-400" />
+                <div className="p-3 bg-purple-50 rounded-lg">
+                  <Clock className="w-5 h-5 text-purple-600" />
                 </div>
                 <div>
-                  <p className="text-xs text-slate-300">Avg. Duration</p>
-                  <p className="text-2xl font-bold text-slate-100">15d</p>
+                  <p className="text-xs text-gray-600">Avg. Duration</p>
+                  <p className="text-2xl font-bold text-gray-900">15d</p>
                 </div>
               </div>
             </CardContent>
@@ -324,12 +324,12 @@ export function ClientOnboarding({ onNavigate }: ClientOnboardingProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-green-500/10 rounded-lg">
-                  <Zap className="w-5 h-5 text-green-400" />
+                <div className="p-3 bg-green-50 rounded-lg">
+                  <Zap className="w-5 h-5 text-green-600" />
                 </div>
                 <div>
-                  <p className="text-xs text-slate-300">Completion Rate</p>
-                  <p className="text-2xl font-bold text-slate-100">92%</p>
+                  <p className="text-xs text-gray-600">Completion Rate</p>
+                  <p className="text-2xl font-bold text-gray-900">92%</p>
                 </div>
               </div>
             </CardContent>
@@ -339,7 +339,7 @@ export function ClientOnboarding({ onNavigate }: ClientOnboardingProps) {
         {/* Stage Pipeline */}
         <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
           <CardContent className="p-6">
-            <h3 className="font-semibold text-slate-100 mb-4">Onboarding Pipeline</h3>
+            <h3 className="font-semibold text-gray-900 mb-4">Onboarding Pipeline</h3>
             <div className="flex items-center gap-2">
               {stages.map((stage, index) => (
                 <React.Fragment key={stage.id}>
@@ -372,7 +372,7 @@ export function ClientOnboarding({ onNavigate }: ClientOnboardingProps) {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search clients..."
-              className="w-full pl-10 pr-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
             />
           </div>
           <Button variant="outline" size="sm">
@@ -391,7 +391,7 @@ export function ClientOnboarding({ onNavigate }: ClientOnboardingProps) {
                   {onboardingClients.map((client) => (
                     <div
                       key={client.id}
-                      className="p-4 border border-white/10 rounded-lg hover:border-[#2855a6] hover:bg-blue-500/10 cursor-pointer transition-all"
+                      className="p-4 border border-gray-200 rounded-lg hover:border-[#2855a6] hover:bg-blue-50 cursor-pointer transition-all"
                       onClick={() => {
                         setSelectedClient(client.id);
                         setSelectedView('detail');
@@ -404,8 +404,8 @@ export function ClientOnboarding({ onNavigate }: ClientOnboardingProps) {
                               {client.name.charAt(0)}
                             </div>
                             <div>
-                              <h3 className="font-semibold text-slate-100">{client.name}</h3>
-                              <p className="text-sm text-slate-300">{client.entityType}</p>
+                              <h3 className="font-semibold text-gray-900">{client.name}</h3>
+                              <p className="text-sm text-gray-600">{client.entityType}</p>
                             </div>
                           </div>
                         </div>
@@ -416,31 +416,31 @@ export function ClientOnboarding({ onNavigate }: ClientOnboardingProps) {
 
                       <div className="grid grid-cols-3 gap-4 mb-3">
                         <div>
-                          <p className="text-xs text-slate-300 mb-1">Contact Person</p>
-                          <p className="text-sm font-semibold text-slate-100">{client.contactPerson}</p>
+                          <p className="text-xs text-gray-600 mb-1">Contact Person</p>
+                          <p className="text-sm font-semibold text-gray-900">{client.contactPerson}</p>
                         </div>
                         <div>
-                          <p className="text-xs text-slate-300 mb-1">Assigned To</p>
-                          <p className="text-sm font-semibold text-slate-100">{client.assignedTo}</p>
+                          <p className="text-xs text-gray-600 mb-1">Assigned To</p>
+                          <p className="text-sm font-semibold text-gray-900">{client.assignedTo}</p>
                         </div>
                         <div>
-                          <p className="text-xs text-slate-300 mb-1">Est. Completion</p>
-                          <p className="text-sm font-semibold text-slate-100">{client.estimatedCompletion}</p>
+                          <p className="text-xs text-gray-600 mb-1">Est. Completion</p>
+                          <p className="text-sm font-semibold text-gray-900">{client.estimatedCompletion}</p>
                         </div>
                       </div>
 
                       <div className="space-y-2 mb-3">
                         <div className="flex items-center justify-between text-sm">
-                          <span className="text-slate-300">Progress</span>
+                          <span className="text-gray-600">Progress</span>
                           <div className="flex items-center gap-2">
-                            <span className="font-semibold text-slate-100">{client.tasksCompleted}/{client.totalTasks} tasks</span>
+                            <span className="font-semibold text-gray-900">{client.tasksCompleted}/{client.totalTasks} tasks</span>
                             <span className={`flex items-center gap-1 ${getStatusColor(client.status)}`}>
                               {getStatusIcon(client.status)}
                               <span className="text-xs font-semibold capitalize">{client.status.replace('-', ' ')}</span>
                             </span>
                           </div>
                         </div>
-                        <div className="h-2 bg-white/5 rounded-full overflow-hidden">
+                        <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
                           <div 
                             className={`h-full transition-all ${
                               client.status === 'on-track' ? 'bg-green-600' :
@@ -478,7 +478,7 @@ export function ClientOnboarding({ onNavigate }: ClientOnboardingProps) {
             <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-semibold text-slate-100">Upcoming Tasks</h3>
+                  <h3 className="font-semibold text-gray-900">Upcoming Tasks</h3>
                   <Button size="sm" variant="outline">
                     <Plus className="w-3 h-3" />
                   </Button>
@@ -486,15 +486,15 @@ export function ClientOnboarding({ onNavigate }: ClientOnboardingProps) {
 
                 <div className="space-y-3">
                   {onboardingTasks.map((task) => (
-                    <div key={task.id} className="p-3 border border-white/10 rounded-lg">
+                    <div key={task.id} className="p-3 border border-gray-200 rounded-lg">
                       <div className="flex items-start justify-between mb-2">
-                        <h4 className="text-sm font-semibold text-slate-100">{task.title}</h4>
+                        <h4 className="text-sm font-semibold text-gray-900">{task.title}</h4>
                         <span className={`px-2 py-0.5 text-xs font-semibold rounded border ${getTaskStatusBadge(task.status)}`}>
                           {task.status === 'in-progress' ? 'In Progress' : task.status.charAt(0).toUpperCase() + task.status.slice(1)}
                         </span>
                       </div>
-                      <p className="text-xs text-slate-300 mb-2">{task.description}</p>
-                      <div className="flex items-center justify-between text-xs text-slate-300">
+                      <p className="text-xs text-gray-600 mb-2">{task.description}</p>
+                      <div className="flex items-center justify-between text-xs text-gray-600">
                         <div className="flex items-center gap-1">
                           <Users className="w-3 h-3" />
                           <span>{task.assignedTo}</span>
@@ -517,7 +517,7 @@ export function ClientOnboarding({ onNavigate }: ClientOnboardingProps) {
             {/* Quick Actions */}
             <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)] mt-4">
               <CardContent className="p-4">
-                <h3 className="font-semibold text-slate-100 mb-3">Quick Actions</h3>
+                <h3 className="font-semibold text-gray-900 mb-3">Quick Actions</h3>
                 <div className="space-y-2">
                   <Button variant="outline" size="sm" className="w-full justify-start">
                     <Upload className="w-4 h-4 mr-2" />

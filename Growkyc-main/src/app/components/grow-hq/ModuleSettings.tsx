@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
@@ -107,12 +107,12 @@ export function ModuleSettings() {
 
   const getStatusBadge = (enabled: boolean) => {
     return enabled ? (
-      <span className="px-2 py-1 bg-green-500/15 text-green-300 text-xs font-semibold rounded-full flex items-center gap-1">
+      <span className="px-2 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full flex items-center gap-1">
         <Power className="w-3 h-3" />
         Active
       </span>
     ) : (
-      <span className="px-2 py-1 bg-white/5 text-slate-300 text-xs font-semibold rounded-full flex items-center gap-1">
+      <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-semibold rounded-full flex items-center gap-1">
         <Power className="w-3 h-3" />
         Inactive
       </span>
@@ -121,9 +121,9 @@ export function ModuleSettings() {
 
   const getEnvironmentBadge = (env: string) => {
     const colors = {
-      production: 'bg-green-500/15 text-green-300',
-      staging: 'bg-yellow-500/15 text-yellow-300',
-      development: 'bg-blue-500/15 text-blue-300'
+      production: 'bg-green-100 text-green-700',
+      staging: 'bg-yellow-100 text-yellow-700',
+      development: 'bg-blue-100 text-blue-700'
     };
     return (
       <span className={`px-2 py-1 text-xs font-semibold rounded ${colors[env as keyof typeof colors]}`}>
@@ -137,8 +137,8 @@ export function ModuleSettings() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-100">Module Settings</h1>
-          <p className="text-slate-300">Configure and manage module settings</p>
+          <h1 className="text-2xl font-bold text-gray-900">Module Settings</h1>
+          <p className="text-gray-600">Configure and manage module settings</p>
         </div>
         <Button className="bg-indigo-600 hover:bg-indigo-700">
           <Settings className="w-4 h-4 mr-2" />
@@ -162,13 +162,13 @@ export function ModuleSettings() {
             >
               <CardContent className="p-6">
                 <div className="flex items-start justify-between mb-4">
-                  <div className="p-3 bg-indigo-500/15 rounded-lg">
-                    <Icon className="w-6 h-6 text-indigo-400" />
+                  <div className="p-3 bg-indigo-100 rounded-lg">
+                    <Icon className="w-6 h-6 text-indigo-600" />
                   </div>
                   {getStatusBadge(module.enabled)}
                 </div>
-                <h3 className="font-semibold text-slate-100 mb-1">{module.name}</h3>
-                <p className="text-xs text-slate-400 mb-3">Version {module.version}</p>
+                <h3 className="font-semibold text-gray-900 mb-1">{module.name}</h3>
+                <p className="text-xs text-gray-500 mb-3">Version {module.version}</p>
                 {getEnvironmentBadge(module.environment)}
               </CardContent>
             </Card>
@@ -185,17 +185,17 @@ export function ModuleSettings() {
               <CardTitle>General Configuration</CardTitle>
             </CardHeader>
             <CardContent className="p-6 space-y-6">
-              <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg">
+              <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
                 <div>
-                  <h3 className="font-semibold text-slate-100">Module Status</h3>
-                  <p className="text-sm text-slate-300">
+                  <h3 className="font-semibold text-gray-900">Module Status</h3>
+                  <p className="text-sm text-gray-600">
                     {selectedModule.enabled ? 'Module is currently active' : 'Module is currently disabled'}
                   </p>
                 </div>
                 <Button
                   variant={selectedModule.enabled ? 'outline' : 'default'}
                   onClick={() => toggleModule(selectedModule.id)}
-                  className={selectedModule.enabled ? 'border-red-600 text-red-400 hover:bg-red-500/10' : ''}
+                  className={selectedModule.enabled ? 'border-red-600 text-red-600 hover:bg-red-50' : ''}
                 >
                   {selectedModule.enabled ? 'Disable Module' : 'Enable Module'}
                 </Button>
@@ -203,7 +203,7 @@ export function ModuleSettings() {
 
               <div className="space-y-4">
                 <div>
-                  <Label className="text-sm font-medium text-slate-300">Module Name</Label>
+                  <Label className="text-sm font-medium text-gray-700">Module Name</Label>
                   <Input 
                     value={selectedModule.name}
                     className="mt-1"
@@ -212,7 +212,7 @@ export function ModuleSettings() {
                 </div>
 
                 <div>
-                  <Label className="text-sm font-medium text-slate-300">Version</Label>
+                  <Label className="text-sm font-medium text-gray-700">Version</Label>
                   <Input 
                     value={selectedModule.version}
                     className="mt-1"
@@ -221,11 +221,11 @@ export function ModuleSettings() {
                 </div>
 
                 <div>
-                  <Label className="text-sm font-medium text-slate-300">Environment</Label>
+                  <Label className="text-sm font-medium text-gray-700">Environment</Label>
                   <select 
                     value={selectedModule.environment}
                     onChange={(e) => updateSelectedModule({ environment: e.target.value as ModuleConfig['environment'] })}
-                    className="w-full mt-1 px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
+                    className="w-full mt-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
                   >
                     <option value="production">Production</option>
                     <option value="staging">Staging</option>
@@ -234,7 +234,7 @@ export function ModuleSettings() {
                 </div>
 
                 <div>
-                  <Label className="text-sm font-medium text-slate-300 flex items-center gap-2">
+                  <Label className="text-sm font-medium text-gray-700 flex items-center gap-2">
                     <Globe className="w-4 h-4" />
                     API Endpoint
                   </Label>
@@ -248,7 +248,7 @@ export function ModuleSettings() {
                 </div>
 
                 <div>
-                  <Label className="text-sm font-medium text-slate-300 flex items-center gap-2">
+                  <Label className="text-sm font-medium text-gray-700 flex items-center gap-2">
                     <Database className="w-4 h-4" />
                     Database Connection
                   </Label>
@@ -262,7 +262,7 @@ export function ModuleSettings() {
                 </div>
 
                 <div>
-                  <Label className="text-sm font-medium text-slate-300">Maximum Users</Label>
+                  <Label className="text-sm font-medium text-gray-700">Maximum Users</Label>
                   <Input 
                     type="number"
                     value={selectedModule.settings.maxUsers}
@@ -295,9 +295,9 @@ export function ModuleSettings() {
                 {selectedModule.settings.features.map((feature, index) => (
                   <div 
                     key={index}
-                    className="flex items-center justify-between p-3 bg-white/5 rounded-lg"
+                    className="flex items-center justify-between p-3 bg-gray-50 rounded-lg"
                   >
-                    <span className="text-sm font-medium text-slate-100">{feature}</span>
+                    <span className="text-sm font-medium text-gray-900">{feature}</span>
                     <Button variant="ghost" size="sm">
                       <Settings className="w-4 h-4" />
                     </Button>
@@ -317,44 +317,44 @@ export function ModuleSettings() {
         <CardContent className="p-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="space-y-3">
-              <div className="flex items-center gap-2 text-slate-300">
+              <div className="flex items-center gap-2 text-gray-700">
                 <Mail className="w-5 h-5" />
                 <h3 className="font-semibold">Email</h3>
               </div>
-              <p className="text-sm text-slate-300">Configure SMTP and email templates</p>
+              <p className="text-sm text-gray-600">Configure SMTP and email templates</p>
               <Button variant="outline" size="sm" className="w-full">
                 Configure
               </Button>
             </div>
 
             <div className="space-y-3">
-              <div className="flex items-center gap-2 text-slate-300">
+              <div className="flex items-center gap-2 text-gray-700">
                 <Bell className="w-5 h-5" />
                 <h3 className="font-semibold">Notifications</h3>
               </div>
-              <p className="text-sm text-slate-300">Manage notification settings</p>
+              <p className="text-sm text-gray-600">Manage notification settings</p>
               <Button variant="outline" size="sm" className="w-full">
                 Configure
               </Button>
             </div>
 
             <div className="space-y-3">
-              <div className="flex items-center gap-2 text-slate-300">
+              <div className="flex items-center gap-2 text-gray-700">
                 <Shield className="w-5 h-5" />
                 <h3 className="font-semibold">Security</h3>
               </div>
-              <p className="text-sm text-slate-300">Security and authentication</p>
+              <p className="text-sm text-gray-600">Security and authentication</p>
               <Button variant="outline" size="sm" className="w-full">
                 Configure
               </Button>
             </div>
 
             <div className="space-y-3">
-              <div className="flex items-center gap-2 text-slate-300">
+              <div className="flex items-center gap-2 text-gray-700">
                 <Clock className="w-5 h-5" />
                 <h3 className="font-semibold">Backups</h3>
               </div>
-              <p className="text-sm text-slate-300">Automated backup schedule</p>
+              <p className="text-sm text-gray-600">Automated backup schedule</p>
               <Button variant="outline" size="sm" className="w-full">
                 Configure
               </Button>

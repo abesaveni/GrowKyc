@@ -188,13 +188,13 @@ export function XeroSyncManager({ onBack }: XeroSyncManagerProps) {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'synced':
-        return <CheckCircle className="w-4 h-4 text-green-400" />;
+        return <CheckCircle className="w-4 h-4 text-green-600" />;
       case 'syncing':
-        return <RefreshCw className="w-4 h-4 text-blue-400 animate-spin" />;
+        return <RefreshCw className="w-4 h-4 text-blue-600 animate-spin" />;
       case 'not_synced':
         return <XCircle className="w-4 h-4 text-gray-400" />;
       case 'error':
-        return <AlertTriangle className="w-4 h-4 text-red-400" />;
+        return <AlertTriangle className="w-4 h-4 text-red-600" />;
       default:
         return <Clock className="w-4 h-4 text-gray-400" />;
     }
@@ -203,29 +203,29 @@ export function XeroSyncManager({ onBack }: XeroSyncManagerProps) {
   const getPriorityBadge = (priority: string) => {
     switch (priority) {
       case 'MANDATORY':
-        return <span className="px-2 py-0.5 bg-red-500/15 text-red-300 text-xs font-semibold rounded">MANDATORY</span>;
+        return <span className="px-2 py-0.5 bg-red-100 text-red-700 text-xs font-semibold rounded">MANDATORY</span>;
       case 'HIGH':
-        return <span className="px-2 py-0.5 bg-orange-500/15 text-orange-300 text-xs font-semibold rounded">HIGH</span>;
+        return <span className="px-2 py-0.5 bg-orange-100 text-orange-700 text-xs font-semibold rounded">HIGH</span>;
       case 'MEDIUM':
-        return <span className="px-2 py-0.5 bg-blue-500/15 text-blue-300 text-xs font-semibold rounded">MEDIUM</span>;
+        return <span className="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-semibold rounded">MEDIUM</span>;
       case 'OPTIONAL':
-        return <span className="px-2 py-0.5 bg-white/5 text-slate-300 text-xs font-semibold rounded">OPTIONAL</span>;
+        return <span className="px-2 py-0.5 bg-gray-100 text-gray-600 text-xs font-semibold rounded">OPTIONAL</span>;
       default:
         return null;
     }
   };
 
   return (
-    <div className="min-h-screen bg-white/5 p-6">
+    <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-slate-100 flex items-center gap-3">
-              <Database className="w-8 h-8 text-blue-400" />
+            <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
+              <Database className="w-8 h-8 text-blue-600" />
               Xero Data Sync Manager
             </h1>
-            <p className="text-sm text-slate-300 mt-1">
+            <p className="text-sm text-gray-600 mt-1">
               Comprehensive data pull for compliance, risk scoring, and automation
             </p>
           </div>
@@ -246,12 +246,12 @@ export function XeroSyncManager({ onBack }: XeroSyncManagerProps) {
         </div>
 
         {/* Connection Status */}
-        <div className="bg-green-500/10 border border-green-300 rounded px-4 py-3">
+        <div className="bg-green-50 border border-green-300 rounded px-4 py-3">
           <div className="flex items-center gap-3">
-            <CheckCircle className="w-5 h-5 text-green-400" />
+            <CheckCircle className="w-5 h-5 text-green-600" />
             <div className="flex-1">
-              <h3 className="font-semibold text-green-300">Connected to Xero</h3>
-              <p className="text-sm text-green-300">
+              <h3 className="font-semibold text-green-900">Connected to Xero</h3>
+              <p className="text-sm text-green-800">
                 <strong>{syncConfig.organisationName}</strong> • Last sync: {syncConfig.lastSyncDate} • Tenant ID: {syncConfig.tenantID}
               </p>
             </div>
@@ -260,34 +260,34 @@ export function XeroSyncManager({ onBack }: XeroSyncManagerProps) {
         </div>
 
         {/* Sync Strategy Config */}
-        <div className="bg-white border border-white/10 rounded p-4">
-          <h3 className="font-semibold text-slate-100 mb-3 flex items-center gap-2">
-            <Shield className="w-5 h-5 text-blue-400" />
+        <div className="bg-white border border-gray-300 rounded p-4">
+          <h3 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+            <Shield className="w-5 h-5 text-blue-600" />
             Sync Strategy Configuration
           </h3>
           <div className="grid grid-cols-3 gap-4">
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-green-400" />
-              <span className="text-sm text-slate-300">Pull on binder creation</span>
+              <CheckCircle className="w-4 h-4 text-green-600" />
+              <span className="text-sm text-gray-700">Pull on binder creation</span>
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-green-400" />
-              <span className="text-sm text-slate-300">Pull on manual refresh</span>
+              <CheckCircle className="w-4 h-4 text-green-600" />
+              <span className="text-sm text-gray-700">Pull on manual refresh</span>
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-green-400" />
-              <span className="text-sm text-slate-300">Nightly delta sync</span>
+              <CheckCircle className="w-4 h-4 text-green-600" />
+              <span className="text-sm text-gray-700">Nightly delta sync</span>
             </div>
           </div>
         </div>
 
         {/* Push Control Warning */}
-        <div className="bg-red-500/10 border border-red-300 rounded px-4 py-3">
+        <div className="bg-red-50 border border-red-300 rounded px-4 py-3">
           <div className="flex items-start gap-3">
-            <Lock className="w-5 h-5 text-red-400 mt-0.5" />
+            <Lock className="w-5 h-5 text-red-600 mt-0.5" />
             <div className="flex-1">
-              <h3 className="font-semibold text-red-300 mb-1">Controlled Write Policy</h3>
-              <p className="text-sm text-red-300">
+              <h3 className="font-semibold text-red-900 mb-1">Controlled Write Policy</h3>
+              <p className="text-sm text-red-800">
                 <strong>Push back ONLY controlled draft journals.</strong> No uncontrolled writes. All journals require reviewer approval and are pushed as DRAFT status only. Manual posting required in Xero.
               </p>
             </div>
@@ -295,14 +295,14 @@ export function XeroSyncManager({ onBack }: XeroSyncManagerProps) {
         </div>
 
         {/* Data Tier Selection */}
-        <div className="bg-white border border-white/10 rounded overflow-hidden">
-          <div className="bg-white/5 border-b border-white/10 px-4 py-3">
-            <h3 className="font-semibold text-slate-100">Data Pull Tiers (6 Priority Levels)</h3>
+        <div className="bg-white border border-gray-300 rounded overflow-hidden">
+          <div className="bg-gray-50 border-b border-gray-300 px-4 py-3">
+            <h3 className="font-semibold text-gray-900">Data Pull Tiers (6 Priority Levels)</h3>
           </div>
           <div className="p-4 space-y-4">
             {dataTiers.map((tier) => (
-              <div key={tier.id} className="border border-white/10 rounded overflow-hidden">
-                <div className="bg-white/5 px-4 py-3 flex items-center justify-between">
+              <div key={tier.id} className="border border-gray-300 rounded overflow-hidden">
+                <div className="bg-gray-50 px-4 py-3 flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <input
                       type="checkbox"
@@ -316,10 +316,10 @@ export function XeroSyncManager({ onBack }: XeroSyncManagerProps) {
                       }}
                       className="w-4 h-4"
                     />
-                    <h4 className="font-semibold text-slate-100">{tier.name}</h4>
+                    <h4 className="font-semibold text-gray-900">{tier.name}</h4>
                     {getPriorityBadge(tier.priority)}
                   </div>
-                  <span className="text-sm text-slate-300">
+                  <span className="text-sm text-gray-600">
                     {tier.items.reduce((sum, item) => sum + item.count, 0).toLocaleString()} records
                   </span>
                 </div>
@@ -327,25 +327,25 @@ export function XeroSyncManager({ onBack }: XeroSyncManagerProps) {
                 <div className="p-4">
                   <table className="w-full text-sm">
                     <thead>
-                      <tr className="border-b border-white/10">
-                        <th className="text-left py-2 text-slate-300 font-semibold">Data Type</th>
-                        <th className="text-center py-2 text-slate-300 font-semibold">Count</th>
-                        <th className="text-center py-2 text-slate-300 font-semibold">Status</th>
+                      <tr className="border-b border-gray-200">
+                        <th className="text-left py-2 text-gray-700 font-semibold">Data Type</th>
+                        <th className="text-center py-2 text-gray-700 font-semibold">Count</th>
+                        <th className="text-center py-2 text-gray-700 font-semibold">Status</th>
                       </tr>
                     </thead>
                     <tbody>
                       {tier.items.map((item, idx) => (
-                        <tr key={idx} className="border-b border-white/10 hover:bg-blue-500/10">
-                          <td className="py-2 text-slate-100">{item.name}</td>
-                          <td className="py-2 text-center text-slate-300 font-mono">{item.count}</td>
+                        <tr key={idx} className="border-b border-gray-100 hover:bg-blue-50">
+                          <td className="py-2 text-gray-900">{item.name}</td>
+                          <td className="py-2 text-center text-gray-700 font-mono">{item.count}</td>
                           <td className="py-2 text-center">{getStatusIcon(item.status)}</td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
                   
-                  <div className="mt-3 pt-3 border-t border-white/10">
-                    <p className="text-xs text-slate-300">
+                  <div className="mt-3 pt-3 border-t border-gray-200">
+                    <p className="text-xs text-gray-600">
                       <strong>Used for:</strong> {tier.uses.join(' • ')}
                     </p>
                   </div>
@@ -356,10 +356,10 @@ export function XeroSyncManager({ onBack }: XeroSyncManagerProps) {
         </div>
 
         {/* Derived Metrics */}
-        <div className="bg-white border border-white/10 rounded overflow-hidden">
-          <div className="bg-white/5 border-b border-white/10 px-4 py-3">
-            <h3 className="font-semibold text-slate-100 flex items-center gap-2">
-              <TrendingUp className="w-5 h-5 text-blue-400" />
+        <div className="bg-white border border-gray-300 rounded overflow-hidden">
+          <div className="bg-gray-50 border-b border-gray-300 px-4 py-3">
+            <h3 className="font-semibold text-gray-900 flex items-center gap-2">
+              <TrendingUp className="w-5 h-5 text-blue-600" />
               Derived Metrics (Computed Internally)
             </h3>
           </div>
@@ -367,17 +367,17 @@ export function XeroSyncManager({ onBack }: XeroSyncManagerProps) {
             <div className="grid grid-cols-2 gap-6">
               {derivedMetrics.map((category, idx) => (
                 <div key={idx}>
-                  <h4 className="font-semibold text-slate-100 mb-3">{category.category}</h4>
+                  <h4 className="font-semibold text-gray-900 mb-3">{category.category}</h4>
                   <div className="space-y-2">
                     {category.metrics.map((metric, midx) => (
-                      <div key={midx} className="flex items-center justify-between p-2 bg-white/5 rounded">
-                        <span className="text-sm text-slate-300">{metric.name}</span>
+                      <div key={midx} className="flex items-center justify-between p-2 bg-gray-50 rounded">
+                        <span className="text-sm text-gray-700">{metric.name}</span>
                         <span className={`text-sm font-bold ${
-                          metric.color === 'red' ? 'text-red-400' :
-                          metric.color === 'amber' ? 'text-amber-400' :
-                          metric.color === 'green' ? 'text-green-400' :
-                          metric.color === 'blue' ? 'text-blue-400' :
-                          'text-slate-300'
+                          metric.color === 'red' ? 'text-red-600' :
+                          metric.color === 'amber' ? 'text-amber-600' :
+                          metric.color === 'green' ? 'text-green-600' :
+                          metric.color === 'blue' ? 'text-blue-600' :
+                          'text-gray-600'
                         }`}>
                           {metric.value}
                         </span>
@@ -388,8 +388,8 @@ export function XeroSyncManager({ onBack }: XeroSyncManagerProps) {
               ))}
             </div>
             
-            <div className="mt-4 pt-4 border-t border-white/10">
-              <p className="text-xs text-slate-300">
+            <div className="mt-4 pt-4 border-t border-gray-200">
+              <p className="text-xs text-gray-600">
                 These metrics feed into: <strong>Risk score • Binder builder • Review escalation • AI insights</strong>
               </p>
             </div>
@@ -397,54 +397,54 @@ export function XeroSyncManager({ onBack }: XeroSyncManagerProps) {
         </div>
 
         {/* Sync History */}
-        <div className="bg-white border border-white/10 rounded overflow-hidden">
-          <div className="bg-white/5 border-b border-white/10 px-4 py-3">
-            <h3 className="font-semibold text-slate-100 flex items-center gap-2">
-              <Clock className="w-5 h-5 text-slate-300" />
+        <div className="bg-white border border-gray-300 rounded overflow-hidden">
+          <div className="bg-gray-50 border-b border-gray-300 px-4 py-3">
+            <h3 className="font-semibold text-gray-900 flex items-center gap-2">
+              <Clock className="w-5 h-5 text-gray-600" />
               Sync History
             </h3>
           </div>
           <table className="w-full text-sm">
             <thead>
-              <tr className="bg-white/5">
-                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Sync ID</th>
-                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Type</th>
-                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Started</th>
-                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Completed</th>
-                <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300">Records</th>
-                <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300">Duration</th>
-                <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300">Status</th>
+              <tr className="bg-gray-100">
+                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Sync ID</th>
+                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Type</th>
+                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Started</th>
+                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Completed</th>
+                <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700">Records</th>
+                <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700">Duration</th>
+                <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700">Status</th>
               </tr>
             </thead>
             <tbody>
               {syncHistory.map((sync) => (
-                <tr key={sync.syncID} className="hover:bg-blue-500/10">
-                  <td className="border border-white/10 px-3 py-2 text-slate-100 font-mono text-xs">
+                <tr key={sync.syncID} className="hover:bg-blue-50">
+                  <td className="border border-gray-300 px-3 py-2 text-gray-900 font-mono text-xs">
                     {sync.syncID}
                   </td>
-                  <td className="border border-white/10 px-3 py-2 text-slate-300">
+                  <td className="border border-gray-300 px-3 py-2 text-gray-700">
                     <span className={`px-2 py-0.5 text-xs font-semibold rounded ${
-                      sync.syncType === 'FULL_PULL' ? 'bg-blue-500/15 text-blue-300' :
-                      sync.syncType === 'DELTA_PULL' ? 'bg-purple-500/15 text-purple-300' :
-                      'bg-green-500/15 text-green-300'
+                      sync.syncType === 'FULL_PULL' ? 'bg-blue-100 text-blue-700' :
+                      sync.syncType === 'DELTA_PULL' ? 'bg-purple-100 text-purple-700' :
+                      'bg-green-100 text-green-700'
                     }`}>
                       {sync.syncType}
                     </span>
                   </td>
-                  <td className="border border-white/10 px-3 py-2 text-slate-300 text-xs">
+                  <td className="border border-gray-300 px-3 py-2 text-gray-700 text-xs">
                     {sync.startedAt}
                   </td>
-                  <td className="border border-white/10 px-3 py-2 text-slate-300 text-xs">
+                  <td className="border border-gray-300 px-3 py-2 text-gray-700 text-xs">
                     {sync.completedAt}
                   </td>
-                  <td className="border border-white/10 px-3 py-2 text-center text-slate-100 font-mono">
+                  <td className="border border-gray-300 px-3 py-2 text-center text-gray-900 font-mono">
                     {sync.recordsPulled ? `${sync.recordsPulled} pulled` : sync.recordsPushed ? `${sync.recordsPushed} pushed` : '-'}
                   </td>
-                  <td className="border border-white/10 px-3 py-2 text-center text-slate-300 font-mono">
+                  <td className="border border-gray-300 px-3 py-2 text-center text-gray-700 font-mono">
                     {sync.duration}
                   </td>
-                  <td className="border border-white/10 px-3 py-2 text-center">
-                    <CheckCircle className="w-4 h-4 text-green-400 mx-auto" />
+                  <td className="border border-gray-300 px-3 py-2 text-center">
+                    <CheckCircle className="w-4 h-4 text-green-600 mx-auto" />
                   </td>
                 </tr>
               ))}
@@ -453,15 +453,15 @@ export function XeroSyncManager({ onBack }: XeroSyncManagerProps) {
         </div>
 
         {/* Minimum V1 Pull Info */}
-        <div className="bg-blue-500/10 border border-blue-300 rounded px-4 py-3">
-          <h3 className="font-semibold text-blue-300 mb-2 flex items-center gap-2">
+        <div className="bg-blue-50 border border-blue-300 rounded px-4 py-3">
+          <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
             <FileText className="w-5 h-5" />
             Minimum V1 Pull (Lean Mode)
           </h3>
-          <p className="text-sm text-blue-300 mb-2">
+          <p className="text-sm text-blue-800 mb-2">
             For resource-constrained implementations, pull minimum viable dataset:
           </p>
-          <div className="grid grid-cols-4 gap-2 text-xs text-blue-300">
+          <div className="grid grid-cols-4 gap-2 text-xs text-blue-800">
             <div>✓ Organisation</div>
             <div>✓ Chart of Accounts</div>
             <div>✓ Trial Balance</div>

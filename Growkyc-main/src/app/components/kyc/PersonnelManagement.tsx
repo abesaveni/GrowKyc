@@ -459,7 +459,7 @@ export function PersonnelManagement() {
               <p className="text-xl text-indigo-100">AUSTRAC-Compliant Staff Monitoring & Personnel Due Diligence</p>
             </div>
           </div>
-          <Button className="bg-white text-indigo-400 hover:bg-indigo-500/10">
+          <Button className="bg-white text-indigo-600 hover:bg-indigo-50">
             <Upload className="w-5 h-5 mr-2" />
             Add New Staff Member
           </Button>
@@ -468,63 +468,63 @@ export function PersonnelManagement() {
 
       {/* Stats Grid */}
       <div className="grid grid-cols-6 gap-4">
-        <div className="bg-white rounded-lg border border-white/10 p-4">
+        <div className="bg-white rounded-lg border border-gray-200 p-4">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="font-semibold text-slate-100">Total Staff</h3>
-            <Users className="w-6 h-6 text-slate-300" />
+            <h3 className="font-semibold text-gray-900">Total Staff</h3>
+            <Users className="w-6 h-6 text-gray-600" />
           </div>
-          <p className="text-3xl font-bold text-slate-100">{stats.total}</p>
+          <p className="text-3xl font-bold text-gray-900">{stats.total}</p>
         </div>
 
-        <div className="bg-white rounded-lg border border-green-500/30 p-4">
+        <div className="bg-white rounded-lg border border-green-200 p-4">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="font-semibold text-slate-100">Compliant</h3>
-            <CheckCircle className="w-6 h-6 text-green-400" />
+            <h3 className="font-semibold text-gray-900">Compliant</h3>
+            <CheckCircle className="w-6 h-6 text-green-600" />
           </div>
-          <p className="text-3xl font-bold text-green-400">{stats.compliant}</p>
+          <p className="text-3xl font-bold text-green-600">{stats.compliant}</p>
         </div>
 
-        <div className="bg-white rounded-lg border border-yellow-500/30 p-4">
+        <div className="bg-white rounded-lg border border-yellow-200 p-4">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="font-semibold text-slate-100">Warning</h3>
-            <AlertTriangle className="w-6 h-6 text-yellow-400" />
+            <h3 className="font-semibold text-gray-900">Warning</h3>
+            <AlertTriangle className="w-6 h-6 text-yellow-600" />
           </div>
-          <p className="text-3xl font-bold text-yellow-400">{stats.warning}</p>
+          <p className="text-3xl font-bold text-yellow-600">{stats.warning}</p>
         </div>
 
-        <div className="bg-white rounded-lg border border-orange-500/30 p-4">
+        <div className="bg-white rounded-lg border border-orange-200 p-4">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="font-semibold text-slate-100">Overdue</h3>
-            <Clock className="w-6 h-6 text-orange-400" />
+            <h3 className="font-semibold text-gray-900">Overdue</h3>
+            <Clock className="w-6 h-6 text-orange-600" />
           </div>
-          <p className="text-3xl font-bold text-orange-400">{stats.overdue}</p>
+          <p className="text-3xl font-bold text-orange-600">{stats.overdue}</p>
         </div>
 
-        <div className="bg-white rounded-lg border border-red-500/30 p-4">
+        <div className="bg-white rounded-lg border border-red-200 p-4">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="font-semibold text-slate-100">Non-Compliant</h3>
-            <XCircle className="w-6 h-6 text-red-400" />
+            <h3 className="font-semibold text-gray-900">Non-Compliant</h3>
+            <XCircle className="w-6 h-6 text-red-600" />
           </div>
-          <p className="text-3xl font-bold text-red-400">{stats.nonCompliant}</p>
+          <p className="text-3xl font-bold text-red-600">{stats.nonCompliant}</p>
         </div>
 
-        <div className="bg-white rounded-lg border border-blue-500/30 p-4">
+        <div className="bg-white rounded-lg border border-blue-200 p-4">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="font-semibold text-slate-100">Checks Due</h3>
-            <Bell className="w-6 h-6 text-blue-400" />
+            <h3 className="font-semibold text-gray-900">Checks Due</h3>
+            <Bell className="w-6 h-6 text-blue-600" />
           </div>
-          <p className="text-3xl font-bold text-blue-400">{stats.criminalChecksExpiring}</p>
+          <p className="text-3xl font-bold text-blue-600">{stats.criminalChecksExpiring}</p>
         </div>
       </div>
 
       {/* Alerts Banner */}
       {(stats.criminalChecksExpiring > 0 || stats.trainingOverdue > 0) && (
-        <div className="bg-orange-500/10 border-2 border-orange-500/30 rounded-lg p-6">
+        <div className="bg-orange-50 border-2 border-orange-200 rounded-lg p-6">
           <div className="flex items-start gap-3">
-            <Bell className="w-6 h-6 text-orange-400 mt-0.5" />
+            <Bell className="w-6 h-6 text-orange-600 mt-0.5" />
             <div className="flex-1">
-              <h3 className="font-bold text-orange-300 mb-2">Action Required</h3>
-              <ul className="space-y-1 text-orange-300">
+              <h3 className="font-bold text-orange-900 mb-2">Action Required</h3>
+              <ul className="space-y-1 text-orange-800">
                 {stats.criminalChecksExpiring > 0 && (
                   <li>• {stats.criminalChecksExpiring} criminal history check{stats.criminalChecksExpiring > 1 ? 's' : ''} expiring within 30 days</li>
                 )}
@@ -538,7 +538,7 @@ export function PersonnelManagement() {
       )}
 
       {/* Tabs */}
-      <div className="border-b border-white/10">
+      <div className="border-b border-gray-200">
         <div className="flex gap-2">
           {[
             { id: 'overview', label: 'Role Definitions', icon: Target },
@@ -555,8 +555,8 @@ export function PersonnelManagement() {
                 onClick={() => setActiveTab(tab.id as any)}
                 className={`px-6 py-3 font-semibold flex items-center gap-2 transition-colors ${
                   activeTab === tab.id
-                    ? 'border-b-2 border-indigo-600 text-indigo-400'
-                    : 'text-slate-300 hover:text-slate-100'
+                    ? 'border-b-2 border-indigo-600 text-indigo-600'
+                    : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -570,9 +570,9 @@ export function PersonnelManagement() {
       {/* Role Definitions Tab */}
       {activeTab === 'overview' && (
         <div className="space-y-4">
-          <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
-            <h3 className="font-bold text-blue-300 mb-2">AUSTRAC Personnel Requirements</h3>
-            <p className="text-sm text-blue-300">
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <h3 className="font-bold text-blue-900 mb-2">AUSTRAC Personnel Requirements</h3>
+            <p className="text-sm text-blue-800">
               Under the AML/CTF Act, reporting entities must conduct Personnel Due Diligence (PDD) on specific roles. 
               Each role has different screening requirements and responsibilities.
             </p>
@@ -583,32 +583,32 @@ export function PersonnelManagement() {
             const staffCount = staffRoster.filter(s => s.role === roleDef.role).length;
 
             return (
-              <div key={roleDef.role} className="bg-white rounded-lg border-2 border-white/10 p-6">
+              <div key={roleDef.role} className="bg-white rounded-lg border-2 border-gray-200 p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-indigo-500/15 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Icon className="w-6 h-6 text-indigo-400" />
+                    <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Icon className="w-6 h-6 text-indigo-600" />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-xl font-bold text-slate-100">{roleDef.title}</h3>
-                        <span className="px-3 py-1 bg-indigo-500/15 text-indigo-300 text-sm font-semibold rounded-full">
+                        <h3 className="text-xl font-bold text-gray-900">{roleDef.title}</h3>
+                        <span className="px-3 py-1 bg-indigo-100 text-indigo-700 text-sm font-semibold rounded-full">
                           {staffCount} assigned
                         </span>
                         {roleDef.austracNotification && (
-                          <span className="px-3 py-1 bg-red-500/15 text-red-300 text-sm font-semibold rounded-full">
+                          <span className="px-3 py-1 bg-red-100 text-red-700 text-sm font-semibold rounded-full">
                             AUSTRAC Notification Required
                           </span>
                         )}
                       </div>
-                      <p className="text-slate-300 mb-4">{roleDef.description}</p>
+                      <p className="text-gray-600 mb-4">{roleDef.description}</p>
 
                       <div className="grid grid-cols-2 gap-6">
                         <div>
-                          <h4 className="font-semibold text-slate-100 mb-2">Key Responsibilities</h4>
+                          <h4 className="font-semibold text-gray-900 mb-2">Key Responsibilities</h4>
                           <ul className="space-y-1">
                             {roleDef.responsibilities.map((resp, index) => (
-                              <li key={index} className="text-sm text-slate-300 flex items-start">
+                              <li key={index} className="text-sm text-gray-700 flex items-start">
                                 <span className="mr-2">•</span>
                                 <span>{resp}</span>
                               </li>
@@ -617,15 +617,15 @@ export function PersonnelManagement() {
                         </div>
 
                         <div>
-                          <h4 className="font-semibold text-slate-100 mb-2">PDD Requirements</h4>
+                          <h4 className="font-semibold text-gray-900 mb-2">PDD Requirements</h4>
                           <div className="space-y-2">
                             {Object.entries(roleDef.pddRequired).map(([key, required]) => (
                               <div key={key} className="flex items-center justify-between">
-                                <span className="text-sm text-slate-300">
+                                <span className="text-sm text-gray-700">
                                   {key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
                                 </span>
                                 {required ? (
-                                  <CheckCircle className="w-4 h-4 text-green-400" />
+                                  <CheckCircle className="w-4 h-4 text-green-600" />
                                 ) : (
                                   <XCircle className="w-4 h-4 text-gray-300" />
                                 )}
@@ -633,11 +633,11 @@ export function PersonnelManagement() {
                             ))}
                           </div>
 
-                          <h4 className="font-semibold text-slate-100 mt-4 mb-2">Mandatory Training</h4>
+                          <h4 className="font-semibold text-gray-900 mt-4 mb-2">Mandatory Training</h4>
                           <div className="space-y-1">
                             {roleDef.mandatoryTraining.map((training, index) => (
-                              <div key={index} className="text-sm text-slate-300 flex items-center">
-                                <BookOpen className="w-3 h-3 mr-2 text-slate-400" />
+                              <div key={index} className="text-sm text-gray-700 flex items-center">
+                                <BookOpen className="w-3 h-3 mr-2 text-gray-500" />
                                 {training}
                               </div>
                             ))}
@@ -657,15 +657,15 @@ export function PersonnelManagement() {
       {activeTab === 'roster' && (
         <div className="space-y-4">
           {/* Role Filter */}
-          <div className="bg-white rounded-lg border border-white/10 p-4">
+          <div className="bg-white rounded-lg border border-gray-200 p-4">
             <div className="flex items-center gap-4">
-              <span className="font-semibold text-slate-100">Filter by Role:</span>
+              <span className="font-semibold text-gray-900">Filter by Role:</span>
               <button
                 onClick={() => setFilterRole('all')}
                 className={`px-4 py-2 rounded-lg transition-colors ${
                   filterRole === 'all'
                     ? 'bg-indigo-600 text-white'
-                    : 'bg-white/5 text-slate-300 hover:bg-white/10'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
                 All ({staffRoster.length})
@@ -679,7 +679,7 @@ export function PersonnelManagement() {
                     className={`px-4 py-2 rounded-lg transition-colors ${
                       filterRole === roleDef.role
                         ? 'bg-indigo-600 text-white'
-                        : 'bg-white/5 text-slate-300 hover:bg-white/10'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                   >
                     {roleDef.title} ({count})
@@ -698,10 +698,10 @@ export function PersonnelManagement() {
 
               return (
                 <div key={staff.id} className={`bg-white rounded-lg border-2 p-6 ${
-                  staff.complianceStatus === 'compliant' ? 'border-green-500/30' :
-                  staff.complianceStatus === 'warning' ? 'border-yellow-500/30' :
-                  staff.complianceStatus === 'overdue' ? 'border-orange-500/30' :
-                  'border-red-500/30'
+                  staff.complianceStatus === 'compliant' ? 'border-green-200' :
+                  staff.complianceStatus === 'warning' ? 'border-yellow-200' :
+                  staff.complianceStatus === 'overdue' ? 'border-orange-200' :
+                  'border-red-200'
                 }`}>
                   <div className="flex items-start justify-between">
                     <div className="flex items-start gap-4 flex-1">
@@ -711,24 +711,24 @@ export function PersonnelManagement() {
 
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
-                          <h3 className="text-xl font-bold text-slate-100">{staff.name}</h3>
+                          <h3 className="text-xl font-bold text-gray-900">{staff.name}</h3>
                           <span className={`px-3 py-1 bg-${statusColor}-100 text-${statusColor}-700 text-sm font-bold rounded-full flex items-center gap-1`}>
                             <StatusIcon className="w-4 h-4" />
                             {staff.complianceStatus.toUpperCase()}
                           </span>
                           {staff.status === 'active' ? (
-                            <span className="px-3 py-1 bg-green-500/15 text-green-300 text-sm font-semibold rounded-full">
+                            <span className="px-3 py-1 bg-green-100 text-green-700 text-sm font-semibold rounded-full">
                               ACTIVE
                             </span>
                           ) : (
-                            <span className="px-3 py-1 bg-white/5 text-slate-300 text-sm font-semibold rounded-full">
+                            <span className="px-3 py-1 bg-gray-100 text-gray-700 text-sm font-semibold rounded-full">
                               {staff.status.toUpperCase()}
                             </span>
                           )}
                         </div>
 
-                        <div className="flex items-center gap-4 text-sm text-slate-300 mb-4">
-                          <span className="font-semibold text-indigo-400">{roleDef?.title}</span>
+                        <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
+                          <span className="font-semibold text-indigo-600">{roleDef?.title}</span>
                           <span>•</span>
                           <span>{staff.email}</span>
                           <span>•</span>
@@ -736,7 +736,7 @@ export function PersonnelManagement() {
                           {staff.austracNotified && (
                             <>
                               <span>•</span>
-                              <span className="flex items-center text-blue-400">
+                              <span className="flex items-center text-blue-600">
                                 <Shield className="w-4 h-4 mr-1" />
                                 AUSTRAC Notified
                               </span>
@@ -747,39 +747,39 @@ export function PersonnelManagement() {
                         {/* Compliance Checks Grid */}
                         <div className="grid grid-cols-5 gap-3">
                           <div className={`p-3 rounded-lg border ${
-                            staff.identityVerified ? 'border-green-500/30 bg-green-500/10' : 'border-red-500/30 bg-red-500/10'
+                            staff.identityVerified ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50'
                           }`}>
                             <div className="flex items-center justify-between mb-1">
-                              <span className="text-xs font-semibold text-slate-300">Identity</span>
+                              <span className="text-xs font-semibold text-gray-700">Identity</span>
                               {staff.identityVerified ? (
-                                <CheckCircle className="w-4 h-4 text-green-400" />
+                                <CheckCircle className="w-4 h-4 text-green-600" />
                               ) : (
-                                <XCircle className="w-4 h-4 text-red-400" />
+                                <XCircle className="w-4 h-4 text-red-600" />
                               )}
                             </div>
                             {staff.identityVerifiedDate && (
-                              <p className="text-xs text-slate-300">
+                              <p className="text-xs text-gray-600">
                                 {staff.identityVerifiedDate.toLocaleDateString()}
                               </p>
                             )}
                           </div>
 
                           <div className={`p-3 rounded-lg border ${
-                            staff.criminalCheckComplete ? 'border-green-500/30 bg-green-500/10' : 'border-red-500/30 bg-red-500/10'
+                            staff.criminalCheckComplete ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50'
                           }`}>
                             <div className="flex items-center justify-between mb-1">
-                              <span className="text-xs font-semibold text-slate-300">Criminal</span>
+                              <span className="text-xs font-semibold text-gray-700">Criminal</span>
                               {staff.criminalCheckComplete ? (
-                                <CheckCircle className="w-4 h-4 text-green-400" />
+                                <CheckCircle className="w-4 h-4 text-green-600" />
                               ) : (
-                                <XCircle className="w-4 h-4 text-red-400" />
+                                <XCircle className="w-4 h-4 text-red-600" />
                               )}
                             </div>
                             {staff.criminalCheckExpiry && (
                               <p className={`text-xs ${
-                                staff.criminalCheckExpiry < new Date() ? 'text-red-400 font-semibold' :
-                                Math.floor((staff.criminalCheckExpiry.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)) <= 30 ? 'text-orange-400 font-semibold' :
-                                'text-slate-300'
+                                staff.criminalCheckExpiry < new Date() ? 'text-red-600 font-semibold' :
+                                Math.floor((staff.criminalCheckExpiry.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)) <= 30 ? 'text-orange-600 font-semibold' :
+                                'text-gray-600'
                               }`}>
                                 Exp: {staff.criminalCheckExpiry.toLocaleDateString()}
                               </p>
@@ -787,44 +787,44 @@ export function PersonnelManagement() {
                           </div>
 
                           <div className={`p-3 rounded-lg border ${
-                            staff.bankruptcyCheckComplete ? 'border-green-500/30 bg-green-500/10' : 
-                            roleDef?.pddRequired.bankruptcyCheck ? 'border-red-500/30 bg-red-500/10' : 'border-white/10 bg-white/5'
+                            staff.bankruptcyCheckComplete ? 'border-green-200 bg-green-50' : 
+                            roleDef?.pddRequired.bankruptcyCheck ? 'border-red-200 bg-red-50' : 'border-gray-200 bg-gray-50'
                           }`}>
                             <div className="flex items-center justify-between mb-1">
-                              <span className="text-xs font-semibold text-slate-300">Bankruptcy</span>
+                              <span className="text-xs font-semibold text-gray-700">Bankruptcy</span>
                               {roleDef?.pddRequired.bankruptcyCheck ? (
                                 staff.bankruptcyCheckComplete ? (
-                                  <CheckCircle className="w-4 h-4 text-green-400" />
+                                  <CheckCircle className="w-4 h-4 text-green-600" />
                                 ) : (
-                                  <XCircle className="w-4 h-4 text-red-400" />
+                                  <XCircle className="w-4 h-4 text-red-600" />
                                 )
                               ) : (
-                                <span className="text-xs text-slate-400">N/A</span>
+                                <span className="text-xs text-gray-500">N/A</span>
                               )}
                             </div>
                             {staff.bankruptcyCheckDate && (
-                              <p className="text-xs text-slate-300">
+                              <p className="text-xs text-gray-600">
                                 {staff.bankruptcyCheckDate.toLocaleDateString()}
                               </p>
                             )}
                           </div>
 
                           <div className={`p-3 rounded-lg border ${
-                            staff.suitabilityAssessment ? 'border-green-500/30 bg-green-500/10' : 'border-red-500/30 bg-red-500/10'
+                            staff.suitabilityAssessment ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50'
                           }`}>
                             <div className="flex items-center justify-between mb-1">
-                              <span className="text-xs font-semibold text-slate-300">Suitability</span>
+                              <span className="text-xs font-semibold text-gray-700">Suitability</span>
                               {staff.suitabilityAssessment ? (
-                                <CheckCircle className="w-4 h-4 text-green-400" />
+                                <CheckCircle className="w-4 h-4 text-green-600" />
                               ) : (
-                                <XCircle className="w-4 h-4 text-red-400" />
+                                <XCircle className="w-4 h-4 text-red-600" />
                               )}
                             </div>
                             {staff.suitabilityOutcome && (
                               <p className={`text-xs font-semibold ${
-                                staff.suitabilityOutcome === 'suitable' ? 'text-green-400' :
-                                staff.suitabilityOutcome === 'conditional' ? 'text-yellow-400' :
-                                'text-red-400'
+                                staff.suitabilityOutcome === 'suitable' ? 'text-green-600' :
+                                staff.suitabilityOutcome === 'conditional' ? 'text-yellow-600' :
+                                'text-red-600'
                               }`}>
                                 {staff.suitabilityOutcome.toUpperCase()}
                               </p>
@@ -832,20 +832,20 @@ export function PersonnelManagement() {
                           </div>
 
                           <div className={`p-3 rounded-lg border ${
-                            staff.initialTrainingComplete ? 'border-green-500/30 bg-green-500/10' : 'border-red-500/30 bg-red-500/10'
+                            staff.initialTrainingComplete ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50'
                           }`}>
                             <div className="flex items-center justify-between mb-1">
-                              <span className="text-xs font-semibold text-slate-300">Training</span>
+                              <span className="text-xs font-semibold text-gray-700">Training</span>
                               {staff.initialTrainingComplete ? (
-                                <CheckCircle className="w-4 h-4 text-green-400" />
+                                <CheckCircle className="w-4 h-4 text-green-600" />
                               ) : (
-                                <XCircle className="w-4 h-4 text-red-400" />
+                                <XCircle className="w-4 h-4 text-red-600" />
                               )}
                             </div>
                             {staff.nextRefresherDue && (
                               <p className={`text-xs ${
-                                staff.nextRefresherDue < new Date() ? 'text-red-400 font-semibold' :
-                                'text-slate-300'
+                                staff.nextRefresherDue < new Date() ? 'text-red-600 font-semibold' :
+                                'text-gray-600'
                               }`}>
                                 Due: {staff.nextRefresherDue.toLocaleDateString()}
                               </p>
@@ -879,17 +879,17 @@ export function PersonnelManagement() {
       {/* PDD Tab */}
       {activeTab === 'pdd' && (
         <div className="space-y-6">
-          <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-6">
-            <h3 className="font-bold text-blue-300 mb-3">Personnel Due Diligence (PDD) Requirements</h3>
-            <p className="text-sm text-blue-300 mb-4">
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+            <h3 className="font-bold text-blue-900 mb-3">Personnel Due Diligence (PDD) Requirements</h3>
+            <p className="text-sm text-blue-800 mb-4">
               Under the AML/CTF Act, reporting entities must conduct PDD on certain personnel before appointment 
               and maintain ongoing monitoring. Requirements vary by role.
             </p>
 
             <div className="grid grid-cols-3 gap-4">
               <div className="bg-white rounded-lg p-4">
-                <h4 className="font-semibold text-slate-100 mb-2">Before Appointment</h4>
-                <ul className="text-sm text-slate-300 space-y-1">
+                <h4 className="font-semibold text-gray-900 mb-2">Before Appointment</h4>
+                <ul className="text-sm text-gray-700 space-y-1">
                   <li>• Identity verification</li>
                   <li>• Criminal history check</li>
                   <li>• Bankruptcy check</li>
@@ -900,8 +900,8 @@ export function PersonnelManagement() {
               </div>
 
               <div className="bg-white rounded-lg p-4">
-                <h4 className="font-semibold text-slate-100 mb-2">Ongoing Requirements</h4>
-                <ul className="text-sm text-slate-300 space-y-1">
+                <h4 className="font-semibold text-gray-900 mb-2">Ongoing Requirements</h4>
+                <ul className="text-sm text-gray-700 space-y-1">
                   <li>• Annual criminal check renewal</li>
                   <li>• Training refreshers (annual)</li>
                   <li>• Performance monitoring</li>
@@ -911,8 +911,8 @@ export function PersonnelManagement() {
               </div>
 
               <div className="bg-white rounded-lg p-4">
-                <h4 className="font-semibold text-slate-100 mb-2">Record Retention</h4>
-                <ul className="text-sm text-slate-300 space-y-1">
+                <h4 className="font-semibold text-gray-900 mb-2">Record Retention</h4>
+                <ul className="text-sm text-gray-700 space-y-1">
                   <li>• 7 years after role ends</li>
                   <li>• Immutable timestamps</li>
                   <li>• Evidence hashing</li>
@@ -924,22 +924,22 @@ export function PersonnelManagement() {
           </div>
 
           {/* PDD Checklist Matrix */}
-          <div className="bg-white rounded-lg border border-white/10 p-6">
-            <h3 className="text-xl font-bold text-slate-100 mb-4">PDD Compliance Matrix</h3>
+          <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <h3 className="text-xl font-bold text-gray-900 mb-4">PDD Compliance Matrix</h3>
             
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b-2 border-white/10">
-                    <th className="text-left p-3 font-semibold text-slate-100">Staff Member</th>
-                    <th className="text-left p-3 font-semibold text-slate-100">Role</th>
-                    <th className="text-center p-3 font-semibold text-slate-100">ID</th>
-                    <th className="text-center p-3 font-semibold text-slate-100">Criminal</th>
-                    <th className="text-center p-3 font-semibold text-slate-100">Bankruptcy</th>
-                    <th className="text-center p-3 font-semibold text-slate-100">Prof Body</th>
-                    <th className="text-center p-3 font-semibold text-slate-100">Suitability</th>
-                    <th className="text-center p-3 font-semibold text-slate-100">Training</th>
-                    <th className="text-center p-3 font-semibold text-slate-100">Status</th>
+                  <tr className="border-b-2 border-gray-300">
+                    <th className="text-left p-3 font-semibold text-gray-900">Staff Member</th>
+                    <th className="text-left p-3 font-semibold text-gray-900">Role</th>
+                    <th className="text-center p-3 font-semibold text-gray-900">ID</th>
+                    <th className="text-center p-3 font-semibold text-gray-900">Criminal</th>
+                    <th className="text-center p-3 font-semibold text-gray-900">Bankruptcy</th>
+                    <th className="text-center p-3 font-semibold text-gray-900">Prof Body</th>
+                    <th className="text-center p-3 font-semibold text-gray-900">Suitability</th>
+                    <th className="text-center p-3 font-semibold text-gray-900">Training</th>
+                    <th className="text-center p-3 font-semibold text-gray-900">Status</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -948,47 +948,47 @@ export function PersonnelManagement() {
                     const StatusIcon = getStatusIcon(staff.complianceStatus);
                     
                     return (
-                      <tr key={staff.id} className="border-b border-white/10 hover:bg-white/5">
+                      <tr key={staff.id} className="border-b border-gray-200 hover:bg-gray-50">
                         <td className="p-3">
                           <div>
-                            <p className="font-semibold text-slate-100">{staff.name}</p>
-                            <p className="text-xs text-slate-300">{staff.email}</p>
+                            <p className="font-semibold text-gray-900">{staff.name}</p>
+                            <p className="text-xs text-gray-600">{staff.email}</p>
                           </div>
                         </td>
                         <td className="p-3">
-                          <span className="text-sm text-indigo-400 font-semibold">{roleDef?.title}</span>
+                          <span className="text-sm text-indigo-600 font-semibold">{roleDef?.title}</span>
                         </td>
                         <td className="p-3 text-center">
                           {staff.identityVerified ? (
-                            <CheckCircle className="w-5 h-5 text-green-400 mx-auto" />
+                            <CheckCircle className="w-5 h-5 text-green-600 mx-auto" />
                           ) : (
-                            <XCircle className="w-5 h-5 text-red-400 mx-auto" />
+                            <XCircle className="w-5 h-5 text-red-600 mx-auto" />
                           )}
                         </td>
                         <td className="p-3 text-center">
                           {staff.criminalCheckComplete ? (
                             <div className="flex flex-col items-center">
-                              <CheckCircle className="w-5 h-5 text-green-400" />
+                              <CheckCircle className="w-5 h-5 text-green-600" />
                               {staff.criminalCheckExpiry && (
                                 <span className={`text-xs mt-1 ${
-                                  staff.criminalCheckExpiry < new Date() ? 'text-red-400 font-bold' :
-                                  Math.floor((staff.criminalCheckExpiry.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)) <= 30 ? 'text-orange-400 font-bold' :
-                                  'text-slate-300'
+                                  staff.criminalCheckExpiry < new Date() ? 'text-red-600 font-bold' :
+                                  Math.floor((staff.criminalCheckExpiry.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)) <= 30 ? 'text-orange-600 font-bold' :
+                                  'text-gray-600'
                                 }`}>
                                   {staff.criminalCheckExpiry.toLocaleDateString()}
                                 </span>
                               )}
                             </div>
                           ) : (
-                            <XCircle className="w-5 h-5 text-red-400 mx-auto" />
+                            <XCircle className="w-5 h-5 text-red-600 mx-auto" />
                           )}
                         </td>
                         <td className="p-3 text-center">
                           {roleDef?.pddRequired.bankruptcyCheck ? (
                             staff.bankruptcyCheckComplete ? (
-                              <CheckCircle className="w-5 h-5 text-green-400 mx-auto" />
+                              <CheckCircle className="w-5 h-5 text-green-600 mx-auto" />
                             ) : (
-                              <XCircle className="w-5 h-5 text-red-400 mx-auto" />
+                              <XCircle className="w-5 h-5 text-red-600 mx-auto" />
                             )
                           ) : (
                             <span className="text-xs text-gray-400">N/A</span>
@@ -998,13 +998,13 @@ export function PersonnelManagement() {
                           {roleDef?.pddRequired.professionalBody ? (
                             staff.professionalBodyVerified ? (
                               <div className="flex flex-col items-center">
-                                <CheckCircle className="w-5 h-5 text-green-400" />
+                                <CheckCircle className="w-5 h-5 text-green-600" />
                                 {staff.professionalBody && (
-                                  <span className="text-xs text-slate-300 mt-1">{staff.professionalBody}</span>
+                                  <span className="text-xs text-gray-600 mt-1">{staff.professionalBody}</span>
                                 )}
                               </div>
                             ) : (
-                              <XCircle className="w-5 h-5 text-red-400 mx-auto" />
+                              <XCircle className="w-5 h-5 text-red-600 mx-auto" />
                             )
                           ) : (
                             <span className="text-xs text-gray-400">N/A</span>
@@ -1013,34 +1013,34 @@ export function PersonnelManagement() {
                         <td className="p-3 text-center">
                           {staff.suitabilityAssessment ? (
                             <div className="flex flex-col items-center">
-                              <CheckCircle className="w-5 h-5 text-green-400" />
+                              <CheckCircle className="w-5 h-5 text-green-600" />
                               <span className={`text-xs mt-1 font-semibold ${
-                                staff.suitabilityOutcome === 'suitable' ? 'text-green-400' :
-                                staff.suitabilityOutcome === 'conditional' ? 'text-yellow-400' :
-                                'text-red-400'
+                                staff.suitabilityOutcome === 'suitable' ? 'text-green-600' :
+                                staff.suitabilityOutcome === 'conditional' ? 'text-yellow-600' :
+                                'text-red-600'
                               }`}>
                                 {staff.suitabilityOutcome?.toUpperCase()}
                               </span>
                             </div>
                           ) : (
-                            <XCircle className="w-5 h-5 text-red-400 mx-auto" />
+                            <XCircle className="w-5 h-5 text-red-600 mx-auto" />
                           )}
                         </td>
                         <td className="p-3 text-center">
                           {staff.initialTrainingComplete ? (
                             <div className="flex flex-col items-center">
-                              <CheckCircle className="w-5 h-5 text-green-400" />
+                              <CheckCircle className="w-5 h-5 text-green-600" />
                               {staff.nextRefresherDue && (
                                 <span className={`text-xs mt-1 ${
-                                  staff.nextRefresherDue < new Date() ? 'text-red-400 font-bold' :
-                                  'text-slate-300'
+                                  staff.nextRefresherDue < new Date() ? 'text-red-600 font-bold' :
+                                  'text-gray-600'
                                 }`}>
                                   {staff.nextRefresherDue.toLocaleDateString()}
                                 </span>
                               )}
                             </div>
                           ) : (
-                            <XCircle className="w-5 h-5 text-red-400 mx-auto" />
+                            <XCircle className="w-5 h-5 text-red-600 mx-auto" />
                           )}
                         </td>
                         <td className="p-3 text-center">
@@ -1059,9 +1059,9 @@ export function PersonnelManagement() {
       {/* Monitoring Tab */}
       {activeTab === 'monitoring' && (
         <div className="space-y-6">
-          <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-6">
-            <h3 className="font-bold text-yellow-300 mb-3">Ongoing Monitoring Requirements</h3>
-            <p className="text-sm text-yellow-300">
+          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+            <h3 className="font-bold text-yellow-900 mb-3">Ongoing Monitoring Requirements</h3>
+            <p className="text-sm text-yellow-800">
               Personnel must be continuously monitored for compliance with PDD requirements. 
               System automatically generates alerts for expiring checks, overdue training, and trigger events.
             </p>
@@ -1069,9 +1069,9 @@ export function PersonnelManagement() {
 
           {/* Monitoring Alerts */}
           <div className="grid grid-cols-2 gap-6">
-            <div className="bg-white rounded-lg border border-white/10 p-6">
-              <h3 className="text-lg font-bold text-slate-100 mb-4 flex items-center">
-                <Clock className="w-5 h-5 mr-2 text-orange-400" />
+            <div className="bg-white rounded-lg border border-gray-200 p-6">
+              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                <Clock className="w-5 h-5 mr-2 text-orange-600" />
                 Expiring Criminal Checks (Next 90 Days)
               </h3>
 
@@ -1087,24 +1087,24 @@ export function PersonnelManagement() {
                     const daysUntilExpiry = Math.floor((staff.criminalCheckExpiry!.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24));
                     return (
                       <div key={staff.id} className={`p-4 rounded-lg border-2 ${
-                        daysUntilExpiry <= 30 ? 'border-red-500/30 bg-red-500/10' :
-                        daysUntilExpiry <= 60 ? 'border-orange-500/30 bg-orange-500/10' :
-                        'border-yellow-500/30 bg-yellow-500/10'
+                        daysUntilExpiry <= 30 ? 'border-red-200 bg-red-50' :
+                        daysUntilExpiry <= 60 ? 'border-orange-200 bg-orange-50' :
+                        'border-yellow-200 bg-yellow-50'
                       }`}>
                         <div className="flex items-center justify-between">
                           <div>
-                            <p className="font-semibold text-slate-100">{staff.name}</p>
-                            <p className="text-sm text-slate-300">{getRoleDefinition(staff.role)?.title}</p>
+                            <p className="font-semibold text-gray-900">{staff.name}</p>
+                            <p className="text-sm text-gray-600">{getRoleDefinition(staff.role)?.title}</p>
                           </div>
                           <div className="text-right">
                             <p className={`font-bold ${
-                              daysUntilExpiry <= 30 ? 'text-red-400' :
-                              daysUntilExpiry <= 60 ? 'text-orange-400' :
-                              'text-yellow-400'
+                              daysUntilExpiry <= 30 ? 'text-red-600' :
+                              daysUntilExpiry <= 60 ? 'text-orange-600' :
+                              'text-yellow-600'
                             }`}>
                               {daysUntilExpiry} days
                             </p>
-                            <p className="text-xs text-slate-300">
+                            <p className="text-xs text-gray-600">
                               Exp: {staff.criminalCheckExpiry!.toLocaleDateString()}
                             </p>
                           </div>
@@ -1122,16 +1122,16 @@ export function PersonnelManagement() {
                   return daysUntilExpiry <= 90 && daysUntilExpiry >= 0;
                 }).length === 0 && (
                   <div className="text-center py-8">
-                    <CheckCircle className="w-12 h-12 text-green-400 mx-auto mb-3" />
-                    <p className="text-slate-300">No criminal checks expiring in next 90 days</p>
+                    <CheckCircle className="w-12 h-12 text-green-600 mx-auto mb-3" />
+                    <p className="text-gray-600">No criminal checks expiring in next 90 days</p>
                   </div>
                 )}
               </div>
             </div>
 
-            <div className="bg-white rounded-lg border border-white/10 p-6">
-              <h3 className="text-lg font-bold text-slate-100 mb-4 flex items-center">
-                <BookOpen className="w-5 h-5 mr-2 text-blue-400" />
+            <div className="bg-white rounded-lg border border-gray-200 p-6">
+              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                <BookOpen className="w-5 h-5 mr-2 text-blue-600" />
                 Overdue Training Refreshers
               </h3>
 
@@ -1142,15 +1142,15 @@ export function PersonnelManagement() {
                   .map((staff) => {
                     const daysOverdue = Math.floor((new Date().getTime() - staff.nextRefresherDue!.getTime()) / (1000 * 60 * 60 * 24));
                     return (
-                      <div key={staff.id} className="p-4 rounded-lg border-2 border-red-500/30 bg-red-500/10">
+                      <div key={staff.id} className="p-4 rounded-lg border-2 border-red-200 bg-red-50">
                         <div className="flex items-center justify-between">
                           <div>
-                            <p className="font-semibold text-slate-100">{staff.name}</p>
-                            <p className="text-sm text-slate-300">{getRoleDefinition(staff.role)?.title}</p>
+                            <p className="font-semibold text-gray-900">{staff.name}</p>
+                            <p className="text-sm text-gray-600">{getRoleDefinition(staff.role)?.title}</p>
                           </div>
                           <div className="text-right">
-                            <p className="font-bold text-red-400">{daysOverdue} days overdue</p>
-                            <p className="text-xs text-slate-300">
+                            <p className="font-bold text-red-600">{daysOverdue} days overdue</p>
+                            <p className="text-xs text-gray-600">
                               Due: {staff.nextRefresherDue!.toLocaleDateString()}
                             </p>
                           </div>
@@ -1164,8 +1164,8 @@ export function PersonnelManagement() {
 
                 {staffRoster.filter(s => s.nextRefresherDue && s.nextRefresherDue < new Date()).length === 0 && (
                   <div className="text-center py-8">
-                    <CheckCircle className="w-12 h-12 text-green-400 mx-auto mb-3" />
-                    <p className="text-slate-300">All staff training up to date</p>
+                    <CheckCircle className="w-12 h-12 text-green-600 mx-auto mb-3" />
+                    <p className="text-gray-600">All staff training up to date</p>
                   </div>
                 )}
               </div>
@@ -1173,13 +1173,13 @@ export function PersonnelManagement() {
           </div>
 
           {/* Trigger-Based Reassessment */}
-          <div className="bg-white rounded-lg border border-white/10 p-6">
-            <h3 className="text-lg font-bold text-slate-100 mb-4">Trigger-Based Reassessment Events</h3>
+          <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <h3 className="text-lg font-bold text-gray-900 mb-4">Trigger-Based Reassessment Events</h3>
             
             <div className="space-y-3">
-              <div className="p-4 border-l-4 border-red-600 bg-red-500/10 rounded-r-lg">
-                <h4 className="font-semibold text-red-300 mb-2">Critical Triggers (Immediate Reassessment)</h4>
-                <ul className="text-sm text-red-300 space-y-1">
+              <div className="p-4 border-l-4 border-red-600 bg-red-50 rounded-r-lg">
+                <h4 className="font-semibold text-red-900 mb-2">Critical Triggers (Immediate Reassessment)</h4>
+                <ul className="text-sm text-red-800 space-y-1">
                   <li>• Criminal charges or convictions</li>
                   <li>• Bankruptcy or insolvency proceedings</li>
                   <li>• Professional body sanctions or deregistration</li>
@@ -1188,9 +1188,9 @@ export function PersonnelManagement() {
                 </ul>
               </div>
 
-              <div className="p-4 border-l-4 border-orange-600 bg-orange-500/10 rounded-r-lg">
-                <h4 className="font-semibold text-orange-300 mb-2">High Triggers (Review Within 30 Days)</h4>
-                <ul className="text-sm text-orange-300 space-y-1">
+              <div className="p-4 border-l-4 border-orange-600 bg-orange-50 rounded-r-lg">
+                <h4 className="font-semibold text-orange-900 mb-2">High Triggers (Review Within 30 Days)</h4>
+                <ul className="text-sm text-orange-800 space-y-1">
                   <li>• Change in role or responsibilities</li>
                   <li>• Significant performance issues</li>
                   <li>• Customer complaints regarding conduct</li>
@@ -1199,9 +1199,9 @@ export function PersonnelManagement() {
                 </ul>
               </div>
 
-              <div className="p-4 border-l-4 border-yellow-600 bg-yellow-500/10 rounded-r-lg">
-                <h4 className="font-semibold text-yellow-300 mb-2">Medium Triggers (Review Within 90 Days)</h4>
-                <ul className="text-sm text-yellow-300 space-y-1">
+              <div className="p-4 border-l-4 border-yellow-600 bg-yellow-50 rounded-r-lg">
+                <h4 className="font-semibold text-yellow-900 mb-2">Medium Triggers (Review Within 90 Days)</h4>
+                <ul className="text-sm text-yellow-800 space-y-1">
                   <li>• Change in personal circumstances</li>
                   <li>• New conflicts of interest</li>
                   <li>• Training non-compliance</li>

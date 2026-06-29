@@ -243,10 +243,10 @@ export function BeneficialOwnershipMapper({ onBack }: BeneficialOwnershipMapperP
 
   const getRiskColor = (level: string) => {
     switch (level) {
-      case 'high': return 'text-red-400 bg-red-500/15 border-red-300';
-      case 'medium': return 'text-amber-400 bg-amber-500/15 border-amber-300';
-      case 'low': return 'text-green-400 bg-green-500/15 border-green-300';
-      default: return 'text-slate-300 bg-[#0f172a] border-white/10';
+      case 'high': return 'text-red-600 bg-red-100 border-red-300';
+      case 'medium': return 'text-amber-600 bg-amber-100 border-amber-300';
+      case 'low': return 'text-green-600 bg-green-100 border-green-300';
+      default: return 'text-gray-600 bg-gray-100 border-gray-300';
     }
   };
 
@@ -261,7 +261,7 @@ export function BeneficialOwnershipMapper({ onBack }: BeneficialOwnershipMapperP
   };
 
   return (
-    <div className="min-h-screen bg-[#1e293b]">
+    <div className="min-h-screen bg-white">
       {/* Header */}
       <div className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white px-8 py-12">
         <Button
@@ -386,14 +386,14 @@ export function BeneficialOwnershipMapper({ onBack }: BeneficialOwnershipMapperP
               const hasHighRisk = ubos.some(u => u.riskLevel === 'high' || u.sanctionsMatch || u.isPEP);
 
               return (
-                <Card key={entity.id} className={`border-2 ${hasHighRisk ? 'border-red-300 bg-red-500/10' : 'border-white/10'}`}>
+                <Card key={entity.id} className={`border-2 ${hasHighRisk ? 'border-red-300 bg-red-50' : 'border-gray-200'}`}>
                   <CardHeader>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-4">
                         <div className={`w-16 h-16 rounded-xl flex items-center justify-center ${
-                          hasHighRisk ? 'bg-red-500/15' : 'bg-indigo-500/15'
+                          hasHighRisk ? 'bg-red-100' : 'bg-indigo-100'
                         }`}>
-                          <EntityIcon className={`w-8 h-8 ${hasHighRisk ? 'text-red-400' : 'text-indigo-400'}`} />
+                          <EntityIcon className={`w-8 h-8 ${hasHighRisk ? 'text-red-600' : 'text-indigo-600'}`} />
                         </div>
                         <div>
                           <CardTitle className="text-2xl mb-1">{entity.name}</CardTitle>
@@ -424,8 +424,8 @@ export function BeneficialOwnershipMapper({ onBack }: BeneficialOwnershipMapperP
                       {/* Shareholders/Owners */}
                       {entity.owners.length > 0 && (
                         <div>
-                          <h4 className="font-bold text-white mb-4 flex items-center gap-2">
-                            <Share2 className="w-4 h-4 text-blue-400" />
+                          <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                            <Share2 className="w-4 h-4 text-blue-600" />
                             Ownership ({entity.owners.length})
                           </h4>
                           <div className="space-y-3">
@@ -434,25 +434,25 @@ export function BeneficialOwnershipMapper({ onBack }: BeneficialOwnershipMapperP
                                 key={owner.id}
                                 className={`p-4 rounded-lg border-2 ${
                                   owner.sanctionsMatch || owner.isPEP
-                                    ? 'border-red-300 bg-red-500/10'
+                                    ? 'border-red-300 bg-red-50'
                                     : owner.verified
-                                    ? 'border-green-300 bg-green-500/10'
-                                    : 'border-amber-300 bg-amber-500/10'
+                                    ? 'border-green-300 bg-green-50'
+                                    : 'border-amber-300 bg-amber-50'
                                 }`}
                               >
                                 <div className="flex items-start justify-between mb-2">
                                   <div className="flex items-center gap-2">
                                     {owner.type === 'individual' ? (
-                                      <User className="w-4 h-4 text-slate-300" />
+                                      <User className="w-4 h-4 text-gray-600" />
                                     ) : (
-                                      <Building2 className="w-4 h-4 text-slate-300" />
+                                      <Building2 className="w-4 h-4 text-gray-600" />
                                     )}
-                                    <span className="font-semibold text-white">{owner.name}</span>
+                                    <span className="font-semibold text-gray-900">{owner.name}</span>
                                   </div>
                                   {owner.verified ? (
-                                    <CheckCircle className="w-4 h-4 text-green-400" />
+                                    <CheckCircle className="w-4 h-4 text-green-600" />
                                   ) : (
-                                    <AlertCircle className="w-4 h-4 text-amber-400" />
+                                    <AlertCircle className="w-4 h-4 text-amber-600" />
                                   )}
                                 </div>
                                 <div className="flex items-center gap-3 text-xs">
@@ -481,8 +481,8 @@ export function BeneficialOwnershipMapper({ onBack }: BeneficialOwnershipMapperP
                       {/* Controllers */}
                       {entity.controllers.length > 0 && (
                         <div>
-                          <h4 className="font-bold text-white mb-4 flex items-center gap-2">
-                            <Crown className="w-4 h-4 text-purple-400" />
+                          <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                            <Crown className="w-4 h-4 text-purple-600" />
                             Controllers ({entity.controllers.length})
                           </h4>
                           <div className="space-y-3">
@@ -491,25 +491,25 @@ export function BeneficialOwnershipMapper({ onBack }: BeneficialOwnershipMapperP
                                 key={controller.id}
                                 className={`p-4 rounded-lg border-2 ${
                                   controller.sanctionsMatch || controller.isPEP
-                                    ? 'border-red-300 bg-red-500/10'
+                                    ? 'border-red-300 bg-red-50'
                                     : controller.verified
-                                    ? 'border-green-300 bg-green-500/10'
-                                    : 'border-amber-300 bg-amber-500/10'
+                                    ? 'border-green-300 bg-green-50'
+                                    : 'border-amber-300 bg-amber-50'
                                 }`}
                               >
                                 <div className="flex items-start justify-between mb-2">
                                   <div className="flex items-center gap-2">
                                     {controller.type === 'individual' ? (
-                                      <User className="w-4 h-4 text-slate-300" />
+                                      <User className="w-4 h-4 text-gray-600" />
                                     ) : (
-                                      <Building2 className="w-4 h-4 text-slate-300" />
+                                      <Building2 className="w-4 h-4 text-gray-600" />
                                     )}
-                                    <span className="font-semibold text-white">{controller.name}</span>
+                                    <span className="font-semibold text-gray-900">{controller.name}</span>
                                   </div>
                                   {controller.verified ? (
-                                    <CheckCircle className="w-4 h-4 text-green-400" />
+                                    <CheckCircle className="w-4 h-4 text-green-600" />
                                   ) : (
-                                    <AlertCircle className="w-4 h-4 text-amber-400" />
+                                    <AlertCircle className="w-4 h-4 text-amber-600" />
                                   )}
                                 </div>
                                 <div className="flex items-center gap-3 text-xs">
@@ -535,9 +535,9 @@ export function BeneficialOwnershipMapper({ onBack }: BeneficialOwnershipMapperP
 
                     {/* Ultimate Beneficial Owners Summary */}
                     {ubos.length > 0 && (
-                      <div className="mt-6 p-4 bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-500/30 rounded-xl">
-                        <h4 className="font-bold text-purple-300 mb-3 flex items-center gap-2">
-                          <Crown className="w-5 h-5 text-purple-400" />
+                      <div className="mt-6 p-4 bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-200 rounded-xl">
+                        <h4 className="font-bold text-purple-900 mb-3 flex items-center gap-2">
+                          <Crown className="w-5 h-5 text-purple-600" />
                           Ultimate Beneficial Owners (UBO) - {ubos.length} identified
                         </h4>
                         <div className="grid grid-cols-3 gap-3">
@@ -546,13 +546,13 @@ export function BeneficialOwnershipMapper({ onBack }: BeneficialOwnershipMapperP
                               key={ubo.id}
                               className={`p-3 rounded-lg border ${
                                 ubo.sanctionsMatch || ubo.isPEP
-                                  ? 'border-red-300 bg-red-500/15'
-                                  : 'border-purple-300 bg-[#1e293b]'
+                                  ? 'border-red-300 bg-red-100'
+                                  : 'border-purple-300 bg-white'
                               }`}
                             >
                               <div className="flex items-center gap-2 mb-2">
-                                <User className="w-4 h-4 text-purple-400" />
-                                <span className="font-semibold text-sm text-white">{ubo.name}</span>
+                                <User className="w-4 h-4 text-purple-600" />
+                                <span className="font-semibold text-sm text-gray-900">{ubo.name}</span>
                               </div>
                               <div className="flex flex-wrap gap-1">
                                 {ubo.ownership > 0 && (
@@ -564,9 +564,9 @@ export function BeneficialOwnershipMapper({ onBack }: BeneficialOwnershipMapperP
                                   {ubo.role}
                                 </Badge>
                                 {ubo.verified ? (
-                                  <CheckCircle className="w-3 h-3 text-green-400" />
+                                  <CheckCircle className="w-3 h-3 text-green-600" />
                                 ) : (
-                                  <AlertCircle className="w-3 h-3 text-amber-400" />
+                                  <AlertCircle className="w-3 h-3 text-amber-600" />
                                 )}
                               </div>
                             </div>
@@ -590,7 +590,7 @@ export function BeneficialOwnershipMapper({ onBack }: BeneficialOwnershipMapperP
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b-2 border-white/10">
+                    <tr className="border-b-2 border-gray-300">
                       <th className="text-left py-3 px-4 font-bold">Name</th>
                       <th className="text-left py-3 px-4 font-bold">Entity</th>
                       <th className="text-left py-3 px-4 font-bold">Role</th>
@@ -609,19 +609,19 @@ export function BeneficialOwnershipMapper({ onBack }: BeneficialOwnershipMapperP
                         entityType: entity.type
                       }))
                     ).map((ubo, idx) => (
-                      <tr key={idx} className="border-b border-white/10 hover:bg-white/5">
+                      <tr key={idx} className="border-b border-gray-200 hover:bg-gray-50">
                         <td className="py-3 px-4">
                           <div className="flex items-center gap-2">
-                            <User className="w-4 h-4 text-slate-300" />
-                            <span className="font-semibold text-white">{ubo.name}</span>
+                            <User className="w-4 h-4 text-gray-600" />
+                            <span className="font-semibold text-gray-900">{ubo.name}</span>
                           </div>
                         </td>
                         <td className="py-3 px-4">
                           <div className="flex items-center gap-2">
-                            <Building2 className="w-4 h-4 text-slate-300" />
+                            <Building2 className="w-4 h-4 text-gray-600" />
                             <div>
-                              <div className="font-medium text-white">{ubo.entityName}</div>
-                              <div className="text-xs text-slate-300 capitalize">{ubo.entityType}</div>
+                              <div className="font-medium text-gray-900">{ubo.entityName}</div>
+                              <div className="text-xs text-gray-600 capitalize">{ubo.entityType}</div>
                             </div>
                           </div>
                         </td>
@@ -632,7 +632,7 @@ export function BeneficialOwnershipMapper({ onBack }: BeneficialOwnershipMapperP
                           {ubo.ownership > 0 ? (
                             <Badge className="bg-indigo-600 text-white">{ubo.ownership}%</Badge>
                           ) : (
-                            <span className="text-slate-400">-</span>
+                            <span className="text-gray-400">-</span>
                           )}
                         </td>
                         <td className="py-3 px-4 text-center">
@@ -642,9 +642,9 @@ export function BeneficialOwnershipMapper({ onBack }: BeneficialOwnershipMapperP
                         </td>
                         <td className="py-3 px-4 text-center">
                           {ubo.verified ? (
-                            <CheckCircle className="w-5 h-5 text-green-400 mx-auto" />
+                            <CheckCircle className="w-5 h-5 text-green-600 mx-auto" />
                           ) : (
-                            <AlertCircle className="w-5 h-5 text-amber-400 mx-auto" />
+                            <AlertCircle className="w-5 h-5 text-amber-600 mx-auto" />
                           )}
                         </td>
                         <td className="py-3 px-4 text-center">
@@ -677,17 +677,17 @@ export function BeneficialOwnershipMapper({ onBack }: BeneficialOwnershipMapperP
         )}
 
         {/* Help Card */}
-        <Card className="mt-12 bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-500/30">
+        <Card className="mt-12 bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Info className="w-5 h-5 text-blue-400" />
+              <Info className="w-5 h-5 text-blue-600" />
               About Beneficial Ownership
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-2 gap-6 text-sm text-slate-300">
+            <div className="grid grid-cols-2 gap-6 text-sm text-gray-700">
               <div>
-                <h4 className="font-bold text-white mb-2">What is a UBO?</h4>
+                <h4 className="font-bold text-gray-900 mb-2">What is a UBO?</h4>
                 <p>
                   A Ultimate Beneficial Owner (UBO) is an individual who:
                 </p>
@@ -698,7 +698,7 @@ export function BeneficialOwnershipMapper({ onBack }: BeneficialOwnershipMapperP
                 </ul>
               </div>
               <div>
-                <h4 className="font-bold text-white mb-2">Why it matters</h4>
+                <h4 className="font-bold text-gray-900 mb-2">Why it matters</h4>
                 <p>
                   Beneficial ownership mapping is critical for:
                 </p>

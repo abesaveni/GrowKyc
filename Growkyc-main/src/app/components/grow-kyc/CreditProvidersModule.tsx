@@ -195,15 +195,15 @@ export function CreditProvidersModule({ onBack }: CreditProvidersModuleProps) {
 
   const getRiskColor = (level: string) => {
     switch (level) {
-      case 'high': return 'text-red-400 bg-red-500/15 border-red-300';
-      case 'medium': return 'text-amber-400 bg-amber-500/15 border-amber-300';
-      case 'low': return 'text-green-400 bg-green-500/15 border-green-300';
-      default: return 'text-slate-300 bg-[#0f172a] border-white/10';
+      case 'high': return 'text-red-600 bg-red-100 border-red-300';
+      case 'medium': return 'text-amber-600 bg-amber-100 border-amber-300';
+      case 'low': return 'text-green-600 bg-green-100 border-green-300';
+      default: return 'text-gray-600 bg-gray-100 border-gray-300';
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#1e293b]">
+    <div className="min-h-screen bg-white">
       {/* Header */}
       <div className="bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 text-white px-8 py-12">
         <Button
@@ -319,17 +319,17 @@ export function CreditProvidersModule({ onBack }: CreditProvidersModuleProps) {
                 key={deal.id}
                 className={`border-2 ${
                   deal.kycGate
-                    ? 'border-red-300 bg-red-500/10'
+                    ? 'border-red-300 bg-red-50'
                     : deal.status === 'approved'
-                    ? 'border-green-300 bg-green-500/10'
-                    : 'border-white/10'
+                    ? 'border-green-300 bg-green-50'
+                    : 'border-gray-200'
                 }`}
               >
                 <CardContent className="p-6">
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-3">
-                        <h3 className="text-2xl font-bold text-white">{deal.borrowerName}</h3>
+                        <h3 className="text-2xl font-bold text-gray-900">{deal.borrowerName}</h3>
                         <Badge className={getStatusColor(deal.status)}>
                           {deal.status}
                         </Badge>
@@ -343,90 +343,90 @@ export function CreditProvidersModule({ onBack }: CreditProvidersModuleProps) {
 
                       <div className="grid grid-cols-4 gap-6 mb-4">
                         <div>
-                          <div className="text-sm text-slate-300 mb-1">Loan Amount</div>
-                          <div className="text-2xl font-bold text-white">
+                          <div className="text-sm text-gray-600 mb-1">Loan Amount</div>
+                          <div className="text-2xl font-bold text-gray-900">
                             ${deal.loanAmount.toLocaleString()}
                           </div>
                         </div>
                         <div>
-                          <div className="text-sm text-slate-300 mb-1">Security Value</div>
-                          <div className="text-2xl font-bold text-white">
+                          <div className="text-sm text-gray-600 mb-1">Security Value</div>
+                          <div className="text-2xl font-bold text-gray-900">
                             ${deal.securityValue.toLocaleString()}
                           </div>
                         </div>
                         <div>
-                          <div className="text-sm text-slate-300 mb-1">LVR</div>
+                          <div className="text-sm text-gray-600 mb-1">LVR</div>
                           <div className={`text-2xl font-bold ${
-                            deal.lvr > 80 ? 'text-red-400' : deal.lvr > 70 ? 'text-amber-400' : 'text-green-400'
+                            deal.lvr > 80 ? 'text-red-600' : deal.lvr > 70 ? 'text-amber-600' : 'text-green-600'
                           }`}>
                             {deal.lvr.toFixed(1)}%
                           </div>
                         </div>
                         <div>
-                          <div className="text-sm text-slate-300 mb-1">Settlement</div>
-                          <div className="text-lg font-bold text-white">
+                          <div className="text-sm text-gray-600 mb-1">Settlement</div>
+                          <div className="text-lg font-bold text-gray-900">
                             {deal.settlementDate}
                           </div>
                         </div>
                       </div>
 
                       <div className="mb-4">
-                        <div className="text-sm text-slate-300 mb-1">Loan Purpose</div>
-                        <div className="text-lg font-semibold text-white">{deal.loanPurpose}</div>
+                        <div className="text-sm text-gray-600 mb-1">Loan Purpose</div>
+                        <div className="text-lg font-semibold text-gray-900">{deal.loanPurpose}</div>
                       </div>
 
                       {/* Approval Gates */}
                       <div className="grid grid-cols-3 gap-4">
                         <div className={`p-4 rounded-lg border-2 ${
                           deal.kycGate
-                            ? 'border-red-300 bg-red-500/15'
-                            : 'border-green-300 bg-green-500/15'
+                            ? 'border-red-300 bg-red-100'
+                            : 'border-green-300 bg-green-100'
                         }`}>
                           <div className="flex items-center justify-between mb-2">
-                            <span className="text-sm font-semibold text-slate-300">KYC / AML</span>
+                            <span className="text-sm font-semibold text-gray-700">KYC / AML</span>
                             {deal.kycGate ? (
-                              <Lock className="w-5 h-5 text-red-400" />
+                              <Lock className="w-5 h-5 text-red-600" />
                             ) : (
-                              <CheckCircle className="w-5 h-5 text-green-400" />
+                              <CheckCircle className="w-5 h-5 text-green-600" />
                             )}
                           </div>
-                          <div className="text-xs text-slate-300">
+                          <div className="text-xs text-gray-600">
                             {deal.kycGate ? 'Incomplete - blocking settlement' : 'Complete'}
                           </div>
                         </div>
 
                         <div className={`p-4 rounded-lg border-2 ${
                           deal.creditApproved
-                            ? 'border-green-300 bg-green-500/15'
-                            : 'border-amber-300 bg-amber-500/15'
+                            ? 'border-green-300 bg-green-100'
+                            : 'border-amber-300 bg-amber-100'
                         }`}>
                           <div className="flex items-center justify-between mb-2">
-                            <span className="text-sm font-semibold text-slate-300">Credit Approval</span>
+                            <span className="text-sm font-semibold text-gray-700">Credit Approval</span>
                             {deal.creditApproved ? (
-                              <CheckCircle className="w-5 h-5 text-green-400" />
+                              <CheckCircle className="w-5 h-5 text-green-600" />
                             ) : (
-                              <Clock className="w-5 h-5 text-amber-400" />
+                              <Clock className="w-5 h-5 text-amber-600" />
                             )}
                           </div>
-                          <div className="text-xs text-slate-300">
+                          <div className="text-xs text-gray-600">
                             {deal.creditApproved ? 'Approved by credit team' : 'Pending review'}
                           </div>
                         </div>
 
                         <div className={`p-4 rounded-lg border-2 ${
                           deal.complianceApproved
-                            ? 'border-green-300 bg-green-500/15'
-                            : 'border-amber-300 bg-amber-500/15'
+                            ? 'border-green-300 bg-green-100'
+                            : 'border-amber-300 bg-amber-100'
                         }`}>
                           <div className="flex items-center justify-between mb-2">
-                            <span className="text-sm font-semibold text-slate-300">Compliance</span>
+                            <span className="text-sm font-semibold text-gray-700">Compliance</span>
                             {deal.complianceApproved ? (
-                              <CheckCircle className="w-5 h-5 text-green-400" />
+                              <CheckCircle className="w-5 h-5 text-green-600" />
                             ) : (
-                              <Clock className="w-5 h-5 text-amber-400" />
+                              <Clock className="w-5 h-5 text-amber-600" />
                             )}
                           </div>
-                          <div className="text-xs text-slate-300">
+                          <div className="text-xs text-gray-600">
                             {deal.complianceApproved ? 'Cleared for settlement' : 'Awaiting sign-off'}
                           </div>
                         </div>
@@ -470,23 +470,23 @@ export function CreditProvidersModule({ onBack }: CreditProvidersModuleProps) {
                       <div className="flex items-start gap-4 flex-1">
                         <div className={`w-16 h-16 rounded-xl flex items-center justify-center ${
                           borrower.riskLevel === 'high'
-                            ? 'bg-red-500/15'
+                            ? 'bg-red-100'
                             : borrower.riskLevel === 'medium'
-                            ? 'bg-amber-500/15'
-                            : 'bg-green-500/15'
+                            ? 'bg-amber-100'
+                            : 'bg-green-100'
                         }`}>
                           <BorrowerIcon className={`w-8 h-8 ${
                             borrower.riskLevel === 'high'
-                              ? 'text-red-400'
+                              ? 'text-red-600'
                               : borrower.riskLevel === 'medium'
-                              ? 'text-amber-400'
-                              : 'text-green-400'
+                              ? 'text-amber-600'
+                              : 'text-green-600'
                           }`} />
                         </div>
 
                         <div className="flex-1">
                           <div className="flex items-center gap-3 mb-2">
-                            <h3 className="text-2xl font-bold text-white">{borrower.name}</h3>
+                            <h3 className="text-2xl font-bold text-gray-900">{borrower.name}</h3>
                             <Badge variant="outline" className="capitalize">
                               {borrower.type}
                             </Badge>
@@ -503,34 +503,34 @@ export function CreditProvidersModule({ onBack }: CreditProvidersModuleProps) {
 
                           <div className="grid grid-cols-4 gap-6 mb-4">
                             <div>
-                              <div className="text-sm text-slate-300 mb-1">Loan Amount</div>
-                              <div className="text-xl font-bold text-white">
+                              <div className="text-sm text-gray-600 mb-1">Loan Amount</div>
+                              <div className="text-xl font-bold text-gray-900">
                                 ${(borrower.loanAmount / 1000000).toFixed(2)}M
                               </div>
                             </div>
                             <div>
-                              <div className="text-sm text-slate-300 mb-1">LVR</div>
-                              <div className="text-xl font-bold text-white">
+                              <div className="text-sm text-gray-600 mb-1">LVR</div>
+                              <div className="text-xl font-bold text-gray-900">
                                 {borrower.lvr.toFixed(1)}%
                               </div>
                             </div>
                             <div>
-                              <div className="text-sm text-slate-300 mb-1">Guarantors</div>
-                              <div className="text-xl font-bold text-white">
+                              <div className="text-sm text-gray-600 mb-1">Guarantors</div>
+                              <div className="text-xl font-bold text-gray-900">
                                 {borrower.guarantors}
                               </div>
                             </div>
                             <div>
-                              <div className="text-sm text-slate-300 mb-1">Security Parties</div>
-                              <div className="text-xl font-bold text-white">
+                              <div className="text-sm text-gray-600 mb-1">Security Parties</div>
+                              <div className="text-xl font-bold text-gray-900">
                                 {borrower.securityParties}
                               </div>
                             </div>
                           </div>
 
-                          <div className="p-4 bg-[#0f172a] rounded-lg border border-white/10">
-                            <div className="text-sm text-slate-300 mb-1">Loan Purpose</div>
-                            <div className="font-semibold text-white">{borrower.loanPurpose}</div>
+                          <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                            <div className="text-sm text-gray-600 mb-1">Loan Purpose</div>
+                            <div className="font-semibold text-gray-900">{borrower.loanPurpose}</div>
                           </div>
                         </div>
                       </div>
@@ -565,7 +565,7 @@ export function CreditProvidersModule({ onBack }: CreditProvidersModuleProps) {
             <Card className="border-2 border-red-300 bg-gradient-to-br from-red-50 to-orange-50">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Lock className="w-5 h-5 text-red-400" />
+                  <Lock className="w-5 h-5 text-red-600" />
                   Pre-Settlement Compliance Gate
                 </CardTitle>
                 <CardDescription>Deals blocked from settlement due to incomplete KYC/AML</CardDescription>
@@ -573,14 +573,14 @@ export function CreditProvidersModule({ onBack }: CreditProvidersModuleProps) {
               <CardContent>
                 <div className="space-y-3">
                   {deals.filter(d => d.kycGate).map((deal) => (
-                    <div key={deal.id} className="flex items-center justify-between p-4 bg-[#1e293b] rounded-lg border-2 border-red-500/30">
+                    <div key={deal.id} className="flex items-center justify-between p-4 bg-white rounded-lg border-2 border-red-200">
                       <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 bg-red-500/15 rounded-lg flex items-center justify-center">
-                          <AlertTriangle className="w-6 h-6 text-red-400" />
+                        <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
+                          <AlertTriangle className="w-6 h-6 text-red-600" />
                         </div>
                         <div>
-                          <div className="font-bold text-white">{deal.borrowerName}</div>
-                          <div className="text-sm text-slate-300">Settlement: {deal.settlementDate}</div>
+                          <div className="font-bold text-gray-900">{deal.borrowerName}</div>
+                          <div className="text-sm text-gray-600">Settlement: {deal.settlementDate}</div>
                         </div>
                       </div>
                       <div className="flex items-center gap-3">
@@ -607,96 +607,96 @@ export function CreditProvidersModule({ onBack }: CreditProvidersModuleProps) {
               <CardContent>
                 <div className="grid grid-cols-2 gap-6">
                   <div>
-                    <h4 className="font-bold text-white mb-3">Borrower KYC</h4>
+                    <h4 className="font-bold text-gray-900 mb-3">Borrower KYC</h4>
                     <ul className="space-y-2 text-sm">
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-400" />
+                        <CheckCircle className="w-4 h-4 text-green-600" />
                         Identity verification (biometric)
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-400" />
+                        <CheckCircle className="w-4 h-4 text-green-600" />
                         Proof of address
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-400" />
+                        <CheckCircle className="w-4 h-4 text-green-600" />
                         Source of funds verification
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-400" />
+                        <CheckCircle className="w-4 h-4 text-green-600" />
                         Source of wealth verification
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-400" />
+                        <CheckCircle className="w-4 h-4 text-green-600" />
                         Sanctions & PEP screening
                       </li>
                     </ul>
                   </div>
 
                   <div>
-                    <h4 className="font-bold text-white mb-3">Entity Due Diligence</h4>
+                    <h4 className="font-bold text-gray-900 mb-3">Entity Due Diligence</h4>
                     <ul className="space-y-2 text-sm">
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-400" />
+                        <CheckCircle className="w-4 h-4 text-green-600" />
                         Company/trust structure verification
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-400" />
+                        <CheckCircle className="w-4 h-4 text-green-600" />
                         Beneficial ownership mapping (25%+)
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-400" />
+                        <CheckCircle className="w-4 h-4 text-green-600" />
                         Director/trustee verification
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-400" />
+                        <CheckCircle className="w-4 h-4 text-green-600" />
                         UBO screening (sanctions, PEP)
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-400" />
+                        <CheckCircle className="w-4 h-4 text-green-600" />
                         Layered ownership tracing
                       </li>
                     </ul>
                   </div>
 
                   <div>
-                    <h4 className="font-bold text-white mb-3">Guarantor & Security Party</h4>
+                    <h4 className="font-bold text-gray-900 mb-3">Guarantor & Security Party</h4>
                     <ul className="space-y-2 text-sm">
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-400" />
+                        <CheckCircle className="w-4 h-4 text-green-600" />
                         Guarantor identity verification
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-400" />
+                        <CheckCircle className="w-4 h-4 text-green-600" />
                         Capacity to guarantee assessment
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-400" />
+                        <CheckCircle className="w-4 h-4 text-green-600" />
                         Security provider verification
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-400" />
+                        <CheckCircle className="w-4 h-4 text-green-600" />
                         Related party exposure checks
                       </li>
                     </ul>
                   </div>
 
                   <div>
-                    <h4 className="font-bold text-white mb-3">Compliance Sign-Off</h4>
+                    <h4 className="font-bold text-gray-900 mb-3">Compliance Sign-Off</h4>
                     <ul className="space-y-2 text-sm">
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-400" />
+                        <CheckCircle className="w-4 h-4 text-green-600" />
                         Risk assessment (0-100 score)
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-400" />
+                        <CheckCircle className="w-4 h-4 text-green-600" />
                         Credit committee clearance
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-400" />
+                        <CheckCircle className="w-4 h-4 text-green-600" />
                         Compliance officer sign-off
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-green-400" />
+                        <CheckCircle className="w-4 h-4 text-green-600" />
                         Lender-grade audit pack generated
                       </li>
                     </ul>
@@ -706,10 +706,10 @@ export function CreditProvidersModule({ onBack }: CreditProvidersModuleProps) {
             </Card>
 
             {/* LOS Integration */}
-            <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-500/30">
+            <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Building2 className="w-5 h-5 text-blue-400" />
+                  <Building2 className="w-5 h-5 text-blue-600" />
                   Loan Origination System (LOS) Integration
                 </CardTitle>
                 <CardDescription>Connect with your LOS to automate KYC workflows</CardDescription>
@@ -721,9 +721,9 @@ export function CreditProvidersModule({ onBack }: CreditProvidersModuleProps) {
                     { name: 'Connective', status: 'Disconnected', deals: 0 },
                     { name: 'SimpleNexus', status: 'Disconnected', deals: 0 }
                   ].map((los, idx) => (
-                    <div key={idx} className="p-4 bg-[#1e293b] rounded-lg border border-blue-500/30">
-                      <div className="font-bold text-white mb-2">{los.name}</div>
-                      <div className="text-sm text-slate-300 mb-3">
+                    <div key={idx} className="p-4 bg-white rounded-lg border border-blue-200">
+                      <div className="font-bold text-gray-900 mb-2">{los.name}</div>
+                      <div className="text-sm text-gray-600 mb-3">
                         {los.status === 'Connected' ? `${los.deals} active deals` : 'Not connected'}
                       </div>
                       <Button

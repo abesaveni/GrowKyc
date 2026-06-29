@@ -360,8 +360,8 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
   const renderClientTypeStep = () => (
     <div className="space-y-6">
       <div className="text-center mb-6">
-        <h3 className="text-2xl font-bold text-slate-100 mb-2">Select Client Type</h3>
-        <p className="text-slate-300">Choose the type of entity you're onboarding</p>
+        <h3 className="text-2xl font-bold text-gray-900 mb-2">Select Client Type</h3>
+        <p className="text-gray-600">Choose the type of entity you're onboarding</p>
       </div>
 
       <div className="grid grid-cols-2 gap-4">
@@ -380,18 +380,18 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
             <Card
               key={option.type}
               className={`cursor-pointer transition-all border-2 ${
-                isSelected ? 'border-blue-500 bg-blue-500/10' : 'border-white/10 hover:border-blue-300'
+                isSelected ? 'border-blue-500 bg-blue-50' : 'border-gray-300 hover:border-blue-300'
               }`}
               onClick={() => setClientType(option.type as ClientType)}
             >
               <CardContent className="p-6 text-center">
                 <div className={`w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center ${
-                  isSelected ? 'bg-blue-600' : 'bg-white/10'
+                  isSelected ? 'bg-blue-600' : 'bg-gray-200'
                 }`}>
-                  <Icon className={`w-8 h-8 ${isSelected ? 'text-white' : 'text-slate-300'}`} />
+                  <Icon className={`w-8 h-8 ${isSelected ? 'text-white' : 'text-gray-600'}`} />
                 </div>
-                <h4 className="font-bold text-slate-100 mb-2">{option.label}</h4>
-                <p className="text-sm text-slate-300">{option.description}</p>
+                <h4 className="font-bold text-gray-900 mb-2">{option.label}</h4>
+                <p className="text-sm text-gray-600">{option.description}</p>
                 {isSelected && (
                   <Badge className="mt-3 bg-blue-600">
                     <Check className="w-3 h-3 mr-1" />
@@ -418,41 +418,41 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
     if (clientType === 'individual' || clientType === 'soletrader') {
       return (
         <div className="space-y-6">
-          <h3 className="text-xl font-bold text-slate-100 mb-4">Personal Information</h3>
+          <h3 className="text-xl font-bold text-gray-900 mb-4">Personal Information</h3>
 
           {/* Name Fields */}
           <div className="grid grid-cols-3 gap-4">
             <div>
-              <label className="block text-sm font-semibold text-slate-300 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 First Name <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
                 value={individualData.firstName}
                 onChange={(e) => setIndividualData({ ...individualData, firstName: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                 placeholder="John"
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-slate-300 mb-2">Middle Name</label>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Middle Name</label>
               <input
                 type="text"
                 value={individualData.middleName}
                 onChange={(e) => setIndividualData({ ...individualData, middleName: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                 placeholder="Robert"
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-slate-300 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Last Name <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
                 value={individualData.lastName}
                 onChange={(e) => setIndividualData({ ...individualData, lastName: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                 placeholder="Smith"
               />
             </div>
@@ -461,7 +461,7 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
           {/* DOB and Nationality */}
           <div className="grid grid-cols-3 gap-4">
             <div>
-              <label className="block text-sm font-semibold text-slate-300 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 <Calendar className="w-4 h-4 inline mr-1" />
                 Date of Birth <span className="text-red-500">*</span>
               </label>
@@ -469,11 +469,11 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
                 type="date"
                 value={individualData.dateOfBirth}
                 onChange={(e) => setIndividualData({ ...individualData, dateOfBirth: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-slate-300 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 <Globe className="w-4 h-4 inline mr-1" />
                 Nationality <span className="text-red-500">*</span>
               </label>
@@ -481,19 +481,19 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
                 type="text"
                 value={individualData.nationality}
                 onChange={(e) => setIndividualData({ ...individualData, nationality: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                 placeholder="Australian"
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-slate-300 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Country of Residence <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
                 value={individualData.countryOfResidence}
                 onChange={(e) => setIndividualData({ ...individualData, countryOfResidence: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                 placeholder="Australia"
               />
             </div>
@@ -501,39 +501,39 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
 
           {/* Contact Information */}
           <div className="border-t pt-6">
-            <h4 className="font-bold text-slate-100 mb-4">Contact Information</h4>
+            <h4 className="font-bold text-gray-900 mb-4">Contact Information</h4>
             <div className="grid grid-cols-3 gap-4">
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Email <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="email"
                   value={individualData.email}
                   onChange={(e) => setIndividualData({ ...individualData, email: e.target.value })}
-                  className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                  className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                   placeholder="john.smith@example.com"
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Phone <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="tel"
                   value={individualData.phone}
                   onChange={(e) => setIndividualData({ ...individualData, phone: e.target.value })}
-                  className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                  className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                   placeholder="0400 000 000"
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">Mobile</label>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">Mobile</label>
                 <input
                   type="tel"
                   value={individualData.mobile}
                   onChange={(e) => setIndividualData({ ...individualData, mobile: e.target.value })}
-                  className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                  className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                   placeholder="0400 000 000"
                 />
               </div>
@@ -542,34 +542,34 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
 
           {/* Employment & Income */}
           <div className="border-t pt-6">
-            <h4 className="font-bold text-slate-100 mb-4">Employment & Income</h4>
+            <h4 className="font-bold text-gray-900 mb-4">Employment & Income</h4>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">Occupation</label>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">Occupation</label>
                 <input
                   type="text"
                   value={individualData.occupation}
                   onChange={(e) => setIndividualData({ ...individualData, occupation: e.target.value })}
-                  className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                  className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                   placeholder="Software Engineer"
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">Employer Name</label>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">Employer Name</label>
                 <input
                   type="text"
                   value={individualData.employerName}
                   onChange={(e) => setIndividualData({ ...individualData, employerName: e.target.value })}
-                  className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                  className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                   placeholder="Company Name"
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">Employment Status</label>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">Employment Status</label>
                 <select
                   value={individualData.employmentStatus}
                   onChange={(e) => setIndividualData({ ...individualData, employmentStatus: e.target.value })}
-                  className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                  className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                 >
                   <option value="employed">Employed</option>
                   <option value="self_employed">Self Employed</option>
@@ -579,14 +579,14 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   <DollarSign className="w-4 h-4 inline mr-1" />
                   Annual Income
                 </label>
                 <select
                   value={individualData.annualIncome}
                   onChange={(e) => setIndividualData({ ...individualData, annualIncome: e.target.value })}
-                  className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                  className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                 >
                   <option value="">Select range</option>
                   <option value="0-50k">$0 - $50,000</option>
@@ -599,26 +599,26 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
             </div>
 
             <div className="mt-4">
-              <label className="block text-sm font-semibold text-slate-300 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Source of Wealth <span className="text-red-500">*</span>
               </label>
               <textarea
                 value={individualData.sourceOfWealth}
                 onChange={(e) => setIndividualData({ ...individualData, sourceOfWealth: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                 rows={2}
                 placeholder="Describe how wealth was accumulated (e.g., employment income, business ownership, inheritance, property sales)"
               />
             </div>
 
             <div className="mt-4">
-              <label className="block text-sm font-semibold text-slate-300 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Source of Funds <span className="text-red-500">*</span>
               </label>
               <textarea
                 value={individualData.sourceOfFunds}
                 onChange={(e) => setIndividualData({ ...individualData, sourceOfFunds: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                 rows={2}
                 placeholder="Describe the source of funds for this engagement (e.g., salary, business profits, sale of assets)"
               />
@@ -643,66 +643,66 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
     if (clientType === 'company') {
       return (
         <div className="space-y-6">
-          <h3 className="text-xl font-bold text-slate-100 mb-4">Company Information</h3>
+          <h3 className="text-xl font-bold text-gray-900 mb-4">Company Information</h3>
 
           <div className="grid grid-cols-2 gap-4">
             <div className="col-span-2">
-              <label className="block text-sm font-semibold text-slate-300 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Company Name <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
                 value={companyData.companyName}
                 onChange={(e) => setCompanyData({ ...companyData, companyName: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                 placeholder="Acme Pty Ltd"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-slate-300 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 ACN <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
                 value={companyData.acn}
                 onChange={(e) => setCompanyData({ ...companyData, acn: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                 placeholder="123 456 789"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-slate-300 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 ABN <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
                 value={companyData.abn}
                 onChange={(e) => setCompanyData({ ...companyData, abn: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                 placeholder="12 345 678 901"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-slate-300 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Incorporation Date <span className="text-red-500">*</span>
               </label>
               <input
                 type="date"
                 value={companyData.incorporationDate}
                 onChange={(e) => setCompanyData({ ...companyData, incorporationDate: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-slate-300 mb-2">Company Status</label>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Company Status</label>
               <select
                 value={companyData.companyStatus}
                 onChange={(e) => setCompanyData({ ...companyData, companyStatus: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
               >
                 <option value="active">Active</option>
                 <option value="inactive">Inactive</option>
@@ -712,48 +712,48 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
             </div>
 
             <div className="col-span-2">
-              <label className="block text-sm font-semibold text-slate-300 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Registered Office Address <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
                 value={companyData.registeredOffice}
                 onChange={(e) => setCompanyData({ ...companyData, registeredOffice: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                 placeholder="123 Business St, Sydney NSW 2000"
               />
             </div>
 
             <div className="col-span-2">
-              <label className="block text-sm font-semibold text-slate-300 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Principal Place of Business
               </label>
               <input
                 type="text"
                 value={companyData.principalPlace}
                 onChange={(e) => setCompanyData({ ...companyData, principalPlace: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                 placeholder="456 Office St, Melbourne VIC 3000"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-slate-300 mb-2">Industry Type</label>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Industry Type</label>
               <input
                 type="text"
                 value={companyData.industryType}
                 onChange={(e) => setCompanyData({ ...companyData, industryType: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                 placeholder="Financial Services"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-slate-300 mb-2">Annual Revenue</label>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Annual Revenue</label>
               <select
                 value={companyData.annualRevenue}
                 onChange={(e) => setCompanyData({ ...companyData, annualRevenue: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
               >
                 <option value="">Select range</option>
                 <option value="0-1m">$0 - $1M</option>
@@ -782,30 +782,30 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
     if (clientType === 'trust') {
       return (
         <div className="space-y-6">
-          <h3 className="text-xl font-bold text-slate-100 mb-4">Trust Information</h3>
+          <h3 className="text-xl font-bold text-gray-900 mb-4">Trust Information</h3>
 
           <div className="grid grid-cols-2 gap-4">
             <div className="col-span-2">
-              <label className="block text-sm font-semibold text-slate-300 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Trust Name <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
                 value={trustData.trustName}
                 onChange={(e) => setTrustData({ ...trustData, trustName: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                 placeholder="Smith Family Trust"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-slate-300 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Trust Type <span className="text-red-500">*</span>
               </label>
               <select
                 value={trustData.trustType}
                 onChange={(e) => setTrustData({ ...trustData, trustType: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
               >
                 <option value="discretionary">Discretionary Trust</option>
                 <option value="unit">Unit Trust</option>
@@ -816,35 +816,35 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-slate-300 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Establishment Date <span className="text-red-500">*</span>
               </label>
               <input
                 type="date"
                 value={trustData.establishmentDate}
                 onChange={(e) => setTrustData({ ...trustData, establishmentDate: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-slate-300 mb-2">ABN</label>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">ABN</label>
               <input
                 type="text"
                 value={trustData.abn}
                 onChange={(e) => setTrustData({ ...trustData, abn: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                 placeholder="12 345 678 901"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-slate-300 mb-2">TFN (Masked)</label>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">TFN (Masked)</label>
               <input
                 type="text"
                 value={trustData.tfn}
                 onChange={(e) => setTrustData({ ...trustData, tfn: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                 placeholder="Last 4 digits only"
                 maxLength={4}
               />
@@ -853,16 +853,16 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
 
           {/* Trustee Information */}
           <div className="border-t pt-6">
-            <h4 className="font-bold text-slate-100 mb-4">Trustee Information</h4>
+            <h4 className="font-bold text-gray-900 mb-4">Trustee Information</h4>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Trustee Type <span className="text-red-500">*</span>
                 </label>
                 <select
                   value={trustData.trusteeType}
                   onChange={(e) => setTrustData({ ...trustData, trusteeType: e.target.value })}
-                  className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                  className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                 >
                   <option value="individual">Individual</option>
                   <option value="corporate">Corporate</option>
@@ -870,26 +870,26 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Trustee Name <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
                   value={trustData.trusteeName}
                   onChange={(e) => setTrustData({ ...trustData, trusteeName: e.target.value })}
-                  className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                  className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                   placeholder="John Smith or ABC Pty Ltd"
                 />
               </div>
 
               {trustData.trusteeType === 'corporate' && (
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2">Trustee ACN</label>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Trustee ACN</label>
                   <input
                     type="text"
                     value={trustData.trusteeACN}
                     onChange={(e) => setTrustData({ ...trustData, trusteeACN: e.target.value })}
-                    className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                    className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                     placeholder="123 456 789"
                   />
                 </div>
@@ -906,36 +906,36 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
                 onChange={(e) => setTrustData({ ...trustData, hasAppointor: e.target.checked })}
                 className="w-5 h-5"
               />
-              <label className="font-bold text-slate-100">Trust has an Appointor</label>
+              <label className="font-bold text-gray-900">Trust has an Appointor</label>
             </div>
             
             {trustData.hasAppointor && (
               <div className="grid grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2">Appointor Name</label>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Appointor Name</label>
                   <input
                     type="text"
                     value={trustData.appointorName}
                     onChange={(e) => setTrustData({ ...trustData, appointorName: e.target.value })}
-                    className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                    className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2">Date of Birth</label>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Date of Birth</label>
                   <input
                     type="date"
                     value={trustData.appointorDOB}
                     onChange={(e) => setTrustData({ ...trustData, appointorDOB: e.target.value })}
-                    className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                    className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2">Address</label>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Address</label>
                   <input
                     type="text"
                     value={trustData.appointorAddress}
                     onChange={(e) => setTrustData({ ...trustData, appointorAddress: e.target.value })}
-                    className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                    className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                   />
                 </div>
               </div>
@@ -944,15 +944,15 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
 
           {/* Beneficiaries */}
           <div className="border-t pt-6">
-            <h4 className="font-bold text-slate-100 mb-4">Beneficiaries</h4>
+            <h4 className="font-bold text-gray-900 mb-4">Beneficiaries</h4>
             <div>
-              <label className="block text-sm font-semibold text-slate-300 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Beneficiary Class Description <span className="text-red-500">*</span>
               </label>
               <textarea
                 value={trustData.beneficiaryClass}
                 onChange={(e) => setTrustData({ ...trustData, beneficiaryClass: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                 rows={3}
                 placeholder="E.g., Settlor, spouse of settlor, children of settlor, and their lineal descendants"
               />
@@ -1000,11 +1000,11 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
   // Render Address Step
   const renderAddressStep = () => (
     <div className="space-y-6">
-      <h3 className="text-xl font-bold text-slate-100 mb-4">Residential Address</h3>
+      <h3 className="text-xl font-bold text-gray-900 mb-4">Residential Address</h3>
 
       <div className="grid grid-cols-2 gap-4">
         <div className="col-span-2">
-          <label className="block text-sm font-semibold text-slate-300 mb-2">
+          <label className="block text-sm font-semibold text-gray-700 mb-2">
             <MapPin className="w-4 h-4 inline mr-1" />
             Street Address <span className="text-red-500">*</span>
           </label>
@@ -1012,32 +1012,32 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
             type="text"
             value={individualData.residentialAddress}
             onChange={(e) => setIndividualData({ ...individualData, residentialAddress: e.target.value })}
-            className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+            className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
             placeholder="123 Main Street"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-slate-300 mb-2">
+          <label className="block text-sm font-semibold text-gray-700 mb-2">
             City <span className="text-red-500">*</span>
           </label>
           <input
             type="text"
             value={individualData.city}
             onChange={(e) => setIndividualData({ ...individualData, city: e.target.value })}
-            className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+            className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
             placeholder="Sydney"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-slate-300 mb-2">
+          <label className="block text-sm font-semibold text-gray-700 mb-2">
             State <span className="text-red-500">*</span>
           </label>
           <select
             value={individualData.state}
             onChange={(e) => setIndividualData({ ...individualData, state: e.target.value })}
-            className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+            className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
           >
             <option value="">Select State</option>
             <option value="NSW">NSW</option>
@@ -1052,27 +1052,27 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-slate-300 mb-2">
+          <label className="block text-sm font-semibold text-gray-700 mb-2">
             Postcode <span className="text-red-500">*</span>
           </label>
           <input
             type="text"
             value={individualData.postcode}
             onChange={(e) => setIndividualData({ ...individualData, postcode: e.target.value })}
-            className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+            className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
             placeholder="2000"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-slate-300 mb-2">
+          <label className="block text-sm font-semibold text-gray-700 mb-2">
             Country <span className="text-red-500">*</span>
           </label>
           <input
             type="text"
             value={individualData.country}
             onChange={(e) => setIndividualData({ ...individualData, country: e.target.value })}
-            className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+            className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
             placeholder="Australia"
           />
         </div>
@@ -1087,54 +1087,54 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
             onChange={(e) => setIndividualData({ ...individualData, sameAsResidential: e.target.checked })}
             className="w-5 h-5"
           />
-          <label className="font-bold text-slate-100">Mailing address same as residential</label>
+          <label className="font-bold text-gray-900">Mailing address same as residential</label>
         </div>
 
         {!individualData.sameAsResidential && (
           <div className="grid grid-cols-2 gap-4">
             <div className="col-span-2">
-              <label className="block text-sm font-semibold text-slate-300 mb-2">Mailing Address</label>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Mailing Address</label>
               <input
                 type="text"
                 value={individualData.mailingAddress}
                 onChange={(e) => setIndividualData({ ...individualData, mailingAddress: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-slate-300 mb-2">City</label>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">City</label>
               <input
                 type="text"
                 value={individualData.mailingCity}
                 onChange={(e) => setIndividualData({ ...individualData, mailingCity: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-slate-300 mb-2">State</label>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">State</label>
               <input
                 type="text"
                 value={individualData.mailingState}
                 onChange={(e) => setIndividualData({ ...individualData, mailingState: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-slate-300 mb-2">Postcode</label>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Postcode</label>
               <input
                 type="text"
                 value={individualData.mailingPostcode}
                 onChange={(e) => setIndividualData({ ...individualData, mailingPostcode: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-slate-300 mb-2">Country</label>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Country</label>
               <input
                 type="text"
                 value={individualData.mailingCountry}
                 onChange={(e) => setIndividualData({ ...individualData, mailingCountry: e.target.value })}
-                className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
               />
             </div>
           </div>
@@ -1157,13 +1157,13 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
   // Render Documents Checklist
   const renderDocumentsStep = () => (
     <div className="space-y-6">
-      <h3 className="text-xl font-bold text-slate-100 mb-4">Required Documents</h3>
+      <h3 className="text-xl font-bold text-gray-900 mb-4">Required Documents</h3>
 
-      <Card className="bg-amber-500/10 border-amber-300">
+      <Card className="bg-amber-50 border-amber-300">
         <CardContent className="p-4">
           <div className="flex items-start gap-3">
-            <AlertCircle className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
-            <div className="text-sm text-amber-300">
+            <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+            <div className="text-sm text-amber-800">
               <p className="font-semibold mb-2">Document Collection Required:</p>
               <p>Check all documents that will be collected during onboarding. Documents must be verified before client can transact.</p>
             </div>
@@ -1178,7 +1178,7 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
             <CardTitle>Individual Documents</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-white/5 cursor-pointer">
+            <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
               <input
                 type="checkbox"
                 checked={documentsChecklist.primaryPhotoId}
@@ -1186,13 +1186,13 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
                 className="w-5 h-5"
               />
               <div className="flex-1">
-                <p className="font-semibold text-slate-100">Primary Photo ID</p>
-                <p className="text-sm text-slate-300">Passport or Driver Licence (40-70 points)</p>
+                <p className="font-semibold text-gray-900">Primary Photo ID</p>
+                <p className="text-sm text-gray-600">Passport or Driver Licence (40-70 points)</p>
               </div>
-              <Badge variant="outline" className="text-red-400">Required</Badge>
+              <Badge variant="outline" className="text-red-600">Required</Badge>
             </label>
 
-            <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-white/5 cursor-pointer">
+            <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
               <input
                 type="checkbox"
                 checked={documentsChecklist.secondaryId}
@@ -1200,12 +1200,12 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
                 className="w-5 h-5"
               />
               <div className="flex-1">
-                <p className="font-semibold text-slate-100">Secondary ID</p>
-                <p className="text-sm text-slate-300">Medicare Card, Birth Certificate (25-70 points)</p>
+                <p className="font-semibold text-gray-900">Secondary ID</p>
+                <p className="text-sm text-gray-600">Medicare Card, Birth Certificate (25-70 points)</p>
               </div>
             </label>
 
-            <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-white/5 cursor-pointer">
+            <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
               <input
                 type="checkbox"
                 checked={documentsChecklist.proofOfAddress}
@@ -1213,13 +1213,13 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
                 className="w-5 h-5"
               />
               <div className="flex-1">
-                <p className="font-semibold text-slate-100">Proof of Address</p>
-                <p className="text-sm text-slate-300">Utility bill, bank statement, rates notice (&lt; 3 months)</p>
+                <p className="font-semibold text-gray-900">Proof of Address</p>
+                <p className="text-sm text-gray-600">Utility bill, bank statement, rates notice (&lt; 3 months)</p>
               </div>
               <Badge variant="outline">If required</Badge>
             </label>
 
-            <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-white/5 cursor-pointer">
+            <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
               <input
                 type="checkbox"
                 checked={documentsChecklist.sourceOfFundsDoc}
@@ -1227,13 +1227,13 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
                 className="w-5 h-5"
               />
               <div className="flex-1">
-                <p className="font-semibold text-slate-100">Source of Funds Evidence</p>
-                <p className="text-sm text-slate-300">Bank statement, contract, inheritance document</p>
+                <p className="font-semibold text-gray-900">Source of Funds Evidence</p>
+                <p className="text-sm text-gray-600">Bank statement, contract, inheritance document</p>
               </div>
               <Badge className="bg-red-500">High Risk</Badge>
             </label>
 
-            <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-white/5 cursor-pointer">
+            <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
               <input
                 type="checkbox"
                 checked={documentsChecklist.sourceOfWealthDoc}
@@ -1241,13 +1241,13 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
                 className="w-5 h-5"
               />
               <div className="flex-1">
-                <p className="font-semibold text-slate-100">Source of Wealth Statement</p>
-                <p className="text-sm text-slate-300">Wealth accumulation documentation</p>
+                <p className="font-semibold text-gray-900">Source of Wealth Statement</p>
+                <p className="text-sm text-gray-600">Wealth accumulation documentation</p>
               </div>
               <Badge className="bg-red-500">High Risk</Badge>
             </label>
 
-            <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-white/5 cursor-pointer">
+            <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
               <input
                 type="checkbox"
                 checked={documentsChecklist.taxReturn}
@@ -1255,8 +1255,8 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
                 className="w-5 h-5"
               />
               <div className="flex-1">
-                <p className="font-semibold text-slate-100">Tax Return (Last Lodged)</p>
-                <p className="text-sm text-slate-300">Most recent tax return</p>
+                <p className="font-semibold text-gray-900">Tax Return (Last Lodged)</p>
+                <p className="text-sm text-gray-600">Most recent tax return</p>
               </div>
               <Badge className="bg-red-500">High Risk</Badge>
             </label>
@@ -1271,7 +1271,7 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
             <CardTitle>Company Documents</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-white/5 cursor-pointer">
+            <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
               <input
                 type="checkbox"
                 checked={documentsChecklist.asicExtract}
@@ -1279,13 +1279,13 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
                 className="w-5 h-5"
               />
               <div className="flex-1">
-                <p className="font-semibold text-slate-100">ASIC Company Extract (Current)</p>
-                <p className="text-sm text-slate-300">Full company details, directors, shareholders</p>
+                <p className="font-semibold text-gray-900">ASIC Company Extract (Current)</p>
+                <p className="text-sm text-gray-600">Full company details, directors, shareholders</p>
               </div>
-              <Badge variant="outline" className="text-red-400">Required</Badge>
+              <Badge variant="outline" className="text-red-600">Required</Badge>
             </label>
 
-            <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-white/5 cursor-pointer">
+            <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
               <input
                 type="checkbox"
                 checked={documentsChecklist.constitution}
@@ -1293,12 +1293,12 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
                 className="w-5 h-5"
               />
               <div className="flex-1">
-                <p className="font-semibold text-slate-100">Company Constitution</p>
-                <p className="text-sm text-slate-300">Share rights, director powers, governance</p>
+                <p className="font-semibold text-gray-900">Company Constitution</p>
+                <p className="text-sm text-gray-600">Share rights, director powers, governance</p>
               </div>
             </label>
 
-            <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-white/5 cursor-pointer">
+            <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
               <input
                 type="checkbox"
                 checked={documentsChecklist.shareRegister}
@@ -1306,13 +1306,13 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
                 className="w-5 h-5"
               />
               <div className="flex-1">
-                <p className="font-semibold text-slate-100">Share Register</p>
-                <p className="text-sm text-slate-300">Current ownership structure, UBO confirmation</p>
+                <p className="font-semibold text-gray-900">Share Register</p>
+                <p className="text-sm text-gray-600">Current ownership structure, UBO confirmation</p>
               </div>
               <Badge className="bg-red-500">High Risk</Badge>
             </label>
 
-            <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-white/5 cursor-pointer">
+            <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
               <input
                 type="checkbox"
                 checked={documentsChecklist.directorIds}
@@ -1320,13 +1320,13 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
                 className="w-5 h-5"
               />
               <div className="flex-1">
-                <p className="font-semibold text-slate-100">All Director IDs</p>
-                <p className="text-sm text-slate-300">Photo ID, DOB, address for each director</p>
+                <p className="font-semibold text-gray-900">All Director IDs</p>
+                <p className="text-sm text-gray-600">Photo ID, DOB, address for each director</p>
               </div>
-              <Badge variant="outline" className="text-red-400">Required</Badge>
+              <Badge variant="outline" className="text-red-600">Required</Badge>
             </label>
 
-            <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-white/5 cursor-pointer">
+            <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
               <input
                 type="checkbox"
                 checked={documentsChecklist.beneficialOwnerIds}
@@ -1334,13 +1334,13 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
                 className="w-5 h-5"
               />
               <div className="flex-1">
-                <p className="font-semibold text-slate-100">Beneficial Owner IDs (25%+)</p>
-                <p className="text-sm text-slate-300">ID documents for all 25%+ owners</p>
+                <p className="font-semibold text-gray-900">Beneficial Owner IDs (25%+)</p>
+                <p className="text-sm text-gray-600">ID documents for all 25%+ owners</p>
               </div>
-              <Badge variant="outline" className="text-red-400">Required</Badge>
+              <Badge variant="outline" className="text-red-600">Required</Badge>
             </label>
 
-            <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-white/5 cursor-pointer">
+            <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
               <input
                 type="checkbox"
                 checked={documentsChecklist.financialStatements}
@@ -1348,8 +1348,8 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
                 className="w-5 h-5"
               />
               <div className="flex-1">
-                <p className="font-semibold text-slate-100">Financial Statements</p>
-                <p className="text-sm text-slate-300">Most recent annual financial statements</p>
+                <p className="font-semibold text-gray-900">Financial Statements</p>
+                <p className="text-sm text-gray-600">Most recent annual financial statements</p>
               </div>
               <Badge className="bg-red-500">High Risk</Badge>
             </label>
@@ -1364,7 +1364,7 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
             <CardTitle>Trust Documents</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-white/5 cursor-pointer">
+            <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
               <input
                 type="checkbox"
                 checked={documentsChecklist.trustDeed}
@@ -1372,13 +1372,13 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
                 className="w-5 h-5"
               />
               <div className="flex-1">
-                <p className="font-semibold text-slate-100">Trust Deed (Complete Copy)</p>
-                <p className="text-sm text-slate-300">Full trust deed with all variations</p>
+                <p className="font-semibold text-gray-900">Trust Deed (Complete Copy)</p>
+                <p className="text-sm text-gray-600">Full trust deed with all variations</p>
               </div>
-              <Badge variant="outline" className="text-red-400">Required</Badge>
+              <Badge variant="outline" className="text-red-600">Required</Badge>
             </label>
 
-            <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-white/5 cursor-pointer">
+            <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
               <input
                 type="checkbox"
                 checked={documentsChecklist.trusteeId}
@@ -1386,13 +1386,13 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
                 className="w-5 h-5"
               />
               <div className="flex-1">
-                <p className="font-semibold text-slate-100">Trustee ID</p>
-                <p className="text-sm text-slate-300">Individual CDD or Company CDD for trustee</p>
+                <p className="font-semibold text-gray-900">Trustee ID</p>
+                <p className="text-sm text-gray-600">Individual CDD or Company CDD for trustee</p>
               </div>
-              <Badge variant="outline" className="text-red-400">Required</Badge>
+              <Badge variant="outline" className="text-red-600">Required</Badge>
             </label>
 
-            <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-white/5 cursor-pointer">
+            <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
               <input
                 type="checkbox"
                 checked={documentsChecklist.appointorId}
@@ -1400,13 +1400,13 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
                 className="w-5 h-5"
               />
               <div className="flex-1">
-                <p className="font-semibold text-slate-100">Appointor ID</p>
-                <p className="text-sm text-slate-300">ID if appointor controls trust</p>
+                <p className="font-semibold text-gray-900">Appointor ID</p>
+                <p className="text-sm text-gray-600">ID if appointor controls trust</p>
               </div>
               <Badge variant="outline">If applicable</Badge>
             </label>
 
-            <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-white/5 cursor-pointer">
+            <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
               <input
                 type="checkbox"
                 checked={documentsChecklist.distributionStatements}
@@ -1414,8 +1414,8 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
                 className="w-5 h-5"
               />
               <div className="flex-1">
-                <p className="font-semibold text-slate-100">Distribution Statements</p>
-                <p className="text-sm text-slate-300">Recent distribution history</p>
+                <p className="font-semibold text-gray-900">Distribution Statements</p>
+                <p className="text-sm text-gray-600">Recent distribution history</p>
               </div>
               <Badge className="bg-red-500">High Risk</Badge>
             </label>
@@ -1429,7 +1429,7 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
           <CardTitle>Additional Requirements</CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
-          <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-white/5 cursor-pointer">
+          <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
             <input
               type="checkbox"
               checked={documentsChecklist.certifiedCopies}
@@ -1437,13 +1437,13 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
               className="w-5 h-5"
             />
             <div className="flex-1">
-              <p className="font-semibold text-slate-100">Certified Copies</p>
-              <p className="text-sm text-slate-300">Documents certified by authorized person</p>
+              <p className="font-semibold text-gray-900">Certified Copies</p>
+              <p className="text-sm text-gray-600">Documents certified by authorized person</p>
             </div>
             <Badge variant="outline">International</Badge>
           </label>
 
-          <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-white/5 cursor-pointer">
+          <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
             <input
               type="checkbox"
               checked={documentsChecklist.notarizedDocs}
@@ -1451,13 +1451,13 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
               className="w-5 h-5"
             />
             <div className="flex-1">
-              <p className="font-semibold text-slate-100">Notarized Documents</p>
-              <p className="text-sm text-slate-300">Documents notarized in home jurisdiction</p>
+              <p className="font-semibold text-gray-900">Notarized Documents</p>
+              <p className="text-sm text-gray-600">Documents notarized in home jurisdiction</p>
             </div>
             <Badge variant="outline">International</Badge>
           </label>
 
-          <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-white/5 cursor-pointer">
+          <label className="flex items-center gap-3 p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
             <input
               type="checkbox"
               checked={documentsChecklist.internationalRegistry}
@@ -1465,8 +1465,8 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
               className="w-5 h-5"
             />
             <div className="flex-1">
-              <p className="font-semibold text-slate-100">International Registry Extract</p>
-              <p className="text-sm text-slate-300">Company registry from home jurisdiction</p>
+              <p className="font-semibold text-gray-900">International Registry Extract</p>
+              <p className="text-sm text-gray-600">Company registry from home jurisdiction</p>
             </div>
             <Badge variant="outline">International</Badge>
           </label>
@@ -1492,22 +1492,22 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
 
     return (
       <div className="space-y-6">
-        <h3 className="text-xl font-bold text-slate-100 mb-4">Additional Searches & Verification Costs</h3>
+        <h3 className="text-xl font-bold text-gray-900 mb-4">Additional Searches & Verification Costs</h3>
 
         {/* Cost Warning Card */}
-        <Card className="bg-amber-500/10 border-4 border-amber-400">
+        <Card className="bg-amber-50 border-4 border-amber-400">
           <CardContent className="p-6">
             <div className="flex items-start gap-4">
-              <AlertCircle className="w-8 h-8 text-amber-400 flex-shrink-0 mt-1" />
+              <AlertCircle className="w-8 h-8 text-amber-600 flex-shrink-0 mt-1" />
               <div>
-                <h4 className="text-lg font-bold text-amber-300 mb-2">Important: Verification Costs</h4>
-                <p className="text-amber-300 mb-3">
+                <h4 className="text-lg font-bold text-amber-900 mb-2">Important: Verification Costs</h4>
+                <p className="text-amber-800 mb-3">
                   Additional searches will be conducted as part of KYC/AML compliance. 
                   <strong className="block mt-2">Cost varies based on the number of entities identified during verification.</strong>
                 </p>
                 <div className="bg-white border-2 border-amber-300 rounded-lg p-4 mt-3">
-                  <p className="font-bold text-slate-100 mb-2">How Costs Work:</p>
-                  <ul className="text-sm text-slate-300 space-y-1">
+                  <p className="font-bold text-gray-900 mb-2">How Costs Work:</p>
+                  <ul className="text-sm text-gray-700 space-y-1">
                     <li>• <strong>Per-Entity Pricing:</strong> Each search is charged per entity verified</li>
                     <li>• <strong>Entity Discovery:</strong> If 2 directors are found, director searches are charged 2x</li>
                     <li>• <strong>Related Entities:</strong> Additional companies/trusts linked to the client may be discovered</li>
@@ -1520,57 +1520,57 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
         </Card>
 
         {/* Current Estimated Entities */}
-        <Card className="border-2 border-blue-300 bg-blue-500/10">
+        <Card className="border-2 border-blue-300 bg-blue-50">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Users className="w-5 h-5 text-blue-400" />
+              <Users className="w-5 h-5 text-blue-600" />
               Estimated Entities for Verification
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-4 gap-4">
-              <div className="text-center p-4 bg-white rounded-lg border-2 border-blue-500/30">
-                <p className="text-3xl font-bold text-blue-400">1</p>
-                <p className="text-sm text-slate-300 mt-1">Base Client</p>
+              <div className="text-center p-4 bg-white rounded-lg border-2 border-blue-200">
+                <p className="text-3xl font-bold text-blue-600">1</p>
+                <p className="text-sm text-gray-600 mt-1">Base Client</p>
               </div>
               {clientType === 'company' && (
                 <>
-                  <div className="text-center p-4 bg-white rounded-lg border-2 border-blue-500/30">
+                  <div className="text-center p-4 bg-white rounded-lg border-2 border-blue-200">
                     <input
                       type="number"
                       min="0"
                       value={additionalSearches.estimatedDirectors}
                       onChange={(e) => setAdditionalSearches({ ...additionalSearches, estimatedDirectors: parseInt(e.target.value) || 0 })}
-                      className="text-3xl font-bold text-blue-400 w-full text-center border-0"
+                      className="text-3xl font-bold text-blue-600 w-full text-center border-0"
                     />
-                    <p className="text-sm text-slate-300 mt-1">Directors</p>
+                    <p className="text-sm text-gray-600 mt-1">Directors</p>
                   </div>
-                  <div className="text-center p-4 bg-white rounded-lg border-2 border-blue-500/30">
+                  <div className="text-center p-4 bg-white rounded-lg border-2 border-blue-200">
                     <input
                       type="number"
                       min="0"
                       value={additionalSearches.estimatedBeneficialOwners}
                       onChange={(e) => setAdditionalSearches({ ...additionalSearches, estimatedBeneficialOwners: parseInt(e.target.value) || 0 })}
-                      className="text-3xl font-bold text-blue-400 w-full text-center border-0"
+                      className="text-3xl font-bold text-blue-600 w-full text-center border-0"
                     />
-                    <p className="text-sm text-slate-300 mt-1">Beneficial Owners</p>
+                    <p className="text-sm text-gray-600 mt-1">Beneficial Owners</p>
                   </div>
                 </>
               )}
               {additionalSearches.relatedEntitySearch && (
-                <div className="text-center p-4 bg-white rounded-lg border-2 border-blue-500/30">
+                <div className="text-center p-4 bg-white rounded-lg border-2 border-blue-200">
                   <input
                     type="number"
                     min="0"
                     value={additionalSearches.estimatedRelatedEntities}
                     onChange={(e) => setAdditionalSearches({ ...additionalSearches, estimatedRelatedEntities: parseInt(e.target.value) || 0 })}
-                    className="text-3xl font-bold text-blue-400 w-full text-center border-0"
+                    className="text-3xl font-bold text-blue-600 w-full text-center border-0"
                   />
-                  <p className="text-sm text-slate-300 mt-1">Related Entities</p>
+                  <p className="text-sm text-gray-600 mt-1">Related Entities</p>
                 </div>
               )}
             </div>
-            <p className="text-xs text-slate-300 mt-4 text-center">
+            <p className="text-xs text-gray-600 mt-4 text-center">
               <strong>Total Entities:</strong> {costs.totalEntities} • Adjust estimates above to see cost impact
             </p>
           </CardContent>
@@ -1580,8 +1580,8 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
         <div className="grid grid-cols-2 gap-4">
           {/* Mandatory Searches */}
           <Card className="border-2 border-red-300">
-            <CardHeader className="bg-red-500/10">
-              <CardTitle className="flex items-center gap-2 text-red-300">
+            <CardHeader className="bg-red-50">
+              <CardTitle className="flex items-center gap-2 text-red-900">
                 <Shield className="w-5 h-5" />
                 Mandatory Searches (Required)
               </CardTitle>
@@ -1595,19 +1595,19 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
                   const isApplicable = !(key === 'asicSearch' && clientType !== 'company');
                   
                   return (
-                    <div key={key} className={`p-3 rounded-lg border-2 ${isApplicable ? 'bg-white border-red-500/30' : 'bg-white/5 border-white/10'}`}>
+                    <div key={key} className={`p-3 rounded-lg border-2 ${isApplicable ? 'bg-white border-red-200' : 'bg-gray-100 border-gray-300'}`}>
                       <div className="flex items-center justify-between">
                         <div className="flex-1">
                           <div className="flex items-center gap-2">
-                            <CheckCircle className="w-4 h-4 text-green-400" />
-                            <p className="font-semibold text-slate-100 text-sm">{search.name}</p>
+                            <CheckCircle className="w-4 h-4 text-green-600" />
+                            <p className="font-semibold text-gray-900 text-sm">{search.name}</p>
                           </div>
-                          <p className="text-xs text-slate-300 mt-1">${search.perEntity.toFixed(2)} per entity</p>
+                          <p className="text-xs text-gray-600 mt-1">${search.perEntity.toFixed(2)} per entity</p>
                         </div>
                         <Badge className="bg-red-600">REQUIRED</Badge>
                       </div>
                       {!isApplicable && (
-                        <p className="text-xs text-slate-400 mt-2">Not applicable to this client type</p>
+                        <p className="text-xs text-gray-500 mt-2">Not applicable to this client type</p>
                       )}
                     </div>
                   );
@@ -1617,8 +1617,8 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
 
           {/* Optional Searches */}
           <Card className="border-2 border-purple-300">
-            <CardHeader className="bg-purple-500/10">
-              <CardTitle className="flex items-center gap-2 text-purple-300">
+            <CardHeader className="bg-purple-50">
+              <CardTitle className="flex items-center gap-2 text-purple-900">
                 <FileText className="w-5 h-5" />
                 Optional Searches (Recommended)
               </CardTitle>
@@ -1631,7 +1631,7 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
                   const search = searchCosts[key];
                   
                   return (
-                    <label key={key} className="flex items-center gap-3 p-3 border-2 rounded-lg hover:bg-purple-500/10 cursor-pointer transition-all">
+                    <label key={key} className="flex items-center gap-3 p-3 border-2 rounded-lg hover:bg-purple-50 cursor-pointer transition-all">
                       <input
                         type="checkbox"
                         checked={(additionalSearches as any)[key]}
@@ -1639,8 +1639,8 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
                         className="w-5 h-5"
                       />
                       <div className="flex-1">
-                        <p className="font-semibold text-slate-100 text-sm">{search.name}</p>
-                        <p className="text-xs text-slate-300">${search.perEntity.toFixed(2)} per entity</p>
+                        <p className="font-semibold text-gray-900 text-sm">{search.name}</p>
+                        <p className="text-xs text-gray-600">${search.perEntity.toFixed(2)} per entity</p>
                       </div>
                     </label>
                   );
@@ -1650,9 +1650,9 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
         </div>
 
         {/* Cost Breakdown */}
-        <Card className="border-4 border-green-400 bg-green-500/10">
+        <Card className="border-4 border-green-400 bg-green-50">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-green-300">
+            <CardTitle className="flex items-center gap-2 text-green-900">
               <DollarSign className="w-6 h-6" />
               Estimated Cost Breakdown
             </CardTitle>
@@ -1663,13 +1663,13 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
               {costs.breakdown.map((item, idx) => (
                 <div key={idx} className="flex items-center justify-between p-3 bg-white rounded-lg border">
                   <div className="flex-1">
-                    <p className="font-semibold text-slate-100">{item.name}</p>
-                    <p className="text-sm text-slate-300">
+                    <p className="font-semibold text-gray-900">{item.name}</p>
+                    <p className="text-sm text-gray-600">
                       ${item.perEntity.toFixed(2)} × {item.entityCount} {item.entityCount === 1 ? 'entity' : 'entities'}
                     </p>
                   </div>
                   <div className="text-right">
-                    <p className="text-xl font-bold text-slate-100">${item.totalCost.toFixed(2)}</p>
+                    <p className="text-xl font-bold text-gray-900">${item.totalCost.toFixed(2)}</p>
                     {item.mandatory && <Badge className="bg-red-600 text-xs mt-1">Mandatory</Badge>}
                   </div>
                 </div>
@@ -1679,18 +1679,18 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
             <div className="border-t-4 border-green-600 pt-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-lg font-semibold text-slate-300">Estimated Total Cost</p>
-                  <p className="text-sm text-slate-300">{costs.totalEntities} {costs.totalEntities === 1 ? 'entity' : 'entities'} to verify</p>
+                  <p className="text-lg font-semibold text-gray-700">Estimated Total Cost</p>
+                  <p className="text-sm text-gray-600">{costs.totalEntities} {costs.totalEntities === 1 ? 'entity' : 'entities'} to verify</p>
                 </div>
-                <p className="text-4xl font-bold text-green-400">${costs.totalCost.toFixed(2)}</p>
+                <p className="text-4xl font-bold text-green-600">${costs.totalCost.toFixed(2)}</p>
               </div>
             </div>
 
-            <Card className="bg-amber-500/10 border-amber-300 mt-6">
+            <Card className="bg-amber-50 border-amber-300 mt-6">
               <CardContent className="p-4">
                 <div className="flex items-start gap-3">
-                  <Info className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
-                  <div className="text-sm text-amber-300">
+                  <Info className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                  <div className="text-sm text-amber-800">
                     <p className="font-semibold mb-1">Important Notice:</p>
                     <p>
                       This is an <strong>estimated cost</strong> based on your inputs. 
@@ -1715,13 +1715,13 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
                 className="w-6 h-6 mt-1"
               />
               <div>
-                <p className="font-bold text-slate-100 text-lg mb-2">
+                <p className="font-bold text-gray-900 text-lg mb-2">
                   I acknowledge and agree to the verification costs
                 </p>
-                <p className="text-sm text-slate-300">
+                <p className="text-sm text-gray-700">
                   I understand that:
                 </p>
-                <ul className="text-sm text-slate-300 mt-2 space-y-1 ml-4">
+                <ul className="text-sm text-gray-700 mt-2 space-y-1 ml-4">
                   <li>• Searches are charged per entity discovered during verification</li>
                   <li>• The final cost may differ from the estimate if additional entities are identified</li>
                   <li>• I will be notified of any cost changes before charges are applied</li>
@@ -1753,13 +1753,13 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
   // Render Risk Assessment
   const renderRiskAssessmentStep = () => (
     <div className="space-y-6">
-      <h3 className="text-xl font-bold text-slate-100 mb-4">Risk Assessment</h3>
+      <h3 className="text-xl font-bold text-gray-900 mb-4">Risk Assessment</h3>
 
-      <Card className="bg-purple-500/10 border-purple-500/30">
+      <Card className="bg-purple-50 border-purple-200">
         <CardContent className="p-4">
           <div className="flex items-start gap-3">
-            <Shield className="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" />
-            <div className="text-sm text-purple-300">
+            <Shield className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+            <div className="text-sm text-purple-800">
               <p className="font-semibold mb-2">AML/CTF Risk Screening:</p>
               <p>Answer the following questions to determine the client's risk profile. This affects documentation requirements and ongoing monitoring.</p>
             </div>
@@ -1779,19 +1779,19 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
                 className="w-5 h-5 mt-1"
               />
               <div className="flex-1">
-                <label className="font-semibold text-slate-100 cursor-pointer">
+                <label className="font-semibold text-gray-900 cursor-pointer">
                   Client is a Politically Exposed Person (PEP)
                 </label>
-                <p className="text-sm text-slate-300 mt-1">
+                <p className="text-sm text-gray-600 mt-1">
                   Includes government officials, senior political figures, or their immediate family members
                 </p>
                 {individualData.isPEP && (
                   <div className="mt-3">
-                    <label className="block text-sm font-semibold text-slate-300 mb-2">PEP Details</label>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">PEP Details</label>
                     <textarea
                       value={individualData.pepDetails}
                       onChange={(e) => setIndividualData({ ...individualData, pepDetails: e.target.value })}
-                      className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                      className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                       rows={2}
                       placeholder="Provide position, country, relationship details"
                     />
@@ -1813,19 +1813,19 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
                 className="w-5 h-5 mt-1"
               />
               <div className="flex-1">
-                <label className="font-semibold text-slate-100 cursor-pointer">
+                <label className="font-semibold text-gray-900 cursor-pointer">
                   Client presents high money laundering/terrorism financing risk
                 </label>
-                <p className="text-sm text-slate-300 mt-1">
+                <p className="text-sm text-gray-600 mt-1">
                   E.g., cash-intensive business, high-risk jurisdiction, complex ownership structure
                 </p>
                 {individualData.isHighRisk && (
                   <div className="mt-3">
-                    <label className="block text-sm font-semibold text-slate-300 mb-2">Risk Reason</label>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Risk Reason</label>
                     <textarea
                       value={individualData.riskReason}
                       onChange={(e) => setIndividualData({ ...individualData, riskReason: e.target.value })}
-                      className="w-full px-4 py-2 border-2 border-white/10 rounded-lg"
+                      className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg"
                       rows={2}
                       placeholder="Explain why client is considered high risk"
                     />
@@ -1847,10 +1847,10 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
                 className="w-5 h-5 mt-1"
               />
               <div className="flex-1">
-                <label className="font-semibold text-slate-100 cursor-pointer">
+                <label className="font-semibold text-gray-900 cursor-pointer">
                   Client is international (non-Australian resident)
                 </label>
-                <p className="text-sm text-slate-300 mt-1">
+                <p className="text-sm text-gray-600 mt-1">
                   Requires additional documentation and verification
                 </p>
               </div>
@@ -1869,10 +1869,10 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
                 className="w-5 h-5 mt-1"
               />
               <div className="flex-1">
-                <label className="font-semibold text-slate-100 cursor-pointer">
+                <label className="font-semibold text-gray-900 cursor-pointer">
                   Documents require certification/notarization
                 </label>
-                <p className="text-sm text-slate-300 mt-1">
+                <p className="text-sm text-gray-600 mt-1">
                   Certified copies or notarized documents needed
                 </p>
               </div>
@@ -1883,15 +1883,15 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
 
       {/* Auto Risk Level Display */}
       <Card className={`border-2 ${
-        individualData.isPEP || individualData.isHighRisk ? 'bg-red-500/10 border-red-300' :
-        individualData.isInternational ? 'bg-amber-500/10 border-amber-300' :
-        'bg-green-500/10 border-green-300'
+        individualData.isPEP || individualData.isHighRisk ? 'bg-red-50 border-red-300' :
+        individualData.isInternational ? 'bg-amber-50 border-amber-300' :
+        'bg-green-50 border-green-300'
       }`}>
         <CardContent className="p-4">
           <div className="flex items-center justify-between">
             <div>
-              <h4 className="font-bold text-slate-100 mb-1">Assessed Risk Level</h4>
-              <p className="text-sm text-slate-300">
+              <h4 className="font-bold text-gray-900 mb-1">Assessed Risk Level</h4>
+              <p className="text-sm text-gray-700">
                 {individualData.isPEP || individualData.isHighRisk ? 
                   'HIGH RISK - Enhanced due diligence required' :
                   individualData.isInternational ?
@@ -1928,13 +1928,13 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
   // Render Review Step
   const renderReviewStep = () => (
     <div className="space-y-6">
-      <h3 className="text-xl font-bold text-slate-100 mb-4">Review & Submit</h3>
+      <h3 className="text-xl font-bold text-gray-900 mb-4">Review & Submit</h3>
 
-      <Card className="bg-blue-500/10 border-blue-500/30">
+      <Card className="bg-blue-50 border-blue-200">
         <CardContent className="p-4">
           <div className="flex items-start gap-3">
-            <CheckCircle className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
-            <div className="text-sm text-blue-300">
+            <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+            <div className="text-sm text-blue-800">
               <p className="font-semibold mb-2">Ready to submit:</p>
               <p>Review the information below and click "Create Client" to initiate the onboarding process.</p>
             </div>
@@ -1949,21 +1949,21 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
         <CardContent>
           <div className="grid grid-cols-2 gap-4 text-sm">
             <div>
-              <p className="text-slate-300">Client Type</p>
+              <p className="text-gray-600">Client Type</p>
               <p className="font-semibold capitalize">{clientType}</p>
             </div>
             {clientType === 'individual' && (
               <>
                 <div>
-                  <p className="text-slate-300">Full Name</p>
+                  <p className="text-gray-600">Full Name</p>
                   <p className="font-semibold">{individualData.firstName} {individualData.lastName}</p>
                 </div>
                 <div>
-                  <p className="text-slate-300">Email</p>
+                  <p className="text-gray-600">Email</p>
                   <p className="font-semibold">{individualData.email}</p>
                 </div>
                 <div>
-                  <p className="text-slate-300">Risk Level</p>
+                  <p className="text-gray-600">Risk Level</p>
                   <Badge className={individualData.isPEP || individualData.isHighRisk ? 'bg-red-600' : individualData.isInternational ? 'bg-amber-600' : 'bg-green-600'}>
                     {individualData.isPEP || individualData.isHighRisk ? 'HIGH' : individualData.isInternational ? 'MEDIUM' : 'STANDARD'}
                   </Badge>
@@ -1973,15 +1973,15 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
             {clientType === 'company' && (
               <>
                 <div>
-                  <p className="text-slate-300">Company Name</p>
+                  <p className="text-gray-600">Company Name</p>
                   <p className="font-semibold">{companyData.companyName}</p>
                 </div>
                 <div>
-                  <p className="text-slate-300">ACN</p>
+                  <p className="text-gray-600">ACN</p>
                   <p className="font-semibold">{companyData.acn}</p>
                 </div>
                 <div>
-                  <p className="text-slate-300">ABN</p>
+                  <p className="text-gray-600">ABN</p>
                   <p className="font-semibold">{companyData.abn}</p>
                 </div>
               </>
@@ -1989,15 +1989,15 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
             {clientType === 'trust' && (
               <>
                 <div>
-                  <p className="text-slate-300">Trust Name</p>
+                  <p className="text-gray-600">Trust Name</p>
                   <p className="font-semibold">{trustData.trustName}</p>
                 </div>
                 <div>
-                  <p className="text-slate-300">Trust Type</p>
+                  <p className="text-gray-600">Trust Type</p>
                   <p className="font-semibold capitalize">{trustData.trustType}</p>
                 </div>
                 <div>
-                  <p className="text-slate-300">Trustee</p>
+                  <p className="text-gray-600">Trustee</p>
                   <p className="font-semibold">{trustData.trusteeName}</p>
                 </div>
               </>
@@ -2028,12 +2028,12 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-lg w-full max-w-5xl max-h-[90vh] overflow-hidden flex flex-col">
         {/* Header */}
-        <div className="p-6 border-b border-white/10 flex items-center justify-between">
+        <div className="p-6 border-b border-gray-200 flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-bold text-slate-100">Comprehensive Client Onboarding</h2>
-            <p className="text-sm text-slate-300 mt-1">Bank-Grade KYC/AML Compliant</p>
+            <h2 className="text-2xl font-bold text-gray-900">Comprehensive Client Onboarding</h2>
+            <p className="text-sm text-gray-600 mt-1">Bank-Grade KYC/AML Compliant</p>
           </div>
-          <button onClick={onClose} className="text-slate-400 hover:text-slate-300">
+          <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
             <X className="w-6 h-6" />
           </button>
         </div>
@@ -2060,7 +2060,7 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
                         <Icon className="w-5 h-5 text-white" />
                       )}
                     </div>
-                    <span className={`text-xs mt-1 ${isActive ? 'font-bold text-blue-400' : 'text-slate-300'}`}>
+                    <span className={`text-xs mt-1 ${isActive ? 'font-bold text-blue-600' : 'text-gray-600'}`}>
                       {step.label}
                     </span>
                   </div>
@@ -2077,7 +2077,7 @@ export function ComprehensiveClientForm({ onClose, onSubmit }: ComprehensiveClie
           {currentStep === 'basic' && renderBasicInfoStep()}
           {currentStep === 'identification' && renderIdentificationStep()}
           {currentStep === 'address' && renderAddressStep()}
-          {currentStep === 'beneficial_owners' && <div className="text-center py-12"><p className="text-slate-300">Beneficial Owners section coming soon...</p><Button onClick={handleNext} className="mt-4">Skip for Now</Button></div>}
+          {currentStep === 'beneficial_owners' && <div className="text-center py-12"><p className="text-gray-600">Beneficial Owners section coming soon...</p><Button onClick={handleNext} className="mt-4">Skip for Now</Button></div>}
           {currentStep === 'documents' && renderDocumentsStep()}
           {currentStep === 'additional_searches' && renderAdditionalSearchesStep()}
           {currentStep === 'risk_assessment' && renderRiskAssessmentStep()}

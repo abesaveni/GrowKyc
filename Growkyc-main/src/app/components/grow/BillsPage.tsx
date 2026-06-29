@@ -119,10 +119,10 @@ export function BillsPage() {
 
   const getStatusBadge = (status: Bill['status']) => {
     const config = {
-      unpaid: { label: 'Unpaid', className: 'bg-white/5 text-slate-300' },
-      scheduled: { label: 'Scheduled', className: 'bg-blue-500/15 text-blue-300' },
-      paid: { label: 'Paid', className: 'bg-green-500/15 text-green-300' },
-      overdue: { label: 'Overdue', className: 'bg-red-500/15 text-red-300' }
+      unpaid: { label: 'Unpaid', className: 'bg-gray-100 text-gray-700' },
+      scheduled: { label: 'Scheduled', className: 'bg-blue-100 text-blue-700' },
+      paid: { label: 'Paid', className: 'bg-green-100 text-green-700' },
+      overdue: { label: 'Overdue', className: 'bg-red-100 text-red-700' }
     };
     
     const { label, className } = config[status];
@@ -156,8 +156,8 @@ export function BillsPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-100">Bills</h1>
-          <p className="text-slate-300">Manage and pay your bills</p>
+          <h1 className="text-2xl font-bold text-gray-900">Bills</h1>
+          <p className="text-gray-600">Manage and pay your bills</p>
         </div>
         <Button className="bg-[#2855a6] hover:bg-[#1e4089]">
           <Plus className="w-4 h-4 mr-2" />
@@ -170,44 +170,44 @@ export function BillsPage() {
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-slate-300">Total Bills</span>
+              <span className="text-sm text-gray-600">Total Bills</span>
               <Receipt className="w-5 h-5 text-gray-400" />
             </div>
-            <p className="text-2xl font-bold text-slate-100">{stats.total}</p>
-            <p className="text-xs text-slate-400 mt-1">This month</p>
+            <p className="text-2xl font-bold text-gray-900">{stats.total}</p>
+            <p className="text-xs text-gray-500 mt-1">This month</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-slate-300">Unpaid</span>
-              <AlertCircle className="w-5 h-5 text-amber-400" />
+              <span className="text-sm text-gray-600">Unpaid</span>
+              <AlertCircle className="w-5 h-5 text-amber-600" />
             </div>
-            <p className="text-2xl font-bold text-slate-100">${stats.unpaidAmount.toLocaleString()}</p>
-            <p className="text-xs text-amber-400 mt-1">{stats.unpaid + stats.overdue} bills</p>
+            <p className="text-2xl font-bold text-gray-900">${stats.unpaidAmount.toLocaleString()}</p>
+            <p className="text-xs text-amber-600 mt-1">{stats.unpaid + stats.overdue} bills</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-slate-300">Scheduled</span>
-              <Calendar className="w-5 h-5 text-blue-400" />
+              <span className="text-sm text-gray-600">Scheduled</span>
+              <Calendar className="w-5 h-5 text-blue-600" />
             </div>
-            <p className="text-2xl font-bold text-slate-100">{stats.scheduled}</p>
-            <p className="text-xs text-blue-400 mt-1">Auto-pay enabled</p>
+            <p className="text-2xl font-bold text-gray-900">{stats.scheduled}</p>
+            <p className="text-xs text-blue-600 mt-1">Auto-pay enabled</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-slate-300">Overdue</span>
-              <AlertCircle className="w-5 h-5 text-red-400" />
+              <span className="text-sm text-gray-600">Overdue</span>
+              <AlertCircle className="w-5 h-5 text-red-600" />
             </div>
-            <p className="text-2xl font-bold text-slate-100">{stats.overdue}</p>
-            <p className="text-xs text-red-400 mt-1">Requires immediate action</p>
+            <p className="text-2xl font-bold text-gray-900">{stats.overdue}</p>
+            <p className="text-xs text-red-600 mt-1">Requires immediate action</p>
           </CardContent>
         </Card>
       </div>
@@ -282,42 +282,42 @@ export function BillsPage() {
           <CardContent className="p-0">
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-white/5 border-b">
+                <thead className="bg-gray-50 border-b">
                   <tr>
-                    <th className="text-left px-6 py-3 text-xs font-semibold text-slate-300 uppercase">Bill</th>
-                    <th className="text-left px-6 py-3 text-xs font-semibold text-slate-300 uppercase">Vendor</th>
-                    <th className="text-left px-6 py-3 text-xs font-semibold text-slate-300 uppercase">Category</th>
-                    <th className="text-left px-6 py-3 text-xs font-semibold text-slate-300 uppercase">Date</th>
-                    <th className="text-left px-6 py-3 text-xs font-semibold text-slate-300 uppercase">Due Date</th>
-                    <th className="text-left px-6 py-3 text-xs font-semibold text-slate-300 uppercase">Amount</th>
-                    <th className="text-left px-6 py-3 text-xs font-semibold text-slate-300 uppercase">Status</th>
-                    <th className="text-right px-6 py-3 text-xs font-semibold text-slate-300 uppercase">Actions</th>
+                    <th className="text-left px-6 py-3 text-xs font-semibold text-gray-600 uppercase">Bill</th>
+                    <th className="text-left px-6 py-3 text-xs font-semibold text-gray-600 uppercase">Vendor</th>
+                    <th className="text-left px-6 py-3 text-xs font-semibold text-gray-600 uppercase">Category</th>
+                    <th className="text-left px-6 py-3 text-xs font-semibold text-gray-600 uppercase">Date</th>
+                    <th className="text-left px-6 py-3 text-xs font-semibold text-gray-600 uppercase">Due Date</th>
+                    <th className="text-left px-6 py-3 text-xs font-semibold text-gray-600 uppercase">Amount</th>
+                    <th className="text-left px-6 py-3 text-xs font-semibold text-gray-600 uppercase">Status</th>
+                    <th className="text-right px-6 py-3 text-xs font-semibold text-gray-600 uppercase">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-white/10">
+                <tbody className="divide-y divide-gray-200">
                   {sortedBills.map((bill) => (
-                    <tr key={bill.id} className="hover:bg-white/5 transition-colors">
+                    <tr key={bill.id} className="hover:bg-gray-50 transition-colors">
                       <td className="px-6 py-4">
-                        <span className="font-mono text-sm font-semibold text-slate-100">
+                        <span className="font-mono text-sm font-semibold text-gray-900">
                           {bill.billNumber}
                         </span>
                       </td>
                       <td className="px-6 py-4">
-                        <span className="text-sm text-slate-100">{bill.vendor}</span>
+                        <span className="text-sm text-gray-900">{bill.vendor}</span>
                       </td>
                       <td className="px-6 py-4">
-                        <span className="text-xs px-2 py-1 bg-white/5 text-slate-300 rounded-full">
+                        <span className="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded-full">
                           {bill.category}
                         </span>
                       </td>
                       <td className="px-6 py-4">
-                        <span className="text-sm text-slate-300">{bill.date}</span>
+                        <span className="text-sm text-gray-600">{bill.date}</span>
                       </td>
                       <td className="px-6 py-4">
-                        <span className="text-sm text-slate-300">{bill.dueDate}</span>
+                        <span className="text-sm text-gray-600">{bill.dueDate}</span>
                       </td>
                       <td className="px-6 py-4">
-                        <span className="text-sm font-semibold text-slate-100">
+                        <span className="text-sm font-semibold text-gray-900">
                           ${bill.amount.toLocaleString()}
                         </span>
                       </td>

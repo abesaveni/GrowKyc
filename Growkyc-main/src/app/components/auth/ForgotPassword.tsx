@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
@@ -21,7 +21,7 @@ export function ForgotPassword() {
             <img src={logo} alt="Grow MIP" className="h-12" />
           </div>
           <CardTitle className="text-2xl">Forgot Password</CardTitle>
-          <p className="text-slate-300 text-sm mt-2">
+          <p className="text-gray-600 text-sm mt-2">
             Enter your email and we'll send you reset instructions
           </p>
         </CardHeader>

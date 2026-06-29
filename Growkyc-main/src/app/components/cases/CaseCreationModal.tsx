@@ -97,32 +97,32 @@ export function CaseCreationModal({ isOpen, onClose, onSuccess }: CaseCreationMo
   ];
 
   const selectedCaseTypeClasses: Record<string, string> = {
-    red: 'border-red-500 bg-red-500/10',
-    purple: 'border-purple-500 bg-purple-500/10',
-    orange: 'border-orange-500 bg-orange-500/10',
-    indigo: 'border-indigo-500 bg-indigo-500/10',
-    amber: 'border-amber-500 bg-amber-500/10',
-    pink: 'border-pink-500 bg-pink-500/10',
-    gray: 'border-gray-500 bg-white/5',
-    blue: 'border-blue-500 bg-blue-500/10',
+    red: 'border-red-500 bg-red-50',
+    purple: 'border-purple-500 bg-purple-50',
+    orange: 'border-orange-500 bg-orange-50',
+    indigo: 'border-indigo-500 bg-indigo-50',
+    amber: 'border-amber-500 bg-amber-50',
+    pink: 'border-pink-500 bg-pink-50',
+    gray: 'border-gray-500 bg-gray-50',
+    blue: 'border-blue-500 bg-blue-50',
   };
 
   const iconColorClasses: Record<string, string> = {
-    red: 'text-red-400',
-    purple: 'text-purple-400',
-    orange: 'text-orange-400',
-    indigo: 'text-indigo-400',
-    amber: 'text-amber-400',
-    pink: 'text-pink-400',
-    gray: 'text-slate-300',
-    blue: 'text-blue-400',
+    red: 'text-red-600',
+    purple: 'text-purple-600',
+    orange: 'text-orange-600',
+    indigo: 'text-indigo-600',
+    amber: 'text-amber-600',
+    pink: 'text-pink-600',
+    gray: 'text-gray-600',
+    blue: 'text-blue-600',
   };
 
   const urgencyClasses: Record<string, string> = {
-    red: 'border-red-500 bg-red-500/10',
-    orange: 'border-orange-500 bg-orange-500/10',
-    amber: 'border-amber-500 bg-amber-500/10',
-    green: 'border-green-500 bg-green-500/10',
+    red: 'border-red-500 bg-red-50',
+    orange: 'border-orange-500 bg-orange-50',
+    amber: 'border-amber-500 bg-amber-50',
+    green: 'border-green-500 bg-green-50',
   };
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -164,7 +164,7 @@ export function CaseCreationModal({ isOpen, onClose, onSuccess }: CaseCreationMo
       clientId = created.id;
       clientName = created.name;
       clientType = newClientType;
-      logComplianceActivity(`onboarded client ${created.name} via manual case referral`, 'UserPlus', 'text-blue-400');
+      logComplianceActivity(`onboarded client ${created.name} via manual case referral`, 'UserPlus', 'text-blue-600');
     } else {
       const client = allClients.find((c) => c.id === selectedClient);
       clientName = client?.name || 'Unknown';
@@ -196,7 +196,7 @@ export function CaseCreationModal({ isOpen, onClose, onSuccess }: CaseCreationMo
     };
 
     saveManualCase(payload);
-    logComplianceActivity(`created manual case ${newCaseId} for ${clientName}`, 'AlertTriangle', 'text-red-400');
+    logComplianceActivity(`created manual case ${newCaseId} for ${clientName}`, 'AlertTriangle', 'text-red-600');
     toast.success('Manual case created', `${newCaseId} — ${clientName}`);
 
     if (onSuccess) {
@@ -226,8 +226,8 @@ export function CaseCreationModal({ isOpen, onClose, onSuccess }: CaseCreationMo
         <CardContent className="p-8 space-y-6">
           {/* Step 1: Select Client */}
           <div>
-            <label className="block text-sm font-bold text-slate-100 mb-3">
-              1. Select Client / Entity <span className="text-red-400">*</span>
+            <label className="block text-sm font-bold text-gray-900 mb-3">
+              1. Select Client / Entity <span className="text-red-600">*</span>
             </label>
 
             <div className="flex gap-2 mb-4">
@@ -258,13 +258,13 @@ export function CaseCreationModal({ isOpen, onClose, onSuccess }: CaseCreationMo
             </div>
 
             {useNewClient ? (
-              <div className="space-y-3 p-4 border-2 border-blue-500/30 rounded-lg bg-blue-500/10">
+              <div className="space-y-3 p-4 border-2 border-blue-200 rounded-lg bg-blue-50">
                 <input
                   type="text"
                   placeholder="Enter new client / entity name..."
                   value={newClientName}
                   onChange={(e) => setNewClientName(e.target.value)}
-                  className="w-full px-4 py-3 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
                 <div className="flex gap-2">
                   {(['individual', 'company', 'trust'] as const).map((t) => (
@@ -273,14 +273,14 @@ export function CaseCreationModal({ isOpen, onClose, onSuccess }: CaseCreationMo
                       type="button"
                       onClick={() => setNewClientType(t)}
                       className={`px-4 py-2 rounded-lg border-2 capitalize text-sm font-semibold ${
-                        newClientType === t ? 'border-blue-600 bg-blue-500/15 text-blue-300' : 'border-white/10 bg-white'
+                        newClientType === t ? 'border-blue-600 bg-blue-100 text-blue-900' : 'border-gray-300 bg-white'
                       }`}
                     >
                       {t}
                     </button>
                   ))}
                 </div>
-                <p className="text-xs text-blue-300">
+                <p className="text-xs text-blue-800">
                   A new client record will be created and linked to this case. Total clients on the dashboard will update automatically.
                 </p>
               </div>
@@ -293,12 +293,12 @@ export function CaseCreationModal({ isOpen, onClose, onSuccess }: CaseCreationMo
                     placeholder="Search by client name or ABN..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                    className="w-full pl-10 pr-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
                   />
                 </div>
-                <div className="max-h-60 overflow-y-auto border-2 border-white/10 rounded-lg">
+                <div className="max-h-60 overflow-y-auto border-2 border-gray-300 rounded-lg">
                   {filteredClients.length === 0 ? (
-                    <div className="p-6 text-center text-slate-400">
+                    <div className="p-6 text-center text-gray-500">
                       <p className="mb-2">No clients found{searchTerm ? ` for "${searchTerm}"` : ''}.</p>
                       <Button
                         type="button"
@@ -318,22 +318,22 @@ export function CaseCreationModal({ isOpen, onClose, onSuccess }: CaseCreationMo
                         key={client.id}
                         type="button"
                         onClick={() => setSelectedClient(client.id)}
-                        className={`w-full p-4 flex items-center gap-3 hover:bg-blue-500/10 transition-colors border-b border-white/10 ${
-                          selectedClient === client.id ? 'bg-blue-500/15 border-l-4 border-l-blue-600' : ''
+                        className={`w-full p-4 flex items-center gap-3 hover:bg-blue-50 transition-colors border-b border-gray-200 ${
+                          selectedClient === client.id ? 'bg-blue-100 border-l-4 border-l-blue-600' : ''
                         }`}
                       >
                         {client.type === 'individual' ? (
-                          <User className="w-6 h-6 text-slate-300" />
+                          <User className="w-6 h-6 text-gray-600" />
                         ) : (
-                          <Building className="w-6 h-6 text-slate-300" />
+                          <Building className="w-6 h-6 text-gray-600" />
                         )}
                         <div className="flex-1 text-left">
-                          <p className="font-bold text-slate-100">{client.name}</p>
-                          <p className="text-sm text-slate-300">
+                          <p className="font-bold text-gray-900">{client.name}</p>
+                          <p className="text-sm text-gray-600">
                             {client.abn ? `ABN: ${client.abn}` : client.acn ? `ACN: ${client.acn}` : client.type}
                           </p>
                         </div>
-                        <Badge className="bg-white/5 text-slate-300 capitalize">{client.type}</Badge>
+                        <Badge className="bg-gray-100 text-gray-700 capitalize">{client.type}</Badge>
                       </button>
                     ))
                   )}
@@ -344,8 +344,8 @@ export function CaseCreationModal({ isOpen, onClose, onSuccess }: CaseCreationMo
 
           {/* Step 2: Case Type */}
           <div>
-            <label className="block text-sm font-bold text-slate-100 mb-3">
-              2. Case Type <span className="text-red-400">*</span>
+            <label className="block text-sm font-bold text-gray-900 mb-3">
+              2. Case Type <span className="text-red-600">*</span>
             </label>
             <div className="grid md:grid-cols-3 gap-3">
               {caseTypes.map((type) => {
@@ -357,13 +357,13 @@ export function CaseCreationModal({ isOpen, onClose, onSuccess }: CaseCreationMo
                     onClick={() => setCaseType(type.value)}
                     className={`p-4 rounded-lg border-2 text-left hover:shadow-md transition-all ${
                       caseType === type.value
-                        ? selectedCaseTypeClasses[type.color] || 'border-blue-500 bg-blue-500/10'
-                        : 'border-white/10 hover:border-gray-400'
+                        ? selectedCaseTypeClasses[type.color] || 'border-blue-500 bg-blue-50'
+                        : 'border-gray-300 hover:border-gray-400'
                     }`}
                   >
                     <div className="flex items-center gap-2 mb-2">
-                      <Icon className={`w-5 h-5 ${iconColorClasses[type.color] || 'text-blue-400'}`} />
-                      <span className="font-semibold text-slate-100">{type.label}</span>
+                      <Icon className={`w-5 h-5 ${iconColorClasses[type.color] || 'text-blue-600'}`} />
+                      <span className="font-semibold text-gray-900">{type.label}</span>
                     </div>
                   </button>
                 );
@@ -373,8 +373,8 @@ export function CaseCreationModal({ isOpen, onClose, onSuccess }: CaseCreationMo
 
           {/* Step 3: Urgency */}
           <div>
-            <label className="block text-sm font-bold text-slate-100 mb-3">
-              3. Urgency Level <span className="text-red-400">*</span>
+            <label className="block text-sm font-bold text-gray-900 mb-3">
+              3. Urgency Level <span className="text-red-600">*</span>
             </label>
             <div className="grid md:grid-cols-4 gap-3">
               {[
@@ -389,12 +389,12 @@ export function CaseCreationModal({ isOpen, onClose, onSuccess }: CaseCreationMo
                   onClick={() => setUrgency(level.value)}
                   className={`p-4 rounded-lg border-2 text-center hover:shadow-md transition-all ${
                     urgency === level.value
-                      ? urgencyClasses[level.color] || 'border-amber-500 bg-amber-500/10'
-                      : 'border-white/10 hover:border-gray-400'
+                      ? urgencyClasses[level.color] || 'border-amber-500 bg-amber-50'
+                      : 'border-gray-300 hover:border-gray-400'
                   }`}
                 >
-                  <p className="font-bold text-slate-100 mb-1">{level.label}</p>
-                  <p className="text-xs text-slate-300">SLA: {level.sla}</p>
+                  <p className="font-bold text-gray-900 mb-1">{level.label}</p>
+                  <p className="text-xs text-gray-600">SLA: {level.sla}</p>
                 </button>
               ))}
             </div>
@@ -402,24 +402,24 @@ export function CaseCreationModal({ isOpen, onClose, onSuccess }: CaseCreationMo
 
           {/* Step 4: Reason */}
           <div>
-            <label className="block text-sm font-bold text-slate-100 mb-3">
-              4. Case Reason <span className="text-red-400">*</span>
+            <label className="block text-sm font-bold text-gray-900 mb-3">
+              4. Case Reason <span className="text-red-600">*</span>
             </label>
             <textarea
               value={reason}
               onChange={(e) => setReason(e.target.value)}
               rows={6}
-              className="w-full px-4 py-3 border-2 border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+              className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
               placeholder="Provide detailed reason for creating this case..."
             />
           </div>
 
           {/* Step 5: Attachments */}
           <div>
-            <label className="block text-sm font-bold text-slate-100 mb-3">5. Attachments (Optional)</label>
-            <div className="border-2 border-dashed border-white/10 rounded-lg p-6 text-center hover:border-gray-400 transition-colors">
+            <label className="block text-sm font-bold text-gray-900 mb-3">5. Attachments (Optional)</label>
+            <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-gray-400 transition-colors">
               <Upload className="w-12 h-12 text-gray-400 mx-auto mb-3" />
-              <p className="text-slate-300 mb-2">Drag and drop files here, or click to browse</p>
+              <p className="text-gray-700 mb-2">Drag and drop files here, or click to browse</p>
               <input type="file" multiple onChange={handleFileUpload} className="hidden" id="file-upload" />
               <label
                 htmlFor="file-upload"
@@ -431,10 +431,10 @@ export function CaseCreationModal({ isOpen, onClose, onSuccess }: CaseCreationMo
             {attachments.length > 0 && (
               <div className="mt-4 space-y-2">
                 {attachments.map((file, idx) => (
-                  <div key={idx} className="flex items-center justify-between p-3 bg-white/5 rounded border border-white/10">
+                  <div key={idx} className="flex items-center justify-between p-3 bg-gray-50 rounded border border-gray-200">
                     <div className="flex items-center gap-2">
-                      <FileText className="w-5 h-5 text-blue-400" />
-                      <span className="text-sm text-slate-100">{file.name}</span>
+                      <FileText className="w-5 h-5 text-blue-600" />
+                      <span className="text-sm text-gray-900">{file.name}</span>
                     </div>
                     <Button
                       variant="outline"
@@ -449,7 +449,7 @@ export function CaseCreationModal({ isOpen, onClose, onSuccess }: CaseCreationMo
             )}
           </div>
 
-          <div className="flex items-center justify-between pt-6 border-t-2 border-white/10">
+          <div className="flex items-center justify-between pt-6 border-t-2 border-gray-200">
             <Button variant="outline" onClick={handleClose} className="border-2">
               Cancel
             </Button>

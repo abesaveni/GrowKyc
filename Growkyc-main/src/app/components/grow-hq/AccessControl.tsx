@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { SearchBar } from '../ui/filters';
@@ -168,11 +168,11 @@ export function AccessControl() {
 
   const getModuleBadge = (module: string) => {
     const colors = {
-      grow_mip: 'bg-indigo-500/15 text-indigo-300',
-      grow_accounting: 'bg-blue-500/15 text-blue-300',
-      pfa: 'bg-green-500/15 text-green-300'
+      grow_mip: 'bg-indigo-100 text-indigo-700',
+      grow_accounting: 'bg-blue-100 text-blue-700',
+      pfa: 'bg-green-100 text-green-700'
     };
-    return colors[module as keyof typeof colors] || 'bg-white/5 text-slate-300';
+    return colors[module as keyof typeof colors] || 'bg-gray-100 text-gray-700';
   };
 
   const createRole = () => {
@@ -194,8 +194,8 @@ export function AccessControl() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-100">Access Control</h1>
-          <p className="text-slate-300">Manage roles and permissions across all modules</p>
+          <h1 className="text-2xl font-bold text-gray-900">Access Control</h1>
+          <p className="text-gray-600">Manage roles and permissions across all modules</p>
         </div>
         <Button className="bg-indigo-600 hover:bg-indigo-700" onClick={() => setShowCreateModal(true)}>
           <Shield className="w-4 h-4 mr-2" />
@@ -208,35 +208,35 @@ export function AccessControl() {
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-slate-300">Total Roles</span>
-              <Shield className="w-5 h-5 text-indigo-400" />
+              <span className="text-sm text-gray-600">Total Roles</span>
+              <Shield className="w-5 h-5 text-indigo-600" />
             </div>
-            <p className="text-2xl font-bold text-slate-100">{roles.length}</p>
-            <p className="text-xs text-slate-400 mt-1">Active role configurations</p>
+            <p className="text-2xl font-bold text-gray-900">{roles.length}</p>
+            <p className="text-xs text-gray-500 mt-1">Active role configurations</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-slate-300">Total Permissions</span>
-              <Lock className="w-5 h-5 text-blue-400" />
+              <span className="text-sm text-gray-600">Total Permissions</span>
+              <Lock className="w-5 h-5 text-blue-600" />
             </div>
-            <p className="text-2xl font-bold text-slate-100">{allPermissions.length}</p>
-            <p className="text-xs text-slate-400 mt-1">Across all modules</p>
+            <p className="text-2xl font-bold text-gray-900">{allPermissions.length}</p>
+            <p className="text-xs text-gray-500 mt-1">Across all modules</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-slate-300">Users Assigned</span>
-              <Users className="w-5 h-5 text-green-400" />
+              <span className="text-sm text-gray-600">Users Assigned</span>
+              <Users className="w-5 h-5 text-green-600" />
             </div>
-            <p className="text-2xl font-bold text-slate-100">
+            <p className="text-2xl font-bold text-gray-900">
               {roles.reduce((sum, role) => sum + role.userCount, 0)}
             </p>
-            <p className="text-xs text-slate-400 mt-1">With role assignments</p>
+            <p className="text-xs text-gray-500 mt-1">With role assignments</p>
           </CardContent>
         </Card>
       </div>
@@ -253,18 +253,18 @@ export function AccessControl() {
                 <button
                   key={role.id}
                   onClick={() => setSelectedRole(role)}
-                  className={`w-full text-left p-4 hover:bg-white/5 transition-colors ${
-                    selectedRole?.id === role.id ? 'bg-indigo-500/10 border-l-4 border-indigo-600' : ''
+                  className={`w-full text-left p-4 hover:bg-gray-50 transition-colors ${
+                    selectedRole?.id === role.id ? 'bg-indigo-50 border-l-4 border-indigo-600' : ''
                   }`}
                 >
                   <div className="flex items-start justify-between mb-1">
-                    <h3 className="font-semibold text-slate-100">{role.name}</h3>
-                    <span className="px-2 py-0.5 bg-white/5 text-slate-300 text-xs rounded-full">
+                    <h3 className="font-semibold text-gray-900">{role.name}</h3>
+                    <span className="px-2 py-0.5 bg-gray-100 text-gray-700 text-xs rounded-full">
                       {role.userCount}
                     </span>
                   </div>
-                  <p className="text-sm text-slate-300">{role.description}</p>
-                  <p className="text-xs text-slate-400 mt-2">
+                  <p className="text-sm text-gray-600">{role.description}</p>
+                  <p className="text-xs text-gray-500 mt-2">
                     {role.permissions.length} permissions
                   </p>
                 </button>
@@ -285,7 +285,7 @@ export function AccessControl() {
                   <select
                     value={selectedModule}
                     onChange={(e) => setSelectedModule(e.target.value)}
-                    className="px-3 py-1 text-sm border border-white/10 rounded-lg"
+                    className="px-3 py-1 text-sm border border-gray-300 rounded-lg"
                   >
                     <option value="all">All Modules</option>
                     <option value="Grow MIP">Grow MIP</option>
@@ -300,7 +300,7 @@ export function AccessControl() {
             {!selectedRole ? (
               <div className="text-center py-12">
                 <Shield className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-                <p className="text-slate-300">Select a role to view and edit permissions</p>
+                <p className="text-gray-600">Select a role to view and edit permissions</p>
               </div>
             ) : (
               <div className="space-y-6">
@@ -316,7 +316,7 @@ export function AccessControl() {
                       <span className={`px-2 py-1 rounded text-xs font-semibold ${getModuleBadge(group.module)}`}>
                         {group.module.replace('_', ' ')}
                       </span>
-                      <h3 className="font-semibold text-slate-100">{group.category}</h3>
+                      <h3 className="font-semibold text-gray-900">{group.category}</h3>
                     </div>
                     <div className="space-y-2">
                       {group.permissions.map((permission) => {
@@ -324,18 +324,18 @@ export function AccessControl() {
                         return (
                           <div
                             key={permission.id}
-                            className="flex items-center justify-between p-3 bg-white/5 rounded-lg hover:bg-white/5 transition-colors"
+                            className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
                           >
                             <div className="flex-1">
-                              <h4 className="font-medium text-slate-100 text-sm">{permission.name}</h4>
-                              <p className="text-xs text-slate-300">{permission.description}</p>
+                              <h4 className="font-medium text-gray-900 text-sm">{permission.name}</h4>
+                              <p className="text-xs text-gray-600">{permission.description}</p>
                             </div>
                             <button
                               onClick={() => togglePermission(selectedRole.id, permission.id)}
                               className={`flex items-center gap-2 px-3 py-1 rounded-lg transition-colors ${
                                 hasPermission
-                                  ? 'bg-green-500/15 text-green-300 hover:bg-green-500/20'
-                                  : 'bg-white/10 text-slate-300 hover:bg-gray-300'
+                                  ? 'bg-green-100 text-green-700 hover:bg-green-200'
+                                  : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
                               }`}
                             >
                               {hasPermission ? (
@@ -369,20 +369,20 @@ export function AccessControl() {
             <h2 className="text-xl font-bold mb-4">Create New Role</h2>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-slate-300">Role Name</label>
+                <label className="block text-sm font-medium text-gray-700">Role Name</label>
                 <input
                   type="text"
                   value={newRoleName}
                   onChange={(e) => setNewRoleName(e.target.value)}
-                  className="mt-1 block w-full px-3 py-2 border border-white/10 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-slate-300">Description</label>
+                <label className="block text-sm font-medium text-gray-700">Description</label>
                 <textarea
                   value={newRoleDescription}
                   onChange={(e) => setNewRoleDescription(e.target.value)}
-                  className="mt-1 block w-full px-3 py-2 border border-white/10 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
             </div>

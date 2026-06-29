@@ -132,10 +132,10 @@ export function MessagesList({ onSelectConversation }: MessagesListProps) {
 
   const getRoleBadge = (role: string) => {
     const colors = {
-      borrower: 'bg-blue-500/15 text-blue-300',
-      lender: 'bg-green-500/15 text-green-300',
-      investor: 'bg-purple-500/15 text-purple-300',
-      admin: 'bg-red-500/15 text-red-300'
+      borrower: 'bg-blue-100 text-blue-800',
+      lender: 'bg-green-100 text-green-800',
+      investor: 'bg-purple-100 text-purple-800',
+      admin: 'bg-red-100 text-red-800'
     };
     return (
       <span className={`px-2 py-0.5 rounded text-xs font-semibold ${colors[role.toLowerCase() as keyof typeof colors]}`}>
@@ -155,27 +155,12 @@ export function MessagesList({ onSelectConversation }: MessagesListProps) {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-slate-300 mb-1">Total Conversations</p>
-                <p className="text-3xl font-semibold text-slate-100">{conversations.length}</p>
-                <p className="text-xs text-slate-400 mt-1">All messages</p>
+                <p className="text-sm text-gray-600 mb-1">Total Conversations</p>
+                <p className="text-3xl font-semibold text-gray-900">{conversations.length}</p>
+                <p className="text-xs text-gray-500 mt-1">All messages</p>
               </div>
-              <div className="p-3 bg-blue-500/10 rounded-lg">
-                <MessageSquare className="w-6 h-6 text-blue-400" />
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-slate-300 mb-1">Unread</p>
-                <p className="text-3xl font-semibold text-slate-100">{unreadCount}</p>
-                <p className="text-xs text-slate-400 mt-1">Requires attention</p>
-              </div>
-              <div className="p-3 bg-red-500/10 rounded-lg">
-                <MessageSquare className="w-6 h-6 text-red-400" />
+              <div className="p-3 bg-blue-50 rounded-lg">
+                <MessageSquare className="w-6 h-6 text-blue-600" />
               </div>
             </div>
           </CardContent>
@@ -185,14 +170,29 @@ export function MessagesList({ onSelectConversation }: MessagesListProps) {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-slate-300 mb-1">This Week</p>
-                <p className="text-3xl font-semibold text-slate-100">
+                <p className="text-sm text-gray-600 mb-1">Unread</p>
+                <p className="text-3xl font-semibold text-gray-900">{unreadCount}</p>
+                <p className="text-xs text-gray-500 mt-1">Requires attention</p>
+              </div>
+              <div className="p-3 bg-red-50 rounded-lg">
+                <MessageSquare className="w-6 h-6 text-red-600" />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-gray-600 mb-1">This Week</p>
+                <p className="text-3xl font-semibold text-gray-900">
                   {conversations.filter(c => c.timestamp > new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)).length}
                 </p>
-                <p className="text-xs text-slate-400 mt-1">Last 7 days</p>
+                <p className="text-xs text-gray-500 mt-1">Last 7 days</p>
               </div>
-              <div className="p-3 bg-green-500/10 rounded-lg">
-                <MessageSquare className="w-6 h-6 text-green-400" />
+              <div className="p-3 bg-green-50 rounded-lg">
+                <MessageSquare className="w-6 h-6 text-green-600" />
               </div>
             </div>
           </CardContent>
@@ -267,8 +267,8 @@ export function MessagesList({ onSelectConversation }: MessagesListProps) {
                   key={conv.id}
                   className={`p-4 rounded-lg border transition-all cursor-pointer hover:shadow-md ${
                     conv.unread 
-                      ? 'bg-blue-500/10 border-blue-500/30' 
-                      : 'bg-white border-white/10 hover:border-white/10'
+                      ? 'bg-blue-50 border-blue-200' 
+                      : 'bg-white border-gray-200 hover:border-gray-300'
                   }`}
                   onClick={() => {
                     onSelectConversation?.(conv.id);
@@ -283,7 +283,7 @@ export function MessagesList({ onSelectConversation }: MessagesListProps) {
                     <div className="flex-1 min-w-0">
                       <div className="flex items-start justify-between gap-2 mb-1">
                         <div className="flex items-center gap-2">
-                          <h4 className="font-semibold text-slate-100">{conv.participantName}</h4>
+                          <h4 className="font-semibold text-gray-900">{conv.participantName}</h4>
                           {getRoleBadge(conv.participantRole)}
                           {conv.unread && conv.unreadCount && conv.unreadCount > 0 && (
                             <span className="px-2 py-0.5 bg-blue-600 text-white text-xs rounded-full font-semibold">
@@ -291,11 +291,11 @@ export function MessagesList({ onSelectConversation }: MessagesListProps) {
                             </span>
                           )}
                         </div>
-                        <span className="text-xs text-slate-400 whitespace-nowrap">
+                        <span className="text-xs text-gray-500 whitespace-nowrap">
                           {formatDistanceToNow(conv.timestamp, { addSuffix: true })}
                         </span>
                       </div>
-                      <p className={`text-sm line-clamp-2 ${conv.unread ? 'text-slate-100 font-medium' : 'text-slate-300'}`}>
+                      <p className={`text-sm line-clamp-2 ${conv.unread ? 'text-gray-900 font-medium' : 'text-gray-600'}`}>
                         {conv.lastMessage}
                       </p>
                     </div>
@@ -309,7 +309,7 @@ export function MessagesList({ onSelectConversation }: MessagesListProps) {
                             e.stopPropagation();
                             handleDelete(conv.id, conv.participantName);
                           }}
-                          className="text-red-400 hover:text-red-300 hover:bg-red-500/10"
+                          className="text-red-600 hover:text-red-700 hover:bg-red-50"
                         >
                           <Trash2 className="w-4 h-4" />
                         </Button>

@@ -85,21 +85,21 @@ export function CookieConsent() {
     return (
       <div className="fixed inset-0 bg-black/50 z-[100] flex items-center justify-center p-4">
         <div className="bg-white rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-          <div className="p-6 border-b border-white/10 flex items-center justify-between">
+          <div className="p-6 border-b border-gray-200 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Settings className="w-6 h-6 text-slate-300" />
-              <h2 className="text-xl font-bold text-slate-100">Cookie Preferences</h2>
+              <Settings className="w-6 h-6 text-gray-700" />
+              <h2 className="text-xl font-bold text-gray-900">Cookie Preferences</h2>
             </div>
             <button
               onClick={() => setShowSettings(false)}
-              className="text-gray-400 hover:text-slate-300"
+              className="text-gray-400 hover:text-gray-600"
             >
               <X className="w-5 h-5" />
             </button>
           </div>
 
           <div className="p-6 space-y-6">
-            <p className="text-sm text-slate-300">
+            <p className="text-sm text-gray-600">
               We use cookies to enhance your experience, analyze site usage, and assist in our marketing efforts. 
               You can customize your cookie preferences below.
             </p>
@@ -138,7 +138,7 @@ export function CookieConsent() {
             />
           </div>
 
-          <div className="p-6 border-t border-white/10 flex gap-3">
+          <div className="p-6 border-t border-gray-200 flex gap-3">
             <Button
               onClick={handleSaveSettings}
               className="flex-1 bg-blue-600 hover:bg-blue-700"
@@ -155,11 +155,11 @@ export function CookieConsent() {
           </div>
 
           <div className="px-6 pb-6">
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-gray-500">
               For more information, read our{' '}
-              <a href="/privacy" className="text-blue-400 hover:underline">Privacy Policy</a>
+              <a href="/privacy" className="text-blue-600 hover:underline">Privacy Policy</a>
               {' '}and{' '}
-              <a href="/cookie-policy" className="text-blue-400 hover:underline">Cookie Policy</a>
+              <a href="/cookie-policy" className="text-blue-600 hover:underline">Cookie Policy</a>
             </p>
           </div>
         </div>
@@ -168,21 +168,21 @@ export function CookieConsent() {
   }
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 p-4 bg-white border-t-2 border-white/10 shadow-2xl">
+    <div className="fixed bottom-0 left-0 right-0 z-50 p-4 bg-white border-t-2 border-gray-200 shadow-2xl">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
           <div className="flex items-start gap-3 flex-1">
-            <Cookie className="w-6 h-6 text-blue-400 mt-1 flex-shrink-0" />
+            <Cookie className="w-6 h-6 text-blue-600 mt-1 flex-shrink-0" />
             <div>
-              <h3 className="font-bold text-slate-100 mb-1">We value your privacy</h3>
-              <p className="text-sm text-slate-300">
+              <h3 className="font-bold text-gray-900 mb-1">We value your privacy</h3>
+              <p className="text-sm text-gray-600">
                 We use cookies to enhance your experience, provide secure login, and analyze our traffic. 
                 By clicking "Accept All", you consent to our use of cookies. View our{' '}
-                <a href="/privacy" className="text-blue-400 hover:underline font-medium">
+                <a href="/privacy" className="text-blue-600 hover:underline font-medium">
                   Privacy Policy
                 </a>
                 {' '}and{' '}
-                <a href="/cookie-policy" className="text-blue-400 hover:underline font-medium">
+                <a href="/cookie-policy" className="text-blue-600 hover:underline font-medium">
                   Cookie Policy
                 </a>
                 {' '}for details.
@@ -233,17 +233,17 @@ function CookieCategory({
   onChange: (checked: boolean) => void;
 }) {
   return (
-    <div className="flex items-start gap-4 p-4 bg-white/5 border border-white/10 rounded-lg">
+    <div className="flex items-start gap-4 p-4 bg-gray-50 border border-gray-200 rounded-lg">
       <div className="flex-1">
         <div className="flex items-center gap-2 mb-1">
-          <h4 className="font-semibold text-slate-100">{title}</h4>
+          <h4 className="font-semibold text-gray-900">{title}</h4>
           {locked && (
-            <span className="px-2 py-0.5 text-xs font-semibold bg-white/10 text-slate-300 rounded">
+            <span className="px-2 py-0.5 text-xs font-semibold bg-gray-200 text-gray-700 rounded">
               Required
             </span>
           )}
         </div>
-        <p className="text-sm text-slate-300">{description}</p>
+        <p className="text-sm text-gray-600">{description}</p>
       </div>
       <label className="relative inline-flex items-center cursor-pointer">
         <input
@@ -254,7 +254,7 @@ function CookieCategory({
           className="sr-only peer"
         />
         <div className={`w-11 h-6 rounded-full peer peer-checked:bg-blue-600 ${
-          locked ? 'bg-gray-300' : 'bg-white/10'
+          locked ? 'bg-gray-300' : 'bg-gray-200'
         } peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all`}>
         </div>
       </label>

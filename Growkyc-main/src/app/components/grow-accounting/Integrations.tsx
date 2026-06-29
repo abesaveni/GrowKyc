@@ -257,11 +257,11 @@ export function Integrations({ onNavigate }: IntegrationsProps) {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'connected':
-        return <span className="px-2 py-1 bg-green-500/10 text-green-300 text-xs font-semibold rounded border border-green-300">Connected</span>;
+        return <span className="px-2 py-1 bg-green-50 text-green-700 text-xs font-semibold rounded border border-green-300">Connected</span>;
       case 'error':
-        return <span className="px-2 py-1 bg-red-500/10 text-red-300 text-xs font-semibold rounded border border-red-300">Error</span>;
+        return <span className="px-2 py-1 bg-red-50 text-red-700 text-xs font-semibold rounded border border-red-300">Error</span>;
       case 'available':
-        return <span className="px-2 py-1 bg-white/5 text-slate-300 text-xs font-semibold rounded border border-white/10">Available</span>;
+        return <span className="px-2 py-1 bg-gray-50 text-gray-700 text-xs font-semibold rounded border border-gray-300">Available</span>;
       default:
         return null;
     }
@@ -270,11 +270,11 @@ export function Integrations({ onNavigate }: IntegrationsProps) {
   const getSyncStatusIcon = (status?: string) => {
     switch (status) {
       case 'syncing':
-        return <RefreshCw className="w-3 h-3 text-blue-400 animate-spin" />;
+        return <RefreshCw className="w-3 h-3 text-blue-600 animate-spin" />;
       case 'idle':
-        return <CheckCircle className="w-3 h-3 text-green-400" />;
+        return <CheckCircle className="w-3 h-3 text-green-600" />;
       case 'error':
-        return <AlertCircle className="w-3 h-3 text-red-400" />;
+        return <AlertCircle className="w-3 h-3 text-red-600" />;
       default:
         return null;
     }
@@ -286,8 +286,8 @@ export function Integrations({ onNavigate }: IntegrationsProps) {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-[32px] font-bold text-slate-100">Integrations</h1>
-            <p className="text-sm text-slate-300 mt-1">Connect your favorite tools and automate workflows</p>
+            <h1 className="text-[32px] font-bold text-gray-900">Integrations</h1>
+            <p className="text-sm text-gray-600 mt-1">Connect your favorite tools and automate workflows</p>
           </div>
           <Button className="bg-[#2855a6] hover:bg-[#1e4089]">
             <Plus className="w-4 h-4 mr-2" />
@@ -300,12 +300,12 @@ export function Integrations({ onNavigate }: IntegrationsProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-green-500/10 rounded-lg">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
+                <div className="p-3 bg-green-50 rounded-lg">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
                 </div>
                 <div>
-                  <p className="text-xs text-slate-300">Connected</p>
-                  <p className="text-2xl font-bold text-slate-100">{connectedCount}</p>
+                  <p className="text-xs text-gray-600">Connected</p>
+                  <p className="text-2xl font-bold text-gray-900">{connectedCount}</p>
                 </div>
               </div>
             </CardContent>
@@ -314,12 +314,12 @@ export function Integrations({ onNavigate }: IntegrationsProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-blue-500/10 rounded-lg">
-                  <Plug className="w-5 h-5 text-blue-400" />
+                <div className="p-3 bg-blue-50 rounded-lg">
+                  <Plug className="w-5 h-5 text-blue-600" />
                 </div>
                 <div>
-                  <p className="text-xs text-slate-300">Available</p>
-                  <p className="text-2xl font-bold text-slate-100">{integrations.length}</p>
+                  <p className="text-xs text-gray-600">Available</p>
+                  <p className="text-2xl font-bold text-gray-900">{integrations.length}</p>
                 </div>
               </div>
             </CardContent>
@@ -328,12 +328,12 @@ export function Integrations({ onNavigate }: IntegrationsProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-purple-500/10 rounded-lg">
-                  <RefreshCw className="w-5 h-5 text-purple-400" />
+                <div className="p-3 bg-purple-50 rounded-lg">
+                  <RefreshCw className="w-5 h-5 text-purple-600" />
                 </div>
                 <div>
-                  <p className="text-xs text-slate-300">Total Syncs</p>
-                  <p className="text-2xl font-bold text-slate-100">{(totalSyncs / 1000).toFixed(1)}K</p>
+                  <p className="text-xs text-gray-600">Total Syncs</p>
+                  <p className="text-2xl font-bold text-gray-900">{(totalSyncs / 1000).toFixed(1)}K</p>
                 </div>
               </div>
             </CardContent>
@@ -342,12 +342,12 @@ export function Integrations({ onNavigate }: IntegrationsProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-orange-500/10 rounded-lg">
-                  <Zap className="w-5 h-5 text-orange-400" />
+                <div className="p-3 bg-orange-50 rounded-lg">
+                  <Zap className="w-5 h-5 text-orange-600" />
                 </div>
                 <div>
-                  <p className="text-xs text-slate-300">Active Now</p>
-                  <p className="text-2xl font-bold text-slate-100">
+                  <p className="text-xs text-gray-600">Active Now</p>
+                  <p className="text-2xl font-bold text-gray-900">
                     {integrations.filter(i => i.syncStatus === 'syncing').length}
                   </p>
                 </div>
@@ -368,14 +368,14 @@ export function Integrations({ onNavigate }: IntegrationsProps) {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search integrations..."
-                    className="w-full pl-10 pr-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
                   />
                 </div>
               </div>
               <select
                 value={filterCategory}
                 onChange={(e) => setFilterCategory(e.target.value)}
-                className="px-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+                className="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
               >
                 {categories.map(cat => (
                   <option key={cat} value={cat}>
@@ -386,7 +386,7 @@ export function Integrations({ onNavigate }: IntegrationsProps) {
               <select
                 value={filterStatus}
                 onChange={(e) => setFilterStatus(e.target.value)}
-                className="px-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+                className="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
               >
                 <option value="all">All Status</option>
                 <option value="connected">Connected</option>
@@ -411,25 +411,25 @@ export function Integrations({ onNavigate }: IntegrationsProps) {
                   <div className="flex items-center gap-3">
                     <div className="text-4xl">{integration.logo}</div>
                     <div>
-                      <h3 className="font-semibold text-slate-100">{integration.name}</h3>
-                      <p className="text-xs text-slate-400">{integration.category}</p>
+                      <h3 className="font-semibold text-gray-900">{integration.name}</h3>
+                      <p className="text-xs text-gray-500">{integration.category}</p>
                     </div>
                   </div>
                   {getStatusBadge(integration.status)}
                 </div>
 
                 {/* Description */}
-                <p className="text-sm text-slate-300 mb-4 line-clamp-2">{integration.description}</p>
+                <p className="text-sm text-gray-600 mb-4 line-clamp-2">{integration.description}</p>
 
                 {/* Features */}
                 <div className="flex flex-wrap gap-1 mb-4">
                   {integration.features.slice(0, 3).map((feature, idx) => (
-                    <span key={idx} className="px-2 py-1 bg-blue-500/10 text-blue-300 text-xs rounded">
+                    <span key={idx} className="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded">
                       {feature}
                     </span>
                   ))}
                   {integration.features.length > 3 && (
-                    <span className="px-2 py-1 bg-white/5 text-slate-300 text-xs rounded">
+                    <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
                       +{integration.features.length - 3} more
                     </span>
                   )}
@@ -438,14 +438,14 @@ export function Integrations({ onNavigate }: IntegrationsProps) {
                 {/* Status Info */}
                 {integration.status === 'connected' && (
                   <div className="space-y-2 mb-4">
-                    <div className="flex items-center justify-between text-xs text-slate-300">
+                    <div className="flex items-center justify-between text-xs text-gray-600">
                       <div className="flex items-center gap-1">
                         {getSyncStatusIcon(integration.syncStatus)}
                         <span>Last sync: {integration.lastSync}</span>
                       </div>
                     </div>
                     {integration.usageCount && (
-                      <div className="text-xs text-slate-300">
+                      <div className="text-xs text-gray-600">
                         <TrendingUp className="w-3 h-3 inline mr-1" />
                         {integration.usageCount} operations
                       </div>
@@ -488,8 +488,8 @@ export function Integrations({ onNavigate }: IntegrationsProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-12 text-center">
               <Plug className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-lg font-semibold text-slate-100 mb-2">No integrations found</h3>
-              <p className="text-slate-300 mb-6">Try adjusting your search or filter criteria</p>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">No integrations found</h3>
+              <p className="text-gray-600 mb-6">Try adjusting your search or filter criteria</p>
               <Button variant="outline">Clear Filters</Button>
             </CardContent>
           </Card>
@@ -505,35 +505,35 @@ export function Integrations({ onNavigate }: IntegrationsProps) {
                 <div className="flex items-center gap-4">
                   <div className="text-5xl">{selectedIntegration.logo}</div>
                   <div>
-                    <h2 className="text-2xl font-bold text-slate-100">{selectedIntegration.name}</h2>
-                    <p className="text-sm text-slate-300">{selectedIntegration.category}</p>
+                    <h2 className="text-2xl font-bold text-gray-900">{selectedIntegration.name}</h2>
+                    <p className="text-sm text-gray-600">{selectedIntegration.category}</p>
                   </div>
                 </div>
                 <button onClick={() => setSelectedIntegration(null)}>
-                  <Plus className="w-6 h-6 text-slate-300 rotate-45" />
+                  <Plus className="w-6 h-6 text-gray-600 rotate-45" />
                 </button>
               </div>
 
               <div className="space-y-6">
                 {/* Status */}
                 <div>
-                  <h3 className="font-semibold text-slate-100 mb-2">Status</h3>
+                  <h3 className="font-semibold text-gray-900 mb-2">Status</h3>
                   {getStatusBadge(selectedIntegration.status)}
                 </div>
 
                 {/* Description */}
                 <div>
-                  <h3 className="font-semibold text-slate-100 mb-2">About</h3>
-                  <p className="text-sm text-slate-300">{selectedIntegration.description}</p>
+                  <h3 className="font-semibold text-gray-900 mb-2">About</h3>
+                  <p className="text-sm text-gray-700">{selectedIntegration.description}</p>
                 </div>
 
                 {/* Features */}
                 <div>
-                  <h3 className="font-semibold text-slate-100 mb-3">Features</h3>
+                  <h3 className="font-semibold text-gray-900 mb-3">Features</h3>
                   <div className="grid grid-cols-2 gap-2">
                     {selectedIntegration.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center gap-2 text-sm text-slate-300">
-                        <CheckCircle className="w-4 h-4 text-green-400" />
+                      <div key={idx} className="flex items-center gap-2 text-sm text-gray-700">
+                        <CheckCircle className="w-4 h-4 text-green-600" />
                         <span>{feature}</span>
                       </div>
                     ))}
@@ -543,27 +543,27 @@ export function Integrations({ onNavigate }: IntegrationsProps) {
                 {/* Connection Info */}
                 {selectedIntegration.status === 'connected' && (
                   <div>
-                    <h3 className="font-semibold text-slate-100 mb-3">Connection Details</h3>
-                    <div className="space-y-3 p-4 bg-white/5 rounded-lg">
+                    <h3 className="font-semibold text-gray-900 mb-3">Connection Details</h3>
+                    <div className="space-y-3 p-4 bg-gray-50 rounded-lg">
                       <div className="flex justify-between text-sm">
-                        <span className="text-slate-300">Connected Since:</span>
-                        <span className="font-medium text-slate-100">{selectedIntegration.connectionDate}</span>
+                        <span className="text-gray-600">Connected Since:</span>
+                        <span className="font-medium text-gray-900">{selectedIntegration.connectionDate}</span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-slate-300">Last Sync:</span>
-                        <span className="font-medium text-slate-100">{selectedIntegration.lastSync}</span>
+                        <span className="text-gray-600">Last Sync:</span>
+                        <span className="font-medium text-gray-900">{selectedIntegration.lastSync}</span>
                       </div>
                       {selectedIntegration.usageCount && (
                         <div className="flex justify-between text-sm">
-                          <span className="text-slate-300">Total Operations:</span>
-                          <span className="font-medium text-slate-100">{selectedIntegration.usageCount.toLocaleString()}</span>
+                          <span className="text-gray-600">Total Operations:</span>
+                          <span className="font-medium text-gray-900">{selectedIntegration.usageCount.toLocaleString()}</span>
                         </div>
                       )}
                       <div className="flex justify-between text-sm">
-                        <span className="text-slate-300">Sync Status:</span>
+                        <span className="text-gray-600">Sync Status:</span>
                         <div className="flex items-center gap-2">
                           {getSyncStatusIcon(selectedIntegration.syncStatus)}
-                          <span className="font-medium text-slate-100 capitalize">
+                          <span className="font-medium text-gray-900 capitalize">
                             {selectedIntegration.syncStatus}
                           </span>
                         </div>
@@ -574,16 +574,16 @@ export function Integrations({ onNavigate }: IntegrationsProps) {
 
                 {/* Authentication Method */}
                 <div>
-                  <h3 className="font-semibold text-slate-100 mb-3">Authentication</h3>
+                  <h3 className="font-semibold text-gray-900 mb-3">Authentication</h3>
                   <div className="flex gap-2">
                     {selectedIntegration.oauth && (
-                      <span className="px-3 py-1 bg-blue-500/10 text-blue-300 text-sm rounded border border-blue-500/30">
+                      <span className="px-3 py-1 bg-blue-50 text-blue-700 text-sm rounded border border-blue-200">
                         <Shield className="w-3 h-3 inline mr-1" />
                         OAuth 2.0
                       </span>
                     )}
                     {selectedIntegration.apiKey && (
-                      <span className="px-3 py-1 bg-purple-500/10 text-purple-300 text-sm rounded border border-purple-500/30">
+                      <span className="px-3 py-1 bg-purple-50 text-purple-700 text-sm rounded border border-purple-200">
                         <Key className="w-3 h-3 inline mr-1" />
                         API Key
                       </span>
@@ -592,7 +592,7 @@ export function Integrations({ onNavigate }: IntegrationsProps) {
                 </div>
 
                 {/* Actions */}
-                <div className="flex gap-3 pt-4 border-t border-white/10">
+                <div className="flex gap-3 pt-4 border-t border-gray-200">
                   {selectedIntegration.status === 'connected' ? (
                     <>
                       <Button className="flex-1 bg-[#2855a6] hover:bg-[#1e4089]">

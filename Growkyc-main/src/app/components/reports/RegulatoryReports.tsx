@@ -154,7 +154,7 @@ export function RegulatoryReports({ onBack }: RegulatoryReportsProps) {
   };
 
   return (
-    <div className="min-h-screen bg-white/5">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white px-8 py-12">
         <Button
@@ -221,8 +221,8 @@ export function RegulatoryReports({ onBack }: RegulatoryReportsProps) {
         <div className="mb-12">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h2 className="text-2xl font-bold text-slate-100 mb-2">Regulatory Compliance Reports</h2>
-              <p className="text-slate-300">AUSTRAC, ASIC, FIRB, and ATO reporting requirements</p>
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">Regulatory Compliance Reports</h2>
+              <p className="text-gray-600">AUSTRAC, ASIC, FIRB, and ATO reporting requirements</p>
             </div>
           </div>
 
@@ -233,7 +233,7 @@ export function RegulatoryReports({ onBack }: RegulatoryReportsProps) {
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-xl font-bold text-slate-100">{report.name}</h3>
+                        <h3 className="text-xl font-bold text-gray-900">{report.name}</h3>
                         <Badge className={getStatusColor(report.status)}>
                           {report.status === 'current' ? 'Current' :
                            report.status === 'due-soon' ? 'Due Soon' :
@@ -242,27 +242,27 @@ export function RegulatoryReports({ onBack }: RegulatoryReportsProps) {
                         <Badge variant="outline">{report.regulator}</Badge>
                       </div>
 
-                      <p className="text-sm text-slate-300 mb-4">Compliance: {report.compliance}</p>
+                      <p className="text-sm text-gray-600 mb-4">Compliance: {report.compliance}</p>
 
                       <div className="grid grid-cols-4 gap-6 mb-4">
                         <div>
-                          <div className="text-xs text-slate-300 mb-1">Frequency</div>
-                          <div className="font-semibold text-slate-100">{report.frequency}</div>
+                          <div className="text-xs text-gray-600 mb-1">Frequency</div>
+                          <div className="font-semibold text-gray-900">{report.frequency}</div>
                         </div>
 
                         <div>
-                          <div className="text-xs text-slate-300 mb-1">Last Generated</div>
-                          <div className="font-semibold text-slate-100">{report.lastGenerated}</div>
+                          <div className="text-xs text-gray-600 mb-1">Last Generated</div>
+                          <div className="font-semibold text-gray-900">{report.lastGenerated}</div>
                         </div>
 
                         <div>
-                          <div className="text-xs text-slate-300 mb-1">Time Savings</div>
-                          <div className="font-semibold text-emerald-400">{report.timeSaving}</div>
+                          <div className="text-xs text-gray-600 mb-1">Time Savings</div>
+                          <div className="font-semibold text-emerald-600">{report.timeSaving}</div>
                         </div>
 
                         <div>
-                          <div className="text-xs text-slate-300 mb-1">Accuracy</div>
-                          <div className="font-semibold text-green-400">100%</div>
+                          <div className="text-xs text-gray-600 mb-1">Accuracy</div>
+                          <div className="font-semibold text-green-600">100%</div>
                         </div>
                       </div>
                     </div>
@@ -291,8 +291,8 @@ export function RegulatoryReports({ onBack }: RegulatoryReportsProps) {
         {/* Internal Report Templates */}
         <div>
           <div className="mb-6">
-            <h2 className="text-2xl font-bold text-slate-100 mb-2">Internal Report Templates</h2>
-            <p className="text-slate-300">Custom reports for compliance teams and board review</p>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Internal Report Templates</h2>
+            <p className="text-gray-600">Custom reports for compliance teams and board review</p>
           </div>
 
           <div className="grid grid-cols-3 gap-6">
@@ -304,8 +304,8 @@ export function RegulatoryReports({ onBack }: RegulatoryReportsProps) {
                     <div className={`w-12 h-12 bg-${template.color}-100 rounded-lg flex items-center justify-center mb-4`}>
                       <TemplateIcon className={`w-6 h-6 text-${template.color}-600`} />
                     </div>
-                    <h3 className="font-bold text-slate-100 mb-2">{template.name}</h3>
-                    <p className="text-sm text-slate-300 mb-4">{template.description}</p>
+                    <h3 className="font-bold text-gray-900 mb-2">{template.name}</h3>
+                    <p className="text-sm text-gray-600 mb-4">{template.description}</p>
                     <Button className="w-full" variant="outline">
                       <Download className="w-4 h-4 mr-2" />
                       Generate Report
@@ -318,61 +318,61 @@ export function RegulatoryReports({ onBack }: RegulatoryReportsProps) {
         </div>
 
         {/* Features */}
-        <Card className="mt-12 bg-gradient-to-br from-emerald-50 to-teal-50 border-2 border-emerald-500/30">
+        <Card className="mt-12 bg-gradient-to-br from-emerald-50 to-teal-50 border-2 border-emerald-200">
           <CardHeader>
             <CardTitle>Report Generation Features</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-3 gap-6">
               <div>
-                <h4 className="font-bold text-slate-100 mb-3">One-Click Generation</h4>
-                <ul className="space-y-2 text-sm text-slate-300">
+                <h4 className="font-bold text-gray-900 mb-3">One-Click Generation</h4>
+                <ul className="space-y-2 text-sm text-gray-700">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                     Auto-populate from client data
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                     Regulatory format compliance
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                     PDF, Excel, XML export
                   </li>
                 </ul>
               </div>
 
               <div>
-                <h4 className="font-bold text-slate-100 mb-3">Data Validation</h4>
-                <ul className="space-y-2 text-sm text-slate-300">
+                <h4 className="font-bold text-gray-900 mb-3">Data Validation</h4>
+                <ul className="space-y-2 text-sm text-gray-700">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                     100% accuracy guarantee
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                     Missing data alerts
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                     Field-level validation
                   </li>
                 </ul>
               </div>
 
               <div>
-                <h4 className="font-bold text-slate-100 mb-3">Automation</h4>
-                <ul className="space-y-2 text-sm text-slate-300">
+                <h4 className="font-bold text-gray-900 mb-3">Automation</h4>
+                <ul className="space-y-2 text-sm text-gray-700">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                     Scheduled generation
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                     Email delivery to regulators
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                     Audit trail retention
                   </li>
                 </ul>

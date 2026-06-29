@@ -215,7 +215,7 @@ export function OngoingDueDiligenceHub({ onBack }: OngoingDueDiligenceHubProps) 
   };
 
   return (
-    <div className="min-h-screen bg-[#0f172a]">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] text-white px-6 py-4">
         <div className="flex items-center justify-between">
@@ -235,27 +235,27 @@ export function OngoingDueDiligenceHub({ onBack }: OngoingDueDiligenceHubProps) 
       </div>
 
       {/* Stats Bar */}
-      <div className="bg-[#1e293b] border-b border-white/10 px-6 py-4">
+      <div className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="grid grid-cols-5 gap-4">
           <div className="text-center">
-            <div className="text-3xl font-bold text-white">{stats.total}</div>
-            <div className="text-xs text-slate-300 mt-1">Total Clients</div>
+            <div className="text-3xl font-bold text-gray-900">{stats.total}</div>
+            <div className="text-xs text-gray-600 mt-1">Total Clients</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-red-400">{stats.overdue}</div>
-            <div className="text-xs text-slate-300 mt-1">Overdue</div>
+            <div className="text-3xl font-bold text-red-600">{stats.overdue}</div>
+            <div className="text-xs text-gray-600 mt-1">Overdue</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-amber-400">{stats.dueSoon}</div>
-            <div className="text-xs text-slate-300 mt-1">Due Soon</div>
+            <div className="text-3xl font-bold text-amber-600">{stats.dueSoon}</div>
+            <div className="text-xs text-gray-600 mt-1">Due Soon</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-400">{stats.inProgress}</div>
-            <div className="text-xs text-slate-300 mt-1">In Progress</div>
+            <div className="text-3xl font-bold text-blue-600">{stats.inProgress}</div>
+            <div className="text-xs text-gray-600 mt-1">In Progress</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-green-400">{stats.current}</div>
-            <div className="text-xs text-slate-300 mt-1">Current</div>
+            <div className="text-3xl font-bold text-green-600">{stats.current}</div>
+            <div className="text-xs text-gray-600 mt-1">Current</div>
           </div>
         </div>
       </div>
@@ -290,7 +290,7 @@ export function OngoingDueDiligenceHub({ onBack }: OngoingDueDiligenceHubProps) 
                 <CardContent className="p-4">
                   <div className="flex gap-4">
                     <div className="flex-1 relative">
-                      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                       <Input
                         placeholder="Search by client name or ID..."
                         value={searchQuery}
@@ -318,19 +318,19 @@ export function OngoingDueDiligenceHub({ onBack }: OngoingDueDiligenceHubProps) 
               <div className="space-y-3">
                 {filteredQueue.map((client) => (
                   <Card key={client.clientId} className={`border-2 ${
-                    client.status === 'Overdue' ? 'border-red-300 bg-red-500/10' :
-                    client.status === 'Due Soon' ? 'border-amber-300 bg-amber-500/10' :
-                    'border-white/10'
+                    client.status === 'Overdue' ? 'border-red-300 bg-red-50' :
+                    client.status === 'Due Soon' ? 'border-amber-300 bg-amber-50' :
+                    'border-gray-200'
                   }`}>
                     <CardContent className="p-6">
                       <div className="grid md:grid-cols-12 gap-4 items-center">
                         {/* Client Info */}
                         <div className="md:col-span-4">
                           <div className="flex items-center gap-2 mb-2">
-                            <Building className="w-5 h-5 text-cyan-400" />
+                            <Building className="w-5 h-5 text-cyan-600" />
                             <div>
-                              <div className="font-bold text-white">{client.clientName}</div>
-                              <div className="text-xs text-slate-300">{client.clientId}</div>
+                              <div className="font-bold text-gray-900">{client.clientName}</div>
+                              <div className="text-xs text-gray-600">{client.clientId}</div>
                             </div>
                           </div>
                           <div className="flex items-center gap-2">
@@ -347,20 +347,20 @@ export function OngoingDueDiligenceHub({ onBack }: OngoingDueDiligenceHubProps) 
                         <div className="md:col-span-3">
                           <div className="space-y-2 text-sm">
                             <div className="flex justify-between">
-                              <span className="text-slate-300">Last Review:</span>
+                              <span className="text-gray-600">Last Review:</span>
                               <span className="font-semibold">{client.lastReview}</span>
                             </div>
                             <div className="flex justify-between">
-                              <span className="text-slate-300">Next Due:</span>
+                              <span className="text-gray-600">Next Due:</span>
                               <span className={`font-semibold ${
-                                client.daysOverdue > 0 ? 'text-red-400' : 'text-white'
+                                client.daysOverdue > 0 ? 'text-red-600' : 'text-gray-900'
                               }`}>
                                 {client.nextReviewDue}
                                 {client.daysOverdue > 0 && ` (${client.daysOverdue}d overdue)`}
                               </span>
                             </div>
                             <div className="flex justify-between">
-                              <span className="text-slate-300">Frequency:</span>
+                              <span className="text-gray-600">Frequency:</span>
                               <span className="font-semibold">{client.reviewFrequency}</span>
                             </div>
                           </div>
@@ -369,8 +369,8 @@ export function OngoingDueDiligenceHub({ onBack }: OngoingDueDiligenceHubProps) 
                         {/* Progress */}
                         <div className="md:col-span-2">
                           <div className="text-center mb-2">
-                            <div className="text-2xl font-bold text-white">{client.completionProgress}%</div>
-                            <div className="text-xs text-slate-300">Complete</div>
+                            <div className="text-2xl font-bold text-gray-900">{client.completionProgress}%</div>
+                            <div className="text-xs text-gray-600">Complete</div>
                           </div>
                           <Progress value={client.completionProgress} className="h-2" />
                         </div>
@@ -378,8 +378,8 @@ export function OngoingDueDiligenceHub({ onBack }: OngoingDueDiligenceHubProps) 
                         {/* Assigned To */}
                         <div className="md:col-span-2">
                           <div className="flex items-center gap-2 mb-2">
-                            <Users className="w-4 h-4 text-slate-300" />
-                            <span className="text-sm font-semibold text-white">{client.assignedTo}</span>
+                            <Users className="w-4 h-4 text-gray-600" />
+                            <span className="text-sm font-semibold text-gray-900">{client.assignedTo}</span>
                           </div>
                           {client.triggers.length > 0 && (
                             <div className="space-y-1">
@@ -425,15 +425,15 @@ export function OngoingDueDiligenceHub({ onBack }: OngoingDueDiligenceHubProps) 
                   {reviewChecklist.map((item) => (
                     <div
                       key={item.id}
-                      className="flex items-center justify-between p-4 bg-[#0f172a] rounded-lg border border-white/10 hover:bg-white/5 transition-colors"
+                      className="flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 transition-colors"
                     >
                       <div className="flex items-center gap-4">
-                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-cyan-500/15 text-cyan-400 font-bold text-sm">
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-cyan-100 text-cyan-600 font-bold text-sm">
                           {item.id}
                         </div>
                         <div>
-                          <div className="font-semibold text-white">{item.item}</div>
-                          <div className="text-xs text-slate-300">Category: {item.category}</div>
+                          <div className="font-semibold text-gray-900">{item.item}</div>
+                          <div className="text-xs text-gray-600">Category: {item.category}</div>
                         </div>
                       </div>
                       <div className="flex items-center gap-2">
@@ -446,24 +446,24 @@ export function OngoingDueDiligenceHub({ onBack }: OngoingDueDiligenceHubProps) 
                   ))}
                 </div>
 
-                <div className="mt-6 p-4 bg-blue-500/10 rounded-lg border-2 border-blue-500/30">
-                  <h3 className="font-bold text-blue-300 mb-2">Review Frequency by Risk Rating</h3>
+                <div className="mt-6 p-4 bg-blue-50 rounded-lg border-2 border-blue-200">
+                  <h3 className="font-bold text-blue-900 mb-2">Review Frequency by Risk Rating</h3>
                   <div className="grid md:grid-cols-4 gap-4 text-sm">
-                    <div className="p-3 bg-[#1e293b] rounded border border-red-500/30">
-                      <div className="font-bold text-red-400 mb-1">EXTREME RISK</div>
-                      <div className="text-slate-300">Every 6 months</div>
+                    <div className="p-3 bg-white rounded border border-red-200">
+                      <div className="font-bold text-red-600 mb-1">EXTREME RISK</div>
+                      <div className="text-gray-700">Every 6 months</div>
                     </div>
-                    <div className="p-3 bg-[#1e293b] rounded border border-orange-500/30">
-                      <div className="font-bold text-orange-400 mb-1">HIGH RISK</div>
-                      <div className="text-slate-300">Every 12 months</div>
+                    <div className="p-3 bg-white rounded border border-orange-200">
+                      <div className="font-bold text-orange-600 mb-1">HIGH RISK</div>
+                      <div className="text-gray-700">Every 12 months</div>
                     </div>
-                    <div className="p-3 bg-[#1e293b] rounded border border-amber-500/30">
-                      <div className="font-bold text-amber-400 mb-1">MEDIUM RISK</div>
-                      <div className="text-slate-300">Every 18 months</div>
+                    <div className="p-3 bg-white rounded border border-amber-200">
+                      <div className="font-bold text-amber-600 mb-1">MEDIUM RISK</div>
+                      <div className="text-gray-700">Every 18 months</div>
                     </div>
-                    <div className="p-3 bg-[#1e293b] rounded border border-green-500/30">
-                      <div className="font-bold text-green-400 mb-1">LOW RISK</div>
-                      <div className="text-slate-300">Every 36 months</div>
+                    <div className="p-3 bg-white rounded border border-green-200">
+                      <div className="font-bold text-green-600 mb-1">LOW RISK</div>
+                      <div className="text-gray-700">Every 36 months</div>
                     </div>
                   </div>
                 </div>
@@ -485,14 +485,14 @@ export function OngoingDueDiligenceHub({ onBack }: OngoingDueDiligenceHubProps) 
                   {triggerEvents.map((trigger, idx) => (
                     <div
                       key={idx}
-                      className="p-4 rounded-lg border-2 border-white/10 bg-[#0f172a]"
+                      className="p-4 rounded-lg border-2 border-gray-200 bg-gray-50"
                     >
                       <div className="flex items-center justify-between mb-3">
                         <div className="flex items-center gap-3">
-                          <AlertTriangle className="w-5 h-5 text-amber-400" />
+                          <AlertTriangle className="w-5 h-5 text-amber-600" />
                           <div>
-                            <div className="font-bold text-white">{trigger.type}</div>
-                            <div className="text-sm text-slate-300 mt-1">{trigger.description}</div>
+                            <div className="font-bold text-gray-900">{trigger.type}</div>
+                            <div className="text-sm text-gray-700 mt-1">{trigger.description}</div>
                           </div>
                         </div>
                         <Badge className={trigger.enabled ? 'bg-green-600' : 'bg-gray-400'}>
@@ -500,7 +500,7 @@ export function OngoingDueDiligenceHub({ onBack }: OngoingDueDiligenceHubProps) 
                         </Badge>
                       </div>
                       <div className="flex items-center justify-between text-sm">
-                        <div className="flex items-center gap-4 text-slate-300">
+                        <div className="flex items-center gap-4 text-gray-600">
                           <span>Last triggered: {trigger.lastTriggered}</span>
                           <span>•</span>
                           <span>{trigger.clientsAffected} client{trigger.clientsAffected !== 1 ? 's' : ''} affected</span>
@@ -556,13 +556,13 @@ export function OngoingDueDiligenceHub({ onBack }: OngoingDueDiligenceHubProps) 
                       nextReview: '2024-09-10'
                     }
                   ].map((review, idx) => (
-                    <div key={idx} className="p-4 bg-green-500/10 rounded-lg border-2 border-green-500/30">
+                    <div key={idx} className="p-4 bg-green-50 rounded-lg border-2 border-green-200">
                       <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center gap-3">
-                          <CheckCircle className="w-5 h-5 text-green-400" />
+                          <CheckCircle className="w-5 h-5 text-green-600" />
                           <div>
-                            <div className="font-bold text-white">{review.reviewId}</div>
-                            <div className="text-sm text-slate-300">{review.client}</div>
+                            <div className="font-bold text-gray-900">{review.reviewId}</div>
+                            <div className="text-sm text-gray-700">{review.client}</div>
                           </div>
                         </div>
                         <Badge className={getRiskColor(review.riskRating)}>
@@ -571,19 +571,19 @@ export function OngoingDueDiligenceHub({ onBack }: OngoingDueDiligenceHubProps) 
                       </div>
                       <div className="grid md:grid-cols-2 gap-4 text-sm mt-3">
                         <div>
-                          <span className="text-slate-300">Completed: </span>
+                          <span className="text-gray-600">Completed: </span>
                           <span className="font-semibold">{review.completedDate}</span>
                         </div>
                         <div>
-                          <span className="text-slate-300">By: </span>
+                          <span className="text-gray-600">By: </span>
                           <span className="font-semibold">{review.completedBy}</span>
                         </div>
                         <div>
-                          <span className="text-slate-300">Outcome: </span>
+                          <span className="text-gray-600">Outcome: </span>
                           <span className="font-semibold">{review.outcome}</span>
                         </div>
                         <div>
-                          <span className="text-slate-300">Next Review: </span>
+                          <span className="text-gray-600">Next Review: </span>
                           <span className="font-semibold">{review.nextReview}</span>
                         </div>
                       </div>

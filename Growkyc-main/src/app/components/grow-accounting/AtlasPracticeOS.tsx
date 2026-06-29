@@ -233,29 +233,29 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
   // Status color helper
   const getStatusColor = (status: string) => {
     const colors: Record<string, string> = {
-      complete: 'bg-green-500/15 text-green-300 border-green-300',
-      'in-progress': 'bg-blue-500/15 text-blue-300 border-blue-300',
-      waiting: 'bg-amber-500/15 text-amber-300 border-amber-300',
-      blocked: 'bg-red-500/15 text-red-300 border-red-300',
-      review: 'bg-purple-500/15 text-purple-300 border-purple-300'
+      complete: 'bg-green-100 text-green-800 border-green-300',
+      'in-progress': 'bg-blue-100 text-blue-800 border-blue-300',
+      waiting: 'bg-amber-100 text-amber-800 border-amber-300',
+      blocked: 'bg-red-100 text-red-800 border-red-300',
+      review: 'bg-purple-100 text-purple-800 border-purple-300'
     };
-    return colors[status] || 'bg-white/5 text-slate-100 border-white/10';
+    return colors[status] || 'bg-gray-100 text-gray-800 border-gray-300';
   };
 
   const getPriorityColor = (priority: Priority) => {
     const colors: Record<Priority, string> = {
-      critical: 'bg-red-500/15 text-red-300 border-red-300',
-      high: 'bg-orange-500/15 text-orange-300 border-orange-300',
-      medium: 'bg-blue-500/15 text-blue-300 border-blue-300',
-      low: 'bg-white/5 text-slate-100 border-white/10'
+      critical: 'bg-red-100 text-red-800 border-red-300',
+      high: 'bg-orange-100 text-orange-800 border-orange-300',
+      medium: 'bg-blue-100 text-blue-800 border-blue-300',
+      low: 'bg-gray-100 text-gray-800 border-gray-300'
     };
     return colors[priority];
   };
 
   const getRiskColor = (score: number) => {
-    if (score >= 70) return 'text-red-400 bg-red-500/15';
-    if (score >= 40) return 'text-amber-400 bg-amber-500/15';
-    return 'text-green-400 bg-green-500/15';
+    if (score >= 70) return 'text-red-600 bg-red-100';
+    if (score >= 40) return 'text-amber-600 bg-amber-100';
+    return 'text-green-600 bg-green-100';
   };
 
   // Filtered and sorted data
@@ -404,8 +404,8 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
                     {metric.change}
                   </Badge>
                 </div>
-                <p className="text-3xl font-bold text-slate-100">{metric.value}</p>
-                <p className="text-sm text-slate-300 mt-1">{metric.label}</p>
+                <p className="text-3xl font-bold text-gray-900">{metric.value}</p>
+                <p className="text-sm text-gray-600 mt-1">{metric.label}</p>
               </CardContent>
             </Card>
           </motion.div>
@@ -428,11 +428,11 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
             <Card>
               <CardContent className="pt-6">
                 <div className="flex items-center gap-3">
-                  <stat.icon className="w-5 h-5 text-blue-400" />
+                  <stat.icon className="w-5 h-5 text-blue-600" />
                   <div className="flex-1">
-                    <p className="text-2xl font-bold text-slate-100">{stat.value}</p>
-                    <p className="text-sm text-slate-300">{stat.label}</p>
-                    <p className="text-xs text-slate-400 mt-1">{stat.subtext}</p>
+                    <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
+                    <p className="text-sm text-gray-600">{stat.label}</p>
+                    <p className="text-xs text-gray-500 mt-1">{stat.subtext}</p>
                   </div>
                 </div>
               </CardContent>
@@ -466,7 +466,7 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: idx * 0.1 }}
-                      className="p-3 border border-white/10 rounded-lg hover:border-blue-300 hover:shadow-sm transition-all cursor-pointer"
+                      className="p-3 border border-gray-200 rounded-lg hover:border-blue-300 hover:shadow-sm transition-all cursor-pointer"
                       onClick={() => setSelectedJob(job)}
                     >
                       <div className="flex items-start justify-between mb-2">
@@ -475,12 +475,12 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
                             <Badge className={getPriorityColor(job.priority!)}>
                               {job.priority}
                             </Badge>
-                            <span className="text-sm font-medium text-slate-100">{job.id}</span>
+                            <span className="text-sm font-medium text-gray-900">{job.id}</span>
                           </div>
-                          <p className="text-sm text-slate-300">{job.client} - {job.service}</p>
+                          <p className="text-sm text-gray-600">{job.client} - {job.service}</p>
                         </div>
                       </div>
-                      <div className="flex items-center justify-between text-xs text-slate-400">
+                      <div className="flex items-center justify-between text-xs text-gray-500">
                         <span className="flex items-center gap-1">
                           <Calendar className="w-3 h-3" />
                           Due: {job.dueDate}
@@ -492,7 +492,7 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
                       </div>
                       <div className="mt-2">
                         <div className="flex items-center justify-between text-xs mb-1">
-                          <span className="text-slate-300">Progress</span>
+                          <span className="text-gray-600">Progress</span>
                           <span className="font-medium">{job.estimatedCompletion}%</span>
                         </div>
                         <Progress value={job.estimatedCompletion} className="h-1" />
@@ -524,7 +524,7 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: idx * 0.1 }}
-                    className="p-3 border border-white/10 rounded-lg"
+                    className="p-3 border border-gray-200 rounded-lg"
                   >
                     <div className="flex items-center justify-between mb-3">
                       <div className="flex items-center gap-3">
@@ -535,27 +535,27 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
                           {member.name.split(' ').map(n => n[0]).join('')}
                         </div>
                         <div>
-                          <p className="font-medium text-slate-100">{member.name}</p>
-                          <p className="text-xs text-slate-300">{member.role}</p>
+                          <p className="font-medium text-gray-900">{member.name}</p>
+                          <p className="text-xs text-gray-600">{member.role}</p>
                         </div>
                       </div>
                       {member.available ? (
-                        <Badge variant="secondary" className="bg-green-500/15 text-green-300">
+                        <Badge variant="secondary" className="bg-green-100 text-green-800">
                           Available
                         </Badge>
                       ) : (
-                        <Badge variant="secondary" className="bg-white/5 text-slate-100">
+                        <Badge variant="secondary" className="bg-gray-100 text-gray-800">
                           Busy
                         </Badge>
                       )}
                     </div>
                     <div className="space-y-2">
                       <div className="flex items-center justify-between text-xs">
-                        <span className="text-slate-300">Utilization</span>
+                        <span className="text-gray-600">Utilization</span>
                         <span className="font-medium">{member.utilization}%</span>
                       </div>
                       <Progress value={member.utilization} className="h-2" />
-                      <div className="flex items-center justify-between text-xs text-slate-300">
+                      <div className="flex items-center justify-between text-xs text-gray-600">
                         <span>{member.currentJobs} jobs</span>
                         <span>{member.hoursThisWeek}h this week</span>
                       </div>
@@ -609,8 +609,8 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-slate-100">Client Management</h2>
-          <p className="text-sm text-slate-300 mt-1">Manage your {clients.length} clients and their entities</p>
+          <h2 className="text-2xl font-bold text-gray-900">Client Management</h2>
+          <p className="text-sm text-gray-600 mt-1">Manage your {clients.length} clients and their entities</p>
         </div>
         <div className="flex items-center gap-2">
           <Button variant="outline" onClick={() => handleBulkExport('csv')}>
@@ -694,10 +694,10 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
                   {/* Risk Score */}
                   <div>
                     <div className="flex items-center justify-between text-sm mb-1">
-                      <span className="text-slate-300">Health Score</span>
+                      <span className="text-gray-600">Health Score</span>
                       <span className={`font-semibold ${
-                        client.riskScore >= 80 ? 'text-green-400' :
-                        client.riskScore >= 50 ? 'text-amber-400' : 'text-red-400'
+                        client.riskScore >= 80 ? 'text-green-600' :
+                        client.riskScore >= 50 ? 'text-amber-600' : 'text-red-600'
                       }`}>{client.riskScore}/100</span>
                     </div>
                     <Progress value={client.riskScore} className="h-2" />
@@ -706,18 +706,18 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
                   {/* Stats */}
                   <div className="grid grid-cols-2 gap-3 pt-3 border-t">
                     <div>
-                      <p className="text-xs text-slate-300">Active Jobs</p>
-                      <p className="text-lg font-semibold text-slate-100">{client.activeJobs}</p>
+                      <p className="text-xs text-gray-600">Active Jobs</p>
+                      <p className="text-lg font-semibold text-gray-900">{client.activeJobs}</p>
                     </div>
                     <div>
-                      <p className="text-xs text-slate-300">Annual Fee</p>
-                      <p className="text-lg font-semibold text-slate-100">${(client.annualFee / 1000).toFixed(0)}k</p>
+                      <p className="text-xs text-gray-600">Annual Fee</p>
+                      <p className="text-lg font-semibold text-gray-900">${(client.annualFee / 1000).toFixed(0)}k</p>
                     </div>
                   </div>
 
                   {/* Manager & Contact */}
                   <div className="flex items-center justify-between pt-3 border-t">
-                    <div className="flex items-center gap-2 text-sm text-slate-300">
+                    <div className="flex items-center gap-2 text-sm text-gray-600">
                       <User className="w-4 h-4" />
                       <span>{client.manager}</span>
                     </div>
@@ -764,8 +764,8 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-slate-100">Job Management</h2>
-          <p className="text-sm text-slate-300 mt-1">{filteredJobs.length} jobs in progress</p>
+          <h2 className="text-2xl font-bold text-gray-900">Job Management</h2>
+          <p className="text-sm text-gray-600 mt-1">{filteredJobs.length} jobs in progress</p>
         </div>
         <div className="flex items-center gap-2">
           <TooltipProvider>
@@ -853,8 +853,8 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
           </div>
 
           {selectedJobs.length > 0 && (
-            <div className="mt-4 p-3 bg-blue-500/10 rounded-lg flex items-center justify-between">
-              <span className="text-sm font-medium text-blue-300">
+            <div className="mt-4 p-3 bg-blue-50 rounded-lg flex items-center justify-between">
+              <span className="text-sm font-medium text-blue-900">
                 {selectedJobs.length} jobs selected
               </span>
               <div className="flex items-center gap-2">
@@ -878,7 +878,7 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
         <DndProvider backend={HTML5Backend}>
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
             {['in-progress', 'waiting', 'review', 'blocked', 'complete'].map((status) => (
-              <Card key={status} className="bg-white/5">
+              <Card key={status} className="bg-gray-50">
                 <CardHeader className="pb-3">
                   <div className="flex items-center justify-between">
                     <CardTitle className="text-sm font-semibold capitalize">
@@ -927,15 +927,15 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
                         checked={selectedJobs.length === filteredJobs.length && filteredJobs.length > 0}
                       />
                     </th>
-                    <th className="text-left p-3 text-sm font-semibold text-slate-300">Job ID</th>
-                    <th className="text-left p-3 text-sm font-semibold text-slate-300">Client</th>
-                    <th className="text-left p-3 text-sm font-semibold text-slate-300">Service</th>
-                    <th className="text-left p-3 text-sm font-semibold text-slate-300">Status</th>
-                    <th className="text-left p-3 text-sm font-semibold text-slate-300">Priority</th>
-                    <th className="text-left p-3 text-sm font-semibold text-slate-300">Due Date</th>
-                    <th className="text-left p-3 text-sm font-semibold text-slate-300">Assigned To</th>
-                    <th className="text-left p-3 text-sm font-semibold text-slate-300">Progress</th>
-                    <th className="text-left p-3 text-sm font-semibold text-slate-300">Actions</th>
+                    <th className="text-left p-3 text-sm font-semibold text-gray-700">Job ID</th>
+                    <th className="text-left p-3 text-sm font-semibold text-gray-700">Client</th>
+                    <th className="text-left p-3 text-sm font-semibold text-gray-700">Service</th>
+                    <th className="text-left p-3 text-sm font-semibold text-gray-700">Status</th>
+                    <th className="text-left p-3 text-sm font-semibold text-gray-700">Priority</th>
+                    <th className="text-left p-3 text-sm font-semibold text-gray-700">Due Date</th>
+                    <th className="text-left p-3 text-sm font-semibold text-gray-700">Assigned To</th>
+                    <th className="text-left p-3 text-sm font-semibold text-gray-700">Progress</th>
+                    <th className="text-left p-3 text-sm font-semibold text-gray-700">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -945,7 +945,7 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: idx * 0.02 }}
-                      className="border-b hover:bg-white/5"
+                      className="border-b hover:bg-gray-50"
                     >
                       <td className="p-3">
                         <input
@@ -961,10 +961,10 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
                         />
                       </td>
                       <td className="p-3">
-                        <span className="font-medium text-blue-400">{job.id}</span>
+                        <span className="font-medium text-blue-600">{job.id}</span>
                       </td>
-                      <td className="p-3 text-sm text-slate-100">{job.client}</td>
-                      <td className="p-3 text-sm text-slate-300">{job.service}</td>
+                      <td className="p-3 text-sm text-gray-900">{job.client}</td>
+                      <td className="p-3 text-sm text-gray-700">{job.service}</td>
                       <td className="p-3">
                         <Badge className={getStatusColor(job.status)}>
                           {job.status}
@@ -975,8 +975,8 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
                           {job.priority}
                         </Badge>
                       </td>
-                      <td className="p-3 text-sm text-slate-300">{job.dueDate}</td>
-                      <td className="p-3 text-sm text-slate-300">{job.assignedTo}</td>
+                      <td className="p-3 text-sm text-gray-700">{job.dueDate}</td>
+                      <td className="p-3 text-sm text-gray-700">{job.assignedTo}</td>
                       <td className="p-3">
                         <div className="w-24">
                           <Progress value={job.estimatedCompletion} className="h-2" />
@@ -1019,39 +1019,39 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: isDragging ? 0.5 : 1, y: 0 }}
         whileHover={{ scale: 1.02 }}
-        className="bg-white p-3 rounded-lg border border-white/10 cursor-move hover:shadow-md transition-all"
+        className="bg-white p-3 rounded-lg border border-gray-200 cursor-move hover:shadow-md transition-all"
         onClick={onClick}
       >
         <div className="flex items-start justify-between mb-2">
-          <span className="text-xs font-semibold text-blue-400">{job.id}</span>
+          <span className="text-xs font-semibold text-blue-600">{job.id}</span>
           <Badge className={getPriorityColor(job.priority!)} variant="secondary">
             {job.priority}
           </Badge>
         </div>
-        <h4 className="text-sm font-medium text-slate-100 mb-1">{job.service}</h4>
-        <p className="text-xs text-slate-300 mb-3">{job.client}</p>
+        <h4 className="text-sm font-medium text-gray-900 mb-1">{job.service}</h4>
+        <p className="text-xs text-gray-600 mb-3">{job.client}</p>
         
         <div className="space-y-2">
           <div className="flex items-center justify-between text-xs">
-            <span className="text-slate-400">Progress</span>
+            <span className="text-gray-500">Progress</span>
             <span className="font-medium">{job.estimatedCompletion}%</span>
           </div>
           <Progress value={job.estimatedCompletion} className="h-1" />
         </div>
 
         <div className="flex items-center justify-between mt-3 pt-3 border-t">
-          <div className="flex items-center gap-1 text-xs text-slate-300">
+          <div className="flex items-center gap-1 text-xs text-gray-600">
             <Calendar className="w-3 h-3" />
             <span>{job.dueDate}</span>
           </div>
-          <div className="flex items-center gap-1 text-xs text-slate-300">
+          <div className="flex items-center gap-1 text-xs text-gray-600">
             <User className="w-3 h-3" />
             <span className="truncate max-w-[80px]">{job.assignedTo}</span>
           </div>
         </div>
 
         {job.riskScore > 50 && (
-          <div className="mt-2 flex items-center gap-1 text-xs text-amber-400">
+          <div className="mt-2 flex items-center gap-1 text-xs text-amber-600">
             <AlertTriangle className="w-3 h-3" />
             <span>Risk: {job.riskScore}</span>
           </div>
@@ -1065,8 +1065,8 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-slate-100">Document Management</h2>
-          <p className="text-sm text-slate-300 mt-1">AI-powered classification and organization</p>
+          <h2 className="text-2xl font-bold text-gray-900">Document Management</h2>
+          <p className="text-sm text-gray-600 mt-1">AI-powered classification and organization</p>
         </div>
         <div className="flex items-center gap-2">
           <Button variant="outline">
@@ -1117,20 +1117,20 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
                 <Card className="hover:shadow-lg transition-shadow cursor-pointer">
                   <CardContent className="pt-6">
                     <div className="flex items-start gap-3">
-                      <div className="p-2 bg-blue-500/15 rounded-lg">
-                        <FileText className="w-6 h-6 text-blue-400" />
+                      <div className="p-2 bg-blue-100 rounded-lg">
+                        <FileText className="w-6 h-6 text-blue-600" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h4 className="text-sm font-medium text-slate-100 truncate mb-1">
+                        <h4 className="text-sm font-medium text-gray-900 truncate mb-1">
                           {doc.name}
                         </h4>
-                        <p className="text-xs text-slate-300">{doc.client}</p>
+                        <p className="text-xs text-gray-600">{doc.client}</p>
                         <div className="flex items-center gap-2 mt-2">
                           <Badge variant="secondary" className="text-xs">
                             {doc.category}
                           </Badge>
                           {doc.classification === 'Auto' && (
-                            <Badge className="text-xs bg-purple-500/15 text-purple-300">
+                            <Badge className="text-xs bg-purple-100 text-purple-800">
                               <Sparkles className="w-3 h-3 mr-1" />
                               AI
                             </Badge>
@@ -1139,7 +1139,7 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
                       </div>
                     </div>
                     <div className="flex items-center justify-between mt-4 pt-4 border-t">
-                      <span className="text-xs text-slate-400">{doc.size}</span>
+                      <span className="text-xs text-gray-500">{doc.size}</span>
                       <div className="flex items-center gap-1">
                         <Button variant="ghost" size="sm">
                           <Eye className="w-4 h-4" />
@@ -1167,8 +1167,8 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-slate-100">Capacity Planning</h2>
-          <p className="text-sm text-slate-300 mt-1">Monitor team workload and optimize allocation</p>
+          <h2 className="text-2xl font-bold text-gray-900">Capacity Planning</h2>
+          <p className="text-sm text-gray-600 mt-1">Monitor team workload and optimize allocation</p>
         </div>
         <Button>
           <Plus className="w-4 h-4 mr-2" />
@@ -1191,8 +1191,8 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
                   <metric.icon className={`w-6 h-6 text-${metric.color}-600`} />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-slate-100">{metric.value}</p>
-                  <p className="text-sm text-slate-300">{metric.label}</p>
+                  <p className="text-2xl font-bold text-gray-900">{metric.value}</p>
+                  <p className="text-sm text-gray-600">{metric.label}</p>
                 </div>
               </div>
             </CardContent>
@@ -1214,7 +1214,7 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: idx * 0.1 }}
-                className="p-4 border border-white/10 rounded-lg"
+                className="p-4 border border-gray-200 rounded-lg"
               >
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-4">
@@ -1226,8 +1226,8 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
                       {member.name.split(' ').map(n => n[0]).join('')}
                     </div>
                     <div>
-                      <h3 className="font-semibold text-slate-100">{member.name}</h3>
-                      <p className="text-sm text-slate-300">{member.role}</p>
+                      <h3 className="font-semibold text-gray-900">{member.name}</h3>
+                      <p className="text-sm text-gray-600">{member.role}</p>
                       {member.skills && (
                         <div className="flex items-center gap-1 mt-1">
                           {member.skills.map((skill, idx) => (
@@ -1240,8 +1240,8 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-2xl font-bold text-slate-100">{member.utilization}%</p>
-                    <p className="text-sm text-slate-300">Utilization</p>
+                    <p className="text-2xl font-bold text-gray-900">{member.utilization}%</p>
+                    <p className="text-sm text-gray-600">Utilization</p>
                   </div>
                 </div>
 
@@ -1252,21 +1252,21 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
 
                 {/* Stats Grid */}
                 <div className="grid grid-cols-4 gap-4">
-                  <div className="text-center p-3 bg-white/5 rounded-lg">
-                    <p className="text-sm text-slate-300">Current Jobs</p>
-                    <p className="text-xl font-bold text-slate-100">{member.currentJobs}</p>
+                  <div className="text-center p-3 bg-gray-50 rounded-lg">
+                    <p className="text-sm text-gray-600">Current Jobs</p>
+                    <p className="text-xl font-bold text-gray-900">{member.currentJobs}</p>
                   </div>
-                  <div className="text-center p-3 bg-white/5 rounded-lg">
-                    <p className="text-sm text-slate-300">Hours/Week</p>
-                    <p className="text-xl font-bold text-slate-100">{member.hoursThisWeek}h</p>
+                  <div className="text-center p-3 bg-gray-50 rounded-lg">
+                    <p className="text-sm text-gray-600">Hours/Week</p>
+                    <p className="text-xl font-bold text-gray-900">{member.hoursThisWeek}h</p>
                   </div>
-                  <div className="text-center p-3 bg-white/5 rounded-lg">
-                    <p className="text-sm text-slate-300">Risk Jobs</p>
-                    <p className="text-xl font-bold text-red-400">{member.riskJobs}</p>
+                  <div className="text-center p-3 bg-gray-50 rounded-lg">
+                    <p className="text-sm text-gray-600">Risk Jobs</p>
+                    <p className="text-xl font-bold text-red-600">{member.riskJobs}</p>
                   </div>
-                  <div className="text-center p-3 bg-white/5 rounded-lg">
-                    <p className="text-sm text-slate-300">Capacity</p>
-                    <p className="text-xl font-bold text-slate-100">{member.capacity}%</p>
+                  <div className="text-center p-3 bg-gray-50 rounded-lg">
+                    <p className="text-sm text-gray-600">Capacity</p>
+                    <p className="text-xl font-bold text-gray-900">{member.capacity}%</p>
                   </div>
                 </div>
 
@@ -1325,13 +1325,13 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
           <Card>
             <CardContent className="pt-20 pb-20">
               <div className="text-center">
-                <div className="w-16 h-16 bg-blue-500/15 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Rocket className="w-8 h-8 text-blue-400" />
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Rocket className="w-8 h-8 text-blue-600" />
                 </div>
-                <h3 className="text-xl font-semibold text-slate-100 mb-2">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
                   {currentView.charAt(0).toUpperCase() + currentView.slice(1).replace('-', ' ')} Module
                 </h3>
-                <p className="text-slate-300 mb-4">
+                <p className="text-gray-600 mb-4">
                   This enterprise feature is ready for your configuration
                 </p>
                 <Button>
@@ -1349,22 +1349,22 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
 
   return (
     <TooltipProvider>
-      <div className="flex h-screen bg-white/5">
+      <div className="flex h-screen bg-gray-50">
         {/* Sidebar */}
         <motion.div
           initial={{ x: -280 }}
           animate={{ x: 0 }}
-          className="w-64 bg-white border-r border-white/10 flex flex-col"
+          className="w-64 bg-white border-r border-gray-200 flex flex-col"
         >
           {/* Logo */}
-          <div className="p-6 border-b border-white/10">
+          <div className="p-6 border-b border-gray-200">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
                 <Sparkles className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-slate-100">Atlas</h1>
-                <p className="text-xs text-slate-300">Practice OS</p>
+                <h1 className="text-xl font-bold text-gray-900">Atlas</h1>
+                <p className="text-xs text-gray-600">Practice OS</p>
               </div>
             </div>
           </div>
@@ -1383,8 +1383,8 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
                     onClick={() => setCurrentView(item.id as View)}
                     className={`w-full flex items-center justify-between gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                       isActive
-                        ? 'bg-blue-500/10 text-blue-300'
-                        : 'text-slate-300 hover:bg-white/5'
+                        ? 'bg-blue-50 text-blue-700'
+                        : 'text-gray-700 hover:bg-gray-100'
                     }`}
                   >
                     <div className="flex items-center gap-3">
@@ -1403,14 +1403,14 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
           </ScrollArea>
 
           {/* User Profile */}
-          <div className="p-4 border-t border-white/10">
+          <div className="p-4 border-t border-gray-200">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-semibold">
                 PA
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-slate-100 truncate">Partner Account</p>
-                <p className="text-xs text-slate-300 capitalize">{userRole}</p>
+                <p className="text-sm font-medium text-gray-900 truncate">Partner Account</p>
+                <p className="text-xs text-gray-600 capitalize">{userRole}</p>
               </div>
               <Button variant="ghost" size="sm">
                 <Settings className="w-4 h-4" />
@@ -1422,7 +1422,7 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
         {/* Main Content */}
         <div className="flex-1 flex flex-col overflow-hidden">
           {/* Top Header */}
-          <div className="bg-white border-b border-white/10 px-8 py-4">
+          <div className="bg-white border-b border-gray-200 px-8 py-4">
             <div className="flex items-center justify-between">
               {/* Search */}
               <div className="flex items-center gap-4 flex-1">
@@ -1430,7 +1430,7 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
                   <Input
                     placeholder="Search anything... (⌘K)"
-                    className="pl-10 bg-white/5"
+                    className="pl-10 bg-gray-50"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     onFocus={() => setShowCommandPalette(true)}
@@ -1524,18 +1524,18 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: 400, opacity: 0 }}
               transition={{ type: 'spring', damping: 25 }}
-              className="fixed bottom-0 right-0 w-96 h-[600px] bg-white rounded-tl-xl shadow-2xl border-l-2 border-t-2 border-blue-500/30 z-50 flex flex-col"
+              className="fixed bottom-0 right-0 w-96 h-[600px] bg-white rounded-tl-xl shadow-2xl border-l-2 border-t-2 border-blue-200 z-50 flex flex-col"
             >
               {/* AI Panel Header */}
-              <div className="p-4 border-b border-white/10 bg-gradient-to-r from-blue-50 to-purple-50">
+              <div className="p-4 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-purple-50">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
                       <Brain className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-slate-100">AI Assistant</h3>
-                      <p className="text-xs text-slate-300">Powered by Atlas AI</p>
+                      <h3 className="font-semibold text-gray-900">AI Assistant</h3>
+                      <p className="text-xs text-gray-600">Powered by Atlas AI</p>
                     </div>
                   </div>
                   <Button variant="ghost" size="sm" onClick={() => setShowAIPanel(false)}>
@@ -1555,29 +1555,29 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
                       className="bg-gradient-to-br from-blue-50 to-purple-50 p-4 rounded-lg"
                     >
                       <div className="flex items-start gap-3">
-                        <Sparkles className="w-5 h-5 text-blue-400 mt-1" />
+                        <Sparkles className="w-5 h-5 text-blue-600 mt-1" />
                         <div>
-                          <p className="text-sm font-medium text-slate-100 mb-2">
+                          <p className="text-sm font-medium text-gray-900 mb-2">
                             Hi! I'm your AI assistant.
                           </p>
-                          <p className="text-sm text-slate-300 mb-3">
+                          <p className="text-sm text-gray-700 mb-3">
                             I can help you with:
                           </p>
-                          <ul className="text-sm text-slate-300 space-y-1">
+                          <ul className="text-sm text-gray-700 space-y-1">
                             <li className="flex items-center gap-2">
-                              <CheckCircle2 className="w-4 h-4 text-green-400" />
+                              <CheckCircle2 className="w-4 h-4 text-green-600" />
                               Finding clients and jobs
                             </li>
                             <li className="flex items-center gap-2">
-                              <CheckCircle2 className="w-4 h-4 text-green-400" />
+                              <CheckCircle2 className="w-4 h-4 text-green-600" />
                               Analyzing capacity issues
                             </li>
                             <li className="flex items-center gap-2">
-                              <CheckCircle2 className="w-4 h-4 text-green-400" />
+                              <CheckCircle2 className="w-4 h-4 text-green-600" />
                               Reviewing risk alerts
                             </li>
                             <li className="flex items-center gap-2">
-                              <CheckCircle2 className="w-4 h-4 text-green-400" />
+                              <CheckCircle2 className="w-4 h-4 text-green-600" />
                               Generating insights
                             </li>
                           </ul>
@@ -1594,11 +1594,11 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
                       animate={{ opacity: 1, y: 0 }}
                       className={`p-3 rounded-lg ${
                         msg.role === 'user'
-                          ? 'bg-blue-500/15 ml-8'
-                          : 'bg-white/5 mr-8'
+                          ? 'bg-blue-100 ml-8'
+                          : 'bg-gray-100 mr-8'
                       }`}
                     >
-                      <p className="text-sm text-slate-100">{msg.content}</p>
+                      <p className="text-sm text-gray-900">{msg.content}</p>
                     </motion.div>
                   ))}
 
@@ -1607,11 +1607,11 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
                     <motion.div
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      className="bg-white/5 p-3 rounded-lg mr-8"
+                      className="bg-gray-100 p-3 rounded-lg mr-8"
                     >
                       <div className="flex items-center gap-2">
-                        <Loader2 className="w-4 h-4 animate-spin text-blue-400" />
-                        <span className="text-sm text-slate-300">AI is thinking...</span>
+                        <Loader2 className="w-4 h-4 animate-spin text-blue-600" />
+                        <span className="text-sm text-gray-600">AI is thinking...</span>
                       </div>
                     </motion.div>
                   )}
@@ -1619,7 +1619,7 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
               </ScrollArea>
 
               {/* AI Input */}
-              <div className="p-4 border-t border-white/10 bg-white/5">
+              <div className="p-4 border-t border-gray-200 bg-gray-50">
                 <div className="flex gap-2">
                   <Input
                     placeholder="Ask me anything..."
@@ -1666,14 +1666,14 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
                     {navItems.map((item) => (
                       <button
                         key={item.id}
-                        className="w-full flex items-center gap-3 px-3 py-2 rounded hover:bg-white/5 text-left"
+                        className="w-full flex items-center gap-3 px-3 py-2 rounded hover:bg-gray-100 text-left"
                         onClick={() => {
                           setCurrentView(item.id as View);
                           setShowCommandPalette(false);
                         }}
                       >
-                        <item.icon className="w-5 h-5 text-slate-300" />
-                        <span className="text-sm text-slate-100">{item.label}</span>
+                        <item.icon className="w-5 h-5 text-gray-600" />
+                        <span className="text-sm text-gray-900">{item.label}</span>
                       </button>
                     ))}
                   </div>
@@ -1700,8 +1700,8 @@ export function AtlasPracticeOS({ userRole = 'partner', onNavigate }: AtlasPract
                 className="bg-white rounded-lg shadow-2xl w-full max-w-md p-6"
                 onClick={(e) => e.stopPropagation()}
               >
-                <h3 className="text-lg font-semibold text-slate-100 mb-4">Export Data</h3>
-                <p className="text-sm text-slate-300 mb-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Export Data</h3>
+                <p className="text-sm text-gray-600 mb-6">
                   Choose a format to export {selectedJobs.length || filteredJobs.length} jobs
                 </p>
                 <div className="grid grid-cols-2 gap-3">

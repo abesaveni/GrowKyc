@@ -125,13 +125,13 @@ export default function SourceOfFundsVerification({ onComplete, onBack }: Props)
           {/* Source Type */}
           <div>
             <label className="block font-medium mb-1" htmlFor="sourceType">
-              Source Type <span className="text-red-400">*</span>
+              Source Type <span className="text-red-600">*</span>
             </label>
             <select
               id="sourceType"
               value={sourceType}
               onChange={(e) => setSourceType(e.target.value)}
-              className="w-full border border-white/10 rounded p-2"
+              className="w-full border border-gray-300 rounded p-2"
               required
             >
               <option value="">Select a source</option>
@@ -146,7 +146,7 @@ export default function SourceOfFundsVerification({ onComplete, onBack }: Props)
           {/* Amount */}
           <div>
             <label className="block font-medium mb-1" htmlFor="amount">
-              Amount (USD) <span className="text-red-400">*</span>
+              Amount (USD) <span className="text-red-600">*</span>
             </label>
             <Input
               id="amount"
@@ -163,7 +163,7 @@ export default function SourceOfFundsVerification({ onComplete, onBack }: Props)
           {/* Narrative */}
           <div>
             <label className="block font-medium mb-1" htmlFor="narrative">
-              Supporting Narrative <span className="text-red-400">*</span>
+              Supporting Narrative <span className="text-red-600">*</span>
             </label>
             <Textarea
               id="narrative"
@@ -178,7 +178,7 @@ export default function SourceOfFundsVerification({ onComplete, onBack }: Props)
           {/* Document Upload */}
           <div>
             <label className="block font-medium mb-1" htmlFor="document">
-              Supporting Document (PDF / Image) <span className="text-red-400">*</span>
+              Supporting Document (PDF / Image) <span className="text-red-600">*</span>
             </label>
             <input
               id="document"
@@ -189,12 +189,12 @@ export default function SourceOfFundsVerification({ onComplete, onBack }: Props)
               className="w-full p-1"
             />
             {isUploading && (
-              <div className="mt-2 text-sm text-slate-300 flex items-center gap-2">
+              <div className="mt-2 text-sm text-gray-600 flex items-center gap-2">
                 <Spinner /> Uploading…
               </div>
             )}
             {documentUrl && (
-              <div className="mt-2 text-sm text-green-400">
+              <div className="mt-2 text-sm text-green-600">
                 Uploaded: <a href={documentUrl} target="_blank" rel="noopener noreferrer" className="underline">
                   {documentUrl.split('/').pop() ?? 'view file'}
                 </a>

@@ -68,49 +68,49 @@ export function CampaignBuilderModal({ campaign, onClose, onSave }: { campaign: 
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-lg shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-white/10 bg-gradient-to-r from-purple-50 to-indigo-50">
+        <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gradient-to-r from-purple-50 to-indigo-50">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-lg bg-purple-600 flex items-center justify-center">
               <Mail className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-slate-100">Campaign Builder</h2>
-              <p className="text-sm text-slate-300">{campaign.name}</p>
+              <h2 className="text-2xl font-bold text-gray-900">Campaign Builder</h2>
+              <p className="text-sm text-gray-600">{campaign.name}</p>
             </div>
           </div>
-          <button onClick={onClose} className="text-gray-400 hover:text-slate-300 transition-colors">
+          <button onClick={onClose} className="text-gray-400 hover:text-gray-600 transition-colors">
             <X className="w-6 h-6" />
           </button>
         </div>
 
         {/* Campaign Info Bar */}
-        <div className="px-6 py-4 bg-white border-b border-white/10">
+        <div className="px-6 py-4 bg-white border-b border-gray-200">
           <div className="flex items-center gap-6 text-sm">
             <div className="flex items-center gap-2">
-              <span className="text-slate-300">Type:</span>
-              <span className="px-2 py-1 bg-purple-500/15 text-purple-300 rounded font-medium">{campaign.type}</span>
+              <span className="text-gray-600">Type:</span>
+              <span className="px-2 py-1 bg-purple-100 text-purple-700 rounded font-medium">{campaign.type}</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-slate-300">Audience:</span>
-              <span className="font-medium text-slate-100">{campaign.audience}</span>
+              <span className="text-gray-600">Audience:</span>
+              <span className="font-medium text-gray-900">{campaign.audience}</span>
             </div>
             {campaign.scheduleType && (
               <div className="flex items-center gap-2">
-                <span className="text-slate-300">Schedule:</span>
-                <span className="font-medium text-slate-100">{campaign.scheduleType}</span>
+                <span className="text-gray-600">Schedule:</span>
+                <span className="font-medium text-gray-900">{campaign.scheduleType}</span>
               </div>
             )}
             {campaign.subject && (
               <div className="flex items-center gap-2">
-                <span className="text-slate-300">Subject:</span>
-                <span className="font-medium text-slate-100">{campaign.subject}</span>
+                <span className="text-gray-600">Subject:</span>
+                <span className="font-medium text-gray-900">{campaign.subject}</span>
               </div>
             )}
           </div>
         </div>
 
         {/* Tabs */}
-        <div className="border-b border-white/10">
+        <div className="border-b border-gray-200">
           <div className="flex px-6">
             {[
               { id: 'design', label: 'Design', icon: Sparkles },
@@ -124,8 +124,8 @@ export function CampaignBuilderModal({ campaign, onClose, onSave }: { campaign: 
                   onClick={() => setActiveBuilderTab(tab.id as any)}
                   className={`flex items-center gap-2 px-4 py-3 border-b-2 transition-colors ${
                     activeBuilderTab === tab.id
-                      ? 'border-purple-600 text-purple-400 font-medium'
-                      : 'border-transparent text-slate-300 hover:text-slate-100'
+                      ? 'border-purple-600 text-purple-600 font-medium'
+                      : 'border-transparent text-gray-600 hover:text-gray-900'
                   }`}
                 >
                   <Icon className="w-4 h-4" />
@@ -180,7 +180,7 @@ export function CampaignBuilderModal({ campaign, onClose, onSave }: { campaign: 
 
               {/* Email Content Editor */}
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-2">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
                   Email Content
                 </label>
                 <textarea
@@ -188,26 +188,26 @@ export function CampaignBuilderModal({ campaign, onClose, onSave }: { campaign: 
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
                   placeholder="Write your email content here, or use AI to generate it..."
-                  className="w-full px-4 py-3 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
                 />
               </div>
 
               {/* Quick Actions */}
               <div className="grid grid-cols-3 gap-4">
-                <button className="p-4 border-2 border-white/10 rounded-lg hover:border-purple-500 transition-colors text-left" onClick={() => setShowButtonModal(true)}>
-                  <Plus className="w-5 h-5 text-purple-400 mb-2" />
-                  <p className="text-sm font-medium text-slate-100">Add Button</p>
-                  <p className="text-xs text-slate-300">Call-to-action button</p>
+                <button className="p-4 border-2 border-gray-300 rounded-lg hover:border-purple-500 transition-colors text-left" onClick={() => setShowButtonModal(true)}>
+                  <Plus className="w-5 h-5 text-purple-600 mb-2" />
+                  <p className="text-sm font-medium text-gray-900">Add Button</p>
+                  <p className="text-xs text-gray-600">Call-to-action button</p>
                 </button>
-                <button className="p-4 border-2 border-white/10 rounded-lg hover:border-purple-500 transition-colors text-left" onClick={() => setShowImageModal(true)}>
-                  <Plus className="w-5 h-5 text-purple-400 mb-2" />
-                  <p className="text-sm font-medium text-slate-100">Add Image</p>
-                  <p className="text-xs text-slate-300">Upload or select image</p>
+                <button className="p-4 border-2 border-gray-300 rounded-lg hover:border-purple-500 transition-colors text-left" onClick={() => setShowImageModal(true)}>
+                  <Plus className="w-5 h-5 text-purple-600 mb-2" />
+                  <p className="text-sm font-medium text-gray-900">Add Image</p>
+                  <p className="text-xs text-gray-600">Upload or select image</p>
                 </button>
-                <button className="p-4 border-2 border-white/10 rounded-lg hover:border-purple-500 transition-colors text-left" onClick={handleAddDivider}>
-                  <Plus className="w-5 h-5 text-purple-400 mb-2" />
-                  <p className="text-sm font-medium text-slate-100">Add Divider</p>
-                  <p className="text-xs text-slate-300">Horizontal line</p>
+                <button className="p-4 border-2 border-gray-300 rounded-lg hover:border-purple-500 transition-colors text-left" onClick={handleAddDivider}>
+                  <Plus className="w-5 h-5 text-purple-600 mb-2" />
+                  <p className="text-sm font-medium text-gray-900">Add Divider</p>
+                  <p className="text-xs text-gray-600">Horizontal line</p>
                 </button>
               </div>
             </div>
@@ -215,14 +215,14 @@ export function CampaignBuilderModal({ campaign, onClose, onSave }: { campaign: 
 
           {activeBuilderTab === 'html' && (
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-2">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
                 HTML Source Code
               </label>
               <textarea
                 rows={20}
                 value={previewHTML || generatePreview()}
                 onChange={(e) => setPreviewHTML(e.target.value)}
-                className="w-full px-4 py-3 border border-white/10 rounded-lg text-sm font-mono focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm font-mono focus:outline-none focus:ring-2 focus:ring-purple-500"
                 placeholder="Enter HTML code..."
               />
             </div>
@@ -230,17 +230,17 @@ export function CampaignBuilderModal({ campaign, onClose, onSave }: { campaign: 
 
           {activeBuilderTab === 'preview' && (
             <div className="space-y-4">
-              <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
-                <div className="flex items-center gap-2 text-sm text-blue-300">
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <div className="flex items-center gap-2 text-sm text-blue-800">
                   <Eye className="w-4 h-4" />
                   <p>This is how your email will appear to recipients</p>
                 </div>
               </div>
-              <div className="border-2 border-white/10 rounded-lg overflow-hidden bg-white/5">
-                <div className="border-b border-white/10 bg-white/5 px-4 py-3">
-                  <p className="text-xs text-slate-300">From: marketing@company.com</p>
-                  <p className="text-xs text-slate-300 mt-1">To: {campaign.audience}</p>
-                  <p className="text-xs font-medium text-slate-100 mt-1">Subject: {campaign.subject || 'Your subject line'}</p>
+              <div className="border-2 border-gray-300 rounded-lg overflow-hidden bg-gray-100">
+                <div className="border-b border-gray-300 bg-gray-50 px-4 py-3">
+                  <p className="text-xs text-gray-600">From: marketing@company.com</p>
+                  <p className="text-xs text-gray-600 mt-1">To: {campaign.audience}</p>
+                  <p className="text-xs font-medium text-gray-900 mt-1">Subject: {campaign.subject || 'Your subject line'}</p>
                 </div>
                 <div 
                   className="bg-white" 
@@ -252,7 +252,7 @@ export function CampaignBuilderModal({ campaign, onClose, onSave }: { campaign: 
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between p-6 border-t border-white/10 bg-white/5">
+        <div className="flex items-center justify-between p-6 border-t border-gray-200 bg-gray-50">
           <Button type="button" variant="outline" onClick={onClose}>
             <X className="w-4 h-4 mr-2" />
             Save as Draft
@@ -292,41 +292,41 @@ function AddButtonModal({ onClose, onAdd }: { onClose: () => void, onAdd: (text:
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[60] p-4">
       <div className="bg-white rounded-lg shadow-2xl max-w-md w-full">
-        <div className="flex items-center justify-between p-6 border-b border-white/10">
-          <h3 className="text-lg font-bold text-slate-100">Add Call-to-Action Button</h3>
-          <button onClick={onClose} className="text-gray-400 hover:text-slate-300">
+        <div className="flex items-center justify-between p-6 border-b border-gray-200">
+          <h3 className="text-lg font-bold text-gray-900">Add Call-to-Action Button</h3>
+          <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
             <X className="w-5 h-5" />
           </button>
         </div>
         <div className="p-6 space-y-4">
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-2">Button Text</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Button Text</label>
             <input
               type="text"
               value={buttonText}
               onChange={(e) => setButtonText(e.target.value)}
-              className="w-full px-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
               placeholder="e.g., Get Started, Learn More"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-2">Button URL</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Button URL</label>
             <input
               type="url"
               value={buttonUrl}
               onChange={(e) => setButtonUrl(e.target.value)}
-              className="w-full px-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
               placeholder="https://example.com"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-2">Button Color</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Button Color</label>
             <div className="flex gap-3">
               {['#9333ea', '#2563eb', '#059669', '#ea580c', '#dc2626'].map((color) => (
                 <button
                   key={color}
                   onClick={() => setButtonColor(color)}
-                  className={`w-10 h-10 rounded-lg border-2 ${buttonColor === color ? 'border-gray-900' : 'border-white/10'}`}
+                  className={`w-10 h-10 rounded-lg border-2 ${buttonColor === color ? 'border-gray-900' : 'border-gray-300'}`}
                   style={{ backgroundColor: color }}
                 />
               ))}
@@ -341,7 +341,7 @@ function AddButtonModal({ onClose, onAdd }: { onClose: () => void, onAdd: (text:
             </div>
           </div>
         </div>
-        <div className="flex gap-3 p-6 border-t border-white/10 bg-white/5">
+        <div className="flex gap-3 p-6 border-t border-gray-200 bg-gray-50">
           <Button type="button" variant="outline" onClick={onClose} className="flex-1">
             Cancel
           </Button>
@@ -374,36 +374,36 @@ function AddImageModal({ onClose, onAdd }: { onClose: () => void, onAdd: (url: s
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[60] p-4">
       <div className="bg-white rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-        <div className="flex items-center justify-between p-6 border-b border-white/10">
-          <h3 className="text-lg font-bold text-slate-100">Add Image</h3>
-          <button onClick={onClose} className="text-gray-400 hover:text-slate-300">
+        <div className="flex items-center justify-between p-6 border-b border-gray-200">
+          <h3 className="text-lg font-bold text-gray-900">Add Image</h3>
+          <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
             <X className="w-5 h-5" />
           </button>
         </div>
         <div className="p-6 space-y-4">
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-2">Image URL</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Image URL</label>
             <input
               type="url"
               value={imageUrl}
               onChange={(e) => setImageUrl(e.target.value)}
-              className="w-full px-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
               placeholder="https://example.com/image.jpg"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-2">Alt Text (for accessibility)</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Alt Text (for accessibility)</label>
             <input
               type="text"
               value={altText}
               onChange={(e) => setAltText(e.target.value)}
-              className="w-full px-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
               placeholder="Describe the image"
             />
           </div>
 
-          <div className="border-t border-white/10 pt-4 mt-4">
-            <p className="text-sm font-medium text-slate-300 mb-3">Or select from stock images:</p>
+          <div className="border-t border-gray-200 pt-4 mt-4">
+            <p className="text-sm font-medium text-gray-700 mb-3">Or select from stock images:</p>
             <div className="grid grid-cols-2 gap-3">
               {stockImages.map((img, idx) => (
                 <button
@@ -412,7 +412,7 @@ function AddImageModal({ onClose, onAdd }: { onClose: () => void, onAdd: (url: s
                     setImageUrl(img.url);
                     setAltText(img.alt);
                   }}
-                  className="relative group overflow-hidden rounded-lg border-2 border-white/10 hover:border-purple-500 transition-colors"
+                  className="relative group overflow-hidden rounded-lg border-2 border-gray-300 hover:border-purple-500 transition-colors"
                 >
                   <img src={img.url} alt={img.alt} className="w-full h-32 object-cover" />
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity flex items-center justify-center">
@@ -424,13 +424,13 @@ function AddImageModal({ onClose, onAdd }: { onClose: () => void, onAdd: (url: s
           </div>
 
           {imageUrl && (
-            <div className="border-t border-white/10 pt-4">
-              <p className="text-sm font-medium text-slate-300 mb-2">Preview:</p>
-              <img src={imageUrl} alt={altText} className="w-full rounded-lg border border-white/10" />
+            <div className="border-t border-gray-200 pt-4">
+              <p className="text-sm font-medium text-gray-700 mb-2">Preview:</p>
+              <img src={imageUrl} alt={altText} className="w-full rounded-lg border border-gray-300" />
             </div>
           )}
         </div>
-        <div className="flex gap-3 p-6 border-t border-white/10 bg-white/5">
+        <div className="flex gap-3 p-6 border-t border-gray-200 bg-gray-50">
           <Button type="button" variant="outline" onClick={onClose} className="flex-1">
             Cancel
           </Button>

@@ -48,7 +48,7 @@ export function EnterpriseFeaturesSummary() {
       title: 'Client Onboarding',
       icon: Users,
       color: 'text-[#13B5EA]',
-      bgColor: 'bg-blue-500/10',
+      bgColor: 'bg-blue-50',
       features: [
         { name: '100-Point ID Verification', icon: CheckCircle },
         { name: 'Biometric Verification', icon: Eye },
@@ -62,7 +62,7 @@ export function EnterpriseFeaturesSummary() {
       title: 'AML/CTF Compliance',
       icon: Shield,
       color: 'text-[#0E7C9E]',
-      bgColor: 'bg-cyan-500/10',
+      bgColor: 'bg-cyan-50',
       features: [
         { name: 'Real-time Sanctions Screening', icon: AlertTriangle },
         { name: 'PEP Database Check', icon: Users },
@@ -75,8 +75,8 @@ export function EnterpriseFeaturesSummary() {
     {
       title: 'Risk Management',
       icon: Target,
-      color: 'text-red-400',
-      bgColor: 'bg-red-500/10',
+      color: 'text-red-600',
+      bgColor: 'bg-red-50',
       features: [
         { name: 'Automated Risk Scoring', icon: BarChart3 },
         { name: 'Risk Profile Analysis', icon: TrendingUp },
@@ -90,7 +90,7 @@ export function EnterpriseFeaturesSummary() {
       title: 'Fraud Detection',
       icon: AlertCircle,
       color: 'text-[#FFA300]',
-      bgColor: 'bg-orange-500/10',
+      bgColor: 'bg-orange-50',
       features: [
         { name: 'Identity Theft Detection', icon: AlertTriangle },
         { name: 'Document Forgery Analysis', icon: FileText },
@@ -104,7 +104,7 @@ export function EnterpriseFeaturesSummary() {
       title: 'Integrations Ecosystem',
       icon: Zap,
       color: 'text-[#3DD598]',
-      bgColor: 'bg-green-500/10',
+      bgColor: 'bg-green-50',
       features: [
         { name: '50+ Integration Partners', icon: Network },
         { name: 'Accounting Software (14)', icon: DollarSign },
@@ -117,8 +117,8 @@ export function EnterpriseFeaturesSummary() {
     {
       title: 'Ongoing Monitoring',
       icon: Activity,
-      color: 'text-purple-400',
-      bgColor: 'bg-purple-500/10',
+      color: 'text-purple-600',
+      bgColor: 'bg-purple-50',
       features: [
         { name: 'Continuous Surveillance', icon: Eye },
         { name: 'Transaction Monitoring', icon: Activity },
@@ -131,8 +131,8 @@ export function EnterpriseFeaturesSummary() {
     {
       title: 'Reporting & Analytics',
       icon: BarChart3,
-      color: 'text-indigo-400',
-      bgColor: 'bg-indigo-500/10',
+      color: 'text-indigo-600',
+      bgColor: 'bg-indigo-50',
       features: [
         { name: 'Executive Dashboards', icon: BarChart3 },
         { name: 'Compliance Reports', icon: FileText },
@@ -145,8 +145,8 @@ export function EnterpriseFeaturesSummary() {
     {
       title: 'AI & Automation',
       icon: Sparkles,
-      color: 'text-pink-400',
-      bgColor: 'bg-pink-500/10',
+      color: 'text-pink-600',
+      bgColor: 'bg-pink-50',
       features: [
         { name: 'Compliance Copilot AI', icon: Sparkles },
         { name: 'Natural Language Queries', icon: MessageSquare },
@@ -159,8 +159,8 @@ export function EnterpriseFeaturesSummary() {
     {
       title: 'Global Compliance',
       icon: Globe,
-      color: 'text-teal-400',
-      bgColor: 'bg-teal-500/10',
+      color: 'text-teal-600',
+      bgColor: 'bg-teal-50',
       features: [
         { name: '7 Countries Supported', icon: Globe },
         { name: 'Multi-jurisdictional Rules', icon: Shield },
@@ -173,8 +173,8 @@ export function EnterpriseFeaturesSummary() {
     {
       title: 'Case Management',
       icon: Briefcase,
-      color: 'text-amber-400',
-      bgColor: 'bg-amber-500/10',
+      color: 'text-amber-600',
+      bgColor: 'bg-amber-50',
       features: [
         { name: 'Comprehensive Workspace', icon: Briefcase },
         { name: 'Task Management', icon: CheckCircle },
@@ -187,8 +187,8 @@ export function EnterpriseFeaturesSummary() {
     {
       title: 'Security & Access',
       icon: Lock,
-      color: 'text-slate-300',
-      bgColor: 'bg-[#0f172a]',
+      color: 'text-gray-700',
+      bgColor: 'bg-gray-50',
       features: [
         { name: 'Role-Based Access Control', icon: Shield },
         { name: 'MFA Ready', icon: Lock },
@@ -201,8 +201,8 @@ export function EnterpriseFeaturesSummary() {
     {
       title: 'Client Portal',
       icon: Users,
-      color: 'text-blue-400',
-      bgColor: 'bg-blue-500/10',
+      color: 'text-blue-600',
+      bgColor: 'bg-blue-50',
       features: [
         { name: 'Self-Service Onboarding', icon: Users },
         { name: 'Document Upload', icon: Upload },
@@ -219,10 +219,10 @@ export function EnterpriseFeaturesSummary() {
     { label: 'Supported Countries', value: '7', icon: Globe, color: 'text-[#0E7C9E]' },
     { label: 'AI Bots', value: '22', icon: Sparkles, color: 'text-[#3DD598]' },
     { label: 'Client Profile Tabs', value: '17', icon: FileText, color: 'text-[#FFA300]' },
-    { label: 'Compliance Frameworks', value: '7', icon: Shield, color: 'text-purple-400' },
-    { label: 'Verification Methods', value: '15+', icon: CheckCircle, color: 'text-green-400' },
-    { label: 'Entity Types', value: '6', icon: Building2, color: 'text-indigo-400' },
-    { label: 'Regulatory Reports', value: '25+', icon: BarChart3, color: 'text-pink-400' }
+    { label: 'Compliance Frameworks', value: '7', icon: Shield, color: 'text-purple-600' },
+    { label: 'Verification Methods', value: '15+', icon: CheckCircle, color: 'text-green-600' },
+    { label: 'Entity Types', value: '6', icon: Building2, color: 'text-indigo-600' },
+    { label: 'Regulatory Reports', value: '25+', icon: BarChart3, color: 'text-pink-600' }
   ];
 
   return (
@@ -233,10 +233,10 @@ export function EnterpriseFeaturesSummary() {
           <Award className="w-5 h-5 text-white" />
           <span className="text-white font-semibold">Enterprise-Grade KYC Platform</span>
         </div>
-        <h1 className="text-4xl font-bold text-white mb-3">
+        <h1 className="text-4xl font-bold text-gray-900 mb-3">
           Grow KYC™ Operating System
         </h1>
-        <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
           The world's most comprehensive regulatory compliance and KYC platform, 
           powering financial institutions, accounting firms, and professional services globally.
         </p>
@@ -250,8 +250,8 @@ export function EnterpriseFeaturesSummary() {
             <Card key={index} className="text-center hover:shadow-lg transition-shadow">
               <CardContent className="p-4">
                 <Icon className={`w-8 h-8 ${stat.color} mx-auto mb-2`} />
-                <p className="text-2xl font-bold text-white">{stat.value}</p>
-                <p className="text-xs text-slate-300 mt-1">{stat.label}</p>
+                <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
+                <p className="text-xs text-gray-600 mt-1">{stat.label}</p>
               </CardContent>
             </Card>
           );
@@ -266,10 +266,10 @@ export function EnterpriseFeaturesSummary() {
             <Card key={index} className="hover:shadow-xl transition-shadow">
               <CardHeader className={`${category.bgColor} border-b`}>
                 <CardTitle className="flex items-center gap-3">
-                  <div className={`p-2 bg-[#1e293b] rounded-lg ${category.color}`}>
+                  <div className={`p-2 bg-white rounded-lg ${category.color}`}>
                     <CategoryIcon className="w-6 h-6" />
                   </div>
-                  <span className="text-white">{category.title}</span>
+                  <span className="text-gray-900">{category.title}</span>
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-6">
@@ -277,7 +277,7 @@ export function EnterpriseFeaturesSummary() {
                   {category.features.map((feature, fIndex) => {
                     const FeatureIcon = feature.icon;
                     return (
-                      <li key={fIndex} className="flex items-center gap-3 text-slate-300">
+                      <li key={fIndex} className="flex items-center gap-3 text-gray-700">
                         <FeatureIcon className={`w-4 h-4 ${category.color} flex-shrink-0`} />
                         <span className="text-sm">{feature.name}</span>
                       </li>

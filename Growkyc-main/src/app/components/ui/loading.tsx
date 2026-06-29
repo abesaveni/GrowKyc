@@ -20,7 +20,7 @@ export function LoadingSpinner({ size = 'md', text, className, fullScreen = fals
   const spinner = (
     <div className={cn('flex flex-col items-center justify-center gap-3', className)}>
       <Loader2 className={cn('animate-spin text-primary', sizeClasses[size])} />
-      {text && <p className="text-sm text-slate-300">{text}</p>}
+      {text && <p className="text-sm text-gray-600">{text}</p>}
     </div>
   );
 
@@ -49,7 +49,7 @@ export function Skeleton({ className, variant = 'rectangular' }: SkeletonProps) 
   };
 
   return (
-    <div className={cn('animate-pulse bg-white/10', variantClasses[variant], className)} />
+    <div className={cn('animate-pulse bg-gray-200', variantClasses[variant], className)} />
   );
 }
 

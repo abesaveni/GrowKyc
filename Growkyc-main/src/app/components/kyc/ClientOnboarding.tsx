@@ -424,8 +424,8 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="mb-8 text-center">
-          <h1 className="text-4xl font-bold text-slate-100 mb-2">Grow KYC Verification</h1>
-          <p className="text-slate-300">Secure, fast, and compliant identity verification</p>
+          <h1 className="text-4xl font-bold text-gray-900 mb-2">Grow KYC Verification</h1>
+          <p className="text-gray-600">Secure, fast, and compliant identity verification</p>
         </div>
 
         {/* Progress Bar */}
@@ -442,19 +442,19 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                     <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-2 transition-all ${
                       isComplete ? 'bg-green-500 text-white' :
                       isActive ? 'bg-cyan-500 text-white' :
-                      'bg-white/10 text-slate-400'
+                      'bg-gray-200 text-gray-500'
                     }`}>
                       {isComplete ? <Check className="w-6 h-6" /> : <Icon className="w-6 h-6" />}
                     </div>
                     <p className={`text-xs font-semibold hidden md:block ${
-                      isActive ? 'text-cyan-400' : isComplete ? 'text-green-400' : 'text-slate-400'
+                      isActive ? 'text-cyan-600' : isComplete ? 'text-green-600' : 'text-gray-500'
                     }`}>
                       {step.label}
                     </p>
                   </div>
                   {idx < steps.length - 1 && (
                     <div className={`flex-1 h-1 mx-2 rounded ${
-                      idx < currentStepIndex ? 'bg-green-500' : 'bg-white/10'
+                      idx < currentStepIndex ? 'bg-green-500' : 'bg-gray-200'
                     }`} />
                   )}
                 </React.Fragment>
@@ -464,114 +464,114 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
         </div>
 
         {/* Main Content Card */}
-        <Card className="border-2 border-cyan-500/30 shadow-2xl">
+        <Card className="border-2 border-cyan-200 shadow-2xl">
           <CardContent className="p-8">
             {/* STEP 1: Personal Details */}
             {currentStep === 'personal' && (
               <div className="space-y-6">
                 <div>
-                  <h2 className="text-2xl font-bold text-slate-100 mb-2">Complete your identity verification</h2>
-                  <p className="text-slate-300">We use this to verify who you are and discover any linked entities or associated parties.</p>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">Complete your identity verification</h2>
+                  <p className="text-gray-600">We use this to verify who you are and discover any linked entities or associated parties.</p>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-semibold text-slate-300 mb-2">
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
                       First Name <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
                       value={formData.firstName}
                       onChange={(e) => updateFormData('firstName', e.target.value)}
-                      className="w-full px-4 py-2 border-2 border-white/10 rounded-lg focus:border-cyan-500 focus:outline-none"
+                      className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-cyan-500 focus:outline-none"
                       placeholder="Enter first name"
                     />
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-semibold text-slate-300 mb-2">Middle Name</label>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Middle Name</label>
                     <input
                       type="text"
                       value={formData.middleName}
                       onChange={(e) => updateFormData('middleName', e.target.value)}
-                      className="w-full px-4 py-2 border-2 border-white/10 rounded-lg focus:border-cyan-500 focus:outline-none"
+                      className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-cyan-500 focus:outline-none"
                       placeholder="Enter middle name"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-slate-300 mb-2">
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
                       Last Name <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
                       value={formData.lastName}
                       onChange={(e) => updateFormData('lastName', e.target.value)}
-                      className="w-full px-4 py-2 border-2 border-white/10 rounded-lg focus:border-cyan-500 focus:outline-none"
+                      className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-cyan-500 focus:outline-none"
                       placeholder="Enter last name"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-slate-300 mb-2">
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
                       Date of Birth <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="date"
                       value={formData.dob}
                       onChange={(e) => updateFormData('dob', e.target.value)}
-                      className="w-full px-4 py-2 border-2 border-white/10 rounded-lg focus:border-cyan-500 focus:outline-none"
+                      className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-cyan-500 focus:outline-none"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-slate-300 mb-2">
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
                       Email <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="email"
                       value={formData.email}
                       onChange={(e) => updateFormData('email', e.target.value)}
-                      className="w-full px-4 py-2 border-2 border-white/10 rounded-lg focus:border-cyan-500 focus:outline-none"
+                      className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-cyan-500 focus:outline-none"
                       placeholder="your@email.com"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-slate-300 mb-2">
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
                       Mobile <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="tel"
                       value={formData.mobile}
                       onChange={(e) => updateFormData('mobile', e.target.value)}
-                      className="w-full px-4 py-2 border-2 border-white/10 rounded-lg focus:border-cyan-500 focus:outline-none"
+                      className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-cyan-500 focus:outline-none"
                       placeholder="+61 4XX XXX XXX"
                     />
                   </div>
 
                   <div className="md:col-span-2">
-                    <label className="block text-sm font-semibold text-slate-300 mb-2">
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
                       Residential Address <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
                       value={formData.residentialAddress}
                       onChange={(e) => updateFormData('residentialAddress', e.target.value)}
-                      className="w-full px-4 py-2 border-2 border-white/10 rounded-lg focus:border-cyan-500 focus:outline-none"
+                      className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-cyan-500 focus:outline-none"
                       placeholder="Start typing your address..."
                     />
-                    <p className="text-xs text-slate-400 mt-1">Address autocomplete enabled</p>
+                    <p className="text-xs text-gray-500 mt-1">Address autocomplete enabled</p>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-slate-300 mb-2">
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
                       Country <span className="text-red-500">*</span>
                     </label>
                     <select
                       value={formData.country}
                       onChange={(e) => updateFormData('country', e.target.value)}
-                      className="w-full px-4 py-2 border-2 border-white/10 rounded-lg focus:border-cyan-500 focus:outline-none"
+                      className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-cyan-500 focus:outline-none"
                     >
                       <option value="Australia">Australia</option>
                       <option value="New Zealand">New Zealand</option>
@@ -582,63 +582,63 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-slate-300 mb-2">
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
                       Citizenship <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
                       value={formData.citizenship}
                       onChange={(e) => updateFormData('citizenship', e.target.value)}
-                      className="w-full px-4 py-2 border-2 border-white/10 rounded-lg focus:border-cyan-500 focus:outline-none"
+                      className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-cyan-500 focus:outline-none"
                       placeholder="e.g., Australian"
                     />
                   </div>
 
                   <div className="md:col-span-2">
-                    <label className="block text-sm font-semibold text-slate-300 mb-2">Postal Address (if different)</label>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Postal Address (if different)</label>
                     <input
                       type="text"
                       value={formData.postalAddress}
                       onChange={(e) => updateFormData('postalAddress', e.target.value)}
-                      className="w-full px-4 py-2 border-2 border-white/10 rounded-lg focus:border-cyan-500 focus:outline-none"
+                      className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-cyan-500 focus:outline-none"
                       placeholder="Leave blank if same as residential"
                     />
                   </div>
 
                   <div className="md:col-span-2">
-                    <label className="block text-sm font-semibold text-slate-300 mb-2">
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
                       Occupation <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
                       value={formData.occupation}
                       onChange={(e) => updateFormData('occupation', e.target.value)}
-                      className="w-full px-4 py-2 border-2 border-white/10 rounded-lg focus:border-cyan-500 focus:outline-none"
+                      className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-cyan-500 focus:outline-none"
                       placeholder="e.g., Software Engineer, Business Owner"
                     />
                   </div>
 
                   <div className="md:col-span-2">
-                    <label className="flex items-center gap-2 p-4 bg-blue-500/10 rounded-lg border-2 border-blue-500/30 cursor-pointer hover:bg-blue-500/15 transition-colors">
+                    <label className="flex items-center gap-2 p-4 bg-blue-50 rounded-lg border-2 border-blue-200 cursor-pointer hover:bg-blue-100 transition-colors">
                       <input
                         type="checkbox"
                         checked={formData.actingForEntity}
                         onChange={(e) => updateFormData('actingForEntity', e.target.checked)}
                         className="w-5 h-5"
                       />
-                      <span className="text-sm font-semibold text-slate-100">
+                      <span className="text-sm font-semibold text-gray-900">
                         Are you acting for an entity (company, trust, partnership)?
                       </span>
                     </label>
                   </div>
                 </div>
 
-                <div className="bg-cyan-500/10 rounded-lg p-4 border border-cyan-500/30">
+                <div className="bg-cyan-50 rounded-lg p-4 border border-cyan-200">
                   <div className="flex gap-2">
-                    <Lock className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
+                    <Lock className="w-5 h-5 text-cyan-600 flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-sm font-semibold text-cyan-300">Your data is secure</p>
-                      <p className="text-xs text-cyan-300 mt-1">
+                      <p className="text-sm font-semibold text-cyan-900">Your data is secure</p>
+                      <p className="text-xs text-cyan-700 mt-1">
                         All information is encrypted and handled in accordance with Australian privacy laws.
                       </p>
                     </div>
@@ -651,13 +651,13 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
             {currentStep === 'upload-id' && (
               <div className="space-y-6">
                 <div>
-                  <h2 className="text-2xl font-bold text-slate-100 mb-2">Upload your ID</h2>
-                  <p className="text-slate-300">We accept passport, driver's license, or national ID card.</p>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">Upload your ID</h2>
+                  <p className="text-gray-600">We accept passport, driver's license, or national ID card.</p>
                 </div>
 
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-semibold text-slate-300 mb-3">
+                    <label className="block text-sm font-semibold text-gray-700 mb-3">
                       Select ID Type <span className="text-red-500">*</span>
                     </label>
                     <div className="grid md:grid-cols-3 gap-3">
@@ -667,26 +667,26 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                           onClick={() => updateFormData('idType', type)}
                           className={`p-4 rounded-lg border-2 transition-all ${
                             formData.idType === type
-                              ? 'border-cyan-500 bg-cyan-500/10'
-                              : 'border-white/10 hover:border-cyan-300'
+                              ? 'border-cyan-500 bg-cyan-50'
+                              : 'border-gray-300 hover:border-cyan-300'
                           }`}
                         >
                           <FileText className={`w-8 h-8 mx-auto mb-2 ${
-                            formData.idType === type ? 'text-cyan-400' : 'text-gray-400'
+                            formData.idType === type ? 'text-cyan-600' : 'text-gray-400'
                           }`} />
-                          <p className="text-sm font-semibold text-slate-100">{type}</p>
+                          <p className="text-sm font-semibold text-gray-900">{type}</p>
                         </button>
                       ))}
                     </div>
                   </div>
 
                   {formData.idType && (
-                    <div className="border-2 border-dashed border-white/10 rounded-lg p-8 text-center hover:border-cyan-400 transition-colors cursor-pointer">
+                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-cyan-400 transition-colors cursor-pointer">
                       <Upload className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                      <p className="text-lg font-semibold text-slate-100 mb-2">
+                      <p className="text-lg font-semibold text-gray-900 mb-2">
                         {formData.idUploaded ? 'Document Uploaded ✓' : 'Click to upload or drag and drop'}
                       </p>
-                      <p className="text-sm text-slate-300 mb-4">
+                      <p className="text-sm text-gray-600 mb-4">
                         Accepted formats: JPG, PNG, PDF (max 10MB)
                       </p>
                       {!formData.idUploaded && (
@@ -699,10 +699,10 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                         </Button>
                       )}
                       {formData.idUploaded && (
-                        <div className="bg-green-500/10 rounded-lg p-4 border border-green-500/30 inline-block">
+                        <div className="bg-green-50 rounded-lg p-4 border border-green-200 inline-block">
                           <div className="flex items-center gap-2">
-                            <CheckCircle className="w-5 h-5 text-green-400" />
-                            <span className="text-sm font-semibold text-green-300">
+                            <CheckCircle className="w-5 h-5 text-green-600" />
+                            <span className="text-sm font-semibold text-green-900">
                               {formData.idType}_scan.pdf
                             </span>
                           </div>
@@ -711,9 +711,9 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                     </div>
                   )}
 
-                  <div className="bg-blue-500/10 rounded-lg p-4 border border-blue-500/30">
-                    <p className="text-sm font-semibold text-blue-300 mb-2">Tips for best results:</p>
-                    <ul className="text-sm text-blue-300 space-y-1 ml-4">
+                  <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
+                    <p className="text-sm font-semibold text-blue-900 mb-2">Tips for best results:</p>
+                    <ul className="text-sm text-blue-800 space-y-1 ml-4">
                       <li>• Ensure all text is clearly visible</li>
                       <li>• Avoid glare and shadows</li>
                       <li>• Capture the entire document</li>
@@ -728,12 +728,12 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
             {currentStep === 'consent' && (
               <div className="space-y-6">
                 <div>
-                  <h2 className="text-2xl font-bold text-slate-100 mb-2">Your consent</h2>
-                  <p className="text-slate-300">Please review and accept the following:</p>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">Your consent</h2>
+                  <p className="text-gray-600">Please review and accept the following:</p>
                 </div>
 
                 <div className="space-y-3">
-                  <label className="flex items-start gap-3 p-4 bg-white/5 rounded-lg border-2 border-white/10 cursor-pointer hover:bg-white/5 transition-colors">
+                  <label className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg border-2 border-gray-200 cursor-pointer hover:bg-gray-100 transition-colors">
                     <input
                       type="checkbox"
                       checked={formData.consentIdentity}
@@ -741,14 +741,14 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                       className="w-5 h-5 mt-0.5 flex-shrink-0"
                     />
                     <div>
-                      <p className="font-semibold text-slate-100">Consent to identity verification</p>
-                      <p className="text-sm text-slate-300 mt-1">
+                      <p className="font-semibold text-gray-900">Consent to identity verification</p>
+                      <p className="text-sm text-gray-600 mt-1">
                         I consent to Grow verifying my identity using trusted third-party providers including Equifax and InfoTrack.
                       </p>
                     </div>
                   </label>
 
-                  <label className="flex items-start gap-3 p-4 bg-white/5 rounded-lg border-2 border-white/10 cursor-pointer hover:bg-white/5 transition-colors">
+                  <label className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg border-2 border-gray-200 cursor-pointer hover:bg-gray-100 transition-colors">
                     <input
                       type="checkbox"
                       checked={formData.consentAML}
@@ -756,14 +756,14 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                       className="w-5 h-5 mt-0.5 flex-shrink-0"
                     />
                     <div>
-                      <p className="font-semibold text-slate-100">Consent to AML screening</p>
-                      <p className="text-sm text-slate-300 mt-1">
+                      <p className="font-semibold text-gray-900">Consent to AML screening</p>
+                      <p className="text-sm text-gray-600 mt-1">
                         I consent to Grow conducting AML/CTF checks including sanctions, PEP, and adverse media screening.
                       </p>
                     </div>
                   </label>
 
-                  <label className="flex items-start gap-3 p-4 bg-white/5 rounded-lg border-2 border-white/10 cursor-pointer hover:bg-white/5 transition-colors">
+                  <label className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg border-2 border-gray-200 cursor-pointer hover:bg-gray-100 transition-colors">
                     <input
                       type="checkbox"
                       checked={formData.consentMonitoring}
@@ -771,14 +771,14 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                       className="w-5 h-5 mt-0.5 flex-shrink-0"
                     />
                     <div>
-                      <p className="font-semibold text-slate-100">Consent to ongoing monitoring</p>
-                      <p className="text-sm text-slate-300 mt-1">
+                      <p className="font-semibold text-gray-900">Consent to ongoing monitoring</p>
+                      <p className="text-sm text-gray-600 mt-1">
                         I consent to ongoing monitoring of my profile for compliance purposes during the course of our relationship.
                       </p>
                     </div>
                   </label>
 
-                  <label className="flex items-start gap-3 p-4 bg-white/5 rounded-lg border-2 border-white/10 cursor-pointer hover:bg-white/5 transition-colors">
+                  <label className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg border-2 border-gray-200 cursor-pointer hover:bg-gray-100 transition-colors">
                     <input
                       type="checkbox"
                       checked={formData.confirmAccurate}
@@ -786,8 +786,8 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                       className="w-5 h-5 mt-0.5 flex-shrink-0"
                     />
                     <div>
-                      <p className="font-semibold text-slate-100">Confirm information is accurate</p>
-                      <p className="text-sm text-slate-300 mt-1">
+                      <p className="font-semibold text-gray-900">Confirm information is accurate</p>
+                      <p className="text-sm text-gray-600 mt-1">
                         I confirm that all information provided is true, accurate, and complete to the best of my knowledge.
                       </p>
                     </div>
@@ -795,11 +795,11 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                 </div>
 
                 <div className="space-y-2">
-                  <button className="text-sm text-cyan-400 hover:text-cyan-300 font-semibold flex items-center gap-1">
+                  <button className="text-sm text-cyan-600 hover:text-cyan-700 font-semibold flex items-center gap-1">
                     <Eye className="w-4 h-4" />
                     View Privacy Policy
                   </button>
-                  <button className="text-sm text-cyan-400 hover:text-cyan-300 font-semibold flex items-center gap-1">
+                  <button className="text-sm text-cyan-600 hover:text-cyan-700 font-semibold flex items-center gap-1">
                     <Eye className="w-4 h-4" />
                     View Terms & Conditions
                   </button>
@@ -842,13 +842,13 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                       { n: 3, label: 'Confirm', done: false },
                     ].map((step, i) => (
                       <React.Fragment key={step.n}>
-                        <div className={`flex items-center gap-2 ${step.done ? 'text-cyan-300' : 'text-gray-400'}`}>
+                        <div className={`flex items-center gap-2 ${step.done ? 'text-cyan-700' : 'text-gray-400'}`}>
                           <span className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold border-2 ${
-                            step.done ? 'bg-cyan-600 border-cyan-600 text-white' : 'border-white/10 bg-white'
+                            step.done ? 'bg-cyan-600 border-cyan-600 text-white' : 'border-gray-300 bg-white'
                           }`}>{step.done ? <Check className="w-3.5 h-3.5" /> : step.n}</span>
                           <span className="font-medium hidden sm:inline">{step.label}</span>
                         </div>
-                        {i < 2 && <div className={`flex-1 h-0.5 rounded ${step.done ? 'bg-cyan-400' : 'bg-white/10'}`} />}
+                        {i < 2 && <div className={`flex-1 h-0.5 rounded ${step.done ? 'bg-cyan-400' : 'bg-gray-200'}`} />}
                       </React.Fragment>
                     ))}
                   </div>
@@ -857,60 +857,60 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                 <div className="grid lg:grid-cols-5 gap-6">
                   {/* Order summary */}
                   <div className="lg:col-span-2">
-                    <div className="bg-white rounded-2xl border-2 border-white/10 shadow-sm p-5 sticky top-4 space-y-4">
+                    <div className="bg-white rounded-2xl border-2 border-gray-100 shadow-sm p-5 sticky top-4 space-y-4">
                       <div className="flex items-center gap-2">
-                        <CircleDollarSign className="w-5 h-5 text-cyan-400" />
-                        <p className="font-bold text-slate-100">Order Summary</p>
+                        <CircleDollarSign className="w-5 h-5 text-cyan-600" />
+                        <p className="font-bold text-gray-900">Order Summary</p>
                       </div>
                       <div className="space-y-3 text-sm">
-                        <div className="flex justify-between items-start gap-3 p-3 bg-white/5 rounded-lg">
+                        <div className="flex justify-between items-start gap-3 p-3 bg-gray-50 rounded-lg">
                           <div>
-                            <p className="font-medium text-slate-100">Identity & AML verification</p>
-                            <p className="text-xs text-slate-400 mt-0.5">Equifax + ComplyAdvantage</p>
+                            <p className="font-medium text-gray-900">Identity & AML verification</p>
+                            <p className="text-xs text-gray-500 mt-0.5">Equifax + ComplyAdvantage</p>
                           </div>
-                          <span className="font-semibold text-slate-100">${baseFee.toFixed(2)}</span>
+                          <span className="font-semibold text-gray-900">${baseFee.toFixed(2)}</span>
                         </div>
                         {formData.actingForEntity && (
-                          <div className="flex justify-between items-start gap-3 p-3 bg-white/5 rounded-lg">
+                          <div className="flex justify-between items-start gap-3 p-3 bg-gray-50 rounded-lg">
                             <div>
-                              <p className="font-medium text-slate-100">Entity structure review</p>
-                              <p className="text-xs text-slate-400 mt-0.5">ASIC + ownership mapping</p>
+                              <p className="font-medium text-gray-900">Entity structure review</p>
+                              <p className="text-xs text-gray-500 mt-0.5">ASIC + ownership mapping</p>
                             </div>
-                            <span className="font-semibold text-slate-100">${entityFee.toFixed(2)}</span>
+                            <span className="font-semibold text-gray-900">${entityFee.toFixed(2)}</span>
                           </div>
                         )}
                         {monitoringFee > 0 && (
-                          <div className="flex justify-between items-start gap-3 p-3 bg-white/5 rounded-lg">
+                          <div className="flex justify-between items-start gap-3 p-3 bg-gray-50 rounded-lg">
                             <div>
-                              <p className="font-medium text-slate-100">Ongoing monitoring</p>
-                              <p className="text-xs text-slate-400 mt-0.5">12-month alert coverage</p>
+                              <p className="font-medium text-gray-900">Ongoing monitoring</p>
+                              <p className="text-xs text-gray-500 mt-0.5">12-month alert coverage</p>
                             </div>
-                            <span className="font-semibold text-slate-100">${monitoringFee.toFixed(2)}</span>
+                            <span className="font-semibold text-gray-900">${monitoringFee.toFixed(2)}</span>
                           </div>
                         )}
-                        <div className="flex justify-between px-1 text-slate-300">
+                        <div className="flex justify-between px-1 text-gray-600">
                           <span>Subtotal</span><span>${subtotal.toFixed(2)}</span>
                         </div>
-                        <div className="flex justify-between px-1 text-slate-300">
+                        <div className="flex justify-between px-1 text-gray-600">
                           <span>GST (10%)</span><span>${gstAmount.toFixed(2)}</span>
                         </div>
-                        <div className="flex justify-between pt-3 border-t-2 border-white/10 font-bold text-slate-100 text-lg">
-                          <span>Total</span><span className="text-cyan-300">${totalAmount.toFixed(2)}</span>
+                        <div className="flex justify-between pt-3 border-t-2 border-gray-200 font-bold text-gray-900 text-lg">
+                          <span>Total</span><span className="text-cyan-700">${totalAmount.toFixed(2)}</span>
                         </div>
                       </div>
-                      <div className="border-t border-white/10 pt-4 space-y-2">
+                      <div className="border-t border-gray-100 pt-4 space-y-2">
                         {[
                           'Equifax identity verification',
                           'AML/CTF sanctions & PEP screening',
                           'ASIC entity & ownership checks',
                         ].map((item) => (
-                          <div key={item} className="flex items-center gap-2 text-xs text-slate-300">
-                            <Check className="w-3.5 h-3.5 text-green-400 shrink-0" />
+                          <div key={item} className="flex items-center gap-2 text-xs text-gray-600">
+                            <Check className="w-3.5 h-3.5 text-green-600 shrink-0" />
                             {item}
                           </div>
                         ))}
                       </div>
-                      <div className="flex items-center gap-3 pt-2 text-xs text-slate-400">
+                      <div className="flex items-center gap-3 pt-2 text-xs text-gray-500">
                         <Lock className="w-3.5 h-3.5 shrink-0" />
                         <span>256-bit SSL • PCI DSS • AUSTRAC compliant</span>
                       </div>
@@ -936,8 +936,8 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                                 }}
                                 className={`relative text-left p-4 rounded-xl border-2 transition-all ${
                                   selected
-                                    ? 'border-cyan-500 bg-cyan-500/10 shadow-md ring-2 ring-cyan-200'
-                                    : 'border-white/10 bg-white hover:border-white/10 hover:shadow-sm'
+                                    ? 'border-cyan-500 bg-cyan-50 shadow-md ring-2 ring-cyan-200'
+                                    : 'border-gray-200 bg-white hover:border-gray-300 hover:shadow-sm'
                                 }`}
                               >
                                 {m.badge && (
@@ -945,9 +945,9 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                                     m.badge === 'Fastest' ? 'bg-indigo-600 text-white' : 'bg-cyan-600 text-white'
                                   }`}>{m.badge}</span>
                                 )}
-                                <Icon className={`w-6 h-6 mb-2 ${selected ? 'text-cyan-300' : 'text-slate-400'}`} />
-                                <p className={`font-bold ${selected ? 'text-cyan-300' : 'text-slate-100'}`}>{m.label}</p>
-                                <p className="text-xs text-slate-400 mt-0.5">{m.desc}</p>
+                                <Icon className={`w-6 h-6 mb-2 ${selected ? 'text-cyan-700' : 'text-gray-500'}`} />
+                                <p className={`font-bold ${selected ? 'text-cyan-900' : 'text-gray-900'}`}>{m.label}</p>
+                                <p className="text-xs text-gray-500 mt-0.5">{m.desc}</p>
                                 <p className="text-[10px] text-gray-400 mt-2 flex items-center gap-1">
                                   <Clock className="w-3 h-3" /> {m.eta}
                                 </p>
@@ -961,9 +961,9 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                           <div className="space-y-4 animate-in fade-in duration-200">
                             <div className="flex flex-wrap items-center justify-between gap-2">
                               <Badge className={
-                                bpayStatus === 'confirmed' ? 'bg-green-500/15 text-green-300 border-green-500/30' :
-                                bpayStatus === 'verifying' ? 'bg-amber-500/15 text-amber-300 border-amber-500/30' :
-                                'bg-blue-500/15 text-blue-300 border-blue-500/30'
+                                bpayStatus === 'confirmed' ? 'bg-green-100 text-green-700 border-green-200' :
+                                bpayStatus === 'verifying' ? 'bg-amber-100 text-amber-700 border-amber-200' :
+                                'bg-blue-100 text-blue-700 border-blue-200'
                               }>
                                 {bpayStatus === 'confirmed' ? '✓ BPAY Verified' : bpayStatus === 'verifying' ? 'Verifying payment…' : 'Awaiting BPAY payment'}
                               </Badge>
@@ -1019,9 +1019,9 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                               </div>
                             </div>
 
-                            <div className="bg-white border-2 border-white/10 rounded-xl p-5">
-                              <p className="font-semibold text-slate-100 mb-4 flex items-center gap-2">
-                                <Smartphone className="w-4 h-4 text-cyan-400" />
+                            <div className="bg-white border-2 border-gray-100 rounded-xl p-5">
+                              <p className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                                <Smartphone className="w-4 h-4 text-cyan-600" />
                                 Pay with your banking app
                               </p>
                               <div className="grid sm:grid-cols-5 gap-3">
@@ -1032,15 +1032,15 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                                   { step: '4', text: `Enter CRN ${bpayReference}` },
                                   { step: '5', text: `Pay $${totalAmount.toFixed(2)}` },
                                 ].map((s) => (
-                                  <div key={s.step} className="text-center p-3 bg-white/5 rounded-lg border border-white/10">
+                                  <div key={s.step} className="text-center p-3 bg-gray-50 rounded-lg border border-gray-100">
                                     <span className="w-6 h-6 rounded-full bg-cyan-600 text-white text-xs font-bold flex items-center justify-center mx-auto mb-2">{s.step}</span>
-                                    <p className="text-[11px] text-slate-300 leading-tight">{s.text}</p>
+                                    <p className="text-[11px] text-gray-700 leading-tight">{s.text}</p>
                                   </div>
                                 ))}
                               </div>
                             </div>
 
-                            <label className="flex items-start gap-3 p-4 bg-amber-500/10 border-2 border-amber-500/30 rounded-xl cursor-pointer hover:bg-amber-500/15/80 transition-colors">
+                            <label className="flex items-start gap-3 p-4 bg-amber-50 border-2 border-amber-200 rounded-xl cursor-pointer hover:bg-amber-100/80 transition-colors">
                               <input
                                 type="checkbox"
                                 checked={bpayPaymentMade}
@@ -1048,14 +1048,14 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                                 className="mt-1 w-4 h-4 accent-cyan-600"
                               />
                               <div>
-                                <p className="font-semibold text-amber-300">I have completed the BPAY payment in my bank</p>
-                                <p className="text-xs text-amber-300 mt-1">Check this after paying. Then enter your bank receipt reference below to confirm.</p>
+                                <p className="font-semibold text-amber-900">I have completed the BPAY payment in my bank</p>
+                                <p className="text-xs text-amber-800 mt-1">Check this after paying. Then enter your bank receipt reference below to confirm.</p>
                               </div>
                             </label>
 
                             {bpayPaymentMade && (
                               <div className="animate-in slide-in-from-top-2 duration-200 space-y-2">
-                                <label className="block text-sm font-semibold text-slate-300">
+                                <label className="block text-sm font-semibold text-gray-700">
                                   Bank Receipt Reference <span className="text-red-500">*</span>
                                 </label>
                                 <input
@@ -1064,11 +1064,11 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                                   onChange={(e) => setBpayReferenceInput(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, ''))}
                                   placeholder="e.g. 1234567890ABCDEF"
                                   maxLength={20}
-                                  className="w-full px-4 py-3.5 border-2 border-white/10 rounded-xl focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 focus:outline-none font-mono uppercase text-lg tracking-wider"
+                                  className="w-full px-4 py-3.5 border-2 border-gray-300 rounded-xl focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 focus:outline-none font-mono uppercase text-lg tracking-wider"
                                 />
-                                <div className="flex justify-between text-xs text-slate-400">
+                                <div className="flex justify-between text-xs text-gray-500">
                                   <span>From your bank confirmation screen</span>
-                                  <span className={bpayReferenceInput.length >= 6 ? 'text-green-400 font-medium' : ''}>
+                                  <span className={bpayReferenceInput.length >= 6 ? 'text-green-600 font-medium' : ''}>
                                     {bpayReferenceInput.length}/20 {bpayReferenceInput.length >= 6 ? '✓' : '(min 6)'}
                                   </span>
                                 </div>
@@ -1099,19 +1099,19 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                                 </div>
                               </div>
                             </div>
-                            <div className="bg-white rounded-xl p-5 border-2 border-white/10 space-y-4">
+                            <div className="bg-white rounded-xl p-5 border-2 border-gray-100 space-y-4">
                               <div>
-                                <label className="block text-sm font-semibold text-slate-300 mb-2">Cardholder Name</label>
+                                <label className="block text-sm font-semibold text-gray-700 mb-2">Cardholder Name</label>
                                 <input
                                   type="text"
                                   value={cardDetails.name}
                                   onChange={(e) => setCardDetails((p) => ({ ...p, name: e.target.value.toUpperCase() }))}
                                   placeholder="As shown on card"
-                                  className="w-full px-4 py-3 border-2 border-white/10 rounded-xl focus:border-cyan-500 focus:outline-none"
+                                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-cyan-500 focus:outline-none"
                                 />
                               </div>
                               <div>
-                                <label className="block text-sm font-semibold text-slate-300 mb-2">Card Number</label>
+                                <label className="block text-sm font-semibold text-gray-700 mb-2">Card Number</label>
                                 <input
                                   type="text"
                                   inputMode="numeric"
@@ -1121,12 +1121,12 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                                     setCardDetails((p) => ({ ...p, number: v.replace(/(.{4})/g, '$1 ').trim() }));
                                   }}
                                   placeholder="4242 4242 4242 4242"
-                                  className="w-full px-4 py-3 border-2 border-white/10 rounded-xl focus:border-cyan-500 focus:outline-none font-mono text-lg"
+                                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-cyan-500 focus:outline-none font-mono text-lg"
                                 />
                               </div>
                               <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                  <label className="block text-sm font-semibold text-slate-300 mb-2">Expiry</label>
+                                  <label className="block text-sm font-semibold text-gray-700 mb-2">Expiry</label>
                                   <input
                                     type="text"
                                     inputMode="numeric"
@@ -1138,22 +1138,22 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                                     }}
                                     placeholder="MM/YY"
                                     maxLength={5}
-                                    className="w-full px-4 py-3 border-2 border-white/10 rounded-xl focus:border-cyan-500 focus:outline-none font-mono"
+                                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-cyan-500 focus:outline-none font-mono"
                                   />
                                 </div>
                                 <div>
-                                  <label className="block text-sm font-semibold text-slate-300 mb-2">CVC</label>
+                                  <label className="block text-sm font-semibold text-gray-700 mb-2">CVC</label>
                                   <input
                                     type="text"
                                     inputMode="numeric"
                                     value={cardDetails.cvc}
                                     onChange={(e) => setCardDetails((p) => ({ ...p, cvc: e.target.value.replace(/\D/g, '').slice(0, 4) }))}
                                     placeholder="•••"
-                                    className="w-full px-4 py-3 border-2 border-white/10 rounded-xl focus:border-cyan-500 focus:outline-none font-mono"
+                                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-cyan-500 focus:outline-none font-mono"
                                   />
                                 </div>
                               </div>
-                              <div className="flex items-center gap-2 text-xs text-green-300 bg-green-500/10 rounded-lg p-3 border border-green-500/30">
+                              <div className="flex items-center gap-2 text-xs text-green-700 bg-green-50 rounded-lg p-3 border border-green-200">
                                 <Lock className="w-4 h-4 shrink-0" />
                                 Your card details are encrypted and never stored on our servers.
                               </div>
@@ -1195,25 +1195,25 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                                 <Copy className="w-4 h-4 mr-1" /> Copy transfer details
                               </Button>
                             </div>
-                            <div className="bg-white rounded-xl p-5 border-2 border-white/10 space-y-4">
+                            <div className="bg-white rounded-xl p-5 border-2 border-gray-100 space-y-4">
                               <div>
-                                <label className="block text-sm font-semibold text-slate-300 mb-2">Email used for transfer <span className="text-red-500">*</span></label>
+                                <label className="block text-sm font-semibold text-gray-700 mb-2">Email used for transfer <span className="text-red-500">*</span></label>
                                 <input
                                   type="email"
                                   value={payIdEmail}
                                   onChange={(e) => setPayIdEmail(e.target.value)}
                                   placeholder={formData.email || 'you@email.com'}
-                                  className="w-full px-4 py-3 border-2 border-white/10 rounded-xl focus:border-cyan-500 focus:outline-none"
+                                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-cyan-500 focus:outline-none"
                                 />
                               </div>
                               <div>
-                                <label className="block text-sm font-semibold text-slate-300 mb-2">Transfer reference from your bank <span className="text-red-500">*</span></label>
+                                <label className="block text-sm font-semibold text-gray-700 mb-2">Transfer reference from your bank <span className="text-red-500">*</span></label>
                                 <input
                                   type="text"
                                   value={payIdReferenceInput}
                                   onChange={(e) => setPayIdReferenceInput(e.target.value)}
                                   placeholder="Reference shown in your banking app"
-                                  className="w-full px-4 py-3 border-2 border-white/10 rounded-xl focus:border-cyan-500 focus:outline-none"
+                                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-cyan-500 focus:outline-none"
                                 />
                               </div>
                             </div>
@@ -1242,7 +1242,7 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                         </Button>
 
                         {paymentMethod === 'bpay' && !bpayPaymentMade && (
-                          <p className="text-center text-xs text-slate-400">Complete the BPAY payment in your bank, then check the box above to confirm.</p>
+                          <p className="text-center text-xs text-gray-500">Complete the BPAY payment in your bank, then check the box above to confirm.</p>
                         )}
                       </>
                     ) : (
@@ -1256,37 +1256,37 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                         </div>
                         <div className="p-6 space-y-4">
                           <div className="grid sm:grid-cols-2 gap-4 text-sm">
-                            <div className="p-3 bg-white/5 rounded-lg">
-                              <p className="text-xs text-slate-400 mb-1">Amount Paid</p>
-                              <p className="font-bold text-xl text-slate-100">${totalAmount.toFixed(2)} AUD</p>
+                            <div className="p-3 bg-gray-50 rounded-lg">
+                              <p className="text-xs text-gray-500 mb-1">Amount Paid</p>
+                              <p className="font-bold text-xl text-gray-900">${totalAmount.toFixed(2)} AUD</p>
                             </div>
-                            <div className="p-3 bg-white/5 rounded-lg">
-                              <p className="text-xs text-slate-400 mb-1">Payment Method</p>
-                              <p className="font-bold text-slate-100">{paymentMethod === 'bpay' ? 'BPAY' : paymentMethod === 'payid' ? 'PayID / Osko' : 'Credit Card'}</p>
+                            <div className="p-3 bg-gray-50 rounded-lg">
+                              <p className="text-xs text-gray-500 mb-1">Payment Method</p>
+                              <p className="font-bold text-gray-900">{paymentMethod === 'bpay' ? 'BPAY' : paymentMethod === 'payid' ? 'PayID / Osko' : 'Credit Card'}</p>
                             </div>
                             {paymentReceipt && (
-                              <div className="p-3 bg-white/5 rounded-lg">
-                                <p className="text-xs text-slate-400 mb-1">Receipt ID</p>
-                                <p className="font-mono font-bold text-slate-100">{paymentReceipt}</p>
+                              <div className="p-3 bg-gray-50 rounded-lg">
+                                <p className="text-xs text-gray-500 mb-1">Receipt ID</p>
+                                <p className="font-mono font-bold text-gray-900">{paymentReceipt}</p>
                               </div>
                             )}
-                            <div className="p-3 bg-white/5 rounded-lg">
-                              <p className="text-xs text-slate-400 mb-1">Date</p>
-                              <p className="font-medium text-slate-100">{new Date().toLocaleString('en-AU')}</p>
+                            <div className="p-3 bg-gray-50 rounded-lg">
+                              <p className="text-xs text-gray-500 mb-1">Date</p>
+                              <p className="font-medium text-gray-900">{new Date().toLocaleString('en-AU')}</p>
                             </div>
                             {paymentMethod === 'bpay' && bpayReferenceInput && (
-                              <div className="p-3 bg-white/5 rounded-lg sm:col-span-2">
-                                <p className="text-xs text-slate-400 mb-1">Bank Receipt Reference</p>
-                                <p className="font-mono font-bold text-slate-100">{bpayReferenceInput}</p>
+                              <div className="p-3 bg-gray-50 rounded-lg sm:col-span-2">
+                                <p className="text-xs text-gray-500 mb-1">Bank Receipt Reference</p>
+                                <p className="font-mono font-bold text-gray-900">{bpayReferenceInput}</p>
                               </div>
                             )}
                           </div>
                           <div className="flex flex-wrap gap-3 pt-2">
-                            <Button type="button" variant="outline" onClick={downloadPaymentReceipt} className="border-green-400 text-green-300">
+                            <Button type="button" variant="outline" onClick={downloadPaymentReceipt} className="border-green-400 text-green-800">
                               <Download className="w-4 h-4 mr-2" /> Download Receipt
                             </Button>
                           </div>
-                          <p className="text-sm text-green-300 bg-green-500/10 rounded-lg p-3 border border-green-500/30">
+                          <p className="text-sm text-green-700 bg-green-50 rounded-lg p-3 border border-green-200">
                             Click <strong>Start Verification</strong> below to begin your KYC checks. This usually takes 2–3 minutes.
                           </p>
                         </div>
@@ -1301,11 +1301,11 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
             {currentStep === 'processing' && (
               <div className="space-y-6">
                 <div className="text-center">
-                  <div className="w-20 h-20 bg-cyan-500/15 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Activity className="w-10 h-10 text-cyan-400 animate-pulse" />
+                  <div className="w-20 h-20 bg-cyan-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Activity className="w-10 h-10 text-cyan-600 animate-pulse" />
                   </div>
-                  <h2 className="text-2xl font-bold text-slate-100 mb-2">We're verifying your details</h2>
-                  <p className="text-slate-300">This usually takes 2-3 minutes. Please don't close this page.</p>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">We're verifying your details</h2>
+                  <p className="text-gray-600">This usually takes 2-3 minutes. Please don't close this page.</p>
                 </div>
 
                 <div className="space-y-3">
@@ -1313,41 +1313,41 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                     <div
                       key={check.id}
                       className={`p-4 rounded-lg border-2 transition-all ${
-                        check.status === 'complete' ? 'bg-green-500/10 border-green-300' :
-                        check.status === 'warning' ? 'bg-amber-500/10 border-amber-300' :
-                        check.status === 'running' ? 'bg-blue-500/10 border-blue-300' :
-                        'bg-white/5 border-white/10'
+                        check.status === 'complete' ? 'bg-green-50 border-green-300' :
+                        check.status === 'warning' ? 'bg-amber-50 border-amber-300' :
+                        check.status === 'running' ? 'bg-blue-50 border-blue-300' :
+                        'bg-gray-50 border-gray-300'
                       }`}
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                          {check.status === 'pending' && <div className="w-6 h-6 rounded-full border-2 border-white/10" />}
-                          {check.status === 'running' && <Loader2 className="w-6 h-6 text-blue-400 animate-spin" />}
-                          {check.status === 'complete' && <CheckCircle className="w-6 h-6 text-green-400" />}
-                          {check.status === 'warning' && <AlertTriangle className="w-6 h-6 text-amber-400" />}
+                          {check.status === 'pending' && <div className="w-6 h-6 rounded-full border-2 border-gray-300" />}
+                          {check.status === 'running' && <Loader2 className="w-6 h-6 text-blue-600 animate-spin" />}
+                          {check.status === 'complete' && <CheckCircle className="w-6 h-6 text-green-600" />}
+                          {check.status === 'warning' && <AlertTriangle className="w-6 h-6 text-amber-600" />}
                           <div>
-                            <p className="font-semibold text-slate-100">{check.label}</p>
+                            <p className="font-semibold text-gray-900">{check.label}</p>
                             {check.provider && check.status !== 'pending' && (
-                              <p className="text-xs text-slate-400">via {check.provider}</p>
+                              <p className="text-xs text-gray-500">via {check.provider}</p>
                             )}
                           </div>
                         </div>
                         {check.status === 'complete' && (
-                          <Badge className="bg-green-500/15 text-green-300">Complete</Badge>
+                          <Badge className="bg-green-100 text-green-700">Complete</Badge>
                         )}
                         {check.status === 'warning' && (
-                          <Badge className="bg-amber-500/15 text-amber-300">Review Needed</Badge>
+                          <Badge className="bg-amber-100 text-amber-700">Review Needed</Badge>
                         )}
                         {check.status === 'running' && (
-                          <Badge className="bg-blue-500/15 text-blue-300">Running...</Badge>
+                          <Badge className="bg-blue-100 text-blue-700">Running...</Badge>
                         )}
                       </div>
                     </div>
                   ))}
                 </div>
 
-                <div className="bg-cyan-500/10 rounded-lg p-4 border border-cyan-500/30 text-center">
-                  <p className="text-sm text-cyan-300">
+                <div className="bg-cyan-50 rounded-lg p-4 border border-cyan-200 text-center">
+                  <p className="text-sm text-cyan-800">
                     We're running comprehensive checks across multiple systems to ensure compliance and security.
                   </p>
                 </div>
@@ -1360,16 +1360,16 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                 {verificationResult === 'approved' && (
                   <>
                     <div className="text-center">
-                      <div className="w-24 h-24 bg-green-500/15 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <CheckCircle className="w-16 h-16 text-green-400" />
+                      <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <CheckCircle className="w-16 h-16 text-green-600" />
                       </div>
-                      <h2 className="text-3xl font-bold text-green-300 mb-2">Verification Complete!</h2>
-                      <p className="text-slate-300 text-lg">Your identity has been successfully verified</p>
+                      <h2 className="text-3xl font-bold text-green-900 mb-2">Verification Complete!</h2>
+                      <p className="text-gray-600 text-lg">Your identity has been successfully verified</p>
                     </div>
 
-                    <div className="bg-green-500/10 rounded-lg p-6 border-2 border-green-300">
-                      <h3 className="font-bold text-green-300 mb-3">What happens next?</h3>
-                      <ul className="space-y-2 text-sm text-green-300">
+                    <div className="bg-green-50 rounded-lg p-6 border-2 border-green-300">
+                      <h3 className="font-bold text-green-900 mb-3">What happens next?</h3>
+                      <ul className="space-y-2 text-sm text-green-800">
                         <li className="flex items-start gap-2">
                           <Check className="w-5 h-5 flex-shrink-0 mt-0.5" />
                           <span>Your profile is now active and fully verified</span>
@@ -1402,19 +1402,19 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                 {verificationResult === 'review' && (
                   <>
                     <div className="text-center">
-                      <div className="w-24 h-24 bg-amber-500/15 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <AlertTriangle className="w-16 h-16 text-amber-400" />
+                      <div className="w-24 h-24 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <AlertTriangle className="w-16 h-16 text-amber-600" />
                       </div>
-                      <h2 className="text-3xl font-bold text-amber-300 mb-2">Review Required</h2>
-                      <p className="text-slate-300 text-lg">Our team is reviewing your details</p>
+                      <h2 className="text-3xl font-bold text-amber-900 mb-2">Review Required</h2>
+                      <p className="text-gray-600 text-lg">Our team is reviewing your details</p>
                     </div>
 
-                    <div className="bg-amber-500/10 rounded-lg p-6 border-2 border-amber-300">
-                      <h3 className="font-bold text-amber-300 mb-3">What this means:</h3>
-                      <p className="text-sm text-amber-300 mb-3">
+                    <div className="bg-amber-50 rounded-lg p-6 border-2 border-amber-300">
+                      <h3 className="font-bold text-amber-900 mb-3">What this means:</h3>
+                      <p className="text-sm text-amber-800 mb-3">
                         Some aspects of your verification require manual review by our compliance team. This is a standard process and doesn't indicate any issues.
                       </p>
-                      <ul className="space-y-2 text-sm text-amber-300">
+                      <ul className="space-y-2 text-sm text-amber-800">
                         <li className="flex items-start gap-2">
                           <Info className="w-5 h-5 flex-shrink-0 mt-0.5" />
                           <span>We'll complete the review within 1-2 business days</span>
@@ -1435,16 +1435,16 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                 {verificationResult === 'additional-info' && (
                   <>
                     <div className="text-center">
-                      <div className="w-24 h-24 bg-blue-500/15 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <Upload className="w-16 h-16 text-blue-400" />
+                      <div className="w-24 h-24 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Upload className="w-16 h-16 text-blue-600" />
                       </div>
-                      <h2 className="text-3xl font-bold text-blue-300 mb-2">Additional Information Required</h2>
-                      <p className="text-slate-300 text-lg">We need a few more details to complete verification</p>
+                      <h2 className="text-3xl font-bold text-blue-900 mb-2">Additional Information Required</h2>
+                      <p className="text-gray-600 text-lg">We need a few more details to complete verification</p>
                     </div>
 
-                    <div className="bg-blue-500/10 rounded-lg p-6 border-2 border-blue-300">
-                      <h3 className="font-bold text-blue-300 mb-3">Please provide:</h3>
-                      <ul className="space-y-2 text-sm text-blue-300">
+                    <div className="bg-blue-50 rounded-lg p-6 border-2 border-blue-300">
+                      <h3 className="font-bold text-blue-900 mb-3">Please provide:</h3>
+                      <ul className="space-y-2 text-sm text-blue-800">
                         <li className="flex items-start gap-2">
                           <FileText className="w-5 h-5 flex-shrink-0 mt-0.5" />
                           <span>Proof of address (utility bill or bank statement, dated within last 3 months)</span>
@@ -1486,7 +1486,7 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
                   } ${
                     canProceed()
                       ? 'bg-cyan-600 hover:bg-cyan-700 text-white'
-                      : 'bg-gray-300 text-slate-400 cursor-not-allowed'
+                      : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                   }`}
                 >
                   {currentStep === 'consent' ? 'Agree and Continue' : 
@@ -1502,7 +1502,7 @@ export function ClientOnboarding({ onComplete, onBack }: ClientOnboardingProps =
 
         {/* Trust Indicators */}
         {currentStep !== 'results' && (
-          <div className="mt-6 flex items-center justify-center gap-6 text-sm text-slate-300">
+          <div className="mt-6 flex items-center justify-center gap-6 text-sm text-gray-600">
             <div className="flex items-center gap-2">
               <Lock className="w-4 h-4" />
               <span>Bank-level security</span>

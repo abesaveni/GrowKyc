@@ -263,7 +263,7 @@ export function ComplianceCopilot({ isOpen, onClose, context }: ComplianceCopilo
                   className={`max-w-[85%] rounded-lg p-3 ${
                     message.role === 'user'
                       ? 'bg-blue-600 text-white'
-                      : 'bg-[#0f172a] text-white'
+                      : 'bg-gray-100 text-gray-900'
                   }`}
                 >
                   <div className="whitespace-pre-wrap text-sm">{message.content}</div>
@@ -275,7 +275,7 @@ export function ComplianceCopilot({ isOpen, onClose, context }: ComplianceCopilo
                           key={idx}
                           size="sm"
                           variant="outline"
-                          className="w-full justify-start text-xs bg-[#1e293b]"
+                          className="w-full justify-start text-xs bg-white"
                           onClick={() => handleActionClick(action.action)}
                         >
                           <Zap className="w-3 h-3 mr-2" />
@@ -286,10 +286,10 @@ export function ComplianceCopilot({ isOpen, onClose, context }: ComplianceCopilo
                   )}
 
                   {message.sources && message.sources.length > 0 && (
-                    <div className="mt-3 pt-3 border-t border-white/10">
-                      <div className="text-xs text-slate-300 mb-2">Sources:</div>
+                    <div className="mt-3 pt-3 border-t border-gray-300">
+                      <div className="text-xs text-gray-600 mb-2">Sources:</div>
                       {message.sources.map((source, idx) => (
-                        <div key={idx} className="flex items-center gap-2 text-xs text-slate-300">
+                        <div key={idx} className="flex items-center gap-2 text-xs text-gray-700">
                           <BookOpen className="w-3 h-3" />
                           <span>{source.title}</span>
                           <Badge variant="outline" className="text-xs">
@@ -312,7 +312,7 @@ export function ComplianceCopilot({ isOpen, onClose, context }: ComplianceCopilo
 
             {isTyping && (
               <div className="flex justify-start">
-                <div className="bg-[#0f172a] rounded-lg p-3">
+                <div className="bg-gray-100 rounded-lg p-3">
                   <div className="flex items-center gap-1">
                     <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
                     <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
@@ -346,7 +346,7 @@ export function ComplianceCopilot({ isOpen, onClose, context }: ComplianceCopilo
                 <Send className="w-4 h-4" />
               </Button>
             </div>
-            <div className="text-xs text-slate-400 mt-2">
+            <div className="text-xs text-gray-500 mt-2">
               Press Enter to send, Shift+Enter for new line
             </div>
           </div>

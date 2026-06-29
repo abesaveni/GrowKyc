@@ -219,20 +219,20 @@ export function ClientsList({ onNavigate }: ClientsListProps) {
     switch (status) {
       case 'active':
         return (
-          <span className="px-2 py-1 bg-green-500/15 text-green-300 text-xs font-semibold rounded-full flex items-center gap-1">
+          <span className="px-2 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full flex items-center gap-1">
             <CheckCircle className="w-3 h-3" />
             Active
           </span>
         );
       case 'inactive':
         return (
-          <span className="px-2 py-1 bg-white/5 text-slate-300 text-xs font-semibold rounded-full">
+          <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-semibold rounded-full">
             Inactive
           </span>
         );
       case 'onboarding':
         return (
-          <span className="px-2 py-1 bg-blue-500/15 text-blue-300 text-xs font-semibold rounded-full">
+          <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">
             Onboarding
           </span>
         );
@@ -242,10 +242,10 @@ export function ClientsList({ onNavigate }: ClientsListProps) {
   };
 
   const getPerformanceColor = (score: number) => {
-    if (score >= 90) return 'text-green-400';
-    if (score >= 75) return 'text-blue-400';
-    if (score >= 60) return 'text-orange-400';
-    return 'text-red-400';
+    if (score >= 90) return 'text-green-600';
+    if (score >= 75) return 'text-blue-600';
+    if (score >= 60) return 'text-orange-600';
+    return 'text-red-600';
   };
 
   return (
@@ -254,8 +254,8 @@ export function ClientsList({ onNavigate }: ClientsListProps) {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-[32px] font-bold text-slate-100">Clients</h1>
-            <p className="text-sm text-slate-300 mt-1">Manage your client portfolio</p>
+            <h1 className="text-[32px] font-bold text-gray-900">Clients</h1>
+            <p className="text-sm text-gray-600 mt-1">Manage your client portfolio</p>
           </div>
           <Button className="bg-[#2855a6] hover:bg-[#1e4089]">
             <Plus className="w-4 h-4 mr-2" />
@@ -276,7 +276,7 @@ export function ClientsList({ onNavigate }: ClientsListProps) {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search clients by name, ABN, email..."
-                    className="w-full pl-10 pr-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
                   />
                 </div>
               </div>
@@ -285,7 +285,7 @@ export function ClientsList({ onNavigate }: ClientsListProps) {
               <select
                 value={filterEntity}
                 onChange={(e) => setFilterEntity(e.target.value)}
-                className="px-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+                className="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
               >
                 <option value="all">All Entity Types</option>
                 <option value="Company">Company</option>
@@ -299,7 +299,7 @@ export function ClientsList({ onNavigate }: ClientsListProps) {
               <select
                 value={filterStatus}
                 onChange={(e) => setFilterStatus(e.target.value)}
-                className="px-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+                className="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
               >
                 <option value="all">All Statuses</option>
                 <option value="active">Active</option>
@@ -320,12 +320,12 @@ export function ClientsList({ onNavigate }: ClientsListProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-blue-500/10 rounded-lg">
-                  <Users className="w-5 h-5 text-blue-400" />
+                <div className="p-3 bg-blue-50 rounded-lg">
+                  <Users className="w-5 h-5 text-blue-600" />
                 </div>
                 <div>
-                  <p className="text-sm text-slate-300">Total Clients</p>
-                  <p className="text-2xl font-bold text-slate-100">{filteredClients.length}</p>
+                  <p className="text-sm text-gray-600">Total Clients</p>
+                  <p className="text-2xl font-bold text-gray-900">{filteredClients.length}</p>
                 </div>
               </div>
             </CardContent>
@@ -334,12 +334,12 @@ export function ClientsList({ onNavigate }: ClientsListProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-green-500/10 rounded-lg">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
+                <div className="p-3 bg-green-50 rounded-lg">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
                 </div>
                 <div>
-                  <p className="text-sm text-slate-300">Active</p>
-                  <p className="text-2xl font-bold text-slate-100">
+                  <p className="text-sm text-gray-600">Active</p>
+                  <p className="text-2xl font-bold text-gray-900">
                     {filteredClients.filter(c => c.status === 'active').length}
                   </p>
                 </div>
@@ -350,12 +350,12 @@ export function ClientsList({ onNavigate }: ClientsListProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-orange-500/10 rounded-lg">
-                  <FileText className="w-5 h-5 text-orange-400" />
+                <div className="p-3 bg-orange-50 rounded-lg">
+                  <FileText className="w-5 h-5 text-orange-600" />
                 </div>
                 <div>
-                  <p className="text-sm text-slate-300">Active Jobs</p>
-                  <p className="text-2xl font-bold text-slate-100">
+                  <p className="text-sm text-gray-600">Active Jobs</p>
+                  <p className="text-2xl font-bold text-gray-900">
                     {filteredClients.reduce((sum, c) => sum + c.activeJobs, 0)}
                   </p>
                 </div>
@@ -366,12 +366,12 @@ export function ClientsList({ onNavigate }: ClientsListProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-purple-500/10 rounded-lg">
-                  <DollarSign className="w-5 h-5 text-purple-400" />
+                <div className="p-3 bg-purple-50 rounded-lg">
+                  <DollarSign className="w-5 h-5 text-purple-600" />
                 </div>
                 <div>
-                  <p className="text-sm text-slate-300">Total Revenue</p>
-                  <p className="text-2xl font-bold text-slate-100">
+                  <p className="text-sm text-gray-600">Total Revenue</p>
+                  <p className="text-2xl font-bold text-gray-900">
                     ${(filteredClients.reduce((sum, c) => sum + c.revenue, 0) / 1000).toFixed(0)}K
                   </p>
                 </div>
@@ -394,11 +394,11 @@ export function ClientsList({ onNavigate }: ClientsListProps) {
                   <div className="flex items-center gap-3">
                     <span className="text-3xl">{getEntityIcon(client.entityType)}</span>
                     <div>
-                      <h3 className="font-semibold text-slate-100">{client.name}</h3>
-                      <p className="text-xs text-slate-400 font-mono">{client.abn}</p>
+                      <h3 className="font-semibold text-gray-900">{client.name}</h3>
+                      <p className="text-xs text-gray-500 font-mono">{client.abn}</p>
                     </div>
                   </div>
-                  <button className="p-1 hover:bg-white/5 rounded">
+                  <button className="p-1 hover:bg-gray-100 rounded">
                     <MoreVertical className="w-4 h-4 text-gray-400" />
                   </button>
                 </div>
@@ -415,22 +415,22 @@ export function ClientsList({ onNavigate }: ClientsListProps) {
 
                 {/* Entity Type */}
                 <div className="mb-4">
-                  <span className="px-2 py-1 bg-white/5 text-slate-300 text-xs font-medium rounded">
+                  <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">
                     {client.entityType}
                   </span>
                 </div>
 
                 {/* Contact Info */}
-                <div className="space-y-2 mb-4 pb-4 border-b border-white/10">
-                  <div className="flex items-center gap-2 text-xs text-slate-300">
+                <div className="space-y-2 mb-4 pb-4 border-b border-gray-100">
+                  <div className="flex items-center gap-2 text-xs text-gray-600">
                     <Mail className="w-3 h-3" />
                     <span className="truncate">{client.contactEmail}</span>
                   </div>
-                  <div className="flex items-center gap-2 text-xs text-slate-300">
+                  <div className="flex items-center gap-2 text-xs text-gray-600">
                     <Phone className="w-3 h-3" />
                     <span>{client.contactPhone}</span>
                   </div>
-                  <div className="flex items-center gap-2 text-xs text-slate-300">
+                  <div className="flex items-center gap-2 text-xs text-gray-600">
                     <User className="w-3 h-3" />
                     <span>Managed by {client.assignedManager}</span>
                   </div>
@@ -439,16 +439,16 @@ export function ClientsList({ onNavigate }: ClientsListProps) {
                 {/* Stats */}
                 <div className="grid grid-cols-3 gap-2 mb-4">
                   <div className="text-center">
-                    <p className="text-xs text-slate-300">Active</p>
-                    <p className="text-lg font-bold text-blue-400">{client.activeJobs}</p>
+                    <p className="text-xs text-gray-600">Active</p>
+                    <p className="text-lg font-bold text-blue-600">{client.activeJobs}</p>
                   </div>
-                  <div className="text-center border-l border-r border-white/10">
-                    <p className="text-xs text-slate-300">Complete</p>
-                    <p className="text-lg font-bold text-green-400">{client.completedJobs}</p>
+                  <div className="text-center border-l border-r border-gray-100">
+                    <p className="text-xs text-gray-600">Complete</p>
+                    <p className="text-lg font-bold text-green-600">{client.completedJobs}</p>
                   </div>
                   <div className="text-center">
-                    <p className="text-xs text-slate-300">Revenue</p>
-                    <p className="text-lg font-bold text-purple-400">${(client.revenue / 1000).toFixed(0)}K</p>
+                    <p className="text-xs text-gray-600">Revenue</p>
+                    <p className="text-lg font-bold text-purple-600">${(client.revenue / 1000).toFixed(0)}K</p>
                   </div>
                 </div>
 
@@ -486,8 +486,8 @@ export function ClientsList({ onNavigate }: ClientsListProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-12 text-center">
               <Users className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-lg font-semibold text-slate-100 mb-2">No clients found</h3>
-              <p className="text-slate-300 mb-4">Try adjusting your search or filter criteria</p>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">No clients found</h3>
+              <p className="text-gray-600 mb-4">Try adjusting your search or filter criteria</p>
               <Button variant="outline">Clear Filters</Button>
             </CardContent>
           </Card>

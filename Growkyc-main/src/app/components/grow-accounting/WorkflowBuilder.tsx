@@ -189,28 +189,28 @@ export function WorkflowBuilder({ onNavigate }: WorkflowBuilderProps) {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'active':
-        return 'bg-green-500/15 text-green-300 border-green-300';
+        return 'bg-green-100 text-green-700 border-green-300';
       case 'draft':
-        return 'bg-white/5 text-slate-300 border-white/10';
+        return 'bg-gray-100 text-gray-700 border-gray-300';
       case 'paused':
-        return 'bg-orange-500/15 text-orange-300 border-orange-300';
+        return 'bg-orange-100 text-orange-700 border-orange-300';
       default:
-        return 'bg-white/5 text-slate-300 border-white/10';
+        return 'bg-gray-100 text-gray-700 border-gray-300';
     }
   };
 
   const getStepColor = (type: string) => {
     switch (type) {
       case 'trigger':
-        return 'bg-blue-500/10 border-blue-300';
+        return 'bg-blue-50 border-blue-300';
       case 'action':
-        return 'bg-green-500/10 border-green-300';
+        return 'bg-green-50 border-green-300';
       case 'condition':
-        return 'bg-purple-500/10 border-purple-300';
+        return 'bg-purple-50 border-purple-300';
       case 'delay':
-        return 'bg-orange-500/10 border-orange-300';
+        return 'bg-orange-50 border-orange-300';
       default:
-        return 'bg-white/5 border-white/10';
+        return 'bg-gray-50 border-gray-300';
     }
   };
 
@@ -220,8 +220,8 @@ export function WorkflowBuilder({ onNavigate }: WorkflowBuilderProps) {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-[32px] font-bold text-slate-100">Workflow Builder</h1>
-            <p className="text-sm text-slate-300 mt-1">Automate repetitive tasks and processes</p>
+            <h1 className="text-[32px] font-bold text-gray-900">Workflow Builder</h1>
+            <p className="text-sm text-gray-600 mt-1">Automate repetitive tasks and processes</p>
           </div>
           <div className="flex items-center gap-2">
             <Button variant="outline" size="sm">
@@ -249,7 +249,7 @@ export function WorkflowBuilder({ onNavigate }: WorkflowBuilderProps) {
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
               selectedView === 'templates'
                 ? 'bg-[#2855a6] text-white'
-                : 'bg-white/5 text-slate-300 hover:bg-white/10'
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
             }`}
           >
             My Workflows
@@ -259,7 +259,7 @@ export function WorkflowBuilder({ onNavigate }: WorkflowBuilderProps) {
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
               selectedView === 'builder'
                 ? 'bg-[#2855a6] text-white'
-                : 'bg-white/5 text-slate-300 hover:bg-white/10'
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
             }`}
           >
             Workflow Builder
@@ -273,35 +273,35 @@ export function WorkflowBuilder({ onNavigate }: WorkflowBuilderProps) {
             <div className="col-span-3">
               <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
                 <CardContent className="p-4">
-                  <h3 className="font-semibold text-slate-100 mb-3">Categories</h3>
+                  <h3 className="font-semibold text-gray-900 mb-3">Categories</h3>
                   <div className="space-y-1">
                     {categories.map((category) => (
                       <button
                         key={category.id}
-                        className="w-full flex items-center justify-between p-2 rounded-lg text-sm hover:bg-white/5 transition-colors"
+                        className="w-full flex items-center justify-between p-2 rounded-lg text-sm hover:bg-gray-50 transition-colors"
                       >
-                        <span className="text-slate-300">{category.name}</span>
-                        <span className="px-2 py-0.5 bg-white/10 text-slate-300 text-xs font-semibold rounded-full">
+                        <span className="text-gray-700">{category.name}</span>
+                        <span className="px-2 py-0.5 bg-gray-200 text-gray-700 text-xs font-semibold rounded-full">
                           {category.count}
                         </span>
                       </button>
                     ))}
                   </div>
 
-                  <div className="mt-6 pt-4 border-t border-white/10">
-                    <h4 className="font-semibold text-slate-100 text-sm mb-2">Quick Stats</h4>
+                  <div className="mt-6 pt-4 border-t border-gray-200">
+                    <h4 className="font-semibold text-gray-900 text-sm mb-2">Quick Stats</h4>
                     <div className="space-y-2 text-sm">
                       <div className="flex items-center justify-between">
-                        <span className="text-slate-300">Active</span>
-                        <span className="font-semibold text-green-400">5</span>
+                        <span className="text-gray-600">Active</span>
+                        <span className="font-semibold text-green-600">5</span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-slate-300">Draft</span>
-                        <span className="font-semibold text-slate-300">1</span>
+                        <span className="text-gray-600">Draft</span>
+                        <span className="font-semibold text-gray-600">1</span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-slate-300">Total Runs</span>
-                        <span className="font-semibold text-blue-400">936</span>
+                        <span className="text-gray-600">Total Runs</span>
+                        <span className="font-semibold text-blue-600">936</span>
                       </div>
                     </div>
                   </div>
@@ -317,18 +317,18 @@ export function WorkflowBuilder({ onNavigate }: WorkflowBuilderProps) {
                     {workflowTemplates.map((workflow) => (
                       <div
                         key={workflow.id}
-                        className="p-4 border border-white/10 rounded-lg hover:border-[#2855a6] hover:bg-blue-500/10 cursor-pointer transition-all"
+                        className="p-4 border border-gray-200 rounded-lg hover:border-[#2855a6] hover:bg-blue-50 cursor-pointer transition-all"
                         onClick={() => setSelectedWorkflow(workflow.id)}
                       >
                         <div className="flex items-start justify-between mb-3">
                           <div className="flex-1">
                             <div className="flex items-center gap-3 mb-1">
-                              <h3 className="font-semibold text-slate-100">{workflow.name}</h3>
+                              <h3 className="font-semibold text-gray-900">{workflow.name}</h3>
                               <span className={`px-2 py-0.5 text-xs font-semibold rounded border ${getStatusBadge(workflow.status)}`}>
                                 {workflow.status.charAt(0).toUpperCase() + workflow.status.slice(1)}
                               </span>
                             </div>
-                            <p className="text-sm text-slate-300">{workflow.description}</p>
+                            <p className="text-sm text-gray-600">{workflow.description}</p>
                           </div>
                           <Button variant="ghost" size="sm">
                             <MoreVertical className="w-4 h-4" />
@@ -337,30 +337,30 @@ export function WorkflowBuilder({ onNavigate }: WorkflowBuilderProps) {
 
                         <div className="grid grid-cols-5 gap-4 mb-3">
                           <div>
-                            <p className="text-xs text-slate-300 mb-1">Category</p>
-                            <p className="text-sm font-semibold text-slate-100">{workflow.category}</p>
+                            <p className="text-xs text-gray-600 mb-1">Category</p>
+                            <p className="text-sm font-semibold text-gray-900">{workflow.category}</p>
                           </div>
                           <div>
-                            <p className="text-xs text-slate-300 mb-1">Steps</p>
-                            <p className="text-sm font-semibold text-slate-100">{workflow.steps}</p>
+                            <p className="text-xs text-gray-600 mb-1">Steps</p>
+                            <p className="text-sm font-semibold text-gray-900">{workflow.steps}</p>
                           </div>
                           <div>
-                            <p className="text-xs text-slate-300 mb-1">Runs</p>
-                            <p className="text-sm font-semibold text-slate-100">{workflow.runsCount}</p>
+                            <p className="text-xs text-gray-600 mb-1">Runs</p>
+                            <p className="text-sm font-semibold text-gray-900">{workflow.runsCount}</p>
                           </div>
                           <div>
-                            <p className="text-xs text-slate-300 mb-1">Success Rate</p>
-                            <p className="text-sm font-semibold text-green-400">{workflow.successRate}%</p>
+                            <p className="text-xs text-gray-600 mb-1">Success Rate</p>
+                            <p className="text-sm font-semibold text-green-600">{workflow.successRate}%</p>
                           </div>
                           <div>
-                            <p className="text-xs text-slate-300 mb-1">Last Run</p>
-                            <p className="text-sm font-semibold text-slate-100">{workflow.lastRun || 'Never'}</p>
+                            <p className="text-xs text-gray-600 mb-1">Last Run</p>
+                            <p className="text-sm font-semibold text-gray-900">{workflow.lastRun || 'Never'}</p>
                           </div>
                         </div>
 
                         <div className="flex items-center gap-2 mb-3">
                           {workflow.triggers.map((trigger, idx) => (
-                            <span key={idx} className="px-2 py-0.5 bg-blue-500/15 text-blue-300 text-xs rounded">
+                            <span key={idx} className="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs rounded">
                               {trigger}
                             </span>
                           ))}
@@ -380,12 +380,12 @@ export function WorkflowBuilder({ onNavigate }: WorkflowBuilderProps) {
                             Duplicate
                           </Button>
                           {workflow.status === 'active' ? (
-                            <Button size="sm" variant="outline" className="text-orange-400 hover:text-orange-300">
+                            <Button size="sm" variant="outline" className="text-orange-600 hover:text-orange-700">
                               <AlertCircle className="w-4 h-4 mr-2" />
                               Pause
                             </Button>
                           ) : (
-                            <Button size="sm" variant="outline" className="text-green-400 hover:text-green-300">
+                            <Button size="sm" variant="outline" className="text-green-600 hover:text-green-700">
                               <Play className="w-4 h-4 mr-2" />
                               Activate
                             </Button>
@@ -407,40 +407,40 @@ export function WorkflowBuilder({ onNavigate }: WorkflowBuilderProps) {
             <div className="col-span-3">
               <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
                 <CardContent className="p-4">
-                  <h3 className="font-semibold text-slate-100 mb-3">Available Actions</h3>
+                  <h3 className="font-semibold text-gray-900 mb-3">Available Actions</h3>
                   <div className="space-y-2">
                     {availableActions.map((action) => (
                       <div
                         key={action.id}
-                        className="p-3 border border-white/10 rounded-lg hover:border-[#2855a6] hover:bg-blue-500/10 cursor-move transition-all"
+                        className="p-3 border border-gray-200 rounded-lg hover:border-[#2855a6] hover:bg-blue-50 cursor-move transition-all"
                         draggable
                       >
                         <div className="flex items-center gap-2">
                           <div className={`p-2 bg-${action.color}-50 rounded`}>
                             <action.icon className={`w-4 h-4 text-${action.color}-600`} />
                           </div>
-                          <span className="text-sm font-medium text-slate-100">{action.name}</span>
+                          <span className="text-sm font-medium text-gray-900">{action.name}</span>
                         </div>
                       </div>
                     ))}
                   </div>
 
-                  <div className="mt-6 pt-4 border-t border-white/10">
-                    <h4 className="font-semibold text-slate-100 text-sm mb-2">Triggers</h4>
+                  <div className="mt-6 pt-4 border-t border-gray-200">
+                    <h4 className="font-semibold text-gray-900 text-sm mb-2">Triggers</h4>
                     <div className="space-y-2">
-                      <div className="p-2 border border-white/10 rounded-lg hover:border-[#2855a6] hover:bg-blue-500/10 cursor-move text-sm">
+                      <div className="p-2 border border-gray-200 rounded-lg hover:border-[#2855a6] hover:bg-blue-50 cursor-move text-sm">
                         <div className="flex items-center gap-2">
                           <Calendar className="w-4 h-4" />
                           Date-based
                         </div>
                       </div>
-                      <div className="p-2 border border-white/10 rounded-lg hover:border-[#2855a6] hover:bg-blue-500/10 cursor-move text-sm">
+                      <div className="p-2 border border-gray-200 rounded-lg hover:border-[#2855a6] hover:bg-blue-50 cursor-move text-sm">
                         <div className="flex items-center gap-2">
                           <Zap className="w-4 h-4" />
                           Job Status
                         </div>
                       </div>
-                      <div className="p-2 border border-white/10 rounded-lg hover:border-[#2855a6] hover:bg-blue-500/10 cursor-move text-sm">
+                      <div className="p-2 border border-gray-200 rounded-lg hover:border-[#2855a6] hover:bg-blue-50 cursor-move text-sm">
                         <div className="flex items-center gap-2">
                           <FileText className="w-4 h-4" />
                           Document Upload
@@ -461,7 +461,7 @@ export function WorkflowBuilder({ onNavigate }: WorkflowBuilderProps) {
                       type="text"
                       placeholder="Workflow Name"
                       defaultValue="New Workflow"
-                      className="text-xl font-bold text-slate-100 border-b-2 border-transparent hover:border-white/10 focus:border-[#2855a6] focus:outline-none px-2 py-1"
+                      className="text-xl font-bold text-gray-900 border-b-2 border-transparent hover:border-gray-300 focus:border-[#2855a6] focus:outline-none px-2 py-1"
                     />
                     <div className="flex items-center gap-2">
                       <Button variant="outline" size="sm">
@@ -486,7 +486,7 @@ export function WorkflowBuilder({ onNavigate }: WorkflowBuilderProps) {
                         <div className={`p-4 border-2 rounded-lg ${getStepColor(step.type)}`}>
                           <div className="flex items-start justify-between">
                             <div className="flex items-start gap-3 flex-1">
-                              <div className="p-2 bg-white rounded border border-white/10">
+                              <div className="p-2 bg-white rounded border border-gray-200">
                                 <step.icon className="w-5 h-5" />
                               </div>
                               <div className="flex-1">
@@ -494,9 +494,9 @@ export function WorkflowBuilder({ onNavigate }: WorkflowBuilderProps) {
                                   <span className="px-2 py-0.5 bg-white text-xs font-semibold rounded">
                                     {step.type.toUpperCase()}
                                   </span>
-                                  <h4 className="font-semibold text-slate-100">{step.title}</h4>
+                                  <h4 className="font-semibold text-gray-900">{step.title}</h4>
                                 </div>
-                                <p className="text-sm text-slate-300">{step.description}</p>
+                                <p className="text-sm text-gray-600">{step.description}</p>
                               </div>
                             </div>
                             <div className="flex items-center gap-2">
@@ -504,7 +504,7 @@ export function WorkflowBuilder({ onNavigate }: WorkflowBuilderProps) {
                                 <Edit className="w-4 h-4" />
                               </Button>
                               <Button variant="ghost" size="sm">
-                                <Trash2 className="w-4 h-4 text-red-400" />
+                                <Trash2 className="w-4 h-4 text-red-600" />
                               </Button>
                             </div>
                           </div>
@@ -519,9 +519,9 @@ export function WorkflowBuilder({ onNavigate }: WorkflowBuilderProps) {
                     ))}
 
                     {/* Add Step Button */}
-                    <button className="w-full p-6 border-2 border-dashed border-white/10 rounded-lg hover:border-[#2855a6] hover:bg-blue-500/10 transition-all">
+                    <button className="w-full p-6 border-2 border-dashed border-gray-300 rounded-lg hover:border-[#2855a6] hover:bg-blue-50 transition-all">
                       <Plus className="w-6 h-6 mx-auto text-gray-400" />
-                      <p className="text-sm text-slate-300 mt-2">Drag an action here or click to add a step</p>
+                      <p className="text-sm text-gray-600 mt-2">Drag an action here or click to add a step</p>
                     </button>
                   </div>
                 </CardContent>

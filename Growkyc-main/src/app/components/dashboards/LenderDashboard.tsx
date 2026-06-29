@@ -74,61 +74,61 @@ export function LenderDashboard({ onNavigate }: LenderDashboardProps) {
 
       {/* Key Metrics */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <Card className="bg-gradient-to-br from-green-50 to-white border-2 border-green-500/30">
+        <Card className="bg-gradient-to-br from-green-50 to-white border-2 border-green-200">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <Briefcase className="w-8 h-8 text-green-400" />
+              <Briefcase className="w-8 h-8 text-green-600" />
             </div>
-            <p className="text-sm text-slate-300 mb-1">Available Deals</p>
-            <p className="text-4xl font-bold text-slate-100">{availableDeals.length}</p>
-            <p className="text-xs text-green-400 font-medium mt-2">↑ 3 new this week</p>
+            <p className="text-sm text-gray-600 mb-1">Available Deals</p>
+            <p className="text-4xl font-bold text-gray-900">{availableDeals.length}</p>
+            <p className="text-xs text-green-600 font-medium mt-2">↑ 3 new this week</p>
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-blue-50 to-white border-2 border-blue-500/30">
+        <Card className="bg-gradient-to-br from-blue-50 to-white border-2 border-blue-200">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <Gavel className="w-8 h-8 text-blue-400" />
+              <Gavel className="w-8 h-8 text-blue-600" />
             </div>
-            <p className="text-sm text-slate-300 mb-1">Active Bids</p>
-            <p className="text-4xl font-bold text-slate-100">{myBids.length}</p>
-            <p className="text-xs text-blue-400 font-medium mt-2">2 ending soon</p>
+            <p className="text-sm text-gray-600 mb-1">Active Bids</p>
+            <p className="text-4xl font-bold text-gray-900">{myBids.length}</p>
+            <p className="text-xs text-blue-600 font-medium mt-2">2 ending soon</p>
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-purple-50 to-white border-2 border-purple-500/30">
+        <Card className="bg-gradient-to-br from-purple-50 to-white border-2 border-purple-200">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <FileText className="w-8 h-8 text-purple-400" />
+              <FileText className="w-8 h-8 text-purple-600" />
             </div>
-            <p className="text-sm text-slate-300 mb-1">My MIP Cases</p>
-            <p className="text-4xl font-bold text-slate-100">{myCases.length}</p>
-            <p className="text-xs text-purple-400 font-medium mt-2">Under management</p>
+            <p className="text-sm text-gray-600 mb-1">My MIP Cases</p>
+            <p className="text-4xl font-bold text-gray-900">{myCases.length}</p>
+            <p className="text-xs text-purple-600 font-medium mt-2">Under management</p>
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-amber-50 to-white border-2 border-amber-500/30">
+        <Card className="bg-gradient-to-br from-amber-50 to-white border-2 border-amber-200">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <DollarSign className="w-8 h-8 text-amber-400" />
+              <DollarSign className="w-8 h-8 text-amber-600" />
             </div>
-            <p className="text-sm text-slate-300 mb-1">Total Deployed</p>
-            <p className="text-4xl font-bold text-slate-100">$3.2M</p>
-            <p className="text-xs text-amber-400 font-medium mt-2">Across 5 deals</p>
+            <p className="text-sm text-gray-600 mb-1">Total Deployed</p>
+            <p className="text-4xl font-bold text-gray-900">$3.2M</p>
+            <p className="text-xs text-amber-600 font-medium mt-2">Across 5 deals</p>
           </CardContent>
         </Card>
       </div>
 
       {/* My MIP Cases - Loans lender has placed on platform */}
-      <Card className="bg-gradient-to-br from-purple-50 to-white border-2 border-purple-500/30">
+      <Card className="bg-gradient-to-br from-purple-50 to-white border-2 border-purple-200">
         <CardHeader className="border-b bg-white">
           <div className="flex items-center justify-between">
             <div>
               <CardTitle className="flex items-center gap-2">
-                <FileText className="w-5 h-5 text-purple-400" />
+                <FileText className="w-5 h-5 text-purple-600" />
                 My MIP Cases
               </CardTitle>
-              <p className="text-sm text-slate-300 mt-1">Loans you've placed on the platform for mortgage insurance protection</p>
+              <p className="text-sm text-gray-600 mt-1">Loans you've placed on the platform for mortgage insurance protection</p>
             </div>
             <Button 
               onClick={() => onNavigate?.('case')}
@@ -141,14 +141,14 @@ export function LenderDashboard({ onNavigate }: LenderDashboardProps) {
         <CardContent className="p-6">
           <div className="space-y-4">
             {myCases.map((loanCase, index) => (
-              <div key={index} className="bg-white border-2 border-white/10 rounded-lg p-5 hover:border-purple-300 hover:shadow-md transition-all">
+              <div key={index} className="bg-white border-2 border-gray-200 rounded-lg p-5 hover:border-purple-300 hover:shadow-md transition-all">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
-                      <h4 className="font-bold text-slate-100 text-lg">{loanCase.property.address}</h4>
+                      <h4 className="font-bold text-gray-900 text-lg">{loanCase.property.address}</h4>
                       <StatusBadge status={loanCase.status} type="case" />
                     </div>
-                    <p className="text-sm text-slate-300">{loanCase.property.suburb}, {loanCase.property.state} • Case #{loanCase.caseNumber}</p>
+                    <p className="text-sm text-gray-600">{loanCase.property.suburb}, {loanCase.property.state} • Case #{loanCase.caseNumber}</p>
                   </div>
                   <Button 
                     size="sm" 
@@ -161,30 +161,30 @@ export function LenderDashboard({ onNavigate }: LenderDashboardProps) {
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  <div className="bg-white/5 rounded-lg p-3">
-                    <p className="text-xs text-slate-300 mb-1">Outstanding Debt</p>
-                    <p className="font-bold text-slate-100">${(loanCase.outstandingDebt / 1000).toFixed(0)}k</p>
+                  <div className="bg-gray-50 rounded-lg p-3">
+                    <p className="text-xs text-gray-600 mb-1">Outstanding Debt</p>
+                    <p className="font-bold text-gray-900">${(loanCase.outstandingDebt / 1000).toFixed(0)}k</p>
                   </div>
-                  <div className="bg-white/5 rounded-lg p-3">
-                    <p className="text-xs text-slate-300 mb-1">Property Value</p>
-                    <p className="font-bold text-slate-100">${(loanCase.valuation.amount / 1000).toFixed(0)}k</p>
+                  <div className="bg-gray-50 rounded-lg p-3">
+                    <p className="text-xs text-gray-600 mb-1">Property Value</p>
+                    <p className="font-bold text-gray-900">${(loanCase.valuation.amount / 1000).toFixed(0)}k</p>
                   </div>
-                  <div className="bg-white/5 rounded-lg p-3">
-                    <p className="text-xs text-slate-300 mb-1">LVR</p>
-                    <p className="font-bold text-green-400">{((loanCase.outstandingDebt / loanCase.valuation.amount) * 100).toFixed(1)}%</p>
+                  <div className="bg-gray-50 rounded-lg p-3">
+                    <p className="text-xs text-gray-600 mb-1">LVR</p>
+                    <p className="font-bold text-green-600">{((loanCase.outstandingDebt / loanCase.valuation.amount) * 100).toFixed(1)}%</p>
                   </div>
-                  <div className="bg-white/5 rounded-lg p-3">
-                    <p className="text-xs text-slate-300 mb-1">Submitted</p>
-                    <p className="font-bold text-slate-100">{format(loanCase.createdAt, 'dd MMM yyyy')}</p>
+                  <div className="bg-gray-50 rounded-lg p-3">
+                    <p className="text-xs text-gray-600 mb-1">Submitted</p>
+                    <p className="font-bold text-gray-900">{format(loanCase.createdAt, 'dd MMM yyyy')}</p>
                   </div>
                 </div>
 
                 {/* Case-specific next actions */}
                 {index === 0 && (
-                  <div className="mt-4 pt-4 border-t border-white/10">
+                  <div className="mt-4 pt-4 border-t border-gray-200">
                     <div className="flex items-center gap-2 text-sm">
-                      <AlertCircle className="w-4 h-4 text-amber-400" />
-                      <span className="text-slate-300">Action required: <span className="font-semibold text-amber-400">Upload updated property valuation</span></span>
+                      <AlertCircle className="w-4 h-4 text-amber-600" />
+                      <span className="text-gray-700">Action required: <span className="font-semibold text-amber-600">Upload updated property valuation</span></span>
                       <Button size="sm" variant="link" onClick={() => onNavigate?.('documents')}>Upload</Button>
                     </div>
                   </div>
@@ -201,10 +201,10 @@ export function LenderDashboard({ onNavigate }: LenderDashboardProps) {
           <CardHeader className="border-b">
             <div className="flex items-center justify-between">
               <CardTitle className="flex items-center gap-2">
-                <Activity className="w-5 h-5 text-red-400" />
+                <Activity className="w-5 h-5 text-red-600" />
                 Live Auctions
               </CardTitle>
-              <div className="flex items-center gap-2 px-3 py-1 bg-red-500/15 text-red-400 rounded-lg text-sm font-semibold">
+              <div className="flex items-center gap-2 px-3 py-1 bg-red-100 text-red-600 rounded-lg text-sm font-semibold">
                 <div className="w-2 h-2 bg-red-600 rounded-full animate-pulse"></div>
                 2 LIVE
               </div>
@@ -213,28 +213,28 @@ export function LenderDashboard({ onNavigate }: LenderDashboardProps) {
           <CardContent className="p-6">
             <div className="space-y-4">
               {availableDeals.slice(0, 2).map((deal, index) => (
-                <div key={index} className="border rounded-lg p-4 hover:bg-white/5 transition-colors">
+                <div key={index} className="border rounded-lg p-4 hover:bg-gray-50 transition-colors">
                   <div className="flex justify-between items-start mb-3">
                     <div>
-                      <h4 className="font-bold text-slate-100">{deal.property.address}</h4>
-                      <p className="text-sm text-slate-300">{deal.property.suburb}, {deal.property.state}</p>
+                      <h4 className="font-bold text-gray-900">{deal.property.address}</h4>
+                      <p className="text-sm text-gray-600">{deal.property.suburb}, {deal.property.state}</p>
                     </div>
                     <StatusBadge status={deal.status} type="case" />
                   </div>
                   
                   <div className="grid grid-cols-2 gap-3 mb-3">
                     <div>
-                      <p className="text-xs text-slate-300">Outstanding Debt</p>
-                      <p className="font-bold text-slate-100">${(deal.outstandingDebt / 1000).toFixed(0)}k</p>
+                      <p className="text-xs text-gray-600">Outstanding Debt</p>
+                      <p className="font-bold text-gray-900">${(deal.outstandingDebt / 1000).toFixed(0)}k</p>
                     </div>
                     <div>
-                      <p className="text-xs text-slate-300">Current Bid</p>
-                      <p className="font-bold text-green-400">${((deal.currentBid || 0) / 1000).toFixed(0)}k</p>
+                      <p className="text-xs text-gray-600">Current Bid</p>
+                      <p className="font-bold text-green-600">${((deal.currentBid || 0) / 1000).toFixed(0)}k</p>
                     </div>
                   </div>
 
                   <div className="flex items-center justify-between pt-3 border-t">
-                    <div className="flex items-center gap-2 text-sm text-red-400 font-medium">
+                    <div className="flex items-center gap-2 text-sm text-red-600 font-medium">
                       <Clock className="w-4 h-4" />
                       <CountdownTimer end={new Date(Date.now() + 2 * 60 * 60 * 1000 + 15 * 60 * 1000)} />
                     </div>
@@ -263,30 +263,30 @@ export function LenderDashboard({ onNavigate }: LenderDashboardProps) {
           <CardContent className="p-6">
             <div className="space-y-4">
               {myBids.map((deal, index) => (
-                <div key={index} className="border rounded-lg p-4 hover:bg-white/5 transition-colors">
+                <div key={index} className="border rounded-lg p-4 hover:bg-gray-50 transition-colors">
                   <div className="flex justify-between items-start mb-3">
                     <div>
-                      <h4 className="font-bold text-slate-100">{deal.property.address}</h4>
-                      <p className="text-sm text-slate-300">{deal.property.suburb}, {deal.property.state}</p>
+                      <h4 className="font-bold text-gray-900">{deal.property.address}</h4>
+                      <p className="text-sm text-gray-600">{deal.property.suburb}, {deal.property.state}</p>
                     </div>
-                    <div className="px-2 py-1 bg-green-500/15 text-green-300 rounded text-xs font-semibold">
+                    <div className="px-2 py-1 bg-green-100 text-green-700 rounded text-xs font-semibold">
                       LEADING
                     </div>
                   </div>
                   
                   <div className="grid grid-cols-2 gap-3 mb-3">
                     <div>
-                      <p className="text-xs text-slate-300">My Bid</p>
-                      <p className="font-bold text-blue-400">${((deal.currentBid || 0) / 1000).toFixed(0)}k</p>
+                      <p className="text-xs text-gray-600">My Bid</p>
+                      <p className="font-bold text-blue-600">${((deal.currentBid || 0) / 1000).toFixed(0)}k</p>
                     </div>
                     <div>
-                      <p className="text-xs text-slate-300">Property Value</p>
-                      <p className="font-bold text-slate-100">${(deal.valuation.amount / 1000).toFixed(0)}k</p>
+                      <p className="text-xs text-gray-600">Property Value</p>
+                      <p className="font-bold text-gray-900">${(deal.valuation.amount / 1000).toFixed(0)}k</p>
                     </div>
                   </div>
 
                   <div className="flex items-center justify-between pt-3 border-t">
-                    <div className="text-sm text-slate-300">
+                    <div className="text-sm text-gray-600">
                       Bid placed {format(new Date(Date.now() - 45 * 60 * 1000), 'HH:mm')}
                     </div>
                     <Button 
@@ -337,21 +337,21 @@ export function LenderDashboard({ onNavigate }: LenderDashboardProps) {
                   </div>
                 </div>
                 <div className="p-4">
-                  <h4 className="font-bold text-slate-100 mb-1">{deal.property.address}</h4>
-                  <p className="text-sm text-slate-300 mb-3">{deal.property.suburb}, {deal.property.state}</p>
+                  <h4 className="font-bold text-gray-900 mb-1">{deal.property.address}</h4>
+                  <p className="text-sm text-gray-600 mb-3">{deal.property.suburb}, {deal.property.state}</p>
                   
                   <div className="space-y-2 mb-4">
                     <div className="flex justify-between text-sm">
-                      <span className="text-slate-300">Outstanding Debt:</span>
+                      <span className="text-gray-600">Outstanding Debt:</span>
                       <span className="font-semibold">${(deal.outstandingDebt / 1000).toFixed(0)}k</span>
                     </div>
                     <div className="flex justify-between text-sm">
-                      <span className="text-slate-300">Property Value:</span>
+                      <span className="text-gray-600">Property Value:</span>
                       <span className="font-semibold">${(deal.valuation.amount / 1000).toFixed(0)}k</span>
                     </div>
                     <div className="flex justify-between text-sm">
-                      <span className="text-slate-300">LVR:</span>
-                      <span className="font-semibold text-green-400">
+                      <span className="text-gray-600">LVR:</span>
+                      <span className="font-semibold text-green-600">
                         {((deal.outstandingDebt / deal.valuation.amount) * 100).toFixed(1)}%
                       </span>
                     </div>
@@ -373,29 +373,29 @@ export function LenderDashboard({ onNavigate }: LenderDashboardProps) {
       </Card>
 
       {/* Performance Stats */}
-      <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-500/30">
+      <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200">
         <CardContent className="p-6">
-          <h3 className="font-bold text-slate-100 text-lg mb-4">Your Performance</h3>
+          <h3 className="font-bold text-gray-900 text-lg mb-4">Your Performance</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div>
-              <p className="text-sm text-slate-300 mb-1">Win Rate</p>
-              <p className="text-3xl font-bold text-slate-100">45%</p>
-              <p className="text-xs text-slate-300 mt-1">3 of 7 bids won</p>
+              <p className="text-sm text-gray-600 mb-1">Win Rate</p>
+              <p className="text-3xl font-bold text-gray-900">45%</p>
+              <p className="text-xs text-gray-600 mt-1">3 of 7 bids won</p>
             </div>
             <div>
-              <p className="text-sm text-slate-300 mb-1">Avg. Deal Size</p>
-              <p className="text-3xl font-bold text-slate-100">$1.1M</p>
-              <p className="text-xs text-slate-300 mt-1">Last 3 months</p>
+              <p className="text-sm text-gray-600 mb-1">Avg. Deal Size</p>
+              <p className="text-3xl font-bold text-gray-900">$1.1M</p>
+              <p className="text-xs text-gray-600 mt-1">Last 3 months</p>
             </div>
             <div>
-              <p className="text-sm text-slate-300 mb-1">Avg. LVR</p>
-              <p className="text-3xl font-bold text-slate-100">68%</p>
-              <p className="text-xs text-slate-300 mt-1">Portfolio average</p>
+              <p className="text-sm text-gray-600 mb-1">Avg. LVR</p>
+              <p className="text-3xl font-bold text-gray-900">68%</p>
+              <p className="text-xs text-gray-600 mt-1">Portfolio average</p>
             </div>
             <div>
-              <p className="text-sm text-slate-300 mb-1">Expected ROI</p>
-              <p className="text-3xl font-bold text-green-400">11.2%</p>
-              <p className="text-xs text-slate-300 mt-1">Weighted average</p>
+              <p className="text-sm text-gray-600 mb-1">Expected ROI</p>
+              <p className="text-3xl font-bold text-green-600">11.2%</p>
+              <p className="text-xs text-gray-600 mt-1">Weighted average</p>
             </div>
           </div>
         </CardContent>

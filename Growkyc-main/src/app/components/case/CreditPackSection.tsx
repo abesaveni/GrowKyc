@@ -38,15 +38,15 @@ export function CreditPackSection({
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle className="text-lg flex items-center gap-2">
-            <Database className="w-5 h-5 text-purple-400" />
+            <Database className="w-5 h-5 text-purple-600" />
             Complete Credit Pack Assembly
           </CardTitle>
-          <div className="flex items-center gap-2 px-3 py-1 bg-purple-500/15 border border-purple-300 rounded-lg">
-            <FileText className="w-4 h-4 text-purple-300" />
-            <span className="text-xs font-bold text-purple-300">COMPREHENSIVE</span>
+          <div className="flex items-center gap-2 px-3 py-1 bg-purple-100 border border-purple-300 rounded-lg">
+            <FileText className="w-4 h-4 text-purple-700" />
+            <span className="text-xs font-bold text-purple-900">COMPREHENSIVE</span>
           </div>
         </div>
-        <p className="text-sm text-purple-300 mt-2">
+        <p className="text-sm text-purple-800 mt-2">
           All InfoTrack documents and third-party documents assembled with data redaction as per Privacy Act 1988 and OAIC guidelines
         </p>
       </CardHeader>
@@ -54,24 +54,24 @@ export function CreditPackSection({
         {/* Privacy & Redaction Notice */}
         <div className="p-4 bg-gradient-to-br from-yellow-50 to-amber-50 border-2 border-yellow-400 rounded-lg">
           <div className="flex items-start gap-3">
-            <AlertCircle className="w-5 h-5 text-yellow-300 mt-0.5 flex-shrink-0" />
+            <AlertCircle className="w-5 h-5 text-yellow-700 mt-0.5 flex-shrink-0" />
             <div>
-              <p className="font-bold text-yellow-300 text-sm mb-2">🔒 Data Redaction & Privacy Compliance</p>
-              <p className="text-xs text-yellow-300 mb-2">
+              <p className="font-bold text-yellow-900 text-sm mb-2">🔒 Data Redaction & Privacy Compliance</p>
+              <p className="text-xs text-yellow-800 mb-2">
                 All documents in this credit pack will be automatically redacted to comply with:
               </p>
               <div className="grid md:grid-cols-3 gap-2 text-xs">
                 <div className="bg-white/60 p-2 rounded border border-yellow-300">
-                  <strong className="text-yellow-300">Privacy Act 1988</strong>
-                  <p className="text-yellow-300">Australian Privacy Principles (APPs) - minimum necessary disclosure</p>
+                  <strong className="text-yellow-900">Privacy Act 1988</strong>
+                  <p className="text-yellow-800">Australian Privacy Principles (APPs) - minimum necessary disclosure</p>
                 </div>
                 <div className="bg-white/60 p-2 rounded border border-yellow-300">
-                  <strong className="text-yellow-300">OAIC Guidelines</strong>
-                  <p className="text-yellow-300">Office of Australian Information Commissioner data handling standards</p>
+                  <strong className="text-yellow-900">OAIC Guidelines</strong>
+                  <p className="text-yellow-800">Office of Australian Information Commissioner data handling standards</p>
                 </div>
                 <div className="bg-white/60 p-2 rounded border border-yellow-300">
-                  <strong className="text-yellow-300">AML/CTF Act</strong>
-                  <p className="text-yellow-300">Record keeping obligations with appropriate redaction</p>
+                  <strong className="text-yellow-900">AML/CTF Act</strong>
+                  <p className="text-yellow-800">Record keeping obligations with appropriate redaction</p>
                 </div>
               </div>
             </div>
@@ -80,8 +80,8 @@ export function CreditPackSection({
 
         {/* Section 1: InfoTrack Generated Documents */}
         <div>
-          <h4 className="font-bold text-slate-100 mb-3 flex items-center gap-2">
-            <FileSearch className="w-4 h-4 text-indigo-400" />
+          <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+            <FileSearch className="w-4 h-4 text-indigo-600" />
             InfoTrack Generated Documents (Auto-Attached)
           </h4>
           <div className="space-y-2">
@@ -151,35 +151,35 @@ export function CreditPackSection({
                 key={idx} 
                 className={`p-3 rounded-lg border-2 ${
                   doc.status 
-                    ? 'bg-green-500/10 border-green-500/30' 
-                    : 'bg-white/5 border-white/10'
+                    ? 'bg-green-50 border-green-200' 
+                    : 'bg-gray-50 border-gray-200'
                 }`}
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
                       {doc.status ? (
-                        <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
+                        <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
                       ) : (
                         <Clock className="w-4 h-4 text-gray-400 flex-shrink-0" />
                       )}
                       <p className={`text-sm font-semibold ${
-                        doc.status ? 'text-green-300' : 'text-slate-300'
+                        doc.status ? 'text-green-900' : 'text-gray-600'
                       }`}>
                         {doc.name}
                       </p>
                     </div>
-                    <p className="text-xs text-slate-300 ml-6">{doc.description}</p>
+                    <p className="text-xs text-gray-600 ml-6">{doc.description}</p>
                   </div>
                   <div className="text-right flex-shrink-0">
                     <div className={`text-xs px-2 py-1 rounded ${
                       doc.status 
-                        ? 'bg-green-500/15 text-green-300 font-medium' 
-                        : 'bg-white/5 text-slate-300'
+                        ? 'bg-green-100 text-green-800 font-medium' 
+                        : 'bg-gray-100 text-gray-600'
                     }`}>
                       {doc.status ? '✓ Attached' : 'Pending'}
                     </div>
-                    <div className="text-xs text-purple-300 mt-1 font-medium">
+                    <div className="text-xs text-purple-700 mt-1 font-medium">
                       🔒 {doc.redaction}
                     </div>
                   </div>
@@ -191,8 +191,8 @@ export function CreditPackSection({
 
         {/* Section 2: Lender Provided Documents */}
         <div>
-          <h4 className="font-bold text-slate-100 mb-3 flex items-center gap-2">
-            <Building2 className="w-4 h-4 text-blue-400" />
+          <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+            <Building2 className="w-4 h-4 text-blue-600" />
             Lender Provided Documents (From Step 4)
           </h4>
           <div className="space-y-2">
@@ -274,34 +274,34 @@ export function CreditPackSection({
                 key={idx} 
                 className={`p-3 rounded-lg border-2 ${
                   doc.status 
-                    ? 'bg-blue-500/10 border-blue-500/30' 
-                    : 'bg-white/5 border-white/10'
+                    ? 'bg-blue-50 border-blue-200' 
+                    : 'bg-gray-50 border-gray-200'
                 }`}
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
                       {doc.status ? (
-                        <CheckCircle className="w-4 h-4 text-blue-400 flex-shrink-0" />
+                        <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0" />
                       ) : (
                         <Clock className="w-4 h-4 text-gray-400 flex-shrink-0" />
                       )}
                       <p className={`text-sm font-semibold ${
-                        doc.status ? 'text-blue-300' : 'text-slate-300'
+                        doc.status ? 'text-blue-900' : 'text-gray-600'
                       }`}>
-                        {doc.name} {doc.required && <span className="text-red-400">*</span>}
+                        {doc.name} {doc.required && <span className="text-red-600">*</span>}
                       </p>
                     </div>
                   </div>
                   <div className="text-right flex-shrink-0">
                     <div className={`text-xs px-2 py-1 rounded ${
                       doc.status 
-                        ? 'bg-blue-500/15 text-blue-300 font-medium' 
-                        : 'bg-white/5 text-slate-300'
+                        ? 'bg-blue-100 text-blue-800 font-medium' 
+                        : 'bg-gray-100 text-gray-600'
                     }`}>
                       {doc.status ? '✓ Uploaded' : doc.required ? 'Required' : 'Optional'}
                     </div>
-                    <div className="text-xs text-purple-300 mt-1 font-medium">
+                    <div className="text-xs text-purple-700 mt-1 font-medium">
                       🔒 {doc.redaction}
                     </div>
                   </div>
@@ -313,8 +313,8 @@ export function CreditPackSection({
 
         {/* Section 3: Third-Party Documents */}
         <div>
-          <h4 className="font-bold text-slate-100 mb-3 flex items-center gap-2">
-            <Briefcase className="w-4 h-4 text-teal-400" />
+          <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+            <Briefcase className="w-4 h-4 text-teal-600" />
             Third-Party Professional Documents
           </h4>
           <div className="space-y-2">
@@ -366,35 +366,35 @@ export function CreditPackSection({
                 key={idx} 
                 className={`p-3 rounded-lg border-2 ${
                   doc.status 
-                    ? 'bg-teal-500/10 border-teal-500/30' 
-                    : 'bg-white/5 border-white/10'
+                    ? 'bg-teal-50 border-teal-200' 
+                    : 'bg-gray-50 border-gray-200'
                 }`}
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
                       {doc.status ? (
-                        <CheckCircle className="w-4 h-4 text-teal-400 flex-shrink-0" />
+                        <CheckCircle className="w-4 h-4 text-teal-600 flex-shrink-0" />
                       ) : (
                         <Clock className="w-4 h-4 text-gray-400 flex-shrink-0" />
                       )}
                       <p className={`text-sm font-semibold ${
-                        doc.status ? 'text-teal-300' : 'text-slate-300'
+                        doc.status ? 'text-teal-900' : 'text-gray-600'
                       }`}>
                         {doc.name}
                       </p>
                     </div>
-                    <p className="text-xs text-slate-300 ml-6">Provider: {doc.provider}</p>
+                    <p className="text-xs text-gray-600 ml-6">Provider: {doc.provider}</p>
                   </div>
                   <div className="text-right flex-shrink-0">
                     <div className={`text-xs px-2 py-1 rounded ${
                       doc.status 
-                        ? 'bg-teal-500/15 text-teal-300 font-medium' 
-                        : 'bg-white/5 text-slate-300'
+                        ? 'bg-teal-100 text-teal-800 font-medium' 
+                        : 'bg-gray-100 text-gray-600'
                     }`}>
                       {doc.status ? '✓ Available' : 'Pending'}
                     </div>
-                    <div className="text-xs text-purple-300 mt-1 font-medium">
+                    <div className="text-xs text-purple-700 mt-1 font-medium">
                       🔒 {doc.redaction}
                     </div>
                   </div>
@@ -407,13 +407,13 @@ export function CreditPackSection({
         {/* Credit Pack Generation Summary */}
         <div className="p-4 bg-gradient-to-br from-purple-100 to-indigo-100 border-2 border-purple-300 rounded-lg">
           <div className="flex items-start gap-3">
-            <Database className="w-6 h-6 text-purple-300 mt-0.5 flex-shrink-0" />
+            <Database className="w-6 h-6 text-purple-700 mt-0.5 flex-shrink-0" />
             <div className="flex-1">
-              <p className="font-bold text-purple-300 mb-2">📦 Complete Credit Pack Ready for Generation</p>
+              <p className="font-bold text-purple-900 mb-2">📦 Complete Credit Pack Ready for Generation</p>
               <div className="grid md:grid-cols-2 gap-3 text-xs">
                 <div>
-                  <p className="font-semibold text-purple-300 mb-1">Included in Credit Pack:</p>
-                  <ul className="space-y-1 text-purple-300">
+                  <p className="font-semibold text-purple-900 mb-1">Included in Credit Pack:</p>
+                  <ul className="space-y-1 text-purple-800">
                     <li>✓ All InfoTrack verification documents</li>
                     <li>✓ Complete lender documentation</li>
                     <li>✓ Third-party professional reports</li>
@@ -422,8 +422,8 @@ export function CreditPackSection({
                   </ul>
                 </div>
                 <div>
-                  <p className="font-semibold text-purple-300 mb-1">Automatic Redactions Applied:</p>
-                  <ul className="space-y-1 text-purple-300">
+                  <p className="font-semibold text-purple-900 mb-1">Automatic Redactions Applied:</p>
+                  <ul className="space-y-1 text-purple-800">
                     <li>🔒 Personal ID numbers (partial masking)</li>
                     <li>🔒 Date of birth (year only shown)</li>
                     <li>🔒 Bank account details (last 4 digits)</li>
@@ -433,7 +433,7 @@ export function CreditPackSection({
                 </div>
               </div>
               <div className="mt-3 p-3 bg-white rounded border border-purple-300">
-                <p className="text-xs text-purple-300">
+                <p className="text-xs text-purple-900">
                   <strong>Compliance Note:</strong> This credit pack meets all requirements under the Privacy Act 1988, 
                   OAIC guidelines, AML/CTF Act record-keeping obligations, ASIC lending standards, and AFSL documentation requirements. 
                   All redactions follow the principle of "minimum necessary disclosure" while maintaining audit trail integrity.

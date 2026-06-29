@@ -73,17 +73,17 @@ export function LiabilityDisclaimer({ onAccept, onDecline }: LiabilityDisclaimer
 
   return (
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4 overflow-y-auto">
-      <Card className="max-w-4xl w-full my-8 shadow-2xl border-2 border-red-500/30">
-        <CardHeader className="bg-gradient-to-r from-red-50 to-orange-50 border-b-2 border-red-500/30">
+      <Card className="max-w-4xl w-full my-8 shadow-2xl border-2 border-red-200">
+        <CardHeader className="bg-gradient-to-r from-red-50 to-orange-50 border-b-2 border-red-200">
           <div className="flex items-start gap-4">
-            <div className="p-3 bg-red-500/15 rounded-lg">
-              <AlertTriangle className="w-8 h-8 text-red-400" />
+            <div className="p-3 bg-red-100 rounded-lg">
+              <AlertTriangle className="w-8 h-8 text-red-600" />
             </div>
             <div className="flex-1">
-              <CardTitle className="text-2xl text-red-300 mb-2">
+              <CardTitle className="text-2xl text-red-900 mb-2">
                 Professional Liability Declaration & Disclaimer
               </CardTitle>
-              <p className="text-sm text-red-300 font-medium">
+              <p className="text-sm text-red-700 font-medium">
                 IMPORTANT: You must read and accept all declarations before proceeding. This declaration establishes professional responsibility and liability for the information entered into this system.
               </p>
             </div>
@@ -92,22 +92,22 @@ export function LiabilityDisclaimer({ onAccept, onDecline }: LiabilityDisclaimer
 
         <CardContent className="space-y-6 pt-6">
           {/* Critical Notice */}
-          <div className="bg-red-500/10 border-2 border-red-300 rounded-lg p-4">
+          <div className="bg-red-50 border-2 border-red-300 rounded-lg p-4">
             <div className="flex items-start gap-3">
-              <AlertCircle className="w-6 h-6 text-red-400 flex-shrink-0 mt-0.5" />
+              <AlertCircle className="w-6 h-6 text-red-600 flex-shrink-0 mt-0.5" />
               <div className="space-y-2 text-sm">
-                <p className="font-bold text-red-300">CRITICAL NOTICE - PROFESSIONAL RESPONSIBILITY</p>
-                <p className="text-red-300">
+                <p className="font-bold text-red-900">CRITICAL NOTICE - PROFESSIONAL RESPONSIBILITY</p>
+                <p className="text-red-800">
                   This system is a professional tool for licensed credit professionals. By proceeding, you acknowledge that YOU (the user) are solely responsible for:
                 </p>
-                <ul className="list-disc ml-5 space-y-1 text-red-300">
+                <ul className="list-disc ml-5 space-y-1 text-red-800">
                   <li>Accuracy and completeness of all information entered</li>
                   <li>Compliance with NCCP, Privacy Act, PPSA, and all applicable legislation</li>
                   <li>Verification of all third-party data and documents</li>
                   <li>Professional assessment and decision-making</li>
                   <li>All legal and regulatory obligations arising from this matter</li>
                 </ul>
-                <p className="font-bold text-red-300 mt-3">
+                <p className="font-bold text-red-900 mt-3">
                   The AI Compliance Agent is an ASSISTIVE TOOL ONLY. It cannot replace professional judgment, legal advice, or regulatory obligations.
                 </p>
               </div>
@@ -117,14 +117,14 @@ export function LiabilityDisclaimer({ onAccept, onDecline }: LiabilityDisclaimer
           {/* Your Details */}
           <div className="space-y-4">
             <div className="flex items-center gap-2 mb-3">
-              <UserCheck className="w-5 h-5 text-blue-400" />
+              <UserCheck className="w-5 h-5 text-blue-600" />
               <h3 className="font-semibold text-lg">Your Professional Details</h3>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <Label htmlFor="fullName" className="text-sm font-medium">
-                  Full Legal Name <span className="text-red-400">*</span>
+                  Full Legal Name <span className="text-red-600">*</span>
                 </Label>
                 <Input
                   id="fullName"
@@ -138,7 +138,7 @@ export function LiabilityDisclaimer({ onAccept, onDecline }: LiabilityDisclaimer
 
               <div>
                 <Label htmlFor="position" className="text-sm font-medium">
-                  Position/Title <span className="text-red-400">*</span>
+                  Position/Title <span className="text-red-600">*</span>
                 </Label>
                 <Input
                   id="position"
@@ -152,7 +152,7 @@ export function LiabilityDisclaimer({ onAccept, onDecline }: LiabilityDisclaimer
 
               <div>
                 <Label htmlFor="organization" className="text-sm font-medium">
-                  Organization/Firm <span className="text-red-400">*</span>
+                  Organization/Firm <span className="text-red-600">*</span>
                 </Label>
                 <Input
                   id="organization"
@@ -182,13 +182,13 @@ export function LiabilityDisclaimer({ onAccept, onDecline }: LiabilityDisclaimer
           {/* Declarations */}
           <div className="space-y-4">
             <div className="flex items-center gap-2 mb-3">
-              <Scale className="w-5 h-5 text-purple-400" />
+              <Scale className="w-5 h-5 text-purple-600" />
               <h3 className="font-semibold text-lg">Professional Declarations</h3>
             </div>
 
-            <div className="space-y-4 bg-white/5 rounded-lg p-4 border border-white/10">
+            <div className="space-y-4 bg-gray-50 rounded-lg p-4 border border-gray-200">
               {/* Declaration 1: Accuracy */}
-              <div className="flex items-start gap-3 p-3 bg-white rounded border border-white/10">
+              <div className="flex items-start gap-3 p-3 bg-white rounded border border-gray-200">
                 <Checkbox
                   id="accuracy"
                   checked={declarations.accuracy}
@@ -199,14 +199,14 @@ export function LiabilityDisclaimer({ onAccept, onDecline }: LiabilityDisclaimer
                   <Label htmlFor="accuracy" className="font-medium cursor-pointer text-sm">
                     ✓ Accuracy & Completeness of Information
                   </Label>
-                  <p className="text-xs text-slate-300 mt-1">
+                  <p className="text-xs text-gray-600 mt-1">
                     I declare that all information I enter into this system is, to the best of my knowledge and belief, accurate, complete, and current. I understand that I am responsible for verifying all information before submission.
                   </p>
                 </div>
               </div>
 
               {/* Declaration 2: Authority */}
-              <div className="flex items-start gap-3 p-3 bg-white rounded border border-white/10">
+              <div className="flex items-start gap-3 p-3 bg-white rounded border border-gray-200">
                 <Checkbox
                   id="authority"
                   checked={declarations.authority}
@@ -217,14 +217,14 @@ export function LiabilityDisclaimer({ onAccept, onDecline }: LiabilityDisclaimer
                   <Label htmlFor="authority" className="font-medium cursor-pointer text-sm">
                     ✓ Professional Authority & Competence
                   </Label>
-                  <p className="text-xs text-slate-300 mt-1">
+                  <p className="text-xs text-gray-600 mt-1">
                     I declare that I have the necessary professional qualifications, authority, and competence to handle this matter. I hold appropriate licences/registrations and am authorized by my organization to use this system.
                   </p>
                 </div>
               </div>
 
               {/* Declaration 3: Documentation */}
-              <div className="flex items-start gap-3 p-3 bg-white rounded border border-white/10">
+              <div className="flex items-start gap-3 p-3 bg-white rounded border border-gray-200">
                 <Checkbox
                   id="documentation"
                   checked={declarations.documentation}
@@ -235,14 +235,14 @@ export function LiabilityDisclaimer({ onAccept, onDecline }: LiabilityDisclaimer
                   <Label htmlFor="documentation" className="font-medium cursor-pointer text-sm">
                     ✓ Document Verification & Third-Party Data
                   </Label>
-                  <p className="text-xs text-slate-300 mt-1">
+                  <p className="text-xs text-gray-600 mt-1">
                     I acknowledge my responsibility to verify all documents uploaded or obtained from third parties (including RP Data, InfoTrack, credit bureaus). I understand that automated systems can contain errors and I must independently verify critical information.
                   </p>
                 </div>
               </div>
 
               {/* Declaration 4: Compliance */}
-              <div className="flex items-start gap-3 p-3 bg-white rounded border border-white/10">
+              <div className="flex items-start gap-3 p-3 bg-white rounded border border-gray-200">
                 <Checkbox
                   id="compliance"
                   checked={declarations.compliance}
@@ -253,14 +253,14 @@ export function LiabilityDisclaimer({ onAccept, onDecline }: LiabilityDisclaimer
                   <Label htmlFor="compliance" className="font-medium cursor-pointer text-sm">
                     ✓ Regulatory Compliance Responsibility (NCCP, Privacy Act, PPSA)
                   </Label>
-                  <p className="text-xs text-slate-300 mt-1">
+                  <p className="text-xs text-gray-600 mt-1">
                     I acknowledge that I am solely responsible for ensuring compliance with the National Consumer Credit Protection Act 2009, Privacy Act 1988, Personal Property Securities Act 2009, and all other applicable laws and regulations. I understand that using this system does not guarantee compliance.
                   </p>
                 </div>
               </div>
 
               {/* Declaration 5: Liability */}
-              <div className="flex items-start gap-3 p-3 bg-white rounded border border-red-500/20">
+              <div className="flex items-start gap-3 p-3 bg-white rounded border border-red-100">
                 <Checkbox
                   id="liability"
                   checked={declarations.liability}
@@ -268,17 +268,17 @@ export function LiabilityDisclaimer({ onAccept, onDecline }: LiabilityDisclaimer
                   className="mt-1"
                 />
                 <div className="flex-1">
-                  <Label htmlFor="liability" className="font-medium cursor-pointer text-sm text-red-300">
+                  <Label htmlFor="liability" className="font-medium cursor-pointer text-sm text-red-900">
                     ✓ Acceptance of Professional Liability
                   </Label>
-                  <p className="text-xs text-red-300 mt-1 font-medium">
+                  <p className="text-xs text-red-700 mt-1 font-medium">
                     I accept full professional liability for all information entered and decisions made using this system. I understand that I, my organization, or the original loan writer (as applicable) bear all legal, regulatory, and professional responsibility for this matter. The system provider accepts no liability for errors, omissions, or compliance failures.
                   </p>
                 </div>
               </div>
 
               {/* Declaration 6: Professional Judgment */}
-              <div className="flex items-start gap-3 p-3 bg-white rounded border border-white/10">
+              <div className="flex items-start gap-3 p-3 bg-white rounded border border-gray-200">
                 <Checkbox
                   id="professional"
                   checked={declarations.professional}
@@ -289,14 +289,14 @@ export function LiabilityDisclaimer({ onAccept, onDecline }: LiabilityDisclaimer
                   <Label htmlFor="professional" className="font-medium cursor-pointer text-sm">
                     ✓ Professional Judgment & AI Tool Limitations
                   </Label>
-                  <p className="text-xs text-slate-300 mt-1">
+                  <p className="text-xs text-gray-600 mt-1">
                     I understand that the AI Compliance Agent is an assistive tool only and cannot replace my professional judgment. All AI suggestions must be reviewed and validated by me before implementation. I remain responsible for all final decisions.
                   </p>
                 </div>
               </div>
 
               {/* Declaration 7: Third Party Reliance */}
-              <div className="flex items-start gap-3 p-3 bg-white rounded border border-white/10">
+              <div className="flex items-start gap-3 p-3 bg-white rounded border border-gray-200">
                 <Checkbox
                   id="thirdParty"
                   checked={declarations.thirdParty}
@@ -307,14 +307,14 @@ export function LiabilityDisclaimer({ onAccept, onDecline }: LiabilityDisclaimer
                   <Label htmlFor="thirdParty" className="font-medium cursor-pointer text-sm">
                     ✓ Original Loan Writer & Third-Party Reliance
                   </Label>
-                  <p className="text-xs text-slate-300 mt-1">
+                  <p className="text-xs text-gray-600 mt-1">
                     Where I am entering information on behalf of another party (e.g., original loan writer, lender), I declare that I have obtained appropriate authority and that the original party remains liable for the accuracy of their original information and representations. This does not diminish my responsibility to verify information entered by me.
                   </p>
                 </div>
               </div>
 
               {/* Declaration 8: AML/CTF */}
-              <div className="flex items-start gap-3 p-3 bg-white rounded border border-white/10">
+              <div className="flex items-start gap-3 p-3 bg-white rounded border border-gray-200">
                 <Checkbox
                   id="antiMoneyLaundering"
                   checked={declarations.antiMoneyLaundering}
@@ -325,7 +325,7 @@ export function LiabilityDisclaimer({ onAccept, onDecline }: LiabilityDisclaimer
                   <Label htmlFor="antiMoneyLaundering" className="font-medium cursor-pointer text-sm">
                     ✓ AML/CTF & Record Keeping Obligations
                   </Label>
-                  <p className="text-xs text-slate-300 mt-1">
+                  <p className="text-xs text-gray-600 mt-1">
                     I acknowledge my obligations under the Anti-Money Laundering and Counter-Terrorism Financing Act 2006 (if applicable) and agree to maintain all records for the required 7-year retention period. I understand that KYC and verification checks performed by this system do not replace my independent obligations.
                   </p>
                 </div>
@@ -334,10 +334,10 @@ export function LiabilityDisclaimer({ onAccept, onDecline }: LiabilityDisclaimer
           </div>
 
           {/* Legal Statement */}
-          <div className="bg-yellow-500/10 border-2 border-yellow-300 rounded-lg p-4">
+          <div className="bg-yellow-50 border-2 border-yellow-300 rounded-lg p-4">
             <div className="flex items-start gap-3">
-              <Shield className="w-6 h-6 text-yellow-400 flex-shrink-0 mt-0.5" />
-              <div className="text-xs text-yellow-300 space-y-2">
+              <Shield className="w-6 h-6 text-yellow-600 flex-shrink-0 mt-0.5" />
+              <div className="text-xs text-yellow-900 space-y-2">
                 <p className="font-bold">LEGAL STATEMENT</p>
                 <p>
                   By accepting these declarations, you create a binding legal record of your professional responsibility for this matter. This declaration will be timestamped, stored with the case file, and may be used as evidence of your acknowledgment of professional obligations in any legal, regulatory, or disciplinary proceedings.
@@ -354,7 +354,7 @@ export function LiabilityDisclaimer({ onAccept, onDecline }: LiabilityDisclaimer
             <Button
               variant="outline"
               onClick={onDecline}
-              className="border-white/10"
+              className="border-gray-300"
             >
               <AlertCircle className="w-4 h-4 mr-2" />
               Decline & Exit
@@ -375,12 +375,12 @@ export function LiabilityDisclaimer({ onAccept, onDecline }: LiabilityDisclaimer
           </div>
 
           {!allDeclarationsAccepted && (
-            <p className="text-sm text-red-400 text-center">
+            <p className="text-sm text-red-600 text-center">
               You must accept all 8 declarations to proceed
             </p>
           )}
           {!allFieldsCompleted && (
-            <p className="text-sm text-red-400 text-center">
+            <p className="text-sm text-red-600 text-center">
               You must complete all required fields (*)
             </p>
           )}

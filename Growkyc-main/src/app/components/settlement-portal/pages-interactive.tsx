@@ -57,7 +57,7 @@ export const ConditionsPage = () => {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-slate-100">Condition Register</h2>
+        <h2 className="text-2xl font-bold text-gray-900">Condition Register</h2>
         <Button onClick={() => setShowAddCondition(true)}>
           <Plus className="w-4 h-4 mr-2" />
           Add Condition
@@ -67,15 +67,15 @@ export const ConditionsPage = () => {
       {/* Condition Stats */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
         {[
-          { status: 'Not Started', count: 8, color: 'bg-white/5 text-slate-300' },
-          { status: 'Evidence Uploaded', count: 12, color: 'bg-blue-500/15 text-blue-300' },
-          { status: 'Under Review', count: 5, color: 'bg-purple-500/15 text-purple-300' },
-          { status: 'Cleared', count: 42, color: 'bg-green-500/15 text-green-300' },
-          { status: 'Rejected', count: 2, color: 'bg-red-500/15 text-red-300' }
+          { status: 'Not Started', count: 8, color: 'bg-gray-100 text-gray-700' },
+          { status: 'Evidence Uploaded', count: 12, color: 'bg-blue-100 text-blue-700' },
+          { status: 'Under Review', count: 5, color: 'bg-purple-100 text-purple-700' },
+          { status: 'Cleared', count: 42, color: 'bg-green-100 text-green-700' },
+          { status: 'Rejected', count: 2, color: 'bg-red-100 text-red-700' }
         ].map((stat, idx) => (
           <Card key={idx}>
             <CardContent className="p-4 text-center">
-              <p className="text-2xl font-bold text-slate-100">{stat.count}</p>
+              <p className="text-2xl font-bold text-gray-900">{stat.count}</p>
               <p className={`text-xs font-medium mt-1 px-2 py-1 rounded ${stat.color}`}>{stat.status}</p>
             </CardContent>
           </Card>
@@ -86,18 +86,18 @@ export const ConditionsPage = () => {
         <CardContent className="p-0">
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-white/5">
+              <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">ID</th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Description</th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Matter</th>
-                  <th className="px-6 py-3 text-center text-xs font-semibold text-slate-300 uppercase">Status</th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Owner</th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Due Date</th>
-                  <th className="px-6 py-3 text-right text-xs font-semibold text-slate-300 uppercase">Actions</th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">ID</th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Description</th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Matter</th>
+                  <th className="px-6 py-3 text-center text-xs font-semibold text-gray-600 uppercase">Status</th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Owner</th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Due Date</th>
+                  <th className="px-6 py-3 text-right text-xs font-semibold text-gray-600 uppercase">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/10">
+              <tbody className="divide-y divide-gray-200">
                 {[
                   { id: 'COND-1247-01', desc: 'Contract signed by all parties', matter: 'MAT-2024-1247', status: 'cleared', owner: 'Sarah Chen', due: '2024-03-10' },
                   { id: 'COND-1247-02', desc: 'Pest and building inspection', matter: 'MAT-2024-1247', status: 'evidence_uploaded', owner: 'John Smith', due: '2024-03-12' },
@@ -105,22 +105,22 @@ export const ConditionsPage = () => {
                   { id: 'COND-1245-01', desc: 'Finance approval', matter: 'MAT-2024-1245', status: 'cleared', owner: 'Mike Johnson', due: '2024-03-05' },
                   { id: 'COND-1244-01', desc: 'Title search', matter: 'MAT-2024-1244', status: 'escalated', owner: 'Emma Davis', due: '2024-03-01' }
                 ].map((condition, idx) => (
-                  <tr key={idx} className="hover:bg-white/5">
-                    <td className="px-6 py-4 font-mono text-sm font-semibold text-slate-100">{condition.id}</td>
-                    <td className="px-6 py-4 text-sm text-slate-100">{condition.desc}</td>
-                    <td className="px-6 py-4 text-sm text-slate-300 font-mono">{condition.matter}</td>
+                  <tr key={idx} className="hover:bg-gray-50">
+                    <td className="px-6 py-4 font-mono text-sm font-semibold text-gray-900">{condition.id}</td>
+                    <td className="px-6 py-4 text-sm text-gray-900">{condition.desc}</td>
+                    <td className="px-6 py-4 text-sm text-gray-600 font-mono">{condition.matter}</td>
                     <td className="px-6 py-4 text-center">
                       <span className={`px-2 py-1 text-xs font-semibold rounded ${
-                        condition.status === 'cleared' ? 'bg-green-500/15 text-green-300' :
-                        condition.status === 'evidence_uploaded' ? 'bg-blue-500/15 text-blue-300' :
-                        condition.status === 'rejected' ? 'bg-red-500/15 text-red-300' :
-                        'bg-amber-500/15 text-amber-300'
+                        condition.status === 'cleared' ? 'bg-green-100 text-green-700' :
+                        condition.status === 'evidence_uploaded' ? 'bg-blue-100 text-blue-700' :
+                        condition.status === 'rejected' ? 'bg-red-100 text-red-700' :
+                        'bg-amber-100 text-amber-700'
                       }`}>
                         {condition.status.replace('_', ' ').toUpperCase()}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-sm text-slate-300">{condition.owner}</td>
-                    <td className="px-6 py-4 text-sm text-slate-300">{condition.due}</td>
+                    <td className="px-6 py-4 text-sm text-gray-600">{condition.owner}</td>
+                    <td className="px-6 py-4 text-sm text-gray-600">{condition.due}</td>
                     <td className="px-6 py-4 text-right">
                       <div className="flex items-center justify-end gap-2">
                         <Button size="sm" variant="ghost" onClick={() => setSelectedCondition(condition)}>
@@ -155,7 +155,7 @@ export const PEXAPage = () => {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-slate-100">PEXA Workspaces</h2>
+        <h2 className="text-2xl font-bold text-gray-900">PEXA Workspaces</h2>
         <Button onClick={() => setShowCreateWorkspace(true)}>
           <Plus className="w-4 h-4 mr-2" />
           Create Workspace
@@ -166,30 +166,30 @@ export const PEXAPage = () => {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <Card>
           <CardContent className="p-6">
-            <p className="text-sm text-slate-300 mb-2">Active Workspaces</p>
-            <p className="text-3xl font-bold text-slate-100">28</p>
-            <p className="text-xs text-slate-400 mt-1">Across 5 states</p>
+            <p className="text-sm text-gray-600 mb-2">Active Workspaces</p>
+            <p className="text-3xl font-bold text-gray-900">28</p>
+            <p className="text-xs text-gray-500 mt-1">Across 5 states</p>
           </CardContent>
         </Card>
         <Card>
           <CardContent className="p-6">
-            <p className="text-sm text-slate-300 mb-2">Ready to Settle</p>
-            <p className="text-3xl font-bold text-green-400">4</p>
-            <p className="text-xs text-slate-400 mt-1">All conditions met</p>
+            <p className="text-sm text-gray-600 mb-2">Ready to Settle</p>
+            <p className="text-3xl font-bold text-green-600">4</p>
+            <p className="text-xs text-gray-500 mt-1">All conditions met</p>
           </CardContent>
         </Card>
         <Card>
           <CardContent className="p-6">
-            <p className="text-sm text-slate-300 mb-2">Drift Warnings</p>
-            <p className="text-3xl font-bold text-amber-400">3</p>
-            <p className="text-xs text-slate-400 mt-1">Data mismatch</p>
+            <p className="text-sm text-gray-600 mb-2">Drift Warnings</p>
+            <p className="text-3xl font-bold text-amber-600">3</p>
+            <p className="text-xs text-gray-500 mt-1">Data mismatch</p>
           </CardContent>
         </Card>
         <Card>
           <CardContent className="p-6">
-            <p className="text-sm text-slate-300 mb-2">Settled Today</p>
-            <p className="text-3xl font-bold text-blue-400">2</p>
-            <p className="text-xs text-slate-400 mt-1">Total: $2.1M</p>
+            <p className="text-sm text-gray-600 mb-2">Settled Today</p>
+            <p className="text-3xl font-bold text-blue-600">2</p>
+            <p className="text-xs text-gray-500 mt-1">Total: $2.1M</p>
           </CardContent>
         </Card>
       </div>
@@ -199,37 +199,37 @@ export const PEXAPage = () => {
         <CardContent className="p-0">
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-white/5">
+              <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Workspace ID</th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Matter</th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Property</th>
-                  <th className="px-6 py-3 text-center text-xs font-semibold text-slate-300 uppercase">Status</th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Last Sync</th>
-                  <th className="px-6 py-3 text-right text-xs font-semibold text-slate-300 uppercase">Actions</th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Workspace ID</th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Matter</th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Property</th>
+                  <th className="px-6 py-3 text-center text-xs font-semibold text-gray-600 uppercase">Status</th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Last Sync</th>
+                  <th className="px-6 py-3 text-right text-xs font-semibold text-gray-600 uppercase">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/10">
+              <tbody className="divide-y divide-gray-200">
                 {testMatters.map((matter, idx) => (
-                  <tr key={idx} className="hover:bg-white/5 cursor-pointer" onClick={() => setSelectedWorkspace({
+                  <tr key={idx} className="hover:bg-gray-50 cursor-pointer" onClick={() => setSelectedWorkspace({
                     id: matter.pexaWorkspaceId,
                     matter: matter.id,
                     property: matter.property,
                     status: matter.pexaStatus?.replace('_', ' ').toUpperCase()
                   })}>
-                    <td className="px-6 py-4 font-mono text-sm font-semibold text-blue-300">{matter.pexaWorkspaceId}</td>
-                    <td className="px-6 py-4 font-mono text-sm text-slate-300">{matter.id}</td>
-                    <td className="px-6 py-4 text-sm text-slate-100">{matter.property}</td>
+                    <td className="px-6 py-4 font-mono text-sm font-semibold text-blue-700">{matter.pexaWorkspaceId}</td>
+                    <td className="px-6 py-4 font-mono text-sm text-gray-600">{matter.id}</td>
+                    <td className="px-6 py-4 text-sm text-gray-900">{matter.property}</td>
                     <td className="px-6 py-4 text-center">
                       <span className={`px-2 py-1 text-xs font-semibold rounded ${
-                        matter.pexaStatus === 'ready_to_settle' ? 'bg-green-500/15 text-green-300' :
-                        matter.pexaStatus === 'active' ? 'bg-blue-500/15 text-blue-300' :
-                        'bg-amber-500/15 text-amber-300'
+                        matter.pexaStatus === 'ready_to_settle' ? 'bg-green-100 text-green-700' :
+                        matter.pexaStatus === 'active' ? 'bg-blue-100 text-blue-700' :
+                        'bg-amber-100 text-amber-700'
                       }`}>
                         {matter.pexaStatus?.replace('_', ' ').toUpperCase()}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-sm text-slate-300">{matter.lastActivity}</td>
+                    <td className="px-6 py-4 text-sm text-gray-600">{matter.lastActivity}</td>
                     <td className="px-6 py-4 text-right">
                       <div className="flex items-center justify-end gap-2">
                         <Button size="sm" variant="ghost" onClick={(e) => { e.stopPropagation(); toast.success('Synced with PEXA'); }}>
@@ -262,7 +262,7 @@ export const TasksPage = () => {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-slate-100">Tasks</h2>
+        <h2 className="text-2xl font-bold text-gray-900">Tasks</h2>
         <Button onClick={() => setShowAddTask(true)}>
           <Plus className="w-4 h-4 mr-2" />
           New Task
@@ -272,7 +272,7 @@ export const TasksPage = () => {
       {/* Kanban View */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         {[
-          { status: 'To Do', count: 12, color: 'border-white/10' },
+          { status: 'To Do', count: 12, color: 'border-gray-300' },
           { status: 'In Progress', count: 8, color: 'border-blue-500' },
           { status: 'Blocked', count: 3, color: 'border-red-500' },
           { status: 'Complete', count: 45, color: 'border-green-500' }
@@ -281,7 +281,7 @@ export const TasksPage = () => {
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle className="text-sm">{column.status}</CardTitle>
-                <span className="px-2 py-1 bg-white/5 text-slate-300 text-xs font-semibold rounded">
+                <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-semibold rounded">
                   {column.count}
                 </span>
               </div>
@@ -306,13 +306,13 @@ export const TasksPage = () => {
 
                   return (
                     <div key={taskIdx} className="p-3 bg-white border rounded-lg hover:shadow-md cursor-pointer transition-shadow" onClick={() => setSelectedTask(task)}>
-                      <p className="font-semibold text-sm text-slate-100 mb-1">
+                      <p className="font-semibold text-sm text-gray-900 mb-1">
                         {taskTitle}
                       </p>
-                      <p className="text-xs text-slate-300 mb-2">{task.matter}</p>
+                      <p className="text-xs text-gray-600 mb-2">{task.matter}</p>
                       <div className="flex items-center justify-between">
-                        <span className="text-xs text-slate-400">Due: {task.due}</span>
-                        <div className="w-6 h-6 bg-blue-500/15 rounded-full flex items-center justify-center text-xs font-semibold text-blue-300">
+                        <span className="text-xs text-gray-500">Due: {task.due}</span>
+                        <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center text-xs font-semibold text-blue-700">
                           SC
                         </div>
                       </div>

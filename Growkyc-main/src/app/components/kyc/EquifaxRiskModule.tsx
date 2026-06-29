@@ -332,10 +332,10 @@ export function EquifaxRiskModule() {
     }
   };
 
-  const bgClass = darkMode ? 'bg-gray-900' : 'bg-white/5';
-  const cardClass = darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-white/10';
-  const textClass = darkMode ? 'text-gray-100' : 'text-slate-100';
-  const mutedTextClass = darkMode ? 'text-gray-400' : 'text-slate-300';
+  const bgClass = darkMode ? 'bg-gray-900' : 'bg-gray-50';
+  const cardClass = darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200';
+  const textClass = darkMode ? 'text-gray-100' : 'text-gray-900';
+  const mutedTextClass = darkMode ? 'text-gray-400' : 'text-gray-600';
 
   return (
     <div className={`min-h-screen ${bgClass}`}>
@@ -357,7 +357,7 @@ export function EquifaxRiskModule() {
               >
                 {darkMode ? '☀️' : '🌙'} {darkMode ? 'Light' : 'Dark'} Mode
               </button>
-              <Button className="bg-white text-indigo-400 hover:bg-indigo-500/10">
+              <Button className="bg-white text-indigo-600 hover:bg-indigo-50">
                 <Upload className="w-5 h-5 mr-2" />
                 Order Report
               </Button>
@@ -418,7 +418,7 @@ export function EquifaxRiskModule() {
       </div>
 
       {/* Navigation Tabs */}
-      <div className={`border-b ${darkMode ? 'border-gray-700' : 'border-white/10'}`}>
+      <div className={`border-b ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}>
         <div className="max-w-7xl mx-auto px-8">
           <div className="flex gap-2">
             {[
@@ -437,7 +437,7 @@ export function EquifaxRiskModule() {
                   onClick={() => setActiveTab(tab.id as any)}
                   className={`px-6 py-4 font-semibold flex items-center gap-2 transition-colors ${
                     activeTab === tab.id
-                      ? `border-b-2 border-indigo-600 ${darkMode ? 'text-indigo-400' : 'text-indigo-400'}`
+                      ? `border-b-2 border-indigo-600 ${darkMode ? 'text-indigo-400' : 'text-indigo-600'}`
                       : `${mutedTextClass} hover:${textClass}`
                   }`}
                 >
@@ -523,7 +523,7 @@ export function EquifaxRiskModule() {
                           <span className={mutedTextClass}>•</span>
                           <span className={mutedTextClass}>Source: {event.source}</span>
                           <span className={mutedTextClass}>•</span>
-                          <span className={`font-semibold ${event.riskDelta < 0 ? 'text-red-400' : 'text-green-400'}`}>
+                          <span className={`font-semibold ${event.riskDelta < 0 ? 'text-red-600' : 'text-green-600'}`}>
                             Risk Delta: {event.riskDelta}
                           </span>
                         </div>
@@ -550,7 +550,7 @@ export function EquifaxRiskModule() {
                   <input
                     type="text"
                     placeholder="Search by client name, ABN, or report ID..."
-                    className={`w-full pl-10 pr-4 py-2 border ${darkMode ? 'border-gray-600 bg-gray-700 text-gray-100' : 'border-white/10 bg-white'} rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500`}
+                    className={`w-full pl-10 pr-4 py-2 border ${darkMode ? 'border-gray-600 bg-gray-700 text-gray-100' : 'border-gray-300 bg-white'} rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500`}
                   />
                 </div>
                 <Button variant="outline">
@@ -582,7 +582,7 @@ export function EquifaxRiskModule() {
                           {report.riskTier.toUpperCase()} RISK
                         </span>
                         {report.status === 'complete' && (
-                          <span className="px-3 py-1 bg-green-500/15 text-green-300 dark:bg-green-900 dark:text-green-300 text-sm font-semibold rounded-full flex items-center gap-1">
+                          <span className="px-3 py-1 bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300 text-sm font-semibold rounded-full flex items-center gap-1">
                             <CheckCircle className="w-4 h-4" />
                             Verified via Equifax
                           </span>
@@ -625,24 +625,24 @@ export function EquifaxRiskModule() {
 
                   {/* Business Profile */}
                   <div className="grid grid-cols-3 gap-4 mb-4">
-                    <div className={`p-3 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-white/5'}`}>
+                    <div className={`p-3 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-gray-50'}`}>
                       <p className={`text-xs ${mutedTextClass} mb-1`}>Legal Name</p>
                       <p className={`font-semibold ${textClass}`}>{report.legalName}</p>
                     </div>
-                    <div className={`p-3 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-white/5'}`}>
+                    <div className={`p-3 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-gray-50'}`}>
                       <p className={`text-xs ${mutedTextClass} mb-1`}>Status</p>
-                      <p className={`font-semibold ${report.entityStatus === 'active' ? 'text-green-400' : 'text-red-400'}`}>
+                      <p className={`font-semibold ${report.entityStatus === 'active' ? 'text-green-600' : 'text-red-600'}`}>
                         {report.entityStatus.toUpperCase()}
                       </p>
                     </div>
-                    <div className={`p-3 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-white/5'}`}>
+                    <div className={`p-3 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-gray-50'}`}>
                       <p className={`text-xs ${mutedTextClass} mb-1`}>Industry</p>
                       <p className={`font-semibold ${textClass}`}>{report.industry}</p>
                     </div>
                   </div>
 
                   {/* Risk Scoring */}
-                  <div className={`p-4 rounded-lg border ${darkMode ? 'border-gray-700 bg-gray-800' : 'border-white/10 bg-white/5'} mb-4`}>
+                  <div className={`p-4 rounded-lg border ${darkMode ? 'border-gray-700 bg-gray-800' : 'border-gray-200 bg-gray-50'} mb-4`}>
                     <div className="flex items-center justify-between mb-3">
                       <div>
                         <p className={`text-sm ${mutedTextClass} mb-1`}>Credit Risk Score</p>
@@ -653,12 +653,12 @@ export function EquifaxRiskModule() {
                           {report.previousScore && (
                             <div className="flex items-center gap-1">
                               {report.creditRiskScore > report.previousScore ? (
-                                <TrendingUp className="w-5 h-5 text-green-400" />
+                                <TrendingUp className="w-5 h-5 text-green-600" />
                               ) : (
-                                <TrendingDown className="w-5 h-5 text-red-400" />
+                                <TrendingDown className="w-5 h-5 text-red-600" />
                               )}
                               <span className={`text-sm font-semibold ${
-                                report.creditRiskScore > report.previousScore ? 'text-green-400' : 'text-red-400'
+                                report.creditRiskScore > report.previousScore ? 'text-green-600' : 'text-red-600'
                               }`}>
                                 {Math.abs(report.creditRiskScore - report.previousScore)} pts
                               </span>
@@ -671,7 +671,7 @@ export function EquifaxRiskModule() {
                       </div>
 
                       <div className="w-48">
-                        <div className={`h-8 bg-white/10 dark:bg-gray-700 rounded-full overflow-hidden`}>
+                        <div className={`h-8 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden`}>
                           <div
                             className={`h-full bg-${getRiskColor(report.riskTier)}`}
                             style={{ width: `${(report.creditRiskScore / 1000) * 100}%` }}
@@ -682,10 +682,10 @@ export function EquifaxRiskModule() {
                     </div>
 
                     {report.previousRiskTier && report.previousRiskTier !== report.riskTier && (
-                      <div className="p-3 bg-orange-500/10 dark:bg-orange-900/20 border border-orange-500/30 dark:border-orange-800 rounded-lg">
+                      <div className="p-3 bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-lg">
                         <div className="flex items-center gap-2">
-                          <AlertTriangle className="w-5 h-5 text-orange-400" />
-                          <p className="font-semibold text-orange-300 dark:text-orange-300">
+                          <AlertTriangle className="w-5 h-5 text-orange-600" />
+                          <p className="font-semibold text-orange-900 dark:text-orange-300">
                             Risk Tier Changed: {report.previousRiskTier.toUpperCase()} → {report.riskTier.toUpperCase()}
                           </p>
                         </div>
@@ -697,71 +697,71 @@ export function EquifaxRiskModule() {
                   <div className="grid grid-cols-3 gap-3">
                     <div className={`p-3 rounded-lg border-2 ${
                       report.insolvencyIndicator 
-                        ? 'border-red-500 bg-red-500/10 dark:bg-red-900/20' 
-                        : 'border-green-500 bg-green-500/10 dark:bg-green-900/20'
+                        ? 'border-red-500 bg-red-50 dark:bg-red-900/20' 
+                        : 'border-green-500 bg-green-50 dark:bg-green-900/20'
                     }`}>
                       <div className="flex items-center justify-between">
-                        <span className={`text-sm font-semibold ${report.insolvencyIndicator ? 'text-red-300 dark:text-red-300' : 'text-green-300 dark:text-green-300'}`}>
+                        <span className={`text-sm font-semibold ${report.insolvencyIndicator ? 'text-red-700 dark:text-red-300' : 'text-green-700 dark:text-green-300'}`}>
                           Insolvency Indicator
                         </span>
                         {report.insolvencyIndicator ? (
-                          <XCircle className="w-5 h-5 text-red-400" />
+                          <XCircle className="w-5 h-5 text-red-600" />
                         ) : (
-                          <CheckCircle className="w-5 h-5 text-green-400" />
+                          <CheckCircle className="w-5 h-5 text-green-600" />
                         )}
                       </div>
                     </div>
 
                     <div className={`p-3 rounded-lg border-2 ${
                       report.courtActionIndicator 
-                        ? 'border-orange-500 bg-orange-500/10 dark:bg-orange-900/20' 
-                        : 'border-green-500 bg-green-500/10 dark:bg-green-900/20'
+                        ? 'border-orange-500 bg-orange-50 dark:bg-orange-900/20' 
+                        : 'border-green-500 bg-green-50 dark:bg-green-900/20'
                     }`}>
                       <div className="flex items-center justify-between">
-                        <span className={`text-sm font-semibold ${report.courtActionIndicator ? 'text-orange-300 dark:text-orange-300' : 'text-green-300 dark:text-green-300'}`}>
+                        <span className={`text-sm font-semibold ${report.courtActionIndicator ? 'text-orange-700 dark:text-orange-300' : 'text-green-700 dark:text-green-300'}`}>
                           Court Action Indicator
                         </span>
                         {report.courtActionIndicator ? (
-                          <AlertTriangle className="w-5 h-5 text-orange-400" />
+                          <AlertTriangle className="w-5 h-5 text-orange-600" />
                         ) : (
-                          <CheckCircle className="w-5 h-5 text-green-400" />
+                          <CheckCircle className="w-5 h-5 text-green-600" />
                         )}
                       </div>
                     </div>
 
                     <div className={`p-3 rounded-lg border-2 ${
                       report.directorNetworkRisk 
-                        ? 'border-yellow-500 bg-yellow-500/10 dark:bg-yellow-900/20' 
-                        : 'border-green-500 bg-green-500/10 dark:bg-green-900/20'
+                        ? 'border-yellow-500 bg-yellow-50 dark:bg-yellow-900/20' 
+                        : 'border-green-500 bg-green-50 dark:bg-green-900/20'
                     }`}>
                       <div className="flex items-center justify-between">
-                        <span className={`text-sm font-semibold ${report.directorNetworkRisk ? 'text-yellow-300 dark:text-yellow-300' : 'text-green-300 dark:text-green-300'}`}>
+                        <span className={`text-sm font-semibold ${report.directorNetworkRisk ? 'text-yellow-700 dark:text-yellow-300' : 'text-green-700 dark:text-green-300'}`}>
                           Director Network Risk
                         </span>
                         {report.directorNetworkRisk ? (
-                          <AlertCircle className="w-5 h-5 text-yellow-400" />
+                          <AlertCircle className="w-5 h-5 text-yellow-600" />
                         ) : (
-                          <CheckCircle className="w-5 h-5 text-green-400" />
+                          <CheckCircle className="w-5 h-5 text-green-600" />
                         )}
                       </div>
                     </div>
                   </div>
 
                   {/* Evidence & Audit */}
-                  <div className={`mt-4 pt-4 border-t ${darkMode ? 'border-gray-700' : 'border-white/10'}`}>
+                  <div className={`mt-4 pt-4 border-t ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}>
                     <div className="flex items-center justify-between text-sm">
                       <div className="flex items-center gap-6">
                         <div className="flex items-center gap-2">
-                          <Lock className="w-4 h-4 text-indigo-400" />
+                          <Lock className="w-4 h-4 text-indigo-600" />
                           <span className={mutedTextClass}>Provider Ref: {report.providerReference}</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <Hash className="w-4 h-4 text-indigo-400" />
+                          <Hash className="w-4 h-4 text-indigo-600" />
                           <span className={mutedTextClass}>SHA256: {report.sha256Hash.substring(0, 16)}...</span>
                         </div>
                         {report.linkedCaseId && (
                           <div className="flex items-center gap-2">
-                            <ExternalLink className="w-4 h-4 text-indigo-400" />
+                            <ExternalLink className="w-4 h-4 text-indigo-600" />
                             <span className={mutedTextClass}>Case: {report.linkedCaseId}</span>
                           </div>
                         )}
@@ -791,9 +791,9 @@ export function EquifaxRiskModule() {
               <h3 className={`text-xl font-bold ${textClass} mb-4`}>Director Network Visualization</h3>
               
               {/* Network Graph Placeholder */}
-              <div className={`${darkMode ? 'bg-gray-800' : 'bg-white/5'} rounded-lg p-12 mb-6 relative`}>
+              <div className={`${darkMode ? 'bg-gray-800' : 'bg-gray-100'} rounded-lg p-12 mb-6 relative`}>
                 <div className="text-center">
-                  <GitBranch className="w-24 h-24 mx-auto mb-4 text-indigo-400" />
+                  <GitBranch className="w-24 h-24 mx-auto mb-4 text-indigo-600" />
                   <p className={`text-lg font-semibold ${textClass} mb-2`}>Director Network Graph</p>
                   <p className={mutedTextClass}>
                     Interactive visualization showing entity relationships, director connections, and risk indicators
@@ -852,7 +852,7 @@ export function EquifaxRiskModule() {
               <h3 className={`text-xl font-bold ${textClass} mb-4`}>Network Risk Analysis</h3>
               
               <div className="grid grid-cols-3 gap-4">
-                <div className={`p-4 rounded-lg ${darkMode ? 'bg-red-900/20' : 'bg-red-500/10'} border-2 border-red-${darkMode ? '700' : '200'}`}>
+                <div className={`p-4 rounded-lg ${darkMode ? 'bg-red-900/20' : 'bg-red-50'} border-2 border-red-${darkMode ? '700' : '200'}`}>
                   <div className="flex items-center justify-between mb-2">
                     <span className={`font-semibold text-red-${darkMode ? '400' : '700'}`}>Network Risk Score</span>
                     <AlertTriangle className={`w-5 h-5 text-red-${darkMode ? '400' : '600'}`} />
@@ -860,7 +860,7 @@ export function EquifaxRiskModule() {
                   <p className={`text-3xl font-bold text-red-${darkMode ? '400' : '600'}`}>7.2/10</p>
                 </div>
 
-                <div className={`p-4 rounded-lg ${darkMode ? 'bg-orange-900/20' : 'bg-orange-500/10'} border-2 border-orange-${darkMode ? '700' : '200'}`}>
+                <div className={`p-4 rounded-lg ${darkMode ? 'bg-orange-900/20' : 'bg-orange-50'} border-2 border-orange-${darkMode ? '700' : '200'}`}>
                   <div className="flex items-center justify-between mb-2">
                     <span className={`font-semibold text-orange-${darkMode ? '400' : '700'}`}>Undisclosed Entities</span>
                     <AlertCircle className={`w-5 h-5 text-orange-${darkMode ? '400' : '600'}`} />
@@ -868,7 +868,7 @@ export function EquifaxRiskModule() {
                   <p className={`text-3xl font-bold text-orange-${darkMode ? '400' : '600'}`}>2</p>
                 </div>
 
-                <div className={`p-4 rounded-lg ${darkMode ? 'bg-red-900/20' : 'bg-red-500/10'} border-2 border-red-${darkMode ? '700' : '200'}`}>
+                <div className={`p-4 rounded-lg ${darkMode ? 'bg-red-900/20' : 'bg-red-50'} border-2 border-red-${darkMode ? '700' : '200'}`}>
                   <div className="flex items-center justify-between mb-2">
                     <span className={`font-semibold text-red-${darkMode ? '400' : '700'}`}>Phoenix Pattern</span>
                     <Zap className={`w-5 h-5 text-red-${darkMode ? '400' : '600'}`} />
@@ -889,7 +889,7 @@ export function EquifaxRiskModule() {
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
-                    <tr className={`border-b-2 ${darkMode ? 'border-gray-700' : 'border-white/10'}`}>
+                    <tr className={`border-b-2 ${darkMode ? 'border-gray-700' : 'border-gray-300'}`}>
                       <th className={`text-left p-3 font-semibold ${textClass}`}>Client</th>
                       <th className={`text-left p-3 font-semibold ${textClass}`}>Event Type</th>
                       <th className={`text-left p-3 font-semibold ${textClass}`}>Date</th>
@@ -902,7 +902,7 @@ export function EquifaxRiskModule() {
                   </thead>
                   <tbody>
                     {adverseEvents.map((event) => (
-                      <tr key={event.id} className={`border-b ${darkMode ? 'border-gray-700' : 'border-white/10'} hover:${darkMode ? 'bg-gray-800' : 'bg-white/5'}`}>
+                      <tr key={event.id} className={`border-b ${darkMode ? 'border-gray-700' : 'border-gray-200'} hover:${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
                         <td className="p-3">
                           <p className={`font-semibold ${textClass}`}>{event.clientName}</p>
                           <p className={`text-xs ${mutedTextClass}`}>{event.clientId}</p>
@@ -929,16 +929,16 @@ export function EquifaxRiskModule() {
                           </span>
                         </td>
                         <td className="p-3 text-center">
-                          <span className={`font-bold ${event.riskDelta < 0 ? 'text-red-400' : 'text-green-400'}`}>
+                          <span className={`font-bold ${event.riskDelta < 0 ? 'text-red-600' : 'text-green-600'}`}>
                             {event.riskDelta}
                           </span>
                         </td>
                         <td className="p-3 text-center">
                           <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                            event.status === 'escalated' ? 'bg-red-500/15 text-red-300 dark:bg-red-900 dark:text-red-300' :
-                            event.status === 'under-review' ? 'bg-yellow-500/15 text-yellow-300 dark:bg-yellow-900 dark:text-yellow-300' :
-                            event.status === 'reviewed' ? 'bg-green-500/15 text-green-300 dark:bg-green-900 dark:text-green-300' :
-                            'bg-white/5 text-slate-300 dark:bg-gray-800 dark:text-gray-300'
+                            event.status === 'escalated' ? 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300' :
+                            event.status === 'under-review' ? 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300' :
+                            event.status === 'reviewed' ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300' :
+                            'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300'
                           }`}>
                             {event.status.replace(/-/g, ' ').toUpperCase()}
                           </span>
@@ -971,10 +971,10 @@ export function EquifaxRiskModule() {
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-3">
                     <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                      rule.enabled ? 'bg-green-500/15 dark:bg-green-900' : 'bg-white/5 dark:bg-gray-800'
+                      rule.enabled ? 'bg-green-100 dark:bg-green-900' : 'bg-gray-100 dark:bg-gray-800'
                     }`}>
                       {rule.enabled ? (
-                        <CheckCircle className="w-6 h-6 text-green-400" />
+                        <CheckCircle className="w-6 h-6 text-green-600" />
                       ) : (
                         <XCircle className="w-6 h-6 text-gray-400" />
                       )}
@@ -994,7 +994,7 @@ export function EquifaxRiskModule() {
                       className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
                         rule.enabled
                           ? 'bg-green-600 text-white hover:bg-green-700'
-                          : 'bg-white/10 text-slate-300 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300'
+                          : 'bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300'
                       }`}
                     >
                       {rule.enabled ? 'ENABLED' : 'DISABLED'}
@@ -1009,12 +1009,12 @@ export function EquifaxRiskModule() {
                       {Object.entries(rule.conditions).map(([key, value]) => {
                         if (value === undefined) return null;
                         return (
-                          <div key={key} className={`p-3 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-white/5'}`}>
+                          <div key={key} className={`p-3 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-gray-100'}`}>
                             <div className="flex items-center justify-between">
                               <span className={`text-sm ${textClass}`}>
                                 {key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
                               </span>
-                              <CheckCircle className="w-4 h-4 text-green-400" />
+                              <CheckCircle className="w-4 h-4 text-green-600" />
                             </div>
                             {typeof value === 'number' && (
                               <p className={`text-xs ${mutedTextClass} mt-1`}>Threshold: {value}</p>
@@ -1033,19 +1033,19 @@ export function EquifaxRiskModule() {
                         return (
                           <div key={key} className={`p-3 rounded-lg ${
                             key === 'restrictEngagement' 
-                              ? 'bg-red-500/10 dark:bg-red-900/20 border-2 border-red-500/30 dark:border-red-800' 
-                              : darkMode ? 'bg-gray-700' : 'bg-white/5'
+                              ? 'bg-red-50 dark:bg-red-900/20 border-2 border-red-200 dark:border-red-800' 
+                              : darkMode ? 'bg-gray-700' : 'bg-gray-100'
                           }`}>
                             <div className="flex items-center justify-between">
                               <span className={`text-sm ${
-                                key === 'restrictEngagement' ? 'text-red-300 dark:text-red-300 font-semibold' : textClass
+                                key === 'restrictEngagement' ? 'text-red-700 dark:text-red-300 font-semibold' : textClass
                               }`}>
                                 {key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
                               </span>
                               {key === 'restrictEngagement' ? (
-                                <Lock className="w-4 h-4 text-red-400" />
+                                <Lock className="w-4 h-4 text-red-600" />
                               ) : (
-                                <CheckCircle className="w-4 h-4 text-indigo-400" />
+                                <CheckCircle className="w-4 h-4 text-indigo-600" />
                               )}
                             </div>
                           </div>
@@ -1055,14 +1055,14 @@ export function EquifaxRiskModule() {
                   </div>
                 </div>
 
-                <div className={`mt-4 pt-4 border-t ${darkMode ? 'border-gray-700' : 'border-white/10'}`}>
+                <div className={`mt-4 pt-4 border-t ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-6">
                       <div className="flex items-center gap-2">
                         {rule.autoRestrict ? (
-                          <Lock className="w-5 h-5 text-red-400" />
+                          <Lock className="w-5 h-5 text-red-600" />
                         ) : (
-                          <Unlock className="w-5 h-5 text-green-400" />
+                          <Unlock className="w-5 h-5 text-green-600" />
                         )}
                         <span className={`text-sm ${textClass}`}>
                           {rule.autoRestrict ? 'Auto-Restriction Enabled' : 'Manual Review Required'}
@@ -1070,7 +1070,7 @@ export function EquifaxRiskModule() {
                       </div>
                       {rule.manualReview && (
                         <div className="flex items-center gap-2">
-                          <Users className="w-5 h-5 text-indigo-400" />
+                          <Users className="w-5 h-5 text-indigo-600" />
                           <span className={`text-sm ${textClass}`}>Manual Review Required</span>
                         </div>
                       )}

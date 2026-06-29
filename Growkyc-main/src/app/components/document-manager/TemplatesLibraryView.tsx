@@ -48,13 +48,13 @@ export function TemplatesLibraryView() {
             placeholder="Search templates..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-white/10 rounded-lg text-sm"
+            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm"
           />
         </div>
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className="px-3 py-2 border border-white/10 rounded-lg text-sm"
+          className="px-3 py-2 border border-gray-300 rounded-lg text-sm"
         >
           {categories.map((c) => (
             <option key={c} value={c}>{c === 'all' ? 'All categories' : c}</option>
@@ -63,7 +63,7 @@ export function TemplatesLibraryView() {
       </div>
 
       {loading ? (
-        <div className="bg-white border border-white/10 rounded-lg p-4">
+        <div className="bg-white border border-gray-200 rounded-lg p-4">
           <TableSkeleton rows={4} />
         </div>
       ) : templates.length === 0 ? (
@@ -71,14 +71,14 @@ export function TemplatesLibraryView() {
       ) : (
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {templates.map((t) => (
-            <div key={t.id} className="bg-white border border-white/10 rounded-lg p-5 hover:shadow-md transition-shadow">
+            <div key={t.id} className="bg-white border border-gray-200 rounded-lg p-5 hover:shadow-md transition-shadow">
               <div className="flex items-start justify-between mb-3">
-                <FileText className="w-8 h-8 text-blue-400" />
-                <span className="text-xs px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-300">{t.category}</span>
+                <FileText className="w-8 h-8 text-blue-600" />
+                <span className="text-xs px-2 py-0.5 rounded-full bg-blue-50 text-blue-800">{t.category}</span>
               </div>
-              <h3 className="font-semibold text-slate-100">{t.name}</h3>
-              <p className="text-sm text-slate-300 mt-1 line-clamp-2">{t.description}</p>
-              <p className="text-xs text-slate-400 mt-3">v{t.version} · Modified {t.lastModified}</p>
+              <h3 className="font-semibold text-gray-900">{t.name}</h3>
+              <p className="text-sm text-gray-600 mt-1 line-clamp-2">{t.description}</p>
+              <p className="text-xs text-gray-500 mt-3">v{t.version} · Modified {t.lastModified}</p>
               <div className="flex gap-2 mt-4">
                 <Button type="button" variant="outline" size="sm" className="flex-1" onClick={() => setPreview(t)}>
                   <Eye className="w-4 h-4 mr-1" />
@@ -101,12 +101,12 @@ export function TemplatesLibraryView() {
           aria-modal="true"
         >
           <div className="bg-white rounded-xl max-w-lg w-full p-6 my-auto" onClick={(e) => e.stopPropagation()}>
-            <h3 className="text-lg font-semibold text-slate-100">{preview.name}</h3>
-            <p className="text-sm text-slate-300 mt-2">{preview.description}</p>
+            <h3 className="text-lg font-semibold text-gray-900">{preview.name}</h3>
+            <p className="text-sm text-gray-600 mt-2">{preview.description}</p>
             <dl className="mt-4 space-y-2 text-sm">
-              <div className="flex justify-between"><dt className="text-slate-300">Category</dt><dd>{preview.category}</dd></div>
-              <div className="flex justify-between"><dt className="text-slate-300">Version</dt><dd>{preview.version}</dd></div>
-              <div className="flex justify-between"><dt className="text-slate-300">Last modified</dt><dd>{preview.lastModified}</dd></div>
+              <div className="flex justify-between"><dt className="text-gray-600">Category</dt><dd>{preview.category}</dd></div>
+              <div className="flex justify-between"><dt className="text-gray-600">Version</dt><dd>{preview.version}</dd></div>
+              <div className="flex justify-between"><dt className="text-gray-600">Last modified</dt><dd>{preview.lastModified}</dd></div>
             </dl>
             <Button className="w-full mt-6" variant="outline" onClick={() => setPreview(null)}>Close</Button>
           </div>

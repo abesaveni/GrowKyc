@@ -178,8 +178,8 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold text-white">Integrations Overview</h1>
-        <p className="text-slate-300 mt-1">Real-time compliance data orchestration system</p>
+        <h1 className="text-3xl font-bold text-gray-900">Integrations Overview</h1>
+        <p className="text-gray-600 mt-1">Real-time compliance data orchestration system</p>
       </div>
 
       {/* Provider Status Cards */}
@@ -203,20 +203,20 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
             <CardContent className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <div className="text-sm text-slate-300">Uptime</div>
-                  <div className="text-2xl font-bold text-white">{provider.uptime}%</div>
+                  <div className="text-sm text-gray-600">Uptime</div>
+                  <div className="text-2xl font-bold text-gray-900">{provider.uptime}%</div>
                 </div>
                 <div>
-                  <div className="text-sm text-slate-300">Avg Response</div>
-                  <div className="text-2xl font-bold text-white">{provider.avgResponseTime}s</div>
+                  <div className="text-sm text-gray-600">Avg Response</div>
+                  <div className="text-2xl font-bold text-gray-900">{provider.avgResponseTime}s</div>
                 </div>
                 <div>
-                  <div className="text-sm text-slate-300">Error Rate</div>
-                  <div className="text-2xl font-bold text-white">{provider.errorRate}%</div>
+                  <div className="text-sm text-gray-600">Error Rate</div>
+                  <div className="text-2xl font-bold text-gray-900">{provider.errorRate}%</div>
                 </div>
                 <div>
-                  <div className="text-sm text-slate-300">Last Check</div>
-                  <div className="text-sm font-medium text-white">{provider.lastCheck}</div>
+                  <div className="text-sm text-gray-600">Last Check</div>
+                  <div className="text-sm font-medium text-gray-900">{provider.lastCheck}</div>
                 </div>
               </div>
               <Button 
@@ -235,9 +235,9 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <Card>
           <CardContent className="p-6">
-            <div className="text-sm text-slate-300">Verifications (30d)</div>
-            <div className="text-3xl font-bold text-white mt-2">{stats.verificationsLast30Days.toLocaleString()}</div>
-            <div className="flex items-center gap-1 text-green-400 text-sm mt-1">
+            <div className="text-sm text-gray-600">Verifications (30d)</div>
+            <div className="text-3xl font-bold text-gray-900 mt-2">{stats.verificationsLast30Days.toLocaleString()}</div>
+            <div className="flex items-center gap-1 text-green-600 text-sm mt-1">
               <TrendingUp className="w-4 h-4" />
               <span>+12%</span>
             </div>
@@ -246,9 +246,9 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
 
         <Card>
           <CardContent className="p-6">
-            <div className="text-sm text-slate-300">Screenings (30d)</div>
-            <div className="text-3xl font-bold text-white mt-2">{stats.screeningsLast30Days.toLocaleString()}</div>
-            <div className="flex items-center gap-1 text-green-400 text-sm mt-1">
+            <div className="text-sm text-gray-600">Screenings (30d)</div>
+            <div className="text-3xl font-bold text-gray-900 mt-2">{stats.screeningsLast30Days.toLocaleString()}</div>
+            <div className="flex items-center gap-1 text-green-600 text-sm mt-1">
               <TrendingUp className="w-4 h-4" />
               <span>+8%</span>
             </div>
@@ -257,15 +257,15 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
 
         <Card>
           <CardContent className="p-6">
-            <div className="text-sm text-slate-300">Registry Searches</div>
-            <div className="text-3xl font-bold text-white mt-2">{stats.registrySearches.toLocaleString()}</div>
+            <div className="text-sm text-gray-600">Registry Searches</div>
+            <div className="text-3xl font-bold text-gray-900 mt-2">{stats.registrySearches.toLocaleString()}</div>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
-            <div className="text-sm text-slate-300">Active Monitoring</div>
-            <div className="text-3xl font-bold text-white mt-2">{stats.activeMonitoring.toLocaleString()}</div>
+            <div className="text-sm text-gray-600">Active Monitoring</div>
+            <div className="text-3xl font-bold text-gray-900 mt-2">{stats.activeMonitoring.toLocaleString()}</div>
           </CardContent>
         </Card>
       </div>
@@ -295,15 +295,15 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
 
       {/* Critical Alerts */}
       {stats.failedRequests > 0 && (
-        <Card className="border-red-300 bg-red-500/10">
+        <Card className="border-red-300 bg-red-50">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-red-300">
+            <CardTitle className="flex items-center gap-2 text-red-700">
               <AlertTriangle className="w-5 h-5" />
               Failed Requests Requiring Review
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-red-400 mb-4">
+            <p className="text-red-600 mb-4">
               {stats.failedRequests} requests failed and require manual review
             </p>
             <Button onClick={() => setCurrentView('error_management')} variant="destructive">
@@ -317,30 +317,30 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => setCurrentView('api_activity')}>
           <CardContent className="p-6 flex items-center gap-4">
-            <Terminal className="w-8 h-8 text-blue-400" />
+            <Terminal className="w-8 h-8 text-blue-600" />
             <div>
-              <div className="font-semibold text-white">API Activity</div>
-              <div className="text-sm text-slate-300">View all API interactions</div>
+              <div className="font-semibold text-gray-900">API Activity</div>
+              <div className="text-sm text-gray-600">View all API interactions</div>
             </div>
           </CardContent>
         </Card>
 
         <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => setCurrentView('monitoring_feeds')}>
           <CardContent className="p-6 flex items-center gap-4">
-            <Bell className="w-8 h-8 text-amber-400" />
+            <Bell className="w-8 h-8 text-amber-600" />
             <div>
-              <div className="font-semibold text-white">Monitoring Feeds</div>
-              <div className="text-sm text-slate-300">Real-time alerts pipeline</div>
+              <div className="font-semibold text-gray-900">Monitoring Feeds</div>
+              <div className="text-sm text-gray-600">Real-time alerts pipeline</div>
             </div>
           </CardContent>
         </Card>
 
         <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => setCurrentView('provider_sla')}>
           <CardContent className="p-6 flex items-center gap-4">
-            <BarChart3 className="w-8 h-8 text-green-400" />
+            <BarChart3 className="w-8 h-8 text-green-600" />
             <div>
-              <div className="font-semibold text-white">Provider SLA</div>
-              <div className="text-sm text-slate-300">Performance metrics</div>
+              <div className="font-semibold text-gray-900">Provider SLA</div>
+              <div className="text-sm text-gray-600">Performance metrics</div>
             </div>
           </CardContent>
         </Card>
@@ -361,8 +361,8 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
       </div>
 
       <div>
-        <h1 className="text-3xl font-bold text-white">Trulioo Integration</h1>
-        <p className="text-slate-300 mt-1">Global identity verification, screening & monitoring</p>
+        <h1 className="text-3xl font-bold text-gray-900">Trulioo Integration</h1>
+        <p className="text-gray-600 mt-1">Global identity verification, screening & monitoring</p>
       </div>
 
       <Tabs defaultValue="config" className="w-full">
@@ -376,10 +376,10 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
 
         {/* Configuration Tab */}
         <TabsContent value="config" className="space-y-6">
-          <Card className="border-amber-300 bg-amber-500/10">
+          <Card className="border-amber-300 bg-amber-50">
             <CardContent className="p-4 flex items-start gap-3">
-              <Lock className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
-              <div className="text-sm text-amber-300">
+              <Lock className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+              <div className="text-sm text-amber-900">
                 <strong>Security Notice:</strong> API keys are encrypted using AWS KMS. Keys are only visible to super administrators with MFA enabled.
               </div>
             </CardContent>
@@ -434,7 +434,7 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
                 <div className="flex items-center justify-between py-2">
                   <div>
                     <div className="font-medium">Tenant-Level Override</div>
-                    <div className="text-sm text-slate-300">Allow tenants to use their own API keys</div>
+                    <div className="text-sm text-gray-600">Allow tenants to use their own API keys</div>
                   </div>
                   <Switch />
                 </div>
@@ -449,8 +449,8 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
           ) : (
             <Card>
               <CardContent className="p-8 text-center">
-                <Lock className="w-12 h-12 text-slate-400 mx-auto mb-4" />
-                <p className="text-slate-300">API configuration is restricted to super administrators</p>
+                <Lock className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+                <p className="text-gray-600">API configuration is restricted to super administrators</p>
               </CardContent>
             </Card>
           )}
@@ -502,15 +502,15 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
                   enabled: true
                 }
               ].map((product) => (
-                <Card key={product.id} className={product.enabled ? 'border-green-300 bg-green-500/10' : ''}>
+                <Card key={product.id} className={product.enabled ? 'border-green-300 bg-green-50' : ''}>
                   <CardContent className="p-4">
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
                           <Switch defaultChecked={product.enabled} />
                           <div>
-                            <div className="font-semibold text-white">{product.name}</div>
-                            <div className="text-sm text-slate-300">{product.cost}</div>
+                            <div className="font-semibold text-gray-900">{product.name}</div>
+                            <div className="text-sm text-gray-600">{product.cost}</div>
                           </div>
                         </div>
                         {product.enabled && (
@@ -620,12 +620,12 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
             {[1, 2, 3, 4].map((s) => (
               <div key={s} className="flex items-center flex-1">
                 <div className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold ${
-                  step >= s ? 'bg-blue-600 text-white' : 'bg-white/10 text-slate-300'
+                  step >= s ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-600'
                 }`}>
                   {s}
                 </div>
                 {s < 4 && (
-                  <div className={`flex-1 h-1 mx-2 ${step > s ? 'bg-blue-600' : 'bg-white/10'}`} />
+                  <div className={`flex-1 h-1 mx-2 ${step > s ? 'bg-blue-600' : 'bg-gray-200'}`} />
                 )}
               </div>
             ))}
@@ -713,7 +713,7 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
             <div className="space-y-4">
               <h3 className="font-semibold text-lg">Step 2: Review & Submit</h3>
               
-              <Card className="bg-[#0f172a]">
+              <Card className="bg-gray-50">
                 <CardContent className="p-4">
                   <h4 className="font-semibold mb-3">Request Payload Preview</h4>
                   <pre className="text-xs bg-gray-900 text-green-400 p-4 rounded overflow-auto max-h-64">
@@ -762,9 +762,9 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
           {/* Step 3: Processing */}
           {step === 3 && (
             <div className="text-center py-12">
-              <RefreshCw className="w-16 h-16 text-blue-400 mx-auto mb-4 animate-spin" />
+              <RefreshCw className="w-16 h-16 text-blue-600 mx-auto mb-4 animate-spin" />
               <h3 className="text-xl font-semibold mb-2">Verification in Progress</h3>
-              <p className="text-slate-300">Connecting to Trulioo GlobalGateway...</p>
+              <p className="text-gray-600">Connecting to Trulioo GlobalGateway...</p>
               <Progress value={66} className="mt-6 max-w-md mx-auto" />
             </div>
           )}
@@ -773,16 +773,16 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
           {step === 4 && verificationResult && (
             <div className="space-y-6">
               <div className="text-center">
-                <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-4" />
-                <h3 className="text-2xl font-bold text-white">Verification Complete</h3>
-                <p className="text-slate-300">Identity verified successfully</p>
+                <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
+                <h3 className="text-2xl font-bold text-gray-900">Verification Complete</h3>
+                <p className="text-gray-600">Identity verified successfully</p>
               </div>
 
-              <Card className="border-green-300 bg-green-500/10">
+              <Card className="border-green-300 bg-green-50">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <div>
-                      <div className="text-sm text-slate-300">Verification ID</div>
+                      <div className="text-sm text-gray-600">Verification ID</div>
                       <div className="font-mono font-semibold">{verificationResult.id}</div>
                     </div>
                     <Badge className="bg-green-600 text-lg px-4 py-2">
@@ -793,41 +793,41 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
                   <div className="grid grid-cols-2 gap-4 mt-6">
                     <div className="flex items-center gap-2">
                       {verificationResult.matchResults.document ? (
-                        <CheckCircle className="w-5 h-5 text-green-400" />
+                        <CheckCircle className="w-5 h-5 text-green-600" />
                       ) : (
-                        <XCircle className="w-5 h-5 text-red-400" />
+                        <XCircle className="w-5 h-5 text-red-600" />
                       )}
                       <span>Document Validation</span>
                     </div>
                     <div className="flex items-center gap-2">
                       {verificationResult.matchResults.address ? (
-                        <CheckCircle className="w-5 h-5 text-green-400" />
+                        <CheckCircle className="w-5 h-5 text-green-600" />
                       ) : (
-                        <XCircle className="w-5 h-5 text-red-400" />
+                        <XCircle className="w-5 h-5 text-red-600" />
                       )}
                       <span>Address Match</span>
                     </div>
                     <div className="flex items-center gap-2">
                       {!verificationResult.matchResults.watchlist ? (
-                        <CheckCircle className="w-5 h-5 text-green-400" />
+                        <CheckCircle className="w-5 h-5 text-green-600" />
                       ) : (
-                        <AlertTriangle className="w-5 h-5 text-red-400" />
+                        <AlertTriangle className="w-5 h-5 text-red-600" />
                       )}
                       <span>Watchlist Clear</span>
                     </div>
                     <div className="flex items-center gap-2">
                       {!verificationResult.matchResults.pep ? (
-                        <CheckCircle className="w-5 h-5 text-green-400" />
+                        <CheckCircle className="w-5 h-5 text-green-600" />
                       ) : (
-                        <AlertTriangle className="w-5 h-5 text-amber-400" />
+                        <AlertTriangle className="w-5 h-5 text-amber-600" />
                       )}
                       <span>PEP Clear</span>
                     </div>
                     <div className="flex items-center gap-2">
                       {!verificationResult.matchResults.adverseMedia ? (
-                        <CheckCircle className="w-5 h-5 text-green-400" />
+                        <CheckCircle className="w-5 h-5 text-green-600" />
                       ) : (
-                        <AlertTriangle className="w-5 h-5 text-amber-400" />
+                        <AlertTriangle className="w-5 h-5 text-amber-600" />
                       )}
                       <span>Adverse Media Clear</span>
                     </div>
@@ -840,12 +840,12 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
                   <CardTitle>Evidence Package</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  <div className="flex items-center justify-between p-3 bg-[#0f172a] rounded">
+                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded">
                     <div className="flex items-center gap-3">
-                      <FileText className="w-5 h-5 text-blue-400" />
+                      <FileText className="w-5 h-5 text-blue-600" />
                       <div>
                         <div className="font-medium">Verification Report</div>
-                        <div className="text-sm text-slate-300">PDF • 234 KB</div>
+                        <div className="text-sm text-gray-600">PDF • 234 KB</div>
                       </div>
                     </div>
                     <Button size="sm" variant="outline">
@@ -853,12 +853,12 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
                       Download
                     </Button>
                   </div>
-                  <div className="flex items-center justify-between p-3 bg-[#0f172a] rounded">
+                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded">
                     <div className="flex items-center gap-3">
-                      <Code className="w-5 h-5 text-green-400" />
+                      <Code className="w-5 h-5 text-green-600" />
                       <div>
                         <div className="font-medium">API Response (JSON)</div>
-                        <div className="text-sm text-slate-300">JSON • 12 KB</div>
+                        <div className="text-sm text-gray-600">JSON • 12 KB</div>
                       </div>
                     </div>
                     <Button size="sm" variant="outline">
@@ -932,51 +932,51 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
         </Button>
 
         {/* Mock Results */}
-        <Card className="border-green-300 bg-green-500/10 mt-6">
+        <Card className="border-green-300 bg-green-50 mt-6">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <CheckCircle className="w-5 h-5 text-green-400" />
+              <CheckCircle className="w-5 h-5 text-green-600" />
               Business Verified
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <div className="text-sm text-slate-300">Company Name</div>
+              <div className="text-sm text-gray-600">Company Name</div>
               <div className="font-semibold">EXAMPLE PTY LTD</div>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <div className="text-sm text-slate-300">ACN</div>
+                <div className="text-sm text-gray-600">ACN</div>
                 <div className="font-semibold">123 456 789</div>
               </div>
               <div>
-                <div className="text-sm text-slate-300">Status</div>
+                <div className="text-sm text-gray-600">Status</div>
                 <Badge className="bg-green-600">Registered</Badge>
               </div>
             </div>
 
             <div>
-              <div className="text-sm text-slate-300 mb-2">Directors</div>
+              <div className="text-sm text-gray-600 mb-2">Directors</div>
               <div className="space-y-2">
-                <div className="flex items-center justify-between p-2 bg-[#1e293b] rounded">
+                <div className="flex items-center justify-between p-2 bg-white rounded">
                   <div>
                     <div className="font-medium">John Smith</div>
-                    <div className="text-sm text-slate-300">Appointed: 2020-01-15</div>
+                    <div className="text-sm text-gray-600">Appointed: 2020-01-15</div>
                   </div>
-                  <CheckCircle className="w-4 h-4 text-green-400" />
+                  <CheckCircle className="w-4 h-4 text-green-600" />
                 </div>
-                <div className="flex items-center justify-between p-2 bg-[#1e293b] rounded">
+                <div className="flex items-center justify-between p-2 bg-white rounded">
                   <div>
                     <div className="font-medium">Jane Doe</div>
-                    <div className="text-sm text-slate-300">Appointed: 2020-01-15</div>
+                    <div className="text-sm text-gray-600">Appointed: 2020-01-15</div>
                   </div>
-                  <CheckCircle className="w-4 h-4 text-green-400" />
+                  <CheckCircle className="w-4 h-4 text-green-600" />
                 </div>
               </div>
             </div>
 
-            <div className="flex items-center gap-2 p-3 bg-[#1e293b] rounded">
-              <CheckCircle className="w-5 h-5 text-green-400" />
+            <div className="flex items-center gap-2 p-3 bg-white rounded">
+              <CheckCircle className="w-5 h-5 text-green-600" />
               <span>No watchlist hits detected</span>
             </div>
 
@@ -1001,20 +1001,20 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
           <div className="grid grid-cols-3 gap-4 mb-6">
             <Card>
               <CardContent className="p-4">
-                <div className="text-sm text-slate-300">Entities Enrolled</div>
-                <div className="text-2xl font-bold text-white">456</div>
+                <div className="text-sm text-gray-600">Entities Enrolled</div>
+                <div className="text-2xl font-bold text-gray-900">456</div>
               </CardContent>
             </Card>
             <Card>
               <CardContent className="p-4">
-                <div className="text-sm text-slate-300">New Alerts (7d)</div>
-                <div className="text-2xl font-bold text-amber-400">23</div>
+                <div className="text-sm text-gray-600">New Alerts (7d)</div>
+                <div className="text-2xl font-bold text-amber-600">23</div>
               </CardContent>
             </Card>
             <Card>
               <CardContent className="p-4">
-                <div className="text-sm text-slate-300">Active Subscriptions</div>
-                <div className="text-2xl font-bold text-white">456</div>
+                <div className="text-sm text-gray-600">Active Subscriptions</div>
+                <div className="text-2xl font-bold text-gray-900">456</div>
               </CardContent>
             </Card>
           </div>
@@ -1045,13 +1045,13 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
                       {item.type === 'Individual' ? (
-                        <Users className="w-8 h-8 text-blue-400" />
+                        <Users className="w-8 h-8 text-blue-600" />
                       ) : (
-                        <Building className="w-8 h-8 text-purple-400" />
+                        <Building className="w-8 h-8 text-purple-600" />
                       )}
                       <div>
                         <div className="font-semibold">{item.entity}</div>
-                        <div className="text-sm text-slate-300">
+                        <div className="text-sm text-gray-600">
                           {item.type} • Enrolled {item.enrolled} • {item.frequency}
                         </div>
                       </div>
@@ -1090,8 +1090,8 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
       </div>
 
       <div>
-        <h1 className="text-3xl font-bold text-white">InfoTrack Integration</h1>
-        <p className="text-slate-300 mt-1">ASIC, Title, PPSR & Court Registry Searches</p>
+        <h1 className="text-3xl font-bold text-gray-900">InfoTrack Integration</h1>
+        <p className="text-gray-600 mt-1">ASIC, Title, PPSR & Court Registry Searches</p>
       </div>
 
       <Tabs defaultValue="products" className="w-full">
@@ -1150,16 +1150,16 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
               <CardContent className="p-6">
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
-                    <h3 className="font-semibold text-lg text-white mb-1">{product.name}</h3>
-                    <p className="text-slate-300 text-sm mb-4">{product.description}</p>
+                    <h3 className="font-semibold text-lg text-gray-900 mb-1">{product.name}</h3>
+                    <p className="text-gray-600 text-sm mb-4">{product.description}</p>
                     <div className="flex items-center gap-4 text-sm">
                       <div className="flex items-center gap-1">
-                        <Clock className="w-4 h-4 text-slate-400" />
+                        <Clock className="w-4 h-4 text-gray-400" />
                         <span>{product.turnaround}</span>
                       </div>
-                      <div className="font-semibold text-blue-400">{product.cost}</div>
+                      <div className="font-semibold text-blue-600">{product.cost}</div>
                       {product.monitoring && (
-                        <Badge variant="outline" className="bg-blue-500/10">
+                        <Badge variant="outline" className="bg-blue-50">
                           <Bell className="w-3 h-3 mr-1" />
                           Monitoring Available
                         </Badge>
@@ -1193,10 +1193,10 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
               <CardDescription>API connection settings</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <Card className="border-amber-300 bg-amber-500/10">
+              <Card className="border-amber-300 bg-amber-50">
                 <CardContent className="p-4 flex items-start gap-3">
-                  <Lock className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
-                  <div className="text-sm text-amber-300">
+                  <Lock className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                  <div className="text-sm text-amber-900">
                     <strong>Encryption Notice:</strong> All API credentials are encrypted at rest using AES-256 encryption.
                   </div>
                 </CardContent>
@@ -1262,12 +1262,12 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
             {['Select Product', 'Entity Details', 'Consent', 'Submit', 'Complete'].map((label, idx) => (
               <div key={idx} className="flex items-center flex-1">
                 <div className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold text-sm ${
-                  orderStep > idx ? 'bg-blue-600 text-white' : 'bg-white/10 text-slate-300'
+                  orderStep > idx ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-600'
                 }`}>
                   {idx + 1}
                 </div>
                 {idx < 4 && (
-                  <div className={`flex-1 h-1 mx-2 ${orderStep > idx + 1 ? 'bg-blue-600' : 'bg-white/10'}`} />
+                  <div className={`flex-1 h-1 mx-2 ${orderStep > idx + 1 ? 'bg-blue-600' : 'bg-gray-200'}`} />
                 )}
               </div>
             ))}
@@ -1313,13 +1313,13 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
           {orderStep === 3 && (
             <div className="space-y-4">
               <h3 className="font-semibold text-lg">Consent Confirmation</h3>
-              <Card className="border-blue-300 bg-blue-500/10">
+              <Card className="border-blue-300 bg-blue-50">
                 <CardContent className="p-4">
                   <div className="flex items-start gap-3">
-                    <CheckSquare className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                    <CheckSquare className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
                     <div className="text-sm">
                       <p className="font-semibold mb-2">Client Consent Verified</p>
-                      <p className="text-slate-300">
+                      <p className="text-gray-700">
                         The client has provided informed consent for this registry search as documented in the engagement letter dated 2024-02-15.
                       </p>
                     </div>
@@ -1335,9 +1335,9 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
 
           {orderStep === 4 && (
             <div className="text-center py-8">
-              <RefreshCw className="w-16 h-16 text-blue-400 mx-auto mb-4 animate-spin" />
+              <RefreshCw className="w-16 h-16 text-blue-600 mx-auto mb-4 animate-spin" />
               <h3 className="text-xl font-semibold mb-2">Processing Order</h3>
-              <p className="text-slate-300">Submitting to InfoTrack...</p>
+              <p className="text-gray-600">Submitting to InfoTrack...</p>
               <Button onClick={() => setOrderStep(5)} className="mt-6">
                 Simulate Completion
               </Button>
@@ -1347,9 +1347,9 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
           {orderStep === 5 && (
             <div className="space-y-4">
               <div className="text-center py-4">
-                <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-4" />
+                <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
                 <h3 className="text-2xl font-bold">Order Complete</h3>
-                <p className="text-slate-300">Report is ready for review</p>
+                <p className="text-gray-600">Report is ready for review</p>
               </div>
               <Button onClick={() => setCurrentView('infotrack_report')} className="w-full">
                 View Report
@@ -1399,13 +1399,13 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <FileCheck className="w-8 h-8 text-blue-400" />
+                <FileCheck className="w-8 h-8 text-blue-600" />
                 <div>
                   <div className="font-semibold">{report.type}</div>
-                  <div className="text-sm text-slate-300">
+                  <div className="text-sm text-gray-600">
                     {report.entity} {report.acn && `• ACN ${report.acn}`}
                   </div>
-                  <div className="text-xs text-slate-400 mt-1">
+                  <div className="text-xs text-gray-500 mt-1">
                     Ordered: {report.ordered} {report.completed && `• Completed: ${report.completed}`}
                   </div>
                 </div>
@@ -1439,8 +1439,8 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-white">API Activity Log</h1>
-          <p className="text-slate-300 mt-1">Complete audit trail of all API interactions</p>
+          <h1 className="text-3xl font-bold text-gray-900">API Activity Log</h1>
+          <p className="text-gray-600 mt-1">Complete audit trail of all API interactions</p>
         </div>
         <Button variant="outline" onClick={() => setCurrentView('overview')}>
           <ArrowLeft className="w-4 h-4 mr-2" />
@@ -1488,17 +1488,17 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
         <CardContent className="p-0">
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-[#0f172a] border-b">
+              <thead className="bg-gray-50 border-b">
                 <tr>
-                  <th className="text-left p-4 text-sm font-semibold text-white">Timestamp</th>
-                  <th className="text-left p-4 text-sm font-semibold text-white">Provider</th>
-                  <th className="text-left p-4 text-sm font-semibold text-white">Product</th>
-                  <th className="text-left p-4 text-sm font-semibold text-white">Request ID</th>
-                  <th className="text-left p-4 text-sm font-semibold text-white">Client</th>
-                  <th className="text-left p-4 text-sm font-semibold text-white">Status</th>
-                  <th className="text-left p-4 text-sm font-semibold text-white">Duration</th>
-                  <th className="text-left p-4 text-sm font-semibold text-white">User</th>
-                  <th className="text-left p-4 text-sm font-semibold text-white">Actions</th>
+                  <th className="text-left p-4 text-sm font-semibold text-gray-900">Timestamp</th>
+                  <th className="text-left p-4 text-sm font-semibold text-gray-900">Provider</th>
+                  <th className="text-left p-4 text-sm font-semibold text-gray-900">Product</th>
+                  <th className="text-left p-4 text-sm font-semibold text-gray-900">Request ID</th>
+                  <th className="text-left p-4 text-sm font-semibold text-gray-900">Client</th>
+                  <th className="text-left p-4 text-sm font-semibold text-gray-900">Status</th>
+                  <th className="text-left p-4 text-sm font-semibold text-gray-900">Duration</th>
+                  <th className="text-left p-4 text-sm font-semibold text-gray-900">User</th>
+                  <th className="text-left p-4 text-sm font-semibold text-gray-900">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y">
@@ -1537,14 +1537,14 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
                     retries: 3
                   }
                 ].map((log, idx) => (
-                  <tr key={idx} className="hover:bg-white/5">
-                    <td className="p-4 text-sm text-white">{log.timestamp}</td>
+                  <tr key={idx} className="hover:bg-gray-50">
+                    <td className="p-4 text-sm text-gray-900">{log.timestamp}</td>
                     <td className="p-4">
                       <Badge variant="outline">{log.provider}</Badge>
                     </td>
-                    <td className="p-4 text-sm text-white">{log.product}</td>
-                    <td className="p-4 text-sm font-mono text-slate-300">{log.requestId}</td>
-                    <td className="p-4 text-sm text-white">{log.client}</td>
+                    <td className="p-4 text-sm text-gray-900">{log.product}</td>
+                    <td className="p-4 text-sm font-mono text-gray-600">{log.requestId}</td>
+                    <td className="p-4 text-sm text-gray-900">{log.client}</td>
                     <td className="p-4">
                       {log.status === 'success' ? (
                         <Badge className="bg-green-500">Success</Badge>
@@ -1552,8 +1552,8 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
                         <Badge className="bg-red-500">Error</Badge>
                       )}
                     </td>
-                    <td className="p-4 text-sm text-white">{log.duration}</td>
-                    <td className="p-4 text-sm text-slate-300">{log.user}</td>
+                    <td className="p-4 text-sm text-gray-900">{log.duration}</td>
+                    <td className="p-4 text-sm text-gray-600">{log.user}</td>
                     <td className="p-4">
                       <Button size="sm" variant="ghost">
                         <Eye className="w-4 h-4" />
@@ -1616,8 +1616,8 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
       <div className="space-y-6">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-white">Monitoring Feeds</h1>
-            <p className="text-slate-300 mt-1">Real-time alert pipeline from all providers</p>
+            <h1 className="text-3xl font-bold text-gray-900">Monitoring Feeds</h1>
+            <p className="text-gray-600 mt-1">Real-time alert pipeline from all providers</p>
           </div>
           <Button variant="outline" onClick={() => setCurrentView('overview')}>
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -1629,26 +1629,26 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
         <div className="grid grid-cols-4 gap-4">
           <Card>
             <CardContent className="p-4">
-              <div className="text-sm text-slate-300">New Alerts</div>
-              <div className="text-3xl font-bold text-red-400">8</div>
+              <div className="text-sm text-gray-600">New Alerts</div>
+              <div className="text-3xl font-bold text-red-600">8</div>
             </CardContent>
           </Card>
           <Card>
             <CardContent className="p-4">
-              <div className="text-sm text-slate-300">Under Review</div>
-              <div className="text-3xl font-bold text-amber-400">15</div>
+              <div className="text-sm text-gray-600">Under Review</div>
+              <div className="text-3xl font-bold text-amber-600">15</div>
             </CardContent>
           </Card>
           <Card>
             <CardContent className="p-4">
-              <div className="text-sm text-slate-300">Escalated</div>
-              <div className="text-3xl font-bold text-red-400">3</div>
+              <div className="text-sm text-gray-600">Escalated</div>
+              <div className="text-3xl font-bold text-red-600">3</div>
             </CardContent>
           </Card>
           <Card>
             <CardContent className="p-4">
-              <div className="text-sm text-slate-300">SLA Breaches</div>
-              <div className="text-3xl font-bold text-red-400">1</div>
+              <div className="text-sm text-gray-600">SLA Breaches</div>
+              <div className="text-3xl font-bold text-red-600">1</div>
             </CardContent>
           </Card>
         </div>
@@ -1659,19 +1659,19 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
             <Card key={alert.id} className={`
               ${alert.riskImpact === 'critical' ? 'border-red-500 border-2' : ''}
               ${alert.riskImpact === 'high' ? 'border-amber-500 border-2' : ''}
-              ${alert.autoRestrict ? 'bg-red-500/10' : ''}
+              ${alert.autoRestrict ? 'bg-red-50' : ''}
             `}>
               <CardContent className="p-4">
                 <div className="flex items-start justify-between">
                   <div className="flex items-start gap-4 flex-1">
                     {alert.source === 'trulioo' ? (
-                      <Shield className="w-8 h-8 text-blue-400 flex-shrink-0" />
+                      <Shield className="w-8 h-8 text-blue-600 flex-shrink-0" />
                     ) : (
-                      <FileCheck className="w-8 h-8 text-purple-400 flex-shrink-0" />
+                      <FileCheck className="w-8 h-8 text-purple-600 flex-shrink-0" />
                     )}
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-2">
-                        <span className="font-semibold text-white">{alert.eventType}</span>
+                        <span className="font-semibold text-gray-900">{alert.eventType}</span>
                         {alert.autoRestrict && (
                           <Badge className="bg-red-600">
                             <Lock className="w-3 h-3 mr-1" />
@@ -1681,19 +1681,19 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
                       </div>
                       <div className="grid grid-cols-4 gap-4 text-sm">
                         <div>
-                          <div className="text-slate-300">Source</div>
+                          <div className="text-gray-600">Source</div>
                           <div className="font-medium capitalize">{alert.source}</div>
                         </div>
                         <div>
-                          <div className="text-slate-300">Client</div>
+                          <div className="text-gray-600">Client</div>
                           <div className="font-medium">{alert.linkedClient}</div>
                         </div>
                         <div>
-                          <div className="text-slate-300">Assigned To</div>
+                          <div className="text-gray-600">Assigned To</div>
                           <div className="font-medium">{alert.assignedTo}</div>
                         </div>
                         <div>
-                          <div className="text-slate-300">Status</div>
+                          <div className="text-gray-600">Status</div>
                           <Badge className={
                             alert.status === 'new' ? 'bg-blue-500' :
                             alert.status === 'reviewing' ? 'bg-amber-500' :
@@ -1707,8 +1707,8 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
                   </div>
                   <div className="flex items-center gap-3 ml-4">
                     <div className={`text-center ${
-                      alert.slaTimer <= 4 ? 'text-red-400' :
-                      alert.slaTimer <= 8 ? 'text-amber-400' : 'text-green-400'
+                      alert.slaTimer <= 4 ? 'text-red-600' :
+                      alert.slaTimer <= 8 ? 'text-amber-600' : 'text-green-600'
                     }`}>
                       <Timer className="w-6 h-6 mx-auto mb-1" />
                       <div className="text-xs font-semibold">{alert.slaTimer}h</div>
@@ -1736,8 +1736,8 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-white">Error Management</h1>
-          <p className="text-slate-300 mt-1">Failed requests and system issues</p>
+          <h1 className="text-3xl font-bold text-gray-900">Error Management</h1>
+          <p className="text-gray-600 mt-1">Failed requests and system issues</p>
         </div>
         <Button variant="outline" onClick={() => setCurrentView('overview')}>
           <ArrowLeft className="w-4 h-4 mr-2" />
@@ -1757,7 +1757,7 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
           <Card key={idx}>
             <CardContent className="p-4 text-center">
               <div className={`text-3xl font-bold text-${cat.color}-600 mb-1`}>{cat.count}</div>
-              <div className="text-sm text-slate-300">{cat.label}</div>
+              <div className="text-sm text-gray-600">{cat.label}</div>
             </CardContent>
           </Card>
         ))}
@@ -1789,35 +1789,35 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
             severity: 'medium'
           }
         ].map((error) => (
-          <Card key={error.id} className="border-red-300 bg-red-500/10">
+          <Card key={error.id} className="border-red-300 bg-red-50">
             <CardContent className="p-4">
               <div className="flex items-start justify-between">
                 <div className="flex items-start gap-4 flex-1">
-                  <AlertTriangle className="w-8 h-8 text-red-400 flex-shrink-0" />
+                  <AlertTriangle className="w-8 h-8 text-red-600 flex-shrink-0" />
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="font-semibold text-white">{error.type}</span>
+                      <span className="font-semibold text-gray-900">{error.type}</span>
                       <Badge variant="outline">{error.provider}</Badge>
                       <Badge className="bg-red-600">{error.severity}</Badge>
                     </div>
-                    <div className="text-sm text-slate-300 mb-3 font-mono bg-red-500/15 p-2 rounded">
+                    <div className="text-sm text-gray-700 mb-3 font-mono bg-red-100 p-2 rounded">
                       {error.error}
                     </div>
                     <div className="grid grid-cols-4 gap-4 text-sm">
                       <div>
-                        <div className="text-slate-300">Error ID</div>
+                        <div className="text-gray-600">Error ID</div>
                         <div className="font-mono text-xs">{error.id}</div>
                       </div>
                       <div>
-                        <div className="text-slate-300">Product</div>
+                        <div className="text-gray-600">Product</div>
                         <div className="font-medium">{error.product}</div>
                       </div>
                       <div>
-                        <div className="text-slate-300">Client</div>
+                        <div className="text-gray-600">Client</div>
                         <div className="font-medium">{error.client}</div>
                       </div>
                       <div>
-                        <div className="text-slate-300">Retry Attempts</div>
+                        <div className="text-gray-600">Retry Attempts</div>
                         <div className="font-medium">{error.retries}/3</div>
                       </div>
                     </div>
@@ -1849,9 +1849,9 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
   // NAVIGATION
   // ============================================================================
   return (
-    <div className="min-h-screen bg-[#0f172a]">
+    <div className="min-h-screen bg-gray-50">
       {/* Top Navigation Bar */}
-      <div className="bg-[#1e293b] border-b sticky top-0 z-10">
+      <div className="bg-white border-b sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -1861,7 +1861,7 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
               </Button>
               <div className="h-6 w-px bg-gray-300" />
               <div className="flex items-center gap-2">
-                <Database className="w-6 h-6 text-blue-400" />
+                <Database className="w-6 h-6 text-blue-600" />
                 <span className="font-semibold text-lg">Integrations</span>
               </div>
             </div>
@@ -1875,7 +1875,7 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
       </div>
 
       {/* Secondary Navigation */}
-      <div className="bg-[#1e293b] border-b">
+      <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex gap-1 overflow-x-auto">
             {[
@@ -1894,8 +1894,8 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
                   onClick={() => setCurrentView(item.id as IntegrationView)}
                   className={`flex items-center gap-2 px-4 py-3 text-sm font-medium border-b-2 transition-colors whitespace-nowrap ${
                     currentView === item.id
-                      ? 'border-blue-600 text-blue-400'
-                      : 'border-transparent text-slate-300 hover:text-white hover:border-white/10'
+                      ? 'border-blue-600 text-blue-600'
+                      : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
                   }`}
                 >
                   <Icon className="w-4 h-4" />
@@ -1924,7 +1924,7 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
           <DialogContent className="max-w-2xl">
             <DialogHeader>
               <DialogTitle className="flex items-center gap-2">
-                <AlertTriangle className="w-5 h-5 text-red-400" />
+                <AlertTriangle className="w-5 h-5 text-red-600" />
                 Compliance Override Required
               </DialogTitle>
               <DialogDescription>
@@ -1933,20 +1933,20 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
             </DialogHeader>
 
             <div className="space-y-4 py-4">
-              <Card className="border-red-300 bg-red-500/10">
+              <Card className="border-red-300 bg-red-50">
                 <CardContent className="p-4">
-                  <div className="font-semibold text-red-300 mb-2">{selectedAlert.eventType}</div>
-                  <div className="text-sm text-red-300">
+                  <div className="font-semibold text-red-900 mb-2">{selectedAlert.eventType}</div>
+                  <div className="text-sm text-red-800">
                     Client: {selectedAlert.linkedClient} • Risk: {selectedAlert.riskImpact.toUpperCase()}
                   </div>
                 </CardContent>
               </Card>
 
               {userRole !== 'compliance_officer' && userRole !== 'super_admin' && (
-                <Card className="border-amber-300 bg-amber-500/10">
+                <Card className="border-amber-300 bg-amber-50">
                   <CardContent className="p-4 flex items-start gap-3">
-                    <Lock className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
-                    <div className="text-sm text-amber-300">
+                    <Lock className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <div className="text-sm text-amber-900">
                       <strong>Access Denied:</strong> Override requires Compliance Officer or Senior Manager authorization with documented rationale and audit log entry.
                     </div>
                   </CardContent>
@@ -1964,11 +1964,11 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
                     />
                   </div>
 
-                  <Card className="bg-[#0f172a]">
+                  <Card className="bg-gray-50">
                     <CardContent className="p-3 text-sm">
                       <div className="flex items-start gap-2">
-                        <FileText className="w-4 h-4 text-slate-300 flex-shrink-0 mt-0.5" />
-                        <div className="text-slate-300">
+                        <FileText className="w-4 h-4 text-gray-600 flex-shrink-0 mt-0.5" />
+                        <div className="text-gray-700">
                           <strong>Audit Notice:</strong> This override will be logged with your user ID, timestamp, and rationale. The entry is immutable and will be included in regulatory reports.
                         </div>
                       </div>
@@ -2005,8 +2005,8 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
       <div className="space-y-6">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-white">Provider SLA & Performance</h1>
-            <p className="text-slate-300 mt-1">Service level metrics and compliance</p>
+            <h1 className="text-3xl font-bold text-gray-900">Provider SLA & Performance</h1>
+            <p className="text-gray-600 mt-1">Service level metrics and compliance</p>
           </div>
           <Button variant="outline" onClick={() => setCurrentView('overview')}>
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -2027,39 +2027,39 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
               <CardContent className="space-y-6">
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm text-slate-300">Uptime (30d)</span>
+                    <span className="text-sm text-gray-600">Uptime (30d)</span>
                     <span className="font-semibold">{provider.uptime}%</span>
                   </div>
                   <Progress value={provider.uptime} className="h-2" />
-                  <div className="text-xs text-slate-400 mt-1">Target: 99.5%</div>
+                  <div className="text-xs text-gray-500 mt-1">Target: 99.5%</div>
                 </div>
 
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm text-slate-300">Avg Response Time</span>
+                    <span className="text-sm text-gray-600">Avg Response Time</span>
                     <span className="font-semibold">{provider.avgResponseTime}s</span>
                   </div>
                   <Progress value={(5 - provider.avgResponseTime) * 20} className="h-2" />
-                  <div className="text-xs text-slate-400 mt-1">Target: &lt;3s</div>
+                  <div className="text-xs text-gray-500 mt-1">Target: &lt;3s</div>
                 </div>
 
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm text-slate-300">Error Rate</span>
+                    <span className="text-sm text-gray-600">Error Rate</span>
                     <span className="font-semibold">{provider.errorRate}%</span>
                   </div>
                   <Progress value={100 - (provider.errorRate * 100)} className="h-2" />
-                  <div className="text-xs text-slate-400 mt-1">Target: &lt;1%</div>
+                  <div className="text-xs text-gray-500 mt-1">Target: &lt;1%</div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 pt-4 border-t">
                   <div>
-                    <div className="text-xs text-slate-300">Last 24h</div>
-                    <div className="text-2xl font-bold text-green-400">100%</div>
+                    <div className="text-xs text-gray-600">Last 24h</div>
+                    <div className="text-2xl font-bold text-green-600">100%</div>
                   </div>
                   <div>
-                    <div className="text-xs text-slate-300">Last 7d</div>
-                    <div className="text-2xl font-bold text-green-400">99.9%</div>
+                    <div className="text-xs text-gray-600">Last 7d</div>
+                    <div className="text-2xl font-bold text-green-600">99.9%</div>
                   </div>
                 </div>
               </CardContent>
@@ -2086,7 +2086,7 @@ export function IntegrationsModule({ onBack, userRole = 'compliance_officer' }: 
                 );
               })}
             </div>
-            <div className="flex justify-between mt-2 text-xs text-slate-400">
+            <div className="flex justify-between mt-2 text-xs text-gray-500">
               <span>60 days ago</span>
               <span>30 days ago</span>
               <span>Today</span>

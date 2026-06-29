@@ -666,8 +666,8 @@ export function IntegrationsDashboard() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-slate-100">Integration Hub</h2>
-          <p className="text-slate-300">Manage external service connections</p>
+          <h2 className="text-2xl font-bold text-gray-900">Integration Hub</h2>
+          <p className="text-gray-600">Manage external service connections</p>
         </div>
         <button
           onClick={() => {
@@ -688,7 +688,7 @@ export function IntegrationsDashboard() {
           const statusColor = getStatusColor(integration.status);
 
           return (
-            <div key={integration.id} className="bg-white border-2 border-white/10 rounded-lg p-6 hover:border-white/10 transition-colors">
+            <div key={integration.id} className="bg-white border-2 border-gray-200 rounded-lg p-6 hover:border-gray-300 transition-colors">
               <div className="flex items-start justify-between mb-4">
                 <div className={`p-3 bg-${integration.color}-100 rounded-lg`}>
                   <Icon className={`w-6 h-6 text-${integration.color}-600`} />
@@ -699,18 +699,18 @@ export function IntegrationsDashboard() {
                 </div>
               </div>
 
-              <h3 className="font-bold text-slate-100 text-lg mb-1">{integration.name}</h3>
-              <p className="text-sm text-slate-300 mb-4">{integration.description}</p>
+              <h3 className="font-bold text-gray-900 text-lg mb-1">{integration.name}</h3>
+              <p className="text-sm text-gray-600 mb-4">{integration.description}</p>
 
               {integration.lastSync && (
-                <p className="text-xs text-slate-400 mb-4">Last sync: {integration.lastSync}</p>
+                <p className="text-xs text-gray-500 mb-4">Last sync: {integration.lastSync}</p>
               )}
 
               <div className="mb-4">
-                <p className="text-xs font-semibold text-slate-300 mb-2">Features:</p>
+                <p className="text-xs font-semibold text-gray-700 mb-2">Features:</p>
                 <div className="flex flex-wrap gap-1">
                   {integration.features.map((feature, idx) => (
-                    <span key={idx} className="px-2 py-1 bg-white/5 text-slate-300 text-xs rounded">
+                    <span key={idx} className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
                       {feature}
                     </span>
                   ))}
@@ -720,10 +720,10 @@ export function IntegrationsDashboard() {
               <div className="flex gap-2">
                 {integration.status === 'connected' ? (
                   <>
-                    <button className="flex-1 px-3 py-2 bg-white/5 text-slate-300 text-sm font-semibold rounded hover:bg-white/10">
+                    <button className="flex-1 px-3 py-2 bg-gray-100 text-gray-700 text-sm font-semibold rounded hover:bg-gray-200">
                       Configure
                     </button>
-                    <button className="flex-1 px-3 py-2 bg-red-500/15 text-red-300 text-sm font-semibold rounded hover:bg-red-500/20">
+                    <button className="flex-1 px-3 py-2 bg-red-100 text-red-700 text-sm font-semibold rounded hover:bg-red-200">
                       Disconnect
                     </button>
                   </>

@@ -319,15 +319,15 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
         <div className="flex items-center gap-4">
           <div className="h-8 w-px bg-gray-300"></div>
           <div>
-            <h1 className="text-2xl font-bold text-slate-100">KYC Review Detail</h1>
-            <p className="text-sm text-slate-300">Submitted {new Date(kycData.user.submittedAt).toLocaleString('en-AU')}</p>
+            <h1 className="text-2xl font-bold text-gray-900">KYC Review Detail</h1>
+            <p className="text-sm text-gray-600">Submitted {new Date(kycData.user.submittedAt).toLocaleString('en-AU')}</p>
           </div>
         </div>
         <StatusBadge status={kycData.user.status} type="kyc" />
       </div>
 
       {/* Action Buttons with state transition integration */}
-      <Card className="border-2 border-indigo-500/30 bg-indigo-500/10/60 shadow-sm">
+      <Card className="border-2 border-indigo-200 bg-indigo-50/60 shadow-sm">
         <CardContent className="p-5">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
@@ -335,8 +335,8 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
                 <Shield className="w-6 h-6 text-white" />
               </div>
               <div>
-                <p className="font-semibold text-slate-100">Review Decision & Workflows</p>
-                <p className="text-xs text-slate-300">
+                <p className="font-semibold text-gray-900">Review Decision & Workflows</p>
+                <p className="text-xs text-gray-600">
                   Select a workflow transition to proceed. Actions require a mandatory justification audit note.
                 </p>
               </div>
@@ -344,7 +344,7 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
             <div className="flex flex-wrap gap-2.5">
               <Button 
                 variant="outline" 
-                className="bg-white hover:bg-amber-500/10 hover:text-amber-300 hover:border-amber-400"
+                className="bg-white hover:bg-amber-50 hover:text-amber-700 hover:border-amber-400"
                 onClick={() => setTransitionModal({ open: true, toState: 'changes_requested' })}
               >
                 <AlertCircle className="w-4 h-4 mr-1.5" />
@@ -352,7 +352,7 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
               </Button>
               <Button 
                 variant="outline" 
-                className="bg-white text-indigo-400 border-indigo-500/30 hover:bg-indigo-500/10 hover:border-indigo-400"
+                className="bg-white text-indigo-600 border-indigo-200 hover:bg-indigo-50 hover:border-indigo-400"
                 onClick={() => setTransitionModal({ open: true, toState: 'escalated' })}
               >
                 <ArrowLeft className="w-4 h-4 mr-1.5 rotate-90" />
@@ -360,7 +360,7 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
               </Button>
               <Button 
                 variant="outline" 
-                className="bg-white text-red-400 border-red-500/30 hover:bg-red-500/10 hover:border-red-400"
+                className="bg-white text-red-600 border-red-200 hover:bg-red-50 hover:border-red-400"
                 onClick={() => setTransitionModal({ open: true, toState: 'rejected' })}
               >
                 <XCircle className="w-4 h-4 mr-1.5" />
@@ -379,7 +379,7 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
       </Card>
 
       {/* AI Insights Banner */}
-      <Card className="border-2 border-green-500/30 bg-gradient-to-r from-green-50 to-emerald-50">
+      <Card className="border-2 border-green-200 bg-gradient-to-r from-green-50 to-emerald-50">
         <CardContent className="p-6">
           <div className="flex items-start gap-4">
             <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
@@ -387,39 +387,39 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
             </div>
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-2">
-                <h3 className="text-xl font-bold text-slate-100">🤖 AI Assessment</h3>
+                <h3 className="text-xl font-bold text-gray-900">🤖 AI Assessment</h3>
                 <span className="px-3 py-1 bg-green-600 text-white text-xs font-bold rounded-full uppercase">
                   {kycData.aiInsights.recommendation}
                 </span>
-                <span className="text-sm text-slate-300">
+                <span className="text-sm text-gray-600">
                   {kycData.aiInsights.confidence}% confidence
                 </span>
-                <span className="text-xs text-slate-400">
+                <span className="text-xs text-gray-500">
                   • Processed in {kycData.aiInsights.processingTime}
                 </span>
               </div>
-              <p className="text-slate-300 mb-4">{kycData.aiInsights.summary}</p>
+              <p className="text-gray-700 mb-4">{kycData.aiInsights.summary}</p>
               
               {/* AI Checks Grid */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
                 {kycData.aiInsights.aiChecks.slice(0, 4).map((check) => (
-                  <div key={check.name} className="bg-white rounded-lg p-3 border border-green-500/30">
+                  <div key={check.name} className="bg-white rounded-lg p-3 border border-green-200">
                     <div className="flex items-center justify-between mb-1">
-                      <CheckCircle className="w-4 h-4 text-green-400" />
-                      <span className="text-xs font-semibold text-green-400">{check.confidence}%</span>
+                      <CheckCircle className="w-4 h-4 text-green-600" />
+                      <span className="text-xs font-semibold text-green-600">{check.confidence}%</span>
                     </div>
-                    <p className="text-xs font-medium text-slate-100">{check.name}</p>
+                    <p className="text-xs font-medium text-gray-900">{check.name}</p>
                   </div>
                 ))}
               </div>
 
               {/* Key Strengths */}
-              <div className="bg-white rounded-lg p-4 border border-green-500/30">
-                <p className="text-sm font-semibold text-slate-100 mb-2">✨ Key Strengths Identified:</p>
+              <div className="bg-white rounded-lg p-4 border border-green-200">
+                <p className="text-sm font-semibold text-gray-900 mb-2">✨ Key Strengths Identified:</p>
                 <ul className="space-y-1">
                   {kycData.aiInsights.strengths.slice(0, 3).map((strength, idx) => (
-                    <li key={idx} className="text-sm text-slate-300 flex items-start gap-2">
-                      <span className="text-green-400 font-bold">•</span>
+                    <li key={idx} className="text-sm text-gray-700 flex items-start gap-2">
+                      <span className="text-green-600 font-bold">•</span>
                       {strength}
                     </li>
                   ))}
@@ -429,22 +429,22 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
               {/* Fraud Risk Indicators */}
               <div className="mt-4 flex items-center gap-4 text-sm">
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-green-500/15 rounded-full flex items-center justify-center">
-                    <span className="text-green-300 font-bold text-xs">{kycData.aiInsights.riskIndicators.fraudScore}</span>
+                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                    <span className="text-green-700 font-bold text-xs">{kycData.aiInsights.riskIndicators.fraudScore}</span>
                   </div>
-                  <span className="text-slate-300">Fraud Score (low)</span>
+                  <span className="text-gray-700">Fraud Score (low)</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
-                  <span className="text-slate-300">Trusted Device</span>
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  <span className="text-gray-700">Trusted Device</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
-                  <span className="text-slate-300">Clean IP Reputation</span>
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  <span className="text-gray-700">Clean IP Reputation</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
-                  <span className="text-slate-300">0 Behavioral Flags</span>
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  <span className="text-gray-700">0 Behavioral Flags</span>
                 </div>
               </div>
             </div>
@@ -511,34 +511,34 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
                       Personal Information
                     </h3>
                     <div className="grid grid-cols-2 gap-4">
-                      <div className="p-4 bg-white/5 rounded-lg">
-                        <p className="text-sm text-slate-300 mb-1">Full Name</p>
-                        <p className="font-semibold text-slate-100">{kycData.user.name}</p>
+                      <div className="p-4 bg-gray-50 rounded-lg">
+                        <p className="text-sm text-gray-600 mb-1">Full Name</p>
+                        <p className="font-semibold text-gray-900">{kycData.user.name}</p>
                       </div>
-                      <div className="p-4 bg-white/5 rounded-lg">
-                        <p className="text-sm text-slate-300 mb-1">Date of Birth</p>
-                        <p className="font-semibold text-slate-100">
+                      <div className="p-4 bg-gray-50 rounded-lg">
+                        <p className="text-sm text-gray-600 mb-1">Date of Birth</p>
+                        <p className="font-semibold text-gray-900">
                           {new Date(kycData.user.dateOfBirth).toLocaleDateString('en-AU')}
                         </p>
                       </div>
-                      <div className="p-4 bg-white/5 rounded-lg">
-                        <p className="text-sm text-slate-300 mb-1">Email</p>
-                        <p className="font-semibold text-slate-100">{kycData.user.email}</p>
+                      <div className="p-4 bg-gray-50 rounded-lg">
+                        <p className="text-sm text-gray-600 mb-1">Email</p>
+                        <p className="font-semibold text-gray-900">{kycData.user.email}</p>
                       </div>
-                      <div className="p-4 bg-white/5 rounded-lg">
-                        <p className="text-sm text-slate-300 mb-1">Phone</p>
-                        <p className="font-semibold text-slate-100">{kycData.user.phone}</p>
+                      <div className="p-4 bg-gray-50 rounded-lg">
+                        <p className="text-sm text-gray-600 mb-1">Phone</p>
+                        <p className="font-semibold text-gray-900">{kycData.user.phone}</p>
                       </div>
-                      <div className="p-4 bg-white/5 rounded-lg col-span-2">
-                        <p className="text-sm text-slate-300 mb-1">Address</p>
-                        <p className="font-semibold text-slate-100">{kycData.user.address}</p>
+                      <div className="p-4 bg-gray-50 rounded-lg col-span-2">
+                        <p className="text-sm text-gray-600 mb-1">Address</p>
+                        <p className="font-semibold text-gray-900">{kycData.user.address}</p>
                       </div>
-                      <div className="p-4 bg-white/5 rounded-lg">
-                        <p className="text-sm text-slate-300 mb-1">Nationality</p>
-                        <p className="font-semibold text-slate-100">{kycData.user.nationality}</p>
+                      <div className="p-4 bg-gray-50 rounded-lg">
+                        <p className="text-sm text-gray-600 mb-1">Nationality</p>
+                        <p className="font-semibold text-gray-900">{kycData.user.nationality}</p>
                       </div>
-                      <div className="p-4 bg-white/5 rounded-lg">
-                        <p className="text-sm text-slate-300 mb-1">Role</p>
+                      <div className="p-4 bg-gray-50 rounded-lg">
+                        <p className="text-sm text-gray-600 mb-1">Role</p>
                         <StatusBadge status={kycData.user.role} type="role" />
                       </div>
                     </div>
@@ -551,29 +551,29 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
                       Organization Information
                     </h3>
                     <div className="grid grid-cols-2 gap-4">
-                      <div className="p-4 bg-white/5 rounded-lg col-span-2">
-                        <p className="text-sm text-slate-300 mb-1">Company Name</p>
-                        <p className="font-semibold text-slate-100">{kycData.organization.name}</p>
+                      <div className="p-4 bg-gray-50 rounded-lg col-span-2">
+                        <p className="text-sm text-gray-600 mb-1">Company Name</p>
+                        <p className="font-semibold text-gray-900">{kycData.organization.name}</p>
                       </div>
-                      <div className="p-4 bg-white/5 rounded-lg">
-                        <p className="text-sm text-slate-300 mb-1">ABN</p>
-                        <p className="font-semibold text-slate-100">{kycData.organization.abn}</p>
+                      <div className="p-4 bg-gray-50 rounded-lg">
+                        <p className="text-sm text-gray-600 mb-1">ABN</p>
+                        <p className="font-semibold text-gray-900">{kycData.organization.abn}</p>
                       </div>
-                      <div className="p-4 bg-white/5 rounded-lg">
-                        <p className="text-sm text-slate-300 mb-1">ACN</p>
-                        <p className="font-semibold text-slate-100">{kycData.organization.acn}</p>
+                      <div className="p-4 bg-gray-50 rounded-lg">
+                        <p className="text-sm text-gray-600 mb-1">ACN</p>
+                        <p className="font-semibold text-gray-900">{kycData.organization.acn}</p>
                       </div>
-                      <div className="p-4 bg-white/5 rounded-lg">
-                        <p className="text-sm text-slate-300 mb-1">Entity Type</p>
-                        <p className="font-semibold text-slate-100">{kycData.organization.type}</p>
+                      <div className="p-4 bg-gray-50 rounded-lg">
+                        <p className="text-sm text-gray-600 mb-1">Entity Type</p>
+                        <p className="font-semibold text-gray-900">{kycData.organization.type}</p>
                       </div>
-                      <div className="p-4 bg-white/5 rounded-lg">
-                        <p className="text-sm text-slate-300 mb-1">Website</p>
-                        <p className="font-semibold text-slate-100">{kycData.organization.website}</p>
+                      <div className="p-4 bg-gray-50 rounded-lg">
+                        <p className="text-sm text-gray-600 mb-1">Website</p>
+                        <p className="font-semibold text-gray-900">{kycData.organization.website}</p>
                       </div>
-                      <div className="p-4 bg-white/5 rounded-lg col-span-2">
-                        <p className="text-sm text-slate-300 mb-1">Business Address</p>
-                        <p className="font-semibold text-slate-100">{kycData.organization.address}</p>
+                      <div className="p-4 bg-gray-50 rounded-lg col-span-2">
+                        <p className="text-sm text-gray-600 mb-1">Business Address</p>
+                        <p className="font-semibold text-gray-900">{kycData.organization.address}</p>
                       </div>
                     </div>
                   </div>
@@ -585,39 +585,39 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
                       Risk Assessment
                     </h3>
                     <div className="grid grid-cols-2 gap-4">
-                      <div className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg col-span-2">
-                        <p className="text-sm text-slate-300 mb-1">Overall Risk Level</p>
-                        <p className="text-2xl font-bold text-green-400">{kycData.riskAssessment.overallRisk}</p>
+                      <div className="p-4 bg-green-50 border border-green-200 rounded-lg col-span-2">
+                        <p className="text-sm text-gray-600 mb-1">Overall Risk Level</p>
+                        <p className="text-2xl font-bold text-green-600">{kycData.riskAssessment.overallRisk}</p>
                       </div>
-                      <div className="p-4 bg-white/5 rounded-lg">
-                        <p className="text-sm text-slate-300 mb-1">PEP Status</p>
-                        <p className="font-semibold text-slate-100">
+                      <div className="p-4 bg-gray-50 rounded-lg">
+                        <p className="text-sm text-gray-600 mb-1">PEP Status</p>
+                        <p className="font-semibold text-gray-900">
                           {kycData.riskAssessment.pepStatus ? '⚠️ Yes' : '✅ No'}
                         </p>
                       </div>
-                      <div className="p-4 bg-white/5 rounded-lg">
-                        <p className="text-sm text-slate-300 mb-1">Sanctions Match</p>
-                        <p className="font-semibold text-slate-100">
+                      <div className="p-4 bg-gray-50 rounded-lg">
+                        <p className="text-sm text-gray-600 mb-1">Sanctions Match</p>
+                        <p className="font-semibold text-gray-900">
                           {kycData.riskAssessment.sanctionsMatch ? '⚠️ Yes' : '✅ No'}
                         </p>
                       </div>
-                      <div className="p-4 bg-white/5 rounded-lg">
-                        <p className="text-sm text-slate-300 mb-1">Adverse Media</p>
-                        <p className="font-semibold text-slate-100">
+                      <div className="p-4 bg-gray-50 rounded-lg">
+                        <p className="text-sm text-gray-600 mb-1">Adverse Media</p>
+                        <p className="font-semibold text-gray-900">
                           {kycData.riskAssessment.adverseMedia ? '⚠️ Found' : '✅ None'}
                         </p>
                       </div>
-                      <div className="p-4 bg-white/5 rounded-lg">
-                        <p className="text-sm text-slate-300 mb-1">Estimated Wealth</p>
-                        <p className="font-semibold text-slate-100">{kycData.riskAssessment.estimatedWealth}</p>
+                      <div className="p-4 bg-gray-50 rounded-lg">
+                        <p className="text-sm text-gray-600 mb-1">Estimated Wealth</p>
+                        <p className="font-semibold text-gray-900">{kycData.riskAssessment.estimatedWealth}</p>
                       </div>
-                      <div className="p-4 bg-white/5 rounded-lg col-span-2">
-                        <p className="text-sm text-slate-300 mb-1">Source of Funds</p>
-                        <p className="font-semibold text-slate-100">{kycData.riskAssessment.sourceOfFunds}</p>
+                      <div className="p-4 bg-gray-50 rounded-lg col-span-2">
+                        <p className="text-sm text-gray-600 mb-1">Source of Funds</p>
+                        <p className="font-semibold text-gray-900">{kycData.riskAssessment.sourceOfFunds}</p>
                       </div>
-                      <div className="p-4 bg-white/5 rounded-lg col-span-2">
-                        <p className="text-sm text-slate-300 mb-1">Transaction Profile</p>
-                        <p className="font-semibold text-slate-100">{kycData.riskAssessment.transactionProfile}</p>
+                      <div className="p-4 bg-gray-50 rounded-lg col-span-2">
+                        <p className="text-sm text-gray-600 mb-1">Transaction Profile</p>
+                        <p className="font-semibold text-gray-900">{kycData.riskAssessment.transactionProfile}</p>
                       </div>
                     </div>
                   </div>
@@ -628,13 +628,13 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
               {activeSection === 'documents' && (
                 <div className="space-y-4">
                   {kycData.documents.map((doc) => (
-                    <div key={doc.id} className="border rounded-lg p-4 hover:bg-white/5 transition-colors">
+                    <div key={doc.id} className="border rounded-lg p-4 hover:bg-gray-50 transition-colors">
                       <div className="flex items-start justify-between">
                         <div className="flex items-start gap-3 flex-1">
                           <FileText className="w-5 h-5 text-gray-400 mt-1" />
                           <div className="flex-1">
-                            <h4 className="font-semibold text-slate-100 mb-1">{doc.name}</h4>
-                            <div className="flex items-center gap-3 text-sm text-slate-300">
+                            <h4 className="font-semibold text-gray-900 mb-1">{doc.name}</h4>
+                            <div className="flex items-center gap-3 text-sm text-gray-600">
                               <span>{doc.type}</span>
                               <span>•</span>
                               <span>{doc.size}</span>
@@ -642,13 +642,13 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
                               <span>Uploaded {new Date(doc.uploadedAt).toLocaleString('en-AU')}</span>
                             </div>
                             {doc.verified === true && (
-                              <div className="mt-2 flex items-center gap-2 text-sm text-green-400">
+                              <div className="mt-2 flex items-center gap-2 text-sm text-green-600">
                                 <CheckCircle className="w-4 h-4" />
                                 Verified
                               </div>
                             )}
                             {doc.verified === false && (
-                              <div className="mt-2 flex items-center gap-2 text-sm text-red-400">
+                              <div className="mt-2 flex items-center gap-2 text-sm text-red-600">
                                 <XCircle className="w-4 h-4" />
                                 Verification Failed
                               </div>
@@ -675,7 +675,7 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
                 <div className="space-y-6">
                   {kycData.checklist.map((category) => (
                     <div key={category.category}>
-                      <h3 className="font-semibold text-lg mb-3 text-slate-100">{category.category}</h3>
+                      <h3 className="font-semibold text-lg mb-3 text-gray-900">{category.category}</h3>
                       <div className="space-y-2">
                         {category.items.map((item) => (
                           <div key={item.id} className="flex items-center gap-3 p-3 border rounded-lg">
@@ -683,16 +683,16 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
                               type="checkbox"
                               checked={item.completed}
                               readOnly
-                              className="w-5 h-5 rounded border-white/10"
+                              className="w-5 h-5 rounded border-gray-300"
                             />
                             <div className="flex-1">
-                              <p className="text-sm font-medium text-slate-100">{item.label}</p>
+                              <p className="text-sm font-medium text-gray-900">{item.label}</p>
                               {item.required && (
-                                <p className="text-xs text-red-400">Required</p>
+                                <p className="text-xs text-red-600">Required</p>
                               )}
                             </div>
                             {item.completed ? (
-                              <CheckCircle className="w-5 h-5 text-green-400" />
+                              <CheckCircle className="w-5 h-5 text-green-600" />
                             ) : (
                               <XCircle className="w-5 h-5 text-gray-300" />
                             )}
@@ -709,43 +709,43 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
                 <div className="space-y-5 animate-in fade-in duration-300">
                   {/* Severity Summary Visual Dashboard */}
                   {reviewData?.severitySummary && (
-                    <div className="grid grid-cols-2 md:grid-cols-5 gap-3 p-4 bg-white/5/60 border border-white/10/80 rounded-xl">
-                      <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-xl text-center shadow-sm">
-                        <p className="text-[10px] text-red-300 font-bold uppercase tracking-wider mb-1">Critical</p>
-                        <p className="text-2xl font-extrabold text-red-300">{reviewData.severitySummary.critical}</p>
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-3 p-4 bg-gray-50/60 border border-gray-200/80 rounded-xl">
+                      <div className="p-3 bg-red-50 border border-red-200 rounded-xl text-center shadow-sm">
+                        <p className="text-[10px] text-red-700 font-bold uppercase tracking-wider mb-1">Critical</p>
+                        <p className="text-2xl font-extrabold text-red-700">{reviewData.severitySummary.critical}</p>
                       </div>
-                      <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl text-center shadow-sm">
-                        <p className="text-[10px] text-amber-300 font-bold uppercase tracking-wider mb-1">High</p>
-                        <p className="text-2xl font-extrabold text-amber-300">{reviewData.severitySummary.high}</p>
+                      <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl text-center shadow-sm">
+                        <p className="text-[10px] text-amber-700 font-bold uppercase tracking-wider mb-1">High</p>
+                        <p className="text-2xl font-extrabold text-amber-700">{reviewData.severitySummary.high}</p>
                       </div>
-                      <div className="p-3 bg-orange-500/10 border border-orange-500/30 rounded-xl text-center shadow-sm">
-                        <p className="text-[10px] text-orange-300 font-bold uppercase tracking-wider mb-1">Medium</p>
-                        <p className="text-2xl font-extrabold text-orange-300">{reviewData.severitySummary.medium}</p>
+                      <div className="p-3 bg-orange-50 border border-orange-200 rounded-xl text-center shadow-sm">
+                        <p className="text-[10px] text-orange-700 font-bold uppercase tracking-wider mb-1">Medium</p>
+                        <p className="text-2xl font-extrabold text-orange-700">{reviewData.severitySummary.medium}</p>
                       </div>
-                      <div className="p-3 bg-blue-500/10 border border-blue-500/30 rounded-xl text-center shadow-sm">
-                        <p className="text-[10px] text-blue-300 font-bold uppercase tracking-wider mb-1">Low</p>
-                        <p className="text-2xl font-extrabold text-blue-300">{reviewData.severitySummary.low}</p>
+                      <div className="p-3 bg-blue-50 border border-blue-200 rounded-xl text-center shadow-sm">
+                        <p className="text-[10px] text-blue-700 font-bold uppercase tracking-wider mb-1">Low</p>
+                        <p className="text-2xl font-extrabold text-blue-700">{reviewData.severitySummary.low}</p>
                       </div>
-                      <div className="p-3 bg-indigo-500/10 border border-indigo-500/30 rounded-xl text-center shadow-sm col-span-2 md:col-span-1">
-                        <p className="text-[10px] text-indigo-300 font-bold uppercase tracking-wider mb-1">Total Issues</p>
-                        <p className="text-2xl font-extrabold text-indigo-300">{reviewData.severitySummary.total_issues}</p>
+                      <div className="p-3 bg-indigo-50 border border-indigo-200 rounded-xl text-center shadow-sm col-span-2 md:col-span-1">
+                        <p className="text-[10px] text-indigo-700 font-bold uppercase tracking-wider mb-1">Total Issues</p>
+                        <p className="text-2xl font-extrabold text-indigo-700">{reviewData.severitySummary.total_issues}</p>
                       </div>
                     </div>
                   )}
 
                   {/* Issues List Detail cards */}
                   {(!reviewData?.issues || reviewData.issues.length === 0) ? (
-                    <div className="p-8 text-center text-slate-400 border border-dashed rounded-xl bg-white/5">
+                    <div className="p-8 text-center text-gray-500 border border-dashed rounded-xl bg-gray-50">
                       <CheckCircle className="w-9 h-9 text-green-500 mx-auto mb-2" />
-                      <p className="font-semibold text-slate-100">All Checks Passed</p>
-                      <p className="text-xs text-slate-300 mt-1">No active compliance issues or findings require attention.</p>
+                      <p className="font-semibold text-gray-800">All Checks Passed</p>
+                      <p className="text-xs text-gray-600 mt-1">No active compliance issues or findings require attention.</p>
                     </div>
                   ) : (
                     <div className="space-y-3.5">
                       {reviewData.issues.map((issue: any) => (
-                        <div key={issue.id} className="border border-white/10 rounded-xl p-4 bg-white shadow-sm hover:shadow-md transition-all duration-200">
+                        <div key={issue.id} className="border border-gray-100 rounded-xl p-4 bg-white shadow-sm hover:shadow-md transition-all duration-200">
                           <div className="flex justify-between items-center mb-2">
-                            <h4 className="font-bold text-slate-100 flex items-center gap-2">
+                            <h4 className="font-bold text-gray-900 flex items-center gap-2">
                               <span className={`w-2.5 h-2.5 rounded-full ${
                                 issue.severity === 'critical' ? 'bg-red-600 animate-ping' :
                                 issue.severity === 'high' ? 'bg-amber-600' :
@@ -755,18 +755,18 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
                               {issue.title}
                             </h4>
                             <span className={`px-2.5 py-0.5 rounded text-[10px] font-extrabold uppercase tracking-wide ${
-                              issue.severity === 'critical' ? 'bg-red-500/15 text-red-300 border border-red-500/30' :
-                              issue.severity === 'high' ? 'bg-amber-500/15 text-amber-300 border border-amber-500/30' :
-                              issue.severity === 'medium' ? 'bg-orange-500/10 text-orange-300 border border-orange-500/30' :
-                              'bg-blue-500/10 text-blue-300 border border-blue-500/30'
+                              issue.severity === 'critical' ? 'bg-red-100 text-red-800 border border-red-200' :
+                              issue.severity === 'high' ? 'bg-amber-100 text-amber-800 border border-amber-200' :
+                              issue.severity === 'medium' ? 'bg-orange-50 text-orange-800 border border-orange-200' :
+                              'bg-blue-50 text-blue-800 border border-blue-200'
                             }`}>
                               {issue.severity}
                             </span>
                           </div>
-                          <p className="text-sm text-slate-300 leading-relaxed">{issue.description}</p>
-                          <div className="flex items-center justify-between text-[11px] text-slate-400 border-t border-gray-50 pt-2.5 mt-2.5">
+                          <p className="text-sm text-gray-700 leading-relaxed">{issue.description}</p>
+                          <div className="flex items-center justify-between text-[11px] text-gray-500 border-t border-gray-50 pt-2.5 mt-2.5">
                             <span>Detected: {new Date(issue.detectedAt).toLocaleString('en-AU')}</span>
-                            <span className="capitalize font-semibold text-indigo-400">Status: {issue.status}</span>
+                            <span className="capitalize font-semibold text-indigo-600">Status: {issue.status}</span>
                           </div>
                         </div>
                       ))}
@@ -806,46 +806,46 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
                       strokeWidth="8"
                       fill="none"
                       strokeDasharray={`${calculateCompletionRate() * 2.51}, 251`}
-                      className="text-green-400"
+                      className="text-green-600"
                     />
                   </svg>
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-2xl font-bold text-slate-100">{calculateCompletionRate()}%</span>
+                    <span className="text-2xl font-bold text-gray-900">{calculateCompletionRate()}%</span>
                   </div>
                 </div>
-                <p className="text-sm text-slate-300">Required checks completed</p>
+                <p className="text-sm text-gray-600">Required checks completed</p>
               </div>
 
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-slate-300">Documents:</span>
+                  <span className="text-gray-600">Documents:</span>
                   <span className="font-semibold">{kycData.documents.length}/6</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-300">Identity:</span>
-                  <span className="font-semibold text-green-400">✓ Verified</span>
+                  <span className="text-gray-600">Identity:</span>
+                  <span className="font-semibold text-green-600">✓ Verified</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-300">Address:</span>
-                  <span className="font-semibold text-green-400">✓ Verified</span>
+                  <span className="text-gray-600">Address:</span>
+                  <span className="font-semibold text-green-600">✓ Verified</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-300">Business:</span>
-                  <span className="font-semibold text-green-400">✓ Verified</span>
+                  <span className="text-gray-600">Business:</span>
+                  <span className="font-semibold text-green-600">✓ Verified</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-300">AML/CTF:</span>
-                  <span className="font-semibold text-green-400">✓ Cleared</span>
+                  <span className="text-gray-600">AML/CTF:</span>
+                  <span className="font-semibold text-green-600">✓ Cleared</span>
                 </div>
               </div>
             </CardContent>
           </Card>
 
           {/* Approval Chain Card */}
-          <Card className="border border-white/10 shadow-sm">
-            <CardHeader className="border-b bg-white/5/50">
-              <CardTitle className="text-sm font-bold flex items-center gap-2 text-slate-100">
-                <Shield className="w-4 h-4 text-indigo-400" />
+          <Card className="border border-gray-100 shadow-sm">
+            <CardHeader className="border-b bg-gray-50/50">
+              <CardTitle className="text-sm font-bold flex items-center gap-2 text-gray-800">
+                <Shield className="w-4 h-4 text-indigo-600" />
                 Approval Chain
               </CardTitle>
             </CardHeader>
@@ -855,32 +855,32 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
                   <div key={step.stepId} className="flex gap-3">
                     <div className="flex flex-col items-center">
                       <div className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs ${
-                        step.status === 'approved' ? 'bg-green-500/15 text-green-300' :
-                        step.status === 'rejected' ? 'bg-red-500/15 text-red-300' :
-                        'bg-blue-500/10 text-blue-300 border border-blue-500/30 animate-pulse'
+                        step.status === 'approved' ? 'bg-green-100 text-green-700' :
+                        step.status === 'rejected' ? 'bg-red-100 text-red-700' :
+                        'bg-blue-50 text-blue-700 border border-blue-200 animate-pulse'
                       }`}>
                         {step.status === 'approved' ? '✓' : step.status === 'rejected' ? '✗' : '•'}
                       </div>
                       {index < reviewData.approvalChain.length - 1 && (
-                        <div className="w-px h-10 bg-white/10 my-1"></div>
+                        <div className="w-px h-10 bg-gray-200 my-1"></div>
                       )}
                     </div>
                     <div className="flex-1 pb-1">
                       <div className="flex justify-between items-start">
-                        <p className="text-xs font-semibold text-slate-100 capitalize">
+                        <p className="text-xs font-semibold text-gray-900 capitalize">
                           {step.role.replace('_', ' ')}
                         </p>
                         <span className={`px-2 py-0.25 rounded text-[9px] font-bold uppercase ${
-                          step.status === 'approved' ? 'bg-green-500/15 text-green-300' :
-                          step.status === 'rejected' ? 'bg-red-500/15 text-red-300' :
-                          'bg-amber-500/15 text-amber-300'
+                          step.status === 'approved' ? 'bg-green-100 text-green-800' :
+                          step.status === 'rejected' ? 'bg-red-100 text-red-800' :
+                          'bg-amber-100 text-amber-800'
                         }`}>
                           {step.status}
                         </span>
                       </div>
-                      <p className="text-[10px] text-slate-400 mt-0.5">Level: {step.level.replace('_', ' ')}</p>
+                      <p className="text-[10px] text-gray-500 mt-0.5">Level: {step.level.replace('_', ' ')}</p>
                       {step.decidedBy && (
-                        <p className="text-[10px] text-slate-300 mt-0.5 font-medium">Actor: {step.decidedBy}</p>
+                        <p className="text-[10px] text-gray-600 mt-0.5 font-medium">Actor: {step.decidedBy}</p>
                       )}
                       {step.decidedAt && (
                         <p className="text-[9px] text-gray-400 mt-0.5">
@@ -905,25 +905,25 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
                   <div key={index} className="flex gap-3">
                     <div className="flex flex-col items-center">
                       <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                        event.status === 'success' ? 'bg-green-500/15' :
-                        event.status === 'error' ? 'bg-red-500/15' :
-                        'bg-blue-500/15'
+                        event.status === 'success' ? 'bg-green-100' :
+                        event.status === 'error' ? 'bg-red-100' :
+                        'bg-blue-100'
                       }`}>
                         {event.status === 'success' ? (
-                          <CheckCircle className="w-4 h-4 text-green-400" />
+                          <CheckCircle className="w-4 h-4 text-green-600" />
                         ) : event.status === 'error' ? (
-                          <XCircle className="w-4 h-4 text-red-400" />
+                          <XCircle className="w-4 h-4 text-red-600" />
                         ) : (
-                          <AlertCircle className="w-4 h-4 text-blue-400" />
+                          <AlertCircle className="w-4 h-4 text-blue-600" />
                         )}
                       </div>
                       {index < kycData.timeline.length - 1 && (
-                        <div className="w-px h-12 bg-white/10"></div>
+                        <div className="w-px h-12 bg-gray-200"></div>
                       )}
                     </div>
                     <div className="flex-1 pb-4">
-                      <p className="text-sm font-medium text-slate-100">{event.action}</p>
-                      <p className="text-xs text-slate-400 mt-1">{event.user}</p>
+                      <p className="text-sm font-medium text-gray-900">{event.action}</p>
+                      <p className="text-xs text-gray-500 mt-1">{event.user}</p>
                       <p className="text-xs text-gray-400 mt-1">
                         {new Date(event.date).toLocaleString('en-AU')}
                       </p>
@@ -972,17 +972,17 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
               </Button>
             </div>
             <div className="p-6">
-              <div className="bg-white/5 rounded-lg h-[600px] flex items-center justify-center">
-                <p className="text-slate-400">Document Preview</p>
+              <div className="bg-gray-100 rounded-lg h-[600px] flex items-center justify-center">
+                <p className="text-gray-500">Document Preview</p>
               </div>
             </div>
             <div className="p-6 border-t flex justify-between">
               <div className="flex gap-2">
-                <Button variant="outline" size="sm" className="text-green-400">
+                <Button variant="outline" size="sm" className="text-green-600">
                   <CheckCircle className="w-4 h-4 mr-2" />
                   Mark as Verified
                 </Button>
-                <Button variant="outline" size="sm" className="text-red-400">
+                <Button variant="outline" size="sm" className="text-red-600">
                   <XCircle className="w-4 h-4 mr-2" />
                   Flag Issue
                 </Button>
@@ -999,10 +999,10 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
       {/* Transition Reason & Justification Modal */}
       {transitionModal.open && (
         <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-6 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-white rounded-xl max-w-md w-full shadow-2xl overflow-hidden border border-white/10 transform scale-100 transition-all duration-300">
-            <div className="p-5 border-b flex items-center justify-between bg-white/5/50">
-              <h3 className="text-base font-bold text-slate-100 flex items-center gap-2">
-                <Shield className="w-5 h-5 text-indigo-400 animate-pulse" />
+          <div className="bg-white rounded-xl max-w-md w-full shadow-2xl overflow-hidden border border-gray-100 transform scale-100 transition-all duration-300">
+            <div className="p-5 border-b flex items-center justify-between bg-gray-50/50">
+              <h3 className="text-base font-bold text-gray-900 flex items-center gap-2">
+                <Shield className="w-5 h-5 text-indigo-600 animate-pulse" />
                 {transitionModal.toState === 'approved' ? 'Confirm KYC Approval' :
                  transitionModal.toState === 'changes_requested' ? 'Request Changes' :
                  transitionModal.toState === 'escalated' ? 'Escalate KYC Review' :
@@ -1014,20 +1014,20 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
                   setReasonCode('');
                   setJustification('');
                 }}
-                className="text-gray-400 hover:text-slate-300 transition-colors"
+                className="text-gray-400 hover:text-gray-600 transition-colors"
               >
                 <XCircle className="w-5 h-5" />
               </button>
             </div>
             <div className="p-6 space-y-4">
               <div className="space-y-1.5">
-                <label className="text-xs font-bold text-slate-300 uppercase tracking-wider block">
+                <label className="text-xs font-bold text-gray-700 uppercase tracking-wider block">
                   Reason Code <span className="text-red-500">*</span>
                 </label>
                 <select
                   value={reasonCode}
                   onChange={(e) => setReasonCode(e.target.value)}
-                  className="w-full px-3 py-2 border border-white/10 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 font-medium"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 font-medium"
                   required
                 >
                   <option value="">-- Select a reason code --</option>
@@ -1069,7 +1069,7 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-xs font-bold text-slate-300 uppercase tracking-wider block">
+                <label className="text-xs font-bold text-gray-700 uppercase tracking-wider block">
                   Justification Notes <span className="text-red-500">*</span>
                 </label>
                 <textarea
@@ -1077,12 +1077,12 @@ export function KYCReviewDetail({ onBack, userId }: KYCReviewDetailProps) {
                   value={justification}
                   onChange={(e) => setJustification(e.target.value)}
                   rows={4}
-                  className="w-full px-3 py-2 border border-white/10 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 leading-relaxed font-medium"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 leading-relaxed font-medium"
                   required
                 />
               </div>
             </div>
-            <div className="p-4 border-t flex justify-end gap-3 bg-white/5/50">
+            <div className="p-4 border-t flex justify-end gap-3 bg-gray-50/50">
               <Button
                 variant="outline"
                 onClick={() => {

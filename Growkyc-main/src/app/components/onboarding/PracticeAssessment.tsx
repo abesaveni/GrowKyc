@@ -173,35 +173,35 @@ export function PracticeAssessment({ entities, onBack, onContinue, canProgress }
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-slate-100">Practice Assessment & Client Acceptance</h2>
-        <p className="text-slate-300">Evaluate if the practice can service this client and meet all compliance requirements</p>
+        <h2 className="text-2xl font-bold text-gray-900">Practice Assessment & Client Acceptance</h2>
+        <p className="text-gray-600">Evaluate if the practice can service this client and meet all compliance requirements</p>
       </div>
 
       {/* Client Summary */}
-      <div className="bg-blue-500/10 border-2 border-blue-500/30 rounded-lg p-6">
-        <h3 className="font-bold text-blue-300 mb-4">Client Request Summary</h3>
+      <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-6">
+        <h3 className="font-bold text-blue-900 mb-4">Client Request Summary</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
-            <p className="text-sm text-blue-300 font-semibold">Entities</p>
-            <p className="text-2xl font-bold text-blue-300">{entities.length}</p>
-            <p className="text-xs text-blue-400">{entities.map(e => e.type).join(', ')}</p>
+            <p className="text-sm text-blue-700 font-semibold">Entities</p>
+            <p className="text-2xl font-bold text-blue-900">{entities.length}</p>
+            <p className="text-xs text-blue-600">{entities.map(e => e.type).join(', ')}</p>
           </div>
           <div>
-            <p className="text-sm text-blue-300 font-semibold">Services</p>
-            <p className="text-2xl font-bold text-blue-300">{allServices.length}</p>
-            <p className="text-xs text-blue-400">{allServices.slice(0, 3).join(', ')}{allServices.length > 3 ? '...' : ''}</p>
+            <p className="text-sm text-blue-700 font-semibold">Services</p>
+            <p className="text-2xl font-bold text-blue-900">{allServices.length}</p>
+            <p className="text-xs text-blue-600">{allServices.slice(0, 3).join(', ')}{allServices.length > 3 ? '...' : ''}</p>
           </div>
           <div>
-            <p className="text-sm text-blue-300 font-semibold">Annual Fees</p>
-            <p className="text-2xl font-bold text-blue-300">${totalAnnual.toLocaleString()}</p>
-            <p className="text-xs text-blue-400">${Math.round(totalAnnual / 12).toLocaleString()}/month</p>
+            <p className="text-sm text-blue-700 font-semibold">Annual Fees</p>
+            <p className="text-2xl font-bold text-blue-900">${totalAnnual.toLocaleString()}</p>
+            <p className="text-xs text-blue-600">${Math.round(totalAnnual / 12).toLocaleString()}/month</p>
           </div>
         </div>
       </div>
 
       {/* Assessment Tabs */}
-      <div className="bg-white border-2 border-white/10 rounded-lg">
-        <div className="border-b-2 border-white/10 flex overflow-x-auto">
+      <div className="bg-white border-2 border-gray-200 rounded-lg">
+        <div className="border-b-2 border-gray-200 flex overflow-x-auto">
           {[
             { id: 'conflicts', label: 'Conflicts', icon: AlertTriangle },
             { id: 'capability', label: 'Capability', icon: Briefcase },
@@ -217,7 +217,7 @@ export function PracticeAssessment({ entities, onBack, onContinue, canProgress }
                 className={`px-6 py-3 font-semibold flex items-center gap-2 whitespace-nowrap ${
                   currentTab === tab.id
                     ? 'bg-blue-600 text-white'
-                    : 'text-slate-300 hover:bg-white/5'
+                    : 'text-gray-700 hover:bg-gray-100'
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -231,13 +231,13 @@ export function PracticeAssessment({ entities, onBack, onContinue, canProgress }
           {/* Conflicts Tab */}
           {currentTab === 'conflicts' && (
             <div className="space-y-6">
-              <h3 className="text-xl font-bold text-slate-100 flex items-center gap-2">
-                <AlertTriangle className="w-6 h-6 text-amber-400" />
+              <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                <AlertTriangle className="w-6 h-6 text-amber-600" />
                 Conflict of Interest Check
               </h3>
 
               <div className="space-y-4">
-                <label className="flex items-start gap-3 p-4 border-2 border-white/10 rounded-lg hover:bg-white/5">
+                <label className="flex items-start gap-3 p-4 border-2 border-gray-200 rounded-lg hover:bg-gray-50">
                   <input
                     type="checkbox"
                     checked={assessmentData.conflictCheck}
@@ -245,32 +245,32 @@ export function PracticeAssessment({ entities, onBack, onContinue, canProgress }
                     className="mt-1 w-5 h-5"
                   />
                   <div className="flex-1">
-                    <p className="font-semibold text-slate-100">Conflict of Interest Check Completed</p>
-                    <p className="text-sm text-slate-300">Checked all existing clients, matters, and relationships</p>
+                    <p className="font-semibold text-gray-900">Conflict of Interest Check Completed</p>
+                    <p className="text-sm text-gray-600">Checked all existing clients, matters, and relationships</p>
                   </div>
                 </label>
 
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Conflict Check Details
                   </label>
                   <textarea
                     value={assessmentData.conflictDetails}
                     onChange={(e) => updateAssessment('conflictDetails', e.target.value)}
-                    className="w-full px-4 py-2 border border-white/10 rounded-lg"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                     rows={3}
                     placeholder="Document any conflicts identified, related parties checked, databases searched..."
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Conflict Result
                   </label>
                   <select
                     value={assessmentData.conflictResult}
                     onChange={(e) => updateAssessment('conflictResult', e.target.value)}
-                    className="w-full px-4 py-2 border border-white/10 rounded-lg"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                   >
                     <option value="pending">Pending</option>
                     <option value="clear">No Conflicts - Clear to Proceed</option>
@@ -279,22 +279,22 @@ export function PracticeAssessment({ entities, onBack, onContinue, canProgress }
                 </div>
 
                 {assessmentData.conflictResult === 'conflict' && (
-                  <div className="bg-red-500/10 border-2 border-red-500/30 rounded-lg p-4">
-                    <p className="text-red-300 font-semibold flex items-center gap-2">
+                  <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4">
+                    <p className="text-red-900 font-semibold flex items-center gap-2">
                       <XCircle className="w-5 h-5" />
                       Conflict of Interest Identified
                     </p>
-                    <p className="text-sm text-red-300 mt-1">
+                    <p className="text-sm text-red-700 mt-1">
                       This engagement cannot proceed due to conflicts. Document fully and reject client.
                     </p>
                   </div>
                 )}
 
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Independence Check
                   </label>
-                  <label className="flex items-start gap-3 p-4 border-2 border-white/10 rounded-lg hover:bg-white/5">
+                  <label className="flex items-start gap-3 p-4 border-2 border-gray-200 rounded-lg hover:bg-gray-50">
                     <input
                       type="checkbox"
                       checked={assessmentData.independenceCheck}
@@ -302,20 +302,20 @@ export function PracticeAssessment({ entities, onBack, onContinue, canProgress }
                       className="mt-1 w-5 h-5"
                     />
                     <div className="flex-1">
-                      <p className="font-semibold text-slate-100">Independence Verified</p>
-                      <p className="text-sm text-slate-300">No independence threats identified (self-interest, self-review, advocacy, familiarity, intimidation)</p>
+                      <p className="font-semibold text-gray-900">Independence Verified</p>
+                      <p className="text-sm text-gray-600">No independence threats identified (self-interest, self-review, advocacy, familiarity, intimidation)</p>
                     </div>
                   </label>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Independence Notes
                   </label>
                   <textarea
                     value={assessmentData.independenceIssues}
                     onChange={(e) => updateAssessment('independenceIssues', e.target.value)}
-                    className="w-full px-4 py-2 border border-white/10 rounded-lg"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                     rows={2}
                     placeholder="Document independence assessment and any safeguards..."
                   />
@@ -327,13 +327,13 @@ export function PracticeAssessment({ entities, onBack, onContinue, canProgress }
           {/* Capability Tab */}
           {currentTab === 'capability' && (
             <div className="space-y-6">
-              <h3 className="text-xl font-bold text-slate-100 flex items-center gap-2">
-                <Briefcase className="w-6 h-6 text-purple-400" />
+              <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                <Briefcase className="w-6 h-6 text-purple-600" />
                 Capability & Capacity Assessment
               </h3>
 
               <div className="space-y-4">
-                <label className="flex items-start gap-3 p-4 border-2 border-white/10 rounded-lg hover:bg-white/5">
+                <label className="flex items-start gap-3 p-4 border-2 border-gray-200 rounded-lg hover:bg-gray-50">
                   <input
                     type="checkbox"
                     checked={assessmentData.hasRequiredSkills}
@@ -341,13 +341,13 @@ export function PracticeAssessment({ entities, onBack, onContinue, canProgress }
                     className="mt-1 w-5 h-5"
                   />
                   <div className="flex-1">
-                    <p className="font-semibold text-slate-100">Practice Has Required Skills & Expertise</p>
-                    <p className="text-sm text-slate-300">Staff qualified and experienced in all requested services</p>
+                    <p className="font-semibold text-gray-900">Practice Has Required Skills & Expertise</p>
+                    <p className="text-sm text-gray-600">Staff qualified and experienced in all requested services</p>
                   </div>
                 </label>
 
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Skill Gaps or Specialist Requirements
                   </label>
                   <div className="space-y-2">
@@ -364,13 +364,13 @@ export function PracticeAssessment({ entities, onBack, onContinue, canProgress }
                           }}
                           className="w-4 h-4"
                         />
-                        <span className="text-sm text-slate-300">{skill}</span>
+                        <span className="text-sm text-gray-700">{skill}</span>
                       </label>
                     ))}
                   </div>
                 </div>
 
-                <label className="flex items-start gap-3 p-4 border-2 border-white/10 rounded-lg hover:bg-white/5">
+                <label className="flex items-start gap-3 p-4 border-2 border-gray-200 rounded-lg hover:bg-gray-50">
                   <input
                     type="checkbox"
                     checked={assessmentData.specialistRequired}
@@ -378,27 +378,27 @@ export function PracticeAssessment({ entities, onBack, onContinue, canProgress }
                     className="mt-1 w-5 h-5"
                   />
                   <div className="flex-1">
-                    <p className="font-semibold text-slate-100">External Specialist Required</p>
-                    <p className="text-sm text-slate-300">Need to engage external consultant or refer specific services</p>
+                    <p className="font-semibold text-gray-900">External Specialist Required</p>
+                    <p className="text-sm text-gray-600">Need to engage external consultant or refer specific services</p>
                   </div>
                 </label>
 
                 {assessmentData.specialistRequired && (
                   <div>
-                    <label className="block text-sm font-semibold text-slate-300 mb-2">
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
                       Specialist Details
                     </label>
                     <textarea
                       value={assessmentData.specialistDetails}
                       onChange={(e) => updateAssessment('specialistDetails', e.target.value)}
-                      className="w-full px-4 py-2 border border-white/10 rounded-lg"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                       rows={2}
                       placeholder="Which specialists, estimated cost, availability..."
                     />
                   </div>
                 )}
 
-                <label className="flex items-start gap-3 p-4 border-2 border-white/10 rounded-lg hover:bg-white/5">
+                <label className="flex items-start gap-3 p-4 border-2 border-gray-200 rounded-lg hover:bg-gray-50">
                   <input
                     type="checkbox"
                     checked={assessmentData.hasCapacity}
@@ -406,46 +406,46 @@ export function PracticeAssessment({ entities, onBack, onContinue, canProgress }
                     className="mt-1 w-5 h-5"
                   />
                   <div className="flex-1">
-                    <p className="font-semibold text-slate-100">Practice Has Capacity</p>
-                    <p className="text-sm text-slate-300">Sufficient resources and time to service this client properly</p>
+                    <p className="font-semibold text-gray-900">Practice Has Capacity</p>
+                    <p className="text-sm text-gray-600">Sufficient resources and time to service this client properly</p>
                   </div>
                 </label>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-semibold text-slate-300 mb-2">
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
                       Estimated Annual Hours
                     </label>
                     <input
                       type="number"
                       value={assessmentData.estimatedHours}
                       onChange={(e) => updateAssessment('estimatedHours', e.target.value)}
-                      className="w-full px-4 py-2 border border-white/10 rounded-lg"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                       placeholder="e.g. 120"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-slate-300 mb-2">
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
                       Resource Allocation
                     </label>
                     <input
                       type="text"
                       value={assessmentData.resourceAllocation}
                       onChange={(e) => updateAssessment('resourceAllocation', e.target.value)}
-                      className="w-full px-4 py-2 border border-white/10 rounded-lg"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                       placeholder="e.g. Sarah (Senior), Tom (Associate)"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Capacity Notes
                   </label>
                   <textarea
                     value={assessmentData.capacityNotes}
                     onChange={(e) => updateAssessment('capacityNotes', e.target.value)}
-                    className="w-full px-4 py-2 border border-white/10 rounded-lg"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                     rows={2}
                     placeholder="Timing considerations, workload impacts, resourcing plan..."
                   />
@@ -458,8 +458,8 @@ export function PracticeAssessment({ entities, onBack, onContinue, canProgress }
           {currentTab === 'risk' && (
             <div className="space-y-6">
               <div className="flex items-center justify-between">
-                <h3 className="text-xl font-bold text-slate-100 flex items-center gap-2">
-                  <Shield className="w-6 h-6 text-red-400" />
+                <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                  <Shield className="w-6 h-6 text-red-600" />
                   Practice Risk Assessment (AUSTRAC Compliant)
                 </h3>
                 <SecondaryButton onClick={performAutomaticChecks}>
@@ -467,22 +467,22 @@ export function PracticeAssessment({ entities, onBack, onContinue, canProgress }
                 </SecondaryButton>
               </div>
 
-              <div className="bg-white/5 border-2 border-white/10 rounded-lg p-4">
-                <p className="text-sm text-slate-300 mb-3">
+              <div className="bg-gray-50 border-2 border-gray-200 rounded-lg p-4">
+                <p className="text-sm text-gray-700 mb-3">
                   <strong>Current Risk Rating:</strong>
                 </p>
                 <span className={`px-4 py-2 text-lg font-bold rounded ${
-                  assessmentData.practiceRiskLevel === 'low' ? 'bg-green-500/15 text-green-300' :
-                  assessmentData.practiceRiskLevel === 'medium' ? 'bg-amber-500/15 text-amber-300' :
-                  assessmentData.practiceRiskLevel === 'high' ? 'bg-red-500/15 text-red-300' :
-                  'bg-white/5 text-slate-300'
+                  assessmentData.practiceRiskLevel === 'low' ? 'bg-green-100 text-green-700' :
+                  assessmentData.practiceRiskLevel === 'medium' ? 'bg-amber-100 text-amber-700' :
+                  assessmentData.practiceRiskLevel === 'high' ? 'bg-red-100 text-red-700' :
+                  'bg-gray-100 text-gray-700'
                 }`}>
                   {assessmentData.practiceRiskLevel.toUpperCase()}
                 </span>
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Practice Risk Factors (Select all that apply)
                 </label>
                 <div className="space-y-2">
@@ -510,20 +510,20 @@ export function PracticeAssessment({ entities, onBack, onContinue, canProgress }
                         }}
                         className="w-4 h-4"
                       />
-                      <span className="text-sm text-slate-300">{factor}</span>
+                      <span className="text-sm text-gray-700">{factor}</span>
                     </label>
                   ))}
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   AUSTRAC Risk Rating
                 </label>
                 <select
                   value={assessmentData.austracRiskRating}
                   onChange={(e) => updateAssessment('austracRiskRating', e.target.value)}
-                  className="w-full px-4 py-2 border border-white/10 rounded-lg"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                 >
                   <option value="not-assessed">Not Assessed</option>
                   <option value="low">Low Risk</option>
@@ -533,21 +533,21 @@ export function PracticeAssessment({ entities, onBack, onContinue, canProgress }
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Risk Mitigation Plan
                 </label>
                 <textarea
                   value={assessmentData.mitigationPlan}
                   onChange={(e) => updateAssessment('mitigationPlan', e.target.value)}
-                  className="w-full px-4 py-2 border border-white/10 rounded-lg"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                   rows={4}
                   placeholder="Document risk mitigation strategies: enhanced monitoring, senior review, scope limitations, insurance review, etc."
                 />
               </div>
 
               {(assessmentData.practiceRiskLevel === 'high' || assessmentData.austracRiskRating === 'high') && (
-                <div className="bg-red-500/10 border-2 border-red-500/30 rounded-lg p-4">
-                  <p className="text-red-300 font-semibold flex items-center gap-2 mb-3">
+                <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4">
+                  <p className="text-red-900 font-semibold flex items-center gap-2 mb-3">
                     <AlertCircle className="w-5 h-5" />
                     High Risk Client - Senior Approval Required
                   </p>
@@ -559,8 +559,8 @@ export function PracticeAssessment({ entities, onBack, onContinue, canProgress }
                       className="mt-1 w-5 h-5"
                     />
                     <div>
-                      <p className="font-semibold text-red-300">Senior Partner Approval Received</p>
-                      <p className="text-sm text-red-300">Managing partner has reviewed and approved this engagement</p>
+                      <p className="font-semibold text-red-900">Senior Partner Approval Received</p>
+                      <p className="text-sm text-red-700">Managing partner has reviewed and approved this engagement</p>
                     </div>
                   </label>
                 </div>
@@ -571,13 +571,13 @@ export function PracticeAssessment({ entities, onBack, onContinue, canProgress }
           {/* Compliance Tab */}
           {currentTab === 'compliance' && (
             <div className="space-y-6">
-              <h3 className="text-xl font-bold text-slate-100 flex items-center gap-2">
-                <Scale className="w-6 h-6 text-indigo-400" />
+              <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                <Scale className="w-6 h-6 text-indigo-600" />
                 Professional Standards & Compliance
               </h3>
 
               <div className="space-y-4">
-                <label className="flex items-start gap-3 p-4 border-2 border-white/10 rounded-lg hover:bg-white/5">
+                <label className="flex items-start gap-3 p-4 border-2 border-gray-200 rounded-lg hover:bg-gray-50">
                   <input
                     type="checkbox"
                     checked={assessmentData.ethicsCompliant}
@@ -585,12 +585,12 @@ export function PracticeAssessment({ entities, onBack, onContinue, canProgress }
                     className="mt-1 w-5 h-5"
                   />
                   <div className="flex-1">
-                    <p className="font-semibold text-slate-100">Ethics Compliance</p>
-                    <p className="text-sm text-slate-300">Engagement complies with APES 110 Code of Ethics and professional standards</p>
+                    <p className="font-semibold text-gray-900">Ethics Compliance</p>
+                    <p className="text-sm text-gray-600">Engagement complies with APES 110 Code of Ethics and professional standards</p>
                   </div>
                 </label>
 
-                <label className="flex items-start gap-3 p-4 border-2 border-white/10 rounded-lg hover:bg-white/5">
+                <label className="flex items-start gap-3 p-4 border-2 border-gray-200 rounded-lg hover:bg-gray-50">
                   <input
                     type="checkbox"
                     checked={assessmentData.regulatoryCompliant}
@@ -598,12 +598,12 @@ export function PracticeAssessment({ entities, onBack, onContinue, canProgress }
                     className="mt-1 w-5 h-5"
                   />
                   <div className="flex-1">
-                    <p className="font-semibold text-slate-100">Regulatory Compliance</p>
-                    <p className="text-sm text-slate-300">Complies with TPB, ASIC, ATO, and AUSTRAC requirements</p>
+                    <p className="font-semibold text-gray-900">Regulatory Compliance</p>
+                    <p className="text-sm text-gray-600">Complies with TPB, ASIC, ATO, and AUSTRAC requirements</p>
                   </div>
                 </label>
 
-                <label className="flex items-start gap-3 p-4 border-2 border-white/10 rounded-lg hover:bg-white/5">
+                <label className="flex items-start gap-3 p-4 border-2 border-gray-200 rounded-lg hover:bg-gray-50">
                   <input
                     type="checkbox"
                     checked={assessmentData.insuranceCover}
@@ -611,20 +611,20 @@ export function PracticeAssessment({ entities, onBack, onContinue, canProgress }
                     className="mt-1 w-5 h-5"
                   />
                   <div className="flex-1">
-                    <p className="font-semibold text-slate-100">Professional Indemnity Insurance</p>
-                    <p className="text-sm text-slate-300">Current PI insurance covers scope and risk of this engagement</p>
+                    <p className="font-semibold text-gray-900">Professional Indemnity Insurance</p>
+                    <p className="text-sm text-gray-600">Current PI insurance covers scope and risk of this engagement</p>
                   </div>
                 </label>
 
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Services Assessment
                   </label>
-                  <p className="text-sm text-slate-300 mb-3">Review each requested service</p>
+                  <p className="text-sm text-gray-600 mb-3">Review each requested service</p>
                   <div className="space-y-2">
                     {allServices.map(service => (
-                      <div key={service} className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
-                        <span className="text-sm font-semibold text-slate-100">{service}</span>
+                      <div key={service} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                        <span className="text-sm font-semibold text-gray-900">{service}</span>
                         <select
                           value={
                             assessmentData.servicesApproved.includes(service) ? 'approved' :
@@ -640,7 +640,7 @@ export function PracticeAssessment({ entities, onBack, onContinue, canProgress }
                               updateAssessment('servicesApproved', assessmentData.servicesApproved.filter(s => s !== service));
                             }
                           }}
-                          className="px-3 py-1 border border-white/10 rounded text-sm"
+                          className="px-3 py-1 border border-gray-300 rounded text-sm"
                         >
                           <option value="pending">Pending</option>
                           <option value="approved">Approved</option>
@@ -652,20 +652,20 @@ export function PracticeAssessment({ entities, onBack, onContinue, canProgress }
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Services Notes
                   </label>
                   <textarea
                     value={assessmentData.servicesNotes}
                     onChange={(e) => updateAssessment('servicesNotes', e.target.value)}
-                    className="w-full px-4 py-2 border border-white/10 rounded-lg"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                     rows={2}
                     placeholder="Notes on service scope, limitations, or concerns..."
                   />
                 </div>
 
                 <div>
-                  <label className="flex items-start gap-3 p-4 border-2 border-white/10 rounded-lg hover:bg-white/5">
+                  <label className="flex items-start gap-3 p-4 border-2 border-gray-200 rounded-lg hover:bg-gray-50">
                     <input
                       type="checkbox"
                       checked={assessmentData.feesAcceptable}
@@ -673,20 +673,20 @@ export function PracticeAssessment({ entities, onBack, onContinue, canProgress }
                       className="mt-1 w-5 h-5"
                     />
                     <div className="flex-1">
-                      <p className="font-semibold text-slate-100">Proposed Fees Acceptable</p>
-                      <p className="text-sm text-slate-300">Client's proposed fees are acceptable for scope and risk</p>
+                      <p className="font-semibold text-gray-900">Proposed Fees Acceptable</p>
+                      <p className="text-sm text-gray-600">Client's proposed fees are acceptable for scope and risk</p>
                     </div>
                   </label>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Fee Adjustments or Alternative Proposal
                   </label>
                   <textarea
                     value={assessmentData.feeAdjustments}
                     onChange={(e) => updateAssessment('feeAdjustments', e.target.value)}
-                    className="w-full px-4 py-2 border border-white/10 rounded-lg"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                     rows={2}
                     placeholder="Document any fee adjustments needed, payment terms, retainers..."
                   />
@@ -698,106 +698,106 @@ export function PracticeAssessment({ entities, onBack, onContinue, canProgress }
           {/* Final Decision Tab */}
           {currentTab === 'decision' && (
             <div className="space-y-6">
-              <h3 className="text-xl font-bold text-slate-100 flex items-center gap-2">
-                <CheckCircle className="w-6 h-6 text-green-400" />
+              <h3 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                <CheckCircle className="w-6 h-6 text-green-600" />
                 Final Decision
               </h3>
 
               {/* Decision Summary */}
-              <div className="bg-white/5 border-2 border-white/10 rounded-lg p-6">
-                <h4 className="font-bold text-slate-100 mb-4">Assessment Summary</h4>
+              <div className="bg-gray-50 border-2 border-gray-200 rounded-lg p-6">
+                <h4 className="font-bold text-gray-900 mb-4">Assessment Summary</h4>
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
-                    <p className="text-slate-300">Conflict Check:</p>
+                    <p className="text-gray-600">Conflict Check:</p>
                     <p className="font-semibold">{assessmentData.conflictResult.toUpperCase()}</p>
                   </div>
                   <div>
-                    <p className="text-slate-300">Skills & Capacity:</p>
+                    <p className="text-gray-600">Skills & Capacity:</p>
                     <p className="font-semibold">{assessmentData.hasRequiredSkills && assessmentData.hasCapacity ? 'ADEQUATE' : 'CONCERNS'}</p>
                   </div>
                   <div>
-                    <p className="text-slate-300">Practice Risk:</p>
+                    <p className="text-gray-600">Practice Risk:</p>
                     <p className={`font-semibold ${
-                      assessmentData.practiceRiskLevel === 'high' ? 'text-red-300' :
-                      assessmentData.practiceRiskLevel === 'medium' ? 'text-amber-300' :
-                      'text-green-300'
+                      assessmentData.practiceRiskLevel === 'high' ? 'text-red-700' :
+                      assessmentData.practiceRiskLevel === 'medium' ? 'text-amber-700' :
+                      'text-green-700'
                     }`}>{assessmentData.practiceRiskLevel.toUpperCase()}</p>
                   </div>
                   <div>
-                    <p className="text-slate-300">Compliance:</p>
+                    <p className="text-gray-600">Compliance:</p>
                     <p className="font-semibold">{assessmentData.ethicsCompliant && assessmentData.regulatoryCompliant ? 'COMPLIANT' : 'REVIEW NEEDED'}</p>
                   </div>
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
-                  Assessed By <span className="text-red-400">*</span>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  Assessed By <span className="text-red-600">*</span>
                 </label>
                 <input
                   type="text"
                   value={assessmentData.assessedBy}
                   onChange={(e) => updateAssessment('assessedBy', e.target.value)}
-                  className="w-full px-4 py-2 border border-white/10 rounded-lg"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                   placeholder="Your name and role"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
-                  Decision Rationale <span className="text-red-400">*</span>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  Decision Rationale <span className="text-red-600">*</span>
                 </label>
                 <textarea
                   value={assessmentData.decisionReason}
                   onChange={(e) => updateAssessment('decisionReason', e.target.value)}
-                  className="w-full px-4 py-2 border border-white/10 rounded-lg"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                   rows={4}
                   placeholder="Document full rationale for decision, key considerations, risk factors addressed..."
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Conditions or Special Requirements
                 </label>
                 <textarea
                   value={assessmentData.conditions}
                   onChange={(e) => updateAssessment('conditions', e.target.value)}
-                  className="w-full px-4 py-2 border border-white/10 rounded-lg"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                   rows={3}
                   placeholder="Any conditions for acceptance: enhanced monitoring, scope limitations, reporting requirements, etc."
                 />
               </div>
 
               {/* Decision Buttons */}
-              <div className="border-t-2 border-white/10 pt-6 mt-6">
-                <p className="text-sm text-slate-300 mb-4 font-semibold">Make Your Decision:</p>
+              <div className="border-t-2 border-gray-300 pt-6 mt-6">
+                <p className="text-sm text-gray-700 mb-4 font-semibold">Make Your Decision:</p>
                 <div className="grid grid-cols-3 gap-4">
                   <button
                     onClick={() => handleFinalDecision('accept')}
-                    className="p-6 bg-green-500/10 border-2 border-green-500/30 rounded-lg hover:bg-green-500/15 transition-colors text-center"
+                    className="p-6 bg-green-50 border-2 border-green-200 rounded-lg hover:bg-green-100 transition-colors text-center"
                   >
-                    <CheckCircle className="w-8 h-8 text-green-400 mx-auto mb-2" />
-                    <p className="font-bold text-green-300">ACCEPT</p>
-                    <p className="text-xs text-green-300 mt-1">Proceed to engagement</p>
+                    <CheckCircle className="w-8 h-8 text-green-600 mx-auto mb-2" />
+                    <p className="font-bold text-green-900">ACCEPT</p>
+                    <p className="text-xs text-green-700 mt-1">Proceed to engagement</p>
                   </button>
                   
                   <button
                     onClick={() => handleFinalDecision('conditional')}
-                    className="p-6 bg-amber-500/10 border-2 border-amber-500/30 rounded-lg hover:bg-amber-500/15 transition-colors text-center"
+                    className="p-6 bg-amber-50 border-2 border-amber-200 rounded-lg hover:bg-amber-100 transition-colors text-center"
                   >
-                    <AlertCircle className="w-8 h-8 text-amber-400 mx-auto mb-2" />
-                    <p className="font-bold text-amber-300">CONDITIONAL</p>
-                    <p className="text-xs text-amber-300 mt-1">Accept with conditions</p>
+                    <AlertCircle className="w-8 h-8 text-amber-600 mx-auto mb-2" />
+                    <p className="font-bold text-amber-900">CONDITIONAL</p>
+                    <p className="text-xs text-amber-700 mt-1">Accept with conditions</p>
                   </button>
                   
                   <button
                     onClick={() => handleFinalDecision('reject')}
-                    className="p-6 bg-red-500/10 border-2 border-red-500/30 rounded-lg hover:bg-red-500/15 transition-colors text-center"
+                    className="p-6 bg-red-50 border-2 border-red-200 rounded-lg hover:bg-red-100 transition-colors text-center"
                   >
-                    <XCircle className="w-8 h-8 text-red-400 mx-auto mb-2" />
-                    <p className="font-bold text-red-300">DECLINE</p>
-                    <p className="text-xs text-red-300 mt-1">Reject engagement</p>
+                    <XCircle className="w-8 h-8 text-red-600 mx-auto mb-2" />
+                    <p className="font-bold text-red-900">DECLINE</p>
+                    <p className="text-xs text-red-700 mt-1">Reject engagement</p>
                   </button>
                 </div>
               </div>
@@ -814,7 +814,7 @@ export function PracticeAssessment({ entities, onBack, onContinue, canProgress }
         
         {assessmentData.decision !== 'pending' && (
           <div className="text-right">
-            <p className="text-sm text-slate-300 mb-2">Assessment Complete</p>
+            <p className="text-sm text-gray-600 mb-2">Assessment Complete</p>
             <StatusBadge
               status={
                 assessmentData.decision === 'accept' ? 'approved' :

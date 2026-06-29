@@ -132,23 +132,23 @@ export function Documents({ onNavigate, onBack }: DocumentsProps) {
 
   const getStatusBadge = (status: string) => {
     const badges: { [key: string]: JSX.Element } = {
-      'verified': <span className="px-2 py-0.5 bg-green-500/15 text-green-300 text-xs font-semibold rounded flex items-center gap-1"><CheckCircle className="w-3 h-3" />VERIFIED</span>,
-      'pending': <span className="px-2 py-0.5 bg-amber-500/15 text-amber-300 text-xs font-semibold rounded flex items-center gap-1"><Clock className="w-3 h-3" />PENDING</span>,
-      'rejected': <span className="px-2 py-0.5 bg-red-500/15 text-red-300 text-xs font-semibold rounded flex items-center gap-1"><AlertCircle className="w-3 h-3" />REJECTED</span>
+      'verified': <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded flex items-center gap-1"><CheckCircle className="w-3 h-3" />VERIFIED</span>,
+      'pending': <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-xs font-semibold rounded flex items-center gap-1"><Clock className="w-3 h-3" />PENDING</span>,
+      'rejected': <span className="px-2 py-0.5 bg-red-100 text-red-700 text-xs font-semibold rounded flex items-center gap-1"><AlertCircle className="w-3 h-3" />REJECTED</span>
     };
     return badges[status];
   };
 
   const getFileIcon = (type: string) => {
-    if (type === 'PDF') return <FileText className="w-5 h-5 text-red-400" />;
-    if (type === 'Image') return <Image className="w-5 h-5 text-blue-400" />;
-    return <File className="w-5 h-5 text-slate-300" />;
+    if (type === 'PDF') return <FileText className="w-5 h-5 text-red-600" />;
+    if (type === 'Image') return <Image className="w-5 h-5 text-blue-600" />;
+    return <File className="w-5 h-5 text-gray-600" />;
   };
 
   return (
-    <div className="min-h-screen bg-white/5">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-white border-b border-white/10 px-6 py-4">
+      <div className="bg-white border-b border-gray-300 px-6 py-4">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-3">
             {onBack && (
@@ -156,10 +156,10 @@ export function Documents({ onNavigate, onBack }: DocumentsProps) {
                 <ArrowLeft className="w-4 h-4" />
               </Button>
             )}
-            <Folder className="w-6 h-6 text-blue-400" />
+            <Folder className="w-6 h-6 text-blue-600" />
             <div>
-              <h1 className="text-xl font-bold text-slate-100">Document Management</h1>
-              <p className="text-xs text-slate-300">Upload and manage loan documents</p>
+              <h1 className="text-xl font-bold text-gray-900">Document Management</h1>
+              <p className="text-xs text-gray-600">Upload and manage loan documents</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -179,7 +179,7 @@ export function Documents({ onNavigate, onBack }: DocumentsProps) {
               className={`px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all ${
                 selectedCategory === category.id
                   ? 'bg-blue-600 text-white'
-                  : 'bg-white/5 text-slate-300 hover:bg-white/10'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
               {category.label} ({category.count})
@@ -197,15 +197,15 @@ export function Documents({ onNavigate, onBack }: DocumentsProps) {
           onDrop={handleDrop}
           className={`border-2 border-dashed rounded-lg p-8 text-center transition-all ${
             dragActive
-              ? 'border-blue-600 bg-blue-500/10'
-              : 'border-white/10 bg-white hover:border-blue-400'
+              ? 'border-blue-600 bg-blue-50'
+              : 'border-gray-300 bg-white hover:border-blue-400'
           }`}
         >
-          <Upload className="w-12 h-12 text-blue-400 mx-auto mb-4" />
-          <h3 className="text-lg font-semibold text-slate-100 mb-2">
+          <Upload className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+          <h3 className="text-lg font-semibold text-gray-900 mb-2">
             {dragActive ? 'Drop files here' : 'Upload Documents'}
           </h3>
-          <p className="text-sm text-slate-300 mb-4">
+          <p className="text-sm text-gray-600 mb-4">
             Drag and drop files here, or click to browse
           </p>
           <input
@@ -222,7 +222,7 @@ export function Documents({ onNavigate, onBack }: DocumentsProps) {
             <Plus className="w-4 h-4 mr-2" />
             Select Files
           </Button>
-          <p className="text-xs text-slate-400 mt-3">
+          <p className="text-xs text-gray-500 mt-3">
             Supported formats: PDF, JPG, PNG, DOC, XLSX (Max 10MB per file)
           </p>
         </div>
@@ -234,7 +234,7 @@ export function Documents({ onNavigate, onBack }: DocumentsProps) {
             <input
               type="text"
               placeholder="Search documents..."
-              className="w-full pl-10 pr-4 py-2 border border-white/10 rounded text-sm"
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded text-sm"
             />
           </div>
           <Button variant="outline" size="sm">
@@ -244,57 +244,57 @@ export function Documents({ onNavigate, onBack }: DocumentsProps) {
         </div>
 
         {/* Documents List */}
-        <div className="bg-white border border-white/10 rounded overflow-hidden">
+        <div className="bg-white border border-gray-300 rounded overflow-hidden">
           <table className="w-full text-sm border-collapse">
             <thead>
-              <tr className="bg-white/5">
-                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Document</th>
-                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Category</th>
-                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Size</th>
-                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Uploaded By</th>
-                <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Date</th>
-                <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300">Status</th>
-                <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300">Actions</th>
+              <tr className="bg-gray-50">
+                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Document</th>
+                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Category</th>
+                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Size</th>
+                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Uploaded By</th>
+                <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Date</th>
+                <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700">Status</th>
+                <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700">Actions</th>
               </tr>
             </thead>
             <tbody>
               {documents.map((doc) => (
-                <tr key={doc.id} className="hover:bg-blue-500/10">
-                  <td className="border border-white/10 px-3 py-2">
+                <tr key={doc.id} className="hover:bg-blue-50">
+                  <td className="border border-gray-300 px-3 py-2">
                     <div className="flex items-center gap-2">
                       {getFileIcon(doc.type)}
                       <div>
-                        <div className="font-semibold text-slate-100">{doc.name}</div>
-                        <div className="text-xs text-slate-400">{doc.id}</div>
+                        <div className="font-semibold text-gray-900">{doc.name}</div>
+                        <div className="text-xs text-gray-500">{doc.id}</div>
                       </div>
                     </div>
                   </td>
-                  <td className="border border-white/10 px-3 py-2 text-slate-300">
+                  <td className="border border-gray-300 px-3 py-2 text-gray-700">
                     {doc.category}
                   </td>
-                  <td className="border border-white/10 px-3 py-2 text-slate-300 font-mono">
+                  <td className="border border-gray-300 px-3 py-2 text-gray-700 font-mono">
                     {doc.size}
                   </td>
-                  <td className="border border-white/10 px-3 py-2 text-slate-300">
+                  <td className="border border-gray-300 px-3 py-2 text-gray-700">
                     {doc.uploadedBy}
                   </td>
-                  <td className="border border-white/10 px-3 py-2 text-slate-300">
+                  <td className="border border-gray-300 px-3 py-2 text-gray-700">
                     {doc.uploadedDate}
                   </td>
-                  <td className="border border-white/10 px-3 py-2 text-center">
+                  <td className="border border-gray-300 px-3 py-2 text-center">
                     {getStatusBadge(doc.status)}
                   </td>
-                  <td className="border border-white/10 px-3 py-2 text-center">
+                  <td className="border border-gray-300 px-3 py-2 text-center">
                     <div className="flex items-center gap-1 justify-center">
-                      <button className="px-2 py-1 text-xs bg-blue-500/15 text-blue-300 hover:bg-blue-500/20 rounded font-semibold">
+                      <button className="px-2 py-1 text-xs bg-blue-100 text-blue-700 hover:bg-blue-200 rounded font-semibold">
                         <Eye className="w-3 h-3 inline mr-1" />
                         View
                       </button>
-                      <button className="px-2 py-1 text-xs bg-green-500/15 text-green-300 hover:bg-green-500/20 rounded font-semibold">
+                      <button className="px-2 py-1 text-xs bg-green-100 text-green-700 hover:bg-green-200 rounded font-semibold">
                         <Download className="w-3 h-3 inline mr-1" />
                         Download
                       </button>
-                      <button className="px-2 py-1 text-xs bg-red-500/15 text-red-300 hover:bg-red-500/20 rounded font-semibold">
+                      <button className="px-2 py-1 text-xs bg-red-100 text-red-700 hover:bg-red-200 rounded font-semibold">
                         <Trash2 className="w-3 h-3 inline mr-1" />
                         Delete
                       </button>
@@ -308,25 +308,25 @@ export function Documents({ onNavigate, onBack }: DocumentsProps) {
 
         {/* Quick Stats */}
         <div className="grid grid-cols-4 gap-4">
-          <div className="bg-white border border-white/10 rounded p-4">
-            <div className="text-sm text-slate-300 mb-1">Total Documents</div>
-            <div className="text-2xl font-bold text-slate-100">{documents.length}</div>
+          <div className="bg-white border border-gray-300 rounded p-4">
+            <div className="text-sm text-gray-600 mb-1">Total Documents</div>
+            <div className="text-2xl font-bold text-gray-900">{documents.length}</div>
           </div>
-          <div className="bg-green-500/10 border border-green-500/30 rounded p-4">
-            <div className="text-sm text-green-300 mb-1">Verified</div>
-            <div className="text-2xl font-bold text-green-300">
+          <div className="bg-green-50 border border-green-200 rounded p-4">
+            <div className="text-sm text-green-700 mb-1">Verified</div>
+            <div className="text-2xl font-bold text-green-700">
               {documents.filter(d => d.status === 'verified').length}
             </div>
           </div>
-          <div className="bg-amber-500/10 border border-amber-500/30 rounded p-4">
-            <div className="text-sm text-amber-300 mb-1">Pending Review</div>
-            <div className="text-2xl font-bold text-amber-300">
+          <div className="bg-amber-50 border border-amber-200 rounded p-4">
+            <div className="text-sm text-amber-700 mb-1">Pending Review</div>
+            <div className="text-2xl font-bold text-amber-700">
               {documents.filter(d => d.status === 'pending').length}
             </div>
           </div>
-          <div className="bg-blue-500/10 border border-blue-500/30 rounded p-4">
-            <div className="text-sm text-blue-300 mb-1">Total Size</div>
-            <div className="text-2xl font-bold text-blue-300">13.3 MB</div>
+          <div className="bg-blue-50 border border-blue-200 rounded p-4">
+            <div className="text-sm text-blue-700 mb-1">Total Size</div>
+            <div className="text-2xl font-bold text-blue-700">13.3 MB</div>
           </div>
         </div>
       </div>

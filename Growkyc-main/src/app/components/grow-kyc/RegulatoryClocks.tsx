@@ -24,7 +24,7 @@ export function RegulatoryClocks({ onViewClient, onViewCase, onBack }: Regulator
           </CardTitle>
         </CardHeader>
         <CardContent className="p-6">
-          <p className="text-slate-300">Regulatory clock tracking coming soon...</p>
+          <p className="text-gray-600">Regulatory clock tracking coming soon...</p>
         </CardContent>
       </Card>
     </div>

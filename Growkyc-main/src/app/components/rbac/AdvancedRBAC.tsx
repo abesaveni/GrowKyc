@@ -143,7 +143,7 @@ export function AdvancedRBAC({ onBack }: AdvancedRBACProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-white/5">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white px-8 py-12">
         <Button
@@ -236,8 +236,8 @@ export function AdvancedRBAC({ onBack }: AdvancedRBACProps) {
           <div className="space-y-6">
             <div className="flex items-center justify-between">
               <div>
-                <h2 className="text-2xl font-bold text-slate-100">User Roles</h2>
-                <p className="text-slate-300">Pre-built and custom roles with granular permissions</p>
+                <h2 className="text-2xl font-bold text-gray-900">User Roles</h2>
+                <p className="text-gray-600">Pre-built and custom roles with granular permissions</p>
               </div>
               <Button>
                 <Plus className="w-4 h-4 mr-2" />
@@ -247,12 +247,12 @@ export function AdvancedRBAC({ onBack }: AdvancedRBACProps) {
 
             <div className="grid grid-cols-1 gap-4">
               {roles.map((role) => (
-                <Card key={role.id} className={`border-2 ${role.builtIn ? 'border-white/10' : 'border-amber-500/30 bg-amber-500/10'}`}>
+                <Card key={role.id} className={`border-2 ${role.builtIn ? 'border-gray-200' : 'border-amber-200 bg-amber-50'}`}>
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
-                          <h3 className="text-xl font-bold text-slate-100">{role.name}</h3>
+                          <h3 className="text-xl font-bold text-gray-900">{role.name}</h3>
                           {role.builtIn && (
                             <Badge variant="outline">Built-in</Badge>
                           )}
@@ -260,16 +260,16 @@ export function AdvancedRBAC({ onBack }: AdvancedRBACProps) {
                             <Badge className="bg-amber-600 text-white">Custom</Badge>
                           )}
                         </div>
-                        <p className="text-slate-300 mb-4">{role.description}</p>
+                        <p className="text-gray-600 mb-4">{role.description}</p>
                         
                         <div className="flex items-center gap-6 text-sm">
                           <div className="flex items-center gap-2">
-                            <Users className="w-4 h-4 text-slate-300" />
-                            <span className="text-slate-300">{role.users} users</span>
+                            <Users className="w-4 h-4 text-gray-600" />
+                            <span className="text-gray-600">{role.users} users</span>
                           </div>
                           <div className="flex items-center gap-2">
-                            <Lock className="w-4 h-4 text-slate-300" />
-                            <span className="text-slate-300">{role.permissions} permissions</span>
+                            <Lock className="w-4 h-4 text-gray-600" />
+                            <span className="text-gray-600">{role.permissions} permissions</span>
                           </div>
                         </div>
                       </div>
@@ -304,8 +304,8 @@ export function AdvancedRBAC({ onBack }: AdvancedRBACProps) {
         {selectedTab === 'permissions' && (
           <div className="space-y-6">
             <div>
-              <h2 className="text-2xl font-bold text-slate-100 mb-2">Permission Categories</h2>
-              <p className="text-slate-300">58 granular permissions across 6 categories</p>
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">Permission Categories</h2>
+              <p className="text-gray-600">58 granular permissions across 6 categories</p>
             </div>
 
             {permissionCategories.map((category, idx) => (
@@ -317,16 +317,16 @@ export function AdvancedRBAC({ onBack }: AdvancedRBACProps) {
                 <CardContent>
                   <div className="grid grid-cols-2 gap-4">
                     {category.permissions.map((perm) => (
-                      <div key={perm.id} className="flex items-center justify-between p-3 bg-white/5 rounded-lg border border-white/10">
+                      <div key={perm.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200">
                         <div className="flex items-center gap-3">
                           {perm.enabled ? (
-                            <CheckCircle className="w-5 h-5 text-green-400" />
+                            <CheckCircle className="w-5 h-5 text-green-600" />
                           ) : (
                             <XCircle className="w-5 h-5 text-gray-400" />
                           )}
                           <div>
-                            <div className="font-semibold text-slate-100">{perm.name}</div>
-                            <div className="text-xs text-slate-400 font-mono">{perm.id}</div>
+                            <div className="font-semibold text-gray-900">{perm.name}</div>
+                            <div className="text-xs text-gray-500 font-mono">{perm.id}</div>
                           </div>
                         </div>
                       </div>
@@ -359,20 +359,20 @@ export function AdvancedRBAC({ onBack }: AdvancedRBACProps) {
               <CardContent className="p-0">
                 <div className="overflow-x-auto">
                   <table className="w-full">
-                    <thead className="bg-white/5 border-b border-white/10">
+                    <thead className="bg-gray-50 border-b border-gray-200">
                       <tr>
-                        <th className="px-6 py-4 text-left text-sm font-semibold text-slate-100">User</th>
-                        <th className="px-6 py-4 text-left text-sm font-semibold text-slate-100">Role</th>
-                        <th className="px-6 py-4 text-left text-sm font-semibold text-slate-100">Status</th>
-                        <th className="px-6 py-4 text-left text-sm font-semibold text-slate-100">Last Active</th>
-                        <th className="px-6 py-4 text-right text-sm font-semibold text-slate-100">Actions</th>
+                        <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">User</th>
+                        <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">Role</th>
+                        <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">Status</th>
+                        <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">Last Active</th>
+                        <th className="px-6 py-4 text-right text-sm font-semibold text-gray-900">Actions</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-white/10">
+                    <tbody className="divide-y divide-gray-200">
                       {users.map((user, idx) => (
-                        <tr key={idx} className="hover:bg-white/5">
+                        <tr key={idx} className="hover:bg-gray-50">
                           <td className="px-6 py-4">
-                            <div className="font-semibold text-slate-100">{user.name}</div>
+                            <div className="font-semibold text-gray-900">{user.name}</div>
                           </td>
                           <td className="px-6 py-4">
                             <Badge variant="outline">{user.role}</Badge>
@@ -383,14 +383,14 @@ export function AdvancedRBAC({ onBack }: AdvancedRBACProps) {
                             </Badge>
                           </td>
                           <td className="px-6 py-4">
-                            <span className="text-sm text-slate-300">{user.lastActive}</span>
+                            <span className="text-sm text-gray-600">{user.lastActive}</span>
                           </td>
                           <td className="px-6 py-4 text-right">
                             <div className="flex justify-end gap-2">
                               <Button variant="outline" size="sm">
                                 <Edit className="w-4 h-4" />
                               </Button>
-                              <Button variant="outline" size="sm" className="text-red-400">
+                              <Button variant="outline" size="sm" className="text-red-600">
                                 <Trash2 className="w-4 h-4" />
                               </Button>
                             </div>
@@ -406,61 +406,61 @@ export function AdvancedRBAC({ onBack }: AdvancedRBACProps) {
         )}
 
         {/* Feature Highlights */}
-        <Card className="mt-12 bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-500/30">
+        <Card className="mt-12 bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200">
           <CardHeader>
             <CardTitle>Advanced RBAC Features</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-3 gap-6">
               <div>
-                <h4 className="font-bold text-slate-100 mb-3">Granular Control</h4>
-                <ul className="space-y-2 text-sm text-slate-300">
+                <h4 className="font-bold text-gray-900 mb-3">Granular Control</h4>
+                <ul className="space-y-2 text-sm text-gray-700">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                     58 distinct permissions
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                     Field-level data access control
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                     Cross-organization access policies
                   </li>
                 </ul>
               </div>
 
               <div>
-                <h4 className="font-bold text-slate-100 mb-3">Custom Roles</h4>
-                <ul className="space-y-2 text-sm text-slate-300">
+                <h4 className="font-bold text-gray-900 mb-3">Custom Roles</h4>
+                <ul className="space-y-2 text-sm text-gray-700">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                     Build unlimited custom roles
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                     Clone and modify existing roles
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                     Role templates for industries
                   </li>
                 </ul>
               </div>
 
               <div>
-                <h4 className="font-bold text-slate-100 mb-3">Audit & Compliance</h4>
-                <ul className="space-y-2 text-sm text-slate-300">
+                <h4 className="font-bold text-gray-900 mb-3">Audit & Compliance</h4>
+                <ul className="space-y-2 text-sm text-gray-700">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                     Complete audit trail of permission changes
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                     Session monitoring and controls
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                     SOC 2 and ISO 27001 compliant
                   </li>
                 </ul>

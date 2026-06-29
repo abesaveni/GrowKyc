@@ -60,13 +60,13 @@ export function RecentDocumentsView() {
           placeholder="Search by name, client, or path..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full pl-10 pr-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           aria-label="Search recent documents"
         />
       </div>
 
       {loading ? (
-        <div className="bg-white border border-white/10 rounded-lg p-4">
+        <div className="bg-white border border-gray-200 rounded-lg p-4">
           <TableSkeleton rows={5} />
         </div>
       ) : documents.length === 0 ? (
@@ -81,16 +81,16 @@ export function RecentDocumentsView() {
             {documents.map((doc, index) => (
               <div
                 key={doc.id}
-                className="bg-white border border-white/10 rounded-lg p-4 flex flex-col sm:flex-row sm:items-center gap-4 hover:shadow-md hover:border-blue-500/30 transition-all group"
+                className="bg-white border border-gray-200 rounded-lg p-4 flex flex-col sm:flex-row sm:items-center gap-4 hover:shadow-md hover:border-blue-200 transition-all group"
               >
                 <div className="flex items-center gap-3 flex-1 min-w-0">
-                  <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-slate-50 flex items-center justify-center shrink-0">
                     <FileTypeIcon type={doc.fileType} className="w-6 h-6" />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <p className="font-semibold text-slate-100 truncate">{doc.name}</p>
-                    <p className="text-sm text-slate-300 truncate">{doc.client}</p>
-                    <p className="text-xs text-slate-400 mt-0.5 flex items-center gap-1">
+                    <p className="font-semibold text-gray-900 truncate">{doc.name}</p>
+                    <p className="text-sm text-gray-600 truncate">{doc.client}</p>
+                    <p className="text-xs text-gray-500 mt-0.5 flex items-center gap-1">
                       <Clock className="w-3 h-3" />
                       Last opened {doc.lastOpened}
                     </p>
@@ -98,13 +98,13 @@ export function RecentDocumentsView() {
                 </div>
                 <div className="flex items-center gap-3 sm:shrink-0">
                   {index < 3 && (
-                    <span className="inline-flex items-center gap-1 text-xs font-medium text-emerald-300 bg-emerald-500/10 px-2 py-1 rounded-full">
+                    <span className="inline-flex items-center gap-1 text-xs font-medium text-emerald-700 bg-emerald-50 px-2 py-1 rounded-full">
                       <TrendingUp className="w-3 h-3" />
                       Recent
                     </span>
                   )}
                   {doc.viewsToday > 0 && (
-                    <span className="text-xs text-slate-400">{doc.viewsToday} views today</span>
+                    <span className="text-xs text-gray-500">{doc.viewsToday} views today</span>
                   )}
                   <Button type="button" variant="outline" size="sm" onClick={() => openDoc(doc)}>
                     <Eye className="w-4 h-4 mr-1" />
@@ -115,22 +115,22 @@ export function RecentDocumentsView() {
             ))}
           </div>
 
-          <div className="bg-white border border-white/10 rounded-lg p-5 h-fit">
-            <h3 className="font-semibold text-slate-100 mb-4 flex items-center gap-2">
-              <Clock className="w-5 h-5 text-blue-400" />
+          <div className="bg-white border border-gray-200 rounded-lg p-5 h-fit">
+            <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+              <Clock className="w-5 h-5 text-blue-600" />
               Activity timeline
             </h3>
-            <ul className="space-y-4 relative before:absolute before:left-[7px] before:top-2 before:bottom-2 before:w-0.5 before:bg-white/10">
+            <ul className="space-y-4 relative before:absolute before:left-[7px] before:top-2 before:bottom-2 before:w-0.5 before:bg-gray-200">
               {documents.slice(0, 6).map((doc) => (
                 <li key={`tl-${doc.id}`} className="relative pl-6">
                   <span className="absolute left-0 top-1.5 w-3.5 h-3.5 rounded-full bg-blue-600 border-2 border-white ring-2 ring-blue-100" />
                   <button
                     type="button"
-                    className="text-left w-full hover:text-blue-300 transition-colors"
+                    className="text-left w-full hover:text-blue-700 transition-colors"
                     onClick={() => openDoc(doc)}
                   >
-                    <p className="text-sm font-medium text-slate-100 line-clamp-1">{doc.name}</p>
-                    <p className="text-xs text-slate-400">{doc.lastOpened}</p>
+                    <p className="text-sm font-medium text-gray-900 line-clamp-1">{doc.name}</p>
+                    <p className="text-xs text-gray-500">{doc.lastOpened}</p>
                   </button>
                 </li>
               ))}
@@ -147,10 +147,10 @@ export function RecentDocumentsView() {
           aria-modal="true"
         >
           <div className="bg-white rounded-xl max-w-lg w-full p-6 my-auto" onClick={(e) => e.stopPropagation()}>
-            <h3 className="text-lg font-semibold text-slate-100">{preview.name}</h3>
-            <p className="text-sm text-slate-300 mt-1">{preview.client}</p>
-            <p className="text-xs text-slate-400 mt-2">{preview.path}</p>
-            <p className="text-sm text-slate-300 mt-4">Last opened: {preview.lastOpened}</p>
+            <h3 className="text-lg font-semibold text-gray-900">{preview.name}</h3>
+            <p className="text-sm text-gray-600 mt-1">{preview.client}</p>
+            <p className="text-xs text-gray-500 mt-2">{preview.path}</p>
+            <p className="text-sm text-gray-700 mt-4">Last opened: {preview.lastOpened}</p>
             <Button className="w-full mt-6" variant="outline" onClick={() => setPreview(null)}>
               Close
             </Button>

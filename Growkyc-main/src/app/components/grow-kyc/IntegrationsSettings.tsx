@@ -749,18 +749,18 @@ export function IntegrationsSettings({ role }: IntegrationsSettingsProps) {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'connected': return 'bg-green-500/15 text-green-300 dark:bg-green-900 dark:text-green-300';
-      case 'disconnected': return 'bg-[#0f172a] text-slate-300 dark:bg-gray-800 dark:text-gray-300';
-      case 'error': return 'bg-red-500/15 text-red-300 dark:bg-red-900 dark:text-red-300';
-      default: return 'bg-[#0f172a] text-slate-300';
+      case 'connected': return 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300';
+      case 'disconnected': return 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300';
+      case 'error': return 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300';
+      default: return 'bg-gray-100 text-gray-700';
     }
   };
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'connected': return <CheckCircle className="w-5 h-5 text-green-400 animate-pulse" />;
-      case 'disconnected': return <X className="w-5 h-5 text-slate-400" />;
-      case 'error': return <AlertCircle className="w-5 h-5 text-red-400" />;
+      case 'connected': return <CheckCircle className="w-5 h-5 text-green-600 animate-pulse" />;
+      case 'disconnected': return <X className="w-5 h-5 text-gray-400" />;
+      case 'error': return <AlertCircle className="w-5 h-5 text-red-600" />;
       default: return null;
     }
   };
@@ -791,7 +791,7 @@ export function IntegrationsSettings({ role }: IntegrationsSettingsProps) {
             </div>
             <p className="text-cyan-100">Connect external services and manage API credentials</p>
           </div>
-          <Button disabled={isReadOnly} onClick={handleSaveAll} className="bg-[#1e293b] text-[#0E7C9E] hover:bg-cyan-500/10 font-bold shadow-md">
+          <Button disabled={isReadOnly} onClick={handleSaveAll} className="bg-white text-[#0E7C9E] hover:bg-cyan-50 font-bold shadow-md">
             <Save className="w-5 h-5 mr-2" />
             Save All Changes
           </Button>
@@ -819,8 +819,8 @@ export function IntegrationsSettings({ role }: IntegrationsSettingsProps) {
       </div>
 
       {/* Category Filter */}
-      <div className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg p-6">
-        <h3 className="font-bold text-white dark:text-white mb-4">Filter by Category</h3>
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+        <h3 className="font-bold text-gray-900 dark:text-white mb-4">Filter by Category</h3>
         <div className="flex flex-wrap gap-2">
           {categories.map(category => (
             <button
@@ -829,7 +829,7 @@ export function IntegrationsSettings({ role }: IntegrationsSettingsProps) {
               className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
                 selectedCategory === category.id
                   ? 'bg-[#13B5EA] text-white'
-                  : 'bg-[#0f172a] dark:bg-gray-700 text-slate-300 dark:text-gray-300 hover:bg-white/10 dark:hover:bg-gray-600'
+                  : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
               }`}
             >
               {category.label}
@@ -850,7 +850,7 @@ export function IntegrationsSettings({ role }: IntegrationsSettingsProps) {
           return (
             <div
               key={integration.id}
-              className="bg-[#1e293b] dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden border-2 border-white/10 dark:border-gray-700"
+              className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden border-2 border-gray-200 dark:border-gray-700"
             >
               {/* Header */}
               <div className="p-6">
@@ -861,18 +861,18 @@ export function IntegrationsSettings({ role }: IntegrationsSettingsProps) {
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-1">
-                        <h3 className="text-xl font-bold text-white dark:text-white">{integration.name}</h3>
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-white">{integration.name}</h3>
                         <span className={`px-3 py-1 rounded-full text-xs font-bold ${getStatusColor(integration.status)}`}>
                           {integration.status.toUpperCase()}
                         </span>
                         {integration.required && (
-                          <span className="px-3 py-1 bg-orange-500/15 text-orange-300 dark:bg-orange-900 dark:text-orange-300 rounded-full text-xs font-bold">
+                          <span className="px-3 py-1 bg-orange-100 text-orange-700 dark:bg-orange-900 dark:text-orange-300 rounded-full text-xs font-bold">
                             REQUIRED
                           </span>
                         )}
                       </div>
-                      <p className="text-sm text-slate-300 dark:text-slate-400">{integration.description}</p>
-                      <div className="flex items-center gap-4 mt-2 text-xs text-slate-400">
+                      <p className="text-sm text-gray-600 dark:text-gray-400">{integration.description}</p>
+                      <div className="flex items-center gap-4 mt-2 text-xs text-gray-500">
                         <span>Category: {integration.category}</span>
                         {integration.provider && (
                           <>
@@ -918,7 +918,7 @@ export function IntegrationsSettings({ role }: IntegrationsSettingsProps) {
                     {integration.features.map((feature, i) => (
                       <span
                         key={i}
-                        className="px-3 py-1 bg-blue-500/10 dark:bg-blue-900/20 text-blue-300 dark:text-blue-300 rounded-full text-xs font-semibold"
+                        className="px-3 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 rounded-full text-xs font-semibold"
                       >
                         {feature}
                       </span>
@@ -929,12 +929,12 @@ export function IntegrationsSettings({ role }: IntegrationsSettingsProps) {
 
               {/* Expanded Credentials Section */}
               {isExpanded && (
-                <div className="border-t border-white/10 dark:border-gray-700 p-6 bg-[#0f172a] dark:bg-gray-900">
-                  <h4 className="font-bold text-white dark:text-white mb-4">API Credentials</h4>
+                <div className="border-t border-gray-200 dark:border-gray-700 p-6 bg-gray-50 dark:bg-gray-900">
+                  <h4 className="font-bold text-gray-900 dark:text-white mb-4">API Credentials</h4>
                   <div className="space-y-4">
                     {integration.credentials.map((cred, i) => (
                       <div key={i}>
-                        <label className="block text-sm font-semibold text-slate-300 dark:text-gray-300 mb-2">
+                        <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                           {cred.name}
                         </label>
                         <div className="flex items-center gap-2">
@@ -945,7 +945,7 @@ export function IntegrationsSettings({ role }: IntegrationsSettingsProps) {
                               value={cred.value || ''}
                               onChange={e => handleCredentialsChange(integration.id, i, e.target.value)}
                               placeholder={`Enter ${cred.name}`}
-                              className="w-full px-4 py-2 border border-white/10 dark:border-gray-600 rounded-lg bg-[#1e293b] dark:bg-gray-800 text-white dark:text-white disabled:opacity-50"
+                              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white disabled:opacity-50"
                             />
                             {cred.type === 'password' && (
                               <button
@@ -958,9 +958,9 @@ export function IntegrationsSettings({ role }: IntegrationsSettingsProps) {
                                 className="absolute right-3 top-1/2 -translate-y-1/2"
                               >
                                 {showPasswords[`${integration.id}-${i}`] ? (
-                                  <EyeOff className="w-4 h-4 text-slate-400" />
+                                  <EyeOff className="w-4 h-4 text-gray-400" />
                                 ) : (
-                                  <Eye className="w-4 h-4 text-slate-400" />
+                                  <Eye className="w-4 h-4 text-gray-400" />
                                 )}
                               </button>
                             )}
@@ -985,8 +985,8 @@ export function IntegrationsSettings({ role }: IntegrationsSettingsProps) {
                     ))}
                   </div>
 
-                  <div className="flex items-center justify-between mt-6 pt-6 border-t border-white/10 dark:border-gray-700">
-                    <div className="flex items-center gap-2 text-sm text-slate-300 dark:text-slate-400">
+                  <div className="flex items-center justify-between mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+                    <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                       <Lock className="w-4 h-4" />
                       All credentials are encrypted and stored securely
                     </div>
@@ -1012,7 +1012,7 @@ export function IntegrationsSettings({ role }: IntegrationsSettingsProps) {
                           size="sm"
                           variant="outline"
                           disabled={isReadOnly}
-                          className="text-red-400 hover:text-red-300"
+                          className="text-red-600 hover:text-red-700"
                           onClick={() => handleConnectToggle(integration.id, integration.status)}
                         >
                           <X className="w-4 h-4 mr-2" />

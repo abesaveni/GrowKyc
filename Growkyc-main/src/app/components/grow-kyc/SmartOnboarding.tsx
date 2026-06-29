@@ -193,8 +193,8 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
       {/* Header */}
       <div className="flex items-start justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-white">Client Onboarding Dashboard</h1>
-          <p className="text-slate-300 mt-2">
+          <h1 className="text-3xl font-bold text-gray-900">Client Onboarding Dashboard</h1>
+          <p className="text-gray-600 mt-2">
             Add and manage multiple entities. Each company, trust, or individual needs separate onboarding.
           </p>
           {entities.length > 0 && (
@@ -229,32 +229,32 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
         <div className="grid grid-cols-4 gap-4">
           <Card>
             <CardContent className="p-4">
-              <div className="text-2xl font-bold text-white">{entities.length}</div>
-              <div className="text-sm text-slate-300">Total Entities</div>
+              <div className="text-2xl font-bold text-gray-900">{entities.length}</div>
+              <div className="text-sm text-gray-600">Total Entities</div>
             </CardContent>
           </Card>
           <Card>
             <CardContent className="p-4">
-              <div className="text-2xl font-bold text-green-400">
+              <div className="text-2xl font-bold text-green-600">
                 {entities.filter(e => e.status === 'approved').length}
               </div>
-              <div className="text-sm text-slate-300">Approved</div>
+              <div className="text-sm text-gray-600">Approved</div>
             </CardContent>
           </Card>
           <Card>
             <CardContent className="p-4">
-              <div className="text-2xl font-bold text-amber-400">
+              <div className="text-2xl font-bold text-amber-600">
                 {entities.filter(e => e.status === 'in_progress' || e.status === 'draft').length}
               </div>
-              <div className="text-sm text-slate-300">In Progress</div>
+              <div className="text-sm text-gray-600">In Progress</div>
             </CardContent>
           </Card>
           <Card>
             <CardContent className="p-4">
-              <div className="text-2xl font-bold text-blue-400">
+              <div className="text-2xl font-bold text-blue-600">
                 {entities.filter(e => e.status === 'pending_review').length}
               </div>
-              <div className="text-sm text-slate-300">Pending Review</div>
+              <div className="text-sm text-gray-600">Pending Review</div>
             </CardContent>
           </Card>
         </div>
@@ -263,11 +263,11 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
       {/* Entity Cards */}
       <div>
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl font-bold text-white">
+          <h2 className="text-xl font-bold text-gray-900">
             {entities.length === 0 ? 'Add Your First Entity' : 'Your Entities'}
           </h2>
           {entities.length > 0 && (
-            <div className="text-sm text-slate-300">
+            <div className="text-sm text-gray-600">
               Click any card to continue, or add more entities below
             </div>
           )}
@@ -286,14 +286,14 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-3">
                       <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${
-                        entity.riskLevel === 'high' ? 'bg-red-500/15' :
-                        entity.riskLevel === 'medium' ? 'bg-amber-500/15' :
-                        'bg-green-500/15'
+                        entity.riskLevel === 'high' ? 'bg-red-100' :
+                        entity.riskLevel === 'medium' ? 'bg-amber-100' :
+                        'bg-green-100'
                       }`}>
                         <EntityIcon className={`w-6 h-6 ${
-                          entity.riskLevel === 'high' ? 'text-red-400' :
-                          entity.riskLevel === 'medium' ? 'text-amber-400' :
-                          'text-green-400'
+                          entity.riskLevel === 'high' ? 'text-red-600' :
+                          entity.riskLevel === 'medium' ? 'text-amber-600' :
+                          'text-green-600'
                         }`} />
                       </div>
                       <div>
@@ -325,19 +325,19 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
                   {/* Completion Progress */}
                   <div>
                     <div className="flex items-center justify-between text-sm mb-2">
-                      <span className="text-slate-300">Completion</span>
-                      <span className="font-semibold text-white">{entity.completionPercentage}%</span>
+                      <span className="text-gray-600">Completion</span>
+                      <span className="font-semibold text-gray-900">{entity.completionPercentage}%</span>
                     </div>
                     <Progress value={entity.completionPercentage} />
                   </div>
 
                   {/* Risk Level */}
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-slate-300">Risk Level</span>
+                    <span className="text-sm text-gray-600">Risk Level</span>
                     <Badge variant="outline" className={
-                      entity.riskLevel === 'high' ? 'border-red-500 text-red-300' :
-                      entity.riskLevel === 'medium' ? 'border-amber-500 text-amber-300' :
-                      'border-green-500 text-green-300'
+                      entity.riskLevel === 'high' ? 'border-red-500 text-red-700' :
+                      entity.riskLevel === 'medium' ? 'border-amber-500 text-amber-700' :
+                      'border-green-500 text-green-700'
                     }>
                       {entity.riskLevel.toUpperCase()}
                     </Badge>
@@ -354,15 +354,15 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
           })}
 
           {/* Add New Entity Card - Always shown */}
-          <Card className="border-2 border-dashed border-blue-400 hover:border-blue-600 hover:bg-blue-500/10 transition-all cursor-pointer group">
+          <Card className="border-2 border-dashed border-blue-400 hover:border-blue-600 hover:bg-blue-50 transition-all cursor-pointer group">
             <CardContent className="p-8 flex flex-col items-center justify-center min-h-64">
-              <div className="w-16 h-16 bg-blue-500/15 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-500/20 transition-colors">
-                <Plus className="w-8 h-8 text-blue-400" />
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-200 transition-colors">
+                <Plus className="w-8 h-8 text-blue-600" />
               </div>
-              <h3 className="font-bold text-white mb-2">
+              <h3 className="font-bold text-gray-900 mb-2">
                 {entities.length === 0 ? 'Add First Entity' : 'Add Another Entity'}
               </h3>
-              <p className="text-sm text-slate-300 text-center mb-4">
+              <p className="text-sm text-gray-600 text-center mb-4">
                 {entities.length === 0 
                   ? 'Select entity type to begin onboarding' 
                   : 'Add more companies, trusts, or individuals'
@@ -373,7 +373,7 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
                   size="sm"
                   variant="outline"
                   onClick={() => handleAddEntity('company')}
-                  className="flex-col h-auto py-3 hover:bg-blue-500/15 hover:border-blue-500"
+                  className="flex-col h-auto py-3 hover:bg-blue-100 hover:border-blue-500"
                 >
                   <Building2 className="w-5 h-5 mb-1" />
                   <span className="text-xs font-semibold">Company</span>
@@ -382,7 +382,7 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
                   size="sm"
                   variant="outline"
                   onClick={() => handleAddEntity('trust')}
-                  className="flex-col h-auto py-3 hover:bg-blue-500/15 hover:border-blue-500"
+                  className="flex-col h-auto py-3 hover:bg-blue-100 hover:border-blue-500"
                 >
                   <Shield className="w-5 h-5 mb-1" />
                   <span className="text-xs font-semibold">Trust</span>
@@ -391,7 +391,7 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
                   size="sm"
                   variant="outline"
                   onClick={() => handleAddEntity('individual')}
-                  className="flex-col h-auto py-3 hover:bg-blue-500/15 hover:border-blue-500"
+                  className="flex-col h-auto py-3 hover:bg-blue-100 hover:border-blue-500"
                 >
                   <UserCircle className="w-5 h-5 mb-1" />
                   <span className="text-xs font-semibold">Individual</span>
@@ -400,7 +400,7 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
                   size="sm"
                   variant="outline"
                   onClick={() => handleAddEntity('sole_trader')}
-                  className="flex-col h-auto py-3 hover:bg-blue-500/15 hover:border-blue-500"
+                  className="flex-col h-auto py-3 hover:bg-blue-100 hover:border-blue-500"
                 >
                   <Briefcase className="w-5 h-5 mb-1" />
                   <span className="text-xs font-semibold">Sole Trader</span>
@@ -412,15 +412,15 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
       </div>
 
       {/* Help Section */}
-      <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-500/30">
+      <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
         <CardContent className="p-6">
           <div className="flex items-start gap-4">
-            <div className="w-12 h-12 bg-[#1e293b] rounded-full flex items-center justify-center">
-              <Sparkles className="w-6 h-6 text-blue-400" />
+            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+              <Sparkles className="w-6 h-6 text-blue-600" />
             </div>
             <div className="flex-1">
-              <h3 className="font-bold text-white mb-2">Need help getting started?</h3>
-              <p className="text-sm text-slate-300 mb-3">
+              <h3 className="font-bold text-gray-900 mb-2">Need help getting started?</h3>
+              <p className="text-sm text-gray-700 mb-3">
                 Our AI assistant can guide you through each step and answer your questions.
               </p>
               <Button size="sm" onClick={() => setIsChatOpen(true)}>
@@ -462,7 +462,7 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
 
   if (currentStage === 'master') {
     return (
-      <div className="min-h-screen bg-[#0f172a] p-6">
+      <div className="min-h-screen bg-gray-50 p-6">
         {renderMasterDashboard()}
         {isChatOpen && <OnboardingChat onClose={() => setIsChatOpen(false)} />}
       </div>
@@ -471,9 +471,9 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
 
   // Stage view with progress
   return (
-    <div className="min-h-screen bg-[#0f172a]">
+    <div className="min-h-screen bg-gray-50">
       {/* Top Progress Bar */}
-      <div className="bg-[#1e293b] border-b sticky top-0 z-40">
+      <div className="bg-white border-b sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between mb-4">
             <Button variant="ghost" size="sm" onClick={handleBackToMaster}>
@@ -482,9 +482,9 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
             </Button>
             <div className="flex items-center gap-4">
               {/* Developer Mode Toggle */}
-              <div className="flex items-center gap-2 px-3 py-1 bg-amber-500/15 border-2 border-amber-300 rounded-lg">
-                <Code className="w-4 h-4 text-amber-400" />
-                <span className="text-xs font-semibold text-amber-300">DEV MODE</span>
+              <div className="flex items-center gap-2 px-3 py-1 bg-amber-100 border-2 border-amber-300 rounded-lg">
+                <Code className="w-4 h-4 text-amber-600" />
+                <span className="text-xs font-semibold text-amber-900">DEV MODE</span>
                 <label className="relative inline-flex items-center cursor-pointer">
                   <input
                     type="checkbox"
@@ -492,10 +492,10 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
                     onChange={(e) => setDevMode(e.target.checked)}
                     className="sr-only peer"
                   />
-                  <div className="w-9 h-5 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-[#1e293b] after:border-white/10 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-green-600"></div>
+                  <div className="w-9 h-5 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-green-600"></div>
                 </label>
               </div>
-              <div className="text-sm text-slate-300">
+              <div className="text-sm text-gray-600">
                 <Save className="w-4 h-4 inline mr-1" />
                 Last saved {Math.floor((new Date().getTime() - lastSaved.getTime()) / 1000)}s ago
               </div>
@@ -527,7 +527,7 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
                         <Icon className="w-5 h-5 text-white" />
                       )}
                     </div>
-                    <span className={`text-xs mt-2 ${isActive ? 'font-bold text-blue-400' : 'text-slate-300'}`}>
+                    <span className={`text-xs mt-2 ${isActive ? 'font-bold text-blue-600' : 'text-gray-600'}`}>
                       {stage.label}
                     </span>
                   </div>
@@ -544,10 +544,10 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
           {/* Progress Bar */}
           <div className="mt-4">
             <div className="flex items-center justify-between text-sm mb-2">
-              <span className="font-semibold text-white">
+              <span className="font-semibold text-gray-900">
                 {selectedEntity?.name || 'New Entity'} - {getCompletionPercentage()}% Complete
               </span>
-              <span className="text-slate-300">
+              <span className="text-gray-600">
                 <Clock className="w-4 h-4 inline mr-1" />
                 {getTimeRemaining()}
               </span>
@@ -563,7 +563,7 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
         
         {/* Developer Mode Navigation */}
         {devMode && (
-          <Card className="mt-6 border-2 border-amber-300 bg-amber-500/10">
+          <Card className="mt-6 border-2 border-amber-300 bg-amber-50">
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <Button
@@ -582,8 +582,8 @@ export function SmartOnboarding({ onBack }: SmartOnboardingProps) {
                 </Button>
                 
                 <div className="flex items-center gap-2">
-                  <Code className="w-4 h-4 text-amber-400" />
-                  <span className="text-sm font-semibold text-amber-300">
+                  <Code className="w-4 h-4 text-amber-600" />
+                  <span className="text-sm font-semibold text-amber-900">
                     Developer Mode: Skip validation enabled
                   </span>
                 </div>

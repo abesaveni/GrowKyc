@@ -447,11 +447,11 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
   const renderOverview = () => (
     <div className="space-y-6">
       {/* Status Card */}
-      <div className="bg-white border border-white/10 rounded-lg p-6">
+      <div className="bg-white border border-gray-300 rounded-lg p-6">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold text-slate-100">Application Status</h3>
+          <h3 className="text-lg font-semibold text-gray-900">Application Status</h3>
           <div className="flex items-center gap-3">
-            <span className="px-3 py-1 rounded text-sm font-medium bg-orange-500/15 text-orange-300">
+            <span className="px-3 py-1 rounded text-sm font-medium bg-orange-100 text-orange-700">
               Credit Assessment
             </span>
             <Button variant="outline" size="sm" onClick={() => setIsEditing(!isEditing)}>
@@ -461,67 +461,67 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
         </div>
         <div className="grid grid-cols-4 gap-4">
           <div>
-            <p className="text-xs text-slate-300 mb-1">Application ID</p>
-            <p className="font-semibold text-slate-100">{deal.id}</p>
+            <p className="text-xs text-gray-600 mb-1">Application ID</p>
+            <p className="font-semibold text-gray-900">{deal.id}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Submitted</p>
-            <p className="font-semibold text-slate-100">10 Feb 2024</p>
+            <p className="text-xs text-gray-600 mb-1">Submitted</p>
+            <p className="font-semibold text-gray-900">10 Feb 2024</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Priority</p>
-            <p className="font-semibold text-red-400">High</p>
+            <p className="text-xs text-gray-600 mb-1">Priority</p>
+            <p className="font-semibold text-red-600">High</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Days in Stage</p>
-            <p className="font-semibold text-slate-100">3 days</p>
+            <p className="text-xs text-gray-600 mb-1">Days in Stage</p>
+            <p className="font-semibold text-gray-900">3 days</p>
           </div>
         </div>
       </div>
 
       {/* Key Metrics */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-white border border-white/10 rounded-lg p-4">
+        <div className="bg-white border border-gray-300 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <DollarSign className="w-8 h-8 text-blue-400" />
+            <DollarSign className="w-8 h-8 text-blue-600" />
           </div>
-          <p className="text-xs text-slate-300">Loan Amount</p>
-          <p className="text-2xl font-bold text-slate-100">${(deal.loan.amount / 1000).toFixed(0)}K</p>
-          <p className="text-xs text-green-400 mt-1">{deal.loan.term} months</p>
+          <p className="text-xs text-gray-600">Loan Amount</p>
+          <p className="text-2xl font-bold text-gray-900">${(deal.loan.amount / 1000).toFixed(0)}K</p>
+          <p className="text-xs text-green-600 mt-1">{deal.loan.term} months</p>
         </div>
-        <div className="bg-white border border-white/10 rounded-lg p-4">
+        <div className="bg-white border border-gray-300 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <Home className="w-8 h-8 text-green-400" />
+            <Home className="w-8 h-8 text-green-600" />
           </div>
-          <p className="text-xs text-slate-300">Security Value</p>
-          <p className="text-2xl font-bold text-slate-100">${(deal.security.currentValuation / 1000).toFixed(0)}K</p>
-          <p className="text-xs text-slate-300 mt-1">LVR: {deal.financials.lvr}%</p>
+          <p className="text-xs text-gray-600">Security Value</p>
+          <p className="text-2xl font-bold text-gray-900">${(deal.security.currentValuation / 1000).toFixed(0)}K</p>
+          <p className="text-xs text-gray-600 mt-1">LVR: {deal.financials.lvr}%</p>
         </div>
-        <div className="bg-white border border-white/10 rounded-lg p-4">
+        <div className="bg-white border border-gray-300 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <TrendingUp className="w-8 h-8 text-purple-400" />
+            <TrendingUp className="w-8 h-8 text-purple-600" />
           </div>
-          <p className="text-xs text-slate-300">DSCR</p>
-          <p className="text-2xl font-bold text-slate-100">{deal.financials.dscr}x</p>
-          <p className="text-xs text-green-400 mt-1">Above minimum</p>
+          <p className="text-xs text-gray-600">DSCR</p>
+          <p className="text-2xl font-bold text-gray-900">{deal.financials.dscr}x</p>
+          <p className="text-xs text-green-600 mt-1">Above minimum</p>
         </div>
-        <div className="bg-white border border-white/10 rounded-lg p-4">
+        <div className="bg-white border border-gray-300 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <Shield className="w-8 h-8 text-orange-400" />
+            <Shield className="w-8 h-8 text-orange-600" />
           </div>
-          <p className="text-xs text-slate-300">Risk Rating</p>
-          <p className="text-2xl font-bold text-slate-100">{deal.creditAssessment.riskRating}</p>
-          <p className="text-xs text-green-400 mt-1">Compliant</p>
+          <p className="text-xs text-gray-600">Risk Rating</p>
+          <p className="text-2xl font-bold text-gray-900">{deal.creditAssessment.riskRating}</p>
+          <p className="text-xs text-green-600 mt-1">Compliant</p>
         </div>
       </div>
 
       {/* Security Preview */}
-      <div className="bg-white border border-white/10 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-slate-100 mb-4">Security Property</h3>
+      <div className="bg-white border border-gray-300 rounded-lg p-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Security Property</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Property Image */}
           <div className="space-y-3">
-            <div className="relative h-64 bg-white/5 rounded-lg overflow-hidden">
+            <div className="relative h-64 bg-gray-100 rounded-lg overflow-hidden">
               <ImageWithFallback
                 src={deal.security.images[selectedImageIndex]}
                 alt="Property"
@@ -534,7 +534,7 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
                   key={idx}
                   onClick={() => setSelectedImageIndex(idx)}
                   className={`flex-shrink-0 w-20 h-16 rounded border-2 overflow-hidden ${
-                    selectedImageIndex === idx ? 'border-blue-600' : 'border-white/10'
+                    selectedImageIndex === idx ? 'border-blue-600' : 'border-gray-200'
                   }`}
                 >
                   <ImageWithFallback src={img} alt={`View ${idx + 1}`} className="w-full h-full object-cover" />
@@ -548,8 +548,8 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
             <div>
               <div className="flex items-start justify-between mb-2">
                 <div className="flex-1">
-                  <h4 className="font-semibold text-lg text-slate-100">{deal.security.address}</h4>
-                  <div className="flex items-center gap-1 text-slate-300 text-sm mt-1">
+                  <h4 className="font-semibold text-lg text-gray-900">{deal.security.address}</h4>
+                  <div className="flex items-center gap-1 text-gray-600 text-sm mt-1">
                     <MapPin className="w-4 h-4" />
                     <span>{deal.security.suburb}, {deal.security.state} {deal.security.postcode}</span>
                   </div>
@@ -559,7 +559,7 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
                   Full Details
                 </Button>
               </div>
-              <div className="flex items-center gap-4 text-sm text-slate-300 mt-3">
+              <div className="flex items-center gap-4 text-sm text-gray-600 mt-3">
                 <div className="flex items-center gap-1">
                   <Building2 className="w-4 h-4" />
                   <span>{deal.security.propertyType}</span>
@@ -577,26 +577,26 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
 
             <div className="grid grid-cols-2 gap-4 pt-4 border-t">
               <div>
-                <p className="text-xs text-slate-300 mb-1">Current Valuation</p>
-                <p className="font-semibold text-slate-100">
+                <p className="text-xs text-gray-600 mb-1">Current Valuation</p>
+                <p className="font-semibold text-gray-900">
                   ${deal.security.currentValuation.toLocaleString()}
                 </p>
-                <p className="text-xs text-slate-400">{deal.security.valuationDate}</p>
+                <p className="text-xs text-gray-500">{deal.security.valuationDate}</p>
               </div>
               <div>
-                <p className="text-xs text-slate-300 mb-1">Loan to Value</p>
-                <p className="font-semibold text-slate-100">{deal.financials.lvr}%</p>
-                <p className="text-xs text-green-400">Within policy</p>
+                <p className="text-xs text-gray-600 mb-1">Loan to Value</p>
+                <p className="font-semibold text-gray-900">{deal.financials.lvr}%</p>
+                <p className="text-xs text-green-600">Within policy</p>
               </div>
               <div>
-                <p className="text-xs text-slate-300 mb-1">Tenancy Status</p>
-                <p className="font-semibold text-slate-100">{deal.security.tenancy.status}</p>
-                <p className="text-xs text-slate-400">${deal.security.tenancy.currentIncome.toLocaleString()}/yr</p>
+                <p className="text-xs text-gray-600 mb-1">Tenancy Status</p>
+                <p className="font-semibold text-gray-900">{deal.security.tenancy.status}</p>
+                <p className="text-xs text-gray-500">${deal.security.tenancy.currentIncome.toLocaleString()}/yr</p>
               </div>
               <div>
-                <p className="text-xs text-slate-300 mb-1">Year Built</p>
-                <p className="font-semibold text-slate-100">{deal.security.yearBuilt}</p>
-                <p className="text-xs text-slate-400">{deal.security.zoning}</p>
+                <p className="text-xs text-gray-600 mb-1">Year Built</p>
+                <p className="font-semibold text-gray-900">{deal.security.yearBuilt}</p>
+                <p className="text-xs text-gray-500">{deal.security.zoning}</p>
               </div>
             </div>
           </div>
@@ -604,34 +604,34 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
       </div>
 
       {/* Credit Assessment */}
-      <div className="bg-white border border-white/10 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-slate-100 mb-4">Credit Assessment</h3>
+      <div className="bg-white border border-gray-300 rounded-lg p-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Credit Assessment</h3>
         <div className="grid grid-cols-3 gap-4 mb-4">
           <div>
-            <p className="text-xs text-slate-300 mb-1">Risk Rating</p>
-            <span className="inline-block px-3 py-1 rounded text-sm font-medium bg-green-500/15 text-green-300">
+            <p className="text-xs text-gray-600 mb-1">Risk Rating</p>
+            <span className="inline-block px-3 py-1 rounded text-sm font-medium bg-green-100 text-green-700">
               {deal.creditAssessment.riskRating} Risk
             </span>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Policy Compliance</p>
-            <span className="inline-block px-3 py-1 rounded text-sm font-medium bg-blue-500/15 text-blue-300">
+            <p className="text-xs text-gray-600 mb-1">Policy Compliance</p>
+            <span className="inline-block px-3 py-1 rounded text-sm font-medium bg-blue-100 text-blue-700">
               {deal.creditAssessment.policyCompliance}
             </span>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Recommended Action</p>
-            <span className="inline-block px-3 py-1 rounded text-sm font-medium bg-green-500/15 text-green-300">
+            <p className="text-xs text-gray-600 mb-1">Recommended Action</p>
+            <span className="inline-block px-3 py-1 rounded text-sm font-medium bg-green-100 text-green-700">
               {deal.creditAssessment.recommendedAction}
             </span>
           </div>
         </div>
         <div>
-          <p className="text-sm font-medium text-slate-100 mb-2">Conditions:</p>
+          <p className="text-sm font-medium text-gray-900 mb-2">Conditions:</p>
           <ul className="space-y-1">
             {deal.creditAssessment.conditions.map((condition, idx) => (
-              <li key={idx} className="text-sm text-slate-300 flex items-start gap-2">
-                <CheckCircle className="w-4 h-4 text-orange-400 mt-0.5 flex-shrink-0" />
+              <li key={idx} className="text-sm text-gray-600 flex items-start gap-2">
+                <CheckCircle className="w-4 h-4 text-orange-600 mt-0.5 flex-shrink-0" />
                 {condition}
               </li>
             ))}
@@ -644,16 +644,16 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
   const renderSecurity = () => (
     <div className="space-y-6">
       {/* Property Gallery */}
-      <div className="bg-white border border-white/10 rounded-lg p-6">
+      <div className="bg-white border border-gray-300 rounded-lg p-6">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold text-slate-100">Property Gallery</h3>
+          <h3 className="text-lg font-semibold text-gray-900">Property Gallery</h3>
           <Button variant="outline" size="sm">
             <Upload className="w-4 h-4 mr-2" />
             Upload Images
           </Button>
         </div>
         <div className="grid grid-cols-1 gap-4">
-          <div className="relative h-96 bg-white/5 rounded-lg overflow-hidden">
+          <div className="relative h-96 bg-gray-100 rounded-lg overflow-hidden">
             <ImageWithFallback
               src={deal.security.images[selectedImageIndex]}
               alt="Property"
@@ -669,7 +669,7 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
                 key={idx}
                 onClick={() => setSelectedImageIndex(idx)}
                 className={`aspect-video rounded-lg border-2 overflow-hidden transition-all ${
-                  selectedImageIndex === idx ? 'border-blue-600 scale-105' : 'border-white/10 hover:border-gray-400'
+                  selectedImageIndex === idx ? 'border-blue-600 scale-105' : 'border-gray-200 hover:border-gray-400'
                 }`}
               >
                 <ImageWithFallback src={img} alt={`View ${idx + 1}`} className="w-full h-full object-cover" />
@@ -680,9 +680,9 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
       </div>
 
       {/* Property Information */}
-      <div className="bg-white border border-white/10 rounded-lg p-6">
+      <div className="bg-white border border-gray-300 rounded-lg p-6">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold text-slate-100">Property Information</h3>
+          <h3 className="text-lg font-semibold text-gray-900">Property Information</h3>
           {isEditing && (
             <Button variant="outline" size="sm">
               <Save className="w-4 h-4 mr-2" />
@@ -694,13 +694,13 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
         <div className="grid grid-cols-2 gap-6">
           {/* Address */}
           <div className="col-span-2">
-            <h4 className="font-semibold text-slate-100 mb-3">Address</h4>
+            <h4 className="font-semibold text-gray-900 mb-3">Address</h4>
             <div className="space-y-2">
               <div className="flex items-start gap-2">
                 <MapPin className="w-5 h-5 text-gray-400 mt-0.5" />
                 <div>
-                  <p className="font-medium text-slate-100">{deal.security.address}</p>
-                  <p className="text-sm text-slate-300">{deal.security.suburb}, {deal.security.state} {deal.security.postcode}</p>
+                  <p className="font-medium text-gray-900">{deal.security.address}</p>
+                  <p className="text-sm text-gray-600">{deal.security.suburb}, {deal.security.state} {deal.security.postcode}</p>
                 </div>
               </div>
             </div>
@@ -708,62 +708,62 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
 
           {/* Property Details */}
           <div>
-            <h4 className="font-semibold text-slate-100 mb-3">Property Details</h4>
+            <h4 className="font-semibold text-gray-900 mb-3">Property Details</h4>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
-                <span className="text-slate-300">Property Type:</span>
-                <span className="font-medium text-slate-100">{deal.security.propertyType}</span>
+                <span className="text-gray-600">Property Type:</span>
+                <span className="font-medium text-gray-900">{deal.security.propertyType}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-300">Land Size:</span>
-                <span className="font-medium text-slate-100">{deal.security.landSize} m²</span>
+                <span className="text-gray-600">Land Size:</span>
+                <span className="font-medium text-gray-900">{deal.security.landSize} m²</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-300">Building Size:</span>
-                <span className="font-medium text-slate-100">{deal.security.buildingSize} m²</span>
+                <span className="text-gray-600">Building Size:</span>
+                <span className="font-medium text-gray-900">{deal.security.buildingSize} m²</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-300">Parking Spaces:</span>
-                <span className="font-medium text-slate-100">{deal.security.parking}</span>
+                <span className="text-gray-600">Parking Spaces:</span>
+                <span className="font-medium text-gray-900">{deal.security.parking}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-300">Year Built:</span>
-                <span className="font-medium text-slate-100">{deal.security.yearBuilt}</span>
+                <span className="text-gray-600">Year Built:</span>
+                <span className="font-medium text-gray-900">{deal.security.yearBuilt}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-300">Zoning:</span>
-                <span className="font-medium text-slate-100">{deal.security.zoning}</span>
+                <span className="text-gray-600">Zoning:</span>
+                <span className="font-medium text-gray-900">{deal.security.zoning}</span>
               </div>
             </div>
           </div>
 
           {/* Title Information */}
           <div>
-            <h4 className="font-semibold text-slate-100 mb-3">Title Information</h4>
+            <h4 className="font-semibold text-gray-900 mb-3">Title Information</h4>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
-                <span className="text-slate-300">Title Type:</span>
-                <span className="font-medium text-slate-100">{deal.security.titleType}</span>
+                <span className="text-gray-600">Title Type:</span>
+                <span className="font-medium text-gray-900">{deal.security.titleType}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-300">Lot Number:</span>
-                <span className="font-medium text-slate-100">{deal.security.lotNumber}</span>
+                <span className="text-gray-600">Lot Number:</span>
+                <span className="font-medium text-gray-900">{deal.security.lotNumber}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-300">Plan Number:</span>
-                <span className="font-medium text-slate-100">{deal.security.planNumber}</span>
+                <span className="text-gray-600">Plan Number:</span>
+                <span className="font-medium text-gray-900">{deal.security.planNumber}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-300">Council Rates:</span>
-                <span className="font-medium text-slate-100">${deal.security.councilRates.toLocaleString()}/yr</span>
+                <span className="text-gray-600">Council Rates:</span>
+                <span className="font-medium text-gray-900">${deal.security.councilRates.toLocaleString()}/yr</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-300">Water Rates:</span>
-                <span className="font-medium text-slate-100">${deal.security.waterRates.toLocaleString()}/yr</span>
+                <span className="text-gray-600">Water Rates:</span>
+                <span className="font-medium text-gray-900">${deal.security.waterRates.toLocaleString()}/yr</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-300">Encumbrances:</span>
-                <span className="font-medium text-slate-100">{deal.security.encumbrances}</span>
+                <span className="text-gray-600">Encumbrances:</span>
+                <span className="font-medium text-gray-900">{deal.security.encumbrances}</span>
               </div>
             </div>
           </div>
@@ -771,44 +771,44 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
       </div>
 
       {/* Valuation Details */}
-      <div className="bg-white border border-white/10 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-slate-100 mb-4">Valuation Details</h3>
+      <div className="bg-white border border-gray-300 rounded-lg p-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Valuation Details</h3>
         <div className="grid grid-cols-2 gap-6">
           <div>
-            <h4 className="font-medium text-slate-100 mb-3">Current Valuation</h4>
+            <h4 className="font-medium text-gray-900 mb-3">Current Valuation</h4>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
-                <span className="text-slate-300">Valuation:</span>
-                <span className="font-semibold text-lg text-slate-100">${deal.security.currentValuation.toLocaleString()}</span>
+                <span className="text-gray-600">Valuation:</span>
+                <span className="font-semibold text-lg text-gray-900">${deal.security.currentValuation.toLocaleString()}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-300">Date:</span>
-                <span className="font-medium text-slate-100">{deal.security.valuationDate}</span>
+                <span className="text-gray-600">Date:</span>
+                <span className="font-medium text-gray-900">{deal.security.valuationDate}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-300">Type:</span>
-                <span className="font-medium text-slate-100">{deal.security.valuationType}</span>
+                <span className="text-gray-600">Type:</span>
+                <span className="font-medium text-gray-900">{deal.security.valuationType}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-300">Valuer:</span>
-                <span className="font-medium text-slate-100">{deal.security.valuationFirm}</span>
+                <span className="text-gray-600">Valuer:</span>
+                <span className="font-medium text-gray-900">{deal.security.valuationFirm}</span>
               </div>
             </div>
           </div>
           <div>
-            <h4 className="font-medium text-slate-100 mb-3">Previous Valuation</h4>
+            <h4 className="font-medium text-gray-900 mb-3">Previous Valuation</h4>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
-                <span className="text-slate-300">Valuation:</span>
-                <span className="font-medium text-slate-100">${deal.security.previousValuation.toLocaleString()}</span>
+                <span className="text-gray-600">Valuation:</span>
+                <span className="font-medium text-gray-900">${deal.security.previousValuation.toLocaleString()}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-300">Date:</span>
-                <span className="font-medium text-slate-100">{deal.security.previousValuationDate}</span>
+                <span className="text-gray-600">Date:</span>
+                <span className="font-medium text-gray-900">{deal.security.previousValuationDate}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-slate-300">Change:</span>
-                <span className="font-medium text-green-400">
+                <span className="text-gray-600">Change:</span>
+                <span className="font-medium text-green-600">
                   +${(deal.security.currentValuation - deal.security.previousValuation).toLocaleString()} 
                   ({(((deal.security.currentValuation - deal.security.previousValuation) / deal.security.previousValuation) * 100).toFixed(1)}%)
                 </span>
@@ -819,10 +819,10 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
       </div>
 
       {/* Location Map */}
-      <div className="bg-white border border-white/10 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-slate-100 mb-4">Location & Map</h3>
-        <div className="h-96 bg-white/5 rounded-lg flex items-center justify-center">
-          <div className="text-center text-slate-400">
+      <div className="bg-white border border-gray-300 rounded-lg p-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Location & Map</h3>
+        <div className="h-96 bg-gray-100 rounded-lg flex items-center justify-center">
+          <div className="text-center text-gray-500">
             <Map className="w-12 h-12 mx-auto mb-2" />
             <p>Interactive map would be embedded here</p>
             <p className="text-sm mt-1">Coordinates: {deal.security.coordinates.lat}, {deal.security.coordinates.lng}</p>
@@ -831,29 +831,29 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
       </div>
 
       {/* Nearby Amenities */}
-      <div className="bg-white border border-white/10 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-slate-100 mb-4">Nearby Amenities</h3>
+      <div className="bg-white border border-gray-300 rounded-lg p-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Nearby Amenities</h3>
         <div className="grid grid-cols-2 gap-4">
           {deal.security.amenities.map((amenity, idx) => (
-            <div key={idx} className="flex items-center gap-3 p-3 bg-white/5 rounded-lg">
-              <MapPin className="w-5 h-5 text-blue-400" />
+            <div key={idx} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+              <MapPin className="w-5 h-5 text-blue-600" />
               <div className="flex-1">
-                <p className="font-medium text-slate-100">{amenity.name}</p>
-                <p className="text-xs text-slate-300">{amenity.type}</p>
+                <p className="font-medium text-gray-900">{amenity.name}</p>
+                <p className="text-xs text-gray-600">{amenity.type}</p>
               </div>
-              <span className="text-sm text-slate-300">{amenity.distance}</span>
+              <span className="text-sm text-gray-600">{amenity.distance}</span>
             </div>
           ))}
         </div>
       </div>
 
       {/* Property Features */}
-      <div className="bg-white border border-white/10 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-slate-100 mb-4">Property Features</h3>
+      <div className="bg-white border border-gray-300 rounded-lg p-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Property Features</h3>
         <div className="grid grid-cols-3 gap-3">
           {deal.security.features.map((feature, idx) => (
-            <div key={idx} className="flex items-center gap-2 text-sm text-slate-300">
-              <CheckCircle className="w-4 h-4 text-green-400" />
+            <div key={idx} className="flex items-center gap-2 text-sm text-gray-700">
+              <CheckCircle className="w-4 h-4 text-green-600" />
               {feature}
             </div>
           ))}
@@ -861,37 +861,37 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
       </div>
 
       {/* Tenancy Information */}
-      <div className="bg-white border border-white/10 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-slate-100 mb-4">Tenancy Information</h3>
+      <div className="bg-white border border-gray-300 rounded-lg p-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Tenancy Information</h3>
         <div className="grid grid-cols-3 gap-4 mb-4">
           <div>
-            <p className="text-xs text-slate-300 mb-1">Status</p>
-            <p className="font-semibold text-slate-100">{deal.security.tenancy.status}</p>
+            <p className="text-xs text-gray-600 mb-1">Status</p>
+            <p className="font-semibold text-gray-900">{deal.security.tenancy.status}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Current Income</p>
-            <p className="font-semibold text-slate-100">${deal.security.tenancy.currentIncome.toLocaleString()}/yr</p>
+            <p className="text-xs text-gray-600 mb-1">Current Income</p>
+            <p className="font-semibold text-gray-900">${deal.security.tenancy.currentIncome.toLocaleString()}/yr</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Potential Income</p>
-            <p className="font-semibold text-green-400">${deal.security.tenancy.potentialIncome.toLocaleString()}/yr</p>
+            <p className="text-xs text-gray-600 mb-1">Potential Income</p>
+            <p className="font-semibold text-green-600">${deal.security.tenancy.potentialIncome.toLocaleString()}/yr</p>
           </div>
         </div>
         
-        <h4 className="font-medium text-slate-100 mb-3">Tenant Details</h4>
+        <h4 className="font-medium text-gray-900 mb-3">Tenant Details</h4>
         <div className="space-y-2">
           {deal.security.tenancy.tenants.map((tenant, idx) => (
-            <div key={idx} className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
+            <div key={idx} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
               <div>
-                <p className="font-medium text-slate-100">{tenant.name}</p>
-                <p className="text-sm text-slate-300">{tenant.area} m²</p>
+                <p className="font-medium text-gray-900">{tenant.name}</p>
+                <p className="text-sm text-gray-600">{tenant.area} m²</p>
               </div>
               <div className="text-right">
-                <p className="font-semibold text-slate-100">
+                <p className="font-semibold text-gray-900">
                   {tenant.rent > 0 ? `$${tenant.rent.toLocaleString()}/yr` : 'Vacant'}
                 </p>
                 {tenant.leaseEnd && (
-                  <p className="text-xs text-slate-300">Lease ends: {tenant.leaseEnd}</p>
+                  <p className="text-xs text-gray-600">Lease ends: {tenant.leaseEnd}</p>
                 )}
               </div>
             </div>
@@ -906,9 +906,9 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
   const renderLoan = () => <EnhancedLoanDetails deal={deal} />;
 
   const renderDocuments = () => (
-    <div className="bg-white border border-white/10 rounded-lg p-6">
+    <div className="bg-white border border-gray-300 rounded-lg p-6">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold text-slate-100">Documents</h3>
+        <h3 className="text-lg font-semibold text-gray-900">Documents</h3>
         <Button variant="outline" size="sm">
           <Upload className="w-4 h-4 mr-2" />
           Upload Document
@@ -916,16 +916,16 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
       </div>
       <div className="space-y-2">
         {deal.documents.map((doc, idx) => (
-          <div key={idx} className="flex items-center justify-between p-3 bg-white/5 rounded-lg hover:bg-white/5">
+          <div key={idx} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100">
             <div className="flex items-center gap-3">
-              <FileText className="w-5 h-5 text-blue-400" />
+              <FileText className="w-5 h-5 text-blue-600" />
               <div>
-                <p className="font-medium text-slate-100">{doc.name}</p>
-                <p className="text-xs text-slate-300">{doc.type} • {doc.size}</p>
+                <p className="font-medium text-gray-900">{doc.name}</p>
+                <p className="text-xs text-gray-600">{doc.type} • {doc.size}</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-xs text-slate-300">{doc.uploadedDate}</span>
+              <span className="text-xs text-gray-600">{doc.uploadedDate}</span>
               <Button variant="ghost" size="sm">
                 <Download className="w-4 h-4" />
               </Button>
@@ -937,19 +937,19 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
   );
 
   const renderTimeline = () => (
-    <div className="bg-white border border-white/10 rounded-lg p-6">
-      <h3 className="text-lg font-semibold text-slate-100 mb-4">Activity Timeline</h3>
+    <div className="bg-white border border-gray-300 rounded-lg p-6">
+      <h3 className="text-lg font-semibold text-gray-900 mb-4">Activity Timeline</h3>
       <div className="space-y-4">
         {deal.timeline.map((item, idx) => (
           <div key={idx} className="flex gap-4">
             <div className="flex flex-col items-center">
               <div className="w-3 h-3 rounded-full bg-blue-600"></div>
-              {idx < deal.timeline.length - 1 && <div className="w-0.5 h-full bg-white/10 mt-1"></div>}
+              {idx < deal.timeline.length - 1 && <div className="w-0.5 h-full bg-gray-200 mt-1"></div>}
             </div>
             <div className="flex-1 pb-4">
-              <p className="font-medium text-slate-100">{item.event}</p>
-              <p className="text-sm text-slate-300">{item.user}</p>
-              <p className="text-xs text-slate-400">{item.date} at {item.time}</p>
+              <p className="font-medium text-gray-900">{item.event}</p>
+              <p className="text-sm text-gray-600">{item.user}</p>
+              <p className="text-xs text-gray-500">{item.date} at {item.time}</p>
             </div>
           </div>
         ))}
@@ -960,11 +960,11 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
   const renderInformationRequests = () => (
     <div className="space-y-6">
       {/* Header with New Request Button */}
-      <div className="bg-white border border-white/10 rounded-lg p-6">
+      <div className="bg-white border border-gray-300 rounded-lg p-6">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h3 className="text-lg font-semibold text-slate-100">Information Requests</h3>
-            <p className="text-sm text-slate-300 mt-1">Request additional information from borrower or broker</p>
+            <h3 className="text-lg font-semibold text-gray-900">Information Requests</h3>
+            <p className="text-sm text-gray-600 mt-1">Request additional information from borrower or broker</p>
           </div>
           <Button className="bg-blue-600 hover:bg-blue-700" onClick={() => setShowNewRequestModal(true)}>
             <Plus className="w-4 h-4 mr-2" />
@@ -974,59 +974,59 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
 
         {/* Summary Stats */}
         <div className="grid grid-cols-3 gap-4 mb-6">
-          <div className="p-4 bg-orange-500/10 border border-orange-500/30 rounded-lg">
-            <p className="text-sm text-orange-300 mb-1">Pending Responses</p>
-            <p className="text-2xl font-bold text-orange-300">
+          <div className="p-4 bg-orange-50 border border-orange-200 rounded-lg">
+            <p className="text-sm text-orange-700 mb-1">Pending Responses</p>
+            <p className="text-2xl font-bold text-orange-900">
               {informationRequests.filter(r => r.status === 'pending').length}
             </p>
           </div>
-          <div className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
-            <p className="text-sm text-green-300 mb-1">Received</p>
-            <p className="text-2xl font-bold text-green-300">
+          <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+            <p className="text-sm text-green-700 mb-1">Received</p>
+            <p className="text-2xl font-bold text-green-900">
               {informationRequests.filter(r => r.status === 'received').length}
             </p>
           </div>
-          <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
-            <p className="text-sm text-blue-300 mb-1">Total Requests</p>
-            <p className="text-2xl font-bold text-blue-300">{informationRequests.length}</p>
+          <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+            <p className="text-sm text-blue-700 mb-1">Total Requests</p>
+            <p className="text-2xl font-bold text-blue-900">{informationRequests.length}</p>
           </div>
         </div>
 
         {/* Requests List */}
         <div className="space-y-4">
           {informationRequests.map((request) => (
-            <div key={request.id} className="border border-white/10 rounded-lg p-4">
+            <div key={request.id} className="border border-gray-300 rounded-lg p-4">
               <div className="flex items-start justify-between mb-3">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <h4 className="font-semibold text-slate-100">{request.subject}</h4>
+                    <h4 className="font-semibold text-gray-900">{request.subject}</h4>
                     <span className={`px-2 py-1 rounded text-xs font-medium ${
                       request.status === 'pending' 
-                        ? 'bg-orange-500/15 text-orange-300' 
+                        ? 'bg-orange-100 text-orange-700' 
                         : request.status === 'received'
-                        ? 'bg-green-500/15 text-green-300'
-                        : 'bg-white/5 text-slate-300'
+                        ? 'bg-green-100 text-green-700'
+                        : 'bg-gray-100 text-gray-700'
                     }`}>
                       {request.status === 'pending' ? 'Awaiting Response' : 'Response Received'}
                     </span>
                     <span className={`px-2 py-1 rounded text-xs font-medium ${
                       request.priority === 'high' 
-                        ? 'bg-red-500/15 text-red-300' 
+                        ? 'bg-red-100 text-red-700' 
                         : request.priority === 'medium'
-                        ? 'bg-yellow-500/15 text-yellow-300'
-                        : 'bg-blue-500/15 text-blue-300'
+                        ? 'bg-yellow-100 text-yellow-700'
+                        : 'bg-blue-100 text-blue-700'
                     }`}>
                       {request.priority.toUpperCase()} PRIORITY
                     </span>
                   </div>
-                  <div className="flex items-center gap-4 text-xs text-slate-300 mb-3">
+                  <div className="flex items-center gap-4 text-xs text-gray-600 mb-3">
                     <span className="flex items-center gap-1">
                       <Mail className="w-3 h-3" />
-                      To: <strong className="text-slate-100 capitalize">{request.recipient}</strong>
+                      To: <strong className="text-gray-900 capitalize">{request.recipient}</strong>
                     </span>
                     <span className="flex items-center gap-1">
                       <FileText className="w-3 h-3" />
-                      Type: <strong className="text-slate-100 capitalize">{request.type}</strong>
+                      Type: <strong className="text-gray-900 capitalize">{request.type}</strong>
                     </span>
                     <span className="flex items-center gap-1">
                       <Users className="w-3 h-3" />
@@ -1041,24 +1041,24 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
               </div>
 
               <div className="mb-3">
-                <p className="text-sm text-slate-300 bg-white/5 p-3 rounded">
+                <p className="text-sm text-gray-700 bg-gray-50 p-3 rounded">
                   {request.description}
                 </p>
               </div>
 
               {request.status === 'received' && request.response && (
-                <div className="border-t border-white/10 pt-3 mt-3">
+                <div className="border-t border-gray-200 pt-3 mt-3">
                   <div className="flex items-center gap-2 mb-2">
-                    <CheckCircle className="w-4 h-4 text-green-400" />
-                    <p className="text-sm font-medium text-green-300">Response Received on {request.responseDate}</p>
+                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    <p className="text-sm font-medium text-green-700">Response Received on {request.responseDate}</p>
                   </div>
-                  <p className="text-sm text-slate-300 bg-green-500/10 p-3 rounded border border-green-500/30">
+                  <p className="text-sm text-gray-700 bg-green-50 p-3 rounded border border-green-200">
                     {request.response}
                   </p>
                 </div>
               )}
 
-              <div className="flex items-center gap-2 mt-3 pt-3 border-t border-white/10">
+              <div className="flex items-center gap-2 mt-3 pt-3 border-t border-gray-200">
                 {request.status === 'pending' && (
                   <>
                     <Button variant="outline" size="sm">
@@ -1089,19 +1089,19 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
       {showNewRequestModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="p-6 border-b border-white/10">
+            <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold text-slate-100">New Information Request</h3>
+                <h3 className="text-lg font-semibold text-gray-900">New Information Request</h3>
                 <button onClick={() => setShowNewRequestModal(false)}>
-                  <X className="w-5 h-5 text-slate-400" />
+                  <X className="w-5 h-5 text-gray-500" />
                 </button>
               </div>
             </div>
 
             <div className="p-6 space-y-4">
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-2">Send To *</label>
-                <select className="w-full px-4 py-2 border border-white/10 rounded-lg">
+                <label className="block text-sm font-medium text-gray-700 mb-2">Send To *</label>
+                <select className="w-full px-4 py-2 border border-gray-300 rounded-lg">
                   <option value="borrower">Borrower (via Portal)</option>
                   <option value="broker">Broker</option>
                   <option value="both">Both Borrower & Broker</option>
@@ -1109,8 +1109,8 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-2">Request Type *</label>
-                <select className="w-full px-4 py-2 border border-white/10 rounded-lg">
+                <label className="block text-sm font-medium text-gray-700 mb-2">Request Type *</label>
+                <select className="w-full px-4 py-2 border border-gray-300 rounded-lg">
                   <option value="document">Document Request</option>
                   <option value="clarification">Clarification</option>
                   <option value="amendment">Application Amendment</option>
@@ -1120,8 +1120,8 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-2">Priority *</label>
-                <select className="w-full px-4 py-2 border border-white/10 rounded-lg">
+                <label className="block text-sm font-medium text-gray-700 mb-2">Priority *</label>
+                <select className="w-full px-4 py-2 border border-gray-300 rounded-lg">
                   <option value="high">High - Urgent</option>
                   <option value="medium">Medium - Standard</option>
                   <option value="low">Low - Non-urgent</option>
@@ -1129,40 +1129,40 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-2">Subject *</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Subject *</label>
                 <input
                   type="text"
                   placeholder="e.g., Updated Bank Statements Required"
-                  className="w-full px-4 py-2 border border-white/10 rounded-lg"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-2">Due Date *</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Due Date *</label>
                 <input
                   type="date"
-                  className="w-full px-4 py-2 border border-white/10 rounded-lg"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-2">Detailed Description *</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Detailed Description *</label>
                 <textarea
                   rows={6}
                   placeholder="Provide detailed information about what you need and why..."
-                  className="w-full px-4 py-2 border border-white/10 rounded-lg"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                 />
               </div>
 
-              <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
-                <p className="text-sm text-blue-300">
+              <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                <p className="text-sm text-blue-800">
                   <strong>Note:</strong> This request will be sent via email and will also appear in the Borrower Portal 
                   for the borrower to respond to directly.
                 </p>
               </div>
             </div>
 
-            <div className="p-6 border-t border-white/10 flex items-center justify-end gap-3">
+            <div className="p-6 border-t border-gray-200 flex items-center justify-end gap-3">
               <Button variant="outline" onClick={() => setShowNewRequestModal(false)}>
                 Cancel
               </Button>
@@ -1184,9 +1184,9 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
   );
 
   const renderNotes = () => (
-    <div className="bg-white border border-white/10 rounded-lg p-6">
+    <div className="bg-white border border-gray-300 rounded-lg p-6">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold text-slate-100">Notes & Comments</h3>
+        <h3 className="text-lg font-semibold text-gray-900">Notes & Comments</h3>
         <Button variant="outline" size="sm">
           <Plus className="w-4 h-4 mr-2" />
           Add Note
@@ -1194,12 +1194,12 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
       </div>
       <div className="space-y-4">
         {deal.notes.map((note, idx) => (
-          <div key={idx} className="p-4 bg-white/5 rounded-lg">
+          <div key={idx} className="p-4 bg-gray-50 rounded-lg">
             <div className="flex items-center justify-between mb-2">
-              <p className="font-medium text-slate-100">{note.user}</p>
-              <p className="text-xs text-slate-400">{note.date} at {note.time}</p>
+              <p className="font-medium text-gray-900">{note.user}</p>
+              <p className="text-xs text-gray-500">{note.date} at {note.time}</p>
             </div>
-            <p className="text-sm text-slate-300">{note.note}</p>
+            <p className="text-sm text-gray-700">{note.note}</p>
           </div>
         ))}
       </div>
@@ -1212,71 +1212,71 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
       <ComplianceChecklist />
 
       {/* Company Credit Check */}
-      <div className="bg-white border border-white/10 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-slate-100 mb-4">Company Credit Check</h3>
+      <div className="bg-white border border-gray-300 rounded-lg p-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Company Credit Check</h3>
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <p className="text-xs text-slate-300 mb-1">Status</p>
-            <p className="font-semibold text-slate-100">{deal.verification.companyCreditCheck.status}</p>
+            <p className="text-xs text-gray-600 mb-1">Status</p>
+            <p className="font-semibold text-gray-900">{deal.verification.companyCreditCheck.status}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Provider</p>
-            <p className="font-semibold text-slate-100">{deal.verification.companyCreditCheck.provider}</p>
+            <p className="text-xs text-gray-600 mb-1">Provider</p>
+            <p className="font-semibold text-gray-900">{deal.verification.companyCreditCheck.provider}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Completed Date</p>
-            <p className="font-semibold text-slate-100">{deal.verification.companyCreditCheck.completedDate}</p>
+            <p className="text-xs text-gray-600 mb-1">Completed Date</p>
+            <p className="font-semibold text-gray-900">{deal.verification.companyCreditCheck.completedDate}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Score</p>
-            <p className="font-semibold text-slate-100">{deal.verification.companyCreditCheck.score}</p>
+            <p className="text-xs text-gray-600 mb-1">Score</p>
+            <p className="font-semibold text-gray-900">{deal.verification.companyCreditCheck.score}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Rating</p>
-            <p className="font-semibold text-slate-100">{deal.verification.companyCreditCheck.rating}</p>
+            <p className="text-xs text-gray-600 mb-1">Rating</p>
+            <p className="font-semibold text-gray-900">{deal.verification.companyCreditCheck.rating}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Risk Band</p>
-            <p className="font-semibold text-slate-100">{deal.verification.companyCreditCheck.riskBand}</p>
+            <p className="text-xs text-gray-600 mb-1">Risk Band</p>
+            <p className="font-semibold text-gray-900">{deal.verification.companyCreditCheck.riskBand}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Trade Payment History</p>
-            <p className="font-semibold text-slate-100">{deal.verification.companyCreditCheck.tradePaymentHistory}</p>
+            <p className="text-xs text-gray-600 mb-1">Trade Payment History</p>
+            <p className="font-semibold text-gray-900">{deal.verification.companyCreditCheck.tradePaymentHistory}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Court Actions</p>
-            <p className="font-semibold text-slate-100">{deal.verification.companyCreditCheck.courtActions}</p>
+            <p className="text-xs text-gray-600 mb-1">Court Actions</p>
+            <p className="font-semibold text-gray-900">{deal.verification.companyCreditCheck.courtActions}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Defaults</p>
-            <p className="font-semibold text-slate-100">{deal.verification.companyCreditCheck.defaults}</p>
+            <p className="text-xs text-gray-600 mb-1">Defaults</p>
+            <p className="font-semibold text-gray-900">{deal.verification.companyCreditCheck.defaults}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Adverse Events</p>
-            <p className="font-semibold text-slate-100">{deal.verification.companyCreditCheck.adverseEvents}</p>
+            <p className="text-xs text-gray-600 mb-1">Adverse Events</p>
+            <p className="font-semibold text-gray-900">{deal.verification.companyCreditCheck.adverseEvents}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Business Age</p>
-            <p className="font-semibold text-slate-100">{deal.verification.companyCreditCheck.businessAge}</p>
+            <p className="text-xs text-gray-600 mb-1">Business Age</p>
+            <p className="font-semibold text-gray-900">{deal.verification.companyCreditCheck.businessAge}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Recommendations</p>
-            <p className="font-semibold text-slate-100">{deal.verification.companyCreditCheck.recommendations}</p>
+            <p className="text-xs text-gray-600 mb-1">Recommendations</p>
+            <p className="font-semibold text-gray-900">{deal.verification.companyCreditCheck.recommendations}</p>
           </div>
         </div>
       </div>
 
       {/* Director Credit Checks */}
-      <div className="bg-white border border-white/10 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-slate-100 mb-4">Director Credit Checks</h3>
+      <div className="bg-white border border-gray-300 rounded-lg p-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Director Credit Checks</h3>
         <div className="space-y-3">
           {deal.verification.directorCreditChecks.map((director, idx) => (
-            <div key={idx} className="flex items-center justify-between p-4 bg-white/5 rounded-lg">
+            <div key={idx} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
               <div>
-                <p className="font-semibold text-slate-100">{director.name}</p>
-                <p className="text-sm text-slate-300">{director.provider} • Score: {director.score} ({director.rating})</p>
+                <p className="font-semibold text-gray-900">{director.name}</p>
+                <p className="text-sm text-gray-600">{director.provider} • Score: {director.score} ({director.rating})</p>
               </div>
-              <div className="flex items-center gap-4 text-sm text-slate-300">
+              <div className="flex items-center gap-4 text-sm text-gray-600">
                 <span>Defaults: <strong>{director.defaults}</strong></span>
                 <span>Judgements: <strong>{director.courtJudgements}</strong></span>
               </div>
@@ -1286,146 +1286,146 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
       </div>
 
       {/* Title Search */}
-      <div className="bg-white border border-white/10 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-slate-100 mb-4">Title Search</h3>
+      <div className="bg-white border border-gray-300 rounded-lg p-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Title Search</h3>
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <p className="text-xs text-slate-300 mb-1">Status</p>
-            <p className="font-semibold text-slate-100">{deal.verification.titleSearch.status}</p>
+            <p className="text-xs text-gray-600 mb-1">Status</p>
+            <p className="font-semibold text-gray-900">{deal.verification.titleSearch.status}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Provider</p>
-            <p className="font-semibold text-slate-100">{deal.verification.titleSearch.provider}</p>
+            <p className="text-xs text-gray-600 mb-1">Provider</p>
+            <p className="font-semibold text-gray-900">{deal.verification.titleSearch.provider}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Completed Date</p>
-            <p className="font-semibold text-slate-100">{deal.verification.titleSearch.completedDate}</p>
+            <p className="text-xs text-gray-600 mb-1">Completed Date</p>
+            <p className="font-semibold text-gray-900">{deal.verification.titleSearch.completedDate}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Title Reference</p>
-            <p className="font-semibold text-slate-100">{deal.verification.titleSearch.titleReference}</p>
+            <p className="text-xs text-gray-600 mb-1">Title Reference</p>
+            <p className="font-semibold text-gray-900">{deal.verification.titleSearch.titleReference}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Registered Owner</p>
-            <p className="font-semibold text-slate-100">{deal.verification.titleSearch.registeredOwner}</p>
+            <p className="text-xs text-gray-600 mb-1">Registered Owner</p>
+            <p className="font-semibold text-gray-900">{deal.verification.titleSearch.registeredOwner}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Ownership Type</p>
-            <p className="font-semibold text-slate-100">{deal.verification.titleSearch.ownershipType}</p>
+            <p className="text-xs text-gray-600 mb-1">Ownership Type</p>
+            <p className="font-semibold text-gray-900">{deal.verification.titleSearch.ownershipType}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Ownership Match</p>
-            <p className="font-semibold text-slate-100">{deal.verification.titleSearch.ownershipMatch ? 'Yes' : 'No'}</p>
+            <p className="text-xs text-gray-600 mb-1">Ownership Match</p>
+            <p className="font-semibold text-gray-900">{deal.verification.titleSearch.ownershipMatch ? 'Yes' : 'No'}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Registered Mortgages</p>
+            <p className="text-xs text-gray-600 mb-1">Registered Mortgages</p>
             <ul className="space-y-1">
               {deal.verification.titleSearch.registeredMortgages.map((mortgage, idx) => (
-                <li key={idx} className="text-sm text-slate-300 flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-orange-400 mt-0.5 flex-shrink-0" />
+                <li key={idx} className="text-sm text-gray-600 flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-orange-600 mt-0.5 flex-shrink-0" />
                   {mortgage.mortgagee} - ${mortgage.amount.toLocaleString()} - {mortgage.status}
                 </li>
               ))}
             </ul>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Caveats</p>
+            <p className="text-xs text-gray-600 mb-1">Caveats</p>
             <ul className="space-y-1">
               {deal.verification.titleSearch.caveats.map((caveat, idx) => (
-                <li key={idx} className="text-sm text-slate-300 flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-orange-400 mt-0.5 flex-shrink-0" />
+                <li key={idx} className="text-sm text-gray-600 flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-orange-600 mt-0.5 flex-shrink-0" />
                   {caveat.caveator} - {caveat.reason} - {caveat.priority}
                 </li>
               ))}
             </ul>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Easements</p>
+            <p className="text-xs text-gray-600 mb-1">Easements</p>
             <ul className="space-y-1">
               {deal.verification.titleSearch.easements.map((easement, idx) => (
-                <li key={idx} className="text-sm text-slate-300 flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-orange-400 mt-0.5 flex-shrink-0" />
+                <li key={idx} className="text-sm text-gray-600 flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-orange-600 mt-0.5 flex-shrink-0" />
                   {easement.beneficiary} - {easement.details} - {easement.impact}
                 </li>
               ))}
             </ul>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Restrictions</p>
-            <p className="font-semibold text-slate-100">{deal.verification.titleSearch.restrictions}</p>
+            <p className="text-xs text-gray-600 mb-1">Restrictions</p>
+            <p className="font-semibold text-gray-900">{deal.verification.titleSearch.restrictions}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Covenants</p>
-            <p className="font-semibold text-slate-100">{deal.verification.titleSearch.covenants}</p>
+            <p className="text-xs text-gray-600 mb-1">Covenants</p>
+            <p className="font-semibold text-gray-900">{deal.verification.titleSearch.covenants}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Zoning</p>
-            <p className="font-semibold text-slate-100">{deal.verification.titleSearch.zoning}</p>
+            <p className="text-xs text-gray-600 mb-1">Zoning</p>
+            <p className="font-semibold text-gray-900">{deal.verification.titleSearch.zoning}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Zoning Compliant</p>
-            <p className="font-semibold text-slate-100">{deal.verification.titleSearch.zoningCompliant ? 'Yes' : 'No'}</p>
+            <p className="text-xs text-gray-600 mb-1">Zoning Compliant</p>
+            <p className="font-semibold text-gray-900">{deal.verification.titleSearch.zoningCompliant ? 'Yes' : 'No'}</p>
           </div>
         </div>
       </div>
 
       {/* KYC Verification */}
-      <div className="bg-white border border-white/10 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-slate-100 mb-4">KYC Verification</h3>
+      <div className="bg-white border border-gray-300 rounded-lg p-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">KYC Verification</h3>
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <p className="text-xs text-slate-300 mb-1">Status</p>
-            <p className="font-semibold text-slate-100">{deal.verification.kycVerification.companyVerification.status}</p>
+            <p className="text-xs text-gray-600 mb-1">Status</p>
+            <p className="font-semibold text-gray-900">{deal.verification.kycVerification.companyVerification.status}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">ASIC Search</p>
-            <p className="font-semibold text-slate-100">{deal.verification.kycVerification.companyVerification.asicSearch}</p>
+            <p className="text-xs text-gray-600 mb-1">ASIC Search</p>
+            <p className="font-semibold text-gray-900">{deal.verification.kycVerification.companyVerification.asicSearch}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">ABN</p>
-            <p className="font-semibold text-slate-100">{deal.verification.kycVerification.companyVerification.abn}</p>
+            <p className="text-xs text-gray-600 mb-1">ABN</p>
+            <p className="font-semibold text-gray-900">{deal.verification.kycVerification.companyVerification.abn}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">ACN</p>
-            <p className="font-semibold text-slate-100">{deal.verification.kycVerification.companyVerification.acn}</p>
+            <p className="text-xs text-gray-600 mb-1">ACN</p>
+            <p className="font-semibold text-gray-900">{deal.verification.kycVerification.companyVerification.acn}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Registered Office</p>
-            <p className="font-semibold text-slate-100">{deal.verification.kycVerification.companyVerification.registeredOffice ? 'Yes' : 'No'}</p>
+            <p className="text-xs text-gray-600 mb-1">Registered Office</p>
+            <p className="font-semibold text-gray-900">{deal.verification.kycVerification.companyVerification.registeredOffice ? 'Yes' : 'No'}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Business Names</p>
+            <p className="text-xs text-gray-600 mb-1">Business Names</p>
             <ul className="space-y-1">
               {deal.verification.kycVerification.companyVerification.businessNames.map((name, idx) => (
-                <li key={idx} className="text-sm text-slate-300 flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-orange-400 mt-0.5 flex-shrink-0" />
+                <li key={idx} className="text-sm text-gray-600 flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-orange-600 mt-0.5 flex-shrink-0" />
                   {name}
                 </li>
               ))}
             </ul>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Registration Date</p>
-            <p className="font-semibold text-slate-100">{deal.verification.kycVerification.companyVerification.registrationDate}</p>
+            <p className="text-xs text-gray-600 mb-1">Registration Date</p>
+            <p className="font-semibold text-gray-900">{deal.verification.kycVerification.companyVerification.registrationDate}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Company Type</p>
-            <p className="font-semibold text-slate-100">{deal.verification.kycVerification.companyVerification.companyType}</p>
+            <p className="text-xs text-gray-600 mb-1">Company Type</p>
+            <p className="font-semibold text-gray-900">{deal.verification.kycVerification.companyVerification.companyType}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">ABN Status</p>
-            <p className="font-semibold text-slate-100">{deal.verification.kycVerification.companyVerification.abnStatus}</p>
+            <p className="text-xs text-gray-600 mb-1">ABN Status</p>
+            <p className="font-semibold text-gray-900">{deal.verification.kycVerification.companyVerification.abnStatus}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">GST Registered</p>
-            <p className="font-semibold text-slate-100">{deal.verification.kycVerification.companyVerification.gstRegistered ? 'Yes' : 'No'}</p>
+            <p className="text-xs text-gray-600 mb-1">GST Registered</p>
+            <p className="font-semibold text-gray-900">{deal.verification.kycVerification.companyVerification.gstRegistered ? 'Yes' : 'No'}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Director Verification</p>
+            <p className="text-xs text-gray-600 mb-1">Director Verification</p>
             <ul className="space-y-1">
               {deal.verification.kycVerification.directorVerification.map((director, idx) => (
-                <li key={idx} className="text-sm text-slate-300 flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-orange-400 mt-0.5 flex-shrink-0" />
+                <li key={idx} className="text-sm text-gray-600 flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-orange-600 mt-0.5 flex-shrink-0" />
                   {director.name} - {director.idType} - {director.idNumber}
                 </li>
               ))}
@@ -1435,51 +1435,51 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
       </div>
 
       {/* AML/CTF Compliance */}
-      <div className="bg-white border border-white/10 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-slate-100 mb-4">AML/CTF Compliance</h3>
+      <div className="bg-white border border-gray-300 rounded-lg p-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">AML/CTF Compliance</h3>
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <p className="text-xs text-slate-300 mb-1">Status</p>
-            <p className="font-semibold text-slate-100">{deal.verification.amlCompliance.status}</p>
+            <p className="text-xs text-gray-600 mb-1">Status</p>
+            <p className="font-semibold text-gray-900">{deal.verification.amlCompliance.status}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Risk Rating</p>
-            <p className="font-semibold text-slate-100">{deal.verification.amlCompliance.riskRating}</p>
+            <p className="text-xs text-gray-600 mb-1">Risk Rating</p>
+            <p className="font-semibold text-gray-900">{deal.verification.amlCompliance.riskRating}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Source of Funds</p>
-            <p className="font-semibold text-slate-100">{deal.verification.amlCompliance.sourceOfFunds}</p>
+            <p className="text-xs text-gray-600 mb-1">Source of Funds</p>
+            <p className="font-semibold text-gray-900">{deal.verification.amlCompliance.sourceOfFunds}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Purpose Verified</p>
-            <p className="font-semibold text-slate-100">{deal.verification.amlCompliance.purposeVerified ? 'Yes' : 'No'}</p>
+            <p className="text-xs text-gray-600 mb-1">Purpose Verified</p>
+            <p className="font-semibold text-gray-900">{deal.verification.amlCompliance.purposeVerified ? 'Yes' : 'No'}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Ongoing Monitoring</p>
-            <p className="font-semibold text-slate-100">{deal.verification.amlCompliance.ongoingMonitoring}</p>
+            <p className="text-xs text-gray-600 mb-1">Ongoing Monitoring</p>
+            <p className="font-semibold text-gray-900">{deal.verification.amlCompliance.ongoingMonitoring}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">PEP Screening</p>
-            <p className="font-semibold text-slate-100">{deal.verification.amlCompliance.pepScreening}</p>
+            <p className="text-xs text-gray-600 mb-1">PEP Screening</p>
+            <p className="font-semibold text-gray-900">{deal.verification.amlCompliance.pepScreening}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Sanctions Screening</p>
-            <p className="font-semibold text-slate-100">{deal.verification.amlCompliance.sanctionsScreening}</p>
+            <p className="text-xs text-gray-600 mb-1">Sanctions Screening</p>
+            <p className="font-semibold text-gray-900">{deal.verification.amlCompliance.sanctionsScreening}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Adverse Media</p>
-            <p className="font-semibold text-slate-100">{deal.verification.amlCompliance.adverseMedia}</p>
+            <p className="text-xs text-gray-600 mb-1">Adverse Media</p>
+            <p className="font-semibold text-gray-900">{deal.verification.amlCompliance.adverseMedia}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Country Risk</p>
-            <p className="font-semibold text-slate-100">{deal.verification.amlCompliance.countryRisk}</p>
+            <p className="text-xs text-gray-600 mb-1">Country Risk</p>
+            <p className="font-semibold text-gray-900">{deal.verification.amlCompliance.countryRisk}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Beneficial Owners</p>
+            <p className="text-xs text-gray-600 mb-1">Beneficial Owners</p>
             <ul className="space-y-1">
               {deal.verification.amlCompliance.beneficialOwners.map((owner, idx) => (
-                <li key={idx} className="text-sm text-slate-300 flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-orange-400 mt-0.5 flex-shrink-0" />
+                <li key={idx} className="text-sm text-gray-600 flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-orange-600 mt-0.5 flex-shrink-0" />
                   {owner.name} - {owner.ownership} - {owner.verified ? 'Yes' : 'No'}
                 </li>
               ))}
@@ -1489,82 +1489,82 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
       </div>
 
       {/* Document Verification */}
-      <div className="bg-white border border-white/10 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-slate-100 mb-4">Document Verification</h3>
+      <div className="bg-white border border-gray-300 rounded-lg p-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Document Verification</h3>
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <p className="text-xs text-slate-300 mb-1">Financial Statements</p>
-            <p className="font-semibold text-slate-100">{deal.verification.documentVerification.financialStatements.status}</p>
+            <p className="text-xs text-gray-600 mb-1">Financial Statements</p>
+            <p className="font-semibold text-gray-900">{deal.verification.documentVerification.financialStatements.status}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Audited</p>
-            <p className="font-semibold text-slate-100">{deal.verification.documentVerification.financialStatements.audited ? 'Yes' : 'No'}</p>
+            <p className="text-xs text-gray-600 mb-1">Audited</p>
+            <p className="font-semibold text-gray-900">{deal.verification.documentVerification.financialStatements.audited ? 'Yes' : 'No'}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Auditor</p>
-            <p className="font-semibold text-slate-100">{deal.verification.documentVerification.financialStatements.auditor}</p>
+            <p className="text-xs text-gray-600 mb-1">Auditor</p>
+            <p className="font-semibold text-gray-900">{deal.verification.documentVerification.financialStatements.auditor}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Period</p>
-            <p className="font-semibold text-slate-100">{deal.verification.documentVerification.financialStatements.period}</p>
+            <p className="text-xs text-gray-600 mb-1">Period</p>
+            <p className="font-semibold text-gray-900">{deal.verification.documentVerification.financialStatements.period}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Verified</p>
-            <p className="font-semibold text-slate-100">{deal.verification.documentVerification.financialStatements.verified ? 'Yes' : 'No'}</p>
+            <p className="text-xs text-gray-600 mb-1">Verified</p>
+            <p className="font-semibold text-gray-900">{deal.verification.documentVerification.financialStatements.verified ? 'Yes' : 'No'}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Bank Statements</p>
-            <p className="font-semibold text-slate-100">{deal.verification.documentVerification.bankStatements.status}</p>
+            <p className="text-xs text-gray-600 mb-1">Bank Statements</p>
+            <p className="font-semibold text-gray-900">{deal.verification.documentVerification.bankStatements.status}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Months</p>
-            <p className="font-semibold text-slate-100">{deal.verification.documentVerification.bankStatements.months}</p>
+            <p className="text-xs text-gray-600 mb-1">Months</p>
+            <p className="font-semibold text-gray-900">{deal.verification.documentVerification.bankStatements.months}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Verified</p>
-            <p className="font-semibold text-slate-100">{deal.verification.documentVerification.bankStatements.verified ? 'Yes' : 'No'}</p>
+            <p className="text-xs text-gray-600 mb-1">Verified</p>
+            <p className="font-semibold text-gray-900">{deal.verification.documentVerification.bankStatements.verified ? 'Yes' : 'No'}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Anomalies</p>
-            <p className="font-semibold text-slate-100">{deal.verification.documentVerification.bankStatements.anomalies}</p>
+            <p className="text-xs text-gray-600 mb-1">Anomalies</p>
+            <p className="font-semibold text-gray-900">{deal.verification.documentVerification.bankStatements.anomalies}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Tax Returns</p>
-            <p className="font-semibold text-slate-100">{deal.verification.documentVerification.taxReturns.status}</p>
+            <p className="text-xs text-gray-600 mb-1">Tax Returns</p>
+            <p className="font-semibold text-gray-900">{deal.verification.documentVerification.taxReturns.status}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Years</p>
-            <p className="font-semibold text-slate-100">{deal.verification.documentVerification.taxReturns.years}</p>
+            <p className="text-xs text-gray-600 mb-1">Years</p>
+            <p className="font-semibold text-gray-900">{deal.verification.documentVerification.taxReturns.years}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Lodged</p>
-            <p className="font-semibold text-slate-100">{deal.verification.documentVerification.taxReturns.lodged ? 'Yes' : 'No'}</p>
+            <p className="text-xs text-gray-600 mb-1">Lodged</p>
+            <p className="font-semibold text-gray-900">{deal.verification.documentVerification.taxReturns.lodged ? 'Yes' : 'No'}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Verified</p>
-            <p className="font-semibold text-slate-100">{deal.verification.documentVerification.taxReturns.verified ? 'Yes' : 'No'}</p>
+            <p className="text-xs text-gray-600 mb-1">Verified</p>
+            <p className="font-semibold text-gray-900">{deal.verification.documentVerification.taxReturns.verified ? 'Yes' : 'No'}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Insurance Certificates</p>
-            <p className="font-semibold text-slate-100">{deal.verification.documentVerification.insuranceCertificates.status}</p>
+            <p className="text-xs text-gray-600 mb-1">Insurance Certificates</p>
+            <p className="font-semibold text-gray-900">{deal.verification.documentVerification.insuranceCertificates.status}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Required</p>
+            <p className="text-xs text-gray-600 mb-1">Required</p>
             <ul className="space-y-1">
               {deal.verification.documentVerification.insuranceCertificates.required.map((cert, idx) => (
-                <li key={idx} className="text-sm text-slate-300 flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-orange-400 mt-0.5 flex-shrink-0" />
+                <li key={idx} className="text-sm text-gray-600 flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-orange-600 mt-0.5 flex-shrink-0" />
                   {cert}
                 </li>
               ))}
             </ul>
           </div>
           <div>
-            <p className="text-xs text-slate-300 mb-1">Received</p>
+            <p className="text-xs text-gray-600 mb-1">Received</p>
             <ul className="space-y-1">
               {deal.verification.documentVerification.insuranceCertificates.received.map((cert, idx) => (
-                <li key={idx} className="text-sm text-slate-300 flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-orange-400 mt-0.5 flex-shrink-0" />
+                <li key={idx} className="text-sm text-gray-600 flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-orange-600 mt-0.5 flex-shrink-0" />
                   {cert}
                 </li>
               ))}
@@ -1609,8 +1609,8 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
             <ArrowLeft className="w-5 h-5" />
           </Button>
           <div className="flex-1">
-            <h1 className="text-2xl font-bold text-slate-100">Application Review</h1>
-            <p className="text-slate-300 text-sm">{deal.id} • {deal.broker.company}</p>
+            <h1 className="text-2xl font-bold text-gray-900">Application Review</h1>
+            <p className="text-gray-600 text-sm">{deal.id} • {deal.broker.company}</p>
           </div>
           <div className="flex items-center gap-2">
             <Button variant="outline" onClick={() => onNavigate?.('borrower-portal')}>
@@ -1634,7 +1634,7 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
       </div>
 
       {/* Tabs */}
-      <div className="border-b border-white/10 mb-6">
+      <div className="border-b border-gray-200 mb-6">
         <div className="flex gap-1 overflow-x-auto">
           {tabs.map((tab) => {
             const Icon = tab.icon;
@@ -1644,8 +1644,8 @@ export function EnhancedDealView({ onNavigate, onBack }: EnhancedDealViewProps) 
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-2 px-4 py-3 border-b-2 font-medium text-sm whitespace-nowrap transition-colors ${
                   activeTab === tab.id
-                    ? 'border-blue-600 text-blue-400'
-                    : 'border-transparent text-slate-300 hover:text-slate-100 hover:border-white/10'
+                    ? 'border-blue-600 text-blue-600'
+                    : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
                 }`}
               >
                 <Icon className="w-4 h-4" />

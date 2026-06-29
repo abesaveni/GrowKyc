@@ -363,9 +363,9 @@ export function ComplianceChecklist() {
   const getStatusIcon = (status: ChecklistItem['status']) => {
     switch (status) {
       case 'complete':
-        return <CheckCircle className="w-5 h-5 text-green-400" />;
+        return <CheckCircle className="w-5 h-5 text-green-600" />;
       case 'requires-attention':
-        return <AlertCircle className="w-5 h-5 text-orange-400" />;
+        return <AlertCircle className="w-5 h-5 text-orange-600" />;
       case 'not-applicable':
         return <Circle className="w-5 h-5 text-gray-400" />;
       default:
@@ -375,10 +375,10 @@ export function ComplianceChecklist() {
 
   const getStatusBadge = (status: ChecklistItem['status']) => {
     const styles = {
-      complete: 'bg-green-500/15 text-green-300',
-      pending: 'bg-amber-500/15 text-amber-300',
-      'not-applicable': 'bg-white/5 text-slate-300',
-      'requires-attention': 'bg-orange-500/15 text-orange-300'
+      complete: 'bg-green-100 text-green-700',
+      pending: 'bg-amber-100 text-amber-700',
+      'not-applicable': 'bg-gray-100 text-gray-700',
+      'requires-attention': 'bg-orange-100 text-orange-700'
     };
 
     const labels = {
@@ -438,34 +438,34 @@ export function ComplianceChecklist() {
   return (
     <div className="space-y-6">
       {/* Overall Progress */}
-      <div className="bg-white border border-white/10 rounded-lg p-6">
+      <div className="bg-white border border-gray-300 rounded-lg p-6">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h3 className="text-lg font-semibold text-slate-100">Compliance Checklist</h3>
-            <p className="text-sm text-slate-300">Track all mandatory checks and documentation</p>
+            <h3 className="text-lg font-semibold text-gray-900">Compliance Checklist</h3>
+            <p className="text-sm text-gray-600">Track all mandatory checks and documentation</p>
           </div>
           <div className="flex items-center gap-4">
             <div className="text-right">
-              <p className="text-2xl font-bold text-slate-100">{stats.percentage}%</p>
-              <p className="text-xs text-slate-300">Complete</p>
+              <p className="text-2xl font-bold text-gray-900">{stats.percentage}%</p>
+              <p className="text-xs text-gray-600">Complete</p>
             </div>
             <div className="text-right">
-              <p className="text-2xl font-bold text-slate-100">
+              <p className="text-2xl font-bold text-gray-900">
                 {stats.completed}/{stats.total}
               </p>
-              <p className="text-xs text-slate-300">Mandatory Items</p>
+              <p className="text-xs text-gray-600">Mandatory Items</p>
             </div>
             {stats.attention > 0 && (
               <div className="text-right">
-                <p className="text-2xl font-bold text-orange-400">{stats.attention}</p>
-                <p className="text-xs text-slate-300">Needs Attention</p>
+                <p className="text-2xl font-bold text-orange-600">{stats.attention}</p>
+                <p className="text-xs text-gray-600">Needs Attention</p>
               </div>
             )}
           </div>
         </div>
         
         {/* Progress Bar */}
-        <div className="w-full bg-white/10 rounded-full h-3">
+        <div className="w-full bg-gray-200 rounded-full h-3">
           <div
             className="bg-green-600 h-3 rounded-full transition-all duration-300"
             style={{ width: `${stats.percentage}%` }}
@@ -475,16 +475,16 @@ export function ComplianceChecklist() {
 
       {/* Checklist Items by Category */}
       {Object.entries(groupedItems).map(([category, items]) => (
-        <div key={category} className="bg-white border border-white/10 rounded-lg p-6">
-          <h4 className="text-md font-semibold text-slate-100 mb-4">{category}</h4>
+        <div key={category} className="bg-white border border-gray-300 rounded-lg p-6">
+          <h4 className="text-md font-semibold text-gray-900 mb-4">{category}</h4>
           <div className="space-y-3">
             {items.map(item => (
               <div
                 key={item.id}
                 className={`border rounded-lg p-4 ${
                   item.status === 'requires-attention'
-                    ? 'border-orange-300 bg-orange-500/10'
-                    : 'border-white/10 bg-white/5'
+                    ? 'border-orange-300 bg-orange-50'
+                    : 'border-gray-200 bg-gray-50'
                 }`}
               >
                 <div className="flex items-start gap-3">
@@ -493,9 +493,9 @@ export function ComplianceChecklist() {
                     <div className="flex items-start justify-between mb-2">
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
-                          <p className="font-medium text-slate-100">{item.item}</p>
+                          <p className="font-medium text-gray-900">{item.item}</p>
                           {item.mandatory && (
-                            <span className="px-2 py-0.5 bg-red-500/15 text-red-300 text-xs font-medium rounded">
+                            <span className="px-2 py-0.5 bg-red-100 text-red-700 text-xs font-medium rounded">
                               Mandatory
                             </span>
                           )}
@@ -508,7 +508,7 @@ export function ComplianceChecklist() {
                           onChange={(e) =>
                             updateItemStatus(item.id, e.target.value as ChecklistItem['status'])
                           }
-                          className="text-xs border border-white/10 rounded px-2 py-1"
+                          className="text-xs border border-gray-300 rounded px-2 py-1"
                         >
                           <option value="pending">Pending</option>
                           <option value="complete">Complete</option>
@@ -525,7 +525,7 @@ export function ComplianceChecklist() {
                           value={noteText}
                           onChange={(e) => setNoteText(e.target.value)}
                           placeholder="Add notes or explanation..."
-                          className="w-full px-3 py-2 border border-white/10 rounded text-sm"
+                          className="w-full px-3 py-2 border border-gray-300 rounded text-sm"
                           rows={3}
                         />
                         <div className="flex items-center gap-2 mt-2">
@@ -549,15 +549,15 @@ export function ComplianceChecklist() {
                     ) : (
                       <>
                         {item.notes && (
-                          <div className="mt-2 p-3 bg-white rounded border border-white/10">
+                          <div className="mt-2 p-3 bg-white rounded border border-gray-200">
                             <div className="flex items-start justify-between">
                               <div className="flex items-start gap-2 flex-1">
                                 <MessageSquare className="w-4 h-4 text-gray-400 mt-0.5" />
-                                <p className="text-sm text-slate-300">{item.notes}</p>
+                                <p className="text-sm text-gray-700">{item.notes}</p>
                               </div>
                               <button
                                 onClick={() => startEditingNote(item)}
-                                className="text-xs text-blue-400 hover:text-blue-300"
+                                className="text-xs text-blue-600 hover:text-blue-700"
                               >
                                 Edit
                               </button>
@@ -567,7 +567,7 @@ export function ComplianceChecklist() {
                         {!item.notes && (
                           <button
                             onClick={() => startEditingNote(item)}
-                            className="mt-2 text-xs text-blue-400 hover:text-blue-300 flex items-center gap-1"
+                            className="mt-2 text-xs text-blue-600 hover:text-blue-700 flex items-center gap-1"
                           >
                             <MessageSquare className="w-3 h-3" />
                             Add Note
@@ -582,13 +582,13 @@ export function ComplianceChecklist() {
                         {item.attachments.map((att, idx) => (
                           <div
                             key={idx}
-                            className="flex items-center justify-between p-2 bg-white rounded border border-white/10"
+                            className="flex items-center justify-between p-2 bg-white rounded border border-gray-200"
                           >
                             <div className="flex items-center gap-2">
-                              <FileText className="w-4 h-4 text-blue-400" />
+                              <FileText className="w-4 h-4 text-blue-600" />
                               <div>
-                                <p className="text-sm font-medium text-slate-100">{att.name}</p>
-                                <p className="text-xs text-slate-400">
+                                <p className="text-sm font-medium text-gray-900">{att.name}</p>
+                                <p className="text-xs text-gray-500">
                                   {att.uploadedDate} by {att.uploadedBy}
                                 </p>
                               </div>
@@ -617,16 +617,16 @@ export function ComplianceChecklist() {
       ))}
 
       {/* Final Approval Section */}
-      <div className="bg-white border border-white/10 rounded-lg p-6">
-        <h4 className="text-md font-semibold text-slate-100 mb-4">Final Sign-off</h4>
+      <div className="bg-white border border-gray-300 rounded-lg p-6">
+        <h4 className="text-md font-semibold text-gray-900 mb-4">Final Sign-off</h4>
         <div className="space-y-4">
           <div className="flex items-start gap-3">
             <input type="checkbox" className="mt-1" />
             <div className="flex-1">
-              <p className="font-medium text-slate-100">
+              <p className="font-medium text-gray-900">
                 I confirm all mandatory compliance checks have been completed and reviewed
               </p>
-              <p className="text-sm text-slate-300 mt-1">
+              <p className="text-sm text-gray-600 mt-1">
                 All items marked as "Attention Required" have been documented with appropriate
                 explanations and supporting documentation
               </p>

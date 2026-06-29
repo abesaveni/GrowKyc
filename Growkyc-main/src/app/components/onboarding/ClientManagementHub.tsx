@@ -117,12 +117,12 @@ export function ClientManagementHub() {
             onClick={() => setCurrentView(item.id as ClientManagementView)}
             className={`p-6 rounded-lg border-2 transition-all ${
               isActive
-                ? 'border-blue-600 bg-blue-500/10'
-                : 'border-white/10 bg-white hover:border-white/10'
+                ? 'border-blue-600 bg-blue-50'
+                : 'border-gray-200 bg-white hover:border-gray-300'
             }`}
           >
-            <Icon className={`w-8 h-8 mx-auto mb-3 ${isActive ? 'text-blue-400' : 'text-gray-400'}`} />
-            <p className={`text-sm font-semibold text-center ${isActive ? 'text-blue-300' : 'text-slate-300'}`}>
+            <Icon className={`w-8 h-8 mx-auto mb-3 ${isActive ? 'text-blue-600' : 'text-gray-400'}`} />
+            <p className={`text-sm font-semibold text-center ${isActive ? 'text-blue-900' : 'text-gray-700'}`}>
               {item.label}
             </p>
           </button>
@@ -142,24 +142,24 @@ export function ClientManagementHub() {
         ].map((stat, idx) => {
           const Icon = stat.icon;
           return (
-            <div key={idx} className="bg-white border-2 border-white/10 rounded-lg p-6">
+            <div key={idx} className="bg-white border-2 border-gray-200 rounded-lg p-6">
               <div className="flex items-center justify-between mb-4">
-                <Icon className="w-8 h-8 text-blue-400" />
-                <span className="text-xs font-bold text-green-400 bg-green-500/15 px-2 py-1 rounded">
+                <Icon className="w-8 h-8 text-blue-600" />
+                <span className="text-xs font-bold text-green-600 bg-green-100 px-2 py-1 rounded">
                   {stat.change}
                 </span>
               </div>
-              <p className="text-3xl font-bold text-slate-100 mb-1">{stat.value}</p>
-              <p className="text-sm text-slate-300">{stat.label}</p>
+              <p className="text-3xl font-bold text-gray-900 mb-1">{stat.value}</p>
+              <p className="text-sm text-gray-600">{stat.label}</p>
             </div>
           );
         })}
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white border-2 border-white/10 rounded-lg p-6">
-          <h3 className="font-bold text-slate-100 mb-4 flex items-center gap-2">
-            <CheckSquare className="w-5 h-5 text-purple-400" />
+        <div className="bg-white border-2 border-gray-200 rounded-lg p-6">
+          <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <CheckSquare className="w-5 h-5 text-purple-600" />
             Recent Activity
           </h3>
           <div className="space-y-3">
@@ -170,22 +170,22 @@ export function ClientManagementHub() {
               { action: 'Document generated', client: 'Brown Holdings', time: '3 hours ago', type: 'info' },
               { action: 'Payment received', client: 'Green Enterprises', time: '4 hours ago', type: 'success' }
             ].map((activity, idx) => (
-              <div key={idx} className="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
+              <div key={idx} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
                 <div className={`w-2 h-2 rounded-full mt-2 ${
                   activity.type === 'success' ? 'bg-green-600' : 'bg-blue-600'
                 }`} />
                 <div className="flex-1">
-                  <p className="text-sm font-semibold text-slate-100">{activity.action}</p>
-                  <p className="text-xs text-slate-300">{activity.client} • {activity.time}</p>
+                  <p className="text-sm font-semibold text-gray-900">{activity.action}</p>
+                  <p className="text-xs text-gray-600">{activity.client} • {activity.time}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="bg-white border-2 border-white/10 rounded-lg p-6">
-          <h3 className="font-bold text-slate-100 mb-4 flex items-center gap-2">
-            <Calendar className="w-5 h-5 text-blue-400" />
+        <div className="bg-white border-2 border-gray-200 rounded-lg p-6">
+          <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <Calendar className="w-5 h-5 text-blue-600" />
             Upcoming Tasks
           </h3>
           <div className="space-y-3">
@@ -196,16 +196,16 @@ export function ClientManagementHub() {
               { task: 'Prepare tax planning meeting pack', due: 'Friday, 9:00 AM', priority: 'low' },
               { task: 'Update client service agreements', due: 'Next Monday', priority: 'low' }
             ].map((item, idx) => (
-              <div key={idx} className="flex items-start gap-3 p-3 border border-white/10 rounded-lg">
+              <div key={idx} className="flex items-start gap-3 p-3 border border-gray-200 rounded-lg">
                 <input type="checkbox" className="mt-1 w-4 h-4" />
                 <div className="flex-1">
-                  <p className="text-sm font-semibold text-slate-100">{item.task}</p>
-                  <p className="text-xs text-slate-300">{item.due}</p>
+                  <p className="text-sm font-semibold text-gray-900">{item.task}</p>
+                  <p className="text-xs text-gray-600">{item.due}</p>
                 </div>
                 <span className={`px-2 py-1 text-xs font-bold rounded ${
-                  item.priority === 'high' ? 'bg-red-500/15 text-red-300' :
-                  item.priority === 'medium' ? 'bg-amber-500/15 text-amber-300' :
-                  'bg-white/5 text-slate-300'
+                  item.priority === 'high' ? 'bg-red-100 text-red-700' :
+                  item.priority === 'medium' ? 'bg-amber-100 text-amber-700' :
+                  'bg-gray-100 text-gray-700'
                 }`}>
                   {item.priority}
                 </span>
@@ -221,8 +221,8 @@ export function ClientManagementHub() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-slate-100">Client Management</h2>
-          <p className="text-slate-300">Import, sync, and manage your client database</p>
+          <h2 className="text-2xl font-bold text-gray-900">Client Management</h2>
+          <p className="text-gray-600">Import, sync, and manage your client database</p>
         </div>
         <div className="flex gap-3">
           <SecondaryButton onClick={() => toast.info('Import clients from Xero')}>
@@ -241,30 +241,30 @@ export function ClientManagementHub() {
       </div>
 
       {/* Filters and Search */}
-      <div className="bg-white border-2 border-white/10 rounded-lg p-4">
+      <div className="bg-white border-2 border-gray-200 rounded-lg p-4">
         <div className="flex gap-4">
           <div className="flex-1">
             <input
               type="text"
               placeholder="Search clients by name, ABN, or contact..."
-              className="w-full px-4 py-2 border border-white/10 rounded-lg"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg"
             />
           </div>
-          <select className="px-4 py-2 border border-white/10 rounded-lg">
+          <select className="px-4 py-2 border border-gray-300 rounded-lg">
             <option>All Segments</option>
             <option>High Value</option>
             <option>Medium Value</option>
             <option>Low Value</option>
             <option>Prospects</option>
           </select>
-          <select className="px-4 py-2 border border-white/10 rounded-lg">
+          <select className="px-4 py-2 border border-gray-300 rounded-lg">
             <option>All Entity Types</option>
             <option>Companies</option>
             <option>Trusts</option>
             <option>SMSFs</option>
             <option>Individuals</option>
           </select>
-          <button className="px-4 py-2 border border-white/10 rounded-lg hover:bg-white/5">
+          <button className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">
             <Filter className="w-4 h-4" />
           </button>
         </div>
@@ -278,32 +278,32 @@ export function ClientManagementHub() {
           { segment: 'Low Value', count: 389, color: 'gray', revenue: '$120K' },
           { segment: 'Prospects', count: 168, color: 'purple', revenue: '$2.1M potential' }
         ].map((seg, idx) => (
-          <div key={idx} className="bg-white border-2 border-green-500/30 rounded-lg p-4">
-            <p className="text-xs font-bold text-green-400 uppercase mb-2">{seg.segment}</p>
-            <p className="text-2xl font-bold text-slate-100">{seg.count}</p>
-            <p className="text-xs text-slate-300 mt-1">{seg.revenue}</p>
+          <div key={idx} className="bg-white border-2 border-green-200 rounded-lg p-4">
+            <p className="text-xs font-bold text-green-600 uppercase mb-2">{seg.segment}</p>
+            <p className="text-2xl font-bold text-gray-900">{seg.count}</p>
+            <p className="text-xs text-gray-600 mt-1">{seg.revenue}</p>
           </div>
         ))}
       </div>
 
       {/* Client List */}
-      <div className="bg-white border-2 border-white/10 rounded-lg overflow-hidden">
+      <div className="bg-white border-2 border-gray-200 rounded-lg overflow-hidden">
         <table className="w-full">
-          <thead className="bg-white/5 border-b-2 border-white/10">
+          <thead className="bg-gray-50 border-b-2 border-gray-200">
             <tr>
               <th className="px-4 py-3 text-left">
                 <input type="checkbox" className="w-4 h-4" />
               </th>
-              <th className="px-4 py-3 text-left text-xs font-bold text-slate-300 uppercase">Client Name</th>
-              <th className="px-4 py-3 text-left text-xs font-bold text-slate-300 uppercase">Entity Type</th>
-              <th className="px-4 py-3 text-left text-xs font-bold text-slate-300 uppercase">Segment</th>
-              <th className="px-4 py-3 text-left text-xs font-bold text-slate-300 uppercase">Services</th>
-              <th className="px-4 py-3 text-left text-xs font-bold text-slate-300 uppercase">Last Contact</th>
-              <th className="px-4 py-3 text-left text-xs font-bold text-slate-300 uppercase">Value</th>
-              <th className="px-4 py-3 text-left text-xs font-bold text-slate-300 uppercase">Actions</th>
+              <th className="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Client Name</th>
+              <th className="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Entity Type</th>
+              <th className="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Segment</th>
+              <th className="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Services</th>
+              <th className="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Last Contact</th>
+              <th className="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Value</th>
+              <th className="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-white/10">
+          <tbody className="divide-y divide-gray-200">
             {[
               { name: 'Acme Pty Ltd', type: 'Company', segment: 'High Value', services: ['Tax', 'Audit', 'Advisory'], lastContact: '2 days ago', value: '$45,000' },
               { name: 'Smith Family Trust', type: 'Trust', segment: 'Medium Value', services: ['Tax', 'Compliance'], lastContact: '1 week ago', value: '$18,500' },
@@ -311,15 +311,15 @@ export function ClientManagementHub() {
               { name: 'Brown Holdings Pty Ltd', type: 'Company', segment: 'High Value', services: ['Tax', 'CFO Services'], lastContact: '5 days ago', value: '$78,000' },
               { name: 'Green Enterprises', type: 'Partnership', segment: 'Medium Value', services: ['Tax', 'Bookkeeping'], lastContact: '1 day ago', value: '$22,000' }
             ].map((client, idx) => (
-              <tr key={idx} className="hover:bg-white/5">
+              <tr key={idx} className="hover:bg-gray-50">
                 <td className="px-4 py-3">
                   <input type="checkbox" className="w-4 h-4" />
                 </td>
                 <td className="px-4 py-3">
-                  <p className="font-semibold text-slate-100">{client.name}</p>
+                  <p className="font-semibold text-gray-900">{client.name}</p>
                 </td>
                 <td className="px-4 py-3">
-                  <span className="text-sm text-slate-300">{client.type}</span>
+                  <span className="text-sm text-gray-700">{client.type}</span>
                 </td>
                 <td className="px-4 py-3">
                   <StatusBadge 
@@ -329,34 +329,34 @@ export function ClientManagementHub() {
                 <td className="px-4 py-3">
                   <div className="flex flex-wrap gap-1">
                     {client.services.map((service, sidx) => (
-                      <span key={sidx} className="px-2 py-1 bg-blue-500/15 text-blue-300 text-xs rounded">
+                      <span key={sidx} className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded">
                         {service}
                       </span>
                     ))}
                   </div>
                 </td>
                 <td className="px-4 py-3">
-                  <span className="text-sm text-slate-300">{client.lastContact}</span>
+                  <span className="text-sm text-gray-600">{client.lastContact}</span>
                 </td>
                 <td className="px-4 py-3">
-                  <span className="font-semibold text-slate-100">{client.value}</span>
+                  <span className="font-semibold text-gray-900">{client.value}</span>
                 </td>
                 <td className="px-4 py-3">
                   <div className="flex gap-2">
                     <button 
-                      className="p-1 hover:bg-white/5 rounded"
+                      className="p-1 hover:bg-gray-100 rounded"
                       onClick={() => {
                         setSelectedClient(client);
                         setShowClientDetailModal(true);
                       }}
                     >
-                      <Eye className="w-4 h-4 text-slate-300" />
+                      <Eye className="w-4 h-4 text-gray-600" />
                     </button>
-                    <button className="p-1 hover:bg-white/5 rounded">
-                      <Edit className="w-4 h-4 text-slate-300" />
+                    <button className="p-1 hover:bg-gray-100 rounded">
+                      <Edit className="w-4 h-4 text-gray-600" />
                     </button>
-                    <button className="p-1 hover:bg-white/5 rounded">
-                      <Mail className="w-4 h-4 text-slate-300" />
+                    <button className="p-1 hover:bg-gray-100 rounded">
+                      <Mail className="w-4 h-4 text-gray-600" />
                     </button>
                   </div>
                 </td>
@@ -371,13 +371,13 @@ export function ClientManagementHub() {
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-6 py-4 rounded-lg shadow-lg flex items-center gap-4">
           <span className="font-semibold">{selectedClients.length} clients selected</span>
           <div className="flex gap-2">
-            <button className="px-4 py-2 bg-white text-blue-400 rounded hover:bg-white/5">
+            <button className="px-4 py-2 bg-white text-blue-600 rounded hover:bg-gray-100">
               Send Email
             </button>
-            <button className="px-4 py-2 bg-white text-blue-400 rounded hover:bg-white/5">
+            <button className="px-4 py-2 bg-white text-blue-600 rounded hover:bg-gray-100">
               Export
             </button>
-            <button className="px-4 py-2 bg-white text-blue-400 rounded hover:bg-white/5">
+            <button className="px-4 py-2 bg-white text-blue-600 rounded hover:bg-gray-100">
               Tag
             </button>
           </div>
@@ -390,8 +390,8 @@ export function ClientManagementHub() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-slate-100">Document Generation</h2>
-          <p className="text-slate-300">Templates, merge documents, and branded reports</p>
+          <h2 className="text-2xl font-bold text-gray-900">Document Generation</h2>
+          <p className="text-gray-600">Templates, merge documents, and branded reports</p>
         </div>
         <PrimaryButton onClick={() => toast.info('Create new template')}>
           <Plus className="w-4 h-4 mr-2" />
@@ -413,19 +413,19 @@ export function ClientManagementHub() {
             <button
               key={idx}
               onClick={() => toast.info(`Viewing ${category.label}`)}
-              className="p-6 bg-white border-2 border-white/10 rounded-lg hover:border-blue-300 text-left transition-colors"
+              className="p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-blue-300 text-left transition-colors"
             >
-              <Icon className="w-8 h-8 text-blue-400 mb-3" />
-              <p className="font-semibold text-slate-100">{category.label}</p>
-              <p className="text-sm text-slate-300">{category.count} templates</p>
+              <Icon className="w-8 h-8 text-blue-600 mb-3" />
+              <p className="font-semibold text-gray-900">{category.label}</p>
+              <p className="text-sm text-gray-600">{category.count} templates</p>
             </button>
           );
         })}
       </div>
 
       {/* Template Library */}
-      <div className="bg-white border-2 border-white/10 rounded-lg p-6">
-        <h3 className="font-bold text-slate-100 mb-4">Template Library</h3>
+      <div className="bg-white border-2 border-gray-200 rounded-lg p-6">
+        <h3 className="font-bold text-gray-900 mb-4">Template Library</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {[
             { name: 'Annual Tax Engagement Letter', type: 'Letter', variables: ['client_name', 'service_list', 'fee'], lastUsed: '2 days ago' },
@@ -435,18 +435,18 @@ export function ClientManagementHub() {
             { name: 'Tax Planning Proposal', type: 'Proposal', variables: ['client_name', 'strategies', 'pricing'], lastUsed: '5 days ago' },
             { name: 'Advisory Services Agreement', type: 'Agreement', variables: ['client_name', 'scope', 'terms'], lastUsed: '1 week ago' }
           ].map((template, idx) => (
-            <div key={idx} className="border-2 border-white/10 rounded-lg p-4 hover:border-blue-300">
+            <div key={idx} className="border-2 border-gray-200 rounded-lg p-4 hover:border-blue-300">
               <div className="flex items-start justify-between mb-3">
-                <FileText className="w-6 h-6 text-blue-400" />
-                <span className="px-2 py-1 bg-white/5 text-slate-300 text-xs font-bold rounded">
+                <FileText className="w-6 h-6 text-blue-600" />
+                <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-bold rounded">
                   {template.type}
                 </span>
               </div>
-              <h4 className="font-semibold text-slate-100 mb-2">{template.name}</h4>
-              <p className="text-xs text-slate-300 mb-3">
+              <h4 className="font-semibold text-gray-900 mb-2">{template.name}</h4>
+              <p className="text-xs text-gray-600 mb-3">
                 Variables: {template.variables.join(', ')}
               </p>
-              <p className="text-xs text-slate-400 mb-3">Last used: {template.lastUsed}</p>
+              <p className="text-xs text-gray-500 mb-3">Last used: {template.lastUsed}</p>
               <div className="flex gap-2">
                 <button 
                   onClick={() => {
@@ -459,13 +459,13 @@ export function ClientManagementHub() {
                 </button>
                 <button 
                   onClick={() => toast.info(`Editing template: ${template.name}`)}
-                  className="px-3 py-2 border border-white/10 text-sm rounded hover:bg-white/5"
+                  className="px-3 py-2 border border-gray-300 text-sm rounded hover:bg-gray-50"
                 >
                   <Edit className="w-4 h-4" />
                 </button>
                 <button 
                   onClick={() => toast.info(`Copying template: ${template.name}`)}
-                  className="px-3 py-2 border border-white/10 text-sm rounded hover:bg-white/5"
+                  className="px-3 py-2 border border-gray-300 text-sm rounded hover:bg-gray-50"
                 >
                   <Copy className="w-4 h-4" />
                 </button>
@@ -480,19 +480,19 @@ export function ClientManagementHub() {
         <h3 className="font-bold text-xl mb-2">Quick Document Generation</h3>
         <p className="mb-4 opacity-90">Select a client and template to generate a document instantly</p>
         <div className="flex gap-4">
-          <select className="flex-1 px-4 py-3 bg-white text-slate-100 rounded-lg">
+          <select className="flex-1 px-4 py-3 bg-white text-gray-900 rounded-lg">
             <option>Select Client...</option>
             <option>Acme Pty Ltd</option>
             <option>Smith Family Trust</option>
             <option>Jones Superannuation Fund</option>
           </select>
-          <select className="flex-1 px-4 py-3 bg-white text-slate-100 rounded-lg">
+          <select className="flex-1 px-4 py-3 bg-white text-gray-900 rounded-lg">
             <option>Select Template...</option>
             <option>Annual Tax Engagement Letter</option>
             <option>SMSF Annual Report</option>
             <option>Quarterly Business Review</option>
           </select>
-          <button className="px-6 py-3 bg-white text-blue-400 font-semibold rounded-lg hover:bg-white/5">
+          <button className="px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100">
             Generate <ArrowRight className="w-4 h-4 inline ml-2" />
           </button>
         </div>
@@ -504,8 +504,8 @@ export function ClientManagementHub() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-slate-100">Workflows & Automation</h2>
-          <p className="text-slate-300">Task lists, checklists, and automated processes</p>
+          <h2 className="text-2xl font-bold text-gray-900">Workflows & Automation</h2>
+          <p className="text-gray-600">Task lists, checklists, and automated processes</p>
         </div>
         <PrimaryButton onClick={() => toast.info('Create new workflow')}>
           <Plus className="w-4 h-4 mr-2" />
@@ -523,10 +523,10 @@ export function ClientManagementHub() {
         ].map((stat, idx) => {
           const Icon = stat.icon;
           return (
-            <div key={idx} className="bg-white border-2 border-white/10 rounded-lg p-4">
+            <div key={idx} className="bg-white border-2 border-gray-200 rounded-lg p-4">
               <Icon className={`w-6 h-6 text-${stat.color}-600 mb-3`} />
-              <p className="text-2xl font-bold text-slate-100">{stat.value}</p>
-              <p className="text-sm text-slate-300">{stat.label}</p>
+              <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
+              <p className="text-sm text-gray-600">{stat.label}</p>
             </div>
           );
         })}
@@ -578,24 +578,24 @@ export function ClientManagementHub() {
             status: 'draft' as const
           }
         ].map((workflow, idx) => (
-          <div key={idx} className="bg-white border-2 border-white/10 rounded-lg p-6">
+          <div key={idx} className="bg-white border-2 border-gray-200 rounded-lg p-6">
             <div className="flex items-start justify-between mb-4">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
-                  <h3 className="font-bold text-slate-100">{workflow.name}</h3>
+                  <h3 className="font-bold text-gray-900">{workflow.name}</h3>
                   <StatusBadge status={workflow.status === 'active' ? 'approved' : 'draft'} />
                 </div>
-                <p className="text-sm text-slate-300">{workflow.description}</p>
+                <p className="text-sm text-gray-600">{workflow.description}</p>
               </div>
-              <Workflow className="w-6 h-6 text-purple-400" />
+              <Workflow className="w-6 h-6 text-purple-600" />
             </div>
 
             <div className="space-y-3 mb-4">
               <div>
-                <p className="text-xs font-bold text-slate-300 uppercase mb-2">Steps ({workflow.steps.length})</p>
+                <p className="text-xs font-bold text-gray-700 uppercase mb-2">Steps ({workflow.steps.length})</p>
                 <div className="flex flex-wrap gap-2">
                   {workflow.steps.map((step, sidx) => (
-                    <span key={sidx} className="px-2 py-1 bg-purple-500/15 text-purple-300 text-xs rounded">
+                    <span key={sidx} className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded">
                       {sidx + 1}. {step}
                     </span>
                   ))}
@@ -603,10 +603,10 @@ export function ClientManagementHub() {
               </div>
 
               <div>
-                <p className="text-xs font-bold text-slate-300 uppercase mb-2">Triggers</p>
+                <p className="text-xs font-bold text-gray-700 uppercase mb-2">Triggers</p>
                 <div className="flex flex-wrap gap-2">
                   {workflow.triggers.map((trigger, tidx) => (
-                    <span key={tidx} className="px-2 py-1 bg-blue-500/15 text-blue-300 text-xs rounded">
+                    <span key={tidx} className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded">
                       {trigger}
                     </span>
                   ))}
@@ -618,10 +618,10 @@ export function ClientManagementHub() {
               <button className="flex-1 px-4 py-2 bg-purple-600 text-white text-sm rounded hover:bg-purple-700">
                 View Workflow
               </button>
-              <button className="px-4 py-2 border border-white/10 text-sm rounded hover:bg-white/5">
+              <button className="px-4 py-2 border border-gray-300 text-sm rounded hover:bg-gray-50">
                 <Edit className="w-4 h-4" />
               </button>
-              <button className="px-4 py-2 border border-white/10 text-sm rounded hover:bg-white/5">
+              <button className="px-4 py-2 border border-gray-300 text-sm rounded hover:bg-gray-50">
                 <Copy className="w-4 h-4" />
               </button>
             </div>
@@ -635,8 +635,8 @@ export function ClientManagementHub() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-slate-100">Client Portal</h2>
-          <p className="text-slate-300">Secure access for clients to view documents and communicate</p>
+          <h2 className="text-2xl font-bold text-gray-900">Client Portal</h2>
+          <p className="text-gray-600">Secure access for clients to view documents and communicate</p>
         </div>
         <PrimaryButton onClick={() => toast.info('Configure client portal')}>
           <Plus className="w-4 h-4 mr-2" />
@@ -654,10 +654,10 @@ export function ClientManagementHub() {
         ].map((stat, idx) => {
           const Icon = stat.icon;
           return (
-            <div key={idx} className="bg-white border-2 border-white/10 rounded-lg p-4">
+            <div key={idx} className="bg-white border-2 border-gray-200 rounded-lg p-4">
               <Icon className={`w-6 h-6 text-${stat.color}-600 mb-3`} />
-              <p className="text-2xl font-bold text-slate-100">{stat.value}</p>
-              <p className="text-sm text-slate-300">{stat.label}</p>
+              <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
+              <p className="text-sm text-gray-600">{stat.label}</p>
             </div>
           );
         })}
@@ -697,16 +697,16 @@ export function ClientManagementHub() {
             status: 'active' as const
           }
         ].map((feature, idx) => (
-          <div key={idx} className="bg-white border-2 border-white/10 rounded-lg p-6">
+          <div key={idx} className="bg-white border-2 border-gray-200 rounded-lg p-6">
             <div className="flex items-start justify-between mb-4">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
-                  <h3 className="font-bold text-slate-100">{feature.name}</h3>
+                  <h3 className="font-bold text-gray-900">{feature.name}</h3>
                   <StatusBadge status={feature.status === 'active' ? 'approved' : 'draft'} />
                 </div>
-                <p className="text-sm text-slate-300">{feature.description}</p>
+                <p className="text-sm text-gray-600">{feature.description}</p>
               </div>
-              <Network className="w-6 h-6 text-blue-400" />
+              <Network className="w-6 h-6 text-blue-600" />
             </div>
 
             <div className="flex gap-2">
@@ -721,13 +721,13 @@ export function ClientManagementHub() {
               </button>
               <button 
                 onClick={() => toast.info(`Editing ${feature.name}`)}
-                className="px-4 py-2 border border-white/10 text-sm rounded hover:bg-white/5"
+                className="px-4 py-2 border border-gray-300 text-sm rounded hover:bg-gray-50"
               >
                 <Edit className="w-4 h-4" />
               </button>
               <button 
                 onClick={() => toast.info(`Copying ${feature.name}`)}
-                className="px-4 py-2 border border-white/10 text-sm rounded hover:bg-white/5"
+                className="px-4 py-2 border border-gray-300 text-sm rounded hover:bg-gray-50"
               >
                 <Copy className="w-4 h-4" />
               </button>
@@ -774,12 +774,12 @@ export function ClientManagementHub() {
   };
 
   return (
-    <div className="min-h-screen bg-white/5 p-6">
+    <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-slate-100 mb-2">Client Management Hub</h1>
-          <p className="text-slate-300">Comprehensive client lifecycle management with automation and AI</p>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Client Management Hub</h1>
+          <p className="text-gray-600">Comprehensive client lifecycle management with automation and AI</p>
         </div>
 
         {/* Navigation */}
@@ -845,10 +845,10 @@ export function ClientManagementHub() {
 
 function PlaceholderView({ title, description, icon: Icon }: { title: string; description: string; icon: any }) {
   return (
-    <div className="bg-white border-2 border-white/10 rounded-lg p-12 text-center">
+    <div className="bg-white border-2 border-gray-200 rounded-lg p-12 text-center">
       <Icon className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-      <h2 className="text-2xl font-bold text-slate-100 mb-2">{title}</h2>
-      <p className="text-slate-300 mb-6">{description}</p>
+      <h2 className="text-2xl font-bold text-gray-900 mb-2">{title}</h2>
+      <p className="text-gray-600 mb-6">{description}</p>
       <PrimaryButton onClick={() => toast.info(`${title} module coming soon`)}>
         Explore {title}
       </PrimaryButton>
@@ -863,16 +863,16 @@ function TemplateEditorModal({ template, onClose, onGenerate }: { template: any;
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-6">
       <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col">
         {/* Header */}
-        <div className="px-6 py-4 border-b border-white/10 flex items-center justify-between">
+        <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-bold text-slate-100">{template.name}</h2>
-            <p className="text-sm text-slate-300 mt-1">Fill in the template variables to generate your document</p>
+            <h2 className="text-2xl font-bold text-gray-900">{template.name}</h2>
+            <p className="text-sm text-gray-600 mt-1">Fill in the template variables to generate your document</p>
           </div>
           <button 
             onClick={onClose}
-            className="p-2 hover:bg-white/5 rounded-lg transition-colors"
+            className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
           >
-            <svg className="w-6 h-6 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
@@ -883,17 +883,17 @@ function TemplateEditorModal({ template, onClose, onGenerate }: { template: any;
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Left: Form */}
             <div className="space-y-4">
-              <h3 className="font-bold text-slate-100 mb-4">Template Variables</h3>
+              <h3 className="font-bold text-gray-900 mb-4">Template Variables</h3>
               {template.variables.map((variable: string) => (
                 <div key={variable}>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
                     {variable.split('_').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
                   </label>
                   <input
                     type="text"
                     value={formData[variable] || ''}
                     onChange={(e) => setFormData({ ...formData, [variable]: e.target.value })}
-                    className="w-full px-4 py-2 border border-white/10 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                     placeholder={`Enter ${variable.split('_').join(' ')}`}
                   />
                 </div>
@@ -901,10 +901,10 @@ function TemplateEditorModal({ template, onClose, onGenerate }: { template: any;
             </div>
 
             {/* Right: Preview */}
-            <div className="bg-white/5 rounded-lg p-6 border-2 border-white/10">
-              <h3 className="font-bold text-slate-100 mb-4">Document Preview</h3>
-              <div className="bg-white p-6 rounded-lg border border-white/10 min-h-[400px]">
-                <div className="space-y-4 text-sm text-slate-300">
+            <div className="bg-gray-50 rounded-lg p-6 border-2 border-gray-200">
+              <h3 className="font-bold text-gray-900 mb-4">Document Preview</h3>
+              <div className="bg-white p-6 rounded-lg border border-gray-200 min-h-[400px]">
+                <div className="space-y-4 text-sm text-gray-700">
                   <p className="font-semibold">Dear {formData.client_name || '[Client Name]'},</p>
                   
                   <p>
@@ -949,8 +949,8 @@ function TemplateEditorModal({ template, onClose, onGenerate }: { template: any;
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-4 border-t border-white/10 flex items-center justify-between bg-white/5">
-          <div className="flex items-center gap-2 text-sm text-slate-300">
+        <div className="px-6 py-4 border-t border-gray-200 flex items-center justify-between bg-gray-50">
+          <div className="flex items-center gap-2 text-sm text-gray-600">
             <FileText className="w-4 h-4" />
             <span>Template: {template.type}</span>
           </div>
@@ -994,16 +994,16 @@ function AddClientModal({ onClose, onAdd }: { onClose: () => void; onAdd: (clien
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-6">
       <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col">
         {/* Header */}
-        <div className="px-6 py-4 border-b border-white/10 flex items-center justify-between">
+        <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-bold text-slate-100">Add New Client</h2>
-            <p className="text-sm text-slate-300 mt-1">Enter client details to add to your database</p>
+            <h2 className="text-2xl font-bold text-gray-900">Add New Client</h2>
+            <p className="text-sm text-gray-600 mt-1">Enter client details to add to your database</p>
           </div>
           <button 
             onClick={onClose}
-            className="p-2 hover:bg-white/5 rounded-lg transition-colors"
+            className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
           >
-            <svg className="w-6 h-6 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
@@ -1014,27 +1014,27 @@ function AddClientModal({ onClose, onAdd }: { onClose: () => void; onAdd: (clien
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Left: Form */}
             <div className="space-y-4">
-              <h3 className="font-bold text-slate-100 mb-4">Client Details</h3>
+              <h3 className="font-bold text-gray-900 mb-4">Client Details</h3>
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Client Name
                 </label>
                 <input
                   type="text"
                   value={formData.name || ''}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-2 border border-white/10 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Enter client name"
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Entity Type
                 </label>
                 <select
                   value={formData.entityType || ''}
                   onChange={(e) => setFormData({ ...formData, entityType: e.target.value })}
-                  className="w-full px-4 py-2 border border-white/10 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 >
                   <option value="">Select entity type</option>
                   <option value="Company">Company</option>
@@ -1044,13 +1044,13 @@ function AddClientModal({ onClose, onAdd }: { onClose: () => void; onAdd: (clien
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Status
                 </label>
                 <select
                   value={formData.status || ''}
                   onChange={(e) => setFormData({ ...formData, status: e.target.value as 'active' | 'inactive' | 'prospect' })}
-                  className="w-full px-4 py-2 border border-white/10 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 >
                   <option value="">Select status</option>
                   <option value="active">Active</option>
@@ -1059,13 +1059,13 @@ function AddClientModal({ onClose, onAdd }: { onClose: () => void; onAdd: (clien
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Segment
                 </label>
                 <select
                   value={formData.segment || ''}
                   onChange={(e) => setFormData({ ...formData, segment: e.target.value })}
-                  className="w-full px-4 py-2 border border-white/10 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 >
                   <option value="">Select segment</option>
                   <option value="High Value">High Value</option>
@@ -1075,38 +1075,38 @@ function AddClientModal({ onClose, onAdd }: { onClose: () => void; onAdd: (clien
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Last Contact
                 </label>
                 <input
                   type="text"
                   value={formData.lastContact || ''}
                   onChange={(e) => setFormData({ ...formData, lastContact: e.target.value })}
-                  className="w-full px-4 py-2 border border-white/10 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Enter last contact date"
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Value
                 </label>
                 <input
                   type="number"
                   value={formData.value || ''}
                   onChange={(e) => setFormData({ ...formData, value: parseFloat(e.target.value) })}
-                  className="w-full px-4 py-2 border border-white/10 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Enter client value"
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Services
                 </label>
                 <input
                   type="text"
                   value={formData.services ? formData.services.join(', ') : ''}
                   onChange={(e) => setFormData({ ...formData, services: e.target.value.split(',').map(s => s.trim()) })}
-                  className="w-full px-4 py-2 border border-white/10 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Enter services (comma-separated)"
                 />
               </div>
@@ -1115,8 +1115,8 @@ function AddClientModal({ onClose, onAdd }: { onClose: () => void; onAdd: (clien
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-4 border-t border-white/10 flex items-center justify-between bg-white/5">
-          <div className="flex items-center gap-2 text-sm text-slate-300">
+        <div className="px-6 py-4 border-t border-gray-200 flex items-center justify-between bg-gray-50">
+          <div className="flex items-center gap-2 text-sm text-gray-600">
             <Users className="w-4 h-4" />
             <span>Add Client</span>
           </div>
@@ -1140,16 +1140,16 @@ function FeatureModal({ feature, onClose }: { feature: any; onClose: () => void 
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-6">
       <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col">
         {/* Header */}
-        <div className="px-6 py-4 border-b border-white/10 flex items-center justify-between">
+        <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-bold text-slate-100">{feature.name}</h2>
-            <p className="text-sm text-slate-300 mt-1">View and manage the {feature.name} feature</p>
+            <h2 className="text-2xl font-bold text-gray-900">{feature.name}</h2>
+            <p className="text-sm text-gray-600 mt-1">View and manage the {feature.name} feature</p>
           </div>
           <button 
             onClick={onClose}
-            className="p-2 hover:bg-white/5 rounded-lg transition-colors"
+            className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
           >
-            <svg className="w-6 h-6 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
@@ -1160,20 +1160,20 @@ function FeatureModal({ feature, onClose }: { feature: any; onClose: () => void 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Left: Form */}
             <div className="space-y-4">
-              <h3 className="font-bold text-slate-100 mb-4">Feature Details</h3>
+              <h3 className="font-bold text-gray-900 mb-4">Feature Details</h3>
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Description
                 </label>
-                <p className="text-sm text-slate-300">{feature.description}</p>
+                <p className="text-sm text-gray-600">{feature.description}</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-4 border-t border-white/10 flex items-center justify-between bg-white/5">
-          <div className="flex items-center gap-2 text-sm text-slate-300">
+        <div className="px-6 py-4 border-t border-gray-200 flex items-center justify-between bg-gray-50">
+          <div className="flex items-center gap-2 text-sm text-gray-600">
             <Network className="w-4 h-4" />
             <span>Feature: {feature.name}</span>
           </div>
@@ -1193,16 +1193,16 @@ function ClientDetailModal({ client, onClose }: { client: any; onClose: () => vo
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-6">
       <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col">
         {/* Header */}
-        <div className="px-6 py-4 border-b border-white/10 flex items-center justify-between">
+        <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-bold text-slate-100">Client Details</h2>
-            <p className="text-sm text-slate-300 mt-1">View and manage client information</p>
+            <h2 className="text-2xl font-bold text-gray-900">Client Details</h2>
+            <p className="text-sm text-gray-600 mt-1">View and manage client information</p>
           </div>
           <button 
             onClick={onClose}
-            className="p-2 hover:bg-white/5 rounded-lg transition-colors"
+            className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
           >
-            <svg className="w-6 h-6 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
@@ -1213,50 +1213,50 @@ function ClientDetailModal({ client, onClose }: { client: any; onClose: () => vo
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Left: Form */}
             <div className="space-y-4">
-              <h3 className="font-bold text-slate-100 mb-4">Client Information</h3>
+              <h3 className="font-bold text-gray-900 mb-4">Client Information</h3>
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Client Name
                 </label>
-                <p className="text-sm text-slate-300">{client.name}</p>
+                <p className="text-sm text-gray-600">{client.name}</p>
               </div>
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Entity Type
                 </label>
-                <p className="text-sm text-slate-300">{client.entityType}</p>
+                <p className="text-sm text-gray-600">{client.entityType}</p>
               </div>
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Status
                 </label>
                 <StatusBadge status={client.status === 'active' ? 'approved' : 'medium-risk'} />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Segment
                 </label>
                 <StatusBadge status={client.segment === 'High Value' ? 'approved' : 'medium-risk'} />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Last Contact
                 </label>
-                <p className="text-sm text-slate-300">{client.lastContact}</p>
+                <p className="text-sm text-gray-600">{client.lastContact}</p>
               </div>
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Value
                 </label>
-                <p className="text-sm text-slate-300">{client.value}</p>
+                <p className="text-sm text-gray-600">{client.value}</p>
               </div>
               <div>
-                <label className="block text-sm font-semibold text-slate-300 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Services
                 </label>
                 <div className="flex flex-wrap gap-1">
                   {client.services.map((service: string) => (
-                    <span key={service} className="px-2 py-1 bg-blue-500/15 text-blue-300 text-xs rounded">
+                    <span key={service} className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded">
                       {service}
                     </span>
                   ))}
@@ -1267,8 +1267,8 @@ function ClientDetailModal({ client, onClose }: { client: any; onClose: () => vo
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-4 border-t border-white/10 flex items-center justify-between bg-white/5">
-          <div className="flex items-center gap-2 text-sm text-slate-300">
+        <div className="px-6 py-4 border-t border-gray-200 flex items-center justify-between bg-gray-50">
+          <div className="flex items-center gap-2 text-sm text-gray-600">
             <Users className="w-4 h-4" />
             <span>Client: {client.name}</span>
           </div>

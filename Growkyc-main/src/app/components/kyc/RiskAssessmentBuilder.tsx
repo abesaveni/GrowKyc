@@ -126,19 +126,19 @@ export function RiskAssessmentBuilder() {
 
   const getRiskColor = (risk: string) => {
     switch (risk) {
-      case 'low': return 'bg-green-500/15 text-green-300 border-green-500/30';
-      case 'medium': return 'bg-yellow-500/15 text-yellow-300 border-yellow-500/30';
-      case 'high': return 'bg-red-500/15 text-red-300 border-red-500/30';
-      default: return 'bg-white/5 text-slate-300 border-white/10';
+      case 'low': return 'bg-green-100 text-green-700 border-green-200';
+      case 'medium': return 'bg-yellow-100 text-yellow-700 border-yellow-200';
+      case 'high': return 'bg-red-100 text-red-700 border-red-200';
+      default: return 'bg-gray-100 text-gray-700 border-gray-200';
     }
   };
 
   const getAppetiteColor = (appetite: string) => {
     switch (appetite) {
-      case 'accept': return 'bg-green-500/10 text-green-300 border-green-300';
-      case 'accept_with_controls': return 'bg-yellow-500/10 text-yellow-300 border-yellow-300';
-      case 'do_not_accept': return 'bg-red-500/10 text-red-300 border-red-300';
-      default: return 'bg-white/5 text-slate-300 border-white/10';
+      case 'accept': return 'bg-green-50 text-green-700 border-green-300';
+      case 'accept_with_controls': return 'bg-yellow-50 text-yellow-700 border-yellow-300';
+      case 'do_not_accept': return 'bg-red-50 text-red-700 border-red-300';
+      default: return 'bg-gray-50 text-gray-700 border-gray-300';
     }
   };
 
@@ -149,10 +149,10 @@ export function RiskAssessmentBuilder() {
     factors: RiskFactor[]
   ) => {
     return (
-      <div key={factor.id} className="p-4 border border-white/10 rounded-lg space-y-3">
+      <div key={factor.id} className="p-4 border border-gray-200 rounded-lg space-y-3">
         <div className="grid grid-cols-12 gap-4">
           <div className="col-span-3">
-            <label className="text-xs text-slate-300 mb-1 block">Risk Factor</label>
+            <label className="text-xs text-gray-600 mb-1 block">Risk Factor</label>
             <input
               type="text"
               value={factor.name}
@@ -161,12 +161,12 @@ export function RiskAssessmentBuilder() {
                 updated[index].name = e.target.value;
                 updateFn(updated);
               }}
-              className="w-full px-3 py-2 border border-white/10 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
           <div className="col-span-2">
-            <label className="text-xs text-slate-300 mb-1 block">Inherent Risk</label>
+            <label className="text-xs text-gray-600 mb-1 block">Inherent Risk</label>
             <select
               value={factor.inherentRisk}
               onChange={(e) => {
@@ -183,7 +183,7 @@ export function RiskAssessmentBuilder() {
           </div>
 
           <div className="col-span-3">
-            <label className="text-xs text-slate-300 mb-1 block">Risk Appetite</label>
+            <label className="text-xs text-gray-600 mb-1 block">Risk Appetite</label>
             <select
               value={factor.riskAppetite}
               onChange={(e) => {
@@ -200,7 +200,7 @@ export function RiskAssessmentBuilder() {
           </div>
 
           <div className="col-span-3">
-            <label className="text-xs text-slate-300 mb-1 block">Control Statement</label>
+            <label className="text-xs text-gray-600 mb-1 block">Control Statement</label>
             <input
               type="text"
               value={factor.controlStatement}
@@ -212,8 +212,8 @@ export function RiskAssessmentBuilder() {
               placeholder={factor.riskAppetite !== 'accept' ? 'Required' : 'Optional'}
               className={`w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                 factor.riskAppetite !== 'accept' && !factor.controlStatement
-                  ? 'border-red-300 bg-red-500/10'
-                  : 'border-white/10'
+                  ? 'border-red-300 bg-red-50'
+                  : 'border-gray-300'
               }`}
               required={factor.riskAppetite === 'do_not_accept'}
             />
@@ -227,7 +227,7 @@ export function RiskAssessmentBuilder() {
                 const updated = factors.filter((_, i) => i !== index);
                 updateFn(updated);
               }}
-              className="text-red-400 hover:bg-red-500/10"
+              className="text-red-600 hover:bg-red-50"
             >
               <Trash2 className="w-4 h-4" />
             </Button>
@@ -242,8 +242,8 @@ export function RiskAssessmentBuilder() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-slate-100">Risk Assessment Builder</h1>
-          <p className="text-slate-300 mt-1">Define your AML/CTF risk assessment framework</p>
+          <h1 className="text-3xl font-bold text-gray-900">Risk Assessment Builder</h1>
+          <p className="text-gray-600 mt-1">Define your AML/CTF risk assessment framework</p>
         </div>
         <div className="flex items-center gap-3">
           <Button variant="outline">
@@ -285,12 +285,12 @@ export function RiskAssessmentBuilder() {
       </div>
 
       {/* Warning for Material Changes */}
-      <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4">
+      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
         <div className="flex items-start">
-          <AlertTriangle className="w-5 h-5 text-yellow-400 mr-3 mt-0.5" />
+          <AlertTriangle className="w-5 h-5 text-yellow-600 mr-3 mt-0.5" />
           <div>
-            <p className="font-semibold text-yellow-300">Material Change Warning</p>
-            <p className="text-sm text-yellow-300 mt-1">
+            <p className="font-semibold text-yellow-900">Material Change Warning</p>
+            <p className="text-sm text-yellow-700 mt-1">
               Any changes to risk appetite or designated services require senior manager approval and will trigger a 14-day compliance implementation period.
             </p>
           </div>
@@ -298,7 +298,7 @@ export function RiskAssessmentBuilder() {
       </div>
 
       {/* Tabs */}
-      <div className="border-b border-white/10">
+      <div className="border-b border-gray-200">
         <div className="flex gap-1">
           {[
             { id: 'services', label: 'Designated Services' },
@@ -311,8 +311,8 @@ export function RiskAssessmentBuilder() {
               onClick={() => setActiveTab(tab.id as any)}
               className={`px-6 py-3 font-semibold transition-colors ${
                 activeTab === tab.id
-                  ? 'border-b-2 border-blue-600 text-blue-400'
-                  : 'text-slate-300 hover:text-slate-100'
+                  ? 'border-b-2 border-blue-600 text-blue-600'
+                  : 'text-gray-600 hover:text-gray-900'
               }`}
             >
               {tab.label}
@@ -323,16 +323,16 @@ export function RiskAssessmentBuilder() {
 
       {/* Designated Services Tab */}
       {activeTab === 'services' && (
-        <div className="bg-white rounded-lg border border-white/10 p-6">
-          <h3 className="font-bold text-slate-100 mb-4">Select Designated Services</h3>
+        <div className="bg-white rounded-lg border border-gray-200 p-6">
+          <h3 className="font-bold text-gray-900 mb-4">Select Designated Services</h3>
           <div className="grid grid-cols-2 gap-4">
             {designatedServices.map((service) => (
               <label
                 key={service.id}
                 className={`p-4 border-2 rounded-lg cursor-pointer transition-all ${
                   service.selected
-                    ? 'border-blue-500 bg-blue-500/10'
-                    : 'border-white/10 hover:border-white/10'
+                    ? 'border-blue-500 bg-blue-50'
+                    : 'border-gray-200 hover:border-gray-300'
                 }`}
               >
                 <div className="flex items-center">
@@ -346,10 +346,10 @@ export function RiskAssessmentBuilder() {
                         )
                       );
                     }}
-                    className="w-5 h-5 text-blue-400 rounded focus:ring-blue-500"
+                    className="w-5 h-5 text-blue-600 rounded focus:ring-blue-500"
                   />
-                  <span className="ml-3 font-semibold text-slate-100">{service.name}</span>
-                  {service.selected && <CheckCircle className="w-5 h-5 text-blue-400 ml-auto" />}
+                  <span className="ml-3 font-semibold text-gray-900">{service.name}</span>
+                  {service.selected && <CheckCircle className="w-5 h-5 text-blue-600 ml-auto" />}
                 </div>
               </label>
             ))}
@@ -361,7 +361,7 @@ export function RiskAssessmentBuilder() {
       {activeTab === 'clients' && (
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="font-bold text-slate-100">Client Type Risk Factors</h3>
+            <h3 className="font-bold text-gray-900">Client Type Risk Factors</h3>
             <Button
               onClick={() => {
                 setClientTypes([
@@ -392,7 +392,7 @@ export function RiskAssessmentBuilder() {
       {activeTab === 'channels' && (
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="font-bold text-slate-100">Delivery Channel Risk Factors</h3>
+            <h3 className="font-bold text-gray-900">Delivery Channel Risk Factors</h3>
             <Button
               onClick={() => {
                 setDeliveryChannels([
@@ -423,60 +423,60 @@ export function RiskAssessmentBuilder() {
       {activeTab === 'countries' && (
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="font-bold text-slate-100">Country Risk Assessment</h3>
+            <h3 className="font-bold text-gray-900">Country Risk Assessment</h3>
             <Button>
               <Plus className="w-4 h-4 mr-2" />
               Add Country
             </Button>
           </div>
-          <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
             <div className="flex items-start">
-              <Info className="w-5 h-5 text-blue-400 mr-3 mt-0.5" />
+              <Info className="w-5 h-5 text-blue-600 mr-3 mt-0.5" />
               <div>
-                <p className="text-sm text-blue-300">
+                <p className="text-sm text-blue-900">
                   <strong>Auto Risk Logic:</strong> Countries with FATF listing or DFAT sanctions are automatically
                   classified as HIGH risk. Basel AML Index score below 5.0 = Medium risk.
                 </p>
               </div>
             </div>
           </div>
-          <div className="bg-white rounded-lg border border-white/10 overflow-hidden">
+          <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
             <table className="w-full">
-              <thead className="bg-white/5 border-b border-white/10">
+              <thead className="bg-gray-50 border-b border-gray-200">
                 <tr>
-                  <th className="text-left py-3 px-4 font-semibold text-slate-100">Country</th>
-                  <th className="text-center py-3 px-4 font-semibold text-slate-100">Basel Score</th>
-                  <th className="text-center py-3 px-4 font-semibold text-slate-100">FATF Listed</th>
-                  <th className="text-center py-3 px-4 font-semibold text-slate-100">DFAT Sanctions</th>
-                  <th className="text-center py-3 px-4 font-semibold text-slate-100">Auto Risk</th>
-                  <th className="text-center py-3 px-4 font-semibold text-slate-100">Actions</th>
+                  <th className="text-left py-3 px-4 font-semibold text-gray-900">Country</th>
+                  <th className="text-center py-3 px-4 font-semibold text-gray-900">Basel Score</th>
+                  <th className="text-center py-3 px-4 font-semibold text-gray-900">FATF Listed</th>
+                  <th className="text-center py-3 px-4 font-semibold text-gray-900">DFAT Sanctions</th>
+                  <th className="text-center py-3 px-4 font-semibold text-gray-900">Auto Risk</th>
+                  <th className="text-center py-3 px-4 font-semibold text-gray-900">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {countries.map((country) => (
-                  <tr key={country.id} className="border-b border-white/10 hover:bg-white/5">
+                  <tr key={country.id} className="border-b border-gray-100 hover:bg-gray-50">
                     <td className="py-3 px-4 font-semibold">{country.name}</td>
                     <td className="text-center py-3 px-4">
                       <span className={`inline-block px-3 py-1 rounded-full text-sm font-semibold ${
-                        country.baselScore >= 6 ? 'bg-green-500/15 text-green-300' :
-                        country.baselScore >= 4 ? 'bg-yellow-500/15 text-yellow-300' :
-                        'bg-red-500/15 text-red-300'
+                        country.baselScore >= 6 ? 'bg-green-100 text-green-700' :
+                        country.baselScore >= 4 ? 'bg-yellow-100 text-yellow-700' :
+                        'bg-red-100 text-red-700'
                       }`}>
                         {country.baselScore.toFixed(2)}
                       </span>
                     </td>
                     <td className="text-center py-3 px-4">
                       {country.fatfFlag ? (
-                        <XCircle className="w-5 h-5 text-red-400 mx-auto" />
+                        <XCircle className="w-5 h-5 text-red-600 mx-auto" />
                       ) : (
-                        <CheckCircle className="w-5 h-5 text-green-400 mx-auto" />
+                        <CheckCircle className="w-5 h-5 text-green-600 mx-auto" />
                       )}
                     </td>
                     <td className="text-center py-3 px-4">
                       {country.dfatSanctions ? (
-                        <XCircle className="w-5 h-5 text-red-400 mx-auto" />
+                        <XCircle className="w-5 h-5 text-red-600 mx-auto" />
                       ) : (
-                        <CheckCircle className="w-5 h-5 text-green-400 mx-auto" />
+                        <CheckCircle className="w-5 h-5 text-green-600 mx-auto" />
                       )}
                     </td>
                     <td className="text-center py-3 px-4">
@@ -501,20 +501,20 @@ export function RiskAssessmentBuilder() {
       {showApprovalModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg p-6 max-w-lg w-full mx-4">
-            <h3 className="text-xl font-bold text-slate-100 mb-4">Submit for Senior Manager Approval</h3>
+            <h3 className="text-xl font-bold text-gray-900 mb-4">Submit for Senior Manager Approval</h3>
             <div className="space-y-4 mb-6">
-              <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4">
-                <p className="text-sm text-yellow-300">
+              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                <p className="text-sm text-yellow-900">
                   This will create a new program version (v2.2) and send it to the Senior Manager for approval.
                   A 14-day implementation period will begin upon approval.
                 </p>
               </div>
               <div>
-                <label className="block text-sm font-semibold text-slate-100 mb-2">
+                <label className="block text-sm font-semibold text-gray-900 mb-2">
                   Summary of Changes
                 </label>
                 <textarea
-                  className="w-full px-3 py-2 border border-white/10 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                   rows={4}
                   placeholder="Describe the material changes made to the program..."
                 />

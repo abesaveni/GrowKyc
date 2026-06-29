@@ -156,8 +156,8 @@ export function ClientsPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-100">Clients</h1>
-          <p className="text-slate-300">Manage your client relationships</p>
+          <h1 className="text-2xl font-bold text-gray-900">Clients</h1>
+          <p className="text-gray-600">Manage your client relationships</p>
         </div>
         <Button className="bg-[#2855a6] hover:bg-[#1e4089]">
           <Plus className="w-4 h-4 mr-2" />
@@ -170,44 +170,44 @@ export function ClientsPage() {
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-slate-300">Total Clients</span>
+              <span className="text-sm text-gray-600">Total Clients</span>
               <Users className="w-5 h-5 text-gray-400" />
             </div>
-            <p className="text-2xl font-bold text-slate-100">{stats.total}</p>
-            <p className="text-xs text-green-400 mt-1">{stats.active} active</p>
+            <p className="text-2xl font-bold text-gray-900">{stats.total}</p>
+            <p className="text-xs text-green-600 mt-1">{stats.active} active</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-slate-300">Total Revenue</span>
-              <DollarSign className="w-5 h-5 text-green-400" />
+              <span className="text-sm text-gray-600">Total Revenue</span>
+              <DollarSign className="w-5 h-5 text-green-600" />
             </div>
-            <p className="text-2xl font-bold text-slate-100">${stats.totalRevenue.toLocaleString()}</p>
-            <p className="text-xs text-slate-400 mt-1">All time</p>
+            <p className="text-2xl font-bold text-gray-900">${stats.totalRevenue.toLocaleString()}</p>
+            <p className="text-xs text-gray-500 mt-1">All time</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-slate-300">Outstanding</span>
-              <FileText className="w-5 h-5 text-amber-400" />
+              <span className="text-sm text-gray-600">Outstanding</span>
+              <FileText className="w-5 h-5 text-amber-600" />
             </div>
-            <p className="text-2xl font-bold text-slate-100">${stats.totalOutstanding.toLocaleString()}</p>
-            <p className="text-xs text-amber-400 mt-1">To be collected</p>
+            <p className="text-2xl font-bold text-gray-900">${stats.totalOutstanding.toLocaleString()}</p>
+            <p className="text-xs text-amber-600 mt-1">To be collected</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-slate-300">Avg Invoice</span>
-              <TrendingUp className="w-5 h-5 text-blue-400" />
+              <span className="text-sm text-gray-600">Avg Invoice</span>
+              <TrendingUp className="w-5 h-5 text-blue-600" />
             </div>
-            <p className="text-2xl font-bold text-slate-100">${stats.avgInvoiceValue.toLocaleString()}</p>
-            <p className="text-xs text-blue-400 mt-1">Per transaction</p>
+            <p className="text-2xl font-bold text-gray-900">${stats.avgInvoiceValue.toLocaleString()}</p>
+            <p className="text-xs text-blue-600 mt-1">Per transaction</p>
           </CardContent>
         </Card>
       </div>
@@ -286,8 +286,8 @@ export function ClientsPage() {
               <CardContent className="p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div>
-                    <h3 className="font-semibold text-slate-100">{client.name}</h3>
-                    <p className="text-sm text-slate-300">{client.company}</p>
+                    <h3 className="font-semibold text-gray-900">{client.name}</h3>
+                    <p className="text-sm text-gray-600">{client.company}</p>
                   </div>
                   <Button variant="ghost" size="sm">
                     <MoreVertical className="w-4 h-4" />
@@ -295,15 +295,15 @@ export function ClientsPage() {
                 </div>
                 
                 <div className="space-y-2 mb-4">
-                  <div className="flex items-center gap-2 text-sm text-slate-300">
+                  <div className="flex items-center gap-2 text-sm text-gray-600">
                     <Mail className="w-4 h-4" />
                     <span className="truncate">{client.email}</span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-slate-300">
+                  <div className="flex items-center gap-2 text-sm text-gray-600">
                     <Phone className="w-4 h-4" />
                     <span>{client.phone}</span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-slate-300">
+                  <div className="flex items-center gap-2 text-sm text-gray-600">
                     <MapPin className="w-4 h-4" />
                     <span>{client.address}</span>
                   </div>
@@ -311,12 +311,12 @@ export function ClientsPage() {
 
                 <div className="grid grid-cols-2 gap-4 pt-4 border-t">
                   <div>
-                    <p className="text-xs text-slate-400">Total Invoiced</p>
-                    <p className="font-semibold text-slate-100">${client.totalInvoiced.toLocaleString()}</p>
+                    <p className="text-xs text-gray-500">Total Invoiced</p>
+                    <p className="font-semibold text-gray-900">${client.totalInvoiced.toLocaleString()}</p>
                   </div>
                   <div>
-                    <p className="text-xs text-slate-400">Outstanding</p>
-                    <p className="font-semibold text-slate-100">${client.outstandingBalance.toLocaleString()}</p>
+                    <p className="text-xs text-gray-500">Outstanding</p>
+                    <p className="font-semibold text-gray-900">${client.outstandingBalance.toLocaleString()}</p>
                   </div>
                 </div>
 
@@ -339,52 +339,52 @@ export function ClientsPage() {
           <CardContent className="p-0">
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-white/5 border-b">
+                <thead className="bg-gray-50 border-b">
                   <tr>
-                    <th className="text-left px-6 py-3 text-xs font-semibold text-slate-300 uppercase">Client</th>
-                    <th className="text-left px-6 py-3 text-xs font-semibold text-slate-300 uppercase">Company</th>
-                    <th className="text-left px-6 py-3 text-xs font-semibold text-slate-300 uppercase">Contact</th>
-                    <th className="text-left px-6 py-3 text-xs font-semibold text-slate-300 uppercase">Location</th>
-                    <th className="text-right px-6 py-3 text-xs font-semibold text-slate-300 uppercase">Invoices</th>
-                    <th className="text-right px-6 py-3 text-xs font-semibold text-slate-300 uppercase">Total</th>
-                    <th className="text-right px-6 py-3 text-xs font-semibold text-slate-300 uppercase">Outstanding</th>
-                    <th className="text-right px-6 py-3 text-xs font-semibold text-slate-300 uppercase">Actions</th>
+                    <th className="text-left px-6 py-3 text-xs font-semibold text-gray-600 uppercase">Client</th>
+                    <th className="text-left px-6 py-3 text-xs font-semibold text-gray-600 uppercase">Company</th>
+                    <th className="text-left px-6 py-3 text-xs font-semibold text-gray-600 uppercase">Contact</th>
+                    <th className="text-left px-6 py-3 text-xs font-semibold text-gray-600 uppercase">Location</th>
+                    <th className="text-right px-6 py-3 text-xs font-semibold text-gray-600 uppercase">Invoices</th>
+                    <th className="text-right px-6 py-3 text-xs font-semibold text-gray-600 uppercase">Total</th>
+                    <th className="text-right px-6 py-3 text-xs font-semibold text-gray-600 uppercase">Outstanding</th>
+                    <th className="text-right px-6 py-3 text-xs font-semibold text-gray-600 uppercase">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-white/10">
+                <tbody className="divide-y divide-gray-200">
                   {sortedClients.map((client) => (
-                    <tr key={client.id} className="hover:bg-white/5 transition-colors">
+                    <tr key={client.id} className="hover:bg-gray-50 transition-colors">
                       <td className="px-6 py-4">
-                        <span className="font-medium text-slate-100">{client.name}</span>
+                        <span className="font-medium text-gray-900">{client.name}</span>
                       </td>
                       <td className="px-6 py-4">
-                        <span className="text-sm text-slate-300">{client.company}</span>
+                        <span className="text-sm text-gray-600">{client.company}</span>
                       </td>
                       <td className="px-6 py-4">
                         <div className="space-y-1">
-                          <div className="flex items-center gap-1 text-xs text-slate-300">
+                          <div className="flex items-center gap-1 text-xs text-gray-600">
                             <Mail className="w-3 h-3" />
                             <span className="truncate max-w-[150px]">{client.email}</span>
                           </div>
-                          <div className="flex items-center gap-1 text-xs text-slate-300">
+                          <div className="flex items-center gap-1 text-xs text-gray-600">
                             <Phone className="w-3 h-3" />
                             <span>{client.phone}</span>
                           </div>
                         </div>
                       </td>
                       <td className="px-6 py-4">
-                        <span className="text-sm text-slate-300">{client.address}</span>
+                        <span className="text-sm text-gray-600">{client.address}</span>
                       </td>
                       <td className="px-6 py-4 text-right">
-                        <span className="text-sm font-medium text-slate-100">{client.invoiceCount}</span>
+                        <span className="text-sm font-medium text-gray-900">{client.invoiceCount}</span>
                       </td>
                       <td className="px-6 py-4 text-right">
-                        <span className="text-sm font-semibold text-slate-100">
+                        <span className="text-sm font-semibold text-gray-900">
                           ${client.totalInvoiced.toLocaleString()}
                         </span>
                       </td>
                       <td className="px-6 py-4 text-right">
-                        <span className={`text-sm font-semibold ${client.outstandingBalance > 0 ? 'text-amber-400' : 'text-green-400'}`}>
+                        <span className={`text-sm font-semibold ${client.outstandingBalance > 0 ? 'text-amber-600' : 'text-green-600'}`}>
                           ${client.outstandingBalance.toLocaleString()}
                         </span>
                       </td>

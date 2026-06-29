@@ -121,8 +121,8 @@ export function ProjectsModule({ role }: ProjectsModuleProps) {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-slate-100">Projects</h1>
-            <p className="text-slate-300 mt-1">Manage projects with Kanban, Gantt, and time tracking</p>
+            <h1 className="text-2xl font-bold text-gray-900">Projects</h1>
+            <p className="text-gray-600 mt-1">Manage projects with Kanban, Gantt, and time tracking</p>
           </div>
           <div className="flex items-center gap-3">
             <Button variant="outline" onClick={() => setViewMode('list')}>
@@ -142,48 +142,48 @@ export function ProjectsModule({ role }: ProjectsModuleProps) {
 
         {/* Stats */}
         <div className="grid grid-cols-4 gap-4">
-          <div className="bg-white border border-white/10 rounded-lg p-4">
+          <div className="bg-white border border-gray-300 rounded-lg p-4">
             <div className="flex items-center justify-between mb-2">
-              <p className="text-sm font-medium text-slate-300">Active Projects</p>
-              <FolderKanban className="w-4 h-4 text-blue-400" />
+              <p className="text-sm font-medium text-gray-600">Active Projects</p>
+              <FolderKanban className="w-4 h-4 text-blue-600" />
             </div>
-            <p className="text-2xl font-bold text-slate-100">
+            <p className="text-2xl font-bold text-gray-900">
               {mockProjects.filter(p => p.status === 'in-progress').length}
             </p>
-            <p className="text-xs text-slate-400 mt-1">Currently running</p>
+            <p className="text-xs text-gray-500 mt-1">Currently running</p>
           </div>
 
-          <div className="bg-white border border-white/10 rounded-lg p-4">
+          <div className="bg-white border border-gray-300 rounded-lg p-4">
             <div className="flex items-center justify-between mb-2">
-              <p className="text-sm font-medium text-slate-300">Total Budget</p>
-              <DollarSign className="w-4 h-4 text-green-400" />
+              <p className="text-sm font-medium text-gray-600">Total Budget</p>
+              <DollarSign className="w-4 h-4 text-green-600" />
             </div>
-            <p className="text-2xl font-bold text-slate-100">
+            <p className="text-2xl font-bold text-gray-900">
               ${(mockProjects.reduce((sum, p) => sum + p.budget, 0) / 1000).toFixed(0)}K
             </p>
-            <p className="text-xs text-slate-400 mt-1">Across all projects</p>
+            <p className="text-xs text-gray-500 mt-1">Across all projects</p>
           </div>
 
-          <div className="bg-white border border-white/10 rounded-lg p-4">
+          <div className="bg-white border border-gray-300 rounded-lg p-4">
             <div className="flex items-center justify-between mb-2">
-              <p className="text-sm font-medium text-slate-300">Avg Progress</p>
-              <Activity className="w-4 h-4 text-purple-400" />
+              <p className="text-sm font-medium text-gray-600">Avg Progress</p>
+              <Activity className="w-4 h-4 text-purple-600" />
             </div>
-            <p className="text-2xl font-bold text-slate-100">
+            <p className="text-2xl font-bold text-gray-900">
               {Math.round(mockProjects.reduce((sum, p) => sum + p.progress, 0) / mockProjects.length)}%
             </p>
-            <p className="text-xs text-slate-400 mt-1">Completion rate</p>
+            <p className="text-xs text-gray-500 mt-1">Completion rate</p>
           </div>
 
-          <div className="bg-white border border-white/10 rounded-lg p-4">
+          <div className="bg-white border border-gray-300 rounded-lg p-4">
             <div className="flex items-center justify-between mb-2">
-              <p className="text-sm font-medium text-slate-300">Completed</p>
-              <CheckCircle className="w-4 h-4 text-green-400" />
+              <p className="text-sm font-medium text-gray-600">Completed</p>
+              <CheckCircle className="w-4 h-4 text-green-600" />
             </div>
-            <p className="text-2xl font-bold text-slate-100">
+            <p className="text-2xl font-bold text-gray-900">
               {mockProjects.filter(p => p.status === 'completed').length}
             </p>
-            <p className="text-xs text-green-400 mt-1">This quarter</p>
+            <p className="text-xs text-green-600 mt-1">This quarter</p>
           </div>
         </div>
 
@@ -198,10 +198,10 @@ export function ProjectsModule({ role }: ProjectsModuleProps) {
             const columnProjects = mockProjects.filter(p => p.status === column.id);
             
             return (
-              <div key={column.id} className="bg-white/5 rounded-lg p-4">
+              <div key={column.id} className="bg-gray-100 rounded-lg p-4">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-semibold text-slate-100">{column.label}</h3>
-                  <span className="px-2 py-1 bg-white rounded-full text-xs font-semibold text-slate-300">
+                  <h3 className="font-semibold text-gray-900">{column.label}</h3>
+                  <span className="px-2 py-1 bg-white rounded-full text-xs font-semibold text-gray-700">
                     {columnProjects.length}
                   </span>
                 </div>
@@ -211,35 +211,35 @@ export function ProjectsModule({ role }: ProjectsModuleProps) {
                     <div
                       key={project.id}
                       onClick={() => setSelectedProject(project)}
-                      className="bg-white border border-white/10 rounded-lg p-4 cursor-pointer hover:shadow-md transition-shadow"
+                      className="bg-white border border-gray-300 rounded-lg p-4 cursor-pointer hover:shadow-md transition-shadow"
                     >
                       {/* Priority Badge */}
                       <div className="flex items-center justify-between mb-3">
                         <span className={`px-2 py-1 rounded text-xs font-medium ${
-                          project.priority === 'high' ? 'bg-red-500/15 text-red-300' :
-                          project.priority === 'medium' ? 'bg-yellow-500/15 text-yellow-300' :
-                          'bg-blue-500/15 text-blue-300'
+                          project.priority === 'high' ? 'bg-red-100 text-red-800' :
+                          project.priority === 'medium' ? 'bg-yellow-100 text-yellow-800' :
+                          'bg-blue-100 text-blue-800'
                         }`}>
                           {project.priority}
                         </span>
-                        <button className="text-gray-400 hover:text-slate-300">
+                        <button className="text-gray-400 hover:text-gray-600">
                           <MoreVertical className="w-4 h-4" />
                         </button>
                       </div>
 
                       {/* Project Name & Client */}
                       <div className="mb-3">
-                        <p className="font-semibold text-slate-100 mb-1">{project.name}</p>
-                        <p className="text-xs text-slate-300">{project.client}</p>
+                        <p className="font-semibold text-gray-900 mb-1">{project.name}</p>
+                        <p className="text-xs text-gray-600">{project.client}</p>
                       </div>
 
                       {/* Progress Bar */}
                       <div className="mb-3">
                         <div className="flex items-center justify-between mb-1">
-                          <span className="text-xs text-slate-300">Progress</span>
-                          <span className="text-xs font-semibold text-slate-100">{project.progress}%</span>
+                          <span className="text-xs text-gray-600">Progress</span>
+                          <span className="text-xs font-semibold text-gray-900">{project.progress}%</span>
                         </div>
-                        <div className="h-2 bg-white/10 rounded-full">
+                        <div className="h-2 bg-gray-200 rounded-full">
                           <div
                             className={`h-2 rounded-full ${
                               project.progress === 100 ? 'bg-green-600' :
@@ -251,7 +251,7 @@ export function ProjectsModule({ role }: ProjectsModuleProps) {
                       </div>
 
                       {/* Tasks Summary */}
-                      <div className="flex items-center gap-4 mb-3 text-xs text-slate-300">
+                      <div className="flex items-center gap-4 mb-3 text-xs text-gray-600">
                         <div className="flex items-center gap-1">
                           <CheckCircle className="w-3 h-3" />
                           <span>{project.tasks.completed}/{project.tasks.total}</span>
@@ -263,9 +263,9 @@ export function ProjectsModule({ role }: ProjectsModuleProps) {
                       </div>
 
                       {/* Budget */}
-                      <div className="flex items-center justify-between mb-3 pb-3 border-b border-white/10">
-                        <span className="text-xs text-slate-300">Budget</span>
-                        <span className="text-sm font-semibold text-slate-100">
+                      <div className="flex items-center justify-between mb-3 pb-3 border-b border-gray-200">
+                        <span className="text-xs text-gray-600">Budget</span>
+                        <span className="text-sm font-semibold text-gray-900">
                           ${(project.spent / 1000).toFixed(0)}K / ${(project.budget / 1000).toFixed(0)}K
                         </span>
                       </div>
@@ -276,22 +276,22 @@ export function ProjectsModule({ role }: ProjectsModuleProps) {
                           {project.team.slice(0, 3).map((member, idx) => (
                             <div
                               key={idx}
-                              className="w-6 h-6 rounded-full bg-indigo-500/15 border-2 border-white flex items-center justify-center"
+                              className="w-6 h-6 rounded-full bg-indigo-100 border-2 border-white flex items-center justify-center"
                             >
-                              <span className="text-xs font-semibold text-indigo-400">
+                              <span className="text-xs font-semibold text-indigo-600">
                                 {member.split(' ').map(n => n[0]).join('')}
                               </span>
                             </div>
                           ))}
                           {project.team.length > 3 && (
-                            <div className="w-6 h-6 rounded-full bg-white/10 border-2 border-white flex items-center justify-center">
-                              <span className="text-xs font-semibold text-slate-300">
+                            <div className="w-6 h-6 rounded-full bg-gray-200 border-2 border-white flex items-center justify-center">
+                              <span className="text-xs font-semibold text-gray-600">
                                 +{project.team.length - 3}
                               </span>
                             </div>
                           )}
                         </div>
-                        <span className="text-xs text-slate-400">{project.dueDate}</span>
+                        <span className="text-xs text-gray-500">{project.dueDate}</span>
                       </div>
                     </div>
                   ))}
@@ -318,8 +318,8 @@ export function ProjectsModule({ role }: ProjectsModuleProps) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-100">Projects</h1>
-          <p className="text-slate-300 mt-1">Manage projects with Kanban, Gantt, and time tracking</p>
+          <h1 className="text-2xl font-bold text-gray-900">Projects</h1>
+          <p className="text-gray-600 mt-1">Manage projects with Kanban, Gantt, and time tracking</p>
         </div>
         <div className="flex items-center gap-3">
           <Button variant="outline" onClick={() => setViewMode('kanban')}>
@@ -344,7 +344,7 @@ export function ProjectsModule({ role }: ProjectsModuleProps) {
           <input
             type="search"
             placeholder="Search projects..."
-            className="pl-10 pr-4 py-2 w-full border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="pl-10 pr-4 py-2 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
         </div>
         <Button variant="outline">
@@ -354,44 +354,44 @@ export function ProjectsModule({ role }: ProjectsModuleProps) {
       </div>
 
       {/* Projects Table */}
-      <div className="bg-white border border-white/10 rounded-lg overflow-hidden">
+      <div className="bg-white border border-gray-300 rounded-lg overflow-hidden">
         <table className="w-full">
-          <thead className="bg-white/5 border-b border-white/10">
+          <thead className="bg-gray-50 border-b border-gray-300">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Project</th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Client</th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Status</th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Progress</th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Budget</th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Due Date</th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Team</th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Project</th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Client</th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Status</th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Progress</th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Budget</th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Due Date</th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Team</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-white/10">
+          <tbody className="divide-y divide-gray-200">
             {mockProjects.map((project) => (
-              <tr key={project.id} className="hover:bg-white/5 cursor-pointer">
+              <tr key={project.id} className="hover:bg-gray-50 cursor-pointer">
                 <td className="px-6 py-4">
                   <div>
-                    <p className="font-medium text-slate-100">{project.name}</p>
-                    <p className="text-xs text-slate-400">{project.id}</p>
+                    <p className="font-medium text-gray-900">{project.name}</p>
+                    <p className="text-xs text-gray-500">{project.id}</p>
                   </div>
                 </td>
                 <td className="px-6 py-4">
-                  <p className="text-sm text-slate-100">{project.client}</p>
+                  <p className="text-sm text-gray-900">{project.client}</p>
                 </td>
                 <td className="px-6 py-4">
                   <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                    project.status === 'completed' ? 'bg-green-500/15 text-green-300' :
-                    project.status === 'in-progress' ? 'bg-blue-500/15 text-blue-300' :
-                    project.status === 'on-hold' ? 'bg-orange-500/15 text-orange-300' :
-                    'bg-purple-500/15 text-purple-300'
+                    project.status === 'completed' ? 'bg-green-100 text-green-800' :
+                    project.status === 'in-progress' ? 'bg-blue-100 text-blue-800' :
+                    project.status === 'on-hold' ? 'bg-orange-100 text-orange-800' :
+                    'bg-purple-100 text-purple-800'
                   }`}>
                     {project.status.replace('-', ' ')}
                   </span>
                 </td>
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-2">
-                    <div className="w-24 h-2 bg-white/10 rounded-full">
+                    <div className="w-24 h-2 bg-gray-200 rounded-full">
                       <div
                         className={`h-2 rounded-full ${
                           project.progress === 100 ? 'bg-green-600' :
@@ -400,25 +400,25 @@ export function ProjectsModule({ role }: ProjectsModuleProps) {
                         style={{ width: `${project.progress}%` }}
                       />
                     </div>
-                    <span className="text-sm font-semibold text-slate-100">{project.progress}%</span>
+                    <span className="text-sm font-semibold text-gray-900">{project.progress}%</span>
                   </div>
                 </td>
                 <td className="px-6 py-4">
-                  <p className="text-sm font-semibold text-slate-100">
+                  <p className="text-sm font-semibold text-gray-900">
                     ${(project.spent / 1000).toFixed(0)}K / ${(project.budget / 1000).toFixed(0)}K
                   </p>
                 </td>
                 <td className="px-6 py-4">
-                  <p className="text-sm text-slate-100">{project.dueDate}</p>
+                  <p className="text-sm text-gray-900">{project.dueDate}</p>
                 </td>
                 <td className="px-6 py-4">
                   <div className="flex -space-x-2">
                     {project.team.slice(0, 3).map((member, idx) => (
                       <div
                         key={idx}
-                        className="w-8 h-8 rounded-full bg-indigo-500/15 border-2 border-white flex items-center justify-center"
+                        className="w-8 h-8 rounded-full bg-indigo-100 border-2 border-white flex items-center justify-center"
                       >
-                        <span className="text-xs font-semibold text-indigo-400">
+                        <span className="text-xs font-semibold text-indigo-600">
                           {member.split(' ').map(n => n[0]).join('')}
                         </span>
                       </div>
@@ -442,24 +442,24 @@ function ProjectDetailModal({ project, onClose }: any) {
     <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
       <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="sticky top-0 bg-white border-b border-white/10 p-6 flex items-center justify-between">
+        <div className="sticky top-0 bg-white border-b border-gray-300 p-6 flex items-center justify-between">
           <div>
-            <h2 className="text-xl font-bold text-slate-100">{project.name}</h2>
-            <p className="text-sm text-slate-300">{project.client}</p>
+            <h2 className="text-xl font-bold text-gray-900">{project.name}</h2>
+            <p className="text-sm text-gray-600">{project.client}</p>
           </div>
           <div className="flex items-center gap-3">
             <Button variant="outline" size="sm">
               <Edit className="w-4 h-4 mr-2" />
               Edit
             </Button>
-            <button onClick={onClose} className="text-gray-400 hover:text-slate-300">
+            <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
               <MoreVertical className="w-5 h-5" />
             </button>
           </div>
         </div>
 
         {/* Tabs */}
-        <div className="border-b border-white/10 flex">
+        <div className="border-b border-gray-300 flex">
           {[
             { id: 'overview', label: 'Overview' },
             { id: 'tasks', label: 'Tasks' },
@@ -471,8 +471,8 @@ function ProjectDetailModal({ project, onClose }: any) {
               onClick={() => setActiveTab(tab.id as any)}
               className={`px-6 py-4 border-b-2 transition-colors ${
                 activeTab === tab.id
-                  ? 'border-indigo-600 text-indigo-400 font-medium'
-                  : 'border-transparent text-slate-300 hover:text-slate-100'
+                  ? 'border-indigo-600 text-indigo-600 font-medium'
+                  : 'border-transparent text-gray-600 hover:text-gray-900'
               }`}
             >
               {tab.label}
@@ -486,19 +486,19 @@ function ProjectDetailModal({ project, onClose }: any) {
             <div className="space-y-6">
               {/* Key Metrics */}
               <div className="grid grid-cols-3 gap-4">
-                <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
-                  <p className="text-sm text-blue-300 mb-1">Progress</p>
-                  <p className="text-3xl font-bold text-blue-300">{project.progress}%</p>
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                  <p className="text-sm text-blue-700 mb-1">Progress</p>
+                  <p className="text-3xl font-bold text-blue-900">{project.progress}%</p>
                 </div>
-                <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-4">
-                  <p className="text-sm text-green-300 mb-1">Budget Used</p>
-                  <p className="text-3xl font-bold text-green-300">
+                <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                  <p className="text-sm text-green-700 mb-1">Budget Used</p>
+                  <p className="text-3xl font-bold text-green-900">
                     {Math.round((project.spent / project.budget) * 100)}%
                   </p>
                 </div>
-                <div className="bg-purple-500/10 border border-purple-500/30 rounded-lg p-4">
-                  <p className="text-sm text-purple-300 mb-1">Tasks Done</p>
-                  <p className="text-3xl font-bold text-purple-300">
+                <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                  <p className="text-sm text-purple-700 mb-1">Tasks Done</p>
+                  <p className="text-3xl font-bold text-purple-900">
                     {project.tasks.completed}/{project.tasks.total}
                   </p>
                 </div>
@@ -507,29 +507,29 @@ function ProjectDetailModal({ project, onClose }: any) {
               {/* Project Details */}
               <div className="grid grid-cols-2 gap-6">
                 <div>
-                  <h3 className="font-semibold text-slate-100 mb-4">Project Details</h3>
+                  <h3 className="font-semibold text-gray-900 mb-4">Project Details</h3>
                   <div className="space-y-3">
                     <div className="flex justify-between">
-                      <span className="text-sm text-slate-300">Start Date</span>
-                      <span className="text-sm font-medium text-slate-100">{project.startDate}</span>
+                      <span className="text-sm text-gray-600">Start Date</span>
+                      <span className="text-sm font-medium text-gray-900">{project.startDate}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-sm text-slate-300">Due Date</span>
-                      <span className="text-sm font-medium text-slate-100">{project.dueDate}</span>
+                      <span className="text-sm text-gray-600">Due Date</span>
+                      <span className="text-sm font-medium text-gray-900">{project.dueDate}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-sm text-slate-300">Priority</span>
+                      <span className="text-sm text-gray-600">Priority</span>
                       <span className={`px-2 py-1 rounded text-xs font-medium ${
-                        project.priority === 'high' ? 'bg-red-500/15 text-red-300' :
-                        project.priority === 'medium' ? 'bg-yellow-500/15 text-yellow-300' :
-                        'bg-blue-500/15 text-blue-300'
+                        project.priority === 'high' ? 'bg-red-100 text-red-800' :
+                        project.priority === 'medium' ? 'bg-yellow-100 text-yellow-800' :
+                        'bg-blue-100 text-blue-800'
                       }`}>
                         {project.priority}
                       </span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-sm text-slate-300">Status</span>
-                      <span className="text-sm font-medium text-slate-100">
+                      <span className="text-sm text-gray-600">Status</span>
+                      <span className="text-sm font-medium text-gray-900">
                         {project.status.replace('-', ' ')}
                       </span>
                     </div>
@@ -537,27 +537,27 @@ function ProjectDetailModal({ project, onClose }: any) {
                 </div>
 
                 <div>
-                  <h3 className="font-semibold text-slate-100 mb-4">Budget Breakdown</h3>
+                  <h3 className="font-semibold text-gray-900 mb-4">Budget Breakdown</h3>
                   <div className="space-y-3">
                     <div className="flex justify-between">
-                      <span className="text-sm text-slate-300">Total Budget</span>
-                      <span className="text-sm font-medium text-slate-100">
+                      <span className="text-sm text-gray-600">Total Budget</span>
+                      <span className="text-sm font-medium text-gray-900">
                         ${project.budget.toLocaleString()}
                       </span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-sm text-slate-300">Spent</span>
-                      <span className="text-sm font-medium text-slate-100">
+                      <span className="text-sm text-gray-600">Spent</span>
+                      <span className="text-sm font-medium text-gray-900">
                         ${project.spent.toLocaleString()}
                       </span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-sm text-slate-300">Remaining</span>
-                      <span className="text-sm font-medium text-green-400">
+                      <span className="text-sm text-gray-600">Remaining</span>
+                      <span className="text-sm font-medium text-green-600">
                         ${(project.budget - project.spent).toLocaleString()}
                       </span>
                     </div>
-                    <div className="h-2 bg-white/10 rounded-full">
+                    <div className="h-2 bg-gray-200 rounded-full">
                       <div
                         className="h-2 bg-blue-600 rounded-full"
                         style={{ width: `${(project.spent / project.budget) * 100}%` }}
@@ -572,7 +572,7 @@ function ProjectDetailModal({ project, onClose }: any) {
           {activeTab === 'tasks' && (
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <h3 className="font-semibold text-slate-100">Project Tasks</h3>
+                <h3 className="font-semibold text-gray-900">Project Tasks</h3>
                 <Button size="sm">
                   <Plus className="w-4 h-4 mr-2" />
                   Add Task
@@ -586,22 +586,22 @@ function ProjectDetailModal({ project, onClose }: any) {
                   { name: 'Content migration', status: 'pending', assignee: 'Sarah' },
                   { name: 'QA testing', status: 'pending', assignee: 'Amanda' }
                 ].map((task, idx) => (
-                  <div key={idx} className="flex items-center justify-between p-3 border border-white/10 rounded-lg">
+                  <div key={idx} className="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
                     <div className="flex items-center gap-3">
                       <input type="checkbox" checked={task.status === 'completed'} className="rounded" />
-                      <span className={`text-sm ${task.status === 'completed' ? 'line-through text-slate-400' : 'text-slate-100'}`}>
+                      <span className={`text-sm ${task.status === 'completed' ? 'line-through text-gray-500' : 'text-gray-900'}`}>
                         {task.name}
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
                       <span className={`px-2 py-1 rounded text-xs font-medium ${
-                        task.status === 'completed' ? 'bg-green-500/15 text-green-300' :
-                        task.status === 'in-progress' ? 'bg-blue-500/15 text-blue-300' :
-                        'bg-white/5 text-slate-100'
+                        task.status === 'completed' ? 'bg-green-100 text-green-800' :
+                        task.status === 'in-progress' ? 'bg-blue-100 text-blue-800' :
+                        'bg-gray-100 text-gray-800'
                       }`}>
                         {task.status}
                       </span>
-                      <span className="text-xs text-slate-300">{task.assignee}</span>
+                      <span className="text-xs text-gray-600">{task.assignee}</span>
                     </div>
                   </div>
                 ))}
@@ -611,19 +611,19 @@ function ProjectDetailModal({ project, onClose }: any) {
 
           {activeTab === 'team' && (
             <div className="space-y-4">
-              <h3 className="font-semibold text-slate-100">Team Members</h3>
+              <h3 className="font-semibold text-gray-900">Team Members</h3>
               <div className="space-y-3">
                 {project.team.map((member: string, idx: number) => (
-                  <div key={idx} className="flex items-center justify-between p-4 border border-white/10 rounded-lg">
+                  <div key={idx} className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-indigo-500/15 flex items-center justify-center">
-                        <span className="text-sm font-semibold text-indigo-400">
+                      <div className="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center">
+                        <span className="text-sm font-semibold text-indigo-600">
                           {member.split(' ').map(n => n[0]).join('')}
                         </span>
                       </div>
                       <div>
-                        <p className="font-medium text-slate-100">{member}</p>
-                        <p className="text-xs text-slate-400">Team Member</p>
+                        <p className="font-medium text-gray-900">{member}</p>
+                        <p className="text-xs text-gray-500">Team Member</p>
                       </div>
                     </div>
                     <Button variant="outline" size="sm">
@@ -638,7 +638,7 @@ function ProjectDetailModal({ project, onClose }: any) {
         </div>
 
         {/* Footer */}
-        <div className="sticky bottom-0 bg-white/5 border-t border-white/10 p-4 flex justify-end">
+        <div className="sticky bottom-0 bg-gray-50 border-t border-gray-300 p-4 flex justify-end">
           <Button onClick={onClose}>Close</Button>
         </div>
       </div>

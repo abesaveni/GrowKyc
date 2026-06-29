@@ -269,10 +269,10 @@ export function LawyerReview({ caseData, userRole = 'lawyer' }: LawyerReviewProp
           <div className="flex items-center justify-between">
             <div>
               <CardTitle className="flex items-center gap-2">
-                <Scale className="w-5 h-5 text-blue-400" />
+                <Scale className="w-5 h-5 text-blue-600" />
                 Legal Review & Compliance
               </CardTitle>
-              <p className="text-sm text-slate-300 mt-1">
+              <p className="text-sm text-gray-600 mt-1">
                 Comprehensive legal review for {caseData.caseNumber}
               </p>
             </div>
@@ -297,8 +297,8 @@ export function LawyerReview({ caseData, userRole = 'lawyer' }: LawyerReviewProp
             {/* Progress */}
             <div>
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm font-medium text-slate-300">Review Progress</span>
-                <span className="text-sm font-semibold text-slate-100">{progress}%</span>
+                <span className="text-sm font-medium text-gray-700">Review Progress</span>
+                <span className="text-sm font-semibold text-gray-900">{progress}%</span>
               </div>
               <Progress value={progress} className="h-3" />
             </div>
@@ -319,21 +319,21 @@ export function LawyerReview({ caseData, userRole = 'lawyer' }: LawyerReviewProp
             )}
 
             {/* Case Summary */}
-            <div className="grid grid-cols-4 gap-4 p-4 bg-white/5 rounded-lg">
+            <div className="grid grid-cols-4 gap-4 p-4 bg-gray-50 rounded-lg">
               <div>
-                <div className="text-xs text-slate-300 mb-1">Property</div>
+                <div className="text-xs text-gray-600 mb-1">Property</div>
                 <div className="font-medium text-sm">{caseData?.property?.address || 'N/A'}</div>
               </div>
               <div>
-                <div className="text-xs text-slate-300 mb-1">Borrower</div>
+                <div className="text-xs text-gray-600 mb-1">Borrower</div>
                 <div className="font-medium text-sm">{caseData?.borrowerName || 'N/A'}</div>
               </div>
               <div>
-                <div className="text-xs text-slate-300 mb-1">Outstanding Debt</div>
+                <div className="text-xs text-gray-600 mb-1">Outstanding Debt</div>
                 <div className="font-medium text-sm">${caseData?.outstandingDebt?.toLocaleString() || '0'}</div>
               </div>
               <div>
-                <div className="text-xs text-slate-300 mb-1">Valuation</div>
+                <div className="text-xs text-gray-600 mb-1">Valuation</div>
                 <div className="font-medium text-sm">${caseData?.valuation?.amount?.toLocaleString() || '0'}</div>
               </div>
             </div>
@@ -345,7 +345,7 @@ export function LawyerReview({ caseData, userRole = 'lawyer' }: LawyerReviewProp
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Shield className="w-5 h-5 text-purple-400" />
+            <Shield className="w-5 h-5 text-purple-600" />
             NCCP Loan Determination
           </CardTitle>
         </CardHeader>
@@ -360,7 +360,7 @@ export function LawyerReview({ caseData, userRole = 'lawyer' }: LawyerReviewProp
           <div className="flex items-center gap-4 p-4 border rounded-lg">
             <div className="flex-1">
               <Label className="text-base font-semibold mb-2">Is this an NCCP loan?</Label>
-              <p className="text-sm text-slate-300">
+              <p className="text-sm text-gray-600">
                 NCCP applies if the loan is for personal, domestic or household purposes (not business/investment)
               </p>
             </div>
@@ -391,7 +391,7 @@ export function LawyerReview({ caseData, userRole = 'lawyer' }: LawyerReviewProp
                     type="checkbox"
                     checked={item.checked}
                     onChange={() => toggleNcpChecklistItem(item.id)}
-                    className="mt-1 w-5 h-5 rounded border-white/10"
+                    className="mt-1 w-5 h-5 rounded border-gray-300"
                   />
                   <div className="flex-1">
                     <div className="font-medium text-sm">{item.item}</div>
@@ -400,7 +400,7 @@ export function LawyerReview({ caseData, userRole = 'lawyer' }: LawyerReviewProp
                     )}
                   </div>
                   {item.checked && (
-                    <CheckCircle2 className="w-5 h-5 text-green-400" />
+                    <CheckCircle2 className="w-5 h-5 text-green-600" />
                   )}
                 </div>
               ))}
@@ -422,7 +422,7 @@ export function LawyerReview({ caseData, userRole = 'lawyer' }: LawyerReviewProp
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <FileCheck className="w-5 h-5 text-blue-400" />
+            <FileCheck className="w-5 h-5 text-blue-600" />
             Document Review ({documentChecklist.filter(d => d.reviewed).length}/{documentChecklist.length})
           </CardTitle>
         </CardHeader>
@@ -441,9 +441,9 @@ export function LawyerReview({ caseData, userRole = 'lawyer' }: LawyerReviewProp
                             type="checkbox"
                             checked={doc.reviewed}
                             onChange={(e) => toggleDocumentReview(doc.id, 'reviewed', e.target.checked)}
-                            className="w-4 h-4 rounded border-white/10"
+                            className="w-4 h-4 rounded border-gray-300"
                           />
-                          <span className="text-sm text-slate-300">Reviewed</span>
+                          <span className="text-sm text-gray-600">Reviewed</span>
                         </label>
                       </div>
                     </div>
@@ -498,7 +498,7 @@ export function LawyerReview({ caseData, userRole = 'lawyer' }: LawyerReviewProp
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Gavel className="w-5 h-5 text-orange-400" />
+            <Gavel className="w-5 h-5 text-orange-600" />
             Enforcement Steps Verification
           </CardTitle>
         </CardHeader>
@@ -518,7 +518,7 @@ export function LawyerReview({ caseData, userRole = 'lawyer' }: LawyerReviewProp
                     type="checkbox"
                     checked={step.completed}
                     onChange={(e) => updateEnforcementStep(step.id, 'completed', e.target.checked)}
-                    className="mt-1 w-5 h-5 rounded border-white/10"
+                    className="mt-1 w-5 h-5 rounded border-gray-300"
                   />
                   <div className="flex-1">
                     <div className="font-medium">{step.step}</div>
@@ -527,7 +527,7 @@ export function LawyerReview({ caseData, userRole = 'lawyer' }: LawyerReviewProp
                     )}
                   </div>
                   {step.completed && (
-                    <CheckCircle2 className="w-5 h-5 text-green-400" />
+                    <CheckCircle2 className="w-5 h-5 text-green-600" />
                   )}
                 </div>
 
@@ -586,7 +586,7 @@ export function LawyerReview({ caseData, userRole = 'lawyer' }: LawyerReviewProp
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <CheckSquare className="w-5 h-5 text-green-400" />
+            <CheckSquare className="w-5 h-5 text-green-600" />
             Loan Compliance - Buyer Protection
           </CardTitle>
         </CardHeader>
@@ -603,14 +603,14 @@ export function LawyerReview({ caseData, userRole = 'lawyer' }: LawyerReviewProp
               <div 
                 key={item.id} 
                 className={`flex items-start gap-3 p-3 border rounded-lg ${
-                  item.critical && !item.checked ? 'border-red-300 bg-red-500/10' : ''
+                  item.critical && !item.checked ? 'border-red-300 bg-red-50' : ''
                 }`}
               >
                 <input
                   type="checkbox"
                   checked={item.checked}
                   onChange={() => toggleComplianceItem(item.id)}
-                  className="mt-1 w-5 h-5 rounded border-white/10"
+                  className="mt-1 w-5 h-5 rounded border-gray-300"
                 />
                 <div className="flex-1">
                   <div className="font-medium">{item.item}</div>
@@ -621,7 +621,7 @@ export function LawyerReview({ caseData, userRole = 'lawyer' }: LawyerReviewProp
                   </div>
                 </div>
                 {item.checked && (
-                  <CheckCircle2 className="w-5 h-5 text-green-400" />
+                  <CheckCircle2 className="w-5 h-5 text-green-600" />
                 )}
               </div>
             ))}
@@ -633,7 +633,7 @@ export function LawyerReview({ caseData, userRole = 'lawyer' }: LawyerReviewProp
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <FileText className="w-5 h-5 text-blue-400" />
+            <FileText className="w-5 h-5 text-blue-600" />
             Statement of Advice
           </CardTitle>
         </CardHeader>
@@ -645,14 +645,14 @@ export function LawyerReview({ caseData, userRole = 'lawyer' }: LawyerReviewProp
             </AlertDescription>
           </Alert>
 
-          <div className="border-2 border-dashed border-white/10 rounded-lg p-6 text-center">
+          <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
             {statementOfAdvice ? (
               <div className="space-y-3">
-                <div className="flex items-center justify-center gap-3 text-green-400">
+                <div className="flex items-center justify-center gap-3 text-green-600">
                   <CheckCircle2 className="w-8 h-8" />
                   <div className="text-left">
                     <div className="font-semibold">{statementOfAdvice.name}</div>
-                    <div className="text-sm text-slate-300">
+                    <div className="text-sm text-gray-600">
                       {(statementOfAdvice.size / 1024).toFixed(2)} KB
                     </div>
                   </div>
@@ -673,10 +673,10 @@ export function LawyerReview({ caseData, userRole = 'lawyer' }: LawyerReviewProp
                 <Upload className="w-12 h-12 text-gray-400 mx-auto" />
                 <div>
                   <Label htmlFor="statement-upload" className="cursor-pointer">
-                    <div className="text-base font-semibold text-blue-400 hover:text-blue-300">
+                    <div className="text-base font-semibold text-blue-600 hover:text-blue-700">
                       Click to upload Statement of Advice
                     </div>
-                    <div className="text-sm text-slate-300 mt-1">
+                    <div className="text-sm text-gray-600 mt-1">
                       PDF, DOC, or DOCX (Max 10MB)
                     </div>
                   </Label>
@@ -714,14 +714,14 @@ export function LawyerReview({ caseData, userRole = 'lawyer' }: LawyerReviewProp
       <Card>
         <CardContent className="pt-6">
           <div className="flex items-center justify-between">
-            <div className="text-sm text-slate-300">
+            <div className="text-sm text-gray-600">
               {criticalIssues.length === 0 && statementOfAdvice ? (
-                <span className="text-green-400 font-medium flex items-center gap-2">
+                <span className="text-green-600 font-medium flex items-center gap-2">
                   <CheckCircle2 className="w-5 h-5" />
                   All requirements met - Ready for approval
                 </span>
               ) : (
-                <span className="text-amber-400 font-medium flex items-center gap-2">
+                <span className="text-amber-600 font-medium flex items-center gap-2">
                   <AlertTriangle className="w-5 h-5" />
                   {criticalIssues.length > 0 ? 'Critical issues must be resolved' : 'Statement of Advice required'}
                 </span>
@@ -732,7 +732,7 @@ export function LawyerReview({ caseData, userRole = 'lawyer' }: LawyerReviewProp
                 variant="outline"
                 size="lg"
                 onClick={handleRejectCase}
-                className="text-red-400 hover:text-red-300 hover:bg-red-500/10"
+                className="text-red-600 hover:text-red-700 hover:bg-red-50"
               >
                 <XCircle className="w-5 h-5 mr-2" />
                 Reject Case

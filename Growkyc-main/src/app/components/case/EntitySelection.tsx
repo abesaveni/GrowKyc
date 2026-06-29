@@ -143,12 +143,12 @@ export function EntitySelection({
     <div className="space-y-6">
       {/* Entity Type Selection */}
       <Card className="border-2 border-indigo-300">
-        <CardHeader className="bg-indigo-500/10">
+        <CardHeader className="bg-indigo-50">
           <CardTitle className="text-lg flex items-center gap-2">
-            <Building2 className="w-5 h-5 text-indigo-400" />
+            <Building2 className="w-5 h-5 text-indigo-600" />
             Borrowing Entity Type
           </CardTitle>
-          <p className="text-sm text-slate-300 mt-2">
+          <p className="text-sm text-gray-600 mt-2">
             Select the type of entity borrowing the funds
           </p>
         </CardHeader>
@@ -159,14 +159,14 @@ export function EntitySelection({
               onClick={() => onEntityTypeChange('personal')}
               className={`p-6 rounded-lg border-2 transition-all ${
                 entityType === 'personal'
-                  ? 'border-indigo-500 bg-indigo-500/10 shadow-lg'
-                  : 'border-white/10 hover:border-indigo-300 hover:bg-white/5'
+                  ? 'border-indigo-500 bg-indigo-50 shadow-lg'
+                  : 'border-gray-300 hover:border-indigo-300 hover:bg-gray-50'
               }`}
             >
-              <User className={`w-8 h-8 mx-auto mb-2 ${entityType === 'personal' ? 'text-indigo-400' : 'text-slate-300'}`} />
+              <User className={`w-8 h-8 mx-auto mb-2 ${entityType === 'personal' ? 'text-indigo-600' : 'text-gray-600'}`} />
               <div className="text-center">
-                <div className="font-bold text-slate-100">Personal</div>
-                <div className="text-xs text-slate-300 mt-1">Individual borrower</div>
+                <div className="font-bold text-gray-900">Personal</div>
+                <div className="text-xs text-gray-600 mt-1">Individual borrower</div>
               </div>
             </button>
 
@@ -175,14 +175,14 @@ export function EntitySelection({
               onClick={() => onEntityTypeChange('company')}
               className={`p-6 rounded-lg border-2 transition-all ${
                 entityType === 'company'
-                  ? 'border-purple-500 bg-purple-500/10 shadow-lg'
-                  : 'border-white/10 hover:border-purple-300 hover:bg-white/5'
+                  ? 'border-purple-500 bg-purple-50 shadow-lg'
+                  : 'border-gray-300 hover:border-purple-300 hover:bg-gray-50'
               }`}
             >
-              <Building2 className={`w-8 h-8 mx-auto mb-2 ${entityType === 'company' ? 'text-purple-400' : 'text-slate-300'}`} />
+              <Building2 className={`w-8 h-8 mx-auto mb-2 ${entityType === 'company' ? 'text-purple-600' : 'text-gray-600'}`} />
               <div className="text-center">
-                <div className="font-bold text-slate-100">Company</div>
-                <div className="text-xs text-slate-300 mt-1">Corporate entity</div>
+                <div className="font-bold text-gray-900">Company</div>
+                <div className="text-xs text-gray-600 mt-1">Corporate entity</div>
               </div>
             </button>
 
@@ -191,14 +191,14 @@ export function EntitySelection({
               onClick={() => onEntityTypeChange('trust')}
               className={`p-6 rounded-lg border-2 transition-all ${
                 entityType === 'trust'
-                  ? 'border-amber-500 bg-amber-500/10 shadow-lg'
-                  : 'border-white/10 hover:border-amber-300 hover:bg-white/5'
+                  ? 'border-amber-500 bg-amber-50 shadow-lg'
+                  : 'border-gray-300 hover:border-amber-300 hover:bg-gray-50'
               }`}
             >
-              <Shield className={`w-8 h-8 mx-auto mb-2 ${entityType === 'trust' ? 'text-amber-400' : 'text-slate-300'}`} />
+              <Shield className={`w-8 h-8 mx-auto mb-2 ${entityType === 'trust' ? 'text-amber-600' : 'text-gray-600'}`} />
               <div className="text-center">
-                <div className="font-bold text-slate-100">Trust</div>
-                <div className="text-xs text-slate-300 mt-1">Trust structure</div>
+                <div className="font-bold text-gray-900">Trust</div>
+                <div className="text-xs text-gray-600 mt-1">Trust structure</div>
               </div>
             </button>
           </div>
@@ -209,9 +209,9 @@ export function EntitySelection({
       {entityType === 'company' && (
         <>
           <Card className="border-2 border-purple-300">
-            <CardHeader className="bg-purple-500/10">
+            <CardHeader className="bg-purple-50">
               <CardTitle className="text-lg flex items-center gap-2">
-                <Building2 className="w-5 h-5 text-purple-400" />
+                <Building2 className="w-5 h-5 text-purple-600" />
                 Company Details
               </CardTitle>
             </CardHeader>
@@ -250,7 +250,7 @@ export function EntitySelection({
                     id="companyType"
                     value={formData.companyType}
                     onChange={(e) => onInputChange('companyType', e.target.value)}
-                    className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
                   >
                     <option value="proprietary">Proprietary (Pty Ltd)</option>
                     <option value="public">Public Company</option>
@@ -273,14 +273,14 @@ export function EntitySelection({
 
           {/* Directors */}
           <Card className="border-2 border-blue-300">
-            <CardHeader className="bg-blue-500/10">
+            <CardHeader className="bg-blue-50">
               <div className="flex items-center justify-between">
                 <div>
                   <CardTitle className="text-lg flex items-center gap-2">
-                    <User className="w-5 h-5 text-blue-400" />
+                    <User className="w-5 h-5 text-blue-600" />
                     Directors ({directors.length})
                   </CardTitle>
-                  <p className="text-sm text-slate-300 mt-1">All directors must be verified</p>
+                  <p className="text-sm text-gray-600 mt-1">All directors must be verified</p>
                 </div>
                 <Button type="button" onClick={addDirector} size="sm" className="bg-blue-600 hover:bg-blue-700">
                   <Plus className="w-4 h-4 mr-2" />
@@ -290,14 +290,14 @@ export function EntitySelection({
             </CardHeader>
             <CardContent className="p-6 space-y-4">
               {directors.length === 0 && (
-                <p className="text-center text-slate-400 py-4">No directors added yet. Click "Add Director" to begin.</p>
+                <p className="text-center text-gray-500 py-4">No directors added yet. Click "Add Director" to begin.</p>
               )}
               {directors.map((director, idx) => (
-                <div key={idx} className="p-4 bg-blue-500/10 rounded-lg border-2 border-blue-500/30 relative">
+                <div key={idx} className="p-4 bg-blue-50 rounded-lg border-2 border-blue-200 relative">
                   <button
                     type="button"
                     onClick={() => removeDirector(idx)}
-                    className="absolute top-2 right-2 text-red-400 hover:text-red-300"
+                    className="absolute top-2 right-2 text-red-600 hover:text-red-800"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
@@ -352,14 +352,14 @@ export function EntitySelection({
 
           {/* Shareholders 25%+ */}
           <Card className="border-2 border-green-300">
-            <CardHeader className="bg-green-500/10">
+            <CardHeader className="bg-green-50">
               <div className="flex items-center justify-between">
                 <div>
                   <CardTitle className="text-lg flex items-center gap-2">
-                    <Users className="w-5 h-5 text-green-400" />
+                    <Users className="w-5 h-5 text-green-600" />
                     Shareholders with 25%+ Ownership ({shareholders.length})
                   </CardTitle>
-                  <p className="text-sm text-slate-300 mt-1">AML/CTF Act requires verification of beneficial owners with 25%+ shareholding</p>
+                  <p className="text-sm text-gray-600 mt-1">AML/CTF Act requires verification of beneficial owners with 25%+ shareholding</p>
                 </div>
                 <Button type="button" onClick={addShareholder} size="sm" className="bg-green-600 hover:bg-green-700">
                   <Plus className="w-4 h-4 mr-2" />
@@ -369,14 +369,14 @@ export function EntitySelection({
             </CardHeader>
             <CardContent className="p-6 space-y-4">
               {shareholders.length === 0 && (
-                <p className="text-center text-slate-400 py-4">No shareholders added yet. Click "Add Shareholder" to begin.</p>
+                <p className="text-center text-gray-500 py-4">No shareholders added yet. Click "Add Shareholder" to begin.</p>
               )}
               {shareholders.map((shareholder, idx) => (
-                <div key={idx} className="p-4 bg-green-500/10 rounded-lg border-2 border-green-500/30 relative">
+                <div key={idx} className="p-4 bg-green-50 rounded-lg border-2 border-green-200 relative">
                   <button
                     type="button"
                     onClick={() => removeShareholder(idx)}
-                    className="absolute top-2 right-2 text-red-400 hover:text-red-300"
+                    className="absolute top-2 right-2 text-red-600 hover:text-red-800"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
@@ -438,9 +438,9 @@ export function EntitySelection({
       {entityType === 'trust' && (
         <>
           <Card className="border-2 border-amber-300">
-            <CardHeader className="bg-amber-500/10">
+            <CardHeader className="bg-amber-50">
               <CardTitle className="text-lg flex items-center gap-2">
-                <Shield className="w-5 h-5 text-amber-400" />
+                <Shield className="w-5 h-5 text-amber-600" />
                 Trust Details
               </CardTitle>
             </CardHeader>
@@ -461,7 +461,7 @@ export function EntitySelection({
                     id="trustType"
                     value={formData.trustType}
                     onChange={(e) => onInputChange('trustType', e.target.value)}
-                    className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-600"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-600"
                   >
                     <option value="family">Family Trust</option>
                     <option value="unit">Unit Trust</option>
@@ -493,14 +493,14 @@ export function EntitySelection({
 
           {/* Trustees */}
           <Card className="border-2 border-violet-300">
-            <CardHeader className="bg-violet-500/10">
+            <CardHeader className="bg-violet-50">
               <div className="flex items-center justify-between">
                 <div>
                   <CardTitle className="text-lg flex items-center gap-2">
-                    <Shield className="w-5 h-5 text-violet-400" />
+                    <Shield className="w-5 h-5 text-violet-600" />
                     Trustees ({trustees.length})
                   </CardTitle>
-                  <p className="text-sm text-slate-300 mt-1">All trustees must be verified (can be individuals or companies)</p>
+                  <p className="text-sm text-gray-600 mt-1">All trustees must be verified (can be individuals or companies)</p>
                 </div>
                 <Button type="button" onClick={addTrustee} size="sm" className="bg-violet-600 hover:bg-violet-700">
                   <Plus className="w-4 h-4 mr-2" />
@@ -510,14 +510,14 @@ export function EntitySelection({
             </CardHeader>
             <CardContent className="p-6 space-y-4">
               {trustees.length === 0 && (
-                <p className="text-center text-slate-400 py-4">No trustees added yet. Click "Add Trustee" to begin.</p>
+                <p className="text-center text-gray-500 py-4">No trustees added yet. Click "Add Trustee" to begin.</p>
               )}
               {trustees.map((trustee, idx) => (
-                <div key={idx} className="p-4 bg-violet-500/10 rounded-lg border-2 border-violet-500/30 relative">
+                <div key={idx} className="p-4 bg-violet-50 rounded-lg border-2 border-violet-200 relative">
                   <button
                     type="button"
                     onClick={() => removeTrustee(idx)}
-                    className="absolute top-2 right-2 text-red-400 hover:text-red-300"
+                    className="absolute top-2 right-2 text-red-600 hover:text-red-800"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
@@ -528,7 +528,7 @@ export function EntitySelection({
                         <select
                           value={trustee.type}
                           onChange={(e) => updateTrustee(idx, 'type', e.target.value)}
-                          className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-600"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-600"
                         >
                           <option value="individual">Individual Trustee</option>
                           <option value="company">Corporate Trustee</option>
@@ -571,14 +571,14 @@ export function EntitySelection({
                           </Button>
                         </div>
                         {(!trustee.directors || trustee.directors.length === 0) && (
-                          <p className="text-xs text-slate-400 text-center py-2">No directors added</p>
+                          <p className="text-xs text-gray-500 text-center py-2">No directors added</p>
                         )}
                         {trustee.directors && trustee.directors.map((director, didx) => (
-                          <div key={didx} className="grid md:grid-cols-2 gap-2 mb-2 p-2 bg-blue-500/10 rounded relative">
+                          <div key={didx} className="grid md:grid-cols-2 gap-2 mb-2 p-2 bg-blue-50 rounded relative">
                             <button
                               type="button"
                               onClick={() => removeTrusteeDirector(idx, didx)}
-                              className="absolute top-1 right-1 text-red-400 hover:text-red-300"
+                              className="absolute top-1 right-1 text-red-600 hover:text-red-800"
                             >
                               <Trash2 className="w-3 h-3" />
                             </button>
@@ -612,14 +612,14 @@ export function EntitySelection({
 
       {/* Guarantors (for all entity types) */}
       <Card className="border-2 border-teal-300">
-        <CardHeader className="bg-teal-500/10">
+        <CardHeader className="bg-teal-50">
           <div className="flex items-center justify-between">
             <div>
               <CardTitle className="text-lg flex items-center gap-2">
-                <Users className="w-5 h-5 text-teal-400" />
+                <Users className="w-5 h-5 text-teal-600" />
                 Guarantors ({guarantors.length})
               </CardTitle>
-              <p className="text-sm text-slate-300 mt-1">Add any guarantors (optional - can be individuals or companies)</p>
+              <p className="text-sm text-gray-600 mt-1">Add any guarantors (optional - can be individuals or companies)</p>
             </div>
             <Button type="button" onClick={addGuarantor} size="sm" className="bg-teal-600 hover:bg-teal-700">
               <Plus className="w-4 h-4 mr-2" />
@@ -629,14 +629,14 @@ export function EntitySelection({
         </CardHeader>
         <CardContent className="p-6 space-y-4">
           {guarantors.length === 0 && (
-            <p className="text-center text-slate-400 py-4">No guarantors added. Click "Add Guarantor" if required.</p>
+            <p className="text-center text-gray-500 py-4">No guarantors added. Click "Add Guarantor" if required.</p>
           )}
           {guarantors.map((guarantor, idx) => (
-            <div key={idx} className="p-4 bg-teal-500/10 rounded-lg border-2 border-teal-500/30 relative">
+            <div key={idx} className="p-4 bg-teal-50 rounded-lg border-2 border-teal-200 relative">
               <button
                 type="button"
                 onClick={() => removeGuarantor(idx)}
-                className="absolute top-2 right-2 text-red-400 hover:text-red-300"
+                className="absolute top-2 right-2 text-red-600 hover:text-red-800"
               >
                 <Trash2 className="w-4 h-4" />
               </button>
@@ -647,7 +647,7 @@ export function EntitySelection({
                     <select
                       value={guarantor.type}
                       onChange={(e) => updateGuarantor(idx, 'type', e.target.value)}
-                      className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-600"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-600"
                     >
                       <option value="individual">Individual</option>
                       <option value="company">Company</option>
@@ -720,14 +720,14 @@ export function EntitySelection({
                       </Button>
                     </div>
                     {(!guarantor.directors || guarantor.directors.length === 0) && (
-                      <p className="text-xs text-slate-400 text-center py-2">No directors added</p>
+                      <p className="text-xs text-gray-500 text-center py-2">No directors added</p>
                     )}
                     {guarantor.directors && guarantor.directors.map((director, didx) => (
-                      <div key={didx} className="grid md:grid-cols-2 gap-2 mb-2 p-2 bg-blue-500/10 rounded relative">
+                      <div key={didx} className="grid md:grid-cols-2 gap-2 mb-2 p-2 bg-blue-50 rounded relative">
                         <button
                           type="button"
                           onClick={() => removeGuarantorDirector(idx, didx)}
-                          className="absolute top-1 right-1 text-red-400 hover:text-red-300"
+                          className="absolute top-1 right-1 text-red-600 hover:text-red-800"
                         >
                           <Trash2 className="w-3 h-3" />
                         </button>

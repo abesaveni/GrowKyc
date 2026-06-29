@@ -306,7 +306,7 @@ export function RegulatoryGapAnalysis({ onBack }: RegulatoryGapAnalysisProps) {
   );
 
   return (
-    <div className="min-h-screen bg-[#0f172a]">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-6">
         <div className="flex items-center justify-between mb-4">
@@ -324,7 +324,7 @@ export function RegulatoryGapAnalysis({ onBack }: RegulatoryGapAnalysisProps) {
               </p>
             </div>
           </div>
-          <Button className="bg-[#1e293b] text-indigo-400 hover:bg-indigo-500/10">
+          <Button className="bg-white text-indigo-600 hover:bg-indigo-50">
             <Download className="w-4 h-4 mr-2" />
             Export Report
           </Button>
@@ -370,13 +370,13 @@ export function RegulatoryGapAnalysis({ onBack }: RegulatoryGapAnalysisProps) {
                   <div className="flex items-center justify-between">
                     <div>
                       <CardTitle className="text-xl flex items-center gap-2">
-                        {categoryName === 'AML/AUSTRAC Tranche 2' && <Shield className="w-6 h-6 text-blue-400" />}
-                        {categoryName === 'NCCP Compliance' && <FileText className="w-6 h-6 text-purple-400" />}
-                        {categoryName === 'ASIC RG78 Breach Reporting' && <AlertTriangle className="w-6 h-6 text-orange-400" />}
-                        {categoryName === 'ASIC RG271 Complaints' && <Users className="w-6 h-6 text-teal-400" />}
-                        {categoryName === 'SOC 2 / ISO 27001' && <Lock className="w-6 h-6 text-red-400" />}
-                        {categoryName === 'Cross-Module Controls' && <Activity className="w-6 h-6 text-green-400" />}
-                        {categoryName === 'Dashboards' && <Database className="w-6 h-6 text-indigo-400" />}
+                        {categoryName === 'AML/AUSTRAC Tranche 2' && <Shield className="w-6 h-6 text-blue-600" />}
+                        {categoryName === 'NCCP Compliance' && <FileText className="w-6 h-6 text-purple-600" />}
+                        {categoryName === 'ASIC RG78 Breach Reporting' && <AlertTriangle className="w-6 h-6 text-orange-600" />}
+                        {categoryName === 'ASIC RG271 Complaints' && <Users className="w-6 h-6 text-teal-600" />}
+                        {categoryName === 'SOC 2 / ISO 27001' && <Lock className="w-6 h-6 text-red-600" />}
+                        {categoryName === 'Cross-Module Controls' && <Activity className="w-6 h-6 text-green-600" />}
+                        {categoryName === 'Dashboards' && <Database className="w-6 h-6 text-indigo-600" />}
                         {categoryName}
                       </CardTitle>
                       <CardDescription>
@@ -384,8 +384,8 @@ export function RegulatoryGapAnalysis({ onBack }: RegulatoryGapAnalysisProps) {
                       </CardDescription>
                     </div>
                     <div className="text-right">
-                      <div className="text-3xl font-bold text-indigo-400">{categoryCompletion}%</div>
-                      <div className="text-xs text-slate-400">Completion</div>
+                      <div className="text-3xl font-bold text-indigo-600">{categoryCompletion}%</div>
+                      <div className="text-xs text-gray-500">Completion</div>
                     </div>
                   </div>
                 </CardHeader>
@@ -395,19 +395,19 @@ export function RegulatoryGapAnalysis({ onBack }: RegulatoryGapAnalysisProps) {
                       <div 
                         key={idx}
                         className={`p-4 rounded-lg border-2 ${
-                          item.status === 'complete' ? 'bg-green-500/10 border-green-300' :
-                          item.status === 'partial' ? 'bg-amber-500/10 border-amber-300' :
-                          'bg-red-500/10 border-red-300'
+                          item.status === 'complete' ? 'bg-green-50 border-green-300' :
+                          item.status === 'partial' ? 'bg-amber-50 border-amber-300' :
+                          'bg-red-50 border-red-300'
                         }`}
                       >
                         <div className="flex items-start gap-3">
-                          {item.status === 'complete' && <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />}
-                          {item.status === 'partial' && <AlertTriangle className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />}
-                          {item.status === 'missing' && <XCircle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />}
+                          {item.status === 'complete' && <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />}
+                          {item.status === 'partial' && <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />}
+                          {item.status === 'missing' && <XCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />}
                           
                           <div className="flex-1">
                             <div className="flex items-center justify-between mb-2">
-                              <h4 className="font-bold text-white">{item.requirement}</h4>
+                              <h4 className="font-bold text-gray-900">{item.requirement}</h4>
                               {item.priority && item.priority !== 'N/A' && (
                                 <Badge className={
                                   item.priority === 'HIGH' ? 'bg-red-600' :
@@ -421,21 +421,21 @@ export function RegulatoryGapAnalysis({ onBack }: RegulatoryGapAnalysisProps) {
                             
                             {item.existing && (
                               <div className="mb-2">
-                                <span className="text-xs font-semibold text-green-300">✅ Existing: </span>
-                                <span className="text-xs text-slate-300">{item.existing}</span>
+                                <span className="text-xs font-semibold text-green-700">✅ Existing: </span>
+                                <span className="text-xs text-gray-700">{item.existing}</span>
                               </div>
                             )}
                             
                             {item.gap && item.gap !== 'None' && (
                               <div className="mb-2">
-                                <span className="text-xs font-semibold text-red-300">❌ Gap: </span>
-                                <span className="text-xs text-slate-300">{item.gap}</span>
+                                <span className="text-xs font-semibold text-red-700">❌ Gap: </span>
+                                <span className="text-xs text-gray-700">{item.gap}</span>
                               </div>
                             )}
                             
-                            <div className="mt-2 p-2 bg-white/80 rounded border border-white/10">
-                              <span className="text-xs font-semibold text-indigo-300">📦 Component: </span>
-                              <code className="text-xs text-indigo-300 font-mono">{item.component}</code>
+                            <div className="mt-2 p-2 bg-white/80 rounded border border-gray-200">
+                              <span className="text-xs font-semibold text-indigo-700">📦 Component: </span>
+                              <code className="text-xs text-indigo-900 font-mono">{item.component}</code>
                             </div>
                           </div>
                         </div>
@@ -449,16 +449,16 @@ export function RegulatoryGapAnalysis({ onBack }: RegulatoryGapAnalysisProps) {
         </div>
 
         {/* Implementation Roadmap */}
-        <Card className="mt-6 border-2 border-purple-500/30">
+        <Card className="mt-6 border-2 border-purple-200">
           <CardHeader className="bg-gradient-to-r from-purple-50 to-pink-50">
             <CardTitle className="text-xl">📋 Implementation Roadmap - Priority Sequence</CardTitle>
             <CardDescription>Recommended order for closing regulatory gaps</CardDescription>
           </CardHeader>
           <CardContent className="p-6">
             <div className="space-y-4">
-              <div className="p-4 bg-red-500/10 rounded-lg border-2 border-red-300">
-                <h3 className="font-bold text-red-300 mb-2">🔴 PHASE 1: HIGH PRIORITY (Regulatory Risk)</h3>
-                <ul className="text-sm text-red-300 space-y-1 ml-4">
+              <div className="p-4 bg-red-50 rounded-lg border-2 border-red-300">
+                <h3 className="font-bold text-red-900 mb-2">🔴 PHASE 1: HIGH PRIORITY (Regulatory Risk)</h3>
+                <ul className="text-sm text-red-800 space-y-1 ml-4">
                   <li>1. <strong>AMLProgramManagement.tsx</strong> - AUSTRAC Part A/B program compliance</li>
                   <li>2. <strong>CustomerRiskScoringEngine.tsx</strong> - Structured AML risk scoring</li>
                   <li>3. <strong>OngoingDueDiligenceHub.tsx</strong> - ODD review management</li>
@@ -469,9 +469,9 @@ export function RegulatoryGapAnalysis({ onBack }: RegulatoryGapAnalysisProps) {
                 </ul>
               </div>
 
-              <div className="p-4 bg-amber-500/10 rounded-lg border-2 border-amber-300">
-                <h3 className="font-bold text-amber-300 mb-2">🟡 PHASE 2: MEDIUM PRIORITY (Operational Excellence)</h3>
-                <ul className="text-sm text-amber-300 space-y-1 ml-4">
+              <div className="p-4 bg-amber-50 rounded-lg border-2 border-amber-300">
+                <h3 className="font-bold text-amber-900 mb-2">🟡 PHASE 2: MEDIUM PRIORITY (Operational Excellence)</h3>
+                <ul className="text-sm text-amber-800 space-y-1 ml-4">
                   <li>8. <strong>ScreeningAlertCenter.tsx</strong> - Centralized screening alerts</li>
                   <li>9. <strong>ConsumerProfileCapture.tsx</strong> - Enhanced NCCP borrower data</li>
                   <li>10. <strong>DisclosureRegister.tsx</strong> - Disclosure tracking</li>
@@ -483,9 +483,9 @@ export function RegulatoryGapAnalysis({ onBack }: RegulatoryGapAnalysisProps) {
                 </ul>
               </div>
 
-              <div className="p-4 bg-blue-500/10 rounded-lg border-2 border-blue-300">
-                <h3 className="font-bold text-blue-300 mb-2">🔵 PHASE 3: LOW PRIORITY (Polish & Standardization)</h3>
-                <ul className="text-sm text-blue-300 space-y-1 ml-4">
+              <div className="p-4 bg-blue-50 rounded-lg border-2 border-blue-300">
+                <h3 className="font-bold text-blue-900 mb-2">🔵 PHASE 3: LOW PRIORITY (Polish & Standardization)</h3>
+                <ul className="text-sm text-blue-800 space-y-1 ml-4">
                   <li>16. Cross-module version history standardization</li>
                   <li>17. Consistent document attachment UI</li>
                   <li>18. Enhanced task creation from all modules</li>

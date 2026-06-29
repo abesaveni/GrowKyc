@@ -121,22 +121,22 @@ export function DecisionsTab({ clientId }: { clientId: string }) {
       case 'Completed':
         return <Shield className="w-6 h-6 text-blue-500" />;
       default:
-        return <FileText className="w-6 h-6 text-slate-400" />;
+        return <FileText className="w-6 h-6 text-gray-500" />;
     }
   };
 
   const getStatusBadge = (status: Decision['status']) => {
     switch (status) {
       case 'Approved':
-        return <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-green-500/15 text-green-300 border border-green-500/30">Approved</span>;
+        return <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-green-100 text-green-800 border border-green-200">Approved</span>;
       case 'Rejected':
-        return <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-red-500/15 text-red-300 border border-red-500/30">Rejected</span>;
+        return <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-red-100 text-red-800 border border-red-200">Rejected</span>;
       case 'Pending':
-        return <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-500/15 text-amber-300 border border-amber-500/30">Pending</span>;
+        return <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-800 border border-amber-200">Pending</span>;
       case 'Escalated':
-        return <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-orange-500/15 text-orange-300 border border-orange-500/30">Escalated</span>;
+        return <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-orange-100 text-orange-800 border border-orange-200">Escalated</span>;
       case 'Completed':
-        return <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-500/15 text-blue-300 border border-blue-500/30">Completed</span>;
+        return <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-100 text-blue-800 border border-blue-200">Completed</span>;
       default:
         return null;
     }
@@ -145,60 +145,60 @@ export function DecisionsTab({ clientId }: { clientId: string }) {
   return (
     <div className="space-y-6">
       {/* Workflow Status Card */}
-      <Card className="border-2 border-blue-500/20 shadow-sm">
+      <Card className="border-2 border-blue-100 shadow-sm">
         <CardHeader className="bg-gradient-to-r from-blue-50 to-white border-b pb-4">
           <CardTitle className="text-lg font-bold flex items-center gap-2">
-            <Lock className="w-5 h-5 text-blue-400" />
+            <Lock className="w-5 h-5 text-blue-600" />
             Approval Workflow Status
           </CardTitle>
         </CardHeader>
         <CardContent className="p-6">
           <div className="flex flex-col md:flex-row justify-between mb-8 gap-6">
             <div className="flex-1">
-              <h4 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Current Stage</h4>
-              <p className="text-2xl font-bold text-blue-300">L2 Senior Review</p>
-              <p className="text-sm text-slate-300 mt-1">Step 2 of 3</p>
+              <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2">Current Stage</h4>
+              <p className="text-2xl font-bold text-blue-700">L2 Senior Review</p>
+              <p className="text-sm text-gray-600 mt-1">Step 2 of 3</p>
             </div>
             <div className="flex-1">
-              <h4 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Current Approver</h4>
+              <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2">Current Approver</h4>
               <div className="flex items-center gap-2">
-                <UserCircle className="w-8 h-8 text-blue-400" />
+                <UserCircle className="w-8 h-8 text-blue-600" />
                 <div>
-                  <p className="font-bold text-slate-100">Sarah Jenkins</p>
-                  <p className="text-xs text-slate-400">Senior AML Analyst</p>
+                  <p className="font-bold text-gray-900">Sarah Jenkins</p>
+                  <p className="text-xs text-gray-500">Senior AML Analyst</p>
                 </div>
               </div>
             </div>
             <div className="flex-1">
-              <h4 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Time in Stage</h4>
-              <p className="text-lg font-bold text-slate-100">2 Days, 4 Hours</p>
-              <p className="text-sm text-slate-300 mt-1">SLA: 5 Days</p>
+              <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2">Time in Stage</h4>
+              <p className="text-lg font-bold text-gray-900">2 Days, 4 Hours</p>
+              <p className="text-sm text-gray-600 mt-1">SLA: 5 Days</p>
             </div>
           </div>
 
           {/* Workflow Progress Steps */}
           <div className="relative flex justify-between items-center mb-8 px-4">
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 bg-white/10"></div>
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 bg-gray-200"></div>
             <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1/2 h-1 bg-blue-500 transition-all"></div>
             
             <div className="relative flex flex-col items-center z-10">
               <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center border-4 border-white shadow-sm">
                 <CheckCircle className="w-4 h-4 text-white" />
               </div>
-              <p className="mt-2 text-xs font-bold text-slate-100">L1 Maker</p>
-              <p className="text-[10px] text-slate-400">Michael Chen</p>
+              <p className="mt-2 text-xs font-bold text-gray-900">L1 Maker</p>
+              <p className="text-[10px] text-gray-500">Michael Chen</p>
             </div>
 
             <div className="relative flex flex-col items-center z-10">
-              <div className="w-8 h-8 rounded-full bg-blue-500/10 border-4 border-blue-500 flex items-center justify-center shadow-sm">
+              <div className="w-8 h-8 rounded-full bg-blue-50 border-4 border-blue-500 flex items-center justify-center shadow-sm">
                 <div className="w-2.5 h-2.5 rounded-full bg-blue-600 animate-pulse"></div>
               </div>
-              <p className="mt-2 text-xs font-bold text-blue-300">L2 Checker</p>
-              <p className="text-[10px] text-blue-400 font-semibold">In Progress</p>
+              <p className="mt-2 text-xs font-bold text-blue-700">L2 Checker</p>
+              <p className="text-[10px] text-blue-600 font-semibold">In Progress</p>
             </div>
 
             <div className="relative flex flex-col items-center z-10">
-              <div className="w-8 h-8 rounded-full bg-white/5 border-4 border-white flex items-center justify-center shadow-sm">
+              <div className="w-8 h-8 rounded-full bg-gray-100 border-4 border-white flex items-center justify-center shadow-sm">
                 <div className="w-2.5 h-2.5 rounded-full bg-gray-300"></div>
               </div>
               <p className="mt-2 text-xs font-bold text-gray-400">MLRO Sign-off</p>
@@ -207,11 +207,11 @@ export function DecisionsTab({ clientId }: { clientId: string }) {
           </div>
 
           {/* SoD Enforcement Alert */}
-          <div className="bg-orange-500/10 border border-orange-500/30 rounded-lg p-4 flex items-start gap-3 shadow-sm">
-            <ShieldAlert className="w-5 h-5 text-orange-400 flex-shrink-0 mt-0.5" />
+          <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 flex items-start gap-3 shadow-sm">
+            <ShieldAlert className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
             <div>
-              <h4 className="font-bold text-orange-300 text-sm">Separation of Duties (SoD) Enforced</h4>
-              <p className="text-sm text-orange-300 mt-1">
+              <h4 className="font-bold text-orange-900 text-sm">Separation of Duties (SoD) Enforced</h4>
+              <p className="text-sm text-orange-800 mt-1">
                 You are currently logged in as <strong>Michael Chen</strong>. Because you completed the <strong>L1 Maker</strong> step, system controls actively prevent you from completing the <strong>L2 Checker</strong> approval. This document must be reviewed by another authorized user.
               </p>
             </div>
@@ -219,11 +219,11 @@ export function DecisionsTab({ clientId }: { clientId: string }) {
         </CardContent>
       </Card>
 
-      <Card className="border-2 border-indigo-500/20 shadow-sm">
+      <Card className="border-2 border-indigo-100 shadow-sm">
         <CardHeader className="bg-gradient-to-r from-indigo-50 to-white border-b">
           <div className="flex items-center justify-between">
             <CardTitle className="text-xl font-bold flex items-center gap-2">
-              <Shield className="w-6 h-6 text-indigo-400" />
+              <Shield className="w-6 h-6 text-indigo-600" />
               Decision History & Audit Trail
             </CardTitle>
             <Button className="bg-indigo-600 hover:bg-indigo-700 text-white" onClick={() => setIsLogModalOpen(true)}>
@@ -233,11 +233,11 @@ export function DecisionsTab({ clientId }: { clientId: string }) {
           </div>
         </CardHeader>
         <CardContent className="p-6">
-          <div className="relative border-l-2 border-indigo-500/20 ml-4 pl-8 space-y-8">
+          <div className="relative border-l-2 border-indigo-100 ml-4 pl-8 space-y-8">
             {decisions.map((decision, index) => (
               <div key={decision.id} className="relative">
                 {/* Timeline Node */}
-                <div className="absolute -left-[43px] top-1 bg-white p-1 rounded-full border-2 border-indigo-500/20">
+                <div className="absolute -left-[43px] top-1 bg-white p-1 rounded-full border-2 border-indigo-100">
                   {getStatusIcon(decision.status)}
                 </div>
 
@@ -245,36 +245,36 @@ export function DecisionsTab({ clientId }: { clientId: string }) {
                   <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
                     <div>
                       <div className="flex items-center gap-3 mb-1">
-                        <h3 className="text-lg font-bold text-slate-100">{decision.title}</h3>
+                        <h3 className="text-lg font-bold text-gray-900">{decision.title}</h3>
                         {getStatusBadge(decision.status)}
                       </div>
-                      <div className="flex items-center gap-2 text-sm text-slate-400 font-medium">
-                        <span className="px-2 py-0.5 bg-white/5 rounded text-slate-300">{decision.type}</span>
+                      <div className="flex items-center gap-2 text-sm text-gray-500 font-medium">
+                        <span className="px-2 py-0.5 bg-gray-100 rounded text-gray-700">{decision.type}</span>
                         <span>•</span>
                         <span>{format(decision.date, 'dd MMM yyyy, HH:mm')}</span>
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-3 bg-white/5 px-4 py-2 rounded-lg border">
-                      <div className="bg-indigo-500/15 p-2 rounded-full">
-                        <User className="w-4 h-4 text-indigo-400" />
+                    <div className="flex items-center gap-3 bg-gray-50 px-4 py-2 rounded-lg border">
+                      <div className="bg-indigo-100 p-2 rounded-full">
+                        <User className="w-4 h-4 text-indigo-600" />
                       </div>
                       <div className="text-sm">
-                        <p className="font-bold text-slate-100">{decision.approver}</p>
-                        <p className="text-slate-400 text-xs">{decision.role}</p>
+                        <p className="font-bold text-gray-900">{decision.approver}</p>
+                        <p className="text-gray-500 text-xs">{decision.role}</p>
                       </div>
                     </div>
                   </div>
 
-                  <div className="bg-white/5 p-4 rounded-lg border border-white/10">
-                    <p className="text-sm text-slate-300 leading-relaxed">
-                      <span className="font-semibold text-slate-100 mr-2">Rationale:</span>
+                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-100">
+                    <p className="text-sm text-gray-700 leading-relaxed">
+                      <span className="font-semibold text-gray-900 mr-2">Rationale:</span>
                       {decision.rationale}
                     </p>
                   </div>
                   
                   {index !== decisions.length - 1 && (
-                    <div className="mt-4 flex items-center text-xs text-indigo-400 font-medium">
+                    <div className="mt-4 flex items-center text-xs text-indigo-600 font-medium">
                       <ArrowRight className="w-3 h-3 mr-1" />
                       Previous state transition
                     </div>
@@ -290,9 +290,9 @@ export function DecisionsTab({ clientId }: { clientId: string }) {
       {isLogModalOpen && (
         <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center p-4">
           <Card className="w-full max-w-lg shadow-2xl animate-in fade-in zoom-in-95 duration-200 border-0">
-            <CardHeader className="flex flex-row items-center justify-between border-b bg-white/5 pb-4">
+            <CardHeader className="flex flex-row items-center justify-between border-b bg-slate-50 pb-4">
               <CardTitle className="text-xl font-bold flex items-center gap-2">
-                <PlusCircle className="w-5 h-5 text-indigo-400" />
+                <PlusCircle className="w-5 h-5 text-indigo-600" />
                 Log New Decision
               </CardTitle>
               <Button variant="ghost" size="sm" onClick={closeModal} className="h-8 w-8 p-0 rounded-full">
@@ -301,7 +301,7 @@ export function DecisionsTab({ clientId }: { clientId: string }) {
             </CardHeader>
             <CardContent className="p-6 space-y-4">
               <div className="space-y-1.5">
-                <label className="text-sm font-semibold text-slate-300">Decision Title</label>
+                <label className="text-sm font-semibold text-slate-700">Decision Title</label>
                 <input 
                   type="text" 
                   className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
@@ -312,7 +312,7 @@ export function DecisionsTab({ clientId }: { clientId: string }) {
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-sm font-semibold text-slate-300">Decision Type</label>
+                <label className="text-sm font-semibold text-slate-700">Decision Type</label>
                 <select 
                   className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
                   value={newType}
@@ -327,7 +327,7 @@ export function DecisionsTab({ clientId }: { clientId: string }) {
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-sm font-semibold text-slate-300">Rationale</label>
+                <label className="text-sm font-semibold text-slate-700">Rationale</label>
                 <textarea 
                   className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none min-h-[100px]"
                   placeholder="Detail the reasoning for this decision..."

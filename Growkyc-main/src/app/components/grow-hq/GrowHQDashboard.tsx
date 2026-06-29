@@ -50,8 +50,8 @@ const Button = ({ children, onClick, variant = 'default', size = 'default', clas
   const baseClasses = 'inline-flex items-center justify-center font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed';
   const variantClasses = {
     default: 'bg-blue-600 text-white hover:bg-blue-700',
-    outline: 'border-2 border-white/10 bg-white text-slate-300 hover:bg-white/5',
-    ghost: 'text-slate-300 hover:bg-white/5'
+    outline: 'border-2 border-gray-300 bg-white text-gray-700 hover:bg-gray-50',
+    ghost: 'text-gray-700 hover:bg-gray-100'
   };
   const sizeClasses = {
     default: 'px-4 py-2 text-sm',
@@ -71,19 +71,19 @@ const Button = ({ children, onClick, variant = 'default', size = 'default', clas
 };
 
 const Card = ({ children, className = '' }: any) => (
-  <div className={`bg-white border-2 border-white/10 rounded-lg ${className}`}>
+  <div className={`bg-white border-2 border-gray-200 rounded-lg ${className}`}>
     {children}
   </div>
 );
 
 const CardHeader = ({ children }: any) => (
-  <div className="p-6 border-b border-white/10">
+  <div className="p-6 border-b border-gray-200">
     {children}
   </div>
 );
 
 const CardTitle = ({ children, className = '' }: any) => (
-  <h3 className={`text-lg font-bold text-slate-100 ${className}`}>
+  <h3 className={`text-lg font-bold text-gray-900 ${className}`}>
     {children}
   </h3>
 );
@@ -178,13 +178,13 @@ export function GrowHQDashboard({ onNavigate }: GrowHQDashboardProps) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-slate-100">Grow HQ</h1>
-          <p className="text-slate-300 mt-1">SaaS Management Console â€¢ {organizationName}</p>
+          <h1 className="text-3xl font-bold text-gray-900">Grow HQ</h1>
+          <p className="text-gray-600 mt-1">SaaS Management Console â€¢ {organizationName}</p>
         </div>
         <div className="flex items-center gap-3">
           <div className="text-right">
-            <p className="text-sm text-slate-300">Your Instance</p>
-            <p className="text-sm font-mono font-semibold text-blue-400">{customDomain}</p>
+            <p className="text-sm text-gray-600">Your Instance</p>
+            <p className="text-sm font-mono font-semibold text-blue-600">{customDomain}</p>
           </div>
           <Button onClick={() => onNavigate?.('settings')}>
             <Settings className="w-4 h-4 mr-2" />
@@ -198,44 +198,44 @@ export function GrowHQDashboard({ onNavigate }: GrowHQDashboardProps) {
         <Card className="border-l-4 border-blue-600">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-semibold text-slate-300">Active Modules</span>
-              <LayoutGrid className="w-5 h-5 text-blue-400" />
+              <span className="text-sm font-semibold text-gray-600">Active Modules</span>
+              <LayoutGrid className="w-5 h-5 text-blue-600" />
             </div>
-            <p className="text-3xl font-bold text-slate-100">{activeModules.length}</p>
-            <p className="text-xs text-slate-400 mt-1">of {enabledModules.length} available</p>
+            <p className="text-3xl font-bold text-gray-900">{activeModules.length}</p>
+            <p className="text-xs text-gray-500 mt-1">of {enabledModules.length} available</p>
           </CardContent>
         </Card>
 
         <Card className="border-l-4 border-green-600">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-semibold text-slate-300">Total Users</span>
-              <Users className="w-5 h-5 text-green-400" />
+              <span className="text-sm font-semibold text-gray-600">Total Users</span>
+              <Users className="w-5 h-5 text-green-600" />
             </div>
-            <p className="text-3xl font-bold text-slate-100">{totalUsers}</p>
-            <p className="text-xs text-slate-400 mt-1">Across all modules</p>
+            <p className="text-3xl font-bold text-gray-900">{totalUsers}</p>
+            <p className="text-xs text-gray-500 mt-1">Across all modules</p>
           </CardContent>
         </Card>
 
         <Card className="border-l-4 border-purple-600">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-semibold text-slate-300">Active Firms</span>
-              <Building2 className="w-5 h-5 text-purple-400" />
+              <span className="text-sm font-semibold text-gray-600">Active Firms</span>
+              <Building2 className="w-5 h-5 text-purple-600" />
             </div>
-            <p className="text-3xl font-bold text-slate-100">3</p>
-            <p className="text-xs text-slate-400 mt-1">Multi-firm enabled</p>
+            <p className="text-3xl font-bold text-gray-900">3</p>
+            <p className="text-xs text-gray-500 mt-1">Multi-firm enabled</p>
           </CardContent>
         </Card>
 
         <Card className="border-l-4 border-amber-600">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-semibold text-slate-300">Uptime</span>
-              <Activity className="w-5 h-5 text-amber-400" />
+              <span className="text-sm font-semibold text-gray-600">Uptime</span>
+              <Activity className="w-5 h-5 text-amber-600" />
             </div>
-            <p className="text-3xl font-bold text-slate-100">99.9%</p>
-            <p className="text-xs text-slate-400 mt-1">Last 30 days</p>
+            <p className="text-3xl font-bold text-gray-900">99.9%</p>
+            <p className="text-xs text-gray-500 mt-1">Last 30 days</p>
           </CardContent>
         </Card>
       </div>
@@ -250,7 +250,7 @@ export function GrowHQDashboard({ onNavigate }: GrowHQDashboardProps) {
             </div>
             <Button 
               size="lg" 
-              className="bg-white text-blue-400 hover:bg-blue-500/10"
+              className="bg-white text-blue-600 hover:bg-blue-50"
               onClick={() => onNavigate?.('multi_firm_management')}
             >
               <Building2 className="w-5 h-5 mr-2" />
@@ -286,7 +286,7 @@ export function GrowHQDashboard({ onNavigate }: GrowHQDashboardProps) {
           <div className="flex items-center justify-between">
             <div>
               <CardTitle>White-Label Configuration</CardTitle>
-              <p className="text-sm text-slate-300 mt-1">Customize your platform branding and domain</p>
+              <p className="text-sm text-gray-600 mt-1">Customize your platform branding and domain</p>
             </div>
             <Button variant="outline" onClick={() => setShowBrandingEditor(true)}>
               <Palette className="w-4 h-4 mr-2" />
@@ -298,12 +298,12 @@ export function GrowHQDashboard({ onNavigate }: GrowHQDashboardProps) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="p-4 border rounded-lg">
               <div className="flex items-center gap-3 mb-3">
-                <div className="p-2 bg-blue-500/15 rounded-lg">
-                  <Building2 className="w-5 h-5 text-blue-400" />
+                <div className="p-2 bg-blue-100 rounded-lg">
+                  <Building2 className="w-5 h-5 text-blue-600" />
                 </div>
                 <div>
-                  <p className="font-semibold text-slate-100">Organization Name</p>
-                  <p className="text-sm text-slate-300">{organizationName}</p>
+                  <p className="font-semibold text-gray-900">Organization Name</p>
+                  <p className="text-sm text-gray-600">{organizationName}</p>
                 </div>
               </div>
               <Button size="sm" variant="ghost" className="w-full">
@@ -314,14 +314,14 @@ export function GrowHQDashboard({ onNavigate }: GrowHQDashboardProps) {
 
             <div className="p-4 border rounded-lg">
               <div className="flex items-center gap-3 mb-3">
-                <div className="p-2 bg-purple-500/15 rounded-lg">
-                  <Palette className="w-5 h-5 text-purple-400" />
+                <div className="p-2 bg-purple-100 rounded-lg">
+                  <Palette className="w-5 h-5 text-purple-600" />
                 </div>
                 <div>
-                  <p className="font-semibold text-slate-100">Brand Color</p>
+                  <p className="font-semibold text-gray-900">Brand Color</p>
                   <div className="flex items-center gap-2 mt-1">
                     <div className="w-4 h-4 rounded" style={{ backgroundColor: primaryColor }}></div>
-                    <p className="text-sm text-slate-300 font-mono">{primaryColor}</p>
+                    <p className="text-sm text-gray-600 font-mono">{primaryColor}</p>
                   </div>
                 </div>
               </div>
@@ -333,12 +333,12 @@ export function GrowHQDashboard({ onNavigate }: GrowHQDashboardProps) {
 
             <div className="p-4 border rounded-lg">
               <div className="flex items-center gap-3 mb-3">
-                <div className="p-2 bg-green-500/15 rounded-lg">
-                  <Globe className="w-5 h-5 text-green-400" />
+                <div className="p-2 bg-green-100 rounded-lg">
+                  <Globe className="w-5 h-5 text-green-600" />
                 </div>
                 <div>
-                  <p className="font-semibold text-slate-100">Custom Domain</p>
-                  <p className="text-sm text-slate-300 font-mono">{customDomain}</p>
+                  <p className="font-semibold text-gray-900">Custom Domain</p>
+                  <p className="text-sm text-gray-600 font-mono">{customDomain}</p>
                 </div>
               </div>
               <Button size="sm" variant="ghost" className="w-full">
@@ -348,12 +348,12 @@ export function GrowHQDashboard({ onNavigate }: GrowHQDashboardProps) {
             </div>
           </div>
 
-          <div className="mt-6 p-4 bg-blue-500/10 border-2 border-blue-500/30 rounded-lg">
+          <div className="mt-6 p-4 bg-blue-50 border-2 border-blue-200 rounded-lg">
             <div className="flex items-start gap-3">
-              <Zap className="w-5 h-5 text-blue-400 mt-0.5" />
+              <Zap className="w-5 h-5 text-blue-600 mt-0.5" />
               <div className="flex-1">
-                <p className="font-semibold text-blue-300">Logo Upload Available</p>
-                <p className="text-sm text-blue-300 mt-1">Upload your logo to replace the Grow branding across all modules. Supports PNG, SVG, 512x512px recommended.</p>
+                <p className="font-semibold text-blue-900">Logo Upload Available</p>
+                <p className="text-sm text-blue-700 mt-1">Upload your logo to replace the Grow branding across all modules. Supports PNG, SVG, 512x512px recommended.</p>
                 <div className="flex gap-2 mt-3">
                   <Button size="sm" onClick={() => toast.success('Opening logo uploader...')}>
                     <Upload className="w-4 h-4 mr-2" />
@@ -375,7 +375,7 @@ export function GrowHQDashboard({ onNavigate }: GrowHQDashboardProps) {
           <div className="flex items-center justify-between">
             <div>
               <CardTitle>Active Modules</CardTitle>
-              <p className="text-sm text-slate-300 mt-1">Modules currently enabled for your organization</p>
+              <p className="text-sm text-gray-600 mt-1">Modules currently enabled for your organization</p>
             </div>
             <Button onClick={() => toast.info('Opening module marketplace...')}>
               <Plus className="w-4 h-4 mr-2" />
@@ -386,21 +386,21 @@ export function GrowHQDashboard({ onNavigate }: GrowHQDashboardProps) {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {activeModules.map((module) => (
-              <div key={module.id} className="p-4 border-2 border-green-500/30 bg-green-500/10 rounded-lg">
+              <div key={module.id} className="p-4 border-2 border-green-200 bg-green-50 rounded-lg">
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-3">
                     <div className="p-2 bg-green-600 rounded-lg">
                       <Package className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <p className="font-semibold text-slate-100">{module.name}</p>
-                      <p className="text-xs text-slate-300">{module.subtitle}</p>
+                      <p className="font-semibold text-gray-900">{module.name}</p>
+                      <p className="text-xs text-gray-600">{module.subtitle}</p>
                     </div>
                   </div>
-                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <CheckCircle className="w-5 h-5 text-green-600" />
                 </div>
                 <div className="flex items-center justify-between text-sm mb-3">
-                  <span className="text-slate-300">{module.users} users</span>
+                  <span className="text-gray-600">{module.users} users</span>
                   <span className="px-2 py-1 bg-green-600 text-white text-xs font-semibold rounded">{module.plan}</span>
                 </div>
                 <div className="flex gap-2">
@@ -424,7 +424,7 @@ export function GrowHQDashboard({ onNavigate }: GrowHQDashboardProps) {
           <div className="flex items-center justify-between">
             <div>
               <CardTitle>Client Onboarding</CardTitle>
-              <p className="text-sm text-slate-300 mt-1">Start onboarding new clients based on your active modules</p>
+              <p className="text-sm text-gray-600 mt-1">Start onboarding new clients based on your active modules</p>
             </div>
           </div>
         </CardHeader>
@@ -476,14 +476,14 @@ export function GrowHQDashboard({ onNavigate }: GrowHQDashboardProps) {
                 key={clientType.type} 
                 className={`p-4 rounded-lg border-2 ${
                   clientType.active 
-                    ? 'border-blue-300 bg-blue-500/10' 
-                    : 'border-white/10 bg-white/5 opacity-60'
+                    ? 'border-blue-300 bg-blue-50' 
+                    : 'border-gray-200 bg-gray-50 opacity-60'
                 }`}
               >
                 <div className="text-center mb-3">
                   <div className="text-4xl mb-2">{clientType.icon}</div>
-                  <p className="font-bold text-slate-100 mb-1">{clientType.label}</p>
-                  <p className="text-xs text-slate-300">{clientType.description}</p>
+                  <p className="font-bold text-gray-900 mb-1">{clientType.label}</p>
+                  <p className="text-xs text-gray-600">{clientType.description}</p>
                 </div>
                 
                 {clientType.active ? (
@@ -511,19 +511,19 @@ export function GrowHQDashboard({ onNavigate }: GrowHQDashboardProps) {
                 
                 {clientType.active && (
                   <div className="mt-2 text-center">
-                    <span className="text-xs text-green-400 font-semibold">âœ“ Active</span>
+                    <span className="text-xs text-green-600 font-semibold">âœ“ Active</span>
                   </div>
                 )}
               </div>
             ))}
           </div>
           
-          <div className="mt-6 p-4 bg-blue-500/10 border-2 border-blue-500/30 rounded-lg">
+          <div className="mt-6 p-4 bg-blue-50 border-2 border-blue-200 rounded-lg">
             <div className="flex items-start gap-3">
-              <Users className="w-5 h-5 text-blue-400 mt-0.5" />
+              <Users className="w-5 h-5 text-blue-600 mt-0.5" />
               <div className="flex-1">
-                <p className="font-semibold text-blue-300">Module-Based Onboarding</p>
-                <p className="text-sm text-blue-300 mt-1">
+                <p className="font-semibold text-blue-900">Module-Based Onboarding</p>
+                <p className="text-sm text-blue-700 mt-1">
                   Each module has specialized onboarding workflows tailored to that industry's compliance requirements. 
                   Activate additional modules to unlock more client types.
                 </p>
@@ -539,32 +539,32 @@ export function GrowHQDashboard({ onNavigate }: GrowHQDashboardProps) {
           <div className="flex items-center justify-between">
             <div>
               <CardTitle>Available Add-Ons</CardTitle>
-              <p className="text-sm text-slate-300 mt-1">Enable additional modules to expand your platform</p>
+              <p className="text-sm text-gray-600 mt-1">Enable additional modules to expand your platform</p>
             </div>
           </div>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {availableModules.map((module) => (
-              <div key={module.id} className="p-4 border-2 border-white/10 rounded-lg hover:border-blue-300 transition-colors">
+              <div key={module.id} className="p-4 border-2 border-gray-200 rounded-lg hover:border-blue-300 transition-colors">
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 bg-white/5 rounded-lg">
-                      <Package className="w-5 h-5 text-slate-300" />
+                    <div className="p-2 bg-gray-100 rounded-lg">
+                      <Package className="w-5 h-5 text-gray-600" />
                     </div>
                     <div>
-                      <p className="font-semibold text-slate-100">{module.name}</p>
-                      <p className="text-xs text-slate-300">{module.subtitle}</p>
+                      <p className="font-semibold text-gray-900">{module.name}</p>
+                      <p className="text-xs text-gray-600">{module.subtitle}</p>
                     </div>
                   </div>
                   <XCircle className="w-5 h-5 text-gray-400" />
                 </div>
                 <div className="mb-3">
                   <div className="flex items-center gap-2 mb-2">
-                    <DollarSign className="w-4 h-4 text-slate-300" />
-                    <span className="text-sm font-semibold text-slate-100">$199/month</span>
+                    <DollarSign className="w-4 h-4 text-gray-600" />
+                    <span className="text-sm font-semibold text-gray-900">$199/month</span>
                   </div>
-                  <p className="text-xs text-slate-300">Professional plan â€¢ Unlimited users</p>
+                  <p className="text-xs text-gray-600">Professional plan â€¢ Unlimited users</p>
                 </div>
                 <div className="flex gap-2">
                   <Button size="sm" className="flex-1" onClick={() => toast.success(`Activating ${module.name}...`)}>
@@ -588,7 +588,7 @@ export function GrowHQDashboard({ onNavigate }: GrowHQDashboardProps) {
             <CardTitle className="text-lg">Integrations Hub</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-slate-300 mb-4">
+            <p className="text-sm text-gray-600 mb-4">
               Manage all third-party integrations and API connections
             </p>
             <Button className="w-full" onClick={() => onNavigate?.('integrations_hub')}>
@@ -604,7 +604,7 @@ export function GrowHQDashboard({ onNavigate }: GrowHQDashboardProps) {
             <CardTitle className="text-lg">Platform Settings</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-slate-300 mb-4">
+            <p className="text-sm text-gray-600 mb-4">
               API keys, webhooks, security, and advanced configuration
             </p>
             <Button className="w-full" onClick={() => onNavigate?.('platform_settings')}>
@@ -620,7 +620,7 @@ export function GrowHQDashboard({ onNavigate }: GrowHQDashboardProps) {
             <CardTitle className="text-lg">Integration Architecture</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-slate-300 mb-4">
+            <p className="text-sm text-gray-600 mb-4">
               View how core add-on modules integrate with specialized modules
             </p>
             <Button className="w-full" onClick={() => onNavigate?.('integration_architecture')}>
@@ -636,7 +636,7 @@ export function GrowHQDashboard({ onNavigate }: GrowHQDashboardProps) {
             <CardTitle className="text-lg">User Management</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-slate-300 mb-4">
+            <p className="text-sm text-gray-600 mb-4">
               Manage user accounts, roles, and permissions across all modules
             </p>
             <Button className="w-full" onClick={() => onNavigate?.('user_management')}>
@@ -654,7 +654,7 @@ export function GrowHQDashboard({ onNavigate }: GrowHQDashboardProps) {
           <div className="flex items-center justify-between">
             <div>
               <CardTitle className="text-2xl">Enterprise Architecture</CardTitle>
-              <p className="text-sm text-slate-300 mt-1">Governance, control, and multi-tenant capabilities</p>
+              <p className="text-sm text-gray-600 mt-1">Governance, control, and multi-tenant capabilities</p>
             </div>
           </div>
         </CardHeader>
@@ -663,30 +663,30 @@ export function GrowHQDashboard({ onNavigate }: GrowHQDashboardProps) {
             {/* Governance & Control Layer */}
             <div className="space-y-4">
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-3 bg-indigo-500/15 rounded-lg">
-                  <Shield className="w-6 h-6 text-indigo-400" />
+                <div className="p-3 bg-indigo-100 rounded-lg">
+                  <Shield className="w-6 h-6 text-indigo-600" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-slate-100">Governance & Control Layer</h3>
-                  <p className="text-sm text-slate-300">Complete audit trail and API-first architecture</p>
+                  <h3 className="text-lg font-bold text-gray-900">Governance & Control Layer</h3>
+                  <p className="text-sm text-gray-600">Complete audit trail and API-first architecture</p>
                 </div>
               </div>
               
               <div className="space-y-3">
-                <div className="p-4 bg-white/5 rounded-lg">
+                <div className="p-4 bg-gray-50 rounded-lg">
                   <div className="flex items-center gap-2 mb-2">
-                    <FileText className="w-5 h-5 text-slate-300" />
-                    <p className="font-semibold text-slate-100">Full Audit Trail</p>
+                    <FileText className="w-5 h-5 text-gray-600" />
+                    <p className="font-semibold text-gray-900">Full Audit Trail</p>
                   </div>
-                  <p className="text-sm text-slate-300">Every click logged</p>
+                  <p className="text-sm text-gray-600">Every click logged</p>
                 </div>
                 
-                <div className="p-4 bg-white/5 rounded-lg">
+                <div className="p-4 bg-gray-50 rounded-lg">
                   <div className="flex items-center gap-2 mb-2">
-                    <Code className="w-5 h-5 text-slate-300" />
-                    <p className="font-semibold text-slate-100">API First</p>
+                    <Code className="w-5 h-5 text-gray-600" />
+                    <p className="font-semibold text-gray-900">API First</p>
                   </div>
-                  <p className="text-sm text-slate-300">REST + Webhooks</p>
+                  <p className="text-sm text-gray-600">REST + Webhooks</p>
                 </div>
               </div>
             </div>
@@ -694,34 +694,34 @@ export function GrowHQDashboard({ onNavigate }: GrowHQDashboardProps) {
             {/* Multi-Firm Support */}
             <div className="space-y-4">
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-3 bg-blue-500/15 rounded-lg">
-                  <Building2 className="w-6 h-6 text-blue-400" />
+                <div className="p-3 bg-blue-100 rounded-lg">
+                  <Building2 className="w-6 h-6 text-blue-600" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-slate-100">Multi-Firm Support</h3>
-                  <p className="text-sm text-slate-300">Enterprise multi-tenancy with data isolation</p>
+                  <h3 className="text-lg font-bold text-gray-900">Multi-Firm Support</h3>
+                  <p className="text-sm text-gray-600">Enterprise multi-tenancy with data isolation</p>
                 </div>
               </div>
               
               <div className="space-y-3">
-                <div className="p-4 bg-white/5 rounded-lg">
+                <div className="p-4 bg-gray-50 rounded-lg">
                   <div className="flex items-center justify-between mb-1">
-                    <p className="text-sm font-semibold text-slate-100">â€¢ Isolated databases per firm</p>
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <p className="text-sm font-semibold text-gray-900">â€¢ Isolated databases per firm</p>
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                   </div>
                 </div>
                 
-                <div className="p-4 bg-white/5 rounded-lg">
+                <div className="p-4 bg-gray-50 rounded-lg">
                   <div className="flex items-center justify-between mb-1">
-                    <p className="text-sm font-semibold text-slate-100">â€¢ Role segregation</p>
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <p className="text-sm font-semibold text-gray-900">â€¢ Role segregation</p>
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                   </div>
                 </div>
                 
-                <div className="p-4 bg-white/5 rounded-lg">
+                <div className="p-4 bg-gray-50 rounded-lg">
                   <div className="flex items-center justify-between mb-1">
-                    <p className="text-sm font-semibold text-slate-100">â€¢ Revenue reporting</p>
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <p className="text-sm font-semibold text-gray-900">â€¢ Revenue reporting</p>
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                   </div>
                 </div>
               </div>
@@ -730,34 +730,34 @@ export function GrowHQDashboard({ onNavigate }: GrowHQDashboardProps) {
             {/* White Label */}
             <div className="space-y-4">
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-3 bg-purple-500/15 rounded-lg">
-                  <Palette className="w-6 h-6 text-purple-400" />
+                <div className="p-3 bg-purple-100 rounded-lg">
+                  <Palette className="w-6 h-6 text-purple-600" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-slate-100">White Label</h3>
-                  <p className="text-sm text-slate-300">Complete branding customization per firm</p>
+                  <h3 className="text-lg font-bold text-gray-900">White Label</h3>
+                  <p className="text-sm text-gray-600">Complete branding customization per firm</p>
                 </div>
               </div>
               
               <div className="space-y-3">
-                <div className="p-4 bg-white/5 rounded-lg">
+                <div className="p-4 bg-gray-50 rounded-lg">
                   <div className="flex items-center justify-between mb-1">
-                    <p className="text-sm font-semibold text-slate-100">â€¢ Custom branding</p>
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <p className="text-sm font-semibold text-gray-900">â€¢ Custom branding</p>
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                   </div>
                 </div>
                 
-                <div className="p-4 bg-white/5 rounded-lg">
+                <div className="p-4 bg-gray-50 rounded-lg">
                   <div className="flex items-center justify-between mb-1">
-                    <p className="text-sm font-semibold text-slate-100">â€¢ Custom domain</p>
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <p className="text-sm font-semibold text-gray-900">â€¢ Custom domain</p>
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                   </div>
                 </div>
                 
-                <div className="p-4 bg-white/5 rounded-lg">
+                <div className="p-4 bg-gray-50 rounded-lg">
                   <div className="flex items-center justify-between mb-1">
-                    <p className="text-sm font-semibold text-slate-100">â€¢ Firm templates</p>
-                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <p className="text-sm font-semibold text-gray-900">â€¢ Firm templates</p>
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                   </div>
                 </div>
               </div>
@@ -766,46 +766,46 @@ export function GrowHQDashboard({ onNavigate }: GrowHQDashboardProps) {
             {/* Modular Add-Ons */}
             <div className="space-y-4">
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-3 bg-green-500/15 rounded-lg">
-                  <Layers className="w-6 h-6 text-green-400" />
+                <div className="p-3 bg-green-100 rounded-lg">
+                  <Layers className="w-6 h-6 text-green-600" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-slate-100">Modular Add-Ons</h3>
-                  <p className="text-sm text-slate-300">Industry-specific module activation</p>
+                  <h3 className="text-lg font-bold text-gray-900">Modular Add-Ons</h3>
+                  <p className="text-sm text-gray-600">Industry-specific module activation</p>
                 </div>
               </div>
               
               <div className="grid grid-cols-2 gap-3">
-                <div className="p-3 bg-white/5 rounded-lg text-center">
-                  <p className="text-sm font-semibold text-slate-100">Accounting</p>
+                <div className="p-3 bg-gray-50 rounded-lg text-center">
+                  <p className="text-sm font-semibold text-gray-900">Accounting</p>
                 </div>
                 
-                <div className="p-3 bg-white/5 rounded-lg text-center">
-                  <p className="text-sm font-semibold text-slate-100">Legal</p>
+                <div className="p-3 bg-gray-50 rounded-lg text-center">
+                  <p className="text-sm font-semibold text-gray-900">Legal</p>
                 </div>
                 
-                <div className="p-3 bg-white/5 rounded-lg text-center">
-                  <p className="text-sm font-semibold text-slate-100">Lending</p>
+                <div className="p-3 bg-gray-50 rounded-lg text-center">
+                  <p className="text-sm font-semibold text-gray-900">Lending</p>
                 </div>
                 
-                <div className="p-3 bg-white/5 rounded-lg text-center">
-                  <p className="text-sm font-semibold text-slate-100">Broker</p>
+                <div className="p-3 bg-gray-50 rounded-lg text-center">
+                  <p className="text-sm font-semibold text-gray-900">Broker</p>
                 </div>
                 
-                <div className="p-3 bg-white/5 rounded-lg text-center col-span-2">
-                  <p className="text-sm font-semibold text-slate-100">Fund Management</p>
+                <div className="p-3 bg-gray-50 rounded-lg text-center col-span-2">
+                  <p className="text-sm font-semibold text-gray-900">Fund Management</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="mt-6 p-4 bg-gradient-to-r from-indigo-50 to-purple-50 border-2 border-indigo-500/30 rounded-lg">
+          <div className="mt-6 p-4 bg-gradient-to-r from-indigo-50 to-purple-50 border-2 border-indigo-200 rounded-lg">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <Building2 className="w-6 h-6 text-indigo-400" />
+                <Building2 className="w-6 h-6 text-indigo-600" />
                 <div>
-                  <p className="font-semibold text-indigo-300">Enterprise-Ready Platform</p>
-                  <p className="text-sm text-indigo-300 mt-1">Configure multi-firm architecture and white-label settings</p>
+                  <p className="font-semibold text-indigo-900">Enterprise-Ready Platform</p>
+                  <p className="text-sm text-indigo-700 mt-1">Configure multi-firm architecture and white-label settings</p>
                 </div>
               </div>
               <Button 
@@ -833,15 +833,15 @@ export function GrowHQDashboard({ onNavigate }: GrowHQDashboardProps) {
               { name: 'Cloud Storage', value: '2.4 TB', status: 'healthy', icon: Cloud },
               { name: 'Uptime', value: '99.9%', status: 'healthy', icon: Activity }
             ].map((metric, idx) => (
-              <div key={idx} className="p-4 bg-green-500/10 border-2 border-green-500/30 rounded-lg">
+              <div key={idx} className="p-4 bg-green-50 border-2 border-green-200 rounded-lg">
                 <div className="flex items-center gap-3 mb-2">
-                  <metric.icon className="w-5 h-5 text-green-400" />
-                  <p className="text-sm font-semibold text-slate-300">{metric.name}</p>
+                  <metric.icon className="w-5 h-5 text-green-600" />
+                  <p className="text-sm font-semibold text-gray-700">{metric.name}</p>
                 </div>
-                <p className="text-2xl font-bold text-slate-100">{metric.value}</p>
+                <p className="text-2xl font-bold text-gray-900">{metric.value}</p>
                 <div className="flex items-center gap-1 mt-2">
-                  <CheckCircle className="w-3 h-3 text-green-400" />
-                  <span className="text-xs text-green-400 font-semibold">HEALTHY</span>
+                  <CheckCircle className="w-3 h-3 text-green-600" />
+                  <span className="text-xs text-green-600 font-semibold">HEALTHY</span>
                 </div>
               </div>
             ))}
@@ -869,28 +869,28 @@ function BrandingEditor({ onClose, currentBranding, onSave }: { onClose: () => v
         <h2 className="text-xl font-bold mb-4">Edit Branding</h2>
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-slate-300">Organization Name</label>
+            <label className="block text-sm font-medium text-gray-700">Organization Name</label>
             <input
               type="text"
-              className="mt-1 block w-full px-3 py-2 border border-white/10 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               value={organizationName}
               onChange={(e) => setOrganizationName(e.target.value)}
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-300">Brand Color</label>
+            <label className="block text-sm font-medium text-gray-700">Brand Color</label>
             <input
               type="color"
-              className="mt-1 block w-full px-3 py-2 border border-white/10 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               value={primaryColor}
               onChange={(e) => setPrimaryColor(e.target.value)}
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-300">Custom Domain</label>
+            <label className="block text-sm font-medium text-gray-700">Custom Domain</label>
             <input
               type="text"
-              className="mt-1 block w-full px-3 py-2 border border-white/10 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               value={customDomain}
               onChange={(e) => setCustomDomain(e.target.value)}
             />
@@ -924,10 +924,10 @@ function ModuleConfig({ module, onClose, onSave, onDeactivate }: { module: typeo
         <h2 className="text-xl font-bold mb-4">Configure {module.name}</h2>
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-slate-300">Module Settings</label>
+            <label className="block text-sm font-medium text-gray-700">Module Settings</label>
             <input
               type="text"
-              className="mt-1 block w-full px-3 py-2 border border-white/10 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               value={config['setting1'] || ''}
               onChange={(e) => setConfig({ ...config, setting1: e.target.value })}
             />
@@ -965,19 +965,19 @@ function ClientOnboarding({ onClose, clientType }: { onClose: () => void, client
         <h2 className="text-xl font-bold mb-4">Onboard New Client</h2>
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-slate-300">Client Name</label>
+            <label className="block text-sm font-medium text-gray-700">Client Name</label>
             <input
               type="text"
-              className="mt-1 block w-full px-3 py-2 border border-white/10 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               value={clientName}
               onChange={(e) => setClientName(e.target.value)}
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-300">Client Email</label>
+            <label className="block text-sm font-medium text-gray-700">Client Email</label>
             <input
               type="email"
-              className="mt-1 block w-full px-3 py-2 border border-white/10 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               value={clientEmail}
               onChange={(e) => setClientEmail(e.target.value)}
             />

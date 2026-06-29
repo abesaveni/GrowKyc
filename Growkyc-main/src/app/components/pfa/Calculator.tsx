@@ -148,12 +148,12 @@ export function Calculator({ onNavigate, onBack }: CalculatorProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       {/* Header */}
-      <div className="bg-white border-b border-white/10 shadow-sm">
+      <div className="bg-white border-b border-gray-200 shadow-sm">
         <div className="px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               {onBack && (
-                <Button variant="outline" size="sm" onClick={onBack} className="hover:bg-white/5">
+                <Button variant="outline" size="sm" onClick={onBack} className="hover:bg-gray-50">
                   <ArrowLeft className="w-4 h-4" />
                 </Button>
               )}
@@ -162,8 +162,8 @@ export function Calculator({ onNavigate, onBack }: CalculatorProps) {
                   <CalcIcon className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <h1 className="text-xl font-bold text-slate-100">PFA Loan Calculator</h1>
-                  <p className="text-xs text-slate-400">Calculate loan details, fees, and serviceability</p>
+                  <h1 className="text-xl font-bold text-gray-900">PFA Loan Calculator</h1>
+                  <p className="text-xs text-gray-500">Calculate loan details, fees, and serviceability</p>
                 </div>
               </div>
             </div>
@@ -260,22 +260,22 @@ export function Calculator({ onNavigate, onBack }: CalculatorProps) {
             </div>
 
             {/* Monthly Repayment */}
-            <div className="bg-white rounded-2xl p-6 shadow-lg border border-white/10">
+            <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200">
               <div className="flex items-center gap-2 mb-4">
-                <Banknote className="w-5 h-5 text-emerald-400" />
-                <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wide">Monthly Repayment</h3>
+                <Banknote className="w-5 h-5 text-emerald-600" />
+                <h3 className="text-sm font-bold text-gray-700 uppercase tracking-wide">Monthly Repayment</h3>
               </div>
-              <div className="text-4xl font-black text-emerald-400 mb-4">
+              <div className="text-4xl font-black text-emerald-600 mb-4">
                 {formatCurrency(monthlyPayment)}
               </div>
               <div className="grid grid-cols-2 gap-4">
-                <div className="bg-white/5 rounded-xl p-3">
-                  <div className="text-xs text-slate-400 mb-1">Principal</div>
-                  <div className="text-lg font-bold text-slate-100">{formatCurrency(principal)}</div>
+                <div className="bg-gray-50 rounded-xl p-3">
+                  <div className="text-xs text-gray-500 mb-1">Principal</div>
+                  <div className="text-lg font-bold text-gray-900">{formatCurrency(principal)}</div>
                 </div>
-                <div className="bg-white/5 rounded-xl p-3">
-                  <div className="text-xs text-slate-400 mb-1">Interest</div>
-                  <div className="text-lg font-bold text-slate-100">{formatCurrency(interest)}</div>
+                <div className="bg-gray-50 rounded-xl p-3">
+                  <div className="text-xs text-gray-500 mb-1">Interest</div>
+                  <div className="text-lg font-bold text-gray-900">{formatCurrency(interest)}</div>
                 </div>
               </div>
             </div>
@@ -298,56 +298,56 @@ export function Calculator({ onNavigate, onBack }: CalculatorProps) {
             {(() => {
               if (lvr <= 65) {
                 return (
-                  <div className="bg-green-500/10 border-2 border-green-500/30 rounded-2xl p-4">
+                  <div className="bg-green-50 border-2 border-green-200 rounded-2xl p-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-green-500/15 rounded-full flex items-center justify-center">
+                      <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
                         <span className="text-2xl">✓</span>
                       </div>
                       <div>
-                        <div className="text-sm font-bold text-green-300">Conservative LVR</div>
-                        <div className="text-xs text-green-300">Excellent security position</div>
+                        <div className="text-sm font-bold text-green-900">Conservative LVR</div>
+                        <div className="text-xs text-green-700">Excellent security position</div>
                       </div>
                     </div>
                   </div>
                 );
               } else if (lvr <= 75) {
                 return (
-                  <div className="bg-blue-500/10 border-2 border-blue-500/30 rounded-2xl p-4">
+                  <div className="bg-blue-50 border-2 border-blue-200 rounded-2xl p-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-blue-500/15 rounded-full flex items-center justify-center">
+                      <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
                         <span className="text-2xl">✓</span>
                       </div>
                       <div>
-                        <div className="text-sm font-bold text-blue-300">Good LVR</div>
-                        <div className="text-xs text-blue-300">Standard risk profile</div>
+                        <div className="text-sm font-bold text-blue-900">Good LVR</div>
+                        <div className="text-xs text-blue-700">Standard risk profile</div>
                       </div>
                     </div>
                   </div>
                 );
               } else if (lvr <= 80) {
                 return (
-                  <div className="bg-yellow-500/10 border-2 border-yellow-500/30 rounded-2xl p-4">
+                  <div className="bg-yellow-50 border-2 border-yellow-200 rounded-2xl p-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-yellow-500/15 rounded-full flex items-center justify-center">
+                      <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
                         <span className="text-2xl">⚠</span>
                       </div>
                       <div>
-                        <div className="text-sm font-bold text-yellow-300">Moderate LVR</div>
-                        <div className="text-xs text-yellow-300">Acceptable security</div>
+                        <div className="text-sm font-bold text-yellow-900">Moderate LVR</div>
+                        <div className="text-xs text-yellow-700">Acceptable security</div>
                       </div>
                     </div>
                   </div>
                 );
               } else {
                 return (
-                  <div className="bg-red-500/10 border-2 border-red-500/30 rounded-2xl p-4">
+                  <div className="bg-red-50 border-2 border-red-200 rounded-2xl p-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-red-500/15 rounded-full flex items-center justify-center">
+                      <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
                         <span className="text-2xl">✗</span>
                       </div>
                       <div>
-                        <div className="text-sm font-bold text-red-300">High LVR</div>
-                        <div className="text-xs text-red-300">Higher risk profile</div>
+                        <div className="text-sm font-bold text-red-900">High LVR</div>
+                        <div className="text-xs text-red-700">Higher risk profile</div>
                       </div>
                     </div>
                   </div>
@@ -359,16 +359,16 @@ export function Calculator({ onNavigate, onBack }: CalculatorProps) {
           {/* MIDDLE COLUMN - Loan Parameters */}
           <div className="xl:col-span-1 space-y-6">
             {/* Loan Terms */}
-            <Card className="shadow-lg border-white/10">
+            <Card className="shadow-lg border-gray-200">
               <CardHeader className="border-b bg-gradient-to-r from-gray-50 to-white">
                 <CardTitle className="flex items-center gap-2 text-base">
-                  <FileText className="w-5 h-5 text-blue-400" />
+                  <FileText className="w-5 h-5 text-blue-600" />
                   Loan Terms
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-6 space-y-6">
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-3">
+                  <label className="block text-sm font-semibold text-gray-700 mb-3">
                     Interest Rate
                   </label>
                   <div className="relative">
@@ -376,7 +376,7 @@ export function Calculator({ onNavigate, onBack }: CalculatorProps) {
                       type="number"
                       value={interestRate}
                       onChange={(e) => setInterestRate(e.target.value)}
-                      className="w-full px-4 py-3 border-2 border-white/10 rounded-xl text-xl font-bold text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl text-xl font-bold text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                       step="0.1"
                     />
                     <span className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 font-bold">% p.a.</span>
@@ -388,16 +388,16 @@ export function Calculator({ onNavigate, onBack }: CalculatorProps) {
                     step="0.1"
                     value={interestRate}
                     onChange={(e) => setInterestRate(e.target.value)}
-                    className="w-full mt-3 h-2 bg-white/10 rounded-full appearance-none cursor-pointer"
+                    className="w-full mt-3 h-2 bg-gray-200 rounded-full appearance-none cursor-pointer"
                   />
-                  <div className="flex justify-between text-xs text-slate-400 mt-1">
+                  <div className="flex justify-between text-xs text-gray-500 mt-1">
                     <span>5%</span>
                     <span>15%</span>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-3">
+                  <label className="block text-sm font-semibold text-gray-700 mb-3">
                     Loan Term
                   </label>
                   <div className="relative">
@@ -405,7 +405,7 @@ export function Calculator({ onNavigate, onBack }: CalculatorProps) {
                       type="number"
                       value={loanTerm}
                       onChange={(e) => setLoanTerm(e.target.value)}
-                      className="w-full px-4 py-3 border-2 border-white/10 rounded-xl text-xl font-bold text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl text-xl font-bold text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                     />
                     <span className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 font-bold">months</span>
                   </div>
@@ -416,23 +416,23 @@ export function Calculator({ onNavigate, onBack }: CalculatorProps) {
                     step="6"
                     value={loanTerm}
                     onChange={(e) => setLoanTerm(e.target.value)}
-                    className="w-full mt-3 h-2 bg-white/10 rounded-full appearance-none cursor-pointer"
+                    className="w-full mt-3 h-2 bg-gray-200 rounded-full appearance-none cursor-pointer"
                   />
-                  <div className="flex justify-between text-xs text-slate-400 mt-1">
+                  <div className="flex justify-between text-xs text-gray-500 mt-1">
                     <span>1 year</span>
                     <span>10 years</span>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-3">Repayment Type</label>
+                  <label className="block text-sm font-semibold text-gray-700 mb-3">Repayment Type</label>
                   <div className="grid grid-cols-2 gap-3">
                     <button
                       onClick={() => setRepaymentType('pi')}
                       className={`px-4 py-4 border-2 rounded-xl font-semibold transition-all ${
                         repaymentType === 'pi'
-                          ? 'border-blue-600 bg-blue-500/10 text-blue-300 shadow-md'
-                          : 'border-white/10 bg-white text-slate-300 hover:border-blue-300 hover:bg-blue-500/10'
+                          ? 'border-blue-600 bg-blue-50 text-blue-700 shadow-md'
+                          : 'border-gray-200 bg-white text-gray-700 hover:border-blue-300 hover:bg-blue-50'
                       }`}
                     >
                       P&I
@@ -441,8 +441,8 @@ export function Calculator({ onNavigate, onBack }: CalculatorProps) {
                       onClick={() => setRepaymentType('io')}
                       className={`px-4 py-4 border-2 rounded-xl font-semibold transition-all ${
                         repaymentType === 'io'
-                          ? 'border-blue-600 bg-blue-500/10 text-blue-300 shadow-md'
-                          : 'border-white/10 bg-white text-slate-300 hover:border-blue-300 hover:bg-blue-500/10'
+                          ? 'border-blue-600 bg-blue-50 text-blue-700 shadow-md'
+                          : 'border-gray-200 bg-white text-gray-700 hover:border-blue-300 hover:bg-blue-50'
                       }`}
                     >
                       Interest Only
@@ -453,25 +453,25 @@ export function Calculator({ onNavigate, onBack }: CalculatorProps) {
             </Card>
 
             {/* Fees & Charges */}
-            <Card className="shadow-lg border-white/10">
+            <Card className="shadow-lg border-gray-200">
               <CardHeader className="border-b bg-gradient-to-r from-purple-50 to-white">
                 <CardTitle className="flex items-center gap-2 text-base">
-                  <Percent className="w-5 h-5 text-purple-400" />
+                  <Percent className="w-5 h-5 text-purple-600" />
                   Fees & Charges
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-6 space-y-5">
                 <div>
                   <div className="flex justify-between items-center mb-2">
-                    <label className="text-sm font-semibold text-slate-300">Broker Fee</label>
-                    <span className="text-lg font-black text-purple-400">{formatCurrency(fees.brokerFee)}</span>
+                    <label className="text-sm font-semibold text-gray-700">Broker Fee</label>
+                    <span className="text-lg font-black text-purple-600">{formatCurrency(fees.brokerFee)}</span>
                   </div>
                   <div className="relative">
                     <input
                       type="number"
                       value={brokerFeePercent}
                       onChange={(e) => setBrokerFeePercent(e.target.value)}
-                      className="w-full px-3 py-2 border-2 border-white/10 rounded-lg text-base font-semibold text-slate-100 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                      className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg text-base font-semibold text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                       step="0.1"
                     />
                     <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">%</span>
@@ -480,41 +480,41 @@ export function Calculator({ onNavigate, onBack }: CalculatorProps) {
 
                 <div>
                   <div className="flex justify-between items-center mb-2">
-                    <label className="text-sm font-semibold text-slate-300">Establishment Fee</label>
-                    <span className="text-lg font-black text-purple-400">{formatCurrency(fees.establishmentFee)}</span>
+                    <label className="text-sm font-semibold text-gray-700">Establishment Fee</label>
+                    <span className="text-lg font-black text-purple-600">{formatCurrency(fees.establishmentFee)}</span>
                   </div>
                   <div className="relative">
                     <input
                       type="number"
                       value={establishmentFeePercent}
                       onChange={(e) => setEstablishmentFeePercent(e.target.value)}
-                      className="w-full px-3 py-2 border-2 border-white/10 rounded-lg text-base font-semibold text-slate-100 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                      className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg text-base font-semibold text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                       step="0.1"
                     />
                     <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">%</span>
                   </div>
                 </div>
 
-                <div className="pt-4 border-t-2 border-white/10">
+                <div className="pt-4 border-t-2 border-gray-100">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm font-bold text-slate-300">Total Fees</span>
-                    <span className="text-2xl font-black text-purple-300">{formatCurrency(fees.totalFees)}</span>
+                    <span className="text-sm font-bold text-gray-700">Total Fees</span>
+                    <span className="text-2xl font-black text-purple-700">{formatCurrency(fees.totalFees)}</span>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
             {/* Loan Use / Allocation */}
-            <Card className="shadow-lg border-white/10">
+            <Card className="shadow-lg border-gray-200">
               <CardHeader className="border-b bg-gradient-to-r from-indigo-50 to-white">
                 <CardTitle className="flex items-center gap-2 text-base">
-                  <DollarSign className="w-5 h-5 text-indigo-400" />
+                  <DollarSign className="w-5 h-5 text-indigo-600" />
                   Loan Allocation
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-6 space-y-5">
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Payout / Purchase
                   </label>
                   <div className="relative">
@@ -523,13 +523,13 @@ export function Calculator({ onNavigate, onBack }: CalculatorProps) {
                       type="text"
                       value={parseFloat(payoutAmount || '0').toLocaleString()}
                       onChange={(e) => setPayoutAmount(e.target.value.replace(/[^0-9]/g, ''))}
-                      className="w-full pl-8 pr-4 py-2 border-2 border-white/10 rounded-lg text-base font-semibold text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                      className="w-full pl-8 pr-4 py-2 border-2 border-gray-200 rounded-lg text-base font-semibold text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Legal Costs
                   </label>
                   <div className="relative">
@@ -538,13 +538,13 @@ export function Calculator({ onNavigate, onBack }: CalculatorProps) {
                       type="text"
                       value={parseFloat(legalCost || '0').toLocaleString()}
                       onChange={(e) => setLegalCost(e.target.value.replace(/[^0-9]/g, ''))}
-                      className="w-full pl-8 pr-4 py-2 border-2 border-white/10 rounded-lg text-base font-semibold text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                      className="w-full pl-8 pr-4 py-2 border-2 border-gray-200 rounded-lg text-base font-semibold text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Other Costs
                   </label>
                   <div className="relative">
@@ -553,7 +553,7 @@ export function Calculator({ onNavigate, onBack }: CalculatorProps) {
                       type="text"
                       value={parseFloat(otherCosts || '0').toLocaleString()}
                       onChange={(e) => setOtherCosts(e.target.value.replace(/[^0-9]/g, ''))}
-                      className="w-full pl-8 pr-4 py-2 border-2 border-white/10 rounded-lg text-base font-semibold text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                      className="w-full pl-8 pr-4 py-2 border-2 border-gray-200 rounded-lg text-base font-semibold text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                     />
                   </div>
                 </div>
@@ -561,16 +561,16 @@ export function Calculator({ onNavigate, onBack }: CalculatorProps) {
             </Card>
 
             {/* Borrower Income */}
-            <Card className="shadow-lg border-white/10">
+            <Card className="shadow-lg border-gray-200">
               <CardHeader className="border-b bg-gradient-to-r from-teal-50 to-white">
                 <CardTitle className="flex items-center gap-2 text-base">
-                  <TrendingUp className="w-5 h-5 text-teal-400" />
+                  <TrendingUp className="w-5 h-5 text-teal-600" />
                   Borrower Income
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-6">
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-3">
+                  <label className="block text-sm font-semibold text-gray-700 mb-3">
                     Annual EBITDA / Income
                   </label>
                   <div className="relative">
@@ -579,7 +579,7 @@ export function Calculator({ onNavigate, onBack }: CalculatorProps) {
                       type="text"
                       value={parseFloat(annualIncome).toLocaleString()}
                       onChange={(e) => setAnnualIncome(e.target.value.replace(/[^0-9]/g, ''))}
-                      className="w-full pl-9 pr-4 py-3 border-2 border-white/10 rounded-xl text-xl font-bold text-slate-100 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+                      className="w-full pl-9 pr-4 py-3 border-2 border-gray-200 rounded-xl text-xl font-bold text-gray-900 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
                     />
                   </div>
                   <input
@@ -589,9 +589,9 @@ export function Calculator({ onNavigate, onBack }: CalculatorProps) {
                     step="10000"
                     value={annualIncome}
                     onChange={(e) => setAnnualIncome(e.target.value)}
-                    className="w-full mt-3 h-2 bg-white/10 rounded-full appearance-none cursor-pointer"
+                    className="w-full mt-3 h-2 bg-gray-200 rounded-full appearance-none cursor-pointer"
                   />
-                  <div className="flex justify-between text-xs text-slate-400 mt-1">
+                  <div className="flex justify-between text-xs text-gray-500 mt-1">
                     <span>$100K</span>
                     <span>$2M</span>
                   </div>
@@ -603,48 +603,48 @@ export function Calculator({ onNavigate, onBack }: CalculatorProps) {
           {/* RIGHT COLUMN - Results & Analysis */}
           <div className="xl:col-span-1 space-y-6">
             {/* Loan Summary */}
-            <Card className="shadow-lg border-white/10">
+            <Card className="shadow-lg border-gray-200">
               <CardHeader className="border-b bg-gradient-to-r from-blue-50 to-white">
                 <CardTitle className="flex items-center gap-2 text-base">
-                  <FileText className="w-5 h-5 text-blue-400" />
+                  <FileText className="w-5 h-5 text-blue-600" />
                   Settlement Breakdown
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-6">
                 <div className="space-y-3">
-                  <div className="flex justify-between items-center pb-3 border-b border-white/10">
-                    <span className="text-sm text-slate-300">Loan Amount</span>
-                    <span className="text-lg font-bold text-slate-100">{formatCurrency(parseFloat(loanAmount))}</span>
+                  <div className="flex justify-between items-center pb-3 border-b border-gray-100">
+                    <span className="text-sm text-gray-600">Loan Amount</span>
+                    <span className="text-lg font-bold text-gray-900">{formatCurrency(parseFloat(loanAmount))}</span>
                   </div>
                   
-                  <div className="flex justify-between items-center pb-3 border-b border-white/10">
-                    <span className="text-sm text-slate-300">Broker Fee</span>
-                    <span className="text-base font-bold text-red-400">-{formatCurrency(fees.brokerFee)}</span>
+                  <div className="flex justify-between items-center pb-3 border-b border-gray-100">
+                    <span className="text-sm text-gray-600">Broker Fee</span>
+                    <span className="text-base font-bold text-red-600">-{formatCurrency(fees.brokerFee)}</span>
                   </div>
                   
-                  <div className="flex justify-between items-center pb-3 border-b border-white/10">
-                    <span className="text-sm text-slate-300">Establishment Fee</span>
-                    <span className="text-base font-bold text-red-400">-{formatCurrency(fees.establishmentFee)}</span>
+                  <div className="flex justify-between items-center pb-3 border-b border-gray-100">
+                    <span className="text-sm text-gray-600">Establishment Fee</span>
+                    <span className="text-base font-bold text-red-600">-{formatCurrency(fees.establishmentFee)}</span>
                   </div>
                   
-                  <div className="flex justify-between items-center pb-3 border-b border-white/10">
-                    <span className="text-sm text-slate-300">Payout/Purchase</span>
-                    <span className="text-base font-bold text-red-400">-{formatCurrency(parseFloat(payoutAmount))}</span>
+                  <div className="flex justify-between items-center pb-3 border-b border-gray-100">
+                    <span className="text-sm text-gray-600">Payout/Purchase</span>
+                    <span className="text-base font-bold text-red-600">-{formatCurrency(parseFloat(payoutAmount))}</span>
                   </div>
                   
-                  <div className="flex justify-between items-center pb-3 border-b border-white/10">
-                    <span className="text-sm text-slate-300">Legal Costs</span>
-                    <span className="text-base font-bold text-red-400">-{formatCurrency(parseFloat(legalCost))}</span>
+                  <div className="flex justify-between items-center pb-3 border-b border-gray-100">
+                    <span className="text-sm text-gray-600">Legal Costs</span>
+                    <span className="text-base font-bold text-red-600">-{formatCurrency(parseFloat(legalCost))}</span>
                   </div>
                   
-                  <div className="flex justify-between items-center pb-3 border-b border-white/10">
-                    <span className="text-sm text-slate-300">Other Costs</span>
-                    <span className="text-base font-bold text-red-400">-{formatCurrency(parseFloat(otherCosts))}</span>
+                  <div className="flex justify-between items-center pb-3 border-b border-gray-100">
+                    <span className="text-sm text-gray-600">Other Costs</span>
+                    <span className="text-base font-bold text-red-600">-{formatCurrency(parseFloat(otherCosts))}</span>
                   </div>
                   
                   <div className="flex justify-between items-center bg-gradient-to-r from-blue-50 to-blue-100 -mx-6 px-6 py-4 mt-4 rounded-b-xl">
-                    <span className="text-sm font-bold text-slate-100">Net Proceeds</span>
-                    <span className="text-2xl font-black text-blue-300">
+                    <span className="text-sm font-bold text-gray-900">Net Proceeds</span>
+                    <span className="text-2xl font-black text-blue-700">
                       {formatCurrency(netProceeds)}
                     </span>
                   </div>
@@ -653,25 +653,25 @@ export function Calculator({ onNavigate, onBack }: CalculatorProps) {
             </Card>
 
             {/* Serviceability Analysis */}
-            <Card className="shadow-lg border-white/10">
+            <Card className="shadow-lg border-gray-200">
               <CardHeader className="border-b bg-gradient-to-r from-teal-50 to-white">
                 <CardTitle className="flex items-center gap-2 text-base">
-                  <TrendingUp className="w-5 h-5 text-teal-400" />
+                  <TrendingUp className="w-5 h-5 text-teal-600" />
                   Serviceability (DSCR)
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-6">
                 {annualIncome && parseFloat(annualIncome) > 0 && (
                   <div className="space-y-4">
-                    <div className="bg-gradient-to-br from-teal-50 to-teal-100 rounded-xl p-5 border-2 border-teal-500/30">
+                    <div className="bg-gradient-to-br from-teal-50 to-teal-100 rounded-xl p-5 border-2 border-teal-200">
                       <div className="grid grid-cols-2 gap-4 mb-4">
                         <div>
-                          <div className="text-xs text-teal-300 mb-1">Annual EBITDA</div>
-                          <div className="text-2xl font-black text-teal-300">{formatCurrency(parseFloat(annualIncome))}</div>
+                          <div className="text-xs text-teal-700 mb-1">Annual EBITDA</div>
+                          <div className="text-2xl font-black text-teal-900">{formatCurrency(parseFloat(annualIncome))}</div>
                         </div>
                         <div className="text-right">
-                          <div className="text-xs text-teal-300 mb-1">DSCR Ratio</div>
-                          <div className="text-3xl font-black text-teal-300">
+                          <div className="text-xs text-teal-700 mb-1">DSCR Ratio</div>
+                          <div className="text-3xl font-black text-teal-900">
                             {(parseFloat(annualIncome) / (monthlyPayment * 12)).toFixed(2)}x
                           </div>
                         </div>
@@ -721,52 +721,52 @@ export function Calculator({ onNavigate, onBack }: CalculatorProps) {
                     </div>
 
                     <div className="space-y-2">
-                      <div className="text-xs font-bold text-slate-400 uppercase tracking-wide mb-3">Required Income Levels</div>
+                      <div className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-3">Required Income Levels</div>
                       
                       <div className={`rounded-lg p-3 border-2 ${
                         parseFloat(annualIncome) >= monthlyPayment * 12 * 1.25
-                          ? 'bg-green-500/10 border-green-300'
-                          : 'bg-white/5 border-white/10'
+                          ? 'bg-green-50 border-green-300'
+                          : 'bg-gray-50 border-gray-200'
                       }`}>
                         <div className="flex justify-between items-center">
                           <div>
-                            <div className="text-xs font-semibold text-slate-300">Min (1.25x)</div>
-                            <div className="text-lg font-black text-slate-100">{formatCurrency(monthlyPayment * 12 * 1.25)}</div>
+                            <div className="text-xs font-semibold text-gray-700">Min (1.25x)</div>
+                            <div className="text-lg font-black text-gray-900">{formatCurrency(monthlyPayment * 12 * 1.25)}</div>
                           </div>
                           {parseFloat(annualIncome) >= monthlyPayment * 12 * 1.25 && (
-                            <span className="text-green-400 font-bold text-lg">✓</span>
+                            <span className="text-green-600 font-bold text-lg">✓</span>
                           )}
                         </div>
                       </div>
                       
                       <div className={`rounded-lg p-3 border-2 ${
                         parseFloat(annualIncome) >= monthlyPayment * 12 * 1.35
-                          ? 'bg-blue-500/10 border-blue-300'
-                          : 'bg-white/5 border-white/10'
+                          ? 'bg-blue-50 border-blue-300'
+                          : 'bg-gray-50 border-gray-200'
                       }`}>
                         <div className="flex justify-between items-center">
                           <div>
-                            <div className="text-xs font-semibold text-slate-300">Preferred (1.35x)</div>
-                            <div className="text-lg font-black text-slate-100">{formatCurrency(monthlyPayment * 12 * 1.35)}</div>
+                            <div className="text-xs font-semibold text-gray-700">Preferred (1.35x)</div>
+                            <div className="text-lg font-black text-gray-900">{formatCurrency(monthlyPayment * 12 * 1.35)}</div>
                           </div>
                           {parseFloat(annualIncome) >= monthlyPayment * 12 * 1.35 && (
-                            <span className="text-blue-400 font-bold text-lg">✓</span>
+                            <span className="text-blue-600 font-bold text-lg">✓</span>
                           )}
                         </div>
                       </div>
 
                       <div className={`rounded-lg p-3 border-2 ${
                         parseFloat(annualIncome) >= monthlyPayment * 12 * 1.50
-                          ? 'bg-purple-500/10 border-purple-300'
-                          : 'bg-white/5 border-white/10'
+                          ? 'bg-purple-50 border-purple-300'
+                          : 'bg-gray-50 border-gray-200'
                       }`}>
                         <div className="flex justify-between items-center">
                           <div>
-                            <div className="text-xs font-semibold text-slate-300">Strong (1.50x)</div>
-                            <div className="text-lg font-black text-slate-100">{formatCurrency(monthlyPayment * 12 * 1.50)}</div>
+                            <div className="text-xs font-semibold text-gray-700">Strong (1.50x)</div>
+                            <div className="text-lg font-black text-gray-900">{formatCurrency(monthlyPayment * 12 * 1.50)}</div>
                           </div>
                           {parseFloat(annualIncome) >= monthlyPayment * 12 * 1.50 && (
-                            <span className="text-purple-400 font-bold text-lg">✓</span>
+                            <span className="text-purple-600 font-bold text-lg">✓</span>
                           )}
                         </div>
                       </div>
@@ -777,26 +777,26 @@ export function Calculator({ onNavigate, onBack }: CalculatorProps) {
             </Card>
 
             {/* Total Interest Info */}
-            <Card className="shadow-lg border-white/10">
+            <Card className="shadow-lg border-gray-200">
               <CardHeader className="border-b bg-gradient-to-r from-orange-50 to-white">
                 <CardTitle className="flex items-center gap-2 text-base">
-                  <Info className="w-5 h-5 text-orange-400" />
+                  <Info className="w-5 h-5 text-orange-600" />
                   Interest Summary
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-6">
                 <div className="space-y-4">
                   <div>
-                    <div className="text-sm text-slate-300 mb-1">Total Interest Payable</div>
-                    <div className="text-3xl font-black text-orange-400">{formatCurrency(totalInterest)}</div>
+                    <div className="text-sm text-gray-600 mb-1">Total Interest Payable</div>
+                    <div className="text-3xl font-black text-orange-600">{formatCurrency(totalInterest)}</div>
                   </div>
-                  <div className="pt-4 border-t border-white/10">
-                    <div className="text-sm text-slate-300 mb-1">Total Amount Repayable</div>
-                    <div className="text-2xl font-black text-slate-100">{formatCurrency(totalRepayments)}</div>
+                  <div className="pt-4 border-t border-gray-200">
+                    <div className="text-sm text-gray-600 mb-1">Total Amount Repayable</div>
+                    <div className="text-2xl font-black text-gray-900">{formatCurrency(totalRepayments)}</div>
                   </div>
-                  <div className="bg-orange-500/10 rounded-xl p-4 border border-orange-500/30">
-                    <div className="text-xs text-orange-300 mb-1">Over {loanTerm} months</div>
-                    <div className="text-sm font-bold text-orange-300">
+                  <div className="bg-orange-50 rounded-xl p-4 border border-orange-200">
+                    <div className="text-xs text-orange-700 mb-1">Over {loanTerm} months</div>
+                    <div className="text-sm font-bold text-orange-900">
                       {parseInt(loanTerm) / 12} year{parseInt(loanTerm) / 12 !== 1 ? 's' : ''} loan term
                     </div>
                   </div>

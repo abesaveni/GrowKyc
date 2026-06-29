@@ -50,8 +50,8 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
   const renderStep1 = () => (
     <div className="space-y-6">
       <div>
-        <h2 className="text-xl font-bold text-slate-100 mb-2">Select Loan Type</h2>
-        <p className="text-sm text-slate-300">Choose the product that best suits your client's needs</p>
+        <h2 className="text-xl font-bold text-gray-900 mb-2">Select Loan Type</h2>
+        <p className="text-sm text-gray-600">Choose the product that best suits your client's needs</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -61,17 +61,17 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
             onClick={() => setLoanType(type.id)}
             className={`p-6 border-2 rounded-lg text-left transition-all ${
               loanType === type.id
-                ? 'border-blue-600 bg-blue-500/10'
-                : 'border-white/10 hover:border-blue-400 bg-white'
+                ? 'border-blue-600 bg-blue-50'
+                : 'border-gray-300 hover:border-blue-400 bg-white'
             }`}
           >
             <div className="flex items-start justify-between mb-2">
-              <h3 className="font-semibold text-slate-100">{type.name}</h3>
+              <h3 className="font-semibold text-gray-900">{type.name}</h3>
               {loanType === type.id && (
-                <CheckCircle className="w-5 h-5 text-blue-400" />
+                <CheckCircle className="w-5 h-5 text-blue-600" />
               )}
             </div>
-            <p className="text-sm text-slate-300">{type.desc}</p>
+            <p className="text-sm text-gray-600">{type.desc}</p>
           </button>
         ))}
       </div>
@@ -81,20 +81,20 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
   const renderStep2 = () => (
     <div className="space-y-6">
       <div>
-        <h2 className="text-xl font-bold text-slate-100 mb-2">Borrower Details</h2>
-        <p className="text-sm text-slate-300">Add borrower entities (companies, trusts, individuals)</p>
+        <h2 className="text-xl font-bold text-gray-900 mb-2">Borrower Details</h2>
+        <p className="text-sm text-gray-600">Add borrower entities (companies, trusts, individuals)</p>
       </div>
 
       {/* Borrower Type Selection */}
-      <div className="bg-blue-500/10 border border-blue-300 rounded p-4">
-        <label className="block text-sm font-semibold text-slate-100 mb-2">Primary Borrower Type</label>
+      <div className="bg-blue-50 border border-blue-300 rounded p-4">
+        <label className="block text-sm font-semibold text-gray-900 mb-2">Primary Borrower Type</label>
         <div className="grid grid-cols-3 gap-3">
           <button
             onClick={() => setBorrowerType('company')}
             className={`px-4 py-2 border rounded text-sm font-medium transition-all ${
               borrowerType === 'company'
                 ? 'bg-blue-600 text-white border-blue-600'
-                : 'bg-white text-slate-300 border-white/10 hover:border-blue-400'
+                : 'bg-white text-gray-700 border-gray-300 hover:border-blue-400'
             }`}
           >
             Company
@@ -104,7 +104,7 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
             className={`px-4 py-2 border rounded text-sm font-medium transition-all ${
               borrowerType === 'trust'
                 ? 'bg-blue-600 text-white border-blue-600'
-                : 'bg-white text-slate-300 border-white/10 hover:border-blue-400'
+                : 'bg-white text-gray-700 border-gray-300 hover:border-blue-400'
             }`}
           >
             Trust
@@ -114,7 +114,7 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
             className={`px-4 py-2 border rounded text-sm font-medium transition-all ${
               borrowerType === 'individual'
                 ? 'bg-blue-600 text-white border-blue-600'
-                : 'bg-white text-slate-300 border-white/10 hover:border-blue-400'
+                : 'bg-white text-gray-700 border-gray-300 hover:border-blue-400'
             }`}
           >
             Individual
@@ -124,10 +124,10 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
 
       {/* Company Form */}
       {borrowerType === 'company' && (
-        <div className="bg-white border border-white/10 rounded p-6 space-y-4">
+        <div className="bg-white border border-gray-300 rounded p-6 space-y-4">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-semibold text-slate-100 flex items-center gap-2">
-              <Building2 className="w-5 h-5 text-blue-400" />
+            <h3 className="font-semibold text-gray-900 flex items-center gap-2">
+              <Building2 className="w-5 h-5 text-blue-600" />
               Primary Borrower - Company
             </h3>
             <Button variant="outline" size="sm">
@@ -137,32 +137,32 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-1">Company Name</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Company Name</label>
               <input
                 type="text"
                 placeholder="ABC Enterprises Pty Ltd"
-                className="w-full px-3 py-2 border border-white/10 rounded text-sm"
+                className="w-full px-3 py-2 border border-gray-300 rounded text-sm"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-1">ACN</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">ACN</label>
               <input
                 type="text"
                 placeholder="123 456 789"
-                className="w-full px-3 py-2 border border-white/10 rounded text-sm"
+                className="w-full px-3 py-2 border border-gray-300 rounded text-sm"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-1">ABN</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">ABN</label>
               <input
                 type="text"
                 placeholder="12 345 678 901"
-                className="w-full px-3 py-2 border border-white/10 rounded text-sm"
+                className="w-full px-3 py-2 border border-gray-300 rounded text-sm"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-1">Entity Type</label>
-              <select className="w-full px-3 py-2 border border-white/10 rounded text-sm">
+              <label className="block text-sm font-medium text-gray-700 mb-1">Entity Type</label>
+              <select className="w-full px-3 py-2 border border-gray-300 rounded text-sm">
                 <option>Proprietary Limited</option>
                 <option>Public Company</option>
                 <option>Unlimited</option>
@@ -171,18 +171,18 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-1">Registered Address</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Registered Address</label>
             <input
               type="text"
               placeholder="123 Business St, Sydney NSW 2000"
-              className="w-full px-3 py-2 border border-white/10 rounded text-sm"
+              className="w-full px-3 py-2 border border-gray-300 rounded text-sm"
             />
           </div>
 
           {/* Directors */}
-          <div className="border-t border-white/10 pt-4">
+          <div className="border-t border-gray-200 pt-4">
             <div className="flex items-center justify-between mb-3">
-              <label className="block text-sm font-semibold text-slate-100">Directors / Guarantors</label>
+              <label className="block text-sm font-semibold text-gray-900">Directors / Guarantors</label>
               <Button 
                 variant="outline" 
                 size="sm"
@@ -192,7 +192,7 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
                 Add Director
               </Button>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded p-3 text-sm text-slate-300">
+            <div className="bg-gray-50 border border-gray-200 rounded p-3 text-sm text-gray-600">
               No directors added yet. Add directors who will act as guarantors.
             </div>
           </div>
@@ -215,37 +215,37 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
   const renderStep3 = () => (
     <div className="space-y-6">
       <div>
-        <h2 className="text-xl font-bold text-slate-100 mb-2">Loan Structure</h2>
-        <p className="text-sm text-slate-300">Define loan amount, term, and repayment structure</p>
+        <h2 className="text-xl font-bold text-gray-900 mb-2">Loan Structure</h2>
+        <p className="text-sm text-gray-600">Define loan amount, term, and repayment structure</p>
       </div>
 
-      <div className="bg-white border border-white/10 rounded p-6 space-y-4">
+      <div className="bg-white border border-gray-300 rounded p-6 space-y-4">
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-1">Loan Amount Required</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Loan Amount Required</label>
             <div className="relative">
-              <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400">$</span>
+              <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
               <input
                 type="text"
                 placeholder="850,000"
-                className="w-full pl-7 pr-3 py-2 border border-white/10 rounded text-sm"
+                className="w-full pl-7 pr-3 py-2 border border-gray-300 rounded text-sm"
               />
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-1">Loan Term (months)</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Loan Term (months)</label>
             <input
               type="number"
               placeholder="36"
-              className="w-full px-3 py-2 border border-white/10 rounded text-sm"
+              className="w-full px-3 py-2 border border-gray-300 rounded text-sm"
             />
           </div>
         </div>
 
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-1">Repayment Type</label>
-            <select className="w-full px-3 py-2 border border-white/10 rounded text-sm">
+            <label className="block text-sm font-medium text-gray-700 mb-1">Repayment Type</label>
+            <select className="w-full px-3 py-2 border border-gray-300 rounded text-sm">
               <option>Principal & Interest</option>
               <option>Interest Only</option>
               <option>Bullet Payment</option>
@@ -253,8 +253,8 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-1">Repayment Frequency</label>
-            <select className="w-full px-3 py-2 border border-white/10 rounded text-sm">
+            <label className="block text-sm font-medium text-gray-700 mb-1">Repayment Frequency</label>
+            <select className="w-full px-3 py-2 border border-gray-300 rounded text-sm">
               <option>Monthly</option>
               <option>Quarterly</option>
               <option>Annual</option>
@@ -264,8 +264,8 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-slate-300 mb-1">Purpose of Loan</label>
-          <select className="w-full px-3 py-2 border border-white/10 rounded text-sm">
+          <label className="block text-sm font-medium text-gray-700 mb-1">Purpose of Loan</label>
+          <select className="w-full px-3 py-2 border border-gray-300 rounded text-sm">
             <option>Business Expansion</option>
             <option>Property Purchase</option>
             <option>Refinance</option>
@@ -276,23 +276,23 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
         </div>
 
         {/* Serviceability Indicator */}
-        <div className="bg-green-500/10 border border-green-300 rounded p-4 mt-4">
+        <div className="bg-green-50 border border-green-300 rounded p-4 mt-4">
           <div className="flex items-center gap-2 mb-2">
-            <CheckCircle className="w-5 h-5 text-green-400" />
-            <span className="font-semibold text-green-300">Estimated Serviceability</span>
+            <CheckCircle className="w-5 h-5 text-green-600" />
+            <span className="font-semibold text-green-900">Estimated Serviceability</span>
           </div>
-          <div className="text-sm text-green-300">
+          <div className="text-sm text-green-800">
             <div className="grid grid-cols-3 gap-4 mt-2">
               <div>
-                <div className="text-xs text-green-300">Est. Monthly Repayment</div>
+                <div className="text-xs text-green-700">Est. Monthly Repayment</div>
                 <div className="font-semibold">$28,450</div>
               </div>
               <div>
-                <div className="text-xs text-green-300">DSCR Required</div>
+                <div className="text-xs text-green-700">DSCR Required</div>
                 <div className="font-semibold">1.25x</div>
               </div>
               <div>
-                <div className="text-xs text-green-300">Min Annual EBITDA</div>
+                <div className="text-xs text-green-700">Min Annual EBITDA</div>
                 <div className="font-semibold">$427,000</div>
               </div>
             </div>
@@ -305,47 +305,47 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
   const renderStep4 = () => (
     <div className="space-y-6">
       <div>
-        <h2 className="text-xl font-bold text-slate-100 mb-2">Security</h2>
-        <p className="text-sm text-slate-300">Add property, assets, or personal guarantees</p>
+        <h2 className="text-xl font-bold text-gray-900 mb-2">Security</h2>
+        <p className="text-sm text-gray-600">Add property, assets, or personal guarantees</p>
       </div>
 
       {/* Security Type Selection */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
         <button 
           onClick={() => setShowSecurityModal(true)}
-          className="p-4 border-2 border-white/10 rounded hover:border-blue-400 bg-white transition-all"
+          className="p-4 border-2 border-gray-300 rounded hover:border-blue-400 bg-white transition-all"
         >
-          <Home className="w-6 h-6 text-blue-400 mb-2" />
-          <div className="text-sm font-semibold text-slate-100">Property</div>
+          <Home className="w-6 h-6 text-blue-600 mb-2" />
+          <div className="text-sm font-semibold text-gray-900">Property</div>
         </button>
         <button 
           onClick={() => setShowSecurityModal(true)}
-          className="p-4 border-2 border-white/10 rounded hover:border-blue-400 bg-white transition-all"
+          className="p-4 border-2 border-gray-300 rounded hover:border-blue-400 bg-white transition-all"
         >
-          <Building2 className="w-6 h-6 text-purple-400 mb-2" />
-          <div className="text-sm font-semibold text-slate-100">Commercial</div>
+          <Building2 className="w-6 h-6 text-purple-600 mb-2" />
+          <div className="text-sm font-semibold text-gray-900">Commercial</div>
         </button>
         <button 
           onClick={() => setShowSecurityModal(true)}
-          className="p-4 border-2 border-white/10 rounded hover:border-blue-400 bg-white transition-all"
+          className="p-4 border-2 border-gray-300 rounded hover:border-blue-400 bg-white transition-all"
         >
-          <DollarSign className="w-6 h-6 text-green-400 mb-2" />
-          <div className="text-sm font-semibold text-slate-100">PPSR</div>
+          <DollarSign className="w-6 h-6 text-green-600 mb-2" />
+          <div className="text-sm font-semibold text-gray-900">PPSR</div>
         </button>
         <button 
           onClick={() => setShowSecurityModal(true)}
-          className="p-4 border-2 border-white/10 rounded hover:border-blue-400 bg-white transition-all"
+          className="p-4 border-2 border-gray-300 rounded hover:border-blue-400 bg-white transition-all"
         >
-          <Users className="w-6 h-6 text-indigo-400 mb-2" />
-          <div className="text-sm font-semibold text-slate-100">Guarantee</div>
+          <Users className="w-6 h-6 text-indigo-600 mb-2" />
+          <div className="text-sm font-semibold text-gray-900">Guarantee</div>
         </button>
       </div>
 
       {/* Property Security Form */}
-      <div className="bg-white border border-white/10 rounded p-6 space-y-4">
+      <div className="bg-white border border-gray-300 rounded p-6 space-y-4">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="font-semibold text-slate-100 flex items-center gap-2">
-            <Home className="w-5 h-5 text-blue-400" />
+          <h3 className="font-semibold text-gray-900 flex items-center gap-2">
+            <Home className="w-5 h-5 text-blue-600" />
             Security Property #1
           </h3>
           <Button variant="outline" size="sm">
@@ -354,18 +354,18 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-slate-300 mb-1">Property Address</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Property Address</label>
           <input
             type="text"
             placeholder="456 Commercial Rd, Melbourne VIC 3000"
-            className="w-full px-3 py-2 border border-white/10 rounded text-sm"
+            className="w-full px-3 py-2 border border-gray-300 rounded text-sm"
           />
         </div>
 
         <div className="grid grid-cols-3 gap-4">
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-1">Property Type</label>
-            <select className="w-full px-3 py-2 border border-white/10 rounded text-sm">
+            <label className="block text-sm font-medium text-gray-700 mb-1">Property Type</label>
+            <select className="w-full px-3 py-2 border border-gray-300 rounded text-sm">
               <option>Office</option>
               <option>Retail</option>
               <option>Industrial</option>
@@ -374,19 +374,19 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-1">Estimated Value</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Estimated Value</label>
             <div className="relative">
-              <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400">$</span>
+              <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
               <input
                 type="text"
                 placeholder="1,200,000"
-                className="w-full pl-7 pr-3 py-2 border border-white/10 rounded text-sm"
+                className="w-full pl-7 pr-3 py-2 border border-gray-300 rounded text-sm"
               />
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-1">Valuation Status</label>
-            <select className="w-full px-3 py-2 border border-white/10 rounded text-sm">
+            <label className="block text-sm font-medium text-gray-700 mb-1">Valuation Status</label>
+            <select className="w-full px-3 py-2 border border-gray-300 rounded text-sm">
               <option>Desktop Required</option>
               <option>Full Required</option>
               <option>Completed</option>
@@ -395,12 +395,12 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
         </div>
 
         {/* LVR Calculation */}
-        <div className="bg-blue-500/10 border border-blue-300 rounded p-3">
+        <div className="bg-blue-50 border border-blue-300 rounded p-3">
           <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-blue-300">Loan to Value Ratio (LVR)</span>
-            <span className="text-lg font-bold text-blue-300">70.8%</span>
+            <span className="text-sm font-medium text-blue-900">Loan to Value Ratio (LVR)</span>
+            <span className="text-lg font-bold text-blue-700">70.8%</span>
           </div>
-          <div className="text-xs text-blue-300 mt-1">
+          <div className="text-xs text-blue-700 mt-1">
             $850,000 loan / $1,200,000 value
           </div>
         </div>
@@ -421,56 +421,56 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
   const renderStep5 = () => (
     <div className="space-y-6">
       <div>
-        <h2 className="text-xl font-bold text-slate-100 mb-2">Review & Submit</h2>
-        <p className="text-sm text-slate-300">Review application details before submission</p>
+        <h2 className="text-xl font-bold text-gray-900 mb-2">Review & Submit</h2>
+        <p className="text-sm text-gray-600">Review application details before submission</p>
       </div>
 
       {/* Application Summary */}
-      <div className="bg-white border border-white/10 rounded divide-y divide-white/10">
+      <div className="bg-white border border-gray-300 rounded divide-y divide-gray-200">
         <div className="p-4">
-          <h3 className="font-semibold text-slate-100 mb-3">Application Summary</h3>
+          <h3 className="font-semibold text-gray-900 mb-3">Application Summary</h3>
           <div className="grid grid-cols-2 gap-4 text-sm">
             <div>
-              <span className="text-slate-300">Loan Type:</span>
-              <span className="ml-2 font-semibold text-slate-100">SME Term Loan</span>
+              <span className="text-gray-600">Loan Type:</span>
+              <span className="ml-2 font-semibold text-gray-900">SME Term Loan</span>
             </div>
             <div>
-              <span className="text-slate-300">Loan Amount:</span>
-              <span className="ml-2 font-semibold text-slate-100">$850,000</span>
+              <span className="text-gray-600">Loan Amount:</span>
+              <span className="ml-2 font-semibold text-gray-900">$850,000</span>
             </div>
             <div>
-              <span className="text-slate-300">Term:</span>
-              <span className="ml-2 font-semibold text-slate-100">36 months</span>
+              <span className="text-gray-600">Term:</span>
+              <span className="ml-2 font-semibold text-gray-900">36 months</span>
             </div>
             <div>
-              <span className="text-slate-300">LVR:</span>
-              <span className="ml-2 font-semibold text-green-300">70.8%</span>
+              <span className="text-gray-600">LVR:</span>
+              <span className="ml-2 font-semibold text-green-700">70.8%</span>
             </div>
           </div>
         </div>
 
         <div className="p-4">
-          <h3 className="font-semibold text-slate-100 mb-3">Borrower</h3>
-          <div className="text-sm text-slate-300">
+          <h3 className="font-semibold text-gray-900 mb-3">Borrower</h3>
+          <div className="text-sm text-gray-700">
             ABC Enterprises Pty Ltd (ACN 123 456 789)
           </div>
         </div>
 
         <div className="p-4">
-          <h3 className="font-semibold text-slate-100 mb-3">Security</h3>
-          <div className="text-sm text-slate-300">
+          <h3 className="font-semibold text-gray-900 mb-3">Security</h3>
+          <div className="text-sm text-gray-700">
             1st Mortgage - 456 Commercial Rd, Melbourne VIC 3000 ($1,200,000)
           </div>
         </div>
       </div>
 
       {/* Pre-submission Checklist */}
-      <div className="bg-amber-500/10 border border-amber-300 rounded p-4">
-        <h3 className="font-semibold text-amber-300 mb-3 flex items-center gap-2">
+      <div className="bg-amber-50 border border-amber-300 rounded p-4">
+        <h3 className="font-semibold text-amber-900 mb-3 flex items-center gap-2">
           <AlertCircle className="w-5 h-5" />
           Required Documents (Upload after submission)
         </h3>
-        <ul className="space-y-2 text-sm text-amber-300">
+        <ul className="space-y-2 text-sm text-amber-800">
           <li className="flex items-start gap-2">
             <span>•</span>
             <span>Financial statements (last 2 years)</span>
@@ -493,9 +493,9 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
   );
 
   return (
-    <div className="min-h-screen bg-white/5">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-white border-b border-white/10 px-6 py-4">
+      <div className="bg-white border-b border-gray-300 px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             {onBack && (
@@ -504,8 +504,8 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
               </Button>
             )}
             <div>
-              <h1 className="text-xl font-bold text-slate-100">New Loan Application</h1>
-              <p className="text-xs text-slate-300">Complete all steps to submit application for credit assessment</p>
+              <h1 className="text-xl font-bold text-gray-900">New Loan Application</h1>
+              <p className="text-xs text-gray-600">Complete all steps to submit application for credit assessment</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -531,7 +531,7 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
 
       <div className="p-6">
         {/* Progress Steps */}
-        <div className="bg-white border border-white/10 rounded p-6 mb-6">
+        <div className="bg-white border border-gray-300 rounded p-6 mb-6">
           <div className="flex items-center justify-between">
             {steps.map((step, index) => (
               <div key={step.number} className="flex items-center">
@@ -540,7 +540,7 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
                     className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold ${
                       currentStep >= step.number
                         ? 'bg-blue-600 text-white'
-                        : 'bg-white/10 text-slate-400'
+                        : 'bg-gray-200 text-gray-500'
                     }`}
                   >
                     {currentStep > step.number ? (
@@ -552,7 +552,7 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
                   <div className="hidden md:block">
                     <div
                       className={`text-sm font-medium ${
-                        currentStep >= step.number ? 'text-slate-100' : 'text-slate-400'
+                        currentStep >= step.number ? 'text-gray-900' : 'text-gray-500'
                       }`}
                     >
                       {step.name}
@@ -560,10 +560,10 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
                   </div>
                 </div>
                 {index < steps.length - 1 && (
-                  <div className="flex-1 h-1 mx-4 bg-white/10 rounded">
+                  <div className="flex-1 h-1 mx-4 bg-gray-200 rounded">
                     <div
                       className={`h-full rounded transition-all ${
-                        currentStep > step.number ? 'bg-blue-600' : 'bg-white/10'
+                        currentStep > step.number ? 'bg-blue-600' : 'bg-gray-200'
                       }`}
                       style={{ width: currentStep > step.number ? '100%' : '0%' }}
                     ></div>
@@ -575,7 +575,7 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
         </div>
 
         {/* Step Content */}
-        <div className="bg-white border border-white/10 rounded p-6 mb-6">
+        <div className="bg-white border border-gray-300 rounded p-6 mb-6">
           {currentStep === 1 && renderStep1()}
           {currentStep === 2 && renderStep2()}
           {currentStep === 3 && renderStep3()}
@@ -607,9 +607,9 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg p-6 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl font-bold text-slate-100">Add Director / Guarantor</h2>
+              <h2 className="text-xl font-bold text-gray-900">Add Director / Guarantor</h2>
               <button onClick={() => setShowDirectorModal(false)}>
-                <X className="w-6 h-6 text-slate-300 hover:text-slate-100" />
+                <X className="w-6 h-6 text-gray-600 hover:text-gray-900" />
               </button>
             </div>
             <form onSubmit={(e) => {
@@ -628,51 +628,51 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-slate-300 mb-1">First Name</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">First Name</label>
                     <input
                       type="text"
                       name="firstName"
                       required
-                      className="w-full px-3 py-2 border border-white/10 rounded text-sm"
+                      className="w-full px-3 py-2 border border-gray-300 rounded text-sm"
                       placeholder="John"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-300 mb-1">Last Name</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
                     <input
                       type="text"
                       name="lastName"
                       required
-                      className="w-full px-3 py-2 border border-white/10 rounded text-sm"
+                      className="w-full px-3 py-2 border border-gray-300 rounded text-sm"
                       placeholder="Smith"
                     />
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-slate-300 mb-1">Email</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
                     <input
                       type="email"
                       name="email"
                       required
-                      className="w-full px-3 py-2 border border-white/10 rounded text-sm"
+                      className="w-full px-3 py-2 border border-gray-300 rounded text-sm"
                       placeholder="john.smith@example.com"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-300 mb-1">Phone</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
                     <input
                       type="tel"
                       name="phone"
                       required
-                      className="w-full px-3 py-2 border border-white/10 rounded text-sm"
+                      className="w-full px-3 py-2 border border-gray-300 rounded text-sm"
                       placeholder="0412 345 678"
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-1">Role</label>
-                  <select name="role" required className="w-full px-3 py-2 border border-white/10 rounded text-sm">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Role</label>
+                  <select name="role" required className="w-full px-3 py-2 border border-gray-300 rounded text-sm">
                     <option value="director">Director</option>
                     <option value="guarantor">Guarantor</option>
                     <option value="both">Director & Guarantor</option>
@@ -697,9 +697,9 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg p-6 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl font-bold text-slate-100">Add Additional Borrower</h2>
+              <h2 className="text-xl font-bold text-gray-900">Add Additional Borrower</h2>
               <button onClick={() => setShowBorrowerModal(false)}>
-                <X className="w-6 h-6 text-slate-300 hover:text-slate-100" />
+                <X className="w-6 h-6 text-gray-600 hover:text-gray-900" />
               </button>
             </div>
             <form onSubmit={(e) => {
@@ -716,39 +716,39 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
             }}>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-1">Entity Type</label>
-                  <select name="type" required className="w-full px-3 py-2 border border-white/10 rounded text-sm">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Entity Type</label>
+                  <select name="type" required className="w-full px-3 py-2 border border-gray-300 rounded text-sm">
                     <option value="company">Company</option>
                     <option value="trust">Trust</option>
                     <option value="individual">Individual</option>
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-1">Entity Name</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Entity Name</label>
                   <input
                     type="text"
                     name="name"
                     required
-                    className="w-full px-3 py-2 border border-white/10 rounded text-sm"
+                    className="w-full px-3 py-2 border border-gray-300 rounded text-sm"
                     placeholder="XYZ Holdings Pty Ltd"
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-slate-300 mb-1">ACN</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">ACN</label>
                     <input
                       type="text"
                       name="acn"
-                      className="w-full px-3 py-2 border border-white/10 rounded text-sm"
+                      className="w-full px-3 py-2 border border-gray-300 rounded text-sm"
                       placeholder="123 456 789"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-300 mb-1">ABN</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">ABN</label>
                     <input
                       type="text"
                       name="abn"
-                      className="w-full px-3 py-2 border border-white/10 rounded text-sm"
+                      className="w-full px-3 py-2 border border-gray-300 rounded text-sm"
                       placeholder="12 345 678 901"
                     />
                   </div>
@@ -772,9 +772,9 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg p-6 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl font-bold text-slate-100">Add Security</h2>
+              <h2 className="text-xl font-bold text-gray-900">Add Security</h2>
               <button onClick={() => setShowSecurityModal(false)}>
-                <X className="w-6 h-6 text-slate-300 hover:text-slate-100" />
+                <X className="w-6 h-6 text-gray-600 hover:text-gray-900" />
               </button>
             </div>
             <form onSubmit={(e) => {
@@ -795,11 +795,11 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
             }}>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-1">Security Type</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Security Type</label>
                   <select 
                     name="type" 
                     required 
-                    className="w-full px-3 py-2 border border-white/10 rounded text-sm"
+                    className="w-full px-3 py-2 border border-gray-300 rounded text-sm"
                     value={selectedSecurityType}
                     onChange={(e) => setSelectedSecurityType(e.target.value)}
                   >
@@ -812,9 +812,9 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
 
                 {/* PPSR Type - Only show when PPSR is selected */}
                 {selectedSecurityType === 'ppsr' && (
-                  <div className="bg-blue-500/10 border border-blue-300 rounded p-4">
-                    <label className="block text-sm font-medium text-slate-100 mb-2">PPSR Security Type</label>
-                    <select name="ppsrType" required className="w-full px-3 py-2 border border-white/10 rounded text-sm bg-white">
+                  <div className="bg-blue-50 border border-blue-300 rounded p-4">
+                    <label className="block text-sm font-medium text-gray-900 mb-2">PPSR Security Type</label>
+                    <select name="ppsrType" required className="w-full px-3 py-2 border border-gray-300 rounded text-sm bg-white">
                       <option value="">Select PPSR Type</option>
                       <option value="pmsi">PMSI (Purchase Money Security Interest)</option>
                       <option value="gsa">GSA (General Security Agreement)</option>
@@ -824,7 +824,7 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
                       <option value="retention_of_title">Retention of Title (ROT)</option>
                       <option value="subordination">Subordination Agreement</option>
                     </select>
-                    <p className="text-xs text-blue-300 mt-2">
+                    <p className="text-xs text-blue-700 mt-2">
                       {selectedSecurityType === 'ppsr' && 'PPSR registration secures interest in personal property including equipment, vehicles, inventory, and accounts receivable'}
                     </p>
                   </div>
@@ -834,19 +834,19 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
                 {(selectedSecurityType === 'property' || selectedSecurityType === 'commercial') && (
                   <>
                     <div>
-                      <label className="block text-sm font-medium text-slate-300 mb-1">Property Address</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Property Address</label>
                       <input
                         type="text"
                         name="address"
                         required
-                        className="w-full px-3 py-2 border border-white/10 rounded text-sm"
+                        className="w-full px-3 py-2 border border-gray-300 rounded text-sm"
                         placeholder="123 Example St, Sydney NSW 2000"
                       />
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-medium text-slate-300 mb-1">Property Type</label>
-                        <select name="propertyType" required className="w-full px-3 py-2 border border-white/10 rounded text-sm">
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Property Type</label>
+                        <select name="propertyType" required className="w-full px-3 py-2 border border-gray-300 rounded text-sm">
                           {selectedSecurityType === 'commercial' ? (
                             <>
                               <option value="office">Office</option>
@@ -866,14 +866,14 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
                         </select>
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-slate-300 mb-1">Estimated Value</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Estimated Value</label>
                         <div className="relative">
-                          <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400">$</span>
+                          <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
                           <input
                             type="text"
                             name="value"
                             required
-                            className="w-full pl-7 pr-3 py-2 border border-white/10 rounded text-sm"
+                            className="w-full pl-7 pr-3 py-2 border border-gray-300 rounded text-sm"
                             placeholder="1,500,000"
                           />
                         </div>
@@ -886,34 +886,34 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
                 {selectedSecurityType === 'ppsr' && (
                   <>
                     <div>
-                      <label className="block text-sm font-medium text-slate-300 mb-1">Asset Description</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Asset Description</label>
                       <textarea
                         name="assetDescription"
                         required
                         rows={3}
-                        className="w-full px-3 py-2 border border-white/10 rounded text-sm"
+                        className="w-full px-3 py-2 border border-gray-300 rounded text-sm"
                         placeholder="Detailed description of secured assets (e.g., 2023 Toyota Hilux, VIN: ABC123..., Plant & Equipment inventory, Accounts Receivable)"
                       />
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-medium text-slate-300 mb-1">Serial/VIN Number (if applicable)</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Serial/VIN Number (if applicable)</label>
                         <input
                           type="text"
                           name="serialNumber"
-                          className="w-full px-3 py-2 border border-white/10 rounded text-sm"
+                          className="w-full px-3 py-2 border border-gray-300 rounded text-sm"
                           placeholder="ABC123XYZ456"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-slate-300 mb-1">Estimated Value</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Estimated Value</label>
                         <div className="relative">
-                          <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400">$</span>
+                          <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
                           <input
                             type="text"
                             name="value"
                             required
-                            className="w-full pl-7 pr-3 py-2 border border-white/10 rounded text-sm"
+                            className="w-full pl-7 pr-3 py-2 border border-gray-300 rounded text-sm"
                             placeholder="250,000"
                           />
                         </div>
@@ -926,32 +926,32 @@ export function NewApplication({ onNavigate, onBack }: NewApplicationProps) {
                 {selectedSecurityType === 'guarantee' && (
                   <>
                     <div>
-                      <label className="block text-sm font-medium text-slate-300 mb-1">Guarantor Name</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Guarantor Name</label>
                       <input
                         type="text"
                         name="address"
                         required
-                        className="w-full px-3 py-2 border border-white/10 rounded text-sm"
+                        className="w-full px-3 py-2 border border-gray-300 rounded text-sm"
                         placeholder="John Smith"
                       />
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-medium text-slate-300 mb-1">Guarantee Type</label>
-                        <select name="propertyType" required className="w-full px-3 py-2 border border-white/10 rounded text-sm">
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Guarantee Type</label>
+                        <select name="propertyType" required className="w-full px-3 py-2 border border-gray-300 rounded text-sm">
                           <option value="unlimited">Unlimited Guarantee</option>
                           <option value="limited">Limited Guarantee</option>
                           <option value="continuing">Continuing Guarantee</option>
                         </select>
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-slate-300 mb-1">Guarantee Amount (if limited)</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Guarantee Amount (if limited)</label>
                         <div className="relative">
-                          <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400">$</span>
+                          <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
                           <input
                             type="text"
                             name="value"
-                            className="w-full pl-7 pr-3 py-2 border border-white/10 rounded text-sm"
+                            className="w-full pl-7 pr-3 py-2 border border-gray-300 rounded text-sm"
                             placeholder="Optional"
                           />
                         </div>

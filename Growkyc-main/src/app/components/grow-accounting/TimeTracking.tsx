@@ -63,10 +63,10 @@ export function TimeTracking({ onNavigate }: TimeTrackingProps) {
 
   const getStatusBadge = (status: string) => {
     const styles = {
-      draft: 'bg-white/5 text-slate-300 border-white/10',
-      submitted: 'bg-blue-500/10 text-blue-300 border-blue-300',
-      approved: 'bg-green-500/10 text-green-300 border-green-300',
-      invoiced: 'bg-purple-500/10 text-purple-300 border-purple-300'
+      draft: 'bg-gray-100 text-gray-700 border-gray-300',
+      submitted: 'bg-blue-50 text-blue-700 border-blue-300',
+      approved: 'bg-green-50 text-green-700 border-green-300',
+      invoiced: 'bg-purple-50 text-purple-700 border-purple-300'
     };
     return (
       <span className={`px-2 py-1 text-xs font-semibold rounded border ${styles[status as keyof typeof styles]}`}>
@@ -87,14 +87,14 @@ export function TimeTracking({ onNavigate }: TimeTrackingProps) {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-[32px] font-bold text-slate-100">Time Tracking</h1>
-            <p className="text-sm text-slate-300 mt-1">Track billable hours and manage timesheets</p>
+            <h1 className="text-[32px] font-bold text-gray-900">Time Tracking</h1>
+            <p className="text-sm text-gray-600 mt-1">Track billable hours and manage timesheets</p>
           </div>
           <div className="flex items-center gap-2">
             <select
               value={selectedPeriod}
               onChange={(e) => setSelectedPeriod(e.target.value as any)}
-              className="px-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+              className="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
             >
               <option value="week">This Week</option>
               <option value="month">This Month</option>
@@ -120,7 +120,7 @@ export function TimeTracking({ onNavigate }: TimeTrackingProps) {
                   <Timer className="w-8 h-8 text-white" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-slate-100 mb-1">Active Timer</h3>
+                  <h3 className="font-semibold text-gray-900 mb-1">Active Timer</h3>
                   <p className="text-3xl font-bold text-[#2855a6]">
                     {isTimerRunning ? '2:34:15' : '0:00:00'}
                   </p>
@@ -129,8 +129,8 @@ export function TimeTracking({ onNavigate }: TimeTrackingProps) {
 
               <div className="flex-1 mx-8 space-y-3">
                 <div>
-                  <label className="text-xs text-slate-300 mb-1 block">Client</label>
-                  <select className="w-full px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]">
+                  <label className="text-xs text-gray-600 mb-1 block">Client</label>
+                  <select className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]">
                     <option value="">Select client...</option>
                     <option>Smith SMSF</option>
                     <option>ABC Pty Ltd</option>
@@ -138,11 +138,11 @@ export function TimeTracking({ onNavigate }: TimeTrackingProps) {
                   </select>
                 </div>
                 <div>
-                  <label className="text-xs text-slate-300 mb-1 block">Description</label>
+                  <label className="text-xs text-gray-600 mb-1 block">Description</label>
                   <input
                     type="text"
                     placeholder="What are you working on?"
-                    className="w-full px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
                   />
                 </div>
               </div>
@@ -187,12 +187,12 @@ export function TimeTracking({ onNavigate }: TimeTrackingProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-blue-500/10 rounded-lg">
-                  <Clock className="w-5 h-5 text-blue-400" />
+                <div className="p-3 bg-blue-50 rounded-lg">
+                  <Clock className="w-5 h-5 text-blue-600" />
                 </div>
                 <div>
-                  <p className="text-xs text-slate-300">Total Hours</p>
-                  <p className="text-2xl font-bold text-slate-100">{stats.weekHours}h</p>
+                  <p className="text-xs text-gray-600">Total Hours</p>
+                  <p className="text-2xl font-bold text-gray-900">{stats.weekHours}h</p>
                 </div>
               </div>
             </CardContent>
@@ -201,12 +201,12 @@ export function TimeTracking({ onNavigate }: TimeTrackingProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-green-500/10 rounded-lg">
-                  <TrendingUp className="w-5 h-5 text-green-400" />
+                <div className="p-3 bg-green-50 rounded-lg">
+                  <TrendingUp className="w-5 h-5 text-green-600" />
                 </div>
                 <div>
-                  <p className="text-xs text-slate-300">Billable</p>
-                  <p className="text-2xl font-bold text-slate-100">{stats.billableHours}h</p>
+                  <p className="text-xs text-gray-600">Billable</p>
+                  <p className="text-2xl font-bold text-gray-900">{stats.billableHours}h</p>
                 </div>
               </div>
             </CardContent>
@@ -215,12 +215,12 @@ export function TimeTracking({ onNavigate }: TimeTrackingProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-purple-500/10 rounded-lg">
-                  <DollarSign className="w-5 h-5 text-purple-400" />
+                <div className="p-3 bg-purple-50 rounded-lg">
+                  <DollarSign className="w-5 h-5 text-purple-600" />
                 </div>
                 <div>
-                  <p className="text-xs text-slate-300">Revenue</p>
-                  <p className="text-2xl font-bold text-slate-100">${stats.revenue.toLocaleString()}</p>
+                  <p className="text-xs text-gray-600">Revenue</p>
+                  <p className="text-2xl font-bold text-gray-900">${stats.revenue.toLocaleString()}</p>
                 </div>
               </div>
             </CardContent>
@@ -229,12 +229,12 @@ export function TimeTracking({ onNavigate }: TimeTrackingProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-orange-500/10 rounded-lg">
-                  <TrendingUp className="w-5 h-5 text-orange-400" />
+                <div className="p-3 bg-orange-50 rounded-lg">
+                  <TrendingUp className="w-5 h-5 text-orange-600" />
                 </div>
                 <div>
-                  <p className="text-xs text-slate-300">Utilization</p>
-                  <p className="text-2xl font-bold text-slate-100">{stats.utilizationRate}%</p>
+                  <p className="text-xs text-gray-600">Utilization</p>
+                  <p className="text-2xl font-bold text-gray-900">{stats.utilizationRate}%</p>
                 </div>
               </div>
             </CardContent>
@@ -245,14 +245,14 @@ export function TimeTracking({ onNavigate }: TimeTrackingProps) {
         <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-semibold text-slate-100">Time Entries</h3>
+              <h3 className="font-semibold text-gray-900">Time Entries</h3>
               <div className="flex items-center gap-2">
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                   <input
                     type="text"
                     placeholder="Search entries..."
-                    className="pl-10 pr-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
+                    className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6]"
                   />
                 </div>
                 <Button variant="outline" size="sm">
@@ -265,48 +265,48 @@ export function TimeTracking({ onNavigate }: TimeTrackingProps) {
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-white/10">
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-300">Date</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-300">Client</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-300">Job</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-300">Description</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-300">Staff</th>
-                    <th className="text-right py-3 px-4 text-sm font-semibold text-slate-300">Duration</th>
-                    <th className="text-right py-3 px-4 text-sm font-semibold text-slate-300">Rate</th>
-                    <th className="text-right py-3 px-4 text-sm font-semibold text-slate-300">Value</th>
-                    <th className="text-center py-3 px-4 text-sm font-semibold text-slate-300">Status</th>
-                    <th className="text-center py-3 px-4 text-sm font-semibold text-slate-300">Actions</th>
+                  <tr className="border-b border-gray-200">
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Date</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Client</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Job</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Description</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Staff</th>
+                    <th className="text-right py-3 px-4 text-sm font-semibold text-gray-700">Duration</th>
+                    <th className="text-right py-3 px-4 text-sm font-semibold text-gray-700">Rate</th>
+                    <th className="text-right py-3 px-4 text-sm font-semibold text-gray-700">Value</th>
+                    <th className="text-center py-3 px-4 text-sm font-semibold text-gray-700">Status</th>
+                    <th className="text-center py-3 px-4 text-sm font-semibold text-gray-700">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   {timeEntries.map((entry) => (
-                    <tr key={entry.id} className="border-b border-white/10 hover:bg-white/5">
-                      <td className="py-4 px-4 text-sm text-slate-100">{entry.date}</td>
+                    <tr key={entry.id} className="border-b border-gray-100 hover:bg-gray-50">
+                      <td className="py-4 px-4 text-sm text-gray-900">{entry.date}</td>
                       <td className="py-4 px-4">
                         <div className="flex items-center gap-2">
                           <User className="w-4 h-4 text-gray-400" />
-                          <span className="text-sm text-slate-100">{entry.client}</span>
+                          <span className="text-sm text-gray-900">{entry.client}</span>
                         </div>
                       </td>
                       <td className="py-4 px-4">
                         <div className="flex items-center gap-2">
                           <Briefcase className="w-4 h-4 text-gray-400" />
-                          <span className="text-sm text-slate-300">{entry.job}</span>
+                          <span className="text-sm text-gray-700">{entry.job}</span>
                         </div>
                       </td>
-                      <td className="py-4 px-4 text-sm text-slate-300 max-w-xs truncate">{entry.description}</td>
-                      <td className="py-4 px-4 text-sm text-slate-300">{entry.staff}</td>
+                      <td className="py-4 px-4 text-sm text-gray-700 max-w-xs truncate">{entry.description}</td>
+                      <td className="py-4 px-4 text-sm text-gray-700">{entry.staff}</td>
                       <td className="py-4 px-4 text-right">
                         <div className="flex items-center justify-end gap-1">
                           <Clock className="w-3 h-3 text-gray-400" />
-                          <span className="text-sm font-semibold text-slate-100">{formatTime(entry.duration)}</span>
+                          <span className="text-sm font-semibold text-gray-900">{formatTime(entry.duration)}</span>
                         </div>
                       </td>
-                      <td className="py-4 px-4 text-right text-sm text-slate-300">
+                      <td className="py-4 px-4 text-right text-sm text-gray-700">
                         {entry.billable ? `$${entry.rate}/hr` : '-'}
                       </td>
                       <td className="py-4 px-4 text-right">
-                        <span className="text-sm font-semibold text-slate-100">
+                        <span className="text-sm font-semibold text-gray-900">
                           {entry.billable ? `$${((entry.duration / 60) * entry.rate).toFixed(0)}` : '-'}
                         </span>
                       </td>
@@ -314,10 +314,10 @@ export function TimeTracking({ onNavigate }: TimeTrackingProps) {
                       <td className="py-4 px-4">
                         <div className="flex items-center justify-center gap-1">
                           <Button size="sm" variant="ghost">
-                            <Edit className="w-4 h-4 text-slate-300" />
+                            <Edit className="w-4 h-4 text-gray-600" />
                           </Button>
                           <Button size="sm" variant="ghost">
-                            <Trash2 className="w-4 h-4 text-red-400" />
+                            <Trash2 className="w-4 h-4 text-red-600" />
                           </Button>
                         </div>
                       </td>

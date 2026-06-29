@@ -209,9 +209,9 @@ export function RedTeamAttacksModule() {
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'passed': return <CheckCircle className="w-5 h-5 text-green-400" />;
-      case 'failed': return <XCircle className="w-5 h-5 text-red-400" />;
-      case 'testing': return <Clock className="w-5 h-5 text-blue-400" />;
+      case 'passed': return <CheckCircle className="w-5 h-5 text-green-600" />;
+      case 'failed': return <XCircle className="w-5 h-5 text-red-600" />;
+      case 'testing': return <Clock className="w-5 h-5 text-blue-600" />;
       case 'not-tested': return <Activity className="w-5 h-5 text-gray-400" />;
     }
   };
@@ -241,11 +241,11 @@ export function RedTeamAttacksModule() {
             </div>
           </div>
           <div className="flex gap-3">
-            <Button className="bg-white text-red-400 hover:bg-red-500/10">
+            <Button className="bg-white text-red-600 hover:bg-red-50">
               <Target className="w-5 h-5 mr-2" />
               Run New Test
             </Button>
-            <Button className="bg-white text-red-400 hover:bg-red-500/10">
+            <Button className="bg-white text-red-600 hover:bg-red-50">
               <FileText className="w-5 h-5 mr-2" />
               Export Report
             </Button>
@@ -297,16 +297,16 @@ export function RedTeamAttacksModule() {
       </div>
 
       {/* Security Status */}
-      <div className="bg-green-500/10 border-2 border-green-500 rounded-lg p-6">
+      <div className="bg-green-50 border-2 border-green-500 rounded-lg p-6">
         <div className="flex items-start gap-3">
-          <CheckCircle className="w-8 h-8 text-green-400 mt-0.5" />
+          <CheckCircle className="w-8 h-8 text-green-600 mt-0.5" />
           <div>
-            <h3 className="text-2xl font-bold text-green-300 mb-2">🎉 All Security Tests Passed!</h3>
-            <p className="text-lg text-green-300 mb-3">
+            <h3 className="text-2xl font-bold text-green-900 mb-2">🎉 All Security Tests Passed!</h3>
+            <p className="text-lg text-green-800 mb-3">
               The Grow KYC platform has successfully defended against all {stats.totalTests} attack scenarios, 
               including {stats.critical} critical-severity threats.
             </p>
-            <p className="text-sm text-green-300">
+            <p className="text-sm text-green-800">
               <strong>Last Test Run:</strong> February 17, 2024 • <strong>Success Rate:</strong> {stats.successRate}%
             </p>
           </div>
@@ -314,7 +314,7 @@ export function RedTeamAttacksModule() {
       </div>
 
       {/* Category Filter */}
-      <div className="bg-white rounded-lg border border-white/10 p-4">
+      <div className="bg-white rounded-lg border border-gray-200 p-4">
         <div className="flex flex-wrap gap-2">
           {[
             { id: 'all', label: 'All Tests', count: scenarios.length },
@@ -331,7 +331,7 @@ export function RedTeamAttacksModule() {
               className={`px-4 py-2 rounded-lg font-semibold transition-all ${
                 activeCategory === cat.id
                   ? 'bg-red-600 text-white'
-                  : 'bg-white/5 text-slate-300 hover:bg-white/10'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
               {cat.label} ({cat.count})
@@ -345,7 +345,7 @@ export function RedTeamAttacksModule() {
         {filteredScenarios.map((scenario) => {
           const severityColor = getSeverityColor(scenario.severity);
           return (
-            <div key={scenario.id} className="bg-white rounded-lg border-2 border-white/10 p-6 hover:shadow-lg transition-shadow">
+            <div key={scenario.id} className="bg-white rounded-lg border-2 border-gray-200 p-6 hover:shadow-lg transition-shadow">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
@@ -356,20 +356,20 @@ export function RedTeamAttacksModule() {
                       {scenario.severity}
                     </span>
                     {scenario.testDate && (
-                      <span className="text-xs text-slate-300">
+                      <span className="text-xs text-gray-600">
                         Tested: {scenario.testDate}
                       </span>
                     )}
                   </div>
-                  <h3 className="text-xl font-bold text-slate-100 mb-2">{scenario.name}</h3>
-                  <p className="text-slate-300 mb-3">{scenario.description}</p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{scenario.name}</h3>
+                  <p className="text-gray-700 mb-3">{scenario.description}</p>
                   
                   {scenario.result && (
                     <div className={`p-3 rounded-lg ${
-                      scenario.status === 'passed' ? 'bg-green-500/10 border border-green-500/30' : 'bg-red-500/10 border border-red-500/30'
+                      scenario.status === 'passed' ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'
                     }`}>
                       <p className={`text-sm font-semibold ${
-                        scenario.status === 'passed' ? 'text-green-300' : 'text-red-300'
+                        scenario.status === 'passed' ? 'text-green-900' : 'text-red-900'
                       }`}>
                         {scenario.result}
                       </p>
@@ -380,10 +380,10 @@ export function RedTeamAttacksModule() {
                 <div className="ml-6 flex flex-col items-center gap-2">
                   {getStatusIcon(scenario.status)}
                   <span className={`px-3 py-1 text-xs font-bold rounded-full uppercase ${
-                    scenario.status === 'passed' ? 'bg-green-500/15 text-green-300' :
-                    scenario.status === 'failed' ? 'bg-red-500/15 text-red-300' :
-                    scenario.status === 'testing' ? 'bg-blue-500/15 text-blue-300' :
-                    'bg-white/5 text-slate-300'
+                    scenario.status === 'passed' ? 'bg-green-100 text-green-700' :
+                    scenario.status === 'failed' ? 'bg-red-100 text-red-700' :
+                    scenario.status === 'testing' ? 'bg-blue-100 text-blue-700' :
+                    'bg-gray-100 text-gray-700'
                   }`}>
                     {scenario.status.replace('-', ' ')}
                   </span>
@@ -398,8 +398,8 @@ export function RedTeamAttacksModule() {
       </div>
 
       {/* Security Recommendations */}
-      <div className="bg-white rounded-lg border border-white/10 p-6">
-        <h3 className="text-xl font-bold text-slate-100 mb-4">Security Best Practices Implemented</h3>
+      <div className="bg-white rounded-lg border border-gray-200 p-6">
+        <h3 className="text-xl font-bold text-gray-900 mb-4">Security Best Practices Implemented</h3>
         <div className="grid grid-cols-2 gap-4">
           {[
             { title: 'Multi-Factor Authentication', desc: 'Required for all privileged accounts', icon: Lock },
@@ -413,12 +413,12 @@ export function RedTeamAttacksModule() {
           ].map((practice, index) => {
             const Icon = practice.icon;
             return (
-              <div key={index} className="p-4 border border-white/10 rounded-lg">
+              <div key={index} className="p-4 border border-gray-200 rounded-lg">
                 <div className="flex items-start gap-3">
-                  <Icon className="w-6 h-6 text-green-400 mt-0.5" />
+                  <Icon className="w-6 h-6 text-green-600 mt-0.5" />
                   <div>
-                    <h4 className="font-bold text-slate-100 mb-1">{practice.title}</h4>
-                    <p className="text-sm text-slate-300">{practice.desc}</p>
+                    <h4 className="font-bold text-gray-900 mb-1">{practice.title}</h4>
+                    <p className="text-sm text-gray-600">{practice.desc}</p>
                   </div>
                 </div>
               </div>

@@ -136,7 +136,7 @@ export function SuspiciousMatterReporting({ onBack }: SuspiciousMatterReportingP
   const statusStates = ['Open', 'Under Review', 'Approved', 'Lodged', 'Closed'];
 
   return (
-    <div className="min-h-screen bg-[#0f172a]">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-gradient-to-r from-[#13B5EA] to-[#0E7C9E] text-white px-6 py-4">
         <div className="flex items-center justify-between">
@@ -152,7 +152,7 @@ export function SuspiciousMatterReporting({ onBack }: SuspiciousMatterReportingP
               <p className="text-sm text-white/90">AUSTRAC Suspicious Matter Report Workflow</p>
             </div>
           </div>
-          <Button className="bg-[#1e293b] text-[#13B5EA] hover:bg-white/5">
+          <Button className="bg-white text-[#13B5EA] hover:bg-gray-100">
             <Flag className="w-4 h-4 mr-2" />
             New SMR Case
           </Button>
@@ -160,41 +160,41 @@ export function SuspiciousMatterReporting({ onBack }: SuspiciousMatterReportingP
       </div>
 
       {/* Stats Bar */}
-      <div className="bg-[#1e293b] border-b border-white/10 px-6 py-4">
+      <div className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="grid grid-cols-6 gap-4">
           <div className="text-center">
-            <div className="text-3xl font-bold text-white">{smrCases.length}</div>
-            <div className="text-xs text-slate-300 mt-1">Total Cases</div>
+            <div className="text-3xl font-bold text-gray-900">{smrCases.length}</div>
+            <div className="text-xs text-gray-600 mt-1">Total Cases</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-400">
+            <div className="text-3xl font-bold text-blue-600">
               {smrCases.filter(c => c.status === 'Open').length}
             </div>
-            <div className="text-xs text-slate-300 mt-1">Open</div>
+            <div className="text-xs text-gray-600 mt-1">Open</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-amber-400">
+            <div className="text-3xl font-bold text-amber-600">
               {smrCases.filter(c => c.status === 'Under Review').length}
             </div>
-            <div className="text-xs text-slate-300 mt-1">Under Review</div>
+            <div className="text-xs text-gray-600 mt-1">Under Review</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-purple-400">
+            <div className="text-3xl font-bold text-purple-600">
               {smrCases.filter(c => c.status === 'Approved').length}
             </div>
-            <div className="text-xs text-slate-300 mt-1">Approved</div>
+            <div className="text-xs text-gray-600 mt-1">Approved</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-green-400">
+            <div className="text-3xl font-bold text-green-600">
               {smrCases.filter(c => c.status === 'Lodged').length}
             </div>
-            <div className="text-xs text-slate-300 mt-1">Lodged</div>
+            <div className="text-xs text-gray-600 mt-1">Lodged</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold text-slate-300">
+            <div className="text-3xl font-bold text-gray-600">
               {smrCases.filter(c => c.status === 'Closed').length}
             </div>
-            <div className="text-xs text-slate-300 mt-1">Closed</div>
+            <div className="text-xs text-gray-600 mt-1">Closed</div>
           </div>
         </div>
       </div>
@@ -225,17 +225,17 @@ export function SuspiciousMatterReporting({ onBack }: SuspiciousMatterReportingP
           <TabsContent value="register">
             <div className="space-y-3">
               {smrCases.map((smrCase) => (
-                <Card key={smrCase.caseId} className="border-2 border-white/10 hover:border-cyan-300 transition-colors">
+                <Card key={smrCase.caseId} className="border-2 border-gray-200 hover:border-cyan-300 transition-colors">
                   <CardContent className="p-6">
                     <div className="grid md:grid-cols-12 gap-4 items-center">
                       {/* Case ID & Client */}
                       <div className="md:col-span-3">
                         <div className="flex items-center gap-2 mb-2">
-                          <AlertTriangle className="w-5 h-5 text-red-400" />
+                          <AlertTriangle className="w-5 h-5 text-red-600" />
                           <div>
-                            <div className="font-bold text-white">{smrCase.caseId}</div>
-                            <div className="text-sm text-slate-300">{smrCase.clientName}</div>
-                            <div className="text-xs text-slate-300">{smrCase.clientId}</div>
+                            <div className="font-bold text-gray-900">{smrCase.caseId}</div>
+                            <div className="text-sm text-gray-700">{smrCase.clientName}</div>
+                            <div className="text-xs text-gray-600">{smrCase.clientId}</div>
                           </div>
                         </div>
                       </div>
@@ -244,8 +244,8 @@ export function SuspiciousMatterReporting({ onBack }: SuspiciousMatterReportingP
                       <div className="md:col-span-3">
                         <div className="space-y-2">
                           <div>
-                            <div className="text-xs text-slate-300">Suspicion Type</div>
-                            <div className="font-semibold text-white">{smrCase.suspicionType}</div>
+                            <div className="text-xs text-gray-600">Suspicion Type</div>
+                            <div className="font-semibold text-gray-900">{smrCase.suspicionType}</div>
                           </div>
                           <div className="flex items-center gap-2">
                             <Badge className={getSeverityColor(smrCase.severity)}>
@@ -259,14 +259,14 @@ export function SuspiciousMatterReporting({ onBack }: SuspiciousMatterReportingP
                       <div className="md:col-span-3">
                         <div className="space-y-2">
                           <div>
-                            <div className="text-xs text-slate-300">Status</div>
+                            <div className="text-xs text-gray-600">Status</div>
                             <Badge className={getStatusColor(smrCase.status)}>
                               {smrCase.status}
                             </Badge>
                           </div>
                           {smrCase.decision && (
                             <div>
-                              <div className="text-xs text-slate-300">Decision</div>
+                              <div className="text-xs text-gray-600">Decision</div>
                               <Badge className={smrCase.decision === 'Lodge' ? 'bg-green-600' : 'bg-gray-600'}>
                                 {smrCase.decision}
                               </Badge>
@@ -279,11 +279,11 @@ export function SuspiciousMatterReporting({ onBack }: SuspiciousMatterReportingP
                       <div className="md:col-span-2">
                         <div className="text-sm space-y-1">
                           <div>
-                            <div className="text-xs text-slate-300">Identified</div>
+                            <div className="text-xs text-gray-600">Identified</div>
                             <div className="font-semibold">{smrCase.dateIdentified}</div>
                           </div>
                           <div>
-                            <div className="text-xs text-slate-300">Assigned To</div>
+                            <div className="text-xs text-gray-600">Assigned To</div>
                             <div className="font-semibold">{smrCase.assignedTo}</div>
                           </div>
                         </div>
@@ -304,14 +304,14 @@ export function SuspiciousMatterReporting({ onBack }: SuspiciousMatterReportingP
 
                     {/* Additional Details (if lodged) */}
                     {smrCase.status === 'Lodged' && smrCase.austractReference && (
-                      <div className="mt-4 p-3 bg-green-500/10 rounded-lg border border-green-500/30">
+                      <div className="mt-4 p-3 bg-green-50 rounded-lg border border-green-200">
                         <div className="grid md:grid-cols-2 gap-4 text-sm">
                           <div>
-                            <span className="text-slate-300">Lodged Date: </span>
+                            <span className="text-gray-600">Lodged Date: </span>
                             <span className="font-semibold">{smrCase.lodgementDate}</span>
                           </div>
                           <div>
-                            <span className="text-slate-300">AUSTRAC Reference: </span>
+                            <span className="text-gray-600">AUSTRAC Reference: </span>
                             <span className="font-semibold font-mono">{smrCase.austractReference}</span>
                           </div>
                         </div>
@@ -325,7 +325,7 @@ export function SuspiciousMatterReporting({ onBack }: SuspiciousMatterReportingP
 
           {/* INVESTIGATION TAB */}
           <TabsContent value="investigation">
-            <Card className="border-2 border-blue-500/30">
+            <Card className="border-2 border-blue-200">
               <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50">
                 <CardTitle>Internal Investigation</CardTitle>
                 <CardDescription>
@@ -334,9 +334,9 @@ export function SuspiciousMatterReporting({ onBack }: SuspiciousMatterReportingP
               </CardHeader>
               <CardContent className="p-6 space-y-6">
                 {/* Investigation Summary */}
-                <div className="bg-[#1e293b] rounded-lg p-4 border-2 border-blue-500/30">
-                  <h3 className="font-bold text-white mb-3 flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-blue-400" />
+                <div className="bg-white rounded-lg p-4 border-2 border-blue-200">
+                  <h3 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                    <FileText className="w-5 h-5 text-blue-600" />
                     Investigation Summary
                   </h3>
                   <div className="grid md:grid-cols-2 gap-4 mb-4">
@@ -360,31 +360,31 @@ export function SuspiciousMatterReporting({ onBack }: SuspiciousMatterReportingP
                 </div>
 
                 {/* Linked Customer Profile */}
-                <div className="bg-cyan-500/10 rounded-lg p-4 border-2 border-cyan-500/30">
-                  <h3 className="font-bold text-cyan-300 mb-3 flex items-center gap-2">
-                    <User className="w-5 h-5 text-cyan-400" />
+                <div className="bg-cyan-50 rounded-lg p-4 border-2 border-cyan-200">
+                  <h3 className="font-bold text-cyan-900 mb-3 flex items-center gap-2">
+                    <User className="w-5 h-5 text-cyan-600" />
                     Linked Customer Profile
                   </h3>
                   <div className="grid md:grid-cols-3 gap-4 text-sm">
                     <div>
-                      <span className="text-slate-300">Client: </span>
+                      <span className="text-gray-600">Client: </span>
                       <span className="font-semibold">Pinnacle Investment Group Pty Ltd</span>
                     </div>
                     <div>
-                      <span className="text-slate-300">Risk Rating: </span>
+                      <span className="text-gray-600">Risk Rating: </span>
                       <Badge className="bg-orange-600">HIGH</Badge>
                     </div>
                     <div>
-                      <span className="text-slate-300">Relationship Start: </span>
+                      <span className="text-gray-600">Relationship Start: </span>
                       <span className="font-semibold">2022-06-15</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Linked Transaction Activity */}
-                <div className="bg-amber-500/10 rounded-lg p-4 border-2 border-amber-500/30">
-                  <h3 className="font-bold text-amber-300 mb-3 flex items-center gap-2">
-                    <Activity className="w-5 h-5 text-amber-400" />
+                <div className="bg-amber-50 rounded-lg p-4 border-2 border-amber-200">
+                  <h3 className="font-bold text-amber-900 mb-3 flex items-center gap-2">
+                    <Activity className="w-5 h-5 text-amber-600" />
                     Linked Transaction Activity
                   </h3>
                   <div className="space-y-2">
@@ -393,23 +393,23 @@ export function SuspiciousMatterReporting({ onBack }: SuspiciousMatterReportingP
                       { id: 'TXN-2024-4523', date: '2024-03-07', amount: '$48,800', type: 'Cash Deposit' },
                       { id: 'TXN-2024-4528', date: '2024-03-09', amount: '$49,200', type: 'Cash Deposit' }
                     ].map((txn, idx) => (
-                      <div key={idx} className="flex items-center justify-between p-3 bg-[#1e293b] rounded border border-amber-300">
+                      <div key={idx} className="flex items-center justify-between p-3 bg-white rounded border border-amber-300">
                         <div className="flex items-center gap-3">
-                          <DollarSign className="w-4 h-4 text-amber-400" />
+                          <DollarSign className="w-4 h-4 text-amber-600" />
                           <div>
-                            <div className="font-semibold text-white">{txn.id}</div>
-                            <div className="text-xs text-slate-300">{txn.type}</div>
+                            <div className="font-semibold text-gray-900">{txn.id}</div>
+                            <div className="text-xs text-gray-600">{txn.type}</div>
                           </div>
                         </div>
                         <div className="text-right">
-                          <div className="font-bold text-white">{txn.amount}</div>
-                          <div className="text-xs text-slate-300">{txn.date}</div>
+                          <div className="font-bold text-gray-900">{txn.amount}</div>
+                          <div className="text-xs text-gray-600">{txn.date}</div>
                         </div>
                       </div>
                     ))}
                   </div>
-                  <div className="mt-3 p-3 bg-red-500/10 rounded border-2 border-red-300">
-                    <p className="text-sm font-semibold text-red-300">
+                  <div className="mt-3 p-3 bg-red-50 rounded border-2 border-red-300">
+                    <p className="text-sm font-semibold text-red-900">
                       🚨 Pattern Detected: Three transactions just below $50,000 reporting threshold within 5 days - 
                       potential structuring to avoid TTR requirements
                     </p>
@@ -442,12 +442,12 @@ Recommendation: Escalate to Senior Partner for SMR lodgement decision."
                       { name: 'Client_Interview_Notes.pdf', size: '156 KB', date: '2024-03-12' },
                       { name: 'Contract_of_Sale_Evidence.pdf', size: '3.1 MB', date: '2024-03-14' }
                     ].map((file, idx) => (
-                      <div key={idx} className="flex items-center justify-between p-3 bg-[#0f172a] rounded border border-white/10">
+                      <div key={idx} className="flex items-center justify-between p-3 bg-gray-50 rounded border border-gray-200">
                         <div className="flex items-center gap-2">
-                          <FileText className="w-4 h-4 text-slate-300" />
+                          <FileText className="w-4 h-4 text-gray-600" />
                           <div>
-                            <div className="font-semibold text-sm text-white">{file.name}</div>
-                            <div className="text-xs text-slate-300">{file.size} • Uploaded {file.date}</div>
+                            <div className="font-semibold text-sm text-gray-900">{file.name}</div>
+                            <div className="text-xs text-gray-600">{file.size} • Uploaded {file.date}</div>
                           </div>
                         </div>
                         <Button size="sm" variant="outline">
@@ -464,7 +464,7 @@ Recommendation: Escalate to Senior Partner for SMR lodgement decision."
 
           {/* APPROVAL WORKFLOW TAB */}
           <TabsContent value="approval">
-            <Card className="border-2 border-purple-500/30">
+            <Card className="border-2 border-purple-200">
               <CardHeader className="bg-gradient-to-r from-purple-50 to-pink-50">
                 <CardTitle>Decision & Approval Workflow</CardTitle>
                 <CardDescription>
@@ -473,8 +473,8 @@ Recommendation: Escalate to Senior Partner for SMR lodgement decision."
               </CardHeader>
               <CardContent className="p-6 space-y-6">
                 {/* Status Timeline */}
-                <div className="bg-[#1e293b] rounded-lg p-4 border-2 border-purple-500/30">
-                  <h3 className="font-bold text-white mb-4">Status Timeline</h3>
+                <div className="bg-white rounded-lg p-4 border-2 border-purple-200">
+                  <h3 className="font-bold text-gray-900 mb-4">Status Timeline</h3>
                   <div className="space-y-4">
                     {[
                       { status: 'Open', date: '2024-03-10', user: 'System Alert', active: true, completed: true },
@@ -496,8 +496,8 @@ Recommendation: Escalate to Senior Partner for SMR lodgement decision."
                           )}
                         </div>
                         <div className="flex-1">
-                          <div className="font-bold text-white">{step.status}</div>
-                          <div className="text-sm text-slate-300">
+                          <div className="font-bold text-gray-900">{step.status}</div>
+                          <div className="text-sm text-gray-600">
                             {step.date} {step.user && `• ${step.user}`}
                           </div>
                         </div>
@@ -507,8 +507,8 @@ Recommendation: Escalate to Senior Partner for SMR lodgement decision."
                 </div>
 
                 {/* Decision Form */}
-                <div className="bg-amber-500/10 rounded-lg p-4 border-2 border-amber-500/30">
-                  <h3 className="font-bold text-amber-300 mb-4">Lodgement Decision</h3>
+                <div className="bg-amber-50 rounded-lg p-4 border-2 border-amber-200">
+                  <h3 className="font-bold text-amber-900 mb-4">Lodgement Decision</h3>
                   
                   <div className="space-y-4">
                     <div>
@@ -561,17 +561,17 @@ Recommendation: Escalate to Senior Partner for SMR lodgement decision."
 
                 {/* Reporting Officer Log */}
                 <div>
-                  <h3 className="font-bold text-white mb-3">Reporting Officer Log</h3>
+                  <h3 className="font-bold text-gray-900 mb-3">Reporting Officer Log</h3>
                   <div className="space-y-2">
-                    <div className="p-3 bg-green-500/10 rounded-lg border border-green-500/30">
+                    <div className="p-3 bg-green-50 rounded-lg border border-green-200">
                       <div className="flex items-center justify-between mb-2">
-                        <span className="font-semibold text-white">SMR-2024-002 - Lodged</span>
+                        <span className="font-semibold text-gray-900">SMR-2024-002 - Lodged</span>
                         <Badge className="bg-green-600">Completed</Badge>
                       </div>
-                      <div className="text-sm text-slate-300 mb-1">
+                      <div className="text-sm text-gray-700 mb-1">
                         Decision: Lodge with AUSTRAC
                       </div>
-                      <div className="text-xs text-slate-300">
+                      <div className="text-xs text-gray-600">
                         Officer: Michael Roberts | Lodged: 2024-03-18 | Ref: SMR-2024-ABC123
                       </div>
                     </div>
@@ -624,15 +624,15 @@ Recommendation: Escalate to Senior Partner for SMR lodgement decision."
                       details: 'Automated structuring alert triggered for CL-2024-1847'
                     }
                   ].map((entry, idx) => (
-                    <div key={idx} className="flex items-start gap-3 p-3 bg-[#0f172a] rounded-lg border border-white/10">
+                    <div key={idx} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
                       <div className="w-2 h-2 rounded-full bg-cyan-600 mt-2" />
                       <div className="flex-1">
                         <div className="flex items-center justify-between mb-1">
-                          <span className="font-semibold text-white">{entry.action}</span>
-                          <span className="text-xs text-slate-300">{entry.timestamp}</span>
+                          <span className="font-semibold text-gray-900">{entry.action}</span>
+                          <span className="text-xs text-gray-600">{entry.timestamp}</span>
                         </div>
-                        <p className="text-sm text-slate-300 mb-1">{entry.details}</p>
-                        <div className="text-xs text-slate-300">By: {entry.user}</div>
+                        <p className="text-sm text-gray-700 mb-1">{entry.details}</p>
+                        <div className="text-xs text-gray-600">By: {entry.user}</div>
                       </div>
                     </div>
                   ))}

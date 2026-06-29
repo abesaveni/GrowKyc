@@ -350,7 +350,7 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
         action: `successfully onboarded client ${newClient.name}`,
         time: 'Just now',
         iconName: 'CheckCircle',
-        color: 'text-green-400'
+        color: 'text-green-600'
       };
       const savedLogs = localStorage.getItem('growkyc_logged_activities');
       const logs = savedLogs ? JSON.parse(savedLogs) : [];
@@ -407,7 +407,7 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                   key={step.id}
                   className={`flex-1 h-2 rounded-full transition-all ${
                     index <= currentStepIndex
-                      ? 'bg-[#1e293b] shadow-lg'
+                      ? 'bg-white shadow-lg'
                       : 'bg-white/30'
                   }`}
                 />
@@ -442,20 +442,20 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                       <div className={`w-16 h-16 bg-gradient-to-br ${type.color} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg`}>
                         <TypeIcon className="w-8 h-8 text-white" />
                       </div>
-                      <h3 className="text-xl font-bold text-white mb-2">{type.name}</h3>
-                      <p className="text-sm text-slate-300 mb-4">{type.description}</p>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">{type.name}</h3>
+                      <p className="text-sm text-gray-600 mb-4">{type.description}</p>
                       
                       <div className="space-y-2 mb-4">
-                        <p className="text-xs font-semibold text-slate-300">Required:</p>
+                        <p className="text-xs font-semibold text-gray-700">Required:</p>
                         {type.requirements.map((req, idx) => (
-                          <div key={idx} className="flex items-center gap-2 text-xs text-slate-300">
+                          <div key={idx} className="flex items-center gap-2 text-xs text-gray-600">
                             <CheckCircle className="w-3 h-3 text-green-500" />
                             {req}
                           </div>
                         ))}
                       </div>
 
-                      <div className="flex items-center gap-2 text-xs text-slate-400">
+                      <div className="flex items-center gap-2 text-xs text-gray-500">
                         <Clock className="w-3 h-3" />
                         Est. {type.estimatedTime}
                       </div>
@@ -487,7 +487,7 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                   {clientType === 'individual' && (
                     <>
                       <div>
-                        <label className="text-sm font-semibold text-slate-300 mb-2 block">
+                        <label className="text-sm font-semibold text-gray-700 mb-2 block">
                           First Name *
                         </label>
                         <Input 
@@ -498,7 +498,7 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                         />
                       </div>
                       <div>
-                        <label className="text-sm font-semibold text-slate-300 mb-2 block">
+                        <label className="text-sm font-semibold text-gray-700 mb-2 block">
                           Last Name *
                         </label>
                         <Input 
@@ -509,7 +509,7 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                         />
                       </div>
                       <div>
-                        <label className="text-sm font-semibold text-slate-300 mb-2 block">
+                        <label className="text-sm font-semibold text-gray-700 mb-2 block">
                           Date of Birth *
                         </label>
                         <Input 
@@ -520,7 +520,7 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                         />
                       </div>
                       <div>
-                        <label className="text-sm font-semibold text-slate-300 mb-2 block">
+                        <label className="text-sm font-semibold text-gray-700 mb-2 block">
                           Email *
                         </label>
                         <Input 
@@ -532,7 +532,7 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                         />
                       </div>
                       <div>
-                        <label className="text-sm font-semibold text-slate-300 mb-2 block">
+                        <label className="text-sm font-semibold text-gray-700 mb-2 block">
                           Mobile *
                         </label>
                         <Input 
@@ -543,7 +543,7 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                         />
                       </div>
                       <div>
-                        <label className="text-sm font-semibold text-slate-300 mb-2 block">
+                        <label className="text-sm font-semibold text-gray-700 mb-2 block">
                           Residential Address *
                         </label>
                         <Input 
@@ -559,7 +559,7 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                   {clientType === 'company' && (
                     <>
                       <div>
-                        <label className="text-sm font-semibold text-slate-300 mb-2 block">
+                        <label className="text-sm font-semibold text-gray-700 mb-2 block">
                           Company Name *
                         </label>
                         <Input 
@@ -570,7 +570,7 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                         />
                       </div>
                       <div>
-                        <label className="text-sm font-semibold text-slate-300 mb-2 block">
+                        <label className="text-sm font-semibold text-gray-700 mb-2 block">
                           ABN *
                         </label>
                         <div className="flex gap-2">
@@ -585,10 +585,10 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                             Lookup
                           </Button>
                         </div>
-                        <p className="text-xs text-slate-400 mt-1">We'll auto-fill details from ABN lookup</p>
+                        <p className="text-xs text-gray-500 mt-1">We'll auto-fill details from ABN lookup</p>
                       </div>
                       <div>
-                        <label className="text-sm font-semibold text-slate-300 mb-2 block">
+                        <label className="text-sm font-semibold text-gray-700 mb-2 block">
                           ACN *
                         </label>
                         <Input 
@@ -599,7 +599,7 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                         />
                       </div>
                       <div>
-                        <label className="text-sm font-semibold text-slate-300 mb-2 block">
+                        <label className="text-sm font-semibold text-gray-700 mb-2 block">
                           Registered Address *
                         </label>
                         <Input 
@@ -647,7 +647,7 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                   className={`border-4 border-dashed rounded-2xl p-12 text-center transition-all ${
                     dragActive
                       ? 'border-[#13B5EA] bg-[#13B5EA]/5 scale-105'
-                      : 'border-white/10 hover:border-[#13B5EA] hover:bg-white/5'
+                      : 'border-gray-300 hover:border-[#13B5EA] hover:bg-gray-50'
                   }`}
                   onDragEnter={handleDrag}
                   onDragLeave={handleDrag}
@@ -668,13 +668,13 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                     <Upload className="w-10 h-10 text-white" />
                   </div>
 
-                  <h3 className="text-xl font-bold text-white mb-2">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
                     Drop your documents here
                   </h3>
-                  <p className="text-slate-300 mb-4">
+                  <p className="text-gray-600 mb-4">
                     or click to browse from your computer
                   </p>
-                  <p className="text-sm text-slate-400">
+                  <p className="text-sm text-gray-500">
                     Supported: PDF, JPG, PNG • Max 10MB per file
                   </p>
 
@@ -697,21 +697,21 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                 {/* Uploaded Files List */}
                 {uploadedFiles.length > 0 && (
                   <div className="mt-8 space-y-3">
-                    <h4 className="font-semibold text-white mb-4">
+                    <h4 className="font-semibold text-gray-900 mb-4">
                       Uploaded Documents ({uploadedFiles.length})
                     </h4>
                     {uploadedFiles.map((file, index) => (
                       <div
                         key={index}
-                        className="flex items-center justify-between p-4 bg-[#0f172a] rounded-xl border-2 border-white/10 hover:border-[#13B5EA] transition-colors"
+                        className="flex items-center justify-between p-4 bg-gray-50 rounded-xl border-2 border-gray-200 hover:border-[#13B5EA] transition-colors"
                       >
                         <div className="flex items-center gap-4 flex-1">
-                          <div className="w-12 h-12 bg-blue-500/15 rounded-lg flex items-center justify-center">
-                            <FileText className="w-6 h-6 text-blue-400" />
+                          <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <FileText className="w-6 h-6 text-blue-600" />
                           </div>
                           <div className="flex-1 min-w-0">
-                            <p className="font-semibold text-white truncate">{file.name}</p>
-                            <p className="text-sm text-slate-300">
+                            <p className="font-semibold text-gray-900 truncate">{file.name}</p>
+                            <p className="text-sm text-gray-600">
                               {(file.size / 1024).toFixed(1)} KB
                             </p>
                           </div>
@@ -733,7 +733,7 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                             variant="ghost"
                             size="sm"
                             onClick={() => removeFile(index)}
-                            className="text-red-400 hover:text-red-300"
+                            className="text-red-600 hover:text-red-700"
                           >
                             <Trash2 className="w-4 h-4" />
                           </Button>
@@ -778,8 +778,8 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                     <div className="w-24 h-24 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
                       <Sparkles className="w-12 h-12 text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-3">Ready to Verify</h3>
-                    <p className="text-slate-300 mb-8 max-w-md mx-auto">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-3">Ready to Verify</h3>
+                    <p className="text-gray-600 mb-8 max-w-md mx-auto">
                       We'll run 6 automated checks including identity verification, AML screening, entity validation, and risk scoring.
                     </p>
                     
@@ -794,9 +794,9 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                       ].map((check, idx) => {
                         const CheckIcon = check.icon;
                         return (
-                          <div key={idx} className="p-4 bg-[#0f172a] rounded-xl border-2 border-white/10">
+                          <div key={idx} className="p-4 bg-gray-50 rounded-xl border-2 border-gray-200">
                             <CheckIcon className="w-6 h-6 text-[#13B5EA] mx-auto mb-2" />
-                            <p className="text-xs font-semibold text-slate-300">{check.label}</p>
+                            <p className="text-xs font-semibold text-gray-700">{check.label}</p>
                           </div>
                         );
                       })}
@@ -816,10 +816,10 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                     <div className="w-24 h-24 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 animate-spin">
                       <Activity className="w-12 h-12 text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold text-white text-center mb-3">
+                    <h3 className="text-2xl font-bold text-gray-900 text-center mb-3">
                       Running AI Verification...
                     </h3>
-                    <p className="text-slate-300 text-center mb-8">
+                    <p className="text-gray-600 text-center mb-8">
                       Please wait while we verify all information
                     </p>
                     <Progress value={66} className="max-w-md mx-auto" />
@@ -849,10 +849,10 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                       { label: 'AML Screening', status: 'pass', score: 100 },
                       { label: 'Risk Score', status: 'pass', score: 15 }
                     ].map((result, idx) => (
-                      <div key={idx} className="p-4 bg-green-500/10 rounded-xl border-2 border-green-500/30">
-                        <CheckCircle className="w-6 h-6 text-green-400 mb-2" />
-                        <p className="font-semibold text-white">{result.label}</p>
-                        <p className="text-2xl font-bold text-green-400 mt-1">{result.score}</p>
+                      <div key={idx} className="p-4 bg-green-50 rounded-xl border-2 border-green-200">
+                        <CheckCircle className="w-6 h-6 text-green-600 mb-2" />
+                        <p className="font-semibold text-gray-900">{result.label}</p>
+                        <p className="text-2xl font-bold text-green-600 mt-1">{result.score}</p>
                       </div>
                     ))}
                   </div>
@@ -885,8 +885,8 @@ export function SmartClientOnboarding({ onBack }: SmartClientOnboardingProps) {
                 <div className="w-24 h-24 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
                   <CheckCircle className="w-12 h-12 text-white" />
                 </div>
-                <h2 className="text-3xl font-bold text-white mb-4">🎉 All Done!</h2>
-                <p className="text-slate-300 mb-8 text-lg">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">🎉 All Done!</h2>
+                <p className="text-gray-600 mb-8 text-lg">
                   Client has been successfully onboarded and verified.
                 </p>
                 <div className="flex items-center justify-center gap-4">

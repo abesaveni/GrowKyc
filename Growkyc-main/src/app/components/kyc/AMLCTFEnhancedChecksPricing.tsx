@@ -252,61 +252,61 @@ export function AMLCTFEnhancedChecksPricing() {
 
       {/* Pricing Overview */}
       <div className="grid grid-cols-4 gap-4">
-        <Card className="border-2 border-red-300 bg-red-500/10">
+        <Card className="border-2 border-red-300 bg-red-50">
           <CardContent className="p-6">
             <div className="flex items-center gap-3 mb-2">
-              <Lock className="w-6 h-6 text-red-400" />
-              <h3 className="font-bold text-red-300">Mandatory Checks</h3>
+              <Lock className="w-6 h-6 text-red-600" />
+              <h3 className="font-bold text-red-900">Mandatory Checks</h3>
             </div>
-            <p className="text-4xl font-bold text-red-400">${costs.mandatoryCost.toFixed(2)}</p>
-            <p className="text-sm text-red-300 mt-1">Must be paid</p>
+            <p className="text-4xl font-bold text-red-600">${costs.mandatoryCost.toFixed(2)}</p>
+            <p className="text-sm text-red-700 mt-1">Must be paid</p>
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-blue-300 bg-blue-500/10">
+        <Card className="border-2 border-blue-300 bg-blue-50">
           <CardContent className="p-6">
             <div className="flex items-center gap-3 mb-2">
-              <Unlock className="w-6 h-6 text-blue-400" />
-              <h3 className="font-bold text-blue-300">Optional Checks</h3>
+              <Unlock className="w-6 h-6 text-blue-600" />
+              <h3 className="font-bold text-blue-900">Optional Checks</h3>
             </div>
-            <p className="text-4xl font-bold text-blue-400">${costs.optionalCost.toFixed(2)}</p>
-            <p className="text-sm text-blue-300 mt-1">Selected</p>
+            <p className="text-4xl font-bold text-blue-600">${costs.optionalCost.toFixed(2)}</p>
+            <p className="text-sm text-blue-700 mt-1">Selected</p>
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-amber-300 bg-amber-500/10">
+        <Card className="border-2 border-amber-300 bg-amber-50">
           <CardContent className="p-6">
             <div className="flex items-center gap-3 mb-2">
-              <Clock className="w-6 h-6 text-amber-400" />
-              <h3 className="font-bold text-amber-300">Finalized Later</h3>
+              <Clock className="w-6 h-6 text-amber-600" />
+              <h3 className="font-bold text-amber-900">Finalized Later</h3>
             </div>
-            <p className="text-4xl font-bold text-amber-400">{costs.finalizedLaterCount}</p>
-            <p className="text-sm text-amber-300 mt-1">Per entity/property</p>
+            <p className="text-4xl font-bold text-amber-600">{costs.finalizedLaterCount}</p>
+            <p className="text-sm text-amber-700 mt-1">Per entity/property</p>
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-green-300 bg-green-500/10">
+        <Card className="border-2 border-green-300 bg-green-50">
           <CardContent className="p-6">
             <div className="flex items-center gap-3 mb-2">
-              <DollarSign className="w-6 h-6 text-green-400" />
-              <h3 className="font-bold text-green-300">Total Estimate</h3>
+              <DollarSign className="w-6 h-6 text-green-600" />
+              <h3 className="font-bold text-green-900">Total Estimate</h3>
             </div>
-            <p className="text-4xl font-bold text-green-400">
+            <p className="text-4xl font-bold text-green-600">
               ${(costs.mandatoryCost + costs.optionalCost).toFixed(2)}+
             </p>
-            <p className="text-sm text-green-300 mt-1">Confirmed now</p>
+            <p className="text-sm text-green-700 mt-1">Confirmed now</p>
           </CardContent>
         </Card>
       </div>
 
       {/* Important Notice */}
-      <Card className="border-2 border-red-300 bg-red-500/10">
+      <Card className="border-2 border-red-300 bg-red-50">
         <CardContent className="p-6">
           <div className="flex gap-4">
-            <AlertCircle className="w-8 h-8 text-red-400 flex-shrink-0" />
+            <AlertCircle className="w-8 h-8 text-red-600 flex-shrink-0" />
             <div>
-              <h3 className="font-bold text-red-300 text-lg mb-2">Payment Required for Mandatory Checks</h3>
-              <div className="space-y-2 text-red-300">
+              <h3 className="font-bold text-red-900 text-lg mb-2">Payment Required for Mandatory Checks</h3>
+              <div className="space-y-2 text-red-800">
                 <p>
                   <strong>• Individual Identity Verification ($12.50 per person)</strong> - Required for EVERY individual 
                   including clients, beneficial owners, directors, officers, and authorized signatories
@@ -327,12 +327,12 @@ export function AMLCTFEnhancedChecksPricing() {
 
       {/* Mandatory Checks */}
       <Card className="border-2 border-red-300">
-        <CardHeader className="bg-red-500/10">
-          <CardTitle className="flex items-center gap-2 text-red-300">
+        <CardHeader className="bg-red-50">
+          <CardTitle className="flex items-center gap-2 text-red-900">
             <Lock className="w-6 h-6" />
             Mandatory Payment Checks
           </CardTitle>
-          <CardDescription className="text-red-300">
+          <CardDescription className="text-red-700">
             These checks must be completed and paid for every relevant individual
           </CardDescription>
         </CardHeader>
@@ -345,7 +345,7 @@ export function AMLCTFEnhancedChecksPricing() {
             return (
               <div
                 key={check.id}
-                className="border-2 border-red-300 bg-red-500/10 rounded-lg p-6 cursor-not-allowed"
+                className="border-2 border-red-300 bg-red-50 rounded-lg p-6 cursor-not-allowed"
               >
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-start gap-4 flex-1">
@@ -354,34 +354,34 @@ export function AMLCTFEnhancedChecksPricing() {
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-lg font-bold text-red-300">{check.name}</h3>
+                        <h3 className="text-lg font-bold text-red-900">{check.name}</h3>
                         <Badge className="bg-red-600 text-white">MANDATORY</Badge>
-                        <Badge variant="outline" className="border-red-400 text-red-300">
+                        <Badge variant="outline" className="border-red-400 text-red-700">
                           <CategoryIcon className="w-3 h-3 mr-1" />
                           {check.category}
                         </Badge>
                       </div>
-                      <p className="text-slate-300 mb-3">{check.description}</p>
+                      <p className="text-gray-700 mb-3">{check.description}</p>
                       {check.notes && (
-                        <div className="bg-white border border-red-500/30 rounded p-3 mt-2">
+                        <div className="bg-white border border-red-200 rounded p-3 mt-2">
                           <div className="flex gap-2">
-                            <Info className="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" />
-                            <p className="text-sm text-red-300">{check.notes}</p>
+                            <Info className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" />
+                            <p className="text-sm text-red-800">{check.notes}</p>
                           </div>
                         </div>
                       )}
                     </div>
                   </div>
                   <div className="text-right ml-4">
-                    <div className="text-2xl font-bold text-red-400 mb-1">
+                    <div className="text-2xl font-bold text-red-600 mb-1">
                       ${check.basePrice?.toFixed(2)}
                     </div>
-                    <div className="text-sm text-red-300 font-semibold">
+                    <div className="text-sm text-red-700 font-semibold">
                       {check.pricingModel === 'per-individual' && 'per person'}
                       {check.pricingModel === 'per-entity' && 'per entity'}
                     </div>
                     <div className="mt-3">
-                      <Lock className="w-6 h-6 text-red-400" />
+                      <Lock className="w-6 h-6 text-red-600" />
                     </div>
                   </div>
                 </div>
@@ -393,12 +393,12 @@ export function AMLCTFEnhancedChecksPricing() {
 
       {/* Entity Checks - Finalized Later */}
       <Card className="border-2 border-amber-300">
-        <CardHeader className="bg-amber-500/10">
-          <CardTitle className="flex items-center gap-2 text-amber-300">
+        <CardHeader className="bg-amber-50">
+          <CardTitle className="flex items-center gap-2 text-amber-900">
             <Building className="w-6 h-6" />
             Entity Checks - Per Company/Trust
           </CardTitle>
-          <CardDescription className="text-amber-300">
+          <CardDescription className="text-amber-700">
             Final pricing determined once client association with entity is identified
           </CardDescription>
         </CardHeader>
@@ -413,40 +413,40 @@ export function AMLCTFEnhancedChecksPricing() {
                 onClick={() => toggleCheck(check.id)}
                 className={`border-2 rounded-lg p-6 cursor-pointer transition-all ${
                   isSelected
-                    ? 'border-amber-500 bg-amber-500/10'
-                    : 'border-amber-500/30 bg-white hover:border-amber-400 hover:bg-amber-500/10'
+                    ? 'border-amber-500 bg-amber-50'
+                    : 'border-amber-200 bg-white hover:border-amber-400 hover:bg-amber-50'
                 }`}
               >
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-start gap-4 flex-1">
                     <div className={`p-3 rounded-lg ${
-                      isSelected ? 'bg-amber-600' : 'bg-amber-500/20'
+                      isSelected ? 'bg-amber-600' : 'bg-amber-200'
                     }`}>
-                      <Icon className={`w-6 h-6 ${isSelected ? 'text-white' : 'text-amber-300'}`} />
+                      <Icon className={`w-6 h-6 ${isSelected ? 'text-white' : 'text-amber-700'}`} />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-lg font-bold text-slate-100">{check.name}</h3>
-                        <Badge variant="outline" className="border-amber-400 text-amber-300">
+                        <h3 className="text-lg font-bold text-gray-900">{check.name}</h3>
+                        <Badge variant="outline" className="border-amber-400 text-amber-700">
                           Optional
                         </Badge>
                       </div>
-                      <p className="text-slate-300 mb-3">{check.description}</p>
+                      <p className="text-gray-700 mb-3">{check.description}</p>
                       {check.notes && (
-                        <div className="bg-white border border-amber-500/30 rounded p-3 mt-2">
+                        <div className="bg-white border border-amber-200 rounded p-3 mt-2">
                           <div className="flex gap-2">
-                            <Info className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
-                            <p className="text-sm text-amber-300">{check.notes}</p>
+                            <Info className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
+                            <p className="text-sm text-amber-800">{check.notes}</p>
                           </div>
                         </div>
                       )}
                     </div>
                   </div>
                   <div className="text-right ml-4">
-                    <div className="text-2xl font-bold text-amber-400 mb-1">
+                    <div className="text-2xl font-bold text-amber-600 mb-1">
                       ${check.basePrice?.toFixed(2)}
                     </div>
-                    <div className="text-sm text-amber-300 font-semibold">per entity</div>
+                    <div className="text-sm text-amber-700 font-semibold">per entity</div>
                     <div className="mt-3">
                       <div className={`w-6 h-6 rounded border-2 flex items-center justify-center ${
                         isSelected
@@ -466,12 +466,12 @@ export function AMLCTFEnhancedChecksPricing() {
 
       {/* Title Searches */}
       <Card className="border-2 border-blue-300">
-        <CardHeader className="bg-blue-500/10">
-          <CardTitle className="flex items-center gap-2 text-blue-300">
+        <CardHeader className="bg-blue-50">
+          <CardTitle className="flex items-center gap-2 text-blue-900">
             <MapPin className="w-6 h-6" />
             Title Searches - Per Property
           </CardTitle>
-          <CardDescription className="text-blue-300">
+          <CardDescription className="text-blue-700">
             Property title searches when entities own real property or provide property as security
           </CardDescription>
         </CardHeader>
@@ -486,21 +486,21 @@ export function AMLCTFEnhancedChecksPricing() {
                 onClick={() => toggleCheck(check.id)}
                 className={`border-2 rounded-lg p-6 cursor-pointer transition-all ${
                   isSelected
-                    ? 'border-blue-500 bg-blue-500/10'
-                    : 'border-blue-500/30 bg-white hover:border-blue-400 hover:bg-blue-500/10'
+                    ? 'border-blue-500 bg-blue-50'
+                    : 'border-blue-200 bg-white hover:border-blue-400 hover:bg-blue-50'
                 }`}
               >
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-start gap-4 flex-1">
                     <div className={`p-3 rounded-lg ${
-                      isSelected ? 'bg-blue-600' : 'bg-blue-500/20'
+                      isSelected ? 'bg-blue-600' : 'bg-blue-200'
                     }`}>
-                      <Icon className={`w-6 h-6 ${isSelected ? 'text-white' : 'text-blue-300'}`} />
+                      <Icon className={`w-6 h-6 ${isSelected ? 'text-white' : 'text-blue-700'}`} />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-lg font-bold text-slate-100">{check.name}</h3>
-                        <Badge variant="outline" className="border-blue-400 text-blue-300">
+                        <h3 className="text-lg font-bold text-gray-900">{check.name}</h3>
+                        <Badge variant="outline" className="border-blue-400 text-blue-700">
                           Optional
                         </Badge>
                         <Badge className="bg-blue-600 text-white">
@@ -508,22 +508,22 @@ export function AMLCTFEnhancedChecksPricing() {
                           Property
                         </Badge>
                       </div>
-                      <p className="text-slate-300 mb-3">{check.description}</p>
+                      <p className="text-gray-700 mb-3">{check.description}</p>
                       {check.notes && (
-                        <div className="bg-white border border-blue-500/30 rounded p-3 mt-2">
+                        <div className="bg-white border border-blue-200 rounded p-3 mt-2">
                           <div className="flex gap-2">
-                            <Info className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
-                            <p className="text-sm text-blue-300">{check.notes}</p>
+                            <Info className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
+                            <p className="text-sm text-blue-800">{check.notes}</p>
                           </div>
                         </div>
                       )}
                     </div>
                   </div>
                   <div className="text-right ml-4">
-                    <div className="text-2xl font-bold text-blue-400 mb-1">
+                    <div className="text-2xl font-bold text-blue-600 mb-1">
                       ${check.basePrice?.toFixed(2)}
                     </div>
-                    <div className="text-sm text-blue-300 font-semibold">per property</div>
+                    <div className="text-sm text-blue-700 font-semibold">per property</div>
                     <div className="mt-3">
                       <div className={`w-6 h-6 rounded border-2 flex items-center justify-center ${
                         isSelected
@@ -542,71 +542,71 @@ export function AMLCTFEnhancedChecksPricing() {
       </Card>
 
       {/* Pricing Summary */}
-      <Card className="border-2 border-green-300 bg-green-500/10">
+      <Card className="border-2 border-green-300 bg-green-50">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-green-300">
+          <CardTitle className="flex items-center gap-2 text-green-900">
             <DollarSign className="w-6 h-6" />
             Pricing Summary
           </CardTitle>
         </CardHeader>
         <CardContent className="p-6">
           <div className="space-y-4">
-            <div className="flex justify-between items-center p-4 bg-red-500/15 rounded-lg border-2 border-red-300">
+            <div className="flex justify-between items-center p-4 bg-red-100 rounded-lg border-2 border-red-300">
               <div>
-                <p className="font-bold text-red-300">Mandatory Checks (Must Pay)</p>
-                <p className="text-sm text-red-300">Individual IDV + Director/Officer Search</p>
+                <p className="font-bold text-red-900">Mandatory Checks (Must Pay)</p>
+                <p className="text-sm text-red-700">Individual IDV + Director/Officer Search</p>
               </div>
-              <div className="text-2xl font-bold text-red-400">${costs.mandatoryCost.toFixed(2)}</div>
+              <div className="text-2xl font-bold text-red-600">${costs.mandatoryCost.toFixed(2)}</div>
             </div>
 
-            <div className="flex justify-between items-center p-4 bg-blue-500/15 rounded-lg border-2 border-blue-300">
+            <div className="flex justify-between items-center p-4 bg-blue-100 rounded-lg border-2 border-blue-300">
               <div>
-                <p className="font-bold text-blue-300">Optional Checks (Selected)</p>
-                <p className="text-sm text-blue-300">Pre-selected entity and property checks</p>
+                <p className="font-bold text-blue-900">Optional Checks (Selected)</p>
+                <p className="text-sm text-blue-700">Pre-selected entity and property checks</p>
               </div>
-              <div className="text-2xl font-bold text-blue-400">${costs.optionalCost.toFixed(2)}</div>
+              <div className="text-2xl font-bold text-blue-600">${costs.optionalCost.toFixed(2)}</div>
             </div>
 
             {costs.finalizedLaterCount > 0 && (
-              <div className="flex justify-between items-center p-4 bg-amber-500/15 rounded-lg border-2 border-amber-300">
+              <div className="flex justify-between items-center p-4 bg-amber-100 rounded-lg border-2 border-amber-300">
                 <div>
-                  <p className="font-bold text-amber-300">Entity/Property Checks (Finalized Later)</p>
-                  <p className="text-sm text-amber-300">
+                  <p className="font-bold text-amber-900">Entity/Property Checks (Finalized Later)</p>
+                  <p className="text-sm text-amber-700">
                     {costs.finalizedLaterCount} checks - Price confirmed after entity identification
                   </p>
                 </div>
-                <div className="text-2xl font-bold text-amber-400">TBD</div>
+                <div className="text-2xl font-bold text-amber-600">TBD</div>
               </div>
             )}
 
-            <div className="flex justify-between items-center p-4 bg-green-500/15 rounded-lg border-2 border-green-400">
+            <div className="flex justify-between items-center p-4 bg-green-100 rounded-lg border-2 border-green-400">
               <div>
-                <p className="font-bold text-green-300 text-xl">Total Confirmed Now</p>
-                <p className="text-sm text-green-300">Mandatory + Pre-selected optional checks</p>
+                <p className="font-bold text-green-900 text-xl">Total Confirmed Now</p>
+                <p className="text-sm text-green-700">Mandatory + Pre-selected optional checks</p>
               </div>
-              <div className="text-3xl font-bold text-green-400">
+              <div className="text-3xl font-bold text-green-600">
                 ${(costs.mandatoryCost + costs.optionalCost).toFixed(2)}
               </div>
             </div>
           </div>
 
-          <div className="mt-6 p-4 bg-white border-2 border-white/10 rounded-lg">
-            <h4 className="font-bold text-slate-100 mb-3">Pricing Notes:</h4>
-            <ul className="space-y-2 text-sm text-slate-300">
+          <div className="mt-6 p-4 bg-white border-2 border-gray-300 rounded-lg">
+            <h4 className="font-bold text-gray-900 mb-3">Pricing Notes:</h4>
+            <ul className="space-y-2 text-sm text-gray-700">
               <li className="flex gap-2">
-                <span className="text-red-400">•</span>
+                <span className="text-red-600">•</span>
                 <span><strong>Mandatory checks ($27.50/person)</strong> must be paid for each individual (client, beneficial owner, director, officer)</span>
               </li>
               <li className="flex gap-2">
-                <span className="text-amber-400">•</span>
+                <span className="text-amber-600">•</span>
                 <span><strong>Entity checks</strong> are priced per company or trust. Final amount determined once client's association with entity is confirmed</span>
               </li>
               <li className="flex gap-2">
-                <span className="text-blue-400">•</span>
+                <span className="text-blue-600">•</span>
                 <span><strong>Title searches</strong> are priced per property. Required when entity owns real property or provides it as security</span>
               </li>
               <li className="flex gap-2">
-                <span className="text-green-400">•</span>
+                <span className="text-green-600">•</span>
                 <span>All prices are in AUD and exclude GST</span>
               </li>
             </ul>

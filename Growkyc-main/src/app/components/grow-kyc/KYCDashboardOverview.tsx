@@ -419,8 +419,8 @@ assignedOfficer: 'Compliance Officer'
       case 'low': return 'text-[#3DD598]';
       case 'medium': return 'text-[#FFA300]';
       case 'high': return 'text-red-500';
-      case 'critical': return 'text-red-300';
-      default: return 'text-slate-400';
+      case 'critical': return 'text-red-700';
+      default: return 'text-gray-500';
     }
   };
 
@@ -428,9 +428,9 @@ assignedOfficer: 'Compliance Officer'
     switch (risk) {
       case 'low': return 'bg-[#3DD598]/10 text-[#3DD598] border-[#3DD598]';
       case 'medium': return 'bg-[#FFA300]/10 text-[#FFA300] border-[#FFA300]';
-      case 'high': return 'bg-red-500/15 text-red-400 border-red-600';
-      case 'critical': return 'bg-red-500/20 text-red-300 border-red-800';
-      default: return 'bg-[#0f172a] text-slate-300 border-gray-600';
+      case 'high': return 'bg-red-100 text-red-600 border-red-600';
+      case 'critical': return 'bg-red-200 text-red-800 border-red-800';
+      default: return 'bg-gray-100 text-gray-600 border-gray-600';
     }
   };
 
@@ -501,13 +501,13 @@ assignedOfficer: 'Compliance Officer'
   };
 
   return (
-    <div className="p-4 sm:p-6 bg-[#0f172a] min-h-screen">
+    <div className="p-4 sm:p-6 bg-gray-50 min-h-screen">
       {/* Header */}
       <div className="mb-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
           <div>
-            <h1 className="text-2xl md:text-3xl font-bold text-white">KYC Dashboard</h1>
-            <p className="text-slate-300 text-sm md:text-base mt-1">Complete overview of all clients and entities</p>
+            <h1 className="text-2xl md:text-3xl font-bold text-gray-900">KYC Dashboard</h1>
+            <p className="text-gray-600 text-sm md:text-base mt-1">Complete overview of all clients and entities</p>
           </div>
           <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
             <Button variant="outline" size="sm" onClick={handleExportDashboard} className="flex-1 sm:flex-none justify-center text-xs md:text-sm whitespace-nowrap">
@@ -531,8 +531,8 @@ assignedOfficer: 'Compliance Officer'
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-slate-300 mb-1">Total Clients</p>
-                  <p className="text-2xl font-bold text-white">{stats.total}</p>
+                  <p className="text-xs text-gray-600 mb-1">Total Clients</p>
+                  <p className="text-2xl font-bold text-gray-900">{stats.total}</p>
                 </div>
                 <Users className="w-8 h-8 text-[#13B5EA]" />
               </div>
@@ -543,7 +543,7 @@ assignedOfficer: 'Compliance Officer'
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-slate-300 mb-1">Verified</p>
+                  <p className="text-xs text-gray-600 mb-1">Verified</p>
                   <p className="text-2xl font-bold text-[#3DD598]">{stats.verified}</p>
                 </div>
                 <CheckCircle className="w-8 h-8 text-[#3DD598]" />
@@ -555,7 +555,7 @@ assignedOfficer: 'Compliance Officer'
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-slate-300 mb-1">Pending</p>
+                  <p className="text-xs text-gray-600 mb-1">Pending</p>
                   <p className="text-2xl font-bold text-[#FFA300]">{stats.pending}</p>
                 </div>
                 <Clock className="w-8 h-8 text-[#FFA300]" />
@@ -567,10 +567,10 @@ assignedOfficer: 'Compliance Officer'
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-slate-300 mb-1">Review Req.</p>
-                  <p className="text-2xl font-bold text-yellow-400">{stats.reviewRequired}</p>
+                  <p className="text-xs text-gray-600 mb-1">Review Req.</p>
+                  <p className="text-2xl font-bold text-yellow-600">{stats.reviewRequired}</p>
                 </div>
-                <AlertTriangle className="w-8 h-8 text-yellow-400" />
+                <AlertTriangle className="w-8 h-8 text-yellow-600" />
               </div>
             </CardContent>
           </Card>
@@ -579,10 +579,10 @@ assignedOfficer: 'Compliance Officer'
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-slate-300 mb-1">Expired</p>
-                  <p className="text-2xl font-bold text-red-400">{stats.expired}</p>
+                  <p className="text-xs text-gray-600 mb-1">Expired</p>
+                  <p className="text-2xl font-bold text-red-600">{stats.expired}</p>
                 </div>
-                <XCircle className="w-8 h-8 text-red-400" />
+                <XCircle className="w-8 h-8 text-red-600" />
               </div>
             </CardContent>
           </Card>
@@ -591,10 +591,10 @@ assignedOfficer: 'Compliance Officer'
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-slate-300 mb-1">Actions Due</p>
-                  <p className="text-2xl font-bold text-red-400">{stats.actionRequired}</p>
+                  <p className="text-xs text-gray-600 mb-1">Actions Due</p>
+                  <p className="text-2xl font-bold text-red-600">{stats.actionRequired}</p>
                 </div>
-                <AlertCircle className="w-8 h-8 text-red-400" />
+                <AlertCircle className="w-8 h-8 text-red-600" />
               </div>
             </CardContent>
           </Card>
@@ -603,7 +603,7 @@ assignedOfficer: 'Compliance Officer'
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-slate-300 mb-1">High Risk</p>
+                  <p className="text-xs text-gray-600 mb-1">High Risk</p>
                   <p className="text-2xl font-bold text-red-500">{stats.criticalRisk + stats.highRisk}</p>
                 </div>
                 <Shield className="w-8 h-8 text-red-500" />
@@ -615,7 +615,7 @@ assignedOfficer: 'Compliance Officer'
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-slate-300 mb-1">Avg. Score</p>
+                  <p className="text-xs text-gray-600 mb-1">Avg. Score</p>
                   <p className="text-2xl font-bold text-[#13B5EA]">{stats.averageScore}%</p>
                 </div>
                 <TrendingUp className="w-8 h-8 text-[#13B5EA]" />
@@ -630,13 +630,13 @@ assignedOfficer: 'Compliance Officer'
         <CardContent className="p-4">
           <div className="flex items-center gap-3">
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input
                 type="text"
                 placeholder="Search clients by name..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA] focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA] focus:border-transparent"
               />
             </div>
             <Button
@@ -653,11 +653,11 @@ assignedOfficer: 'Compliance Officer'
           {showFilters && (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 pt-4 border-t">
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-2">Status</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Status</label>
                 <select
                   value={filterStatus}
                   onChange={(e) => setFilterStatus(e.target.value)}
-                  className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA]"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA]"
                 >
                   <option value="all">All Statuses</option>
                   <option value="verified">Verified</option>
@@ -668,11 +668,11 @@ assignedOfficer: 'Compliance Officer'
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-2">Risk Level</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Risk Level</label>
                 <select
                   value={filterRisk}
                   onChange={(e) => setFilterRisk(e.target.value)}
-                  className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA]"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA]"
                 >
                   <option value="all">All Risk Levels</option>
                   <option value="low">Low Risk</option>
@@ -683,11 +683,11 @@ assignedOfficer: 'Compliance Officer'
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-2">Entity Type</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Entity Type</label>
                 <select
                   value={filterType}
                   onChange={(e) => setFilterType(e.target.value)}
-                  className="w-full px-3 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA]"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA]"
                 >
                   <option value="all">All Types</option>
                   <option value="individual">Individual</option>
@@ -706,7 +706,7 @@ assignedOfficer: 'Compliance Officer'
         <CardHeader>
           <CardTitle className="flex items-center justify-between">
             <span>All Clients ({filteredClients.length})</span>
-            <span className="text-sm font-normal text-slate-300">
+            <span className="text-sm font-normal text-gray-600">
               Click on any client to view detailed KYC dashboard
             </span>
           </CardTitle>
@@ -715,23 +715,23 @@ assignedOfficer: 'Compliance Officer'
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-white/10">
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-slate-300">Client / Entity</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-slate-300">Type</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-slate-300">Status</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-slate-300">Risk Level</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-slate-300">Health Score</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-slate-300">Documents</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-slate-300">Next Action</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-slate-300">Assigned Officer</th>
-                  <th className="text-right py-3 px-4 text-sm font-semibold text-slate-300">Actions</th>
+                <tr className="border-b border-gray-200">
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Client / Entity</th>
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Type</th>
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Status</th>
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Risk Level</th>
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Health Score</th>
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Documents</th>
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Next Action</th>
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Assigned Officer</th>
+                  <th className="text-right py-3 px-4 text-sm font-semibold text-gray-700">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {filteredClients.map((client) => (
                   <tr
                     key={client.id}
-                    className="border-b border-white/10 hover:bg-white/5 cursor-pointer transition-colors"
+                    className="border-b border-gray-100 hover:bg-gray-50 cursor-pointer transition-colors"
                     onClick={() => onViewClient(client.id)}
                   >
                     <td className="py-4 px-4">
@@ -740,13 +740,13 @@ assignedOfficer: 'Compliance Officer'
                           {getTypeIcon(client.type)}
                         </div>
                         <div>
-                          <div className="font-semibold text-white">{client.name}</div>
-                          <div className="text-xs text-slate-400">ID: {client.id}</div>
+                          <div className="font-semibold text-gray-900">{client.name}</div>
+                          <div className="text-xs text-gray-500">ID: {client.id}</div>
                         </div>
                       </div>
                     </td>
                     <td className="py-4 px-4">
-                      <span className="text-sm capitalize text-slate-300">{client.type}</span>
+                      <span className="text-sm capitalize text-gray-700">{client.type}</span>
                     </td>
                     <td className="py-4 px-4">
                       <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium ${getStatusColor(client.status)}`}>
@@ -762,14 +762,14 @@ assignedOfficer: 'Compliance Officer'
                         {client.riskLevel.toUpperCase()}
                       </span>
                       {client.flags > 0 && (
-                        <span className="ml-2 text-xs text-red-400">
+                        <span className="ml-2 text-xs text-red-600">
                           {client.flags} flag{client.flags > 1 ? 's' : ''}
                         </span>
                       )}
                     </td>
                     <td className="py-4 px-4">
                       <div className="flex items-center gap-2">
-                        <div className="w-16 bg-white/10 rounded-full h-2">
+                        <div className="w-16 bg-gray-200 rounded-full h-2">
                           <div
                             className={`h-2 rounded-full ${client.verificationScore >= 90 ? 'bg-[#3DD598]' :
                                 client.verificationScore >= 70 ? 'bg-[#FFA300]' :
@@ -778,34 +778,34 @@ assignedOfficer: 'Compliance Officer'
                             style={{ width: `${client.verificationScore}%` }}
                           />
                         </div>
-                        <span className="text-sm font-semibold text-white">{client.verificationScore}%</span>
+                        <span className="text-sm font-semibold text-gray-900">{client.verificationScore}%</span>
                       </div>
                     </td>
                     <td className="py-4 px-4">
                       <div className="flex items-center gap-1 text-sm">
-                        <FileText className="w-4 h-4 text-slate-400" />
-                        <span className="text-white font-medium">{client.documentsComplete}</span>
-                        <span className="text-slate-400">/</span>
-                        <span className="text-slate-300">{client.documentsTotal}</span>
+                        <FileText className="w-4 h-4 text-gray-400" />
+                        <span className="text-gray-900 font-medium">{client.documentsComplete}</span>
+                        <span className="text-gray-400">/</span>
+                        <span className="text-gray-600">{client.documentsTotal}</span>
                       </div>
                     </td>
                     <td className="py-4 px-4">
                       {client.actionRequired ? (
                         <div className="flex items-center gap-2">
-                          <AlertCircle className={`w-4 h-4 ${client.actionDays < 0 ? 'text-red-400' : client.actionDays <= 3 ? 'text-[#FFA300]' : 'text-yellow-400'}`} />
-                          <span className={`text-sm font-medium ${client.actionDays < 0 ? 'text-red-400' : client.actionDays <= 3 ? 'text-[#FFA300]' : 'text-yellow-400'}`}>
+                          <AlertCircle className={`w-4 h-4 ${client.actionDays < 0 ? 'text-red-600' : client.actionDays <= 3 ? 'text-[#FFA300]' : 'text-yellow-600'}`} />
+                          <span className={`text-sm font-medium ${client.actionDays < 0 ? 'text-red-600' : client.actionDays <= 3 ? 'text-[#FFA300]' : 'text-yellow-600'}`}>
                             {formatActionDays(client.actionDays)}
                           </span>
                         </div>
                       ) : (
-                        <div className="flex items-center gap-2 text-slate-400">
+                        <div className="flex items-center gap-2 text-gray-500">
                           <Calendar className="w-4 h-4" />
                           <span className="text-sm">{formatActionDays(client.actionDays)}</span>
                         </div>
                       )}
                     </td>
                     <td className="py-4 px-4">
-                      <span className="text-sm text-slate-300">{client.assignedOfficer}</span>
+                      <span className="text-sm text-gray-700">{client.assignedOfficer}</span>
                     </td>
                     <td className="py-4 px-4 text-right">
                       <Button
@@ -831,8 +831,8 @@ assignedOfficer: 'Compliance Officer'
           {filteredClients.length === 0 && (
             <div className="text-center py-12">
               <Search className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-              <p className="text-slate-400 text-lg">No clients found</p>
-              <p className="text-slate-400 text-sm mt-1">Try adjusting your search or filters</p>
+              <p className="text-gray-500 text-lg">No clients found</p>
+              <p className="text-gray-400 text-sm mt-1">Try adjusting your search or filters</p>
             </div>
           )}
         </CardContent>
@@ -845,19 +845,19 @@ assignedOfficer: 'Compliance Officer'
           onClick={() => { resetOnboardForm(); setShowOnboardModal(false); }}
         >
           <div
-            className="bg-[#1e293b] rounded-2xl shadow-2xl w-full max-w-2xl border border-white/10 flex flex-col max-h-[90vh] animate-in fade-in zoom-in-95 duration-200"
+            className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl border border-gray-100 flex flex-col max-h-[90vh] animate-in fade-in zoom-in-95 duration-200"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-6 border-b border-white/10">
+            <div className="flex items-center justify-between p-6 border-b border-gray-100">
               <div>
-                <h3 className="text-xl font-bold text-white">Onboard New Client</h3>
-                <p className="text-sm text-slate-400 mt-1">Initiate a new KYC verification flow</p>
+                <h3 className="text-xl font-bold text-gray-900">Onboard New Client</h3>
+                <p className="text-sm text-gray-500 mt-1">Initiate a new KYC verification flow</p>
               </div>
               <button
                 type="button"
                 onClick={() => { resetOnboardForm(); setShowOnboardModal(false); }}
-                className="text-slate-400 hover:text-slate-300 transition-colors p-2 rounded-lg hover:bg-white/5"
+                className="text-gray-400 hover:text-gray-600 transition-colors p-2 rounded-lg hover:bg-gray-50"
                 aria-label="Close"
               >
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -869,7 +869,7 @@ assignedOfficer: 'Compliance Officer'
             {/* Modal Form */}
             <form onSubmit={handleOnboardClient} className="flex-1 overflow-y-auto p-6 space-y-4">
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-1">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
                   Client/Entity Name *
                 </label>
                 <input 
@@ -878,19 +878,19 @@ assignedOfficer: 'Compliance Officer'
                   value={newClientName}
                   onChange={(e) => setNewClientName(e.target.value)}
                   placeholder="e.g. John Doe / Global Trade Pty Ltd"
-                  className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA] focus:border-transparent text-white"
+                  className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA] focus:border-transparent text-gray-900"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Entity Type *
                   </label>
                   <select
                     value={newClientType}
                     onChange={(e) => setNewClientType(e.target.value as any)}
-                    className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA] focus:border-transparent text-white bg-[#1e293b]"
+                    className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA] focus:border-transparent text-gray-900 bg-white"
                   >
                     <option value="Individual">Individual</option>
                     <option value="Company">Company</option>
@@ -900,7 +900,7 @@ assignedOfficer: 'Compliance Officer'
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Jurisdiction/Country *
                   </label>
                   <input 
@@ -909,14 +909,14 @@ assignedOfficer: 'Compliance Officer'
                     value={newClientCountry}
                     onChange={(e) => setNewClientCountry(e.target.value)}
                     placeholder="e.g. Australia"
-                    className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA] focus:border-transparent text-white"
+                    className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA] focus:border-transparent text-gray-900"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Industry *
                   </label>
                   <input 
@@ -925,18 +925,18 @@ assignedOfficer: 'Compliance Officer'
                     value={newClientIndustry}
                     onChange={(e) => setNewClientIndustry(e.target.value)}
                     placeholder="e.g. Financial Services"
-                    className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA] focus:border-transparent text-white"
+                    className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA] focus:border-transparent text-gray-900"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Initial Risk Assessment *
                   </label>
                   <select
                     value={newClientRisk}
                     onChange={(e) => setNewClientRisk(e.target.value as any)}
-                    className="w-full px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA] focus:border-transparent text-white bg-[#1e293b]"
+                    className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#13B5EA] focus:border-transparent text-gray-900 bg-white"
                   >
                     <option value="Low">Low Risk</option>
                     <option value="Medium">Medium Risk</option>
@@ -949,10 +949,10 @@ assignedOfficer: 'Compliance Officer'
               {/* Document Upload — up to 5 optional slots */}
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <label className="block text-sm font-medium text-slate-300">
-                    KYC Documents <span className="text-slate-400 font-normal">(optional — up to 5)</span>
+                  <label className="block text-sm font-medium text-gray-700">
+                    KYC Documents <span className="text-gray-500 font-normal">(optional — up to 5)</span>
                   </label>
-                  <Badge className={uploadedDocCount > 0 ? 'bg-green-500/15 text-green-300' : 'bg-[#0f172a] text-slate-300'}>
+                  <Badge className={uploadedDocCount > 0 ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'}>
                     {uploadedDocCount}/{ONBOARD_DOCUMENT_SLOTS.length} uploaded
                   </Badge>
                 </div>
@@ -961,17 +961,17 @@ assignedOfficer: 'Compliance Officer'
                     <div
                       key={slot.slotId}
                       className={`p-3 rounded-lg border-2 transition-colors ${
-                        slot.file ? 'border-green-300 bg-green-500/10' : 'border-white/10 bg-[#0f172a]'
+                        slot.file ? 'border-green-300 bg-green-50' : 'border-gray-200 bg-gray-50'
                       }`}
                     >
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm font-semibold text-white">
+                          <p className="text-sm font-semibold text-gray-900">
                             {idx + 1}. {slot.label}
                           </p>
-                          <p className="text-xs text-slate-400 mt-0.5">{slot.hint}</p>
+                          <p className="text-xs text-gray-500 mt-0.5">{slot.hint}</p>
                           {slot.file && (
-                            <p className="text-xs text-green-300 mt-1 flex items-center gap-1">
+                            <p className="text-xs text-green-700 mt-1 flex items-center gap-1">
                               <FileText className="w-3.5 h-3.5" />
                               {slot.file.name} ({(slot.file.size / 1024).toFixed(1)} KB)
                             </p>
@@ -1004,22 +1004,22 @@ assignedOfficer: 'Compliance Officer'
                     </div>
                   ))}
                 </div>
-                <p className="text-xs text-slate-400 mt-2">
+                <p className="text-xs text-gray-500 mt-2">
                   Documents are not required to submit, but the client will show {uploadedDocCount}/{ONBOARD_DOCUMENT_SLOTS.length} until files are added.
                 </p>
               </div>
 
               {/* Informational Message */}
-              <div className="p-4 bg-blue-500/10 rounded-xl border border-blue-500/20 flex items-start gap-3">
-                <AlertCircle className="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" />
-                <div className="text-xs text-blue-300 leading-relaxed">
+              <div className="p-4 bg-blue-50 rounded-xl border border-blue-100 flex items-start gap-3">
+                <AlertCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                <div className="text-xs text-blue-700 leading-relaxed">
                   Onboarding triggers sanctions, PEP, and adverse media screening. Uploaded documents are queued for compliance officer review.
                 </div>
               </div>
 
               {/* Modal Footer */}
-              <div className="flex items-center justify-between pt-4 border-t border-white/10">
-                <span className="text-xs text-slate-400">
+              <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                <span className="text-xs text-gray-500">
                   {uploadedDocCount} of {ONBOARD_DOCUMENT_SLOTS.length} documents attached
                 </span>
                 <div className="flex gap-3">

@@ -144,8 +144,8 @@ export function LeadsModule({ role }: any) {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-slate-100">Lead Management</h1>
-            <p className="text-slate-300 mt-1">Track and nurture leads through your sales funnel</p>
+            <h1 className="text-2xl font-bold text-gray-900">Lead Management</h1>
+            <p className="text-gray-600 mt-1">Track and nurture leads through your sales funnel</p>
           </div>
           <div className="flex items-center gap-3">
             <Button variant="outline" onClick={() => setViewMode('list')}>
@@ -165,46 +165,46 @@ export function LeadsModule({ role }: any) {
 
         {/* Stats */}
         <div className="grid grid-cols-4 gap-4">
-          <div className="bg-white border border-white/10 rounded-lg p-4">
+          <div className="bg-white border border-gray-300 rounded-lg p-4">
             <div className="flex items-center justify-between mb-2">
-              <p className="text-sm font-medium text-slate-300">Total Leads</p>
-              <Target className="w-4 h-4 text-blue-400" />
+              <p className="text-sm font-medium text-gray-600">Total Leads</p>
+              <Target className="w-4 h-4 text-blue-600" />
             </div>
-            <p className="text-2xl font-bold text-slate-100">{mockLeads.length}</p>
-            <p className="text-xs text-green-400 mt-1">+12% this week</p>
+            <p className="text-2xl font-bold text-gray-900">{mockLeads.length}</p>
+            <p className="text-xs text-green-600 mt-1">+12% this week</p>
           </div>
 
-          <div className="bg-white border border-white/10 rounded-lg p-4">
+          <div className="bg-white border border-gray-300 rounded-lg p-4">
             <div className="flex items-center justify-between mb-2">
-              <p className="text-sm font-medium text-slate-300">Hot Leads</p>
-              <TrendingUp className="w-4 h-4 text-red-400" />
+              <p className="text-sm font-medium text-gray-600">Hot Leads</p>
+              <TrendingUp className="w-4 h-4 text-red-600" />
             </div>
-            <p className="text-2xl font-bold text-slate-100">
+            <p className="text-2xl font-bold text-gray-900">
               {mockLeads.filter(l => l.temperature === 'hot').length}
             </p>
-            <p className="text-xs text-slate-400 mt-1">Needs immediate action</p>
+            <p className="text-xs text-gray-500 mt-1">Needs immediate action</p>
           </div>
 
-          <div className="bg-white border border-white/10 rounded-lg p-4">
+          <div className="bg-white border border-gray-300 rounded-lg p-4">
             <div className="flex items-center justify-between mb-2">
-              <p className="text-sm font-medium text-slate-300">Avg. Lead Score</p>
-              <Award className="w-4 h-4 text-purple-400" />
+              <p className="text-sm font-medium text-gray-600">Avg. Lead Score</p>
+              <Award className="w-4 h-4 text-purple-600" />
             </div>
-            <p className="text-2xl font-bold text-slate-100">
+            <p className="text-2xl font-bold text-gray-900">
               {Math.round(mockLeads.reduce((sum, l) => sum + l.score, 0) / mockLeads.length)}
             </p>
-            <p className="text-xs text-slate-400 mt-1">Quality metric</p>
+            <p className="text-xs text-gray-500 mt-1">Quality metric</p>
           </div>
 
-          <div className="bg-white border border-white/10 rounded-lg p-4">
+          <div className="bg-white border border-gray-300 rounded-lg p-4">
             <div className="flex items-center justify-between mb-2">
-              <p className="text-sm font-medium text-slate-300">Pipeline Value</p>
-              <BarChart3 className="w-4 h-4 text-green-400" />
+              <p className="text-sm font-medium text-gray-600">Pipeline Value</p>
+              <BarChart3 className="w-4 h-4 text-green-600" />
             </div>
-            <p className="text-2xl font-bold text-slate-100">
+            <p className="text-2xl font-bold text-gray-900">
               ${(mockLeads.reduce((sum, l) => sum + l.estimatedValue, 0) / 1000).toFixed(0)}K
             </p>
-            <p className="text-xs text-slate-400 mt-1">Total estimated</p>
+            <p className="text-xs text-gray-500 mt-1">Total estimated</p>
           </div>
         </div>
 
@@ -215,13 +215,13 @@ export function LeadsModule({ role }: any) {
             const StageIcon = stage.icon;
             
             return (
-              <div key={stage.id} className="bg-white/5 rounded-lg p-4">
+              <div key={stage.id} className="bg-gray-100 rounded-lg p-4">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2">
                     <StageIcon className={`w-4 h-4 text-${stage.color}-600`} />
-                    <h3 className="font-semibold text-slate-100">{stage.label}</h3>
+                    <h3 className="font-semibold text-gray-900">{stage.label}</h3>
                   </div>
-                  <span className="px-2 py-1 bg-white rounded-full text-xs font-semibold text-slate-300">
+                  <span className="px-2 py-1 bg-white rounded-full text-xs font-semibold text-gray-700">
                     {stageLeads.length}
                   </span>
                 </div>
@@ -234,40 +234,40 @@ export function LeadsModule({ role }: any) {
                         setSelectedLead(lead);
                         setShowDetailModal(true);
                       }}
-                      className="bg-white border border-white/10 rounded-lg p-4 cursor-pointer hover:shadow-md transition-shadow"
+                      className="bg-white border border-gray-300 rounded-lg p-4 cursor-pointer hover:shadow-md transition-shadow"
                     >
                       {/* Temperature Indicator */}
                       <div className="flex items-center justify-between mb-3">
                         <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                          lead.temperature === 'hot' ? 'bg-red-500/15 text-red-300' :
-                          lead.temperature === 'warm' ? 'bg-yellow-500/15 text-yellow-300' :
-                          'bg-blue-500/15 text-blue-300'
+                          lead.temperature === 'hot' ? 'bg-red-100 text-red-800' :
+                          lead.temperature === 'warm' ? 'bg-yellow-100 text-yellow-800' :
+                          'bg-blue-100 text-blue-800'
                         }`}>
                           {lead.temperature.toUpperCase()}
                         </span>
                         <div className="flex items-center gap-1">
                           <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-                          <span className="text-xs font-semibold text-slate-300">{lead.score}</span>
+                          <span className="text-xs font-semibold text-gray-700">{lead.score}</span>
                         </div>
                       </div>
 
                       {/* Lead Info */}
                       <div className="mb-3">
-                        <p className="font-semibold text-slate-100 mb-1">{lead.name}</p>
-                        <p className="text-xs text-slate-300">{lead.position}</p>
-                        <p className="text-xs text-slate-400">{lead.company}</p>
+                        <p className="font-semibold text-gray-900 mb-1">{lead.name}</p>
+                        <p className="text-xs text-gray-600">{lead.position}</p>
+                        <p className="text-xs text-gray-500">{lead.company}</p>
                       </div>
 
                       {/* Value */}
                       <div className="flex items-center justify-between mb-3">
-                        <span className="text-xs text-slate-400">Est. Value</span>
-                        <span className="text-sm font-bold text-slate-100">
+                        <span className="text-xs text-gray-500">Est. Value</span>
+                        <span className="text-sm font-bold text-gray-900">
                           ${(lead.estimatedValue / 1000).toFixed(0)}K
                         </span>
                       </div>
 
                       {/* Source & Activity */}
-                      <div className="flex items-center justify-between text-xs text-slate-400 border-t border-white/10 pt-3">
+                      <div className="flex items-center justify-between text-xs text-gray-500 border-t border-gray-200 pt-3">
                         <span>{lead.source}</span>
                         <span>{lead.lastActivity}</span>
                       </div>
@@ -275,7 +275,7 @@ export function LeadsModule({ role }: any) {
                       {/* Tags */}
                       <div className="flex flex-wrap gap-1 mt-2">
                         {lead.tags.slice(0, 2).map((tag, idx) => (
-                          <span key={idx} className="px-2 py-0.5 bg-indigo-500/10 text-indigo-300 rounded text-xs">
+                          <span key={idx} className="px-2 py-0.5 bg-indigo-50 text-indigo-700 rounded text-xs">
                             {tag}
                           </span>
                         ))}
@@ -327,8 +327,8 @@ export function LeadsModule({ role }: any) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-100">Lead Management</h1>
-          <p className="text-slate-300 mt-1">Track and nurture leads through your sales funnel</p>
+          <h1 className="text-2xl font-bold text-gray-900">Lead Management</h1>
+          <p className="text-gray-600 mt-1">Track and nurture leads through your sales funnel</p>
         </div>
         <div className="flex items-center gap-3">
           <Button variant="outline" onClick={() => setViewMode('board')}>
@@ -353,7 +353,7 @@ export function LeadsModule({ role }: any) {
           <input
             type="search"
             placeholder="Search leads..."
-            className="pl-10 pr-4 py-2 w-full border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="pl-10 pr-4 py-2 w-full border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
         </div>
         <Button variant="outline">
@@ -363,46 +363,46 @@ export function LeadsModule({ role }: any) {
       </div>
 
       {/* Leads Table */}
-      <div className="bg-white border border-white/10 rounded-lg overflow-hidden">
+      <div className="bg-white border border-gray-300 rounded-lg overflow-hidden">
         <table className="w-full">
-          <thead className="bg-white/5 border-b border-white/10">
+          <thead className="bg-gray-50 border-b border-gray-300">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Lead</th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Company</th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Status</th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Score</th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Source</th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Value</th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Assigned To</th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Lead</th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Company</th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Status</th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Score</th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Source</th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Value</th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Assigned To</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-white/10">
+          <tbody className="divide-y divide-gray-200">
             {mockLeads.map((lead) => (
-              <tr key={lead.id} className="hover:bg-white/5 cursor-pointer">
+              <tr key={lead.id} className="hover:bg-gray-50 cursor-pointer">
                 <td className="px-6 py-4">
                   <div>
-                    <p className="font-medium text-slate-100">{lead.name}</p>
-                    <p className="text-sm text-slate-400">{lead.email}</p>
+                    <p className="font-medium text-gray-900">{lead.name}</p>
+                    <p className="text-sm text-gray-500">{lead.email}</p>
                   </div>
                 </td>
                 <td className="px-6 py-4">
                   <div>
-                    <p className="text-sm font-medium text-slate-100">{lead.company}</p>
-                    <p className="text-xs text-slate-400">{lead.position}</p>
+                    <p className="text-sm font-medium text-gray-900">{lead.company}</p>
+                    <p className="text-xs text-gray-500">{lead.position}</p>
                   </div>
                 </td>
                 <td className="px-6 py-4">
                   <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                    lead.temperature === 'hot' ? 'bg-red-500/15 text-red-300' :
-                    lead.temperature === 'warm' ? 'bg-yellow-500/15 text-yellow-300' :
-                    'bg-blue-500/15 text-blue-300'
+                    lead.temperature === 'hot' ? 'bg-red-100 text-red-800' :
+                    lead.temperature === 'warm' ? 'bg-yellow-100 text-yellow-800' :
+                    'bg-blue-100 text-blue-800'
                   }`}>
                     {lead.temperature}
                   </span>
                 </td>
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-2">
-                    <div className="w-20 h-2 bg-white/10 rounded-full">
+                    <div className="w-20 h-2 bg-gray-200 rounded-full">
                       <div
                         className={`h-2 rounded-full ${
                           lead.score >= 80 ? 'bg-green-600' :
@@ -411,17 +411,17 @@ export function LeadsModule({ role }: any) {
                         style={{ width: `${lead.score}%` }}
                       />
                     </div>
-                    <span className="text-sm font-semibold text-slate-100">{lead.score}</span>
+                    <span className="text-sm font-semibold text-gray-900">{lead.score}</span>
                   </div>
                 </td>
                 <td className="px-6 py-4">
-                  <p className="text-sm text-slate-100">{lead.source}</p>
+                  <p className="text-sm text-gray-900">{lead.source}</p>
                 </td>
                 <td className="px-6 py-4">
-                  <p className="text-sm font-semibold text-slate-100">${lead.estimatedValue.toLocaleString()}</p>
+                  <p className="text-sm font-semibold text-gray-900">${lead.estimatedValue.toLocaleString()}</p>
                 </td>
                 <td className="px-6 py-4">
-                  <p className="text-sm text-slate-100">{lead.assignedTo}</p>
+                  <p className="text-sm text-gray-900">{lead.assignedTo}</p>
                 </td>
               </tr>
             ))}
@@ -440,25 +440,25 @@ function LeadDetailModal({ lead, onClose }: any) {
     <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
       <div className="bg-white rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="sticky top-0 bg-white border-b border-white/10 p-6 flex items-center justify-between">
+        <div className="sticky top-0 bg-white border-b border-gray-300 p-6 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full bg-indigo-500/15 flex items-center justify-center">
-              <span className="text-lg font-bold text-indigo-400">
+            <div className="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center">
+              <span className="text-lg font-bold text-indigo-600">
                 {lead.name.split(' ').map((n: string) => n[0]).join('')}
               </span>
             </div>
             <div>
-              <h2 className="text-xl font-bold text-slate-100">{lead.name}</h2>
-              <p className="text-sm text-slate-300">{lead.position} at {lead.company}</p>
+              <h2 className="text-xl font-bold text-gray-900">{lead.name}</h2>
+              <p className="text-sm text-gray-600">{lead.position} at {lead.company}</p>
             </div>
           </div>
-          <button onClick={onClose} className="text-gray-400 hover:text-slate-300">
+          <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
             <X className="w-6 h-6" />
           </button>
         </div>
 
         {/* Tabs */}
-        <div className="border-b border-white/10 flex">
+        <div className="border-b border-gray-300 flex">
           {[
             { id: 'info', label: 'Information' },
             { id: 'activity', label: 'Activity' },
@@ -469,8 +469,8 @@ function LeadDetailModal({ lead, onClose }: any) {
               onClick={() => setActiveTab(tab.id as any)}
               className={`px-6 py-4 border-b-2 transition-colors ${
                 activeTab === tab.id
-                  ? 'border-indigo-600 text-indigo-400 font-medium'
-                  : 'border-transparent text-slate-300 hover:text-slate-100'
+                  ? 'border-indigo-600 text-indigo-600 font-medium'
+                  : 'border-transparent text-gray-600 hover:text-gray-900'
               }`}
             >
               {tab.label}
@@ -484,34 +484,34 @@ function LeadDetailModal({ lead, onClose }: any) {
             <div className="space-y-6">
               {/* Contact Info */}
               <div>
-                <h3 className="font-semibold text-slate-100 mb-4">Contact Details</h3>
+                <h3 className="font-semibold text-gray-900 mb-4">Contact Details</h3>
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="flex items-center gap-3 p-3 bg-white/5 rounded-lg">
-                    <Mail className="w-4 h-4 text-slate-300" />
+                  <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                    <Mail className="w-4 h-4 text-gray-600" />
                     <div>
-                      <p className="text-xs text-slate-400">Email</p>
-                      <p className="text-sm font-medium text-slate-100">{lead.email}</p>
+                      <p className="text-xs text-gray-500">Email</p>
+                      <p className="text-sm font-medium text-gray-900">{lead.email}</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3 p-3 bg-white/5 rounded-lg">
-                    <Phone className="w-4 h-4 text-slate-300" />
+                  <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                    <Phone className="w-4 h-4 text-gray-600" />
                     <div>
-                      <p className="text-xs text-slate-400">Phone</p>
-                      <p className="text-sm font-medium text-slate-100">{lead.phone}</p>
+                      <p className="text-xs text-gray-500">Phone</p>
+                      <p className="text-sm font-medium text-gray-900">{lead.phone}</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3 p-3 bg-white/5 rounded-lg">
-                    <Building2 className="w-4 h-4 text-slate-300" />
+                  <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                    <Building2 className="w-4 h-4 text-gray-600" />
                     <div>
-                      <p className="text-xs text-slate-400">Company</p>
-                      <p className="text-sm font-medium text-slate-100">{lead.company}</p>
+                      <p className="text-xs text-gray-500">Company</p>
+                      <p className="text-sm font-medium text-gray-900">{lead.company}</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3 p-3 bg-white/5 rounded-lg">
-                    <Globe className="w-4 h-4 text-slate-300" />
+                  <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                    <Globe className="w-4 h-4 text-gray-600" />
                     <div>
-                      <p className="text-xs text-slate-400">Source</p>
-                      <p className="text-sm font-medium text-slate-100">{lead.source}</p>
+                      <p className="text-xs text-gray-500">Source</p>
+                      <p className="text-sm font-medium text-gray-900">{lead.source}</p>
                     </div>
                   </div>
                 </div>
@@ -519,7 +519,7 @@ function LeadDetailModal({ lead, onClose }: any) {
 
               {/* Quick Actions */}
               <div>
-                <h3 className="font-semibold text-slate-100 mb-4">Quick Actions</h3>
+                <h3 className="font-semibold text-gray-900 mb-4">Quick Actions</h3>
                 <div className="grid grid-cols-3 gap-3">
                   <Button variant="outline">
                     <Mail className="w-4 h-4 mr-2" />
@@ -557,21 +557,21 @@ function LeadDetailModal({ lead, onClose }: any) {
                 { type: 'email', title: 'Welcome email sent', content: 'Automated sequence started', time: '6 hours ago' },
                 { type: 'score', title: 'Lead score updated', content: `Score increased to ${lead.score}`, time: '1 day ago' }
               ].map((activity, idx) => (
-                <div key={idx} className="flex items-start gap-4 p-4 border border-white/10 rounded-lg">
+                <div key={idx} className="flex items-start gap-4 p-4 border border-gray-200 rounded-lg">
                   <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                    activity.type === 'form' ? 'bg-blue-500/15' :
-                    activity.type === 'email' ? 'bg-purple-500/15' : 'bg-green-500/15'
+                    activity.type === 'form' ? 'bg-blue-100' :
+                    activity.type === 'email' ? 'bg-purple-100' : 'bg-green-100'
                   }`}>
-                    {activity.type === 'form' && <Target className="w-5 h-5 text-blue-400" />}
-                    {activity.type === 'email' && <Mail className="w-5 h-5 text-purple-400" />}
-                    {activity.type === 'score' && <Star className="w-5 h-5 text-green-400" />}
+                    {activity.type === 'form' && <Target className="w-5 h-5 text-blue-600" />}
+                    {activity.type === 'email' && <Mail className="w-5 h-5 text-purple-600" />}
+                    {activity.type === 'score' && <Star className="w-5 h-5 text-green-600" />}
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-1">
-                      <p className="font-medium text-slate-100">{activity.title}</p>
-                      <p className="text-xs text-slate-400">{activity.time}</p>
+                      <p className="font-medium text-gray-900">{activity.title}</p>
+                      <p className="text-xs text-gray-500">{activity.time}</p>
                     </div>
-                    <p className="text-sm text-slate-300">{activity.content}</p>
+                    <p className="text-sm text-gray-600">{activity.content}</p>
                   </div>
                 </div>
               ))}
@@ -582,20 +582,20 @@ function LeadDetailModal({ lead, onClose }: any) {
             <div className="space-y-6">
               <div className="flex items-center justify-between p-6 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg">
                 <div>
-                  <p className="text-sm text-slate-300 mb-1">Overall Lead Score</p>
-                  <p className="text-4xl font-bold text-indigo-400">{lead.score}</p>
+                  <p className="text-sm text-gray-600 mb-1">Overall Lead Score</p>
+                  <p className="text-4xl font-bold text-indigo-600">{lead.score}</p>
                 </div>
                 <div className={`px-4 py-2 rounded-lg text-lg font-bold ${
-                  lead.temperature === 'hot' ? 'bg-red-500/15 text-red-300' :
-                  lead.temperature === 'warm' ? 'bg-yellow-500/15 text-yellow-300' :
-                  'bg-blue-500/15 text-blue-300'
+                  lead.temperature === 'hot' ? 'bg-red-100 text-red-800' :
+                  lead.temperature === 'warm' ? 'bg-yellow-100 text-yellow-800' :
+                  'bg-blue-100 text-blue-800'
                 }`}>
                   {lead.temperature.toUpperCase()}
                 </div>
               </div>
 
               <div>
-                <h3 className="font-semibold text-slate-100 mb-4">Scoring Factors</h3>
+                <h3 className="font-semibold text-gray-900 mb-4">Scoring Factors</h3>
                 <div className="space-y-3">
                   {[
                     { factor: 'Company Size', score: 25, max: 30 },
@@ -605,15 +605,15 @@ function LeadDetailModal({ lead, onClose }: any) {
                     { factor: 'Timeline', score: 7, max: 10 }
                   ].map((item, idx) => (
                     <div key={idx} className="flex items-center justify-between">
-                      <span className="text-sm text-slate-300">{item.factor}</span>
+                      <span className="text-sm text-gray-700">{item.factor}</span>
                       <div className="flex items-center gap-3">
-                        <div className="w-32 h-2 bg-white/10 rounded-full">
+                        <div className="w-32 h-2 bg-gray-200 rounded-full">
                           <div
                             className="h-2 bg-indigo-600 rounded-full"
                             style={{ width: `${(item.score / item.max) * 100}%` }}
                           />
                         </div>
-                        <span className="text-sm font-semibold text-slate-100 w-12 text-right">
+                        <span className="text-sm font-semibold text-gray-900 w-12 text-right">
                           {item.score}/{item.max}
                         </span>
                       </div>
@@ -626,7 +626,7 @@ function LeadDetailModal({ lead, onClose }: any) {
         </div>
 
         {/* Footer Actions */}
-        <div className="sticky bottom-0 bg-white/5 border-t border-white/10 p-6 flex items-center justify-between">
+        <div className="sticky bottom-0 bg-gray-50 border-t border-gray-300 p-6 flex items-center justify-between">
           <Button variant="outline" onClick={onClose}>
             Close
           </Button>
@@ -685,9 +685,9 @@ function NewLeadModal({ onClose, onAddLead }: any) {
     <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
       <div className="bg-white rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="sticky top-0 bg-white border-b border-white/10 p-6 flex items-center justify-between">
-          <h2 className="text-xl font-bold text-slate-100">Add New Lead</h2>
-          <button onClick={onClose} className="text-gray-400 hover:text-slate-300">
+        <div className="sticky top-0 bg-white border-b border-gray-300 p-6 flex items-center justify-between">
+          <h2 className="text-xl font-bold text-gray-900">Add New Lead</h2>
+          <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
             <X className="w-6 h-6" />
           </button>
         </div>
@@ -696,65 +696,65 @@ function NewLeadModal({ onClose, onAddLead }: any) {
         <form onSubmit={handleSubmit} className="p-6">
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-slate-300">Name</label>
+              <label className="block text-sm font-medium text-gray-700">Name</label>
               <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="mt-1 block w-full border border-white/10 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="mt-1 block w-full border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-300">Email</label>
+              <label className="block text-sm font-medium text-gray-700">Email</label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="mt-1 block w-full border border-white/10 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="mt-1 block w-full border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-300">Phone</label>
+              <label className="block text-sm font-medium text-gray-700">Phone</label>
               <input
                 type="text"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                className="mt-1 block w-full border border-white/10 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="mt-1 block w-full border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-300">Company</label>
+              <label className="block text-sm font-medium text-gray-700">Company</label>
               <input
                 type="text"
                 value={company}
                 onChange={(e) => setCompany(e.target.value)}
-                className="mt-1 block w-full border border-white/10 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="mt-1 block w-full border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-300">Position</label>
+              <label className="block text-sm font-medium text-gray-700">Position</label>
               <input
                 type="text"
                 value={position}
                 onChange={(e) => setPosition(e.target.value)}
-                className="mt-1 block w-full border border-white/10 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="mt-1 block w-full border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-300">Source</label>
+              <label className="block text-sm font-medium text-gray-700">Source</label>
               <input
                 type="text"
                 value={source}
                 onChange={(e) => setSource(e.target.value)}
-                className="mt-1 block w-full border border-white/10 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="mt-1 block w-full border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-300">Status</label>
+              <label className="block text-sm font-medium text-gray-700">Status</label>
               <select
                 value={status}
                 onChange={(e) => setStatus(e.target.value)}
-                className="mt-1 block w-full border border-white/10 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="mt-1 block w-full border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               >
                 <option value="new">New</option>
                 <option value="contacted">Contacted</option>
@@ -763,20 +763,20 @@ function NewLeadModal({ onClose, onAddLead }: any) {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-300">Score</label>
+              <label className="block text-sm font-medium text-gray-700">Score</label>
               <input
                 type="number"
                 value={score}
                 onChange={(e) => setScore(Number(e.target.value))}
-                className="mt-1 block w-full border border-white/10 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="mt-1 block w-full border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-300">Temperature</label>
+              <label className="block text-sm font-medium text-gray-700">Temperature</label>
               <select
                 value={temperature}
                 onChange={(e) => setTemperature(e.target.value)}
-                className="mt-1 block w-full border border-white/10 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="mt-1 block w-full border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               >
                 <option value="hot">Hot</option>
                 <option value="warm">Warm</option>
@@ -784,21 +784,21 @@ function NewLeadModal({ onClose, onAddLead }: any) {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-300">Estimated Value</label>
+              <label className="block text-sm font-medium text-gray-700">Estimated Value</label>
               <input
                 type="number"
                 value={estimatedValue}
                 onChange={(e) => setEstimatedValue(Number(e.target.value))}
-                className="mt-1 block w-full border border-white/10 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="mt-1 block w-full border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-300">Assigned To</label>
+              <label className="block text-sm font-medium text-gray-700">Assigned To</label>
               <input
                 type="text"
                 value={assignedTo}
                 onChange={(e) => setAssignedTo(e.target.value)}
-                className="mt-1 block w-full border border-white/10 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="mt-1 block w-full border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
           </div>

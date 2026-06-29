@@ -85,7 +85,7 @@ export function AMLHitsDetail({ clientId, clientName = 'Client' }: AMLHitsDetail
         <Card className="border-2 border-red-400 shadow-lg">
           <CardHeader className="bg-gradient-to-r from-red-50 to-orange-50 border-b">
             <CardTitle className="flex items-center gap-2">
-              <Shield className="w-6 h-6 text-red-400" />
+              <Shield className="w-6 h-6 text-red-600" />
               Sanctions Screening Results ({hits.sanctions.length})
             </CardTitle>
           </CardHeader>
@@ -93,24 +93,24 @@ export function AMLHitsDetail({ clientId, clientName = 'Client' }: AMLHitsDetail
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="bg-red-500/10/50 border-b-2 border-red-500/30">
-                    <th className="text-left p-4 font-bold text-red-300">List Name</th>
-                    <th className="text-left p-4 font-bold text-red-300">Match %</th>
-                    <th className="text-left p-4 font-bold text-red-300">Entity Name</th>
-                    <th className="text-left p-4 font-bold text-red-300">Match Date</th>
-                    <th className="text-center p-4 font-bold text-red-300">Actions</th>
+                  <tr className="bg-red-50/50 border-b-2 border-red-200">
+                    <th className="text-left p-4 font-bold text-red-900">List Name</th>
+                    <th className="text-left p-4 font-bold text-red-900">Match %</th>
+                    <th className="text-left p-4 font-bold text-red-900">Entity Name</th>
+                    <th className="text-left p-4 font-bold text-red-900">Match Date</th>
+                    <th className="text-center p-4 font-bold text-red-900">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   {hits.sanctions.map((sanction) => (
                     <React.Fragment key={sanction.id}>
-                      <tr className="border-b border-red-500/20 hover:bg-red-500/10/30 transition-colors">
+                      <tr className="border-b border-red-100 hover:bg-red-50/30 transition-colors">
                         <td className="p-4">
-                          <span className="font-semibold text-slate-100">{sanction.listName}</span>
+                          <span className="font-semibold text-gray-900">{sanction.listName}</span>
                         </td>
                         <td className="p-4">
                           <div className="flex items-center gap-2">
-                            <div className="w-16 bg-white/10 rounded-full h-2">
+                            <div className="w-16 bg-gray-200 rounded-full h-2">
                               <div 
                                 className={`h-2 rounded-full ${
                                   sanction.matchPercentage >= 95 ? 'bg-red-600' : 
@@ -121,24 +121,24 @@ export function AMLHitsDetail({ clientId, clientName = 'Client' }: AMLHitsDetail
                               />
                             </div>
                             <span className={`font-bold ${
-                              sanction.matchPercentage >= 95 ? 'text-red-300' : 'text-slate-300'
+                              sanction.matchPercentage >= 95 ? 'text-red-700' : 'text-gray-700'
                             }`}>
                               {sanction.matchPercentage}%
                             </span>
                           </div>
                         </td>
                         <td className="p-4">
-                          <span className="font-bold text-red-300">{sanction.matchedName}</span>
+                          <span className="font-bold text-red-900">{sanction.matchedName}</span>
                         </td>
                         <td className="p-4">
-                          <span className="text-slate-300">{sanction.dateAdded}</span>
+                          <span className="text-gray-600">{sanction.dateAdded}</span>
                         </td>
                         <td className="p-4 text-center">
                           <div className="flex items-center justify-center gap-2">
                             <Button 
                               size="sm" 
                               variant="ghost" 
-                              className="text-red-400 hover:text-red-300 hover:bg-red-500/15"
+                              className="text-red-600 hover:text-red-800 hover:bg-red-100"
                               onClick={() => toggleSanction(sanction.id)}
                             >
                               {expandedSanctions.has(sanction.id) ? 'Hide' : 'View'}
@@ -155,26 +155,26 @@ export function AMLHitsDetail({ clientId, clientName = 'Client' }: AMLHitsDetail
                       </tr>
                       {expandedSanctions.has(sanction.id) && (
                         <tr>
-                          <td colSpan={5} className="p-6 bg-red-500/10/20 border-b border-red-500/30">
+                          <td colSpan={5} className="p-6 bg-red-50/20 border-b border-red-200">
                             <div className="grid grid-cols-2 gap-8">
                               <div>
-                                <h5 className="font-bold text-red-300 mb-2 flex items-center gap-2">
+                                <h5 className="font-bold text-red-900 mb-2 flex items-center gap-2">
                                   <FileText className="w-4 h-4" />
                                   Designation Reason
                                 </h5>
-                                <p className="text-slate-300 text-sm leading-relaxed">{sanction.reason}</p>
+                                <p className="text-gray-700 text-sm leading-relaxed">{sanction.reason}</p>
                               </div>
                               <div>
-                                <h5 className="font-bold text-red-300 mb-2 flex items-center gap-2">
+                                <h5 className="font-bold text-red-900 mb-2 flex items-center gap-2">
                                   <Globe className="w-4 h-4" />
                                   Source Information
                                 </h5>
-                                <p className="text-slate-300 text-sm mb-4">{sanction.source}</p>
+                                <p className="text-gray-700 text-sm mb-4">{sanction.source}</p>
                                 <a
                                   href={sanction.sourceUrl}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="inline-flex items-center gap-2 text-red-400 hover:text-red-300 font-semibold text-sm"
+                                  className="inline-flex items-center gap-2 text-red-600 hover:text-red-800 font-semibold text-sm"
                                 >
                                   <ExternalLink className="w-4 h-4" />
                                   View Official Sanctions List Registry
@@ -198,7 +198,7 @@ export function AMLHitsDetail({ clientId, clientName = 'Client' }: AMLHitsDetail
         <Card className="border-2 border-orange-400 shadow-lg">
           <CardHeader className="bg-gradient-to-r from-orange-50 to-yellow-50 border-b">
             <CardTitle className="flex items-center gap-2">
-              <AlertTriangle className="w-6 h-6 text-orange-400" />
+              <AlertTriangle className="w-6 h-6 text-orange-600" />
               Politically Exposed Person (PEP) Matches ({hits.pep.length})
             </CardTitle>
           </CardHeader>
@@ -210,7 +210,7 @@ export function AMLHitsDetail({ clientId, clientName = 'Client' }: AMLHitsDetail
                   className="border-2 border-orange-300 rounded-lg overflow-hidden bg-white"
                 >
                   <div
-                    className="p-4 bg-orange-500/10 cursor-pointer hover:bg-orange-500/15 transition-colors"
+                    className="p-4 bg-orange-50 cursor-pointer hover:bg-orange-100 transition-colors"
                     onClick={() => togglePEP(pep.id)}
                   >
                     <div className="flex items-start justify-between">
@@ -226,17 +226,17 @@ export function AMLHitsDetail({ clientId, clientName = 'Client' }: AMLHitsDetail
                             {pep.country}
                           </Badge>
                         </div>
-                        <h4 className="font-bold text-lg text-orange-300 mb-1">{pep.name}</h4>
-                        <p className="text-sm text-slate-300 font-semibold">{pep.position}</p>
-                        <p className="text-sm text-slate-300">Political Role: {pep.organization}</p>
-                        <p className="text-xs text-slate-400 mt-1">Identified: {pep.dateIdentified}</p>
+                        <h4 className="font-bold text-lg text-orange-900 mb-1">{pep.name}</h4>
+                        <p className="text-sm text-gray-700 font-semibold">{pep.position}</p>
+                        <p className="text-sm text-gray-600">Political Role: {pep.organization}</p>
+                        <p className="text-xs text-gray-500 mt-1">Identified: {pep.dateIdentified}</p>
                       </div>
                       <div className="flex flex-col items-end gap-3">
                         <div className="flex gap-2">
                           <Button 
                             size="sm" 
                             variant="outline" 
-                            className="bg-white text-green-400 border-green-600 hover:bg-green-500/10"
+                            className="bg-white text-green-600 border-green-600 hover:bg-green-50"
                             onClick={(e) => e.stopPropagation()}
                           >
                             <CheckCircle className="w-4 h-4 mr-1" />
@@ -251,7 +251,7 @@ export function AMLHitsDetail({ clientId, clientName = 'Client' }: AMLHitsDetail
                             Escalate
                           </Button>
                         </div>
-                        <button className="text-orange-400 hover:text-orange-300 flex items-center text-sm font-semibold">
+                        <button className="text-orange-600 hover:text-orange-800 flex items-center text-sm font-semibold">
                           {expandedPEP.has(pep.id) ? (
                             <>Hide Details <ChevronUp className="w-5 h-5 ml-1" /></>
                           ) : (
@@ -263,32 +263,32 @@ export function AMLHitsDetail({ clientId, clientName = 'Client' }: AMLHitsDetail
                   </div>
 
                   {expandedPEP.has(pep.id) && (
-                    <div className="p-6 bg-white border-t-2 border-orange-500/30">
+                    <div className="p-6 bg-white border-t-2 border-orange-200">
                       <div className="grid grid-cols-2 gap-4 mb-4">
-                        <div className="bg-orange-500/10 rounded-lg p-3 border border-orange-500/30">
-                          <p className="text-xs text-slate-300 mb-1">Position</p>
-                          <p className="font-semibold text-slate-100">{pep.position}</p>
+                        <div className="bg-orange-50 rounded-lg p-3 border border-orange-200">
+                          <p className="text-xs text-gray-600 mb-1">Position</p>
+                          <p className="font-semibold text-gray-900">{pep.position}</p>
                         </div>
-                        <div className="bg-orange-500/10 rounded-lg p-3 border border-orange-500/30">
-                          <p className="text-xs text-slate-300 mb-1">Organization</p>
-                          <p className="font-semibold text-slate-100">{pep.organization}</p>
+                        <div className="bg-orange-50 rounded-lg p-3 border border-orange-200">
+                          <p className="text-xs text-gray-600 mb-1">Organization</p>
+                          <p className="font-semibold text-gray-900">{pep.organization}</p>
                         </div>
-                        <div className="bg-orange-500/10 rounded-lg p-3 border border-orange-500/30">
-                          <p className="text-xs text-slate-300 mb-1">Country</p>
-                          <p className="font-semibold text-slate-100">{pep.country}</p>
+                        <div className="bg-orange-50 rounded-lg p-3 border border-orange-200">
+                          <p className="text-xs text-gray-600 mb-1">Country</p>
+                          <p className="font-semibold text-gray-900">{pep.country}</p>
                         </div>
-                        <div className="bg-orange-500/10 rounded-lg p-3 border border-orange-500/30">
-                          <p className="text-xs text-slate-300 mb-1">Risk Level</p>
-                          <p className="font-semibold text-slate-100">{pep.riskLevel}</p>
+                        <div className="bg-orange-50 rounded-lg p-3 border border-orange-200">
+                          <p className="text-xs text-gray-600 mb-1">Risk Level</p>
+                          <p className="font-semibold text-gray-900">{pep.riskLevel}</p>
                         </div>
                       </div>
 
                       <div className="mb-4">
                         <div className="flex items-center gap-2 mb-2">
-                          <Globe className="w-4 h-4 text-slate-300" />
-                          <h5 className="font-semibold text-slate-100">Source Database</h5>
+                          <Globe className="w-4 h-4 text-gray-600" />
+                          <h5 className="font-semibold text-gray-900">Source Database</h5>
                         </div>
-                        <p className="text-slate-300 pl-6">{pep.source}</p>
+                        <p className="text-gray-700 pl-6">{pep.source}</p>
                       </div>
 
                       <div>
@@ -320,9 +320,9 @@ export function AMLHitsDetail({ clientId, clientName = 'Client' }: AMLHitsDetail
       {hits.sanctions.length === 0 && hits.pep.length === 0 && hits.adverseMedia.length === 0 && (
         <Card className="border-2 border-green-300 shadow-lg">
           <CardContent className="p-8 text-center">
-            <Shield className="w-16 h-16 text-green-400 mx-auto mb-4" />
-            <h3 className="text-xl font-bold text-green-300 mb-2">No AML/CTF Hits Found</h3>
-            <p className="text-slate-300">This client has a clean screening record with no sanctions, PEP, or adverse media matches.</p>
+            <Shield className="w-16 h-16 text-green-600 mx-auto mb-4" />
+            <h3 className="text-xl font-bold text-green-900 mb-2">No AML/CTF Hits Found</h3>
+            <p className="text-gray-600">This client has a clean screening record with no sanctions, PEP, or adverse media matches.</p>
           </CardContent>
         </Card>
       )}

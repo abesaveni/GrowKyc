@@ -216,27 +216,27 @@ export function IndustrySelector({ onSelectIndustry, onClose }: IndustrySelector
 
           {/* Stats */}
           <div className="grid grid-cols-3 gap-4 mb-8">
-            <div className="bg-white rounded-lg border border-white/10 p-6 text-center">
+            <div className="bg-white rounded-lg border border-gray-200 p-6 text-center">
               <Users className={`w-10 h-10 text-${selectedConfig.color}-600 mx-auto mb-3`} />
-              <div className="text-3xl font-bold text-slate-100 mb-1">{selectedConfig.stats.clients}</div>
-              <div className="text-sm text-slate-300">Active Clients</div>
+              <div className="text-3xl font-bold text-gray-900 mb-1">{selectedConfig.stats.clients}</div>
+              <div className="text-sm text-gray-600">Active Clients</div>
             </div>
-            <div className="bg-white rounded-lg border border-white/10 p-6 text-center">
+            <div className="bg-white rounded-lg border border-gray-200 p-6 text-center">
               <FileText className={`w-10 h-10 text-${selectedConfig.color}-600 mx-auto mb-3`} />
-              <div className="text-3xl font-bold text-slate-100 mb-1">{selectedConfig.stats.cases}</div>
-              <div className="text-sm text-slate-300">Active Cases</div>
+              <div className="text-3xl font-bold text-gray-900 mb-1">{selectedConfig.stats.cases}</div>
+              <div className="text-sm text-gray-600">Active Cases</div>
             </div>
-            <div className="bg-white rounded-lg border border-white/10 p-6 text-center">
+            <div className="bg-white rounded-lg border border-gray-200 p-6 text-center">
               <TrendingUp className={`w-10 h-10 text-${selectedConfig.color}-600 mx-auto mb-3`} />
-              <div className="text-3xl font-bold text-slate-100 mb-1">{selectedConfig.stats.compliance}</div>
-              <div className="text-sm text-slate-300">Compliance Score</div>
+              <div className="text-3xl font-bold text-gray-900 mb-1">{selectedConfig.stats.compliance}</div>
+              <div className="text-sm text-gray-600">Compliance Score</div>
             </div>
           </div>
 
           {/* Description */}
-          <div className="bg-white rounded-lg border border-white/10 p-6 mb-8">
-            <h3 className="text-xl font-bold text-slate-100 mb-3">About This Industry Module</h3>
-            <p className="text-slate-300 mb-4">{selectedConfig.description}</p>
+          <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
+            <h3 className="text-xl font-bold text-gray-900 mb-3">About This Industry Module</h3>
+            <p className="text-gray-700 mb-4">{selectedConfig.description}</p>
             <div className={`inline-block px-4 py-2 bg-${selectedConfig.color}-50 text-${selectedConfig.color}-700 rounded-lg font-semibold`}>
               Primary Regulator: {selectedConfig.primaryCompliance}
             </div>
@@ -244,8 +244,8 @@ export function IndustrySelector({ onSelectIndustry, onClose }: IndustrySelector
 
           {/* Regulatory Requirements */}
           <div className="grid grid-cols-2 gap-8 mb-8">
-            <div className="bg-white rounded-lg border border-white/10 p-6">
-              <h3 className="text-lg font-bold text-slate-100 mb-4 flex items-center">
+            <div className="bg-white rounded-lg border border-gray-200 p-6">
+              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center">
                 <Shield className={`w-5 h-5 text-${selectedConfig.color}-600 mr-2`} />
                 Regulatory Compliance
               </h3>
@@ -253,14 +253,14 @@ export function IndustrySelector({ onSelectIndustry, onClose }: IndustrySelector
                 {selectedConfig.regulations.map((reg, index) => (
                   <li key={index} className="flex items-start">
                     <CheckCircle className={`w-5 h-5 text-${selectedConfig.color}-600 mr-2 flex-shrink-0 mt-0.5`} />
-                    <span className="text-slate-300">{reg}</span>
+                    <span className="text-gray-700">{reg}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="bg-white rounded-lg border border-white/10 p-6">
-              <h3 className="text-lg font-bold text-slate-100 mb-4 flex items-center">
+            <div className="bg-white rounded-lg border border-gray-200 p-6">
+              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center">
                 <FileText className={`w-5 h-5 text-${selectedConfig.color}-600 mr-2`} />
                 Key Features
               </h3>
@@ -268,7 +268,7 @@ export function IndustrySelector({ onSelectIndustry, onClose }: IndustrySelector
                 {selectedConfig.features.map((feature, index) => (
                   <li key={index} className="flex items-start">
                     <CheckCircle className={`w-5 h-5 text-${selectedConfig.color}-600 mr-2 flex-shrink-0 mt-0.5`} />
-                    <span className="text-slate-300">{feature}</span>
+                    <span className="text-gray-700">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -325,13 +325,13 @@ export function IndustrySelector({ onSelectIndustry, onClose }: IndustrySelector
             </Button>
           )}
           <div className="flex items-center justify-center gap-3 mb-4">
-            <Shield className="w-16 h-16 text-blue-400" />
-            <h1 className="text-5xl font-bold text-slate-100">Grow KYC</h1>
+            <Shield className="w-16 h-16 text-blue-600" />
+            <h1 className="text-5xl font-bold text-gray-900">Grow KYC</h1>
           </div>
-          <p className="text-2xl text-slate-300 font-semibold mb-2">
+          <p className="text-2xl text-gray-700 font-semibold mb-2">
             Industry-Specific Compliance Platform
           </p>
-          <p className="text-slate-300 max-w-2xl mx-auto">
+          <p className="text-gray-600 max-w-2xl mx-auto">
             Select your industry to access tailored compliance workflows, regulatory requirements,
             and best practices designed specifically for your sector.
           </p>
@@ -348,7 +348,7 @@ export function IndustrySelector({ onSelectIndustry, onClose }: IndustrySelector
                 key={config.id}
                 onClick={() => handleSelect(config.id)}
                 className={`bg-white rounded-2xl border-2 p-8 text-left transition-all hover:shadow-xl hover:scale-105 ${
-                  isSelected ? `border-${config.color}-500 shadow-lg` : 'border-white/10'
+                  isSelected ? `border-${config.color}-500 shadow-lg` : 'border-gray-200'
                 }`}
               >
                 <div className="flex items-start justify-between mb-4">
@@ -358,12 +358,12 @@ export function IndustrySelector({ onSelectIndustry, onClose }: IndustrySelector
                   {isSelected && <CheckCircle className={`w-8 h-8 text-${config.color}-600`} />}
                 </div>
                 
-                <h3 className="text-2xl font-bold text-slate-100 mb-2">{config.name}</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">{config.name}</h3>
                 <p className={`text-${config.color}-600 font-semibold mb-3`}>{config.tagline}</p>
-                <p className="text-slate-300 text-sm mb-4">{config.description}</p>
+                <p className="text-gray-600 text-sm mb-4">{config.description}</p>
                 
-                <div className="flex items-center justify-between pt-4 border-t border-white/10">
-                  <div className="flex items-center gap-4 text-sm text-slate-300">
+                <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+                  <div className="flex items-center gap-4 text-sm text-gray-600">
                     <span className="flex items-center">
                       <Users className="w-4 h-4 mr-1" />
                       {config.stats.clients}
@@ -381,8 +381,8 @@ export function IndustrySelector({ onSelectIndustry, onClose }: IndustrySelector
         </div>
 
         {/* Benefits Section */}
-        <div className="bg-white rounded-2xl border border-white/10 p-8">
-          <h3 className="text-2xl font-bold text-slate-100 text-center mb-6">
+        <div className="bg-white rounded-2xl border border-gray-200 p-8">
+          <h3 className="text-2xl font-bold text-gray-900 text-center mb-6">
             Why Industry-Specific Compliance Matters
           </h3>
           <div className="grid grid-cols-4 gap-6">
@@ -411,11 +411,11 @@ export function IndustrySelector({ onSelectIndustry, onClose }: IndustrySelector
               const BenefitIcon = benefit.icon;
               return (
                 <div key={index} className="text-center">
-                  <div className="w-12 h-12 bg-blue-500/15 rounded-lg flex items-center justify-center mx-auto mb-3">
-                    <BenefitIcon className="w-6 h-6 text-blue-400" />
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <BenefitIcon className="w-6 h-6 text-blue-600" />
                   </div>
-                  <h4 className="font-bold text-slate-100 mb-2">{benefit.title}</h4>
-                  <p className="text-sm text-slate-300">{benefit.description}</p>
+                  <h4 className="font-bold text-gray-900 mb-2">{benefit.title}</h4>
+                  <p className="text-sm text-gray-600">{benefit.description}</p>
                 </div>
               );
             })}
@@ -424,7 +424,7 @@ export function IndustrySelector({ onSelectIndustry, onClose }: IndustrySelector
 
         {/* Footer Note */}
         <div className="mt-8 text-center">
-          <p className="text-sm text-slate-400">
+          <p className="text-sm text-gray-500">
             Can't find your industry? Contact us to discuss custom compliance solutions.
           </p>
         </div>

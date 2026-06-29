@@ -226,7 +226,7 @@ export function GlobalSearch({ isOpen, onClose, onNavigate }: GlobalSearchProps)
         </VisuallyHidden>
         <div className="border-b">
           <div className="flex items-center gap-3 px-4 py-3">
-            <Search className="w-5 h-5 text-slate-400" />
+            <Search className="w-5 h-5 text-gray-400" />
             <Input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
@@ -257,7 +257,7 @@ export function GlobalSearch({ isOpen, onClose, onNavigate }: GlobalSearchProps)
           {searchMode === 'search' ? (
             <>
               {results.length === 0 && query.trim() && (
-                <div className="p-8 text-center text-slate-400">
+                <div className="p-8 text-center text-gray-500">
                   <Search className="w-12 h-12 mx-auto mb-3 text-gray-300" />
                   <p>No results found for "{query}"</p>
                   <p className="text-sm mt-2">Try searching for clients, cases, or documents</p>
@@ -265,20 +265,20 @@ export function GlobalSearch({ isOpen, onClose, onNavigate }: GlobalSearchProps)
               )}
 
               {results.length === 0 && !query.trim() && (
-                <div className="p-8 text-center text-slate-400">
+                <div className="p-8 text-center text-gray-500">
                   <div className="mb-4">
                     <Zap className="w-12 h-12 mx-auto mb-3 text-blue-400" />
-                    <p className="font-semibold text-slate-300">AI-Powered Search</p>
+                    <p className="font-semibold text-gray-700">AI-Powered Search</p>
                     <p className="text-sm mt-2">Try natural language queries:</p>
                   </div>
                   <div className="space-y-2 text-left max-w-md mx-auto">
-                    <div className="p-2 bg-[#0f172a] rounded text-sm">
+                    <div className="p-2 bg-gray-50 rounded text-sm">
                       "show me high risk clients with PEP flags"
                     </div>
-                    <div className="p-2 bg-[#0f172a] rounded text-sm">
+                    <div className="p-2 bg-gray-50 rounded text-sm">
                       "cases expiring this week"
                     </div>
-                    <div className="p-2 bg-[#0f172a] rounded text-sm">
+                    <div className="p-2 bg-gray-50 rounded text-sm">
                       "clients in Singapore with overdue CDD"
                     </div>
                   </div>
@@ -291,24 +291,24 @@ export function GlobalSearch({ isOpen, onClose, onNavigate }: GlobalSearchProps)
                   <div
                     key={result.id}
                     className={`flex items-center gap-4 px-4 py-3 cursor-pointer ${
-                      index === selectedIndex ? 'bg-blue-500/10' : 'hover:bg-white/5'
+                      index === selectedIndex ? 'bg-blue-50' : 'hover:bg-gray-50'
                     }`}
                     onClick={() => handleResultClick(result)}
                   >
                     <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                      result.risk === 'high' ? 'bg-red-500/15' :
-                      result.risk === 'medium' ? 'bg-amber-500/15' :
-                      'bg-blue-500/15'
+                      result.risk === 'high' ? 'bg-red-100' :
+                      result.risk === 'medium' ? 'bg-amber-100' :
+                      'bg-blue-100'
                     }`}>
                       <Icon className={`w-5 h-5 ${
-                        result.risk === 'high' ? 'text-red-400' :
-                        result.risk === 'medium' ? 'text-amber-400' :
-                        'text-blue-400'
+                        result.risk === 'high' ? 'text-red-600' :
+                        result.risk === 'medium' ? 'text-amber-600' :
+                        'text-blue-600'
                       }`} />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-2">
-                        <span className="font-semibold text-white">{result.title}</span>
+                        <span className="font-semibold text-gray-900">{result.title}</span>
                         {result.risk && (
                           <Badge className={
                             result.risk === 'high' ? 'bg-red-500' :
@@ -319,8 +319,8 @@ export function GlobalSearch({ isOpen, onClose, onNavigate }: GlobalSearchProps)
                           </Badge>
                         )}
                       </div>
-                      <div className="text-sm text-slate-300">{result.subtitle}</div>
-                      <div className="text-xs text-slate-400 mt-1">{result.metadata}</div>
+                      <div className="text-sm text-gray-600">{result.subtitle}</div>
+                      <div className="text-xs text-gray-500 mt-1">{result.metadata}</div>
                     </div>
                     <Badge variant="outline" className="text-xs">
                       {result.type}
@@ -331,7 +331,7 @@ export function GlobalSearch({ isOpen, onClose, onNavigate }: GlobalSearchProps)
             </>
           ) : (
             <>
-              <div className="px-4 py-2 bg-[#0f172a] text-xs font-semibold text-slate-300 border-b">
+              <div className="px-4 py-2 bg-gray-50 text-xs font-semibold text-gray-600 border-b">
                 COMMANDS
               </div>
               {commands.map((command, index) => {
@@ -340,17 +340,17 @@ export function GlobalSearch({ isOpen, onClose, onNavigate }: GlobalSearchProps)
                   <div
                     key={command.id}
                     className={`flex items-center gap-4 px-4 py-3 cursor-pointer ${
-                      index === selectedIndex ? 'bg-blue-500/10' : 'hover:bg-white/5'
+                      index === selectedIndex ? 'bg-blue-50' : 'hover:bg-gray-50'
                     }`}
                     onClick={() => handleCommandClick(command.action)}
                   >
-                    <div className="w-10 h-10 bg-blue-500/15 rounded-lg flex items-center justify-center">
-                      <Icon className="w-5 h-5 text-blue-400" />
+                    <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                      <Icon className="w-5 h-5 text-blue-600" />
                     </div>
                     <div className="flex-1">
-                      <span className="font-medium text-white">{command.title}</span>
+                      <span className="font-medium text-gray-900">{command.title}</span>
                     </div>
-                    <kbd className="px-2 py-1 text-xs bg-[#0f172a] rounded border">↵</kbd>
+                    <kbd className="px-2 py-1 text-xs bg-gray-100 rounded border">↵</kbd>
                   </div>
                 );
               })}
@@ -358,19 +358,19 @@ export function GlobalSearch({ isOpen, onClose, onNavigate }: GlobalSearchProps)
           )}
         </div>
 
-        <div className="border-t px-4 py-2 flex items-center justify-between text-xs text-slate-400">
+        <div className="border-t px-4 py-2 flex items-center justify-between text-xs text-gray-500">
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 bg-[#0f172a] rounded border">↑</kbd>
-              <kbd className="px-1.5 py-0.5 bg-[#0f172a] rounded border">↓</kbd>
+              <kbd className="px-1.5 py-0.5 bg-gray-100 rounded border">↑</kbd>
+              <kbd className="px-1.5 py-0.5 bg-gray-100 rounded border">↓</kbd>
               to navigate
             </span>
             <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 bg-[#0f172a] rounded border">↵</kbd>
+              <kbd className="px-1.5 py-0.5 bg-gray-100 rounded border">↵</kbd>
               to select
             </span>
             <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 bg-[#0f172a] rounded border">esc</kbd>
+              <kbd className="px-1.5 py-0.5 bg-gray-100 rounded border">esc</kbd>
               to close
             </span>
           </div>

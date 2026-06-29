@@ -25,8 +25,8 @@ export function IntegrationCenter({ onBack }: IntegrationCenterProps) {
       </Button>
 
       <div>
-        <h1 className="text-3xl font-bold text-white">Integration Center</h1>
-        <p className="text-slate-300 mt-1">Regulatory data providers and verification services</p>
+        <h1 className="text-3xl font-bold text-gray-900">Integration Center</h1>
+        <p className="text-gray-600 mt-1">Regulatory data providers and verification services</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -35,24 +35,24 @@ export function IntegrationCenter({ onBack }: IntegrationCenterProps) {
             key={integration.name}
             className={`border-2 ${
               integration.status === 'connected'
-                ? 'border-green-300 bg-green-500/10'
-                : 'border-white/10'
+                ? 'border-green-300 bg-green-50'
+                : 'border-gray-300'
             }`}
           >
             <CardContent className="p-6">
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <h3 className="font-bold text-white mb-1">{integration.name}</h3>
-                  <p className="text-sm text-slate-300">{integration.purpose}</p>
+                  <h3 className="font-bold text-gray-900 mb-1">{integration.name}</h3>
+                  <p className="text-sm text-gray-600">{integration.purpose}</p>
                 </div>
                 {integration.status === 'connected' ? (
-                  <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0" />
+                  <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
                 ) : (
-                  <XCircle className="w-6 h-6 text-slate-400 flex-shrink-0" />
+                  <XCircle className="w-6 h-6 text-gray-400 flex-shrink-0" />
                 )}
               </div>
               {integration.critical && (
-                <span className="inline-block px-2 py-1 bg-orange-500/15 text-orange-300 text-xs font-bold rounded border border-orange-300 mb-3">
+                <span className="inline-block px-2 py-1 bg-orange-100 text-orange-700 text-xs font-bold rounded border border-orange-300 mb-3">
                   Critical Service
                 </span>
               )}
@@ -77,13 +77,13 @@ export function IntegrationCenter({ onBack }: IntegrationCenterProps) {
         ))}
       </div>
 
-      <Card className="border-2 border-blue-300 bg-blue-500/10">
+      <Card className="border-2 border-blue-300 bg-blue-50">
         <CardContent className="p-6">
           <div className="flex items-start gap-3">
-            <Shield className="w-6 h-6 text-blue-400 mt-1" />
+            <Shield className="w-6 h-6 text-blue-600 mt-1" />
             <div>
-              <h3 className="font-bold text-blue-300 mb-2">API Security</h3>
-              <p className="text-sm text-blue-300">
+              <h3 className="font-bold text-blue-900 mb-2">API Security</h3>
+              <p className="text-sm text-blue-800">
                 All integration credentials are encrypted at rest. API calls are logged immutably for audit purposes.
                 Webhook endpoints use HMAC signing for verification.
               </p>

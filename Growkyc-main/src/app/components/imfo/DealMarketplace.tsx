@@ -322,12 +322,12 @@ export function DealMarketplace({ onNavigate, role, investorProfile }: DealMarke
 
   const getStatusBadge = (status: DealStatus) => {
     const config = {
-      draft: { label: 'Draft', className: 'bg-white/5 text-slate-100', icon: Clock },
-      open: { label: 'Open for Investment', className: 'bg-green-500/15 text-green-300', icon: CheckCircle },
-      'closing-soon': { label: 'Closing Soon', className: 'bg-orange-500/15 text-orange-300', icon: AlertTriangle },
-      closed: { label: 'Closed', className: 'bg-red-500/15 text-red-300', icon: Lock },
-      funded: { label: 'Funded', className: 'bg-blue-500/15 text-blue-300', icon: CheckCircle },
-      archived: { label: 'Archived', className: 'bg-white/5 text-slate-300', icon: X }
+      draft: { label: 'Draft', className: 'bg-gray-100 text-gray-800', icon: Clock },
+      open: { label: 'Open for Investment', className: 'bg-green-100 text-green-800', icon: CheckCircle },
+      'closing-soon': { label: 'Closing Soon', className: 'bg-orange-100 text-orange-800', icon: AlertTriangle },
+      closed: { label: 'Closed', className: 'bg-red-100 text-red-800', icon: Lock },
+      funded: { label: 'Funded', className: 'bg-blue-100 text-blue-800', icon: CheckCircle },
+      archived: { label: 'Archived', className: 'bg-gray-100 text-gray-600', icon: X }
     };
 
     const statusConfig = config[status];
@@ -343,10 +343,10 @@ export function DealMarketplace({ onNavigate, role, investorProfile }: DealMarke
 
   const getStructureBadge = (structure: DealStructure) => {
     const config = {
-      pooled: { label: 'Pooled', className: 'bg-blue-500/15 text-blue-300' },
-      participation: { label: 'Participation', className: 'bg-purple-500/15 text-purple-300' },
-      hybrid: { label: 'Hybrid', className: 'bg-indigo-500/15 text-indigo-300' },
-      direct: { label: 'Direct', className: 'bg-green-500/15 text-green-300' }
+      pooled: { label: 'Pooled', className: 'bg-blue-100 text-blue-800' },
+      participation: { label: 'Participation', className: 'bg-purple-100 text-purple-800' },
+      hybrid: { label: 'Hybrid', className: 'bg-indigo-100 text-indigo-800' },
+      direct: { label: 'Direct', className: 'bg-green-100 text-green-800' }
     };
 
     return (
@@ -359,10 +359,10 @@ export function DealMarketplace({ onNavigate, role, investorProfile }: DealMarke
   const getRiskGradeBadge = (grade: string) => {
     const gradeUpper = grade.charAt(0);
     const colorMap: { [key: string]: string } = {
-      A: 'bg-green-500/15 text-green-300 border-green-500/30',
-      B: 'bg-yellow-500/15 text-yellow-300 border-yellow-500/30',
-      C: 'bg-orange-500/15 text-orange-300 border-orange-500/30',
-      D: 'bg-red-500/15 text-red-300 border-red-500/30'
+      A: 'bg-green-100 text-green-800 border-green-200',
+      B: 'bg-yellow-100 text-yellow-800 border-yellow-200',
+      C: 'bg-orange-100 text-orange-800 border-orange-200',
+      D: 'bg-red-100 text-red-800 border-red-200'
     };
 
     return (
@@ -392,8 +392,8 @@ export function DealMarketplace({ onNavigate, role, investorProfile }: DealMarke
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-100">Deal Marketplace</h1>
-          <p className="text-slate-300 mt-1">
+          <h1 className="text-2xl font-bold text-gray-900">Deal Marketplace</h1>
+          <p className="text-gray-600 mt-1">
             Tier-filtered investment opportunities • Showing {filteredDeals.length} deals for {mockInvestorProfile.name}
           </p>
         </div>
@@ -406,19 +406,19 @@ export function DealMarketplace({ onNavigate, role, investorProfile }: DealMarke
       </div>
 
       {/* Investor Profile Banner */}
-      <div className="bg-indigo-500/10 border border-indigo-500/30 rounded-lg p-4">
+      <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className="p-3 bg-indigo-600 rounded-lg">
               <Award className="w-6 h-6 text-white" />
             </div>
             <div>
-              <p className="text-sm text-indigo-400 font-medium">Your Investor Profile</p>
-              <p className="text-lg font-bold text-indigo-300">
+              <p className="text-sm text-indigo-600 font-medium">Your Investor Profile</p>
+              <p className="text-lg font-bold text-indigo-900">
                 Tier {mockInvestorProfile.tier.split('-')[1].toUpperCase()} • Available Capital: ${(mockInvestorProfile.availableCapital / 1000000).toFixed(1)}M
               </p>
               <div className="flex items-center gap-2 mt-1">
-                <p className="text-sm text-indigo-300">Access to strategies:</p>
+                <p className="text-sm text-indigo-700">Access to strategies:</p>
                 {mockInvestorProfile.strategyFlags.map((flag: string) => (
                   <span key={flag} className="px-2 py-0.5 bg-indigo-600 text-white rounded text-xs font-medium">
                     {flag}
@@ -427,7 +427,7 @@ export function DealMarketplace({ onNavigate, role, investorProfile }: DealMarke
               </div>
             </div>
           </div>
-          <Button variant="outline" className="border-indigo-300 text-indigo-300" onClick={() => onNavigate('investor-registry')}>
+          <Button variant="outline" className="border-indigo-300 text-indigo-700" onClick={() => onNavigate('investor-registry')}>
             View Profile
           </Button>
         </div>
@@ -435,57 +435,57 @@ export function DealMarketplace({ onNavigate, role, investorProfile }: DealMarke
 
       {/* Stats Row */}
       <div className="grid grid-cols-5 gap-4">
-        <div className="bg-white border border-white/10 rounded-lg p-4">
+        <div className="bg-white border border-gray-300 rounded-lg p-4">
           <div className="flex items-center gap-2 mb-2">
-            <Briefcase className="w-5 h-5 text-indigo-400" />
-            <p className="text-sm text-slate-300">Available Deals</p>
+            <Briefcase className="w-5 h-5 text-indigo-600" />
+            <p className="text-sm text-gray-600">Available Deals</p>
           </div>
-          <p className="text-2xl font-bold text-slate-100">{filteredDeals.length}</p>
+          <p className="text-2xl font-bold text-gray-900">{filteredDeals.length}</p>
         </div>
         
-        <div className="bg-white border border-white/10 rounded-lg p-4">
+        <div className="bg-white border border-gray-300 rounded-lg p-4">
           <div className="flex items-center gap-2 mb-2">
-            <CheckCircle className="w-5 h-5 text-green-400" />
-            <p className="text-sm text-slate-300">Open for Investment</p>
+            <CheckCircle className="w-5 h-5 text-green-600" />
+            <p className="text-sm text-gray-600">Open for Investment</p>
           </div>
-          <p className="text-2xl font-bold text-slate-100">
+          <p className="text-2xl font-bold text-gray-900">
             {filteredDeals.filter(d => d.status === 'open').length}
           </p>
         </div>
         
-        <div className="bg-white border border-white/10 rounded-lg p-4">
+        <div className="bg-white border border-gray-300 rounded-lg p-4">
           <div className="flex items-center gap-2 mb-2">
-            <AlertTriangle className="w-5 h-5 text-orange-400" />
-            <p className="text-sm text-slate-300">Closing Soon</p>
+            <AlertTriangle className="w-5 h-5 text-orange-600" />
+            <p className="text-sm text-gray-600">Closing Soon</p>
           </div>
-          <p className="text-2xl font-bold text-slate-100">
+          <p className="text-2xl font-bold text-gray-900">
             {filteredDeals.filter(d => d.status === 'closing-soon').length}
           </p>
         </div>
         
-        <div className="bg-white border border-white/10 rounded-lg p-4">
+        <div className="bg-white border border-gray-300 rounded-lg p-4">
           <div className="flex items-center gap-2 mb-2">
-            <DollarSign className="w-5 h-5 text-blue-400" />
-            <p className="text-sm text-slate-300">Total Target</p>
+            <DollarSign className="w-5 h-5 text-blue-600" />
+            <p className="text-sm text-gray-600">Total Target</p>
           </div>
-          <p className="text-2xl font-bold text-slate-100">
+          <p className="text-2xl font-bold text-gray-900">
             ${(filteredDeals.reduce((sum, d) => sum + d.targetRaise, 0) / 1000000).toFixed(0)}M
           </p>
         </div>
         
-        <div className="bg-white border border-white/10 rounded-lg p-4">
+        <div className="bg-white border border-gray-300 rounded-lg p-4">
           <div className="flex items-center gap-2 mb-2">
-            <TrendingUp className="w-5 h-5 text-green-400" />
-            <p className="text-sm text-slate-300">Avg. Return</p>
+            <TrendingUp className="w-5 h-5 text-green-600" />
+            <p className="text-sm text-gray-600">Avg. Return</p>
           </div>
-          <p className="text-2xl font-bold text-slate-100">
+          <p className="text-2xl font-bold text-gray-900">
             {(filteredDeals.reduce((sum, d) => sum + d.expectedReturn, 0) / filteredDeals.length).toFixed(1)}%
           </p>
         </div>
       </div>
 
       {/* Filters */}
-      <div className="bg-white border border-white/10 rounded-lg p-4">
+      <div className="bg-white border border-gray-300 rounded-lg p-4">
         <div className="flex items-center gap-4">
           <div className="flex-1 relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
@@ -494,14 +494,14 @@ export function DealMarketplace({ onNavigate, role, investorProfile }: DealMarke
               placeholder="Search deals by name, ID, or sector..."
               value={filters.search}
               onChange={(e) => setFilters({ ...filters, search: e.target.value })}
-              className="w-full pl-10 pr-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
           </div>
           
           <Button
             variant="outline"
             onClick={() => setShowFilters(!showFilters)}
-            className={showFilters ? 'bg-indigo-500/10 border-indigo-300' : ''}
+            className={showFilters ? 'bg-indigo-50 border-indigo-300' : ''}
           >
             <Filter className="w-4 h-4 mr-2" />
             Filters
@@ -510,13 +510,13 @@ export function DealMarketplace({ onNavigate, role, investorProfile }: DealMarke
         </div>
 
         {showFilters && (
-          <div className="mt-4 pt-4 border-t border-white/10 grid grid-cols-4 gap-4">
+          <div className="mt-4 pt-4 border-t border-gray-200 grid grid-cols-4 gap-4">
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-2">Strategy</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Strategy</label>
               <select
                 value={filters.strategy}
                 onChange={(e) => setFilters({ ...filters, strategy: e.target.value })}
-                className="w-full px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
               >
                 <option value="all">All Strategies</option>
                 {mockInvestorProfile.strategyFlags.map((flag: string) => (
@@ -526,11 +526,11 @@ export function DealMarketplace({ onNavigate, role, investorProfile }: DealMarke
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-2">Status</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Status</label>
               <select
                 value={filters.status}
                 onChange={(e) => setFilters({ ...filters, status: e.target.value })}
-                className="w-full px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
               >
                 <option value="all">All Status</option>
                 <option value="open">Open</option>
@@ -540,11 +540,11 @@ export function DealMarketplace({ onNavigate, role, investorProfile }: DealMarke
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-2">Structure</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Structure</label>
               <select
                 value={filters.structure}
                 onChange={(e) => setFilters({ ...filters, structure: e.target.value })}
-                className="w-full px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
               >
                 <option value="all">All Structures</option>
                 <option value="pooled">Pooled</option>
@@ -555,11 +555,11 @@ export function DealMarketplace({ onNavigate, role, investorProfile }: DealMarke
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-2">Min Investment</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Min Investment</label>
               <select
                 value={filters.minInvestment}
                 onChange={(e) => setFilters({ ...filters, minInvestment: e.target.value })}
-                className="w-full px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
               >
                 <option value="all">Any Amount</option>
                 <option value="under-500k">Under $500K</option>
@@ -576,7 +576,7 @@ export function DealMarketplace({ onNavigate, role, investorProfile }: DealMarke
         {filteredDeals.map((deal) => (
           <div
             key={deal.id}
-            className="bg-white border border-white/10 rounded-lg overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
+            className="bg-white border border-gray-300 rounded-lg overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
             onClick={() => {
               setSelectedDeal(deal);
               setViewMode('detail');
@@ -587,20 +587,20 @@ export function DealMarketplace({ onNavigate, role, investorProfile }: DealMarke
               <div className="flex items-start justify-between mb-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <h3 className="text-xl font-bold text-slate-100">{deal.name}</h3>
+                    <h3 className="text-xl font-bold text-gray-900">{deal.name}</h3>
                     {deal.teaserOnly && (
-                      <span className="px-2 py-1 bg-white/5 text-slate-300 rounded text-xs font-medium flex items-center gap-1">
+                      <span className="px-2 py-1 bg-gray-100 text-gray-600 rounded text-xs font-medium flex items-center gap-1">
                         <Lock className="w-3 h-3" />
                         Teaser Only
                       </span>
                     )}
                   </div>
                   <div className="flex items-center gap-3">
-                    <p className="text-sm text-slate-300">{deal.id} • {deal.spvId}</p>
-                    <span className="px-2 py-1 bg-indigo-500/15 text-indigo-300 rounded text-xs font-medium">
+                    <p className="text-sm text-gray-600">{deal.id} • {deal.spvId}</p>
+                    <span className="px-2 py-1 bg-indigo-100 text-indigo-800 rounded text-xs font-medium">
                       {deal.strategy}
                     </span>
-                    <span className="px-2 py-1 bg-white/5 text-slate-100 rounded text-xs font-medium">
+                    <span className="px-2 py-1 bg-gray-100 text-gray-800 rounded text-xs font-medium">
                       {deal.sector}
                     </span>
                     {getStructureBadge(deal.structure as DealStructure)}
@@ -613,40 +613,40 @@ export function DealMarketplace({ onNavigate, role, investorProfile }: DealMarke
               </div>
 
               {/* Description */}
-              <p className="text-slate-300 mb-4">{deal.description}</p>
+              <p className="text-gray-700 mb-4">{deal.description}</p>
 
               {/* Key Metrics Grid */}
               <div className="grid grid-cols-6 gap-4 mb-4">
-                <div className="p-3 bg-blue-500/10 rounded-lg">
-                  <p className="text-xs text-blue-400 mb-1">Target Raise</p>
-                  <p className="text-lg font-bold text-blue-300">${(deal.targetRaise / 1000000).toFixed(1)}M</p>
+                <div className="p-3 bg-blue-50 rounded-lg">
+                  <p className="text-xs text-blue-600 mb-1">Target Raise</p>
+                  <p className="text-lg font-bold text-blue-900">${(deal.targetRaise / 1000000).toFixed(1)}M</p>
                 </div>
                 
-                <div className="p-3 bg-green-500/10 rounded-lg">
-                  <p className="text-xs text-green-400 mb-1">Expected Return</p>
-                  <p className="text-lg font-bold text-green-300">{deal.expectedReturn}% p.a.</p>
+                <div className="p-3 bg-green-50 rounded-lg">
+                  <p className="text-xs text-green-600 mb-1">Expected Return</p>
+                  <p className="text-lg font-bold text-green-900">{deal.expectedReturn}% p.a.</p>
                 </div>
                 
-                <div className="p-3 bg-purple-500/10 rounded-lg">
-                  <p className="text-xs text-purple-400 mb-1">Term</p>
-                  <p className="text-lg font-bold text-purple-300">{deal.term} months</p>
+                <div className="p-3 bg-purple-50 rounded-lg">
+                  <p className="text-xs text-purple-600 mb-1">Term</p>
+                  <p className="text-lg font-bold text-purple-900">{deal.term} months</p>
                 </div>
                 
-                <div className="p-3 bg-orange-500/10 rounded-lg">
-                  <p className="text-xs text-orange-400 mb-1">Min Investment</p>
-                  <p className="text-lg font-bold text-orange-300">${(deal.minInvestment / 1000).toFixed(0)}K</p>
+                <div className="p-3 bg-orange-50 rounded-lg">
+                  <p className="text-xs text-orange-600 mb-1">Min Investment</p>
+                  <p className="text-lg font-bold text-orange-900">${(deal.minInvestment / 1000).toFixed(0)}K</p>
                 </div>
                 
                 {deal.lvr && (
-                  <div className="p-3 bg-yellow-500/10 rounded-lg">
-                    <p className="text-xs text-yellow-400 mb-1">LVR</p>
-                    <p className="text-lg font-bold text-yellow-300">{deal.lvr}%</p>
+                  <div className="p-3 bg-yellow-50 rounded-lg">
+                    <p className="text-xs text-yellow-600 mb-1">LVR</p>
+                    <p className="text-lg font-bold text-yellow-900">{deal.lvr}%</p>
                   </div>
                 )}
                 
-                <div className="p-3 bg-white/5 rounded-lg">
-                  <p className="text-xs text-slate-300 mb-1">Location</p>
-                  <p className="text-sm font-semibold text-slate-100">{deal.location}</p>
+                <div className="p-3 bg-gray-50 rounded-lg">
+                  <p className="text-xs text-gray-600 mb-1">Location</p>
+                  <p className="text-sm font-semibold text-gray-900">{deal.location}</p>
                 </div>
               </div>
 
@@ -654,15 +654,15 @@ export function DealMarketplace({ onNavigate, role, investorProfile }: DealMarke
               {(deal.status === 'open' || deal.status === 'closing-soon') && (
                 <div className="mb-4">
                   <div className="flex items-center justify-between mb-2">
-                    <p className="text-sm text-slate-300">Fundraising Progress</p>
-                    <p className="text-sm font-semibold text-slate-100">
+                    <p className="text-sm text-gray-600">Fundraising Progress</p>
+                    <p className="text-sm font-semibold text-gray-900">
                       ${(deal.raisedToDate / 1000000).toFixed(1)}M / ${(deal.targetRaise / 1000000).toFixed(1)}M
-                      <span className="text-slate-300 ml-2">
+                      <span className="text-gray-600 ml-2">
                         ({((deal.raisedToDate / deal.targetRaise) * 100).toFixed(0)}%)
                       </span>
                     </p>
                   </div>
-                  <div className="w-full h-2 bg-white/10 rounded-full">
+                  <div className="w-full h-2 bg-gray-200 rounded-full">
                     <div
                       className="h-2 bg-green-600 rounded-full"
                       style={{ width: `${(deal.raisedToDate / deal.targetRaise) * 100}%` }}
@@ -674,15 +674,15 @@ export function DealMarketplace({ onNavigate, role, investorProfile }: DealMarke
               {/* Features */}
               <div className="flex flex-wrap gap-2 mb-4">
                 {deal.features.map((feature: string) => (
-                  <span key={feature} className="px-3 py-1 bg-white/5 text-slate-300 rounded-full text-xs font-medium">
+                  <span key={feature} className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium">
                     {feature}
                   </span>
                 ))}
               </div>
 
               {/* Footer Row */}
-              <div className="flex items-center justify-between pt-4 border-t border-white/10">
-                <div className="flex items-center gap-6 text-sm text-slate-300">
+              <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+                <div className="flex items-center gap-6 text-sm text-gray-600">
                   <div className="flex items-center gap-1">
                     <Calendar className="w-4 h-4" />
                     <span>Close: {deal.closeDate}</span>
@@ -720,10 +720,10 @@ export function DealMarketplace({ onNavigate, role, investorProfile }: DealMarke
 
       {/* Empty State */}
       {filteredDeals.length === 0 && (
-        <div className="text-center py-12 bg-white border border-white/10 rounded-lg">
+        <div className="text-center py-12 bg-white border border-gray-300 rounded-lg">
           <Briefcase className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-          <p className="text-slate-300 mb-2">No deals match your current filters</p>
-          <p className="text-sm text-slate-400 mb-4">
+          <p className="text-gray-600 mb-2">No deals match your current filters</p>
+          <p className="text-sm text-gray-500 mb-4">
             Try adjusting your filters or check back soon for new opportunities
           </p>
           <Button
@@ -761,15 +761,15 @@ function DealDetailView({ deal, investorProfile, onBack, role }: any) {
           </Button>
           <div>
             <div className="flex items-center gap-3 mb-1">
-              <h1 className="text-2xl font-bold text-slate-100">{deal.name}</h1>
+              <h1 className="text-2xl font-bold text-gray-900">{deal.name}</h1>
               {deal.teaserOnly && (
-                <span className="px-3 py-1 bg-yellow-500/15 text-yellow-300 rounded-full text-xs font-medium flex items-center gap-1">
+                <span className="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs font-medium flex items-center gap-1">
                   <Lock className="w-3.5 h-3.5" />
                   Limited Access
                 </span>
               )}
             </div>
-            <p className="text-slate-300">{deal.id} • {deal.spvId} • {deal.strategy} • {deal.sector}</p>
+            <p className="text-gray-600">{deal.id} • {deal.spvId} • {deal.strategy} • {deal.sector}</p>
           </div>
         </div>
         
@@ -789,12 +789,12 @@ function DealDetailView({ deal, investorProfile, onBack, role }: any) {
 
       {/* Status Banner */}
       {deal.status === 'closing-soon' && (
-        <div className="bg-orange-500/10 border border-orange-500/30 rounded-lg p-4">
+        <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
           <div className="flex items-start gap-3">
-            <AlertTriangle className="w-5 h-5 text-orange-400 mt-0.5" />
+            <AlertTriangle className="w-5 h-5 text-orange-600 mt-0.5" />
             <div className="flex-1">
-              <p className="font-semibold text-orange-300">Deal Closing Soon</p>
-              <p className="text-sm text-orange-300 mt-1">
+              <p className="font-semibold text-orange-900">Deal Closing Soon</p>
+              <p className="text-sm text-orange-700 mt-1">
                 This opportunity closes on {deal.closeDate}. Submit your expression of interest before the deadline.
               </p>
             </div>
@@ -804,55 +804,55 @@ function DealDetailView({ deal, investorProfile, onBack, role }: any) {
 
       {/* Key Metrics Dashboard */}
       <div className="grid grid-cols-5 gap-4">
-        <div className="bg-white border border-white/10 rounded-lg p-4">
+        <div className="bg-white border border-gray-300 rounded-lg p-4">
           <div className="flex items-center gap-2 mb-2">
-            <Target className="w-5 h-5 text-blue-400" />
-            <p className="text-xs text-slate-300">Target Raise</p>
+            <Target className="w-5 h-5 text-blue-600" />
+            <p className="text-xs text-gray-600">Target Raise</p>
           </div>
-          <p className="text-2xl font-bold text-slate-100">${(deal.targetRaise / 1000000).toFixed(1)}M</p>
-          <p className="text-xs text-slate-300 mt-1">${(deal.raisedToDate / 1000000).toFixed(1)}M raised</p>
+          <p className="text-2xl font-bold text-gray-900">${(deal.targetRaise / 1000000).toFixed(1)}M</p>
+          <p className="text-xs text-gray-600 mt-1">${(deal.raisedToDate / 1000000).toFixed(1)}M raised</p>
         </div>
 
-        <div className="bg-white border border-white/10 rounded-lg p-4">
+        <div className="bg-white border border-gray-300 rounded-lg p-4">
           <div className="flex items-center gap-2 mb-2">
-            <TrendingUp className="w-5 h-5 text-green-400" />
-            <p className="text-xs text-slate-300">Expected Return</p>
+            <TrendingUp className="w-5 h-5 text-green-600" />
+            <p className="text-xs text-gray-600">Expected Return</p>
           </div>
-          <p className="text-2xl font-bold text-slate-100">{deal.expectedReturn}%</p>
-          <p className="text-xs text-slate-300 mt-1">per annum</p>
+          <p className="text-2xl font-bold text-gray-900">{deal.expectedReturn}%</p>
+          <p className="text-xs text-gray-600 mt-1">per annum</p>
         </div>
 
-        <div className="bg-white border border-white/10 rounded-lg p-4">
+        <div className="bg-white border border-gray-300 rounded-lg p-4">
           <div className="flex items-center gap-2 mb-2">
-            <Calendar className="w-5 h-5 text-purple-400" />
-            <p className="text-xs text-slate-300">Term</p>
+            <Calendar className="w-5 h-5 text-purple-600" />
+            <p className="text-xs text-gray-600">Term</p>
           </div>
-          <p className="text-2xl font-bold text-slate-100">{deal.term}</p>
-          <p className="text-xs text-slate-300 mt-1">months</p>
+          <p className="text-2xl font-bold text-gray-900">{deal.term}</p>
+          <p className="text-xs text-gray-600 mt-1">months</p>
         </div>
 
-        <div className="bg-white border border-white/10 rounded-lg p-4">
+        <div className="bg-white border border-gray-300 rounded-lg p-4">
           <div className="flex items-center gap-2 mb-2">
-            <DollarSign className="w-5 h-5 text-orange-400" />
-            <p className="text-xs text-slate-300">Min / Max</p>
+            <DollarSign className="w-5 h-5 text-orange-600" />
+            <p className="text-xs text-gray-600">Min / Max</p>
           </div>
-          <p className="text-lg font-bold text-slate-100">${(deal.minInvestment / 1000).toFixed(0)}K</p>
-          <p className="text-xs text-slate-300 mt-1">to ${(deal.maxInvestment / 1000).toFixed(0)}K</p>
+          <p className="text-lg font-bold text-gray-900">${(deal.minInvestment / 1000).toFixed(0)}K</p>
+          <p className="text-xs text-gray-600 mt-1">to ${(deal.maxInvestment / 1000).toFixed(0)}K</p>
         </div>
 
-        <div className="bg-white border border-white/10 rounded-lg p-4">
+        <div className="bg-white border border-gray-300 rounded-lg p-4">
           <div className="flex items-center gap-2 mb-2">
-            <Shield className="w-5 h-5 text-indigo-400" />
-            <p className="text-xs text-slate-300">Risk Grade</p>
+            <Shield className="w-5 h-5 text-indigo-600" />
+            <p className="text-xs text-gray-600">Risk Grade</p>
           </div>
-          <p className="text-2xl font-bold text-slate-100">{deal.riskGrade}</p>
-          <p className="text-xs text-slate-300 mt-1">{deal.allocation}</p>
+          <p className="text-2xl font-bold text-gray-900">{deal.riskGrade}</p>
+          <p className="text-xs text-gray-600 mt-1">{deal.allocation}</p>
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="bg-white border border-white/10 rounded-lg overflow-hidden">
-        <div className="border-b border-white/10">
+      <div className="bg-white border border-gray-300 rounded-lg overflow-hidden">
+        <div className="border-b border-gray-300">
           <div className="flex">
             {[
               { id: 'overview', label: 'Overview', icon: Briefcase },
@@ -869,8 +869,8 @@ function DealDetailView({ deal, investorProfile, onBack, role }: any) {
                   onClick={() => setActiveTab(tab.id as 'overview' | 'terms' | 'documents' | 'qa' | 'eoi' | 'allocation')}
                   className={`flex items-center gap-2 px-6 py-4 border-b-2 transition-colors ${
                     activeTab === tab.id
-                      ? 'border-indigo-600 text-indigo-400 font-medium'
-                      : 'border-transparent text-slate-300 hover:text-slate-100'
+                      ? 'border-indigo-600 text-indigo-600 font-medium'
+                      : 'border-transparent text-gray-600 hover:text-gray-900'
                   }`}
                 >
                   <Icon className="w-4 h-4" />
@@ -910,17 +910,17 @@ function DealOverviewTab({ deal }: any) {
   return (
     <div className="space-y-6">
       <div>
-        <h3 className="font-semibold text-slate-100 mb-3">Investment Summary</h3>
-        <p className="text-slate-300 leading-relaxed">{deal.description}</p>
+        <h3 className="font-semibold text-gray-900 mb-3">Investment Summary</h3>
+        <p className="text-gray-700 leading-relaxed">{deal.description}</p>
       </div>
 
       <div>
-        <h3 className="font-semibold text-slate-100 mb-3">Key Features</h3>
+        <h3 className="font-semibold text-gray-900 mb-3">Key Features</h3>
         <div className="grid grid-cols-2 gap-3">
           {deal.features.map((feature: string) => (
-            <div key={feature} className="flex items-center gap-2 p-3 bg-white/5 rounded-lg">
-              <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
-              <span className="text-sm text-slate-100">{feature}</span>
+            <div key={feature} className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg">
+              <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
+              <span className="text-sm text-gray-900">{feature}</span>
             </div>
           ))}
         </div>
@@ -928,47 +928,47 @@ function DealOverviewTab({ deal }: any) {
 
       <div className="grid grid-cols-2 gap-6">
         <div>
-          <h3 className="font-semibold text-slate-100 mb-3">Investment Details</h3>
+          <h3 className="font-semibold text-gray-900 mb-3">Investment Details</h3>
           <div className="space-y-3">
-            <div className="flex justify-between py-2 border-b border-white/10">
-              <span className="text-sm text-slate-300">Structure</span>
-              <span className="text-sm font-medium text-slate-100 capitalize">{deal.structure}</span>
+            <div className="flex justify-between py-2 border-b border-gray-200">
+              <span className="text-sm text-gray-600">Structure</span>
+              <span className="text-sm font-medium text-gray-900 capitalize">{deal.structure}</span>
             </div>
-            <div className="flex justify-between py-2 border-b border-white/10">
-              <span className="text-sm text-slate-300">Sector</span>
-              <span className="text-sm font-medium text-slate-100">{deal.sector}</span>
+            <div className="flex justify-between py-2 border-b border-gray-200">
+              <span className="text-sm text-gray-600">Sector</span>
+              <span className="text-sm font-medium text-gray-900">{deal.sector}</span>
             </div>
-            <div className="flex justify-between py-2 border-b border-white/10">
-              <span className="text-sm text-slate-300">Location</span>
-              <span className="text-sm font-medium text-slate-100">{deal.location}</span>
+            <div className="flex justify-between py-2 border-b border-gray-200">
+              <span className="text-sm text-gray-600">Location</span>
+              <span className="text-sm font-medium text-gray-900">{deal.location}</span>
             </div>
             {deal.lvr && (
-              <div className="flex justify-between py-2 border-b border-white/10">
-                <span className="text-sm text-slate-300">LVR</span>
-                <span className="text-sm font-medium text-slate-100">{deal.lvr}%</span>
+              <div className="flex justify-between py-2 border-b border-gray-200">
+                <span className="text-sm text-gray-600">LVR</span>
+                <span className="text-sm font-medium text-gray-900">{deal.lvr}%</span>
               </div>
             )}
           </div>
         </div>
 
         <div>
-          <h3 className="font-semibold text-slate-100 mb-3">Timeline</h3>
+          <h3 className="font-semibold text-gray-900 mb-3">Timeline</h3>
           <div className="space-y-3">
-            <div className="flex justify-between py-2 border-b border-white/10">
-              <span className="text-sm text-slate-300">Close Date</span>
-              <span className="text-sm font-medium text-slate-100">{deal.closeDate}</span>
+            <div className="flex justify-between py-2 border-b border-gray-200">
+              <span className="text-sm text-gray-600">Close Date</span>
+              <span className="text-sm font-medium text-gray-900">{deal.closeDate}</span>
             </div>
-            <div className="flex justify-between py-2 border-b border-white/10">
-              <span className="text-sm text-slate-300">Funding Date</span>
-              <span className="text-sm font-medium text-slate-100">{deal.fundingDate}</span>
+            <div className="flex justify-between py-2 border-b border-gray-200">
+              <span className="text-sm text-gray-600">Funding Date</span>
+              <span className="text-sm font-medium text-gray-900">{deal.fundingDate}</span>
             </div>
-            <div className="flex justify-between py-2 border-b border-white/10">
-              <span className="text-sm text-slate-300">Term</span>
-              <span className="text-sm font-medium text-slate-100">{deal.term} months</span>
+            <div className="flex justify-between py-2 border-b border-gray-200">
+              <span className="text-sm text-gray-600">Term</span>
+              <span className="text-sm font-medium text-gray-900">{deal.term} months</span>
             </div>
-            <div className="flex justify-between py-2 border-b border-white/10">
-              <span className="text-sm text-slate-300">Maturity</span>
-              <span className="text-sm font-medium text-slate-100">
+            <div className="flex justify-between py-2 border-b border-gray-200">
+              <span className="text-sm text-gray-600">Maturity</span>
+              <span className="text-sm font-medium text-gray-900">
                 {new Date(new Date(deal.fundingDate).setMonth(new Date(deal.fundingDate).getMonth() + deal.term)).toLocaleDateString()}
               </span>
             </div>
@@ -982,44 +982,44 @@ function DealOverviewTab({ deal }: any) {
 function DealTermsTab({ deal }: any) {
   return (
     <div className="space-y-6">
-      <div className="bg-indigo-500/10 border border-indigo-500/30 rounded-lg p-6">
-        <h3 className="font-semibold text-indigo-300 mb-4">Key Commercial Terms</h3>
+      <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-6">
+        <h3 className="font-semibold text-indigo-900 mb-4">Key Commercial Terms</h3>
         <div className="grid grid-cols-2 gap-4">
           {Object.entries(deal.keyTerms).map(([key, value]) => (
             <div key={key} className="p-3 bg-white rounded-lg">
-              <p className="text-xs text-indigo-400 uppercase tracking-wide mb-1 capitalize">
+              <p className="text-xs text-indigo-600 uppercase tracking-wide mb-1 capitalize">
                 {key.replace(/([A-Z])/g, ' $1').trim()}
               </p>
-              <p className="text-sm font-semibold text-slate-100">{value as string}</p>
+              <p className="text-sm font-semibold text-gray-900">{value as string}</p>
             </div>
           ))}
         </div>
       </div>
 
       <div>
-        <h3 className="font-semibold text-slate-100 mb-3">Investment Parameters</h3>
-        <div className="border border-white/10 rounded-lg overflow-hidden">
+        <h3 className="font-semibold text-gray-900 mb-3">Investment Parameters</h3>
+        <div className="border border-gray-300 rounded-lg overflow-hidden">
           <table className="w-full">
-            <tbody className="divide-y divide-white/10">
+            <tbody className="divide-y divide-gray-200">
               <tr>
-                <td className="px-4 py-3 bg-white/5 text-sm font-medium text-slate-100">Minimum Investment</td>
-                <td className="px-4 py-3 text-sm text-slate-100">${(deal.minInvestment / 1000).toFixed(0)}K</td>
+                <td className="px-4 py-3 bg-gray-50 text-sm font-medium text-gray-900">Minimum Investment</td>
+                <td className="px-4 py-3 text-sm text-gray-900">${(deal.minInvestment / 1000).toFixed(0)}K</td>
               </tr>
               <tr>
-                <td className="px-4 py-3 bg-white/5 text-sm font-medium text-slate-100">Maximum Investment</td>
-                <td className="px-4 py-3 text-sm text-slate-100">${(deal.maxInvestment / 1000).toFixed(0)}K</td>
+                <td className="px-4 py-3 bg-gray-50 text-sm font-medium text-gray-900">Maximum Investment</td>
+                <td className="px-4 py-3 text-sm text-gray-900">${(deal.maxInvestment / 1000).toFixed(0)}K</td>
               </tr>
               <tr>
-                <td className="px-4 py-3 bg-white/5 text-sm font-medium text-slate-100">Expected Return</td>
-                <td className="px-4 py-3 text-sm text-slate-100">{deal.expectedReturn}% per annum</td>
+                <td className="px-4 py-3 bg-gray-50 text-sm font-medium text-gray-900">Expected Return</td>
+                <td className="px-4 py-3 text-sm text-gray-900">{deal.expectedReturn}% per annum</td>
               </tr>
               <tr>
-                <td className="px-4 py-3 bg-white/5 text-sm font-medium text-slate-100">Interest Payment</td>
-                <td className="px-4 py-3 text-sm text-slate-100">Quarterly in arrears</td>
+                <td className="px-4 py-3 bg-gray-50 text-sm font-medium text-gray-900">Interest Payment</td>
+                <td className="px-4 py-3 text-sm text-gray-900">Quarterly in arrears</td>
               </tr>
               <tr>
-                <td className="px-4 py-3 bg-white/5 text-sm font-medium text-slate-100">Allocation Method</td>
-                <td className="px-4 py-3 text-sm text-slate-100">{deal.allocation}</td>
+                <td className="px-4 py-3 bg-gray-50 text-sm font-medium text-gray-900">Allocation Method</td>
+                <td className="px-4 py-3 text-sm text-gray-900">{deal.allocation}</td>
               </tr>
             </tbody>
           </table>
@@ -1043,22 +1043,22 @@ function DealDocumentsTab({ deal }: any) {
   return (
     <div className="space-y-4">
       {deal.teaserOnly ? (
-        <div className="text-center py-8 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
-          <Lock className="w-12 h-12 text-yellow-400 mx-auto mb-3" />
-          <p className="font-semibold text-yellow-300 mb-2">Limited Document Access</p>
-          <p className="text-sm text-yellow-300">
+        <div className="text-center py-8 bg-yellow-50 border border-yellow-200 rounded-lg">
+          <Lock className="w-12 h-12 text-yellow-600 mx-auto mb-3" />
+          <p className="font-semibold text-yellow-900 mb-2">Limited Document Access</p>
+          <p className="text-sm text-yellow-700">
             Full documentation is only available to investors who have submitted an EOI
           </p>
         </div>
       ) : (
         <>
           {documents.map((doc: any, idx: number) => (
-            <div key={idx} className="flex items-center justify-between p-4 border border-white/10 rounded-lg hover:bg-white/5">
+            <div key={idx} className="flex items-center justify-between p-4 border border-gray-300 rounded-lg hover:bg-gray-50">
               <div className="flex items-center gap-3">
-                <FileText className="w-5 h-5 text-slate-300" />
+                <FileText className="w-5 h-5 text-gray-600" />
                 <div>
-                  <p className="font-medium text-slate-100">{doc.name}</p>
-                  <p className="text-sm text-slate-300">{doc.type} • {doc.size} • Uploaded {doc.uploadDate}</p>
+                  <p className="font-medium text-gray-900">{doc.name}</p>
+                  <p className="text-sm text-gray-600">{doc.type} • {doc.size} • Uploaded {doc.uploadDate}</p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
@@ -1082,23 +1082,23 @@ function DealDocumentsTab({ deal }: any) {
 function DealQATab({ deal }: any) {
   return (
     <div className="space-y-4">
-      <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
+      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
         <div className="flex items-start gap-3">
-          <Info className="w-5 h-5 text-blue-400 mt-0.5" />
+          <Info className="w-5 h-5 text-blue-600 mt-0.5" />
           <div>
-            <p className="font-semibold text-blue-300 mb-1">Q&A Forum</p>
-            <p className="text-sm text-blue-300">
+            <p className="font-semibold text-blue-900 mb-1">Q&A Forum</p>
+            <p className="text-sm text-blue-700">
               Submit questions about this deal and view responses from the fund manager. All Q&A is visible to investors with access.
             </p>
           </div>
         </div>
       </div>
 
-      <div className="border border-white/10 rounded-lg p-4">
+      <div className="border border-gray-300 rounded-lg p-4">
         <textarea
           placeholder="Type your question here..."
           rows={3}
-          className="w-full px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
         <div className="flex justify-end mt-2">
           <Button size="sm">
@@ -1124,14 +1124,14 @@ function DealQATab({ deal }: any) {
             date: '2024-02-05'
           }
         ].map((qa, idx) => (
-          <div key={idx} className="border border-white/10 rounded-lg p-4">
+          <div key={idx} className="border border-gray-300 rounded-lg p-4">
             <div className="mb-3">
-              <p className="font-medium text-slate-100 mb-1">{qa.question}</p>
-              <p className="text-xs text-slate-400">{qa.askedBy} • {qa.date}</p>
+              <p className="font-medium text-gray-900 mb-1">{qa.question}</p>
+              <p className="text-xs text-gray-500">{qa.askedBy} • {qa.date}</p>
             </div>
             <div className="pl-4 border-l-2 border-indigo-300">
-              <p className="text-sm text-slate-300">{qa.answer}</p>
-              <p className="text-xs text-indigo-400 mt-2">— Fund Manager</p>
+              <p className="text-sm text-gray-700">{qa.answer}</p>
+              <p className="text-xs text-indigo-600 mt-2">— Fund Manager</p>
             </div>
           </div>
         ))}
@@ -1145,27 +1145,27 @@ function DealEOITab({ deal, investorProfile }: any) {
 
   return (
     <div className="space-y-6">
-      <div className="bg-indigo-500/10 border border-indigo-500/30 rounded-lg p-6">
-        <h3 className="font-semibold text-indigo-300 mb-3">Expression of Interest</h3>
-        <p className="text-sm text-indigo-300 mb-4">
+      <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-6">
+        <h3 className="font-semibold text-indigo-900 mb-3">Expression of Interest</h3>
+        <p className="text-sm text-indigo-700 mb-4">
           Submit your non-binding expression of interest for this deal. Your EOI will be reviewed by the fund manager
           and you'll receive allocation confirmation before the funding date.
         </p>
         
         <div className="grid grid-cols-2 gap-4 mb-4">
           <div className="p-3 bg-white rounded-lg">
-            <p className="text-xs text-indigo-400 mb-1">Available Capital</p>
-            <p className="text-lg font-bold text-indigo-300">${(investorProfile.availableCapital / 1000000).toFixed(1)}M</p>
+            <p className="text-xs text-indigo-600 mb-1">Available Capital</p>
+            <p className="text-lg font-bold text-indigo-900">${(investorProfile.availableCapital / 1000000).toFixed(1)}M</p>
           </div>
           <div className="p-3 bg-white rounded-lg">
-            <p className="text-xs text-indigo-400 mb-1">Concentration Limit</p>
-            <p className="text-lg font-bold text-indigo-300">{investorProfile.concentrationLimits.perSPV}% per SPV</p>
+            <p className="text-xs text-indigo-600 mb-1">Concentration Limit</p>
+            <p className="text-lg font-bold text-indigo-900">{investorProfile.concentrationLimits.perSPV}% per SPV</p>
           </div>
         </div>
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-slate-100 mb-2">Investment Amount</label>
+        <label className="block text-sm font-medium text-gray-900 mb-2">Investment Amount</label>
         <div className="flex items-center gap-4">
           <input
             type="number"
@@ -1174,9 +1174,9 @@ function DealEOITab({ deal, investorProfile }: any) {
             min={deal.minInvestment}
             max={deal.maxInvestment}
             step={50000}
-            className="flex-1 px-4 py-3 border border-white/10 rounded-lg text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="flex-1 px-4 py-3 border border-gray-300 rounded-lg text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
-          <div className="text-sm text-slate-300">
+          <div className="text-sm text-gray-600">
             <p>Min: ${(deal.minInvestment / 1000).toFixed(0)}K</p>
             <p>Max: ${(deal.maxInvestment / 1000).toFixed(0)}K</p>
           </div>
@@ -1184,37 +1184,37 @@ function DealEOITab({ deal, investorProfile }: any) {
         
         {/* Validation */}
         {eoiAmount > investorProfile.availableCapital && (
-          <p className="text-sm text-red-400 mt-2">⚠️ Amount exceeds available capital</p>
+          <p className="text-sm text-red-600 mt-2">⚠️ Amount exceeds available capital</p>
         )}
         {eoiAmount > deal.maxInvestment && (
-          <p className="text-sm text-red-400 mt-2">⚠️ Amount exceeds maximum investment</p>
+          <p className="text-sm text-red-600 mt-2">⚠️ Amount exceeds maximum investment</p>
         )}
         {eoiAmount < deal.minInvestment && (
-          <p className="text-sm text-orange-400 mt-2">⚠️ Amount below minimum investment</p>
+          <p className="text-sm text-orange-600 mt-2">⚠️ Amount below minimum investment</p>
         )}
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-slate-100 mb-2">Additional Comments (Optional)</label>
+        <label className="block text-sm font-medium text-gray-900 mb-2">Additional Comments (Optional)</label>
         <textarea
           rows={4}
           placeholder="Any specific requirements or questions..."
-          className="w-full px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
       </div>
 
-      <div className="flex items-start gap-3 p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
-        <AlertCircle className="w-5 h-5 text-yellow-400 mt-0.5" />
-        <div className="text-sm text-yellow-300">
+      <div className="flex items-start gap-3 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+        <AlertCircle className="w-5 h-5 text-yellow-600 mt-0.5" />
+        <div className="text-sm text-yellow-700">
           <p className="font-medium mb-1">Non-Binding EOI</p>
           <p>This expression of interest is non-binding. Final allocation will be confirmed by the fund manager based on available capacity and allocation rules.</p>
         </div>
       </div>
 
-      <div className="flex items-center justify-between pt-4 border-t border-white/10">
+      <div className="flex items-center justify-between pt-4 border-t border-gray-300">
         <div>
-          <p className="text-sm text-slate-300">Your EOI Amount</p>
-          <p className="text-2xl font-bold text-slate-100">${(eoiAmount / 1000000).toFixed(2)}M</p>
+          <p className="text-sm text-gray-600">Your EOI Amount</p>
+          <p className="text-2xl font-bold text-gray-900">${(eoiAmount / 1000000).toFixed(2)}M</p>
         </div>
         <Button 
           className="bg-indigo-600 hover:bg-indigo-700 text-white"
@@ -1233,10 +1233,10 @@ function EOIModal({ deal, investorProfile, onClose }: any) {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-        <div className="p-6 border-b border-white/10">
+        <div className="p-6 border-b border-gray-300">
           <div className="flex items-center justify-between">
-            <h2 className="text-xl font-bold text-slate-100">Submit Expression of Interest</h2>
-            <button onClick={onClose} className="text-gray-400 hover:text-slate-300">
+            <h2 className="text-xl font-bold text-gray-900">Submit Expression of Interest</h2>
+            <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
               <X className="w-5 h-5" />
             </button>
           </div>

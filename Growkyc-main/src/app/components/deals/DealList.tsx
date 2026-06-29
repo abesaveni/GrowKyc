@@ -68,7 +68,7 @@ export function DealList({ onNavigate }: { onNavigate?: (page: string, id?: stri
               <select
                 value={locationFilter}
                 onChange={(e) => setLocationFilter(e.target.value)}
-                className="w-full px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary h-10"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary h-10"
               >
                 <option value="all">All States</option>
                 <option value="VIC">Victoria</option>
@@ -83,7 +83,7 @@ export function DealList({ onNavigate }: { onNavigate?: (page: string, id?: stri
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="w-full px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary h-10"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary h-10"
               >
                 <option value="all">All Status</option>
                 <option value="in_auction">Live Auction</option>
@@ -97,7 +97,7 @@ export function DealList({ onNavigate }: { onNavigate?: (page: string, id?: stri
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="w-full px-3 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary h-10"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary h-10"
               >
                 <option value="newest">Newest</option>
                 <option value="price-low">Price: Low to High</option>
@@ -119,10 +119,10 @@ export function DealList({ onNavigate }: { onNavigate?: (page: string, id?: stri
       {/* Results Summary */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-slate-100">
+          <h2 className="text-2xl font-bold text-gray-900">
             {filteredProperties.length} {filteredProperties.length === 1 ? 'Property' : 'Properties'}
           </h2>
-          <p className="text-sm text-slate-300 mt-1">
+          <p className="text-sm text-gray-600 mt-1">
             Investment opportunities across Australia
           </p>
         </div>
@@ -149,8 +149,8 @@ export function DealList({ onNavigate }: { onNavigate?: (page: string, id?: stri
       {filteredProperties.length === 0 && (
         <div className="text-center py-16">
           <Home className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-          <h3 className="text-xl font-semibold text-slate-100 mb-2">No properties found</h3>
-          <p className="text-slate-300 mb-4">Try adjusting your search criteria</p>
+          <h3 className="text-xl font-semibold text-gray-900 mb-2">No properties found</h3>
+          <p className="text-gray-600 mb-4">Try adjusting your search criteria</p>
           <Button 
             variant="outline" 
             onClick={() => {
@@ -218,7 +218,7 @@ function PropertyCard({ property, image, calculateLVR, onNavigate }: PropertyCar
   return (
     <Card className="overflow-hidden group hover:shadow-2xl transition-all duration-300 cursor-pointer">
       {/* Property Image */}
-      <div className="relative h-64 overflow-hidden bg-white/5">
+      <div className="relative h-64 overflow-hidden bg-gray-100">
         <ImageWithFallback
           src={image}
           alt={property.property.address}
@@ -241,10 +241,10 @@ function PropertyCard({ property, image, calculateLVR, onNavigate }: PropertyCar
         {/* Action Buttons */}
         <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
           <button className="p-2 bg-white/90 backdrop-blur-sm rounded-lg hover:bg-white transition-colors">
-            <Heart className="w-4 h-4 text-slate-300" />
+            <Heart className="w-4 h-4 text-gray-700" />
           </button>
           <button className="p-2 bg-white/90 backdrop-blur-sm rounded-lg hover:bg-white transition-colors">
-            <Share2 className="w-4 h-4 text-slate-300" />
+            <Share2 className="w-4 h-4 text-gray-700" />
           </button>
         </div>
 
@@ -271,10 +271,10 @@ function PropertyCard({ property, image, calculateLVR, onNavigate }: PropertyCar
       <CardContent className="p-5">
         {/* Address */}
         <div className="mb-4">
-          <h3 className="font-bold text-slate-100 text-lg mb-1 line-clamp-1">
+          <h3 className="font-bold text-gray-900 text-lg mb-1 line-clamp-1">
             {property.property.address}
           </h3>
-          <div className="flex items-center gap-1 text-slate-300">
+          <div className="flex items-center gap-1 text-gray-600">
             <MapPin className="w-4 h-4 flex-shrink-0" />
             <p className="text-sm">
               {property.property.suburb}, {property.property.state} {property.property.postcode}
@@ -285,16 +285,16 @@ function PropertyCard({ property, image, calculateLVR, onNavigate }: PropertyCar
         {/* Price and Investment Details */}
         <div className="space-y-2 mb-4 pb-4 border-b">
           <div className="flex justify-between items-center">
-            <span className="text-sm text-slate-300">Loan Amount</span>
-            <span className="text-xl font-bold text-slate-100">
+            <span className="text-sm text-gray-600">Loan Amount</span>
+            <span className="text-xl font-bold text-gray-900">
               ${(property.outstandingDebt / 1000).toFixed(0)}k
             </span>
           </div>
           
           {property.status === 'in_auction' && property.currentBid && (
             <div className="flex justify-between items-center">
-              <span className="text-sm text-slate-300">Current Bid</span>
-              <span className="text-lg font-bold text-green-400">
+              <span className="text-sm text-gray-600">Current Bid</span>
+              <span className="text-lg font-bold text-green-600">
                 ${(property.currentBid / 1000).toFixed(0)}k
               </span>
             </div>
@@ -303,10 +303,10 @@ function PropertyCard({ property, image, calculateLVR, onNavigate }: PropertyCar
           {/* Buy Now Price - Always Show */}
           <div className="flex justify-between items-center pt-2 border-t">
             <div className="flex items-center gap-1">
-              <ShoppingCart className="w-4 h-4 text-green-400" />
-              <span className="text-sm text-slate-300 font-medium">Buy Now Price</span>
+              <ShoppingCart className="w-4 h-4 text-green-600" />
+              <span className="text-sm text-gray-600 font-medium">Buy Now Price</span>
             </div>
-            <span className="text-xl font-bold text-green-400">
+            <span className="text-xl font-bold text-green-600">
               ${((buyNowPrice) / 1000).toFixed(0)}k
             </span>
           </div>
@@ -315,48 +315,48 @@ function PropertyCard({ property, image, calculateLVR, onNavigate }: PropertyCar
         {/* Investment Metrics */}
         <div className="grid grid-cols-3 gap-3 mb-4">
           <div className="text-center">
-            <p className="text-xs text-slate-400 mb-1">LVR</p>
-            <p className="text-sm font-bold text-indigo-400">
+            <p className="text-xs text-gray-500 mb-1">LVR</p>
+            <p className="text-sm font-bold text-indigo-600">
               {calculateLVR(property.outstandingDebt, property.valuation.amount)}%
             </p>
           </div>
           <div className="text-center">
-            <p className="text-xs text-slate-400 mb-1">Return</p>
-            <p className="text-sm font-bold text-green-400">12.4%</p>
+            <p className="text-xs text-gray-500 mb-1">Return</p>
+            <p className="text-sm font-bold text-green-600">12.4%</p>
           </div>
           <div className="text-center">
-            <p className="text-xs text-slate-400 mb-1">Type</p>
-            <p className="text-sm font-bold text-slate-100">{property.property.propertyType}</p>
+            <p className="text-xs text-gray-500 mb-1">Type</p>
+            <p className="text-sm font-bold text-gray-900">{property.property.propertyType}</p>
           </div>
         </div>
 
         {/* Auction Timer or Date */}
         {property.status === 'in_auction' && (
-          <div className="mb-4 p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
+          <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4 text-red-400" />
-                <span className="text-xs font-medium text-slate-300">Ends in</span>
+                <Clock className="w-4 h-4 text-red-600" />
+                <span className="text-xs font-medium text-gray-700">Ends in</span>
               </div>
-              <span className="text-sm font-bold text-red-400">2h 45m</span>
+              <span className="text-sm font-bold text-red-600">2h 45m</span>
             </div>
           </div>
         )}
 
         {property.status === 'active' && (
-          <div className="mb-4 p-3 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+          <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4 text-blue-400" />
-                <span className="text-xs font-medium text-slate-300">Auction</span>
+                <Calendar className="w-4 h-4 text-blue-600" />
+                <span className="text-xs font-medium text-gray-700">Auction</span>
               </div>
-              <span className="text-xs font-bold text-blue-400">18 Feb 2026</span>
+              <span className="text-xs font-bold text-blue-600">18 Feb 2026</span>
             </div>
           </div>
         )}
 
         {/* Deal ID and Bids */}
-        <div className="flex items-center justify-between text-xs text-slate-400 mb-4">
+        <div className="flex items-center justify-between text-xs text-gray-500 mb-4">
           <span>ID: {property.caseNumber}</span>
           {property.bidCount && property.bidCount > 0 && (
             <span className="font-medium">{property.bidCount} bids</span>

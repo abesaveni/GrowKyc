@@ -124,16 +124,16 @@ export function QuarterlyAuditPacks({ onNavigate, role, onBack }: QuarterlyAudit
   ];
 
   const statusConfig = {
-    complete: { label: 'Complete', color: 'bg-green-500/15 text-green-300 border-green-300', icon: CheckCircle },
-    pending: { label: 'Pending Review', color: 'bg-yellow-500/15 text-yellow-300 border-yellow-300', icon: Clock },
-    in_progress: { label: 'In Progress', color: 'bg-blue-500/15 text-blue-300 border-blue-300', icon: RefreshCw },
-    not_started: { label: 'Not Started', color: 'bg-white/5 text-slate-300 border-white/10', icon: AlertCircle }
+    complete: { label: 'Complete', color: 'bg-green-100 text-green-700 border-green-300', icon: CheckCircle },
+    pending: { label: 'Pending Review', color: 'bg-yellow-100 text-yellow-700 border-yellow-300', icon: Clock },
+    in_progress: { label: 'In Progress', color: 'bg-blue-100 text-blue-700 border-blue-300', icon: RefreshCw },
+    not_started: { label: 'Not Started', color: 'bg-gray-100 text-gray-700 border-gray-300', icon: AlertCircle }
   };
 
   const sectionStatusConfig = {
-    complete: { color: 'bg-green-600', icon: CheckCircle, textColor: 'text-green-300' },
-    pending: { color: 'bg-yellow-600', icon: Clock, textColor: 'text-yellow-300' },
-    missing: { color: 'bg-red-600', icon: AlertCircle, textColor: 'text-red-300' }
+    complete: { color: 'bg-green-600', icon: CheckCircle, textColor: 'text-green-700' },
+    pending: { color: 'bg-yellow-600', icon: Clock, textColor: 'text-yellow-700' },
+    missing: { color: 'bg-red-600', icon: AlertCircle, textColor: 'text-red-700' }
   };
 
   // Pack Detail View
@@ -151,8 +151,8 @@ export function QuarterlyAuditPacks({ onNavigate, role, onBack }: QuarterlyAudit
 
           <div className="flex items-start justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-slate-100">{pack.period} Audit Pack</h1>
-              <p className="text-slate-300 mt-1">{pack.fund}</p>
+              <h1 className="text-3xl font-bold text-gray-900">{pack.period} Audit Pack</h1>
+              <p className="text-gray-600 mt-1">{pack.fund}</p>
             </div>
             <div className="flex gap-2">
               <Button variant="outline">
@@ -168,27 +168,27 @@ export function QuarterlyAuditPacks({ onNavigate, role, onBack }: QuarterlyAudit
         </div>
 
         {/* Status Bar */}
-        <Card className={`border-2 ${pack.status === 'complete' ? 'border-green-300 bg-green-500/10' : 'border-blue-300 bg-blue-500/10'}`}>
+        <Card className={`border-2 ${pack.status === 'complete' ? 'border-green-300 bg-green-50' : 'border-blue-300 bg-blue-50'}`}>
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <div className={`w-16 h-16 rounded-full flex items-center justify-center ${pack.status === 'complete' ? 'bg-green-500/20' : 'bg-blue-500/20'}`}>
-                  <Package className={`w-8 h-8 ${pack.status === 'complete' ? 'text-green-300' : 'text-blue-300'}`} />
+                <div className={`w-16 h-16 rounded-full flex items-center justify-center ${pack.status === 'complete' ? 'bg-green-200' : 'bg-blue-200'}`}>
+                  <Package className={`w-8 h-8 ${pack.status === 'complete' ? 'text-green-700' : 'text-blue-700'}`} />
                 </div>
                 <div>
-                  <p className={`text-2xl font-bold ${pack.status === 'complete' ? 'text-green-300' : 'text-blue-300'}`}>
+                  <p className={`text-2xl font-bold ${pack.status === 'complete' ? 'text-green-900' : 'text-blue-900'}`}>
                     {pack.completeness}% Complete
                   </p>
-                  <p className={`text-sm ${pack.status === 'complete' ? 'text-green-300' : 'text-blue-300'}`}>
+                  <p className={`text-sm ${pack.status === 'complete' ? 'text-green-700' : 'text-blue-700'}`}>
                     {pack.documents} documents included
                   </p>
                 </div>
               </div>
               {pack.status === 'complete' && pack.auditor && (
                 <div className="text-right">
-                  <p className="text-sm text-slate-300">Auditor</p>
-                  <p className="font-bold text-slate-100">{pack.auditor}</p>
-                  <p className="text-xs text-slate-400">Generated {pack.generatedDate}</p>
+                  <p className="text-sm text-gray-600">Auditor</p>
+                  <p className="font-bold text-gray-900">{pack.auditor}</p>
+                  <p className="text-xs text-gray-500">Generated {pack.generatedDate}</p>
                 </div>
               )}
             </div>
@@ -197,7 +197,7 @@ export function QuarterlyAuditPacks({ onNavigate, role, onBack }: QuarterlyAudit
 
         {/* Sections */}
         <div>
-          <h2 className="text-xl font-bold text-slate-100 mb-4">Audit Pack Sections</h2>
+          <h2 className="text-xl font-bold text-gray-900 mb-4">Audit Pack Sections</h2>
           <div className="grid grid-cols-1 gap-4">
             {pack.sections.map((section) => {
               const sectionStatus = sectionStatusConfig[section.status];
@@ -211,13 +211,13 @@ export function QuarterlyAuditPacks({ onNavigate, role, onBack }: QuarterlyAudit
                         <div className={`w-2 h-16 ${sectionStatus.color} rounded`} />
                         <div className="flex-1">
                           <div className="flex items-center gap-3 mb-2">
-                            <h3 className="text-lg font-bold text-slate-100">{section.name}</h3>
+                            <h3 className="text-lg font-bold text-gray-900">{section.name}</h3>
                             <span className={`flex items-center gap-1 text-sm font-semibold ${sectionStatus.textColor}`}>
                               <SectionIcon className="w-4 h-4" />
                               {section.status === 'complete' ? 'Complete' : section.status === 'pending' ? 'In Review' : 'Missing'}
                             </span>
                           </div>
-                          <div className="flex items-center gap-6 text-sm text-slate-300">
+                          <div className="flex items-center gap-6 text-sm text-gray-600">
                             <span>
                               <FileText className="w-4 h-4 inline mr-1" />
                               {section.documents} documents
@@ -264,13 +264,13 @@ export function QuarterlyAuditPacks({ onNavigate, role, onBack }: QuarterlyAudit
 
         {/* Actions */}
         {pack.status === 'in_progress' && (
-          <Card className="border-2 border-blue-300 bg-blue-500/10">
+          <Card className="border-2 border-blue-300 bg-blue-50">
             <CardContent className="p-6">
               <div className="flex items-start gap-3">
-                <RefreshCw className="w-6 h-6 text-blue-400 mt-1" />
+                <RefreshCw className="w-6 h-6 text-blue-600 mt-1" />
                 <div className="flex-1">
-                  <h3 className="font-bold text-blue-300 mb-2">Complete This Audit Pack</h3>
-                  <p className="text-sm text-blue-300 mb-4">
+                  <h3 className="font-bold text-blue-900 mb-2">Complete This Audit Pack</h3>
+                  <p className="text-sm text-blue-800 mb-4">
                     {pack.sections.filter(s => s.status !== 'complete').length} sections remaining. 
                     Click "Generate" on missing sections to auto-populate from your fund data.
                   </p>
@@ -299,8 +299,8 @@ export function QuarterlyAuditPacks({ onNavigate, role, onBack }: QuarterlyAudit
         )}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-slate-100">Quarterly Audit Packs</h1>
-            <p className="text-slate-300 mt-1">One-click quarterly audit pack generation with automatic data compilation</p>
+            <h1 className="text-3xl font-bold text-gray-900">Quarterly Audit Packs</h1>
+            <p className="text-gray-600 mt-1">One-click quarterly audit pack generation with automatic data compilation</p>
           </div>
           {(role === 'fund-manager' || role === 'fund-accountant' || role === 'cfo') && (
             <Button className="bg-indigo-600 hover:bg-indigo-700">
@@ -317,10 +317,10 @@ export function QuarterlyAuditPacks({ onNavigate, role, onBack }: QuarterlyAudit
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-slate-300">Total Packs</p>
-                <p className="text-3xl font-bold text-slate-100 mt-1">{auditPacks.length}</p>
+                <p className="text-sm text-gray-600">Total Packs</p>
+                <p className="text-3xl font-bold text-gray-900 mt-1">{auditPacks.length}</p>
               </div>
-              <Package className="w-8 h-8 text-indigo-400" />
+              <Package className="w-8 h-8 text-indigo-600" />
             </div>
           </CardContent>
         </Card>
@@ -329,12 +329,12 @@ export function QuarterlyAuditPacks({ onNavigate, role, onBack }: QuarterlyAudit
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-slate-300">Complete</p>
-                <p className="text-3xl font-bold text-green-400 mt-1">
+                <p className="text-sm text-gray-600">Complete</p>
+                <p className="text-3xl font-bold text-green-600 mt-1">
                   {auditPacks.filter(p => p.status === 'complete').length}
                 </p>
               </div>
-              <CheckCircle className="w-8 h-8 text-green-400" />
+              <CheckCircle className="w-8 h-8 text-green-600" />
             </div>
           </CardContent>
         </Card>
@@ -343,12 +343,12 @@ export function QuarterlyAuditPacks({ onNavigate, role, onBack }: QuarterlyAudit
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-slate-300">In Progress</p>
-                <p className="text-3xl font-bold text-blue-400 mt-1">
+                <p className="text-sm text-gray-600">In Progress</p>
+                <p className="text-3xl font-bold text-blue-600 mt-1">
                   {auditPacks.filter(p => p.status === 'in_progress').length}
                 </p>
               </div>
-              <RefreshCw className="w-8 h-8 text-blue-400" />
+              <RefreshCw className="w-8 h-8 text-blue-600" />
             </div>
           </CardContent>
         </Card>
@@ -357,12 +357,12 @@ export function QuarterlyAuditPacks({ onNavigate, role, onBack }: QuarterlyAudit
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-slate-300">Total Documents</p>
-                <p className="text-3xl font-bold text-purple-400 mt-1">
+                <p className="text-sm text-gray-600">Total Documents</p>
+                <p className="text-3xl font-bold text-purple-600 mt-1">
                   {auditPacks.reduce((sum, p) => sum + p.documents, 0)}
                 </p>
               </div>
-              <FileText className="w-8 h-8 text-purple-400" />
+              <FileText className="w-8 h-8 text-purple-600" />
             </div>
           </CardContent>
         </Card>
@@ -383,26 +383,26 @@ export function QuarterlyAuditPacks({ onNavigate, role, onBack }: QuarterlyAudit
               <CardContent className="p-6">
                 <div className="flex items-start justify-between">
                   <div className="flex items-start gap-4 flex-1">
-                    <div className="w-12 h-12 bg-indigo-500/15 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Package className="w-6 h-6 text-indigo-400" />
+                    <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Package className="w-6 h-6 text-indigo-600" />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-lg font-bold text-slate-100">{pack.period} Audit Pack</h3>
+                        <h3 className="text-lg font-bold text-gray-900">{pack.period} Audit Pack</h3>
                         <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${status.color}`}>
                           <StatusIcon className="w-3 h-3 inline mr-1" />
                           {status.label}
                         </span>
                       </div>
 
-                      <p className="text-sm text-slate-300 mb-3">{pack.fund}</p>
+                      <p className="text-sm text-gray-600 mb-3">{pack.fund}</p>
 
                       <div className="space-y-2">
                         <div className="flex items-center justify-between text-sm">
-                          <span className="text-slate-300">Completeness</span>
-                          <span className="font-semibold text-slate-100">{pack.completeness}%</span>
+                          <span className="text-gray-600">Completeness</span>
+                          <span className="font-semibold text-gray-900">{pack.completeness}%</span>
                         </div>
-                        <div className="w-full bg-white/10 rounded-full h-2">
+                        <div className="w-full bg-gray-200 rounded-full h-2">
                           <div
                             className={`h-2 rounded-full ${pack.completeness === 100 ? 'bg-green-600' : 'bg-blue-600'}`}
                             style={{ width: `${pack.completeness}%` }}
@@ -410,7 +410,7 @@ export function QuarterlyAuditPacks({ onNavigate, role, onBack }: QuarterlyAudit
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-6 mt-3 text-sm text-slate-300">
+                      <div className="flex items-center gap-6 mt-3 text-sm text-gray-600">
                         <span>
                           <FileText className="w-4 h-4 inline mr-1" />
                           {pack.documents} documents
@@ -442,28 +442,28 @@ export function QuarterlyAuditPacks({ onNavigate, role, onBack }: QuarterlyAudit
       </div>
 
       {/* Feature Highlight */}
-      <Card className="border-2 border-green-300 bg-green-500/10">
+      <Card className="border-2 border-green-300 bg-green-50">
         <CardContent className="p-6">
           <div className="flex items-start gap-3">
-            <CheckCircle className="w-6 h-6 text-green-400 mt-1" />
+            <CheckCircle className="w-6 h-6 text-green-600 mt-1" />
             <div>
-              <h3 className="font-bold text-green-300 mb-2">One-Click Audit Pack Generation</h3>
-              <p className="text-sm text-green-300 mb-4">
+              <h3 className="font-bold text-green-900 mb-2">One-Click Audit Pack Generation</h3>
+              <p className="text-sm text-green-800 mb-4">
                 Automatically compile all required documents, statements, and schedules from your fund operations. 
                 Each pack includes:
               </p>
               <div className="grid grid-cols-3 gap-4 text-sm">
                 <div>
-                  <p className="font-semibold text-green-300">Financial Statements</p>
-                  <p className="text-green-300">Balance sheet, P&L, cashflow</p>
+                  <p className="font-semibold text-green-900">Financial Statements</p>
+                  <p className="text-green-700">Balance sheet, P&L, cashflow</p>
                 </div>
                 <div>
-                  <p className="font-semibold text-green-300">Portfolio Reports</p>
-                  <p className="text-green-300">Holdings, valuations, transactions</p>
+                  <p className="font-semibold text-green-900">Portfolio Reports</p>
+                  <p className="text-green-700">Holdings, valuations, transactions</p>
                 </div>
                 <div>
-                  <p className="font-semibold text-green-300">Supporting Schedules</p>
-                  <p className="text-green-300">NAV, fees, capital activity</p>
+                  <p className="font-semibold text-green-900">Supporting Schedules</p>
+                  <p className="text-green-700">NAV, fees, capital activity</p>
                 </div>
               </div>
             </div>

@@ -32,28 +32,28 @@ export function Commissions({ onNavigate, onBack }: CommissionsProps) {
       value: '$127,450',
       change: '+18.2%',
       icon: DollarSign,
-      color: 'bg-green-500/15 text-green-400'
+      color: 'bg-green-100 text-green-600'
     },
     {
       label: 'Pending Commissions',
       value: '$34,200',
       change: '8 deals',
       icon: Clock,
-      color: 'bg-yellow-500/15 text-yellow-400'
+      color: 'bg-yellow-100 text-yellow-600'
     },
     {
       label: 'Paid This Month',
       value: '$18,750',
       change: '+22.5%',
       icon: CheckCircle,
-      color: 'bg-blue-500/15 text-blue-400'
+      color: 'bg-blue-100 text-blue-600'
     },
     {
       label: 'Average Commission',
       value: '$4,250',
       change: '+5.3%',
       icon: TrendingUp,
-      color: 'bg-purple-500/15 text-purple-400'
+      color: 'bg-purple-100 text-purple-600'
     }
   ];
 
@@ -123,15 +123,15 @@ export function Commissions({ onNavigate, onBack }: CommissionsProps) {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'paid':
-        return 'bg-green-500/15 text-green-300 border-green-300';
+        return 'bg-green-100 text-green-700 border-green-300';
       case 'pending':
-        return 'bg-yellow-500/15 text-yellow-300 border-yellow-300';
+        return 'bg-yellow-100 text-yellow-700 border-yellow-300';
       case 'approved':
-        return 'bg-blue-500/15 text-blue-300 border-blue-300';
+        return 'bg-blue-100 text-blue-700 border-blue-300';
       case 'processing':
-        return 'bg-purple-500/15 text-purple-300 border-purple-300';
+        return 'bg-purple-100 text-purple-700 border-purple-300';
       default:
-        return 'bg-white/5 text-slate-300 border-white/10';
+        return 'bg-gray-100 text-gray-700 border-gray-300';
     }
   };
 
@@ -161,8 +161,8 @@ export function Commissions({ onNavigate, onBack }: CommissionsProps) {
             </Button>
           )}
           <div>
-            <h1 className="text-3xl font-bold text-slate-100">Commission Management</h1>
-            <p className="text-slate-300 mt-1">Track and manage your commission earnings</p>
+            <h1 className="text-3xl font-bold text-gray-900">Commission Management</h1>
+            <p className="text-gray-600 mt-1">Track and manage your commission earnings</p>
           </div>
         </div>
         <div className="flex gap-2">
@@ -186,9 +186,9 @@ export function Commissions({ onNavigate, onBack }: CommissionsProps) {
               <CardContent className="p-6">
                 <div className="flex items-start justify-between">
                   <div>
-                    <p className="text-sm text-slate-300 mb-1">{stat.label}</p>
-                    <p className="text-2xl font-bold text-slate-100">{stat.value}</p>
-                    <p className="text-sm text-green-400 mt-1">{stat.change}</p>
+                    <p className="text-sm text-gray-600 mb-1">{stat.label}</p>
+                    <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
+                    <p className="text-sm text-green-600 mt-1">{stat.change}</p>
                   </div>
                   <div className={`w-12 h-12 rounded-lg ${stat.color} flex items-center justify-center`}>
                     <Icon className="w-6 h-6" />
@@ -211,13 +211,13 @@ export function Commissions({ onNavigate, onBack }: CommissionsProps) {
                 placeholder="Search by deal, client, or ID..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
             <select
               value={selectedPeriod}
               onChange={(e) => setSelectedPeriod(e.target.value)}
-              className="px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
             >
               <option value="current">Current Month</option>
               <option value="last-month">Last Month</option>
@@ -225,7 +225,7 @@ export function Commissions({ onNavigate, onBack }: CommissionsProps) {
               <option value="ytd">Year to Date</option>
               <option value="all">All Time</option>
             </select>
-            <select className="px-4 py-2 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            <select className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
               <option value="all">All Statuses</option>
               <option value="paid">Paid</option>
               <option value="pending">Pending</option>
@@ -244,63 +244,63 @@ export function Commissions({ onNavigate, onBack }: CommissionsProps) {
         <CardContent className="p-0">
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-white/5 border-b">
+              <thead className="bg-gray-50 border-b">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Commission ID
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Deal / Client
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Type
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Loan Amount
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Rate
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Commission
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Date
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Actions
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-white/10">
+              <tbody className="bg-white divide-y divide-gray-200">
                 {commissionData.map((commission) => {
                   const StatusIcon = getStatusIcon(commission.status);
                   return (
-                    <tr key={commission.id} className="hover:bg-white/5">
+                    <tr key={commission.id} className="hover:bg-gray-50">
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm font-medium text-slate-100">{commission.id}</div>
+                        <div className="text-sm font-medium text-gray-900">{commission.id}</div>
                       </td>
                       <td className="px-6 py-4">
-                        <div className="text-sm font-medium text-slate-100">{commission.deal}</div>
-                        <div className="text-sm text-slate-400">{commission.client}</div>
+                        <div className="text-sm font-medium text-gray-900">{commission.deal}</div>
+                        <div className="text-sm text-gray-500">{commission.client}</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-slate-100">{commission.type}</div>
+                        <div className="text-sm text-gray-900">{commission.type}</div>
                         {commission.period && (
-                          <div className="text-xs text-slate-400">{commission.period}</div>
+                          <div className="text-xs text-gray-500">{commission.period}</div>
                         )}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm font-medium text-slate-100">{commission.loanAmount}</div>
+                        <div className="text-sm font-medium text-gray-900">{commission.loanAmount}</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-slate-100">{commission.commissionRate}</div>
+                        <div className="text-sm text-gray-900">{commission.commissionRate}</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm font-bold text-slate-100">{commission.commissionAmount}</div>
+                        <div className="text-sm font-bold text-gray-900">{commission.commissionAmount}</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium border ${getStatusColor(commission.status)}`}>
@@ -309,7 +309,7 @@ export function Commissions({ onNavigate, onBack }: CommissionsProps) {
                         </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-slate-100">
+                        <div className="text-sm text-gray-900">
                           {commission.paidDate ? `Paid: ${commission.paidDate}` : 
                            commission.expectedPayment ? `Expected: ${commission.expectedPayment}` :
                            `Settlement: ${commission.settlementDate}`}
@@ -344,31 +344,31 @@ export function Commissions({ onNavigate, onBack }: CommissionsProps) {
             <div className="space-y-4">
               <div className="flex justify-between items-center pb-3 border-b">
                 <div>
-                  <p className="font-medium text-slate-100">Commercial Mortgage</p>
-                  <p className="text-sm text-slate-400">Standard rate</p>
+                  <p className="font-medium text-gray-900">Commercial Mortgage</p>
+                  <p className="text-sm text-gray-500">Standard rate</p>
                 </div>
-                <p className="text-lg font-bold text-indigo-400">0.8%</p>
+                <p className="text-lg font-bold text-indigo-600">0.8%</p>
               </div>
               <div className="flex justify-between items-center pb-3 border-b">
                 <div>
-                  <p className="font-medium text-slate-100">SME Term Loan</p>
-                  <p className="text-sm text-slate-400">Standard rate</p>
+                  <p className="font-medium text-gray-900">SME Term Loan</p>
+                  <p className="text-sm text-gray-500">Standard rate</p>
                 </div>
-                <p className="text-lg font-bold text-indigo-400">1.0%</p>
+                <p className="text-lg font-bold text-indigo-600">1.0%</p>
               </div>
               <div className="flex justify-between items-center pb-3 border-b">
                 <div>
-                  <p className="font-medium text-slate-100">Asset Finance</p>
-                  <p className="text-sm text-slate-400">Standard rate</p>
+                  <p className="font-medium text-gray-900">Asset Finance</p>
+                  <p className="text-sm text-gray-500">Standard rate</p>
                 </div>
-                <p className="text-lg font-bold text-indigo-400">1.2%</p>
+                <p className="text-lg font-bold text-indigo-600">1.2%</p>
               </div>
               <div className="flex justify-between items-center">
                 <div>
-                  <p className="font-medium text-slate-100">Trail Commission</p>
-                  <p className="text-sm text-slate-400">Quarterly payments</p>
+                  <p className="font-medium text-gray-900">Trail Commission</p>
+                  <p className="text-sm text-gray-500">Quarterly payments</p>
                 </div>
-                <p className="text-lg font-bold text-indigo-400">0.15%</p>
+                <p className="text-lg font-bold text-indigo-600">0.15%</p>
               </div>
             </div>
           </CardContent>
@@ -381,31 +381,31 @@ export function Commissions({ onNavigate, onBack }: CommissionsProps) {
           <CardContent className="p-6">
             <div className="space-y-4">
               <div className="flex items-start gap-3">
-                <Calendar className="w-5 h-5 text-indigo-400 mt-1" />
+                <Calendar className="w-5 h-5 text-indigo-600 mt-1" />
                 <div>
-                  <p className="font-medium text-slate-100">Origination Commissions</p>
-                  <p className="text-sm text-slate-300">Paid within 14 days of settlement</p>
+                  <p className="font-medium text-gray-900">Origination Commissions</p>
+                  <p className="text-sm text-gray-600">Paid within 14 days of settlement</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <Calendar className="w-5 h-5 text-indigo-400 mt-1" />
+                <Calendar className="w-5 h-5 text-indigo-600 mt-1" />
                 <div>
-                  <p className="font-medium text-slate-100">Trail Commissions</p>
-                  <p className="text-sm text-slate-300">Paid quarterly in arrears</p>
+                  <p className="font-medium text-gray-900">Trail Commissions</p>
+                  <p className="text-sm text-gray-600">Paid quarterly in arrears</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <DollarSign className="w-5 h-5 text-indigo-400 mt-1" />
+                <DollarSign className="w-5 h-5 text-indigo-600 mt-1" />
                 <div>
-                  <p className="font-medium text-slate-100">Payment Method</p>
-                  <p className="text-sm text-slate-300">Direct bank transfer to registered account</p>
+                  <p className="font-medium text-gray-900">Payment Method</p>
+                  <p className="text-sm text-gray-600">Direct bank transfer to registered account</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <FileText className="w-5 h-5 text-indigo-400 mt-1" />
+                <FileText className="w-5 h-5 text-indigo-600 mt-1" />
                 <div>
-                  <p className="font-medium text-slate-100">Tax Statements</p>
-                  <p className="text-sm text-slate-300">Annual summary provided by July 14</p>
+                  <p className="font-medium text-gray-900">Tax Statements</p>
+                  <p className="text-sm text-gray-600">Annual summary provided by July 14</p>
                 </div>
               </div>
             </div>

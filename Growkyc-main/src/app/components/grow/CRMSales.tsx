@@ -115,24 +115,24 @@ export function CRMSales() {
         ].map((stat, idx) => {
           const Icon = stat.icon;
           return (
-            <div key={idx} className="bg-white border-2 border-white/10 rounded-lg p-4">
+            <div key={idx} className="bg-white border-2 border-gray-200 rounded-lg p-4">
               <div className="flex items-center justify-between mb-3">
                 <Icon className={`w-6 h-6 text-${stat.color}-600`} />
-                <span className="text-xs font-bold text-green-400 bg-green-500/15 px-2 py-1 rounded">
+                <span className="text-xs font-bold text-green-600 bg-green-100 px-2 py-1 rounded">
                   {stat.change}
                 </span>
               </div>
-              <p className="text-2xl font-bold text-slate-100 mb-1">{stat.value}</p>
-              <p className="text-sm text-slate-300">{stat.label}</p>
+              <p className="text-2xl font-bold text-gray-900 mb-1">{stat.value}</p>
+              <p className="text-sm text-gray-600">{stat.label}</p>
             </div>
           );
         })}
       </div>
 
       {/* Pipeline Stages */}
-      <div className="bg-white border-2 border-white/10 rounded-lg p-6">
+      <div className="bg-white border-2 border-gray-200 rounded-lg p-6">
         <div className="flex items-center justify-between mb-6">
-          <h3 className="text-xl font-bold text-slate-100">Sales Pipeline</h3>
+          <h3 className="text-xl font-bold text-gray-900">Sales Pipeline</h3>
           <div className="flex gap-2">
             <SecondaryButton onClick={() => toast.info('Forecast report')}>
               <BarChart3 className="w-4 h-4 mr-2" />
@@ -152,7 +152,7 @@ export function CRMSales() {
               className={`border-2 rounded-lg p-4 cursor-pointer transition-all ${
                 selectedStage === stage.id
                   ? `border-${stage.color}-500 bg-${stage.color}-50`
-                  : 'border-white/10 hover:border-white/10'
+                  : 'border-gray-200 hover:border-gray-300'
               }`}
               onClick={() => setSelectedStage(stage.id)}
             >
@@ -160,13 +160,13 @@ export function CRMSales() {
                 <span className={`px-2 py-1 bg-${stage.color}-100 text-${stage.color}-700 text-xs font-bold rounded`}>
                   {stage.probability}%
                 </span>
-                <span className="text-2xl font-bold text-slate-100">{stage.count}</span>
+                <span className="text-2xl font-bold text-gray-900">{stage.count}</span>
               </div>
-              <h4 className="font-bold text-slate-100 mb-2">{stage.name}</h4>
-              <p className="text-sm font-semibold text-slate-300">
+              <h4 className="font-bold text-gray-900 mb-2">{stage.name}</h4>
+              <p className="text-sm font-semibold text-gray-700">
                 ${(stage.value / 1000).toFixed(0)}K
               </p>
-              <p className="text-xs text-slate-300 mt-1">
+              <p className="text-xs text-gray-600 mt-1">
                 Weighted: ${Math.round((stage.value * stage.probability) / 100000)}K
               </p>
             </div>
@@ -176,27 +176,27 @@ export function CRMSales() {
 
       {/* Forecast Chart */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white border-2 border-white/10 rounded-lg p-6">
-          <h3 className="font-bold text-slate-100 mb-4">Monthly Forecast</h3>
+        <div className="bg-white border-2 border-gray-200 rounded-lg p-6">
+          <h3 className="font-bold text-gray-900 mb-4">Monthly Forecast</h3>
           <div className="space-y-3">
             {[
               { month: 'March 2024', expected: 245000, optimistic: 312000, probability: 75 },
               { month: 'April 2024', expected: 178000, optimistic: 234000, probability: 60 },
               { month: 'May 2024', expected: 156000, optimistic: 198000, probability: 45 }
             ].map((forecast, idx) => (
-              <div key={idx} className="border border-white/10 rounded-lg p-4">
+              <div key={idx} className="border border-gray-200 rounded-lg p-4">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-semibold text-slate-100">{forecast.month}</span>
-                  <span className="text-sm text-slate-300">{forecast.probability}% confidence</span>
+                  <span className="font-semibold text-gray-900">{forecast.month}</span>
+                  <span className="text-sm text-gray-600">{forecast.probability}% confidence</span>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <p className="text-xs text-slate-300">Expected</p>
-                    <p className="text-lg font-bold text-slate-100">${(forecast.expected / 1000).toFixed(0)}K</p>
+                    <p className="text-xs text-gray-600">Expected</p>
+                    <p className="text-lg font-bold text-gray-900">${(forecast.expected / 1000).toFixed(0)}K</p>
                   </div>
                   <div>
-                    <p className="text-xs text-slate-300">Optimistic</p>
-                    <p className="text-lg font-bold text-green-400">${(forecast.optimistic / 1000).toFixed(0)}K</p>
+                    <p className="text-xs text-gray-600">Optimistic</p>
+                    <p className="text-lg font-bold text-green-600">${(forecast.optimistic / 1000).toFixed(0)}K</p>
                   </div>
                 </div>
               </div>
@@ -204,8 +204,8 @@ export function CRMSales() {
           </div>
         </div>
 
-        <div className="bg-white border-2 border-white/10 rounded-lg p-6">
-          <h3 className="font-bold text-slate-100 mb-4">Win/Loss Analysis</h3>
+        <div className="bg-white border-2 border-gray-200 rounded-lg p-6">
+          <h3 className="font-bold text-gray-900 mb-4">Win/Loss Analysis</h3>
           <div className="space-y-4">
             {[
               { reason: 'Price too high', count: 8, percentage: 35 },
@@ -215,10 +215,10 @@ export function CRMSales() {
             ].map((item, idx) => (
               <div key={idx}>
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-sm font-semibold text-slate-100">{item.reason}</span>
-                  <span className="text-sm text-slate-300">{item.count} deals ({item.percentage}%)</span>
+                  <span className="text-sm font-semibold text-gray-900">{item.reason}</span>
+                  <span className="text-sm text-gray-600">{item.count} deals ({item.percentage}%)</span>
                 </div>
-                <div className="h-2 bg-white/10 rounded-full overflow-hidden">
+                <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
                   <div
                     className="h-full bg-red-500"
                     style={{ width: `${item.percentage}%` }}
@@ -236,8 +236,8 @@ export function CRMSales() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-slate-100">Lead Management</h2>
-          <p className="text-slate-300">Capture, qualify, and convert leads</p>
+          <h2 className="text-2xl font-bold text-gray-900">Lead Management</h2>
+          <p className="text-gray-600">Capture, qualify, and convert leads</p>
         </div>
         <div className="flex gap-3">
           <SecondaryButton onClick={() => toast.info('Import leads')}>
@@ -264,10 +264,10 @@ export function CRMSales() {
           { source: 'Event', count: 18, conversion: 35 },
           { source: 'Partner', count: 12, conversion: 52 }
         ].map((source, idx) => (
-          <div key={idx} className="bg-white border-2 border-white/10 rounded-lg p-4">
-            <p className="text-sm font-bold text-slate-300 uppercase mb-2">{source.source}</p>
-            <p className="text-2xl font-bold text-slate-100 mb-1">{source.count}</p>
-            <p className="text-xs text-slate-300">
+          <div key={idx} className="bg-white border-2 border-gray-200 rounded-lg p-4">
+            <p className="text-sm font-bold text-gray-700 uppercase mb-2">{source.source}</p>
+            <p className="text-2xl font-bold text-gray-900 mb-1">{source.count}</p>
+            <p className="text-xs text-gray-600">
               {source.conversion}% conversion
             </p>
           </div>
@@ -275,33 +275,33 @@ export function CRMSales() {
       </div>
 
       {/* Leads Table */}
-      <div className="bg-white border-2 border-white/10 rounded-lg overflow-hidden">
+      <div className="bg-white border-2 border-gray-200 rounded-lg overflow-hidden">
         <table className="w-full">
-          <thead className="bg-white/5 border-b-2 border-white/10">
+          <thead className="bg-gray-50 border-b-2 border-gray-200">
             <tr>
-              <th className="px-4 py-3 text-left text-xs font-bold text-slate-300 uppercase">Lead</th>
-              <th className="px-4 py-3 text-left text-xs font-bold text-slate-300 uppercase">Organisation</th>
-              <th className="px-4 py-3 text-left text-xs font-bold text-slate-300 uppercase">Value</th>
-              <th className="px-4 py-3 text-left text-xs font-bold text-slate-300 uppercase">Stage</th>
-              <th className="px-4 py-3 text-left text-xs font-bold text-slate-300 uppercase">Health</th>
-              <th className="px-4 py-3 text-left text-xs font-bold text-slate-300 uppercase">Owner</th>
-              <th className="px-4 py-3 text-left text-xs font-bold text-slate-300 uppercase">Close Date</th>
-              <th className="px-4 py-3 text-left text-xs font-bold text-slate-300 uppercase">Actions</th>
+              <th className="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Lead</th>
+              <th className="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Organisation</th>
+              <th className="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Value</th>
+              <th className="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Stage</th>
+              <th className="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Health</th>
+              <th className="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Owner</th>
+              <th className="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Close Date</th>
+              <th className="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-white/10">
+          <tbody className="divide-y divide-gray-200">
             {leads.map((lead) => (
-              <tr key={lead.id} className="hover:bg-white/5">
+              <tr key={lead.id} className="hover:bg-gray-50">
                 <td className="px-4 py-3">
-                  <p className="font-semibold text-slate-100">{lead.name}</p>
-                  <p className="text-xs text-slate-300">{lead.source}</p>
+                  <p className="font-semibold text-gray-900">{lead.name}</p>
+                  <p className="text-xs text-gray-600">{lead.source}</p>
                 </td>
                 <td className="px-4 py-3">
-                  <p className="text-sm text-slate-100">{lead.organisation}</p>
+                  <p className="text-sm text-gray-900">{lead.organisation}</p>
                 </td>
                 <td className="px-4 py-3">
-                  <p className="font-semibold text-slate-100">${(lead.value / 1000).toFixed(0)}K</p>
-                  <p className="text-xs text-slate-300">{lead.probability}% prob</p>
+                  <p className="font-semibold text-gray-900">${(lead.value / 1000).toFixed(0)}K</p>
+                  <p className="text-xs text-gray-600">{lead.probability}% prob</p>
                 </td>
                 <td className="px-4 py-3">
                   <StatusBadge
@@ -314,7 +314,7 @@ export function CRMSales() {
                 </td>
                 <td className="px-4 py-3">
                   <div className="flex items-center gap-2">
-                    <div className="flex-1 h-2 bg-white/10 rounded-full overflow-hidden">
+                    <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
                       <div
                         className={`h-full ${
                           lead.healthScore >= 80 ? 'bg-green-500' :
@@ -324,30 +324,30 @@ export function CRMSales() {
                         style={{ width: `${lead.healthScore}%` }}
                       />
                     </div>
-                    <span className="text-sm font-semibold text-slate-300">{lead.healthScore}</span>
+                    <span className="text-sm font-semibold text-gray-700">{lead.healthScore}</span>
                   </div>
                 </td>
                 <td className="px-4 py-3">
-                  <p className="text-sm text-slate-100">{lead.owner}</p>
+                  <p className="text-sm text-gray-900">{lead.owner}</p>
                 </td>
                 <td className="px-4 py-3">
-                  <p className="text-sm text-slate-100">
+                  <p className="text-sm text-gray-900">
                     {lead.expectedCloseDate?.toLocaleDateString()}
                   </p>
-                  <p className="text-xs text-slate-300">
+                  <p className="text-xs text-gray-600">
                     {lead.lastContactDate && `Last: ${lead.lastContactDate.toLocaleDateString()}`}
                   </p>
                 </td>
                 <td className="px-4 py-3">
                   <div className="flex gap-2">
-                    <button className="p-1 hover:bg-white/5 rounded" onClick={() => toast.info('View lead')}>
-                      <ExternalLink className="w-4 h-4 text-slate-300" />
+                    <button className="p-1 hover:bg-gray-100 rounded" onClick={() => toast.info('View lead')}>
+                      <ExternalLink className="w-4 h-4 text-gray-600" />
                     </button>
-                    <button className="p-1 hover:bg-white/5 rounded" onClick={() => toast.info('Edit lead')}>
-                      <Edit className="w-4 h-4 text-slate-300" />
+                    <button className="p-1 hover:bg-gray-100 rounded" onClick={() => toast.info('Edit lead')}>
+                      <Edit className="w-4 h-4 text-gray-600" />
                     </button>
-                    <button className="p-1 hover:bg-white/5 rounded" onClick={() => toast.info('Email lead')}>
-                      <Mail className="w-4 h-4 text-slate-300" />
+                    <button className="p-1 hover:bg-gray-100 rounded" onClick={() => toast.info('Email lead')}>
+                      <Mail className="w-4 h-4 text-gray-600" />
                     </button>
                   </div>
                 </td>
@@ -360,10 +360,10 @@ export function CRMSales() {
   );
 
   const renderAccounts = () => (
-    <div className="bg-white border-2 border-white/10 rounded-lg p-12 text-center">
+    <div className="bg-white border-2 border-gray-200 rounded-lg p-12 text-center">
       <Users className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-      <h2 className="text-2xl font-bold text-slate-100 mb-2">Account Management</h2>
-      <p className="text-slate-300 mb-6">Account plans, relationship maps, and health scores</p>
+      <h2 className="text-2xl font-bold text-gray-900 mb-2">Account Management</h2>
+      <p className="text-gray-600 mb-6">Account plans, relationship maps, and health scores</p>
       <PrimaryButton onClick={() => toast.info('Account management coming soon')}>
         View Accounts
       </PrimaryButton>
@@ -371,10 +371,10 @@ export function CRMSales() {
   );
 
   const renderActivities = () => (
-    <div className="bg-white border-2 border-white/10 rounded-lg p-12 text-center">
+    <div className="bg-white border-2 border-gray-200 rounded-lg p-12 text-center">
       <Calendar className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-      <h2 className="text-2xl font-bold text-slate-100 mb-2">Sales Activities</h2>
-      <p className="text-slate-300 mb-6">Email sync, call notes, meeting tracking</p>
+      <h2 className="text-2xl font-bold text-gray-900 mb-2">Sales Activities</h2>
+      <p className="text-gray-600 mb-6">Email sync, call notes, meeting tracking</p>
       <PrimaryButton onClick={() => toast.info('Activities coming soon')}>
         View Activities
       </PrimaryButton>
@@ -408,7 +408,7 @@ export function CRMSales() {
                 onClick={() => setSelectedView(view.id as any)}
                 className={`px-4 py-2 rounded-lg flex items-center gap-2 transition-all ${
                   selectedView === view.id
-                    ? 'bg-white text-blue-400'
+                    ? 'bg-white text-blue-600'
                     : 'bg-blue-700 text-white hover:bg-blue-800'
                 }`}
               >

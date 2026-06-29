@@ -54,24 +54,24 @@ export function FinalReview({ entity, onComplete }: FinalReviewProps) {
       </CardHeader>
       <CardContent className="space-y-6">
         {/* Summary Card */}
-        <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-500/30">
+        <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
           <CardContent className="p-6">
-            <h3 className="font-bold text-white text-lg mb-4">{entity.data.name}</h3>
+            <h3 className="font-bold text-gray-900 text-lg mb-4">{entity.data.name}</h3>
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
-                <span className="text-slate-300">Entity Type:</span>
-                <p className="font-semibold text-white capitalize">{entity.type.replace('_', ' ')}</p>
+                <span className="text-gray-600">Entity Type:</span>
+                <p className="font-semibold text-gray-900 capitalize">{entity.type.replace('_', ' ')}</p>
               </div>
               <div>
-                <span className="text-slate-300">People:</span>
-                <p className="font-semibold text-white">{entity.data.people?.length || 0} individuals</p>
+                <span className="text-gray-600">People:</span>
+                <p className="font-semibold text-gray-900">{entity.data.people?.length || 0} individuals</p>
               </div>
               <div>
-                <span className="text-slate-300">Industry:</span>
-                <p className="font-semibold text-white capitalize">{entity.data.industry || 'N/A'}</p>
+                <span className="text-gray-600">Industry:</span>
+                <p className="font-semibold text-gray-900 capitalize">{entity.data.industry || 'N/A'}</p>
               </div>
               <div>
-                <span className="text-slate-300">Risk Level:</span>
+                <span className="text-gray-600">Risk Level:</span>
                 <Badge className={
                   entity.riskLevel === 'high' ? 'bg-red-500' :
                   entity.riskLevel === 'medium' ? 'bg-amber-500' :
@@ -96,7 +96,7 @@ export function FinalReview({ entity, onComplete }: FinalReviewProps) {
                 <div
                   key={index}
                   className={`flex items-center gap-3 p-3 rounded-lg ${
-                    item.complete ? 'bg-green-500/10' : 'bg-red-500/10'
+                    item.complete ? 'bg-green-50' : 'bg-red-50'
                   }`}
                 >
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
@@ -109,10 +109,10 @@ export function FinalReview({ entity, onComplete }: FinalReviewProps) {
                     )}
                   </div>
                   <Icon className={`w-5 h-5 ${
-                    item.complete ? 'text-green-400' : 'text-red-400'
+                    item.complete ? 'text-green-600' : 'text-red-600'
                   }`} />
                   <span className={`font-medium ${
-                    item.complete ? 'text-green-300' : 'text-red-300'
+                    item.complete ? 'text-green-900' : 'text-red-900'
                   }`}>
                     {item.label}
                   </span>
@@ -126,10 +126,10 @@ export function FinalReview({ entity, onComplete }: FinalReviewProps) {
         </Card>
 
         {/* What Happens Next */}
-        <Card className="bg-blue-500/10 border-blue-500/30">
+        <Card className="bg-blue-50 border-blue-200">
           <CardContent className="p-4">
-            <h4 className="font-semibold text-white mb-3">What happens next?</h4>
-            <div className="space-y-2 text-sm text-slate-300">
+            <h4 className="font-semibold text-gray-900 mb-3">What happens next?</h4>
+            <div className="space-y-2 text-sm text-gray-700">
               <div className="flex items-start gap-2">
                 <div className="w-6 h-6 rounded-full bg-blue-500 text-white flex items-center justify-center text-xs flex-shrink-0">1</div>
                 <p>We'll run automated compliance checks (sanctions, PEP, adverse media)</p>
@@ -151,11 +151,11 @@ export function FinalReview({ entity, onComplete }: FinalReviewProps) {
         </Card>
 
         {allComplete && (
-          <Card className="bg-gradient-to-r from-green-50 to-emerald-50 border-green-500/30 animate-in fade-in slide-in-from-bottom-4">
+          <Card className="bg-gradient-to-r from-green-50 to-emerald-50 border-green-200 animate-in fade-in slide-in-from-bottom-4">
             <CardContent className="p-6 text-center">
-              <Award className="w-16 h-16 text-green-400 mx-auto mb-4" />
-              <h3 className="font-bold text-green-300 text-xl mb-2">Ready to Submit! 🎉</h3>
-              <p className="text-green-300">
+              <Award className="w-16 h-16 text-green-600 mx-auto mb-4" />
+              <h3 className="font-bold text-green-900 text-xl mb-2">Ready to Submit! 🎉</h3>
+              <p className="text-green-800">
                 Your application is complete and ready for compliance review.
               </p>
             </CardContent>

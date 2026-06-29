@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Card, CardContent } from '../ui/card';
 import { Button } from '../ui/button';
 import {
@@ -97,15 +97,15 @@ export function WorkpaperLayout({ children, currentPage = 'dashboard', onNavigat
   const [searchQuery, setSearchQuery] = useState('');
 
   return (
-    <div className="min-h-screen bg-white/5">
+    <div className="min-h-screen bg-gray-50">
       {/* Top Bar */}
-      <header className="fixed top-0 left-0 right-0 h-[72px] bg-white border-b border-white/10 z-50">
+      <header className="fixed top-0 left-0 right-0 h-[72px] bg-white border-b border-gray-200 z-50">
         <div className="h-full px-6 flex items-center justify-between">
           {/* Left Section */}
           <div className="flex items-center gap-4">
             <button
               onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
-              className="p-2 hover:bg-white/5 rounded-lg transition-colors"
+              className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
             >
               {sidebarCollapsed ? <Menu className="w-5 h-5" /> : <X className="w-5 h-5" />}
             </button>
@@ -115,8 +115,8 @@ export function WorkpaperLayout({ children, currentPage = 'dashboard', onNavigat
                 <FileText className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="text-lg font-bold text-slate-100">Grow Accounting</h1>
-                <p className="text-xs text-slate-400">Workpaper Automation</p>
+                <h1 className="text-lg font-bold text-gray-900">Grow Accounting</h1>
+                <p className="text-xs text-gray-500">Workpaper Automation</p>
               </div>
             </div>
           </div>
@@ -130,7 +130,7 @@ export function WorkpaperLayout({ children, currentPage = 'dashboard', onNavigat
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search jobs, clients, documents..."
-                className="w-full pl-10 pr-4 py-2 border border-white/10 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6] focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#2855a6] focus:border-transparent"
               />
             </div>
           </div>
@@ -139,7 +139,7 @@ export function WorkpaperLayout({ children, currentPage = 'dashboard', onNavigat
           <div className="flex items-center gap-4">
             {/* Module Switcher */}
             <select
-              className="px-3 py-2 border border-white/10 rounded-lg text-sm font-medium text-slate-300 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-[#2855a6] focus:border-transparent cursor-pointer bg-white"
+              className="px-3 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-[#2855a6] focus:border-transparent cursor-pointer bg-white"
               onChange={(e) => {
                 const module = e.target.value;
                 if (module && window.location.href.includes('?')) {
@@ -169,28 +169,28 @@ export function WorkpaperLayout({ children, currentPage = 'dashboard', onNavigat
             </select>
 
             {/* Firm Switcher */}
-            <button className="flex items-center gap-2 px-3 py-2 hover:bg-white/5 rounded-lg transition-colors">
-              <Building2 className="w-4 h-4 text-slate-300" />
-              <span className="text-sm font-medium text-slate-300">Smith & Co</span>
+            <button className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 rounded-lg transition-colors">
+              <Building2 className="w-4 h-4 text-gray-600" />
+              <span className="text-sm font-medium text-gray-700">Smith & Co</span>
               <ChevronDown className="w-4 h-4 text-gray-400" />
             </button>
 
             {/* Help */}
-            <button className="p-2 hover:bg-white/5 rounded-lg transition-colors relative">
-              <HelpCircle className="w-5 h-5 text-slate-300" />
+            <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors relative">
+              <HelpCircle className="w-5 h-5 text-gray-600" />
             </button>
 
             {/* Notifications */}
-            <button className="p-2 hover:bg-white/5 rounded-lg transition-colors relative">
-              <Bell className="w-5 h-5 text-slate-300" />
+            <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors relative">
+              <Bell className="w-5 h-5 text-gray-600" />
               <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
             </button>
 
             {/* User Avatar */}
-            <button className="flex items-center gap-3 pl-3 border-l border-white/10">
+            <button className="flex items-center gap-3 pl-3 border-l border-gray-200">
               <div className="text-right">
-                <p className="text-sm font-medium text-slate-100">Sarah Johnson</p>
-                <p className="text-xs text-slate-400">Manager</p>
+                <p className="text-sm font-medium text-gray-900">Sarah Johnson</p>
+                <p className="text-xs text-gray-500">Manager</p>
               </div>
               <Avatar className="w-9 h-9">
                 <AvatarFallback className="bg-[#2855a6] text-white">SJ</AvatarFallback>
@@ -202,7 +202,7 @@ export function WorkpaperLayout({ children, currentPage = 'dashboard', onNavigat
 
       {/* Sidebar */}
       <aside
-        className={`fixed left-0 top-[72px] bottom-0 bg-white border-r border-white/10 transition-all duration-200 z-40 ${
+        className={`fixed left-0 top-[72px] bottom-0 bg-white border-r border-gray-200 transition-all duration-200 z-40 ${
           sidebarCollapsed ? 'w-[80px]' : 'w-[240px]'
         }`}
       >
@@ -211,7 +211,7 @@ export function WorkpaperLayout({ children, currentPage = 'dashboard', onNavigat
             <div key={section.title} className={index > 0 ? 'mt-6' : ''}>
               {!sidebarCollapsed && (
                 <div className="px-6 mb-2">
-                  <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                  <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
                     {section.title}
                   </p>
                 </div>
@@ -226,8 +226,8 @@ export function WorkpaperLayout({ children, currentPage = 'dashboard', onNavigat
                       onClick={() => onNavigate?.(item.id)}
                       className={`w-full flex items-center gap-3 px-3 h-[44px] rounded-lg transition-colors relative ${
                         isActive
-                          ? 'bg-blue-500/10 text-[#2855a6]'
-                          : 'text-slate-300 hover:bg-white/5'
+                          ? 'bg-blue-50 text-[#2855a6]'
+                          : 'text-gray-700 hover:bg-gray-100'
                       }`}
                     >
                       {isActive && (

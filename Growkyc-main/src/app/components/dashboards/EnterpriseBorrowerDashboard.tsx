@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { 
@@ -187,7 +187,7 @@ export function EnterpriseBorrowerDashboard({ onNavigate }: EnterpriseBorrowerDa
             <div className="flex flex-col gap-3">
               <Button 
                 size="lg"
-                className="bg-white text-slate-100 hover:bg-white/5 gap-2"
+                className="bg-white text-slate-900 hover:bg-gray-100 gap-2"
                 onClick={() => onNavigate?.('auction_room')}
               >
                 <Eye className="w-5 h-5" />
@@ -233,55 +233,55 @@ export function EnterpriseBorrowerDashboard({ onNavigate }: EnterpriseBorrowerDa
 
       {/* Financial Overview Cards */}
       <div className="grid grid-cols-4 gap-4">
-        <Card className="border-2 border-blue-500/30 bg-gradient-to-br from-blue-50 to-white">
+        <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-white">
           <CardContent className="p-5">
             <div className="flex items-center justify-between mb-2">
-              <div className="p-2 bg-blue-500/15 rounded-lg">
-                <Home className="w-5 h-5 text-blue-400" />
+              <div className="p-2 bg-blue-100 rounded-lg">
+                <Home className="w-5 h-5 text-blue-600" />
               </div>
             </div>
-            <p className="text-xs text-slate-300 mb-1">Property Value</p>
-            <p className="text-2xl font-bold text-slate-100">A${(financialSummary.propertyValue / 1000000).toFixed(2)}M</p>
-            <p className="text-xs text-slate-300 mt-1">Independent valuation</p>
+            <p className="text-xs text-gray-600 mb-1">Property Value</p>
+            <p className="text-2xl font-bold text-gray-900">A${(financialSummary.propertyValue / 1000000).toFixed(2)}M</p>
+            <p className="text-xs text-gray-600 mt-1">Independent valuation</p>
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-red-500/30 bg-gradient-to-br from-red-50 to-white">
+        <Card className="border-2 border-red-200 bg-gradient-to-br from-red-50 to-white">
           <CardContent className="p-5">
             <div className="flex items-center justify-between mb-2">
-              <div className="p-2 bg-red-500/15 rounded-lg">
-                <DollarSign className="w-5 h-5 text-red-400" />
+              <div className="p-2 bg-red-100 rounded-lg">
+                <DollarSign className="w-5 h-5 text-red-600" />
               </div>
             </div>
-            <p className="text-xs text-slate-300 mb-1">Outstanding Balance</p>
-            <p className="text-2xl font-bold text-slate-100">A${(financialSummary.outstandingBalance / 1000000).toFixed(2)}M</p>
-            <p className="text-xs text-red-400 mt-1">Inc. A${(financialSummary.arrears / 1000).toFixed(0)}K arrears</p>
+            <p className="text-xs text-gray-600 mb-1">Outstanding Balance</p>
+            <p className="text-2xl font-bold text-gray-900">A${(financialSummary.outstandingBalance / 1000000).toFixed(2)}M</p>
+            <p className="text-xs text-red-600 mt-1">Inc. A${(financialSummary.arrears / 1000).toFixed(0)}K arrears</p>
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-green-500/30 bg-gradient-to-br from-green-50 to-white">
+        <Card className="border-2 border-green-200 bg-gradient-to-br from-green-50 to-white">
           <CardContent className="p-5">
             <div className="flex items-center justify-between mb-2">
-              <div className="p-2 bg-green-500/15 rounded-lg">
-                <TrendingUp className="w-5 h-5 text-green-400" />
+              <div className="p-2 bg-green-100 rounded-lg">
+                <TrendingUp className="w-5 h-5 text-green-600" />
               </div>
             </div>
-            <p className="text-xs text-slate-300 mb-1">Current Highest Bid</p>
-            <p className="text-2xl font-bold text-slate-100">A${(financialSummary.currentBid / 1000000).toFixed(2)}M</p>
-            <p className="text-xs text-green-400 mt-1">5 active bidders</p>
+            <p className="text-xs text-gray-600 mb-1">Current Highest Bid</p>
+            <p className="text-2xl font-bold text-gray-900">A${(financialSummary.currentBid / 1000000).toFixed(2)}M</p>
+            <p className="text-xs text-green-600 mt-1">5 active bidders</p>
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-amber-500/30 bg-gradient-to-br from-amber-50 to-white">
+        <Card className="border-2 border-amber-200 bg-gradient-to-br from-amber-50 to-white">
           <CardContent className="p-5">
             <div className="flex items-center justify-between mb-2">
-              <div className="p-2 bg-amber-500/15 rounded-lg">
-                <AlertCircle className="w-5 h-5 text-amber-400" />
+              <div className="p-2 bg-amber-100 rounded-lg">
+                <AlertCircle className="w-5 h-5 text-amber-600" />
               </div>
             </div>
-            <p className="text-xs text-slate-300 mb-1">Expected Shortfall</p>
-            <p className="text-2xl font-bold text-slate-100">A${(financialSummary.expectedDeficit / 1000).toFixed(0)}K</p>
-            <p className="text-xs text-amber-400 mt-1">Based on current bid</p>
+            <p className="text-xs text-gray-600 mb-1">Expected Shortfall</p>
+            <p className="text-2xl font-bold text-gray-900">A${(financialSummary.expectedDeficit / 1000).toFixed(0)}K</p>
+            <p className="text-xs text-amber-600 mt-1">Based on current bid</p>
           </CardContent>
         </Card>
       </div>
@@ -295,7 +295,7 @@ export function EnterpriseBorrowerDashboard({ onNavigate }: EnterpriseBorrowerDa
               className={`px-4 py-2 font-semibold rounded-lg transition-colors ${
                 activeTab === 'overview'
                   ? 'bg-primary text-white'
-                  : 'text-slate-300 hover:bg-white/5'
+                  : 'text-gray-600 hover:bg-gray-100'
               }`}
             >
               Overview
@@ -305,7 +305,7 @@ export function EnterpriseBorrowerDashboard({ onNavigate }: EnterpriseBorrowerDa
               className={`px-4 py-2 font-semibold rounded-lg transition-colors ${
                 activeTab === 'timeline'
                   ? 'bg-primary text-white'
-                  : 'text-slate-300 hover:bg-white/5'
+                  : 'text-gray-600 hover:bg-gray-100'
               }`}
             >
               Timeline
@@ -315,11 +315,11 @@ export function EnterpriseBorrowerDashboard({ onNavigate }: EnterpriseBorrowerDa
               className={`px-4 py-2 font-semibold rounded-lg transition-colors ${
                 activeTab === 'documents'
                   ? 'bg-primary text-white'
-                  : 'text-slate-300 hover:bg-white/5'
+                  : 'text-gray-600 hover:bg-gray-100'
               }`}
             >
               Documents
-              <span className="ml-2 px-2 py-0.5 bg-amber-500/15 text-amber-300 text-xs rounded-full">
+              <span className="ml-2 px-2 py-0.5 bg-amber-100 text-amber-700 text-xs rounded-full">
                 1 pending
               </span>
             </button>
@@ -330,41 +330,41 @@ export function EnterpriseBorrowerDashboard({ onNavigate }: EnterpriseBorrowerDa
             <div className="space-y-6">
               {/* Financial Breakdown */}
               <div>
-                <h3 className="text-lg font-semibold text-slate-100 mb-4">Financial Breakdown</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Financial Breakdown</h3>
                 <div className="space-y-3">
                   <div className="flex items-center justify-between py-2 border-b">
-                    <span className="text-slate-300">Original Loan Amount</span>
-                    <span className="font-semibold text-slate-100">A${financialSummary.originalLoan.toLocaleString()}</span>
+                    <span className="text-gray-600">Original Loan Amount</span>
+                    <span className="font-semibold text-gray-900">A${financialSummary.originalLoan.toLocaleString()}</span>
                   </div>
                   <div className="flex items-center justify-between py-2 border-b">
-                    <span className="text-slate-300">Outstanding Principal</span>
-                    <span className="font-semibold text-slate-100">A${(financialSummary.outstandingBalance - financialSummary.arrears).toLocaleString()}</span>
+                    <span className="text-gray-600">Outstanding Principal</span>
+                    <span className="font-semibold text-gray-900">A${(financialSummary.outstandingBalance - financialSummary.arrears).toLocaleString()}</span>
                   </div>
                   <div className="flex items-center justify-between py-2 border-b">
-                    <span className="text-slate-300">Arrears & Interest</span>
-                    <span className="font-semibold text-red-400">A${financialSummary.arrears.toLocaleString()}</span>
+                    <span className="text-gray-600">Arrears & Interest</span>
+                    <span className="font-semibold text-red-600">A${financialSummary.arrears.toLocaleString()}</span>
                   </div>
                   <div className="flex items-center justify-between py-2 border-b">
-                    <span className="text-slate-300">Legal Costs</span>
-                    <span className="font-semibold text-slate-100">A${financialSummary.legalCosts.toLocaleString()}</span>
+                    <span className="text-gray-600">Legal Costs</span>
+                    <span className="font-semibold text-gray-900">A${financialSummary.legalCosts.toLocaleString()}</span>
                   </div>
                   <div className="flex items-center justify-between py-2 border-b">
-                    <span className="text-slate-300">Selling Costs (est.)</span>
-                    <span className="font-semibold text-slate-100">A${financialSummary.sellingCosts.toLocaleString()}</span>
+                    <span className="text-gray-600">Selling Costs (est.)</span>
+                    <span className="font-semibold text-gray-900">A${financialSummary.sellingCosts.toLocaleString()}</span>
                   </div>
-                  <div className="flex items-center justify-between py-3 border-t-2 border-white/10 mt-2">
-                    <span className="font-semibold text-slate-100">Total Amount Owed</span>
-                    <span className="font-bold text-lg text-slate-100">
+                  <div className="flex items-center justify-between py-3 border-t-2 border-gray-300 mt-2">
+                    <span className="font-semibold text-gray-900">Total Amount Owed</span>
+                    <span className="font-bold text-lg text-gray-900">
                       A${(financialSummary.outstandingBalance + financialSummary.legalCosts + financialSummary.sellingCosts).toLocaleString()}
                     </span>
                   </div>
-                  <div className="flex items-center justify-between py-2 bg-green-500/10 rounded-lg px-4">
-                    <span className="font-semibold text-slate-100">Current Highest Bid</span>
-                    <span className="font-bold text-lg text-green-400">A${financialSummary.currentBid.toLocaleString()}</span>
+                  <div className="flex items-center justify-between py-2 bg-green-50 rounded-lg px-4">
+                    <span className="font-semibold text-gray-900">Current Highest Bid</span>
+                    <span className="font-bold text-lg text-green-600">A${financialSummary.currentBid.toLocaleString()}</span>
                   </div>
-                  <div className="flex items-center justify-between py-2 bg-amber-500/10 rounded-lg px-4">
-                    <span className="font-semibold text-slate-100">Expected Shortfall</span>
-                    <span className="font-bold text-lg text-amber-400">
+                  <div className="flex items-center justify-between py-2 bg-amber-50 rounded-lg px-4">
+                    <span className="font-semibold text-gray-900">Expected Shortfall</span>
+                    <span className="font-bold text-lg text-amber-600">
                       A${financialSummary.expectedDeficit.toLocaleString()}
                     </span>
                   </div>
@@ -372,19 +372,19 @@ export function EnterpriseBorrowerDashboard({ onNavigate }: EnterpriseBorrowerDa
               </div>
 
               {/* Support Information */}
-              <div className="bg-blue-500/10 border-2 border-blue-500/30 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-slate-100 mb-4 flex items-center gap-2">
-                  <Shield className="w-5 h-5 text-blue-400" />
+              <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                  <Shield className="w-5 h-5 text-blue-600" />
                   Your Rights & Support
                 </h3>
                 <div className="space-y-3 text-sm">
-                  <p className="text-slate-300">
+                  <p className="text-gray-700">
                     <strong>Financial Hardship:</strong> If you're experiencing financial hardship, you may be eligible for assistance programs or payment arrangements.
                   </p>
-                  <p className="text-slate-300">
+                  <p className="text-gray-700">
                     <strong>Legal Advice:</strong> We recommend seeking independent legal advice about your rights and obligations.
                   </p>
-                  <p className="text-slate-300">
+                  <p className="text-gray-700">
                     <strong>Free Resources:</strong> National Debt Helpline: 1800 007 007 (free financial counseling)
                   </p>
                 </div>
@@ -411,13 +411,13 @@ export function EnterpriseBorrowerDashboard({ onNavigate }: EnterpriseBorrowerDa
                   <div key={event.id} className="flex gap-4">
                     <div className="flex flex-col items-center">
                       <div className={`p-3 rounded-full ${
-                        event.status === 'completed' ? 'bg-green-500/15' :
-                        event.status === 'active' ? 'bg-blue-500/15' :
-                        'bg-white/5'
+                        event.status === 'completed' ? 'bg-green-100' :
+                        event.status === 'active' ? 'bg-blue-100' :
+                        'bg-gray-100'
                       }`}>
                         <Icon className={`w-5 h-5 ${
-                          event.status === 'completed' ? 'text-green-400' :
-                          event.status === 'active' ? 'text-blue-400' :
+                          event.status === 'completed' ? 'text-green-600' :
+                          event.status === 'active' ? 'text-blue-600' :
                           'text-gray-400'
                         }`} />
                       </div>
@@ -430,10 +430,10 @@ export function EnterpriseBorrowerDashboard({ onNavigate }: EnterpriseBorrowerDa
                     <div className="flex-1 pb-8">
                       <div className="flex items-start justify-between mb-2">
                         <div>
-                          <h4 className="font-semibold text-slate-100">{event.title}</h4>
-                          <p className="text-sm text-slate-300 mt-1">{event.description}</p>
+                          <h4 className="font-semibold text-gray-900">{event.title}</h4>
+                          <p className="text-sm text-gray-600 mt-1">{event.description}</p>
                         </div>
-                        <span className="text-sm text-slate-300 whitespace-nowrap ml-4">
+                        <span className="text-sm text-gray-600 whitespace-nowrap ml-4">
                           {format(event.date, 'dd MMM yyyy')}
                         </span>
                       </div>
@@ -449,21 +449,21 @@ export function EnterpriseBorrowerDashboard({ onNavigate }: EnterpriseBorrowerDa
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {documents.map((doc) => (
                   <Card key={doc.id} className={`border-2 ${
-                    doc.status === 'uploaded' ? 'border-green-500/30 bg-green-500/10' : 'border-amber-500/30 bg-amber-500/10'
+                    doc.status === 'uploaded' ? 'border-green-200 bg-green-50' : 'border-amber-200 bg-amber-50'
                   }`}>
                     <CardContent className="p-4">
                       <div className="flex items-start justify-between">
                         <div className="flex items-start gap-3">
                           <div className={`p-2 rounded-lg ${
-                            doc.status === 'uploaded' ? 'bg-green-500/15' : 'bg-amber-500/15'
+                            doc.status === 'uploaded' ? 'bg-green-100' : 'bg-amber-100'
                           }`}>
                             <FileText className={`w-5 h-5 ${
-                              doc.status === 'uploaded' ? 'text-green-400' : 'text-amber-400'
+                              doc.status === 'uploaded' ? 'text-green-600' : 'text-amber-600'
                             }`} />
                           </div>
                           <div>
-                            <h4 className="font-semibold text-slate-100">{doc.name}</h4>
-                            <p className="text-sm text-slate-300 mt-1">
+                            <h4 className="font-semibold text-gray-900">{doc.name}</h4>
+                            <p className="text-sm text-gray-600 mt-1">
                               {doc.status === 'uploaded' 
                                 ? `Uploaded ${format(doc.uploadedDate!, 'dd MMM yyyy')}`
                                 : 'Required for settlement'

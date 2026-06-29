@@ -103,8 +103,8 @@ export function ServiceSelection({ entities, onUpdate, onBack, onContinue, canPr
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-slate-100">Phase 2: Select Services & Pricing</h2>
-        <p className="text-slate-300">Choose services for each entity - pricing updates live</p>
+        <h2 className="text-2xl font-bold text-gray-900">Phase 2: Select Services & Pricing</h2>
+        <p className="text-gray-600">Choose services for each entity - pricing updates live</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -119,7 +119,7 @@ export function ServiceSelection({ entities, onUpdate, onBack, onContinue, canPr
                 className={`px-4 py-2 rounded-lg whitespace-nowrap ${
                   selectedEntityId === entity.id
                     ? 'bg-blue-600 text-white'
-                    : 'bg-white border-2 border-white/10 text-slate-300 hover:border-blue-300'
+                    : 'bg-white border-2 border-gray-200 text-gray-700 hover:border-blue-300'
                 }`}
               >
                 {entity.name}
@@ -128,13 +128,13 @@ export function ServiceSelection({ entities, onUpdate, onBack, onContinue, canPr
           </div>
 
           {selectedEntity && (
-            <div className="bg-white border-2 border-white/10 rounded-lg p-6">
-              <h3 className="font-bold text-slate-100 mb-4">{selectedEntity.name}</h3>
+            <div className="bg-white border-2 border-gray-200 rounded-lg p-6">
+              <h3 className="font-bold text-gray-900 mb-4">{selectedEntity.name}</h3>
 
               {/* Additional Details */}
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Annual Turnover (optional)
                   </label>
                   <input
@@ -149,11 +149,11 @@ export function ServiceSelection({ entities, onUpdate, onBack, onContinue, canPr
                       onUpdate(selectedEntity.id, selectedEntity.services, pricing, turnover, selectedEntity.employees);
                     }}
                     placeholder="e.g. 1000000"
-                    className="w-full px-4 py-2 border border-white/10 rounded-lg"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Number of Employees (optional)
                   </label>
                   <input
@@ -168,18 +168,18 @@ export function ServiceSelection({ entities, onUpdate, onBack, onContinue, canPr
                       onUpdate(selectedEntity.id, selectedEntity.services, pricing, selectedEntity.turnover, employees);
                     }}
                     placeholder="e.g. 10"
-                    className="w-full px-4 py-2 border border-white/10 rounded-lg"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                   />
                 </div>
               </div>
 
               {/* Services */}
-              <h4 className="font-semibold text-slate-100 mb-3">Select Services</h4>
+              <h4 className="font-semibold text-gray-900 mb-3">Select Services</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {(servicesByType[selectedEntity.type] || []).map((service) => (
                   <label
                     key={service.name}
-                    className="flex items-center justify-between gap-2 p-3 border border-white/10 rounded hover:bg-white/5 cursor-pointer"
+                    className="flex items-center justify-between gap-2 p-3 border border-gray-200 rounded hover:bg-gray-50 cursor-pointer"
                   >
                     <div className="flex items-center gap-2">
                       <input
@@ -194,9 +194,9 @@ export function ServiceSelection({ entities, onUpdate, onBack, onContinue, canPr
                         }}
                         className="w-4 h-4"
                       />
-                      <span className="text-sm text-slate-100">{service.name}</span>
+                      <span className="text-sm text-gray-900">{service.name}</span>
                     </div>
-                    <span className="text-xs text-slate-300">${service.basePrice}</span>
+                    <span className="text-xs text-gray-600">${service.basePrice}</span>
                   </label>
                 ))}
               </div>
@@ -206,44 +206,44 @@ export function ServiceSelection({ entities, onUpdate, onBack, onContinue, canPr
 
         {/* Right: Pricing Summary */}
         <div className="lg:col-span-1">
-          <div className="bg-white border-2 border-white/10 rounded-lg p-6 sticky top-6">
-            <h3 className="font-bold text-slate-100 mb-4 flex items-center gap-2">
-              <DollarSign className="w-5 h-5 text-blue-400" />
+          <div className="bg-white border-2 border-gray-200 rounded-lg p-6 sticky top-6">
+            <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <DollarSign className="w-5 h-5 text-blue-600" />
               Pricing Summary
             </h3>
 
             <div className="space-y-3 mb-4">
               {entities.map((entity) => (
-                <div key={entity.id} className="py-2 border-b border-white/10">
+                <div key={entity.id} className="py-2 border-b border-gray-200">
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-sm font-semibold text-slate-300">{entity.name}</span>
-                    <span className="font-bold text-slate-100">${entity.pricing}/yr</span>
+                    <span className="text-sm font-semibold text-gray-700">{entity.name}</span>
+                    <span className="font-bold text-gray-900">${entity.pricing}/yr</span>
                   </div>
-                  <div className="text-xs text-slate-300">
+                  <div className="text-xs text-gray-600">
                     {entity.services.length} service{entity.services.length !== 1 ? 's' : ''}
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="pt-4 border-t-2 border-white/10 space-y-3">
+            <div className="pt-4 border-t-2 border-gray-300 space-y-3">
               <div className="flex items-center justify-between">
-                <span className="font-bold text-slate-100">Annual Total</span>
-                <span className="text-2xl font-bold text-blue-400">
+                <span className="font-bold text-gray-900">Annual Total</span>
+                <span className="text-2xl font-bold text-blue-600">
                   ${entities.reduce((sum, e) => sum + e.pricing, 0).toLocaleString()}/yr
                 </span>
               </div>
               <div className="flex items-center justify-between text-sm">
-                <span className="text-slate-300">Monthly Estimate</span>
-                <span className="font-semibold text-slate-100">
+                <span className="text-gray-600">Monthly Estimate</span>
+                <span className="font-semibold text-gray-900">
                   ${Math.round(entities.reduce((sum, e) => sum + e.pricing, 0) / 12).toLocaleString()}/mo
                 </span>
               </div>
 
               {entities.some(e => e.turnover || e.employees) && (
-                <div className="mt-4 p-3 bg-blue-500/10 rounded-lg">
-                  <p className="text-xs text-blue-300 font-semibold mb-1">Complexity Adjustments:</p>
-                  <ul className="text-xs text-blue-300 space-y-1">
+                <div className="mt-4 p-3 bg-blue-50 rounded-lg">
+                  <p className="text-xs text-blue-900 font-semibold mb-1">Complexity Adjustments:</p>
+                  <ul className="text-xs text-blue-800 space-y-1">
                     {entities.some(e => e.turnover && e.turnover > 1000000) && (
                       <li>• High turnover multiplier applied</li>
                     )}
@@ -268,7 +268,7 @@ export function ServiceSelection({ entities, onUpdate, onBack, onContinue, canPr
         </SecondaryButton>
         <div className="flex items-center gap-4">
           {!canProgress && (
-            <div className="flex items-center gap-2 text-amber-400">
+            <div className="flex items-center gap-2 text-amber-600">
               <AlertCircle className="w-5 h-5" />
               <span className="text-sm font-semibold">Select at least one service per entity</span>
             </div>

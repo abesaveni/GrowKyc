@@ -76,7 +76,7 @@ export function RiskScoringEngine({ onBack }: RiskScoringEngineProps) {
   }, [clients]);
 
   return (
-    <div className="min-h-screen bg-white/5">
+    <div className="min-h-screen bg-gray-50">
       <div className="bg-gradient-to-r from-fuchsia-600 to-rose-600 text-white px-8 py-10">
         <Button
           variant="ghost"
@@ -121,36 +121,36 @@ export function RiskScoringEngine({ onBack }: RiskScoringEngineProps) {
             <CardContent>
               <div className="grid grid-cols-4 gap-4 mb-4">
                 <div className="border rounded p-3">
-                  <div className="text-xs text-slate-400">Current Score</div>
+                  <div className="text-xs text-gray-500">Current Score</div>
                   <div className="text-2xl font-bold">{client.currentScore}</div>
                 </div>
                 <div className="border rounded p-3">
-                  <div className="text-xs text-slate-400">Previous Score</div>
+                  <div className="text-xs text-gray-500">Previous Score</div>
                   <div className="text-2xl font-bold">{client.previousScore}</div>
                 </div>
                 <div className="border rounded p-3">
-                  <div className="text-xs text-slate-400">Trend</div>
+                  <div className="text-xs text-gray-500">Trend</div>
                   <div className="text-2xl font-bold flex items-center gap-1">
-                    {client.delta > 0 ? <TrendingUp className="w-5 h-5 text-red-400" /> : <TrendingDown className="w-5 h-5 text-green-400" />}
-                    <span className={client.delta > 0 ? 'text-red-400' : 'text-green-400'}>
+                    {client.delta > 0 ? <TrendingUp className="w-5 h-5 text-red-600" /> : <TrendingDown className="w-5 h-5 text-green-600" />}
+                    <span className={client.delta > 0 ? 'text-red-600' : 'text-green-600'}>
                       {client.delta > 0 ? `+${client.delta}` : client.delta}
                     </span>
                   </div>
                 </div>
                 <div className="border rounded p-3">
-                  <div className="text-xs text-slate-400">Model Confidence</div>
+                  <div className="text-xs text-gray-500">Model Confidence</div>
                   <div className="text-2xl font-bold">{client.confidence}%</div>
                 </div>
               </div>
 
-              <div className="mb-3 text-sm text-slate-300">
+              <div className="mb-3 text-sm text-gray-700">
                 Decision: <span className="font-semibold">{client.decision}</span>
               </div>
 
               <div className="grid grid-cols-3 gap-3">
                 {client.topFindings.map((finding) => (
-                  <div key={finding} className="text-sm border rounded bg-white/5 p-2 flex items-center gap-2">
-                    <AlertTriangle className="w-4 h-4 text-amber-400" />
+                  <div key={finding} className="text-sm border rounded bg-gray-50 p-2 flex items-center gap-2">
+                    <AlertTriangle className="w-4 h-4 text-amber-600" />
                     {finding}
                   </div>
                 ))}
@@ -161,7 +161,7 @@ export function RiskScoringEngine({ onBack }: RiskScoringEngineProps) {
 
         {clients.length === 0 && (
           <Card>
-            <CardContent className="p-6 text-sm text-slate-300">No risk runs available.</CardContent>
+            <CardContent className="p-6 text-sm text-gray-600">No risk runs available.</CardContent>
           </Card>
         )}
 
@@ -170,7 +170,7 @@ export function RiskScoringEngine({ onBack }: RiskScoringEngineProps) {
             <CardTitle>Scoring Inputs</CardTitle>
             <CardDescription>Risk score is derived from operational outcomes across core bot domains</CardDescription>
           </CardHeader>
-          <CardContent className="grid grid-cols-4 gap-3 text-sm text-slate-300">
+          <CardContent className="grid grid-cols-4 gap-3 text-sm text-gray-700">
             <div className="border rounded p-3 flex items-center gap-2"><Target className="w-4 h-4" /> Identity + KYB outcomes</div>
             <div className="border rounded p-3 flex items-center gap-2"><CheckCircle className="w-4 h-4" /> Passed vs alerted checks</div>
             <div className="border rounded p-3 flex items-center gap-2"><AlertTriangle className="w-4 h-4" /> Failed check weighting</div>

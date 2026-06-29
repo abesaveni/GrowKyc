@@ -138,13 +138,13 @@ export function FuseSign() {
 
   const getStatusBadge = (status: SignatureStatus) => {
     const config = {
-      draft: { bg: 'bg-white/5', text: 'text-slate-300', label: 'Draft', icon: Edit3 },
-      sent: { bg: 'bg-blue-500/15', text: 'text-blue-300', label: 'Sent', icon: Send },
-      pending: { bg: 'bg-amber-500/15', text: 'text-amber-300', label: 'Awaiting Signature', icon: Clock },
-      'partially-signed': { bg: 'bg-purple-500/15', text: 'text-purple-300', label: 'Partially Signed', icon: Users },
-      completed: { bg: 'bg-green-500/15', text: 'text-green-300', label: 'Completed', icon: CheckCircle },
-      declined: { bg: 'bg-red-500/15', text: 'text-red-300', label: 'Declined', icon: X },
-      expired: { bg: 'bg-white/5', text: 'text-slate-300', label: 'Expired', icon: Clock }
+      draft: { bg: 'bg-gray-100', text: 'text-gray-700', label: 'Draft', icon: Edit3 },
+      sent: { bg: 'bg-blue-100', text: 'text-blue-700', label: 'Sent', icon: Send },
+      pending: { bg: 'bg-amber-100', text: 'text-amber-700', label: 'Awaiting Signature', icon: Clock },
+      'partially-signed': { bg: 'bg-purple-100', text: 'text-purple-700', label: 'Partially Signed', icon: Users },
+      completed: { bg: 'bg-green-100', text: 'text-green-700', label: 'Completed', icon: CheckCircle },
+      declined: { bg: 'bg-red-100', text: 'text-red-700', label: 'Declined', icon: X },
+      expired: { bg: 'bg-gray-100', text: 'text-gray-700', label: 'Expired', icon: Clock }
     };
 
     const { bg, text, label, icon: Icon } = config[status];
@@ -249,8 +249,8 @@ export function FuseSign() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-slate-100">FuseSign</h2>
-          <p className="text-slate-300">Manage electronic signatures for documents</p>
+          <h2 className="text-2xl font-bold text-gray-900">FuseSign</h2>
+          <p className="text-gray-600">Manage electronic signatures for documents</p>
         </div>
         <button
           onClick={() => setShowNewDocModal(true)}
@@ -263,40 +263,40 @@ export function FuseSign() {
 
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-white border-2 border-white/10 rounded-lg p-4">
+        <div className="bg-white border-2 border-gray-200 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-slate-300">Pending Signature</span>
-            <Clock className="w-5 h-5 text-amber-400" />
+            <span className="text-sm text-gray-600">Pending Signature</span>
+            <Clock className="w-5 h-5 text-amber-600" />
           </div>
-          <p className="text-3xl font-bold text-slate-100">
+          <p className="text-3xl font-bold text-gray-900">
             {documents.filter(d => d.status === 'pending' || d.status === 'sent' || d.status === 'partially-signed').length}
           </p>
         </div>
 
-        <div className="bg-white border-2 border-white/10 rounded-lg p-4">
+        <div className="bg-white border-2 border-gray-200 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-slate-300">Completed</span>
-            <CheckCircle className="w-5 h-5 text-green-400" />
+            <span className="text-sm text-gray-600">Completed</span>
+            <CheckCircle className="w-5 h-5 text-green-600" />
           </div>
-          <p className="text-3xl font-bold text-slate-100">
+          <p className="text-3xl font-bold text-gray-900">
             {documents.filter(d => d.status === 'completed').length}
           </p>
         </div>
 
-        <div className="bg-white border-2 border-white/10 rounded-lg p-4">
+        <div className="bg-white border-2 border-gray-200 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-slate-300">Total Documents</span>
-            <FileText className="w-5 h-5 text-blue-400" />
+            <span className="text-sm text-gray-600">Total Documents</span>
+            <FileText className="w-5 h-5 text-blue-600" />
           </div>
-          <p className="text-3xl font-bold text-slate-100">{documents.length}</p>
+          <p className="text-3xl font-bold text-gray-900">{documents.length}</p>
         </div>
 
-        <div className="bg-white border-2 border-white/10 rounded-lg p-4">
+        <div className="bg-white border-2 border-gray-200 rounded-lg p-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-slate-300">This Month</span>
-            <Calendar className="w-5 h-5 text-purple-400" />
+            <span className="text-sm text-gray-600">This Month</span>
+            <Calendar className="w-5 h-5 text-purple-600" />
           </div>
-          <p className="text-3xl font-bold text-slate-100">
+          <p className="text-3xl font-bold text-gray-900">
             {documents.filter(d => {
               const created = new Date(d.createdAt);
               const now = new Date();
@@ -307,13 +307,13 @@ export function FuseSign() {
       </div>
 
       {/* View Tabs */}
-      <div className="flex gap-2 border-b border-white/10">
+      <div className="flex gap-2 border-b border-gray-200">
         <button
           onClick={() => setView('all')}
           className={`px-4 py-2 font-semibold transition-colors border-b-2 ${
             view === 'all'
-              ? 'border-blue-600 text-blue-400'
-              : 'border-transparent text-slate-300 hover:text-slate-100'
+              ? 'border-blue-600 text-blue-600'
+              : 'border-transparent text-gray-600 hover:text-gray-900'
           }`}
         >
           All Documents ({documents.length})
@@ -322,8 +322,8 @@ export function FuseSign() {
           onClick={() => setView('pending')}
           className={`px-4 py-2 font-semibold transition-colors border-b-2 ${
             view === 'pending'
-              ? 'border-blue-600 text-blue-400'
-              : 'border-transparent text-slate-300 hover:text-slate-100'
+              ? 'border-blue-600 text-blue-600'
+              : 'border-transparent text-gray-600 hover:text-gray-900'
           }`}
         >
           Pending ({documents.filter(d => d.status === 'pending' || d.status === 'sent' || d.status === 'partially-signed').length})
@@ -332,8 +332,8 @@ export function FuseSign() {
           onClick={() => setView('completed')}
           className={`px-4 py-2 font-semibold transition-colors border-b-2 ${
             view === 'completed'
-              ? 'border-blue-600 text-blue-400'
-              : 'border-transparent text-slate-300 hover:text-slate-100'
+              ? 'border-blue-600 text-blue-600'
+              : 'border-transparent text-gray-600 hover:text-gray-900'
           }`}
         >
           Completed ({documents.filter(d => d.status === 'completed').length})
@@ -343,10 +343,10 @@ export function FuseSign() {
       {/* Document List */}
       <div className="space-y-3">
         {filteredDocs.length === 0 ? (
-          <div className="bg-white border-2 border-dashed border-white/10 rounded-lg p-12 text-center">
+          <div className="bg-white border-2 border-dashed border-gray-300 rounded-lg p-12 text-center">
             <FileText className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-xl font-bold text-slate-100 mb-2">No documents found</h3>
-            <p className="text-slate-300 mb-6">
+            <h3 className="text-xl font-bold text-gray-900 mb-2">No documents found</h3>
+            <p className="text-gray-600 mb-6">
               {view === 'pending' ? 'No documents awaiting signature' : 
                view === 'completed' ? 'No completed documents yet' :
                'Start by creating a new document for signature'}
@@ -366,20 +366,20 @@ export function FuseSign() {
             const isExpired = daysUntilExpiry !== null && daysUntilExpiry <= 0;
 
             return (
-              <div key={doc.id} className="bg-white border-2 border-white/10 rounded-lg p-6 hover:border-blue-300 transition-colors">
+              <div key={doc.id} className="bg-white border-2 border-gray-200 rounded-lg p-6 hover:border-blue-300 transition-colors">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-start gap-4 flex-1">
-                    <div className="w-12 h-12 rounded-lg bg-blue-500/15 flex items-center justify-center flex-shrink-0">
-                      <FileText className="w-6 h-6 text-blue-400" />
+                    <div className="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
+                      <FileText className="w-6 h-6 text-blue-600" />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-lg font-bold text-slate-100">{doc.title}</h3>
+                        <h3 className="text-lg font-bold text-gray-900">{doc.title}</h3>
                         {getStatusBadge(doc.status)}
                       </div>
-                      <p className="text-sm text-slate-300 mb-3">{doc.description}</p>
+                      <p className="text-sm text-gray-600 mb-3">{doc.description}</p>
                       
-                      <div className="flex flex-wrap items-center gap-4 text-xs text-slate-300">
+                      <div className="flex flex-wrap items-center gap-4 text-xs text-gray-600">
                         <span className="flex items-center gap-1">
                           <FileText className="w-3.5 h-3.5" />
                           {getDocTypeLabel(doc.type)}
@@ -394,9 +394,9 @@ export function FuseSign() {
                         </span>
                         {doc.expiresAt && (
                           <span className={`flex items-center gap-1 ${
-                            isExpired ? 'text-red-400 font-semibold' :
-                            isExpiringSoon ? 'text-amber-400 font-semibold' :
-                            'text-slate-300'
+                            isExpired ? 'text-red-600 font-semibold' :
+                            isExpiringSoon ? 'text-amber-600 font-semibold' :
+                            'text-gray-600'
                           }`}>
                             <Clock className="w-3.5 h-3.5" />
                             {isExpired ? 'Expired' : `Expires in ${daysUntilExpiry} days`}
@@ -408,47 +408,47 @@ export function FuseSign() {
                 </div>
 
                 {/* Signers */}
-                <div className="border-t border-white/10 pt-4 mb-4">
-                  <h4 className="text-sm font-semibold text-slate-100 mb-3">Signers</h4>
+                <div className="border-t border-gray-200 pt-4 mb-4">
+                  <h4 className="text-sm font-semibold text-gray-900 mb-3">Signers</h4>
                   <div className="space-y-2">
                     {doc.signers.map((signer, idx) => (
                       <div key={signer.id} className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
                           <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${
-                            signer.status === 'signed' ? 'bg-green-500/15 text-green-300' :
-                            signer.status === 'declined' ? 'bg-red-500/15 text-red-300' :
-                            'bg-white/5 text-slate-300'
+                            signer.status === 'signed' ? 'bg-green-100 text-green-700' :
+                            signer.status === 'declined' ? 'bg-red-100 text-red-700' :
+                            'bg-gray-100 text-gray-700'
                           }`}>
                             {idx + 1}
                           </div>
                           <div>
-                            <p className="text-sm font-semibold text-slate-100">{signer.name}</p>
-                            <p className="text-xs text-slate-300">{signer.email} • {signer.role}</p>
+                            <p className="text-sm font-semibold text-gray-900">{signer.name}</p>
+                            <p className="text-xs text-gray-600">{signer.email} • {signer.role}</p>
                           </div>
                         </div>
                         <div className="flex items-center gap-2">
                           {signer.status === 'signed' ? (
                             <div className="flex items-center gap-2">
-                              <span className="text-xs text-green-400 font-semibold">
+                              <span className="text-xs text-green-600 font-semibold">
                                 Signed {signer.signedAt && formatDate(signer.signedAt)}
                               </span>
-                              <CheckCircle className="w-5 h-5 text-green-400" />
+                              <CheckCircle className="w-5 h-5 text-green-600" />
                             </div>
                           ) : signer.status === 'declined' ? (
                             <div className="flex items-center gap-2">
-                              <span className="text-xs text-red-400 font-semibold">Declined</span>
-                              <X className="w-5 h-5 text-red-400" />
+                              <span className="text-xs text-red-600 font-semibold">Declined</span>
+                              <X className="w-5 h-5 text-red-600" />
                             </div>
                           ) : (
                             <div className="flex items-center gap-2">
                               <button
                                 onClick={() => handleRemindSigner(doc.id, signer.id)}
-                                className="text-xs text-blue-400 hover:text-blue-300 font-semibold flex items-center gap-1"
+                                className="text-xs text-blue-600 hover:text-blue-700 font-semibold flex items-center gap-1"
                               >
                                 <Mail className="w-3.5 h-3.5" />
                                 Send Reminder
                               </button>
-                              <Clock className="w-5 h-5 text-amber-400" />
+                              <Clock className="w-5 h-5 text-amber-600" />
                             </div>
                           )}
                         </div>
@@ -458,7 +458,7 @@ export function FuseSign() {
                 </div>
 
                 {/* Actions */}
-                <div className="flex items-center gap-2 pt-4 border-t border-white/10">
+                <div className="flex items-center gap-2 pt-4 border-t border-gray-200">
                   {doc.status === 'pending' && doc.signers.some(s => s.email === 'john@example.com' && s.status === 'pending') && (
                     <>
                       <button
@@ -470,7 +470,7 @@ export function FuseSign() {
                       </button>
                       <button
                         onClick={() => handleDeclineDocument(doc.id)}
-                        className="flex items-center gap-2 px-4 py-2 bg-white border-2 border-red-300 text-red-400 rounded-lg hover:bg-red-500/10 transition-colors font-semibold text-sm"
+                        className="flex items-center gap-2 px-4 py-2 bg-white border-2 border-red-300 text-red-600 rounded-lg hover:bg-red-50 transition-colors font-semibold text-sm"
                       >
                         <X className="w-4 h-4" />
                         Decline
@@ -479,14 +479,14 @@ export function FuseSign() {
                   )}
                   <button
                     onClick={() => setSelectedDoc(doc)}
-                    className="flex items-center gap-2 px-4 py-2 bg-white border-2 border-white/10 text-slate-300 rounded-lg hover:bg-white/5 transition-colors font-semibold text-sm"
+                    className="flex items-center gap-2 px-4 py-2 bg-white border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-semibold text-sm"
                   >
                     <Eye className="w-4 h-4" />
                     View
                   </button>
                   {doc.status === 'completed' && (
                     <button
-                      className="flex items-center gap-2 px-4 py-2 bg-white border-2 border-white/10 text-slate-300 rounded-lg hover:bg-white/5 transition-colors font-semibold text-sm"
+                      className="flex items-center gap-2 px-4 py-2 bg-white border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-semibold text-sm"
                     >
                       <Download className="w-4 h-4" />
                       Download
@@ -503,51 +503,51 @@ export function FuseSign() {
       {selectedDoc && selectedDoc.status === 'pending' && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-6">
           <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="sticky top-0 bg-white border-b border-white/10 p-6 flex items-center justify-between">
+            <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex items-center justify-between">
               <div>
-                <h3 className="text-2xl font-bold text-slate-100">{selectedDoc.title}</h3>
-                <p className="text-sm text-slate-300 mt-1">Review and sign this document</p>
+                <h3 className="text-2xl font-bold text-gray-900">{selectedDoc.title}</h3>
+                <p className="text-sm text-gray-600 mt-1">Review and sign this document</p>
               </div>
               <button onClick={() => setSelectedDoc(null)}>
-                <X className="w-6 h-6 text-slate-300" />
+                <X className="w-6 h-6 text-gray-600" />
               </button>
             </div>
 
             <div className="p-6">
               {/* Document Preview */}
-              <div className="bg-white/5 border-2 border-white/10 rounded-lg p-8 mb-6 min-h-[400px] flex items-center justify-center">
+              <div className="bg-gray-50 border-2 border-gray-300 rounded-lg p-8 mb-6 min-h-[400px] flex items-center justify-center">
                 <div className="text-center">
                   <FileText className="w-24 h-24 text-gray-400 mx-auto mb-4" />
-                  <p className="text-slate-300 mb-2">Document Preview</p>
-                  <p className="text-sm text-slate-400">{selectedDoc.pages} pages</p>
+                  <p className="text-gray-600 mb-2">Document Preview</p>
+                  <p className="text-sm text-gray-500">{selectedDoc.pages} pages</p>
                 </div>
               </div>
 
               {/* Signature Box */}
-              <div className="bg-blue-500/10 border-2 border-blue-500/30 rounded-lg p-6 mb-6">
-                <h4 className="font-bold text-blue-300 mb-4">Your Signature Required</h4>
+              <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-6 mb-6">
+                <h4 className="font-bold text-blue-900 mb-4">Your Signature Required</h4>
                 <div className="bg-white border-2 border-dashed border-blue-300 rounded-lg p-12 text-center mb-4">
-                  <Edit3 className="w-12 h-12 text-blue-400 mx-auto mb-3" />
-                  <p className="text-slate-300 mb-2">Click to add your signature</p>
-                  <p className="text-xs text-slate-400">You can draw, type, or upload your signature</p>
+                  <Edit3 className="w-12 h-12 text-blue-600 mx-auto mb-3" />
+                  <p className="text-gray-600 mb-2">Click to add your signature</p>
+                  <p className="text-xs text-gray-500">You can draw, type, or upload your signature</p>
                 </div>
 
                 <div className="space-y-3">
                   <label className="flex items-start gap-3">
                     <input type="checkbox" className="mt-1 w-5 h-5" />
-                    <span className="text-sm text-slate-300">
+                    <span className="text-sm text-gray-700">
                       I have read and agree to the terms outlined in this document
                     </span>
                   </label>
                   <label className="flex items-start gap-3">
                     <input type="checkbox" className="mt-1 w-5 h-5" />
-                    <span className="text-sm text-slate-300">
+                    <span className="text-sm text-gray-700">
                       I consent to using electronic signatures for this agreement
                     </span>
                   </label>
                   <label className="flex items-start gap-3">
                     <input type="checkbox" className="mt-1 w-5 h-5" />
-                    <span className="text-sm text-slate-300">
+                    <span className="text-sm text-gray-700">
                       I confirm that I am authorized to sign this document
                     </span>
                   </label>
@@ -565,7 +565,7 @@ export function FuseSign() {
                 </button>
                 <button
                   onClick={() => setSelectedDoc(null)}
-                  className="px-6 py-3 bg-white border-2 border-white/10 text-slate-300 rounded-lg hover:bg-white/5 transition-colors font-semibold"
+                  className="px-6 py-3 bg-white border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-semibold"
                 >
                   Cancel
                 </button>
@@ -579,54 +579,54 @@ export function FuseSign() {
       {selectedDoc && selectedDoc.status !== 'pending' && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-6">
           <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="sticky top-0 bg-white border-b border-white/10 p-6 flex items-center justify-between">
+            <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex items-center justify-between">
               <div>
-                <h3 className="text-2xl font-bold text-slate-100">{selectedDoc.title}</h3>
+                <h3 className="text-2xl font-bold text-gray-900">{selectedDoc.title}</h3>
                 <div className="flex items-center gap-3 mt-2">
                   {getStatusBadge(selectedDoc.status)}
                   {selectedDoc.completedAt && (
-                    <span className="text-sm text-slate-300">
+                    <span className="text-sm text-gray-600">
                       Completed {formatDate(selectedDoc.completedAt)}
                     </span>
                   )}
                 </div>
               </div>
               <button onClick={() => setSelectedDoc(null)}>
-                <X className="w-6 h-6 text-slate-300" />
+                <X className="w-6 h-6 text-gray-600" />
               </button>
             </div>
 
             <div className="p-6">
               {/* Document Preview */}
-              <div className="bg-white/5 border-2 border-white/10 rounded-lg p-8 mb-6 min-h-[400px] flex items-center justify-center">
+              <div className="bg-gray-50 border-2 border-gray-300 rounded-lg p-8 mb-6 min-h-[400px] flex items-center justify-center">
                 <div className="text-center">
                   <FileText className="w-24 h-24 text-gray-400 mx-auto mb-4" />
-                  <p className="text-slate-300 mb-2">Document Preview</p>
-                  <p className="text-sm text-slate-400">{selectedDoc.pages} pages</p>
+                  <p className="text-gray-600 mb-2">Document Preview</p>
+                  <p className="text-sm text-gray-500">{selectedDoc.pages} pages</p>
                 </div>
               </div>
 
               {/* Signature Trail */}
-              <div className="bg-green-500/10 border-2 border-green-500/30 rounded-lg p-6 mb-6">
-                <h4 className="font-bold text-green-300 mb-4">Signature Trail</h4>
+              <div className="bg-green-50 border-2 border-green-200 rounded-lg p-6 mb-6">
+                <h4 className="font-bold text-green-900 mb-4">Signature Trail</h4>
                 <div className="space-y-3">
                   {selectedDoc.signers.map((signer, idx) => (
                     <div key={signer.id} className="flex items-center gap-3">
                       <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${
-                        signer.status === 'signed' ? 'bg-green-500/15 text-green-300' : 'bg-white/5 text-slate-300'
+                        signer.status === 'signed' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-700'
                       }`}>
                         {idx + 1}
                       </div>
                       <div className="flex-1">
-                        <p className="text-sm font-semibold text-slate-100">{signer.name}</p>
-                        <p className="text-xs text-slate-300">
+                        <p className="text-sm font-semibold text-gray-900">{signer.name}</p>
+                        <p className="text-xs text-gray-600">
                           {signer.status === 'signed' 
                             ? `Signed ${signer.signedAt && formatDate(signer.signedAt)}`
                             : 'Pending signature'}
                         </p>
                       </div>
                       {signer.status === 'signed' && (
-                        <CheckCircle className="w-5 h-5 text-green-400" />
+                        <CheckCircle className="w-5 h-5 text-green-600" />
                       )}
                     </div>
                   ))}
@@ -643,7 +643,7 @@ export function FuseSign() {
                 )}
                 <button
                   onClick={() => setSelectedDoc(null)}
-                  className="px-6 py-3 bg-white border-2 border-white/10 text-slate-300 rounded-lg hover:bg-white/5 transition-colors font-semibold"
+                  className="px-6 py-3 bg-white border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-semibold"
                 >
                   Close
                 </button>
@@ -657,31 +657,31 @@ export function FuseSign() {
       {showNewDocModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-6">
           <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full">
-            <div className="border-b border-white/10 p-6 flex items-center justify-between">
-              <h3 className="text-2xl font-bold text-slate-100">Create New Document</h3>
+            <div className="border-b border-gray-200 p-6 flex items-center justify-between">
+              <h3 className="text-2xl font-bold text-gray-900">Create New Document</h3>
               <button onClick={() => setShowNewDocModal(false)}>
-                <X className="w-6 h-6 text-slate-300" />
+                <X className="w-6 h-6 text-gray-600" />
               </button>
             </div>
 
             <div className="p-6">
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Document Title *
                   </label>
                   <input
                     type="text"
-                    className="w-full px-4 py-2 border border-white/10 rounded-lg"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                     placeholder="e.g., Service Agreement 2024"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Document Type *
                   </label>
-                  <select className="w-full px-4 py-2 border border-white/10 rounded-lg">
+                  <select className="w-full px-4 py-2 border border-gray-300 rounded-lg">
                     <option>Engagement Letter</option>
                     <option>Service Agreement</option>
                     <option>Privacy Consent</option>
@@ -691,34 +691,34 @@ export function FuseSign() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Upload Document *
                   </label>
-                  <div className="border-2 border-dashed border-white/10 rounded-lg p-8 text-center hover:border-blue-400 transition-colors cursor-pointer">
+                  <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-blue-400 transition-colors cursor-pointer">
                     <Upload className="w-12 h-12 text-gray-400 mx-auto mb-3" />
-                    <p className="text-slate-300 mb-1">Click to upload or drag and drop</p>
-                    <p className="text-xs text-slate-400">PDF files only (max 10MB)</p>
+                    <p className="text-gray-600 mb-1">Click to upload or drag and drop</p>
+                    <p className="text-xs text-gray-500">PDF files only (max 10MB)</p>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-slate-300 mb-2">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Add Signers
                   </label>
-                  <button className="flex items-center gap-2 text-blue-400 hover:text-blue-300 font-semibold text-sm">
+                  <button className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold text-sm">
                     <Plus className="w-4 h-4" />
                     Add Signer
                   </button>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 mt-6 pt-6 border-t border-white/10">
+              <div className="flex items-center gap-3 mt-6 pt-6 border-t border-gray-200">
                 <button className="flex-1 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold">
                   Create & Send
                 </button>
                 <button
                   onClick={() => setShowNewDocModal(false)}
-                  className="px-6 py-3 bg-white border-2 border-white/10 text-slate-300 rounded-lg hover:bg-white/5 transition-colors font-semibold"
+                  className="px-6 py-3 bg-white border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-semibold"
                 >
                   Cancel
                 </button>

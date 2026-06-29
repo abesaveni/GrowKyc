@@ -1046,17 +1046,17 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
 
   // Helper function to get risk color
   const getRiskColor = (score: number) => {
-    if (score < 40) return 'text-green-400';
-    if (score < 60) return 'text-yellow-400';
-    if (score < 80) return 'text-orange-400';
-    return 'text-red-400';
+    if (score < 40) return 'text-green-600';
+    if (score < 60) return 'text-yellow-600';
+    if (score < 80) return 'text-orange-600';
+    return 'text-red-600';
   };
 
   const getRiskBg = (score: number) => {
-    if (score < 40) return 'bg-green-500/10 border-green-500/30';
-    if (score < 60) return 'bg-yellow-500/10 border-yellow-500/30';
-    if (score < 80) return 'bg-orange-500/10 border-orange-500/30';
-    return 'bg-red-500/10 border-red-500/30';
+    if (score < 40) return 'bg-green-50 border-green-200';
+    if (score < 60) return 'bg-yellow-50 border-yellow-200';
+    if (score < 80) return 'bg-orange-50 border-orange-200';
+    return 'bg-red-50 border-red-200';
   };
 
   const getStatusColor = (status: string) => {
@@ -1071,11 +1071,11 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
 
   if (!client) {
     return (
-      <div className="min-h-screen bg-white/5 flex flex-col justify-center items-center p-8">
-        <div className="max-w-md w-full text-center p-8 bg-white border border-white/10 rounded-2xl shadow-xl">
+      <div className="min-h-screen bg-gray-50 flex flex-col justify-center items-center p-8">
+        <div className="max-w-md w-full text-center p-8 bg-white border border-slate-100 rounded-2xl shadow-xl">
           <Users className="w-16 h-16 text-slate-300 mx-auto mb-4" />
-          <h2 className="text-xl font-bold text-slate-100 mb-2">No Clients Available</h2>
-          <p className="text-sm text-slate-400 mb-6">
+          <h2 className="text-xl font-bold text-slate-800 mb-2">No Clients Available</h2>
+          <p className="text-sm text-slate-500 mb-6">
             There are currently no clients onboarded in the KYC Database. Go to Client Onboarding to add your first client.
           </p>
           {onBack && (
@@ -1093,7 +1093,7 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
   }
 
   return (
-    <div className="min-h-screen bg-white/5">
+    <div className="min-h-screen bg-gray-50">
       {/* TOP SUMMARY STRIP */}
       <div className="sticky top-0 z-50 bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-700 text-white shadow-xl">
         <div className="max-w-[2000px] mx-auto px-4 sm:px-8 py-4 sm:py-6">
@@ -1201,7 +1201,7 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
       <div className="max-w-[2000px] mx-auto p-4 sm:p-8">
         {/* Breadcrumb Navigation */}
         {onBack && (
-          <div className="mb-4 flex items-center gap-2 text-sm text-slate-300">
+          <div className="mb-4 flex items-center gap-2 text-sm text-gray-600">
             <button
               onClick={onBack}
               className="flex items-center gap-1 hover:text-[#13B5EA] transition-colors"
@@ -1210,7 +1210,7 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
               <span>Back to KYC Dashboard</span>
             </button>
             <ChevronRight className="w-4 h-4" />
-            <span className="text-slate-100 font-medium">{client.name}</span>
+            <span className="text-gray-900 font-medium">{client.name}</span>
           </div>
         )}
 
@@ -1231,7 +1231,7 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
                         onClick={() => setActiveTab(tab.id as TabType)}
                         className={`w-auto lg:w-full flex items-center gap-2 lg:gap-3 px-2.5 lg:px-3 py-1.5 lg:py-2 rounded-lg text-left transition-all ${activeTab === tab.id
                           ? 'bg-cyan-600 text-white font-semibold'
-                          : 'text-slate-300 hover:bg-white/5'
+                          : 'text-gray-700 hover:bg-gray-100'
                           }`}
                       >
                         <Icon className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
@@ -1252,39 +1252,39 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
                 <Card className="border-2 border-blue-300 shadow-lg">
                   <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
                     <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
-                      <Eye className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400" />
+                      <Eye className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
                       KYC Overview - {client.name}
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="p-4 sm:p-6">
                     {/* Client Summary */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6">
-                      <div className="bg-cyan-500/10 rounded-lg p-3 sm:p-4 border border-cyan-500/30">
-                        <p className="text-xs sm:text-sm text-slate-300 mb-1">Entity Type</p>
+                      <div className="bg-cyan-50 rounded-lg p-3 sm:p-4 border border-cyan-200">
+                        <p className="text-xs sm:text-sm text-gray-600 mb-1">Entity Type</p>
                         <p className="font-bold text-base sm:text-lg">{client.entityType}</p>
                       </div>
-                      <div className="bg-cyan-500/10 rounded-lg p-3 sm:p-4 border border-cyan-500/30">
-                        <p className="text-xs sm:text-sm text-slate-300 mb-1">Country</p>
+                      <div className="bg-cyan-50 rounded-lg p-3 sm:p-4 border border-cyan-200">
+                        <p className="text-xs sm:text-sm text-gray-600 mb-1">Country</p>
                         <p className="font-bold text-base sm:text-lg">{client.country}</p>
                       </div>
-                      <div className="bg-cyan-500/10 rounded-lg p-3 sm:p-4 border border-cyan-500/30">
-                        <p className="text-xs sm:text-sm text-slate-300 mb-1">Industry</p>
+                      <div className="bg-cyan-50 rounded-lg p-3 sm:p-4 border border-cyan-200">
+                        <p className="text-xs sm:text-sm text-gray-600 mb-1">Industry</p>
                         <p className="font-bold text-base sm:text-lg">{client.industry}</p>
                       </div>
                       {client.abn && (
-                        <div className="bg-cyan-500/10 rounded-lg p-3 sm:p-4 border border-cyan-500/30">
-                          <p className="text-xs sm:text-sm text-slate-300 mb-1">ABN</p>
+                        <div className="bg-cyan-50 rounded-lg p-3 sm:p-4 border border-cyan-200">
+                          <p className="text-xs sm:text-sm text-gray-600 mb-1">ABN</p>
                           <p className="font-bold text-base sm:text-lg">{client.abn}</p>
                         </div>
                       )}
                       {client.acn && (
-                        <div className="bg-cyan-500/10 rounded-lg p-3 sm:p-4 border border-cyan-500/30">
-                          <p className="text-xs sm:text-sm text-slate-300 mb-1">ACN</p>
+                        <div className="bg-cyan-50 rounded-lg p-3 sm:p-4 border border-cyan-200">
+                          <p className="text-xs sm:text-sm text-gray-600 mb-1">ACN</p>
                           <p className="font-bold text-base sm:text-lg">{client.acn}</p>
                         </div>
                       )}
-                      <div className="bg-cyan-500/10 rounded-lg p-3 sm:p-4 border border-cyan-500/30">
-                        <p className="text-xs sm:text-sm text-slate-300 mb-1">Service Type</p>
+                      <div className="bg-cyan-50 rounded-lg p-3 sm:p-4 border border-cyan-200">
+                        <p className="text-xs sm:text-sm text-gray-600 mb-1">Service Type</p>
                         <p className="font-bold text-base sm:text-lg">{client.serviceType}</p>
                       </div>
                     </div>
@@ -1295,9 +1295,9 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
                       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-4">
                         {Object.entries(client.riskScores).map(([key, value]) => (
                           <div key={key} className={`rounded-lg p-3 sm:p-4 border ${getRiskBg(value)}`}>
-                            <p className="text-[10px] sm:text-xs uppercase text-slate-300 mb-1">{key}</p>
+                            <p className="text-[10px] sm:text-xs uppercase text-gray-600 mb-1">{key}</p>
                             <p className={`text-2xl sm:text-3xl font-bold ${getRiskColor(value)}`}>{value}</p>
-                            <div className="w-full bg-white/10 rounded-full h-1.5 sm:h-2 mt-2">
+                            <div className="w-full bg-gray-200 rounded-full h-1.5 sm:h-2 mt-2">
                               <div
                                 className={`h-1.5 sm:h-2 rounded-full ${value < 40 ? 'bg-green-500' : value < 60 ? 'bg-yellow-500' : value < 80 ? 'bg-orange-500' : 'bg-red-500'}`}
                                 style={{ width: `${value}%` }}
@@ -1310,16 +1310,16 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
 
                     {/* Review Dates */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div className="bg-blue-500/10 rounded-lg p-3 sm:p-4 border border-blue-500/30">
+                      <div className="bg-blue-50 rounded-lg p-3 sm:p-4 border border-blue-200">
                         <div className="flex items-center gap-2 mb-2">
-                          <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" />
+                          <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
                           <p className="font-semibold">Last Review</p>
                         </div>
                         <p className="text-lg">{client.lastReview}</p>
                       </div>
-                      <div className="bg-orange-500/10 rounded-lg p-4 border border-orange-500/30">
+                      <div className="bg-orange-50 rounded-lg p-4 border border-orange-200">
                         <div className="flex items-center gap-2 mb-2">
-                          <Target className="w-5 h-5 text-orange-400" />
+                          <Target className="w-5 h-5 text-orange-600" />
                           <p className="font-semibold">Next Review Due</p>
                         </div>
                         <p className="text-lg">{client.nextReview}</p>
@@ -1343,21 +1343,21 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
                   <CardContent className="p-6">
                     {/* Summary Stats */}
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                      <div className="bg-red-500/10 rounded-lg p-3 sm:p-4 border-2 border-red-500/30">
+                      <div className="bg-red-50 rounded-lg p-3 sm:p-4 border-2 border-red-200">
                         <div className="flex items-center justify-between">
                           <div>
-                            <p className="text-xs sm:text-sm text-slate-300 mb-1">Overdue</p>
-                            <p className="text-2xl sm:text-3xl font-bold text-red-400">
+                            <p className="text-xs sm:text-sm text-gray-600 mb-1">Overdue</p>
+                            <p className="text-2xl sm:text-3xl font-bold text-red-600">
                               {client.riskScores.overall > 70 ? 2 : client.riskScores.overall > 50 ? 1 : 0}
                             </p>
                           </div>
-                          <AlertTriangle className="w-6 h-6 sm:w-8 sm:h-8 text-red-400 flex-shrink-0" />
+                          <AlertTriangle className="w-6 h-6 sm:w-8 sm:h-8 text-red-600 flex-shrink-0" />
                         </div>
                       </div>
                       <div className="bg-[#FFA300]/10 rounded-lg p-3 sm:p-4 border-2 border-[#FFA300]">
                         <div className="flex items-center justify-between">
                           <div>
-                            <p className="text-xs sm:text-sm text-slate-300 mb-1">Due Soon</p>
+                            <p className="text-xs sm:text-sm text-gray-600 mb-1">Due Soon</p>
                             <p className="text-2xl sm:text-3xl font-bold text-[#FFA300]">
                               {client.documentsData.pending + (client.monitoringData.activeAlerts > 0 ? 1 : 0)}
                             </p>
@@ -1365,26 +1365,26 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
                           <Clock className="w-6 h-6 sm:w-8 sm:h-8 text-[#FFA300] flex-shrink-0" />
                         </div>
                       </div>
-                      <div className="bg-blue-500/10 rounded-lg p-3 sm:p-4 border-2 border-blue-500/30">
+                      <div className="bg-blue-50 rounded-lg p-3 sm:p-4 border-2 border-blue-200">
                         <div className="flex items-center justify-between">
                           <div>
-                            <p className="text-xs sm:text-sm text-slate-300 mb-1">In Progress</p>
-                            <p className="text-2xl sm:text-3xl font-bold text-blue-400">
+                            <p className="text-xs sm:text-sm text-gray-600 mb-1">In Progress</p>
+                            <p className="text-2xl sm:text-3xl font-bold text-blue-600">
                               {client.riskScores.overall > 40 ? 2 : 1}
                             </p>
                           </div>
-                          <Activity className="w-6 h-6 sm:w-8 sm:h-8 text-blue-400 flex-shrink-0" />
+                          <Activity className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600 flex-shrink-0" />
                         </div>
                       </div>
-                      <div className="bg-green-500/10 rounded-lg p-3 sm:p-4 border-2 border-green-500/30">
+                      <div className="bg-green-50 rounded-lg p-3 sm:p-4 border-2 border-green-200">
                         <div className="flex items-center justify-between">
                           <div>
-                            <p className="text-xs sm:text-sm text-slate-300 mb-1">Completed</p>
-                            <p className="text-2xl sm:text-3xl font-bold text-green-400">
+                            <p className="text-xs sm:text-sm text-gray-600 mb-1">Completed</p>
+                            <p className="text-2xl sm:text-3xl font-bold text-green-600">
                               {client.documentsData.verified}
                             </p>
                           </div>
-                          <CheckCircle className="w-6 h-6 sm:w-8 sm:h-8 text-green-400 flex-shrink-0" />
+                          <CheckCircle className="w-6 h-6 sm:w-8 sm:h-8 text-green-600 flex-shrink-0" />
                         </div>
                       </div>
                     </div>
@@ -1394,7 +1394,7 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
                       {/* Overdue Actions - Show if high risk */}
                       {client.riskScores.overall > 70 && (
                         <>
-                          <Card className="border-l-4 border-l-red-600 bg-red-500/10/30 hover:shadow-md transition-shadow">
+                          <Card className="border-l-4 border-l-red-600 bg-red-50/30 hover:shadow-md transition-shadow">
                             <CardContent className="p-4">
                               <div className="flex items-start justify-between">
                                 <div className="flex-1">
@@ -1403,8 +1403,8 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
                                     <span className="px-3 py-1 bg-gray-600 text-white text-xs font-bold rounded">HIGH PRIORITY</span>
                                   </div>
                                   <h4 className="font-bold text-lg mb-1">Annual KYC Review Required</h4>
-                                  <p className="text-sm text-slate-300 mb-2">Complete annual KYC review and update client file - 12 days overdue</p>
-                                  <div className="flex items-center gap-4 text-sm text-slate-400">
+                                  <p className="text-sm text-gray-600 mb-2">Complete annual KYC review and update client file - 12 days overdue</p>
+                                  <div className="flex items-center gap-4 text-sm text-gray-500">
                                     <div className="flex items-center gap-1">
                                       <Calendar className="w-4 h-4" />
                                       <span>Due: {new Date(Date.now() - 12 * 24 * 60 * 60 * 1000).toLocaleDateString('en-AU')}</span>
@@ -1425,7 +1425,7 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
                             </CardContent>
                           </Card>
 
-                          <Card className="border-l-4 border-l-red-600 bg-red-500/10/30 hover:shadow-md transition-shadow">
+                          <Card className="border-l-4 border-l-red-600 bg-red-50/30 hover:shadow-md transition-shadow">
                             <CardContent className="p-4">
                               <div className="flex items-start justify-between">
                                 <div className="flex-1">
@@ -1434,10 +1434,10 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
                                     <span className="px-3 py-1 bg-red-700 text-white text-xs font-bold rounded">CRITICAL</span>
                                   </div>
                                   <h4 className="font-bold text-lg mb-1">Enhanced Due Diligence Required</h4>
-                                  <p className="text-sm text-slate-300 mb-2">
+                                  <p className="text-sm text-gray-600 mb-2">
                                     High risk rating detected - immediate EDD and senior approval needed
                                   </p>
-                                  <div className="flex items-center gap-4 text-sm text-slate-400">
+                                  <div className="flex items-center gap-4 text-sm text-gray-500">
                                     <div className="flex items-center gap-1">
                                       <Calendar className="w-4 h-4" />
                                       <span>Due: {new Date().toLocaleDateString('en-AU')}</span>
@@ -1462,7 +1462,7 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
 
                       {/* Medium Risk - 1 Overdue */}
                       {client.riskScores.overall > 50 && client.riskScores.overall <= 70 && (
-                        <Card className="border-l-4 border-l-red-600 bg-red-500/10/30 hover:shadow-md transition-shadow">
+                        <Card className="border-l-4 border-l-red-600 bg-red-50/30 hover:shadow-md transition-shadow">
                           <CardContent className="p-4">
                             <div className="flex items-start justify-between">
                               <div className="flex-1">
@@ -1471,8 +1471,8 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
                                   <span className="px-3 py-1 bg-orange-600 text-white text-xs font-bold rounded">MEDIUM PRIORITY</span>
                                 </div>
                                 <h4 className="font-bold text-lg mb-1">Risk Assessment Update Required</h4>
-                                <p className="text-sm text-slate-300 mb-2">Quarterly risk assessment overdue - requires immediate attention</p>
-                                <div className="flex items-center gap-4 text-sm text-slate-400">
+                                <p className="text-sm text-gray-600 mb-2">Quarterly risk assessment overdue - requires immediate attention</p>
+                                <div className="flex items-center gap-4 text-sm text-gray-500">
                                   <div className="flex items-center gap-1">
                                     <Calendar className="w-4 h-4" />
                                     <span>Due: {new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toLocaleDateString('en-AU')}</span>
@@ -1496,7 +1496,7 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
 
                       {/* Due Soon - Document Verification */}
                       {client.documentsData.pending > 0 && (
-                        <Card className="border-l-4 border-l-[#FFA300] bg-orange-500/10/30 hover:shadow-md transition-shadow">
+                        <Card className="border-l-4 border-l-[#FFA300] bg-orange-50/30 hover:shadow-md transition-shadow">
                           <CardContent className="p-4">
                             <div className="flex items-start justify-between">
                               <div className="flex-1">
@@ -1505,10 +1505,10 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
                                   <span className="px-3 py-1 bg-orange-600 text-white text-xs font-bold rounded">MEDIUM PRIORITY</span>
                                 </div>
                                 <h4 className="font-bold text-lg mb-1">Document Verification Required</h4>
-                                <p className="text-sm text-slate-300 mb-2">
+                                <p className="text-sm text-gray-600 mb-2">
                                   {client.documentsData.pending} pending documents need review and verification
                                 </p>
-                                <div className="flex items-center gap-4 text-sm text-slate-400">
+                                <div className="flex items-center gap-4 text-sm text-gray-500">
                                   <div className="flex items-center gap-1">
                                     <Calendar className="w-4 h-4" />
                                     <span>Due: {new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toLocaleDateString('en-AU')}</span>
@@ -1539,7 +1539,7 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
 
                       {/* Due Soon - Monitoring Alerts */}
                       {client.monitoringData.activeAlerts > 0 && (
-                        <Card className="border-l-4 border-l-[#FFA300] bg-orange-500/10/30 hover:shadow-md transition-shadow">
+                        <Card className="border-l-4 border-l-[#FFA300] bg-orange-50/30 hover:shadow-md transition-shadow">
                           <CardContent className="p-4">
                             <div className="flex items-start justify-between">
                               <div className="flex-1">
@@ -1548,10 +1548,10 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
                                   <span className="px-3 py-1 bg-yellow-600 text-white text-xs font-bold rounded">MEDIUM PRIORITY</span>
                                 </div>
                                 <h4 className="font-bold text-lg mb-1">Monitoring Alert Investigation</h4>
-                                <p className="text-sm text-slate-300 mb-2">
+                                <p className="text-sm text-gray-600 mb-2">
                                   {client.monitoringData.activeAlerts} active monitoring alerts require investigation
                                 </p>
-                                <div className="flex items-center gap-4 text-sm text-slate-400">
+                                <div className="flex items-center gap-4 text-sm text-gray-500">
                                   <div className="flex items-center gap-1">
                                     <Calendar className="w-4 h-4" />
                                     <span>Due: {new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toLocaleDateString('en-AU')}</span>
@@ -1581,7 +1581,7 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
                       )}
 
                       {/* In Progress - Risk Assessment */}
-                      <Card className="border-l-4 border-l-blue-600 bg-blue-500/10/30 hover:shadow-md transition-shadow">
+                      <Card className="border-l-4 border-l-blue-600 bg-blue-50/30 hover:shadow-md transition-shadow">
                         <CardContent className="p-4">
                           <div className="flex items-start justify-between">
                             <div className="flex-1">
@@ -1592,12 +1592,12 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
                               <h4 className="font-bold text-lg mb-1">
                                 {client.riskScores.overall > 60 ? 'Enhanced Due Diligence' : 'Risk Assessment Update'}
                               </h4>
-                              <p className="text-sm text-slate-300 mb-2">
+                              <p className="text-sm text-gray-600 mb-2">
                                 {client.riskScores.overall > 60
                                   ? 'Enhanced due diligence review in progress - 45% complete'
                                   : 'Quarterly risk assessment in progress - 60% complete'}
                               </p>
-                              <div className="flex items-center gap-4 text-sm text-slate-400 mb-2">
+                              <div className="flex items-center gap-4 text-sm text-gray-500 mb-2">
                                 <div className="flex items-center gap-1">
                                   <Calendar className="w-4 h-4" />
                                   <span>Due: {client.nextReview}</span>
@@ -1607,7 +1607,7 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
                                   <span>Assigned: Risk Team</span>
                                 </div>
                               </div>
-                              <div className="w-full bg-white/10 rounded-full h-2">
+                              <div className="w-full bg-gray-200 rounded-full h-2">
                                 <div
                                   className="bg-blue-600 h-2 rounded-full"
                                   style={{ width: client.riskScores.overall > 60 ? '45%' : '60%' }}
@@ -1625,7 +1625,7 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
 
                       {/* In Progress - Ownership Verification (if applicable) */}
                       {client.entityType === 'Company' && (
-                        <Card className="border-l-4 border-l-blue-600 bg-blue-500/10/30 hover:shadow-md transition-shadow">
+                        <Card className="border-l-4 border-l-blue-600 bg-blue-50/30 hover:shadow-md transition-shadow">
                           <CardContent className="p-4">
                             <div className="flex items-start justify-between">
                               <div className="flex-1">
@@ -1634,10 +1634,10 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
                                   <span className="px-3 py-1 bg-gray-600 text-white text-xs font-bold rounded">NORMAL PRIORITY</span>
                                 </div>
                                 <h4 className="font-bold text-lg mb-1">Beneficial Ownership Verification</h4>
-                                <p className="text-sm text-slate-300 mb-2">
+                                <p className="text-sm text-gray-600 mb-2">
                                   Verifying beneficial ownership structure and control persons - 75% complete
                                 </p>
-                                <div className="flex items-center gap-4 text-sm text-slate-400 mb-2">
+                                <div className="flex items-center gap-4 text-sm text-gray-500 mb-2">
                                   <div className="flex items-center gap-1">
                                     <Calendar className="w-4 h-4" />
                                     <span>Due: {new Date(Date.now() + 10 * 24 * 60 * 60 * 1000).toLocaleDateString('en-AU')}</span>
@@ -1647,7 +1647,7 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
                                     <span>Assigned: KYC Officer</span>
                                   </div>
                                 </div>
-                                <div className="w-full bg-white/10 rounded-full h-2">
+                                <div className="w-full bg-gray-200 rounded-full h-2">
                                   <div className="bg-blue-600 h-2 rounded-full" style={{ width: '75%' }} />
                                 </div>
                               </div>
@@ -1662,20 +1662,20 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
                       )}
 
                       {/* Completed Actions */}
-                      <Card className="border-l-4 border-l-green-600 bg-green-500/10/20 opacity-75 hover:shadow-md transition-all">
+                      <Card className="border-l-4 border-l-green-600 bg-green-50/20 opacity-75 hover:shadow-md transition-all">
                         <CardContent className="p-4">
                           <div className="flex items-start justify-between">
                             <div className="flex-1">
                               <div className="flex items-center gap-2 mb-2">
                                 <span className="px-3 py-1 bg-green-600 text-white text-xs font-bold rounded">COMPLETED</span>
                               </div>
-                              <h4 className="font-bold text-lg mb-1 line-through text-slate-400">Identity Verification</h4>
+                              <h4 className="font-bold text-lg mb-1 line-through text-gray-500">Identity Verification</h4>
                               <p className="text-sm text-gray-400 mb-2">
                                 {(client.identityData.greenIDScore || client.identityData.infoTrackStatus) ? 'GreenID and InfoTrack verification completed successfully' : 'Identity verification completed'}
                               </p>
                               <div className="flex items-center gap-4 text-sm text-gray-400">
                                 <div className="flex items-center gap-1">
-                                  <CheckCircle className="w-4 h-4 text-green-400" />
+                                  <CheckCircle className="w-4 h-4 text-green-600" />
                                   <span>Completed: {client.lastReview}</span>
                                 </div>
                                 <div className="flex items-center gap-1">
@@ -1688,20 +1688,20 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
                         </CardContent>
                       </Card>
 
-                      <Card className="border-l-4 border-l-green-600 bg-green-500/10/20 opacity-75 hover:shadow-md transition-all">
+                      <Card className="border-l-4 border-l-green-600 bg-green-50/20 opacity-75 hover:shadow-md transition-all">
                         <CardContent className="p-4">
                           <div className="flex items-start justify-between">
                             <div className="flex-1">
                               <div className="flex items-center gap-2 mb-2">
                                 <span className="px-3 py-1 bg-green-600 text-white text-xs font-bold rounded">COMPLETED</span>
                               </div>
-                              <h4 className="font-bold text-lg mb-1 line-through text-slate-400">AML Screening</h4>
-                              <p className="text-sm text-slate-400 mb-2">
+                              <h4 className="font-bold text-lg mb-1 line-through text-gray-500">AML Screening</h4>
+                              <p className="text-sm text-gray-500 mb-2">
                                 Sanctions, PEP, and adverse media screening completed - no matches found
                               </p>
                               <div className="flex items-center gap-4 text-sm text-gray-400">
                                 <div className="flex items-center gap-1">
-                                  <CheckCircle className="w-4 h-4 text-green-400" />
+                                  <CheckCircle className="w-4 h-4 text-green-600" />
                                   <span>Completed: {new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toLocaleDateString('en-AU')}</span>
                                 </div>
                                 <div className="flex items-center gap-1">
@@ -1729,30 +1729,30 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
               <Card className="border-2 border-blue-300 shadow-lg">
                 <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b">
                   <CardTitle className="flex items-center gap-2">
-                    <Shield className="w-6 h-6 text-blue-400" />
+                    <Shield className="w-6 h-6 text-blue-600" />
                     AML/CTF Screening
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-6">
                   {/* Risk Rating Banner */}
-                  <div className={`mb-6 rounded-lg p-6 border-2 ${client.amlData.riskRating === 'Critical' ? 'bg-red-500/10 border-red-300' :
-                    client.amlData.riskRating === 'High' ? 'bg-orange-500/10 border-orange-300' :
-                      client.amlData.riskRating === 'Medium' ? 'bg-yellow-500/10 border-yellow-300' :
-                        'bg-green-500/10 border-green-300'
+                  <div className={`mb-6 rounded-lg p-6 border-2 ${client.amlData.riskRating === 'Critical' ? 'bg-red-50 border-red-300' :
+                    client.amlData.riskRating === 'High' ? 'bg-orange-50 border-orange-300' :
+                      client.amlData.riskRating === 'Medium' ? 'bg-yellow-50 border-yellow-300' :
+                        'bg-green-50 border-green-300'
                     }`}>
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm text-slate-300 mb-1">AML/CTF Risk Rating</p>
-                        <p className={`text-3xl font-bold ${client.amlData.riskRating === 'Critical' ? 'text-red-400' :
-                          client.amlData.riskRating === 'High' ? 'text-orange-400' :
-                            client.amlData.riskRating === 'Medium' ? 'text-yellow-400' :
-                              'text-green-400'
+                        <p className="text-sm text-gray-600 mb-1">AML/CTF Risk Rating</p>
+                        <p className={`text-3xl font-bold ${client.amlData.riskRating === 'Critical' ? 'text-red-600' :
+                          client.amlData.riskRating === 'High' ? 'text-orange-600' :
+                            client.amlData.riskRating === 'Medium' ? 'text-yellow-600' :
+                              'text-green-600'
                           }`}>
                           {client.amlData.riskRating}
                         </p>
                       </div>
                       <div className="text-right">
-                        <p className="text-sm text-slate-300 mb-1">Last Screening</p>
+                        <p className="text-sm text-gray-600 mb-1">Last Screening</p>
                         <p className="text-lg font-bold">{client.amlData.lastScreeningDate}</p>
                       </div>
                     </div>
@@ -1760,51 +1760,51 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
 
                   {/* Screening Results */}
                   <div className="grid grid-cols-3 gap-4 mb-6">
-                    <div className={`rounded-lg p-4 border-2 ${client.amlData.sanctionsMatches > 0 ? 'bg-red-500/10 border-red-300' : 'bg-green-500/10 border-green-500/30'
+                    <div className={`rounded-lg p-4 border-2 ${client.amlData.sanctionsMatches > 0 ? 'bg-red-50 border-red-300' : 'bg-green-50 border-green-200'
                       }`}>
                       <div className="flex items-center gap-2 mb-2">
                         {client.amlData.sanctionsMatches > 0 ? (
-                          <XCircle className="w-6 h-6 text-red-400" />
+                          <XCircle className="w-6 h-6 text-red-600" />
                         ) : (
-                          <CheckCircle className="w-6 h-6 text-green-400" />
+                          <CheckCircle className="w-6 h-6 text-green-600" />
                         )}
                         <p className="font-semibold">Sanctions</p>
                       </div>
                       <p className="text-3xl font-bold">{client.amlData.sanctionsMatches}</p>
-                      <p className="text-sm text-slate-300 mt-1">
+                      <p className="text-sm text-gray-600 mt-1">
                         {client.amlData.sanctionsMatches > 0 ? 'Matches Found' : 'No Matches'}
                       </p>
                     </div>
 
-                    <div className={`rounded-lg p-4 border-2 ${client.amlData.pepStatus !== 'Not PEP' ? 'bg-orange-500/10 border-orange-300' : 'bg-green-500/10 border-green-500/30'
+                    <div className={`rounded-lg p-4 border-2 ${client.amlData.pepStatus !== 'Not PEP' ? 'bg-orange-50 border-orange-300' : 'bg-green-50 border-green-200'
                       }`}>
                       <div className="flex items-center gap-2 mb-2">
                         {client.amlData.pepStatus !== 'Not PEP' ? (
-                          <AlertTriangle className="w-6 h-6 text-orange-400" />
+                          <AlertTriangle className="w-6 h-6 text-orange-600" />
                         ) : (
-                          <CheckCircle className="w-6 h-6 text-green-400" />
+                          <CheckCircle className="w-6 h-6 text-green-600" />
                         )}
                         <p className="font-semibold">PEP Status</p>
                       </div>
                       <p className="text-xl font-bold">{client.amlData.pepStatus}</p>
                     </div>
 
-                    <div className={`rounded-lg p-4 border-2 ${client.amlData.adverseMediaHits > 5 ? 'bg-red-500/10 border-red-300' :
-                      client.amlData.adverseMediaHits > 0 ? 'bg-yellow-500/10 border-yellow-500/30' :
-                        'bg-green-500/10 border-green-500/30'
+                    <div className={`rounded-lg p-4 border-2 ${client.amlData.adverseMediaHits > 5 ? 'bg-red-50 border-red-300' :
+                      client.amlData.adverseMediaHits > 0 ? 'bg-yellow-50 border-yellow-200' :
+                        'bg-green-50 border-green-200'
                       }`}>
                       <div className="flex items-center gap-2 mb-2">
                         {client.amlData.adverseMediaHits > 5 ? (
-                          <XCircle className="w-6 h-6 text-red-400" />
+                          <XCircle className="w-6 h-6 text-red-600" />
                         ) : client.amlData.adverseMediaHits > 0 ? (
-                          <AlertTriangle className="w-6 h-6 text-yellow-400" />
+                          <AlertTriangle className="w-6 h-6 text-yellow-600" />
                         ) : (
-                          <CheckCircle className="w-6 h-6 text-green-400" />
+                          <CheckCircle className="w-6 h-6 text-green-600" />
                         )}
                         <p className="font-semibold">Adverse Media</p>
                       </div>
                       <p className="text-3xl font-bold">{client.amlData.adverseMediaHits}</p>
-                      <p className="text-sm text-slate-300 mt-1">
+                      <p className="text-sm text-gray-600 mt-1">
                         {client.amlData.adverseMediaHits > 0 ? 'Hits Found' : 'No Hits'}
                       </p>
                     </div>
@@ -1813,9 +1813,9 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
                   {/* WorldCheck Status */}
                   <div className="mb-6">
                     <h3 className="font-bold text-lg mb-4">WorldCheck Status</h3>
-                    <div className={`rounded-lg p-4 border-2 ${client.amlData.worldCheckStatus.includes('CRITICAL') ? 'bg-red-500/10 border-red-300' :
-                      client.amlData.worldCheckStatus.includes('PEP') ? 'bg-orange-500/10 border-orange-300' :
-                        'bg-green-500/10 border-green-500/30'
+                    <div className={`rounded-lg p-4 border-2 ${client.amlData.worldCheckStatus.includes('CRITICAL') ? 'bg-red-50 border-red-300' :
+                      client.amlData.worldCheckStatus.includes('PEP') ? 'bg-orange-50 border-orange-300' :
+                        'bg-green-50 border-green-200'
                       }`}>
                       <p className="text-lg font-bold">{client.amlData.worldCheckStatus}</p>
                     </div>
@@ -1824,10 +1824,10 @@ export function ClientKYCDashboard({ onBack, clientId: propClientId }: ClientKYC
                   {/* Transaction Monitoring */}
                   <div>
                     <h3 className="font-bold text-lg mb-4">Transaction Monitoring</h3>
-                    <div className={`rounded-lg p-4 border ${client.amlData.transactionMonitoring === 'Active' ? 'bg-green-500/10 border-green-500/30' : 'bg-white/5 border-white/10'
+                    <div className={`rounded-lg p-4 border ${client.amlData.transactionMonitoring === 'Active' ? 'bg-green-50 border-green-200' : 'bg-gray-50 border-gray-200'
                       }`}>
                       <div className="flex items-center gap-2">
-                        <Activity className={`w-5 h-5 ${client.amlData.transactionMonitoring === 'Active' ? 'text-green-400' : 'text-gray-400'}`} />
+                        <Activity className={`w-5 h-5 ${client.amlData.transactionMonitoring === 'Active' ? 'text-green-600' : 'text-gray-400'}`} />
                         <p className="font-semibold">Status: {client.amlData.transactionMonitoring}</p>
                       </div>
                     </div>

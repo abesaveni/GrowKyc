@@ -88,8 +88,8 @@ export function EnterpriseInvestorDashboard({ onNavigate }: EnterpriseInvestorDa
       sortable: true,
       render: (_: any, row: any) => (
         <div>
-          <p className="font-semibold text-slate-100">{row.property?.address}</p>
-          <p className="text-xs text-slate-300">{row.property?.suburb}, {row.property?.state}</p>
+          <p className="font-semibold text-gray-900">{row.property?.address}</p>
+          <p className="text-xs text-gray-600">{row.property?.suburb}, {row.property?.state}</p>
         </div>
       )
     },
@@ -98,7 +98,7 @@ export function EnterpriseInvestorDashboard({ onNavigate }: EnterpriseInvestorDa
       label: 'My Bid', 
       sortable: true,
       render: (val: number) => (
-        <span className="font-semibold text-slate-100">
+        <span className="font-semibold text-gray-900">
           A${val?.toLocaleString() || 'No bid'}
         </span>
       )
@@ -110,7 +110,7 @@ export function EnterpriseInvestorDashboard({ onNavigate }: EnterpriseInvestorDa
       render: (_: any, row: any) => {
         const returnVal = row.currentBid ? ((row.property?.estimatedValue - row.currentBid) / row.currentBid * 100).toFixed(1) : 0;
         return (
-          <span className="font-semibold text-green-400">
+          <span className="font-semibold text-green-600">
             +{returnVal}%
           </span>
         );
@@ -122,7 +122,7 @@ export function EnterpriseInvestorDashboard({ onNavigate }: EnterpriseInvestorDa
       sortable: true,
       render: (val: number) => (
         <div className="flex items-center gap-2">
-          <div className="w-16 bg-white/10 rounded-full h-2">
+          <div className="w-16 bg-gray-200 rounded-full h-2">
             <div 
               className={`h-2 rounded-full ${val > 70 ? 'bg-amber-500' : 'bg-green-500'}`}
               style={{ width: `${val}%` }}
@@ -237,7 +237,7 @@ export function EnterpriseInvestorDashboard({ onNavigate }: EnterpriseInvestorDa
             <div className="flex flex-col gap-3">
               <Button 
                 size="lg"
-                className="bg-white text-emerald-300 hover:bg-white/5 gap-2"
+                className="bg-white text-emerald-900 hover:bg-gray-100 gap-2"
                 onClick={() => onNavigate?.('deals')}
               >
                 <Gavel className="w-5 h-5" />
@@ -259,62 +259,62 @@ export function EnterpriseInvestorDashboard({ onNavigate }: EnterpriseInvestorDa
 
       {/* Performance Metrics Cards */}
       <div className="grid grid-cols-4 gap-4">
-        <Card className="border-2 border-green-500/30 bg-gradient-to-br from-green-50 to-white">
+        <Card className="border-2 border-green-200 bg-gradient-to-br from-green-50 to-white">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-3">
-              <div className="p-2 bg-green-500/15 rounded-lg">
-                <TrendingUp className="w-6 h-6 text-green-400" />
+              <div className="p-2 bg-green-100 rounded-lg">
+                <TrendingUp className="w-6 h-6 text-green-600" />
               </div>
-              <div className="flex items-center gap-1 text-green-400">
+              <div className="flex items-center gap-1 text-green-600">
                 <ArrowUpRight className="w-4 h-4" />
                 <span className="text-sm font-semibold">{metrics.returnRate}%</span>
               </div>
             </div>
-            <p className="text-sm text-slate-300 mb-1">Total Return</p>
-            <p className="text-2xl font-bold text-slate-100">A${(metrics.totalReturn / 1000).toFixed(0)}K</p>
-            <p className="text-xs text-slate-300 mt-2">Since inception</p>
+            <p className="text-sm text-gray-600 mb-1">Total Return</p>
+            <p className="text-2xl font-bold text-gray-900">A${(metrics.totalReturn / 1000).toFixed(0)}K</p>
+            <p className="text-xs text-gray-600 mt-2">Since inception</p>
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-blue-500/30 bg-gradient-to-br from-blue-50 to-white">
+        <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-white">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-3">
-              <div className="p-2 bg-blue-500/15 rounded-lg">
-                <Award className="w-6 h-6 text-blue-400" />
+              <div className="p-2 bg-blue-100 rounded-lg">
+                <Award className="w-6 h-6 text-blue-600" />
               </div>
-              <span className="text-xs text-blue-400 font-semibold">TOP 10%</span>
+              <span className="text-xs text-blue-600 font-semibold">TOP 10%</span>
             </div>
-            <p className="text-sm text-slate-300 mb-1">Avg ROI</p>
-            <p className="text-2xl font-bold text-slate-100">{metrics.avgROI}%</p>
-            <p className="text-xs text-slate-300 mt-2">Above market average</p>
+            <p className="text-sm text-gray-600 mb-1">Avg ROI</p>
+            <p className="text-2xl font-bold text-gray-900">{metrics.avgROI}%</p>
+            <p className="text-xs text-gray-600 mt-2">Above market average</p>
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-purple-500/30 bg-gradient-to-br from-purple-50 to-white">
+        <Card className="border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-white">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-3">
-              <div className="p-2 bg-purple-500/15 rounded-lg">
-                <Clock className="w-6 h-6 text-purple-400" />
+              <div className="p-2 bg-purple-100 rounded-lg">
+                <Clock className="w-6 h-6 text-purple-600" />
               </div>
-              <span className="text-xs text-purple-400 font-semibold">AVG</span>
+              <span className="text-xs text-purple-600 font-semibold">AVG</span>
             </div>
-            <p className="text-sm text-slate-300 mb-1">Holding Period</p>
-            <p className="text-2xl font-bold text-slate-100">{metrics.avgHoldingPeriod}d</p>
-            <p className="text-xs text-slate-300 mt-2">~5 months average</p>
+            <p className="text-sm text-gray-600 mb-1">Holding Period</p>
+            <p className="text-2xl font-bold text-gray-900">{metrics.avgHoldingPeriod}d</p>
+            <p className="text-xs text-gray-600 mt-2">~5 months average</p>
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-amber-500/30 bg-gradient-to-br from-amber-50 to-white">
+        <Card className="border-2 border-amber-200 bg-gradient-to-br from-amber-50 to-white">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-3">
-              <div className="p-2 bg-amber-500/15 rounded-lg">
-                <PieChart className="w-6 h-6 text-amber-400" />
+              <div className="p-2 bg-amber-100 rounded-lg">
+                <PieChart className="w-6 h-6 text-amber-600" />
               </div>
-              <span className="text-xs text-green-400 font-semibold">STRONG</span>
+              <span className="text-xs text-green-600 font-semibold">STRONG</span>
             </div>
-            <p className="text-sm text-slate-300 mb-1">Diversification</p>
-            <p className="text-2xl font-bold text-slate-100">{metrics.diversification}/10</p>
-            <p className="text-xs text-slate-300 mt-2">Well balanced</p>
+            <p className="text-sm text-gray-600 mb-1">Diversification</p>
+            <p className="text-2xl font-bold text-gray-900">{metrics.diversification}/10</p>
+            <p className="text-xs text-gray-600 mt-2">Well balanced</p>
           </CardContent>
         </Card>
       </div>
@@ -348,7 +348,7 @@ export function EnterpriseInvestorDashboard({ onNavigate }: EnterpriseInvestorDa
         {/* Investment Portfolio Table */}
         <div className="col-span-2 space-y-4">
           <Card>
-            <CardHeader className="border-b bg-white/5">
+            <CardHeader className="border-b bg-gray-50">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-primary/10 rounded-lg">
@@ -356,14 +356,14 @@ export function EnterpriseInvestorDashboard({ onNavigate }: EnterpriseInvestorDa
                   </div>
                   <div>
                     <CardTitle className="text-xl">Active Investments</CardTitle>
-                    <p className="text-sm text-slate-300 mt-1">Your current investment portfolio</p>
+                    <p className="text-sm text-gray-600 mt-1">Your current investment portfolio</p>
                   </div>
                 </div>
                 <div className="flex gap-2">
                   <select
                     value={timeRange}
                     onChange={(e) => setTimeRange(e.target.value as any)}
-                    className="px-3 py-2 border border-white/10 rounded-lg text-sm"
+                    className="px-3 py-2 border border-gray-300 rounded-lg text-sm"
                   >
                     <option value="7d">Last 7 days</option>
                     <option value="30d">Last 30 days</option>
@@ -420,16 +420,16 @@ export function EnterpriseInvestorDashboard({ onNavigate }: EnterpriseInvestorDa
                 {portfolioBreakdown.map((item, idx) => (
                   <div key={idx}>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm font-semibold text-slate-100">{item.category}</span>
-                      <span className="text-sm text-slate-300">{item.percentage}%</span>
+                      <span className="text-sm font-semibold text-gray-900">{item.category}</span>
+                      <span className="text-sm text-gray-600">{item.percentage}%</span>
                     </div>
-                    <div className="w-full bg-white/10 rounded-full h-2">
+                    <div className="w-full bg-gray-200 rounded-full h-2">
                       <div 
                         className={`${item.color} h-2 rounded-full`}
                         style={{ width: `${item.percentage}%` }}
                       />
                     </div>
-                    <p className="text-xs text-slate-300 mt-1">
+                    <p className="text-xs text-gray-600 mt-1">
                       A${(item.value / 1000000).toFixed(2)}M
                     </p>
                   </div>
@@ -450,16 +450,16 @@ export function EnterpriseInvestorDashboard({ onNavigate }: EnterpriseInvestorDa
               <div className="space-y-2">
                 {performanceData.map((item, idx) => (
                   <div key={idx} className="flex items-center justify-between">
-                    <span className="text-xs text-slate-300 w-8">{item.month}</span>
+                    <span className="text-xs text-gray-600 w-8">{item.month}</span>
                     <div className="flex-1 mx-2">
-                      <div className="w-full bg-white/10 rounded-full h-1.5">
+                      <div className="w-full bg-gray-200 rounded-full h-1.5">
                         <div 
                           className="bg-green-500 h-1.5 rounded-full"
                           style={{ width: `${(item.value / 9450000) * 100}%` }}
                         />
                       </div>
                     </div>
-                    <span className="text-xs font-semibold text-slate-100 w-16 text-right">
+                    <span className="text-xs font-semibold text-gray-900 w-16 text-right">
                       ${(item.value / 1000000).toFixed(2)}M
                     </span>
                   </div>
@@ -467,8 +467,8 @@ export function EnterpriseInvestorDashboard({ onNavigate }: EnterpriseInvestorDa
               </div>
               <div className="mt-4 pt-4 border-t">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-slate-300">Total Growth</span>
-                  <span className="text-sm font-bold text-green-400">+15.2%</span>
+                  <span className="text-sm text-gray-600">Total Growth</span>
+                  <span className="text-sm font-bold text-green-600">+15.2%</span>
                 </div>
               </div>
             </CardContent>

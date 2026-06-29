@@ -108,9 +108,9 @@ export function CreditorManagementView() {
           placeholder="Search creditors..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="flex-1 px-4 py-2 border border-white/10 rounded-lg text-sm"
+          className="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-sm"
         />
-        <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)} className="px-3 py-2 border border-white/10 rounded-lg text-sm">
+        <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)} className="px-3 py-2 border border-gray-300 rounded-lg text-sm">
           <option value="all">All statuses</option>
           <option value="admitted">Admitted</option>
           <option value="partial">Partial</option>
@@ -124,17 +124,17 @@ export function CreditorManagementView() {
       {selected && (
         <>
         <div className="fixed inset-0 z-40 bg-black/30 lg:hidden" onClick={() => setSelected(null)} aria-hidden />
-        <div className="fixed inset-y-0 right-0 z-50 w-full max-w-md bg-white shadow-xl border-l border-white/10 p-6 overflow-y-auto">
+        <div className="fixed inset-y-0 right-0 z-50 w-full max-w-md bg-white shadow-xl border-l border-gray-200 p-6 overflow-y-auto">
           <div className="flex justify-between mb-4">
             <h3 className="text-lg font-semibold">{selected.name}</h3>
             <button type="button" onClick={() => setSelected(null)}><X className="w-5 h-5" /></button>
           </div>
           <dl className="space-y-3 text-sm">
-            <div><dt className="text-slate-300">Email</dt><dd className="font-medium">{selected.email}</dd></div>
-            <div><dt className="text-slate-300">Claim</dt><dd className="font-medium">{formatMoney(selected.claimAmount)}</dd></div>
-            <div><dt className="text-slate-300">Admitted</dt><dd className="font-medium">{formatMoney(selected.admittedAmount)}</dd></div>
-            <div><dt className="text-slate-300">Type</dt><dd className="capitalize">{selected.claimType}</dd></div>
-            <div><dt className="text-slate-300">Status</dt><dd><StatusPill status={selected.status} /></dd></div>
+            <div><dt className="text-gray-600">Email</dt><dd className="font-medium">{selected.email}</dd></div>
+            <div><dt className="text-gray-600">Claim</dt><dd className="font-medium">{formatMoney(selected.claimAmount)}</dd></div>
+            <div><dt className="text-gray-600">Admitted</dt><dd className="font-medium">{formatMoney(selected.admittedAmount)}</dd></div>
+            <div><dt className="text-gray-600">Type</dt><dd className="capitalize">{selected.claimType}</dd></div>
+            <div><dt className="text-gray-600">Status</dt><dd><StatusPill status={selected.status} /></dd></div>
           </dl>
         </div>
         </>
@@ -154,18 +154,18 @@ export function CreditorManagementView() {
           >
             <h3 className="text-lg font-semibold">Proof of debt</h3>
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-1">Creditor name *</label>
-              <input className="w-full border border-white/10 rounded-lg px-3 py-2 text-sm" value={form.creditorName} onChange={(e) => setForm({ ...form, creditorName: e.target.value })} />
-              {errors.creditorName && <p className="text-xs text-red-400 mt-1">{errors.creditorName}</p>}
+              <label className="block text-sm font-medium text-gray-700 mb-1">Creditor name *</label>
+              <input className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" value={form.creditorName} onChange={(e) => setForm({ ...form, creditorName: e.target.value })} />
+              {errors.creditorName && <p className="text-xs text-red-600 mt-1">{errors.creditorName}</p>}
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-1">Claim amount *</label>
-              <input type="number" className="w-full border border-white/10 rounded-lg px-3 py-2 text-sm" value={form.claimAmount} onChange={(e) => setForm({ ...form, claimAmount: e.target.value })} />
-              {errors.claimAmount && <p className="text-xs text-red-400 mt-1">{errors.claimAmount}</p>}
+              <label className="block text-sm font-medium text-gray-700 mb-1">Claim amount *</label>
+              <input type="number" className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" value={form.claimAmount} onChange={(e) => setForm({ ...form, claimAmount: e.target.value })} />
+              {errors.claimAmount && <p className="text-xs text-red-600 mt-1">{errors.claimAmount}</p>}
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-1">Claim type</label>
-              <select className="w-full border border-white/10 rounded-lg px-3 py-2 text-sm" value={form.claimType} onChange={(e) => setForm({ ...form, claimType: e.target.value as ClaimType })}>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Claim type</label>
+              <select className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" value={form.claimType} onChange={(e) => setForm({ ...form, claimType: e.target.value as ClaimType })}>
                 <option value="secured">Secured</option>
                 <option value="unsecured">Unsecured</option>
                 <option value="employee">Employee</option>
@@ -173,13 +173,13 @@ export function CreditorManagementView() {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-1">Supporting documents</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Supporting documents</label>
               <input type="file" multiple className="w-full text-sm" onChange={(e) => setForm({ ...form, files: Array.from(e.target.files || []) })} />
-              {form.files.length > 0 && <p className="text-xs text-slate-400 mt-1">{form.files.length} file(s) selected</p>}
+              {form.files.length > 0 && <p className="text-xs text-gray-500 mt-1">{form.files.length} file(s) selected</p>}
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-1">Notes</label>
-              <textarea className="w-full border border-white/10 rounded-lg px-3 py-2 text-sm" rows={3} value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })} />
+              <label className="block text-sm font-medium text-gray-700 mb-1">Notes</label>
+              <textarea className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" rows={3} value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })} />
             </div>
             <div className="flex gap-2 pt-2">
               <Button type="button" variant="outline" className="flex-1" onClick={() => setShowPodForm(false)}>Cancel</Button>

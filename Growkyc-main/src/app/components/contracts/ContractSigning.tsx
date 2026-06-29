@@ -68,7 +68,7 @@ export function ContractSigning({ onBack }: ContractSigningProps) {
               <CardTitle className="flex items-center justify-between">
                 <span>Contract Document</span>
                 {isSigned && (
-                  <span className="flex items-center gap-2 text-green-400 text-sm">
+                  <span className="flex items-center gap-2 text-green-600 text-sm">
                     <CheckCircle2 className="w-4 h-4" />
                     Signed
                   </span>
@@ -76,11 +76,11 @@ export function ContractSigning({ onBack }: ContractSigningProps) {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="bg-white/5 rounded-lg border border-white/10 flex items-center justify-center" style={{ height: '800px' }}>
+              <div className="bg-gray-100 rounded-lg border border-gray-300 flex items-center justify-center" style={{ height: '800px' }}>
                 <div className="text-center">
                   <FileText className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                  <p className="text-slate-300 mb-2">PDF Viewer</p>
-                  <p className="text-sm text-slate-400">Contract_{contractCase.caseNumber}.pdf</p>
+                  <p className="text-gray-600 mb-2">PDF Viewer</p>
+                  <p className="text-sm text-gray-500">Contract_{contractCase.caseNumber}.pdf</p>
                   <p className="text-xs text-gray-400 mt-2">
                     {isSigned ? 'Digitally signed' : 'Awaiting signature'}
                   </p>
@@ -98,35 +98,35 @@ export function ContractSigning({ onBack }: ContractSigningProps) {
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <p className="text-sm text-slate-300 mb-1">Deal ID</p>
-                <p className="font-semibold text-slate-100">{contractCase.caseNumber}</p>
+                <p className="text-sm text-gray-600 mb-1">Deal ID</p>
+                <p className="font-semibold text-gray-900">{contractCase.caseNumber}</p>
               </div>
 
               <div>
-                <p className="text-sm text-slate-300 mb-1">Property</p>
-                <p className="font-semibold text-slate-100">{contractCase.property.address}</p>
-                <p className="text-xs text-slate-300">{contractCase.property.suburb}, {contractCase.property.state}</p>
+                <p className="text-sm text-gray-600 mb-1">Property</p>
+                <p className="font-semibold text-gray-900">{contractCase.property.address}</p>
+                <p className="text-xs text-gray-600">{contractCase.property.suburb}, {contractCase.property.state}</p>
               </div>
 
               <div>
-                <p className="text-sm text-slate-300 mb-1">Borrower</p>
-                <p className="font-semibold text-slate-100">{contractCase.borrowerName}</p>
+                <p className="text-sm text-gray-600 mb-1">Borrower</p>
+                <p className="font-semibold text-gray-900">{contractCase.borrowerName}</p>
               </div>
 
               <div>
-                <p className="text-sm text-slate-300 mb-1">Lender</p>
-                <p className="font-semibold text-slate-100">{contractCase.lenderName}</p>
+                <p className="text-sm text-gray-600 mb-1">Lender</p>
+                <p className="font-semibold text-gray-900">{contractCase.lenderName}</p>
               </div>
 
               <div>
-                <p className="text-sm text-slate-300 mb-1">Loan Amount</p>
-                <p className="font-semibold text-slate-100">
+                <p className="text-sm text-gray-600 mb-1">Loan Amount</p>
+                <p className="font-semibold text-gray-900">
                   A${contractCase.outstandingDebt.toLocaleString()}
                 </p>
               </div>
 
               <div>
-                <p className="text-sm text-slate-300 mb-1">Status</p>
+                <p className="text-sm text-gray-600 mb-1">Status</p>
                 <StatusBadge status={isSigned ? 'completed' : 'pending'} type="case" />
               </div>
             </CardContent>
@@ -181,16 +181,16 @@ export function ContractSigning({ onBack }: ContractSigningProps) {
           </Card>
 
           {isSigned && (
-            <Card className="border-green-500/30 bg-green-500/10 animate-in fade-in slide-in-from-top-2 duration-500">
+            <Card className="border-green-200 bg-green-50 animate-in fade-in slide-in-from-top-2 duration-500">
               <CardContent className="p-4">
                 <div className="flex gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-sm font-medium text-green-300">Contract Signed Successfully</p>
-                    <p className="text-xs text-green-300 mt-1">
+                    <p className="text-sm font-medium text-green-900">Contract Signed Successfully</p>
+                    <p className="text-xs text-green-800 mt-1">
                       A copy has been sent to all parties via email.
                     </p>
-                    <p className="text-xs text-green-300 mt-2 font-semibold">
+                    <p className="text-xs text-green-700 mt-2 font-semibold">
                       Digital signature timestamp: {new Date().toLocaleString('en-AU')}
                     </p>
                   </div>
@@ -206,15 +206,15 @@ export function ContractSigning({ onBack }: ContractSigningProps) {
             <CardContent>
               <div className="space-y-3">
                 <div className="flex gap-3">
-                  <AlertCircle className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                  <AlertCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-sm font-medium text-slate-100">Legal Binding Agreement</p>
-                    <p className="text-xs text-slate-300 mt-1">
+                    <p className="text-sm font-medium text-gray-900">Legal Binding Agreement</p>
+                    <p className="text-xs text-gray-600 mt-1">
                       By signing this contract, you agree to all terms and conditions outlined in the document.
                     </p>
                   </div>
                 </div>
-                <div className="text-xs text-slate-400 pt-2 border-t">
+                <div className="text-xs text-gray-500 pt-2 border-t">
                   <ul className="space-y-1">
                     <li>• Read all pages carefully before signing</li>
                     <li>• Ensure all details are correct</li>
@@ -229,26 +229,26 @@ export function ContractSigning({ onBack }: ContractSigningProps) {
 
           {/* Contract Requirements Checklist */}
           {!isSigned && (
-            <Card className="border-amber-500/30 bg-amber-500/10">
+            <Card className="border-amber-200 bg-amber-50">
               <CardHeader>
                 <CardTitle className="text-base">Before You Sign</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2 text-xs">
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-400" />
+                    <CheckCircle2 className="w-4 h-4 text-green-600" />
                     <span>Review all contract terms</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-400" />
+                    <CheckCircle2 className="w-4 h-4 text-green-600" />
                     <span>Verify property details</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-400" />
+                    <CheckCircle2 className="w-4 h-4 text-green-600" />
                     <span>Confirm financial amounts</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-green-400" />
+                    <CheckCircle2 className="w-4 h-4 text-green-600" />
                     <span>Check settlement timeline</span>
                   </div>
                 </div>

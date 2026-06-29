@@ -132,8 +132,8 @@ export function ContactsModule({ role }: ContactsModuleProps) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-100">Contacts</h1>
-          <p className="text-slate-300 mt-1">Manage all your contacts and companies</p>
+          <h1 className="text-2xl font-bold text-gray-900">Contacts</h1>
+          <p className="text-gray-600 mt-1">Manage all your contacts and companies</p>
         </div>
         <div className="flex items-center gap-3">
           <Button variant="outline" onClick={handleImport}>
@@ -159,16 +159,16 @@ export function ContactsModule({ role }: ContactsModuleProps) {
             <input
               type="search"
               placeholder="Search contacts..."
-              className="pl-10 pr-4 py-2 w-96 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="pl-10 pr-4 py-2 w-96 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
           </div>
           
-          <div className="flex items-center gap-2 px-3 py-2 border border-white/10 rounded-lg">
-            <Filter className="w-4 h-4 text-slate-300" />
+          <div className="flex items-center gap-2 px-3 py-2 border border-gray-300 rounded-lg">
+            <Filter className="w-4 h-4 text-gray-600" />
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value as any)}
-              className="bg-transparent text-sm font-medium text-slate-300 border-none focus:outline-none"
+              className="bg-transparent text-sm font-medium text-gray-700 border-none focus:outline-none"
             >
               <option value="all">All Contacts</option>
               <option value="leads">Leads</option>
@@ -178,31 +178,31 @@ export function ContactsModule({ role }: ContactsModuleProps) {
           </div>
         </div>
 
-        <div className="flex items-center gap-2 text-sm text-slate-300">
+        <div className="flex items-center gap-2 text-sm text-gray-600">
           <span className="font-medium">{filteredContacts.length}</span>
           <span>contacts</span>
         </div>
       </div>
 
       {/* Contacts Table */}
-      <div className="bg-white border border-white/10 rounded-lg overflow-hidden">
+      <div className="bg-white border border-gray-300 rounded-lg overflow-hidden">
         <table className="w-full">
-          <thead className="bg-white/5 border-b border-white/10">
+          <thead className="bg-gray-50 border-b border-gray-300">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Contact</th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Company</th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Status</th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Lead Score</th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Deal Value</th>
-              <th className="px-6 py-3 text-left text-xs font-semibold text-slate-300 uppercase">Last Activity</th>
-              <th className="px-6 py-3 text-right text-xs font-semibold text-slate-300 uppercase">Actions</th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Contact</th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Company</th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Status</th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Lead Score</th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Deal Value</th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Last Activity</th>
+              <th className="px-6 py-3 text-right text-xs font-semibold text-gray-600 uppercase">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-white/10">
+          <tbody className="divide-y divide-gray-200">
             {filteredContacts.map((contact) => (
               <tr
                 key={contact.id}
-                className="hover:bg-white/5 cursor-pointer"
+                className="hover:bg-gray-50 cursor-pointer"
                 onClick={() => {
                   setSelectedContact(contact);
                   setViewMode('detail');
@@ -210,35 +210,35 @@ export function ContactsModule({ role }: ContactsModuleProps) {
               >
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-indigo-500/15 flex items-center justify-center">
-                      <span className="text-sm font-semibold text-indigo-400">
+                    <div className="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center">
+                      <span className="text-sm font-semibold text-indigo-600">
                         {contact.name.split(' ').map(n => n[0]).join('')}
                       </span>
                     </div>
                     <div>
-                      <p className="font-medium text-slate-100">{contact.name}</p>
-                      <p className="text-sm text-slate-400">{contact.email}</p>
+                      <p className="font-medium text-gray-900">{contact.name}</p>
+                      <p className="text-sm text-gray-500">{contact.email}</p>
                     </div>
                   </div>
                 </td>
                 <td className="px-6 py-4">
                   <div>
-                    <p className="text-sm font-medium text-slate-100">{contact.company}</p>
-                    <p className="text-xs text-slate-400">{contact.position}</p>
+                    <p className="text-sm font-medium text-gray-900">{contact.company}</p>
+                    <p className="text-xs text-gray-500">{contact.position}</p>
                   </div>
                 </td>
                 <td className="px-6 py-4">
                   <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                    contact.status === 'customer' ? 'bg-green-500/15 text-green-300' :
-                    contact.status === 'leads' ? 'bg-purple-500/15 text-purple-300' :
-                    'bg-blue-500/15 text-blue-300'
+                    contact.status === 'customer' ? 'bg-green-100 text-green-800' :
+                    contact.status === 'leads' ? 'bg-purple-100 text-purple-800' :
+                    'bg-blue-100 text-blue-800'
                   }`}>
                     {contact.status}
                   </span>
                 </td>
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-2">
-                    <div className="flex-1 h-2 bg-white/10 rounded-full">
+                    <div className="flex-1 h-2 bg-gray-200 rounded-full">
                       <div
                         className={`h-2 rounded-full ${
                           contact.leadScore >= 80 ? 'bg-green-600' :
@@ -247,17 +247,17 @@ export function ContactsModule({ role }: ContactsModuleProps) {
                         style={{ width: `${contact.leadScore}%` }}
                       />
                     </div>
-                    <span className="text-sm font-semibold text-slate-100">{contact.leadScore}</span>
+                    <span className="text-sm font-semibold text-gray-900">{contact.leadScore}</span>
                   </div>
                 </td>
                 <td className="px-6 py-4">
-                  <p className="text-sm font-semibold text-slate-100">${contact.dealValue.toLocaleString()}</p>
+                  <p className="text-sm font-semibold text-gray-900">${contact.dealValue.toLocaleString()}</p>
                 </td>
                 <td className="px-6 py-4">
-                  <p className="text-sm text-slate-300">{contact.lastActivity}</p>
+                  <p className="text-sm text-gray-600">{contact.lastActivity}</p>
                 </td>
                 <td className="px-6 py-4 text-right">
-                  <button className="text-gray-400 hover:text-slate-300" onClick={(e) => e.stopPropagation()}>
+                  <button className="text-gray-400 hover:text-gray-600" onClick={(e) => e.stopPropagation()}>
                     <MoreVertical className="w-5 h-5" />
                   </button>
                 </td>
@@ -283,14 +283,14 @@ function ContactDetail({ contact, onBack, role }: any) {
             <ChevronRight className="w-5 h-5 rotate-180" />
           </Button>
           <div className="flex items-center gap-4">
-            <div className="w-16 h-16 rounded-full bg-indigo-500/15 flex items-center justify-center">
-              <span className="text-xl font-bold text-indigo-400">
+            <div className="w-16 h-16 rounded-full bg-indigo-100 flex items-center justify-center">
+              <span className="text-xl font-bold text-indigo-600">
                 {contact.name.split(' ').map((n: string) => n[0]).join('')}
               </span>
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-slate-100">{contact.name}</h1>
-              <p className="text-slate-300">{contact.position} at {contact.company}</p>
+              <h1 className="text-2xl font-bold text-gray-900">{contact.name}</h1>
+              <p className="text-gray-600">{contact.position} at {contact.company}</p>
             </div>
           </div>
         </div>
@@ -312,37 +312,37 @@ function ContactDetail({ contact, onBack, role }: any) {
 
       {/* Contact Info Cards */}
       <div className="grid grid-cols-4 gap-4">
-        <div className="bg-white border border-white/10 rounded-lg p-4">
-          <p className="text-sm text-slate-300 mb-1">Lead Score</p>
+        <div className="bg-white border border-gray-300 rounded-lg p-4">
+          <p className="text-sm text-gray-600 mb-1">Lead Score</p>
           <div className="flex items-center gap-2">
-            <p className="text-2xl font-bold text-slate-100">{contact.leadScore}</p>
+            <p className="text-2xl font-bold text-gray-900">{contact.leadScore}</p>
             <div className={`px-2 py-1 rounded text-xs font-medium ${
-              contact.leadScore >= 80 ? 'bg-green-500/15 text-green-300' : 'bg-yellow-500/15 text-yellow-300'
+              contact.leadScore >= 80 ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'
             }`}>
               {contact.leadScore >= 80 ? 'Hot' : 'Warm'}
             </div>
           </div>
         </div>
 
-        <div className="bg-white border border-white/10 rounded-lg p-4">
-          <p className="text-sm text-slate-300 mb-1">Deal Value</p>
-          <p className="text-2xl font-bold text-slate-100">${(contact.dealValue / 1000).toFixed(0)}K</p>
+        <div className="bg-white border border-gray-300 rounded-lg p-4">
+          <p className="text-sm text-gray-600 mb-1">Deal Value</p>
+          <p className="text-2xl font-bold text-gray-900">${(contact.dealValue / 1000).toFixed(0)}K</p>
         </div>
 
-        <div className="bg-white border border-white/10 rounded-lg p-4">
-          <p className="text-sm text-slate-300 mb-1">Lifetime Value</p>
-          <p className="text-2xl font-bold text-slate-100">${(contact.lifetime / 1000).toFixed(0)}K</p>
+        <div className="bg-white border border-gray-300 rounded-lg p-4">
+          <p className="text-sm text-gray-600 mb-1">Lifetime Value</p>
+          <p className="text-2xl font-bold text-gray-900">${(contact.lifetime / 1000).toFixed(0)}K</p>
         </div>
 
-        <div className="bg-white border border-white/10 rounded-lg p-4">
-          <p className="text-sm text-slate-300 mb-1">Last Contact</p>
-          <p className="text-lg font-semibold text-slate-100">{contact.lastActivity}</p>
+        <div className="bg-white border border-gray-300 rounded-lg p-4">
+          <p className="text-sm text-gray-600 mb-1">Last Contact</p>
+          <p className="text-lg font-semibold text-gray-900">{contact.lastActivity}</p>
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="bg-white border border-white/10 rounded-lg overflow-hidden">
-        <div className="border-b border-white/10 flex">
+      <div className="bg-white border border-gray-300 rounded-lg overflow-hidden">
+        <div className="border-b border-gray-300 flex">
           {[
             { id: 'overview', label: 'Overview', icon: Users },
             { id: 'activity', label: 'Activity', icon: Activity },
@@ -357,8 +357,8 @@ function ContactDetail({ contact, onBack, role }: any) {
                 onClick={() => setActiveTab(tab.id as any)}
                 className={`flex items-center gap-2 px-6 py-4 border-b-2 transition-colors ${
                   activeTab === tab.id
-                    ? 'border-indigo-600 text-indigo-400 font-medium bg-indigo-500/10'
-                    : 'border-transparent text-slate-300 hover:text-slate-100 hover:bg-white/5'
+                    ? 'border-indigo-600 text-indigo-600 font-medium bg-indigo-50'
+                    : 'border-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -384,34 +384,34 @@ function ContactOverviewTab({ contact }: any) {
     <div className="grid grid-cols-2 gap-6">
       {/* Contact Information */}
       <div>
-        <h3 className="font-semibold text-slate-100 mb-4">Contact Information</h3>
+        <h3 className="font-semibold text-gray-900 mb-4">Contact Information</h3>
         <div className="space-y-3">
-          <div className="flex items-center gap-3 p-3 bg-white/5 rounded-lg">
-            <Mail className="w-4 h-4 text-slate-300" />
+          <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+            <Mail className="w-4 h-4 text-gray-600" />
             <div>
-              <p className="text-xs text-slate-400">Email</p>
-              <p className="text-sm font-medium text-slate-100">{contact.email}</p>
+              <p className="text-xs text-gray-500">Email</p>
+              <p className="text-sm font-medium text-gray-900">{contact.email}</p>
             </div>
           </div>
-          <div className="flex items-center gap-3 p-3 bg-white/5 rounded-lg">
-            <Phone className="w-4 h-4 text-slate-300" />
+          <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+            <Phone className="w-4 h-4 text-gray-600" />
             <div>
-              <p className="text-xs text-slate-400">Phone</p>
-              <p className="text-sm font-medium text-slate-100">{contact.phone}</p>
+              <p className="text-xs text-gray-500">Phone</p>
+              <p className="text-sm font-medium text-gray-900">{contact.phone}</p>
             </div>
           </div>
-          <div className="flex items-center gap-3 p-3 bg-white/5 rounded-lg">
-            <Building2 className="w-4 h-4 text-slate-300" />
+          <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+            <Building2 className="w-4 h-4 text-gray-600" />
             <div>
-              <p className="text-xs text-slate-400">Company</p>
-              <p className="text-sm font-medium text-slate-100">{contact.company}</p>
+              <p className="text-xs text-gray-500">Company</p>
+              <p className="text-sm font-medium text-gray-900">{contact.company}</p>
             </div>
           </div>
-          <div className="flex items-center gap-3 p-3 bg-white/5 rounded-lg">
-            <Briefcase className="w-4 h-4 text-slate-300" />
+          <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+            <Briefcase className="w-4 h-4 text-gray-600" />
             <div>
-              <p className="text-xs text-slate-400">Position</p>
-              <p className="text-sm font-medium text-slate-100">{contact.position}</p>
+              <p className="text-xs text-gray-500">Position</p>
+              <p className="text-sm font-medium text-gray-900">{contact.position}</p>
             </div>
           </div>
         </div>
@@ -419,19 +419,19 @@ function ContactOverviewTab({ contact }: any) {
 
       {/* Tags and Notes */}
       <div>
-        <h3 className="font-semibold text-slate-100 mb-4">Tags & Segments</h3>
+        <h3 className="font-semibold text-gray-900 mb-4">Tags & Segments</h3>
         <div className="flex flex-wrap gap-2 mb-6">
           {contact.tags.map((tag: string, idx: number) => (
-            <span key={idx} className="px-3 py-1 bg-indigo-500/15 text-indigo-300 rounded-full text-xs font-medium">
+            <span key={idx} className="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs font-medium">
               {tag}
             </span>
           ))}
-          <button className="px-3 py-1 border border-white/10 rounded-full text-xs font-medium text-slate-300 hover:bg-white/5">
+          <button className="px-3 py-1 border border-gray-300 rounded-full text-xs font-medium text-gray-600 hover:bg-gray-50">
             + Add Tag
           </button>
         </div>
 
-        <h3 className="font-semibold text-slate-100 mb-4">Quick Actions</h3>
+        <h3 className="font-semibold text-gray-900 mb-4">Quick Actions</h3>
         <div className="grid grid-cols-2 gap-3">
           <Button variant="outline" size="sm">
             <Send className="w-4 h-4 mr-2" />
@@ -460,7 +460,7 @@ function ContactActivityTab({ contact }: any) {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h3 className="font-semibold text-slate-100">Activity Timeline</h3>
+        <h3 className="font-semibold text-gray-900">Activity Timeline</h3>
         <Button size="sm">
           <Plus className="w-4 h-4 mr-2" />
           Log Activity
@@ -474,24 +474,24 @@ function ContactActivityTab({ contact }: any) {
           { type: 'meeting', title: 'Meeting scheduled', content: 'Product demo next Tuesday', time: '2 days ago', user: 'Jessica Martinez' },
           { type: 'note', title: 'Note added', content: 'Decision maker confirmed. Budget approved.', time: '3 days ago', user: 'Sarah Wilson' }
         ].map((activity, idx) => (
-          <div key={idx} className="flex items-start gap-4 p-4 border border-white/10 rounded-lg">
+          <div key={idx} className="flex items-start gap-4 p-4 border border-gray-200 rounded-lg">
             <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
-              activity.type === 'email' ? 'bg-blue-500/15' :
-              activity.type === 'call' ? 'bg-green-500/15' :
-              activity.type === 'meeting' ? 'bg-purple-500/15' : 'bg-white/5'
+              activity.type === 'email' ? 'bg-blue-100' :
+              activity.type === 'call' ? 'bg-green-100' :
+              activity.type === 'meeting' ? 'bg-purple-100' : 'bg-gray-100'
             }`}>
-              {activity.type === 'email' && <Mail className="w-5 h-5 text-blue-400" />}
-              {activity.type === 'call' && <Phone className="w-5 h-5 text-green-400" />}
-              {activity.type === 'meeting' && <Calendar className="w-5 h-5 text-purple-400" />}
-              {activity.type === 'note' && <FileText className="w-5 h-5 text-slate-300" />}
+              {activity.type === 'email' && <Mail className="w-5 h-5 text-blue-600" />}
+              {activity.type === 'call' && <Phone className="w-5 h-5 text-green-600" />}
+              {activity.type === 'meeting' && <Calendar className="w-5 h-5 text-purple-600" />}
+              {activity.type === 'note' && <FileText className="w-5 h-5 text-gray-600" />}
             </div>
             <div className="flex-1">
               <div className="flex items-center justify-between mb-1">
-                <p className="font-medium text-slate-100">{activity.title}</p>
-                <p className="text-xs text-slate-400">{activity.time}</p>
+                <p className="font-medium text-gray-900">{activity.title}</p>
+                <p className="text-xs text-gray-500">{activity.time}</p>
               </div>
-              <p className="text-sm text-slate-300 mb-2">{activity.content}</p>
-              <p className="text-xs text-slate-400">by {activity.user}</p>
+              <p className="text-sm text-gray-600 mb-2">{activity.content}</p>
+              <p className="text-xs text-gray-500">by {activity.user}</p>
             </div>
           </div>
         ))}
@@ -504,29 +504,29 @@ function ContactActivityTab({ contact }: any) {
 function ContactDealsTab({ contact }: any) {
   return (
     <div className="space-y-4">
-      <h3 className="font-semibold text-slate-100">Associated Deals</h3>
+      <h3 className="font-semibold text-gray-900">Associated Deals</h3>
       <div className="space-y-3">
         {[
           { name: 'Q2 Enterprise License', stage: 'Negotiation', value: 45000, probability: 75, closeDate: '2024-03-15' },
           { name: 'Implementation Services', stage: 'Proposal', value: 28000, probability: 50, closeDate: '2024-04-01' }
         ].map((deal, idx) => (
-          <div key={idx} className="p-4 border border-white/10 rounded-lg">
+          <div key={idx} className="p-4 border border-gray-200 rounded-lg">
             <div className="flex items-center justify-between mb-3">
               <div>
-                <p className="font-medium text-slate-100">{deal.name}</p>
-                <p className="text-xs text-slate-400">Expected close: {deal.closeDate}</p>
+                <p className="font-medium text-gray-900">{deal.name}</p>
+                <p className="text-xs text-gray-500">Expected close: {deal.closeDate}</p>
               </div>
               <div className="text-right">
-                <p className="text-lg font-bold text-slate-100">${deal.value.toLocaleString()}</p>
-                <span className="px-2 py-1 bg-blue-500/15 text-blue-300 rounded text-xs font-medium">{deal.stage}</span>
+                <p className="text-lg font-bold text-gray-900">${deal.value.toLocaleString()}</p>
+                <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded text-xs font-medium">{deal.stage}</span>
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-xs text-slate-300">Close Probability:</span>
-              <div className="flex-1 h-2 bg-white/10 rounded-full">
+              <span className="text-xs text-gray-600">Close Probability:</span>
+              <div className="flex-1 h-2 bg-gray-200 rounded-full">
                 <div className="h-2 bg-green-600 rounded-full" style={{ width: `${deal.probability}%` }} />
               </div>
-              <span className="text-xs font-semibold text-slate-100">{deal.probability}%</span>
+              <span className="text-xs font-semibold text-gray-900">{deal.probability}%</span>
             </div>
           </div>
         ))}

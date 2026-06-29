@@ -91,21 +91,21 @@ export function LoanLedger({ onNavigate, onBack }: LoanLedgerProps) {
 
   const getStatusBadge = (status: string) => {
     const badges: { [key: string]: JSX.Element } = {
-      'current': <span className="px-2 py-0.5 bg-green-500/15 text-green-300 text-xs font-semibold rounded">CURRENT</span>,
-      'paid': <span className="px-2 py-0.5 bg-green-500/15 text-green-300 text-xs font-semibold rounded">PAID</span>,
-      'due': <span className="px-2 py-0.5 bg-amber-500/15 text-amber-300 text-xs font-semibold rounded">DUE</span>,
-      'overdue': <span className="px-2 py-0.5 bg-red-500/15 text-red-300 text-xs font-semibold rounded">OVERDUE</span>,
-      'scheduled': <span className="px-2 py-0.5 bg-blue-500/15 text-blue-300 text-xs font-semibold rounded">SCHEDULED</span>,
-      'cleared': <span className="px-2 py-0.5 bg-green-500/15 text-green-300 text-xs font-semibold rounded">CLEARED</span>,
-      'posted': <span className="px-2 py-0.5 bg-blue-500/15 text-blue-300 text-xs font-semibold rounded">POSTED</span>
+      'current': <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded">CURRENT</span>,
+      'paid': <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded">PAID</span>,
+      'due': <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-xs font-semibold rounded">DUE</span>,
+      'overdue': <span className="px-2 py-0.5 bg-red-100 text-red-700 text-xs font-semibold rounded">OVERDUE</span>,
+      'scheduled': <span className="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-semibold rounded">SCHEDULED</span>,
+      'cleared': <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded">CLEARED</span>,
+      'posted': <span className="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-semibold rounded">POSTED</span>
     };
-    return badges[status] || <span className="px-2 py-0.5 bg-white/5 text-slate-300 text-xs font-semibold rounded">{status.toUpperCase()}</span>;
+    return badges[status] || <span className="px-2 py-0.5 bg-gray-100 text-gray-700 text-xs font-semibold rounded">{status.toUpperCase()}</span>;
   };
 
   return (
-    <div className="min-h-screen bg-white/5">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-white border-b border-white/10 px-6 py-4">
+      <div className="bg-white border-b border-gray-300 px-6 py-4">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-3">
             {onBack && (
@@ -113,10 +113,10 @@ export function LoanLedger({ onNavigate, onBack }: LoanLedgerProps) {
                 <ArrowLeft className="w-4 h-4" />
               </Button>
             )}
-            <DollarSign className="w-6 h-6 text-blue-400" />
+            <DollarSign className="w-6 h-6 text-blue-600" />
             <div>
-              <h1 className="text-xl font-bold text-slate-100">Loan Ledger - {loanDetails.loanId}</h1>
-              <p className="text-xs text-slate-300">{loanDetails.borrower} • {loanDetails.product}</p>
+              <h1 className="text-xl font-bold text-gray-900">Loan Ledger - {loanDetails.loanId}</h1>
+              <p className="text-xs text-gray-600">{loanDetails.borrower} • {loanDetails.product}</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -137,26 +137,26 @@ export function LoanLedger({ onNavigate, onBack }: LoanLedgerProps) {
 
         {/* Loan Summary Cards */}
         <div className="grid grid-cols-2 md:grid-cols-6 gap-3">
-          <div className="bg-white/5 rounded p-3 border border-white/10">
-            <div className="text-xs text-slate-300">Current Balance</div>
-            <div className="text-lg font-bold text-slate-100">{formatCurrency(loanDetails.currentBalance)}</div>
+          <div className="bg-gray-50 rounded p-3 border border-gray-200">
+            <div className="text-xs text-gray-600">Current Balance</div>
+            <div className="text-lg font-bold text-gray-900">{formatCurrency(loanDetails.currentBalance)}</div>
           </div>
-          <div className="bg-blue-500/10 rounded p-3 border border-blue-500/30">
-            <div className="text-xs text-blue-300">Interest Rate</div>
-            <div className="text-lg font-bold text-blue-300">{formatPercent(loanDetails.interestRate)}</div>
+          <div className="bg-blue-50 rounded p-3 border border-blue-200">
+            <div className="text-xs text-blue-700">Interest Rate</div>
+            <div className="text-lg font-bold text-blue-700">{formatPercent(loanDetails.interestRate)}</div>
           </div>
-          <div className="bg-green-500/10 rounded p-3 border border-green-500/30">
-            <div className="text-xs text-green-300">Next Payment</div>
-            <div className="text-lg font-bold text-green-300">{formatCurrency(loanDetails.nextPaymentAmount)}</div>
-            <div className="text-xs text-green-400 mt-0.5">{loanDetails.nextPaymentDate}</div>
+          <div className="bg-green-50 rounded p-3 border border-green-200">
+            <div className="text-xs text-green-700">Next Payment</div>
+            <div className="text-lg font-bold text-green-700">{formatCurrency(loanDetails.nextPaymentAmount)}</div>
+            <div className="text-xs text-green-600 mt-0.5">{loanDetails.nextPaymentDate}</div>
           </div>
-          <div className="bg-purple-500/10 rounded p-3 border border-purple-500/30">
-            <div className="text-xs text-purple-300">Remaining Term</div>
-            <div className="text-lg font-bold text-purple-300">{loanDetails.remainingMonths} months</div>
+          <div className="bg-purple-50 rounded p-3 border border-purple-200">
+            <div className="text-xs text-purple-700">Remaining Term</div>
+            <div className="text-lg font-bold text-purple-700">{loanDetails.remainingMonths} months</div>
           </div>
-          <div className="bg-amber-500/10 rounded p-3 border border-amber-500/30">
-            <div className="text-xs text-amber-300">Maturity Date</div>
-            <div className="text-lg font-bold text-amber-300">{loanDetails.maturityDate}</div>
+          <div className="bg-amber-50 rounded p-3 border border-amber-200">
+            <div className="text-xs text-amber-700">Maturity Date</div>
+            <div className="text-lg font-bold text-amber-700">{loanDetails.maturityDate}</div>
           </div>
           <div className="bg-gradient-to-br from-green-600 to-green-700 text-white rounded p-3">
             <div className="text-xs opacity-90">Status</div>
@@ -168,14 +168,14 @@ export function LoanLedger({ onNavigate, onBack }: LoanLedgerProps) {
 
       <div className="p-6 space-y-6">
         {/* Tab Navigation */}
-        <div className="bg-white border border-white/10 rounded">
-          <div className="flex border-b border-white/10">
+        <div className="bg-white border border-gray-300 rounded">
+          <div className="flex border-b border-gray-300">
             <button
               onClick={() => setSelectedTab('overview')}
               className={`px-6 py-3 text-sm font-semibold transition-colors ${
                 selectedTab === 'overview'
-                  ? 'bg-blue-500/10 text-blue-300 border-b-2 border-blue-600'
-                  : 'text-slate-300 hover:bg-white/5'
+                  ? 'bg-blue-50 text-blue-700 border-b-2 border-blue-600'
+                  : 'text-gray-600 hover:bg-gray-50'
               }`}
             >
               Overview
@@ -184,8 +184,8 @@ export function LoanLedger({ onNavigate, onBack }: LoanLedgerProps) {
               onClick={() => setSelectedTab('transactions')}
               className={`px-6 py-3 text-sm font-semibold transition-colors ${
                 selectedTab === 'transactions'
-                  ? 'bg-blue-500/10 text-blue-300 border-b-2 border-blue-600'
-                  : 'text-slate-300 hover:bg-white/5'
+                  ? 'bg-blue-50 text-blue-700 border-b-2 border-blue-600'
+                  : 'text-gray-600 hover:bg-gray-50'
               }`}
             >
               Transactions
@@ -194,8 +194,8 @@ export function LoanLedger({ onNavigate, onBack }: LoanLedgerProps) {
               onClick={() => setSelectedTab('schedule')}
               className={`px-6 py-3 text-sm font-semibold transition-colors ${
                 selectedTab === 'schedule'
-                  ? 'bg-blue-500/10 text-blue-300 border-b-2 border-blue-600'
-                  : 'text-slate-300 hover:bg-white/5'
+                  ? 'bg-blue-50 text-blue-700 border-b-2 border-blue-600'
+                  : 'text-gray-600 hover:bg-gray-50'
               }`}
             >
               Repayment Schedule
@@ -204,8 +204,8 @@ export function LoanLedger({ onNavigate, onBack }: LoanLedgerProps) {
               onClick={() => setSelectedTab('fees')}
               className={`px-6 py-3 text-sm font-semibold transition-colors ${
                 selectedTab === 'fees'
-                  ? 'bg-blue-500/10 text-blue-300 border-b-2 border-blue-600'
-                  : 'text-slate-300 hover:bg-white/5'
+                  ? 'bg-blue-50 text-blue-700 border-b-2 border-blue-600'
+                  : 'text-gray-600 hover:bg-gray-50'
               }`}
             >
               Fees
@@ -218,85 +218,85 @@ export function LoanLedger({ onNavigate, onBack }: LoanLedgerProps) {
               <div className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Loan Details */}
-                  <div className="bg-white/5 border border-white/10 rounded p-4">
-                    <h3 className="font-semibold text-slate-100 mb-3">Loan Details</h3>
+                  <div className="bg-gray-50 border border-gray-200 rounded p-4">
+                    <h3 className="font-semibold text-gray-900 mb-3">Loan Details</h3>
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between">
-                        <span className="text-slate-300">Original Amount:</span>
-                        <span className="font-semibold text-slate-100">{formatCurrency(loanDetails.originalAmount)}</span>
+                        <span className="text-gray-600">Original Amount:</span>
+                        <span className="font-semibold text-gray-900">{formatCurrency(loanDetails.originalAmount)}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-slate-300">Current Balance:</span>
-                        <span className="font-semibold text-slate-100">{formatCurrency(loanDetails.currentBalance)}</span>
+                        <span className="text-gray-600">Current Balance:</span>
+                        <span className="font-semibold text-gray-900">{formatCurrency(loanDetails.currentBalance)}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-slate-300">Interest Rate:</span>
-                        <span className="font-semibold text-slate-100">{formatPercent(loanDetails.interestRate)} p.a.</span>
+                        <span className="text-gray-600">Interest Rate:</span>
+                        <span className="font-semibold text-gray-900">{formatPercent(loanDetails.interestRate)} p.a.</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-slate-300">Repayment Type:</span>
-                        <span className="font-semibold text-slate-100">{loanDetails.repaymentType}</span>
+                        <span className="text-gray-600">Repayment Type:</span>
+                        <span className="font-semibold text-gray-900">{loanDetails.repaymentType}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-slate-300">Frequency:</span>
-                        <span className="font-semibold text-slate-100">{loanDetails.frequency}</span>
+                        <span className="text-gray-600">Frequency:</span>
+                        <span className="font-semibold text-gray-900">{loanDetails.frequency}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-slate-300">Settlement Date:</span>
-                        <span className="font-semibold text-slate-100">{loanDetails.settlementDate}</span>
+                        <span className="text-gray-600">Settlement Date:</span>
+                        <span className="font-semibold text-gray-900">{loanDetails.settlementDate}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-slate-300">Maturity Date:</span>
-                        <span className="font-semibold text-slate-100">{loanDetails.maturityDate}</span>
+                        <span className="text-gray-600">Maturity Date:</span>
+                        <span className="font-semibold text-gray-900">{loanDetails.maturityDate}</span>
                       </div>
                     </div>
                   </div>
 
                   {/* Payment Summary */}
-                  <div className="bg-white/5 border border-white/10 rounded p-4">
-                    <h3 className="font-semibold text-slate-100 mb-3">Payment Summary</h3>
+                  <div className="bg-gray-50 border border-gray-200 rounded p-4">
+                    <h3 className="font-semibold text-gray-900 mb-3">Payment Summary</h3>
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between">
-                        <span className="text-slate-300">Next Payment Due:</span>
-                        <span className="font-semibold text-slate-100">{loanDetails.nextPaymentDate}</span>
+                        <span className="text-gray-600">Next Payment Due:</span>
+                        <span className="font-semibold text-gray-900">{loanDetails.nextPaymentDate}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-slate-300">Next Payment Amount:</span>
-                        <span className="font-semibold text-slate-100">{formatCurrency(loanDetails.nextPaymentAmount)}</span>
+                        <span className="text-gray-600">Next Payment Amount:</span>
+                        <span className="font-semibold text-gray-900">{formatCurrency(loanDetails.nextPaymentAmount)}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-slate-300">Remaining Payments:</span>
-                        <span className="font-semibold text-slate-100">{loanDetails.remainingMonths}</span>
+                        <span className="text-gray-600">Remaining Payments:</span>
+                        <span className="font-semibold text-gray-900">{loanDetails.remainingMonths}</span>
                       </div>
-                      <div className="flex justify-between border-t border-white/10 pt-2 mt-2">
-                        <span className="text-slate-300">Total Interest (Est):</span>
-                        <span className="font-semibold text-slate-100">{formatCurrency(175000)}</span>
+                      <div className="flex justify-between border-t border-gray-300 pt-2 mt-2">
+                        <span className="text-gray-600">Total Interest (Est):</span>
+                        <span className="font-semibold text-gray-900">{formatCurrency(175000)}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-slate-300">Total Fees (Est):</span>
-                        <span className="font-semibold text-slate-100">{formatCurrency(8950)}</span>
+                        <span className="text-gray-600">Total Fees (Est):</span>
+                        <span className="font-semibold text-gray-900">{formatCurrency(8950)}</span>
                       </div>
-                      <div className="flex justify-between border-t border-white/10 pt-2 mt-2">
-                        <span className="text-slate-300">Total Payable:</span>
-                        <span className="font-semibold text-slate-100">{formatCurrency(1033950)}</span>
+                      <div className="flex justify-between border-t border-gray-300 pt-2 mt-2">
+                        <span className="text-gray-600">Total Payable:</span>
+                        <span className="font-semibold text-gray-900">{formatCurrency(1033950)}</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Progress Bar */}
-                <div className="bg-white/5 border border-white/10 rounded p-4">
+                <div className="bg-gray-50 border border-gray-200 rounded p-4">
                   <div className="flex justify-between mb-2">
-                    <span className="text-sm font-semibold text-slate-100">Loan Progress</span>
-                    <span className="text-sm text-slate-300">{((loanDetails.originalAmount - loanDetails.currentBalance) / loanDetails.originalAmount * 100).toFixed(1)}% paid down</span>
+                    <span className="text-sm font-semibold text-gray-900">Loan Progress</span>
+                    <span className="text-sm text-gray-600">{((loanDetails.originalAmount - loanDetails.currentBalance) / loanDetails.originalAmount * 100).toFixed(1)}% paid down</span>
                   </div>
-                  <div className="w-full bg-white/10 rounded-full h-4">
+                  <div className="w-full bg-gray-200 rounded-full h-4">
                     <div 
                       className="bg-blue-600 h-4 rounded-full transition-all"
                       style={{ width: `${((loanDetails.originalAmount - loanDetails.currentBalance) / loanDetails.originalAmount * 100)}%` }}
                     ></div>
                   </div>
-                  <div className="flex justify-between mt-2 text-xs text-slate-300">
+                  <div className="flex justify-between mt-2 text-xs text-gray-600">
                     <span>Paid: {formatCurrency(loanDetails.originalAmount - loanDetails.currentBalance)}</span>
                     <span>Remaining: {formatCurrency(loanDetails.currentBalance)}</span>
                   </div>
@@ -306,35 +306,35 @@ export function LoanLedger({ onNavigate, onBack }: LoanLedgerProps) {
 
             {/* Transactions Tab */}
             {selectedTab === 'transactions' && (
-              <div className="border border-white/10 rounded overflow-hidden">
+              <div className="border border-gray-300 rounded overflow-hidden">
                 <table className="w-full text-sm border-collapse">
                   <thead>
-                    <tr className="bg-white/5">
-                      <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Date</th>
-                      <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Type</th>
-                      <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Description</th>
-                      <th className="border border-white/10 px-3 py-2 text-right font-semibold text-slate-300">Debit</th>
-                      <th className="border border-white/10 px-3 py-2 text-right font-semibold text-slate-300">Credit</th>
-                      <th className="border border-white/10 px-3 py-2 text-right font-semibold text-slate-300">Balance</th>
-                      <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300">Status</th>
+                    <tr className="bg-gray-50">
+                      <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Date</th>
+                      <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Type</th>
+                      <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Description</th>
+                      <th className="border border-gray-300 px-3 py-2 text-right font-semibold text-gray-700">Debit</th>
+                      <th className="border border-gray-300 px-3 py-2 text-right font-semibold text-gray-700">Credit</th>
+                      <th className="border border-gray-300 px-3 py-2 text-right font-semibold text-gray-700">Balance</th>
+                      <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700">Status</th>
                     </tr>
                   </thead>
                   <tbody>
                     {transactions.map((txn, idx) => (
-                      <tr key={idx} className="hover:bg-blue-500/10">
-                        <td className="border border-white/10 px-3 py-2 text-slate-100">{txn.date}</td>
-                        <td className="border border-white/10 px-3 py-2 text-slate-100 font-medium">{txn.type}</td>
-                        <td className="border border-white/10 px-3 py-2 text-slate-300">{txn.description}</td>
-                        <td className="border border-white/10 px-3 py-2 text-right text-red-400 font-mono">
+                      <tr key={idx} className="hover:bg-blue-50">
+                        <td className="border border-gray-300 px-3 py-2 text-gray-900">{txn.date}</td>
+                        <td className="border border-gray-300 px-3 py-2 text-gray-900 font-medium">{txn.type}</td>
+                        <td className="border border-gray-300 px-3 py-2 text-gray-700">{txn.description}</td>
+                        <td className="border border-gray-300 px-3 py-2 text-right text-red-600 font-mono">
                           {txn.debit > 0 ? formatCurrency(txn.debit) : '—'}
                         </td>
-                        <td className="border border-white/10 px-3 py-2 text-right text-green-400 font-mono">
+                        <td className="border border-gray-300 px-3 py-2 text-right text-green-600 font-mono">
                           {txn.credit > 0 ? formatCurrency(txn.credit) : '—'}
                         </td>
-                        <td className="border border-white/10 px-3 py-2 text-right font-mono font-semibold text-slate-100">
+                        <td className="border border-gray-300 px-3 py-2 text-right font-mono font-semibold text-gray-900">
                           {formatCurrency(txn.balance)}
                         </td>
-                        <td className="border border-white/10 px-3 py-2 text-center">
+                        <td className="border border-gray-300 px-3 py-2 text-center">
                           {getStatusBadge(txn.status)}
                         </td>
                       </tr>
@@ -346,37 +346,37 @@ export function LoanLedger({ onNavigate, onBack }: LoanLedgerProps) {
 
             {/* Repayment Schedule Tab */}
             {selectedTab === 'schedule' && (
-              <div className="border border-white/10 rounded overflow-hidden">
+              <div className="border border-gray-300 rounded overflow-hidden">
                 <table className="w-full text-sm border-collapse">
                   <thead>
-                    <tr className="bg-white/5">
-                      <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300">#</th>
-                      <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Date</th>
-                      <th className="border border-white/10 px-3 py-2 text-right font-semibold text-slate-300">Principal</th>
-                      <th className="border border-white/10 px-3 py-2 text-right font-semibold text-slate-300">Interest</th>
-                      <th className="border border-white/10 px-3 py-2 text-right font-semibold text-slate-300">Total Payment</th>
-                      <th className="border border-white/10 px-3 py-2 text-right font-semibold text-slate-300">Balance</th>
-                      <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300">Status</th>
+                    <tr className="bg-gray-50">
+                      <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700">#</th>
+                      <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Date</th>
+                      <th className="border border-gray-300 px-3 py-2 text-right font-semibold text-gray-700">Principal</th>
+                      <th className="border border-gray-300 px-3 py-2 text-right font-semibold text-gray-700">Interest</th>
+                      <th className="border border-gray-300 px-3 py-2 text-right font-semibold text-gray-700">Total Payment</th>
+                      <th className="border border-gray-300 px-3 py-2 text-right font-semibold text-gray-700">Balance</th>
+                      <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700">Status</th>
                     </tr>
                   </thead>
                   <tbody>
                     {repaymentSchedule.map((payment) => (
-                      <tr key={payment.period} className="hover:bg-blue-500/10">
-                        <td className="border border-white/10 px-3 py-2 text-center text-slate-100 font-medium">{payment.period}</td>
-                        <td className="border border-white/10 px-3 py-2 text-slate-100">{payment.date}</td>
-                        <td className="border border-white/10 px-3 py-2 text-right font-mono text-slate-100">
+                      <tr key={payment.period} className="hover:bg-blue-50">
+                        <td className="border border-gray-300 px-3 py-2 text-center text-gray-900 font-medium">{payment.period}</td>
+                        <td className="border border-gray-300 px-3 py-2 text-gray-900">{payment.date}</td>
+                        <td className="border border-gray-300 px-3 py-2 text-right font-mono text-gray-900">
                           {formatCurrency(payment.principal)}
                         </td>
-                        <td className="border border-white/10 px-3 py-2 text-right font-mono text-slate-100">
+                        <td className="border border-gray-300 px-3 py-2 text-right font-mono text-gray-900">
                           {formatCurrency(payment.interest)}
                         </td>
-                        <td className="border border-white/10 px-3 py-2 text-right font-mono font-semibold text-slate-100">
+                        <td className="border border-gray-300 px-3 py-2 text-right font-mono font-semibold text-gray-900">
                           {formatCurrency(payment.total)}
                         </td>
-                        <td className="border border-white/10 px-3 py-2 text-right font-mono text-slate-100">
+                        <td className="border border-gray-300 px-3 py-2 text-right font-mono text-gray-900">
                           {formatCurrency(payment.balance)}
                         </td>
-                        <td className="border border-white/10 px-3 py-2 text-center">
+                        <td className="border border-gray-300 px-3 py-2 text-center">
                           {getStatusBadge(payment.status)}
                         </td>
                       </tr>
@@ -389,35 +389,35 @@ export function LoanLedger({ onNavigate, onBack }: LoanLedgerProps) {
             {/* Fees Tab */}
             {selectedTab === 'fees' && (
               <div className="space-y-4">
-                <div className="border border-white/10 rounded overflow-hidden">
+                <div className="border border-gray-300 rounded overflow-hidden">
                   <table className="w-full text-sm border-collapse">
                     <thead>
-                      <tr className="bg-white/5">
-                        <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Fee Name</th>
-                        <th className="border border-white/10 px-3 py-2 text-right font-semibold text-slate-300">Amount</th>
-                        <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Type</th>
-                        <th className="border border-white/10 px-3 py-2 text-center font-semibold text-slate-300">Status</th>
-                        <th className="border border-white/10 px-3 py-2 text-left font-semibold text-slate-300">Date</th>
+                      <tr className="bg-gray-50">
+                        <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Fee Name</th>
+                        <th className="border border-gray-300 px-3 py-2 text-right font-semibold text-gray-700">Amount</th>
+                        <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Type</th>
+                        <th className="border border-gray-300 px-3 py-2 text-center font-semibold text-gray-700">Status</th>
+                        <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-gray-700">Date</th>
                       </tr>
                     </thead>
                     <tbody>
                       {feeSchedule.map((fee, idx) => (
-                        <tr key={idx} className="hover:bg-blue-500/10">
-                          <td className="border border-white/10 px-3 py-2 text-slate-100 font-medium">{fee.name}</td>
-                          <td className="border border-white/10 px-3 py-2 text-right font-mono text-slate-100">
+                        <tr key={idx} className="hover:bg-blue-50">
+                          <td className="border border-gray-300 px-3 py-2 text-gray-900 font-medium">{fee.name}</td>
+                          <td className="border border-gray-300 px-3 py-2 text-right font-mono text-gray-900">
                             {formatCurrency(fee.amount)}
                           </td>
-                          <td className="border border-white/10 px-3 py-2 text-slate-300">{fee.type}</td>
-                          <td className="border border-white/10 px-3 py-2 text-center">
+                          <td className="border border-gray-300 px-3 py-2 text-gray-700">{fee.type}</td>
+                          <td className="border border-gray-300 px-3 py-2 text-center">
                             <span className={`px-2 py-0.5 rounded text-xs font-semibold ${
-                              fee.status === 'Paid' ? 'bg-green-500/15 text-green-300' :
-                              fee.status === 'Active' ? 'bg-blue-500/15 text-blue-300' :
-                              'bg-white/5 text-slate-300'
+                              fee.status === 'Paid' ? 'bg-green-100 text-green-700' :
+                              fee.status === 'Active' ? 'bg-blue-100 text-blue-700' :
+                              'bg-gray-100 text-gray-700'
                             }`}>
                               {fee.status}
                             </span>
                           </td>
-                          <td className="border border-white/10 px-3 py-2 text-slate-300">{fee.date}</td>
+                          <td className="border border-gray-300 px-3 py-2 text-gray-700">{fee.date}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -435,28 +435,28 @@ export function LoanLedger({ onNavigate, onBack }: LoanLedgerProps) {
 
         {/* Quick Actions */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <button className="bg-white border border-white/10 rounded p-4 hover:border-blue-400 hover:shadow-md transition-all text-left">
-            <Calculator className="w-6 h-6 text-blue-400 mb-2" />
-            <div className="font-semibold text-slate-100 text-sm">Payout Quote</div>
-            <div className="text-xs text-slate-300 mt-1">Calculate early payout</div>
+          <button className="bg-white border border-gray-300 rounded p-4 hover:border-blue-400 hover:shadow-md transition-all text-left">
+            <Calculator className="w-6 h-6 text-blue-600 mb-2" />
+            <div className="font-semibold text-gray-900 text-sm">Payout Quote</div>
+            <div className="text-xs text-gray-600 mt-1">Calculate early payout</div>
           </button>
 
-          <button className="bg-white border border-white/10 rounded p-4 hover:border-blue-400 hover:shadow-md transition-all text-left">
-            <TrendingUp className="w-6 h-6 text-purple-400 mb-2" />
-            <div className="font-semibold text-slate-100 text-sm">Rate Change</div>
-            <div className="text-xs text-slate-300 mt-1">Update interest rate</div>
+          <button className="bg-white border border-gray-300 rounded p-4 hover:border-blue-400 hover:shadow-md transition-all text-left">
+            <TrendingUp className="w-6 h-6 text-purple-600 mb-2" />
+            <div className="font-semibold text-gray-900 text-sm">Rate Change</div>
+            <div className="text-xs text-gray-600 mt-1">Update interest rate</div>
           </button>
 
-          <button className="bg-white border border-white/10 rounded p-4 hover:border-blue-400 hover:shadow-md transition-all text-left">
-            <Calendar className="w-6 h-6 text-green-400 mb-2" />
-            <div className="font-semibold text-slate-100 text-sm">Payment Hold</div>
-            <div className="text-xs text-slate-300 mt-1">Pause repayments</div>
+          <button className="bg-white border border-gray-300 rounded p-4 hover:border-blue-400 hover:shadow-md transition-all text-left">
+            <Calendar className="w-6 h-6 text-green-600 mb-2" />
+            <div className="font-semibold text-gray-900 text-sm">Payment Hold</div>
+            <div className="text-xs text-gray-600 mt-1">Pause repayments</div>
           </button>
 
-          <button className="bg-white border border-white/10 rounded p-4 hover:border-blue-400 hover:shadow-md transition-all text-left">
-            <Send className="w-6 h-6 text-indigo-400 mb-2" />
-            <div className="font-semibold text-slate-100 text-sm">Send Statement</div>
-            <div className="text-xs text-slate-300 mt-1">Email to borrower</div>
+          <button className="bg-white border border-gray-300 rounded p-4 hover:border-blue-400 hover:shadow-md transition-all text-left">
+            <Send className="w-6 h-6 text-indigo-600 mb-2" />
+            <div className="font-semibold text-gray-900 text-sm">Send Statement</div>
+            <div className="text-xs text-gray-600 mt-1">Email to borrower</div>
           </button>
         </div>
       </div>

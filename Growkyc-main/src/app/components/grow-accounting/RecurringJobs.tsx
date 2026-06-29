@@ -59,11 +59,11 @@ export function RecurringJobs({ onNavigate }: RecurringJobsProps) {
 
   const getFrequencyColor = (frequency: string) => {
     switch (frequency) {
-      case 'Weekly': return 'bg-blue-500/10 text-blue-300';
-      case 'Monthly': return 'bg-green-500/10 text-green-300';
-      case 'Quarterly': return 'bg-purple-500/10 text-purple-300';
-      case 'Annually': return 'bg-orange-500/10 text-orange-300';
-      default: return 'bg-white/5 text-slate-300';
+      case 'Weekly': return 'bg-blue-50 text-blue-700';
+      case 'Monthly': return 'bg-green-50 text-green-700';
+      case 'Quarterly': return 'bg-purple-50 text-purple-700';
+      case 'Annually': return 'bg-orange-50 text-orange-700';
+      default: return 'bg-gray-50 text-gray-700';
     }
   };
 
@@ -78,8 +78,8 @@ export function RecurringJobs({ onNavigate }: RecurringJobsProps) {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-[32px] font-bold text-slate-100">Recurring Jobs</h1>
-            <p className="text-sm text-slate-300 mt-1">Automate job creation for recurring work</p>
+            <h1 className="text-[32px] font-bold text-gray-900">Recurring Jobs</h1>
+            <p className="text-sm text-gray-600 mt-1">Automate job creation for recurring work</p>
           </div>
           <Button className="bg-[#2855a6] hover:bg-[#1e4089]">
             <Plus className="w-4 h-4 mr-2" />
@@ -92,12 +92,12 @@ export function RecurringJobs({ onNavigate }: RecurringJobsProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-blue-500/10 rounded-lg">
-                  <RefreshCw className="w-5 h-5 text-blue-400" />
+                <div className="p-3 bg-blue-50 rounded-lg">
+                  <RefreshCw className="w-5 h-5 text-blue-600" />
                 </div>
                 <div>
-                  <p className="text-xs text-slate-300">Total Recurring</p>
-                  <p className="text-2xl font-bold text-slate-100">{stats.totalRecurring}</p>
+                  <p className="text-xs text-gray-600">Total Recurring</p>
+                  <p className="text-2xl font-bold text-gray-900">{stats.totalRecurring}</p>
                 </div>
               </div>
             </CardContent>
@@ -106,12 +106,12 @@ export function RecurringJobs({ onNavigate }: RecurringJobsProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-green-500/10 rounded-lg">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
+                <div className="p-3 bg-green-50 rounded-lg">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
                 </div>
                 <div>
-                  <p className="text-xs text-slate-300">Active</p>
-                  <p className="text-2xl font-bold text-slate-100">{stats.active}</p>
+                  <p className="text-xs text-gray-600">Active</p>
+                  <p className="text-2xl font-bold text-gray-900">{stats.active}</p>
                 </div>
               </div>
             </CardContent>
@@ -120,12 +120,12 @@ export function RecurringJobs({ onNavigate }: RecurringJobsProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-orange-500/10 rounded-lg">
-                  <Clock className="w-5 h-5 text-orange-400" />
+                <div className="p-3 bg-orange-50 rounded-lg">
+                  <Clock className="w-5 h-5 text-orange-600" />
                 </div>
                 <div>
-                  <p className="text-xs text-slate-300">Due This Week</p>
-                  <p className="text-2xl font-bold text-slate-100">{stats.dueSoon}</p>
+                  <p className="text-xs text-gray-600">Due This Week</p>
+                  <p className="text-2xl font-bold text-gray-900">{stats.dueSoon}</p>
                 </div>
               </div>
             </CardContent>
@@ -134,12 +134,12 @@ export function RecurringJobs({ onNavigate }: RecurringJobsProps) {
           <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)]">
             <CardContent className="p-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-purple-500/10 rounded-lg">
-                  <RefreshCw className="w-5 h-5 text-purple-400" />
+                <div className="p-3 bg-purple-50 rounded-lg">
+                  <RefreshCw className="w-5 h-5 text-purple-600" />
                 </div>
                 <div>
-                  <p className="text-xs text-slate-300">Jobs Created</p>
-                  <p className="text-2xl font-bold text-slate-100">{stats.totalCreated}</p>
+                  <p className="text-xs text-gray-600">Jobs Created</p>
+                  <p className="text-2xl font-bold text-gray-900">{stats.totalCreated}</p>
                 </div>
               </div>
             </CardContent>
@@ -152,16 +152,16 @@ export function RecurringJobs({ onNavigate }: RecurringJobsProps) {
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-white/10">
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-300">Status</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-300">Job Name</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-300">Client</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-300">Template</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-300">Frequency</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-300">Next Due</th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-300">Assignee</th>
-                    <th className="text-center py-3 px-4 text-sm font-semibold text-slate-300">Jobs Created</th>
-                    <th className="text-center py-3 px-4 text-sm font-semibold text-slate-300">Actions</th>
+                  <tr className="border-b border-gray-200">
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Status</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Job Name</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Client</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Template</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Frequency</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Next Due</th>
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Assignee</th>
+                    <th className="text-center py-3 px-4 text-sm font-semibold text-gray-700">Jobs Created</th>
+                    <th className="text-center py-3 px-4 text-sm font-semibold text-gray-700">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -172,27 +172,27 @@ export function RecurringJobs({ onNavigate }: RecurringJobsProps) {
                     return (
                       <tr
                         key={job.id}
-                        className="border-b border-white/10 hover:bg-white/5 cursor-pointer"
+                        className="border-b border-gray-100 hover:bg-gray-50 cursor-pointer"
                         onClick={() => setSelectedJob(job)}
                       >
                         <td className="py-4 px-4">
                           {job.active ? (
                             <div className="flex items-center gap-2">
                               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                              <span className="text-sm text-green-300 font-medium">Active</span>
+                              <span className="text-sm text-green-700 font-medium">Active</span>
                             </div>
                           ) : (
                             <div className="flex items-center gap-2">
                               <div className="w-2 h-2 bg-gray-400 rounded-full" />
-                              <span className="text-sm text-slate-300 font-medium">Paused</span>
+                              <span className="text-sm text-gray-600 font-medium">Paused</span>
                             </div>
                           )}
                         </td>
                         <td className="py-4 px-4">
-                          <span className="font-semibold text-slate-100">{job.name}</span>
+                          <span className="font-semibold text-gray-900">{job.name}</span>
                         </td>
-                        <td className="py-4 px-4 text-sm text-slate-300">{job.client}</td>
-                        <td className="py-4 px-4 text-sm text-slate-300">{job.template}</td>
+                        <td className="py-4 px-4 text-sm text-gray-700">{job.client}</td>
+                        <td className="py-4 px-4 text-sm text-gray-600">{job.template}</td>
                         <td className="py-4 px-4">
                           <span className={`px-2 py-1 text-xs font-semibold rounded ${getFrequencyColor(job.frequency)}`}>
                             {job.frequency}
@@ -202,10 +202,10 @@ export function RecurringJobs({ onNavigate }: RecurringJobsProps) {
                           <div className="flex items-center gap-2">
                             <Calendar className="w-4 h-4 text-gray-400" />
                             <div>
-                              <p className={`text-sm font-medium ${isDueSoon ? 'text-orange-300' : 'text-slate-100'}`}>
+                              <p className={`text-sm font-medium ${isDueSoon ? 'text-orange-700' : 'text-gray-900'}`}>
                                 {job.nextDue}
                               </p>
-                              <p className="text-xs text-slate-400">
+                              <p className="text-xs text-gray-500">
                                 {daysUntil > 0 ? `in ${daysUntil} days` : daysUntil === 0 ? 'today' : `${Math.abs(daysUntil)} days ago`}
                               </p>
                             </div>
@@ -214,11 +214,11 @@ export function RecurringJobs({ onNavigate }: RecurringJobsProps) {
                         <td className="py-4 px-4">
                           <div className="flex items-center gap-2">
                             <User className="w-4 h-4 text-gray-400" />
-                            <span className="text-sm text-slate-300">{job.assignee}</span>
+                            <span className="text-sm text-gray-700">{job.assignee}</span>
                           </div>
                         </td>
                         <td className="py-4 px-4 text-center">
-                          <span className="text-sm font-semibold text-slate-100">{job.jobsCreated}</span>
+                          <span className="text-sm font-semibold text-gray-900">{job.jobsCreated}</span>
                         </td>
                         <td className="py-4 px-4">
                           <div className="flex items-center justify-center gap-1">
@@ -229,7 +229,7 @@ export function RecurringJobs({ onNavigate }: RecurringJobsProps) {
                                 e.stopPropagation();
                               }}
                             >
-                              {job.active ? <Pause className="w-4 h-4 text-orange-400" /> : <Play className="w-4 h-4 text-green-400" />}
+                              {job.active ? <Pause className="w-4 h-4 text-orange-600" /> : <Play className="w-4 h-4 text-green-600" />}
                             </Button>
                             <Button
                               size="sm"
@@ -238,7 +238,7 @@ export function RecurringJobs({ onNavigate }: RecurringJobsProps) {
                                 e.stopPropagation();
                               }}
                             >
-                              <Edit className="w-4 h-4 text-slate-300" />
+                              <Edit className="w-4 h-4 text-gray-600" />
                             </Button>
                             <Button
                               size="sm"
@@ -247,7 +247,7 @@ export function RecurringJobs({ onNavigate }: RecurringJobsProps) {
                                 e.stopPropagation();
                               }}
                             >
-                              <Trash2 className="w-4 h-4 text-red-400" />
+                              <Trash2 className="w-4 h-4 text-red-600" />
                             </Button>
                           </div>
                         </td>
@@ -261,29 +261,29 @@ export function RecurringJobs({ onNavigate }: RecurringJobsProps) {
         </Card>
 
         {/* Help Section */}
-        <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)] bg-blue-500/10 border-blue-500/30">
+        <Card className="shadow-[0_4px_12px_rgba(0,0,0,0.06)] bg-blue-50 border-blue-200">
           <CardContent className="p-6">
             <div className="flex items-start gap-4">
-              <div className="p-3 bg-blue-500/15 rounded-lg">
-                <RefreshCw className="w-6 h-6 text-blue-400" />
+              <div className="p-3 bg-blue-100 rounded-lg">
+                <RefreshCw className="w-6 h-6 text-blue-600" />
               </div>
               <div>
-                <h3 className="font-semibold text-slate-100 mb-2">How Recurring Jobs Work</h3>
-                <ul className="space-y-2 text-sm text-slate-300">
+                <h3 className="font-semibold text-gray-900 mb-2">How Recurring Jobs Work</h3>
+                <ul className="space-y-2 text-sm text-gray-700">
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400 mt-0.5" />
+                    <CheckCircle className="w-4 h-4 text-green-600 mt-0.5" />
                     <span><strong>Automated Creation:</strong> Jobs are automatically created based on the frequency you set</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400 mt-0.5" />
+                    <CheckCircle className="w-4 h-4 text-green-600 mt-0.5" />
                     <span><strong>Template-Based:</strong> Each recurring job uses a workpaper template for consistency</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400 mt-0.5" />
+                    <CheckCircle className="w-4 h-4 text-green-600 mt-0.5" />
                     <span><strong>Smart Scheduling:</strong> Jobs are created with appropriate due dates based on frequency</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-green-400 mt-0.5" />
+                    <CheckCircle className="w-4 h-4 text-green-600 mt-0.5" />
                     <span><strong>Assignee Assignment:</strong> Each new job is automatically assigned to the designated staff member</span>
                   </li>
                 </ul>
@@ -300,44 +300,44 @@ export function RecurringJobs({ onNavigate }: RecurringJobsProps) {
             <CardContent className="p-6">
               <div className="flex items-start justify-between mb-6">
                 <div>
-                  <h2 className="text-2xl font-bold text-slate-100">{selectedJob.name}</h2>
-                  <p className="text-sm text-slate-300 mt-1">{selectedJob.client}</p>
+                  <h2 className="text-2xl font-bold text-gray-900">{selectedJob.name}</h2>
+                  <p className="text-sm text-gray-600 mt-1">{selectedJob.client}</p>
                 </div>
                 <button onClick={() => setSelectedJob(null)}>
-                  <Plus className="w-6 h-6 text-slate-300 rotate-45" />
+                  <Plus className="w-6 h-6 text-gray-600 rotate-45" />
                 </button>
               </div>
 
               <div className="grid grid-cols-2 gap-6 mb-6">
                 <div>
-                  <label className="text-xs text-slate-300 mb-1 block">Template</label>
-                  <p className="font-medium text-slate-100">{selectedJob.template}</p>
+                  <label className="text-xs text-gray-600 mb-1 block">Template</label>
+                  <p className="font-medium text-gray-900">{selectedJob.template}</p>
                 </div>
                 <div>
-                  <label className="text-xs text-slate-300 mb-1 block">Frequency</label>
+                  <label className="text-xs text-gray-600 mb-1 block">Frequency</label>
                   <span className={`px-2 py-1 text-sm font-semibold rounded ${getFrequencyColor(selectedJob.frequency)}`}>
                     {selectedJob.frequency}
                   </span>
                 </div>
                 <div>
-                  <label className="text-xs text-slate-300 mb-1 block">Next Due</label>
-                  <p className="font-medium text-slate-100">{selectedJob.nextDue}</p>
+                  <label className="text-xs text-gray-600 mb-1 block">Next Due</label>
+                  <p className="font-medium text-gray-900">{selectedJob.nextDue}</p>
                 </div>
                 <div>
-                  <label className="text-xs text-slate-300 mb-1 block">Last Created</label>
-                  <p className="font-medium text-slate-100">{selectedJob.lastCreated}</p>
+                  <label className="text-xs text-gray-600 mb-1 block">Last Created</label>
+                  <p className="font-medium text-gray-900">{selectedJob.lastCreated}</p>
                 </div>
                 <div>
-                  <label className="text-xs text-slate-300 mb-1 block">Assignee</label>
-                  <p className="font-medium text-slate-100">{selectedJob.assignee}</p>
+                  <label className="text-xs text-gray-600 mb-1 block">Assignee</label>
+                  <p className="font-medium text-gray-900">{selectedJob.assignee}</p>
                 </div>
                 <div>
-                  <label className="text-xs text-slate-300 mb-1 block">Jobs Created</label>
-                  <p className="font-medium text-slate-100">{selectedJob.jobsCreated} jobs</p>
+                  <label className="text-xs text-gray-600 mb-1 block">Jobs Created</label>
+                  <p className="font-medium text-gray-900">{selectedJob.jobsCreated} jobs</p>
                 </div>
               </div>
 
-              <div className="flex gap-3 pt-4 border-t border-white/10">
+              <div className="flex gap-3 pt-4 border-t border-gray-200">
                 <Button className="flex-1 bg-[#2855a6] hover:bg-[#1e4089]">
                   <Edit className="w-4 h-4 mr-2" />
                   Edit Settings

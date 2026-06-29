@@ -42,14 +42,14 @@ export const OpenEddModal: React.FC<OpenEddModalProps> = ({ isOpen, onClose, cas
       onConfirm={handleSubmit(onSubmit)}
       confirmLabel="Initiate EDD"
     >
-      <div className="text-sm text-slate-300 mb-2">Client: {caseData?.clientName || caseData?.borrowerName}</div>
+      <div className="text-sm text-gray-600 mb-2">Client: {caseData?.clientName || caseData?.borrowerName}</div>
       <Textarea
         placeholder="Enter EDD triggers, justification, and scope..."
         {...register('details')}
         className="mb-4"
       />
       {errors.details && (
-        <p className="text-sm text-red-400">{errors.details.message}</p>
+        <p className="text-sm text-red-600">{errors.details.message}</p>
       )}
     </ActionModal>
   );
