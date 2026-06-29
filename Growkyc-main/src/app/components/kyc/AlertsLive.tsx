@@ -116,6 +116,39 @@ export function AlertsLive({ onBack }: { onBack?: () => void } = {}) {
     }
   };
 
+  // Cross-module workflow: turn an alert into a real investigation case, then
+  // mark the alert escalated. Mirrors how an AML team triages monitoring hits.
+  const escalateToCase = async (a: Alert) => {
+    setBusyId(a.id);
+    try {
+      const priority = a.severity === 'critical' ? 'high' : a.severity === 'high' ? 'high' : 'medium';
+      const res = await fetch('/api/v1/cases', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
+        body: JSON.stringify({
+          client_id: a.client_id,
+          title: `Alert #${a.id}: ${a.title}`,
+          description: a.description || `Escalated from monitoring alert #${a.id} (${a.alert_type}).`,
+          priority,
+          queue_name: 'investigation',
+        }),
+      });
+      if (!res.ok) { toast.error(`Could not open case (${res.status})`); return; }
+      const c = await res.json();
+      await fetch(`/api/v1/alerts/${a.id}/status`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
+        body: JSON.stringify({ status: 'escalated' }),
+      });
+      toast.success(`Opened case #${c.case_id ?? '—'} from alert #${a.id}`);
+      await load();
+    } catch {
+      toast.error('Network error escalating alert');
+    } finally {
+      setBusyId(null);
+    }
+  };
+
   const setStatus = async (a: Alert, status: string) => {
     setBusyId(a.id);
     try {
@@ -212,14 +245,21 @@ export function AlertsLive({ onBack }: { onBack?: () => void } = {}) {
                         <td className="py-3 px-4 text-gray-700">{a.status.replace('_', ' ')}</td>
                         <td className="py-3 px-4 text-gray-500 text-xs">{a.triggered_by || '—'}</td>
                         <td className="py-3 px-4">
-                          <select
-                            className="border border-gray-300 rounded px-2 py-1 text-xs"
-                            value={a.status}
-                            disabled={busyId === a.id}
-                            onChange={(e) => setStatus(a, e.target.value)}
-                          >
-                            {STATUSES.map((s) => <option key={s} value={s}>{s.replace('_', ' ')}</option>)}
-                          </select>
+                          <div className="flex items-center gap-2">
+                            <select
+                              className="border border-gray-300 rounded px-2 py-1 text-xs"
+                              value={a.status}
+                              disabled={busyId === a.id}
+                              onChange={(e) => setStatus(a, e.target.value)}
+                            >
+                              {STATUSES.map((s) => <option key={s} value={s}>{s.replace('_', ' ')}</option>)}
+                            </select>
+                            {!['resolved', 'dismissed', 'false_positive', 'escalated'].includes(a.status) && (
+                              <Button variant="outline" size="sm" className="text-indigo-700 border-indigo-200" disabled={busyId === a.id} onClick={() => escalateToCase(a)}>
+                                Escalate → Case
+                              </Button>
+                            )}
+                          </div>
                         </td>
                       </tr>
                     ))}

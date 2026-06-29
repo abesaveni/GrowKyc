@@ -161,6 +161,30 @@ export function CasesLive({ onBack }: { onBack?: () => void } = {}) {
     }
   };
 
+  // Cross-module workflow: raise a SAR for this case's client.
+  const raiseSarFromCase = async (c: CaseItem) => {
+    setBusyId(c.case_id);
+    try {
+      const res = await fetch('/api/v1/sars', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
+        body: JSON.stringify({
+          client_id: c.client_id,
+          reason_for_suspicion: `Raised from case #${c.case_id}: ${c.title}`,
+          narrative: `SAR raised in connection with investigation case #${c.case_id}.`,
+        }),
+      });
+      if (res.status === 403) { toast.error('Only Compliance Officer / MLRO / Admin can raise a SAR'); return; }
+      if (!res.ok) { toast.error(`Could not raise SAR (${res.status})`); return; }
+      const s = await res.json();
+      toast.success(`Raised SAR #${s.id ?? '—'} from case #${c.case_id}`);
+    } catch {
+      toast.error('Network error raising SAR');
+    } finally {
+      setBusyId(null);
+    }
+  };
+
   const exportCsv = () => {
     if (cases.length === 0) { toast.error('No cases to export'); return; }
     const n = downloadCsv(
@@ -275,6 +299,7 @@ export function CasesLive({ onBack }: { onBack?: () => void } = {}) {
                             {c.status !== 'closed' && (
                               <Button variant="outline" size="sm" disabled={busyId === c.case_id} onClick={() => closeCase(c)}>Close</Button>
                             )}
+                            <Button variant="outline" size="sm" className="text-purple-700 border-purple-200" disabled={busyId === c.case_id} onClick={() => raiseSarFromCase(c)}>Raise SAR</Button>
                             <Button variant="ghost" size="sm" className="text-red-600" disabled={busyId === c.case_id} onClick={() => deleteCase(c)}>
                               <Trash2 className="w-4 h-4" />
                             </Button>
